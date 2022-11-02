@@ -18,7 +18,7 @@
     "name": ".FormStressSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -160,6 +160,10 @@
       },
       {
         "name": "ohos.permission.CLEAN_APPLICATION_DATA"
+      },
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ],
     "js": [

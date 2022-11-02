@@ -15,6 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 let subscriberInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
@@ -37,6 +38,31 @@ let flagNewWant = false;
 
 export default function abilityTest() {
   describe('ActsNewWantTest', function () {
+
+    let TAG1 = 'ACTS_NewWant_Test : '
+    let id = undefined;
+    beforeAll(async (done) => {
+        console.log(TAG1 + "beforeAll called");
+        let myReason = 'test ActsNewWantTest';
+        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+            console.log(TAG1 + "Request suspension delay will time out.");
+        })
+        id = delayInfo.requestId;
+        console.log(TAG1 + "requestId is : " + id);
+        setTimeout(function () {
+            console.log(TAG1 + "beforeAll end");
+            done();
+        }, 1000);
+    })
+        
+    afterAll(async (done) => {
+        console.log(TAG1 + "afterAll called");
+        backgroundTaskManager.cancelSuspendDelay(id);
+        setTimeout(function () {
+            console.log(TAG1 + "afterAll end");
+            done();
+        }, 1000);
+    })
 
     /**
      * @tc.number: ACTS_NewWant_Test_0100
@@ -562,7 +588,7 @@ export default function abilityTest() {
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
 
-      
+
       function SubscribeCallBack(err, data) {
 
         console.debug("ACTS_NewWant_Test_0800====>Subscribe CallBack data:====>"

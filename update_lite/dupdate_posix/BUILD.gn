@@ -20,7 +20,7 @@ hcpptest_suite("ActsUpdateTest") {
   include_dirs = [
     "//base/update/ota_lite/interfaces/kits",
     "//base/update/ota_lite/hals",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
   ]
   deps = [
     "$ohos_third_party_dir/mbedtls:mbedtls_static",

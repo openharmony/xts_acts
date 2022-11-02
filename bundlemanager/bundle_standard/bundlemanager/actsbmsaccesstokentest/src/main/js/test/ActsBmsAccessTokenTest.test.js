@@ -37,11 +37,11 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: bms_AccessTokenId_0100
-     * @tc.name: test accessTokenId
+     * @tc.number: BMS_SECURITY_INITIALIZE_0004
+     * @tc.name: getAccessTokenIdOfEntry
      * @tc.desc: get the accessTokenId
      */
-    it('bms_AccessTokenId_0100', 0, async function (done) {
+    it('getAccessTokenIdOfEntry', 0, async function (done) {
         await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId)
             .then(applicationInfo => {
                 console.info('accessTokenId: ' + applicationInfo.accessTokenId);
@@ -55,11 +55,11 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: bms_AccessTokenId_0200
-     * @tc.name: test reqPermissionStates
+     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0001
+     * @tc.name: getReqPermissionOfEntry
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
-    it('bms_AccessTokenId_0200', 0, async function (done) {
+    it('getReqPermissionOfEntry', 0, async function (done) {
         await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
             .then(bundleInfo => {
                 expect(bundleInfo.name).assertEqual(BUNDLE_NAME3);
@@ -79,11 +79,11 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: bms_AccessTokenId_0300
-     * @tc.name: test reqPermissionStates
+     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0008
+     * @tc.name: getReqPermissionUpdateEntry
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
-    it('bms_AccessTokenId_0300', 0, async function (done) {
+    it('getReqPermissionUpdateEntry', 0, async function (done) {
         await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
             .then(bundleInfo => {
                 expect(bundleInfo.name).assertEqual(BUNDLE_NAME2);
@@ -91,8 +91,8 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
                 expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
                 expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.LOCATION_IN_BACKGROUND");
-                expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
-                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.VIBRATE");
                 expect(bundleInfo.reqPermissionStates.length).assertEqual(5);
                 expect(bundleInfo.reqPermissionStates[0]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
                 expect(bundleInfo.reqPermissionStates[1]).assertEqual(bundle.GrantStatus.PERMISSION_GRANTED);
@@ -107,11 +107,11 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: bms_AccessTokenId_0400
-     * @tc.name: test reqPermissionStates
+     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0003
+     * @tc.name: getReqPermissionUpdateEntryAndFeature
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
-    it('bms_AccessTokenId_0400', 0, async function (done) {
+    it('getReqPermissionUpdateEntryAndFeature', 0, async function (done) {
         await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
             .then(bundleInfo => {
                 expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);
@@ -120,8 +120,8 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.BETA");
                 expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
                 expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.LOCATION_IN_BACKGROUND");
-                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
-                expect(bundleInfo.reqPermissions[5]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                expect(bundleInfo.reqPermissions[5]).assertEqual("ohos.permission.VIBRATE");
                 expect(bundleInfo.reqPermissionStates.length).assertEqual(6);
                 expect(bundleInfo.reqPermissionStates[0]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
                 expect(bundleInfo.reqPermissionStates[1]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
@@ -137,14 +137,14 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /**
-     * @tc.number bms_AccessTokenId_0500
-     * @tc.name BUNDLE::getBundleInfos
+     * @tc.number BMS_SECURITY_INITIALIZE_0013
+     * @tc.name getAccessTokenIdWithDefault
      * @tc.desc Test getBundleInfos interfaces with with a flag
      */
-    it("bms_AccessTokenId_0500", 0, async function (done) {
+    it("getAccessTokenIdWithDefault", 0, async function (done) {
         await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT)
             .then((applicationInfo) => {
-                console.info("bms_AccessTokenId_0500 accessTokenId: " + applicationInfo.accessTokenId);
+                console.info("getAccessTokenIdWithDefault accessTokenId: " + applicationInfo.accessTokenId);
                 expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
                 expect(applicationInfo.accessTokenId).assertLarger(0);
                 done();
@@ -155,14 +155,14 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /**
-     * @tc.number bms_AccessTokenId_0600
-     * @tc.name BUNDLE::getBundleInfos
+     * @tc.number BMS_SECURITY_INITIALIZE_0014
+     * @tc.name getAccessTokenIdWithGetAbilities
      * @tc.desc Test getBundleInfos interfaces with a flag
      */
-    it("bms_AccessTokenId_0600", 0, async function (done) {
+    it("getAccessTokenIdWithGetAbilities", 0, async function (done) {
         await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
             .then((applicationInfo) => {
-                console.info("bms_AccessTokenId_0600 accessTokenId: " + applicationInfo.accessTokenId);
+                console.info("getAccessTokenIdWithGetAbilities accessTokenId: " + applicationInfo.accessTokenId);
                 expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
                 expect(applicationInfo.accessTokenId).assertLarger(0);
                 done();
@@ -173,14 +173,14 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /**
-     * @tc.number bms_AccessTokenId_0700
-     * @tc.name BUNDLE::getBundleInfos
+     * @tc.number BMS_SECURITY_INITIALIZE_0015
+     * @tc.name getAccessTokenIdWithGetPermission
      * @tc.desc Test getBundleInfos interfaces with a flag
      */
-    it("bms_AccessTokenId_0700", 0, async function (done) {
+    it("getAccessTokenIdWithGetPermission", 0, async function (done) {
         await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
             .then((applicationInfo) => {
-                console.info("bms_AccessTokenId_0700 accessTokenId: " + applicationInfo.accessTokenId);
+                console.info("getAccessTokenIdWithGetPermission accessTokenId: " + applicationInfo.accessTokenId);
                 expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
                 expect(applicationInfo.accessTokenId).assertLarger(0);
                 done();

@@ -1987,10 +1987,10 @@ describe('deviceKvStorePromiseTest', function () {
      * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData() testcase 003
      */
-    it('testDeviceKvStoreRemoveDeviceData003', 0, async function (done) {
+     it('testDeviceKvStoreRemoveDeviceData003', 0, async function (done) {
         console.info('testDeviceKvStoreRemoveDeviceData003');
         try {
-            await kvStore.removeDeviceData('').then((err) => {
+            await kvStore.removeDeviceData('').then((data) => {
                 console.info('testDeviceKvStoreRemoveDeviceData003 removeDeviceData success');
                 expect(null).assertFail();
             }).catch((err) => {
@@ -2010,7 +2010,7 @@ describe('deviceKvStorePromiseTest', function () {
     it('testDeviceKvStoreRemoveDeviceData004', 0, async function (done) {
         console.info('testDeviceKvStoreRemoveDeviceData004');
         try {
-            await kvStore.removeDeviceData(null).then((err) => {
+            await kvStore.removeDeviceData(null).then((data) => {
                 console.info('testDeviceKvStoreRemoveDeviceData004 removeDeviceData success');
                 expect(null).assertFail();
             }).catch((err) => {
@@ -2339,12 +2339,21 @@ describe('deviceKvStorePromiseTest', function () {
      */
     it('testDeviceKvStoreCloseResultSet004', 0, async function (done) {
         console.info('testDeviceKvStoreCloseResultSet004');
+        let errorInfo = undefined;
         try {
+            await kvStore.closeResultSet(1).then(() => {
+                console.info('testDeviceKvStoreCloseResultSet004 success');
+                expect(null).assertFail();
+            }).catch(err => {
+                console.info('testDeviceKvStoreCloseResultSet004 err ' + err);
+                errorInfo = err
+            })
             console.info('testDeviceKvStoreCloseResultSet004 success');
         }catch(e) {
             console.info('testDeviceKvStoreCloseResultSet004 e ' + e);
-            expect(null).assertFail();
+            errorInfo = e
         }
+        expect(errorInfo != undefined).assertTrue();
         done();
     })
 

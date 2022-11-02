@@ -6,7 +6,8 @@
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-      "phone"
+        "default",
+        "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -57,6 +58,12 @@
         "label": "$string:MainAbility4_label",
         "visible": true,
         "launchType": "singleton"
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ]
   }

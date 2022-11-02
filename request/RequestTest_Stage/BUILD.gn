@@ -14,17 +14,17 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsRequestStageTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
   deps = [
     ":requestStage_ets_assets",
     ":requestStage_resources",
   ]
   ets2abc = true
-  certificate_profile = "signature/actsRequestStageTest.p7b"
-  hap_name = "ActsRequestStageTest"
-  subsystem_name = "request"
+  js_build_mode = "debug"
   part_name = "request"
+  subsystem_name = "request"
+  hap_name = "ActsRequestStageTest"
+  hap_profile = "entry/src/main/module.json"
+  certificate_profile = "signature/actsRequestStageTest.p7b"
 }
 
 ohos_app_scope("requestStage_app_profile") {

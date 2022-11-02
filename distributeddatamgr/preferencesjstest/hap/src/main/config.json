@@ -16,6 +16,8 @@
         "package": "ohos.acts.preferencesjstest",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

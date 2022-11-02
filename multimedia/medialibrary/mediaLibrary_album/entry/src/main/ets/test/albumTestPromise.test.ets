@@ -22,12 +22,10 @@ import {
     VIDEO_TYPE,
     AUDIO_TYPE,
     FILEKEY,
-    allFetchOp,
     idFetchOps,
     albumFetchOps,
     albumTwoTypesFetchOps,
     albumThreeTypesFetchOps,
-    checkPresetsAssets,
     checkAlbumsCount,
 } from '../../../../../../common';
 
@@ -36,7 +34,6 @@ export default function albumTestPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryAlbum');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -50,13 +47,13 @@ export default function albumTestPromiseTest(abilityContext) {
         });
 
         function printAlbumMessage(testNum, album) {
-            console.info(`${testNum} album.albumId: ${album.albumId}`);
-            console.info(`${testNum} album.albumName: ${album.albumName}`);
-            console.info(`${testNum} album.albumUri: ${album.albumUri}`);
-            console.info(`${testNum} album.dateModified: ${album.dateModified}`);
-            console.info(`${testNum} album.count: ${album.count}`);
-            console.info(`${testNum} album.relativePath: ${album.relativePath}`);
-            console.info(`${testNum} album.coverUri: ${album.coverUri}`);
+            console.info(`${testNum} album.albumId: ${album.albumId}
+                album.albumName: ${album.albumName}
+                album.albumUri: ${album.albumUri}
+                album.dateModified: ${album.dateModified}
+                album.count: ${album.count}
+                album.relativePath: ${album.relativePath}
+                album.coverUri: ${album.coverUri}`);
         }
 
         const props = {
@@ -115,7 +112,6 @@ export default function albumTestPromiseTest(abilityContext) {
 
         const abnormalAlbumCount = async function (done, testNum, fetchOp) {
             try {
-                
                 const albumList = await media.getAlbums(fetchOp);
                 console.info(`${testNum}, albumList.length: ${albumList.length}`)
                 expect(albumList.length).assertEqual(0);
@@ -152,8 +148,7 @@ export default function albumTestPromiseTest(abilityContext) {
                 expect(false).assertTrue();
                 done();
             } catch (error) {
-                console.info(`${testNum}, error.message: ${error.message}`)
-                console.info(`${testNum}, error.code: ${error.code}`)
+                console.info(`${testNum}, error.message: ${error.message} error.code: ${error.code}`)
                 expect(error.code!=undefined).assertTrue();
                 done();
             }

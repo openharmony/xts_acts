@@ -17,7 +17,7 @@
         "package": "com.example.actsgetwantalltest",
         "name": ".entry",
         "deviceType": [
-            "phone"
+            "default"
         ],
         "distro": {
             "deliveryWithInstall": true,

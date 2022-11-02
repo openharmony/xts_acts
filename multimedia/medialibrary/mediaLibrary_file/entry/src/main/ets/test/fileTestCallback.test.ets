@@ -39,7 +39,7 @@ export default function fileTestCallbackTest(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryFile')
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -84,6 +84,7 @@ export default function fileTestCallbackTest(abilityContext) {
                     await copyFile(fd, creatAssetFd2);
                     await creatAsset2.close(creatAssetFd2);
                     await asset.close(fd);
+                    console.info(`${testNum} displayName1: ${displayName1}, displayName2 :${displayName2} `);
                     expect(creatAsset1.id != creatAsset2.id).assertTrue();
                     done();
                 });

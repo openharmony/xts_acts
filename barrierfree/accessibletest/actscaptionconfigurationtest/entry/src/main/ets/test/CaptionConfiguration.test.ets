@@ -18,6 +18,14 @@ import accessibility from '@ohos.accessibility';
 import config from '@ohos.accessibility.config';
 const LOG = "[xtsLog]"
 const START_TIMEOUT = 5000;
+var backList = []
+let subScriber = undefined;
+let registerOn = false;
+
+const callbackData = (data) => {
+  console.info(LOG + " captionsManager on  res = " + JSON.stringify(data))
+  registerOn = true
+}
 
 const CaptionConfigurationOn = (logTag, captionType) => {
   let captionsManager = accessibility.getCaptionsManager();
@@ -25,11 +33,7 @@ const CaptionConfigurationOn = (logTag, captionType) => {
     console.info(logTag + " captionsManager is undefined");
     return;
   }
-  captionsManager.on(captionType, (res) => {
-    console.info(logTag + " captionsManager on " + captionType + " res: " + JSON.stringify(res));
-    onbackList.push(logTag + "_on_success")
-    console.info(logTag + "_on_success");
-  });
+  captionsManager.on(captionType, callbackData);
 }
 
 const CaptionConfigurationOff = (logTag, captionType) => {
@@ -38,37 +42,32 @@ const CaptionConfigurationOff = (logTag, captionType) => {
     console.info(logTag + " captionsManager is undefined");
     return;
   }
-  captionsManager.off(captionType, (res) => {
-    console.info(logTag + " captionsManager off " + captionType + " res: " + JSON.stringify(res));
-  });
+  captionsManager.off(captionType, callbackData);
+}
+
+const CaptionConfigurationOffAll = (logTag, captionType) => {
+  let captionsManager = accessibility.getCaptionsManager();
+  if (!captionsManager) {
+    console.info(logTag + " captionsManager is undefined");
+    return;
+  }
+  captionsManager.off(captionType);
 }
 
 const captionOn = (logTag, caseName) => {
-  config.captions.on((res) => {
-    console.info(logTag + " captionOn  res =  " + JSON.stringify(res));
-    console.info(logTag + "_on_success");
-    onbackList.push(caseName + "_on_success")
-  });
+  config.captions.on(callbackData);
 }
 
 const captionOff = (logTag, captionType) => {
-  config.captions.off((res) => {
-    console.info(logTag + " caption off " + captionType + " res: " + JSON.stringify(res));
-  });
+  config.captions.off(callbackData);
 }
 
 const captionStyleOn = (logTag, caseName) => {
-  config.captionsStyle.on((res) => {
-    console.info(logTag + " captionsStyle On  res =  " + JSON.stringify(res));
-    console.info(logTag + "_on_success");
-    onbackList.push(caseName + "_on_success")
-  });
+  config.captionsStyle.on(callbackData);
 }
 
 const captionStyleOff = (logTag, captionType) => {
-  config.captionsStyle.off((res) => {
-    console.info(logTag + " captionsStyle off " + captionType + " res: " + JSON.stringify(res));
-  });
+  config.captionsStyle.off(callbackData);
 }
 
 const excuteCase = (caseNamePara) => {
@@ -83,16 +82,15 @@ const excuteCase = (caseNamePara) => {
   }
   commonEvent.publish("on_target_change", commonEventPublishData, publishCallback);
 }
-var backList = []
-let subScriber = undefined;
-var onbackList = []
+
 export default function CaptionConfigurationTest() {
   describe('ActsCaptionConfigurationTest', function () {
     beforeEach(async function (done) {
       console.info(LOG + 'ActsCaptionConfigurationTest: beforeEach');
       setTimeout(() => {
+        backList = []
         done();
-      }, 3000);
+      }, 1000);
     });
     beforeAll(async function (done) {
       console.info(LOG + 'ActsCaptionConfigurationTest: beforeAll');
@@ -124,13 +122,14 @@ export default function CaptionConfigurationTest() {
     });
 
     /**
-    * @tc.number: CaptionConfiguration_0010
+    * @tc.number: CaptionConfiguration_0270
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
     */
-    it('CaptionConfiguration_0010', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0010";
+    it('CaptionConfiguration_0270', 1, async function (done) {
+      const caseName = "CaptionConfiguration_0270";
       const logF = LOG + caseName;
+      registerOn = false;
       setTimeout(() => {
         CaptionConfigurationOn(caseName, 'enableChange')
       }, 1000);
@@ -139,117 +138,110 @@ export default function CaptionConfigurationTest() {
       }, 3000);
       setTimeout(() => {
         var isSucceedTarget: boolean = false;
-        var isSucceedOnBack: boolean = false;
         if (backList.indexOf(caseName + '_on_target_change_extra_success') !== -1) {
           isSucceedTarget = true;
         }
-        if (onbackList.indexOf(caseName + '_on_success') !== -1) {
-          isSucceedOnBack = true;
-        }
-        expect(isSucceedTarget && isSucceedOnBack).assertEqual(true);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget && isSucceedOnBack));
+        expect(isSucceedTarget).assertEqual(true);
+        expect(registerOn).assertEqual(true);
+        console.info(logF + ' isSucceed : ' + (isSucceedTarget));
+        CaptionConfigurationOff(caseName, 'enableChange')
         done();
       }, 8000);
     });
 
     /**
-    * @tc.number: CaptionConfiguration_0020
+    * @tc.number: CaptionConfiguration_0280
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
     */
-    it('CaptionConfiguration_0020', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0020";
+    it('CaptionConfiguration_0280', 1, async function (done) {
+      const caseName = "CaptionConfiguration_0280";
       const logF = LOG + caseName;
+      registerOn = false;
       CaptionConfigurationOn(caseName, 'styleChange')
       setTimeout(() => {
         excuteCase(caseName);
       }, 3000);
       setTimeout(() => {
         var isSucceedTarget: boolean = false;
-        var isSucceedOnBack: boolean = false;
         if (backList.indexOf(caseName + '_on_target_change_extra_success') !== -1) {
           isSucceedTarget = true;
         }
-        if (onbackList.indexOf(caseName + '_on_success') !== -1) {
-          isSucceedOnBack = true;
-        }
-        expect(isSucceedTarget && isSucceedOnBack).assertEqual(true);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget && isSucceedOnBack));
+        expect(isSucceedTarget).assertEqual(true);
+        expect(registerOn).assertEqual(true);
+        console.info(logF + ' isSucceed : ' + (isSucceedTarget));
+        CaptionConfigurationOffAll(caseName, 'styleChange')
         done();
       }, 8000);
     });
 
     /**
-    * @tc.number: CaptionConfiguration_0030
+    * @tc.number: CaptionConfiguration_0290
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
     */
-    it('CaptionConfiguration_0030', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0030";
+    it('CaptionConfiguration_0290', 1, async function (done) {
+      const caseName = "CaptionConfiguration_0290";
       const logF = LOG + caseName;
+      registerOn = false;
       setTimeout(() => {
         CaptionConfigurationOn(caseName, 'enableChange');
       }, 1000);
       setTimeout(() => {
         CaptionConfigurationOff(caseName, 'enableChange')
+        setTimeout(() => {
+          excuteCase(caseName);
+        }, 3000);
       }, 2000);
       setTimeout(() => {
-        excuteCase(caseName);
-      }, 3000);
-      setTimeout(() => {
         var isSucceedTarget: boolean = false;
-        var isSucceedOnBack: boolean = false;
         if (backList.indexOf(caseName + '_on_target_change_extra_success') !== -1) {
           isSucceedTarget = true;
         }
-        if (onbackList.indexOf(caseName + '_on_success') == -1) {
-          isSucceedOnBack = true;
-        }
-        expect(isSucceedTarget && isSucceedOnBack).assertEqual(true);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget && isSucceedOnBack));
+        expect(isSucceedTarget).assertEqual(true);
+        expect(registerOn).assertEqual(false);
+        console.info(logF + ' isSucceed : ' + (isSucceedTarget));
         done();
       }, 8000);
     });
-
+  
     /**
-    * @tc.number: CaptionConfiguration_0040
+    * @tc.number: CaptionConfiguration_0300
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
     */
-    it('CaptionConfiguration_0040', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0040";
+    it('CaptionConfiguration_0300', 1, async function (done) {
+      const caseName = "CaptionConfiguration_0300";
       const logF = LOG + caseName;
+      registerOn = false;
       setTimeout(() => {
         CaptionConfigurationOn(caseName, 'styleChange');
       }, 1000);
       setTimeout(() => {
         CaptionConfigurationOff(caseName, 'styleChange')
+        setTimeout(() => {
+          excuteCase(caseName);
+        }, 3000);
       }, 2000);
       setTimeout(() => {
-        excuteCase(caseName);
-      }, 3000);
-      setTimeout(() => {
         var isSucceedTarget: boolean = false;
-        var isSucceedOnBack: boolean = false;
         if (backList.indexOf(caseName + '_on_target_change_extra_success') !== -1) {
           isSucceedTarget = true;
         }
-        if (onbackList.indexOf(caseName + '_on_success') == -1) {
-          isSucceedOnBack = true;
-        }
-        expect(isSucceedTarget && isSucceedOnBack).assertEqual(true);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget && isSucceedOnBack));
+        expect(isSucceedTarget).assertEqual(true);
+        expect(registerOn).assertEqual(false);
+        console.info(logF + ' isSucceed : ' + (isSucceedTarget));
         done();
       }, 8000);
     });
 
     /**
-    * @tc.number: CaptionConfiguration_0050
+    * @tc.number: CaptionConfiguration_0310
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
     */
-    it('CaptionConfiguration_0050', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0050";
+    it('CaptionConfiguration_0310', 1, async function (done) {
+      const caseName = "CaptionConfiguration_0310";
       const logF = LOG + caseName;
       setTimeout(() => {
         excuteCase(caseName);
@@ -266,12 +258,12 @@ export default function CaptionConfigurationTest() {
     });
 
     /**
-    * @tc.number: CaptionConfiguration_0060
+    * @tc.number: CaptionConfiguration_0320
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
     */
-    it('CaptionConfiguration_0060', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0060";
+    it('CaptionConfiguration_0320', 1, async function (done) {
+      const caseName = "CaptionConfiguration_0320";
       const logF = LOG + caseName;
       setTimeout(() => {
         excuteCase(caseName);
@@ -288,12 +280,12 @@ export default function CaptionConfigurationTest() {
     });
 
     /**
-    * @tc.number: CaptionConfiguration_0070
+    * @tc.number: CaptionConfiguration_0330
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
     */
-    it('CaptionConfiguration_0070', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0070";
+    it('CaptionConfiguration_0330', 1, async function (done) {
+      const caseName = "CaptionConfiguration_0330";
       const logF = LOG + caseName;
       setTimeout(() => {
         excuteCase(caseName);
@@ -310,12 +302,12 @@ export default function CaptionConfigurationTest() {
     });
 
     /**
-    * @tc.number: CaptionConfiguration_0080
+    * @tc.number: CaptionConfiguration_0340
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
     */
-    it('CaptionConfiguration_0080', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0080";
+    it('CaptionConfiguration_0340', 1, async function (done) {
+      const caseName = "CaptionConfiguration_0340";
       const logF = LOG + caseName;
       setTimeout(() => {
         excuteCase(caseName);
@@ -398,35 +390,6 @@ export default function CaptionConfigurationTest() {
     });
 
     /**
-    * @tc.number: CaptionConfiguration_0120
-    * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
-    * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
-    */
-    it('CaptionConfiguration_0120', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0120";
-      const logF = LOG + caseName;
-      setTimeout(() => {
-        CaptionConfigurationOn(caseName, undefined);
-      }, 1000);
-      setTimeout(() => {
-        excuteCase(caseName);
-      }, 2000);
-      setTimeout(() => {
-        var isSucceedTarget: boolean = false;
-        var isSucceedOnBack: boolean = false;
-        if (backList.indexOf(caseName + '_on_target_change_extra_success') == -1) {
-          isSucceedTarget = true;
-        }
-        if (onbackList.indexOf(caseName + '_on_success') == -1) {
-          isSucceedOnBack = true;
-        }
-        expect(isSucceedTarget && isSucceedOnBack).assertEqual(true);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget && isSucceedOnBack));
-        done();
-      }, 8000);
-    });
-
-    /**
     * @tc.number: CaptionConfiguration_0130
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
@@ -456,23 +419,22 @@ export default function CaptionConfigurationTest() {
     it('CaptionConfiguration_0140', 1, async function (done) {
       const caseName = "CaptionConfiguration_0140";
       const logF = LOG + caseName;
+      registerOn = false;
       setTimeout(() => {
-        captionOn(logF, caseName)
+        captionOn(logF, caseName);
       }, 1000);
       setTimeout(() => {
         excuteCase(caseName);
       }, 3000);
       setTimeout(() => {
         var isSucceedTarget: boolean = false;
-        var isSucceedOnBack: boolean = false;
         if (backList.indexOf(caseName + '_on_target_change_extra_success') !== -1) {
           isSucceedTarget = true;
         }
-        if (onbackList.indexOf(caseName + '_on_success') !== -1) {
-          isSucceedOnBack = true;
-        }
-        expect(isSucceedTarget && isSucceedOnBack).assertEqual(true);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget && isSucceedOnBack));
+        expect(isSucceedTarget).assertEqual(true);
+        expect(registerOn).assertEqual(true);
+        console.info(logF + ' isSucceed : ' + (isSucceedTarget));
+        captionOff(logF, caseName);
         done();
       }, 8000);
     });
@@ -485,21 +447,20 @@ export default function CaptionConfigurationTest() {
     it('CaptionConfiguration_0150', 1, async function (done) {
       const caseName = "CaptionConfiguration_0150";
       const logF = LOG + caseName;
-      captionStyleOn(logF, caseName)
+      registerOn = false;
+      captionStyleOn(logF, caseName);
       setTimeout(() => {
         excuteCase(caseName);
       }, 3000);
       setTimeout(() => {
         var isSucceedTarget: boolean = false;
-        var isSucceedOnBack: boolean = false;
         if (backList.indexOf(caseName + '_on_target_change_extra_success') !== -1) {
           isSucceedTarget = true;
         }
-        if (onbackList.indexOf(caseName + '_on_success') !== -1) {
-          isSucceedOnBack = true;
-        }
-        expect(isSucceedTarget && isSucceedOnBack).assertEqual(true);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget && isSucceedOnBack));
+        expect(isSucceedTarget).assertEqual(true);
+        expect(registerOn).assertEqual(true);
+        console.info(logF + ' isSucceed : ' + (isSucceedTarget));
+        config.captionsStyle.off();
         done();
       }, 8000);
     });
@@ -512,26 +473,24 @@ export default function CaptionConfigurationTest() {
     it('CaptionConfiguration_0160', 1, async function (done) {
       const caseName = "CaptionConfiguration_0160";
       const logF = LOG + caseName;
+      registerOn = false;
       setTimeout(() => {
         captionOn(logF, caseName)
       }, 1000);
       setTimeout(() => {
         captionOff(logF, caseName)
+        setTimeout(() => {
+          excuteCase(caseName);
+        }, 3000);
       }, 2000);
       setTimeout(() => {
-        excuteCase(caseName);
-      }, 3000);
-      setTimeout(() => {
         var isSucceedTarget: boolean = false;
-        var isSucceedOnBack: boolean = false;
         if (backList.indexOf(caseName + '_on_target_change_extra_success') !== -1) {
           isSucceedTarget = true;
         }
-        if (onbackList.indexOf(caseName + '_on_success') == -1) {
-          isSucceedOnBack = true;
-        }
-        expect(isSucceedTarget && isSucceedOnBack).assertEqual(true);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget && isSucceedOnBack));
+        expect(isSucceedTarget).assertEqual(true);
+        expect(registerOn).assertEqual(false);
+        console.info(logF + ' isSucceed : ' + (isSucceedTarget));
         done();
       }, 8000);
     });
@@ -544,26 +503,25 @@ export default function CaptionConfigurationTest() {
     it('CaptionConfiguration_0170', 1, async function (done) {
       const caseName = "CaptionConfiguration_0170";
       const logF = LOG + caseName;
+      registerOn = false;
       setTimeout(() => {
         captionStyleOn(logF, caseName);
       }, 1000);
       setTimeout(() => {
         captionStyleOff(logF, caseName)
+        setTimeout(() => {
+          excuteCase(caseName);
+        }, 3000);
       }, 2000);
-      setTimeout(() => {
-        excuteCase(caseName);
-      }, 3000);
+
       setTimeout(() => {
         var isSucceedTarget: boolean = false;
-        var isSucceedOnBack: boolean = false;
         if (backList.indexOf(caseName + '_on_target_change_extra_success') !== -1) {
           isSucceedTarget = true;
         }
-        if (onbackList.indexOf(caseName + '_on_success') == -1) {
-          isSucceedOnBack = true;
-        }
-        expect(isSucceedTarget && isSucceedOnBack).assertEqual(true);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget && isSucceedOnBack));
+        expect(isSucceedTarget).assertEqual(true);
+        expect(registerOn).assertEqual(false);
+        console.info(logF + ' isSucceed : ' + (isSucceedTarget));
         done();
       }, 8000);
     });
@@ -741,7 +699,5 @@ export default function CaptionConfigurationTest() {
         done();
       }, 8000);
     });
-
-
   })
 }

@@ -57,6 +57,7 @@ describe('fieldNodeTest', function() {
             node = null;
         } catch (e) {
             console.info("testAppendChild002 " + e);
+            expect(null).assertFail();
         }
         done();
     })

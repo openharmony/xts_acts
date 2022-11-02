@@ -18,7 +18,7 @@
     "name": ".FormAcquireSTApp",
     "mainAbility": "com.ohos.st.formacquiretest.MainAbility",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -133,6 +133,10 @@
       {
         "name":"ohos.permission.CLEAN_BACKGROUND_PROCESSES",
         "reason":"need use ohos.permission.CLEAN_BACKGROUND_PROCESSES"
+      },
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ],
     "js": [

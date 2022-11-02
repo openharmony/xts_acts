@@ -17,7 +17,8 @@
     "package": "com.example.c",
     "name": ".MyApplication",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

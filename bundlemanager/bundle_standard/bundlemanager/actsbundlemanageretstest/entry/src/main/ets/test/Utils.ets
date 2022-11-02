@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +22,8 @@ export default class Utils {
 
     static sleep(time) {
         return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve()
+        setTimeout((data) => {
+            resolve(data)
         }, time)
     }).then(() => {
         console.info(`sleep ${time} over...`)
@@ -44,72 +43,6 @@ export default class Utils {
         return this.rect_value = {
             "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
         }
-    }
-
-    static async swipe(downX, downY, upX, upY, steps) {
-        console.info('start to swipe')
-        this.drags(downX, downY, upX, upY, steps, false)
-    }
-
-    static async drag(downX, downY, upX, upY, steps) {
-        console.info('start to drag')
-        this.drags(downX, downY, upX, upY, steps, true)
-    }
-
-    static async drags(downX, downY, upX, upY, steps, drag) {
-        let xStep;
-        let yStep;
-        let swipeSteps;
-        let ret;
-        xStep = 0;
-        yStep = 0;
-        ret = false;
-        swipeSteps = steps;
-        if (swipeSteps == 0) {
-            swipeSteps = 1;
-        }
-        xStep = (upX - downX) / swipeSteps;
-        yStep = (upY - downY) / swipeSteps;
-        console.info('move step is: ' + 'xStep: ' + xStep + '    yStep: ' + yStep)
-        let downPonit: TouchObject = {
-            id: 1,
-            x: downX,
-            y: downY,
-            type: TouchType.Down,
-        }
-        console.info('down touch started: ' + JSON.stringify(downPonit))
-        sendTouchEvent(downPonit);
-        console.info('start to move')
-        if (drag) {
-            await this.sleep(500)
-        }
-        for (let i = 1;i <= swipeSteps; i++) {
-            let movePoint: TouchObject = {
-            id: 1,
-            x: downX + (xStep * i),
-            y: downY + (yStep * i),
-            type: TouchType.Move
-        }
-        console.info('move touch started: ' + JSON.stringify(movePoint))
-        ret = sendTouchEvent(movePoint)
-        if (ret == false) {
-            break;
-        }
-        await this.sleep(5)
-        }
-        console.info('start to up')
-        if (drag) {
-            await this.sleep(100)
-        }
-        let upPoint: TouchObject = {
-             id: 1,
-             x: upX,
-             y: upY,
-             type: TouchType.Up,
-        }
-        console.info('up touch started: ' + JSON.stringify(upPoint))
-        sendTouchEvent(upPoint)
-        await this.sleep(500)
     }
 
     static getNowTime() {

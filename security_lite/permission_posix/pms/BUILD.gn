@@ -31,7 +31,7 @@ hcpptest_suite("ActsPMSTest") {
   include_dirs = [
     "src",
     "include",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/communication/broadcast",
     "//base/security/permission_lite/interfaces/innerkits",

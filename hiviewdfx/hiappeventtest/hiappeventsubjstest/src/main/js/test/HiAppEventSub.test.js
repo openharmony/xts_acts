@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import HiAppEventV9 from '@ohos.hiviewdfx.hiAppEvent'
 import HiAppEvent from '@ohos.hiAppEvent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import Constant from 'deccjsunit/src/Constant'
@@ -26,7 +27,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub01', 3, async function (done) {
         console.info('testHiAppEventSub01 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             triggerCondition: {
                 row: 1
@@ -107,7 +108,7 @@ describe('HiAppEventSubTest', function () {
         }, 2000)
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub01 end')
         }, 4000)
@@ -129,7 +130,7 @@ describe('HiAppEventSubTest', function () {
                     return;
             }
         }
-        let holder = HiAppEvent.addWatcher({
+        let holder = HiAppEventV9.addWatcher({
             name: "watcher2",
         });
         HiAppEvent.write("test_event2", HiAppEvent.EventType.FAULT, {"key_int":100},
@@ -191,7 +192,7 @@ describe('HiAppEventSubTest', function () {
             expect(true).assertTrue()
         }
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher2"})
+            HiAppEventV9.removeWatcher({"name":"watcher2"})
             done()
             console.info('HiAppEventSub02 end')
         }, 5000)
@@ -205,34 +206,39 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub03', 3, async function (done) {
         console.info('testHiAppEventSub03 start')
-        let result = HiAppEvent.addWatcher({
-            name: 123,
-            appEventFilters: [
-                {
-                    domain: "default",
-                    eventTypes: [HiAppEvent.EventType.FAULT]
-                }
-            ],
-            triggerCondition: {
-                row: 1
-            },
+        try {
+            let result = HiAppEventV9.addWatcher({
+                name: 123,
+                appEventFilters: [
+                    {
+                        domain: "default",
+                        eventTypes: [HiAppEvent.EventType.FAULT]
+                    }
+                ],
+                triggerCondition: {
+                    row: 1
+                },
 
-            onTrigger: function (curRow, curSize, holder) {
-                let eventPkg = holder.takeNext();
-                if (eventPkg == null) {
-                    expect().assertFail()
+                onTrigger: function (curRow, curSize, holder) {
+                    let eventPkg = holder.takeNext();
+                    if (eventPkg == null) {
+                        expect().assertFail()
+                    }
+                    console.info("eventPkg.packageId=" + eventPkg.packageId);
+                    console.info("eventPkg.row=" + eventPkg.row);
+                    console.info("eventPkg.size=" + eventPkg.size);
+                    for (const eventInfo of eventPkg.data) {
+                        console.info("eventPkg.data=" + eventInfo);
+                    }
+                    expect(true).assertTrue()
                 }
-                console.info("eventPkg.packageId=" + eventPkg.packageId);
-                console.info("eventPkg.row=" + eventPkg.row);
-                console.info("eventPkg.size=" + eventPkg.size);
-                for (const eventInfo of eventPkg.data) {
-                    console.info("eventPkg.data=" + eventInfo);
-                }
-                expect(true).assertTrue()
-            }
-        })
-        console.info("HiAppEventSub_result" + result)
-        expect(result == null).assertTrue();
+            })
+            console.info("HiAppEventSub_result" + result)
+            expect(result == null).assertTrue();
+        } catch (error) {
+            expect(error.code).assertEqual("401");
+        }
+
         HiAppEvent.write("test_event3", HiAppEvent.EventType.FAULT, {"key_int":100},
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
@@ -279,7 +285,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub03 end')
         }, 1000)
@@ -292,33 +298,38 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub04', 3, async function (done) {
         console.info('testHiAppEventSub04 start')
-        let result = HiAppEvent.addWatcher({
-            name: true,
-            appEventFilters: [
-                {
-                    domain: "default",
-                    eventTypes: [HiAppEvent.EventType.FAULT]
-                }
-            ],
-            triggerCondition: {
-                row: 1
-            },
+        try {
+            let result = HiAppEventV9.addWatcher({
+                name: true,
+                appEventFilters: [
+                    {
+                        domain: "default",
+                        eventTypes: [HiAppEvent.EventType.FAULT]
+                    }
+                ],
+                triggerCondition: {
+                    row: 1
+                },
 
-            onTrigger: function (curRow, curSize, holder) {
-                let eventPkg = holder.takeNext();
-                if (eventPkg == null) {
-                    expect().assertFail()
+                onTrigger: function (curRow, curSize, holder) {
+                    let eventPkg = holder.takeNext();
+                    if (eventPkg == null) {
+                        expect().assertFail()
+                    }
+                    console.info("eventPkg.packageId=" + eventPkg.packageId);
+                    console.info("eventPkg.row=" + eventPkg.row);
+                    console.info("eventPkg.size=" + eventPkg.size);
+                    for (const eventInfo of eventPkg.data) {
+                        console.info("eventPkg.data=" + eventInfo);
+                    }
+                    expect(true).assertTrue()
                 }
-                console.info("eventPkg.packageId=" + eventPkg.packageId);
-                console.info("eventPkg.row=" + eventPkg.row);
-                console.info("eventPkg.size=" + eventPkg.size);
-                for (const eventInfo of eventPkg.data) {
-                    console.info("eventPkg.data=" + eventInfo);
-                }
-                expect(true).assertTrue()
-            }
-        })
-        expect(result == null).assertTrue();;
+            })
+            expect(result == null).assertTrue();
+        } catch (error) {
+            expect(error.code).assertEqual("401");
+        }
+
         HiAppEvent.write("test_event4", HiAppEvent.EventType.FAULT, {"key_int":100},
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
@@ -364,7 +375,7 @@ describe('HiAppEventSubTest', function () {
                 }
             });
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub04 end')
         }, 1000)
@@ -377,31 +388,36 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub05', 3, async function (done) {
         console.info('testHiAppEventSub05 start')
-        let result = HiAppEvent.addWatcher({
-            appEventFilters: [
-                {
-                    domain: "default",
-                }
-            ],
-            triggerCondition: {
-                row: 0
-            },
+        try {
+            let result = HiAppEventV9.addWatcher({
+                appEventFilters: [
+                    {
+                        domain: "default",
+                    }
+                ],
+                triggerCondition: {
+                    row: 0
+                },
 
-            onTrigger: function (curRow, curSize, holder) {
-                let eventPkg = holder.takeNext();
-                if (eventPkg == null) {
-                    expect().assertFail()
+                onTrigger: function (curRow, curSize, holder) {
+                    let eventPkg = holder.takeNext();
+                    if (eventPkg == null) {
+                        expect().assertFail()
+                    }
+                    console.info("eventPkg.packageId=" + eventPkg.packageId);
+                    console.info("eventPkg.row=" + eventPkg.row);
+                    console.info("eventPkg.size=" + eventPkg.size);
+                    for (const eventInfo of eventPkg.data) {
+                        console.info("eventPkg.data=" + eventInfo);
+                    }
+                    expect(true).assertTrue()
                 }
-                console.info("eventPkg.packageId=" + eventPkg.packageId);
-                console.info("eventPkg.row=" + eventPkg.row);
-                console.info("eventPkg.size=" + eventPkg.size);
-                for (const eventInfo of eventPkg.data) {
-                    console.info("eventPkg.data=" + eventInfo);
-                }
-                expect(true).assertTrue()
-            }
-        })
-        expect(result == null).assertTrue();
+            })
+            expect(result == null).assertTrue();
+        } catch (error) {
+            expect(error.code).assertEqual("401");
+        }
+
         HiAppEvent.write("test_event5", HiAppEvent.EventType.FAULT, {"key_int":100},
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
@@ -448,7 +464,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub05 end')
         }, 1000)
@@ -461,7 +477,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub06', 3, async function (done) {
         console.info('testHiAppEventSub06 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -475,8 +491,8 @@ describe('HiAppEventSubTest', function () {
             onTrigger: function (curRow, curSize, holder) {
                 let eventPkg = holder.takeNext();
                 if (eventPkg == null) {
-                    // expect().assertFail()
                     console.info("HiAppEventSub_result6:" + eventPkg)
+                    return
                 }
                 console.info("eventPkg.packageId=" + eventPkg.packageId);
                 console.info("eventPkg.row=" + eventPkg.row);
@@ -534,7 +550,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub06 end')
         }, 1000)
@@ -547,34 +563,39 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub07', 3, async function (done) {
         console.info('testHiAppEventSub07 start')
-        let result = HiAppEvent.addWatcher({
-            name: "watcher1",
-            appEventFilters: [
-                {
-                    domain: ""
-                }
-            ],
-            triggerCondition: {
-                row: 1,
-                size: 1,
-                timeOut: 1
-            },
+        try {
+            let result = HiAppEventV9.addWatcher({
+                name: "watcher1",
+                appEventFilters: [
+                    {
+                        domain: ""
+                    }
+                ],
+                triggerCondition: {
+                    row: 1,
+                    size: 1,
+                    timeOut: 1
+                },
 
-            onTrigger: function (curRow, curSize, holder) {
-                let eventPkg = holder.takeNext();
-                if (eventPkg == null) {
-                    expect().assertFail()
+                onTrigger: function (curRow, curSize, holder) {
+                    let eventPkg = holder.takeNext();
+                    if (eventPkg == null) {
+                        expect().assertFail()
+                    }
+                    console.info("eventPkg.packageId=" + eventPkg.packageId);
+                    console.info("eventPkg.row=" + eventPkg.row);
+                    console.info("eventPkg.size=" + eventPkg.size);
+                    for (const eventInfo of eventPkg.data) {
+                        console.info("eventPkg.data=" + eventInfo);
+                    }
+                    expect(true).assertTrue()
                 }
-                console.info("eventPkg.packageId=" + eventPkg.packageId);
-                console.info("eventPkg.row=" + eventPkg.row);
-                console.info("eventPkg.size=" + eventPkg.size);
-                for (const eventInfo of eventPkg.data) {
-                    console.info("eventPkg.data=" + eventInfo);
-                }
-                expect(true).assertTrue()
-            }
-        })
-        expect(result == null).assertTrue();
+            })
+            expect(result == null).assertTrue();
+        } catch (error) {
+            expect(error.code).assertEqual("11102002");
+        }
+
         HiAppEvent.write("test_event7", HiAppEvent.EventType.FAULT, {"key_int":100},
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
@@ -588,7 +609,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub07 end')
         }, 1000)
@@ -601,7 +622,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub08', 3, async function (done) {
         console.info('testHiAppEventSub08 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -642,7 +663,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub08 end')
         }, 1000)
@@ -655,7 +676,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub09', 3, async function (done) {
         console.info('testHiAppEventSub09 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -729,7 +750,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub09 end')
         }, 1000)
@@ -742,7 +763,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub10', 3, async function (done) {
         console.info('testHiAppEventSub10 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -815,7 +836,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub10 end')
         }, 1000)
@@ -828,7 +849,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub11', 3, async function (done) {
         console.info('testHiAppEventSub11 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -900,7 +921,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub11 end')
         }, 1000)
@@ -913,7 +934,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub12', 3, async function (done) {
         console.info('testHiAppEventSub12 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -985,7 +1006,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub12 end')
         }, 1000)
@@ -998,7 +1019,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub13', 3, async function (done) {
         console.info('testHiAppEventSub13 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1014,8 +1035,7 @@ describe('HiAppEventSubTest', function () {
             onTrigger: function (curRow, curSize, holder) {
                 let eventPkg = holder.takeNext();
                 if (eventPkg == null) {
-                    // expect().assertFail()
-                    console.info("HiAppEventSub_result13:" + eventPkg)
+                    return
                 }
                 console.info("eventPkg.packageId=" + eventPkg.packageId);
                 console.info("eventPkg.row=" + eventPkg.row);
@@ -1073,7 +1093,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub13 end')
         }, 1000)
@@ -1086,33 +1106,38 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub14', 3, async function (done) {
         console.info('testHiAppEventSub14 start')
-        let result = HiAppEvent.addWatcher({
-            name: "watcher1",
-            appEventFilters: [
-                {
-                    eventTypes: [HiAppEvent.EventType.FAULT,HiAppEvent.EventType.STATISTIC,
-                        HiAppEvent.EventType.SECURITY,HiAppEvent.EventType.BEHAVIOR]
-                }
-            ],
-            triggerCondition: {
-                row: 1
-            },
+        try {
+            let result = HiAppEventV9.addWatcher({
+                name: "watcher1",
+                appEventFilters: [
+                    {
+                        eventTypes: [HiAppEvent.EventType.FAULT,HiAppEvent.EventType.STATISTIC,
+                            HiAppEvent.EventType.SECURITY,HiAppEvent.EventType.BEHAVIOR]
+                    }
+                ],
+                triggerCondition: {
+                    row: 1
+                },
 
-            onTrigger: function (curRow, curSize, holder) {
-                let eventPkg = holder.takeNext();
-                if (eventPkg == null) {
-                    expect().assertFail()
+                onTrigger: function (curRow, curSize, holder) {
+                    let eventPkg = holder.takeNext();
+                    if (eventPkg == null) {
+                        expect().assertFail()
+                    }
+                    console.info("eventPkg.packageId=" + eventPkg.packageId);
+                    console.info("eventPkg.row=" + eventPkg.row);
+                    console.info("eventPkg.size=" + eventPkg.size);
+                    for (const eventInfo of eventPkg.data) {
+                        console.info("eventPkg.data=" + eventInfo);
+                    }
+                    expect(true).assertTrue()
                 }
-                console.info("eventPkg.packageId=" + eventPkg.packageId);
-                console.info("eventPkg.row=" + eventPkg.row);
-                console.info("eventPkg.size=" + eventPkg.size);
-                for (const eventInfo of eventPkg.data) {
-                    console.info("eventPkg.data=" + eventInfo);
-                }
-                expect(true).assertTrue()
-            }
-        })
-        expect(result == null).assertTrue();
+            })
+            expect(result == null).assertTrue();
+        } catch (error) {
+            expect(error.code).assertEqual("401");
+        }
+
         HiAppEvent.write("test_event14", HiAppEvent.EventType.FAULT, {"key_int":100},
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
@@ -1159,7 +1184,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub14 end')
         }, 1000)
@@ -1167,38 +1192,43 @@ describe('HiAppEventSubTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_1500
-     * @tc.name 验证调用hiAppEvent.addWatcher，eventType为非法，事件订阅成功
+     * @tc.name 验证调用hiAppEvent.addWatcher，eventType为非法，事件订阅失败
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub15', 3, async function (done) {
         console.info('testHiAppEventSub15 start')
-        let result = HiAppEvent.addWatcher({
-            name: "watcher1",
-            appEventFilters: [
-                {
-                    domain: "default",
-                    eventTypes: [HiAppEvent.EventType.BEHAVIOR+1]
-                }
-            ],
-            triggerCondition: {
-                row: 1
-            },
+        try {
+            let result = HiAppEventV9.addWatcher({
+                name: "watcher1",
+                appEventFilters: [
+                    {
+                        domain: "default",
+                        eventTypes: [HiAppEvent.EventType.BEHAVIOR+1]
+                    }
+                ],
+                triggerCondition: {
+                    row: 1
+                },
 
-            onTrigger: function (curRow, curSize, holder) {
-                let eventPkg = holder.takeNext();
-                if (eventPkg == null) {
-                    return;
+                onTrigger: function (curRow, curSize, holder) {
+                    let eventPkg = holder.takeNext();
+                    if (eventPkg == null) {
+                        return;
+                    }
+                    console.info("eventPkg.packageId=" + eventPkg.packageId);
+                    console.info("eventPkg.row=" + eventPkg.row);
+                    console.info("eventPkg.size=" + eventPkg.size);
+                    for (const eventInfo of eventPkg.data) {
+                        console.info("eventPkg.data=" + eventInfo);
+                    }
+                    expect(true).assertTrue()
                 }
-                console.info("eventPkg.packageId=" + eventPkg.packageId);
-                console.info("eventPkg.row=" + eventPkg.row);
-                console.info("eventPkg.size=" + eventPkg.size);
-                for (const eventInfo of eventPkg.data) {
-                    console.info("eventPkg.data=" + eventInfo);
-                }
-                expect(true).assertTrue()
-            }
-        })
-        expect(result != null).assertTrue();
+            })
+            expect(result == null).assertTrue();
+        } catch (error) {
+            expect(error.code).assertEqual("401");
+        }
+
         HiAppEvent.write("test_event15", HiAppEvent.EventType.FAULT, {"key_int":100},
             (err, value) => {
                 console.log('HiAppEvent into json-callback');
@@ -1245,7 +1275,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub15 end')
         }, 1000)
@@ -1267,7 +1297,7 @@ describe('HiAppEventSubTest', function () {
                     return;
             }
         }
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             triggerCondition: {
                 row: 3
@@ -1327,7 +1357,7 @@ describe('HiAppEventSubTest', function () {
         sleep(3000)
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub16 end')
         }, 1000)
@@ -1350,7 +1380,7 @@ describe('HiAppEventSubTest', function () {
                     return;
             }
         }
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             triggerCondition: {
                 row: 4
@@ -1410,7 +1440,7 @@ describe('HiAppEventSubTest', function () {
         sleep(3000)
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub17 end')
         }, 1000)
@@ -1423,7 +1453,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub18', 3, async function (done) {
         console.info('testHiAppEventSub18 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1464,7 +1494,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub18 end')
         }, 1000)
@@ -1477,7 +1507,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub19', 3, async function (done) {
         console.info('testHiAppEventSub19 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1516,7 +1546,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub19 end')
         }, 1000)
@@ -1529,7 +1559,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub20', 3, async function (done) {
         console.info('testHiAppEventSub20 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1568,7 +1598,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub20 end')
         }, 1000)
@@ -1581,7 +1611,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub21', 3, async function (done) {
         console.info('testHiAppEventSub21 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1622,7 +1652,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub21 end')
         }, 1000)
@@ -1644,7 +1674,7 @@ describe('HiAppEventSubTest', function () {
                     return;
             }
         }
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1683,7 +1713,7 @@ describe('HiAppEventSubTest', function () {
             });
         sleep(30000)
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub22 end')
         }, 1000)
@@ -1705,7 +1735,7 @@ describe('HiAppEventSubTest', function () {
                     return;
             }
         }
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1744,7 +1774,7 @@ describe('HiAppEventSubTest', function () {
             });
         sleep(1000)
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub23 end')
         }, 1000)
@@ -1766,7 +1796,7 @@ describe('HiAppEventSubTest', function () {
                     return;
             }
         }
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1802,7 +1832,7 @@ describe('HiAppEventSubTest', function () {
             });
         sleep(1000)
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub24 end')
         }, 1000)
@@ -1824,7 +1854,7 @@ describe('HiAppEventSubTest', function () {
                     return;
             }
         }
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1865,7 +1895,7 @@ describe('HiAppEventSubTest', function () {
             });
         sleep(30000)
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub28 end')
         }, 1000)
@@ -1878,7 +1908,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub29', 3, async function (done) {
         console.info('testHiAppEventSub29 start')
-        let result = HiAppEvent.addWatcher({
+        let result = HiAppEventV9.addWatcher({
             name: "watcher1",
             appEventFilters: [
                 {
@@ -1917,7 +1947,7 @@ describe('HiAppEventSubTest', function () {
             });
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
             console.info('HiAppEventSub29 end')
         }, 1000)
@@ -1930,7 +1960,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub25', 3, async function (done) {
         console.info('testHiAppEventSub25 start')
-        let holder = HiAppEvent.addWatcher({
+        let holder = HiAppEventV9.addWatcher({
             name: "watcher1",
         });
         setTimeout(() => {
@@ -1949,7 +1979,7 @@ describe('HiAppEventSubTest', function () {
         }, 500)
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher1"})
+            HiAppEventV9.removeWatcher({"name":"watcher1"})
             done()
         }, 1000)
 
@@ -1968,7 +1998,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub26', 3, async function (done) {
         console.info('testHiAppEventSub26 start')
-        let holder = HiAppEvent.addWatcher({
+        let holder = HiAppEventV9.addWatcher({
             name: "watcher1",
         });
         setTimeout(() => {
@@ -1987,7 +2017,7 @@ describe('HiAppEventSubTest', function () {
         }, 500)
 
         setTimeout(() => {
-            HiAppEvent.removeWatcher({"name":"watcher2"})
+            HiAppEventV9.removeWatcher({"name":"watcher2"})
             done()
         }, 1000)
 
@@ -2005,7 +2035,7 @@ describe('HiAppEventSubTest', function () {
      */
     it('HiAppEventSub27', 3, function () {
         console.info('testHiAppEventSub27 start')
-        HiAppEvent.clearData()
+        HiAppEventV9.clearData()
         expect(true).assertTrue()
         console.info('HiAppEventSub27 end')
     })

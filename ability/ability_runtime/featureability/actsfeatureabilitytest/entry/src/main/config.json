@@ -22,7 +22,7 @@
     "name": ".MyApplication",
     "mainAbility": "com.example.actsfeatureabilitytest.MainAbility",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -121,6 +121,10 @@
       {
         "name": "ohos.permission.ACCELEROMETER",
         "reason":"need use ohos.permission.ACCELEROMETER"
+      },
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ],
     "js": [

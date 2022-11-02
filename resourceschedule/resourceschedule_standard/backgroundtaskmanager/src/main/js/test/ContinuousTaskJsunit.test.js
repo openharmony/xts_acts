@@ -85,8 +85,8 @@ describe("ContinuousTaskJsTest", function () {
             featureAbility.startAbility(
                 {
                 want: {
-                    bundleName: "com.example.continuoustaskserver",
-                    abilityName: "com.example.continuoustaskserver.ServiceAbility",
+                    bundleName: "ohos.acts.resourceschedule.taskmgr.js.function",
+                    abilityName: "ohos.acts.resourceschedule.taskmgr.js.function.ServiceAbility",
                     parameters: {
                         option: option
                     }

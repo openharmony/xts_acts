@@ -7,6 +7,14 @@
     {
       "name": "description_mainability",
       "value": "ETS_Empty Ability"
+    },
+    {
+      "name": "TestAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "TestAbility_label",
+      "value": "label"
     }
   ]
 }

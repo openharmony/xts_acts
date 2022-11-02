@@ -24,7 +24,6 @@ import {
     albumFetchOps,
     albumTwoTypesFetchOps,
     albumThreeTypesFetchOps,
-    checkPresetsAssets,
     checkAlbumsCount,
 } from '../../../../../../common';
 
@@ -33,7 +32,6 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryAlbum');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -62,9 +60,8 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
                 // one asset type
                 let op: mediaLibrary.MediaFetchOptions =
                     allFetchOp({ order: `date_added DESC LIMIT 0,${expectAssetsCount}` })
-                if (expectAlbumCount == 1) {
-                    const album = albumList[0];
-
+                let count = 0;
+                for (const album of albumList) {
                     let fetchFileResult = await album.getFileAssets(op);
                     if (fetchFileResult == undefined) {
                         console.info(`${testNum} fetchFileResult undefined`)
@@ -72,29 +69,13 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
                         done();
                         return;
                     }
-                    console.info(`${testNum}, getCount: ${fetchFileResult.getCount()}`)
-                    console.info(`${testNum}, expectAssetsCount: ${expectAssetsCount}`)
+                    count++;
+                    console.info(`${testNum}, expectAssetsCount: ${expectAssetsCount}
+                                getCount: ${fetchFileResult.getCount()}`)
                     expect(fetchFileResult.getCount()).assertEqual(expectAssetsCount);
-                    done();
-                } else {
-                    // more asset type
-                    let count = 0;
-                    for (const album of albumList) {
-                        let fetchFileResult = await album.getFileAssets(op);
-                        if (fetchFileResult == undefined) {
-                            console.info(`${testNum} fetchFileResult undefined`)
-                            expect(false).assertTrue();
-                            done();
-                            return;
-                        }
-                        count++;
-                        console.info(`${testNum}, getCount: ${fetchFileResult.getCount()}`)
-                        console.info(`${testNum}, expectAssetsCount: ${expectAssetsCount}`)
-                        expect(fetchFileResult.getCount()).assertEqual(expectAssetsCount);
-                    }
-                    expect(count).assertEqual(expectAlbumCount);
-                    done();
                 }
+                expect(count).assertEqual(expectAlbumCount);
+                done();
             } catch (error) {
                 console.info(`${testNum}, error: ${error}`)
                 expect(false).assertTrue();

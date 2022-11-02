@@ -67,13 +67,13 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.desc      : 获取设备列表
    */
   it('SUB_USB_JS_0480', 0, function () {
+    console.info('usb SUB_USB_JS_0480 begin');
     console.info('*****SUB_USB_JS_0480 portcurrentMode**** ret : ' + portCurrentMode)
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
       return
     }
-    console.info('usb SUB_USB_JS_0480 begin');
     gDeviceList = usb.getDevices();
     if (gDeviceList.length == 0) {
       console.info('usb case get_devices list is null')
@@ -85,10 +85,9 @@ describe('UsbCoreJsFunctionsTest', function () {
     console.info('usb SUB_USB_JS_0480:  PASS');
   })
 
-
   /**
    * @tc.number    : SUB_USB_JS_0710
-   * @tc.name      : hasRigt
+   * @tc.name      : hasRight
    * @tc.desc      : 权限查询 连接设备 关闭设备
    */
   it('SUB_USB_JS_0710', 0, function () {
@@ -112,7 +111,6 @@ describe('UsbCoreJsFunctionsTest', function () {
     console.info('usb SUB_USB_JS_0710 :  PASS');
     expect(true).assertTrue();
   })
-
 
   /**
    * @tc.number    : SUB_USB_JS_0680
@@ -146,6 +144,38 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
+   * @tc.number    : SUB_USB_JS_1080
+   * @tc.name      : removeRight
+   * @tc.desc      : 移除权限
+   */
+   it('SUB_USB_JS_1080', 0, function () {
+    console.info('usb SUB_USB_JS_1080 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    var isRight = usb.hasRight(gDeviceList[0].name);
+    if (!isRight) {
+      usb.requestRight(gDeviceList[0].name).then(hasRight => {
+        console.info('usb 1080 requestRight hasRight:' + hasRight);
+      }).catch(error => {
+        console.info('usb 1080 requestRight error:' + error);
+      });
+      CheckEmptyUtils.sleep(5000);
+    }
+    var remRight = usb.removeRight(gDeviceList[0].name);
+    console.info('usb remove_right ret :' + remRight);
+    expect(remRight).assertTrue();
+    console.info('usb SUB_USB_JS_1080 :  PASS');
+  })
+
+  /**
    * @tc.number    : SUB_USB_JS_0090
    * @tc.name      : connectDevice
    * @tc.desc      : 打开设备
@@ -165,9 +195,9 @@ describe('UsbCoreJsFunctionsTest', function () {
     var isRight = usb.hasRight(gDeviceList[0].name);
     if (!isRight) {
       usb.requestRight(gDeviceList[0].name).then(hasRight => {
-
+        console.info('usb 0090 requestRight hasRight:' + hasRight);
       }).catch(error => {
-        console.info('usb 01 requestRight error:' + error);
+        console.info('usb 0090 requestRight error:' + error);
       });
       CheckEmptyUtils.sleep(5000)
     }
@@ -426,5 +456,62 @@ describe('UsbCoreJsFunctionsTest', function () {
     console.info('usb SUB_USB_JS_0520 :  PASS');
   })
 
+  /**
+   * @tc.number    : SUB_USB_JS_1070
+   * @tc.name      : getFileDescriptor
+   * @tc.desc      : 反向测试 获取文件描述符 参数类型错误
+   */
+   it('SUB_USB_JS_1070', 0, function () {
+    console.info('usb SUB_USB_JS_1070 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    gPipe = usb.connectDevice(gDeviceList[0])
+    try {
+      var maskCode = usb.getFileDescriptor("invalid");
+      console.info('usb 1070 case getFileDescriptor return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1070 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1070 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1230
+   * @tc.name      : getFileDescriptor
+   * @tc.desc      : 反向测试 获取文件描述符 参数个数错误，必要参数未传入
+   */
+   it('SUB_USB_JS_1230', 0, function () {
+    console.info('usb SUB_USB_JS_1230 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    gPipe = usb.connectDevice(gDeviceList[0])
+    try {
+      var maskCode = usb.getFileDescriptor();
+      console.info('usb 1230 case getFileDescriptor return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1230 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1230 :  PASS');
+    }
+  })
 })
 }

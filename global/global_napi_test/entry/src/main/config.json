@@ -19,6 +19,8 @@
     "mainAbility": "ohos.global.napitest.MainAbility",
 
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

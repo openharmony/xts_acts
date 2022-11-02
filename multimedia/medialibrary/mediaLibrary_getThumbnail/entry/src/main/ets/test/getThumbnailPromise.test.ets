@@ -21,8 +21,6 @@ import {
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
-    FILEKEY,
-    checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
     getPermission,
@@ -35,7 +33,6 @@ export default function getThumbnailPromise(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryGetThumbnail');
         });
         beforeEach(function () {
             console.info('beforeEach case');

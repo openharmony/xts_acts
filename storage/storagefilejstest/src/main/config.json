@@ -16,6 +16,8 @@
         "package": "ohos.acts.storage.file",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

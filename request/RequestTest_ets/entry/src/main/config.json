@@ -17,7 +17,11 @@
     "package": "com.acts.requesttest",
     "name": ".MyApplication",
     "mainAbility": "com.acts.requesttest.MainAbility",
-    "deviceType": ["phone"],
+    "deviceType": [
+      "tablet",
+      "default",
+      "phone"
+    ],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

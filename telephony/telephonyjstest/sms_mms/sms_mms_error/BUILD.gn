@@ -13,14 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActSmsMmsErrorTest") {
+ohos_js_hap_suite("ActsSmsMmsErrorTest") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActSmsMmsErrorTest"
+  hap_name = "ActsSmsMmsErrorTest"
   part_name = "sms_mms"
   subsystem_name = "telephony"
 }

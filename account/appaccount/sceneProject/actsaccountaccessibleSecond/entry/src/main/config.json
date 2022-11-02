@@ -17,6 +17,8 @@
     "package": "com.example.actsaccountaccessiblesecond",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

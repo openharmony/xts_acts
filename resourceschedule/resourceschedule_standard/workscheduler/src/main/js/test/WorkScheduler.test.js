@@ -12,14 +12,45 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import workScheduler from '@ohos.workScheduler'
+import workScheduler from '@ohos.resourceschedule.workScheduler'
+import WorkSchedulerExtensionAbility from '@ohos.WorkSchedulerExtensionAbility'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function WorkSchedulerJsTest() {
 describe("WorkSchedulerJsTest", function () {
+    let workInfo = {
+        workId: 0,
+        bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+        abilityName: "com.mytest.abilityName"
+    }
+
+    function workStart(workInfo, callback) {
+        let result = null
+        try{
+            WorkSchedulerExtensionAbility.onWorkStart(workInfo)
+            result = true
+        } catch(err) {
+            result = err
+        }
+        callback(result)
+    }
+
+    function workStop(workInfo, callback) {
+        let result = null
+        try{
+            WorkSchedulerExtensionAbility.onWorkStop(workInfo)
+            result = true
+        } catch(err) {
+            result = err
+        }
+        callback(result)
+    }
     beforeAll(function() {
-       
+
+        workStart(workInfo,function(data) {
+            console.info("onWorkStart finish,result: " + data)
+        })
         /*
          * @tc.setup: setup invoked before all testcases
          */
@@ -28,6 +59,9 @@ describe("WorkSchedulerJsTest", function () {
 
     afterAll(function() {
         
+        workStop(workInfo, function(data) {
+            console.info("onWorkStop finish,result: " + data)
+        })
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
@@ -62,8 +96,12 @@ describe("WorkSchedulerJsTest", function () {
             bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
             abilityName: "com.mytest.abilityName"
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
+        try{
+            workScheduler.startWork(workInfo);
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+        }
         done();
     })
 
@@ -80,9 +118,12 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(true)
-        done();
+        try{
+           expect(workScheduler.startWork(workInfo)).assertNull();
+           done()
+        }catch(err){
+            console.info("----------------err: " + err.code)
+        }
     })
 
     /*
@@ -97,9 +138,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 
     /*
@@ -114,9 +159,13 @@ describe("WorkSchedulerJsTest", function () {
             bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 
     /*
@@ -131,9 +180,13 @@ describe("WorkSchedulerJsTest", function () {
             bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
             abilityName: "com.mytest.abilityName"
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 
     /*
@@ -149,9 +202,12 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(true)
-        done();
+        try{
+            expect(workScheduler.startWork(workInfo)).assertNull();
+            done()
+        }catch(err){
+            console.info("----------------err: " + err.code);
+        }
     })
 
     /*
@@ -167,14 +223,14 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
         }
-        let res = workScheduler.startWork(workInfo);
-        if (res == true) {
-            let stopRes = workScheduler.stopWork(workInfo, false);
-            expect(stopRes).assertEqual(true)
-        } else {
-            expect(false).assertEqual(true)
-        }
-        done();
+        try {
+            workScheduler.startWork(workInfo);
+            workScheduler.stopWork(workInfo, 111);
+        } catch ( err) {
+            console.info("---------------- err: " +  err.code);
+            expect( err.code).assertEqual("401");
+            done();
+        };
     })
 
     /*
@@ -190,14 +246,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
         }
-        let res = workScheduler.startWork(workInfo);
-        if (res == true) {
-            let stopRes = workScheduler.stopWork(workInfo, false);
-            expect(stopRes).assertEqual(true)
-        } else {
-            expect(false).assertEqual(true)
+        try{
+            workScheduler.startWork(workInfo);
+            expect(workScheduler.stopWork(workInfo, false)).assertNull();
+            done()
+        }catch(err){
+            console.info("----------------err: " + err.code);
         }
-        done();
     })
 
     /*
@@ -213,10 +268,10 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
         }
-        let res = workScheduler.startWork(workInfo);
-        if (res == false) {
-            expect(false).assertEqual(true)
-            done();
+        try {
+            workScheduler.startWork(workInfo);
+        } catch ( err) {
+            expect( err.code).assertEqual("401")
         }
         workScheduler.getWorkStatus(9, (err, res) => {
             if (err) {
@@ -248,12 +303,11 @@ describe("WorkSchedulerJsTest", function () {
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY,
             batteryLevel: 15
         }
-        let res = workScheduler.startWork(workInfo);
-        if (res == false) {
-            expect(false).assertEqual(true)
-            done();
+        try {
+            workScheduler.startWork(workInfo)
+        } catch ( err) {
+            expect( err.code).assertEqual("401")
         }
-
         workScheduler.getWorkStatus(10).then((res) => {
             for (let item in res) {
                 console.info('WorkSchedulerJsTest010 getWorkStatuscallback success,' + item + ' is:' + 
@@ -282,12 +336,11 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
         }
-        let res = workScheduler.startWork(workInfo);
-        if (res == false) {
-            expect(false).assertEqual(true)
-            done();
+        try {
+            workScheduler.startWork(workInfo);
+        } catch ( err) {
+            expect( err.code).assertEqual("401")
         }
-
         workScheduler.obtainAllWorks((err, res) =>{
             if (err) {
                 expect(false).assertEqual(true)
@@ -317,12 +370,11 @@ describe("WorkSchedulerJsTest", function () {
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY,
             batteryLevel: 15
         }
-        let res = workScheduler.startWork(workInfo);
-        if (res == false) {
-            expect(false).assertEqual(true)
-            done();
+        try {
+            workScheduler.startWork(workInfo)
+        } catch ( err) {
+            expect( err.code).assertEqual("401")
         }
-
         workScheduler.obtainAllWorks().then((res) => {
             console.info('WorkSchedulerJsTest012 obtainAllWorks promise success, data is:' + 
             JSON.stringify(res));
@@ -350,14 +402,14 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
             storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
         }
-        let res = workScheduler.startWork(workInfo);
-        if (res == true) {
-            let stopRes = workScheduler.stopAndClearWorks();
-            expect(stopRes).assertEqual(true)
-        } else {
-            expect(false).assertEqual(true)
+        try{
+            workScheduler.startWork(workInfo);
+            workScheduler.stopWork(workInfo, false);
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
         }
-        done();
+        done()
     })
 
     /*
@@ -605,9 +657,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			isPersisted: true
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -623,9 +679,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			isPersisted: false
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -641,9 +701,12 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			isCharging: true
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(true)
-        done();
+        try{
+            expect(workScheduler.startWork(workInfo)).assertNull();
+            done()
+        }catch(err){
+            console.info("----------------err: " + err.code);
+        }
     })
 	
 	/*
@@ -659,9 +722,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			isCharging: false
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -677,9 +744,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			isRepeat: true
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -695,9 +766,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			isRepeat: false
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -713,9 +788,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			isDeepIdle: true
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -731,9 +810,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			isDeepIdle: false
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -749,9 +832,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 20
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -767,9 +854,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 50
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -785,9 +876,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 80
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -805,9 +900,13 @@ describe("WorkSchedulerJsTest", function () {
 			repeatCycleTime: 1800000,
 			repeatCount: 2
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -825,9 +924,13 @@ describe("WorkSchedulerJsTest", function () {
 			repeatCycleTime: 2400000,
 			repeatCount: 3
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -843,9 +946,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			idleWaitTime: 3000,
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }  
     })
 	
 	/*
@@ -861,10 +968,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			networkType: workScheduler.NetworkType.NETWORK_TYPE_ANY
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false);
-		console.info("WorkSchedulerJsTest046 workInfo networkType :" + workInfo.networkType);
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -880,11 +990,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			chargerType: workScheduler.ChargingType.CHARGING_PLUGGED_AC
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false);
-		console.info("WorkSchedulerJsTest047 workInfo ChargingType :" + 
-        workScheduler.ChargingType.CHARGING_PLUGGED_AC);
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -900,11 +1012,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false);
-		console.info("WorkSchedulerJsTest048 workInfo BatteryStatus :" + 
-        workScheduler.BatteryStatus.BATTERY_STATUS_LOW);
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -920,10 +1034,13 @@ describe("WorkSchedulerJsTest", function () {
             bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
             abilityName: "com.mytest.abilityName",
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false);
-		console.log(" WorkSchedulerJsTest051 workInfo bundleName :" + workInfo.bundleName);
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -938,10 +1055,13 @@ describe("WorkSchedulerJsTest", function () {
             bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
             abilityName: "com.mytest.abilityName",
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false);
-		console.log("test WorkSchedulerJsTest052 workInfo abilityName :" + workInfo.abilityName);
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -957,9 +1077,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 10
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -975,9 +1099,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 30
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -993,9 +1121,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 40
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1011,9 +1143,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 60
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1029,9 +1165,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 70
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1047,9 +1187,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 90
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1065,9 +1209,13 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
 			batteryLevel: 100
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1084,9 +1232,13 @@ describe("WorkSchedulerJsTest", function () {
 			isRepeat: true,
 			repeatCycleTime: 1200000
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1103,9 +1255,13 @@ describe("WorkSchedulerJsTest", function () {
 			isRepeat: true,
 			repeatCycleTime: 1500000
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1122,9 +1278,13 @@ describe("WorkSchedulerJsTest", function () {
 			isRepeat: true,
 			repeatCycleTime: 1800000
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1141,9 +1301,13 @@ describe("WorkSchedulerJsTest", function () {
 			isRepeat: true,
 			repeatCycleTime: 2100000
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1160,9 +1324,13 @@ describe("WorkSchedulerJsTest", function () {
 			isRepeat: false,
 			repeatCycleTime: 1200000
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -1179,9 +1347,13 @@ describe("WorkSchedulerJsTest", function () {
 			isRepeat: false,
 			repeatCycleTime: 1500000
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -1198,9 +1370,13 @@ describe("WorkSchedulerJsTest", function () {
 			isRepeat: false,
 			repeatCycleTime: 1800000
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -1217,9 +1393,13 @@ describe("WorkSchedulerJsTest", function () {
 			isRepeat: false,
 			repeatCycleTime: 2100000
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("401");
+            done();
+        }
     })
 	
 	/*
@@ -1236,11 +1416,14 @@ describe("WorkSchedulerJsTest", function () {
 			repeatCycleTime: 1200000,
 			repeatCount: 1
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
-	
 	/*
      * @tc.number SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_0069
      * @tc.name: WorkSchedulerJsTest069
@@ -1255,9 +1438,13 @@ describe("WorkSchedulerJsTest", function () {
 			repeatCycleTime: 1500000,
 			repeatCount: 1
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1274,9 +1461,13 @@ describe("WorkSchedulerJsTest", function () {
 			repeatCycleTime: 1800000,
 			repeatCount: 2
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 	
 	/*
@@ -1293,8 +1484,12 @@ describe("WorkSchedulerJsTest", function () {
 			repeatCycleTime: 2100000,
 			repeatCount: 2
         }
-        let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(false)
-        done();
+        try{
+            workScheduler.startWork(workInfo)
+        }catch(err){
+            console.info("----------------err: " + err.code);
+            expect(err.code).assertEqual("9700005");
+            done();
+        }
     })
 })}

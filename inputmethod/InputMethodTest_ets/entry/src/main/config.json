@@ -18,6 +18,8 @@
     "name": ".MyApplication",
     "mainAbility": "com.acts.inputmethodtest.MainAbility",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {
@@ -62,6 +64,11 @@
         "label": "$string:TestAbility_label",
         "type": "page",
         "launchType": "standard"
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.CONNECT_IME_ABILITY"
       }
     ],
     "js": [

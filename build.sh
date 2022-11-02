@@ -20,13 +20,12 @@ usage()
     echo
     echo "USAGE"
     echo "       ./build.sh [suite=BUILD_TARGET] [target_os=TARGET_OS] [target_arch=TARGET_ARCH] [variant=BUILD_VARIANT] [target_subsystem=TARGET_SUBSYSTEM]"
-    echo "                  target_platform  : TARGET_PLATFORM  the target platform, such as phone or ivi; Default to phone"
-    echo "                  suite            : BUILD_TARGET       cts/hit/vts and so on, default value is hit"
-    echo "                  target_arch      : TARGET_ARCH      arm64 or arm32, default value is arm64"
+    echo "                  suite            : BUILD_TARGET     acts, hats, dcts"
+    echo "                  target_arch      : TARGET_ARCH      arm64 or arm, default value is arm"
     echo "                  variant          : BUILD_VARIANT    release or debug, default value is debug"
     echo "                  target_subsystem : TARGET_SUBSYSTEM the target subsystem to build"
-    echo "                  system_size      : SYSTEM_SIZE      standard, large and son on, large is for L3-L5, standard is for L2 default value is large"
-    echo "                  product_name     : PRODUCT_NAME     the name of product. such as hikey960, Hi3516DV300, and so on."
+    echo "                  system_size      : SYSTEM_SIZE      standard"
+    echo "                  product_name     : PRODUCT_NAME     the name of product. such as Hi3516DV300, and so on."
     echo
     exit 1
 }
@@ -41,13 +40,13 @@ parse_cmdline()
     BUILD_SHELL=${BASE_HOME}/build.sh
     # build all parts for all products by default
     BUILD_TARGET=""
-    TARGET_PLATFORM=all
     GN_ARGS="is_dbt_test=true include_all=false"
     TARGET_ARCH=arm
     BUILD_VARIANT=release
     UPLOAD_API_INFO=False
-    SYSTEM_SIZE=large
+    SYSTEM_SIZE=standard
     PRODUCT_NAME=""
+    USE_MUSL=false
     export PATH=${BASE_HOME}/prebuilts/python/linux-x86/3.8.3/bin:$PATH
 
     while [ -n "$1" ]
@@ -65,7 +64,7 @@ parse_cmdline()
                           ;;
         variant)          BUILD_VARIANT="$PARAM"
                           ;;
-	target_platform)  TARGET_PLATFORM="$PARAM"
+        use_musl)         USE_MUSL="$PARAM"
                           ;;
         target_subsystem) export target_subsystem=${PARAM}
                           ;;
@@ -100,7 +99,9 @@ do_make()
     if [ "$SYSTEM_SIZE" = "standard" ]; then
         MUSL_ARGS=""
         if [ "$PRODUCT_NAME" = "m40" ]; then
-            MUSL_ARGS="--gn-args use_musl=false --gn-args use_custom_libcxx=true --gn-args use_custom_clang=true"
+		    if [ "$USE_MUSL" = "false" ]; then
+                        MUSL_ARGS="--gn-args use_musl=false --gn-args use_custom_libcxx=true --gn-args use_custom_clang=true"			
+		    fi
         fi
        ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH
     else

@@ -53,7 +53,7 @@ hcpptest_suite("ActsAbilityMgrTest") {
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
     "//third_party/bounds_checking_function/include",
     "//third_party/cJSON",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "${appexecfwk_lite_path}/interfaces/innerkits/bundlemgr_lite",
     "//foundation/graphic/ui/interfaces/kits",
     "//foundation/graphic/utils/interfaces/innerkits",

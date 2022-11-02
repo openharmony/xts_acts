@@ -20,21 +20,20 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testConstructor001
    * @tc.desc: Create an HashSet instance. For example: let hashSet = new HashSet().
-   * @tc.author: wangyong
    */
   it("testConstructor001", 0, function () {
     try {
       let hashSet = new HashSet();
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new HashSet");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The HashSet's constructor cannot be directly invoked");
     }
   });
               
   /**
    * @tc.name: testAdd001
    * @tc.desc: Add element to HashSet instance. For example: hashSet.add(1).
-   * @tc.author: wangyong
    */
   it("testAdd001", 0, function () {
     let hashSet = new HashSet();
@@ -46,7 +45,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd002
    * @tc.desc: Add element to HashSet instance. For example: hashSet.add("a").
-   * @tc.author: wangyong
    */
   it("testAdd002", 0, function () {
     let hashSet = new HashSet();
@@ -62,7 +60,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd003
    * @tc.desc: Add element to HashSet instance. For example: let c = [1, 2, 3]; hashSet.add(c).
-   * @tc.author: wangyong
    */
   it("testAdd003", 0, function () {
     let hashSet = new HashSet();
@@ -75,7 +72,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd004
    * @tc.desc: Add element to HashSet instance. For example: let c = {name: "lili", age: "13"}; hashSet.add(c).
-   * @tc.author: wangyong
    */
   it("testAdd004", 0, function () {
     let hashSet = new HashSet();
@@ -88,7 +84,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testLength005
    * @tc.desc: Get the number of element in the HashSet instance. For example: hashSet.length.
-   * @tc.author: wangyong
    */
   it("testLength005", 0, function () {
     let hashSet = new HashSet();
@@ -104,7 +99,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testHas006
    * @tc.desc: Determine whether the HashSet instance contains the specified element. For example: hashSet.has(1).
-   * @tc.author: wangyong
    */
   it("testHas006", 0, function () {
     let hashSet = new HashSet();
@@ -122,7 +116,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testIsEmpty007
    * @tc.desc: Determine whether the HashSet instance is empty. For example: hashSet.isEmpty().
-   * @tc.author: wangyong
    */
   it("testIsEmpty007", 0, function () {
     let hashSet = new HashSet();
@@ -138,7 +131,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testRemove008
    * @tc.desc: Delete the specified element. For example: hashSet.remove(1).
-   * @tc.author: wangyong
    */
   it("testRemove008", 0, function () {
     let hashSet = new HashSet();
@@ -162,7 +154,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testClear009
    * @tc.desc: Clear all elements of the HashSet instance. For example: hashSet.clear().
-   * @tc.author: wangyong
    */
   it("testClear009", 0, function () {
     let hashSet = new HashSet();
@@ -181,7 +172,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testValues010
    * @tc.desc: Get a collection of all elements of a HashSet instance. For example: hashSet.values().
-   * @tc.author: wangyong
    */
   it("testValues010", 0, function () {
     let hashSet = new HashSet();
@@ -200,7 +190,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testForEach011
    * @tc.desc: Traverse the collection of all elements of the HashSet instance.
-   * @tc.author: wangyong
    */
   it("testForEach011", 0, function () {
     let hashSet = new HashSet();
@@ -223,7 +212,6 @@ describe("HashSetTest", function () {
    * @tc.name: testIterator012
    * @tc.desc: Iterate over all elements of the HashSet instance. 
    * For example: for (let item of hashSet) {arr.push(item);}.
-   * @tc.author: wangyong
    */
   it("testIterator012", 0, function () {
     let hashSet = new HashSet();
@@ -246,7 +234,6 @@ describe("HashSetTest", function () {
    * @tc.name: testIterator013
    * @tc.desc: Iterate over all elements of the HashSet instance. 
    * For example: for (let item of hashSet) {arr.push(item);}.
-   * @tc.author: wangyong
    */
   it("testIterator013", 0, function () {
     let hashSet = new HashSet();
@@ -268,7 +255,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testEntries014
    * @tc.desc: Iterate over all elements of the HashSet instance. For example: hashSet.entries().
-   * @tc.author: wangyong
    */
   it("testEntries014", 0, function () {
     let hashSet = new HashSet();
@@ -287,7 +273,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd015
    * @tc.desc: Add element to HashSet instance. For example: hashSet.add("").
-   * @tc.author: wangyong
    */
   it("testAdd015", 0, function () {
     let hashSet = new HashSet();
@@ -299,7 +284,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd016
    * @tc.desc: Add element to HashSet instance. For example: hashSet.add("$").
-   * @tc.author: wangyong
    */
   it("testAdd016", 0, function () {
     let hashSet = new HashSet();
@@ -311,7 +295,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd017
    * @tc.desc: Add element to HashSet instance. For example: hashSet.add(1.34).
-   * @tc.author: wangyong
    */
   it("testAdd017", 0, function () {
     let hashSet = new HashSet();
@@ -323,7 +306,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd018
    * @tc.desc: Add element to HashSet instance. For example: hashSet.add(-1).
-   * @tc.author: wangyong
    */
   it("testAdd018", 0, function () {
     let hashSet = new HashSet();
@@ -335,7 +317,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd019
    * @tc.desc: Add element to HashSet instance. For example: let a = {}; hashSet.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd019", 0, function () {
     let hashSet = new HashSet();
@@ -348,7 +329,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd020
    * @tc.desc: Add element to HashSet instance.
-   * @tc.author: wangyong
    */
   it("testAdd020", 0, function () {
     let hashSet = new HashSet();
@@ -364,7 +344,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testIterator021
    * @tc.desc: Iterate over all elements of the HashSet instance. 
-   * @tc.author: wangyong
    */
   it("testIterator021", 0, function () {
     let hashSet = new HashSet();
@@ -378,7 +357,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testForEach022
    * @tc.desc: Traverse the collection of all elements of the HashSet instance.
-   * @tc.author: wangyong
    */
   it("testForEach022", 0, function () {
     let hashSet = new HashSet();
@@ -392,7 +370,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testIsEmpty023
    * @tc.desc: Determine whether the HashSet instance is empty. For example: hashSet.isEmpty().
-   * @tc.author: wangyong
    */
   it("testIsEmpty023", 0, function () {
     let hashSet = new HashSet();
@@ -409,7 +386,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name:testHas024
    * @tc.desc: Determine whether the HashSet instance contains the specified element. For example: hashSet.has(1).
-   * @tc.author: wangyong
    */
   it("testHas024", 0, function () {
     let hashSet = new HashSet();
@@ -420,7 +396,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testConstructor001
    * @tc.desc: Delete the specified element. For example: hashSet.remove(1).
-   * @tc.author: wangyong
    */
   it("testRemove025", 0, function () {
     let hashSet = new HashSet();
@@ -431,7 +406,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testClear026
    * @tc.desc: Clear all elements of the HashSet instance. For example: hashSet.clear().
-   * @tc.author: wangyong
    */
   it("testClear026", 0, function () {
     let hashSet = new HashSet();
@@ -442,7 +416,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testEntries027
    * @tc.desc: Iterate over all elements of the HashSet instance. For example: hashSet.entries().
-   * @tc.author: wangyong
    */
   it("testEntries027", 0, function () {
     let hashSet = new HashSet();
@@ -453,7 +426,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testIterator028
    * @tc.desc: Iterate over all elements of the HashSet instance.
-   * @tc.author: wangyong
    */
   it("testIterator028", 0, function () {
     let hashSet = new HashSet();
@@ -474,7 +446,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testForEach029
    * @tc.desc: Traverse the collection of all elements of the HashSet instance.
-   * @tc.author: wangyong
    */
   it("testForEach029", 0, function () {
     let hashSet = new HashSet();
@@ -495,7 +466,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testAdd030
    * @tc.desc: Add element to HashSet instance. For example: hashSet.add(1).
-   * @tc.author: wangyong
    */
   it("testAdd030", 0, function () {
     let hashSet = new HashSet();
@@ -510,7 +480,6 @@ describe("HashSetTest", function () {
   /**
    * @tc.name: testIterator031
    * @tc.desc: Iterate over all elements of the HashSet instance. For example: hashSet[Symbol.iterator]().
-   * @tc.author: wangyong
    */
   it("testIterator031", 0, function () {
     let hashSet = new HashSet();
@@ -532,6 +501,43 @@ describe("HashSetTest", function () {
     let arr1 = [1, 2, 3, 4, 5];
     for (let i = 0; i < arr.length; i++) {
       expect(arr[i]).assertEqual(arr1[i]);
+    }
+  });
+
+  /**
+   * @tc.name: testHas032
+   * @tc.desc: Determine whether the HashSet instance contains the specified element. For example: hashSet.has.bind({}, "a")().
+   */
+  it("testHas032", 0, function () {
+    let hashSet = new HashSet();
+    hashSet.add(4);
+    hashSet.add(1);
+    hashSet.add(3);
+    hashSet.add(2);
+    hashSet.add(5);
+    try {
+      hashSet.has.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The has method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testAdd033
+   * @tc.desc: Add element to HashSet instance. For example: hashSet.add.bind({}, "a")().
+   */
+  it("testAdd033", 0, function () {
+    let hashSet = new HashSet();
+    try {
+      hashSet.add.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The add method cannot be bound`);
     }
   });
 });

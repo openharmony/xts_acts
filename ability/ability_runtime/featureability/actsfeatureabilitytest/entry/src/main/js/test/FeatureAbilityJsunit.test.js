@@ -14,6 +14,7 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import wantconstant from '@ohos.ability.wantConstant'
+import wantConstantNew from '@ohos.app.ability.wantConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import particleAbility from '@ohos.ability.particleAbility'
@@ -84,7 +85,7 @@ describe('ActsFeatureAbilityTest', function () {
          console.info('beforeEach called')
     })
 
-    afterEach(function() {
+    afterEach(async function(done) {
 
         /*
          * @tc.teardown: teardown invoked after each testcases
@@ -94,6 +95,22 @@ describe('ActsFeatureAbilityTest', function () {
          setTimeout(() => {}, 500);
          backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext());
          setTimeout(() => {}, 500);
+
+        let wantInfo = {
+            want: {
+                bundleName: "com.example.actsfeatureabilitytest",
+                abilityName: "com.example.actsfeatureabilitytest.TestAbility"
+            }
+        }
+        await featureAbility.startAbility(wantInfo).then((data) => {
+          console.log("ACTS_wantConstant startAbility data : " + JSON.stringify(data));
+        }).catch((err) => {
+          console.log("ACTS_wantConstant startAbility err : " + JSON.stringify(err));
+        })
+        setTimeout(function () {
+            console.log("ACTS_wantConstant afterEach end");
+            done();
+        }, 500);
     })
 
     /**
@@ -136,6 +153,48 @@ describe('ActsFeatureAbilityTest', function () {
         done();
     })
 
+
+    /**
+     * @tc.number: ACTS_wantConstant_0200
+     * @tc.name: wantConstant : Check specific enum
+     * @tc.desc: Check the return type of the interface (by Promise)
+     */
+    it('ACTS_wantConstant_0200', 0, async function (done) {
+        expect(wantConstantNew.Action.ACTION_HOME).assertEqual("ohos.want.action.home");
+        expect(wantConstantNew.Action.ACTION_DIAL).assertEqual("ohos.want.action.dial");
+        expect(wantConstantNew.Action.ACTION_SEARCH).assertEqual("ohos.want.action.search");
+        expect(wantConstantNew.Action.ACTION_WIRELESS_SETTINGS).assertEqual("ohos.settings.wireless");
+        expect(wantConstantNew.Action.ACTION_MANAGE_APPLICATIONS_SETTINGS)
+            .assertEqual("ohos.settings.manage.applications");
+        expect(wantConstantNew.Action.ACTION_APPLICATION_DETAILS_SETTINGS)
+            .assertEqual("ohos.settings.application.details");
+        expect(wantConstantNew.Action.ACTION_SET_ALARM).assertEqual("ohos.want.action.setAlarm");
+        expect(wantConstantNew.Action.ACTION_SHOW_ALARMS).assertEqual("ohos.want.action.showAlarms");
+        expect(wantConstantNew.Action.ACTION_SNOOZE_ALARM).assertEqual("ohos.want.action.snoozeAlarm");
+        expect(wantConstantNew.Action.ACTION_DISMISS_ALARM).assertEqual("ohos.want.action.dismissAlarm");
+        expect(wantConstantNew.Action.ACTION_DISMISS_TIMER).assertEqual("ohos.want.action.dismissTimer");
+        expect(wantConstantNew.Action.ACTION_SEND_SMS).assertEqual("ohos.want.action.sendSms");
+        expect(wantConstantNew.Action.ACTION_CHOOSE).assertEqual("ohos.want.action.choose");
+        expect(wantConstantNew.Action.ACTION_SELECT).assertEqual("ohos.want.action.select");
+        expect(wantConstantNew.Action.ACTION_SEND_DATA).assertEqual("ohos.want.action.sendData");
+        expect(wantConstantNew.Action.ACTION_SEND_MULTIPLE_DATA).assertEqual("ohos.want.action.sendMultipleData");
+        expect(wantConstantNew.Action.ACTION_SCAN_MEDIA_FILE).assertEqual("ohos.want.action.scanMediaFile");
+        expect(wantConstantNew.Action.ACTION_VIEW_DATA).assertEqual("ohos.want.action.viewData");
+        expect(wantConstantNew.Action.ACTION_EDIT_DATA).assertEqual("ohos.want.action.editData");
+        expect(wantConstantNew.Action.INTENT_PARAMS_INTENT).assertEqual("ability.want.params.INTENT");
+        expect(wantConstantNew.Action.INTENT_PARAMS_TITLE).assertEqual("ability.want.params.TITLE");
+        expect(wantConstantNew.Action.ACTION_FILE_SELECT).assertEqual("ohos.action.fileSelect");
+        expect(wantConstantNew.Action.PARAMS_STREAM).assertEqual("ability.params.stream");
+        expect(wantConstantNew.Action.ACTION_APP_ACCOUNT_AUTH).assertEqual("account.appAccount.action.auth");
+
+        expect(wantConstantNew.Entity.ENTITY_HOME).assertEqual("entity.system.home");
+        expect(wantConstantNew.Entity.ENTITY_DEFAULT).assertEqual("entity.system.default");
+        expect(wantConstantNew.Entity.ENTITY_VOICE).assertEqual("entity.system.voice");
+        expect(wantConstantNew.Entity.ENTITY_BROWSABLE).assertEqual("entity.system.browsable");
+        expect(wantConstantNew.Entity.ENTITY_VIDEO).assertEqual("entity.system.video");
+        done();
+    })
+
     /**
      * @tc.number: ACTS_GetContext_0100
      * @tc.name: GetContext : Obtains the Context object
@@ -167,8 +226,7 @@ describe('ActsFeatureAbilityTest', function () {
     it('ACTS_HasWindowFocus_0300', 0, async function (done) {
         let result = featureAbility.hasWindowFocus(
             (err, data) => {
-                console.info("hasWindowFocus asyncCallback code: " + err.code + " data: " + data);
-                expect(err.code).assertEqual(0);
+                console.info("hasWindowFocus asyncCallback code data: " + data);
                 expect(data).assertTrue();
                 done()
             }
@@ -1111,7 +1169,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.launchMode).assertEqual(0);
 
         expect(data.permissions[0]).assertEqual("ohos.permission.ACCELEROMETER");
-        expect(data.deviceTypes[0]).assertEqual("phone");
+        expect(data.deviceTypes[0]).assertEqual("default");
         expect(data.deviceCapabilities[0]).assertEqual("SystemCapability.Ability.AbilityBase");
 
         expect(data.readPermission).assertEqual("");
@@ -1194,7 +1252,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities[0]).assertEqual("reqCapabilitiesTest1");
         expect(data.reqCapabilities[1]).assertEqual("reqCapabilitiesTest2");
-        expect(data.deviceTypes[0]).assertEqual("phone");
+        expect(data.deviceTypes[0]).assertEqual("default");
         expect(data.moduleName).assertEqual("entry")
         expect(data.mainAbilityName).assertEqual("com.example.actsfeatureabilitytest.MainAbility");
         expect(data.installationFree).assertEqual(false);

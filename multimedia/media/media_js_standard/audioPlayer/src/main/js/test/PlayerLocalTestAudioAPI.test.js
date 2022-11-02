@@ -241,14 +241,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_SRC_API_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0100
         * @tc.name      : fd is wrong
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-     it('SUB_MEDIA_PLAYER_AudioPlayer_SRC_API_0100', 0, async function (done) {
+     it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         fileDescriptor.fd = -1;
         let mySteps = new Array(ERROR_STATE, END_STATE);
@@ -258,14 +258,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_SRC_API_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0200
         * @tc.name      : offset is -1
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_SRC_API_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         fileDescriptor.offset = 1;
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, END_STATE);
@@ -275,14 +275,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_SRC_API_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0300
         * @tc.name      : length is -1
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_SRC_API_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         fileDescriptor.length = -1;
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, END_STATE);
@@ -292,14 +292,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AudioPlayer_SRC_API_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0400
         * @tc.name      : fdSrc is undefined
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AudioPlayer_SRC_API_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0400', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(ERROR_STATE, END_STATE);
         initAudioPlayer();
@@ -308,14 +308,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_PLAY_API_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PLAY_API_0100
         * @tc.name      : 01.pause->play
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_PLAY_API_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PLAY_API_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         console.info(`case update`);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, END_STATE);
@@ -325,14 +325,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_PLAY_API_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PLAY_API_0200
         * @tc.name      : 02.stop->play
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_PLAY_API_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PLAY_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, PLAY_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
@@ -341,14 +341,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_PLAY_API_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PLAY_API_0300
         * @tc.name      : 03.seek->play
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_PLAY_API_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PLAY_API_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, SEEK_TIME, PLAY_STATE, END_STATE);
         initAudioPlayer();
@@ -357,14 +357,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_PLAY_API_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PLAY_API_0400
         * @tc.name      : 04.reset->play
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_PLAY_API_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PLAY_API_0400', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, RESET_STATE, PLAY_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
@@ -373,14 +373,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_PAUSE_API_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PAUSE_API_0100
         * @tc.name      : 01.createAudioPlayer->play
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_PAUSE_API_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PAUSE_API_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(PAUSE_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
@@ -389,14 +389,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_PAUSE_API_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PAUSE_API_0200
         * @tc.name      : 02.play->pause
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_PAUSE_API_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PAUSE_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, END_STATE);
         initAudioPlayer();
@@ -405,30 +405,30 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_PAUSE_API_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PAUSE_API_0300
         * @tc.name      : 03.stop->pause
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_PAUSE_API_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PAUSE_API_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(PLAY_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE, END_STATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
         audioPlayer.src = fdPath;
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_PAUSE_API_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PAUSE_API_0400
         * @tc.name      : 04.seek->pause
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_PAUSE_API_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PAUSE_API_0400', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, PAUSE_STATE, END_STATE);
         initAudioPlayer();
@@ -437,14 +437,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_STOP_API_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_STOP_API_0100
         * @tc.name      : 01.play->stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_STOP_API_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_STOP_API_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, END_STATE);
         initAudioPlayer();
@@ -453,14 +453,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_STOP_API_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_STOP_API_0200
         * @tc.name      : 02.pause->stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_STOP_API_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_STOP_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, END_STATE);
         initAudioPlayer();
@@ -469,14 +469,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_STOP_API_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_STOP_API_0300
         * @tc.name      : 03.seek->stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_STOP_API_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_STOP_API_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, STOP_STATE, END_STATE);
         initAudioPlayer();
@@ -485,14 +485,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_SEEK_API_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SEEK_API_0100
         * @tc.name      : 01.play->seek
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_SEEK_API_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SEEK_API_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, END_STATE);
         initAudioPlayer();
@@ -501,14 +501,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_SEEK_API_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SEEK_API_0200
         * @tc.name      : 02.pause->seek
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_SEEK_API_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SEEK_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, SEEK_TIME, END_STATE);
         initAudioPlayer();
@@ -517,14 +517,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_SEEK_API_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SEEK_API_0300
         * @tc.name      : 03.seek(0)
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_SEEK_API_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SEEK_API_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, END_STATE);
         initAudioPlayer();
@@ -533,14 +533,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_RESET_API_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RESET_API_0100
         * @tc.name      : 01.play->reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_RESET_API_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RESET_API_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
@@ -549,14 +549,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_RESET_API_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RESET_API_0200
         * @tc.name      : 02.pause->reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_RESET_API_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RESET_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
@@ -565,14 +565,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_SETVOLUME_API_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SETVOLUME_API_0100
         * @tc.name      : 01.createAudioPlayer->setVolume
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_SETVOLUME_API_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SETVOLUME_API_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         var mySteps = new Array(VOLUME_STATE, VOLUME_VALUE, END_STATE);
         initAudioPlayer();
@@ -581,14 +581,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_SETVOLUME_API_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SETVOLUME_API_0200
         * @tc.name      : 02.play->setVolume
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_SETVOLUME_API_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SETVOLUME_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         var mySteps = new Array(SRC_STATE, PLAY_STATE, VOLUME_STATE, VOLUME_VALUE, END_STATE);
         initAudioPlayer();
@@ -597,14 +597,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_SETVOLUME_API_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SETVOLUME_API_0300
         * @tc.name      : 03.pause->setVolume
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_SETVOLUME_API_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SETVOLUME_API_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         var mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, VOLUME_STATE, VOLUME_VALUE, END_STATE);
         initAudioPlayer();
@@ -613,14 +613,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0100
         * @tc.name      : 01.play->release
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
@@ -629,14 +629,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0200
         * @tc.name      : 02.pause->release
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
@@ -645,14 +645,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0300
         * @tc.name      : 03.stop->release
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
@@ -661,14 +661,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0400
         * @tc.name      : 04.seek->release
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0400', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, RELEASE_STATE, END_STATE);
         initAudioPlayer();
@@ -677,14 +677,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0500
         * @tc.name      : 05.reset->release
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_RELEASE_API_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0500', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
@@ -693,14 +693,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_TIME_API_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_TIME_API_0100
         * @tc.name      : 01.get parameters after createAudioPlayer
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_TIME_API_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_TIME_API_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         initAudioPlayer();
         expect(audioPlayer.src).assertEqual('');
@@ -712,14 +712,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_AUDIOPLAYER_TIME_API_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_TIME_API_0200
         * @tc.name      : 02.get parameters after src
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_PLAYER_AUDIOPLAYER_TIME_API_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_TIME_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         initAudioPlayer();
         audioPlayer.src = fdHead + fileDescriptor.fd;

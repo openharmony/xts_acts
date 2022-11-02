@@ -6,7 +6,7 @@
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-      "phone",
+      "default",
       "tablet"
     ],
     "deliveryWithInstall": true,
@@ -127,6 +127,12 @@
       },
       {
         "name": "ohos.permission.LISTEN_BUNDLE_CHANGE"
+      },
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+      },
+      {
+        "name":"ohos.permission.START_INVISIBLE_ABILITY"
       }
     ]
   }

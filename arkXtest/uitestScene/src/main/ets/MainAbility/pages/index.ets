@@ -115,6 +115,9 @@ struct ScrollExample {
           console.info(xOffset + ' ' + yOffset)
         })
       }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+      Text('MainPage_End')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
     }
   }
 }

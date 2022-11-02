@@ -16,6 +16,8 @@
         "package": "ohos.acts.storage.fileioerror",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

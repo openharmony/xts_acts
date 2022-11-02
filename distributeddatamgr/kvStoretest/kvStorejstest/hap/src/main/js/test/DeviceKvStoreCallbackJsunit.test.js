@@ -1795,7 +1795,7 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData testcase 103
      */
-    it('testDeviceKvStoreRemoveDeviceData103', 0, async function (done) {
+     it('testDeviceKvStoreRemoveDeviceData103', 0, async function (done) {
         console.info('testDeviceKvStoreRemoveDeviceData103');
         try {
             await kvStore.removeDeviceData('', function (err,data) {
@@ -2124,10 +2124,17 @@ describe('deviceKvStoreCallbackTest', function () {
     it('testDeviceKvStoreCloseResultSet104', 0, async function (done) {
         console.info('testDeviceKvStoreCloseResultSet104');
         try {
+            kvStore.closeResultSet(1, (err, data) => {
+                if(err != null){
+                    console.info('testDeviceKvStoreCloseResultSet104 e ' + err);
+                }else{
+                    console.info('testDeviceKvStoreCloseResultSet104 success(callback)');
+                    expect(null).assertFail();
+                }
+            })
             console.info('testDeviceKvStoreCloseResultSet104 success');
         }catch(e) {
             console.info('testDeviceKvStoreCloseResultSet104 e ' + e);
-            expect(null).assertFail();
         }
         done();
     })

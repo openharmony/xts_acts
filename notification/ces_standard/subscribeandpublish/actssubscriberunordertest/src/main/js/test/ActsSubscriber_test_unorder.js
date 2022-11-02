@@ -16,9 +16,9 @@ import commonEvent from '@ohos.commonEvent';
 import {describe,beforeAll,beforeEach,afterEach,afterAll,it,expect,} from "@ohos/hypium";
 
 export default function ActsSubscriberTestUnorder() {
-  describe('ActsSubscriberTestUnorder', function () {
-
-    let TAG = 'ActsSubscriberTestUnorder ===>';
+  describe('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST', function () {
+    let TAG = 'SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST ===>';
+    console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST START`)
 
     let CommonEventSubscriberInfo = {
       events: ['event'],
@@ -32,12 +32,12 @@ export default function ActsSubscriberTestUnorder() {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
     /*
-     * @tc.number    : ActsSubscriberTestUnorder_0100
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0100
      * @tc.name      : check
      * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
      */
-    it('ActsSubscriberTestUnorder_0100', 0, async function (done) {
-      console.info(TAG + 'ActsSubscriberTestUnorder_0100 START ')
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0100', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0100 START`)
       let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
       if (CommonEventSubscriber == undefined) {
         console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
@@ -64,15 +64,16 @@ export default function ActsSubscriberTestUnorder() {
           done()
         }
       })
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0100 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestUnorder_0200
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0200
      * @tc.name      : check
      * @tc.desc      : getSubscribeInfo(): Promise<CommonEventSubscribeInfo>
      */
-    it('ActsSubscriberTestUnorder_0200', 0, async function (done) {
-      console.info(TAG + 'ActsSubscriberTestUnorder_0200 START ')
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0200', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0200 START`)
       let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
       if (CommonEventSubscriber == undefined) {
         console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
@@ -96,16 +97,16 @@ export default function ActsSubscriberTestUnorder() {
         console.info(TAG + ': getSubscribeInfo promise failed! event.Info ===> ' + JSON.stringify(err.code))
         expect(false).assertTrue()
       })
-
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0200 END`)
     })
 
     /*
-     * @tc.number    : ActsgetSubscribeInfoTest_0300
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0300
      * @tc.name      : Check the subscriber can receive event "@#￥#3243adsafdf_" type of the interface
      * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
      */
-    it('ActsgetSubscribeInfoTest_0300', 0, async function (done) {
-      console.info(TAG + 'ActsgetSubscribeInfoTest_0100 START ')
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0300', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0300 START`)
       CommonEventSubscriberInfo.events[0] = '@#￥#3243adsafdf_'
       let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
       if (CommonEventSubscriber == undefined) {
@@ -133,15 +134,16 @@ export default function ActsSubscriberTestUnorder() {
           done()
         }
       })
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0300 END`)
     })
 
     /*
-     * @tc.number    : ActsgetSubscribeInfoTest_0400
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0400
      * @tc.name      : Check the subscriber can receive event "@#￥#3243adsafdf_" type of the interface (by Promise)
      * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
      */
-    it('ActsSubscriberTestUnorder_0400', 0, async function (done) {
-      console.info(TAG + 'ActsSubscriberTestUnorder_0400 START ')
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0400', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0400 START`)
       CommonEventSubscriberInfo.events[0] = '@#￥#3243adsafdf_'
       let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
       if (CommonEventSubscriber == undefined) {
@@ -166,16 +168,16 @@ export default function ActsSubscriberTestUnorder() {
         console.info(TAG + ': getSubscribeInfo promise failed! event.Info ===> ' + JSON.stringify(err.code))
         expect(false).assertTrue()
       })
-
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0400 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestUnorder_0500
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0500
      * @tc.name      : check
      * @tc.desc      : isOrderedCommonEvent(callback: AsyncCallback<boolean>): void
      */
-    it('ActsSubscriberTestUnorder_0500', 0, async function (done) {
-      console.info(TAG + 'ActsSubscriberTestUnorder_0500 START ')
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0500', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0500 START`)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0500'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0500'
       CommonEventSubscriberInfo.priority = 10
@@ -238,16 +240,17 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000);
+      await sleep(5000)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0500 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestUnorder_0600
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0600
      * @tc.name      : check
      * @tc.desc      : isOrderedCommonEvent(): Promise<boolean>
      */
-    it('ActsSubscriberTestUnorder_0600', 0, async function (done) {
-      console.info(TAG + 'ActsSubscriberTestUnorder_0600 START ')
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0600', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0600 START`)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0600'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0600'
       CommonEventSubscriberInfo.priority = 10
@@ -310,17 +313,17 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(500)
-
+      await sleep(5000)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0600 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestUnorder_0700
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0700
      * @tc.name      : check
      * @tc.desc      : iisStickyCommonEvent(callback: AsyncCallback<boolean>): void
      */
-    it('ActsSubscriberTestUnorder_0700', 0, async function (done) {
-      console.info(TAG + 'ActsSubscriberTestUnorder_0700 START ')
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0700', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0700 START`)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0700'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0700'
       CommonEventSubscriberInfo.priority = 10
@@ -383,16 +386,17 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000);
+      await sleep(5000)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0700 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestUnorder_0800
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0800
      * @tc.name      : check
      * @tc.desc      : isStickyCommonEvent(): Promise<boolean>
      */
-    it('ActsSubscriberTestUnorder_0800', 0, async function (done) {
-      console.info(TAG + 'ActsSubscriberTestUnorder_0800 START ')
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0800', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0800 START`)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0800'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0800'
       CommonEventSubscriberInfo.priority = 10
@@ -452,17 +456,17 @@ export default function ActsSubscriberTestUnorder() {
           done()
         }
       })
-
-      await sleep(500)
+      await sleep(5000)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0800 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestUnorder_0900
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0900
      * @tc.name      : check properties
      * @tc.desc      : CommonEventPublishData
      */
-    it('ActsSubscriberTestUnorder_0900', 0, async function (done) {
-      console.info(TAG + 'ActsSubscriberTestUnorder_0900 START ')
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0900', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0900 START`)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0900'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0900'
       CommonEventSubscriberInfo.priority = 10
@@ -511,6 +515,8 @@ export default function ActsSubscriberTestUnorder() {
       })
 
       await sleep(5000)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST_0900 END`)
     })     
+    console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST END`)
   })
 }

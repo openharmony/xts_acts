@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import inputMethodEngine from '@ohos.inputmethodengine';
 import Utils from './Utils';
 import router from '@system.router';
@@ -55,11 +54,11 @@ export default function inputMethodEngineJSUnit() {
         console.info("inputMethodEngine beforeEach inputStart:" + JSON.stringify(kbController));
         console.info("inputMethodEngine beforeEach inputStart:" + JSON.stringify(textInputClient));
       });
-      inputMethodEngineObject.off('keyboardShow', (err) => {
-        console.info("inputMethodEngine beforeEach keyboardShow:" + err);
+      inputMethodEngineObject.off('keyboardShow', () => {
+        console.info("inputMethodEngine beforeEach keyboardShow:");
       });
-      inputMethodEngineObject.off('keyboardHide', (err) => {
-        console.info("inputMethodEngine beforeEach keyboardHide:" + err);
+      inputMethodEngineObject.off('keyboardHide', () => {
+        console.info("inputMethodEngine beforeEach keyboardHide:");
       });
       KeyboardDelegate = inputMethodEngine.createKeyboardDelegate();
       KeyboardDelegate.off('keyDown', (keyEvent) => {
@@ -101,11 +100,11 @@ export default function inputMethodEngineJSUnit() {
         textInputClient = textInputClient;
         kbController = kbController;
       });
-      inputMethodEngineObject.on('keyboardShow', (err) => {
-        console.info("inputMethodEngine beforeEach keyboardShow:" + err);
+      inputMethodEngineObject.on('keyboardShow', () => {
+        console.info("inputMethodEngine beforeEach keyboardShow:");
       });
-      inputMethodEngineObject.on('keyboardHide', (err) => {
-        console.info("inputMethodEngine beforeEach keyboardHide:" + err);
+      inputMethodEngineObject.on('keyboardHide', () => {
+        console.info("inputMethodEngine beforeEach keyboardHide:");
       });
       mKeyboardDelegate = inputMethodEngine.createKeyboardDelegate();
       mKeyboardDelegate.on('keyDown', (keyEvent) => {
@@ -337,6 +336,8 @@ export default function inputMethodEngineJSUnit() {
         x: x_value,
         y: y_value,
         type: TouchType.Move,
+        screenX: rect.left + (rect.right - rect.left) / 10,
+        screenY: rect.left + (rect.right - rect.left) / 10,
       }
       console.info('[inputMethodEngine_test_027] testSendTouchEvent ' + sendTouchEvent(point));
       await Utils.sleep(1000)
@@ -489,7 +490,7 @@ export default function inputMethodEngineJSUnit() {
         expect(textInputClient == null).assertEqual(true);
       } else {
         textInputClient.getEditorAttribute(1, (editorAttribute) => {
-          console.info("inputMethodEngine_test_038 getEditorAttribute:" + value);
+          console.info("inputMethodEngine_test_038 getEditorAttribute:" + editorAttribute);
           expect(editorAttribute.inputPattern).assertEqual(1);
           expect(editorAttribute.enterKeyType).assertEqual(1);
         });
@@ -519,7 +520,7 @@ export default function inputMethodEngineJSUnit() {
         expect(kbController == null).assertEqual(true);
       } else {
         kbController.hideKeyboard(() => {
-          console.info("inputMethodEngine_test_040 hideKeyboard:" + value);
+          console.info("inputMethodEngine_test_040 hideKeyboard");
           expect(1 == 1).assertTrue();
         });
       }
@@ -573,7 +574,7 @@ export default function inputMethodEngineJSUnit() {
     it('inputMethodEngine_test_044', 0, async function (done) {
       let keyType = inputMethodEngine.WINDOW_TYPE_INPUT_METHOD_FLOAT;
       console.error("inputMethodEngine_test_044 result:" + keyType);
-      expect(keyType == null).assertTrue();
+      expect(keyType == 2105).assertTrue();
       done();
     });
 
@@ -581,8 +582,8 @@ export default function inputMethodEngineJSUnit() {
       if (textInputClient == null) {
         expect(textInputClient == null).assertEqual(true);
       } else {
-        textInputClient.moveCursor(1, (value) => {
-          console.info("inputMethodEngine_test_045 getBackward:" + value);
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_UP, (value) => {
+          console.info("inputMethodEngine_test_045 moveCursor:" + value);
           expect(value == null).assertEqual(true);
         });
       }
@@ -593,17 +594,123 @@ export default function inputMethodEngineJSUnit() {
       if (textInputClient == null) {
         expect(textInputClient == null).assertEqual(true);
       } else {
-        let promise = textInputClient.moveCursor(1);
-        promise.then(res => {
-          console.info("inputMethodEngine_test_046 getBackward promise result-----" + JSON.stringify(res));
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_DOWN, (value) => {
+          console.info("inputMethodEngine_test_046 moveCursor:" + value);
+          expect(value == null).assertEqual(true);
+        });
+      }
+      done();
+    })
+
+    it('inputMethodEngine_test_047', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_LEFT).then(res => {
+          console.info("inputMethodEngine_test_047 moveCursor promise result-----" + JSON.stringify(res));
           expect(res == null).assertEqual(true);
         }).catch(err => {
-          console.info("inputMethodEngine_test_046 getBackward promise error----" + JSON.stringify(err));
+          console.info("inputMethodEngine_test_047 moveCursor promise error----" + JSON.stringify(err));
           expect().assertFail();
         });
       }
       done();
     })
+
+    it('inputMethodEngine_test_048', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT).then(res => {
+          console.info("inputMethodEngine_test_048 moveCursor promise result-----" + JSON.stringify(res));
+          expect(res == null).assertEqual(true);
+        }).catch(err => {
+          console.info("inputMethodEngine_test_048 moveCursor promise error----" + JSON.stringify(err));
+          expect().assertFail();
+        });
+      }
+      done();
+    })
+
+    it('inputMethodEngine_test_049', 0, async function (done) {
+      if (kbController == null) {
+        expect(kbController == null).assertEqual(true);
+      } else {
+        kbController.hide(() => {
+          console.info("inputMethodEngine_test_049 hideKeyboard:");
+          expect(1 == 1).assertTrue();
+        });
+      }
+      done();
+    });
+
+    it('inputMethodEngine_test_050', 0, async function (done) {
+      if (kbController == null) {
+        expect(kbController == null).assertEqual(true);
+      } else {
+        let promise = kbController.hide();
+        promise.then(res => {
+          console.info("inputMethodEngine_test_050 hideKeyboard promise result-----" + JSON.stringify(res));
+          expect(1 == 1).assertTrue();
+        }).catch(err => {
+          console.info("inputMethodEngine_test_050 hideKeyboard promise error----" + JSON.stringify(err));
+          expect().assertFail();
+        });
+      }
+      done();
+    });
+
+    /*
+     * @tc.number  inputMethodEngine_test_getInputMethodAbility_001
+     * @tc.name    InputMethodAbility object of the current input method.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputMethodEngine_test_getInputMethodAbility_001', 0, async function (done) {
+      console.info("-----------------inputMethodEngine_test_getInputMethodAbility_001 start---------------------");
+      try{
+        let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
+        console.info("inputMethodEngine_test_getInputMethodAbility_001 result:" + typeof inputMethodAbility);
+        if(typeof inputMethodAbility == "object" ){
+          console.info("inputMethodEngine_test_getInputMethodAbility_001 getCurrentInputMethodSubtype success");
+          expect(true).assertTrue();
+        }else{
+          console.info("inputMethodEngine_test_getInputMethodAbility_001 getCurrentInputMethodSubtype failed");
+          expect().assertFail();
+        };
+      }catch(error){
+        console.info("inputMethodEngine_test_getInputMethodAbility_001 getCurrentInputMethodSubtype error" + JSON.stringify(error));
+        expect().assertFail();
+      }
+      console.info("-----------------inputMethodEngine_test_getInputMethodAbility_001 end---------------------");
+      done();
+    });
+
+    /*
+     * @tc.number  inputMethodEngine_test_getKeyboardDelegate_001
+     * @tc.name    KeyboardDelegate object of the current input method.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputMethodEngine_test_getKeyboardDelegate_001', 0, async function (done) {
+      console.info("-----------------inputMethodEngine_test_getKeyboardDelegate_001 start---------------------");
+      try{
+        let inputMethodAbility = inputMethodEngine.getKeyboardDelegate();
+        console.info("inputMethodEngine_test_getKeyboardDelegate_001 result:" + typeof inputMethodAbility);
+        if(typeof inputMethodAbility == "object" ){
+          console.info("inputMethodEngine_test_getKeyboardDelegate_001 getCurrentInputMethodSubtype success");
+          expect(true).assertTrue();
+        }else{
+          console.info("inputMethodEngine_test_getKeyboardDelegate_001 getCurrentInputMethodSubtype failed");
+          expect().assertFail();
+        };
+      }catch(error){
+        console.info("inputMethodEngine_test_getKeyboardDelegate_001 getCurrentInputMethodSubtype error" + JSON.stringify(error));
+        expect().assertFail();
+      }
+      console.info("-----------------inputMethodEngine_test_getKeyboardDelegate_001 end---------------------");
+      done();
+    });
 
   })
 }

@@ -6,7 +6,8 @@
       "description": "$string:phone_entry_dsc",
       "mainElement": "MainAbility",
       "deviceTypes": [
-        "phone"
+        "default",
+        "tablet"
       ],
       "deliveryWithInstall": true,
       "installationFree": false,
@@ -55,6 +56,17 @@
           "startWindowBackground": "$color:white",
           "visible": true,
           "launchType": "singleton"
+        },
+        {
+          "name": "FormHostAbility",
+          "srcEntrance": "./ets/FormHostAbility/FormHostAbility.ts",
+          "description": "$string:phone_entry_main",
+          "icon": "$media:icon",
+          "label": "$string:entry_label",
+          "startWindowIcon": "$media:icon",
+          "startWindowBackground": "$color:white",
+          "visible": true,
+          "launchType": "singleton"
         }
       ],
       "extensionAbilities": [
@@ -76,7 +88,8 @@
           "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
           "label": "$string:MainAbility_label",
           "description": "$string:MainAbility_desc",
-          "type": "service"
+          "type": "service",
+          "visible": true
         }
       ],
       "requestPermissions":[
@@ -88,6 +101,12 @@
         },
         {
           "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+        },
+        {
+          "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        },
+        {
+          "name":"ohos.permission.START_INVISIBLE_ABILITY"
         }
       ]
     }

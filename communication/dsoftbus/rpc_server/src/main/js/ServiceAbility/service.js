@@ -67,8 +67,28 @@ class Stub extends rpc.RemoteObject {
     onRemoteRequest(code, data, reply, option) {
         try{
             console.info("onRemoteRequest: " + code)
-            console.info("-----------------syhsyhsysh:" + code)
-
+            if (code === 32){
+                console.info("case 32 start")
+                let tmp1 = data.readString()
+                let result =  reply.writeString("onRemoteRequest invoking")
+                return true
+            } else if (code === 33){
+                console.info("case 33 start")
+                let tmp1 = data.readString()
+                let result =  reply.writeString(tmp1)
+                return true
+            }else {
+                console.error("default case " + code)
+                return super.onRemoteRequest(code, data, reply, option)
+            }
+        } catch (error) {
+            console.info("onRemoteRequest: " + error);
+        }
+        return false
+    }
+    onRemoteMessageRequest(code, data, reply, option) {
+        try{
+            console.info("onRemoteMessageRequest: " + code)
             switch(code) {
                 case 1:
                 {
@@ -176,10 +196,10 @@ class Stub extends rpc.RemoteObject {
                     data2.writeString(str)
                     listener.sendRequest(1, data2, reply2, option2)
                         .then(function(result) {
-                            console.info("send request done, error code: " + result.errCode )
+                            console.info("14 send request done, error code: " + result.errCode )
                         })
                         .catch(function(e) {
-                            console.error("send request got exception: " + e)
+                            console.error("14 send request got exception: " + e)
                         })
                         .finally(() => {
                             data2.reclaim()
@@ -193,8 +213,8 @@ class Stub extends rpc.RemoteObject {
                 {
                     console.info("case 15 start")
                     let s = new MySequenceable(null, null)
-                    var tmp1 = data.readSequenceable(s)
-                    let result =  reply.writeSequenceable(s)
+                    var tmp1 = data.readParcelable(s)
+                    let result =  reply.writeParcelable(s)
                     return true
                 }
                 case 16:
@@ -210,9 +230,9 @@ class Stub extends rpc.RemoteObject {
                 {
                     console.info("case 17 start")
                     var s = [new MySequenceable(null, null), new MySequenceable(null, null),
-                             new MySequenceable(null, null)];
-                    data.readSequenceableArray(s);
-                    let result =  reply.writeSequenceableArray(s);
+                        new MySequenceable(null, null)];
+                    data.readParcelableArray(s);
+                    let result =  reply.writeParcelableArray(s);
                     return true
                 }
                 case 18:
@@ -225,10 +245,10 @@ class Stub extends rpc.RemoteObject {
                         let reply2 = rpc.MessageParcel.create()
                         listeners[i].sendRequest(1, data2, reply2, option2)
                             .then(function(result) {
-                                console.info("send request done, error code: " + result.errCode + ", index: " + i)
+                                console.info("18 send request done, error code: " + result.errCode + ", index: " + i)
                             })
                             .catch(function(e) {
-                                console.error("send request got exception: " + e)
+                                console.error("18 send request got exception: " + e)
                             })
                             .finally(() => {
                                 data2.reclaim()
@@ -236,7 +256,7 @@ class Stub extends rpc.RemoteObject {
                                 console.info("case 18 test done")
                             })
                     }
-                    console.info("The server's writeRemoteObjectArray result is " + result);
+                    console.info("18 The server's writeRemoteObjectArray result is " + result);
                     return true
                 }
                 case 19:
@@ -260,7 +280,7 @@ class Stub extends rpc.RemoteObject {
                     let tmp8 = data.readChar()
                     let tmp9 = data.readString()
                     let s = new MySequenceable(null, null)
-                    let tmp10 = data.readSequenceable(s)
+                    let tmp10 = data.readParcelable(s)
                     let result1 =  reply.writeByte(tmp1)
                     let result2 =  reply.writeShort(tmp2)
                     let result3 =  reply.writeInt(tmp3)
@@ -270,7 +290,7 @@ class Stub extends rpc.RemoteObject {
                     let result7 =  reply.writeBoolean(tmp7)
                     let result8 =  reply.writeChar(tmp8)
                     let result9 =  reply.writeString(tmp9)
-                    let result10 =  reply.writeSequenceable(s)
+                    let result10 =  reply.writeParcelable(s)
                     return true
                 }
                 case 21:
@@ -286,8 +306,8 @@ class Stub extends rpc.RemoteObject {
                     let tmp8 = data.readCharArray()
                     let tmp9 = data.readStringArray()
                     let s = [new MySequenceable(null, null), new MySequenceable(null, null),
-                             new MySequenceable(null, null)]
-                    let tmp10 = data.readSequenceableArray(s)
+                        new MySequenceable(null, null)]
+                    let tmp10 = data.readParcelableArray(s)
                     let result1 =  reply.writeByteArray(tmp1)
                     let result2 =  reply.writeShortArray(tmp2)
                     let result3 =  reply.writeIntArray(tmp3)
@@ -297,7 +317,7 @@ class Stub extends rpc.RemoteObject {
                     let result7 =  reply.writeBooleanArray(tmp7)
                     let result8 =  reply.writeCharArray(tmp8)
                     let result9 =  reply.writeStringArray(tmp9)
-                    let result10 =  reply.writeSequenceableArray(s)
+                    let result10 =  reply.writeParcelableArray(s)
                     return true
                 }
                 case 22:
@@ -321,8 +341,8 @@ class Stub extends rpc.RemoteObject {
                 {
                     console.info("case 23 start")
                     let s = new MySequenceable(null, null);
-                    var tmp1 = data.readSequenceable(s);
-                    var result =  reply.writeSequenceable(s);
+                    var tmp1 = data.readParcelable(s);
+                    var result =  reply.writeParcelable(s);
                     return true
                 }
                 case 24:
@@ -416,10 +436,10 @@ class Stub extends rpc.RemoteObject {
                         data2.writeString(str)
                         listeners[i].sendRequest(1, data2, reply2, option2)
                             .then(function(result) {
-                                console.info("send request done, error code: " + result.errCode + ", index: " + i)
+                                console.info("30 send request done, error code: " + result.errCode + ", index: " + i)
                             })
                             .catch(function(e) {
-                                console.error("send request got exception: " + e)
+                                console.error("30 send request got exception: " + e)
                             })
                             .finally(() => {
                                 data2.reclaim()
@@ -446,10 +466,10 @@ class Stub extends rpc.RemoteObject {
                         data2.writeString(str)
                         listeners[i].sendRequest(1, data2, reply2, option2)
                             .then(function(result) {
-                                console.info("send request done, error code: " + result.errCode + ", index: " + i)
+                                console.info("31 send request done, error code: " + result.errCode + ", index: " + i)
                             })
                             .catch(function(e) {
-                                console.error("send request got exception: " + e)
+                                console.error("31 send request got exception: " + e)
                             })
                             .finally(() => {
                                 data2.reclaim()
@@ -460,12 +480,18 @@ class Stub extends rpc.RemoteObject {
                     reply.writeNoException()
                     return true
                 }
+                case 32:
+                {
+                    console.info("case 32 start")
+                    let tmp1 = data.readString()
+                    let result =  reply.writeString("onRemoteMessageRequest invoking")
+                    return true
+                }
                 default:
-                    console.error("default case " + code)
-                    return super.onRemoteRequest(code, data, reply, option)
+                    this.onRemoteRequest(code, data, reply, option)
             }
         } catch (error) {
-            console.info("onRemoteRequest: " + error);
+            console.info("onRemoteMessageRequest: " + error);
         }
         return false
     }

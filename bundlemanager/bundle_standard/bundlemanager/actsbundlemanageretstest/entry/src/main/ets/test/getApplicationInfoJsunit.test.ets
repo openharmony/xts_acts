@@ -195,7 +195,7 @@ export default function applicationBundleJsunit() {
                     let endTime = Utils.getNowTime();
                     Utils.getDurationTime(TAG_TEST_0300_001, startTime, endTime);
                     errors = error;
-                    if (errors) {
+                    if (errors.code != 0) {
                         expect(errors).assertFail();
                         console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
                     }
@@ -223,7 +223,7 @@ export default function applicationBundleJsunit() {
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, (error, data) => {
                     let endTime = Utils.getNowTime();
                     errors = error;
-                    if (errors) {
+                    if (errors.code != 0) {
                         expect(errors).assertFail();
                         console.info(TAG_TEST_0400_001 + 'UserId callBack error: ' + error);
                     }
@@ -232,7 +232,7 @@ export default function applicationBundleJsunit() {
                     datas = data;
                 });
             await Utils.sleep(2000);
-            console.info(TAG_TEST_0400_001 + 'noUserId callBack data is: ' + JSON.stringify(datas));
+            console.info(TAG_TEST_0400_001 + 'noUserId callBack datas is: ' + JSON.stringify(datas));
             expectData(TAG_TEST_0400_001, datas);
             getApplicationInfoSuccess(TAG_TEST_0400_001, datas);
             done();
@@ -254,7 +254,7 @@ export default function applicationBundleJsunit() {
                 }).catch((error) => {
                     console.info(TAG_TEST_0600_002 + 'other bundleName UserId promise error is: ' + error);
                     errors = error
-                    expect(errors).assertEqual(1);
+                    expect(errors.code).assertEqual(1);
                 });
             let endTime = Utils.getNowTime();
             Utils.getDurationTime(TAG_TEST_0600_002, startTime, endTime);
@@ -284,7 +284,7 @@ export default function applicationBundleJsunit() {
                 console.info(TAG_TEST_0600_003 + 'noUserId promise data is: ' + data);
                 expectData(TAG_TEST_0600_003, data);
                 getApplicationInfoSuccess_plus(TAG_TEST_0600_003, data);
-                expect(err).assertEqual(0);
+                expect(err.code).assertEqual(0);
                 done();
             });
         });
@@ -303,7 +303,7 @@ export default function applicationBundleJsunit() {
           });
           Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT, (err, data) => {
             console.info('noUserId promise data is: ' + data);
-            expect(err).assertEqual(0);
+            expect(err.code).assertEqual(0);
             getApplicationInfoSuccessOther(data);
             done();
           });
@@ -319,7 +319,7 @@ export default function applicationBundleJsunit() {
             await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(1);
+                expect(error.code).assertEqual(1);
                 let endTime = Utils.getNowTime();
                 Utils.getDurationTime(TAG_TEST_0600_001, startTime, endTime);
             });
@@ -327,7 +327,7 @@ export default function applicationBundleJsunit() {
             await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT, (err, data) => {
                 let endTime = Utils.getNowTime();
                 Utils.getDurationTime(TAG_TEST_0600_001, startTime, endTime);
-                expect(err).assertEqual(1);
+                expect(err.code).assertEqual(1);
                 expect(JSON.stringify(data)).assertEqual(undefined);
                 done();
             });
@@ -342,27 +342,25 @@ export default function applicationBundleJsunit() {
             await Bundle.getApplicationInfo('', FLAG_DEFAULT).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(1);
+                expect(error.code).assertEqual(1);
             });
             await Bundle.getApplicationInfo(null, FLAG_DEFAULT).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(1);
+                expect(error.code).assertEqual(1);
             });
             await Bundle.getApplicationInfo(BUNDLE_NAME, null).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(1);
+                expect(error.code).assertEqual(1);
             });
             Bundle.getApplicationInfo('', FLAG_DEFAULT, (err, data) => {
-                expect(err).assertEqual(1);
+                expect(err.code).assertEqual(1);
                 expect(JSON.stringify(data)).assertEqual(undefined);
                 Bundle.getApplicationInfo(null, FLAG_DEFAULT, (err, data) => {
-                    expect(err).assertEqual(1);
-                    expect(data).assertEqual("type mismatch");
+                    expect(err.code).assertEqual(1);
                     Bundle.getApplicationInfo(BUNDLE_NAME, null, (err, data) => {
-                        expect(err).assertEqual(1);
-                        expect(data).assertEqual("type mismatch");
+                        expect(err.code).assertEqual(1);
                         done();
                     });
                 });
@@ -370,59 +368,42 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-         * @tc.number: getApplicationInfo_1800
-         * @tc.name: getApplicationInfo : Obtains based on a given bundle name and flag.
-         * @tc.desc: Check whether fingerprint gets
-         */
-        it('getApplicationInfo_1800', 0, async function (done) {
-            await Bundle.getApplicationInfo(BUNDLE_NAME,
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_CERTIFICATE_FINGERPRINT).then((data) => {
-                expect(data.fingerprint).assertEqual(TEST_DEMO);
+        * @tc.number: SUB_BMS_APPINFO_QUERY_0059
+        * @tc.name: getApplicationInfoNoMetaData
+        * @tc.desc: Check the return value of the interface
+        */
+        it('getApplicationInfoNoMetaData', 0, async function (done) {
+            await Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT ,userId).then((data) => {
+                getApplicationInfoSuccessOther_METADATA(data);
+                expect(JSON.stringify(data.metaData)).assertEqual("{}");
             }).catch((error) => {
                 expect(error).assertFail();
             });
-            done()
-        });
-
-        /**
-         * @tc.number: getApplicationInfo_1900
-         * @tc.name: getApplicationInfo : Obtains based on a given bundle name and flag.
-         * @tc.desc: Check whether fingerprint gets
-         */
-        it('getApplicationInfo_1900', 0, async function (done) {
-            Bundle.getApplicationInfo(BUNDLE_NAME,
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_CERTIFICATE_FINGERPRINT, (error, data) => {
-                expect(data.fingerprint).assertEqual(TEST_DEMO);
-                expect(error).assertEqual(0);
+            Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT,userId, (err, data) => {
+                expect(err.code).assertEqual(0);
+                getApplicationInfoSuccessOther_METADATA(data);
+                expect(JSON.stringify(data.metaData)).assertEqual("{}");
                 done();
             });
         });
 
         /**
-         * @tc.number: getApplicationInfo_2000
-         * @tc.name: Test getApplicationInfo
-         * @tc.desc: Test whether the iconResource, labelResource and descriptionResource
-         *          in the getApplicationInfo of the case meet the expectations
+         * @tc.number: SUB_BMS_APPINFO_QUERY_0005
+         * @tc.name: getApplicationInfoNotExistBundleName
+         * @tc.desc: Check the return value of the interface
          */
-         it('testGetApplicationInfo', 0, async function (done) {
-            await Bundle.getApplicationInfo(BUNDLE_NAME, 0)
-            .then((applicationInfo) => {
-                expect(applicationInfo.iconResource.bundleName).assertEqual('com.open.harmony.packagemag')
-                expect(applicationInfo.iconResource.moduleName).assertEqual('entry')
-                expect(applicationInfo.iconResource.id).assertLarger(0)
-                expect(applicationInfo.labelResource.bundleName).assertEqual('com.open.harmony.packagemag')
-                expect(applicationInfo.labelResource.moduleName).assertEqual('entry')
-                expect(applicationInfo.labelResource.id).assertLarger(0)
-                expect(applicationInfo.descriptionResource.bundleName).assertEqual('com.open.harmony.packagemag')
-                expect(applicationInfo.descriptionResource.moduleName).assertEqual('entry')
-                expect(applicationInfo.descriptionResource.id).assertLarger(0)
-                expect(applicationInfo.appProvisionType).assertEqual('release')
-                done();
-            }).catch((err) => {
-                expect(err).assertFail();
-                done();
-            });
-         })
+        it('getApplicationInfoNotExistBundleName', 0, async function (done) {
+          await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT, userId).then((data) => {
+            expect(data).assertFail();
+          }).catch((error) => {
+            expect(error.code).assertEqual(1);
+          });
+          await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT, userId, (err, data) => {
+            expect(err.code).assertEqual(1);
+            expect(JSON.stringify(data)).assertEqual(undefined);
+            done();
+          });
+        });
 
         function expectData(msg, data) {
             expect(typeof (data)).assertEqual('object');
@@ -432,23 +413,17 @@ export default function applicationBundleJsunit() {
             expect(typeof (data.description)).assertEqual('string');
             expect(typeof (data.descriptionId)).assertEqual('number');
             expect(typeof (data.icon)).assertEqual('string');
-            expect(typeof (data.iconId)).assertEqual('number');
-            expect(typeof (data.iconIndex)).assertEqual('number');
             expect(data.iconIndex).assertEqual(data.iconId);
             expect(typeof (data.label)).assertEqual('string');
             expect(typeof (data.labelId)).assertEqual('number');
-            expect(typeof (data.labelIndex)).assertEqual('number');
-            expect(data.labelIndex).assertEqual(data.labelId);
             expect(typeof (data.systemApp)).assertEqual('boolean')
             expect(typeof (data.supportedModes)).assertEqual('number');
             expect(typeof (data.process)).assertEqual('string');
             expect(typeof (data.entryDir)).assertEqual('string');
             expect(typeof (data.metaData)).assertEqual('object');
-            expect(typeof (data.metadata)).assertEqual('object');
             expect(typeof (data.enabled)).assertEqual('boolean');
             expect(typeof (data.uid)).assertEqual('number');
             expect(typeof (data.entityType)).assertEqual('string');
-            expect(typeof (data.fingerprint)).assertEqual('string');
             expect(typeof (data.removable)).assertEqual('boolean');
             expect(Array.isArray(data.permissions)).assertEqual(true);
             expect(Array.isArray(data.moduleSourceDirs)).assertEqual(true);
@@ -468,8 +443,6 @@ export default function applicationBundleJsunit() {
             expect(data.uid > 0).assertEqual(true);
             expect(data.label).assertEqual('$string:entry_MainAbility');
             expect(data.labelId > 0).assertEqual(true);
-            expect(data.labelIndex > 0).assertEqual(true);
-            expect(data.labelIndex).assertEqual(data.labelId);
             expect(data.systemApp).assertEqual(false);
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual(BUNDLE_NAME);
@@ -494,12 +467,8 @@ export default function applicationBundleJsunit() {
             expect(data.descriptionId).assertLarger(0);
             expect(data.icon).assertEqual('$media:icon');
             expect(data.iconId).assertLarger(0);
-            expect(data.iconIndex).assertLarger(0);
-            expect(data.iconIndex).assertEqual(data.iconId);
             expect(data.label).assertEqual('$string:entry_MainAbility');
             expect(data.labelId).assertLarger(0);
-            expect(data.labelIndex).assertLarger(0);
-            expect(data.labelIndex).assertEqual(data.labelId);
             expect(data.systemApp).assertFalse();
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual(BUNDLE_NAME);
@@ -512,12 +481,10 @@ export default function applicationBundleJsunit() {
             expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
             BUNDLE_NAME + '/' + BUNDLE_NAME);
             expect(JSON.stringify(data.metaData)).assertEqual("{}");
-            expect(JSON.stringify(data.metadata)).assertEqual("{}");
             expect(data.enabled).assertTrue();
             expect(data.uid).assertLarger(0);
             expect(data.entityType).assertEqual('unspecified');
             expect(data.removable).assertTrue();
-            expect(data.fingerprint).assertEqual("");
             console.info(msg + ' end  ');
         }
 
@@ -533,8 +500,6 @@ export default function applicationBundleJsunit() {
           expect(data.iconIndex).assertEqual(data.iconId);
           expect(data.label).assertEqual('$string:app_name');
           expect(data.labelId).assertLarger(0);
-          expect(data.labelIndex).assertLarger(0);
-          expect(data.labelIndex).assertEqual(data.labelId);
           expect(data.systemApp).assertFalse();
           expect(data.supportedModes).assertEqual(0);
           expect(data.process).assertEqual(BUNDLE_OTHER);
@@ -547,15 +512,40 @@ export default function applicationBundleJsunit() {
           expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
           BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
           expect(JSON.stringify(data.metaData)).assertEqual("{}");
-          expect(JSON.stringify(data.metadata)).assertEqual("{}");
           expect(data.enabled).assertTrue();
           expect(data.uid).assertLarger(0);
           expect(data.entityType).assertEqual('unspecified');
           expect(data.removable).assertTrue();
-          expect(data.fingerprint).assertEqual("");
           console.info('check end');
         }
 
-    });
+        function getApplicationInfoSuccessOther_METADATA(data) {
+            expect(data.name).assertEqual(BUNDLE_OTHER);
+            expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_OTHER);
+            expect(data.accessTokenId).assertLarger(0);
+            expect(data.description).assertEqual('$string:entry_description');
+            expect(data.descriptionId).assertLarger(0);
+            expect(data.icon).assertEqual('$media:icon');
+            expect(data.iconId).assertLarger(0);
+            expect(data.label).assertEqual('$string:app_name');
+            expect(data.labelId).assertLarger(0);
+            expect(data.systemApp).assertFalse();
+            expect(data.supportedModes).assertEqual(0);
+            expect(data.process).assertEqual(BUNDLE_OTHER);
+            expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.permissions.length).assertEqual(0);
+            expect(data.moduleSourceDirs.length).assertEqual(1);
+            expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.moduleInfos.length).assertEqual(1);
+            expect(data.moduleInfos[0].moduleName).assertEqual('entry');
+            expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
+            BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.enabled).assertTrue();
+            expect(data.uid).assertLarger(0);
+            expect(data.entityType).assertEqual('unspecified');
+            expect(data.removable).assertTrue();
+            console.info('check end');
+        }
 
+      });
 }

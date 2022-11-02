@@ -18,7 +18,6 @@ ohos_js_hap_suite("ActsFaApiCoverTest") {
   deps = [
     ":faapicoverhaptest_ets_assets",
     ":faapicoverhaptest_ets_resources",
-    ":faapicoverhaptest_ets_test_assets",
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
@@ -27,10 +26,9 @@ ohos_js_hap_suite("ActsFaApiCoverTest") {
   part_name = "ability_runtime"
 }
 ohos_js_assets("faapicoverhaptest_ets_assets") {
-  source_dir = "./entry/src/main/ets/MainAbility"
-}
-ohos_js_assets("faapicoverhaptest_ets_test_assets") {
-  source_dir = "./entry/src/main/ets/TestAbility"
+  source_dir = "entry/src/main/ets"
+  hap_profile = "entry/src/main/config.json"
+  ets2abc = true
 }
 ohos_resources("faapicoverhaptest_ets_resources") {
   sources = [ "./entry/src/main/resources" ]

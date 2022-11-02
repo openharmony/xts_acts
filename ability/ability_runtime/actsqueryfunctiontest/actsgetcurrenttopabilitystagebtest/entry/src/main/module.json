@@ -6,7 +6,7 @@
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-      "phone",
+      "default",
       "tablet"
     ],
     "deliveryWithInstall": true,
@@ -45,6 +45,16 @@
         "description": "$string:Ability2_desc",
         "icon": "$media:icon",
         "label": "$string:Ability2_label"
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+      },
+      {
+        "name":"ohos.permission.START_INVISIBLE_ABILITY",
+        "reason":"need use ohos.permission.START_INVISIBLE_ABILITY"
       }
     ]
   }

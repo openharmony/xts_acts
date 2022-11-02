@@ -16,6 +16,8 @@
     "package": "com.test.webGL",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

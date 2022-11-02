@@ -6,7 +6,8 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
-            "phone"
+        "default",
+        "tablet"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
@@ -114,6 +115,14 @@
             {
               "name": "ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION",
               "reason": "need use ohos.permission.MANAGE_LOCAL_ACCOUNTS"
+            },
+            {
+              "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+              "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+            },
+            {
+              "name":"ohos.permission.START_INVISIBLE_ABILITY",
+              "reason":"need use ohos.permission.START_INVISIBLE_ABILITY"
             }
         ]
     }

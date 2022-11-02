@@ -54,45 +54,45 @@ describe('ActsNetworkSearchTest', function () {
 
     afterEach(async function () {
         try {
-            expect(radio.RADIO_TECHNOLOGY_UNKNOWN === 0).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_1XRTT === 2).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_WCDMA === 3).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_HSPA === 4).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_HSPAP === 5).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_TD_SCDMA === 6).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_EVDO === 7).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_EHRPD === 8).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_LTE === 9).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_LTE_CA === 10).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_IWLAN === 11).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_NR === 12).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_UNKNOWN === 0).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_1XRTT === 2).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_WCDMA === 3).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_HSPA === 4).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_HSPAP === 5).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_TD_SCDMA === 6).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_EVDO === 7).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_EHRPD === 8).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_LTE === 9).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_LTE_CA === 10).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_IWLAN === 11).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_NR === 12).assertTrue();
 
-            expect(radio.NETWORK_TYPE_UNKNOWN === 0).assertTrue();
-            expect(radio.NETWORK_TYPE_GSM === 1).assertTrue();
-            expect(radio.NETWORK_TYPE_CDMA === 2).assertTrue();
-            expect(radio.NETWORK_TYPE_WCDMA === 3).assertTrue();
-            expect(radio.NETWORK_TYPE_TDSCDMA === 4).assertTrue();
-            expect(radio.NETWORK_TYPE_LTE === 5).assertTrue();
-            expect(radio.NETWORK_TYPE_NR === 6).assertTrue();
+            expect(radio.NetworkType.NETWORK_TYPE_UNKNOWN === 0).assertTrue();
+            expect(radio.NetworkType.NETWORK_TYPE_GSM === 1).assertTrue();
+            expect(radio.NetworkType.NETWORK_TYPE_CDMA === 2).assertTrue();
+            expect(radio.NetworkType.NETWORK_TYPE_WCDMA === 3).assertTrue();
+            expect(radio.NetworkType.NETWORK_TYPE_TDSCDMA === 4).assertTrue();
+            expect(radio.NetworkType.NETWORK_TYPE_LTE === 5).assertTrue();
+            expect(radio.NetworkType.NETWORK_TYPE_NR === 6).assertTrue();
 
-            expect(radio.REG_STATE_NO_SERVICE === 0).assertTrue();
-            expect(radio.REG_STATE_IN_SERVICE === 1).assertTrue();
-            expect(radio.REG_STATE_EMERGENCY_CALL_ONLY === 2).assertTrue();
-            expect(radio.REG_STATE_POWER_OFF === 3).assertTrue();
+            expect(radio.RegState.REG_STATE_NO_SERVICE === 0).assertTrue();
+            expect(radio.RegState.REG_STATE_IN_SERVICE === 1).assertTrue();
+            expect(radio.RegState.REG_STATE_EMERGENCY_CALL_ONLY === 2).assertTrue();
+            expect(radio.RegState.REG_STATE_POWER_OFF === 3).assertTrue();
 
-            expect(radio.NSA_STATE_NOT_SUPPORT === 1).assertTrue();
-            expect(radio.NSA_STATE_NO_DETECT === 2).assertTrue();
-            expect(radio.NSA_STATE_CONNECTED_DETECT === 3).assertTrue();
-            expect(radio.NSA_STATE_IDLE_DETECT === 4).assertTrue();
-            expect(radio.NSA_STATE_DUAL_CONNECTED === 5).assertTrue();
-            expect(radio.NSA_STATE_SA_ATTACHED === 6).assertTrue();
+            expect(radio.NsaState.NSA_STATE_NOT_SUPPORT === 1).assertTrue();
+            expect(radio.NsaState.NSA_STATE_NO_DETECT === 2).assertTrue();
+            expect(radio.NsaState.NSA_STATE_CONNECTED_DETECT === 3).assertTrue();
+            expect(radio.NsaState.NSA_STATE_IDLE_DETECT === 4).assertTrue();
+            expect(radio.NsaState.NSA_STATE_DUAL_CONNECTED === 5).assertTrue();
+            expect(radio.NsaState.NSA_STATE_SA_ATTACHED === 6).assertTrue();
 
-            expect(radio.NETWORK_UNKNOWN === 0).assertTrue();
-            expect(radio.NETWORK_CURRENT === 2).assertTrue();
-            expect(radio.NETWORK_FORBIDDEN === 3).assertTrue();
+            expect(radio.NetworkInformationState.NETWORK_UNKNOWN === 0).assertTrue();
+            expect(radio.NetworkInformationState.NETWORK_CURRENT === 2).assertTrue();
+            expect(radio.NetworkInformationState.NETWORK_FORBIDDEN === 3).assertTrue();
 
-            expect(radio.NETWORK_SELECTION_UNKNOWN === 0).assertTrue();
-            expect(radio.NETWORK_SELECTION_MANUAL === 2).assertTrue();
+            expect(radio.NetworkSelectionMode.NETWORK_SELECTION_UNKNOWN === 0).assertTrue();
+            expect(radio.NetworkSelectionMode.NETWORK_SELECTION_MANUAL === 2).assertTrue();
         } catch (error) {
             console.info(`Telephony_NetworkSearch error`);
         }
@@ -150,7 +150,7 @@ describe('ActsNetworkSearchTest', function () {
         radio.getSignalInformation(SLOT_2, (err, data) => {
             if (err) {
                 console.info(`Telephony_NetworkSearch_getSignalInformation_Async_0400 fail err: ${err}`);
-                expect(err.code).assertEqual("202");
+                expect(err.code).assertEqual(202);
                 done();
                 return;
             }
@@ -173,7 +173,7 @@ describe('ActsNetworkSearchTest', function () {
         radio.getISOCountryCodeForNetwork(SLOT_2, (err, data) => {
             if (err) {
                 console.info(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0400 fail err: ${err}`);
-                expect(err.code).assertEqual("202");
+                expect(err.code).assertEqual(202);
                 done();
                 return;
             }
@@ -197,7 +197,7 @@ describe('ActsNetworkSearchTest', function () {
             expect(data.length === 0).assertTrue();
         } catch (err) {
             console.info(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400 fail err: ${err}`);
-            expect(err.code).assertEqual("202");
+            expect(err.code).assertEqual(202);
             done();
             return;
         }
@@ -294,7 +294,7 @@ describe('ActsNetworkSearchTest', function () {
             expect(data.length === 0).assertTrue();
         } catch (err) {
             console.info(`Telephony_NetworkSearch_getSignalInformation_Promise_0400 fail err: ${err}`);
-            expect(err.code).assertEqual("202");
+            expect(err.code).assertEqual(202);
             done();
             return;
         }
@@ -310,7 +310,7 @@ describe('ActsNetworkSearchTest', function () {
         radio.getOperatorName(SLOT_2, (err, data) => {
             if (err) {
                 console.info(`Telephony_NetworkSearch_getOperatorName_Async_0400 fail err: ${err}`);
-                expect(err.code).assertEqual("202");
+                expect(err.code).assertEqual(202);
                 done();
                 return;
             }
@@ -333,7 +333,7 @@ describe('ActsNetworkSearchTest', function () {
             done();
         } catch (err) {
             console.info(`Telephony_NetworkSearch_getOperatorName_Promise_0400 fail err: ${err}`);
-            expect(err.code).assertEqual("202");
+            expect(err.code).assertEqual(202);
             done();
         }
     })

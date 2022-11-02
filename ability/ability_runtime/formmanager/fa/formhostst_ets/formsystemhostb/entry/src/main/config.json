@@ -18,7 +18,7 @@
     "name": ".FormStHostAppB",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

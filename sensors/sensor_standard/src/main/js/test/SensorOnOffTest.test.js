@@ -12,22 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// @ts-nocheck
-
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import sensor from '@ohos.sensor'
-
-function sleep(NumberMillis) {
-    let now = new Date()
-    let exitTime = now.getTime() + NumberMillis
-    while (true) {
-        now = new Date()
-        if (now.getTime > exitTime) {
-            return
-        }
-    }
-}
 
 export default function SystemParameterTest() {
 describe('SystemParameterTest', function () {
@@ -47,30 +33,30 @@ describe('SystemParameterTest', function () {
         console.info('afterEach caled')
     })
 
-    let testSensorId = 0;
     let testNullSensorId = -1;
+    let errCode = 401
+    let errMessage = 'The parameter invalid.'
 
    /**
-   * @tc.number SUB_SENSORS_Sensor_JSTest_0020
-   * @tc.name   testRegisterSensortest002
+   * @tc.number SUB_SENSORS_Sensor_JSTest_0010
+   * @tc.name   testRegisterSensortest001
    * @tc.desc   test get sensor data by wrong sensor id.
    */
-    it('SUB_SENSORS_Sensor_JSTest_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('SUB_SENSORS_Sensor_JSTest_0020 start');
-
+    it('testRegisterSensortest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testRegisterSensortest001 start');
         function onSensorCallback(data) {
-            console.info('SensorJsTest002  on error');
+            console.info('testRegisterSensortest001 callback in');
             expect(false).assertTrue();
             done();
         }
-
         try {
             sensor.on(testNullSensorId, onSensorCallback);
         } catch (error) {
-            console.info(error);
-            expect(true).assertTrue();
+            console.info('testRegisterSensortest001 error: ' + error.code + ' ,msg: ' + error.message);
+            expect(error.code).assertEqual(errCode)
+            expect(error.message).assertEqual(errMessage)
             done();
         }
-        console.info('SUB_SENSORS_Sensor_JSTest_0020 end');
+        console.info('testRegisterSensortest001 end');
     })
 })}

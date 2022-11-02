@@ -171,7 +171,7 @@ HWTEST_F(ActsPMSLoadTest, testSecPMPMS_0540, Function | MediumTest | Level1)
 HWTEST_F(ActsPMSLoadTest, testSecPMPMS_0550, Function | MediumTest | Level0)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
-    int i;
+    int i = 0;
     for (i = 0; i < SYS_PERM_NUM; i++) {
         g_interface->GrantPermission(TEST_APP_ID, g_systemPers[i].name);
     }

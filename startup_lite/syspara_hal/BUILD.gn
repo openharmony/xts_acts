@@ -16,6 +16,7 @@ import("//test/xts/tools/lite/build/suite_lite.gni")
 hctest_suite("ActsParameterTest") {
   suite_name = "acts"
   sources = [
+    "src/deviceinfo_func_test.c",
     "src/parameter_func_test.c",
     "src/parameter_reli_test.c",
     "src/parameter_utils.c",

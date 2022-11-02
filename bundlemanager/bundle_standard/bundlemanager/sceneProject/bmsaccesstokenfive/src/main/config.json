@@ -17,7 +17,8 @@
     "package": "com.example.bmsaccesstoken3",
     "name": ".MyApplication1",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

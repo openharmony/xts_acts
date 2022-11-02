@@ -44,7 +44,7 @@ hcpptest_suite("ActsAiEngineTest") {
     "//foundation/ai/engine/services/algorithmsdk",
     "//foundation/ai/engine/services/server/plugin",
     "//third_party/bounds_checking_function/include",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos-a/kernel/include",
     "//kernel/liteos-a/kernel/common",
     "//foundation/systemabilitymgr/samgr_lite/interfaces/innerkits/registry",

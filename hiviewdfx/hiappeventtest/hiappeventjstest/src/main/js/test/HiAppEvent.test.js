@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import HiAppEventV9 from '@ohos.hiviewdfx.hiAppEvent'
 import HiAppEvent from '@ohos.hiAppEvent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import Constant from 'deccjsunit/src/Constant'
@@ -434,11 +435,11 @@ describe('HiAppEventApiTest', function () {
                 console.log('HiAppEvent into json-callback');
                 if (err) {
                     console.error(`HiAppEvent json-callback-error code=${err.code}`);
-                    expect().assertFail();
+                    expect(err.code).assertEqual(-2);
                     done();
                 } else {
                     console.log(`HiAppEvent json-callback-success value=${value}`);
-                    expect(value == 0).assertTrue();
+                    expect().assertFail();
                     done();
                 }
             });
@@ -576,6 +577,22 @@ describe('HiAppEventApiTest', function () {
                 done();
             }
         });
+
+    HiAppEvent.write(HiAppEvent.Event.DISTRIBUTED_SERVICE_START, HiAppEvent.EventType.BEHAVIOR,
+        {[HiAppEvent.Param.USER_ID]: 'serviceStart', [HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME]: 'HiAppEvent',
+        [HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID]: 100},
+        (err, value) => {
+            console.log('HiAppEvent into json-callback');
+            if (err) {
+                console.error(`HiAppEvent json-callback-error code=${err.code}`);
+                expect().assertFail();
+                done();
+            } else {
+                console.log(`HiAppEvent json-callback-success value=${value}`);
+                expect(value == 0).assertTrue();
+                done();
+            }
+        });
     console.info('testHiAppEventApi25 end')
     })
 
@@ -586,10 +603,10 @@ describe('HiAppEventApiTest', function () {
      */
     it('testHiAppEventApi26', 2, async function (done) {
         console.info('testHiAppEventApi26 start')
-        HiAppEvent.write({
+        HiAppEventV9.write({
             domain: "test_domain",
             name: "write",
-            eventType: HiAppEvent.EventType.FAULT,
+            eventType: HiAppEventV9.EventType.FAULT,
             params: {
                 "key_int": 100, "key_string": "demo",
                 "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],
@@ -612,10 +629,10 @@ describe('HiAppEventApiTest', function () {
      */
     it('testHiAppEventApi27', 2, async function (done) {
         console.info('testHiAppEventApi27 start')
-        HiAppEvent.write({
+        HiAppEventV9.write({
             domain: "test_domain",
             name: "test_event",
-            eventType: HiAppEvent.EventType.FAULT,
+            eventType: HiAppEventV9.EventType.FAULT,
             params: {
                 "key_int": 100, "key_string": "demo",
                 "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],

@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct TextAreaExample2 {
   @State text: string = 'TextArea'
-  @State fontColor: string = "Color.Red";
+  @State fontColor: string = "#FF182432";
   @State fontSize: number = 30;
   @State textAlign: TextAlign = TextAlign.Center;
   @State text: String  = 'test text';

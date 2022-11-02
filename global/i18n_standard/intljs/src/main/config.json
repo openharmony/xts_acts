@@ -16,6 +16,8 @@
         "package": "ohos.intl.test",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

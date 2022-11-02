@@ -18,7 +18,7 @@
     "name": ".FormDeleteSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -154,6 +154,10 @@
       {
         "name": "ohos.permission.SET_TIME",
         "reason": "need use ohos.permission.SET_TIME"
+      },
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ],
     "js": [

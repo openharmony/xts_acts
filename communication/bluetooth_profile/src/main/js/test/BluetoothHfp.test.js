@@ -146,10 +146,8 @@ describe('bluetoothhostTest_host_3', function () {
         }
         let hfpSrc = bluetooth.getProfile(ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
         hfpSrc.on('connectionStateChange', StateChangeParam);
-        let conn = hfpSrc.connect('11:22:33:44:55:66');
+        hfpSrc.connect('11:22:33:44:55:66');
         await sleep(6000);
-        console.info('[bluetooth_js]hfp connect result:' + JSON.stringify(conn));
-        expect(conn).assertTrue();
         hfpSrc.off('connectionStateChange', StateChangeParam);
         done();
     })

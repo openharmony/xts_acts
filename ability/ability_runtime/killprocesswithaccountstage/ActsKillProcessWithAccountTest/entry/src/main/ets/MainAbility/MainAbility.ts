@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 import Ability from '@ohos.application.Ability'
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
+import testsuite from '../test/List.test'
 
 export default class MainAbility extends Ability {
 
@@ -20,6 +23,14 @@ export default class MainAbility extends Ability {
         // Ability is creating, initialize resources for this ability
         console.log("MainAbility onCreate")
         globalThis.abilityWant = want;
+        globalThis.abilityContext = this.context
+        console.info("start run testcase!!!!")
+        var abilityDelegator: any
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        var abilityDelegatorArguments: any
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        console.info('start run testcase!!!')
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
     }
 
     onDestroy() {
@@ -30,7 +41,7 @@ export default class MainAbility extends Ability {
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("MainAbility onWindowStageCreate")
-        globalThis.abilityContext = this.context
+        
         windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
     }
 

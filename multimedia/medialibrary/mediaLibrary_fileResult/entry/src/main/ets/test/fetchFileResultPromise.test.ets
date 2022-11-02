@@ -19,12 +19,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import {
     sleep,
     IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
     FILE_TYPE,
     FILEKEY,
-    checkPresetsAssets,
-    nameFetchOps,
     checkAssetsCount,
     fetchOps,
 } from '../../../../../../common';
@@ -34,7 +30,6 @@ export default function fetchFileResultPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileResult');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -159,7 +154,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_03'
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04'
             let expectCount = 0
             let currentFetchOp = fetchOps(testNum, 'Documents/zeor/', FILE_TYPE)
             await checkAssetCount(done, testNum, currentFetchOp, expectCount)
@@ -378,7 +373,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_02
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_03
          * @tc.name      : getPositionObject
          * @tc.desc      : Get FetchResult, get position 1 object, check result
          * @tc.size      : MEDIUM

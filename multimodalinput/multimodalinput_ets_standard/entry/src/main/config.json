@@ -18,6 +18,8 @@
     "name": ".MyApplication",
     "mainAbility": "ohos.acts.multimodalinput.input.MainAbility",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

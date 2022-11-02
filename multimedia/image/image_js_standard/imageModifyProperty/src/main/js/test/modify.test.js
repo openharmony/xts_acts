@@ -13,1161 +13,1457 @@
  * limitations under the License.
  */
 
-import image from '@ohos.multimedia.image'
-import fileio from '@ohos.fileio'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import {modifyBuf} from './modifyBuffer'
-import featureAbility from '@ohos.ability.featureAbility'
+import image from "@ohos.multimedia.image";
+import fileio from "@ohos.fileio";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { modifyBuf } from "./modifyBuffer";
+import featureAbility from "@ohos.ability.featureAbility";
 
 export default function imageModifyProperty() {
-describe('imageModifyProperty', function () {
-    let filePath;
-    let fdNumber;
-    async function getFd(fileName) {
-        let context = await featureAbility.getContext();
-        await context.getFilesDir().then((data) => {
-            filePath = data + '/' + fileName;
-            console.info('image case filePath is ' + filePath);
-        })
-        await fileio.open(filePath, 0o2 | 0o100, 0o777).then((data) => {
-            fdNumber = data;
-            console.info("image case open fd success " + fdNumber);
-        }, (err) => {
-            console.info("image cese open fd fail" + err)
-        }).catch((err) => {
-            console.info("image case open fd err " + err);
-        })
-    }
-    beforeAll(async function () {
-        console.info('beforeAll case');
-    })
-
-    beforeEach(function () {
-        console.info('beforeEach case');
-    })
-
-    afterEach(async function () {
-        await fileio.close(fdNumber).then(function(){
-            console.info("close file succeed");
-        }).catch(function(err){
-            console.info("close file failed with error:"+ err);
+    describe("imageModifyProperty", function () {
+        let filePath;
+        async function getFd(fileName) {
+            let context = await featureAbility.getContext();
+            await context.getFilesDir().then((data) => {
+                filePath = data + "/" + fileName;
+                console.info("image case filePath is " + filePath);
+            });
+        }
+        beforeAll(async function () {
+            console.info("beforeAll case");
         });
-        console.info('afterEach case');
-    })
 
-    afterAll(function () {
-        console.info('afterAll case');
-    })
+        beforeEach(function () {
+            console.info("beforeEach case");
+        });
 
+        afterEach(async function () {
+            console.info("afterEach case");
+        });
 
-    async function modifyPromise(done, testNum, type, key, value, checkProps){
-        let imageSourceApi;
-        if (type == 'buffer') {
-            const data = modifyBuf.buffer;
-            imageSourceApi = image.createImageSource(data);
-        } else {
-            await getFd('test_exif.jpg');
-            imageSourceApi = image.createImageSource(fdNumber);
-        }
-        if (imageSourceApi == undefined) {
-            console.info(`${testNum} create image source failed`);
-            expect(false).assertTrue();
-            done();
-        } else {
-            imageSourceApi.modifyImageProperty(key, value).then(() => {
-                imageSourceApi.getImageProperty(key).then(data => {
-                    console.info(`${testNum} ${key} ` + data);
-                    checkProps(data);
-                    done();
-                }).catch((err) => {
-                    console.info(`${testNum} getImageProperty failed, err:${err}`);
-                    expect(false).assertTrue();
-                    done();
-                })
-            }).catch((err) => {
-                console.info(`${testNum} modifyImageProperty failed, err:${err}`);
-                expect(false).assertTrue();
-                done();
-            })
-        }
-    }
-    
-    async function modifyCb(done, testNum, type, key, value, checkProps){
-        let imageSourceApi;
-        if (type == 'buffer') {
-            const data = modifyBuf.buffer;
-            imageSourceApi = image.createImageSource(data);
-        } else {
-            await getFd('test_exif.jpg');
-            imageSourceApi = image.createImageSource(fdNumber);
-        }
-        if (imageSourceApi == undefined) {
-            console.info(`${testNum} create image source failed`);
-            expect(false).assertTrue();
-            done();
-        } else {
-            imageSourceApi.modifyImageProperty(key, value, (error) => {
-                if(error){
-                    expect(false).assertTrue();
-                    console.info(`${testNum} modify err: ` + error);
-                }else{
-                    imageSourceApi.getImageProperty(key, (error, data) => {
-                        if(error){
-                            expect(false).assertTrue();
-                            console.info(`${testNum} get err: ` + error);
-                        }else{
-                            console.info(`${testNum} ${key}: `  + data);
-                            checkProps(data);
-                            done();
-                        }
-                       
-                    })
-                }
-            })
-        }
-    }
+        afterAll(function () {
+            console.info("afterAll case");
+        });
 
-    async function modifyCb1(done, testNum, type, key, value, checkProps){
-        let imageSourceApi;
-        if (type == 'buffer') {
-            const data = modifyBuf.buffer;
-            imageSourceApi = image.createImageSource(data);
-        } else {
-            await getFd('test_exif.jpg');
-            imageSourceApi = image.createImageSource(fdNumber);
-        }
-        if (imageSourceApi == undefined) {
-            console.info(`${testNum} create image source failed`);
-            expect(false).assertTrue();
-            done();
-        } else {
-            let property = { index: 0, defaultValue: '1' }
-            imageSourceApi.modifyImageProperty(key, value, property, (error) => {
-                if(error){
-                    expect(false).assertTrue();
-                    console.info(`${testNum} modify err: ` + error);
-                }else{
-                    imageSourceApi.getImageProperty(key, (error, data) => {
-                        if(error){
-                            expect(false).assertTrue();
-                            console.info(`${testNum} get err: ` + error);
-                        }else{
-                            console.info(`${testNum} ${key}: `  + data);
-                            checkProps(data);
-                            done();
-                        }
-                       
-                    })
-                }
-            })
-        }
-    }
-    
-    async function modifyErrCb(done, testNum, type, key, value) {
-        let imageSourceApi;
-        if (type == 'buffer') {
-            const data = modifyBuf.buffer;
-            imageSourceApi = image.createImageSource(data);
-        } else {
-            await getFd('test_exif.jpg');
-            imageSourceApi = image.createImageSource(fdNumber);
-        }
-        if (imageSourceApi == undefined) {
-            console.info(`${testNum} create image source failed`);
-            expect(false).assertTrue();
-            done();
-        } else {
-                imageSourceApi.modifyImageProperty(key, value, (error) => {
-                    expect(error.code != 0).assertTrue();
-                    console.info(`${testNum} errormsg: ` + error)
-                    done();
-                })
-            
-        }
-    }
-
-    async function modifyErrCb1(done, testNum, type, key, value) {
-        let imageSourceApi;
-        if (type == 'buffer') {
-            const data = modifyBuf.buffer;
-            imageSourceApi = image.createImageSource(data);
-        }else {
-            await getFd('test_exif.jpg');
-            imageSourceApi = image.createImageSource(fdNumber);
-        }
-        if (imageSourceApi == undefined) {
-            console.info(`${testNum} create image source failed`);
-            expect(false).assertTrue();
-            done();
-        } else {
-            let property = { index: 0, defaultValue: '1' }
-                imageSourceApi.modifyImageProperty(key, value, property, (error) => {
-                    expect(error.code != 0).assertTrue();
-                    console.info(`${testNum} errormsg: ` + error)
-                    done();
-                })
-        }
-    }
-
-    async function modifyImageErrPromise(done, testNum, type, key, value) {
-        let imageSourceApi;
-        try {
-            if (type == 'buffer') {
+        async function modifyPromise(done, testNum, type, key, value, checkProps) {
+            let imageSourceApi;
+            if (type == "buffer") {
                 const data = modifyBuf.buffer;
                 imageSourceApi = image.createImageSource(data);
             } else {
-                await getFd('test_exif.jpg');
-                imageSourceApi = image.createImageSource(fdNumber);
+                await getFd("test_exif.jpg");
+                imageSourceApi = image.createImageSource(filePath);
             }
-        } catch (error) {
-            expect(false).assertTrue();
-            done();
-        }
-
-        if (imageSourceApi == undefined) {
-            console.info(`${testNum} create image source failed`);
-            expect(false).assertTrue();
-            done();
-        } else {
-            imageSourceApi.modifyImageProperty(key, value)
-            .then(() => {
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
                 expect(false).assertTrue();
                 done();
-            }).catch((error) => {
-                expect(error.code != 0).assertTrue();
-                console.info(`${testNum} message: ` + error);
+            } else {
+                imageSourceApi
+                    .modifyImageProperty(key, value)
+                    .then(() => {
+                        imageSourceApi
+                            .getImageProperty(key)
+                            .then((data) => {
+                                console.info(`${testNum} ${key} ` + data);
+                                checkProps(data);
+                                done();
+                            })
+                            .catch((err) => {
+                                console.info(`${testNum} getImageProperty failed, err:${err}`);
+                                expect(false).assertTrue();
+                                done();
+                            });
+                    })
+                    .catch((err) => {
+                        console.info(`${testNum} modifyImageProperty failed, err:${err}`);
+                        expect(false).assertTrue();
+                        done();
+                    });
+            }
+        }
+
+        async function modifyCb(done, testNum, type, key, value, checkProps) {
+            let imageSourceApi;
+            if (type == "buffer") {
+                const data = modifyBuf.buffer;
+                imageSourceApi = image.createImageSource(data);
+            } else {
+                await getFd("test_exif.jpg");
+                imageSourceApi = image.createImageSource(filePath);
+            }
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
                 done();
-            })           
+            } else {
+                imageSourceApi.modifyImageProperty(key, value, (error) => {
+                    if (error) {
+                        expect(false).assertTrue();
+                        console.info(`${testNum} modify err: ` + error);
+                    } else {
+                        imageSourceApi.getImageProperty(key, (error, data) => {
+                            if (error) {
+                                expect(false).assertTrue();
+                                console.info(`${testNum} get err: ` + error);
+                            } else {
+                                console.info(`${testNum} ${key}: ` + data);
+                                checkProps(data);
+                                done();
+                            }
+                        });
+                    }
+                });
+            }
         }
-    }
 
-    /**
-     * @tc.number    : modify_01_001
-     * @tc.name      : modifyImageProperty(Orientation)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_001', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'Top-right').assertTrue();
+        async function modifyCb1(done, testNum, type, key, value, checkProps) {
+            let imageSourceApi;
+            if (type == "buffer") {
+                const data = modifyBuf.buffer;
+                imageSourceApi = image.createImageSource(data);
+            } else {
+                await getFd("test_exif.jpg");
+                imageSourceApi = image.createImageSource(filePath);
+            }
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                let property = { index: 0, defaultValue: "1" };
+                imageSourceApi.modifyImageProperty(key, value, property, (error) => {
+                    if (error) {
+                        expect(false).assertTrue();
+                        console.info(`${testNum} modify err: ` + error);
+                    } else {
+                        imageSourceApi.getImageProperty(key, (error, data) => {
+                            if (error) {
+                                expect(false).assertTrue();
+                                console.info(`${testNum} get err: ` + error);
+                            } else {
+                                console.info(`${testNum} ${key}: ` + data);
+                                checkProps(data);
+                                done();
+                            }
+                        });
+                    }
+                });
+            }
         }
-        modifyPromise(done, 'modify_01_001', 'buffer', "Orientation", "2", checkProps);
-    }) 
 
-    /**
-     * @tc.number    : modify_01_002
-     * @tc.name      : modifyImageProperty(GPSLatitude)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_002', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("38") != -1).assertTrue();
+        async function modifyErrCb(done, testNum, type, key, value) {
+            let imageSourceApi;
+            if (type == "buffer") {
+                const data = modifyBuf.buffer;
+                imageSourceApi = image.createImageSource(data);
+            } else {
+                await getFd("test_exif.jpg");
+                imageSourceApi = image.createImageSource(filePath);
+            }
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                imageSourceApi.modifyImageProperty(key, value, (error) => {
+                    expect(error.code != 0).assertTrue();
+                    console.info(`${testNum} errormsg: ` + error);
+                    done();
+                });
+            }
         }
-        modifyPromise(done, 'modify_01_002', 'buffer', "GPSLatitude", "114,3", checkProps);
-    })
 
-    /**
-     * @tc.number    : modify_01_003
-     * @tc.name      : modifyImageProperty(GPSLongitude)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_003', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("9") != -1).assertTrue();
+        async function modifyErrCb1(done, testNum, type, key, value) {
+            let imageSourceApi;
+            if (type == "buffer") {
+                const data = modifyBuf.buffer;
+                imageSourceApi = image.createImageSource(data);
+            } else {
+                await getFd("test_exif.jpg");
+                imageSourceApi = image.createImageSource(filePath);
+            }
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                let property = { index: 0, defaultValue: "1" };
+                imageSourceApi.modifyImageProperty(key, value, property, (error) => {
+                    expect(error.code != 0).assertTrue();
+                    console.info(`${testNum} errormsg: ` + error);
+                    done();
+                });
+            }
         }
-        modifyPromise(done, 'modify_01_003', 'buffer', "GPSLongitude", "18,2", checkProps);
-    })
 
-    /**
-     * @tc.number    : modify_01_004
-     * @tc.name      : modifyImageProperty(GPSLatitudeRef)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_004', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'N').assertTrue();
+        async function modifyImageErrPromise(done, testNum, type, key, value) {
+            let imageSourceApi;
+            try {
+                if (type == "buffer") {
+                    const data = modifyBuf.buffer;
+                    imageSourceApi = image.createImageSource(data);
+                } else {
+                    await getFd("test_exif.jpg");
+                    imageSourceApi = image.createImageSource(filePath);
+                }
+            } catch (error) {
+                expect(false).assertTrue();
+                done();
+            }
+
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                imageSourceApi
+                    .modifyImageProperty(key, value)
+                    .then(() => {
+                        expect(false).assertTrue();
+                        done();
+                    })
+                    .catch((error) => {
+                        expect(error.code != 0).assertTrue();
+                        console.info(`${testNum} message: ` + error);
+                        done();
+                    });
+            }
         }
-        modifyPromise(done, 'modify_01_004', 'buffer', "GPSLatitudeRef", "N", checkProps);
-    })
 
-    /**
-     * @tc.number    : modify_01_005
-     * @tc.name      : modifyImageProperty(GPSLongitudeRef)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_005', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'W').assertTrue();
-        }
-        modifyPromise(done, 'modify_01_005', 'buffer', "GPSLongitudeRef", "W", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0100
+         * @tc.name      : modifyImageProperty(Orientation)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0100", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "Top-right").assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0100",
+                "buffer",
+                "Orientation",
+                "2",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_006
-     * @tc.name      : modifyImageProperty(Orientation)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_006', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'Top-right').assertTrue();
-        }
-        modifyPromise(done, 'modify_01_006', 'fd', "Orientation", "2", checkProps)
-    })   
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0200
+         * @tc.name      : modifyImageProperty(GPSLatitude)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0200", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("38") != -1).assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0200",
+                "buffer",
+                "GPSLatitude",
+                "114,3",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_007
-     * @tc.name      : modifyImageProperty(GPSLatitude)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_007', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("38") != -1).assertTrue();
-        }
-        modifyPromise(done, 'modify_01_007', 'fd', "GPSLatitude", "114,3", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0300
+         * @tc.name      : modifyImageProperty(GPSLongitude)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0300", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("9") != -1).assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0300",
+                "buffer",
+                "GPSLongitude",
+                "18,2",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_008
-     * @tc.name      : modifyImageProperty(GPSLongitude)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_008', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("9") != -1).assertTrue();
-        }
-        modifyPromise(done, 'modify_01_008', 'fd', "GPSLongitude", "18,2", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0400
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0400", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "N").assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0400",
+                "buffer",
+                "GPSLatitudeRef",
+                "N",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_009
-     * @tc.name      : modifyImageProperty(GPSLatitudeRef)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_009', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'N').assertTrue();
-        }
-        modifyPromise(done, 'modify_01_009', 'fd', "GPSLatitudeRef", "N", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0500
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0500", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "W").assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0500",
+                "buffer",
+                "GPSLongitudeRef",
+                "W",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_010
-     * @tc.name      : modifyImageProperty(GPSLongitudeRef)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_010', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'W').assertTrue();
-        }
-        modifyPromise(done, 'modify_01_010', 'fd', "GPSLongitudeRef", "W", checkProps);
-    }) 
-    
-    /**
-     * @tc.number    : modify_02_001
-     * @tc.name      : modifyImageProperty(Orientation)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_001', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'Top-right').assertTrue();
-        }
-        modifyCb(done, 'modify_02_001', 'buffer', "Orientation", "2", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0600
+         * @tc.name      : modifyImageProperty(Orientation)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0600", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "Top-right").assertTrue();
+            }
+            modifyPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0600", "fd", "Orientation", "2", checkProps);
+        });
 
-    /**
-     * @tc.number    : modify_02_002
-     * @tc.name      : modifyImageProperty(GPSLatitude)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_002', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("38") != -1).assertTrue();
-        }
-        modifyCb(done, 'modify_02_002', 'buffer', "GPSLatitude", "114,3", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0700
+         * @tc.name      : modifyImageProperty(GPSLatitude)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0700", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("38") != -1).assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0700",
+                "fd",
+                "GPSLatitude",
+                "114,3",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_003
-     * @tc.name      : modifyImageProperty(GPSLongitude)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_003', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("9") != -1).assertTrue();
-        }
-        modifyCb(done, 'modify_02_003', 'buffer', "GPSLongitude", "18,2", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0800
+         * @tc.name      : modifyImageProperty(GPSLongitude)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0800", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("9") != -1).assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0800",
+                "fd",
+                "GPSLongitude",
+                "18,2",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_004
-     * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_004', 0, async function (done) {
-        function checkProps(result){
-            expect(result == "N").assertTrue();
-        }
-        modifyCb(done, 'modify_02_004', 'buffer', "GPSLatitudeRef", "N", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0900
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0900", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "N").assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_0900",
+                "fd",
+                "GPSLatitudeRef",
+                "N",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    :modify_02_005
-     * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_005', 0, async function (done) {
-        function checkProps(result){
-            expect(result == "W").assertTrue();
-        }
-        modifyCb(done, 'modify_02_005', 'buffer', "GPSLongitudeRef", "W", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1000
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1000", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "W").assertTrue();
+            }
+            modifyPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1000",
+                "fd",
+                "GPSLongitudeRef",
+                "W",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_006
-     * @tc.name      : modifyImageProperty(Orientation)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_006', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'Top-right').assertTrue();
-        }
-        modifyCb(done, 'modify_02_006', 'fd', "Orientation", "2", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0100
+         * @tc.name      : modifyImageProperty(Orientation)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0100", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "Top-right").assertTrue();
+            }
+            modifyCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0100", "buffer", "Orientation", "2", checkProps);
+        });
 
-    /**
-     * @tc.number    : modify_02_007
-     * @tc.name      : modifyImageProperty(GPSLatitude)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_007', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("38") != -1).assertTrue();
-        }
-        modifyCb(done, 'modify_02_007', 'fd', "GPSLatitude", "114,3", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0200
+         * @tc.name      : modifyImageProperty(GPSLatitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0200", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("38") != -1).assertTrue();
+            }
+            modifyCb(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0200",
+                "buffer",
+                "GPSLatitude",
+                "114,3",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_008
-     * @tc.name      : modifyImageProperty(GPSLongitude)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_008', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("9") != -1).assertTrue();
-        }
-        modifyCb(done, 'modify_02_008', 'fd', "GPSLongitude", "18,2", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0300
+         * @tc.name      : modifyImageProperty(GPSLongitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0300", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("9") != -1).assertTrue();
+            }
+            modifyCb(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0300",
+                "buffer",
+                "GPSLongitude",
+                "18,2",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_009
-     * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_009', 0, async function (done) {
-        function checkProps(result){
-            expect(result == "N").assertTrue();
-        }
-        modifyCb(done, 'modify_02_009', 'fd', "GPSLatitudeRef", "N", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0400
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0400", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "N").assertTrue();
+            }
+            modifyCb(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0400",
+                "buffer",
+                "GPSLatitudeRef",
+                "N",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_010
-     * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_010', 0, async function (done) {
-        function checkProps(result){
-            expect(result == "W").assertTrue();
-        }
-        modifyCb(done, 'modify_02_010', 'fd', "GPSLongitudeRef", "W", checkProps);
-    })
-   
-    /**
-     * @tc.number    : modify_03_001
-     * @tc.name      : modifyImageProperty(Orientation,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_001', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'Top-right').assertTrue();
-        }
-        modifyCb1(done, 'modify_03_001', 'buffer', "Orientation", "2", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0500
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0500", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "W").assertTrue();
+            }
+            modifyCb(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0500",
+                "buffer",
+                "GPSLongitudeRef",
+                "W",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_002
-     * @tc.name      : modifyImageProperty(GPSLatitude,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_002', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("38") != -1).assertTrue();
-        }
-        modifyCb1(done, 'modify_03_002', 'buffer', "GPSLatitude", "114,3", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0600
+         * @tc.name      : modifyImageProperty(Orientation)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0600", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "Top-right").assertTrue();
+            }
+            modifyCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0600", "fd", "Orientation", "2", checkProps);
+        });
 
-    /**
-     * @tc.number    : modify_03_003
-     * @tc.name      : modifyImageProperty(GPSLongitude,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_003', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("9") != -1).assertTrue();
-        }
-        modifyCb1(done, 'modify_03_003', 'buffer', "GPSLongitude", "18,2", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0700
+         * @tc.name      : modifyImageProperty(GPSLatitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0700", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("38") != -1).assertTrue();
+            }
+            modifyCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0700", "fd", "GPSLatitude", "114,3", checkProps);
+        });
 
-    /**
-     * @tc.number    : modify_03_004
-     * @tc.name      : modifyImageProperty(GPSLatitudeRef,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_004', 0, async function (done) {
-        function checkProps(result){
-            expect(result == "N").assertTrue();
-        }
-        modifyCb1(done, 'modify_03_004', 'buffer', "GPSLatitudeRef", "N", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0800
+         * @tc.name      : modifyImageProperty(GPSLongitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0800", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("9") != -1).assertTrue();
+            }
+            modifyCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0800", "fd", "GPSLongitude", "18,2", checkProps);
+        });
 
-    /**
-     * @tc.number    : modify_03_005
-     * @tc.name      : modifyImageProperty(GPSLongitudeRef,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_005', 0, async function (done) {
-        function checkProps(result){
-            expect(result == "W").assertTrue();
-        }
-        modifyCb1(done, 'modify_03_005', 'buffer', "GPSLongitudeRef", "W", checkProps);
-    }) 
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0900
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0900", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "N").assertTrue();
+            }
+            modifyCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_0900", "fd", "GPSLatitudeRef", "N", checkProps);
+        });
 
-    /**
-     * @tc.number    : modify_03_006
-     * @tc.name      : modifyImageProperty(Orientation,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_006', 0, async function (done) {
-        function checkProps(result){
-            expect(result == 'Top-right').assertTrue();
-        }
-        modifyCb1(done, 'modify_03_006', 'fd', "Orientation", "2", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1000
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1000", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "W").assertTrue();
+            }
+            modifyCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1000", "fd", "GPSLongitudeRef", "W", checkProps);
+        });
 
-    /**
-     * @tc.number    : modify_03_007
-     * @tc.name      : modifyImageProperty(GPSLatitude,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_007', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("38") != -1).assertTrue();
-        }
-        modifyCb1(done, 'modify_03_007', 'fd', "GPSLatitude", "114,3", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100
+         * @tc.name      : modifyImageProperty(Orientation,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "Top-right").assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100",
+                "buffer",
+                "Orientation",
+                "2",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_008
-     * @tc.name      : modifyImageProperty(GPSLongitude,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_008', 0, async function (done) {
-        function checkProps(result){
-            expect(result.search("9") != -1).assertTrue();
-        }
-        modifyCb1(done, 'modify_03_008', 'fd', "GPSLongitude", "18,2", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200
+         * @tc.name      : modifyImageProperty(GPSLatitude,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("38") != -1).assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200",
+                "buffer",
+                "GPSLatitude",
+                "114,3",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_009
-     * @tc.name      : modifyImageProperty(GPSLatitudeRef,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_009', 0, async function (done) {
-        function checkProps(result){
-            expect(result == "N").assertTrue();
-        }
-        modifyCb1(done, 'modify_03_009', 'fd', "GPSLatitudeRef", "N", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300
+         * @tc.name      : modifyImageProperty(GPSLongitude,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("9") != -1).assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300",
+                "buffer",
+                "GPSLongitude",
+                "18,2",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_010
-     * @tc.name      : modifyImageProperty(GPSLongitudeRef,property)-callback 
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value,options)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_010', 0, async function (done) {
-        function checkProps(result){
-            expect(result == "W").assertTrue();
-        }
-        modifyCb1(done, 'modify_03_010', 'fd', "GPSLongitudeRef", "W", checkProps);
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "N").assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400",
+                "buffer",
+                "GPSLatitudeRef",
+                "N",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_011
-     * @tc.name      : modifyImageProperty(Orientation)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_011', 0, async function (done) {
-        modifyImageErrPromise(done, 'modify_01_011', 'fd', "Orientation", "abcdef")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "W").assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500",
+                "buffer",
+                "GPSLongitudeRef",
+                "W",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_012
-     * @tc.name      : modifyImageProperty(GPSLatitude)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_012', 0, async function (done) {
-        modifyImageErrPromise(done, 'modify_01_012', 'fd', "GPSLatitude", "abc,3")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0600
+         * @tc.name      : modifyImageProperty(Orientation,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0600", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "Top-right").assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0600",
+                "fd",
+                "Orientation",
+                "2",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_013
-     * @tc.name      : modifyImageProperty(GPSLongitude)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_013', 0, async function (done) {
-        modifyImageErrPromise(done, 'modify_01_013', 'fd', "GPSLongitude", "abc,2")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0700
+         * @tc.name      : modifyImageProperty(GPSLatitude,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0700", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("38") != -1).assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0700",
+                "fd",
+                "GPSLatitude",
+                "114,3",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_014
-     * @tc.name      : modifyImageProperty(GPSLatitudeRef)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_014', 0, async function (done) {
-        modifyImageErrPromise(done, 'modify_01_014', 'fd', "GPSLatitudeRef", "456")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0800
+         * @tc.name      : modifyImageProperty(GPSLongitude,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0800", 0, async function (done) {
+            function checkProps(result) {
+                expect(result.search("9") != -1).assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0800",
+                "fd",
+                "GPSLongitude",
+                "18,2",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_015
-     * @tc.name      : modifyImageProperty(GPSLongitudeRef)-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_015', 0, async function (done) {
-        modifyImageErrPromise(done, 'modify_01_015', 'fd', "GPSLongitudeRef", "1234")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0900
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0900", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "N").assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0900",
+                "fd",
+                "GPSLatitudeRef",
+                "N",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_016
-     * @tc.name      : modifyImageProperty()-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_016', 0, async function (done) {
-        modifyImageErrPromise(done, "modify_01_016", "buffer", "Orientation", "abcdef")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1000
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef,property)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value,options)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1000", 0, async function (done) {
+            function checkProps(result) {
+                expect(result == "W").assertTrue();
+            }
+            modifyCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1000",
+                "fd",
+                "GPSLongitudeRef",
+                "W",
+                checkProps
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_017
-     * @tc.name      : modifyImageProperty()-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_017', 0, async function (done) {
-        modifyImageErrPromise(done, "modify_01_017", "buffer", "GPSLatitude", "abc,3")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100
+         * @tc.name      : modifyImageProperty(Orientation)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100",
+                "fd",
+                "Orientation",
+                "abcdef"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_018
-     * @tc.name      : modifyImageProperty()-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_018', 0, async function (done) {
-        modifyImageErrPromise(done, "modify_01_018", "buffer", "GPSLongitude", "abc,2")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200
+         * @tc.name      : modifyImageProperty(GPSLatitude)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200",
+                "fd",
+                "GPSLatitude",
+                "abc,3"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_019
-     * @tc.name      : modifyImageProperty()-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_019', 0, async function (done) {
-        modifyImageErrPromise(done, "modify_01_019", "buffer", "GPSLatitudeRef", "456")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0300
+         * @tc.name      : modifyImageProperty(GPSLongitude)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0300", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200",
+                "fd",
+                "GPSLongitude",
+                "abc,2"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_01_020
-     * @tc.name      : modifyImageProperty()-promise
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_01_020', 0, async function (done) {
-        modifyImageErrPromise(done, "modify_01_020", "buffer", "GPSLongitudeRef", "1234")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400",
+                "fd",
+                "GPSLatitudeRef",
+                "456"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_011
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_011', 0, async function (done) {
-        modifyErrCb(done, "modify_02_011", "fd", "Orientation", "abcdef")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500",
+                "fd",
+                "GPSLongitudeRef",
+                "1234"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_012
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_012', 0, async function (done) {
-        modifyErrCb(done, "modify_02_012", "fd", "GPSLatitude", "abc,3")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600
+         * @tc.name      : modifyImageProperty(Orientation)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600",
+                "buffer",
+                "Orientation",
+                "abcdef"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_013
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_013', 0, async function (done) {
-        modifyErrCb(done, "modify_02_013", "fd", "GPSLongitude", "abc,2")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700
+         * @tc.name      : modifyImageProperty(GPSLatitude)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700",
+                "buffer",
+                "GPSLatitude",
+                "abc,3"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_014
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_014', 0, async function (done) {
-        modifyErrCb(done, "modify_02_014", "fd", "GPSLongitudeRef", "1234")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800
+         * @tc.name      : modifyImageProperty(GPSLongitude)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800",
+                "buffer",
+                "GPSLongitude",
+                "abc,2"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_015
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_015', 0, async function (done) {
-        modifyErrCb(done, "modify_02_015", "fd", "GPSLatitudeRef", "456")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900",
+                "buffer",
+                "GPSLatitudeRef",
+                "456"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_016
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_016', 0, async function (done) {
-        modifyErrCb(done, "modify_02_016", "buffer", "Orientation", "abcdef")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000", 0, async function (done) {
+            modifyImageErrPromise(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000",
+                "buffer",
+                "GPSLongitudeRef",
+                "1234"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_02_017
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_017', 0, async function (done) {
-        modifyErrCb(done, "modify_02_017", "buffer", "GPSLatitude", "abc,3")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100
+         * @tc.name      : modifyImageProperty(Orientation)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100", 0, async function (done) {
+            modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100", "fd", "Orientation", "abcdef");
+        });
 
-    /**
-     * @tc.number    : modify_02_018
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_018', 0, async function (done) {
-        modifyErrCb(done, "modify_02_018", "buffer", "GPSLongitude", "abc,2")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200
+         * @tc.name      : modifyImageProperty(GPSLatitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200", 0, async function (done) {
+            modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200", "fd", "GPSLatitude", "abc,3");
+        });
 
-    /**
-     * @tc.number    : modify_02_019
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_019', 0, async function (done) {
-        modifyErrCb(done, "modify_02_019", "buffer", "GPSLongitudeRef", "1234")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300
+         * @tc.name      : modifyImageProperty(GPSLongitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300", 0, async function (done) {
+            modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300", "fd", "GPSLongitude", "abc,2");
+        });
 
-    /**
-     * @tc.number    : modify_02_020
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_02_020', 0, async function (done) {
-        modifyErrCb(done, "modify_02_020", "buffer", "GPSLatitudeRef", "456")
-    })
-    
-    /**
-     * @tc.number    : modify_03_011
-     * @tc.name      : modifyImageProperty()-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_011', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_011", "fd", "Orientation", "abcdef")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400", 0, async function (done) {
+            modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400", "fd", "GPSLongitudeRef", "1234");
+        });
 
-    /**
-     * @tc.number    : modify_03_012
-     * @tc.name      : modifyImageProperty()-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_012', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_012", "fd", "GPSLatitude", "abc,3")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500", 0, async function (done) {
+            modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500", "fd", "GPSLatitudeRef", "456");
+        });
 
-    /**
-     * @tc.number    : modify_03_013
-     * @tc.name      : modifyImageProperty()-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_013', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_013", "fd", "GPSLongitude", "abc,2")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600
+         * @tc.name      : modifyImageProperty(Orientation)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600", 0, async function (done) {
+            modifyErrCb(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600",
+                "buffer",
+                "Orientation",
+                "abcdef"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_014
-     * @tc.name      : modifyImageProperty()-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_014', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_014", "fd", "GPSLatitudeRef", "1234")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700
+         * @tc.name      : modifyImageProperty(GPSLatitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700", 0, async function (done) {
+            modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700", "buffer", "GPSLatitude", "abc,3");
+        });
 
-    /**
-     * @tc.number    : modify_03_015
-     * @tc.name      : modifyImageProperty()-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_015', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_015", "fd", "GPSLongitudeRef", "567")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800
+         * @tc.name      : modifyImageProperty(GPSLongitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800", 0, async function (done) {
+            modifyErrCb(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800",
+                "buffer",
+                "GPSLongitude",
+                "abc,2"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_016
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_016', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_016", "buffer", "Orientation", "abcef")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900", 0, async function (done) {
+            modifyErrCb(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900",
+                "buffer",
+                "GPSLongitudeRef",
+                "1234"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_017
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_017', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_017", "buffer", "GPSLatitude", "abc,3")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000", 0, async function (done) {
+            modifyErrCb(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000",
+                "buffer",
+                "GPSLatitudeRef",
+                "456"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_018
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_018', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_018", "buffer", "GPSLongitude", "abc,2")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100
+         * @tc.name      : modifyImageProperty(Orientation)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100",
+                "fd",
+                "Orientation",
+                "abcdef"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_019
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_019', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_019", "buffer", "GPSLatitudeRef", "456")
-    })
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200
+         * @tc.name      : modifyImageProperty(GPSLatitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200",
+                "fd",
+                "GPSLatitude",
+                "abc,3"
+            );
+        });
 
-    /**
-     * @tc.number    : modify_03_020
-     * @tc.name      : modifyImageProperty-callback
-     * @tc.desc      : 1.create imagesource
-     *                 2.call modifyImageProperty(key,value)
-     *                 3.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('modify_03_020', 0, async function (done) {
-        modifyErrCb1(done, "modify_03_020", "buffer", "GPSLongitudeRef", "1234")
-    })
-})}
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300
+         * @tc.name      : modifyImageProperty(GPSLongitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300",
+                "fd",
+                "GPSLongitude",
+                "abc,2"
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400",
+                "fd",
+                "GPSLatitudeRef",
+                "1234"
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500",
+                "fd",
+                "GPSLongitudeRef",
+                "567"
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600
+         * @tc.name      : modifyImageProperty(Orientation)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600",
+                "buffer",
+                "Orientation",
+                "abcef"
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700
+         * @tc.name      : modifyImageProperty(GPSLatitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700",
+                "buffer",
+                "GPSLatitude",
+                "abc,3"
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800
+         * @tc.name      : modifyImageProperty(GPSLongitude)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800",
+                "buffer",
+                "GPSLongitude",
+                "abc,2"
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900
+         * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900",
+                "buffer",
+                "GPSLatitudeRef",
+                "456"
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000
+         * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.call modifyImageProperty(key,value)
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000", 0, async function (done) {
+            modifyErrCb1(
+                done,
+                "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000",
+                "buffer",
+                "GPSLongitudeRef",
+                "1234"
+            );
+        });
+    });
+}

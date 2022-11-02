@@ -19,7 +19,7 @@ hctest_suite("ActsBootstrapTest") {
 
   include_dirs = [
     "src",
-    "//utils/native/native_lite/include",
+    "//commonlibrary/utils_lite/include",
   ]
   cflags = [ "-Wno-error" ]
 }

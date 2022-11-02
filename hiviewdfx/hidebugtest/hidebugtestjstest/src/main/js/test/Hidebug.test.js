@@ -14,6 +14,8 @@
  */
 import hidebug from '@ohos.hidebug'
 import fileio from '@ohos.fileio'
+import process from '@ohos.process'
+import featureAbility from '@ohos.ability.featureAbility'
 import {describe, it, expect} from '@ohos/hypium'
 
 export default function HidebugJsTest() {
@@ -189,7 +191,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling with overlong parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('cDFX_DFR_Hiprofiler_Interface_1300', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1300', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1300 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
@@ -337,49 +339,161 @@ describe('HidebugJsTest', function () {
      */
     it('DFX_DFR_Hiprofiler_Interface_1100', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1100 Test start*************');
-        try {
-            let temp = hidebug.getServiceDump(10);
-            console.info("ServiceDump is " + temp);
-            expect(temp.indexOf('Success')!=-1).assertTrue();
-        } catch (error) {
-            expect().assertFail();
-        }
+        let context = featureAbility.getContext();
+        context.getFilesDir().then((data) => {
+            var path = data + "/serviceInfo1.txt"
+            let fd = fileio.openSync(path, 0o102, 0o666)
+            var serviceId = 10
+            var args = new Array("allInfo")
+            try {
+                hidebug.getServiceDump(serviceId, fd, args)
+                expect(true).assertTrue();
+            } catch (error) {
+                expect().assertFail();
+                console.info(error.code)
+                console.info(error.message)
+            }
+            fileio.closeSync(fd);
+        })
         console.log('************* DFX_DFR_Hiprofiler_Interface_1100 Test end*************');
     });
 
     /*
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_0900
-     * @tc.name      : getServiceDump with abnormal parameter
+     * @tc.name      : getServiceDump with parameter error
      * @tc.desc      : getServiceDump
      */
     it('DFX_DFR_Hiprofiler_Interface_0900', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0900 Test start*************');
-        try {
-            let temp = hidebug.getServiceDump(-1);
-            console.info("ServiceDump is " + temp);
-            expect(temp=="Error: no such system ability service.").assertTrue();
-        } catch (error) {
-            expect().assertFail();
-        }
+        let context = featureAbility.getContext();
+        context.getFilesDir().then((data) => {
+            var path = data + "/serviceInfo2.txt"
+            let fd = fileio.openSync(path, 0o102, 0o666)
+            var serviceId = 10
+            var args = new Array("allInfo")
+            try {
+                hidebug.getServiceDump(serviceId)
+                expect().assertFail();
+            } catch (error) {
+                console.info(error.code)
+                console.info(error.message)
+                expect(error.code == 401).assertTrue();
+            }
+            fileio.closeSync(fd);
+        })
         console.log('************* DFX_DFR_Hiprofiler_Interface_0900 Test end*************');
     });
 
     /*
      * @tc.number    : DFX_DFR_Hiprofiler_Interface_1000
-     * @tc.name      : getServiceDump with overlog parameter
+     * @tc.name      : getServiceDump with check system ability failed
      * @tc.desc      : getServiceDump
      */
     it('DFX_DFR_Hiprofiler_Interface_1000', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1000 Test start*************');
-        try {
-            let temp = hidebug.getServiceDump(9007199254740993);
-            console.info("ServiceDump is " + temp);
-            expect(temp=="Error: invalid param").assertTrue();
-        } catch (error) {
-            expect().assertFail();
-        }
+        let context = featureAbility.getContext();
+        context.getFilesDir().then((data) => {
+            var path = data + "/serviceInfo3.txt"
+            let fd = fileio.openSync(path, 0o102, 0o666)
+            var serviceId = -10
+            var args = new Array("allInfo")
+            try {
+                hidebug.getServiceDump(serviceId, fd, args)
+                expect().assertFail();
+            } catch (error) {
+                console.info(error.code)
+                console.info(error.message)
+                expect(error.code == 11400101).assertTrue();
+            }
+            fileio.closeSync(fd);
+        })
         console.log('************* DFX_DFR_Hiprofiler_Interface_1000 Test end*************');
     });
-    
+
+    /*
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1800
+     * @tc.name      : startJsCpuProfiling/stopJsCpuProfiling with normal parameter
+     * @tc.desc      : startJsCpuProfiling/stopJsCpuProfiling
+     */
+     it('DFX_DFR_Hiprofiler_Interface_1800', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1800 Test start*************');
+        try {
+            let timestamp = Date.now();
+            let filename = "cpuprofiler_" + timestamp.toString();
+            hidebug.startJsCpuProfiling(filename);
+            for (var i = 0; i < 3; i++) {
+                hidebug.getSharedDirty();
+            }
+            hidebug.stopJsCpuProfiling();
+            var pid = process.pid;
+            let path = "/proc/" + pid + "/root/data/storage/el2/base/files/" + filename + ".json";
+            let data = fileio.readTextSync(path);
+            if (data.includes("napi")) {
+                expect(true).assertTrue();
+            } else {
+                expect(false).assertTrue();
+            }
+        } catch (err) {
+            console.error('DFX_DFR_Hiprofiler_Interface_1800 has failed for ' + err);
+            expect(false).assertTrue();
+        }
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1800 Test end*************');
+    });
+
+    /*
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1900
+     * @tc.name      : startJsCpuProfiling/stopJsCpuProfiling with abnormal parameter
+     * @tc.desc      : startJsCpuProfiling/stopJsCpuProfiling
+     */
+     it('DFX_DFR_Hiprofiler_Interface_1900', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1900 Test start*************');
+        try {
+            hidebug.startJsCpuProfiling();
+            for (var i = 0; i < 3; i++) {
+                hidebug.getSharedDirty();
+            }
+            hidebug.stopJsCpuProfiling();
+        } catch (error) {
+            console.info(error.code);
+            console.info(error.message);
+            expect(error.code == 401).assertTrue();
+        }
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1900 Test end*************');
+    });
+
+    /*
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_2000
+     * @tc.name      : dumpJsHeapData with normal parameter
+     * @tc.desc      : dumpJsHeapData
+     */
+     it('DFX_DFR_Hiprofiler_Interface_2000', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_2000 Test start*************');
+        try {
+            hidebug.dumpJsHeapData("heapData");
+            expect(true).assertTrue();
+        } catch (error) {
+            console.info(error.code);
+            console.info(error.message);
+        }
+        console.log('************* DFX_DFR_Hiprofiler_Interface_2000 Test end*************');
+    });
+
+    /*
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_2100
+     * @tc.name      : dumpJsHeapData with abnormal parameter
+     * @tc.desc      : dumpJsHeapData
+     */
+     it('DFX_DFR_Hiprofiler_Interface_2100', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_2100 Test start*************');
+        try {
+            hidebug.dumpJsHeapData();
+        } catch (error) {
+            console.info(error.code);
+            console.info(error.message);
+            expect(error.code == 401).assertTrue();
+        }
+        console.log('************* DFX_DFR_Hiprofiler_Interface_2100 Test end*************');
+    });
+
 })
 }

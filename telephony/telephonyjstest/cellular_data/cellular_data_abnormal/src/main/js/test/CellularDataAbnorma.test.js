@@ -202,5 +202,14 @@ describe("ActsCellularDataAbnormalTest", function () {
             done();
         }
     })
+
+    it("Telephony_CellularData_getDefaultCellularDataSlotIdSync_0100", 0, async function (done) {
+        let data = cellular.getDefaultCellularDataSlotIdSync();
+        console.info("Telephony_CellularData_getDefaultCellularDataSlotIdSync_0100 " + JSON.stringify(data));
+        expect(data == 0 || data == 1).assertTrue;
+        done();
+        });
+
+
 })
 }

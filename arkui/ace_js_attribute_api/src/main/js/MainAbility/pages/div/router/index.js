@@ -15,7 +15,8 @@
 
 export default {
     data: {
-        title: "",
+        appData: 'localData',
+        appVersion:'1.0',
     },
     functionTest1() {
         var div = this.$element('div1');

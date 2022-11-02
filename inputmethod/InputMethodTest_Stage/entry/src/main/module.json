@@ -6,6 +6,8 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
+      "tablet",
+      "default",
             "phone"
         ],
         "deliveryWithInstall": true,
@@ -47,7 +49,10 @@
             {
               "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
               "reason":"need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
-            }
+            },
+          {
+            "name": "ohos.permission.CONNECT_IME_ABILITY"
+          }
         ]
     }
 }

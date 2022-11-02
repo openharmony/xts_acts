@@ -344,7 +344,7 @@ static int CapgetWithCaps(pid_t pid, unsigned int caps)
  */
 HWTEST_F(CapabilityTestSuite, CapabilityTest0600, Function | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     int status1 = 0;
     int status2 = 0;
     // Preset action: Fork a sub process pid1
@@ -404,7 +404,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest0600, Function | MediumTest | Level2
  */
 HWTEST_F(CapabilityTestSuite, CapabilityTest0700, Function | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     int status = 0;
     pid_t pid = fork(); // Preset action: Fork a sub process
     ASSERT_TRUE(pid >= 0) << "======== Fork Error! =========";
@@ -454,7 +454,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest0700, Function | MediumTest | Level2
  */
 HWTEST_F(CapabilityTestSuite, CapabilityTest0800, Function | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     int status = 0;
     // Preset action: Fork a sub process
     pid_t pid = fork();
@@ -522,7 +522,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest0800, Function | MediumTest | Level2
  */
 HWTEST_F(CapabilityTestSuite, CapabilityTest0900, Security | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     int status = 0;
     // Preset action: Fork a sub process
     pid_t pid = fork();
@@ -559,7 +559,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest0900, Security | MediumTest | Level2
  */
 HWTEST_F(CapabilityTestSuite, CapabilityTest1000, Function | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     int status1 = 0;
     int status2 = 0;
     // Preset action: Fork a sub process pid1
@@ -623,7 +623,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1000, Function | MediumTest | Level2
  */
 HWTEST_F(CapabilityTestSuite, CapabilityTest1100, Function | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     int status = 0;
     struct timespec tp = { 0 };
     // Preset action: Fork a sub process
@@ -821,7 +821,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1500, Reliability | MediumTest | Lev
  */
 HWTEST_F(CapabilityTestSuite, CapabilityTest1600, Reliability | MediumTest | Level3)
 {
-    int ret;
+    int ret = 0;
     int status = 0;
     // Preset action: Fork a sub process
     pid_t pid = fork();
@@ -901,7 +901,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1700, Reliability | MediumTest | Lev
  */
 HWTEST_F(CapabilityTestSuite, CapabilityTest1800, Reliability | MediumTest | Level3)
 {
-    int ret;
+    int ret = 0;
     int status = 0;
     // Preset action: Fork a sub process
     pid_t pid = fork();
@@ -939,7 +939,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1800, Reliability | MediumTest | Lev
  */
 HWTEST_F(CapabilityTestSuite, CapabilityTest1900, Reliability | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     int status = 0;
     // Preset action: Fork a sub process
     pid_t pid = fork();

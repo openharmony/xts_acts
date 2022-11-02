@@ -13,25 +13,53 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { BY,UiDriver,UiComponent } from '@ohos.uitest';
 import commonEvent from '@ohos.commonEvent';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import power from '@ohos.power';
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export default function OnAndOffScreenTest() {
 
   describe('OnAndOffScreenTest', function () {
 
     let TAG = "";
-    let TAG1 = "SUB_AA_OpenHarmony == ";
+    let TAG1 = "SUB_AA_OpenHarmony == OnAndOffScreenTest : ";
     let sleepTimeOne = 1000;
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let id = undefined;
+    beforeAll(async (done) => {
+        console.log(TAG1 + "beforeAll called");
+        let myReason = 'test FaShowOnLockTest';
+        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+            console.log(TAG1 + "Request suspension delay will time out.");
+        })
+        id = delayInfo.requestId;
+        console.log(TAG1 + "requestId is : " + id);
+        setTimeout(function () {
+            console.log(TAG1 + "beforeAll end");
+            done();
+        }, sleepTimeOne);
+    })
+        
+    afterAll(async (done) => {
+        console.log(TAG1 + "afterAll called");
+        backgroundTaskManager.cancelSuspendDelay(id);
+        setTimeout(function () {
+            console.log(TAG1 + "afterAll end");
+            done();
+        }, sleepTimeOne);
+    })
 
     async function slideScreen(TAG) {
+      await sleep(1500)
       console.log(TAG + "slideScreen start");
-      var driver = UiDriver.create();
-      await driver.swipe(1000, 3000, 1000, 500, 1200);
-      await driver.delayMs(500);
+      let cmd = 'uinput -T -d 300 600 -m 300 600 300 100 -u 300 100';
+      await executeShellCommand(cmd, TAG);
+      await sleep(500)
       console.log(TAG + "slideScreen end");
     }
 

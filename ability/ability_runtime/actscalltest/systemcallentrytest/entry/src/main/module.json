@@ -6,7 +6,7 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
-            "phone"
+            "default"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
@@ -80,6 +80,18 @@
           {
             "name":"ohos.permission.CLEAN_BACKGROUND_PROCESSES",
             "reason":"need use ohos.permission.CLEAN_BACKGROUND_PROCESSES"
+          },
+          {
+            "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+            "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+          },
+          {
+            "name":"ohos.permission.START_INVISIBLE_ABILITY",
+            "reason":"need use ohos.permission.START_INVISIBLE_ABILITY"
+          },
+          {
+            "name":"ohos.permission.ABILITY_BACKGROUND_COMMUNICATION",
+            "reason":"need use ohos.permission.ABILITY_BACKGROUND_COMMUNICATION"
           }
         ]
     }

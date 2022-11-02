@@ -21,7 +21,7 @@ ohos_js_hap_suite("mediaLibrary_fileKey_hap") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsMediaLibraryFileKey"
+  hap_name = "ActsMediaLibraryFileKeyTest"
 }
 
 ohos_app_scope("medialibrary_app_profile") {

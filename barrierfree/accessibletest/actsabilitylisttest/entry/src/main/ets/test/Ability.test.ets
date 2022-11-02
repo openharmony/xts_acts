@@ -38,7 +38,6 @@ export default function abilityTest() {
       prompt.showToast({
         message: 'CASE All End'
       })
-      disableAll(LOG_PREFIX + ' disableAll ')
       done()
     })
     /**
@@ -53,7 +52,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('spoken', 'install', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -99,7 +98,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('audible', 'install', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -145,7 +144,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('visual', 'install', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -191,7 +190,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('haptic', 'install', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -237,7 +236,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('generic', 'install', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -283,7 +282,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('all', 'enable', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -307,7 +306,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('all', 'enable', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -334,7 +333,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('all', 'enable', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -361,7 +360,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('all', 'enable', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.error(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -515,7 +514,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME, GENERIC_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('all', 'disable', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }
@@ -561,7 +560,7 @@ export default function abilityTest() {
         disableAbility(logTag, [AUDIBLE_BUNDLE_NAME])
         setTimeout(() => {
           accessibility.getAbilityLists('all', 'disable', (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
               console.info(logTag + 'failed to getAbilityLists because ' + JSON.stringify(err))
               return
             }

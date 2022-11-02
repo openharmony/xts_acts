@@ -6,6 +6,7 @@
     "description": "$string:module2_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
+      "default",
       "tablet"
     ],
     "deliveryWithInstall": true,

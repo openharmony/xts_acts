@@ -17,7 +17,8 @@
     "package": "com.example.bmsaccesstoken2",
     "name": ".MyApplication1",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -104,8 +105,8 @@
         "reason": "use ohos.permission.USE_BLUETOOTH"
       },
       {
-        "name": "ohos.permission.SYSTEM_FLOAT_WINDOW",
-        "reason": "use ohos.permission.SYSTEM_FLOAT_WINDOW"
+        "name": "ohos.permission.VIBRATE",
+        "reason": "use ohos.permission.VIBRATE"
       }
     ]
   }

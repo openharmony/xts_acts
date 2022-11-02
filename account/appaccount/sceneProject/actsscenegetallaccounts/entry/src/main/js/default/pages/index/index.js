@@ -29,12 +29,16 @@ export default {
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat scene manager finish====");
         var enableBundle = "com.example.actsgetallaaccounts";
+        var enableBundle2 = "com.example.actsgetaccountsbyowner";
         console.debug("====>add account scene start====");
-        appAccountManager.addAccount("account_name_scene_single", (err)=>{
+        appAccountManager.createAccount("account_name_scene_single", (err)=>{
             console.debug("====>add account scene err:" + JSON.stringify(err));
-            appAccountManager.enableAppAccess("account_name_scene_single", enableBundle, (err)=>{
+            appAccountManager.setAppAccess("account_name_scene_single", enableBundle, true, (err)=>{
                 console.debug("====>enableAppAccess scene err:" + JSON.stringify(err));
-                featureAbility.terminateSelf()
+                appAccountManager.setAppAccess("account_name_scene_single", enableBundle2, true, (err)=>{
+                    console.debug("====>enableAppAccess scene err:" + JSON.stringify(err));
+                    featureAbility.terminateSelf()
+                })                
             });
         });
     },

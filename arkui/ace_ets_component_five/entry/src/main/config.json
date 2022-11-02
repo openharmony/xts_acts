@@ -18,6 +18,8 @@
     "name": ".MyApplication",
     "mainAbility": "com.open.harmony.acetestfive.MainAbility",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

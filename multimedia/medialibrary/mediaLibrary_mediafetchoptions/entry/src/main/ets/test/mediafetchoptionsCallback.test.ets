@@ -23,7 +23,6 @@ import {
     AUDIO_TYPE,
     VIDEO_TYPE,
     FILE_TYPE,
-    FILEKEY,
     checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
@@ -36,7 +35,7 @@ export default function mediafetchoptionsCallback(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileAssetUri');
+            await checkPresetsAssets(media, 'ActsMediaLibraryMediafetchoptionsTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -87,60 +86,60 @@ export default function mediafetchoptionsCallback(abilityContext) {
             }
         }
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_001
          * @tc.name      : uri
          * @tc.desc      : serach image asset by uri
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_001', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_001';
+        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_001', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_001';
             let currentFetchOp = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = 'image';
             await serachUri(done, testNum, currentFetchOp, type);
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_002
          * @tc.name      : uri
          * @tc.desc      : serach audio asset by uri
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_002', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_002';
+        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_002', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_002';
             let currentFetchOp = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = 'audio';
             await serachUri(done, testNum, currentFetchOp, type);
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_003
          * @tc.name      : uri
          * @tc.desc      : serach video asset by uri
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_003', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_003';
+        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_003', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_003';
             let currentFetchOp = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = 'video';
             await serachUri(done, testNum, currentFetchOp, type);
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_004
          * @tc.name      : uri
          * @tc.desc      : serach file asset by uri
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_004', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_Callback_004';
+        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_004', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_004';
             let currentFetchOp = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = 'file';
             await serachUri(done, testNum, currentFetchOp, type);

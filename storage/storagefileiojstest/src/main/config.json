@@ -16,6 +16,8 @@
         "package": "ohos.acts.storage.fileio",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

@@ -66,7 +66,7 @@ export default function pasteBoardJEtsunitTest() {
               console.info('f_test1: primaryText = ' + primaryText);
 
               console.info('Checks pasteboard MAX_RECORD_NUM' + pasteboard.MAX_RECORD_NUM);
-              expect(pasteboard.MAX_RECORD_NUM == 128).assertTrue();
+              expect(pasteboard.MAX_RECORD_NUM == 512).assertTrue();
 
               console.info('Checks PasteDataProperty.localOnly')
               var pasteDataProperty = pasteData1.getProperty()
@@ -3358,6 +3358,7 @@ export default function pasteBoardJEtsunitTest() {
           console.info('f_test64 Checks there is content in the pasteboard')
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test64 systemPasteboard.hasPasteData promise data = ' + data);
+            expect(data).assertTrue();
 
             console.info('f_test64 Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -3365,12 +3366,14 @@ export default function pasteBoardJEtsunitTest() {
               var pasteData1 = data;
               var recordCount = pasteData1.getRecordCount();
               console.info('f_test64 recordCount = ' + recordCount);
+              expect(recordCount).assertEqual(1)
 
               console.info('f_test64 Removes the Record')
               pasteData1.removeRecordAt(0)
 
               console.info('f_test64 Checks the number of records');
               var recordCount1 = pasteData1.getRecordCount();
+              expect(recordCount1).assertEqual(0);
               console.info('f_test64 recordCount = ' + recordCount1);
 
               console.info('SUB_pasteBoard_function_JS_API_6400 end');
@@ -3427,7 +3430,7 @@ export default function pasteBoardJEtsunitTest() {
                 systemPasteboard.hasPasteData().then((data) => {
                   console.info('f_test65 systemPasteboard.hasPasteData promise data = ' + data);
 
-                  console.info('SUB_pasteBoard_function_JS_API_6400 end');
+                  console.info('SUB_pasteBoard_function_JS_API_6500 end');
                   done();
                 });
               });

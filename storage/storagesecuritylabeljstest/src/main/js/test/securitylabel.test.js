@@ -81,8 +81,8 @@ describe('securitylabel', function () {
      it('securitylabel_test_set_security_label_sync_002', 0, async function () {
         try {
             let result = securityLabel.setSecurityLabelSync("/data/aaa.txt", "s0");
-            expect(result.code == -1).assertTrue();
-        } catch (e) {
+            expect(result.message == "No such file or directory").assertTrue();
+        } catch (err) {
             console.log('securitylabel_test_set_security_label_sync_002 has failed for ' + err);
         }
     });
@@ -291,7 +291,7 @@ describe('securitylabel', function () {
             await securityLabel.setSecurityLabel('/data/test.txt', 's0');
         } catch (err) {
             console.log('securitylabel_test_set_security_label_async_006 has failed for ' + err);
-            expect(err.code == -1).assertTrue();
+            expect(err.message == "No such file or directory").assertTrue();
             done();
         }
     });

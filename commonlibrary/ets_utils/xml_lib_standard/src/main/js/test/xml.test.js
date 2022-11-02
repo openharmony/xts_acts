@@ -20,7 +20,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDeclaration001
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
-     * @tc.author: lihucheng
      */
     it('testSetDeclaration001', 0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
@@ -38,7 +37,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDeclaration002
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
-     * @tc.author: lihucheng
      */
     it('testSetDeclaration002', 0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
@@ -56,7 +54,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDeclaration003
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
-     * @tc.author: lihucheng
      */
     it('testSetDeclaration003', 0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
@@ -74,7 +71,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDeclaration004
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
-     * @tc.author: lihucheng
      */
     it('testSetDeclaration004', 0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
@@ -92,7 +88,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDeclaration005
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
-     * @tc.author: lihucheng
      */
     it('testSetDeclaration005', 0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
@@ -110,7 +105,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testStartElement001
      * @tc.desc: Writes an elemnet start tag with the given name.
-     * @tc.author: lihucheng
      */
     it('testStartElement001', 0, function () {
         const myMAX = 2048;
@@ -130,7 +124,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testStartElement002
      * @tc.desc: Writes an elemnet start tag with the given name.
-     * @tc.author: lihucheng
      */
     it('testStartElement002', 0, function () {
         const myMAX = 2048;
@@ -152,7 +145,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testStartElement003
      * @tc.desc: Writes an elemnet start tag with the given name.
-     * @tc.author: lihucheng
      */
     it('testStartElement003', 0, function () {
         const myMAX = 2048;
@@ -174,7 +166,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testStartElement004
      * @tc.desc: Writes an elemnet start tag with the given name.
-     * @tc.author: lihucheng
      */
     it('testStartElement004', 0, function () {
         const myMAX = 2048;
@@ -198,7 +189,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testStartElement005
      * @tc.desc: Writes an elemnet start tag with the given name.
-     * @tc.author: lihucheng
      */
     it('testStartElement005', 0, function () {
         const myMAX = 2048;
@@ -222,7 +212,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetAttributes001
      * @tc.desc: Write an attribute.
-     * @tc.author: lihucheng
      */
     it('testSetAttributes001', 0, function () {
         const myMAX = 2048;
@@ -243,7 +232,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetAttributes002
      * @tc.desc: Write an attribute.
-     * @tc.author: lihucheng
      */
     it('testSetAttributes002', 0, function () {
         const myMAX = 2048;
@@ -265,7 +253,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetAttributes003
      * @tc.desc: Write an attribute.
-     * @tc.author: lihucheng
      */
     it('testSetAttributes003', 0, function () {
         const myMAX = 2048;
@@ -288,7 +275,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetAttributes004
      * @tc.desc: Write an attribute.
-     * @tc.author: lihucheng
      */
     it('testSetAttributes004', 0, function () {
         const myMAX = 2048;
@@ -312,7 +298,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetAttributes005
      * @tc.desc: Write an attribute.
-     * @tc.author: lihucheng
      */
     it('testSetAttributes005', 0, function () {
         const myMAX = 2048;
@@ -336,7 +321,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEndElement001
      * @tc.desc: Writes end tag of the element.
-     * @tc.author: lihucheng
      */
     it('testEndElement001', 0, function () {
         const myMAX = 2048;
@@ -356,7 +340,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEndElement002
      * @tc.desc: Writes end tag of the element.
-     * @tc.author: lihucheng
      */
     it('testEndElement002', 0, function () {
         const myMAX = 2048;
@@ -377,7 +360,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEndElement003
      * @tc.desc: Writes end tag of the element.
-     * @tc.author: lihucheng
      */
     it('testEndElement003', 0, function () {
         const myMAX = 2048;
@@ -398,7 +380,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEndElement004
      * @tc.desc: Writes end tag of the element.
-     * @tc.author: lihucheng
      */
     it('testEndElement004', 0, function () {
         const myMAX = 2048;
@@ -420,7 +401,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEndElement005
      * @tc.desc: Writes end tag of the element.
-     * @tc.author: lihucheng
      */
     it('testEndElement005', 0, function () {
         const myMAX = 2048;
@@ -441,7 +421,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetText001
      * @tc.desc: Writes the text.
-     * @tc.author: lihucheng
      */
     it('testSetText001', 0, function () {
         const myMAX = 2048;
@@ -463,7 +442,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetText002
      * @tc.desc: Writes the text.
-     * @tc.author: lihucheng
      */
     it('testSetText002', 0, function () {
         const myMAX = 2048;
@@ -485,7 +463,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetText003
      * @tc.desc: Writes the text.
-     * @tc.author: lihucheng
      */
     it('testSetText003', 0, function () {
         const myMAX = 2048;
@@ -507,7 +484,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetText004
      * @tc.desc: Writes the text.
-     * @tc.author: lihucheng
      */
     it('testSetText004', 0, function () {
         const myMAX = 2048;
@@ -529,7 +505,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetText005
      * @tc.desc: Writes the text.
-     * @tc.author: lihucheng
      */
     it('testSetText005', 0, function () {
         const myMAX = 2048;
@@ -551,7 +526,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testAddEmptyElement001
      * @tc.desc: Add an empty element.
-     * @tc.author: lihucheng
      */
     it('testAddEmptyElement001', 0, function () {
         const myMAX = 2048;
@@ -572,7 +546,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testAddEmptyElement002
      * @tc.desc: Add an empty element.
-     * @tc.author: lihucheng
      */
     it('testAddEmptyElement002', 0, function () {
         const myMAX = 2048;
@@ -593,7 +566,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testAddEmptyElement003
      * @tc.desc: Add an empty element.
-     * @tc.author: lihucheng
      */
     it('testAddEmptyElement003', 0, function () {
         const myMAX = 2048;
@@ -614,7 +586,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testAddEmptyElement004
      * @tc.desc: Add an empty element.
-     * @tc.author: lihucheng
      */
     it('testAddEmptyElement004', 0, function () {
         const myMAX = 2048;
@@ -633,7 +604,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testAddEmptyElement005
      * @tc.desc: Add an empty element.
-     * @tc.author: lihucheng
      */
     it('testAddEmptyElement005', 0, function () {
         const myMAX = 2048;
@@ -655,7 +625,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetNamespace001
      * @tc.desc: Writes the namespace of the current element tag.
-     * @tc.author: lihucheng
      */
     it('testSetNamespace001', 0, function () {
         const myMAX = 2048;
@@ -677,7 +646,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetNamespace002
      * @tc.desc: Writes the namespace of the current element tag.
-     * @tc.author: lihucheng
      */
     it('testSetNamespace002', 0, function () {
         const myMAX = 2048;
@@ -699,7 +667,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetNamespace003
      * @tc.desc: Writes the namespace of the current element tag.
-     * @tc.author: lihucheng
      */
     it('testSetNamespace003', 0, function () {
         const myMAX = 2048;
@@ -721,7 +688,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetNamespace004
      * @tc.desc: Writes the namespace of the current element tag.
-     * @tc.author: lihucheng
      */
     it('testSetNamespace004', 0, function () {
         const myMAX = 2048;
@@ -746,7 +712,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetNamespace005
      * @tc.desc: Writes the namespace of the current element tag.
-     * @tc.author: lihucheng
      */
     it('testSetNamespace005', 0, function () {
         const myMAX = 2048;
@@ -771,7 +736,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetComment001
      * @tc.desc: Writes the comment.
-     * @tc.author: lihucheng
      */
     it('testSetComment001', 0, function () {
         const myMAX = 2048;
@@ -792,7 +756,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetComment002
      * @tc.desc: Writes the comment.
-     * @tc.author: lihucheng
      */
     it('testSetComment002', 0, function () {
         const myMAX = 2048;
@@ -813,7 +776,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetComment003
      * @tc.desc: Writes the comment.
-     * @tc.author: lihucheng
      */
     it('testSetComment003', 0, function () {
         const myMAX = 2048;
@@ -832,7 +794,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetComment004
      * @tc.desc: Writes the comment.
-     * @tc.author: lihucheng
      */
     it('testSetComment004', 0, function () {
         const myMAX = 2048;
@@ -851,7 +812,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetComment005
      * @tc.desc: Writes the comment.
-     * @tc.author: lihucheng
      */
     it('testSetComment005', 0, function () {
         const myMAX = 2048;
@@ -872,7 +832,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDocType001
      * @tc.desc: Writes the DOCTYPE.
-     * @tc.author: lihucheng
      */
     it('testSetDocType001', 0, function () {
         const myMAX = 2048;
@@ -891,7 +850,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDocType002
      * @tc.desc: Writes the DOCTYPE.
-     * @tc.author: lihucheng
      */
     it('testSetDocType002', 0, function () {
         const myMAX = 2048;
@@ -910,7 +868,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDocType003
      * @tc.desc: Writes the DOCTYPE.
-     * @tc.author: lihucheng
      */
     it('testSetDocType003', 0, function () {
         const myMAX = 2048;
@@ -931,7 +888,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDocType004
      * @tc.desc: Writes the DOCTYPE.
-     * @tc.author: lihucheng
      */
     it('testSetDocType004', 0, function () {
         const myMAX = 2048;
@@ -952,7 +908,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetDocType005
      * @tc.desc: Writes the DOCTYPE.
-     * @tc.author: lihucheng
      */
     it('testSetDocType005', 0, function () {
         const myMAX = 2048;
@@ -973,7 +928,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetCDATA001
      * @tc.desc: Writes the CDATA.
-     * @tc.author: lihucheng
      */
     it('testSetCDATA001', 0, function () {
         const myMAX = 2048;
@@ -992,7 +946,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetCDATA002
      * @tc.desc: Writes the CDATA.
-     * @tc.author: lihucheng
      */
     it('testSetCDATA002', 0, function () {
         const myMAX = 2048;
@@ -1011,7 +964,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetCDATA003
      * @tc.desc: Writes the CDATA.
-     * @tc.author: lihucheng
      */
     it('testSetCDATA003', 0, function () {
         const myMAX = 2048;
@@ -1032,7 +984,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetCDATA004
      * @tc.desc: Writes the CDATA.
-     * @tc.author: lihucheng
      */
     it('testSetCDATA004', 0, function () {
         const myMAX = 2048;
@@ -1053,7 +1004,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testSetCDATA005
      * @tc.desc: Writes the CDATA.
-     * @tc.author: lihucheng
      */
     it('testSetCDATA005', 0, function () {
         const myMAX = 2048;
@@ -1074,7 +1024,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testParse001
      * @tc.desc: Starts parsing the XML file.
-     * @tc.author: lihucheng
      */
     it('testParse001', 0, function () {
         var strXml =
@@ -1097,7 +1046,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
@@ -1143,7 +1092,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testParse002
      * @tc.desc: Starts parsing the XML file.
-     * @tc.author: lihucheng
      */
     it('testParse002', 0, function () {
         var strXml =
@@ -1166,7 +1114,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
@@ -1209,7 +1157,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testParse003
      * @tc.desc: Starts parsing the XML file.
-     * @tc.author: lihucheng
      */
     it('testParse003', 0, function () {
         var strXml =
@@ -1232,7 +1179,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
@@ -1276,7 +1223,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testParse004
      * @tc.desc: Starts parsing the XML file.
-     * @tc.author: lihucheng
      */
     it('testParse004', 0, function () {
         var strXml =
@@ -1299,7 +1245,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
@@ -1320,7 +1266,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testParse005
      * @tc.desc: Starts parsing the XML file.
-     * @tc.author: lihucheng
      */
     it('testParse005', 0, function () {
         var strXml =
@@ -1343,7 +1288,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
@@ -1364,7 +1309,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType001
      * @tc.desc: Gets the START_DOCUMENT of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType001', 0, function () {
         var event = xml.EventType.START_DOCUMENT;
@@ -1374,7 +1318,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType002
      * @tc.desc: Gets the END_DOCUMENT of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType002', 0, function () {
         var event = xml.EventType.END_DOCUMENT;
@@ -1384,7 +1327,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType003
      * @tc.desc: Gets the START_TAG of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType003', 0, function () {
         var event = xml.EventType.START_TAG;
@@ -1394,7 +1336,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType004
      * @tc.desc: Gets the END_TAG of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType004', 0, function () {
         var event = xml.EventType.END_TAG;
@@ -1404,7 +1345,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType005
      * @tc.desc: Gets the TEXT of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType005', 0, function () {
         var event = xml.EventType.TEXT;
@@ -1414,7 +1354,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType006
      * @tc.desc: Gets the CDSECT of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType006', 0, function () {
         var event = xml.EventType.CDSECT;
@@ -1424,7 +1363,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType007
      * @tc.desc: Gets the COMMENT of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType007', 0, function () {
         var event = xml.EventType.COMMENT;
@@ -1434,7 +1372,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType008
      * @tc.desc: Gets the DOCDECL of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType008', 0, function () {
         var event = xml.EventType.DOCDECL;
@@ -1444,7 +1381,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType009
      * @tc.desc: Gets the INSTRUCTION of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType009', 0, function () {
         var event = xml.EventType.INSTRUCTION;
@@ -1454,7 +1390,6 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType010
      * @tc.desc: Gets the ENTITY_REFERENCE of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType010', 0, function () {
         var event = xml.EventType.ENTITY_REFERENCE;
@@ -1464,10 +1399,252 @@ describe('XmlSerializerXmlPullParserTest', function () {
     /**
      * @tc.name: testEventType011
      * @tc.desc: Gets the WHITESPACE of EventType.
-     * @tc.author: lihucheng
      */
     it('testEventType011', 0, function () {
         var event = xml.EventType.WHITESPACE;
         expect(event).assertEqual(10)
+    })
+
+    /**
+     * @tc.name: testBusinessError001
+     * @tc.desc: To XML text to JavaScript object.
+     */
+     it('testBusinessError001', 0, function () {
+        try {
+            new xml.XmlSerializer(123,"utf-8");
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be object")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError002
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError002', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            new xml.XmlSerializer(arrayBuffer,123);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError003
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError003', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError004
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError004', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.setAttributes(111, "high1");
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError005
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError005', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.setAttributes("importance1", 111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError006
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError006', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.setAttributes("importance", "high");
+            thatSer.setText(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError007
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError007', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.addEmptyElement(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError008
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError008', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.setDeclaration();
+            thatSer.setNamespace(111, "http://www.w3.org/TR/html4/");
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError009
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError009', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.setDeclaration();
+            thatSer.setNamespace("h", 111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError010
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError010', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.startElement("note");
+            thatSer.setComment(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError011
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError0011', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.setDocType(111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError012
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError0012', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
+            thatSer.setCDATA(111)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError013
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError0013', 0, function () {
+        try {
+            new xml.XmlPullParser(111, 'UTF-8');
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be object")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError014
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError0014', 0, function () {
+        try {
+            var arrayBuffer = new ArrayBuffer(2048);
+            new xml.XmlPullParser(arrayBuffer, 111);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.name: testBusinessError015
+     * @tc.desc: To XML text to JavaScript object.
+     */
+    it('testBusinessError0015', 0, function () {
+        try {
+            var strXml =
+                '<?xml version="1.0" encoding="utf-8"?>' +
+                '<!DOCTYPE note [\n<!ENTITY foo "baa">]>' +
+                '<note importance="high" logged="true">' +
+                '    <![CDATA[\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\n]]>' +
+                '    <!--Hello, World!-->' +
+                '    <company>John &amp; Hans</company>' +
+                '    <title>Happy</title>' +
+                '    <title>Happy</title>' +
+                '    <todo>Work</todo>' +
+                '    <todo>Play</todo>' +
+                '    <?go there?>' +
+                '    <a><b/></a>' +
+                '    <h:table xmlns:h="http://www.w3.org/TR/html4/">' +
+                '        <h:tr>' +
+                '            <h:td>Apples</h:td>' +
+                '            <h:td>Bananas</h:td>' +
+                '        </h:tr>' +
+                '    </h:table>' +
+                '</note>';
+            var arrayBuffer = new ArrayBuffer(strXml.length*2);
+            var bufView = new Uint8Array(arrayBuffer);
+            var strLen = strXml.length;
+            for (var i = 0; i < strLen; ++i) {
+                bufView[i] = strXml.charCodeAt(i);
+            }
+            var that = new xml.XmlPullParser(arrayBuffer, 'UTF-8');
+            var str1 = '';
+            function func1(name, value){
+                str1 += name+':'+value;
+                return true;
+            }
+            var options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func1}
+            that.parse(options);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be object")
+        }
     })
 })}

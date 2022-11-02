@@ -21,7 +21,6 @@ import {
     VIDEO_TYPE,
     AUDIO_TYPE,
     FILE_TYPE,
-    checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
     albumFetchOps,
@@ -35,7 +34,6 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryBase');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -50,8 +48,8 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
 
         const onTest = async (done, testNum, type, fetchOps) => {
             try {
-                let conut = 0;
-                media.on(type, () => { conut++; });
+                let count = 0;
+                media.on(type, () => { count++; });
                 const fetchFileResult = await media.getFileAssets(fetchOps);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
                 if (!checkAssetCountPass) return;
@@ -59,7 +57,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 asset.title = asset.title + 'changename';
                 await asset.commitModify();
                 await sleep(1000)
-                expect(conut > 0).assertTrue();
+                expect(count > 0).assertTrue();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -69,21 +67,19 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         }
         const offTest = async (done, testNum, type, fetchOps) => {
             try {
-                let conut = 0;
+                let count = 0;
                 media.on(type, () => {
-                    conut++;
+                    count++;
                 });
-                await sleep(200)
                 const fetchFileResult = await media.getFileAssets(fetchOps);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
                 if (!checkAssetCountPass) return;
                 const asset = await fetchFileResult.getFirstObject();
                 asset.title = asset.title + 'changename';
                 media.off(type);
-                await sleep(200)
                 await asset.commitModify();
                 await sleep(1000)
-                expect(conut).assertEqual(0);
+                expect(count).assertEqual(0);
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -162,9 +158,9 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_005', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_005'
             try {
-                let conut = 0;
+                let count = 0;
                 media.on('albumChange', () => {
-                    conut++;
+                    count++;
                 });
                 let currentFetchOps = albumFetchOps(testNum, 'Pictures/', 'OnAlbum', IMAGE_TYPE);
                 const albumList = await media.getAlbums(currentFetchOps);
@@ -175,7 +171,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 album.albumName = album.albumName + 'changename';
                 await album.commitModify();
                 await sleep(1000)
-                expect(conut > 0).assertTrue();
+                expect(count > 0).assertTrue();
                 album.albumName = oldName;
                 await album.commitModify();
                 done();
@@ -197,12 +193,12 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_006', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_006'
             try {
-                let conut = 0;
+                let count = 0;
                 expect(true).assertTrue();
                 done();
                 media.on('deviceChange', () => {
                     console.info('MediaLibraryTest : on 006 callback');
-                    conut++;
+                    count++;
                 });
                 let currentFetchOps = fetchOps(testNum, 'Documents/On/', FILE_TYPE);
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
@@ -214,7 +210,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                         res(true)
                     }, 1000)
                 })
-                expect(conut == 0).assertTrue();
+                expect(count == 0).assertTrue();
                 done();
             } catch (error) {
                 console.info(`MediaLibraryTest : on 006 failed, error: ${error}`);
@@ -225,7 +221,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_007
          * @tc.name      : ON
          * @tc.desc      : ON REMOTE_FILE ASSET
          * @tc.size      : MEDIUM
@@ -235,12 +231,12 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_007', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_007'
             try {
-                let conut = 0;
+                let count = 0;
                 expect(true).assertTrue();
                 done();
                 media.on('remoteFileChange', () => {
                     console.info('MediaLibraryTest : on 007 callback');
-                    conut++;
+                    count++;
                 });
 
                 let currentFetchOps = fetchOps(testNum, 'Documents/On/', FILE_TYPE);
@@ -253,10 +249,10 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                         res(true)
                     }, 1000)
                 })
-                expect(conut == 0).assertTrue();
+                expect(count == 0).assertTrue();
                 done();
             } catch (error) {
-                console.info(`MediaLibraryTest : on 006 failed, error: ${error}`);
+                console.info(`MediaLibraryTest : on 007 failed, error: ${error}`);
                 expect(false).assertTrue();
                 media.off('remoteFileChange');
                 done();
@@ -334,9 +330,9 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_005', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_005'
             try {
-                let conut = 0;
+                let count = 0;
                 media.on('albumChange', () => {
-                    conut++;
+                    count++;
                 });
                 await sleep(300)
                 media.off('albumChange');
@@ -352,7 +348,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 await sleep(300)
                 album.albumName = oldName;
                 await album.commitModify();
-                expect(conut).assertEqual(0);
+                expect(count).assertEqual(0);
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -452,7 +448,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 expect(true).assertTrue();
                 done();
             } catch (error) {
-                console.info(`MediaLibraryTest : off 006 failed, error: ${error}`);
+                console.info(`MediaLibraryTest : off 007 failed, error: ${error}`);
                 expect(false).assertTrue();
                 media.off('fileChange');
                 done();

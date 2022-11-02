@@ -144,6 +144,123 @@ describe('HiCheckerTest', function () {
         hichecker.removeRule(999999);
         expect(hichecker.getRule() == tmp).assertTrue();
     })
-    
+
+    /**
+     * @tc.number DFX_DFR_Hichecker_Interface_2200
+     * @tc.name   addCheckRule with normal parameter
+     * @tc.desc
+     */
+     it('DFX_DFR_Hichecker_Interface_2200', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_2200 start');
+        try {
+            hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
+            hichecker.addCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
+            console.log('add rule success!');
+            expect(hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertTrue();
+            expect(hichecker.containsCheckRule(hichecker.RULE_CHECK_SLOW_EVENT)).assertTrue();
+            expect(hichecker.containsCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK)).assertTrue();
+            expect(hichecker.containsCheckRule(hichecker.RULE_CAUTION_PRINT_LOG)).assertTrue();
+        } catch (error) {
+            console.info(error.code)
+            console.info(error.message)
+            expect(error.code == 401).assertTrue();
+        }
+    })
+
+    /**
+     * @tc.number DFX_DFR_Hichecker_Interface_2300
+     * @tc.name   removeCheckRule with normal parameter
+     * @tc.desc
+     */
+     it('DFX_DFR_Hichecker_Interface_2300', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_2300 start');
+        try {
+            hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
+            hichecker.addCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
+            console.log('add rule success!');
+            let tmp = (hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
+            hichecker.removeCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
+            expect(hichecker.getRule() == tmp).assertTrue();
+            hichecker.removeCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
+            expect(hichecker.getRule() == 0).assertTrue();
+        } catch (error) {
+            console.info(error.code)
+            console.info(error.message)
+            expect(error.code == 401).assertTrue();
+        }
+    })
+
+    /**
+     * @tc.number DFX_DFR_Hichecker_Interface_2400
+     * @tc.name   containsCheckRule with normal parameter
+     * @tc.desc
+     */
+     it('DFX_DFR_Hichecker_Interface_2400', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_2400 start');
+        try {
+            hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
+            hichecker.addCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
+            console.log('add rule success!');
+            expect(hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertTrue();
+            expect(hichecker.containsCheckRule(hichecker.RULE_CHECK_SLOW_EVENT)).assertTrue();
+            expect(hichecker.containsCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK)).assertTrue();
+            expect(hichecker.containsCheckRule(hichecker.RULE_CAUTION_PRINT_LOG)).assertTrue();
+        } catch (error) {
+            console.info(error.code)
+            console.info(error.message)
+            expect(error.code == 401).assertTrue();
+        }
+    })
+
+    /**
+     * @tc.number DFX_DFR_Hichecker_Interface_2500
+     * @tc.name   addCheckRule with abnormal parameter
+     * @tc.desc
+     */
+     it('DFX_DFR_Hichecker_Interface_2500', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_2500 start');
+        try {
+            hichecker.addCheckRule();
+        } catch (error) {
+            console.info(error.code)
+            console.info(error.message)
+            expect(error.code == 401).assertTrue();
+        }
+    })
+
+    /**
+     * @tc.number DFX_DFR_Hichecker_Interface_2600
+     * @tc.name   removeCheckRule with abnormal parameter
+     * @tc.desc
+     */
+     it('DFX_DFR_Hichecker_Interface_2600', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_2600 start');
+        try {
+            hichecker.removeCheckRule();
+        } catch (error) {
+            console.info(error.code)
+            console.info(error.message)
+            expect(error.code == 401).assertTrue();
+        }
+    })
+
+    /**
+     * @tc.number DFX_DFR_Hichecker_Interface_2700
+     * @tc.name   containsCheckRule with abnormal parameter
+     * @tc.desc
+     */
+     it('DFX_DFR_Hichecker_Interface_2700', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_2700 start');
+        try {
+            hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
+            console.log('add rule success!');
+            hichecker.containsCheckRule();
+        } catch (error) {
+            console.info(error.code)
+            console.info(error.message)
+            expect(error.code == 401).assertTrue();
+        }
+    })
+
 })
 }

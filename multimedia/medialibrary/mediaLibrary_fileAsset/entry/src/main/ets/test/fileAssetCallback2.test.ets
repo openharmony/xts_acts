@@ -33,7 +33,7 @@ export default function fileAssetCallback2Test(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileAsset')
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileAssetTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -66,8 +66,8 @@ export default function fileAssetCallback2Test(abilityContext) {
                         selections: FILEKEY.ID + '= ?',
                         selectionArgs: [id + ''],
                     };
-                    const fetchFileResult2 = await media.getFileAssets(currentfetchOp);
-                    const currentAsset = await fetchFileResult2.getFirstObject();
+                    const fetchFileResultById = await media.getFileAssets(currentfetchOp);
+                    const currentAsset = await fetchFileResultById.getFirstObject();
                     expect(currentAsset[prop]).assertEqual(val);
 
                     asset[prop] = oldVal;
@@ -163,9 +163,16 @@ export default function fileAssetCallback2Test(abilityContext) {
                 let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '05', IMAGE_TYPE);
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 const asset = await fetchFileResult.getFirstObject();
-                const isDir = await asset.isDirectory();
-                expect(!isDir).assertTrue();
-                done();
+                asset.isDirectory((err, isDir) =>{
+                    if (err) {
+                        console.info(`${testNum} err : ${err}`);
+                        expect.assertFail();
+                        done();
+                        return;
+                    }
+                    expect(isDir).assertEqual(false);
+                    done();
+                });
             } catch (error) {
                 console.info('FileAsset isDirectory 001 failed, message = ' + error);
                 expect(false).assertTrue();

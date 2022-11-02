@@ -22,6 +22,24 @@ let finishmsg1: any
 export default function abilityTest() {
     describe('ACTS_AACommand_Test', function () {
 
+        afterEach(async (done) => {
+            console.log("ActsAACommandTest afterEach called");
+            let wantInfo = {
+                bundleName: "com.example.aacommandtest",
+                abilityName: "MainAbility"
+            }
+            await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
+                console.log("ActsAACommandTest startAbility data : " + JSON.stringify(data));
+            }).catch((err) => {
+                console.log("ActsAACommandTest startAbility err : " + JSON.stringify(err));
+            })
+
+            setTimeout(function () {
+                console.log("ActsAACommandTest afterEach end");
+                done();
+            }, 1000);
+        })
+
         /**
          * @tc.number: ACTS_AACommand_0100
          * @tc.name: -b, -s unittest, -p, -s class, -s level, -s size, -s testType, -s timeout,
@@ -203,165 +221,6 @@ export default function abilityTest() {
         })
 
         /**
-         * @tc.number: ACTS_AACommand_print_0100
-         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
-         *           called in AsyncCallback mode. The print information includes Chinese, special characters, etc.
-         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
-         *           the test command.
-         */
-        it('ACTS_AACommand_print_0100', 0, async function (done) {
-            console.log("ACTS_AACommand_print_0100 --- start")
-            msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            expect(globalThis.stdResult3).assertContain(msg);
-            done()
-        })
-
-
-        /**
-         * @tc.number: ACTS_AACommand_print_0200
-         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
-         *           called in AsyncCallback mode. The length of the print message is 1000 characters.
-         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
-         *           the test command.
-         */
-        it('ACTS_AACommand_print_0200', 0, async function (done) {
-            console.log("ACTS_AACommand_print_0200 --- start")
-            msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                'aaaaaaaaa' +
-                '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
-            expect(globalThis.stdResult4).assertContain(msg);
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_print_0300
-         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
-         *           called in AsyncCallback mode. The length of the print message is greater than 1000 characters.
-         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
-         *           the test command.
-         */
-        it('ACTS_AACommand_print_0300', 0, async function (done) {
-            console.log("ACTS_AACommand_print_0300 --- start")
-            msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                'aaaaaaaaaa' +
-                '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
-            let msgcopy = 'fffffffffff'
-            expect(globalThis.stdResult5).assertContain(msg);
-            expect(globalThis.stdResult5.indexOf(msgcopy) == -1).assertEqual(true);
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_print_0400
-         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
-         *           called in AsyncCallback mode. print information is null.
-         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
-         *           the test command.
-         */
-        it('ACTS_AACommand_print_0400', 0, async function (done) {
-            console.log("ACTS_AACommand_print_0400 --- start")
-            msg = 'start ability successfully'
-            expect(globalThis.stdResult6).assertContain(msg);
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_print_0500
-         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
-         *           called in Promise mode. The print information includes Chinese, special characters, etc.
-         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
-         *           the test command.
-         */
-        it('ACTS_AACommand_print_0500', 0, async function (done) {
-            console.log("ACTS_AACommand_print_0500 --- start")
-            msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            expect(globalThis.stdResult7).assertContain(msg);
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_print_0600
-         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
-         *           called in Promise mode. The length of the print message is 1000 characters.
-         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
-         *           through the test command.
-         */
-        it('ACTS_AACommand_print_0600', 0, async function (done) {
-            console.log("ACTS_AACommand_print_0600 --- start")
-            msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                'aaaaaaaaaa' +
-                '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
-            expect(globalThis.stdResult8).assertContain(msg);
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_print_0700
-         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
-         *           called in Promise mode. The length of the print message is greater than 1000 characters.
-         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
-         *           the test command.
-         */
-        it('ACTS_AACommand_print_0700', 0, async function (done) {
-            console.log("ACTS_AACommand_print_0700 --- start")
-            msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                'aaaaaaaaaa' +
-                '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-                '9aaaaaaaaa'
-            msgcopy = 'fffffffffff'
-            expect(globalThis.stdResult9).assertContain(msg);
-            expect(globalThis.stdResult9.indexOf(msgcopy) == -1).assertEqual(true);
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_print_0800
-         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
-         *           called in Promise mode. print information is null.
-         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
-         *           through the test command.
-         */
-        it('ACTS_AACommand_print_0800', 0, async function (done) {
-            console.log("ACTS_AACommand_print_0800 --- start")
-            msg = 'start ability successfully'
-            expect(globalThis.stdResult10).assertContain(msg);
-            done()
-        })
-
-
-
-        /**
          * @tc.number: ACTS_AACommand_finishTest_0400
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in
          *           AsyncCallback
@@ -378,7 +237,6 @@ export default function abilityTest() {
             done()
 
         })
-
 
         /**
          * @tc.number: ACTS_AACommand_finishTest_0100
@@ -397,7 +255,6 @@ export default function abilityTest() {
             expect(globalThis.stdResult14.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
             done()
         })
-
 
         /**
          * @tc.number: ACTS_AACommand_finishTest_0500
@@ -437,8 +294,6 @@ export default function abilityTest() {
             done()
         })
 
-
-
         /**
          * @tc.number: ACTS_AACommand_finishTest_0900
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
@@ -453,25 +308,6 @@ export default function abilityTest() {
             expect(globalThis.stdResult19).assertContain(finishmsg);
             expect(globalThis.stdResult19).assertContain(finishmsg1);
             expect(globalThis.stdResult20.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-            done()
-        })
-
-
-        /**
-         * @tc.number: ACTS_AACommand_finishTest_1200
-         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
-         *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-         *           is valid (Number.MAX_VALUE)
-         * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finishTest_1200', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_1200 --- start")
-            let
-                finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            finishmsg1 = 'TestFinished-ResultCode: -1'
-            expect(globalThis.stdResult21).assertContain(finishmsg);
-            expect(globalThis.stdResult21).assertContain(finishmsg1);
-            expect(globalThis.stdResult22.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
             done()
         })
 
@@ -527,19 +363,6 @@ export default function abilityTest() {
         })
 
         /**
-                 * @tc.number: ACTS_AACommand_finishTest_0200
-                 * @tc.name: The parameters of the test command are valid, and the finishTest 
-                 *           interface is called in AsyncCallback
-                 *           mode. The msg parameter is invalid (null) and the code parameter is valid (1)
-                 * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-                 */
-        it('ACTS_AACommand_finishTest_0200', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_0200 --- start")
-            expect(globalThis.stdResult29.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-            done()
-        })
-
-        /**
          * @tc.number: ACTS_AACommand_finishTest_0300
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in 
          *           AsyncCallback mode. The msg parameter is invalid (Undefined) and the code parameter is valid (1)
@@ -551,43 +374,6 @@ export default function abilityTest() {
             done()
         })
 
-        /**
-         * @tc.number: ACTS_AACommand_finishTest_0800
-         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in 
-         *           AsyncCallback
-         *           mode. The msg parameter is invalid(including Chinese and special characters) and the
-         *           code parameter is valid (“ABCD”)
-         * @tc.desc: Verify that the process of the test framework is not stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finishTest_0800', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_0800 --- start")
-            expect(globalThis.stdResult31.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_finishTest_1000
-         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
-         *           mode. The msg parameter is invalid(null) and the code parameter is valid (1)
-         * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finishTest_1000', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_1000 --- start")
-            expect(globalThis.stdResult32.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_finishTest_1100
-         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
-         *           mode. The msg parameter is invalid(undefined) and the code parameter is valid (1)
-         * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finishTest_1100', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_1100 --- start")
-            expect(globalThis.stdResult33.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-            done()
-        })
         /**
         * @tc.number: ACTS_AACommand_finishTest_1600
         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in 

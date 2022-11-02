@@ -26,7 +26,7 @@ export default function connectAbilityTest_PA() {
   var subscriber;
   var subscribeInfo = {
     events: ["service_event", "service2_event", "service3_event", "service4_event", "service5_event",
-    "service6_event", "service7_event", "service8_event", "service9_event", "service10_event", "service11_event"]
+      "service6_event", "service7_event", "service8_event", "service9_event", "service10_event", "service11_event"]
   };
 
   function sleep(time) {
@@ -39,8 +39,8 @@ export default function connectAbilityTest_PA() {
       .then((data) => {
         console.info(msg + ' startService successful. Data: ' + JSON.stringify(data));
       }).catch((error) => {
-      console.error(msg + ' startService  failed. Cause: ' + JSON.stringify(error));
-    })
+        console.error(msg + ' startService  failed. Cause: ' + JSON.stringify(error));
+      })
   }
 
   function checkParameters(msg1, data) {
@@ -144,14 +144,14 @@ export default function connectAbilityTest_PA() {
       dataAssert = ""
       await sleep(1000);
       if ("FreeInstall_FA_ConnectAbility_PA_1100" === TAG) {
-            var cmd14 = "bm uninstall -n com.ohos.hag.famanager";
-            abilityDelegator.executeShellCommand(cmd14, (err: any, d: any) => {
-                console.info("executeShellCommand14 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-         })
-       }
-        await sleep(500);
-        done();
-        });
+        var cmd14 = "bm uninstall -n com.ohos.hag.famanager";
+        abilityDelegator.executeShellCommand(cmd14, (err: any, d: any) => {
+          console.info("executeShellCommand14 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+        })
+      }
+      await sleep(500);
+      done();
+    });
 
     /*
     * @tc.number  FreeInstall_FA_ConnectAbility_PA_0100
@@ -163,24 +163,23 @@ export default function connectAbilityTest_PA() {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0100-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0100";
       var cmdmyapp7 = "cp data/test/ConnectFaMyApplication7.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
-      "haps/entry/files";
+        "haps/entry/files";
       abilityDelegator.executeShellCommand(cmdmyapp7, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      await sleep(500);
-      var str1 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility",
-        }
-      };
-      startService(TAG, str1);
-      setTimeout(function () {
+      setTimeout(async () => {
+        var str1 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility",
+          }
+        };
+        startService(TAG, str1);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onConnect");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0100-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -196,20 +195,19 @@ export default function connectAbilityTest_PA() {
       abilityDelegator.executeShellCommand(cmdapp9, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      await sleep(500);
-      var str2 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility2",
-        }
-      };
-      startService(TAG, str2);
-      setTimeout(function () {
+      setTimeout(async () => {
+        var str2 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility2",
+          }
+        };
+        startService(TAG, str2);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onConnect");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0200-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -221,19 +219,19 @@ export default function connectAbilityTest_PA() {
     it("FreeInstall_FA_ConnectAbility_PA_0300", 0, async function (done) {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0300-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0300";
-      var str3 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility3",
-        }
-      };
-      startService(TAG, str3);
-      setTimeout(function () {
+      setTimeout(async () => {
+        var str3 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility3",
+          }
+        };
+        startService(TAG, str3);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0300-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -244,20 +242,20 @@ export default function connectAbilityTest_PA() {
      */
     it("FreeInstall_FA_ConnectAbility_PA_0400", 0, async function (done) {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0400-------------");
-      TAG = "FreeInstall_FA_ConnectAbility_PA_0400";
-      var str4 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility4",
-        }
-      };
-      startService(TAG, str4);
-      setTimeout(function () {
+      setTimeout(async () => {
+        TAG = "FreeInstall_FA_ConnectAbility_PA_0400";
+        var str4 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility4",
+          }
+        };
+        startService(TAG, str4);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0400-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -273,20 +271,19 @@ export default function connectAbilityTest_PA() {
       abilityDelegator.executeShellCommand(cmdin, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      await sleep(500);
-      var str5 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility5",
-        }
-      };
-      startService(TAG, str5);
-      setTimeout(function () {
+      setTimeout(async () => {
+        var str5 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility5",
+          }
+        };
+        startService(TAG, str5);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onConnect");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0500-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -298,19 +295,19 @@ export default function connectAbilityTest_PA() {
     it("FreeInstall_FA_ConnectAbility_PA_0600", 0, async function (done) {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0600-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0600";
-      var str6 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility6",
-        }
-      };
-      startService(TAG, str6);
-      setTimeout(function () {
+      setTimeout(async () => {
+        var str6 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility6",
+          }
+        };
+        startService(TAG, str6);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0600-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -322,19 +319,20 @@ export default function connectAbilityTest_PA() {
     it("FreeInstall_FA_ConnectAbility_PA_0700", 0, async function (done) {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0700-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0700";
-      var str7 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility7",
-        }
-      };
-      startService(TAG, str7);
-      setTimeout(function () {
+
+      setTimeout(async () => {
+        var str7 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility7",
+          }
+        };
+        startService(TAG, str7);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0700-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -346,19 +344,20 @@ export default function connectAbilityTest_PA() {
     it("FreeInstall_FA_ConnectAbility_PA_0800", 0, async function (done) {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0800-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0800";
-      var str8 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility8",
-        }
-      };
-      startService(TAG, str8);
-      setTimeout(function () {
+
+      setTimeout(async () => {
+        var str8 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility8",
+          }
+        };
+        startService(TAG, str8);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0800-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -374,20 +373,21 @@ export default function connectAbilityTest_PA() {
       abilityDelegator.executeShellCommand(cmdrm, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      await sleep(500);
-      var str9 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility9",
-        }
-      };
-      startService(TAG, str9);
-      setTimeout(function () {
+
+      setTimeout(async () => {
+        await sleep(500);
+        var str9 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility9",
+          }
+        };
+        startService(TAG, str9);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_0900-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -399,19 +399,20 @@ export default function connectAbilityTest_PA() {
     it("FreeInstall_FA_ConnectAbility_PA_1000", 0, async function (done) {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_1000-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_1000";
-      var str10 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility10",
-        }
-      };
-      startService(TAG, str10);
-      setTimeout(function () {
+
+      setTimeout(async () => {
+        var str10 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility10",
+          }
+        };
+        startService(TAG, str10);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onFailed");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_1000-------------");
-        done();
       }, 4000);
+      done();
     });
 
     /*
@@ -424,24 +425,24 @@ export default function connectAbilityTest_PA() {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_1100-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_1100";
       var cmdmyapp8 = "cp data/test/ConnectFaMyApplication8.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
-      "haps/entry/files";
+        "haps/entry/files";
       abilityDelegator.executeShellCommand(cmdmyapp8, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      await sleep(1000);
-      var str11 = {
-        "want": {
-          "bundleName": "com.example.myapplication.hmservice",
-          "abilityName": "com.example.myapplication.ServiceAbility11",
-        }
-      };
-      startService(TAG, str11);
-      setTimeout(function () {
+
+      setTimeout(async () => {
+        var str11 = {
+          "want": {
+            "bundleName": "com.example.myapplication.hmservice",
+            "abilityName": "com.example.myapplication.ServiceAbility11",
+          }
+        };
+        startService(TAG, str11);
         console.info(TAG + " SubscribeCallBack data: " + JSON.stringify(dataAssert));
         expect(dataAssert).assertEqual("onConnect");
         console.log("------------end FreeInstall_FA_ConnectAbility_PA_1100-------------");
-        done();
       }, 4000);
+      done();
     });
   }
   )

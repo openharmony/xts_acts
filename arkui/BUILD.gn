@@ -15,6 +15,9 @@ group("arkui") {
   testonly = true
   deps = [
     "ace_ets_component:ActsAceEtsComponentTest",
+
+    # "ace_ets_component_apilack:ActsAceEtsApiLackTest",
+    # "ace_ets_component_attrlack:ActsAceEtsAttrLackTest",
     "ace_ets_component_five:ActsAceEtsComponentFiveTest",
     "ace_ets_component_four:ActsAceEtsComponentFourTest",
     "ace_ets_component_three:ActsAceEtsComponentThreeTest",
@@ -24,6 +27,7 @@ group("arkui") {
     "ace_ets_test:ActsAceEtsTest",
     "ace_ets_third_test:ActsAceEtsThirdTest",
     "ace_ets_web_dev:ActsAceWebDevTest",
+    "ace_ets_web_dev_two:ActsAceWebDevTwoTest",
     "ace_ets_xcomponent:ActsAceXComponentEtsTest",
     "ace_js_attribute_api:ActsAceJsApiTest",
     "ace_napi_test:ActsAceNapiEtsTest",

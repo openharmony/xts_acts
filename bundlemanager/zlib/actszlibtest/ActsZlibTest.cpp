@@ -18,8 +18,10 @@
 #include <cstdlib>
 #include <fstream>
 #include <gtest/gtest.h>
+#include <mutex>
 #include <securec.h>
 #include <sstream>
+#include <mutex>
 #include <string>
 
 #include "zlib.h"
@@ -30,17 +32,21 @@ namespace {
 static const char DICTIONARY[] = "hello";
 static const char GARBAGE[] = "garbage";
 static const char TESTFILE[] = "foo.gz";
-static char HELLO[] = "hello, hello!";
+static thread_local char HELLO[] = "hello, hello!";
 static unsigned int CALLOC_SIZE = 1;
 static int ONE = 1;
 static int FOUR = 4;
 static int SIX = 6;
 static int EIGHT = 8;
-static int GARBAGE_LEN = strlen(GARBAGE);
+static int GARBAGE_LEN = strlen(GARBAGE) + 1;
 static unsigned BUFFER_SIZE = 8192;
+std::mutex gzMutex_;
+std::mutex puMutex_;
+std::mutex file_mutex;
 
 static unsigned pull(void *desc, unsigned char **buf)
 {
+    std::lock_guard<std::mutex> lock(puMutex_);
     static unsigned int next = 0;
     static unsigned char dat[] = {0x63, 0, 2, 0};
 
@@ -53,12 +59,14 @@ static unsigned pull(void *desc, unsigned char **buf)
 
 static int push(void *desc, unsigned char *buf, unsigned len)
 {
+    std::lock_guard<std::mutex> lock(puMutex_);
     buf += len;
     return desc != nullptr;      /* force error if desc not null */
 }
 
 static int TestGzPrintf(gzFile file, const char *format, ...)
 {
+    std::lock_guard<std::mutex> lock(gzMutex_);
     va_list va;
     int ret;
 
@@ -114,7 +122,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestCompress, Function | MediumTest | Level2)
     fprintf(stderr, "*********ActsZlibTestCompress Z_SOLO**********\n");
 #else
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -146,6 +154,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzio, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzio Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -166,7 +175,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzio, Function | MediumTest | Level2)
     ASSERT_TRUE(file != NULL);
 
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -198,7 +207,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzio, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestDeflate, Function | MediumTest | Level2)
 {
     Byte *compr;
-    uLong comprLen = 10000 * sizeof(int);
+    uLong comprLen = 100 * sizeof(int);
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     ASSERT_TRUE(compr != Z_NULL);
 
@@ -246,7 +255,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDeflate, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestInflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -288,7 +297,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflate, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestLargeDeflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -349,7 +358,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestLargeDeflate, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestLargeInflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -390,7 +399,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestLargeInflate, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestFlush, Function | MediumTest | Level2)
 {
     Byte *compr;
-    uLong comprLen = 10000 * sizeof(int);
+    uLong comprLen = 100 * sizeof(int);
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     ASSERT_TRUE(compr != Z_NULL);
 
@@ -431,7 +440,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestFlush, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestSync, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -469,7 +478,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestSync, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestDictDeflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -508,7 +517,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDictDeflate, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestDictInflate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -564,7 +573,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestCompress2, Function | MediumTest | Level2)
     fprintf(stderr, "*********ActsZlibTestCompress2 Z_BEST_COMPRESSION Z_SOLO**********\n");
 #else
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -628,7 +637,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDeflateState, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
     int *bits = nullptr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -779,6 +788,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzBuffer, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzBuffer Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -806,7 +816,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzBuffer, Function | MediumTest | Level2)
     int res = gzdirect(file);
     fprintf(stderr, "gzdirect result: %d\n", res);
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -840,6 +850,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzFlush, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzFlush Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -867,6 +878,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzFread, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzFread Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -889,6 +901,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzWrite, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzWrite Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -910,6 +923,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzGetc, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzGetc Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "rb");
@@ -930,6 +944,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzGetc_, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzGetc_ Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "rb");
@@ -950,11 +965,12 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzGets, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzGets Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
     Byte *uncompr;
-    uLong uncomprLen = 10000 * sizeof(int);
+    uLong uncomprLen = 100 * sizeof(int);
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
     strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     fprintf(stderr, "gzgets\n");
@@ -975,6 +991,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzOffset64, Function | MediumTest | Level2)
 #ifndef Z_LARGE64
     fprintf(stderr, "*********ActsZlibTestGzOffset64 Z_LARGE64**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -993,6 +1010,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzOffset64, Function | MediumTest | Level2)
  */
 HWTEST_F(ActsZlibTest, ActsZlibTestGzOpen, Function | MediumTest | Level2)
 {
+    std::lock_guard<std::mutex> lock(file_mutex);
 #ifndef Z_SOLO
     int err = Z_OK;
     gzFile file;
@@ -1045,6 +1063,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzPrintf, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzPrintf Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
@@ -1063,6 +1082,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzPutc, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzPutc Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     char err;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1083,6 +1103,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzPuts, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzPuts Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
@@ -1101,6 +1122,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzRead, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzRead Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -1120,7 +1142,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzRead, Function | MediumTest | Level2)
     ASSERT_TRUE(file != NULL);
 
     Byte *uncompr;
-    uLong uncomprLen = 10000 * sizeof(int);
+    uLong uncomprLen = 100 * sizeof(int);
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
     ASSERT_TRUE(uncompr != Z_NULL);
 
@@ -1140,6 +1162,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzRewind, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzRewind Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1157,6 +1180,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzRewind, Function | MediumTest | Level2)
  */
 HWTEST_F(ActsZlibTest, ActsZlibTestGzseek, Function | MediumTest | Level2)
 {
+    std::lock_guard<std::mutex> lock(file_mutex);
     long err = 0L;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1183,6 +1207,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzSetParams, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzSetParams Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1200,6 +1225,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzSetParams, Function | MediumTest | Level2)
  */
 HWTEST_F(ActsZlibTest, ActsZlibTestGzTell, Function | MediumTest | Level2)
 {
+    std::lock_guard<std::mutex> lock(file_mutex);
 #  ifndef Z_LARGE64
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1237,6 +1263,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzUnGetc, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzUnGetc Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
@@ -1245,6 +1272,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzUnGetc, Function | MediumTest | Level2)
     file = gzopen(TESTFILE, "rb");
     ASSERT_TRUE(file != NULL);
     ASSERT_FALSE(gzungetc(' ', file) != ' ');
+    gzclose(file);
 #endif
 }
 
@@ -1258,12 +1286,14 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzVprintf, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzVprintf Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
 
     int err = TestGzPrintf(file, ", %s!", "hello");
     fprintf(stderr, "gzvprintf result: %d\n", err);
+    gzclose(file);
 #endif
 }
 
@@ -1277,6 +1307,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzwrite, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzWrite Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1302,7 +1333,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzInflateBack, Function | MediumTest | Level2
     z_stream strm;
     unsigned char match[65280 + 2]; /* buffer for reversed match or gzip 32K sliding window */
     Byte *uncompr;
-    uLong uncomprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong uncomprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
     /* initialize inflateBack state for repeated use */
     window = match; /* reuse match buffer */
@@ -1333,7 +1364,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzInflateBack, Function | MediumTest | Level2
 HWTEST_F(ActsZlibTest, ActsZlibTestInflateCodesUsed, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -1377,7 +1408,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateCopy_END, Function | MediumTest | Leve
 HWTEST_F(ActsZlibTest, ActsZlibTestInflateGetDictionary, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -1548,7 +1579,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflatePrime, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestInflateReset, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -1586,7 +1617,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateReset, Function | MediumTest | Level2)
 HWTEST_F(ActsZlibTest, ActsZlibTestInflateSetDictionary, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -1620,7 +1651,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateSetDictionary, Function | MediumTest |
 HWTEST_F(ActsZlibTest, ActsZlibTestInflateSyncPoint, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -1652,7 +1683,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateSyncPoint, Function | MediumTest | Lev
 HWTEST_F(ActsZlibTest, ActsZlibTestInflateUndermine, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -1684,7 +1715,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateUndermine, Function | MediumTest | Lev
 HWTEST_F(ActsZlibTest, ActsZlibTestInflateValidate, Function | MediumTest | Level2)
 {
     Byte *compr, *uncompr;
-    uLong comprLen = 10000 * sizeof(int); /* don't overflow on MSDOS */
+    uLong comprLen = 100 * sizeof(int); /* don't overflow on MSDOS */
     uLong uncomprLen = comprLen;
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
@@ -1764,6 +1795,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzdopen, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzdopen Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     FILE *fp = fopen(TESTFILE, "r");
     int fd = fileno(fp);
     gzFile file = gzdopen(fd, "r");

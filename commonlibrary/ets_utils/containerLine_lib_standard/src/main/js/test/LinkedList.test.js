@@ -20,21 +20,20 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testConstructor001
    * @tc.desc: Create an LinkedList instance. For example: let linkedList = new LinkedList().
-   * @tc.author: wangyong
    */
   it("testConstructor001", 0, function () {
     try {
       let linkedList = new LinkedList();
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new linkedList");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The LinkedList's constructor cannot be directly invoked");
     }
   });
   
   /**
    * @tc.name: testAdd002
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: linkedList.add("四").
-   * @tc.author: wangyong
    */
   it("testAdd002", 0, function () {
     let linkedList = new LinkedList();
@@ -46,7 +45,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd003
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: linkedList.add(8).
-   * @tc.author: wangyong
    */
   it("testAdd003", 0, function () {
     let linkedList = new LinkedList();
@@ -59,7 +57,6 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd004
    * @tc.desc: Add a element to the end of the LinkedList instance. 
    * For example: let a = [1, 2, 3, 4];linkedList.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd004", 0, function () {
     let linkedList = new LinkedList();
@@ -73,7 +70,6 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd005
    * @tc.desc: Add a element to the end of the LinkedList instance. 
    * For example: let a = {name: "lala", age: "13"};linkedList.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd005", 0, function () {
     let linkedList = new LinkedList();
@@ -86,7 +82,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd006
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = ".";linkedList.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd006", 0, function () {
     let linkedList = new LinkedList();
@@ -99,7 +94,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd007
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = "*";linkedList.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd007", 0, function () {
     let linkedList = new LinkedList();
@@ -112,7 +106,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd008
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = "/";linkedList.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd008", 0, function () {
     let linkedList = new LinkedList();
@@ -125,7 +118,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd009
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = "";linkedList.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd009", 0, function () {
     let linkedList = new LinkedList();
@@ -138,7 +130,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd010
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: let a = "a";linkedList.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd010", 0, function () {
     let linkedList = new LinkedList();
@@ -154,7 +145,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testHas011
    * @tc.desc: Check whether the LinkedList contains a specified element. For example: linkedList.has("a").
-   * @tc.author: wangyong
    */
   it("testHas011", 0, function () {
     let linkedList = new LinkedList();
@@ -170,7 +160,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testClone012
    * @tc.desc: Clone an LinkedList instance. For example: linkedList.clone().
-   * @tc.author: wangyong
    */
   it("testClone012", 0, function () {
     let linkedList = new LinkedList();
@@ -194,7 +183,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAddFirst013
    * @tc.desc: Add element to LinkedList instance header. For example: linkedList.addFirst("e").
-   * @tc.author: wangyong
    */
   it("testAddFirst013", 0, function () {
     let linkedList = new LinkedList();
@@ -209,7 +197,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testRemoveFirst014
    * @tc.desc: Delete the header element of a LinkedList instance. For example: linkedList.removeFirst().
-   * @tc.author: wangyong
    */
   it("testRemoveFirst014", 0, function () {
     let linkedList = new LinkedList();
@@ -233,7 +220,6 @@ describe("LinkedListTest", function () {
    * @tc.desc:  In the LinkedList instance, find the index of a specified element from brack to front, 
    * and return the index found for the first time. If not found, return -1.
    * For example: linkedList.getLastIndexOf("a").
-   * @tc.author: wangyong
    */
   it("testGetLastIndexOf015", 0, function () {
     let linkedList = new LinkedList();
@@ -252,7 +238,6 @@ describe("LinkedListTest", function () {
    * @tc.desc:  In the LinkedList instance, find the index of a specified element from brack to front, 
    * and return the index found for the first time. If not found, return -1. 
    * For example: linkedList.getLastIndexOf("f").
-   * @tc.author: wangyong
    */
   it("testGetLastIndexOf016", 0, function () {
     let linkedList = new LinkedList();
@@ -271,7 +256,6 @@ describe("LinkedListTest", function () {
    * @tc.desc:  In the LinkedList instance, find the index of a specified element from front to back, 
    * and return the index found for the first time. If not found, return -1. 
    * For example: linkedList.getIndexOf("b").
-   * @tc.author: wangyong
    */
   it("testGetIndexOf017", 0, function () {
     let linkedList = new LinkedList();
@@ -290,7 +274,6 @@ describe("LinkedListTest", function () {
    * @tc.desc:  In the LinkedList instance, find the index of a specified element from front to back, 
    * and return the index found for the first time. If not found, return -1. 
    * For example: linkedList.getIndexOf("f").
-   * @tc.author: wangyong
    */
   it("testGetIndexOf018", 0, function () {
     let linkedList = new LinkedList();
@@ -308,7 +291,6 @@ describe("LinkedListTest", function () {
    * @tc.name: testRemoveByIndex019
    * @tc.desc: In the linkedList instance, delete the element based on its index. 
    * For example: linkedList.removeByIndex(2).
-   * @tc.author: wangyong
    */
   it("testRemoveByIndex019", 0, function () {
     let linkedList = new LinkedList();
@@ -332,7 +314,6 @@ describe("LinkedListTest", function () {
    * @tc.name: testRemoveByIndex020
    * @tc.desc: In the linkedList instance, delete the element based on its subscript index. 
    * For example: linkedList.removeByIndex(10).
-   * @tc.author: wangyong
    */
   it("testRemoveByIndex020", 0, function () {
     let linkedList = new LinkedList();
@@ -343,16 +324,17 @@ describe("LinkedListTest", function () {
     linkedList.add("b");
     try {
       let res = linkedList.removeByIndex(10);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 10`);
     }
   });
     
   /**
    * @tc.name: testRemove021
    * @tc.desc: Delete the specified element. For example: linkedList.remove("a").
-   * @tc.author: wangyong
    */
   it("testRemove021", 0, function () {
     let linkedList = new LinkedList();
@@ -375,7 +357,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testRemove022
    * @tc.desc: Delete the specified element. For example: linkedList.remove("d").
-   * @tc.author: wangyong
    */
   it("testRemove022", 0, function () {
     let linkedList = new LinkedList();
@@ -391,7 +372,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testRemove023
    * @tc.desc: Delete the specified element. For example: linkedList.remove("d").
-   * @tc.author: wangyong
    */
   it("testRemove023", 0, function () {
     let linkedList = new LinkedList();
@@ -402,7 +382,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testRemoveFirstFound024
    * @tc.desc: Delete the specified element found for the first time. For example: linkedList.removeFirstFound("b").
-   * @tc.author: wangyong
    */
   it("testRemoveFirstFound024", 0, function () {
     let linkedList = new LinkedList();
@@ -425,7 +404,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testRemoveLastFound025
    * @tc.desc: Delete the specified element found for the last time. For example: linkedList.removeLastFound("b").
-   * @tc.author: wangyong
    */
   it("testRemoveLastFound025", 0, function () {
     let linkedList = new LinkedList();
@@ -448,7 +426,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testGetFirst026
    * @tc.desc: Get the header element of the linkedList instance. For example: linkedList.getFirst().
-   * @tc.author: wangyong
    */
   it("testGetFirst026", 0, function () {
     let linkedList = new LinkedList();
@@ -464,7 +441,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testGetLast027
    * @tc.desc: Get the end element of the linkedList instance. For example: linkedList.getLast().
-   * @tc.author: wangyong
    */
   it("testGetLast027", 0, function () {
     let linkedList = new LinkedList();
@@ -480,7 +456,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testInsert028
    * @tc.desc: Insert an element into the middle of the LinkedList instance. For example: linkedList.insert(3, "d").
-   * @tc.author: wangyong
    */
   it("testInsert028", 0, function () {
     let linkedList = new LinkedList();
@@ -503,7 +478,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testInsert029
    * @tc.desc: Insert an element into the middle of the LinkedList instance. For example: linkedList.insert(0, "d").
-   * @tc.author: wangyong
    */
   it("testInsert029", 0, function () {
     let linkedList = new LinkedList();
@@ -526,7 +500,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testInsert030
    * @tc.desc: Insert an element into the middle of the LinkedList instance. For example: linkedList.insert(5, "d").
-   * @tc.author: wangyong
    */
   it("testInsert030", 0, function () {
     let linkedList = new LinkedList();
@@ -549,7 +522,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testInsert031
    * @tc.desc: Insert an element into the middle of the LinkedList instance. For example: linkedList.insert(9, "d").
-   * @tc.author: wangyong
    */
   it("testInsert031", 0, function () {
     let linkedList = new LinkedList();
@@ -560,16 +532,17 @@ describe("LinkedListTest", function () {
     linkedList.add("b");
     try {
       let res = linkedList.insert(8, "d");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 5. Received value is: 8`);
     }
   });
     
   /**
    * @tc.name: testSet032
    * @tc.desc: Modify the element corresponding to the specified index. For example: linkedList.set(2, "d").
-   * @tc.author: wangyong
    */
   it("testSet032", 0, function () {
     let linkedList = new LinkedList();
@@ -585,7 +558,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testConvertToArray033
    * @tc.desc: Convert an LinkedList instance to an array. For example: linkedList.convertToArray().
-   * @tc.author: wangyong
    */
   it("testConvertToArray033", 0, function () {
     let linkedList = new LinkedList();
@@ -604,7 +576,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testLength034
    * @tc.desc: Get the number of elements in the LinkedList instance. For example: linkedList.length.
-   * @tc.author: wangyong
    */
   it("testLength034", 0, function () {
     let linkedList = new LinkedList();
@@ -620,7 +591,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testClear035
    * @tc.desc: Clear all elements in the linkedList instance. For example: linkedList.clear().
-   * @tc.author: wangyong
    */
   it("testClear035", 0, function () {
     let linkedList = new LinkedList();
@@ -638,7 +608,6 @@ describe("LinkedListTest", function () {
    * @tc.name: testIterator036
    * @tc.desc: Iterates over all elements in an LinkedList instance. 
    * For example: for (let item of linkedList) {arr.push(item);}.
-   * @tc.author: wangyong
    */
   it("testIterator036", 0, function () {
     let linkedList = new LinkedList();
@@ -665,7 +634,6 @@ describe("LinkedListTest", function () {
    * @tc.name: testForEach037
    * @tc.desc: Traversing elements in an LinkedList instance. 
    * For example: linkedList.forEach((item, index) => {arr.push(item);}).
-   * @tc.author: wangyong
    */
   it("testForEach037", 0, function () {
     let linkedList = new LinkedList();
@@ -691,7 +659,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testRemoveLast038
    * @tc.desc: Delete the end element of a LinkedList instance. linkedList.removeLast().
-   * @tc.author: wangyong
    */
   it("testRemoveLast038", 0, function () {
     let linkedList = new LinkedList();
@@ -714,7 +681,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testGet039
    * @tc.desc: Gets the element corresponding to the specified index. For example: linkedList.get(1).
-   * @tc.author: wangyong
    */
   it("testGet039", 0, function () {
     let linkedList = new LinkedList();
@@ -730,7 +696,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testGet040
    * @tc.desc: Gets the element corresponding to the specified index. For example: linkedList.get(10).
-   * @tc.author: wangyong
    */
   it("testGet040", 0, function () {
     let linkedList = new LinkedList();
@@ -746,7 +711,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testListGet041
    * @tc.desc: Gets the element corresponding to the specified index. For example: linkedList[1].
-   * @tc.author: wangyong
    */
   it("testListGet041", 0, function () {
     let linkedList = new LinkedList();
@@ -765,7 +729,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testListSet042
    * @tc.desc: Modify the element corresponding to the specified index. For example: linkedList[1] = "f".
-   * @tc.author: wangyong
    */
   it("testListSet042", 0, function () {
     let linkedList = new LinkedList();
@@ -786,7 +749,6 @@ describe("LinkedListTest", function () {
    * @tc.name: testAdd043
    * @tc.desc: Add a element to the end of the LinkedList instance. 
    * For example: for (let i = 0; i < 100; i++) {linkedList.add(i);}.
-   * @tc.author: wangyong
    */
   it("testAdd043", 0, function () {
     let linkedList = new LinkedList();
@@ -801,22 +763,22 @@ describe("LinkedListTest", function () {
    * @tc.name: testRemoveByIndex044
    * @tc.desc: In the linkedList instance, delete the element based on its subscript index. 
    * For example: linkedList.removeByIndex(1).
-   * @tc.author: wangyong
    */
   it("testRemoveByIndex044", 0, function () {
     let linkedList = new LinkedList();
     try {
       let res = linkedList.removeByIndex(1);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 0. Received value is: 1`);
     }
   });
     
   /**
    * @tc.name: testClone045
    * @tc.desc: Clone an LinkedList instance. For example: linkedList.clone().
-   * @tc.author: wangyong
    */
   it("testClone045", 0, function () {
     let linkedList = new LinkedList();
@@ -834,7 +796,6 @@ describe("LinkedListTest", function () {
    * @tc.name: testGetIndexOf046
    * @tc.desc:  In the LinkedList instance, find the index of a specified element from front to back, 
    * and return the index found for the first time. If not found, return -1. For example: linkedList.getIndexOf(1).
-   * @tc.author: wangyong
    */
   it("testGetIndexOf046", 0, function () {
     let linkedList = new LinkedList();
@@ -846,7 +807,6 @@ describe("LinkedListTest", function () {
    * @tc.name: testForEach047
    * @tc.desc: Traversing elements in an LinkedList instance. 
    * For example: linkedList.forEach((item, index) => { num++; }).
-   * @tc.author: wangyong
    */
   it("testForEach047", 0, function () {
     let linkedList = new LinkedList();
@@ -860,7 +820,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testHas048
    * @tc.desc: Check whether the LinkedList contains a specified element. For example: linkedList.has(1).
-   * @tc.author: wangyong
    */
   it("testHas048", 0, function () {
     let linkedList = new LinkedList();
@@ -871,7 +830,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testGet050
    * @tc.desc: Gets the element corresponding to the specified index. For example: linkedList.get(1).
-   * @tc.author: wangyong
    */
   it("testGet050", 0, function () {
     let linkedList = new LinkedList();
@@ -882,7 +840,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testClear051
    * @tc.desc: Clear all elements in the LinkedList instance. For example: linkedList.clear().
-   * @tc.author: wangyong
    */
   it("testClear051", 0, function () {
     let linkedList = new LinkedList();
@@ -894,7 +851,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testGetLast052
    * @tc.desc: Get the end element of the linkedList instance. For example: linkedList.getLast().
-   * @tc.author: wangyong
    */
   it("testGetLast052", 0, function () {
     let linkedList = new LinkedList();
@@ -905,7 +861,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testGetFirst053
    * @tc.desc: Get the header element of the linkedList instance. For example: linkedList.getFirst().
-   * @tc.author: wangyong
    */
   it("testGetFirst053", 0, function () {
     let linkedList = new LinkedList();
@@ -916,7 +871,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd054
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: linkedList.add(null).
-   * @tc.author: wangyong
    */
   it("testAdd054", 0, function () {
     let linkedList = new LinkedList();
@@ -928,7 +882,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd055
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: linkedList.add(0.1).
-   * @tc.author: wangyong
    */
   it("testAdd055", 0, function () {
     let linkedList = new LinkedList();
@@ -940,7 +893,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd056
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: linkedList.add(-1).
-   * @tc.author: wangyong
    */
   it("testAdd056", 0, function () {
     let linkedList = new LinkedList();
@@ -952,7 +904,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testAdd057
    * @tc.desc: Add a element to the end of the LinkedList instance. For example: const obj = {}; linkedList.add(obj).
-   * @tc.author: wangyong
    */
   it("testAdd057", 0, function () {
     let linkedList = new LinkedList();
@@ -965,7 +916,6 @@ describe("LinkedListTest", function () {
   /**
    * @tc.name: testIterator058
    * @tc.desc: Iterates over all elements in an LinkedList instance. For example: linkedList[Symbol.iterator]().
-   * @tc.author: wangyong
    */
   it("testIterator058", 0, function () {
     let linkedList = new LinkedList();
@@ -985,6 +935,162 @@ describe("LinkedListTest", function () {
     let a = ["e", "a", "b"];
     for (let i = 0; i < a.length; i++) {
       expect(arr[i]).assertEqual(a[i]);
+    }
+  });
+
+  /**
+   * @tc.name: testAdd057
+   * @tc.desc: Add a element to the end of the LinkedList instance. For example: linkedList.add.bind({}, obj)().
+   */
+  it("testAdd059 ", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.add.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The add method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testInsert058
+   * @tc.desc: Insert an element into the middle of the LinkedList instance. For example: linkedList.insert("a", "d").
+   */
+  it("testInsert058", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add("a");
+    linkedList.add("b");
+    linkedList.add("c");
+    try {
+      linkedList.insert("a", "d");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testGet059
+   * @tc.desc: Gets the element corresponding to the specified index. For example: linkedList.get("a").
+   */
+  it("testGet059", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.get("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveFirst060
+   * @tc.desc: Delete the header element of a LinkedList instance. For example: linkedList.removeFirst().
+   */
+  it("testRemoveFirst060", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.removeFirst();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200010);
+      expect(err.message).assertEqual(`Container is empty`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveLast061
+   * @tc.desc: Delete the end element of a LinkedList instance. linkedList.removeLast().
+   */
+  it("testRemoveLast061", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.removeLast();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200010);
+      expect(err.message).assertEqual(`Container is empty`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveByIndex062
+   * @tc.desc: In the linkedList instance, delete the element based on its subscript index. 
+   * For example: linkedList.removeByIndex("a").
+   */
+  it("testRemoveByIndex062", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add("a");
+    linkedList.add("b");
+    linkedList.add("c");
+    try {
+      linkedList.removeByIndex("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveFirstFound063
+   * @tc.desc: Delete the specified element found for the first time. For example: linkedList.removeFirstFound("b").
+   */
+  it("testRemoveFirstFound063", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.removeFirstFound("b");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200010);
+      expect(err.message).assertEqual(`Container is empty`);
+    }
+  });
+
+  /**
+   * @tc.name: testSet064
+   * @tc.desc: Modify the element corresponding to the specified index. For example: linkedList.set(6, "d").
+   */
+  it("testSet064", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add("a");
+    linkedList.add("b");
+    linkedList.add("c");
+    linkedList.add("a");
+    try {
+      linkedList.set(6, "d");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 3. Received value is: 6`);
+    }
+  });
+
+  /**
+   * @tc.name: testSet065
+   * @tc.desc: Modify the element corresponding to the specified index. For example: linkedList.set("a", "d").
+   */
+  it("testSet065", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add("a");
+    try {
+      linkedList.set("a", "d");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
   });
 });

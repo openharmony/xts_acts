@@ -34,6 +34,7 @@
                 "hilog -b D"
             ],
             "teardown-command":[
+                "hilog -b X"
             ]
         }
     ]

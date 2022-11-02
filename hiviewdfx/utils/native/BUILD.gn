@@ -30,9 +30,9 @@ ohos_static_library("utilskit") {
   configs = [ ":utils_config" ]
 
   #external_deps = [ "hilog:libhilog" ]
+  external_deps = [ "c_utils:utils" ]
   deps = [
     "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
     "//base/hiviewdfx/hiview/base:hiviewbase",
-    "//commonlibrary/c_utils/base:utils",
   ]
 }

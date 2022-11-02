@@ -264,7 +264,7 @@ describe('ImageReceiver', function () {
     }
 
     /**
-     * @tc.number    : Receiver_001
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0100
      * @tc.name      : createImageReceiver
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -273,7 +273,7 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         if (receiver == undefined) {
             expect(false).assertTrue();
@@ -289,7 +289,7 @@ describe('ImageReceiver', function () {
     })
 
     /**
-     * @tc.number    : Receiver_001-1
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0200
      * @tc.name      : createImageReceiver
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -298,12 +298,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-1', 0, async function (done) {
-        createRecriver(done, 'Receiver_001-1', WIDTH, HEIGHT, FORMAT, 'hd!')
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0200', 0, async function (done) {
+        createRecriver(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0200', WIDTH, HEIGHT, FORMAT, 'hd!')
     })
 
     /**
-     * @tc.number    : Receiver_001-2
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0100
      * @tc.name      : createImageReceiver-wrong format
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -312,12 +312,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-2', 0, async function (done) {
-        createRecriver(done, 'Receiver_001-2', WIDTH, HEIGHT, null, CAPACITY)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0100', 0, async function (done) {
+        createRecriver(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0100', WIDTH, HEIGHT, null, CAPACITY)
     })
 
     /**
-     * @tc.number    : Receiver_001-3
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0200
      * @tc.name      : createImageReceiver-wrong height
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -326,12 +326,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-3', 0, async function (done) {
-        createRecriver(done, 'Receiver_001-3', WIDTH, null, FORMAT, CAPACITY)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0200', 0, async function (done) {
+        createRecriver(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0200', WIDTH, null, FORMAT, CAPACITY)
     })
 
     /**
-     * @tc.number    : Receiver_001-4
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0300
      * @tc.name      : createImageReceiver-wrong width
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -340,12 +340,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-4', 0, async function (done) {
-        createRecriver(done, 'Receiver_001-4', null, HEIGHT, FORMAT, CAPACITY)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0300', 0, async function (done) {
+        createRecriver(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0300', null, HEIGHT, FORMAT, CAPACITY)
     })
 
     /**
-     * @tc.number    : Receiver_001-5
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0400
      * @tc.name      : createImageReceiver-wrong capacity
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -354,12 +354,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-5', 0, async function (done) {
-        createRecriver(done, 'Receiver_001-5', WIDTH, HEIGHT, FORMAT, null)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0400', 0, async function (done) {
+        createRecriver(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0400', WIDTH, HEIGHT, FORMAT, null)
     })
 
     /**
-     * @tc.number    : Receiver_001-6
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0500
      * @tc.name      : createImageReceiver-wrong width
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -368,12 +368,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-6', 0, async function (done) {
-        createRecriver(done, 'Receiver_001-6', false, HEIGHT, FORMAT, CAPACITY)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0500', 0, async function (done) {
+        createRecriver(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0500', false, HEIGHT, FORMAT, CAPACITY)
     })
 
     /**
-     * @tc.number    : Receiver_001-7
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0600
      * @tc.name      : createImageReceiver- wrong width
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -382,12 +382,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-7', 0, async function (done) {
-        createRecriver(done, 'Receiver_001-7', { a: 10 }, HEIGHT, FORMAT, CAPACITY)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0600', 0, async function (done) {
+        createRecriver(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0600', { a: 10 }, HEIGHT, FORMAT, CAPACITY)
     })
 
     /**
-     * @tc.number    : Receiver_001-8
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0300
      * @tc.name      : createImageReceiver
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -396,12 +396,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-8', 0, async function (done) {
-        createRecriver(done, 'Receiver_001-8', WIDTH, false, FORMAT, CAPACITY)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0300', 0, async function (done) {
+        createRecriver(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0300', WIDTH, false, FORMAT, CAPACITY)
     })
 
     /**
-     * @tc.number    : Receiver_001-9
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0700
      * @tc.name      : createImageReceiver- wrong format
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -410,12 +410,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-9', 0, async function (done) {
-        createRecriver(done, 'Receiver_001-9', WIDTH, HEIGHT, 'form.', CAPACITY)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0700', 0, async function (done) {
+        createRecriver(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_ERROR_0700', WIDTH, HEIGHT, 'form.', CAPACITY)
     })
 
     /**
-     * @tc.number    : Receiver_001-10
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0400
      * @tc.name      : createImageReceiver
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -424,11 +424,11 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-10', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0400', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY)
         if (receiver == undefined) {
             expect(false).assertTrue();
-            console.info('Receiver_001-10 undefined')
+            console.info('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0400 undefined')
             done();
         } else {
             expect(receiver.size.width == WIDTH).assertTrue();
@@ -440,7 +440,7 @@ describe('ImageReceiver', function () {
     })
 
     /**
-     * @tc.number    : Receiver_001-11
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0500
      * @tc.name      : createImageReceiver
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageReceiver
@@ -449,11 +449,11 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_001-11', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0500', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, YCBCR_422_SP, CAPACITY)
         if (receiver == undefined) {
             expect(false).assertTrue();
-            console.info('Receiver_001-11 undefined')
+            console.info('SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0500 undefined')
             done();
         } else {
             expect(receiver.size.width == WIDTH).assertTrue();
@@ -465,7 +465,7 @@ describe('ImageReceiver', function () {
     })
 
     /**
-     * @tc.number    : Receiver_002
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100
      * @tc.name      : getReceivingSurfaceId-promise
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call getReceivingSurfaceId
@@ -474,15 +474,15 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_002', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         if (receiver != undefined) {
             receiver.getReceivingSurfaceId().then(id => {
-                console.info('Receiver_002 getReceivingSurfaceId [' + id + "]");
+                console.info('SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100 getReceivingSurfaceId [' + id + "]");
                 expect(isString(id)).assertTrue();
                 done();
             }).catch(error => {
-                console.log('Receiver_002 error: ' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_PROMISE_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             })
@@ -493,7 +493,7 @@ describe('ImageReceiver', function () {
     })
 
     /**
-     * @tc.number    : Receiver_003
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100
      * @tc.name      : getReceivingSurfaceId-callback
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call getReceivingSurfaceId
@@ -502,23 +502,23 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_003', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         if (receiver != undefined) {
             receiver.getReceivingSurfaceId((err, id) => {
-                console.info('Receiver_003 getReceivingSurfaceId call back [' + id + "]");
+                console.info('SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100 getReceivingSurfaceId call back [' + id + "]");
                 expect(isString(id)).assertTrue();
                 done();
             });
         } else {
             expect(false).assertTrue();
-            console.info('Receiver_003 finished');
+            console.info('SUB_GRAPHIC_IMAGE_RECEIVER_GETRECEIVINGSURFACEID_CALLBACK_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : Receiver_004
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0100
      * @tc.name      : release-promise
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call release
@@ -526,11 +526,11 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_004', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         if (receiver != undefined) {
             receiver.release().then(() => {
-                console.info('Receiver_004 release ');
+                console.info('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0100 release ');
                 expect(true).assertTrue();
                 done();
             }).catch(error => {
@@ -539,13 +539,13 @@ describe('ImageReceiver', function () {
             })
         } else {
             expect(false).assertTrue();
-            console.info('Receiver_004 finished');
+            console.info('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : Receiver_005
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100
      * @tc.name      : release-callback
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call release
@@ -553,29 +553,29 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_005', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         if (receiver != undefined) {
             receiver.release((err) => {
                 if (err) {
                     expect(false).assertTrue();
-                    console.info('Receiver_005 release fail');
+                    console.info('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100 release fail');
                     done()
                 } else {
-                    console.info('Receiver_005 release call back');
+                    console.info('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100 release call back');
                     expect(true).assertTrue();
                     done();
                 }
             });
         } else {
             expect(false).assertTrue();
-            console.info('Receiver_005 finished');
+            console.info('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : Receiver_006
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100
      * @tc.name      : readLatestImage-promise
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call readLatestImage
@@ -584,28 +584,28 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_006', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         var dummy = receiver.test;
         if (receiver != undefined) {
             receiver.readLatestImage().then(img => {
-                console.info('Receiver_006 readLatestImage Success');
+                console.info('SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 readLatestImage Success');
                 expect(img != undefined).assertTrue();
                 done();
             }).catch(error => {
-                console.log('Receiver_006 error: ' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             })
         } else {
             expect(false).assertTrue();
-            console.info('Receiver_006 finished');
+            console.info('SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : Receiver_007
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100
      * @tc.name      : readLatestImage-callback
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call readLatestImage
@@ -614,24 +614,24 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_007', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         var dummy = receiver.test;
         if (receiver != undefined) {
             receiver.readLatestImage((err, img) => {
-                console.info('Receiver_007 readLatestImage call back Success');
+                console.info('SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100 readLatestImage call back Success');
                 expect(img != undefined).assertTrue();
                 done();
             });
         } else {
             expect(false).assertTrue();
-            console.info('Receiver_007 finished');
+            console.info('SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100 finished');
             done();
         }
     })
 
     /**
-     * @tc.number    : Receiver_008
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100
      * @tc.name      : readNextImage-promise
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call readNextImage
@@ -640,29 +640,29 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_008', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         var dummy = receiver.test;
         expect(receiver != undefined).assertTrue();
         if (receiver != undefined) {
             receiver.readNextImage().then(img => {
-                console.info('Receiver_008 readNextImage Success');
+                console.info('SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 readNextImage Success');
                 expect(img != undefined).assertTrue();
                 done()
             }).catch(error => {
-                console.log('Receiver_008 error: ' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             })
         } else {
             expect(false).assertTrue();
-            console.info('Receiver_008 finished');
+            console.info('SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 finished');
             done();
         }
     })
 
     /**
-     * @tc.number    : Receiver_009
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100
      * @tc.name      : readNextImage-callback
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call readNextImage
@@ -671,7 +671,7 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_009', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         var dummy = receiver.test;
         if (receiver != undefined) {
@@ -679,7 +679,7 @@ describe('ImageReceiver', function () {
                 if (err) {
                     expect(false).assertTrue();
                 } else {
-                    console.info('Receiver_009 readNextImage call back Success');
+                    console.info('SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100 readNextImage call back Success');
                     expect(img != undefined).assertTrue();
                     done();
                 }
@@ -687,13 +687,13 @@ describe('ImageReceiver', function () {
             })
         } else {
             expect(false).assertTrue();
-            console.info('Receiver_009 finished');
+            console.info('SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100 finished');
             done();
         }
     })
 
     /**
-     * @tc.number    : Receiver_010
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100
      * @tc.name      : getComponent-jpeg
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -703,12 +703,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_010', 0, async function (done) {
-        getComponentP(done, 'Receiver_010', JPEG)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100', 0, async function (done) {
+        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100', JPEG)
     })
 
     /**
-     * @tc.number    : Receiver_010_1
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_U_0100
      * @tc.name      : getComponent-YUV_U
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -718,12 +718,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_010_1', 0, async function (done) {
-        getComponentP(done, 'Receiver_010_1', YUV_U)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_U_0100', 0, async function (done) {
+        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_U_0100', YUV_U)
     })
 
     /**
-     * @tc.number    : Receiver_010_2
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_V_0100
      * @tc.name      : getComponent-YUV_V
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -733,12 +733,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_010_2', 0, async function (done) {
-        getComponentP(done, 'Receiver_010_2', YUV_V)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_V_0100', 0, async function (done) {
+        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_V_0100', YUV_V)
     })
 
     /**
-     * @tc.number    : Receiver_010_3
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_Y_0100
      * @tc.name      : getComponent-YUV_Y
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -748,12 +748,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_010_3', 0, async function (done) {
-        getComponentP(done, 'Receiver_010_3', YUV_Y)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_Y_0100', 0, async function (done) {
+        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_Y_0100', YUV_Y)
     })
 
     /**
-     * @tc.number    : Receiver_010_4
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100
      * @tc.name      : getComponent-jpeg
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -763,12 +763,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_010_4', 0, async function (done) {
-        getComponentCb(done, 'Receiver_010_4', JPEG)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100', 0, async function (done) {
+        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100', JPEG)
     })
 	
     /**
-     * @tc.number    : Receiver_010_5
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_Y_0100
      * @tc.name      : getComponent-YUV_Y
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -778,12 +778,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_010_5', 0, async function (done) {
-        getComponentCb(done, 'Receiver_010_5', YUV_Y)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_Y_0100', 0, async function (done) {
+        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_Y_0100', YUV_Y)
     })
 	
     /**
-     * @tc.number    : Receiver_010_6
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_V_0100
      * @tc.name      : getComponent-YUV_V
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -793,12 +793,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_010_6', 0, async function (done) {
-        getComponentCb(done, 'Receiver_010_6', YUV_V)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_V_0100', 0, async function (done) {
+        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_V_0100', YUV_V)
     })
 	
     /**
-     * @tc.number    : Receiver_010_7
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_U_0100
      * @tc.name      : getComponent-YUV_U
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -808,12 +808,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_010_7', 0, async function (done) {
-        getComponentCb(done, 'Receiver_010_7', YUV_U)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_U_0100', 0, async function (done) {
+        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_U_0100', YUV_U)
     })
 	
     /**
-    * @tc.number    : Receiver_011
+    * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RECEIVERON_0100
     * @tc.name      : on
     * @tc.desc      : 1.create ImageReceiver
     *                 2.call on
@@ -821,7 +821,7 @@ describe('ImageReceiver', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 0
     */
-    it('Receiver_011', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_RECEIVERON_0100', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         if (receiver == undefined) {
             expect(false).assertTrue();
@@ -830,12 +830,12 @@ describe('ImageReceiver', function () {
             let pass = false;
             receiver.on('imageArrival', (err) => {
                 if (err) {
-                    console.info('Receiver_011 on err' + err);
+                    console.info('SUB_GRAPHIC_IMAGE_RECEIVER_RECEIVERON_0100 on err' + err);
                     expect(false).assertTrue();
                     done();
                 } else {
                     pass = true;
-                    console.info('Receiver_011 on call back IN');
+                    console.info('SUB_GRAPHIC_IMAGE_RECEIVER_RECEIVERON_0100 on call back IN');
                 }
             })
 
@@ -847,7 +847,7 @@ describe('ImageReceiver', function () {
     })
 
     /**
-     * @tc.number    : Receiver_012
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0200
      * @tc.name      : release-promise
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -858,7 +858,7 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_012', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0200', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         if (receiver == undefined) {
             expect(false).assertTrue();
@@ -889,20 +889,20 @@ describe('ImageReceiver', function () {
                     expect(true).assertTrue();
                     done()
                 }).catch(error => {
-                    console.log('Receiver_012 err' + error)
+                    console.log('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0200 err' + error)
                     expect(false).assertTrue();
                     done();
                 })
             }
         }).catch(error => {
-            console.log('Receiver_012 readLatestImage err' + error)
+            console.log('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_PROMISE_0200 readLatestImage err' + error)
             expect(false).assertTrue();
             done();
         })
     })
 
     /**
-     * @tc.number    : Receiver_013
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0200
      * @tc.name      : release-callback
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -913,7 +913,7 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_013', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_RELEASE_CALLBACK_0200', 0, async function (done) {
         var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
         if (receiver == undefined) {
             expect(false).assertTrue();
@@ -955,7 +955,7 @@ describe('ImageReceiver', function () {
     })
 
     /**
-     * @tc.number    : Receiver_014
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0100
      * @tc.name      : getComponent-wrong format
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -965,12 +965,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_014', 0, async function (done) {
-        getComponentCbErr(done, 'Receiver_014', null)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0100', 0, async function (done) {
+        getComponentCbErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0100', null)
     })
 
     /**
-     * @tc.number    : Receiver_015
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0200
      * @tc.name      : getComponent-wrong format
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -980,12 +980,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_015', 0, async function (done) {
-        getComponentCbErr(done, 'Receiver_015', 'ab')
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0200', 0, async function (done) {
+        getComponentCbErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0200', 'ab')
     })
 
     /**
-     * @tc.number    : Receiver_016
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0300
      * @tc.name      : getComponent-wrong format
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -995,12 +995,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_016', 0, async function (done) {
-        getComponentCbErr(done, 'Receiver_016', 0.1)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0300', 0, async function (done) {
+        getComponentCbErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0300', 0.1)
     })
 
     /**
-     * @tc.number    : Receiver_017
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0400
      * @tc.name      : getComponent-wrong format
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1010,12 +1010,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_017', 0, async function (done) {
-        getComponentCbErr(done, 'Receiver_017', { a: 1 })
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0400', 0, async function (done) {
+        getComponentCbErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0400', { a: 1 })
     })
 
     /**
-     * @tc.number    : Receiver_018
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0500
      * @tc.name      : getComponent-wrong format
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1025,12 +1025,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_018', 0, async function (done) {
-        getComponentProErr(done, 'Receiver_018', null)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0500', 0, async function (done) {
+        getComponentProErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0500', null)
     })
 
     /**
-     * @tc.number    : Receiver_019
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0600
      * @tc.name      : getComponent-wrong format
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1040,12 +1040,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_019', 0, async function (done) {
-        getComponentProErr(done, 'Receiver_019', 'ab')
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0600', 0, async function (done) {
+        getComponentProErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0600', 'ab')
     })
 
     /**
-     * @tc.number    : Receiver_020
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0700
      * @tc.name      : getComponent-wrong format
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1055,12 +1055,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_020', 0, async function (done) {
-        getComponentProErr(done, 'Receiver_020', 0.1)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0700', 0, async function (done) {
+        getComponentProErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0700', 0.1)
     })
 
     /**
-     * @tc.number    : Receiver_021
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800
      * @tc.name      : getComponent-wrong format
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1070,12 +1070,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_021', 0, async function (done) {
-        getComponentProErr(done, 'Receiver_021', { a: 1 })
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800', 0, async function (done) {
+        getComponentProErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800', { a: 1 })
     })
 
     /**
-     * @tc.number    : Receiver_022
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100
      * @tc.name      : on-1
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1083,12 +1083,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_022', 0, async function (done) {
-        onErr(done, 'Receiver_022', 1)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100', 1)
     })
 
     /**
-     * @tc.number    : Receiver_023
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200
      * @tc.name      : on-null
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1096,12 +1096,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_023', 0, async function (done) {
-        onErr(done, 'Receiver_023', null)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200', null)
     })
 
     /**
-     * @tc.number    : Receiver_024
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300
      * @tc.name      : on-{a : 1}
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1109,12 +1109,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_024', 0, async function (done) {
-        onErr(done, 'Receiver_024', { a: 1 })
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300', { a: 1 })
     })
 
     /**
-     * @tc.number    : Receiver_025
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400
      * @tc.name      : on-'a'
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1122,8 +1122,8 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Receiver_025', 0, async function (done) {
-        onErr(done, 'Receiver_025', 'a')
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400', 'a')
     })
 })
 }

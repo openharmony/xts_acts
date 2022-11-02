@@ -91,6 +91,25 @@ async function startAbilityProcess(abilityContext, parameters) {
 export default function abilityTest(abilityContext) {
   describe('ActsAbilityTest', function () {
 
+    let TAG1 = "ACTS_AbilityMultiInstance_Single == ";
+    afterEach(async (done) => {
+      console.log(TAG1 + "afterEach called");
+      let wantInfo = {
+        bundleName: "com.example.abilitymultiinstance",
+        abilityName: "com.example.abilitymultiinstance.MainAbility"
+      }
+      await abilityContext.startAbility(wantInfo).then((data) => {
+        console.log(TAG1 + "startAbility data : " + JSON.stringify(data));
+      }).catch((err) => {
+        console.log(TAG1 + "startAbility err : " + JSON.stringify(err));
+      })
+
+      setTimeout(function () {
+        console.log(TAG1 + "afterEach end");
+        done();
+      }, 500);
+    })
+
     /*
     * @tc.number: ACTS_AbilityMultiInstance_Multi_0100
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.

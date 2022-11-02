@@ -21,7 +21,6 @@ import {
     sleep,
     IMAGE_TYPE,
     FILEKEY,
-    checkPresetsAssets,
     checkAssetsCount,
     nameFetchOps,
 } from '../../../../../../common';
@@ -31,7 +30,6 @@ export default function fileAssetPromise2Test(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileAsset')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -58,8 +56,8 @@ export default function fileAssetPromise2Test(abilityContext) {
                     selections: FILEKEY.ID + '= ?',
                     selectionArgs: [id + ''],
                 };
-                const fetchFileResult2 = await media.getFileAssets(currentfetchOp);
-                const currentAsset = await fetchFileResult2.getFirstObject();
+                const fetchFileResultById = await media.getFileAssets(currentfetchOp);
+                const currentAsset = await fetchFileResultById.getFirstObject();
                 expect(currentAsset[prop]).assertEqual(val);
 
                 asset[prop] = oldVal;
@@ -160,13 +158,13 @@ export default function fileAssetPromise2Test(abilityContext) {
         });
 
         /**
-                 * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005
-                 * @tc.name      : commitModify
-                 * @tc.desc      : Modify uri
-                 * @tc.size      : MEDIUM
-                 * @tc.type      : Function
-                 * @tc.level     : Level 0
-                 */
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005
+         * @tc.name      : commitModify
+         * @tc.desc      : Modify uri
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '06', IMAGE_TYPE);
@@ -206,7 +204,7 @@ export default function fileAssetPromise2Test(abilityContext) {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 const asset = await fetchFileResult.getFirstObject();
                 const isDir = await asset.isDirectory();
-                expect(!isDir).assertTrue();
+                expect(isDir).assertEqual(false);
                 done();
             } catch (error) {
                 console.info('FileAsset isDirectory 001 failed, message = ' + error);

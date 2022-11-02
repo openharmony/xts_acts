@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import Ability from '@ohos.application.Ability'
+import ConfigurationConstant from '@ohos.application.ConfigurationConstant'
 
 export default {
     data: {

@@ -25,7 +25,7 @@ hcpptest_suite("ActsDMSTest") {
   include_dirs = [
     "src",
     "src/utils",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//third_party/bounds_checking_function/include",
     "//foundation/communication/ipc/interfaces/innerkits/c/ipc/include",
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/registry",

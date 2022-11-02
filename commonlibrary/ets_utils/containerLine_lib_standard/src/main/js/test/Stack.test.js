@@ -20,22 +20,21 @@ describe("StackTest", function () {
   /**
    * @tc.name: testConstructor001
    * @tc.desc: Create an Stack instance. For example: let stack = new Stack().
-   * @tc.author: wangyong
    */
   it("testConstructor001", 0, function () {
     try {
       let stack = new Stack();
       expect(stack != undefined).assertEqual(true);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new stack");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The Stack's constructor cannot be directly invoked");
     }
   });
 
   /**
    * @tc.name: testPush002
    * @tc.desc: Insert element at top of stack.For example: stack.push("四").
-   * @tc.author: wangyong
    */
   it("testPush002", 0, function () {
     let stack = new Stack();
@@ -47,7 +46,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush003
    * @tc.desc: Insert element at top of stack.For example: stack.push(8).
-   * @tc.author: wangyong
    */
   it("testPush003", 0, function () {
     let stack = new Stack();
@@ -59,7 +57,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush004
    * @tc.desc: Insert element at top of stack.For example: let a = {name: "lala", age: "13岁"}; stack.push(a).
-   * @tc.author: wangyong
    */
   it("testPush004", 0, function () {
     let stack = new Stack();
@@ -72,7 +69,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush005
    * @tc.desc: Insert element at top of stack.For example: let a = [1, 2, 3, 4]; stack.push(a).
-   * @tc.author: wangyong
    */
   it("testPush005", 0, function () {
     let stack = new Stack();
@@ -85,7 +81,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPeek006
    * @tc.desc: Get stack top element. For example: stack.peek().
-   * @tc.author: wangyong
    */
   it("testPeek006", 0, function () {
     let stack = new Stack();
@@ -101,7 +96,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testLocate007
    * @tc.desc: Get the index corresponding to the element in the stack. For example: stack.locate("A").
-   * @tc.author: wangyong
    */
   it("testLocate007", 0, function () {
     let stack = new Stack();
@@ -120,7 +114,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPop008
    * @tc.desc: Delete top of stack element. For example: stack.pop().
-   * @tc.author: wangyong
    */
   it("testPop008", 0, function () {
     let stack = new Stack();
@@ -135,7 +128,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testForEach009
    * @tc.desc: Traversing elements in stack instances. For example: stack.forEach((item, index) => {arr.push(item);}).
-   * @tc.author: wangyong
    */
   it("testForEach009", 0, function () {
     let stack = new Stack();
@@ -159,7 +151,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testIterator010
    * @tc.desc: Iterate over all elements in the stack instance. For example: for (let item of stack) {arr.push(item);}.
-   * @tc.author: wangyong
    */
   it("testIterator010", 0, function () {
     let stack = new Stack();
@@ -185,7 +176,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testLength011
    * @tc.desc: Get the number of elements in the stack instance. For example: stack.length.
-   * @tc.author: wangyong
    */
   it("testLength011", 0, function () {
     let stack = new Stack();
@@ -200,7 +190,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testLength012
    * @tc.desc: Get the number of elements in the stack instance. For example: stack.length.
-   * @tc.author: wangyong
    */
   it("testLength012", 0, function () {
     let stack = new Stack();
@@ -211,7 +200,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testIsEmpty013
    * @tc.desc: Determine whether the Stack instance is empty. For example: stack.isEmpty().
-   * @tc.author: wangyong
    */
   it("testIsEmpty013", 0, function () {
     let stack = new Stack();
@@ -226,7 +214,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testIsEmpty014
    * @tc.desc: Determine whether the Stack instance is empty. For example: stack.isEmpty().
-   * @tc.author: wangyong
    */
   it("testIsEmpty014", 0, function () {
     let stack = new Stack();
@@ -237,7 +224,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush015
    * @tc.desc: Insert element at top of stack.For example: stack.push("你好世界").
-   * @tc.author: wangyong
    */
   it("testPush015", 0, function () {
     let stack = new Stack();
@@ -249,7 +235,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush016
    * @tc.desc: Insert element at top of stack.For example: stack.push(1234).
-   * @tc.author: wangyong
    */
   it("testPush016", 0, function () {
     let stack = new Stack();
@@ -261,7 +246,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush017
    * @tc.desc: Insert element at top of stack.For example: stack.push(1.234).
-   * @tc.author: wangyong
    */
   it("testPush017", 0, function () {
     let stack = new Stack();
@@ -273,7 +257,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush018
    * @tc.desc: Insert element at top of stack.For example: stack.push(-1234).
-   * @tc.author: wangyong
    */
   it("testPush018", 0, function () {
     let stack = new Stack();
@@ -285,7 +268,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush019
    * @tc.desc: Insert element at top of stack.For example: stack.push(0).
-   * @tc.author: wangyong
    */
   it("testPush019", 0, function () {
     let stack = new Stack();
@@ -297,7 +279,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush020
    * @tc.desc: Insert element at top of stack.For example: stack.push("*").
-   * @tc.author: wangyong
    */
   it("testPush020", 0, function () {
     let stack = new Stack();
@@ -313,7 +294,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush021
    * @tc.desc: Insert element at top of stack.For example: let arr = {}; stack.push(arr).
-   * @tc.author: wangyong
    */
   it("testPush021", 0, function () {
     let stack = new Stack();
@@ -326,7 +306,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush022
    * @tc.desc: Insert element at top of stack.For example: let arr = []; stack.push(arr).
-   * @tc.author: wangyong
    */
   it("testPush022", 0, function () {
     let stack = new Stack();
@@ -339,7 +318,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush023
    * @tc.desc: Insert element at top of stack.For example: stack.push("hello world").
-   * @tc.author: wangyong
    */
   it("testPush023", 0, function () {
     let stack = new Stack();
@@ -351,7 +329,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush024
    * @tc.desc: Insert element at top of stack.
-   * @tc.author: wangyong
    */
   it("testPush024", 0, function () {
     let stack = new Stack();
@@ -363,7 +340,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush025
    * @tc.desc: Insert element at top of stack. For example: stack.push("").
-   * @tc.author: wangyong
    */
   it("testPush025", 0, function () {
     let stack = new Stack();
@@ -375,7 +351,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush026
    * @tc.desc: Insert element at top of stack. For example: stack.push(true).
-   * @tc.author: wangyong
    */
   it("testPush026", 0, function () {
     let stack = new Stack();
@@ -387,7 +362,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush027
    * @tc.desc: Insert element at top of stack. For example: stack.push(false).
-   * @tc.author: wangyong
    */
   it("testPush027", 0, function () {
     let stack = new Stack();
@@ -399,7 +373,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush028
    * @tc.desc: Insert element at top of stack. For example: stack.push(null).
-   * @tc.author: wangyong
    */
   it("testPush028", 0, function () {
     let stack = new Stack();
@@ -411,7 +384,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush029
    * @tc.desc: Insert element at top of stack. For example: stack.push(undefined).
-   * @tc.author: wangyong
    */
   it("testPush029", 0, function () {
     let stack = new Stack();
@@ -423,7 +395,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPeek030
    * @tc.desc: Get stack top element. For example: stack.peek().
-   * @tc.author: wangyong
    */
   it("testPeek030", 0, function () {
     let stack = new Stack();
@@ -434,7 +405,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPop031
    * @tc.desc: Delete top of stack element. For example: stack.pop().
-   * @tc.author: wangyong
    */
   it("testPop031", 0, function () {
     let stack = new Stack();
@@ -445,7 +415,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testForEach032
    * @tc.desc: Traversing elements in stack instances. For example: stack.forEach((item, index) => {arr.push(item);}).
-   * @tc.author: wangyong
    */
   it("testForEach032", 0, function () {
     let stack = new Stack();
@@ -459,7 +428,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testIterator033
    * @tc.desc: Iterate over all elements in the stack instance. For example: for (let item of stack) {arr.push(item);}.
-   * @tc.author: wangyong
    */
   it("testIterator033", 0, function () {
     let stack = new Stack();
@@ -473,7 +441,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testPush034
    * @tc.desc: Insert element at top of stack. For example: for (let i = 0; i < 1000; i++) {stack.push(i);}.
-   * @tc.author: wangyong
    */
   it("testPush034", 0, function () {
     let stack = new Stack();
@@ -489,7 +456,6 @@ describe("StackTest", function () {
   /**
    * @tc.name: testIterator035
    * @tc.desc: Iterate over all elements in the stack instance. For example: stack[Symbol.iterator]().
-   * @tc.author: wangyong
    */
   it("testIterator035", 0, function () {
     let stack = new Stack();
@@ -512,6 +478,22 @@ describe("StackTest", function () {
     let a = [8, "一", "二", 5, c, 6, "三", "四"];
     for (let i = 0; i < a.length; i++) {
       expect(arr[i]).assertEqual(a[i]);
+    }
+  });
+
+  /**
+   * @tc.name: testPush036
+   * @tc.desc: Insert element at top of stack. For example: stack.push.bind({}, 10)().
+   */
+  it("testPush036 ", 0, function () {
+    let stack = new Stack();
+    try {
+      stack.push.bind({}, 10)();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The push method cannot be bound`);
     }
   });
 });

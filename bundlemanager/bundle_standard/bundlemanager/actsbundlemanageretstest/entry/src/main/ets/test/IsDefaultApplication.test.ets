@@ -32,7 +32,7 @@ export default function isDefaultApplicationTest() {
                   console.info("isDefaultApplication_0100 data--- " + data)
                   console.info("isDefaultApplication_0100 err--- " + err)
                   expect(data).assertFalse()
-                  expect(err).assertEqual(0)
+                  expect(err).assertEqual(null)
                   done()
               })
           });
@@ -68,28 +68,28 @@ export default function isDefaultApplicationTest() {
          */
         it('applicationType_0100', 0, async function (done) {
             expect(typeof (defaultAppMgr.ApplicationType.BROWSER)).assertEqual("string");
-            expect(defaultAppMgr.ApplicationType.BROWSER).assertEqual("BROWSER");
+            expect(defaultAppMgr.ApplicationType.BROWSER).assertEqual("Web Browser");
 
             expect(typeof (defaultAppMgr.ApplicationType.IMAGE)).assertEqual("string");
-            expect(defaultAppMgr.ApplicationType.IMAGE).assertEqual("IMAGE");
+            expect(defaultAppMgr.ApplicationType.IMAGE).assertEqual("Image Gallery");
 
             expect(typeof (defaultAppMgr.ApplicationType.AUDIO)).assertEqual("string");
-            expect(defaultAppMgr.ApplicationType.AUDIO).assertEqual("AUDIO");
+            expect(defaultAppMgr.ApplicationType.AUDIO).assertEqual("Audio Player");
 
             expect(typeof (defaultAppMgr.ApplicationType.VIDEO)).assertEqual("string");
-            expect(defaultAppMgr.ApplicationType.VIDEO).assertEqual("VIDEO");
+            expect(defaultAppMgr.ApplicationType.VIDEO).assertEqual("Video Player");
 
             expect(typeof (defaultAppMgr.ApplicationType.PDF)).assertEqual("string");
-            expect(defaultAppMgr.ApplicationType.PDF).assertEqual("PDF");
+            expect(defaultAppMgr.ApplicationType.PDF).assertEqual("PDF Viewer");
 
             expect(typeof (defaultAppMgr.ApplicationType.WORD)).assertEqual("string");
-            expect(defaultAppMgr.ApplicationType.WORD).assertEqual("WORD");
+            expect(defaultAppMgr.ApplicationType.WORD).assertEqual("Word Viewer");
 
             expect(typeof (defaultAppMgr.ApplicationType.EXCEL)).assertEqual("string");
-            expect(defaultAppMgr.ApplicationType.EXCEL).assertEqual("EXCEL");
+            expect(defaultAppMgr.ApplicationType.EXCEL).assertEqual("Excel Viewer");
 
             expect(typeof (defaultAppMgr.ApplicationType.PPT)).assertEqual("string");
-            expect(defaultAppMgr.ApplicationType.PPT).assertEqual("PPT");
+            expect(defaultAppMgr.ApplicationType.PPT).assertEqual("PPT Viewer");
             done()
         });
     })

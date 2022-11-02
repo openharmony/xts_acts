@@ -22,6 +22,15 @@ import featureAbility from '@ohos.ability.featureAbility'
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
+function sleep(delay) {
+    let start = new Date().getTime();
+    while (true) {
+        if (new Date().getTime() - start > delay) {
+            break;
+        }
+    }
+}
+
 export default {
     data: {
         title: ""
@@ -38,7 +47,7 @@ export default {
     },
     async onShow() {
         console.info('ACTS_NewWant Api7 onShow');
-
+        sleep(1000)
         await featureAbility.startAbility(
             {
                 want:

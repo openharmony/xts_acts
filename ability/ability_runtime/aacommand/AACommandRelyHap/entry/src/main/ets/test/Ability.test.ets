@@ -15,6 +15,10 @@
  */
  
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 export default function abilityTest() {
     describe('ACTS_AACommand_01_3', function () {
         /**
@@ -32,6 +36,7 @@ export default function abilityTest() {
                 console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback err: "+JSON.stringify(err) )
                 console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback data: "+JSON.stringify(data))
             })
+            await sleep(1000);
             var finishmsg = 'ACTS_AACommand_print_01_0100 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then((data)=>{
                 console.log("ACTS_AACommand_print_01_0100 finishTest  test  end ========> callback " )
@@ -62,6 +67,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(msg,()=>{
                 console.log("print  test  end ========> callback " )
             })
+            await sleep(1000);
             var finishmsg = 'ACTS_AACommand_print_01_0200 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0200 print  test  end ========> callback " )
@@ -91,6 +97,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(msg,()=>{
                 console.log("print  test  end ========> callback " )
             })
+            await sleep(1000);
             var finishmsg = 'ACTS_AACommand_print_01_0300 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0300 print  test  end ========> callback " )
@@ -109,6 +116,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(null,()=>{
                 console.log("print  test  end ========> callback " )
             })
+            await sleep(1000);
             var finishmsg = 'ACTS_AACommand_print_01_0400 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0400 print  test  end ========> callback " )
@@ -128,6 +136,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(msg).then(()=>{
                 console.log("ACTS_AACommand_print_01_0500 print  test  end ========> callback " )
             })
+            await sleep(1000);
             var finishmsg = 'ACTS_AACommand_print_01_0500 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0500 print  test  end ========> callback " )
@@ -156,6 +165,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(msg).then(()=>{
                 console.log("ACTS_AACommand_print_01_0600 print  test  end ========> callback " )
             })
+            await sleep(1000);
             var finishmsg = 'ACTS_AACommand_print_01_0600 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0600 2 print  test  end ========> callback " )
@@ -185,6 +195,7 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(msg).then(()=>{
                 console.log("ACTS_AACommand_print_01_0700 print  test  end ========> callback " )
             })
+            await sleep(1000);
             var finishmsg = 'ACTS_AACommand_print_01_0700 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_print_01_0700 2 print  test  end ========> callback " )
@@ -220,6 +231,7 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_0100', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146ACTS_AACommand_finish_01_0100'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, 1,()=>{
                 console.log("ACTS_AACommand_finish_01_0100 finishTest  test  end ========> callback " )
                 done()
@@ -275,6 +287,7 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_0400', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, Number.MAX_VALUE,()=>{
                 console.log("ACTS_AACommand_finish_01_0400 finishTest  test  end ========> callback " )
                 done()
@@ -290,6 +303,7 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_0500', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE,()=>{
                 console.log("ACTS_AACommand_finish_01_0500 finishTest  test  end ========> callback " )
                 done()
@@ -306,6 +320,7 @@ export default function abilityTest() {
         it('ACTS_AACommand_finish_01_0600', 0, async function (done) {
 
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, (Number.MIN_VALUE+1),()=>{
                 console.log("ACTS_AACommand_finish_01_0600 finishTest  test  end ========> callback " )
                 done()
@@ -321,6 +336,7 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_0700', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, (Number.MIN_VALUE-1),()=>{
                 console.log("ACTS_AACommand_finish_01_0700 finishTest  test  end ========> callback " )
                 done()
@@ -336,17 +352,12 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_0800', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            setTimeout(() => {
-                console.log('ACTS_AACommand_finish_01_0800 code:'+JSON.stringify(code))
-                if(code!=undefined){
-                    expect().assertFail();
-                }
-                done();
-            }, 3000)
-            var code = globalThis.abilityDelegator.finishTest(msg, 'ABCD',()=>{
+            globalThis.abilityDelegator.finishTest(msg, 'ABCD',()=>{
                 console.log(" ACTS_AACommand_finish_01_0800 finishTest  test  end ========> callback " )
                 expect().assertFail();
             })
+            await sleep(2000);
+            done();
         })
 
         /**
@@ -358,6 +369,7 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_0900', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, 1).then(() => {
                 console.log("ACTS_AACommand_finish_01_0900 finishTest  test  end ========> callback " )
                 done()
@@ -371,15 +383,9 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_1000', 0, async function (done) {
-            var code = null
-            setTimeout(() => {
-                console.log('ACTS_AACommand_finish_01_1000 code:'+JSON.stringify(code))
-                if(code!=undefined){
-                    expect().assertFail();
-                }
-                done();
-            }, 3000)
-            code = globalThis.abilityDelegator.finishTest(null, 1)
+            globalThis.abilityDelegator.finishTest(null, 1)
+            await sleep(2000);
+            done()
         })
 
         /**
@@ -389,15 +395,9 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_1100', 0, async function (done) {
-            var code=null
-            setTimeout(() => {
-                console.log('ACTS_AACommand_finish_01_1100 code:'+JSON.stringify(code))
-                if(code!=undefined){
-                    expect().assertFail();
-                }
-                done();
-            }, 3000)
-            code = globalThis.abilityDelegator.finishTest(undefined, 1)
+            globalThis.abilityDelegator.finishTest(undefined, 1)
+            await sleep(2000);
+            done()
         })
 
         /**
@@ -409,6 +409,7 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_1200', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, Number.MAX_VALUE).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1200 finishTest  test  end ========> callback " )
                 done()
@@ -424,6 +425,7 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_1300', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1300 finishTest  test  end ========> callback " )
                 done()
@@ -439,6 +441,7 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_1400', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE+1).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1400 finishTest  test  end ========> callback " )
                 done()
@@ -454,6 +457,7 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_1500', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            await sleep(1000);
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE-1).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1500 finishTest  test  end ========> callback " )
                 done()

@@ -92,8 +92,8 @@ export default function colorSpaceManagerTest(context, windowStage, abilityStora
         expect(colorSpaceName).assertEqual(colorSpaceManager.ColorSpace.UNKNOWN);
         done();
       } catch (err) {
-        console.log('test enum value of ColorSpace Manager error ' + JSON.stringify(err));
-        expect.assertFail();
+        console.log('test enum value of ColorSpace Manager not support error ' + JSON.stringify(err));
+        expect(err.code == 18600001).assertTrue();
         done();
       }
     })
@@ -176,8 +176,8 @@ export default function colorSpaceManagerTest(context, windowStage, abilityStora
         expect(colorSpaceName).assertEqual(colorSpaceManager.ColorSpace.UNKNOWN);
         done();
       } catch (err) {
-        console.log('test enum value of ColorSpace Manager error ' + JSON.stringify(err));
-        expect.assertFail();
+        console.log('test enum value of ColorSpace Manager not support error ' + JSON.stringify(err));
+        expect(err.code == 18600001).assertTrue();
         done();
       }
     })

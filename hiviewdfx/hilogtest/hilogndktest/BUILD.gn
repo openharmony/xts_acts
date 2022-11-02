@@ -24,10 +24,10 @@ config("hilogndktest_config") {
 ohos_moduletest_suite("ActsHilogndkTest") {
   module_out_path = module_output_path
   sources = [ "hilogndktest.cpp" ]
+  external_deps = [ "c_utils:utils" ]
   deps = [
     "//base/hiviewdfx/hilog/frameworks/hilog_ndk:hilog_ndk",
     "//base/hiviewdfx/hilog/interfaces/native/kits:libhilog_ndk",
-    "//commonlibrary/c_utils/base:utils",
     "//third_party/googletest:gtest_main",
   ]
   configs = [ ":hilogndktest_config" ]

@@ -17,7 +17,8 @@
     "package": "com.example.bmsmodulenamedentry",
     "name": "MyApplication1",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

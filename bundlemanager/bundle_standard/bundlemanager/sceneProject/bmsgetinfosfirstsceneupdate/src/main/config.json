@@ -21,7 +21,8 @@
     "mainAbility": "com.example.third1.MainAbility",
     "colorMode": "dark",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

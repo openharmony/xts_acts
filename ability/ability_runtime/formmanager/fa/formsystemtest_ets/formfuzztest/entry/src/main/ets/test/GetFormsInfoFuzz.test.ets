@@ -43,7 +43,7 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
           formHost.getFormsInfo(bundleName, (error, data) => {
             console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
             expect(data).assertUndefined();
-            if (`STRING` === dataType) {
+            if (`string` === typeof bundleName) {
               expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
               expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
             } else {
@@ -79,7 +79,7 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
           expect().assertFail();
         } catch (error) {
           console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} exception caught: ${JSON.stringify(error)}`);
-          if (`STRING` === dataType) {
+          if (`string` === typeof bundleName) {
             expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
             expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
           } else {
@@ -108,7 +108,7 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
           formHost.getFormsInfo(bundleName, moduleName, (error, data) => {
             console.log(`${callbackName} ${tcNumber} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
             expect(data).assertUndefined();
-            if (`STRING` === dataType) {
+            if (`string` === typeof bundleName) {
               expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
               expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
             } else {
@@ -146,7 +146,7 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
           expect().assertFail();
         } catch (error) {
           console.log(`${promiseName} ${tcNumber} exception caught: ${JSON.stringify(error)}`);
-          if (`STRING` === dataType) {
+          if (`string` === typeof bundleName) {
             expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
             expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
           } else {
@@ -175,7 +175,7 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
           formHost.getFormsInfo(bundleName, moduleName, (error, data) => {
             console.log(`${callbackName} ${tcNumber} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
             expect(data).assertUndefined();
-            if (`STRING` === dataType) {
+            if (`string` === typeof moduleName) {
               expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
               expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
             } else {
@@ -212,7 +212,7 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
           expect().assertFail();
         } catch (error) {
           console.log(`${promiseName} ${tcNumber} exception caught: ${JSON.stringify(error)}`);
-          if (`STRING` === dataType) {
+          if (`string` === typeof moduleName) {
             expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
             expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
           } else {

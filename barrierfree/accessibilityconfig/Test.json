@@ -18,6 +18,10 @@
         },
         {
             "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ],
             "teardown-command":[
                 "bm uninstall -n com.example.accessibilityconfig"
             ]

@@ -3682,7 +3682,7 @@ export default function fileIOTest() {
       catch (err) {
         fileio.unlinkSync(fpath);
         console.info('fileio_test_fchown_sync_002 has failed for ' + err);
-        expect(err.message == "Operation not permitted").assertTrue();
+        expect(err.message == "Invalid owner").assertTrue();
       }
     });
   
@@ -3752,7 +3752,7 @@ export default function fileIOTest() {
         fileio.closeSync(fd);
         fileio.unlinkSync(fpath);
         console.info('fileio_test_fchown_sync_005 has failed for ' + err);
-        expect(err.message == "Operation not permitted").assertTrue();
+        expect(err.message == "Invalid owner").assertTrue();
       }
     });
   

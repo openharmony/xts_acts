@@ -134,35 +134,26 @@ export default function verificationTest(){
 
       try {
         let list1 = []
-        let list2 = ["Fa_Auxiliary_MainAbility4_onDestroy", "Fa_Auxiliary_MainAbility5_onDestroy"]
+        let list2 = ["Fa_Auxiliary_MainAbility4_onDestroy"]
         let number1 = undefined
-        let number2 = undefined
         let number3 = undefined
         let code1 = 536870912
         let code2 = 2048
         let subscriber = null
         let subscribeInfo = {
-          events: ["Fa_Auxiliary_MainAbility4_onCreate", "Fa_Auxiliary_MainAbility4_onDestroy",
-          "Fa_Auxiliary_MainAbility5_onCreate", "Fa_Auxiliary_MainAbility5_onDestroy"]
+          events: ["Fa_Auxiliary_MainAbility4_onCreate", "Fa_Auxiliary_MainAbility4_onDestroy"]
         }
         function SubscribeInfoCallback(err, data) {
           console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
           if (data.event == "Fa_Auxiliary_MainAbility4_onCreate") {
             number1 = data.parameters.flags
           }
-          if (data.event == "Fa_Auxiliary_MainAbility5_onCreate") {
-            number2 = data.parameters.flags
-          }
           if (data.event == "Fa_Auxiliary_MainAbility4_onDestroy") {
             list1[0] = "Fa_Auxiliary_MainAbility4_onDestroy"
-          }
-          if (data.event == "Fa_Auxiliary_MainAbility5_onDestroy") {
-            list1[1] = "Fa_Auxiliary_MainAbility5_onDestroy"
           }
           if (JSON.stringify(list1) == JSON.stringify(list2)) {
             expect(number3).assertEqual(1);
             expect(number1).assertEqual(code1);
-            expect(number2).assertEqual(code2);
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
           }
         }
@@ -198,21 +189,6 @@ export default function verificationTest(){
           }
         }
         await ability_featureAbility.startAbility(wantNum2).then((data) => {
-          console.info(TAG + "startAbility data = " + JSON.stringify(data));
-        }).catch((err) => {
-          console.info(TAG + "startAbility err = " + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        });
-
-        let wantNum3 = {
-          want: {
-            bundleName: 'ohos.acts.aafwk.test.faauxiliary',
-            abilityName: 'ohos.acts.aafwk.test.faauxiliary.MainAbility5',
-            flags: wantConstant.Flags.FLAG_INSTALL_ON_DEMAND
-          }
-        }
-        await ability_featureAbility.startAbility(wantNum3).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
@@ -331,8 +307,8 @@ export default function verificationTest(){
 
         let wantNum = {
           want: {
-            bundleName: 'ohos.acts.aafwk.test.faauxiliary',
-            abilityName: 'ohos.acts.aafwk.test.faauxiliary.ServiceAbility'
+            bundleName: 'com.example.faapicoverhaptest',
+            abilityName: 'com.example.faapicoverhaptest.ServiceAbility'
           }
         }
         await ability_featureAbility.startAbility(wantNum).then((data) => {
@@ -430,8 +406,8 @@ export default function verificationTest(){
           }
         };
         let wantNum = {
-          bundleName: 'ohos.acts.aafwk.test.faauxiliary',
-          abilityName: 'ohos.acts.aafwk.test.faauxiliary.ServiceAbility2'
+          bundleName: 'com.example.faapicoverhaptest',
+          abilityName: 'com.example.faapicoverhaptest.ServiceAbility2'
         }
         let num = ability_featureAbility.connectAbility(wantNum, options)
       } catch (err) {

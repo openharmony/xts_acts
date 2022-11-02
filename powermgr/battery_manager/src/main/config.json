@@ -16,6 +16,8 @@
     "package": "com.example.mybatteryapp",
     "name": ".entry",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

@@ -1754,7 +1754,7 @@ describe('singleKvStoreCallbackTest', function () {
      * @tc.name [JS-API8]SingleKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 103
      */
-    it('testSingleKvStoreRemoveDeviceData103', 0, async function (done) {
+     it('testSingleKvStoreRemoveDeviceData103', 0, async function (done) {
         console.info('testSingleKvStoreRemoveDeviceData103');
         try {
             await kvStore.removeDeviceData('', function (err,data) {

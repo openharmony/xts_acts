@@ -56,30 +56,7 @@ void HksSafeCipherKeyTest::TearDown()
 {
 }
 
-const char *g_storePath = "/storage/maindata/hks_client/key";
 const char *g_testEd25519 = "test_ed25519";
-
-static int32_t CompareTwoKey(const struct HksBlob *keyAliasOne, const struct HksBlob *keyAliasTwo)
-{
-    uint32_t sizeOne = HksTestFileSize(g_storePath, (char *)keyAliasOne->data);
-    uint8_t *bufOne = (uint8_t *)HksTestMalloc(sizeOne);
-    if (bufOne == NULL) {
-        return HKS_ERROR_MALLOC_FAIL;
-    }
-    uint32_t sizeRead = HksTestFileRead(g_storePath, (char *)keyAliasOne->data, 0, bufOne, sizeOne);
-
-    uint32_t sizeTwo = HksTestFileSize(g_storePath, (char *)keyAliasTwo->data);
-    uint8_t *bufTwo = (uint8_t *)HksTestMalloc(sizeTwo);
-    if (bufTwo == NULL) {
-        HksTestFree(bufOne);
-        return HKS_ERROR_MALLOC_FAIL;
-    }
-    sizeRead = HksTestFileRead(g_storePath, (char *)keyAliasTwo->data, 0, bufTwo, sizeOne);
-    int32_t ret = memcmp(bufOne, bufTwo, sizeRead);
-    HksTestFree(bufOne);
-    HksTestFree(bufTwo);
-    return ret;
-}
 
 /**
  * @tc.name: HksSafeCipherKeyTest.HksSafeCipherKeyTest001
@@ -106,12 +83,21 @@ HWTEST_F(HksSafeCipherKeyTest, HksSafeCipherKeyTest001, TestSize.Level1)
     ret = TestImportEd25519(newAliasTwo, &pubKeyInfo);
     EXPECT_EQ(ret, 0);
 
-    ret = CompareTwoKey(&newAliasOne, &newAliasTwo);
+    struct HksBlob X25519PubKey1 = { .size = HKS_CURVE25519_KEY_SIZE_256, .data = nullptr};
+    struct HksBlob X25519PubKey2 = { .size = HKS_CURVE25519_KEY_SIZE_256, .data = nullptr};
+    X25519PubKey1.data = (uint8_t *)malloc(X25519PubKey1.size);
+    X25519PubKey2.data = (uint8_t *)malloc(X25519PubKey2.size);
+
+    ret = HksExportPublicKey(&newAliasOne, nullptr, &X25519PubKey1);
+    EXPECT_EQ(ret, 0)<<"export alies1 fail";
+    ret = HksExportPublicKey(&newAliasTwo, nullptr, &X25519PubKey2);
+    EXPECT_EQ(ret, 0)<<"export alies2 fail";
+    ret = memcmp(X25519PubKey1.data, X25519PubKey2.data, HKS_CURVE25519_KEY_SIZE_256);
     EXPECT_NE(ret, 0);
 
-    ret = HksDeleteKey(&newAliasOne, NULL);
+    ret = HksDeleteKey(&newAliasOne, nullptr);
     EXPECT_EQ(ret, 0);
-    ret = HksDeleteKey(&newAliasTwo, NULL);
+    ret = HksDeleteKey(&newAliasTwo, nullptr);
     EXPECT_EQ(ret, 0);
 }
 #endif /* _CUT_AUTHENTICATE_ */

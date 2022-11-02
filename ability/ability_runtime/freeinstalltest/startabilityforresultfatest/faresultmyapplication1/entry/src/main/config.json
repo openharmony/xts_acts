@@ -16,7 +16,7 @@
   "module": {
     "mainAbility": ".MainAbility1",
     "deviceType": [
-      "phone",
+      "default",
       "tablet"
     ],
     "abilities": [

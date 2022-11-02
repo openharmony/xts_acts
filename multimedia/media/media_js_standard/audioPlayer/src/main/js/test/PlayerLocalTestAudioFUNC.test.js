@@ -393,7 +393,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
             if (seekDoneTime == DURATION_TIME && seekCount == 0) {
                 console.info('case loop step 1');
                 seekCount++;
-                //mediaTestBase.msleep(PLAY_TIME);
                 expect(testAudioPlayer.state).assertEqual('playing');
                 testAudioPlayer.seek(DURATION_TIME - 1000);
             } else if ((seekDoneTime == (DURATION_TIME - 1000)) && seekCount == 1) {
@@ -458,7 +457,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
             console.info('case wait for next player');
         }
         playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, waitForDone);
-        mediaTestBase.msleep(1000);
+        await mediaTestBase.msleepAsync(1000).then(
+            () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, done);
     })
 })

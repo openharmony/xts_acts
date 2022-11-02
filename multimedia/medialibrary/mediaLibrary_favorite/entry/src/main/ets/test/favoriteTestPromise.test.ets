@@ -21,7 +21,6 @@ import {
     VIDEO_TYPE,
     AUDIO_TYPE,
     FILE_TYPE,
-    checkPresetsAssets,
     nameFetchOps,
     checkAssetsCount,
 } from '../../../../../../common';
@@ -31,7 +30,6 @@ export default function favoriteTestPromiseTest(abilityContext) {
         var media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFavorite');
         });
         beforeEach(function () {
             console.info('beforeEach case');

@@ -30,7 +30,7 @@ export default function ActsAccountChangeOnOff() {
                 console.info(`sleep #{time} over ...`)
             })
         }
-        beforeAll(async function (done) {            
+        beforeAll(async function (done) { 
             done();
         });
 
@@ -854,8 +854,7 @@ export default function ActsAccountChangeOnOff() {
             }
             catch(err){
                 console.error("====>on ActsAccountChangeOnOff_1300 err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
+                expect(err.code).assertEqual(201);
             }
             console.debug("====>setAccountExtraInfo start====");
             try{
@@ -901,8 +900,7 @@ export default function ActsAccountChangeOnOff() {
             }
             catch(err){
                 console.error("====>on ActsAccountChangeOnOff_1400 err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
+                expect(err).assertFail();
             }
             console.debug("====>setAccountExtraInfo start====");
             try{

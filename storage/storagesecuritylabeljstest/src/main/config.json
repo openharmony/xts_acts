@@ -16,6 +16,8 @@
         "package": "ohos.acts.storage.securitylabel",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

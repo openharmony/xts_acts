@@ -19,6 +19,8 @@
     "mainAbility": "com.acts.ace.xcomponentetstest.MainAbility",
 
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

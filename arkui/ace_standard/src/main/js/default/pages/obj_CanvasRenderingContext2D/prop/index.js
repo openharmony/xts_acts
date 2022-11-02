@@ -38,6 +38,10 @@ export default {
         this.props15()
         this.props16()
         this.props17()
+        this.props18()
+        this.props19()
+        this.props20()
+
 
     },
     props1() {
@@ -217,6 +221,22 @@ export default {
         ctx.fillText('Alphabetic', 90, 30);
         ctx.textBaseline = 'hanging';
         ctx.fillText('Hanging', 140, 30);
-    }
+    },
+    props18() {
+        const el =this.$refs.canvas18;
+        const ctx = el.getContext('2d');
+        var info = ctx.getLineDash();
+        console.info("the get LineDash.." + JSON.stringify(info));
+    },
+    props19() {
+        const el =this.$refs.canvas19;
+        const ctx = el.getContext('2d');
+        ctx.restore();
+    },
+    props20() {
+        const el =this.$refs.canvas20;
+        const ctx = el.getContext('2d');
+        ctx.save();
+    },
 
 }

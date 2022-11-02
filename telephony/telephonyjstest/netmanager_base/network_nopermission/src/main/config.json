@@ -16,6 +16,8 @@
   "module": {
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "abilities": [

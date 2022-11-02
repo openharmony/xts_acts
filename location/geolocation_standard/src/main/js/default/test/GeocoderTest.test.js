@@ -188,7 +188,8 @@ describe('geolocationTest_geo1', function () {
             + JSON.stringify(data)[0].placeName
             + JSON.stringify(data)[0].postalCode + JSON.stringify(data)[0].premises
             + JSON.stringify(data)[0].roadName + JSON.stringify(data)[0].subAdministrativeArea
-            + JSON.stringify(data)[0].subLocality + JSON.stringify(data)[0].subRoadName);
+            + JSON.stringify(data)[0].subLocality + JSON.stringify(data)[0].subRoadName
+	    + JSON.stringify(data)[0].isFromMock);
             done();
         }).catch(error => {
             console.info("[lbs_js] getAddressesFromLocation promise then error." + JSON.stringify(error));

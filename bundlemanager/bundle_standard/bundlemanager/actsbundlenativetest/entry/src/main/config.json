@@ -19,7 +19,8 @@
     "mainAbility": "com.actsbundle.napitest.MainAbility",
 
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

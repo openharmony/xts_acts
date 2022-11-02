@@ -13,13 +13,13 @@
 * limitations under the License.
 */
 import commonEvent from "@ohos.commonEvent"
-import featureAbility from '@ohos.ability.featureAbility'
+import particleAbility from '@ohos.ability.particleAbility'
 export default {
     onStart() {
         console.info('ServiceAbility onStart');
         commonEvent.publish("ACTS_InterfaceMultiUsers_0100_Start_CommonEvent", () => {
             console.log(" Publish ACTS_InterfaceMultiUsersExtension_CommonEvent callback")
-            featureAbility.terminateSelf().then(() => {
+            particleAbility.terminateSelf().then(() => {
                 console.log('terminateSelf promise');
                 commonEvent.publish("ACTS_TerminateSelf_CommonEvent", () => {
                     console.log(" Publish ACTS_TerminateSelf_CommonEvent callback")

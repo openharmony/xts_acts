@@ -16,6 +16,8 @@
         "package": "ohos.acts.dataSharejstest",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

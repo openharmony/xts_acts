@@ -19,6 +19,7 @@ group("usb") {
     deps = [ "usb_standard:usb_js_test" ]
   } else {
     if (is_standard_system) {
+      deps = [ "usb_standard:usb_js_test" ]
     }
   }
 }

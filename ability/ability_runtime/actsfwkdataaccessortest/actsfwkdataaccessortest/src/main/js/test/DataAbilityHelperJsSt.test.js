@@ -18,9 +18,9 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 export default function ActsDataAbilityHelperTest() {
 describe('ActsDataAbilityHelperTest', function () {
-    let dataAbilityUri = ("dataability:///com.example.myapplication.DataAbility");
-    let dataAbilityUri2 = ("dataability:///com.example.myapplication.DataAbility2");
-    let dataAbilityUri3 = ("dataability:///com.example.myapplication.DataAbility3");
+    let dataAbilityUri = ("dataability:///com.example.myapplication.TestDataAbility");
+    let dataAbilityUri2 = ("dataability:///com.example.myapplication.TestDataAbility2");
+    let dataAbilityUri3 = ("dataability:///com.example.myapplication.TestDataAbility3");
     let DAHelper;
     let gSetTimeout = 500;
     var valueBucket = {
@@ -41,6 +41,7 @@ describe('ActsDataAbilityHelperTest', function () {
         } catch (err) {
             console.error('=ACTS_beforeAll acquireDataAbilityHelper catch(err)====>:' + err);
         }
+        sleep(300);
         console.debug('= ACTS_beforeAll ====<end');
         done();
     })
@@ -49,6 +50,15 @@ describe('ActsDataAbilityHelperTest', function () {
         console.debug('= ACTS_afterAll ====<end');
         done();
     })
+
+    function sleep(delay) {
+        let start = new Date().getTime();
+        while (true) {
+            if (new Date().getTime() - start > delay) {
+                break;
+            }
+        }
+    }
 
     /*
     * @tc.number: ACTS_AcquireDataAbilityHelper_0100
@@ -4218,9 +4228,9 @@ describe('ActsDataAbilityHelperTest', function () {
                 dataAbilityUri,
                 undefined,
             ).then((data) => {
-                console.debug("=ACTS_OpenFile_1500 then data====>"
+                console.debug("=ACTS_OpenFile_1500 then data val is====>"
                     + ("json data 【") + JSON.stringify(data) + (" 】"));
-                expect(data).assertEqual(-1)
+                expect(data).assertEqual(-3)
                 console.log('ACTS_OpenFile_1500====<end');
                 done();
             }).catch(err => {
@@ -4254,7 +4264,7 @@ describe('ActsDataAbilityHelperTest', function () {
                 (err, data) => {
                     console.debug("=ACTS_OpenFile_1600 err,data=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data) + (" 】;"));
-                    expect(data).assertEqual(-1);
+                    expect(data).assertEqual(-3);
                     console.log('ACTS_OpenFile_1600====<end');
                     done();
                 },
@@ -4282,7 +4292,7 @@ describe('ActsDataAbilityHelperTest', function () {
             ).then((data) => {
                 console.debug("=ACTS_OpenFile_1700 then data====>"
                     + ("json data 【") + JSON.stringify(data) + (" 】"));
-                expect(data).assertEqual(-1)
+                expect(data).assertEqual(-2)
                 console.log('ACTS_OpenFile_1700====<end');
                 done();
             }).catch(err => {
@@ -4317,7 +4327,7 @@ describe('ActsDataAbilityHelperTest', function () {
                 (err, data) => {
                     console.debug("=ACTS_OpenFile_1800 err,data=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data) + (" 】;"));
-                    expect(data).assertEqual(-1);
+                    expect(data).assertEqual(-2);
                     console.log('ACTS_OpenFile_1800====<end');
                     done();
                 },

@@ -29,7 +29,7 @@
       }
     ],
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

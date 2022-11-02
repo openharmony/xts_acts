@@ -18,6 +18,9 @@ group("context") {
   if (is_standard_system) {
     deps = [
       "actscontexttest:ActsContextTest",
+      "actscreatemodulecontextassist:ActsCreateModuleContextAssist",
+      "actscreatemodulecontextassistone:ActsCreateModuleContextAssistOne",
+      "actscreatemodulecontexttest:ActsCreateModuleContextTest",
       "scene/defpermission:DefPermission",
     ]
   }

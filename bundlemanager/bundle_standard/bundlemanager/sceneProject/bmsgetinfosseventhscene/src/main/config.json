@@ -21,7 +21,8 @@
   "module": {
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "abilities": [
       {
@@ -908,7 +909,7 @@
           "type": "pageAbility"
         },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".MainAbility",
         "window": {

@@ -157,6 +157,12 @@ export default function Telephony_NETMANAGER_TestDNSTest() {
              })
          })
      });
- 
+
+     it('Telephony_NETMANAGER_TestDNS_Test0900', 0, function(done){
+         let netHandle =  netConnection.getDefaultNetSync();
+         console.info("Telephony_NETMANAGER_TestDNS_Test0900 " + JSON.stringify(netHandle));
+         expect(netHandle.netId >= 100).assertTrue();
+         done();
+     });
  });
 }

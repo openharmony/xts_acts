@@ -21,7 +21,7 @@ hcpptest_suite("ActsKvStoreTest") {
     "src",
     "//foundation/distributeddatamgr/kv_store/interfaces/inner_api/kv_store/include",
     "//third_party/bounds_checking_function/include",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
   ]
   deps = [ "//foundation/distributeddatamgr/kv_store/interfaces/inner_api/kv_store:kv_store" ]
   cflags = [ "-Wno-error" ]

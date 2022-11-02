@@ -21,16 +21,7 @@ import inputEvent from '@ohos.multimodalInput.inputEvent'
 import { Key, KeyEvent } from '@ohos.multimodalInput.keyEvent'
 import { AxisValue, MouseEvent } from '@ohos.multimodalInput.mouseEvent'
 import { Touch, TouchEvent } from '@ohos.multimodalInput.touchEvent'
-
-import {
-    describe,
-    beforeAll,
-    beforeEach,
-    afterEach,
-    afterAll,
-    it,
-    expect
-} from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function MultimodalInputEventTypeTest() {
     describe('MultimodalInput_test', function () {

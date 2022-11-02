@@ -19,6 +19,8 @@
     "mainAbility": ".MainAbility",
     "srcPath": "MainAbility",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {
@@ -49,7 +51,7 @@
         "formsEnabled": false,
         "label": "$string:entry_MainAbility",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "singleton"
       },
       {
         "orientation": "unspecified",
@@ -62,7 +64,7 @@
         "description": "$string:TestAbility_desc",
         "label": "$string:TestAbility_label",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "singleton"
       }
     ],
     "js": [

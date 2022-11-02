@@ -26,7 +26,7 @@ struct MyComponent {
       alignItems: ItemAlign.Center,
       justifyContent: FlexAlign.Center
     }) {
-      Text('REQUEST ETS TEST')
+      Text('REQUEST TEST')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
     }

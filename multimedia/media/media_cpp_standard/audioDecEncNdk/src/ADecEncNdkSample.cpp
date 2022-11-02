@@ -16,6 +16,8 @@
 #include "ADecEncNdkSample.h"
 #include "native_avmemory.h"
 #include "native_averrors.h"
+#include "native_avcodec_base.h"
+
 using namespace OHOS;
 using namespace OHOS::Media;
 using namespace std;
@@ -124,10 +126,31 @@ ADecEncNdkSample::~ADecEncNdkSample()
     acodecSignal_ = nullptr;
 }
 
-struct OH_AVCodec* ADecEncNdkSample::CreateAudioDecoder(std::string mimetype)
+struct OH_AVCodec* ADecEncNdkSample::CreateAudioDecoderByMime(std::string mimetype)
 {
-    adec_ = OH_AudioDecoder_CreateByMime(mimetype.c_str());
+    if (mimetype == "audio/mp4a-latm") {
+        adec_ = OH_AudioDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC);
+    } else {
+        adec_ = OH_AudioDecoder_CreateByMime(mimetype.c_str());
+    }
     NDK_CHECK_AND_RETURN_RET_LOG(adec_ != nullptr, nullptr, "Fatal: OH_AudioDecoder_CreateByMime");
+
+    acodecSignal_ = new ADecEncSignal();
+    NDK_CHECK_AND_RETURN_RET_LOG(acodecSignal_ != nullptr, nullptr, "Fatal: No Memory");
+
+    cbDec_.onError = AdecAsyncError;
+    cbDec_.onStreamChanged = AdecAsyncStreamChanged;
+    cbDec_.onNeedInputData = AdecAsyncNeedInputData;
+    cbDec_.onNeedOutputData = AdecAsyncNewOutputData;
+    int32_t ret = OH_AudioDecoder_SetCallback(adec_, cbDec_, static_cast<void *>(acodecSignal_));
+    NDK_CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, NULL, "Fatal: OH_AudioDecoder_SetCallback");
+    return adec_;
+}
+
+struct OH_AVCodec* ADecEncNdkSample::CreateAudioDecoderByName(std::string name)
+{
+    adec_ = OH_AudioDecoder_CreateByName(name.c_str());
+    NDK_CHECK_AND_RETURN_RET_LOG(adec_ != nullptr, nullptr, "Fatal: OH_AudioDecoder_CreateByName");
 
     acodecSignal_ = new ADecEncSignal();
     NDK_CHECK_AND_RETURN_RET_LOG(acodecSignal_ != nullptr, nullptr, "Fatal: No Memory");
@@ -144,6 +167,11 @@ struct OH_AVCodec* ADecEncNdkSample::CreateAudioDecoder(std::string mimetype)
 int32_t ADecEncNdkSample::ConfigureDec(struct OH_AVFormat *format)
 {
     return OH_AudioDecoder_Configure(adec_, format);
+}
+
+int32_t ADecEncNdkSample::SetParameterDec(struct OH_AVFormat *format)
+{
+    return OH_AudioDecoder_SetParameter(adec_, format);
 }
 
 int32_t ADecEncNdkSample::PrepareDec()
@@ -385,10 +413,27 @@ void ADecEncNdkSample::InputFuncDec()
     }
 }
 
-struct OH_AVCodec* ADecEncNdkSample::CreateAudioEncoder(std::string mimetype)
+struct OH_AVCodec* ADecEncNdkSample::CreateAudioEncoderByMime(std::string mimetype)
 {
-    aenc_ = OH_AudioEncoder_CreateByMime(mimetype.c_str());
+    if (mimetype == "audio/mp4a-latm") {
+        aenc_ = OH_AudioEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC);
+    } else {
+        aenc_ = OH_AudioEncoder_CreateByMime(mimetype.c_str());
+    }
     NDK_CHECK_AND_RETURN_RET_LOG(aenc_ != nullptr, nullptr, "Fatal: OH_AudioEncoder_CreateByMime");
+    cbEnc_.onError = AencAsyncError;
+    cbEnc_.onStreamChanged = AencAsyncStreamChanged;
+    cbEnc_.onNeedInputData = AencAsyncNeedInputData;
+    cbEnc_.onNeedOutputData = AencAsyncNewOutputData;
+    int32_t ret = OH_AudioEncoder_SetCallback(aenc_, cbEnc_, static_cast<void *>(acodecSignal_));
+    NDK_CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, NULL, "Fatal: OH_AudioEncoder_SetCallback");
+    return aenc_;
+}
+
+struct OH_AVCodec* ADecEncNdkSample::CreateAudioEncoderByName(std::string name)
+{
+    aenc_ = OH_AudioEncoder_CreateByName(name.c_str());
+    NDK_CHECK_AND_RETURN_RET_LOG(aenc_ != nullptr, nullptr, "Fatal: OH_AudioEncoder_CreateByName");
     cbEnc_.onError = AencAsyncError;
     cbEnc_.onStreamChanged = AencAsyncStreamChanged;
     cbEnc_.onNeedInputData = AencAsyncNeedInputData;
@@ -403,6 +448,10 @@ int32_t ADecEncNdkSample::ConfigureEnc(struct OH_AVFormat *format)
     return OH_AudioEncoder_Configure(aenc_, format);
 }
 
+int32_t ADecEncNdkSample::SetParameterEnc(struct OH_AVFormat *format)
+{
+    return OH_AudioEncoder_SetParameter(aenc_, format);
+}
 
 int32_t ADecEncNdkSample::PrepareEnc()
 {

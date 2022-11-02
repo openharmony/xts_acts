@@ -14,17 +14,16 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import process from '@ohos.process'
-export default function ChildProcessTest() {
-describe('ChildProcessTest', function () {
+export default function ProcessTest() {
+describe('ProcessTest', function () {
 
     /**
      * @tc.name: testGetUid001
      * @tc.desc: returns the digital user id of the process.
-     * @tc.author: wangben
      */
     it('testGetUid001', 0, function () {
         let result = process.uid
-        if(result > 0) {
+        if (result > 0) {
             var flag = true
         }
         expect(flag).assertEqual(true)
@@ -33,13 +32,12 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUid002
      * @tc.desc: returns the digital user id of the process.
-     * @tc.author: wangben
      */
     it('testGetUid002', 0, function () {
-        for(let i = 0; i < 3; i++){
+        for (let i = 0; i < 3; i++) {
             let result = process.uid
-            if(result != null) {
-                if(result > 0) {
+            if (result != null) {
+                if (result > 0) {
                     var flag = true
                 }
                 expect(flag).assertEqual(true)
@@ -50,13 +48,12 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUid003
      * @tc.desc: returns the digital user id of the process.
-     * @tc.author: wangben
      */
     it('testGetUid003', 0, function () {
-        for(let i = 0; i < 6; i++){
+        for (let i = 0; i < 6; i++) {
             let result = process.uid
             if (result != null) {
-                if(result > 0) {
+                if (result > 0) {
                     var flag = true
                 }
                 expect(flag).assertEqual(true)
@@ -67,10 +64,9 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUid004
      * @tc.desc: returns the digital user id of the process.
-     * @tc.author: wangben
      */
     it('testGetUid004', 0, function () {
-        for (let i = 0; i < 8; i++){
+        for (let i = 0; i < 8; i++) {
             let result = process.uid
             if (result != null) {
                 if (result > 0) {
@@ -84,7 +80,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUid005
      * @tc.desc: returns the digital user id of the process.
-     * @tc.author: wangben
      */
     it('testGetUid005', 0, function () {
         for (let i = 0; i < 5; i++){
@@ -101,7 +96,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill001
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.author: wangben
      */
     it('testKill001', 0, function () {
         let result = process.kill(3, 123)
@@ -111,7 +105,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill002
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.author: wangben
      */
     it('testKill002', 0, function () {
         let pres = process.pid
@@ -122,7 +115,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill003
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.author: wangben
      */
     it('testKill003', 0, function () {
         let pres = process.pid
@@ -133,7 +125,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill004
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.author: wangben
      */
     it('testKill004', 0, function () {
         let pres = process.pid
@@ -144,7 +135,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill005
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.author: wangben
      */
     it('testKill005', 0, function () {
         let result = process.kill(3, 113)
@@ -154,7 +144,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime001
      * @tc.desc: Returns the running time of the system.
-     * @tc.author: wangben
      */
     it('testUptime001', 0, function () {
         let result1 = process.uptime()
@@ -173,7 +162,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime002
      * @tc.desc: Returns the running time of the system.
-     * @tc.author: wangben
      */
     it('testUptime002', 0, function () {
         let result1 = process.uptime()
@@ -192,7 +180,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime003
      * @tc.desc: Returns the running time of the system.
-     * @tc.author: wangben
      */
     it('testUptime003', 0, function () {
         let result1 = process.uptime()
@@ -211,7 +198,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime004
      * @tc.desc: Returns the running time of the system.
-     * @tc.author: wangben
      */
     it('testUptime004', 0, function () {
         let result1 = process.uptime()
@@ -230,7 +216,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime005
      * @tc.desc: Returns the running time of the system.
-     * @tc.author: wangben
      */
     it('testUptime005', 0, function () {
         let result1 = process.uptime()
@@ -249,7 +234,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid001
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.author: wangben
      */
     it('testPid001', 0, function () {
         let result = process.pid
@@ -262,7 +246,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid002
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.author: wangben
      */
     it('testPid002', 0, function () {
         for (let i = 0; i < 3; i++) {
@@ -277,7 +260,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid003
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.author: wangben
      */
     it('testPid003', 0, function () {
         for (let i = 0; i < 5; i++) {
@@ -292,7 +274,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid004
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.author: wangben
      */
     it('testPid004', 0, function () {
         for (let i = 0; i < 6; i++) {
@@ -307,7 +288,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid005
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.author: wangben
      */
     it('testPid005', 0, function () {
         for (let i = 0; i < 8; i++) {
@@ -322,7 +302,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testTid001
      * @tc.desc: Returns the tid of the current thread.
-     * @tc.author: liwenqiang
      */
     it('testTid001', 0, function () {
         let pres = process.tid
@@ -335,7 +314,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testTid002
      * @tc.desc: Returns the tid of the current thread.
-     * @tc.author: liwenqiang
      */
     it('testTid002', 0, function () {
         for (let i=0; i < 5; i++) {
@@ -350,7 +328,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testTid003
      * @tc.desc: Returns the tid of the current thread.
-     * @tc.author: liwenqiang
      */
     it('testTid003', 0, function () {
         for (let i=0; i < 3; i++) {
@@ -366,7 +343,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testisIsolatedProcess001
      * @tc.desc: Returns a boolean whether the process is isolated.
-     * @tc.author: liwenqiang
      */
     it('testisIsolatedProcess001', 0, function () {
         let pres = process.isIsolatedProcess()
@@ -376,7 +352,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testisIsolatedProcess002
      * @tc.desc: Returns a boolean whether the process is isolated.
-     * @tc.author: liwenqiang
      */
     it('testisIsolatedProcess002', 0, function () {
         for (let i=0; i < 3; i++) {
@@ -388,7 +363,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testisIsolatedProcess003
      * @tc.desc: Returns a boolean whether the process is isolated.
-     * @tc.author: liwenqiang
      */
     it('testisIsolatedProcess003', 0, function () {
         for (let i=0; i < 5; i++) {
@@ -401,7 +375,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIsappuid001
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.author: liwenqiang
      */
     it('testIsappuid001', 0, function () {
         let isorno = process.isAppUid(167)
@@ -411,7 +384,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIsappuid002
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.author: liwenqiang
      */
     it('testIsappuid002', 0, function () {
         let isorno = process.isAppUid(123)
@@ -421,7 +393,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIsappuid003
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.author: liwenqiang
      */
     it('testIsappuid003', 0, function () {
         let isorno = process.isAppUid(80000)
@@ -431,7 +402,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIsappuid004
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.author: liwenqiang
      */
     it('testIsappuid004', 0, function () {
         let isorno = process.isAppUid(789)
@@ -441,7 +411,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIsappuid005
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.author: liwenqiang
      */
     it('testIsappuid005', 0, function () {
         let isorno = process.isAppUid(8569)
@@ -451,7 +420,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIs64Bit001
      * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
-     * @tc.author: liwenqiang
      */
     it('testIs64Bit001', 0, function () {
         let isorno = process.is64Bit()
@@ -465,7 +433,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIs64Bit002
      * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
-     * @tc.author: liwenqiang
      */
     it('testIs64Bit002', 0, function () {
         for (let i=0; i<3; i++) {
@@ -481,7 +448,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIs64Bit003
      * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
-     * @tc.author: liwenqiang
      */
     it('testIs64Bit004', 0, function () {
         for (let i=0; i<5; i++) {
@@ -498,7 +464,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUidForName001
      * @tc.desc: Returns the uid based on the specified user name.
-     * @tc.author: liwenqiang
      */
     it('testGetUidForName001',0, function () {
         let pres = process.getUidForName("root")
@@ -511,7 +476,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUidForName002
      * @tc.desc: Returns the uid based on the specified user name.
-     * @tc.author: liwenqiang
      */
     it('testGetUidForName002', 0, function () {
         for (let i=0; i<3; i++) {
@@ -523,7 +487,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUidForName003
      * @tc.desc: Returns the uid based on the specified user name.
-     * @tc.author: liwenqiang
      */
     it('testGetUidForName003', 0, function () {
         for (let i=0; i<5; i++) {
@@ -536,7 +499,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetThreadPriority001
      * @tc.desc: Returns the thread priority based on the specified tid.
-     * @tc.author: liwenqiang
      */
     it('testGetThreadPriority001', 0, function () {
         let pres = process.tid
@@ -550,7 +512,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetThreadPriority002
      * @tc.desc: Returns the thread priority based on the specified tid.
-     * @tc.author: liwenqiang
      */
     it('testGetThreadPriority002', 0, function () {
         let pres = process.tid
@@ -566,7 +527,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetThreadPriority003
      * @tc.desc: Returns the thread priority based on the specified tid.
-     * @tc.author: liwenqiang
      */
     it('testGetThreadPriority003', 0, function () {
         let pres = process.tid
@@ -583,7 +543,6 @@ describe('ChildProcessTest', function () {
      * @tc.name: testGetStartRealtime001
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
-     * @tc.author: liwenqiang
      */
     it('testGetStartRealtime001', 0, function () {
         for (let i=0; i<3; i++) {
@@ -599,7 +558,6 @@ describe('ChildProcessTest', function () {
      * @tc.name: testGetStartRealtime002
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
-     * @tc.author: liwenqiang
      */
     it('testGetStartRealtime002', 0, function () {
         let pri = process.getStartRealtime()
@@ -613,7 +571,6 @@ describe('ChildProcessTest', function () {
      * @tc.name: testGetStartRealtime003
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
-     * @tc.author: liwenqiang
      */
     it('testGetStartRealtime003', 0, function () {
         for (let i=0; i<5; i++) {
@@ -629,7 +586,6 @@ describe('ChildProcessTest', function () {
      * @tc.name: testGetStartRealtime004
      * @tc.desc: Returns the elapsed real time (in milliseconds)
      * @taken from the start of the system to the start of the process.
-     * @tc.author: liwenqiang
      */
     it('testGetStartRealtime004', 0, function () {
         for (let i=0; i<8; i++) {
@@ -645,7 +601,6 @@ describe('ChildProcessTest', function () {
      * @tc.name: testGetStartRealtime005
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
-     * @tc.author: liwenqiang
      */
     it('testGetStartRealtime005', 0, function () {
         for (let i=0; i<6; i++) {
@@ -660,7 +615,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetpastCpuTime001
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime001', 0, function () {
         for (let i=0; i<3; i++) {
@@ -675,7 +629,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetpastCpuTime002
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime002', 0, function () {
         let pri = process.getPastCpuTime()
@@ -688,7 +641,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetpastCpuTime003
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime003', 0, function () {
         for (let i=0; i<5; i++) {
@@ -703,7 +655,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetpastCpuTime004
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime004', 0, function () {
         for (let i=0; i<8; i++) {
@@ -718,7 +669,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetSystemConfig001
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.author: liwenqiang
      */
     it('testGetSystemConfig001', 0, function () {
         let _SC_ARG_MAX = 0
@@ -732,7 +682,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetSystemConfig002
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.author: liwenqiang
      */
     it('testGetSystemConfig002', 0, function () {
         let _SC_ARG_MAX = 0
@@ -748,7 +697,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetSystemConfig003
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.author: liwenqiang
      */
     it('testGetSystemConfig003', 0, function () {
         let _SC_ARG_MAX = 0
@@ -764,7 +712,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetSystemConfig004
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.author: liwenqiang
      */
     it('testGetSystemConfig004', 0, function () {
         let _SC_OPEN_MAX = 4
@@ -778,7 +725,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetSystemConfig005
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.author: liwenqiang
      */
     it('testGetSystemConfig005', 0, function () {
         let _SC_PAGESIZE = 8
@@ -792,7 +738,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetEnvironmentVar001
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar001', 0, function () {
         let pri = process.getEnvironmentVar("USER")
@@ -805,7 +750,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetEnvironmentVar002
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar002', 0, function () {
         for (let i=0; i<3; i++) {
@@ -820,7 +764,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetEnvironmentVar003
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar003', 0, function () {
         for (let i=0; i<5; i++) {
@@ -835,7 +778,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetEnvironmentVar004
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar004', 0, function () {
         for (let i=0; i<6; i++) {
@@ -850,7 +792,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetEnvironmentVar005
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar005', 0, function () {
         for (let i=0; i<8; i++) {
@@ -865,7 +806,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetEnvironmentVar006
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar006', 0, function () {
         for (let i=0; i<100; i++) {
@@ -876,4 +816,385 @@ describe('ChildProcessTest', function () {
             }
         }
     })
-})}
+})
+describe('ProcessManager', function () {
+    /**
+     * @tc.name: testIsappuid001
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     */
+        it('testProcessManagerIsappuid001', 0, function () {
+        let pro = new process.ProcessManager()
+        let isorno = pro.isAppUid(167)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIsappuid002
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     */
+    it('testProcessManagerIsappuid002', 0, function () {
+        let pro = new process.ProcessManager()
+        let isorno = pro.isAppUid(123)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIsappuid003
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     */
+    it('testProcessManagerIsappuid003', 0, function () {
+        let pro = new process.ProcessManager()
+        let isorno = pro.isAppUid(80000)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIsappuid004
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     */
+    it('testProcessManagerIsappuid004', 0, function () {
+        let pro = new process.ProcessManager()
+        let isorno = pro.isAppUid(789)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIsappuid005
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     */
+    it('testProcessManagerIsappuid005', 0, function () {
+        let pro = new process.ProcessManager()
+        let isorno = pro.isAppUid(8569)
+        expect(isorno).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIsappuid006
+     * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
+     */
+    it('testProcessManagerIsappuid006', 0, function () {
+        try {
+            let pro = new process.ProcessManager()
+            let mag = pro.isAppUid("asdad")
+        } catch (e) {
+            expect(e.toString()).assertEqual("BuisnessError: The type of v must be number.")
+        }
+    })
+    /**
+     * @tc.name: testKill001
+     * @tc.desc: Return whether the signal was sent successfully.
+     */
+    it('testProcessManagerKill001', 0, function () {
+        let pro = new process.ProcessManager()
+        let result = pro.kill(3, 123)
+        expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testKill002
+     * @tc.desc: Return whether the signal was sent successfully.
+     */
+    it('testProcessManagerKill002', 0, function () {
+        let pro = new process.ProcessManager()
+        let pres = process.pid
+        let result = pro.kill(23, pres)
+        expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testKill003
+     * @tc.desc: Return whether the signal was sent successfully.
+     */
+    it('testProcessManagerKill003', 0, function () {
+        let pro = new process.ProcessManager()
+        let pres = process.pid
+        let result = pro.kill(28, pres)
+        expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testKill004
+     * @tc.desc: Return whether the signal was sent successfully.
+     */
+    it('testProcessManagerKill004', 0, function () {
+        let pro = new process.ProcessManager()
+        let pres = process.pid
+        let result = pro.kill(17, pres)
+        expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testKill005
+     * @tc.desc: Return whether the signal was sent successfully.
+     */
+    it('testProcessManagerKill005', 0, function () {
+        let pro = new process.ProcessManager()
+        let result = pro.kill(3, 113)
+        expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testKill006
+     * @tc.desc: Return whether the signal was sent successfully.
+     */
+    it('testProcessManagerKill006', 0, function () {
+        try {
+            let pro = new process.ProcessManager()
+            let result = pro.kill("asd", 123)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BuisnessError: The type of v must be number.")
+        }
+    })
+
+    /**
+     * @tc.name: testGetUidForName001
+     * @tc.desc: Returns the uid based on the specified user name.
+     */
+    it('testProcessManagerGetUidForName001',0, function () {
+        let pro = new process.ProcessManager()
+        let pres = pro.getUidForName("root")
+        if (pres != -1) {
+            let flag = new Boolean(true)
+            expect(Boolean(flag)).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetUidForName002
+     * @tc.desc: Returns the uid based on the specified user name.
+     */
+    it('testProcessManagerGetUidForName002', 0, function () {
+        let pro = new process.ProcessManager()
+        for (let i=0; i<3; i++) {
+            let pres = pro.getUidForName("12356")
+            expect(pres).assertEqual(-1)
+        }
+    })
+
+    /**
+     * @tc.name: testGetUidForName003
+     * @tc.desc: Returns the uid based on the specified user name.
+     */
+    it('testProcessManagerGetUidForName003', 0, function () {
+        let pro = new process.ProcessManager()
+        for (let i=0; i<5; i++) {
+            let pres = pro.getUidForName("as123")
+            expect(pres).assertEqual(-1)
+        }
+    })
+    /**
+     * @tc.name: testGetUidForName004
+     * @tc.desc: Returns the uid based on the specified user name.
+     */
+    it('testProcessManagerGetUidForName004',0, function () {
+        try {
+            let pro = new process.ProcessManager()
+            let pres = pro.getUidForName(12)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BuisnessError: The type of v must be string.")
+        }
+    })
+
+    /**
+     * @tc.name: testGetThreadPriority001
+     * @tc.desc: Returns the thread priority based on the specified tid.
+     */
+    it('testProcessManagerGetThreadPriority001', 0, function () {
+        let pro = new process.ProcessManager()
+        let pres = process.tid
+        let pri = pro.getThreadPriority(pres)
+        if (pri) {
+            let flag = new Boolean(true)
+            expect(Boolean(flag)).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetThreadPriority002
+     * @tc.desc: Returns the thread priority based on the specified tid.
+     */
+    it('testProcessManagerGetThreadPriority002', 0, function () {
+        let pro = new process.ProcessManager()
+        let pres = process.tid
+        for (let i=0; i<3; i++) {
+            let pri = pro.getThreadPriority(pres)
+            if (pri > 0) {
+                let flag = new Boolean(true)
+                expect(Boolean(flag)).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetThreadPriority003
+     * @tc.desc: Returns the thread priority based on the specified tid.
+     */
+    it('testProcessManagerGetThreadPriority003', 0, function () {
+        let pro = new process.ProcessManager()
+        let pres = process.tid
+        for (let i=0; i<5; i++) {
+            let pri = pro.getThreadPriority(pres)
+            if (pri > 0) {
+                let flag = new Boolean(true)
+                expect(Boolean(flag)).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetThreadPriority001
+     * @tc.desc: Returns the thread priority based on the specified tid.
+     */
+    it('testProcessManagerGetThreadPriority004', 0, function () {
+        try {
+            let pro = new process.ProcessManager()
+            let pri = pro.getThreadPriority("asdad")
+        } catch (e) {
+            expect(e.toString()).assertEqual("BuisnessError: The type of v must be number.")
+        }
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig001
+     * @tc.desc: Returns the system configuration at runtime.
+     */
+    it('testProcessManagerGetSystemConfig001', 0, function () {
+        let pro = new process.ProcessManager()
+        let _SC_ARG_MAX = 0
+        let pri = pro.getSystemConfig(_SC_ARG_MAX)
+        if (pri > 0) {
+            var flag = new Boolean(true)
+        }
+        expect(Boolean(flag)).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig002
+     * @tc.desc: Returns the system configuration at runtime.
+     */
+    it('testProcessManagerGetSystemConfig002', 0, function () {
+        let pro = new process.ProcessManager()
+        let _SC_ARG_MAX = 0
+        for (let i=0; i<3; i++) {
+            let pri = pro.getSystemConfig(_SC_ARG_MAX)
+            if (pri > 0) {
+                var flag = new Boolean(true)
+            }
+            expect(Boolean(flag)).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig003
+     * @tc.desc: Returns the system configuration at runtime.
+     */
+    it('testProcessManagerGetSystemConfig003', 0, function () {
+        let pro = new process.ProcessManager()
+        let _SC_ARG_MAX = 0
+        for (let i=0; i<5; i++) {
+            let pri = pro.getSystemConfig(_SC_ARG_MAX)
+            if (pri > 0) {
+                var flag = new Boolean(true)
+            }
+            expect(Boolean(flag)).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig004
+     * @tc.desc: Returns the system configuration at runtime.
+     */
+    it('testProcessManagerGetSystemConfig004', 0, function () {
+        let pro = new process.ProcessManager()
+        let _SC_OPEN_MAX = 4
+        let pri = pro.getSystemConfig(_SC_OPEN_MAX)
+        if (pri > 0) {
+            var flag = new Boolean(true)
+        }
+        expect(Boolean(flag)).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig005
+     * @tc.desc: Returns the system configuration at runtime.
+     */
+    it('testProcessManagerGetSystemConfig005', 0, function () {
+        let pro = new process.ProcessManager()
+        let _SC_PAGESIZE = 8
+        let pri = pro.getSystemConfig(_SC_PAGESIZE)
+        if (pri > 0) {
+            var flag = new Boolean(true)
+        }
+        expect(Boolean(flag)).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testGetSystemConfig001
+     * @tc.desc: Returns the system configuration at runtime.
+     */
+    it('testProcessManagerGetSystemConfig006', 0, function () {
+        try {
+            let pro = new process.ProcessManager()
+            let pri = pro.getSystemConfig("asdad")
+        } catch (e) {
+            expect(e.toString()).assertEqual("BuisnessError: The type of v must be number.")
+        }
+    })
+
+        /**
+     * @tc.name: testGetEnvironmentVar001
+     * @tc.desc: Returns the system value for environment variables.
+     */
+    it('testProcessManagerGetEnvironmentVar001', 0, function () {
+        let pro = new process.ProcessManager()
+        let pri = pro.getEnvironmentVar("USER")
+        if (pri != null) {
+            var flag = new Boolean(true)
+            expect(Boolean(flag)).assertEqual(true)
+        }
+    })
+
+    /**
+     * @tc.name: testGetEnvironmentVar002
+     * @tc.desc: Returns the system value for environment variables.
+     */
+    it('testProcessManagerGetEnvironmentVar002', 0, function () {
+        let pro = new process.ProcessManager()
+        for (let i=0; i<3; i++) {
+            let pri = pro.getEnvironmentVar("PATH")
+            if (pri != null) {
+                var flag = new Boolean(true)
+                expect(Boolean(flag)).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetEnvironmentVar006
+     * @tc.desc: Returns the system value for environment variables.
+     */
+    it('testProcessManagerGetEnvironmentVar003', 0, function () {
+        let pro = new process.ProcessManager()
+        for (let i=0; i<100; i++) {
+            let pri = pro.getEnvironmentVar("i123")
+            if (pri == null) {
+                var flag = new Boolean(true)
+                expect(Boolean(flag)).assertEqual(true)
+            }
+        }
+    })
+
+    /**
+     * @tc.name: testGetEnvironmentVar001
+     * @tc.desc: Returns the system value for environment variables.
+     */
+    it('testProcessManagerGetEnvironmentVar004', 0, function () {
+        try {
+            let pro = new process.ProcessManager()
+            let pri = pro.getEnvironmentVar(123)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BuisnessError: The type of v must be string.")
+        }
+    })
+})
+}

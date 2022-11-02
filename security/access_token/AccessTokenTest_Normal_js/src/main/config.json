@@ -17,6 +17,8 @@
         "package": "ohos.acts.security.access_token.normal",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

@@ -17,7 +17,7 @@
     "package": "com.example.simulateeability",
     "name": ".MyApplication",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

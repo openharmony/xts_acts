@@ -178,7 +178,6 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
           expect(dataB.length).assertEqual(1);
           tempDataB = dataB[0]
           expect(error.code).assertEqual(ERR_OK_CODE);
-          expect(error.message).assertEqual(ERR_OK);
           console.log(`==========${callbackName2} ${describeName} end==========`);
         });
         await sleep(2000)
@@ -400,7 +399,6 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
           console.log(`${callbackName6} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
           expect(JSON.stringify(data)).assertEqual(`[]`);
           expect(error.code).assertEqual(ERR_OK_CODE);
-          expect(error.message).assertEqual(ERR_OK);
           done();
           console.log(`==========${callbackName6} ${describeName} end==========`);
         });
@@ -456,7 +454,6 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
           expect(data.length).assertEqual(1);
           expect(dataC.length).assertEqual(1);
           expect(error.code).assertEqual(ERR_OK_CODE);
-          expect(error.message).assertEqual(ERR_OK);
           console.log(`==========${callbackName7} ${describeName} end==========`);
         });
         await sleep(2000)

@@ -170,7 +170,6 @@ function test7() {
         thermal.subscribeThermalLevel((cool) => {
             console.info("warm level is: " + cool);
             expect(cool >= thermal.ThermalLevel.COOL && cool <= thermal.ThermalLevel.EMERGENCY).assertTrue();
-            done();
         })
         await new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -180,6 +179,7 @@ function test7() {
                 resolve();
             }, MSEC_1000 * 4);
         })
+        done();
     })
 }
 
@@ -194,7 +194,6 @@ function test8() {
         thermal.subscribeThermalLevel((warm) => {
             console.info("warm level is: " + warm);
             expect(warm >= thermal.ThermalLevel.COOL && warm <= thermal.ThermalLevel.EMERGENCY).assertTrue();
-            done();
         })
         await new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -204,6 +203,7 @@ function test8() {
                 resolve();
             }, MSEC_1000 * 4);
         })
+        done();
     })
 }
 
@@ -218,7 +218,6 @@ function test9() {
         thermal.subscribeThermalLevel((hot) => {
             console.info("hot level is: " + hot);
             expect(hot >= thermal.ThermalLevel.COOL && hot <= thermal.ThermalLevel.EMERGENCY).assertTrue();
-            done();
         })
         await new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -228,6 +227,7 @@ function test9() {
                 resolve();
             }, MSEC_1000 * 2);
         })
+        done();
     })
 
 }
@@ -244,7 +244,6 @@ function test10() {
             console.info("overheated level is: " + overheated);
             expect(overheated >= thermal.ThermalLevel.COOL &&
                 overheated <= thermal.ThermalLevel.EMERGENCY).assertTrue();
-            done();
         })
         await new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -254,6 +253,7 @@ function test10() {
                 resolve();
             }, MSEC_1000 * 2);
         })
+        done();
     })
 }
 
@@ -268,7 +268,6 @@ function test11() {
         thermal.subscribeThermalLevel((warning) => {
             console.info("warning level is: " + warning);
             expect(warning >= thermal.ThermalLevel.COOL && warning <= thermal.ThermalLevel.EMERGENCY).assertTrue();
-            done();
         })
         await new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -278,6 +277,7 @@ function test11() {
                 resolve();
             }, MSEC_1000 * 4);
         })
+        done();
     })
 }
 
@@ -292,7 +292,6 @@ function test12() {
         thermal.subscribeThermalLevel((emergency) => {
             console.info("emergency level is: " + emergency);
             expect(emergency >= thermal.ThermalLevel.COOL && emergency <= thermal.ThermalLevel.EMERGENCY).assertTrue();
-            done();
         })
         await new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -302,6 +301,7 @@ function test12() {
                 resolve();
             }, MSEC_1000 * 4);
         })
+        done();
     })
 }
 
@@ -316,7 +316,6 @@ function test13() {
         thermal.subscribeThermalLevel((cool) => {
             console.info("cool level is: " + cool);
             expect(cool >= thermal.ThermalLevel.COOL && cool <= thermal.ThermalLevel.EMERGENCY).assertTrue();
-            done();
         })
         await new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -326,5 +325,6 @@ function test13() {
                 resolve();
             }, MSEC_1000 * 4);
         })
+        done();
     })
 }}

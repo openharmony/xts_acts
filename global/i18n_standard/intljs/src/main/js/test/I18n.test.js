@@ -91,6 +91,74 @@ describe('I18nTest', function () {
     })
 
     /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2110
+    * @tc.name getSystemLanguages test
+    * @tc.desc check the getSystemLanguages
+    */
+    it('i18n_test_2110', 0, function () {
+        let value = I18n.System.getSystemLanguages();
+        let len = value.length;
+        console.log('i18n_test_2110 ' + len);
+        expect(len).assertLarger(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2120
+    * @tc.name getSystemCountries with en param
+    * @tc.desc check the getSystemCountries
+    */
+    it('i18n_test_2120', 0, function () {
+        let value = I18n.System.getSystemCountries('en');
+        let len = value.length;
+        console.log('i18n_test_2120 ' + len);
+        expect(len).assertLarger(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2310
+    * @tc.name isSuggested with zh param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2310', 0, function () {
+        let value = I18n.isSuggested('zh');
+        console.log('i18n_test_2310 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2320
+    * @tc.name isSuggested with en param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2320', 0, function () {
+        let value = I18n.isSuggested('en');
+        console.log('i18n_test_2320 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2330
+    * @tc.name isSuggested with zh-CN param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2330', 0, function () {
+        let value = I18n.isSuggested('zh', 'CN');
+        console.log('i18n_test_2330 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2340
+    * @tc.name isSuggested with en-US param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2340', 0, function () {
+        let value = I18n.isSuggested('en' , 'US');
+        console.log('i18n_test_2340 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_3800
     * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and true param
     * @tc.desc    check the display country
@@ -1235,7 +1303,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9100', 0, function () {
         console.log('i18n_test_9100 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'cup', measureSystem: 'US'}, 
                                         {unit: 'liter', measureSystem: 'SI'}, 
                                         1000, 
                                         'en-US', 
@@ -1251,7 +1319,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9200', 0, function () {
         console.log('i18n_test_9200 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'cup', measureSystem: 'US'}, 
                                         {unit: 'liter', measureSystem: 'SI'}, 
                                         1000, 
                                         'en-US', 
@@ -1267,7 +1335,7 @@ describe('I18nTest', function () {
     */
      it('i18n_test_9250', 0, function () {
         console.log('i18n_test_9250 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'},
+        let value = I18n.I18NUtil.unitConvert({unit: 'cup', measureSystem: 'US'},
             {unit: 'liter', measureSystem: 'SI'},
             1000,
             'en-US',
@@ -1283,7 +1351,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9300', 0, function () {
         console.log('i18n_test_9300 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'cup', measureSystem: 'US'}, 
                                         {unit: 'liter', measureSystem: 'SI'}, 
                                         1000, 
                                         'en-US', 
@@ -1299,7 +1367,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9400', 0, function () {
         console.log('i18n_test_9400 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
                                         {unit: 'mile', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
@@ -1315,7 +1383,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9500', 0, function () {
         console.log('i18n_test_9500 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'hour', measureSystem: 'SI'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'hour', measureSystem: 'SI'}, 
                                         {unit: 'second', measureSystem: 'SI'}, 
                                         10, 
                                         'zh-CN', 
@@ -1331,7 +1399,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9600', 0, function () {
         console.log('i18n_test_9600 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'celsius', measureSystem: 'SI'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'celsius', measureSystem: 'SI'}, 
                                         {unit: 'fahrenheit', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
@@ -1347,7 +1415,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9700', 0, function () {
         console.log('i18n_test_9700 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'acre', measureSystem: 'SI'}, 
                                         {unit: 'hectare', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
@@ -1363,7 +1431,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9710', 0, function () {
         console.log('i18n_test_9710 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'acre', measureSystem: 'SI'}, 
                                         {unit: 'square-meter', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
@@ -1379,7 +1447,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9800', 0, function () {
         console.log('i18n_test_9800 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, 
                                         {unit: 'knot', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
@@ -1395,7 +1463,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9850', 0, function () {
         console.log('i18n_test_9850 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, 
                                         {unit: 'meter-per-second', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
@@ -1411,7 +1479,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9900', 0, function () {
         console.log('i18n_test_9900 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
                                         {unit: 'kilometer', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
@@ -1427,7 +1495,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_9910', 0, function () {
         console.log('i18n_test_9910 ' + 'start');
-        let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
+        let value = I18n.I18NUtil.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
                                         {unit: 'meter-per-second', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
@@ -1675,7 +1743,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0100', 0, function () {
         console.log('i18n_test_character_0100 ' + 'start');
-        let value = I18n.Character.isDigit('abc');
+        let value = I18n.Unicode.isDigit('abc');
         console.log('i18n_test_character_0100 ' + value);
         expect(value).assertFalse();
     })
@@ -1687,7 +1755,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0120', 0, function () {
         console.log('i18n_test_character_0120 ' + 'start');
-        let value = I18n.Character.isDigit('123');
+        let value = I18n.Unicode.isDigit('123');
         console.log('i18n_test_character_0120 ' + value);
         expect(value).assertTrue();
     })
@@ -1699,7 +1767,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0140', 0, function () {
         console.log('i18n_test_character_0140 ' + 'start');
-        let value = I18n.Character.isDigit('123abc');
+        let value = I18n.Unicode.isDigit('123abc');
         console.log('i18n_test_character_0140 ' + value);
         expect(value).assertTrue();
     })
@@ -1711,7 +1779,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0150', 0, function () {
         console.log('i18n_test_character_0150 ' + 'start');
-        let value = I18n.Character.isDigit('abc123');
+        let value = I18n.Unicode.isDigit('abc123');
         console.log('i18n_test_character_0150 ' + value);
         expect(value).assertFalse();
     })
@@ -1723,7 +1791,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0160', 0, function () {
         console.log('i18n_test_character_0160 ' + 'start');
-        let value = I18n.Character.isDigit('');
+        let value = I18n.Unicode.isDigit('');
         console.log('i18n_test_character_0160 ' + value);
         expect(value).assertFalse();
     })
@@ -1735,7 +1803,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0200', 0, function () {
         console.log('i18n_test_character_0200 ' + 'start');
-        let value = I18n.Character.isSpaceChar('abc');
+        let value = I18n.Unicode.isSpaceChar('abc');
         console.log('i18n_test_character_0200 ' + value);
         expect(value).assertFalse();
     })
@@ -1747,7 +1815,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0220', 0, function () {
         console.log('i18n_test_character_0220 ' + 'start');
-        let value = I18n.Character.isSpaceChar(' ');
+        let value = I18n.Unicode.isSpaceChar(' ');
         console.log('i18n_test_character_0220 ' + value);
         expect(value).assertTrue();
     })
@@ -1759,7 +1827,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0240', 0, function () {
         console.log('i18n_test_character_0240 ' + 'start');
-        let value = I18n.Character.isSpaceChar('   ');
+        let value = I18n.Unicode.isSpaceChar('   ');
         console.log('i18n_test_character_0240--' + value + '--');
         expect(value).assertTrue();
     })
@@ -1771,7 +1839,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0300', 0, function () {
         console.log('i18n_test_character_0300 ' + 'start');
-        let value = I18n.Character.isWhitespace('abc');
+        let value = I18n.Unicode.isWhitespace('abc');
         console.log('i18n_test_character_0300 ' + value);
         expect(value).assertFalse();
     })
@@ -1783,7 +1851,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0320', 0, function () {
         console.log('i18n_test_character_0320 ' + 'start');
-        let value = I18n.Character.isWhitespace('\u0009');
+        let value = I18n.Unicode.isWhitespace('\u0009');
         console.log('i18n_test_character_0320--' + value + '--');
         expect(value).assertTrue();
     })
@@ -1795,7 +1863,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0400', 0, function () {
         console.log('i18n_test_character_0400 ' + 'start');
-        let value = I18n.Character.isRTL('abc');
+        let value = I18n.Unicode.isRTL('abc');
         console.log('i18n_test_character_0400 ' + value);
         expect(value).assertFalse();
     })
@@ -1807,7 +1875,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0420', 0, function () {
         console.log('i18n_test_character_0420 ' + 'start');
-        let value = I18n.Character.isRTL('١٢٣٤٥٦٧');
+        let value = I18n.Unicode.isRTL('١٢٣٤٥٦٧');
         console.log('i18n_test_character_0420 ' + value);
         expect(value).assertFalse();
     })
@@ -1819,7 +1887,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0440', 0, function () {
         console.log('i18n_test_character_0440 ' + 'start');
-        let value = I18n.Character.isRTL('我是小明');
+        let value = I18n.Unicode.isRTL('我是小明');
         console.log('i18n_test_character_0440 ' + value);
         expect(value).assertFalse();
     })
@@ -1831,7 +1899,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0460', 0, function () {
         console.log('i18n_test_character_0460 ' + 'start');
-        let value = I18n.Character.isRTL('نحن');
+        let value = I18n.Unicode.isRTL('نحن');
         console.log('i18n_test_character_0460 ' + value);
         expect(value).assertTrue();
     })
@@ -1843,7 +1911,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0500', 0, function () {
         console.log('i18n_test_character_0500 ' + 'start');
-        let value = I18n.Character.isIdeograph('abc');
+        let value = I18n.Unicode.isIdeograph('abc');
         console.log('i18n_test_character_0500 ' + value);
         expect(value).assertFalse();
     })
@@ -1855,7 +1923,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0520', 0, function () {
         console.log('i18n_test_character_0520 ' + 'start');
-        let value = I18n.Character.isIdeograph('我');
+        let value = I18n.Unicode.isIdeograph('我');
         console.log('i18n_test_character_0520 ' + value);
         expect(value).assertTrue();
     })
@@ -1867,7 +1935,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0540', 0, function () {
         console.log('i18n_test_character_0540 ' + 'start');
-        let value = I18n.Character.isIdeograph('우리');
+        let value = I18n.Unicode.isIdeograph('우리');
         console.log('i18n_test_character_0540 ' + value);
         expect(value).assertFalse();
     })
@@ -1879,7 +1947,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0560', 0, function () {
         console.log('i18n_test_character_0560 ' + 'start');
-        let value = I18n.Character.isIdeograph('私たち');
+        let value = I18n.Unicode.isIdeograph('私たち');
         console.log('i18n_test_character_0560 ' + value);
         expect(value).assertTrue();
     })
@@ -1891,7 +1959,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0600', 0, function () {
         console.log('i18n_test_character_0600 ' + 'start');
-        let value = I18n.Character.isLetter('abc');
+        let value = I18n.Unicode.isLetter('abc');
         console.log('i18n_test_character_0600 ' + value);
         expect(value).assertTrue();
     })
@@ -1903,7 +1971,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0620', 0, function () {
         console.log('i18n_test_character_0620 ' + 'start');
-        let value = I18n.Character.isLetter('123');
+        let value = I18n.Unicode.isLetter('123');
         console.log('i18n_test_character_0620 ' + value);
         expect(value).assertFalse();
     })
@@ -1915,7 +1983,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0640', 0, function () {
         console.log('i18n_test_character_0640 ' + 'start');
-        let value = I18n.Character.isLetter('abc123');
+        let value = I18n.Unicode.isLetter('abc123');
         console.log('i18n_test_character_0640 ' + value);
         expect(value).assertTrue();
     })
@@ -1927,7 +1995,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0660', 0, function () {
         console.log('i18n_test_character_0660 ' + 'start');
-        let value = I18n.Character.isLetter('123abc');
+        let value = I18n.Unicode.isLetter('123abc');
         console.log('i18n_test_character_0660 ' + value);
         expect(value).assertFalse();
     })
@@ -1939,7 +2007,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0700', 0, function () {
         console.log('i18n_test_character_0700 ' + 'start');
-        let value = I18n.Character.isLowerCase('abc');
+        let value = I18n.Unicode.isLowerCase('abc');
         console.log('i18n_test_character_0700 ' + value);
         expect(value).assertTrue();
     })
@@ -1951,7 +2019,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0720', 0, function () {
         console.log('i18n_test_character_0720 ' + 'start');
-        let value = I18n.Character.isLowerCase('ABC');
+        let value = I18n.Unicode.isLowerCase('ABC');
         console.log('i18n_test_character_0720 ' + value);
         expect(value).assertFalse();
     })
@@ -1963,7 +2031,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0740', 0, function () {
         console.log('i18n_test_character_0740 ' + 'start');
-        let value = I18n.Character.isLowerCase('abcDEF');
+        let value = I18n.Unicode.isLowerCase('abcDEF');
         console.log('i18n_test_character_0740 ' + value);
         expect(value).assertTrue();
     })
@@ -1975,7 +2043,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0760', 0, function () {
         console.log('i18n_test_character_0760 ' + 'start');
-        let value = I18n.Character.isLowerCase('ABCdef');
+        let value = I18n.Unicode.isLowerCase('ABCdef');
         console.log('i18n_test_character_0760 ' + value);
         expect(value).assertFalse();
     })
@@ -1987,7 +2055,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0800', 0, function () {
         console.log('i18n_test_character_0800 ' + 'start');
-        let value = I18n.Character.isUpperCase('ABC');
+        let value = I18n.Unicode.isUpperCase('ABC');
         console.log('i18n_test_character_0800 ' + value);
         expect(value).assertTrue();
     })
@@ -1999,7 +2067,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0820', 0, function () {
         console.log('i18n_test_character_0820 ' + 'start');
-        let value = I18n.Character.isUpperCase('abc');
+        let value = I18n.Unicode.isUpperCase('abc');
         console.log('i18n_test_character_0820 ' + value);
         expect(value).assertFalse();
     })
@@ -2011,7 +2079,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0840', 0, function () {
         console.log('i18n_test_character_0840 ' + 'start');
-        let value = I18n.Character.isUpperCase('ABCdef');
+        let value = I18n.Unicode.isUpperCase('ABCdef');
         console.log('i18n_test_character_0840 ' + value);
         expect(value).assertTrue();
     })
@@ -2023,7 +2091,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0860', 0, function () {
         console.log('i18n_test_character_0860 ' + 'start');
-        let value = I18n.Character.isUpperCase('abcDEF');
+        let value = I18n.Unicode.isUpperCase('abcDEF');
         console.log('i18n_test_character_0860 ' + value);
         expect(value).assertFalse();
     })
@@ -2035,7 +2103,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0900', 0, function () {
         console.log('i18n_test_character_0900 ' + 'start');
-        let value = I18n.Character.getType('a');
+        let value = I18n.Unicode.getType('a');
         console.log('i18n_test_character_0900 ' + value);
         expect(value).assertEqual('U_LOWERCASE_LETTER');
     })
@@ -2047,7 +2115,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0920', 0, function () {
         console.log('i18n_test_character_0920 ' + 'start');
-        let value = I18n.Character.getType('ABC');
+        let value = I18n.Unicode.getType('ABC');
         console.log('i18n_test_character_0920 ' + value);
         expect(value).assertEqual('U_UPPERCASE_LETTER');
     })
@@ -2059,7 +2127,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0940', 0, function () {
         console.log('i18n_test_character_0940 ' + 'start');
-        let value = I18n.Character.getType('ABCdef');
+        let value = I18n.Unicode.getType('ABCdef');
         console.log('i18n_test_character_0940 ' + value);
         expect(value).assertEqual('U_UPPERCASE_LETTER');
     })
@@ -2071,7 +2139,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0960', 0, function () {
         console.log('i18n_test_character_0960 ' + 'start');
-        let value = I18n.Character.getType('123');
+        let value = I18n.Unicode.getType('123');
         console.log('i18n_test_character_0960 ' + value);
         expect(value).assertEqual('U_DECIMAL_DIGIT_NUMBER');
     })
@@ -2083,7 +2151,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0970', 0, function () {
         console.log('i18n_test_character_0970 ' + 'start');
-        let value = I18n.Character.getType('123abc');
+        let value = I18n.Unicode.getType('123abc');
         console.log('i18n_test_character_0970 ' + value);
         expect(value).assertEqual('U_DECIMAL_DIGIT_NUMBER');
     })
@@ -2095,7 +2163,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0980', 0, function () {
         console.log('i18n_test_character_0980 ' + 'start');
-        let value = I18n.Character.getType('١٢٣٤٥٦٧');
+        let value = I18n.Unicode.getType('١٢٣٤٥٦٧');
         console.log('i18n_test_character_0980 ' + value);
         expect(value).assertEqual('U_DECIMAL_DIGIT_NUMBER');
     })
@@ -2107,7 +2175,7 @@ describe('I18nTest', function () {
     */
     it('i18n_test_character_0990', 0, function () {
         console.log('i18n_test_character_0990 ' + 'start');
-        let value = I18n.Character.getType('   ');
+        let value = I18n.Unicode.getType('   ');
         console.log('i18n_test_character_0990 ' + value);
         expect(value).assertEqual('U_SPACE_SEPARATOR');
     })

@@ -18,9 +18,10 @@ group("distributeddatamgr") {
     deps = [
       "dataObjectjstest/hap:dataObject_js_test",
       "dataSharejstest/hap:dataShare_js_test",
+      "distributedKVStoretest:distributedKVStoretest",
       "kvStoretest:kvStoretest",
       "preferencesjstest/hap:preferences_js_test",
-      "relationalStorejstest/hap:relationalstore_js_test",
+      "relationalStoretest:relationalStoretest",
     ]
   } else {
     deps = [

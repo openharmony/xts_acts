@@ -44,17 +44,17 @@ export default function actsBmsJsUnPermissionTest() {
 
         /**
         * @tc.number    getApplicationInfos_1300
-        * @tc.name      getApplicationInfos_1300
+        * @tc.name      getApplicationInfosUnPermission
         * @tc.desc      test getAllApplicationInfo 
         */
-        it('getApplicationInfos_1300', 0, async function (done) {
+        it('getApplicationInfosUnPermission', 0, async function (done) {
             await bundle.getAllApplicationInfo(DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
-                expect(err).assertEqual(INVALID_CODE);
+                expect(err.code).assertEqual(INVALID_CODE);
             });
             bundle.getAllApplicationInfo(DEFAULT_FLAG, (err, data) => {
-                expect(err).assertEqual(INVALID_CODE);
+                expect(err.code).assertEqual(INVALID_CODE);
                 expect(data).assertEqual(undefined);
                 done();
             });
@@ -62,10 +62,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /**
         * @tc.number    getBundleInfo_2000
-        * @tc.name      getBundleInfo_2000
+        * @tc.name      getBundleInfoUnPermission
         * @tc.desc      test getBundleInfo
         */
-        it('getBundleInfo_2000', 0, async function (done) {
+        it('getBundleInfoUnPermission', 0, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, { userId: userId }).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -80,17 +80,17 @@ export default function actsBmsJsUnPermissionTest() {
 
         /**
         * @tc.number    getApplicationInfo_1800
-        * @tc.name      getApplicationInfo_1800
+        * @tc.name      getApplicationInfoUnPermission
         * @tc.desc      test getApplicationInfo 
         */
-        it('getApplicationInfo_1800', 0, async function (done) {
+        it('getApplicationInfoUnPermission', 0, async function (done) {
             await bundle.getApplicationInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
-                expect(err).assertEqual(INVALID_CODE);
+                expect(err.code).assertEqual(INVALID_CODE);
             });
             bundle.getApplicationInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, (err, data) => {
-                expect(err).assertEqual(INVALID_CODE);
+                expect(err.code).assertEqual(INVALID_CODE);
                 expect(data).assertEqual(undefined);
                 done();
             });
@@ -98,10 +98,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /*
          * @tc.number: SUB_BMS_HAP_STATUS_0011
-         * @tc.name: test hasInstalled
+         * @tc.name: hasInstalledUnPermissionSelf
          * @tc.desc: test hasInstalled without permission
         */
-        it('SUB_BMS_HAP_STATUS_0011', 0, async function (done) {
+        it('hasInstalledUnPermissionSelf', 0, async function (done) {
             let flag = 0;
             pkg.hasInstalled({
                 bundleName: SELF_BUNDLENAME,
@@ -124,10 +124,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /*
          * @tc.number: SUB_BMS_HAP_STATUS_0012
-         * @tc.name: test hasInstalled
+         * @tc.name: hasInstalledUnPermissionOther
          * @tc.desc: test hasInstalled without permission
         */
-        it('SUB_BMS_HAP_STATUS_0012', 0, async function (done) {
+        it('hasInstalledUnPermissionOther', 0, async function (done) {
             let flag = 0;
             pkg.hasInstalled({
                 bundleName: BUNDLE_NAME_OTHER,
@@ -150,10 +150,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /*
          * @tc.number: SUB_BMS_APPINFO_GETABILITYICON_0006
-         * @tc.name: test getAbilityIcon
+         * @tc.name: getAbilityIconUnPermission
          * @tc.desc: test getAbilityIcon without permission
         */
-        it('SUB_BMS_APPINFO_GETABILITYICON_0006', 0, async function (done) {
+        it('getAbilityIconUnPermission', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER).then(pixelmap => {
                 expect(pixelmap).assertFail();
             }).catch(err => {
@@ -166,11 +166,11 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /*
-         * @tc.number: getAbilityInfo_100
-         * @tc.name: test getAbilityInfo
+         * @tc.number: SUB_BMS_APPINFO_GETABILITYINFO_0008
+         * @tc.name: getAbilityInfoUnPermissionSelf
          * @tc.desc: test getAbilityInfo
         */
-        it('getAbilityInfo_200', 0, async function (done) {
+        it('getAbilityInfoUnPermissionSelf', 0, async function (done) {
             await bundle.getAbilityInfo(SELF_BUNDLENAME, SELF_ABILITYNAME).then(res => {
                 console.info('actwsBundleManager getAbilityInfo promise success res:' + JSON.stringify(res));
                 for (const item in res) {
@@ -196,38 +196,6 @@ export default function actsBmsJsUnPermissionTest() {
                 done();
             });
         });
-
-        /*
-        * @tc.number: SUB_BMS_APPINFO_EXTENSION_0019
-        * @tc.name: test queryExtensionAbilityInfos api
-        * @tc.desc: test queryExtensionAbilityInfos no permission
-        */
-        it('SUB_BMS_APPINFO_EXTENSION_0019', 0, async function (done) {
-            await bundle.queryExtensionAbilityInfos(
-                {
-                    "bundleName": BUNDLE_NAME1,
-                    "abilityName": ABILITY_NAME1
-                }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-                userId).then(data => {
-                    expect(data).assertFail();
-                }).catch(err => {
-                    expect(err).assertEqual(1);
-                });
-            bundle.queryExtensionAbilityInfos(
-                {
-                    "bundleName": BUNDLE_NAME1,
-                    "abilityName": ABILITY_NAME1
-                }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-                userId, (err, data) => {
-                    if (err) {
-                        expect(err).assertEqual(1);
-                        done();
-                        return;
-                    }
-                    expect(data).assertFail();
-                    done();
-                })
-        })
 
         async function checkAbilityInfo(data) {
             console.info("checkAbilityInfo start !!!");
@@ -255,7 +223,6 @@ export default function actsBmsJsUnPermissionTest() {
             expect(data.writePermission).assertEqual("");
             expect(data.targetAbility).assertEqual("");
             expect(data.metaData.length).assertEqual(0);
-            expect(data.metadata.length).assertEqual(0);
             checkApplicationInfo(data.applicationInfo);
             console.log("---checkAbilityInfo_other End---  ");
         }
@@ -269,19 +236,13 @@ export default function actsBmsJsUnPermissionTest() {
             expect(info.descriptionId).assertEqual(0);
             expect(info.icon).assertEqual("$media:icon");
             expect(info.iconId > 0).assertTrue();
-            expect(info.iconIndex > 0).assertTrue();
-            expect(info.iconIndex).assertEqual(info.iconId);
             expect(info.label).assertEqual("$string:entry_MainAbility");
             expect(info.labelId > 0).assertTrue();
-            expect(info.labelIndex > 0).assertTrue();
-            expect(info.labelIndex).assertEqual(info.labelId);
             expect(info.systemApp).assertEqual(false);
             expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
             expect(info.supportedModes).assertEqual(0);
             expect(info.process).assertEqual("com.example.actsbmsetsunpermissiontest");
             expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
-            expect(JSON.stringify(info.metadata)).assertEqual("{}");
-            expect(JSON.stringify(info.metadata)).assertEqual("{}");
             expect(info.enabled).assertEqual(true);
             expect(info.uid).assertLarger(0);
             expect(info.entityType).assertEqual("unspecified");

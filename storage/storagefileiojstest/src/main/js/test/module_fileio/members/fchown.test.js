@@ -210,7 +210,7 @@ describe('fileio_fchown', async function () {
       fileio.fchownSync(fd, null, stat.gid);
     } catch (e) {
       console.info('fileio_test_fchown_sync_003 has failed for ' + e);
-      expect(e.message == "Operation not permitted").assertTrue();
+      expect(e.message == "Invalid owner").assertTrue();
       fileio.unlinkSync(fpath);
     }
   });

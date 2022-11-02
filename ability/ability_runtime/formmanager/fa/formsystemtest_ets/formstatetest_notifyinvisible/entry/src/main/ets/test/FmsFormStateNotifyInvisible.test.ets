@@ -60,6 +60,18 @@ export default function test() {
             commonEvent.unsubscribe(subscriberDel, () => unsubscribeCallback("afterEach unsubscribe subscriberDel"));
             commonEvent.unsubscribe(subscriberOnState, () => unsubscribeCallback("afterEach unsubscribe subscriberOnState"));
             commonEvent.unsubscribe(subscriberSupply, () => unsubscribeCallback("afterEach unsubscribe subscriberSupply"));
+
+            let wantInfo = {
+                want: {
+                    bundleName: "com.ohos.st.formstatenotifyinvisibletest",
+                    abilityName: "com.ohos.st.formstatenotifyinvisibletest.TestAbility"
+                }
+            }
+            await featureAbility.startAbility(wantInfo).then((data) => {
+              console.log("FMS_notifyInvisibleForms startAbility data : " + JSON.stringify(data));
+            }).catch((err) => {
+              console.log("FMS_notifyInvisibleForms startAbility err : " + JSON.stringify(err));
+            })
             await sleep(1000);
         })
         /**

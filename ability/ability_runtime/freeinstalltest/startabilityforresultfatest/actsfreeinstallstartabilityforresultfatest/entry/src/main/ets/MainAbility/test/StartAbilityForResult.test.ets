@@ -494,8 +494,8 @@ export default function StartAbilityForResult() {
             }).catch((error) => {
                 console.error(' getTopAbility error: ' + JSON.stringify(error));
             });
-            console.log(" checkAbilityInfo deviceId : " + details1.ability.deviceId);
-            DeviceId = details1.ability.deviceId;
+            console.log(" checkAbilityInfo deviceId : " + details1.deviceId);
+            DeviceId = details1.deviceId;
             await Utils.sleep(500);
             var str = {
                 'want': {
@@ -536,8 +536,8 @@ export default function StartAbilityForResult() {
             }).catch((error) => {
                 console.error(' getTopAbility error: ' + JSON.stringify(error));
             });
-            console.log(" checkAbilityInfo deviceId : " + details1.ability.deviceId);
-            DeviceId = details1.ability.deviceId;
+            console.log(" checkAbilityInfo deviceId : " + details1.deviceId);
+            DeviceId = details1.deviceId;
             await Utils.sleep(1000);
             var str = {
                 'want': {

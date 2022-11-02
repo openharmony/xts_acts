@@ -642,7 +642,7 @@ HWTEST_F(DacTestSuite, DACTest0020, Function | MediumTest | Level1)
  */
 HWTEST_F(DacTestSuite, DACTest0030, Function | MediumTest | Level1)
 {
-    int ret;
+    int ret = 0;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
     unsigned int groupsize = getgroups(0, grouplist);
@@ -677,7 +677,7 @@ HWTEST_F(DacTestSuite, DACTest0030, Function | MediumTest | Level1)
  */
 HWTEST_F(DacTestSuite, DACTest0040, Function | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
     unsigned int groupsize = getgroups(0, grouplist);
@@ -712,7 +712,7 @@ HWTEST_F(DacTestSuite, DACTest0040, Function | MediumTest | Level2)
  */
 HWTEST_F(DacTestSuite, DACTest0050, Function | MediumTest | Level3)
 {
-    int ret;
+    int ret = 0;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
     unsigned int groupsize = getgroups(0, grouplist);
@@ -747,7 +747,7 @@ HWTEST_F(DacTestSuite, DACTest0050, Function | MediumTest | Level3)
  */
 HWTEST_F(DacTestSuite, DACTest0060, Function | MediumTest | Level3)
 {
-    int ret;
+    int ret = 0;
     gid_t grouplist[SIZE255];
     // Preset action: Obtain the groups of the current process
     size_t groupsize = getgroups(0, grouplist);
@@ -787,7 +787,7 @@ HWTEST_F(DacTestSuite, DACTest0060, Function | MediumTest | Level3)
  */
 HWTEST_F(DacTestSuite, DACTest0070, Security | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     int status = 0;
     // Preset action: Fork three sub processes
     pid_t pid;
@@ -849,7 +849,7 @@ HWTEST_F(DacTestSuite, DACTest0070, Security | MediumTest | Level2)
  */
 HWTEST_F(DacTestSuite, DACTest0080, Function | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     uid_t ruid = 0; uid_t euid = 0; uid_t suid = 0;
     uid_t newruid = 0; uid_t neweuid = 0; uid_t newsuid = 0;
     gid_t rgid = 0; gid_t egid = 0; gid_t sgid = 0;
@@ -909,7 +909,7 @@ HWTEST_F(DacTestSuite, DACTest0080, Function | MediumTest | Level2)
  */
 HWTEST_F(DacTestSuite, DACTest0120, Security | MediumTest | Level2)
 {
-    int ret;
+    int ret = 0;
     int status = 0;
     // Preset action: Fork a sub process
     pid_t pid = fork();

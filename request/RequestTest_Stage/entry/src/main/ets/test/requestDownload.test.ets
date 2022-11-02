@@ -1,6 +1,5 @@
-// @ts-nocheck
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,38 +13,38 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import request from "@ohos.request";
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function requestDownloadJSUnit() {
-  describe('requestDownloadTest', function () {
+  describe('requestDownloadJSUnit', function () {
     console.info('################################request download Test start');
 
     /**
-    * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
-    */
+     * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
+     */
     beforeAll(function () {
       console.info('beforeAll: Prerequisites are executed.');
     });
 
     /**
-    * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
-    */
+     * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
+     */
     beforeEach(function () {
       console.info('beforeEach: Prerequisites is executed.');
     });
 
     /**
-    * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
-    */
+     * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
+     */
     afterEach(function () {
       console.info('afterEach: Test case-level clearance conditions is executed.');
     });
 
     /**
-    * afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed.
-    */
+     * afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed.
+     */
     afterAll(function () {
       console.info('afterAll: Test suite-level cleanup condition is executed');
     });
@@ -112,6 +111,5 @@ export default function requestDownloadJSUnit() {
       console.info("-----------------------SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 end-----------------------");
       done();
     });
-
-  })
+  });
 }

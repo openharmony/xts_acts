@@ -39,6 +39,8 @@ import flexDirectionJsunit from './FlexDirectionJsunit.test.ets';
 import flexWrapJsunit from './FlexWrapJsunit.test.ets';
 import datePickerJsunit from './DatePickerJsunit.test.ets';
 import direction2Jsunit from './Direction2Jsunit.test.ets';
+import waterFlowDemoJsunit from './waterFlowDemo.test.ets';
+
 
 export default function testsuite() {
   navigationJsunit();
@@ -68,4 +70,5 @@ export default function testsuite() {
   rowJsunit();
   systempromptJsunit();
   sourceTypeJsunit();
+  waterFlowDemoJsunit();
 }

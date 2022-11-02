@@ -29,8 +29,8 @@ config("config") {
 config("public_config") {
 }
 
-ohos_shared_library("teststring") {
-  sources = [ "./napi/test_string.cpp" ]
+ohos_shared_library("napitest") {
+  sources = [ "./napi/napi_test.cpp" ]
   if (!(product_name == "m40")) {
     if (target_cpu == "arm") {
       libs = [ "${clang_base_path}/../libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so" ]

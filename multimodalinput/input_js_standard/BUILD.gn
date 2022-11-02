@@ -25,7 +25,9 @@ ohos_js_hap_suite("multimodalinput_js_test") {
   part_name = "input"
 }
 ohos_js_assets("multimodalinput_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("multimodalinput_js_resources") {
   sources = [ "./src/main/resources" ]

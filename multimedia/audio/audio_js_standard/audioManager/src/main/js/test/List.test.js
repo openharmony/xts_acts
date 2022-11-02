@@ -13,13 +13,5 @@
  * limitations under the License.
  */
 
-require('./getPermission.test.js')
-require('./AudioRendererChangeInfo.test.js')
-require('./AudioCapturerChangeInfo.test.js')
 require('./AudioFramework.test.js')
-require('./AudioVOIP.test.js')
-require('./AudioCall.test.js')
-require('./AudioCapturer.test.js')
-require('./AudioEventManagement.test.js')
-require('./AudioRenderer.test.js')
-
+require('./AudioManagerApi9.test.js')

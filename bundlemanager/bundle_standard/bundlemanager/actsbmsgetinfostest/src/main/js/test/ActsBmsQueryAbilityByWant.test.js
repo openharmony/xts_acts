@@ -38,12 +38,12 @@ describe('ActsBmsQueryAbilityByWant', function () {
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0100
-    * @tc.name:  queryAbilityByWant callback by other callback
+    * @tc.number: SUB_BMS_APPINFO_QUERYSYS_0008
+    * @tc.name: queryAbilityByWantThirdApp
     * @tc.desc: 1.queryAbilityByWant callback
     *           2.queryAbilityByWant for third app
     */
-    it('bms_queryAbilityByWant_0100', 0, async function (done) {
+    it('queryAbilityByWantThirdApp', 0, async function (done) {
         await bundle.queryAbilityByWant({
             action: ACTION_NAME,
             entities: [ENTITY_NAME],
@@ -67,12 +67,12 @@ describe('ActsBmsQueryAbilityByWant', function () {
     });
 
     /*
-    * @tc.number: bms_queryAbilityByWant_0200
-    * @tc.name:  queryAbilityByWant callback by other callback
+    * @tc.number: SUB_BMS_APPINFO_QUERYSYS_0007
+    * @tc.name: queryAbilityByWantSystemApp
     * @tc.desc: 1.queryAbilityByWant callback
     *           2.queryAbilityByWant for systemapp
     */
-    it('bms_queryAbilityByWant_0200', 0, async function (done) {
+    it('queryAbilityByWantSystemApp', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 action: ACTION_NAME,
@@ -107,11 +107,11 @@ describe('ActsBmsQueryAbilityByWant', function () {
     });
 
     /*
-    * @tc.number: bms_queryAbilityByEntities_0300
-    * @tc.name: Use the implicit query method in queryAbilityByWant to get abilityInfos 
+    * @tc.number: SUB_BMS_APPINFO_QUERY_0084
+    * @tc.name: queryAbilityByWantImplicitByEntities
     * @tc.desc: The entities in the parameter want pass in the new field, and use the implicit query to get abilitInfos
     */
-    it('bms_queryAbilityByEntities_0300', 0, async function (done) {
+    it('queryAbilityByWantImplicitByEntities', 0, async function (done) {
         let dataInfos = await bundle.queryAbilityByWant({
             action: ACTION_NAME,
             entities: ["entity.app.music",
@@ -177,7 +177,6 @@ describe('ActsBmsQueryAbilityByWant', function () {
         expect(data.writePermission).assertEqual("");
         expect(data.targetAbility).assertEqual("");
         expect(data.metaData.length).assertEqual(0);
-        expect(data.metadata.length).assertEqual(0);
         expect(data.enabled).assertEqual(true);
     }
 

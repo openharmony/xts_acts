@@ -45,7 +45,7 @@ ohos_shared_library("imagePixelmap") {
 
   deps = [
     "//foundation/arkui/napi:ace_napi",
-    "//foundation/multimedia/image_standard/frameworks/kits/js/common/pixelmap_ndk:pixelmap_ndk",
+    "//foundation/multimedia/image_framework/frameworks/kits/js/common/pixelmap_ndk:pixelmap_ndk",
   ]
 
   output_extension = "so"

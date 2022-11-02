@@ -17,6 +17,8 @@
         "package": "com.example.emittertest",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

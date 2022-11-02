@@ -48,9 +48,10 @@ export default function areaChangeJsunit() {
     it('areaChangeTest_0300', 0, async function (done) {
       console.info('areaChangeTest_0300 START');
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
-        console.info("areaChangeTest_0300 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.value).assertEqual('TextText');
+      let callback = (backData) => {
+        console.info("areaChangeTest_0300 get state result is: " + JSON.stringify(backData));
+        expect(backData.data.value).assertEqual('TextText');
+        done();
       }
       let indexEvent = {
         eventId: 61,
@@ -61,44 +62,24 @@ export default function areaChangeJsunit() {
       } catch (err) {
         console.info("areaChangeTest_0300 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("areaChangeTest_0300 click result is: " + JSON.stringify(sendEventByKey('text1', 10, "")));
-      var innerEventOne = {
-        eventId: 62,
-        priority: events_emitter.EventPriority.LOW
-      }
-      await Utils.sleep(1500);
-      var callback1 = (eventData) => {
-        console.info("areaChangeTest_0300 get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual(true);
-      }
-      try {
-        events_emitter.on(innerEventOne, callback1);
-      } catch (err) {
-        console.info("areaChangeTest_0300 on events_emitter err : " + JSON.stringify(err));
-      }
-      console.info('areaChangeTest_0300 END');
-      done();
-    });
 
-    it('areaChangeTest_0400', 0, async function (done) {
       console.info('areaChangeTest_0400 START');
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
-        console.info("areaChangeTest_0400 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.value).assertEqual('TextTextText');
+      let callback1 = (eventData) => {
+        console.info("areaChangeTest_0400 get state result is: " + JSON.stringify(eventData));
+        expect(eventData.data.ACTION).assertEqual(true);
+        done();
       }
-      let indexEvent = {
+      let indexEvent1 = {
         eventId: 62,
         priority: events_emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        events_emitter.on(indexEvent1, callback1);
       } catch (err) {
         console.info("areaChangeTest_0400 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("areaChangeTest_0400 click result is: " + JSON.stringify(sendEventByKey('text1', 10, "")));
-      console.info('areaChangeTest_0400 END');
-      done();
+      console.info("areaChangeTest_0300 click result is: " + JSON.stringify(sendEventByKey('text1', 10, "")));
     });
   })
 }

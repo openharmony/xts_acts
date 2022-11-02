@@ -17,16 +17,16 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
 
 const presetsCount = {
-    ActsMediaLibraryAlbum: { albumsCount: 7, assetsCount: 19 },
-    ActsMediaLibraryFavorite: { albumsCount: 6, assetsCount: 32 },
-    ActsMediaLibraryAlbumFileResultCb: { albumsCount: 5, assetsCount: 118 },
-    ActsMediaLibraryFile: { albumsCount: 6, assetsCount: 21 },
-    ActsMediaLibraryFileAsset: { albumsCount: 27, assetsCount: 72 },
-    ActsMediaLibraryFileAssetUri: { albumsCount: 3, assetsCount: 6 },
-    ActsMediaLibraryFileKey: { albumsCount: 2, assetsCount: 2 },
-    ActsMediaLibraryFileResult: { albumsCount: 4, assetsCount: 13 },
-    ActsMediaLibraryGetThumbnail: { albumsCount: 3, assetsCount: 3 },
-    ActsMediaLibraryBase: { albumsCount: 11, assetsCount: 11 },
+    ActsMediaLibraryAlbumTest: { albumsCount: 7, assetsCount: 19 },
+    ActsMediaLibraryBaseTest: { albumsCount: 11, assetsCount: 14 },
+    ActsMediaLibraryFavoriteTest: { albumsCount: 6, assetsCount: 32 },
+    ActsMediaLibraryFileTest: { albumsCount: 6, assetsCount: 28 },
+    ActsMediaLibraryFileAssetTest: { albumsCount: 27, assetsCount: 100 },
+    ActsMediaLibraryFileKeyTest: { albumsCount: 2, assetsCount: 2 },
+    ActsMediaLibraryFileResultTest: { albumsCount: 3, assetsCount: 112 },
+    ActsMediaLibraryGetThumbnailTest: { albumsCount: 3, assetsCount: 3 },
+    ActsMediaLibraryMediafetchoptionsTest: { albumsCount: 3, assetsCount: 8 },
+    ActsMediaLibraryTrashJsTest: { albumsCount: 6, assetsCount: 24 },
 }
 
 const IMAGE_TYPE = mediaLibrary.MediaType.IMAGE;
@@ -36,11 +36,18 @@ const FILE_TYPE = mediaLibrary.MediaType.FILE;
 
 const FILEKEY = mediaLibrary.FileKey;
 const { RELATIVE_PATH, ALBUM_NAME, MEDIA_TYPE } = FILEKEY
-const sleep = async function sleep(times = 10) {
-    await new Promise(res => setTimeout(res, times));
-}
 
-const allFetchOp = function (others = {}) {
+const sleep = async function sleep(times) {
+    if (!times) {
+        times = 10;
+    }
+    await new Promise((res) => setTimeout(res, times));
+};
+
+const allFetchOp = function (others) {
+    if (!others) {
+        others = {};
+    }
     return {
         selections: '',
         selectionArgs: [],
@@ -48,7 +55,10 @@ const allFetchOp = function (others = {}) {
     };
 }
 
-const fetchOps = function (testNum, path, type, others = {}) {
+const fetchOps = function (testNum, path, type, others) {
+    if (!others) {
+        others = {};
+    }
     let ops = {
         selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
         selectionArgs: [path, type.toString()],
@@ -84,8 +94,10 @@ const fileIdFetchOps = function (testNum, id) {
     return ops;
 };
 
-const albumFetchOps = function (testNum, path, albumName, type,
-    others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
+const albumFetchOps = function (testNum, path, albumName, type, others) {
+    if (!others) {
+        others = { order: FILEKEY.DATE_ADDED + " DESC", };
+    }
     let ops = {
         selections: RELATIVE_PATH + '= ? AND ' + ALBUM_NAME + '= ? AND ' + MEDIA_TYPE + '= ?',
         selectionArgs: [path, albumName, type.toString()],
@@ -96,8 +108,10 @@ const albumFetchOps = function (testNum, path, albumName, type,
 }
 
 // albums of two resource types
-const albumTwoTypesFetchOps = function (testNum, paths, albumName, types,
-    others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
+const albumTwoTypesFetchOps = function (testNum, paths, albumName, types, others) {
+    if (!others) {
+        others = { order: FILEKEY.DATE_ADDED + " DESC" };
+    }
     try {
         let ops = {
             selections: '(' + RELATIVE_PATH + '= ? or ' +
@@ -116,7 +130,10 @@ const albumTwoTypesFetchOps = function (testNum, paths, albumName, types,
 }
 
 // albums of three resource types
-const albumThreeTypesFetchOps = function (testNum, paths, albumName, types, others = { order: FILEKEY.DATE_ADDED, }) {
+const albumThreeTypesFetchOps = function (testNum, paths, albumName, types, others) {
+    if (!others) {
+        others = { order: FILEKEY.DATE_ADDED + " DESC" };
+    }
     try {
         let ops = {
             selections: '(' + RELATIVE_PATH + '= ? or ' +
@@ -143,10 +160,15 @@ const checkPresetsAssets = async function (media, hapName) {
     let albumsCount = albumList.length;
     let fetchFileResult = await media.getFileAssets(allFetchOp());
     let assetsCount = await fetchFileResult.getCount();
-    console.info(`${hapName}:: assetsCount: ${assetsCount} albumsCount: ${albumsCount},
-            presetsassetsCount: ${presetsCount[hapName].assetsCount} 
-            presetsalbumsCount: ${presetsCount[hapName].albumsCount}`);
-    console.info('checkPresetsAssets end')
+    let presetsassetsCount = presetsCount[hapName].assetsCount;
+    let presetsalbumsCount = presetsCount[hapName].albumsCount;
+    if (assetsCount != presetsCount[hapName].assetsCount || albumsCount !=presetsCount[hapName].albumsCount) {
+        console.info(`${hapName} checkPresetsAssets failed; 
+            assetsCount : presetsassetsCount = ${assetsCount} : ${presetsassetsCount}
+            albumsCount : presetsalbumsCount = ${albumsCount} : ${presetsalbumsCount}`)
+    } else {
+        console.info(`${hapName} checkPresetsAssets passed`)
+    }
 }
 
 const checkAssetsCount = async function (done, testNum, fetchFileResult, expectCount) {
@@ -181,18 +203,33 @@ const checkAlbumsCount = function (done, testNum, albumList, expectCount) {
     return albumsCount == expectCount;
 }
 
-const getPermission = async function (name = 'ohos.acts.multimedia.mediaLibrary') {
+const getPermission = async function (name) {
+    if (!name) {
+        name = "ohos.acts.multimedia.mediaLibrary";
+    }
     console.info('getPermission start', name)
-    let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.mediaLibrary', 0, 100);
+    let appInfo = await bundle.getApplicationInfo(name, 0, 100);
     let tokenID = appInfo.accessTokenId;
     let atManager = abilityAccessCtrl.createAtManager();
-    let result1 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.MEDIA_LOCATION", 1);
-    let result2 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_MEDIA", 1);
-    let result3 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_MEDIA", 1);
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.MEDIA_LOCATION", 1);
+    } catch (error) {
+        console.info('getPermission MEDIA_LOCATION failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_MEDIA", 1);
+    } catch (error) {
+        console.info('getPermission READ_MEDIA failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_MEDIA", 1);
+    } catch (error) {
+        console.info('getPermission WRITE_MEDIA failed')
+    }
     let isGranted1 = await atManager.verifyAccessToken(tokenID, "ohos.permission.MEDIA_LOCATION");
     let isGranted2 = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_MEDIA");
     let isGranted3 = await atManager.verifyAccessToken(tokenID, "ohos.permission.WRITE_MEDIA");
-    if (!(result1 == 0 && result2 == 0 && result3 == 0) || !(isGranted1 == 0 && isGranted2 == 0 && isGranted3 == 0)) {
+    if (!(isGranted1 == 0 && isGranted2 == 0 && isGranted3 == 0)) {
         console.info('getPermission failed')
     }
     console.info('getPermission end')

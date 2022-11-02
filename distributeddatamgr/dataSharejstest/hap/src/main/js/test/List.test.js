@@ -13,8 +13,6 @@
 * limitations under the License.
 */
 import dataAbilityPredicatesTest from './DataAbilityPredicatesJsunit.test.js'
-import rdbStoreDataSharePredicatesTest from './RdbStoreDataShareJsunit.test.js'
 export default function testsuite() {
 dataAbilityPredicatesTest()
-rdbStoreDataSharePredicatesTest()
 }

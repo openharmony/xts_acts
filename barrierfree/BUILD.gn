@@ -18,11 +18,15 @@ group("barrierfree") {
   if (is_standard_system) {
     deps = [
       "accessibilityconfig:ActsAccessibilityConfigTest",
+      "accessibilityconfigreqreadpermission:ActsAccessibilityConfigReqReadPermissionTest",
       "accessibilityelement:ActsAccessibilityElementTest",
+      "accessibilityerrcode:ActsAccessibilityErrCodeTest",
       "accessibilityevent:ActsAccessibilityEventTest",
       "accessibilityextension:ActsAccessibilityExtensionTest",
       "accessibilityextensioncontext:ActsAccessibilityExtensionContextTest",
+      "accessibilityextensioncontextcaperrcode:ActsAccessibilityExtensionContextCapErrCodeTest",
       "accessibilitygestureevent:ActsAccessibilityGestureEventTest",
+      "accessibilitysendaccessibilityevent:ActsAccessibilitySendAccessibilityEventTest",
       "accessibleabilitylist:ActsAccessibleAbilityListTest",
       "accessiblecaptionconfiguration:ActsAccessibleCaptionConfigurationTest",
       "accessiblecheckability:ActsAccessibleCheckAbilityTest",

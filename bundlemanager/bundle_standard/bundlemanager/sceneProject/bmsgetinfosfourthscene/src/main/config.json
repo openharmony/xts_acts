@@ -17,7 +17,8 @@
     "package": "com.example.third4",
     "name": ".BmsThirdBundle4",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

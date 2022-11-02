@@ -17,7 +17,8 @@
         "package": "com.example.actsbmsaccesstokentest",
         "name": ".entry",
         "deviceType": [
-            "default"
+            "default",
+            "tablet"
         ],
         "distro": {
             "deliveryWithInstall": true,

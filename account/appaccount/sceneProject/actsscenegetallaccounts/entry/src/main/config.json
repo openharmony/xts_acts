@@ -17,6 +17,8 @@
     "package": "com.example.actsscenegetallaccounts",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

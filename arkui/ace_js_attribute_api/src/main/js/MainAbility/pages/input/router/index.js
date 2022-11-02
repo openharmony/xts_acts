@@ -22,6 +22,15 @@ export default {
     onInit() {
         this.$watch("watchVal", "onwatch")
     },
+    onConfigurationUpdated(configuration) {
+        console.info("the configuration is " + JSON.stringify(configuration));
+        let fontScale = configuration.fontScale;
+        let locate = configuration.locate;
+        let objectLocate = locate.unicodeSetting;
+        console.info("the fontScale " + fontScale);
+        console.info("the locate is  " + JSON.stringify(locate));
+        console.info("the objectLocate is  " + JSON.stringify(objectLocate));
+    },
     functionTest1() {
         var function1 = this.$element('function1');
         var result = function1.setStyle("font-size", "50px")
@@ -32,7 +41,10 @@ export default {
         function2.setAttribute("type", "password")
     },
     functionTest3() {
-
+        var elem = dom.createElement("button");
+        elem.setAttribute("value", "buttoncreateElement");
+        var testDiv = this.$element('testDiv');
+        testDiv.addChild(elem);
     },
     functionTest4() {
         var function2 = this.$element('function2');
@@ -50,6 +62,15 @@ export default {
         this.$delete('Version');
         // log print:Version = undefined
         console.info("Version = " + this.Version);
+
+        // add new attr test
+        console.info("this app is = " + this.$app);
+        console.info("this def is = " + this.$app.$def);
+    },
+    functionTest7() {
+          let input = this.$refs.refname
+          console.info("this refs is = " + this.$refs);
+          console.info("this refs is = " + input);
     },
     onwatch(newVal, oldVal) {
         console.log("watch newVal = " + newVal + ",oldVal =" + oldVal)

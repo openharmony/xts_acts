@@ -89,12 +89,39 @@ describe('LangTest', function () {
         console.log('i18n_test_clock_0100 ' + 'start');
         let value = I18n.is24HourClock();
         console.log('i18n_test_clock_0100 ' + value);
-        if(hour)
+        if(value)
         {
             expect(value).assertTrue();
         }
         else
         {
+            expect(value).assertFalse();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CLOCK_0120
+    * @tc.name    test the set24HourClock interface
+    * @tc.desc    check the value of set24HourClock method
+    */
+    it('i18n_test_clock_0120', 0, function () {
+        console.log('i18n_test_clock_0120 ' + 'start');
+        let value = I18n.is24HourClock();
+        console.log('i18n_test_clock_0120 ' + value);
+        if(value)
+        {
+            let hourclock = I18n.set24HourClock(false);
+            console.log('i18n_test_clock_0120 ' + hourclock);
+            hourclock = I18n.set24HourClock(true);
+            console.log('i18n_test_clock_0120 ' + hourclock);
+            expect(value).assertTrue();
+        }
+        else
+        {
+            let hourclock = I18n.set24HourClock(true);
+            console.log('i18n_test_clock_0120 ' + hourclock);
+            hourclock = I18n.set24HourClock(false);
+            console.log('i18n_test_clock_0120 ' + hourclock);
             expect(value).assertFalse();
         }
     })
@@ -109,6 +136,46 @@ describe('LangTest', function () {
         let value = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0100 ' + value);
         expect(value.length).assertLarger(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0120
+    * @tc.name test the addPreferredLanguage interface
+    * @tc.desc check the value of addPreferredLanguage method
+    */
+    it('i18n_test_preferredlanguage_0120', 0, function () {
+        console.log('i18n_test_preferredlanguage_0120 ' + 'start');
+        let list = I18n.getPreferredLanguageList();
+        console.log('i18n_test_preferredlanguage_0120 ' + list);
+        expect(list.length).assertLarger(0);
+        if(list[0] != 'zh-Hans-CN'){
+            let value = I18n.addPreferredLanguage('zh-Hans-CN');
+            console.log('i18n_test_preferredlanguage_0120 ' + value);
+            expect(value).assertTrue();
+        }
+        else{
+            let value = I18n.addPreferredLanguage('en-Latn-US');
+            console.log('i18n_test_preferredlanguage_0120 ' + value);
+        }
+        console.log('i18n_test_preferredlanguage_0120 ' + I18n.getPreferredLanguageList());
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0140
+    * @tc.name test the removePreferredLanguage interface
+    * @tc.desc check the value of removePreferredLanguage method
+    */
+    it('i18n_test_preferredlanguage_0140', 0, function () {
+        console.log('i18n_test_preferredlanguage_0140 ' + 'start');
+        let list = I18n.getPreferredLanguageList();
+        console.log('i18n_test_preferredlanguage_0140 ' + list);
+        expect(list.length).assertLarger(0);
+        if(list[1] == 'zh-Hans-CN'){
+            let value = I18n.removePreferredLanguage(1);
+            console.log('i18n_test_preferredlanguage_0140 ' + value);
+            expect(value).assertTrue();
+        }
+        console.log('i18n_test_preferredlanguage_0140 ' + I18n.getPreferredLanguageList());
     })
 
     /* *
@@ -129,6 +196,18 @@ describe('LangTest', function () {
         else if(list[0] == 'en'){
             expect(value).assertEqual('en');
         }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_1100
+    * @tc.name test the getAppPreferredLanguage interface
+    * @tc.desc check the value of getAppPreferredLanguage method
+    */
+    it('i18n_test_preferredlanguage_1100', 0, function () {
+        console.log('i18n_test_preferredlanguage_1100 ' + 'start');
+        let value = I18n.getAppPreferredLanguage();
+        console.log('i18n_test_preferredlanguage_1100 ' + value);
+        expect(value).assertEqual('zh-Hans');
     })
 
     /* *
@@ -514,7 +593,7 @@ describe('LangTest', function () {
     */
     it('dateorder_test_0100', 0, function () {
         console.log('dateorder_test_0100 ' + 'start');
-        let value = I18n.Util.getDateOrder('zh');
+        let value = I18n.I18NUtil.getDateOrder('zh');
         console.log('dateorder_test_0100 ' + value);
         expect(value).assertEqual('y-L-d');
     })
@@ -526,7 +605,7 @@ describe('LangTest', function () {
     */
     it('dateorder_test_0200', 0, function () {
         console.log('dateorder_test_0200 ' + 'start');
-        let value = I18n.Util.getDateOrder('en');
+        let value = I18n.I18NUtil.getDateOrder('en');
         console.log('dateorder_test_0200 ' + value);
         expect(value).assertEqual('LLL-d-y');
     })
@@ -538,7 +617,7 @@ describe('LangTest', function () {
     */
     it('dateorder_test_0300', 0, function () {
         console.log('dateorder_test_0300 ' + 'start');
-        let value = I18n.Util.getDateOrder('th');
+        let value = I18n.I18NUtil.getDateOrder('th');
         console.log('dateorder_test_0300 ' + value);
         expect(value).assertEqual('d-LLL-y');
     })
@@ -550,7 +629,7 @@ describe('LangTest', function () {
     */
     it('dateorder_test_0400', 0, function () {
         console.log('dateorder_test_0400 ' + 'start');
-        let value = I18n.Util.getDateOrder('jp');
+        let value = I18n.I18NUtil.getDateOrder('jp');
         console.log('dateorder_test_0400 ' + value);
         expect(value).assertEqual('LLL-d-y');
     })

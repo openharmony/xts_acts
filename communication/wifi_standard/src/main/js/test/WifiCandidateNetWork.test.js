@@ -14,6 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+
 import wifi from '@ohos.wifi'
 
 function sleep(delay) {
@@ -125,6 +126,13 @@ export default function actsWifiCandidateNetWorkTest() {
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
                 "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK,
+                "netId": -1,
+                "ipType": 1,
+                "creatorUid": 7,
+                "disableReason": 0,
+                "randomMacType": 0,
+                "randomMacAddr": "11:22:33:44:55:66",
+                "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
             };
             await wifi.addCandidateConfig(wifiDeviceConfig)
                 .then(netWorkId => {
@@ -236,6 +244,7 @@ export default function actsWifiCandidateNetWorkTest() {
                     expect(true).assertEqual(netWorkId != -1);
                 }).catch((error) => {
                     console.error('[wifi_test]add 17th CandidateConfig promise failed -> ' + JSON.stringify(error));
+                    expect(true).assertEqual(error == -1);
                 });
             let getCandidateResult = wifi.getCandidateConfigs();
             console.info("[wifi_test]wifi get 16 CandidateConfigs result : " + JSON.stringify(getCandidateResult));
@@ -294,7 +303,6 @@ export default function actsWifiCandidateNetWorkTest() {
                         (err, ret) => {
                             if (err) {
                                 console.info("[wifi_test]removeCandidate callback failed : " + JSON.stringify(err));
-
                             }
                             console.info("[wifi_test] removeCandidateConfig callback result:" + JSON.stringify(ret));
                             expect(ret).assertTrue();
@@ -348,7 +356,6 @@ export default function actsWifiCandidateNetWorkTest() {
             await wifi.getLinkedInfo()
                 .then((result) => {
                     console.info("[wifi_test]get wifi link [promise] -> " + JSON.stringify(result));
-                    expect(JSON.stringify(result)).assertContain('band');
                     done();
                 }).catch((error) => {
                     console.info("[wifi_test]promise then error." + JSON.stringify(error));
@@ -378,15 +385,13 @@ export default function actsWifiCandidateNetWorkTest() {
                     expect(ret).assertTrue();
                 }).catch((error) => {
                     console.error('[wifi_test]addUntrustedConfig promise failed -> ' + JSON.stringify(error));
-
                 });
             await wifi.removeUntrustedConfig(wifiDeviceConfig)
                 .then(ret => {
                     console.info("[wifi_test]removeUntrustedConfig promise:" + JSON.stringify(ret));
-                    expect(True).assertTrue();
+                    expect(ret).assertTrue();
                 }).catch((error) => {
                     console.error('[wifi_test]removeUntrustedConfig promise failed -> ' + JSON.stringify(error));
-
                 });
             done();
         })
@@ -412,7 +417,6 @@ export default function actsWifiCandidateNetWorkTest() {
                         (err, ret) => {
                             if (err) {
                                 console.info("[wifi_test]addUntrustedConfig callback failed : " + JSON.stringify(err));
-
                             }
                             console.info("[wifi_test]addUntrustedConfig callback result: " + JSON.stringify(ret));
                             expect(ret).assertTrue();
@@ -427,7 +431,6 @@ export default function actsWifiCandidateNetWorkTest() {
                         (err, ret) => {
                             if (err) {
                                 console.info("[wifi_test]removeUntrustedConfig callback failed" + JSON.stringify(err));
-
                             }
                             console.info("[wifi_test]removeUntrustedConfig callback result:" + JSON.stringify(ret));
                             expect(ret).assertTrue();
@@ -440,3 +443,4 @@ export default function actsWifiCandidateNetWorkTest() {
         })
     })
 }
+

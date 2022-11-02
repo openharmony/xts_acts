@@ -20,6 +20,6 @@
     ],
     "driver": {
         "type": "CppTestLite",
-        "execute": "/test_root/kernel/ActsVFATTest.bin"
+        "execute": "/test_root/kernel/ActsVFATstorageTest.bin"
     }
 }

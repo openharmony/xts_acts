@@ -27,6 +27,18 @@
     {
       "name": "entry_description",
       "value": "entry_description"
+    },
+    {
+      "name": "PageAbility1_desc",
+      "value": "description"
+    },
+    {
+      "name": "PageAbility1_label",
+      "value": "label"
+    },
+    {
+      "name": "DataAbility_desc",
+      "value": "hap sample empty provider"
     }
   ]
 }

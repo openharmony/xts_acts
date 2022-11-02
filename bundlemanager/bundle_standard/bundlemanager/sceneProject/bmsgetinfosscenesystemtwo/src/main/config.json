@@ -20,7 +20,8 @@
     "name": ".BmsSystemBundle1",
     "mainAbility": "com.example.system2.MainAbility",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

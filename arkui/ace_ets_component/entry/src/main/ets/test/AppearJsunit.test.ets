@@ -51,45 +51,29 @@ export default function appearJsunit() {
       console.info('[testAppear01] START');
       await Utils.sleep(1000);
       try {
-        let callBackAppear = (backData) => {
-          console.info("testAppear01 get appearEvent result is: " + JSON.stringify(appearEvent));
-          expect(backData.data.ACTION).assertEqual(true);
+        let callBackAppear1 = (backData) => {
+          console.info("testAppear01 get appearEvent result is: " + JSON.stringify(backData));
+          expect(backData.data.ACTION).assertEqual(false);
+          done();
         }
-        var appearEvent = {
+        var appearEvent1 = {
           eventId: 58,
           priority: events_emitter.EventPriority.LOW
         }
-        events_emitter.on(appearEvent, callBackAppear);
+        events_emitter.on(appearEvent1, callBackAppear1);
       } catch (err) {
         console.info("testAppear01 on appearEvent err : " + JSON.stringify(err));
       }
       console.info("testAppear01 click result is: " + JSON.stringify(sendEventByKey('appear', 10, "")));
       console.info('[testAppear01] END');
-      done();
-    });
 
-    it('testAppear02', 0, async function (done) {
       console.info('[testAppear02] START');
-      await Utils.sleep(1000);
       try {
-        let callBackAppear = (backData) => {
-          console.info("testAppear02 get appearEvent result is: " + JSON.stringify(appearEvent));
-          expect(backData.data.ACTION).assertEqual(true);
-        }
-        var appearEvent = {
-          eventId: 59,
-          priority: events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(appearEvent, callBackAppear);
-      } catch (err) {
-        console.info("testAppear02 on appearEvent err : " + JSON.stringify(err));
-      }
-      console.info("testAppear02 appearEvent click result is: " + JSON.stringify(sendEventByKey('appear', 10, "")));
-
-      try {
-        let callBackDisAppear = (backData) => {
-          console.info("testAppear02 get disAppearEvent result is: " + JSON.stringify(disAppearEvent));
-          expect(backData.data.ACTION).assertEqual(true);
+        let callBackDisAppear = (backData1) => {
+          console.info("testAppear02 get disAppearEvent result is: " + JSON.stringify(backData1));
+          console.info("testAppear02 get backData1.data.ACTION result is: " + backData1.data.ACTION);
+          expect(backData1.data.ACTION).assertEqual(true);
+          done();
         }
         var disAppearEvent = {
           eventId: 60,
@@ -99,10 +83,25 @@ export default function appearJsunit() {
       } catch (err) {
         console.info("testAppear02 on disAppearEvent err : " + JSON.stringify(err));
       }
-      console.info("testAppear02 disAppearEvent click result is: " + JSON.stringify(sendEventByKey('appear', 10, "")));
-      console.info('[testAppear02] END');
-      done();
-    });
 
+      await Utils.sleep(1000);
+      console.info('[testAppear03] START');
+      let callBackAppear2 = (backData2) => {
+        console.info("testAppear03 get appearEvent result is: " + JSON.stringify(backData2));
+        console.info("testAppear03 get backData2.data.APPEAR: " + backData2.data.APPEAR);
+        expect(backData2.data.APPEAR).assertEqual("appearStatusOn");
+        done();
+      }
+      var appearEvent2 = {
+        eventId: 59,
+        priority: events_emitter.EventPriority.LOW
+      }
+      try {
+        console.info("testAppear03 appearEvent click result is: " + JSON.stringify(sendEventByKey('appear', 10, "")));
+        events_emitter.on(appearEvent2, callBackAppear2);
+      } catch (err) {
+        console.info("testAppear03 on appearEvent err : " + JSON.stringify(err));
+      }
+    });
   })
 }

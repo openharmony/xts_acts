@@ -17,6 +17,8 @@
         "package": "com.example.accessiblecaptionconfiguration",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

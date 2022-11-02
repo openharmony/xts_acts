@@ -15,6 +15,7 @@
 
 import fileio from '@ohos.fileio';
 import file from '@system.file';
+import document from '@ohos.document';
 import {
   describe,
   it,
@@ -2725,8 +2726,8 @@ describe('fileTest', function () {
         dstUri: 'internal://cache/../files/cache/File_Copy_002' + typeArray[i],
         success: function () {
           console.info('File_Copy_002 call copy success.');
-          fileio.unlinkSync(srcFpath);
-          fileio.unlinkSync(dstFpath);
+          file.delete('internal://cache/../files/File_Copy_002' + typeArray[i]);
+          file.delete('internal://cache/../files/cache/File_Copy_002' + typeArray[i]);
           done();
         },
         fail: function (data, code) {
@@ -3822,6 +3823,115 @@ describe('fileTest', function () {
         console.info('get completed');
       }
     });
+  });
+  /**
+   * @tc.number SUB_STORAGE_Document_Choose_0100
+   * @tc.name Document_Choose_001
+   * @tc.desc Function of API, choose file.The test file is exist.
+   */
+   it('File_Document_Choose_001', 0, async function (done) {
+    try {
+      let types = [];
+      let code = await document.choose(types);
+      let str = 'Error';
+      console.info("getFileUri===>" + code);
+      expect(str).assertTrue();
+      done();
+    } 
+    catch (e) {
+      console.info('File_Document_Choose_001 has failed for ' + e.message);
+      expect(e.message == "error").assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_Document_Choose_0200
+   * @tc.name Document_Choose_002
+   * @tc.desc Function of API, choose file.The test file is  exist.
+   */
+   it('File_Document_Choose_002', 0, async function (done) {
+    try {
+      let uri = "";
+      let code = await document.choose(function(err,uri){
+
+      });
+      console.info("getFileUri===>" + code);
+      expect(uri).assertTrue();
+      done();
+    } 
+    catch (e) {
+      console.info('File_Document_Choose_002 has failed for ' + e.message);
+      expect(e.message == "error").assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_Document_Choose_0300
+   * @tc.name Document_Choose_003
+   * @tc.desc Function of API, choose file.The test file is exist.
+   */
+   it('File_Document_Choose_003', 0, async function (done) {
+    try {
+      let types = [];
+      let uri = "";
+      let code = await document.choose(types,function(err,uri){
+
+      });
+      console.info("getFileUri===>" + code);
+      expect().assertTrue();
+      done();
+    } 
+    catch (e) {
+      console.info('File_Document_Choose_003 has failed for ' + e.message);
+      expect(e.message == "error").assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_Document_Show_0100
+   * @tc.name Document_Show_001
+   * @tc.desc Function of API, show file.The test file is exist.
+   */
+   it('File_Document_Show_001', 0, async function (done) {
+    try {
+      let type = "";
+      let uri = "";
+      let code = await document.show(uri,type);
+      console.info("getFileUri===>" + code);
+      expect().assertTrue();
+      done();
+    } 
+    catch (e) {
+      console.info('File_Document_Show_001 has failed for ' + e.message);
+      expect(e.message == "error").assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_Document_Show_0200
+   * @tc.name Document_Show_002
+   * @tc.desc Function of API, show file.The test file is exist.
+   */
+   it('File_Document_Show_002', 0, async function (done) {
+    try {
+      let type = "";
+      let uri ="";
+      let code = await document.show(uri,type,function(err){
+
+      });
+      console.info("getFileUri===>" + code);
+      expect().assertTrue();
+      done();
+    } 
+    catch (e) {
+      console.info('File_Document_Show_002 has failed for ' + e.message);
+      expect(e.message == "error").assertTrue();
+      done();
+    }
   });
 });
 }

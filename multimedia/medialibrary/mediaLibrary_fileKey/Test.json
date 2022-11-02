@@ -9,24 +9,22 @@
     "kits": [
         {
             "type": "ShellKit",
-            "pre-push": [
-            ],
+            "pre-push": [],
             "run-command": [
                 "rm -rf /storage/media/100/local/files/*",
                 "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
                 "mkdir -pv /storage/media/100/local/files/{Pictures,Videos,Audios,Documents}",
-                "mkdir -p /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata"
+                "mkdir -p /storage/media/100/local/temp"
             ]
         },
         {
             "type": "PushKit",
-            "pre-push": [
-            ],
+            "pre-push": [],
             "push": [
-                "./resource/medialibrary/01.jpg ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata",
-                "./resource/medialibrary/01.mp3 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata",
-                "./resource/medialibrary/01.mp4 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata",
-                "./resource/medialibrary/01.dat ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata"
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp",
+                "./resource/medialibrary/01.mp3 ->/storage/media/100/local/temp",
+                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/temp",
+                "./resource/medialibrary/01.dat ->/storage/media/100/local/temp"
             ]
         },
         {
@@ -34,23 +32,24 @@
             "run-command": [
                 "mkdir -pv /storage/media/100/local/files/Pictures/ImageInfo",
                 "mkdir -pv /storage/media/100/local/files/Audios/Static",
-                
-                "cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.jpg /storage/media/100/local/files/Pictures/ImageInfo/01.jpg",
-                "cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp3 /storage/media/100/local/files/Audios/Static/01.mp3",
-                
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/ImageInfo/01.jpg",
+                "cp /storage/media/100/local/temp/01.mp3 /storage/media/100/local/files/Audios/Static/01.mp3",
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "hilog -Q pidoff",
                 "hilog -p off",
                 "hilog -b I",
-                "hilog -b D -D 0xD002B70", 
-                "scanner_demo",
+                "hilog -b D -D 0xD002B70",
+                "scanner",
                 "sleep 10"
+            ],
+            "teardown-command":[
+                "hilog -b X -D 0xD002B70"
             ]
         },
         {
             "test-file-name": [
-                "ActsMediaLibraryFileKey.hap"
+                "ActsMediaLibraryFileKeyTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

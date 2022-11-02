@@ -17,7 +17,7 @@
     "package": "com.example.startabilityforresult",
     "name": ".MyApplication",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

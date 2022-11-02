@@ -778,9 +778,9 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2700, Function|M
     bool result = false;
     string getlogFile;
     string path;
-    int maxLen = 33;
-    string keys[maxLen];
-    string values[maxLen];
+    int maxLen = 32;
+    string keys[maxLen + 1];
+    string values[maxLen + 1];
     OHOS::HiviewDFX::HiAppEventConfig::GetInstance().SetStorageDir("/data/test/hiappevent/");
     ParamList list = OH_HiAppEvent_CreateParamList();
     for (int i = 0; i <= maxLen; i++) {

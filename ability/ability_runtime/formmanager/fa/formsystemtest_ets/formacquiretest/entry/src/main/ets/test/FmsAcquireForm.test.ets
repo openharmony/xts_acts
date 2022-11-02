@@ -57,6 +57,18 @@ export default function test() {
             commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeCallback("afterEach unsubscribe subscriberOnAcquired"));
             commonEvent.unsubscribe(subscriberCast, () => unsubscribeCallback("afterEach unsubscribe subscriberCast"));
             commonEvent.unsubscribe(subscriberSupply, () => unsubscribeCallback("afterEach unsubscribe subscriberSupply"));
+
+            let wantInfo = {
+                want: {
+                    bundleName: "com.ohos.st.formacquiretest",
+                    abilityName: "com.ohos.st.formacquiretest.TestAbility"
+                }
+            }
+            await featureAbility.startAbility(wantInfo).then((data) => {
+              console.log("FMS_acquireForm startAbility data : " + JSON.stringify(data));
+            }).catch((err) => {
+              console.log("FMS_acquireForm startAbility err : " + JSON.stringify(err));
+            })
             await sleep(1000);
         })
 
@@ -1552,7 +1564,7 @@ export default function test() {
             function onCastCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_2600 onCastCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormCast_commonEvent");
-                expect(data.data).assertEqual("undefined");
+                expect(data.data).assertEqual("0");
                 commonEvent.unsubscribe(subscriberCast, () => unsubscribeOnCastCallback("FMS_acquireForm_2600"))
                 formId1 = data.parameters.formId;
                 console.info("!!!====>FMS_acquireForm_2600 formId1 " + formId1 + " formId2 " + formId2);

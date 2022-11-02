@@ -45,7 +45,7 @@ export default function StartAbilityForResult() {
             })
             await Utils.sleep(500);
             var cmd3 = "cp data/test/AtomizationResultFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/" +
-            "files";
+                "files";
             delegator.executeShellCommand(cmd3, (err: any, d: any) => {
                 console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
                 done();
@@ -88,16 +88,17 @@ export default function StartAbilityForResult() {
                     "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
                 }
             }
-            await featureAbility.startAbilityForResult(str)
-                .then((data) => {
-                    details = data;
-                    console.info(TAG + ' StartAbilityForResult successful. Data: ' + JSON.stringify(data))
-                }).catch((error) => {
-                    console.info(TAG + ' StartAbilityForResult failed. error: ' + JSON.stringify(error));
-                })
-            await Utils.sleep(1000);
-            console.log(TAG + " resultCode: " + details.resultCode);
-            expect(details.resultCode).assertEqual(1);
+            setTimeout(async () => {
+                await featureAbility.startAbilityForResult(str)
+                    .then((data) => {
+                        details = data;
+                        console.info(TAG + ' StartAbilityForResult successful. Data: ' + JSON.stringify(data))
+                    }).catch((error) => {
+                        console.info(TAG + ' StartAbilityForResult failed. error: ' + JSON.stringify(error));
+                    })
+                console.log(TAG + " resultCode: " + details.resultCode);
+                expect(details.resultCode).assertEqual(1);
+            },2000);
             done();
         });
 
@@ -114,7 +115,6 @@ export default function StartAbilityForResult() {
             delegator.executeShellCommand(cmd6, (err: any, d: any) => {
                 console.info("executeShellCommand6: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
-            await Utils.sleep(500);
             let details;
             var str = {
                 'want': {
@@ -125,16 +125,17 @@ export default function StartAbilityForResult() {
                     "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
                 }
             }
-            await featureAbility.startAbilityForResult(str)
+            setTimeout(async ()=>{
+                await featureAbility.startAbilityForResult(str)
                 .then((data) => {
                     details = data;
                     console.info(TAG + ' StartAbilityForResult successful. Data: ' + JSON.stringify(data))
                 }).catch((error) => {
                     console.info(TAG + ' StartAbilityForResult failed. error: ' + JSON.stringify(error));
                 })
-            await Utils.sleep(1000);
             console.log(TAG + " resultCode: " + details.resultCode);
             expect(details.resultCode).assertEqual(1);
+            },2000);
             done();
         });
 
@@ -154,30 +155,30 @@ export default function StartAbilityForResult() {
             })
             await Utils.sleep(500);
             var cmd8 = "cp data/test/FaResultMyApplication1.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
-            "entry/files";
+                "entry/files";
             delegator.executeShellCommand(cmd8, (err: any, d: any) => {
                 console.info("executeShellCommand8: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
-            await Utils.sleep(500);
-            let details;
-            var str = {
-                'want': {
-                    "bundleName": "com.open.harmony.startAbilityForResult",
-                    "abilityName": "com.example.myapplication1.MainAbility1",
-                    "moduleName": "myapplication1",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+            setTimeout(async ()=>{
+                let details;
+                var str = {
+                    'want': {
+                        "bundleName": "com.open.harmony.startAbilityForResult",
+                        "abilityName": "com.example.myapplication1.MainAbility1",
+                        "moduleName": "myapplication1",
+                        "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+                    }
                 }
-            }
-            await featureAbility.startAbilityForResult(str)
-                .then((data) => {
-                    details = data;
-                    console.info(TAG + ' StartAbilityForResult successful. Data: ' + JSON.stringify(data))
-                }).catch((error) => {
-                    console.info(TAG + ' StartAbilityForResult failed. error: ' + JSON.stringify(error));
-                })
-            await Utils.sleep(2000);
-            console.log(TAG + " resultCode: " + details.resultCode);
-            expect(details.resultCode).assertEqual(1);
+                await featureAbility.startAbilityForResult(str)
+                    .then((data) => {
+                        details = data;
+                        console.info(TAG + ' StartAbilityForResult successful. Data: ' + JSON.stringify(data))
+                    }).catch((error) => {
+                        console.info(TAG + ' StartAbilityForResult failed. error: ' + JSON.stringify(error));
+                    })
+                console.log(TAG + " resultCode: " + details.resultCode);
+                expect(details.resultCode).assertEqual(1);
+            },2000);
             done();
         });
     })

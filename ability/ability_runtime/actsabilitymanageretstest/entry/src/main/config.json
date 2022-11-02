@@ -19,7 +19,7 @@
     "srcPath": "",
     "mainAbility": "com.ohos.acecollaboration.MainAbility",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "reqPermissions": [
       {

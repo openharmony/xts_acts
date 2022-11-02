@@ -9,24 +9,22 @@
     "kits": [
         {
             "type": "ShellKit",
-            "pre-push": [
-            ],
+            "pre-push": [],
             "run-command": [
                 "rm -rf /storage/media/100/local/files/*",
                 "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
                 "mkdir -pv /storage/media/100/local/files/{Pictures,Videos,Audios,Documents}",
-                "mkdir -p /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata"
+                "mkdir -p /storage/media/100/local/temp"
             ]
         },
         {
             "type": "PushKit",
-            "pre-push": [
-            ],
+            "pre-push": [],
             "push": [
-                "./resource/medialibrary/01.jpg ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata",
-                "./resource/medialibrary/01.mp3 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata",
-                "./resource/medialibrary/01.mp4 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata",
-                "./resource/medialibrary/01.dat ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata"
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp",
+                "./resource/medialibrary/01.mp3 ->/storage/media/100/local/temp",
+                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/temp",
+                "./resource/medialibrary/01.dat ->/storage/media/100/local/temp"
             ]
         },
         {
@@ -36,25 +34,26 @@
                 "mkdir -pv /storage/media/100/local/files/Videos/Static",
                 "mkdir -pv /storage/media/100/local/files/Audios/Static",
                 "mkdir -pv /storage/media/100/local/files/Documents/Static",
-                
-                "for d in Static; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
-                "for d in Static; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
-                "for d in Static; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
-                "for d in Static; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.dat /storage/media/100/local/files/Documents/$$d/0$$i.dat; done;done;",
-               
+                "for d in Static; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
+                "for d in Static; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
+                "for d in Static; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
+                "for d in Static; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.dat /storage/media/100/local/files/Documents/$$d/0$$i.dat; done;done;",
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "hilog -Q pidoff",
                 "hilog -p off",
                 "hilog -b I",
-                "hilog -b D -D 0xD002B70", 
-                "scanner_demo",
+                "hilog -b D -D 0xD002B70",
+                "scanner",
                 "sleep 10"
+            ],
+            "teardown-command":[
+                "hilog -b X -D 0xD002B70"
             ]
         },
         {
             "test-file-name": [
-                "ActsMediaLibraryMediafetchoptions.hap"
+                "ActsMediaLibraryMediafetchoptionsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

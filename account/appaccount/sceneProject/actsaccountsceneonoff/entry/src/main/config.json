@@ -17,6 +17,8 @@
     "package": "com.example.actsaccountsceneonoff",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

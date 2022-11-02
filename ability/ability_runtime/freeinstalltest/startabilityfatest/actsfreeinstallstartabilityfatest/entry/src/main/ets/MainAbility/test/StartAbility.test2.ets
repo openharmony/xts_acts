@@ -23,214 +23,211 @@ import commonEvent from '@ohos.commonEvent';
 
 export default function startAbilityTest2() {
 
-    describe('startAbilityTest2', function () {
+  describe('startAbilityTest2', function () {
 
-        var TAG = "";
+    var TAG = "";
 
-        var delegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    var delegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-        function sleep(time) {
-            return new Promise((resolve) => setTimeout(resolve, time))
+    function sleep(time) {
+      return new Promise((resolve) => setTimeout(resolve, time))
+    }
+
+    beforeAll(async function (done) {
+      console.info("StartAbilityForResult before all called");
+      var cmd = "bm install -p data/test/MockService.hap";
+      console.info("cmd : " + cmd)
+      delegator.executeShellCommand(cmd, (err: any, d: any) => {
+        console.info("executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      await sleep(500);
+      var cmd1 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
+      delegator.executeShellCommand(cmd1, (err: any, d: any) => {
+        console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      await sleep(500);
+      var cmd2 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
+      delegator.executeShellCommand(cmd2, (err: any, d: any) => {
+        console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      await sleep(500);
+      var cmd3 = "cp data/test/AtomizationFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
+        "entry/files";
+      delegator.executeShellCommand(cmd3, (err: any, d: any) => {
+        console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+        done();
+      })
+    });
+
+    afterEach(async function (done) {
+      console.info("StartAbilityTest after each called");
+      if ("FreeInstall_FA_Local_StartAbility_2000" === TAG) {
+        var cmd4 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
+        delegator.executeShellCommand(cmd4, (err: any, d: any) => {
+          console.info("executeShellCommand4 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+        })
+        await sleep(500);
+      }
+
+      if ("FreeInstall_FA_Local_StartAbility_2500" === TAG) {
+        var cmd5 = "bm uninstall -n com.ohos.hag.famanager";
+        delegator.executeShellCommand(cmd5, (err: any, d: any) => {
+          console.info("executeShellCommand5 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+        })
+      }
+      await sleep(500);
+      done();
+    });
+
+    /*
+     * @tc.number  FreeInstall_FA_Local_StartAbility_1900
+     * @tc.name    The current service is not in the foreground. Page a jumps to page B first.
+                    There are HAP packages that need not be installed under the specified path
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("FreeInstall_FA_Local_StartAbility_1900", 0, async function (done) {
+      console.info("------------start FreeInstall_FA_Local_StartAbility_1900-------------");
+      TAG = "FreeInstall_FA_Local_StartAbility_1900";
+      let wrong;
+      var str1 = {
+        'want': {
+          "bundleName": "com.open.harmony.startAbility",
+          "abilityName": "com.open.harmony.startAbility.PageAbility",
+          "moduleName": "entry",
         }
-
-        beforeAll(async function (done) {
-            console.info("StartAbilityForResult before all called");
-            var cmd = "bm install -p data/test/MockService.hap";
-            console.info("cmd : " + cmd)
-            delegator.executeShellCommand(cmd, (err: any, d: any) => {
-                console.info("executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            var cmd1 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
-            delegator.executeShellCommand(cmd1, (err: any, d: any) => {
-                console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            var cmd2 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-            delegator.executeShellCommand(cmd2, (err: any, d: any) => {
-                console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            var cmd3 = "cp data/test/AtomizationFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
-            "entry/files";
-            delegator.executeShellCommand(cmd3, (err: any, d: any) => {
-                console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-                done();
-            })
+      }
+      featureAbility.startAbility(str1)
+        .then((data) => {
+          console.info(TAG + ' StartAbility successful. Promise Data: ' + JSON.stringify(data))
+        }).catch((error) => {
+          console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
+        })
+      setTimeout(async () => {
+        var str = {
+          'want': {
+            "bundleName": "com.example.qianyiyingyong.hmservice",
+            "abilityName": "com.example.qianyiyingyong.MainAbility",
+            "moduleName": "entry",
+            "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND
+          }
+        }
+        await featureAbility.startAbility(str).then((data) => {
+          console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
+        }).catch((error) => {
+          wrong = error;
+          console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
         });
+        expect(wrong.code).assertEqual(13);
+      }, 2000)
+      console.info("------------end FreeInstall_FA_Local_StartAbility_1900-------------");
+      done();
+    });
 
-        afterEach(async function (done) {
-            console.info("StartAbilityTest after each called");
-            if ("FreeInstall_FA_Local_StartAbility_2000" === TAG) {
-                var cmd4 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
-                delegator.executeShellCommand(cmd4, (err: any, d: any) => {
-                    console.info("executeShellCommand4 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-                })
-                await sleep(500);
-            }
-
-            if ("FreeInstall_FA_Local_StartAbility_2500" === TAG) {
-                var cmd5 = "bm uninstall -n com.ohos.hag.famanager";
-                delegator.executeShellCommand(cmd5, (err: any, d: any) => {
-                    console.info("executeShellCommand5 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-                })
-            }
-            await sleep(500);
-            done();
+    /*
+     * @tc.number  FreeInstall_FA_Local_StartAbility_2000
+     * @tc.name    The current service is not in the foreground. Page a jumps to page B first.
+                    The atomized HAP package has been installed
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("FreeInstall_FA_Local_StartAbility_2000", 0, async function (done) {
+      console.info("------------start FreeInstall_FA_Local_StartAbility_2000-------------");
+      TAG = "FreeInstall_FA_Local_StartAbility_2000";
+      var cmd2000 = "bm install -p data/test/AtomizationFaEntry.hap";
+      delegator.executeShellCommand(cmd2000, (err: any, d: any) => {
+        console.info("executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      await sleep(500);
+      let wrong;
+      var str1 = {
+        'want': {
+          "bundleName": "com.open.harmony.startAbility",
+          "abilityName": "com.open.harmony.startAbility.PageAbility",
+          "moduleName": "entry",
+        }
+      }
+      featureAbility.startAbility(str1)
+        .then((data) => {
+          console.info(TAG + ' StartAbility successful. Promise Data: ' + JSON.stringify(data))
+        }).catch((error) => {
+          console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
+        })
+      setTimeout(async () => {
+        var str = {
+          'want': {
+            "bundleName": "com.example.qianyiyingyong.hmservice",
+            "abilityName": "com.example.qianyiyingyong.MainAbility",
+            "moduleName": "entry",
+            "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND
+          }
+        }
+        await featureAbility.startAbility(str).then((data) => {
+          console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
+        }).catch((error) => {
+          wrong = error;
+          console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
         });
+        await sleep(2000);
+        expect(wrong.code).assertEqual(13);
+      }, 2000)
+      console.info("------------end FreeInstall_FA_Local_StartAbility_2000-------------");
+      done();
+    });
 
-        /*
-         * @tc.number  FreeInstall_FA_Local_StartAbility_1900
-         * @tc.name    The current service is not in the foreground. Page a jumps to page B first.
-                        There are HAP packages that need not be installed under the specified path
-         * @tc.desc    Function test
-         * @tc.level   0
-         */
-        it("FreeInstall_FA_Local_StartAbility_1900", 0, async function (done) {
-            console.info("------------start FreeInstall_FA_Local_StartAbility_1900-------------");
-            TAG = "FreeInstall_FA_Local_StartAbility_1900";
-            let wrong;
-            var str1 = {
-                'want': {
-                    "bundleName": "com.open.harmony.startAbility",
-                    "abilityName": "com.open.harmony.startAbility.PageAbility",
-                    "moduleName": "entry",
-                }
-            }
-            featureAbility.startAbility(str1)
-                .then((data) => {
-                    console.info(TAG + ' StartAbility successful. Promise Data: ' + JSON.stringify(data))
-                }).catch((error) => {
-                console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
-            })
-            await sleep(3000);
-            var str = {
-                'want': {
-                    "bundleName": "com.example.qianyiyingyong.hmservice",
-                    "abilityName": "com.example.qianyiyingyong.MainAbility",
-                    "moduleName": "entry",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND
-                }
-            }
-            await featureAbility.startAbility(str).then((data) => {
-                console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
-            }).catch((error) => {
-                wrong = error;
-                console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-            });
-            await sleep(2000);
-            expect(wrong.code).assertEqual(13);
-            console.info("------------end FreeInstall_FA_Local_StartAbility_1900-------------");
-            done();
+    /*
+     * @tc.number  FreeInstall_FA_Local_StartAbility_2500
+     * @tc.name    FA Service Center installation free timeout
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("FreeInstall_FA_Local_StartAbility_2500", 0, async function (done) {
+      console.info("------------start FreeInstall_FA_Local_StartAbility_2500-------------");
+      TAG = "FreeInstall_FA_Local_StartAbility_2500";
+      var cmd2500 = "bm uninstall -n com.ohos.hag.famanager";
+      delegator.executeShellCommand(cmd2500, (err: any, d: any) => {
+        console.info("executeShellCommand2500 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      var cmd2501 = "bm install -p data/test/MockServiceTimeout.hap";
+      delegator.executeShellCommand(cmd2501, (err: any, d: any) => {
+        console.info("executeShellCommand2501 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      var cmd2502 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
+      delegator.executeShellCommand(cmd2502, (err: any, d: any) => {
+        console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      var cmd2503 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
+      delegator.executeShellCommand(cmd2503, (err: any, d: any) => {
+        console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      var cmd2504 = "cp data/test/AtomizationFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps" +
+        "/entry/files";
+      delegator.executeShellCommand(cmd2504, (err: any, d: any) => {
+        console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      setTimeout(async () => {
+        let wrong;
+        var str = {
+          'want': {
+            "bundleName": "com.example.qianyiyingyong.hmservice",
+            "abilityName": "com.example.qianyiyingyong.MainAbility",
+            "moduleName": "entry",
+            "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+          }
+        }
+        featureAbility.startAbility(str).then((data) => {
+          console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
+        }).catch((error) => {
+          wrong = error;
+          console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
         });
+        await sleep(35000);
+        expect(wrong.code).assertEqual(3);
+      }, 2000)
+      console.info("------------end FreeInstall_FA_Local_StartAbility_2500-------------");
+      done();
+    });
 
-        /*
-         * @tc.number  FreeInstall_FA_Local_StartAbility_2000
-         * @tc.name    The current service is not in the foreground. Page a jumps to page B first.
-                        The atomized HAP package has been installed
-         * @tc.desc    Function test
-         * @tc.level   0
-         */
-        it("FreeInstall_FA_Local_StartAbility_2000", 0, async function (done) {
-            console.info("------------start FreeInstall_FA_Local_StartAbility_2000-------------");
-            TAG = "FreeInstall_FA_Local_StartAbility_2000";
-            var cmd2000 = "bm install -p data/test/AtomizationFaEntry.hap";
-            delegator.executeShellCommand(cmd2000, (err: any, d: any) => {
-                console.info("executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            let wrong;
-            var str1 = {
-                'want': {
-                    "bundleName": "com.open.harmony.startAbility",
-                    "abilityName": "com.open.harmony.startAbility.PageAbility",
-                    "moduleName": "entry",
-                }
-            }
-            featureAbility.startAbility(str1)
-                .then((data) => {
-                    console.info(TAG + ' StartAbility successful. Promise Data: ' + JSON.stringify(data))
-                }).catch((error) => {
-                console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
-            })
-            await sleep(3000);
-            var str = {
-                'want': {
-                    "bundleName": "com.example.qianyiyingyong.hmservice",
-                    "abilityName": "com.example.qianyiyingyong.MainAbility",
-                    "moduleName": "entry",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND
-                }
-            }
-            await featureAbility.startAbility(str).then((data) => {
-                console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
-            }).catch((error) => {
-                wrong = error;
-                console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-            });
-            await sleep(2000);
-            expect(wrong.code).assertEqual(13);
-            console.info("------------end FreeInstall_FA_Local_StartAbility_2000-------------");
-            await sleep(2000);
-            done();
-        });
-
-        /*
-         * @tc.number  FreeInstall_FA_Local_StartAbility_2500
-         * @tc.name    FA Service Center installation free timeout
-         * @tc.desc    Function test
-         * @tc.level   0
-         */
-        it("FreeInstall_FA_Local_StartAbility_2500", 0, async function (done) {
-            console.info("------------start FreeInstall_FA_Local_StartAbility_2500-------------");
-            TAG = "FreeInstall_FA_Local_StartAbility_2500";
-            var cmd2500 = "bm uninstall -n com.ohos.hag.famanager";
-            delegator.executeShellCommand(cmd2500, (err: any, d: any) => {
-                console.info("executeShellCommand2500 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            var cmd2501 = "bm install -p data/test/MockServiceTimeout.hap";
-            delegator.executeShellCommand(cmd2501, (err: any, d: any) => {
-                console.info("executeShellCommand2501 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            var cmd2502 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
-            delegator.executeShellCommand(cmd2502, (err: any, d: any) => {
-                console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            var cmd2503 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-            delegator.executeShellCommand(cmd2503, (err: any, d: any) => {
-                console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            var cmd2504 = "cp data/test/AtomizationFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps" +
-            "/entry/files";
-            delegator.executeShellCommand(cmd2504, (err: any, d: any) => {
-                console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            let wrong;
-            var str = {
-                'want': {
-                    "bundleName": "com.example.qianyiyingyong.hmservice",
-                    "abilityName": "com.example.qianyiyingyong.MainAbility",
-                    "moduleName": "entry",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-                }
-            }
-            featureAbility.startAbility(str).then((data) => {
-                console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
-            }).catch((error) => {
-                wrong = error;
-                console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-            });
-            await sleep(35000);
-            expect(wrong.code).assertEqual(3);
-            console.info("------------end FreeInstall_FA_Local_StartAbility_2500-------------");
-            done();
-        });
-
-        console.info("-------------FA model--> startAbilityXTS Test end----------------")
-    })
+    console.info("-------------FA model--> startAbilityXTS Test end----------------")
+  })
 }

@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import account_appAccount from '@ohos.account.appAccount';
+import featureAbility from '@ohos.ability.featureAbility'
 
 export default {
     data: {
@@ -19,5 +21,37 @@ export default {
     },
     onInit() {
         this.title = this.$t('strings.world');
+    },
+    onShow() {
+        console.info('====>ServiceAbility onStart');
+        var accountMgr = account_appAccount.createAppAccountManager();        
+        accountMgr.createAccount("zhangsan", async(data)=>{
+            console.info('====>ServiceAbility addAccount 01 onStart');
+            console.info('====>ServiceAbility setAppAccess actsaccounttest zhangsan');
+            await accountMgr.setAppAccess("zhangsan", "com.example.actsaccounttest", true);
+            console.info('====>ServiceAbility setAppAccess actsaccountoperatetest zhangsan');
+            await accountMgr.setAppAccess("zhangsan", "com.example.actsaccountoperatetest", true);
+            console.info('====>ServiceAbility lcc addAccount 02 onStart');
+            accountMgr.createAccount("lisi", async (err)=>{
+                console.info('====>ServiceAbility setAppAccess actsaccounttest lisi');
+                await accountMgr.setAppAccess("lisi", "com.example.actsaccounttest", true);
+                console.info('====>ServiceAbility setAppAccess actsaccountoperatetest lisi');
+                await accountMgr.setAppAccess("lisi", "com.example.actsaccountoperatetest", true);
+                console.info('====>ServiceAbility lcc addAccount 03 onStart');
+                accountMgr.createAccount("wangwu", async (err)=>{
+                    console.info('====>ServiceAbility lcc enableAppAccess 03 onStart');
+                    console.info('====>ServiceAbility setAppAccess actsaccounttest wangwu');
+                    await accountMgr.setAppAccess("wangwu", "com.example.actsaccounttest", true)
+                    console.info('====>ServiceAbility setAppAccess actsaccountoperatetest wangwu');
+                    accountMgr.setAppAccess("wangwu", "com.example.actsaccountoperatetest", true, (err)=>{
+                        featureAbility.terminateSelf();
+                        console.info('====>ServiceAbility add end');
+                    });
+                });
+            });
+        });
+        console.info('====>ServiceAbility onStart end');
+    },
+    onReady() {
     },
 }

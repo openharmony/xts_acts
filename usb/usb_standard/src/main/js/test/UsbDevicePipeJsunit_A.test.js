@@ -427,7 +427,7 @@ describe('UsbDevicePipeJsFunctionsTestA', function () {
       expect(true).assertTrue();
     }).catch(error => {
       console.info('usb controlTransfer error : ' + JSON.stringify(error));
-      console.info('usb' + caseName + ':  PASS');
+      console.info('usb' + caseName + ':  FAILED');
       expect(false).assertTrue();
     });
     CheckEmptyUtils.sleep(3000);
@@ -508,7 +508,7 @@ describe('UsbDevicePipeJsFunctionsTestA', function () {
   /**
    * @tc.number    : SUB_USB_JS_0570
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 GetInterface: cmd 8 reqType 129 value 0 index 1
+   * @tc.desc      : 控制传输 GetInterface: cmd 10 reqType 129 value 0 index 1
    */
   it('SUB_USB_JS_0570', 0, function () {
     console.info('usb SUB_USB_JS_0570 begin');
@@ -580,7 +580,7 @@ describe('UsbDevicePipeJsFunctionsTestA', function () {
   /**
    * @tc.number    : SUB_USB_JS_0600
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 3 value 512 index 0
+   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 34 value 512 index 0
    */
    it('SUB_USB_JS_0600', 0, function () {
     console.info('usb SUB_USB_JS_0600 begin');
@@ -604,7 +604,7 @@ describe('UsbDevicePipeJsFunctionsTestA', function () {
   /**
    * @tc.number    : SUB_USB_JS_0610
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 5 value 512 index 0
+   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 67 value 512 index 0
    */
     it('SUB_USB_JS_0610', 0, function () {
       console.info('usb SUB_USB_JS_0610 begin');
@@ -628,7 +628,7 @@ describe('UsbDevicePipeJsFunctionsTestA', function () {
   /**
    * @tc.number    : SUB_USB_JS_0620
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 4 value 0 index 0
+   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 35 value 0 index 0
    */
       it('SUB_USB_JS_0620', 0, function () {
         console.info('usb SUB_USB_JS_0620 begin');

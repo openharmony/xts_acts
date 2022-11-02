@@ -19,6 +19,8 @@
     "mainAbility": "com.acts.ace.napitest.MainAbility",
 
     "deviceType": [
+      "tablet",
+      "default",
       "phone"
     ],
     "distro": {

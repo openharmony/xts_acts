@@ -17,6 +17,8 @@
         "package": "com.example.accessiblesendevent",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

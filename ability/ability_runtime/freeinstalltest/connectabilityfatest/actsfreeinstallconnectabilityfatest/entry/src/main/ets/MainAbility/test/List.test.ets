@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ConnectAbilityTest1 from './ConnectAbilityTest1'
-import ConnectAbilityTest from './ConnectAbilityTest'
 import connectAbilityTest_PA from './connectAbilityTest_PA'
+import ConnectAbilityTest from './ConnectAbilityTest'
+import ConnectAbilityTest1 from './ConnectAbilityTest1'
+
 
 export default function testsuite() {
-  ConnectAbilityTest1();
-  ConnectAbilityTest();
-  connectAbilityTest_PA();
-
+    connectAbilityTest_PA();
+    ConnectAbilityTest();
+    ConnectAbilityTest1();
 }

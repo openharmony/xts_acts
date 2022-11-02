@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+import enterpriseDeviceManager from '@ohos.enterpriseDeviceManager'
+
 const WANT1 = {
     bundleName: "com.example.extensionzerotest",
     abilityName: "com.example.extensionzerotest.EnterpriseAdminAbility"
@@ -39,7 +41,13 @@ const DEFAULT_USER_ID = 100;
 const TEST_USER_ID = 101;
 const ERR_USER_ID = 102;
 
+const SUBSCRIBE_EVENTS: Array<enterpriseDeviceManager.ManagedEvent> = [
+    enterpriseDeviceManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED,
+    enterpriseDeviceManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED
+];
+const SUBSCRIBE_INVALID_EVENTS: Array<number> = [20,21];
+
 export {
     WANT1, ENTINFO1, SELFWANT, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2, ENTINFO2,
-    DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID
+    DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS
 }

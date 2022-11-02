@@ -1956,10 +1956,10 @@ describe('singleKvStorePromiseTest', function () {
      * @tc.name [JS-API8]SingleKvStoreRemoveDeviceData.
      * @tc.desc Test Js Api SingleKvStoreRemoveDeviceData testcase 003
      */
-    it('testSingleKvStoreRemoveDeviceData003', 0, async function (done) {
+     it('testSingleKvStoreRemoveDeviceData003', 0, async function (done) {
         console.info('testSingleKvStoreRemoveDeviceData003');
         try {
-            await kvStore.removeDeviceData('').then((err) => {
+            await kvStore.removeDeviceData('').then((data) => {
                 console.info('testSingleKvStoreRemoveDeviceData003 removeDeviceData success');
                 expect(null).assertFail();
             }).catch((err) => {
@@ -1970,6 +1970,7 @@ describe('singleKvStorePromiseTest', function () {
         }
         done();
     })
+
 
     /**
      * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_REMOVEDEVICEDATA_0400

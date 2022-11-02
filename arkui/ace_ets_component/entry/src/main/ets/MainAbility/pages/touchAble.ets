@@ -22,25 +22,6 @@ import events_emitter from '@ohos.events.emitter';
 struct TouchAbleExample {
   @State text1: string = '';
   @State text2: string = '';
-  @State touchableValue: boolean = false;
-  private stateChangCallBack = (eventData) => {
-    console.info("[TouchAble] page stateChangCallBack");
-    if (eventData != null) {
-      console.info("[TouchAble] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.touchableValue != null) {
-        this.touchableValue = eventData.data.touchableValue;
-      }
-    }
-  }
-
-  onPageShow() {
-    console.info('[TouchAble] page show called');
-    var stateChangeEvent = {
-      eventId: 44,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-  }
 
   build() {
     Stack() {
@@ -52,6 +33,7 @@ struct TouchAbleExample {
           console.info(this.text1 = 'Rect Clicked')
         })
         .overlay(this.text1, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
+
       Ellipse()
         .fill(Color.Pink)
         .width(150)

@@ -20,22 +20,18 @@ import config from '@ohos.accessibility.config'
 export { };
 const LOG: string = "[xtsLog]";
 
-const CaptionConfiguration_0010 = () => {
-  const caseName = "CaptionConfiguration_0010"
+const CaptionConfiguration_0270 = () => {
+  const caseName = "CaptionConfiguration_0270"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  let before = captionsManager.enabled;
-  console.info(logTag + "captionsManager before modification. enabled=" + before);
-  captionsManager.enabled = !captionsManager.enabled;
-  let after = captionsManager.enabled;
-  console.info(logTag + "captionsManager after modification. enabled=" + after);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captions.get().then((res) => {
+    console.info(logTag + "Config before modification. enabled=" + res);
+    config.captions.set(!res).then(() => {
+      console.info(logTag + "Config after modification. enabled=" + !res);
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "caption set err=" + JSON.stringify(err));
+    });
+  });
 }
 
 const printCaptionsManagerStyle = (logTag, captionsManager) => {
@@ -75,209 +71,237 @@ const foreachList = (currValue, array) => {
   return result;
 }
 
-const CaptionConfiguration_0020 = () => {
-  const caseName = "CaptionConfiguration_0020"
+const CaptionConfiguration_0280 = () => {
+  const caseName = "CaptionConfiguration_0280"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  captionsManager.style.fontFamily = foreachList(captionsManager.style.fontFamily, ['default', 'monospacedSerif', 'serif',
-    'monospacedSansSerif', 'sansSerif', 'casual', 'cursive', 'smallCapitals']);
-  const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
-
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
+    }
+    var captionsStyle = res;
+    printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+    captionsStyle.fontFamily = foreachList(res.fontFamily, ['default', 'monospacedSerif', 'serif',
+      'monospacedSansSerif', 'sansSerif', 'casual', 'cursive', 'smallCapitals']);
+    printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+    config.captionsStyle.set(captionsStyle).then(() => {
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+    });
+  })
 };
 
-const CaptionConfiguration_0030 = () => {
-  const caseName = "CaptionConfiguration_0030"
+const CaptionConfiguration_0290 = () => {
+  const caseName = "CaptionConfiguration_0290"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  let before = (captionsManager.enabled);
-  console.info(logTag + "captionsManager before modification. enabled=" + before);
-  captionsManager.enabled = !captionsManager.enabled;
-  let after = captionsManager.enabled;
-  console.info(logTag + "captionsManager after modification. enabled=" + after);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captions.get().then((res) => {
+    console.info(logTag + "Config before modification. enabled=" + res);
+    config.captions.set(!res).then(() => {
+      console.info(logTag + "Config after modification. enabled=" + !res);
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "caption set err=" + JSON.stringify(err));
+    });
+  });
 }
 
-const CaptionConfiguration_0040 = () => {
-  const caseName = "CaptionConfiguration_0040"
+const CaptionConfiguration_0300 = () => {
+  const caseName = "CaptionConfiguration_0300"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  captionsManager.style.fontFamily = foreachList(captionsManager.style.fontFamily, ['default', 'monospacedSerif', 'serif',
-    'monospacedSansSerif', 'sansSerif', 'casual', 'cursive', 'smallCapitals']);
-  const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
+    }
+    var captionsStyle = res;
+    printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+    captionsStyle.fontFamily = foreachList(res.fontFamily, ['default', 'monospacedSerif', 'serif',
+      'monospacedSansSerif', 'sansSerif', 'casual', 'cursive', 'smallCapitals']);
+    printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+    config.captionsStyle.set(captionsStyle).then(() => {
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+    });
+  })
 };
 
-const CaptionConfiguration_0050 = () => {
-  const caseName = "CaptionConfiguration_0050"
+const CaptionConfiguration_0310 = () => {
+  const caseName = "CaptionConfiguration_0310"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  captionsManager.style.fontFamily = foreachList(captionsManager.style.fontFamily, ['default', 'monospacedSerif', 'serif',
-    'monospacedSansSerif', 'sansSerif', 'casual', 'cursive', 'smallCapitals']);
-  const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
+    }
+    var captionsStyle = res;
+    printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+    captionsStyle.fontFamily = foreachList(res.fontFamily, ['default', 'monospacedSerif', 'serif',
+      'monospacedSansSerif', 'sansSerif', 'casual', 'cursive', 'smallCapitals']);
+    printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+    config.captionsStyle.set(captionsStyle).then(() => {
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+    });
+  })
 };
 
-const CaptionConfiguration_0060 = () => {
-  const caseName = "CaptionConfiguration_0060"
+const CaptionConfiguration_0320 = () => {
+  const caseName = "CaptionConfiguration_0320"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  captionsManager.style.fontScale = (captionsManager.style.fontScale ?? 0) + 1;
-  const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
+    }
+    var captionsStyle = res;
+    printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+    captionsStyle.fontScale = (res.fontScale ?? 0) + 1;
+    printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+    config.captionsStyle.set(captionsStyle).then(() => {
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+    });
+  })
 };
 
-const CaptionConfiguration_0070 = () => {
-  const caseName = "CaptionConfiguration_0070"
+const CaptionConfiguration_0330 = () => {
+  const caseName = "CaptionConfiguration_0330"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  captionsManager.style.fontColor = foreachList(captionsManager.style.fontColor, ['red', 'yellow', 'blue', '#ff0000ff', '##ff000000', 'black', 'white']);
-  const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
+    }
+    var captionsStyle = res;
+    printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+    captionsStyle.fontColor = foreachList(res.fontColor, ['red', 'yellow', 'blue', '#FFFFFF', '#000000', 'black', 'white']);
+    printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+    config.captionsStyle.set(captionsStyle).then(() => {
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+    });
+  })
 };
 
-const CaptionConfiguration_0080 = () => {
-  const caseName = "CaptionConfiguration_0080"
+const CaptionConfiguration_0340 = () => {
+  const caseName = "CaptionConfiguration_0340"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  captionsManager.style.fontEdgeType = foreachList(captionsManager.style.fontEdgeType, ['none', 'raised', 'depressed', 'uniform', 'dropShadow']);
-  const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
+    }
+    var captionsStyle = res;
+    printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+    captionsStyle.fontEdgeType = foreachList(res.fontEdgeType, ['none', 'raised', 'depressed', 'uniform', 'dropShadow']);
+    printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+    config.captionsStyle.set(captionsStyle).then(() => {
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+    });
+  })
 };
 
 const CaptionConfiguration_0090 = () => {
   const caseName = "CaptionConfiguration_0090"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  captionsManager.style.backgroundColor = foreachList(captionsManager.style.backgroundColor, ['red', 'yellow', 'blue', '#ff0000ff', '##ff000000', 'black', 'white']);
-  const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
+    }
+    var captionsStyle = res;
+    printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+    captionsStyle.backgroundColor = foreachList(res.backgroundColor, ['red', 'yellow', 'blue', '#ff0000ff', '#ff000000', '#00000000', '#f0000000', 'black', 'white']);
+    printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+    config.captionsStyle.set(captionsStyle).then(() => {
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+    });
+  })
 };
 
 const CaptionConfiguration_0100 = () => {
   const caseName = "CaptionConfiguration_0100"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  captionsManager.style.windowColor = foreachList(captionsManager.style.windowColor, ['red', 'yellow', 'blue', '#ff0000ff', '#ff000000', 'black', 'white']);
-  const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
+    }
+    var captionsStyle = res;
+    printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+    captionsStyle.windowColor = foreachList(res.windowColor, ['red', 'yellow', 'blue', '#ff0000ff', '#ff000000', '#00000000', '#f0000000', 'black', 'white']);
+    printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+    config.captionsStyle.set(captionsStyle).then(() => {
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+    });
+  })
 };
 
 const CaptionConfiguration_0110 = () => {
   const caseName = "CaptionConfiguration_0110"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  for (let index = 0; index < 3; index++) {
-    printCaptionsManagerStyle(logTag + "captionsManager before modification. times=" + index + ". style=", captionsManager);
-    captionsManager.style.windowColor = foreachList(captionsManager.style.windowColor, ['red', 'yellow', 'blue', '#ff0000ff', '#ff000000', '#00000000', '#f0000000', 'black', 'white']);
-    printCaptionsManagerStyle(logTag + "captionsManager after modification. times=" + index + ". style=", captionsManager);
-  }
-  setTimeout(() => {
-    const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-    if (before != after) {
-      commonEventPublishOnTargetChangeExtra(caseName);
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
     }
-  }, 2000)
-
+    var captionsStyle = res;
+    for (let index = 0; index < 3; index++) {
+      printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+      captionsStyle.windowColor = foreachList(res.windowColor, ['red', 'yellow', 'blue', '#ff0000ff', '#ff000000', '#00000000', '#f0000000', 'black', 'white']);
+      printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+      config.captionsStyle.set(captionsStyle).then(() => {
+        commonEventPublishOnTargetChangeExtra(caseName);
+      }).catch((err) => {
+        console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+      });
+    }
+  })
 };
 
 const CaptionConfiguration_0120 = () => {
   const caseName = "CaptionConfiguration_0120"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = console.info(logTag + "captionsManager before modification. enabled=" + captionsManager.enabled);
-  captionsManager.enabled = undefined;
-  const after = console.info(logTag + "captionsManager after modification. enabled=" + captionsManager.enabled);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captions.get().then((res) => {
+    console.info(logTag + "Config before modification. enabled=" + res);
+    config.captions.set(!res).then(() => {
+      console.info(logTag + "Config after modification. enabled=" + !res);
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "caption set err=" + JSON.stringify(err));
+    });
+  });
 };
 
 const CaptionConfiguration_0130 = () => {
   const caseName = "CaptionConfiguration_0130"
   const logTag = LOG + caseName;
-  let captionsManager = accessibility.getCaptionsManager();
-  if (!captionsManager) {
-    console.info(logTag + "captionsManager is undefined");
-    return;
-  }
-  const before = printCaptionsManagerStyle(logTag + "captionsManager before modification. style=", captionsManager);
-  captionsManager.style.fontEdgeType = undefined;
-  const after = printCaptionsManagerStyle(logTag + "captionsManager after modification. style=", captionsManager);
-  if (before != after) {
-    commonEventPublishOnTargetChangeExtra(caseName);
-  }
+  config.captionsStyle.get().then((res) => {
+    if (!res) {
+      console.info(logTag + "captionsStyle is undefined");
+      return;
+    }
+    var captionsStyle = res;
+    printCaptionStyle(logTag + "captionsStyle before modification. style=", JSON.stringify(res));
+    captionsStyle.fontEdgeType = undefined;
+    printCaptionStyle(logTag + "captionsStyle after modification. style=", JSON.stringify(captionsStyle));
+    config.captionsStyle.set(captionsStyle).then(() => {
+      commonEventPublishOnTargetChangeExtra(caseName);
+    }).catch((err) => {
+      console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
+    });
+  })
 };
 
 const CaptionConfiguration_0140 = () => {
@@ -490,8 +514,6 @@ const CaptionConfiguration_0240 = () => {
         console.info(logTag + "captionsStyle fontFamily set err=" + JSON.stringify(err));
       });
     }
-
-
   })
 };
 
@@ -527,29 +549,29 @@ const commonEventPublishOnTargetChangeExtra = (caseName) => {
 
 const excuteAbility = (data) => {
   switch (data) {
-    case "CaptionConfiguration_0010" + "_AccessibilityApp_start":
-      CaptionConfiguration_0010()
+    case "CaptionConfiguration_0270" + "_AccessibilityApp_start":
+      CaptionConfiguration_0270()
       break;
-    case "CaptionConfiguration_0020" + "_AccessibilityApp_start":
-      CaptionConfiguration_0020()
+    case "CaptionConfiguration_0280" + "_AccessibilityApp_start":
+      CaptionConfiguration_0280()
       break;
-    case "CaptionConfiguration_0030" + "_AccessibilityApp_start":
-      CaptionConfiguration_0030()
+    case "CaptionConfiguration_0290" + "_AccessibilityApp_start":
+      CaptionConfiguration_0290()
       break;
-    case "CaptionConfiguration_0040" + "_AccessibilityApp_start":
-      CaptionConfiguration_0040()
+    case "CaptionConfiguration_0300" + "_AccessibilityApp_start":
+      CaptionConfiguration_0300()
       break;
-    case "CaptionConfiguration_0050" + "_AccessibilityApp_start":
-      CaptionConfiguration_0050()
+    case "CaptionConfiguration_0310" + "_AccessibilityApp_start":
+      CaptionConfiguration_0310()
       break;
-    case "CaptionConfiguration_0060" + "_AccessibilityApp_start":
-      CaptionConfiguration_0060()
+    case "CaptionConfiguration_0320" + "_AccessibilityApp_start":
+      CaptionConfiguration_0320()
       break;
-    case "CaptionConfiguration_0070" + "_AccessibilityApp_start":
-      CaptionConfiguration_0070()
+    case "CaptionConfiguration_0330" + "_AccessibilityApp_start":
+      CaptionConfiguration_0330()
       break;
-    case "CaptionConfiguration_0080" + "_AccessibilityApp_start":
-      CaptionConfiguration_0080()
+    case "CaptionConfiguration_0340" + "_AccessibilityApp_start":
+      CaptionConfiguration_0340()
       break;
     case "CaptionConfiguration_0090" + "_AccessibilityApp_start":
       CaptionConfiguration_0090()
@@ -589,12 +611,6 @@ const excuteAbility = (data) => {
       break;
     case "CaptionConfiguration_0210" + "_AccessibilityApp_start":
       CaptionConfiguration_0210()
-      break;
-    case "CaptionConfiguration_0210" + "_AccessibilityApp_start":
-      CaptionConfiguration_0210()
-      break;
-    case "CaptionConfiguration_0220" + "_AccessibilityApp_start":
-      CaptionConfiguration_0220()
       break;
     case "CaptionConfiguration_0220" + "_AccessibilityApp_start":
       CaptionConfiguration_0220()

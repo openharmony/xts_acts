@@ -18,6 +18,7 @@ import AbilityConstant from "@ohos.application.AbilityConstant";
 import appManager from "@ohos.application.appManager";
 import wantConstant from '@ohos.ability.wantConstant';
 
+var INVALID_PARAM = 401
 var TAG
 export default function verificationTest(){
 
@@ -66,6 +67,8 @@ export default function verificationTest(){
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
+          expect().assertFail();
+          done();
         });
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
@@ -278,34 +281,34 @@ export default function verificationTest(){
     */
     it('SUB_AA_OpenHarmony_SetMissionLabel_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0100 ==>';
+      let label = undefined;
+      let code1 = 0;
+      let code2 = 0;
 
       try {
-        let label = undefined
-        let code1 = 0
-        let code2 = 0
-        globalThis.abilityContext.setMissionLabel(label).then((data) => {
+        await globalThis.abilityContext.setMissionLabel(label).then((data) => {
           console.info(TAG + "setMissionLabel data = " + JSON.stringify(data));
         }).catch((err) => {
           code1 = err.code
           console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
         });
+      } catch (err) {
+        console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
+        expect(err.code).assertEqual(INVALID_PARAM);
+      }
 
-        globalThis.abilityContext.setMissionLabel(label, (err, data) => {
+      try {
+        await globalThis.abilityContext.setMissionLabel(label, (err, data) => {
           code2 = err.code
           console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
           console.info(TAG + "setMissionLabel data = " + JSON.stringify(data));
         })
-
-        setTimeout(()=>{
-          expect(code1).assertEqual(-1);
-          expect(code2).assertEqual(-1);
-          done()
-        }, 3000)
       } catch (err) {
-        console.info(TAG + "catch err = " + JSON.stringify(err));
-        expect().assertFail();
-        done();
+        console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
+        expect(err.code).assertEqual(INVALID_PARAM);
       }
+
+      done();
     })
 
     /*

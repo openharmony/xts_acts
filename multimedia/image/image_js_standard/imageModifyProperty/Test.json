@@ -19,7 +19,7 @@
             "type": "ShellKit",
             "run-command": [
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/haps/entry/files/",
-                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/haps/entry/files/*"
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/haps/entry/files/*"
             ],
             "teardown-command":[
 
@@ -40,7 +40,8 @@
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/haps/entry/files/test_exif.jpg"
             ],
             "teardown-command": [
-                "rm -rf /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/*"
+                "rm -rf /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/haps/entry/files/*",
+                "hilog -b X"
             ]
         }
     ]

@@ -16,6 +16,8 @@
         "package": "ohos.acts.resourceschedule.deviceusagestatisticsjsunit.js.function",
         "name": ".entry",
         "deviceType": [
+      "tablet",
+      "default",
             "phone"
         ],
         "distro": {

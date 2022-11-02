@@ -42,7 +42,6 @@ struct Index {
     @State imageAccess:boolean=true
     @State geolocationAccess:boolean=true
     @State onlineImageAccess:boolean=true
-    @State fileFromUrlAccess:boolean=true
     @State databaseAccess:boolean=true
     @State overviewModeAccess:boolean=false
     @State initialScale:number=100
@@ -55,6 +54,7 @@ struct Index {
     @State cacheError:boolean=false
     @State mixedSwitch:boolean=false
     @State mixedAllSwitch:boolean=false
+    @State overViewFalseHeight:number=0
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -100,7 +100,6 @@ struct Index {
             .domStorageAccess(this.domStorageAccess)
             .geolocationAccess(this.geolocationAccess)
             .onlineImageAccess(this.onlineImageAccess)
-            .fileFromUrlAccess(this.fileFromUrlAccess)
             .databaseAccess(this.databaseAccess)
             .cacheMode(this.cacheMode)
             .initialScale(this.initialScale)
@@ -207,6 +206,28 @@ struct Index {
                     this.geoShow=false
                 }
             })
+            .onBlur(()=>{
+                console.info("onBlur==>") 
+                this.controller.requestFocus()
+            })
+            TextInput({placeholder:"inputs your words"})
+            .key('textInput')
+            .type(InputType.Normal)
+            .placeholderColor(Color.Blue)
+            .placeholderFont({size:20,weight:FontWeight.Normal,family:"sans-serif",style:FontStyle.Normal})
+            .enterKeyType(EnterKeyType.Next)
+            .caretColor(Color.Green)
+            .height(60)
+            .fontSize(30)
+            .fontWeight(FontWeight.Bold)
+            .fontFamily("cursive")
+            .fontStyle(FontStyle.Italic)
+            .fontColor(Color.Red)
+            .maxLength(20)
+            .border({width:1,color:0x317AF7,radius:10,style:BorderStyle.Solid})
+            .onClick(()=>{
+                console.info("TextInput click")
+            })
             Row(){
                 Button("web click").key('webcomponent').onClick(async ()=>{
                     console.info("key==>"+this.str)
@@ -301,7 +322,8 @@ struct Index {
                         }
                         case "emitGetRequestFocus":{
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/second.html"})
-                            this.controller.requestFocus()
+                            await Utils.sleep(2000)
+                            sendEventByKey('textInput',10,'')
                             break;
                         }
                         case "emitAccessBackward":{
@@ -448,30 +470,6 @@ struct Index {
                             },3000)
                             break;
                         }
-                        case "emitFileFromUrlAccessFalse":{
-                            this.fileFromUrlAccess=false
-                            await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/fileFromUrlAccess.html"})
-                            setTimeout(()=>{
-                                this.controller.runJavaScript({script:"getFileResult()",callback:(res)=>{
-				                    console.info("getFileResult==>"+res)
-                                    Utils.emitEvent(res,160)
-                                }})
-                            },3000)
-                            break;
-                        }
-                        case "emitFileFromUrlAccessTrue":{
-                            this.fileFromUrlAccess=true
-                            await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/fileFromUrlAccess.html"})
-                            setTimeout(()=>{
-                                this.controller.runJavaScript({script:"getFileResult()",callback:(res)=>{
-				                    console.info("getFileResult==>"+res)
-                                    Utils.emitEvent(res,162)
-                                }})
-                            },3000)
-                            break;
-                        }
                         case "emitDatabaseAccessTrue":{
                             this.databaseAccess=true
                             await Utils.sleep(2000)
@@ -489,9 +487,11 @@ struct Index {
                             await Utils.sleep(1000)
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"})
                             setTimeout(()=>{
+                                let webPageHeight=this.controller.getPageHeight()
                                 this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
+                                    this.overViewFalseHeight=parseInt(res)
 				                    console.info("getViewResult==>"+res)
-                                    Utils.emitEventTwo(1150,res,168)
+                                    Utils.emitEventTwo(webPageHeight,res,168)
                                 }})
                             },3000)
                             break;
@@ -503,7 +503,7 @@ struct Index {
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
 				                    console.info("getViewResult==>"+res)
-                                    Utils.emitEventTwo(2350,res,170)
+                                    Utils.emitEventTwo(this.overViewFalseHeight,parseInt(res),170)
                                 }})
                             },3000)
                             break;
@@ -596,9 +596,12 @@ struct Index {
                             break;
                         }
                         case "emitOnHttpErrorReceive":{                           
-                            this.controller.loadUrl({url:'http://example.com/path/does/not/exist/index.jsp'})
-                            setTimeout(()=>{     
-                                Utils.emitEvent(this.httpErrorReceive,66)                                                                                
+                            this.controller.loadUrl({url:'https://example1.com/path/does/not/exist/index.jsp'})
+                            setTimeout(()=>{
+                                this.controller.loadUrl({url:'https://example1.com/path/does/not/exist/index.jsp'})    
+                                setTimeout(()=>{     
+                                    Utils.emitEvent(this.httpErrorReceive,66)                                                                                
+                                },3000)
                             },3000)
                             break;
                         }
@@ -756,8 +759,11 @@ struct Index {
                             break;
                         }
                         case "emitGetCookieManager":{                                                                                 
-                            let getCookieManagerCalled = this.controller.getCookieManager().setCookie("https://weibo.com","a=b")
-                            Utils.emitEvent(getCookieManagerCalled,89)                                                              
+                            this.controller.getCookieManager().setCookie("https://weibo.com","a=b")
+                            setTimeout(()=>{    
+                                let getCookieManagerCalled =  this.controller.getCookieManager().getCookie('https://weibo.com')
+                                Utils.emitEvent(getCookieManagerCalled,89)                                                                                
+                            },3000)                                                                                     
                             break;
                         }
                         default:

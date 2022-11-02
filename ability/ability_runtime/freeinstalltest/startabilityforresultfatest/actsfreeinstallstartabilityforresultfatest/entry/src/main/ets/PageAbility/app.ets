@@ -16,19 +16,19 @@
 import featureAbility from '@ohos.ability.featureAbility';
 
 export default {
-  onCreate() {
-    console.info('Application onCreate')
-    setTimeout(function () {
-      featureAbility.terminateSelf()
-        .then((data) => {
-          console.info('PageAbility terminateself succeeded: ' + data);
-        }).catch((error) => {
-        console.error('PageAbility terminateself failed. Cause: ' + error);
-      })
-    }, 8000);
-  },
+    onCreate() {
+        console.info('Applicationfa onCreate')
+        setTimeout(async () => {
+            await featureAbility.terminateSelf()
+                .then((data) => {
+                    console.info('PageAbilityfa terminateself succeeded: ' + data);
+                }).catch((error) => {
+                    console.error('PageAbilityfa terminateself failed. Cause: ' + error);
+                })
+        }, 8000);
+    },
 
-  onDestroy() {
-    console.info('Application onDestroy')
-  },
+    onDestroy() {
+        console.info('Application onDestroy')
+    },
 }

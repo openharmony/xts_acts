@@ -23,7 +23,6 @@ import {
     VIDEO_TYPE,
     AUDIO_TYPE,
     FILE_TYPE,
-    checkPresetsAssets,
     nameFetchOps,
     checkAssetsCount,
     fetchOps,
@@ -37,7 +36,6 @@ export default function fileTestPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFile')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -78,6 +76,7 @@ export default function fileTestPromiseTest(abilityContext) {
                 await creatAsset2.close(creatAssetFd2);
                 await asset.close(fd);
                 expect(creatAsset1.id != creatAsset2.id).assertTrue();
+                console.info(`${testNum} displayName1: ${displayName1}, displayName2 :${displayName2} `);
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`)

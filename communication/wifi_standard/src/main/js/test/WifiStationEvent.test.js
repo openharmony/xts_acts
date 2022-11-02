@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import wifi from '@ohos.wifi'
 
+
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
 }
@@ -74,131 +75,96 @@ export default function actsWifiEventTest() {
 
         /**
         * @tc.number SUB_Communication_WiFi_Event_Test_0001
-        * @tc.name testwifiStateChange
+        * @tc.name testWifiStateChange
         * @tc.desc Test wifiStateChange callback
         * @tc.type Function
         * @tc.level Level 3
         */
         it('SUB_Communication_WiFi_Event_Test_0001', 0, async function (done) {
-            wifi.on('wifiStateChange', async result => {
-                console.info("[wifi_test]wifiStateChange callback, result:" + JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-                let promise = new Promise((resolve) => {
-                    wifi.off('wifiStateChange', result => {
-                        console.info("[wifi_test]offwifiStateChange callback, result: " + JSON.stringify(result));
-                        expect(true).assertEqual(result != null);
-                        resolve()
-                    });
-                })
-                await promise.then(done)
-            });
+            let wifiState = "wifiStateChange";
+            let wifiStateChangeCallback = result => {
+                console.info("[wifi_test]wifiStateChange callback, result: " + JSON.stringify(result));
+            }
+            wifi.on(wifiState, wifiStateChangeCallback);
+            await sleep(3000);
+            wifi.off(wifiState, wifiStateChangeCallback);
             done();
         })
 
         /**
         * @tc.number SUB_Communication_WiFi_Event_Test_0002
-        * @tc.name testwifiConnectionChange
+        * @tc.name testWifiConnectionChange
         * @tc.desc Test wifiConnectionChange callback
         * @tc.type Function
         * @tc.level Level 3
         */
         it('SUB_Communication_WiFi_Event_Test_0002', 0, async function (done) {
-            wifi.on('wifiConnectionChange', async result => {
-                console.info("[wifi_test]wifiConnectionChange callback, result:" + JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-                let promise = new Promise((resolve) => {
-                    console.info('[wifi_test] offwifiConnectionChange test start ...');
-                    wifi.off('wifiConnectionChange', result => {
-                        console.info("[wifi_test]offwifiConnectionChange callback result:" + JSON.stringify(result));
-                        expect(true).assertEqual(result != null);
-                        resolve()
-                    });
-                })
-                await promise.then(done)
-            });
+            let wifiConnectionState = "wifiConnectionChange";
+            let wifiConnectionChangeCallback = result => {
+                console.info("[wifi_test]wifiConnectionChange callback, result: " + JSON.stringify(result));
+            }
+            wifi.on(wifiConnectionState, wifiConnectionChangeCallback);
+            await sleep(3000);
+            wifi.off(wifiConnectionState, wifiConnectionChangeCallback);
             done();
         })
 
         /**
         * @tc.number SUB_Communication_WiFi_Event_Test_0003
-        * @tc.name testwifiScanStateChange
-        * @tc.desc Test Test wifiScanStateChange  callback
+        * @tc.name testWifiScanStateChange
+        * @tc.desc Test wifiScanStateChange  callback
         * @tc.type Function
         * @tc.level Level 3
         */
         it('SUB_Communication_WiFi_Event_Test_0003', 0, async function (done) {
-            wifi.on('wifiScanStateChange', async result => {
-                console.info("[wifi_test]wifiScanStateChange callback, result:" + JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-                let promise = new Promise((resolve) => {
-                    console.info('[wifi_test]offwifiScanStateChange test start ...');
-                    wifi.off('wifiScanStateChange', result => {
-                        console.info("[wifi_test]offwifiScanStateChange callback, result:" + JSON.stringify(result));
-                        expect(true).assertEqual(result != null);
-                        resolve()
-                    });
-                })
-                await promise.then(done)
-            });
+            let wifiScanState = "wifiScanStateChange";
+            let wifiScanStateChangeCallback = result => {
+                console.info("[wifi_test]wifiScanStateChange callback, result: " + JSON.stringify(result));
+            }
+            wifi.on(wifiScanState, wifiScanStateChangeCallback);
             let scanResult = wifi.scan();
             await sleep(3000);
+            wifi.off(wifiScanState, wifiScanStateChangeCallback);
             done();
         })
 
         /**
         * @tc.number SUB_Communication_WiFi_Event_Test_0004
-        * @tc.name testwifiRssiChange
+        * @tc.name testWifiRssiChange
         * @tc.desc Test wifiRssiChange callback
         * @tc.type Function
         * @tc.level Level 3
         */
         it('SUB_Communication_WiFi_Event_Test_0004', 0, async function (done) {
-            wifi.on('wifiRssiChange', async result => {
-                console.info("[wifi_test]wifiRssiChange callback, result:" + JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-                let promise = new Promise((resolve) => {
-                    console.info('[wifi_test] offwifiRssiChange test start ...');
-                    wifi.off('wifiRssiChange', result => {
-                        console.info("[wifi_test]offwifiRssiChange callback, result:" + JSON.stringify(result));
-                        expect(true).assertEqual(result != null);
-                        resolve()
-                    });
-                })
-                await promise.then(done)
-            });
+            let wifiRssiState = "wifiRssiChange";
+            let wifiRssiChangeCallback = result => {
+                console.info("[wifi_test]wifiRssiChange callback, result: " + JSON.stringify(result));
+            }
+            wifi.on(wifiRssiState, wifiRssiChangeCallback);
+            await sleep(3000);
+            wifi.off(wifiRssiState, wifiRssiChangeCallback);
             done();
         })
 
         /**
         * @tc.number SUB_Communication_WiFi_Event_Test_0005
-        * @tc.name testhotspotStateChange
+        * @tc.name testHotspotStateChange
         * @tc.desc Test hotspotStateChange api.
         * @tc.type Function
         * @tc.level Level 3
         */
         it('SUB_Communication_WiFi_Event_Test_0005', 0, async function (done) {
-            console.info("[wifi_test]hotspotStateChange On test");
-            try {
-                await wifi.on('hotspotStateChange', (data) => {
-                    console.info("[wifi_test] hotspotStateChange On ->" + data);
-                    expect(true).assertEqual(data != null);
-                });
-
-            } catch (e) {
-                expect(null).assertFail();
+            let hotspotState = "hotspotStateChange";
+            let hotspotStateChangeCallback = result => {
+                console.info("[wifi_test]hotspotStateChange callback, result: " + JSON.stringify(result));
             }
-            console.info("[wifi_test]hotspotStateChange Off test");
-            try {
-                await wifi.off('hotspotStateChange', (data) => {
-                    console.info("[wifi_test] hotspotStateChange Off :" + data);
-                    expect(true).assertEqual(data != null);
-                });
-            } catch (e) {
-                expect(null).assertFail();
-            }
+            wifi.on(hotspotState, hotspotStateChangeCallback);
+            await sleep(3000);
+            wifi.off(hotspotState, hotspotStateChangeCallback);
             done();
         })
         console.log("*************[wifi_test] start wifi js unit test end*************");
         })
 }
+
 
