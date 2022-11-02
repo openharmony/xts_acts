@@ -461,6 +461,8 @@ export default function cameraSessionFocusTest(surfaceId: any) {
             cameraOutputCap = result;
         }).catch((err) => {
             console.info('getSupportedOutputCapability failed, err = ' + err.message);
+            mPreviewOutput = null;
+            mPhotoOutput = null;
         });
 
         if (!isEmpty(cameraOutputCap)) {

@@ -275,6 +275,7 @@ export default function CameraInputTest(surfaceId) {
             cameraOutputCap = result;
         }).catch((err) => {
             console.info('getSupportedOutputCapability failed, err = ' + err.message);
+            mPreviewOutput = null;
         });
 
         if (!isEmpty(cameraOutputCap)) {
