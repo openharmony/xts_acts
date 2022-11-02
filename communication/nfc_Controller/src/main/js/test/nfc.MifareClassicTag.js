@@ -51,13 +51,13 @@ let mifareclassicTaginfo = {
     ],
     "tagRfDiscId": 1,
 };
-let mifareClassic = null;
+let MifareClassicTag = null;
 export default function nfcMifareClassicTag() {
     describe('nfcMifareClassicTag', function () {
         beforeAll(function () {
             console.info('[NFC_test]beforeAll called')
             try{
-                mifareClassic = tag.getMifareClassic(mifareclassicTaginfo);
+                MifareClassicTag = tag.getMifareClassic(mifareclassicTaginfo);
             }catch(error){
                 console.info('beforeAll mifareClassic error' + error)
             }
@@ -79,14 +79,14 @@ export default function nfcMifareClassicTag() {
          * @tc.name testauthenticateSector
          * @tc.desc Test authenticateSector api by callback.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_0100', 0, async function (done) {
             let sectorIndex = 1; 
             let key = [0x04, 0x05];  
-            await mifareClassic.authenticateSector(sectorIndex, key, true).then((data) => {
+            await MifareClassicTag.authenticateSector(sectorIndex, key, true).then((data) => {
                 console.info("mifareClassic authenticateSector1 data: " + data + "json1:" + JSON.stringify(data));
                 expect(data).assertTrue();
                 done();
@@ -104,14 +104,14 @@ export default function nfcMifareClassicTag() {
          * @tc.name testauthenticateSector
          * @tc.desc Test authenticateSector api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_0200', 0, async function (done) {
             let sectorIndex = 1; 
             let key = [0x04, 0x05];  
-            mifareClassic.authenticateSector(sectorIndex, key, true, (err, data)=> {
+            MifareClassicTag.authenticateSector(sectorIndex, key, true, (err, data)=> {
                 if (err) {
                     console.info("mifareClassic authenticateSector2 err: " + err);
                     expect(true).assertEqual(true);
@@ -130,19 +130,13 @@ export default function nfcMifareClassicTag() {
          * @tc.name testreadSingleBlock
          * @tc.desc Test readSingleBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_0300', 0, async function (done) {
-            let mifareClassic;
-            try{
-                mifareClassic = tag.getMifareClassic(mifareclassicTaginfo);
-            }catch(error){
-                console.info('beforeAll mifareClassic error' + error)
-            }
             let blockIndex = 1; 
-            await mifareClassic.readSingleBlock(blockIndex).then((data) => {
+            await MifareClassicTag.readSingleBlock(blockIndex).then((data) => {
                 console.info("mifareClassic readSingleBlock1 data: " + data + "json3:" + JSON.stringify(data));
                 expect(data).assertInstanceOf('Array')
                 done();
@@ -160,13 +154,13 @@ export default function nfcMifareClassicTag() {
          * @tc.name testreadSingleBlock
          * @tc.desc Test readSingleBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_0400', 0, async function (done) {
             let blockIndex = 1; 
-            mifareClassic.readSingleBlock(blockIndex, (err, data)=> {
+            MifareClassicTag.readSingleBlock(blockIndex, (err, data)=> {
                 if (err) {
                     console.info("mifareClassic readSingleBlock2 err: " + err);
                     expect(true).assertEqual(true);
@@ -184,14 +178,14 @@ export default function nfcMifareClassicTag() {
          * @tc.name testwriteSingleBlock
          * @tc.desc Test writeSingleBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_0500', 0, async function (done) {
             let blockIndex = 1;
             let rawData = [0x0a, 0x14]; 
-            await mifareClassic.writeSingleBlock(blockIndex, rawData).then((data) => {
+            await MifareClassicTag.writeSingleBlock(blockIndex, rawData).then((data) => {
                 console.info("mifareClassic writeSingleBlock1 data: " + data + "json5:" + JSON.stringify(data));
                 expect(data).assertTrue();
                 done();
@@ -209,14 +203,14 @@ export default function nfcMifareClassicTag() {
          * @tc.name testwriteSingleBlock
          * @tc.desc Test writeSingleBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_0600', 0, async function (done) {
             let blockIndex = 1; 
             let rawData = [0x0a, 0x14]; 
-            mifareClassic.writeSingleBlock(blockIndex, rawData, (err, data)=> {
+            MifareClassicTag.writeSingleBlock(blockIndex, rawData, (err, data)=> {
                 if (err) {
                     console.info("mifareClassic writeSingleBlock2 err: " + err);
                     expect(true).assertEqual(true);
@@ -235,14 +229,14 @@ export default function nfcMifareClassicTag() {
          * @tc.name testincrementBlock
          * @tc.desc Test incrementBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_0700', 0, async function (done) {
             let blockIndex = 1; 
             let value = 0x20;
-            await mifareClassic.incrementBlock(blockIndex, value).then((data) => {
+            await MifareClassicTag.incrementBlock(blockIndex, value).then((data) => {
                 console.info("mifareClassic incrementBlock1 data: " + data + "json7:" + JSON.stringify(data));
                 expect(data).assertInstanceOf('Number')
                 done();
@@ -260,14 +254,14 @@ export default function nfcMifareClassicTag() {
          * @tc.name testincrementBlock
          * @tc.desc Test incrementBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_0800', 0, async function (done) {
             let blockIndex = 1; 
             let value = 0x20;
-            mifareClassic.incrementBlock(blockIndex, value, (err, data)=> {
+            MifareClassicTag.incrementBlock(blockIndex, value, (err, data)=> {
                 if (err) {
                     console.info("mifareClassic incrementBlock2 err: " + err);
                     expect(true).assertEqual(true);
@@ -286,14 +280,14 @@ export default function nfcMifareClassicTag() {
          * @tc.name testdecrementBlock
          * @tc.desc Test decrementBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_0900', 0, async function (done) {
             let blockIndex = 1; 
             let value = 0x20;
-            await mifareClassic.decrementBlock(blockIndex, value).then((data) => {
+            await MifareClassicTag.decrementBlock(blockIndex, value).then((data) => {
                 console.info("mifareClassic decrementBlock1 data: " + data + "json9:" + JSON.stringify(data));
                 expect(data).assertInstanceOf('Number')
                 done();
@@ -311,14 +305,14 @@ export default function nfcMifareClassicTag() {
          * @tc.name testdecrementBlock
          * @tc.desc Test decrementBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1000', 0, async function (done) {
             let blockIndex = 1; 
             let value = 0x20;
-            mifareClassic.decrementBlock(blockIndex, value, (err, data)=> {
+            MifareClassicTag.decrementBlock(blockIndex, value, (err, data)=> {
                 if (err) {
                     console.info("mifareClassic decrementBlock2 err: " + err);
                     expect(true).assertEqual(true);
@@ -337,13 +331,13 @@ export default function nfcMifareClassicTag() {
          * @tc.name testtransferToBlock
          * @tc.desc Test transferToBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1100', 0, async function (done) {
             let blockIndex = 1; 
-            await mifareClassic.transferToBlock(blockIndex).then((data) => {
+            await MifareClassicTag.transferToBlock(blockIndex).then((data) => {
                 console.info("mifareClassic transferToBlock1 data: " + data + "json9:" + JSON.stringify(data));
                 expect(data).assertInstanceOf('Number')
                 done();
@@ -361,13 +355,13 @@ export default function nfcMifareClassicTag() {
          * @tc.name testtransferToBlock
          * @tc.desc Test transferToBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1200', 0, async function (done) {
             let blockIndex = 1; 
-            mifareClassic.transferToBlock(blockIndex, (err, data)=> {
+            MifareClassicTag.transferToBlock(blockIndex, (err, data)=> {
                 if (err) {
                     console.info("mifareClassic transferToBlock2 err: " + err);
                     expect(true).assertEqual(true);
@@ -386,13 +380,13 @@ export default function nfcMifareClassicTag() {
          * @tc.name testrestoreFromBlock
          * @tc.desc Test restoreFromBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1300', 0, async function (done) {
             let blockIndex = 1; 
-            await mifareClassic.restoreFromBlock(blockIndex).then((data) => {
+            await MifareClassicTag.restoreFromBlock(blockIndex).then((data) => {
                 console.info("mifareClassic restoreFromBlock1 data: " + data + "json11:" + JSON.stringify(data));
                 expect(data).assertInstanceOf('Number')
                 done();
@@ -410,13 +404,13 @@ export default function nfcMifareClassicTag() {
          * @tc.name testrestoreFromBlock
          * @tc.desc Test restoreFromBlock api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1400', 0, async function (done) {
             let blockIndex = 1; 
-            mifareClassic.restoreFromBlock(blockIndex, (err, data)=> {
+            MifareClassicTag.restoreFromBlock(blockIndex, (err, data)=> {
                 if (err) {
                     console.info("mifareClassic restoreFromBlock2 err: " + err);
                     expect(true).assertEqual(true);
@@ -435,12 +429,12 @@ export default function nfcMifareClassicTag() {
          * @tc.name testgetSectorCount
          * @tc.desc Test getSectorCount api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1500', 0, function ()  {
-            let sectorCount = mifareClassic.getSectorCount();
+            let sectorCount = MifareClassicTag.getSectorCount();
             console.info("mifareClassic sectorCount: " + sectorCount);
             expect(sectorCount).assertInstanceOf('Number')
         })
@@ -451,12 +445,12 @@ export default function nfcMifareClassicTag() {
          * @tc.name testgetBlockCountInSector
          * @tc.desc Test getBlockCountInSector api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1600', 0, function ()  {
-            let blockCountInSector = mifareClassic.getBlockCountInSector();
+            let blockCountInSector = MifareClassicTag.getBlockCountInSector();
             console.info("mifareClassic blockCountInSector: " + blockCountInSector);
             expect(blockCountInSector).assertInstanceOf('Number')
         })
@@ -467,12 +461,12 @@ export default function nfcMifareClassicTag() {
          * @tc.name testgetType
          * @tc.desc Test getType api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1700', 0, function ()  {
-            let getType = mifareClassic.getType();
+            let getType = MifareClassicTag.getType();
             console.info("mifareClassic getType: " + getType);
             expect(true).assertTrue(getType >= -1);
         })
@@ -483,12 +477,12 @@ export default function nfcMifareClassicTag() {
          * @tc.name testgetTagSize
          * @tc.desc Test getTagSize api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1800', 0, function ()  {
-            let tagSize = mifareClassic.getTagSize();
+            let tagSize = MifareClassicTag.getTagSize();
             console.info("mifareClassic tagSize: " + tagSize);
             expect(tagSize).assertInstanceOf('Number')
         })
@@ -499,12 +493,12 @@ export default function nfcMifareClassicTag() {
          * @tc.name testisEmulatedTag
          * @tc.desc Test isEmulatedTag api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_1900', 0, function ()  {
-            let isEmulatedTag = mifareClassic.isEmulatedTag();
+            let isEmulatedTag = MifareClassicTag.isEmulatedTag();
             console.info("mifareClassic isEmulatedTag: " + isEmulatedTag);
             expect(false).assertEqual(isEmulatedTag);
         })
@@ -515,13 +509,13 @@ export default function nfcMifareClassicTag() {
          * @tc.name testgetBlockIndex
          * @tc.desc Test getBlockIndex api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_2000', 0, function ()  {
             let sectorIndex = 1; 
-            let blockIndex = mifareClassic.getBlockIndex(sectorIndex);
+            let blockIndex = MifareClassicTag.getBlockIndex(sectorIndex);
             console.info("mifareClassic blockIndex: " + blockIndex);
             expect(true).assertTrue(blockIndex >= 0);
         })
@@ -532,13 +526,13 @@ export default function nfcMifareClassicTag() {
          * @tc.name testgetSectorIndex
          * @tc.desc Test getSectorIndex api.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareClassic_js_2100', 0, function ()  {
             let blockIndex = 1; 
-            let sectorIndex = mifareClassic.getSectorIndex(blockIndex);
+            let sectorIndex = MifareClassicTag.getSectorIndex(blockIndex);
             console.info("mifareClassic sectorIndex: " + sectorIndex);
             expect(true).assertTrue(sectorIndex >= 0);
         })

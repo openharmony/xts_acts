@@ -85,6 +85,8 @@ export default function actsWifiFunctionTest() {
                             "passphrase: " + result.passphrase + "interface: "+ result.interface
                             + "groupName: " + result.groupName +
                             "frequency: " + result.frequency + "goIpAddress: " + result.goIpAddress);
+                            console.info("[wifi_test] clientDevices:" + JSON.stringify(result.clientDevices));
+                            console.info("[wifi_test] ownerInfo:" + JSON.stringify(result.WifiP2pDevice));
                             resolve();
                         });
                 });
@@ -124,7 +126,6 @@ export default function actsWifiFunctionTest() {
             expect(createGroupResult).assertTrue();
             await wifi.getCurrentGroup()
                 .then(data => {
-                    let resultLength = Object.keys(data).length;
                     console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
                     expect(true).assertEqual(data.networkId == -999);
                 });
@@ -274,7 +275,7 @@ export default function actsWifiFunctionTest() {
             await wifi.getCurrentGroup()
                 .then(data => {
                     console.info("[wifi_test]getCurrentGroup  promise result :" + JSON.stringify(data));
-                    expect(true).assertEqual(data.frequency == 2412);
+                    expect(true).assertEqual(2412 < data.frequency < 2484 );
                 });
             let removeGroupResult = wifi.removeGroup();
             await sleep(2000);
@@ -312,7 +313,7 @@ export default function actsWifiFunctionTest() {
                 await wifi.getCurrentGroup()
                     .then(data => {
                         console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
-                        expect(true).assertEqual(data.frequency == 5745);
+                        expect(true).assertEqual(5160 < data.frequency < 5865);
                     });
                 let removeGroupResult = await wifi.removeGroup();
                 await sleep(2000);
