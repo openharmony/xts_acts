@@ -22,7 +22,16 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 const TAG = "CameraUnitTest: ";
 
+let captureLocation = {
+  latitude: 0,
+  longitude: 0,
+  altitude: 0,
+}
 let captureSetting = {
+  quality: cameraObj.QualityLevel.QUALITY_LEVEL_LOW,
+  rotation: cameraObj.ImageRotation.ROTATION_0,
+  location: captureLocation,
+  mirror: false
 }
 
 // 创建视频录制的参数
@@ -1092,6 +1101,7 @@ export default function cameraJSUnitOutput(surfaceId: any) {
           expect().assertFail();
         });
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + boundingBox.width + "x" + boundingBox.height);
+	console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + boundingBox.topLeftX + "x" + boundingBox.topLeftY);
       }
       await sleep(1000);
       done();
@@ -1478,6 +1488,13 @@ export default function cameraJSUnitOutput(surfaceId: any) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100 photoOutput == null || undefined")
         expect().assertFail();
       } else {
+        console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100 captureSetting.quality = ' + captureSetting.quality);
+        console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100 captureSetting.rotation = ' + captureSetting.rotation);
+        console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100 captureSetting.location.latitude = ' + captureSetting.location.latitude);
+        console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100 captureSetting.location.longitude = ' + captureSetting.location.longitude);
+        console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100 captureSetting.location.altitude = ' + captureSetting.location.altitude);
+        console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100 captureSetting.mirror = ' + captureSetting.mirror);
+
         await photoOutput.capture(captureSetting).then((result) => {
           console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100 success :' + result);
         }).catch((err) => {
@@ -1575,6 +1592,8 @@ export default function cameraJSUnitOutput(surfaceId: any) {
           if (!err) {
             expect(true).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 success");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100, captureId = " + data.captureId);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100, timestamp = " + data.timestamp);
           } else {
             expect().assertFail();
             console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100 FAILED: " + err.message);
@@ -1608,6 +1627,8 @@ export default function cameraJSUnitOutput(surfaceId: any) {
           if (!err) {
             expect(true).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 success");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, captureId = " + data.captureId);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, frameCount = " + data.frameCount);
           } else {
             expect().assertFail();
             console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 FAILED: " + err.message);

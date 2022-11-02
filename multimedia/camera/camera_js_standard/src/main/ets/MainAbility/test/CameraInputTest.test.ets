@@ -621,7 +621,7 @@ export default function CameraInputTest(surfaceId) {
                             }).catch((err) => {
                                 successFlag = false;
                                 console.info(TAG + functionTag + "open FAILED: " + err.message);
-                            });;
+                            });
                             await sleep(400);
                             await cameraInput.close().then(async () => {
                                 console.info(TAG + functionTag + "PASSED close with CameraID :" + camerasArray[i].cameraId);
