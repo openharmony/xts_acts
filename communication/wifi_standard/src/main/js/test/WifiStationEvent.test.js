@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import wifi from '@ohos.wifi'
 
+import wifiext from '@ohos.wifiext'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -35,6 +36,12 @@ let wifiSecurityType = {
     WIFI_SEC_TYPE_WEP: 2,
     WIFI_SEC_TYPE_PSK: 3,
     WIFI_SEC_TYPE_SAE: 4,
+}
+
+let PowerModel = {
+    SLEEPING : 0,
+    GENERAL : 1,
+    THROUGH_WALL : 2,
 }
 
 let connState = {
@@ -163,8 +170,223 @@ export default function actsWifiEventTest() {
             wifi.off(hotspotState, hotspotStateChangeCallback);
             done();
         })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0001
+        * @tc.name testenableHotspot
+        * @tc.desc Test enableHotspot api.
+        * @tc.type Function
+        */
+        it('SUB_Communication_WiFi_SysCaps_Test_0001', 0, async function (done) {
+            console.info('testSysCaps01 start');
+            let ret = false;
+            try {
+                var isAccessToken = canIUse("SystemCapability.Communication.WiFi.AP.Extension");
+                console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+                if (isAccessToken) {
+                    ret = true;
+                }
+                console.info("[wifi_test] enableHotspot: " + wifiext.enableHotspot())
+                expect(isAccessToken).assertFalse();
+                done();
+            } catch (e) {
+                expect(ret).assertFalse();
+                console.info("testSysCaps01 canIUse isAccessToken error: " + e);
+            }
+            console.info('testSysCaps01 end');
+            done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0002
+        * @tc.name testdisableHotspot
+        * @tc.desc Test disableHotspot api.
+        * @tc.type Function
+        */
+        it('SUB_Communication_WiFi_SysCaps_Test_0002', 0, async function (done) {
+            console.info('testSysCaps02 start');
+            let ret = false;
+            try {
+                var isAccessToken = canIUse("SystemCapability.Communication.WiFi.AP.Extension");
+                console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+                if (isAccessToken) {
+                    ret = true;
+                }
+                console.info("[wifi_test] disableHotspot: " + wifiext.disableHotspot())
+                expect(isAccessToken).assertFalse();
+                done();
+            } catch (e) {
+                expect(ret).assertFalse();
+                console.info("testSysCaps02 canIUse isAccessToken error: " + e);
+            }
+            console.info('testSysCaps02 end');
+            done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0003
+        * @tc.name testgetSupportedPowerModel
+        * @tc.desc Test getSupportedPowerModel api.
+        * @tc.type Function
+        */
+        it('SUB_Communication_WiFi_SysCaps_Test_0003', 0, async function (done) {
+            console.info('testSysCaps03 start');
+            let ret = false;
+            try {
+                var isAccessToken = canIUse("SystemCapability.Communication.WiFi.AP.Extension");
+                console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+                if (isAccessToken) {
+                    ret = true;
+                }
+                await wifiext.getSupportedPowerModel()
+                    .then(data => {
+                        console.info("[wifi_test]getSupportedPowerModel promise result -> " + JSON.stringify(data));
+                    });
+                expect(isAccessToken).assertFalse();
+                done();
+            } catch (e) {
+                expect(ret).assertFalse();
+                console.info("testSysCaps03 canIUse isAccessToken error: " + e);
+            }
+            console.info('testSysCaps03 end');
+            done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0004
+        * @tc.name testgetSupportedPowerModel
+        * @tc.desc Test getSupportedPowerModel api.
+        * @tc.type Function
+        */
+        it('SUB_Communication_WiFi_SysCaps_Test_0004', 0, async function (done) {
+            console.info('testSysCaps04 start');
+            let ret = false;
+            try {
+                var isAccessToken = canIUse("SystemCapability.Communication.WiFi.AP.Extension");
+                console.info("testSysCaps04 test.syscap.param.001 : " + isAccessToken);
+                if (isAccessToken) {
+                    ret = true;
+                }
+                function getSupportedPowerModelResult(){
+                    return new Promise((resolve, reject) => {
+                        wifiext.getSupportedPowerModel(
+                            (err, result) => {
+                                if(err) {
+                                    console.info("[wifi_test]failed to  getSupportedPowerModel:" + JSON.stringify(err));
+                                    expect(true).assertTrue();
+                                }
+                                console.info("[wifi_test]getSupportedPowerModel callback:" + JSON.stringify(result));
+                                resolve();
+                            });
+                    });
+                }
+                await getSupportedPowerModelResult();
+                expect(isAccessToken).assertFalse();
+                done();
+            } catch (e) {
+                expect(ret).assertFalse();
+                console.info("testSysCaps04 canIUse isAccessToken error: " + e);
+            }
+            console.info('testSysCaps04 end');
+            done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0005
+        * @tc.name testgetPowerModel
+        * @tc.desc Test getPowerModel api.
+        * @tc.type Function
+        */
+        it('SUB_Communication_WiFi_SysCaps_Test_0005', 0, async function (done) {
+            console.info('testSysCaps05 start');
+            let ret = false;
+            try {
+                var isAccessToken = canIUse("SystemCapability.Communication.WiFi.AP.Extension");
+                console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+                if (isAccessToken) {
+                    ret = true;
+                }
+                await wifiext.getPowerModel()
+                    .then(data => {
+                        console.info("[wifi_test]getPowerModel promise result -> " + JSON.stringify(data));
+                    });
+                expect(isAccessToken).assertFalse();
+                done();
+            } catch (e) {
+                expect(ret).assertFalse();
+                console.info("testSysCaps05 canIUse isAccessToken error: " + e);
+            }
+            console.info('testSysCaps05 end');
+            done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0006
+        * @tc.name testgetPowerModel
+        * @tc.desc Test getPowerModel api.
+        * @tc.type Function
+        */
+        it('SUB_Communication_WiFi_SysCaps_Test_0006', 0, async function (done) {
+            console.info('testSysCaps04 start');
+            let ret = false;
+            try {
+                var isAccessToken = canIUse("SystemCapability.Communication.WiFi.AP.Extension");
+                console.info("testSysCaps04 test.syscap.param.001 : " + isAccessToken);
+                if (isAccessToken) {
+                    ret = true;
+                }
+                function getPowerModelResult(){
+                    return new Promise((resolve, reject) => {
+                        wifiext.getPowerModel(
+                            (err, result) => {
+                                if(err) {
+                                    console.info("[wifi_test]failed to  getPowerModel:" + JSON.stringify(err));
+                                    expect(true).assertTrue();
+                                }
+                                console.info("[wifi_test]getPowerModel callback:" + JSON.stringify(result));
+                                resolve();
+                            });
+                    });
+                }
+                await getPowerModelResult();
+                expect(isAccessToken).assertFalse();
+                done();
+            } catch (e) {
+                expect(ret).assertFalse();
+                console.info("testSysCaps06 canIUse isAccessToken error: " + e);
+            }
+            console.info('testSysCaps06 end');
+            done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0007
+        * @tc.name testsetPowerModel
+        * @tc.desc Test setPowerModel api.
+        * @tc.type Function
+        */
+        it('SUB_Communication_WiFi_SysCaps_Test_0007', 0, async function (done) {
+            console.info('testSysCaps01 start');
+            let ret = false;
+            try {
+                var isAccessToken = canIUse("SystemCapability.Communication.WiFi.AP.Extension");
+                console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+                if (isAccessToken) {
+                    ret = true;
+                }
+                console.info("[wifi_test] setPowerModel: " + wifiext.setPowerModel(PowerModel))
+                expect(isAccessToken).assertFalse();
+                done();
+            } catch (e) {
+                expect(ret).assertFalse();
+                console.info("testSysCaps07 canIUse isAccessToken error: " + e);
+            }
+            console.info('testSysCaps07 end');
+            done();
+        })
         console.log("*************[wifi_test] start wifi js unit test end*************");
         })
 }
+
 
 
