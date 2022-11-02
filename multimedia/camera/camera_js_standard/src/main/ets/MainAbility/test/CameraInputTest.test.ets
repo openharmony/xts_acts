@@ -135,7 +135,7 @@ export default function CameraInputTest(surfaceId) {
                 console.info(TAG + "Entering getCameraSupportDevicesArray FAILED : " + err.message);
             }
         })
-        await sleep(3000);
+        await sleep(300);
         */
         if (isEmpty(mCameraDevicesArray)) {
             console.info(TAG + "getSupportedCameras FAILED");
@@ -412,7 +412,7 @@ export default function CameraInputTest(surfaceId) {
                         await sleep(1);
                     })
 
-                    await sleep(3000);
+                    await sleep(300);
 
                     if (nfyFlag == false) {
                         //expect().assertFail();
@@ -469,7 +469,7 @@ export default function CameraInputTest(surfaceId) {
 
                     mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_AUTO);
 
-                    await sleep(3000);
+                    await sleep(300);
 
                     if (nfyFlag == false) {
                         //expect().assertFail();
@@ -526,7 +526,7 @@ export default function CameraInputTest(surfaceId) {
 
                     mCameraSession.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO);
 
-                    await sleep(3000);
+                    await sleep(300);
 
                     if (nfyFlag == false) {
                         //expect().assertFail();
