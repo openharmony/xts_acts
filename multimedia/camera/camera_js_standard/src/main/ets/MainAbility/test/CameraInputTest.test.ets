@@ -222,7 +222,14 @@ export default function CameraInputTest(surfaceId) {
             return false;
         }
         
-        mCameraInput = await mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
+        mCameraInput = null;
+        await mCameraManager.createCameraInput(mCameraDevicesArray[idx]).then((result) => {
+            console.info('createCameraInput success');
+            mCameraInput = result;
+        }).catch((err) => {
+            console.info('createCameraInput failed, err = ' + err.message);
+        });
+
         if (isEmpty(mCameraInput)) {
             console.info(TAG + "createCameraInput FAILED");
             return false;

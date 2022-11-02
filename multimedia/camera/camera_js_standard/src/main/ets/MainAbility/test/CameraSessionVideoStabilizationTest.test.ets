@@ -361,7 +361,14 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             return false;
         }
         
-        mCameraInput = await mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
+        mCameraInput = null;
+        await mCameraManager.createCameraInput(mCameraDevicesArray[idx]).then((result) => {
+            console.info('createCameraInput success');
+            mCameraInput = result;
+        }).catch((err) => {
+            console.info('createCameraInput failed, err = ' + err.message);
+        });
+        
         if (isEmpty(mCameraInput)) {
             console.info(TAG + "createCameraInput FAILED");
             return false;
@@ -472,7 +479,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     }
 
     async function releaseOutput() {
-        console.info('Enter createOutput');
+        console.info('Enter releaseOutput');
 
         if (!isEmpty(mPreviewOutput)) {
             await mPreviewOutput.stop();
@@ -488,7 +495,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             await mVideoOutput.release();
         }
         */
-        console.info('Exit createOutput');
+        console.info('Exit releaseOutput');
         
         return true;
     }
