@@ -75,7 +75,6 @@ describe('ActsBmsJsTest', function () {
             expect(abilityInfo1.writePermission).assertEqual("");
             expect(abilityInfo1.targetAbility).assertEqual("");
             expect(abilityInfo1.metaData.length).assertEqual(0);
-            expect(abilityInfo1.metadata.length).assertEqual(0);
             expect(abilityInfo1.enabled).assertEqual(true);
         }
         done();
@@ -149,7 +148,6 @@ describe('ActsBmsJsTest', function () {
             expect(abilityInfo1.writePermission).assertEqual("");
             expect(abilityInfo1.targetAbility).assertEqual("");
             expect(abilityInfo1.metaData.length).assertEqual(0);
-            expect(abilityInfo1.metadata.length).assertEqual(0);
             expect(abilityInfo1.enabled).assertEqual(true);
         }
         done();
@@ -192,7 +190,6 @@ describe('ActsBmsJsTest', function () {
             expect(abilityInfo1.writePermission).assertEqual("");
             expect(abilityInfo1.targetAbility).assertEqual("");
             expect(abilityInfo1.metaData.length).assertEqual(0);
-            expect(abilityInfo1.metadata.length).assertEqual(0);
             expect(abilityInfo1.enabled).assertEqual(true);
         }
         done();

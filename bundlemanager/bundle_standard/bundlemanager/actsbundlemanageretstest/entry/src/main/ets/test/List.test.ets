@@ -21,20 +21,14 @@ import isAbilityEnableETSUnit from "./IsAbilityEnabledETSUnit.ets";
 import isApplicationEnabledETSUnit from "./IsApplicationEnabledETSUnit.ets";
 import getAbilityIcon from "./GetAbilityIcon.test.ets";
 import getNameForUid from "./GetNameForUid.test.ets";
-import queryExtensionAbilityInfos from "./QueryExtensionAbilityInfos.test.ets";
 import getBundleArchiveInfo from "./getBundleArchiveInfo.test.ets";
 import getQueryAbilityByWant from './GetQueryAbilityByWant.test.ets';
 import isDefaultApplicationTest from './IsDefaultApplication.test.ets';
-import getWindowPorperties from './getWindowProperties.test.ets';
-import GetSecondModuleTest from './GetSecondModule.test.ets';
-import GetInfoSync from './GetInfoSync.test.ets';
-import GetResourceTest from './GetResourceTest.test.ets';
 import getBundleInfoForSelf from './GetBundleInfoForSelf.test.ets';
 
 export default function testsuite() {
   getBundleInfoForSelf();
   getBundleArchiveInfo();
-  queryExtensionAbilityInfos();
   getAbilityIcon();
   getLaunchWantForBundle();
   getNameForUid();
@@ -50,8 +44,4 @@ export default function testsuite() {
   //RM.017
   isAbilityEnableETSUnit();
   isApplicationEnabledETSUnit();
-  getWindowPorperties();
-  GetSecondModuleTest();
-  GetInfoSync();
-  GetResourceTest();
 }
