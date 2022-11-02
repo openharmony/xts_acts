@@ -1677,41 +1677,6 @@ describe('ActsFeatureAbilityTest', function () {
     });
 
     /*
-     * @tc.number  ACTS_StartAbility_1400
-     * @tc.name    Start ability through action and entities, which are configured as strings
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it("ACTS_StartAbility_1400",0, async function(done){
-        console.info("------------------logMessage ACTS_StartAbility_1400-------------------");
-        try{
-            let Want = {
-                action: "action.system.home",
-                entities: 'asdfghj'
-            }
-            let StartAbilityParameter = {
-                want:Want
-            }
-
-            featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
-                console.info('ACTS_StartAbility_1400 asyncCallback errCode : ' + JSON.stringify(err) 
-                + " data: " + JSON.stringify(data));
-                if(err.code != 0){
-                    expect().assertFail()
-                    done()
-                }else{
-                    expect(err.code).assertEqual(0)
-                    done()
-                }
-            });
-        }catch(error){
-            console.info("ACTS_StartAbility_1400 : error = " + error);
-            expect().assertFail()
-            done()
-        }
-    });
-
-    /*
      * @tc.number  ACTS_StartAbility_1600
      * @tc.name    Startability input parameter want is {}
      * @tc.desc    Function test
