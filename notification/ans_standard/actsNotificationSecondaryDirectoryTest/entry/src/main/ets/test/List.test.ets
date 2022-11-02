@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import secondaryDirectory from './SecondaryDirectory.test'
+import ActsNotificationSecondaryDirectoryTest from './ActsNotificationSecondaryDirectoryTest.test'
 
 export default function List() {
-  secondaryDirectory()
+  ActsNotificationSecondaryDirectoryTest()
 }
