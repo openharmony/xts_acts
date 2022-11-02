@@ -1056,8 +1056,10 @@ describe('audioManagerApi9', function () {
     *@tc.level     : Level 2
     */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100', 2, async function (done) {
-        let volumManager = audioManager.getVolumeManager();
-        let VolumeGroupManager = await volumManager.getVolumeGroupManager();
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId
+        let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
         let count = 0;
         console.info('getVolumeGroupManager Callback START.');
         VolumeGroupManager.on('micStateChange', async (micStateChange) => {
@@ -1091,8 +1093,10 @@ describe('audioManagerApi9', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200', 2, async function (done) {
-        let volumManager = audioManager.getVolumeManager();
-        let VolumeGroupManager = await volumManager.getVolumeGroupManager();
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId
+        let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
         console.info('getVolumeGroupManager Callback START.');
         let count = 0;
         VolumeGroupManager.on('micStateChange', async (micStateChange) => {
@@ -1124,8 +1128,10 @@ describe('audioManagerApi9', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300', 2, async function (done) {
-        let volumManager = audioManager.getVolumeManager();
-        let VolumeGroupManager = await volumManager.getVolumeGroupManager();
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId
+        let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
         console.info('getVolumeGroupManager Callback START.');
         let count = 0;
         VolumeGroupManager.on('micStateChange', async (micStateChange) => {
@@ -1159,8 +1165,10 @@ describe('audioManagerApi9', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400', 2, async function (done) {
-        let volumManager = audioManager.getVolumeManager();
-        let VolumeGroupManager = await volumManager.getVolumeGroupManager();
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId
+        let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
         let count = 0;
         try {
             console.info("enter SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400");
