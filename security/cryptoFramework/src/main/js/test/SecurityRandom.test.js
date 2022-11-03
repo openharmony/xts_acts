@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +19,11 @@ import {
   testSecurityRandomPromise,
   testSecurityRandomEnumPromise,
 } from "./utils/securityrandom/publicSecurityRandomPromise";
-import { testSecurityRandomCallback } from "./utils/securityrandom/publicSecurityRandomCallback";
+import {
+  testSecurityRandomCallback,
+  testSecurityRandomLengthCallback,
+  testSecurityRandomCallbackSeed,
+} from "./utils/securityrandom/publicSecurityRandomCallback";
 
 export default function SecurityRandomJsunit() {
   describe("SecurityRandomJsunit", function () {
@@ -49,6 +54,73 @@ export default function SecurityRandomJsunit() {
      */
     it("Security_crypto_framework_Random_0200", 0, async function (done) {
       await testSecurityRandomCallback(32)
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_Random_0300
+     * @tc.name support security random and set random seed
+     * @tc.desc the length of random is 32, use callback style of interface
+     */
+    it("Security_crypto_framework_Random_0300", 0, async function (done) {
+      await testSecurityRandomLengthCallback(0)
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      await testSecurityRandomLengthCallback(null)
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      await testSecurityRandomLengthCallback(-1)
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      await testSecurityRandomLengthCallback(2147483647)
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_Random_0400
+     * @tc.name support security random and set random seed
+     * @tc.desc the length of random is 32, use callback style of interface
+     */
+    it("Security_crypto_framework_Random_0400", 0, async function (done) {
+      await testSecurityRandomCallbackSeed(null)
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      await testSecurityRandomCallbackSeed(0)
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      await testSecurityRandomCallbackSeed(2147483647)
         .then((data) => {
           expect(data == null).assertTrue();
         })
