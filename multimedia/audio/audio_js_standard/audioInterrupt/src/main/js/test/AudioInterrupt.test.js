@@ -92,8 +92,8 @@ describe('audioInterrupt', function () {
         }
 
         var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 

@@ -10,7 +10,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License.info(TAG +
+ * limitations under the License.
  */
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
@@ -137,26 +137,26 @@ export default {
         });
         console.info(TAG + 'AudioFrameworkRenderLog: Renderer after read');
         await sleep(3000);
-        // await audioRen.drain().then(async function () {
-        console.info(TAG + 'AudioFrameworkRenderLog: Renderer drained : SUCCESS');
-        let wantInfo = {
-            want:
-            {
-                bundleName: "com.example.audiorenderinterrupt",
-                abilityName: "com.example.entry.MainAbility"
-            },
-            resultCode: 1111
-        }
-        featureAbility.terminateSelfWithResult(wantInfo).then(() => {
-            console.info(TAG + 'terminateSelf ==================================   success')
-        })
-            .catch(() => {
-                console.info(TAG + 'terminateSelf ====================================   fail')
+        await audioRen.drain().then(async function () {
+            console.info(TAG + 'AudioFrameworkRenderLog: Renderer drained : SUCCESS');
+            let wantInfo = {
+                want:
+                {
+                    bundleName: "com.example.audiorenderinterrupt",
+                    abilityName: "com.example.entry.MainAbility"
+                },
+                resultCode: 1111
+            }
+            featureAbility.terminateSelfWithResult(wantInfo).then(() => {
+                console.info(TAG + 'terminateSelf ==================================   success')
             })
+                .catch(() => {
+                    console.info(TAG + 'terminateSelf ====================================   fail')
+                })
 
-        // }).catch((err) => {
-        //     console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
-        // });
+        }).catch((err) => {
+            console.error(TAG + 'AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
+        });
     },
     onDestroy() {
         console.log(TAG1 + 'onDestroy');
