@@ -115,9 +115,58 @@ export default function nfcMifareUltralightTag() {
             sleep(3000);
             done();
         })
-
+        
         /**
          * @tc.number SUB_Communication_NFC_mifareUltralight_0300
+         * @tc.name testwriteSinglePage
+         * @tc.desc Test writeSinglePage api by promise.
+         * @tc.size MEDIUM
+         * @ since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_mifareUltralight_0300', 0, async function (done) {
+            let pageIndex = 1;
+            let rawData = [0x01, 0x02];
+            await MifareUltralightTag.writeSinglePage(pageIndex, rawData).then((data) => {
+                console.log("mifareUltralight writeSinglePages1 data: " + data + "json1:" + JSON.stringify(data));
+                expect(true).assertTrue(data >= 0);
+                done();
+            }).catch((err)=> {
+                console.log("mifareUltralight writeSinglePages1 err: " + err);
+                expect(true).assertEqual(true);
+                done();
+            });
+            sleep(3000);
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_mifareUltralight_0400
+         * @tc.name testwriteSinglePage
+         * @tc.desc Test writeSinglePage api by callback.
+         * @tc.size MEDIUM
+         * @ since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_mifareUltralight_0400', 0, async function (done) {
+            let pageIndex = 1;
+            let rawData = [0x01, 0x02];
+            MifareUltralightTag.writeSinglePage(pageIndex, rawData, (err, data)=> {
+                if (err) {
+                    console.log("mifareUltralight writeSinglePages2 err: " + err);
+                    expect(true).assertEqual(true);
+                } else {
+                    console.log("mifareUltralight writeSinglePages2 data: " + data + "json2:" + JSON.stringify(data));
+                    expect(true).assertTrue(data >= 0);
+                }
+            });
+            sleep(3000);
+            done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_mifareUltralight_0500
          * @tc.name testgetType
          * @tc.desc Gets the type of Mifare Ultralight label
          * @tc.size MEDIUM
