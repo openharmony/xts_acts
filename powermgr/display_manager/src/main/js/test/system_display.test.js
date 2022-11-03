@@ -150,7 +150,16 @@ describe('SystemDisplayTest', function () {
                 currValue = data.value;
             }
         });
-        brightness.setValue({ value: setValue });
+        brightness.setKeepScreenOn({
+            keepScreenOn: true,
+            success: function () {
+                console.log('handling set keep screen on success.');
+                brightness.setValue({ value: setValue });
+            },
+            fail: function (data, code) {
+                console.error('handling set keep screen on fail, code:' + code + ', data: ' + data);
+            }
+        });
         brightness.getValue({
             success: (data) => {
                 console.log("set_value_success_value, brightness: " + data.value);
