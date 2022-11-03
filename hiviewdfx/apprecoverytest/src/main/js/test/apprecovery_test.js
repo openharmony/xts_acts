@@ -14,7 +14,7 @@
  */
 import appRecovery from "@ohos.app.ability.appRecovery"
 import AbilityConstant from "@ohos.app.ability.AbilityConstant"
-import Ability from "@ohos.application.Ability"
+import Ability from "@ohos.app.ability.UIAbility"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 class AbilityTest extends Ability {

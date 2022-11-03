@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent';
-import AbilityConstant from "@ohos.application.AbilityConstant";
+import AbilityConstant from "@ohos.app.ability.AbilityConstant";
 import appManager from "@ohos.application.appManager";
 import wantConstant from '@ohos.ability.wantConstant';
 

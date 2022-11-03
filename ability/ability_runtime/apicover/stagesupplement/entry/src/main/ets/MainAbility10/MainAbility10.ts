@@ -1,4 +1,4 @@
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent';
 
 var printLog10 = "Stage:MainAbility10:";

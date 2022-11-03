@@ -23,7 +23,6 @@ import errorManager from '@ohos.app.ability.errorManager';
 import abilityConstant from '@ohos.app.ability.AbilityConstant'
 import appManager from '@ohos.application.appManager'
 import appManagerNew from '@ohos.app.ability.appManager'
-import applicationContext from '@ohos.application.context'
 import commonEvent from '@ohos.commonEvent';
 import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -506,30 +505,6 @@ export default function ApiCoverTest() {
     });
 
     /*
-     * @tc.number  SUB_AA_ReisterErrorObserver_0100
-     * @tc.name    Test ReisterErrorObserver.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_ReisterErrorObserver_0100', 0, async function (done) {
-      let errorObserver:errorManager.ErrorObserver;
-      errorObserver = {
-        onUnhandledException:(errMessage) => {
-          console.info("SUB_AA_ReisterErrorObserver_0100" + JSON.stringify(errMessage));
-        }
-      }
-      let errCodeId = errorManager.on("error", errorObserver)
-      expect(errCodeId).assertEqual(0)
-      errorManager.off("error", errCodeId).then((data)=>{
-        expect(data).assertEqual(undefined)
-        done();
-      }).catch((err)=>{
-        expect().assertFail()
-        done();
-      })
-    });
-
-    /*
      * @tc.number  SUB_AA_Test_AbilityConstant_0100
      * @tc.name    Test abilityConstant.
      * @tc.desc    Function test
@@ -582,23 +557,22 @@ export default function ApiCoverTest() {
     it('SUB_AA_Test_ProcessRunningInformation_0200', 0, async function (done) {
       let process;
       appManagerNew.getProcessRunningInformation((error, processRunningInformations)=>{
-        if(error.code == 0){
-          console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations));
-          for(let i = 0; i < processRunningInformations.length; i++){
-            console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations[i]));
-            expect(processRunningInformations[i].pid).assertLarger(0)
-            expect(processRunningInformations[i].uid).assertLarger(0)
-            if(processRunningInformations[i].processName == "com.example.apicoverhaptest"){
-            process = processRunningInformations[i]
-          }
-        }
-          expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")
-          done()
-        }else{
-          console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(error));
+        if (error) {
+          console.info("SUB_AA_Test_ProcessRunningInformation_0200:" + JSON.stringify(error));
           expect().assertFail()
           done()
         }
+        console.info("SUB_AA_Test_ProcessRunningInformation_0200:" + JSON.stringify(processRunningInformations));
+        for(let i = 0; i < processRunningInformations.length; i++){
+          console.info("SUB_AA_Test_ProcessRunningInformation_0200:" + JSON.stringify(processRunningInformations[i]));
+          expect(processRunningInformations[i].pid).assertLarger(0)
+          expect(processRunningInformations[i].uid).assertLarger(0)
+          if(processRunningInformations[i].processName == "com.example.apicoverhaptest"){
+            process = processRunningInformations[i]
+          }
+        }
+        expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")
+        done()
       })
     });
 
