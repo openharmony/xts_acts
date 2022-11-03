@@ -370,7 +370,7 @@ export default function ActsAccountAppAccess() {
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountDeleteAccountCredential_0100 add_account_err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
-                appAccountManager.setAccountCredential(name, "PIN", (err, data)=>{
+                appAccountManager.setAccountCredential(name, "PIN", '123456',  (err, data)=>{
                     console.debug("====>ActsAccountDeleteAccountCredential_0100 setAccountCredential_err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.getAccountCredential(name, "PIN", (err, data) =>{
@@ -409,7 +409,7 @@ export default function ActsAccountAppAccess() {
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount(name, 'test_extraInfo').then((data) =>{
                 console.debug("====>ActsAccountDeleteAccountCredential_0200 add_account_success");
-                appAccountManager.setAccountCredential(name, "PIN").then(() =>{
+                appAccountManager.setAccountCredential(name, "PIN", '123456').then(() =>{
                     console.debug("====>ActsAccountDeleteAccountCredential_0200 setAccountCredential_success");
                     appAccountManager.getAccountCredential(name,  "PIN").then((data) =>{
                         console.debug("====>ActsAccountDeleteAccountCredential_0200 getAccountCredential_data:" + JSON.stringify(data));
