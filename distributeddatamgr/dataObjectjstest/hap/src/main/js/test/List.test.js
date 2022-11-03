@@ -13,6 +13,8 @@
 * limitations under the License.
 */
 import objectStoreTest from './ObjectStoreJsunit.test.js'
+import objectStoreTestV9 from './ObjectStoreJsunitV9.test.js'
 export default function testsuite() {
     objectStoreTest()
+    objectStoreTestV9()
 }
