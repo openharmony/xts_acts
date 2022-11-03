@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
+
 import {describe, beforeAll, afterEach, it, expect} from '@ohos/hypium'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
