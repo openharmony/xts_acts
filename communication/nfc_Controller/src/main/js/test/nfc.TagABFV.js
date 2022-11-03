@@ -53,6 +53,7 @@ let aTag = {
         },
     ],
     "tagRfDiscId": 1,
+    "supportedProfiles": 1,
 };
 
 let bTag = {
