@@ -357,15 +357,26 @@ describe('audioCapturer', function () {
         steps.shift();
         let markReachParam = steps[0];
         steps.shift();
-        audioCap.on('markReach', markReachParam, (position) => {
-            console.log(`${Tag} position: ${JSON.stringify(position)}`);
-            console.log(`${Tag} markReachParam: ${JSON.stringify(markReachParam)}`);
-            if (position == markReachParam) {
-                markReachState = 'success'
-                console.info(`${Tag} AudioRenderLog: mark reached:  ${JSON.stringify(position)}`);
+        try {
+            audioCap.on('markReach', markReachParam, (position) => {
+                console.log(`${Tag} position: ${JSON.stringify(position)}`);
+                console.log(`${Tag} markReachParam: ${JSON.stringify(markReachParam)}`);
+                if (position == markReachParam) {
+                    markReachState = 'success'
+                    console.info(`${Tag} AudioRenderLog: mark reached:  ${JSON.stringify(position)}`);
+                }
+            });
+            toNextStep(audioCap, steps, done);
+        }
+        catch (error) {
+            if (error.code == 401){
+                markReachState = 'invalid_failure';
+                toNextStep(audioCap, steps, done);
+            }else{
+                console.info("err" + error.code);
+                toNextStep(audioCap, steps, done);
             }
-        });
-        toNextStep(audioCap, steps, done);
+        }
     });
 
     eventEmitter.on(OFF_MARK_REACH_EVENT, (audioCap, steps, done) => {
@@ -380,15 +391,27 @@ describe('audioCapturer', function () {
         steps.shift();
         let periodReachParam = steps[0];
         steps.shift();
-        audioCap.on('periodReach', periodReachParam, (position) => {
-            console.log(`${Tag} position: ${JSON.stringify(position)}`);
-            console.log(`${Tag} periodReachParam: ${JSON.stringify(periodReachParam)}`);
-            if (position == periodReachParam) {
-                periodReachState = 'success'
-                console.info(`${Tag} AudioRenderLog: mark reached:  ${JSON.stringify(position)}`);
+        try {
+            audioCap.on('periodReach', periodReachParam, (position) => {
+                console.log(`${Tag} position: ${JSON.stringify(position)}`);
+                console.log(`${Tag} periodReachParam: ${JSON.stringify(periodReachParam)}`);
+                if (position == periodReachParam) {
+                    periodReachState = 'success'
+                    console.info(`${Tag} AudioRenderLog: mark reached:  ${JSON.stringify(position)}`);
+                }
+            });
+            toNextStep(audioCap, steps, done);
+        }
+        catch (error) {
+            if (error.code == 401){
+                markReachState = 'invalid_failure';
+                toNextStep(audioCap, steps, done);
+            }else{
+                console.info("err" + error.code);
+                toNextStep(audioCap, steps, done);
             }
-        });
-        toNextStep(audioCap, steps, done);
+        }
+
     });
     eventEmitter.on(OFF_PERIODR_REACH_EVENT, (audioCap, steps, done) => {
         console.log(`${Tag} emit: ${JSON.stringify(OFF_PERIODR_REACH_EVENT)}`);
@@ -421,7 +444,7 @@ describe('audioCapturer', function () {
         console.info(`${Tag} AudioFrameworkTest: beforeAll: Prerequisites at the test suite level`);
         let permissionName1 = 'ohos.permission.MICROPHONE';
         let permissionName2 = 'ohos.permission.MANAGE_AUDIO_CONFIG';
-        let permissionNameList = [permissionName1,permissionName2];
+        let permissionNameList = [permissionName1, permissionName2];
         let appName = 'ohos.acts.multimedia.audio.audiocapturer';
         await audioTestBase.applyPermission(appName, permissionNameList);
         await sleep(100);
@@ -1719,7 +1742,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1300', 2, async function (done) {
         let audioStreamInfo64000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1998,7 +2021,7 @@ describe('audioCapturer', function () {
             console.log(`${Tag} start-getAudioTime-getBufferSize-read-getAudioTimein- err: ${JSON.stringify(err)}`);
             expect(false).assertTrue();
         }
-        try{
+        try {
             await audioCapPromise.stop();
             let audioTime2 = await audioCapPromise.getAudioTime();
             console.log(`${Tag} audioTime2: ${JSON.stringify(audioTime2)}`);
@@ -2007,7 +2030,7 @@ describe('audioCapturer', function () {
             console.log(`${Tag} stop-getAudioTimein- err: ${JSON.stringify(err)}`);
             expect(true).assertTrue();
         }
-            
+
         try {
             await audioCapPromise.release();
         } catch (err) {
@@ -2106,7 +2129,7 @@ describe('audioCapturer', function () {
             console.log(`${Tag} stop ok`);
         } catch (err) {
             console.log(`${Tag} stop err: ${JSON.stringify(err)}`);
-            expect(false).assertTrue();
+            expect(true).assertTrue();
         }
         done();
     })
@@ -2424,7 +2447,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-     it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0100', 2, async function (done) {
         let audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
@@ -2466,15 +2489,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-      /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0200
-     *@tc.name      : AudioRec-Set1
-     *@tc.desc      : record audio with parameter set 1
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0200', 2, async function (done) {
+    /**
+   *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0200
+   *@tc.name      : AudioRec-Set1
+   *@tc.desc      : record audio with parameter set 1
+   *@tc.size      : MEDIUM
+   *@tc.type      : Function
+   *@tc.level     : Level 2
+   */
+    it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0200', 2, async function (done) {
         let audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
@@ -2899,7 +2922,7 @@ describe('audioCapturer', function () {
 
         let audioCap = null;
         let markReachParam = 0;
-        markReachState = 'invalid_failure';
+        markReachState = 'fail';
         let mySteps = [CREATE_EVENT, AudioCapturerOptions, MARK_REACH_EVENT, markReachParam, START_EVENT, GET_BUFFERSIZE_EVENT, READ_EVENT, OFF_MARK_REACH_EVENT, RELEASE_EVENT, END_EVENT];
         eventEmitter.emit(mySteps[0], audioCap, mySteps, done);
     })
@@ -2963,7 +2986,7 @@ describe('audioCapturer', function () {
 
         let audioCap = null;
         let markReachParam = -2;
-        markReachState = 'invalid_failure';
+        markReachState = 'fail';
         let mySteps = [CREATE_EVENT, AudioCapturerOptions, MARK_REACH_EVENT, markReachParam, START_EVENT, GET_BUFFERSIZE_EVENT, READ_EVENT, OFF_MARK_REACH_EVENT, RELEASE_EVENT, END_EVENT];
         eventEmitter.emit(mySteps[0], audioCap, mySteps, done);
     })
@@ -3059,7 +3082,7 @@ describe('audioCapturer', function () {
 
         let audioCap = null;
         let periodReachParam = -2;
-        periodReachState = 'invalid_failure';
+        periodReachState = 'fail';
         let mySteps = [CREATE_EVENT, AudioCapturerOptions, PERIODR_REACH_EVENT, periodReachParam, START_EVENT, GET_BUFFERSIZE_EVENT, READ_EVENT, OFF_PERIODR_REACH_EVENT, RELEASE_EVENT, END_EVENT];
         eventEmitter.emit(mySteps[0], audioCap, mySteps, done);
     })

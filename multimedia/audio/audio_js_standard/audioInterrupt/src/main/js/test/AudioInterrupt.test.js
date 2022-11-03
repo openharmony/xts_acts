@@ -22,7 +22,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import avSession from '@ohos.multimedia.avsession';
 describe('audioInterrupt', function () {
     console.info('audioRenderInterrupt: Create AudioManger Object JS Framework');
-    // const audioManager = audio.getAudioManager();
     let fdRead;
     let readPath;
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
@@ -136,21 +135,9 @@ describe('audioInterrupt', function () {
                 console.info('activated is :' + activated);
                 console.info('InterruptHint is :' + InterruptHint);
                 console.info('InterruptAction.actionType  is :' + InterruptAction.actionType);
-
-              
             }
-            // if (InterruptAction.actionType === 1) {
-            //   console.info('An audio interruption event starts.');
-            //   console.info(`Audio interruption event: ${InterruptAction} `);
-            //   expect(true).assertTrue();
-            //   done();
-            // }
         });
-        // if (activated == false) {
-        //     console.info('activated == false')
-        //     return;
-        // }
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(() => {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
             console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
@@ -163,7 +150,6 @@ describe('audioInterrupt', function () {
             bufferSize = data;
         }).catch((err) => {
             console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
-            // resultFlag = false;
         });
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -194,15 +180,8 @@ describe('audioInterrupt', function () {
                     {
                         want:
                         {
-                            // action: "action.system.home",
-                            // entities: ["entity.system.home"],
-                            // type: "MIMETYPE",
-                            // flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
-                            // deviceId: "",
                             bundleName: "com.example.audiorenderinterrupt",
-                            /* FA模型中abilityName由package + Ability name组成 */
                             abilityName: "com.example.entry.MainAbility",
-                            // uri: ""
                         },
                     }
                 ).then((data) => {
