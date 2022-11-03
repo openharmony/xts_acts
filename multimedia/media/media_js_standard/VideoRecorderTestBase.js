@@ -27,48 +27,72 @@ const BITRATE_DELTA_TIME = 20000;
 const PLAY_TIME = 1000;
 
 
-export async function initCaptureSession(videoOutPut, cameraManager, cameras, cameraID) {
-    let cameraInput = await cameraManager.createCameraInput(cameras[cameraID].cameraId);
+export async function initCaptureSession(videoOutPut, cameraManager, cameraDevice, previewOutput) {
+    let cameraInput = await cameraManager.createCameraInput(cameraDevice);
     if (cameraInput != null) {
         console.info('[camera] case createCameraInput success');
     } else {
         console.info('[camera] case createCameraInput failed');
         return;
     }
-    let captureSession = await camera.createCaptureSession(null);
+    await cameraInput.open((err) => {
+        if(err){
+            console.info('[camera] cameraInput open Failed');
+            return
+        }
+        console.info('[camera] cameraInput open success');
+    })
+    let captureSession = await cameraManager.createCaptureSession();
     await captureSession.beginConfig();
     await captureSession.addInput(cameraInput);
+    await captureSession.addOutput(previewOutput);
     await captureSession.addOutput(videoOutPut);
     await captureSession.commitConfig();
+    await captureSession.start();
     return captureSession;
 }
 
 export async function stopCaptureSession(captureSession) {
-    await captureSession.release();
+    await captureSession.stop().then(() => {
+        console.info('[camera] case captureSession stop success');
+    });
+    await captureSession.release().then(() => {
+        console.info('[camera] case captureSession release success');
+    });
 }
 
-export function getTrackArray(videoType, recorderConfigFile) {
+export function getTrackArray(videoType, recorderConfigFile, sourceType) {
     if (videoType == AUDIO_VIDEO_TYPE) {
         let audioTrack = new Array(recorderConfigFile.audioBitrate, recorderConfigFile.audioChannels,
                                    'audio/mpeg', recorderConfigFile.audioSampleRate);
         let videoTrack = null;
-        if (recorderConfigFile.videoCodec == 'video/avc') {
+        if (sourceType == media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES) {
             videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
             recorderConfigFile.videoFrameWidth);
         } else {
-            videoTrack = new Array('video/mpeg', recorderConfigFile.videoFrameHeight,
-            recorderConfigFile.videoFrameWidth);
+            if (recorderConfigFile.videoCodec == 'video/avc') {
+                videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
+                recorderConfigFile.videoFrameWidth);
+            } else {
+                videoTrack = new Array('video/mpeg', recorderConfigFile.videoFrameHeight,
+                recorderConfigFile.videoFrameWidth);
+            }
         }
         let trackArray = new Array(videoTrack, audioTrack);
         return trackArray;
     } else if (videoType == ONLYVIDEO_TYPE) {
         let videoTrack = null;
-        if (recorderConfigFile.videoCodec == 'video/avc') {
+        if (sourceType == media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES) {
             videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
             recorderConfigFile.videoFrameWidth);
         } else {
-            videoTrack = new Array('video/mpeg', recorderConfigFile.videoFrameHeight,
-            recorderConfigFile.videoFrameWidth);
+            if (recorderConfigFile.videoCodec == 'video/avc') {
+                videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
+                recorderConfigFile.videoFrameWidth);
+            } else {
+                videoTrack = new Array('video/mpeg', recorderConfigFile.videoFrameHeight,
+                recorderConfigFile.videoFrameWidth);
+            }
         }
         let trackArray = new Array(videoTrack);
         return trackArray;
@@ -115,6 +139,12 @@ export async function checkVideos(playFdPath, duration, trackArray, playerSurfac
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
     console.info('[checkVideos] case checkVideos fdPath is :' + playFdPath);
 
+    videoPlayer.on('error', (error) => {
+        console.info(`case error called,errMessage is ${error.message}`);
+        expect().assertFail();
+        return;
+    });
+
     videoPlayer.url = playFdPath;
     let tarckType = undefined;
     if (playerSurfaceId != null) {
@@ -140,20 +170,6 @@ export async function checkVideos(playFdPath, duration, trackArray, playerSurfac
             console.info('case getTrackDescription is failed');
             expect().assertFail();
         }
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-    
-    let startTime = videoPlayer.currentTime;
-    await videoPlayer.play().then(() => {
-        console.info('case play called!!');
-        mediaTestBase.msleep(PLAY_TIME);
-        expect(videoPlayer.state).assertEqual('playing');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-    let endTime = videoPlayer.currentTime;
-    expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
-
-    await videoPlayer.stop().then(() => {
-        console.info('case stop called!!');
-        expect(videoPlayer.state).assertEqual('stopped');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
     await videoPlayer.release().then(() => {
