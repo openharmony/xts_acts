@@ -148,6 +148,113 @@ async function testMDDigestCallback(MDAlgoName) {
   });
 }
 
+async function testMDDigestCallbackLen(MDAlgoName, DatablobLen) {
+  var globalMd;
+  var i;
+  var globalText;
+  var t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz",n = t.length,s="";
+  for (i = 0; i < DatablobLen; i++){
+    globalText += t.charAt(Math.floor(Math.random() * n));
+  }
+  console.warn("Datablob = " + globalText);
+  var ginBlob = {
+    data: stringTouInt8Array(globalText),
+  };
+
+  return new Promise((resolve, reject) => {
+    globalMd = cryptoFramework.createMd(MDAlgoName);
+    expect(globalMd != null).assertTrue();
+    console.warn("md= " + globalMd);
+    console.warn("MD algName is: " + globalMd.algName);
+
+    updateMd(globalMd, ginBlob)
+      .then((updateData) => {
+        expect(updateData === "update success").assertTrue();
+        return digestMd(globalMd);
+      })
+      .then((digestBlob) => {
+        console.warn(
+          "[callback]: digest result: " + uInt8ArrayToShowStr(digestBlob.data)
+        );
+        let mdLen = globalMd.getMdLength();
+        console.warn("Md len: " + mdLen);
+        expect(digestBlob != null && mdLen != 0 && mdLen != null).assertTrue();
+        resolve();
+      })
+      .catch((err) => {
+        console.error("testMDDigestCallback catch error: " + err);
+        reject(err);
+      });
+  });
+}
+
+async function testMDDigestCallbackLenNull(MDAlgoName) {
+  var globalMd;
+  var globalText1 = null;
+  var globalText2 = 0;
+  var inBlob = {
+    data: stringTouInt8Array(globalText2),
+  };
+
+  return new Promise((resolve, reject) => {
+    globalMd = cryptoFramework.createMd(MDAlgoName);
+    expect(globalMd != null).assertTrue();
+    console.warn("md= " + globalMd);
+    console.warn("MD algName is: " + globalMd.algName);
+
+    updateMd(globalMd, globalText1)
+      .then((updateData) => {
+        console.warn("updateData: " + updateData);
+      })
+      .catch((err) => {
+        console.error("testMDDigestCallback catch error1: " + err);
+        expect(err == "Error: inBlob is null").assertTrue();
+      });
+
+    updateMd(globalMd, inBlob)
+      .then((updateData) => {
+        console.warn("updateData: " + updateData);
+        reject();
+      })
+      .catch((err) => {
+        console.error("testMDDigestCallback catch error2: " + err);
+        expect(err == "Error: inBlob is null").assertTrue();
+        resolve();
+      });
+  });
+}
+
+async function testMDErrorAlgorithm(MDAlgoName) {
+  var globalMd;
+
+  return new Promise((resolve, reject) => {
+    console.warn("md= test begin");
+    try {
+      globalMd = cryptoFramework.createMd(MDAlgoName);
+      reject();
+    } catch (error) {
+      console.error("[Promise]: error code: " + error.code + ", message is: " + error.message);
+      expect(error.code == 801).assertTrue();
+      resolve();
+    }
+  });
+}
+
+async function testMDErrorAlgorithmNull(MDAlgoName) {
+  var globalMd;
+
+  return new Promise((resolve, reject) => {
+    try {
+      globalMd = cryptoFramework.createMd(MDAlgoName);
+      reject();
+    } catch (error) {
+      console.error("[Promise]: error code: " + error.code + ", message is: " + error.message);
+      expect(error.code == 401).assertTrue();
+      resolve();
+    }
+  });
+}
+
 async function testHMACDigestCallback(HMACAlgoName, keyAlgoName) {
   var globalHMAC;
   var globalText = "my test data";
@@ -193,4 +300,5 @@ async function testHMACDigestCallback(HMACAlgoName, keyAlgoName) {
   });
 }
 
-export { testMDDigestCallback, testHMACDigestCallback };
+export { testMDDigestCallback, testHMACDigestCallback, testMDErrorAlgorithm,
+  testMDErrorAlgorithmNull, testMDDigestCallbackLen, testMDDigestCallbackLenNull };

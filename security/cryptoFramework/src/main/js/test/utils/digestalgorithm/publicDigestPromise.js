@@ -60,7 +60,7 @@ async function testHMACDigestPromise(HMACAlgoName, keyAlgoName) {
   var globalHMAC;
   var globalText = "my test data";
   var globalsymKeyGenerator;
-  var ginBlob = {
+  var inBlob = {
     data: stringTouInt8Array(globalText),
   };
 
@@ -71,6 +71,7 @@ async function testHMACDigestPromise(HMACAlgoName, keyAlgoName) {
     console.warn("HMAC algName is: " + globalHMAC.algName);
     console.log("start to call createSymKeyGenerator()");
     globalsymKeyGenerator = cryptoFramework.createSymKeyGenerator(keyAlgoName);
+    console.warn("symKeyGenerator algName:" + globalsymKeyGenerator.algName);
     expect(globalsymKeyGenerator != null).assertTrue();
     console.log("createSymKeyGenerator ok");
     console.warn("symKeyGenerator algName:" + globalsymKeyGenerator.algName);
@@ -89,7 +90,7 @@ async function testHMACDigestPromise(HMACAlgoName, keyAlgoName) {
         return promiseMacInit;
       })
       .then(() => {
-        var promiseMacUpdate = globalHMAC.update(ginBlob);
+        var promiseMacUpdate = globalHMAC.update(inBlob);
         return promiseMacUpdate;
       })
       .then(() => {
@@ -110,4 +111,187 @@ async function testHMACDigestPromise(HMACAlgoName, keyAlgoName) {
   });
 }
 
-export { testMDDigestPromise, testHMACDigestPromise };
+async function testHMACErrorAlgorithm(HMACAlgoName1, HMACAlgoName2) {
+  var globalHMAC;
+  var globalText = "my test data";
+  var inBlob = {
+    data: stringTouInt8Array(globalText),
+  };
+
+  return new Promise((resolve, reject) => {
+    try {
+      globalHMAC = cryptoFramework.createMac(HMACAlgoName1);
+      reject();
+    } catch (error) {
+      console.error("[Promise]: error code1: " + error.code + ", message is: " + error.message);
+      expect(error.code == 801).assertTrue();
+    }
+    try {
+      globalHMAC = cryptoFramework.createMac(HMACAlgoName2);
+      reject();
+    } catch (error) {
+      console.error("[Promise]: error code2: " + error.code + ", message is: " + error.message);
+      expect(error.code == 401).assertTrue();
+      resolve();
+    }
+  });
+}
+
+async function testHMACDigestPromiseErrorKey(HMACAlgoName, keyAlgoName) {
+  var globalHMAC;
+  var globalText = "my test data";
+  let globalsymKeyGenerator;
+  var inBlob = {
+    data: stringTouInt8Array(globalText),
+  };
+
+  return new Promise((resolve, reject) => {
+    globalHMAC = cryptoFramework.createMac(HMACAlgoName);
+    expect(globalHMAC != null).assertTrue();
+    console.warn("mac= " + globalHMAC);
+    console.warn("HMAC algName is: " + globalHMAC.algName);
+    console.log("start to call createSymKeyGenerator()");
+    try {
+      globalsymKeyGenerator = cryptoFramework.createAsyKeyGenerator(keyAlgoName);
+    } catch (error) {
+      console.error("[Promise]: error code1: " + error.code + ", message is: " + error.message);
+    }
+    console.warn("symKeyGenerator algName:" + globalsymKeyGenerator.algName);
+    expect(globalsymKeyGenerator != null).assertTrue();
+    console.log("createSymKeyGenerator ok");
+    let key = globalsymKeyGenerator.generateKeyPair();
+    try {
+      var promiseMacInit = globalHMAC.init(key);
+      expect(promiseMacInit == null).assertTrue();
+      reject();
+    } catch (error) {
+      console.error("[Promise]init(key): error code: " + error.code + ", message is: " + error.message);
+      expect(error.code == 401).assertTrue();
+      resolve();
+    };
+    try {
+      var promiseMacInit = globalHMAC.init(null);
+      expect(promiseMacInit == null).assertTrue();
+      reject();
+    } catch (error) {
+      console.error("[Promise]init(null): error code: " + error.code + ", message is: " + error.message);
+      expect(error.code == 401).assertTrue();
+      resolve();
+    };
+  });
+}
+
+async function testHMACDigestPromiseDatablobNull(HMACAlgoName, keyAlgoName) {
+  var globalHMAC;
+  var globalText = "my test data";
+  var globalsymKeyGenerator;
+  var inBlob = {
+    data: stringTouInt8Array(globalText),
+  };
+
+  return new Promise((resolve, reject) => {
+    globalHMAC = cryptoFramework.createMac(HMACAlgoName);
+    expect(globalHMAC != null).assertTrue();
+    console.warn("mac= " + globalHMAC);
+    console.warn("HMAC algName is: " + globalHMAC.algName);
+    console.log("start to call createSymKeyGenerator()");
+    globalsymKeyGenerator = cryptoFramework.createSymKeyGenerator(keyAlgoName);
+    console.warn("symKeyGenerator algName:" + globalsymKeyGenerator.algName);
+    expect(globalsymKeyGenerator != null).assertTrue();
+    console.log("createSymKeyGenerator ok");
+    console.warn("symKeyGenerator algName:" + globalsymKeyGenerator.algName);
+    globalsymKeyGenerator
+      .generateSymKey()
+      .then((key) => {
+        expect(key != null).assertTrue();
+        console.warn("generateSymKey ok");
+        console.warn("key algName:" + key.algName);
+        console.warn("key format:" + key.format);
+        var encodedKey = key.getEncoded();
+        console.warn(
+          "key getEncoded hex: " + uInt8ArrayToShowStr(encodedKey.data)
+        );
+        var promiseMacInit = globalHMAC.init(key);
+        return promiseMacInit;
+      })
+      .then(() => {
+        try {
+          var promiseMacUpdate = globalHMAC.update(null);
+          console.warn("promiseMacUpdate:" + promiseMacUpdate);
+        } catch (error) {
+          console.error("[Promise]: error code: " + error.code + ", message is: " + error.message);
+          expect(error.code == 401).assertTrue();
+          resolve();
+        }
+      })
+      .then(() => {
+        var promiseMacdoFinal = globalHMAC.doFinal();
+          return promiseMacdoFinal;
+      })
+      .catch((err) => {
+        console.error("[promise]catch err:" + err);
+        reject(err);
+      });
+  });
+}
+
+async function testHMACDigestPromiseDatablobLong(HMACAlgoName, keyAlgoName, DatablobLen) {
+  var globalHMAC;
+  var globalsymKeyGenerator;
+  var i;
+  var globalText;
+  var t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz",n = t.length,s="";
+  for (i = 0; i < DatablobLen; i++){
+    globalText += t.charAt(Math.floor(Math.random() * n));
+  }
+  console.warn("Datablob = " + globalText);
+  var inBlob = {
+    data: stringTouInt8Array(globalText),
+  };
+
+  return new Promise((resolve, reject) => {
+    globalHMAC = cryptoFramework.createMac(HMACAlgoName);
+    resolve();
+    expect(globalHMAC != null).assertTrue();
+    console.warn("mac= " + globalHMAC);
+    console.warn("HMAC algName is: " + globalHMAC.algName);
+    console.log("start to call createSymKeyGenerator()");
+    globalsymKeyGenerator = cryptoFramework.createSymKeyGenerator(keyAlgoName);
+    console.warn("symKeyGenerator algName:" + globalsymKeyGenerator.algName);
+    expect(globalsymKeyGenerator != null).assertTrue();
+    console.log("createSymKeyGenerator ok");
+    globalsymKeyGenerator
+      .generateSymKey()
+      .then((key) => {
+        expect(key != null).assertTrue();
+        console.warn("generateSymKey ok");
+        console.warn("key algName:" + key.algName);
+        console.warn("key format:" + key.format);
+        var encodedKey = key.getEncoded();
+        console.warn(
+          "key getEncoded hex: " + uInt8ArrayToShowStr(encodedKey.data)
+        );
+        var promiseMacInit = globalHMAC.init(key);
+        return promiseMacInit;
+      })
+      .then(() => {
+        try {
+          var promiseMacUpdate = globalHMAC.update(inBlob);
+          console.log("promiseMacUpdate = " + promiseMacUpdate);
+        } catch (error) {
+          console.error("[Promise]: error code: " + error.code + ", message is: " + error.message);
+        }
+      })
+      .then(() => {
+        var promiseMacdoFinal = globalHMAC.doFinal();
+        console.log("promiseMacdoFinal = " + promiseMacdoFinal);
+        return promiseMacdoFinal;
+      })
+      .catch((err) => {
+        console.error("[promise]catch err:" + err);
+        reject(err);
+      });
+  });
+}
+export { testMDDigestPromise, testHMACDigestPromise,  testHMACErrorAlgorithm,
+  testHMACDigestPromiseErrorKey, testHMACDigestPromiseDatablobNull, testHMACDigestPromiseDatablobLong };
