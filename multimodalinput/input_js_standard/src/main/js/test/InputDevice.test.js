@@ -136,7 +136,7 @@ describe('MultimodalInput_Device_test', function () {
         expect(false).assertTrue();
       } else {
         for (let i = 0; i < data.length; ++i) {
-          inputDevice.supportKeys(data[i], [17, 22, 2055], (res, err) => {
+          inputDevice.supportKeys(data[i], [17, 22, 2055], (err, res) => {
             expect(res).assertInstanceOf('Array');
           });
         }
@@ -166,7 +166,7 @@ describe('MultimodalInput_Device_test', function () {
         expect(false).assertTrue();
       } else {
         for (let i = 0; i < data.length; ++i) {
-          inputDevice.getKeyboardType(data[i], (res, err) => {
+          inputDevice.getKeyboardType(data[i], (err, res) => {
             expect(res).assertInstanceOf('Number');
           });
         }
