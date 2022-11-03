@@ -352,7 +352,14 @@ export default function cameraSessionTest(surfaceId: any) {
             return false;
         }
         
-        mCameraInput = await mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
+        mCameraInput = null;
+        await mCameraManager.createCameraInput(mCameraDevicesArray[idx]).then((result) => {
+            console.info('createCameraInput success');
+            mCameraInput = result;
+        }).catch((err) => {
+            console.info('createCameraInput failed, err = ' + err.message);
+        });
+
         if (isEmpty(mCameraInput)) {
             console.info(TAG + "createCameraInput FAILED");
             return false;
@@ -392,61 +399,73 @@ export default function cameraSessionTest(surfaceId: any) {
     async function createOutput(idx:any) {
         console.info('Enter createOutput');
 
-        let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
-        if (!isEmpty(cameraOutputCap.previewProfiles)) {
-            console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
-            for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
-                mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
-                if (!isEmpty(mPreviewOutput)) {
-                    break;
-                }
-            }
+        let cameraOutputCap = null;
+        await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]).then((result) => {
+            console.info('getSupportedOutputCapability success');
+            cameraOutputCap = result;
+        }).catch((err) => {
+            console.info('getSupportedOutputCapability failed, err = ' + err.message);
+            mPreviewOutput = null;
+            mPhotoOutput = null;
+        });
 
-            if (isEmpty(mPreviewOutput)) {
-                console.info(TAG + "createPreviewOutput FAILED");
-            }
-
-            console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
-        }
-
-        if (!isEmpty(cameraOutputCap.photoProfiles)) {
-            console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
-                
-            for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
-                mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhotoSurface);
-                if (!isEmpty(mPhotoOutput)) {
-                    break;
-                }
-            }
-
-            if (isEmpty(mPhotoOutput)) {
-                    console.info(TAG + "createPhotoOutput FAILED");
-            }
-
-            console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
-        }
-        /*
-        if (!isEmpty(cameraOutputCap.videoProfiles)) {
-            console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
-            for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
-                try {
-                    mVideoOutput = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
-                    if (!isEmpty(mVideoOutput)) {
+        if (!isEmpty(cameraOutputCap)) {
+            if (!isEmpty(cameraOutputCap.previewProfiles)) {
+                console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
+                for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
+                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
+                    if (!isEmpty(mPreviewOutput)) {
                         break;
                     }
                 }
-                catch {
+    
+                if (isEmpty(mPreviewOutput)) {
+                    console.info(TAG + "createPreviewOutput FAILED");
+                }
+    
+                console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
+            }
+    
+            if (!isEmpty(cameraOutputCap.photoProfiles)) {
+                console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
+                    
+                for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
+                    mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhotoSurface);
+                    if (!isEmpty(mPhotoOutput)) {
+                        break;
+                    }
+                }
+    
+                if (isEmpty(mPhotoOutput)) {
+                        console.info(TAG + "createPhotoOutput FAILED");
+                }
+    
+                console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
+            }
+            /*
+            if (!isEmpty(cameraOutputCap.videoProfiles)) {
+                console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
+                for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
+                    try {
+                        mVideoOutput = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
+                        if (!isEmpty(mVideoOutput)) {
+                            break;
+                        }
+                    }
+                    catch {
+                        console.info(TAG + "createVideoOutput FAILED");
+                    }
+                }
+    
+                if (isEmpty(mVideoOutput)) {
                     console.info(TAG + "createVideoOutput FAILED");
                 }
+    
+                console.info(TAG + "createVideoOutput: " + mVideoOutput);  
             }
-
-            if (isEmpty(mVideoOutput)) {
-                console.info(TAG + "createVideoOutput FAILED");
-            }
-
-            console.info(TAG + "createVideoOutput: " + mVideoOutput);  
+            */
         }
-        */
+        
         console.info('Exit createOutputs');
 
         return true;
@@ -518,7 +537,7 @@ export default function cameraSessionTest(surfaceId: any) {
             }
         })
         
-        await sleep(1000);
+        await sleep(100);
         */
         console.info(TAG + "Exit startCameraSession");
 
@@ -537,7 +556,7 @@ export default function cameraSessionTest(surfaceId: any) {
             }
         })
 
-        await sleep(1000);
+        await sleep(100);
         */
 
         if (!isEmpty(mCameraInput)) {
@@ -925,28 +944,30 @@ export default function cameraSessionTest(surfaceId: any) {
     
                     await startCameraSession(i);
     
-                    mCameraSession.start(async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 start callback");
-                        if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 start PASSED");
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 start FAILED : " + err.message);
-                            expect().assertFail();
-                        }
-                    })
-                    await sleep(2000);
-
-                    mCameraSession.stop(async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 stop callback");
-                        if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 stop PASSED");
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 stop FAILED : " + err.message);
-                            expect().assertFail();
-                        }
-                    })
-                    await sleep(500);
-
+                    if (!isEmpty(mPreviewOutput)) {
+                        mCameraSession.start(async (err) => {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 start callback");
+                            if (!err) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 start PASSED");
+                            } else {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 start FAILED : " + err.message);
+                                expect().assertFail();
+                            }
+                        })
+                        await sleep(2000);
+    
+                        mCameraSession.stop(async (err) => {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 stop callback");
+                            if (!err) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 stop PASSED");
+                            } else {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_CALLBACK_0100 stop FAILED : " + err.message);
+                                expect().assertFail();
+                            }
+                        })
+                        await sleep(500);
+                    }
+                    
                     await beginCameraSessionConfig();
                     
                     await stopCameraSession();
@@ -981,13 +1002,15 @@ export default function cameraSessionTest(surfaceId: any) {
     
                     await startCameraSession(i);
     
-                    await mCameraSession.start();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 start PASSED");
-                    await sleep(2000);
+                    if (!isEmpty(mPreviewOutput)) {
+                        await mCameraSession.start();
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 start PASSED");
+                        await sleep(2000);
 
-                    await mCameraSession.stop();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 stop PASSED");
-                    await sleep(500);
+                        await mCameraSession.stop();
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 stop PASSED");
+                        await sleep(500);
+                    }
 
                     await beginCameraSessionConfig();
                     
@@ -1023,37 +1046,39 @@ export default function cameraSessionTest(surfaceId: any) {
 
                     await createInput(i);
                     await createOutput(i);
+
+                    if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
+                        mCameraSession.addInput(mCameraInput, async (err) => {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 callback");
+                            if (!err) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 PASSED");
+                            } else {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 FAILED : " + err.message);
+                                expect().assertFail();
+                            }
+                        })
+                        await mCameraSession.addOutput(mPreviewOutput);
+                        await mCameraSession.addOutput(mPhotoOutput);
+                        await sleep(500);
     
-                    mCameraSession.addInput(mCameraInput, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 callback");
-                        if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 PASSED");
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 FAILED : " + err.message);
-                            expect().assertFail();
-                        }
-                    })
-                    await mCameraSession.addOutput(mPreviewOutput);
-                    await mCameraSession.addOutput(mPhotoOutput);
-                    await sleep(500);
-
-                    await commitCameraSessionConfig();
-                    await sleep(1);
-                    await beginCameraSessionConfig();
-                    await sleep(1);
-
-                    mCameraSession.removeInput(mCameraInput, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 callback");
-                        if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 PASSED");
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 FAILED : " + err.message);
-                            expect().assertFail();
-                        }
-                    })
-                    await mCameraSession.removeOutput(mPreviewOutput);
-                    await mCameraSession.removeOutput(mPhotoOutput);
-                    await sleep(500);
+                        await commitCameraSessionConfig();
+                        await sleep(1);
+                        await beginCameraSessionConfig();
+                        await sleep(1);
+    
+                        mCameraSession.removeInput(mCameraInput, async (err) => {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 callback");
+                            if (!err) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 PASSED");
+                            } else {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 FAILED : " + err.message);
+                                expect().assertFail();
+                            }
+                        })
+                        await mCameraSession.removeOutput(mPreviewOutput);
+                        await mCameraSession.removeOutput(mPhotoOutput);
+                        await sleep(500);
+                    }
 
                     await releaseInput();
                     await releaseOutput();
@@ -1089,20 +1114,22 @@ export default function cameraSessionTest(surfaceId: any) {
                     await createInput(i);
                     await createOutput(i);
     
-                    await mCameraSession.addInput(mCameraInput);
-                    await mCameraSession.addOutput(mPreviewOutput);
-                    await mCameraSession.addOutput(mPhotoOutput);
-                    await sleep(500);
+                    if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
+                        await mCameraSession.addInput(mCameraInput);
+                        await mCameraSession.addOutput(mPreviewOutput);
+                        await mCameraSession.addOutput(mPhotoOutput);
+                        await sleep(500);
 
-                    await commitCameraSessionConfig();
-                    await sleep(1);
-                    await beginCameraSessionConfig();
-                    await sleep(1);
-    
-                    await mCameraSession.removeInput(mCameraInput);
-                    await mCameraSession.removeOutput(mPreviewOutput);
-                    await mCameraSession.removeOutput(mPhotoOutput);
-                    await sleep(500);
+                        await commitCameraSessionConfig();
+                        await sleep(1);
+                        await beginCameraSessionConfig();
+                        await sleep(1);
+        
+                        await mCameraSession.removeInput(mCameraInput);
+                        await mCameraSession.removeOutput(mPreviewOutput);
+                        await mCameraSession.removeOutput(mPhotoOutput);
+                        await sleep(500);
+                    }
 
                     await releaseInput();
                     await releaseOutput();
@@ -1135,7 +1162,7 @@ export default function cameraSessionTest(surfaceId: any) {
                 await createInput(0);
                 await createOutput(0);
 
-                if (!isEmpty(mPreviewOutput)) {
+                if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
                     mCameraSession.addOutput(mPreviewOutput, async (err) => {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_CALLBACK_0100 add callback");
                         if (!err) {
@@ -1199,7 +1226,7 @@ export default function cameraSessionTest(surfaceId: any) {
                 await createInput(0);
                 await createOutput(0);
 
-                if (!isEmpty(mPreviewOutput)) {
+                if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
                     await mCameraSession.addOutput(mPreviewOutput);
                     await mCameraSession.addOutput(mPhotoOutput);
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100 add PASSED");
@@ -1515,60 +1542,63 @@ export default function cameraSessionTest(surfaceId: any) {
     
                     await startCameraSession(i);
 
-                    let focusModeSupportedFlag = await mCameraSession.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_AUTO);
-                    if (focusModeSupportedFlag == false) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 skip camera[" + i + "], for FOCUS_MODE_AUTO");
-                        await beginCameraSessionConfig();
-                        await stopCameraSession();
-                        continue;
-                    }
-
-                    focusModeSupportedFlag = await mCameraSession.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
-                    if (focusModeSupportedFlag == false) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 skip camera[" + i + "], for FOCUS_MODE_CONTINUOUS_AUTO");
-                        await beginCameraSessionConfig();
-                        await stopCameraSession();
-                        continue;
-                    }
-    
-                    mCameraSession.on('focusStateChange', async (err, data) => {
-                        if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 callback");
-                            if (data != null || data != undefined) {
-                                console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 PASSED: " + data);
-                                nfyFlag = true;
-                            }
-                        } else {
-                            expect().assertFail();
-                            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 FAILED: " + err.message);
+                    if (!isEmpty(mPreviewOutput)) {
+                        let focusModeSupportedFlag = await mCameraSession.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_AUTO);
+                        if (focusModeSupportedFlag == false) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 skip camera[" + i + "], for FOCUS_MODE_AUTO");
+                            await beginCameraSessionConfig();
+                            await stopCameraSession();
+                            continue;
                         }
-                        await sleep(1);
-                    })
 
-                    await mCameraSession.start();
+                        focusModeSupportedFlag = await mCameraSession.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
+                        if (focusModeSupportedFlag == false) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 skip camera[" + i + "], for FOCUS_MODE_CONTINUOUS_AUTO");
+                            await beginCameraSessionConfig();
+                            await stopCameraSession();
+                            continue;
+                        }
+        
+                        mCameraSession.on('focusStateChange', async (err, data) => {
+                            if (!err) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 callback");
+                                if (data != null || data != undefined) {
+                                    console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 PASSED: " + data);
+                                    nfyFlag = true;
+                                }
+                            } else {
+                                expect().assertFail();
+                                console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 FAILED: " + err.message);
+                            }
+                            await sleep(1);
+                        })
 
-                    await beginCameraSessionConfig();
-    
-                    mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_AUTO);
+                        await mCameraSession.start();
 
-                    await commitCameraSessionConfig();
+                        await beginCameraSessionConfig();
+        
+                        mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_AUTO);
 
-                    await sleep(1000);
+                        await commitCameraSessionConfig();
 
-                    await beginCameraSessionConfig();
-    
-                    mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
+                        await sleep(100);
 
-                    await commitCameraSessionConfig();
-    
-                    await sleep(1000);
-    
-                    if (nfyFlag == false) {
-                        //expect().assertFail();
-                        //console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 FAILED without any nofity!");
+                        await beginCameraSessionConfig();
+        
+                        mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
+
+                        await commitCameraSessionConfig();
+        
+                        await sleep(100);
+        
+                        if (nfyFlag == false) {
+                            //expect().assertFail();
+                            //console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0100 FAILED without any nofity!");
+                        }
+                            
+                        await mCameraSession.stop();
                     }
-                        
-                    await mCameraSession.stop();
+
                     await beginCameraSessionConfig();
                     await stopCameraSession();
     
@@ -1603,27 +1633,32 @@ export default function cameraSessionTest(surfaceId: any) {
     
                     await startCameraSession(i);
     
-                    mCameraSession.on('error', async (err, data) => {
-                        if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0101 callback");
-                            if (data != null || data != undefined) {
-                                console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0101 PASSED: " + data);
-                                nfyFlag = true;
+                    if (!isEmpty(mPreviewOutput)) {
+                        mCameraSession.on('error', async (err, data) => {
+                            if (!err) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0101 callback");
+                                if (data != null || data != undefined) {
+                                    console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0101 PASSED: " + data);
+                                    nfyFlag = true;
+                                }
+                            } else {
+                                expect().assertFail();
+                                console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0101 FAILED: " + err.message);
                             }
-                        } else {
-                            expect().assertFail();
-                            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0101 FAILED: " + err.message);
-                        }
-                        await sleep(1);
-                    })
-    
-                    await sleep(3000);
-    
-                    if (nfyFlag == false) {
-                        //expect().assertFail();
-                        //console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0101 FAILED without any nofity!");
-                    }
+                            await sleep(1);
+                        })
 
+                        await mCameraSession.start();
+        
+                        await sleep(400);
+        
+                        if (nfyFlag == false) {
+                            //expect().assertFail();
+                            //console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_STATUS_CALLBACK_0101 FAILED without any nofity!");
+                        }
+
+                        await mCameraSession.stop();
+                    }
                     await beginCameraSessionConfig();
                     await stopCameraSession();
     

@@ -27,6 +27,7 @@ let captureLocation = {
   longitude: 0,
   altitude: 0,
 }
+
 let captureSetting = {
   quality: cameraObj.QualityLevel.QUALITY_LEVEL_LOW,
   rotation: cameraObj.ImageRotation.ROTATION_0,
@@ -780,18 +781,21 @@ export default function cameraJSUnitOutput(surfaceId: any) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 captureSession == null || undefined")
         expect().assertFail();
       } else {
-        captureSession.addOutput(metadataOutput, async (err) => {
-          if (!err) {
-            expect(true).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 success");
-          } else {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 FAILED: " + err.message);
-            expect().assertFail();
-          }
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 ends here");
-          await sleep(1000);
-          done();
-        })
+        if (!isEmpty(metadataOutput)) {
+          captureSession.addOutput(metadataOutput, async (err) => {
+            if (!err) {
+              expect(true).assertTrue();
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 success");
+            } else {
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 FAILED: " + err.message);
+              expect().assertFail();
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 ends here");
+            await sleep(1000);
+            done();
+          })
+        }
+        
       }
       await sleep(1000);
       done();
@@ -1101,7 +1105,7 @@ export default function cameraJSUnitOutput(surfaceId: any) {
           expect().assertFail();
         });
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + boundingBox.width + "x" + boundingBox.height);
-	console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + boundingBox.topLeftX + "x" + boundingBox.topLeftY);
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + boundingBox.topLeftX + "x" + boundingBox.topLeftY);
       }
       await sleep(1000);
       done();

@@ -412,7 +412,14 @@ export default function cameraSessionExposureTest(surfaceId: any) {
             return false;
         }
         
-        mCameraInput = await mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
+        mCameraInput = null;
+        await mCameraManager.createCameraInput(mCameraDevicesArray[idx]).then((result) => {
+            console.info('createCameraInput success');
+            mCameraInput = result;
+        }).catch((err) => {
+            console.info('createCameraInput failed, err = ' + err.message);
+        });
+        
         if (isEmpty(mCameraInput)) {
             console.info(TAG + "createCameraInput FAILED");
             return false;
@@ -452,68 +459,80 @@ export default function cameraSessionExposureTest(surfaceId: any) {
     async function createOutput(idx:any) {
         console.info('Enter createOutput');
 
-        let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
-        if (!isEmpty(cameraOutputCap.previewProfiles)) {
-            console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
-            for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
-                mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
-                if (!isEmpty(mPreviewOutput)) {
-                    break;
-                }
-            }
+        let cameraOutputCap = null;
+        await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]).then((result) => {
+            console.info('getSupportedOutputCapability success');
+            cameraOutputCap = result;
+        }).catch((err) => {
+            console.info('getSupportedOutputCapability failed, err = ' + err.message);
+            mPreviewOutput = null;
+            mPhotoOutput = null;
+        });
 
-            if (isEmpty(mPreviewOutput)) {
-                console.info(TAG + "createPreviewOutput FAILED");
-            }
-
-            console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
-        }
-
-        if (!isEmpty(cameraOutputCap.photoProfiles)) {
-            console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
-                
-            for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
-                mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhotoSurface);
-                if (!isEmpty(mPhotoOutput)) {
-                    break;
-                }
-            }
-
-            if (isEmpty(mPhotoOutput)) {
-                    console.info(TAG + "createPhotoOutput FAILED");
-            }
-
-            console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
-        }
-        /*
-        if (!isEmpty(cameraOutputCap.videoProfiles)) {
-            console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
-            for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
-                try {
-                    mVideoOutput = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
-                    if (!isEmpty(mVideoOutput)) {
+        if (!isEmpty(cameraOutputCap)) {
+            if (!isEmpty(cameraOutputCap.previewProfiles)) {
+                console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
+                for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
+                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
+                    if (!isEmpty(mPreviewOutput)) {
                         break;
                     }
                 }
-                catch {
+    
+                if (isEmpty(mPreviewOutput)) {
+                    console.info(TAG + "createPreviewOutput FAILED");
+                }
+    
+                console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
+            }
+    
+            if (!isEmpty(cameraOutputCap.photoProfiles)) {
+                console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
+                    
+                for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
+                    mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhotoSurface);
+                    if (!isEmpty(mPhotoOutput)) {
+                        break;
+                    }
+                }
+    
+                if (isEmpty(mPhotoOutput)) {
+                        console.info(TAG + "createPhotoOutput FAILED");
+                }
+    
+                console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
+            }
+            /*
+            if (!isEmpty(cameraOutputCap.videoProfiles)) {
+                console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
+                for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
+                    try {
+                        mVideoOutput = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
+                        if (!isEmpty(mVideoOutput)) {
+                            break;
+                        }
+                    }
+                    catch {
+                        console.info(TAG + "createVideoOutput FAILED");
+                    }
+                }
+    
+                if (isEmpty(mVideoOutput)) {
                     console.info(TAG + "createVideoOutput FAILED");
                 }
+    
+                console.info(TAG + "createVideoOutput: " + mVideoOutput);  
             }
-
-            if (isEmpty(mVideoOutput)) {
-                console.info(TAG + "createVideoOutput FAILED");
-            }
-
-            console.info(TAG + "createVideoOutput: " + mVideoOutput);  
+            */
         }
-        */
+        
         console.info('Exit createOutputs');
 
         return true;
     }
 
     async function releaseOutput() {
-        console.info('Enter createOutput');
+        console.info('Enter releaseOutput');
 
         if (!isEmpty(mPreviewOutput)) {
             await mPreviewOutput.stop();
@@ -529,7 +548,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
             await mVideoOutput.release();
         }
         */
-        console.info('Exit createOutput');
+        console.info('Exit releaseOutput');
         
         return true;
     }
@@ -577,7 +596,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
             }
         })
         
-        await sleep(1000);
+        await sleep(100);
         */
         console.info(TAG + "Exit startCameraSession");
 
@@ -596,7 +615,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
             }
         })
 
-        await sleep(1000);
+        await sleep(100);
         */
 
         if (!isEmpty(mCameraInput)) {
@@ -698,7 +717,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                             expect().assertFail();
                         }
                     })
-                    await sleep(1000);
+                    await sleep(100);
                     
                     await stopCameraSession();
     
@@ -740,7 +759,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                         expect().assertFail();
                     }    
     
-                    await sleep(1000);
+                    await sleep(100);
                     
                     await stopCameraSession();
     
@@ -902,7 +921,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                             expect().assertFail();
                         }
                     })
-                    await sleep(1000);
+                    await sleep(100);
                     
                     await stopCameraSession();
     
@@ -944,7 +963,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                         expect().assertFail();
                     }    
     
-                    await sleep(1000);
+                    await sleep(100);
                     
                     await stopCameraSession();
     
@@ -1106,7 +1125,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                             expect().assertFail();
                         }
                     })
-                    await sleep(1000);
+                    await sleep(100);
                     
                     await stopCameraSession();
     
@@ -1148,7 +1167,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                         expect().assertFail();
                     }    
     
-                    await sleep(1000);
+                    await sleep(100);
                     
                     await stopCameraSession();
     

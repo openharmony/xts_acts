@@ -135,7 +135,7 @@ export default function CameraInputTest(surfaceId) {
                 console.info(TAG + "Entering getCameraSupportDevicesArray FAILED : " + err.message);
             }
         })
-        await sleep(3000);
+        await sleep(300);
         */
         if (isEmpty(mCameraDevicesArray)) {
             console.info(TAG + "getSupportedCameras FAILED");
@@ -222,7 +222,14 @@ export default function CameraInputTest(surfaceId) {
             return false;
         }
         
-        mCameraInput = await mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
+        mCameraInput = null;
+        await mCameraManager.createCameraInput(mCameraDevicesArray[idx]).then((result) => {
+            console.info('createCameraInput success');
+            mCameraInput = result;
+        }).catch((err) => {
+            console.info('createCameraInput failed, err = ' + err.message);
+        });
+
         if (isEmpty(mCameraInput)) {
             console.info(TAG + "createCameraInput FAILED");
             return false;
@@ -262,23 +269,33 @@ export default function CameraInputTest(surfaceId) {
     async function createOutput(idx:any) {
         console.info('Enter createOutput');
 
-        let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
-        if (!isEmpty(cameraOutputCap.previewProfiles)) {
-            console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
-            for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
-                mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
-                if (!isEmpty(mPreviewOutput)) {
-                    break;
+        let cameraOutputCap = null;
+        await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]).then((result) => {
+            console.info('getSupportedOutputCapability success');
+            cameraOutputCap = result;
+        }).catch((err) => {
+            console.info('getSupportedOutputCapability failed, err = ' + err.message);
+            mPreviewOutput = null;
+        });
+
+        if (!isEmpty(cameraOutputCap)) {
+            if (!isEmpty(cameraOutputCap.previewProfiles)) {
+                console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
+                for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
+                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
+                    if (!isEmpty(mPreviewOutput)) {
+                        break;
+                    }
                 }
+    
+                if (isEmpty(mPreviewOutput)) {
+                    console.info(TAG + "createPreviewOutput FAILED");
+                }
+    
+                console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
             }
-
-            if (isEmpty(mPreviewOutput)) {
-                console.info(TAG + "createPreviewOutput FAILED");
-            }
-
-            console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
         }
-
+        
         console.info('Exit createOutputs');
 
         return true;
@@ -403,7 +420,7 @@ export default function CameraInputTest(surfaceId) {
                         await sleep(1);
                     })
 
-                    await sleep(3000);
+                    await sleep(300);
 
                     if (nfyFlag == false) {
                         //expect().assertFail();
@@ -460,7 +477,7 @@ export default function CameraInputTest(surfaceId) {
 
                     mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_AUTO);
 
-                    await sleep(3000);
+                    await sleep(300);
 
                     if (nfyFlag == false) {
                         //expect().assertFail();
@@ -517,7 +534,7 @@ export default function CameraInputTest(surfaceId) {
 
                     mCameraSession.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO);
 
-                    await sleep(3000);
+                    await sleep(300);
 
                     if (nfyFlag == false) {
                         //expect().assertFail();
@@ -557,34 +574,34 @@ export default function CameraInputTest(surfaceId) {
                         expect(isEmpty(cameraInput)).assertFalse();
                         await cameraInput.open(async (err) => {
                             if (!err) {
-                                console.info(TAG + "PASSED open with CameraID :" + camerasArray[i].cameraId);
+                                console.info(TAG + " PASSED open with CameraID :" + camerasArray[i].cameraId);
                             } else {
                                 successFlag = false;
-                                console.info(TAG + "open FAILED: " + err.message);
+                                console.info(TAG + " open FAILED: " + err.message);
                             }
                         });
                         await sleep(400);
                         await cameraInput.close(async (err) => {
                             if (!err) {
-                                console.info(TAG + "PASSED close with CameraID :" + camerasArray[i].cameraId);
+                                console.info(TAG + " PASSED close with CameraID :" + camerasArray[i].cameraId);
                             } else {
                                 successFlag = false;
-                                console.info(TAG + "close FAILED: " + err.message);
+                                console.info(TAG + " close FAILED: " + err.message);
                             }
                         });
                         await sleep(100);
                         await cameraInput.release(async (err) => {
                             if (!err) {
-                                console.info(TAG + "PASSED release with CameraID :" + camerasArray[i].cameraId);
+                                console.info(TAG + " PASSED release with CameraID :" + camerasArray[i].cameraId);
                             } else {
                                 successFlag = false;
-                                console.info(TAG + "release FAILED: " + err.message);
+                                console.info(TAG + " release FAILED: " + err.message);
                             }
                         });
                         expect(successFlag).assertEqual(true);
                     }).catch((err) => {
                         expect().assertFail();
-                        console.info(TAG + "Failed To create cameraInput cameraId: " + camerasArray[i].cameraId + +JSON.stringify(err));
+                        console.info(TAG + " Failed To create cameraInput cameraId: " + camerasArray[i].cameraId + +JSON.stringify(err));
                     });
                 }
             }
@@ -617,24 +634,24 @@ export default function CameraInputTest(surfaceId) {
                             expect(isEmpty(cameraInput)).assertFalse();
                             console.info(TAG + functionTag + "Entering cameraInput open with camera: " + camerasArray[i].cameraId);
                             await cameraInput.open().then(async () => {
-                                console.info(TAG + functionTag + "PASSED open with CameraID :" + camerasArray[i].cameraId);
+                                console.info(TAG + functionTag + " PASSED open with CameraID :" + camerasArray[i].cameraId);
                             }).catch((err) => {
                                 successFlag = false;
-                                console.info(TAG + functionTag + "open FAILED: " + err.message);
+                                console.info(TAG + functionTag + " open FAILED: " + err.message);
                             });
                             await sleep(400);
                             await cameraInput.close().then(async () => {
-                                console.info(TAG + functionTag + "PASSED close with CameraID :" + camerasArray[i].cameraId);
+                                console.info(TAG + functionTag + " PASSED close with CameraID :" + camerasArray[i].cameraId);
                             }).catch((err) => {
                                 successFlag = false;
-                                console.info(TAG + functionTag + "close FAILED: " + err.message);
+                                console.info(TAG + functionTag + " close FAILED: " + err.message);
                             });
                             await sleep(100);
                             await cameraInput.release().then(async () => {
-                                console.info(TAG + functionTag + "PASSED release with CameraID :" + camerasArray[i].cameraId);
+                                console.info(TAG + functionTag + " PASSED release with CameraID :" + camerasArray[i].cameraId);
                             }).catch((err) => {
                                 successFlag = false;
-                                console.info(TAG + functionTag + "release FAILED: " + err.message);
+                                console.info(TAG + functionTag + " release FAILED: " + err.message);
                             });
                             expect(successFlag).assertEqual(true);
                         } else {
@@ -642,8 +659,10 @@ export default function CameraInputTest(surfaceId) {
                             console.info(TAG + functionTag + " FAILED: " + err.message);
                         }
                     });
+
+                    await sleep(600);
                 }
-                await sleep(400 * camerasArray.length);
+                //await sleep(400 * camerasArray.length);
             }
             console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 ends here");
             done();
