@@ -22,7 +22,7 @@ hcpptest_suite("ActsMediaRecorderTest") {
     "//test/xts/acts/multimedia_lite/utils_posix/common/include",
     "//third_party/bounds_checking_function/include",
     "//drivers/peripheral/codec/interfaces/include",
-    "//foundation/multimedia/utils/lite/hals",
+    "//foundation/multimedia/media_utils_lite/hals",
     "//foundation/multimedia/media_lite/test/unittest/recorder_lite",
     "//foundation/multimedia/media_lite/interfaces/kits/recorder_lite",
     "//foundation/multimedia/media_lite/frameworks/recorder_lite",
