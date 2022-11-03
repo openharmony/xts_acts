@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import rpc from '@ohos.rpc'
 
 var connection = -1;
@@ -68,13 +68,13 @@ export default class MainAbility extends Ability {
                 "bundleName": "com.example.ohosproject.hmservice",
                 "abilityName": "ServiceExtAbility",
             }
-            connection = context.connectAbility(want, options);
+            connection = context.connectServiceExtensionAbility(want, options);
             console.log("mxh connectServiceExtAbility end, connection:" + connection);
         })
 
         globalThis.disconnectServiceExtAbility = (() => {
             console.log("mxh disconnectServiceExtAbility begin");
-            context.disconnectAbility(connection).then((data) => {
+            context.disconnectServiceExtensionAbility(connection).then((data) => {
                 console.info("mxh startAbility success:" + JSON.stringify(data));
             }).catch((error) => {
                 console.error("mxh startAbility failed:" + JSON.stringify(error));

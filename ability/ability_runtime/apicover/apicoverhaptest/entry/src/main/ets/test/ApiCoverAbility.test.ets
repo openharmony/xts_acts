@@ -20,7 +20,7 @@ import formInfoNew from '@ohos.app.form.formInfo';
 import formError from '@ohos.application.formError';
 import formHost from '@ohos.application.formHost';
 import errorManager from '@ohos.application.errorManager';
-import abilityConstant from '@ohos.application.AbilityConstant'
+import abilityConstant from '@ohos.app.ability.AbilityConstant'
 import appManager from '@ohos.application.appManager'
 import applicationContext from '@ohos.application.context'
 import commonEvent from '@ohos.commonEvent';

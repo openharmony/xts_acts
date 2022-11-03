@@ -137,14 +137,14 @@ export default function abilityTest(abilityContext) {
       };
 
       console.info('ZidlTest Client connectAbility start');
-      connectionId = globalThis.abilityContext.connectAbility(wantMulti, paMultiConnect);
+      connectionId = globalThis.abilityContext.connectServiceExtensionAbility(wantMulti, paMultiConnect);
       console.info('ZidlTest Client connectAbility end connectionId = ' + connectionId);
-      connectionOnewayId = globalThis.abilityContext.connectAbility(wantMultiOneway, paMultiOnewayConnect);
+      connectionOnewayId = globalThis.abilityContext.connectServiceExtensionAbility(wantMultiOneway, paMultiOnewayConnect);
       console.info('ZidlTest Client connectAbility end connectionOnewayId = ' + connectionOnewayId);
 
-      connectionIdSingle = globalThis.abilityContext.connectAbility(wantSingle, paSingleConnect);
+      connectionIdSingle = globalThis.abilityContext.connectServiceExtensionAbility(wantSingle, paSingleConnect);
       console.info('ZidlTest Client connectAbility end connectionIdSingle = ' + connectionIdSingle);
-      connectionOnewayIdSingle = globalThis.abilityContext.connectAbility(wantSingleOneway, paSingleOnewayConnect);
+      connectionOnewayIdSingle = globalThis.abilityContext.connectServiceExtensionAbility(wantSingleOneway, paSingleOnewayConnect);
       console.info('ZidlTest Client connectAbility end connectionOnewayIdSingle = ' + connectionOnewayIdSingle);
     })
 
@@ -163,7 +163,7 @@ export default function abilityTest(abilityContext) {
         }
       }
 
-      globalThis.abilityContext.disconnectAbility(connectionId, (err) => {
+      globalThis.abilityContext.disconnectServiceExtensionAbility(connectionId, (err) => {
         console.info('ZidlTest Client disconnectAbility result ' + JSON.stringify(err));
         connectionId = -1;
         testProxyMulti = null;
@@ -171,7 +171,7 @@ export default function abilityTest(abilityContext) {
         checkDone();
       })
 
-      globalThis.abilityContext.disconnectAbility(connectionOnewayId, (err) => {
+      globalThis.abilityContext.disconnectServiceExtensionAbility(connectionOnewayId, (err) => {
         console.info('ZidlTest Client disconnectAbility2 result ' + JSON.stringify(err));
         connectionOnewayId = -1;
         testProxyMultiOneway = null;
@@ -179,7 +179,7 @@ export default function abilityTest(abilityContext) {
         checkDone();
       })
 
-      globalThis.abilityContext.disconnectAbility(connectionIdSingle, (err) => {
+      globalThis.abilityContext.disconnectServiceExtensionAbility(connectionIdSingle, (err) => {
         console.info('ZidlTest Client disconnectAbility result ' + JSON.stringify(err));
         connectionIdSingle = -1;
         testProxyMulti = null;
@@ -187,7 +187,7 @@ export default function abilityTest(abilityContext) {
         checkDone();
       })
 
-      globalThis.abilityContext.disconnectAbility(connectionOnewayIdSingle, (err) => {
+      globalThis.abilityContext.disconnectServiceExtensionAbility(connectionOnewayIdSingle, (err) => {
         console.info('ZidlTest Client disconnectAbility2 result ' + JSON.stringify(err));
         connectionOnewayIdSingle = -1;
         testProxyMultiOneway = null;

@@ -99,7 +99,7 @@ export default function ConnectAbilityTest(abilityContext) {
           tips("连接失败");
         }
       }
-      let connection = await globalThis.abilityContext.connectAbility(request, options);
+      let connection = await globalThis.abilityContext.connectServiceExtensionAbility(request, options);
       console.info(msg + "request：" + JSON.stringify(request));
       console.info(msg + "options：" + JSON.stringify(options));
       console.info(msg + "connection=" + JSON.stringify(connection));

@@ -56,7 +56,7 @@ export default function abilityTest() {
         console.debug("====>ACTS_getExtensionInfo_0100_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-        connId = await globalThis.abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectServiceExtensionAbility(
           {
             bundleName: "com.example.staticextensioninfo",
             abilityName: "com.example.staticextensioninfo.ServiceAbility",
@@ -239,7 +239,7 @@ export default function abilityTest() {
         console.debug("====>ACTS_getExtensionInfo_0200_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-        connId = await globalThis.abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectServiceExtensionAbility(
           {
             bundleName: "com.example.staticextensioninfotest",
             abilityName: "com.example.staticextensioninfotest.ServiceAbility",
@@ -420,7 +420,7 @@ export default function abilityTest() {
         console.debug("====>ACTS_getExtensionInfo_0300_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-              connId = await globalThis.abilityContext.connectAbility(
+              connId = await globalThis.abilityContext.connectServiceExtensionAbility(
         {
           bundleName: "com.example.extensionmodule",
           abilityName: "ServiceExtAbility",
@@ -435,7 +435,7 @@ export default function abilityTest() {
 
       function timeout() {
         expect().assertFail();
-        globalThis.abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectServiceExtensionAbility(
           connId,
           (error, data) => {
             console.log('DisconnectAbility_0300 result errCode : ' + error.code + " data: " + data)

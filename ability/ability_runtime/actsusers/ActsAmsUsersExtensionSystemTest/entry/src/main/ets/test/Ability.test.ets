@@ -51,7 +51,7 @@ export default function abilityTest() {
         if (data.event == "ACTS_InterfaceMultiUsersExtension_CommonEvent") {
           startresult = true
         }
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -64,7 +64,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0100start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -118,7 +118,7 @@ export default function abilityTest() {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -152,7 +152,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0200start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -183,7 +183,7 @@ export default function abilityTest() {
         if (data.event == "ACTS_InterfaceMultiUsersExtension_CommonEvent") {
           startresult = true
         }
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -196,7 +196,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0300start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -250,7 +250,7 @@ export default function abilityTest() {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -284,7 +284,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0400start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -316,7 +316,7 @@ export default function abilityTest() {
         if (data.event == "ACTS_InterfaceMultiUsersExtension_CommonEvent") {
           startresult = true
         }
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -329,7 +329,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0500start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -383,7 +383,7 @@ export default function abilityTest() {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -417,7 +417,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0600start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -448,7 +448,7 @@ export default function abilityTest() {
         if (data.event == "ACTS_InterfaceMultiUsersExtension_CommonEvent") {
           startresult = true
         }
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -461,7 +461,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0700start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -516,7 +516,7 @@ export default function abilityTest() {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -550,7 +550,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0800start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -581,7 +581,7 @@ export default function abilityTest() {
         if (data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent") {
           startresult = true
         }
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -594,7 +594,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0900start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -642,7 +642,7 @@ export default function abilityTest() {
         if (data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent") {
           startresult = true
         }
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -655,7 +655,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>1000start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -703,7 +703,7 @@ export default function abilityTest() {
         if (data.event == "ACTS_TerminateSelf_CommonEvent") {
           startresult = true
         }
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -725,7 +725,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0100start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -783,7 +783,7 @@ export default function abilityTest() {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -817,7 +817,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0200start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -849,7 +849,7 @@ export default function abilityTest() {
         if (data.event == "ACTS_TerminateSelf_CommonEvent") {
           startresult = true
         }
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -862,7 +862,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0300start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
@@ -917,7 +917,7 @@ export default function abilityTest() {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -951,7 +951,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0400start connectAbility====>");
-          globalThis.number = await globalThis.abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectServiceExtensionAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensiontest',
               abilityName: 'com.acts.actsinterfacemultiusersextensiontest.ServiceAbility'
