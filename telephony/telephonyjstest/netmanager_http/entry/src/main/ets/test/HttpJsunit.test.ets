@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,6 +14,7 @@
  */
 import {describe, beforeAll, afterAll, it, expect, afterEach} from 'hypium/index';
 import http from '@ohos.net.http';
+import connection from "@ohos.net.connection";
 
 export default function httpJsunit() {
   describe("httpJsunitTest", function () {
@@ -29,8 +30,63 @@ export default function httpJsunit() {
       console.log("-----------------------http createHttp Test end-----------------------");
       done();
     });
+    /**
+     * @tc.number Telephony_NetworkManager_getDefaultNetSync
+     * @tc.name Test getDefaultNetSync() to check return value
+     * @tc.desc Function test
+     */
+    it('Telephony_NetworkManager_getDefaultNetSync', 0, async function (done) {
+      let caseName = 'Telephony_NetworkManager_getDefaultNetSync'
+      let handleInstance = undefined;
+      handleInstance = connection.getDefaultNetSync();
+      if (handleInstance == undefined) {
+        console.log(`${caseName} gethandleInstance fail`);
+        expect().assertFail();
+        done();
+      } else {
+        console.log(`${caseName} gethandleInstance success`);
+        expect(typeof (handleInstance) == 'object').assertEqual(true);
+        done();
+      }
+    });
 
+    /**
+     * @tc.number Telephony_NetworkManager_isDefaultNetMetered_Async_0100
+     * @tc.name Test isDefaultNetMetered() to check return value
+     * @tc.desc Function test
+     */
+    it('Telephony_NetworkManager_isDefaultNetMetered_Async_0100', 0, async function (done) {
+      let caseName = 'Telephony_NetworkManager_isDefaultNetMetered_Async_0100'
+      connection.isDefaultNetMetered((error, data) => {
+        if (error) {
+          console.log(`${caseName} isDefaultNetMetered  error`);
+          expect().assertFail();
+          done();
+        } else {
+          console.log(`${caseName} isDefaultNetMetered success`);
+          expect(error).assertEqual(undefined);
+          expect(data).assertEqual(true);
+          done();
+        }
+      })
+    });
+
+    /**
+     * @tc.number Telephony_NetworkManager_isDefaultNetMetered_Promise_0100
+     * @tc.name Test isDefaultNetMetered() to check return value
+     * @tc.desc Function test
+     */
+    it('Telephony_NetworkManager_isDefaultNetMetered_Promise_0100', 0, async function (done) {
+      let caseName = 'Telephony_NetworkManager_isDefaultNetMetered_Promise_0100'
+      connection.isDefaultNetMetered().then((data) => {
+        console.log(`${caseName} isDefaultNetMetered success`);
+        expect(data).assertEqual(true);
+        done();
+      }).catch((error) => {
+        console.log(`${caseName} isDefaultNetMetered  error`);
+        expect().assertFail();
+        done();
+      })
+    });
   })
-
 };
-
