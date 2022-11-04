@@ -1009,7 +1009,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
         let createData = null;
         try {
-          ohosWindow.create(context, windId, tempType).then((data) => {
+          await ohosWindow.create(context, windId, tempType).then((data) => {
             createData = data
             expect(!!createData).assertTrue();
           }).catch((err) => {
@@ -1146,23 +1146,27 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         });
       }
       catch (err) {
-        console.log(msgStr + 'tempWnd.loadContent(null) catch err:' + JSON.stringify(err));
+        console.log(msgStr + 'ohosWindow.createWindow catch err:' + JSON.stringify(err));
       }
       console.log(msgStr + 'tempWnd.loadContent start');
       let errFlag = false;
       let loadContentData = null;
-      tempWnd.loadContent(null).then((data) => {
-        loadContentData = data;
-      }).catch((err) => {
-        errFlag = true;
-        expectedError(err, caseName, 'tempWnd.loadContent', done, 1003);
-        console.log(msgStr + 'tempWnd.loadContent(null)' + JSON.stringify(err));
-      });
-      console.log(msgStr + 'tempWnd.loadContent loadContentData:' + JSON.stringify(loadContentData));
-      if (!errFlag) {
-        console.log(msgStr + 'should report err');
-        expect(TRUE_FLAG).assertFail();
-        done();
+      try {
+        await tempWnd.loadContent(null).then((data) => {
+          loadContentData = data;
+        }).catch((err) => {
+          errFlag = true;
+          expectedError(err, caseName, 'tempWnd.loadContent', done, 1003);
+          console.log(msgStr + 'tempWnd.loadContent(null)' + JSON.stringify(err));
+        });
+        console.log(msgStr + 'tempWnd.loadContent loadContentData:' + JSON.stringify(loadContentData));
+        if (!errFlag) {
+          console.log(msgStr + 'should report err');
+          expect(TRUE_FLAG).assertFail();
+          done();
+        }
+      } catch (err) {
+        console.log(msgStr + 'tempWnd.loadContent(null) catch err:' + JSON.stringify(err));
       }
     })
 
@@ -1394,13 +1398,18 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let screens = null;
-      screenManager.getAllScreens().then((data) => {
-        screens = data
-      }).catch(err => {
-        unexpectedError(err, caseName, 'screenManager.getAllScreen', done);
-      })
-      console.log(msgStr + 'screenManager.getAllScreen' + JSON.stringify(screens));
-      expect(!!screens).assertTrue();
+      try {
+        await screenManager.getAllScreens().then((data) => {
+          screens = data
+          console.log(msgStr + 'screenManager.getAllScreen' + JSON.stringify(screens));
+          expect(!!screens).assertTrue();
+        }).catch(err => {
+          unexpectedError(err, caseName, 'screenManager.getAllScreen', done);
+        })
+      }
+      catch (err) {
+        console.log(msgStr + 'screenManager.getAllScreen catch err:' + JSON.stringify(err));
+      }
       let currentDeviceDefault = null;
       await display.getDefaultDisplay().then((data) => {
         currentDeviceDefault = data
@@ -1621,14 +1630,20 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         name: wndId, windowType: baseType, ctx: context
       }
       let tempWnd = null;
-      ohosWindow.createWindow(createWindowObj).then((data) => {
-        tempWnd = data
-      }).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
-      });
-      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
-      expect(!!tempWnd).assertTrue();
-      console.info('showWithAnimationTest1 ****' + Reflect.has(tempWnd, 'showWithAnimation'))
+      try {
+        await ohosWindow.createWindow(createWindowObj).then((data) => {
+          tempWnd = data
+          console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
+          expect(!!tempWnd).assertTrue();
+          console.info('showWithAnimationTest1 ****' + Reflect.has(tempWnd, 'showWithAnimation'))
+        }).catch((err) => {
+          unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+        });
+      }
+      catch (err) {
+        console.log(msgStr + 'ohosWindow.create catch err:' + JSON.stringify(err));
+      }
+
       await tempWnd.showWithAnimation().then((data) => {
         console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(data));
         done();
@@ -1651,15 +1666,20 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         name: wndId, windowType: baseType, ctx: context
       }
       let tempWnd = null;
-      ohosWindow.createWindow(createWindowObj).then((data) => {
-        tempWnd = data
-      }).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
-      });
-      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
-      expect(!!tempWnd).assertTrue();
+      try {
+        await ohosWindow.createWindow(createWindowObj).then((data) => {
+          tempWnd = data
+          console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
+          expect(!!tempWnd).assertTrue();
+        }).catch((err) => {
+          unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+        });
+      }
+      catch(err) {
+        console.log(msgStr + 'ohosWindow.create catch err:' + JSON.stringify(err));
+      }
       let findWnd = null;
-      ohosWindow.find(wndId).then((data) => {
+      await ohosWindow.find(wndId).then((data) => {
         findWnd = data
       }).catch((err) => {
         unexpectedError(err, caseName, 'ohosWindow.find', done);
