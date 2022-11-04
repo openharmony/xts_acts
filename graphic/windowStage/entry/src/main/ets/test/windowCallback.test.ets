@@ -1489,19 +1489,22 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       });
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE'];
+      let num = 0
+      let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED',
+      'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE',
+      'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED', 'UNSPECIFIED'];
       for (let i = 0;i < orientationItem.length; i++) {
         await sleep(1000);
         let orientation = ohosWindow.Orientation[orientationItem[i]]
         await mainWin.setPreferredOrientation(orientation, (err, data) => {
-          if (err.code) {
+          if (err && err.code) {
             console.log(msgStr + 'window.setPreferredOrientation failed set error' + orientation);
           }
+          num++
+          if(num == orientationItem.length) done();
           console.log(msgStr + 'success set window.setPreferredOrientation ' + orientation + JSON.stringify(data));
         })
       }
-      console.log(msgStr + 'done ');
-      done();
     })
     /**
     * @tc.number     SUB_WINDOW_SETFORBIDSPLITMOVE_JSAPI_002
