@@ -1113,17 +1113,54 @@ describe('resMgrTest', function () {
 
     /* *
     * @tc.number  SUB_GLOBAL_RESMGR_JS_2300
-    * @tc.name    test closeRawFileDescriptor method in promise mode
-    * @tc.desc    get the closeRawFileDescriptor in promise mode
+    * @tc.name    test closeRawFd method in promise mode throw 9001005 error code
+    * @tc.desc    get the closeRawFd in promise mode
     */
-    it('closeRawFd_test_002', 0, async function (done) {
+    it('closeRawFd_test_005', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.closeRawFd('rawfiletest.xml').then(value => {
-                expect(value !== null).assertTrue();
-                console.log('closeRawFd_test_002--' + value);
-            })
+            try {
+                // param not exist throw 9001005 error code
+                mgr.closeRawFd('notexist.xml').then(value => {
+                    console.log('closeRawFd_test_005 ' + value);
+                    done();
+                }).catch(error => {
+                    console.log('closeRawFd_test_005 error.code' + error.code);
+                    console.log('closeRawFd_test_005 error.message' + error.message);
+                    expect(error.code == 9001005).assertTrue();
+                    done();
+                })
+            } catch (err) {
+                console.log('closeRawFd_test_005 err.code' + err.code);
+                console.log('closeRawFd_test_005 err.message' + err.message);
+                done();
+            }
         })
-        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_2300
+    * @tc.name    test closeRawFd method in promise mode throw 401 error code
+    * @tc.desc    get the closeRawFd in promise mode
+    */
+    it('closeRawFd_test_006', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try {
+                // param type not correct,throw 401 error code
+                mgr.closeRawFd(0x01000000).then(value => {
+                    console.log('closeRawFd_test_006 ' + value);
+                    done();
+                }).catch(error => {
+                    console.log('closeRawFd_test_006 error.code' + error.code);
+                    console.log('closeRawFd_test_006 error.message' + error.message);
+                    expect(error.code == 401).assertTrue();
+                    done();
+                })
+            } catch (err) {
+                console.log('closeRawFd_test_006 err.code' + err.code);
+                console.log('closeRawFd_test_006 err.message' + err.message);
+                done();
+            }
+        })
     })
 
     /* *
