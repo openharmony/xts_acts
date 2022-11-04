@@ -34,9 +34,9 @@ export default class Utils {
   static getComponentRect(key) {
     let strJson = getInspectorByKey(key);
     let obj = JSON.parse(strJson);
-    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
+    console.info("====>[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
     let rectInfo = JSON.parse('[' + obj.$rect + ']')
-    console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
+    console.info("====>[getInspectorByKey] rectInfo is: " + rectInfo);
     this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]
     this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]
     this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]
@@ -47,12 +47,12 @@ export default class Utils {
   }
 
   static async swipe(downX, downY, upX, upY, steps) {
-    console.info('start to swipe')
+    console.info('====>start to swipe')
     this.drags(downX, downY, upX, upY, steps, false)
   }
 
   static async drag(downX, downY, upX, upY, steps) {
-    console.info('start to drag')
+    console.info('====>start to drag')
     this.drags(downX, downY, upX, upY, steps, true)
   }
 
@@ -70,16 +70,16 @@ export default class Utils {
     }
     xStep = (upX - downX) / swipeSteps;
     yStep = (upY - downY) / swipeSteps;
-    console.info('move step is: ' + 'xStep: ' + xStep + '    yStep: ' + yStep)
+    console.info('====>move step is: ' + 'xStep: ' + xStep + '    yStep: ' + yStep)
     let downPonit: TouchObject = {
       id: 1,
       x: downX,
       y: downY,
       type: TouchType.Down,
     }
-    console.info('down touch started: ' + JSON.stringify(downPonit))
+    console.info('====>down touch started: ' + JSON.stringify(downPonit))
     sendTouchEvent(downPonit);
-    console.info('start to move')
+    console.info('====>start to move')
     if (drag) {
       await this.sleep(500)
     }
@@ -90,14 +90,14 @@ export default class Utils {
         y: downY + (yStep * i),
         type: TouchType.Move
       }
-      console.info('move touch started: ' + JSON.stringify(movePoint))
+      console.info('====>move touch started: ' + JSON.stringify(movePoint))
       ret = sendTouchEvent(movePoint)
       if (ret == false) {
         break;
       }
       await this.sleep(5)
     }
-    console.info('start to up')
+    console.info('====>start to up')
     if (drag) {
       await this.sleep(100)
     }
@@ -107,7 +107,7 @@ export default class Utils {
       y: upY,
       type: TouchType.Up,
     }
-    console.info('up touch started: ' + JSON.stringify(upPoint))
+    console.info('====>up touch started: ' + JSON.stringify(upPoint))
     sendTouchEvent(upPoint)
     await this.sleep(500)
   }
