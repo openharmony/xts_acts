@@ -512,12 +512,12 @@ describe('albumTestCallBack.test.js', async function () {
         };
         try {
             media.getAlbums(fileHasArgsfetchOp4, (err, albumList) => {
-                if (albumList == undefined) {
-                    expect(false).assertTrue();
+                if (err != undefined) {
+                    expect(true).assertTrue();
                     done();
                 } else {
                     console.info('GETALBUMASSETS_CALLBACK_002_07 length:' + albumList.length);
-                    expect(albumList.length == 0).assertTrue();
+                    expect(false).assertTrue();
                     done();
                 }
             });
@@ -544,12 +544,12 @@ describe('albumTestCallBack.test.js', async function () {
 
         try {
             media.getAlbums(fileHasArgsfetchOp5, (err, albumList) => {
-                if (albumList == undefined) {
-                    expect(false).assertTrue();
+                if (err != undefined) {
+                    expect(true).assertTrue();
                     done();
                 } else {
                     console.info('GETALBUMASSETS_CALLBACK_002_08 length:' + albumList.length);
-                    expect(albumList.length == 0).assertTrue();
+                    expect(false).assertTrue();
                     done();
                 }
             });
