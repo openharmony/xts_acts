@@ -16,6 +16,7 @@
 import worker from '@ohos.worker';
 const parentPort = worker.parentPort;
 
+console.info("worker::" + typeof parentPort.self)
 parentPort.onmessage = function(e) {
     parentPort.close()
 }

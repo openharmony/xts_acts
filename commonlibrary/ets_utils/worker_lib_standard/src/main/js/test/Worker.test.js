@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import app from '@system.app'
 import worker from "@ohos.worker"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
@@ -1023,11 +1022,11 @@ describe('workerTest', function () {
 
         ss.onexit = function() {
             flag = true
+            res++
         }
 
         ss.onmessageerror = function (e) {
             flag = true
-            res++
         }
         function foo() {
         }
@@ -1036,11 +1035,6 @@ describe('workerTest', function () {
             await promiseCase()
         }
 
-        flag = false
-        ss.postMessage("terminate")
-        while (!flag) {
-            await promiseCase()
-        }
         expect(res).assertEqual(1)
         done()
     })
