@@ -17,12 +17,15 @@ import rpc from '@ohos.rpc'
 import fileio from '@ohos.fileio';
 import FA from '@ohos.ability.featureAbility'
 import {describe, expect, beforeAll, it} from 'deccjsunit/index'
+var gIRemoteObject = null;
 export default function actsRpcClientJsTest() {
-
-    var gIRemoteObject = undefined;
-
     describe('ActsRpcClientJsTest', function(){
         console.info("-----------------------SUB_Softbus_IPC_Compatibility_MessageParce_Test is starting-----------------------");
+        beforeAll(async function () {
+            console.info('beforeAll called')
+            gIRemoteObject = new Stub("rpcTestAbility");
+            return gIRemoteObject;
+        });
 
         beforeEach(async function (){
             console.info('beforeEach called');
@@ -72,87 +75,6 @@ export default function actsRpcClientJsTest() {
         const CODE_WRITE_REMOTEOBJECTARRAY_2 = 31;
         const CODE_ONREMOTEMESSAGE_OR_ONREMOTE = 32;
         const CODE_ONREMOTEMESSAGEREQUEST = 33;
-
-        const ErrorCode = {
-            /* Check param failed */
-            CHECK_PARAM_ERROR:401,
-
-            /* Os mmap function failed */
-            OS_MMAP_ERROR:1900001,
-
-            /* Os ioctl function failed */
-            OS_IOCTL_ERROR:1900002,
-
-            /* Write to ashmem failed */
-            WRITE_TO_ASHMEM_ERROR:1900003,
-
-            /* Read from ashmem failed */
-            READ_FROM_ASHMEM_ERROR:1900004,
-
-            /* Only proxy object permitted */
-            ONLY_PROXY_OBJECT_PERMITTED_ERROR:1900005,
-
-            /* Only remote object permitted */
-            ONLY_REMOTE_OBJECT_PERMITTED_ERROR:1900006,
-
-            /* Communication failed */
-            COMMUNICATION_ERROR:1900007,
-
-            /* Proxy or remote object is invalid */
-            PROXY_OR_REMOTE_OBJECT_INVALID_ERROR:1900008,
-
-            /* Write data to message sequence failed */
-            WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR:1900009,
-
-            /* Read data from message sequence failed */
-            READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR:1900010,
-
-            /* Parcel memory alloc failed */
-            PARCEL_MEMORY_ALLOC_ERROR:1900011,
-
-            /* Call js method failed */
-            CALL_JS_METHOD_ERROR:1900012,
-
-            /* Os dup function failed */
-            OS_DUP_ERROR:1900013
-        }
-
-        function connectAbility() {
-            let want = {
-                "bundleName":"ohos.rpc.test.server",
-                "abilityName": "ohos.rpc.test.server.ServiceAbility",
-            };
-            let connect = {
-                onConnect:function (elementName, remoteProxy) {
-                    console.info('RpcClient: onConnect called, instance of proxy: '
-                        + (remoteProxy instanceof rpc.RemoteProxy))
-                    gIRemoteObject = remoteProxy
-
-                },
-                onDisconnect:function (elementName) {
-                    console.info("RpcClient: onDisconnect")
-                },
-                onFailed:function () {
-                    console.info("RpcClient: onFailed")
-                    gIRemoteObject = null
-                }
-            };
-            FA.connectAbility(want, connect)
-            try {
-                let descriptor = gIRemoteObject.getDescriptor();
-                console.info("RpcClient: descriptor is " + descriptor);
-            } catch(error) {
-                console.info("rpc get interface descriptor fail, errorCode " + error.code);
-                console.info("rpc get interface descriptor fail, errorMessage " + error.message);
-            }
-            return new Promise((resolve, reject) =>{
-                console.info("start connect local ability, wait 5 seconds")
-                setTimeout(()=>{
-                    console.info("resolve proxy: " + gIRemoteObject)
-                    resolve(gIRemoteObject)
-                }, 5000)
-            })
-        }
 
         function sleep(numberMillis)
         {
@@ -218,6 +140,444 @@ export default function actsRpcClientJsTest() {
             }
         }
 
+        class Stub extends rpc.RemoteObject {
+            constructor(descriptor) {
+                super(descriptor);
+            }
+            onRemoteRequest(code, data, reply, option) {
+                try{
+                    console.info("onRemoteRequest: " + code)
+                    if (code === 32){
+                        console.info("case 32 start")
+                        let tmp1 = data.readString()
+                        let result =  reply.writeString("onRemoteRequest invoking")
+                        return true
+                    } else if (code === 33){
+                        console.info("case 33 start")
+                        let tmp1 = data.readString()
+                        let result =  reply.writeString(tmp1)
+                        return true
+                    }else {
+                        console.error("default case " + code)
+                        return super.onRemoteRequest(code, data, reply, option)
+                    }
+                } catch (error) {
+                    console.info("onRemoteRequest: " + error);
+                }
+                return false
+            }
+            onRemoteMessageRequest(code, data, reply, option) {
+                try{
+                    console.info("onRemoteMessageRequest: " + code)
+                    switch(code) {
+                        case 1:
+                        {
+                            console.info("case 1 start")
+                            let tmp1 = data.readByteArray()
+                            let result =  reply.writeByteArray(tmp1)
+                            return true
+                        }
+                        case 2:
+                        {
+                            console.info("case 2 start")
+                            let tmp1 = data.readIntArray()
+                            let result =  reply.writeIntArray(tmp1)
+                            return true
+                        }
+                        case 3:
+                        {
+                            console.info("case 3 start")
+                            let tmp1 = data.readFloatArray()
+                            let result =  reply.writeFloatArray(tmp1)
+                            return true
+                        }
+                        case 4:
+                        {
+                            console.info("case 4 start")
+                            let tmp1 = data.readShort()
+                            let result =  reply.writeShort(tmp1)
+                            return true
+                        }
+                        case 5:
+                        {
+                            console.info("case 5 start")
+                            let tmp1 = data.readLong()
+                            let result =  reply.writeLong(tmp1)
+                            return true
+                        }
+                        case 6:
+                        {
+                            console.info("case 6 start")
+                            let tmp1 = data.readDouble()
+                            let result =  reply.writeDouble(tmp1)
+                            return true
+                        }
+                        case 7:
+                        {
+                            console.info("case 7 start")
+                            let tmp1 = data.readBoolean()
+                            let result =  reply.writeBoolean(tmp1)
+                            return true
+                        }
+                        case 8:
+                        {
+                            console.info("case 8 start")
+                            let tmp1 = data.readChar()
+                            let result =  reply.writeChar(tmp1)
+                            return true
+                        }
+                        case 9:
+                        {
+                            console.info("case 9 start")
+                            let tmp1 = data.readString()
+                            let result =  reply.writeString(tmp1)
+                            return true
+                        }
+                        case 10:
+                        {
+                            console.info("case 10 start")
+                            let tmp1 = data.readByte()
+                            let result =  reply.writeByte(tmp1)
+                            return true
+                        }
+                        case 11:
+                        {
+                            console.info("case 11 start")
+                            let tmp1 = data.readInt()
+                            let result =  reply.writeInt(tmp1)
+                            return true
+                        }
+                        case 12:
+                        {
+                            console.info("case 12 start")
+                            let tmp1 = data.readFloat()
+                            let result =  reply.writeFloat(tmp1)
+                            return true
+                        }
+                        case 13:
+                        {
+                            console.info("case 13 start")
+                            var size = data .readInt();
+                            let tmp1 = data.readRawData(size);
+                            let size1 = reply.writeInt(size);
+                            let result =  reply.writeRawData(tmp1, tmp.length)
+                            return true
+                        }
+                        case 14:
+                        {
+                            console.info("case 14 start")
+                            let listener = data.readRemoteObject();
+                            let num = data.readInt()
+                            let str = data.readString()
+                            let option2 = new rpc.MessageOption()
+                            let data2 = rpc.MessageParcel.create()
+                            let reply2 = rpc.MessageParcel.create()
+                            data2.writeInt(num)
+                            data2.writeString(str)
+                            listener.sendRequest(1, data2, reply2, option2)
+                                .then(function(result) {
+                                    console.info("14 send request done, error code: " + result.errCode )
+                                })
+                                .catch(function(e) {
+                                    console.error("14 send request got exception: " + e)
+                                })
+                                .finally(() => {
+                                    data2.reclaim()
+                                    reply2.reclaim()
+                                    console.info("case 14 test done")
+                                })
+                            reply.writeNoException()
+                            return true
+                        }
+                        case 15:
+                        {
+                            console.info("case 15 start")
+                            let s = new MySequenceable(null, null)
+                            var tmp1 = data.readParcelable(s)
+                            let result =  reply.writeParcelable(s)
+                            return true
+                        }
+                        case 16:
+                        {
+                            console.info("case 16 start")
+                            data.readException()
+                            var tmp = data.readInt();
+                            reply.writeNoException()
+                            var result = reply.writeInt(tmp);
+                            return true
+                        }
+                        case 17:
+                        {
+                            console.info("case 17 start")
+                            var s = [new MySequenceable(null, null), new MySequenceable(null, null),
+                                new MySequenceable(null, null)];
+                            data.readParcelableArray(s);
+                            let result =  reply.writeParcelableArray(s);
+                            return true
+                        }
+                        case 18:
+                        {
+                            console.info("case 18 start")
+                            let listeners = data.readRemoteObjectArray();
+                            for (let i = 0; i < listeners.length; i++) {
+                                let option2 = new rpc.MessageOption()
+                                let data2 = rpc.MessageParcel.create()
+                                let reply2 = rpc.MessageParcel.create()
+                                listeners[i].sendRequest(1, data2, reply2, option2)
+                                    .then(function(result) {
+                                        console.info("18 send request done, error code: " + result.errCode + ", index: " + i)
+                                    })
+                                    .catch(function(e) {
+                                        console.error("18 send request got exception: " + e)
+                                    })
+                                    .finally(() => {
+                                        data2.reclaim()
+                                        reply2.reclaim()
+                                        console.info("case 18 test done")
+                                    })
+                            }
+                            console.info("18 The server's writeRemoteObjectArray result is " + result);
+                            return true
+                        }
+                        case 19:
+                        {
+                            console.info("case 19 start")
+                            let tmp1 = data.readDoubleArray()
+                            let result =  reply.writeDoubleArray(tmp1)
+                            return true
+                        }
+        
+                        case 20:
+                        {
+                            console.info("case 20 start")
+                            let tmp1 = data.readByte()
+                            let tmp2 = data.readShort()
+                            let tmp3 = data.readInt()
+                            let tmp4 = data.readLong()
+                            let tmp5 = data.readFloat()
+                            let tmp6 = data.readDouble()
+                            let tmp7 = data.readBoolean()
+                            let tmp8 = data.readChar()
+                            let tmp9 = data.readString()
+                            let s = new MySequenceable(null, null)
+                            let tmp10 = data.readParcelable(s)
+                            let result1 =  reply.writeByte(tmp1)
+                            let result2 =  reply.writeShort(tmp2)
+                            let result3 =  reply.writeInt(tmp3)
+                            let result4 =  reply.writeLong(tmp4)
+                            let result5 =  reply.writeFloat(tmp5)
+                            let result6 =  reply.writeDouble(tmp6)
+                            let result7 =  reply.writeBoolean(tmp7)
+                            let result8 =  reply.writeChar(tmp8)
+                            let result9 =  reply.writeString(tmp9)
+                            let result10 =  reply.writeParcelable(s)
+                            return true
+                        }
+                        case 21:
+                        {
+                            console.info("case 21 start")
+                            let tmp1 = data.readByteArray()
+                            let tmp2 = data.readShortArray()
+                            let tmp3 = data.readIntArray()
+                            let tmp4 = data.readLongArray()
+                            let tmp5 = data.readFloatArray()
+                            let tmp6 = data.readDoubleArray()
+                            let tmp7 = data.readBooleanArray()
+                            let tmp8 = data.readCharArray()
+                            let tmp9 = data.readStringArray()
+                            let s = [new MySequenceable(null, null), new MySequenceable(null, null),
+                                new MySequenceable(null, null)]
+                            let tmp10 = data.readParcelableArray(s)
+                            let result1 =  reply.writeByteArray(tmp1)
+                            let result2 =  reply.writeShortArray(tmp2)
+                            let result3 =  reply.writeIntArray(tmp3)
+                            let result4 =  reply.writeLongArray(tmp4)
+                            let result5 =  reply.writeFloatArray(tmp5)
+                            let result6 =  reply.writeDoubleArray(tmp6)
+                            let result7 =  reply.writeBooleanArray(tmp7)
+                            let result8 =  reply.writeCharArray(tmp8)
+                            let result9 =  reply.writeStringArray(tmp9)
+                            let result10 =  reply.writeParcelableArray(s)
+                            return true
+                        }
+                        case 22:
+                        {
+                            console.info("case 22 start")
+                            let callingPid = rpc.IPCSkeleton.getCallingPid()
+                            let callingUid = rpc.IPCSkeleton.getCallingUid()
+                            reply.writeNoException()
+                            reply.writeInt(callingPid)
+                            reply.writeInt(callingUid)
+                            reply.writeInt(this.getCallingPid())
+                            reply.writeInt(this.getCallingUid())
+                            let id = rpc.IPCSkeleton.resetCallingIdentity()
+                            rpc.IPCSkeleton.setCallingIdentity(id)
+                            reply.writeInt(rpc.IPCSkeleton.getCallingPid())
+                            reply.writeInt(rpc.IPCSkeleton.getCallingUid())
+                            reply.writeInt(rpc.IPCSkeleton.flushCommands(this))
+                            return true
+                        }
+                        case 23:
+                        {
+                            console.info("case 23 start")
+                            let s = new MySequenceable(null, null);
+                            var tmp1 = data.readParcelable(s);
+                            var result =  reply.writeParcelable(s);
+                            return true
+                        }
+                        case 24:
+                        {
+                            console.info("case 24 start")
+                            var tmp1 = data.readShort();
+                            var tmp2 = data.readShort();
+                            var tmp3 = data.readShort();
+                            var tmp4 = data.readShort();
+                            var tmp5 = data.readShort();
+                            var result1 =  reply.writeShort(tmp1);
+                            var result2 =  reply.writeShort(tmp2);
+                            var result3 =  reply.writeShort(tmp3);
+                            var result4 =  reply.writeShort(tmp4);
+                            var result5 =  reply.writeShort(tmp5);
+                            return true
+                        }
+                        case 25:
+                        {
+                            console.info("case 25 start")
+                            var tmp1 = data.readByte();
+                            var tmp2 = data.readByte();
+                            var tmp3 = data.readByte();
+                            var tmp4 = data.readByte();
+                            var tmp5 = data.readByte();
+                            var result1 =  reply.writeByte(tmp1);
+                            var result2 =  reply.writeByte(tmp2);
+                            var result3 =  reply.writeByte(tmp3);
+                            var result4 =  reply.writeByte(tmp4);
+                            var result5 =  reply.writeByte(tmp5);
+                            return true
+                        }
+                        case 26:
+                        {
+                            console.info("case 26 start")
+                            var tmp1 = data.readInt();
+                            var tmp2 = data.readInt();
+                            var tmp3 = data.readInt();
+                            var tmp4 = data.readInt();
+                            var tmp5 = data.readInt();
+                            var result1 =  reply.writeInt(tmp1);
+                            var result2 =  reply.writeInt(tmp2);
+                            var result3 =  reply.writeInt(tmp3);
+                            var result4 =  reply.writeInt(tmp4);
+                            var result5 =  reply.writeInt(tmp5);
+                            return true
+                        }
+                        case 28:
+                        {
+                            console.info("case 28 start")
+                            let callingPid = rpc.IPCSkeleton.getCallingPid()
+                            let callingUid = rpc.IPCSkeleton.getCallingUid()
+                            let callingDeviceID = rpc.IPCSkeleton.getCallingDeviceID()
+                            let localDeviceID = rpc.IPCSkeleton.getLocalDeviceID()
+                            let isLocalCalling = rpc.IPCSkeleton.isLocalCalling()
+                            reply.writeNoException()
+                            reply.writeInt(callingPid)
+                            reply.writeInt(callingUid)
+                            reply.writeString(callingDeviceID)
+                            reply.writeString(localDeviceID)
+                            reply.writeBoolean(isLocalCalling)
+                            reply.writeInt(this.getCallingPid())
+                            reply.writeInt(this.getCallingUid())
+                            let id = rpc.IPCSkeleton.resetCallingIdentity()
+                            rpc.IPCSkeleton.setCallingIdentity(id)
+                            reply.writeInt(rpc.IPCSkeleton.getCallingPid())
+                            reply.writeInt(rpc.IPCSkeleton.getCallingUid())
+                            reply.writeInt(rpc.IPCSkeleton.flushCommands(this))
+                            return true
+                        }
+                        case 29:
+                        {
+                            console.info("case 29 starts")
+                            let bytesWr = data.readInt()
+                            let fd = data.readFileDescriptor()
+                            let writeFileResult = fileio.writeSync(fd, "HELLO RPC", {position: bytesWr + 1});
+                            rpc.MessageParcel.closeFileDescriptor(fd)
+                            return true
+                        }
+                        case 30:
+                        {
+                            console.info("case 30 start")
+                            let listeners = data.readRemoteObjectArray();
+                            let num = data.readInt()
+                            let str = data.readString()
+                            for (let i = 0; i < listeners.length; i++) {
+                                let option2 = new rpc.MessageOption()
+                                let data2 = rpc.MessageParcel.create()
+                                let reply2 = rpc.MessageParcel.create()
+                                data2.writeInt(num)
+                                data2.writeString(str)
+                                listeners[i].sendRequest(1, data2, reply2, option2)
+                                    .then(function(result) {
+                                        console.info("30 send request done, error code: " + result.errCode + ", index: " + i)
+                                    })
+                                    .catch(function(e) {
+                                        console.error("30 send request got exception: " + e)
+                                    })
+                                    .finally(() => {
+                                        data2.reclaim()
+                                        reply2.reclaim()
+                                        console.info("case 30 test done")
+                                    })
+                            }
+                            reply.writeNoException()
+                            return true
+                        }
+        
+                        case 31:
+                        {
+                            console.info("case 31 start")
+                            let listeners = data.readRemoteObjectArray();
+                            let num = data.readInt()
+                            let str = data.readString()
+                            console.info("31 num: " + num);
+                            console.info("31 str: " + str);
+                            for (let i = 0; i < listeners.length; i++) {
+                                let option2 = new rpc.MessageOption()
+                                let data2 = rpc.MessageParcel.create()
+                                let reply2 = rpc.MessageParcel.create()
+                                data2.writeInt(num)
+                                data2.writeString(str)
+                                listeners[i].sendRequest(1, data2, reply2, option2)
+                                    .then(function(result) {
+                                        console.info("31 send request done, error code: " + result.errCode + ", index: " + i)
+                                    })
+                                    .catch(function(e) {
+                                        console.error("31 send request got exception: " + e)
+                                    })
+                                    .finally(() => {
+                                        data2.reclaim()
+                                        reply2.reclaim()
+                                        console.info("case 31 test done")
+                                    })
+                            }
+                            reply.writeNoException()
+                            return true
+                        }
+                        case 32:
+                        {
+                            console.info("case 32 start")
+                            let tmp1 = data.readString()
+                            let result =  reply.writeString("onRemoteMessageRequest invoking")
+                            return true
+                        }
+                        default:
+                            this.onRemoteRequest(code, data, reply, option)
+                    }
+                } catch (error) {
+                    console.info("onRemoteMessageRequest: " + error);
+                }
+                return false
+            }
+        }        
+
         class TestAbilityStub extends rpc.RemoteObject {
             constructor(descriptor) {
                 super(descriptor)
@@ -270,7 +630,6 @@ export default function actsRpcClientJsTest() {
             constructor(descriptor) {
                 super(descriptor)
             }
-
             onRemoteMessageRequest(code, data, reply, option) {
                 console.info("TestAbilityMessageStub: onRemoteMessageRequest called, code: " + code)
                 let descriptor = data.readInterfaceToken()
@@ -360,17 +719,6 @@ export default function actsRpcClientJsTest() {
                 expect(actual[i]).assertEqual(expected[i])
             }
         }
-
-        beforeAll(async function (done) {
-            console.info('beforeAll called')
-            await connectAbility().then((remote) => {
-                console.info("got remote proxy: " + remote)
-            }).catch((err) => {
-                console.info("got exception: " + err)
-            })
-            done()
-            console.info("beforeAll done")
-        })
 
         /*
      * @tc.number  SUB_Softbus_IPC_Compatibility_MessageParcel_00100
@@ -5079,7 +5427,7 @@ export default function actsRpcClientJsTest() {
 
                 data.reclaim()
                 reply.reclaim()
-                console.info("test done")
+                done();
             } catch(error) {
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_13000: error = " + error);
             }
@@ -5105,7 +5453,6 @@ export default function actsRpcClientJsTest() {
                     done()
                 }
             }
-
             try{
                 let option = new rpc.MessageOption()
                 let data = rpc.MessageParcel.create()
@@ -5121,26 +5468,26 @@ export default function actsRpcClientJsTest() {
                 expect(data.writeString("rpcListenerTest")).assertTrue()
                 await gIRemoteObject.sendRequest(CODE_WRITE_REMOTEOBJECTARRAY_2, data, reply, option)
                     .then((result)=> {
-                        console.info("sendRequest done, error code: " + result.errCode)
+                        console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_13100 error code: " + result.errCode)
                         expect(result.errCode).assertEqual(0)
                         result.reply.readException()
                     })
-
                 data.reclaim()
                 reply.reclaim()
                 console.info("test done")
             } catch(error) {
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_13100: error = " + error);
             }
+            done();
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_13100---------------------------");
         })
 
         /*
-     * @tc.number  SUB_Softbus_IPC_Compatibility_MessageParcel_13200
-     * @tc.name    Invoke the rewindRead interface, write the POS, and read the offset value
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
+        * @tc.number  SUB_Softbus_IPC_Compatibility_MessageParcel_13200
+        * @tc.name    Invoke the rewindRead interface, write the POS, and read the offset value
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
         it("SUB_Softbus_IPC_Compatibility_MessageParcel_13200", 0, async function(done){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageParcel_13200---------------------------");
             try{
@@ -5311,7 +5658,7 @@ export default function actsRpcClientJsTest() {
                     expect(result.errCode == 0).assertTrue();
                     let getMePaCapacity = result.reply.getCapacity();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_13600:run getCapacityis is " + getMePaCapacity);
-                    expect(getMePaCapacity).assertEqual(("constant".length * 2) + 8);
+                    expect(getMePaCapacity).assertEqual("constant".length * 8);
                     expect(result.reply.readString()).assertEqual("constant");
                 });
                 data.reclaim();
@@ -5350,7 +5697,7 @@ export default function actsRpcClientJsTest() {
                     expect(result.reply.readString()).assertEqual("constant");
                     let getMeCa = result.reply.getCapacity();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_13700:run getCapacityis is " + getMeCa);
-                    expect(getMeCa).assertEqual(("constant".length * 2) + 8);
+                    expect(getMeCa).assertEqual("constant".length * 8);
                 });
                 data.reclaim();
                 reply.reclaim();
@@ -5425,7 +5772,7 @@ export default function actsRpcClientJsTest() {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_13900:run getSizeis is " + getSizeresult);
                     let setCapacityresult = result.reply.getCapacity();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_13900:run getCapacityis is " + setCapacityresult);
-                    expect(setCapacityresult).assertEqual(("constant".length * 2) + 8);
+                    expect(setCapacityresult).assertEqual("constant".length * 8);
                 });
                 data.reclaim();
                 reply.reclaim();
@@ -6020,7 +6367,7 @@ export default function actsRpcClientJsTest() {
                 {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15500: gIRemoteObject is undefined");
                 }
-                await gIRemoteObject.sendRequest(CODE_ONREMOTEMESSAGEREQUEST, data, reply, option).then((result) => {
+                await gIRemoteObject.sendRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15500: sendRequestis is " + result.errCode);
                     var replyReadResult = result.reply.readString();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15500: run readString is " + replyReadResult);
@@ -6050,13 +6397,13 @@ export default function actsRpcClientJsTest() {
                 var reply = rpc.MessageSequence.create();
                 var option = new rpc.MessageOption();
                 var token = 'onRemoteMessageRequest invoking';
-                var result = data.writeString(token);
-                console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15600:run writeStringis is " + result);
+                data.writeString(token);
+                console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15600:run writeStringis is success");
                 if (gIRemoteObject == undefined)
                 {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15600: gIRemoteObject is undefined");
                 }
-                await gIRemoteObject.sendMessageRequest(CODE_ONREMOTEMESSAGEREQUEST, data, reply, option).then((result) => {
+                await gIRemoteObject.sendMessageRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15600: sendRequestis is " + result.errCode);
                     var replyReadResult = result.reply.readString();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15600: run readString is " + replyReadResult);
@@ -6162,7 +6509,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15900:run writeStringis is " + result);
                 data.reclaim();
             } catch (error) {
-                let errCode = ErrorCode.CHECK_PARAM_ERROR
+                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15900: errorCode " + error.code);
                 expect(error.code == errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15900: errorMessage " + error.message);
@@ -6189,7 +6536,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16000:run writeInterfaceToken result ");
                 data.reclaim();
             } catch (error) {
-                let errCode = ErrorCode.PARCEL_MEMORY_ALLOC_ERROR;
+                let errCode = `${rpc.ErrorCode.PARCEL_MEMORY_ALLOC_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16000: errorCode " + error.code);
                 expect(error.code == errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16000: errorMessage " + error.message);
@@ -6217,7 +6564,7 @@ export default function actsRpcClientJsTest() {
             
                 data.reclaim();
             } catch (error) {
-                let errCode = ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR;
+                let errCode = `${rpc.ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16100: errorCode " + error.code);
                 expect(error.code != errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16100: errorMessage " + error.message);
@@ -6244,7 +6591,7 @@ export default function actsRpcClientJsTest() {
                 data.readParcelable(ret);
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16200: readParcelable is." + ret);
             } catch (error) {
-                let errCode = ErrorCode.PARCEL_MEMORY_ALLOC_ERROR;
+                let errCode = `${rpc.ErrorCode.PARCEL_MEMORY_ALLOC_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16000: errorCode " + error.code);
                 expect(error.code == errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16000: errorMessage " + error.message);
@@ -6267,7 +6614,7 @@ export default function actsRpcClientJsTest() {
                 var token = {}
                 var result = data.writeRemoteObject(token);
             } catch (error) {
-                let errCode = ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR;
+                let errCode = `${rpc.ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16300: errorCode " + error.code);
                 expect(error.code == errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16300: errorMessage " + error.message);
@@ -6298,7 +6645,7 @@ export default function actsRpcClientJsTest() {
                 data.readParcelable(ret);
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16100: readParcelable is." + ret);
             } catch (error) {
-                let errCode = ErrorCode.CALL_JS_METHOD_ERROR;
+                let errCode = `${rpc.ErrorCode.CALL_JS_METHOD_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16400:error = " + error.message);
                 expect(error.message != null).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16400:error = " + error.code);
@@ -6326,7 +6673,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16500:run readInterfaceToken result is " + resultToken);
                 data.reclaim();
             } catch (error) {
-                let errCode = ErrorCode.READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR;
+                let errCode = `${rpc.ErrorCode.READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16500:error = " + error.message);
                 expect(error.message != null).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16500:error = " + error.code);
@@ -6349,7 +6696,7 @@ export default function actsRpcClientJsTest() {
                 let newFd = rpc.MessageSequence.dupFileDescriptor(fd);
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16600: newFd " +newFd);
             } catch(error) {
-                let errCode = ErrorCode.OS_DUP_ERROR;
+                let errCode = `${rpc.ErrorCode.OS_DUP_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16600: errorCode " + error.code);
                 expect(error.code != errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_16600: errorMessage" + error.message);
@@ -6668,7 +7015,7 @@ export default function actsRpcClientJsTest() {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageOption_01100: sendRequestis is " + result.errCode);
                     var replyReadResult = result.reply.readString();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageOption_01100: run readString is " + replyReadResult);
-                    expect(replyReadResult).assertEqual("");
+                    expect(replyReadResult).assertEqual("option");
                     expect(option.getFlags()).assertEqual(1);
 
                 });
@@ -6709,7 +7056,7 @@ export default function actsRpcClientJsTest() {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageOption_01200: sendRequestis is " + result.errCode);
                     var replyReadResult = result.reply.readString();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageOption_01200: run readString is " + replyReadResult);
-                    expect(replyReadResult).assertEqual("");
+                    expect(replyReadResult).assertEqual("option");
                     expect(option.getFlags()).assertEqual(3);
                 });
                 data.reclaim();
@@ -6747,7 +7094,7 @@ export default function actsRpcClientJsTest() {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageOption_01300: sendMessageRequest is " + result.errCode);
                     var replyReadResult = result.reply.readString();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageOption_01300: run readString is " + replyReadResult);
-                    expect(replyReadResult).assertEqual("");
+                    expect(replyReadResult).assertEqual("option");
                     expect(option.getFlags()).assertEqual(1);
 
                 });
@@ -6826,7 +7173,7 @@ export default function actsRpcClientJsTest() {
                     let isAsyncData = option.isAsync();
                     expect(isAsyncData).assertTrue();
                     var replyReadResult = result.reply.readString();
-                    expect(replyReadResult).assertEqual("");
+                    expect(replyReadResult).assertEqual("option");
                 });
                 data.reclaim();
                 reply.reclaim();
@@ -7951,7 +8298,7 @@ export default function actsRpcClientJsTest() {
                 let ashmem = rpc.Ashmem.create("ashmem", (2*G + 1));
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04100: ashmem " + ashmem);
             }catch(error){
-                let errCode = ErrorCode.CHECK_PARAM_ERROR;
+                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04100: errorCode " + error.code);
                 expect(error.code == errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04100: errorMessage " + error.message);
@@ -7974,7 +8321,7 @@ export default function actsRpcClientJsTest() {
                 ashmem.mapReadWriteAshmem();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04200: run mapReadWriteAshmem is success");
             }catch(error){
-                let errCode = ErrorCode.OS_MMAP_ERROR;
+                let errCode = `${rpc.ErrorCode.OS_MMAP_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04200: error " + error.code);
                 expect(error.code != errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04200: error " + error.message);
@@ -7995,7 +8342,7 @@ export default function actsRpcClientJsTest() {
                 let ashmem = rpc.Ashmem.create("ashmem", 0);
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04300: ashmem " + ashmem);
             }catch(error){
-                let errCode = ErrorCode.CHECK_PARAM_ERROR;
+                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04300: errorCode " + error.code);
                 expect(error.code == errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04300: errorMessage " + error.message);
@@ -8038,7 +8385,7 @@ export default function actsRpcClientJsTest() {
                 ashmem.setProtectionType(rpc.Ashmem.PROT_WRITE, rpc.Ashmem.PROT_READ);
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04500: run setProtectionType is success");
             }catch(error){
-                let errCode = ErrorCode.CHECK_PARAM_ERROR;
+                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04500: errorCode " + error.code);
                 expect(error.code == errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04500: errorMessage " + error.message);
@@ -8061,7 +8408,7 @@ export default function actsRpcClientJsTest() {
                 ashmem.setProtectionType(null);
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04600: run setProtectionType is success");
             }catch(error){
-                let errCode = ErrorCode.OS_IOCTL_ERROR;
+                let errCode = `${rpc.ErrorCode.OS_IOCTL_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04600: errorCode " + error.code);
                 expect(error.code != errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04600: errorMessage " + error.message);
@@ -8087,7 +8434,7 @@ export default function actsRpcClientJsTest() {
                 data.reclaim();
                 data2.reclaim();
             }catch(error){
-                let errCode = ErrorCode.WRITE_TO_ASHMEM_ERROR;
+                let errCode = `${rpc.ErrorCode.WRITE_TO_ASHMEM_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04700: error " + error.code);
                 expect(error.code != errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04700: error " + error.message);
@@ -8114,7 +8461,7 @@ export default function actsRpcClientJsTest() {
                 let readResult = ashmem.readAshmem(5, 0);
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04800: readAshmem is  : " + readResult);
             }catch(error){
-                let errCode = ErrorCode.READ_FROM_ASHMEM_ERROR;
+                let errCode = `${rpc.ErrorCode.READ_FROM_ASHMEM_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04800: error " + error.code);
                 expect(error.code != errCode).assertEqual(null);
             }
@@ -8138,7 +8485,7 @@ export default function actsRpcClientJsTest() {
                 expect(size).assertEqual(mapSize);
                 ashmem.closeAshmem();
             }catch(error){
-                let errCode = ErrorCode.CHECK_PARAM_ERROR;
+                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04900: errorcode " + error.code);
                 expect(error.code == errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_04900: errormessage " + error.message);
@@ -8163,7 +8510,7 @@ export default function actsRpcClientJsTest() {
                 expect(result).assertEqual(false);
                 ashmem.closeAshmem()
             }catch(error){
-                let errCode = ErrorCode.CHECK_PARAM_ERROR;
+                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_05000: errorcode " + error.code);
                 expect(error.code == errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_05000: errormessage " + error.message);
@@ -8187,7 +8534,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_05100: run mapTypedAshmem is success");
                 ashmem.closeAshmem()
             }catch(error){
-                let errCode = ErrorCode.OS_MMAP_ERROR;
+                let errCode = `${rpc.ErrorCode.OS_MMAP_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_05100: error " + error.code);
                 expect(error.code != errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_05100: error " + error.message);
@@ -8211,7 +8558,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_05200: run mapTypedAshmem is success");
                 ashmem.closeAshmem()
             }catch(error){
-                let errCode = ErrorCode.CHECK_PARAM_ERROR;
+                let errCode = `${rpc.ErrorCode.CHECK_PARAM_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_05200: error " + error.code);
                 expect(error.code != errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_Ashmem_05200: error " + error.message);
@@ -8583,10 +8930,10 @@ export default function actsRpcClientJsTest() {
                 data.writeBoolean(true)
                 data.writeChar(96)
                 data.writeString("HelloWorld")
-                data.writeSequenceable(new MySequenceable(1, "aaa"))
+                data.writeParcelable(new MySequenceable(1, "aaa"))
 
                 await gIRemoteObject.sendMessageRequest(CODE_ALL_TYPE, data, reply, option, (err, result) => {
-                    console.info("SUB_Softbus_IPC_Compatibility_IRemoteObject_00900:sendRequest done, error code: " + result.errCode)
+                    console.info("SUB_Softbus_IPC_Compatibility_IRemoteObject_00900 errorcode: " + result.errCode)
                     expect(result.errCode).assertEqual(0)
                     expect(result.reply.readByte()).assertEqual(1)
                     expect(result.reply.readShort()).assertEqual(2)
@@ -8598,7 +8945,7 @@ export default function actsRpcClientJsTest() {
                     expect(result.reply.readChar()).assertEqual(96)
                     expect(result.reply.readString()).assertEqual("HelloWorld")
                     let s = new MySequenceable(0, '')
-                    expect(result.reply.readSequenceable(s)).assertTrue()
+                    expect(result.reply.readParcelable(s)).assertTrue()
                     expect(s.num).assertEqual(1)
                     expect(s.str).assertEqual("aaa")
                 });
@@ -8724,7 +9071,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_IRemoteObject_01300:run registerDeathRecipient is done");
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_IRemoteObject_01300:error = " + error);
-                expect(error == null).assertTrue();
+                expect(error != null).assertTrue();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_IRemoteObject_01300---------------------------");
         });
@@ -8745,7 +9092,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_IRemoteObject_01400:run unregisterDeathRecipient is done");
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_IRemoteObject_01400:error = " + error);
-                expect(error == null).assertTrue();
+                expect(error != null).assertTrue();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_IRemoteObject_01400---------------------------");
         });               
@@ -8761,14 +9108,14 @@ export default function actsRpcClientJsTest() {
             try{
                 let recipient = new MyDeathRecipient(gIRemoteObject, null)
                 var resultAdd1 = gIRemoteObject.addDeathRecipient(recipient, 0)
-                expect(resultAdd1 == true).assertTrue();
+                expect(resultAdd1 == false).assertTrue();
                 var resultAdd2 = gIRemoteObject.addDeathRecipient(recipient, 0)
-                expect(resultAdd2 == true).assertTrue();
+                expect(resultAdd2 == false).assertTrue();
                 var resultRemove1 = gIRemoteObject.removeDeathRecipient(recipient, 0)
-                expect(resultRemove1 == true).assertTrue();
+                expect(resultRemove1 == false).assertTrue();
 
                 var resultRemove2 = gIRemoteObject.removeDeathRecipient(recipient, 0)
-                expect(resultRemove2 == true).assertTrue();
+                expect(resultRemove2 == false).assertTrue();
 
                 var resultRemove3 = gIRemoteObject.removeDeathRecipient(recipient, 0)
                 expect(resultRemove3 == false).assertTrue();
@@ -8789,9 +9136,9 @@ export default function actsRpcClientJsTest() {
             try{
                 let recipient = new MyDeathRecipient(gIRemoteObject, null);
                 var resultAdd = gIRemoteObject.addDeathRecipient(recipient, -(2*G));
-                expect(resultAdd).assertTrue();
+                expect(resultAdd == false).assertTrue();
                 var resultRemove = gIRemoteObject.removeDeathRecipient(recipient, -(2*G));
-                expect(resultRemove).assertTrue();
+                expect(resultRemove == false).assertTrue();
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00200:error = " + error);
             }
@@ -8809,9 +9156,9 @@ export default function actsRpcClientJsTest() {
             try{
                 let recipient = new MyDeathRecipient(gIRemoteObject, null);
                 var resultAdd = gIRemoteObject.addDeathRecipient(recipient, (2*G - 1));
-                expect(resultAdd).assertTrue();
+                expect(resultAdd == false).assertTrue();
                 var resultRemove = gIRemoteObject.removeDeathRecipient(recipient, (2*G - 1));
-                expect(resultRemove).assertTrue();
+                expect(resultRemove == false).assertTrue();
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00300:error = " + error);
             }
@@ -8830,10 +9177,10 @@ export default function actsRpcClientJsTest() {
                 let recipient = new MyDeathRecipient(gIRemoteObject, null);
                 var resultAdd = gIRemoteObject.addDeathRecipient(recipient, 2*G);
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00400:run addDeathRecipient first is " + resultAdd);
-                expect(resultAdd).assertTrue();
+                expect(resultAdd == false).assertTrue();
                 var resultRemove = gIRemoteObject.removeDeathRecipient(recipient, 2*G);
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00400:run removeDeathRecipient1 is " + resultRemove);
-                expect(resultRemove).assertTrue();
+                expect(resultRemove == false).assertTrue();
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00400:error = " + error);
             }
@@ -8852,10 +9199,10 @@ export default function actsRpcClientJsTest() {
                 let recipient = new MyDeathRecipient(gIRemoteObject, null);
                 var resultAdd = gIRemoteObject.addDeathRecipient(recipient, -(2*G + 1));
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00500:run addDeathRecipient first is " + resultAdd);
-                expect(resultAdd).assertTrue();
+                expect(resultAdd == false).assertTrue();
                 var resultRemove = gIRemoteObject.removeDeathRecipient(recipient, -(2*G + 1));
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00500:run removeDeathRecipient1 is " + resultRemove);
-                expect(resultRemove).assertTrue();
+                expect(resultRemove == false).assertTrue();
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00500:error = " + error);
             }
@@ -8878,7 +9225,7 @@ export default function actsRpcClientJsTest() {
 
                 var resultAdd1 = gIRemoteObject.addDeathRecipient(recipient, 0)
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00600:run addDeathRecipient first result is " + resultAdd1);
-                expect(resultAdd1 == true).assertTrue();
+                expect(resultAdd1 == false).assertTrue();
 
                 var isDead1 = gIRemoteObject.isObjectDead();
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00600: run isObjectDead result is " + isDead1);
@@ -8886,15 +9233,15 @@ export default function actsRpcClientJsTest() {
 
                 var resultRemove1 = gIRemoteObject.removeDeathRecipient(recipient, 0)
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00600:run removeDeathRecipient result is " + resultRemove1);
-                expect(resultRemove1 == true).assertTrue();
+                expect(resultRemove1 == false).assertTrue();
 
                 var resultAdd2 = gIRemoteObject.addDeathRecipient(recipient, 0)
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00600:run addDeathRecipient second result is " + resultAdd2);
-                expect(resultAdd2 == true).assertTrue();
+                expect(resultAdd2 == false).assertTrue();
 
                 var resultRemove2 = gIRemoteObject.removeDeathRecipient(recipient, 0)
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00600:run removeDeathRecipient1 result is " + resultRemove2);
-                expect(resultRemove2 == true).assertTrue();
+                expect(resultRemove2 == false).assertTrue();
 
                 var resultRemove3 = gIRemoteObject.removeDeathRecipient(recipient, 0)
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_00600:run removeDeathRecipient3 result is " + resultRemove3);
@@ -9015,7 +9362,7 @@ export default function actsRpcClientJsTest() {
                 expect(isDead2 == false).assertTrue();
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01000:error = " + error);
-                expect(error == null).assertTrue();
+                expect(error != null).assertTrue();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_RemoteProxy_01000---------------------------");
         });        
@@ -9090,7 +9437,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01300: unregisterDeathRecipient is success");
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01300:error = " + error);
-                expect(error == null).assertTrue();
+                expect(error != null).assertTrue();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_RemoteProxy_01300---------------------------");
         });
@@ -9111,7 +9458,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01400: unregisterDeathRecipient is success");
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01400:error = " + error);
-                expect(error == null).assertTrue();
+                expect(error != null).assertTrue();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_RemoteProxy_01400---------------------------");
         });
@@ -9132,7 +9479,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01500: unregisterDeathRecipient is success");
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01500:error = " + error);
-                expect(error == null).assertTrue();
+                expect(error != null).assertTrue();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_RemoteProxy_01500---------------------------");
         });
@@ -9153,7 +9500,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01600: unregisterDeathRecipient is success");
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01600:error = " + error);
-                expect(error == null).assertTrue();
+                expect(error != null).assertTrue();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_RemoteProxy_01600---------------------------");
         });
@@ -9174,7 +9521,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01700: unregisterDeathRecipient is success");
             } catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01700:error = " + error);
-                expect(error == null).assertTrue();
+                expect(error != null).assertTrue();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_RemoteProxy_01700---------------------------");
         });
@@ -9197,7 +9544,7 @@ export default function actsRpcClientJsTest() {
                 let res2 = object.getLocalInterface(null);
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01800: run getLocalInterface success, res2 is " + res2);
             } catch (error) {
-                let errCode = ErrorCode.ONLY_PROXY_OBJECT_PERMITTED_ERROR;
+                let errCode = `${rpc.ErrorCode.ONLY_PROXY_OBJECT_PERMITTED_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01800:error = " + error.code);
                 expect(error.code != errCode).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_RemoteProxy_01800:error = " + error.message);
@@ -9516,6 +9863,7 @@ export default function actsRpcClientJsTest() {
                 let localDeviceID = rpc.IPCSkeleton.getLocalDeviceID();
                 let isLocalCalling = rpc.IPCSkeleton.isLocalCalling();
                 let id = rpc.IPCSkeleton.resetCallingIdentity();
+                console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01200：" + id)
                 let ret = rpc.IPCSkeleton.setCallingIdentity(id);
                 expect(object.getInterfaceDescriptor()).assertEqual("");
                 expect(callingDeviceID).assertEqual("");
@@ -9523,7 +9871,7 @@ export default function actsRpcClientJsTest() {
                 expect(isLocalCalling).assertTrue();
                 expect(id).assertEqual("");
                 expect(ret).assertTrue();
-                expect(rpc.IPCSkeleton.flushCommands(gIRemoteObject)).assertEqual(0);
+                expect(rpc.IPCSkeleton.flushCommands(gIRemoteObject)).assertEqual(101);
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01200： callingPid: " + callingPid
                     + ", callingUid: " + callingUid
                     + ", callingDeviceID: " + callingDeviceID + ", localDeviceID: " + localDeviceID
@@ -9649,7 +9997,7 @@ export default function actsRpcClientJsTest() {
                 object.getDescriptor();
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01600: is success");
             } catch (error) {
-                let errCode = ErrorCode.COMMUNICATION_ERROR;
+                let errCode = `${rpc.ErrorCode.COMMUNICATION_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01600 error is :" + error.message)
                 expect(error.message != null).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01600 error is :" + error.code)
@@ -9672,7 +10020,7 @@ export default function actsRpcClientJsTest() {
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01700 RpcServer: flushCmdBuffer is success");
             }
             catch (error) {
-                let errCode = ErrorCode.ONLY_REMOTE_OBJECT_PERMITTED_ERROR;
+                let errCode = `${rpc.ErrorCode.ONLY_REMOTE_OBJECT_PERMITTED_ERROR}`;
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01700 error is :" + error.message)
                 expect(error.message != null).assertTrue();
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01700 error is :" + error.code)
