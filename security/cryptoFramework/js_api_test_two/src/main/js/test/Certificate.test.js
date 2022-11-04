@@ -76,6 +76,98 @@ export default function CertificateJsunit() {
     });
 
     /**
+     * @tc.number Security_crypto_framework_X509Cert_0300
+     * @tc.name verify RSA algorithm for X509 certificate
+     * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
+     */
+    it("Security_crypto_framework_X509Cert_0300", 0, async function (done) {
+      await certPromise
+        .verifyX509CertPromise("pem")
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      await certCallback
+        .verifyX509CertCallback("pem")
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509Cert_0400
+     * @tc.name verify ECC algorithm for X509 certificate
+     * @tc.desc The X509 certificate FORMAT is FORMAT_DER
+     */
+    it("Security_crypto_framework_X509Cert_0400", 0, async function (done) {
+      await certPromise
+        .verifyX509CertPromise("der")
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      await certCallback
+        .verifyX509CertCallback("der")
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509Cert_0500
+     * @tc.name verify RSA algorithm for X509 certificate with invalid pubKey
+     * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
+     */
+    it("Security_crypto_framework_X509Cert_0500", 0, async function (done) {
+      await certPromise
+        .verifyX509CertPromise("pem", "NULL")
+        .then((data) => {
+          expect(data == 401).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      await certCallback
+        .verifyX509CertCallback("pem", "000")
+        .then((data) => {
+          expect(data == 401).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509Cert_0600
+     * @tc.name verify RSA algorithm for X509 certificate with not matched pubKey
+     * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
+     */
+    it("Security_crypto_framework_X509Cert_0600", 0, async function (done) {
+      await certPromise
+        .verifyX509CertPromise("pem", "wrong")
+        .then((data) => {
+          expect(data == 401).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
      * @tc.number Security_crypto_framework_X509Cert_0700
      * @tc.name check getEncoded interface
      * @tc.desc The X509 certificate FORMAT is FORMAT_DER
@@ -128,14 +220,59 @@ export default function CertificateJsunit() {
     /**
      * @tc.number Security_crypto_framework_X509Cert_0900
      * @tc.name check validity of the date for X509 certificate
-     * @tc.desc The X509 certificate FORMAT is FORMAT_DER,date format:20220922145628+0800(YmdHMSz);
-     * @tc.desc Use the Promise Style of Interface
+     * @tc.desc The X509 certificate FORMAT is FORMAT_DER,date format:20220922145628+0800(YmdHMSz)
+     * @tc.desc Use the Promise Style of Interface;
+     * @tc.desc period of validity:2022/8/19/12:49:06 - 2032/8/16/12:49:06
      */
     it("Security_crypto_framework_X509Cert_0900", 0, async function (done) {
       await certPromise
         .checkValidityX509CertPromise("der", "20220830000000+0800")
         .then((data) => {
           expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509Cert_1000
+     * @tc.name check validity of the date for X509 certificate
+     * @tc.desc The X509 certificate FORMAT is FORMAT_DER,date format:20330830000000+0800(YmdHMSz)
+     * @tc.desc period of validity:2022/8/19/12:49:06 - 2032/8/16/12:49:06
+     */
+    it("Security_crypto_framework_X509Cert_1000", 0, async function (done) {
+      await certCallback
+        .checkValidityX509CertCallback("der", "20330830000000+0800")
+        .then((data) => {
+          expect(data == 17630004).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509Cert_1100
+     * @tc.name check validity of the date for X509 certificate
+     * @tc.desc The X509 certificate FORMAT is FORMAT_DER,date format: NULL or Exception parameters
+     * @tc.desc period of validity:2022/8/19/12:49:06 - 2032/8/16/12:49:06
+     */
+    it("Security_crypto_framework_X509Cert_1100", 0, async function (done) {
+      await certCallback
+        .checkValidityX509CertCallback("der", "NULL")
+        .then((data) => {
+          expect(data == 17630001).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      await certCallback
+        .checkValidityX509CertCallback("der", "string")
+        .then((data) => {
+          expect(data == 17630001).assertTrue();
         })
         .catch((err) => {
           expect(null).assertFail();
@@ -412,5 +549,84 @@ export default function CertificateJsunit() {
         });
       done();
     });
+
+    /**
+     * @tc.number Security_crypto_framework_CertChainValidator_0100
+     * @tc.name check validate interface for CertChainValidator
+     * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
+     */
+    it(
+      "Security_crypto_framework_CertChainValidator_0100",
+      0,
+      async function (done) {
+        await certPromise
+          .checkValidateOfCertChainValidatorPromise("PKIX")
+          .then((data) => {
+            expect(data == null).assertTrue();
+          })
+          .catch((err) => {
+            expect(null).assertFail();
+          });
+        await certCallback
+          .checkValidateOfCertChainValidatorCallback("PKIX")
+          .then((data) => {
+            expect(data == null).assertTrue();
+          })
+          .catch((err) => {
+            expect(null).assertFail();
+          });
+        done();
+      }
+    );
+
+    /**
+     * @tc.number Security_crypto_framework_CertChainValidator_0200
+     * @tc.name check validate interface for CertChainValidator with invalid param
+     * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
+     */
+    it(
+      "Security_crypto_framework_CertChainValidator_0200",
+      0,
+      async function (done) {
+        await certPromise
+          .checkValidateOfCertChainValidatorPromise("PKI111")
+          .then((data) => {
+            expect(data == 801).assertTrue();
+          })
+          .catch((err) => {
+            expect(null).assertFail();
+          });
+        done();
+      }
+    );
+
+    /**
+     * @tc.number Security_crypto_framework_CertChainValidator_0300
+     * @tc.name check validate interface for CertChainValidator with invalid Certs
+     * @tc.desc The X509 certificate FORMAT is FORMAT_PEM
+     */
+    it(
+      "Security_crypto_framework_CertChainValidator_0300",
+      0,
+      async function (done) {
+        await certPromise
+          .checkValidateOfCertChainValidatorPromise("PKIX", "error")
+          .then((data) => {
+            expect(data == 401).assertTrue();
+          })
+          .catch((err) => {
+            expect(null).assertFail();
+          });
+        await certCallback
+          .checkValidateOfCertChainValidatorCallback("PKIX", "error")
+          .then((data) => {
+            expect(data == 401).assertTrue();
+          })
+          .catch((err) => {
+            expect(null).assertFail();
+          });
+        done();
+      }
+    );
   });
 }

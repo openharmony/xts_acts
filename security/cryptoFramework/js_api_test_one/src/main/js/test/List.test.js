@@ -15,16 +15,10 @@
 
 import SymmetricCryptographyJsunit from "./SymmetricCryptography.test";
 import AsymmetricCryptographyJsunit from "./AsymmetricCryptography.test";
-import SecurityRandomJsunit from "./SecurityRandom.test";
 import DigestAlgorithmJsunit from "./DigestAlgorithm.test";
-import CertificateJsunit from "./Certificate.test";
-import CertificateCrlJsunit from "./CertificateCrl.test";
 
 export default function testsuite() {
   SymmetricCryptographyJsunit();
   AsymmetricCryptographyJsunit();
-  SecurityRandomJsunit();
-  CertificateJsunit();
-  CertificateCrlJsunit();
   DigestAlgorithmJsunit();
 }

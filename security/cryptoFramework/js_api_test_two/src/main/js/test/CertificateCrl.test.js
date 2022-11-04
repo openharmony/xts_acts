@@ -77,7 +77,7 @@ export default function CertificateCrlJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_X509CRL_0300
-     * @tc.name Check isRevoked for X509 Crl
+     * @tc.name Check isRevoked success for X509 Crl
      * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
      */
     it("Security_crypto_framework_X509CRL_0300", 0, async function (done) {
@@ -106,6 +106,60 @@ export default function CertificateCrlJsunit() {
         })
         .then((result) => {
           expect(result == true).assertTrue();
+        })
+        .catch((err) => {
+          console.error("[promise] isRevoked failed! error is: " + err);
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509CRL_0400
+     * @tc.name Check isRevoked failed for X509 Crl
+     * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
+     */
+    it("Security_crypto_framework_X509CRL_0400", 0, async function (done) {
+      await certPromise
+        .createX509CrlInstancePromise("pem")
+        .then((crlInstance) => {
+          return certPromise.checkIsRevokedX509CrlPromise(crlInstance, "error");
+        })
+        .then((result) => {
+          expect(result == false).assertTrue();
+        })
+        .catch((err) => {
+          console.error("[promise] isRevoked failed! error is: " + err);
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509CRL_0500
+     * @tc.name Check isRevoked failed with invalid param for X509 Crl
+     * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
+     */
+    it("Security_crypto_framework_X509CRL_0500", 0, async function (done) {
+      await certPromise
+        .createX509CrlInstancePromise("pem")
+        .then((crlInstance) => {
+          return certPromise.checkIsRevokedX509CrlPromise(crlInstance, "NULL");
+        })
+        .then((result) => {
+          expect(result == 401).assertTrue();
+        })
+        .catch((err) => {
+          console.error("[promise] isRevoked failed! error is: " + err);
+          expect(null).assertFail();
+        });
+      await certPromise
+        .createX509CrlInstancePromise("pem")
+        .then((crlInstance) => {
+          return certPromise.checkIsRevokedX509CrlPromise(crlInstance, "000");
+        })
+        .then((result) => {
+          expect(result == 401).assertTrue();
         })
         .catch((err) => {
           console.error("[promise] isRevoked failed! error is: " + err);
@@ -508,6 +562,110 @@ export default function CertificateCrlJsunit() {
         });
       await certPromise
         .checkGetRevokedCertX509CrlPromise("pem")
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509CRL_0800
+     * @tc.name Check verify for X509 Crl
+     * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
+     */
+    it("Security_crypto_framework_X509CRL_0800", 0, async function (done) {
+      await certPromise
+        .verifyX509CrlPromise("pem")
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+
+      await certCallback
+        .verifyX509CrlCallback("pem")
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509CRL_0900
+     * @tc.name Check verify for X509 Crl
+     * @tc.desc The X509 Crl FORMAT is FORMAT_DER
+     */
+    it("Security_crypto_framework_X509CRL_0900", 0, async function (done) {
+      await certPromise
+        .verifyX509CrlPromise("der")
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+
+      await certCallback
+        .verifyX509CrlCallback("der")
+        .then((data) => {
+          expect(data == null).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509CRL_1000
+     * @tc.name Check verify for X509 Crl with invalid PublicKey
+     * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
+     */
+    it("Security_crypto_framework_X509CRL_1000", 0, async function (done) {
+      await certPromise
+        .verifyX509CrlPromise("der", "NULL")
+        .then((data) => {
+          expect(data == 401).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+
+      await certCallback
+        .verifyX509CrlCallback("der", "000")
+        .then((data) => {
+          expect(data == 401).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+      done();
+    });
+
+    /**
+     * @tc.number Security_crypto_framework_X509CRL_1100
+     * @tc.name Check verify for X509 Crl with wrong PublicKey and right PublicKey
+     * @tc.desc The X509 Crl FORMAT is FORMAT_PEM
+     */
+    it("Security_crypto_framework_X509CRL_1100", 0, async function (done) {
+      await certPromise
+        .verifyX509CrlPromise("pem", "error")
+        .then((data) => {
+          expect(data == 401).assertTrue();
+        })
+        .catch((err) => {
+          expect(null).assertFail();
+        });
+
+      await certCallback
+        .verifyX509CrlCallback("pem")
         .then((data) => {
           expect(data == null).assertTrue();
         })

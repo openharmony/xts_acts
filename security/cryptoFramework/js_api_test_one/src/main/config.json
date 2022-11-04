@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.openharmony.cryptoFramework",
+    "bundleName": "com.openharmony.cryptoFramework1",
     "vendor": "acts",
     "version": {
       "code": 12,
@@ -14,15 +14,10 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.openharmony.cryptoFramework",
+    "package": "com.openharmony.cryptoFramework1",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": [
-       "default",
-       "tablet",
-       "tv",
-       "wearable"
-    ],
+    "deviceType": ["default", "tablet", "tv", "wearable", "phone"],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
