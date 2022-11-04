@@ -2661,7 +2661,7 @@ describe('SingleKvStorePromiseTest', function () {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500 putBatch success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             var query = new factory.Query();
@@ -2714,7 +2714,7 @@ describe('SingleKvStorePromiseTest', function () {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600 putBatch success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             var query = new factory.Query();
@@ -2850,8 +2850,7 @@ describe('SingleKvStorePromiseTest', function () {
     it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0200', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0200');
         try {
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0200 success');
-            let resultSet = null;
+            let resultSet = undefined;
             await kvStore.getResultSet('batch_test_string_key').then((result) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0200 getResultSet success');
                 resultSet = result;
@@ -2904,13 +2903,24 @@ describe('SingleKvStorePromiseTest', function () {
      * @tc.name Test Js Api SingleKvStoreCloseResultSet testcase 004
      */
     it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400');
-        try {
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 success');
-        }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
+        let resultSet = undefined;
+        let errorInfo = undefined;
+        await kvStore.getResultSet('batch_test_string_key').then((result) => {
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 getResultSet success');
+            resultSet = result;
+        }).catch((err) => {
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
             expect(null).assertFail();
+        });
+        
+        try {
+            kvStore.closeResultSet("")
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 success');
+        }catch(err) {
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 e ' + `, error code is ${err.code}, message is ${err.message}`);
+            errorInfo = err
         }
+        expect(errorInfo.code).assertEqual("401");
         done();
     })
 
