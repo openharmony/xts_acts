@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// @ts-nocheck
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 
 export default function colorSpaceManagerTest(context, windowStage, abilityStorage) {
@@ -93,7 +91,7 @@ export default function colorSpaceManagerTest(context, windowStage, abilityStora
         done();
       } catch (err) {
         console.log('test enum value of ColorSpace Manager not support error ' + JSON.stringify(err));
-        expect(err.code == 18600001).assertTrue();
+        expect(err.code).assertEqual(18600001);
         done();
       }
     })
