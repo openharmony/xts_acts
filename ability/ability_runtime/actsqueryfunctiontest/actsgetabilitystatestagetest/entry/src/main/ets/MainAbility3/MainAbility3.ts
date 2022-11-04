@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +20,7 @@ export default class MainAbility3 extends Ability {
         console.log("MainAbility3 onCreate")
     }
 
-    onDestroy(want) {
+    onDestroy() {
         // Ability is destroying, release resources for this ability
         console.log("MainAbility3 onDestroy")
     }

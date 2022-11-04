@@ -18,7 +18,6 @@ import formHost from '@ohos.application.formHost';
 import commonEvent from '@ohos.commonEvent';
 import systemTime from '@ohos.systemTime';
 
-// @ts-nocheck
 @Entry
 @Component
 struct Index {

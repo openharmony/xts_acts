@@ -17,7 +17,6 @@ import commonEvent from '@ohos.commonEvent';
 import featureAbility from '@ohos.ability.featureAbility';
 import formHost from '@ohos.application.formHost';
 
-// @ts-nocheck
 @Entry
 @Component
 struct Index {

@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 const ABILITY_TIMEOUT=5000;
@@ -137,7 +136,6 @@ export default function singleusermodelTest() {
                 let temp
                 let cmd ='aa dump -e'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
                         console.info('executeShellCommand : data : ' + JSON.stringify(data));
                         temp = data["stdResult"];
                         expect(temp.indexOf("ServiceAbility2") == -1).assertTrue()
@@ -147,7 +145,6 @@ export default function singleusermodelTest() {
                     })
                 cmd ='aa dump -e -u 0'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                        console.info('executeShellCommand 0: err : ' + JSON.stringify(err));
                         console.info('executeShellCommand : data 0: ' + JSON.stringify(data));
                         temp = data["stdResult"];
                         expect(temp.indexOf("ServiceAbility2") == -1).assertTrue()
@@ -215,7 +212,6 @@ export default function singleusermodelTest() {
                 let temp
                 let cmd ='aa dump -e'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
                         console.info('executeShellCommand : data : ' + JSON.stringify(data));
                         temp = data["stdResult"];
                         expect(temp.indexOf("ServiceAbility3") == -1).assertTrue()
@@ -225,7 +221,6 @@ export default function singleusermodelTest() {
                     })
                 cmd ='aa dump -e -u 0'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                        console.info('executeShellCommand 0: err : ' + JSON.stringify(err));
                         console.info('executeShellCommand : data 0: ' + JSON.stringify(data));
                         temp = data["stdResult"];
                         expect(temp.indexOf("ServiceAbility3") == -1).assertTrue()
@@ -284,7 +279,6 @@ export default function singleusermodelTest() {
                 let temp
                 let cmd ='aa dump -e'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
                         console.info('executeShellCommand : data : ' + JSON.stringify(data));
                         temp = data["stdResult"];
                         expect(temp.indexOf("ServiceAbility4") == -1).assertTrue()
@@ -294,7 +288,6 @@ export default function singleusermodelTest() {
                     })
                 cmd ='aa dump -e -u 0'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                        console.info('executeShellCommand 0: err : ' + JSON.stringify(err));
                         console.info('executeShellCommand : data 0: ' + JSON.stringify(data));
                         temp = data["stdResult"];
                         expect(temp.indexOf("ServiceAbility4") == -1).assertTrue()
@@ -361,7 +354,6 @@ export default function singleusermodelTest() {
                 let temp
                 let cmd ='aa dump -e'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
                         console.info('executeShellCommand : data : ' + JSON.stringify(data));
                         temp = data["stdResult"];
                         expect(temp.indexOf("ServiceAbility5") == -1).assertTrue()
@@ -371,7 +363,6 @@ export default function singleusermodelTest() {
                     })
                 cmd ='aa dump -e -u 0'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                        console.info('executeShellCommand 0: err : ' + JSON.stringify(err));
                         console.info('executeShellCommand : data 0: ' + JSON.stringify(data));
                         temp = data["stdResult"];
                         expect(temp.indexOf("ServiceAbility5") == -1).assertTrue()
