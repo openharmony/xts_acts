@@ -19,7 +19,7 @@ import systemTime from "@ohos.systemTime";
 
 export default function systemTimeJsunit() {
   describe('systemTimeTest', function () {
-    console.info('--------------------systemTimeTest start-----------------------');
+    console.info('====>---------------systemTimeTest start-----------------------');
     /**
      * @tc.number    SUB_systemTime_getCurrentTime_JS_API_0001
      * @tc.name      Test systemTime.getCurrentTime
@@ -29,7 +29,7 @@ export default function systemTimeJsunit() {
      * @tc.level     : Level 1
      */
     it("SUB_systemTime_getCurrentTime_JS_API_0001", 0, async function (done) {
-      console.info("---------------UB_systemTime_getCurrentTime_JS_API_0001 start----------------");
+      console.info("====>----------UB_systemTime_getCurrentTime_JS_API_0001 start----------------");
       systemTime.getCurrentTime(true, (error, data) => {
         if (error) {
           console.error(`failed to systemTime.getCurrentTime because ` + JSON.stringify(error));
@@ -39,7 +39,7 @@ export default function systemTimeJsunit() {
         expect(data != null).assertEqual(true);
       });
 
-      console.info("---------------SUB_systemTime_getRealActiveTime_JS_API_0100 end-----------------");
+      console.info("====>----------SUB_systemTime_getRealActiveTime_JS_API_0100 end-----------------");
       done();
     });
 
@@ -52,15 +52,15 @@ export default function systemTimeJsunit() {
      * @tc.level     : Level 1
      */
     it("SUB_systemTime_getCurrentTime_JS_API_0002", 0, async function (done) {
-      console.info("----------SUB_systemTime_getCurrentTime_JS_API_0002 start----------------");
+      console.info("====>-----SUB_systemTime_getCurrentTime_JS_API_0002 start----------------");
       systemTime.getCurrentTime(true).then((data) => {
-        console.info(`systemTime.getCurrentTime promise success data : ` + JSON.stringify(data));
+        console.info(`SUB_systemTime_getCurrentTime_JS_API_0002 data : ` + JSON.stringify(data));
         expect(data != null).assertEqual(true);
       }).catch(err => {
-        console.error(`failed to systemTime.getCurrentTime promise because ` + JSON.stringify(error));
+        console.error(`SUB_systemTime_getCurrentTime_JS_API_0002 err: ` + JSON.stringify(error));
         expect().assertFail()
       });
-      console.info("----------SUB_systemTime_getCurrentTime_JS_API_0002 end------------");
+      console.info("====>-----SUB_systemTime_getCurrentTime_JS_API_0002 end------------");
       done();
     });
 
@@ -73,17 +73,17 @@ export default function systemTimeJsunit() {
      * @tc.level     : Level 1
      */
     it("SUB_systemTime_getRealActiveTime_JS_API_0001", 0, async function (done) {
-      console.info("---------------SUB_systemTime_getRealActiveTime_JS_API_0001 start----------------");
+      console.info("====>----------SUB_systemTime_getRealActiveTime_JS_API_0001 start----------------");
       systemTime.getRealActiveTime(true, (error, data) => {
         if (error) {
-          console.error(`failed to systemTime.getRealActiveTime because ` + JSON.stringify(error));
+          console.error(`SUB_systemTime_getRealActiveTime_JS_API_0001 err: ` + JSON.stringify(error));
           expect().assertFail()
         };
-        console.info(`systemTime.getRealActiveTime success data : ` + JSON.stringify(data));
+        console.info(`SUB_systemTime_getRealActiveTime_JS_API_0001 data : ` + JSON.stringify(data));
         expect(data != null).assertEqual(true);
       });
 
-      console.info("---------------SUB_systemTime_getRealActiveTime_JS_API_0001 end-----------------");
+      console.info("====>----------SUB_systemTime_getRealActiveTime_JS_API_0001 end-----------------");
       done();
     });
 
@@ -96,15 +96,15 @@ export default function systemTimeJsunit() {
      * @tc.level     : Level 1
      */
     it("SUB_systemTime_getRealActiveTime_JS_API_0002", 0, async function (done) {
-      console.info("----------SUB_systemTime_getRealActiveTime_JS_API_0002 start----------------");
+      console.info("====>-----SUB_systemTime_getRealActiveTime_JS_API_0002 start----------------");
       systemTime.getRealActiveTime(true).then((data) => {
-        onsole.log(`systemTime.getRealActiveTime promise success data : ` + JSON.stringify(data));
+        onsole.log(`SUB_systemTime_getRealActiveTime_JS_API_0002 data : ` + JSON.stringify(data));
         expect(data != null).assertEqual(true);
       }).catch(err => {
-        console.error(`failed to systemTime.getRealActiveTime promise because ` + JSON.stringify(error));
+        console.error(`SUB_systemTime_getRealActiveTime_JS_API_0002 err: ` + JSON.stringify(error));
         expect().assertFail()
       });
-      console.info("----------SUB_systemTime_getRealActiveTime_JS_API_0002 end------------");
+      console.info("====>-----SUB_systemTime_getRealActiveTime_JS_API_0002 end------------");
       done();
     });
 
@@ -117,17 +117,17 @@ export default function systemTimeJsunit() {
      * @tc.level     : Level 1
      */
     it("SUB_systemTime_getRealTime_JS_API_0001", 0, async function (done) {
-      console.info("---------------SUB_systemTime_getRealTime_JS_API_0001 start----------------");
+      console.info("====>----------SUB_systemTime_getRealTime_JS_API_0001 start----------------");
       systemTime.getRealTime(true, (error, data) => {
         if (error) {
-          console.error(`failed to systemTime.getRealTime because ` + JSON.stringify(error));
+          console.error(`SUB_systemTime_getRealTime_JS_API_0001 err: ` + JSON.stringify(error));
           expect().assertFail()
         };
-        console.info(`systemTime.getRealTime success data : ` + JSON.stringify(data));
+        console.info(`SUB_systemTime_getRealTime_JS_API_0001 data : ` + JSON.stringify(data));
         expect(data != null).assertEqual(true);
       });
 
-      console.info("---------------SUB_systemTime_getRealTime_JS_API_0001 end-----------------");
+      console.info("====>----------SUB_systemTime_getRealTime_JS_API_0001 end-----------------");
       done();
     });
 
@@ -140,15 +140,15 @@ export default function systemTimeJsunit() {
      * @tc.level     : Level 1
      */
     it("SUB_systemTime_getRealTime_JS_API_0002", 0, async function (done) {
-      console.info("----------SUB_systemTime_getRealTime_JS_API_0002 start----------------");
+      console.info("====>-----SUB_systemTime_getRealTime_JS_API_0002 start----------------");
       systemTime.getRealTime(true).then((data) => {
-        console.info(`systemTime.getRealTime promise success data : ` + JSON.stringify(data));
+        console.info(`SUB_systemTime_getRealTime_JS_API_0002 data : ` + JSON.stringify(data));
         expect(data != null).assertEqual(true);
       }).catch(err => {
-        console.error(`failed to systemTime.getRealTime promise because ` + JSON.stringify(error));
+        console.error(`SUB_systemTime_getRealTime_JS_API_0002 err: ` + JSON.stringify(error));
         expect().assertFail();
       });
-      console.info("----------SUB_systemTime_getRealTime_JS_API_0002 end------------");
+      console.info("====>-----SUB_systemTime_getRealTime_JS_API_0002 end------------");
       done();
     });
 
@@ -161,17 +161,17 @@ export default function systemTimeJsunit() {
    * @tc.level     : Level 0
    */
     it('SUB_systemTime_setTime_JS_API_0100', 0, async function (done) {
-      console.info("SUB_systemTime_setTime_JS_API_0100 start");
-      systemTime.setTime(1526003846000)
-        .then(data =>{
-          console.info("setTime ===data " + data);
-          expect(data).assertEqual(true)
-        }).catch(error => {
-        console.info("setTime ===error " + error);
-        expect(0).assertLarger(1)
-      });
-      console.info('SUB_systemTime_setTime_JS_API_0100 end');
-      done();
+      console.info("====>SUB_systemTime_setTime_JS_API_0100 start");
+      let currentTime = new Date().getTime() + 2000
+      try{
+        await systemTime.setTime(currentTime)
+        expect(true).assertTrue();
+        done();
+      }catch(err){
+        console.info("====>SUB_systemTime_setTime_JS_API_0100 error " + err);
+        expect().assertFail();
+        done();
+      }
     });
 
     /**
@@ -183,17 +183,23 @@ export default function systemTimeJsunit() {
        * @tc.level     : Level 0
        */
     it('SUB_systemTime_setTime_JS_API_0200', 0, async function (done) {
-      console.info("SUB_systemTime_setTime_JS_API_0200 start");
-      systemTime.setTime(15222)
-        .then(data => {
-          console.info("setTime ===data " + data);
+      console.info("====>SUB_systemTime_setTime_JS_API_0200 start");
+      try{
+        systemTime.setTime(15222).then(() => {   
+          console.debug('SUB_systemTime_setTime_JS_API_0200 setTime fail')         
+          expect().assertFail();
+          done();
+        }).catch((err)=>{
+          console.debug('SUB_systemTime_setTime_JS_API_0200 setTime err:' + JSON.stringify(err))
           expect(true).assertTrue();
-        }).catch(error => {
-        console.info("setTime ===error " + error);
-        expect(0).assertLarger(1)
-      });
-      console.info('SUB_systemTime_setTime_JS_API_0200 end');
-      done();
+          console.debug('SUB_systemTime_setTime_JS_API_0200 end');
+          done();
+        })
+      }catch(err){
+          console.debug('SUB_systemTime_setTime_JS_API_0200 setTime throw_err' + JSON.stringify(err))
+          expect(err.code).assertEqual('401');
+          done();
+      }
     });
 
     /**
@@ -205,18 +211,19 @@ export default function systemTimeJsunit() {
        * @tc.level     : Level 0
        */
     it('SUB_systemTime_setTime_JS_API_0300', 0, async function (done) {
-      console.info("SUB_systemTime_setTime_JS_API_0300 start");
-      systemTime.setTime(1597156246000, (err, data) => {
-        if (err) {
-          console.info("setTime ===error: " + err);
-          expect().assertFail()
-        }else{
-          console.info("setTime ===data: " + data);
-          expect(true).assertTrue();
-        };
+      console.info("====>SUB_systemTime_setTime_JS_API_0300 start");
+      let currentTime = new Date().getTime() + 2000
+      systemTime.setTime(currentTime, (err) => {
+        try{
+          expect(true).assertTrue();          
+          console.info('SUB_systemTime_setTime_JS_API_0300 end');
+          done();
+        }catch(err){
+          console.info("====>SUB_systemTime_setTime_JS_API_0300 error: " + err);
+          expect().assertFail();
+          done();
+        }
       });
-      console.info('SUB_systemTime_setTime_JS_API_0300 end');
-      done();
     });
 
     /**
@@ -228,11 +235,11 @@ export default function systemTimeJsunit() {
        * @tc.level     : Level 0
        */
     it('SUB_systemTime_setTime_JS_API_0400', 0, async function (done) {
-      console.info("SUB_systemTime_setTime_JS_API_0400 start");
+      console.info("====>SUB_systemTime_setTime_JS_API_0400 start");
       try{
         systemTime.setTime(18, (err, data) => {
-          console.info("setTime ===data: " + data);
-          console.info("setTime ===error: " + err);
+          console.info("====>SUB_systemTime_setTime_JS_API_0400 data: " + data);
+          console.info("====>SUB_systemTime_setTime_JS_API_0400 error: " + err);
           expect(true).assertTrue();
         })}catch(error) {error => {
         expect(1).assertLarger(0);
@@ -251,13 +258,13 @@ export default function systemTimeJsunit() {
       * @tc.level     : Level 0
       */
     it('SUB_systemTime_setDate_JS_API_0100', 0, async function (done) {
-      console.info("SUB_systemTime_setDate_JS_API_0100 start");
+      console.info("====>SUB_systemTime_setDate_JS_API_0100 start");
       var data = new Date("October 13, 2020 11:13:00");
       systemTime.setDate(1).then(data => {
-        console.info("setTime ===data " + data);
+        console.info("====>SUB_systemTime_setDate_JS_API_0100 data " + data);
         expect(true).assertTrue();
       }).catch(error => {
-        console.info("setTime ===error " + error);
+        console.info("====>SUB_systemTime_setDate_JS_API_0100 error " + error);
         expect().assertFail();
       });
       done();
@@ -272,12 +279,12 @@ export default function systemTimeJsunit() {
       * @tc.level     : Level 0
       */
     it('SUB_systemTime_setDate_JS_API_0200', 0, async function (done) {
-      console.info("SUB_systemTime_setDate_JS_API_0200 start");
+      console.info("====>SUB_systemTime_setDate_JS_API_0200 start");
       systemTime.setDate(0).then(data => {
-        console.info("setTime ===data " + data);
+        console.info("====>SUB_systemTime_setDate_JS_API_0200 data " + data);
         expect(true).assertTrue();
       }).catch(error => {
-        console.info("setTime ===error " + error);
+        console.info("====>SUB_systemTime_setDate_JS_API_0200 error " + error);
         expect().assertFail();
       });
       done();
@@ -292,14 +299,14 @@ export default function systemTimeJsunit() {
       * @tc.level     : Level 0
       */
     it('SUB_systemTime_setDate_JS_API_0300', 0, async function (done) {
-      console.info("SUB_systemTime_setDate_JS_API_0300 start");
+      console.info("====>SUB_systemTime_setDate_JS_API_0300 start");
       var data = new Date("October 13, 2020 11:13:00");
       systemTime.setDate(data, (error, data) => {
         if(error){
-          console.info("setTime ===error " + error);
+          console.info("====>SUB_systemTime_setDate_JS_API_0300 error " + error);
           expect().assertFail();
         }else{
-          console.info("setTime ===data " + data);
+          console.info("====>SUB_systemTime_setDate_JS_API_0300 data " + data);
           expect(true).assertTrue();
         };
       });
@@ -315,12 +322,12 @@ export default function systemTimeJsunit() {
       * @tc.level     : Level 0
       */
     it('SUB_systemTime_setTimezone_JS_API_0100', 0, async function (done) {
-      console.info("SUB_systemTime_setTimezone_JS_API_0100 start");
+      console.info("====>SUB_systemTime_setTimezone_JS_API_0100 start");
       systemTime.setTimezone('Asia, Shanghai').then(data => {
-        console.info("setTime ===data " + data);
+        console.info("====>SUB_systemTime_setTimezone_JS_API_0100 data " + data);
         expect().assertFail();
       }).catch(error => {
-        console.info("setTime ===error " + error);
+        console.info("====>SUB_systemTime_setTimezone_JS_API_0100 error " + error);
         expect(true).assertTrue();
       });
       done();
@@ -335,12 +342,12 @@ export default function systemTimeJsunit() {
       * @tc.level     : Level 0
       */
     it('SUB_systemTime_setTimezone_JS_API_0200', 0, async function (done) {
-      console.info("SUB_systemTime_setTimezone_JS_API_0200 start");
+      console.info("====>SUB_systemTime_setTimezone_JS_API_0200 start");
       systemTime.setTimezone('Beijing,China').then(data => {
-        console.info("setTime ===data " + data);
+        console.info("====>SUB_systemTime_setTimezone_JS_API_0200 data " + data);
         expect().assertFail();
       }).catch(error => {
-        console.info("setTime ===error " + error);
+        console.info("====>SUB_systemTime_setTimezone_JS_API_0200 error " + error);
         expect(true).assertTrue();
       });
       done();
@@ -355,12 +362,12 @@ export default function systemTimeJsunit() {
       * @tc.level     : Level 0
       */
     it('SUB_systemTime_setTimezone_JS_API_0300', 0, async function (done) {
-      console.info("SUB_systemTime_setTimezone_JS_API_0300 start");
+      console.info("====>SUB_systemTime_setTimezone_JS_API_0300 start");
       systemTime.setTimezone('Baker Island, U.S.A.').then(data => {
-        console.info("setTime ===data " + data);
+        console.info("====>SUB_systemTime_setTimezone_JS_API_0300 data " + data);
         expect().assertFail();
       }).catch(error => {
-        console.info("setTime ===error " + error);
+        console.info("====>SUB_systemTime_setTimezone_JS_API_0300 error " + error);
         expect(true).assertTrue();
       });
       done();
