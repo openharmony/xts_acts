@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 const START_ABILITY_TIMEOUT = 3000;
@@ -41,7 +40,6 @@ export default function singleusermodelTest() {
                 let temp
                 let cmd = 'aa dump -a'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                    console.info('executeShellCommand : err : ' + JSON.stringify(err));
                     console.info('executeShellCommand : data : ' + JSON.stringify(data));
                     temp = data["stdResult"];
                     expect(temp.indexOf("SingleUserModel1900") >= 0).assertTrue()
@@ -51,7 +49,6 @@ export default function singleusermodelTest() {
                 })
                 cmd = 'aa dump -a -u 0'
                 await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                    console.info('executeShellCommand 0: err : ' + JSON.stringify(err));
                     console.info('executeShellCommand 0: data : ' + JSON.stringify(data));
                     temp = data["stdResult"];
                     expect(temp.indexOf("SingleUserModel1900") == -1).assertTrue()

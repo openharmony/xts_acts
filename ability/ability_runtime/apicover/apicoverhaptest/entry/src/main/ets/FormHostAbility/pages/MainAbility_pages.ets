@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,6 +25,7 @@ struct Index {
   @State ability: string = "FormAbility";
   @State moduleName: string = "phone";
   @State name: string = "widget";
+  @State allowUpate: boolean = true;
   private dimension: FormDimension = FormDimension.Dimension_2_1;
   private temporary = false;
 

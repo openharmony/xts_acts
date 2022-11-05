@@ -13,7 +13,6 @@
 * limitations under the License.
 */
 
-// @ts-nocheck
 import router from '@ohos.router';
 import file from '@system.file';
 import testsuite from "../../test/List.test"
