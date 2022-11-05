@@ -19,12 +19,19 @@ import utils from './Utils.ets'
 
 export default function connectionSecondJsUnit() {
   describe("connectionSecondJsunit", function () {
+    let envReady = false;
+
     /**
      * @tc.name: Telephony_connection_ConnectionProperties_0100
      * @tc.desc: ConnectionProperties Properties  detection
      * @tc.author: kangyuntao
      */
     it("Telephony_connection_ConnectionProperties_0100", 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony ConnectionProperties Test is starting-----------------------");
       let caseName = 'Telephony_connection_ConnectionProperties_0100';
       try {
@@ -74,6 +81,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it('Telephony_connection_getConnectionProperties_Async_0200', 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony getConnectionProperties Test is starting-----------------------");
       if(false){
         expect(true).assertTrue();
@@ -119,6 +131,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it("Telephony_connection_RouteInfo_0300", 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("----------------------RouteInfo Properties Test is starting-----------------------");
       try {
         let resultInterface = {
@@ -158,6 +175,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it('Telephony_connection_getRouteInfo_Async_0400', 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony getRouteInfo Test is starting-----------------------");
       let caseName = 'Telephony_connection_getRouteInfo_Async_0400';
       connection.getAllNets((error, value) => {
@@ -195,6 +217,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it("Telephony_connection_LinkAddress_0500", 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("----------------------LinkAddress Properties Test is starting-----------------------");
       try {
         let resultPrefixLength = {
@@ -214,6 +241,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it('Telephony_connection_getLinkAddress_Async_0600', 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony getLinkAddress Test is starting-----------------------");
       let caseName = 'Telephony_connection_getLinkAddress_Async_0600';
       connection.getAllNets((error, value) => {
@@ -249,6 +281,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it("Telephony_connection_NetAddress_0700", 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("----------------------NetAddress Properties  Test is starting-----------------------");
       try {
         let resultPort = {
@@ -268,6 +305,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it('Telephony_connection_getNetAddress_Async_0800', 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony getNetAddress Test is starting-----------------------");
       let caseName = 'Telephony_connection_getNetAddress_Async_0800';
       connection.getAllNets((error, value) => {
@@ -303,6 +345,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it("Telephony_connection_NetCap_0900", 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony NetCap Properties Test is starting-----------------------");
       if (false) {
         expect(true).assertTrue();
@@ -329,6 +376,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it('Telephony_connection_getNetCap_Async_1000', 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony getNetCap Test is starting-----------------------");
       let caseName = 'Telephony_connection_getNetCap_Async_1000';
       connection.getAllNets((error, value) => {
@@ -362,6 +414,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it("Telephony_connection_NetBearType_1100", 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony NetBearType Properties Test is starting-----------------------");
       if (false) {
         expect(true).assertTrue();
@@ -385,6 +442,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it('Telephony_connection_getNetBearType_Async_1200', 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony getNetBearType Test is starting-----------------------");
       let caseName = 'Telephony_connection_getNetBearType_Async_1200';
       connection.getAllNets((error, value) => {
@@ -418,6 +480,11 @@ export default function connectionSecondJsUnit() {
      * @tc.author: kangyuntao
      */
     it('Telephony_connection_getNetCapabilities_Promise_1300', 0, function (done) {
+      if (!envReady) {
+        console.info("The environment was not ready");
+        done();
+        return;
+      }
       console.log("-----------------------Telephony getNetCapabilities Promise Test is starting-----------------------");
       let caseName = 'Telephony_connection_getNetCapabilities_Promise_1300';
       connection.getAllNets().then((handle) => {
