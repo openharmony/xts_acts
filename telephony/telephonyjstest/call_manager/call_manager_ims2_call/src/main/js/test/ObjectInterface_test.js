@@ -417,7 +417,7 @@ export default function ObjectInterfaceTest() {
       try {
         var resultSet = await contactsapi.queryContact(queryId);
         console.info("contactsApi_query_contact_test_400 : query resultSet = " + JSON.stringify(resultSet));
-        expect(resultSet != null).assertTrue();
+        expect(resultSet == undefined).assertTrue();
         done();
       } catch (error) {
         console.info("contactsApi_query_contact_test_400 query error = " + error);
@@ -437,7 +437,7 @@ export default function ObjectInterfaceTest() {
         done();
         return;
       }
-      var queryId = gRawContactId.toString();
+      var queryId = gRawContactId;
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
       }
@@ -445,7 +445,8 @@ export default function ObjectInterfaceTest() {
       expect(holder.displayName === null).assertFalse();
       expect(holder.holderId != 0).assertTrue();
       try {
-        var resultSet = await contactsapi.queryContact(queryId, holder);
+        var findKey = contactsapi.queryKey(queryId);
+        var resultSet = await contactsapi.queryContact(findKey, holder);
         console.info("contactsApi_query_contact_test_500 : query resultSet = " + JSON.stringify(resultSet));
         expect(resultSet === null).assertFalse();
         done();
@@ -467,7 +468,7 @@ export default function ObjectInterfaceTest() {
         done();
         return;
       }
-      var queryId = gRawContactId.toString();
+      var queryId = gRawContactId;
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
       };
@@ -475,7 +476,8 @@ export default function ObjectInterfaceTest() {
         attributes: [1, 5, 6]
       }
       try {
-        var resultSet = await contactsapi.queryContact(queryId, holder, ContactAttributes);
+        var findKey = contactsapi.queryKey(queryId);
+        var resultSet = await contactsapi.queryContact(findKey, holder, ContactAttributes);
         console.info("contactsApi_query_contact_test_600 : query resultSet = " + JSON.stringify(resultSet));
         expect(resultSet === null).assertFalse();
         done();
@@ -1051,7 +1053,7 @@ export default function ObjectInterfaceTest() {
       try {
         var updateCode = await contactsapi.updateContact(updateValues, condition);
         console.info("abnormal_contactsApi_update_test_3000 : updateCode = " + updateCode);
-        expect(updateCode === -1).assertFalse();
+        expect(updateCode === -1).assertTrue();
         done();
       } catch (error) {
         console.info("abnormal_contactsApi_update_test_3000 : update error = " + error);
