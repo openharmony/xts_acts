@@ -29,7 +29,7 @@ export default function imeAbilityTest(abilityContext) {
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
     beforeEach(function () {
-      console.info('beforeEach: switchInputMethod to kikakeyboard.');
+      console.info('====>beforeEach: switchInputMethod to kikakeyboard.');
       let serviceAbilityProperty = {
         packageName: "com.example.kikakeyboard",
         methodId: "ServiceExtAbility",
@@ -39,7 +39,7 @@ export default function imeAbilityTest(abilityContext) {
       }
 
       inputMethod.switchInputMethod(serviceAbilityProperty).then((data)=>{
-        console.info('SUB_InputMethod_IMEAbility_0001 switchInputMethod to Kika :' + data);
+        console.info('====>SUB_InputMethod_IMEAbility_0001 switchInputMethod to Kika :' + data);
         expect(data == true).assertTrue();
       })
 
@@ -49,7 +49,7 @@ export default function imeAbilityTest(abilityContext) {
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
     afterEach(function () {
-      console.info('afterEach: Test case-level clearance conditions is executed.');
+      console.info('====>afterEach: Test case-level clearance conditions is executed.');
     });
 
     /**
@@ -60,7 +60,7 @@ export default function imeAbilityTest(abilityContext) {
      * @tc.level     : Level 1
      */
     it('SUB_InputMethod_IMEAbility_0001', 0, async function (done) {
-      console.info('----------SUB_InputMethod_IMEAbility_0001 start-------------');
+      console.info('====>----------SUB_InputMethod_IMEAbility_0001 start-------------');
       let imExtAbilityProperty = {
         packageName : "com.acts.imeability.test",
         methodId : "com.acts.imeability.test.ImExtAbility",
@@ -70,11 +70,11 @@ export default function imeAbilityTest(abilityContext) {
       }
 
       inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
-        console.info('SUB_InputMethod_IMEAbility_0004 switchInputMethod to IME :' + data);
+        console.info('====>SUB_InputMethod_IMEAbility_0004 switchInputMethod to IME :' + data);
         expect(data == true).assertTrue();
       });
       sleep(Date.now(), 3000);
-      console.info('----------SUB_InputMethod_IMEAbility_0001 end-------------');
+      console.info('====>----------SUB_InputMethod_IMEAbility_0001 end-------------');
 
       done();
     })
@@ -87,7 +87,7 @@ export default function imeAbilityTest(abilityContext) {
      * @tc.level     : Level 1
      */
     it('SUB_InputMethod_IMEAbility_0002', 0, async function (done) {
-      console.info('-----------SUB_InputMethod_IMEAbility_0002 start-------------');
+      console.info('====>-----------SUB_InputMethod_IMEAbility_0002 start-------------');
 
       let imExtAbilityProperty = {
         packageName : "com.acts.imeability.test",
@@ -98,11 +98,11 @@ export default function imeAbilityTest(abilityContext) {
       }
 
       inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
-        console.info('SUB_InputMethod_IMEAbility_0004 switchInputMethod to IME :' + data);
+        console.info('====>SUB_InputMethod_IMEAbility_0004 switchInputMethod to IME :' + data);
         expect(data == true).assertTrue();
       });
       sleep(Date.now(), 2500);
-      console.info('-----------SUB_InputMethod_IMEAbility_0002 end-------------');
+      console.info('====>-----------SUB_InputMethod_IMEAbility_0002 end-------------');
       done();
     })
   })
