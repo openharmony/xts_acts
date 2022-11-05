@@ -19,34 +19,34 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 export default function requestDownloadJSUnit() {
   describe('requestDownloadJSUnit', function () {
-    console.info('################################request download Test start');
+    console.info('====>################################request download Test start');
 
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
     beforeAll(function () {
-      console.info('beforeAll: Prerequisites are executed.');
+      console.info('====>beforeAll: Prerequisites are executed.');
     });
 
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
     beforeEach(function () {
-      console.info('beforeEach: Prerequisites is executed.');
+      console.info('====>beforeEach: Prerequisites is executed.');
     });
 
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
     afterEach(function () {
-      console.info('afterEach: Test case-level clearance conditions is executed.');
+      console.info('====>afterEach: Test case-level clearance conditions is executed.');
     });
 
     /**
      * afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed.
      */
     afterAll(function () {
-      console.info('afterAll: Test suite-level cleanup condition is executed');
+      console.info('====>afterAll: Test suite-level cleanup condition is executed');
     });
 
     let downloadTask;
@@ -72,21 +72,24 @@ export default function requestDownloadJSUnit() {
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001', 0, async function (done) {
-      console.info("-----------------------SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 is starting-----------------------");
+      console.info("====>------------------SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 is starting-----------------------");
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       try {
-        request.download(context, downloadConfig, (data)=>{
+        request.download(context, downloadConfig, (err, data)=>{
           downloadTask = data;
-          console.info("SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
+          console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
           expect(true).assertEqual(downloadTask != undefined);
         });
       } catch (err) {
-        console.error("SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 error: " + err);
+        console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 error: " + err);
         expect().assertFail();
       }
-      console.info("-----------------------SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 end-----------------------");
-      done();
+      setTimeout(()=>{
+        console.info("====>------------------SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 end-----------------------");
+        done();
+      },5000)
+      
     });
 
     /**
@@ -97,19 +100,21 @@ export default function requestDownloadJSUnit() {
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001', 0, async function (done) {
-      console.info("-----------------------SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 is starting-----------------------");
+      console.info("====>------------------SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 is starting-----------------------");
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       request.download(context, downloadConfig).then(data => {
         downloadTask = data;
-        console.info("SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 downloadTask: " + downloadTask);
+        console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 downloadTask: " + downloadTask);
         expect(true).assertEqual(downloadTask != undefined);
       }).catch(err => {
-        console.error("SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 error: " + err);
+        console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 error: " + err);
         expect().assertFail();
       })
-      console.info("-----------------------SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 end-----------------------");
-      done();
-    });
+      setTimeout(()=>{
+        console.info("====>------------------SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 end-----------------------");
+        done();
+      },5000)
+    });    
   });
 }
