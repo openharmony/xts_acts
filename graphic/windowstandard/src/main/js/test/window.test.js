@@ -2955,6 +2955,15 @@ describe('window_test', function () {
             expect(0).assertEqual(window.Orientation.UNSPECIFIED);
             expect(1).assertEqual(window.Orientation.PORTRAIT);
             expect(2).assertEqual(window.Orientation.LANDSCAPE);
+            expect(3).assertEqual(window.Orientation.PORTRAIT_INVERTED);
+            expect(4).assertEqual(window.Orientation.LANDSCAPE_INVERTED);
+            expect(5).assertEqual(window.Orientation.AUTO_ROTATION);
+            expect(6).assertEqual(window.Orientation.AUTO_ROTATION_PORTRAIT);
+            expect(7).assertEqual(window.Orientation.AUTO_ROTATION_LANDSCAPE);
+            expect(8).assertEqual(window.Orientation.AUTO_ROTATION_RESTRICTED);
+            expect(9).assertEqual(window.Orientation.AUTO_ROTATION_PORTRAIT_RESTRICTED);
+            expect(10).assertEqual(window.Orientation.AUTO_ROTATION_LANDSCAPE_RESTRICTED);
+            expect(11).assertEqual(window.Orientation.LOCKED);
             done();
         } catch (err) {
             console.info('test enum value of windowStageEventType error ' + JSON.stringify(err));
