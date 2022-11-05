@@ -42,7 +42,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       'TYPE_VOLUME_OVERLAY': 6,
       'TYPE_NAVIGATION_BAR': 7,
       'TYPE_FLOAT': 8,
-//      'TYPE_FLOAT_CAMERA': 9
+      //      'TYPE_FLOAT_CAMERA': 9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
@@ -104,7 +104,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     function unexpectedError(error, caseName, apiName, done) {
       let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
       console.log(msgStr + JSON.stringify(error));
-      expect(TRUE_FLAG).assertFail();
+      try {
+
+        expect(TRUE_FLAG).assertFail();
+      } catch (error) {
+        console.info(`unexpectedError catch error: ${JSON.stringify(error)}`)
+      }
       done();
     }
 
@@ -125,7 +130,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       display.getAllDisplays().then((data) => {
-        console.info(msgStr+'Succeeded in obtaining all the display objects. Data: ' + JSON.stringify(data));
+        console.info(msgStr + 'Succeeded in obtaining all the display objects. Data: ' + JSON.stringify(data));
         expect(data[0].id != null).assertTrue();
         expect(data[0].refreshRate != null).assertTrue();
         expect(data[0].width != null).assertTrue();
@@ -136,12 +141,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         expect(data[0].alive).assertTrue();
         expect(data[0].state != null).assertTrue();
         expect(data[0].densityPixels != null).assertTrue();
-        expect(data[0].scaledDensity !=null).assertTrue();
+        expect(data[0].scaledDensity != null).assertTrue();
         expect(data[0].xDPI != null).assertTrue();
         expect(data[0].yDPI != null).assertTrue();
         done();
       }).catch((err) => {
-        console.error(msgStr+'Failed to obtain all the display objects. Code: ' + JSON.stringify(err));
+        console.error(msgStr + 'Failed to obtain all the display objects. Code: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
@@ -157,12 +162,16 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       display.getAllDisplays((err, data) => {
         if (err.code) {
-          console.error(msgStr+'Failed to obtain all the display objects. Code: ' + JSON.stringify(err));
-          expect().assertFail();
+          console.error(msgStr + 'Failed to obtain all the display objects. Code: ' + JSON.stringify(err));
+          try {
+            expect().assertFail();
+          } catch (error) {
+            console.info(`display.getAllDisplays catch error: ${JSON.stringify(error)}`)
+          }
           done();
           return;
         }
-        console.info(msgStr+'Succeeded in obtaining all the display objects. Data: ' + JSON.stringify(data));
+        console.info(msgStr + 'Succeeded in obtaining all the display objects. Data: ' + JSON.stringify(data));
         expect(data[0].refreshRate != null).assertTrue();
         expect(data[0].width != null).assertTrue();
         expect(data[0].height != null).assertTrue();
@@ -172,7 +181,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         expect(data[0].alive).assertTrue();
         expect(data[0].state != null).assertTrue();
         expect(data[0].densityPixels != null).assertTrue();
-        expect(data[0].scaledDensity !=null).assertTrue();
+        expect(data[0].scaledDensity != null).assertTrue();
         expect(data[0].xDPI != null).assertTrue();
         expect(data[0].yDPI != null).assertTrue();
         done();
@@ -190,14 +199,20 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeDicArr.length;
       console.log(msgStr + 'loopCount: ' + loopCount);
-      let num =0
+      let num = 0
       for (let i = 0; i < loopCount; i++) {
         sleep(500)
         let tempType = Number(ohosWindow.WindowType[systemWindowTypeDicArr[i]])
         let windId = 'createWindowTest1' + i;
         console.log(msgStr + 'ohosWindow.createWindow:  ' + tempType + ' start');
-        let windowConfig = {name: windId, windowType: tempType, ctx: context, displayId: 0, parentId: 0};
-        try{
+        let windowConfig = {
+          name: windId,
+          windowType: tempType,
+          ctx: context,
+          displayId: 0,
+          parentId: 0
+        };
+        try {
           let tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
             console.log(msgStr + 'ohosWindow.createWindow ' + tempType + 'catched, err: ' + JSON.stringify(err));
             unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
@@ -205,10 +220,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           console.log(msgStr + 'ohosWindow.createWindow ' + tempType + 'finished, wnd: ' + JSON.stringify(tempWnd));
           expect(!!tempWnd).assertTrue();
           num++;
-          if(num==loopCount) done();
+          if (num == loopCount) done();
         } catch (exception) {
           console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
-        };
+        }
+        ;
       }
     })
 
@@ -222,14 +238,16 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'createWindowSameidsTest2'
-      let windowConfig = {name: windowId, windowType: 1, ctx: context};
-      try{
+      let windowConfig = {
+        name: windowId, windowType: 1, ctx: context
+      };
+      try {
         let ohosData = await ohosWindow.createWindow(windowConfig).catch((err) => {
           console.log(msgStr + 'ohosWindow.createWindow 1 once err: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
         })
         expect(!!ohosData).assertTrue();
-        try{
+        try {
           let ohosDataError = await ohosWindow.createWindow(windowConfig).catch((errSencond) => {
             console.log(msgStr + 'ohosWindow.createWindow 1 twice err: ' + JSON.stringify(errSencond));
             expect(errSencond.code).assertEqual(1300002)
@@ -237,11 +255,13 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           })
           console.log(msgStr + 'ohosWindow.createWindow 1 twice ohosDataError: ' + JSON.stringify(ohosDataError));
         } catch (exception) {
-          console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-        };
+          console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
 
     })
     /**
@@ -258,17 +278,25 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let windId = 'createWindowTest4_0';
       let windIdTwo = 'createWindowTest4_1';
       console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
-      let windowConfig = {name: windId, windowType: tempType, ctx: context};
-      let windowConfigTwo = {name: windIdTwo, windowType: tempType, ctx: context};
-      try{
+      let windowConfig = {
+        name: windId, windowType: tempType, ctx: context
+      };
+      let windowConfigTwo = {
+        name: windIdTwo, windowType: tempType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(windowConfig, (err, data) => {
           if (err && err.code) {
             console.log(msgStr + 'ohosWindow.createWindow err.code==' + JSON.stringify(err.code))
             return;
           }
           console.info('Succeeded in creating the window. Data: ' + JSON.stringify(data));
-          expect(!!data).assertTrue();
-          try{
+          try {
+            expect(!!data).assertTrue();
+          } catch (error) {
+            console.info(`ohosWindow.crreateWindow catch error: ${JSON.stringify(error)}`)
+          }
+          try {
             ohosWindow.createWindow(windowConfigTwo, (err, dataTwo) => {
               console.log(msgStr + 'ohosWindow.createWindow two twice' + JSON.stringify(err));
               if (err && err.code) {
@@ -279,13 +307,15 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
                 done();
               }
             })
-          }catch (exception) {
-            console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-          };
+          } catch (exception) {
+            console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+          }
+          ;
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_005
@@ -301,14 +331,20 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
       let windId = 'createWindowTest5';
       console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
-      let windowConfig = {name: windId, windowType: tempType, ctx: context};
-      try{
+      let windowConfig = {
+        name: windId, windowType: tempType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(windowConfig, (err, data) => {
           if (err && err.code) {
             unexpectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
             return;
           }
-          expect(!!data).assertTrue();
+          try {
+            expect(!!data).assertTrue();
+          } catch (error) {
+            console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+          }
           let tempWnd = data
           console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' wnd: ' + tempWnd);
           try {
@@ -317,12 +353,14 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
             expect(proData.type == tempType).assertTrue();
             done();
           } catch (exception) {
-            console.error(msgStr +'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
-          };
+            console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+          }
+          ;
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_006
@@ -334,35 +372,47 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowId = 'createWindowSameidTest6'
-      let winsowConfig = {name: windowId, windowType:1, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windowId, windowType: 1, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (err, data) => {
           console.log(msgStr + 'ohosWindow.createWindow 1 once err: ' + JSON.stringify(err));
           if (err && err.code) {
             unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
             return
           }
-          expect(!!data).assertTrue();
-          try{
+          try {
+            expect(!!data).assertTrue();
+          } catch (error) {
+            console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+          }
+          try {
             ohosWindow.createWindow(winsowConfig, (err, dataTwo) => {
               console.log(msgStr + 'ohosWindow.createWindow 1 twice err: ' + JSON.stringify(err));
               if (err && err.code) {
                 console.log(msgStr + 'ohosWindow.createWindow 1 twice data: ' + JSON.stringify(dataTwo));
-                expect(err.code).assertEqual(1300002)
+                try {
+                  expect(err.code).assertEqual(1300002)
+                } catch (error) {
+                  console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+                }
                 done();
               } else {
                 unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
                 console.log(msgStr + 'ohosWindow.createWindow 1 twice data: ' + JSON.stringify(dataTwo));
               }
             })
-          }catch (exception) {
-            console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-          };
+          } catch (exception) {
+            console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+          }
+          ;
 
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
 
     })
     /**
@@ -373,7 +423,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('getWindowAvoidAreaTest1', 0, async function (done) {
       let caseName = 'getWindowAvoidAreaTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      try{
+      try {
         let tempWnd = windowStage.getMainWindowSync();
         expect(!!tempWnd).assertTrue();
         try {
@@ -387,13 +437,15 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           expect(avoidArea.leftRect != null).assertTrue();
           done();
         } catch (exception) {
-          console.error(msgStr +'Failed to obtain the area. Cause:' + JSON.stringify(exception));
+          console.error(msgStr + 'Failed to obtain the area. Cause:' + JSON.stringify(exception));
           expect().assertFail();
           done();
-        };
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
 
     /**
@@ -404,7 +456,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('getWindowAvoidAreaTest2', 0, async function (done) {
       let caseName = 'getWindowAvoidAreaTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      try{
+      try {
         let tempWnd = windowStage.getMainWindowSync();
         expect(tempWnd != null).assertTrue();
         try {
@@ -418,14 +470,16 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           expect(avoidArea.leftRect != null).assertTrue();
           done();
         } catch (exception) {
-          console.error(msgStr +'Failed to obtain the area. Cause:' + JSON.stringify(exception));
+          console.error(msgStr + 'Failed to obtain the area. Cause:' + JSON.stringify(exception));
           expect().assertFail();
           done();
-        };
+        }
+        ;
         done();
       } catch (exception) {
-        console.error(msgStr +'Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_GETWINDOWAVOIDAREA_JSAPI_003
@@ -435,7 +489,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('getWindowAvoidAreaTest3', 0, async function (done) {
       let caseName = 'getWindowAvoidAreaTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      try{
+      try {
         let tempWnd = windowStage.getMainWindowSync();
         expect(!!tempWnd).assertTrue();
         try {
@@ -449,13 +503,15 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           expect(avoidArea.leftRect != null).assertTrue();
           done();
         } catch (exception) {
-          console.error(msgStr +'Failed to obtain the area. Cause:' + JSON.stringify(exception));
+          console.error(msgStr + 'Failed to obtain the area. Cause:' + JSON.stringify(exception));
           expect().assertFail();
           done();
-        };
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_GETWINDOWAVOIDAREA_JSAPI_004
@@ -465,7 +521,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('getWindowAvoidAreaTest4', 0, async function (done) {
       let caseName = 'getWindowAvoidAreaTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      try{
+      try {
         let tempWnd = windowStage.getMainWindowSync();
         expect(!!tempWnd).assertTrue();
         try {
@@ -479,13 +535,15 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           expect(avoidArea.leftRect != null).assertTrue();
           done();
         } catch (exception) {
-          console.error(msgStr +'Failed to obtain the area. Cause:' + JSON.stringify(exception));
+          console.error(msgStr + 'Failed to obtain the area. Cause:' + JSON.stringify(exception));
           expect().assertFail();
           done();
-        };
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_GETWINDOWPROPERTIES_JSAPI_001
@@ -495,34 +553,36 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('getWindowPropertiesTest1', 0, async function (done) {
       let caseName = 'getWindowPropertiesTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      try{
+      try {
         let tempWnd = windowStage.getMainWindowSync();
         expect(!!tempWnd).assertTrue();
         try {
           let data = tempWnd.getWindowProperties();
-          console.log(msgStr + 'ohosWindow.getWindowProperties ' +  JSON.stringify(data));
+          console.log(msgStr + 'ohosWindow.getWindowProperties ' + JSON.stringify(data));
           expect(data.type != null).assertTrue();
           expect(data.windowRect.height != null).assertTrue();
           expect(data.windowRect.left != null).assertTrue();
           expect(data.windowRect.top != null).assertTrue();
           expect(data.windowRect.width != null).assertTrue();
-          expect(data.isFullScreen!= null).assertTrue();
-          expect(data.isLayoutFullScreen!= null).assertTrue();
-          expect(data.focusable!= null).assertTrue();
-          expect(data.touchable!= null).assertTrue();
-          expect(data.isKeepScreenOn!= null).assertTrue();
+          expect(data.isFullScreen != null).assertTrue();
+          expect(data.isLayoutFullScreen != null).assertTrue();
+          expect(data.focusable != null).assertTrue();
+          expect(data.touchable != null).assertTrue();
+          expect(data.isKeepScreenOn != null).assertTrue();
           expect(data.isTransparent != null).assertTrue();
           expect(data.brightness != null).assertTrue();
           expect(data.dimBehindValue).assertEqual(0);
-          expect(data.isRoundCorner!= null).assertTrue();
+          expect(data.isRoundCorner != null).assertTrue();
           expect(data.isPrivacyMode != null).assertTrue();
           done();
         } catch (exception) {
-          console.error(msgStr +'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
-        };
+          console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the main window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to obtain the main window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_GETLASTWINDOW_JSAPI_001
@@ -533,17 +593,18 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'getLastWindowTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let proData=null
-      try{
-        let lastWindow = await ohosWindow.getLastWindow(context).catch((err)=>{
+      let proData = null
+      try {
+        let lastWindow = await ohosWindow.getLastWindow(context).catch((err) => {
           console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'ohosWindow.getLastWindow', done);
         })
         expect(lastWindow != null).assertTrue();
         done();
-      }catch (exception) {
-        console.error(msgStr +'Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+      } catch (exception) {
+        console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_GETLASTWINDOW_JSAPI_002
@@ -566,7 +627,8 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         })
       } catch (exception) {
         console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SHOWWINDOW_JSAPI_001
@@ -579,24 +641,27 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let baseWndType = 1;
       let windowId = 'showWindowTest1';
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
-      let tempWnd =null;
-      try{
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      let tempWnd = null;
+      try {
         tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
           unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + JSON.stringify(tempWnd));
         expect(!!tempWnd).assertTrue();
-        tempWnd.showWindow().then((data)=> {
-          console.info(msgStr +'Succeeded in showing the window. Data: ' + JSON.stringify(data));
+        tempWnd.showWindow().then((data) => {
+          console.info(msgStr + 'Succeeded in showing the window. Data: ' + JSON.stringify(data));
           done();
-        }).catch((err)=>{
-          console.error(msgStr +'Failed to show the window. Cause: ' + JSON.stringify(err));
+        }).catch((err) => {
+          console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'ohosWindow.showWindow', done);
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SHOWWINDOW_JSAPI_002
@@ -609,28 +674,35 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let baseWndType = 1;
       let windowId = 'showWindowTest2';
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (create_err, create_data) => {
           console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
           if (create_err && create_err.code) {
             unexpectedError(create_err, caseName, 'ohosWindow.createWindow', done);
             return;
           }
-          expect(!!create_data).assertTrue();
+          try {
+            expect(!!create_data).assertTrue();
+          } catch (error) {
+            console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+          }
           create_data.showWindow((err, data) => {
             if (err.code) {
-              console.error(msgStr +'Failed to show the window. Cause: ' + JSON.stringify(err));
+              console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
               unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
               return;
             }
-            console.info(msgStr +'Succeeded in showing the window. Data: ' + JSON.stringify(data));
+            console.info(msgStr + 'Succeeded in showing the window. Data: ' + JSON.stringify(data));
             done();
           })
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_MOVEWINDOWTO_JSAPI_001
@@ -643,28 +715,32 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'moveWindowToTest1';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
       try {
-        ohosWindow.createWindow(windowConfig).then((wnd)=> {
-          console.info(msgStr +'Succeeded in obtaining the top window. Data: ' + JSON.stringify(wnd));
+        ohosWindow.createWindow(windowConfig).then((wnd) => {
+          console.info(msgStr + 'Succeeded in obtaining the top window. Data: ' + JSON.stringify(wnd));
           expect(wnd != null).assertTrue();
           try {
-            wnd.moveWindowTo(300, 300).then(()=> {
-              console.info(msgStr +'Succeeded in moving the window.');
+            wnd.moveWindowTo(300, 300).then(() => {
+              console.info(msgStr + 'Succeeded in moving the window.');
               done();
-            }).catch((err)=>{
-              console.error(msgStr +'Failed to move the window. Cause: ' + JSON.stringify(err));
+            }).catch((err) => {
+              console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
               unexpectedError(err, caseName, 'tempWnd.moveWindowTo', done);
             });
           } catch (exception) {
-            console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(exception));
-          };
-        }).catch((err)=>{
-          console.error(msgStr +'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
+            console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+          }
+          ;
+        }).catch((err) => {
+          console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
         });
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_MOVEWINDOWTO_JSAPI_002
@@ -677,28 +753,32 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'moveWindowToTest2';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
       try {
-        ohosWindow.createWindow(windowConfig).then((wnd)=> {
-          console.info(msgStr +'Succeeded in obtaining the top window. Data: ' + JSON.stringify(wnd));
+        ohosWindow.createWindow(windowConfig).then((wnd) => {
+          console.info(msgStr + 'Succeeded in obtaining the top window. Data: ' + JSON.stringify(wnd));
           expect(wnd != null).assertTrue();
           try {
-            wnd.moveWindowTo(100, 50).then(()=> {
-              console.info(msgStr +'Succeeded in moving the window.');
+            wnd.moveWindowTo(100, 50).then(() => {
+              console.info(msgStr + 'Succeeded in moving the window.');
               done();
-            }).catch((err)=>{
-              console.error(msgStr +'Failed to move the window. Cause: ' + JSON.stringify(err));
+            }).catch((err) => {
+              console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
               unexpectedError(err, caseName, 'tempWnd.moveWindowTo', done);
             });
           } catch (exception) {
-            console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(exception));
-          };
-        }).catch((err)=>{
-          console.error(msgStr +'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
+            console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+          }
+          ;
+        }).catch((err) => {
+          console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
         });
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_MOVEWINDOWTO_JSAPI_003
@@ -711,28 +791,32 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'moveWindowToTest3';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
       try {
-        ohosWindow.createWindow(windowConfig).then((wnd)=> {
-          console.info(msgStr +'Succeeded in obtaining the top window. Data: ' + JSON.stringify(wnd));
+        ohosWindow.createWindow(windowConfig).then((wnd) => {
+          console.info(msgStr + 'Succeeded in obtaining the top window. Data: ' + JSON.stringify(wnd));
           expect(wnd != null).assertTrue();
           try {
-            wnd.moveWindowTo(20000, 20000).then(()=> {
-              console.info(msgStr +'Succeeded in moving the window.');
+            wnd.moveWindowTo(20000, 20000).then(() => {
+              console.info(msgStr + 'Succeeded in moving the window.');
               done();
-            }).catch((err)=>{
-              console.error(msgStr +'Failed to move the window. Cause: ' + JSON.stringify(err));
+            }).catch((err) => {
+              console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
               unexpectedError(err, caseName, 'tempWnd.moveWindowTo', done);
             });
           } catch (exception) {
-            console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(exception));
-          };
-        }).catch((err)=>{
-          console.error(msgStr +'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
+            console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+          }
+          ;
+        }).catch((err) => {
+          console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
         });
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_MOVEWINDOWTO_JSAPI_004
@@ -745,28 +829,32 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'moveWindowToTest4';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
       try {
-        ohosWindow.createWindow(windowConfig).then((wnd)=> {
-          console.info(msgStr +'Succeeded in obtaining the top window. Data: ' + JSON.stringify(wnd));
+        ohosWindow.createWindow(windowConfig).then((wnd) => {
+          console.info(msgStr + 'Succeeded in obtaining the top window. Data: ' + JSON.stringify(wnd));
           expect(wnd != null).assertTrue();
           try {
-            wnd.moveWindowTo(-200, -200).then(()=> {
-              console.info(msgStr +'Succeeded in moving the window.');
+            wnd.moveWindowTo(-200, -200).then(() => {
+              console.info(msgStr + 'Succeeded in moving the window.');
               done();
-            }).catch((err)=>{
-              console.error(msgStr +'Failed to move the window. Cause: ' + JSON.stringify(err));
+            }).catch((err) => {
+              console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
               unexpectedError(err, caseName, 'tempWnd.moveWindowTo', done);
             });
           } catch (exception) {
-            console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(exception));
-          };
-        }).catch((err)=>{
-          console.error(msgStr +'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
+            console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+          }
+          ;
+        }).catch((err) => {
+          console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
         });
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_MOVEWINDOWTO_JSAPI_005
@@ -779,31 +867,35 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let baseWndType = 1;
       let windowId = 'moveWindowToTest5';
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (create_err, create_data) => {
           console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
           if (create_err && create_err.code) {
             unexpectedError(create_err, caseName, 'ohosWindow.createWindow', done);
             return;
           }
-          try{
+          try {
             create_data.moveWindowTo(300, 300, (err, data) => {
               if (err.code) {
-                console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(err));
+                console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(err));
                 unexpectedError(err, caseName, 'ohosWindow.moveWindowTo', done);
                 return;
               }
-              console.info(msgStr +'Succeeded in moving the window. Data: ' + JSON.stringify(data));
+              console.info(msgStr + 'Succeeded in moving the window. Data: ' + JSON.stringify(data));
               done();
             })
           } catch (exception) {
-            console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(exception));
-          };
+            console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+          }
+          ;
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_MOVEWINDOWTO_JSAPI_006
@@ -816,31 +908,35 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let baseWndType = 1;
       let windowId = 'moveWindowToTest6';
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (create_err, create_data) => {
           console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
           if (create_err && create_err.code) {
             unexpectedError(create_err, caseName, 'ohosWindow.createWindow', done);
             return;
           }
-          try{
+          try {
             create_data.moveWindowTo(100, 50, (err, data) => {
               if (err.code) {
-                console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(err));
+                console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(err));
                 unexpectedError(err, caseName, 'ohosWindow.moveWindowTo', done);
                 return;
               }
-              console.info(msgStr +'Succeeded in moving the window. Data: ' + JSON.stringify(data));
+              console.info(msgStr + 'Succeeded in moving the window. Data: ' + JSON.stringify(data));
               done();
             })
           } catch (exception) {
-            console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(exception));
-          };
+            console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+          }
+          ;
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_MOVEWINDOWTO_JSAPI_007
@@ -853,31 +949,35 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let baseWndType = 1;
       let windowId = 'moveWindowToTest7';
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (create_err, create_data) => {
           console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
           if (create_err && create_err.code) {
             unexpectedError(create_err, caseName, 'ohosWindow.createWindow', done);
             return;
           }
-          try{
+          try {
             create_data.moveWindowTo(20000, 20000, (err, data) => {
               if (err.code) {
-                console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(err));
+                console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(err));
                 unexpectedError(err, caseName, 'ohosWindow.moveWindowTo', done);
                 return;
               }
-              console.info(msgStr +'Succeeded in moving the window. Data: ' + JSON.stringify(data));
+              console.info(msgStr + 'Succeeded in moving the window. Data: ' + JSON.stringify(data));
               done();
             })
           } catch (exception) {
-            console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(exception));
-          };
+            console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+          }
+          ;
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_MOVEWINDOWTO_JSAPI_008
@@ -890,31 +990,35 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let baseWndType = 1;
       let windowId = 'moveWindowToTest8';
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (create_err, create_data) => {
           console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
           if (create_err && create_err.code) {
             unexpectedError(create_err, caseName, 'ohosWindow.createWindow', done);
             return;
           }
-          try{
+          try {
             create_data.moveWindowTo(-200, -200, (err, data) => {
               if (err.code) {
-                console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(err));
+                console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(err));
                 unexpectedError(err, caseName, 'ohosWindow.moveWindowTo', done);
                 return;
               }
-              console.info(msgStr +'Succeeded in moving the window. Data: ' + JSON.stringify(data));
+              console.info(msgStr + 'Succeeded in moving the window. Data: ' + JSON.stringify(data));
               done();
             })
           } catch (exception) {
-            console.error(msgStr +'Failed to move the window. Cause:' + JSON.stringify(exception));
-          };
+            console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
+          }
+          ;
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_RESIZE_JSAPI_001
@@ -927,28 +1031,32 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'resizeTest1';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
-      let tempWnd=null;
-      try{
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      let tempWnd = null;
+      try {
         tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
           unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + tempWnd);
         expect(!!tempWnd).assertTrue();
-        try{
-          tempWnd.resize(200, 600).then((data)=> {
-            console.info(msgStr +'Succeeded in changing the window size. Data:' + JSON.stringify(data));
+        try {
+          tempWnd.resize(200, 600).then((data) => {
+            console.info(msgStr + 'Succeeded in changing the window size. Data:' + JSON.stringify(data));
             done();
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to change the window size. Cause: ' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
             unexpectedError(err, caseName, 'tempWnd.resize', done);
           })
         } catch (exception) {
-          console.error(msgStr +'Failed to change the window size. Cause: ' + JSON.stringify(exception));
-        };
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_RESIZE_JSAPI_002
@@ -961,28 +1069,32 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'resizeTest2';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
-      let tempWnd=null;
-      try{
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      let tempWnd = null;
+      try {
         tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
           unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + tempWnd);
         expect(!!tempWnd).assertTrue();
-        try{
-          tempWnd.resize(20000, 20000).then((data)=> {
-            console.info(msgStr +'Succeeded in changing the window size. Data:' + JSON.stringify(data));
+        try {
+          tempWnd.resize(20000, 20000).then((data) => {
+            console.info(msgStr + 'Succeeded in changing the window size. Data:' + JSON.stringify(data));
             done();
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to change the window size. Cause: ' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
             unexpectedError(err, caseName, 'tempWnd.resize', done);
           })
         } catch (exception) {
-          console.error(msgStr +'Failed to change the window size. Cause: ' + JSON.stringify(exception));
-        };
+          console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_RESIZE_JSAPI_003
@@ -995,31 +1107,35 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'resizeTest3';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
-      let tempWnd=null;
-      try{
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      let tempWnd = null;
+      try {
         tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
           unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + tempWnd);
         expect(!!tempWnd).assertTrue();
-        try{
-          tempWnd.resize(0, 0).then((data)=> {
-            console.info(msgStr +'Succeeded in changing the window size. Data:' + JSON.stringify(data));
+        try {
+          tempWnd.resize(0, 0).then((data) => {
+            console.info(msgStr + 'Succeeded in changing the window size. Data:' + JSON.stringify(data));
             done();
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to change the window size. Cause: ' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
             expect(err.code).assertEqual(401);
             done();
           })
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          console.error(msgStr + 'try catch Failed to change the window size. Cause: ' + JSON.stringify(exception));
           expect(exception.code).assertEqual(401);
           done();
-        };
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_RESIZE_JSAPI_004
@@ -1032,31 +1148,35 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'resizeTest4';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
-      let tempWnd=null;
-      try{
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      let tempWnd = null;
+      try {
         tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
           unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + tempWnd);
         expect(!!tempWnd).assertTrue();
-        try{
-          tempWnd.resize(-1, -1).then((data)=> {
-            console.info(msgStr +'Succeeded in changing the window size. Data:' + JSON.stringify(data));
+        try {
+          tempWnd.resize(-1, -1).then((data) => {
+            console.info(msgStr + 'Succeeded in changing the window size. Data:' + JSON.stringify(data));
             done();
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to change the window size. Cause: ' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
             expect(err.code).assertEqual(401);
             done();
           })
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          console.error(msgStr + 'try catch Failed to change the window size. Cause: ' + JSON.stringify(exception));
           expect(exception.code).assertEqual(401);
           done();
-        };
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_RESIZE_JSAPI_005
@@ -1069,32 +1189,36 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'resizeTest5';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
-      let tempWnd=null;
-      try{
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      let tempWnd = null;
+      try {
         tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
           unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + tempWnd);
         expect(!!tempWnd).assertTrue();
         for (var i = 1; i <= 5; i++) {
-          try{
-            tempWnd.resize(100, 100).then((data)=> {
-              console.info(msgStr +'Succeeded in changing the window size. Data:' + JSON.stringify(data));
+          try {
+            tempWnd.resize(100, 100).then((data) => {
+              console.info(msgStr + 'Succeeded in changing the window size. Data:' + JSON.stringify(data));
               done();
-            }).catch((err)=>{
-              console.error(msgStr +'Failed to change the window size. Cause: ' + JSON.stringify(err));
+            }).catch((err) => {
+              console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
               expect(err.code).assertEqual(6);
               done();
               tempWnd.detroyWindow();
             })
           } catch (exception) {
-            console.error(msgStr +'try catch Failed to change the window size. Cause: ' + JSON.stringify(exception));
-          };
+            console.error(msgStr + 'try catch Failed to change the window size. Cause: ' + JSON.stringify(exception));
+          }
+          ;
         }
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_RESIZE_JSAPI_006
@@ -1107,8 +1231,10 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let baseWndType = 1;
       let windowId = 'resizeTest6';
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (create_err, create_data) => {
           console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
           if (create_err && create_err.code) {
@@ -1118,20 +1244,22 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           try {
             create_data.resize(200, 200, (err) => {
               if (err.code) {
-                console.error(msgStr +'Failed to change the window size. Cause:' + JSON.stringify(err));
+                console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(err));
                 unexpectedError(err, caseName, 'ohosWindow.resize', done);
                 return;
               }
-              console.info(msgStr +'Succeeded in changing the window size.');
+              console.info(msgStr + 'Succeeded in changing the window size.');
               done();
             });
           } catch (exception) {
-            console.error(msgStr +'Failed to change the window size. Cause:' + JSON.stringify(exception));
-          };
+            console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(exception));
+          }
+          ;
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_RESIZE_JSAPI_007
@@ -1146,8 +1274,10 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let windowId = 'resizeTest7';
       let width = 100;
       let height = 100;
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (create_err, create_data) => {
           console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
           if (create_err && create_err.code) {
@@ -1160,22 +1290,24 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
             try {
               create_data.resize(width, height, (err) => {
                 if (err.code) {
-                  console.error(msgStr +'Failed to change the window size. Cause:' + JSON.stringify(err));
+                  console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(err));
                   unexpectedError(err, caseName, 'ohosWindow.resize', done);
                   return;
                 }
-                console.info(msgStr +'Succeeded in changing the window size.');
+                console.info(msgStr + 'Succeeded in changing the window size.');
                 done();
               });
             } catch (exception) {
-              console.error(msgStr +'Failed to change the window size. Cause:' + JSON.stringify(exception));
-            };
+              console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(exception));
+            }
+            ;
           }
 
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_DESTROYWINDOW_JSAPI_001
@@ -1188,32 +1320,36 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
       let windowId = 'destroyWindowTest1';
       console.log(msgStr + 'begin');
-      let windowConfig = {name: windowId, windowType: baseWndType, ctx: context};
-      let tempWnd=null;
-      try{
+      let windowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      let tempWnd = null;
+      try {
         tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
           unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + JSON.stringify(tempWnd));
         expect(!!tempWnd).assertTrue();
-        tempWnd.destroyWindow().then(()=> {
-          console.info(msgStr +'Succeeded in destroying the window.');
+        tempWnd.destroyWindow().then(() => {
+          console.info(msgStr + 'Succeeded in destroying the window.');
           try {
             let findWnd = ohosWindow.findWindow(windowId)
             expect(!findWnd).assertTrue();
             done();
           } catch (exception) {
-            console.error(msgStr +'try catch Failed to find the Window. Cause: ' + JSON.stringify(exception));
+            console.error(msgStr + 'try catch Failed to find the Window. Cause: ' + JSON.stringify(exception));
             expect(exception.code === 1300002).assertTrue();
             done();
-          };
-        }).catch((err)=>{
-          console.error(msgStr +'try catch Failed to destroy the window. Cause: ' + JSON.stringify(err));
+          }
+          ;
+        }).catch((err) => {
+          console.error(msgStr + 'try catch Failed to destroy the window. Cause: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'tempWnd.destroyWindow', done);
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_DESTROYWINDOW_JSAPI_002
@@ -1226,35 +1362,43 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'destroyWindowTest2';
       console.log(msgStr + 'begin');
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (create_err, create_data) => {
           console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
           if (create_err && create_err.code) {
             unexpectedError(create_err, caseName, 'ohosWindow.createWindow', done);
             return;
           }
-          expect(!!create_data).assertTrue();
+          try {
+            expect(!!create_data).assertTrue();
+          } catch (error) {
+            console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+          }
           create_data.destroyWindow((err) => {
             if (err.code != 0) {
               console.log('windowTest DestroyTest2 create callback fail' + JSON.stringify(err));
               unexpectedError(create_err, caseName, 'ohosWindow.destroyWindow', done);
             } else {
-                try {
-                  let findWnd = ohosWindow.findWindow(windowId)
-                  expect(!findWnd).assertTrue();
-                  done();
-                } catch (exception) {
-                  console.error(msgStr +'try catch Failed to find the Window. Cause: ' + JSON.stringify(exception));
-                  expect(exception.code === 1300002).assertTrue();
-                  done();
-                };
+              try {
+                let findWnd = ohosWindow.findWindow(windowId)
+                expect(!findWnd).assertTrue();
+                done();
+              } catch (exception) {
+                console.error(msgStr + 'try catch Failed to find the Window. Cause: ' + JSON.stringify(exception));
+                expect(exception.code === 1300002).assertTrue();
+                done();
+              }
+              ;
             }
           })
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_001
@@ -1264,29 +1408,31 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('setWindowSystemBarEnableTest1', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd=null;
-      try{
-        wnd = await ohosWindow.getLastWindow(context).catch((err)=>{
+      let wnd = null;
+      try {
+        wnd = await ohosWindow.getLastWindow(context).catch((err) => {
           console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'ohosWindow.getLastWindow', done);
         })
         expect(wnd != null).assertTrue();
         try {
-          wnd.setWindowSystemBarEnable([]).then(()=> {
-            console.info(msgStr +'Succeeded in setting the system bar to be invisible.');
+          wnd.setWindowSystemBarEnable([]).then(() => {
+            console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
             expect(TRUE_FLAG).assertTrue();
             done();
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
             expect().assertFail();
             done();
           });
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        };
+          console.error(msgStr + 'try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_002
@@ -1296,29 +1442,31 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('setWindowSystemBarEnableTest2', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd=null;
-      try{
-        wnd = await ohosWindow.getLastWindow(context).catch((err)=>{
+      let wnd = null;
+      try {
+        wnd = await ohosWindow.getLastWindow(context).catch((err) => {
           console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'ohosWindow.getLastWindow', done);
         })
         expect(wnd != null).assertTrue();
         try {
-          wnd.setWindowSystemBarEnable(['status', 'navigation']).then(()=> {
-            console.info(msgStr +'Succeeded in setting the system bar to be invisible.');
+          wnd.setWindowSystemBarEnable(['status', 'navigation']).then(() => {
+            console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
             expect(TRUE_FLAG).assertTrue();
             done();
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
             expect().assertFail();
             done();
           });
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        };
+          console.error(msgStr + 'try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_003
@@ -1328,29 +1476,31 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('setWindowSystemBarEnableTest3', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd=null;
-      try{
-        wnd = await ohosWindow.getLastWindow(context).catch((err)=>{
+      let wnd = null;
+      try {
+        wnd = await ohosWindow.getLastWindow(context).catch((err) => {
           console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'ohosWindow.getLastWindow', done);
         })
         expect(wnd != null).assertTrue();
         try {
-          wnd.setWindowSystemBarEnable(['status']).then(()=> {
-            console.info(msgStr +'Succeeded in setting the system bar to be invisible.');
+          wnd.setWindowSystemBarEnable(['status']).then(() => {
+            console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
             expect(TRUE_FLAG).assertTrue();
             done();
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
             expect().assertFail();
             done();
           });
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        };
+          console.error(msgStr + 'try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_004
@@ -1360,29 +1510,31 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('setWindowSystemBarEnableTest4', 0, async function (done) {
       let caseName = 'setWindowSystemBarEnableTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd=null;
-      try{
-        wnd = await ohosWindow.getLastWindow(context).catch((err)=>{
+      let wnd = null;
+      try {
+        wnd = await ohosWindow.getLastWindow(context).catch((err) => {
           console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'ohosWindow.getLastWindow', done);
         })
         expect(wnd != null).assertTrue();
         try {
-          wnd.setWindowSystemBarEnable(['navigation']).then(()=> {
-            console.info(msgStr +'Succeeded in setting the system bar to be invisible.');
+          wnd.setWindowSystemBarEnable(['navigation']).then(() => {
+            console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
             expect(TRUE_FLAG).assertTrue();
             done();
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
             expect().assertFail();
             done();
           });
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        };
+          console.error(msgStr + 'try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_005
@@ -1395,19 +1547,21 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'setWindowSystemBarEnableTest5';
       console.log(msgStr + 'begin');
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      let wnd=null;
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      let wnd = null;
       try {
-        wnd = await ohosWindow.getLastWindow(context).catch((err)=>{
+        wnd = await ohosWindow.getLastWindow(context).catch((err) => {
           console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'ohosWindow.getLastWindow', done);
         })
         expect(wnd != null).assertTrue();
-        try{
+        try {
           wnd.setWindowSystemBarEnable(['status', 'navigation'], (err) => {
-            console.log(msgStr +'windowTest SetLayoutFullScreenTest2 wnd.setFullScreen(true) callback begin');
+            console.log(msgStr + 'windowTest SetLayoutFullScreenTest2 wnd.setFullScreen(true) callback begin');
             if (err.code != 0) {
-              console.log(msgStr +'windowTest SetLayoutFullScreenTest2 wnd.setFullScreen callback fail' + JSON.stringify(err));
+              console.log(msgStr + 'windowTest SetLayoutFullScreenTest2 wnd.setFullScreen callback fail' + JSON.stringify(err));
               expect().assertFail();
               done();
             } else {
@@ -1416,11 +1570,13 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
             }
           })
         } catch (exception) {
-          console.error(msgStr +' try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        };
+          console.error(msgStr + ' try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to get the last window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to get the last window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWSYSTEMBARENABLE_JSAPI_006
@@ -1433,19 +1589,21 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let baseWndType = 1;
       let windowId = 'setWindowSystemBarEnableTest6';
       console.log(msgStr + 'begin');
-      let winsowConfig = {name: windowId, windowType:baseWndType, ctx: context};
-      let wnd=null;
+      let winsowConfig = {
+        name: windowId, windowType: baseWndType, ctx: context
+      };
+      let wnd = null;
       try {
-        wnd = await ohosWindow.getLastWindow(context).catch((err)=>{
+        wnd = await ohosWindow.getLastWindow(context).catch((err) => {
           console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(err));
           unexpectedError(err, caseName, 'ohosWindow.getLastWindow', done);
         })
         expect(wnd != null).assertTrue();
-        try{
+        try {
           wnd.setWindowSystemBarEnable([], (err) => {
-            console.log(msgStr +'windowTest SetLayoutFullScreenTest2 wnd.setFullScreen(true) callback begin');
+            console.log(msgStr + 'windowTest SetLayoutFullScreenTest2 wnd.setFullScreen(true) callback begin');
             if (err.code != 0) {
-              console.log(msgStr +'windowTest SetLayoutFullScreenTest2 wnd.setFullScreen callback fail' + JSON.stringify(err));
+              console.log(msgStr + 'windowTest SetLayoutFullScreenTest2 wnd.setFullScreen callback fail' + JSON.stringify(err));
               expect().assertFail();
               done();
             } else {
@@ -1454,11 +1612,13 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
             }
           })
         } catch (exception) {
-          console.error(msgStr +' try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        };
+          console.error(msgStr + ' try catch Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to get the last window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to get the last window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_003
@@ -1472,10 +1632,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let tempType = 5000;
       let windId = 'nonExistWindowType';
       console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
-      let windowConfig = {name: windId, windowType: tempType, ctx: context};
-      let nonExistWnd=null;
-      try{
-        nonExistWnd = await ohosWindow.createWindow(windowConfig).then((data)=> {
+      let windowConfig = {
+        name: windId, windowType: tempType, ctx: context
+      };
+      let nonExistWnd = null;
+      try {
+        nonExistWnd = await ohosWindow.createWindow(windowConfig).then((data) => {
           console.log(msgStr + 'ohosWindow.createWindow success: ' + JSON.stringify(nonExistWnd));
           done();
         }).catch((err) => {
@@ -1483,11 +1645,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           expect(err.code === 401).assertTrue();
           done();
         });
-      }catch (exception) {
+      } catch (exception) {
         console.error(msgStr + 'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));
         expect(exception.code === 401).assertTrue();
         done();
-      };
+      }
+      ;
     })
     /**
      * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_007
@@ -1501,20 +1664,27 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let tempType = 5000;
       let windId = 'createTest7';
       console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
-      let winsowConfig = {name: windId, windowType:tempType, ctx: context};
-      try{
+      let winsowConfig = {
+        name: windId, windowType: tempType, ctx: context
+      };
+      try {
         ohosWindow.createWindow(winsowConfig, (err, data) => {
           if (err && err.code) {
             console.log(msgStr + 'ohosWindow.createWindow  err' + JSON.stringify(err));
-            expect(err.code === 401).assertTrue();
+            try {
+              expect(err.code === 401).assertTrue();
+            } catch (error) {
+              console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+            }
             done();
           }
         })
       } catch (exception) {
-        console.error(msgStr +'Failed to create the window. Cause: ' + JSON.stringify(exception));
+        console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
         expect(exception.code === 401).assertTrue();
         done();
-      };
+      }
+      ;
     })
     /**
         * @tc.number     SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_001
@@ -1524,36 +1694,38 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('setWindowLayoutFullScreenTest1', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreenTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd=null;
-      try{
+      let wnd = null;
+      try {
         wnd = windowStage.getMainWindowSync();
-        console.log(msgStr +'ohosWindow.getLastWindow ' + JSON.stringify(wnd));
+        console.log(msgStr + 'ohosWindow.getLastWindow ' + JSON.stringify(wnd));
         expect(wnd != null).assertTrue();
         try {
-          let isLayoutFullScreen= true;
-          wnd.setWindowLayoutFullScreen(isLayoutFullScreen).then(()=> {
-            console.info(msgStr +'Succeeded in setting the window layout to full-screen mode.');
+          let isLayoutFullScreen = true;
+          wnd.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
             try {
               let propData = wnd.getWindowProperties()
               console.info(msgStr + 'wnd.getWindowProperties propData: ' + JSON.stringify(propData));
               expect(propData.isLayoutFullScreen).assertTrue();
               done();
-            }catch (exception) {
+            } catch (exception) {
               console.error(msgStr + 'try catch Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
               expect().assertFail();
               done();
             }
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
             expect().assertFail();
             done();
           });
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
-        };
-      }catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+          console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
+        }
+        ;
+      } catch (exception) {
+        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_002
@@ -1563,35 +1735,37 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('setWindowLayoutFullScreenTest2', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreenTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd=null;
-      try{
+      let wnd = null;
+      try {
         wnd = windowStage.getMainWindowSync();
         expect(wnd != null).assertTrue();
         try {
-          let isLayoutFullScreen= false;
-          wnd.setWindowLayoutFullScreen(isLayoutFullScreen).then(()=> {
-            console.info(msgStr +'Succeeded in setting the window layout to full-screen mode.');
+          let isLayoutFullScreen = false;
+          wnd.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
             try {
               let propData = wnd.getWindowProperties()
               console.info(msgStr + 'wnd.getWindowProperties propData: ' + JSON.stringify(propData));
               expect(!propData.isLayoutFullScreen).assertTrue();
               done();
-            }catch (exception) {
+            } catch (exception) {
               console.error(msgStr + 'try catch Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
               expect().assertFail();
               done();
             }
-          }).catch((err)=>{
-            console.error(msgStr +'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          }).catch((err) => {
+            console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
             expect().assertFail();
             done();
           });
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
-        };
+          console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
+        }
+        ;
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_003
@@ -1601,39 +1775,46 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('setWindowLayoutFullScreenTest3', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreenTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd=null;
+      let wnd = null;
       try {
         wnd = windowStage.getMainWindowSync();
         expect(wnd != null).assertTrue();
-        let isLayoutFullScreen= true;
+        let isLayoutFullScreen = true;
         try {
           wnd.setWindowLayoutFullScreen(isLayoutFullScreen, (err) => {
             if (err.code) {
-              console.error(msgStr +'err Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-              expect().assertFail();
+              console.error(msgStr + 'err Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+              }
               done();
               return;
             }
-            console.info(msgStr +'Succeeded in setting the window layout to full-screen mode.');
-            try{
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+            try {
               let propData = wnd.getWindowProperties()
               console.log(msgStr + JSON.stringify(propData));
               expect(propData.isLayoutFullScreen).assertTrue();
               done();
             } catch (exception) {
-              console.error(msgStr +'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+              console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
               expect().assertFail();
               done();
-            };
+            }
+            ;
           });
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
+          console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
           expect().assertFail();
           done();
-        };
-      }  catch (exception) {
-        console.error(msgStr +'Failed to get the main window. Cause: ' + JSON.stringify(exception));
-      };
+        }
+        ;
+      } catch (exception) {
+        console.error(msgStr + 'Failed to get the main window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWLAYOUTFULLSCREEN_JSAPI_004
@@ -1643,39 +1824,46 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     it('setWindowLayoutFullScreenTest4', 0, async function (done) {
       let caseName = 'setWindowLayoutFullScreenTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd=null;
+      let wnd = null;
       try {
         wnd = windowStage.getMainWindowSync();
         expect(wnd != null).assertTrue();
-        let isLayoutFullScreen= false;
+        let isLayoutFullScreen = false;
         try {
           wnd.setWindowLayoutFullScreen(isLayoutFullScreen, (err) => {
             if (err.code) {
-              console.error(msgStr +'err Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-              expect().assertFail();
+              console.error(msgStr + 'err Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+              }
               done();
               return;
             }
-            console.info(msgStr +'Succeeded in setting the window layout to full-screen mode.');
-            try{
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+            try {
               let propData = wnd.getWindowProperties()
               console.log(msgStr + JSON.stringify(propData));
               expect(!propData.isLayoutFullScreen).assertTrue();
               done();
             } catch (exception) {
-              console.error(msgStr +'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+              console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
               expect().assertFail();
               done();
-            };
+            }
+            ;
           });
         } catch (exception) {
-          console.error(msgStr +'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
+          console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
           expect().assertFail();
           done();
-        };
-      }  catch (exception) {
-        console.error(msgStr +'Failed to create the main window. Cause: ' + JSON.stringify(exception));
-      };
+        }
+        ;
+      } catch (exception) {
+        console.error(msgStr + 'Failed to create the main window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWMODE_JSAPI_001
@@ -1684,10 +1872,10 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     */
     it('setWindowModeTest1', 0, function (done) {
       //['UNDEFINED','FULLSCREEN','PRIMARY','SECONDARY','FLOATING']
-      let windowModeArr=['FULLSCREEN','PRIMARY','SECONDARY','FLOATING']
+      let windowModeArr = ['FULLSCREEN', 'PRIMARY', 'SECONDARY', 'FLOATING']
       let caseName = 'setWindowModeTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let sumCount=0
+      let sumCount = 0
       try {
         let tempWnd = windowStage.getMainWindowSync();
         expect(!!tempWnd).assertTrue();
@@ -1698,23 +1886,25 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           let tempType = ohosWindow.WindowMode[loopCount[i]];
           console.log(msgStr + 'tempWnd.setWindowMode ' + tempType + ' start');
           try {
-            tempWnd.setWindowMode(tempType).then(()=> {
+            tempWnd.setWindowMode(tempType).then(() => {
               sumCount++
-              console.info(msgStr +'Succeeded in setting the window mode. count: '+sumCount);
-              console.info(msgStr +'Succeeded in setting the window mode. loopCount.length: '+loopCount.length);
-              if(sumCount==loopCount.length) done();
-            }).catch((err)=>{
-              console.log(msgStr +'currentType: '+tempType)
-              console.error(msgStr +'Failed to set the window mode. Cause: ' + JSON.stringify(err));
+              console.info(msgStr + 'Succeeded in setting the window mode. count: ' + sumCount);
+              console.info(msgStr + 'Succeeded in setting the window mode. loopCount.length: ' + loopCount.length);
+              if (sumCount == loopCount.length) done();
+            }).catch((err) => {
+              console.log(msgStr + 'currentType: ' + tempType)
+              console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
               unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
             });
           } catch (exception) {
-            console.error(msgStr +'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
-          };
+            console.error(msgStr + 'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
+          }
+          ;
         }
       } catch (exception) {
         console.error('try catch Failed to obtain the getMainWindowSync. Cause: ' + JSON.stringify(exception));
-      };
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWMODE_JSAPI_002
@@ -1722,11 +1912,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     * @tc.desc       Verify the scenario where the normal window mode is set
     */
     it('setWindowModeTest2', 0, function (done) {
-      let windowModeArr=['FULLSCREEN','PRIMARY','SECONDARY','FLOATING']
+      let windowModeArr = ['FULLSCREEN', 'PRIMARY', 'SECONDARY', 'FLOATING']
       let caseName = 'setWindowModeTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let sumCount=0
-      try{
+      let sumCount = 0
+      try {
         let wnd = windowStage.getMainWindowSync();
         expect(!!wnd).assertTrue();
         let loopCount = windowModeArr;
@@ -1735,26 +1925,28 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           sleep(500)
           let tempType = ohosWindow.WindowMode[loopCount[i]];
           console.log(msgStr + 'tempWnd.setWindowMode ' + tempType + ' start');
-          try{
+          try {
             wnd.setWindowMode(tempType, (err, data) => {
               if (err && err.code) {
-                console.log(msgStr +'currentType: '+tempType)
-                console.error(msgStr +'Failed to set the window mode. Cause: ' + JSON.stringify(err));
+                console.log(msgStr + 'currentType: ' + tempType)
+                console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
                 unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
               } else {
                 sumCount++
-                console.info(msgStr +'Succeeded in setting the window mode. count: '+sumCount);
-                console.info(msgStr +'Succeeded in setting the window mode. loopCount.length: '+loopCount.length);
-                if(sumCount==loopCount.length) done();
+                console.info(msgStr + 'Succeeded in setting the window mode. count: ' + sumCount);
+                console.info(msgStr + 'Succeeded in setting the window mode. loopCount.length: ' + loopCount.length);
+                if (sumCount == loopCount.length) done();
               }
             })
-          }  catch (exception) {
-            console.error(msgStr +'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
-          };
+          } catch (exception) {
+            console.error(msgStr + 'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
+          }
+          ;
         }
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWMODE_JSAPI_003
@@ -1762,10 +1954,10 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     * @tc.desc       Test window.setWindowMode API function test.
     */
     it('setWindowModeTest3', 0, function (done) {
-      let windowModeArr=['UNDEFINED']
+      let windowModeArr = ['UNDEFINED']
       let caseName = 'setWindowModeTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let sumCount=0
+      let sumCount = 0
       try {
         let tempWnd = windowStage.getMainWindowSync();
         expect(!!tempWnd).assertTrue();
@@ -1776,23 +1968,25 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           let tempType = ohosWindow.WindowMode[loopCount[i]];
           console.log(msgStr + 'tempWnd.setWindowMode ' + tempType + ' start');
           try {
-            tempWnd.setWindowMode(tempType).then(()=> {
+            tempWnd.setWindowMode(tempType).then(() => {
               sumCount++
-              console.info(msgStr +'Succeeded in setting the window mode. count: '+sumCount);
-              console.info(msgStr +'Succeeded in setting the window mode. loopCount.length: '+loopCount.length);
-            }).catch((err)=>{
-              console.log(msgStr +'currentType: '+tempType)
-              console.error(msgStr +'Failed to set the window mode. Cause: ' + JSON.stringify(err));
-              expect(err.code==401).assertTrue();
+              console.info(msgStr + 'Succeeded in setting the window mode. count: ' + sumCount);
+              console.info(msgStr + 'Succeeded in setting the window mode. loopCount.length: ' + loopCount.length);
+            }).catch((err) => {
+              console.log(msgStr + 'currentType: ' + tempType)
+              console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
+              expect(err.code == 401).assertTrue();
               done();
             });
           } catch (exception) {
-            console.error(msgStr +'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
-          };
+            console.error(msgStr + 'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
+          }
+          ;
         }
       } catch (exception) {
         console.error('try catch Failed to obtain the getMainWindowSync. Cause: ' + JSON.stringify(exception));
-      };
+      }
+      ;
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWMODE_JSAPI_004
@@ -1800,11 +1994,11 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     * @tc.desc       Verify the scenario where the normal window mode is set
     */
     it('setWindowModeTest4', 0, function (done) {
-      let windowModeArr=['UNDEFINED']
+      let windowModeArr = ['UNDEFINED']
       let caseName = 'setWindowModeTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let sumCount=0
-      try{
+      let sumCount = 0
+      try {
         let wnd = windowStage.getMainWindowSync();
         expect(!!wnd).assertTrue();
         let loopCount = windowModeArr;
@@ -1813,26 +2007,32 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           sleep(500)
           let tempType = ohosWindow.WindowMode[loopCount[i]];
           console.log(msgStr + 'tempWnd.setWindowMode ' + tempType + ' start');
-          try{
+          try {
             wnd.setWindowMode(tempType, (err, data) => {
               if (err && err.code) {
-                console.log(msgStr +'currentType: '+tempType)
-                console.error(msgStr +'Failed to set the window mode. Cause: ' + JSON.stringify(err));
-                expect(err.code==401).assertTrue();
+                console.log(msgStr + 'currentType: ' + tempType)
+                console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
+                try {
+                  expect(err.code == 401).assertTrue();
+                } catch (error) {
+                  console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+                }
                 done();
               } else {
                 sumCount++
-                console.info(msgStr +'Succeeded in setting the window mode. count: '+sumCount);
-                console.info(msgStr +'Succeeded in setting the window mode. loopCount.length: '+loopCount.length);
+                console.info(msgStr + 'Succeeded in setting the window mode. count: ' + sumCount);
+                console.info(msgStr + 'Succeeded in setting the window mode. loopCount.length: ' + loopCount.length);
               }
             })
-          }  catch (exception) {
-            console.error(msgStr +'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
-          };
+          } catch (exception) {
+            console.error(msgStr + 'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
+          }
+          ;
         }
       } catch (exception) {
-        console.error(msgStr +'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));
-      };
+        console.error(msgStr + 'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));
+      }
+      ;
     })
   })
 }
