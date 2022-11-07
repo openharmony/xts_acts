@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import HiAppEventSubTest from './HiAppEventSub.test.js'
+import HiAppEventSubSecondTest from './HiAppEventSubSecond.test.js'
 export default function testsuite() {
 HiAppEventSubTest()
+HiAppEventSubSecondTest()
 }
