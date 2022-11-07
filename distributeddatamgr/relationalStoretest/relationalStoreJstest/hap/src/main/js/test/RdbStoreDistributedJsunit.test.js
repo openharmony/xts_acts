@@ -15,7 +15,9 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import dataRdb from '@ohos.data.rdb';
+import abilityFeatureAbility from '@ohos.ability.featureAbility';
 
+let context = abilityFeatureAbility.getContext();
 const TAG = "[RDB_JSKITS_TEST_Distributed]"
 const STORE_NAME = "distributed_rdb.db"
 var rdbStore = undefined;
@@ -310,6 +312,34 @@ describe('rdbStoreDistributedTest', function () {
         done();
         console.info(TAG + "************* testRdbStoreDistributed0011 end *************");
     })
+
+    /**
+     * @tc.name sync test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100
+     * @tc.desc sync test
+     */
+     it('SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100 start *************");
+        let config = {
+            name: "secure.db",
+            securityLevel: dataRdb.SecurityLevel.S1
+        }
+        await dataRdb.getRdbStoreV9(context, config, 1).then(async (store) => {
+            let predicates = new dataRdb.RdbPredicatesV9("employee")
+            predicates = predicates.inDevices("12345678abcd");
+            try {
+                store.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates);
+            } catch (err) {
+                expect(null).assertFail();
+            }
+        }).catch((err) => {
+            expect(null).assertFail();
+        })
+        await dataRdb.deleteRdbStore(context,"secure.db");
+       
+        done();
+        console.info(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100 end *************");
+    })
 	
 	/**
      * @tc.name sync Callback test
@@ -369,7 +399,7 @@ describe('rdbStoreDistributedTest', function () {
         console.info(TAG + "************* testRdbStoreDistributed0013 end *************");
     })
 	
-	    /**
+    /**
      * @tc.name obtainDistributedTableName Callback interface test
      * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_014
      * @tc.desc obtainDistributedTableName test

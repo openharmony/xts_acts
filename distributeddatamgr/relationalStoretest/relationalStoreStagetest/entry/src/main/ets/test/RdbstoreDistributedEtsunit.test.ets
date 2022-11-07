@@ -34,13 +34,13 @@ describe('rdbStoreDistributedTest', function () {
     })
 
     beforeEach(async function () {
-        rdbStore = await dataRdb.getRdbStore(context, config, 1);
+        rdbStore = await dataRdb.getRdbStoreV9(context, config, 1);
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
         console.info(TAG + 'beforeEach')
     })
 
     afterEach(async function () {
-        await dataRdb.deleteRdbStore(context, STORE_NAME);
+        await dataRdb.deleteRdbStoreV9(context, STORE_NAME);
         console.info(TAG + 'afterEach')
     })
 
