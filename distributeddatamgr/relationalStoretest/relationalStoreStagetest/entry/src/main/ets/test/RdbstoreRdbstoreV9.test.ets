@@ -257,7 +257,7 @@ describe('rdbStoreV9Test', function () {
                 console.info(TAG + "get rdb store error")
                 expect(null).assertFail();
             }else{
-                console.info(TAG + "create table success")
+                console.info(TAG + "get rdb store success")
             }
             done();
         });
@@ -265,6 +265,60 @@ describe('rdbStoreV9Test', function () {
         await sleep(1000)
         done();
         console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0400 end   *************");
+    })
+
+    /**
+     * @tc.name rdb store deleteRdbStoreV9
+     * @tc.number SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_PROMISE_0100
+     * @tc.desc rdb store deleteRdbStoreV9
+     * @tc.require: I5PIL6
+    */
+    it('SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_PROMISE_0100', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_PROMISE_0100 start *************");
+        let config = {
+            name: "secure.db",
+            securityLevel: dataRdb.SecurityLevel.S4
+        }
+        let deleteResult = false
+        await dataRdb.getRdbStoreV9(context, config, 1).then(async (store) => {
+            console.info(TAG + "create table success")
+        })
+        await dataRdb.deleteRdbStoreV9(context,"secure.db").then(() => {
+            deleteResult = true
+            console.info(`${TAG} delete rdb store success,result is ${deleteResult}`)
+        });
+        expect(deleteResult).assertTrue();
+        done();
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_PROMISE_0100 end   *************");
+    })
+
+    /**
+     * @tc.name rdb store deleteRdbStoreV9
+     * @tc.number SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_CALLBACK_0100
+     * @tc.desc rdb store deleteRdbStoreV9
+     * @tc.require: I5PIL6
+    */
+     it('SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_CALLBACK_0100', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_CALLBACK_0100 start *************");
+        let config = {
+            name: "secure.db",
+            securityLevel: dataRdb.SecurityLevel.S1
+        }
+        let deleteResult = false
+        await dataRdb.getRdbStoreV9(context, config, 1).then(async (store) => {
+            console.info(TAG + "create rdb store success")
+        })
+        dataRdb.deleteRdbStoreV9(context,"secure.db", (err, data) => {
+            if(err == undefined){
+                deleteResult = true
+                console.info(`${TAG} delete rdb store success,result is ${deleteResult}`)
+            }
+            done();
+        })
+        await sleep(1000)
+        expect(deleteResult).assertTrue();
+        done();
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_CALLBACK_0100 end   *************");
     })
     console.log(TAG + "*************Unit Test End*************");
 })

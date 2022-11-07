@@ -1932,12 +1932,12 @@ describe('queryTest', function() {
     })
 
     /**
-     * @tc.number: SUB_DDM_DKV_QUERY_PREFIXKEY_PROMISE_0200
+     * @tc.number: SUB_DDM_DKV_QUERY_SETSUGGESTINDEX_PROMISE_0200
      * @tc.desc: Test Js Api Query.SetSuggestIndex() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api Query.SetSuggestIndex() testcase 002
      */
-    it('SUB_DDM_DKV_QUERY_PREFIXKEY_PROMISE_0200', 0, async function(done) {
+    it('SUB_DDM_DKV_QUERY_SETSUGGESTINDEX_PROMISE_0200', 0, async function(done) {
         var query = null;
         try {
             query = new ddm.Query();
@@ -1953,12 +1953,12 @@ describe('queryTest', function() {
     })
 
     /**
-     * @tc.number: SUB_DDM_DKV_QUERY_PREFIXKEY_PROMISE_0300
+     * @tc.number: SUB_DDM_DKV_QUERY_SETSUGGESTINDEX_PROMISE_0300
      * @tc.desc: Test Js Api Query.SetSuggestIndex() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api Query.SetSuggestIndex() testcase 003
      */
-    it('SUB_DDM_DKV_QUERY_PREFIXKEY_PROMISE_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_QUERY_SETSUGGESTINDEX_PROMISE_0300', 0, async function(done) {
         var query = null;
         try {
             query = new ddm.Query();
