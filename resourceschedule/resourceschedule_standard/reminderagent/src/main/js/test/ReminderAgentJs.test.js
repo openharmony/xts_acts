@@ -2851,11 +2851,14 @@ describe('ReminderAgentTest', function () {
         type: 1
       }
       reminderAgent.addNotificationSlot(tarRemoveSlot.type, (err, data) => {
-        reminderAgent.removeNotificationSlot(tarRemoveSlot.type, (err, data) => {
-          expect(0).assertEqual(err.code);
-        });
+          console.info('addNotificationSlot 106 err code:'+err.code)
       });
-      done();
+      reminderAgent.removeNotificationSlot(tarRemoveSlot.type, (err, data) => {
+
+        console.info('err code 106 is :' + err.code)
+        expect(err.code).assertEqual(67108888);
+        done();
+      });
     })
 
     /**
@@ -2866,14 +2869,16 @@ describe('ReminderAgentTest', function () {
     it('testRemoveNotificationSlotNorFun_0107', 0, async function (done) {
       console.info('----------------------testRemoveNotificationSlotNorFun_0107---------------------------');
       let tarRemoveSlot = {
-        type: 1
+        type: 2
       }
       reminderAgent.addNotificationSlot(tarRemoveSlot.type, (err, data) => {
+        console.info('addNotificationSlot err code is :' + err.code)
         reminderAgent.removeNotificationSlot(tarRemoveSlot.type).then(() => {
-          expect(0).assertEqual(err.code);
+          console.info('err code 107 is :' + err.code)
+          expect(err.code).assertEqual(401);
+          done();
         });
       });
-      done();
     })
 
     /**
@@ -2888,12 +2893,11 @@ describe('ReminderAgentTest', function () {
         triggerTimeInSeconds: 3
       }
       reminderAgent.publishReminder(timer).then((reminderId) => { });
-      setTimeout(() => {
         reminderAgent.getValidReminders().then((reminders) => {
-          expect(0).assertEqual(reminders.length);
+          console.info('reminders length is :' + reminders.length)
+          expect(reminders.length).assertLarger(0)
+          done()
         });
-      }, 5000);
-      done();
     })
 
     /**
@@ -2907,13 +2911,14 @@ describe('ReminderAgentTest', function () {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: 3
       }
+      reminderAgent.cancelAllReminders().than(() => {})
       reminderAgent.publishReminder(timer).then((reminderId) => { });
-      setTimeout(() => {
+
         reminderAgent.getValidReminders((err, reminders) => {
-          expect(0).assertEqual(reminders.length);
+          console.info('reminder length 109 is :' + reminders.length)
+          expect(reminders.length).assertEqual(0);
+          done()
         });
-      }, 5000);
-      done();
     })
 
     /**
