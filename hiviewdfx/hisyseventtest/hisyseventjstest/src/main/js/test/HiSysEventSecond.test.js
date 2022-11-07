@@ -162,7 +162,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview js test suite",
 					MSG: "no msg."
 				}
@@ -200,7 +200,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview js test suite",
 					MSG: "no msg."
 				}
@@ -238,7 +238,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview js test suite",
 					MSG: "no msg."
 				}
@@ -272,7 +272,7 @@ describe('hiSysEventJsSecondTest', function () {
 			let params = {
 				PID: 1,
 				UID: 1,
-				PACKAGE_NAME: "com.huawei.testHiSysEvent",
+				PACKAGE_NAME: "com.ohos.hisysevent.test",
 				PROCESS_NAME: "just a testcase",
 				MSG: "no msg."
 			}
@@ -318,7 +318,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK: "com.huawei.testHiSysEvent",
+					STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK_STACK: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview js test suite",
 					MSG: "no msg."
 				}
@@ -356,7 +356,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					"STACK#?": "com.huawei.testHiSysEvent",
+					"STACK#?": "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview js test suite",
 					MSG: "no msg."
 				}
@@ -394,7 +394,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					"": "com.huawei.testHiSysEvent",
+					"": "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview js test suite",
 					MSG: "no msg."
 				}
@@ -432,7 +432,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: Array.from({length: 10 * 1024 + 10}).join("ohos"),
 					MSG: "no msg."
 				}
@@ -510,7 +510,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview js test suite",
 					MSG: msgArray
 				}
@@ -684,7 +684,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview napi test suite",
 					MSG: "no msg."
 				}
@@ -763,7 +763,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview napi test suite",
 					MSG: "no msg."
 				}
@@ -838,7 +838,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview napi test suite",
 					MSG: "no msg."
 				}
@@ -913,7 +913,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview napi test suite",
 					MSG: "no msg."
 				}
@@ -988,7 +988,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview napi test suite",
 					MSG: "no msg."
 				}
@@ -1063,7 +1063,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview napi test suite",
 					MSG: "no msg."
 				}
@@ -1138,7 +1138,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview napi test suite",
 					MSG: "no msg."
 				}
@@ -1236,7 +1236,7 @@ describe('hiSysEventJsSecondTest', function () {
 				params: {
 					PID: 1,
 					UID: 1,
-					PACKAGE_NAME: "com.huawei.testHiSysEvent",
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
 					PROCESS_NAME: "hiview napi test suite",
 					MSG: "no msg."
 				}
