@@ -35,6 +35,8 @@ export default class MainAbility extends Ability {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
+        globalThis.abilityContext = this.context;
+
         windowStage.loadContent('pages/index', (err, data) => {
             if (err.code) {
                 hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.ERROR);
