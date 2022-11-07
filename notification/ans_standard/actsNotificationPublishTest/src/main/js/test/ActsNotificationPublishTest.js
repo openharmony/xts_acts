@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2021 Huawei Device Co., Ltd.
+* Copyright (c) 2022 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -155,7 +155,7 @@ export default function ActsNotificationPublishTest() {
      * @tc.desc      : Publishes a notification
      */
     it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
@@ -197,7 +197,7 @@ export default function ActsNotificationPublishTest() {
      * @tc.desc      : Publishes a notification
      */
     it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0500', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0500 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
@@ -249,7 +249,7 @@ export default function ActsNotificationPublishTest() {
      * @tc.desc      : Publishes a notification
      */
     it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0600', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0600 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
@@ -299,7 +299,7 @@ export default function ActsNotificationPublishTest() {
      * @tc.desc      : Publishes a notification
      */
     it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0700', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0700 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
@@ -351,7 +351,7 @@ export default function ActsNotificationPublishTest() {
      * @tc.desc      : Publishes a notification
      */
     it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0800', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0800 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
@@ -401,7 +401,7 @@ export default function ActsNotificationPublishTest() {
      * @tc.desc      : Publishes a notification
      */
     it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_1100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_1100 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
@@ -456,7 +456,7 @@ export default function ActsNotificationPublishTest() {
      * @tc.desc      : Publishes a notification
      */
     it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_1200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_1200 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
