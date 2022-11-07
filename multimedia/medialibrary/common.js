@@ -17,11 +17,11 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
 
 const presetsCount = {
-    ActsMediaLibraryAlbumTest: { albumsCount: 7, assetsCount: 19 },
+    ActsMediaLibraryAlbumTest: { albumsCount: 15, assetsCount: 27 },
     ActsMediaLibraryBaseTest: { albumsCount: 11, assetsCount: 14 },
     ActsMediaLibraryFavoriteTest: { albumsCount: 6, assetsCount: 32 },
     ActsMediaLibraryFileTest: { albumsCount: 6, assetsCount: 28 },
-    ActsMediaLibraryFileAssetTest: { albumsCount: 27, assetsCount: 100 },
+    ActsMediaLibraryFileAssetTest: { albumsCount: 27, assetsCount: 116 },
     ActsMediaLibraryFileKeyTest: { albumsCount: 2, assetsCount: 2 },
     ActsMediaLibraryFileResultTest: { albumsCount: 3, assetsCount: 112 },
     ActsMediaLibraryGetThumbnailTest: { albumsCount: 3, assetsCount: 3 },

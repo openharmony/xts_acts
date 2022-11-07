@@ -153,6 +153,31 @@ export default function albumTestPromiseTest(abilityContext) {
                 done();
             }
         }
+
+         const albumCommitModify = async function (done, testNum, fetchOp, newName, expectAlbumCount) {
+            try {
+                const albumList = await media.getAlbums(fetchOp);
+                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
+                if (!albumCountPass) return;
+                const album = albumList[0];
+                const albumId = album.albumId;
+                console.info(`${testNum}, album.albumName(old): ${album.albumName}`)
+                const oldAlbumName = album.albumName;
+                album.albumName = newName;
+                await album.commitModify();
+                let currentfetchOp = idFetchOps(testNum, albumId)
+                const newAlbumList = await media.getAlbums(currentfetchOp);
+                console.info(`${testNum}, album.albumName(new): ${newAlbumList[0].albumName}`)
+                expect(newAlbumList[0].albumName).assertEqual(newName);
+                album.albumName = oldAlbumName;
+                await album.commitModify();
+                done();
+            } catch (error) {
+                console.info(`${testNum}, error: ${error}`)
+                expect(false).assertTrue();
+                done();
+            }
+        }
         // ------------------------------ 001 test start -------------------------
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_001_01
@@ -387,22 +412,79 @@ export default function albumTestPromiseTest(abilityContext) {
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_04
          * @tc.name      : commitModify
-         * @tc.desc      : Modify Album name  'i123456...119'
+         * @tc.desc      : Modify Album name 'aaaaa....' (256)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_04', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_04';
-            let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'DynamicPro2', IMAGE_TYPE);
+            let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'DynamicPro3', IMAGE_TYPE);
             let newName = "";
-            for (var i = 0; i < 1200; i++) {
-                newName += i.toString();
+            for (var i = 0; i < 256; i++) {
+                newName += "a";
             }
             let expectAlbumCount = 1;
             await abnormalAlbumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount)
         });
-        // // ------------------------------ 003 test end -------------------------
+
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_05
+         * @tc.name      : commitModify
+         * @tc.desc      : Modify Album name  '中中中中中....' (86 *3)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_05', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_05';
+             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'DynamicPro4', IMAGE_TYPE);
+            let newName = "";
+            for (var i = 0; i < 86; i++) {
+                newName += "中";
+            }
+            let expectAlbumCount = 1;
+            await abnormalAlbumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount)
+        });
+
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_06
+         * @tc.name      : commitModify
+         * @tc.desc      : Modify Album name  'aaaaaaa....' (255)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_06', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_06';
+            let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'DynamicPro5', IMAGE_TYPE);
+            let newName = "";
+            for (var i = 0; i < 255; i++) {
+                newName += "a";
+            }
+            let expectAlbumCount = 1;
+            await albumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount)
+        });
+
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_07
+         * @tc.name      : commitModify
+         * @tc.desc      : Modify Album name  '中中中中中中中....' (85*3)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_07', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_07';
+            let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'DynamicPro6', IMAGE_TYPE);
+            let newName = "";
+            for (var i = 0; i < 85; i++) {
+                newName += "中";
+            }
+            let expectAlbumCount = 1;
+            await albumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount)
+        });
+        // ------------------------------ 003 test end -------------------------
 
         // ------------------------------ 004 test start -------------------------
         /**
