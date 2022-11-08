@@ -52,7 +52,7 @@ export default {
                                 want: data
                             }
                         );
-                    },1000);
+                    },800);
                 }
             }
         )
