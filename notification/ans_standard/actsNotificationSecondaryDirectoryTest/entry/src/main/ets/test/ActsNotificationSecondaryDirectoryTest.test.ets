@@ -544,6 +544,11 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
         expect(typeof flags.vibrationEnabled == 'number').assertTrue()
         expect(flags.soundEnabled).assertEqual(1)
         expect(flags.vibrationEnabled).assertEqual(2)
+        expect(notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT).assertEqual(0)
+        expect(notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT).assertEqual(1)
+        expect(notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE).assertEqual(2)
+        expect(notificationManager.ContentType.NOTIFICATION_CONTENT_CONVERSATION).assertEqual(3)
+        expect(notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE).assertEqual(4)
         done()
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100 END`);
     });
