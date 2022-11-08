@@ -22,6 +22,17 @@ var subscriberInfo_MainAbility2 = {
 const START_ABILITY_TIMEOUT = 4000;
 export default function abilityTest() {
     describe('ActsParticleAbilityStageBTest', function () {
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        afterEach(async (done) => {
+            console.debug('= ACTS_afterEach ====<begin');
+            await sleep(2000);
+            console.debug('= ACTS_afterEach ====<end');
+            done();
+        })
+
         /**
          *@tc.number: ACTS_GetCurrentTopAbility_0200
          *@tc.name: Verify the interface for obtaining the Ability of the foreground
