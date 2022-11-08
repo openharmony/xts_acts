@@ -1074,7 +1074,7 @@ describe('resMgrTest', function () {
     it('closeRawFileDescriptor_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.closeRawFileDescriptor('rawfiletest.xml', (error, value) => {
-                expect(error == null).assertTrue();
+                expect(error !== null).assertTrue();
                 console.log('closeRawFileDescriptor_test_001--' + error);
             })
         })
@@ -1104,7 +1104,7 @@ describe('resMgrTest', function () {
     it('closeRawFd_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.closeRawFd('rawfiletest.xml', (error, value) => {
-                expect(error == null).assertTrue();
+                expect(error !== null).assertTrue();
                 console.log('closeRawFd_test_001--' + error);
             })
         })
