@@ -2911,7 +2911,7 @@ describe('ReminderAgentTest', function () {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: 3
       }
-      reminderAgent.cancelAllReminders().than(() => {})
+      reminderAgent.cancelAllReminders().then(() => {}) 
       reminderAgent.publishReminder(timer).then((reminderId) => { });
 
         reminderAgent.getValidReminders((err, reminders) => {
