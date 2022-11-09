@@ -2263,11 +2263,7 @@ describe('singleKvStoreCallbackTest', function () {
      */
     it('testSingleKvStoreCloseResultSet104', 0, async function (done) {
         console.info('SingleKvStoreCloseResultSetCallbackTest004');
-        let resultSet = null;
-        await kvStore.getResultSet('batch_test_string_key').then((result) => {
-            console.info('SingleKvStoreCloseResultSetCallbackTest004 getResultSet success');
-            resultSet = result;
-        })
+
 
         kvStore.closeResultSet("",(err, data) => {
             if(err != undefined){
