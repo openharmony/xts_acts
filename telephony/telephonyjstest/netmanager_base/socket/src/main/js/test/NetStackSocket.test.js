@@ -19,7 +19,7 @@ export default function Telephony_NETSTACK_SocketTest() {
 
 
 describe('Telephony_NETSTACK_SocketTest', function () {
-
+        let envReady = false;
 
         /**
          * @tc.number Telephony_NetStack_UDPTest0100
@@ -28,6 +28,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest0100', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.bind({
                         address: "127.0.0.1",
@@ -47,6 +52,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest0200', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.bind({
                         address: "127.0.0.1",
@@ -66,6 +76,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest0300', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.send({
                         address: {
@@ -88,6 +103,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest0400', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.send({
                         address: {
@@ -110,6 +130,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest0500', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.close(function (err, data) {
                         expect(err !== undefined).assertTrue()
@@ -125,6 +150,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest0600', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.close().then(function (data) {
                         expect(data !== undefined).assertTrue()
@@ -140,6 +170,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest0700', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.getState(function (err, data) {
                         expect(err !== undefined).assertTrue()
@@ -155,6 +190,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest0800', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.getState().then(function (data) {
                         expect(data !== undefined).assertTure()
@@ -170,6 +210,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest0900', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.setExtraOptions({}, function (err, data) {
                         expect(err !== undefined).assertTure()
@@ -185,6 +230,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest1000', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.setExtraOptions({},).then(function (date) {
                         expect(date !== undefined).assertTrue()
@@ -200,6 +250,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest1100', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.on('message', function () {
                         expect().assertFail()
@@ -227,6 +282,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest1200', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.on('message', function () {
                 })
@@ -262,6 +322,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest0100', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.bind({
                         address: "127.0.0.1",
@@ -281,6 +346,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest0200', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.bind({
                         address: "127.0.0.1",
@@ -300,6 +370,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest0300', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.send({
                         data: "Hello"
@@ -317,6 +392,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest0400', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.send({
                         data: "Hello"
@@ -334,6 +414,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest0500', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.close(function (err, data) {
                         expect(err !== undefined).assertTrue()
@@ -349,6 +434,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest0600', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.close().then(function (data) {
                         expect(data !== undefined).assertTrue()
@@ -364,6 +454,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest0700', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.getState(function (err, data) {
                         expect(err !== undefined).assertTrue()
@@ -379,6 +474,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest0800', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.getState().then(function (data) {
                         expect(data !== undefined).assertTure()
@@ -394,6 +494,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest0900', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.setExtraOptions({}, function (err, data) {
                         expect(err !== undefined).assertTure()
@@ -409,6 +514,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest1000', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.setExtraOptions({},).then(function (date) {
                         expect(date !== undefined).assertTrue()
@@ -424,6 +534,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest1100', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.on('message', function () {
                         expect().assertFail()
@@ -451,6 +566,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest1200', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.on('message', function () {
                 })
@@ -485,6 +605,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test
          */
         it('Telephony_NetStack_TCPTest1300', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.getRemoteAddress(function (err, data) {
                         expect(err !== undefined).assertTure()
@@ -499,6 +624,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc Function test
          */
         it('Telephony_NetStack_TCPTest1400', 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.getRemoteAddress().then(function (data) {
                         expect(data !== undefined).assertTure()
@@ -513,6 +643,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc   Function test
          */
         it("Telephony_NetStack_TCPTest_1500", 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let TCP = netSocket.constructTCPSocketInstance()
                 TCP.connect({
                         address: {
@@ -534,6 +669,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          * @tc.desc   Function test
         */
         it("Telephony_NetStack_TCPTest_1600", 0, function (done) {
+                if (!envReady) {
+                        console.info("The environment was not ready");
+                        done();
+                        return;
+                }
                 let TCP = netSocket.constructTCPSocketInstance()
                 TCP.connect({
                         address: {
