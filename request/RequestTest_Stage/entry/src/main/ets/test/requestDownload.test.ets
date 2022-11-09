@@ -115,6 +115,93 @@ export default function requestDownloadJSUnit() {
         console.info("====>------------------SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 end-----------------------");
         done();
       },5000)
-    });    
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001
+     * @tc.desc      Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 is starting-----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/test.txt`
+      console.debug("downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/test.txt`)
+      let downloadFileConfig = {
+        url: 'http://download.ci.openharmony.cn/version/Daily_Version/',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: true
+      }
+      try {
+        request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data)=>{
+          downloadTask = data;
+          console.info("SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
+          try{
+            expect(true).assertEqual(downloadTask != undefined);
+          }catch(e){
+            console.info("SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 except error: " + e);
+          }
+        });
+      } catch (err) {
+        console.error("SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 error: " + err);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001
+     * @tc.desc      Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/test.txt`
+      console.debug("downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/test.txt`)
+      let downloadFileConfig = {
+        url: 'http://download.ci.openharmony.cn/version/Daily_Version/',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: true
+      }
+      try{
+        request.downloadFile(globalThis.abilityContext, downloadFileConfig).then(data => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 downloadTask: " + downloadTask);
+          try{
+            expect(true).assertEqual(downloadTask != undefined);
+          }catch(e){
+            console.info("SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 except error: " + e);
+          }
+        }).catch(err => {
+          console.error("SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 error: " + err);
+          expect().assertFail();
+        })
+      }catch(err){
+        console.error("SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 catch error: " + err);
+      }
+      console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 end-----------------------");
+      done();
+    });
+
   });
 }

@@ -268,5 +268,66 @@ export default function requestUploadJSUnit() {
         done();
       }, 10000)
     });
+
+    /**
+     * @tc.number    SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001
+     * @tc.desc      Starts a upload task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 is starting-----------------------");
+      try {
+        request.uploadFile(globalThis.abilityContext, uploadConfig, (err, data)=>{
+          uploadTask = data;
+          console.info("SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 uploadFile: " + uploadTask);
+          try{
+            expect(true).assertEqual(uploadTask != undefined);
+          }catch(e){
+            console.info("SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 except error: " + e);
+          }
+        });
+      } catch (err) {
+        console.error("SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 error: " + err);
+        expect().assertFail();
+      };
+      setTimeout(()=>{
+        console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 end-----------------------");
+        done();
+      }, 10000);
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001
+     * @tc.desc      Starts a upload task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
+      try{
+        request.uploadFile(globalThis.abilityContext, uploadConfig).then(data => {
+          uploadTask = data;
+          console.info("SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 uploadFile: " + uploadTask);
+          try{
+            expect(true).assertEqual(uploadTask != undefined);
+          }catch(e){
+            console.info("SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 except error: " + e);
+          }
+        }).catch(err => {
+          console.error("SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 error: " + err);
+          expect().assertFail();
+        })
+      }catch(err){
+        console.error("SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 catch error: " + err);
+      }
+      setTimeout(()=>{
+        console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 end-----------------------");
+        done();
+      }, 10000);
+    });
+
   })
 }
