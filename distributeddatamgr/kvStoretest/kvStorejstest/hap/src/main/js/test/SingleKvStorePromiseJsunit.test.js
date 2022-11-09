@@ -2470,12 +2470,12 @@ describe('singleKvStorePromiseTest', function () {
      */
     it('testSingleKvStoreCloseResultSet004', 0, async function (done) {
         console.info('testSingleKvStoreCloseResultSet004');
-        try {
-            console.info('testSingleKvStoreCloseResultSet004 success');
-        }catch(e) {
-            console.info('testSingleKvStoreCloseResultSet004 e ' + e);
+        await kvStore.closeResultSet("").then((data) => {
+            console.info("testSingleKvStoreCloseResultSet004 close resultSet success")
             expect(null).assertFail();
-        }
+        }).catch((err) => {
+            console.info(`testSingleKvStoreCloseResultSet004 close resultSet error, error is ${err}`)
+        })
         done();
     })
 

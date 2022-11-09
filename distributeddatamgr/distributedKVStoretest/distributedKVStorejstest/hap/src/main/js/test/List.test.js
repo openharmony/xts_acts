@@ -13,30 +13,30 @@
 * limitations under the License.
 */
 import SingleKvStorePromiseTest from './SingleKvStoreKVPromiseJsTest.js'
-// import deviceKvStoreCallbackTest from './DeviceKvStoreKVCallbackJsTest.js'
-// import deviceKvStorePromiseTest from './DeviceKvStoreKVPromiseJsTest.js'
-// import kvManagerCallbackTest from './KvManagerKVCallbackJsTest.js'
-// import KVManagerPromiseTest from './KvManagerKVPromiseJsTest.js'
-// import KvStoreResultSetTest from './KvStoreResultSetKVJsTest.js'
+import deviceKvStoreCallbackTest from './DeviceKvStoreKVCallbackJsTest.js'
+import deviceKvStorePromiseTest from './DeviceKvStoreKVPromiseJsTest.js'
+import kvManagerCallbackTest from './KvManagerKVCallbackJsTest.js'
+import KVManagerPromiseTest from './KvManagerKVPromiseJsTest.js'
+import KvStoreResultSetTest from './KvStoreResultSetKVJsTest.js'
 import queryTest from './QueryKVJsTest.js'
 import SingleKvStoreCallbackTest from './SingleKvStoreKVCallbackJsTest.js'
-// import FieldNodeTest from './FieldNodeJsTest.js'
-// import kvStoreBackupCallbackJsunittest from './KvStoreBackupCallbackJsTest.js'
-// import kvStoreBackupPromiseJsunittest from './KvStoreBackupPromiseJsTest.js'
-// import schemaTest from './SchemaJsTest.js'
-// import singleKvStoreEnumTest from './SingleKvStoreEnumJsTest.js'
+import FieldNodeTest from './FieldNodeJsTest.js'
+import kvStoreBackupCallbackJsunittest from './KvStoreBackupCallbackJsTest.js'
+import kvStoreBackupPromiseJsunittest from './KvStoreBackupPromiseJsTest.js'
+import schemaTest from './SchemaJsTest.js'
+import singleKvStoreEnumTest from './SingleKvStoreEnumJsTest.js'
 export default function testsuite() {
     SingleKvStorePromiseTest()
-    // deviceKvStoreCallbackTest()
-    // deviceKvStorePromiseTest()
-    // kvManagerCallbackTest()
-    // KVManagerPromiseTest()
-    // KvStoreResultSetTest()
+    deviceKvStoreCallbackTest()
+    deviceKvStorePromiseTest()
+    kvManagerCallbackTest()
+    KVManagerPromiseTest()
+    KvStoreResultSetTest()
     queryTest()
     SingleKvStoreCallbackTest()
-    // FieldNodeTest()
-    // kvStoreBackupCallbackJsunittest()
-    // kvStoreBackupPromiseJsunittest()
-    // schemaTest()
-    // singleKvStoreEnumTest()
+    FieldNodeTest()
+    kvStoreBackupCallbackJsunittest()
+    kvStoreBackupPromiseJsunittest()
+    schemaTest()
+    singleKvStoreEnumTest()
 }

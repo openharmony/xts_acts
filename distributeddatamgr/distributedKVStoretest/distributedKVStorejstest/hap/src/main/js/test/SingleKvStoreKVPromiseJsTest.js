@@ -2903,16 +2903,7 @@ describe('SingleKvStorePromiseTest', function () {
      * @tc.name Test Js Api SingleKvStoreCloseResultSet testcase 004
      */
     it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400', 0, async function (done) {
-        let resultSet = undefined;
         let errorInfo = undefined;
-        await kvStore.getResultSet('batch_test_string_key').then((result) => {
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 getResultSet success');
-            resultSet = result;
-        }).catch((err) => {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
-            expect(null).assertFail();
-        });
-        
         try {
             kvStore.closeResultSet("")
             console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 success');
