@@ -772,7 +772,7 @@ export default function StartAbilityForResult() {
 
         /*
          * @tc.number: FreeInstall_FA_StartAbilityForResult_1900
-         * @tc.name: startAbilityForResult: yuanzihua already installed,input wrong flags('11'),start successfully.
+         * @tc.name: startAbilityForResult: yuanzihua already installed,input wrong flags('11'),start failed.
          * @tc.desc: Function test
          * @tc.level   0
          */
@@ -800,14 +800,14 @@ export default function StartAbilityForResult() {
             }
             await featureAbility.startAbilityForResult(startAbilityParameter)
                 .then((data) => {
-                    details = data;
                     console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
                 }).catch((error) => {
+                    details = error;
                     console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
                 })
             await Utils.sleep(2000);
-            console.log(TAG + " resultCode: " + details.resultCode);
-            expect(details.resultCode).assertEqual(1);
+            console.log(TAG + " errorCode: " + details.code);
+            expect(details.code).assertEqual(1);
             done();
         });
 
