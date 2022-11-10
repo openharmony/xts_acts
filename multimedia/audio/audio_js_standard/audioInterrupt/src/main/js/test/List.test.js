@@ -12,8 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-require('./AudioFramework.test.js')
-require('./AudioManagerApi9.test.js')
+require('./AudioInterrupt.test.js')
 
 

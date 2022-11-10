@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,8 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import {Core, ExpectExtend} from 'deccjsunit/index'
 
-require('./AudioFramework.test.js')
-require('./AudioManagerApi9.test.js')
-
-
+export default {
+    onCreate() {
+        console.info('AceApplication onCreate');
+        const core = Core.getInstance()
+        const expectExtend = new ExpectExtend({
+            'id': 'extend'
+        })
+        core.addService('expect', expectExtend)
+        core.init()
+        const configService = core.getDefaultService('config')
+        this.timeout = 60000
+        configService.setConfig(this)
+        require('../test/List.test')
+        core.execute()
+    },
+    onDestroy() {
+        console.info('AceApplication onDestroy');
+    }
+};
