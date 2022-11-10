@@ -29,6 +29,7 @@
      const TIMEOUT = 100;
      const TIMEOUT_1 = 1000;
      let VALUE = 0;
+     let envReady = false;
  
      function sleep(timeout) {
          return new Promise((resolve, reject) => {
@@ -2258,6 +2259,11 @@
       * @tc.desc Function test
       */
      it('Telephony_NetworkManager_unregister_Async_0100', 0, async function (done) {
+         if (!envReady) {
+         console.info("The environment was not ready");
+         done();
+         return;
+         }
          let caseName = 'Telephony_NetworkManager_unregister_Async_0100';
          let netSpecifier = {
              netCapabilities: {
@@ -2353,6 +2359,11 @@
       * @tc.desc Function test
       */
      it('Telephony_NetworkManager_unregister_Async_0200', 0, async function (done) {
+         if (!envReady) {
+         console.info("The environment was not ready");
+         done();
+         return;
+         }
          let caseName = 'Telephony_NetworkManager_unregister_Async_0200';
          let netConn = connection.createNetConnection();
          netConn.on('netAvailable', (error, value) => {
@@ -2439,6 +2450,11 @@
       * @tc.desc Function test
       */
      it('Telephony_NetworkManager_unregister_Async_0300', 0, async function (done) {
+         if (!envReady) {
+         console.info("The environment was not ready");
+         done();
+         return;
+         }
          let caseName = 'Telephony_NetworkManager_unregister_Async_0300';
          let netConn = connection.createNetConnection();
          netConn.on('netAvailable', (error, value) => {

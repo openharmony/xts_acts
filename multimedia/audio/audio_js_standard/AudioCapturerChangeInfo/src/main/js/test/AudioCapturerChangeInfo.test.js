@@ -34,6 +34,7 @@ describe('audioCapturerChange', function () {
         await sleep(100);
         console.info(`AudioFrameworkTest: beforeAll: END`);
         await sleep(100);
+
         audioStreamManager = audioManager.getStreamManager();
         audioStreamManagerCB = audioManager.getStreamManager();
         await sleep(1000);

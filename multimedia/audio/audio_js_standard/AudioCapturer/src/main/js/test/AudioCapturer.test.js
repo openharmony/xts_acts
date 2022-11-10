@@ -357,7 +357,7 @@ describe('audioCapturer', function () {
         steps.shift();
         let markReachParam = steps[0];
         steps.shift();
-        try {
+        try{
             audioCap.on('markReach', markReachParam, (position) => {
                 console.log(`${Tag} position: ${JSON.stringify(position)}`);
                 console.log(`${Tag} markReachParam: ${JSON.stringify(markReachParam)}`);
@@ -391,7 +391,7 @@ describe('audioCapturer', function () {
         steps.shift();
         let periodReachParam = steps[0];
         steps.shift();
-        try {
+        try{
             audioCap.on('periodReach', periodReachParam, (position) => {
                 console.log(`${Tag} position: ${JSON.stringify(position)}`);
                 console.log(`${Tag} periodReachParam: ${JSON.stringify(periodReachParam)}`);

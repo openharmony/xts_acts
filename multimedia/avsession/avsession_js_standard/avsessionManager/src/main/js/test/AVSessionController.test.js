@@ -1680,5 +1680,59 @@ export default function Controller() {
             await sleep(500);
             done();
         })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0100
+         * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
+         * @tc.desc      : Testing get output device
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0100', 0, async function (done) {
+            controller.on('outputDeviceChange', (callback) => {
+                if (!callback.isRemote) {
+                    console.info('outputDeviceChange callback registration successful');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('outputDeviceChange callback registration fail');
+                    expect(false).assertTrue();
+                }
+            });
+
+            controller.off('outputDeviceChange');
+            controller.getOutputDevice((err, value) => {
+                if (err) {
+                    console.info(`Get device information BusinessError: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else if (!value.isRemote) {
+                    console.info('Get device information successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('Get device information failed');
+                    expect(false).assertTrue();
+                }
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100
+         * @tc.name      : GETOUTPUTDEVICE_PROMISE_0100
+         * @tc.desc      : Testing get output device
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100', 0, async function (done) {
+           await controller.getOutputDevice().then((value) => {
+               console.info('Get device information successfully');
+               expect(true).assertTrue();
+           }).catch((err) => {
+               console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
+               expect(false).assertTrue();
+           })
+           done();
+        })
     })
 }

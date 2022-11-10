@@ -24,6 +24,11 @@ export default function AVSessionManager() {
         let session;
         let controller;
         let id = '9527';
+        let sessionId;
+        let pid = 100;
+        let uid = 200;
+        let audioDevices;
+        let sessionToken;
         let keyItem = {code:10, pressedTime:123456789, deviceId:0};
         let event = {action:2, key:keyItem, keys:[keyItem]};
         let context = featureAbility.getContext();
@@ -1137,6 +1142,138 @@ export default function AVSessionManager() {
             }).catch((err) => {
                 console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_PROMISE_0100
+         * @tc.name      : CAST_AUDIO_PROMISE_0100
+         * @tc.desc      : Testing cast audio
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+         it('SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_PROMISE_0100', 0, async function (done) {
+             await avSession.createAVSession(context, tag, type).then((data) => {
+                 session = data;
+                 sessionId = session.sessionId;
+                 sessionToken = { sessionId, pid, uid };
+             }).catch((err) => {
+                 console.info(`Session create BusinessError: ${err.code}, message: ${err.message}`);
+             });
+
+             await avSession.castAudio(sessionToken, audioDevices).then(() => {
+                 console.info('Cast audio to remote');
+             }).catch((err) => {
+                 console.info(`Cast audio to remote BusinessError: ${err.code}, message: ${err.message}`);
+                 expect(true).assertTrue();
+             });
+
+             await session.destroy().then(() => {
+                 console.info('TestLog: Session Destroy SUCCESS');
+             }).catch((err) => {
+                 console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
+             });
+             done();
+         })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_PROMISE_0200
+         * @tc.name      : CAST_AUDIO_PROMISE_0200
+         * @tc.desc      : Testing cast audio with all session
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_PROMISE_0200', 0, async function (done) {
+            await avSession.createAVSession(context, tag, type).then((data) => {
+                session = data;
+                sessionId = session.sessionId;
+                sessionToken = { sessionId, pid, uid };
+            }).catch((err) => {
+                console.info(`Session create BusinessError: ${err.code}, message: ${err.message}`);
+            });
+
+            await avSession.castAudio('all', audioDevices).then(() => {
+                console.info('Cast audio to remote');
+            }).catch((err) => {
+                console.info(`Cast audio to remote BusinessError: ${err.code}, message: ${err.message}`);
+                expect(true).assertTrue();
+            });
+
+            await session.destroy().then(() => {
+                console.info('TestLog: Session Destroy SUCCESS');
+            }).catch((err) => {
+                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_CALLBACK_0100
+         * @tc.name      : CAST_AUDIO_CALLBACK_0100
+         * @tc.desc      : Testing cast audio
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_CALLBACK_0100', 0, async function (done) {
+            await avSession.createAVSession(context, tag, type).then((data) => {
+                session = data;
+                sessionId = session.sessionId;
+                sessionToken = { sessionId, pid, uid };
+            }).catch((err) => {
+                console.info(`Session create BusinessError: ${err.code}, message: ${err.message}`);
+            });
+
+            avSession.castAudio(sessionToken, audioDevices, (err) => {
+                if (err) {
+                    console.info(`Cast audio to remote BusinessError: ${err.code}, message: ${err.message}`);
+                    expect(true).assertTrue();
+                } else {
+                    console.info('Cast audio to remote device');
+                }
+            });
+
+            await session.destroy().then(() => {
+                console.info('TestLog: Session Destroy SUCCESS');
+            }).catch((err) => {
+                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_CALLBACK_0200
+         * @tc.name      : CAST_AUDIO_CALLBACK_0200
+         * @tc.desc      : Testing cast audio
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_CALLBACK_0200', 0, async function (done) {
+            await avSession.createAVSession(context, tag, type).then((data) => {
+                session = data;
+                sessionId = session.sessionId;
+                sessionToken = { sessionId, pid, uid };
+            }).catch((err) => {
+                console.info(`Session create BusinessError: ${err.code}, message: ${err.message}`);
+            });
+
+            avSession.castAudio('all', audioDevices, (err) => {
+                if (err) {
+                    console.info(`Cast audio to remote BusinessError: ${err.code}, message: ${err.message}`);
+                    expect(true).assertTrue();
+                } else {
+                    console.info('Cast audio to remote device');
+                }
+            });
+
+            await session.destroy().then(() => {
+                console.info('TestLog: Session Destroy SUCCESS');
+            }).catch((err) => {
+                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
             });
             done();
         })
