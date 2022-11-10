@@ -69,7 +69,7 @@ export default function fileTestCallbackTest(abilityContext) {
                 media.createAsset(type, displayName1, path, async (err, creatAsset1) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -106,7 +106,7 @@ export default function fileTestCallbackTest(abilityContext) {
                 media.createAsset(type, displayName, path, async (err, creatAsset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -138,7 +138,7 @@ export default function fileTestCallbackTest(abilityContext) {
                 asset.commitModify(async (err) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
