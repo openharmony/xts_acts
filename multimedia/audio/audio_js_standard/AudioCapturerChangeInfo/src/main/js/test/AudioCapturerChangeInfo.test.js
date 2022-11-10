@@ -35,22 +35,9 @@ describe('audioCapturerChange', function () {
         await sleep(100);
         console.info(`AudioFrameworkTest: beforeAll: END`);
         await sleep(100);
-        await audioManager.getStreamManager().then((data) => {
-            audioStreamManager = data;
-            console.info(`${Tag}:  Get AudioStream Manager : Success `);
-        }).catch((err) => {
-            console.info(`${Tag}:  Get AudioStream Manager : ERROR :${err.message}`);
-        });
 
-        audioManager.getStreamManager((err, data) => {
-            if (err) {
-                console.error(`${Tag}:  Get AudioStream Manager : ERROR :${err.message}`);
-            }
-            else {
-                audioStreamManagerCB = data;
-                console.info(`${Tag}:  Get AudioStream Manager : Success `);
-            }
-        });
+        audioStreamManager = audioManager.getStreamManager();
+        audioStreamManagerCB = audioManager.getStreamManager();
         await sleep(1000);
         console.info(`${Tag}:  beforeAll: END`);
     })
