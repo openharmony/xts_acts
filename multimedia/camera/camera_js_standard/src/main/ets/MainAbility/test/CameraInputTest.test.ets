@@ -163,7 +163,7 @@ export default function CameraInputTest(surfaceId) {
             }
         })
 
-        await sleep(10);
+        await sleep(30);
 
         console.info('Exit beginCameraSessionConfig');
 
