@@ -38,10 +38,11 @@ export default function inputMethodEngineJSUnit() {
           let result = await router.push(options);
           await Utils.sleep(1000);
         }
+        done();
       } catch (err) {
         console.error("push input page error: " + err);
+        done();
       }
-      done();
     });
 
     afterEach(async function () {
