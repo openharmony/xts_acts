@@ -2262,13 +2262,16 @@ describe('singleKvStoreCallbackTest', function () {
      * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 104
      */
     it('testSingleKvStoreCloseResultSet104', 0, async function (done) {
-        console.info('testSingleKvStoreCloseResultSet104');
-        try {
-            console.info('testSingleKvStoreCloseResultSet104 success');
-        }catch(e) {
-            console.info('testSingleKvStoreCloseResultSet104 e ' + e);
-            expect(null).assertFail();
-        }
+        console.info('SingleKvStoreCloseResultSetCallbackTest004');
+        kvStore.closeResultSet("",(err, data) => {
+            if(err != undefined){
+                console.info(`SingleKvStoreCloseResultSetCallbackTest004 close result error, error is ${err}`)
+            }else{
+                expect(null).assertFail();
+            }
+            done();
+        })
+        await sleep(1000)
         done();
     })
 
