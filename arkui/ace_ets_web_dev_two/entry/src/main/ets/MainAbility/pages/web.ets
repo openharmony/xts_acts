@@ -71,32 +71,6 @@ struct Index {
     }
     build(){
         Column(){
-            Web({src:$rawfile('index.html'),controller:this.controller})
-            .databaseAccess(true)
-            .zoomAccess(this.zoomAccessValue)
-            .textZoomRatio(this.textRatio)
-            .onConsole((event) => {
-                let level = event.message.getMessageLevel()
-                let msg = event.message.getMessage()
-                let lineNumber = event.message.getLineNumber().toString()
-                let sourceId = event.message.getSourceId()
-                console.log("lineNumber:" + lineNumber)
-                setTimeout(()=>{ 
-                    Utils.emitEvent(lineNumber,420)
-                },3000)
-                setTimeout(()=>{ 
-                    Utils.emitEvent(sourceId,422)
-                },3000)
-                return false
-            })
-            .onSearchResultReceive(ret=>{
-                var searchResult = ret.activeMatchOrdinal.toString() + 
-                ret.numberOfMatches.toString()
-                console.log("searchResult" + searchResult)
-                setTimeout(()=>{
-                    Utils.emitEvent(searchResult,426)
-                },3000)
-            })
             Row(){
                 Button("web click").key('webcomponent').onClick(async ()=>{
                     console.info("key==>"+this.str)
@@ -159,7 +133,7 @@ struct Index {
                         }
                         case "emitSaveCookieAsync":{ 
                             web_webview.WebCookieManager.saveCookieAsync(function(result){
-                                Utils.emitEvent(result,410)   
+                                Utils.emitEvent("result",410)   
                             })                                                                                 
                             break;
                         }
@@ -228,7 +202,7 @@ struct Index {
                             setTimeout(()=>{
                                 let result = this.username_password[0];
                                 Utils.emitEvent(result,444)
-                            },3000)                                                                           
+                            },5000)                                                                           
                             break;
                         }
                         case "emitDeleteHttpAuthCredentials":{ 
@@ -251,6 +225,32 @@ struct Index {
                     }
                 })
             }
+            Web({src:$rawfile('index.html'),controller:this.controller})
+            .databaseAccess(true)
+            .zoomAccess(this.zoomAccessValue)
+            .textZoomRatio(this.textRatio)
+            .onConsole((event) => {
+                let level = event.message.getMessageLevel()
+                let msg = event.message.getMessage()
+                let lineNumber = event.message.getLineNumber().toString()
+                let sourceId = event.message.getSourceId()
+                console.log("lineNumber:" + lineNumber)
+                setTimeout(()=>{ 
+                    Utils.emitEvent(lineNumber,420)
+                },3000)
+                setTimeout(()=>{ 
+                    Utils.emitEvent(sourceId,422)
+                },3000)
+                return false
+            })
+            .onSearchResultReceive(ret=>{
+                var searchResult = ret.activeMatchOrdinal.toString() + 
+                ret.numberOfMatches.toString()
+                console.log("searchResult" + searchResult)
+                setTimeout(()=>{
+                    Utils.emitEvent(searchResult,426)
+                },3000)
+            })
         }
     }
 }
