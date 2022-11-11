@@ -24,8 +24,8 @@ export default function inputMethodJSUnit() {
       inputMethodSetting.listInputMethod((arr) => {
         console.info("====>appInfoTest_input_2 listInputMethod result---" + JSON.stringify(arr));
         expect(1==1).assertTrue();
+        done();
       });
-      done();
     });
 
     it('inputmethoh_test_002', 0, async function (done) {
@@ -41,32 +41,50 @@ export default function inputMethodJSUnit() {
           console.info("====>inputmethoh_test_002 listInputMethod is null");
           expect().assertFail()
         }
+        done();
       }).catch(err => {
         console.info("====>inputmethoh_test_002 listInputMethod is err: " +  JSON.stringify(err));
+        done();
       });
-      done();
     });
 
     it('inputmethoh_test_003', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_003 result:" + JSON.stringify(inputMethodSetting));
-      inputMethodSetting.displayOptionalInputMethod(() => {
-        console.info("====>inputmethoh_test_003 displayOptionalInputMethod---");
-      });
-      done();
+      setTimeout(()=>{
+        try{
+          inputMethodSetting.displayOptionalInputMethod((err) => {
+            if(err){
+              console.info("====>inputmethoh_test_003 displayOptionalInputMethod err:" + JSON.stringify(err));
+              expect().assertFail();
+              done();
+            }
+            expect(true).assertTrue();
+            console.info("====>inputmethoh_test_003 displayOptionalInputMethod---");
+            done();
+          });
+        }catch(err){
+          console.info("====>inputmethoh_test_004 displayOptionalInputMethod throw_err: " + JSON.stringify(err));
+          expect().assertFail()
+          done();
+        }        
+      },100)      
     });
 
     it('inputmethoh_test_004', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("====>inputmethoh_test_004 result:" + JSON.stringify(inputMethodSetting));
-      inputMethodSetting.displayOptionalInputMethod().then(() => {
-        console.info("====>inputmethoh_test_004 displayOptionalInputMethod is called");
-        expect(true).assertTrue()
-      }).catch(err => {
-        console.info("====>inputmethoh_test_004 displayOptionalInputMethod is err: " + JSON.stringify(err));
-        expect().assertFail()
-      });
-      done();
+      setTimeout(()=>{
+        inputMethodSetting.displayOptionalInputMethod().then(() => {
+          console.info("====>inputmethoh_test_004 displayOptionalInputMethod is called");
+          expect(true).assertTrue()
+          done();
+        }).catch(err => {
+          console.info("====>inputmethoh_test_004 displayOptionalInputMethod is err: " + JSON.stringify(err));
+          expect().assertFail()
+          done();
+        });
+      },100)      
     });
 
     it('inputmethoh_test_005', 0, async function (done) {
@@ -74,8 +92,8 @@ export default function inputMethodJSUnit() {
       console.info("====>inputmethoh_test_005 result:" + JSON.stringify(inputMethodCtrl));
       inputMethodCtrl.stopInput((res) => {
         console.info("====>inputmethoh_test_005 stopInput result----" + res);
+        done();
       });
-      done();
     });
 
     it('inputmethoh_test_006', 0, async function (done) {
@@ -123,12 +141,14 @@ export default function inputMethodJSUnit() {
       inputMethod.switchInputMethod(inputMethodProperty).then(data => {
         console.info("====>inputmethod_test_switchInputMethod_001 data:" + data)
         expect(data == true).assertTrue();
+	      console.info("====>************* inputmethod_test_switchInputMethod_001 Test end*************");
+        done();
       }).catch( err=> {
         console.info("====>inputmethod_test_switchInputMethod_001 err:" + err)
         expect().assertFail();
+        done();
       })
-      console.info("====>************* inputmethod_test_switchInputMethod_001 Test end*************");
-      done();
+      
     });
 
     /*
@@ -150,12 +170,14 @@ export default function inputMethodJSUnit() {
         if(err){
           console.info("====>inputmethod_test_switchInputMethod_002 error:" + err);
           expect().assertFail();
+	        done();
         }
         console.info("====>inputmethod_test_switchInputMethod_002 data:" + data)
+	      console.info("====>************* inputmethod_test_switchInputMethod_002 Test end*************");
         expect(data == true).assertTrue();
+        done();
       });
-      console.info("====>************* inputmethod_test_switchInputMethod_002 Test end*************");
-      done();
+      
     });
 
     /*
@@ -268,11 +290,13 @@ export default function inputMethodJSUnit() {
         if (err) {
           console.error("inputmethod_test_getInputMethods_001 failed because: " + JSON.stringify(err));
           expect().assertFail();
+	        done();
         };
         console.info("====>inputmethod_test_getInputMethods_001 listInputMethod result---" + JSON.stringify(arr));
         expect(arr != null).assertTrue();
+	      console.info("====>************* inputmethod_test_getInputMethods_001 Test end*************");
+        done();
       });
-      done();
     });
 
     /*
@@ -292,10 +316,8 @@ export default function inputMethodJSUnit() {
         };
         console.info("====>inputmethod_test_getInputMethods_002 listInputMethod result---" + JSON.stringify(arr));
         expect(arr != null).assertTrue();
+        done();
       });
-      done();
     });
-
-
   });
 };
