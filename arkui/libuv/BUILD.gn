@@ -24,10 +24,11 @@ ohos_static_library("libuvTestStatic") {
   sources = [
     "//third_party/libuv/test/blackhole-server.c",
     "//third_party/libuv/test/echo-server.c",
+    "//third_party/libuv/test/runner-unix.c",
     "//third_party/libuv/test/runner.c",
     "//third_party/libuv/test/test-active.c",
-    "//third_party/libuv/test/test-async.c",
     "//third_party/libuv/test/test-async-null-cb.c",
+    "//third_party/libuv/test/test-async.c",
     "//third_party/libuv/test/test-barrier.c",
     "//third_party/libuv/test/test-callback-order.c",
     "//third_party/libuv/test/test-callback-stack.c",
@@ -49,58 +50,48 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/test/test-fork.c",
     "//third_party/libuv/test/test-fs-copyfile.c",
     "//third_party/libuv/test/test-fs-event.c",
-    "//third_party/libuv/test/test-fs-poll.c",
-    "//third_party/libuv/test/test-fs.c",
-    "//third_party/libuv/test/test-fs-readdir.c",
     "//third_party/libuv/test/test-fs-fd-hash.c",
     "//third_party/libuv/test/test-fs-open-flags.c",
-    "//third_party/libuv/test/test-getters-setters.c",
+    "//third_party/libuv/test/test-fs-poll.c",
+    "//third_party/libuv/test/test-fs-readdir.c",
+    "//third_party/libuv/test/test-fs.c",
     "//third_party/libuv/test/test-get-currentexe.c",
+    "//third_party/libuv/test/test-get-loadavg.c",
     "//third_party/libuv/test/test-get-memory.c",
     "//third_party/libuv/test/test-get-passwd.c",
     "//third_party/libuv/test/test-getaddrinfo.c",
     "//third_party/libuv/test/test-gethostname.c",
     "//third_party/libuv/test/test-getnameinfo.c",
     "//third_party/libuv/test/test-getsockname.c",
+    "//third_party/libuv/test/test-getters-setters.c",
     "//third_party/libuv/test/test-gettimeofday.c",
     "//third_party/libuv/test/test-handle-fileno.c",
     "//third_party/libuv/test/test-homedir.c",
     "//third_party/libuv/test/test-hrtime.c",
     "//third_party/libuv/test/test-idle.c",
     "//third_party/libuv/test/test-idna.c",
+    "//third_party/libuv/test/test-ip-name.c",
     "//third_party/libuv/test/test-ip4-addr.c",
     "//third_party/libuv/test/test-ip6-addr.c",
     "//third_party/libuv/test/test-ipc-heavy-traffic-deadlock-bug.c",
     "//third_party/libuv/test/test-ipc-send-recv.c",
     "//third_party/libuv/test/test-ipc.c",
-    "//third_party/libuv/test/test-loop-handles.c",
     "//third_party/libuv/test/test-loop-alive.c",
     "//third_party/libuv/test/test-loop-close.c",
+    "//third_party/libuv/test/test-loop-configure.c",
+    "//third_party/libuv/test/test-loop-handles.c",
     "//third_party/libuv/test/test-loop-stop.c",
     "//third_party/libuv/test/test-loop-time.c",
-    "//third_party/libuv/test/test-loop-configure.c",
+    "//third_party/libuv/test/test-metrics.c",
     "//third_party/libuv/test/test-multiple-listen.c",
     "//third_party/libuv/test/test-mutexes.c",
-    "//third_party/libuv/test/test-metrics.c",
-    "//third_party/libuv/test/test-udp-mmsg.c",
-    "//third_party/libuv/test/test-udp-sendmmsg-error.c",
-    "//third_party/libuv/test/test-shutdown-simultaneous.c",
-    "//third_party/libuv/test/test-get-loadavg.c",
-    "//third_party/libuv/test/test-poll-multiple-handles.c",
-    "//third_party/libuv/test/test-ip-name.c",
-    "//third_party/libuv/test/test-not-writable-after-shutdown.c",
     "//third_party/libuv/test/test-not-readable-nor-writable-on-read-error.c",
-    "//third_party/libuv/test/test-readable-on-eof.c",
-#    "//third_party/libuv/test/test-metrics-idle-time.c",
-#    "//third_party/libuv/test/test-metrics-idle-time-thread.c",
-#    "//third_party/libuv/test/test-metrics-idle-time-zero.c",
-    "//third_party/libuv/test/test-tcp-read-stop-start.c",
-    "//third_party/libuv/test/test-udp-connect6.c",
-    "//third_party/libuv/test/test-test-macros.c",
+    "//third_party/libuv/test/test-not-writable-after-shutdown.c",
     "//third_party/libuv/test/test-osx-select.c",
     "//third_party/libuv/test/test-pass-always.c",
     "//third_party/libuv/test/test-ping-pong.c",
     "//third_party/libuv/test/test-pipe-bind-error.c",
+    "//third_party/libuv/test/test-pipe-close-stdout-read-stdin.c",
     "//third_party/libuv/test/test-pipe-connect-error.c",
     "//third_party/libuv/test/test-pipe-connect-multiple.c",
     "//third_party/libuv/test/test-pipe-connect-prepare.c",
@@ -108,26 +99,28 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/test/test-pipe-pending-instances.c",
     "//third_party/libuv/test/test-pipe-sendmsg.c",
     "//third_party/libuv/test/test-pipe-server-close.c",
-    "//third_party/libuv/test/test-pipe-close-stdout-read-stdin.c",
-    "//third_party/libuv/test/test-pipe-set-non-blocking.c",
     "//third_party/libuv/test/test-pipe-set-fchmod.c",
+    "//third_party/libuv/test/test-pipe-set-non-blocking.c",
     "//third_party/libuv/test/test-platform-output.c",
-    "//third_party/libuv/test/test-poll.c",
-    "//third_party/libuv/test/test-poll-close.c",
     "//third_party/libuv/test/test-poll-close-doesnt-corrupt-stack.c",
+    "//third_party/libuv/test/test-poll-close.c",
     "//third_party/libuv/test/test-poll-closesocket.c",
+    "//third_party/libuv/test/test-poll-multiple-handles.c",
     "//third_party/libuv/test/test-poll-oob.c",
+    "//third_party/libuv/test/test-poll.c",
     "//third_party/libuv/test/test-process-priority.c",
-    "//third_party/libuv/test/test-process-title.c",
     "//third_party/libuv/test/test-process-title-threadsafe.c",
+    "//third_party/libuv/test/test-process-title.c",
     "//third_party/libuv/test/test-queue-foreach-delete.c",
     "//third_party/libuv/test/test-random.c",
+    "//third_party/libuv/test/test-readable-on-eof.c",
     "//third_party/libuv/test/test-ref.c",
     "//third_party/libuv/test/test-run-nowait.c",
     "//third_party/libuv/test/test-run-once.c",
     "//third_party/libuv/test/test-semaphore.c",
     "//third_party/libuv/test/test-shutdown-close.c",
     "//third_party/libuv/test/test-shutdown-eof.c",
+    "//third_party/libuv/test/test-shutdown-simultaneous.c",
     "//third_party/libuv/test/test-shutdown-twice.c",
     "//third_party/libuv/test/test-signal-multiple-loops.c",
     "//third_party/libuv/test/test-signal-pending-on-close.c",
@@ -139,28 +132,34 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/test/test-tcp-alloc-cb-fail.c",
     "//third_party/libuv/test/test-tcp-bind-error.c",
     "//third_party/libuv/test/test-tcp-bind6-error.c",
-    "//third_party/libuv/test/test-tcp-close-accept.c", 
+    "//third_party/libuv/test/test-tcp-close-accept.c",
+    "//third_party/libuv/test/test-tcp-close-reset.c",
     "//third_party/libuv/test/test-tcp-close-while-connecting.c",
     "//third_party/libuv/test/test-tcp-close.c",
-    "//third_party/libuv/test/test-tcp-close-reset.c",
-    "//third_party/libuv/test/test-tcp-create-socket-early.c",
     "//third_party/libuv/test/test-tcp-connect-error-after-write.c",
     "//third_party/libuv/test/test-tcp-connect-error.c",
     "//third_party/libuv/test/test-tcp-connect-timeout.c",
     "//third_party/libuv/test/test-tcp-connect6-error.c",
+    "//third_party/libuv/test/test-tcp-create-socket-early.c",
     "//third_party/libuv/test/test-tcp-flags.c",
     "//third_party/libuv/test/test-tcp-oob.c",
     "//third_party/libuv/test/test-tcp-open.c",
+
+    #    "//third_party/libuv/test/test-metrics-idle-time.c",
+    #    "//third_party/libuv/test/test-metrics-idle-time-thread.c",
+    #    "//third_party/libuv/test/test-metrics-idle-time-zero.c",
+    "//third_party/libuv/test/test-tcp-read-stop-start.c",
     "//third_party/libuv/test/test-tcp-read-stop.c",
     "//third_party/libuv/test/test-tcp-shutdown-after-write.c",
-    "//third_party/libuv/test/test-tcp-unexpected-read.c",
-    "//third_party/libuv/test/test-tcp-write-to-half-open-connection.c",
-    "//third_party/libuv/test/test-tcp-write-after-connect.c",
-    "//third_party/libuv/test/test-tcp-writealot.c",
-    "//third_party/libuv/test/test-tcp-write-fail.c",
-    "//third_party/libuv/test/test-tcp-try-write.c",
     "//third_party/libuv/test/test-tcp-try-write-error.c",
+    "//third_party/libuv/test/test-tcp-try-write.c",
+    "//third_party/libuv/test/test-tcp-unexpected-read.c",
+    "//third_party/libuv/test/test-tcp-write-after-connect.c",
+    "//third_party/libuv/test/test-tcp-write-fail.c",
     "//third_party/libuv/test/test-tcp-write-queue-order.c",
+    "//third_party/libuv/test/test-tcp-write-to-half-open-connection.c",
+    "//third_party/libuv/test/test-tcp-writealot.c",
+    "//third_party/libuv/test/test-test-macros.c",
     "//third_party/libuv/test/test-thread-equal.c",
     "//third_party/libuv/test/test-thread.c",
     "//third_party/libuv/test/test-threadpool-cancel.c",
@@ -175,9 +174,11 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/test/test-udp-alloc-cb-fail.c",
     "//third_party/libuv/test/test-udp-bind.c",
     "//third_party/libuv/test/test-udp-connect.c",
+    "//third_party/libuv/test/test-udp-connect6.c",
     "//third_party/libuv/test/test-udp-create-socket-early.c",
     "//third_party/libuv/test/test-udp-dgram-too-big.c",
     "//third_party/libuv/test/test-udp-ipv6.c",
+    "//third_party/libuv/test/test-udp-mmsg.c",
     "//third_party/libuv/test/test-udp-multicast-interface.c",
     "//third_party/libuv/test/test-udp-multicast-interface6.c",
     "//third_party/libuv/test/test-udp-multicast-join.c",
@@ -189,15 +190,13 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/test/test-udp-send-hang-loop.c",
     "//third_party/libuv/test/test-udp-send-immediate.c",
     "//third_party/libuv/test/test-udp-send-unreachable.c",
+    "//third_party/libuv/test/test-udp-sendmmsg-error.c",
     "//third_party/libuv/test/test-udp-try-send.c",
     "//third_party/libuv/test/test-uname.c",
     "//third_party/libuv/test/test-walk-handles.c",
     "//third_party/libuv/test/test-watcher-cross-stop.c",
-    "//third_party/libuv/test/runner-unix.c",
   ]
-  deps = [
-    "//third_party/libuv:uv_static"
-  ]
+  deps = [ "//third_party/libuv:uv_static" ]
 }
 
 ohos_executable("libuvRunTest") {
@@ -206,38 +205,29 @@ ohos_executable("libuvRunTest") {
     "//third_party/libuv/src",
     "//third_party/libuv/src/unix",
   ]
-  sources = [
-    "//third_party/libuv/test/run-tests.c"
-  ]
-  deps = [
-    ":libuvTestStatic"
-  ]
+  sources = [ "//third_party/libuv/test/run-tests.c" ]
+  deps = [ ":libuvTestStatic" ]
 }
 
 ohos_moduletest_suite("ActsLibuvTestSuite") {
-  sources = [
-    "src/ActsLibuvTestSuite.cpp",
-  ]
+  sources = [ "src/ActsLibuvTestSuite.cpp" ]
 
-  include_dirs = [ 
-    "//test/xts/acts/arkui/libuv/src", 
+  include_dirs = [
+    "//test/xts/acts/arkui/libuv/src",
     "//third_party/libuv/test",
     "//third_party/libuv/include",
     "//third_party/libuv/src",
     "//third_party/libuv/src/unix",
   ]
-  deps = [
-    ":libuvTestStatic"
-  ]
+  deps = [ ":libuvTestStatic" ]
   cflags = [ "-Wno-error" ]
 }
-
 
 action("cpLibuv") {
   testonly = true
   script = "cplibuv.sh"
   outputs = [ "${target_out_dir}/cpvkgl.log" ]
-  deps = [ 
+  deps = [
     ":ActsLibuvTestSuite",
     ":libuvRunTest",
   ]
@@ -248,8 +238,8 @@ group("libuvTest") {
   if (is_standard_system) {
     deps = [
       ":ActsLibuvTestSuite",
-      ":libuvRunTest",
       ":cpLibuv",
+      ":libuvRunTest",
     ]
   }
 }
