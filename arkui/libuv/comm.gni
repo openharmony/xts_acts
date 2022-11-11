@@ -13,16 +13,9 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-common_include = [
-  "//test/xts/acts/graphic/libuv/src",
-]
+common_include = [ "//test/xts/acts/graphic/libuv/src" ]
 
-common_depends = [
-  "//third_party/libuv:uv_static",
-]
+common_depends = [ "//third_party/libuv:uv_static" ]
 
-common_src = [
-  "../../ActsApp.cpp",
-]
-
+common_src = [ "../../ActsApp.cpp" ]
 #import("//third_party/VK-GL-CTS/vk_gl_cts.gni")
