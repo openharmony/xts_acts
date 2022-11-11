@@ -1188,7 +1188,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             }
             let loopCount1 = systemWindowTypeArr;
             console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount1))
-            for (let i = 0; i < loopCount1.length; i++) {
+            getData(0, loopCount1.length)
+            function getData(i, length) {
               let tempType = ohosWindow.WindowType[loopCount1[i]];
               console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' start');
               tempTypeArr.push(tempType);
@@ -1211,7 +1212,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                         console.log(msgStr + 'tempWnd.getProperties dataProper: ' + JSON.stringify(dataProper));
                         console.log(msgStr + 'tempWnd.getProperties !!dataProper: ' + !!dataProper);
                         try {
-
                           expect(!!dataProper).assertTrue();
                         } catch (error) {
                           console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
@@ -1223,8 +1223,14 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                           console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length: ' + tempTypeArr.length);
                           console.log(msgStr + 'tempWnd.getProperties true  loopCount1.length: ' + loopCount1.length);
                           console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length + 1: ' + Number(tempTypeArr.length + 1));
+                          console.log(msgStr + 'tempWnd.getProperties true  (loopCount1.length - i): ' + (loopCount1.length - i));
+                          console.log(msgStr + 'tempWnd.getProperties true  (tempTypeArr.length + 1): ' + (tempTypeArr.length + 1));
                           try {
-                            expect((loopCount1.length - i) == (tempTypeArr.length + 1)).assertTrue();
+                            expect(tempTypeArr.length === 0).assertTrue();
+                            if (++i < length) {
+                              getData(i, length)
+                              console.log(msgStr + 'jixuzhixing  i: ' + i);
+                            }
                           } catch (error) {
                             console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
                           }
