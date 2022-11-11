@@ -33,8 +33,9 @@ export default function ActsAccountAppAccess() {
                 console.info(`sleep #{time} over ...`)
             })
         }
-        beforeAll(async function (done) {       
-            await featureAbility.startAbility(
+        beforeAll(async function (done) {
+            console.debug("====>ActsAccountAuthenticator beforeAll start====");
+            await featureAbility.startAbilityForResult(
                 {
                     want:
                     {
@@ -47,7 +48,8 @@ export default function ActsAccountAppAccess() {
                     },
                 },
             )          
-            await sleep(1500)     
+            await sleep(1500);
+            console.debug("====>ActsAccountAuthenticator beforeAll end====");
             done();
         });
         beforeEach(async (done)=>{
@@ -619,7 +621,9 @@ export default function ActsAccountAppAccess() {
                     expect(data.length).assertEqual(1) 
                 } catch(err) {
                     console.debug("====>ActsAccountSelectAccountByOptions_0100 err:" + JSON.stringify(err));
+                    await appAccountManager.removeAccount(name);
                     expect(err).assertEqual(null)
+                    done();
                 }
                 try{
                     await appAccountManager.removeAccount(name)
@@ -654,7 +658,9 @@ export default function ActsAccountAppAccess() {
                     expect(data.length).assertEqual(3)                
                 } catch(err) {
                     console.debug("====>ActsAccountSelectAccountByOptions_0200 err:" + JSON.stringify(err));
+                    await appAccountManager.removeAccount(name);
                     expect(err).assertEqual(null)
+                    done();
                 }
                 try{
                     await appAccountManager.removeAccount(name)
@@ -690,7 +696,9 @@ export default function ActsAccountAppAccess() {
                     expect(data.length).assertEqual(1)                
                 } catch(err) {
                     console.debug("====>ActsAccountSelectAccountByOptions_0300 err:" + JSON.stringify(err));
+                    await appAccountManager.removeAccount(name);
                     expect(err).assertEqual(null)
+                    done();
                 }
                 try{
                     await appAccountManager.removeAccount(name)
