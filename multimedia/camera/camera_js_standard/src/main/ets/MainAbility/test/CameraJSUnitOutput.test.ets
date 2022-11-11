@@ -1441,8 +1441,8 @@ export default function cameraJSUnitOutput(surfaceId: any) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100 photoOutput == null || undefined")
         expect().assertFail();
       } else {
-        await photoOutput.capture().then((result) => {
-          console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100 success :' + result);
+        await photoOutput.capture().then(() => {
+          console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100 success');
         }).catch((err) => {
             console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100 failed :' + err);
             expect().assertFail();
