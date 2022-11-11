@@ -101,5 +101,35 @@ export default function ScreenLockPromiseTest(){
         done();
       }      
     });
+
+    /*
+     * @tc.number    SUB_MISC_THEME_screenLock_API_Promise_004
+     * @tc.name      Set to locked screen, query the lock screen state is locked state
+     * @tc.desc      Test ScreenLock API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("SUB_MISC_THEME_screenLock_API_Promise_004", 0, async function (done) {
+      console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_004-------------------");
+      try {
+        screenLock.unlockScreen().then((data) => {
+              let currentResult = screenLock.isLocked()
+              expect(currentResult).assertEqual(false)
+              console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004 success.");
+              console.info('====>-------------SUB_MISC_THEME_screenLock_API_Promise_004 end----------------------');
+              done();
+          }).catch( err => {
+              console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004 failed because: " + JSON.stringify(err));
+              expect().assertFail();
+              done();
+          });
+        } catch (error) {
+          console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004: error = " + error);
+          expect(true).assertTrue();
+      }
+      console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_004-------------------");
+      done();
+    });
   })
 }
