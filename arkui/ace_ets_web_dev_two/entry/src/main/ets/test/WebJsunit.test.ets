@@ -101,7 +101,7 @@ export default function webJsunit() {
      */
     it('saveCookieAsync',0,async function(done){
       emitKey="emitIsThirdPartyCookieAllowed";
-      Utils.registerEvent("saveCookieAsync",true,410,done);
+      Utils.registerEvent("saveCookieAsync","result",410,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
