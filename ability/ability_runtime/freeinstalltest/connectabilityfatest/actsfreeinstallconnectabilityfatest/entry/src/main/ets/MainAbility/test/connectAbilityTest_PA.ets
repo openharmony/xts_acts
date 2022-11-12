@@ -146,8 +146,8 @@
          abilityDelegator.executeShellCommand(cmd14, (err: any, d: any) => {
            console.info("executeShellCommand14 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
          })
+         await sleep(2000)
        }
-       await sleep(1500);
        done();
      });
  
