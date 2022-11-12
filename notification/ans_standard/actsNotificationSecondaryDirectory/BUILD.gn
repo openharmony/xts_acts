@@ -22,7 +22,7 @@ ohos_js_hap_suite("ActsNotificationSecondaryDirectory") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsNotificationSecondaryDirectory"
+  hap_name = "ActsNotificationSecondaryDirectoryTest"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }

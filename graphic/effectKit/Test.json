@@ -8,7 +8,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "EffectKitTest.hap"
+            "ActsEffectKitTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
