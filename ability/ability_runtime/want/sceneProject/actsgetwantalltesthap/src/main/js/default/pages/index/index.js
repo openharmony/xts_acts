@@ -44,15 +44,13 @@ export default {
                     })
                 }else{
                     setTimeout(function(){
-                        console.debug("==========data1 bundleName is==========="
-                                       + JSON.stringify(data.bundleName));
                         featureAbility.terminateSelfWithResult(
                             {
                                 resultCode: 1,
                                 want: data
                             }
                         );
-                    },1000);
+                    },800);
                 }
             }
         )

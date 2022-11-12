@@ -63,14 +63,6 @@ describe('ActsStServiceAbilityTest', function () {
             done();
         }, gSetTimeout);
     })
-    afterAll((done) => {
-        console.debug('= ACTS_AafterAll ====<begin');
-        setTimeout(function () {
-            console.debug('= ACTS_AafterAll ====<end');
-            featureAbility.terminateSelf();
-            done();
-        }, gSetTimeout);
-    })
 
     /*
      * @tc.number  ACTS_AAbilityStartSetting_0100
