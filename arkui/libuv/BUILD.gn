@@ -199,7 +199,7 @@ ohos_static_library("libuvTestStatic") {
   deps = [ "//third_party/libuv:uv_static" ]
 }
 
-ohos_executable("libuvRunTest") {
+ohos_executable("libuvruntest") {
   include_dirs = [
     "//third_party/libuv/include",
     "//third_party/libuv/src",
@@ -226,10 +226,10 @@ ohos_moduletest_suite("ActsLibuvTestSuite") {
 action("cpLibuv") {
   testonly = true
   script = "cplibuv.sh"
-  outputs = [ "${target_out_dir}/cpvkgl.log" ]
+  outputs = [ "${target_out_dir}/cplibuv.log" ]
   deps = [
     ":ActsLibuvTestSuite",
-    ":libuvRunTest",
+    ":libuvruntest",
   ]
 }
 
@@ -239,7 +239,7 @@ group("libuvTest") {
     deps = [
       ":ActsLibuvTestSuite",
       ":cpLibuv",
-      ":libuvRunTest",
+      ":libuvruntest",
     ]
   }
 }
