@@ -35,7 +35,7 @@ int BuildMultiOpGraph(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs)
             const OHNNOperandTest &operandTem = graphArgs.operands[j][i];
             auto quantParam = operandTem.quantParam;
             OH_NN_Tensor operand = {operandTem.dataType, (uint32_t) operandTem.shape.size(),
-            operandTem.shape.data(), quantParam, operandTem.type};
+                operandTem.shape.data(), quantParam, operandTem.type};
             ret = OH_NNModel_AddTensor(model, &operand);
             if (ret != OH_NN_SUCCESS) {
                 LOGE("[NNRtTest] OH_NNModel_AddTensor failed! ret=%d\n", ret);
@@ -84,7 +84,7 @@ int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t) operandTem.shape.size(),
-        operandTem.shape.data(), quantParam, operandTem.type};
+            operandTem.shape.data(), quantParam, operandTem.type};
         ret = OH_NNModel_AddTensor(model, &operand);
         if (ret != OH_NN_SUCCESS) {
             LOGE("[NNRtTest] OH_NNModel_AddTensor failed! ret=%d\n", ret);
@@ -194,7 +194,7 @@ int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &comp
 
 
 int ExecuteGraphMock(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs,
-float* expect)
+    float* expect)
 {
     OHOS::sptr<V1_0::MockIDevice> device = V1_0::MockIDevice::GetInstance();
     int ret = 0;
@@ -204,8 +204,8 @@ float* expect)
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t) operandTem.shape.size(),
-        operandTem.shape.data(), 
-        quantParam, operandTem.type};
+            operandTem.shape.data(),
+            quantParam, operandTem.type};
         if (std::find(graphArgs.inputIndices.begin(), graphArgs.inputIndices.end(), i) !=
             graphArgs.inputIndices.end()) {
             ret = OH_NNExecutor_SetInput(executor, inputIndex, &operand, operandTem.data,
@@ -234,7 +234,8 @@ float* expect)
     return ret;
 }
 
-int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, OH_NN_Memory *OHNNMemory[], float *expect)
+int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, OH_NN_Memory *OHNNMemory[],
+    float* expect)
 {
     OHOS::sptr<V1_0::MockIDevice> device = V1_0::MockIDevice::GetInstance();
     int ret = 0;
@@ -244,8 +245,8 @@ int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, 
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t) operandTem.shape.size(),
-        operandTem.shape.data(),
-        quantParam, operandTem.type};
+            operandTem.shape.data(),
+            quantParam, operandTem.type};
         if (std::find(graphArgs.inputIndices.begin(), graphArgs.inputIndices.end(), i) !=
             graphArgs.inputIndices.end()) {
             OH_NN_Memory *inputMemory = OH_NNExecutor_AllocateInputMemory(executor, inputIndex,
@@ -261,7 +262,7 @@ int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, 
         } else if (std::find(graphArgs.outputIndices.begin(), graphArgs.outputIndices.end(), i) !=
                    graphArgs.outputIndices.end()) {
             OH_NN_Memory *outputMemory = OH_NNExecutor_AllocateOutputMemory(executor, outputIndex,
-            operandTem.length);                                                           
+            operandTem.length);                                        
             ret = OH_NNExecutor_SetOutputWithMemory(executor, outputIndex, outputMemory);
             if (ret != OH_NN_SUCCESS) {
                 LOGE("[NNRtTest] OH_NNExecutor_SetOutputWithMemory failed! ret=%d\n", ret);

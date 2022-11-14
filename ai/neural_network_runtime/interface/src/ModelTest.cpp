@@ -854,8 +854,8 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_GetSupportedOperation_0400, Fun
     uint32_t devicesCount{0};
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount));
     size_t targetDevice = devicesID[0];
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_GetAvailableOperations(model, targetDevice, &realSupported, &opCount));
-
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_GetAvailableOperations(model, targetDevice,
+    &realSupported, &opCount));
     Free(model);
 }
 
@@ -875,8 +875,8 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_GetSupportedOperation_0500, Fun
     uint32_t devicesCount{0};
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount));
     size_t targetDevice = devicesID[0];
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_GetAvailableOperations(model, targetDevice, &isSupported, nullptr));
-
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_GetAvailableOperations(model, targetDevice,
+    &isSupported, nullptr));
     Free(model);
 }
 
@@ -898,8 +898,8 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_GetSupportedOperation_0600, Fun
     uint32_t devicesCount{0};
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount));
     size_t targetDevice = devicesID[0];
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNModel_GetAvailableOperations(model, targetDevice, &isSupported, &opCount));
-
+    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNModel_GetAvailableOperations(model, targetDevice,
+    &isSupported, &opCount));
     Free(model);
 }
 

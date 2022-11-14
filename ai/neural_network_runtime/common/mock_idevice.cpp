@@ -175,7 +175,7 @@ int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
     return HDF_SUCCESS;
 }
 
-int32_t MockIDevice::MemoryCopy(float *data, uint32_t length)
+int32_t MockIDevice::MemoryCopy(float* data, uint32_t length)
 {
     auto memManager = NeuralNetworkRuntime::MemoryManager::GetInstance();
     auto memAddress = memManager->MapMemory(m_bufferFd, length);
@@ -198,7 +198,7 @@ int32_t MockIDevice::PrepareModel(const Model& model, const ModelConfig& config,
 }
 
 int32_t MockIDevice::PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
-sptr<IPreparedModel>& preparedModel)
+    sptr<IPreparedModel>& preparedModel)
 {
     preparedModel = new (std::nothrow) V1_0::MockIPreparedModel();
     return HDF_SUCCESS;

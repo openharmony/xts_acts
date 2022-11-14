@@ -1204,7 +1204,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_Combine_0500, Function | 
     }
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_Run(executor));
     // check result
-    EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(outputMemory->data)), 
+    EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(outputMemory->data)),
         (float*) addModel.expectValue));
 
     OH_NNExecutor_DestroyOutputMemory(executor, 0, &outputMemory);
