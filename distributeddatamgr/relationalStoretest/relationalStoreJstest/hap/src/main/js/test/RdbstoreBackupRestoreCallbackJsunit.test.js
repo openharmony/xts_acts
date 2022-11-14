@@ -270,31 +270,32 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                     }catch(err){
                         expect(false).assertTrue();
                     }
+                    dataRdb.deleteRdbStore(context, DATABASE_BACKUP_NAME).then(() => {
+                        try{
+                            fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)
+                        }catch(err){
+                            console.info(TAG + 'error2  ' + err)
+                            expect(true).assertTrue();
+                        }
+                        RdbStore.backup(DATABASE_BACKUP_NAME, (err, data) => {
+                            if(err != null){
+                                expect(false).assertTrue(0)
+                            }else{
+                                try{
+                                    console.info(TAG + 'Backup database success')
+                                    fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)
+                                }catch(err){
+                                    expect(false).assertTrue();
+                                }
+                            }
+                            done()
+                            console.info(TAG + "************* RdbBackupRestoreCallbackTest_0500 end *************")
+                        })
+                    })
                 }
             })
-            await dataRdb.deleteRdbStore(context, DATABASE_BACKUP_NAME).then(() => {
-                try{
-                    fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)
-                }catch(err){
-                    console.info(TAG + 'error2  ' + err)
-                    expect(true).assertTrue();
-                }
-            })
-
-            RdbStore.backup(DATABASE_BACKUP_NAME, (err, data) => {
-                if(err != null){
-                    expect(false).assertTrue(0)
-                }else{
-                    try{
-                        console.info(TAG + 'Backup database success')
-                        fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)
-                    }catch(err){
-                        expect(false).assertTrue();
-                    }
-                }
-            })
-            done()
-            console.info(TAG + "************* RdbBackupRestoreCallbackTest_0500 end *************")
+           
+            
         })
     
         /**
