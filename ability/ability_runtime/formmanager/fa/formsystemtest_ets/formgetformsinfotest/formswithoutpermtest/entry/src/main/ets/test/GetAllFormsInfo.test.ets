@@ -35,7 +35,7 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
       try {
         formHost.getAllFormsInfo((error, data) => {
           console.log(`${callbackName} getAllFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
-          expect(JSON.stringify(data)).assertEqual(`[]`);
+          expect(Array.isArray(data)).assertEqual(true);
           expect(error.code).assertEqual(ERR_OK_CODE);
           done();
           console.log(`==========${callbackName} ${describeName} end==========`);
@@ -58,7 +58,7 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
       try {
         const data = await formHost.getAllFormsInfo();
         console.log(`${promiseName} getAllFormsInfo data: ${JSON.stringify(data)}`);
-        expect(JSON.stringify(data)).assertEqual(`[]`);
+        expect(Array.isArray(data)).assertEqual(true);
         done();
         console.log(`==========${promiseName} ${describeName} end==========`);
       } catch (error) {
