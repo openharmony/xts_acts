@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsNotificationSecondaryDirectory.hap"
+                "ActsNotificationSecondaryDirectoryTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

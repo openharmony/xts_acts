@@ -17,7 +17,7 @@
 		{
             "test-file-name": [
                 "ActSkillProcessWithAccountCloseTest.hap",
-                "ExecuteShellCommand.hap"
+                "ActsExecuteShellCommandTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
