@@ -17,7 +17,7 @@ import formHost from '@ohos.application.formHost';
 import { describe, expect, it } from '@ohos/hypium'
 
 export const getAllFormsInfoTest = (describeName, filterParameter) => {
-  const ERR_OK_CODE = 0;
+  const ERR_OK_CODE = 2;
   const ERR_OK = `success`;
 
   describe(`${describeName}`, () => {
@@ -35,7 +35,7 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
       try {
         formHost.getAllFormsInfo((error, data) => {
           console.log(`${callbackName} getAllFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
-          expect(Array.isArray(data)).assertEqual(true);
+          expect(JSON.stringify(data)).assertEqual(undefined);
           expect(error.code).assertEqual(ERR_OK_CODE);
           done();
           console.log(`==========${callbackName} ${describeName} end==========`);
@@ -58,13 +58,13 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
       try {
         const data = await formHost.getAllFormsInfo();
         console.log(`${promiseName} getAllFormsInfo data: ${JSON.stringify(data)}`);
-        expect(Array.isArray(data)).assertEqual(true);
+        expect().assertFail();
         done();
         console.log(`==========${promiseName} ${describeName} end==========`);
       } catch (error) {
         console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${promiseName} should not reach here`);
-        expect().assertFail();
+        expect(error.code).assertEqual(ERR_OK_CODE);
         done()
       }
     });

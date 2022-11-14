@@ -17,8 +17,8 @@ import formHost from '@ohos.application.formHost';
 import { describe, expect, it } from '@ohos/hypium'
 
 export const getFormsInfoTest = (describeName, filterParameter) => {
-  const ERR_PERMISSION_DENY_CODE = 5;
-  const ERR_PERMISSION_DENY = `failed to obtain the bundle information`;
+  const ERR_PERMISSION_DENY_CODE = 2;
+  const ERR_PERMISSION_DENY = `does not have permission to use forms`;
 
   describe(`${describeName}`, () => {
     const callbackName = `FMS_getFormsInfo_Callback_0800`;
