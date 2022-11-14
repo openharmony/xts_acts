@@ -20,32 +20,32 @@ ohos_moduletest_suite("ActsAiNnrtStabilityTest") {
     "src/MultiThreadTest.cpp",
     "../common/nnrt_utils.cpp",
     "../common/mock_idevice.cpp",
-    ]
+  ]
 
-    include_dirs = [
-      "../common",
-      "//foundation/ai/neural_network_runtime",
-      "//foundation/ai/neural_network_runtime/third_party/include",
-      "//third_party/googletest/googletest/include",
-      "//third_party/googletest/googlemock/include",
-      "//third_party/mindspore/mindspore/lite/mindir/include"
-    ]
-    deps = [
-        "//foundation/ai/neural_network_runtime/frameworks:libneural_network_runtime",
-        "//third_party/googletest:gmock",
-        "//third_party/googletest:gtest",
-    ]
+  include_dirs = [
+    "../common",
+    "//foundation/ai/neural_network_runtime",
+    "//foundation/ai/neural_network_runtime/third_party/include",
+    "//third_party/googletest/googletest/include",
+    "//third_party/googletest/googlemock/include",
+    "//third_party/mindspore/mindspore/lite/mindir/include"
+  ]
+  deps = [
+    "//foundation/ai/neural_network_runtime/frameworks:libneural_network_runtime",
+    "//third_party/googletest:gmock",
+    "//third_party/googletest:gtest",
+  ]
 
-    external_deps = [
-        "c_utils:utils",
-        "hdf_core:libhdi",
-        "ipc:ipc_single",
-        "hdf_core:libhdf_utils",
-        "hilog_native:libhilog",
-        "hitrace_native:libhitracechain",
-        "drivers_interface_nnrt:libnnrt_proxy_1.0",
-        "mindspore:mindir"  
-      ]
+  external_deps = [
+    "c_utils:utils",
+    "hdf_core:libhdi",
+    "ipc:ipc_single",
+    "hdf_core:libhdf_utils",
+    "hilog_native:libhilog",
+    "hitrace_native:libhitracechain",
+    "drivers_interface_nnrt:libnnrt_proxy_1.0",
+    "mindspore:mindir"  
+  ]
 
-    cflags = [ "-Wno-error" ]
+  cflags = [ "-Wno-error" ]
 }

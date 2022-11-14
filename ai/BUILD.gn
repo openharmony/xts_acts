@@ -13,7 +13,5 @@
 
 group("ai") {
   testonly = true
-  deps = [
-    "neural_network_runtime:neural_network_runtime"
-  ]
+  deps = [ "neural_network_runtime:neural_network_runtime" ]
 }
