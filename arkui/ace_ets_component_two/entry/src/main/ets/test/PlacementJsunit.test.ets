@@ -51,6 +51,7 @@ export default function placementJsunit(){
       let callback = (indexEvent) => {
         console.info("placementTest_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.placement).assertEqual(Placement.TopLeft);
+        done();
       }
       let indexEvent = {
         eventId: 157,
@@ -65,7 +66,6 @@ export default function placementJsunit(){
       await Utils.sleep(1500);
       console.info("placementTest_0100 clickOne result is: " + JSON.stringify(sendEventByKey('image',10,"")));
       console.info('placementTest_0100 END');
-      done();
     });
 
     it('placementTest_0200', 0, async function (done) {

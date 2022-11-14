@@ -18,7 +18,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct PolygonNe {
+struct PolygonNe {
   private polygon: PolygonAttribute = new Polygon({
     width: 100,
     height: 100

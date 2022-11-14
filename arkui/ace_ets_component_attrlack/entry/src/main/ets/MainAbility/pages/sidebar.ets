@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct SidebarIcons {
+struct SidebarIcons {
   @State arr: number[] = [1, 2]
 
   aboutToAppear() {

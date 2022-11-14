@@ -64,7 +64,7 @@ struct PlacementExample {
               eventId: 157,
               priority: events_emitter.EventPriority.LOW
             }
-            console.info("button start to emit action state")
+            console.info("PlacementExample button start to emit action state")
             events_emitter.emit(backEvent, backData)
           }catch(err){
             console.info("button emit action state err: " + JSON.stringify(err.message))
@@ -98,7 +98,7 @@ struct PlacementExample {
               eventId: 158,
               priority: events_emitter.EventPriority.LOW
             }
-            console.info("button1 start to emit action state")
+            console.info("custom popupOne button1 start to emit action state")
             events_emitter.emit(backEventOne, backDataOne)
           }catch(err){
             console.info("button1 emit action state err: " + JSON.stringify(err.message))

@@ -19,7 +19,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct ShapeNe {
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear ShapeNe start`)

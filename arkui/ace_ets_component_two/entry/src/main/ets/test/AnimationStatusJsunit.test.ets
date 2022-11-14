@@ -74,6 +74,7 @@ export default function  animationStatusJsunit() {
       let callback = (indexEvent) => {
         console.info("animationStatus03 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.animationStatus).assertEqual(AnimationStatus.Paused);
+        done();
       }
       let indexEvent = {
         eventId: 56,
@@ -87,7 +88,6 @@ export default function  animationStatusJsunit() {
       console.info("animationStatus03 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
       await Utils.sleep(1000);
       console.info('animationStatus03 END');
-      done();
     });
 
     it('animationStatus04', 0, async function (done) {
@@ -96,6 +96,7 @@ export default function  animationStatusJsunit() {
       let callback = (indexEvent) => {
         console.info("animationStatus04 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.animationStatus).assertEqual(AnimationStatus.Stopped);
+        done();
       }
       let indexEvent = {
         eventId: 57,
@@ -109,7 +110,6 @@ export default function  animationStatusJsunit() {
       console.info("animationStatus04 click result is: " + JSON.stringify(sendEventByKey('button3',10,"")));
       await Utils.sleep(1000);
       console.info('animationStatus04 END');
-      done();
     });
   })
 }

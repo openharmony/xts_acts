@@ -51,6 +51,7 @@ export default function pieceJsunit() {
       let callback = (indexEvent) => {
         console.info("test_pieceCode_01 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.showDelete).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 156,
@@ -66,6 +67,7 @@ export default function pieceJsunit() {
       var callback1 = (eventData) => {
         console.info("test_pieceCode_01 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(true);
+        done();
       }
       var innerEventOne = {
         eventId: 155,
@@ -77,7 +79,6 @@ export default function pieceJsunit() {
         console.info("test_pieceCode_01 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('test_pieceCode_01 END');
-      done();
     });
   })
 }

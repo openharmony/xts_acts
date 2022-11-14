@@ -63,9 +63,10 @@ export default function navigationJsunit() {
       let callback = (indexEvent) => {
         console.info("testNavigation_200 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(false);
+        done();
       }
       let indexEvent = {
-        eventId: 136,
+        eventId: 1366,
         priority: events_emitter.EventPriority.LOW
       }
       try {
@@ -76,7 +77,6 @@ export default function navigationJsunit() {
       console.info("testNavigation_200 click result is: " + JSON.stringify(sendEventByKey('NavigationContent1',10,"")));
       await Utils.sleep(2000);
       console.info('testNavigation_200 END');
-      done();
     });
 
     it('testNavigation_300', 0, async function (done) {

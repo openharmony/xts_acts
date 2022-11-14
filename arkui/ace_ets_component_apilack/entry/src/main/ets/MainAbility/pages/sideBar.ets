@@ -18,7 +18,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct SideBarShowSideBar {
   normalIcon : Resource = $r("app.media.user")
   selectedIcon: Resource = $r("app.media.userFull")

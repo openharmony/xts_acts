@@ -18,7 +18,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct RectNe {
+struct RectNe {
   private rect: RectAttribute = new Rect({
     width: '90%',
     height: 50,

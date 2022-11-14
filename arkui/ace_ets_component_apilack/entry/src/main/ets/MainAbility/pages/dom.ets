@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct DomCreateElement {
+struct DomCreateElement {
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear DomCreateElement start`)
   }

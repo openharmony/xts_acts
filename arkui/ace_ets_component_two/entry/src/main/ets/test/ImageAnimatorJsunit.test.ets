@@ -49,10 +49,11 @@ export default function imageAnimatorJsunit(){
 
     it('imageAnimatorTest_0100', 0, async function (done) {
       console.info('imageAnimatorTest_0100 START');
-      await Utils.sleep(1500);
+      await Utils.sleep(500);
       let callback = (indexEvent) => {
         console.info("imageAnimatorTest_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.state).assertEqual(AnimationStatus.Running);
+        expect(indexEvent.data.state).assertEqual(1);
+        done();
       }
       let indexEvent = {
         eventId: 115,
@@ -60,13 +61,11 @@ export default function imageAnimatorJsunit(){
       }
       try {
         events_emitter.on(indexEvent, callback);
+        console.info("imageAnimatorTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       } catch (err) {
         console.info("imageAnimatorTest_0100 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("imageAnimatorTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
-      await Utils.sleep(1000);
       console.info('imageAnimatorTest_0100 END');
-      done();
     });
 
     it('imageAnimatorTest_0200', 0, async function (done) {
@@ -76,6 +75,7 @@ export default function imageAnimatorJsunit(){
         console.info("imageAnimatorTest_0200 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.state).assertEqual(AnimationStatus.Paused);
         expect(indexEvent.data.fixedSize).assertEqual(false);
+        done();
       }
       let indexEvent = {
         eventId: 116,
@@ -89,7 +89,6 @@ export default function imageAnimatorJsunit(){
       console.info("imageAnimatorTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
       await Utils.sleep(1000);
       console.info('imageAnimatorTest_0200 END');
-      done();
     });
 
     it('imageAnimatorTest_0300', 0, async function (done) {
@@ -99,6 +98,7 @@ export default function imageAnimatorJsunit(){
         console.info("imageAnimatorTest_0300 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.state).assertEqual(AnimationStatus.Stopped);
         expect(indexEvent.data.preDecode).assertEqual(0);
+        done();
       }
       let indexEvent = {
         eventId: 117,
@@ -112,7 +112,6 @@ export default function imageAnimatorJsunit(){
       console.info("imageAnimatorTest_0300 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
       await Utils.sleep(1000);
       console.info('imageAnimatorTest_0300 END');
-      done();
     });
 
     it('imageAnimatorTest_0400', 0, async function (done) {
@@ -120,7 +119,8 @@ export default function imageAnimatorJsunit(){
       await Utils.sleep(1500);
       let callback = (indexEvent) => {
         console.info("imageAnimatorTest_0400 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.fillMode).assertEqual(Forwards);
+        expect(indexEvent.data.fillMode).assertEqual(0);
+        done();
       }
       let indexEvent = {
         eventId: 118,
@@ -134,7 +134,6 @@ export default function imageAnimatorJsunit(){
       console.info("imageAnimatorTest_0400 click result is: " + JSON.stringify(sendEventByKey('button3',10,"")));
       await Utils.sleep(1000);
       console.info('imageAnimatorTest_0400 END');
-      done();
     });
 
     it('imageAnimatorTest_0500', 0, async function (done) {
@@ -143,6 +142,7 @@ export default function imageAnimatorJsunit(){
       let callback = (indexEvent) => {
         console.info("imageAnimatorTest_0500 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.iterations).assertEqual(1);
+        done();
       }
       let indexEvent = {
         eventId: 119,
@@ -156,7 +156,6 @@ export default function imageAnimatorJsunit(){
       console.info("imageAnimatorTest_0500 click result is: " + JSON.stringify(sendEventByKey('button4',10,"")));
       await Utils.sleep(1000);
       console.info('imageAnimatorTest_0500 END');
-      done();
     });
 
     it('imageAnimatorTest_0600', 0, async function (done) {
@@ -202,6 +201,7 @@ export default function imageAnimatorJsunit(){
       let callbackOne = (indexEventOne) => {
         console.info("imageAnimatorTest_0700 get state result is: " + JSON.stringify(indexEventOne));
         expect(indexEventOne.data.preDecode).assertEqual(2);
+        done();
       }
       let indexEventOne = {
         eventId: 120,
@@ -215,7 +215,6 @@ export default function imageAnimatorJsunit(){
       console.info("imageAnimatorTest_0700 click result is: " + JSON.stringify(sendEventByKey('button5',10,"")));
       await Utils.sleep(1000);
       console.info('imageAnimatorTest_0700 END');
-      done();
     });
   })
 }

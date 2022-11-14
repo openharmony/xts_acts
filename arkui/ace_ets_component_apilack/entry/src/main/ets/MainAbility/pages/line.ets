@@ -19,7 +19,6 @@ let my_line = new Line()
 
 @Entry
 @Component
-export default
 struct LineNe {
 
   aboutToAppear() {
