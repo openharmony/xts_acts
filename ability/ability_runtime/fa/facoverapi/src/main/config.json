@@ -17,7 +17,8 @@
         "package": "com.example.coverapi",
         "name": ".entry",
         "deviceType": [
-            "default"
+            "default",
+            "tablet"
         ],
         "distro": {
             "deliveryWithInstall": true,

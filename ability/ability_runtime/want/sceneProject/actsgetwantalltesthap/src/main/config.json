@@ -17,7 +17,8 @@
     "package": "com.example.actsgetwantallhap",
     "name": "com.example.actsgetwantalltesthap.MyApplication",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

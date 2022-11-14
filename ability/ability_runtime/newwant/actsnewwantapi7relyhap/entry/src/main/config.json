@@ -17,7 +17,8 @@
     "package": "com.example.newwanthapapi7",
     "name": ".MyApplication",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

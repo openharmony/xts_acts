@@ -18,7 +18,8 @@
     "name": ".FormReleaseSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

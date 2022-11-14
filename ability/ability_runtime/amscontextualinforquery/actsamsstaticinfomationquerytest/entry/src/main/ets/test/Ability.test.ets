@@ -213,7 +213,7 @@ export default function abilityTest() {
             expect(data.launchMode).assertEqual(0);
             expect(data.permissions.length).assertEqual(0);
             expect(data.deviceTypes[0]).assertEqual("default");
-            expect(data.deviceTypes.length).assertEqual(1);
+            expect(data.deviceTypes.length).assertEqual(2);
             expect(data.deviceCapabilities.length).assertEqual(0);
             expect(data.readPermission).assertEqual("");
             expect(data.writePermission).assertEqual("");
@@ -348,7 +348,7 @@ export default function abilityTest() {
             expect(data.backgroundImg).assertEqual("");
             expect(data.supportedModes).assertEqual(0);
             expect(data.reqCapabilities.length).assertEqual(0);
-            expect(data.deviceTypes.length).assertEqual(1);
+            expect(data.deviceTypes.length).assertEqual(2);
             expect(data.deviceTypes[0]).assertEqual("default");
             expect(data.moduleName).assertEqual("com.example.staticinfomationquery")
             expect(data.mainAbilityName).assertEqual("com.example.staticinfomationquery.MainAbility");
