@@ -29,14 +29,6 @@ using namespace OHOS::HDI::Nnrt::V1_0;
 namespace {
 
 class MemoryTest : public testing::Test {
-public:
-    void SetUp()
-    {
-    }
-    void TearDown()
-    {
-    }
-
 protected:
     AddModel addModel;
     OHNNGraphArgs graphArgs = addModel.graphArgs;
@@ -854,7 +846,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0300, Function |
     for (auto j = 0; j < graphArgs.outputIndices.size(); j++) {
         auto outputIndex = graphArgs.inputIndices.size() + j;
         // check memory output
-        EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(OHNNMemory[outputIndex]->data)), 
+        EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(OHNNMemory[outputIndex]->data)),
         (float*) addModel.expectValue));
         OH_NNExecutor_DestroyOutputMemory(executor, j, &OHNNMemory[outputIndex]);
         ASSERT_EQ(OHNNMemory[outputIndex], nullptr);
@@ -898,7 +890,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0400, Function |
     for (auto j = 0; j < graphArgs.outputIndices.size(); j++) {
         auto outputIndex = graphArgs.inputIndices.size() + j;
         // check memory output
-        EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(OHNNMemory[outputIndex]->data)), 
+        EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(OHNNMemory[outputIndex]->data)),
         (float*) avgModel.expectValue));
         OH_NNExecutor_DestroyOutputMemory(executor, j, &OHNNMemory[outputIndex]);
         ASSERT_EQ(OHNNMemory[outputIndex], nullptr);

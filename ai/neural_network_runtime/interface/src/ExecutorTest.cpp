@@ -28,14 +28,6 @@ using namespace OHOS::HDI::Nnrt::V1_0;
 namespace {
 
 class ExecutorTest : public testing::Test {
-public:
-    void SetUp()
-    {      
-    }
-    void TearDown()
-    {
-    }
-
 protected:
     OHOS::sptr<V1_0::MockIDevice> device;
     AddModel addModel;
@@ -43,7 +35,7 @@ protected:
     OHNNCompileParam compileParam;
 };
 
-void ExecuteModel(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, void* expect)
+void ExecuteModel(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, float* expect)
 {
     ASSERT_EQ(OH_NN_SUCCESS, ExecuteGraphMock(executor, graphArgs, expect));
 }

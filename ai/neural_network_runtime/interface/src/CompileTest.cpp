@@ -38,7 +38,8 @@ public:
     {
         DeleteFolder(CACHE_DIR);
     }
-    void GenCacheFile() {
+    void GenCacheFile()
+    {
         OH_NNModel *model = OH_NNModel_Construct();
         ASSERT_NE(nullptr, model);
         ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
@@ -53,15 +54,16 @@ public:
         ASSERT_TRUE(CheckPath(CACHE_PATH) == PathType::FILE);
         ASSERT_TRUE(CheckPath(CACHE_INFO_PATH) == PathType::FILE);
     }
-    void DestroyCache() {
+    void DestroyCache()
+    {
         std::ifstream ifs(CACHE_PATH.c_str(), std::ios::in | std::ios::binary);
         char* ptr{nullptr};
-        int cache_size = ifs.tellg();
-        int invalid_cache_size = cache_size * 0.9;
-        ifs.read(ptr, cache_size);
+        int cacheSize = ifs.tellg();
+        int invalidCacheSize = cacheSize * 0.9;
+        ifs.read(ptr, cacheSize);
         ifs.close();
         std::ofstream ofs(CACHE_PATH.c_str(), std::ios::out | std::ios::binary);
-        ofs.write(ptr, invalid_cache_size);
+        ofs.write(ptr, invalidCacheSize);
         ofs.close();
     }
 

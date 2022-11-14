@@ -69,13 +69,14 @@ struct OHNNCompileParam {
 
 int BuildSingleOpGraph(OH_NNModel *modelptr, const OHNNGraphArgs &args);
 
-int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, OH_NN_Memory *OHNNMemory[], void* expect);
+int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, OH_NN_Memory *OHNNMemory[],
+float* expect);
 
 void Free(OH_NNModel *model = nullptr, OH_NNCompilation *compilation = nullptr, OH_NNExecutor *executor = nullptr);
 
 int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &compileParam);
 
-int ExecuteGraphMock(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, void* expect);
+int ExecuteGraphMock(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, float * expect);
 
 int SetDevice(OH_NNCompilation *compilation);
 int BuildMultiOpGraph(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs);

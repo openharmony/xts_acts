@@ -70,7 +70,7 @@ public:
     int32_t PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
          sptr<IPreparedModel>& preparedModel) override;
 
-    int32_t MemoryCopy(void *data, uint32_t length);
+    int32_t MemoryCopy(float *data, uint32_t length);
 
     void SetFP16Supported(bool isSupported);
 
@@ -91,7 +91,7 @@ public:
 
 private:
     std::unordered_map<int, sptr<Ashmem>> m_ashmems;
-    int m_buffer_fd;
+    int m_bufferFd;
     bool m_fp16 = true;
     bool m_performance = true;
     bool m_priority = true;
@@ -106,7 +106,7 @@ public:
     int32_t Run(const std::vector<IOTensor>& inputs, const std::vector<IOTensor>& outputs,
     std::vector<std::vector<int32_t>>& outputsDims, std::vector<bool>& isOutputBufferEnough) override;
     int32_t GetVersion(uint32_t &majorVersion, uint32_t &minorVersion) override;
-    MockIPreparedModel() = default; 
+    MockIPreparedModel() = default;
 };
 
 } // namespace V1_0

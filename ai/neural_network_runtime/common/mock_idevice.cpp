@@ -109,31 +109,31 @@ int32_t MockIDevice::GetVersion(uint32_t &majorVersion, uint32_t &minorVersion)
     return HDF_SUCCESS;
 }
 
-int32_t MockIDevice::GetSupportedOperation(const Model& model, std::vector<bool>& ops) 
+int32_t MockIDevice::GetSupportedOperation(const Model& model, std::vector<bool>& ops)
 {
     ops = m_operations;
     return HDF_SUCCESS;
 }
 
-int32_t MockIDevice::IsFloat16PrecisionSupported(bool& isSupported) 
+int32_t MockIDevice::IsFloat16PrecisionSupported(bool& isSupported)
 {
     isSupported = m_fp16;
     return HDF_SUCCESS;
 }
 
-int32_t MockIDevice::IsPerformanceModeSupported(bool& isSupported) 
+int32_t MockIDevice::IsPerformanceModeSupported(bool& isSupported)
 {
     isSupported = m_performance;
     return HDF_SUCCESS;
 }
 
-int32_t MockIDevice::IsPrioritySupported(bool& isSupported) 
+int32_t MockIDevice::IsPrioritySupported(bool& isSupported)
 {
     isSupported = m_priority;
     return HDF_SUCCESS;
 }
 
-int32_t MockIDevice::IsDynamicInputSupported(bool& isSupported) 
+int32_t MockIDevice::IsDynamicInputSupported(bool& isSupported)
 {
     isSupported = m_dynamic;
     return HDF_SUCCESS;
@@ -164,7 +164,7 @@ int32_t MockIDevice::AllocateBuffer(uint32_t length, SharedBuffer &buffer)
     buffer.dataSize = length;
 
     m_ashmems[buffer.fd] = ashptr;
-    m_buffer_fd = buffer.fd;
+    m_bufferFd = buffer.fd;
     return HDF_SUCCESS;
 }
 
@@ -175,10 +175,10 @@ int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
     return HDF_SUCCESS;
 }
 
-int32_t MockIDevice::MemoryCopy(void *data, uint32_t length)
+int32_t MockIDevice::MemoryCopy(float *data, uint32_t length)
 {
     auto memManager = NeuralNetworkRuntime::MemoryManager::GetInstance();
-    auto memAddress = memManager->MapMemory(m_buffer_fd, length);
+    auto memAddress = memManager->MapMemory(m_bufferFd, length);
     if (memAddress == nullptr) {
         LOGE("[NNRtTest] Map fd to address failed.");
         return HDF_FAILURE;
@@ -198,7 +198,7 @@ int32_t MockIDevice::PrepareModel(const Model& model, const ModelConfig& config,
 }
 
 int32_t MockIDevice::PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
-         sptr<IPreparedModel>& preparedModel)
+sptr<IPreparedModel>& preparedModel)
 {
     preparedModel = new (std::nothrow) V1_0::MockIPreparedModel();
     return HDF_SUCCESS;
