@@ -17,9 +17,9 @@ ohos_moduletest_suite("ActsAiNnrtStabilityTest") {
   testonly = true
   module_out_path = "acts/nnrt"
   sources = [
-    "src/MultiThreadTest.cpp",
-    "../common/nnrt_utils.cpp",
     "../common/mock_idevice.cpp",
+    "../common/nnrt_utils.cpp",
+    "src/MultiThreadTest.cpp",
   ]
 
   include_dirs = [
@@ -28,7 +28,7 @@ ohos_moduletest_suite("ActsAiNnrtStabilityTest") {
     "//foundation/ai/neural_network_runtime/third_party/include",
     "//third_party/googletest/googletest/include",
     "//third_party/googletest/googlemock/include",
-    "//third_party/mindspore/mindspore/lite/mindir/include"
+    "//third_party/mindspore/mindspore/lite/mindir/include",
   ]
   deps = [
     "//foundation/ai/neural_network_runtime/frameworks:libneural_network_runtime",
@@ -38,13 +38,13 @@ ohos_moduletest_suite("ActsAiNnrtStabilityTest") {
 
   external_deps = [
     "c_utils:utils",
-    "hdf_core:libhdi",
-    "ipc:ipc_single",
+    "drivers_interface_nnrt:libnnrt_proxy_1.0",
     "hdf_core:libhdf_utils",
+    "hdf_core:libhdi",
     "hilog_native:libhilog",
     "hitrace_native:libhitracechain",
-    "drivers_interface_nnrt:libnnrt_proxy_1.0",
-    "mindspore:mindir"  
+    "ipc:ipc_single",
+    "mindspore:mindir",
   ]
 
   cflags = [ "-Wno-error" ]
