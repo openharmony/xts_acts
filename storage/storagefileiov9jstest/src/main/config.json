@@ -16,8 +16,8 @@
         "package": "ohos.acts.storage.fileiov9",
         "name": ".entry",
         "deviceType": [
-      "default",
-            "phone"
+            "default",
+            "tablet"
         ],
         "distro": {
             "deliveryWithInstall": true,
