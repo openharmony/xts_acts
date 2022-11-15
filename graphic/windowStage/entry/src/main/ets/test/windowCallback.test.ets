@@ -694,6 +694,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
           }
           let arrLength = systemBarData.regionTint.length;
+          let ca = cloneColorArr;
+          let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
             if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
@@ -710,6 +712,17 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 cloneColorArr.SCC.splice(contentColorIndex, 1);
               } else {
                 console.log(msgStr + 'SCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
+              }
+              if (compareCount === 18 && !flag) {
+                console.log(msgStr + 'if compareCount: ' + compareCount + ' ,true flag:' + flag);
+                try {
+                  expect(true).assertTrue();
+                } catch (error) {
+                  console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+                }
+                done();
+              } else {
+                console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
               }
               console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.SBC));
               console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.SCC));
@@ -728,10 +741,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } else {
                 console.log(msgStr + 'NCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
               }
-              let ca = cloneColorArr;
-              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
               if (compareCount === 18 && !flag) {
-                console.log(msgStr + 'compareCount: ' + compareCount + ' ,true flag:' + flag);
+                console.log(msgStr + 'else compareCount: ' + compareCount + ' ,true flag:' + flag);
                 try {
                   expect(true).assertTrue();
                 } catch (error) {
@@ -811,7 +822,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                     } catch (error) {
                       console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
                     }
-                    done();
+                    //                    done();
                   }
                 })
               }
@@ -1188,7 +1199,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             }
             let loopCount1 = systemWindowTypeArr;
             console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount1))
-            for (let i = 0; i < loopCount1.length; i++) {
+            getData(0, loopCount1.length)
+
+            function getData(i, length) {
               let tempType = ohosWindow.WindowType[loopCount1[i]];
               console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' start');
               tempTypeArr.push(tempType);
@@ -1211,7 +1224,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                         console.log(msgStr + 'tempWnd.getProperties dataProper: ' + JSON.stringify(dataProper));
                         console.log(msgStr + 'tempWnd.getProperties !!dataProper: ' + !!dataProper);
                         try {
-
                           expect(!!dataProper).assertTrue();
                         } catch (error) {
                           console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
@@ -1223,8 +1235,14 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                           console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length: ' + tempTypeArr.length);
                           console.log(msgStr + 'tempWnd.getProperties true  loopCount1.length: ' + loopCount1.length);
                           console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length + 1: ' + Number(tempTypeArr.length + 1));
+                          console.log(msgStr + 'tempWnd.getProperties true  (loopCount1.length - i): ' + (loopCount1.length - i));
+                          console.log(msgStr + 'tempWnd.getProperties true  (tempTypeArr.length + 1): ' + (tempTypeArr.length + 1));
                           try {
-                            expect((loopCount1.length - i) == (tempTypeArr.length + 1)).assertTrue();
+                            expect(tempTypeArr.length === 0).assertTrue();
+                            if (++i < length) {
+                              getData(i, length)
+                              console.log(msgStr + 'jixuzhixing  i: ' + i);
+                            }
                           } catch (error) {
                             console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
                           }
