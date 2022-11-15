@@ -26,13 +26,13 @@ vkgl 是基于开源库VK-GL-CTS（版本：opengl-es-cts-3.2.8），进行移�
 
 其中具体测试项目为：
 
-* deqpgles2：对应vk-gl-cts库的 gles2-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/aosp_mustpass/master，包括用例16492条，
-* deqpgles3：对应vk-gl-cts库的 gles3-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/aosp_mustpass/master，包括用例44389条，
-* deqpgles31：对应vk-gl-cts库的 gles31-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/aosp_mustpass/master，包括用例37854条，
-* khrgles2：对应vk-gl-cts库的 gles2-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/aosp_mustpass/master，包括用例472条，
-* khrgles3：对应vk-gl-cts库的 gles3-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/aosp_mustpass/master，包括用例4079条
-* khrgles31：对应vk-gl-cts库的 gles31-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/aosp_mustpass/master，包括用例3497条
-* khrglesext：对应vk-gl-cts库的 glesext-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/aosp_mustpass/master，包括用例335条
+* deqpgles2：对应vk-gl-cts库的 gles2-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例16492条，
+* deqpgles3：对应vk-gl-cts库的 gles3-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例44389条，
+* deqpgles31：对应vk-gl-cts库的 gles31-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例37854条，
+* khrgles2：对应vk-gl-cts库的 gles2-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例472条，
+* khrgles3：对应vk-gl-cts库的 gles3-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例4079条
+* khrgles31：对应vk-gl-cts库的 gles31-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例3497条
+* khrglesext：对应vk-gl-cts库的 glesext-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例335条
 
 #### 适配说明
 
