@@ -13,17 +13,13 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("context") {
+group("actsstageappcontext") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actscontexttest:ActsContextTest",
-      "actscreatemodulecontextassist:ActsCreateModuleContextAssist",
-      "actscreatemodulecontextassistone:ActsCreateModuleContextAssistOne",
-      "actscreatemodulecontexttest:ActsCreateModuleContextTest",
-      "actsstageappcontext:actsstageappcontext",
-      "actsstagecontext:actsstagecontext",
-      "scene/defpermission:DefPermission",
+      #"actsstagecontextassistone:ActsStageContextAssistOne",
+      #"actsstagecontextassisttwo:ActsStageContextAssistTwo",
+      "actsstageappcontexttest:ActsStageAppContextTest",
     ]
   }
 }
