@@ -44,7 +44,7 @@ namespace OHOS {
     HWTEST_F(ActsLibuvTestSuite, TestLibuvTestCase001, Function | MediumTest | Level2)
     {
         printf("------start ActsLibuvTestSuite------\n");
-        int ret = system("/data/local/tmp/libuvruntest");
+        system("/data/local/tmp/libuvruntest");
         EXPECT_TRUE(true);
         printf("------end ActsLibuvTestSuite------\n");
     }
