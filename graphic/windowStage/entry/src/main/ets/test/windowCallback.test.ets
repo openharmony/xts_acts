@@ -694,6 +694,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
           }
           let arrLength = systemBarData.regionTint.length;
+          let ca = cloneColorArr;
+          let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
             if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
@@ -710,6 +712,18 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 cloneColorArr.SCC.splice(contentColorIndex, 1);
               } else {
                 console.log(msgStr + 'SCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
+              }
+
+              if (compareCount === 18 && !flag) {
+                console.log(msgStr + 'if compareCount: ' + compareCount + ' ,true flag:' + flag);
+                try {
+                  expect(true).assertTrue();
+                } catch (error) {
+                  console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+                }
+                done();
+              } else {
+                console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
               }
               console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.SBC));
               console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.SCC));
@@ -731,7 +745,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               let ca = cloneColorArr;
               let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
               if (compareCount === 18 && !flag) {
-                console.log(msgStr + 'compareCount: ' + compareCount + ' ,true flag:' + flag);
+                console.log(msgStr + 'else compareCount: ' + compareCount + ' ,true flag:' + flag);
                 try {
                   expect(true).assertTrue();
                 } catch (error) {
@@ -811,7 +825,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                     } catch (error) {
                       console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
                     }
-                    done();
+                    //                    done();
                   }
                 })
               }
@@ -1189,6 +1203,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             let loopCount1 = systemWindowTypeArr;
             console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount1))
             getData(0, loopCount1.length)
+
             function getData(i, length) {
               let tempType = ohosWindow.WindowType[loopCount1[i]];
               console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' start');
