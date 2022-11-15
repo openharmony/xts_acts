@@ -713,7 +713,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } else {
                 console.log(msgStr + 'SCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
               }
-
               if (compareCount === 18 && !flag) {
                 console.log(msgStr + 'if compareCount: ' + compareCount + ' ,true flag:' + flag);
                 try {
@@ -742,8 +741,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } else {
                 console.log(msgStr + 'NCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
               }
-              let ca = cloneColorArr;
-              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
               if (compareCount === 18 && !flag) {
                 console.log(msgStr + 'else compareCount: ' + compareCount + ' ,true flag:' + flag);
                 try {
