@@ -100,7 +100,7 @@ describe('audioManagerApi9', function () {
 
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ERRORS_0100'
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ERRORS_0100
      *@tc.name      : AUDIO_ERRORS
      *@tc.desc      : AUDIO_ERRORS
      *@tc.size      : MEDIUM
@@ -120,7 +120,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_VOLUME_GROUP_ID_0100'
+     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_VOLUME_GROUP_ID_0100
      *@tc.name      : DEFAULT_VOLUME_GROUP_ID
      *@tc.desc      : DEFAULT_VOLUME_GROUP_ID
      *@tc.size      : MEDIUM
@@ -134,7 +134,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100'
+     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100
      *@tc.name      : DEFAULT_INTERRUPT_GROUP_ID
      *@tc.desc      : DEFAULT_INTERRUPT_GROUP_ID
      *@tc.size      : MEDIUM
@@ -148,7 +148,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_COMUNICATIONDEVICETYPE_0100'
+     *@tc.number    : SUB_MULTIMEDIA_COMUNICATIONDEVICETYPE_0100
      *@tc.name      : COMUNICATIONDEVICETYPE
      *@tc.desc      : COMUNICATIONDEVICETYPE
      *@tc.size      : MEDIUM
@@ -163,7 +163,7 @@ describe('audioManagerApi9', function () {
 
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100'
+     *@tc.number    : SUB_MULTIMEDIA_INTERRUPTREQUESTTYPE_0100
      *@tc.name      : INTERRUPTREQUESTTYPE
      *@tc.desc      : INTERRUPTREQUESTTYPE
      *@tc.size      : MEDIUM
@@ -177,7 +177,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100'
+     *@tc.number    : SUB_MULTIMEDIA_INTERRUPTREQUESTRESULTTYPE_0100
      *@tc.name      : INTERRUPTREQUESTRESULTTYPE
      *@tc.desc      : INTERRUPTREQUESTRESULTTYPE
      *@tc.size      : MEDIUM
@@ -783,7 +783,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GSETMICROPHONEMUTE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0100
      *@tc.name      : setMicrophoneMute - true - Callback
      *@tc.desc      : Enable mic mute
      *@tc.size      : MEDIUM
@@ -828,7 +828,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
- *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GSETMICROPHONEMUTE_0200
+ *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0200
  *@tc.name      : setMicrophoneMute - true - Promise
  *@tc.desc      : Enable mic mute
  *@tc.size      : MEDIUM
@@ -928,14 +928,14 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0200
      *@tc.name      : isActive - Media - Callback
      *@tc.desc      : isActive - Media - Callback - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0100', 1, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0200', 1, function (done) {
         console.log(`${TagFrmwk}: Callback : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS`);
         streamManager.isActive(audioMedia, (err, data) => {
             if (err) {
@@ -953,7 +953,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETCOMMUNICATIONDEVICE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
      *@tc.name      : setCommunicationDevice - SPEAKER - deactivate - Promise
      *@tc.desc      : setCommunicationDevice speaker - Promise
      *@tc.size      : MEDIUM
@@ -1019,7 +1019,7 @@ describe('audioManagerApi9', function () {
         if (outputDeviceDescription.length == 1 && outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
             flag = false;
         }
-        AudioRoutingManager.setCommunicationDevice(audio.ActiveDeviceType.SPEAKER, false, (err) => {
+        AudioRoutingManager.setCommunicationDevice(audio.CommunicationDeviceType.SPEAKER, false, (err) => {
             if (err) {
                 console.error(`${TagFrmwk}: Device Test: Callback : setCommunicationDevice : SPEAKER: Deactivate: Error: ${err.message}`);
                 expect(false).assertTrue();
