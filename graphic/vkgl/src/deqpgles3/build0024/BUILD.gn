@@ -23,12 +23,6 @@ config("deqp_platform_ohos_config") {
   ]
 
   defines = deqp_common_defines
-
-  # defines -=["DE_PTR_SIZE=8"]
-  #defines += [
-#    "DE_PTR_SIZE=4",
-#    "_XOPEN_SOURCE=600",
-#  ]
 }
 
 ohos_static_library("libdeqpgles3func0024") {
