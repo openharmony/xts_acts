@@ -6,7 +6,8 @@
     "description": "$string:hap2_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-      "default"
+      "default",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

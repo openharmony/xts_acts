@@ -18,7 +18,8 @@
     "name": ".FormStHostAppG",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

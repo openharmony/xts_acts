@@ -18,7 +18,8 @@
     "name": ".FormAcquireSTApp",
     "mainAbility": "com.ohos.st.formacquiretest.MainAbility",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
