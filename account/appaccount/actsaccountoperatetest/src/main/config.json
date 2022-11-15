@@ -17,7 +17,8 @@
     "package": "com.example.actsaccountoperatetest",
     "name": ".MyApplication",
     "deviceType": [
-      "phone"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
