@@ -6,8 +6,8 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
-      "tablet",
-            "phone"
+            "tablet",
+            "default"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
