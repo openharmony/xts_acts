@@ -262,7 +262,7 @@ int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, 
         } else if (std::find(graphArgs.outputIndices.begin(), graphArgs.outputIndices.end(), i) !=
                    graphArgs.outputIndices.end()) {
             OH_NN_Memory *outputMemory = OH_NNExecutor_AllocateOutputMemory(executor, outputIndex,
-            operandTem.length);                                        
+            operandTem.length);
             ret = OH_NNExecutor_SetOutputWithMemory(executor, outputIndex, outputMemory);
             if (ret != OH_NN_SUCCESS) {
                 LOGE("[NNRtTest] OH_NNExecutor_SetOutputWithMemory failed! ret=%d\n", ret);
