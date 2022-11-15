@@ -302,7 +302,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             }
         })
 
-        await sleep(10);
+        await sleep(30);
 
         console.info('Exit beginCameraSessionConfig');
 
