@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +28,7 @@ struct Index {
   @State ability: string = "FormAbility";
   @State moduleName: string = "phone";
   @State name: string = "form1";
+  @State allowUpate: boolean = true;
   private dimension: FormDimension = FormDimension.Dimension_2_2;
   private temporary = false;
 
@@ -49,7 +49,7 @@ struct Index {
             dimension: this.dimension,
             temporary: this.temporary,
           })
-          .allowUpdate(this.allowUpate)
+          .allowUpdate(this.allowUpate )
           .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
           .onAcquired((form) => {
             console.log("[FormComponent.host] get form, form id:" + form.id);

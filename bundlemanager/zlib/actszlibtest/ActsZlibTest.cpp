@@ -32,7 +32,7 @@ namespace {
 static const char DICTIONARY[] = "hello";
 static const char GARBAGE[] = "garbage";
 static const char TESTFILE[] = "foo.gz";
-static char HELLO[] = "hello, hello!";
+static thread_local char HELLO[] = "hello, hello!";
 static unsigned int CALLOC_SIZE = 1;
 static int ONE = 1;
 static int FOUR = 4;
@@ -42,6 +42,7 @@ static int GARBAGE_LEN = strlen(GARBAGE) + 1;
 static unsigned BUFFER_SIZE = 8192;
 std::mutex gzMutex_;
 std::mutex puMutex_;
+std::mutex file_mutex;
 
 static unsigned pull(void *desc, unsigned char **buf)
 {
@@ -153,6 +154,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzio, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzio Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -786,6 +788,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzBuffer, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzBuffer Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -847,6 +850,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzFlush, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzFlush Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -874,6 +878,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzFread, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzFread Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -896,6 +901,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzWrite, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzWrite Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -917,6 +923,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzGetc, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzGetc Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "rb");
@@ -937,6 +944,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzGetc_, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzGetc_ Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "rb");
@@ -957,6 +965,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzGets, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzGets Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
@@ -982,6 +991,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzOffset64, Function | MediumTest | Level2)
 #ifndef Z_LARGE64
     fprintf(stderr, "*********ActsZlibTestGzOffset64 Z_LARGE64**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -1000,6 +1010,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzOffset64, Function | MediumTest | Level2)
  */
 HWTEST_F(ActsZlibTest, ActsZlibTestGzOpen, Function | MediumTest | Level2)
 {
+    std::lock_guard<std::mutex> lock(file_mutex);
 #ifndef Z_SOLO
     int err = Z_OK;
     gzFile file;
@@ -1052,6 +1063,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzPrintf, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzPrintf Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
@@ -1070,6 +1082,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzPutc, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzPutc Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     char err;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1090,6 +1103,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzPuts, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzPuts Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
@@ -1108,6 +1122,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzRead, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzRead Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
@@ -1147,6 +1162,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzRewind, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzRewind Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1164,6 +1180,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzRewind, Function | MediumTest | Level2)
  */
 HWTEST_F(ActsZlibTest, ActsZlibTestGzseek, Function | MediumTest | Level2)
 {
+    std::lock_guard<std::mutex> lock(file_mutex);
     long err = 0L;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1190,6 +1207,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzSetParams, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzSetParams Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int err = Z_OK;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1207,6 +1225,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzSetParams, Function | MediumTest | Level2)
  */
 HWTEST_F(ActsZlibTest, ActsZlibTestGzTell, Function | MediumTest | Level2)
 {
+    std::lock_guard<std::mutex> lock(file_mutex);
 #  ifndef Z_LARGE64
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1244,6 +1263,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzUnGetc, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzUnGetc Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
@@ -1266,6 +1286,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzVprintf, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzVprintf Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
@@ -1286,6 +1307,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzwrite, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzWrite Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     int len = static_cast<int>(strlen(HELLO)) + 1;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
@@ -1773,6 +1795,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzdopen, Function | MediumTest | Level2)
 #ifdef Z_SOLO
     fprintf(stderr, "*********ActsZlibTestGzdopen Z_SOLO**********\n");
 #else
+    std::lock_guard<std::mutex> lock(file_mutex);
     FILE *fp = fopen(TESTFILE, "r");
     int fd = fileno(fp);
     gzFile file = gzdopen(fd, "r");

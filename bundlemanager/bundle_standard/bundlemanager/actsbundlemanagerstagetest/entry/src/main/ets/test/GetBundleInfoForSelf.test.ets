@@ -712,6 +712,8 @@ export default function getBundleInfoForSelf() {
           expect(data.permissionGrantStates.length).assertEqual(0);
           expect(data.signatureInfo).assertEqual(null);
           expect(err).assertEqual(null);
+          expect(bundle.ExtensionAbilityType.SERVICE).assertEqual(3);
+          expect(bundle.ExtensionAbilityType.DATA_SHARE).assertEqual(5);
           expect(bundle.ExtensionAbilityType.UNSPECIFIED).assertEqual(255);
           done();
         })

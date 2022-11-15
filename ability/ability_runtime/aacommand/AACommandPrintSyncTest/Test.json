@@ -9,14 +9,6 @@
     },
     "kits": [
         {
-            "type": "ShellKit",
-            "run-command": [
-               " hilog -Q pidoff",
-                "hilog -Q domainoff",
-                "hilog -b D"
-            ]
-        },
-        {
             "type": "PushKit",
             "push": [
                 "AACommandPrintSync.hap->/data/AACommandPrintSync.hap"

@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 import ActsNotificationRequestTest from './ActsNotificationRequestTest.js'
+import ActsNotificationManagerRequestTest from './ActsNotificationManagerRequestTest.js'
+
 export default function testsuite() {
-     ActsNotificationRequestTest()
+  ActsNotificationRequestTest()
+  ActsNotificationManagerRequestTest()
 }

@@ -18,7 +18,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 
 export default function requestSystemJSUnit() {
   describe('requestSystemJSUnit', function () {
-    console.info('****************start requestSystemTest*****************')
+    console.info('====>****************start requestSystemTest*****************')
 
     /**
      * @tc.name: ohos.SUB_REQUESTSYSTEM_UPLOAD_API_0001
@@ -28,7 +28,7 @@ export default function requestSystemJSUnit() {
      * @tc.level: Level 1
      */
     it('SUB_REQUESTSYSTEM_UPLOAD_API_0001', 0, async function (done) {
-      console.info("-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0001 start-----------------------");
+      console.info("====>-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0001 start-----------------------");
       let UploadResponse = {
         code: 200,
         data: '',
@@ -52,23 +52,23 @@ export default function requestSystemJSUnit() {
           },
         ],
         success: function(UploadResponse) {
-          console.info('SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload success, code:' + UploadResponse.code);
+          console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload success, code:' + UploadResponse.code);
         },
         fail: function(data, code) {
-          console.info('SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload fail');
+          console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload fail');
         },
         complete: function (){
-          console.info('SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload complete');
+          console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload complete');
         }
       }
       try{
         let result = request.upload(UploadRequestOptions);
-        console.info('SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload err:' + result);
+        console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload err:' + result);
         expect(true).assertEqual(true);
       }catch(err){
-        console.info('SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload err:' + err);
+        console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload err:' + err);
       }
-      console.info("-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0001 end-----------------------");
+      console.info("====>-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0001 end-----------------------");
       done();
     });
 
@@ -80,7 +80,7 @@ export default function requestSystemJSUnit() {
      * @tc.level: Level 1
      */
     it('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001', 0, async function (done) {
-      console.info("-----------------------SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 start-----------------------");
+      console.info("====>-----------------------SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 start-----------------------");
       let DownloadResponse = {
         token: "Hm_lpvt_1d6c34c1bc067f5746a5fca18d1c24ab"
       }
@@ -91,23 +91,23 @@ export default function requestSystemJSUnit() {
         header: '',
         description: 'this is requeSystem download response',
         success: function(DownloadResponse) {
-          console.info('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001call success callback success: ' + DownloadResponse.token);
+          console.info('====>SUB_REQUESTSYSTEM_DOWNLOAD_API_0001call success callback success: ' + DownloadResponse.token);
         },
         fail: function(data, code) {
-          console.info('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 handling fail');
+          console.info('====>SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 handling fail');
         },
         complete: function (){
-          console.info('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 download complete');
+          console.info('====>SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 download complete');
         }
       }
       try{
         let result = request.download(DownloadRequestOptions);
-        console.info('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 upload err:' + result);
+        console.info('====>SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 upload err:' + result);
         expect(result == null).assertEqual(true);
       }catch(err){
-        console.info('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 download complete' + err);
+        console.info('====>SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 download complete' + err);
       }
-      console.info("-----------------------SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 end-----------------------");
+      console.info("====>-----------------------SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 end-----------------------");
       done();
     });
 
@@ -119,27 +119,27 @@ export default function requestSystemJSUnit() {
      * @tc.level: Level 1
      */
     it('SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001', 0, async function (done) {
-      console.info("-----------------------SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 start-----------------------");
+      console.info("====>-----------------------SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 start-----------------------");
       let OnDownloadCompleteResponse = {
         uri: "http://www.path.com"
       }
       let OnDownloadCompleteOptions = {
         token: 'token-index',
         success: function(OnDownloadCompleteResponse) {
-          console.info('SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 download success,uri:'
+          console.info('====>SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 download success,uri:'
                         + OnDownloadCompleteResponse.uri);
         },
         fail: function(data, code) {
-          console.info('SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 download fail');
+          console.info('====>SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 download fail');
         },
         complete: function (){
-          console.info('SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 download complete');
+          console.info('====>SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 download complete');
         }
       }
       let result = request.onDownloadComplete(OnDownloadCompleteOptions);
-      console.info('SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 upload err:' + result);
+      console.info('====>SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 upload err:' + result);
       expect(result == null).assertEqual(true);
-      console.info("-----------------------SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 end-----------------------");
+      console.info("====>-----------------------SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 end-----------------------");
       done();
     });
   })

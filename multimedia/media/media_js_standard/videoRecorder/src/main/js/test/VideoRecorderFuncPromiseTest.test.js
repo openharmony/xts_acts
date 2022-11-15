@@ -149,6 +149,26 @@ describe('VideoRecorderFuncPromiseTest', function () {
         console.info('afterAll case');
     })
 
+    function checkErrorCode(errorCode)
+    {   
+        let value = false;
+        switch (errorCode) {
+            case 0:
+            case 201:
+            case 401:
+            case 801:
+            case 5400101:
+            case 5400102:
+            case 5400103:
+            case 5400104:
+            case 5400105:
+            case 5400106:
+                value = true;
+                break;
+        }
+        return value;
+    }
+
     async function startVideoOutput(videoOutPut) {
         if (videoOutPut == null) {
             console.info('[camera] case videoOutPut is null');
@@ -1715,6 +1735,117 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
+        done();
+    })
+
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_ERRORCODE
+        * @tc.name      : 25.error code (promise)
+        * @tc.desc      : Video recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_ERRORCODE', 0, async function (done) {
+        let videoRecorder = undefined;
+        let surfaceID = '';
+        let videoOutput;
+        let previewOutput;
+        let errorCode = false;
+        fdObject = await mediaTestBase.getFd('recorder_promise_25.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
+        videoConfig.url = '';
+        await media.createVideoRecorder().then((recorder) => {
+            console.info('case createVideoRecorder called');
+            if (typeof (recorder) != 'undefined') {
+                videoRecorder = recorder;
+                expect(videoRecorder.state).assertEqual('idle');
+            } else {
+                console.info('case recordr is undefined!!');
+            }
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+        videoRecorder.on('error', (err) => {
+            console.info('case on error called, errMessage is ' + err.code);
+            errorCode = checkErrorCode(err.code);
+            expect(errorCode).assertEqual(true);
+        });
+
+        await videoRecorder.prepare(videoConfig).then(() => {
+            console.info('case recordr prepare called');
+            expect(videoRecorder.state).assertEqual('prepared');
+        }, (err) => {
+            console.info('case promise error called, errMessage is ' + err.code);
+            errorCode = checkErrorCode(err.code);
+            expect(errorCode).assertEqual(true);
+        }).catch(mediaTestBase.catchCallback);
+        await videoRecorder.reset().then(() => {
+            console.info('case recordr reset called');
+            expect(videoRecorder.state).assertEqual('idle');
+        }, (err) => {
+            console.info('case promise error called, errMessage is ' + err.code);
+            errorCode = checkErrorCode(err.code);
+            expect(errorCode).assertEqual(true);
+        }).catch(mediaTestBase.catchCallback);
+        videoConfig.url = fdPath;
+        await videoRecorder.prepare(videoConfig).then(() => {
+            console.info('case recordr prepare called');
+            expect(videoRecorder.state).assertEqual('prepared');
+        }, (err) => {
+            expect(videoRecorder.state).assertEqual('error');
+            console.info('case promise error called, errMessage is ' + err.code);
+            expect().assertFail();
+        }).catch(mediaTestBase.catchCallback);
+
+        await videoRecorder.getInputSurface().then((outPutSurface) => {
+            console.info('case getInputSurface called');
+            expect(videoRecorder.state).assertEqual('prepared');
+            surfaceID = outPutSurface;
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+        videoOutput = await cameraManager.createVideoOutput(videoProfiles[0], surfaceID);
+        previewOutput = await cameraManager.createPreviewOutput(previewProfiles[0], playerSurfaceId)
+        captureSession = await videoRecorderBase.initCaptureSession(videoOutput, cameraManager,
+                                                                    cameras[0], previewOutput);
+
+        await startVideoOutput(videoOutput);
+        await videoRecorder.start().then(() => {
+            console.info('case recordr play called');
+            expect(videoRecorder.state).assertEqual('playing');
+        }, (err) => {
+            console.info('case promise error called, errMessage is ' + err.code);
+            expect().assertFail();
+        }).catch(mediaTestBase.catchCallback);
+
+        await videoRecorder.start().then(() => {
+            console.info('case recordr start called');
+        }, (err) => {
+            console.info('case promise error called, errMessage is ' + err.code);
+            errorCode = checkErrorCode(err.code);
+            expect(errorCode).assertEqual(true);
+        }).catch(mediaTestBase.catchCallback);
+
+        await videoRecorder.prepare(videoConfig).then(() => {
+            console.info('case recordr prepare called');
+        }, (err) => {
+            console.info('case promise error called, errMessage is ' + err.code);
+            errorCode = checkErrorCode(err.code);
+            expect(errorCode).assertEqual(true);
+        }).catch(mediaTestBase.catchCallback);
+        await videoRecorder.release().then(() => {
+            console.info('case release ');
+            expect(videoRecorder.state).assertEqual('idle');
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        await videoOutput.stop();
+        await videoRecorderBase.stopCaptureSession(captureSession);
+        await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
+        await videoRecorder.prepare(videoConfig).then(() => {
+            console.info('case recordr prepare called');
+        }, (err) => {
+            console.info('case promise error called, errMessage is ' + err.code);
+            errorCode = checkErrorCode(err.code);
+            expect(errorCode).assertEqual(true);
+        }).catch(mediaTestBase.catchCallback);
         done();
     })
 })

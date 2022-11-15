@@ -14,7 +14,7 @@
  */
 
 import avSession from '@ohos.multimedia.avsession';
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import WantAgent from '@ohos.wantAgent';
 import featureAbility from '@ohos.ability.featureAbility';
@@ -25,11 +25,12 @@ export default function AVSession() {
         let type = 'audio';
         let session;
         let controller;
-        let keyItem = {code:0x49, pressedTime:123456789, deviceId:0};
-        let event = {action:2, key:keyItem, keys:[keyItem]};
+        let OutputDeviceInfo = { isRemote: false, audioDeviceId: [0], deviceName: ['LocalDevice'] };
+        let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
+        let event = { action: 2, key: keyItem, keys: [keyItem] };
         let context = featureAbility.getContext();
 
-        function sleep (ms) {
+        function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
@@ -37,7 +38,7 @@ export default function AVSession() {
             let color = new ArrayBuffer(96);
             let bufferArr = new Uint8Array(color);
             bufferArr.fill('3', 0, 95);
-            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, AlphaType: 3};
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, AlphaType: 3 };
             return image.createPixelMap(color, opts);
         }
 
@@ -118,7 +119,7 @@ export default function AVSession() {
          * @tc.level     : Level0
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0100', 0, async function (done) {
-            let metadata0  = {
+            let metadata0 = {
                 assetId: '121278',
             };
             await session.setAVMetadata(metadata0).then(() => {
@@ -153,7 +154,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0200', 0, async function (done) {
-            let metadata1  = {
+            let metadata1 = {
                 assetId: '121278',
                 artist: 'Eminem',
             };
@@ -187,7 +188,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0300', 0, async function (done) {
-            let metadata2  = {
+            let metadata2 = {
                 assetId: '121278',
                 author: 'ST',
             };
@@ -221,7 +222,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0400', 0, async function (done) {
-            let metadata3  = {
+            let metadata3 = {
                 assetId: '121278',
                 album: 'Slim shady',
             };
@@ -255,7 +256,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0500', 0, async function (done) {
-            let metadata4  = {
+            let metadata4 = {
                 assetId: '121278',
                 writer: 'ST',
             };
@@ -289,7 +290,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0600', 0, async function (done) {
-            let metadata5  = {
+            let metadata5 = {
                 assetId: '121278',
                 composer: 'ST',
             };
@@ -323,7 +324,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0700', 0, async function (done) {
-            let metadata6  = {
+            let metadata6 = {
                 assetId: '121278',
                 duration: 2222,
             };
@@ -358,7 +359,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0800', 0, async function (done) {
-            let metadata7  = {
+            let metadata7 = {
                 assetId: '121278',
                 mediaImage: 'https://img2.baidu.com/it/u=3583435814,2833583486&fm=253&fmt=auto&app=138&f=JPEG?w=526&h=500',
             };
@@ -397,7 +398,7 @@ export default function AVSession() {
             let readBuffer0 = new ArrayBuffer(96);
             await pixelMap.readPixelsToBuffer(readBuffer0);
             let bufferArr0 = new Uint8Array(readBuffer0);
-            let metadata8  = {
+            let metadata8 = {
                 assetId: '121278',
                 mediaImage: pixelMap,
             };
@@ -443,9 +444,9 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1000', 0, async function (done) {
-            let metadata9  = {
+            let metadata9 = {
                 assetId: '121278',
-                publishDate: new Date(1994,1,1,1),
+                publishDate: new Date(1994, 1, 1, 1),
             };
             await session.setAVMetadata(metadata9).then(() => {
                 console.info('TestLog: Set publishDate successfully');
@@ -477,7 +478,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1100', 0, async function (done) {
-            let metadata10  = {
+            let metadata10 = {
                 assetId: '121278',
                 subtitle: '8 Mile',
             };
@@ -513,7 +514,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1200', 0, async function (done) {
-            let metadata11  = {
+            let metadata11 = {
                 assetId: '121278',
                 description: 'Rap',
             };
@@ -547,7 +548,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1300', 0, async function (done) {
-            let metadata12  = {
+            let metadata12 = {
                 assetId: '121278',
                 lyric: 'https://lyric.tingmall.com/lyric/58/970/589710004-LRC-LRC.lrc?t=1649918948000',
             };
@@ -583,7 +584,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1400', 0, async function (done) {
-            let metadata13  = {
+            let metadata13 = {
                 assetId: '121278',
                 previousAssetId: '121277',
                 nextAssetId: '121279',
@@ -621,7 +622,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1500', 0, async function (done) {
-            let metadata14  = {
+            let metadata14 = {
                 assetId: '121278',
             };
             await session.destroy();
@@ -645,7 +646,7 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1600', 0, async function (done) {
-            let metadata15  = {
+            let metadata15 = {
                 assetId: '121278',
                 duration: -2,
             };
@@ -669,7 +670,7 @@ export default function AVSession() {
          */
         it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100', 0, async function (done) {
             let PlaybackState1 = {
-                state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
+                state: avSession.PlaybackState.PLAYBACK_STATE_PLAY,
             };
             await session.setAVPlaybackState(PlaybackState1).then(() => {
                 console.info('TestLog: Set State successfully');
@@ -742,7 +743,7 @@ export default function AVSession() {
          */
         it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0300', 0, async function (done) {
             let PlaybackState3 = {
-                position:{elapsedTime:10, updateTime:(new Date()).getTime()},
+                position: { elapsedTime: 10, updateTime: (new Date()).getTime() },
             };
 
             await session.setAVPlaybackState(PlaybackState3).then(() => {
@@ -816,7 +817,7 @@ export default function AVSession() {
          */
         it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0500', 0, async function (done) {
             let PlaybackState5 = {
-                loopMode:avSession.LoopMode.LOOP_MODE_SEQUENCE,
+                loopMode: avSession.LoopMode.LOOP_MODE_SEQUENCE,
             };
 
             await session.setAVPlaybackState(PlaybackState5).then(() => {
@@ -1003,7 +1004,7 @@ export default function AVSession() {
             let PlaybackState10 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_PLAY,
                 speed: 1.0,
-                position: {elapsedTime: 10, updateTime: (new Date()).getTime()},
+                position: { elapsedTime: 10, updateTime: (new Date()).getTime() },
                 bufferedTime: 1000,
                 loopMode: avSession.LoopMode.LOOP_MODE_SINGLE,
                 isFavorite: true,
@@ -1032,7 +1033,7 @@ export default function AVSession() {
             let PlaybackState11 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_PLAY,
                 speed: -2,
-                position: {elapsedTime: -2, updateTime: (new Date()).getTime()},
+                position: { elapsedTime: -2, updateTime: (new Date()).getTime() },
                 bufferedTime: -4,
                 loopMode: avSession.LoopMode.LOOP_MODE_SINGLE,
                 isFavorite: true,
@@ -1061,10 +1062,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState12).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 0) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1083,10 +1099,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState13).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 1) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1105,10 +1136,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState14).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 3) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1127,10 +1173,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState15).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 4) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1149,10 +1210,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState16).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 5) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1171,10 +1247,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState17).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 6) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1187,11 +1278,11 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level1
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0100', 0, async function(done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0100', 0, async function (done) {
             let wantAgentInfo = {
-                wants : [
+                wants: [
                     {
-                        bundleName : 'com.example.myapplication',
+                        bundleName: 'com.example.myapplication',
                         abilityName: 'com.example.myapplication.MainAbility'
                     }
                 ],
@@ -1349,7 +1440,7 @@ export default function AVSession() {
                 expect(true).assertTrue();
             });
 
-            await controller.sendControlCommand({command:'play'}).then(() => {
+            await controller.sendControlCommand({ command: 'play' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1373,7 +1464,7 @@ export default function AVSession() {
                 expect(true).assertTrue();
             });
 
-            await controller.sendControlCommand({command:'pause'}).then(() => {
+            await controller.sendControlCommand({ command: 'pause' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1397,7 +1488,7 @@ export default function AVSession() {
                 expect(true).assertTrue();
             });
 
-            await controller.sendControlCommand({command:'stop'}).then(() => {
+            await controller.sendControlCommand({ command: 'stop' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1421,7 +1512,7 @@ export default function AVSession() {
                 expect(true).assertTrue();
             });
 
-            await controller.sendControlCommand({command:'playNext'}).then(() => {
+            await controller.sendControlCommand({ command: 'playNext' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1445,7 +1536,7 @@ export default function AVSession() {
                 expect(true).assertTrue();
             });
 
-            await controller.sendControlCommand({command:'playPrevious'}).then(() => {
+            await controller.sendControlCommand({ command: 'playPrevious' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1469,7 +1560,7 @@ export default function AVSession() {
                 expect(true).assertTrue();
             });
 
-            await controller.sendControlCommand({command:'fastForward'}).then(() => {
+            await controller.sendControlCommand({ command: 'fastForward' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1493,7 +1584,7 @@ export default function AVSession() {
                 expect(true).assertTrue();
             });
 
-            await controller.sendControlCommand({command:'rewind'}).then(() => {
+            await controller.sendControlCommand({ command: 'rewind' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1522,7 +1613,7 @@ export default function AVSession() {
                 }
             });
 
-            await controller.sendControlCommand({command:'seek', parameter:10}).then(() => {
+            await controller.sendControlCommand({ command: 'seek', parameter: 10 }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1551,7 +1642,7 @@ export default function AVSession() {
                 }
             });
 
-            await controller.sendControlCommand({command:'setSpeed', parameter:2.6}).then(() => {
+            await controller.sendControlCommand({ command: 'setSpeed', parameter: 2.6 }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1580,8 +1671,10 @@ export default function AVSession() {
                 }
             });
 
-            await controller.sendControlCommand({command:'setLoopMode', parameter:
-                avSession.LoopMode.LOOP_MODE_SINGLE}).then(() => {
+            await controller.sendControlCommand({
+                command: 'setLoopMode', parameter:
+                    avSession.LoopMode.LOOP_MODE_SINGLE
+            }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1611,7 +1704,7 @@ export default function AVSession() {
                 }
             });
 
-            await controller.sendControlCommand({command:'toggleFavorite', parameter:'false'}).then(() => {
+            await controller.sendControlCommand({ command: 'toggleFavorite', parameter: 'false' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1695,7 +1788,7 @@ export default function AVSession() {
 
             session.off('play');
 
-            await controller.sendControlCommand({command:'play'}).then(() => {
+            await controller.sendControlCommand({ command: 'play' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1713,7 +1806,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it ('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200', 0, async function (done) {
             function callback1() {
                 console.info('TestLog: Play command registration1 success');
                 expect(false).assertTrue();
@@ -1730,7 +1823,7 @@ export default function AVSession() {
 
             session.off('play', callback1);
 
-            await controller.sendControlCommand({command:'play'}).then(() => {
+            await controller.sendControlCommand({ command: 'play' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1765,7 +1858,7 @@ export default function AVSession() {
 
             session.off('pause');
 
-            await controller.sendControlCommand({command:'pause'}).then(() => {
+            await controller.sendControlCommand({ command: 'pause' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1800,7 +1893,7 @@ export default function AVSession() {
 
             session.off('pause', callback1);
 
-            await controller.sendControlCommand({command:'pause'}).then(() => {
+            await controller.sendControlCommand({ command: 'pause' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1836,7 +1929,7 @@ export default function AVSession() {
 
             session.off('stop');
 
-            await controller.sendControlCommand({command:'stop'}).then(() => {
+            await controller.sendControlCommand({ command: 'stop' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1871,7 +1964,7 @@ export default function AVSession() {
 
             session.off('stop', callback1)
 
-            await controller.sendControlCommand({command:'stop'}).then(() => {
+            await controller.sendControlCommand({ command: 'stop' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1906,7 +1999,7 @@ export default function AVSession() {
 
             session.off('playNext');
 
-            await controller.sendControlCommand({command:'playNext'}).then(() => {
+            await controller.sendControlCommand({ command: 'playNext' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1941,7 +2034,7 @@ export default function AVSession() {
 
             session.off('playNext', callback1);
 
-            await controller.sendControlCommand({command:'playNext'}).then(() => {
+            await controller.sendControlCommand({ command: 'playNext' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -1976,7 +2069,7 @@ export default function AVSession() {
 
             session.off('playPrevious');
 
-            await controller.sendControlCommand({command:'playPrevious'}).then(() => {
+            await controller.sendControlCommand({ command: 'playPrevious' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2011,7 +2104,7 @@ export default function AVSession() {
 
             session.off('playPrevious', callback1);
 
-            await controller.sendControlCommand({command:'playPrevious'}).then(() => {
+            await controller.sendControlCommand({ command: 'playPrevious' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2046,7 +2139,7 @@ export default function AVSession() {
 
             session.off('fastForward');
 
-            await controller.sendControlCommand({command:'fastForward'}).then(() => {
+            await controller.sendControlCommand({ command: 'fastForward' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2081,7 +2174,7 @@ export default function AVSession() {
 
             session.off('fastForward', callback1);
 
-            await controller.sendControlCommand({command:'fastForward'}).then(() => {
+            await controller.sendControlCommand({ command: 'fastForward' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2116,7 +2209,7 @@ export default function AVSession() {
 
             session.off('rewind');
 
-            await controller.sendControlCommand({command:'rewind'}).then(() => {
+            await controller.sendControlCommand({ command: 'rewind' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2151,7 +2244,7 @@ export default function AVSession() {
 
             session.off('rewind', callback1);
 
-            await controller.sendControlCommand({command:'rewind'}).then(() => {
+            await controller.sendControlCommand({ command: 'rewind' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2190,7 +2283,7 @@ export default function AVSession() {
 
             session.off('seek');
 
-            await controller.sendControlCommand({command:'seek', parameter:10}).then(() => {
+            await controller.sendControlCommand({ command: 'seek', parameter: 10 }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2229,7 +2322,7 @@ export default function AVSession() {
 
             session.off('seek', callback1);
 
-            await controller.sendControlCommand({command:'seek', parameter:10}).then(() => {
+            await controller.sendControlCommand({ command: 'seek', parameter: 10 }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2268,7 +2361,7 @@ export default function AVSession() {
 
             session.off('setSpeed');
 
-            await controller.sendControlCommand({command:'setSpeed', parameter:2.0}).then(() => {
+            await controller.sendControlCommand({ command: 'setSpeed', parameter: 2.0 }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2307,7 +2400,7 @@ export default function AVSession() {
 
             session.off('setSpeed', callback1);
 
-            await controller.sendControlCommand({command:'setSpeed', parameter:2.0}).then(() => {
+            await controller.sendControlCommand({ command: 'setSpeed', parameter: 2.0 }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2346,8 +2439,10 @@ export default function AVSession() {
 
             session.off('setLoopMode');
 
-            await controller.sendControlCommand({command:'setLoopMode',
-                parameter:avSession.LoopMode.LOOP_MODE_SINGLE}).then(() => {
+            await controller.sendControlCommand({
+                command: 'setLoopMode',
+                parameter: avSession.LoopMode.LOOP_MODE_SINGLE
+            }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2386,8 +2481,10 @@ export default function AVSession() {
 
             session.off('setLoopMode', callback1);
 
-            await controller.sendControlCommand({command:'setLoopMode',
-                parameter:avSession.LoopMode.LOOP_MODE_SINGLE}).then(() => {
+            await controller.sendControlCommand({
+                command: 'setLoopMode',
+                parameter: avSession.LoopMode.LOOP_MODE_SINGLE
+            }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2426,7 +2523,7 @@ export default function AVSession() {
 
             session.off('toggleFavorite');
 
-            await controller.sendControlCommand({command:'toggleFavorite', parameter:'false'}).then(() => {
+            await controller.sendControlCommand({ command: 'toggleFavorite', parameter: 'false' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2465,7 +2562,7 @@ export default function AVSession() {
 
             session.off('toggleFavorite', callback1);
 
-            await controller.sendControlCommand({command:'toggleFavorite', parameter:'false'}).then(() => {
+            await controller.sendControlCommand({ command: 'toggleFavorite', parameter: 'false' }).then(() => {
                 console.info('TestLog: Controller send command successfully');
             }).catch((err) => {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
@@ -2559,6 +2656,112 @@ export default function AVSession() {
                 expect(false).assertTrue();
             });
             await sleep(500);
+            done();
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100
+        * @tc.name      : GETOUTPUTDEVICE_PROMISE_0100
+        * @tc.desc      : Testing get output device
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100', 0, async function (done) {
+            session.on('outputDeviceChange', (callback) => {
+                if (!callback.isRemote) {
+                    console.info(callback.audioDeviceId.size);
+                    console.info(callback.deviceName.size);
+                    console.info('outputDeviceChange callback registration successful');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('outputDeviceChange callback registration fail');
+                    expect(false).assertTrue();
+                }
+            });
+
+            session.off('outputDeviceChange');
+
+            await session.getOutputDevice().then((data) => {
+                if (!data.isRemote) {
+                    expect(true).assertTrue();
+                } else {
+					console.info(avSession.OutputDeviceInfo.isRemote);
+					console.info(avSession.OutputDeviceInfo.audioDeviceId.size);
+					console.info(avSession.OutputDeviceInfo.deviceName.size);
+                    console.info('getOutputDevice successfully');
+                    console.info('Get device information failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            })
+            done();
+        })
+        
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0100
+         * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
+         * @tc.desc      : Testing get output device
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0100', 0, async function (done) {
+            session.getOutputDevice((err, value) => {
+                if (err) {
+                    console.info(`Get device information BusinessError: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else if (!value.isRemote) {
+                    console.info('Get device information successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('Get device information failed');
+                    expect(false).assertTrue();
+                }
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_PROMISE_0100
+         * @tc.name      : GETCONTROLLER_PROMISE_0100
+         * @tc.desc      : Testing get controller
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_PROMISE_0100', 0, async function (done) {
+            await session.getController().then((data) => {
+                console.info('Get controller successfully');
+                expect(true).assertTrue();
+            }).catch((err) => {
+                console.info('Get controller failed');
+                console.info(`Get controller BusinessError: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_CALLBACK_0100
+         * @tc.name      : GETCONTROLLER_CALLBACK_0100
+         * @tc.desc      : Testing get controller
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_CALLBACK_0100', 0, async function (done) {
+            session.getController((err, data) => {
+                if (err) {
+                    console.info('Get controller failed');
+                    expect(false).assertTrue();
+                } else {
+                    console.info('Get controller successfully');
+                    expect(true).assertTrue();
+                }
+            })
             done();
         })
     })

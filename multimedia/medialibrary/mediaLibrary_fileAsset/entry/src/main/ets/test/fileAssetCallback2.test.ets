@@ -55,7 +55,7 @@ export default function fileAssetCallback2Test(abilityContext) {
                 const oldVal = asset[prop]
                 asset[prop] = val;
                 const id = asset.id;
-                await asset.commitModify(async (err) => {
+                asset.commitModify(async (err) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
                         expect.assertFail();
@@ -69,7 +69,6 @@ export default function fileAssetCallback2Test(abilityContext) {
                     const fetchFileResultById = await media.getFileAssets(currentfetchOp);
                     const currentAsset = await fetchFileResultById.getFirstObject();
                     expect(currentAsset[prop]).assertEqual(val);
-
                     asset[prop] = oldVal;
                     await asset.commitModify();
                     await fetchFileResult.close();
@@ -83,6 +82,30 @@ export default function fileAssetCallback2Test(abilityContext) {
             }
         }
 
+        const abnormalCheckCommitModify = async function (done, testNum, fetchOp, prop, val) {
+            try {
+                const fetchFileResult = await media.getFileAssets(fetchOp);
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                if (!checkAssetCountPass) return;
+                const asset = await fetchFileResult.getFirstObject();
+                asset[prop] = val;
+                asset.commitModify(async (err) => {
+                    if (err) {
+                        console.info(`${testNum} passed : ${err}`)
+                        expect(true).assertTrue();
+                        done();
+                        return;
+                    }
+                    expect.assertFail();
+                    done(); 
+                });
+
+            } catch (error) {
+                console.info(`${testNum} error : ${error}`)
+                expect(false).assertTrue();
+                done();
+            }
+        }
         
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_001
@@ -150,6 +173,84 @@ export default function fileAssetCallback2Test(abilityContext) {
         });
 
         /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_005
+         * @tc.name      : commitModify
+         * @tc.desc      : Modify displayName '中中....jpg' (83)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_005'
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '05', IMAGE_TYPE);
+            let prop = 'displayName'
+            let newName = "";
+            for (var i = 0; i < 83; i++) {
+                newName += "中";
+            }
+            let val = newName + '.jpg'
+            await checkCommitModify(done, testNum, fetchOp, prop, val)
+        });
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_006
+         * @tc.name      : commitModify
+         * @tc.desc      : Modify displayName  'aaaaaaa....jpg' (255)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_006'
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '06', IMAGE_TYPE);
+            let prop = 'displayName'
+            let newName = "";
+            for (var i = 0; i < 251; i++) {
+                newName += "a";
+            }
+            let val = newName + '.jpg'
+            await checkCommitModify(done, testNum, fetchOp, prop, val)
+        });
+
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_009
+         * @tc.name      : commitModify
+         * @tc.desc      : Modify displayName '中中....jpg' (84)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_009', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_009'
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '09', IMAGE_TYPE);
+            let prop = 'displayName'
+            let newName = "";
+            for (var i = 0; i < 84; i++) {
+                newName += "中";
+            }
+            let val = newName + '.jpg'
+            await abnormalCheckCommitModify(done, testNum, fetchOp, prop, val)
+        });
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_010
+         * @tc.name      : commitModify
+         * @tc.desc      : Modify displayName  'aaaaaaa....jpg' (256)
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_010', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_010'
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '010', IMAGE_TYPE);
+            let prop = 'displayName'
+            let newName = "";
+            for (var i = 0; i < 252; i++) {
+                newName += "a";
+            }
+            let val = newName + '.jpg'
+            await abnormalCheckCommitModify(done, testNum, fetchOp, prop, val)
+        });
+
+        /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001
          * @tc.name      : isDirectory
          * @tc.desc      : isDirectory asset
@@ -160,7 +261,7 @@ export default function fileAssetCallback2Test(abilityContext) {
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001', 0, async function (done) {
             try {
                 let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001'
-                let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '05', IMAGE_TYPE);
+                let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '013', IMAGE_TYPE);
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 const asset = await fetchFileResult.getFirstObject();
                 asset.isDirectory((err, isDir) =>{

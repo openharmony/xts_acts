@@ -23,7 +23,8 @@
         "distro": {
             "deliveryWithInstall": true,
             "moduleName": "entry",
-            "moduleType": "entry"
+            "moduleType": "entry",
+            "installationFree": false
         },
         "abilities": [
             {
@@ -61,7 +62,19 @@
                 "type": "page",
                 "visible": true,
                 "launchType": "standard"
-            }
+            },
+            {
+                "backgroundModes": [
+                  "location"
+                ],
+                "visible": true,
+                "srcPath": "ServiceAbility",
+                "name": ".ServiceAbility",
+                "icon": "$media:icon",
+                "srcLanguage": "js",
+                "description": "$string:description_serviceability",
+                "type": "service"
+              }
         ],
         "js": [
             {
