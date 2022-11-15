@@ -1293,6 +1293,7 @@ describe('audioManagerApi9', function () {
         }
         done();
     })
+
     /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0100
      *@tc.name      : OnRingMode - RINGER_MODE_NORMAL
@@ -1580,15 +1581,15 @@ describe('audioManagerApi9', function () {
     it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0300', 1, async function (done) {
         try{
             const PROMISE = await streamManager.isActive(stringParameter);
-            console.log(`${TagFrmwk}: setMicrophoneMute : FAIL : message:${err.message}`);
+            console.log(`${TagFrmwk}: isActive : FAIL : message:${err.message}`);
             expect(false).assertTrue();
         } catch (err) {
             console.log('err :' + err.code)
             if (err.code == 6800101) {
-                console.log(`${TagFrmwk}: setMicrophoneMute : PASS : message:${err.message}`);
+                console.log(`${TagFrmwk}: isActive : PASS : message:${err.message}`);
                 expect(true).assertTrue();
             }else {
-                console.log(`${TagFrmwk}: setMicrophoneMute : FAIL : message:${err.message}`);
+                console.log(`${TagFrmwk}: isActive : FAIL : message:${err.message}`);
                 expect(false).assertTrue();
             }
         }
@@ -1609,70 +1610,15 @@ describe('audioManagerApi9', function () {
             if (err) {
                 console.log('err :' + err.code)
                 if (err.code == 6800104) {
-                    console.log(`${TagFrmwk}: setMicrophoneMute : PASS : message:${err.message}`);
+                    console.log(`${TagFrmwk}: isActive : PASS : message:${err.message}`);
                     expect(true).assertTrue();
                 }else {
-                    console.log(`${TagFrmwk}: setMicrophoneMute : FAIL : message:${err.message}`);
+                    console.log(`${TagFrmwk}: isActive : FAIL : message:${err.message}`);
                     expect(false).assertTrue();
                 }
             }
             else {
-                console.error(`audioManagerErrorCodeTest: failed to setMicrophoneMute: Callback:  ${err.message}`);
-                expect(false).assertTrue();
-            };
-            done();
-        });
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0300
-     *@tc.name      : isActive - Media - Promise
-     *@tc.desc      : isActive - Media - Promise - When stream is NOT playing
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 1
-     */
-     it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0300', 1, async function (done) {
-        try{
-            const PROMISE = await streamManager.isActive(stringParameter);
-            console.log(`${TagFrmwk}: setMicrophoneMute : FAIL : message:${err.message}`);
-            expect(false).assertTrue();
-        } catch (err) {
-            console.log('err :' + err.code)
-            if (err.code == 6800101) {
-                console.log(`${TagFrmwk}: setMicrophoneMute : PASS : message:${err.message}`);
-                expect(true).assertTrue();
-            }else {
-                console.log(`${TagFrmwk}: setMicrophoneMute : FAIL : message:${err.message}`);
-                expect(false).assertTrue();
-            }
-        }
-        done();
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0400
-     *@tc.name      : isActive - Media - Callback
-     *@tc.desc      : isActive - Media - Callback - When stream is NOT playing
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0400', 1, function (done) {
-        console.log(`${TagFrmwk}: Callback : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS`);
-        streamManager.isActive(numberParameter, (err, data) => {
-            if (err) {
-                console.log('err :' + err.code)
-                if (err.code == 6800104) {
-                    console.log(`${TagFrmwk}: setMicrophoneMute : PASS : message:${err.message}`);
-                    expect(true).assertTrue();
-                }else {
-                    console.log(`${TagFrmwk}: setMicrophoneMute : FAIL : message:${err.message}`);
-                    expect(false).assertTrue();
-                }
-            }
-            else {
-                console.error(`audioManagerErrorCodeTest: failed to setMicrophoneMute: Callback:  ${err.message}`);
+                console.error(`audioManagerErrorCodeTest: failed to isActive: Callback:  ${err.message}`);
                 expect(false).assertTrue();
             };
             done();

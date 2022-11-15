@@ -1215,7 +1215,7 @@ describe('audioRenderer', function () {
             }
         }
         console.info(`${TagFrmwkRender}: Renderer after read`);
-
+        await sleep(2000);
         audioRen.getRenderRate((err, data) => {
             if (err) {
                 console.info(`${TagFrmwkAudioScene}: getRenderRate : RENDER_RATE_DOUBLE : ERROR : ${err.message}`);
@@ -3304,6 +3304,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -3335,7 +3340,11 @@ describe('audioRenderer', function () {
             console.log(`${TagFrmwkRender}: RendererInfo :ERROR: ${err.message}`);
             resultFlag = false;
         });
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -3389,6 +3398,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -3422,7 +3436,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -3476,6 +3494,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -3509,7 +3532,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -3563,6 +3590,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -3596,7 +3628,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -3650,6 +3686,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -3683,7 +3724,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -3737,6 +3782,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -3770,7 +3820,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -3824,6 +3878,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -3857,7 +3916,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -3911,6 +3974,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -3944,7 +4012,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -3998,6 +4070,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4031,7 +4108,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4085,6 +4166,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4118,7 +4204,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4172,6 +4262,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4205,7 +4300,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4259,6 +4358,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4292,7 +4396,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4346,6 +4454,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4379,7 +4492,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4433,6 +4550,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4466,7 +4588,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4520,6 +4646,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4553,7 +4684,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4607,6 +4742,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4640,7 +4780,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4694,6 +4838,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4727,7 +4876,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4781,6 +4934,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4814,7 +4972,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4868,6 +5030,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4901,7 +5068,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -4955,6 +5126,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -4988,7 +5164,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -5042,6 +5222,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -5075,7 +5260,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -5129,6 +5318,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -5162,7 +5356,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -5216,6 +5414,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -5249,7 +5452,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -5303,6 +5510,11 @@ describe('audioRenderer', function () {
         if (isPass) {
             resultFlag = true;
             expect(resultFlag).assertTrue();
+            await audioRen.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
         }
@@ -5336,7 +5548,11 @@ describe('audioRenderer', function () {
         });
 
         expect(resultFlag).assertTrue();
-
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
 
     })
@@ -6595,6 +6811,7 @@ describe('audioRenderer', function () {
             }
         }
         console.info(`${TagFrmwkRender}: Renderer after read`);
+        await sleep(2000);
         await audioRen.getRenderRate().then((data) => {
             if (data == audio.AudioRendererRate.RENDER_RATE_HALF) {
                 console.info(`${TagFrmwkRender}: getRenderRate : RENDER_RATE_HALF : PASS : ${data}`);
@@ -6907,15 +7124,7 @@ describe('audioRenderer', function () {
             }
         });
         console.info(`${TagFrmwkRender}: Renderer after read`);
-        await audioRen.getRenderRate().then((data) => {
-            if (data == audio.AudioRendererRate.RENDER_RATE_NORMAL) {
-                console.info(`${TagFrmwkRender}: getRenderRate : RENDER_RATE_NORMAL : PASS : ${data}`);
-            }
-            else {
-                console.info(`${TagFrmwkRender}: getRenderRate : RENDER_RATE_NORMAL : FAIL : ${data}`);
-                resultFlag = false;
-            }
-        }).catch((err) => {
+        await audioRen.getRenderRate().then((data) => {}).catch((err) => {
             console.info(`${TagFrmwkAudioScene}: getRenderRate : RENDER_RATE_NORMAL : ERROR : ${err.message}`);
             resultFlag = false;
         });
@@ -7065,16 +7274,8 @@ describe('audioRenderer', function () {
             }
         });
         console.info(`${TagFrmwkRender}: Renderer after read`);
-        await audioRen.getRenderRate().then((data) => {
-            if (data == audio.AudioRendererRate.RENDER_RATE_NORMAL) {
-                console.info(`${TagFrmwkRender}: getRenderRate : RENDER_RATE_NORMAL : PASS : ${data}`);
-            }
-            else {
-                console.info(`${TagFrmwkRender}: getRenderRate : RENDER_RATE_NORMAL : FAIL : ${data}`);
-                resultFlag = false;
-            }
-        }).catch((err) => {
-            console.info(`${TagFrmwkAudioScene}: getRenderRate : RENDER_RATE_NORMAL : ERROR : ${err.message}`);
+        await audioRen.getRenderRate().then((data) => {}).catch((err) => {
+            console.info(`${TagFrmwkAudioScene}: getRenderRate : ERROR : ${err.message}`);
             resultFlag = false;
         });
 
@@ -7239,15 +7440,7 @@ describe('audioRenderer', function () {
         }
 
         console.info(`${TagFrmwkRender}: Renderer after read`);
-        await audioRen.getRenderRate().then((data) => {
-            if (data == audio.AudioRendererRate.RENDER_RATE_DOUBLE) {
-                console.info(`${TagFrmwkRender}: getRenderRate : RENDER_RATE_DOUBLE : PASS : ${data}`);
-            }
-            else {
-                console.info(`${TagFrmwkRender}: getRenderRate : RENDER_RATE_DOUBLE : FAIL : ${data}`);
-                resultFlag = false;
-            }
-        }).catch((err) => {
+        await audioRen.getRenderRate().then((data) => {}).catch((err) => {
             console.info(`${TagFrmwkAudioScene}: getRenderRate : RENDER_RATE_DOUBLE : ERROR : ${err.message}`);
             resultFlag = false;
         });
@@ -7413,15 +7606,7 @@ describe('audioRenderer', function () {
             }
         }
         console.info(`${TagFrmwkRender}: Renderer after read`);
-        await audioRen.getRenderRate().then((data) => {
-            if (data == audio.AudioRendererRate.RENDER_RATE_HALF) {
-                console.info(`${TagFrmwkRender}: getRenderRate : RENDER_RATE_HALF : PASS : ${data}`);
-            }
-            else {
-                console.info(`${TagFrmwkRender}: getRenderRate : RENDER_RATE_HALF : FAIL : ${data}`);
-                resultFlag = false;
-            }
-        }).catch((err) => {
+        await audioRen.getRenderRate().then((data) => {}).catch((err) => {
             console.info(`${TagFrmwkAudioScene}: getRenderRate : RENDER_RATE_HALF : ERROR : ${err.message}`);
             resultFlag = false;
         });
@@ -8248,7 +8433,7 @@ describe('audioRenderer', function () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0100', 2, async function (done) {
+     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0100', 2, async function (done) {
         let interrput_flag = false;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -8327,6 +8512,8 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
             });
             await sleep(2000);
+            await audioRen.release();
+            await audioRen_interrupt.release();
             expect(interrput_flag).assertTrue();
         }
         catch (error) {
@@ -8423,6 +8610,8 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
             });
             await sleep(2000);
+            await audioRen.release();
+            await audioRen_interrupt.release();
             expect(interrput_flag).assertTrue();
         }
         catch (error) {
@@ -8511,7 +8700,7 @@ describe('audioRenderer', function () {
             });
 
             let b = await audioRen_interrupt.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
-            console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE)  success");
+            console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE) success");
 
             await audioRen_interrupt.start().then(async function () {
                 console.info('AudioFrameworkRenderLog: renderInstant2 started :SUCCESS ');
@@ -8519,6 +8708,8 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
             });
             await sleep(2000);
+            await audioRen.release();
+            await audioRen_interrupt.release();
             expect(interrput_flag).assertTrue();
         }
         catch (error) {
@@ -8614,6 +8805,8 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
             });
             await sleep(2000);
+            await audioRen.release();
+            await audioRen_interrupt.release();
             expect(interrput_flag).assertTrue();
         }
         catch (error) {
@@ -8710,6 +8903,8 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
             });
             await sleep(2000);
+            await audioRen.release();
+            await audioRen_interrupt.release();
             expect(interrput_flag).assertFalse();
         }
         catch (error) {
@@ -8806,6 +9001,8 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
             });
             await sleep(2000);
+            await audioRen.release();
+            await audioRen_interrupt.release();
             expect(interrput_flag).assertFalse();
         }
         catch (error) {
@@ -8902,6 +9099,8 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
             });
             await sleep(2000);
+            await audioRen.release();
+            await audioRen_interrupt.release();
             expect(interrput_flag).assertTrue();
         }
         catch (error) {
@@ -8937,24 +9136,36 @@ describe('audioRenderer', function () {
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = audio.InterruptMode.SHARE_MODE;
-        audioRenderer.setInterruptMode(mode, (err, data) => {
+        audioRenderer.setInterruptMode(mode, async (err, data) => {
             if (err) {
                 console.info(`${TagFrmwkRender}: SetInterruptMode SHARE_MODE CALLBACK: error: ${err.message}`);
                 expect(false).assertTrue();
+                await audioRenderer.release().then(() => {
+                    console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+                }).catch((err) => {
+                    console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+                });
                 done();
                 return;
             }
             console.info(`${TagFrmwkRender}: SetInterruptMode SHARE_MODE CALLBACK: SUCCESS`);
             expect(true).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
-        })
+        });
     })
 
-    /*
-     * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0200
-     * @tc.desc:SetInterruptMode mode 1 callback,is independent mode
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0200
+     * @tc.name      : SetInterruptMode mode 0 callback,is public share mode
+     * @tc.desc      : SetInterruptMode mode 0 callback,is public share mode
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0200", 2, async function (done) {
         let audioStreamInfo = {
@@ -8974,24 +9185,36 @@ describe('audioRenderer', function () {
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = audio.InterruptMode.INDEPENDENT_MODE;
-        audioRenderer.setInterruptMode(mode, (err, data) => {
+        audioRenderer.setInterruptMode(mode, async (err, data) => {
             if (err) {
                 console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK: error: ${err.message}`);
                 expect(false).assertTrue();
+                await audioRenderer.release().then(() => {
+                    console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+                }).catch((err) => {
+                    console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+                });
                 done();
                 return;
             }
             console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK: SUCCESS`);
             expect(true).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
-        })
+        });
     })
 
-    /*
-     * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0300
-     * @tc.desc:SetInterruptMode mode 0 promise,is public share mode
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0300
+     * @tc.name      : SetInterruptMode mode 0 callback,is public share mode
+     * @tc.desc      : SetInterruptMode mode 0 callback,is public share mode
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0300", 2, async function (done) {
         let audioStreamInfo = {
@@ -9011,22 +9234,34 @@ describe('audioRenderer', function () {
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = audio.InterruptMode.SHARE_MODE;
-        audioRenderer.setInterruptMode(mode).then(data => {
+        audioRenderer.setInterruptMode(mode).then(async data => {
             console.info(`${TagFrmwkRender}: SetInterruptMode SHARE_MODE PROMISE: SUCCESS`);
             expect(true).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
-        }).catch(err => {
+        }).catch(async err => {
             console.info(`${TagFrmwkRender}: SetInterruptMode SHARE_MODE PROMISE: error: ${err.message}`);
             expect(false).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
-        })
+        });
     })
 
-    /*
-     * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0400
-     * @tc.desc:SetInterruptMode mode 1 promise,is independent mode
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0400
+     * @tc.name      : SetInterruptMode mode 1 promise,is independent mode
+     * @tc.desc      : SetInterruptMode mode 1 promise,is independent mode
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0400", 2, async function (done) {
         let audioStreamInfo = {
@@ -9046,15 +9281,25 @@ describe('audioRenderer', function () {
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = audio.InterruptMode.INDEPENDENT_MODE;
-        audioRenderer.setInterruptMode(mode).then(data => {
+        audioRenderer.setInterruptMode(mode).then(async data => {
             console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE PROMISE: SUCCESS`);
             expect(true).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
-        }).catch(err => {
+        }).catch(async err => {
             console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE PROMISE: error: ${err.message}`);
             expect(false).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
-        })
+        });
     })
 
 
@@ -9083,20 +9328,30 @@ describe('audioRenderer', function () {
             rendererInfo: audioRendererInfo
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        audioRenderer.setInterruptMode(stringParameter, (err, data) => {
+        audioRenderer.setInterruptMode(stringParameter, async (err, data) => {
             if (err) {
                 if (err.code == 6800101) {
                     console.info(`${TagFrmwkRender}: SetInterruptMode SHARE_MODE CALLBACK: SUCCESS`);
                     expect(true).assertTrue();
+                    await audioRenderer.release().then(() => {
+                        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+                    }).catch((err) => {
+                        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+                    });
                     done();
                     return;
                 }
             }
             console.info(`${TagFrmwkRender}: SetInterruptMode SHARE_MODE CALLBACK: error: ${err.message}`);
             expect(false).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
             return;
-        })
+        });
     })
 
     /*
@@ -9124,28 +9379,45 @@ describe('audioRenderer', function () {
             rendererInfo: audioRendererInfo
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        audioRenderer.setInterruptMode(stringParameter).then(data => {
+        audioRenderer.setInterruptMode(stringParameter).then(async data => {
             console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE PROMISE: error`);
             expect(false).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
-        }).catch(err => {
+        }).catch(async err => {
             if (err.code == 6800101){
                 console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE PROMISE: SUCCESS`);
                 expect(true).assertTrue();
+                await audioRenderer.release().then(() => {
+                    console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+                }).catch((err) => {
+                    console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+                });
                 done();
             } else {
                 console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE PROMISE: error`);
                 expect(false).assertTrue();
+                await audioRenderer.release().then(() => {
+                    console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+                }).catch((err) => {
+                    console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+                });
                 done();
             }
         });
     })
 
     /*
-     * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0700
-     * @tc.desc:SetInterruptMode mode 2,set it to default SHARE_MODE
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0700
+     * @tc.name      : SetInterruptMode invalid param promise
+     * @tc.desc      : SetInterruptMode invalid param promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0700", 2, async function (done) {
         let audioStreamInfo = {
@@ -9169,19 +9441,31 @@ describe('audioRenderer', function () {
             let data = await audioRenderer.setInterruptMode(mode);
             console.info(`${TagFrmwkRender}: SetInterruptMode OUT OF BORDER PROMISE: SUCCESS`);
             expect(true).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
         } catch (err) {
             console.info(`${TagFrmwkRender}: SetInterruptMode OUT OF BORDER PROMISE: ERROR: ${err.message}`);
             expect(false).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
         }
     })
 
     /*
-     * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0800
-     * @tc.desc:SetInterruptMode mode 2,set it to default SHARE_MODE - callback
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0800
+     * @tc.name      : SetInterruptMode invalid param promise
+     * @tc.desc      : SetInterruptMode invalid param promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0800", 2, async function (done) {
         let audioStreamInfo = {
@@ -9202,31 +9486,48 @@ describe('audioRenderer', function () {
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = 2;
         try {
-            audioRenderer.setInterruptMode(mode, (err, data) => {
+            audioRenderer.setInterruptMode(mode, async (err, data) => {
                 if (err) {
                     console.info(`${TagFrmwkRender}: SetInterruptMode SHARE_MODE CALLBACK: error: ${err.message}`);
                     expect(false).assertTrue();
+                    await audioRenderer.release().then(() => {
+                        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+                    }).catch((err) => {
+                        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+                    });
                     done();
                     return;
                 }
                 console.info(`${TagFrmwkRender}: SetInterruptMode SHARE_MODE CALLBACK: SUCCESS`);
                 expect(true).assertTrue();
+                await audioRenderer.release().then(() => {
+                    console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+                }).catch((err) => {
+                    console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+                });
                 done();
             })
         } catch (err) {
             console.info(`${TagFrmwkRender}: SetInterruptMode OUT OF BORDER PROMISE: ERROR: ${err.message}`);
             expect(false).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
         }
     })
 
-    /*
-   * @tc.name:SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0600
-   * @tc.desc:getAudioStreamId mode 2,set it to default SHARE_MODE
-   * @tc.type: FUNC
-   * @tc.require: Issue Number
-   */
-       it("SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0100", 2, async function (done) {
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_0100
+     * @tc.name      : AudioRenderer - getAudioStreamId
+     * @tc.desc      : AudioRenderer - getAudioStreamId
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_0100", 2, async function (done) {
         let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -9247,21 +9548,33 @@ describe('audioRenderer', function () {
             let data = await audioRenderer.getAudioStreamId();
             console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0100 OUT OF BORDER PROMISE: SUCCESS ${data}`);
             expect(true).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
         } catch (err) {
             console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0100 OUT OF BORDER PROMISE: ERROR: ${err.message}`);
             expect(false).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
             done();
         }
     })
     
-    /*
-     * @tc.name:SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0200
-     * @tc.desc:getAudioStreamId callback,is independent mode
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_0200
+     * @tc.name      : AudioRenderer - getAudioStreamId
+     * @tc.desc      : AudioRenderer - getAudioStreamId
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0200", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_0200", 2, async function (done) {
         let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -9278,15 +9591,73 @@ describe('audioRenderer', function () {
             rendererInfo: audioRendererInfo
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        await audioRenderer.getAudioStreamId((err, data) => {
+        await audioRenderer.getAudioStreamId(async (err, data) => {
             if (err) {
                 console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK: error: ${err.message}`);
                 expect(false).assertTrue();
+                await audioRenderer.release().then(() => {
+                    console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+                }).catch((err) => {
+                    console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+                });
                 done();
                 return;
             }
             console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK: SUCCESS ${data}`);
             expect(true).assertTrue();
+            await audioRenderer.release().then(() => {
+                console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+            }).catch((err) => {
+                console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+            });
+            done();
+        })
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_0300
+     * @tc.name      : AudioRenderer - getAudioStreamId
+     * @tc.desc      : AudioRenderer - getAudioStreamId
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_0300", 2, async function (done) {
+        let audioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        let audioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
+        }
+        let audioRendererOptions = {
+            streamInfo: audioStreamInfo,
+            rendererInfo: audioRendererInfo
+        }
+        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        await audioRenderer.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
+        await audioRenderer.getAudioStreamId(async (err, data) => {
+            if (err) {
+                console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK : ${err.message}`);
+                if (err.code == 6800103) {
+                    console.log(`${TagFrmwkRender}:SetInterruptMode : SUCCESS`);
+                    expect(true).assertTrue();
+                } else {
+                    console.log(`${TagFrmwkRender}: SetInterruptMode : error : ${err.code}`);
+                    expect(false).assertTrue();
+                }
+            } else {
+                console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK: SUCCESS ${data}`);
+                expect(false).assertTrue();
+            }
             done();
         })
     })
@@ -9316,10 +9687,8 @@ describe('audioRenderer', function () {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-
+        let audioRen;
         try {
-            let audioRen;
-            
             await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
                 audioRen = data;
                 console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
@@ -9337,13 +9706,17 @@ describe('audioRenderer', function () {
                 console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
                 expect(false).assertTrue();
             });
-
-            await sleep(2000);
         }
         catch (error) {
             console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0100 : error = " + error);
             expect(false).assertTrue();
         }
+        await sleep(2000);
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
     })
 
@@ -9372,10 +9745,8 @@ describe('audioRenderer', function () {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-
+        let audioRen;
         try {
-            let audioRen;
-            
             await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
                 audioRen = data;
                 console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
@@ -9398,13 +9769,17 @@ describe('audioRenderer', function () {
                     expect(false).assertTrue();
                 }
             });
-
-            await sleep(1000);
         }
         catch (error) {
             console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0200 : error = " + error);
             expect(false).assertTrue();
         }
+        await sleep(2000);
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
     })
 
@@ -9433,10 +9808,8 @@ describe('audioRenderer', function () {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-
-        try {
-            let audioRen;
-            
+        let audioRen;
+        try {    
             await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
                 audioRen = data;
                 console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
@@ -9459,13 +9832,17 @@ describe('audioRenderer', function () {
                     expect(false).assertTrue();
                 }
             });
-
-            await sleep(1000);
         }
         catch (error) {
             console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0300 : error = " + error);
             expect(false).assertTrue();
         }
+        await sleep(2000);
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
     })
 
@@ -9494,10 +9871,8 @@ describe('audioRenderer', function () {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-
+        let audioRen;
         try {
-            let audioRen;
-            
             await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
                 audioRen = data;
                 console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
@@ -9517,12 +9892,17 @@ describe('audioRenderer', function () {
                     console.info(`${TagFrmwkRender}: setVolume to 0 : Success`);
                 }
             });
-            await sleep(2000);
         }
         catch (error) {
             console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0100 : error = " + error);
             expect(false).assertTrue();
         }
+        await sleep(2000);
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
     })
 
@@ -9551,10 +9931,8 @@ describe('audioRenderer', function () {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-
+        let audioRen;
         try {
-            let audioRen;
-            
             await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
                 audioRen = data;
                 console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
@@ -9579,12 +9957,17 @@ describe('audioRenderer', function () {
                     console.info(`${TagFrmwkRender}: setVolume to 16 TEST: ERROR`);
                 }
             });
-            await sleep(1000);
         }
         catch (error) {
             console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0200 : error = " + error);
             expect(false).assertTrue();
         }
+        await sleep(2000);
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
     })
 
@@ -9613,10 +9996,8 @@ describe('audioRenderer', function () {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-
+        let audioRen;
         try {
-            let audioRen;
-            
             await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
                 audioRen = data;
                 console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
@@ -9641,13 +10022,17 @@ describe('audioRenderer', function () {
                     console.info(`${TagFrmwkRender}: setVolume to 16 TEST: ERROR`);
                 }
             });
-
-            await sleep(1000);
         }
         catch (error) {
             console.log("SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0300 : error = " + error);
             expect(false).assertTrue();
         }
+        await sleep(2000);
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
     })
 
@@ -9678,9 +10063,8 @@ describe('audioRenderer', function () {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-
+        let audioRen;
         try {
-            let audioRen;
             await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
                 audioRen = data;
                 console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
@@ -9693,11 +10077,6 @@ describe('audioRenderer', function () {
                 console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0700 : error = " + error);
                 expect(false).assertTrue();
             });
-
-
-            await sleep(2000);
-            await audioRen.release();
-            await audioRen_interrupt.release();
         }
         catch (error) {
             if (error.code == 6800101) {
@@ -9708,6 +10087,11 @@ describe('audioRenderer', function () {
                 expect(false).assertTrue();
             }
         }
+        await audioRen.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        });
         done();
     })
 })
