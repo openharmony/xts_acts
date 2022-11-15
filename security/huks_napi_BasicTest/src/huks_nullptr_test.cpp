@@ -82,8 +82,8 @@ HWTEST_F(HuksNullptrTest, Security_HUKS_NAPI_nullptr_0100, TestSize.Level0)
     ret=OH_Huks_IsParamSetValid(paramSetNullptr,0);
     EXPECT_NE(ret.errorCode, OH_HUKS_SUCCESS) << "this case failed.";
 
-    struct OH_Huks_Param baseParam = { .tag = OH_HUKS_TAG_INVALID, .uint64Param = (uint64_t)1 };
-    struct OH_Huks_Param otherParam = { .tag = OH_HUKS_TAG_INVALID, .uint64Param = (uint64_t)2 };
+    struct OH_Huks_Param baseParam = { .tag = OH_HUKS_TAG_ALGORITHM, .uint64Param = (uint64_t)1 };
+    struct OH_Huks_Param otherParam = { .tag = OH_HUKS_TAG_ALGORITHM, .uint64Param = (uint64_t)2 };
     ret=OH_Huks_CheckParamMatch(&baseParam,&otherParam);
     EXPECT_NE(ret.errorCode, OH_HUKS_SUCCESS) << "this case failed.";
 
