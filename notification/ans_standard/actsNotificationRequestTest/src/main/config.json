@@ -17,8 +17,8 @@
         "package": "com.example.actsnotificationrequest",
         "name": ".entry",
         "deviceType": [
-      "default",
-            "phone"
+            "default",
+            "tablet"
         ],
         "distro": {
             "deliveryWithInstall": true,
