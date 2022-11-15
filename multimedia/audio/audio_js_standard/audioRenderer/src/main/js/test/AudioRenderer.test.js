@@ -24,13 +24,13 @@ describe('audioRenderer', function () {
     let fdRead;
     let readPath;
     const AUDIOMANAGER = audio.getAudioManager();
-    console.info(`${TagFrmwkRender}: Create AudioManger Object JS Framework`);
     let TagFrmwkRender = "AudioFrameworkRenderLog";
     let TagFrmwk = "AudioFrameworkTest";
     let TagFrmwkAudioScene = "AudioFrameworkAudioScene";
     let fdPath;
     let filePath;
-
+    console.info(`${TagFrmwkRender}: Create AudioManger Object JS Framework`);
+    
     beforeAll(function () {
         console.info(`${TagFrmwkRender}: beforeAll: Prerequisites at the test suite level`);
     })
