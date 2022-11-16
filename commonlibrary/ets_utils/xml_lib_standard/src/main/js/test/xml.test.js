@@ -1406,10 +1406,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError001
+     * @tc.name: testXmlBusinessError001
      * @tc.desc: To XML text to JavaScript object.
      */
-     it('testBusinessError001', 0, function () {
+     it('testXmlBusinessError001', 0, function () {
         try {
             new xml.XmlSerializer(123,"utf-8");
         } catch (e) {
@@ -1418,10 +1418,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError002
+     * @tc.name: testXmlBusinessError002
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError002', 0, function () {
+    it('testXmlBusinessError002', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             new xml.XmlSerializer(arrayBuffer,123);
@@ -1431,10 +1431,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError003
+     * @tc.name: testXmlBusinessError003
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError003', 0, function () {
+    it('testXmlBusinessError003', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1445,10 +1445,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError004
+     * @tc.name: testXmlBusinessError004
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError004', 0, function () {
+    it('testXmlBusinessError004', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1460,10 +1460,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError005
+     * @tc.name: testXmlBusinessError005
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError005', 0, function () {
+    it('testXmlBusinessError005', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1475,10 +1475,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError006
+     * @tc.name: testXmlBusinessError006
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError006', 0, function () {
+    it('testXmlBusinessError006', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1491,10 +1491,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError007
+     * @tc.name: testXmlBusinessError007
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError007', 0, function () {
+    it('testXmlBusinessError007', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1506,10 +1506,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError008
+     * @tc.name: testXmlBusinessError008
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError008', 0, function () {
+    it('testXmlBusinessError008', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1521,10 +1521,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError009
+     * @tc.name: testXmlBusinessError009
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError009', 0, function () {
+    it('testXmlBusinessError009', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1536,10 +1536,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError010
+     * @tc.name: testXmlBusinessError010
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError010', 0, function () {
+    it('testXmlBusinessError010', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1551,10 +1551,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError011
+     * @tc.name: testXmlBusinessError011
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError0011', 0, function () {
+    it('testXmlBusinessError011', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1565,10 +1565,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError012
+     * @tc.name: testXmlBusinessError012
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError0012', 0, function () {
+    it('testXmlBusinessError012', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
@@ -1579,10 +1579,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError013
+     * @tc.name: testXmlBusinessError013
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError0013', 0, function () {
+    it('testXmlBusinessError013', 0, function () {
         try {
             new xml.XmlPullParser(111, 'UTF-8');
         } catch (e) {
@@ -1591,10 +1591,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError014
+     * @tc.name: testXmlBusinessError014
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError0014', 0, function () {
+    it('testXmlBusinessError014', 0, function () {
         try {
             var arrayBuffer = new ArrayBuffer(2048);
             new xml.XmlPullParser(arrayBuffer, 111);
@@ -1604,10 +1604,10 @@ describe('XmlSerializerXmlPullParserTest', function () {
     })
 
     /**
-     * @tc.name: testBusinessError015
+     * @tc.name: testXmlBusinessError015
      * @tc.desc: To XML text to JavaScript object.
      */
-    it('testBusinessError0015', 0, function () {
+    it('testXmlBusinessError015', 0, function () {
         try {
             var strXml =
                 '<?xml version="1.0" encoding="utf-8"?>' +
@@ -1641,7 +1641,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
                 str1 += name+':'+value;
                 return true;
             }
-            var options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func1}
+            var options = 111
             that.parse(options);
         } catch (e) {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be object")
