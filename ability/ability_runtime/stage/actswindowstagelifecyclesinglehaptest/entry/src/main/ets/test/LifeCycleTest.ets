@@ -410,22 +410,24 @@ export default function lifecycleTest() {
             transferStr0 += globalThis.list1[i];
           }
         }
-        console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
-        expect(transferStr0.indexOf("MainAbility5 onWindowStageCreate")!=-1).assertTrue();
-        expect(transferStr0.indexOf("MainAbility5 onWindowStageActive")!=-1).assertTrue();
-        expect(transferStr0.indexOf("MainAbility2 onWindowStageCreate")!=-1).assertTrue();
-        expect(transferStr0.indexOf("MainAbility2 onWindowStageActive")!=-1).assertTrue();
-        expect(transferStr0.indexOf("MainAbility5 onWindowStageInactive")!=-1).assertTrue();
-        expect(transferStr0.indexOf("MainAbility5 onWindowStageDestroy")!=-1).assertTrue();
-        expect(transferStr0.indexOf("MainAbility2 onWindowStageInactive")!=-1).assertTrue();
-        expect(transferStr0.indexOf("MainAbility2 onWindowStageDestroy")!=-1).assertTrue();
-        globalThis.applicationContext1
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-            console.log("------------Singlehap_WindowStageLifeCycleTest_0500 END-------------");
-            done();
-          })
+        setTimeout(()=>{
+            console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
+            expect(transferStr0.indexOf("MainAbility5 onWindowStageCreate")!=-1).assertTrue();
+            expect(transferStr0.indexOf("MainAbility5 onWindowStageActive")!=-1).assertTrue();
+            expect(transferStr0.indexOf("MainAbility2 onWindowStageCreate")!=-1).assertTrue();
+            expect(transferStr0.indexOf("MainAbility2 onWindowStageActive")!=-1).assertTrue();
+            expect(transferStr0.indexOf("MainAbility5 onWindowStageInactive")!=-1).assertTrue();
+            expect(transferStr0.indexOf("MainAbility5 onWindowStageDestroy")!=-1).assertTrue();
+            expect(transferStr0.indexOf("MainAbility2 onWindowStageInactive")!=-1).assertTrue();
+            expect(transferStr0.indexOf("MainAbility2 onWindowStageDestroy")!=-1).assertTrue();
+            globalThis.applicationContext1
+              .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
+                console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                ",data: " + JSON.stringify(data));
+                console.log("------------Singlehap_WindowStageLifeCycleTest_0500 END-------------");
+                done();
+              })
+        },1000)
       }, 3800);
     });
 
@@ -617,9 +619,9 @@ export default function lifecycleTest() {
     it("Singlehap_WindowStageLifeCycleTest_0800", 0, async function (done) {
       console.log("------------Singlehap_WindowStageLifeCycleTest_0800 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0800";
-      var id1;
-      var id2;
-      var str = {
+      let id1;
+      let id2;
+      let str = {
         "bundleName": "com.example.windowstagelifecycle_xts",
         "abilityName": "MainAbility6",
       }
@@ -634,7 +636,7 @@ export default function lifecycleTest() {
         console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid6));
         id1 = globalThis.callbackid6;
         console.log(TAG + " firstCallback id : " + JSON.stringify(id1));
-        var str1 = {
+        let str1 = {
           "bundleName": "com.example.windowstagelifecycle_xts",
           "abilityName": "MainAbility2",
         }
