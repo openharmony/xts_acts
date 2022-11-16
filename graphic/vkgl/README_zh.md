@@ -26,13 +26,19 @@ vkgl 是基于开源库VK-GL-CTS（版本：opengl-es-cts-3.2.8），进行移�
 
 其中具体测试项目为：
 
-* deqpgles2：对应vk-gl-cts库的 gles2-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例16492条，
-* deqpgles3：对应vk-gl-cts库的 gles3-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例44389条，
-* deqpgles31：对应vk-gl-cts库的 gles31-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例37854条，
-* khrgles2：对应vk-gl-cts库的 gles2-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例472条，
-* khrgles3：对应vk-gl-cts库的 gles3-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例4079条
-* khrgles31：对应vk-gl-cts库的 gles31-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例3497条
-* khrglesext：对应vk-gl-cts库的 glesext-khr-master.txt，路径为vk-gl-cts/external/openglcts/data/mustpass/gles/mustpass/master，包括用例335条
+* deqpgles2：对应vk-gl-cts库的 gles2.txt，路径为external/openglcts/data/mustpass,在此路径下有deqp和khr两种，在此我们选择deqp的case，共包括用例16492条，
+* deqpgles3：对应vk-gl-cts库的 gles3.txt，路径为external/openglcts/data/mustpass,在此路径下有deqp和khr两种，在此我们选择deqp的case，共包括用例44389条，
+* deqpgles31：对应vk-gl-cts库的 gles31.txt，路径为external/openglcts/data/mustpass,在此路径下有deqp和khr两种，在此我们选择deqp的case，共包括用例37854条，
+* khrgles2：对应vk-gl-cts库的 gles2-khr.txt，路径为external/openglcts/data/mustpass,在此路径下有deqp和khr两种，在此我们选择khr的case，共包括用例472条，
+* khrgles3：对应vk-gl-cts库的 gles3-khr.txt，路径为external/openglcts/data/mustpass,在此路径下有deqp和khr两种，在此我们选择khr的case，共包括用例4079条
+* khrgles31：对应vk-gl-cts库的 gles31-khr.txt，路径为external/openglcts/data/mustpass,在此路径下有deqp和khr两种，在此我们选择khr的case，共包括用例3497条
+* khrglesext：对应vk-gl-cts库的 glesext-khr.txt，路径为external/openglcts/data/mustpass,在此路径下有deqp和khr两种，在此我们选择khr的case，共包括用例335条
+
+测试套件执行流程为：
+```mermaid
+graph LR
+测试套件 --> ActsApp --> 三方库vkgl执行单元
+```
 
 #### 适配说明
 
@@ -70,7 +76,6 @@ vk-gl-cts --> spirv-tools
   └── win32
   ```
 
-  
 
 * vkgl测试套件的编译：
 
@@ -85,8 +90,7 @@ vk-gl-cts --> spirv-tools
           "webGL:webGL_hap_test",
           "windowstandard:window_hap_test",
           #增加下面内容------------------------------------------
-          "vkgl:VKGLCTSTest",			//xts测试框架测试套件
-          "vkgl:cpvkgl",				//xts测试打包脚本
+          "vkgl:cpvkgl",				//vkgl测试套件入口包括vkgl测试，测试打包脚本
           #到此为止---------------------------------------------
         ]
       } else {
@@ -98,7 +102,6 @@ vk-gl-cts --> spirv-tools
     }
     ```
 
-    
 
   * vkgl测试套件的编译命令（源码根目录执行）：
 
