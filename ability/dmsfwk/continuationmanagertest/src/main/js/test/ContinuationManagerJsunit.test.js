@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { UiDriver, BY } from '@ohos.uitest'
 import continuationManager from '@ohos.continuation.continuationManager';
 
 const TEST_DEVICE_ID = "test_deviceId";
@@ -24,6 +25,26 @@ describe('continuationManagerTest', function() {
 
     beforeAll(async function (done) {
         console.info('beforeAll');
+        var driver = UiDriver.create()
+        await driver.delayMs(2000);
+
+        var data_sync_allow = await driver.findComponent(BY.text("允许"))
+        await driver.delayMs(1000)
+        var wait_count = 0
+        while (data_sync_allow == null || data_sync_allow == undefined) {
+            data_sync_allow = await driver.findComponent(BY.text("允许"))
+            wait_count += 1
+            await driver.delayMs(1000)
+            if (wait_count == 3) {
+                break
+            }
+        }
+        if (data_sync_allow == null) {
+            console.info('应用非首次开启')
+        } else {
+            await data_sync_allow.click()
+            console.log('点击多设备授权框的允许按钮')
+        }
         done();
     })
 

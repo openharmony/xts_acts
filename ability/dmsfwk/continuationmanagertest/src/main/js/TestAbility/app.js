@@ -17,6 +17,19 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
 
+import featureAbility from '@ohos.ability.featureAbility';
+
+async function requestPermission() {
+    try {
+        let context = featureAbility.getContext();
+        await context.requestPermissionsFromUser(['ohos.permission.DISTRIBUTED_DATASYNC'], 666, (data) => {
+            console.info('TestApplication requestPermission data: ' + JSON.stringify(data));
+        });
+    } catch (err) {
+        console.error('TestApplication permission' + JSON.stringify(err));
+    }
+}
+
 export default {
     onCreate() {
         console.info('TestApplication onCreate')
@@ -24,6 +37,7 @@ export default {
         var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         console.info('start run testcase!!!')
         Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        requestPermission()
     },
     onDestroy() {
         console.info("TestApplication onDestroy");
