@@ -25,7 +25,7 @@ const LENGTHLIMIT = 512;
 const TOKENLENGTHLIMIT = 1024;
 const AUTHTYPELENGTHLIMIT = 1024;
 const OWNERLENGTHLIMIT = 1024;
-
+const ERR_JS_AUTH_TYPE_NOT_FOUND = 12300107;
 const OWNERSELF = "com.example.actsaccountoperatetest";
 export default function ActsAccountAuthToken() {
     describe('ActsAccountAuthToken', function () {
@@ -1335,7 +1335,7 @@ export default function ActsAccountAuthToken() {
                 await appAccountManager.deleteAuthToken("account_promise_repeatDelete",OWNERSELF,"aythType","promise_repeatDelete_token");
             }catch(err){
                 console.debug("====>deleteAuthToken second ActsAccountAuthToken_2200 err:" + JSON.stringify(err));
-                expect(err.code == 12400004).assertEqual(true);
+                expect(err.code == ERR_JS_AUTH_TYPE_NOT_FOUND).assertEqual(true);
             }  
             try{
                 console.debug("====>getAuthToken ActsAccountAuthToken_2200 start====");
