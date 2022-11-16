@@ -141,7 +141,11 @@ group("VKGLCTSTest") {
 }
 
 action("cpvkgl") {
+  testonly = true
   script = "cpvkgl.sh"
   outputs = [ "${target_out_dir}/cpvkgl.log" ]
-  deps = [ "//third_party/VK-GL-CTS/framework/platform:glcts" ]
+  deps = [
+    ":VKGLCTSTest",
+    "//third_party/vk-gl-cts/framework/platform:glcts",
+  ]
 }

@@ -23,8 +23,8 @@
                 "ActsDeqpgles31TestSuite0019->/data/local/tmp/ActsDeqpgles31TestSuite0019",
                 "vkgldata/libdeqp_ohos_platform.z.so->/system/lib",
                 "vkgldata/librosen_context.z.so->/system/lib",
-                "vkgldata/libdeqp_SPIRV.z.so->/system/lib",
-                "vkgldata/libdeqp_SPVRemapper.z.so->/system/lib",
+                "vkgldata/libdeqp_spirv.z.so->/system/lib",
+                "vkgldata/libdeqp_spvremapper.z.so->/system/lib",
                 "vkgldata/vkgldata.tar.gz->/data/local/tmp/vkgldata.tar.gz"
             ],
             "type": "PushKit"
