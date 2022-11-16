@@ -28,6 +28,32 @@
                     "value":"%d test other"
                 }
             ]
+        },
+        {
+            "name":"plural_name2",
+            "value":[
+                {
+                    "quantity": "one",
+                    "value": "$string:Test_name1"
+                },
+                {
+                    "quantity":"other",
+                    "value":"$string:Test_name1"
+                }
+            ]
+        },
+        {
+            "name":"plural_name3",
+            "value":[
+                {
+                    "quantity": "one",
+                    "value": "$theme:app_theme"
+                },
+                {
+                    "quantity":"other",
+                    "value":"$theme:app_theme"
+                }
+            ]
         }
     ]
 }

@@ -16,6 +16,14 @@
           "value":"extra large"
         }
       ]
+    },
+    {
+      "name": "sizeList2",
+      "value":[
+        {
+          "value":"$string:Test_name1"
+        }
+      ]
     }
   ]
 }
