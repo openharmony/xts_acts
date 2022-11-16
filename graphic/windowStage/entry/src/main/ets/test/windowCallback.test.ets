@@ -804,6 +804,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               listenerFlag = listenerStatus.pending;
               let loopCount = commonNUMBERColorArr.length
               for (let i = 0; i < loopCount; i++) {
+                console.log(msgStr+'tempWnd.setSystemBarEnable i:'+i);
                 let tempColor = commonNUMBERColorArr[i];
                 let systemBarProperties = {
                   statusBarColor: tempColor,
@@ -822,7 +823,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                     } catch (error) {
                       console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
                     }
-                    //                    done();
                   }
                 })
               }
