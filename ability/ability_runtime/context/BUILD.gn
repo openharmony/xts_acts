@@ -21,6 +21,8 @@ group("context") {
       "actscreatemodulecontextassist:ActsCreateModuleContextAssist",
       "actscreatemodulecontextassistone:ActsCreateModuleContextAssistOne",
       "actscreatemodulecontexttest:ActsCreateModuleContextTest",
+      "actsstageappcontext:actsstageappcontext",
+      "actsstagecontext:actsstagecontext",
       "scene/defpermission:DefPermission",
     ]
   }

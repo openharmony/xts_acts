@@ -19,7 +19,6 @@ import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-export default
 struct GridItemOnSelect {
   @State Number: String[] = ['5', '6', '7', '8', '9']
   @State isSelect: boolean = false;

@@ -22,7 +22,6 @@ let storage2 = new LocalStorage({"PropA":47});
 
 @Entry(storage1)
 @Component
-export default
 struct StateManagementGetShared {
   @LocalStorageLink("storageSimpleProp") simpleVarName: number = 0
 

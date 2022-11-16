@@ -19,7 +19,7 @@
     "srcPath":"",
     "deviceType": [
       "default",
-      "phone"
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

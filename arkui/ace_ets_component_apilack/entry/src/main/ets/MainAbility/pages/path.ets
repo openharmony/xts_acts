@@ -18,7 +18,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct PathNew {
+struct PathNew {
   private path: any = new Path({
     width: 100,
     height: 100,

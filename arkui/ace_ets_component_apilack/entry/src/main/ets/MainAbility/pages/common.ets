@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct CommonBackgroundBlurStyle {
+struct CommonBackgroundBlurStyle {
   @State value: string = ''
 
   aboutToAppear() {

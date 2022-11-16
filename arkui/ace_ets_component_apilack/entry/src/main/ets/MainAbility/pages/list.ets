@@ -19,7 +19,6 @@ import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-export default
 struct ListLanes {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   @State listPosition: number = 0 // 0代表滚动到List顶部，1代表中间值，2代表滚动到List底

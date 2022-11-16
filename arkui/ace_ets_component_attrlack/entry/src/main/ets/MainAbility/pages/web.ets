@@ -19,7 +19,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct WebEditText {
   controller: WebController = new WebController();
   webResourceResponse: WebResourceResponse = new WebResourceResponse();

@@ -10,6 +10,7 @@
         {
             "type": "ShellKit",
             "run-command": [
+                "hilog -Q pidoff",
                 "rm -rf /storage/media/100/local/files/Videos/*"
             ],
             "teardown-command":[

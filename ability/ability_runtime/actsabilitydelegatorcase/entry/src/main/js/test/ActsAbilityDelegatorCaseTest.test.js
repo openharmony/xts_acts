@@ -37,14 +37,6 @@ export default function actsStServiceAbilityTest() {
                 done();
             }, gSetTimeout);
         })
-        afterAll((done) => {
-            console.debug('= ACTS_AAAfterAll ====<begin');
-            setTimeout(function () {
-                console.debug('= ACTS_AAAfterAll ====<end');
-                featureAbility.terminateSelf();
-                done();
-            }, gSetTimeout);
-        })
 
         /**
          * @tc.number: ACTS_AExecuteShellCommand_0100

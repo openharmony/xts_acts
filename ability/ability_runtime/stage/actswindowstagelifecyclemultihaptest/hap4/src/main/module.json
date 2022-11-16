@@ -6,7 +6,8 @@
         "description": "$string:hap4_desc",
         "mainElement": "Hap4MainAbility1",
         "deviceTypes": [
-            "default"
+            "default",
+            "tablet"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,

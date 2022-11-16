@@ -84,7 +84,7 @@ struct ImageAnimatorExample {
               eventId: 114,
               priority: events_emitter.EventPriority.LOW
             }
-            console.info("start to emit action state")
+            console.info("onRepeat start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("emit action state err: " + JSON.stringify(err.message))
@@ -109,7 +109,7 @@ struct ImageAnimatorExample {
               eventId: 115,
               priority: events_emitter.EventPriority.LOW
             }
-            console.info("button start to emit action state")
+            console.info("imageAnimator 115 button start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button emit action state err: " + JSON.stringify(err.message))

@@ -47,7 +47,7 @@ namespace OHOS {
         printf("Test run totals --- Notsupport[%d]\n", runResult.numNotSupported);
         printf("Test run totals --- Warnings[%d]\n", runResult.numWarnings);
         printf("Test run totals --- Waved[%d]\n", runResult.numWaived);
-        printf("testmain end --- COST TIME[%lld]\n", (endTime-startTime));
+        cout << "testmain end --- COST TIME ["<< (endTime-startTime) << "]" << std::endl;;
     }
     // Preset action of the test case
     void ActsDeqpgles310034TestSuite::SetUp(void)

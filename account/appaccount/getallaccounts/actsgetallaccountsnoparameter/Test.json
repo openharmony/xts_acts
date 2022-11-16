@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsGetAllAccountsNoParameter.hap",
+                "ActsGetAllAccountsNoParameterTest.hap",
                 "ActsAccountSceneAccessible.hap"
             ],
             "type": "AppInstallKit",

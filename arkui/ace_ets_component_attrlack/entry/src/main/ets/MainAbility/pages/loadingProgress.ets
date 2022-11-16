@@ -19,7 +19,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct LoadingProgressCircular {
   @State circular:LoadingProgressStyle = LoadingProgressStyle.Circular;
   @State orbital:LoadingProgressStyle = LoadingProgressStyle.Orbital;

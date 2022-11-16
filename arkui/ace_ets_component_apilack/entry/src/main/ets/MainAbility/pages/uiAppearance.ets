@@ -20,7 +20,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct uiAppearanceSetDarkMode {
+struct uiAppearanceSetDarkMode {
   xcomponentController: XComponentController = new XComponentController()
 
   aboutToAppear() {

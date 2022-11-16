@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct DatePickerLunar {
+struct DatePickerLunar {
   private selectedDate: Date = new Date('2021-08-08')
 
   aboutToAppear() {

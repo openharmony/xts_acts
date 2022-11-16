@@ -24,7 +24,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct Common_ts_ets_apiStaticClear {
+struct Common_ts_ets_apiStaticClear {
   @StorageLink('varA') varA: number = 2
   private label: string = 'count'
   @StorageLink('highScore') highScore: number = 0

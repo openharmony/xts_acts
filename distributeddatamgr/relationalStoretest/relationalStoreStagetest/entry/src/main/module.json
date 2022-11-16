@@ -9,7 +9,7 @@
     "mainElement": "MainAbility",
     "deviceTypes": [
       "default",
-      "phone"
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

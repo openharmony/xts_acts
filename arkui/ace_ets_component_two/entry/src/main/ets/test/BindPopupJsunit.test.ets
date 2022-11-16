@@ -52,6 +52,7 @@ export default function customPopupOptionJsunit(){
         console.info("bindPopupTest_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.enableArrow).assertEqual(true);
         expect(indexEvent.data.maskColor).assertEqual(0x33000000);
+        done();
       }
       let indexEvent = {
         eventId: 67,
@@ -67,7 +68,6 @@ export default function customPopupOptionJsunit(){
       console.info("bindPopupTest_0100 click Two result is: " + JSON.stringify(sendEventByKey('image',10,"")));
       await Utils.sleep(1000);
       console.info('bindPopupTest_0100 END');
-      done();
     });
 
     it('bindPopupTest_0200', 0, async function (done) {

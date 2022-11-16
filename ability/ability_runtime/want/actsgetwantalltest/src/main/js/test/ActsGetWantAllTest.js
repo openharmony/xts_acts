@@ -18,12 +18,12 @@ import wantConstant from '@ohos.ability.wantConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 export default function ActsGetWantTest() {
 describe('ActsGetWantTest', function () {
-    beforeAll(async (done) => {
-        console.info('ActsGetWantTest begin')
-        done();
-    })
-
-    var TIMEOUT_NUMBER = 2500;
+    var TIMEOUT_NUMBER = 3000;
+    afterEach(async (done) => {
+        setTimeout(function () {
+          done();
+        }, 1500);
+      })
 
     //  @tc.number: ACTS_GetWant_0100
     //  @tc.name: getWant : get want in current ability
@@ -48,27 +48,27 @@ describe('ActsGetWantTest', function () {
                 },
             }
         }).then((data) => {
-            console.info('====> ACTS_GetWant_0100 start ability=====>' + JSON.stringify(data))
-            expect(data.want.deviceId).assertEqual("");
-            expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-            expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-            expect(data.want.action).assertEqual("action1");
-            expect(data.want.parameters.mykey0).assertEqual(1);
-            expect(data.want.parameters.mykey1[0]).assertEqual(1);
-            expect(data.want.parameters.mykey1[1]).assertEqual(2);
-            expect(data.want.parameters.mykey1[2]).assertEqual(3);
-            expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
-            expect(data.want.parameters.mykey3).assertEqual("str");
-            expect(data.want.parameters.mykey4[0]).assertEqual(false);
-            expect(data.want.parameters.mykey4[1]).assertEqual(true);
-            expect(data.want.parameters.mykey4[2]).assertEqual(false);
-            expect(data.want.parameters.mykey5[0]).assertEqual("str");
-            expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-            expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
-            expect(data.want.parameters.mykey6["subKey1"]).assertEqual("STRING");
-            expect(data.want.parameters.mykey6["subKey2"]).assertEqual(10);
-            expect(data.want.parameters.mykey6["subKey3"]).assertEqual(true);
             setTimeout(()=>{
+                console.info('====> ACTS_GetWant_0100 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.parameters.mykey0).assertEqual(1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(3);
+                expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+                expect(data.want.parameters.mykey6["subKey1"]).assertEqual("STRING");
+                expect(data.want.parameters.mykey6["subKey2"]).assertEqual(10);
+                expect(data.want.parameters.mykey6["subKey3"]).assertEqual(true);
                 done();
             }, TIMEOUT_NUMBER);
         }).catch((error) => {
@@ -101,24 +101,24 @@ describe('ActsGetWantTest', function () {
             }
         },
             (err, data) => {
-                console.info('====> ACTS_GetWant_0200 start ability=====>' + JSON.stringify(data))
-                expect(data.want.deviceId).assertEqual("");
-                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                expect(data.want.action).assertEqual("action1");
-                expect(data.want.parameters.mykey0).assertEqual(1);
-                expect(data.want.parameters.mykey1[0]).assertEqual(1);
-                expect(data.want.parameters.mykey1[1]).assertEqual(2);
-                expect(data.want.parameters.mykey1[2]).assertEqual(3);
-                expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
-                expect(data.want.parameters.mykey3).assertEqual("str");
-                expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_0200 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.parameters.mykey0).assertEqual(1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(3);
+                    expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
                     done();
                 }, TIMEOUT_NUMBER);
             })
@@ -151,8 +151,30 @@ describe('ActsGetWantTest', function () {
                 },
             },
         }).then((data) => {
-            checkOnAbilityResult0300(data);
             setTimeout(()=>{
+                console.info('====> ACTS_GetWant_0300 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action2");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.entities[1]).assertEqual("entity2");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
+                expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("!@#$%");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+                console.info('====> ACTS_GetWant_0300 before done=====>')
                 done();
             }, TIMEOUT_NUMBER);
         }).catch((error) => {
@@ -161,32 +183,6 @@ describe('ActsGetWantTest', function () {
             done();
         })
     })
-
-    function checkOnAbilityResult0300(data) {
-        console.info('====> ACTS_GetWant_0300 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action2");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.entities[1]).assertEqual("entity2");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT);
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
-        expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("!@#$%");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
-        console.info('====> ACTS_GetWant_0300 before done=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_0500
     //  @tc.name: getWant : get want in current ability
@@ -215,29 +211,29 @@ describe('ActsGetWantTest', function () {
                 },
             },
         }).then((data) => {
-            console.info('====> ACTS_GetWant_0500 start ability=====>' + JSON.stringify(data))
-            expect(data.want.deviceId).assertEqual("");
-            expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-            expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-            expect(data.want.action).assertEqual("action1");
-            expect(data.want.entities[0]).assertEqual("entity1");
-            expect(data.want.type).assertEqual("MIMETYPE");
-            expect(data.want.uri).assertEqual("key={true,true,false}");
-            expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED);
-            expect(data.want.parameters.mykey0).assertEqual(0.1);
-            expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-            expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-            expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-            expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-            expect(data.want.parameters.mykey3).assertEqual("str");
-            expect(data.want.parameters.mykey4[0]).assertEqual(false);
-            expect(data.want.parameters.mykey4[1]).assertEqual(true);
-            expect(data.want.parameters.mykey4[2]).assertEqual(false);
-            expect(data.want.parameters.mykey5[0]).assertEqual("str");
-            expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-            expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-            console.info('====> ACTS_GetWant_0500 before done=====>')
             setTimeout(()=>{
+                console.info('====> ACTS_GetWant_0500 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_0500 before done=====>')
                 done();
             }, TIMEOUT_NUMBER);
         }).catch((error) => {
@@ -275,29 +271,29 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                console.info('====> ACTS_GetWant_0600 start ability=====>' + JSON.stringify(data))
-                expect(data.want.deviceId).assertEqual("");
-                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                expect(data.want.action).assertEqual("action1");
-                expect(data.want.entities[0]).assertEqual("entity1");
-                expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
-                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED);
-                expect(data.want.parameters.mykey0).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                expect(data.want.parameters.mykey3).assertEqual("str");
-                expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                console.info('====> ACTS_GetWant_0600 before done=====>')
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_0600 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED);
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_0600 before done=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             })
@@ -330,29 +326,29 @@ describe('ActsGetWantTest', function () {
                 },
             },
         }).then((data) => {
-            console.info('====> ACTS_GetWant_0700 start ability=====>' + JSON.stringify(data))
-            expect(data.want.deviceId).assertEqual("");
-            expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-            expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-            expect(data.want.action).assertEqual("action1");
-            expect(data.want.entities[0]).assertEqual("entity1");
-            expect(data.want.type).assertEqual("MIMETYPE");
-            expect(data.want.uri).assertEqual("key={true,true,false}");
-            expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION);
-            expect(data.want.parameters.mykey0).assertEqual(0.1);
-            expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-            expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-            expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-            expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-            expect(data.want.parameters.mykey3).assertEqual("str");
-            expect(data.want.parameters.mykey4[0]).assertEqual(false);
-            expect(data.want.parameters.mykey4[1]).assertEqual(true);
-            expect(data.want.parameters.mykey4[2]).assertEqual(false);
-            expect(data.want.parameters.mykey5[0]).assertEqual("str");
-            expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-            expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-            console.info('====> ACTS_GetWant_0700 before done=====>')
             setTimeout(()=>{
+                console.info('====> ACTS_GetWant_0700 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_0700 before done=====>')
                 done();
             }, TIMEOUT_NUMBER);
         }).catch((error) => {
@@ -390,37 +386,33 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    checkOnAbilityResult0800(data);
                     setTimeout(()=>{
+                        console.info('====> ACTS_GetWant_0800 start ability=====>' + JSON.stringify(data))
+                        expect(data.want.deviceId).assertEqual("");
+                        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                        expect(data.want.action).assertEqual("action1");
+                        expect(data.want.entities[0]).assertEqual("entity1");
+                        expect(data.want.type).assertEqual("MIMETYPE");
+                        expect(data.want.uri).assertEqual("key={true,true,false}");
+                        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION);
+                        expect(data.want.parameters.mykey0).assertEqual(0.1);
+                        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                        expect(data.want.parameters.mykey3).assertEqual("str");
+                        expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                        expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                        expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                        expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                        console.info('====> ACTS_GetWant_0800 before done=====>')
                         done();
-                    }, TIMEOUT_NUMBER);
+                    }, 3500);
                 })
         })
-
-    function checkOnAbilityResult0800(data) {
-        console.info('====> ACTS_GetWant_0800 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION);
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_0800 before done=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_0900
     //  @tc.name: getWant : get want in current ability
@@ -449,29 +441,29 @@ describe('ActsGetWantTest', function () {
                     },
                 },
             }).then((data) => {
-                console.info('====> ACTS_GetWant_0900 start ability=====>' + JSON.stringify(data))
-                expect(data.want.deviceId).assertEqual("");
-                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                expect(data.want.action).assertEqual("action1");
-                expect(data.want.entities[0]).assertEqual("entity1");
-                expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
-                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
-                expect(data.want.parameters.mykey0).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                expect(data.want.parameters.mykey3).assertEqual("str");
-                expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                console.info('====> ACTS_GetWant_0900 before done=====>')
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_0900 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_0900 before done=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             }).catch((error) => {
@@ -508,38 +500,34 @@ describe('ActsGetWantTest', function () {
                 },
             },
         },
-            (err, data) => {
-                checkOnAbilityResult1000(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
-            })
+        (err, data) => {
+            setTimeout(()=>{
+                console.info('====> ACTS_GetWant_1000 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1000 before done=====>')
+                done();
+            }, TIMEOUT_NUMBER);
+        })
     })
-
-    function checkOnAbilityResult1000(data) {
-        console.info('====> ACTS_GetWant_1000 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_1000 before done=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_1100
     //  @tc.name: getWant : get want in current ability
@@ -567,8 +555,28 @@ describe('ActsGetWantTest', function () {
                     },
                 },
             }).then((data) => {
-                checkOnAbilityResult1100(data);
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_1100 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_1100 before done=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             }).catch((error) => {
@@ -577,30 +585,6 @@ describe('ActsGetWantTest', function () {
                 done();
             })
         })
-
-    function checkOnAbilityResult1100(data) {
-        console.info('====> ACTS_GetWant_1100 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_1100 before done=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_1200
     //  @tc.name: getWant : get want in current ability
@@ -629,28 +613,28 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                console.info('====> ACTS_GetWant_1200 start ability=====>' + JSON.stringify(data))
-                expect(data.want.deviceId).assertEqual("");
-                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                expect(data.want.action).assertEqual("action1");
-                expect(data.want.entities[0]).assertEqual("entity1");
-                expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
-                expect(data.want.parameters.mykey0).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                expect(data.want.parameters.mykey3).assertEqual("str");
-                expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                console.info('====> ACTS_GetWant_1200 before done=====>')
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_1200 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_1200 before done=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             })
@@ -683,31 +667,31 @@ describe('ActsGetWantTest', function () {
                     },
                 },
             }).then((data) => {
-                console.info('====> ACTS_GetWant_1300 start ability=====>' + JSON.stringify(data))
-                expect(data.want.deviceId).assertEqual("");
-                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                expect(data.want.action).assertEqual("action1");
-                expect(data.want.entities[0]).assertEqual("entity1");
-                expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
-                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT);
-                expect(data.want.parameters.mykey0).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                expect(data.want.parameters.mykey3).assertEqual("str");
-                expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                console.info('====> ACTS_GetWant_1300 before done=====>')
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_1300 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT);
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_1300 before done=====>')
                     done();
-                }, TIMEOUT_NUMBER);
+                }, 3500);
             }).catch((error) => {
                 console.log('ACTS_GetWant_1300 error: ' + JSON.stringify(error))
                 expect.assertFail()
@@ -743,37 +727,33 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                checkOnAbilityResult1400(data);
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_1400 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT);
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_1400 before done=====>')
                     done();
-                }, TIMEOUT_NUMBER);
+                }, 3500);
             })
     })
-
-    function checkOnAbilityResult1400(data) {
-        console.info('====> ACTS_GetWant_1400 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT);
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_1400 before done=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_1500
     //  @tc.name: getWant : get want in current ability
@@ -802,8 +782,29 @@ describe('ActsGetWantTest', function () {
                     },
                 },
             }).then((data) => {
-                checkOnAbilityResult1500(data);
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_1500 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE  );
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_1500 setTimeout before done.=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             }).catch((error) => {
@@ -812,31 +813,6 @@ describe('ActsGetWantTest', function () {
                 done();
             })
         })
-
-    function checkOnAbilityResult1500(data) {
-        console.info('====> ACTS_GetWant_1500 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE  );
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_1500 setTimeout before done.=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_1600
     //  @tc.name: getWant : get want in current ability
@@ -866,31 +842,31 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                console.info('====> ACTS_GetWant_1600 start ability=====>' + JSON.stringify(data))
-                expect(data.want.deviceId).assertEqual("");
-                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                expect(data.want.action).assertEqual("action1");
-                expect(data.want.entities[0]).assertEqual("entity1");
-                expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
-                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE  );
-                expect(data.want.parameters.mykey0).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                expect(data.want.parameters.mykey3).assertEqual("str");
-                expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                console.info('====> ACTS_GetWant_1600 setTimeout before done.=====>')
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_1600 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE  );
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_1600 setTimeout before done.=====>')
                     done();
-                }, TIMEOUT_NUMBER);
+                }, 3500);
             })
     })
 
@@ -921,29 +897,29 @@ describe('ActsGetWantTest', function () {
                     },
                 },
             }).then((data) => {
-                console.info('====> ACTS_GetWant_1700 start ability=====>' + JSON.stringify(data))
-                expect(data.want.deviceId).assertEqual("");
-                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                expect(data.want.action).assertEqual("action1");
-                expect(data.want.entities[0]).assertEqual("entity1");
-                expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
-                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY );
-                expect(data.want.parameters.mykey0).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                expect(data.want.parameters.mykey3).assertEqual("str");
-                expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                console.info('====> ACTS_GetWant_1700 setTimeout before done.=====>')
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_1700 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY );
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_1700 setTimeout before done.=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             }).catch((error) => {
@@ -980,8 +956,29 @@ describe('ActsGetWantTest', function () {
                     },
                 },
             }).then((data) => {
-                checkOnAbilityResult1900(data);
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_1900 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE);
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_1900 setTimeout before done.=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             }).catch((error) => {
@@ -990,31 +987,6 @@ describe('ActsGetWantTest', function () {
                 done();
             })
         })
-
-    function checkOnAbilityResult1900(data) {
-        console.info('====> ACTS_GetWant_1900 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE);
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_1900 setTimeout before done.=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_2100
     //  @tc.name: getWant : get want in current ability
@@ -1043,8 +1015,29 @@ describe('ActsGetWantTest', function () {
                     },
                 },
             }).then((data) => {
-                checkOnAbilityResult2100(data);
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_2100 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION);
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_2100 setTimeout before done.=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             }).catch((error) => {
@@ -1053,31 +1046,6 @@ describe('ActsGetWantTest', function () {
                 done();
             })
         })
-
-    function checkOnAbilityResult2100(data) {
-        console.info('====> ACTS_GetWant_2100 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION);
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_2100 setTimeout before done.=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_2200
     //  @tc.name: getWant : get want in current ability
@@ -1107,37 +1075,33 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                checkOnAbilityResult2200(data);
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_2200 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION);
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_2200 setTimeout before done.=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             })
     })
-
-    function checkOnAbilityResult2200(data) {
-        console.info('====> ACTS_GetWant_2200 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION);
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_2200 setTimeout before done.=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_2300
     //  @tc.name: getWant : get want in current ability
@@ -1166,8 +1130,29 @@ describe('ActsGetWantTest', function () {
                     },
                 },
             }).then((data) => {
-                checkOnAbilityResult2300(data);
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_2300 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_NEW_MISSION);
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_2300 setTimeout before done.=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             }).catch((error) => {
@@ -1176,31 +1161,6 @@ describe('ActsGetWantTest', function () {
                 done();
             })
         })
-
-    function checkOnAbilityResult2300(data) {
-        console.info('====> ACTS_GetWant_2300 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_NEW_MISSION);
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_2300 setTimeout before done.=====>')
-    }
 
     //  @tc.number: ACTS_GetWant_2400
     //  @tc.name: getWant : get want in current ability
@@ -1230,37 +1190,33 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                checkOnAbilityResult2400(data);
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_2400 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action1");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_NEW_MISSION);
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                    console.info('====> ACTS_GetWant_2400 setTimeout before done.=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             })
     })
-
-    function checkOnAbilityResult2400(data) {
-        console.info('====> ACTS_GetWant_2400 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action1");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_NEW_MISSION);
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-        expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-        console.info('====> ACTS_GetWant_2400 setTimeout before done.=====>')
-    }
         
      /*
      * @tc.number  ACTS_GetWant_2500
@@ -1291,8 +1247,29 @@ describe('ActsGetWantTest', function () {
                 },
             },
         }).then((data) => {
-            checkOnAbilityResult2500(data);
             setTimeout(()=>{
+                console.info('====> ACTS_GetWant_2500 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action2");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
+                expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("test123");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+                console.info('====> ACTS_GetWant_2500 before done=====>')
                 done();
             }, TIMEOUT_NUMBER);
         }).catch((error) => {
@@ -1301,31 +1278,6 @@ describe('ActsGetWantTest', function () {
             done();
         })
     });
-
-    function checkOnAbilityResult2500(data) {
-        console.info('====> ACTS_GetWant_2500 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action2");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
-        expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("test123");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
-        console.info('====> ACTS_GetWant_2500 before done=====>')
-    }
 
     /*
      * @tc.number  ACTS_GetWant_2600
@@ -1357,37 +1309,33 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                checkOnAbilityResult2600(data);
                 setTimeout(()=>{
+                    console.info('====> ACTS_GetWant_2600 start ability=====>' + JSON.stringify(data))
+                    expect(data.want.deviceId).assertEqual("");
+                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                    expect(data.want.action).assertEqual("action2");
+                    expect(data.want.entities[0]).assertEqual("entity1");
+                    expect(data.want.type).assertEqual("MIMETYPE");
+                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
+                    expect(data.want.parameters.mykey0).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                    expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
+                    expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+                    expect(data.want.parameters.mykey3).assertEqual("str");
+                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                    expect(data.want.parameters.mykey5[1]).assertEqual("test123");
+                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+                    console.info('====> ACTS_GetWant_2600 before done=====>')
                     done();
                 }, TIMEOUT_NUMBER);
             })
     });
-
-    function checkOnAbilityResult2600(data) {
-        console.info('====> ACTS_GetWant_2600 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action2");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
-        expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("test123");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
-        console.info('====> ACTS_GetWant_2600 before done=====>')
-    }
 
     /**
      * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0100

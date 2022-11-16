@@ -21,7 +21,8 @@
     "package": "com.example.amsabilitymultiinstanceappe",
     "name": ".MyApplication",
     "deviceType": [
-      "default"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

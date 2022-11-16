@@ -20,7 +20,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct PromptShowDialog {
+struct PromptShowDialog {
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear PromptShowDialog start`)
   }

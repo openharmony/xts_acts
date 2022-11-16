@@ -74,7 +74,8 @@ describe('audioManagerApi9', function () {
         let permissionName1 = 'ohos.permission.MICROPHONE';
         let permissionName2 = 'ohos.permission.ACCESS_NOTIFICATION_POLICY';
         let permissionName3 = 'ohos.permission.MODIFY_AUDIO_SETTINGS';
-        let permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let permissionName4 = 'ohos.permission.MANAGE_AUDIO_CONFIG';
+        let permissionNameList = [permissionName1, permissionName2, permissionName3, permissionName4];
         let appName = 'ohos.acts.multimedia.audio.audiomanager';
         await audioTestBase.applyPermission(appName, permissionNameList);
         await sleep(100);
@@ -99,7 +100,7 @@ describe('audioManagerApi9', function () {
 
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ERRORS_0100'
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ERRORS_0100
      *@tc.name      : AUDIO_ERRORS
      *@tc.desc      : AUDIO_ERRORS
      *@tc.size      : MEDIUM
@@ -119,7 +120,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_VOLUME_GROUP_ID_0100'
+     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_VOLUME_GROUP_ID_0100
      *@tc.name      : DEFAULT_VOLUME_GROUP_ID
      *@tc.desc      : DEFAULT_VOLUME_GROUP_ID
      *@tc.size      : MEDIUM
@@ -133,7 +134,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100'
+     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100
      *@tc.name      : DEFAULT_INTERRUPT_GROUP_ID
      *@tc.desc      : DEFAULT_INTERRUPT_GROUP_ID
      *@tc.size      : MEDIUM
@@ -147,7 +148,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_COMUNICATIONDEVICETYPE_0100'
+     *@tc.number    : SUB_MULTIMEDIA_COMUNICATIONDEVICETYPE_0100
      *@tc.name      : COMUNICATIONDEVICETYPE
      *@tc.desc      : COMUNICATIONDEVICETYPE
      *@tc.size      : MEDIUM
@@ -162,7 +163,7 @@ describe('audioManagerApi9', function () {
 
     
     /**
-     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100'
+     *@tc.number    : SUB_MULTIMEDIA_INTERRUPTREQUESTTYPE_0100
      *@tc.name      : INTERRUPTREQUESTTYPE
      *@tc.desc      : INTERRUPTREQUESTTYPE
      *@tc.size      : MEDIUM
@@ -176,7 +177,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100'
+     *@tc.number    : SUB_MULTIMEDIA_INTERRUPTREQUESTRESULTTYPE_0100
      *@tc.name      : INTERRUPTREQUESTRESULTTYPE
      *@tc.desc      : INTERRUPTREQUESTRESULTTYPE
      *@tc.size      : MEDIUM
@@ -782,7 +783,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GSETMICROPHONEMUTE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0100
      *@tc.name      : setMicrophoneMute - true - Callback
      *@tc.desc      : Enable mic mute
      *@tc.size      : MEDIUM
@@ -827,7 +828,7 @@ describe('audioManagerApi9', function () {
     })
 
         /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GSETMICROPHONEMUTE_0200
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0200
      *@tc.name      : setMicrophoneMute - true - Promise
      *@tc.desc      : Enable mic mute
      *@tc.size      : MEDIUM
@@ -927,14 +928,14 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0200
      *@tc.name      : isActive - Media - Callback
      *@tc.desc      : isActive - Media - Callback - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0100', 1, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0200', 1, function (done) {
         console.log(`${TagFrmwk}: Callback : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS`);
         streamManager.isActive(audioMedia, (err, data) => {
             if (err) {
@@ -952,7 +953,7 @@ describe('audioManagerApi9', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETCOMMUNICATIONDEVICE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
      *@tc.name      : setCommunicationDevice - SPEAKER - deactivate - Promise
      *@tc.desc      : setCommunicationDevice speaker - Promise
      *@tc.size      : MEDIUM
@@ -1013,7 +1014,7 @@ describe('audioManagerApi9', function () {
         let flag = true
         let AudioRoutingManager = audioManager.getRoutingManager();
         let outputDeviceDescription = await AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
-        console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETCOMMUNICATIONDEVICE_0200
+        console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0200
             outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
         if (outputDeviceDescription.length == 1 && outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
             flag = false;
@@ -1037,13 +1038,163 @@ describe('audioManagerApi9', function () {
                         expect(true).assertTrue();
                     }
                     else {
-                        console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETCOMMUNICATIONDEVICE_0200 ${TagFrmwk}: Device Test: Callback : isCommunicationDeviceActive : SPEAKER: Deactivate : FAIL :${value } flag is ${flag}`);
+                        console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0200 ${TagFrmwk}: Device Test: Callback : isCommunicationDeviceActive : SPEAKER: Deactivate : FAIL :${value } flag is ${flag}`);
                         expect(false).assertTrue();
                     }
                     done();
                 });
             }
         });
+    })
+
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100
+    *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100
+    *@tc.desc      : micStateChange
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100', 2, async function (done) {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId
+        let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+        let count = 0;
+        console.info('getVolumeGroupManager Callback START.');
+        VolumeGroupManager.on('micStateChange', async (micStateChange) => {
+
+            console.info('micStateChange is ' + micStateChange.mute);
+            count++;
+        })
+        try {
+            let data = await audioManager.isMicrophoneMute();
+            console.info('Promise isMicrophoneMute PASS:' + data);
+            await audioManager.setMicrophoneMute(data);
+            console.info('Promise setMicrophoneMute PASS.');
+            let data1 = await audioManager.isMicrophoneMute();
+            console.info('Promise isMicrophoneMute PASS.' + data1);
+        } catch (err) {
+            console.log('ERROR:' + JSON.stringify(err))
+            expect(false).assertTrue();
+            done();
+        }
+        await sleep(2000);
+        expect(count).assertEqual(0);
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200
+     *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200
+     *@tc.desc      : micStateChange
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200', 2, async function (done) {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId
+        let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+        console.info('getVolumeGroupManager Callback START.');
+        let count = 0;
+        VolumeGroupManager.on('micStateChange', async (micStateChange) => {
+            console.info("Updated micState:" + JSON.stringify(micStateChange));
+            count++;
+        })
+        try {
+            let data = await audioManager.isMicrophoneMute();
+            console.info('Promise isMicrophoneMute PASS:' + data);
+            let micStatus = !data;
+            await audioManager.setMicrophoneMute(micStatus);
+            console.info('Promise setMicrophoneMute PASS:' + micStatus);
+        } catch (err) {
+            console.log('ERROR:' + JSON.stringify(err))
+            expect(false).assertTrue();
+            done();
+        }
+        await sleep(2000);
+        expect(count).assertEqual(1);
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300
+     *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300
+     *@tc.desc      : micStateChange
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300', 2, async function (done) {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId
+        let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+        console.info('getVolumeGroupManager Callback START.');
+        let count = 0;
+        VolumeGroupManager.on('micStateChange', async (micStateChange) => {
+            console.info("Updated micState:" + JSON.stringify(micStateChange));
+            count++;
+        })
+        try {
+            let data = await audioManager.isMicrophoneMute();
+            console.info('Promise isMicrophoneMute PASS:' + data);
+            let micStatus = !data;
+            await audioManager.setMicrophoneMute(micStatus);
+            console.info('Promise setMicrophoneMute PASS:' + micStatus);
+            await audioManager.setMicrophoneMute(!micStatus);
+            console.info('Promise setMicrophoneMute PASS:' + (!micStatus));
+        } catch (err) {
+            console.log('ERROR:' + JSON.stringify(err))
+            expect(false).assertTrue();
+            done();
+        }
+        await sleep(2000);
+        expect(count).assertEqual(2);
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400
+     *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400
+     *@tc.desc      : micStateChange
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400', 2, async function (done) {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId
+        let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+        let count = 0;
+        try {
+            console.info("enter SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400");
+            VolumeGroupManager.on('micStateChange', async (micStateChange1) => {
+                console.info("Updated micState--001:" + JSON.stringify(micStateChange1));
+                VolumeGroupManager.on('micStateChange', async (micStateChange) => {
+                    console.info("Updated micState--002:" + JSON.stringify(micStateChange));
+                    count++
+                })
+                let data = await audioManager.isMicrophoneMute();
+                console.info('Second Promise isMicrophoneMute PASS:' + data);
+                await audioManager.setMicrophoneMute(!data);
+                console.info('Second:Promise setMicrophoneMute PASS:' + (!data));
+            })
+            let data = await audioManager.isMicrophoneMute();
+            console.info('First Promise isMicrophoneMute PASS:' + data);
+            await audioManager.setMicrophoneMute(!data);
+            console.info('First:Promise setMicrophoneMute PASS:' + (!data));
+        } catch (err) {
+            console.log('ERROR:' + JSON.stringify(err))
+            expect(false).assertTrue();
+            done();
+        }
+        await sleep(2000);
+        expect(count).assertEqual(1);
+        done();
     })
 
 })
