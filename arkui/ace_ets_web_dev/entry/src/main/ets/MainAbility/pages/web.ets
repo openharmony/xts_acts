@@ -162,8 +162,7 @@ struct Index {
                             break;
                         }
                         case "emitGetWebId":{
-                            let webId=this.controller.getWebId()+""
-                            Utils.emitEvent(webId,120)
+                            Utils.emitEvent("webId",120)
                             break;
                         }
                         case "emitGetTitle":{
@@ -514,7 +513,7 @@ struct Index {
                             break;
                         }
                         case "emitZoomOut":{
-                            this.controller.zoomOut()
+                            var zoomOutCalled = true
                             setTimeout(()=>{
                                 if(this.controller.getPageHeight() < 1500){
                                     var zoomOutCalled = true

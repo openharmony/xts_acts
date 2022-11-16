@@ -24,6 +24,7 @@ let loadedUrl;
 @Component
 struct Index {
     controller:WebController = new WebController()
+    controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
     responseweb: WebResourceResponse = new WebResourceResponse()
     @State str:string="emitStoreWebArchive"
     @State text:string=""
@@ -180,7 +181,7 @@ struct Index {
                             var origin = this.controller.getPageHeight()
                             var zoomInCalled = false  
                             setTimeout(()=>{ 
-                                this.controller.zoomIn()    
+                                this.controllerTwo.zoomIn()    
                                 if (this.controller.getPageHeight() > origin) {
                                     zoomInCalled = true
                                 }
@@ -213,13 +214,6 @@ struct Index {
                             },3000)                                                                               
                             break;
                         }
-                        case "emitSearchAllAsync":{ 
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
-                            setTimeout(()=>{
-                                this.controller.searchAllAsync("首页"); 
-                            },3000)                                                                                
-                            break ;
-                        }
                         default:
                             console.info("can not match case")
                     }
@@ -243,13 +237,23 @@ struct Index {
                 },3000)
                 return false
             })
-            .onSearchResultReceive(ret=>{
-                var searchResult = ret.activeMatchOrdinal.toString() + 
-                ret.numberOfMatches.toString()
-                console.log("searchResult" + searchResult)
-                setTimeout(()=>{
-                    Utils.emitEvent(searchResult,426)
+            Web({src:$rawfile('index.html'),controller:this.controllerTwo})
+            .databaseAccess(true)
+            .zoomAccess(this.zoomAccessValue)
+            .textZoomRatio(this.textRatio)
+            .onConsole((event) => {
+                let level = event.message.getMessageLevel()
+                let msg = event.message.getMessage()
+                let lineNumber = event.message.getLineNumber().toString()
+                let sourceId = event.message.getSourceId()
+                console.log("lineNumber:" + lineNumber)
+                setTimeout(()=>{ 
+                    Utils.emitEvent(lineNumber,420)
                 },3000)
+                setTimeout(()=>{ 
+                    Utils.emitEvent(sourceId,422)
+                },3000)
+                return false
             })
         }
     }
