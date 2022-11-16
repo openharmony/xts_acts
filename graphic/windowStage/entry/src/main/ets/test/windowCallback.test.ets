@@ -694,8 +694,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
           }
           let arrLength = systemBarData.regionTint.length;
-//          let ca = cloneColorArr;
-//          let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
           for (let i = 0; i < arrLength; i++) {
             console.log(msgStr + 'for arrLenght compareCount: ' + compareCount + ' ,i:'+i);
             let tempData = systemBarData.regionTint[i];
