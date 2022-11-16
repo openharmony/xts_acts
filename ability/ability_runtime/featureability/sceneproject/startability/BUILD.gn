@@ -12,19 +12,18 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("StartAbility") {
+ohos_hap_assist_suite("StartAbility") {
   hap_profile = "./src/main/config.json"
   js_build_mode = "debug"
   hap_name = "StartAbility"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./src/main/js/default"
