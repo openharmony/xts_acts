@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
 
 import image from '@ohos.multimedia.image'
@@ -38,8 +37,8 @@ export default function effectKitTest() {
         console.error(msgStr + "Napi size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let filter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let filter = effectKit.createEffect(pixelMap)
         expect(filter != null).assertTrue()
         done()
       }).catch(ex => {
@@ -81,8 +80,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest blur1 createEffect faild")
           expect(true).assertFail()
@@ -115,8 +114,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest blur2 createEffect faild")
           expect(true).assertFail()
@@ -149,8 +148,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest blur3 createEffect faild")
           expect(true).assertFail()
@@ -183,8 +182,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest brightness1 createEffect faild")
           expect(true).assertFail()
@@ -217,8 +216,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest brightness2 createEffect faild")
           expect(true).assertFail()
@@ -251,8 +250,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest brightness3 createEffect faild")
           expect(true).assertFail()
@@ -285,8 +284,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest grayscale1 createEffect faild")
           expect(true).assertFail()
@@ -319,8 +318,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest getPixelMap1 createEffect faild")
           expect(true).assertFail()
@@ -353,8 +352,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest getPixelMap2 createEffect faild")
           expect(true).assertFail()
@@ -387,8 +386,8 @@ export default function effectKitTest() {
         console.error(msgStr + "image size=" + value.size.width + " X " + value.size.height)
       })
       imageSource.createPixelMap().then(pixelMap => {
-        console.info(msgStr + "Napi create ColorPicker.start")
-        let headFilter = effectKit.createEffect(pixelmap)
+        console.info(msgStr + "Napi create createEffect.start")
+        let headFilter = effectKit.createEffect(pixelMap)
         if (headFilter == null) {
           console.log("effectKitTest getPixelMap3 createEffect faild")
           expect(true).assertFail()
