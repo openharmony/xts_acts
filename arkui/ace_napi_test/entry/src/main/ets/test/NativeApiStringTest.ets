@@ -58,12 +58,12 @@ export default function nativeApiStringJsunit() {
 
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0200
-     * @tc.name      napiCreateArrayBuffer
+     * @tc.name      napCreateArrayBuffer
      * @tc.desc      aceNapiEtsTest
      */
-    it('napiCreateArrayBuffer002', 0, async function (done) {
+    it('napCreateArrayBuffer002', 0, async function (done) {
       console.info('napiCreateArrayBuffer002 START');
-      value = napitest.napiCreateArrayBuffer();
+      value = napitest.napCreateArrayBuffer();
       console.info('apiCreateArrayBuffer testString result is: ' + JSON.stringify(value));
       expect(value instanceof ArrayBuffer).assertTrue();
       done();
