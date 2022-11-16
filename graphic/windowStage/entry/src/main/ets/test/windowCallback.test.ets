@@ -694,9 +694,10 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
           }
           let arrLength = systemBarData.regionTint.length;
-          let ca = cloneColorArr;
-          let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
+//          let ca = cloneColorArr;
+//          let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
           for (let i = 0; i < arrLength; i++) {
+            console.log(msgStr + 'for arrLenght compareCount: ' + compareCount + ' ,i:'+i);
             let tempData = systemBarData.regionTint[i];
             if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start! arrLength= ' + arrLength);
@@ -713,6 +714,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } else {
                 console.log(msgStr + 'SCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
               }
+              let ca = cloneColorArr;
+              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
               if (compareCount === 18 && !flag) {
                 console.log(msgStr + 'if compareCount: ' + compareCount + ' ,true flag:' + flag);
                 try {
@@ -741,6 +744,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } else {
                 console.log(msgStr + 'NCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
               }
+              let ca = cloneColorArr;
+              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
               if (compareCount === 18 && !flag) {
                 console.log(msgStr + 'else compareCount: ' + compareCount + ' ,true flag:' + flag);
                 try {
