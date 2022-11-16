@@ -102,23 +102,23 @@ describe('rdbEncryptTest', function () {
          * @tc.desc RDB create encrypt db test
          */
         it('RdbEncryptTest_0010', 0, async function (done) {
-            await console.log(TAG + "************* RdbEncryptTest_0010 start *************")
+            console.log(TAG + "************* RdbEncryptTest_0010 start *************")
             context = ability_featureAbility.getContext()
             let storePromise = data_rdb.getRdbStore(context, STORE_CONFIG_ENCRYPT, 1);
             storePromise.then(async (store) => {
                 try {
-                    await console.log(TAG + "getRdbStore done: " + store);
+                    console.log(TAG + "getRdbStore done: " + store);
                 } catch (err) {
                     expect(null).assertFail();
                 }
             }).catch((err) => {
                 expect(null).assertFail();
             })
-            await storePromise
+            storePromise
             storePromise = null
 
             done()
-            await console.log(TAG + "************* RdbEncryptTest_0010 end *************")
+            console.log(TAG + "************* RdbEncryptTest_0010 end *************")
         })
 
         /**
@@ -127,23 +127,23 @@ describe('rdbEncryptTest', function () {
          * @tc.desc RDB create unencrypted db test
          */
         it('RdbEncryptTest_0020', 0, async function (done) {
-            await console.log(TAG + "************* RdbEncryptTest_0020 start *************")
+            console.log(TAG + "************* RdbEncryptTest_0020 start *************")
             context = ability_featureAbility.getContext()
             let storePromise = data_rdb.getRdbStore(context, STORE_CONFIG_UNENCRYPT, 1);
             storePromise.then(async (store) => {
                 try {
-                    await console.log(TAG + "getRdbStore done: " + store);
+                    console.log(TAG + "getRdbStore done: " + store);
                 } catch (err) {
                     expect(null).assertFail();
                 }
             }).catch((err) => {
                 expect(null).assertFail();
             })
-            await storePromise
+            storePromise
             storePromise = null
 
             done()
-            await console.log(TAG + "************* RdbEncryptTest_0020 end *************")
+            console.log(TAG + "************* RdbEncryptTest_0020 end *************")
         })
 
 
@@ -153,7 +153,7 @@ describe('rdbEncryptTest', function () {
          * @tc.desc RDB Encrypt function test
          */
         it('RdbEncryptTest_0030', 0, async function (done) {
-            await console.log(TAG + "************* RdbEncryptTest_0030 start *************")
+            console.log(TAG + "************* RdbEncryptTest_0030 start *************")
             context = ability_featureAbility.getContext()
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
             let predicates = new data_rdb.RdbPredicates("test")
@@ -174,7 +174,7 @@ describe('rdbEncryptTest', function () {
             resultSet = null
             rdbStore = null
             done()
-            await console.log(TAG + "************* RdbEncryptTest_0030 end *************")
+            console.log(TAG + "************* RdbEncryptTest_0030 end *************")
         })
 
         /**
@@ -183,7 +183,7 @@ describe('rdbEncryptTest', function () {
          * @tc.desc RDB Encrypt function test
          */
         it('RdbEncryptTest_0040', 0, async function (done) {
-            await console.log(TAG + "************* RdbEncryptTest_0040 start *************")
+            console.log(TAG + "************* RdbEncryptTest_0040 start *************")
             context = ability_featureAbility.getContext()
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
             rdbStore = null
@@ -191,7 +191,7 @@ describe('rdbEncryptTest', function () {
             expect(rdbStore).assertNull
 
             done()
-            await console.log(TAG + "************* RdbEncryptTest_0040 end *************")
+            console.log(TAG + "************* RdbEncryptTest_0040 end *************")
         })
         console.log(TAG + "*************Unit Test End*************")
     }
