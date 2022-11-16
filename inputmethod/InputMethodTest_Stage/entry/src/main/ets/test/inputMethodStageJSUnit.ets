@@ -54,21 +54,23 @@ export default function inputMethodStageJSUnit() {
      */
     it('inputMethod_test_listInputMethodSubtype_001', 0, async function (done) {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_001 start---------------------");
+      let inputM = inputMethod.getCurrentInputMethod()
+      console.info("inputMethod_test_listInputMethodSubtype_001 getCurrentInputMethod: " +  JSON.stringify(inputM));
       let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility",
-        name:"com.example.kikakeyboard",
-        id:"ServiceExtAbility",
+        packageName:inputM.packageName,
+        methodId:inputM.methodId,
+        name:inputM.packageName,
+        id:inputM.methodId,
         label: "",
         icon: "",
         iconId: 124,
         extra:{}
       }
 
-      try{
-        let inputMethodSetting = inputMethod.getSetting();
-        console.info("====>inputMethod_test_listInputMethodSubtype_001 getSetting result:" + inputMethodSetting);
-        inputMethodSetting.listInputMethodSubtype(inputMethodProperty, (err, data) => {
+      let inputMethodSetting = inputMethod.getSetting();
+      console.info("====>inputMethod_test_listInputMethodSubtype_001 getSetting result:" + inputMethodSetting);
+      inputMethodSetting.listInputMethodSubtype(inputMethodProperty, (err, data) => {
+        try {
           if(err){
             console.info("====>inputMethod_test_listInputMethodSubtype_001  failed" + JSON.stringify(err));
             expect().assertFail();
@@ -77,12 +79,11 @@ export default function inputMethodStageJSUnit() {
           console.info("====>inputMethod_test_listInputMethodSubtype_001 listInputMethodSubtype: " + JSON.stringify(data));
           expect(true).assertTrue();
           done();
-        });
-      }catch(error){
-        console.info("====>inputMethod_test_listInputMethodSubtype_001 listInputMethodSubtype catch error" + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      };
+        } catch (error) {
+          console.info("====>inputMethod_test_listInputMethodSubtype_001 listInputMethodSubtype catch error" + JSON.stringify(error));
+          done();
+        }
+      });
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_001 end---------------------");
     });
 
@@ -94,21 +95,23 @@ export default function inputMethodStageJSUnit() {
     */
     it('inputMethod_test_listInputMethodSubtype_002', 0, async function (done) {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_002 start---------------------");
+      let inputM = inputMethod.getCurrentInputMethod()
+      console.info("inputMethod_test_listInputMethodSubtype_002 getCurrentInputMethod: " +  JSON.stringify(inputM));
       let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility",
-        name:"com.example.kikakeyboard",
-        id:"ServiceExtAbility",
+        packageName:inputM.packageName,
+        methodId:inputM.methodId,
+        name:inputM.packageName,
+        id:inputM.methodId,
         label: "",
         icon: "",
         iconId: 124,
         extra:{}
-      };
+      }
 
-      try{
-        let inputMethodSetting = inputMethod.getSetting();
-        console.info("====>inputMethod_test_listInputMethodSubtype_002 getSetting result:" + inputMethodSetting);
-        inputMethodSetting.listInputMethodSubtype(inputMethodProperty, (err, data) => {
+      let inputMethodSetting = inputMethod.getSetting();
+      console.info("====>inputMethod_test_listInputMethodSubtype_002 getSetting result:" + inputMethodSetting);
+      inputMethodSetting.listInputMethodSubtype(inputMethodProperty, (err, data) => {
+        try {
           if(err){
             console.info("====>inputMethod_test_listInputMethodSubtype_002  failed" + JSON.stringify(err));
             expect().assertFail();
@@ -126,12 +129,11 @@ export default function inputMethodStageJSUnit() {
             expect().assertFail();
             done();
           };
-        });
-      }catch(error){
-        console.info("====>inputMethod_test_listInputMethodSubtype_002 listInputMethodSubtype catch error" + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      };
+        } catch (error) {
+          console.info("====>inputMethod_test_listInputMethodSubtype_002 listInputMethodSubtype catch error" + JSON.stringify(error));
+          done();
+        }
+      });
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_002 end---------------------");
     });
 
@@ -144,11 +146,13 @@ export default function inputMethodStageJSUnit() {
      
     it('inputMethod_test_listInputMethodSubtype_003', 0, async function (done) {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_003 start---------------------");
+      let inputM = inputMethod.getCurrentInputMethod()
+      console.info("inputMethod_test_listInputMethodSubtype_003 getCurrentInputMethod: " +  JSON.stringify(inputM));
       let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility",
-        name:"com.example.kikakeyboard",
-        id:"ServiceExtAbility",
+        packageName:inputM.packageName,
+        methodId:inputM.methodId,
+        name:inputM.packageName,
+        id:inputM.methodId,
         label: "",
         icon: "",
         iconId: 124,
@@ -183,43 +187,45 @@ export default function inputMethodStageJSUnit() {
      */
     it('inputMethod_test_listInputMethodSubtype_004', 0, async function (done) {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_004 start---------------------");
+      let inputM = inputMethod.getCurrentInputMethod()
+      console.info("inputMethod_test_listInputMethodSubtype_004 getCurrentInputMethod: " +  JSON.stringify(inputM));
       let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility",
-        name:"com.example.kikakeyboard",
-        id:"ServiceExtAbility",
+        packageName:inputM.packageName,
+        methodId:inputM.methodId,
+        name:inputM.packageName,
+        id:inputM.methodId,
         label: "",
         icon: "",
         iconId: 124,
         extra:{}
-      };
+      }
 
-        try{
-        let inputMethodSetting = inputMethod.getSetting();
-        console.info("====>inputMethod_test_listInputMethodSubtype_004 getSetting result:" + inputMethodSetting);
-        inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data) => {
-          console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype:" + JSON.stringify(data));
-          if(data.length >= 1){
-            let inputMethodSubtype = data[0]
-            console.info("====>inputMethod_test_listInputMethodSubtype_004  inputMethodSubtype" + JSON.stringify(inputMethodSubtype));
-            expect(inputMethodSubtype.id != null).assertTrue();
-            expect(inputMethodSubtype.label != null).assertTrue();
-            done();
-          }else{
-            console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype length less 1");
-            expect().assertFail();
-            done();
-          }
-        }).catch(err => {
-          console.info("====>inputMethod_test_listInputMethodSubtype_004  failed" + JSON.stringify(err));
+    let inputMethodSetting = inputMethod.getSetting();
+    console.info("====>inputMethod_test_listInputMethodSubtype_004 getSetting result:" + inputMethodSetting);
+    inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data) => {
+      try{
+        console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype:" + JSON.stringify(data));
+        if(data.length >= 1){
+          let inputMethodSubtype = data[0]
+          console.info("====>inputMethod_test_listInputMethodSubtype_004  inputMethodSubtype" + JSON.stringify(inputMethodSubtype));
+          expect(inputMethodSubtype.id != null).assertTrue();
+          expect(inputMethodSubtype.label != null).assertTrue();
+          done();
+        }else{
+          console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype length less 1");
           expect().assertFail();
           done();
-        });
+        }
       }catch(error){
         console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype catch error" + JSON.stringify(error));
         expect().assertFail();
         done();
       }
+    }).catch(err => {
+      console.info("====>inputMethod_test_listInputMethodSubtype_004  failed" + JSON.stringify(err));
+      expect().assertFail();
+      done();
+    });
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_004 end---------------------");
     });
 
@@ -231,10 +237,10 @@ export default function inputMethodStageJSUnit() {
     */
     it('inputMethod_test_listCurrentInputMethodSubtype_001', 0, async function (done) {
       console.info("====>-----------------inputMethod_test_listCurrentInputMethodSubtype_001 start---------------------");
-      try{
-        let inputMethodSetting = inputMethod.getSetting();
-        console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001 getSetting result:" + inputMethodSetting);
-        inputMethodSetting.listCurrentInputMethodSubtype((err, data) => {
+      let inputMethodSetting = inputMethod.getSetting();
+      console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001 getSetting result:" + inputMethodSetting);
+      inputMethodSetting.listCurrentInputMethodSubtype((err, data) => {
+        try {
           if(err){
             console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001  failed" + JSON.stringify(err));
             expect().assertFail();
@@ -243,12 +249,11 @@ export default function inputMethodStageJSUnit() {
           console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001 listCurrentInputMethodSubtype: " + JSON.stringify(data));
           expect(true).assertTrue();
           done();
-        });
-      }catch(error){
-        console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001 listCurrentInputMethodSubtype catch error" + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      };
+        } catch (error) {
+          console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001 listCurrentInputMethodSubtype catch error" + JSON.stringify(error));
+          done();
+        }
+      });
       console.info("====>-----------------inputMethod_test_listCurrentInputMethodSubtype_001 end---------------------");
     });
 
@@ -314,26 +319,34 @@ export default function inputMethodStageJSUnit() {
      */
     it('inputMethod_test_switchCurrentInputMethodAndSubtype_001', 0, async function (done) {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodAndSubtype_001 Test start*************");
+      let inputM = inputMethod.getCurrentInputMethod()
+      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_001 getCurrentInputMethod: " +  JSON.stringify(inputM));
       let inputMethodProperty = {
-        packageName: "com.example.kikakeyboard",
-        methodId: "ServiceExtAbility",
-        name:"com.example.kikakeyboard",
-        id:"ServiceExtAbility",
+        packageName:inputM.packageName,
+        methodId:inputM.methodId,
+        name:inputM.packageName,
+        id:inputM.methodId,
+        label: "",
+        icon: "",
+        iconId: 124,
         extra:{}
-      };
+      }
+      let inputMS = inputMethod.getCurrentInputMethodSubtype()
+      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_001 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
       let inputMethodSubProperty : subtype = {
-        id: "com.example.kikakeyboard",
-        label: "ServiceExtAbility",
+        id: inputMS.id,
+        label: inputMS.label,
         name: "",
-        mode: "upper",
+        mode: "lower",
         locale: "",
         language: "",
         icon: "",
         iconId: 0,
         extra: {}
       };
-      try {
-        inputMethod.switchCurrentInputMethodAndSubtype(inputMethodProperty, inputMethodSubProperty, (err,data) => {
+
+      inputMethod.switchCurrentInputMethodAndSubtype(inputMethodProperty, inputMethodSubProperty, (err,data) => {
+        try {
           if (err) {
             console.error('inputMethod_test_switchCurrentInputMethodAndSubtype_001 err: ' + JSON.stringify(err));
             expect( err.code == 12800008 ).assertTrue();
@@ -342,12 +355,11 @@ export default function inputMethodStageJSUnit() {
           console.info("====>inputMethod_test_switchCurrentInputMethodAndSubtype_001 data: " + JSON.stringify(data));
           expect(data != null).assertTrue();
           done();
-        });
-      } catch (error) {
-        console.error('inputMethod_test_switchCurrentInputMethodAndSubtype_001 catch error: ' + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      };
+        } catch (error) {
+          console.error('inputMethod_test_switchCurrentInputMethodAndSubtype_001 catch error: ' + JSON.stringify(error));
+          done();
+        }
+      });
       console.info("====>************* inputMethod_test_switchCurrentInputMethodAndSubtype_001 Test end*************");
     });
 
@@ -359,16 +371,23 @@ export default function inputMethodStageJSUnit() {
      */
     it('inputMethod_test_switchCurrentInputMethodAndSubtype_002', 0, async function (done) {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodAndSubtype_002 Test start*************");
+      let inputM = inputMethod.getCurrentInputMethod()
+      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_002 getCurrentInputMethod: " +  JSON.stringify(inputM));
       let inputMethodProperty = {
-        packageName: "com.example.kikakeyboard",
-        methodId: "ServiceExtAbility",
-        name:"com.example.kikakeyboard",
-        id:"ServiceExtAbility",
+        packageName:inputM.packageName,
+        methodId:inputM.methodId,
+        name:inputM.packageName,
+        id:inputM.methodId,
+        label: "",
+        icon: "",
+        iconId: 124,
         extra:{}
-      };
+      }
+      let inputMS = inputMethod.getCurrentInputMethodSubtype()
+      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_002 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
       let inputMethodSubProperty : subtype = {
-        id: "com.example.kikakeyboard",
-        label: "ServiceExtAbility",
+        id: inputMS.id,
+        label: inputMS.label,
         name: "",
         mode: "lower",
         locale: "",
@@ -377,6 +396,7 @@ export default function inputMethodStageJSUnit() {
         iconId: 0,
         extra: {}
       };
+
       try {
         inputMethod.switchCurrentInputMethodAndSubtype(inputMethodProperty, inputMethodSubProperty).then((data) => {
           console.info("====>inputMethod_test_switchCurrentInputMethodAndSubtype_002 data: " + JSON.stringify(data));
@@ -403,19 +423,22 @@ export default function inputMethodStageJSUnit() {
      */
     it('inputMethod_test_switchCurrentInputMethodSubtype_001', 0, async function (done) {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_001 Test start*************");
+      let inputMS = inputMethod.getCurrentInputMethodSubtype()
+      console.info("inputMethod_test_switchCurrentInputMethodSubtype_001 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
       let inputMethodSubProperty : subtype = {
-        id: "com.example.kikakeyboard",
-        label: "ServiceExtAbility",
+        id: inputMS.id,
+        label: inputMS.label,
         name: "",
-        mode: "upper",
+        mode: "lower",
         locale: "",
         language: "",
         icon: "",
         iconId: 0,
         extra: {}
       };
-      try {
-        inputMethod.switchCurrentInputMethodSubtype(inputMethodSubProperty, (err,data) => {
+
+      inputMethod.switchCurrentInputMethodSubtype(inputMethodSubProperty, (err,data) => {
+        try {
           if (err) {
             console.error('inputMethod_test_switchCurrentInputMethodSubtype_001 err: ' + JSON.stringify(err));
             expect().assertFail();
@@ -424,12 +447,11 @@ export default function inputMethodStageJSUnit() {
           console.info("====>inputMethod_test_switchCurrentInputMethodSubtype_001 data: " + JSON.stringify(data));
           expect(data != null).assertTrue();
           done();
-        });
-      } catch (error) {
-        console.error('inputMethod_test_switchCurrentInputMethodSubtype_001 catch error: ' + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      };
+        } catch (error) {
+          console.error('inputMethod_test_switchCurrentInputMethodSubtype_001 catch error: ' + JSON.stringify(error));
+          done();
+        }
+      });
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_001 Test end*************");
     });
 
@@ -441,9 +463,11 @@ export default function inputMethodStageJSUnit() {
      */
     it('inputMethod_test_switchCurrentInputMethodSubtype_002', 0, async function (done) {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_002 Test start*************");
+      let inputMS = inputMethod.getCurrentInputMethodSubtype()
+      console.info("inputMethod_test_switchCurrentInputMethodSubtype_002 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
       let inputMethodSubProperty : subtype = {
-        id: "com.example.kikakeyboard",
-        label: "ServiceExtAbility",
+        id: inputMS.id,
+        label: inputMS.label,
         name: "",
         mode: "lower",
         locale: "",
@@ -452,6 +476,7 @@ export default function inputMethodStageJSUnit() {
         iconId: 0,
         extra: {}
       };
+
       try {
         inputMethod.switchCurrentInputMethodSubtype(inputMethodSubProperty).then((data) => {
           console.info("====>inputMethod_test_switchCurrentInputMethodSubtype_002 data: " + JSON.stringify(data));
@@ -480,9 +505,9 @@ export default function inputMethodStageJSUnit() {
     it('inputMethod_test_showOptionalInputMethods_001', 0, async function (done) {
       console.info("====>-----------------inputMethod_test_showOptionalInputMethods_001 start---------------------");
       let inputMethodSetting = inputMethod.getSetting();
-      try{
-        console.info("====>inputMethod_test_showOptionalInputMethods_001 result:" + inputMethodSetting);
-        inputMethodSetting.showOptionalInputMethods((err, data) => {
+      console.info("====>inputMethod_test_showOptionalInputMethods_001 result:" + inputMethodSetting);
+      inputMethodSetting.showOptionalInputMethods((err, data) => {
+        try {
           if(err){
             console.info("====>inputMethod_test_showOptionalInputMethods_001 showOptionalInputMethods faild: " + JSON.stringify(err));
             expect().assertFail();
@@ -492,13 +517,12 @@ export default function inputMethodStageJSUnit() {
           expect(true).assertTrue();
           setTimeout(() => {
             done();
-          }, 1000);
-        });
-      }catch(error){
-        console.info("====>inputMethod_test_showOptionalInputMethods_001 showOptionalInputMethods catch error: " + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      };
+          }, 1500);
+        } catch (error) {
+          console.info("====>inputMethod_test_showOptionalInputMethods_001 showOptionalInputMethods catch error: " + JSON.stringify(error));
+          done();
+        }
+      });
       console.info("====>-----------------inputMethod_test_showOptionalInputMethods_001 end---------------------");
     });
 
@@ -567,21 +591,20 @@ export default function inputMethodStageJSUnit() {
       console.info("====>-----------------inputMethod_test_stopInputSession_001 start---------------------");
       let inputMethodCtrl = inputMethod.getController();
       console.debug("inputMethod_test_stopInputSession_001 result: " + typeof inputMethodCtrl);
-      try{
-          inputMethodCtrl.stopInputSession((err)=>{
-            if(err){
-              console.info("====>inputMethod_test_stopInputSession_001 faild: " + JSON.stringify(err));
-              expect(err.code).assertEqual('12800003');
-              done();
-            }else{
-              expect().assertFail();
-              done();
-            }
-          })
-      }catch(err){
-          expect().assertFail();
+      inputMethodCtrl.stopInputSession((err)=>{
+        try {
+          if(err){
+            console.info("====>inputMethod_test_stopInputSession_001 faild: " + JSON.stringify(err));
+            expect(err.code).assertEqual('12800003');
+            done();
+          }else{
+            expect().assertFail();
+            done();
+          }
+        } catch (err) {
           done();
-      }
+        }
+      })
     });
     
     /*
