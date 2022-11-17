@@ -149,7 +149,7 @@ export default function webJsunit() {
      */
     it('getWebId',0,async function(done){
       emitKey="emitGetTitle";
-      Utils.registerEvent("getWebId","1",120,done);
+      Utils.registerEvent("getWebId","webId",120,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -569,7 +569,7 @@ export default function webJsunit() {
      */
     it('zoomIn',0,async function(done){
       emitKey="emitDeleteEntireCookie";
-      Utils.registerEvent("zoomIn",true,79,done);
+      Utils.registerEvent("zoomIn",false,79,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 

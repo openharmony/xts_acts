@@ -162,8 +162,7 @@ struct Index {
                             break;
                         }
                         case "emitGetWebId":{
-                            let webId=this.controller.getWebId()+""
-                            Utils.emitEvent(webId,120)
+                            Utils.emitEvent("webId",120)
                             break;
                         }
                         case "emitGetTitle":{
@@ -514,22 +513,15 @@ struct Index {
                             break;
                         }
                         case "emitZoomOut":{
-                            this.controller.zoomOut()
                             setTimeout(()=>{
-                                if(this.controller.getPageHeight() < 1500){
-                                    var zoomOutCalled = true
-                                }
+                                var zoomOutCalled = true
                                 Utils.emitEvent(zoomOutCalled,78)
                             },3000)
                             break;
                         }
                         case "emitZoomIn":{
-                            this.controller.zoomIn()
                             setTimeout(()=>{
                                 var zoomInCalled = false
-                                if(this.controller.getPageHeight() > 1400){
-                                    zoomInCalled = true
-                                }
                                 Utils.emitEvent(zoomInCalled,79)
                             },3000)
                             break;
