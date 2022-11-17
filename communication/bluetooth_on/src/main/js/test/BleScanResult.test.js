@@ -584,7 +584,7 @@ describe('bluetoothhostTest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_Connect_0100
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_1800
      * @tc.name test gatt connect and disconnect
      * @tc.desc Test connect and disconnect api .
      * @tc.size MEDIUM
@@ -592,7 +592,7 @@ describe('bluetoothhostTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BLE_Connect_0100', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_1800', 0, async function (done) {
         async function onReceiveEvent(ScanResult)
         {
             console.info('[bluetooth_js] BLEscan device result12'+JSON.stringify(ScanResult)
