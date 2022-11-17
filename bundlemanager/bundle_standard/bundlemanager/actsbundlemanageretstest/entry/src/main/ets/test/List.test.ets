@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import getLaunchWantForBundle from './GetLaunchWantForBundle.test.ets';
 import getabilityInfo from './GetabilityInfo.test.ets';
 import getApplicationInfoJsunit from './getApplicationInfoJsunit.test.ets';
 import getAllAppInfoJsunit from './getAllApplicationInfoJsunit.test.ets';
@@ -30,7 +29,6 @@ export default function testsuite() {
   getBundleInfoForSelf();
   getBundleArchiveInfo();
   getAbilityIcon();
-  getLaunchWantForBundle();
   getNameForUid();
   getQueryAbilityByWant();
   isDefaultApplicationTest();
