@@ -24,7 +24,6 @@ let loadedUrl;
 @Component
 struct Index {
     controller:WebController = new WebController()
-    controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
     responseweb: WebResourceResponse = new WebResourceResponse()
     @State str:string="emitStoreWebArchive"
     @State text:string=""
@@ -180,8 +179,7 @@ struct Index {
                             this.controller.refresh()  
                             var origin = this.controller.getPageHeight()
                             var zoomInCalled = false  
-                            setTimeout(()=>{ 
-                                this.controllerTwo.zoomIn()    
+                            setTimeout(()=>{  
                                 if (this.controller.getPageHeight() > origin) {
                                     zoomInCalled = true
                                 }
@@ -220,24 +218,6 @@ struct Index {
                 })
             }
             Web({src:$rawfile('index.html'),controller:this.controller})
-            .databaseAccess(true)
-            .zoomAccess(this.zoomAccessValue)
-            .textZoomRatio(this.textRatio)
-            .onConsole((event) => {
-                let level = event.message.getMessageLevel()
-                let msg = event.message.getMessage()
-                let lineNumber = event.message.getLineNumber().toString()
-                let sourceId = event.message.getSourceId()
-                console.log("lineNumber:" + lineNumber)
-                setTimeout(()=>{ 
-                    Utils.emitEvent(lineNumber,420)
-                },3000)
-                setTimeout(()=>{ 
-                    Utils.emitEvent(sourceId,422)
-                },3000)
-                return false
-            })
-            Web({src:$rawfile('index.html'),controller:this.controllerTwo})
             .databaseAccess(true)
             .zoomAccess(this.zoomAccessValue)
             .textZoomRatio(this.textRatio)
