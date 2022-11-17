@@ -55,7 +55,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_MD_0200
-     * @tc.name Test MD5 for MD digest algotithm
+     * @tc.name Test SHA1 for MD digest algotithm
      * @tc.desc Use the Promise Style of Interface
      */
     it("Security_crypto_framework_MD_0200", 0, async function (done) {
@@ -71,7 +71,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_MD_0300
-     * @tc.name Test MD5 for MD digest algotithm
+     * @tc.name Test SHA224 for MD digest algotithm
      * @tc.desc Use the Promise Style of Interface
      */
     it("Security_crypto_framework_MD_0300", 0, async function (done) {
@@ -87,7 +87,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_MD_0400
-     * @tc.name Test SHA384 for MD digest algotithm
+     * @tc.name Test SHA256 for MD digest algotithm
      * @tc.desc Use the Callback Style of Interface
      */
     it("Security_crypto_framework_MD_0400", 0, async function (done) {
@@ -102,7 +102,7 @@ export default function DigestAlgorithmJsunit() {
     });
 
     /**
-     * @tc.number Security_crypto_framework_MD_
+     * @tc.number Security_crypto_framework_MD_0500
      *
      * @tc.name Test SHA384 for MD digest algotithm
      * @tc.desc Use the Callback Style of Interface
@@ -120,7 +120,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_MD_0600
-     * @tc.name Test SHA384 for MD digest algotithm
+     * @tc.name Test SHA512 for MD digest algotithm
      * @tc.desc Use the Callback Style of Interface
      */
     it("Security_crypto_framework_MD_0600", 0, async function (done) {
@@ -136,7 +136,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_MD_0700
-     * @tc.name Test SHA384 for MD digest algotithm
+     * @tc.name The encryption and decryption framework supports MD calculation, and the algorithm parameters are abnormal
      * @tc.desc Use the Callback Style of Interface
      */
     it("Security_crypto_framework_MD_0700", 0, async function (done) {
@@ -152,7 +152,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_MD_0800
-     * @tc.name Test SHA384 for MD digest algotithm
+     * @tc.name The encryption and decryption framework supports MD calculation, and the algorithm parameter is NULL
      * @tc.desc Use the Callback Style of Interface
      */
     it("Security_crypto_framework_MD_0800", 0, async function (done) {
@@ -168,7 +168,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_MD_0900
-     * @tc.name Test SHA384 for MD digest algotithm
+     * @tc.name The encryption and decryption framework supports MD calculation, and the Datablob value to be calculated is a super large value
      * @tc.desc Use the Callback Style of Interface
      */
     it("Security_crypto_framework_MD_0900", 0, async function (done) {
@@ -184,7 +184,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_MD_1000
-     * @tc.name Test SHA384 for MD digest algotithm
+     * @tc.name The encryption and decryption framework supports MD calculation, and the Datablob value to be calculated is abnormal
      * @tc.desc Use the Callback Style of Interface
      */
     it("Security_crypto_framework_MD_1000", 0, async function (done) {
@@ -216,7 +216,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_HMAC_0200
-     * @tc.name Test SHA1 for HMAC digest algorithm
+     * @tc.name Test SHA224 for HMAC digest algorithm
      * @tc.desc Use the Promise Style of Interface
      */
     it("Security_crypto_framework_HMAC_0200", 0, async function (done) {
@@ -232,7 +232,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_HMAC_0300
-     * @tc.name Test SHA1 for HMAC digest algorithm
+     * @tc.name Test SHA256 for HMAC digest algorithm
      * @tc.desc Use the Callback Style of Interface
      */
     it("Security_crypto_framework_HMAC_0300", 0, async function (done) {
@@ -248,7 +248,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_HMAC_0400
-     * @tc.name Test SHA1 for HMAC digest algorithm
+     * @tc.name Test SHA384 for HMAC digest algorithm
      * @tc.desc Use the Promise Style of Interface
      */
     it("Security_crypto_framework_HMAC_0400", 0, async function (done) {
@@ -264,7 +264,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_HMAC_0500
-     * @tc.name Test SHA1 for HMAC digest algorithm
+     * @tc.name Test SHA512 for HMAC digest algorithm
      * @tc.desc Use the Promise Style of Interface
      */
     it("Security_crypto_framework_HMAC_0500", 0, async function (done) {
@@ -280,7 +280,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_HMAC_0600
-     * @tc.name Test SHA1 for HMAC digest algorithm
+     * @tc.name The encryption and decryption framework supports HMAC calculation, and HMAC algorithm parameters are abnormal
      * @tc.desc Use the Promise Style of Interface
      */
     it("Security_crypto_framework_HMAC_0600", 0, async function (done) {
@@ -296,7 +296,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_HMAC_0700
-     * @tc.name Test SHA1 for HMAC digest algorithm
+     * @tc.name The encryption and decryption framework supports HMAC calculation, and the key algorithm parameters are abnormal
      * @tc.desc Use the Promise Style of Interface
      */
     it("Security_crypto_framework_HMAC_0700", 0, async function (done) {
@@ -312,7 +312,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_HMAC_0800
-     * @tc.name Test SHA1 for HMAC digest algorithm
+     * @tc.name The encryption and decryption framework supports HMAC calculation, and the Datablob of HMAC to be calculated is abnormal
      * @tc.desc Use the Promise Style of Interface
      */
     it("Security_crypto_framework_HMAC_0800", 0, async function (done) {
@@ -328,7 +328,7 @@ export default function DigestAlgorithmJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_HMAC_0900
-     * @tc.name Test SHA1 for HMAC digest algorithm
+     * @tc.name The encryption and decryption framework supports HMAC calculation, and the Datablob of HMAC to be calculated is very large
      * @tc.desc Use the Promise Style of Interface
      */
     it("Security_crypto_framework_HMAC_0900", 0, async function (done) {
