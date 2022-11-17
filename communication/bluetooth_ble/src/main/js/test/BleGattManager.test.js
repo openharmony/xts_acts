@@ -18,7 +18,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 export default function bluetoothBLETest() {
 describe('bluetoothBLETest', function() {
-
     let gattServer = null;
     let gattClient = null;
     function sleep(delay) {
@@ -64,7 +63,7 @@ describe('bluetoothBLETest', function() {
     })
     afterAll(function () {
         console.info('afterAll called')
-        gattServer.close();
+        gattClient.close();
     })
 
     /**
@@ -539,7 +538,7 @@ describe('bluetoothBLETest', function() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BLE_ReadDescriptor_0300', 0, async function (done) {                               
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_ReadDescriptor_0300', 0, async function (done) {
         let arrayBufferCCC = new ArrayBuffer(8);
         let cccValue = new Uint8Array(arrayBufferCCC);
         cccValue[0] = 1011;
@@ -685,7 +684,7 @@ describe('bluetoothBLETest', function() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BLE_WriteDescriptor_0300', 0, async function (done) {                               
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_WriteDescriptor_0300', 0, async function (done) {
         let arrayBufferDesc = new ArrayBuffer(8);
         let descValue = new Uint8Array(arrayBufferDesc);
         function WriteDescriptorReq(DescriptorWriteReq) {
@@ -696,7 +695,6 @@ describe('bluetoothBLETest', function() {
             let needRsp = DescriptorWriteReq.needRsp;
             let value = new Uint8Array(DescriptorWriteReq.value);
             let descriptorUuid = DescriptorWriteReq.descriptorUuid;
-
             descValue[0] = value[0];
             let serverResponse = {deviceId: deviceId, transId: transId, 
                 status: 0, offset: offset, value:arrayBufferDesc};
@@ -720,7 +718,7 @@ describe('bluetoothBLETest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_NotifyCharacteristic_0100
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_SetNotifyCharacteristic_0100
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test SetNotifyCharacteristicChanged api.
      * @tc.size MEDIUM
@@ -756,7 +754,7 @@ describe('bluetoothBLETest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_NotifyCharacteristic_0200
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_SetNotifyCharacteristic_0200
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test SetNotifyCharacteristicChanged api.
      * @tc.size MEDIUM
@@ -792,7 +790,7 @@ describe('bluetoothBLETest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_NotifyCharacteristic_0300
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_SetNotifyCharacteristic_0300
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test SetNotifyCharacteristicChanged api.
      * @tc.size MEDIUM
@@ -807,7 +805,7 @@ describe('bluetoothBLETest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_NotifyCharacteristic_0400
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_SetNotifyCharacteristic_0400
      * @tc.name test BLECharacteristicChangeON
      * @tc.desc Test On and off api.
      * @tc.size MEDIUM
@@ -850,12 +848,12 @@ describe('bluetoothBLETest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_NotifyCharacteristic_0300
-     * @tc.name testSetNotifyCharacteristicChanged
-     * @tc.desc Test SetNotifyCharacteristicChanged api.
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_GattClose_0100
+     * @tc.name test gattClient close
+     * @tc.desc Test close api.
      * @tc.size MEDIUM
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_GattClose_0100', 0, async function (done) {
         let gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
@@ -867,4 +865,5 @@ describe('bluetoothBLETest', function() {
 
 })
 }
+
 
