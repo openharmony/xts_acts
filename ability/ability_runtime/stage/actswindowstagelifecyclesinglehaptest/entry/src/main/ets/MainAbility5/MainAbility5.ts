@@ -46,7 +46,7 @@ export default class MainAbility5 extends Ability {
                 }).catch((error) => {
                 console.error('[Demo] MainAbility5 terminateself failed. Cause: ' + error);
             })
-        }, 500);
+        }, 1000);
     }
 
     onBackground() {
