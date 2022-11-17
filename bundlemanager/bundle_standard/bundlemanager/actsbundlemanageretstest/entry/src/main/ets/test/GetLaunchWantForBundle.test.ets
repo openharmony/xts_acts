@@ -28,7 +28,6 @@ export default function getLaunchWantForBundle() {
         * @tc.number: SUB_BMS_APPINFO_QUERY_0069
         * @tc.name: testGetLaunchWantForBundle.
         * @tc.desc: Test getLaunchWantForBundle api by promise and callback.
-        * @tc.author renyi 00559040
         * @tc.size MediumTest
         * @tc.type Function
         * @tc.level Level 1
@@ -58,7 +57,6 @@ export default function getLaunchWantForBundle() {
         * @tc.number: SUB_BMS_APPINFO_QUERY_0012
         * @tc.name: testGetLaunchWantForBundleWithManyHaps.
         * @tc.desc: Test getLaunchWantForBundle api by promise and callback.
-        * @tc.author renyi 00559040
         * @tc.size MediumTest
         * @tc.type Function
         * @tc.level Level 1
@@ -87,7 +85,6 @@ export default function getLaunchWantForBundle() {
         * @tc.number: SUB_BMS_APPINFO_QUERY_0013
         * @tc.name: testGetLaunchWantForBundleWithNotExist.
         * @tc.desc: Test getLaunchWantForBundle api by promise and callback.
-        * @tc.author renyi 00559040
         * @tc.size MediumTest
         * @tc.type Function
         * @tc.level Level 2
@@ -113,7 +110,6 @@ export default function getLaunchWantForBundle() {
         * @tc.number: SUB_BMS_APPINFO_QUERY_0014
         * @tc.name: testGetLaunchWantForBundleWithInvalidParam.
         * @tc.desc: Test getLaunchWantForBundle api by promise and callback.
-        * @tc.author renyi 00559040
         * @tc.size MediumTest
         * @tc.type Function
         * @tc.level Level 3
