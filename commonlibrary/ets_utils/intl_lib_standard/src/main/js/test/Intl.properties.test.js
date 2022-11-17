@@ -221,10 +221,10 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('StringTest015', 0, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_015', 0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('zz', 'sv', { sensitivity: 'accent' });
-        console.log('StringTest015 :' + value);
+        console.log('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_015 :' + value);
         expect(value).assertEqual(-1);
     })
     /**
@@ -1018,8 +1018,20 @@ describe('etsIntlPtsFunTest', function () {
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_001', 0, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         var value = date.toLocaleString();
+        var timezone = new Date().getTimezoneOffset();
+        var zerotime = "10/20/2022, 6:00:00 PM";
         console.log('DateTest001 :' + value);
-        expect(value).assertEqual('10/20/2022, 6:00:00 PM');
+        console.log('[TIMEZONE]DateTest001 :' + timezone);
+        if (timezone == 0) {
+            expect(value).assertEqual(zerotime);
+        } else {
+            var timediff = 0 - (parseInt(timezone) * 60 * 1000);
+            var utime = new Date(date.getTime() - timediff);
+            var utimeString = utime.toLocaleString();
+            console.log('[UTIME]DateTest001 timediff:' + timediff);
+            console.log('[UTIME]DateTest001 :' + utimeString);
+            expect(utimeString).assertEqual(zerotime);
+        }
     })
 
     /**
@@ -1033,8 +1045,20 @@ describe('etsIntlPtsFunTest', function () {
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_002', 0, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         var value = date.toLocaleString('en-GB');
+        var timezone = new Date().getTimezoneOffset();
+        var zerotime = "20/10/2022, 18:00:00";
         console.log('DateTest002 :' + value);
-        expect(value).assertEqual('20/10/2022, 18:00:00');
+        console.log('[TIMEZONE]DateTest002 :' + timezone);
+        if (timezone == 0) {
+            expect(value).assertEqual(zerotime);
+        } else {
+            var timediff = 0 - (parseInt(timezone) * 60 * 1000);
+            var utime = new Date(date.getTime() - timediff);
+            var utimeString = utime.toLocaleString('en-GB');
+            console.log('[UTIME]DateTest002 timediff:' + timediff);
+            console.log('[UTIME]DateTest002 :' + utimeString);
+            expect(utimeString).assertEqual(zerotime);
+        }
     })
 
     /**
@@ -1048,8 +1072,20 @@ describe('etsIntlPtsFunTest', function () {
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_003', 0, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         var value = date.toLocaleString('ko-KR');
+        var timezone = new Date().getTimezoneOffset();
+        var zerotime = "2022. 10. 20. 오후 6:00:00";
         console.log('DateTest003 :' + value);
-        expect(value).assertEqual('2022. 10. 20. 오후 6:00:00');
+        console.log('[TIMEZONE]DateTest003 :' + timezone);
+        if (timezone == 0) {
+            expect(value).assertEqual(zerotime);
+        } else {
+            var timediff = 0 - (parseInt(timezone) * 60 * 1000);
+            var utime = new Date(date.getTime() - timediff);
+            var utimeString = utime.toLocaleString('ko-KR');
+            console.log('[UTIME]DateTest003 timediff:' + timediff);
+            console.log('[UTIME]DateTest003 :' + utimeString);
+            expect(utimeString).assertEqual(zerotime);
+        }
     })
 
     /**
@@ -1093,8 +1129,20 @@ describe('etsIntlPtsFunTest', function () {
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_006', 0, function () {
         var date = new Date(2022, 9, 20, 18, 0, 0);
         var value = date.toLocaleString('zh', { timeZone: 'UTC' });
+        var timezone = new Date().getTimezoneOffset();
+        var zerotime = "2022/10/20 下午6:00:00";
         console.log('DateTest006 :' + value);
-        expect(value).assertEqual('2022/10/20 下午6:00:00');
+        console.log('[TIMEZONE]DateTest006 :' + timezone);
+        if (timezone == 0) {
+            expect(value).assertEqual(zerotime);
+        } else {
+            var timediff = 0 - (parseInt(timezone) * 60 * 1000);
+            var utime = new Date(date.getTime() + timediff);
+            var utimeString = utime.toLocaleString('zh', { timeZone: 'UTC' });
+            console.log('[UTIME]DateTest006 timediff:' + timediff);
+            console.log('[UTIME]DateTest006 :' + utimeString);
+            expect(utimeString).assertEqual(zerotime);
+        }
     })
 
     /**
@@ -1249,8 +1297,20 @@ describe('etsIntlPtsFunTest', function () {
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }; 
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         var value = date.toLocaleDateString('de-DE', { hour12: false, options:options});
+        var timezone = new Date().getTimezoneOffset();
+        var zerotime = "20.10.2022";
         console.log('DateTest016 :' + value);
-        expect(value).assertEqual('20.10.2022');
+        console.log('[TIMEZONE]DateTest016 :' + timezone);
+        if (timezone == 0) {
+            expect(value).assertEqual(zerotime);
+        } else {
+            var timediff = 0 - (parseInt(timezone) * 60 * 1000);
+            var utime = new Date(date.getTime() - timediff);
+            var utimeString = utime.toLocaleDateString('de-DE', { hour12: false, options:options});
+            console.log('[UTIME]DateTest016 timediff:' + timediff);
+            console.log('[UTIME]DateTest016 :' + utimeString);
+            expect(utimeString).assertEqual(zerotime);
+        }
     })
 
     /**
@@ -1265,7 +1325,20 @@ describe('etsIntlPtsFunTest', function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         var value = date.toLocaleTimeString();
         console.log('DateTest017 :' + value);
-        expect(value).assertEqual('6:00:00 PM');
+        var timezone = new Date().getTimezoneOffset();
+        var zerotime = "6:00:00 PM";
+        console.log('DateTest017 :' + value);
+        console.log('[TIMEZONE]DateTest017 :' + timezone);
+        if (timezone == 0) {
+            expect(value).assertEqual(zerotime);
+        } else {
+            var timediff = 0 - (parseInt(timezone) * 60 * 1000);
+            var utime = new Date(date.getTime() - timediff);
+            var utimeString = utime.toLocaleTimeString();
+            console.log('[UTIME]DateTest017 timediff:' + timediff);
+            console.log('[UTIME]DateTest017 :' + utimeString);
+            expect(utimeString).assertEqual(zerotime);
+        }
     })
 
     /**
@@ -1318,8 +1391,20 @@ describe('etsIntlPtsFunTest', function () {
         var options = { timeZone: 'UTC', timeZoneName: 'short' };
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         var value = date.toLocaleTimeString('it-IT', { options:options});
+        var timezone = new Date().getTimezoneOffset();
+        var zerotime = "18:00:00";
         console.log('DateTest020 :' + value);
-        expect(value).assertEqual('18:00:00');
+        console.log('[TIMEZONE]DateTest020 :' + timezone);
+        if (timezone == 0) {
+            expect(value).assertEqual(zerotime);
+        } else {
+            var timediff = 0 - (parseInt(timezone) * 60 * 1000);
+            var utime = new Date(date.getTime() - timediff);
+            var utimeString = utime.toLocaleTimeString('it-IT', { options:options});
+            console.log('[UTIME]DateTest020 timediff:' + timediff);
+            console.log('[UTIME]DateTest020 :' + utimeString);
+            expect(utimeString).assertEqual(zerotime);
+        }
     })
 
     /**
@@ -1334,8 +1419,20 @@ describe('etsIntlPtsFunTest', function () {
         var options = { timeZone: 'UTC', timeZoneName: 'short' };
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         var value = date.toLocaleTimeString('it-IT', { hour12: false, options:options});
+        var timezone = new Date().getTimezoneOffset();
+        var zerotime = "18:00:00";
         console.log('DateTest021 :' + value);
-        expect(value).assertEqual('18:00:00');
+        console.log('[TIMEZONE]DateTest021 :' + timezone);
+        if (timezone == 0) {
+            expect(value).assertEqual(zerotime);
+        } else {
+            var timediff = 0 - (parseInt(timezone) * 60 * 1000);
+            var utime = new Date(date.getTime() - timediff);
+            var utimeString = utime.toLocaleTimeString('it-IT', { hour12: false, options:options});
+            console.log('[UTIME]DateTest021 timediff:' + timediff);
+            console.log('[UTIME]DateTest021 :' + utimeString);
+            expect(utimeString).assertEqual(zerotime);
+        }
     })
 
     /**
@@ -1350,8 +1447,20 @@ describe('etsIntlPtsFunTest', function () {
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }; 
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
         var value = date.toLocaleTimeString('de-DE', { hour12: true, options:options});
+        var timezone = new Date().getTimezoneOffset();
+        var zerotime = "6:00:00 PM";
         console.log('DateTest022 :' + value);
-        expect(value).assertEqual('6:00:00 PM');
+        console.log('[TIMEZONE]DateTest022 :' + timezone);
+        if (timezone == 0) {
+            expect(value).assertEqual(zerotime);
+        } else {
+            var timediff = 0 - (parseInt(timezone) * 60 * 1000);
+            var utime = new Date(date.getTime() - timediff);
+            var utimeString = utime.toLocaleTimeString('de-DE', { hour12: true, options:options});
+            console.log('[UTIME]DateTest003 timediff:' + timediff);
+            console.log('[UTIME]DateTest003 :' + utimeString);
+            expect(utimeString).assertEqual(zerotime);
+        }
     })
 
     console.log('*************array prototype object*************');
