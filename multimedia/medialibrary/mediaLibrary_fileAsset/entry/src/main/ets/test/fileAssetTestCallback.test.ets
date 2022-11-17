@@ -56,7 +56,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                 asset.open('rw', async (err, fd) => {
                     if (err) {
                         console.info(`${testNum} :: err: ${err}`);
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -88,7 +88,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                 console.info(`${testNum} :: error: ${error}`);
                 await asset.close(fd);
                 await asset1.close(fd1);
-                expect.assertFail();
+                expect().assertFail();
                 done();
             }
         }
@@ -104,7 +104,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                 asset.open('r', async (err, fd) => {
                     if (err) {
                         console.info(`${testNum} :: err: ${err}`);
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -115,7 +115,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     expect(res.bytesRead).assertEqual(assetProps.bytesRead);
                     try {
                         await fileio.write(fd, buf);
-                        expect.assertFail();
+                        expect().assertFail();
                     } catch (error) {
                         expect(true).assertTrue();
                         await asset.close(fd);
@@ -125,7 +125,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
 
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
-                expect.assertFail();
+                expect().assertFail();
                 await asset.close(fd);
                 done();
             }
@@ -146,7 +146,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                 asset.open('w', async (err, fd) => {
                     if (err) {
                         console.info(`${testNum} :: err: ${err}`);
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -160,7 +160,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     let buf1 = new ArrayBuffer(4096);
                     try {
                         await fileio.read(fd, buf1);
-                        expect.assertFail();
+                        expect().assertFail();
 
                     } catch (error) {
                         expect(true).assertTrue();
@@ -191,7 +191,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                 asset.close(fd, async (err) => {
                     if (err) {
                         console.info(`${testNum} :: err: ${err}`);
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
