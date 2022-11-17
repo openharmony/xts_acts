@@ -49,7 +49,7 @@ export default function SecurityRandomJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_Random_0200
-     * @tc.name support security random and set random seed
+     * @tc.name Support setting random number seed and restart encryption and decryption framework
      * @tc.desc the length of random is 32, use callback style of interface
      */
     it("Security_crypto_framework_Random_0200", 0, async function (done) {
@@ -65,8 +65,8 @@ export default function SecurityRandomJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_Random_0300
-     * @tc.name support security random and set random seed
-     * @tc.desc the length of random is 32, use callback style of interface
+     * @tc.name Support generating safe random numbers and setting the length of random numbers
+     * @tc.desc use callback style of interface
      */
     it("Security_crypto_framework_Random_0300", 0, async function (done) {
       await testSecurityRandomLengthCallback(0)
@@ -102,8 +102,8 @@ export default function SecurityRandomJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_Random_0400
-     * @tc.name support security random and set random seed
-     * @tc.desc the length of random is 32, use callback style of interface
+     * @tc.name Support generating safe random numbers and setting random number seed exceptions
+     * @tc.desc use callback style of interface
      */
     it("Security_crypto_framework_Random_0400", 0, async function (done) {
       await testSecurityRandomCallbackSeed(null)
