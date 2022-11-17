@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <vector>
 #include <malloc.h>
-#include <time.h>
+#include <ctime>
 #include <uv.h>
 
 static bool exceptionWasPending = false;
@@ -1394,10 +1394,10 @@ static napi_value napiDefineClass(napi_env env, napi_callback_info info)
 }
 
 static napi_value napiRunScriptPath(napi_env env, napi_callback_info info)
-{    
-    napi_value value; 
-    char const* path = "/index/name";  
-    napi_status status = napi_run_script_path(env, path, &value);
+{
+    napi_value value;
+    char const path[] = "/index/name";
+    napi_status status = napi_run_script_path(env, &path, &value);
     NAPI_ASSERT(env, status == napi_ok, "napi_run_script_path ok");
     
     napi_value _value;
@@ -1439,15 +1439,15 @@ static napi_value napiCallThreadsafeFunction(napi_env env, napi_callback_info in
     return value;
 }
 
-static void TsFuncFinalTotalFour(napi_env env, void* finalizeData, void* hint)
+static void TsFuncFinalTotalFour(napi_env env)
 {
     static uv_thread_t guvThreadTest7;
     uv_thread_join(&guvThreadTest7);
 }
     
-static void TsFuncCallJsFour(napi_env env, napi_value tsfn_cb, void* context, void* data)
+static void TsFuncCallJsFour(napi_env env, napi_value tsfn_cb, void* data)
 {
-    int* pData = (int32_t*)data;
+    int* pData = (int*)data;
     printf("TsFuncCallJsFour is %p \n", pData);
 }
 
@@ -1459,10 +1459,11 @@ static napi_value napiCreateThreadsafeFunction(napi_env env, napi_callback_info 
     int32_t  callJstCbDataTestId = 101;
     int32_t  finalCbtDataTestID = 1001;
     napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName,
-                         0, 1, &callJstCbDataTestId, TsFuncFinalTotalFour, &finalCbtDataTestID, TsFuncCallJsFour, &tsFunc);
+                                                         0, 1, &callJstCbDataTestId, TsFuncFinalTotalFour,
+                                                         &finalCbtDataTestID, TsFuncCallJsFour, &tsFunc);
     NAPI_ASSERT(env, status == napi_ok, "napi_create_threadsafe_function");
     
-    napi_acquire_threadsafe_function(tsFunc);  
+    napi_acquire_threadsafe_function(tsFunc);
     status = napi_unref_threadsafe_function(env, tsFunc);
     NAPI_ASSERT(env, status == napi_ok, "napi_unref_threadsafe_function");
     
@@ -1515,7 +1516,7 @@ static napi_value napiRefthreadSafeFunction(napi_env env, napi_callback_info inf
     napi_create_string_latin1(env, __func__, NAPI_AUTO_LENGTH, &resourceName);
     int32_t callJsCbDataTestId = 101;
     int32_t finalCbDataTestId = 1001;
-    napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName, 
+    napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName,
        0, 1, &callJsCbDataTestId, TsFuncFinalTotalFour, &finalCbDataTestId, TsFuncCallJsFour, &tsFunc);
     NAPI_ASSERT(env, status == napi_ok, "napi_create_threadsafe_function");
     
