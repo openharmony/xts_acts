@@ -13,12 +13,17 @@
  * limitations under the License.
  */
 import actsWifiCandidateNetWorkTest from './WifiCandidateNetWork.test.js'
+import actsWifiManagerCandidateNetWorkTest from './WifiManagerCandidateNetWork.test.js'
 import actsWifiFunctionsTest from './WifiStationFunctions.test.js'
+import actsWifiManagerFunctionsTest from './WifiManagerStationFunctions.test.js'
 import actsWifiEventTest from './WifiStationEvent.test.js'
+import actsWifiManagerEventTest from './WifiManagerStationEvent.test.js'
 export default function testsuite() {
-actsWifiCandidateNetWorkTest()
-actsWifiFunctionsTest()
-actsWifiEventTest()
+    actsWifiCandidateNetWorkTest()
+    actsWifiManagerCandidateNetWorkTest()
+    actsWifiFunctionsTest()
+    actsWifiManagerFunctionsTest()
+    actsWifiEventTest()
+    actsWifiManagerEventTest()
 }
-
 
