@@ -1396,7 +1396,7 @@ static napi_value napiDefineClass(napi_env env, napi_callback_info info)
 static napi_value napiRunScriptPath(napi_env env, napi_callback_info info)
 {
     napi_value value;
-    char const path[] = "/index/name";
+    const char* path = "test/path";
     napi_status status = napi_run_script_path(env, &path, &value);
     NAPI_ASSERT(env, status == napi_ok, "napi_run_script_path ok");
     
@@ -1445,14 +1445,14 @@ static void TsFuncFinalTotalFour(napi_env env)
     uv_thread_join(&guvThreadTest7);
 }
     
-static void TsFuncCallJsFour(napi_env env, napi_value tsfn_cb, void* data)
+static void TsFuncCallJsFour(napi_env env, napi_value tsfn_cb)
 {
-    int* pData = (int*)data;
-    printf("TsFuncCallJsFour is %p \n", pData);
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
 }
 
 static napi_value napiCreateThreadsafeFunction(napi_env env, napi_callback_info info)
-{    
+{
     napi_threadsafe_function tsFunc = nullptr;
     napi_value resourceName = 0;
     napi_create_string_latin1(env, __func__, NAPI_AUTO_LENGTH, &resourceName);
@@ -1517,7 +1517,8 @@ static napi_value napiRefthreadSafeFunction(napi_env env, napi_callback_info inf
     int32_t callJsCbDataTestId = 101;
     int32_t finalCbDataTestId = 1001;
     napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName,
-       0, 1, &callJsCbDataTestId, TsFuncFinalTotalFour, &finalCbDataTestId, TsFuncCallJsFour, &tsFunc);
+                                                         0, 1, &callJsCbDataTestId, TsFuncFinalTotalFour,
+                                                         &finalCbDataTestId, TsFuncCallJsFour, &tsFunc);
     NAPI_ASSERT(env, status == napi_ok, "napi_create_threadsafe_function");
     
     status = napi_ref_threadsafe_function(env, tsFunc);
@@ -1600,8 +1601,8 @@ static napi_value napiFatalerror(napi_env env, napi_callback_info info)
     void *data = nullptr;
     napi_threadsafe_function tsfun = static_cast<napi_threadsafe_function>(data);
     if (napi_release_threadsafe_function(tsfun, napi_tsfn_release) == napi_ok) {
-        napi_fatal_error("ReleaseThreadsafeFunction", NAPI_AUTO_LENGTH,
-        "napi_release_threadsafe_function failed", NAPI_AUTO_LENGTH);
+        napi_fatal_error("ReleaseThreadsafeFunction",
+        NAPI_AUTO_LENGTH,"napi_release_threadsafe_function failed", NAPI_AUTO_LENGTH);
     }
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
