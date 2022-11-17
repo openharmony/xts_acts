@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,8 +25,8 @@ const STORE_CONFIG = {
 const COLOUNM_NAMES = ["id","data1","data2","data3","data4"];
 var rdbStore = undefined;
 
-export default function rdbResultSetTest(context) {
-describe('rdbResultSetTest', function () {
+export default function rdbResultSetTestV9(context) {
+describe('rdbResultSetTestV9', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
         rdbStore = await dataRdb.getRdbStoreV9(context, STORE_CONFIG, 1);
@@ -84,12 +84,12 @@ describe('rdbResultSetTest', function () {
     }
 
     /**
-     * @tc.name resultSet getBlob normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0010
-     * @tc.desc resultSet getBlob normal test
+     * @tc.name resultSetV9 getBlob normal test
+     * @tc.number SUB_DDM_RELATIONALETS_RESULTSETV9_0010
+     * @tc.desc resultSetV9 getBlob normal test
      */
-    it('testGetBlob0001', 0, async function (done) {
-        console.info(TAG + '************* testGetBlob0001 start *************');
+    it('SUB_DDM_RELATIONALETS_RESULTSETV9_0010', 0, async function (done) {
+        console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSETV9_0010 start *************');
         let predicates = await new dataRdb.RdbPredicatesV9('test')
         let resultSetV9 = await rdbStore.query(predicates)
         try {
@@ -109,7 +109,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSetV9 = null
         done();
-        console.info(TAG + '************* testGetBlob0001 end *************');
+        console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSETV9_0010 end *************');
     })
     console.info(TAG + '*************Unit Test End*************');
 })
