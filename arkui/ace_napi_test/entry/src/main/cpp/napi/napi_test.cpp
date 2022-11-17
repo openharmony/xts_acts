@@ -1433,8 +1433,8 @@ static napi_value napiCallThreadsafeFunction(napi_env env, napi_callback_info in
 }
 
 static void TsFuncFinalTotalFour(napi_env env, void* finalizeData, void* hint) {
-    static uv_thread_t g_uvThreadTest7;
-    uv_thread_join(&g_uvThreadTest7);
+    static uv_thread_t guvThreadTest7;
+    uv_thread_join(&guvThreadTest7);
 }
     
 static void TsFuncCallJsFour(napi_env env, napi_value tsfn_cb, void* context, void* data) {
@@ -1495,7 +1495,6 @@ static napi_value napiCreateFunction(napi_env env, napi_callback_info info) {
     return value;
 }
 
-
 static napi_value napiRefthreadSafeFunction(napi_env env, napi_callback_info info) {
     napi_threadsafe_function tsFunc = nullptr;
     napi_value resourceName = 0;
@@ -1546,7 +1545,6 @@ static napi_value napiCreateBigintUint64(napi_env env, napi_callback_info info) 
 }
 
 static napi_value napiCreateBigintInt64(napi_env env, napi_callback_info info) {
-    
     int64_t testValue = INT64_MAX;
     napi_value result = nullptr;
     napi_create_bigint_int64(env, testValue, &result);
@@ -1568,8 +1566,8 @@ static napi_value napiCreateBigintWords(napi_env env, napi_callback_info info) {
     NAPI_CALL(env, napi_create_bigint_words(env, signBit, wordCount, words, &result));
     NAPI_CALL(env, napi_get_value_bigint_words(env, result, &signBit, &wordCount, wordsOut));
     bool testResult = false;
-    const int word_count = 2;
-    if (signBit == 0 && wordCount == word_count && words[0] == wordsOut[0] && words[1] == wordsOut[1]) {
+    const int wCount = 2;
+    if (signBit == 0 && wordCount == wordCount && words[0] == wordsOut[0] && words[1] == wordsOut[1]) {
         testResult = true;
     }
     napi_value value;
@@ -1589,10 +1587,6 @@ static napi_value napiFatalerror(napi_env env, napi_callback_info info) {
     
     return _value;
 }
-
-
-
-
 
 EXTERN_C_START
 
