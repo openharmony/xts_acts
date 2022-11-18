@@ -1504,8 +1504,8 @@ static napi_value napiRefthreadSafeFunction(napi_env env, napi_callback_info inf
     napi_create_string_latin1(env, __func__, NAPI_AUTO_LENGTH, &resourceName);
     int32_t callJsCbDataTestId = 101;
     int32_t finalCbDataTestId = 1001;
-    napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName, 
-                                                         0, 1, &callJsCbDataTestId, 
+    napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName,
+                                                         0, 1, &callJsCbDataTestId,
                                                          nullptr, &finalCbDataTestId, nullptr, &tsFunc);
     NAPI_ASSERT(env, status != napi_ok, "napi_create_threadsafe_function failed");
     
@@ -1585,12 +1585,12 @@ static napi_value napiCreateBigintWords(napi_env env, napi_callback_info info)
 }
 
 static napi_value napiFatalerror(napi_env env, napi_callback_info info)
-{
+{   
     void *data = nullptr;
     napi_threadsafe_function tsfun = static_cast<napi_threadsafe_function>(data);
     if (napi_release_threadsafe_function(tsfun, napi_tsfn_release) == napi_ok) {
-        napi_fatal_error("ReleaseThreadsafeFunction",
-        NAPI_AUTO_LENGTH, "napi_release_threadsafe_function failed", NAPI_AUTO_LENGTH);
+        napi_fatal_error("ReleaseThreadsafeFunction", NAPI_AUTO_LENGTH,
+                        "napi_release_threadsafe_function failed", NAPI_AUTO_LENGTH);
     }
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
