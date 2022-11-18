@@ -38,35 +38,6 @@ describe('ActsBmsQueryAbilityByWant', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYSYS_0008
-    * @tc.name: queryAbilityByWantThirdApp
-    * @tc.desc: 1.queryAbilityByWant callback
-    *           2.queryAbilityByWant for third app
-    */
-    it('queryAbilityByWantThirdApp', 0, async function (done) {
-        await bundle.queryAbilityByWant({
-            action: ACTION_NAME,
-            entities: [ENTITY_NAME],
-            bundleName: BUNDLE_NAME1
-        }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
-            userId).then(data => {
-                expect(data).assertFail();
-            }).catch(err => {
-                expect(err).assertEqual(1);
-            });
-        bundle.queryAbilityByWant({
-            action: ACTION_NAME,
-            entities: [ENTITY_NAME],
-            bundleName: BUNDLE_NAME1
-        }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
-            userId, (err, data) => {
-                expect(err).assertEqual(1);
-                expect(data).assertEqual("QueryAbilityInfos failed");
-                done();
-            });
-    });
-
-    /*
     * @tc.number: SUB_BMS_APPINFO_QUERYSYS_0007
     * @tc.name: queryAbilityByWantSystemApp
     * @tc.desc: 1.queryAbilityByWant callback
@@ -104,50 +75,6 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 }
                 done();
             });
-    });
-
-    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERY_0084
-    * @tc.name: queryAbilityByWantImplicitByEntities
-    * @tc.desc: The entities in the parameter want pass in the new field, and use the implicit query to get abilitInfos
-    */
-    it('queryAbilityByWantImplicitByEntities', 0, async function (done) {
-        let dataInfos = await bundle.queryAbilityByWant({
-            action: ACTION_NAME,
-            entities: ["entity.app.music",
-                "entity.app.email",
-                "entity.app.contacts",
-                "entity.app.maps",
-                "entity.app.browser",
-                "entity.app.calendar",
-                "entity.app.messaging",
-                "entity.app.files",
-                "entity.app.gallery"],
-            deviceId: '0',
-            bundleName: '',
-            abilityName: ''
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
-        expect(dataInfos.length).assertEqual(1);
-        cheackAbilityInfos(dataInfos[0]);
-        bundle.queryAbilityByWant({
-            action: ACTION_NAME,
-            entities: ["entity.app.music",
-                "entity.app.email",
-                "entity.app.contacts",
-                "entity.app.maps",
-                "entity.app.browser",
-                "entity.app.calendar",
-                "entity.app.messaging",
-                "entity.app.files",
-                "entity.app.gallery"],
-            deviceId: '0',
-            bundleName: '',
-            abilityName: ''
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId, (err, data) => {
-            expect(data.length).assertEqual(1);
-            cheackAbilityInfos(data[0]);
-            done();
-        });
     });
 
     async function cheackAbilityInfos(data) {

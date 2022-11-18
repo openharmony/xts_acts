@@ -15,31 +15,13 @@
 import getabilityInfo from './GetabilityInfo.test.ets';
 import getApplicationInfoJsunit from './getApplicationInfoJsunit.test.ets';
 import getAllAppInfoJsunit from './getAllApplicationInfoJsunit.test.ets';
-import getAbilityLabelJsUnit from "./GetAbilityLabelJsUnit.test.ets";
-import isAbilityEnableETSUnit from "./IsAbilityEnabledETSUnit.ets";
-import isApplicationEnabledETSUnit from "./IsApplicationEnabledETSUnit.ets";
-import getAbilityIcon from "./GetAbilityIcon.test.ets";
-import getNameForUid from "./GetNameForUid.test.ets";
-import getBundleArchiveInfo from "./getBundleArchiveInfo.test.ets";
-import getQueryAbilityByWant from './GetQueryAbilityByWant.test.ets';
 import isDefaultApplicationTest from './IsDefaultApplication.test.ets';
 import getBundleInfoForSelf from './GetBundleInfoForSelf.test.ets';
 
 export default function testsuite() {
   getBundleInfoForSelf();
-  getBundleArchiveInfo();
-  getAbilityIcon();
-  getNameForUid();
-  getQueryAbilityByWant();
   isDefaultApplicationTest();
-  //RM.007
   getApplicationInfoJsunit();
   getAllAppInfoJsunit();
-  //RM.006
   getabilityInfo();
-  //RM.014
-  getAbilityLabelJsUnit();
-  //RM.017
-  isAbilityEnableETSUnit();
-  isApplicationEnabledETSUnit();
 }

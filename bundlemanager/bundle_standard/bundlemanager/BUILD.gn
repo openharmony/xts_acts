@@ -17,13 +17,10 @@ group("bundlemanager") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsbmsaccesstokentest:ActsBmsAccessTokenTest",
       "actsbmsetsunpermissiontest:ActsBmsEtsUnPermissionTest",
       "actsbmsgetinfostest:ActsBmsGetInfosTest",
-      "actsbmshapmoduletest:ActsBmsHapModuleTest",
       "actsbmsjstest:ActsBmsJsTest",
       "actsbmsjsunpermissiontest:ActsBmsJsUnPermissionTest",
-      "actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanagerstagetest:ActsBundleMgrStageEtsTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
