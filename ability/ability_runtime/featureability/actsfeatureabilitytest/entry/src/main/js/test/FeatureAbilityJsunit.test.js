@@ -185,7 +185,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(wantConstantNew.Action.INTENT_PARAMS_TITLE).assertEqual("ability.want.params.TITLE");
         expect(wantConstantNew.Action.ACTION_FILE_SELECT).assertEqual("ohos.action.fileSelect");
         expect(wantConstantNew.Action.PARAMS_STREAM).assertEqual("ability.params.stream");
-        expect(wantConstantNew.Action.ACTION_APP_ACCOUNT_AUTH).assertEqual("account.appAccount.action.auth");
+        expect(wantConstantNew.Action.ACTION_APP_ACCOUNT_AUTH).assertEqual("ohos.appAccount.action.auth");
 
         expect(wantConstantNew.Entity.ENTITY_HOME).assertEqual("entity.system.home");
         expect(wantConstantNew.Entity.ENTITY_DEFAULT).assertEqual("entity.system.default");
