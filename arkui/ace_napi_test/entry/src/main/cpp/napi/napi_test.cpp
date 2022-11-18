@@ -38,7 +38,7 @@ static void add_returned_status(napi_env env,
     napi_value prop_value;
 
     if (actual_status != expected_status) {
-        snprintf(napi_message_string, sizeof(napi_message_string), "Invalid status [%d]", actual_status);
+        printf("Invalid status [%d]", actual_status);
     }
 
     NAPI_CALL_RETURN_VOID(env,
@@ -1396,8 +1396,7 @@ static napi_value napiDefineClass(napi_env env, napi_callback_info info)
 static napi_value napiRunScriptPath(napi_env env, napi_callback_info info)
 {
     napi_value value;
-    //char const* path = "/index/name";
-    const char* path =  "22";
+    const char* path =  "index/page";
     napi_status status = napi_run_script_path(env, path, &value);
     NAPI_ASSERT(env, status == napi_ok, "napi_run_script_path ok");
     
@@ -1440,18 +1439,6 @@ static napi_value napiCallThreadsafeFunction(napi_env env, napi_callback_info in
     return value;
 }
 
-static void TsFuncFinalTotalFour(napi_env env, void* finalizeData, void* hint)
-{
-    static uv_thread_t guvThreadTest7;
-    uv_thread_join(&guvThreadTest7);
-}
-    
-static void TsFuncCallJsFour(napi_env env, napi_value tsfn_cb, void* context, void* data)
-{
-    int* pData = (int*)data;
-    printf("TsFuncCallJsFour is %p \n", pData);
-}
-
 static napi_value napiCreateThreadsafeFunction(napi_env env, napi_callback_info info)
 {
     napi_threadsafe_function tsFunc = nullptr;
@@ -1460,13 +1447,13 @@ static napi_value napiCreateThreadsafeFunction(napi_env env, napi_callback_info 
     int32_t  callJstCbDataTestId = 101;
     int32_t  finalCbtDataTestID = 1001;
     napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName,
-                                                         0, 1, &callJstCbDataTestId, TsFuncFinalTotalFour, 
-                                                         &finalCbtDataTestID, TsFuncCallJsFour, &tsFunc);
-    NAPI_ASSERT(env, status == napi_ok, "napi_create_threadsafe_function");
+                                                         0, 1, &callJstCbDataTestId, nullptr,
+                                                         &finalCbtDataTestID, nullptr, &tsFunc);
+    NAPI_ASSERT(env, status != napi_ok, "napi_create_threadsafe_function failed");
     
     napi_acquire_threadsafe_function(tsFunc);
     status = napi_unref_threadsafe_function(env, tsFunc);
-    NAPI_ASSERT(env, status == napi_ok, "napi_unref_threadsafe_function");
+    NAPI_ASSERT(env, status != napi_ok, "napi_unref_threadsafe_function failed");
     
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
@@ -1518,11 +1505,12 @@ static napi_value napiRefthreadSafeFunction(napi_env env, napi_callback_info inf
     int32_t callJsCbDataTestId = 101;
     int32_t finalCbDataTestId = 1001;
     napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName, 
-       0, 1, &callJsCbDataTestId, TsFuncFinalTotalFour, &finalCbDataTestId, TsFuncCallJsFour, &tsFunc);
-    NAPI_ASSERT(env, status == napi_ok, "napi_create_threadsafe_function");
+                                                         0, 1, &callJsCbDataTestId, 
+                                                         nullptr, &finalCbDataTestId, nullptr, &tsFunc);
+    NAPI_ASSERT(env, status != napi_ok, "napi_create_threadsafe_function failed");
     
     status = napi_ref_threadsafe_function(env, tsFunc);
-    NAPI_ASSERT(env, status == napi_ok, "napi_ref_threadsafe_function");
+    NAPI_ASSERT(env, status != napi_ok, "napi_ref_threadsafe_function");
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
     
@@ -1602,7 +1590,7 @@ static napi_value napiFatalerror(napi_env env, napi_callback_info info)
     napi_threadsafe_function tsfun = static_cast<napi_threadsafe_function>(data);
     if (napi_release_threadsafe_function(tsfun, napi_tsfn_release) == napi_ok) {
         napi_fatal_error("ReleaseThreadsafeFunction",
-        NAPI_AUTO_LENGTH,"napi_release_threadsafe_function failed", NAPI_AUTO_LENGTH);
+        NAPI_AUTO_LENGTH, "napi_release_threadsafe_function failed", NAPI_AUTO_LENGTH);
     }
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
