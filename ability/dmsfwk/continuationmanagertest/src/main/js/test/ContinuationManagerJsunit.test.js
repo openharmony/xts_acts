@@ -27,7 +27,7 @@ describe('continuationManagerTest', function() {
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
-        await sleep(5000)
+        await sleep(20000)
         done();
     })
 

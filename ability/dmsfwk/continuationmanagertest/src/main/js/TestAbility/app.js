@@ -42,7 +42,7 @@ async function clickPermission(driver) {
         data_sync_allow = await driver.findComponent(BY.text("允许"))
         wait_count += 1
         await driver.delayMs(1000)
-        if (wait_count == 3) {
+        if (wait_count == 15) {
             break
         }
     }
