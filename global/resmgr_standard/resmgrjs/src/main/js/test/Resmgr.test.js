@@ -737,8 +737,8 @@ describe('resMgrTest', function () {
                 console.log('getConfiguration_test_001 1' + cfg.direction);
                 console.log('getConfiguration_test_001 1' + resmgr.Direction.DIRECTION_HORIZONTAL);
                 console.log('getConfiguration_test_001 11');
-                if(cfg.direction == resmgr.Direction.DIRECTION_HORIZONTAL){
-                    console.log('getConfiguration_test_001 DIRECTION_HORIZONTAL');
+                if(cfg.direction == resmgr.Direction.DIRECTION_VERTICAL){
+                    console.log('getConfiguration_test_001 DIRECTION_VERTICAL');
                 }else if(cfg.direction == resmgr.Direction.DIRECTION_HORIZONTAL){
                     console.log('getConfiguration_test_001 DIRECTION_HORIZONTAL');
                 }
@@ -771,6 +771,27 @@ describe('resMgrTest', function () {
         expect(resmgr.Direction.DIRECTION_VERTICAL).assertEqual(0);
         console.log('getConfiguration_test_003 1');
         done();
+    })
+
+    /* *
+        * @tc.number  SUB_GLOBAL_RESMGR_JS_1300
+        * @tc.name    test getConfiguration method in promise mode
+        * @tc.desc    get the configuration in promise mode
+        */
+    it('getConfiguration_test_004', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getConfiguration().then(cfg => {
+                console.log('getConfiguration_test_004 ' + resmgr.Direction.DIRECTION_HORIZONTAL);
+                if(cfg.direction == resmgr.Direction.DIRECTION_VERTICAL){
+                    console.log('getConfiguration_test_004 DIRECTION_VERTICAL');
+                }else if(cfg.direction == resmgr.Direction.DIRECTION_HORIZONTAL){
+                    console.log('getConfiguration_test_004 DIRECTION_HORIZONTAL');
+                }
+                expect(cfg !== null).assertTrue();
+                console.log('getConfiguration_test_004 ' + JSON.stringify(cfg));
+                done();
+            })
+        })
     })
 
     /* *
@@ -874,6 +895,27 @@ describe('resMgrTest', function () {
     })
 
     /* *
+        * @tc.number  SUB_GLOBAL_RESMGR_JS_1500
+        * @tc.name    test getDeviceCapability method in callback mode
+        * @tc.desc    get the device capability in callback mode
+        */
+    it('getDeviceCapability_test_008', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getDeviceCapability().then(dc => {
+                if(dc.deviceType == resmgr.DeviceType.DEVICE_TYPE_PHONE){
+                    console.log('getDeviceCapability_test_008 DEVICE_TYPE_PHONE');
+                }
+                if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_LDPI){
+                    console.log('getDeviceCapability_test_008 SCREEN_LDPI');
+                }
+                expect(dc !== null).assertTrue();
+                console.log('getDeviceCapability_test_008 ' + JSON.stringify(dc));
+                done();
+            })
+        })
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_RESMGR_JS_1500
     * @tc.name    test getDeviceCapability method in callback mode
     * @tc.desc    get the device capability in callback mode
@@ -881,17 +923,17 @@ describe('resMgrTest', function () {
     it('getScreenDensity_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getDeviceCapability((error, dc) => {
-                if(dc.deviceType == resmgr.ScreenDensity.SCREEN_SDPI){
+                if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_SDPI){
                     console.log('getScreenDensity_test_001 SCREEN_SDPI');
-                }else if(dc.deviceType == resmgr.ScreenDensity.SCREEN_MDPI){
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_MDPI){
                     console.log('getScreenDensity_test_001 SCREEN_MDPI');
-                }else if(dc.deviceType == resmgr.ScreenDensity.SCREEN_LDPI){
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_LDPI){
                     console.log('getScreenDensity_test_001 SCREEN_LDPI');
-                }else if(dc.deviceType == resmgr.ScreenDensity.SCREEN_XLDPI){
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_XLDPI){
                     console.log('getScreenDensity_test_001 SCREEN_XLDPI');
-                }else if(dc.deviceType == resmgr.ScreenDensity.SCREEN_XXLDPI){
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_XXLDPI){
                     console.log('getScreenDensity_test_001 SCREEN_XXLDPI');
-                }else if(dc.deviceType == resmgr.ScreenDensity.SCREEN_XXXLDPI){
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_XXXLDPI){
                     console.log('getScreenDensity_test_001 SCREEN_XXXLDPI');
                 }
                 expect(dc !== null).assertTrue();
@@ -970,18 +1012,6 @@ describe('resMgrTest', function () {
         console.log('getScreenDensity_test_007 0');
         expect(resmgr.ScreenDensity.SCREEN_XXXLDPI).assertEqual(640);
         console.log('getScreenDensity_test_007 1');
-        done();
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
-    * @tc.name    test getDeviceCapability method in promise mode
-    * @tc.desc    get the device capability in promise mode
-    */
-    it('getScreenDensity_test_002', 0, async function (done) {
-        console.log('getScreenDensity_test_002 0');
-        expect(resmgr.ScreenDensity.SCREEN_SDPI).assertEqual(120);
-        console.log('getScreenDensity_test_002 1');
         done();
     })
 
