@@ -81,7 +81,7 @@ export default function singleusermodelTest() {
                         console.info('executeShellCommand : err : ' + JSON.stringify(err));
                     })
                 console.debug('ACTS_ExtensionSingleUserModel_1400====>timeout====>');
-                globalThis.abilityContex.disconnectAbility(connId).then((data)=>{
+                globalThis.abilityContext.disconnectServiceExtensionAbility(connId).then((data)=>{
                     console.debug("====>data is====>" + JSON.stringify(data));
                 })
             },START_ABILITY_TIMEOUT);

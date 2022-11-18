@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent'
 import bundle from '@ohos.bundle';
 import dataAbility from '@ohos.data.dataAbility';

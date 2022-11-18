@@ -157,7 +157,7 @@ export default function abilityPermissionTest() {
       function SubscribeCallBack(err, data) {
         expect(data.event == "ACTS_AbilityPermission_0400_Start_CommonEvent").assertTrue();
         console.debug("====>0400 Subscribe CallBack data:====>" + JSON.stringify(data));
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');

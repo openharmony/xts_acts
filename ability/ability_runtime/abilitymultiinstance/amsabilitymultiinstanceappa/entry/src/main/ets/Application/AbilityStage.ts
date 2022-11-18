@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import AbilityStage from "@ohos.application.AbilityStage"
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
 const ONACCEPTWANT_KEY_NOTSET_ID = -1;
 const ONACCEPTWANT_KEY_UNDEFINED_ID = -2;

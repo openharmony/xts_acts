@@ -235,7 +235,7 @@ export default function abilityTest() {
         console.debug("====>ACTS_startAbilityForResult_1100_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-        connId = await globalThis.abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectServiceExtensionAbility(
           {
             bundleName: "com.example.startabilityforresult",
             abilityName: "com.example.startabilityforresult.ServiceAbility",
@@ -246,7 +246,7 @@ export default function abilityTest() {
       })
 
       function unSubscribeCallback() {
-        globalThis.abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectServiceExtensionAbility(
           connId,
           (error, data) => {
             console.log('startAbilityForResult_0400 Disconnect result errCode : ' + error.code + " data: " + data)
@@ -258,7 +258,7 @@ export default function abilityTest() {
 
       function timeout() {
         expect().assertFail();
-        globalThis.abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectServiceExtensionAbility(
           connId,
           (error, data) => {
             console.log('DisconnectAbility_0400 result errCode : ' + error.code + " data: " + data)
