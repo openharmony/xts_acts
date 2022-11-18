@@ -18,6 +18,7 @@ group("useriam") {
   if (is_standard_system) {
     deps = [
       "face_auth/js_api_test/function_test/userauth:ActsUserauthTest",
+      "face_auth/js_api_test/function_test/userauthnopermission:ActsUserauthnopermissionTest",
       "face_auth/js_api_test/function_test/userauthpart2:ActsUserauthTwoTest",
     ]
   }
