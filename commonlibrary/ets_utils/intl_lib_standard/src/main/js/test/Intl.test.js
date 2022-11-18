@@ -54,13 +54,18 @@ describe('etsIntlFunTest', function () {
      * @tc.level     : Level 0
     */
     it('SUB_ARK_ETS_INTL_DATETIMEFORMAT_003', 0, function () {
+        var newDate = new Date((24 * 60 * 60 * 1000) * (52 * 365 + 9 * 30 + 23));
         var options =
             { year: "2-digit", month: "2-digit", day: "2-digit",
                 hour: "2-digit", minute: "2-digit",
                 timeZoneName: "short" };
         var intlObj = new Intl.DateTimeFormat("en-US", options).format;
         console.log("intlDateTimeFormatTest003::" + intlObj(newDate));
-        expect(intlObj(newDate)).assertEqual("10/08/22, 12:00 AM GMT");
+        if (intlObj(newDate).indexOf('CST') != -1) {
+            expect(intlObj(newDate)).assertEqual("10/08/22, 08:00 AM CST");
+        } else {
+            expect(intlObj(newDate)).assertEqual("10/08/22, 12:00 AM GMT");
+        }
     })
 
     /**
@@ -78,7 +83,11 @@ describe('etsIntlFunTest', function () {
                 timeZoneName: "short" };
         var intlObj = new Intl.DateTimeFormat("en", options).format;
         console.log("intlDateTimeFormatTest004::" + intlObj(newDate));
-        expect(intlObj(newDate)).assertEqual("10/08/22, 12:00 AM GMT");
+        if (intlObj(newDate).indexOf('CST') != -1) {
+            expect(intlObj(newDate)).assertEqual("10/08/22, 08:00 AM CST");
+        } else {
+            expect(intlObj(newDate)).assertEqual("10/08/22, 12:00 AM GMT");
+        }
     })
 
     /**
@@ -277,7 +286,7 @@ describe('etsIntlFunTest', function () {
         expect(intlObj.resolvedOptions().timeZoneName).assertEqual('short');
         var parts = intlObj.formatToParts(newDate);
         var partValues = parts.map(p => p.value);
-        expect(partValues.length).assertEqual(11);
+        expect(partValues.length).assertEqual(12);
         expect(partValues[0]).assertEqual('2022');
     })
     
