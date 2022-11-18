@@ -37,7 +37,9 @@ describe('resMgrTest', function () {
     * @tc.desc    get the resource manager in callback mode with bundlename
     */
     it('getResourceManager_test_002', 0, async function (done) {
-        resmgr.getResourceManager('ohos.intl.test', (error, mgr) => {
+        console.log('getResourceManager_test_002 0');
+        resmgr.getResourceManager('ohos.resmgr.test', (error, mgr) => {
+            console.log('getResourceManager_test_002 1');
             expect(mgr !== null).assertTrue();
             done();
         })
@@ -61,7 +63,9 @@ describe('resMgrTest', function () {
     * @tc.desc    get the resource manager in promise mode with bundlename
     */
     it('getResourceManager_test_004', 0, async function (done) {
-        resmgr.getResourceManager('ohos.intl.test').then(mgr => {
+        console.log('getResourceManager_test_004 0');
+        resmgr.getResourceManager('ohos.resmgr.test').then(mgr => {
+            console.log('getResourceManager_test_004 1');
             expect(mgr !== null).assertTrue();
             done();
         })
@@ -122,7 +126,7 @@ describe('resMgrTest', function () {
     */
     it('getStringValue_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringValue({ bundleName:"ohos.intl.test",
+            mgr.getStringValue({ bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000008}, (err, value) => {
                 expect(value !== null).assertTrue();
@@ -140,7 +144,7 @@ describe('resMgrTest', function () {
     it('getStringValue_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             console.info(`getStringValue_test_002 ${JSON.stringify(mgr)}`)
-            mgr.getStringValue({ bundleName:"ohos.intl.test",
+            mgr.getStringValue({ bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000008}).then(value => {
                 console.info(`getStringValue_test_002 promise ${JSON.stringify(error)}`)
@@ -464,7 +468,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArrayValue_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArrayValue({bundleName:"ohos.intl.test",
+            mgr.getStringArrayValue({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x0100000a}, (err, value) => {
                 expect(value !== null).assertTrue();
@@ -481,7 +485,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArrayValue_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-             mgr.getStringArrayValue({bundleName:"ohos.intl.test",
+             mgr.getStringArrayValue({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x0100000a}).then(value => {
                 expect(value !== null).assertTrue();
@@ -573,7 +577,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent({bundleName:"ohos.intl.test",
+            mgr.getMediaContent({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000017}, (err, value) => {
                 expect(value !== null).assertTrue();
@@ -590,7 +594,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent({bundleName:"ohos.intl.test",
+            mgr.getMediaContent({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000017}).then(value => {
                 expect(value !== null).assertTrue();
@@ -667,7 +671,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64({bundleName:"ohos.intl.test",
+            mgr.getMediaContentBase64({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000017}, (err, value) => {
                 expect(value !== null).assertTrue();
@@ -684,7 +688,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64({bundleName:"ohos.intl.test",
+            mgr.getMediaContentBase64({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000017}).then(value => {
                 expect(value !== null).assertTrue();
@@ -1054,7 +1058,7 @@ describe('resMgrTest', function () {
     */
     it('getPluralStringValue_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue({bundleName:"ohos.intl.test",
+            mgr.getPluralStringValue({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000012}, 1, (error, value) => {
                 expect(value !== null).assertTrue();
@@ -1071,7 +1075,7 @@ describe('resMgrTest', function () {
     */
     it('getPluralStringValue_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue({bundleName:"ohos.intl.test",
+            mgr.getPluralStringValue({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000012}, 1).then(value => {
                 expect(value !== null).assertTrue();
@@ -1568,7 +1572,7 @@ describe('resMgrTest', function () {
     */
     it('getStringSync_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getStringSync({bundleName:"ohos.intl.test",
+            let value = mgr.getStringSync({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000008});
             expect(value !== null).assertTrue();
@@ -1635,7 +1639,7 @@ describe('resMgrTest', function () {
     */
     it('getBoolean_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getBoolean({bundleName:"ohos.intl.test",
+            let value = mgr.getBoolean({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x0100000c});
             console.log('getBoolean_test_002 ' + value);
@@ -1681,7 +1685,7 @@ describe('resMgrTest', function () {
     */
     it('getinteger_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber({bundleName:"ohos.intl.test",
+            let value = mgr.getNumber({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000000});
             console.log('getinteger_test_002 ' + value);
@@ -1725,7 +1729,7 @@ describe('resMgrTest', function () {
     */
     it('getfloat_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber({bundleName:"ohos.intl.test",
+            let value = mgr.getNumber({bundleName:"ohos.resmgr.test",
                 moduleName:"entry",
                 id:0x01000015});
             console.log('getfloat_test_002 ' + value);
