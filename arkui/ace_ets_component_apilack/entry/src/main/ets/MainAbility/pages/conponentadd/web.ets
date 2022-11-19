@@ -250,7 +250,7 @@ struct Index {
                             var origin = this.controller.getPageHeight()
                             var zoomInCalled = false  
                             setTimeout(()=>{ 
-                                this.newcontroller.zoomIn()    
+                                this.newcontroller.zoomIn(); 
                                 if (this.controller.getPageHeight() > origin) {
                                     zoomInCalled = true
                                 }
