@@ -15,6 +15,7 @@
  */
 
 import Log from '../common/Log.ets';
+import web_webview from '@ohos.web.webview';
 
 @Entry
 @Component
@@ -24,6 +25,7 @@ struct WebComponent {
   fileAccess: boolean = true;
   // 定义Web组件的控制器controller
   controller: WebController = new WebController();
+  controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
   webResourceResponse: WebResourceResponse = new WebResourceResponse();
   build() {
     Column() {
@@ -146,8 +148,8 @@ struct WebComponent {
             console.log('setResponseEncoding:' + event.response.setResponseEncoding("UTF-8"));
             console.log('setResponseMimeType:' + event.response.setResponseMimeType("application/json"));
             console.log('setResponseHeader:' + event.response.setResponseHeader([]));
-            console.log('web getExtra:' + this.controller.getHitTestValue().getExtra());
-            console.log('web getType:' + this.controller.getHitTestValue().getType());
+            console.log('web getExtra:' + this.controllerTwo.getHitTestValue().getExtra());
+            console.log('web getType:' + this.controllerTwo.getHitTestValue().getType());
             console.log('web getCookieManager:' + this.controller.getCookieManager());
             console.log('web getCookie:' + this.controller.getCookieManager().getCookie("www.baidu.com"));
             console.log('web existCookie:' + this.controller.getCookieManager().existCookie());
@@ -165,10 +167,10 @@ struct WebComponent {
             console.log('web putAcceptThirdPartyCookieEnabled:' + this.controller.getCookieManager()
               .putAcceptThirdPartyCookieEnabled(true));
             console.log('web saveCookieSync:' + this.controller.getCookieManager().saveCookieSync());
-            console.log('web zoomIn:' + this.controller.zoomIn());
-            console.log('web zoomOut:' + this.controller.zoomOut());
+            console.log('web zoomIn:' + this.controllerTwo.zoomIn());
+            console.log('web zoomOut:' + this.controllerTwo.zoomOut());
             console.log('web zoom:' + this.controller.zoom(2));
-            console.log('web getWebId:' + this.controller.getWebId());
+            console.log('web getWebId:' + this.controllerTwo.getWebId());
             console.log('web getDefaultUserAgent:' + this.controller.getDefaultUserAgent());
             console.log('web getTitle:' + this.controller.getTitle());
             console.log('web getPageHeight:' + this.controller.getPageHeight());

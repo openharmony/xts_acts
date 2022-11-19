@@ -91,7 +91,7 @@ export default function sideBarShowSideBarJsunit() {
       console.info("[testsideBarShowSideBar0003] component autoHide strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('SideBarContainer');
-      expect(obj.$attrs.sideBarPosition).assertEqual(undefined);
+      expect(obj.$attrs.sideBarPosition).assertEqual('SideBarPosition.End');
       console.info("[testsideBarShowSideBar0003] autoHide value :" + obj.$attrs.autoHide);
       done();
     });

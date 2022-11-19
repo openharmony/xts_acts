@@ -214,11 +214,13 @@ export default function videoOnFullscreenChangeJsunit() {
         }catch(err){
           console.info("video_101 on events_emitter err : " + JSON.stringify(err));
         }
-        done();
       }
       try {
         events_emitter.on(innerEvent, callback);
+         await Utils.sleep(500);
         console.info("video_101 click result is: " + JSON.stringify(sendEventByKey('fullScreen', 10, "")));
+        await Utils.sleep(2000);
+        done();
       } catch (err) {
         console.info("video_101 on events_emitter err : " + JSON.stringify(err));
       }
