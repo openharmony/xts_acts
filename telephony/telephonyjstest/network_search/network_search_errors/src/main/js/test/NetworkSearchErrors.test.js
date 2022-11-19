@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -381,13 +381,14 @@ describe('ActsNetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_isRadioOn_Async_0200', 0, async function (done) {
-        radio.isRadioOn((err) => {
+        radio.isRadioOn((err, data) => {
             if (err) {
-                console.info(`Telephony_NetworkSearch_isRadioOn_Async_0200  fail: ${err}`);
+                console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
                 done();
                 return;
             }
-            console.info('Telephony_NetworkSearch_isRadioOn_Async_0200  finish');
+            console.info('Telephony_NetworkSearch_isRadioOn_Async_0200  finish ' + JSON.stringify(data));
+            expect(data == true).assertTrue();
             done();
         });
     });
@@ -399,11 +400,12 @@ describe('ActsNetworkSearchTest', function () {
      */
     it('Telephony_NetworkSearch_isRadioOn_Promise_0200', 0, async function (done) {
         try {
-            await radio.isRadioOn();
-            console.info('Telephony_NetworkSearch_isRadioOn_Promise_0200 success');
+            let data = await radio.isRadioOn();
+            console.info('Telephony_NetworkSearch_isRadioOn_Promise_0200  finish ' + JSON.stringify(data));
+            expect(data == true).assertTrue();
             done();
         } catch (err) {
-            console.info(`Telephony_NetworkSearch_isRadioOn_Promise_0200 fail ${err}`);
+            console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
             done();
         }
     });
@@ -413,14 +415,15 @@ describe('ActsNetworkSearchTest', function () {
      * @tc.name    testIsRadioOn_0300
      * @tc.desc    Test isRadioOn api by callback.
      */
-     it('Telephony_NetworkSearch_isRadioOn_Async_0300', 0, async function (done) {
-        radio.isRadioOn(0, (err) => {
+    it('Telephony_NetworkSearch_isRadioOn_Async_0300', 0, async function (done) {
+        radio.isRadioOn(0, (err, data) => {
             if (err) {
-                console.info(`Telephony_NetworkSearch_isRadioOn_Async_0300  fail: ${err}`);
+                console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
                 done();
                 return;
             }
-            console.info('Telephony_NetworkSearch_isRadioOn_Async_0300  finish');
+            console.info('Telephony_NetworkSearch_isRadioOn_Async_0300  finish ' + JSON.stringify(data));
+            expect(data == true).assertTrue();
             done();
         });
     });
@@ -432,11 +435,12 @@ describe('ActsNetworkSearchTest', function () {
      */
     it('Telephony_NetworkSearch_isRadioOn_Promise_0300', 0, async function (done) {
         try {
-            await radio.isRadioOn(0);
-            console.info('Telephony_NetworkSearch_isRadioOn_Promise_0300 success');
+            let data = await radio.isRadioOn(0);
+            console.info('Telephony_NetworkSearch_isRadioOn_Promise_0300  finish ' + JSON.stringify(data));
+            expect(data == true).assertTrue();
             done();
         } catch (err) {
-            console.info(`Telephony_NetworkSearch_isRadioOn_Promise_0300 fail ${err}`);
+            console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
             done();
         }
     });
@@ -447,11 +451,18 @@ describe('ActsNetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_StateRegistry_on_0200', 0, async function (done) {
-        observer.on('networkStateChange', { slotId: SLOT_0 }, (networkState) => {
-            console.info(`Telephony_StateRegistry_on_0200 networkStateChanged data: ${JSON.stringify(networkState)}`);
-            done();
-        });
-        done();
+        try {
+            observer.on('networkStateChange', {
+                slotId: 0
+            }, NetworkState => {
+                console.log("on networkStateChange, NetworkState:" + JSON.stringify(NetworkState));
+                expect(typeof NetworkState === undefined).assertFalse()
+            });
+            done()
+        } catch (error) {
+            expect(false).assertTrue()
+            done()
+        }
     });
 
     /**
@@ -460,8 +471,20 @@ describe('ActsNetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_StateRegistry_off_0200', 0, async function (done) {
-        observer.off('networkStateChange');
-        done();
+        try {
+            let callback = NetworkState => {
+                console.log("on networkStateChange, NetworkState:" + JSON.stringify(NetworkState));
+                expect(typeof NetworkState === undefined).assertFalse()
+            }
+            observer.on('networkStateChange', callback);
+            // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+            observer.off('networkStateChange', callback);
+            observer.off('networkStateChange');
+            done()
+        } catch (error) {
+            expect(false).assertTrue()
+            done()
+        }
     });
 
     /**
@@ -470,11 +493,18 @@ describe('ActsNetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_StateRegistry_on_0300', 0, async function (done) {
-        observer.on('signalInfoChange', { slotId: SLOT_0 }, (networkState) => {
-            console.info(`Telephony_StateRegistry_on_0200 networkStateChanged data: ${JSON.stringify(networkState)}`);
-            done();
-        });
-        done();
+        try {
+            observer.on('signalInfoChange', {
+                slotId: 0
+            }, SignalInformation => {
+                console.log("on signalInfoChange, SignalInformation:" + JSON.stringify(SignalInformation));
+                expect(typeof SignalInformation === undefined).assertFalse()
+            });
+            done()
+        } catch (error) {
+            expect(false).assertTrue()
+            done()
+        }
     });
 
     /**
@@ -483,8 +513,20 @@ describe('ActsNetworkSearchTest', function () {
      * @tc.desc    Function test
      */
     it('Telephony_StateRegistry_off_0300', 0, async function (done) {
-        observer.off('signalInfoChange');
-        done();
+        try {
+            let callback = SignalInformation => {
+                console.log("on signalInfoChange, SignalInformation:" + JSON.stringify(SignalInformation));
+                expect(typeof SignalInformation === undefined).assertFalse()
+            }
+            observer.on('signalInfoChange', callback);
+            // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+            observer.off('signalInfoChange', callback);
+            observer.off('signalInfoChange');
+            done()
+        } catch (error) {
+            expect(false).assertTrue()
+            done()
+        }
     });
 
 });

@@ -14,107 +14,143 @@
  */
 
 import network from '@system.network';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
+import connection from '@ohos.net.connection';
+
 export default function Telephony_NetManager_NetWorkTest() {
 
-describe("Telephony_NetManager_NetWorkTest", function () {
+    describe("Telephony_NetManager_NetWorkTest", function () {
 
-    /**
-     * @tc.number Telephony_NetManager_NetWorkTest_GetType_None_0100
-     * @tc.name Whether the GetType method is called successfully without WiFi
-     * @tc.desc Function test
-     */
-    it("Telephony_NetManager_NetWorkTest_GetType_None_0100", 0, function (done) {
-        network.getType({
-            success: function (data) {
-                console.info("NetManager getType " + JSON.stringify(data))
-                expect(data.type === "none").assertTrue()
-                expect(data.metered === false).assertTrue()
-                network.unsubscribe()
-                done();
-            },
-            fail: function (data, code) {
-                expect().assertFail();
-                done();
-            },
-            complete: function () {
-                expect().assertTrue()
-                done();
+        let networkAvailable = () => {
+            connection.getDefaultNet(function (error, netHandle) {
+                if (error || netHandle.netId >= 100) {
+                    console.info("Network available or Network error:" + error)
+                    return true
+                }
+                return false
+            })
+        }
+
+        /**
+         * @tc.number Telephony_NetManager_NetWorkTest_GetType_None_0100
+         * @tc.name Whether the GetType method is called successfully without WiFi
+         * @tc.desc Function test
+         */
+        it("Telephony_NetManager_NetWorkTest_GetType_None_0100", 0, function (done) {
+            if (networkAvailable) {
+                console.warn("No network environment required")
+                done()
+                return
             }
-        })
-        done();
-    });
+            network.getType({
+                success: function (data) {
+                    console.info("NetManager getType " + JSON.stringify(data))
+                    expect(data.type === "none").assertTrue()
+                    expect(data.metered === false).assertTrue()
+                    network.unsubscribe()
+                    done();
+                },
+                fail: function (data, code) {
+                    console.log("data:" + JSON.stringify(data) + " code:" + JSON.stringify(code))
+                    expect().assertFail();
+                    done();
+                },
+                complete: function () {
+                    expect().assertTrue()
+                    done();
+                }
+            })
+            done();
+        });
 
-    /**
-     * @tc.number Telephony_NetManager_NetWorkTest_GetType_None_0200
-     * @tc.name Whether to call GetType method again without WiFi
-     * @tc.desc Function test
-     */
-    it("Telephony_NetManager_NetWorkTest_GetType_None_0200", 0, function (done) {
-        network.getType({
-            success: function (data) {
-                console.info("NetManager getType 1 " + JSON.stringify(data))
-                expect(data.type === "none").assertTrue()
-                expect(data.metered === false).assertTrue()
-                network.unsubscribe()
-                done();
-                console.info("NetManager Telephony_NetManager_NetWorkTest_GetType_none_1 end")
-            },
-            fail: function (data, code) {
-                expect().assertFail();
-                done();
-            },
-            complete: function () {
-                expect().assertTrue()
-                done();
+        /**
+         * @tc.number Telephony_NetManager_NetWorkTest_GetType_None_0200
+         * @tc.name Whether to call GetType method again without WiFi
+         * @tc.desc Function test
+         */
+        it("Telephony_NetManager_NetWorkTest_GetType_None_0200", 0, function (done) {
+            if (networkAvailable) {
+                console.warn("No network environment required")
+                done()
+                return
             }
-        })
-        done();
-    });
+            network.getType({
+                success: function (data) {
+                    console.info("NetManager getType 1 " + JSON.stringify(data))
+                    expect(data.type === "none").assertTrue()
+                    expect(data.metered === false).assertTrue()
+                    network.unsubscribe()
+                    done();
+                    console.info("NetManager Telephony_NetManager_NetWorkTest_GetType_none_1 end")
+                },
+                fail: function (data, code) {
+                    console.log("data:" + JSON.stringify(data) + " code:" + JSON.stringify(code))
+                    expect().assertFail();
+                    done();
+                },
+                complete: function () {
+                    expect().assertTrue()
+                    done();
+                }
+            })
+            done();
+        });
 
-    /**
-     * @tc.number Telephony_NetManager_NetWorkTest_Subscribe_None_0100
-     * @tc.name Whether the subscribe method is called successfully without WiFi
-     * @tc.desc Function test
-     */
-    it("Telephony_NetManager_NetWorkTest_Subscribe_None_0100", 0, function (done) {
-        network.subscribe({
-            success: function (data) {
-                console.info("NetManager subscribe " + JSON.stringify(data))
-                expect(data.type === "none").assertTrue()
-                expect(data.metered === false).assertTrue()
-                network.unsubscribe()
-                done();
-            },
-            fail: function (data, code) {
-                expect().assertFail()
-                done();
+        /**
+         * @tc.number Telephony_NetManager_NetWorkTest_Subscribe_None_0100
+         * @tc.name Whether the subscribe method is called successfully without WiFi
+         * @tc.desc Function test
+         */
+        it("Telephony_NetManager_NetWorkTest_Subscribe_None_0100", 0, function (done) {
+            if (networkAvailable) {
+                console.warn("No network environment required")
+                done()
+                return
             }
-        })
-        done();
-    });
+            network.subscribe({
+                success: function (data) {
+                    console.info("NetManager subscribe " + JSON.stringify(data))
+                    expect(data.type === "none").assertTrue()
+                    expect(data.metered === false).assertTrue()
+                    network.unsubscribe()
+                    done();
+                },
+                fail: function (data, code) {
+                    console.log("data:" + JSON.stringify(data) + " code:" + JSON.stringify(code))
+                    expect().assertFail()
+                    done();
+                }
+            })
+            done();
+        });
 
-    /**
-     * @tc.number Telephony_NetManager_NetWorkTest_Subscribe_None_0200
-     * @tc.name Whether to call the subscribe method again without WiFi
-     * @tc.desc Function test
-     */
-    it("Telephony_NetManager_NetWorkTest_Subscribe_None_0200", 0, function (done) {
-        network.subscribe({
-            success: function (data) {
-                console.info("NetManager subscribe " + JSON.stringify(data))
-                expect(data.type === "none").assertTrue()
-                expect(data.metered === false).assertTrue()
-                network.unsubscribe()
-                done();
-            },
-            fail: function (data, code) {
-                expect().assertFail()
-                done();
+        /**
+         * @tc.number Telephony_NetManager_NetWorkTest_Subscribe_None_0200
+         * @tc.name Whether to call the subscribe method again without WiFi
+         * @tc.desc Function test
+         */
+        it("Telephony_NetManager_NetWorkTest_Subscribe_None_0200", 0, function (done) {
+            if (networkAvailable) {
+                console.warn("No network environment required")
+                done()
+                return
             }
-        })
-        done();
-    });
+            network.subscribe({
+                success: function (data) {
+                    console.info("NetManager subscribe " + JSON.stringify(data))
+                    expect(data.type === "none").assertTrue()
+                    expect(data.metered === false).assertTrue()
+                    network.unsubscribe()
+                    done();
+                },
+                fail: function (data, code) {
+                    console.log("data:" + JSON.stringify(data) + " code:" + JSON.stringify(code))
+                    expect().assertFail()
+                    done();
+                }
+            })
+            done();
+        });
 
-});
+    });
 }
