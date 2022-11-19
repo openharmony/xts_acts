@@ -13,13 +13,10 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it } from '@ohos/hypium'
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 export default function abilityTest() {
-    describe('ACTS_AACommand_01_3', function () {
+    describe('AACommandPrintTest', function () {
         /**
         * @tc.number: ACTS_AACommand_printSync_01_0100
         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid,
@@ -27,7 +24,8 @@ export default function abilityTest() {
         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
         *           the test command.
         */
-        it('ACTS_AACommand_printSync_01_0100', 0, async function (done) {
+         it('ACTS_AACommand_printSync_01_0100', 0, async function (done) {
+            done()
             console.log("ACTS_AACommand_printSync_01_0100 start ====> " )
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.printSync(msg);
@@ -37,7 +35,6 @@ export default function abilityTest() {
                 console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end ========> callback " )
                 console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end " +
                 "========> callback data: "+JSON.stringify(data))
-                done()
             })
         })
 
@@ -49,6 +46,7 @@ export default function abilityTest() {
         *           the test command.
         */
         it('ACTS_AACommand_printSync_01_0200', 0, async function (done) {
+            done()
             var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             'aaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -65,7 +63,6 @@ export default function abilityTest() {
             var finishmsg = 'ACTS_AACommand_printSync_01_0200 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_printSync_01_0200 print  test  end ========> callback " )
-                done()
             })
         })
 
@@ -77,6 +74,7 @@ export default function abilityTest() {
          *           the test command.
          */
         it('ACTS_AACommand_printSync_01_0300', 0, async function (done) {
+            done()
             var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             'aaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -94,7 +92,6 @@ export default function abilityTest() {
             var finishmsg = 'ACTS_AACommand_printSync_01_0300 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_printSync_01_0300 print  test  end ========> callback " )
-                done()
             })
         })
 
@@ -106,12 +103,12 @@ export default function abilityTest() {
          *           the test command.
          */
         it('ACTS_AACommand_printSync_01_0400', 0, async function (done) {
+            done()
             globalThis.abilityDelegator.printSync(null);
             console.log("ACTS_AACommand_printSync_01_0300 printSync end ====> " )
             var finishmsg = 'ACTS_AACommand_printSync_01_0400 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_printSync_01_0400 print  test  end ========> callback " )
-                done()
             })
         })
     })

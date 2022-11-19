@@ -13,8 +13,10 @@
 * limitations under the License.
 */
 
-import abilityTest from './Ability.test'
+import aaCommandTest from './AACommand.test'
+import aaCommandPrintOneTest from './AACommandPrintOne.test'
 
 export default function testsuite() {
-  abilityTest()
+  aaCommandTest()
+  aaCommandPrintOneTest()
 }
