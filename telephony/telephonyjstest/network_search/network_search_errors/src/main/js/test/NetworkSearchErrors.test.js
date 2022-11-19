@@ -15,7 +15,7 @@
 
 import radio from '@ohos.telephony.radio';
 import observer from '@ohos.telephony.observer';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 export default function ActsNetworkSearchTest() {
 
 describe('ActsNetworkSearchTest', function () {
@@ -456,12 +456,12 @@ describe('ActsNetworkSearchTest', function () {
                 slotId: 0
             }, NetworkState => {
                 console.log("on networkStateChange, NetworkState:" + JSON.stringify(NetworkState));
-                expect(typeof NetworkState === undefined).assertFalse()
+                expect(typeof NetworkState === undefined).assertFalse();
             });
-            done()
+            done();
         } catch (error) {
-            expect(false).assertTrue()
-            done()
+            expect(false).assertTrue();
+            done();
         }
     });
 
@@ -474,16 +474,16 @@ describe('ActsNetworkSearchTest', function () {
         try {
             let callback = NetworkState => {
                 console.log("on networkStateChange, NetworkState:" + JSON.stringify(NetworkState));
-                expect(typeof NetworkState === undefined).assertFalse()
+                expect(typeof NetworkState === undefined).assertFalse();
             }
             observer.on('networkStateChange', callback);
             // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
             observer.off('networkStateChange', callback);
             observer.off('networkStateChange');
-            done()
+            done();
         } catch (error) {
-            expect(false).assertTrue()
-            done()
+            expect(false).assertTrue();
+            done();
         }
     });
 
@@ -498,12 +498,12 @@ describe('ActsNetworkSearchTest', function () {
                 slotId: 0
             }, SignalInformation => {
                 console.log("on signalInfoChange, SignalInformation:" + JSON.stringify(SignalInformation));
-                expect(typeof SignalInformation === undefined).assertFalse()
+                expect(typeof SignalInformation === undefined).assertFalse();
             });
-            done()
+            done();
         } catch (error) {
-            expect(false).assertTrue()
-            done()
+            expect(false).assertTrue();
+            done();
         }
     });
 
@@ -516,16 +516,16 @@ describe('ActsNetworkSearchTest', function () {
         try {
             let callback = SignalInformation => {
                 console.log("on signalInfoChange, SignalInformation:" + JSON.stringify(SignalInformation));
-                expect(typeof SignalInformation === undefined).assertFalse()
+                expect(typeof SignalInformation === undefined).assertFalse();
             }
             observer.on('signalInfoChange', callback);
             // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
             observer.off('signalInfoChange', callback);
             observer.off('signalInfoChange');
-            done()
+            done();
         } catch (error) {
-            expect(false).assertTrue()
-            done()
+            expect(false).assertTrue();
+            done();
         }
     });
 
