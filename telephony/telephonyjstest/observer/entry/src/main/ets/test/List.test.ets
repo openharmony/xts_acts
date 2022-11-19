@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import ObserverJsunit from './ObserverJsunit.test'
+import ObserverJsunit from './ObserverJsunit.test';
 
 export default function testsuite() {
-  ObserverJsunit()
+  ObserverJsunit();
 }
