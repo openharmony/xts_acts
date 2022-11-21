@@ -1,7 +1,7 @@
 {
     "description": "NAPI Tests",
     "driver": {
-        "native-test-timeout":"600",
+        "native-test-timeout":"60000",
         "type": "CppTest",
         "module-name": "ActsHuksNAPITest",
         "runtime-hint": "1s",
