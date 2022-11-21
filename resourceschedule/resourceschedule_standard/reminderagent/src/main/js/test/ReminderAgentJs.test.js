@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import reminderAgent from '@ohos.reminderAgent'
 import notification from '@ohos.notification'

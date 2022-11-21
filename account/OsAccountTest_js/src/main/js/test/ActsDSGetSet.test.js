@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, done } from '@ohos/hypium'
 
 import account from '@ohos.account.distributedAccount'
