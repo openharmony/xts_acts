@@ -75,7 +75,7 @@ export default function getFileAssetsCallbackTest(abilityContext) {
                 fetchAssetResult.getFirstObject(async (err, asset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         fetchAssetResult.close();
                         done();
                         return;
@@ -106,7 +106,7 @@ export default function getFileAssetsCallbackTest(abilityContext) {
                 fetchAssetResult.getNextObject(async (err, asset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         fetchAssetResult.close();
                         done();
                         return;
@@ -136,7 +136,7 @@ export default function getFileAssetsCallbackTest(abilityContext) {
                 fetchAssetResult.getLastObject(async (err, asset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         fetchAssetResult.close();
                         done();
                         return;
@@ -166,7 +166,7 @@ export default function getFileAssetsCallbackTest(abilityContext) {
                 fetchAssetResult.getPositionObject(pos, async (err, asset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         fetchAssetResult.close();
                         done();
                         return;
@@ -263,7 +263,7 @@ export default function getFileAssetsCallbackTest(abilityContext) {
                 fetchAssetResult.getFirstObject((err, asset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         fetchAssetResult.close();
                         done();
                         return;
