@@ -674,8 +674,6 @@ async function encryptAndDecryptNormalProcessNull(asyAlgoName, cipherAlgoName) {
   var globalCipherText;
   var globalPubKey;
   var globalPriKey;
-//  var globalText = null;
-//  var input = { data: stringTouInt8Array(globalText) };
   var encryptMode = cryptoFramework.CryptoMode.ENCRYPT_MODE;
   var decryptMode = cryptoFramework.CryptoMode.DECRYPT_MODE;
 
