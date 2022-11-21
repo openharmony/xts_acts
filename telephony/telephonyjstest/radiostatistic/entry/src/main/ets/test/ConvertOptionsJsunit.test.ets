@@ -1,6 +1,5 @@
-// @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,10 +13,11 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index'
-import  convertxml from '@ohos.convertxml'
+import { describe, expect, it } from '@ohos/hypium';
+import convertxml from '@ohos.convertxml';
+
 export default function convertOptionsJsunit() {
-  describe('XmlTest_radio_1',function () {
+  describe('XmlTest_radio_1', function () {
     console.log("************* settings Test start*************");
     it('Telephony_convertxml_ConvertXML_0100', 0, async function (done) {
       var xml =
@@ -28,30 +28,45 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false,trim :true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: true,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
-    it('Telephony_convertxml_ConvertXML_0200', 0,  async function (done) {
+    it('Telephony_convertxml_ConvertXML_0200', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
@@ -60,28 +75,44 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDeclaration: true}));
-      var str1 = '{"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreDeclaration: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
-    it('Telephony_convertxml_ConvertXML_0300', 0,async function (done) {
+    it('Telephony_convertxml_ConvertXML_0300', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
@@ -90,24 +121,40 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDeclaration: true}));
-      var str1 = '{"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreDeclaration: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -120,57 +167,89 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreAttributes: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreAttributes: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
-    it('Telephony_convertxml_ConvertXML_0500', 0,async function (done) {
+    it('Telephony_convertxml_ConvertXML_0500', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <!--note-->'+
+        '    <!--note-->' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreComment: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreComment: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -178,65 +257,97 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <![CDATA[<foo></bar>]]>'+
+        '    <![CDATA[<foo></bar>]]>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreCDATA: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreCDATA: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
     it('Telephony_convertxml_ConvertXML_0700', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
-        '<!DOCTYPE foo>'+
+        '<!DOCTYPE foo>' +
         '<note importance="high" logged="true">' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDoctype: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreDoctype: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -249,20 +360,36 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreText: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title"},'+
-      '{"_type":"element",'+
-      '"_name":"todo"},'+
-      '{"_type":"element",'+
-      '"_name":"todo"}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreText: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title"},' +
+      '{"_type":"element",' +
+      '"_name":"todo"},' +
+      '{"_type":"element",' +
+      '"_name":"todo"}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -275,26 +402,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, declarationKey: "123"}));
-      var str1 = '{"123":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "123",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"123":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -302,35 +444,50 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <?go there?>'+
+        '    <?go there?>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, instructionKey: "123"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"123":"there",'+
-      '"_type":"instruction",'+
-      '"_name":"go"},'+
-      '{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "123",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"123":"there",' +
+      '"_type":"instruction",' +
+      '"_name":"go"},' +
+      '{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -338,35 +495,50 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <?go there?>'+
+        '    <?go there?>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, attributesKey: "123"}));
-      var str1 = '{"_declaration":{"123":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"123":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_type":"element",'+
-      '"_name":"note",'+
-      '"_elements":[{"_type":"instruction",'+
-      '"_name":"go",'+
-      '"_instruction":"there"},'+
-      '{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "123",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"123":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"123":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_type":"element",' +
+      '"_name":"note",' +
+      '"_elements":[{"_type":"instruction",' +
+      '"_name":"go",' +
+      '"_instruction":"there"},' +
+      '{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -379,26 +551,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, textKey: "123"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"123":"Happy",'+
-      '"_type":"text"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"123":"Work",'+
-      '"_type":"text"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"123":"Play",'+
-      '"_type":"text"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "123",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"123":"Happy",' +
+      '"_type":"text"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"123":"Work",' +
+      '"_type":"text"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"123":"Play",' +
+      '"_type":"text"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -406,102 +593,146 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <![CDATA[1 is < 2]]>'+
+        '    <![CDATA[1 is < 2]]>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, cdataKey: "123"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"123":"1 is < 2",'+
-      '"_type":"cdata"},'+
-      '{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "123",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"123":"1 is < 2",' +
+      '"_type":"cdata"},' +
+      '{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
     it('Telephony_convertxml_ConvertXML_1400', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
-        '<!DOCTYPE foo>'+
+        '<!DOCTYPE foo>' +
         '<note importance="high" logged="true">' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, doctypeKey: 'doctype'}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"doctype","doctype":"foo"},'+
-      '{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"doctype","doctype":"foo"},' +
+      '{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      console.info("Telephony_convertxml_ConvertXML_1400 result1 :"+result1);
       done();
     })
 
     it('Telephony_convertxml_ConvertXML_1500', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
-        '<!--note-->'+
+        '<!--note-->' +
         '<note importance="high" logged="true">' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, commentKey: "123"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"123":"note",'+
-      '"_type":"comment"},'+
-      '{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "123",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"123":"note",' +
+      '"_type":"comment"},' +
+      '{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
       done();
     })
@@ -510,36 +741,51 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <a><b/></a>'+
+        '    <a><b/></a>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, parentKey: "123"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"a",'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"b"}]},'+
-      '{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "123",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"a",' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"b"}]},' +
+      '{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -552,26 +798,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, typeKey: "123"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"123":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"123":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"123":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"123":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"123":"text",'+
-      '"_text":"Work"}]},'+
-      '{"123":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"123":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "123",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"123":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"123":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"123":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"123":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"123":"text",' +
+      '"_text":"Work"}]},' +
+      '{"123":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"123":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -584,26 +845,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, nameKey: "123"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"123":"note",'+
-      '"_type":"element",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"123":"title",'+
-      '"_type":"element",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"123":"todo",'+
-      '"_type":"element",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"123":"todo",'+
-      '"_type":"element",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "123",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"123":"note",' +
+      '"_type":"element",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"123":"title",' +
+      '"_type":"element",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"123":"todo",' +
+      '"_type":"element",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"123":"todo",' +
+      '"_type":"element",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -616,26 +892,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, elementsKey: "123"}));
-      var str1 = '{"123":[{"123":[{"123":[{"_type":"text",'+
-      '"_text":"Happy"}],'+
-      '"_type":"element",'+
-      '"_name":"title"},'+
-      '{"123":[{"_type":"text",'+
-      '"_text":"Work"}],'+
-      '"_type":"element",'+
-      '"_name":"todo"},'+
-      '{"123":[{"_type":"text",'+
-      '"_text":"Play"}],'+
-      '"_type":"element",'+
-      '"_name":"todo"}],'+
-      '"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"}}],'+
-      '"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}}}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "123"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"123":[{"123":[{"123":[{"_type":"text",' +
+      '"_text":"Happy"}],' +
+      '"_type":"element",' +
+      '"_name":"title"},' +
+      '{"123":[{"_type":"text",' +
+      '"_text":"Work"}],' +
+      '"_type":"element",' +
+      '"_name":"todo"},' +
+      '{"123":[{"_type":"text",' +
+      '"_text":"Play"}],' +
+      '"_type":"element",' +
+      '"_name":"todo"}],' +
+      '"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"}}],' +
+      '"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}}}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -648,30 +939,45 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false,trim :true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: true,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
-    it('Telephony_convertxml_ConvertXML_2100', 0,  async function (done) {
+    it('Telephony_convertxml_ConvertXML_2100', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
@@ -680,28 +986,44 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDeclaration: true}));
-      var str1 = '{"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreDeclaration: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
-    it('Telephony_convertxml_ConvertXML_2200', 0,async function (done) {
+    it('Telephony_convertxml_ConvertXML_2200', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
@@ -710,24 +1032,40 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDeclaration: true}));
-      var str1 = '{"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreDeclaration: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -740,57 +1078,89 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreAttributes: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreAttributes: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
-    it('Telephony_convertxml_ConvertXML_2400', 0,async function (done) {
+    it('Telephony_convertxml_ConvertXML_2400', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <!--note-->'+
+        '    <!--note-->' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreComment: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreComment: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -798,65 +1168,97 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <![CDATA[<foo></bar>]]>'+
+        '    <![CDATA[<foo></bar>]]>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreCDATA: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreCDATA: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
     it('Telephony_convertxml_ConvertXML_2600', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
-        '<!DOCTYPE foo>'+
+        '<!DOCTYPE foo>' +
         '<note importance="high" logged="true">' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDoctype: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreDoctype: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -869,20 +1271,36 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreText: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title"},'+
-      '{"_type":"element",'+
-      '"_name":"todo"},'+
-      '{"_type":"element",'+
-      '"_name":"todo"}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreText: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title"},' +
+      '{"_type":"element",' +
+      '"_name":"todo"},' +
+      '{"_type":"element",' +
+      '"_name":"todo"}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -895,26 +1313,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, declarationKey: "456"}));
-      var str1 = '{"456":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "456",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"456":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -922,35 +1355,50 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <?go there?>'+
+        '    <?go there?>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, instructionKey: "456"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"456":"there",'+
-      '"_type":"instruction",'+
-      '"_name":"go"},'+
-      '{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "456",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"456":"there",' +
+      '"_type":"instruction",' +
+      '"_name":"go"},' +
+      '{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -958,35 +1406,50 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <?go there?>'+
+        '    <?go there?>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, attributesKey: "456"}));
-      var str1 = '{"_declaration":{"456":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"456":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_type":"element",'+
-      '"_name":"note",'+
-      '"_elements":[{"_type":"instruction",'+
-      '"_name":"go",'+
-      '"_instruction":"there"},'+
-      '{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "456",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"456":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"456":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_type":"element",' +
+      '"_name":"note",' +
+      '"_elements":[{"_type":"instruction",' +
+      '"_name":"go",' +
+      '"_instruction":"there"},' +
+      '{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -999,26 +1462,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, textKey: "456"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"456":"Happy",'+
-      '"_type":"text"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"456":"Work",'+
-      '"_type":"text"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"456":"Play",'+
-      '"_type":"text"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "456",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"456":"Happy",' +
+      '"_type":"text"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"456":"Work",' +
+      '"_type":"text"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"456":"Play",' +
+      '"_type":"text"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -1026,67 +1504,96 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <![CDATA[1 is < 2]]>'+
+        '    <![CDATA[1 is < 2]]>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, cdataKey: "456"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"456":"1 is < 2",'+
-      '"_type":"cdata"},'+
-      '{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "456",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"456":"1 is < 2",' +
+      '"_type":"cdata"},' +
+      '{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
     it('Telephony_convertxml_ConvertXML_3300', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
-        '<!DOCTYPE foo>'+
+        '<!DOCTYPE foo>' +
         '<note importance="high" logged="true">' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, doctypeKey: 'doctype_next'}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"doctype","doctype_next":"foo"},'+
-      '{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "doctype_next",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"doctype","doctype_next":"foo"},' +
+      '{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
       done();
     })
@@ -1094,34 +1601,48 @@ export default function convertOptionsJsunit() {
     it('Telephony_convertxml_ConvertXML_3400', 0, async function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
-        '<!--note-->'+
+        '<!--note-->' +
         '<note importance="high" logged="true">' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, commentKey: "456"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"456":"note",'+
-      '"_type":"comment"},'+
-      '{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "456",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"456":"note",' +
+      '"_type":"comment"},' +
+      '{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
       done();
     })
@@ -1130,36 +1651,51 @@ export default function convertOptionsJsunit() {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <a><b/></a>'+
+        '    <a><b/></a>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, parentKey: "456"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"a",'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"b"}]},'+
-      '{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "456",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"a",' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"b"}]},' +
+      '{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -1172,26 +1708,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, typeKey: "123"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"123":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"123":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"123":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"123":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"123":"text",'+
-      '"_text":"Work"}]},'+
-      '{"123":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"123":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "123",
+        nameKey: "_name",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"123":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"123":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"123":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"123":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"123":"text",' +
+      '"_text":"Work"}]},' +
+      '{"123":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"123":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -1204,26 +1755,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, nameKey: "123"}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"123":"note",'+
-      '"_type":"element",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":[{"123":"title",'+
-      '"_type":"element",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"123":"todo",'+
-      '"_type":"element",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"123":"todo",'+
-      '"_type":"element",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "123",
+        elementsKey: "_elements"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"123":"note",' +
+      '"_type":"element",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[{"123":"title",' +
+      '"_type":"element",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"123":"todo",' +
+      '"_type":"element",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"123":"todo",' +
+      '"_type":"element",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -1236,26 +1802,41 @@ export default function convertOptionsJsunit() {
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, elementsKey: "123"}));
-      var str1 = '{"123":[{"123":[{"123":[{"_type":"text",'+
-      '"_text":"Happy"}],'+
-      '"_type":"element",'+
-      '"_name":"title"},'+
-      '{"123":[{"_type":"text",'+
-      '"_text":"Work"}],'+
-      '"_type":"element",'+
-      '"_name":"todo"},'+
-      '{"123":[{"_type":"text",'+
-      '"_text":"Play"}],'+
-      '"_type":"element",'+
-      '"_name":"todo"}],'+
-      '"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"}}],'+
-      '"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}}}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "123"
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"123":[{"123":[{"123":[{"_type":"text",' +
+      '"_text":"Happy"}],' +
+      '"_type":"element",' +
+      '"_name":"title"},' +
+      '{"123":[{"_type":"text",' +
+      '"_text":"Work"}],' +
+      '"_type":"element",' +
+      '"_name":"todo"},' +
+      '{"123":[{"_type":"text",' +
+      '"_text":"Play"}],' +
+      '"_type":"element",' +
+      '"_name":"todo"}],' +
+      '"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"}}],' +
+      '"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}}}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
       done();
     })
 
@@ -1264,37 +1845,54 @@ export default function convertOptionsJsunit() {
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      */
-    it('Telephony_convertxml_ConvertXML_3900', 0, function () {
+    it('Telephony_convertxml_ConvertXML_3900', 0, function (done) {
       var xml =
         '<?xml version="1.0" encoding="utf-8"?>' +
         '<note importance="high" logged="true">' +
-        '    <?go there?>'+
+        '    <?go there?>' +
         '    <title>Happy</title>' +
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
       var conv = new convertxml.ConvertXML();
-      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreInstruction: true}));
-      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-      '"encoding":"utf-8"}},'+
-      '"_elements":[{"_type":"element",'+
-      '"_name":"note",'+
-      '"_attributes":{"importance":"high",'+
-      '"logged":"true"},'+
-      '"_elements":['+
-      '{"_type":"element",'+
-      '"_name":"title",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Happy"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Work"}]},'+
-      '{"_type":"element",'+
-      '"_name":"todo",'+
-      '"_elements":[{"_type":"text",'+
-      '"_text":"Play"}]}]}]}'
+      let options = {
+        trim: false,
+        declarationKey: "_declaration",
+        instructionKey: "_instruction",
+        attributesKey: "_attributes",
+        textKey: "_text",
+        cdataKey: "_cdata",
+        doctypeKey: "_doctype",
+        commentKey: "_comment",
+        parentKey: "_parent",
+        typeKey: "_type",
+        nameKey: "_name",
+        elementsKey: "_elements",
+        ignoreInstruction: true
+      };
+      var result1 = JSON.stringify(conv.convert(xml, options));
+      var str1 = '{"_declaration":{"_attributes":{"version":"1.0",' +
+      '"encoding":"utf-8"}},' +
+      '"_elements":[{"_type":"element",' +
+      '"_name":"note",' +
+      '"_attributes":{"importance":"high",' +
+      '"logged":"true"},' +
+      '"_elements":[' +
+      '{"_type":"element",' +
+      '"_name":"title",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Happy"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Work"}]},' +
+      '{"_type":"element",' +
+      '"_name":"todo",' +
+      '"_elements":[{"_type":"text",' +
+      '"_text":"Play"}]}]}]}';
       expect(result1).assertEqual(str1);
+      expect(JSON.stringify(conv.convertToJSObject(xml, options))).assertEqual(str1);
+      done();
     })
   })
 }

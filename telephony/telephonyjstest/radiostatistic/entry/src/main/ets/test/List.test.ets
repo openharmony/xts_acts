@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,16 +13,14 @@
  * limitations under the License.
  */
 
-//other import
-import convertOptionsJsunit from './ConvertOptionsJsunit.test.ets'
-import radioJsunit from './RadioJsunit.test.ets'
-import radioSecondJsunit from './RadioSecondJsunit.test.ets'
-import smsUiJsunit from './SmsMmsJsunit.test.ets';
-import callJsunit from './CallJsunit.test.ets';
-import dataJsunit from './DataJsunit.test.ets';
+import convertOptionsJsunit from './ConvertOptionsJsunit.test';
+import radioJsunit from './RadioJsunit.test';
+import radioSecondJsunit from './RadioSecondJsunit.test';
+import smsUiJsunit from './SmsMmsJsunit.test';
+import callJsunit from './CallJsunit.test';
+import dataJsunit from './DataJsunit.test';
 
 export default function testsuite() {
-  //other
   dataJsunit();
   smsUiJsunit();
   convertOptionsJsunit();
