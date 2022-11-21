@@ -127,7 +127,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_001', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_001'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '01', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '01.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = new Date().getTime() + '.jpg'
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -143,7 +143,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_002', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_002'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '02', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '02.jpg', IMAGE_TYPE);
             let prop = 'title'
             let val = new Date().getTime() + 'newTitle'
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -159,7 +159,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_003', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_003'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '03', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '03.jpg', IMAGE_TYPE);
             let prop = 'relativePath'
             let val = 'Pictures/Temp/'
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -175,7 +175,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_004', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_004'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '04', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '04.jpg', IMAGE_TYPE);
             let prop = 'orientation'
             let val = 1
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -191,7 +191,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '05', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '05.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = "";
             for (var i = 0; i < 83; i++) {
@@ -211,7 +211,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_006', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_006'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '06', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '06.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = "";
             for (var i = 0; i < 251; i++) {
@@ -231,7 +231,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_007', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_007'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '07', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '07.jpg', IMAGE_TYPE);
             let prop = 'title'
             let val = "";
             for (var i = 0; i < 85; i++) {
@@ -250,7 +250,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_008", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_008";
-            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyPro/", "08", IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyPro/", "08.jpg", IMAGE_TYPE);
             let prop = "title";
             let val = "";
             for (var i = 0; i < 255; i++) {
@@ -269,7 +269,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_009', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_009'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '09', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '09.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = "";
             for (var i = 0; i < 84; i++) {
@@ -289,7 +289,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_010', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_010'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '010', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '010.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = "";
             for (var i = 0; i < 252; i++) {
@@ -309,7 +309,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_011", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_011";
-            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyPro/", "011", IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyPro/", "011.jpg", IMAGE_TYPE);
             let prop = "title";
             let val = "";
             for (var i = 0; i < 86; i++) {
@@ -328,7 +328,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_012", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_012";
-            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyPro/", "012", IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyPro/", "012.jpg", IMAGE_TYPE);
             let prop = "title";
             let val = "";
             for (var i = 0; i < 256; i++) {
@@ -347,7 +347,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_02_001', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_02_001'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '013', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '013.jpg', IMAGE_TYPE);
             let prop = 'uri'
             let val = 'newUri'
             await staticPropsCommitModify(done, testNum, fetchOp, prop, val)
@@ -363,7 +363,7 @@ export default function fileAssetPromise2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_02_002', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_02_002'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '014', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '014.jpg', IMAGE_TYPE);
             let prop = 'mediaType'
             let val = 'newMediaType'
             await staticPropsCommitModify(done, testNum, fetchOp, prop, val)
@@ -380,7 +380,7 @@ export default function fileAssetPromise2Test(abilityContext) {
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_PROMISE_001', 0, async function (done) {
             try {
                 let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_PROMISE_001'
-                let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '015', IMAGE_TYPE);
+                let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '015.jpg', IMAGE_TYPE);
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 const asset = await fetchFileResult.getFirstObject();
                 const isDir = await asset.isDirectory();

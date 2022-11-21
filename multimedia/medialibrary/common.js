@@ -67,10 +67,10 @@ const fetchOps = function (testNum, path, type, others) {
     console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
     return ops
 }
-const nameFetchOps = function (testNum, path, title, type) {
+const nameFetchOps = function (testNum, path, display_name, type) {
     let ops = {
-        selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.TITLE + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
-        selectionArgs: [path, title, type.toString()],
+        selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.DISPLAY_NAME + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
+        selectionArgs: [path, display_name, type.toString()],
     };
     console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
     return ops
