@@ -292,13 +292,13 @@ describe('ActsNetworkSearchTest', function () {
             console.info(
                 `Telephony_NetworkSearch_getSignalInformation_Promise_0400 finish data: ${JSON.stringify(data)}`);
             expect(data.length === 0).assertTrue();
+			done();
         } catch (err) {
             console.info(`Telephony_NetworkSearch_getSignalInformation_Promise_0400 fail err: ${err}`);
             expect(err.code).assertEqual(202);
             done();
             return;
         }
-        done();
     });
 
     /**
