@@ -410,7 +410,6 @@ describe('preferencesV9CallbackTest', async function () {
         try {
             var observer = function (key) {
                 console.info('SUB_DDM_JSPREFERENCEV9_CALLBACK_1600 key' + key);
-                expect(false).assertTrue()
             };
             mPreference.on('change', observer);
             mPreference.off('change', observer);
