@@ -412,12 +412,36 @@ describe('preferencesV9PromiseTest', async function () {
                 console.info('SUB_DDM_JSPREFERENCEV9_PROMISE_1600 key' + key);
             };
             mPreference.on('change', observer);
-            mPreference.off('change', observer);
+            mPreference.off('sschange', observer);
+            expect(false).assertTrue()
             await mPreference.put(KEY_TEST_STRING_ELEMENT, "abb");
             await mPreference.flush();
         } catch (err) {
             console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
+            mPreference.off('change', observer);
+        }
+        done();
+    })
+
+    /**
+     * @tc.name  mPreference.off()
+     * @tc.number SUB_DDM_JSPREFERENCEV9_PROMISE_1700
+     * @tc.desc  mPreference.off()
+     */
+     it('SUB_DDM_JSPREFERENCEV9_PROMISE_1700', 0, async function (done) {
+        console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1700 begin.")
+        try {
+            var observer = function (key) {
+                console.info('SUB_DDM_JSPREFERENCEV9_PROMISE_1700 key' + key);
+            };
+            mPreference.on('change', observer);
+            mPreference.off('change', "observer");
             expect(false).assertTrue()
+            await mPreference.put(KEY_TEST_STRING_ELEMENT, "abb");
+            await mPreference.flush();
+        } catch (err) {
+            console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
+            mPreference.off('change', observer);
         }
         done();
     })
