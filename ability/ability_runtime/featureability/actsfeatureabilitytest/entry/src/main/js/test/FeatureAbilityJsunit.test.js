@@ -25,19 +25,19 @@ let subscriberInfoActsStartAbility0100 = {
     events: ["ACTS_StartAbility_0100_CommonEvent"],
 };
 let subscriberInfoActsStartAbility0200 = {
-    events: ["ACTS_StartAbility_0200_CommonEvent"],
+    events: ["ACTS_StartAbility_0201_CommonEvent"],
 };
 let subscriberInfoActsStartAbility0300 = {
-    events: ["ACTS_StartAbility_0300_CommonEvent"],
+    events: ["ACTS_StartAbility_0301_CommonEvent"],
 };
 let subscriberInfoActsStartAbility0400 = {
-    events: ["ACTS_StartAbility_0400_CommonEvent"],
+    events: ["ACTS_StartAbility_0401_CommonEvent"],
 };
 let subscriberInfoActsStartAbility0500 = {
-    events: ["ACTS_StartAbility_0500_CommonEvent"],
+    events: ["ACTS_StartAbility_0501_CommonEvent"],
 };
 let subscriberInfoActsStartAbility0600 = {
-    events: ["ACTS_StartAbility_0600_CommonEvent"],
+    events: ["ACTS_StartAbility_0601_CommonEvent"],
 };
 let subscriberInfoStartAbilityTen = {
     events: ["ACTS_StartAbility_1000_CommonEvent"],
@@ -375,18 +375,18 @@ describe('ActsFeatureAbilityTest', function () {
     })
 
     /**
-     * @tc.number: ACTS_StartAbility_0200
+     * @tc.number: ACTS_StartAbility_0201
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Pass the parameters, Check the return value of the interface (by Promise)
      */
-    it('ACTS_StartAbility_0200', 0, async function (done) {
+    it('ACTS_StartAbility_0201', 0, async function (done) {
         let Subscriber;
         let id;
 
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
             expect(promise).assertEqual(0);
-            expect(data.event).assertEqual("ACTS_StartAbility_0200_CommonEvent");
+            expect(data.event).assertEqual("ACTS_StartAbility_0201_CommonEvent");
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
@@ -404,7 +404,7 @@ describe('ActsFeatureAbilityTest', function () {
 
         function timeout() {
             expect().assertFail();
-            console.debug('ACTS_StartAbility_0200=====timeout======');
+            console.debug('ACTS_StartAbility_0201=====timeout======');
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
@@ -468,17 +468,17 @@ describe('ActsFeatureAbilityTest', function () {
     })
 
     /**
-     * @tc.number: ACTS_StartAbility_0300
+     * @tc.number: ACTS_StartAbility_0301
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Passing null, Check the return value of the interface (by Promise)
      */
-    it('ACTS_StartAbility_0300', 0, async function (done) {
+    it('ACTS_StartAbility_0301', 0, async function (done) {
         let Subscriber;
         let id;
 
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbility_0300_CommonEvent");
+            expect(data.event).assertEqual("ACTS_StartAbility_0301_CommonEvent");
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
@@ -497,7 +497,7 @@ describe('ActsFeatureAbilityTest', function () {
 
         function timeout() {
             expect().assertFail();
-            console.debug('ACTS_StartAbility_0300=====timeout======');
+            console.debug('ACTS_StartAbility_0301=====timeout======');
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
@@ -550,17 +550,17 @@ describe('ActsFeatureAbilityTest', function () {
     })
 
     /**
-     * @tc.number: ACTS_StartAbility_0400
+     * @tc.number: ACTS_StartAbility_0401
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_StartAbility_0400', 0, async function (done) {
+    it('ACTS_StartAbility_0401', 0, async function (done) {
         let Subscriber;
         let id;
 
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbility_0400_CommonEvent");
+            expect(data.event).assertEqual("ACTS_StartAbility_0401_CommonEvent");
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
@@ -579,7 +579,7 @@ describe('ActsFeatureAbilityTest', function () {
 
         function timeout() {
             expect().assertFail();
-            console.debug('ACTS_StartAbility_0400=====timeout======');
+            console.debug('ACTS_StartAbility_0401=====timeout======');
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
@@ -635,17 +635,17 @@ describe('ActsFeatureAbilityTest', function () {
     })
 
     /**
-     * @tc.number: ACTS_StartAbility_0500
+     * @tc.number: ACTS_StartAbility_0501
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Pass the parameters, Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_StartAbility_0500', 0, async function (done) {
+    it('ACTS_StartAbility_0501', 0, async function (done) {
         let Subscriber;
         let id;
 
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbility_0500_CommonEvent");
+            expect(data.event).assertEqual("ACTS_StartAbility_0501_CommonEvent");
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
@@ -664,7 +664,7 @@ describe('ActsFeatureAbilityTest', function () {
 
         function timeout() {
             expect().assertFail();
-            console.debug('ACTS_StartAbility_0500=====timeout======');
+            console.debug('ACTS_StartAbility_0501=====timeout======');
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
@@ -731,17 +731,17 @@ describe('ActsFeatureAbilityTest', function () {
     })
 
     /**
-     * @tc.number: ACTS_StartAbility_0600
+     * @tc.number: ACTS_StartAbility_0601
      * @tc.name: StartAbility : A Page or Service ability uses this method to start a specific ability.
      * @tc.desc: Passing null, Check the return value of the interface (by AsyncCallback)
      */
-    it('ACTS_StartAbility_0600', 0, async function (done) {
+    it('ACTS_StartAbility_0601', 0, async function (done) {
         let Subscriber;
         let id;
 
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
-            expect(data.event).assertEqual("ACTS_StartAbility_0600_CommonEvent");
+            expect(data.event).assertEqual("ACTS_StartAbility_0601_CommonEvent");
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
@@ -759,7 +759,7 @@ describe('ActsFeatureAbilityTest', function () {
 
         function timeout() {
             expect().assertFail();
-            console.debug('ACTS_StartAbility_0600=====timeout======');
+            console.debug('ACTS_StartAbility_0601=====timeout======');
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
             done();
         }
