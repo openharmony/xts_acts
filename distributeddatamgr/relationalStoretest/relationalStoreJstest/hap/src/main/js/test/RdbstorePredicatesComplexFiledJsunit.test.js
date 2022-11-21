@@ -68,8 +68,8 @@ describe('rdbStorePredicatesComplexFiledTest', function () {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Predicates_ComplexFiled_0001 start *************");
 
         let predicates = await new dataRdb.RdbPredicates("test")
-        predicates.groupBy(["DATE(test.adddate,'utc')"]).orderByAsc("COUNT(*)")
-        let resultSet = await rdbStore.query(predicates, ["COUNT(*) AS 'num Count'", "DATE(test.adddate,'utc') as birthday"])
+        predicates.groupBy(["DATE(test.adddate)"]).orderByAsc("COUNT(*)")
+        let resultSet = await rdbStore.query(predicates, ["COUNT(*) AS 'num Count'", "DATE(test.adddate) as birthday"])
         expect(true).assertEqual(resultSet.goToFirstRow())
         let count = await resultSet.getLong(resultSet.getColumnIndex("num Count"))
         let birthday = await resultSet.getString(resultSet.getColumnIndex("birthday"))
@@ -94,8 +94,8 @@ describe('rdbStorePredicatesComplexFiledTest', function () {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Predicates_ComplexFiled_0002 start *************");
 
         let predicates = await new dataRdb.RdbPredicates("test")
-        predicates.groupBy(["DATE(test.adddate,'utc')"]).orderByDesc("COUNT(*)")
-        let resultSet = await rdbStore.query(predicates, ["COUNT(*) AS numCount", "DATE(test.adddate,'utc') as birthday"])
+        predicates.groupBy(["DATE(test.adddate)"]).orderByDesc("COUNT(*)")
+        let resultSet = await rdbStore.query(predicates, ["COUNT(*) AS numCount", "DATE(test.adddate) as birthday"])
         expect(true).assertEqual(resultSet.goToFirstRow())
         let count = await resultSet.getLong(resultSet.getColumnIndex("numCount"))
         let birthday = await resultSet.getString(resultSet.getColumnIndex("birthday"))
