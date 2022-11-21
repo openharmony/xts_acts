@@ -130,7 +130,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_01'
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticCb/', '01', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticCb/', '01.jpg', IMAGE_TYPE)
             await favoriteDefaultState(done, testNum, currentFetchOp)
         });
 
@@ -144,7 +144,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_02'
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticCb/', '02', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticCb/', '02.jpg', IMAGE_TYPE)
             await favoriteByTrue(done, testNum, currentFetchOp)
         });
 
@@ -158,7 +158,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_001_03'
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticCb/', '03', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticCb/', '03.jpg', IMAGE_TYPE)
             await favoriteByFalse(done, testNum, currentFetchOp)
         });
 
@@ -172,7 +172,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_01'
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticCb/', '01', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticCb/', '01.mp4', VIDEO_TYPE)
             await favoriteDefaultState(done, testNum, currentFetchOp)
         });
 
@@ -186,7 +186,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_02'
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticCb/', '02', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticCb/', '02.mp4', VIDEO_TYPE)
             await favoriteByTrue(done, testNum, currentFetchOp)
         });
 
@@ -200,7 +200,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_002_03'
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticCb/', '03', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticCb/', '03.mp4', VIDEO_TYPE)
             await favoriteByFalse(done, testNum, currentFetchOp)
         });
 
@@ -214,7 +214,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_01'
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticCb/', '01', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticCb/', '01.mp3', AUDIO_TYPE)
             await favoriteDefaultState(done, testNum, currentFetchOp)
         });
 
@@ -228,7 +228,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_02'
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticCb/', '02', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticCb/', '02.mp3', AUDIO_TYPE)
             await favoriteByTrue(done, testNum, currentFetchOp)
         });
 
@@ -242,7 +242,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_003_03'
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticCb/', '03', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticCb/', '03.mp3', AUDIO_TYPE)
             await favoriteByFalse(done, testNum, currentFetchOp)
         });
 
@@ -256,7 +256,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_01'
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticCb/', '01', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticCb/', '01.dat', FILE_TYPE)
             await favoriteDefaultState(done, testNum, currentFetchOp)
         });
 
@@ -270,7 +270,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_02'
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticCb/', '02', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticCb/', '02.dat', FILE_TYPE)
             await favoriteByTrue(done, testNum, currentFetchOp)
         });
 
@@ -284,7 +284,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_CALLBACK_004_03'
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticCb/', '03', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticCb/', '03.dat', FILE_TYPE)
             await favoriteByFalse(done, testNum, currentFetchOp)
         });
     });
