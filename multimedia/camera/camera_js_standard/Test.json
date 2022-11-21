@@ -2,7 +2,7 @@
     "description": "Configuration for camerastandard Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "2000000",
+        "test-timeout": "3000000",
         "package": "com.open.harmony.multimedia.cameratest",
         "shell-timeout": "60000"
     },
