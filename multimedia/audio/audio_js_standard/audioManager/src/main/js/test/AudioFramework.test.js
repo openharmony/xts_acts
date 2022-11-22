@@ -37,6 +37,8 @@ describe('audioFramework', function () {
     let highVol = 14;
     let outOfRangeVol = 28;
     let longValue = '28374837458743875804735081439085918459801437584738967509184509813904850914375904790589104801843';
+    let stringParameter = "invalid_parameter";
+    let numberParameter = 999999;
     function getAudioManager() {
         audioManager = audio.getAudioManager();
         if (audioManager != null) {
@@ -959,6 +961,154 @@ describe('audioFramework', function () {
     })
 
     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2900
+     *@tc.name      : setVolume  Callback
+     *@tc.desc      : Setvolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2900', 2, function (done) {
+        audioManager.setVolume(stringParameter, lowVol, (err) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800101) {
+                    console.log(`${TagFrmwk}: setVolume : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: setVolume : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.info('${TagFrmwk}: Callback: setVolume :  FAIL');
+                expect(false).assertTrue();
+            }
+            done();
+        });
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_3000
+     *@tc.name      : setVolume Promise
+     *@tc.desc      : Setvolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_3000', 2, async function (done) {
+        try {
+            await audioManager.setVolume(numberParameter, highVol);
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800104) {
+                console.log(`${TagFrmwk}: setVolume : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: setVolume : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_3100
+     *@tc.name      : setVolume Promise
+     *@tc.desc      : Setvolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_3100', 2, async function (done) {
+        try {
+            await audioManager.setVolume(audio.AudioVolumeType.MEDIA, stringParameter);
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: setVolume : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: setVolume : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_3200
+     *@tc.name      : setVolume Promise
+     *@tc.desc      : Setvolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_3200', 2, async function (done) {
+        try {
+            await audioManager.setVolume(audio.AudioVolumeType.MEDIA, numberParameter);
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800104) {
+                console.log(`${TagFrmwk}: setVolume : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: setVolume : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETVOLUME_0100
+     *@tc.name      : getVolume Promise
+     *@tc.desc      : getVolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETVOLUME_0100', 2, async function (done) {
+        try {
+            await audioManager.getVolume(audio.AudioVolumeType.MEDIA, numberParameter);
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800104) {
+                console.log(`${TagFrmwk}: getVolume : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: getVolume : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETVOLUME_0200
+     *@tc.name      : getVolume Promise
+     *@tc.desc      : getVolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETVOLUME_0200', 2, async function (done) {
+        try {
+            await audioManager.getVolume(audio.AudioVolumeType.MEDIA, numberParameter);
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800104) {
+                console.log(`${TagFrmwk}: getVolume : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: getVolume : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
+    })
+
+    /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0100
      *@tc.name      : getMaxVolume - Media - Promise
      *@tc.desc      : getMaxVolume for Media
@@ -1258,6 +1408,59 @@ describe('audioFramework', function () {
             }
             done();
         });
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1300
+     *@tc.name      : getMaxVolume - Callback
+     *@tc.desc      : getMaxVolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1300', 2, async function (done) {
+        audioManager.getMaxVolume(numberParameter, (err, value) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800104) {
+                    console.log(`${TagFrmwk}: getMaxVolume : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: getMaxVolume : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.info(`${TagFrmwk}: Callback: setVolume :  FAIL`);
+                expect(false).assertTrue();
+            }
+            done();
+        });
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1400
+     *@tc.name      : getMaxVolume Promise
+     *@tc.desc      : getMaxVolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1400', 2, async function (done) {
+        try {
+            await audioManager.getMaxVolume(stringParameter);
+            expect(false).assertTrue();
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: getMaxVolume : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: getMaxVolume : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
     })
 
     /**
@@ -1619,6 +1822,60 @@ describe('audioFramework', function () {
     })
 
     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1300
+     *@tc.name      : getMinVolume - Callback
+     *@tc.desc      : getMinVolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1300', 2, async function (done) {
+        await audioManager.setVolume(audioRingtone, highVol);
+        audioManager.getMinVolume(numberParameter, (err, value) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800104) {
+                    console.log(`${TagFrmwk}: setVolume : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: setVolume : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.info(`${TagFrmwk}: Callback: setVolume :  FAIL`);
+                expect(false).assertTrue();
+            }
+            done();
+        });
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1400
+     *@tc.name      : getMinVolume Promise
+     *@tc.desc      : getMinVolume
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1400', 2, async function (done) {
+        try {
+            await audioManager.getMinVolume(stringParameter);
+            expect(false).assertTrue();
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: getMinVolume : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: getMinVolume : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
+    })
+
+    /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100
      *@tc.name      : getDevices - Output device - Promise
      *@tc.desc      : getDevices - Output device
@@ -1949,7 +2206,7 @@ describe('audioFramework', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1200', 2, function (done) {
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1200', 2, function (done) {
         audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices ALL_DEVICES_FLAG`);
             if (err) {
@@ -1968,6 +2225,58 @@ describe('audioFramework', function () {
             }
             done();
         });
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1300
+     *@tc.name      : getDevices - ALL device - Callback - ENAME
+     *@tc.desc      : getDevices - ALL device
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1300', 2, function (done) {
+        audioManager.getDevices(numberParameter, (err, value) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800104) {
+                    console.log(`${TagFrmwk}: getDevices : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: getDevices : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.info(`${TagFrmwk}: Callback: getDevices :  FAIL`);
+                expect(false).assertTrue();
+            }
+            done();
+        });
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1400
+     *@tc.name      : getDevices - ALL device - Callback - ENAME
+     *@tc.desc      : getDevices - ALL device
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1400', 2, async function (done) {
+        try {
+            await audioManager.getDevices(stringParameter);
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: getDevices : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: getDevices : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
     })
 
     /**
@@ -2329,6 +2638,59 @@ describe('audioFramework', function () {
                 });
             }
         });
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1300
+     *@tc.name      : setRingerMode - Vibration Mode - Callback
+     *@tc.desc      : setRingerMode - Set Ring more to Vibration Mode
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1300', 2, function (done) {
+        audioManager.setRingerMode(stringParameter, (err, value) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800101) {
+                    console.log(`${TagFrmwk}: setRingerMode : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: setRingerMode : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.info(`${TagFrmwk}: Callback: setRingerMode :  FAIL`);
+                expect(false).assertTrue();
+            }
+            done();
+        });
+    })
+
+    
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1400
+     *@tc.name      : setRingerMode - Vibration Mode - Callback
+     *@tc.desc      : setRingerMode - Set Ring more to Vibration Mode
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1400', 2, async function (done) {
+        try {
+            await audioManager.setRingerMode(stringParameter);
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: setRingerMode : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: setRingerMode : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
     })
 
     /**
@@ -3219,6 +3581,84 @@ describe('audioFramework', function () {
     })
 
     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2100
+     *@tc.name      : mute - callback 
+     *@tc.desc      : mute - callback
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2100', 3, async function (done) {
+        audioManager.mute(stringParameter, false, (err, data) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800101) {
+                    console.log(`${TagFrmwk}: getMinVolume : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: getMinVolume : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.error(`${TagFrmwk}: failed to getMinVolume: Callback:  ${err.message}`);
+                expect(false).assertTrue();
+            }
+            done();
+        })
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2200
+     *@tc.name      : mute - callback 
+     *@tc.desc      : mute - callback
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2200', 3, async function (done) {
+        await audioManager.mute(numberParameter, false).then(async function () {
+            console.log(`${TagFrmwk}: Set Stream GroupManager Mute: RINGTONE: Promise: FALSE`);
+            expect(false).assertTrue();
+        }).catch((err) => {
+            console.log('err :' + err.code)
+            if (err.code == 6800104) {
+                console.log(`${TagFrmwk}: getMinVolume : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: getMinVolume : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        });
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2300
+     *@tc.name      : mute - callback 
+     *@tc.desc      : mute - callback
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2300', 3, async function (done) {
+        await audioManager.mute(stringParameter, false).then((resolve)=> {
+            console.log(`${TagFrmwk}: Set Stream GroupManager Mute: RINGTONE: Promise: FALSE`);
+            expect(false).assertTrue();
+        }, (err) => {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: setRingerMode : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: setRingerMode : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0100
      *@tc.name      : isActive - Media - Promise
      *@tc.desc      : isActive - Media - Promise - When stream is NOT playing
@@ -3425,6 +3865,61 @@ describe('audioFramework', function () {
         });
     })
 
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0900
+     *@tc.name      : isActive - Promise
+     *@tc.desc      : isActive - Promise
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0900', 2, async function (done) {
+        await audioManager.isActive(stringParameter, false).then((resolve)=> {
+            console.log(`${TagFrmwk}: Set Stream GroupManager Mute: RINGTONE: Promise: FALSE`);
+            expect(false).assertTrue();
+        }, (err) => {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: isActive : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: isActive : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_1000
+     *@tc.name      : isActive - Callback
+     *@tc.desc      : isActive - Callback
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_1000', 2, function (done) {
+        console.log(`${TagFrmwk}: Callback : isActive Ringtone: ENAME: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS`);
+        audioManager.isActive(numberParameter, (err, data) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800104) {
+                    console.log(`${TagFrmwk}: isActive : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: isActive : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.error(`${TagFrmwk}: failed to isActive: Callback:  ${err.message}`);
+                expect(false).assertTrue();
+            }
+            done();
+        });
+    })
+
     /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0100
      *@tc.name      : setMicrophoneMute - true - Promise
@@ -3542,6 +4037,59 @@ describe('audioFramework', function () {
                     done();
                 });
             }
+        });
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0500
+     *@tc.name      : setMicrophoneMute - Promise
+     *@tc.desc      : Disable mic mute
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0500', 1, async function (done) {
+        await audioManager.setMicrophoneMute(stringParameter).then(()=>{
+            console.log(`${TagFrmwk}: setMicrophoneMute : ERROR : message:${err.message}`);
+            expect(false).assertTrue();
+        }).catch (err =>{
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: setMicrophoneMute : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: setMicrophoneMute : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0600
+     *@tc.name      : setMicrophoneMute - false - Callback
+     *@tc.desc      : Disable mic mute
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0600', 1, function (done) {
+        audioManager.setMicrophoneMute(numberParameter, (err) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800101) {
+                    console.log(`${TagFrmwk}: getMinVolume : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: getMinVolume : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.error(`${TagFrmwk}: failed to getMinVolume: Callback:  ${err.message}`);
+                expect(false).assertTrue();
+            }
+            done();
         });
     })
 
@@ -3692,6 +4240,58 @@ describe('audioFramework', function () {
         });
     })
 
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0500
+     *@tc.name      : setDeviceActive - Callback
+     *@tc.desc      : Activate - Callback
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0500', 1, async function (done) {
+        await audioManager.setDeviceActive(stringParameter, true).then(()=>{
+            console.log(`${TagFrmwk}: setDeviceActive : ERROR : message:${err.message}`);
+            expect(false).assertTrue();
+        }).catch (err =>{
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: setDeviceActive : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: setDeviceActive : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0600
+     *@tc.name      : setDeviceActive - Callback
+     *@tc.desc      : Activate - Callback
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0600', 1, function (done) {
+        audioManager.setDeviceActive(numberParameter, true, (err) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800104) {
+                    console.log(`${TagFrmwk}: setDeviceActive : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: setDeviceActive : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.error(`${TagFrmwk}: failed to setDeviceActive: Callback:  ${err.message}`);
+                expect(false).assertTrue();
+            }
+            done();
+        });
+    })
 
     /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0100
@@ -4052,6 +4652,59 @@ describe('audioFramework', function () {
     })
 
     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1300
+     *@tc.name      : setAudioParameter - Promise
+     *@tc.desc      : setAudioParameter - Promise
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1300', 2, async function (done) {
+        try {
+            await audioManager.setAudioParameter(numberParameter, numberParameter);
+            expect(false).assertTrue();
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: setAudioParameter : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: setAudioParameter : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1400
+     *@tc.name      : setAudioParameter - Callback
+     *@tc.desc      : setAudioParameter - Callback
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1400', 2, function (done) {
+        audioManager.setAudioParameter(numberParameter, '16 bit', (err) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800101) {
+                    console.log(`${TagFrmwk}: setAudioParameter : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: setAudioParameter : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.error(`${TagFrmwk}: failed to setAudioParameter: Callback:  ${err.message}`);
+                expect(false).assertTrue();
+            }
+            done();
+        });
+    })
+
+    /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0100
      *@tc.name      : getAudioParameter - Promise - Character & Number
      *@tc.desc      : getAudioParameter - Promise - Character & Number
@@ -4406,6 +5059,59 @@ describe('audioFramework', function () {
                 }
                 done();
             });
+        });
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1300
+     *@tc.name      : getAudioParameter - Promise
+     *@tc.desc      : getAudioParameter - Promise
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1300', 2, async function (done) {
+        try {
+            await audioManager.getAudioParameter(numberParameter);
+            expect(false).assertTrue();
+        } catch (err) {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagFrmwk}: getAudioParameter : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagFrmwk}: getAudioParameter : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        }
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1400
+     *@tc.name      : getAudioParameter - Callback
+     *@tc.desc      : getAudioParameter - Callback
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1400', 2, function (done) {
+        audioManager.getAudioParameter(numberParameter, (err) => {
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800101) {
+                    console.log(`${TagFrmwk}: getAudioParameter : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagFrmwk}: getAudioParameter : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            }
+            else {
+                console.error(`${TagFrmwk}: failed to getAudioParameter: Callback:  ${err.message}`);
+                expect(false).assertTrue();
+            }
+            done();
         });
     })
 
