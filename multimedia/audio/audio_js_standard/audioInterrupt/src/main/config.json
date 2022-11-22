@@ -44,10 +44,8 @@
           }
       ],
       "deviceType": [
-          "phone",
-          "tablet",
-          "tv",
-          "wearable"
+          "default",
+          "tablet"
       ],
       "mainAbility": "ohos.acts.multimedia.audio.audiointerrupt.MainAbility",
       "distro": {
