@@ -695,7 +695,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           }
           let arrLength = systemBarData.regionTint.length;
           for (let i = 0; i < arrLength; i++) {
-            console.log(msgStr + 'for arrLenght compareCount: ' + compareCount + ' ,i:'+i);
+            console.log(msgStr + 'for arrLenght compareCount: ' + compareCount + ' ,i:'+i+'  ,arrLength:'+arrLength);
             let tempData = systemBarData.regionTint[i];
             if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start! arrLength= ' + arrLength);
@@ -721,12 +721,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 } catch (error) {
                   console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
                 }
-                done();
               } else {
                 console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
               }
               console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.SBC));
               console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.SCC));
+              done();
             } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
@@ -751,13 +751,13 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 } catch (error) {
                   console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
                 }
-                done();
               } else {
                 console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
               }
               console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NBC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.NBC));
               console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.NCC));
               endNum = compareCount
+              done();
             }
           }
         }
