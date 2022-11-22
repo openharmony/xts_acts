@@ -19,7 +19,7 @@ const NAMELIMIT = 512;
 const LENGTHLIMIT = 1024;
 const ERR_PARAMETER_CHECK_FAILD =401
 const ERR_INVALID_PARAMETER = 12300002
-const ERR_ACCOUNT_EXIST = 12300008
+const ERR_ACCOUNT_EXIST = 12300004
 const createAccountOptions = {customData:{age:'12'}} //k and v length 1024 ,k and v size 1024
 const createAccountOptionsDiff = {customData:{sex:'male'}}
 export default function ActsAccountCreateAccount() {
@@ -521,7 +521,7 @@ export default function ActsAccountCreateAccount() {
                 expect(err).assertEqual(null);
                 appAccountManager.createAccount("account_name_callback_same", createAccountOptionsDiff, (err)=>{
                     console.debug("====>add account second time ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(12300008);
+                    expect(err.code).assertEqual(ERR_ACCOUNT_EXIST);
                     appAccountManager.removeAccount("account_name_callback_same", (err)=>{
                         console.debug("====>delete Account ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -548,7 +548,7 @@ export default function ActsAccountCreateAccount() {
             }
             catch(err){
                 console.debug("====>add account for the second time err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(12300008);
+                expect(err.code).assertEqual(ERR_ACCOUNT_EXIST);
                 appAccountManager.removeAccount("account_name_promise_same"); 
                 console.debug("====>ActsAccountCreateAccount_2400 end====");
                 done();
