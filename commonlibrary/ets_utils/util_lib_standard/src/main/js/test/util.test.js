@@ -46,12 +46,6 @@ var rangeSec = new util.Scope(tempLess, tempMore);
 var rangeThi = new util.Scope(tempLess, tempMiDF);
 var rangeFif = new util.Scope(tempMiDF, tempMore);
 
-var rangeHp = new util.ScopeHelper(tempLower, tempUpper);
-var rangeHpFir = new util.ScopeHelper(tempMiDF, tempMidS);
-var rangeHpSec = new util.ScopeHelper(tempLess, tempMore);
-var rangeHpThi = new util.ScopeHelper(tempLess, tempMiDF);
-var rangeHpFif = new util.ScopeHelper(tempMiDF, tempMore);
-
 export default function UtilFunTest() {
 describe('TextEncoderTest', function () {
 
@@ -2448,9 +2442,9 @@ describe('RationalNumberFunTest', function () {
      */
     it('test_createRationalFromString_005', 0, function () {
         var pro = new util.RationalNumber(1, 2)
-        var res = pro.createRationalFromString('+2:-4')
+        var res = pro.createRationalFromString('-2:-4')
         var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.5)
+        expect(result1).assertEqual(0.5)
     })
 
     /**

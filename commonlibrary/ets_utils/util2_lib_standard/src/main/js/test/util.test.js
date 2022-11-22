@@ -14,10 +14,6 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import util from '@ohos.util'
-import url from '@ohos.url'
-import app from '@system.app'
-import process from '@ohos.process'
-import file from '@system.file';
 
 class Temperature {
     constructor(value) {
@@ -3317,7 +3313,7 @@ describe('FunctionTest', function () {
     })
 
     /**
-     * @tc.name: testUtilformat001
+     * @tc.name: testUtilformatThrowError001
      * @tc.desc: Returns the formatted string.
      */
     it('testUtilformatThrowError001', 0, function () {
@@ -4112,11 +4108,11 @@ describe('Base64HelperTest', function () {
     })
 
     /**
-     * @tc.name: test_encodeSync_base64_005
+     * @tc.name: test_encodeSync_base64_throwError_001
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
         array using the Base64 encoding scheme.
      */
-        it('test_encodeSync_base64_005', 0, async function () {
+        it('test_encodeSync_base64_throwError_001', 0, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
@@ -4365,11 +4361,11 @@ describe('Base64HelperTest', function () {
     })
 
     /**
-     * @tc.name: test_decode_base64_011
+     * @tc.name: test_decode_base64_throwError_001
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
         array into a newly allocated u8 array.
      */
-    it('test_decode_base64_006', 0, async function () {
+    it('test_decode_base64_throwError_001', 0, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint16Array([99,122,69,122]);
@@ -4467,10 +4463,10 @@ describe('DecodeEncodeTest', function () {
     })
 
     /**
-     * @tc.name: testencoding_textdecoder_ThrowError_002
+     * @tc.name: testencoding_textdecoder_ThrowError_003
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_ThrowError_002', 0, function () {
+    it('testencoding_textdecoder_ThrowError_003', 0, function () {
         try {
             var that = new util.TextDecoder()
             that.create('utf-16be', 123)
@@ -4598,7 +4594,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.name: testEncodeInto010
      * @tc.desc: Returns the result of encoder for GB18030.
      */
-    it('testEncodeInto0010', 0, function () {
+    it('testEncodeInto010', 0, function () {
         let that = new util.TextEncoder('GB18030')
         let buffer = new ArrayBuffer(20)
         let result = new Uint8Array(buffer)
