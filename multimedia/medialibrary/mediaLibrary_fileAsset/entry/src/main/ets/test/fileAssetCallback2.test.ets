@@ -117,7 +117,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_001', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_001'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '01', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '01.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = new Date().getTime() + '.jpg'
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -133,7 +133,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_002', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_002'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '02', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '02.jpg', IMAGE_TYPE);
             let prop = 'title'
             let val = new Date().getTime() + 'newTitle'
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -149,7 +149,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_003', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_003'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '03', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '03.jpg', IMAGE_TYPE);
             let prop = 'relativePath'
             let val = 'Pictures/Temp/'
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -166,7 +166,7 @@ export default function fileAssetCallback2Test(abilityContext) {
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_004', 0, async function (done) {
 
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_004'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '04', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '04.jpg', IMAGE_TYPE);
             let prop = 'orientation'
             let val = 1
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -182,7 +182,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_005', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_005'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '05', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '05.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = "";
             for (var i = 0; i < 83; i++) {
@@ -202,7 +202,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_006', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_006'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '06', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '06.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = "";
             for (var i = 0; i < 251; i++) {
@@ -222,7 +222,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_007", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_007";
-            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "07", IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "07.jpg", IMAGE_TYPE);
             let prop = "title";
             let val = "";
             for (var i = 0; i < 85; i++) {
@@ -241,7 +241,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_008", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_008";
-            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "08", IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "08.jpg", IMAGE_TYPE);
             let prop = "title";
             let val = "";
             for (var i = 0; i < 255; i++) {
@@ -260,7 +260,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_009', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_009'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '09', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '09.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = "";
             for (var i = 0; i < 84; i++) {
@@ -280,7 +280,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_010', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_010'
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '010', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '010.jpg', IMAGE_TYPE);
             let prop = 'displayName'
             let val = "";
             for (var i = 0; i < 252; i++) {
@@ -300,7 +300,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_011", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_011";
-            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "011", IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "011.jpg", IMAGE_TYPE);
             let prop = "title";
             let val = "";
             for (var i = 0; i < 86; i++) {
@@ -319,7 +319,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_012", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_012";
-            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "012", IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "012.jpg", IMAGE_TYPE);
             let prop = "title";
             let val = "";
             for (var i = 0; i < 256; i++) {
@@ -339,7 +339,7 @@ export default function fileAssetCallback2Test(abilityContext) {
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001', 0, async function (done) {
             try {
                 let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001'
-                let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '013', IMAGE_TYPE);
+                let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '013.jpg', IMAGE_TYPE);
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 const asset = await fetchFileResult.getFirstObject();
                 asset.isDirectory((err, isDir) =>{
