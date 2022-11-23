@@ -2023,17 +2023,17 @@ describe('SingleKvStorePromiseTest', function () {
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreCommit testcase 001
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100');
         try {
             await kvStore.commit(1).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100 commit success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100 commit success');
                 expect(null).assertFail();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100 commit fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100 commit fail ' + `, error code is ${err.code}, message is ${err.message}`);
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
         }
         done();
     })
