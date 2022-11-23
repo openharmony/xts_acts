@@ -357,7 +357,7 @@ export default function actsWifiManagerFunctionTest() {
         */
         it('SUB_Communication_WiFi_XTS_P2P_0009', 0, async function (done) {
             let wifiP2PConfig = {
-                deviceAddress : "00:00:00:00:00:00",
+                deviceAddress : "11:22:33:44:55:66",
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "AAAZZZ456",
