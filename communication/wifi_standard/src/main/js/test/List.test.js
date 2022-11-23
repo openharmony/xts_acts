@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import actsWifiManagerFunctionsTest from './WifiManagerStationFunctions.test.js'
 import actsWifiCandidateNetWorkTest from './WifiCandidateNetWork.test.js'
 import actsWifiManagerCandidateNetWorkTest from './WifiManagerCandidateNetWork.test.js'
 import actsWifiFunctionsTest from './WifiStationFunctions.test.js'
-import actsWifiManagerFunctionsTest from './WifiManagerStationFunctions.test.js'
 import actsWifiEventTest from './WifiStationEvent.test.js'
 import actsWifiManagerEventTest from './WifiManagerStationEvent.test.js'
 export default function testsuite() {
+    actsWifiManagerFunctionsTest()
     actsWifiCandidateNetWorkTest()
     actsWifiManagerCandidateNetWorkTest()
     actsWifiFunctionsTest()
-    actsWifiManagerFunctionsTest()
     actsWifiEventTest()
     actsWifiManagerEventTest()
 }
