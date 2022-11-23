@@ -84,6 +84,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearAbilityInfoIllegal, Function | Mediu
     TEST_ASSERT_EQUAL(err, EOK);
     ClearAbilityInfo(NULL);
     TEST_ASSERT_EQUAL_STRING(abilityInfo.bundleName, name);
+    free(abilityInfo.bundleName);
     printf("------end testClearAbilityInfoIllegal------\n");
 }
 
@@ -129,6 +130,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearBundleInfoIllegal, Function | Medium
     TEST_ASSERT_EQUAL(err, EOK);
     ClearBundleInfo(NULL);
     TEST_ASSERT_EQUAL_STRING(bundleInfo.bundleName, name);
+    free(bundleInfo.bundleName);
     printf("------end testClearBundleInfoIllegal------\n");
 }
 
@@ -174,6 +176,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearModuleInfoIllegal, Function | Medium
     TEST_ASSERT_EQUAL(err, EOK);
     ClearModuleInfo(NULL);
     TEST_ASSERT_EQUAL_STRING(moduleInfo.moduleName, name);
+    free(moduleInfo.moduleName);
     printf("------end testClearModuleInfoIllegal------\n");
 }
 
