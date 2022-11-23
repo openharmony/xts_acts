@@ -61,9 +61,11 @@ describe('bluetoothBLETest', function() {
     afterEach(function () {
         console.info('afterEach called')
     })
-    afterAll(function () {
+    afterAll(async function (done) {
         console.info('afterAll called')
+        await sleep(6000);
         gattClient.close();
+        done()
     })
 
     /**
