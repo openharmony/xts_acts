@@ -683,6 +683,7 @@ describe('objectStoreTest', function () {
             var gObject = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             gObject.setSessionId("tmpsession1");
             let result = await gObject.save("local");
+            sleep(2000)
             expect(result.sessionId == "tmpsession1").assertEqual(false);
             expect(result.version == gObject.__version).assertEqual(false);
             expect(result.deviceId == "local").assertEqual(false);
@@ -692,11 +693,11 @@ describe('objectStoreTest', function () {
             gObject.age = undefined;
             gObject.isVis = undefined;
             gObject.setSessionId("tmpsession1");
-    
+            done();
+
             expect(gObject.name == "Amy").assertEqual(false);
             expect(gObject.age == 18).assertEqual(false);
             expect(gObject.isVis == false).assertEqual(false);
-            done();
             console.info(TAG + "************* testSave001 end *************");
         })
 
@@ -712,12 +713,12 @@ describe('objectStoreTest', function () {
         gObject.setSessionId("tmpsession1");
         gObject.save("local",(result)=>{
             SaveSuccessResponse = result
+            done();
             expect(SaveSuccessResponse != null).assertTrue();
             expect(SaveSuccessResponse.sessionId == "tmpsession1").assertEqual(false);
             expect(SaveSuccessResponse.version == gObject.__version).assertEqual(false);
             expect(SaveSuccessResponse.deviceId == "local").assertEqual(false);
         });
-
         gObject.setSessionId("");
         gObject.name = undefined;
         gObject.age = undefined;
@@ -767,6 +768,7 @@ describe('objectStoreTest', function () {
         let RevokeSaveSuccessResponse =undefined;
         gObject.revokeSave((err,ret) => {
             RevokeSaveSuccessResponse = ret;
+            done();
             expect(err == null).assertTrue();
             expect(RevokeSaveSuccessResponse == undefined).assertTrue();
         });
