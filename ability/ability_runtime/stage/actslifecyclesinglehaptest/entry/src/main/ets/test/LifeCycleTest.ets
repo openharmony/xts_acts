@@ -82,7 +82,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility2",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -137,7 +137,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility1",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -148,7 +148,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -211,7 +211,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility1",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -222,7 +222,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -296,7 +296,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility3",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start3 successful. Data: ' + data);
         }).catch((error) => {
@@ -307,7 +307,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start2 successful. Data: ' + data);
           }).catch((error) => {
@@ -385,7 +385,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility1",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start1 successful. Data: ' + data);
         }).catch((error) => {
@@ -396,7 +396,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility3",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start3 successful. Data: ' + data);
           }).catch((error) => {
@@ -417,7 +417,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility4",
         }
-        globalThis.globalThis.abilityContext.startAbility(str2)
+        globalThis.abilityContext.startAbility(str2)
           .then((data) => {
             console.info(TAG + ' start4 successful. Data: ' + data);
           }).catch((error) => {
@@ -462,7 +462,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility1",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start1 successful. Data: ' + data);
         }).catch((error) => {
@@ -473,7 +473,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility5",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start5 successful. Data: ' + data);
           }).catch((error) => {
@@ -485,7 +485,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str2)
+        globalThis.abilityContext.startAbility(str2)
           .then((data) => {
             console.info(TAG + ' start2 successful. Data: ' + data);
           }).catch((error) => {
@@ -618,7 +618,7 @@ export default function lifecycleTest() {
           listKey8.push(abilityname + " onAbilityContinue");
         }
       }
-      let applicationContext = globalThis.globalThis.abilityContext.getApplicationContext();
+      let applicationContext = globalThis.abilityContext.getApplicationContext();
       id1 = applicationContext.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
       console.log(TAG + " registerAbilityLifecycleCallback1 number: " + JSON.stringify(id1));
       applicationContext.unregisterAbilityLifecycleCallback(id1, (error, data) => {
@@ -667,7 +667,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility1",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -678,7 +678,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -690,7 +690,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -703,7 +703,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -774,7 +774,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility1",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -785,7 +785,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -797,7 +797,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -865,7 +865,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility6",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -880,7 +880,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -918,7 +918,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility7",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -933,7 +933,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility7",
         }
-        globalThis.globalThis.abilityContext.startAbility(str)
+        globalThis.abilityContext.startAbility(str)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -982,7 +982,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility8",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -997,7 +997,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility8",
         }
-        globalThis.globalThis.abilityContext.startAbility(str)
+        globalThis.abilityContext.startAbility(str)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -1166,7 +1166,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility11",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -1177,7 +1177,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -1193,7 +1193,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility11",
         }
-        globalThis.globalThis.abilityContext.startAbility(str)
+        globalThis.abilityContext.startAbility(str)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -1204,7 +1204,7 @@ export default function lifecycleTest() {
             "bundleName": "com.example.lifecycle_xts",
             "abilityName": "MainAbility2",
           }
-          globalThis.globalThis.abilityContext.startAbility(str1)
+          globalThis.abilityContext.startAbility(str1)
             .then((data) => {
               console.info(TAG + ' start successful. Data: ' + data);
             }).catch((error) => {
@@ -1346,7 +1346,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility12",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -1357,7 +1357,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility2",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -1389,7 +1389,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility12",
         }
-        globalThis.globalThis.abilityContext.startAbility(str)
+        globalThis.abilityContext.startAbility(str)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -1400,7 +1400,7 @@ export default function lifecycleTest() {
             "bundleName": "com.example.lifecycle_xts",
             "abilityName": "MainAbility2",
           }
-          globalThis.globalThis.abilityContext.startAbility(str1)
+          globalThis.abilityContext.startAbility(str1)
             .then((data) => {
               console.info(TAG + ' start successful. Data: ' + data);
             }).catch((error) => {
@@ -1458,7 +1458,7 @@ export default function lifecycleTest() {
         "bundleName": "com.example.lifecycle_xts",
         "abilityName": "MainAbility1",
       }
-      globalThis.globalThis.abilityContext.startAbility(str)
+      globalThis.abilityContext.startAbility(str)
         .then((data) => {
           console.info(TAG + ' start successful. Data: ' + data);
         }).catch((error) => {
@@ -1469,7 +1469,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility12",
         }
-        globalThis.globalThis.abilityContext.startAbility(str1)
+        globalThis.abilityContext.startAbility(str1)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -1480,7 +1480,7 @@ export default function lifecycleTest() {
             "bundleName": "com.example.lifecycle_xts",
             "abilityName": "MainAbility2",
           }
-          globalThis.globalThis.abilityContext.startAbility(str2)
+          globalThis.abilityContext.startAbility(str2)
             .then((data) => {
               console.info(TAG + ' start successful. Data: ' + data);
             }).catch((error) => {
@@ -1533,7 +1533,7 @@ export default function lifecycleTest() {
           "bundleName": "com.example.lifecycle_xts",
           "abilityName": "MainAbility1",
         }
-        globalThis.globalThis.abilityContext.startAbility(str)
+        globalThis.abilityContext.startAbility(str)
           .then((data) => {
             console.info(TAG + ' start successful. Data: ' + data);
           }).catch((error) => {
@@ -1544,7 +1544,7 @@ export default function lifecycleTest() {
             "bundleName": "com.example.lifecycle_xts",
             "abilityName": "MainAbility12",
           }
-          globalThis.globalThis.abilityContext.startAbility(str1)
+          globalThis.abilityContext.startAbility(str1)
             .then((data) => {
               console.info(TAG + ' start successful. Data: ' + data);
             }).catch((error) => {
@@ -1555,7 +1555,7 @@ export default function lifecycleTest() {
               "bundleName": "com.example.lifecycle_xts",
               "abilityName": "MainAbility2",
             }
-            globalThis.globalThis.abilityContext.startAbility(str2)
+            globalThis.abilityContext.startAbility(str2)
               .then((data) => {
                 console.info(TAG + ' start successful. Data: ' + data);
               }).catch((error) => {
@@ -1608,12 +1608,12 @@ export default function lifecycleTest() {
           expect(exlist[2]).assertEqual("MainAbility2 onAbilityForeground");
           expect(exlist[3]).assertEqual("MainAbility2 onAbilityBackground");
           expect(exlist[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-          expect(exlist12[0]).assertEqual("MainAbility2 onAbilityDestroy");
-          expect(exlist12[1]).assertEqual("MainAbility12 onAbilityCreate");
-          expect(exlist12[2]).assertEqual("MainAbility12 onWindowStageCreate");
-          expect(exlist12[3]).assertEqual("MainAbility12 onAbilityForeground");
-          expect(exlist12[4]).assertEqual("MainAbility12 onAbilityBackground");
-          expect(exlist12[5]).assertEqual("MainAbility12 onAbilityForeground");
+          expect(exlist[5]).assertEqual("MainAbility2 onAbilityDestroy");
+          expect(exlist12[0]).assertEqual("MainAbility12 onAbilityCreate");
+          expect(exlist12[1]).assertEqual("MainAbility12 onWindowStageCreate");
+          expect(exlist12[2]).assertEqual("MainAbility12 onAbilityForeground");
+          expect(exlist12[3]).assertEqual("MainAbility12 onAbilityBackground");
+          expect(exlist12[4]).assertEqual("MainAbility12 onAbilityForeground");
           expect(exlist1[0]).assertEqual("MainAbility2 onAbilityCreate");
           expect(exlist1[1]).assertEqual("MainAbility2 onWindowStageCreate");
           expect(exlist1[2]).assertEqual("MainAbility2 onAbilityForeground");

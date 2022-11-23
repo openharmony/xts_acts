@@ -17,7 +17,7 @@ import Ability from '@ohos.app.ability.UIAbility'
 export default class MainAbility9 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility9 onCreate")
-        globalThis.abilityWant = want;
+        globalThis.abilityWant9 = want;
     }
 
     onDestroy() {

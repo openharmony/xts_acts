@@ -17,8 +17,7 @@ import Ability from '@ohos.app.ability.UIAbility'
 export default class Hap1MainAbility2 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] Hap1MainAbility2 onCreate")
-        globalThis.abilityWant = want;
-
+        globalThis.ability2Hap1Want = want;
         setTimeout(() => {
             this.context.terminateSelf().then((data) => {
                 console.log("Hap1MainAbility2 EventTest terminateSelf data: " + JSON.stringify(data));

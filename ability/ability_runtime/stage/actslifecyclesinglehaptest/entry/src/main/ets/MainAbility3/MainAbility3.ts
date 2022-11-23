@@ -17,7 +17,7 @@ import Ability from '@ohos.app.ability.UIAbility'
 export default class MainAbility3 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility3 onCreate")
-        globalThis.abilityWant = want;
+        globalThis.abilityWant3 = want;
 
         console.log("[Demo] MainAbility3 context: " + JSON.stringify(this.context));
         var listKey3 = [];
