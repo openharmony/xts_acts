@@ -14,12 +14,12 @@
  */
 import account from '@ohos.account.appAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import {AccountErrCode} from './AccountErrCode.test.js'
 
 const NAMELIMIT = 512;
 const LENGTHLIMIT = 1024;
 const ERR_PARAMETER_CHECK_FAILD =401
 const ERR_INVALID_PARAMETER = 12300002
-const ERR_ACCOUNT_EXIST = 12300004
 const createAccountOptions = {customData:{age:'12'}} //k and v length 1024 ,k and v size 1024
 const createAccountOptionsDiff = {customData:{sex:'male'}}
 export default function ActsAccountCreateAccount() {
@@ -129,7 +129,8 @@ export default function ActsAccountCreateAccount() {
                 expect(err).assertEqual(null);
                 appAccountManager.createAccount("account_name_callback_third", createAccountOptions, (err)=>{
                     console.debug("====>add account second time ActsAccountCreateAccount_0500 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(ERR_ACCOUNT_EXIST);
+                    console.debug("====>ActsAccountCreateAccount_0500 AccountErrCode.JsErrCode:" + AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
+                    expect(err.code).assertEqual(AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
                     appAccountManager.removeAccount("account_name_callback_third", (err)=>{
                         console.debug("====>delete Account ActsAccountCreateAccount_0500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -156,7 +157,7 @@ export default function ActsAccountCreateAccount() {
             }
             catch(err){
                 console.debug("====>add account for the second time 0600 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(ERR_ACCOUNT_EXIST);
+                expect(err.code).assertEqual(AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
                 await appAccountManager.removeAccount("account_name_promise_third");
                 console.debug("====>ActsAccountCreateAccount_0600 end====");
                 done();
@@ -521,7 +522,7 @@ export default function ActsAccountCreateAccount() {
                 expect(err).assertEqual(null);
                 appAccountManager.createAccount("account_name_callback_same", createAccountOptionsDiff, (err)=>{
                     console.debug("====>add account second time ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(ERR_ACCOUNT_EXIST);
+                    expect(err.code).assertEqual(AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
                     appAccountManager.removeAccount("account_name_callback_same", (err)=>{
                         console.debug("====>delete Account ActsAccountCreateAccount_2300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -548,7 +549,7 @@ export default function ActsAccountCreateAccount() {
             }
             catch(err){
                 console.debug("====>add account for the second time err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(ERR_ACCOUNT_EXIST);
+                expect(err.code).assertEqual(AccountErrCode.ERR_JS_ACCOUNT_ALREADY_EXIST);
                 appAccountManager.removeAccount("account_name_promise_same"); 
                 console.debug("====>ActsAccountCreateAccount_2400 end====");
                 done();
