@@ -3062,8 +3062,9 @@ describe('UrlFunTest', function () {
      */
     it('testUrlparseURL001', 0, function () {
         let params = new Url.URL()
-        params.parseURL('https://developer.mozilla.org',)
-        var result= params.href
+        expect(params != null).assertTrue()
+        let params2 =  Url.URL.parseURL('https://developer.mozilla.org',)
+        var result= params2.href
         expect(result).assertEqual('https://developer.mozilla.org/')
     })
 
@@ -3073,8 +3074,9 @@ describe('UrlFunTest', function () {
      */
     it('testUrlparseURL002', 0, function () {
         let params = new Url.URL()
-        params.parseURL('https://developer.mozilla.org','flie:/developer.mozilla.org')
-        var result= params.href
+        expect(params != null).assertTrue()
+        let params2 = Url.URL.parseURL('https://developer.mozilla.org','flie:/developer.mozilla.org')
+        var result= params2.href
         expect(result).assertEqual('https://developer.mozilla.org/')
     })
 
@@ -3084,8 +3086,9 @@ describe('UrlFunTest', function () {
      */
     it('testUrlparseURL003', 0, function () {
         let params = new Url.URL()
-        params.parseURL('https://developer.mozilla.org','ftp://www.example.com')
-        var result= params.href
+        expect(params != null).assertTrue()
+        let params2 = Url.URL.parseURL('https://developer.mozilla.org','ftp://www.example.com')
+        var result= params2.href
         expect(result).assertEqual('https://developer.mozilla.org/')
     })
 
@@ -3095,8 +3098,9 @@ describe('UrlFunTest', function () {
      */
     it('testUrlparseURL004', 0, function () {
         let params = new Url.URL()
-        params.parseURL(' ', 'http://www.example.com')
-        var result= params.href
+        expect(params != null).assertTrue()
+        let params2 = Url.URL.parseURL(' ', 'http://www.example.com')
+        var result= params2.href
         expect(result).assertEqual('http://www.example.com/')
     })
 
@@ -3106,8 +3110,9 @@ describe('UrlFunTest', function () {
      */
     it('testUrlparseURL005', 0, function () {
         let params = new Url.URL()
-        params.parseURL('.', 'http://www.example.com')
-        var result= params.href
+        expect(params != null).assertTrue()
+        let params2 = Url.URL.parseURL('.', 'http://www.example.com')
+        var result= params2.href
         expect(result).assertEqual('http://www.example.com/')
     })
 
@@ -3117,8 +3122,9 @@ describe('UrlFunTest', function () {
      */
     it('testUrlparseURL006', 0, function () {
         let params = new Url.URL()
-        params.parseURL('../h:', 'http://www.example.com')
-        var result= params.href
+        expect(params != null).assertTrue()
+        let params2 = Url.URL.parseURL('../h:', 'http://www.example.com')
+        var result= params2.href
         expect(result).assertEqual('http://www.example.com/h:')
     })
 
@@ -3129,9 +3135,9 @@ describe('UrlFunTest', function () {
     it('testUrlparseURL007', 0, function () {
         try{
             let params = new Url.URL()
+            expect(params != null).assertTrue()
             var a = undefined
-            params.parseURL(a)
-            var result= params.href
+            Url.URL.parseURL(a)
             expect(0).assertEqual(1)
         } catch(err) {
             expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
@@ -3147,10 +3153,10 @@ describe('UrlFunTest', function () {
     it('testUrlparseURL008', 0, function () {
         try{
             let params = new Url.URL()
+            expect(params != null).assertTrue()
             var a = 666;
             var b = 666;
-            params.parseURL(a, b)
-            var result= params.href
+            Url.URL.parseURL(a, b)
             expect(0).assertEqual(1)
         } catch(err) {
             expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
@@ -3166,10 +3172,10 @@ describe('UrlFunTest', function () {
     it('testUrlparseURL009', 0, function () {
         try{
             let params = new Url.URL()
+            expect(params != null).assertTrue()
             var a = '666666';
             var b = 666666;
-            params.parseURL(a, b)
-            var result= params.href
+            Url.URL.parseURL(a, b)
             expect(0).assertEqual(1)
         } catch(err) {
             expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string or URL`);
@@ -3185,10 +3191,10 @@ describe('UrlFunTest', function () {
     it('testUrlparseURL0010', 0, function () {
         try{
             let params = new Url.URL()
+            expect(params != null).assertTrue()
             var a = '666666';
             var b = "666666";
-            params.parseURL(a, b)
-            var result= params.href
+            Url.URL.parseURL(a, b)
             expect(0).assertEqual(1)
         } catch(err) {
             expect(err.toString()).assertEqual(`BusinessError: Syntax Error. Invalid Url string`)
