@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ActsBmsGetBackGroundModes from './ActsBmsQueryAbilityByWant.test.js'
-import ActsBmsQueryAbilityByWant from './ActsBmsGetBackGroundModes.test.js'
+import ActsBmsQueryAbilityByWant from './ActsBmsQueryAbilityByWant.test.js'
 export default function testsuite() {
-ActsBmsGetBackGroundModes()
 ActsBmsQueryAbilityByWant()
 }
