@@ -168,14 +168,10 @@ describe('rdbStoreBackupRestorePromiseTest', function () {
                         try {
                             console.info(TAG + "After restore resultSet query done")
                             resultSet.goToFirstRow();
-                            // expect(true).assertEqual(resultSet.goToFirstRow())
-                            console.info("RdbBackupRestoreTest_0010 goto first row success")
+                            expect(true).assertEqual(resultSet.goToFirstRow())
                             const id = resultSet.getLong(resultSet.getColumnIndex("id"))
-                            console.info("RdbBackupRestoreTest_0010 get dolumnindex id success")
                             const name = resultSet.getString(resultSet.getColumnIndex("name"))
-                            console.info("RdbBackupRestoreTest_0010 get dolumnindex name success")
                             const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
-                            console.info(`RdbBackupRestoreTest_0010 id is ${id},name id ${name},blobType is ${blobType[0]}`)
                             expect(1).assertEqual(id)
                             expect("zhangsan").assertEqual(name)
                             expect(1).assertEqual(blobType[0])
