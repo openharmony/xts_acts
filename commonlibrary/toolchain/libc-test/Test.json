@@ -24,6 +24,7 @@
                 "tar -xf /data/local/tmp/libc-test-lib.tar -C /data/local/tmp/",
                 "chmod a+x -R /data/local/tmp/libc-test-lib",
                 "chmod a+x -R /data/local/tmp/libc-test",
+		"mount -o rw,remount /",
                 "rm -rf /data/local/tmp/libc-test/vsyslog",
                 "rm -rf /data/local/tmp/libc-test/mkstemps",
                 "rm -rf /data/local/tmp/libc-test/mkostemps",
