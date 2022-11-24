@@ -17,7 +17,7 @@ import Ability from '@ohos.app.ability.UIAbility'
 export default class MainAbility12 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility12 onCreate")
-        globalThis.abilityWant = want;
+        globalThis.abilityWant12 = want;
         var listKey12 = [];
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
