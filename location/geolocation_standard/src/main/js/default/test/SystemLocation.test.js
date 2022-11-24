@@ -146,7 +146,7 @@ describe('geolocationTest_geo2', function () {
                 expect().assertFail();
             },
         });
-        geolocation.unsubscribe();
+        geolocations.unsubscribe();
         console.info("[lbs_js] unsubscribe called")
         done();
     })
@@ -192,6 +192,7 @@ describe('geolocationTest_geo2', function () {
 
     })
 })
+
 
 
 
