@@ -4683,6 +4683,60 @@ describe('LruBufferFunTest', function () {
         ChildLruBuffer.getInstance().afterRemoval(true,'abc','ab','string')
         expect(arr[2]).assertEqual('string')
     })
+
+    /**
+     * @tc.name: testLruBufferAfterRemoval006
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     */
+    it('testLruBufferAfterRemoval006', 0, function () {
+        var arr = [];
+        class ChildLruBuffer extends util.LruBuffer
+        {
+            constructor(capacity)
+            {
+                super(capacity);
+            }
+            afterRemoval(isEvict, key, value, newValue)
+            {
+                if (isEvict === true)
+                {
+                    arr = [key, value];
+                }
+            }
+        }
+        var that = new ChildLruBuffer(2);
+        that.put(1,2)
+        that.put(3,10)
+        that.put('abc',20)
+        expect(arr[1]).assertEqual(20)
+    })
+
+    /**
+     * @tc.name: testLruBufferAfterRemoval007
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     */
+    it('testLruBufferAfterRemoval007', 0, function () {
+        var arr = [];
+        class ChildLruBuffer extends util.LruBuffer
+        {
+            constructor(capacity)
+            {
+                super(capacity);
+            }
+            afterRemoval(isEvict, key, value, newValue)
+            {
+                if (isEvict === false)
+                {
+                    arr = [key, value, newValue];
+                }
+            }
+        }
+        var that = new ChildLruBuffer(3);
+        that.put(1,2)
+        that.put(3,10)
+        that.put(1,8)
+        expect(arr[2]).assertEqual(8)
+    })
 })
 
 describe('TypesTest', function() {
