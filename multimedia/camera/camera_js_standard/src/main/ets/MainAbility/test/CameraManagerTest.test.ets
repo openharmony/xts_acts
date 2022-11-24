@@ -1242,7 +1242,7 @@ describe('CameraManagerTest', function () {
         await sleep(1000);
         done();
     })
-
+    
     /**
           * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_CAMERA_MUTED_0100
           * @tc.name      : Get camera mute 
@@ -1268,5 +1268,6 @@ describe('CameraManagerTest', function () {
         await sleep(1000);
         done();
     })
+
 })
 }
