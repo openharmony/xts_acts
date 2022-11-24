@@ -1107,7 +1107,7 @@ describe('audioTonePlayer',function() {
 
 	/**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_TONEPLAYER_PROMISE_ALL_3000
-     *@tc.name      : AudioTonePlayer-create-load-stop-release success
+     *@tc.name      : AudioTonePlayer-create-load-stop-release fail
      *@tc.desc      : The successful test case of the promise of the dial tone of AudioTonePlayer key 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
@@ -1128,7 +1128,7 @@ describe('audioTonePlayer',function() {
         console.info('time: ' + (time2 - time1));
         setTimeout(function() {
             console.info('AudioFrameworkRenderLog: callback all 30 resultFlag : ' + resultFlag);
-            expect(resultFlag).assertTrue();
+            expect(resultFlag).assertFalse();
             done();
         }, 2000)
     })
