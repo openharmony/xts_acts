@@ -19,6 +19,7 @@ import bundle from '@ohos.bundle';
 var TAG1 = "Fa:SupportFunction:MainAbility3:";
 var listPush1 = "Fa_SupportFunction_MainAbility3_";
 var lifeList = [];
+let setDisplayOrientation1 = 0;
 export default {
   onCreate() {
     console.log(TAG1 + 'onCreate');
@@ -39,6 +40,11 @@ export default {
       ability_featureAbility.getContext().setDisplayOrientation(orientation, (error, setDisplayOrientation) => {
         console.log(TAG1 + "setDisplayOrientation data = " + JSON.stringify(setDisplayOrientation));
         console.log(TAG1 + "setDisplayOrientation error = " + JSON.stringify(error));
+        if (setDisplayOrientation == undefined) {
+          setDisplayOrientation1 = 1
+        } else {
+          console.log(`${TAG1} setDisplayOrientation callBack is error: ${JSON.stringify(setDisplayOrientation)}`);
+        }
 
         ability_featureAbility.getContext().getDisplayOrientation((error, displayOrientationAfter) => {
           console.log(TAG1 + "getDisplayOrientation2 data = " + JSON.stringify(displayOrientationAfter));
@@ -49,7 +55,7 @@ export default {
               displayOrientationBefore: displayOrientationBefore,
               displayOrientationAfter: displayOrientationAfter,
               lifeList: lifeList,
-              setDisplayOrientation: setDisplayOrientation
+              setDisplayOrientation: setDisplayOrientation1
             }
           }
           commonEvent.publish(listPush1 + "onActive", options, (err) => {
