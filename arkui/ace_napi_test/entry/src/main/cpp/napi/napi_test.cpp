@@ -1598,6 +1598,50 @@ static napi_value napiFatalerror(napi_env env, napi_callback_info info)
     return _value;
 }
 
+static napi_value napiGetTypedarrayInfo(napi_env env, napi_callback_info info)
+{
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPr = nullptr;
+    size_t arrayBufferSize = 200;
+    // create a JavaScript ArrayBuffer
+    napi_create_arraybuffer(env, arrayBufferSize, &arrayBufferPr, &arrayBuffer);
+    
+    // convert from N-API to C types
+    void* tmpArrayBufferPr = nullptr;
+    size_t arrayBufferLength = 0;
+    napi_get_arraybuffer_info(env, arrayBuffer, &tmpArrayBufferPr, &arrayBufferLength);
+    
+    NAPI_ASSERT(env, arrayBufferPr == tmpArrayBufferPr, "creat and get ArrayBuffer success");
+    NAPI_ASSERT(env, arrayBufferSize == arrayBufferLength, "creat and get ArrayBuffer size success");
+    
+    napi_value typedarray = nullptr;
+    // create a JavaScript TypedArray
+    napi_status status = napi_create_typedarray(env, napi_int8_array, arrayBufferSize, arrayBuffer, 0, &typedarray);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_typedarray success");
+    
+    bool isTypedArray = false;
+    // Whether the given napi_value represents a TypedArray
+    napi_is_typedarray(env, typedarray, &isTypedArray);
+    NAPI_ASSERT(env, isTypedArray, "the type is  TypeArray");
+    
+    // convert from N-API to C types
+    napi_typedarray_type typedarrayType;
+    size_t typedarrayLength = 0;
+    void* typedarrayBufferPtr = nullptr;
+    napi_value tmpArrayBuffer = nullptr;
+    size_t byteOffset = 0;
+    // returns various properties of a typed array
+    napi_get_typedarray_info(env, typedarray, &typedarrayType, &typedarrayLength, &typedarrayBufferPtr, &tmpArrayBuffer, &byteOffset);
+    NAPI_ASSERT(env, typedarrayBufferPtr == arrayBufferPr, "napi_get_typedarray_info success");
+    NAPI_ASSERT(env, arrayBufferSize == typedarrayLength, "napi_get_typedarray_info size success");
+    
+    // return the value of success
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -1687,6 +1731,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("napiCreateBigintUint64", napiCreateBigintUint64),
         DECLARE_NAPI_FUNCTION("napiCreateBigintInt64", napiCreateBigintInt64),
         DECLARE_NAPI_FUNCTION("napiCreateBigintWords", napiCreateBigintWords),
+        DECLARE_NAPI_FUNCTION("napiGetTypedarrayInfo", napiGetTypedarrayInfo),
         { "napiCancelAsyncWork", nullptr, napiCancelAsyncWork, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "napiCreateFunction", nullptr, napiCreateFunction, nullptr, nullptr, nullptr, napi_default, nullptr },
         DECLARE_NAPI_FUNCTION("napiFatalerror", napiFatalerror), };
