@@ -30,6 +30,9 @@ struct XComponentTest {
   @State private xcomponentWidth:number = 720;
   private offset_x:double = 0.000;
   private offset_y:double = 610.000;
+  private index:number = 0;
+  private callback_:number = 0;
+  private type_:number = 5;
   private touchTypeDown:number = 0;
   private touchTypeUp:number = 1;
   private touchTypeMove:number = 2;
@@ -70,6 +73,8 @@ struct XComponentTest {
           globalThis.xcomponentWidth = this.xcomponentWidth;
           globalThis.touchTypeDown = this.touchTypeDown;
           globalThis.touchTypeUp = this.touchTypeUp;
+          globalThis.type_ = this.type_;
+          globalThis.index = this.index;
           globalThis.touchTypeMove = this.touchTypeMove;
           globalThis.touchTypeCancel = this.touchTypeCancel;
           globalThis.offset_x = this.offset_x;
@@ -124,6 +129,7 @@ struct XComponentTest {
           globalThis.xcomponentContext2 = this.xcomponentContext2;
           globalThis.xcomponentId2 = this.xcomponentId2;
           globalThis.xcomponentHeight = this.xcomponentHeight;
+          globalThis.callback_ = this.callback_;
           globalThis.xcomponentWidth = this.xcomponentWidth;
           globalThis.offset_x = this.offset_x;
           globalThis.offset_y = this.offset_y;
