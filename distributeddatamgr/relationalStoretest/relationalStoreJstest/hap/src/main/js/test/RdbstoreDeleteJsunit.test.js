@@ -240,16 +240,15 @@ describe('rdbStoreDeleteTest', function () {
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('aaa id', 1)
-            let deletePromise = rdbStore.delete(predicates)
-            deletePromise.then(async (ret) => {
+            rdbStore.delete(predicates).then(async (ret) => {
                 console.info(TAG + 'delete done: ' + ret)
                 expect(null).assertFail()
             }).catch((err) => {
                 console.info(TAG + 'delete with wrong conditions')
+                done();
+                console.info(TAG + '************* testRdbStoreDelete0004 end *************');
             })
         }
-        done()
-        console.info(TAG + '************* testRdbStoreDelete0004 end *************');
     })
 
     /**
