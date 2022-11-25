@@ -104,7 +104,7 @@ struct WebComponent {
 //          console.info("x coord = " + event.param.x());
 //          console.info("y coord = " + event.param.y());
 //          console.info("link url = " + event.param.getLinkUrl());
-//          console.info("unfilterendLinkUrl = " + event.param.getUnfilterendLinkUrl());
+//          console.info("unfilterendLinkUrl = " + event.param.getUnfilteredLinkUrl());
 //          console.info("sourceUrl = " + event.param.getSourceUrl());
 //          console.info("existsImageContents = " + event.param.existsImageContents());
 //          console.info("closeContextMenu = " + event.result.closeContextMenu());
