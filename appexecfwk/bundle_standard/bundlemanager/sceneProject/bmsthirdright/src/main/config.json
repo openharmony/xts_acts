@@ -60,8 +60,7 @@
         "js": [
             {
                 "pages": [
-                    "pages/index/index",
-                    "pages/index/details/details"
+                    "pages/index/index"
                 ],
                 "name": "default",
                 "window": {
