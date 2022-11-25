@@ -169,9 +169,13 @@ describe('rdbStoreBackupRestorePromiseTest', function () {
                             console.info(TAG + "After restore resultSet query done")
                             resultSet.goToFirstRow();
                             expect(true).assertEqual(resultSet.goToFirstRow())
+                            console.info("RdbBackupRestoreTest_0010 goto first row success")
                             const id = resultSet.getLong(resultSet.getColumnIndex("id"))
+                            console.info("RdbBackupRestoreTest_0010 get dolumnindex id success")
                             const name = resultSet.getString(resultSet.getColumnIndex("name"))
+                            console.info("RdbBackupRestoreTest_0010 get dolumnindex name success")
                             const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
+                            console.info(`RdbBackupRestoreTest_0010 id is ${id},name id ${name},blobType is ${blobType[0]}`)
                             expect(1).assertEqual(id)
                             expect("zhangsan").assertEqual(name)
                             expect(1).assertEqual(blobType[0])
@@ -302,24 +306,16 @@ describe('rdbStoreBackupRestorePromiseTest', function () {
          */
          it('RdbBackupRestoreTest_0060', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreTest_0060 start *************")
-            
             // Backup file is specified to database name
-            await RdbStore.backup(STORE_CONFIG.name).then(() => {
-                console.info(TAG + 'Backup database finish')
+            RdbStore.backup(STORE_CONFIG.name).then(() => {
+                console.info(TAG + 'Backup database finish');
+                expect(false).assertTrue() ;
             }).catch((err) => {
-                expect(true).assertTrue()
+                console.info(TAG + "Backup database error");
+                expect(true).assertTrue() ;
+                done();
             })
-            
-            // Backup file is specified to database name again
-            await RdbStore.backup(STORE_CONFIG.name).then(() => {
-                console.info(TAG + 'Backup database finish')
-            }).catch((err) => {
-                expect(true).assertTrue();
-            })
-            done();
-            console.info(TAG + "************* RdbBackupRestoreTest_0060 end *************")
         })
-
         /**
          * @tc.name RDB BackupRestore test
          * @tc.number SUB_DDM_RDB_JS_RdbBackupRestoreTest_0070
