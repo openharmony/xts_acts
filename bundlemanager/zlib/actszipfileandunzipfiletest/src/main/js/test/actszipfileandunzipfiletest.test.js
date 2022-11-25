@@ -16,7 +16,7 @@
 import zlib from '@ohos.zlib'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 let dir = "";
 let infos = "";
@@ -1103,7 +1103,7 @@ export default function ActsZlibTest() {
         * @tc.name: compressFileTest
         * @tc.desc: test compressFile when inFile and out file is valid
         */
-        it('compressFileTest', 0, async function (done) {
+        it('compressFileTest', Level.LEVEL2, async function (done) {
             console.log("==================compressFileTest start==================");
             let path1 = dir + "/compressFileTest1.txt";
             let zipDest1 = dir + "/compressFileTest1.zip";
@@ -1161,7 +1161,7 @@ export default function ActsZlibTest() {
         * @tc.name: compressFileInFileNotExist
         * @tc.desc: test compressFile when inFile is not exist
         */
-        it('compressFileInFileNotExist', 0, async function (done) {
+        it('compressFileInFileNotExist', Level.LEVEL3, async function (done) {
             console.log("==================compressFileInFileNotExist start==================");
             let path = "nonexist.txt";
             let zipDest = dir + "/compressFileInFileNotExist.zip";
@@ -1191,10 +1191,10 @@ export default function ActsZlibTest() {
         * @tc.name: compressFileInFileNull
         * @tc.desc: test compressFile when inFile is null
         */
-        it('compressFileInFileNull', 0, async function (done) {
+        it('compressFileInFileNull', Level.LEVEL3, async function (done) {
             console.log("==================compressFileInFileNull start==================");
             let zipDest = dir + "/compressFileInFileNull.zip";
-            try{
+            try {
                 await zlib.compressFile(null, zipDest, {
                     level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
                 }).then((data) => {
@@ -1204,10 +1204,10 @@ export default function ActsZlibTest() {
                     console.log("compressFileInFileNull zipFile fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
-            }catch(err){
+            } catch (err) {
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
-            try{
+            try {
                 zlib.compressFile(null, zipDest, {
                     level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
                 }, (err, data) => {
@@ -1215,7 +1215,7 @@ export default function ActsZlibTest() {
                     expect().assertFail();
                     done();
                 })
-            }catch(err){
+            } catch (err) {
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
@@ -1227,7 +1227,7 @@ export default function ActsZlibTest() {
         * @tc.name: compressFileOutFileNull
         * @tc.desc: test compressFile when outFile is null
         */
-        it('compressFileOutFileNull', 0, async function (done) {
+        it('compressFileOutFileNull', Level.LEVEL3, async function (done) {
             console.log("==================compressFileOutFileNull start==================");
             let path1 = dir + "/compressFileOutFileNull.txt";
             let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
@@ -1237,7 +1237,7 @@ export default function ActsZlibTest() {
                 console.info("fileio write data to file failed with error:" + err);
                 expect(err).assertFail();
             });
-            try{
+            try {
                 await zlib.compressFile(path1, null, {
                     level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
                 }).then((data) => {
@@ -1247,10 +1247,10 @@ export default function ActsZlibTest() {
                     console.log("compressFileOutFileNull zipFile fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
-            }catch(err){
+            } catch (err) {
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
-            try{
+            try {
                 zlib.compressFile(path1, null, {
                     level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
                 }, (err, data) => {
@@ -1258,7 +1258,7 @@ export default function ActsZlibTest() {
                     expect().assertFail();
                     done();
                 })
-            }catch(err){
+            } catch (err) {
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
@@ -1270,7 +1270,7 @@ export default function ActsZlibTest() {
         * @tc.name: compressFileOptionNull
         * @tc.desc: test compressFile when option is null
         */
-        it('compressFileOptionNull', 0, async function (done) {
+        it('compressFileOptionNull', Level.LEVEL3, async function (done) {
             console.log("==================compressFileOptionNull start==================");
             let path1 = dir + "/compressFileOptionNull.txt";
             let zipDest1 = dir + "/compressFileOptionNull.zip";
@@ -1281,7 +1281,7 @@ export default function ActsZlibTest() {
                 console.info("fileio write data to file failed with error:" + err);
                 expect(err).assertFail();
             });
-            try{
+            try {
                 await zlib.compressFile(path1, zipDest1, null).then((data) => {
                     console.log("compressFileOptionNull invalid src file success!");
                     expect().assertFail();
@@ -1289,16 +1289,16 @@ export default function ActsZlibTest() {
                     console.log("compressFileOptionNull zipFile fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
-            }catch(err){
+            } catch (err) {
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
-            try{
+            try {
                 zlib.compressFile(path1, zipDest1, null, (err, data) => {
                     console.log("compressFile result");
                     expect().assertFail();
                     done();
                 })
-            }catch(err){
+            } catch (err) {
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
@@ -1310,7 +1310,7 @@ export default function ActsZlibTest() {
         * @tc.name: compressFileStrategyNull
         * @tc.desc: test compressFile when strategy is null
         */
-        it('compressFileStrategyNull', 0, async function (done) {
+        it('compressFileStrategyNull', Level.LEVEL3, async function (done) {
             console.log("==================compressFileStrategyNull start==================");
             let path1 = dir + "/compressFileStrategyNull.txt";
             let zipDest1 = dir + "/compressFileStrategyNull.zip";
@@ -1321,7 +1321,7 @@ export default function ActsZlibTest() {
                 console.info("fileio write data to file failed with error:" + err);
                 expect(err).assertFail();
             });
-            try{
+            try {
                 await zlib.compressFile(path1, zipDest1, {
                     strategy: null
                 }).then((data) => {
@@ -1331,10 +1331,10 @@ export default function ActsZlibTest() {
                     console.log("compressFileStrategyNull zipFile fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
-            }catch(err){
+            } catch (err) {
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
-            try{
+            try {
                 zlib.compressFile(path1, zipDest1, {
                     strategy: null
                 }, (err, data) => {
@@ -1342,7 +1342,7 @@ export default function ActsZlibTest() {
                     expect().assertFail();
                     done();
                 })
-            }catch(err){
+            } catch (err) {
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
@@ -1354,7 +1354,7 @@ export default function ActsZlibTest() {
         * @tc.name: decompressFileTest
         * @tc.desc: test decompressFile when inFile and out file is valid
         */
-        it('decompressFileTest', 0, async function (done) {
+        it('decompressFileTest', Level.LEVEL2, async function (done) {
             console.log("==================decompressFileTest start==================");
             let path = dir + "/decompressFileTest.txt";
             let zipDest1 = dir + "/decompressFileTest1.zip";
@@ -1443,7 +1443,7 @@ export default function ActsZlibTest() {
         * @tc.name: decompressFileInFileNotExist
         * @tc.desc: test decompressFile when inFile is not exist
         */
-        it('decompressFileInFileNotExist', 0, async function (done) {
+        it('decompressFileInFileNotExist', Level.LEVEL3, async function (done) {
             console.log("==================decompressFileInFileNotExist start==================");
             let zipDest = dir + "/noneexist.zip";
             let unzipdir = dir + "/decompressFileInFileNotExist";
@@ -1479,7 +1479,7 @@ export default function ActsZlibTest() {
         * @tc.name: decompressFileInFileNull
         * @tc.desc: test decompressFile when inFile is null
         */
-        it('decompressFileInFileNull', 0, async function (done) {
+        it('decompressFileInFileNull', Level.LEVEL3, async function (done) {
             console.log("==================decompressFileInFileNull start==================");
             let unzipdir = dir + "/decompressFileInFileNull";
             await fileio.mkdir(unzipdir).then(function () {
@@ -1488,7 +1488,7 @@ export default function ActsZlibTest() {
                 console.info("fileio mkdir failed with error:" + error);
                 expect(error).assertFail();
             });
-            try{
+            try {
                 await zlib.decompressFile(null, unzipdir, {
                     strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
                 }).then(data => {
@@ -1498,18 +1498,18 @@ export default function ActsZlibTest() {
                     console.log("decompress fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
-            }catch(err){
+            } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
-            try{
+            try {
                 zlib.decompressFile(null, unzipdir, {
                     strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
                 }, (err, data) => {
                     expect().assertFail();
                     done();
                 })
-            }catch(err){
+            } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
@@ -1522,7 +1522,7 @@ export default function ActsZlibTest() {
         * @tc.name: decompressFileOutFileNull
         * @tc.desc: test decompressFile when outFile is null
         */
-        it('decompressFileOutFileNull', 0, async function (done) {
+        it('decompressFileOutFileNull', Level.LEVEL3, async function (done) {
             console.log("==================decompressFileOutFileNull start==================");
             let path = dir + "/decompressFileOutFileNull.txt";
             let zipDest1 = dir + "/decompressFileOutFileNull.zip";
@@ -1548,7 +1548,7 @@ export default function ActsZlibTest() {
                 console.info("compressFile fail " + JSON.stringify(err));
                 expect(err).assertFail();
             })
-            try{
+            try {
                 await zlib.decompressFile(zipDest1, null, {
                     strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
                 }).then(data => {
@@ -1558,18 +1558,18 @@ export default function ActsZlibTest() {
                     console.log("decompress fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
-            }catch(err){
+            } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
-            try{
+            try {
                 zlib.decompressFile(zipDest1, null, {
                     strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
                 }, (err, data) => {
                     expect().assertFail();
                     done();
                 })
-            }catch(err){
+            } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
@@ -1582,7 +1582,7 @@ export default function ActsZlibTest() {
         * @tc.name: decompressFileOptionNull
         * @tc.desc: test decompressFile when option is null
         */
-        it('decompressFileOptionNull', 0, async function (done) {
+        it('decompressFileOptionNull', Level.LEVEL3, async function (done) {
             console.log("==================decompressFileOptionNull start==================");
             let path = dir + "/decompressFileOptionNull.txt";
             let zipDest1 = dir + "/decompressFileOptionNull.zip";
@@ -1615,7 +1615,7 @@ export default function ActsZlibTest() {
                 console.info("fileio mkdir failed with error:" + error);
                 expect(error).assertFail();
             });
-            try{
+            try {
                 await zlib.decompressFile(zipDest1, unzipdir, null).then(data => {
                     console.log("decompressFile data: " + data);
                     expect().assertFail();
@@ -1623,16 +1623,16 @@ export default function ActsZlibTest() {
                     console.log("decompress fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
-            }catch(err){
+            } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
-            try{
+            try {
                 zlib.decompressFile(zipDest1, unzipdir, null, (err, data) => {
                     expect().assertFail();
                     done();
                 })
-            }catch(err){
+            } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
@@ -1645,7 +1645,7 @@ export default function ActsZlibTest() {
         * @tc.name: decompressFileStrategyNull
         * @tc.desc: test decompressFile when strategy is null
         */
-        it('decompressFileStrategyNull', 0, async function (done) {
+        it('decompressFileStrategyNull', Level.LEVEL3, async function (done) {
             console.log("==================decompressFileStrategyNull start==================");
             let path = dir + "/decompressFileStrategyNull.txt";
             let zipDest1 = dir + "/decompressFileStrategyNull.zip";
@@ -1678,7 +1678,7 @@ export default function ActsZlibTest() {
                 console.info("fileio mkdir failed with error:" + error);
                 expect(error).assertFail();
             });
-            try{
+            try {
                 await zlib.decompressFile(zipDest1, unzipdir, {
                     strategy: null
                 }).then(data => {
@@ -1688,18 +1688,18 @@ export default function ActsZlibTest() {
                     console.log("decompress fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
-            }catch(err){
+            } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
-            try{
+            try {
                 zlib.decompressFile(zipDest1, unzipdir, {
                     strategy: null
                 }, (err, data) => {
                     expect().assertFail();
                     done();
                 })
-            }catch(err){
+            } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
