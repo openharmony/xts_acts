@@ -16,11 +16,14 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "adapter.h"
 #include "hctest.h"
 #include "securec.h"
 #include "bundle_info.h"
 #include "bundle_manager.h"
 #include "want.h"
+
+#define nullptr NULL
 
 /**
 * @brief  register a test suit named BundleMgrTestSuite
@@ -55,7 +58,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearAbilityInfoLegal, Function | MediumT
     TEST_ASSERT_TRUE(result == 0);
     char *name = "com.openharmony.testjsdemo";
     size_t len = strlen(name);
-    abilityInfo.bundleName = (char *)malloc(len + 1);
+    abilityInfo.bundleName = (char *)(AdapterMalloc(len + 1));
     TEST_ASSERT_NOT_NULL(abilityInfo.bundleName);
     errno_t err = strncpy_s(abilityInfo.bundleName, len + 1, name, len);
     TEST_ASSERT_EQUAL(err, EOK);
@@ -78,12 +81,13 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearAbilityInfoIllegal, Function | Mediu
     TEST_ASSERT_TRUE(result == 0);
     char *name = "com.openharmony.testjsdemo";
     size_t len = strlen(name);
-    abilityInfo.bundleName = (char *)malloc(len + 1);
+    abilityInfo.bundleName = (char *)(AdapterMalloc(len + 1));
     TEST_ASSERT_NOT_NULL(abilityInfo.bundleName);
     errno_t err = strncpy_s(abilityInfo.bundleName, len + 1, name, len);
     TEST_ASSERT_EQUAL(err, EOK);
     ClearAbilityInfo(NULL);
     TEST_ASSERT_EQUAL_STRING(abilityInfo.bundleName, name);
+    AdapterFree(abilityInfo.bundleName);
     printf("------end testClearAbilityInfoIllegal------\n");
 }
 
@@ -100,7 +104,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearBundleInfoLegal, Function | MediumTe
     TEST_ASSERT_TRUE(result == 0);
     char *name = "com.openharmony.testjsdemo";
     size_t len = strlen(name);
-    bundleInfo.bundleName = (char *)malloc(len + 1);
+    bundleInfo.bundleName = (char *)(AdapterMalloc(len + 1));
     TEST_ASSERT_NOT_NULL(bundleInfo.bundleName);
     errno_t err = strncpy_s(bundleInfo.bundleName, len + 1, name, len);
     TEST_ASSERT_EQUAL(err, EOK);
@@ -123,12 +127,13 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearBundleInfoIllegal, Function | Medium
     TEST_ASSERT_TRUE(result == 0);
     char *name = "com.openharmony.testjsdemo";
     size_t len = strlen(name);
-    bundleInfo.bundleName = (char *)malloc(len + 1);
+    bundleInfo.bundleName = (char *)(AdapterMalloc(len + 1));
     TEST_ASSERT_NOT_NULL(bundleInfo.bundleName);
     errno_t err = strncpy_s(bundleInfo.bundleName, len + 1, name, len);
     TEST_ASSERT_EQUAL(err, EOK);
     ClearBundleInfo(NULL);
     TEST_ASSERT_EQUAL_STRING(bundleInfo.bundleName, name);
+    AdapterFree(bundleInfo.bundleName);
     printf("------end testClearBundleInfoIllegal------\n");
 }
 
@@ -145,7 +150,7 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearModuleInfoLegal, Function | MediumTe
     TEST_ASSERT_TRUE(result == 0);
     char *name = "test";
     size_t len = strlen(name);
-    moduleInfo.moduleName = (char *)malloc(len + 1);
+    moduleInfo.moduleName = (char *)(AdapterMalloc(len + 1));
     TEST_ASSERT_NOT_NULL(moduleInfo.moduleName);
     errno_t err = strncpy_s(moduleInfo.moduleName, len + 1, name, len);
     TEST_ASSERT_EQUAL(err, EOK);
@@ -168,12 +173,13 @@ LITE_TEST_CASE(BundleMgrTestSuite, testClearModuleInfoIllegal, Function | Medium
     TEST_ASSERT_TRUE(result == 0);
     char *name = "test";
     size_t len = strlen(name);
-    moduleInfo.moduleName = (char *)malloc(len + 1);
+    moduleInfo.moduleName = (char *)(AdapterMalloc(len + 1));
     TEST_ASSERT_NOT_NULL(moduleInfo.moduleName);
     errno_t err = strncpy_s(moduleInfo.moduleName, len + 1, name, len);
     TEST_ASSERT_EQUAL(err, EOK);
     ClearModuleInfo(NULL);
     TEST_ASSERT_EQUAL_STRING(moduleInfo.moduleName, name);
+    AdapterFree(moduleInfo.moduleName);
     printf("------end testClearModuleInfoIllegal------\n");
 }
 
