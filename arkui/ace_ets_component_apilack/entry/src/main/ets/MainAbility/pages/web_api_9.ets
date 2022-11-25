@@ -80,7 +80,7 @@ struct Index {
                     console.info("x coord = " + event.param.y());
                     console.info("link url = " + event.param.getLinkUrl());
                     console.info("source url = " + event.param.getSourceUrl());
-                    console.info("source url = " + event.param.getUnfilterendLinkUrl());
+                    console.info("source url = " + event.param.getUnfilteredLinkUrl());
                     console.info("source url = " + event.param.existsImageContents());
                     console.info("" + event.result.copyImage());
                     console.info("" + event.result.closeContextMenu());
