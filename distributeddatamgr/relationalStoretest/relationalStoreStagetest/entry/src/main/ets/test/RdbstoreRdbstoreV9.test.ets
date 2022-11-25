@@ -178,12 +178,12 @@ describe('rdbStoreV9Test', function () {
             }else{
                 console.info(TAG + "create table success")
             }
-            done();
+            dataRdb.deleteRdbStore(context,"secure.db").then(()=>{
+                console.info(TAG + "Delete rdbstore success")
+                done();
+                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0100 end   *************");
+            })
         });
-        await dataRdb.deleteRdbStore(context,"secure.db");
-        await sleep(1000)
-        done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0100 end   *************");
     })
 
     /**
@@ -205,12 +205,11 @@ describe('rdbStoreV9Test', function () {
             }else{
                 console.info(TAG + "create table success")
             }
-            done();
+            dataRdb.deleteRdbStore(context, "secure.db").then(() => {
+                done();
+                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0200 end   *************");
+            })
         });
-        await dataRdb.deleteRdbStore(context,"secure.db");
-        await sleep(1000)
-        done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0200 end   *************");
     })
 
     /**
@@ -232,12 +231,11 @@ describe('rdbStoreV9Test', function () {
             }else{
                 console.info(TAG + "create table success")
             }
-            done();
+            dataRdb.deleteRdbStore(context, "secure.db").then(() => {
+                done();
+                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0300 end   *************");
+            })
         });
-        await dataRdb.deleteRdbStore(context,"secure.db");
-        await sleep(1000)
-        done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0300 end   *************");
     })
 
     /**
@@ -259,12 +257,11 @@ describe('rdbStoreV9Test', function () {
             }else{
                 console.info(TAG + "get rdb store success")
             }
-            done();
+            dataRdb.deleteRdbStore(context,"secure.db").then(() => {
+                done();
+                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0400 end   *************");
+            })
         });
-        await dataRdb.deleteRdbStore(context,"secure.db");
-        await sleep(1000)
-        done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0400 end   *************");
     })
 
     /**
