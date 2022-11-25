@@ -245,11 +245,10 @@ describe('rdbStoreDeleteTest', function () {
                 expect(null).assertFail()
             }).catch((err) => {
                 console.info(TAG + 'delete with wrong conditions')
-                
+                done();
                 console.info(TAG + '************* testRdbStoreDelete0004 end *************');
             })
         }
-        done();
     })
 
     /**
