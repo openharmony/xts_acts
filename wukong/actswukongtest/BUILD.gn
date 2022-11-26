@@ -18,7 +18,7 @@ ohos_js_hap_suite("ActsWukongTest") {
   js_build_mode = "debug"
   deps = [
     ":wukong_js_assets",
-    ":wukong_resources"
+    ":wukong_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
@@ -41,4 +41,3 @@ ohos_resources("wukong_resources") {
   deps = [ ":wukong_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }
-
