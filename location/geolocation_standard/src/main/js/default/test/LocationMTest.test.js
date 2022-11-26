@@ -120,7 +120,7 @@ describe('geolocationTest_geo7', function () {
     it('SUB_HSS_LocationSystem_LocSwitch_0600', 0, function () {
         let state = geolocationm.isLocationEnabled();
         console.info('[lbs_js] getLocationSwitchState06 result: ' + JSON.stringify(state));       
-        expect(JSON.stringify(state)).assertTrue();
+        expect(state).assertTrue();
     });
 
     /**
