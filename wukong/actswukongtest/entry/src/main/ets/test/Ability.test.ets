@@ -57,21 +57,23 @@ export default function abilityTest() {
       await abilityDelegator.executeShellCommand("pkill accessibility");
       abilityDelegator.executeShellCommand(cmd,
         async (err: any, d: any) => {
-          console.log('hyr-----------ACTS_AppSelectorTest cmdUninstall executeShellCommand : err : ' + JSON.stringify(err));
-          console.log('hyr-----------ACTS_AppSelectorTest cmdUninstall executeShellCommand : stdResult : ' + d.stdResult);
-          console.log('hyr-----------ACTS_AppSelectorTest cmdUninstall executeShellCommand : exitCode : ' + d.exitCode);
+          console.log('ACTS_wukongTest executeShellCommand : err : ' + JSON.stringify(err));
+          console.log('ACTS_wukongTest executeShellCommand : stdResult : ' + d.stdResult);
+          console.log('ACTS_wukongTest executeShellCommand : exitCode : ' + d.exitCode);
       });
-      await sleep(10000);
+      await sleep(20000);
       abilityDelegator1.executeShellCommand("ps -ef|grep 'wukong exec -T 0.5'|grep -c -v grep ",async (error: any, date: any) => {
-        console.log('hyr1-----------ACTS_AppSelectorTest cmdUninstall executeShellCommand : err1 : ' + JSON.stringify(error));
-        console.log('hyr1-----------ACTS_AppSelectorTest cmdUninstall executeShellCommand : stdResult1 : ' + date.stdResult);
-        console.log('hyr1-----------ACTS_AppSelectorTest cmdUninstall executeShellCommand : exitCode1 : ' + date.exitCode);
+        console.log('ACTS_wukongTest cmdPs executeShellCommand : err : ' + JSON.stringify(error));
+        console.log('ACTS_wukongTest cmdPs executeShellCommand : stdResult : ' + date.stdResult);
+        console.log('ACTS_wukongTest cmdPs executeShellCommand : exitCode : ' + date.exitCode);
         let i = date.stdResult.indexOf('1');
         if(i == -1){
           expect().assertFail();
+          done();
         }
-        done();
       });
+      await sleep(10000);
+      done();
     })
   })
 }
