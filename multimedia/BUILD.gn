@@ -21,7 +21,6 @@ group("multimedia") {
       "audio/audio_js_standard/AudioCapturerChangeInfo:audio_capturerchangeInfo_js_hap",
       "audio/audio_js_standard/AudioEventManagement:audio_eventmanagement_js_hap",
       "audio/audio_js_standard/AudioRendererChangeInfo:audio_rendererchangeInfo_js_hap",
-      "audio/audio_js_standard/AudioTonePlayer:audio_tone_player_js_hap",
       "audio/audio_js_standard/audioInterrupt:audio_interrupt_js_hap",
       "audio/audio_js_standard/audioInterruptRender:audioRenderInterrupt",
       "audio/audio_js_standard/audioManager:audio_manager_js_hap",
@@ -59,11 +58,7 @@ group("multimedia") {
       "medialibrary/mediaLibrary_fileResult:mediaLibrary_fileResult_hap",
       "medialibrary/mediaLibrary_getThumbnail:mediaLibrary_getThumbnail_hap",
       "medialibrary/mediaLibrary_mediafetchoptions:mediaLibrary_mediafetchoptions_hap",
-      "medialibrary/mediaLibrary_trash:mediaLibrary_trash_js_hap",
-      "userfilemgr/userfilemgr_album:userfilemgr_album_js_hap",
-      "userfilemgr/userfilemgr_base:userfilemgr_base_js_hap",
-      "userfilemgr/userfilemgr_fileAsset:userfilemgr_fileAsset_js_hap",
-      "userfilemgr/userfilemgr_noPermission:userfilemgr_noPermission_js_hap",
+      "medialibrary/mediaLibrary_trash:mediaLibrary_trash_js_hap"
     ]
   } else {
     deps = [
