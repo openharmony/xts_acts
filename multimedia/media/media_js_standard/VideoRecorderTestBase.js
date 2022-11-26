@@ -64,17 +64,17 @@ export async function stopCaptureSession(captureSession) {
 export function getTrackArray(videoType, recorderConfigFile, sourceType) {
     if (videoType == AUDIO_VIDEO_TYPE) {
         let audioTrack = new Array(recorderConfigFile.audioBitrate, recorderConfigFile.audioChannels,
-                                   'audio/mpeg', recorderConfigFile.audioSampleRate);
+                                   'audio/mp4a-latm', recorderConfigFile.audioSampleRate);
         let videoTrack = null;
         if (sourceType == media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES) {
-            videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
+            videoTrack = new Array('video/avc', recorderConfigFile.videoFrameHeight,
             recorderConfigFile.videoFrameWidth);
         } else {
             if (recorderConfigFile.videoCodec == 'video/avc') {
-                videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
+                videoTrack = new Array('video/avc', recorderConfigFile.videoFrameHeight,
                 recorderConfigFile.videoFrameWidth);
             } else {
-                videoTrack = new Array('video/mpeg', recorderConfigFile.videoFrameHeight,
+                videoTrack = new Array('video/mp4v-es', recorderConfigFile.videoFrameHeight,
                 recorderConfigFile.videoFrameWidth);
             }
         }
@@ -83,14 +83,14 @@ export function getTrackArray(videoType, recorderConfigFile, sourceType) {
     } else if (videoType == ONLYVIDEO_TYPE) {
         let videoTrack = null;
         if (sourceType == media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES) {
-            videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
+            videoTrack = new Array('video/avc', recorderConfigFile.videoFrameHeight,
             recorderConfigFile.videoFrameWidth);
         } else {
             if (recorderConfigFile.videoCodec == 'video/avc') {
-                videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
+                videoTrack = new Array('video/avc', recorderConfigFile.videoFrameHeight,
                 recorderConfigFile.videoFrameWidth);
             } else {
-                videoTrack = new Array('video/mpeg', recorderConfigFile.videoFrameHeight,
+                videoTrack = new Array('video/mp4v-es', recorderConfigFile.videoFrameHeight,
                 recorderConfigFile.videoFrameWidth);
             }
         }
@@ -98,7 +98,7 @@ export function getTrackArray(videoType, recorderConfigFile, sourceType) {
         return trackArray;
     } else {
         let audioTrack = new Array(recorderConfigFile.audioEncodeBitRate, recorderConfigFile.numberOfChannels,
-            'audio/mpeg', recorderConfigFile.audioSampleRate);
+            'audio/mp4a-latm', recorderConfigFile.audioSampleRate);
         let trackArray = new Array(audioTrack);
         return trackArray;
     }

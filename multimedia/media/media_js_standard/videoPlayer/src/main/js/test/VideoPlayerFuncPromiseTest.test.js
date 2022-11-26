@@ -480,8 +480,8 @@ describe('VideoPlayerFuncPromiseTest', function () {
                                       'track_index', 'track_type', 'width');
         let audioTrackKey = new Array('bitrate', 'channel_count', 'codec_mime', 'sample_rate',
                                       'track_index', 'track_type');
-        let videoTrackValue = new Array(1366541, 'video/x-h264', 6000, 480, 0, 1, 720);
-        let audioTrackValue = new Array(129207, 2, 'audio/mpeg', 44100, 1, 0);
+        let videoTrackValue = new Array(1366541, 'video/avc', 6000, 480, 0, 1, 720);
+        let audioTrackValue = new Array(129207, 2, 'audio/mp4a-latm', 44100, 1, 0);
         let descriptionKey = new Array(videoTrackKey, audioTrackKey);
         let descriptionValue = new Array(videoTrackValue, audioTrackValue);
         await media.createVideoPlayer().then((video) => {
