@@ -14,8 +14,6 @@
  */
 
 import imageColorSpace from "./colorspace.test.js";
-import ImageP3 from "./P3.test.js";
 export default function testsuite() {
     imageColorSpace();
-    ImageP3();
 }
