@@ -307,10 +307,29 @@ describe('PowerManagerRunningLockTest', function () {
 
     /**
      * @tc.number SUB_PowerSystem_PowerManager_JSTest_0140
+     * @tc.name Create_Running_Lock_Promise_Invalid_JSTest0130
+     * @tc.desc Create lock input invalid value
+     */
+    it('Create_Running_Lock_Promise_Invalid_JSTest0130', 0, async function (done) {
+        try {
+            runningLock.create(0, runningLock.RunningLockType.BACKGROUND)
+                .then((runninglock) => {
+                    expect().assertFail();
+                })
+        } catch (e) {
+            console.info('Create_Running_Lock_Promise_Invalid_JSTest0130 code:' + e.code + "msg:" + e.message);
+            // 401: Invalid input parameter
+            expect(e.code === 401).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0140
      * @tc.name Create_Running_Lock_Callback_JSTest0140
      * @tc.desc Create lock callback
      */
-     it('Create_Running_Lock_Callback_JSTest0140', 0, async function (done) {
+    it('Create_Running_Lock_Callback_JSTest0140', 0, async function (done) {
         try {
             runningLock.create("Create_Running_Lock_Callback_JSTest0140", runningLock.RunningLockType.BACKGROUND,
                 (error, runninglock) => {
@@ -321,6 +340,25 @@ describe('PowerManagerRunningLockTest', function () {
         } catch (e) {
             console.info('Create_Running_Lock_Callback_JSTest0230 error:' + e);
             expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0150
+     * @tc.name Create_Running_Lock_Callback_JSTest0150
+     * @tc.desc Create lock input invalid value
+     */
+     it('Create_Running_Lock_Callback_Invalid_JSTest0150', 0, async function (done) {
+        try {
+            runningLock.create("Create_Running_Lock_Callback_Invalid_JSTest0150", "invalid",
+                (error, runninglock) => {
+                    expect().assertFail();
+                });
+        } catch (e) {
+            console.info('Create_Running_Lock_Callback_Invalid_JSTest0150 code:' + e.code + "msg:" + e.message);
+            // 401: Invalid input parameter
+            expect(e.code === 401).assertTrue();
         }
         done();
     })

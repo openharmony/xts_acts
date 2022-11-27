@@ -115,7 +115,7 @@ describe('MultimodalInput_Device_test', function () {
               || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
               || res.axisRanges[j].axis == 'NULL').assertTrue();
               expect(res.axisRanges[j].max).assertInstanceOf('Number');
-              expect(res.axisRanges[j]).assertInstanceOf('AxisRange');
+              expect(res.axisRanges[j]).assertInstanceOf('Object');
               expect(res.axisRanges[j].min).assertInstanceOf('Number');
               expect(res.axisRanges[j].fuzz).assertInstanceOf('Number');
               expect(res.axisRanges[j].flat).assertInstanceOf('Number');
@@ -346,7 +346,7 @@ describe('MultimodalInput_Device_test', function () {
     function listener(data) {
       console.info("type: " + data.type + ", deviceId: " + data.deviceId);
       expect(data.type== 'add' || data.type== 'remove').assertTrue();
-      expect(data).assertInstanceOf('DeviceListener');
+      expect(data).assertInstanceOf('Object');
     }
     // 单独取消listener的监听。
     inputDevice.off("change", listener);
@@ -437,7 +437,7 @@ describe('MultimodalInput_Device_test', function () {
               || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
               || res.axisRanges[j].axis == 'NULL').assertTrue();
               expect(res.axisRanges[j].max).assertInstanceOf('Number');
-              expect(res.axisRanges[j]).assertInstanceOf('AxisRange');
+              expect(res.axisRanges[j]).assertInstanceOf('Object');
               expect(res.axisRanges[j].min).assertInstanceOf('Number');
               expect(res.axisRanges[j].fuzz).assertInstanceOf('Number');
               expect(res.axisRanges[j].flat).assertInstanceOf('Number');
@@ -493,7 +493,7 @@ describe('MultimodalInput_Device_test', function () {
               || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
               || res.axisRanges[j].axis == 'NULL').assertTrue();
               expect(res.axisRanges[j].max).assertInstanceOf('Number');
-              expect(res.axisRanges[j]).assertInstanceOf('AxisRange');
+              expect(res.axisRanges[j]).assertInstanceOf('Object');
               expect(res.axisRanges[j].min).assertInstanceOf('Number');
               expect(res.axisRanges[j].fuzz).assertInstanceOf('Number');
               expect(res.axisRanges[j].flat).assertInstanceOf('Number');

@@ -252,6 +252,19 @@ export default function nativeApiStringJsunit() {
        expect(value).assertEqual(0)
        done();
     });
+	
+	/**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0018
+     * @tc.name      napiGetTypedarrayInfo
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('napiGetTypedarrayInfo018', 0, async function (done) {
+       console.info('napiFatalerror START');
+       value = napitest.napiGetTypedarrayInfo();
+       console.info('napiGetTypedarrayInfo testString result is: ' + JSON.stringify(value));
+       expect(value).assertEqual(0)
+       done();
+    });
 
   })
 }

@@ -427,7 +427,7 @@ export default function ActsAccountSetAppAccess() {
                 expect(err).assertEqual(null);
                 appAccountManager.setAppAccess("AppAccess_callback_account", enableBundle, false, (err)=>{
                     console.debug("====>setAppAccess ActsAccountSetAppAccess_1500 err:" + JSON.stringify(err));
-                    expect(err.code == 12400001).assertEqual(true);
+                    expect(err).assertEqual(null);
                     appAccountManager.removeAccount("AppAccess_callback_account", (err)=>{
                         console.debug("====>delete Account ActsAccountSetAppAccess_1500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -459,17 +459,17 @@ export default function ActsAccountSetAppAccess() {
             }
             console.debug("====>disableAppAccess ActsAccountSetAppAccess_1600 start====");
             try{
-                await appAccountManager.setAppAccess("AppAccess_promise_account", enableBundle,false);
+                await appAccountManager.setAppAccess("AppAccess_promise_account", enableBundle, false);
+            }
+            catch(err){
+                console.debug("====>disableAppAccess ActsAccountSetAppAccess_1800 err:" + JSON.stringify(err));
+                await appAccountManager.removeAccount("AppAccess_promise_account");
                 expect().assertFail();                
                 done();
             }
-            catch(err){
-                console.debug("====>disableAppAccess ActsAccountSetAppAccess_1600 err:" + JSON.stringify(err));
-                expect(err.code == 12400001).assertEqual(true);
-                await appAccountManager.removeAccount("AppAccess_promise_account");
-                console.debug("====>ActsAccountSetAppAccess_1600 end====");
-                done();
-            }
+            await appAccountManager.removeAccount("AppAccess_promise_account");
+            console.debug("====>ActsAccountSetAppAccess_1600 end====");
+            done();
         });
 
         /*
@@ -486,7 +486,7 @@ export default function ActsAccountSetAppAccess() {
                 console.debug("====>add account ActsAccountSetAppAccess_1700 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.setAppAccess("AppAccess_callback_notExistBundle", notExistBundle, false, (err)=>{
-                    expect(err.code == 12400001).assertEqual(true);
+                    expect(err).assertEqual(null);
                     appAccountManager.removeAccount("AppAccess_callback_notExistBundle", (err)=>{
                         console.debug("====>delete Account ActsAccountSetAppAccess_1700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -515,13 +515,15 @@ export default function ActsAccountSetAppAccess() {
             }
             catch(err){
                 console.debug("====>disableAppAccess ActsAccountSetAppAccess_1800 err:" + JSON.stringify(err));
-                expect(err.code == 12400001).assertEqual(true);
-                console.debug("====>delete account ActsAccountSetAppAccess_1800 start====");
-                await appAccountManager.removeAccount("AppAccess_promise_notExistBundle");
-                console.debug("====>ActsAccountSetAppAccess_1600 end====");
+                await appAccountManager.removeAccount("AppAccess_promise_account");
+                expect().assertFail();                
                 done();
             }
-        });
+            console.debug("====>delete account ActsAccountSetAppAccess_1800 start====");
+            await appAccountManager.removeAccount("AppAccess_promise_notExistBundle");
+            console.debug("====>ActsAccountSetAppAccess_1600 end====");
+            done();
+    });
 
         /*
         * @tc.number    : ActsAccountSetAppAccess_1900

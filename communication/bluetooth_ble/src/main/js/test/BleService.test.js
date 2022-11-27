@@ -413,12 +413,12 @@ describe('bluetoothBLETest1', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService null serviceUuid result : ' + ret);
-        expect(ret).assertTrue();
+        expect(ret).assertFalse();
         await sleep(1000);
         let ret1=gattServer.removeService('');
         await sleep(1000);
         console.info('[bluetooth_js]removeService ret:'+ret1);
-        expect(ret1).assertTrue();
+        expect(ret1).assertFalse();
         done();
     })
 
@@ -451,12 +451,12 @@ describe('bluetoothBLETest1', function() {
         characteristics:characteristics, includeServices:[]};
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService invalid serviceUuid result : ' + ret);
-        expect(ret).assertTrue();
+        expect(ret).assertFalse();
         await sleep(1000);
         let ret1=gattServer.removeService('123@ad');
         await sleep(1000);
         console.info('[bluetooth_js]removeService ret:'+ret1);
-        expect(ret1).assertTrue();
+        expect(ret1).assertFalse();
         done();
     })
 
