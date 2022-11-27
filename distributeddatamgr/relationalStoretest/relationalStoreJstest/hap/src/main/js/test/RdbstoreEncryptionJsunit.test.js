@@ -114,7 +114,6 @@ describe('rdbEncryptTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             })
-            storePromise
             storePromise = null
 
             done()
@@ -139,7 +138,6 @@ describe('rdbEncryptTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             })
-            storePromise
             storePromise = null
 
             done()
