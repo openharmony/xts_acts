@@ -15,9 +15,7 @@
 
 import bluetoothhostTest_host_1 from './BluetoothHfp.test.js'
 import bluetoothhostTest_host_3 from './BluetoothA2dp.test.js'
-import bluetoothhostTest_host_2 from './BluetoothHid.test.js'
 export default function testsuite() {
 bluetoothhostTest_host_1()
 bluetoothhostTest_host_3()
-bluetoothhostTest_host_2()
 }

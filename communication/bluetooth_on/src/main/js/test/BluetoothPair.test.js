@@ -75,7 +75,7 @@ describe('bluetoothhostTest2', function() {
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0100', 0, async function (done) {
         let result = bluetooth.pairDevice("11:22:55:66:33:44");
-        await sleep(12000);
+        await sleep(32000);
         console.info("[bluetooth_js] onStartpair001 -> " + JSON.stringify(result));
         expect(result).assertTrue();
         done()
@@ -243,7 +243,7 @@ describe('bluetoothhostTest2', function() {
         }
         bluetooth.BLE.on('pinRequired', PinRequiredParam);
         let result = bluetooth.pairDevice("11:22:55:66:33:44");
-        await sleep(12000);
+        await sleep(32000);
         console.info("[bluetooth_js] onStartpair007 -> " + JSON.stringify(result));
         expect(result).assertTrue();
         bluetooth.BLE.off('pinRequired', PinRequiredParam);
@@ -266,7 +266,7 @@ describe('bluetoothhostTest2', function() {
         }
         bluetooth.BLE.on('pinRequired', PinRequiredParam);
         let result = bluetooth.pairDevice("11:22:55:66:33:44");
-        await sleep(12000);
+        await sleep(32000);
         console.info("[bluetooth_js] onStartpair008 -> " + JSON.stringify(result));
         expect(result).assertTrue();
         bluetooth.BLE.off('pinRequired', PinRequiredParam);
