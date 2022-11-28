@@ -17,4 +17,6 @@ group("neural_network_runtime") {
     "interface:ActsAiNnrtFunctionTest",
     "stability:ActsAiNnrtStabilityTest",
   ]
+  subsystem_name = "ai"
+  part_name = "neural_network_runtime"
 }
