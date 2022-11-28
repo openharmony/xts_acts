@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "shell-timeout": "600000",
-	"testcase-timeout": "600000",
+        "testcase-timeout": "600000",
         "bundle-name": "ohos.acts.communication.wifi.wifidevice",
         "package-name": "ohos.acts.communication.wifi.wifidevice"
     },
@@ -15,6 +15,15 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff",
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
+
