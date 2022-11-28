@@ -85,18 +85,16 @@ describe('rdbStoreDeleteTest', function () {
         }
         //删除
         {
-            let predicates = await new dataRdb.RdbPredicates('test')
-            let deletePromise = rdbStore.delete(predicates)
-            deletePromise.then(async (ret) => {
+            let predicates = new dataRdb.RdbPredicates('test')
+            rdbStore.delete(predicates).then(async (ret) => {
                 expect(3).assertEqual(ret)
                 console.info(TAG + 'Delete done: ' + ret)
+                done()
+                console.info(TAG + '************* testRdbStoreDelete0001 end *************');
             }).catch((err) => {
                 expect(null).assertFail()
             })
-            await deletePromise
         }
-        done()
-        console.info(TAG + '************* testRdbStoreDelete0001 end *************');
     })
 
     /**
@@ -138,17 +136,15 @@ describe('rdbStoreDeleteTest', function () {
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'zhangsan')
-            let deletePromise = rdbStore.delete(predicates)
-            deletePromise.then(async (ret) => {
-                await expect(1).assertEqual(ret)
-                await console.info(TAG + 'Delete done: ' + ret)
+            rdbStore.delete(predicates).then(async (ret) => {
+                expect(1).assertEqual(ret)
+                console.info(TAG + 'Delete done: ' + ret)
+                done()
+                console.info(TAG + '************* testRdbStoreDelete0002 end *************');
             }).catch((err) => {
                 expect(null).assertFail()
             })
-            await deletePromise
         }
-        done()
-        console.info(TAG + '************* testRdbStoreDelete0002 end *************');
     })
 
     /**
@@ -185,27 +181,24 @@ describe('rdbStoreDeleteTest', function () {
             expect(1).assertEqual(resultSet.rowCount)
         }
         //删除
-        {
-            let predicates = await new dataRdb.RdbPredicates('test')
-            predicates.equalTo('age', 28)
-            let deletePromise = rdbStore.delete(predicates)
-            deletePromise.then(async (ret) => {
-                expect(1).assertEqual(ret)
-                console.info(TAG + 'Delete done: ' + ret)
-            }).catch((err) => {
-                expect(null).assertFail()
-            })
-            await deletePromise
-        }
-        //删除后查询
-        {
+        
+        let predicates = await new dataRdb.RdbPredicates('test')
+        predicates.equalTo('age', 28)
+        rdbStore.delete(predicates).then(async (ret) => {
+            expect(1).assertEqual(ret)
+            console.info(TAG + 'Delete done: ' + ret)
+            //删除后查询
+    
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('age', 28)
             let resultSet = await rdbStore.query(predicates)
             expect(0).assertEqual(resultSet.rowCount)
-        }
-        done()
-        console.info(TAG + '************* testRdbStoreDelete0003 end *************');
+        
+            done()
+            console.info(TAG + '************* testRdbStoreDelete0003 end *************');
+        }).catch((err) => {
+            expect(null).assertFail()
+        })
     })
 
     /**
@@ -247,16 +240,15 @@ describe('rdbStoreDeleteTest', function () {
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('aaa id', 1)
-            let deletePromise = rdbStore.delete(predicates)
-            deletePromise.then(async (ret) => {
+            rdbStore.delete(predicates).then(async (ret) => {
                 console.info(TAG + 'delete done: ' + ret)
                 expect(null).assertFail()
             }).catch((err) => {
                 console.info(TAG + 'delete with wrong conditions')
+                done();
+                console.info(TAG + '************* testRdbStoreDelete0004 end *************');
             })
         }
-        done()
-        console.info(TAG + '************* testRdbStoreDelete0004 end *************');
     })
 
     /**
@@ -298,17 +290,16 @@ describe('rdbStoreDeleteTest', function () {
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'lisi')
-            let deletePromise = rdbStore.delete(predicates)
-            deletePromise.then(async (ret) => {
+            rdbStore.delete(predicates).then(async (ret) => {
                 expect(2).assertEqual(ret)
                 console.info(TAG + 'Delete done: ' + ret)
+                
+                done()
+                console.info(TAG + '************* testRdbStoreDelete0005 end *************');
             }).catch((err) => {
                 expect(null).assertFail()
             })
-            await deletePromise
         }
-        done()
-        console.info(TAG + '************* testRdbStoreDelete0005 end *************');
     })
 
     /**
@@ -350,8 +341,7 @@ describe('rdbStoreDeleteTest', function () {
         //删除
         try{
             let predicates = await new dataRdb.RdbPredicates('')
-            let deletePromise = rdbStore.delete(predicates)
-            deletePromise.then(async (ret) => {
+            rdbStore.delete(predicates).then(async (ret) => {
                 console.info(TAG + 'delete done: ' + ret)
                 expect(null).assertFail()
             }).catch((err) => {
