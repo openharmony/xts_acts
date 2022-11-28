@@ -231,40 +231,62 @@ describe('geolocationTest_geo1', function () {
      */
     it('SUB_HSS_LocationSystem_Geo_0600', 0, async function (done) {
         let reverseGeocodeRequest1 = { "latitude": 90, "longitude": 121.62771, "maxItems": 1 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest1).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation0601 promise: ' + JSON.stringify(data));
-            expect(true).assertEqual((JSON.stringify(data)) != null);
-        }).catch(error => {
-            console.info("[lbs_js] getAddressesFromLocation0601 promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        });
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest1).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation0601 promise: ' + JSON.stringify(data));
+                expect(true).assertEqual((JSON.stringify(data)) != null);
+            }).catch(error => {
+                console.info("[lbs_js] getAddressesFromLocation0601 promise then error." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+                console.info('[lbs_js] not support now');
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation message." + JSON.stringify(error.message));
+            expect(true).assertEqual((JSON.stringify(error.message)) != null);
+        }
+
         let reverseGeocodeRequest2 = { "latitude": 90.1, "longitude": 121.62771, "maxItems": 1 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest2).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation promise: ' + JSON.stringify(data));
-            expect(data.length).assertEqual(0);
-        }).catch(error => {
-            console.info("[lbs_js] getAddressesFromLocation0602 promise then error." + JSON.stringify(error));
-            expect(true).assertEqual((JSON.stringify(error)) != null);
-        });
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest2).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation promise: ' + JSON.stringify(data));
+                expect(data.length).assertEqual(0);
+            }).catch(error => {
+                console.info("[lbs_js] getAddressesFromLocation0602 promise then error." + JSON.stringify(error));
+                expect(true).assertEqual((JSON.stringify(error)) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation message." + JSON.stringify(error.message));
+            expect(true).assertEqual((JSON.stringify(error.message)) != null);
+        }
+
         let reverseGeocodeRequest3 = { "latitude": -90, "longitude": 121.62771, "maxItems": 1 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest3).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation0603 promise: ' + JSON.stringify(data));
-            expect(true).assertEqual((JSON.stringify(data)) != null);
-        }).catch(error => {
-            console.info("[lbs_js] getAddressesFromLocation0603 promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        });
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest3).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation0603 promise: ' + JSON.stringify(data));
+                expect(true).assertEqual((JSON.stringify(data)) != null);
+            }).catch(error => {
+                console.info("[lbs_js] getAddressesFromLocation0603 promise then error." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation message." + JSON.stringify(error.message));
+            expect(true).assertEqual((JSON.stringify(error.message)) != null);
+        }
         let reverseGeocodeRequest4 = { "latitude": -90.1, "longitude": 121.62771, "maxItems": 1 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest4).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation0604 promise: ' + JSON.stringify(data));
-            expect(data.length).assertEqual(0);
-        }).catch(error => {
-            console.info("[lbs_js] getAddressesFromLocation0604 promise then error." + JSON.stringify(error));
-            expect(true).assertEqual((JSON.stringify(error)) != null);
-        });
-        done()
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest4).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation0604 promise: ' + JSON.stringify(data));
+                expect(data.length).assertEqual(0);
+            }).catch(error => {
+                console.info("[lbs_js] getAddressesFromLocation0604 promise then error." + JSON.stringify(error));
+                expect(true).assertEqual((JSON.stringify(error)) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation message." + JSON.stringify(error.message));
+            expect(true).assertEqual((JSON.stringify(error.message)) != null);
+        }
+        done();
     })
 
     /**
@@ -277,40 +299,60 @@ describe('geolocationTest_geo1', function () {
      */
     it('SUB_HSS_LocationSystem_Geo_0700', 0, async function (done) {
         let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 180, "maxItems": 1 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation0701 promise: ' + JSON.stringify(data));
-            expect(true).assertEqual((JSON.stringify(data)) != null);
-        }).catch(error => {
-            console.info("[lbs_js] getAddressesFromLocation0701 promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        });
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation0701 promise: ' + JSON.stringify(data));
+                expect(true).assertEqual((JSON.stringify(data)) != null);
+            }).catch(error => {
+                console.info("[lbs_js] getAddressesFromLocation0701 promise then error." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation message." + JSON.stringify(error.message));
+            expect(true).assertEqual((JSON.stringify(error.message)) != null);
+        }
         let reverseGeocodeRequest1 = { "latitude": 31.265496, "longitude": -180.1, "maxItems": 1 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest1).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation0702 promise: ' + JSON.stringify(data));
-            expect(data.length).assertEqual(0);
-        }).catch(error => {
-            console.info("[lbs_js] getAddressesFromLocation0702 promise then error." + JSON.stringify(error));
-            expect(true).assertEqual((JSON.stringify(error)) != null);
-        });
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest1).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation0702 promise: ' + JSON.stringify(data));
+                expect(data.length).assertEqual(0);
+            }).catch(error => {
+                console.info("[lbs_js] getAddressesFromLocation0702 promise then error." + JSON.stringify(error));
+                expect(true).assertEqual((JSON.stringify(error)) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation message." + JSON.stringify(error.message));
+            expect(true).assertEqual((JSON.stringify(error.message)) != null);
+        }
         let reverseGeocodeRequest2 = { "latitude": 31.265496, "longitude": 180, "maxItems": 1 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest2).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation0703 promise: ' + JSON.stringify(data));
-            expect(true).assertEqual((JSON.stringify(data)) != null);
-        }).catch(error => {
-            console.info("[lbs_js] getAddressesFromLocation0703 promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        });
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest2).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation0703 promise: ' + JSON.stringify(data));
+                expect(true).assertEqual((JSON.stringify(data)) != null);
+            }).catch(error => {
+                console.info("[lbs_js] getAddressesFromLocation0703 promise then error." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation message." + JSON.stringify(error.message));
+            expect(true).assertEqual((JSON.stringify(error.message)) != null);
+        }
         let reverseGeocodeRequest3 = { "latitude": 31.265496, "longitude": 180.1, "maxItems": 1 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest3).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation0704 promise: ' + JSON.stringify(data));
-            expect(data.length).assertEqual(0);
-        }).catch(error => {
-            console.info("[lbs_js] getAddressesFromLocation0704 promise then error." + JSON.stringify(error));
-            expect(true).assertEqual((JSON.stringify(error)) != null);
-        });
-        done()
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest3).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation0704 promise: ' + JSON.stringify(data));
+                expect(data.length).assertEqual(0);
+            }).catch(error => {
+                console.info("[lbs_js] getAddressesFromLocation0704 promise then error." + JSON.stringify(error));
+                expect(true).assertEqual((JSON.stringify(error)) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation message." + JSON.stringify(error.message));
+            expect(true).assertEqual((JSON.stringify(error.message)) != null);
+        }
+        done();
     })
 
     /**
@@ -948,4 +990,5 @@ describe('geolocationTest_geo1', function () {
         done();
     })
 })
+
 
