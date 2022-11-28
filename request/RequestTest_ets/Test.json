@@ -16,8 +16,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/app/el2/100/base/com.acts.requesttest/haps/entry/cache",
-                "echo \"123456\" > /data/app/el2/100/base/com.acts.requesttest/haps/entry/cache/test.txt"
             ]
         }
     ]
