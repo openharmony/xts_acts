@@ -51,5 +51,8 @@ ohos_moduletest_suite("ActsAiNnrtFunctionTest") {
     "mindspore:mindir",
   ]
 
+  subsystem_name = "ai"
+  part_name = "neural_network_runtime"
+
   cflags = [ "-Wno-error" ]
 }
