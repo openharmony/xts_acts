@@ -72,7 +72,6 @@ export default function abilityTest() {
           done();
         }
       });
-      await sleep(10000);
       done();
     })
   })
