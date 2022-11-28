@@ -258,7 +258,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_040
 
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
-    while (aDecEncSample->GetFrameCount() < 350) {};
+    while (aDecEncSample->GetFrameCount() < 50) {};
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->FlushDec());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->FlushEnc());
     aDecEncSample->ReRead();
@@ -361,7 +361,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_060
 
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
-    while (aDecEncSample->GetFrameCount() < 350) {};
+    while (aDecEncSample->GetFrameCount() < 50) {};
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StopDec());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StopEnc());
     aDecEncSample->ReRead();
