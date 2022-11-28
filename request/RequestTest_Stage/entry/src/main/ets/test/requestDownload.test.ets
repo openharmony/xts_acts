@@ -50,19 +50,6 @@ export default function requestDownloadJSUnit() {
     });
 
     let downloadTask;
-    let downloadConfig = {
-      url: 'http://download.ci.openharmony.cn/version/Daily_Version/',
-      header: {
-        headers: 'http'
-      },
-      enableMetered: false,
-      enableRoaming: false,
-      description: 'XTS download test!',
-      networkType: request.NETWORK_WIFI,
-      filePath: 'internal://cache/test.txt',
-      title: 'XTS download test!',
-      background: true
-    }
 
     /**
      * @tc.number    SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001
@@ -73,22 +60,32 @@ export default function requestDownloadJSUnit() {
      */
     it('SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001', 0, async function (done) {
       console.info("====>------------------SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 is starting-----------------------");
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      try {
-        request.download(context, downloadConfig, (err, data)=>{
-          downloadTask = data;
-          console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001.txt`)
+      let downloadConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }      
+      request.downloadFile(globalThis.abilityContext,  downloadConfig, async (err, data)=>{
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
+        try {
           expect(true).assertEqual(downloadTask != undefined);
-        });
-      } catch (err) {
-        console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 error: " + err);
-        expect().assertFail();
-      }
-      setTimeout(()=>{
-        console.info("====>------------------SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 end-----------------------");
+          await downloadTask.delete()
+        } catch (err) {
+          console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 error: " + err);
+        }
         done();
-      },5000)
+      });
       
     });
 
@@ -101,20 +98,31 @@ export default function requestDownloadJSUnit() {
      */
     it('SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001', 0, async function (done) {
       console.info("====>------------------SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 is starting-----------------------");
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      request.download(context, downloadConfig).then(data => {
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001.txt`)
+      let downloadConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext,  downloadConfig).then(async (data) => {
         downloadTask = data;
         console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 downloadTask: " + downloadTask);
-        expect(true).assertEqual(downloadTask != undefined);
+        expect(true).assertEqual(downloadTask != undefined);        
+        await downloadTask.delete()
+        done();
       }).catch(err => {
         console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 error: " + err);
-        expect().assertFail();
-      })
-      setTimeout(()=>{
-        console.info("====>------------------SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 end-----------------------");
         done();
-      },5000)
+      })
     });
 
     /**
@@ -126,10 +134,10 @@ export default function requestDownloadJSUnit() {
      */
     it('SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001', 0, async function (done) {
       console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 is starting-----------------------");
-      let downloadFilePath = `${globalThis.abilityContext.tempDir}/test.txt`
-      console.debug("downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/test.txt`)
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001.txt`)
       let downloadFileConfig = {
-        url: 'http://download.ci.openharmony.cn/version/Daily_Version/',
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
         header: {
           headers: 'http'
         },
@@ -139,24 +147,20 @@ export default function requestDownloadJSUnit() {
         networkType: request.NETWORK_WIFI,
         filePath: downloadFilePath,
         title: 'XTS download test!',
-        background: true
+        background: false
       }
-      try {
-        request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data)=>{
-          downloadTask = data;
-          console.info("SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
-          try{
-            expect(true).assertEqual(downloadTask != undefined);
-          }catch(e){
-            console.info("SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 except error: " + e);
-          }
-        });
-      } catch (err) {
-        console.error("SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 error: " + err);
-        expect().assertFail();
-      }
-      console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 end-----------------------");
-      done();
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, data)=>{
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
+        try{
+          expect(true).assertEqual(downloadTask != undefined);
+          await downloadTask.delete()
+        }catch(e){
+          console.info("====>SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 except error: " + e);
+        }
+        console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 end-----------------------");
+        done();
+      });      
     });
 
     /**
@@ -168,10 +172,10 @@ export default function requestDownloadJSUnit() {
      */
     it('SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001', 0, async function (done) {
       console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
-      let downloadFilePath = `${globalThis.abilityContext.tempDir}/test.txt`
-      console.debug("downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/test.txt`)
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001.txt`)
       let downloadFileConfig = {
-        url: 'http://download.ci.openharmony.cn/version/Daily_Version/',
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
         header: {
           headers: 'http'
         },
@@ -181,27 +185,516 @@ export default function requestDownloadJSUnit() {
         networkType: request.NETWORK_WIFI,
         filePath: downloadFilePath,
         title: 'XTS download test!',
-        background: true
+        background: false
       }
       try{
-        request.downloadFile(globalThis.abilityContext, downloadFileConfig).then(data => {
+        request.downloadFile(globalThis.abilityContext, downloadFileConfig).then(async (data) => {
           downloadTask = data;
-          console.info("SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 downloadTask: " + downloadTask);
-          try{
-            expect(true).assertEqual(downloadTask != undefined);
-          }catch(e){
-            console.info("SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 except error: " + e);
-          }
+          console.info("====>SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 downloadTask: " + downloadTask);
+          expect(true).assertEqual(downloadTask != undefined);
+          await downloadTask.delete()
+          done();
         }).catch(err => {
-          console.error("SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 error: " + err);
-          expect().assertFail();
+          console.error("====>SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 error: " + err);
+          done();
         })
       }catch(err){
-        console.error("SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 catch error: " + err);
+        console.error("====>SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 catch error: " + err);
+        done();
       }
-      console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 end-----------------------");
-      done();
+      
     });
 
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_DELETE_0001
+     * @tc.desc Delete the download task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_DELETE_0001', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_delete_0001 is starting-----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0001.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0001.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_DELETE_0001 downloadTask: " + downloadTask);        
+        try {
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.delete((err, data) => {
+            try{
+              if (err) {
+                console.error('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0001 Failed to delete the download task.');
+                expect().assertFail();
+              }
+              console.info('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0001 Download task delete success.');
+              expect(typeof data == "boolean").assertTrue();
+            }catch(err){
+              console.error('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0001 delete throw error' + err);
+            }
+            done();
+          });
+        } catch (error) {
+          console.error('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0001 delete catch error' + error);
+          done();
+        }
+      })
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_DELETE_0002
+     * @tc.desc Delete the download task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_DELETE_0002', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_DELETE_0002 is starting-----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0002.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0002.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }      
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_DELETE_0002 downloadTask: " + downloadTask);
+        try {
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.delete().then(data => {
+            console.info('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0002 Download task delete success.');
+            expect(data).assertEqual(true);
+            console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_DELETE_0002 end-----------------------");
+            done();
+          }).catch((err) => {
+            console.info('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0002 Failed to delete the download task.');
+            expect().assertFail();
+            done();
+          })
+        } catch (error) {
+          console.error('====>SUB_REQUEST_DOWNLOAD_API_DELETE_0002 delete catch error');
+          done();
+        }        
+      })   
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001
+     * @tc.desc Suspend the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 is starting-----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 downloadTask: " + downloadTask);
+        try{
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.suspend((err, data) => {
+            try{
+              if (err) {
+              console.error('====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 Failed to suspend the download task.');
+              expect().assertFail();
+              }
+              console.info('====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 Download task suspend success.');
+              expect(data == true).assertTrue();
+            }catch(err){
+              console.error("====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 throw_error: " + JSON.stringify(err));
+            }
+            done();
+          });
+        }catch(err){
+          console.error('====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 suspend catch error' + JSON.stringify(err));
+          done();
+        }
+      })
+      
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002
+     * @tc.desc Suspend the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 is starting-----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 downloadTask: " + downloadTask);
+        try{
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.suspend().then(data => {
+            console.info('====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 Download task suspend success.');
+            expect(data == true).assertTrue();
+            done();
+          }).catch((err) => {
+            console.info('====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 throw_err:' + JSON.stringify(err));
+            done();
+          })
+        }catch(err){
+          console.error('====>SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 suspend catch error' + JSON.stringify(err));
+          done();
+        }      
+      })      
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_RESTORE_0001
+     * @tc.desc Restore the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0001', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 is starting-----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0001.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0001.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 downloadTask: " + downloadTask);
+        try{
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.restore((err, data) => {
+            try{
+              if (err) {
+                console.error('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 Failed to restore the download task.');
+                expect().assertFail();
+              }
+              console.info('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 Download  restore success.');
+              expect(data == true).assertTrue();
+            }catch(err){
+              console.info('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 throw_err:' + JSON.stringify(err));
+            }
+            done();
+          });
+        }catch(err){
+          console.error('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 restore catch error' + JSON.stringify(err));
+          done();
+        }     
+      });
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_RESTORE_0002
+     * @tc.desc Restore the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0002', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 is starting-----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0002.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0002.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }   
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 downloadTask: " + downloadTask);
+        try{
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.restore().then(data => {
+            console.info('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 Download task restore.');
+            expect(data == true).assertTrue();
+            done();
+          }).catch((err) => {
+            console.info('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 Failed to restore the download task.');
+            done();
+          });
+        }catch(err){
+          console.error('====>SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 restore catch error' +JSON.stringify(err));
+          done();
+        }    
+      });
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001
+     * @tc.desc Get the download task info
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001', 0, async function (done) {
+      console.info("====>---------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 is starting---------------------"); 
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 downloadTask: " + downloadTask);
+        try{
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.getTaskInfo((err, data) => {
+            try{
+              if (err) {
+                console.error('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 Failed to getTaskInfo the download task.');
+                expect().assertFail();
+              }
+              console.info('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 Download getTaskInfo success.');
+              expect(typeof data == "object").assertTrue();
+            }catch(err){
+              console.error('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 throw_error' +JSON.stringify(err));
+            }  
+            done();          
+          });
+        }catch(err){
+          console.error('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 getTaskInfo catch error' + JSON.stringify(err));
+          done();
+        }
+      });      
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002
+     * @tc.desc Get the download task info
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002', 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 is starting----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 downloadTask: " + downloadTask);        
+        try{
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.getTaskInfo().then(data => {
+            console.info('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 Download task getTaskInfo success.');
+            expect(typeof data == "object").assertTrue();
+            done();
+          }).catch((err) => {
+            console.error('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 Failed to getTaskInfo the download task.');            
+            done();
+          });
+        }catch(err){
+          console.error('====>SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 getTaskInfo catch error' + JSON.stringify(err));
+          done();
+        }
+      });      
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001
+     * @tc.desc Get mimetype of the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001', 0, async function (done) {
+      console.info("====>---------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 is starting---------------------"); 
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 downloadTask: " + downloadTask);
+        try{
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.on('progress',(data1, data2) => {
+            try{
+              if (data1 > 0){
+                downloadTask.getTaskMimeType(async (err, data)=>{
+                  try{
+                    if(err) {
+                      console.error('====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 err:'+ JSON.stringify(err));
+                      expect().assertFail();
+                      done();
+                    }
+                    if (data) {
+                      console.info('====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 data:' + JSON.stringify(data));
+                      expect(typeof data == "string").assertTrue();
+                    } else {
+                      console.error("====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 error: " + JSON.stringify(err));
+                      expect().assertFail(); 
+                    }
+                  }catch(err){
+                    console.error("====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 throw_error: " + JSON.stringify(err));
+                  }
+                  setTimeout(()=>{
+                    done();
+                  },1000)             
+                });
+              }
+            }catch(err){
+              console.error("====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 error: " + JSON.stringify(err));
+              done();
+            }            
+          })          
+        }catch(err){
+          console.error("====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 error: " + JSON.stringify(err));
+          done();
+        }       
+      })     
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002
+     * @tc.desc Get mimetype of the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002', 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 is starting----------------------"); 
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002.txt`
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002.txt`)
+      let downloadFileConfig = {
+        url: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, data) => {
+        downloadTask = data;
+        console.info("====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 downloadTask: " + downloadTask);
+        try{
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.on('progress', async (data1, data2) => {
+            try{
+              if(data1 > 0){
+                let data = await downloadTask.getTaskMimeType()
+                console.info('====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 data:' + JSON.stringify(data));
+                expect(typeof data == "string").assertTrue();                  
+              }
+              setTimeout(()=>{
+                done();
+              },1000) 
+            }catch(err){
+              console.error("====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 throw_error: " + JSON.stringify(err));
+              done();
+            }            
+          })          
+        }catch(err){
+          console.error("====>SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 error: " + JSON.stringify(err));
+          done();
+        }  
+      })     
+    });
   });
 }
