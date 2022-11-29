@@ -17,7 +17,7 @@ import geolocations from '@system.geolocation';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -67,20 +67,22 @@ async function applyPermission() {
         console.info('[permission] case apply permission failed, createAtManager failed');
     }
 }
+export default function geolocationTest_geo2() {
 
-describe('geolocationTest_geo2', function () {
-    beforeAll(async function (done) {
-        console.info('beforeAll case');
-        await applyPermission();
-        done();
-    })
-    beforeEach(async function (done) {
-        console.info('beforeEach case');
-        await changedLocationMode();
-        done()
-    })
-    afterEach(function () {
-    })
+    describe('geolocationTest_geo2', function () {
+        beforeAll(async function (done) {
+            console.info('beforeAll case');
+            await applyPermission();
+            done();
+        })
+        beforeEach(async function (done) {
+            console.info('beforeEach case');
+            await changedLocationMode();
+            done()
+        })
+        afterEach(function () {
+        })
+
 
     /**
      * @tc.number SUB_HSS_LocationSystem_systemapi_0100
@@ -90,7 +92,7 @@ describe('geolocationTest_geo2', function () {
      * @tc.type Function
      * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_systemapi_0100', 0, async function (done) {
+     it('SUB_HSS_LocationSystem_systemapi_0100', 0, async function (done) {
         geolocations.getLocation({
             timeout:30000,
             coordType:'wgs84',
@@ -191,7 +193,10 @@ describe('geolocationTest_geo2', function () {
         expect(true).assertEqual(types.length !=0);
 
     })
-})
+
+    })
+}
+
 
 
 
