@@ -89,7 +89,7 @@ describe('bluetoothBLETest2', function() {
           serviceValueBuffer[3] = 8;
           let setting={
                interval:150,
-               txPower:60,
+               txPower:-10,
                connectable:true,
           }
           let advData={
@@ -145,7 +145,7 @@ describe('bluetoothBLETest2', function() {
           serviceValueBuffer[3] = 8;
           let setting={
                interval:20,
-               txPower:60,
+               txPower:-10,
                connectable:true,
           }
           let advData={
@@ -200,8 +200,8 @@ describe('bluetoothBLETest2', function() {
           serviceValueBuffer[2] = 7;
           serviceValueBuffer[3] = 8;
           let setting={
-               interval:16385,
-               txPower:60,
+               interval:10485,
+               txPower:-10,
                connectable:true,
           }
           let advData={
@@ -256,8 +256,8 @@ describe('bluetoothBLETest2', function() {
           serviceValueBuffer[2] = 7;
           serviceValueBuffer[3] = 8;
           let setting={
-               interval:16400,
-               txPower:60,
+               interval:10500,
+               txPower:-10,
                connectable:true,
           }
           let advData={
@@ -313,7 +313,7 @@ describe('bluetoothBLETest2', function() {
           serviceValueBuffer[3] = 8;
           let setting={
                interval:19,
-               txPower:60,
+               txPower:-10,
                connectable:true,
           }
           let advData={
@@ -705,7 +705,7 @@ describe('bluetoothBLETest2', function() {
           serviceValueBuffer[3] = 8;
           let setting={
                interval:1000,
-               txPower:70,
+               txPower:-7,
                connectable:true,
           }
           let advData={
@@ -761,7 +761,7 @@ describe('bluetoothBLETest2', function() {
           serviceValueBuffer[3] = 8;
           let setting={
                interval:1000,
-               txPower:70,
+               txPower:-7,
                connectable:true,
           }
           let advData={
@@ -976,3 +976,4 @@ describe('bluetoothBLETest2', function() {
 })
 
 }
+

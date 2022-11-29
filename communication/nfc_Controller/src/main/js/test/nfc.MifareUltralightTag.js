@@ -52,10 +52,10 @@ export default function nfcMifareUltralightTag() {
             console.info('[NFC_test]beforeAll called')
         })
         beforeEach(function() {
-            try{
+            try {
                 MifareUltralightTag = tag.getMifareUltralight(mifareUltralightTaginfo);
                 console.info(' mifareUltralight is' + mifareUltralight)
-            }catch(error){
+            } catch (error) {
                 console.info(' mifareUltralight error' + error)
             }
             console.info('[NFC_test]beforeEach called')
@@ -77,19 +77,22 @@ export default function nfcMifareUltralightTag() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareUltralight_0100', 0, async function (done) {
-
-
-            let pageIndex = 1;
-            await MifareUltralightTag.readMultiplePages(pageIndex).then((data) => {
-                console.info("mifareUltralight readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
-                expect(true).assertTrue(data >= 0);
-                done();
-            }).catch((err)=> {
-                console.info("mifareUltralight readMultiplePages1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
+            if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
+                let pageIndex = 1;
+                await MifareUltralightTag.readMultiplePages(pageIndex).then((data) => {
+                    console.info("mifareUltralight readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    expect(data >= 0).assertTrue();
+                    done();
+                }).catch((err)=> {
+                    console.info("mifareUltralight readMultiplePages1 err: " + err);
+                    expect(true).assertEqual(true);
+                    done();
+                });
+                sleep(3000);
+            } else {
+                console.info("[NFC_test]mifareUltralight1 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -102,18 +105,23 @@ export default function nfcMifareUltralightTag() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareUltralight_0200', 0, async function (done) {
-            let pageIndex = 1;
-            MifareUltralightTag.readMultiplePages(pageIndex, (err, data)=> {
-                if (err) {
-                    console.info("mifareUltralight readMultiplePages2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info("mifareUltralight readMultiplePages2 data: " + data + "json2:" + JSON.stringify(data));
-                    expect(true).assertTrue(data >= 0);
-                }
-            });
-            sleep(3000);
-            done();
+            if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
+                let pageIndex = 1;
+                MifareUltralightTag.readMultiplePages(pageIndex, (err, data)=> {
+                    if (err) {
+                        console.info("mifareUltralight readMultiplePages2 err: " + err);
+                        expect(true).assertEqual(true);
+                    } else {
+                        console.info("mifareUltralight readMultiplePages2 data: " + data + "json2:" + JSON.stringify(data));
+                        expect(data >= 0).assertTrue();
+                    }
+                });
+                sleep(3000);
+                done();
+            } else {
+                console.info("[NFC_test]mifareUltralight2 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
         
         /**
@@ -126,18 +134,23 @@ export default function nfcMifareUltralightTag() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareUltralight_0300', 0, async function (done) {
-            let pageIndex = 1;
-            let rawData = [0x01, 0x02];
-            await MifareUltralightTag.writeSinglePage(pageIndex, rawData).then((data) => {
-                console.log("mifareUltralight writeSinglePages1 data: " + data + "json1:" + JSON.stringify(data));
-                expect(true).assertTrue(data >= 0);
-                done();
-            }).catch((err)=> {
-                console.log("mifareUltralight writeSinglePages1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
+            if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
+                let pageIndex = 1;
+                let rawData = [0x01, 0x02];
+                await MifareUltralightTag.writeSinglePage(pageIndex, rawData).then((data) => {
+                    console.log("mifareUltralight writeSinglePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    expect(data >= 0).assertTrue();
+                    done();
+                }).catch((err)=> {
+                    console.log("mifareUltralight writeSinglePages1 err: " + err);
+                    expect(true).assertEqual(true);
+                    done();
+                });
+                sleep(3000);
+            } else {
+                console.info("[NFC_test]mifareUltralight3 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -150,19 +163,24 @@ export default function nfcMifareUltralightTag() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareUltralight_0400', 0, async function (done) {
-            let pageIndex = 1;
-            let rawData = [0x01, 0x02];
-            MifareUltralightTag.writeSinglePage(pageIndex, rawData, (err, data)=> {
-                if (err) {
-                    console.log("mifareUltralight writeSinglePages2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.log("mifareUltralight writeSinglePages2 data: " + data + "json2:" + JSON.stringify(data));
-                    expect(true).assertTrue(data >= 0);
-                }
-            });
-            sleep(3000);
-            done();
+            if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
+                let pageIndex = 1;
+                let rawData = [0x01, 0x02];
+                MifareUltralightTag.writeSinglePage(pageIndex, rawData, (err, data)=> {
+                    if (err) {
+                        console.log("mifareUltralight writeSinglePages2 err: " + err);
+                        expect(true).assertEqual(true);
+                    } else {
+                        console.log("mifareUltralight writeSinglePages2 data: " + data + "json2:" + JSON.stringify(data));
+                        expect(data >= 0).assertTrue();
+                    }
+                });
+                sleep(3000);
+                done();
+            } else {
+                console.info("[NFC_test]mifareUltralight4 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -175,13 +193,19 @@ export default function nfcMifareUltralightTag() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareUltralight_0500', 0, function ()  {
-            let getType = MifareUltralightTag.getType();
-            console.info("mifareUltralight getType: " + getType);
-            expect(true).assertTrue(getType >= -1);
+            if (MifareUltralightTag != null && MifareUltralightTag != undefined) {
+                let getType = MifareUltralightTag.getType();
+                console.info("mifareUltralight getType: " + getType);
+                expect(getType >= -1).assertTrue();
+            } else {
+                console.info("[NFC_test]mifareUltralight5 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })	
 
 }
+
 

@@ -15,15 +15,7 @@
 
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-let ScanMode =
-    {
-        SCAN_MODE_NONE : 0,
-        SCAN_MODE_CONNECTABLE : 1,
-        SCAN_MODE_GENERAL_DISCOVERABLE : 2,
-        SCAN_MODE_LIMITED_DISCOVERABLE : 3,
-        SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE : 4,
-        SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE : 5,
-    }
+
 export default function bluetoothhostTest2() {
 describe('bluetoothhostTest2', function() {
     function sleep(delay) {
@@ -82,11 +74,11 @@ describe('bluetoothhostTest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_ScanMode_0100', 0, async function (done) {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0100 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_NONE,0);
+        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_NONE,0);
         expect(result).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0100 newscanmode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_NONE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_NONE);
         result=bluetooth.setBluetoothScanMode(oldScanMode,0);
         expect(result).assertTrue();
         let getOldScanMode = bluetooth.getBluetoothScanMode();
@@ -107,11 +99,11 @@ describe('bluetoothhostTest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_ScanMode_0200', 0, async function (done) {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0200 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,0);
+        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,0);
         expect(result).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0200 newscanmode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE);
         result=bluetooth.setBluetoothScanMode(oldScanMode,0);
         expect(result).assertTrue();
         let getOldScanMode = bluetooth.getBluetoothScanMode();
@@ -132,11 +124,11 @@ describe('bluetoothhostTest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_ScanMode_0300', 0, async function (done) {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0200 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,40000);
+        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,40000);
         expect(result).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0200 getScanMode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE);
         result=bluetooth.setBluetoothScanMode(oldScanMode,0);
         expect(result).assertTrue();
         let getOldScanMode = bluetooth.getBluetoothScanMode();
@@ -157,11 +149,11 @@ describe('bluetoothhostTest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_ScanMode_0400', 0, async function (done) {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0400 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE,40000);
+        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE,40000);
         expect(result).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0400 getScanMode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE);
         result=bluetooth.setBluetoothScanMode(oldScanMode,0);
         expect(result).assertTrue();
         let getOldScanMode = bluetooth.getBluetoothScanMode();
@@ -181,11 +173,11 @@ describe('bluetoothhostTest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_ScanMode_0500', 0, async function (done) {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0500 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE,0);
+        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE,0);
         expect(result).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0500 getScanMode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE);
         result=bluetooth.setBluetoothScanMode(oldScanMode,0);
         expect(result).assertTrue();
         let getOldScanMode = bluetooth.getBluetoothScanMode();
@@ -206,11 +198,11 @@ describe('bluetoothhostTest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_ScanMode_0600', 0, async function (done) {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0600 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE,0);
+        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE,0);
         expect(result).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0600 getScanMode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE);
         result=bluetooth.setBluetoothScanMode(oldScanMode,0);
         expect(result).assertTrue();
         let getOldScanMode = bluetooth.getBluetoothScanMode();
@@ -231,11 +223,11 @@ describe('bluetoothhostTest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_ScanMode_0700', 0, async function (done) {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0700 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE,20000);
+        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE,20000);
         expect(result).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0700 getScanMode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE);
         result=bluetooth.setBluetoothScanMode(oldScanMode,0);
         expect(result).assertTrue();
         let getOldScanMode = bluetooth.getBluetoothScanMode();
@@ -256,11 +248,11 @@ describe('bluetoothhostTest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_ScanMode_0800', 0, async function (done) {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0800 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE,0);
+        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE,0);
         expect(result).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0800 getScanMode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE);
         result=bluetooth.setBluetoothScanMode(oldScanMode,0);
         expect(result).assertTrue();
         let getOldScanMode = bluetooth.getBluetoothScanMode();
@@ -281,11 +273,11 @@ describe('bluetoothhostTest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_ScanMode_0900', 0, async function (done) {
         let oldScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0900 oldScanMode = '+ JSON.stringify(oldScanMode));
-        let result = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE,30000);
+        let result = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE,30000);
         expect(result).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] ScanMode_0900 getScanMode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE);
         result=bluetooth.setBluetoothScanMode(oldScanMode,0);
         expect(result).assertTrue();
         let getOldScanMode = bluetooth.getBluetoothScanMode();
@@ -316,4 +308,5 @@ describe('bluetoothhostTest2', function() {
 
 })
 }
+
 
