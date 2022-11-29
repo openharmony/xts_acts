@@ -15,8 +15,14 @@ import("//build/ohos_var.gni")
 group("location") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "geolocation_standard:ActslocationJsTest" ]
+    deps = [
+      "geolocation_errorCode:ActslocationErrorCodeTest",
+      "geolocation_standard:ActslocationJsTest",
+    ]
   } else {
-    deps = [ "geolocation_standard:ActslocationJsTest" ]
+    deps = [
+      "geolocation_errorCode:ActslocationErrorCodeTest",
+      "geolocation_standard:ActslocationJsTest",
+    ]
   }
 }
