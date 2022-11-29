@@ -15,8 +15,6 @@ group("msdp") {
   testonly = true
 
   if (is_standard_system) {
-    deps = [
-        "msdpdevicestatus:msdp_devicestatus_test",
-    ]
+    deps = [ "msdpdevicestatus:msdp_devicestatus_test" ]
   }
 }
