@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Copyright (C) 2022 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -21,6 +21,9 @@ ohos_js_hap_suite("msdp_devicestatus_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsMsdpDeviceStatusTest"
+
+  subsystem_name = "msdp"
+  part_name = "devicestatus"
 }
 ohos_js_assets("msdp_devicestatus_js_assets") {
   source_dir = "./src/main/js/default"
