@@ -23,7 +23,7 @@ ohos_js_hap_suite("msdp_devicestatus_test") {
   hap_name = "ActsMsdpDeviceStatusTest"
 
   subsystem_name = "msdp"
-  part_name = "devicestatus"
+  part_name = "device_status"
 }
 ohos_js_assets("msdp_devicestatus_js_assets") {
   source_dir = "./src/main/js/default"
