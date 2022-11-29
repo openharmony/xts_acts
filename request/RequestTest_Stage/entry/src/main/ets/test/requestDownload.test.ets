@@ -75,7 +75,7 @@ export default function requestDownloadJSUnit() {
         title: 'XTS download test!',
         background: false
       }      
-      request.downloadFile(globalThis.abilityContext,  downloadConfig, async (err, data)=>{
+      request.download(globalThis.abilityContext,  downloadConfig, async (err, data)=>{
         downloadTask = data;
         console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
         try {
@@ -113,7 +113,7 @@ export default function requestDownloadJSUnit() {
         title: 'XTS download test!',
         background: false
       }
-      request.downloadFile(globalThis.abilityContext,  downloadConfig).then(async (data) => {
+      request.download(globalThis.abilityContext,  downloadConfig).then(async (data) => {
         downloadTask = data;
         console.info("====>SUB_REQUEST_DOWNLOAD_STAGE_API_PROMISE_0001 downloadTask: " + downloadTask);
         expect(true).assertEqual(downloadTask != undefined);        
