@@ -1575,19 +1575,8 @@ export default function cameraSessionTest(surfaceId: any) {
 
                         await mCameraSession.start();
 
-                        await beginCameraSessionConfig();
-        
-                        mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_AUTO);
-
-                        await commitCameraSessionConfig();
-
-                        await sleep(100);
-
-                        await beginCameraSessionConfig();
-        
-                        mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
-
-                        await commitCameraSessionConfig();
+                        await mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_AUTO);
+                        await mCameraSession.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
         
                         await sleep(100);
         
