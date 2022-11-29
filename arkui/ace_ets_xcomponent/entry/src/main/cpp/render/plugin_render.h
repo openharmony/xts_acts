@@ -29,6 +29,7 @@ public:
     explicit PluginRender(std::string& id);
     static PluginRender* GetInstance(std::string& id);
     static OH_NativeXComponent_Callback* GetNXComponentCallback();
+    static OH_NativeXComponent_MouseEvent_Callback* GetNXComponentMouseEventCallback();
 
     void SetNativeXComponent(OH_NativeXComponent* component);
 
@@ -50,7 +51,11 @@ public:
     static napi_value TestGetXComponentOffset_x(napi_env env, napi_callback_info info);
     static napi_value TestGetXComponentOffset_y(napi_env env, napi_callback_info info);
     static napi_value TestGetXComponent_TouchEvent(napi_env env, napi_callback_info info);
-
+    static napi_value TestGetXComponent_MouseEvent(napi_env env, napi_callback_info info);
+    static napi_value TestGetXComponentpointtool_tiltx(napi_env env, napi_callback_info info);
+    static napi_value TestGetXComponentpointtool_tilty(napi_env env, napi_callback_info info);
+    static napi_value TestGetXComponentpointtool_type(napi_env env, napi_callback_info info);
+    static napi_value TestGetXComponent_RegisterMouseEventCallback(napi_env env, napi_callback_info info);
     // Callback, called by ACE XComponent
     void OnSurfaceCreated(OH_NativeXComponent* component, void* window);
 
@@ -68,10 +73,16 @@ public:
     static uint32_t isCreated_;
     static uint32_t xcHeight_;
     static uint32_t xcWidth_;
+    static uint32_t toolType_;
+    static float tiltX_;
+    static float tiltY_;
+    static uint32_t mousecallback_;
     static double off_x;
     static double off_y;
     static uint32_t touchType;
     static OH_NativeXComponent_TouchEvent testTouchEvent_;
+    static OH_NativeXComponent_MouseEvent testMouseEvent_;
+    static OH_NativeXComponent_MouseEvent_Callback mouseEventcallback_;
 
     OH_NativeXComponent* component_;
     EGLCore* eglCore_;
@@ -83,6 +94,7 @@ public:
     double x_;
     double y_;
     OH_NativeXComponent_TouchEvent touchEvent_;
+    OH_NativeXComponent_MouseEvent mouseEvent_;
 };
 
 #endif // _PLUGIN_RENDER_H_
