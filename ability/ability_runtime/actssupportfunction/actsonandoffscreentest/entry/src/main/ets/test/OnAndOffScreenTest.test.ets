@@ -80,6 +80,7 @@ export default function OnAndOffScreenTest() {
       })
 
       if (!status) {
+        await sleep(500)
         let cmd = "uinput -K -d 18 -u 18";
         await executeShellCommand(cmd, TAG1);
         await slideScreen(TAG1);
@@ -459,6 +460,7 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onForeground2) {
+            await sleep(500)
             let cmd = "uinput -K -d 18 -u 18";
             await executeShellCommand(cmd, TAG);
           }
@@ -561,6 +563,7 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onForeground2 && !flag) {
+            await sleep(500)
             let cmd = "uinput -K -d 18 -u 18";
             await executeShellCommand(cmd, TAG);
             flag = true;
@@ -576,6 +579,7 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onBackground2) {
+            await sleep(500)
             let cmd = "uinput -K -d 18 -u 18";
             await executeShellCommand(cmd, TAG);
             await slideScreen(TAG);
