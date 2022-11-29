@@ -100,7 +100,7 @@ struct Index {
                 }).
                onWindowNew((event) => {
                 console.log("onWindowNew...");
-                var popController: WebController = new WebController();
+                var popController: web_webview.WebviewController = new web_webview.WebviewController();
                 event.handler.setWebController(popController);
                 setTimeout(()=>{
                     Utils.emitEvent(this.isVoid,801)
