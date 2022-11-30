@@ -42,6 +42,60 @@ export default function actsBmsJsUnPermissionTest() {
               })
         });
 
+        /**
+        * @tc.number    getApplicationInfos_1300
+        * @tc.name      getApplicationInfosUnPermission
+        * @tc.desc      test getAllApplicationInfo 
+        */
+        it('getApplicationInfosUnPermission', 0, async function (done) {
+            await bundle.getAllApplicationInfo(DEFAULT_FLAG).then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err.code).assertEqual(INVALID_CODE);
+            });
+            bundle.getAllApplicationInfo(DEFAULT_FLAG, (err, data) => {
+                expect(err.code).assertEqual(INVALID_CODE);
+                expect(data).assertEqual(undefined);
+                done();
+            });
+        });
+
+        /**
+        * @tc.number    getBundleInfo_2000
+        * @tc.name      getBundleInfoUnPermission
+        * @tc.desc      test getBundleInfo
+        */
+        it('getBundleInfoUnPermission', 0, async function (done) {
+            await bundle.getBundleInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, { userId: userId }).then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(INVALID_CODE);
+            });
+            bundle.getBundleInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, { userId: userId }, (err, data) => {
+                expect(err).assertEqual(INVALID_CODE);
+                expect(data).assertEqual(undefined);
+                done();
+            });
+        });
+
+        /**
+        * @tc.number    getApplicationInfo_1800
+        * @tc.name      getApplicationInfoUnPermission
+        * @tc.desc      test getApplicationInfo 
+        */
+        it('getApplicationInfoUnPermission', 0, async function (done) {
+            await bundle.getApplicationInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG).then(data => {
+                expect().assertFail();
+            }).catch(err => {
+                expect(err.code).assertEqual(INVALID_CODE);
+            });
+            bundle.getApplicationInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, (err, data) => {
+                expect(err.code).assertEqual(INVALID_CODE);
+                expect(data).assertEqual(undefined);
+                done();
+            });
+        });
+
         /*
          * @tc.number: SUB_BMS_HAP_STATUS_0011
          * @tc.name: hasInstalledUnPermissionSelf
@@ -92,6 +146,23 @@ export default function actsBmsJsUnPermissionTest() {
                     done();
                 }
             })
+        });
+
+        /*
+         * @tc.number: SUB_BMS_APPINFO_GETABILITYICON_0006
+         * @tc.name: getAbilityIconUnPermission
+         * @tc.desc: test getAbilityIcon without permission
+        */
+        it('getAbilityIconUnPermission', 0, async function (done) {
+            await bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER).then(pixelmap => {
+                expect(pixelmap).assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
+            bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER, (err, pixelmap) => {
+                expect(err).assertEqual(1);
+                done();
+            });
         });
 
         /*

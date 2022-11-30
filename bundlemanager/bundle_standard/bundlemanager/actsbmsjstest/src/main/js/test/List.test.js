@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-import ActsBmsHasInstalldTest from './ActsBmsHasInstalldTest.test.js'
+import ActsBmsHasInstalldTest from './ActsBmsJsTest.test.js'
+import ActsBmsJsTest from './ActsBmsHasInstalldTest.test.js'
 export default function testsuite() {
 ActsBmsHasInstalldTest()
+ActsBmsJsTest()
 }
