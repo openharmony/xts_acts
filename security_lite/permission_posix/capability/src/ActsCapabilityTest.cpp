@@ -1083,9 +1083,6 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2200, Security | MediumTest | Level1
     // Step 8: Check the capability of process 'media_server', pid = 6
     ret = CapgetWithCaps(MEDIA_SERVER_PID, MEDIA_SERVER_CAP);
     EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 6, process media_server has wrong capability";
-    // Step 9: Check the capability of process 'wms_server' or 'ai_server', pid = 7
-    ret = CapgetWithCaps(WMS_SERVER_OR_AI_SERVER_PID, WMS_SERVER_OR_AI_SERVER_CAP);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 7, process wms_server or ai_server has wrong capability";
 }
 
 /*

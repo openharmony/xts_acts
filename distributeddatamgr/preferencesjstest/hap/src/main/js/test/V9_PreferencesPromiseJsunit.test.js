@@ -34,6 +34,12 @@ describe('preferencesV9PromiseTest', async function () {
         await data_preferences.deletePreferences(context, NAME)
     })
 
+    beforeEach(async function () {
+        console.info('beforeEach')
+        await mPreference.clear();
+        await mPreference.flush();
+    })
+
      /**
      * @tc.name has、delete、get、flush String callback interface test
      * @tc.number SUB_DDM_JSPREFERENCEV9_PROMISE_0100
@@ -113,12 +119,13 @@ describe('preferencesV9PromiseTest', async function () {
      * @tc.number SUB_DDM_JSPREFERENCEV9_PROMISE_0300
      * @tc.desc mPreference.get()
      */
-    it('SUB_DDM_JSPREFERENCEV9_PROMISE_0300', 0, function (done) {
+      it('SUB_DDM_JSPREFERENCEV9_PROMISE_0300', 0, async function (done) {
         console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0300 begin.")
         try{
-            mPreference.get(KEY_TEST_STRING_ELEMENT, KEY_TEST_INT_ELEMENT).then((ret)=>{
-                expect('123').assertEqual(ret)
+            await mPreference.put(KEY_TEST_STRING_ELEMENT, '123');
+            mPreference.get(KEY_TEST_STRING_ELEMENT, KEY_TEST_INT_ELEMENT).then((ret) => {
                 done()
+                expect('123').assertEqual(ret)
                 console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_0300 end.")
             }).catch((err) => {
                 console.log("get err =" + err + ", code =" + err.code +", message =" + err.message)
@@ -327,17 +334,21 @@ describe('preferencesV9PromiseTest', async function () {
      * @tc.number SUB_DDM_JSPREFERENCEV9_PROMISE_1300
      * @tc.desc mPreference.on()
      */
-     it('SUB_DDM_JSPREFERENCEV9_PROMISE_1300', 0, async function () {
+      it('SUB_DDM_JSPREFERENCEV9_PROMISE_1300', 0, async function () {
         console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1300 begin.")
-        await mPreference.clear();
         try {
+            mPreference.clear();
             var observer = function (key) {
-                console.info('SUB_DDM_JSPREFERENCEV9_PROMISE_1300 key' + key);
-                expect('abc').assertEqual(key);
+                if (key) {
+                    console.info('SUB_DDM_JSPREFERENCEV9_PROMISE_1300 key' + key);
+                    expect(false).assertTrue()
+                }
+                expect("abcd").assertEqual(key);
             };
-            mPreference.on('change', observer);
-            mPreference.put(KEY_TEST_STRING_ELEMENT, "abc");
-        } catch (err) {
+            await mPreference.on('change', observer);
+            await mPreference.put(KEY_TEST_STRING_ELEMENT, "abcd");
+            mPreference.off('change', observer);
+        } catch (error) {
             console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
             expect(false).assertTrue()
         }
@@ -348,20 +359,23 @@ describe('preferencesV9PromiseTest', async function () {
      * @tc.number SUB_DDM_JSPREFERENCEV9_PROMISE_1400
      * @tc.desc mPreference.on()
      */
-    it('SUB_DDM_JSPREFERENCEV9_PROMISE_1400', 0, async function () {
+      it('SUB_DDM_JSPREFERENCEV9_PROMISE_1400', 0, async function (done) {
         console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1400 begin.")
         await mPreference.clear();
         try {
             var observer = function (key) {
                 console.info('SUB_DDM_JSPREFERENCEV9_PROMISE_1400 key' + key);
-                expect('abc').assertEqual(key);
+                done();
+                expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
             };
-            mPreference.on('sschange', observer);
-            mPreference.put(KEY_TEST_STRING_ELEMENT, "abc");
+            mPreference.on('change', observer);
+            await mPreference.put(KEY_TEST_STRING_ELEMENT, "abc");
+            await mPreference.flush();
         } catch (err) {
             console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
-            done()
             expect(false).assertTrue()
+        } finally {
+            mPreference.off('change', observer);
         }
     })
 
@@ -370,41 +384,66 @@ describe('preferencesV9PromiseTest', async function () {
      * @tc.number SUB_DDM_JSPREFERENCEV9_PROMISE_1500
      * @tc.desc mPreference.off()
      */
-    it('SUB_DDM_JSPREFERENCEV9_PROMISE_1500', 0, async function () {
+      it('SUB_DDM_JSPREFERENCEV9_PROMISE_1500', 0, async function (done) {
         console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1500 begin.")
+        await mPreference.clear();
         try {
             var observer = function (key) {
                 console.info('SUB_DDM_JSPREFERENCEV9_PROMISE_1500 key' + key);
-                expect('').assertEqual(key);
+                expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
             };
-            mPreference.on('change', observer);
-            mPreference.off('change', observer);
-            mPreference.put(KEY_TEST_STRING_ELEMENT, "abc");
+            mPreference.on('sschange', observer);
+            expect(false).assertTrue()
         } catch (err) {
             console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
-            expect(false).assertTrue()
+            done();
         }
     })
+
      /**
      * @tc.name  mPreference.off()
      * @tc.number SUB_DDM_JSPREFERENCEV9_PROMISE_1600
      * @tc.desc  mPreference.off()
      */
-    it('SUB_DDM_JSPREFERENCEV9_PROMISE_1600', 0, async function () {
+      it('SUB_DDM_JSPREFERENCEV9_PROMISE_1600', 0, async function (done) {
         console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1600 begin.")
         try {
             var observer = function (key) {
                 console.info('SUB_DDM_JSPREFERENCEV9_PROMISE_1600 key' + key);
-                expect('').assertEqual(key);
             };
             mPreference.on('change', observer);
             mPreference.off('sschange', observer);
-            mPreference.put(KEY_TEST_STRING_ELEMENT, "abc");
+            expect(false).assertTrue()
+            await mPreference.put(KEY_TEST_STRING_ELEMENT, "abb");
+            await mPreference.flush();
         } catch (err) {
             console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
-            done()
-            expect(false).assertTrue()
+            mPreference.off('change', observer);
         }
+        done();
+    })
+
+    /**
+     * @tc.name  mPreference.off()
+     * @tc.number SUB_DDM_JSPREFERENCEV9_PROMISE_1700
+     * @tc.desc  mPreference.off()
+     */
+     it('SUB_DDM_JSPREFERENCEV9_PROMISE_1700', 0, async function (done) {
+        console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1700 begin.")
+        try {
+            var observer = function (key) {
+                console.info('SUB_DDM_JSPREFERENCEV9_PROMISE_1700 key' + key);
+            };
+            mPreference.on('change', observer);
+            mPreference.off('change', "observer");
+            expect(false).assertTrue()
+            await mPreference.put(KEY_TEST_STRING_ELEMENT, "abb");
+            await mPreference.flush();
+        } catch (err) {
+            console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
+            mPreference.off('change', observer);
+        }
+        done();
     })
 })
 }

@@ -106,7 +106,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                 relativePath: 'Audios/Static/',
                 size: 1958311,
                 mediaType: AUDIO_TYPE.toString(),
-                title: '01',
+                title: 'test',
                 artist: '元数据测试',
                 orientation: 0,
                 duration: '219600',
@@ -133,7 +133,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                 fetchFileResult.getFirstObject(async (err, asset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -181,7 +181,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                 media.getPublicDirectory(dir, async (err, res) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -219,7 +219,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                 media.getFileAssets(fetchOps, async (err, fetchFileResult) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -243,7 +243,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                 media.createAsset(type, name, path, async (err, creatAsset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }

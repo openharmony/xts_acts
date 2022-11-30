@@ -200,5 +200,116 @@ export default function XComponentTestJsunit() {
       }
     });
 
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+     * @tc.name      XComponentTest006
+     * @tc.desc      aceXComponentEtsTest
+     */
+    it('XComponentTest006', 0, async function (done) {
+      await Utils.sleep(1000);
+      console.info('xclog XComponentTest006 START');
+      var x_value = 340;
+      var y_value = 350;
+      //x:300 y:430左右范围是xcomponent.context2的changelayout范围
+      //x:300 y:150左右范围是xcomponent.context1的changeshape范围
+
+
+      var xcomponentContext1= globalThis.xcomponentContext1;
+      var insidex = globalThis.index;
+
+      if (!xcomponentContext1) {
+        console.error('xclog xcomponentContext null')
+        result = false;
+      } else {
+          result = true;
+          var result;
+          var inside_x;
+          var inside_y;
+          var button_t;
+
+          await Utils.sleep(1000);
+          inside_x = xcomponentContext1.TestGetXComponent_MouseEvent().surface_X1;
+          inside_y = xcomponentContext1.TestGetXComponent_MouseEvent().surface_Y1;
+          button_t = xcomponentContext1.TestGetXComponent_MouseEvent().mousebutton;
+
+          console.info('xclog ets touchEvent: surf_x1 is '+ inside_x + ', surf_y1 is '+ inside_y + ', button_t is ' + button_t );
+
+      }
+      expect(inside_x).assertEqual(insidex);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0700
+     * @tc.name      XComponentTest007
+     * @tc.desc      aceXComponentEtsTest
+     */
+    it('XComponentTest007', 0, async function (done) {
+      await Utils.sleep(1000);
+      console.info('xclog XComponentTest007 START');
+      var x_value = 340;
+      var y_value = 350;
+      //x:300 y:430左右范围是xcomponent.context2的changelayout范围
+      //x:300 y:150左右范围是xcomponent.context1的changeshape范围
+
+
+      var xcomponentContext2= globalThis.xcomponentContext2;
+      var callback_ = globalThis.callback_;
+
+
+      if (!xcomponentContext2) {
+        console.error('xclog xcomponentContext null')
+        tilty = false;
+      } else {
+          result = true;
+          var result;
+          var callback;
+
+          await Utils.sleep(1000);
+          callback = xcomponentContext2.TestGetXComponent_RegisterMouseEventCallback().MouseCallback_;
+          console.info('xclog ets touchEvent: callback is ' + callback );
+
+      }
+      
+      expect(callback).assertEqual(callback_);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0800
+     * @tc.name      XComponentTest008
+     * @tc.desc      aceXComponentEtsTest
+     */
+  it('XComponentTest008', 0, async function (done) {
+      await Utils.sleep(1000);
+      console.info('xclog XComponentTest008 START');
+      var x_value = 340;
+      var y_value = 350;
+      //x:300 y:430左右范围是xcomponent.context2的changelayout范围
+      //x:300 y:150左右范围是xcomponent.context1的changeshape范围
+
+      var xcomponentContext1= globalThis.xcomponentContext1;
+      var type_ = globalThis.type_;
+
+      if (!xcomponentContext1) {
+        console.error('xclog xcomponentContext null')
+        result = false;
+      } else {
+          result = true;
+          var result;
+          var tilty;
+          var tiltx;
+          var type_t;
+          await Utils.sleep(1000);
+          tilty = xcomponentContext1.TestGetXComponentpointtool_tilty();
+          type_t = xcomponentContext1.TestGetXComponentpointtool_type();
+          tiltx = xcomponentContext1.TestGetXComponentpointtool_tiltx();
+          console.info('xclog ets touchEvent: surf_x is '+ tiltx + ', surf_y is '+ tilty + ', type_t is ' + type_t );
+
+      } 
+      expect(type_t).assertEqual(type_);
+      done();
+    });
+
   })
 }

@@ -57,7 +57,7 @@ struct CameraIndex {
               console.info(TAG + 'Entering core.init()')
               console.info(TAG + 'Entering subscribeEvent')
               const configService = core.getDefaultService('config')
-              Want.parameters['timeout'] = 60000
+              Want.parameters['timeout'] = 600000
               configService.setConfig(Want.parameters)
               console.info(TAG + 'Entering configService')
               cameraKit(surfaceId)

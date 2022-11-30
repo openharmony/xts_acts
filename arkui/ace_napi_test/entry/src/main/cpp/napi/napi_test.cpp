@@ -19,6 +19,9 @@
 #include <string>
 #include <stdio.h>
 #include <vector>
+#include <malloc.h>
+#include <ctime>
+#include <uv.h>
 
 static bool exceptionWasPending = false;
 static napi_ref test_reference = NULL;
@@ -35,7 +38,7 @@ static void add_returned_status(napi_env env,
     napi_value prop_value;
 
     if (actual_status != expected_status) {
-        snprintf(napi_message_string, sizeof(napi_message_string), "Invalid status [%d]", actual_status);
+        printf("Invalid status [%d]", actual_status);
     }
 
     NAPI_CALL_RETURN_VOID(env,
@@ -1320,11 +1323,329 @@ static napi_value TestLatin1(napi_env env, napi_callback_info info) {
 
     return output;
 }
+// test the napi function
+static napi_value napCreateArrayBuffer(napi_env env, napi_callback_info info)
+{
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 1024;
+    napi_status status = napi_create_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    NAPI_ASSERT(env, status == napi_ok, "success to napi_create_arraybuffer");
+    NAPI_ASSERT(env, arrayBuffer != nullptr, "success create_arrayBuffer");
+    
+    return arrayBuffer;
+}
 
+static napi_value naiGetArrayBufferInfo(napi_env env, napi_callback_info info)
+{
+    // the value to return
+    napi_value arrayBuffer;
+    napi_status status;
+    void* yourPointer = nullptr;
+    size_t arrayBufferSize = 1024;
+    status = napi_create_arraybuffer(env, arrayBufferSize, &yourPointer, &arrayBuffer);
+    NAPI_ASSERT(env, status == napi_ok, "success to napi_create_arraybuffer");
+    
+    void* tmpArrayBufferPtr = nullptr;
+    size_t arrayBufferLength = 0;
+    status = napi_get_arraybuffer_info(env, arrayBuffer, &tmpArrayBufferPtr, &arrayBufferLength);
+    NAPI_ASSERT(env, status == napi_ok, "success to napi_get_arraybuffer_info");
+  
+    napi_value arrayLength;
+    // return the length of array js type int
+    NAPI_CALL(env, napi_create_int32(env, arrayBufferLength, &arrayLength));
+    
+    return arrayLength;
+}
+
+static napi_value napiNewInstance(napi_env env, napi_callback_info info)
+{
+    // the value to return
+    napi_value global, constructor, arg, value;
+    napi_status status = napi_get_global(env, &global);
+    NAPI_ASSERT(env, status == napi_ok, "napi_get_global success");
+    status = napi_get_named_property(env, global, "MyObject", &constructor);
+    NAPI_ASSERT(env, status == napi_ok, "napi_get_named_property success");
+    status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &arg);
+    napi_value* argv = &arg;
+    size_t argc = 1;
+    napi_status _status = napi_new_instance(env, constructor, argc, argv, &value);
+    NAPI_ASSERT(env, _status != napi_ok, "fail to napi_new_instance");
+    
+    return value;
+}
+
+static napi_value napiDefineClass(napi_env env, napi_callback_info info)
+{
+    napi_value testWrapClass = nullptr;
+    napi_define_class(env, "TestWrapClass", NAPI_AUTO_LENGTH, [](napi_env env, napi_callback_info info) -> napi_value {
+                  napi_value thisVar = nullptr;
+                  napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+                  return thisVar;
+              }, nullptr, 0, nullptr, &testWrapClass);
+      
+    napi_value instanceValue = nullptr;
+    napi_new_instance(env, testWrapClass, 0, nullptr, &instanceValue);
+    NAPI_ASSERT(env, instanceValue != nullptr, "success napiDefineClass");
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    
+    return value;
+}
+
+static napi_value napiRunScriptPath(napi_env env, napi_callback_info info)
+{
+    napi_value value;
+    const char* path =  "index/page";
+    napi_status status = napi_run_script_path(env, path, &value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_run_script_path ok");
+    
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;
+}
+
+static napi_value napiGetNodeVersion(napi_env env, napi_callback_info info)
+{
+    napi_value value;
+    const napi_node_version* version;
+    napi_get_node_version(env, &version);
+    const char* release = version->release;
+    napi_status status = napi_create_string_utf8(env, release, strlen(release), &value);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_string_utf8 ok");
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;
+}
+
+static napi_value napiCallThreadsafeFunction(napi_env env, napi_callback_info info)
+{
+    void* data = nullptr;
+    napi_threadsafe_function func = (napi_threadsafe_function)data;
+    napi_threadsafe_function_call_mode blockMode = napi_tsfn_nonblocking;
+    void* context = nullptr;
+    napi_status status = napi_get_threadsafe_function_context(func, &context);
+    NAPI_ASSERT(env, status != napi_ok, "napi_get_threadsafe_function_context fail");
+    static int32_t gSendData = 0;
+    napi_call_threadsafe_function(func, &gSendData, blockMode);
+    status = napi_call_threadsafe_function(func, &gSendData, blockMode);
+    NAPI_ASSERT(env, status != napi_ok, "napi_call_threadsafe_function fail");
+    napi_release_threadsafe_function(func, napi_tsfn_release);
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    
+    return value;
+}
+
+static napi_value napiCreateThreadsafeFunction(napi_env env, napi_callback_info info)
+{
+    napi_threadsafe_function tsFunc = nullptr;
+    napi_value resourceName = 0;
+    napi_create_string_latin1(env, __func__, NAPI_AUTO_LENGTH, &resourceName);
+    int32_t  callJstCbDataTestId = 101;
+    int32_t  finalCbtDataTestID = 1001;
+    napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName,
+                                                         0, 1, &callJstCbDataTestId, nullptr,
+                                                         &finalCbtDataTestID, nullptr, &tsFunc);
+    NAPI_ASSERT(env, status != napi_ok, "napi_create_threadsafe_function failed");
+    
+    napi_acquire_threadsafe_function(tsFunc);
+    status = napi_unref_threadsafe_function(env, tsFunc);
+    NAPI_ASSERT(env, status != napi_ok, "napi_unref_threadsafe_function failed");
+    
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;
+}
+
+static napi_value napiCancelAsyncWork(napi_env env, napi_callback_info info)
+{
+    napi_async_work work = nullptr;
+    napi_value resourceName = nullptr;
+    napi_create_string_utf8(env, "AsyncWorkTest", NAPI_AUTO_LENGTH, &resourceName);
+    napi_create_async_work(env, nullptr, resourceName, [](napi_env value, void* data) {},
+                           [](napi_env env, napi_status status, void* data) {
+                           napi_async_work workData = (napi_async_work)data;
+                           napi_delete_async_work(env, workData);
+                           }, work, &work);
+    napi_queue_async_work(env, work);
+    napi_cancel_async_work(env, work);
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    
+    return value;
+}
+
+static napi_value SayHello(napi_env env, napi_callback_info info)
+{
+    printf("Hello\n");
+    
+    return NULL;
+}
+
+static napi_value napiCreateFunction(napi_env env, napi_callback_info info)
+{
+    napi_value funcValue = nullptr;
+    napi_status status = napi_create_function(env, NULL, 0, SayHello, NULL, &funcValue);
+    NAPI_ASSERT(env, status != napi_ok, "napi_create_function fail");
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 1, &value));
+    
+    return value;
+}
+
+static napi_value napiRefthreadSafeFunction(napi_env env, napi_callback_info info)
+{
+    napi_threadsafe_function tsFunc = nullptr;
+    napi_value resourceName = 0;
+    napi_create_string_latin1(env, __func__, NAPI_AUTO_LENGTH, &resourceName);
+    int32_t callJsCbDataTestId = 101;
+    int32_t finalCbDataTestId = 1001;
+    napi_status status = napi_create_threadsafe_function(env, nullptr, nullptr, resourceName,
+                                                         0, 1, &callJsCbDataTestId,
+                                                         nullptr, &finalCbDataTestId, nullptr, &tsFunc);
+    NAPI_ASSERT(env, status != napi_ok, "napi_create_threadsafe_function failed");
+    
+    status = napi_ref_threadsafe_function(env, tsFunc);
+    NAPI_ASSERT(env, status != napi_ok, "napi_ref_threadsafe_function");
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;
+}
+
+static napi_value napiCreateDate(napi_env env, napi_callback_info info)
+{
+    napi_value createResult = nullptr;
+    double time = 202110181203150;
+    napi_status status = napi_create_date(env, time, &createResult);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_date success");
+    double getTime = false;
+    napi_get_date_value(env, createResult, &getTime);
+    bool result = false;
+    if (time == getTime) {
+        result = true;
+    }
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, result, &value));
+    
+    return value;
+}
+
+static napi_value napiCreateBigintUint64(napi_env env, napi_callback_info info)
+{
+    uint64_t testValue = UINT64_MAX;
+    napi_value result = nullptr;
+    napi_create_bigint_uint64(env, testValue, &result);
+         
+    uint64_t resultValue = 0;
+    bool flag = false;
+    napi_get_value_bigint_uint64(env, result, &resultValue, &flag);
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, flag, &value));
+    
+    return value;
+}
+
+static napi_value napiCreateBigintInt64(napi_env env, napi_callback_info info)
+{
+    int64_t testValue = INT64_MAX;
+    napi_value result = nullptr;
+    napi_create_bigint_int64(env, testValue, &result);
+    int64_t resultValue = 0;
+    bool flag = false;
+    napi_get_value_bigint_int64(env, result, &resultValue, &flag);
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, flag, &value));
+    
+    return value;
+}
+
+static napi_value napiCreateBigintWords(napi_env env, napi_callback_info info)
+{
+    int signBit = 0;
+    size_t wordCount = 4;
+    uint64_t words[] = { 0xFFFFFFFFFFFFFFFF, 34ULL, 56ULL, 0xFFFFFFFFFFFFFFFF };
+    uint64_t wordsOut[] = { 0ULL, 0ULL, 0ULL, 0ULL };
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_bigint_words(env, signBit, wordCount, words, &result));
+    NAPI_CALL(env, napi_get_value_bigint_words(env, result, &signBit, &wordCount, wordsOut));
+    bool testResult = false;
+    const int wCount = 2;
+    if (signBit == 0 && wordCount == wCount && words[0] == wordsOut[0] && words[1] == wordsOut[1]) {
+        testResult = true;
+    }
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, testResult, &value));
+    
+    return value;
+}
+
+static napi_value napiFatalerror(napi_env env, napi_callback_info info)
+{   
+    void *data = nullptr;
+    napi_threadsafe_function tsfun = static_cast<napi_threadsafe_function>(data);
+    if (napi_release_threadsafe_function(tsfun, napi_tsfn_release) == napi_ok) {
+        napi_fatal_error("ReleaseThreadsafeFunction", NAPI_AUTO_LENGTH,
+                        "napi_release_threadsafe_function failed", NAPI_AUTO_LENGTH);
+    }
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;
+}
+
+static napi_value napiGetTypedarrayInfo(napi_env env, napi_callback_info info)
+{
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPr = nullptr;
+    size_t arrayBufferSize = 200;
+    // create a JavaScript ArrayBuffer
+    napi_create_arraybuffer(env, arrayBufferSize, &arrayBufferPr, &arrayBuffer);
+    
+    // convert from N-API to C types
+    void* tmpArrayBufferPr = nullptr;
+    size_t arrayBufferLength = 0;
+    napi_get_arraybuffer_info(env, arrayBuffer, &tmpArrayBufferPr, &arrayBufferLength);
+    
+    NAPI_ASSERT(env, arrayBufferPr == tmpArrayBufferPr, "creat and get ArrayBuffer success");
+    NAPI_ASSERT(env, arrayBufferSize == arrayBufferLength, "creat and get ArrayBuffer size success");
+    
+    napi_value typedarray = nullptr;
+    // create a JavaScript TypedArray
+    napi_status status = napi_create_typedarray(env, napi_int8_array, arrayBufferSize, arrayBuffer, 0, &typedarray);
+    NAPI_ASSERT(env, status == napi_ok, "napi_create_typedarray success");
+    
+    bool isTypedArray = false;
+    // Whether the given napi_value represents a TypedArray
+    napi_is_typedarray(env, typedarray, &isTypedArray);
+    NAPI_ASSERT(env, isTypedArray, "the type is  TypeArray");
+    
+    // convert from N-API to C types
+    napi_typedarray_type typedarrayType;
+    size_t typedarrayLength = 0;
+    void* typedarrayBufferPtr = nullptr;
+    napi_value tmpArrayBuffer = nullptr;
+    size_t byteOffset = 0;
+    // returns various properties of a typed array
+    napi_get_typedarray_info(env, typedarray, &typedarrayType, &typedarrayLength, &typedarrayBufferPtr, &tmpArrayBuffer, &byteOffset);
+    NAPI_ASSERT(env, typedarrayBufferPtr == arrayBufferPr, "napi_get_typedarray_info success");
+    NAPI_ASSERT(env, arrayBufferSize == typedarrayLength, "napi_get_typedarray_info size success");
+    
+    // return the value of success
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;
+}
 
 EXTERN_C_START
 
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor properties[] = { DECLARE_NAPI_FUNCTION("getLastErrorInfo", getLastErrorInfo),
     DECLARE_NAPI_FUNCTION("cleanUpErrorInfo", cleanUpErrorInfo),
     DECLARE_NAPI_FUNCTION("throwExistingError", throwExistingError),
@@ -1396,11 +1717,28 @@ static napi_value Init(napi_env env, napi_value exports) {
     DECLARE_NAPI_FUNCTION("resolveAndRejectDeferred", resolveAndRejectDeferred),
     DECLARE_NAPI_FUNCTION("isPromise", isPromise),
     DECLARE_NAPI_FUNCTION("TestLatin1", TestLatin1),
-    DECLARE_NAPI_FUNCTION("runScript", runScript), };
-
-    NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(*properties), properties));
+    DECLARE_NAPI_FUNCTION("runScript", runScript),
+        DECLARE_NAPI_FUNCTION("napCreateArrayBuffer", napCreateArrayBuffer),
+        DECLARE_NAPI_FUNCTION("naiGetArrayBufferInfo", naiGetArrayBufferInfo),
+        DECLARE_NAPI_FUNCTION("napiNewInstance", napiNewInstance),
+        DECLARE_NAPI_FUNCTION("napiDefineClass", napiDefineClass),
+        DECLARE_NAPI_FUNCTION("napiRunScriptPath", napiRunScriptPath),
+        DECLARE_NAPI_FUNCTION("napiGetNodeVersion", napiGetNodeVersion),
+        DECLARE_NAPI_FUNCTION("napiCallThreadsafeFunction", napiCallThreadsafeFunction),
+        DECLARE_NAPI_FUNCTION("napiCreateThreadsafeFunction", napiCreateThreadsafeFunction),
+        DECLARE_NAPI_FUNCTION("napiRefthreadSafeFunction", napiRefthreadSafeFunction),
+        DECLARE_NAPI_FUNCTION("napiCreateDate", napiCreateDate),
+        DECLARE_NAPI_FUNCTION("napiCreateBigintUint64", napiCreateBigintUint64),
+        DECLARE_NAPI_FUNCTION("napiCreateBigintInt64", napiCreateBigintInt64),
+        DECLARE_NAPI_FUNCTION("napiCreateBigintWords", napiCreateBigintWords),
+        DECLARE_NAPI_FUNCTION("napiGetTypedarrayInfo", napiGetTypedarrayInfo),
+        { "napiCancelAsyncWork", nullptr, napiCancelAsyncWork, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "napiCreateFunction", nullptr, napiCreateFunction, nullptr, nullptr, nullptr, napi_default, nullptr },
+        DECLARE_NAPI_FUNCTION("napiFatalerror", napiFatalerror), };
+    NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;
 }
+
 EXTERN_C_END
 
 static napi_module

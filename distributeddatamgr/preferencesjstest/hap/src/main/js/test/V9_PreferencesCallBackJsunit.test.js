@@ -328,13 +328,13 @@ describe('preferencesV9CallbackTest', async function () {
             expect(false).assertTrue()
         }
     })
-
-    /**
-     * @tc.name mPreference.clear()
+        
+     /**
+     * @tc.name mPreference.on()
      * @tc.number SUB_DDM_JSPREFERENCEV9_CALLBACK_1300
-     * @tc.desc mPreference.clear()
+     * @tc.desc mPreference.on()
      */
-    it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1300', 0, async function () {
+      it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1300', 0, async function () {
         console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1300 begin.")
         try {
             mPreference.clear();
@@ -347,78 +347,103 @@ describe('preferencesV9CallbackTest', async function () {
             };
             await mPreference.on('change', observer);
             await mPreference.put(KEY_TEST_STRING_ELEMENT, "abcd");
+            mPreference.off('change', observer);
         } catch (error) {
             console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
-            expect(false).assertTrue()
-        }
-    })
-    
-    /**
-     * @tc.name mPreference.clear()
-     * @tc.number SUB_DDM_JSPREFERENCEV9_CALLBACK_1400
-     * @tc.desc mPreference.clear()
-     */
-    it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1400', 0, async function () {
-        console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1400 begin.")
-        try {
-            var observer = function (key) {
-                if (key) {
-                    console.info('SUB_DDM_JSPREFERENCEV9_CALLBACK_1400 key' + key);
-                    expect(false).assertTrue()
-                }
-                expect("abcd").assertEqual(key);
-            };
-            mPreference.clear();            
-            await mPreference.on('sschange', observer);
-            await mPreference.put(KEY_TEST_STRING_ELEMENT, "abcd");
-        } catch (error) {
-            console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
-            done()
             expect(false).assertTrue()
         }
     })
 
-    /**
+     /**
      * @tc.name mPreference.on()
-     * @tc.number SUB_DDM_JSPREFERENCEV9_CALLBACK_1500
+     * @tc.number SUB_DDM_JSPREFERENCEV9_CALLBACK_1400
      * @tc.desc mPreference.on()
      */
-    it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1500', 0, async function () {
+      it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1400', 0, async function (done) {
+        console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1400 begin.")
+        await mPreference.clear();
         try {
-            console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1500 begin.")
             var observer = function (key) {
-                console.info('SUB_DDM_JSPREFERENCEV9_CALLBACK_1500 key' + key);
-                expect('').assertEqual(key);
+                console.info('SUB_DDM_JSPREFERENCEV9_CALLBACK_1400 key' + key);
+                done();
+                expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
             };
-            await mPreference.on('change', observer);
-            await mPreference.off('change', observer);
+            mPreference.on('change', observer);
             await mPreference.put(KEY_TEST_STRING_ELEMENT, "abc");
-        } catch (error) {
+            await mPreference.flush();
+        } catch (err) {
             console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
             expect(false).assertTrue()
+        } finally {
+            mPreference.off('change', observer);
         }
     })
 
-    /**
+     /**
      * @tc.name mPreference.off()
-     * @tc.number SUB_DDM_JSPREFERENCEV9_CALLBACK_1600
+     * @tc.number SUB_DDM_JSPREFERENCEV9_CALLBACK_1500
      * @tc.desc mPreference.off()
      */
-    it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1600', 0, async function () {
+      it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1500', 0, async function (done) {
+        console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1500 begin.")
+        await mPreference.clear();
         try {
-            console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1600 begin.")
+            var observer = function (key) {
+                console.info('SUB_DDM_JSPREFERENCEV9_CALLBACK_1500 key' + key);
+                expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
+            };
+            mPreference.on('sschange', observer);
+            expect(false).assertTrue()
+        } catch (err) {
+            console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
+            done();
+        }
+    })
+
+     /**
+     * @tc.name  mPreference.off()
+     * @tc.number SUB_DDM_JSPREFERENCEV9_CALLBACK_1600
+     * @tc.desc  mPreference.off()
+     */
+      it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1600', 0, async function (done) {
+        console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1600 begin.")
+        try {
             var observer = function (key) {
                 console.info('SUB_DDM_JSPREFERENCEV9_CALLBACK_1600 key' + key);
-                expect('').assertEqual(key);
             };
-            await mPreference.on('change', observer);
-            await mPreference.off('123change', observer);
-            await mPreference.put(KEY_TEST_STRING_ELEMENT, "abc");
-        } catch (error) {
-            console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
-            done()
+            mPreference.on('change', observer);
+            mPreference.off('sschange', observer);
             expect(false).assertTrue()
+            await mPreference.put(KEY_TEST_STRING_ELEMENT, "abb");
+            await mPreference.flush();
+        } catch (err) {
+            console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
+            mPreference.off('change', observer);
         }
+        done();
+    })
+
+    /**
+     * @tc.name  mPreference.off()
+     * @tc.number SUB_DDM_JSPREFERENCEV9_CALLBACK_1700
+     * @tc.desc  mPreference.off()
+     */
+     it('SUB_DDM_JSPREFERENCEV9_CALLBACK_1700', 0, async function (done) {
+        console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_1700 begin.")
+        try {
+            var observer = function (key) {
+                console.info('SUB_DDM_JSPREFERENCEV9_CALLBACK_1700 key' + key);
+            };
+            mPreference.on('change', observer);
+            mPreference.off('change', "observer");
+            expect(false).assertTrue()
+            await mPreference.put(KEY_TEST_STRING_ELEMENT, "abb");
+            await mPreference.flush();
+        } catch (err) {
+            console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
+            mPreference.off('change', observer);
+        }
+        done();
     })
 })
 }

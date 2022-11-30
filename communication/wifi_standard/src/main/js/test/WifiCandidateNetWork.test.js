@@ -93,10 +93,8 @@ export default function actsWifiCandidateNetWorkTest() {
                     console.error('[wifi_test]add OPEN CandidateConfig promise failed -> ' + JSON.stringify(error));
                     expect(false).assertFalse();
                 });
-
             let getconfig = wifi.getCandidateConfigs();
             console.info("[wifi_test]wifi get OPEN CandidateConfigs result : " + JSON.stringify(getconfig));
-
             let wifiDeviceConfig1 = {
                 "ssid": "TEST_WEP",
                 "bssid": "",
@@ -104,7 +102,6 @@ export default function actsWifiCandidateNetWorkTest() {
                 "isHiddenSsid": false,
                 "securityType": wifiSecurityType.WIFI_SEC_TYPE_WEP,
             };
-
             await wifi.addCandidateConfig(wifiDeviceConfig1)
                 .then(netWorkId => {
                     console.info("[wifi_test]add WEP CandidateConfig promise : " + JSON.stringify(netWorkId));
@@ -154,7 +151,6 @@ export default function actsWifiCandidateNetWorkTest() {
             await wifi.removeCandidateConfig(networkId)
                 .then(ret => {
                     console.info("[wifi_test]remove CandidateConfig promise:" + JSON.stringify(ret));
-                    expect(false).assertFalse();
                     let getCandidate = wifi.getCandidateConfigs();
                     console.info("[wifi_test]wifi get CandidateConfigs result : " + JSON.stringify(getCandidate));
                     console.info("[wifi_test]wifi  getconfig.length result : " + JSON.stringify(getCandidate.length));
@@ -195,7 +191,6 @@ export default function actsWifiCandidateNetWorkTest() {
             await wifi.removeCandidateConfig(networkId)
                 .then(ret => {
                     console.info("[wifi_test]remove CandidateConfig promise" + JSON.stringify(ret));
-                    expect(false).assertFalse();
                     let getconfig1 = wifi.getCandidateConfigs();
                     console.info("[wifi_test]wifi get CandidateConfigs result : " + JSON.stringify(getconfig1));
                     console.info("[wifi_test]wifi  getconfig.length result : " + JSON.stringify(getconfig1.length));
@@ -339,7 +334,7 @@ export default function actsWifiCandidateNetWorkTest() {
                 WIFI_SEC_TYPE_SAE: 4,
             }
             let wifiDeviceConfig = {
-                "ssid": "HONOR 3000",
+                "ssid": "TEST_connect",
                 "bssid": "",
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
@@ -354,7 +349,7 @@ export default function actsWifiCandidateNetWorkTest() {
                     expect().assertFail();
                 });
             let getCandidateResult = wifi.getCandidateConfigs();
-            console.info("[wifi_test]wifi get  CandidateConfigs result : " + JSON.stringify(getCandidateResult));
+            console.info("[wifi_test]wifi get CandidateConfigs result : " + JSON.stringify(getCandidateResult));
             let connectToCandidateResult = wifi.connectToCandidateConfig(getCandidateResult[0].netId);
             console.info("[wifi_test]connect To CandidateConfig result : " + JSON.stringify(connectToCandidateResult));
             await sleep(3000);
@@ -364,6 +359,20 @@ export default function actsWifiCandidateNetWorkTest() {
                     done();
                 }).catch((error) => {
                     console.info("[wifi_test]promise then error." + JSON.stringify(error));
+                    expect().assertFail();
+                });
+            let getCandidateResult1 = wifi.getCandidateConfigs();
+            console.info("[wifi_test]wifi get CandidateConfigs result1 : " + JSON.stringify(getCandidateResult1));
+            var networkId = getCandidateResult1[0].netId;
+            console.info("[wifi_test]wifi get networkId result : " + JSON.stringify(networkId));
+            await wifi.removeCandidateConfig(networkId)
+                .then(ret => {
+                    let getconfig1 = wifi.getCandidateConfigs();
+                    console.info("[wifi_test]wifi get CandidateConfigs result2 : " + JSON.stringify(getconfig1));
+                    console.info("[wifi_test]wifi  getconfig.length result : " + JSON.stringify(getconfig1.length));
+                    expect(true).assertEqual(getconfig1.length == 0);
+                }).catch((error) => {
+                    console.error('[wifi_test]remove CandidateConfig promise failed -> ' + JSON.stringify(error));
                     expect().assertFail();
                 });
             done();

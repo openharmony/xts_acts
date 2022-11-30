@@ -19,6 +19,11 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 describe('audioTonePlayer',function() {
     let tonePlayerCallback = null;
     let name;
+    let TagTone = 'AudioTonePlayerTest';
+    let stringParameter = "invalid_parameter";
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     beforeAll(function(){
         console.log('beforeAll test suit is executed');
     })
@@ -1102,7 +1107,7 @@ describe('audioTonePlayer',function() {
 
 	/**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_TONEPLAYER_PROMISE_ALL_3000
-     *@tc.name      : AudioTonePlayer-create-load-stop-release success
+     *@tc.name      : AudioTonePlayer-create-load-stop-release fail
      *@tc.desc      : The successful test case of the promise of the dial tone of AudioTonePlayer key 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
@@ -1123,9 +1128,185 @@ describe('audioTonePlayer',function() {
         console.info('time: ' + (time2 - time1));
         setTimeout(function() {
             console.info('AudioFrameworkRenderLog: callback all 30 resultFlag : ' + resultFlag);
-            expect(resultFlag).assertTrue();
+            expect(resultFlag).assertFalse();
             done();
         }, 2000)
     })
 
+	/**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CREATETONEPLAYER_0100
+     *@tc.name      : AudioTonePlayer-create
+     *@tc.desc      : The successful test case of the promise of the dial tone of AudioTonePlayer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_CREATETONEPLAYER_0100', 2, function(done) {
+        audio.createTonePlayer(stringParameter).then(async (result) => {
+            console.info("recPromiseFail call createTonePlayer-----result:" + JSON.stringify(result));
+            await result.release().then(() => {
+                console.info('recPromiseFail TonePlayer : RELEASE SUCCESS');
+                console.info('recPromiseFail  ---------RELEASE---------');
+            }).catch((err) => {
+                console.error("recPromiseFail call release fail " + JSON.stringify(err));
+            });
+            expect(false).assertTrue();
+        }).catch((err) => {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagTone}: load : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagTone}: load : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        });
+        done();
+    })
+
+	/**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CREATETONEPLAYER_0100
+     *@tc.name      : AudioTonePlayer-create
+     *@tc.desc      : The successful test case of the promise of the dial tone of AudioTonePlayer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_CREATETONEPLAYER_0200', 2, function(done) {
+        audio.createTonePlayer(stringParameter, async (err, data)=>{
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800101) {
+                    console.log(`${TagTone}: load : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagTone}: load : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            } else {
+                await data.release().then(() => {
+                    console.info('recPromiseFail TonePlayer : RELEASE SUCCESS');
+                    console.info('recPromiseFail  ---------RELEASE---------');
+                }).catch((err) => {
+                    console.error("recPromiseFail call release fail " + JSON.stringify(err));
+                });
+                expect(false).assertTrue();
+            }
+            done();
+        })
+    })
+
+	/**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_TONEPLAYER_LOAD_0100
+     *@tc.name      : AudioTonePlayer-create-load-stop-release success
+     *@tc.desc      : The successful test case of the promise of the dial tone of AudioTonePlayer key 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_TONEPLAYER_LOAD_0100', 2, async function(done) {
+        let tPlayer = null;
+        let audioRendererInfo = {
+            "contentType": audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            "streamUsage": audio.StreamUsage.STREAM_USAGE_MEDIA,
+            "rendererFlags": 0
+        }
+
+        await audio.createTonePlayer(audioRendererInfo).then((result) => {
+            console.info("recPromiseFail call createTonePlayer-----result:" + JSON.stringify(result));
+            tPlayer = result;
+        }).catch((err) => {
+            console.error("recPromiseFail call createTonePlayer fail err: "+ JSON.stringify(err)+ ' tPlayer: '+ tPlayer);
+            console.error("recPromiseFail call createTonePlayer ---fail");
+        });
+
+		await tPlayer.load(stringParameter).then(() => {
+            console.info('AudioFrameworkRecLog: ---------LOAD---------');
+            expect(false).assertTrue();
+        }).catch((err) => {
+            console.log('err :' + err.code)
+            if (err.code == 6800101) {
+                console.log(`${TagTone}: load : PASS : message:${err.message}`);
+                expect(true).assertTrue();
+            }else {
+                console.log(`${TagTone}: load : FAIL : message:${err.message}`);
+                expect(false).assertTrue();
+            }
+        });
+
+        await tPlayer.stop().then(() => {
+            console.info('AudioFrameworkRecLog: TonePlayer : STOP SUCCESS');
+            console.info('AudioFrameworkRecLog: ---------STOP---------');
+        }).catch((err) => {
+            console.error(`promise call stop ---fail error. ${err.message}`);
+        });
+
+        await tPlayer.release().then(() => {
+            console.info('recPromiseFail TonePlayer : RELEASE SUCCESS');
+            console.info('recPromiseFail  ---------RELEASE---------');
+        }).catch((err) => {
+            console.error("recPromiseFail call release fail " + JSON.stringify(err));
+        });
+        done();
+    })
+
+	/**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_TONEPLAYER_LOAD_0200
+     *@tc.name      : AudioTonePlayer-create-load-stop-release success
+     *@tc.desc      : The successful test case of the promise of the dial tone of AudioTonePlayer key 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_TONEPLAYER_LOAD_0200', 2, async function(done) {
+        let time1 = (new Date()).getTime();
+        let tPlayer = null;
+        let audioRendererInfo = {
+            "contentType": audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            "streamUsage": audio.StreamUsage.STREAM_USAGE_MEDIA,
+            "rendererFlags": 0
+        }
+
+        await audio.createTonePlayer(audioRendererInfo).then((result) => {
+            console.info("recPromiseFail call createTonePlayer-----result:" + JSON.stringify(result));
+            tPlayer = result;
+        }).catch((err) => {
+            console.error("recPromiseFail call createTonePlayer fail err: "+ JSON.stringify(err)+ ' tPlayer: '+ tPlayer);
+            console.error("recPromiseFail call createTonePlayer ---fail");
+        });
+
+		await tPlayer.load(stringParameter, (err, data)=>{
+            if (err) {
+                console.log('err :' + err.code)
+                if (err.code == 6800101) {
+                    console.log(`${TagTone}: load : PASS : message:${err.message}`);
+                    expect(true).assertTrue();
+                }else {
+                    console.log(`${TagTone}: load : FAIL : message:${err.message}`);
+                    expect(false).assertTrue();
+                }
+            } else {
+                console.info('AudioFrameworkRecLog: ---------LOAD---------');
+                expect(false).assertTrue();
+            }
+        });
+        await sleep(1000);
+        await tPlayer.stop().then(() => {
+            console.info('AudioFrameworkRecLog: TonePlayer : STOP SUCCESS');
+            console.info('AudioFrameworkRecLog: ---------STOP---------');
+        }).catch((err) => {
+            console.error(`promise call stop ---fail error. ${err.message}`);
+        });
+
+        await tPlayer.release().then(() => {
+            console.info('recPromiseFail TonePlayer : RELEASE SUCCESS');
+            console.info('recPromiseFail  ---------RELEASE---------');
+        }).catch((err) => {
+            console.error("recPromiseFail call release fail " + JSON.stringify(err));
+        });
+
+        let time2 = (new Date).getTime();
+        console.info('time: ' + (time2 - time1));
+        done();
+    })
 })

@@ -24,7 +24,7 @@
 #define COMMON_ERROR (-1)
 #define INVALID_PARAMETER (-9)
 
-static const char* g_defSysParam = "data of sys param ***...";
+static const char *g_defSysParam = "data of sys param ***...";
 
 /**
  * @tc.desc      : register a test suite, this suite is used to test basic flow
@@ -41,7 +41,7 @@ LITE_TEST_SUIT(startup, deviceinfo, DeviceInfoFuncTestSuite);
  */
 static BOOL DeviceInfoFuncTestSuiteSetUp(void)
 {
-    return TRUE;
+  return TRUE;
 }
 
 /**
@@ -50,8 +50,8 @@ static BOOL DeviceInfoFuncTestSuiteSetUp(void)
  */
 static BOOL DeviceInfoFuncTestSuiteTearDown(void)
 {
-    printf("+--------------------------------------------+\n");
-    return TRUE;
+  printf("+--------------------------------------------+\n");
+  return TRUE;
 }
 
 /**
@@ -61,10 +61,11 @@ static BOOL DeviceInfoFuncTestSuiteTearDown(void)
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetDeviceTypeFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetDeviceType();
-    printf("Device Type=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetDeviceType();
+  printf("Device Type=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -75,13 +76,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetDeviceTypeFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetDeviceType();
-    printf("Device Type=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetDeviceType();
+  printf("Device Type=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -91,10 +94,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetManufactureFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetManufacture();
-    printf("Manufacture=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetManufacture();
+  printf("Manufacture=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -105,13 +109,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetManufactureFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetManufacture();
-    printf("Manufacture=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetManufacture();
+  printf("Manufacture=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -121,10 +127,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBrandFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetBrand();
-    printf("Brand=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBrand();
+  printf("Brand=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -135,13 +142,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBrandFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetBrand();
-    printf("Brand=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBrand();
+  printf("Brand=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -151,10 +160,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetMarketNameFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetMarketName();
-    printf("Market Name=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetMarketName();
+  printf("Market Name=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -165,13 +175,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetMarketNameFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetMarketName();
-    printf("Market Name=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetMarketName();
+  printf("Market Name=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -181,10 +193,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetProductSeriesFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetProductSeries();
-    printf("Product Series=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetProductSeries();
+  printf("Product Series=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -195,13 +208,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetProductSeriesFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetProductSeries();
-    printf("Product Series=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetProductSeries();
+  printf("Product Series=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -211,10 +226,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetProductModelFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetProductModel();
-    printf("Product Model=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetProductModel();
+  printf("Product Model=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -225,13 +241,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetProductModelFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetProductModel();
-    printf("Product Model=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetProductModel();
+  printf("Product Model=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -241,10 +259,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetHardwareModel001,
-               Function | MediumTest | Level1) {
-    const char* value = GetHardwareModel();
-    printf("Hardware Model=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetHardwareModel();
+  printf("Hardware Model=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -255,13 +274,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetHardwareModel002,
-               Function | MediumTest | Level1) {
-    const char* value = GetHardwareModel();
-    printf("Hardware Model=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetHardwareModel();
+  printf("Hardware Model=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -271,10 +292,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetSerialFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetSerial();
-    printf("Serial=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetSerial();
+  printf("Serial=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -285,13 +307,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetSerialFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetSerial();
-    printf("Serial=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 64);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetSerial();
+  printf("Serial=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 64);
+  }
 };
 
 /**
@@ -301,10 +325,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetOSFullNameFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetOSFullName();
-    printf("Os Name=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetOSFullName();
+  printf("Os Name=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -315,13 +340,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetOSFullNameFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetOSFullName();
-    printf("Os Name=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 64);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetOSFullName();
+  printf("Os Name=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 64);
+  }
 };
 
 /**
@@ -331,10 +358,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetDisplayVersionFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetDisplayVersion();
-    printf("Display Version=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetDisplayVersion();
+  printf("Display Version=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -345,13 +373,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetDisplayVersionFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetDisplayVersion();
-    printf("Display Version=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 64);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetDisplayVersion();
+  printf("Display Version=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 64);
+  }
 };
 
 /**
@@ -361,10 +391,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBootloaderVersionFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetBootloaderVersion();
-    printf("Bootloader Version=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBootloaderVersion();
+  printf("Bootloader Version=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -375,13 +406,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBootloaderVersionFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetBootloaderVersion();
-    printf("Bootloader Version=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 64);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBootloaderVersion();
+  printf("Bootloader Version=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 64);
+  }
 };
 
 /**
@@ -391,10 +424,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetSecurityPatchTagFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetSecurityPatchTag();
-    printf("Secure Patch Level=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetSecurityPatchTag();
+  printf("Secure Patch Level=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -405,13 +439,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetSecurityPatchTagFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetSecurityPatchTag();
-    printf("Secure Patch Level=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 64);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetSecurityPatchTag();
+  printf("Secure Patch Level=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 64);
+  }
 };
 
 /**
@@ -422,22 +458,32 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetSecurityPatchTagFun003,
-               Function | MediumTest | Level1) {
-    const char* value = GetSecurityPatchTag();
-    printf("Secure Patch Level=%s\n", value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetSecurityPatchTag();
+  printf("Secure Patch Level=%s\n", value);
 
-    int year, month, day;
-    sscanf(value, "%04d-%02d-%02d", &year, &month, &day);
-    printf("%04d-%02d-%02d\n", year, month, day);
+  int year, month, day;
+  const int RET_SUCCESS = 0;
+  int ret = sscanf_s(value, "%04d-%02d-%02d", &year, &month, &day);
+  if (ret < RET_SUCCESS)
+  {
+    TEST_ASSERT_TRUE(ret >= 0);
+  }
+  printf("%04d-%02d-%02d\n", year, month, day);
 
-    TEST_ASSERT_TRUE(year > 1900 && year < 2056);
-    TEST_ASSERT_TRUE(month <= 12 && month > 0);
-    TEST_ASSERT_TRUE(day <= 31 && day > 0);
+  TEST_ASSERT_TRUE(year > 1900 && year < 2056);
+  TEST_ASSERT_TRUE(month <= 12 && month > 0);
+  TEST_ASSERT_TRUE(day <= 31 && day > 0);
 
-    char str[10] = {0};
-    sprintf(str, "%d-%02d-%02d", year, month, day);
-    printf("str=%s\n", str);
-    TEST_ASSERT_EQUAL_STRING(str, value);
+  char str[10] = {0};
+  ret = sprintf_s(str, strlen(str), "%d-%02d-%02d", year, month, day);
+  if (ret < RET_SUCCESS)
+  {
+    TEST_ASSERT_TRUE(ret >= 0);
+  }
+  printf("str=%s\n", str);
+  TEST_ASSERT_EQUAL_STRING(str, value);
 };
 
 /**
@@ -447,10 +493,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetAbiListFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetAbiList();
-    printf("Abi List=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetAbiList();
+  printf("Abi List=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -461,13 +508,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetAbiListFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetAbiList();
-    printf("Abi List=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 64);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetAbiList();
+  printf("Abi List=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 64);
+  }
 };
 
 /**
@@ -477,10 +526,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetSdkApiVersionFun001,
-               Function | MediumTest | Level1) {
-    int value = GetSdkApiVersion();
-    printf("Sdk Api Level=%d\n", value);
-    TEST_ASSERT_TRUE(value > 0);
+               Function | MediumTest | Level1)
+{
+  int value = GetSdkApiVersion();
+  printf("Sdk Api Level=%d\n", value);
+  TEST_ASSERT_TRUE(value > 0);
 };
 
 /**
@@ -490,10 +540,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetFirstApiVersionFun001,
-               Function | MediumTest | Level1) {
-    int value = GetFirstApiVersion();
-    printf("First Api Level=%d\n", value);
-    TEST_ASSERT_TRUE(value > 0);
+               Function | MediumTest | Level1)
+{
+  int value = GetFirstApiVersion();
+  printf("First Api Level=%d\n", value);
+  TEST_ASSERT_TRUE(value > 0);
 };
 
 /**
@@ -503,10 +554,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetIncrementalVersionFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetIncrementalVersion();
-    printf("Incremental Version=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetIncrementalVersion();
+  printf("Incremental Version=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -516,10 +568,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetVersionIdFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetVersionId();
-    printf("Version Id=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetVersionId();
+  printf("Version Id=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -530,13 +583,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetVersionIdFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetVersionId();
-    printf("Version Id=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 127);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetVersionId();
+  printf("Version Id=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 127);
+  }
 };
 
 /**
@@ -546,10 +601,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBuildTypeFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetBuildType();
-    printf("Build Type=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBuildType();
+  printf("Build Type=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -560,13 +616,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBuildTypeFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetBuildType();
-    printf("Build Type=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBuildType();
+  printf("Build Type=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -576,10 +634,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBuildUserFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetBuildUser();
-    printf("Build User=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBuildUser();
+  printf("Build User=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -590,13 +649,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBuildUserFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetBuildUser();
-    printf("Build User=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBuildUser();
+  printf("Build User=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -606,10 +667,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBuildHostFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetBuildHost();
-    printf("Build Host=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBuildHost();
+  printf("Build Host=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -620,13 +682,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBuildHostFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetBuildHost();
-    printf("Build Host=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBuildHost();
+  printf("Build Host=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -636,10 +700,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBuildTimeFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetBuildTime();
-    printf("Build Time=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBuildTime();
+  printf("Build Time=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -650,13 +715,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBuildTimeFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetBuildTime();
-    printf("Build Time=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBuildTime();
+  printf("Build Time=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -666,10 +733,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetSoftwareModelFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetSoftwareModel();
-    printf("Software Model=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetSoftwareModel();
+  printf("Software Model=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 /**
@@ -680,13 +748,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetSoftwareModelFun002,
-               Function | MediumTest | Level1) {
-    const char* value = GetSoftwareModel();
-    printf("Software Model=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
-    if (value != NULL) {
-        TEST_ASSERT_TRUE(strlen(value) <= 32);
-    }
+               Function | MediumTest | Level1)
+{
+  const char *value = GetSoftwareModel();
+  printf("Software Model=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
+  if (value != NULL)
+  {
+    TEST_ASSERT_TRUE(strlen(value) <= 32);
+  }
 };
 
 /**
@@ -696,10 +766,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetBuildRootHashFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetBuildRootHash();
-    printf("Build Root Hash=%s\n", value);
-    TEST_ASSERT_NOT_NULL(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetBuildRootHash();
+  printf("Build Root Hash=%s\n", value);
+  TEST_ASSERT_NOT_NULL(value);
 };
 
 /**
@@ -709,10 +780,11 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
  */
 LITE_TEST_CASE(DeviceInfoFuncTestSuite,
                testGetHardwareProfileFun001,
-               Function | MediumTest | Level1) {
-    const char* value = GetHardwareProfile();
-    printf("Hardware Profile=%s\n", value);
-    AssertNotEmpty(value);
+               Function | MediumTest | Level1)
+{
+  const char *value = GetHardwareProfile();
+  printf("Hardware Profile=%s\n", value);
+  AssertNotEmpty(value);
 };
 
 RUN_TEST_SUITE(DeviceInfoFuncTestSuite);

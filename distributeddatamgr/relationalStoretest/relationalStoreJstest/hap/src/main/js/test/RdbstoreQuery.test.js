@@ -12,23 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 import dataRdb from '@ohos.data.rdb';
-import factory from '@ohos.data.distributedData'
-import abilityFeatureAbility from '@ohos.ability.featureAbility'
+import factory from '@ohos.data.distributedData';
+import abilityFeatureAbility from '@ohos.ability.featureAbility';
 
 const TAG = "[RDB_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
     + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)"
-const DATABASE_DIR = "/data/storage/el2/database/entry/rdb/"
 const STORE_CONFIG = {
     name: "Query.db",
 }
 const TEST_BUNDLE_NAME="ohos.acts.relationalStorejstest"
 
-var kvManager = null;
-var kvStore = null;
-var localDeviceId = null;
+var kvManager = null
+var kvStore = null
+var localDeviceId = null
 var rdbStore
 let context = abilityFeatureAbility.getContext()
 

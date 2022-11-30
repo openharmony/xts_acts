@@ -13,8 +13,13 @@
  * limitations under the License.
  */
 import actsWifiFunctionTest from './WifiP2PFunction.test.js'
+import actsWifiManagerFunctionTest from './WifiManagerP2PFunction.test.js'
 import actsWifiEventTest from './WifiP2PEvent.test.js'
+import actsWifiManagerEventTest from './WifiManagerP2PEvent.test.js'
 export default function testsuite() {
-actsWifiFunctionTest()
-actsWifiEventTest()
+    actsWifiFunctionTest()
+    actsWifiManagerFunctionTest()
+    actsWifiEventTest()
+    actsWifiManagerEventTest()
 }
+

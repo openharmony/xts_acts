@@ -67,7 +67,7 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
                 await asset.commitModify(async (err) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }

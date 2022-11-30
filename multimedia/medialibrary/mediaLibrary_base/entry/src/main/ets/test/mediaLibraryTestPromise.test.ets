@@ -104,7 +104,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
                 relativePath: 'Audios/Static/',
                 size: 1958311,
                 mediaType: AUDIO_TYPE.toString(),
-                title: '01',
+                title: 'test',
                 artist: '元数据测试',
                 orientation: 0,
                 duration: '219600',

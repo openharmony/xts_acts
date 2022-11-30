@@ -4,8 +4,9 @@
         "type": "OHJSUnitTest",
         "test-timeout": "2100000",
         "bundle-name": "com.ohos.networksearch",
-        "package-name": "com.ohos.networksearch",  
-        "shell-timeout": "2100000"
+        "package-name": "com.ohos.networksearch",
+        "shell-timeout": "2100000",
+        "testcase-timeout":"300000"
     },
     "kits": [
         {

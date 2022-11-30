@@ -33,7 +33,7 @@ export default {
 
     let displayOrientationBefore = undefined;
     let displayOrientationAfter = undefined;
-    let setDisplayOrientation = undefined;
+    let setDisplayOrientation = 0;
     let orientation = bundle.DisplayOrientation.FOLLOW_RECENT;
 
     await ability_featureAbility.getContext().getDisplayOrientation().then((data) => {
@@ -45,7 +45,11 @@ export default {
 
     await ability_featureAbility.getContext().setDisplayOrientation(orientation).then((data) => {
       console.log(TAG1 + "setShowOnLockScreen data = " + JSON.stringify(data));
-      setDisplayOrientation = data;
+      if (data == undefined) {
+        setDisplayOrientation = 1
+      } else {
+        console.log(`${TAG1} setDisplayOrientation callBack is error: ${JSON.stringify(data)}`);
+      }
     }).catch((error) => {
       console.log(TAG1 + "setShowOnLockScreen error = " + JSON.stringify(error));
     })

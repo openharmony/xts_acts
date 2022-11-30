@@ -69,7 +69,7 @@ export default function fileTestCallbackTest(abilityContext) {
                 media.createAsset(type, displayName1, path, async (err, creatAsset1) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -106,7 +106,7 @@ export default function fileTestCallbackTest(abilityContext) {
                 media.createAsset(type, displayName, path, async (err, creatAsset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -138,7 +138,7 @@ export default function fileTestCallbackTest(abilityContext) {
                 asset.commitModify(async (err) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
+                        expect().assertFail();
                         done();
                         return;
                     }
@@ -168,7 +168,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_01';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '01', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '01.jpg', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/'
             let type = IMAGE_TYPE;
@@ -185,7 +185,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_02';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '02', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '02.jpg', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/';
             let type = IMAGE_TYPE;
@@ -204,7 +204,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_03';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '03', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '03.jpg', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/';
             let type = IMAGE_TYPE;
@@ -237,7 +237,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_08', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_08';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '04', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '04.jpg', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/';
             let type = IMAGE_TYPE;
@@ -256,7 +256,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_11', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_11';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '05', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '05.jpg', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/';
             let type = IMAGE_TYPE;
@@ -278,7 +278,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_01';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '01', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '01.mp4', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/'
             let type = VIDEO_TYPE;
@@ -295,7 +295,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_02';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '02', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '02.mp4', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/';
             let type = VIDEO_TYPE;
@@ -314,7 +314,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_03';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '03', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '03.mp4', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/';
             let type = VIDEO_TYPE;
@@ -347,7 +347,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_08', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_08';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '04', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '04.mp4', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/';
             let type = VIDEO_TYPE;
@@ -366,7 +366,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_11', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_11';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '05', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '05.mp4', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/';
             let type = VIDEO_TYPE;
@@ -387,7 +387,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_01';
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '01', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '01.mp3', AUDIO_TYPE)
             let name = 'mp3'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + 'create/'
             let type = AUDIO_TYPE;
@@ -404,7 +404,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_02';
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '02', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '02.mp3', AUDIO_TYPE)
             let name = 'mp3'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + 'create/';
             let type = AUDIO_TYPE;
@@ -423,7 +423,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_03';
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '03', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '03.mp3', AUDIO_TYPE)
             let name = 'mp3'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + 'create/';
             let type = AUDIO_TYPE;
@@ -456,7 +456,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_08', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_08';
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '05', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '05.mp3', AUDIO_TYPE)
             let name = 'mp3'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + 'create/';
             let type = AUDIO_TYPE;
@@ -478,7 +478,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_01';
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '01', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '01.dat', FILE_TYPE)
             let name = 'dat'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + 'create/'
             let type = FILE_TYPE;
@@ -495,7 +495,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_02';
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '02', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '02.dat', FILE_TYPE)
             let name = 'dat'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + 'create/';
             let type = FILE_TYPE;
@@ -514,7 +514,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_03';
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '03', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '03.dat', FILE_TYPE)
             let name = 'dat'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + 'create/';
             let type = FILE_TYPE;
@@ -547,7 +547,7 @@ export default function fileTestCallbackTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_08', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_08';
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '04', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '04.dat', FILE_TYPE)
             let name = 'dat'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + 'create/';
             let type = FILE_TYPE;

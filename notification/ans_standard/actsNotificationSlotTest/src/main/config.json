@@ -17,8 +17,8 @@
         "package": "com.example.actsnotificationslot",
         "name": ".entry",
         "deviceType": [
-      "tablet",
-      "default",
+            "tablet",
+            "default",
             "phone"
         ],
         "distro": {
