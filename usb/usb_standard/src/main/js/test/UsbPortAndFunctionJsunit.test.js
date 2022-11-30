@@ -64,9 +64,9 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number    : SUB_USB_JS_0350
-   * @tc.name      : functions_test
-   * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 1 设置为ACM功能
+   * @tc.number: SUB_USB_JS_0350
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 1, Set as ACM function
    */
   it('SUB_USB_JS_0350', 0, function () {
     CheckEmptyUtils.sleep(3000)
@@ -79,9 +79,9 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0360
-   * @tc.name      : functions_test
-   * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 2 设置为ECM功能
+   * @tc.number: SUB_USB_JS_0360
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 2, Set as ECM function
    */
   it('SUB_USB_JS_0360', 0, function () {
     CheckEmptyUtils.sleep(3000)
@@ -94,9 +94,9 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0370
-   * @tc.name      : functions_test
-   * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 3 设置为ACM、ECM功能
+   * @tc.number: SUB_USB_JS_0370
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 3, Set as ACM、ECM function
    */
   it('SUB_USB_JS_0370', 0, function () {
     CheckEmptyUtils.sleep(3000)
@@ -109,9 +109,9 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0380
-   * @tc.name      : functions_test
-   * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 4 设置为HDC功能
+   * @tc.number: SUB_USB_JS_0380
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 4, Set as HDC function
    */
   it('SUB_USB_JS_0380', 0, function () {
     CheckEmptyUtils.sleep(3000)
@@ -124,9 +124,9 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0390
-   * @tc.name      : functions_test
-   * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 5 设置为ACM、HDC功能
+   * @tc.number: SUB_USB_JS_0390
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 5, Set as ACM、HDC function
    */
   it('SUB_USB_JS_0390', 0, function () {
     CheckEmptyUtils.sleep(3000)
@@ -139,9 +139,9 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0400
-   * @tc.name      : functions_test
-   * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 6 设置为ECM、HDC功能
+   * @tc.number: SUB_USB_JS_0400
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 6, Set as ECM、HDC function
    */
   it('SUB_USB_JS_0400', 0, function () {
     CheckEmptyUtils.sleep(3000)
@@ -154,9 +154,9 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   })
 
     /**
-   * @tc.number    : SUB_USB_JS_0010
-   * @tc.name      : setPortRoles
-   * @tc.desc      : 切换为Device set powerRole 2 DataRole 2
+   * @tc.number: SUB_USB_JS_0010
+   * @tc.name: setPortRoles
+   * @tc.desc: Positive test: Switch to Device, set powerRole 2 DataRole 2
    */
   it('SUB_USB_JS_0010', 0, function () {
     console.info('usb SUB_USB_JS_0010 device 2 2 begin');
@@ -168,25 +168,24 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
     }
 
     for (var i = 0; i < usbPortList.length; i++) {
-      console.info('usb case set data role 2, data role 2');
+      console.info('usb 0010 case set data role 2, data role 2');
       usb.setPortRoles(usbPortList[i].id, usb.SINK, usb.DEVICE).then(data => {
-        console.info('usb case setPortRoles return: ' + data);
+        console.info('usb 0010 case setPortRoles return: ' + data);
         expect(data).assertTrue();
       }).catch(error => {
-        console.info('usb case setPortRoles error : ' + error);
+        console.info('usb 0010 case setPortRoles error : ' + error);
         expect(false).assertTrue();
       });
       CheckEmptyUtils.sleep(8000)
     }
 
     console.info('usb SUB_USB_JS_0010 device 2 2:  PASS');
-    expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0020
-   * @tc.name      : setPortRoles
-   * @tc.desc      : 切换为host set powerRole 1 DataRole 1
+   * @tc.number: SUB_USB_JS_0020
+   * @tc.name: setPortRoles
+   * @tc.desc: Positive test: Switch to host, set powerRole 1 DataRole 1
    */
   it('SUB_USB_JS_0020', 0, function () {
     console.info('usb SUB_USB_JS_0020 host 1 1 begin');
@@ -198,19 +197,18 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
     }
 
     for (var i = 0; i < usbPortList.length; i++) {
-      console.info('usb case set data role 1, data role 1');
+      console.info('usb 0020 case set data role 1, data role 1');
       usb.setPortRoles(usbPortList[i].id, usb.SOURCE, usb.HOST).then(data => {
+        console.info('usb 0020 case setPortRoles return: ' + data);
         expect(data).assertTrue();
-        console.info('usb case setPortRoles return: ' + data);
       }).catch(error => {
-        console.info('usb case setPortRoles error : ' + error);
+        console.info('usb 0020 case setPortRoles error : ' + error);
         expect(false).assertTrue();
       });
       CheckEmptyUtils.sleep(8000)
     }
 
     console.info('usb SUB_USB_JS_0020 host 1 1:  PASS');
-    expect(true).assertTrue();
   })
 })
 }

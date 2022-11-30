@@ -62,9 +62,9 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0480
-   * @tc.name      : getDevices
-   * @tc.desc      : 获取设备列表
+   * @tc.number: SUB_USB_JS_0480
+   * @tc.name: getDevices
+   * @tc.desc: Positive test: Get device list
    */
   it('SUB_USB_JS_0480', 0, function () {
     console.info('usb SUB_USB_JS_0480 begin');
@@ -80,15 +80,15 @@ describe('UsbCoreJsFunctionsTest', function () {
       expect(false).assertTrue();
       return
     }
-    expect(gDeviceList.length).assertLarger(0);
     console.info('usb case getDevices ret length: ' + gDeviceList.length);
+    expect(gDeviceList.length).assertLarger(0);
     console.info('usb SUB_USB_JS_0480:  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0710
-   * @tc.name      : hasRight
-   * @tc.desc      : 权限查询 连接设备 关闭设备
+   * @tc.number: SUB_USB_JS_0710
+   * @tc.name: hasRight
+   * @tc.desc: Positive test: Permission query
    */
   it('SUB_USB_JS_0710', 0, function () {
     console.info('usb has_right_01 begin');
@@ -108,14 +108,14 @@ describe('UsbCoreJsFunctionsTest', function () {
       console.info('usb has_right ret :' + hasRight);
     }
 
-    console.info('usb SUB_USB_JS_0710 :  PASS');
     expect(true).assertTrue();
+    console.info('usb SUB_USB_JS_0710 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0680
-   * @tc.name      : requestRight
-   * @tc.desc      : 请求权限
+   * @tc.number: SUB_USB_JS_0680
+   * @tc.name: requestRight
+   * @tc.desc: Positive test: Request permission
    */
   it('SUB_USB_JS_0680', 0, function () {
     console.info('usb SUB_USB_JS_0680 begin');
@@ -132,8 +132,8 @@ describe('UsbCoreJsFunctionsTest', function () {
 
     for (var i = 0; i < gDeviceList.length; i++) {
       usb.requestRight(gDeviceList[i].name).then(hasRight => {
-        expect(hasRight).assertTrue();
         console.info('usb request_right ret :' + hasRight);
+        expect(hasRight).assertTrue();
         console.info('usb SUB_USB_JS_0680 :  PASS');
       }).catch(error => {
         console.info('usb case device request right failed : ' + error + ' :' + gDeviceList[i].name);
@@ -144,11 +144,11 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1080
-   * @tc.name      : removeRight
-   * @tc.desc      : 移除权限
+   * @tc.number: SUB_USB_JS_1080
+   * @tc.name: removeRight
+   * @tc.desc: Positive test: Remove Permissions
    */
-   it('SUB_USB_JS_1080', 0, function () {
+  it('SUB_USB_JS_1080', 0, function () {
     console.info('usb SUB_USB_JS_1080 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -176,9 +176,9 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0090
-   * @tc.name      : connectDevice
-   * @tc.desc      : 打开设备
+   * @tc.number: SUB_USB_JS_0090
+   * @tc.name: connectDevice
+   * @tc.desc: Positive test: open device
    */
   it('SUB_USB_JS_0090', 0, function () {
     console.info('usb SUB_USB_JS_0090 begin');
@@ -210,9 +210,9 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0250
-   * @tc.name      : closePipe
-   * @tc.desc      : 反向测试 关闭设备 错误 busNum
+   * @tc.number: SUB_USB_JS_0250
+   * @tc.name: closePipe
+   * @tc.desc: Negative test: close device, busNum error
    */
   it('SUB_USB_JS_0250', 0, function () {
     console.info('usb SUB_USB_JS_0250 begin');
@@ -237,9 +237,9 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0260
-   * @tc.name      : closePipe
-   * @tc.desc      : 反向测试 关闭设备 错误 devAddress
+   * @tc.number: SUB_USB_JS_0260
+   * @tc.name: closePipe
+   * @tc.desc: Negative test: close device, devAddress error
    */
   it('SUB_USB_JS_0260', 0, function () {
     console.info('usb SUB_USB_JS_0260 begin');
@@ -263,9 +263,9 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0270
-   * @tc.name      : closePipe
-   * @tc.desc      : 反向测试 关闭设备 错误 devAddress busNum
+   * @tc.number: SUB_USB_JS_0270
+   * @tc.name: closePipe
+   * @tc.desc: Negative test: close device, devAddress && busNum error
    */
   it('SUB_USB_JS_0270', 0, function () {
     console.info('usb SUB_USB_JS_0270 begin');
@@ -290,9 +290,9 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0240
-   * @tc.name      : closePipe
-   * @tc.desc      : 关闭设备
+   * @tc.number: SUB_USB_JS_0240
+   * @tc.name: closePipe
+   * @tc.desc: Positive test: close device
    */
   it('SUB_USB_JS_0240', 0, function () {
     console.info('usb SUB_USB_JS_0240 begin');
@@ -316,9 +316,9 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0530
-   * @tc.name      : getRawDescriptor
-   * @tc.desc      : 获取原始的USB描述符
+   * @tc.number: SUB_USB_JS_0530
+   * @tc.name: getRawDescriptor
+   * @tc.desc: Positive test: Get the original USB descriptor
    */
   it('SUB_USB_JS_0530', 0, function () {
     console.info('usb SUB_USB_JS_0530 begin');
@@ -337,7 +337,7 @@ describe('UsbCoreJsFunctionsTest', function () {
     console.info('usb case getRawDescriptor param: ' + JSON.stringify(gPipe));
     var descriptor = usb.getRawDescriptor(gPipe);
     console.info('usb case getRawDescriptor ret: ' + descriptor);
-    expect(true).assertTrue();
+    expect(descriptor.length).assertLarger(0);
     var isPipClose = usb.closePipe(gPipe);
     expect(isPipClose).assertEqual(0);
 
@@ -345,9 +345,9 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0490
-   * @tc.name      : getFileDescriptor
-   * @tc.desc      : 获取文件描述符
+   * @tc.number: SUB_USB_JS_0490
+   * @tc.name: getFileDescriptor
+   * @tc.desc: Positive test: Get file descriptor
    */
   it('SUB_USB_JS_0490', 0, function () {
     console.info('usb SUB_USB_JS_0490 begin');
@@ -365,7 +365,7 @@ describe('UsbCoreJsFunctionsTest', function () {
     console.info('usb case getFileDescriptor param: ' + JSON.stringify(gPipe));
     var fileDescriptor = usb.getFileDescriptor(gPipe);
     console.info('usb case getFileDescriptor ret: ' + fileDescriptor);
-    expect(true).assertTrue();
+    expect(fileDescriptor >= 0).assertTrue();
     var isPipClose = usb.closePipe(gPipe);
     expect(isPipClose).assertEqual(0);
 
@@ -373,9 +373,9 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0500
-   * @tc.name      : getFileDescriptor
-   * @tc.desc      : 获取文件描述符,反向测试，错误参数busNum=512
+   * @tc.number: SUB_USB_JS_0500
+   * @tc.name: getFileDescriptor
+   * @tc.desc: Negative test: Get file descriptor, error busNum=512
    */
   it('SUB_USB_JS_0500', 0, function () {
     console.info('usb SUB_USB_JS_0500 begin');
@@ -401,12 +401,12 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
    /**
-    * @tc.number    : SUB_USB_JS_0510
-    * @tc.name      : getFileDescriptor
-    * @tc.desc      : 获取文件描述符,反向测试，错误参数devAddress=512
+    * @tc.number: SUB_USB_JS_0510
+    * @tc.name: getFileDescriptor
+    * @tc.desc: Negative test: Get file descriptor,error devAddress=512
     */
   it('SUB_USB_JS_0510', 0, function () {
-    console.info('usb get_file_descriptor_03 begin');
+    console.info('usb SUB_USB_JS_0510 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -429,12 +429,12 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-  * @tc.number    : SUB_USB_JS_0520
-  * @tc.name      : getFileDescriptor
-  * @tc.desc      : 获取文件描述符,反向测试，错误参数busNum=512，devAddress=512
+  * @tc.number: SUB_USB_JS_0520
+  * @tc.name: getFileDescriptor
+  * @tc.desc: Negative test: Get file descriptor,error busNum=512 && devAddress=512
   */
   it('SUB_USB_JS_0520', 0, function () {
-    console.info('usb get_file_descriptor_04 begin');
+    console.info('usb SUB_USB_JS_0520 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -457,11 +457,11 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1070
-   * @tc.name      : getFileDescriptor
-   * @tc.desc      : 反向测试 获取文件描述符 参数类型错误
+   * @tc.number: SUB_USB_JS_1070
+   * @tc.name: getFileDescriptor
+   * @tc.desc: Negative test: Get file descriptor, parameter type error
    */
-   it('SUB_USB_JS_1070', 0, function () {
+  it('SUB_USB_JS_1070', 0, function () {
     console.info('usb SUB_USB_JS_1070 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -486,11 +486,11 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1230
-   * @tc.name      : getFileDescriptor
-   * @tc.desc      : 反向测试 获取文件描述符 参数个数错误，必要参数未传入
+   * @tc.number: SUB_USB_JS_1230
+   * @tc.name: getFileDescriptor
+   * @tc.desc: Negative test: Get file descriptor, parameter number exception, necessary parameters not input
    */
-   it('SUB_USB_JS_1230', 0, function () {
+  it('SUB_USB_JS_1230', 0, function () {
     console.info('usb SUB_USB_JS_1230 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
