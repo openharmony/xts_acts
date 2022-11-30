@@ -1012,33 +1012,41 @@ describe('window_test', function () {
      * @tc.name        Test isShowing_Test_001.
      * @tc.desc        To verify the function of obtaining the display status when a window is hidden and then displayed.
      */
-    it('isShowing_Test_001', 0, async function (done) {
-        console.log('windowTest IsShowingTest1 begin');
+     it('isShowing_Test_001', 0, async function (done) {
+        console.log('windowTest IsShowingTest1 begin---resetSize');
         window.create('subWindow1', window.WindowType.TYPE_APP).then(wnd => {
             expect(wnd != null).assertTrue();
-            wnd.isShowing().then(res => {
-                console.log('windowTest IsShowingTest1 wnd.isShowing data:' + res);
-                expect(!res).assertTrue();
-                wnd.show().then(() => {
-                    wnd.isShowing().then(res => {
-                        expect(res).assertTrue();
-                        wnd.destroy();
-                        done();
+            console.log('IsShowingTest1 wnd.resetSize(400, 400) begin');
+            wnd.resetSize(400, 400).then(() => {
+                console.log('windowTest IsShowingTest1 wnd.resetSize(400, 400) success');
+                wnd.isShowing().then(res => {
+                    console.log('windowTest IsShowingTest1 wnd.isShowing data:' + res);
+                    expect(!res).assertTrue();
+                    wnd.show().then(() => {
+                        wnd.isShowing().then(res => {
+                            expect(res).assertTrue();
+                            wnd.destroy();
+                            done();
+                        }, (err) => {
+                            console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
                     }, (err) => {
-                        console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
+                        console.log('windowTest IsShowingTest1 wnd.show failed, err :' + JSON.stringify(err));
                         expect().assertFail();
                         done();
                     })
                 }, (err) => {
-                    console.log('windowTest IsShowingTest1 wnd.show failed, err :' + JSON.stringify(err));
+                    console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
                     expect().assertFail();
                     done();
                 })
-            }, (err) => {
-                console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
-                expect().assertFail();
-                done();
+            }, (err_resetSize) => {
+                console.log('windowTest IsShowingTest1 wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
             })
+        
+            
         })
     })
 
@@ -1056,34 +1064,40 @@ describe('window_test', function () {
                 done();
             } else {
                 expect(data != null).assertTrue();
-                data.isShowing((err, res1) => {
-                    if (err.code) {
-                        console.log('windowTest IsShowingTest2 data.isShowing fail err ' + JSON.stringify(err));
-                        expect().assertFail();
-                        done();
-                    } else {
-                        expect(!res1).assertTrue();
-                        data.show(() => {
-                            if (err.code) {
-                                console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
-                                expect().assertFail();
-                                done();
-                            } else {
-                                data.isShowing((err, res2) => {
-                                    if (err.code) {
-                                        console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
-                                        expect().assertFail();
-                                        done();
-                                    } else {
-                                        expect(res2).assertTrue();
-                                        data.destroy();
-                                        done();
-                                    }
-                                })
-                            }
-                        })
-                    }
+                data.resetSize(400, 400).then(() => {
+                    console.log('windowTest IsShowingTest2 wnd.resetSize(400, 400) success');
+                    data.isShowing((err, res1) => {
+                        if (err.code) {
+                            console.log('windowTest IsShowingTest2 data.isShowing fail err ' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        } else {
+                            expect(!res1).assertTrue();
+                            data.show(() => {
+                                if (err.code) {
+                                    console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                } else {
+                                    data.isShowing((err, res2) => {
+                                        if (err.code) {
+                                            console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
+                                            expect().assertFail();
+                                            done();
+                                        } else {
+                                            expect(res2).assertTrue();
+                                            data.destroy();
+                                            done();
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }, (err_resetSize) => {
+                    console.log('windowTest IsShowingTest2 wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
                 })
+                
             }
         })
     })
@@ -1236,7 +1250,13 @@ describe('window_test', function () {
         window.create('subWindow3', window.WindowType.TYPE_APP).then(wnd => {
             console.log('windowTest CreateTest1 create success wnd' + wnd);
             expect(wnd != null).assertTrue();
-            done();
+            wnd.resetSize(400, 400).then(() => {
+                console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                done();
+            }, (err_resetSize) => {
+                console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
+            })
+            
         }, (err) => {
             console.log('windowTest CreateTest1 create failed, err :' + JSON.stringify(err));
             expect().assertFail();
@@ -1259,7 +1279,12 @@ describe('window_test', function () {
             } else {
                 expect(data != null).assertTrue();
                 console.log('windowTest CreateTest2 callback create success data' + data);
-                done();
+                data.resetSize(400, 400).then(() => {
+                    console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                    done();
+                }, (err_resetSize) => {
+                    console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
+                })
             }
         })
     })
@@ -1274,29 +1299,33 @@ describe('window_test', function () {
         window.create('subWindow5', window.WindowType.TYPE_APP).then(wnd => {
             console.log('windowTest DestroyTest1 create success wnd' + wnd);
             expect(wnd != null).assertTrue();
-            wnd.destroy().then(() => {
-                window.find('subWindow5').then((data) => {
-                    console.log('windowTest DestroyTest1 window.find success, window :' + JSON.stringify(data));
+            wnd.resetSize(400, 400).then(() => {
+                console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                wnd.destroy().then(() => {
+                    window.find('subWindow5').then((data) => {
+                        console.log('windowTest DestroyTest1 window.find success, window :' + JSON.stringify(data));
+                        expect().assertFail();
+                        done();
+                    }, (err) => {
+                        console.log('windowTest DestroyTest1 find failed, err :' + JSON.stringify(err));
+                        expect(err.code).assertEqual(1001);
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest CreateTest1 destroy failed, err :' + JSON.stringify(err));
                     expect().assertFail();
                     done();
-                }, (err) => {
-                    console.log('windowTest DestroyTest1 find failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(1001);
-                    done();
                 })
-            }, (err) => {
-                console.log('windowTest CreateTest1 destroy failed, err :' + JSON.stringify(err));
-                expect().assertFail();
-                done();
+            }, (err_resetSize) => {
+                console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
             })
+            
         }, (err) => {
             console.log('windowTest CreateTest1 create failed, err :' + JSON.stringify(err));
             expect().assertFail();
             done();
         })
     })
-
-
     /**
      * @tc.number    SUB_WMS_DESTROY_JSAPI_002
      * @tc.name      Test destroy_Test_002
@@ -1311,26 +1340,32 @@ describe('window_test', function () {
                 done();
             } else {
                 expect(data != null).assertTrue();
-                data.destroy((err) => {
-                    if (err.code != 0) {
-                        console.log('windowTest DestroyTest2 create callback fail' + JSON.stringify(err));
-                        expect().assertFail();
-                        done();
-                    } else {
-                        window.find('subWindow6', (err, data) => {
-                            console.log('windowTest DestroyTest2 find callback begin' + JSON.stringify(data));
-                            if (err.code != 0) {
-                                console.log('windowTest DestroyTest2 find callback fail' + JSON.stringify(err.code));
-                                expect(err.code).assertEqual(1001);
-                                done();
-                            } else {
-                                console.log('windowTest DestroyTest2 find suceess,err : ' + JSON.stringify(err));
-                                expect().assertFail();
-                                done();
-                            }
-                        })
-                    }
+                data.resetSize(400, 400).then(() => {
+                    console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                    data.destroy((err) => {
+                        if (err.code != 0) {
+                            console.log('windowTest DestroyTest2 create callback fail' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        } else {
+                            window.find('subWindow6', (err, data) => {
+                                console.log('windowTest DestroyTest2 find callback begin' + JSON.stringify(data));
+                                if (err.code != 0) {
+                                    console.log('windowTest DestroyTest2 find callback fail' + JSON.stringify(err.code));
+                                    expect(err.code).assertEqual(1001);
+                                    done();
+                                } else {
+                                    console.log('windowTest DestroyTest2 find suceess,err : ' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                }
+                            })
+                        }
+                    })
+                }, (err_resetSize) => {
+                    console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
                 })
+                
             }
         })
     })
