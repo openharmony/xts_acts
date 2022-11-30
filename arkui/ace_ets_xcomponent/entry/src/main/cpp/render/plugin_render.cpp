@@ -37,8 +37,8 @@ double PluginRender::off_x = 0;
 double PluginRender::off_y = 0;
 uint32_t PluginRender::toolType_ = 5;
 uint32_t PluginRender::mousecallback_ = 0;
-float PluginRender::tiltX_= 0;
-float PluginRender::tiltY_= 0;
+float PluginRender::tiltX_ = 0;
+float PluginRender::tiltY_ = 0;
 uint32_t PluginRender::touchType = 4;
 OH_NativeXComponent_TouchEvent PluginRender::testTouchEvent_;
 OH_NativeXComponent_MouseEvent PluginRender::testMouseEvent_;
@@ -159,7 +159,8 @@ void PluginRender::SetNativeXComponent(OH_NativeXComponent* component)
 {
     component_ = component;
     OH_NativeXComponent_RegisterCallback(component_, &PluginRender::callback_);
-    uint32_t mousecallback = OH_NativeXComponent_RegisterMouseEventCallback(component_, &PluginRender::mouseEventcallback_);
+    uint32_t mousecallback = OH_NativeXComponent_RegisterMouseEventCallback(component_,
+        &PluginRender::mouseEventcallback_);
     mousecallback_ = mousecallback;
 }
 
@@ -220,12 +221,12 @@ void PluginRender::DispatchTouchEvent(OH_NativeXComponent* component, void* wind
     if (ret == OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
         testTouchEvent_ = touchEvent_;
         LOGE("Touch Info : x = %{public}f, y = %{public}f screenx = %{public}f, screeny = %{public}f",
-             touchEvent_.x, touchEvent_.y, touchEvent_.screenX, touchEvent_.screenY);
+            touchEvent_.x, touchEvent_.y, touchEvent_.screenX, touchEvent_.screenY);
         for (uint32_t i = 0; i < touchEvent_.numPoints; i++) {
             LOGE("Touch Info : dots[%{public}d] id %{public}d x = %{public}f, y = %{public}f", i,
-                 touchEvent_.touchPoints[i].id, touchEvent_.touchPoints[i].x, touchEvent_.touchPoints[i].y);
+                touchEvent_.touchPoints[i].id, touchEvent_.touchPoints[i].x, touchEvent_.touchPoints[i].y);
             LOGE("Touch Info : screenx = %{public}f, screeny = %{public}f",
-                 touchEvent_.touchPoints[i].screenX, touchEvent_.touchPoints[i].screenY);
+                touchEvent_.touchPoints[i].screenX, touchEvent_.touchPoints[i].screenY);
             OH_NativeXComponent_TouchPointToolType toolType = OH_NativeXComponent_TouchPointToolType::OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN;
             float tiltX = 123.0;
             float tiltY = 321.0;
@@ -238,7 +239,8 @@ void PluginRender::DispatchTouchEvent(OH_NativeXComponent* component, void* wind
             toolType_ = toolType;
             tiltX_ = tiltX;
             tiltY_ = tiltY;
-            LOGE("Touch Info : DispatchTouchEvent dots[%{public}d] toolType=%{public}u, tiltX=%{public}f, tiltY=%{public}f", i, toolType, tiltX, tiltY);
+            LOGE("Touch Info : DispatchTouchEvent dots[%{public}d] toolType=%{public}u, tiltX=%{public}f, tiltY=%{public}f",
+                i, toolType, tiltX, tiltY);
         }
     } else {
         LOGE("Touch fail");
@@ -264,7 +266,8 @@ napi_value PluginRender::Export(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("TestGetXComponentpointtool_tilty", PluginRender::TestGetXComponentpointtool_tilty),
         DECLARE_NAPI_FUNCTION("TestGetXComponentpointtool_type", PluginRender::TestGetXComponentpointtool_type),
         DECLARE_NAPI_FUNCTION("TestGetXComponentpointtool_tiltx", PluginRender::TestGetXComponentpointtool_tiltx),
-        DECLARE_NAPI_FUNCTION("TestGetXComponent_RegisterMouseEventCallback", PluginRender::TestGetXComponent_RegisterMouseEventCallback),
+        DECLARE_NAPI_FUNCTION("TestGetXComponent_RegisterMouseEventCallback",
+            PluginRender::TestGetXComponent_RegisterMouseEventCallback),
 
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc));
@@ -278,8 +281,8 @@ void PluginRender::DispatchMouseEvent(OH_NativeXComponent* component, void* wind
     LOGE("----------TestMouse Mouse Info DispatchMouseEvent");
     if (ret == OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
         testMouseEvent_ = mouseEvent_;
-        LOGE("TestMouse Mouse Info : x = %{public}f, y = %{public}f screenx = %{public}f, screeny = %{public}f", mouseEvent_.x, mouseEvent_.y, mouseEvent_.screenX, mouseEvent_.screenY);
-        LOGE("TestMouse Mouse Info : action = %{public}d, button = %{public}d, time = %{public}lld", mouseEvent_.action, mouseEvent_.button, mouseEvent_.timestamp );
+        LOGE("TestMouse Mouse Info : x = %{public}f, y = %{public}f screenx = %{public}f, screeny = %{public}f",
+            mouseEvent_.x, mouseEvent_.y, mouseEvent_.screenX, mouseEvent_.screenY);
         LOGE("TestMouse Mouse Info : action = %{public}d, button = %{public}d", mouseEvent_.action, mouseEvent_.button);
     } else {
         LOGE("Mouse Info fail");
@@ -556,8 +559,6 @@ napi_value PluginRender::TestGetXComponent_RegisterMouseEventCallback(napi_env e
     LOGE("xclog running PluginRender::TestGetXComponent_RegisterMouseEventCallback");
 
     napi_value callback_;
-
-
     NAPI_CALL(env, napi_create_double(env, mousecallback_, &(callback_)));
 
     napi_value obj;
