@@ -23,12 +23,6 @@ config("deqp_platform_ohos_config") {
   ]
 
   defines = deqp_common_defines
-
-  # defines -=["DE_PTR_SIZE=8"]
-  defines += [
-    "DE_PTR_SIZE=4",
-    "_XOPEN_SOURCE=600",
-  ]
 }
 
 ohos_static_library("libdeqpgles2func0008") {
@@ -42,7 +36,6 @@ ohos_static_library("libdeqpgles2func0008") {
     "multimedia_image_framework:image_native",
   ]
   configs = [ ":deqp_platform_ohos_config" ]
-  public_deps = [ "//foundation/ace/ace_engine/build/external_config/flutter/skia:ace_skia_ohos" ]
 }
 
 ohos_moduletest_suite("ActsDeqpgles2TestSuite0008") {
