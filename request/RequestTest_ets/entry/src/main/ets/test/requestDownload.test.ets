@@ -758,13 +758,13 @@ export default function requestDownloadJSUnit() {
         console.info("====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 downloadTask: " + downloadTask);
         try{
           expect(downloadTask != undefined).assertEqual(true);
-          downloadTask.on('progress', (data1, data2)=>{
+          downloadTask.on('progress', async (data1, data2)=>{
             try{
-              if (data1 > 0){
+              if (data1 > 0 && downloadTask != null){
                 downloadTask.queryMimeType((err, data) => {
                   try{
                     if(err) {
-                      console.error('====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 err:'+ JSON.stringify(err));
+                      console.error('====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 return_err:'+ JSON.stringify(err));
                       expect().assertFail();
                       done();
                     }
@@ -772,22 +772,23 @@ export default function requestDownloadJSUnit() {
                       console.info('====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 data:' + JSON.stringify(data));
                       expect(typeof data == "string").assertTrue();
                     } else {
-                      console.error("====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 error: " + JSON.stringify(err));
+                      console.error("====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 data_error: " + JSON.stringify(err));
                       expect().assertFail(); 
                     }
                   }catch(err){
                     console.error("====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 throw_error: " + JSON.stringify(err));
-                  }
-                  setTimeout(async ()=>{
-                    await downloadTask.remove()
-                    done();
-                  },1000)         
+                  }    
                 });
+              }
+              if (data1 == data2){
+                downloadTask = null
+                await downloadTask.remove()
+                done();
               }
             }catch(err){
               console.error("====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 error: " + JSON.stringify(err));
               done();
-            }            
+            }   
           })          
         }catch(err){
           console.error("====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 error: " + JSON.stringify(err));
@@ -813,14 +814,15 @@ export default function requestDownloadJSUnit() {
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('progress', async (data1, data2) => {
             try{
-              if(data1 > 0){
+              if(data1 > 0 && downloadTask != null){
                 let data = await downloadTask.queryMimeType()
                 console.info('====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0002 Download task queryMimeType.');
-                expect(typeof data == "string").assertTrue();                  
-                setTimeout(async ()=>{
-                  await downloadTask.remove()
-                  done();
-                },1000)                    
+                expect(typeof data == "string").assertTrue();   
+              }
+              if(data1 == data2){
+                downloadTask = null
+                await downloadTask.remove()
+                done();
               }
             }catch(err){
               console.error("====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0002 throw_error: " + JSON.stringify(err));
