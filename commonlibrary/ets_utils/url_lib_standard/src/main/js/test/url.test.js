@@ -2802,6 +2802,62 @@ describe('UrlFunTest', function () {
         var result = params.toString()
         expect(result).assertEqual("%E4%BD%A0%E5%A5%BD=china")
     })
+   /**
+     * @tc.name: testUrlURLParams001
+     * @tc.desc: Gets the SearchParams portion of the URL
+     */
+    it('testUrlURLParams001', 0, function () {
+        var that = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
+        var seach = that.params
+        var result = seach.toString()
+        expect(result).assertEqual('foo=1&bar=2')
+    })
+
+    /**
+     * @tc.name: testUrlURLParams002
+     * @tc.desc: Gets the SearchParams portion of the URL
+     */
+    it('testUrlURLParams002', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2')
+        let seach = that.params
+        seach.append("ma 大","jk￥")
+        var result = seach.toString()
+        expect(result).assertEqual("foo=1&bar=2&ma+%E5%A4%A7=jk%EF%BF%A5")
+    })
+
+    /**
+     * @tc.name: testUrlURLParams003
+     * @tc.desc: Gets the SearchParams portion of the URL
+     */
+    it('testUrlURLParams003', 0, function () {
+        let that = new Url.URL('https://example.com?d=value1&c=value2&b=大&4=key4')
+        let seach = that.params
+        var result = seach.toString()
+        expect(result).assertEqual("d=value1&c=value2&b=%E5%A4%A7&4=key4")
+    })
+
+    /**
+     * @tc.name: testUrlURLParams004
+     * @tc.desc: Gets the SearchParams portion of the URL
+     */
+    it('testUrlURLParams004', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2')
+        let seach = that.params
+        seach.append("foo~!@#$%^&*()_+-=","jk")
+        var result = seach.toString()
+        expect(result).assertEqual("foo=1&bar=2&foo%7E%21%40%23%24%25%5E%26*%28%29_%2B-%3D=jk")
+    })
+
+    /**
+     * @tc.name: testUrlURLParams005
+     * @tc.desc: Gets the SearchParams portion of the URL
+     */
+    it('testUrlURLParams005', 0, function () {
+        let that = new Url.URL('http://username:password@host:8080/directory/file?你好=china#qwer=da')
+        let seach = that.params
+        var result = seach.toString()
+        expect(result).assertEqual("%E4%BD%A0%E5%A5%BD=china")
+    })
 
     /**
      * @tc.name: testUrlToJson001
