@@ -12,13 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import device from '@system.device';
+import DeviceStatusUnitTest from './device_status_unittest.test'
 
-export default {
-    onCreate() {
-        console.info('MsdpApplication onCreate');
-    },
-    onDestroy() {
-        console.info('MsdpApplication onDestroy');
-    }
-};
+export default function testsuite() {
+    DeviceStatusUnitTest()
+}

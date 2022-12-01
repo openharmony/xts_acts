@@ -13,22 +13,23 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("msdp_devicestatus_test") {
+ohos_js_hap_suite("msdp_device_status_test") {
   hap_profile = "./src/main/config.json"
   deps = [
-    ":msdp_devicestatus_js_assets",
-    ":msdp_devicestatus_resources",
+    ":msdp_device_status_js_assets",
+    ":msdp_device_status_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsMsdpDeviceStatusTest"
-
   subsystem_name = "msdp"
   part_name = "device_status"
 }
-ohos_js_assets("msdp_devicestatus_js_assets") {
-  source_dir = "./src/main/js/default"
+ohos_js_assets("msdp_device_status_js_assets") {
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
-ohos_resources("msdp_devicestatus_resources") {
+ohos_resources("msdp_device_status_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }
