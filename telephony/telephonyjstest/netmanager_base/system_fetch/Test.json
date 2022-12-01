@@ -6,7 +6,7 @@
         "bundle-name": "com.ohos.system_fetch",
         "package-name": "com.ohos.system_fetch",
         "shell-timeout": "900000",
-        "testcase-timeout": "40000"
+        "testcase-timeout": "60000"
     },
     "kits": [
         {

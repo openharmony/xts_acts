@@ -30,7 +30,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
         http.request("https://httpbin.org/anything").then(function(data){
             expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue();
             done();
-        })
+        });
     });
 
     /**
@@ -46,7 +46,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
             console.info(JSON.stringify(data));
             expect(JSON.parse(data.result)["user-agent"] === "libcurl-agent/1.0").assertTrue();
             done();
-        })
+        });
     });
 
     /**
@@ -62,7 +62,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
             console.info("NETSTACK ####" + JSON.stringify(JSON.parse(data.result)))
             expect(JSON.parse(data.result)["headers"]["Content-Type"] === "application/json").assertTrue()
             done()
-        })
+        });
     });
 
     /**
@@ -80,7 +80,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
             expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue()
             expect(JSON.parse(data.result)["data"] === "MineMine").assertTrue()
             done();
-        })
+        });
     });
 
     /**
@@ -98,7 +98,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
             expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue()
             expect(JSON.parse(data.result)["data"] === "MineMine").assertTrue()
             done();
-        })
+        });
     });
 
     /**
@@ -113,7 +113,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
             expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue()
             expect(data.cookies !== "").assertTrue()
             done();
-        })
+        });
     });
 
     /**
@@ -136,7 +136,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
             expect(JSON.parse(data.result)["name1"] === "mine1").assertTrue()
             expect(JSON.parse(data.result)["name2"] === "mine2").assertTrue()
             done();
-        })
+        });
     });
 });
 }
