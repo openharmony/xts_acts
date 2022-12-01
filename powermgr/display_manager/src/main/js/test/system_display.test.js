@@ -198,7 +198,7 @@ export default async function SystemDisplayTest() {
                 },
                 complete: () => {
                     console.log("The device information is obtained successfully. Procedure");
-		            done();
+                    done();
                 }
             });
         });
