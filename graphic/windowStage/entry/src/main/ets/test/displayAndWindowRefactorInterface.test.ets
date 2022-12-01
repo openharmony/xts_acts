@@ -1921,11 +1921,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         expect(!!wnd).assertTrue();
         let loopCount = windowModeArr;
         console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount))
-        for (let i = 0; i < loopCount.length; i++) {
-          sleep(500)
-          let tempType = ohosWindow.WindowMode[loopCount[i]];
-          console.log(msgStr + 'tempWnd.setWindowMode ' + tempType + ' start');
+        getData(0, loopCount.length)
+
+        function getData(i, length) {
           try {
+            let tempType = ohosWindow.WindowMode[loopCount[i]];
+            console.log(msgStr + 'tempWnd.setWindowMode tempType:' + tempType + ' start i:' + i);
             wnd.setWindowMode(tempType, (err, data) => {
               if (err && err.code) {
                 console.log(msgStr + 'currentType: ' + tempType)
@@ -1937,11 +1938,16 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
                 console.info(msgStr + 'Succeeded in setting the window mode. loopCount.length: ' + loopCount.length);
                 if (sumCount == loopCount.length) done();
               }
+              if (++i < length) {
+                getData(i, length)
+                console.log(msgStr + 'jixuzhixing  i: ' + i);
+              } else {
+                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length + '   ,tempType:' + tempType);
+              }
             })
           } catch (exception) {
             console.error(msgStr + 'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
           }
-          ;
         }
       } catch (exception) {
         console.error(msgStr + 'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));

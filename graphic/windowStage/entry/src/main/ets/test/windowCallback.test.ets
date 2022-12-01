@@ -955,7 +955,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     /**
      * @tc.number     SUB_WINDOW_CREATE_JSAPI_005
      * @tc.name       Test create5
-     * @tc.desc       Verify the scenario of creating the application type window
+     * @tc.desc       Scheme of Failed to Create Application Type Window in Stage Mode
      */
     it('createTest5', 0, done => {
       let caseName = 'createTest5';
