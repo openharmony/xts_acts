@@ -29,10 +29,9 @@ export default function Http2Test() {
             http.request("https://www.zhihu.com", {
                 usingProtocol: net_Http.HttpProtocol.HTTP1_1
             }).then(function (data) {
-                console.info("Telephony_NETSTACK_Http2TestBasicGet_0100" + JSON.stringify(data));
                 expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
                 done();
-            })
+            });
         });
 
         /**
@@ -48,7 +47,7 @@ export default function Http2Test() {
                 console.info("Telephony_NETSTACK_Http2TestBasicGet_0200" + JSON.stringify(data));
                 expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
                 done();
-            })
+            });
         });
 
         /**
@@ -62,7 +61,7 @@ export default function Http2Test() {
                 console.info("Telephony_NETSTACK_Http2TestBasicGet_0300" + JSON.stringify(data));
                 expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
                 done();
-            })
+            });
         });
 
         /**
@@ -112,6 +111,6 @@ export default function Http2Test() {
                 done();
                 return;
             }
-        })
+        });
     });
 }
