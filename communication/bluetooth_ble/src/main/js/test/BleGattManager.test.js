@@ -125,6 +125,7 @@ describe('bluetoothBLETest', function() {
         console.info('[bluetooth_js] gattClient connect' + ret)
         expect(ret).assertTrue();
         gattClient.disconnect();
+        await sleep(2000);
         await gattClient.off("BLEConnectionStateChange");
         done()
    })
