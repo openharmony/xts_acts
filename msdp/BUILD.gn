@@ -13,7 +13,5 @@
 import("//build/ohos_var.gni")
 group("msdp") {
   testonly = true
-  deps = [
-    "device_status:msdp_device_status_test"
-  ]
+  deps = [ "device_status:msdp_device_status_test" ]
 }
