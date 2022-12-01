@@ -31,7 +31,6 @@ export default function HttpCacheTest() {
             http.request('https://httpbin.org/anything', {
                 usingCache : true
             }).then(function(data){
-                console.info(CaseName + JSON.stringify(data));
                 expect(data.responseCode === net_http.ResponseCode.OK).assertTrue();
                 done();
                 return;
@@ -75,7 +74,7 @@ export default function HttpCacheTest() {
                     expect(data === undefined).assertTrue();
                     done();
                     return;
-                })
+                });
             });
         });
 
@@ -97,7 +96,7 @@ export default function HttpCacheTest() {
                     expect(data === undefined).assertTrue();
                     done();
                     return;
-                })
+                });
             });
         });
 
@@ -119,7 +118,7 @@ export default function HttpCacheTest() {
                     expect(data === undefined).assertTrue();
                     done();
                     return;
-                })
+                });
             });
         });
 
@@ -141,7 +140,7 @@ export default function HttpCacheTest() {
                     expect(data === undefined).assertTrue();
                     done();
                     return;
-                })
+                });
             });
         });
     });
