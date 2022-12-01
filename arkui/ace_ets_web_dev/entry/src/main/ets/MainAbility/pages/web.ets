@@ -55,6 +55,7 @@ struct Index {
     @State mixedSwitch:boolean=false
     @State mixedAllSwitch:boolean=false
     @State overViewFalseHeight:number=0
+    @State webVisibility: Visibility = Visibility.Visible
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -89,7 +90,7 @@ struct Index {
         let abilityDelegatorArguments: any
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         console.info('start run testcase!!!')
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite) 
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
     }
     build(){
         Column(){
@@ -623,6 +624,17 @@ struct Index {
                             },3000)
                             break;
                         }
+                        case "emitWebVisibility":{
+                            this.webVisibility = Visibility.Hidden;
+                            setTimeout(()=>{
+                                this.webVisibility = Visibility.None;
+                                setTimeout(()=>{
+                                    this.webVisibility = Visibility.Visible;
+                                    Utils.emitEvent(0,90)
+                                }, 3000)
+                            },3000)
+                            break;
+                        }
                         default:
                             console.info("can not match case")
                     }
@@ -647,6 +659,7 @@ struct Index {
                     console.info("TextInput click")
                 })
             Web({src:$rawfile('index.html'),controller:this.controller})
+            .visibility(this.webVisibility)
             .javaScriptAccess(this.javaScriptAccess)
             .fileAccess(this.fileAccess)
             .imageAccess(this.imageAccess)
@@ -728,10 +741,10 @@ struct Index {
                 if(this.cacheError){
                     Utils.emitEvent("cacheError",182)
                     this.cacheError=false
-                }               
+                }
             })
             .onHttpErrorReceive((event) => {
-                this.httpErrorReceive = event.response.getResponseCode()              
+                this.httpErrorReceive = event.response.getResponseCode()
             })
             .onTitleReceive((event) => {
                 this.titleReceive = event.title
@@ -760,7 +773,7 @@ struct Index {
                 }
             })
             .onBlur(()=>{
-                console.info("onBlur==>") 
+                console.info("onBlur==>")
                 this.controller.requestFocus()
             })
         }
