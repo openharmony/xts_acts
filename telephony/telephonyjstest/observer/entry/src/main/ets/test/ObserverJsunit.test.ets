@@ -19,7 +19,6 @@ import observer from '@ohos.telephony.observer';
 export default function ObserverJsunit() {
   describe('ObserverJsunit', function () {
     console.log("************* Observer Test start *************");
-    let envReady = false;
 
     /*
      * @tc.number    : Telephony_observer_observer_DataConnectState_0100
@@ -446,11 +445,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_NONE property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_NONE_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_NONE_0100 Test start *************")
       expect(0).assertEqual(observer.LockReason.SIM_NONE);
       done();
@@ -463,11 +457,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_PIN property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_PIN_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PIN_0100 Test start *************");
       expect(1).assertEqual(observer.LockReason.SIM_PIN);
       done();
@@ -480,11 +469,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_PUK property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_PUK_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PUK_0100 Test start *************");
       expect(2).assertEqual(observer.LockReason.SIM_PUK);
       done();
@@ -497,11 +481,6 @@ export default function ObserverJsunit() {
     * @tc.desc      : check the SIM_PN_PIN property of LockReason
     */
     it('Telephony_observer_LockReason_SIM_PN_PIN_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PN_PIN_0100 Test start *************");
       expect(3).assertEqual(observer.LockReason.SIM_PN_PIN);
       done();
@@ -513,11 +492,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_PN_PUK property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_PN_PUK_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PN_PUK_0100 Test start *************");
       expect(4).assertEqual(observer.LockReason.SIM_PN_PUK);
       done();
@@ -530,11 +504,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_PU_PIN property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_PU_PIN_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PU_PIN_0100 Test start *************");
       expect(5).assertEqual(observer.LockReason.SIM_PU_PIN);
       done();
@@ -547,11 +516,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_PU_PUK property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_PU_PUK_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PU_PUK_0100 Test start *************");
       expect(6).assertEqual(observer.LockReason.SIM_PU_PUK);
       done();
@@ -564,11 +528,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_PP_PIN property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_PP_PIN_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PP_PIN_0100 Test start *************");
       expect(7).assertEqual(observer.LockReason.SIM_PP_PIN);
       done();
@@ -581,11 +540,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_PP_PUK property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_PP_PUK_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PP_PUK_0100 Test start *************");
       expect(8).assertEqual(observer.LockReason.SIM_PP_PUK);
       done();
@@ -598,11 +552,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_PC_PIN property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_PC_PIN_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PC_PIN_0100 Test start *************");
       expect(9).assertEqual(observer.LockReason.SIM_PC_PIN);
       done();
@@ -615,11 +564,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_PC_PUK property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_PC_PUK_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_PC_PUK_0100 Test start *************");
       expect(10).assertEqual(observer.LockReason.SIM_PC_PUK);
       done();
@@ -632,11 +576,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_SIM_PIN property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_SIM_PIN_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_SIM_PIN_0100 Test start *************");
       expect(11).assertEqual(observer.LockReason.SIM_SIM_PIN);
       done();
@@ -649,11 +588,6 @@ export default function ObserverJsunit() {
      * @tc.desc      : check the SIM_SIM_PUK property of LockReason
      */
     it('Telephony_observer_LockReason_SIM_SIM_PUK_0100', 0, function (done) {
-      if (!envReady) {
-        console.info("The environment was not ready");
-        done();
-        return;
-      }
       console.log("************* Telephony_observer_LockReason_SIM_SIM_PUK_0100 Test start *************");
       expect(12).assertEqual(observer.LockReason.SIM_SIM_PUK);
       done();
