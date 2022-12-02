@@ -85,47 +85,6 @@ export default async function SystemDisplayTest() {
         })
 
         /**
-         * @tc.number system_display_js_0200
-         * @tc.name set_value_success_all
-         * @tc.desc Set brightness success
-         */
-        it('set_value_success_all', 0, async function (done) {
-            let setValue = 200;
-            let currValue = 100;
-            brightness.getValue({
-                success: (data) => {
-                    currValue = data.value;
-                }
-            });
-
-            brightness.setValue({
-                value: setValue,
-                success: () => {
-                    brightness.getValue({
-                        success: (data) => {
-                            expect(data.value === setValue).assertTrue();
-                            brightness.setValue({
-                                value: currValue,
-                                success: function () {
-                                    done();
-                                },
-                            });
-                        }
-                    });
-                },
-                fail: (data, code) => {
-                    console.log("set_value_success_all, data: " + data + ", code: " + code);
-                    expect().assertFail();
-                    done();
-                },
-                complete: () => {
-                    console.log("The device information is obtained successfully. Procedure");
-                    done();
-                }
-            });
-        });
-
-        /**
          * @tc.number system_display_js_0201
          * @tc.name set_value_success_value
          * @tc.desc Set brightness success
@@ -134,11 +93,13 @@ export default async function SystemDisplayTest() {
             brightness.setKeepScreenOn({
                 keepScreenOn: true,
                 success: function () {
-                    console.log('handling set keep screen on success.');
+                    console.log('handling set keep screen on success0.');
                     brightness.setValue({
                         value: 50,
                         success: function () {
+                            console.log('set keep screen on success1.');
                             setTimeout(() => {
+                                console.log('set keep screen on success2.');
                                 brightness.getValue({
                                     success: (data) => {
                                         console.log("set_value_success_value, brightness: " + data.value);
@@ -156,8 +117,7 @@ export default async function SystemDisplayTest() {
                 },
                 complete: function () {
                     console.error('handling set keep screen on complete.');
-                    done();
-                },
+                }
             });
         });
 
@@ -263,7 +223,6 @@ export default async function SystemDisplayTest() {
                 },
                 complete: () => {
                     console.log("The device information is obtained successfully. Procedure");
-                    done();
                 }
             });
         });
@@ -287,7 +246,6 @@ export default async function SystemDisplayTest() {
                 },
                 complete: () => {
                     console.log("The device information is obtained successfully. Procedure");
-                    done();
                 }
             });
         });
@@ -311,7 +269,6 @@ export default async function SystemDisplayTest() {
                 },
                 complete: () => {
                     console.log("The device information is obtained successfully. Procedure");
-                    done();
                 }
             });
         });
