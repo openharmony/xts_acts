@@ -30,7 +30,7 @@ describe('DeviceStatusUnitTest', function () {
     it('msdp_test_devices_status_001', 0, function (done) {
         console.log("msdp_test_devices_status_001 start");
         try {
-            stationary.on("highStill", ActivityEvent.ENTER_EXIT, 1, (data) => {
+            stationary.on("still", ActivityEvent.ENTER_EXIT, 1, (data) => {
                 expect(data.state == -1).assertTrue();
                 done();
             })
@@ -50,7 +50,7 @@ describe('DeviceStatusUnitTest', function () {
     it('msdp_test_devices_status_002', 0, function (done) {
         console.log("msdp_test_devices_status_002 start");
         try {
-            stationary.off("highStill", ActivityEvent.ENTER_EXIT, (data) => {
+            stationary.off("still", ActivityEvent.ENTER_EXIT, (data) => {
                 expect(data.state == -1).assertTrue();
                 done();
             })
@@ -70,7 +70,7 @@ describe('DeviceStatusUnitTest', function () {
     it('msdp_test_devices_status_003', 0, function (done) {
         console.log("msdp_test_devices_status_003 start");
         try {
-            stationary.once("highStill", (data) => {
+            stationary.once("still", (data) => {
                 expect(data.state == -1).assertTrue();
                 done();
             })
