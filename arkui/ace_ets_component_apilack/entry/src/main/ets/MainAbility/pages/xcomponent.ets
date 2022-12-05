@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct XcomponentGetXComponentContext {
+struct XcomponentGetXComponentContext {
   xcomponentController: XComponentController = new XComponentController()
 
   aboutToAppear() {

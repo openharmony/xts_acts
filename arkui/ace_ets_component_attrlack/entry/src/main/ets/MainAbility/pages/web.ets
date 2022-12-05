@@ -19,7 +19,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct WebEditText {
   controller: WebController = new WebController();
   webResourceResponse: WebResourceResponse = new WebResourceResponse();
@@ -38,7 +37,7 @@ struct WebEditText {
         .height(500)
         .padding(20)
         .blur(2)
-        .fileFromUrlAccess(true)
+        // .fileFromUrlAccess(true)
         .initialScale(2)
         .webDebuggingAccess(true)
         .onRenderExited((event) => {

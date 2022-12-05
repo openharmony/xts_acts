@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct FormComponentFormDimension {
+struct FormComponentFormDimension {
   @State target: WindowAnimationTarget = undefined // 通过windowAnimationManager获取
 
   aboutToAppear() {

@@ -62,14 +62,16 @@ export default function xcomponentGetXComponentContextJsunit() {
         var callback1 = (eventData) => {
           console.info("onRequestPopupData_0010 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual("callBackSuccess");
-          done();
         }
-        console.info("onSelect_0012 click result is: " + JSON.stringify(sendEventByKey('getXComponentContextText', 10, "")));
         events_emitter.on(innerEventOne, callback1);
+        await Utils.sleep(1000);
+        console.info("onSelect_0012 click result is: " + JSON.stringify(sendEventByKey('getXComponentContextText', 10, "")));
+        await Utils.sleep(2000);       
       } catch (err) {
         console.info("onRequestPopupData_0010 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testxcomponentGetXComponentContext0010 END');
+      done();
     });
 
     /*
@@ -80,7 +82,8 @@ export default function xcomponentGetXComponentContextJsunit() {
     it('testxcomponentSetXComponentSurfaceSize0001', 0, async function (done) {
       console.info('xcomponentSetXComponentContext testxcomponentSetXComponentSurfaceSize0001 START');
       await Utils.sleep(2000);
-      console.info("setXComponentSurfaceSize0001 click result is: " + JSON.stringify(sendEventByKey('setXComponentSurfaceSizeText', 10, "")))
+      console.info("setXComponentSurfaceSize0001 click result is: " + JSON.stringify(sendEventByKey('setXComponentSurfaceSizeText', 10, "")));
+      await Utils.sleep(2000);
       let strJson = getInspectorByKey('setXComponentSurfaceSizeText');
       //console
       let obj = JSON.parse(strJson);
@@ -99,6 +102,7 @@ export default function xcomponentGetXComponentContextJsunit() {
       console.info('xcomponentSetXComponentContext testxcomponentSetXComponentSurfaceSize0002 START');
       await Utils.sleep(2000);
       console.info("testxcomponentSetXComponentSurfaceSize0002 click result is: " + JSON.stringify(sendEventByKey('setXComponentSurfaceSizeText', 10, "")))
+      await Utils.sleep(2000);
       let strJson = getInspectorByKey('setXComponentSurfaceSizeText');
       //console
       let obj = JSON.parse(strJson);

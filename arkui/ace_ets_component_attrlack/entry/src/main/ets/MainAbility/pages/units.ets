@@ -20,7 +20,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct UnitsModuleName {
+struct UnitsModuleName {
   @State textHeight: number = 50
 
   aboutToAppear() {

@@ -19,7 +19,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct CanvasActualBoundingBoxAscent {
 
   private settings: RenderingContextSettings = new RenderingContextSettings(true)//antialias:boolean

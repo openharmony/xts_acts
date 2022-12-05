@@ -19,7 +19,6 @@ import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-export default
 struct GestureSetDirection {
    @State offsetX: number = 10
    @State offsetY: number = 10

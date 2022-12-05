@@ -19,7 +19,6 @@ import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-export default
 struct SelectOnSelect {
   @State selectIndex:number = 1
 

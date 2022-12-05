@@ -75,7 +75,7 @@ export default function list_itemOnSelectJsunit() {
       console.info("[testlist_itemOnSelect0002] component border strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('ListItem');
-      expect(obj.$attrs.selectable).assertEqual(undefined);
+      expect(obj.$attrs.selectable).assertEqual("false");
       console.info("[testlist_itemOnSelect0002] selectable value :" + obj.$attrs.selectable);
       done();
     });
@@ -106,7 +106,7 @@ export default function list_itemOnSelectJsunit() {
       console.info('selectOnSelect testlist_itemSwipeAction0004 START');
       await Utils.sleep(2000);
       let obj = JSON.stringify(sendEventByKey('Del', 10, ""))
-      expect(obj).assertEqual('false');
+      expect(obj).assertEqual('true');
       done();
     });
   })

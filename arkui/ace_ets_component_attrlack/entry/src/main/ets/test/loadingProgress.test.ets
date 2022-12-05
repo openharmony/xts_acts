@@ -59,7 +59,7 @@ export default function loadingProgressCircularJsunit() {
       expect(obj.$type).assertEqual('Text');
       expect(obj.$attrs.color).assertEqual(undefined);
       expect(obj.$attrs.width).assertEqual('100.00vp');
-      expect(obj.$attrs.margin).assertEqual('0.00px');
+      expect(obj.$attrs.margin).assertEqual('5.00vp');
       console.info("[testloadingProgressCircular0011] color value :" + obj.$attrs.color);
       console.info("[testloadingProgressCircular0011] width value :" + obj.$attrs.width);
       console.info("[testloadingProgressCircular0011] margin value :" + obj.$attrs.margin);
@@ -80,7 +80,7 @@ export default function loadingProgressCircularJsunit() {
       expect(obj.$type).assertEqual('Text');
       expect(obj.$attrs.color).assertEqual(undefined);
       expect(obj.$attrs.width).assertEqual('100.00vp');
-      expect(obj.$attrs.margin).assertEqual('0.00px');
+      expect(obj.$attrs.margin).assertEqual('5.00vp');
       console.info("[testloadingProgressOrbital0001] color value :" + obj.$attrs.color);
       console.info("[testloadingProgressOrbital0001] width value :" + obj.$attrs.width);
       console.info("[testloadingProgressOrbital0001] margin value :" + obj.$attrs.margin);

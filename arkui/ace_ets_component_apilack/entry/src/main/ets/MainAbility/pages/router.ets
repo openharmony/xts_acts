@@ -21,7 +21,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct RouterEnableAlertBeforeBackPage {
+struct RouterEnableAlertBeforeBackPage {
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear RouterEnableAlertBeforeBackPage start`)
 

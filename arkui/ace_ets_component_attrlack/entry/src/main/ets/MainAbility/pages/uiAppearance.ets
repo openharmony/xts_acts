@@ -23,7 +23,6 @@ uiAppearance.DarkMode.ALWAYS_DARK
 
 @Entry
 @Component
-export default
 struct UiAppearanceALWAYS_DARK {
 
   aboutToAppear() {

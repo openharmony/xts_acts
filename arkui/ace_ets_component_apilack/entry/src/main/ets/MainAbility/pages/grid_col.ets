@@ -18,7 +18,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct Grid_colSpan {
 
   aboutToAppear() {
