@@ -18,7 +18,7 @@ hctest_suite("ActsUpdaterFuncTest") {
 
   include_dirs = [
     "src",
-    "//base/update/ota_lite/interfaces/kits",
+    "//base/update/sys_installer_lite/interfaces/kits",
   ]
 
   cflags = [ "-Wno-error" ]
