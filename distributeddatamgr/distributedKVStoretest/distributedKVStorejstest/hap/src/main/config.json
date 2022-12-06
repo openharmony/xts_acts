@@ -18,8 +18,9 @@
     "mainAbility": ".MainAbility",
     "srcPath":"",
     "deviceType": [
-      "default",
-      "tablet"
+        "default",
+        "tablet",
+        "phone"
     ],
     "distro": {
       "deliveryWithInstall": true,
