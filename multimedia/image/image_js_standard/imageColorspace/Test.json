@@ -21,11 +21,6 @@
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
-                "hilog -b D"
-               
-            ],
-            "teardown-command":[
-                "hilog -b X"
             ]
         }
     ]
