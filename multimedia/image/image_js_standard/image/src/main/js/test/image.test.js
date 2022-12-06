@@ -2294,7 +2294,7 @@ export default function imageJsTest() {
                 console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100 0003 ' + testimagebuffer.length);
                 let bufferSize = testimagebuffer.length;
                 let offset = 0;
-                const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
+                const incSouce = image.CreateIncrementalSource(new ArrayBuffer(1));
                 let ret;
                 let isFinished = false;
                 while (offset < testimagebuffer.length) {
@@ -2347,7 +2347,7 @@ export default function imageJsTest() {
                 console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200 0003 ' + testimagebuffer.length);
                 let bufferSize = testimagebuffer.length;
                 let offset = 0;
-                const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
+                const incSouce = image.CreateIncrementalSource(new ArrayBuffer(1));
                 let isFinished = false;
                 let ret;
                 while (offset < testimagebuffer.length) {
