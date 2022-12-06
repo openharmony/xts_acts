@@ -221,18 +221,20 @@ function deleteKeyItem(srcKeyAlies, HuksOptions) {
   });
 }
 
-async function publicDeriveFunc(srcKeyAlies, HuksOptions, huksOptionsFinish, thirdInderfaceName) {
+async function publicDeriveFunc(srcKeyAlies, HuksOptions, huksOptionsFinish, deriveArray, thirdInderfaceName) {
   try {
     await publicDeriveGenFunc(srcKeyAlies, HuksOptions);
-    HuksOptions.properties.splice(0, 1, paramPublic.HuksDeriveHKDF.HuksKeyAlgHKDF);
-    HuksOptions.properties.splice(3, 1, paramPublic.HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+    let deriveArrAlg = HuksOptions.properties[0];
+    let deriveArrLen = HuksOptions.properties[3];
+    HuksOptions.properties.splice(0, 1, deriveArray[0]);
+    HuksOptions.properties.splice(3, 1, deriveArray[1]);
 
     await publicDeriveInitFunc(srcKeyAlies, HuksOptions);
     await publicDeriveUpdateFunc(HuksOptions);
     await publicDeriveFinishAbortFunc(huksOptionsFinish, thirdInderfaceName);
 
-    HuksOptions.properties.splice(0, 1, paramPublic.HuksDeriveHKDF.HuksKeyAlgAES);
-    HuksOptions.properties.splice(3, 1, paramPublic.HuksDeriveHKDF.HuksKeyHKDFSize128);
+    HuksOptions.properties.splice(0, 1, deriveArrAlg);
+    HuksOptions.properties.splice(3, 1, deriveArrLen);
     await publicDeriveDeleteFunc(srcKeyAlies, HuksOptions);
   } catch (e) {
     expect(null).assertFail();
