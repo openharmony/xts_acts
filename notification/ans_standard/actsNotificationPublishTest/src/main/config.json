@@ -26,11 +26,6 @@
             "moduleName": "entry",
             "moduleType": "entry"
         },
-        "reqPermissions": [
-            {
-                "name": "ohos.permission.NOTIFICATION_CONTROLLER"
-            }
-        ],
         "abilities": [
             {
                 "skills": [
