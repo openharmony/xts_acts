@@ -53,116 +53,116 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0930
-   * @tc.name      : usbFunctionsToString
-   * @tc.desc      : 正向测试 0 返回 'none'
+   * @tc.number: SUB_USB_JS_0930
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 0, return 'none'
    */
   it('SUB_USB_JS_0930', 0, function () {
     console.info('usb SUB_USB_JS_0930 begin');
     var maskCode = usb.NONE
     console.info('usb case maskCode : ' + usb.NONE);
     var strMaskCode = usb.usbFunctionsToString(maskCode)
-    expect(strMaskCode).assertEqual('none');
     console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('none');
     console.info('usb SUB_USB_JS_0930 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0940
-   * @tc.name      : usbFunctionsToString
-   * @tc.desc      : 正向测试 1 返回 'acm'
+   * @tc.number: SUB_USB_JS_0940
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 1, return 'acm'
    */
   it('SUB_USB_JS_0940', 0, function () {
     console.info('usb SUB_USB_JS_0940 begin');
     var maskCode = usb.ACM
     console.info('usb case maskCode : ' + usb.ACM);
     var strMaskCode = usb.usbFunctionsToString(maskCode)
-    expect(strMaskCode).assertEqual('acm');
     console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('acm');
     console.info('usb SUB_USB_JS_0940 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0950
-   * @tc.name      : usbFunctionsToString
-   * @tc.desc      : 正向测试 2 返回 'ecm'
+   * @tc.number: SUB_USB_JS_0950
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 2, return 'ecm'
    */
   it('SUB_USB_JS_0950', 0, function () {
     console.info('usb SUB_USB_JS_0950 begin');
     var maskCode = usb.ECM
     console.info('usb case maskCode : ' + maskCode);
     var strMaskCode = usb.usbFunctionsToString(maskCode)
-    expect(strMaskCode).assertEqual('ecm');
     console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('ecm');
     console.info('usb SUB_USB_JS_0950 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0960
-   * @tc.name      : usbFunctionsToString
-   * @tc.desc      : 正向测试 3 返回 'acm,ecm'
+   * @tc.number: SUB_USB_JS_0960
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 3, return 'acm,ecm'
    */
   it('SUB_USB_JS_0960', 0, function () {
     console.info('usb SUB_USB_JS_0960 begin');
     var maskCode = usb.ACM | usb.ECM
     console.info('usb case maskCode : ' + maskCode);
     var strMaskCode = usb.usbFunctionsToString(maskCode)
-    expect(strMaskCode).assertEqual('acm,ecm');
     console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('acm,ecm');
     console.info('usb SUB_USB_JS_0960 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0970
-   * @tc.name      : usbFunctionsToString
-   * @tc.desc      : 正向测试 4 返回 'hdc'
+   * @tc.number: SUB_USB_JS_0970
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 4, return 'hdc'
    */
   it('SUB_USB_JS_0970', 0, function () {
     console.info('usb SUB_USB_JS_0970 begin');
     var maskCode = usb.HDC
     console.info('usb case maskCode : ' + maskCode);
     var strMaskCode = usb.usbFunctionsToString(maskCode)
-    expect(strMaskCode).assertEqual('hdc');
     console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('hdc');
     console.info('usb SUB_USB_JS_0970 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0980
-   * @tc.name      : usbFunctionsToString
-   * @tc.desc      : 正向测试 5 返回 'acm,hdc'
+   * @tc.number: SUB_USB_JS_0980
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 5, return 'acm,hdc'
    */
   it('SUB_USB_JS_0980', 0, function () {
     console.info('usb SUB_USB_JS_0980 begin');
     var maskCode = usb.ACM | usb.HDC
     console.info('usb case maskCode : ' + maskCode);
     var strMaskCode = usb.usbFunctionsToString(maskCode)
-    expect(strMaskCode).assertEqual('acm,hdc');
     console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('acm,hdc');
     console.info('usb SUB_USB_JS_0980 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0990
-   * @tc.name      : usbFunctionsToString
-   * @tc.desc      : 正向测试 6 返回 'ecm,hdc'
+   * @tc.number: SUB_USB_JS_0990
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 6, return 'ecm,hdc'
    */
   it('SUB_USB_JS_0990', 0, function () {
     console.info('usb SUB_USB_JS_0990 begin');
     var maskCode = usb.ECM | usb.HDC
     console.info('usb case maskCode : ' + maskCode);
     var strMaskCode = usb.usbFunctionsToString(maskCode)
-    expect(strMaskCode).assertEqual('ecm,hdc');
     console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('ecm,hdc');
     console.info('usb SUB_USB_JS_0990 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1160
-   * @tc.name      : usbFunctionsToString
-   * @tc.desc      : 反向测试 掩码转化成描述字符 参数类型错误
+   * @tc.number: SUB_USB_JS_1160
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Negative test: Mask converted to description character, parameter type error
    */
-   it('SUB_USB_JS_1160', 0, function () {
+  it('SUB_USB_JS_1160', 0, function () {
     console.info('usb SUB_USB_JS_1160 begin');
     try {
       var maskCode = usb.usbFunctionsToString("invalid");
@@ -176,11 +176,12 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1360
-   * @tc.name      : usbFunctionsToString
-   * @tc.desc      : 反向测试 掩码转化成描述字符 参数个数错误，必要参数未传入
+   * @tc.number: SUB_USB_JS_1360
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Negative test: Mask converted to description character,
+   * parameter number exception, necessary parameters not input
    */
-   it('SUB_USB_JS_1360', 0, function () {
+  it('SUB_USB_JS_1360', 0, function () {
     console.info('usb SUB_USB_JS_1360 begin');
     try {
       var maskCode = usb.usbFunctionsToString();
@@ -194,109 +195,109 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0860
-   * @tc.name      : usbFunctionsFromString
-   * @tc.desc      : 正向测试 'none' 返回 0
+   * @tc.number: SUB_USB_JS_0860
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'none', return 0
    */
   it('SUB_USB_JS_0860', 0, function () {
     console.info('usb SUB_USB_JS_0860 begin');
     var strMaskCode = 'none'
     var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
-    expect(nMaskCode).assertEqual(usb.NONE);
     console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.NONE);
     console.info('usb SUB_USB_JS_0860 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0870
-   * @tc.name      : usbFunctionsFromString
-   * @tc.desc      : 正向测试 'acm' 返回 1
+   * @tc.number: SUB_USB_JS_0870
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'acm', return 1
    */
   it('SUB_USB_JS_0870', 0, function () {
     console.info('usb SUB_USB_JS_0870 begin');
     var strMaskCode = 'acm'
     var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
-    expect(nMaskCode).assertEqual(usb.ACM);
     console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.ACM);
     console.info('usb SUB_USB_JS_0870 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0880
-   * @tc.name      : usbFunctionsFromString
-   * @tc.desc      : 正向测试 'ecm' 返回 2
+   * @tc.number: SUB_USB_JS_0880
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'ecm', return 2
    */
   it('SUB_USB_JS_0880', 0, function () {
     console.info('usb SUB_USB_JS_0880 begin');
     var strMaskCode = 'ecm'
     var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
-    expect(nMaskCode).assertEqual(usb.ECM);
     console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.ECM);
     console.info('usb SUB_USB_JS_0880 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0890
-   * @tc.name      : usbFunctionsFromString
-   * @tc.desc      : 正向测试 'acm,ecm' 返回 3
+   * @tc.number: SUB_USB_JS_0890
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'acm,ecm', return 3
    */
   it('SUB_USB_JS_0890', 0, function () {
     console.info('usb SUB_USB_JS_0890 begin');
     var strMaskCode = 'acm,ecm'
     var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
-    expect(nMaskCode).assertEqual(usb.ACM | usb.ECM);
     console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.ACM | usb.ECM);
     console.info('usb SUB_USB_JS_0890 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0900
-   * @tc.name      : usbFunctionsFromString
-   * @tc.desc      : 正向测试 'hdc' 返回 4
+   * @tc.number: SUB_USB_JS_0900
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'hdc', return 4
    */
   it('SUB_USB_JS_0900', 0, function () {
     console.info('usb SUB_USB_JS_0900 begin');
     var strMaskCode = 'hdc'
     var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
-    expect(nMaskCode).assertEqual(usb.HDC);
     console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.HDC);
     console.info('usb SUB_USB_JS_0900 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0910
-   * @tc.name      : usbFunctionsFromString
-   * @tc.desc      : 正向测试 'acm,hdc' 返回 5
+   * @tc.number: SUB_USB_JS_0910
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'acm,hdc', return 5
    */
   it('SUB_USB_JS_0910', 0, function () {
     console.info('usb SUB_USB_JS_0910 begin');
     var strMaskCode = 'acm,hdc'
     var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
-    expect(nMaskCode).assertEqual(usb.HDC | usb.ACM);
     console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.HDC | usb.ACM);
     console.info('usb SUB_USB_JS_0910 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0920
-   * @tc.name      : usbFunctionsFromString
-   * @tc.desc      : 正向测试 'ecm,hdc' 返回 6
+   * @tc.number: SUB_USB_JS_0920
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'ecm,hdc', return 6
    */
   it('SUB_USB_JS_0920', 0, function () {
     console.info('usb SUB_USB_JS_0920 begin');
     var strMaskCode = 'ecm,hdc'
     var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
-    expect(nMaskCode).assertEqual(usb.HDC | usb.ECM);
     console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.HDC | usb.ECM);
     console.info('usb SUB_USB_JS_0920 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1170
-   * @tc.name      : usbFunctionsFromString
-   * @tc.desc      : 反向测试 描述字符转换成掩码 参数类型错误
+   * @tc.number: SUB_USB_JS_1170
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Negative test: Description character converted to mask, parameter type error
    */
-   it('SUB_USB_JS_1170', 0, function () {
+  it('SUB_USB_JS_1170', 0, function () {
     console.info('usb SUB_USB_JS_1170 begin');
     try {
       var maskCode = usb.usbFunctionsFromString(invalidCode);
@@ -310,11 +311,12 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1370
-   * @tc.name      : usbFunctionsFromString
-   * @tc.desc      : 反向测试 描述字符转换成掩码 参数个数错误，必要参数未传入
+   * @tc.number: SUB_USB_JS_1370
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Negative test: Description character converted to mask,
+   * parameter number exception, necessary parameters not input
    */
-   it('SUB_USB_JS_1370', 0, function () {
+  it('SUB_USB_JS_1370', 0, function () {
     console.info('usb SUB_USB_JS_1370 begin');
     try {
       var maskCode = usb.usbFunctionsFromString();

@@ -50,9 +50,9 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0330
-   * @tc.name      : getCurrentFunctions
-   * @tc.desc      : 获取当前设备模式 掩码与描述字符转换
+   * @tc.number: SUB_USB_JS_0330
+   * @tc.name: getCurrentFunctions
+   * @tc.desc: Positive test: Get current device mode, mask and description character conversion
    */
   it('SUB_USB_JS_0330', 0, function () {
     console.info('usb SUB_USB_JS_0330 begin');
@@ -65,13 +65,12 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.info('usb case strMaskCode usbFunctionsFromString return int: ' + nMaskCode);
     expect(nMaskCode).assertEqual(maskCode);
     console.info('usb SUB_USB_JS_0330 :  PASS');
-    expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0340
-   * @tc.name      : usbFunctionString
-   * @tc.desc      : 反向测试 获取当前设备模式 掩码与描述字符转换
+   * @tc.number: SUB_USB_JS_0340
+   * @tc.name: usbFunctionString
+   * @tc.desc: Negative test: Get current device mode, mask and description character conversion, nMaskcode=0
    */
   it('SUB_USB_JS_0340', 0, function () {
     console.info('usb SUB_USB_JS_0340 begin');
@@ -90,17 +89,17 @@ describe('UsbFunctionsJsFunctionsTest', function () {
 
     var errStrMaskCode = 'none'
     var nMaskCode = usb.usbFunctionsFromString(errStrMaskCode)
-    expect(nMaskCode).assertEqual(usb.NONE);
     console.info('usb case errStrMaskCode ' + errStrMaskCode +
       ' usbFunctionsFromString return int: ' + nMaskCode);
-
+    expect(nMaskCode).assertEqual(usb.NONE);
     console.info('usb SUB_USB_JS_0340 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1000
-   * @tc.name      : getCurrentFunctions
-   * @tc.desc      : 反向测试 获取当前设备模式 入参错误(无参接口传参)
+   * @tc.number: SUB_USB_JS_1000
+   * @tc.name: getCurrentFunctions
+   * @tc.desc: Negative test: Get the current device mode,
+   * parameters exception(parameter transfer without parameter interface)
    */
   it('SUB_USB_JS_1000', 0, function () {
     console.info('usb SUB_USB_JS_1000 begin');
