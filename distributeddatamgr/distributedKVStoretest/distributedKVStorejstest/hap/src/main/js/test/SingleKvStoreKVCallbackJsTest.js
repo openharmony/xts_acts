@@ -2337,6 +2337,7 @@ describe('SingleKvStoreCallbackTest', function () {
      */
     it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_8200', 0, async function (done) {
         console.info('SingleKvStoreCloseResultSetCallbackTest004');
+
         try{
             kvStore.closeResultSet("",(err, data) => {
                 console.info('SingleKvStoreCloseResultSetCallbackTest004 close result finish')

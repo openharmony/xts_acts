@@ -16,8 +16,9 @@
         "package": "ohos.acts.relationalStorejstest",
         "name": ".entry",
         "deviceType": [
-           "tablet",
-           "default"
+      "tablet",
+      "default",
+            "phone"
         ],
         "distro": {
             "deliveryWithInstall": true,
