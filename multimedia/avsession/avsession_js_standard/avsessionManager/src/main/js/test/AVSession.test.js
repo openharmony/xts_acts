@@ -1317,6 +1317,9 @@ export default function AVSession() {
                     console.info('TestLog: AVSessionTest : Set LaunchAbility failed');
                     expect(false).assertTrue();
                 }
+            }).catch((error) => {
+                console.info(`TestLog: compare LaunchAbility error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -2699,7 +2702,7 @@ export default function AVSession() {
             })
             done();
         })
-        
+
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0100
          * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
