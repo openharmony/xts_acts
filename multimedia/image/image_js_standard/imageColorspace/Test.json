@@ -20,7 +20,7 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
+                "hilog -Q pidoff"
             ]
         }
     ]
