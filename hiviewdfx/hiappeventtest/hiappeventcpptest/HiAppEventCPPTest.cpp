@@ -18,21 +18,23 @@
 #include <vector>
 #include <map>
 #include <sstream>
-#include <cstdlib>
-#include <cstdio>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 #include <ctime>
 #include "hiappevent.h"
 #include "hiappevent_config.h"
 #include "hilog/log.h"
 #include "file_utils.h"
+#include <securec.h>
 
-
+#define BUFF_SIZE 100
 using namespace std;
 using namespace testing;
 using namespace testing::ext;
 using namespace OHOS::HiviewDFX;
 
-namespace {
+namespace{
     const char* TEST_DOMAIN_NAME = "test_domain";
     const char* TEST_EVENT_NAME = "test_event";
     string g_reDiRectTimeout = "5";
@@ -40,11 +42,11 @@ namespace {
     string delelogPath = "/data/test/hiappevent/*";
 }
 
-class HiAppEventCPPTest : public testing::Test {
+class HiAppEventCPPTest : public testing::Test{
 public:
     void TearDown();
+private:
 };
-
 void HiAppEventCPPTest::TearDown()
 {
     std::cout << "TearDown" << std::endl;
@@ -60,7 +62,7 @@ void HiAppEventCPPTest::TearDown()
 * @author f00601390
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0100, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0100, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_0100 start" << endl;
     bool result = false;
     bool boolean = false;
@@ -95,7 +97,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0100, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0200, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0200, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_0200 start" << endl;
     bool result = false;
     bool boolean = true;
@@ -129,7 +131,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0200, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is reported as a boolean list.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0300, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0300, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_0300 start" << endl;
     bool result = false;
     bool booleans[] = {true, true};
@@ -163,7 +165,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0300, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is reported as a boolean list.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0400, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0400, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_0400 start" << endl;
     bool result = false;
     char str[] = "hello";
@@ -197,7 +199,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0400, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is reported as a boolean list.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0500, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0500, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_0500 start" << endl;
     bool result = false;
     char str1[] = "hello";
@@ -233,7 +235,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0500, Function|M
 * @author f00601390
 * @tc.desc The keyvalue type is double.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0800, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0800, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_0800 start" << endl;
     bool result = false;
     double num = 30949.374;
@@ -267,7 +269,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0800, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is reported as a double list.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0900, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0900, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_0900 start" << endl;
     bool result = false;
     double nums[] = {123.22, 30949.374, 131312.46464};
@@ -301,7 +303,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0900, Function|M
 * @author f00601390
 * @tc.desc The keyvalue type is float.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1000, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1000, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1000 start" << endl;
     bool result = false;
     float num = 234.5f;
@@ -335,7 +337,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1000, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is reported as a float list.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1100, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1100, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1100 start" << endl;
     bool result = false;
     float nums[] = {123.22f, 234.5f, 131312.46464f};
@@ -369,7 +371,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1100, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is of the int type.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1200, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1200, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1200 start" << endl;
     bool result = false;
     int num = 1;
@@ -403,7 +405,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1200, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is reported as an int list.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1300, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1300, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1300 start" << endl;
     bool result = false;
     int8_t nums[] = {1, 10, 100};
@@ -437,7 +439,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1300, Function|M
 * @author f00601390
 * @tc.desc The keyvalue type is long.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1400, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1400, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1400 start" << endl;
     bool result = false;
     int16_t num = 1;
@@ -471,7 +473,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1400, Function|M
 * @author f00601390
 * @tc.desc The keyvalue type is long.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1500, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1500, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1500 start" << endl;
     bool result = false;
     int16_t nums[] = {1, 1000, 5000};
@@ -505,10 +507,10 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1500, Function|M
 * @author f00601390
 * @tc.desc The keyvalue type is long.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1600, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1600, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1600 start" << endl;
     bool result = false;
-    int32_t num = 1;
+     int32_t num = 1;
     string getlogFile;
     string path;
     OHOS::HiviewDFX::HiAppEventConfig::GetInstance().SetStorageDir("/data/test/hiappevent/");
@@ -539,7 +541,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1600, Function|M
 * @author f00601390
 * @tc.desc The keyvalue type is long.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1700, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1700, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1700 start" << endl;
     bool result = false;
     int32_t nums[] = {1, 100000, 500000};
@@ -573,7 +575,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1700, Function|M
 * @author f00601390
 * @tc.desc The keyvalue type is long.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1800, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1800, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1800 start" << endl;
     bool result = false;
     int64_t num = 1;
@@ -607,7 +609,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1800, Function|M
 * @author f00601390
 * @tc.desc The keyvalue type is long.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1900, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1900, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1900 start" << endl;
     bool result = false;
     int64_t nums[] = {1, 10000000, 50000000};
@@ -641,13 +643,16 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1900, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is reported as a string list, 100 list parameters .
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2100, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2100, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2100 start" << endl;
     bool result = false;
     char* strs[100];
-    for (int i = 0; i < 100; i++) {
-        strs[i] = new char[32];
-        sprintf(strs[i], "hello_world_%d", i);
+    int num = 32;
+    for(int i=0;i<100;i++){
+	strs[i] = new char[32];
+        sprintf_s(strs[i], num,"hello_world_%d",i);
+	std::cout << sizeof(strs[i]) << std::endl;
+	std::cout << strs[i] << std::endl;
     }
     string getlogFile;
     string path;
@@ -679,11 +684,11 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2100, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is reported as a string, 8 * 1024 lenth.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2200, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2200, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2200 start" << endl;
     bool result = false;
     string strs = "";
-    for (int i = 0; i < 1024; i++) {
+    for(int i=0;i<1024;i++){
         strs.append("abcdefgh");
     }
     string getlogFile;
@@ -716,7 +721,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2200, Function|M
 * @author f00601390
 * @tc.desc Reported event name is null.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2300, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2300, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2300 start" << endl;
     char str[] = "hello";
     OHOS::HiviewDFX::HiAppEventConfig::GetInstance().SetStorageDir("/data/test/hiappevent/");
@@ -735,7 +740,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2300, Function|M
 * @author f00601390
 * @tc.desc Reported event name is empty.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2400, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2400, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2400 start" << endl;
     char str[] = "hello";
     OHOS::HiviewDFX::HiAppEventConfig::GetInstance().SetStorageDir("/data/test/hiappevent/");
@@ -754,7 +759,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2400, Function|M
 * @author f00601390
 * @tc.desc Reported event name starts with number.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2500, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2500, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2500 start" << endl;
     char str[] = "hello";
     OHOS::HiviewDFX::HiAppEventConfig::GetInstance().SetStorageDir("/data/test/hiappevent/");
@@ -773,7 +778,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2500, Function|M
 * @author f00601390
 * @tc.desc key and values 33 parameters are reported.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2700, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2700, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2700 start" << endl;
     bool result = false;
     string getlogFile;
@@ -783,7 +788,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2700, Function|M
     string values[maxLen + 1];
     OHOS::HiviewDFX::HiAppEventConfig::GetInstance().SetStorageDir("/data/test/hiappevent/");
     ParamList list = OH_HiAppEvent_CreateParamList();
-    for (int i = 0; i <= maxLen; i++) {
+    for (int i = 0; i <= maxLen; i++){
         keys[i] = "key" + std::to_string(i);
         values[i] = "value" + std::to_string(i);
         OH_HiAppEvent_AddStringParam(list, keys[i].c_str(), values[i].c_str());
@@ -814,7 +819,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2700, Function|M
 * @author f00601390
 * @tc.desc key and value is empty.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2800, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2800, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2800 start" << endl;
     bool result = false;
     string getlogFile;
@@ -848,7 +853,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2800, Function|M
 * @author f00601390
 * @tc.desc key is not string type.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2900, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2900, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2900 start" << endl;
     bool result = false;
     string getlogFile;
@@ -882,7 +887,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2900, Function|M
 * @author f00601390
 * @tc.desc key start with number.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3000, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3000, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3000 start" << endl;
     bool result = false;
     string getlogFile;
@@ -916,11 +921,11 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3000, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is reported as a string, 8 * 1024 + 1 length.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3100, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3100, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3100 start" << endl;
     bool result = false;
     string strs = "";
-    for (int i = 0; i < 1024; i++) {
+    for(int i=0;i<1024;i++){
         strs.append("abcdefgh");
     }
     strs.append("a");
@@ -955,7 +960,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3100, Function|M
 * @author f00601390
 * @tc.desc key and value is NULL.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3200, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3200, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3200 start" << endl;
     bool result = false;
     string getlogFile;
@@ -989,13 +994,16 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3200, Function|M
 * @author f00601390
 * @tc.desc 101 List Parameters.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3300, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3300, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3300 start" << endl;
     bool result = false;
     char* strs[101];
-    for (int i = 0; i < 101; i++) {
-        strs[i] = new char[32];
-        sprintf(strs[i], "hello_world_%d", i);
+    int num = 32;
+    for(int i=0;i<101;i++){
+	strs[i] = new char[32];
+        sprintf_s(strs[i], num,"hello_world_%d",i);
+	std::cout << sizeof(strs[i]) << std::endl;
+	std::cout << strs[i] << std::endl;
     }
     string getlogFile;
     string path;
@@ -1010,8 +1018,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3300, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":4",
-                           "\"str_arr_key\":[\"hello_world_0\",\"hello_world_1\",\"hello_world_2\"", "hello_world_99"};
+    std::vector<std::string> para = {"test_event", "\"type_\":4", "\"str_arr_key\":[\"hello_world_0\",\"hello_world_1\",\"hello_world_2\"", "hello_world_99"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -1029,7 +1036,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3300, Function|M
 * @author f00601390
 * @tc.desc key and values 32 parameters are reported.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3400, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3400, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3400 start" << endl;
     bool result = false;
     string getlogFile;
@@ -1039,7 +1046,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3400, Function|M
     string values[maxLen+1];
     OHOS::HiviewDFX::HiAppEventConfig::GetInstance().SetStorageDir("/data/test/hiappevent/");
     ParamList list = OH_HiAppEvent_CreateParamList();
-    for (int i = 0; i <= maxLen; i++) {
+    for (int i = 0; i <= maxLen; i++){
         keys[i] = "key" + std::to_string(i);
         values[i] = "value" + std::to_string(i);
         OH_HiAppEvent_AddStringParam(list, keys[i].c_str(), values[i].c_str());
@@ -1052,8 +1059,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3400, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"", "\"key15\":\"value15\"",
-                                         "\"key0\":\"value0\""};
+    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"","\"key15\":\"value15\"","\"key0\":\"value0\""};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -1071,7 +1077,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3400, Function|M
 * @author f00601390
 * @tc.desc key and values 32 parameters are reported.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3500, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3500, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3500 start" << endl;
     string getlogFile;
     string path;
@@ -1086,12 +1092,13 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3500, Function|M
     time(&nowtime);
     p = localtime(&nowtime);
     char s[25];
-    sprintf(s, "app_event_%d%02d%02d.log", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday);
+    sprintf_s(s, sizeof(s),"app_event_%d%02d%02d.log", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday);
+    std::cout << s << std::endl;
     string fname = s;
     string cmd = "dd if=/dev/zero of=/data/test/hiappevent/" + fname + " bs=11M count=1";
     ExecCmdWithRet(cmd, cmdret);
     ParamList list = OH_HiAppEvent_CreateParamList();
-    for (int i = 0; i <= maxLen; i++) {
+    for (int i = 0; i <= maxLen; i++){
         keys[i] = "key" + std::to_string(i);
         values[i] = "value" + std::to_string(i);
         OH_HiAppEvent_AddStringParam(list, keys[i].c_str(), values[i].c_str());
@@ -1104,8 +1111,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3500, Function|M
     path = logPath + getlogFile;
     bool result = false;
     string fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"", "\"key15\":\"value15\"",
-                                        "\"key0\":\"value0\""};
+    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"","\"key15\":\"value15\"","\"key0\":\"value0\""};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     }
@@ -1120,7 +1126,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3500, Function|M
 * @author f00601390
 * @tc.desc key and values 32 parameters are reported.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3600, Function|MediumTest|Level4) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3600, Function|MediumTest|Level4){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3600 start" << endl;
     string getlogFile;
     string path;
@@ -1135,12 +1141,12 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3600, Function|M
     time(&nowtime);
     p = localtime(&nowtime);
     char s[25];
-    sprintf(s, "app_event_%d%02d%02d.log", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday);
+    sprintf_s(s, sizeof(s),"app_event_%d%02d%02d.log", 1900 + p->tm_year, 1 + p->tm_mon, p->tm_mday);
     string fname = s;
     string cmd = "dd if=/dev/zero of=/data/test/hiappevent/" + fname + " bs=1.5M count=1";
     ExecCmdWithRet(cmd, cmdret);
     ParamList list = OH_HiAppEvent_CreateParamList();
-    for (int i = 0; i <= maxLen; i++) {
+    for (int i = 0; i <= maxLen; i++){
         keys[i] = "key" + std::to_string(i);
         values[i] = "value" + std::to_string(i);
         OH_HiAppEvent_AddStringParam(list, keys[i].c_str(), values[i].c_str());
@@ -1153,8 +1159,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3600, Function|M
     path = logPath + getlogFile;
     bool result = false;
     string fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"", "\"key15\":\"value15\"",
-                                         "\"key0\":\"value0\""};
+    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"","\"key15\":\"value15\"","\"key0\":\"value0\""};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     }
@@ -1171,7 +1176,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3600, Function|M
 * @author f00601390
 * @tc.desc The keyvalue is of the boolean type and the bool value is false.
 */
-HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3700, Function|MediumTest|Level3) {
+HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3700, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3700 start" << endl;
     OH_HiAppEvent_Configure("disable", "true");
     bool boolean = true;
