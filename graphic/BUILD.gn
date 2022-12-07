@@ -16,7 +16,7 @@ group("graphic") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"effectKit:EffectKitTest",
+      "effectKit:EffectKitTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
