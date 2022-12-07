@@ -477,7 +477,7 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
   TEST_ASSERT_TRUE(day <= 31 && day > 0);
 
   char str[10] = {0};
-  ret = sprintf_s(str, strlen(str), "%d-%02d-%02d", year, month, day);
+  ret = sprintf_s(str, sizeof(str) + 1, "%d-%02d-%02d", year, month, day);
   if (ret < RET_SUCCESS)
   {
     TEST_ASSERT_TRUE(ret >= 0);
