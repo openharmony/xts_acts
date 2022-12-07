@@ -365,9 +365,9 @@ export default function actsWifiManagerFunctionTest() {
             };
             let p2pConnectResult = wifiMg.p2pConnect(wifiP2PConfig);
             console.info("[wifi_test]test p2pConnect successful." );
-            let p2pCancelResult = wifiMg.p2pDisconnect();
+            let p2pCancelResult = wifiMg.p2pCancelConnect();
             await sleep(2000);
-            console.info("[wifi_test]test p2pDisconnect successful." );
+            console.info("[wifi_test]test p2pCancelConnect successful." );
             let removeGroupResult = wifiMg.removeGroup();
             console.info("[wifi_test]test removeGroup  successful " );
             await wifiMg.getCurrentGroup()
