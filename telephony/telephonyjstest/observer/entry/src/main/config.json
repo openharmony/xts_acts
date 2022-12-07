@@ -68,7 +68,7 @@
       }
     ],
     "reqPermissions": [
-	  {
+	    {
         "name":"ohos.permission.GET_NETWORK_INFO",
         "reason":"need use ohos.permission.GET_NETWORK_INFO"
       }

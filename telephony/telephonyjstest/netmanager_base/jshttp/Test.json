@@ -6,7 +6,7 @@
         "bundle-name": "com.ohos.jshttp",
         "package-name": "com.ohos.jshttp",
         "shell-timeout": "900000",
-        "testcase-timeout":"100000"
+        "testcase-timeout":"200000"
     },
     "kits": [
         {
