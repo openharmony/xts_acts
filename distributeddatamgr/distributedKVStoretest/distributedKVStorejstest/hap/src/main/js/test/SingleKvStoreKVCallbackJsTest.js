@@ -75,11 +75,8 @@ describe('SingleKvStoreCallbackTest', function () {
 
     beforeAll(async function (done) {
         console.info('beforeAll config:'+ JSON.stringify(config));
-        await factory.createKVManager(config, function (err, manager) {
-            kvManager = manager;
-            console.info('beforeAll createKVManager success');
-            done();
-        })
+        kvManager = factory.createKVManager(config)
+        done();
     })
 
     afterAll(async function (done) {
@@ -2337,6 +2334,7 @@ describe('SingleKvStoreCallbackTest', function () {
      */
     it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULT_CALLBACK_8200', 0, async function (done) {
         console.info('SingleKvStoreCloseResultSetCallbackTest004');
+
         try{
             kvStore.closeResultSet("",(err, data) => {
                 console.info('SingleKvStoreCloseResultSetCallbackTest004 close result finish')
