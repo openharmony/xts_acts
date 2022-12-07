@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,24 +15,45 @@
 
 import contactsapi from "@ohos.contact";
 import sms from '@ohos.telephony.sms';
-import bundle from '@ohos.bundle'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import account from '@ohos.account.osAccount';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium'
+import featureAbility from "@ohos.ability.featureAbility";
+import {afterAll, afterEach, beforeAll, describe, expect, it} from '@ohos/hypium';
+import {UiComponent,UiDriver,Component,Driver,UiWindow,ON,BY} from '@ohos.uitest'
 
 export default function ObjectInterfaceTest() {
 
   describe('ObjectInterfaceTest', function () {
-
+    
     function sleep(numberMillis) {
       var now = new Date();
       var exitTime = now.getTime() + numberMillis;
       while (true) {
         now = new Date();
-        if (now.getTime() > exitTime)
+        if (now.getTime() > exitTime);
         return;
       }
     }
+
+    async function driveFn() {
+      console.info("come in driveFn");
+      let driver = await UiDriver.create();
+      console.info("driver is " + JSON.stringify(driver));
+      sleep(2000);
+      let button = await driver.findComponent(BY.text('允许'));
+      console.info("button is " + JSON.stringify(button));
+      await button.click();
+      sleep(5000);
+    }
+
+    beforeAll(async function () {
+      var permissions = ["ohos.permission.WRITE_CONTACTS","ohos.permission.READ_CONTACTS"];
+      featureAbility.getContext().requestPermissionsFromUser(permissions, 0, () => {
+        console.info("start requestPermissionsFromUser");
+      });
+      for(let i=0; i<2; i++){
+        await driveFn();
+        console.log("get user_grant permission");
+      }
+    });
 
     var contactData = {
       id: 0,
@@ -323,11 +344,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_insert_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       try {
         var rawContactId = await contactsapi.addContact(contactData);
         console.info("contactsApi_insert_test_100 : rawContactId = " + rawContactId);
@@ -338,7 +354,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_insert_test_100 : raw_contact insert error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -347,11 +363,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_delete_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var deleteId = gRawContactId;
       try {
         var deleteCode = await contactsapi.deleteContact(deleteId);
@@ -363,7 +374,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_delete_test_200 : delete error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -372,11 +383,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_update_test_300", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var rawContactId = await contactsapi.addContact(contactData);
       console.info("contactsApi_insert_test_300 : rawContactId = " + rawContactId);
       gRawContactId = rawContactId;
@@ -399,7 +405,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_update_test_300 : update error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -408,22 +414,21 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_contact_test_400", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
-      var queryId = gRawContactId;
+      var queryId = await contactsapi.addContact(contactData);
+      console.info("contactsApi_query_contact_test_400 : queryId = " + queryId);
+      expect(queryId > 0).assertTrue();
+
       try {
         var resultSet = await contactsapi.queryContact(queryId);
         console.info("contactsApi_query_contact_test_400 : query resultSet = " + JSON.stringify(resultSet));
-        expect(resultSet == undefined).assertTrue();
+        expect(resultSet != null).assertTrue();
         done();
       } catch (error) {
         console.info("contactsApi_query_contact_test_400 query error = " + error);
+        expect().assertFalse();
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -432,11 +437,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_contact_test_500", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var queryId = gRawContactId;
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
@@ -454,7 +454,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_contact_test_500 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -463,11 +463,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_contact_test_600", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var queryId = gRawContactId;
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
@@ -485,7 +480,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_contact_test_600 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -494,11 +489,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_contacts_test_700", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       try {
         var resultSet = await contactsapi.queryContacts();
         console.info("contactsApi_query_contacts_test_700 : query resultSet = " + JSON.stringify(resultSet));
@@ -508,7 +498,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_contacts_test_700 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -517,11 +507,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_contacts_test_800", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
       }
@@ -534,7 +519,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_contacts_test_800 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -543,11 +528,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_contacts_test_900", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var ContactAttributes = {
         attributes: [1, 5, 6]
       }
@@ -560,7 +540,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_contacts_test_900 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -569,11 +549,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_contacts_test_1000", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
       };
@@ -589,7 +564,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_contacts_test_1000 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -598,11 +573,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_email_test_1100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var email = "email";
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
@@ -616,7 +586,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_email_test_1100 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -625,11 +595,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_email_test_1200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var email = "email";
       try {
         var resultSet = await contactsapi.queryContactsByEmail(email);
@@ -640,7 +605,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_email_test_1200 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -649,11 +614,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_email_test_1300", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var email = "email";
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
@@ -670,7 +630,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_email_test_1300 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -679,11 +639,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_email_test_1400", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var email = "email";
       var ContactAttributes = {
         attributes: [1, 5, 6]
@@ -697,7 +652,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_email_test_1400 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -706,11 +661,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_phoneNumber_test_1500", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var phoneNumber = "183";
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
@@ -724,7 +674,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_phoneNumber_test_1500 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -733,11 +683,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_phoneNumber_test_1600", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var phoneNumber = "183";
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
@@ -754,7 +699,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_phoneNumber_test_1600 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -763,11 +708,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_phoneNumber_test_1700", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var phoneNumber = "183";
       try {
         var resultSet = await contactsapi.queryContactsByPhoneNumber(phoneNumber);
@@ -778,7 +718,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_phoneNumber_test_1700 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -787,11 +727,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_phoneNumber_test_1800", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var phoneNumber = "183";
       var ContactAttributes = {
         attributes: [1, 5, 6]
@@ -805,7 +740,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_phoneNumber_test_1800 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -814,11 +749,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_group_test_1900", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       try {
         var resultSet = await contactsapi.queryGroups();
         console.info("contactsApi_query_group_test_1900 : query resultSet = " + JSON.stringify(resultSet));
@@ -828,7 +758,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_group_test_1900 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -837,11 +767,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_group_test_2000", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
       }
@@ -854,7 +779,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_group_test_2000 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -863,11 +788,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_holders_test_2200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       try {
         var resultSet = await contactsapi.queryHolders();
         console.info("contactsApi_query_holders_test_2200 : query resultSet = " + JSON.stringify(resultSet));
@@ -877,7 +797,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_holders_test_2200 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -886,11 +806,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_key_test_2300", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var idtest = gRawContactId;
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
@@ -904,7 +819,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_key_test_2300 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -913,11 +828,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_key_test_2400", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var idtest = gRawContactId;
       console.info("contactsApi_query_key_test_2400 : query gRawContactId = " + idtest);
       try {
@@ -929,7 +839,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_key_test_2400 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -938,11 +848,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_query_mycard_test_2500", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var holder = {
         bundleName: "com.ohos.contacts", displayName: "phone", holderId: 1
       }
@@ -955,7 +860,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_mycard_test_2500 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -964,11 +869,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_isMyCard_test_2600", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var id = 1;
       try {
         var isExist = await contactsapi.isMyCard(id);
@@ -979,7 +879,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_isMyCard_test_2600 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -988,11 +888,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("contactsApi_isLocalContact_test_2700", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var id = gRawContactId;
       try {
         var isExist = await contactsapi.isLocalContact(id);
@@ -1003,7 +898,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_isLocalContact_test_2700 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1012,11 +907,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_insert_test_2800", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var contactDataError = {};
       try {
         var rawContactId = await contactsapi.addContact(contactDataError);
@@ -1027,7 +917,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_insert_test_100 : raw_contact insert error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1036,11 +926,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_update_test_3000", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var rawContactId = -1;
       var updateValues = {
         id: rawContactId, name: {
@@ -1053,13 +938,13 @@ export default function ObjectInterfaceTest() {
       try {
         var updateCode = await contactsapi.updateContact(updateValues, condition);
         console.info("abnormal_contactsApi_update_test_3000 : updateCode = " + updateCode);
-        expect(updateCode === -1).assertTrue();
+        expect(updateCode === 0).assertTrue();
         done();
       } catch (error) {
         console.info("abnormal_contactsApi_update_test_3000 : update error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1068,11 +953,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_query_contact_test_3100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var queryId = "-1";
       try {
         var resultSet = await contactsapi.queryContact(queryId);
@@ -1089,7 +969,7 @@ export default function ObjectInterfaceTest() {
         console.info("abnormal_contactsApi_query_contact_test_3100 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1098,11 +978,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_query_contacts_test_3200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var ContactAttributes = {
         attributes: [100]
       }
@@ -1122,7 +997,7 @@ export default function ObjectInterfaceTest() {
         console.info("abnormal_contactsApi_query_contacts_test_3200 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1131,11 +1006,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_query_email_test_3300", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var email = "email2222";
       try {
         var resultSet = await contactsapi.queryContactsByEmail(email);
@@ -1146,7 +1016,7 @@ export default function ObjectInterfaceTest() {
         console.info("abnormal_contactsApi_query_email_test_3300 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1155,11 +1025,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_query_phoneNumber_test_3400", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var phoneNumber = "19999999";
       try {
         var resultSet = await contactsapi.queryContactsByPhoneNumber(phoneNumber);
@@ -1171,7 +1036,7 @@ export default function ObjectInterfaceTest() {
         console.info("abnormal_contactsApi_query_phoneNumber_test_3400 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1180,11 +1045,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_query_group_test_3500", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var holder = {
         bundleName: "com.ohos.contacts2", displayName: "phone2", holderId: 2
       }
@@ -1197,7 +1057,7 @@ export default function ObjectInterfaceTest() {
         console.info("contactsApi_query_group_test_2000 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1206,11 +1066,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_query_key_test_3600", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var idtest = -1;
       try {
         var resultSet = await contactsapi.queryKey(idtest);
@@ -1221,7 +1076,7 @@ export default function ObjectInterfaceTest() {
         console.info("abnormal_contactsApi_query_key_test_3600 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1230,11 +1085,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_query_mycard_test_3700", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var ContactAttributes = {
         attributes: [100]
       };
@@ -1248,7 +1098,7 @@ export default function ObjectInterfaceTest() {
         console.info("abnormal_contactsApi_query_mycard_test_3700 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1257,11 +1107,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_isMyCard_test_3800", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var id = 999;
       try {
         var isExist = await contactsapi.isMyCard(id);
@@ -1272,7 +1117,7 @@ export default function ObjectInterfaceTest() {
         console.info("abnormal_contactsApi_isMyCard_test_3800 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     /**
@@ -1281,11 +1126,6 @@ export default function ObjectInterfaceTest() {
  * @tc.desc    Function test
  */
     it("abnormal_contactsApi_isLocalContact_test_3900", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       var id = 999;
       try {
         var isExist = await contactsapi.isLocalContact(id);
@@ -1296,15 +1136,10 @@ export default function ObjectInterfaceTest() {
         console.info("abnormal_contactsApi_isLocalContact_test_3900 query error = " + error);
         done();
       }
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_addContact_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.addContact(contactData, (err, data) => {
         if (err) {
           done();
@@ -1313,15 +1148,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) != -1).assertTrue();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_deleteContact_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.deleteContact('xxx', (err) => {
         if (err) {
           expect(JSON.stringify(err) == -1).assertTrue();
@@ -1332,16 +1162,11 @@ export default function ObjectInterfaceTest() {
         done();
       });
 
-      sleep(500)
+      sleep(500);
     });
 
 
     it("contactsApi_queryContact_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContact('xxx', (err, data) => {
         if (err) {
           expect(false).assertTrue();
@@ -1351,15 +1176,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) == undefined).assertTrue();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContact_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContact('xxx', {
         holderId: 0
       }, (err, data) => {
@@ -1371,15 +1191,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) == undefined).assertTrue();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContact_test_300", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContact('xxx', {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
@@ -1391,15 +1206,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) == undefined).assertTrue();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContact_test_400", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContact('xxx', {
         holderId: 0
       }, {
@@ -1413,15 +1223,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) == undefined).assertTrue();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContact_test_500", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       let promise = contactsapi.queryContact('xxx', {
         holderId: 0
       }, {
@@ -1434,15 +1239,10 @@ export default function ObjectInterfaceTest() {
         expect(false).assertTrue();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContacts_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContacts((err, data) => {
         if (err) {
           expect(JSON.stringify(data) === null).assertFalse();
@@ -1452,15 +1252,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContacts_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContacts({
         holderId: 0
       }, (err, data) => {
@@ -1472,15 +1267,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContacts_test_300", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContacts({
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
@@ -1492,16 +1282,11 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
 
     it("contactsApi_queryContacts_test_400", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContacts({
         holderId: 0
       }, {
@@ -1515,16 +1300,11 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
 
     it("contactsApi_queryContacts_test_500", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       let promise = contactsapi.queryContacts({
         holderId: 0
       }, {
@@ -1537,15 +1317,10 @@ export default function ObjectInterfaceTest() {
         expect(false).assertTrue();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContactsByPhoneNumber_test_000", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContactsByPhoneNumber('138xxxxxxxx', (err, data) => {
         if (err) {
           expect(JSON.stringify(data) === null).assertFalse();
@@ -1555,15 +1330,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContactsByPhoneNumber_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContactsByPhoneNumber('138xxxxxxxx', {
         holderId: 0
       }, (err, data) => {
@@ -1575,15 +1345,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContactsByPhoneNumber_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContactsByPhoneNumber('138xxxxxxxx', {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
@@ -1595,15 +1360,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContactsByPhoneNumber_test_300", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContactsByPhoneNumber('138xxxxxxxx', {
         holderId: 0
       }, {
@@ -1617,16 +1377,11 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
 
     it("contactsApi_queryContactsByEmail_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContactsByEmail('xxx@email.com', (err, data) => {
         if (err) {
           expect(JSON.stringify(data) === null).assertFalse();
@@ -1636,15 +1391,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryContactsByEmail_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContactsByEmail('xxx@email.com', {
         holderId: 0
       }, (err, data) => {
@@ -1656,16 +1406,11 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
 
     it("contactsApi_queryContactsByEmail_test_300", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContactsByEmail('xxx@email.com', {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
@@ -1677,16 +1422,11 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
 
     it("contactsApi_queryContactsByEmail_test_400", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryContactsByEmail('xxx@email.com', {
         holderId: 0
       }, {
@@ -1700,15 +1440,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryGroups_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryGroups((err, data) => {
         if (err) {
           expect(JSON.stringify(data) === null).assertFalse();
@@ -1718,15 +1453,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryGroups_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryGroups({
         holderId: 0
       }, (err, data) => {
@@ -1738,16 +1468,11 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
 
     it("contactsApi_queryHolders_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryHolders((err, data) => {
         if (err) {
           expect(JSON.stringify(data) === null).assertFalse();
@@ -1757,15 +1482,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryKey_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryKey( /*id*/
         1, (err, data) => {
         if (err) {
@@ -1776,15 +1496,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_queryKey_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryKey( /*id*/
         1, {
         holderId: 1
@@ -1797,16 +1512,11 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
 
     it("contactsApi_queryMyCard_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryMyCard((err, data) => {
         if (err) {
           expect(JSON.stringify(data) === null).assertFalse();
@@ -1816,16 +1526,11 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
 
     it("contactsApi_queryMyCard_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.queryMyCard({
         attributes: ['ATTR_EMAIL', 'ATTR_NAME']
       }, (err, data) => {
@@ -1837,15 +1542,10 @@ export default function ObjectInterfaceTest() {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_updateContact_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.updateContact({
         name: {
           fullName: 'xxx'
@@ -1862,15 +1562,10 @@ export default function ObjectInterfaceTest() {
         console.info('updateContact success');
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_updateContact_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.updateContact({
         fullName: {
           fullName: 'xxx'
@@ -1889,15 +1584,10 @@ export default function ObjectInterfaceTest() {
         console.info('updateContact success');
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_isLocalContact_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.isLocalContact( /*id*/
         1, (err, data) => {
         if (err) {
@@ -1907,15 +1597,10 @@ export default function ObjectInterfaceTest() {
         }
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_isMyCard_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.isMyCard( /*id*/
         1, (err, data) => {
         if (err) {
@@ -1925,15 +1610,10 @@ export default function ObjectInterfaceTest() {
         }
         done();
       });
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_sendMessage_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       let sendCallback = function (err, data) {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
@@ -1958,65 +1638,26 @@ export default function ObjectInterfaceTest() {
       };
       sms.sendMessage(options);
       done();
-      sleep(500)
+      sleep(500);
     });
 
     it("contactsApi_selectContact_test_100", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       contactsapi.selectContact((err, data) => {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
-        sleep(500)
+        sleep(500);
       });
     });
 
     it("contactsApi_selectContact_test_200", 0, async function (done) {
-      checkContactPermission();
-      if (!contactPermission) {
-        done();
-        return;
-      }
       let promise = contactsapi.selectContact();
       promise.then((data) => {
         expect(JSON.stringify(data) === null).assertFalse();
         done();
-        sleep(500)
+        sleep(500);
       }).catch((err) => {
         done();
       });
     });
-
-    let contactPermission;
-    let userId;
-    async function getUserId() {
-      await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
-        console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
-        userId = account;
-      }).catch(err => {
-        console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
-      })
-    }
-
-    async function checkContactPermission() {
-      await getUserId();
-      let appInfo = await bundle.getApplicationInfo('com.ohos.actscallmanagerims2calltest', 0, userId);
-      console.info("getOsAccountLocalIdFromProcess appInfo ==========" + JSON.stringify(appInfo) + "userId:" + userId);
-      let tokenID = appInfo.accessTokenId;
-      let atManager = abilityAccessCtrl.createAtManager();
-      let result1 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_CONTACTS", 1);
-      let result2 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_CONTACTS", 1);
-      console.info("checkContactPermission Log: Perm1:" + result1);
-      console.info("checkContactPermission Log: Perm2:" + result2);
-      if (result1 == -1 || result2 == -1) {
-        contactPermission = false;
-        done();
-      }
-      contactPermission = true;
-      done();
-    }
   });
 }

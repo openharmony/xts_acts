@@ -21,8 +21,7 @@ export function toString(data) {
   } else {
     return data;
   }
-}
-;
+};
 
 export default function callJsunit() {
   describe('callTest', function () {
@@ -42,118 +41,6 @@ export default function callJsunit() {
         ret = true;
       }
       expect(ret).assertTrue();
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
-    });
-
-    /**
-     * @tc.number Telephony_Call_CallTransferInfo_Type
-     * @tc.name Interface CallTransferInfo
-     * @tc.desc Interface value test
-     */
-    it('Telephony_Call_CallTransferInfo_Type', 0, function (done) {
-      let caseName = 'Telephony_Call_CallTransferInfo_Type';
-      console.log(`==========> ${caseName} Test start ==========>`);
-      let callTransferInfo = {
-        transferNum: '10000000001', type: 2, settingType: 1
-      };
-      expect(callTransferInfo.type === 2).assertTrue();
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
-    });
-
-    /**
-     * @tc.number Telephony_Call_CallTransferResult_Status
-     * @tc.name Interface CallTransferResult
-     * @tc.desc Interface value test
-     */
-    it('Telephony_Call_CallTransferResult_Status', 0, function (done) {
-      let caseName = 'Telephony_Call_CallTransferResult_Status';
-      console.log(`==========> ${caseName} Test start ==========>`);
-      let callTransferResult = {
-        status: 0, number: '10000000001'
-      };
-      expect(callTransferResult.status === 0).assertTrue();
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
-    });
-
-    /**
-     * @tc.number Telephony_Call_CallTransferResult_Number
-     * @tc.name Interface CallTransferResult
-     * @tc.desc Interface value test
-     */
-    it('Telephony_Call_CallTransferResult_Number', 0, function (done) {
-      let caseName = 'Telephony_Call_CallTransferResult_Number';
-      console.log(`==========> ${caseName} Test start ==========>`);
-      let callTransferResult = {
-        status: 0, number: '10000000001'
-      };
-      expect(callTransferResult.number === '10000000001').assertTrue();
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
-    });
-
-    /**
-     * @tc.number Telephony_Call_CallAttributeOptions_CallId
-     * @tc.name Interface CallAttributeOptions
-     * @tc.desc Interface value test
-     */
-    it('Telephony_Call_CallAttributeOptions_CallId', 0, function (done) {
-      let caseName = 'Telephony_Call_CallAttributeOptions_CallId';
-      console.log(`==========> ${caseName} Test start ==========>`);
-      let callAttributeOptions = {
-        callId: 1
-      };
-      expect(callAttributeOptions.callId === 1).assertTrue();
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
-    });
-
-    /**
-     * @tc.number Telephony_Call_CallRestrictionInfo_Type
-     * @tc.name Interface CallRestrictionInfo
-     * @tc.desc Interface value test
-     */
-    it('Telephony_Call_CallRestrictionInfo_Type', 0, function (done) {
-      let caseName = 'Telephony_Call_CallRestrictionInfo_Type';
-      console.log(`==========> ${caseName} Test start ==========>`);
-      let callRestrictionInfo = {
-        type: 0, password: '123456', mode: 1
-      };
-      expect(callRestrictionInfo.type === 0).assertTrue();
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
-    });
-
-    /**
-     * @tc.number Telephony_Call_CallRestrictionInfo_Mode
-     * @tc.name Interface CallRestrictionInfo
-     * @tc.desc Interface value test
-     */
-    it('Telephony_Call_CallRestrictionInfo_Mode', 0, function (done) {
-      let caseName = 'Telephony_Call_CallRestrictionInfo_Mode';
-      console.log(`==========> ${caseName} Test start ==========>`);
-      let callRestrictionInfo = {
-        type: 0, password: '123456', mode: 1
-      };
-      expect(callRestrictionInfo.mode === 1).assertTrue();
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
-    });
-
-    /**
-     * @tc.number Telephony_Call_CallEventOptions_EventId
-     * @tc.name Interface CallEventOptions
-     * @tc.desc Interface value test
-     */
-    it('Telephony_Call_CallEventOptions_EventId', 0, function (done) {
-      let caseName = 'Telephony_Call_CallEventOptions_EventId';
-      console.log(`==========> ${caseName} Test start ==========>`);
-      let callEventOptions = {
-        eventId: 1
-      };
-      expect(callEventOptions.eventId === 1).assertTrue();
       console.log(`==========> ${caseName} Test end ==========>`);
       done();
     });

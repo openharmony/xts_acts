@@ -19,74 +19,27 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     AUTO_ACCEPT_NUMBER,
-    AUTO_ACCEPT_NUMBER2,
-    PHONE_NUMBER_LENGTH_11,
     CALL_STATUS_DIALING,
-    CALL_ID_NOT_EXIST,
     CALL_STATE_UNKNOWN,
     CALL_STATE_IDLE,
     DEFAULT_SLOT_ID,
-    CALL_MODE_IMS,
-    SLOT_ID_INVALID,
-    PHONE_LIST2,
-    RTT_MSG,
-    CALL_MODE_SEND_RECEIVE,
-    POS_700,
-    POS_10,
-    POS_LENGTH_300,
-    POS_LENGTH_600,
-    DEVICE_EARPIECE,
-    BOUNDARY_NUMBER_INT,
-    SENT_STRING_C,
-    MINUS_VALUE,
-    PHONE_NUMBER_LONG,
-    NULL_PHONE_NUMBER,
-    DIAL_CARRIER_TYPE,
-    DIAL_SCENCE_CALL_PRIVILEGED,
     MEDIA_TYPE_VOICE,
-    ROTATION_MINUS_1,
-    IMAGE_LOCAL_ERROR_PATH,
-    POS_Z_ERROR,
-    RESTRICTION_TYPE_ROAMING_INCOMING,
-    RESTRICTION_MODE_ACTIVATION,
-    RIGHT_PASSWORD,
-    RESTRICTION_TYPE_ALL_INCOMING,
-    TRANSFER_TYPE_NOT_REACHABLE,
-    TRANSFER_TYPE_UNCONDITIONAL,
-    PHONE_NUMBER_AREA_LAND,
-    CALL_TRANSFER_DISABLE,
-    TRANSFER_TYPE_NO_REPLY,
-    COMMAND_CALL_ERROR4,
-    COMMAND_CALL_ERROR,
-    CARMER_ID_NOT_EXIT,
-    ZOOM_RATIO_MINUS_1_0,
-    DIAL_SCENCE_CALL_NORMAL,
     DIAL_TYPE_OTT,
-    EVENT_OTT_FUNCTION_UNSUPPORTED,
     TEL_CONFERENCE_IDLE
 } from './lib/Const.js';
 import {toString} from './lib/ApiToPromise.js';
 import {
-    scenceInCalling,
-    hangupCall2,
     hangupCall,
-    callDetailsChangeOn,
     callId as gloabCallId,
-    reachState,
-    callDetailsChangeOff,
-    reachCallEventState
+    callDetailsChangeOff
 } from './lib/ScenceInCalling.js';
-const GETMAIN_CALLID_ERRO = -1;
-const REJECT_MESSAGE_STR = 'Hi,hello?';
-const REJECT_MESSAGE_NUM = 1234567890123456789012345678901234567890;
-const ERR_SLOT_ID = -1;
-const SLOTID = 0;
-const THE_THREE_NUMBER = '112';
-const DIAL_TYPE_ERR_CALL = 3;
-const TIME_OUT = 20000;
-const WAITING_TIME = 200;
 
+const ERR_SLOT_ID = -1;
+var callState = -1;
+var timing = 0;
+var endTime = 0;
 let callId = null;
+
 class RejectMessageOptions {
     constructor (str) {
         this.messageContent = str;
@@ -126,9 +79,7 @@ const sleep = (time) => {
     });
 };
 
-var callState = -1;
-var timing = 0;
-var endTime = 0;
+
 export default function CallManageImsCall() {
 describe('CallManageImsCall', function () {
 
