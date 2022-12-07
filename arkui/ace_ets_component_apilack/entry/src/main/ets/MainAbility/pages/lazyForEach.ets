@@ -148,7 +148,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct LazyForEachOnDataAdd {
   private data: MyDataSource = new MyDataSource()
   private scroller: Scroller = new Scroller()

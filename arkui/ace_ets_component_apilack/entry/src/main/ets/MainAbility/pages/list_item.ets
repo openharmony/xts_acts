@@ -19,7 +19,6 @@ import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-export default
 struct List_itemOnSelect {
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear List_itemOnSelect start`)

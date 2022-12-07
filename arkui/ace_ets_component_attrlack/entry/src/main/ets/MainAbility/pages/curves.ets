@@ -19,7 +19,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct CurvesEaseOut {
   @State widthSize: number = 400
   @State heightSize: number = 200

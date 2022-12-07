@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct Text_inputPhoneNumber {
+struct Text_inputPhoneNumber {
   @State text: string = ''
   @State text1: string = 'PhoneNumber'
   @State text2: string = 'Address'

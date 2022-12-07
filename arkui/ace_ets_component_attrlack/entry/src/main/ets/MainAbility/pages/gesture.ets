@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct GestureParallel {
+struct GestureParallel {
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear GestureParallel start`)
   }

@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct SwiperMask {
+struct SwiperMask {
   private swiperController: SwiperController = new SwiperController()
   private data: MyDataSource = new MyDataSource([])
 

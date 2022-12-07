@@ -19,7 +19,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct LoadingProgressCircular {
   @State circular:LoadingProgressStyle = LoadingProgressStyle.Circular;
   @State orbital:LoadingProgressStyle = LoadingProgressStyle.Orbital;
@@ -37,6 +36,7 @@ struct LoadingProgressCircular {
       Text("loadingProgress-Circular")
         .width(100)
         .height(70)
+        .margin(5)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -51,6 +51,7 @@ struct LoadingProgressCircular {
       Text("loadingProgress-Orbital")
         .width(100)
         .height(70)
+        .margin(5)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -62,7 +63,7 @@ struct LoadingProgressCircular {
         .textOverflow({ overflow: TextOverflow.None })
         .key("OrbitalText")
 
-      Text('Orbital LoadingProgress ').fontSize(9).fontColor(0xCCCCCC).width('100%')
+      Text('Orbital LoadingProgress ').fontSize(9).fontColor(0xCCCCCC).width('100%').margin(5)
       LoadingProgress()
         .color(Color.Blue)
 

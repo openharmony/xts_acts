@@ -74,7 +74,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0002] component cachedCount strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.cachedCount).assertEqual("2");
+      expect(obj.$attrs.cachedCount).assertEqual(2);
       console.info("[testswiperCurve0002] cachedCount value :" + obj.$attrs.cachedCount);
       done();
     });

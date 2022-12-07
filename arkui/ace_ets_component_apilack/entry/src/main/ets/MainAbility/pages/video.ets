@@ -19,7 +19,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct VideoOnFullscreenChange {
 
   @State srcs: Resource = $rawfile('videoTest.mp4');
@@ -94,7 +93,8 @@ struct VideoOnFullscreenChange {
         Button("FullScreen")
           .key("fullScreen")
           .onClick(() => {
-            this.controller.requestFullscreen(true)
+            this.controller.requestFullscreen(true);
+            console.info("video_101 onClick start to fullScreen");
         });
 
         Button("ExitFullScreen")

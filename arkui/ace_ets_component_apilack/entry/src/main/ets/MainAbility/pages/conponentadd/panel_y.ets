@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct PanelBackgroundMask {
+struct PanelBackgroundMask {
   @State mode: PanelMode = PanelMode.Full
   @State navBarPosition:PanelMode = PanelMode.Full
   aboutToAppear() {

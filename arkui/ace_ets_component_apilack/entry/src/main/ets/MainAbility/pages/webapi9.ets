@@ -45,7 +45,8 @@ struct Index {
     message = new ConsoleMessage("1","12",23,MessageLevel.Debug);
 
 
-    controller:WebController = new WebController()
+    controller:WebController = new WebController();
+    controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
     responseweb: WebResourceResponse = new WebResourceResponse()
     @State str:string="emitStoreWebArchive"
 
@@ -99,7 +100,7 @@ struct Index {
                 }).
                onWindowNew((event) => {
                 console.log("onWindowNew...");
-                var popController: WebController = new WebController();
+                var popController: web_webview.WebviewController = new web_webview.WebviewController();
                 event.handler.setWebController(popController);
                 setTimeout(()=>{
                     Utils.emitEvent(this.isVoid,801)
@@ -160,23 +161,23 @@ struct Index {
                 switch(this.str){
                     // add
                     case "emitGeturl":
-                         let url = this.controller.getUrl();
+                         let url = this.controllerTwo.getUrl();
                          Utils.emitEvent(url,810);
                          break;
                     case "emitclearClientAuthenticationCache":
-                        this.controller.clearClientAuthenticationCache();
+                        this.controllerTwo.clearClientAuthenticationCache();
                         Utils.emitEvent(this.isVoid,811);
                         break;
                     case "emitclearSslCache":
-                        this.controller.clearSslCache();
+                        this.controllerTwo.clearSslCache();
                         Utils.emitEvent(this.isVoid,812);
                         break;
                     case "emitsearchNext":
-                        this.controller.searchNext(true);
+                        this.controllerTwo.searchNext(true);
                         Utils.emitEvent(this.isVoid,813);
                         break;
                     case "emitclearMatches":
-                        this.controller.clearMatches();
+                        this.controllerTwo.clearMatches();
                         Utils.emitEvent(this.isVoid,814);
                         break;
                     case "emitDefaultUserAgent":
@@ -184,7 +185,7 @@ struct Index {
                         Utils.emitEvent(usrAgent,815);
                         break;
                     case "emitgetWebId":
-                        let webId = this.controller.getWebId();
+                        let webId = this.controllerTwo.getWebId();
                         Utils.emitEvent(webId,816);
                         break;
                     case "emitpostMessage":

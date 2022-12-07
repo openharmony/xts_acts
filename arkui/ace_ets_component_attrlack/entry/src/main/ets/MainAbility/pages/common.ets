@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct CommonColorMode {
+struct CommonColorMode {
 
   // popup构造器定义弹框内容
   @Builder popupBuilder() {
@@ -92,7 +92,7 @@ export default struct CommonColorMode {
         .bindPopup(true,{
              message:"23",
              showInSubWindow:true
-        }).
+        })
 
       Text("common-OnFinish")
         .width(320)

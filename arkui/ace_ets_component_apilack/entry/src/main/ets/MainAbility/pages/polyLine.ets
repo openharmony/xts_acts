@@ -18,7 +18,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct PolyLineNe {
+struct PolyLineNe {
   private polyline: PolylineAttribute = new Polyline({
     width: 100,
     height: 100

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router'
-import uiAppearance from '@ohos.uiAppearance';
+// import uiAppearance from '@ohos.uiAppearance';
 
 import Log from '../common/Log.ets';
 
@@ -22,7 +22,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct RouterStandard {
 
 
@@ -37,7 +36,7 @@ struct RouterStandard {
       }
     }
     try {
-      await router.push(options,router.RouterMode.Standard)
+      await router.push(options)
     } catch (err) {
       console.info(`Standard Page fail callback, code: ${err.code}, msg: ${err.msg}`)
     }
@@ -54,7 +53,7 @@ struct RouterStandard {
       }
     }
     try {
-      await router.push(options,router.RouterMode.Single)
+      await router.push(options)
     } catch (err) {
       console.info(`Single Page fail callback, code: ${err.code}, msg: ${err.msg}`)
     }

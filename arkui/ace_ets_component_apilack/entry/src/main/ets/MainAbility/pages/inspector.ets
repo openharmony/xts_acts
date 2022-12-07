@@ -19,7 +19,6 @@ import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-export default
 struct Inspector {
   @State message: string = 'test'
   @State setColor:string = '#F9CF93'
