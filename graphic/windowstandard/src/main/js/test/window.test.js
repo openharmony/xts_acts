@@ -15,7 +15,6 @@
 import app from '@system.app'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import window from '@ohos.window'
-import screen from '@ohos.screen'
 import display from '@ohos.display'
 const TRUE_WINDOW = true;
 const avoidAreaType = 3;
@@ -1922,56 +1921,7 @@ describe('window_test', function () {
             done();
         })
     })
-
-    /**
-     * @tc.number		SUB_WMS_SETSCREENACTIVEMODE_JSAPI_001
-     * @tc.name			Test setScreenActiveMode_Test_001.
-     * @tc.desc			To set the function of setting screen parameters
-     */
-    it('setScreenActiveMode_Test_001', 0, async function (done) {
-        console.log('screenshotTest setScreenActiveModeTest1 begin');
-        screen.getAllScreens().then(src => {
-            console.log('screenshotTest setScreenActiveModeTest1 getAllScreen src' + src);
-            expect(src[0] != null).assertTrue();
-            let screenIndex = src[0];
-            screenIndex.setScreenActiveMode(0).then(() => {
-                console.log('screenshotTest setScreenActiveModeTest1 setScreenActiveMode 0 success ');
-                expect(TRUE_WINDOW).assertTrue()
-                done();
-            },(err) => {
-                console.log('screenshotTest setScreenActiveModeTest1 setScreenActiveMode 0 failed: err' + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            })
-        }, (err) => {
-            console.log('screenshotTest setScreenActiveModeTest1 failed: err: ' + JSON.stringify(err));
-            done();
-        })
-    })
-
-    /**
-     * @tc.number		SUB_WMS_SETSCREENACTIVEMODE_JSAPI_002
-     * @tc.name			Test setScreenActiveMode_Test_002.
-     * @tc.desc			To set the function of screen parameters to abnormal values.
-     */
-    it('setScreenActiveMode_Test_002', 0, async function (done) {
-        console.log('screenshotTest setScreenActiveModeTest2 begin');
-        screen.getAllScreens().then(src => {
-            console.log('screenshotTest setScreenActiveModeTest2 getAllScreen src' + src);
-            expect(src[0] != null).assertTrue();
-            let screenIndex = src[0];
-            screenIndex.setScreenActiveMode(-5).then(res => {
-                console.log('screenshotTest setScreenActiveModeTest2 setScreenActiveMode -5 res: ' + res);
-                expect().assertFail();
-                done();
-            },(err) => {
-                console.log('screenshotTest setScreenActiveModeTest2 setScreenActiveMode -5 failed: err' + JSON.stringify(err));
-                expect(err.code).assertEqual(1400003);
-                done();
-            })
-        })
-    })
-
+    
     /**
      * @tc.number		SUB_WMS_ENUM_WINDOWSTAGEEVENTTYPE_JSAPI_001
      * @tc.name			Test enumWindowStageEventType_Test_001.
