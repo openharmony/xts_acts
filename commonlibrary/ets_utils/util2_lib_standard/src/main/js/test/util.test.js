@@ -3303,6 +3303,41 @@ describe('LRUCacheTest', function () {
         that.put(1,8)
         expect(arr[2]).assertEqual(8)
     })
+
+    /**
+     * @tc.name: testLRUCacheAfterRemoval008
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     */
+     it('testLRUCacheAfterRemoval008', 0, function () {
+        var arrk = [];
+        var arrv = [];
+        class ChildLRUCache extends util.LRUCache
+        {
+          constructor(capacity)
+          {
+            super(capacity);
+          }
+          afterRemoval(isEvict, key, value, newValue)
+          {
+            if (isEvict === false)
+            {
+              arrk = Array.from(key);
+              arrv = Array.from(value);
+            }
+          }
+        }
+        var that = new ChildLRUCache(3);
+        that.put(1,2)
+        that.put(3,10)
+        that.put(2,8)
+        that.clear();
+        expect(arrk[0]).assertEqual(1)
+        expect(arrk[1]).assertEqual(3)
+        expect(arrk[2]).assertEqual(2)
+        expect(arrv[0]).assertEqual(2)
+        expect(arrv[1]).assertEqual(10)
+        expect(arrv[2]).assertEqual(8)
+    })
 })
 
 describe('FunctionTest', function () {
