@@ -24,19 +24,19 @@ const START_ABILITY_TIMEOUT = 4000;
 let subscriberInfoActsStartAbility0100 = {
     events: ["ACTS_StartAbility_0100_CommonEvent"],
 };
-let subscriberInfoActsStartAbility0200 = {
+let subscriberInfoActsStartAbility0201 = {
     events: ["ACTS_StartAbility_0201_CommonEvent"],
 };
-let subscriberInfoActsStartAbility0300 = {
+let subscriberInfoActsStartAbility0301 = {
     events: ["ACTS_StartAbility_0301_CommonEvent"],
 };
-let subscriberInfoActsStartAbility0400 = {
+let subscriberInfoActsStartAbility0401 = {
     events: ["ACTS_StartAbility_0401_CommonEvent"],
 };
-let subscriberInfoActsStartAbility0500 = {
+let subscriberInfoActsStartAbility0501 = {
     events: ["ACTS_StartAbility_0501_CommonEvent"],
 };
-let subscriberInfoActsStartAbility0600 = {
+let subscriberInfoActsStartAbility0601 = {
     events: ["ACTS_StartAbility_0601_CommonEvent"],
 };
 let subscriberInfoStartAbilityTen = {
@@ -391,7 +391,7 @@ describe('ActsFeatureAbilityTest', function () {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
 
-        await commonEvent.createSubscriber(subscriberInfoActsStartAbility0200).then(async (data) => {
+        await commonEvent.createSubscriber(subscriberInfoActsStartAbility0201).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -484,7 +484,7 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        commonEvent.createSubscriber(subscriberInfoActsStartAbility0300).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0301).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -566,7 +566,7 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        commonEvent.createSubscriber(subscriberInfoActsStartAbility0400).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0401).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -651,7 +651,7 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        commonEvent.createSubscriber(subscriberInfoActsStartAbility0500).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0501).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -746,7 +746,7 @@ describe('ActsFeatureAbilityTest', function () {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
 
-        commonEvent.createSubscriber(subscriberInfoActsStartAbility0600).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0601).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);

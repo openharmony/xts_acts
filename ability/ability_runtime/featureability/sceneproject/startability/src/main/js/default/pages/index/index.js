@@ -22,19 +22,19 @@ function PublishCallBackOne() {
     console.debug("====>Publish CallBack ACTS_StartAbility_0100_CommonEvent====>");
 }
 function PublishCallBackTwo() {
-    console.debug("====>Publish CallBack ACTS_StartAbility_0200_CommonEvent====>");
+    console.debug("====>Publish CallBack ACTS_StartAbility_0201_CommonEvent====>");
 }
 function PublishCallBackThree() {
-    console.debug("====>Publish CallBack ACTS_StartAbility_0300_CommonEvent====>");
+    console.debug("====>Publish CallBack ACTS_StartAbility_0301_CommonEvent====>");
 }
 function PublishCallBackFour() {
-    console.debug("====>Publish CallBack ACTS_StartAbility_0400_CommonEvent====>");
+    console.debug("====>Publish CallBack ACTS_StartAbility_0401_CommonEvent====>");
 }
 function PublishCallBackFive() {
-    console.debug("====>Publish CallBack ACTS_StartAbility_0500_CommonEvent====>");
+    console.debug("====>Publish CallBack ACTS_StartAbility_0501_CommonEvent====>");
 }
 function PublishCallBackSix() {
-    console.debug("====>Publish CallBack ACTS_StartAbility_0600_CommonEvent====>");
+    console.debug("====>Publish CallBack ACTS_StartAbility_0601_CommonEvent====>");
 }
 function PublishCallBackTen() {
     console.debug("====>Publish CallBack ACTS_StartAbility_1000_CommonEvent====>");
@@ -53,11 +53,11 @@ export default {
     onShow() {
         console.debug('==========onShow Called==========')
         commonEvent.publish("ACTS_StartAbility_0100_CommonEvent", PublishCallBackOne);
-        commonEvent.publish("ACTS_StartAbility_0200_CommonEvent", PublishCallBackTwo);
-        commonEvent.publish("ACTS_StartAbility_0300_CommonEvent", PublishCallBackThree);
-        commonEvent.publish("ACTS_StartAbility_0400_CommonEvent", PublishCallBackFour);
-        commonEvent.publish("ACTS_StartAbility_0500_CommonEvent", PublishCallBackFive);
-        commonEvent.publish("ACTS_StartAbility_0600_CommonEvent", PublishCallBackSix);
+        commonEvent.publish("ACTS_StartAbility_0201_CommonEvent", PublishCallBackTwo);
+        commonEvent.publish("ACTS_StartAbility_0301_CommonEvent", PublishCallBackThree);
+        commonEvent.publish("ACTS_StartAbility_0401_CommonEvent", PublishCallBackFour);
+        commonEvent.publish("ACTS_StartAbility_0501_CommonEvent", PublishCallBackFive);
+        commonEvent.publish("ACTS_StartAbility_0601_CommonEvent", PublishCallBackSix);
         commonEvent.publish("ACTS_StartAbility_1000_CommonEvent", PublishCallBackTen);
         commonEvent.publish("ACTS_StartAbility_1300_CommonEvent", PublishCallBackThirteen);
         featureAbility.terminateSelf((err, data)=>{
