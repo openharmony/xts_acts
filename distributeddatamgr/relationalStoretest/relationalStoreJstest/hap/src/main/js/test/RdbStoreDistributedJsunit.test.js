@@ -13,19 +13,63 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 import dataRdb from '@ohos.data.rdb';
 import abilityFeatureAbility from '@ohos.ability.featureAbility';
 
 let context = abilityFeatureAbility.getContext();
+var sqlStatement = "CREATE TABLE IF NOT EXISTS employee (" +
+"id INTEGER PRIMARY KEY AUTOINCREMENT," +
+"name TEXT NOT NULL," +"age INTEGER)"
+sqlStatement = "CREATE TABLE IF NOT EXISTS product (" +
+"id INTEGER PRIMARY KEY AUTOINCREMENT," +
+"name TEXT NOT NULL," +"price REAL," +
+"vendor INTEGER," +"describe TEXT)"
 const TAG = "[RDB_JSKITS_TEST_Distributed]"
 const STORE_NAME = "distributed_rdb.db"
 var rdbStore = undefined;
+const config = {
+    "name": STORE_NAME,
+}
+
+async function executeSql1() {
+    let sqlStatement = "CREATE TABLE IF NOT EXISTS employee (" +
+    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+    "name TEXT NOT NULL," +
+    "age INTEGER)"
+try {
+    await rdbStore.executeSql(sqlStatement, null)
+    console.info(TAG + "create table employee success")
+} catch (err) {
+    console.info(TAG + "create table employee failed")
+    expect(null).assertFail()
+}
+}
+
+async function executeSql2() {
+    let sqlStatement = "CREATE TABLE IF NOT EXISTS product (" +
+    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+    "name TEXT NOT NULL," +
+    "price REAL," +
+    "vendor INTEGER," +
+    "describe TEXT)"
+try {
+    await rdbStore.executeSql(sqlStatement, null)
+    console.info(TAG + "create table product success")
+} catch (err) {
+    console.info(TAG + "create table product failed")
+    expect(null).assertFail()
+}
+}
 
 export default function rdbStoreDistributedTest() {
 describe('rdbStoreDistributedTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
+        rdbStore = await dataRdb.getRdbStore(config, 1);
+        console.info(TAG + "create rdb store success")
+        await executeSql1()
+        await executeSql2()
     })
 
     beforeEach(async function () {
@@ -42,53 +86,6 @@ describe('rdbStoreDistributedTest', function () {
     })
 
     console.info(TAG + "*************Unit Test Begin*************");
-
-    /**
-     * @tc.name rdb open test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_001
-     * @tc.desc rdb open test
-     */
-    it('testRdbStoreDistributed0001', 0, async function (done) {
-        console.info(TAG + "************* testRdbStoreDistributed001 start *************");
-        const config = {
-            "name": STORE_NAME,
-        }
-        try {
-            rdbStore = await dataRdb.getRdbStore(config, 1);
-            console.info(TAG + "create rdb store success")
-            expect(rdbStore).assertEqual(rdbStore)
-            let sqlStatement = "CREATE TABLE IF NOT EXISTS employee (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "name TEXT NOT NULL," +
-                "age INTEGER)"
-            try {
-                await rdbStore.executeSql(sqlStatement, null)
-                console.info(TAG + "create table employee success")
-            } catch (err) {
-                console.info(TAG + "create table employee failed")
-                expect(null).assertFail()
-            }
-
-            sqlStatement = "CREATE TABLE IF NOT EXISTS product (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "name TEXT NOT NULL," +
-                "price REAL," +
-                "vendor INTEGER," +
-                "describe TEXT)"
-            try {
-                await rdbStore.executeSql(sqlStatement, null)
-                console.info(TAG + "create table product success")
-            } catch (err) {
-                console.info(TAG + "create table product failed")
-                expect(null).assertFail()
-            }
-        } catch (err) {
-            console.info(TAG + "create rdb store failed")
-            expect(null).assertFail()
-        }
-        done()
-        console.info(TAG + "************* testRdbStoreDistributed001 end *************");
-    })
 
     /**
      * @tc.name set_distributed_table_none_table
@@ -163,7 +160,7 @@ describe('rdbStoreDistributedTest', function () {
             console.info(TAG + "insert one record success " + rowId)
             expect(1).assertEqual(rowId)
         } catch (err) {
-            console.info(TAG + "insert one record failed");
+            console.info(TAG + "insert one record failed" + err);
             expect(null).assertFail();
         }
         done()
@@ -189,7 +186,7 @@ describe('rdbStoreDistributedTest', function () {
                 console.info(TAG + "update one record success " + rowId)
                 expect(1).assertEqual(rowId)
             } catch (err) {
-                console.info(TAG + "update one record failed");
+                console.info(TAG + "update one record failed" + err);
                 expect(null).assertFail();
             }
         } catch (err) {
