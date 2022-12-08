@@ -19,6 +19,7 @@ import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import * as videoRecorderBase from '../../../../../VideoRecorderTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
+export default function VideoRecorderFuncPromiseTest() {
 describe('VideoRecorderFuncPromiseTest', function () {
     const RECORDER_TIME = 3000;
     const PAUSE_TIME = 1000;
@@ -82,6 +83,15 @@ describe('VideoRecorderFuncPromiseTest', function () {
     }
 
     beforeAll(async function () {
+        let permissionName1 = 'ohos.permission.MICROPHONE';
+        let permissionName2 = 'ohos.permission.MEDIA_LOCATION';
+        let permissionName3 = 'ohos.permission.READ_MEDIA';
+        let permissionName4 = 'ohos.permission.WRITE_MEDIA';
+        let permissionName5 = 'ohos.permission.CAMERA';
+        let permissionNames = [permissionName1, permissionName2, permissionName3, permissionName4, permissionName5];
+        await mediaTestBase.getPermission(permissionNames);
+        await mediaTestBase.msleepAsync(2000);
+        await mediaTestBase.driveFn(3);
         cameraManager = await camera.getCameraManager(null);
         if (cameraManager != null) {
             console.info('[camera] case getCameraManager success');
@@ -1849,3 +1859,4 @@ describe('VideoRecorderFuncPromiseTest', function () {
         done();
     })
 })
+}
