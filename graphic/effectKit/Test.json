@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "180000",
-        "package": "com.example.myapplication",
+        "package": "com.example.ActsEffectKitTest",
         "shell-timeout": "600000"
     },
     "kits": [{
