@@ -15,6 +15,7 @@
 
 set -e
 
-mkdir -p  "suites/acts/testcases/libuvdata"
+mkdir -p  "suites/acts/testcases/libuvdata/test"
 cp -rf "../../test/xts/acts/arkui/libuv/genlocal.py" "suites/acts/testcases/libuvdata"
 cp -rf "common/common/libuvruntest" "suites/acts/testcases/libuvdata"
+cp -rf "../../third_party/libuv/test/fixtures" "suites/acts/testcases/libuvdata/test"

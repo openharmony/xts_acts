@@ -142,7 +142,7 @@ def writemulbuildgn():
                     #替换index.ets里的名称
                     indexetsname = hapdirpath + G_INDEXETSPATH
                     os.system(r"sed -i 's/{}/{}/g' {}".format(G_SUITENAMEPATTERN, suiteitemcap, indexetsname))
-                    
+
                     #替换Test.json里的名称
                     testjsonname = hapdirpath + G_TESTJSONPATH
                     os.system(r"sed -i 's/{}/{}/g' {}".format(G_SUITENAMEPATTERN, suiteitemcap, testjsonname))
@@ -177,7 +177,7 @@ def removedir(rootdir):
     os.rmdir(rootdir)
 
 
-def printhelp(): 
+def printhelp():
     print("Need testsuite and codepattern:\n")
     print("For example\n")
     print("python3 .\GenerateTestCase.py apilack\n")
@@ -201,7 +201,7 @@ def new_report(bakdir, str):
 if __name__ == '__main__':
     latestpath = new_report("reports", "")
     tmpfile = "tmptestsuite.xml"
-    putfile = "/result/ActsLibuvTestSuite.xml"
+    putfile = "/result/ActsLibuvTest.xml"
     tasklogfile = "/log/task_log.log"
     putdir = latestpath+putfile
     tasklogpath = latestpath+tasklogfile

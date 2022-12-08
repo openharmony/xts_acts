@@ -15,7 +15,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
-#include "ActsLibuvTestSuite.h"
+#include "ActsLibuvTest.h"
 extern "C"{
 #include "runner.h"
 }
@@ -25,27 +25,27 @@ namespace OHOS {
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsLibuvTestSuite::SetUpTestCase(void)
+    void ActsLibuvTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsLibuvTestSuite::TearDownTestCase(void)
+    void ActsLibuvTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsLibuvTestSuite::SetUp()
+    void ActsLibuvTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsLibuvTestSuite::TearDown()
+    void ActsLibuvTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsLibuvTestSuite, TestLibuvTestCase001, Function | MediumTest | Level2)
+    HWTEST_F(ActsLibuvTest, TestLibuvTestCase001, Function | MediumTest | Level2)
     {
-        printf("------start ActsLibuvTestSuite------\n");
+        printf("------start ActsLibuvTest------\n");
         system("/data/local/tmp/libuvruntest");
         EXPECT_TRUE(true);
-        printf("------end ActsLibuvTestSuite------\n");
+        printf("------end ActsLibuvTest------\n");
     }
 }
