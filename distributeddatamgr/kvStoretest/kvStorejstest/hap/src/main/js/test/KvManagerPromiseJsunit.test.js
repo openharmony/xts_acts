@@ -845,5 +845,47 @@ describe('kvManagerPromiseTest', function () {
         done();
     })
     
+    /**
+      * @tc.number SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_PROMISE_0100
+      * @tc.name [JS-API8]createKVManager
+      * @tc.desc Test Js Api createKVManager testcase 001
+      */
+    it('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_PROMISE_0100', 0, async function (done) {
+        console.info('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_PROMISE_0100 start');
+        const kvManagerConfig = {
+            bundleName: [TEST_BUNDLE_NAME],
+            userInfo: {
+                userId: '0',
+                userType: factory.UserType.SAME_USER_ID
+            },
+            context:contextApplication
+        }
+        factory.createKVManager(kvManagerConfig).then((manager) => {
+            console.info("Create kvManager success")
+            expect(false).assertTrue();
+            done();
+        }).catch((err) => {
+            console.info(`Create kvManager error: ${err}`)
+            done()
+        })
+    })
+
+    /**
+      * @tc.number SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_PROMISE_0200
+      * @tc.name [JS-API8]createKVManager
+      * @tc.desc Test Js Api createKVManager testcase 001
+      */
+     it('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_PROMISE_0200', 0, async function (done) {
+        console.info('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_PROMISE_0200 start');
+        factory.createKVManager("kvManagerConfig").then((manager) => {
+            console.info("Create kvManager success")
+            expect(false).assertTrue();
+            done();
+        }).catch((err) => {
+            console.info(`Create kvManager error: ${err}`)
+            expect(err != null).assertTrue();
+            done();
+        })
+    })
 })
 }

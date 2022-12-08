@@ -909,7 +909,7 @@ describe('kvManagerCallbackTest', function () {
             done();
         }
     })
-
+    
     /**
      * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_PUT_CALLBACK_1000
      * @tc.name [JS-API8]KVStore.Put
@@ -936,6 +936,57 @@ describe('kvManagerCallbackTest', function () {
         } catch (e) {
             console.info('testKVStorePut100 callback e ' + e);
             expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+      * @tc.number SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0100
+      * @tc.name [JS-API8]createKVManager
+      * @tc.desc Test Js Api createKVManager testcase 001
+      */
+    it('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0100', 0, async function (done) {
+        console.info('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0100 start');
+        const kvManagerConfig = {
+            bundleName: [TEST_BUNDLE_NAME],
+            userInfo: {
+                userId: '0',
+                userType: factory.UserType.SAME_USER_ID
+            }
+        }
+        factory.createKVManager(kvManagerConfig, (err, data) => {
+            if(err != null){
+                console.info(`Create kvManager error: ${err}`)
+                done()
+            }else{
+                console.info("Create kvManager success")
+                expect(false).assertTrue();
+                done();
+            }
+        })
+    })
+
+    /**
+      * @tc.number SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0200
+      * @tc.name [JS-API8]createKVManager
+      * @tc.desc Test Js Api createKVManager testcase 001
+      */
+     it('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0200', 0, async function (done) {
+        console.info('SUB_DISTRIBUTEDDATAMGR_CREATEKVMANAGER_CALLBACK_0200 start');
+        try{
+            factory.createKVManager("kvManagerConfig", (err, data) => {
+                if(err != null){
+                    console.info(`Create kvManager error: ${err}`)
+                    done()
+                }else{
+                    console.info("Create kvManager success")
+                    expect(false).assertTrue();
+                    done();
+                }
+            })
+        }catch(err){
+            console.info(`Create kvManager error: ${err}`)
+            expect(err != null).assertTrue();
             done();
         }
     })
