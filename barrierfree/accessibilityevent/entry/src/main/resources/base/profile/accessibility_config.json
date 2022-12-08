@@ -1,7 +1,0 @@
-{
-  "accessibilityCapabilities": [
-    "retrieve"
-  ],
-  "accessibilityCapabilityRationale": "a11y_rationale",
-  "settingsAbility": "com.accessibility.voiceaid.voiceAidSetting"
-}
