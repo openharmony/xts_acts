@@ -13,19 +13,15 @@
  * limitations under the License.
  */
 import AVSession from './AVSession.test.js';
-import AVSessionController from './AVSessionController.test.js';
 import AVSessionManager from './AVSessionManager.test.js';
 import AVSessionCallback from './AVSessionCallback.test.js';
-import AVSessionControllerCallback from './AVSessionControllerCallback.test.js';
 import AVSessionManagerCallback from './AVSessionManagerCallback.test.js';
 import AVSessionErrorCode from './AVSessionErrorCode.test';
 
 export default function testsuite() {
     AVSession()
-    AVSessionController()
     AVSessionManager()
     AVSessionCallback()
-    AVSessionControllerCallback()
     AVSessionManagerCallback()
     AVSessionErrorCode()
 }
