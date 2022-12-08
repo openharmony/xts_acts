@@ -14,8 +14,9 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import * as audioTestBase from '../../../../../AudioTestBase'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+// import * as audioTestBase from '../../../../../AudioTestBase'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+export default function audioManagerApi9() {
 
 describe('audioManagerApi9', function () {
     let TagFrmwk = "audioManagerApi9Test";
@@ -71,13 +72,6 @@ describe('audioManagerApi9', function () {
 
     beforeAll(async function () {
         console.info(`${TagFrmwk}: beforeAll: Prerequisites at the test suite level`);
-        let permissionName1 = 'ohos.permission.MICROPHONE';
-        let permissionName2 = 'ohos.permission.ACCESS_NOTIFICATION_POLICY';
-        let permissionName3 = 'ohos.permission.MODIFY_AUDIO_SETTINGS';
-        let permissionName4 = 'ohos.permission.MANAGE_AUDIO_CONFIG';
-        let permissionNameList = [permissionName1, permissionName2, permissionName3, permissionName4];
-        let appName = 'ohos.acts.multimedia.audio.audiomanager';
-        await audioTestBase.applyPermission(appName, permissionNameList);
         await sleep(100);
         await getAudioManager();
         getStreamManager();
@@ -1198,3 +1192,4 @@ describe('audioManagerApi9', function () {
     })
 
 })
+}

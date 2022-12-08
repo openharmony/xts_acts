@@ -14,9 +14,11 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import * as audioTestBase from '../../../../../AudioTestBase'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import featureAbility from '@ohos.ability.featureAbility';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.uitest'
 
+export default function audioCapturerChange() {
 describe('audioCapturerChange', function () {
     let audioStreamManager;
     let audioStreamManagerCB;
@@ -25,20 +27,35 @@ describe('audioCapturerChange', function () {
     const audioManager = audio.getAudioManager();
     console.info(`${Tag}: Create AudioManger Object JS Framework`);
 
-    beforeAll(async function () {
-        console.info(`AudioFrameworkTest: beforeAll: Prerequisites at the test suite level`);
-        let permissionName1 = 'ohos.permission.MICROPHONE';
-        let permissionNameList = [permissionName1];
-        let appName = 'ohos.acts.multimedia.audio.audiocapturerchangeInfo';
-        await audioTestBase.applyPermission(appName, permissionNameList);
-        await sleep(100);
-        console.info(`AudioFrameworkTest: beforeAll: END`);
-        await sleep(100);
 
+
+
+    async function getPermission() {
+        let permissions = ['ohos.permission.MICROPHONE'];
+        featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
+            console.info("request success" + JSON.stringify(data));
+        })
+    }
+    async function driveFn() {
+        console.info(`come in driveFn`)
+        let driver = await UiDriver.create()
+        console.info(`driver is ${JSON.stringify(driver)}`)
+        await sleep(2000)
+        console.info(`UiDriver start`)
+        let button = await driver.findComponent(BY.text('允许'))
+        console.info(`button is ${JSON.stringify(button)}`)
+        await sleep(5000)
+        await button.click()
+    }
+
+    beforeAll(async function () {
+        await getPermission();
+        sleep(2000)
+        await driveFn();
+        await sleep(5000);
         audioStreamManager = audioManager.getStreamManager();
         audioStreamManagerCB = audioManager.getStreamManager();
-        await sleep(1000);
-        console.info(`${Tag}:  beforeAll: END`);
+        console.info('TestLog: Start Testing AudioFrameworkTest Interfaces');
     })
 
     beforeEach(async function () {
@@ -1624,3 +1641,4 @@ describe('audioCapturerChange', function () {
     })
 
 })
+}

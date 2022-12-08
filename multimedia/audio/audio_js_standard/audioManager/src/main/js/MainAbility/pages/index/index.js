@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,30 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import file from '@system.file'
 
-import {Core, ExpectExtend} from 'deccjsunit/index'
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
-    data: {
-        title: ""
-    },
+   data: {
+       title: ""
+   },
     onInit() {
-        this.title = this.$t('strings.world');
+       this.title = this.$t('strings.world');
     },
     onShow() {
-        console.info('onShow finish')
-        const core = Core.getInstance()
-        const expectExtend = new ExpectExtend({
-            'id': 'extend'
-        })
-        core.addService('expect', expectExtend)
-        core.init()
-        const configService = core.getDefaultService('config')
-        this.timeout = 60000
-        configService.setConfig(this)
-        require('../../../test/List.test')
-        core.execute()
+       console.info('onShow finish')
     },
     onReady() {
     },
 }
+
