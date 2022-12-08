@@ -15,6 +15,15 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602",
+                "uinput -T -m 200 1000 200 200 200",
+                "param set persist.ace.testmode.enabled 1"
+            ]
         }
     ]
 }

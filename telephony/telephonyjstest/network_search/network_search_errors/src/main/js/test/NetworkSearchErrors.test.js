@@ -22,7 +22,6 @@ describe('ActsNetworkSearchTest', function () {
 
     const SLOT_0 = 0;
     const SLOT_2 = -1;
-    const PREFERRED_MODE_ERR2 = -1;
 
     function sleep(timeout) {
         return new Promise((resolve, reject) => {
@@ -86,10 +85,6 @@ describe('ActsNetworkSearchTest', function () {
             expect(radio.NsaState.NSA_STATE_IDLE_DETECT === 4).assertTrue();
             expect(radio.NsaState.NSA_STATE_DUAL_CONNECTED === 5).assertTrue();
             expect(radio.NsaState.NSA_STATE_SA_ATTACHED === 6).assertTrue();
-
-            expect(radio.NetworkInformationState.NETWORK_UNKNOWN === 0).assertTrue();
-            expect(radio.NetworkInformationState.NETWORK_CURRENT === 2).assertTrue();
-            expect(radio.NetworkInformationState.NETWORK_FORBIDDEN === 3).assertTrue();
 
             expect(radio.NetworkSelectionMode.NETWORK_SELECTION_UNKNOWN === 0).assertTrue();
             expect(radio.NetworkSelectionMode.NETWORK_SELECTION_MANUAL === 2).assertTrue();
@@ -195,13 +190,13 @@ describe('ActsNetworkSearchTest', function () {
             console.info(
                 `Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400 finish data:${JSON.stringify(data)}`);
             expect(data.length === 0).assertTrue();
+			done();
         } catch (err) {
             console.info(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400 fail err: ${err}`);
             expect(err.code).assertEqual(202);
             done();
             return;
         }
-        done();
     });
 
     /**
@@ -292,13 +287,13 @@ describe('ActsNetworkSearchTest', function () {
             console.info(
                 `Telephony_NetworkSearch_getSignalInformation_Promise_0400 finish data: ${JSON.stringify(data)}`);
             expect(data.length === 0).assertTrue();
-			done();
         } catch (err) {
             console.info(`Telephony_NetworkSearch_getSignalInformation_Promise_0400 fail err: ${err}`);
             expect(err.code).assertEqual(202);
             done();
             return;
         }
+        done();
     });
 
     /**

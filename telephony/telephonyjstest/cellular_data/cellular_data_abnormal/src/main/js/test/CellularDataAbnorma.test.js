@@ -209,7 +209,5 @@ describe("ActsCellularDataAbnormalTest", function () {
         expect(data == 0 || data == 1).assertTrue;
         done();
         });
-
-
-})
+});
 }
