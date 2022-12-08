@@ -113,6 +113,10 @@ function isIntNum(val) {
   return typeof val === 'number' && val % 1 === 0;
 }
 
+function isBigInt(val) {
+  return typeof val === 'bigint';
+}
+
 function isString(str) {
   return (typeof str == 'string') && str.constructor == String;
 }
@@ -129,6 +133,7 @@ export {
   fileio,
   fileIO,
   isIntNum,
+  isBigInt,
   isString,
   isBoolean,
   isInclude,
