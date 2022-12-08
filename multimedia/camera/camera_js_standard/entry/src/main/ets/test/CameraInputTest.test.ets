@@ -14,10 +14,9 @@
  */
 
 import cameraObj from '@ohos.multimedia.camera';
-import image from '@ohos.multimedia.image';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import featureAbility from '@ohos.ability.featureAbility';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import {UiDriver, BY} from '@ohos.uitest'
 
 const TAG = "CameraInputTest: ";
 
@@ -31,7 +30,7 @@ let mCameraNum;
 let mCameraInput;
 let mPreviewOutput;
 
-export default function CameraInputTest(surfaceId) {
+export default function CameraInputTest() {
     function sleep(ms) {
         console.info(TAG + "Entering sleep -> Promise constructor");
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -44,65 +43,32 @@ export default function CameraInputTest(surfaceId) {
         return false;
     }
 
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('com.open.harmony.multimedia.cameratest', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.CAMERA';
-            let permissionName2 = 'ohos.permission.MICROPHONE';
-            let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName4 = 'ohos.permission.READ_MEDIA';
-            let permissionName5 = 'ohos.permission.WRITE_MEDIA';
-            let permissionName6 = 'ohos.permission.START_ABILIIES_FROM_BACKGROUND';
-            let permissionName7 = 'ohos.permission.START_INVISIBLE_ABILITY';
-            let permissionName8 = 'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName4, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName5, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName6, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-              await atManager.grantUserGrantedPermission(tokenID, permissionName7, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-              await atManager.grantUserGrantedPermission(tokenID, permissionName8, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('[permission] case apply permission failed, createAtManager failed');
+     async function getPermission() {
+            let permissions = ['ohos.permission.CAMERA',
+            'ohos.permission.MICROPHONE',
+            'ohos.permission.MEDIA_LOCATION',
+            'ohos.permission.READ_MEDIA',
+            'ohos.permission.WRITE_MEDIA',
+            'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION'];
+            featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
+                console.info("request success" + JSON.stringify(data));
+            })
+        }
+    async function driveFn() {
+        console.info(`come in driveFn`);
+        let driver = await UiDriver.create();
+        console.info(`driver is ${JSON.stringify(driver)}`);
+        await sleep(2000);
+        console.info(`UiDriver start`);
+        let button = await driver.findComponent(BY.text('允许'));
+        while(button){
+            console.info(`button is ${JSON.stringify(button)}`);
+            await button.click();
+            await sleep(1000);
+            button = await driver.findComponent(BY.text('允许'));
         }
     }
-    
+
     async function getCameraManagerInstance() {
         console.info('Enter getCameraManagerInstance');
 
@@ -282,7 +248,7 @@ export default function CameraInputTest(surfaceId) {
             if (!isEmpty(cameraOutputCap.previewProfiles)) {
                 console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
                 for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
-                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
+                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], globalThis.surfaceId);
                     if (!isEmpty(mPreviewOutput)) {
                         break;
                     }
@@ -365,7 +331,9 @@ export default function CameraInputTest(surfaceId) {
     describe('CameraInputTest', function () {
         console.info(TAG + '----------CameraInputTest--------------');
         beforeAll(async function () {
-            await applyPermission();
+            await getPermission();
+            sleep(1000);
+            await driveFn();
             await getCameraManagerInstance();
             await getCameraSupportDevicesArray();
             await createCameraSessionInstance();
