@@ -1964,13 +1964,13 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
                 sumCount++
                 console.info(msgStr + 'Succeeded in setting the window mode. count: ' + sumCount);
                 console.info(msgStr + 'Succeeded in setting the window mode. loopCount.length: ' + loopCount.length);
+                if (++i < length) {
+                  getData(i, length)
+                  console.log(msgStr + 'jixuzhixing  i: ' + i);
+                } else {
+                  console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length + '   ,tempType:' + tempType);
+                }
                 if (sumCount == loopCount.length) done();
-              }
-              if (++i < length) {
-                getData(i, length)
-                console.log(msgStr + 'jixuzhixing  i: ' + i);
-              } else {
-                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length + '   ,tempType:' + tempType);
               }
             })
           } catch (exception) {

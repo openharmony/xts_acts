@@ -574,7 +574,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
           }
           let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
+          getData(0, arrLength)
+
+          function getData(i, length) {
             let tempData = systemBarData.regionTint[i];
             if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
@@ -586,6 +588,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 expect(contentColorIndex === -1).assertTrue();
               } catch (error) {
                 console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+              }
+              if (++i < length) {
+                getData(i, length)
+                console.log(msgStr + 'jixuzhixing  i: ' + i);
+              } else {
+                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
               }
             }
           }
@@ -635,7 +643,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
               listenerFlag = listenerStatus.pending;
               let loopCount = commonRGBColorArr.length
-              for (let i = 0; i < loopCount; i++) {
+              getData(0, loopCount)
+
+              function getData(i, length) {
                 let tempColor = commonRGBColorArr[i];
                 let systemBarProperties = {
                   statusBarColor: tempColor,
@@ -652,8 +662,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                     unexpectedError(err, caseName, 'tempWnd.setSystemBarProperties' + tempColor + ' ', done);
                   }
                   console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
+                  if (++i < length) {
+                    getData(i, length)
+                    console.log(msgStr + 'jixuzhixing  i: ' + i);
+                  } else {
+                    console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+                  }
                 })
               }
+
               setTimeout(() => {
                 console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
                 listenerFlag = listenerStatus.finished;
@@ -806,7 +823,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
               listenerFlag = listenerStatus.pending;
               let loopCount = commonNUMBERColorArr.length
-              for (let i = 0; i < loopCount; i++) {
+              getData(0, loopCount)
+
+              function getData(i, length) {
                 console.log(msgStr+'tempWnd.setSystemBarEnable i:'+i);
                 let tempColor = commonNUMBERColorArr[i];
                 let systemBarProperties = {
@@ -826,6 +845,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                     } catch (error) {
                       console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
                     }
+                  }
+                  if (++i < length) {
+                    getData(i, length)
+                    console.log(msgStr + 'jixuzhixing  i: ' + i);
+                  } else {
+                    console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
                   }
                 })
               }
@@ -858,7 +883,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
           }
           let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
+          getData(0, arrLength)
+
+          function getData(i, length) {
             let tempData = systemBarData.regionTint[i];
             if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
@@ -870,6 +897,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 expect(contentColorIndex === -1).assertTrue();
               } catch (error) {
                 console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+              }
+              if (++i < length) {
+                getData(i, length)
+                console.log(msgStr + 'jixuzhixing  i: ' + i);
+              } else {
+                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
               }
             }
           }
@@ -919,7 +952,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
               listenerFlag = listenerStatus.pending;
               let loopCount = commonRGBColorArr.length
-              for (let i = 0; i < loopCount; i++) {
+              getData(0, loopCount)
+
+              function getData(i, length) {
                 let tempColor = commonKEYColorArr[i];
                 let systemBarProperties = {
                   statusBarColor: tempColor,
@@ -937,6 +972,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                       expect(TRUE_FLAG).assertFail();
                     } catch (error) {
                       console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
+                    }
+                    if (++i < length) {
+                      getData(i, length)
+                      console.log(msgStr + 'jixuzhixing  i: ' + i);
+                    } else {
+                      console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
                     }
                     done();
                   }
@@ -963,7 +1004,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let loopCount = appWindowTypeArr.length;
       console.log(msgStr + 'loopCount: ' + loopCount);
-      for (let i = 0; i < loopCount; i++) {
+      getData(0, loopCount)
+
+      function getData(i, length) {
         let tempType = ohosWindow.WindowType.TYPE_APP;
         let windId = 'createTest5' + i;
         console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
@@ -973,10 +1016,17 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           if (err && err.code) {
             try {
               expect(err.code === 1003).assertTrue();
+
             } catch (error) {
               console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
             }
             console.log(msgStr + 'ohosWindow.create err.code==' + JSON.stringify(err.code))
+            if (++i < length) {
+              getData(i, length)
+              console.log(msgStr + 'jixuzhixing  i: ' + i);
+            } else {
+              console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+            }
             if (i === loopCount - 1) {
               done();
             }
@@ -997,7 +1047,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeArr.length;
       console.log('jsunittest loopCount: ' + loopCount);
-      for (let i = 0; i < loopCount; i++) {
+      getData(0, loopCount)
+
+      function getData(i, length) {
         let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
         let windId = 'createTest6' + i;
         console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
@@ -1029,6 +1081,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               expect(data.type == tempType).assertTrue();
             } catch (error) {
               console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
+            }
+            if (++i < length) {
+              getData(i, length)
+              console.log(msgStr + 'jixuzhixing  i: ' + i);
+            } else {
+              console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
             }
           })
         })
@@ -1890,8 +1948,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         currentDeviceDefault = data;
         currentDeviceDefaultDpi = parseInt(currentDeviceDefault.densityDPI)
         let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300, currentDeviceDefaultDpi];
-        for (let i = 0;i < dpiItem.length; i++) {
-          await sleep(1000);
+        getData(0, dpiItem.length)
+
+        function getData(i, length) {
           screens[0].setDensityDpi(dpiItem[i], (errDpi, dataDpi) => {
             if (errDpi.code) {
               console.error('Failed to set DensityDpi. Cause: ' + JSON.stringify(err) + dpiItem[i]);
@@ -1909,6 +1968,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                   expect(isEqual).assertTrue();
                 } catch (error) {
                   console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+                }
+                if (++i < length) {
+                  getData(i, length)
+                  console.log(msgStr + 'jixuzhixing  i: ' + i);
+                } else {
+                  console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
                 }
               }
             })
@@ -1940,14 +2005,21 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED',
       'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE',
       'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED', 'UNSPECIFIED'];
-      for (let i = 0;i < orientationItem.length; i++) {
-        await sleep(1000);
+      getData(0, orientationItem.length)
+
+      async function getData(i, length) {
         let orientation = ohosWindow.Orientation[orientationItem[i]]
         await mainWin.setPreferredOrientation(orientation, (err, data) => {
           if (err && err.code) {
             console.log(msgStr + 'window.setPreferredOrientation failed set error' + orientation);
           }
           num++
+          if (++i < length) {
+            getData(i, length)
+            console.log(msgStr + 'jixuzhixing  i: ' + i);
+          } else {
+            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+          }
           if (num == orientationItem.length) done();
           console.log(msgStr + 'success set window.setPreferredOrientation ' + orientation + JSON.stringify(data));
         })
