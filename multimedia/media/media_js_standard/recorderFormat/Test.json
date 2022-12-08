@@ -12,9 +12,13 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "rm -rf /storage/media/100/local/files/Videos/COMPATIBILITY*"
+                "rm -rf /storage/media/100/local/files/Audios/COMPATIBILITY*",
+                "param set persist.ace.testmode.enabled 1",
+                "power-shell setmode 602"
             ],
-            "teardown-command": []
+            "teardown-command": [
+                "power-shell setmode 600"
+            ]
         },
         {
             "test-file-name": [

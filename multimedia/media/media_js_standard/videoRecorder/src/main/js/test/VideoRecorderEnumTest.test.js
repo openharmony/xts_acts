@@ -16,65 +16,68 @@
 import media from '@ohos.multimedia.media'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('VideoRecorderEnumTest', function () {
-    beforeAll(function() {
-        console.info('beforeAll case');
+export default function VideoRecorderEnumTest() {
+    describe('VideoRecorderEnumTest', function () {
+        beforeAll(function() {
+            console.info('beforeAll case');
+        })
+    
+        beforeEach(function() {
+            console.info('beforeEach case');
+        })
+    
+        afterEach(function() {
+            console.info('afterEach case');
+        })
+    
+        afterAll(function() {
+            console.info('afterAll case');
+        })
+    
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_AUDIO_SOURCE_TYPE_0100
+            * @tc.name      : AudioSourceType
+            * @tc.desc      : AudioSourceType Enumeration test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level0
+        */
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_AUDIO_SOURCE_TYPE_0100', 0, async function (done) {
+            expect(media.AudioSourceType.AUDIO_SOURCE_TYPE_DEFAULT).assertEqual(0);
+            expect(media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC).assertEqual(1);
+            done();
+        })
+    
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_VIDEO_SOURCE_TYPE_0100
+            * @tc.name      : VideoSourceType
+            * @tc.desc      : VideoSourceType Enumeration test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level0
+        */
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_VIDEO_SOURCE_TYPE_0100', 0, async function (done) {
+            expect(media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV).assertEqual(0);
+            expect(media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES).assertEqual(1);
+            done();
+        })
+    
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_ENUM_CODECMIMETYPE_0100
+            * @tc.name      : CodecMimeType
+            * @tc.desc      : Test Enumerate CodecMimeType
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level0
+        */
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_ENUM_CODECMIMETYPE_0100', 0, async function (done) {
+            expect(media.CodecMimeType.VIDEO_H263).assertEqual('video/h263');
+            expect(media.CodecMimeType.VIDEO_AVC).assertEqual('video/avc');
+            expect(media.CodecMimeType.VIDEO_MPEG2).assertEqual('video/mpeg2');
+            expect(media.CodecMimeType.VIDEO_MPEG4).assertEqual('video/mp4v-es');
+            expect(media.CodecMimeType.VIDEO_VP8).assertEqual('video/x-vnd.on2.vp8');
+            done();
+        }) 
     })
+}
 
-    beforeEach(function() {
-        console.info('beforeEach case');
-    })
-
-    afterEach(function() {
-        console.info('afterEach case');
-    })
-
-    afterAll(function() {
-        console.info('afterAll case');
-    })
-
-    /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_AUDIO_SOURCE_TYPE_0100
-        * @tc.name      : AudioSourceType
-        * @tc.desc      : AudioSourceType Enumeration test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_AUDIO_SOURCE_TYPE_0100', 0, async function (done) {
-        expect(media.AudioSourceType.AUDIO_SOURCE_TYPE_DEFAULT).assertEqual(0);
-        expect(media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC).assertEqual(1);
-        done();
-    })
-
-    /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_VIDEO_SOURCE_TYPE_0100
-        * @tc.name      : VideoSourceType
-        * @tc.desc      : VideoSourceType Enumeration test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_VIDEO_SOURCE_TYPE_0100', 0, async function (done) {
-        expect(media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV).assertEqual(0);
-        expect(media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES).assertEqual(1);
-        done();
-    })
-
-    /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_ENUM_CODECMIMETYPE_0100
-        * @tc.name      : CodecMimeType
-        * @tc.desc      : Test Enumerate CodecMimeType
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_ENUM_CODECMIMETYPE_0100', 0, async function (done) {
-        expect(media.CodecMimeType.VIDEO_H263).assertEqual('video/h263');
-        expect(media.CodecMimeType.VIDEO_AVC).assertEqual('video/avc');
-        expect(media.CodecMimeType.VIDEO_MPEG2).assertEqual('video/mpeg2');
-        expect(media.CodecMimeType.VIDEO_MPEG4).assertEqual('video/mp4v-es');
-        expect(media.CodecMimeType.VIDEO_VP8).assertEqual('video/x-vnd.on2.vp8');
-        done();
-    }) 
-})
