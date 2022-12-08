@@ -130,16 +130,16 @@ describe('fileIOTestStat', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_Stat_ino_0000
    * @tc.name fileio_test_stat_ino_000
-   * @tc.desc Function of API. Get inode number.
+   * @tc.desc Function of API. Get inode bigint.
    */
   it('fileio_test_stat_ino_000', 0, async function () {
     let fpath = await nextFileName('fileio_test_stat_ino_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let stat = fileio.statSync(fpath);
-      expect(typeof(stat.ino) == 'number').assertTrue();
+      expect(typeof(stat.ino) == 'bigint').assertTrue();
       fileio.unlinkSync(fpath);
-    } 
+    }
     catch (e) {
       console.log('fileio_test_stat_ino_000 has failed for ' + e);
       expect(null).assertFail();
