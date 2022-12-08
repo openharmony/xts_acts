@@ -17,8 +17,8 @@ import brightness from '@system.brightness';
 import { describe } from 'deccjsunit/index';
 
 const INPUT_ERROR_CODE_CODE = 202;
-const SET_VALUE_MSG = "setMode: value is not an available number";
-const SET_MODE_MSG = "setMode: value is not an available number";
+const SET_VALUE_MSG = "value is not an available number";
+const SET_MODE_MSG = "value is not an available number";
 
 function sleep(time){
     return new Promise((resolve) => setTimeout(resolve, time));
