@@ -15,7 +15,7 @@
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
         "abilities": [{
-            "name": "com.example.myapplication.MainAbility",
+            "name": "com.example.ActsEffectKitTest.MainAbility",
             "srcEntrance": "./ets/MainAbility/MainAbility.ts",
             "description": "$string:phone_entry_main",
             "icon": "$media:icon",
@@ -30,15 +30,6 @@
                     "entity.system.home"
                 ]
             }]
-        }],
-        "requestPermissions": [{
-                "name": "ohos.permission.SYSTEM_FLOAT_WINDOW",
-                "reason": "need use ohos.permission.SYSTEM_FLOAT_WINDOW"
-            },
-            {
-                "name": "ohos.permission.CAPTURE_SCREEN",
-                "reason": "need use ohos.permission.SYSTEM_FLOAT_WINDOW"
-            }
-        ]
+        }]
     }
 }
