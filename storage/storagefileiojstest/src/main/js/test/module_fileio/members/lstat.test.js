@@ -14,7 +14,7 @@
  */
 
 import {
-  fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum, isBoolean,
+  fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum, isBigInt, isBoolean,
   describe, it, expect,
 } from '../../Common';
 
@@ -103,7 +103,7 @@ describe('fileio_lstat', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let stat = fileio.lstatSync(fpath);
-      expect(isIntNum(stat.ino)).assertTrue();
+      expect(isBigInt(stat.ino)).assertTrue();
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileio_lstat_ino_000 has failed for ' + e);
@@ -992,7 +992,7 @@ describe('fileio_lstat', function () {
 
     try {
       let stat = await fileio.lstat(fpath);
-      expect(isIntNum(stat.ino)).assertTrue();
+      expect(isBigInt(stat.ino)).assertTrue();
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
