@@ -14,11 +14,11 @@
  */
 
 import camera from '@ohos.multimedia.camera';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 const TAG = "CameraEnumTest: ";
 
-export default function cameraEnumTest(surfaceId: any) {
+export default function cameraEnumTest() {
 
     function isEmpty(data) {
         if (data == null || data == undefined) {

@@ -17,13 +17,10 @@
 
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
-import media from '@ohos.multimedia.media'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
-import fileio from '@ohos.fileio';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
+import media from '@ohos.multimedia.media';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import deviceInfo from '@ohos.deviceInfo';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 
 const TAG = "CameraModuleTest: ";
 
@@ -78,7 +75,7 @@ let mVideoConfig = {
 let mPicWidthMax = 8192;
 let mPicHeightMax = 8192;
 
-export default function cameraSessionFlashTest(surfaceId: any) {
+export default function cameraSessionFlashTest() {
 
     function sleep(ms) {
         console.info(TAG + "Entering sleep -> Promise constructor");
@@ -121,65 +118,6 @@ export default function cameraSessionFlashTest(surfaceId: any) {
             });
         } else {
             console.info('[mediaLibrary] case fileAsset is null');
-        }
-    }
-
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('com.open.harmony.multimedia.cameratest', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.CAMERA';
-            let permissionName2 = 'ohos.permission.MICROPHONE';
-            let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName4 = 'ohos.permission.READ_MEDIA';
-            let permissionName5 = 'ohos.permission.WRITE_MEDIA';
-            let permissionName6 = 'ohos.permission.START_ABILIIES_FROM_BACKGROUND';
-            let permissionName7 = 'ohos.permission.START_INVISIBLE_ABILITY';
-            let permissionName8 = 'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName4, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName5, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName6, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-              await atManager.grantUserGrantedPermission(tokenID, permissionName7, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-              await atManager.grantUserGrantedPermission(tokenID, permissionName8, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('[permission] case apply permission failed, createAtManager failed');
         }
     }
 
@@ -424,7 +362,7 @@ export default function cameraSessionFlashTest(surfaceId: any) {
             if (!isEmpty(cameraOutputCap.previewProfiles)) {
                 console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
                 for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
-                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
+                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], globalThis.surfaceId);
                     if (!isEmpty(mPreviewOutput)) {
                         break;
                     }
@@ -602,7 +540,6 @@ export default function cameraSessionFlashTest(surfaceId: any) {
 
         beforeAll(async function () {
             sleep(100);
-            await applyPermission();
             await getPhotoReceiverSurface();
             await getVideoReceiveSurface();
             await mgetCameraManagerInstance();
