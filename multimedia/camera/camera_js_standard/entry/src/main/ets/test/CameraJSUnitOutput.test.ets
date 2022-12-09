@@ -14,11 +14,9 @@
  */
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
-import media from '@ohos.multimedia.media'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import media from '@ohos.multimedia.media';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 const TAG = "CameraUnitTest: ";
 
@@ -80,7 +78,7 @@ let fdNumber;
 let mMetadataObjectTypeArray;
 let mMetadataObjectArray;
 
-export default function cameraJSUnitOutput(surfaceId: any) {
+export default function cameraJSUnitOutput() {
 
   async function getImageReceiverSurfaceId() {
     console.log(TAG + 'Entering create Image receiver')
@@ -179,65 +177,6 @@ export default function cameraJSUnitOutput(surfaceId: any) {
     return false;
   }
 
-  async function applyPermission() {
-    let appInfo = await bundle.getApplicationInfo('com.open.harmony.multimedia.cameratest', 0, 100);
-    let atManager = abilityAccessCtrl.createAtManager();
-    if (atManager != null) {
-      let tokenID = appInfo.accessTokenId;
-      console.info('[permission] case accessTokenID is ' + tokenID);
-      let permissionName1 = 'ohos.permission.CAMERA';
-      let permissionName2 = 'ohos.permission.MICROPHONE';
-      let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
-      let permissionName4 = 'ohos.permission.READ_MEDIA';
-      let permissionName5 = 'ohos.permission.WRITE_MEDIA';
-      let permissionName6 = 'ohos.permission.START_ABILIIES_FROM_BACKGROUND';
-      let permissionName7 = 'ohos.permission.START_INVISIBLE_ABILITY';
-      let permissionName8 = 'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION';
-      await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-        console.info('[permission] case grantUserGrantedPermission success :' + result);
-      }).catch((err) => {
-        console.info('[permission] case grantUserGrantedPermission failed :' + err);
-      });
-      await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-        console.info('[permission] case grantUserGrantedPermission success :' + result);
-      }).catch((err) => {
-        console.info('[permission] case grantUserGrantedPermission failed :' + err);
-      });
-      await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-        console.info('[permission] case grantUserGrantedPermission success :' + result);
-      }).catch((err) => {
-        console.info('[permission] case grantUserGrantedPermission failed :' + err);
-      });
-      await atManager.grantUserGrantedPermission(tokenID, permissionName4, 1).then((result) => {
-        console.info('[permission] case grantUserGrantedPermission success :' + result);
-      }).catch((err) => {
-        console.info('[permission] case grantUserGrantedPermission failed :' + err);
-      });
-      await atManager.grantUserGrantedPermission(tokenID, permissionName5, 1).then((result) => {
-        console.info('[permission] case grantUserGrantedPermission success :' + result);
-      }).catch((err) => {
-        console.info('[permission] case grantUserGrantedPermission failed :' + err);
-      });
-      await atManager.grantUserGrantedPermission(tokenID, permissionName6, 1).then((result) => {
-        console.info('[permission] case grantUserGrantedPermission success :' + result);
-      }).catch((err) => {
-        console.info('[permission] case grantUserGrantedPermission failed :' + err);
-      });
-      await atManager.grantUserGrantedPermission(tokenID, permissionName7, 1).then((result) => {
-        console.info('[permission] case grantUserGrantedPermission success :' + result);
-      }).catch((err) => {
-        console.info('[permission] case grantUserGrantedPermission failed :' + err);
-      });
-      await atManager.grantUserGrantedPermission(tokenID, permissionName8, 1).then((result) => {
-        console.info('[permission] case grantUserGrantedPermission success :' + result);
-      }).catch((err) => {
-        console.info('[permission] case grantUserGrantedPermission failed :' + err);
-      });
-    } else {
-      console.info('[permission] case apply permission failed, createAtManager failed');
-    }
-  }
-
   function getSupportedOutputCapabilityInPromise(cameraDevice) {
     if (isEmpty(cameraManager)) {
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 cameraManager == null || undefined")
@@ -255,7 +194,6 @@ export default function cameraJSUnitOutput(surfaceId: any) {
     console.info(TAG + '----------cameraJSUnitOutput begin--------------')
 
     beforeAll(async function () {
-      await applyPermission();
       await getImageReceiverSurfaceId();
       await getvideosurface();
       console.info('beforeAll case');
@@ -420,7 +358,7 @@ export default function cameraJSUnitOutput(surfaceId: any) {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100 previewProfilesArray == null || undefined")
           expect(isEmpty(previewProfilesArray)).assertFalse();
         }
-        cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId, async (err, data) => {
+        cameraManager.createPreviewOutput(previewProfilesArray[0], globalThis.surfaceId, async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100 is not error");
             expect(isEmpty(data)).assertFalse();

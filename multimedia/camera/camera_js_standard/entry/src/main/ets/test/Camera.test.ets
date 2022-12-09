@@ -27,18 +27,16 @@ import cameraEnumTest from './CameraEnumTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
 
-export default function cameraKit(surfaceId: any) {
+export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
-  console.info(TAG + 'surfaceId: ' + surfaceId)
-
-  cameraInputTest(surfaceId)
-  cameraJSUnitOutput(surfaceId)
-  cameraSessionFlashTest(surfaceId)
-  cameraSessionExposureTest(surfaceId)
-  cameraSessionFocusTest(surfaceId)
-  cameraSessionZoomRatioTest(surfaceId)
-  cameraSessionVideoStabilizationTest(surfaceId)
-  cameraSessionBaseTest(surfaceId)
-  cameraManagerTest(surfaceId)
-  cameraEnumTest(surfaceId)
+  cameraInputTest()
+  cameraJSUnitOutput()
+  cameraSessionFlashTest()
+  cameraSessionExposureTest()
+  cameraSessionFocusTest()
+  cameraSessionZoomRatioTest()
+  cameraSessionVideoStabilizationTest()
+  cameraSessionBaseTest()
+  cameraManagerTest()
+  cameraEnumTest()
 }

@@ -15,12 +15,9 @@
 
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
-import fileio from '@ohos.fileio';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
-import media from '@ohos.multimedia.media'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import media from '@ohos.multimedia.media';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 
 const TAG = "CameraUnitTest: ";
 
@@ -63,7 +60,7 @@ let mVideoConfig = {
     maxDuration: 500
 }
 
-export default function cameraManagerTest(surfaceId: any) {
+export default function cameraManagerTest() {
 
     async function getImageReceiverSurfaceId() {
         console.log(TAG + 'Entering create Image receiver')
@@ -262,70 +259,10 @@ export default function cameraManagerTest(surfaceId: any) {
         return outputCapabilityPromise;
     }
 
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('com.open.harmony.multimedia.cameratest', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.CAMERA';
-            let permissionName2 = 'ohos.permission.MICROPHONE';
-            let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName4 = 'ohos.permission.READ_MEDIA';
-            let permissionName5 = 'ohos.permission.WRITE_MEDIA';
-            let permissionName6 = 'ohos.permission.START_ABILIIES_FROM_BACKGROUND';
-            let permissionName7 = 'ohos.permission.START_INVISIBLE_ABILITY';
-            let permissionName8 = 'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName4, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName5, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName6, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-              await atManager.grantUserGrantedPermission(tokenID, permissionName7, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-              await atManager.grantUserGrantedPermission(tokenID, permissionName8, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('[permission] case apply permission failed, createAtManager failed');
-        }
-    }
-
 describe('CameraManagerTest', function () {
     console.info(TAG + '----------CameraManagerTest--------------')
 
     beforeAll(async function () {
-        await applyPermission();
         await getCameraManagerInstance();
         await getImageReceiverSurfaceId();
         await getVideoReceiveSurface();
@@ -855,7 +792,7 @@ describe('CameraManagerTest', function () {
                     expect().assertFail();
                 } else {
                     for (let j = 0; j < previewProfilesArray.length; j++) {
-                        mCameraManager.createPreviewOutput(previewProfilesArray[j], surfaceId, async (err, data) => {
+                        mCameraManager.createPreviewOutput(previewProfilesArray[j], globalThis.surfaceId, async (err, data) => {
                             if (isEmpty(data)) {
                                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_CALLBACK_0100 data == null || undefined")
                                 expect().assertFail();
@@ -893,7 +830,7 @@ describe('CameraManagerTest', function () {
                     expect().assertFail();
                 } else {
                     for (let j = 0; j < previewProfilesArray.length; j++) {
-                        let previewOutputPromise = await mCameraManager.createPreviewOutput(previewProfilesArray[j], surfaceId);
+                        let previewOutputPromise = await mCameraManager.createPreviewOutput(previewProfilesArray[j], globalThis.surfaceId);
                         if (isEmpty(previewOutputPromise)) {
                             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_PROMISE_0100 previewOutputPromise == null || undefined")
                             expect().assertFail();
