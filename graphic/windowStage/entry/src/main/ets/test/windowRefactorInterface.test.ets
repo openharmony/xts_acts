@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 
-
 export default function windowRefactorInterfaceTest(context, windowStage, abilityStorage) {
   console.info('windowTest context: ' + JSON.stringify(context))
   console.info('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
@@ -88,6 +87,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     it('setWindowSystemBarPropertiesTest1', 0, async function (done) {
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
       let listenerFlag = listenerStatus.ready;
+      let caseName = 'setWindowSystemBarPropertiesTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
       console.info('setWindowSystemBarPropertiesTest1');
       listenerData.on = true;
       listenerData.typeStr = 'systemBarTintChange';
@@ -101,7 +102,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
             console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
           }
           let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
+          getData(0, arrLength)
+
+          function getData(i, length) {
             // 单个导航栏或者系统状态信息
             let SystemBarRegionTint = systemBarData.regionTint[i];
             if (SystemBarRegionTint.type === ohosWindow.WindowType.TYPE_STATUS_BAR || SystemBarRegionTint.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
@@ -113,6 +116,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
                 expect(contentColorIndex === -1).assertTrue();
               } catch (error) {
                 console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+              }
+              if (++i < length) {
+                getData(i, length)
+                console.log(msgStr+'jixuzhixing  i: ' + i);
+              } else {
+                console.log(msgStr+'i++<length  i: ' + i + '   ,length:' + length);
               }
               done();
             }
@@ -135,7 +144,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       await sleep(1000);
       listenerFlag = listenerStatus.pending;
       let loopCount = commonRGBColorArr.length;
-      for (let i = 0; i < loopCount; i++) {
+      getData(0, loopCount)
+
+      function getData(i, length) {
         let tempColor = commonRGBColorArr[i];
         let systemBarProperties = {
           statusBarColor: tempColor,
@@ -148,6 +159,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         mainWsync.setWindowSystemBarProperties(systemBarProperties).then(() => {
           console.info('setWindowSystemBarPropertiesTest1 success');
           expect(TRUE_FLAG).assertTrue();
+          if (++i < length) {
+            getData(i, length)
+            console.log(msgStr+'jixuzhixing  i: ' + i);
+          } else {
+            console.log(msgStr+'i++<length  i: ' + i + '   ,length:' + length);
+          }
           done();
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest1  error : ' + JSON.stringify(err));
@@ -172,6 +189,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let listenerFlag = listenerStatus.ready;
       listenerData.on = true;
       listenerData.typeStr = 'systemBarTintChange';
+      let caseName = 'setWindowSystemBarPropertiesTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
       console.info('setWindowSystemBarPropertiesTest2');
       ohosWindow.on('systemBarTintChange', (systemBarData) => {
         console.info('setWindowSystemBarPropertiesTest2 systemBatData : ' + JSON.stringify(systemBarData));
@@ -240,7 +259,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       await sleep(1000);
       listenerFlag = listenerStatus.pending;
       let loopCount = commonNUMBERColorArr.length;
-      for (let i = 0; i < loopCount; i++) {
+      getData(0, loopCount)
+
+      function getData(i, length) {
         let tempColor = commonNUMBERColorArr[i];
         let systemBarProperties = {
           statusBarColor: tempColor,
@@ -252,6 +273,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         };
         mainWsync.setWindowSystemBarProperties(systemBarProperties).then(() => {
           console.info('setWindowSystemBarPropertiesTest2 success');
+          if (++i < length) {
+            getData(i, length)
+            console.log(msgStr + 'jixuzhixing  i: ' + i);
+          } else {
+            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+          }
           expect(TRUE_FLAG).assertTrue();
           done();
         }).catch(err => {
@@ -270,6 +297,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     it('setWindowSystemBarPropertiesTest3', 0, async function (done) {
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
       let listenerFlag = listenerStatus.ready;
+      let caseName = 'setWindowSystemBarPropertiesTest3';
+      let msgStr = 'jsunittest ' + caseName + ' ';
       console.info('setWindowSystemBarPropertiesTest3 start');
       listenerData.on = true;
       listenerData.typeStr = 'systemBarTintChange';
@@ -315,7 +344,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       await sleep(1000);
       listenerFlag = listenerStatus.pending;
       let loopCount = commonKEYColorArr.length;
-      for (let i = 0; i < loopCount; i++) {
+      getData(0, loopCount)
+
+      function getData(i, length) {
         let tempColor = commonKEYColorArr[i];
         let systemBarProperties = {
           statusBarColor: tempColor,
@@ -327,6 +358,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         };
         tempWnd.setWindowSystemBarProperties(systemBarProperties).then(() => {
           console.info('setWindowSystemBarPropertiesTest3 success');
+          if (++i < length) {
+            getData(i, length)
+            console.log(msgStr + 'jixuzhixing  i: ' + i);
+          } else {
+            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+          }
           expect(TRUE_FLAG).assertTrue();
           done();
         }).catch(err => {
