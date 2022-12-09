@@ -284,7 +284,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'ohosWindow.create createWindowObj:' + JSON.stringify(createWindowObj));
       let tempWnd = null;
       try {
-        //      await ohosWindow.createWindow(createWindowObj).then((data) => {
         await ohosWindow.create(context, wndId, baseType).then((data) => {
           console.log(msgStr + 'ohosWindow.create data:' + JSON.stringify(data));
           tempWnd = data
@@ -431,91 +430,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 	  * @tc.name       Test setSystemBarEnableTest1
 	  * @tc.desc       Verify that the scene shows the status bar and hides the navigation bar
 	  */
-//    it('setSystemBarEnableTest1', 0, async function (done) {
-//      let caseName = 'setSystemBarEnableTest1';
-//      let msgStr = 'jsunittest ' + caseName + ' ';
-//      let statusFlag = listenerStatus.ready;
-//      let navigationFlag = listenerStatus.ready;
-//      console.log(msgStr + 'begin');
-//      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
-//      let tempWnd = await windowStage.getMainWindow().catch((err) => {
-//        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
-//      });
-//      console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
-//      expect(!!tempWnd).assertTrue();
-//      await tempWnd.show().catch((err) => {
-//        unexpectedError(err, caseName, 'tempWnd.show', done);
-//      });
-//      console.log(msgStr + 'tempWnd.show success');
-//      await tempWnd.setFullScreen(true).catch((err) => {
-//        unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
-//      });
-//      console.log(msgStr + 'tempWnd.setFullScreen(true) success');
-//      await tempWnd.setSystemBarEnable(['navigation']).catch((err) => {
-//        unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
-//      });
-//      console.log(msgStr + 'tempWnd.setSystemBarEnable([navigation]) success');
-//      await sleep(1000);
-//      statusFlag = listenerStatus.pending;
-//      navigationFlag = listenerStatus.pending;
-//      if (statusFlag === listenerStatus.pending || navigationFlag === listenerStatus.pending) {
-//        console.log(msgStr + 'start on !!!!');
-//        listenerData.on = true;
-//        listenerData.typeStr = 'systemBarTintChange';
-//        ohosWindow.on('systemBarTintChange', (systemBarData) => {
-//          console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-//          console.log(msgStr + 'tempWnd.on , statusFlag : ' + JSON.stringify(statusFlag));
-//          console.log(msgStr + 'tempWnd.on , listenerStatus.pending : ' + JSON.stringify(listenerStatus.pending));
-//          console.log(msgStr + 'tempWnd.on , navigationFlag : ' + JSON.stringify(navigationFlag));
-//          console.log(msgStr + 'tempWnd.on , listenerStatus.pending : ' + JSON.stringify(listenerStatus.pending));
-//
-//          setTimeout(() => {
-//            console.log(msgStr + 'tempWnd.on , 3 statusFlag : ' + JSON.stringify(statusFlag));
-//            console.log(msgStr + 'tempWnd.on , 3 listenerStatus.pending : ' + JSON.stringify(listenerStatus.pending));
-//            console.log(msgStr + 'tempWnd.on , 3 navigationFlag : ' + JSON.stringify(navigationFlag));
-//            console.log(msgStr + 'tempWnd.on , 3 listenerStatus.pending : ' + JSON.stringify(listenerStatus.pending));
-//
-//            if (statusFlag === listenerStatus.pending || navigationFlag === listenerStatus.pending) {
-//              console.log(msgStr + 'systemBarTintChange compare start!');
-//              expect(!!systemBarData).assertTrue();
-//              expect(!!systemBarData.regionTint).assertTrue();
-//              let arrLength = systemBarData.regionTint.length;
-//              getData(0, arrLength)
-//
-//              function getData(i, length) {
-//                let tempData = systemBarData.regionTint[i];
-//                console.log(msgStr + 'compare, type: ' + tempData.type + ';isEnable: ' + tempData.isEnable);
-//                if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR && statusFlag === listenerStatus.pending) {
-//                  statusFlag = listenerStatus.finished;
-//                  expect(!tempData.isEnable).assertTrue();
-//                } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && navigationFlag === listenerStatus.pending) {
-//                  navigationFlag = listenerStatus.finished;
-//                  expect(tempData.isEnable).assertTrue();
-//                }
-//                if (++i <setWindowTypeTest1 length) {
-//                  getData(i, length)
-//                  console.log(msgStr + 'jixuzhixing  i: ' + i);
-//                } else {
-//                  console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-//                }
-//              }
-//              ohosWindow.off('systemBarTintChange');
-//            }
-//            done();
-//          }, 3000)
-//        })
-//      }
-//
-//
-//      await tempWnd.setSystemBarEnable(['status']).catch((err) => {
-//        unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
-//      });
-//      console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success');
-//      console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success, statusFlag : ' + JSON.stringify(statusFlag));
-//      console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success, listenerStatus.pending : ' + JSON.stringify(listenerStatus.pending));
-//      console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success, navigationFlag : ' + JSON.stringify(navigationFlag));
-//      console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success, listenerStatus.pending : ' + JSON.stringify(listenerStatus.pending));
-//    })
     it('setSystemBarEnableTest1', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
