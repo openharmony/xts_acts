@@ -110,7 +110,9 @@ export default function unitsModuleNameJsunit() {
       console.info("[testunitsMinWidth0001] component constraintSize strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.constraintSize).assertEqual('{"minWidth":"200.00vp","minHeight":"0.00vp","maxWidth":"119846208990821053862485980936868943386622755140025217957449185986963312195176500631099345318391471397553524277795258607297703698567960268420438325781003880454605934667138922450849236563878474354509650486846713237047577973081895276546573889957650195146049445629577007136228474373133005395361920118602782998528.00vp","maxHeight":"0.00vp"}');
+      var subobj = JSON.parse(obj.$attrs.constraintSize);
+      console.info('[testunitsMinWidth0001] constraintSize value :' + subobj.minWidth);
+      expect(subobj.minWidth).assertEqual('200.00vp');
       console.info("[testunitsMinWidth0001] constraintSize value :" + obj.$attrs.constraintSize);
       done();
     });
