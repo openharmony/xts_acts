@@ -25,6 +25,8 @@ describe('audioRenderer', function () {
     let readpath;
     let fdPath;
     let filePath;
+    let LE24;
+    let LE32;
     const audioManager = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
    
@@ -825,7 +827,7 @@ describe('audioRenderer', function () {
             resultFlag = true;
             audioRen.on('markReach', 73, (position) => {
                 console.log('AudioFrameworkTest: markReach Event is called : ' + position);
-                resultFlag = false;
+                resultFlag = true;
             });
         });
 
@@ -1113,7 +1115,6 @@ describe('audioRenderer', function () {
                 resultFlag = false;
             });
         });
-
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.start().then(async function () {
@@ -6782,7 +6783,7 @@ describe('audioRenderer', function () {
             console.log('AudioFrameworkTest: Volume Change Event is called');
 
             switch (AudioState) {
-                case audio.AudioState.STATE_PREPARED:
+                case audio.AudioState.STATE_RELEASED:
                     console.info('AudioFrameworkTest: state : STATE_NEW');
                     resultFlag = true;
                     break;
