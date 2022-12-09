@@ -33,7 +33,6 @@ group("arkui") {
     "ace_napi_test:ActsAceNapiEtsTest",
     "ace_standard:ActsAceStandardTest",
     "ace_standard_video:ActsAceStandardVideoTest",
-    "libuv:ActsLibuvTestSuite",
     "libuv:libuvTest",
   ]
 }

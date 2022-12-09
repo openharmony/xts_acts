@@ -61,7 +61,6 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/test/test-get-passwd.c",
     "//third_party/libuv/test/test-getaddrinfo.c",
     "//third_party/libuv/test/test-gethostname.c",
-    "//third_party/libuv/test/test-getnameinfo.c",
     "//third_party/libuv/test/test-getsockname.c",
     "//third_party/libuv/test/test-getters-setters.c",
     "//third_party/libuv/test/test-gettimeofday.c",
@@ -209,8 +208,8 @@ ohos_executable("libuvruntest") {
   deps = [ ":libuvTestStatic" ]
 }
 
-ohos_moduletest_suite("ActsLibuvTestSuite") {
-  sources = [ "src/ActsLibuvTestSuite.cpp" ]
+ohos_moduletest_suite("ActsLibuvTest") {
+  sources = [ "src/ActsLibuvTest.cpp" ]
 
   include_dirs = [
     "//test/xts/acts/arkui/libuv/src",
@@ -228,7 +227,7 @@ action("cpLibuv") {
   script = "cplibuv.sh"
   outputs = [ "${target_out_dir}/cplibuv.log" ]
   deps = [
-    ":ActsLibuvTestSuite",
+    ":ActsLibuvTest",
     ":libuvruntest",
   ]
 }
@@ -237,7 +236,7 @@ group("libuvTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      ":ActsLibuvTestSuite",
+      ":ActsLibuvTest",
       ":cpLibuv",
       ":libuvruntest",
     ]
