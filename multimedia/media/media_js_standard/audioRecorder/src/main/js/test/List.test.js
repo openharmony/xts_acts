@@ -12,7 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-require('./RecorderLocalTestAudioFUNC.test.js')
-require('./RecorderLocalTestAudioAPI.test.js')
-require('./AudioRecorderEnumTest.test.js')
+import RecorderLocalTestAudioFUNC from './RecorderLocalTestAudioFUNC.test.js'
+import RecorderLocalTestAudioAPI from './RecorderLocalTestAudioAPI.test.js'
+import AudioRecorderEnumTest from './AudioRecorderEnumTest.test.js'
+export default function testsuite() {
+    RecorderLocalTestAudioFUNC()
+    RecorderLocalTestAudioAPI()
+    AudioRecorderEnumTest()
+}

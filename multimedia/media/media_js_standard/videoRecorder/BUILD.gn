@@ -12,8 +12,10 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
+
 ohos_js_hap_suite("video_recorder_js_hap") {
   hap_profile = "./src/main/config.json"
+  js2abc = true
   deps = [
     ":video_recorder_js_assets",
     ":video_recorder_resources",
@@ -32,7 +34,9 @@ ohos_js_hap_suite("video_recorder_js_hap") {
   #  subsystem_name = "xts"
 }
 ohos_js_assets("video_recorder_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("video_recorder_resources") {
   sources = [ "./src/main/resources" ]

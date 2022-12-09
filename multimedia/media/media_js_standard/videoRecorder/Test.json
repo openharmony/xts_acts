@@ -1,27 +1,31 @@
 {
     "description": "Configuration for videoRecorder Tests",
     "driver": {
-        "type": "JSUnitTest",
-        "test-timeout": "2000000",
-        "package": "ohos.acts.multimedia.video.videorecorder",
-        "shell-timeout": "60000"
+        "type": "OHJSUnitTest",
+        "test-timeout": "1000000",
+        "shell-timeout": "1000000",
+        "testcase-timeout": 60000,
+        "bundle-name": "ohos.acts.multimedia.video.videorecorder",
+        "package-name": "ohos.acts.multimedia.video.videorecorder"
     },
     "kits": [
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "rm -rf /storage/media/100/local/files/Videos/*",
-                "power-shell setmode 602"
-            ],
-            "teardown-command":[
-                "power-shell setmode 600"
-            ]
-        },
         {
             "test-file-name": [
                 "ActsVideoRecorderJsTest.hap"
             ],
             "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/Videos/*",
+                "param set persist.ace.testmode.enabled 1",
+                "power-shell setmode 602"
+            ],
+            "teardown-command":[
+                "power-shell setmode 600"
+            ],
             "cleanup-apps": true
         }
     ]

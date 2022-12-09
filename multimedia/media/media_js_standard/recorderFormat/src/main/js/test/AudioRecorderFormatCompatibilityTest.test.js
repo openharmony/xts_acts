@@ -17,6 +17,7 @@ import media from '@ohos.multimedia.media'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function AudioRecorderFormatCompatibilityTest() {
@@ -59,7 +60,14 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
     }
 
     beforeAll(async function () {
-        await applyPermission();
+        let permissionName1 = 'ohos.permission.MICROPHONE';
+        let permissionName2 = 'ohos.permission.MEDIA_LOCATION';
+        let permissionName3 = 'ohos.permission.READ_MEDIA';
+        let permissionName4 = 'ohos.permission.WRITE_MEDIA';
+        let permissionNames = [permissionName1, permissionName2, permissionName3, permissionName4];
+        await mediaTestBase.getPermission(permissionNames);
+        await mediaTestBase.msleepAsync(2000);
+        await mediaTestBase.driveFn(2);
         console.info('beforeAll case');
     })
 
@@ -75,41 +83,6 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
     afterAll(function () {
         console.info('afterAll case');
     })
-
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.recorderformat', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.MICROPHONE';
-            let permissionName2 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName3 = 'ohos.permission.READ_MEDIA';
-            let permissionName4 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.error('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.error('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.error('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName4, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.error('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.error('[permission] case apply permission failed, createAtManager failed');
-        }
-    }
 
     async function getFd(pathName) {
         let displayName = pathName;

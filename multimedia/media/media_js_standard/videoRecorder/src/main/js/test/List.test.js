@@ -12,7 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./VideoRecorderFuncCallbackTest.test.js')
-require('./VideoRecorderFuncPromiseTest.test.js')
-require('./VideoRecorderAPICallbackTest.test.js')
-require('./VideoRecorderEnumTest.test.js')
+
+import VideoRecorderFuncPromiseTest from './VideoRecorderFuncPromiseTest.test.js'
+import VideoRecorderFuncCallbackTest from './VideoRecorderFuncCallbackTest.test.js'
+import VideoRecorderAPICallbackTest from './VideoRecorderAPICallbackTest.test.js'
+import VideoRecorderEnumTest from './VideoRecorderEnumTest.test.js'
+export default function testsuite() {
+    VideoRecorderFuncPromiseTest()
+    VideoRecorderFuncCallbackTest()
+    VideoRecorderAPICallbackTest()
+    VideoRecorderEnumTest()
+}

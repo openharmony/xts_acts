@@ -16,13 +16,34 @@
 import resourceManager from '@ohos.resourceManager';
 import {expect} from 'deccjsunit/index'
 import router from '@system.router'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
+import { UiDriver, BY, PointerMatrix } from '@ohos.uitest'
 
 const context = featureAbility.getContext();
+
+export async function getPermission(permissionNames) {
+    featureAbility.getContext().requestPermissionsFromUser(permissionNames, 0, async (data) => {
+        console.info("case request success" + JSON.stringify(data));
+    })
+}
+
+export async function driveFn(num) {
+    console.info(`case come in driveFn 111`)
+    let driver = await UiDriver.create()
+    console.info(`case come in driveFn 222`)
+    console.info(`driver is ${JSON.stringify(driver)}`)
+    await msleepAsync(2000)
+    console.info(`UiDriver start`)
+    for (let i = 0; i < num; i++) {
+        let button = await driver.findComponent(BY.text('允许'))
+        console.info(`button is ${JSON.stringify(button)}`)
+        await msleepAsync(2000)
+        await button.click()
+    }
+    await msleepAsync(2000)
+}
 
 // File operation
 export async function getFileDescriptor(fileName) {
@@ -203,24 +224,5 @@ export async function closeFd(fileAsset, fdNumber) {
         });
     } else {
         console.info('[mediaLibrary] case fileAsset is null');
-    }
-}
-
-// apply permission for test hap
-export async function applyPermission(applictionName, permissionNames) {
-    let appInfo = await bundle.getApplicationInfo(applictionName, 0, 100);
-    let atManager = abilityAccessCtrl.createAtManager();
-    if (atManager != null) {
-        let tokenID = appInfo.accessTokenId;
-        console.info('[permission] case accessTokenID is ' + tokenID);
-        for (let i = 0; i < permissionNames.length; i++) {
-            await atManager.grantUserGrantedPermission(tokenID, permissionNames[i], 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        }
-    } else {
-        console.info('[permission] case apply permission failed, createAtManager failed');
     }
 }
