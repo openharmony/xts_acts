@@ -17,10 +17,7 @@ group("amscontextualinforquery") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsamsextensionmodulehap:ActsAmsExtensionModuleRelyHap",
       "actsamsstaticabilitystagecontexttest:ActsAmsStaticAbilityStageContextTest",
-      "actsamsstaticextensioninfohap:ActsAmsStaticExtensionInfoRelyHap",
-      "actsamsstaticextensioninfotest:ActsAmsStaticExtensionInfoTest",
       "actsamsstatichapa:ActsAmsStaticARelyHap",
       "actsamsstatichapb:ActsAmsStaticBRelyHap",
       "actsamsstaticinfomationquerytest:ActsAmsStaticInfoMationQueryTest",

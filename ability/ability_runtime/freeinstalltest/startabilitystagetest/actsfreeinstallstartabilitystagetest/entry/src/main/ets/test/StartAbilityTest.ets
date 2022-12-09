@@ -1122,33 +1122,6 @@ export default function startAbilityTest(abilityContext) {
     });
 
     /*
-     * @tc.number  FreeInstall_Stage_Local_StartAbility_3500
-     * @tc.name    Service to pull up the service of the atomized service to realize the installation free process
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it("FreeInstall_Stage_Local_StartAbility_3500", 0, async function (done) {
-      console.info("------------start FreeInstall_Stage_Local_StartAbility_3500-------------");
-      TAG = "FreeInstall_Stage_Local_StartAbility_3500";
-      commonEvent.createSubscriber(subscribeInfo, CreateSubscriberCallBack);
-      abilityForeground(TAG);
-      await sleep(1000);
-      var str = {
-        "bundleName": "com.open.harmony.packagemag",
-        "abilityName": "com.open.harmony.packagemag.ServiceAbility",
-      }
-      globalThis.abilityContext.startAbility(str).then((data) => {
-        console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
-      }).catch((error) => {
-        console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-      });
-      await sleep(2000);
-      expect(result).assertEqual("onSuccess");
-      console.info("------------end FreeInstall_Stage_Local_StartAbility_3500-------------");
-      done();
-    });
-
-    /*
      * @tc.number  FreeInstall_Stage_Local_StartAbility_1900
      * @tc.name    The current service is not in the foreground. Page a jumps to page B first.
                     There are HAP packages that need not be installed under the specified path

@@ -11,13 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsCallTestEntryTest.hap",
-                "ActsCallTestFeatureRelyHap.hap",
-                "ActsSystemAppCallerARelyHap.hap",
-                "ActsSystemAppCallerBRelyHap.hap",
-                "ActsSystemAppCallerCRelyHap.hap",
-                "ActsSystemAppCalleeARelyHap.hap",
-                "ActsThirdAppARelyHap.hap"
+                "ActsCallTestEntryTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

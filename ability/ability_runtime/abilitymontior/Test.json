@@ -14,12 +14,6 @@
                 "ActsAbilityMonitorTest.hap"
             ],
             "type": "AppInstallKit",
-            "run-command": [
-                " hilog -Q pidoff",
-                 "hilog -Q domainoff",
-                 "hilog -b D",
-                 "hilog -r"
-             ],
             "cleanup-apps": true
         }
     ]

@@ -17,14 +17,7 @@ group("actscalltest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "systemappcalleea:ActsSystemAppCalleeARelyHap",
-      "systemappcallera:ActsSystemAppCallerARelyHap",
-      "systemappcallerb:ActsSystemAppCallerBRelyHap",
-      "systemappcallerc:ActsSystemAppCallerCRelyHap",
       "systemcallentrytest:ActsCallTestEntryTest",
-      "systemcallfeature:ActsCallTestFeatureRelyHap",
-      "thirdappa:ActsThirdAppARelyHap",
-      "thirdcalltest:ActsThirdCallTest",
     ]
   }
 }

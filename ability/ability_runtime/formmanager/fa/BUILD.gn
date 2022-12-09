@@ -56,8 +56,6 @@ group("formmanager") {
       "formsystemtest_ets/formgetformsinfotest/formswithoutpermtest:ActsFormsWithoutPermTest",
       "formsystemtest_ets/formgetformsinfotest/formszerotest:ActsFormsZeroTest",
       "formsystemtest_ets/formhostdeathrecipienttest:ActsFormHostDeathRecipientTest",
-
-      #"formsystemtest_ets/formperformancetest:ActsFormPerformanceTest",
       "formsystemtest_ets/formreleasetest:ActsFormReleaseTest",
       "formsystemtest_ets/formstatetest_disable:ActsFormStateDisableTest",
       "formsystemtest_ets/formstatetest_enable:ActsFormStateEnableTest",

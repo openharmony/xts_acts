@@ -57,8 +57,6 @@ group("ability_runtime") {
       "stage:stage",
       "want:want",
       "workercontextcover:workercontextcover",
-
-      #"zidltest:zidltest",
     ]
   }
 }

@@ -81,10 +81,10 @@ export default class MainAbility extends Ability {
             })
         }
         if (globalThis.abilityWant.action == 'startMainAbility0700') {
-            globalThis.abilityContext.connectAbility({
+            globalThis.abilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
-                abilityName: "com.example.newwanthapa.ServiceAbility",
-                action: "connectServiceAbility0700"
+                abilityName: "com.example.newwanthapa.SecondAbility",
+                action: "restartSecondAbility0700"
             }, (error, data) => {
                 console.log('ACTS_NewWant MainAbility onForeground - startAbility startServiceAbility: '
                 + JSON.stringify(error) + ", " + JSON.stringify(data))
