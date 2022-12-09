@@ -782,7 +782,6 @@ describe('kvStoreBackupPromiseJsunittest', function () {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 before putdata");
             await publicput(kvStore,"PutPromise0002","value") ;
-			done();
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 going putdata");
             await publicget(kvStore,"PutPromise0002").then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 going getdata" + JSON.stringify(data));
