@@ -496,5 +496,85 @@ describe('kvManagerCallbackTest', function () {
             done();
         }
     })
+
+    /**
+     * @tc.number SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0100
+     * @tc.desc Test Js Api  createKVManager() testcase 001
+     * @tc.type: FUNC
+     * @tc.name Test Js Api createKVManager() testcase 001
+     */
+    it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0100', 0, async function (done) {
+        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0100 start');
+        let kvManagerConfig = {
+            bundleName : [TEST_BUNDLE_NAME],
+            context: context
+        }
+        try{
+            factory.createKVManager(kvManagerConfig);
+            expect(false).assertTrue();
+        }catch(err){
+            console.info(`Create kvManager error: error code is ${err.code}, error message is ${err.message}`);
+            expect(err.code).assertEqual("401");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0200
+     * @tc.desc Test Js Api  createKVManager() testcase 002
+     * @tc.type: FUNC
+     * @tc.name Test Js Api createKVManager() testcase 002
+     */
+    it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0200', 0, async function (done) {
+        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0200 start ');
+        let kvManagerConfig = {
+            bundleName : TEST_BUNDLE_NAME,
+            context: "context"
+        }
+        try{
+            factory.createKVManager(kvManagerConfig);
+            expect(false).assertTrue();
+        }catch(err){
+            console.info(`Create kvManager error: error code is ${err.code}, error message is ${err.message}`);
+            expect(err.code).assertEqual("401");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0300
+     * @tc.desc Test Js Api  createKVManager() testcase 003
+     * @tc.type: FUNC
+     * @tc.name Test Js Api createKVManager() testcase 003
+     */
+    it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0300', 0, async function (done) {
+        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0300 start ');
+        try{
+            factory.createKVManager("kvManagerConfig");
+            expect(false).assertTrue();
+        }catch(err){
+            console.info(`Create kvManager error: error code is ${err.code}, error message is ${err.message}`);
+            expect(err.code).assertEqual("401");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0400
+     * @tc.desc Test Js Api  createKVManager() testcase 004
+     * @tc.type: FUNC
+     * @tc.name Test Js Api createKVManager() testcase 004
+     */
+    it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0400', 0, async function (done) {
+        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0400 start ');
+        try{
+            factory.createKVManager();
+            expect(false).assertTrue();
+        }catch(err){
+            console.info(`Create kvManager error: error code is ${err.code}, error message is ${err.message}`);
+            expect(err.code).assertEqual("401");
+        }
+        done();
+    })
 })
 }
