@@ -265,7 +265,7 @@ export default function requestDownloadJSUnit() {
               })
             }catch(err){
               console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0006 second throw_error: " + err);
-              expect(err.code).assertEqual('13400002')
+              expect(err.code).assertEqual(13400002)
               await downloadTask.remove()
               done();
             }            
