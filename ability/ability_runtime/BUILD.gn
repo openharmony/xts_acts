@@ -26,8 +26,6 @@ group("ability_runtime") {
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsabilityusertest:ActsAbilityuserTest",
       "actscalldataabilitytest:ActsCallDataAbilityTest",
-      "actscalldataabilitytest:ActsCallDataAbilityTest",
-      "actscalltest:actscalltest",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
       "actsfwkdataaccessortest:dataability",
       "actsqueryfunctiontest:actsqueryfunctiontest",

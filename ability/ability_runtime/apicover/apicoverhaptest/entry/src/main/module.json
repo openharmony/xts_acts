@@ -82,14 +82,6 @@
               "resource": "$profile:form_config"
             }
           ]
-        },
-        {
-          "name": "ServiceAbility",
-          "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
-          "label": "$string:MainAbility_label",
-          "description": "$string:MainAbility_desc",
-          "type": "service",
-          "visible": true
         }
       ],
       "requestPermissions":[
