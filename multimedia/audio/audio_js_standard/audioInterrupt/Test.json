@@ -18,7 +18,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiointerrupt/haps/entry/files/",
                 "mkdir -p /data/app/el2/100/base/com.example.audiorenderinterrupt/haps/entry/files/",
                 "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiointerrupt/haps/entry",

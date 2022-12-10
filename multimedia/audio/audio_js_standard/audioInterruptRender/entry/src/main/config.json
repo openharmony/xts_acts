@@ -17,8 +17,8 @@
     "name": ".entry",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "default",
-      "tablet"
+      "tablet",
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

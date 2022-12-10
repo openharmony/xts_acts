@@ -1,15 +1,18 @@
 {
     "description": "Configuration for camerastandard Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "3000000",
-        "package": "com.open.harmony.multimedia.cameratest",
-        "shell-timeout": "60000"
+        "bundle-name":"com.open.harmony.multimedia.cameratest",
+        "package-name": "com.open.harmony.multimedia.cameratest",
+        "shell-timeout": "60000",
+		"testcase-timeout": 100000
     },
     "kits": [
         {
             "type": "ShellKit",
             "run-command": [
+                "hilog -Q pidoff",
                 "rm -rf /storage/media/100/local/files/Videos/*"
             ],
             "teardown-command":[
