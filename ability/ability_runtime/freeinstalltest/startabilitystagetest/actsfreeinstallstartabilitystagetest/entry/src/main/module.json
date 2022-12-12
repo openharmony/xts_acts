@@ -50,21 +50,6 @@
       {
         "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
       }
-    ],
-    "extensionAbilities": [
-      {
-        "name": "com.open.harmony.packagemag.ServiceAbility",
-        "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
-        "label": "$string:form_ServiceAbility_label",
-        "description": "$string:form_ServiceAbility_desc",
-        "type": "service",
-        "metadata": [
-          {
-            "name": "ohos.extension.form",
-            "resource": "$profile:form_config"
-          }
-        ]
-      }
     ]
   }
 }
