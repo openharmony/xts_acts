@@ -15,6 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("mediaLibrary_trash_js_hap") {
   hap_profile = "entry/src/main/module.json"
+  js_build_mode = "debug"
   deps = [
     ":mediaLibrary_js_assets",
     ":mediaLibrary_resources",

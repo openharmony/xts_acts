@@ -15,7 +15,7 @@
 
 import fileTestCallback from './fileTestCallback.test.ets'
 import fileTestPromise from './fileTestPromise.test.ets'
-export default function testsuite(abilityContext) {
-  fileTestCallback(abilityContext)
-  fileTestPromise(abilityContext)
+export default function testsuite() {
+  fileTestCallback(globalThis.abilityContext)
+  fileTestPromise(globalThis.abilityContext)
 }

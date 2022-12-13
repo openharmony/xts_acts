@@ -35,7 +35,7 @@ export default function albumGetFileAssetsCallbackTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await getPermission();
+            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, 'ActsMediaLibraryAlbumTest');
         });
         beforeEach(function () {
