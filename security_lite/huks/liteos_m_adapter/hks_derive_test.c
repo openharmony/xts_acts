@@ -26,6 +26,7 @@
 #include "cmsis_os2.h"
 #include "ohos_types.h"
 
+#include <unistd.h>
 #define DEFAULT_DERIVE_SIZE 32
 #define DEFAULT_INFO_SIZE 55
 #define DEFAULT_SALT_SIZE 16
@@ -180,7 +181,7 @@ static int32_t BaseTestDerive(uint32_t index)
         ret = GenerateLocalRandomKey(&keyAlias, &g_testDeriveParams[index].localKeyParams);
     } else {
         if (g_testDeriveParams[index].keyAliasParams.blobExist) {
-            ret = GenerateKey(&keyAlias, &g_testDeriveParams[index].keyAliasParams,
+            ret = HuksGenerateKey(&keyAlias, &g_testDeriveParams[index].keyAliasParams,
                 &g_testDeriveParams[index].genKeyParamSetParams, NULL);
         } else {
             ret = TestConstuctBlob(&keyAlias,

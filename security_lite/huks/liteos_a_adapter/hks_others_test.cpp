@@ -84,7 +84,7 @@ HWTEST_F(HksOthersTest, HksOthersTest002, TestSize.Level1)
 HWTEST_F(HksOthersTest, HksOthersTest003, TestSize.Level1)
 {
     int32_t ret = HksAttestKey(NULL, NULL, NULL);
-    ASSERT_TRUE(ret == HKS_ERROR_API_NOT_SUPPORTED);
+    ASSERT_TRUE(ret == HKS_ERROR_NOT_SUPPORTED);
 }
 
 /**
@@ -95,7 +95,7 @@ HWTEST_F(HksOthersTest, HksOthersTest003, TestSize.Level1)
 HWTEST_F(HksOthersTest, HksOthersTest004, TestSize.Level1)
 {
     int32_t ret = HksGetCertificateChain(NULL, NULL, NULL);
-    ASSERT_TRUE(ret == HKS_ERROR_API_NOT_SUPPORTED);
+    ASSERT_TRUE(ret == HKS_ERROR_NOT_SUPPORTED);
 }
 
 /**
@@ -106,7 +106,7 @@ HWTEST_F(HksOthersTest, HksOthersTest004, TestSize.Level1)
 HWTEST_F(HksOthersTest, HksOthersTest005, TestSize.Level1)
 {
     int32_t ret = HksWrapKey(NULL, NULL, NULL, NULL);
-    ASSERT_TRUE(ret == HKS_ERROR_API_NOT_SUPPORTED);
+    ASSERT_TRUE(ret == HKS_ERROR_NOT_SUPPORTED);
 }
 
 /**
@@ -117,7 +117,7 @@ HWTEST_F(HksOthersTest, HksOthersTest005, TestSize.Level1)
 HWTEST_F(HksOthersTest, HksOthersTest006, TestSize.Level1)
 {
     int32_t ret = HksUnwrapKey(NULL, NULL, NULL, NULL);
-    ASSERT_TRUE(ret == HKS_ERROR_API_NOT_SUPPORTED);
+    ASSERT_TRUE(ret == HKS_ERROR_NOT_SUPPORTED);
 }
 
 /**
