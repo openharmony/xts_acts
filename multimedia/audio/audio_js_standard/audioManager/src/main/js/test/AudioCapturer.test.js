@@ -1981,13 +1981,13 @@ describe('audioCapturer', function () {
 
         let AudioStreamInfo = {
             samplingRate: 44100,
-            channels: 1,
+            channels: 2,
             sampleFormat: 1,
             encodingType: 0
         }
 
         let AudioCapturerInfo = {
-            source: 1,
+            source: 0,
             capturerFlags: 0
         }
 
@@ -2000,7 +2000,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(AudioCapturerOptions, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2021,7 +2021,7 @@ describe('audioCapturer', function () {
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
         let audioCapturerInfo44100 = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
+            source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
             capturerFlags: 0,
         }
         let audioCapturerOptions44100 = {
@@ -2056,7 +2056,7 @@ describe('audioCapturer', function () {
             encodingType: 0,
         };
         let audioCapturerInfo44100 = {
-            source: 1,
+            source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
             capturerFlags: 0,
         }
         let audioCapturerOptions44100 = {
@@ -2067,7 +2067,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions44100, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2121,7 +2121,7 @@ describe('audioCapturer', function () {
             encodingType: 0,
         };
         let audioCapturerInfo96000 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions96000 = {
@@ -2132,7 +2132,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions96000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2181,11 +2181,11 @@ describe('audioCapturer', function () {
         let audioStreamInfo48000 = {
             samplingRate: 48000,
             channels: 2,
-            sampleFormat: 1,
+            sampleFormat: 3,
             encodingType: 0,
         };
         let audioCapturerInfo48000 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions48000 = {
@@ -2196,7 +2196,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions48000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2249,7 +2249,7 @@ describe('audioCapturer', function () {
             encodingType: 0,
         };
         let audioCapturerInfo8000 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions8000 = {
@@ -2261,7 +2261,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions8000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2315,7 +2315,7 @@ describe('audioCapturer', function () {
             encodingType: 0,
         };
         let audioCapturerInfo11025 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions11025 = {
@@ -2327,7 +2327,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions11025, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2381,7 +2381,7 @@ describe('audioCapturer', function () {
             encodingType: 0
         };
         let audioCapturerInfo12000 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions12000 = {
@@ -2393,7 +2393,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions12000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2447,7 +2447,7 @@ describe('audioCapturer', function () {
             encodingType: 0,
         };
         let audioCapturerInfo16000 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions16000 = {
@@ -2459,7 +2459,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions16000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2513,7 +2513,7 @@ describe('audioCapturer', function () {
             encodingType: 0,
         };
         let audioCapturerInfo22050 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions22050 = {
@@ -2525,7 +2525,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions22050, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2579,7 +2579,7 @@ describe('audioCapturer', function () {
             encodingType: 0,
         };
         let audioCapturerInfo24000 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions24000 = {
@@ -2591,7 +2591,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions24000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2645,7 +2645,7 @@ describe('audioCapturer', function () {
             encodingType: 0,
         };
         let audioCapturerInfo32000 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions32000 = {
@@ -2657,7 +2657,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions32000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
@@ -2717,7 +2717,7 @@ describe('audioCapturer', function () {
             encodingType: 0,
         };
         let audioCapturerInfo64000 = {
-            source: 1,
+            source: 0,
             capturerFlags: 0,
         }
         let audioCapturerOptions64000 = {
@@ -4151,7 +4151,6 @@ describe('audioCapturer', function () {
             } else {
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success:' + data.state);
             }
-
         }).catch((err) => {
             console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : ' + err.message);
             expect(true).assertTrue();

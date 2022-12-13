@@ -7388,7 +7388,7 @@ describe('audioRenderer', function () {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
@@ -7537,7 +7537,7 @@ describe('audioRenderer', function () {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
             channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
@@ -7574,7 +7574,7 @@ describe('audioRenderer', function () {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
             channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
@@ -7685,7 +7685,7 @@ describe('audioRenderer', function () {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
             channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
@@ -7762,7 +7762,7 @@ describe('audioRenderer', function () {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
             channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
