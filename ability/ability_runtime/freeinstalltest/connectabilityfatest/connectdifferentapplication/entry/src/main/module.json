@@ -33,18 +33,6 @@
           }
         ]
       }
-    ],
-    "extensionAbilities": [
-      {
-        "name": "com.example.different.ServiceAbility",
-        "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
-        "label": "$string:form_FormAbility_label",
-        "description": "$string:form_FormAbility_desc",
-        "type": "service",
-        "visible": true,
-        "icon": "$media:icon"
-
-      }
     ]
   }
 }

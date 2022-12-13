@@ -26,8 +26,6 @@ group("ability_runtime") {
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsabilityusertest:ActsAbilityuserTest",
       "actscalldataabilitytest:ActsCallDataAbilityTest",
-      "actscalldataabilitytest:ActsCallDataAbilityTest",
-      "actscalltest:actscalltest",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
       "actsfwkdataaccessortest:dataability",
       "actsqueryfunctiontest:actsqueryfunctiontest",
@@ -57,8 +55,6 @@ group("ability_runtime") {
       "stage:stage",
       "want:want",
       "workercontextcover:workercontextcover",
-
-      #"zidltest:zidltest",
     ]
   }
 }
