@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +24,7 @@ export default class Utils {
   static sleep(time) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(reject)
+        resolve()
       }, time)
     }).then(() => {
       console.info(`sleep ${time} over...`)
@@ -75,8 +76,6 @@ export default class Utils {
       x: downX,
       y: downY,
       type: TouchType.Down,
-      screenX: 0,
-      screenY: 1,
     }
     console.info('down touch started: ' + JSON.stringify(downPonit))
     sendTouchEvent(downPonit);
@@ -89,9 +88,7 @@ export default class Utils {
         id: 1,
         x: downX + (xStep * i),
         y: downY + (yStep * i),
-        type: TouchType.Move,
-        screenX: 0,
-        screenY: 1,
+        type: TouchType.Move
       }
       console.info('move touch started: ' + JSON.stringify(movePoint))
       ret = sendTouchEvent(movePoint)
@@ -109,8 +106,6 @@ export default class Utils {
       x: upX,
       y: upY,
       type: TouchType.Up,
-      screenX: 0,
-      screenY: 1,
     }
     console.info('up touch started: ' + JSON.stringify(upPoint))
     sendTouchEvent(upPoint)
@@ -129,3 +124,7 @@ export default class Utils {
     return duration;
   }
 }
+
+
+
+

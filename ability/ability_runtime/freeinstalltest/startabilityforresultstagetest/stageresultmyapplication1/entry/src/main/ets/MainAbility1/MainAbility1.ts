@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.application.Ability'
 
 export default class MainAbility1 extends Ability {
     onCreate(want, launchParam) {

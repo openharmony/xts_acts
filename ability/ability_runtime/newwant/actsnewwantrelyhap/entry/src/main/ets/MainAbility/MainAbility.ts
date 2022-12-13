@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.application.Ability'
 import commonEvent from '@ohos.commonEvent'
 
 function sleep(delay) {
@@ -81,10 +81,10 @@ export default class MainAbility extends Ability {
             })
         }
         if (globalThis.abilityWant.action == 'startMainAbility0700') {
-            globalThis.abilityContext.connectServiceExtensionAbility({
+            globalThis.abilityContext.startAbility({
                 bundleName: "com.example.newwanthap",
-                abilityName: "com.example.newwanthapa.ServiceAbility",
-                action: "connectServiceAbility0700"
+                abilityName: "com.example.newwanthapa.SecondAbility",
+                action: "restartSecondAbility0700"
             }, (error, data) => {
                 console.log('ACTS_NewWant MainAbility onForeground - startAbility startServiceAbility: '
                 + JSON.stringify(error) + ", " + JSON.stringify(data))

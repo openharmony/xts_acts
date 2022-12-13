@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.application.Ability'
 import commonEvent from '@ohos.commonEvent'
 function PublishCallBackOne1() {
   console.debug("====>Publish CallBack ACTS_ThirdPartyAbilityPermission_0100_CommonEvent====>");
