@@ -114,13 +114,11 @@ describe('PlayerLocalTestAudioFormat', function () {
                 return;
             }
             console.info('case seek success, and seek time is ' + seekDoneTime);
-            if (!isToDuration) {
+            if ((!isToDuration) && (seekDoneTime >= SEEK_TIME)) {
                 expect(SEEK_TIME).assertEqual(seekDoneTime);
                 isToDuration = true;
                 sleep(PLAY_TIME);
                 audioPlayer.seek(audioPlayer.duration);
-            } else {
-                expect(audioPlayer.duration).assertEqual(seekDoneTime);
             }
         });
         audioPlayer.on('volumeChange', () => {

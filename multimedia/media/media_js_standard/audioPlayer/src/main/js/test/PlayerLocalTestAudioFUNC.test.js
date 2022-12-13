@@ -129,6 +129,11 @@ describe('PlayerLocalTestAudioFUNC', function () {
             case SEEK_STATE:
                 console.info(`case seek to time is ${mySteps[SECOND_INDEX]}`);
                 audioPlayer.seek(mySteps[SECOND_INDEX]);
+                if (mySteps[2] != ERROR_STATE) {
+                    mySteps.shift();
+                    mySteps.shift();
+                    nextStep(mySteps, done);
+                }
                 break;
             case VOLUME_STATE:
                 console.info(`case to setVolume`);
@@ -139,6 +144,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 mySteps.shift();
                 audioPlayer.release();
                 audioPlayer = undefined;
+                nextStep(mySteps, done);
                 break;
             case LOOP_STATE:
                 audioPlayer.loop = mySteps[SECOND_INDEX];
@@ -205,26 +211,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
             nextStep(mySteps,done);
         });
         audioPlayer.on('timeUpdate', (seekDoneTime) => {
-            if (typeof (seekDoneTime) == 'undefined') {
-                console.info(`case seek filed,errcode is ${seekDoneTime}`);
-                return;
-            }
-            if (mySteps[0] != SEEK_STATE) {
-                return;
-            }
-            mySteps.shift();
-            mySteps.shift();
-            console.info(`case seekDoneTime is ${seekDoneTime}`);
-            console.info(`case seek called`);
-            expect(audioPlayer.currentTime + DELTA_TIME).assertClose(seekDoneTime + DELTA_TIME, DELTA_TIME);
-            console.info(`case loop is ${audioPlayer.loop}`);
-            if ((audioPlayer.loop == true) && (seekDoneTime == DURATION_TIME)) {
-                console.info('case loop is true');
-                sleep(PLAY_STATE);
-            }
-            if ((seekDoneTime < audioPlayer.duration) || (audioPlayer.state == 'paused')) {
-                nextStep(mySteps,done);
-            }
+            console.info('case timeUpdate seekDoneTime is' + seekDoneTime);
         });
         audioPlayer.on('volumeChange', () => {
             console.info(`case setvolume called`);
@@ -243,18 +230,16 @@ describe('PlayerLocalTestAudioFUNC', function () {
             nextStep(mySteps,done);
         });
         audioPlayer.on('error', (err) => {
-            console.info(`case error called,errName is ${err.name}`);
             console.info(`case error called,errCode is ${err.code}`);
-            console.info(`case error called,errMessage is ${err.message}`);
             if ((mySteps[0] == SEEK_STATE) || (mySteps[0] == VOLUME_STATE)) {
-                mySteps.shift();
                 mySteps.shift();
                 mySteps.shift();
             } else {
                 mySteps.shift();
-                mySteps.shift();
             }
-            nextStep(mySteps,done);
+            expect(mySteps[0]).assertEqual(ERROR_STATE);
+            mySteps.shift();
+            nextStep(mySteps, done);
         });
     }
 
@@ -452,7 +437,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     */
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1500', 0, async function (done) {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME,
-            PLAY_STATE, FINISH_STATE, END_STATE);
+            PLAY_STATE, FINISH_STATE, RESET_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
         audioPlayer.src = fdPath;
