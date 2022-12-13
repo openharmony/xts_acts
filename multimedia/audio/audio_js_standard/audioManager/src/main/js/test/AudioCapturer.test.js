@@ -2729,7 +2729,7 @@ describe('audioCapturer', function () {
         let resultFlag = await recPromise(audioCapturerOptions64000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-        expect(resultFlag).assertFalse();
+        expect(resultFlag).assertTrue();
         done();
     })
 
