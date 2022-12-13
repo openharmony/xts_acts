@@ -5,17 +5,21 @@
         "test-timeout": "3000000",
         "bundle-name":"com.open.harmony.multimedia.cameratest",
         "package-name": "com.open.harmony.multimedia.cameratest",
-        "shell-timeout": "60000"
+        "shell-timeout": "60000",
+        "testcase-timeout": 100000
     },
     "kits": [
         {
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
-                "rm -rf /storage/media/100/local/files/Videos/*"
+                "rm -rf /storage/media/100/local/files/Videos/*",
+                "power-shell wakeup",
+                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+                "power-shell setmode 602"
             ],
             "teardown-command":[
-               
+                "power-shell setmode 600"
             ]
         },
         {

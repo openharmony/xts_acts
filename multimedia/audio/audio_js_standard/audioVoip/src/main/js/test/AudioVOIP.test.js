@@ -17,7 +17,6 @@ import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
-import * as audioTestBase from '../../../../../AudioTestBase'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { UiDriver, BY} from '@ohos.uitest'
 

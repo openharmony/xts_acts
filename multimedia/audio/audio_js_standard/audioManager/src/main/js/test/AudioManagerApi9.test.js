@@ -14,7 +14,6 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-// import * as audioTestBase from '../../../../../AudioTestBase'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 export default function audioManagerApi9() {
 
