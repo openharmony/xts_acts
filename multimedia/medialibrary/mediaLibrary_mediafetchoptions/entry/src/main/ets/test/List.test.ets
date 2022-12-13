@@ -15,7 +15,7 @@
 
 import mediafetchoptionsCallback from './mediafetchoptionsCallback.test.ets'
 import mediafetchoptionsPromise from './mediafetchoptionsPromise.test.ets'
-export default function testsuite(abilityContext) {
-  mediafetchoptionsCallback(abilityContext)
-  mediafetchoptionsPromise(abilityContext)
+export default function testsuite() {
+  mediafetchoptionsCallback(globalThis.abilityContext)
+  mediafetchoptionsPromise(globalThis.abilityContext)
 }

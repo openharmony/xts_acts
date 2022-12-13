@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
-import fileio from '@ohos.fileio';
+import mediaLibrary from "@ohos.multimedia.mediaLibrary";
+import fileio from "@ohos.fileio";
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 import {
     sleep,
     IMAGE_TYPE,
@@ -28,24 +28,23 @@ import {
     fetchOps,
     FILEKEY,
     isNum,
-} from '../../../../../../common';
-
+} from "../../../../../../common";
 
 export default function fileTestPromiseTest(abilityContext) {
-    describe('fileTestPromiseTest', function () {
+    describe("fileTestPromiseTest", function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
-            console.info('beforeAll case');
+            console.info("beforeAll case");
         });
         beforeEach(function () {
-            console.info('beforeEach case');
+            console.info("beforeEach case");
         });
         afterEach(async function () {
-            console.info('afterEach case');
-            await sleep(200)
+            console.info("afterEach case");
+            await sleep(200);
         });
         afterAll(function () {
-            console.info('afterAll case');
+            console.info("afterAll case");
         });
 
         async function copyFile(fd1, fd2) {
@@ -64,14 +63,14 @@ export default function fileTestPromiseTest(abilityContext) {
 
                 const creatAsset1 = await media.createAsset(type, displayName1, path);
 
-                const fd = await asset.open('rw');
-                const creatAssetFd1 = await creatAsset1.open('rw');
+                const fd = await asset.open("rw");
+                const creatAssetFd1 = await creatAsset1.open("rw");
                 await copyFile(fd, creatAssetFd1);
                 await creatAsset1.close(creatAssetFd1);
 
                 let displayName2 = `${new Date().getTime()}.${name}`;
                 const creatAsset2 = await media.createAsset(type, displayName2, path);
-                const creatAssetFd2 = await creatAsset2.open('rw');
+                const creatAssetFd2 = await creatAsset2.open("rw");
                 await copyFile(fd, creatAssetFd2);
                 await creatAsset2.close(creatAssetFd2);
                 await asset.close(fd);
@@ -79,12 +78,12 @@ export default function fileTestPromiseTest(abilityContext) {
                 console.info(`${testNum} displayName1: ${displayName1}, displayName2 :${displayName2} `);
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
 
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
 
         const checkCreatAssetProps = async (done, testNum, fetchOp, path, type, name, key, val) => {
             try {
@@ -96,24 +95,24 @@ export default function fileTestPromiseTest(abilityContext) {
 
                 const creatAsset = await media.createAsset(type, displayName, path);
 
-                const fd = await asset.open('rw');
-                const creatAssetFd = await creatAsset.open('rw');
+                const fd = await asset.open("rw");
+                const creatAssetFd = await creatAsset.open("rw");
                 await copyFile(fd, creatAssetFd);
                 await creatAsset.close(creatAssetFd);
 
-                if (val == 'displayName') {
-                    val = displayName
+                if (val == "displayName") {
+                    val = displayName;
                 }
                 expect(creatAsset[key]).assertEqual(val);
 
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
 
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
 
         const checkdateModified = async (done, testNum, fetchOp) => {
             try {
@@ -125,19 +124,19 @@ export default function fileTestPromiseTest(abilityContext) {
                 await asset.commitModify();
 
                 const id = asset.id;
-                const idOP = { selections: FILEKEY.ID + '= ?', selectionArgs: ['' + id] };
+                const idOP = { selections: FILEKEY.ID + "= ?", selectionArgs: ["" + id] };
                 fetchFileResult = await media.getFileAssets(idOP);
                 let newAsset = await fetchFileResult.getFirstObject();
                 expect(isNum(newAsset.dateModified)).assertTrue();
                 expect(newAsset.dateModified).assertEqual(asset.dateModified);
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
 
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
 
         // ------------------------------- image type start ----------------------------
         /**
@@ -148,13 +147,13 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_01';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '01.jpg', IMAGE_TYPE)
-            let name = 'jpg'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/'
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_01";
+            let currentFetchOp = nameFetchOps(testNum, "Pictures/Static/", "01.jpg", IMAGE_TYPE);
+            let name = "jpg";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE)) + "create/";
             let type = IMAGE_TYPE;
-            await creatAssetTest(done, testNum, currentFetchOp, path, type, name)
+            await creatAssetTest(done, testNum, currentFetchOp, path, type, name);
         });
 
         /**
@@ -165,15 +164,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_02';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '02.jpg', IMAGE_TYPE)
-            let name = 'jpg'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_02";
+            let currentFetchOp = nameFetchOps(testNum, "Pictures/Static/", "02.jpg", IMAGE_TYPE);
+            let name = "jpg";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE)) + "create/";
             let type = IMAGE_TYPE;
-            let key = 'displayName';
-            let val = 'displayName';
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            let key = "displayName";
+            let val = "displayName";
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -184,15 +183,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_03';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '03.jpg', IMAGE_TYPE)
-            let name = 'jpg'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_03";
+            let currentFetchOp = nameFetchOps(testNum, "Pictures/Static/", "03.jpg", IMAGE_TYPE);
+            let name = "jpg";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE)) + "create/";
             let type = IMAGE_TYPE;
-            let key = 'relativePath';
+            let key = "relativePath";
             let val = path;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -203,10 +202,10 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_07', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_07';
-            let currentFetchOp = fetchOps(testNum, 'Pictures/Dynamic/', IMAGE_TYPE)
-            await checkdateModified(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_07", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_07";
+            let currentFetchOp = fetchOps(testNum, "Pictures/Dynamic/", IMAGE_TYPE);
+            await checkdateModified(done, testNum, currentFetchOp);
         });
 
         /**
@@ -217,15 +216,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_08', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_08';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '04.jpg', IMAGE_TYPE)
-            let name = 'jpg'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_08", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_08";
+            let currentFetchOp = nameFetchOps(testNum, "Pictures/Static/", "04.jpg", IMAGE_TYPE);
+            let name = "jpg";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE)) + "create/";
             let type = IMAGE_TYPE;
-            let key = 'mediaType';
+            let key = "mediaType";
             let val = IMAGE_TYPE;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -236,15 +235,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_11', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_11';
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/Static/', '05.jpg', IMAGE_TYPE)
-            let name = 'jpg'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_11", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_11";
+            let currentFetchOp = nameFetchOps(testNum, "Pictures/Static/", "05.jpg", IMAGE_TYPE);
+            let name = "jpg";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE)) + "create/";
             let type = IMAGE_TYPE;
-            let key = 'orientation';
+            let key = "orientation";
             let val = 0;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         // -------------------------------  image type end -----------------------------
@@ -258,13 +257,13 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_01';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '01.mp4', VIDEO_TYPE)
-            let name = 'mp4'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/'
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_01";
+            let currentFetchOp = nameFetchOps(testNum, "Videos/Static/", "01.mp4", VIDEO_TYPE);
+            let name = "mp4";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO)) + "create/";
             let type = VIDEO_TYPE;
-            await creatAssetTest(done, testNum, currentFetchOp, path, type, name)
+            await creatAssetTest(done, testNum, currentFetchOp, path, type, name);
         });
 
         /**
@@ -275,15 +274,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_02';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '02.mp4', VIDEO_TYPE)
-            let name = 'mp4'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_02";
+            let currentFetchOp = nameFetchOps(testNum, "Videos/Static/", "02.mp4", VIDEO_TYPE);
+            let name = "mp4";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO)) + "create/";
             let type = VIDEO_TYPE;
-            let key = 'displayName';
-            let val = 'displayName';
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            let key = "displayName";
+            let val = "displayName";
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -294,15 +293,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_03';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '03.mp4', VIDEO_TYPE)
-            let name = 'mp4'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_03";
+            let currentFetchOp = nameFetchOps(testNum, "Videos/Static/", "03.mp4", VIDEO_TYPE);
+            let name = "mp4";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO)) + "create/";
             let type = VIDEO_TYPE;
-            let key = 'relativePath';
+            let key = "relativePath";
             let val = path;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -313,10 +312,10 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_07', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_07';
-            let currentFetchOp = fetchOps(testNum, 'Videos/Dynamic/', VIDEO_TYPE)
-            await checkdateModified(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_07", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_07";
+            let currentFetchOp = fetchOps(testNum, "Videos/Dynamic/", VIDEO_TYPE);
+            await checkdateModified(done, testNum, currentFetchOp);
         });
 
         /**
@@ -327,15 +326,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_08', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_08';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '04.mp4', VIDEO_TYPE)
-            let name = 'mp4'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_08", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_08";
+            let currentFetchOp = nameFetchOps(testNum, "Videos/Static/", "04.mp4", VIDEO_TYPE);
+            let name = "mp4";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO)) + "create/";
             let type = VIDEO_TYPE;
-            let key = 'mediaType';
+            let key = "mediaType";
             let val = VIDEO_TYPE;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -346,15 +345,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_11', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_11';
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/Static/', '05.mp4', VIDEO_TYPE)
-            let name = 'mp4'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_11", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_11";
+            let currentFetchOp = nameFetchOps(testNum, "Videos/Static/", "05.mp4", VIDEO_TYPE);
+            let name = "mp4";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO)) + "create/";
             let type = VIDEO_TYPE;
-            let key = 'orientation';
+            let key = "orientation";
             let val = 0;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
         // -------------------------------  video type end -----------------------------
 
@@ -367,13 +366,13 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_01';
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '01.mp3', AUDIO_TYPE)
-            let name = 'mp3'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + 'create/'
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_01";
+            let currentFetchOp = nameFetchOps(testNum, "Audios/Static/", "01.mp3", AUDIO_TYPE);
+            let name = "mp3";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO)) + "create/";
             let type = AUDIO_TYPE;
-            await creatAssetTest(done, testNum, currentFetchOp, path, type, name)
+            await creatAssetTest(done, testNum, currentFetchOp, path, type, name);
         });
 
         /**
@@ -384,15 +383,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_02';
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '02.mp3', AUDIO_TYPE)
-            let name = 'mp3'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_02";
+            let currentFetchOp = nameFetchOps(testNum, "Audios/Static/", "02.mp3", AUDIO_TYPE);
+            let name = "mp3";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO)) + "create/";
             let type = AUDIO_TYPE;
-            let key = 'displayName';
-            let val = 'displayName';
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            let key = "displayName";
+            let val = "displayName";
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -403,15 +402,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_03';
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '03.mp3', AUDIO_TYPE)
-            let name = 'mp3'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_03";
+            let currentFetchOp = nameFetchOps(testNum, "Audios/Static/", "03.mp3", AUDIO_TYPE);
+            let name = "mp3";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO)) + "create/";
             let type = AUDIO_TYPE;
-            let key = 'relativePath';
+            let key = "relativePath";
             let val = path;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -422,10 +421,10 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_07', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_07';
-            let currentFetchOp = fetchOps(testNum, 'Audios/Dynamic/', AUDIO_TYPE)
-            await checkdateModified(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_07", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_07";
+            let currentFetchOp = fetchOps(testNum, "Audios/Dynamic/", AUDIO_TYPE);
+            await checkdateModified(done, testNum, currentFetchOp);
         });
 
         /**
@@ -436,15 +435,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_08', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_08';
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/Static/', '05.mp3', AUDIO_TYPE)
-            let name = 'mp3'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_08", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_08";
+            let currentFetchOp = nameFetchOps(testNum, "Audios/Static/", "05.mp3", AUDIO_TYPE);
+            let name = "mp3";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO)) + "create/";
             let type = AUDIO_TYPE;
-            let key = 'mediaType';
+            let key = "mediaType";
             let val = AUDIO_TYPE;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         // -------------------------------  audio type end -----------------------------
@@ -458,13 +457,13 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_01';
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '01.dat', FILE_TYPE)
-            let name = 'dat'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + 'create/'
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_01";
+            let currentFetchOp = nameFetchOps(testNum, "Documents/Static/", "01.dat", FILE_TYPE);
+            let name = "dat";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS)) + "create/";
             let type = FILE_TYPE;
-            await creatAssetTest(done, testNum, currentFetchOp, path, type, name)
+            await creatAssetTest(done, testNum, currentFetchOp, path, type, name);
         });
 
         /**
@@ -475,15 +474,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_02';
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '02.dat', FILE_TYPE)
-            let name = 'dat'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_02";
+            let currentFetchOp = nameFetchOps(testNum, "Documents/Static/", "02.dat", FILE_TYPE);
+            let name = "dat";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS)) + "create/";
             let type = FILE_TYPE;
-            let key = 'displayName';
-            let val = 'displayName';
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            let key = "displayName";
+            let val = "displayName";
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -494,15 +493,15 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_03';
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '03.dat', FILE_TYPE)
-            let name = 'dat'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_03";
+            let currentFetchOp = nameFetchOps(testNum, "Documents/Static/", "03.dat", FILE_TYPE);
+            let name = "dat";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS)) + "create/";
             let type = FILE_TYPE;
-            let key = 'relativePath';
+            let key = "relativePath";
             let val = path;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         /**
@@ -513,10 +512,10 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_07', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_07';
-            let currentFetchOp = fetchOps(testNum, 'Documents/Dynamic/', FILE_TYPE)
-            await checkdateModified(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_07", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_07";
+            let currentFetchOp = fetchOps(testNum, "Documents/Dynamic/", FILE_TYPE);
+            await checkdateModified(done, testNum, currentFetchOp);
         });
 
         /**
@@ -527,18 +526,17 @@ export default function fileTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_08', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_08';
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/Static/', '04.dat', FILE_TYPE)
-            let name = 'dat'
-            let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + 'create/';
+        it("SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_08", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_08";
+            let currentFetchOp = nameFetchOps(testNum, "Documents/Static/", "04.dat", FILE_TYPE);
+            let name = "dat";
+            let path = (await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS)) + "create/";
             let type = FILE_TYPE;
-            let key = 'mediaType';
+            let key = "mediaType";
             let val = FILE_TYPE;
-            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val)
+            await checkCreatAssetProps(done, testNum, currentFetchOp, path, type, name, key, val);
         });
 
         // -------------------------------  file type end -----------------------------
     });
 }
-

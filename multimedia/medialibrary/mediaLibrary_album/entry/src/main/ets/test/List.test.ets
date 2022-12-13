@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,9 +16,9 @@ import albumGetFileAssetsCallbackTest from './albumGetFileAssetsCallback.test.et
 import albumGetFileAssetsPromiseTest from './albumGetFileAssetsPromise.test.ets'
 import albumTestCallBackTest from './albumTestCallBack.test.ets'
 import albumTestPromiseTest from './albumTestPromise.test.ets'
-export default function testsuite(abilityContext) {
-  albumGetFileAssetsCallbackTest(abilityContext)
-  albumGetFileAssetsPromiseTest(abilityContext)
-  albumTestPromiseTest(abilityContext)
-  albumTestCallBackTest(abilityContext)
+export default function testsuite() {
+    albumGetFileAssetsCallbackTest(globalThis.abilityContext)
+    albumGetFileAssetsPromiseTest(globalThis.abilityContext)
+    albumTestPromiseTest(globalThis.abilityContext)
+    albumTestCallBackTest(globalThis.abilityContext)
 }
