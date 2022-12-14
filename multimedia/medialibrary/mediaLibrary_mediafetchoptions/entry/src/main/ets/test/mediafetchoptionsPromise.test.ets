@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import mediaLibrary from "@ohos.multimedia.mediaLibrary";
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 
 import {
     sleep,
@@ -26,23 +26,23 @@ import {
     FILEKEY,
     checkAssetsCount,
     fetchOps,
-} from '../../../../../../common';
+} from "../../../../../../common";
 
 export default function mediafetchoptionsPromise(abilityContext) {
-    describe('mediafetchoptionsPromise', function () {
+    describe("mediafetchoptionsPromise", function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
-            console.info('beforeAll case');
+            console.info("beforeAll case");
         });
         beforeEach(function () {
-            console.info('beforeEach case');
+            console.info("beforeEach case");
         });
         afterEach(async function () {
-            console.info('afterEach case');
-            await sleep()
+            console.info("afterEach case");
+            await sleep();
         });
         afterAll(function () {
-            console.info('afterAll case');
+            console.info("afterAll case");
         });
 
         const serachUri = async (done, testNum, fetchOp, type) => {
@@ -54,11 +54,11 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 const id = firstObject.id;
                 const uri = firstObject.uri;
                 const serachUri = `datashare:///media/${type}/${id}`;
-                console.info(`${testNum} :uri ${uri};serachUri${serachUri})`)
+                console.info(`${testNum} :uri ${uri};serachUri${serachUri})`);
 
                 let serchfetchOp = {
                     uri: serachUri.toString(),
-                    selections: '',
+                    selections: "",
                     selectionArgs: [],
                 };
 
@@ -71,11 +71,11 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 expect(asset.id).assertEqual(id);
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
 
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_001
@@ -85,10 +85,10 @@ export default function mediafetchoptionsPromise(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_001', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_001';
-            let currentFetchOp = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
-            let type = 'image';
+        it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_001", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_001";
+            let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE);
+            let type = "image";
             await serachUri(done, testNum, currentFetchOp, type);
         });
 
@@ -100,10 +100,10 @@ export default function mediafetchoptionsPromise(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_002', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_002';
-            let currentFetchOp = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
-            let type = 'audio';
+        it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_002", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_002";
+            let currentFetchOp = fetchOps(testNum, "Audios/Static/", AUDIO_TYPE);
+            let type = "audio";
             await serachUri(done, testNum, currentFetchOp, type);
         });
 
@@ -115,10 +115,10 @@ export default function mediafetchoptionsPromise(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_003', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_003';
-            let currentFetchOp = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
-            let type = 'video';
+        it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_003", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_003";
+            let currentFetchOp = fetchOps(testNum, "Videos/Static/", VIDEO_TYPE);
+            let type = "video";
             await serachUri(done, testNum, currentFetchOp, type);
         });
 
@@ -130,10 +130,10 @@ export default function mediafetchoptionsPromise(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_004', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_004';
-            let currentFetchOp = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
-            let type = 'file';
+        it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_004", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_004";
+            let currentFetchOp = fetchOps(testNum, "Documents/Static/", FILE_TYPE);
+            let type = "file";
             await serachUri(done, testNum, currentFetchOp, type);
         });
 
@@ -145,13 +145,13 @@ export default function mediafetchoptionsPromise(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_NETWORKID_PROMISE_005', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_NETWORKID_PROMISE_005';
+        it("SUB_MEDIA_MEDIALIBRARY_ASSET_NETWORKID_PROMISE_005", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_NETWORKID_PROMISE_005";
             try {
                 const currentFetchOps = {
-                    selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
-                    selectionArgs: ['Pictures/Static/', IMAGE_TYPE.toString()],
-                    networkId: ''
+                    selections: FILEKEY.RELATIVE_PATH + "= ? AND " + FILEKEY.MEDIA_TYPE + "=?",
+                    selectionArgs: ["Pictures/Static/", IMAGE_TYPE.toString()],
+                    networkId: "",
                 };
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
@@ -159,7 +159,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 expect(checkAssetCountPass).assertTrue();
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
@@ -168,19 +168,19 @@ export default function mediafetchoptionsPromise(abilityContext) {
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ASSET_NETWORKID_PROMISE_006
          * @tc.name      : uri
-         * @tc.desc      : serach image asset by networkId = '93db533035b33a1ca118a2759c1fbb8654ce57061430effaf0b51bbe03388b8b' 
+         * @tc.desc      : serach image asset by networkId = '93db533035b33a1ca118a2759c1fbb8654ce57061430effaf0b51bbe03388b8b'
          *                  assetsCount = 0
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_NETWORKID_PROMISE_006', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_NETWORKID_PROMISE_006';
+        it("SUB_MEDIA_MEDIALIBRARY_ASSET_NETWORKID_PROMISE_006", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_NETWORKID_PROMISE_006";
             try {
                 const currentFetchOps = {
-                    selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
-                    selectionArgs: ['Pictures/Static/', IMAGE_TYPE.toString()],
-                    networkId: '93db533035b33a1ca118a2759c1fbb8654ce57061430effaf0b51bbe03388b8b'
+                    selections: FILEKEY.RELATIVE_PATH + "= ? AND " + FILEKEY.MEDIA_TYPE + "=?",
+                    selectionArgs: ["Pictures/Static/", IMAGE_TYPE.toString()],
+                    networkId: "93db533035b33a1ca118a2759c1fbb8654ce57061430effaf0b51bbe03388b8b",
                 };
                 try {
                     const fetchFileResult = await media.getFileAssets(currentFetchOps);
@@ -191,7 +191,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
                     done();
                 }
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
@@ -205,13 +205,13 @@ export default function mediafetchoptionsPromise(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_ASSET_EXTENDARGS_PROMISE_007', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_ASSET_EXTENDARGS_PROMISE_007';
+        it("SUB_MEDIA_MEDIALIBRARY_ASSET_EXTENDARGS_PROMISE_007", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_EXTENDARGS_PROMISE_007";
             try {
                 const currentFetchOps = {
-                    selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
-                    selectionArgs: ['Pictures/Static/', IMAGE_TYPE.toString()],
-                    extendArgs: ''
+                    selections: FILEKEY.RELATIVE_PATH + "= ? AND " + FILEKEY.MEDIA_TYPE + "=?",
+                    selectionArgs: ["Pictures/Static/", IMAGE_TYPE.toString()],
+                    extendArgs: "",
                 };
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
@@ -219,11 +219,10 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 expect(checkAssetCountPass).assertTrue();
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
         });
     });
 }
-

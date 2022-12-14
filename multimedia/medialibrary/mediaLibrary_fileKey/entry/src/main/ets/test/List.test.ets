@@ -15,7 +15,7 @@
 
 import filekeyTestCallback from './filekeyTestCallback.test.ets'
 import filekeyTestPromise from './filekeyTestPromise.test.ets'
-export default function testsuite(abilityContext) {
-  filekeyTestCallback(abilityContext)
-  filekeyTestPromise(abilityContext)
+export default function testsuite() {
+  filekeyTestCallback(globalThis.abilityContext)
+  filekeyTestPromise(globalThis.abilityContext)
 }
