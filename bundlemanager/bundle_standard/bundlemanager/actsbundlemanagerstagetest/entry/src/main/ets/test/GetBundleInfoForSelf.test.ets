@@ -103,7 +103,7 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.icon).assertEqual("$media:icon");
         expect(data.appInfo.iconId).assertLarger(0);
         expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
-        expect(data.appInfo.entryDir).assertEqual(SOURCE_DIR);
+        expect(data.appInfo.entryDir).assertEqual('');
         expect(data.appInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test");
         expect(data.appInfo.removable).assertTrue(0);
         expect(data.appInfo.accessTokenId).assertLarger(0);
@@ -155,7 +155,7 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.icon).assertEqual("$media:icon");
         expect(data.appInfo.iconId).assertLarger(0);
         expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
-        expect(data.appInfo.entryDir).assertEqual(SOURCE_DIR);
+        expect(data.appInfo.entryDir).assertEqual('');
         expect(data.appInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test");
         expect(data.appInfo.removable).assertTrue(0);
         expect(data.appInfo.accessTokenId).assertLarger(0);
@@ -209,7 +209,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
         expect(data.hapModulesInfo[0].installationFree).assertFalse();
         expect(data.hapModulesInfo[0].hashValue).assertEqual("");
-        expect(data.hapModulesInfo[0].moduleSourceDir).assertEqual(SOURCE_DIR);
+        expect(data.hapModulesInfo[0].moduleSourceDir).assertEqual('');
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
         expect(data.signatureInfo).assertEqual(null);
@@ -248,7 +248,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
         expect(data.hapModulesInfo[0].installationFree).assertFalse();
         expect(data.hapModulesInfo[0].hashValue).assertEqual("");
-        expect(data.hapModulesInfo[0].moduleSourceDir).assertEqual(SOURCE_DIR);
+        expect(data.hapModulesInfo[0].moduleSourceDir).assertEqual('');
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
         expect(data.signatureInfo).assertEqual(null);
@@ -1019,7 +1019,7 @@ export default function getBundleInfoForSelf() {
       expect(data.appInfo.icon).assertEqual("$media:icon");
       expect(data.appInfo.iconId).assertLarger(0);
       expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
-      expect(data.appInfo.entryDir).assertEqual(SOURCE_DIR);
+      expect(data.appInfo.entryDir).assertEqual('');
       expect(data.appInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test");
       expect(data.appInfo.removable).assertTrue(0);
       expect(data.appInfo.accessTokenId).assertLarger(0);
@@ -1056,7 +1056,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
       expect(data.hapModulesInfo[0].installationFree).assertFalse();
       expect(data.hapModulesInfo[0].hashValue).assertEqual("");
-      expect(data.hapModulesInfo[0].moduleSourceDir).assertEqual(SOURCE_DIR);
+      expect(data.hapModulesInfo[0].moduleSourceDir).assertEqual('');
       console.info("checkCommonHapModuleInfo end");
     }
 
