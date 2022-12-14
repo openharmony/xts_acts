@@ -26,6 +26,7 @@
 #include "cmsis_os2.h"
 #include "ohos_types.h"
 
+#include <unistd.h>
 #define TMP_SIZE 512
 #define X25519_KEY_SIZE 32
 #define TEST_TASK_STACK_SIZE      0x2000

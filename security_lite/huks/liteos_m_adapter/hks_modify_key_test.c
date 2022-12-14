@@ -30,6 +30,7 @@
 #include "cmsis_os2.h"
 #include "ohos_types.h"
 
+#include <unistd.h>
 #define DEFAULT_AES_CIPHER_PLAIN_SIZE 1000
 #define AES_DEFAULT_GCM_NONCE_LENGTH 12
 #define AES_DEFAULT_AAD_LEN 4
@@ -291,7 +292,7 @@ int32_t BaseTestCipherProcess(const struct HksBlob *keyAlias, uint32_t index)
         }
         /* 3. decrypt */
         struct CipherDecryptStructure testDecryptStruct = {
-            keyAlias, &g_testCipherParams[index], cipherData,
+            (struct HksBlob *)(keyAlias), &g_testCipherParams[index], cipherData,
             &decryptedData, ivData, nonceData, aadData, 1
         };
         ret = DecryptCipher(&testDecryptStruct);
@@ -330,6 +331,7 @@ int32_t __attribute__((weak)) HksStoreKeyBlob(const struct HksBlob *processName,
     (void)keyAlias;
     (void)storageType;
     (void)keyBlob;
+    return HKS_SUCCESS;
 }
 
 static void ExecHksModifyKeyTest001(void const *argument)
