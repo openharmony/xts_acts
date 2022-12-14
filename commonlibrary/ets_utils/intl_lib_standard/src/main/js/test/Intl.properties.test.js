@@ -31,7 +31,7 @@ describe('etsIntlPtsFunTest', function () {
         stringTest = "ä";
         var value = stringTest.localeCompare('c');
         console.log('StringTest001 :' + value);
-        expect(value).assertEqual(129);
+        expect(value).assertEqual(-1);
     })
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_STRING_PROTOTYPE_002
@@ -59,7 +59,7 @@ describe('etsIntlPtsFunTest', function () {
         stringTest = "ä";
         var value = stringTest.localeCompare('a');
         console.log('StringTest003 :' + value);
-        expect(value).assertEqual(131);
+        expect(value).assertEqual(1);
     })
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_STRING_PROTOTYPE_004
@@ -197,7 +197,7 @@ describe('etsIntlPtsFunTest', function () {
         stringTest = "a";
         var value = stringTest.localeCompare('á', 'de', { sensitivity: 'accent' });
         console.log('StringTest013 :' + value);
-        expect(value).assertEqual(0);
+        expect(value).assertEqual(-1);
     })
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_STRING_PROTOTYPE_014
