@@ -1317,7 +1317,7 @@ describe('audioRenderer', function () {
 
         audio.createAudioRenderer(AudioRendererOptions, (err, data) => {
             if (err) {     
-			    LE24 = audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE;
+                LE24 = audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE;
                 LE32 = audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE;
                 let sampleFormat = AudioRendererOptions.streamInfo.sampleFormat;
                 if ((sampleFormat == LE24 || sampleFormat == LE32) && err.code == 202) {
