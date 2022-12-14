@@ -16,7 +16,7 @@
 import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.uitest'
+import { UiDriver, BY } from '@ohos.uitest'
 
 export default function audioFramework() {
 
