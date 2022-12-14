@@ -23,5 +23,7 @@ hctest_suite("ActsBundleMgrTest") {
     "${appexecfwk_lite_path}/utils/bundle_lite",
     "//commonlibrary/utils_lite/memory/include",
   ]
-  cflags = [ "-Wno-error" ]
+  if (board_toolchain_type != "iccarm") {
+    cflags = [ "-Wno-error" ]
+  }
 }
