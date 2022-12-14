@@ -104,18 +104,14 @@ describe('schemaTest', function() {
 
     beforeAll(async function (done) {
         try {
-            console.info("beforeAll: createKVManager (single) with " + JSON.stringify(options));
-            await ddm.createKVManager(config).then((manager) => {
-                kvManager = manager;
-                console.info('beforeAll createKVManager success');
-            }).catch((err) => {
-                console.info('beforeAll createKVManager err ' + err);
-            });
+            console.info("beforeAll: createKVManager (single) with " + JSON.stringify(config));
+            kvManager = ddm.createKVManager(config);
+            done();
         } catch (e) {
             console.info("fail on exception: " + e);
             expect(null).assertFail();
         }
-        done();
+        
     })
 
     afterAll(async function (done) {
