@@ -349,7 +349,7 @@ export default function inputMethodStageJSUnit() {
         try {
           if (err) {
             console.error('inputMethod_test_switchCurrentInputMethodAndSubtype_001 err: ' + JSON.stringify(err));
-            expect( err.code == 12800008 ).assertTrue();
+            expect( err.code === 12800008 ).assertTrue();
             done();
           }
           console.info("====>inputMethod_test_switchCurrentInputMethodAndSubtype_001 data: " + JSON.stringify(data));
@@ -565,12 +565,12 @@ export default function inputMethodStageJSUnit() {
       try{
         let inputMethodCtrl = inputMethod.getController();
         console.info("====>inputMethod_test_stopInputSession_002 result:" + typeof inputMethodCtrl);
-        inputMethodCtrl.stopInputSession().then((data) => {
+        await inputMethodCtrl.stopInputSession().then((data) => {
+          console.info("====>inputMethod_test_stopInputSession_002 data:" + data);
           expect().assertFail();
           done();
         }).catch((err) => {
-          console.debug("inputMethod_test_stopInputSession_002 faild: " + JSON.stringify(err));
-          expect(err.code).assertEqual('12800003')
+          expect(err.code).assertEqual(12800003)
           done();
         })
       }catch(error){
@@ -595,7 +595,9 @@ export default function inputMethodStageJSUnit() {
         try {
           if(err){
             console.info("====>inputMethod_test_stopInputSession_001 faild: " + JSON.stringify(err));
-            expect(err.code).assertEqual('12800003');
+            console.info("====>inputMethod_test_stopInputSession_001 faild: " + err.code);
+            console.info("====>inputMethod_test_stopInputSession_001 faild: " + typeof(err.code));
+            expect(err.code).assertEqual(12800003);
             done();
           }else{
             expect().assertFail();
