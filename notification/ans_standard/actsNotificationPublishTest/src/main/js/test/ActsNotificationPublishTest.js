@@ -55,8 +55,8 @@ export default function ActsNotificationPublishTest() {
       wants: [
         {
           deviceId: "deviceId",
-          bundleName: "com.example.actsnotificationSecondDirectory",
-          abilityName: "com.example.actsnotificationSecondDirectory.MainAbility",
+          bundleName: "com.example.actsnotificationpublish",
+          abilityName: "com.example.actsnotificationpublish.MainAbility",
           action: "action1",
           entities: ["entity1"],
           type: "MIMETYPE",
