@@ -478,12 +478,12 @@ describe('audioCall', function () {
         readpath = 'StarWars10s-1C-44100-2SW.wav';
         await getFdRead(readpath);
         await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-        await sleep(1000);
+        await sleep(2000);
         console.info('AudioFrameworkRecLog: resultFlag : Capturer : ' + resultFlagRec);
         console.info('AudioFrameworkRenderLog: resultFlag : Renderer : ' + resultFlagRen);
 
-        if (resultFlagRec == true) {
-            expect(resultFlagRen).assertTrue();
+        if (resultFlagRec == true && resultFlagRen == true) {
+            expect(true).assertTrue();
         }
         else {
             expect(false).assertTrue();
