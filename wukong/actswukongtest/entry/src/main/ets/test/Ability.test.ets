@@ -61,7 +61,7 @@ export default function abilityTest() {
           console.log('ACTS_wukongTest executeShellCommand : stdResult : ' + d.stdResult);
           console.log('ACTS_wukongTest executeShellCommand : exitCode : ' + d.exitCode);
       });
-      await sleep(20000);
+      await sleep(5000);
       abilityDelegator1.executeShellCommand("ps -ef|grep 'wukong exec -T 0.5'|grep -c -v grep ",async (error: any, date: any) => {
         console.log('ACTS_wukongTest cmdPs executeShellCommand : err : ' + JSON.stringify(error));
         console.log('ACTS_wukongTest cmdPs executeShellCommand : stdResult : ' + date.stdResult);
