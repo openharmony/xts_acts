@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "ohos.acts.relationalstorejstest",
+        "bundleName": "ohos.acts.rdbjstest",
         "vendor": "example",
         "version": {
             "code": 1,
@@ -13,7 +13,7 @@
     },
     "deviceConfig": {},
     "module": {
-        "package": "ohos.acts.relationalstorejstest",
+        "package": "ohos.acts.rdbjstest",
         "name": ".entry",
         "deviceType": [
       "tablet",

@@ -14,10 +14,10 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
-import dataRdb from '@ohos.data.rdb';
-import abilityFeatureAbility from '@ohos.ability.featureAbility';
+import data_Rdb from '@ohos.data.relationalStore';
+import ability_featureAbility from '@ohos.ability.featureAbility';
 
-let context = abilityFeatureAbility.getContext();
+var context = ability_featureAbility.getContext();
 var sqlStatement = "CREATE TABLE IF NOT EXISTS employee (" +
 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
 "name TEXT NOT NULL," +"age INTEGER)"
@@ -25,11 +25,12 @@ sqlStatement = "CREATE TABLE IF NOT EXISTS product (" +
 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
 "name TEXT NOT NULL," +"price REAL," +
 "vendor INTEGER," +"describe TEXT)"
-const TAG = "[RDB_JSKITS_TEST_Distributed]"
+const TAG = "[RelationalStore_JSKITS_TEST_Distributed]"
 const STORE_NAME = "distributed_rdb.db"
 var rdbStore = undefined;
 const config = {
     "name": STORE_NAME,
+    securityLevel: data_Rdb.SecurityLevel.S1
 }
 
 async function executeSql1() {
@@ -62,12 +63,12 @@ try {
 }
 }
 
-export default function rdbStoreDistributedTest() {
-describe('rdbStoreDistributedTest', function () {
+export default function relationalStoreDistributedTest() {
+describe('relationalStoreDistributedTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
-        rdbStore = await dataRdb.getRdbStore(config, 1);
-        console.info(TAG + "create rdb store success")
+        rdbStore = await data_Rdb.getRdbStore(context, config, 1);
+        console.info(TAG + "create RelationalStore store success")
         await executeSql1()
         await executeSql2()
     })
@@ -82,15 +83,15 @@ describe('rdbStoreDistributedTest', function () {
 
     afterAll(async function () {
         console.info(TAG + 'afterAll')
-        await dataRdb.deleteRdbStore(STORE_NAME);
+        await data_Rdb.deleteRdbStore(context, STORE_NAME);
     })
 
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
      * @tc.name set_distributed_table_none_table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_002
-     * @tc.desc rdb set distributed table using none table as argment
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_002
+     * @tc.desc RelationalStore set distributed table using none table as argment
      */
     it('testRdbStoreDistributed0002', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed002 start *************");
@@ -108,7 +109,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name set distributed table using one table name
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_003
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_003
      * @tc.desc set distributed table using one table name
      */
     it('testRdbStoreDistributed0003', 0, async function (done) {
@@ -127,7 +128,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name set distributed table using two table name
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_004
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_004
      * @tc.desc set distributed table using two table name
      */
     it('testRdbStoreDistributed0004', 0, async function (done) {
@@ -146,7 +147,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name insert record after setting distributed table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_005
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_005
      * @tc.desc insert record after setting distributed table
      */
     it('testRdbStoreDistributed0005', 0, async function (done) {
@@ -169,7 +170,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name update record after setting distributed table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_006
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_006
      * @tc.desc update record after setting distributed table
      */
     it('testRdbStoreDistributed0006', 0, async function (done) {
@@ -179,7 +180,7 @@ describe('rdbStoreDistributedTest', function () {
             "age": 30,
         }
         try {
-            let predicate = new dataRdb.RdbPredicates("employee");
+            let predicate = new data_Rdb.RdbPredicates("employee");
             predicate.equalTo("id", 1);
             try {
                 let rowId = await rdbStore.update(record, predicate);
@@ -199,13 +200,13 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name query record after setting distributed table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_007
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_007
      * @tc.desc query record after setting distributed table
      */
     it('testRdbStoreDistributed0007', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0007 start *************");
         try {
-            let predicates = new dataRdb.RdbPredicates("employee")
+            let predicates = new data_Rdb.RdbPredicates("employee")
             let resultSet = await rdbStore.query(predicates)
             try {
                 console.info(TAG + "product resultSet query done");
@@ -233,12 +234,12 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name delete record after setting distributed table
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_008
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_008
      * @tc.desc delete record after setting distributed table
      */
     it('testRdbStoreDistributed0008', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0008 start *************");
-        let predicates = new dataRdb.RdbPredicates("employee")
+        let predicates = new data_Rdb.RdbPredicates("employee")
         try {
             let number = await rdbStore.delete(predicates)
             console.info(TAG + "employee Delete done: " + number)
@@ -253,12 +254,12 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name predicates inDevice
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_009
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_009
      * @tc.desc predicates inDevice
      */
     it('testRdbStoreDistributed0009', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0009 start *************");
-        let predicates = new dataRdb.RdbPredicates("employee")
+        let predicates = new data_Rdb.RdbPredicates("employee")
         try {
             predicates = predicates.inDevices("1234567890");
             console.info(TAG + "inDevices success");
@@ -273,12 +274,12 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name predicates inAllDevices
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_010
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_010
      * @tc.desc predicates inAllDevices
      */
     it('testRdbStoreDistributed0010', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0010 start *************");
-        let predicates = new dataRdb.RdbPredicates("employee")
+        let predicates = new data_Rdb.RdbPredicates("employee")
         try {
             predicates = predicates.inAllDevices();
             console.info(TAG + "inAllDevices success");
@@ -293,54 +294,26 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name sync test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_011
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_011
      * @tc.desc sync test
      */
     it('testRdbStoreDistributed0011', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0011 start *************");
-        let predicates = new dataRdb.RdbPredicates("employee")
+        let predicates = new data_Rdb.RdbPredicates("employee")
         predicates = predicates.inDevices("12345678abcd");
-        rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates);
+        rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_PUSH, predicates);
         console.info(TAG + "sync push success");
         expect(rdbStore).assertEqual(rdbStore);
-        rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates);
+        rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_PULL, predicates);
         console.info(TAG + "sync pull success");
         expect(rdbStore).assertEqual(rdbStore);
         done();
         console.info(TAG + "************* testRdbStoreDistributed0011 end *************");
     })
-
-    /**
-     * @tc.name sync test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100
-     * @tc.desc sync test
-     */
-     it('SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100', 0, async function (done) {
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100 start *************");
-        let config = {
-            name: "secure.db",
-            securityLevel: dataRdb.SecurityLevel.S1
-        }
-        await dataRdb.getRdbStoreV9(context, config, 1).then(async (store) => {
-            let predicates = new dataRdb.RdbPredicatesV9("employee")
-            predicates = predicates.inDevices("12345678abcd");
-            try {
-                store.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates);
-            } catch (err) {
-                expect(null).assertFail();
-            }
-        }).catch((err) => {
-            expect(null).assertFail();
-        })
-        await dataRdb.deleteRdbStore(context,"secure.db");
-       
-        done();
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100 end *************");
-    })
 	
 	/**
      * @tc.name sync Callback test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_Callback_011
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_Callback_011
      * @tc.desc sync Callback test
      */
     it('testRdbStoreDistributedCallback0011', 0, async function (done) {
@@ -348,12 +321,12 @@ describe('rdbStoreDistributedTest', function () {
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
-        let predicates = new dataRdb.RdbPredicates("employee")
+        let predicates = new data_Rdb.RdbPredicates("employee")
         predicates = predicates.inDevices("12345678abcd");
-        rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates,(err,ret)=>{
+        rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_PUSH, predicates,(err,ret)=>{
             console.info(TAG + "sync push success");
             expect(rdbStore).assertEqual(rdbStore);
-            rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
+            rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
                 console.info(TAG + "sync push success");
                 expect(rdbStore).assertEqual(rdbStore);
             });
@@ -366,7 +339,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name subscribe test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_012
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_012
      * @tc.desc subscribe test
      */
     it('testRdbStoreDistributed0012', 0, async function (done) {
@@ -382,7 +355,7 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name subscribe test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_013
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_013
      * @tc.desc subscribe test
      */
     it('testRdbStoreDistributed0013', 0, async function (done) {
@@ -398,7 +371,7 @@ describe('rdbStoreDistributedTest', function () {
 	
     /**
      * @tc.name obtainDistributedTableName Callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_014
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_014
      * @tc.desc obtainDistributedTableName test
      */
     it('testRdbStoreDistributed0014', 0, async function (done){
@@ -417,15 +390,16 @@ describe('rdbStoreDistributedTest', function () {
 
     /**
      * @tc.name obtainDistributedTableName Promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_015
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_015
      * @tc.desc obtainDistributedTableName test
      */
      it('testRdbStoreDistributed0015',0,async function (done){
-        await dataRdb.deleteRdbStore(STORE_NAME);
+        await data_Rdb.deleteRdbStore(context, STORE_NAME);
         const config = {
             "name": STORE_NAME,
+            securityLevel: data_Rdb.SecurityLevel.S1
         }
-        rdbStore = await dataRdb.getRdbStore(config, 1);
+        rdbStore = await data_Rdb.getRdbStore(context, config, 1);
         let errInfo = undefined
         try{
             rdbStore.obtainDistributedTableName(["deviceId"], "EMPLOYEE")

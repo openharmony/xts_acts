@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-import dataRdb from '@ohos.data.rdb'
+import dataRdb from '@ohos.data.relationalStore'
 
 const TAG = '[RDB_JSKITS_TEST]'
 const CREATE_TABLE_TEST = 'CREATE TABLE IF NOT EXISTS test (' + 'id INTEGER PRIMARY KEY AUTOINCREMENT, ' + 'data1 text,' + 'data2 long, ' + 'data3 double,' + 'data4 blob)';
@@ -25,11 +25,11 @@ const STORE_CONFIG = {
 const COLOUNM_NAMES = ["id","data1","data2","data3","data4"];
 var rdbStore = undefined;
 
-export default function rdbResultSetTestV9(context) {
-describe('rdbResultSetTestV9', function () {
+export default function relationalStoreResultSetTest(context) {
+describe('relationalStoreResultSetTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
-        rdbStore = await dataRdb.getRdbStoreV9(context, STORE_CONFIG, 1);
+        rdbStore = await dataRdb.getRdbStore(context, STORE_CONFIG, 1);
         await rdbStore.executeSql(CREATE_TABLE_TEST, null);
         await createTest();
     })
@@ -45,7 +45,7 @@ describe('rdbResultSetTestV9', function () {
     afterAll(async function () {
         console.info(TAG + 'afterAll')
         rdbStore = null
-        await dataRdb.deleteRdbStoreV9(context, 'Resultset.db');
+        await dataRdb.deleteRdbStore(context, 'Resultset.db');
     })
     //插入数据
     async function createTest() {
@@ -84,32 +84,32 @@ describe('rdbResultSetTestV9', function () {
     }
 
     /**
-     * @tc.name resultSetV9 getBlob normal test
-     * @tc.number SUB_DDM_RELATIONALETS_RESULTSETV9_0010
-     * @tc.desc resultSetV9 getBlob normal test
+     * @tc.name resultSet getBlob normal test
+     * @tc.number SUB_DDM_RELATIONALETS_RESULTSET_0010
+     * @tc.desc resultSet getBlob normal test
      */
-    it('SUB_DDM_RELATIONALETS_RESULTSETV9_0010', 0, async function (done) {
-        console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSETV9_0010 start *************');
-        let predicates = await new dataRdb.RdbPredicatesV9('test')
-        let resultSetV9 = await rdbStore.query(predicates)
+    it('SUB_DDM_RELATIONALETS_RESULTSET_0010', 0, async function (done) {
+        console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0010 start *************');
+        let predicates = await new dataRdb.RdbPredicates('test')
+        let resultSet = await rdbStore.query(predicates)
         try {
             {
-                expect(true).assertEqual(resultSetV9.goToFirstRow())
-                const id = resultSetV9.getLong(resultSetV9.getColumnIndex('id'))
-                const data4 = resultSetV9.getBlob(resultSetV9.getColumnIndex('data4'))
+                expect(true).assertEqual(resultSet.goToFirstRow())
+                const id = resultSet.getLong(resultSet.getColumnIndex('id'))
+                const data4 = resultSet.getBlob(resultSet.getColumnIndex('data4'))
                 console.info(TAG + 'id=' + id + ', data4=' + data4);
                 expect(1).assertEqual(data4[0]);
                 expect(2).assertEqual(data4[1]);
                 expect(3).assertEqual(data4[2]);
             }
-            resultSetV9.close();
-            expect(true).assertEqual(resultSetV9.isClosed)
+            resultSet.close();
+            expect(true).assertEqual(resultSet.isClosed)
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSetV9 = null
+        resultSet = null
         done();
-        console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSETV9_0010 end *************');
+        console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0010 end *************');
     })
     console.info(TAG + '*************Unit Test End*************');
 })

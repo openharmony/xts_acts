@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Huawei Device Co., Ltd.
+# Copyright (C) 2021 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,13 +13,23 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("relationalStoretest") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "RdbJstest/hap:rdb_js_test",
-      "relationalStoreJstest/hap:relationalstore_js_test",
-      "relationalStoreStagetest:relationalstore_ets_test",
-    ]
-  }
+ohos_js_hap_suite("rdb_js_test") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":rdb_js_assets",
+    ":rdb_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsRdbJsTest"
+  subsystem_name = "distributeddatamgr"
+  part_name = "relational_store"
+}
+ohos_js_assets("rdb_js_assets") {
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
+}
+ohos_resources("rdb_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
