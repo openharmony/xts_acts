@@ -19,7 +19,7 @@ import ability from '@ohos.app.ability.UIAbility'
 import rpc from '@ohos.rpc';
 import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';
-import abilityManager from '@ohos.application.abilityManager';
+import abilityManager from '@ohos.app.ability.abilityManager';
 
 
 export default function StartAbilityForResult(abilityContext) {

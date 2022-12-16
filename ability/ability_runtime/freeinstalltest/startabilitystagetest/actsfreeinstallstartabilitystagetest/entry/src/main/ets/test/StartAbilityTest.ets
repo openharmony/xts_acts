@@ -21,7 +21,7 @@ import ability from '@ohos.app.ability.UIAbility'
 import rpc from '@ohos.rpc';
 import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';
-import abilityManager from '@ohos.application.abilityManager';
+import abilityManager from '@ohos.app.ability.abilityManager';
 import commonEvent from '@ohos.commonEvent';
 
 const SYSTEM_INNER_ERROR = 16000050

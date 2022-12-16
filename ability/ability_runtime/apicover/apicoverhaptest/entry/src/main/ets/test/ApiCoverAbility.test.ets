@@ -19,10 +19,10 @@ import FormInfo from '@ohos.application.formInfo';
 import formInfoNew from '@ohos.app.form.formInfo';
 import formError from '@ohos.application.formError';
 import formHost from '@ohos.application.formHost';
-import errorManager from '@ohos.application.errorManager';
+import errorManager from '@ohos.app.ability.errorManager';
 import abilityConstant from '@ohos.app.ability.AbilityConstant'
 import appManager from '@ohos.application.appManager'
-import applicationContext from '@ohos.application.context'
+import appManagerNew from '@ohos.app.ability.appManager'
 import commonEvent from '@ohos.commonEvent';
 import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -453,23 +453,12 @@ export default function ApiCoverTest() {
       expect("ohos.extra.param.key.form_name").assertEqual(FormInfo.FormParam.NAME_KEY)
       expect("ohos.extra.param.key.form_temporary").assertEqual(FormInfo.FormParam.TEMPORARY_KEY)
       expect("ohos.extra.param.key.form_identity").assertEqual(FormInfo.FormParam.IDENTITY_KEY)
-      expect("ohos.extra.param.key.bundle_name").assertEqual(FormInfo.FormParam.BUNDLE_NAME_KEY)
-      expect("ohos.extra.param.key.ability_name").assertEqual(FormInfo.FormParam.ABILITY_NAME_KEY)
       expect(0).assertEqual(FormInfo.FormState.DEFAULT)
       expect(1).assertEqual(FormInfo.FormState.READY)
       expect(-1).assertEqual(FormInfo.FormState.UNKNOWN)
       expect(0).assertEqual(FormInfo.ColorMode.MODE_DARK)
       expect(1).assertEqual(FormInfo.ColorMode.MODE_LIGHT)
-      console.info("SUB_AA_Form_provider_TestFormInfo_0100:" + FormInfo.FormDimension.Dimension_2_1);
-      expect(1).assertEqual(FormInfo.FormDimension.Dimension_1_2)
-      expect(2).assertEqual(FormInfo.FormDimension.Dimension_2_2)
-      expect(3).assertEqual(FormInfo.FormDimension.Dimension_2_4)
-      expect(4).assertEqual(FormInfo.FormDimension.Dimension_4_4)
-      expect(5).assertEqual(FormInfo.FormDimension.Dimension_2_1)
       expect(1).assertEqual(FormInfo.FormType.JS);
-      expect(2).assertEqual(FormInfo.FormType.eTS);
-      expect(1).assertEqual(FormInfo.VisibilityType.FORM_VISIBLE);
-      expect(2).assertEqual(FormInfo.VisibilityType.FORM_INVISIBLE);
       done();
     });
 
@@ -516,50 +505,6 @@ export default function ApiCoverTest() {
     });
 
     /*
-     * @tc.number  SUB_AA_ReisterErrorObserver_0100
-     * @tc.name    Test ReisterErrorObserver.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_ReisterErrorObserver_0100', 0, async function (done) {
-      let errorObserver:errorManager.ErrorObserver;
-      errorObserver = {
-        onUnhandledException:(errMessage) => {
-          console.info("SUB_AA_ReisterErrorObserver_0100" + JSON.stringify(errMessage));
-        }
-      }
-      let errCodeId = errorManager.registerErrorObserver(errorObserver)
-      expect(errCodeId).assertEqual(0)
-      errorManager.unregisterErrorObserver(errCodeId).then((data)=>{
-        expect(data).assertEqual(undefined)
-        done();
-      }).catch((err)=>{
-        expect().assertFail()
-        done();
-      })
-    });
-
-    /*
-     * @tc.number  SUB_AA_ReisterErrorObserver_0200
-     * @tc.name    Test unregisterErrorObserver with error number.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_ReisterErrorObserver_0200', 0, async function (done) {
-      errorManager.unregisterErrorObserver(-1, (err, data)=>{
-        console.info("SUB_AA_ReisterErrorObserver_0200:" + JSON.stringify(err) + " " + JSON.stringify(data));
-        console.info("SUB_AA_ReisterErrorObserver_0200:" + typeof(err.code));
-        if(err.code != 0){
-          expect(err.code).assertEqual(-2)
-          done()
-        }else{
-          expect().assertFail()
-          done();
-        }
-      })
-    });
-
-    /*
      * @tc.number  SUB_AA_Test_AbilityConstant_0100
      * @tc.name    Test abilityConstant.
      * @tc.desc    Function test
@@ -584,7 +529,7 @@ export default function ApiCoverTest() {
     it('SUB_AA_Test_ProcessRunningInformation_0100', 0, async function (done) {
       let processRunningInformation:appManager.ProcessRunningInformation;
       let process;
-      appManager.getProcessRunningInformation().then((processRunningInformations)=>{
+      appManagerNew.getProcessRunningInformation().then((processRunningInformations)=>{
         console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations));
         for(let i = 0; i < processRunningInformations.length; i++){
           console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations[i]));
@@ -611,24 +556,23 @@ export default function ApiCoverTest() {
      */
     it('SUB_AA_Test_ProcessRunningInformation_0200', 0, async function (done) {
       let process;
-      appManager.getProcessRunningInformation((error, processRunningInformations)=>{
-        if(error.code == 0){
-          console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations));
-          for(let i = 0; i < processRunningInformations.length; i++){
-            console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations[i]));
-            expect(processRunningInformations[i].pid).assertLarger(0)
-            expect(processRunningInformations[i].uid).assertLarger(0)
-            if(processRunningInformations[i].processName == "com.example.apicoverhaptest"){
-            process = processRunningInformations[i]
-          }
-        }
-          expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")
-          done()
-        }else{
-          console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(error));
+      appManagerNew.getProcessRunningInformation((error, processRunningInformations)=>{
+        if (error) {
+          console.info("SUB_AA_Test_ProcessRunningInformation_0200:" + JSON.stringify(error));
           expect().assertFail()
           done()
         }
+        console.info("SUB_AA_Test_ProcessRunningInformation_0200:" + JSON.stringify(processRunningInformations));
+        for(let i = 0; i < processRunningInformations.length; i++){
+          console.info("SUB_AA_Test_ProcessRunningInformation_0200:" + JSON.stringify(processRunningInformations[i]));
+          expect(processRunningInformations[i].pid).assertLarger(0)
+          expect(processRunningInformations[i].uid).assertLarger(0)
+          if(processRunningInformations[i].processName == "com.example.apicoverhaptest"){
+            process = processRunningInformations[i]
+          }
+        }
+        expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")
+        done()
       })
     });
 
@@ -738,7 +682,7 @@ export default function ApiCoverTest() {
      */
      it('SUB_AA_FMS_AcquireForm_0100', 0, async function (done) {
       let subscriber = null
-      let formExtensionContext:applicationContext.FormExtensionContext
+      let formExtensionContext:common.FormExtensionContext
       let pacMap:ability.PacMap
         let subscribeInfo = {
           events: ["Form_StartAbility"]
