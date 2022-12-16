@@ -23,6 +23,7 @@ group("ets_utils") {
       "convertxml_lib_standard:convertxml_js_test",
       "intl_lib_standard:intl_js_test",
       "process_lib_standard:process_js_test",
+      "taskpool_lib_standard:taskPool_js_test",
       "uri_lib_standard:uri_js_test",
       "url_lib_standard:url_js_test",
       "util2_lib_standard:util2_js_test",
