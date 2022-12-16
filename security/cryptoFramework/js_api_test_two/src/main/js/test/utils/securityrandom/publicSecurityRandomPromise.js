@@ -60,28 +60,4 @@ async function testSecurityRandomPromise(length) {
   });
 }
 
-function testSecurityRandomEnumPromise() {
-  expect(401).assertEqual(cryptoFramework.Result.INVALID_PARAMS);
-  expect(801).assertEqual(cryptoFramework.Result.NOT_SUPPORT);
-  expect(17620001).assertEqual(cryptoFramework.Result.ERR_OUT_OF_MEMORY);
-  expect(17620002).assertEqual(cryptoFramework.Result.ERR_RUNTIME_ERROR);
-  expect(17630001).assertEqual(cryptoFramework.Result.ERR_CRYPTO_OPERATION);
-  expect(17630002).assertEqual(
-    cryptoFramework.Result.ERR_CERT_SIGNATURE_FAILURE
-  );
-  expect(17630003).assertEqual(cryptoFramework.Result.ERR_CERT_NOT_YET_VALID);
-  expect(17630004).assertEqual(cryptoFramework.Result.ERR_CERT_HAS_EXPIRED);
-  expect(17630005).assertEqual(
-    cryptoFramework.Result.ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY
-  );
-  expect(17630006).assertEqual(cryptoFramework.Result.ERR_KEYUSAGE_NO_CERTSIGN);
-  expect(17630007).assertEqual(
-    cryptoFramework.Result.ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE
-  );
-  expect(0).assertEqual(cryptoFramework.EncodingFormat.FORMAT_DER);
-  expect(1).assertEqual(cryptoFramework.EncodingFormat.FORMAT_PEM);
-  expect(0).assertEqual(cryptoFramework.CryptoMode.ENCRYPT_MODE);
-  expect(1).assertEqual(cryptoFramework.CryptoMode.DECRYPT_MODE);
-}
-
-export { testSecurityRandomPromise, testSecurityRandomEnumPromise };
+export { testSecurityRandomPromise };

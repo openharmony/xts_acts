@@ -246,7 +246,7 @@ export default function CertificateJsunit() {
       await certCallback
         .checkValidityX509CertCallback("der", "20330830000000+0800")
         .then((data) => {
-          expect(data == 17630004).assertTrue();
+          expect(data == 19030004).assertTrue();
         })
         .catch((err) => {
           expect(null).assertFail();
@@ -264,7 +264,7 @@ export default function CertificateJsunit() {
       await certCallback
         .checkValidityX509CertCallback("der", "NULL")
         .then((data) => {
-          expect(data == 17630001).assertTrue();
+          expect(data == 19030001).assertTrue();
         })
         .catch((err) => {
           expect(null).assertFail();
@@ -272,7 +272,7 @@ export default function CertificateJsunit() {
       await certCallback
         .checkValidityX509CertCallback("der", "string")
         .then((data) => {
-          expect(data == 17630001).assertTrue();
+          expect(data == 19030001).assertTrue();
         })
         .catch((err) => {
           expect(null).assertFail();
