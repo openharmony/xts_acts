@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import formProvider from '@ohos.application.formProvider';
-import formInfo from '@ohos.application.formInfo';
+import formProvider from '@ohos.app.form.formProvider';
+import formInfo from '@ohos.app.form.formInfo';
 import formError from '@ohos.application.formError';
 
 let module1FormInfo: formInfo.FormInfo = {
@@ -59,6 +59,7 @@ let module2FormInfo: formInfo.FormInfo = {
     customizeData: {}
 }
 
+const ERR_ADD_INVALID_PARAM = 401;
 var expectResult = Array();
 expectResult.push(module1FormInfo);
 expectResult.push(module2FormInfo);
@@ -75,7 +76,7 @@ export default function abilityTest() {
             formProvider.getFormsInfo((err, value) => {
                 console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(null);
                 expect(value.length).assertEqual(2);
                 checkResultArray(expectResult, value)
                 done();
@@ -124,12 +125,18 @@ export default function abilityTest() {
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0400', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0400");
-            formProvider.getFormsInfo(undefined, function(err, value) {
+            try {
+                formProvider.getFormsInfo(undefined, function(err, value) {
+                    console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
+                    console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
+                    expect().assertFail();
+                    done();
+                })
+            } catch (err) {
                 console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
-                console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-                expect(err.code).assertEqual(formError.FormError.ERR_ADD_INVALID_PARAM);
+                expect(err.code).assertEqual(ERR_ADD_INVALID_PARAM);
                 done();
-            });
+            }
         });
 
         /**
@@ -143,7 +150,7 @@ export default function abilityTest() {
             formProvider.getFormsInfo(filter, function(err, value) {
                 console.info("formProvider::GetFormsInfoTest: " + JSON.stringify(err));
                 console.info("formProvider::GetFormsInfoTest: " + JSON.stringify(value));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(null);
                 expect(value.length).assertEqual(2);
                 checkResultArray(expectResult, value);
                 done();
@@ -163,7 +170,7 @@ export default function abilityTest() {
             formProvider.getFormsInfo(filter, function(err, value) {
                 console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(null);
                 expect(value.length).assertEqual(2);
                 checkResultArray(expectResult, value);
                 done();
@@ -183,7 +190,7 @@ export default function abilityTest() {
             formProvider.getFormsInfo(filter, function(err, value) {
                 console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(null);
                 expect(value.length).assertEqual(2);
                 checkResultArray(expectResult, value);
                 done();
@@ -203,7 +210,7 @@ export default function abilityTest() {
             formProvider.getFormsInfo(filter, function(err, value) {
                 console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(null);
                 expect(value.length).assertEqual(0);
                 done();
             });
@@ -222,7 +229,7 @@ export default function abilityTest() {
             formProvider.getFormsInfo(filter, function(err, value) {
                 console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(null);
                 expect(value.length).assertEqual(1);
                 checkResult(module1FormInfo, value[0]);
                 done();
@@ -241,7 +248,7 @@ export default function abilityTest() {
             formProvider.getFormsInfo(filter, function(err, value) {
                 console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(null);
                 expect(value.length).assertEqual(0);
                 done();
             });

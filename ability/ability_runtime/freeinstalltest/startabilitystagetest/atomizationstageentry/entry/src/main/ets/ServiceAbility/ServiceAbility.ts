@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import FormExtension from '@ohos.application.FormExtension';
+import FormExtension from '@ohos.app.form.FormExtensionAbility';
 import formBindingData from '@ohos.application.formBindingData';
 
 export default class ServiceAbility extends FormExtension {
