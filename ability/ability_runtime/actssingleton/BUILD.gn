@@ -18,12 +18,8 @@ group("actssingleton") {
   if (is_standard_system) {
     deps = [
       "SystemSingleton:ActsSystemSingletonTest",
-      "SystemSingletonExtension:ActsSystemSingletonExtensionTest",
-      "SystemSingletonExtensionFalse:ActsSystemSingletonExtensionFalseTest",
       "SystemSingletonFalse:ActsSystemSingletonFalseTest",
       "ThirdSingleton:ActsThirdSingletonTest",
-      "ThirdSingletonExtension:ActsThirdSingletonExtensionTest",
-      "ThirdSingletonExtensionFalse:ActsThirdSingletonExtensionFalseTest",
       "ThirdSingletonFalse:ActsThirdSingletonFalseTest",
     ]
   }

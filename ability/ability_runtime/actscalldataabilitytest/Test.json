@@ -3,10 +3,10 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
-		"bundle-name": "ohos.acts.aafwk.test.fasupplement",
+        "bundle-name": "ohos.acts.aafwk.test.fasupplement",
         "package-name": "ohos.acts.aafwk.test.fasupplement",
         "shell-timeout": "600000",
-		"testcase-timeout": "10000"
+        "testcase-timeout": "10000"
     },
     "kits": [
         {
