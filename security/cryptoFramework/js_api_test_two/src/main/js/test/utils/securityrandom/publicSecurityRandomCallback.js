@@ -35,13 +35,12 @@ async function testSecurityRandomCallback(length) {
         console.log(
           "[callback] rand result first:" + uInt8ArrayToShowStr(randData.data)
         );
-      }
-      rand.setSeed(randData, (err1) => {
-        if (err1) {
-          console.error("[callback]setSeed catch err:" + err1);
+        try {
+          rand.setSeed(randData);
+        } catch (err1) {
           reject(err1);
         }
-      });
+      }
     });
 
     rand.generateRandom(length, (err, randData) => {
@@ -64,10 +63,15 @@ async function testSecurityRandomLengthCallback(length) {
   return new Promise((resolve, reject) => {
     rand = cryptoFramework.createRandom();
     expect(rand != null).assertTrue();
-    if(length != null) {
+    if (length != null) {
       rand.generateRandom(length, (err, randData) => {
         if (err) {
-          console.error("[callback]generateRandom catch error:" + err + "[callback]: error code: " + err.code);
+          console.error(
+            "[callback]generateRandom catch error:" +
+              err +
+              "[callback]: error code: " +
+              err.code
+          );
           expect(err.code == 401).assertTrue();
           resolve();
         } else {
@@ -76,31 +80,45 @@ async function testSecurityRandomLengthCallback(length) {
         }
       });
     } else {
-      try{
+      try {
         rand.generateRandom(length);
         reject();
       } catch (error) {
-        console.error("[callback]generateRandom catch err1:" + error + "[callback]: error code: " + error.code);
+        console.error(
+          "[callback]generateRandom catch err1:" +
+            error +
+            "[callback]: error code: " +
+            error.code
+        );
         resolve();
       }
     }
   });
 }
 
-async function testSecurityRandomCallbackSeed(length) {
+async function testSecurityRandomCallbackSeed(data) {
   var rand;
   return new Promise((resolve, reject) => {
     rand = cryptoFramework.createRandom();
     expect(rand != null).assertTrue();
-    try{
-      rand.setSeed(length);
+    try {
+      rand.setSeed(data);
       reject();
     } catch (error) {
-      console.error("[callback]setSeed catch err:" + error + "[callback]: error code: " + error.code);
+      console.error(
+        "[callback]setSeed catch err:" +
+          error +
+          "[callback]: error code: " +
+          error.code
+      );
       expect(error.code == 401).assertTrue();
       resolve();
     }
   });
 }
 
-export { testSecurityRandomCallback,  testSecurityRandomLengthCallback, testSecurityRandomCallbackSeed };
+export {
+  testSecurityRandomCallback,
+  testSecurityRandomLengthCallback,
+  testSecurityRandomCallbackSeed,
+};
