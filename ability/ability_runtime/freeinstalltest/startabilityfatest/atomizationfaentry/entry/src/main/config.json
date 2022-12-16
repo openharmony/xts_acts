@@ -18,8 +18,8 @@
     "name": ".MyApplication",
     "mainAbility": ".MainAbility",
     "deviceType": [
-        "default",
-        "tablet"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -81,16 +81,8 @@
     ],
     "reqPermissions": [
       {
-        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
-        "reason": "need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
-      },
-      {
         "name": "ohos.permission.GET_BUNDLE_INFO",
         "reason": "need use ohos.permission.GET_BUNDLE_INFO"
-      },
-      {
-        "name": "ohos.permission.CHANGE_ABILITY_ENABLED_STATE",
-        "reason": "need use ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
       }
     ]
   }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,36 +65,6 @@ export default function StartAbilityForResult(abilityContext) {
                 console.info("executeShellCommand5 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
             await sleep(500);
-            done();
-        });
-
-        /*
-         * @tc.number: FreeInstall_Stage_StartAbilityForResult_2400
-         * @tc.name: startAbilityForResult: don't add targetBundleList,free install and start hap successfully.
-         * @tc.desc: Function test
-         * @tc.level   0
-         */
-        it("FreeInstall_Stage_StartAbilityForResult_2400", 0, async function (done) {
-            console.log("------------start FreeInstall_Stage_StartAbilityForResult_2400-------------");
-            TAG = "FreeInstall_Stage_StartAbilityForResult_2400";
-            let details;
-            var str = {
-                "deviceId": "",
-                "bundleName": "com.example.qianyiyingyong.hmservice",
-                "abilityName": "com.example.qianyiyingyong.MainAbility",
-                "moduleName": "entry",
-                "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-            }
-            await globalThis.abilityContext.startAbilityForResult(str)
-                .then((data) => {
-                    details = data;
-                    console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
-                }).catch((error) => {
-                    console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
-                })
-            await sleep(2000);
-            console.log(TAG + " resultCode: " + details.resultCode);
-            expect(details.resultCode).assertEqual(1);
             done();
         });
 
