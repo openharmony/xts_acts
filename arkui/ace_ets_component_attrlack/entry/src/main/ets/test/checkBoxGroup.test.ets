@@ -60,6 +60,7 @@ export default function checkBoxGroupPartJsunit() {
         console.info("testcheckBoxGroupPart_0011 on click err : " + JSON.stringify(err));
       }
       console.info('testcheckBoxGroupPart0011 END');
+      console.info("testcheckBoxGroup0001 click result is: " + JSON.stringify(sendEventByKey('CheckboxGroup', 10, "")));
       done();
     });
 
