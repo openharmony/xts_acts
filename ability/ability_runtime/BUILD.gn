@@ -51,7 +51,6 @@ group("ability_runtime") {
       "killprocesswithaccountstage:killprocesswithaccountstage",
       "newwant:newwant",
       "non_concurrent:non_concurrent",
-      "processmultiinstance:processmultiinstance",
       "stage:stage",
       "want:want",
       "workercontextcover:workercontextcover",
