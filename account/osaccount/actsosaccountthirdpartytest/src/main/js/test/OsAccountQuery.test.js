@@ -215,7 +215,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
                 console.debug("====>get type err: " + JSON.stringify(err));
                 console.debug("====>type obtained by process:" + JSON.stringify(accountType));
                 expect(err).assertEqual(null);
-                expect(accountType.ADMIN).assertEqual(0);
+                expect(accountType).assertEqual(0);
                 console.debug("====>ActsOsAccountgetType_0100 end====");
                 done();
             });
@@ -232,7 +232,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
             console.debug("====>get AccountManager finish====");
             var accountType = await osAccountManager.getOsAccountType();
             console.debug("====>type obtained by process:" + JSON.stringify(accountType));
-            expect(accountType.ADMIN).assertEqual(0);
+            expect(accountType).assertEqual(0);
             console.debug("====>ActsOsAccountgetType_0200 end====");
             done();
         });
@@ -356,7 +356,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
                 expect(err).assertEqual(null);
                 expect(data.localName).assertEqual("osAccountNameIdSerialA");
                 expect(data.domainInfo.accountName == "").assertEqual(true)
-                expect(data.type.NORMAL).assertEqual(1);
+                expect(data.type).assertEqual(1);
                 expect(data.constraints.length > 0).assertEqual(true);
                 expect(data.isVerified).assertEqual(false);
                 expect(data.distributedInfo.name != null).assertEqual(true);
@@ -646,7 +646,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
             var data = await AccountManager.getCurrentOsAccount();
             console.debug("====>getCurrentOsAccount data:" + JSON.stringify(data));
             expect(data.localId).assertEqual(100);
-            expect(data.type.ADMIN).assertEqual(0);
+            expect(data.type).assertEqual(0);
             var serialNumberStr = data.serialNumber.toString();
             var serialIntercept = serialNumberStr.substring(8);
             console.debug("====>truncate the last eight characters: " + serialIntercept);

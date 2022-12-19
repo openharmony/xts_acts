@@ -28,7 +28,7 @@ export default {
         console.debug('====>scene getAllAccounts start====');
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat scene manager finish====");
-        var enableBundle = "com.example.actsgetallaaccounts";
+        var enableBundle = "com.example.actsgetallaccounts";
         var enableBundle2 = "com.example.actsgetaccountsbyowner";
         console.debug("====>add account scene start====");
         appAccountManager.createAccount("account_name_scene_single", (err)=>{
