@@ -15,6 +15,7 @@
 
 import { expect } from "@ohos/hypium";
 import cryptoFramework from "@ohos.security.cryptoFramework";
+import cert from "@ohos.security.cert";
 import {
   stringTouInt8Array,
   uInt8ArrayToString,
@@ -38,14 +39,14 @@ function createX509CertInstanceCallback(certType) {
   var encodingData;
 
   if (certType == "der") {
-    certformat = cryptoFramework.EncodingFormat.FORMAT_DER;
+    certformat = cert.EncodingFormat.FORMAT_DER;
     encodingData = new Uint8Array(
       selfSignedCaCertDer.match(/[\da-f]{2}/gi).map(function (h) {
         return parseInt(h, 16);
       })
     );
   } else {
-    certformat = cryptoFramework.EncodingFormat.FORMAT_PEM;
+    certformat = cert.EncodingFormat.FORMAT_PEM;
     encodingData = stringTouInt8Array(selfSignedCaCertPem);
   }
 
@@ -55,7 +56,7 @@ function createX509CertInstanceCallback(certType) {
   };
 
   return new Promise((resolve, reject) => {
-    cryptoFramework.createX509Cert(encodingBlob, (err, data) => {
+    cert.createX509Cert(encodingBlob, (err, data) => {
       if (data == null) {
         console.error(
           "[callback] create X509 Cert failed! err code: " + err.code
@@ -77,10 +78,10 @@ function createX509CertInstanceforCrlTestCallback(flag) {
   var invalidParams = false;
 
   if (flag == "normal") {
-    certformat = cryptoFramework.EncodingFormat.FORMAT_PEM;
+    certformat = cert.EncodingFormat.FORMAT_PEM;
     encodingData = stringTouInt8Array(testCert);
   } else if (flag == "error") {
-    certformat = cryptoFramework.EncodingFormat.FORMAT_PEM;
+    certformat = cert.EncodingFormat.FORMAT_PEM;
     encodingData = stringTouInt8Array(testErrorCert);
   } else {
     invalidParams = true;
@@ -92,7 +93,7 @@ function createX509CertInstanceforCrlTestCallback(flag) {
   };
 
   return new Promise((resolve, reject) => {
-    cryptoFramework.createX509Cert(encodingBlob, (err, data) => {
+    cert.createX509Cert(encodingBlob, (err, data) => {
       if (data == null) {
         console.error(
           "[callback] create X509 Cert failed! err code: " + err.code
@@ -107,22 +108,6 @@ function createX509CertInstanceforCrlTestCallback(flag) {
         } else {
           resolve(data);
         }
-      }
-    });
-  });
-}
-
-async function getX509CertPublicKey(certInstance) {
-  return new Promise((resolve, reject) => {
-    certInstance.getPublicKey((err, publicKey) => {
-      if (err) {
-        console.error("[Callback]getPublicKey failed. error is " + err);
-        reject(err);
-      } else {
-        console.log(
-          "[Callback]getPublicKey success. publicKey is " + publicKey
-        );
-        resolve(publicKey);
       }
     });
   });
@@ -144,13 +129,12 @@ async function verifyX509Cert(certInstance, pubKey) {
 
 async function verifyX509CertCallback(certType, flag) {
   var gInstance;
+  var pubKey;
   return new Promise((resolve, reject) => {
     createX509CertInstanceCallback(certType)
       .then((instance) => {
         gInstance = instance;
-        return getX509CertPublicKey(gInstance);
-      })
-      .then((pubKey) => {
+        pubKey = gInstance.getPublicKey();
         expect(pubKey != null).assertTrue();
         if (flag != undefined) {
           if (flag == "wrong") {
@@ -177,31 +161,12 @@ async function verifyX509CertCallback(certType, flag) {
   });
 }
 
-async function checkValidityWithDate(certInstance, date) {
-  return new Promise((resolve, reject) => {
-    certInstance.checkValidityWithDate(date, (err) => {
-      if (err) {
-        console.error(
-          "[Callback]checkValidityWithDate failed. error is " + err
-        );
-        reject(err);
-      } else {
-        console.log("[Callback]checkValidityWithDate success!");
-        resolve();
-      }
-    });
-  });
-}
-
 async function checkValidityX509CertCallback(certType, date) {
   return new Promise((resolve, reject) => {
     createX509CertInstanceCallback(certType)
       .then((instance) => {
-        return checkValidityWithDate(instance, date);
-      })
-      .then((result) => {
-        console.warn("[callback] checkValidityX509Cert success!");
-        resolve(result);
+        instance.checkValidityWithDate(date);
+        resolve(null);
       })
       .catch((err) => {
         console.error(
@@ -353,23 +318,14 @@ async function checkGetEncodedX509CertCallback(certType) {
 }
 
 async function checkGetPublicKeyX509CertCallback(certType) {
-  var gInstance;
+  var publicKey;
   return new Promise((resolve, reject) => {
     createX509CertInstanceCallback(certType)
       .then((instance) => {
-        gInstance = instance;
-        gInstance.getPublicKey((err, publicKey) => {
-          if (err) {
-            console.error("[callback] getPublicKey failed, err is:" + err);
-            reject(err);
-          } else {
-            console.warn(
-              "[callback] getPublicKey success, publicKey is:" + publicKey
-            );
-            expect(publicKey != null).assertTrue();
-            resolve();
-          }
-        });
+        publicKey = instance.getPublicKey();
+        console.warn("[callback] publicKey success, publicKey is:" + publicKey);
+        expect(publicKey != null).assertTrue();
+        resolve();
       })
       .catch((err) => {
         console.error("[callback] getPublickey failed! error is: " + err);
@@ -383,14 +339,14 @@ function createX509CrlInstanceCallback(certType) {
   var encodingData;
 
   if (certType == "der") {
-    certformat = cryptoFramework.EncodingFormat.FORMAT_DER;
+    certformat = cert.EncodingFormat.FORMAT_DER;
     encodingData = new Uint8Array(
       testCrlDer.match(/[\da-f]{2}/gi).map(function (h) {
         return parseInt(h, 16);
       })
     );
   } else {
-    certformat = cryptoFramework.EncodingFormat.FORMAT_PEM;
+    certformat = cert.EncodingFormat.FORMAT_PEM;
     encodingData = stringTouInt8Array(testCrlPem);
   }
 
@@ -400,7 +356,7 @@ function createX509CrlInstanceCallback(certType) {
   };
 
   return new Promise((resolve, reject) => {
-    cryptoFramework.createX509Crl(encodingBlob, (err, data) => {
+    cert.createX509Crl(encodingBlob, (err, data) => {
       if (err) {
         console.error(
           "[callback] createX509Crl failed! error code is: " + err.code
@@ -417,20 +373,13 @@ function createX509CrlInstanceCallback(certType) {
 }
 
 function checkIsRevokedX509CrlCallback(crlInstance, flag) {
+  var status;
   return new Promise((resolve, reject) => {
     createX509CertInstanceforCrlTestCallback(flag)
       .then((certInstance) => {
-        crlInstance.isRevoked(certInstance, (err, status) => {
-          if (err) {
-            console.error(
-              "[callback] isRevoked failed! err code is:" + err.code
-            );
-            reject(err);
-          } else {
-            console.warn("[callback] isRevoked status is:" + status);
-            resolve(status);
-          }
-        });
+        status = crlInstance.isRevoked(certInstance);
+        console.warn("[callback] isRevoked status is:" + status);
+        resolve(status);
       })
       .catch((err) => {
         console.error("[callback] isRevoked failed! err is: " + err);
@@ -512,7 +461,7 @@ function verifyX509CrlCallback(crlType, flag) {
   var globalCrlInstance;
 
   if (crlType == "pem" || crlType == "der") {
-    certformat = cryptoFramework.EncodingFormat.FORMAT_DER;
+    certformat = cert.EncodingFormat.FORMAT_DER;
     priKeyEncodingData = new Uint8Array(
       crlVerifyPriKeyHex.match(/[\da-f]{2}/gi).map(function (h) {
         return parseInt(h, 16);
@@ -544,7 +493,7 @@ function verifyX509CrlCallback(crlType, flag) {
     var asyKeyGenerator =
       cryptoFramework.createAsyKeyGenerator("RSA1024|PRIMES_3");
     expect(asyKeyGenerator != null).assertTrue();
-    cryptoFramework
+    cert
       .createX509Crl(crlEncodingBlob)
       .then((crlInstance) => {
         expect(crlInstance != null).assertTrue();
@@ -640,16 +589,11 @@ async function getX509CrlInfoCallback(certType, processType) {
             expect(signatureAlgParams != null).assertTrue();
             break;
           case "getTbsInfo":
-            gInstance.getTbsInfo((err, tbsInfo) => {
-              if (err) {
-                console.error("[callback] getTbsInfo failed! error is: " + err);
-                reject(err);
-              }
-              expect(tbsInfo != null).assertTrue();
-              console.log(
-                processType + " is : " + uInt8ArrayToString(tbsInfo.data)
-              );
-            });
+            let tbsInfo = gInstance.getTbsInfo();
+            console.log(
+              processType + " is : " + uInt8ArrayToString(tbsInfo.data)
+            );
+            expect(tbsInfo != null).assertTrue();
             break;
           default:
             console.log("Invalid parameter !");
@@ -664,32 +608,12 @@ async function getX509CrlInfoCallback(certType, processType) {
   });
 }
 
-async function getRevokedCertWithCert(crlInstance, certInstance) {
-  return new Promise((resolve, reject) => {
-    crlInstance.getRevokedCertWithCert(certInstance, (err, x509CrlEntry) => {
-      if (err) {
-        console.error(
-          "[Callback]getRevokedCertWithCert failed. error is " + err
-        );
-        reject(err);
-      } else {
-        console.log(
-          "[Callback]getRevokedCertWithCert success. x509CrlEntry is " +
-            x509CrlEntry
-        );
-        resolve(x509CrlEntry);
-      }
-    });
-  });
-}
-
 function checkGetRevokedCertWithCertX509CrlCallback(crlInstance, flag) {
+  var x509CrlEntry;
   return new Promise((resolve, reject) => {
     createX509CertInstanceforCrlTestCallback(flag)
       .then((certInstance) => {
-        return getRevokedCertWithCert(crlInstance, certInstance);
-      })
-      .then((x509CrlEntry) => {
+        x509CrlEntry = crlInstance.getRevokedCertWithCert(certInstance);
         expect(x509CrlEntry != null).assertTrue();
         let num = x509CrlEntry.getSerialNumber();
         console.warn("[num] getRevokedCertWithCert num is:" + num);
@@ -705,13 +629,12 @@ function checkGetRevokedCertWithCertX509CrlCallback(crlInstance, flag) {
 }
 
 async function checkGetRevokedCertsX509CrlCallback(certType) {
-  var gInstance;
   var gIndex;
+  var revocation;
   return new Promise((resolve, reject) => {
     createX509CrlInstanceCallback(certType)
       .then((instance) => {
-        gInstance = instance;
-        gInstance.getRevokedCerts((err, certs) => {
+        instance.getRevokedCerts((err, certs) => {
           expect(certs != null && certs.length != 0).assertTrue();
           console.warn("[callback] Crl get gevoked certs success");
           for (var i = 0; i < certs.length; i++) {
@@ -722,20 +645,19 @@ async function checkGetRevokedCertsX509CrlCallback(certType) {
                 " serialNumber is: " +
                 certs[gIndex].getSerialNumber()
             );
-            certs[gIndex].getRevocationDate((err1, revocation) => {
-              expect(revocation != null).assertTrue();
+            revocation = certs[gIndex].getRevocationDate();
+            expect(revocation != null).assertTrue();
+            console.log(
+              "[callback] certs i: " +
+                gIndex +
+                " revocation date is: " +
+                revocation
+            );
+            certs[gIndex].getEncoded((err2, eData) => {
+              expect(eData != null).assertTrue();
               console.log(
-                "[callback] certs i: " +
-                  gIndex +
-                  " revocation date is: " +
-                  revocation
+                "[callback] certs i: " + gIndex + " getEncoded is: " + eData
               );
-              certs[gIndex].getEncoded((err2, eData) => {
-                expect(eData != null).assertTrue();
-                console.log(
-                  "[callback] certs i: " + gIndex + " getEncoded is: " + eData
-                );
-              });
             });
           }
         });
@@ -749,26 +671,24 @@ async function checkGetRevokedCertsX509CrlCallback(certType) {
 }
 
 async function checkGetRevokedCertX509CrlCallback(certType) {
-  var gInstance;
+  var certIssuer;
+  var cert1;
+  var revocation;
   return new Promise((resolve, reject) => {
     createX509CrlInstanceCallback(certType)
       .then((instance) => {
-        gInstance = instance;
-        gInstance.getRevokedCert(1, (err, cert) => {
-          expect(cert != null).assertTrue();
-          console.warn("[callback] Crl get gevoked cert success");
-          cert.getRevocationDate((err1, revocation) => {
-            expect(revocation != null).assertTrue();
-            console.log("[callback] cert revocation date is: " + revocation);
-          });
-          cert.getCertIssuer((err2, certIssuer) => {
-            expect(certIssuer != null).assertTrue();
-            console.log(
-              "[callback] cert certIssuer is: " +
-                uInt8ArrayToString(certIssuer.data)
-            );
-          });
-        });
+        cert1 = instance.getRevokedCert(1);
+        expect(cert1 != null).assertTrue();
+        console.warn("[callback] Crl get gevoked cert success");
+        revocation = cert1.getRevocationDate();
+        expect(revocation != null).assertTrue();
+        console.log("[callback] cert revocation date is: " + revocation);
+        certIssuer = cert1.getCertIssuer();
+        expect(certIssuer != null).assertTrue();
+        console.log(
+          "[Callback] cert certIssuer is: " +
+            +uInt8ArrayToString(certIssuer.data)
+        );
         resolve();
       })
       .catch((err) => {
@@ -781,7 +701,7 @@ async function checkGetRevokedCertX509CrlCallback(certType) {
 function checkValidateOfCertChainValidatorCallback(algName, flag) {
   return new Promise((resolve, reject) => {
     try {
-      var validator = cryptoFramework.createCertChainValidator(algName);
+      var validator = cert.createCertChainValidator(algName);
       var algorithm = validator.algorithm;
       console.log(
         "createCertChainValidator success! algorithm is: " + algorithm
@@ -835,7 +755,7 @@ function checkValidateOfCertChainValidatorCallback(algName, flag) {
     var certChainData = {
       data: dataArray,
       count: 2,
-      encodingFormat: cryptoFramework.EncodingFormat.FORMAT_PEM,
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM,
     };
     console.log("certChainData.data is: " + certChainData.data);
     validator.validate(certChainData, (err) => {
