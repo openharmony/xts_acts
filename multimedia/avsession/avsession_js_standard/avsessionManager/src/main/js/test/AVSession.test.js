@@ -1323,7 +1323,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_PROMISE_0100
-         * @tc.name      : SESSIONACTIVATE_0100
+         * @tc.name      : SESSIONACTIVATE_PROMISE_0100
          * @tc.desc      : Testing set session active - promise
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1354,7 +1354,7 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_PROMISE_0100
-         * @tc.name      : SESSIONDEACTIVATE_0100
+         * @tc.name      : SESSIONDEACTIVATE_PROMISE_0100
          * @tc.desc      : Testing deactivate session- promise
          * @tc.size      : MediumTest
          * @tc.type      : Function
@@ -1375,6 +1375,92 @@ export default function AVSession() {
                 console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+            await sleep(500);
+
+            await controller.isActive().then((data) => {
+                if (data) {
+                    console.info('TestLog: session deactivate failed');
+                    expect(false).assertTrue();
+                } else {
+                    console.info('TestLog: session deactivate successfully');
+                    expect(true).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: AVSessionTest error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100
+         * @tc.name      : SESSIONACTIVATE_CALLBACK_0100
+         * @tc.desc      : Testing set session active - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100', 0, async function (done) {
+            try {
+                session.activate((err) => {
+                    if (err) {
+                        console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: Set session active successfully');
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            }
+
+            await sleep(500);
+            await controller.isActive().then((data) => {
+                if (data) {
+                    console.info('TestLog: session is active');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: session is directive');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: AVSessionTest error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100
+         * @tc.name      : SESSIONDEACTIVATE_CALLBACK_0100
+         * @tc.desc      : Testing deactivate session- callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100', 0, async function (done) {
+            await session.activate().then(() => {
+                console.info('TestLog: Set session active');
+            }).catch((err) => {
+                console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+
+            try{
+                session.deactivate((err) => {
+                    if (err) {
+                        console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: Deactivate session');
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            }
             await sleep(500);
 
             await controller.isActive().then((data) => {
@@ -2762,6 +2848,126 @@ export default function AVSession() {
                     expect(true).assertTrue();
                 }
             })
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0100
+         * @tc.name      : SENDAVKEYEVENT_CALLBACK_0100
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0100', 0, async function (done) {
+            let keyItem = {code: 0x49, pressedTime: 123456789, deviceId: 0};
+            let event = {action: 2, key: keyItem, keys: [keyItem]};
+            try {
+                controller.sendAVKeyEvent(event, (err, data) => {
+                    if (err) {
+                        console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('sendAVKeyEvent Successfully');
+                        expect(true).assertTrue();
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            }
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0100
+         * @tc.name      : SENDAVKEYEVENT_PROMISE_0100
+         * @tc.desc      : Testing set key event
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0100', 0, async function (done) {
+            let keyItem = {code: 0x49, pressedTime: 123456789, deviceId: 0};
+            let event = {action: 2, key: keyItem, keys: [keyItem]};
+            await controller.sendAVKeyEvent(event).then(() => {
+                console.info('sendAVKeyEvent Successfully');
+                expect(true).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: sendAVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_0100
+         * @tc.name      : GETREALPLAYBACKPOSITIONSYNC_0100
+         * @tc.desc      : Testing get real playback position
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_0100', 0, async function (done) {
+            let realPosition = -1;
+            try {
+                realPosition= controller.getRealPlaybackPositionSync();
+            } catch (err) {
+                console.info(`TestLog: getRealPlaybackPositionSync error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            }
+            if (realPosition < 0) {
+                console.info(`TestLog: getRealPlaybackPositionSync error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            } else {
+                console.info(`TestLog: getRealPlaybackPositionSync Successfully, positon: ${realPosition}`);
+                expect(true).assertTrue();
+            }
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0100
+         * @tc.name      : GETVALIDCOMMANDS_PROMISE_0100
+         * @tc.desc      : Testing get valid commands - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0100', 0, async function (done) {
+            await controller.getValidCommands().then((data) => {
+                console.info(`TestLog: getValidCommands Successfully, the length ${data.length}`);
+                expect(true).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0100
+         * @tc.name      : GETVALIDCOMMANDS_CALLBACK_0100
+         * @tc.desc      : Testing get valid commands - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0100', 0, async function (done) {
+            try {
+                controller.getValidCommands((err, data) => {
+                    if (err) {
+                        console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info(`TestLog: getValidCommands Successfully, the length ${data.length}`);
+                        expect(true).assertTrue();
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: getValidCommands error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            }
             done();
         })
     })
