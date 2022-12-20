@@ -64,7 +64,7 @@
                 "bm uninstall -n com.example.myapplication5",
                 "bm uninstall -n com.example.myapplication6",
                 "bm uninstall -n com.example.third7",
-                "bm uninstall -n ohos.acts.bundle.stage"
+                "bm uninstall -n com.acts.bundle.stage"
             ]
         }
     ]

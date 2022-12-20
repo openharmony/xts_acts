@@ -15,7 +15,7 @@
         "pages": "$profile:main_pages",
         "abilities": [
             {
-                "name": "ohos.acts.bundle.stage.MainAbility",
+                "name": "com.acts.bundle.stage.MainAbility",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "description": "$string:phone_entry_main",
                 "icon": "$media:icon",

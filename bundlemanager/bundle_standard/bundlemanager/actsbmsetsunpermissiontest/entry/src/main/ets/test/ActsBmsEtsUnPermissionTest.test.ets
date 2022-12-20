@@ -24,7 +24,7 @@ const SELF_BUNDLENAME = "com.example.actsbmsetsunpermissiontest";
 const SELF_ABILITYNAME = "com.example.actsbmsetsunpermissiontest.MainAbility";
 const BUNDLE_NAME_OTHER = "com.example.myapplication1";
 const ABILITIY_NAME_OTHER = "com.example.myapplication1.MainAbility";
-const BUNDLE_NAME1 = "ohos.acts.bundle.stage";
+const BUNDLE_NAME1 = "com.acts.bundle.stage";
 const ABILITY_NAME1 = "ExtensionAbility1";
 let userId = 0;
 
