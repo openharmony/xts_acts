@@ -34,14 +34,12 @@ export default function testsuite() {
   getNameForUid();
   getQueryAbilityByWant();
   isDefaultApplicationTest();
-  //RM.007
   getApplicationInfoJsunit();
   getAllAppInfoJsunit();
-  //RM.006
   getabilityInfo();
-  //RM.014
+
   getAbilityLabelJsUnit();
-  //RM.017
+
   isAbilityEnableETSUnit();
   isApplicationEnabledETSUnit();
 }

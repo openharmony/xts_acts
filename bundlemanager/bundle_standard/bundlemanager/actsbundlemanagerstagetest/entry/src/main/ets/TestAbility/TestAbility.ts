@@ -1,4 +1,4 @@
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 
 export default class TestAbility extends Ability {
     onCreate(want, launchParam) {

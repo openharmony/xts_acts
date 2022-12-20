@@ -16,11 +16,12 @@
 import zlib from '@ohos.zlib'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
-var dir = "";
-var infos = "";
-var SRC_FILE_INVALID = 900001;
+let dir = "";
+let infos = "";
+let SRC_FILE_INVALID = 900001;
+let PARAM_ERROR = 401;
 
 export default function ActsZlibTest() {
     describe('ActsZlibTest', function () {
@@ -1098,28 +1099,28 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0076
-        * @tc.name: compressFile success
-        * @tc.desc: inFile and out file is valid
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0077
+        * @tc.name: compressFileTest
+        * @tc.desc: test compressFile when inFile and out file is valid
         */
-        it('SUB_BMS_TOOL_ZLIB_0077', 0, async function (done) {
-            console.log("==================ACTS_compressFile_0100 start==================");
-            let path1 = dir + "/SUB_BMS_TOOL_ZLIB_00771.txt";
-            let zipDest1 = dir + "/SUB_BMS_TOOL_ZLIB_00771.zip";
-            let path2 = dir + "/SUB_BMS_TOOL_ZLIB_00772.txt";
-            let zipDest2 = dir + "/SUB_BMS_TOOL_ZLIB_00772.zip";
+        it('compressFileTest', Level.LEVEL2, async function (done) {
+            console.log("==================compressFileTest start==================");
+            let path1 = dir + "/compressFileTest1.txt";
+            let zipDest1 = dir + "/compressFileTest1.zip";
+            let path2 = dir + "/compressFileTest2.txt";
+            let zipDest2 = dir + "/compressFileTest2.zip";
             let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
             await fileio.write(fd, infos).then(function (number) {
-                console.info("SUB_BMS_TOOL_ZLIB_0077 write data to file successfully :" + number);
+                console.info("compressFileTest write data to file successfully :" + number);
             }).catch(function (err) {
-                console.info("SUB_BMS_TOOL_ZLIB_0077 write data to file failed with error:" + err);
+                console.info("compressFileTest write data to file failed with error:" + err);
                 expect(err).assertFail();
             });
-            console.info("SUB_BMS_TOOL_ZLIB_0077 start compressFile");
+            console.info("compressFileTest start compressFile");
             await zlib.compressFile(path1, zipDest1, {
                 level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
             }).then((data) => {
-                console.info("SUB_BMS_TOOL_ZLIB_0077 data: " + JSON.stringify(data));
+                console.info("compressFileTest data: " + JSON.stringify(data));
                 let zipStat = fileio.statSync(zipDest1);
                 let isFile = zipStat.isFile();
                 expect(isFile).assertTrue();
@@ -1128,21 +1129,21 @@ export default function ActsZlibTest() {
                 expect(srcSize > destSize).assertTrue();
                 expect(data).assertEqual(null);
             }).catch((err) => {
-                console.info("SUB_BMS_TOOL_ZLIB_0077 data: " + JSON.stringify(err));
+                console.info("compressFileTest data: " + JSON.stringify(err));
                 expect(err).assertFail();
             })
             let fd2 = fileio.openSync(path2, 0o100 | 0o2, 0o666);
             await fileio.write(fd2, infos).then(function (number) {
-                console.info("SUB_BMS_TOOL_ZLIB_0077 write data to file successfully :" + number);
+                console.info("compressFileTest write data to file successfully :" + number);
             }).catch(function (err) {
-                console.info("SUB_BMS_TOOL_ZLIB_0077 write data to file failed with error:" + err);
+                console.info("compressFileTest write data to file failed with error:" + err);
                 expect(err).assertFail();
             });
             zlib.compressFile(path2, zipDest2, {
                 level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
             }, (err, data) => {
-                console.info("SUB_BMS_TOOL_ZLIB_0077 data2: " + JSON.stringify(data));
-                console.info("SUB_BMS_TOOL_ZLIB_0077 err2: " + JSON.stringify(err));
+                console.info("compressFileTest data2: " + JSON.stringify(data));
+                console.info("compressFileTest err2: " + JSON.stringify(err));
                 let zipStat = fileio.statSync(zipDest2);
                 let isFile = zipStat.isFile();
                 expect(isFile).assertTrue();
@@ -1156,47 +1157,217 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0077
-        * @tc.name: compressFile src file is invalid
-        * @tc.desc: inFile is not exist
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0078
+        * @tc.name: compressFileInFileNotExist
+        * @tc.desc: test compressFile when inFile is not exist
         */
-        it('SUB_BMS_TOOL_ZLIB_0078', 0, async function (done) {
-            console.log("==================SUB_BMS_TOOL_ZLIB_0078 start==================");
-            var path = "nonexist.txt";
-            var zipDest = dir + "/SUB_BMS_TOOL_ZLIB_0078.zip"
+        it('compressFileInFileNotExist', Level.LEVEL3, async function (done) {
+            console.log("==================compressFileInFileNotExist start==================");
+            let path = "nonexist.txt";
+            let zipDest = dir + "/compressFileInFileNotExist.zip";
             await zlib.compressFile(path, zipDest, {
                 level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
             }).then((data) => {
-                console.log("SUB_BMS_TOOL_ZLIB_0078 invalid src file success!")
+                console.log("compressFileInFileNotExist invalid src file success!");
                 expect(data).assertFail();
                 done();
             }).catch((err) => {
-                console.log("SUB_BMS_TOOL_ZLIB_0078 zipFile fail: " + JSON.stringify(err));
+                console.log("compressFileInFileNotExist zipFile fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(SRC_FILE_INVALID);
                 done();
             })
-            console.log("==================SUB_BMS_TOOL_ZLIB_0078 end==================");
+            zlib.compressFile(path, zipDest, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
+            }, (err, data) => {
+                expect(err.code).assertEqual(SRC_FILE_INVALID);
+                expect(data).assertEqual(undefined);
+                done();
+            })
+            console.log("==================compressFileInFileNotExist end==================");
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0077
-        * @tc.name: decompressFile success
-        * @tc.desc: inFile and out file is valid
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0079
+        * @tc.name: compressFileInFileNull
+        * @tc.desc: test compressFile when inFile is null
         */
-        it('SUB_BMS_TOOL_ZLIB_0087', 0, async function (done) {
-            console.log("==================SUB_BMS_TOOL_ZLIB_0087 start==================");
-            let path = dir + "/SUB_BMS_TOOL_ZLIB_0087.txt";
-            let zipDest1 = dir + "/SUB_BMS_TOOL_ZLIB_00871.zip"
-            let zipDest2 = dir + "/SUB_BMS_TOOL_ZLIB_00872.zip"
-            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_00871";
-            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_00872";
-            let finalFile1 = unzipdir1 + "/SUB_BMS_TOOL_ZLIB_0087.txt";
-            let finalFile2 = unzipdir2 + "/SUB_BMS_TOOL_ZLIB_0087.txt";
+        it('compressFileInFileNull', Level.LEVEL3, async function (done) {
+            console.log("==================compressFileInFileNull start==================");
+            let zipDest = dir + "/compressFileInFileNull.zip";
+            try {
+                await zlib.compressFile(null, zipDest, {
+                    level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
+                }).then((data) => {
+                    console.log("compressFileInFileNull invalid src file success!");
+                    expect().assertFail();
+                }).catch((err) => {
+                    console.log("compressFileInFileNull zipFile fail: " + JSON.stringify(err));
+                    expect().assertFail();
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR);
+            }
+            try {
+                zlib.compressFile(null, zipDest, {
+                    level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
+                }, (err, data) => {
+                    console.log("compressFile result");
+                    expect().assertFail();
+                    done();
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR);
+                done();
+            }
+            console.log("==================compressFileInFileNull end==================");
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0081
+        * @tc.name: compressFileOutFileNull
+        * @tc.desc: test compressFile when outFile is null
+        */
+        it('compressFileOutFileNull', Level.LEVEL3, async function (done) {
+            console.log("==================compressFileOutFileNull start==================");
+            let path1 = dir + "/compressFileOutFileNull.txt";
+            let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("fileio write data to file successfully :" + number);
+            }).catch(function (err) {
+                console.info("fileio write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            try {
+                await zlib.compressFile(path1, null, {
+                    level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
+                }).then((data) => {
+                    console.log("compressFileOutFileNull invalid src file success!");
+                    expect().assertFail();
+                }).catch((err) => {
+                    console.log("compressFileOutFileNull zipFile fail: " + JSON.stringify(err));
+                    expect().assertFail();
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR);
+            }
+            try {
+                zlib.compressFile(path1, null, {
+                    level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
+                }, (err, data) => {
+                    console.log("compressFile result");
+                    expect().assertFail();
+                    done();
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR);
+                done();
+            }
+            console.log("==================compressFileOutFileNull end==================");
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0082
+        * @tc.name: compressFileOptionNull
+        * @tc.desc: test compressFile when option is null
+        */
+        it('compressFileOptionNull', Level.LEVEL3, async function (done) {
+            console.log("==================compressFileOptionNull start==================");
+            let path1 = dir + "/compressFileOptionNull.txt";
+            let zipDest1 = dir + "/compressFileOptionNull.zip";
+            let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("fileio write data to file successfully :" + number);
+            }).catch(function (err) {
+                console.info("fileio write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            try {
+                await zlib.compressFile(path1, zipDest1, null).then((data) => {
+                    console.log("compressFileOptionNull invalid src file success!");
+                    expect().assertFail();
+                }).catch((err) => {
+                    console.log("compressFileOptionNull zipFile fail: " + JSON.stringify(err));
+                    expect().assertFail();
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR);
+            }
+            try {
+                zlib.compressFile(path1, zipDest1, null, (err, data) => {
+                    console.log("compressFile result");
+                    expect().assertFail();
+                    done();
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR);
+                done();
+            }
+            console.log("==================compressFileOptionNull end==================");
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0084
+        * @tc.name: compressFileStrategyNull
+        * @tc.desc: test compressFile when strategy is null
+        */
+        it('compressFileStrategyNull', Level.LEVEL3, async function (done) {
+            console.log("==================compressFileStrategyNull start==================");
+            let path1 = dir + "/compressFileStrategyNull.txt";
+            let zipDest1 = dir + "/compressFileStrategyNull.zip";
+            let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("fileio write data to file successfully :" + number);
+            }).catch(function (err) {
+                console.info("fileio write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            try {
+                await zlib.compressFile(path1, zipDest1, {
+                    strategy: null
+                }).then((data) => {
+                    console.log("compressFileStrategyNull invalid src file success!");
+                    expect().assertFail();
+                }).catch((err) => {
+                    console.log("compressFileStrategyNull zipFile fail: " + JSON.stringify(err));
+                    expect().assertFail();
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR);
+            }
+            try {
+                zlib.compressFile(path1, zipDest1, {
+                    strategy: null
+                }, (err, data) => {
+                    console.log("compressFile result");
+                    expect().assertFail();
+                    done();
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR);
+                done();
+            }
+            console.log("==================compressFileOutFileNull end==================");
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0087
+        * @tc.name: decompressFileTest
+        * @tc.desc: test decompressFile when inFile and out file is valid
+        */
+        it('decompressFileTest', Level.LEVEL2, async function (done) {
+            console.log("==================decompressFileTest start==================");
+            let path = dir + "/decompressFileTest.txt";
+            let zipDest1 = dir + "/decompressFileTest1.zip";
+            let zipDest2 = dir + "/decompressFileTest2.zip";
+            let unzipdir1 = dir + "/decompressFileTest1";
+            let unzipdir2 = dir + "/decompressFileTest2";
+            let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
+            let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
             await fileio.write(fd, infos).then(function (number) {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file success " + JSON.stringify(number));
+                console.info("decompressFileTest write data to file success " + JSON.stringify(number));
             }).catch(function (err) {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file failed with error:" + err);
+                console.info("decompressFileTest write data to file failed with error:" + err);
                 expect(err).assertFail();
             });
             await zlib.compressFile(path, zipDest1, {
@@ -1230,9 +1401,9 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
             })
             await fileio.mkdir(unzipdir1).then(function () {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 mkdir successfully");
+                console.info("decompressFileTest mkdir successfully");
             }).catch(function (error) {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 mkdir failed with error:" + error);
+                console.info("decompressFileTest mkdir failed with error:" + error);
                 expect(error).assertFail();
             });
             await zlib.decompressFile(zipDest1, unzipdir1, {
@@ -1248,9 +1419,9 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
             })
             await fileio.mkdir(unzipdir2).then(function () {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 mkdir successfully");
+                console.info("decompressFileTest mkdir successfully");
             }).catch(function (error) {
-                console.info("SUB_BMS_TOOL_ZLIB_0087 mkdir failed with error:" + error);
+                console.info("decompressFileTest mkdir failed with error:" + error);
                 expect(error).assertFail();
             });
             zlib.decompressFile(zipDest2, unzipdir2, {
@@ -1268,24 +1439,24 @@ export default function ActsZlibTest() {
         })
 
         /*
-        * @tc.number: ACTS_decompressFile_0200
-        * @tc.name: decompressFile src file invalid
-        * @tc.desc: inFile is empty
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0088
+        * @tc.name: decompressFileInFileNotExist
+        * @tc.desc: test decompressFile when inFile is not exist
         */
-        it('SUB_BMS_TOOL_ZLIB_0088', 0, async function (done) {
-            console.log("==================SUB_BMS_TOOL_ZLIB_0088 start==================");
-            var zipDest = dir + "/noneexist.zip"
-            var unzipdir = dir + "/SUB_BMS_TOOL_ZLIB_0088";
+        it('decompressFileInFileNotExist', Level.LEVEL3, async function (done) {
+            console.log("==================decompressFileInFileNotExist start==================");
+            let zipDest = dir + "/noneexist.zip";
+            let unzipdir = dir + "/decompressFileInFileNotExist";
             await fileio.mkdir(unzipdir).then(function () {
-                console.info("SUB_BMS_TOOL_ZLIB_0088 mkdir successfully");
+                console.info("fileio mkdir successfully");
             }).catch(function (error) {
-                console.info("SUB_BMS_TOOL_ZLIB_0088 mkdir failed with error:" + error);
+                console.info("fileio mkdir failed with error:" + error);
                 expect(error).assertFail();
             });
             await zlib.decompressFile(zipDest, unzipdir, {
                 strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
             }).then(data => {
-                console.log("SUB_BMS_TOOL_ZLIB_0088 data: " + data);
+                console.log("decompressFile data: " + data);
                 expect(data).assertFail(null);
                 done();
             }).catch(err => {
@@ -1293,9 +1464,248 @@ export default function ActsZlibTest() {
                 expect(err.code).assertEqual(SRC_FILE_INVALID);
                 done();
             })
-            console.log("==================SUB_BMS_TOOL_ZLIB_0088 end==================");
+            zlib.decompressFile(zipDest, unzipdir, {
+                strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
+            }, (err, data) => {
+                expect(err.code).assertEqual(SRC_FILE_INVALID);
+                expect(data).assertEqual(undefined);
+                done();
+            })
+            console.log("==================decompressFileInFileNotExist end==================");
         })
 
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0089
+        * @tc.name: decompressFileInFileNull
+        * @tc.desc: test decompressFile when inFile is null
+        */
+        it('decompressFileInFileNull', Level.LEVEL3, async function (done) {
+            console.log("==================decompressFileInFileNull start==================");
+            let unzipdir = dir + "/decompressFileInFileNull";
+            await fileio.mkdir(unzipdir).then(function () {
+                console.info("fileio mkdir successfully");
+            }).catch(function (error) {
+                console.info("fileio mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            try {
+                await zlib.decompressFile(null, unzipdir, {
+                    strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
+                }).then(data => {
+                    console.log("decompressFile data: " + data);
+                    expect().assertFail();
+                }).catch(err => {
+                    console.log("decompress fail: " + JSON.stringify(err));
+                    expect().assertFail();
+                })
+            } catch (err) {
+                console.log("decompress fail: " + JSON.stringify(err));
+                expect(err.code).assertEqual(PARAM_ERROR);
+            }
+            try {
+                zlib.decompressFile(null, unzipdir, {
+                    strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
+                }, (err, data) => {
+                    expect().assertFail();
+                    done();
+                })
+            } catch (err) {
+                console.log("decompress fail: " + JSON.stringify(err));
+                expect(err.code).assertEqual(PARAM_ERROR);
+                done();
+            }
+            console.log("==================decompressFileInFileNull end==================");
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0091
+        * @tc.name: decompressFileOutFileNull
+        * @tc.desc: test decompressFile when outFile is null
+        */
+        it('decompressFileOutFileNull', Level.LEVEL3, async function (done) {
+            console.log("==================decompressFileOutFileNull start==================");
+            let path = dir + "/decompressFileOutFileNull.txt";
+            let zipDest1 = dir + "/decompressFileOutFileNull.zip";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileOutFileNull write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileOutFileNull write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("compressFile success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("compressFile fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            try {
+                await zlib.decompressFile(zipDest1, null, {
+                    strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
+                }).then(data => {
+                    console.log("decompressFile data: " + data);
+                    expect().assertFail();
+                }).catch(err => {
+                    console.log("decompress fail: " + JSON.stringify(err));
+                    expect().assertFail();
+                })
+            } catch (err) {
+                console.log("decompress fail: " + JSON.stringify(err));
+                expect(err.code).assertEqual(PARAM_ERROR);
+            }
+            try {
+                zlib.decompressFile(zipDest1, null, {
+                    strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
+                }, (err, data) => {
+                    expect().assertFail();
+                    done();
+                })
+            } catch (err) {
+                console.log("decompress fail: " + JSON.stringify(err));
+                expect(err.code).assertEqual(PARAM_ERROR);
+                done();
+            }
+            console.log("==================decompressFileOutFileNull end==================");
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0092
+        * @tc.name: decompressFileOptionNull
+        * @tc.desc: test decompressFile when option is null
+        */
+        it('decompressFileOptionNull', Level.LEVEL3, async function (done) {
+            console.log("==================decompressFileOptionNull start==================");
+            let path = dir + "/decompressFileOptionNull.txt";
+            let zipDest1 = dir + "/decompressFileOptionNull.zip";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("compressFile success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("compressFile fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            let unzipdir = dir + "/decompressFileOptionNull";
+            await fileio.mkdir(unzipdir).then(function () {
+                console.info("fileio mkdir successfully");
+            }).catch(function (error) {
+                console.info("fileio mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            try {
+                await zlib.decompressFile(zipDest1, unzipdir, null).then(data => {
+                    console.log("decompressFile data: " + data);
+                    expect().assertFail();
+                }).catch(err => {
+                    console.log("decompress fail: " + JSON.stringify(err));
+                    expect().assertFail();
+                })
+            } catch (err) {
+                console.log("decompress fail: " + JSON.stringify(err));
+                expect(err.code).assertEqual(PARAM_ERROR);
+            }
+            try {
+                zlib.decompressFile(zipDest1, unzipdir, null, (err, data) => {
+                    expect().assertFail();
+                    done();
+                })
+            } catch (err) {
+                console.log("decompress fail: " + JSON.stringify(err));
+                expect(err.code).assertEqual(PARAM_ERROR);
+                done();
+            }
+            console.log("==================decompressFileOutFileNull end==================");
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0094
+        * @tc.name: decompressFileStrategyNull
+        * @tc.desc: test decompressFile when strategy is null
+        */
+        it('decompressFileStrategyNull', Level.LEVEL3, async function (done) {
+            console.log("==================decompressFileStrategyNull start==================");
+            let path = dir + "/decompressFileStrategyNull.txt";
+            let zipDest1 = dir + "/decompressFileStrategyNull.zip";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileStrategyNull write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileStrategyNull write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("compressFile success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("compressFile fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            let unzipdir = dir + "/decompressFileStrategyNull";
+            await fileio.mkdir(unzipdir).then(function () {
+                console.info("fileio mkdir successfully");
+            }).catch(function (error) {
+                console.info("fileio mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            try {
+                await zlib.decompressFile(zipDest1, unzipdir, {
+                    strategy: null
+                }).then(data => {
+                    console.log("decompressFile data: " + data);
+                    expect().assertFail();
+                }).catch(err => {
+                    console.log("decompress fail: " + JSON.stringify(err));
+                    expect().assertFail();
+                })
+            } catch (err) {
+                console.log("decompress fail: " + JSON.stringify(err));
+                expect(err.code).assertEqual(PARAM_ERROR);
+            }
+            try {
+                zlib.decompressFile(zipDest1, unzipdir, {
+                    strategy: null
+                }, (err, data) => {
+                    expect().assertFail();
+                    done();
+                })
+            } catch (err) {
+                console.log("decompress fail: " + JSON.stringify(err));
+                expect(err.code).assertEqual(PARAM_ERROR);
+                done();
+            }
+            console.log("==================decompressFileStrategyNull end==================");
+        })
     })
 }
 
