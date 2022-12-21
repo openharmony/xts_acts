@@ -17,6 +17,9 @@ import commonEvent from '@ohos.commonEvent';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import power from '@ohos.power';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import { BY, UiDriver, UiComponent, MatchPattern } from '@ohos.uitest';
+
+var driver;
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -39,15 +42,20 @@ export default function OnAndOffScreenTest() {
         })
         id = delayInfo.requestId;
         console.log(TAG1 + "requestId is : " + id);
+        driver = await UiDriver.create();
         setTimeout(function () {
             console.log(TAG1 + "beforeAll end");
             done();
         }, sleepTimeOne);
-    })
+    }) 
         
     afterAll(async (done) => {
         console.log(TAG1 + "afterAll called");
         backgroundTaskManager.cancelSuspendDelay(id);
+        let button = await driver.findComponent(BY.text('知道了').enabled(true));
+        await sleep(4000);
+        await button.click();
+        await sleep(2000);
         setTimeout(function () {
             console.log(TAG1 + "afterAll end");
             done();
