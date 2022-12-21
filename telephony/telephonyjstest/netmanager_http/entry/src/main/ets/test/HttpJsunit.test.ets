@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, afterAll, it, expect, afterEach} from 'hypium/index';
+import {describe, it, expect} from '@ohos/hypium';
 import http from '@ohos.net.http';
 import connection from "@ohos.net.connection";
 
@@ -83,7 +83,7 @@ export default function httpJsunit() {
         expect(data).assertEqual(true);
         done();
       }).catch((error) => {
-        console.log(`${caseName} isDefaultNetMetered  error`);
+        console.log(JSON.stringify(error));
         expect().assertFail();
         done();
       })
