@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, afterAll, it, expect, afterEach} from 'hypium/index';
+import {describe,it, expect} from '@ohos/hypium';
 import http from '@ohos.net.http';
 
 export default function responseCodeJsunit() {
@@ -50,6 +50,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_ACCEPTED_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -68,6 +69,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_NOT_AUTHORITATIVE_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -86,6 +88,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_NO_CONTENT_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -103,6 +106,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_MULT_CHOICE_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -121,6 +125,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_MOVED_PERM_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -139,6 +144,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_SEE_OTHER_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -157,6 +163,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_NOT_MODIFIED_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -174,6 +181,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_USE_PROXY_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -192,6 +200,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_BAD_REQUEST_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -210,6 +219,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_UNAUTHORIZED_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -228,6 +238,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_PAYMENT_REQUIRED_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -246,6 +257,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_BAD_METHOD_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -264,6 +276,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_NOT_ACCEPTABLED_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -282,6 +295,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_PROXY_AUTH_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -300,6 +314,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_CLIENT_TIMEOUT_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -318,6 +333,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_LENGTH_REQUIRED_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -336,6 +352,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_PRECON_FAILED_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -354,6 +371,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_ENTITY_TOO_LARGE_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -373,6 +391,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_REQ_TOO_LONG_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -392,6 +411,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_UNSUPPORTED_TYPE_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -409,6 +429,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_INTERNAL_ERROR_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -427,6 +448,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_NOT_IMPLEMENTED_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -445,6 +467,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_BAD_GATEWAY_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -463,6 +486,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_GATEWAY_TIMEOUT_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -481,6 +505,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_VERSION_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -499,6 +524,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_CREATED_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -516,6 +542,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_RESET_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -534,6 +561,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_PARTIAL_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -553,6 +581,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_MOVED_TEMP_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -571,6 +600,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_FORBIDDEN_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -589,6 +619,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_NOT_FOUND_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -608,6 +639,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_CONFLICT_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -627,6 +659,7 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_GONE_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -646,12 +679,10 @@ export default function responseCodeJsunit() {
         done();
       } catch (error) {
         console.log("Telephony_Http_ResponseCode_UNAVAILABLE_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
-
-
   })
-
 };
 
