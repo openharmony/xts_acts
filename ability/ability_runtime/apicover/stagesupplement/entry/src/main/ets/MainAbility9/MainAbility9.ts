@@ -34,6 +34,10 @@ export default class MainAbility9 extends Ability {
         commonEvent.publish(listPush9 + "onDestroy", lifeList, (err) => {
             console.info(printLog9 + listPush9 + "onDestroy");
         });
+
+        setTimeout(()=>{
+          console.info(`${printLog9} onDestroy end`);
+      }, 1000)
     }
 
     onWindowStageCreate(windowStage) {
