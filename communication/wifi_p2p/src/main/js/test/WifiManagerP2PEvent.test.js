@@ -25,12 +25,6 @@ function checkWifiPowerOn(){
     console.info("[wifi_test]wifi status:" + wifiMg.isWifiActive());
 }
 
-let groupOwnerBand = {
-    GO_BAND_AUTO : 0,
-    GO_BAND_2GHZ : 1,
-    GO_BAND_5GHZ : 2,
-}
-
 export default function actsWifiManagerEventTest() {
     describe('actsWifiManagerEventTest', function () {
         beforeEach(function () {
@@ -81,7 +75,7 @@ export default function actsWifiManagerEventTest() {
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "AAAZZZ456",
-                goBand : 0
+                goBand : wifiMg.GroupOwnerBand.GO_BAND_AUTO,
             };
             let connectResult = wifiMg.p2pConnect(wifiP2PConfig);
             await wifiMg.getP2pLinkedInfo()
@@ -153,7 +147,7 @@ export default function actsWifiManagerEventTest() {
                 netId : -2,
                 passphrase : "12345678",
                 groupName : "AAAZZZ123",
-                goBand : 0,
+                goBand : wifiMg.GroupOwnerBand.GO_BAND_AUTO,
             };
             let createGroupResult = wifiMg.createGroup(WifiP2PConfig);
             await (2000);
@@ -189,4 +183,5 @@ export default function actsWifiManagerEventTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
+
 

@@ -25,12 +25,6 @@ function checkWifiPowerOn(){
     console.info("[wifi_test]/wifi status:" + wifiMg.isWifiActive());
 }
 
-let groupOwnerBand = {
-    GO_BAND_AUTO : 0,
-    GO_BAND_2GHZ : 1,
-    GO_BAND_5GHZ : 2,
-}
-
 export default function actsWifiManagerFunctionTest() {
     describe('actsWifiManagerFunctionTest', function () {
         beforeEach(function () {
@@ -54,7 +48,7 @@ export default function actsWifiManagerFunctionTest() {
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "AAAZZZ123",
-                goBand : groupOwnerBand.GO_BAND_2GHZ,
+                goBand : wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
@@ -115,7 +109,7 @@ export default function actsWifiManagerFunctionTest() {
                 netId: -1,
                 passphrase: "1234567",
                 groupName: "test_pass",
-                goBand: groupOwnerBand.GO_BAND_2GHZ,
+                goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
@@ -149,7 +143,7 @@ export default function actsWifiManagerFunctionTest() {
                 netId: -1,
                 passphrase: "123@%abcD",
                 groupName: "test_pass1",
-                goBand: groupOwnerBand.GO_BAND_2GHZ,
+                goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
@@ -183,7 +177,7 @@ export default function actsWifiManagerFunctionTest() {
                 netId: -1,
                 passphrase: "abc345678901234567890123456789012345678901234567890123456789012",
                 groupName: "test_pass2",
-                goBand: groupOwnerBand.GO_BAND_2GHZ,
+                goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
@@ -217,7 +211,7 @@ export default function actsWifiManagerFunctionTest() {
                 netId: -1,
                 passphrase: "abc3456789012345678901234567890123456789012345678901234567890123",
                 groupName: "test_pass3",
-                goBand: groupOwnerBand.GO_BAND_2GHZ,
+                goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
@@ -251,7 +245,7 @@ export default function actsWifiManagerFunctionTest() {
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "test_band1",
-                goBand : groupOwnerBand.GO_BAND_2GHZ,
+                goBand : wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
@@ -286,7 +280,7 @@ export default function actsWifiManagerFunctionTest() {
                     netId : -1,
                     passphrase : "12345678",
                     groupName : "test_band2",
-                    goBand : groupOwnerBand.GO_BAND_5GHZ,
+                    goBand : wifiMg.GroupOwnerBand.GO_BAND_5GHZ,
                 };
                 let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
                 await sleep(2000);
@@ -325,7 +319,7 @@ export default function actsWifiManagerFunctionTest() {
                     netId : -1,
                     passphrase : "12345678",
                     groupName : "test_band3",
-                    goBand : groupOwnerBand.GO_BAND_AUTO,
+                    goBand : wifiMg.GroupOwnerBand.GO_BAND_AUTO,
                 };
                 let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
                 await sleep(2000);
@@ -349,6 +343,120 @@ export default function actsWifiManagerFunctionTest() {
         })
 
         /**
+        * @tc.number SUB_Communication_WiFi_XTS_P2P_0008
+        * @tc.name testCreateGroup
+        * @tc.desc Test createGroup-SSID is an empty string Function.
+        * @tc.type Function
+        * @tc.level Level 0
+        */
+        it('SUB_Communication_WiFi_XTS_P2P_0008', 0, async function (done) {
+            console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
+            expect(wifiMg.isWifiActive()).assertTrue();
+            try {
+                let wifiP2PConfig = {
+                    deviceAddress: "00:00:00:00:00:00",
+                    netId: -1,
+                    passphrase: "12345678",
+                    groupName: "",
+                    goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
+                };
+                let createGroupResult = wifi.createGroup(wifiP2PConfig);
+                await sleep(2000);
+                await wifi.getCurrentGroup()
+                    .then(data => {
+                        console.info("[wifi_test]getCurrentGroup  promise result : " + JSON.stringify(data));
+                    });
+                let removeGroupResult = wifi.removeGroup();
+                await sleep(2000);
+                await wifi.getCurrentGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]createGroup error passphrase result : " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
+            done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_XTS_P2P_0108
+        * @tc.name testCreateGroup
+        * @tc.desc Test createGroup-SSID is a space Function.
+        * @tc.type Function
+        * @tc.level Level 0
+        */
+        it('SUB_Communication_WiFi_XTS_P2P_0108', 0, async function (done) {
+            console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
+            expect(wifiMg.isWifiActive()).assertTrue();
+            try {
+                let wifiP2PConfig = {
+                    deviceAddress: "00:00:00:00:00:00",
+                    netId: -1,
+                    passphrase: "12345678",
+                    groupName: " ",
+                    goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
+                };
+                let createGroupResult = wifi.createGroup(wifiP2PConfig);
+                await sleep(2000);
+                await wifi.getCurrentGroup()
+                    .then(data => {
+                        console.info("[wifi_test]getCurrentGroup promise result :" + JSON.stringify(data));
+                    });
+                let removeGroupResult = wifi.removeGroup();
+                await sleep(2000);
+                await wifi.getCurrentGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]createGroup error passphrase result : " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
+            done();
+        })
+
+        /**
+       * @tc.number SUB_Communication_WiFi_XTS_P2P_0308
+       * @tc.name testCreateGroup
+       * @tc.desc Test createGroup-the password must be a space.
+       * @tc.type Function
+       * @tc.level Level 0
+       */
+        it('SUB_Communication_WiFi_XTS_P2P_0308', 0, async function (done) {
+            console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
+            expect(wifiMg.isWifiActive()).assertTrue();
+            try {
+                let wifiP2PConfig = {
+                    deviceAddress: "00:00:00:00:00:00",
+                    netId: -1,
+                    passphrase: " ",
+                    groupName: "testpassword",
+                    goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
+                };
+                let createGroupResult = wifi.createGroup(wifiP2PConfig);
+                await sleep(2000);
+                await wifi.getCurrentGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
+                    });
+                let removeGroupResult = wifi.removeGroup();
+                await sleep(2000);
+                await wifi.getCurrentGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]createGroup error passphrase result : " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
+            done();
+        })
+
+        /**
         * @tc.number SUB_Communication_WiFi_XTS_P2P_0009
         * @tc.name testP2pCancelConnect
         * @tc.desc Test p2pCancelConnect Group API functionality.
@@ -361,7 +469,7 @@ export default function actsWifiManagerFunctionTest() {
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "AAAZZZ456",
-                goBand : groupOwnerBand.GO_BAND_2GHZ,
+                goBand : wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let p2pConnectResult = wifiMg.p2pConnect(wifiP2PConfig);
             console.info("[wifi_test]test p2pConnect successful." );
@@ -506,13 +614,6 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_P2P_0101', 0, async function(done){
-            let p2pDeviceStatus = {
-                CONNECTED : 0,
-                INVITED : 1,
-                FAILED : 2,
-                AVAILABLE : 3,
-                UNAVAILABLE : 4,
-            };
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
             let startDiscover = wifiMg.startDiscoverDevices();
@@ -532,19 +633,19 @@ export default function actsWifiManagerFunctionTest() {
                                 "primaryDeviceType: " + result[j].primaryDeviceType +
                                 "deviceStatus: " + result[j].deviceStatus +
                                 "groupCapabilitys: " + result[j].groupCapabilitys );
-                                if(result[j].deviceStatus ==p2pDeviceStatus.UNAVAILABLE){
+                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.UNAVAILABLE){
                                     console.info("deviceStatus: " + result[j].deviceStatus);
                                 }
-                                if(result[j].deviceStatus ==p2pDeviceStatus.CONNECTED){
+                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.CONNECTED){
                                     console.info("deviceStatus: " + result[j].deviceStatus);
                                 }
-                                if(result[j].deviceStatus ==p2pDeviceStatus.INVITED){
+                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.INVITED){
                                     console.info("deviceStatus: " + result[j].deviceStatus);
                                 }
-                                if(result[j].deviceStatus ==p2pDeviceStatus.FAILED){
+                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.FAILED){
                                     console.info("deviceStatus: " + result[j].deviceStatus);
                                 }
-                                if(result[j].deviceStatus ==p2pDeviceStatus.AVAILABLE){
+                                if(result[j].deviceStatus == wifiMg.P2pDeviceStatus.AVAILABLE){
                                     console.info("deviceStatus: " + result[j].deviceStatus);
                                 }
                             }
@@ -554,8 +655,9 @@ export default function actsWifiManagerFunctionTest() {
             }
             await getP2pPeerDevicesResult();
             done();
-            });
+        });
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
+
 
