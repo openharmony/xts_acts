@@ -14,7 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-import dataRdb from '@ohos.data.rdb';
+import dataRdb from '@ohos.data.relationalStore';
 
 const TAG = "[RDB_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
@@ -23,8 +23,8 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export default function rdbStoreV9Test(context){
-describe('rdbStoreV9Test', function () {
+export default function relationalStoreTest(context){
+describe('relationalStoreTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
     })
@@ -44,18 +44,18 @@ describe('rdbStoreV9Test', function () {
     console.log(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.name rdb store getRdbStoreV9 with securityLevel S1
-     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0100
-     * @tc.desc rdb store getRdbStoreV9 with securityLevel S1
+     * @tc.name rdb store getRdbStore with securityLevel S1
+     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100
+     * @tc.desc rdb store getRdbStore with securityLevel S1
      * @tc.require: I5PIL6
      */
-    it('SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0100', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0100 start *************");
+    it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S1
         }
-        let storePromise = dataRdb.getRdbStoreV9(context, config, 1);
+        let storePromise = dataRdb.getRdbStore(context, config, 1);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -69,22 +69,22 @@ describe('rdbStoreV9Test', function () {
         storePromise = null
         await dataRdb.deleteRdbStore(context,"secure.db");
         done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0100 end   *************");
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100 end   *************");
     })
 
     /**
-     * @tc.name rdb store getRdbStoreV9 with securityLevel S2
-     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0200
-     * @tc.desc rdb store getRdbStoreV9 with securityLevel S2
+     * @tc.name rdb store getRdbStore with securityLevel S2
+     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0200
+     * @tc.desc rdb store getRdbStore with securityLevel S2
      * @tc.require: I5PIL6
      */
-     it('SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0200', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0200 start *************");
+     it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0200', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0200 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S2
         }
-        let storePromise = dataRdb.getRdbStoreV9(context, config, 1);
+        let storePromise = dataRdb.getRdbStore(context, config, 1);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -98,22 +98,22 @@ describe('rdbStoreV9Test', function () {
         storePromise = null
         await dataRdb.deleteRdbStore(context,"secure.db");
         done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0200 end   *************");
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0200 end   *************");
     })
 
     /**
-     * @tc.name rdb store getRdbStoreV9 with securityLevel S3
-     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0300
-     * @tc.desc rdb store getRdbStoreV9 with securityLevel S3
+     * @tc.name rdb store getRdbStore with securityLevel S3
+     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0300
+     * @tc.desc rdb store getRdbStore with securityLevel S3
      * @tc.require: I5PIL6
      */
-    it('SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0300', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0300 start *************");
+    it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0300', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0300 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S3
         }
-        let storePromise = dataRdb.getRdbStoreV9(context, config, 1);
+        let storePromise = dataRdb.getRdbStore(context, config, 1);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -127,22 +127,22 @@ describe('rdbStoreV9Test', function () {
         storePromise = null
         await dataRdb.deleteRdbStore(context,"secure.db");
         done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0300 end   *************");
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0300 end   *************");
     })
 
     /**
-     * @tc.name rdb store getRdbStoreV9 with securityLevel S4
-     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0400
-     * @tc.desc rdb store getRdbStoreV9 with securityLevel S4
+     * @tc.name rdb store getRdbStore with securityLevel S4
+     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400
+     * @tc.desc rdb store getRdbStore with securityLevel S4
      * @tc.require: I5PIL6
      */
-    it('SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0400', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0400 start *************");
+    it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S4
         }
-        let storePromise = dataRdb.getRdbStoreV9(context, config, 1);
+        let storePromise = dataRdb.getRdbStore(context, config, 1);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -156,22 +156,22 @@ describe('rdbStoreV9Test', function () {
         storePromise = null
         await dataRdb.deleteRdbStore(context,"secure.db");
         done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_PROMISE_0400 end   *************");
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400 end   *************");
     })
 
     /**
-     * @tc.name rdb store getRdbStoreV9 with securityLevel S1
-     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0100
-     * @tc.desc rdb store getRdbStoreV9 with securityLevel S1
+     * @tc.name rdb store getRdbStore with securityLevel S1
+     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0100
+     * @tc.desc rdb store getRdbStore with securityLevel S1
      * @tc.require: I5PIL6
      */
-     it('SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0100', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0100 start *************");
+     it('SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0100', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0100 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S1
         }
-        dataRdb.getRdbStoreV9(context, config, 1, async (err,data) => {
+        dataRdb.getRdbStore(context, config, 1, async (err,data) => {
             if(err != null){
                 console.info(TAG + "get rdb store error" + err.message)
                 expect(null).assertFail();
@@ -181,24 +181,24 @@ describe('rdbStoreV9Test', function () {
             dataRdb.deleteRdbStore(context,"secure.db").then(()=>{
                 console.info(TAG + "Delete rdbstore success")
                 done();
-                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0100 end   *************");
+                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0100 end   *************");
             })
         });
     })
 
     /**
-     * @tc.name rdb store getRdbStoreV9 with securityLevel S2
-     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0200
-     * @tc.desc rdb store getRdbStoreV9 with securityLevel S2
+     * @tc.name rdb store getRdbStore with securityLevel S2
+     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0200
+     * @tc.desc rdb store getRdbStore with securityLevel S2
      * @tc.require: I5PIL6
      */
-     it('SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0200', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0200 start *************");
+     it('SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0200', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0200 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S2
         }
-        dataRdb.getRdbStoreV9(context, config, 1,async (err,data) => {
+        dataRdb.getRdbStore(context, config, 1,async (err,data) => {
             if(err != null){
                 console.info(TAG + "get rdb store error")
                 expect(null).assertFail();
@@ -207,24 +207,24 @@ describe('rdbStoreV9Test', function () {
             }
             dataRdb.deleteRdbStore(context, "secure.db").then(() => {
                 done();
-                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0200 end   *************");
+                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0200 end   *************");
             })
         });
     })
 
     /**
-     * @tc.name rdb store getRdbStoreV9 with securityLevel S3
-     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0300
-     * @tc.desc rdb store getRdbStoreV9 with securityLevel S3
+     * @tc.name rdb store getRdbStore with securityLevel S3
+     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0300
+     * @tc.desc rdb store getRdbStore with securityLevel S3
      * @tc.require: I5PIL6
      */
-     it('SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0300', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0300 start *************");
+     it('SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0300', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0300 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S3
         }
-        dataRdb.getRdbStoreV9(context, config, 1,async (err,data) => {
+        dataRdb.getRdbStore(context, config, 1,async (err,data) => {
             if(err != null){
                 console.info(TAG + "get rdb store error")
                 expect(null).assertFail();
@@ -233,24 +233,24 @@ describe('rdbStoreV9Test', function () {
             }
             dataRdb.deleteRdbStore(context, "secure.db").then(() => {
                 done();
-                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0300 end   *************");
+                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0300 end   *************");
             })
         });
     })
 
     /**
-     * @tc.name rdb store getRdbStoreV9 with securityLevel S4
-     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0400
-     * @tc.desc rdb store getRdbStoreV9 with securityLevel S4
+     * @tc.name rdb store getRdbStore with securityLevel S4
+     * @tc.number SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0400
+     * @tc.desc rdb store getRdbStore with securityLevel S4
      * @tc.require: I5PIL6
      */
-     it('SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0400', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0400 start *************");
+     it('SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0400', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0400 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S4
         }
-        dataRdb.getRdbStoreV9(context, config, 1,async (err,data) => {
+        dataRdb.getRdbStore(context, config, 1,async (err,data) => {
             if(err != null){
                 console.info(TAG + "get rdb store error")
                 expect(null).assertFail();
@@ -259,53 +259,53 @@ describe('rdbStoreV9Test', function () {
             }
             dataRdb.deleteRdbStore(context,"secure.db").then(() => {
                 done();
-                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTOREV9_CALLBACK_0400 end   *************");
+                console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0400 end   *************");
             })
         });
     })
 
     /**
-     * @tc.name rdb store deleteRdbStoreV9
-     * @tc.number SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_PROMISE_0100
-     * @tc.desc rdb store deleteRdbStoreV9
+     * @tc.name rdb store deleteRdbStore
+     * @tc.number SUB_DDM_RELATIONALETS_DELETERDBSTORE_PROMISE_0100
+     * @tc.desc rdb store deleteRdbStore
      * @tc.require: I5PIL6
     */
-    it('SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_PROMISE_0100', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_PROMISE_0100 start *************");
+    it('SUB_DDM_RELATIONALETS_DELETERDBSTORE_PROMISE_0100', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTORE_PROMISE_0100 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S4
         }
         let deleteResult = false
-        await dataRdb.getRdbStoreV9(context, config, 1).then(async (store) => {
+        await dataRdb.getRdbStore(context, config, 1).then(async (store) => {
             console.info(TAG + "create table success")
         })
-        await dataRdb.deleteRdbStoreV9(context,"secure.db").then(() => {
+        await dataRdb.deleteRdbStore(context,"secure.db").then(() => {
             deleteResult = true
             console.info(`${TAG} delete rdb store success,result is ${deleteResult}`)
         });
         expect(deleteResult).assertTrue();
         done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_PROMISE_0100 end   *************");
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTORE_PROMISE_0100 end   *************");
     })
 
     /**
-     * @tc.name rdb store deleteRdbStoreV9
-     * @tc.number SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_CALLBACK_0100
-     * @tc.desc rdb store deleteRdbStoreV9
+     * @tc.name rdb store deleteRdbStore
+     * @tc.number SUB_DDM_RELATIONALETS_DELETERDBSTORE_CALLBACK_0100
+     * @tc.desc rdb store deleteRdbStore
      * @tc.require: I5PIL6
     */
-     it('SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_CALLBACK_0100', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_CALLBACK_0100 start *************");
+     it('SUB_DDM_RELATIONALETS_DELETERDBSTORE_CALLBACK_0100', 0, async function (done) {
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTORE_CALLBACK_0100 start *************");
         let config = {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S1
         }
         let deleteResult = false
-        await dataRdb.getRdbStoreV9(context, config, 1).then(async (store) => {
+        await dataRdb.getRdbStore(context, config, 1).then(async (store) => {
             console.info(TAG + "create rdb store success")
         })
-        dataRdb.deleteRdbStoreV9(context,"secure.db", (err, data) => {
+        dataRdb.deleteRdbStore(context,"secure.db", (err, data) => {
             if(err == undefined){
                 deleteResult = true
                 console.info(`${TAG} delete rdb store success,result is ${deleteResult}`)
@@ -315,7 +315,7 @@ describe('rdbStoreV9Test', function () {
         await sleep(1000)
         expect(deleteResult).assertTrue();
         done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTOREV9_CALLBACK_0100 end   *************");
+        console.log(TAG + "************* SUB_DDM_RELATIONALETS_DELETERDBSTORE_CALLBACK_0100 end   *************");
     })
     console.log(TAG + "*************Unit Test End*************");
 })

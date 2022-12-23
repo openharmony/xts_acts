@@ -12,12 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-import relationalStoreDistributedTest from './relationalStoreDistributedEtsunit.test.ets'
-import relationalStoreTest from './relationalStoreEtsunit.test.ets'
-import relationalStoreResultSetTest from './relationalStoreTestResultsetEtsunit.test.ets'
-export default function testsuite() {
-  relationalStoreDistributedTest(globalThis.abilityContext)
-  relationalStoreTest(globalThis.abilityContext)
-  relationalStoreResultSetTest(globalThis.abilityContext)
+
+export default {
+    data: {
+        title: ""
+    },
+    onInit() {
+        this.title = this.$t('strings.world');
+    }
 }
+
+
+

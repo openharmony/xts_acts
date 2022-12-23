@@ -12,35 +12,35 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import rdbStoreBackupRestoreCallbackTest from './RdbstoreBackupRestoreCallbackJsunit.test.js'
-import rdbStoreBackupRestoreWithFAContextTest from './RdbstoreBackupRestoreWithFAContextJsunit.test.js'
-import rdbStoreDeleteTest from './RdbstoreDeleteJsunit.test.js'
-import rdbStoreDistributedTest from './RdbStoreDistributedJsunit.test.js'
-import rdbstoreInsertTest from './RdbstoreInsertJsunit.test.js'
-import rdbStorePredicatesJoinTest from './RdbstorePredicatesJoinJsunit.test.js'
-import rdbPredicatesTest from './RdbstorePredicatesJsunit.test.js'
-import rdbStoreTest from './RdbstoreRdbstoreJsunit.test.js'
-import rdbResultSetTest from './RdbStoreResultSetJsunit.test.js'
-import rdbstoreStoreExcuteSqlTest from './RdbstoreStoreExcuteSqlJsunit.test.js'
-import rdbstoreTransactionTest from './RdbstoreTransactionJsunit.test.js'
-import rdbStoreUpdateTest from './RdbstoreUpdateJsunit.test.js'
-import rdbstoreQueryTest from './RdbstoreQuery.test.js'
-import rdbStoreEncryptionTest from './RdbstoreEncryptionJsunit.test.js'
-import rdbStorePredicatesComplexFiledTest from './RdbstorePredicatesComplexFiledJsunit.test.js'
+import relationalStoreBackupRestoreCallbackTest from './RelationalStoreBackupRestoreCallbackJsunit.test.js'
+import relationalStoreBackupRestoreWithFAContextTest from './RelationalStoreBackupRestoreWithFAContextJsunit.test.js'
+import relationalStoreDeleteTest from './RelationalStoreDeleteJsunit.test.js'
+import relationalStoreDistributedTest from './RelationalStoreDistributedJsunit.test.js'
+import relationalStoreInsertTest from './RelationalStoreInsertJsunit.test.js'
+import relationalStorePredicatesJoinTest from './RelationalStorePredicatesJoinJsunit.test.js'
+import relationalStorePredicatesTest from './RelationalStorePredicatesJsunit.test.js'
+import relationalStoreTest from './RelationalStoreJsunit.test.js'
+import relationalStoreResultSetTest from './RelationalStoreResultSetJsunit.test.js'
+import relationalStoreExcuteSqlTest from './RelationalStoreExcuteSqlJsunit.test.js'
+import relationalStoreTransactionTest from './RelationalStoreTransactionJsunit.test.js'
+import relationalStoreUpdateTest from './RelationalStoreUpdateJsunit.test.js'
+import relationalStoreQueryTest from './RelationalStoreQuery.test.js'
+import relationalStoreEncryptionTest from './RelationalStoreEncryptionJsunit.test.js'
+import relationalStorePredicatesComplexFiledTest from './RelationalStorePredicatesComplexFiledJsunit.test.js'
 export default function testsuite() {
-    rdbStoreBackupRestoreCallbackTest()
-    rdbStoreBackupRestoreWithFAContextTest()
-    rdbStoreDeleteTest()
-    rdbStoreDistributedTest()
-    rdbstoreInsertTest()
-    rdbStorePredicatesJoinTest()
-    rdbPredicatesTest()
-    rdbStoreTest()
-    rdbResultSetTest()
-    rdbstoreStoreExcuteSqlTest()
-    rdbstoreTransactionTest()
-    rdbStoreUpdateTest()
-    rdbstoreQueryTest()
-    rdbStoreEncryptionTest()
-    rdbStorePredicatesComplexFiledTest()
+    relationalStoreBackupRestoreCallbackTest()
+    relationalStoreBackupRestoreWithFAContextTest()
+    relationalStoreDeleteTest()
+    relationalStoreDistributedTest()
+    relationalStoreInsertTest()
+    relationalStorePredicatesJoinTest()
+    relationalStorePredicatesTest()
+    relationalStoreTest()
+    relationalStoreResultSetTest()
+    relationalStoreExcuteSqlTest()
+    relationalStoreTransactionTest()
+    relationalStoreUpdateTest()
+    relationalStoreQueryTest()
+    relationalStoreEncryptionTest()
+    relationalStorePredicatesComplexFiledTest()
 }
