@@ -22,23 +22,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "param set persist.ace.testmode.enabled 1",
-                "param set persist.sys.suspend_manager_enabled 0",
-                "reboot",
-                "power-shell wakeup",
-                "hilog -Q pidoff",
-                "hilog -b DEBUG",
-                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
-                "power-shell setmode 602"
-            ],
-            "teardown-command": [
-                "param set persist.sys.suspend_manager_enabled 1",
-                "reboot"
-            ]
         }
     ]
 }

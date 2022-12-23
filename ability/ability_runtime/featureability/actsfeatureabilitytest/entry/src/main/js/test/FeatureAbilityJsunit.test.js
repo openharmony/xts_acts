@@ -19,9 +19,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import commonEvent from '@ohos.commonEvent'
 import particleAbility from '@ohos.ability.particleAbility'
 import backgroundTaskManager from '@ohos.backgroundTaskManager'
-import { BY, UiDriver, UiComponent, MatchPattern } from '@ohos.uitest';
-
-var driver;
 
 const START_ABILITY_TIMEOUT = 4000;
 let subscriberInfoActsStartAbility0100 = {
@@ -64,22 +61,20 @@ function sleep(time) {
 export default function actsFeatureAbilityTest() {
 describe('ActsFeatureAbilityTest', function () {
 
-    beforeAll(async (done) => {
-        console.info('beforeAll called')
-        driver = await UiDriver.create();
-        await sleep(2000);
-        done();
+    beforeAll(function() {
+
+        /*
+         * @tc.setup: setup invoked before all testcases
+         */
+         console.info('beforeAll called')
     }) 
         
-    afterAll(async (done) => {
-        let button = await driver.findComponent(BY.text('知道了').enabled(true));
-        await sleep(4000);
-        await button.click();
-        await sleep(4000);
-        setTimeout(function () {
-            console.info('afterAll called')
-            done();
-        }, 6000);
+    afterAll(function() {
+
+        /*
+         * @tc.teardown: teardown invoked after all testcases
+         */
+         console.info('afterAll called')
     })
 
     beforeEach(function() {
