@@ -70,10 +70,6 @@
       {
         "name": "ohos.permission.GET_BUNDLE_INFO",
         "reason": "need use ohos.permission.INSTALL_BUNDLE"
-      },
-      {
-        "name": "ohos.permission.UPDATE_CONFIGURATION",
-        "reason": "need use ohos.permission.INSTALL_BUNDLE"
       }
     ],
     "js": [
