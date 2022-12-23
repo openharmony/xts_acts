@@ -80,13 +80,13 @@ void MockIDevice::SetDynamicInputSupported(bool isSupported)
 
 int32_t MockIDevice::GetDeviceName(std::string& name)
 {
-    name = "RK3568-CPU";
+    name = "Device-CPU";
     return HDF_SUCCESS;
 }
 
 int32_t MockIDevice::GetVendorName(std::string& name)
 {
-    name = "Rockchip";
+    name = "TestVendor";
     return HDF_SUCCESS;
 }
 

@@ -142,7 +142,7 @@ HWTEST_F(DeviceTest, SUB_AI_NNRt_Func_North_Device_DeviceName_0400, Function | M
     size_t targetDevice = devicesID[0];
 
     const char *name = nullptr;
-    std::string m_deviceName{"RK3568-CPU_Rockchip"};
+    std::string m_deviceName{"Device-CPU_TestVendor"};
 
     OH_NN_ReturnCode ret = OH_NNDevice_GetName(targetDevice, &name);
     EXPECT_EQ(OH_NN_SUCCESS, ret);

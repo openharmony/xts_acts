@@ -13,8 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
+config("nnrt_config") {
+  include_dirs = [
+    "../common",
+    "//foundation/ai/neural_network_runtime",
+    "//foundation/ai/neural_network_runtime/third_party/include",
+    "//third_party/googletest/googletest/include",
+    "//third_party/googletest/googlemock/include",
+    "//third_party/mindspore/mindspore/lite/mindir/include",
+  ]
+  cflags = [ "-Wno-error" ]
+}
+
 ohos_moduletest_suite("ActsAiNnrtFunctionTest") {
-  testonly = true
   module_out_path = "acts/nnrt"
   sources = [
     "../common/mock_idevice.cpp",
@@ -26,14 +37,8 @@ ohos_moduletest_suite("ActsAiNnrtFunctionTest") {
     "src/ModelTest.cpp",
   ]
 
-  include_dirs = [
-    "../common",
-    "//foundation/ai/neural_network_runtime",
-    "//foundation/ai/neural_network_runtime/third_party/include",
-    "//third_party/googletest/googletest/include",
-    "//third_party/googletest/googlemock/include",
-    "//third_party/mindspore/mindspore/lite/mindir/include",
-  ]
+  configs = [ ":nnrt_config" ]
+
   deps = [
     "//foundation/ai/neural_network_runtime/frameworks:libneural_network_runtime",
     "//third_party/googletest:gmock",
@@ -51,5 +56,6 @@ ohos_moduletest_suite("ActsAiNnrtFunctionTest") {
     "mindspore:mindir",
   ]
 
-  cflags = [ "-Wno-error" ]
+  subsystem_name = "ai"
+  part_name = "neural_network_runtime"
 }
