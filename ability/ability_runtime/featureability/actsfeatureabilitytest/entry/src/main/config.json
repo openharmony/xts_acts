@@ -14,7 +14,6 @@
   },
   "deviceConfig": {
     "default": {
-      "process": "processTestAbility"
     }
   },
   "module": {
@@ -55,7 +54,6 @@
         "label": "$string:app_name",
         "type": "page",
         "launchType": "singleton",
-        "process": "processTestAbility",
         "permissions": ["ohos.permission.ACCELEROMETER"],
         "deviceCapability": ["SystemCapability.Ability.AbilityBase"],
         "uri": "uriTest",
@@ -75,8 +73,7 @@
           "launchType": "singleton",
           "permissions": ["ohos.permission.ACCELEROMETER"],
           "deviceCapability": ["SystemCapability.Ability.AbilityBase"],
-          "uri": "uriTest",
-          "process": "processTestAbility"
+          "uri": "uriTest"
       }
     ],
     "reqCapabilities": ["reqCapabilitiesTest1","reqCapabilitiesTest2"],
