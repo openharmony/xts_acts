@@ -18,8 +18,8 @@
     "name": ".FormSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
-        "default",
-        "tablet"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -41,6 +41,7 @@
         ],
         "visible": true,
         "name": ".MainAbility",
+        "srcPath": "MainAbility",
         "srcLanguage": "ets",
         "icon": "$media:icon",
         "description": "$string:description_mainability",
@@ -82,22 +83,6 @@
       {
         "name": "FMS_FormDelete_commonEvent",
         "reason": "need use delete commonEvent"
-      },
-      {
-        "name": "ohos.permission.INSTALL_BUNDLE",
-        "reason": "need use ohos.permission.INSTALL_BUNDLE"
-      },
-      {
-        "name": "ohos.permission.CHANGE_ABILITY_ENABLED_STATE",
-        "reason": "need use ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
-      },
-      {
-        "name": "ohos.permission.REMOVE_CACHE_FILES",
-        "reason": "need use ohos.permission.REMOVE_CACHE_FILES"
-      },
-      {
-        "name": "ohos.permission.LISTEN_BUNDLE_CHANGE",
-        "reason": "need use ohos.permission.LISTEN_BUNDLE_CHANGE"
       },
       {
         "name": "ohos.permission.CLEAN_BACKGROUND_PROCESSES",
