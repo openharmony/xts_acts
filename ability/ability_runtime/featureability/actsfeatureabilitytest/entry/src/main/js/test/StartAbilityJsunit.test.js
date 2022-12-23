@@ -14,9 +14,6 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import { BY, UiDriver, UiComponent, MatchPattern } from '@ohos.uitest';
-
-var driver;
 
 let resultCode = 123;
 let bundleName = 'ohso.act.aafwk';
@@ -24,29 +21,8 @@ let mainAbilityName = 'ohos.acts.aafwk.jsap';
 const errCode = 1;
 const errCode1 = 202;
 
-function sleep(time) {
-    return new Promise((resolve)=>setTimeout(resolve,time));
-}
-
 export default function startAbilityTest() {
 describe('StartAbilityTest', function () {
-
-    beforeAll(async (done) => {
-        driver = await UiDriver.create();
-        await sleep(2000);
-        done();
-    }) 
-        
-    afterAll(async (done) => {
-        let button = await driver.findComponent(BY.text('知道了').enabled(true));
-        await sleep(4000);
-        await button.click();
-        await sleep(2000);
-        setTimeout(function () {
-            console.log("afterAll end");
-            done();
-        }, 6000);
-    })
   
     afterEach(async function(done) {
         let wantInfo = {
