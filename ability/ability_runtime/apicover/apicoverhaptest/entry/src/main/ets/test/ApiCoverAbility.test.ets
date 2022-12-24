@@ -313,7 +313,7 @@ export default function ApiCoverTest() {
      */
     it('SUB_AA_ABILITY_Extension_API_012', 0, async function (done) {
       try {
-        let info: appManager.ProcessRunningInfo;
+        let info: appManagerNew.ProcessRunningInfo;
         let stageContext: common.AbilityStageContext = globalThis.stageContext;
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         let appContext: common.ApplicationContext = abilityContext.getApplicationContext();
@@ -527,7 +527,7 @@ export default function ApiCoverTest() {
      * @tc.level   3
      */
     it('SUB_AA_Test_ProcessRunningInformation_0100', 0, async function (done) {
-      let processRunningInformation:appManager.ProcessRunningInformation;
+      let processRunningInformation:appManagerNew.ProcessRunningInformation;
       let process;
       appManagerNew.getProcessRunningInformation().then((processRunningInformations)=>{
         console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations));
