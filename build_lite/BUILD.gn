@@ -97,7 +97,6 @@ lite_component("acts_component") {
         "//test/xts/acts/appexecfwk_lite/appexecfwk_posix:ActsBundleMgrTest",
         "//test/xts/acts/ability_lite/ability_posix:ActsAbilityMgrTest",
         "//test/xts/acts/ai_lite/ai_engine_posix/base:ActsAiEngineTest",
-        "//test/xts/acts/ai/mindspore:ActsMindSporeTest",
       ]
     }
   }

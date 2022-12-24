@@ -13,14 +13,13 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-module_output_path = "hits/ActsMindSporeTest"
+module_output_path = "acts/ActsMindSporeTest"
 
 ohos_moduletest_suite("ActsMindSporeTest") {
   module_out_path = module_output_path
   sources = [
-    "ndk_test/context_test.cc",
-    "ndk_test/model_test.cc",
-    "ndk_test/tensor_test.cc",
+    "src/ohos_c_api_test_mslite.cpp",
+    "src/ohos_common.cpp",
   ]
 
   include_dirs = [ "//foundation/ai/mindspore/" ]
@@ -30,4 +29,8 @@ ohos_moduletest_suite("ActsMindSporeTest") {
     "//third_party/googletest:gtest",
     "//third_party/mindspore/mindspore/lite:mindspore_lib",
   ]
+
+  defines = [ "__STDC_FORMAT_MACROS" ]
+  subsystem_name = "ai"
+  part_name = "mindspore"
 }
