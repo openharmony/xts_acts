@@ -14,6 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 _all_test_packages = [
+  "${ACTS_ROOT}/ai:ai",
   "${ACTS_ROOT}/arkXtest:arkXtest",
   "${ACTS_ROOT}/global:global",
   "${ACTS_ROOT}/security:security",
