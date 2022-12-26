@@ -17,7 +17,7 @@ import FormExtension from '@ohos.app.form.FormExtensionAbility';
 import formBindingData from '@ohos.application.formBindingData';
 
 export default class ServiceAbility extends FormExtension {
-    onCreate(want) {
+    onAddForm(want) {
         console.info('qianyiyingyong ServiceAbility onCreate');
         let formData = {};
         return formBindingData.createFormBindingData(formData);
@@ -27,7 +27,7 @@ export default class ServiceAbility extends FormExtension {
         console.info('qianyiyingyong ServiceAbility onRequest');
     }
 
-    onDestroy(formId) {
+    onRemoveForm(formId) {
         console.info('qianyiyingyong ServiceAbility onDestroy');
     }
 };
