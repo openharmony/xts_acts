@@ -138,6 +138,32 @@ static const struct HksTestDeriveParams g_testDeriveParams[] = {
         {
             true, DEFAULT_LOCAL_KEY_SIZE, true, DEFAULT_LOCAL_KEY_SIZE }
     },
+    /* pbkdf-sha256-salt-info */
+    { 2, HKS_SUCCESS, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE },
+        {
+            true, /* genKey params */
+            true, HKS_ALG_AES,
+            true, HKS_AES_KEY_SIZE_256,
+            true, HKS_KEY_PURPOSE_DERIVE,
+            true, HKS_DIGEST_SHA256,
+            false, 0,
+            false, 0,
+            false, 0 },
+        { 0 },
+        {
+            true, /* derive params */
+            true, HKS_ALG_PBKDF2,
+            true, HKS_KEY_PURPOSE_DERIVE,
+            true, HKS_DIGEST_SHA256,
+            true, 1000,
+            true, DEFAULT_SALT_SIZE,
+            true, DEFAULT_INFO_SIZE,
+            false, true },
+        {
+            true, DEFAULT_DERIVE_SIZE, true, DEFAULT_DERIVE_SIZE },
+        {
+            false, 0, false, 0 }
+    },
 };
 
 static int32_t DeriveKey(const struct HksTestDeriveParamSet *deriveParamSetParams, const struct HksBlob *masterKey,
@@ -242,6 +268,15 @@ static void ExecHksDeriveTest002(void const *argument)
     osThreadExit();
 }
 
+static void ExecHksDeriveTest003(void const *argument)
+{
+    LiteTestPrint("HksDeriveTest003 Begin!\n");
+    int32_t ret = BaseTestDerive(2);
+    TEST_ASSERT_TRUE(ret == 0);
+    LiteTestPrint("HksDeriveTest003 End!\n");
+    osThreadExit();
+}
+
 #ifndef _CUT_AUTHENTICATE_
 /**
  * @tc.name: HksDeriveTest.HksDeriveTest001
@@ -261,6 +296,27 @@ LITE_TEST_CASE(HksDeriveTest, HksDeriveTest001, Level1)
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = g_setPriority;
     id = osThreadNew((osThreadFunc_t)ExecHksDeriveTest001, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksDeriveTest001 End2!\n");
+}
+/**
+ * @tc.name: HksDeriveTest.HksDeriveTest003
+ * @tc.desc: The static function will return true;
+ * @tc.type: FUNC
+ */
+LITE_TEST_CASE(HksDeriveTest, HksDeriveTest003, Level1)
+{
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksDeriveTest003, NULL, &attr);
     sleep(WAIT_TO_TEST_DONE);
     LiteTestPrint("HksDeriveTest001 End2!\n");
 }
@@ -287,4 +343,5 @@ LITE_TEST_CASE(HksDeriveTest, HksDeriveTest002, Level1)
     sleep(WAIT_TO_TEST_DONE);
     LiteTestPrint("HksDeriveTest002 End2!\n");
 }
+
 RUN_TEST_SUITE(HksDeriveTest);
