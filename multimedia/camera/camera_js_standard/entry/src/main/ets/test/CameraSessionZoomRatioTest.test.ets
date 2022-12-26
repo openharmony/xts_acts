@@ -236,13 +236,7 @@ export default function cameraSessionZoomRatioTest() {
     async function beginCameraSessionConfig() {
         console.info('Enter beginCameraSessionConfig');
 
-        mCameraSession.beginConfig(async (err) => {
-            if (!err) {
-              console.info(TAG + "Entering beginConfig PASSED");
-            } else {
-              console.info(TAG + "Entering beginConfig FAILED : " + err.message);
-            }
-        })
+        mCameraSession.beginConfig();
 
         await sleep(30);
 
@@ -284,7 +278,7 @@ export default function cameraSessionZoomRatioTest() {
             return false;
         }
 
-        await beginCameraSessionConfig();
+        // await beginCameraSessionConfig();
 
         console.info('Exit createCameraSessionInstance');
 
@@ -303,13 +297,7 @@ export default function cameraSessionZoomRatioTest() {
             return false;
         }
         
-        mCameraInput = null;
-        await mCameraManager.createCameraInput(mCameraDevicesArray[idx]).then((result) => {
-            console.info('createCameraInput success');
-            mCameraInput = result;
-        }).catch((err) => {
-            console.info('createCameraInput failed, err = ' + err.message);
-        });
+        mCameraInput = mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
         
         if (isEmpty(mCameraInput)) {
             console.info(TAG + "createCameraInput FAILED");
@@ -350,15 +338,7 @@ export default function cameraSessionZoomRatioTest() {
     async function createOutput(idx:any) {
         console.info('Enter createOutput');
 
-        let cameraOutputCap = null;
-        await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]).then((result) => {
-            console.info('getSupportedOutputCapability success');
-            cameraOutputCap = result;
-        }).catch((err) => {
-            console.info('getSupportedOutputCapability failed, err = ' + err.message);
-            mPreviewOutput = null;
-            mPhotoOutput = null;
-        });
+        let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
 
         if (!isEmpty(cameraOutputCap)) {
             if (!isEmpty(cameraOutputCap.previewProfiles)) {
@@ -450,6 +430,11 @@ export default function cameraSessionZoomRatioTest() {
         await createInput(idx);
         await createOutput(idx);
 
+        await beginCameraSessionConfig();
+
+        console.info(TAG + "Start to addInput");
+       
+
         await sleep(1);
 
         if (!isEmpty(mCameraInput)) {
@@ -475,7 +460,12 @@ export default function cameraSessionZoomRatioTest() {
         await sleep(1);
 
         await commitCameraSessionConfig();
-        await beginCameraSessionConfig();
+        
+        console.info(TAG + "Entering startCameraSession start session begin");
+
+        await mCameraSession.start();
+
+        console.info(TAG + "Entering startCameraSession start session end");
         
         /*
         await mCameraSession.start(async (err) => {
@@ -569,65 +559,7 @@ export default function cameraSessionZoomRatioTest() {
             console.info('afterAll case');
         })
 
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100
-        * @tc.name      : Check capture session get zoom ratio range with callback
-        * @tc.desc      : Check capture session get zoom ratio range with callback
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100--------------");
 
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            } else {
-                for (let i = 0; i < mCameraNum; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100 start for camera[" + i + "]");
-    
-                    await startCameraSession(i);
-    
-                    mCameraSession.getZoomRatioRange(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100 callback");
-                        if (!err) {
-                            if (data.length > 0) {
-                                mZoomRatioRangeArray[i] = data;
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100 PASSED with ZoomRatioRange length is: " + data.length);
-                                for (let j = 0; j < mZoomRatioRangeArray[i].length; j++) {
-                                    console.info(TAG + j + "th, zoom ratio is: " + data[j] + ", " + mZoomRatioRangeArray[i][j]);
-    
-                                    if ((mZoomRatioMaxArray[i] == undefined) || (mZoomRatioMaxArray[i] < mZoomRatioRangeArray[i][j])) {
-                                        mZoomRatioMaxArray[i] = mZoomRatioRangeArray[i][j]
-                                    }
-    
-                                    if ((mZoomRatioMinArray[i] == undefined) || (mZoomRatioMinArray[i] > mZoomRatioRangeArray[i][j])) {
-                                        mZoomRatioMinArray[i] = mZoomRatioRangeArray[i][j]
-                                    }
-                                }
-    
-                                console.info(TAG + "Zoom ratio max is: " + mZoomRatioMaxArray[i] + ", min is: " + mZoomRatioMinArray[i]);
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100 FAILED with ZoomRatioRange length is: " + data.length);
-                                expect().assertFail();
-                            }
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100 PASSED : " + err.message);
-                        }
-                    })
-                    await sleep(100);
-                    
-                    await stopCameraSession();
-    
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100 end for camera[" + i + "]");
-                }
-    
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100 ends here");
-                done();           
-            }
-        })
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_PROMISE_0100
@@ -680,65 +612,7 @@ export default function cameraSessionZoomRatioTest() {
             }
         })
 
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100
-        * @tc.name      : Check capture session zoom ratio with callback
-        * @tc.desc      : Check capture session zoom ratio with callback
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100--------------");
-
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            } else {
-                for (let i = 0; i < mCameraNum; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 start for camera[" + i + "]");
-    
-                    if (!isEmpty(mZoomRatioRangeArray[i])) {
-                        await startCameraSession(i);
-    
-                        mCameraSession.setZoomRatio(mZoomRatioRangeArray[i][0], async (err) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 callback");
-                            if (!err) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 PASSED with ZoomRatio is: " + mZoomRatioRangeArray[i][0]);
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-
-                        mCameraSession.getZoomRatio(async (err, data) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 callback");
-                            if (!err) {
-                                if (data == mZoomRatioRangeArray[i][0]) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 PASSED with ZoomRatioRange is: " + data);
-                                } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 FAILED with ZoomRatioRange is: " + data);
-                                    expect().assertFail();
-                                }
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-                        
-                        await stopCameraSession();    
-                    }
-                    
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 end for camera[" + i + "]");
-                }
-    
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0100 ends here");
-                done();
-            }
-        })
+ 
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0100
@@ -788,66 +662,7 @@ export default function cameraSessionZoomRatioTest() {
             }
         })    
 
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101
-        * @tc.name      : Check capture session zoom ratio with callback(invalid value, max + 1)
-        * @tc.desc      : Check capture session zoom ratio with callback(invalid value, max + 1)
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101--------------");
-
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            } else {
-                for (let i = 0; i < mCameraNum; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 start for camera[" + i + "]");
-    
-                    if (!isEmpty(mZoomRatioRangeArray[i])) {
-                        await startCameraSession(i);
-        
-                        mCameraSession.setZoomRatio((mZoomRatioMaxArray[i] + 1), async (err) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 callback");
-                            if (!err) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] + 1));
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-
-                        mCameraSession.getZoomRatio(async (err, data) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 callback");
-                            if (!err) {
-                                if (data != (mZoomRatioMaxArray[i] + 1)) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 PASSED with ZoomRatio is: " + data);
-                                } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 FAILED with ZoomRatio is: " + data);
-                                    expect().assertFail();
-                                }
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-                        
-                        await stopCameraSession();
-                    }
-    
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 end for camera[" + i + "]");
-                }
-    
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0101 ends here");
-                done();
-            }
-        })
-
+ 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0101
         * @tc.name      : Check capture session set zoom ratio with promise(invalid value, max + 1)
@@ -896,65 +711,7 @@ export default function cameraSessionZoomRatioTest() {
             }
         })    
 
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102
-        * @tc.name      : Check capture session zoom ratio with callback(invalid value, max + 0.1)
-        * @tc.desc      : Check capture session zoom ratio with callback(invalid value, max + 0.1)
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102--------------");
 
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            } else {
-                for (let i = 0; i < mCameraNum; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 start for camera[" + i + "]");
-    
-                    if (!isEmpty(mZoomRatioRangeArray[i])) {
-                        await startCameraSession(i);
-        
-                        mCameraSession.setZoomRatio((mZoomRatioMaxArray[i] + 0.1), async (err) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 callback");
-                            if (!err) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] + 0.1));
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-
-                        mCameraSession.getZoomRatio(async (err, data) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 callback");
-                            if (!err) {
-                                if (data != (mZoomRatioMaxArray[i] + 0.1)) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 PASSED with ZoomRatio is: " + data);
-                                } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 FAILED with ZoomRatio is: " + data);
-                                    expect().assertFail();
-                                }
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-                        
-                        await stopCameraSession();
-                    }
-    
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 end for camera[" + i + "]");
-                }
-    
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0102 ends here");
-                done();
-            }
-        })
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0102
@@ -1004,65 +761,7 @@ export default function cameraSessionZoomRatioTest() {
             }
         })    
 
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103
-        * @tc.name      : Check capture session zoom ratio with callback(invalid value, min - 1)
-        * @tc.desc      : Check capture session zoom ratio with callback(invalid value, min - 1)
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103--------------");
 
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            } else {
-                for (let i = 0; i < mCameraNum; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 start for camera[" + i + "]");
-    
-                    if (!isEmpty(mZoomRatioRangeArray[i])) {
-                        await startCameraSession(i);
-        
-                        mCameraSession.setZoomRatio((mZoomRatioMinArray[i] - 1), async (err) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 callback");
-                            if (!err) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] - 1));
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-
-                        mCameraSession.getZoomRatio(async (err, data) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 callback");
-                            if (!err) {
-                                if (data != (mZoomRatioMinArray[i] - 1)) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 PASSED with ZoomRatio is: " + data);
-                                } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 FAILED with ZoomRatio is: " + data);
-                                    expect().assertFail();
-                                }
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-                        
-                        await stopCameraSession();
-                    }
-    
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 end for camera[" + i + "]");
-                }
-    
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 ends here");
-                done();
-            }
-        })
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103
@@ -1112,65 +811,7 @@ export default function cameraSessionZoomRatioTest() {
             }
         })    
 
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104
-        * @tc.name      : Check capture session zoom ratio with callback(invalid value, min - 0.1)
-        * @tc.desc      : Check capture session zoom ratio with callback(invalid value, min - 0.1)
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104--------------");
-
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            } else {
-                for (let i = 0; i < mCameraNum; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 start for camera[" + i + "]");
-    
-                    if (!isEmpty(mZoomRatioRangeArray[i])) {
-                        await startCameraSession(i);
-        
-                        mCameraSession.setZoomRatio((mZoomRatioMaxArray[i] - 0.1), async (err) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 callback");
-                            if (!err) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] - 0.1));
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-
-                        mCameraSession.getZoomRatio(async (err, data) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 callback");
-                            if (!err) {
-                                if (data != (mZoomRatioMaxArray[i] - 0.1)) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 PASSED with ZoomRatio is: " + data);
-                                } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 FAILED with ZoomRatio is: " + data);
-                                    expect().assertFail();
-                                }
-                            } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 FAILED : " + err.message);
-                                expect().assertFail();
-                            }
-                        })
-                        await sleep(500);
-                        
-                        await stopCameraSession();
-                    }
-    
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 end for camera[" + i + "]");
-                }
-    
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104 ends here");
-                done();
-            }
-        })
+ 
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104
