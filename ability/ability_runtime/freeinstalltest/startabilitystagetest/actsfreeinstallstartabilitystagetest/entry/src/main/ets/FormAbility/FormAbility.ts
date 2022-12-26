@@ -18,30 +18,30 @@ import formBindingData from '@ohos.application.formBindingData';
 import formInfo from '@ohos.application.formInfo';
 
 export default class FormAbility extends FormExtension {
-    onCreate(want) {
+    onAddForm(want) {
         // Called to return a FormBindingData object.
         let formData = {};
         return formBindingData.createFormBindingData(formData);
     }
 
-    onCastToNormal(formId) {
+    onCastToNormalForm(formId) {
         // Called when the form provider is notified that a temporary form is successfully
         // converted to a normal form.
     }
 
-    onUpdate(formId) {
+    onUpdateForm(formId) {
         // Called to notify the form provider to update a specified form.
     }
 
-    onVisibilityChange(newStatus) {
+    onChangeFormVisibility(newStatus) {
         // Called when the form provider receives form events from the system.
     }
 
-    onEvent(formId, message) {
+    onFormEvent(formId, message) {
         // Called when a specified message event defined by the form provider is triggered.
     }
 
-    onDestroy(formId) {
+    onRemoveForm(formId) {
         // Called to notify the form provider that a specified form has been destroyed.
     }
 
