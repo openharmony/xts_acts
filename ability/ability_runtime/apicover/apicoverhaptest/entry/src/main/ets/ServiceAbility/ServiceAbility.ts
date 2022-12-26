@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
+import ServiceExtension from '@ohos.app.ability.ServiceExtensionAbility'
 import commonEvent from "@ohos.commonEvent";
 import Want from '@ohos.application.Want';
 import rpc from '@ohos.rpc';

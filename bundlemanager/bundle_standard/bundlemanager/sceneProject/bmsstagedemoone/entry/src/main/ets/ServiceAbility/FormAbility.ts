@@ -1,4 +1,4 @@
-import FormExtension from '@ohos.application.FormExtension';
+import FormExtension from '@ohos.app.form.FormExtensionAbility';
 import formBindingData from '@ohos.application.formBindingData';
 import formInfo from '@ohos.application.formInfo';
 
