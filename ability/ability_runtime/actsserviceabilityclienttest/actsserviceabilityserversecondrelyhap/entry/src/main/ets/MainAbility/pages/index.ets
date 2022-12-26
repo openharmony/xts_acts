@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Core} from 'deccjsunit/index'
+import {Core} from '@ohos/hypium'
 
 @Entry
 @Component
