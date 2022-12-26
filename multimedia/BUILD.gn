@@ -56,6 +56,8 @@ group("multimedia") {
       "medialibrary/mediaLibrary_fileAsset:mediaLibrary_fileAsset_hap",
       "medialibrary/mediaLibrary_fileKey:mediaLibrary_fileKey_hap",
       "medialibrary/mediaLibrary_fileResult:mediaLibrary_fileResult_hap",
+      "medialibrary/mediaLibrary_getExifNoLocation:mediaLibrary_getExifNolocation_hap",
+      "medialibrary/mediaLibrary_getExiflocation:mediaLibrary_getExifLocation_hap",
       "medialibrary/mediaLibrary_getThumbnail:mediaLibrary_getThumbnail_hap",
       "medialibrary/mediaLibrary_mediafetchoptions:mediaLibrary_mediafetchoptions_hap",
       "medialibrary/mediaLibrary_trash:mediaLibrary_trash_js_hap",

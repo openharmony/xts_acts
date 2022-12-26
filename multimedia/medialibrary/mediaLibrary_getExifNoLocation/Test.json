@@ -1,0 +1,60 @@
+{
+    "description": "Configuration for mediaLibrary Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "180000",
+        "bundle-name": "ohos.acts.multimedia.mediaLibrary",
+        "module-name": "phone",
+        "shell-timeout": "600000",
+        "testcase-timeout": 70000
+    },
+    "kits": [
+        {
+            "type": "ShellKit",
+            "pre-push": [],
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.MediaLibraryDataA/*",
+                "mkdir -pv /storage/media/100/local/files/{Pictures,Videos,Audios,Documents}",
+                "mkdir -p /storage/media/100/local/temp",
+                "param set persist.ace.testmode.enabled 1",
+                "power-shell wakeup",
+                "uinput  -T -d 300 600 -m 300 600 300 100 -u 300 100",
+                "power-shell setmode 602"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [],
+            "push": [
+                "./resource/medialibrary/test_exif.jpg ->/storage/media/100/local/temp"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir -pv /storage/media/100/local/files/Pictures/Images",
+                "cp /storage/media/100/local/temp/test_exif.jpg /storage/media/100/local/files/Pictures/Images/test_exif.jpg",
+                "chmod -R 777 /storage/media/100/local/files/*",
+                "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
+                "hilog -Q pidoff",
+                "hilog -p off",
+                "hilog -b I",
+                "hilog -b D -D 0xD002B70",
+                "scanner",
+                "sleep 10"
+            ],
+            "teardown-command": [
+                "hilog -b X -D 0xD002B70",
+                "power-shell setmode 600"
+            ]
+        },
+        {
+            "test-file-name": [
+                "ActsMediaLibraryGetExifNolocationTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
