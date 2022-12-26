@@ -30,7 +30,11 @@
 #include "ohos_types.h"
 
 #define DEFAULT_SRC_DATA_SIZE 200
+#define DIGEST_SHA1_HASH_SIZE 20
+#define DIGEST_SHA224_HASH_SIZE 28
 #define DIGEST_SHA256_HASH_SIZE 32
+#define DIGEST_SHA384_HASH_SIZE 48
+#define DIGEST_SHA512_HASH_SIZE 64
 #define TEST_TASK_STACK_SIZE      0x2000
 #define WAIT_TO_TEST_DONE         4
 
@@ -92,47 +96,77 @@ static const struct HksTestHashParams g_testHashParams[] = {
         { true, DEFAULT_SRC_DATA_SIZE, true, DEFAULT_SRC_DATA_SIZE },
         { true, DIGEST_SHA256_HASH_SIZE, true, DIGEST_SHA256_HASH_SIZE }
     },
+    { 1, HKS_SUCCESS,
+        { true, true, HKS_DIGEST_SHA384 },
+        { true, DEFAULT_SRC_DATA_SIZE, true, DEFAULT_SRC_DATA_SIZE },
+        { true, DIGEST_SHA384_HASH_SIZE, true, DIGEST_SHA384_HASH_SIZE }
+    },
+    { 2, HKS_SUCCESS,
+        { true, true, HKS_DIGEST_SHA512 },
+        { true, DEFAULT_SRC_DATA_SIZE, true, DEFAULT_SRC_DATA_SIZE },
+        { true, DIGEST_SHA512_HASH_SIZE, true, DIGEST_SHA512_HASH_SIZE }
+    },
 };
 
-static void ExecHksHashTest001(void const *argument)
+static void ExecHksHashTestCommon(int index)
 {
-    LiteTestPrint("HksMacTest001 Begin!\n");
     struct HksParamSet *paramSet = NULL;
     struct HksBlob *srcData = NULL;
     struct HksBlob *hash = NULL;
 
     int32_t ret = TestConstructHashParamSet(&paramSet,
-        g_testHashParams[0].paramSetParams.paramSetExist,
-        g_testHashParams[0].paramSetParams.setDigest, g_testHashParams[0].paramSetParams.digest);
+        g_testHashParams[index].paramSetParams.paramSetExist,
+        g_testHashParams[index].paramSetParams.setDigest, g_testHashParams[index].paramSetParams.digest);
     TEST_ASSERT_TRUE(ret == 0);
 
     ret = TestConstuctBlob(&srcData,
-        g_testHashParams[0].srcDataParams.blobExist,
-        g_testHashParams[0].srcDataParams.blobSize,
-        g_testHashParams[0].srcDataParams.blobDataExist,
-        g_testHashParams[0].srcDataParams.blobDataSize);
+        g_testHashParams[index].srcDataParams.blobExist,
+        g_testHashParams[index].srcDataParams.blobSize,
+        g_testHashParams[index].srcDataParams.blobDataExist,
+        g_testHashParams[index].srcDataParams.blobDataSize);
     TEST_ASSERT_TRUE(ret == 0);
 
     ret = TestConstructBlobOut(&hash,
-        g_testHashParams[0].hashParams.blobExist,
-        g_testHashParams[0].hashParams.blobSize,
-        g_testHashParams[0].hashParams.blobDataExist,
-        g_testHashParams[0].hashParams.blobDataSize);
+        g_testHashParams[index].hashParams.blobExist,
+        g_testHashParams[index].hashParams.blobSize,
+        g_testHashParams[index].hashParams.blobDataExist,
+        g_testHashParams[index].hashParams.blobDataSize);
     TEST_ASSERT_TRUE(ret == 0);
 
     ret = HksHashRun(paramSet, srcData, hash, 1);
-    if (ret != g_testHashParams[0].expectResult) {
-        HKS_TEST_LOG_I("HksHashRun failed, ret[%u] = %d", g_testHashParams[0].testId, ret);
+    if (ret != g_testHashParams[index].expectResult) {
+        HKS_TEST_LOG_I("HksHashRun failed, ret[%u] = %d", g_testHashParams[index].testId, ret);
     }
-    TEST_ASSERT_TRUE(ret == g_testHashParams[0].expectResult);
+    TEST_ASSERT_TRUE(ret == g_testHashParams[index].expectResult);
 
     HksFreeParamSet(&paramSet);
     TestFreeBlob(&srcData);
     TestFreeBlob(&hash);
-    HKS_TEST_LOG_I("[%u]TestHash, Testcase_Hash_[%03u] pass!", 1, g_testHashParams[0].testId);
+    HKS_TEST_LOG_I("[%u]TestHash, Testcase_Hash_[%03u] pass!", 1, g_testHashParams[index].testId);
     TEST_ASSERT_TRUE(ret == 0);
-    
+}
+
+static void ExecHksHashTest001(void const *argument)
+{
+    LiteTestPrint("HksMacTest001 Begin!\n");
+    ExecHksHashTestCommon(0);
     LiteTestPrint("HksMacTest001 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksHashTest002(void const *argument)
+{
+    LiteTestPrint("HksMacTest002 Begin!\n");
+    ExecHksHashTestCommon(1);
+    LiteTestPrint("HksMacTest002 End!\n");
+    osThreadExit();
+}
+
+static void ExecHksHashTest003(void const *argument)
+{
+    LiteTestPrint("HksMacTest003 Begin!\n");
+    ExecHksHashTestCommon(2);
+    LiteTestPrint("HksMacTest003 End!\n");
     osThreadExit();
 }
 
@@ -154,6 +188,48 @@ LITE_TEST_CASE(HksHashTest, HksHashTest001, Level1)
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = g_setPriority;
     id = osThreadNew((osThreadFunc_t)ExecHksHashTest001, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksMacTest001 End2!\n");
+}
+/**
+ * @tc.name: HksHashTest.HksHashTest002
+ * @tc.desc: The static function will return true;
+ * @tc.type: FUNC
+ */
+LITE_TEST_CASE(HksHashTest, HksHashTest002, Level1)
+{
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksHashTest002, NULL, &attr);
+    sleep(WAIT_TO_TEST_DONE);
+    LiteTestPrint("HksMacTest001 End2!\n");
+}
+/**
+ * @tc.name: HksHashTest.HksHashTest003
+ * @tc.desc: The static function will return true;
+ * @tc.type: FUNC
+ */
+LITE_TEST_CASE(HksHashTest, HksHashTest003, Level1)
+{
+    osThreadId_t id;
+    osThreadAttr_t attr;
+    g_setPriority = osPriorityAboveNormal6;
+    attr.name = "test";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = TEST_TASK_STACK_SIZE;
+    attr.priority = g_setPriority;
+    id = osThreadNew((osThreadFunc_t)ExecHksHashTest003, NULL, &attr);
     sleep(WAIT_TO_TEST_DONE);
     LiteTestPrint("HksMacTest001 End2!\n");
 }
