@@ -407,7 +407,7 @@ export default function ActsDAGetSetTest() {
         it('setOsAccountDistributedInfo_test009', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitNickName = '';
-            for (var i = 0; i < 21; i++) {
+            for (var i = 0; i < 1025; i++) {
                 limitNickName += 'n';
             }
             let obj = {
@@ -434,7 +434,7 @@ export default function ActsDAGetSetTest() {
         it('setOsAccountDistributedInfo_test010', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitNickName = '';
-            for (var i = 0; i < 21; i++) {
+            for (var i = 0; i < 1025; i++) {
                 limitNickName += 'n';
             }
             let obj = {
@@ -465,7 +465,7 @@ export default function ActsDAGetSetTest() {
         it('setOsAccountDistributedInfo_test011', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitAvatar = '';
-            for (var i = 0; i < LIMIT*3; i++) {
+            for (var i = 0; i < LIMIT*10; i++) {
                 limitAvatar +=
                 '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
                 '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
@@ -505,7 +505,7 @@ export default function ActsDAGetSetTest() {
         it('setOsAccountDistributedInfo_test012', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitAvatar = '';
-            for (var i = 0; i < LIMIT*3; i++) {
+            for (var i = 0; i < LIMIT*10; i++) {
                 limitAvatar +=
                 '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
                 '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
