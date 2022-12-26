@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 
-import securityLabel from '@ohos.securityLabel';
+import securityLabel from '@ohos.file.securityLabel';
 import fileio from '@ohos.fileio';
+import fileIO from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility';
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
@@ -35,5 +36,6 @@ export {
   it,
   expect,
   securityLabel,
-  fileio
+  fileio,
+  fileIO
 };
