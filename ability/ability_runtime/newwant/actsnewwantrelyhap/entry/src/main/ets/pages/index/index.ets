@@ -15,7 +15,7 @@
 
 import file from '@system.file';
 
-//import {Core, ExpectExtend, InstrumentLog, ReportExtend} from "deccjsunit/index"
+//import {Core, ExpectExtend, InstrumentLog, ReportExtend} from "@ohos/hypium"
 //import testsuite from "../../test/List.test.ets"
 
 @Entry
