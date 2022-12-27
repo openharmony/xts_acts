@@ -1331,6 +1331,7 @@ describe('audioRenderer', function () {
                 audioRen = data;
             }
         });
+		await sleep(100);
         console.log(`isPass: ${isPass}`);
         if (isPass) {
             resultFlag = true;
