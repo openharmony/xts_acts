@@ -30,7 +30,7 @@ describe('HidebugJsTest', function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0600 Test start*************');
         try {
             let heapSize = hidebug.getNativeHeapSize();
-            expect(heapSize>=BigInt(0)).assertTrue();
+            expect(heapSize>BigInt(0)).assertTrue();
         } catch (error) {
             expect().assertFail();
         }
@@ -46,7 +46,7 @@ describe('HidebugJsTest', function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0400 Test start*************');
         try {
             let heapAllocatedSize = hidebug.getNativeHeapAllocatedSize();
-            expect(heapAllocatedSize>=BigInt(0)).assertTrue();
+            expect(heapAllocatedSize>BigInt(0)).assertTrue();
         } catch (error) {
             expect().assertFail();
         }
@@ -62,7 +62,7 @@ describe('HidebugJsTest', function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0500 Test start*************');
         try {
             let heapFreeSize = hidebug.getNativeHeapFreeSize();
-            expect(heapFreeSize>=BigInt(0)).assertTrue();
+            expect(heapFreeSize>BigInt(0)).assertTrue();
         } catch (error) {
             expect().assertFail();
         }
@@ -426,7 +426,7 @@ describe('HidebugJsTest', function () {
             }
             hidebug.stopJsCpuProfiling();
             var pid = process.pid;
-            let path = "/proc/" + pid + "/root/data/storage/el2/base/files/" + filename + ".json";
+            let path = "/proc/" + pid + "/root/data/storage/el2/base/files/" + filename + ".cpuprofile";
             let data = fileio.readTextSync(path);
             if (data.includes("napi")) {
                 expect(true).assertTrue();
