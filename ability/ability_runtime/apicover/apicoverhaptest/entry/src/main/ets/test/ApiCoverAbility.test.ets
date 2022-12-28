@@ -586,6 +586,7 @@ export default function ApiCoverTest() {
       console.info("SUB_AA_FMS_AbilityStage_0100===AbilityStage===" + JSON.stringify(globalThis.stageContext))
       console.info("SUB_AA_FMS_AbilityStage_0100===AbilityStage===" + JSON.stringify(globalThis.stageContext.config))
       let directions = globalThis.stageContext.config.direction
+      let pointer = globalThis.stageContext.config.hasPointerDevice
       let subscriber = null
         let subscribeInfo = {
           events: ["AbilityStage_StartAbility"]
@@ -598,6 +599,7 @@ export default function ApiCoverTest() {
           console.info("SUB_AA_FMS_AbilityStage_0100===SubscribeInfoCallback===" + JSON.stringify(data))
             expect(data.parameters["config"]).assertEqual(-1)
             expect(data.parameters["config"]).assertEqual(directions)
+            expect(pointer).assertFalse()
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
             await sleep(4000)
             done()
