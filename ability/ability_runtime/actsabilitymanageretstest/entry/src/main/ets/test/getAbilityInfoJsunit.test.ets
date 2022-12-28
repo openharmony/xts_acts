@@ -12,12 +12,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium';
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 export default function getHapModuleInfoJsunit() {
   describe('getAbilityInfoTest', function () {
+
+    let TAG1 = "SUB_AA_OpenHarmony == getAbilityInfoTest: ";
+    let sleepTimeOne = 1000;
+    let id = undefined;
+      beforeAll(async (done) => {
+        console.log(TAG1 + "beforeAll called");
+        let myReason = 'test FaShowOnLockTest';
+        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+            console.log(TAG1 + "Request suspension delay will time out.");
+        })
+        id = delayInfo.requestId;
+        console.log(TAG1 + "requestId is : " + id);
+        setTimeout(function () {
+            console.log(TAG1 + "beforeAll end");
+            done();
+        }, sleepTimeOne);
+    })
+
+    afterAll(async (done) => {
+        console.log(TAG1 + "afterAll called");
+        backgroundTaskManager.cancelSuspendDelay(id);
+        setTimeout(function () {
+            console.log(TAG1 + "afterAll end");
+            done();
+        }, sleepTimeOne);
+    })
 
     /**
      * @tc.number: context_getAbilityInfo_test_0100
