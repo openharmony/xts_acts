@@ -775,19 +775,14 @@ describe('SingleKvStoreCallbackTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700', 0, async function (done) {
         console.log('SingleKvStoreDeletePredicatesCallbackTest001');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            await kvStore.delete(predicates, function (err,data) {
-                if (err == undefined) {
-                    console.log('SingleKvStoreDeletePredicatesCallbackTest001 delete success');
-                    expect(null).assertFail();
-                } else {
-                    console.error('SingleKvStoreDeletePredicatesCallbackTest001 delete fail' + err`, error code is ${err.code}, message is ${err.message}`);
-                    expect(err != undefined).assertTrue();
-                }
+            await kvStore.delete(KEY_TEST_STRING_ELEMENT, function (err,data) {
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700 delete err: ' + err);
+                    expect(err == undefined).assertTrue();
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700 expect fin');
                 done();
             });
         }catch(e) {
-            console.error('SingleKvStoreDeletePredicatesCallbackTest001 e' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700 e' + `, error code is ${e.code}, message is ${e.message}`);
             expect(e.code == 401).assertTrue();
             done();
         }
@@ -802,13 +797,10 @@ describe('SingleKvStoreCallbackTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2800', 0, async function (done) {
         console.log('SingleKvStoreDeletePredicatesCallbackTest002');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            let arr = ["name"];
-            predicates.inKeys(arr);
             await kvStore.put("name", "Bob", async function (err, data) {
                 console.log('SingleKvStoreDeletePredicatesCallbackTest002 put success');
                 expect(err == undefined).assertTrue();
-                await kvStore.delete(predicates, function (err,data) {
+                await kvStore.delete("name", function (err,data) {
                     console.log('SingleKvStoreDeletePredicatesCallbackTest002 delete success');
                     expect(err == undefined).assertTrue();
                     done();
@@ -828,23 +820,20 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.name Test Js Api SingleKvStore.Delete() testcase 003
      */
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2900', 0, async function (done) {
-        console.log('SingleKvStoreDeletePredicatesCallbackTest003');
+        console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2900');
         try {
-            let predicates = new dataShare.DataSharePredicates();
             let arr = [null];
-            predicates.inKeys(arr);
             await kvStore.put("name", "Bob", async function (err, data) {
-                console.log('SingleKvStoreDeletePredicatesCallbackTest003 put success');
+                console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2900 put success');
                 expect(err == undefined).assertTrue();
-                await kvStore.delete(predicates, function (err,data) {
-                    console.log('SingleKvStoreDeletePredicatesCallbackTest003 delete success: '+err);
-                    expect(err == undefined).assertTrue();
-                    done();
-                });
+                console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2900 expect finash');
             })
+            await kvStore.delete(arr, function (err,data) {
+                console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2900 delete success: '+err);
+            });
         } catch(e) {
-            console.error('SingleKvStoreDeletePredicatesCallbackTest003 e' + `, error code is ${e.code}, message is ${e.message}`);
-            expect(null).assertFail();
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2900 e' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -2228,8 +2217,8 @@ describe('SingleKvStoreCallbackTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULT_CALLBACK_7800', 0, async function (done) {
         console.log('SingleKvStoreGetResultSetPredicatesCallbackTest001');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            await kvStore.getResultSet(predicates).then((result) => {
+            let query = new factory.Query();
+            await kvStore.getResultSet(query).then((result) => {
                 console.log('SingleKvStoreGetResultSetPredicatesCallbackTest001 getResultSet success');
             }).catch((err) => {
                 console.error('SingleKvStoreGetResultSetPredicatesCallbackTest001 getResultSet fail ' + err`, error code is ${err.code}, message is ${err.message}`);
