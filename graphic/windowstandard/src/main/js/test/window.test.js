@@ -1251,6 +1251,7 @@ describe('window_test', function () {
             expect(wnd != null).assertTrue();
             wnd.resetSize(400, 400).then(() => {
                 console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                wnd.destroy();
                 done();
             }, (err_resetSize) => {
                 console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
@@ -1280,6 +1281,7 @@ describe('window_test', function () {
                 console.log('windowTest CreateTest2 callback create success data' + data);
                 data.resetSize(400, 400).then(() => {
                     console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                    data.destroy();
                     done();
                 }, (err_resetSize) => {
                     console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
@@ -1930,10 +1932,10 @@ describe('window_test', function () {
     it('enumWindowStageEventType_Test_001', 0, async function (done) {
         console.log('test the enum value of WindowStageEventType begin');
         try {
-            expect(1).assertEqual(window.WindowStageEventType.FOREGROUND);
+            expect(1).assertEqual(window.WindowStageEventType.SHOWN);
             expect(2).assertEqual(window.WindowStageEventType.ACTIVE);
             expect(3).assertEqual(window.WindowStageEventType.INACTIVE);
-            expect(4).assertEqual(window.WindowStageEventType.BACKGROUND);
+            expect(4).assertEqual(window.WindowStageEventType.HIDDEN);
             done();
         } catch (err) {
             console.log('test enum value of windowStageEventType error ' + JSON.stringify(err));
