@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import data_Rdb from '@ohos.data.relationalStore';
 import ability_featureAbility from '@ohos.ability.featureAbility'
 var context = ability_featureAbility.getContext();

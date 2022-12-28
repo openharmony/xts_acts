@@ -771,13 +771,12 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100', 0, async function (done) {
         console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            await kvStore.delete(predicates).then((data) => {
+            await kvStore.delete("KEY_TEST_STRING_ELEMENTS").then((data) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100 delete success');
-                    expect(null).assertFail();
                 }).catch((err) => {
-                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100 delete fail ' + `, error code is ${err.code}, message is ${err.message}`);
-                    expect(err != undefined).assertTrue();
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100 delete fail err ' + err);
+                    expect(err == undefined).assertTrue();
+                    done();
                 });
         }catch(e) {
             console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100 e' + `, error code is ${e.code}, message is ${e.message}`);
@@ -795,13 +794,10 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0200', 0, async function (done) {
         console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0200');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            let arr = ["name"];
-            predicates.inKeys(arr);
             await kvStore.put("name", "Bob").then(async (data) => {
                 console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0200 put success');
                 expect(data == undefined).assertTrue();
-                await kvStore.delete(predicates).then((data) => {
+                await kvStore.delete("name").then((data) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0200 delete success');
                     expect(data == undefined).assertTrue();
                 }).catch((err) => {
@@ -828,16 +824,14 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300', 0, async function (done) {
         console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            let arr = [null];
-            predicates.inKeys(arr);
+
             await kvStore.put("name", "Bob").then(async (data) => {
                 console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 put success');
             }).catch((err) => {
                 console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 put fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
-            await kvStore.delete(predicates, function (err,data) {
+            await kvStore.delete("name", function (err,data) {
                 console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 delete success');
                 expect(err != undefined).assertTrue();
                 done();
@@ -1553,24 +1547,29 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100');
         try {
-            let values = [];
-            let arr1 = new Uint8Array([4,5,6,7]);
-            let arr2 = new Uint8Array([4,5,6,7,8]);
-            let vb1 = {key : "name_1", value : arr1};
-            let vb2 = {key : "name_2", value : arr2};
-            values.push(vb1);
-            values.push(vb2);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'batch_test_number_key';
+                var entry = {
+                    key : key + i,
+                    value : {
+                        type : factory.ValueType.DOUBLE,
+                        value : 2.00
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("batch_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 entrys.length: ' + entrys.length);
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 entrys[0]: ' + JSON.stringify(entrys[1]));
-                    expect(entrys.length == 2).assertTrue();
+                    expect(entrys.length == 10).assertTrue();
                     done();
                 });
             });
@@ -1590,22 +1589,29 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200');
         try {
-            let values = [];
-            let vb1 = {key : "name_1", value : "arr1"};
-            let vb2 = {key : "name_2", value : "arr2"};
-            values.push(vb1);
-            values.push(vb2);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'key_test_int';
+                var entry = {
+                    key: key + i,
+                    value: {
+                        type: factory.ValueType.INTEGER,
+                        value: '123'
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("key_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 entrys.length: ' + entrys.length);
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 entrys[0]: ' + JSON.stringify(entrys[1]));
-                    expect(entrys.length == 2).assertTrue();
+                    expect(entrys.length == 10).assertTrue();
                     done();
                 }).catch((err) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 delete fail ' + err);
@@ -1631,24 +1637,29 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300');
         try {
-            let values = [];
-            let vb1 = {key : "name_1", value : 123};
-            let vb2 = {key : "name_2", value : 321.0};
-            let vb3 = {key : "name_3", value : 321.00};
-            values.push(vb1);
-            values.push(vb2);
-            values.push(vb3);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'key_test_boolean';
+                var entry = {
+                    key: key + i,
+                    value: {
+                        type: factory.ValueType.BOOLEAN,
+                        value: 'true'
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("key_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 entrys.length: ' + entrys.length);
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 entrys[0]: ' + JSON.stringify(entrys[2]));
-                    expect(entrys.length == 3).assertTrue();
+                    expect(entrys.length == 10).assertTrue();
                     done();
                 });
             });
@@ -1668,22 +1679,29 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400');
         try {
-            let values = [];
-            let vb1 = {key : "name_1", value : true};
-            let vb2 = {key : "name_2", value : false};
-            values.push(vb1);
-            values.push(vb2);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'key_test_float';
+                var entry = {
+                    key: key + i,
+                    value: {
+                        type: factory.ValueType.FLOAT,
+                        value: '321.12'
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("key_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 entrys.length: ' + entrys.length);
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 entrys[0]: ' + JSON.stringify(entrys[1]));
-                    expect(entrys.length == 2).assertTrue();
+                    expect(entrys.length == 10).assertTrue();
                     done();
                 });
             });
@@ -1703,23 +1721,32 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500');
         try {
-            let values = [];
-            let vb1 = {key : "name_1", value : null};
-            let vb2 = {key : "name_2", value : null};
-            values.push(vb1);
-            values.push(vb2);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'key_test_string';
+                var entry = {
+                    key: key + i,
+                    value: {
+                        type: factory.ValueType.STRING,
+                        value: 'value-string-001'
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("key_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys.length: ' + entrys.length);
-                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys[0]: ' + JSON.stringify(entrys[1]));
-                    expect(entrys.length == 2).assertTrue();
-                    expect(entrys[0].value == null).assertTrue();
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys[1]: ' + JSON.stringify(entrys[1]));
+                    expect(entrys.length == 10).assertTrue();
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys[0]: ' + JSON.stringify(entrys[0]));
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys[0]: ' + JSON.stringify(entrys[0].value));
+                    expect(entrys[0].value.value == 'value-string-001').assertTrue();
                     done();
                 });
             });
@@ -2762,9 +2789,9 @@ describe('SingleKvStorePromiseTest', function () {
                 console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
-            let predicates = new dataShare.DataSharePredicates();
-            predicates.prefixKey("name_");
-            await kvStore.getResultSet(predicates).then((result) => {
+            let query = new factory.Query();
+            query.prefixKey("name_");
+            await kvStore.getResultSet(query).then((result) => {
                 console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700 getResultSet success');
                 resultSet = result;
                 expect(resultSet.getCount() == 10).assertTrue();
@@ -2795,8 +2822,8 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800', 0, async function (done) {
         console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            await kvStore.getResultSet(predicates, async function (err, result) {
+            let query = new factory.Query();
+            await kvStore.getResultSet(query, async function (err, result) {
                 console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800 GetResultSet success: '+`, error code is ${err.code}, message is ${err.message}`);
                 kvStore.closeResultSet(result);
                 expect(err == undefined).assertTrue();
