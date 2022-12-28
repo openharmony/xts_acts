@@ -4770,7 +4770,7 @@ export default function actsRpcClientJsTest() {
             done();
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageSequence_13500---------------------------");
         });
-    
+
         /*
          * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_13600
          * @tc.name    Test fixed MessageSequence space size to pass rawData data
@@ -4780,14 +4780,13 @@ export default function actsRpcClientJsTest() {
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_13600", 0, async function(done){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_13600---------------------------");
             try{
-                let maxsize = 1024;
                 let data = rpc.MessageSequence.create();
                 expect(data.getRawDataCapacity()).assertEqual(128*M);
                 let rawdata = [1, 2, 3];
                 let option = new rpc.MessageOption();
                 let reply = rpc.MessageSequence.create();
-                data.writeInt(maxsize);
-                data.writeRawData(rawdata, maxsize);
+                data.writeInt(rawdata.length);
+                data.writeRawData(rawdata, rawdata.length);
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_RAWDATA, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
@@ -4851,13 +4850,13 @@ export default function actsRpcClientJsTest() {
                 let option = new rpc.MessageOption();
                 let reply = rpc.MessageSequence.create();
                 data.getRawDataCapacity();
-                data.writeInt(K);
-                data.writeRawData(rawdata, K);
+                data.writeInt(rawdata.length);
+                data.writeRawData(rawdata, rawdata.length);
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_RAWDATA, data, reply, option).then((result) => {
                     expect(result.errCode).assertEqual(0);
-                    expect(result.reply.readInt()).assertEqual(K);
-                    expect(result.reply.readRawData(K) != rawdata).assertTrue();
+                    expect(result.reply.readInt()).assertEqual(rawdata.length);
+                    expect(result.reply.readRawData(rawdata.length) != rawdata).assertTrue();
                 });
                 data.reclaim();
                 reply.reclaim();
@@ -4866,7 +4865,7 @@ export default function actsRpcClientJsTest() {
             }
             done();
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageSequence_13900---------------------------");
-        });  
+        }); 
     
         /*
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_14000
