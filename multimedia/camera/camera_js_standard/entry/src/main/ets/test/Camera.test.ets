@@ -23,7 +23,7 @@ import cameraSessionVideoStabilizationTest from './CameraSessionVideoStabilizati
 import cameraSessionBaseTest from './CameraSessionBaseTest.test.ets'
 import cameraInputTest from './CameraInputTest.test.ets'
 import cameraManagerTest from './CameraManagerTest.test.ets'
-import cameraEnumTest from './CameraEnumTest.test.ets'
+// import cameraEnumTest from './CameraEnumTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
 
@@ -38,5 +38,5 @@ export default function cameraKit() {
   cameraSessionVideoStabilizationTest()
   cameraSessionBaseTest()
   cameraManagerTest()
-  cameraEnumTest()
+  // cameraEnumTest()
 }
