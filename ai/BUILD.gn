@@ -14,4 +14,7 @@
 group("ai") {
   testonly = true
   deps = [ "neural_network_runtime:neural_network_runtime" ]
+  if (is_standard_system) {
+    deps += [ "mindspore:ActsMindSporeTest" ]
+  }
 }
