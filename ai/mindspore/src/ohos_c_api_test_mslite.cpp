@@ -554,6 +554,22 @@ HWTEST(MSLiteTest, OHOS_Context_CPU_0020, Function | MediumTest | Level1) {
     OH_AI_ModelDestroy(&model);
 }
 
+ // 正常场景：Context设置NPU,频率为1
+ HWTEST(MSLiteTest, OHOS_Context_NPU_0002, Function | MediumTest | Level1) {
+     printf("==========Init Context==========\n");
+     OH_AI_ContextHandle context = OH_AI_ContextCreate();
+     ASSERT_NE(context, nullptr);
+     OH_AI_DeviceInfoHandle npu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_KIRIN_NPU);
+     ASSERT_NE(npu_device_info, nullptr);
+     OH_AI_DeviceInfoSetFrequency(npu_device_info, 1);
+     int frequency = OH_AI_DeviceInfoGetFrequency(npu_device_info);
+     ASSERT_EQ(frequency, 1);
+     OH_AI_ContextAddDeviceInfo(context, npu_device_info);
+     printf("==========Create model==========\n");
+     OH_AI_ModelHandle model = OH_AI_ModelCreate();
+     ASSERT_NE(model, nullptr);
+ }
+
 // 正常场景：ModelBuild，调用指针方法
 HWTEST(MSLiteTest, OHOS_Model_Build_0001, Function | MediumTest | Level1) {
     printf("==========Init Context==========\n");
@@ -690,6 +706,42 @@ HWTEST(MSLiteTest, OHOS_Model_Build_0008, Function | MediumTest | Level1) {
     printf("==========build model return code:%d\n", ret);
     ASSERT_EQ(ret, OH_AI_STATUS_LITE_NULLPTR);
     OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：ModelBuild，调用GetOutputs获取输出
+HWTEST(MSLiteTest, OHOS_Model_Build_0009, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Model build==========\n");
+    OH_AI_ModelBuildFromFile(model,"/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    OH_AI_TensorHandleArray output;
+    FillInputsData(inputs,"ml_face_isface",false);
+    OH_AI_Status ret = OH_AI_ModelPredict(model, inputs, &output, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetOutput==========\n");
+    OH_AI_TensorHandleArray outputs = OH_AI_ModelGetOutputs(model);
+    for (size_t i = 0; i < outputs.handle_num; ++i) {
+        OH_AI_TensorHandle tensor = outputs.handle_list[i];
+        int64_t element_num = OH_AI_TensorGetElementNum(tensor);
+        printf("Tensor name: %s, elements num: %" PRId64 ".\n", OH_AI_TensorGetName(tensor), element_num);
+        float *output_data = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(tensor));
+        printf("output data is:");
+        for (int j = 0; j < element_num && j <= 20; ++j) {
+            printf("%f ", output_data[j]);
+        }
+        printf("\n");
+        printf("==========compFp32WithTData==========\n");
+        string expectedDataFile = "/data/test/ml_face_isface" + std::to_string(i) + ".output";
+        bool result = compFp32WithTData(output_data, expectedDataFile, 0.01, 0.01, false);
+        EXPECT_EQ(result, true);
+    }
 }
 
 // 正常场景：ModelResize，shape与之前一致
@@ -1472,7 +1524,7 @@ HWTEST(MSLiteTest, OHOS_Multiple_0001, Function | MediumTest | Level1) {
     }
 }
 
-// 异常场景：Model创建一次，Build多次
+// 正常场景：Model创建一次，Build多次
 HWTEST(MSLiteTest, OHOS_Multiple_0002, Function | MediumTest | Level1) {
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
