@@ -15,6 +15,7 @@
 
 import fileio from '@ohos.fileio';
 import fileIO from '@ohos.file.fs';
+import util from '@ohos.util';
 import featureAbility from '@ohos.ability.featureAbility';
 
 export const FILE_CONTENT = 'hello world';
@@ -53,7 +54,7 @@ export function prepareEmptyFile(fpath) {
 
 export function fileToReadOnly(fpath) {
   try {
-    let file = fileio.openSync(fpath, fileIO.OpenMode.CREATE)
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE)
     fileio.fchmodSync(file.fd, 0o444)
     fileio.fsyncSync(file.fd)
     fileio.closeSync(file.fd)
@@ -67,7 +68,7 @@ export function fileToReadOnly(fpath) {
 
 export function fileToWriteOnly(fpath) {
   try {
-    let file = fileio.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.WRITE_ONLY)
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.WRITE_ONLY)
     fileio.fchmodSync(file.fd, 0o222)
     fileio.fsyncSync(file.fd)
     fileio.closeSync(file.fd)
@@ -117,6 +118,10 @@ function isIntNum(val) {
   return typeof val === 'number' && val % 1 === 0;
 }
 
+function isBigInt(val) {
+  return typeof val === 'bigint';
+}
+
 function isString(str) {
   return (typeof str == 'string') && str.constructor == String;
 }
@@ -133,10 +138,12 @@ export {
   fileio,
   fileIO,
   isIntNum,
+  isBigInt,
   isString,
   isBoolean,
   isInclude,
   describe,
   it,
-  expect
+  expect,
+  util
 };
