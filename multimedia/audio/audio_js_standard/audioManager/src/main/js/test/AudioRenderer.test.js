@@ -1313,17 +1313,30 @@ describe('audioRenderer', function () {
         console.info('AudioFrameworkRenderLog: CALLBACK : Audio Playback Function');
 
         var audioRen;
+        let isPass = false;
 
         audio.createAudioRenderer(AudioRendererOptions, (err, data) => {
-            if (err) {
-                console.error(`AudioFrameworkRenderLog: AudioRender Created : Error: ${err.message}`);
-                resultFlag = false;
+            if (err) {     
+                LE24 = audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE;
+                LE32 = audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE;
+                let sampleFormat = AudioRendererOptions.streamInfo.sampleFormat;
+                if ((sampleFormat == LE24 || sampleFormat == LE32) && err.code == 202) {
+                    isPass = true;
+                    return;
+                }
+                resultFlag = false
             }
             else {
                 console.info('AudioFrameworkRenderLog: AudioRender Created : Success : SUCCESS');
                 audioRen = data;
             }
         });
+        await sleep(100);
+        console.log(`isPass: ${isPass}`);
+        if (isPass) {
+            resultFlag = true;
+            return resultFlag;
+        }
         if (resultFlag == false) {
             console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;

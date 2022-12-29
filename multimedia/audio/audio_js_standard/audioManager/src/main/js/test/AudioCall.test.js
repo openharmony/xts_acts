@@ -375,7 +375,7 @@ describe('audioCall', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-             rendererFlags: 0
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -411,7 +411,7 @@ describe('audioCall', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -447,7 +447,7 @@ describe('audioCall', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -478,12 +478,12 @@ describe('audioCall', function () {
         readpath = 'StarWars10s-1C-44100-2SW.wav';
         await getFdRead(readpath);
         await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-        await sleep(1000);
+        await sleep(2000);
         console.info('AudioFrameworkRecLog: resultFlag : Capturer : ' + resultFlagRec);
         console.info('AudioFrameworkRenderLog: resultFlag : Renderer : ' + resultFlagRen);
 
-        if (resultFlagRec == true) {
-            expect(resultFlagRen).assertTrue();
+        if (resultFlagRec == true && resultFlagRen == true) {
+            expect(true).assertTrue();
         }
         else {
             expect(false).assertTrue();
