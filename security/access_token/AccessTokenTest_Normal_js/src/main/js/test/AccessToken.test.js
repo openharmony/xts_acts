@@ -312,5 +312,96 @@ describe('AccessTokenTest', function () {
 
         done();
     })
+
+    /**
+     * @tc.number Test_requestPermissionsFromUser_0100
+     * @tc.name Test_requestPermissionsFromUser_001.
+     * @tc.desc RequestPermissionsFromUser normal scenario(Promise).
+     */
+    it('Test_requestPermissionsFromUser_001', 0, async function(done){
+        console.info("Test_requestPermissionsFromUser_001 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.requestPermissionsFromUser(this.context, ["ohos.permission.CAMERA"]).then((data) => {
+                console.info("data:" + JSON.stringify(data));
+                console.info("data permissions:" + data.permissions);
+                console.info("data authResults:" + data.authResults);
+                expect(data.authResults).assertEqual(0);
+            }).catch((err) => {
+                console.info("data:" + JSON.stringify(err));
+            })
+        } catch(err) {
+            console.log(`Test_requestPermissionsFromUser_001 catch err->${JSON.stringify(err)}`);
+        }
+        done();
+    })
+
+
+    /**
+     * @tc.number Test_requestPermissionsFromUser_0200
+     * @tc.name Test_requestPermissionsFromUser_002.
+     * @tc.desc Exception scenario use case(Promise).
+     */
+    it('Test_requestPermissionsFromUser_002', 0, async function(done){
+        console.info("Test_requestPermissionsFromUser_002 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        console.info("Test_requestPermissionsFromUser_002 start");
+        try {
+            var result = atManager.requestPermissionsFromUser(this.context, ["abc"]).then((data) => {
+                console.info("data:" + JSON.stringify(data));
+                console.info("data permissions:" + data.permissions);
+                console.info("data authResults:" + data.authResults);
+            }).catch((err) => {
+                console.info("data:" + JSON.stringify(err));
+            })
+        } catch(err) {
+            console.log("Test_requestPermissionsFromUser_002 catch err" + err.code + "message" + err.message);
+            expect(result).assertEqual(undefined);
+        }
+    done();
+    })
+
+    /**
+         * @tc.number Test_requestPermissionsFromUser_0300
+         * @tc.name Test_requestPermissionsFromUser_003.
+         * @tc.desc RequestPermissionsFromUser normal scenario(callback).
+         */
+    it('Test_requestPermissionsFromUser_003', 0, async function(done){
+        console.info("Test_requestPermissionsFromUser_003 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.requestPermissionsFromUser(this.context, ["ohos.permission.CAMERA"], (err, data)=>{
+                console.info("data:" + JSON.stringify(data));
+                console.info("data permissions:" + data.permissions);
+                console.info("data authResults:" + data.authResults);
+                expect(data.authResults).assertEqual(0);
+            });
+        } catch(err) {
+            console.log(`Test_requestPermissionsFromUser_003 catch err->${JSON.stringify(err)}`);
+        }
+        done();
+    })
+
+    /**
+     * @tc.number Test_requestPermissionsFromUser_0400
+     * @tc.name Test_requestPermissionsFromUser_004.
+     * @tc.desc Exception scenario use case(callback).
+     */
+    it('Test_requestPermissionsFromUser_004', 0, async function(done){
+        console.info("Test_requestPermissionsFromUser_004 start ");
+        var atManager = abilityAccessCtrl.createAtManager();
+        try {
+            var result = atManager.requestPermissionsFromUser(this.context, ["a"], (err, data)=>{
+                console.info("data:" + JSON.stringify(data));
+                console.info("data permissions:" + data.permissions);
+                console.info("data authResults:" + data.authResults);
+            });
+        } catch(err) {
+            console.log(`Test_requestPermissionsFromUser_004 catch err->${JSON.stringify(err)}`);
+            expect(result).assertEqual(undefined);
+        }
+        done();
+    })
+
 })
 }
