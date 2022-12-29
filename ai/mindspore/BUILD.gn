@@ -30,7 +30,6 @@ ohos_moduletest_suite("ActsMindSporeTest") {
     "//third_party/mindspore/mindspore/lite:mindspore_lib",
   ]
 
-  defines = [ "__STDC_FORMAT_MACROS" ]
   subsystem_name = "ai"
   part_name = "mindspore"
 }
