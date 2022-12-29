@@ -92,7 +92,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
   function getFlag(testParam, j) {
     if (testParam.config.interfaces[j].clazz != 10 ||
-      testParam.config.interfaces[j].subclass != 0 ||
+      testParam.config.interfaces[j].subClass != 0 ||
       testParam.config.interfaces[j].protocol != 2) {
       return false
     }
