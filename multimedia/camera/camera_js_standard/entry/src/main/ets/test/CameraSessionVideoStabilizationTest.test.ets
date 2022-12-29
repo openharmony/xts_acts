@@ -323,7 +323,6 @@ export default function cameraSessionVideoStabilizationTest() {
 
         if (!isEmpty(mCameraInput)) {
             await mCameraInput.close();
-            await mCameraInput.release();
         }
 
         console.info('Exit releaseInput');

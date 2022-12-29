@@ -159,7 +159,6 @@ export default function cameraJSUnitOutput() {
 
   async function release() {
     console.log(TAG + "start release");
-    await cameraInput.release();
     await captureSession.release();
     console.log(TAG + "release end")
   }
@@ -662,6 +661,38 @@ export default function cameraJSUnitOutput() {
 
 
     /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100
+      * @tc.name      : metadata output callback on error api
+      * @tc.desc      : metadata output callback on error api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+    it('SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100', 1, async function (done) {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100--------------");
+      if (isEmpty(metadataOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100 metadataOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100 to operate");
+        metadataOutput.on('error', async (err, data) => {
+          if (!err) {
+            expect(true).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100 success");
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100 FAILED: " + err.message);
+          }
+          await sleep(1000);
+          done();
+        })
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100
       * @tc.name      : captureSession start
       * @tc.desc      : captureSession start
@@ -734,7 +765,7 @@ export default function cameraJSUnitOutput() {
       if (isEmpty(mMetadataObjectArray)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100 mMetadataObjectArray == null || undefined")
       } else {
-        let type = mMetadataObjectArray[0].getType();
+        let type = mMetadataObjectArray[0].type;
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100 success, type : " + type);
       }
       await sleep(1000);
@@ -755,7 +786,7 @@ export default function cameraJSUnitOutput() {
       if (isEmpty(mMetadataObjectArray)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100 mMetadataObjectArray == null || undefined")
       } else {
-        let timeStamp = mMetadataObjectArray[0].getTimestamp();
+        let timeStamp = mMetadataObjectArray[0].timestamp;
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100 success, timeStamp : " + timeStamp);
       }
       await sleep(1000);
@@ -776,9 +807,13 @@ export default function cameraJSUnitOutput() {
       if (isEmpty(mMetadataObjectArray)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 mMetadataObjectArray == null || undefined")
       } else {
-        let boundingBox = mMetadataObjectArray[0].getBoundingBox();
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + boundingBox.width + "x" + boundingBox.height);
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + boundingBox.topLeftX + "x" + boundingBox.topLeftY);
+        let boundingBox = mMetadataObjectArray[0].boundingBox;
+        let w = boundingBox.width;
+        let h = boundingBox.height;
+        let tx = boundingBox.topLeftX;
+        let ty = boundingBox.topLeftY;
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + w + "x" + h);
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + tx + "x" + ty);
       }
       await sleep(1000);
       done();

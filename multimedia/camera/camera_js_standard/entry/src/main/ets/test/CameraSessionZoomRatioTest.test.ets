@@ -327,7 +327,6 @@ export default function cameraSessionZoomRatioTest() {
 
         if (!isEmpty(mCameraInput)) {
             await mCameraInput.close();
-            await mCameraInput.release();
         }
 
         console.info('Exit releaseInput');

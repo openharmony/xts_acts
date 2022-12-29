@@ -307,7 +307,6 @@ export default function cameraSessionTest() {
 
         if (!isEmpty(mCameraInput)) {
             await mCameraInput.close();
-            await mCameraInput.release();
         }
 
         console.info('Exit releaseInput');
@@ -395,7 +394,6 @@ export default function cameraSessionTest() {
         }
 
         if (!isEmpty(mVideoOutput)) {
-            //await mVideoOutput.stop();
             await mVideoOutput.release();
         }
 
@@ -620,13 +618,15 @@ export default function cameraSessionTest() {
             }
             else {
                 try {
-                    await mCameraSession.beginConfig();   
-                } catch {
+                    mCameraSession.beginConfig();   
+                } catch(error) {
+                    expect().assertFail();
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100 with a error, ingore it");
                 }
                 try {
-                    await mCameraSession.beginConfig();   
-                } catch {
+                    mCameraSession.beginConfig();   
+                } catch(error) {
+                    expect().assertFail();
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100 with a error, ingore it");
                 }
 
@@ -658,15 +658,16 @@ export default function cameraSessionTest() {
             else {
                 try {
                     await mCameraSession.commitConfig();   
-                } catch {
+                } catch(error) {
+                    expect().assertFail();
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100 with a error, ingore it");
                 }
                 try {
                     await mCameraSession.commitConfig();   
-                } catch {
+                } catch(error) {
+                    expect().assertFail();
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100 with a error, ingore it");
                 } 
-
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100 PASSED");
 
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100 ends here");
@@ -677,34 +678,38 @@ export default function cameraSessionTest() {
  
 
         /**               
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100
-        * @tc.name      : Check capture session start/stop output with promise or not 
-        * @tc.desc      : Check capture session start/stop output with promise or not 
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100
+        * @tc.name      : Check capture session start/stop/release output with promise or not 
+        * @tc.desc      : Check capture session start/stop/release output with promise or not 
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100--------------");
 
             if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             }
             else {
                 for (let i = 0; i < mCameraNum; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     if (!isEmpty(mPreviewOutput)) {
                         await mCameraSession.start();
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 start PASSED");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 start PASSED");
                         await sleep(2000);
 
                         await mCameraSession.stop();
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 stop PASSED");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 stop PASSED");
+                        await sleep(500);
+
+                        await mCameraSession.release();
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 release PASSED");
                         await sleep(500);
                     }
 
@@ -712,10 +717,10 @@ export default function cameraSessionTest() {
                     
                     await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 ends here");
                 done();
             }
         })
