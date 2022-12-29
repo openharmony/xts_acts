@@ -32,7 +32,7 @@ struct GestureSettingsExample {
               }
             }
             var backEvent = {
-              eventId: 50,
+              eventId: 150,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("click to emit action state")

@@ -62,6 +62,7 @@ export default function motionPathJsunit() {
         console.info("motionPathTest_0200 get state result is: " + JSON.stringify(indexEventOne));
         expect(indexEventOne.data.fromX).assertEqual(0);
         expect(indexEventOne.data.toY).assertEqual(1);
+        done();
       }
       let indexEventOne = {
         eventId: 133,
@@ -84,6 +85,7 @@ export default function motionPathJsunit() {
       let callback = (indexEvent) => {
         console.info("motionPathTest_0300 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 132,
@@ -97,7 +99,6 @@ export default function motionPathJsunit() {
       console.info("motionPathTest_0300 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
       console.info('motionPathTest_0300 END');
-      done();
     });
   })
 }
