@@ -17,7 +17,6 @@ import prompt from '@ohos.prompt';
 import router from '@ohos.router';
 import screenshot from '@ohos.screenshot';
 import image from '@ohos.multimedia.image';
-import MediaUtils from '../model/MediaUtils';
 import Logger from '../model/Logger'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 
