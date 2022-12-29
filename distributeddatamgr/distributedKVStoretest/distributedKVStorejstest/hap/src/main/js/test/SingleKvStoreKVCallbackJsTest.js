@@ -773,7 +773,7 @@ describe('SingleKvStoreCallbackTest', function () {
      * @tc.name Test Js Api SingleKvStore.Delete() testcase 001
      */
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700', 0, async function (done) {
-        console.log('SingleKvStoreDeletePredicatesCallbackTest001');
+        console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700');
         try {
             await kvStore.delete(KEY_TEST_STRING_ELEMENT, function (err,data) {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETE_CALLBACK_2700 delete err: ' + err);
