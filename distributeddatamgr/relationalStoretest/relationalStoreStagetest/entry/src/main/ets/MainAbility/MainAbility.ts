@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import dataShare from '@ohos.data.dataShare'
 import rpc from "@ohos.rpc";
 
@@ -111,7 +111,7 @@ export default class MainAbility extends Ability {
         console.log("[ttt] [DataShareTest] <<Consumer>> MainAbility onWindowStageCreate")
         globalThis.abilityContext = this.context;
         let context = this.context;
-        dseConnectionId = context.connectAbility(dseWant, dseConnect);
+        dseConnectionId = context.connectServiceExtensionAbility(dseWant, dseConnect);
         globalThis.connectDataShareExtAbility = (async () => {
             console.log("[ttt] [DataShareTest] <<Consumer>> connectDataShareExtAbility begin");
             await dataShare.createDataShareHelper(globalThis.abilityContext, dseUri, (err,data)=>{
@@ -122,7 +122,7 @@ export default class MainAbility extends Ability {
                 console.info("[ttt] [DataShareTest] <<Consumer>> ----- 3 -----, err = " + err);
                 console.info("[ttt] [DataShareTest] <<Consumer>> ----- 4 -----, JSON.stringify(err) = " + JSON.stringify(err));
             });
-            dseConnectionId = await context.connectAbility(dseWant, dseConnect);
+            dseConnectionId = await context.connectServiceExtensionAbility(dseWant, dseConnect);
         })
         windowStage.setUIContent(this.context, "MainAbility/pages/index", null)
     }

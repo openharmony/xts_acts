@@ -1,6 +1,6 @@
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent';
-import AbilityConstant from '@ohos.application.AbilityConstant';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 var printLog9 = "Stage:MainAbility9:";
 var listPush9 = "Stage_MainAbility9_";

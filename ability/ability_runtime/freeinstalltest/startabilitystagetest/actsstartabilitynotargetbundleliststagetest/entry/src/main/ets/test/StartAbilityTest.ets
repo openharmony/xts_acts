@@ -16,7 +16,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import ability from '@ohos.application.Ability'
+import ability from '@ohos.app.ability.UIAbility'
 import rpc from '@ohos.rpc';
 import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';

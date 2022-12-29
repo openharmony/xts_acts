@@ -20,7 +20,7 @@ import rpc from '@ohos.rpc';
 import featureAbility from '@ohos.ability.featureAbility';
 import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';
-import abilityManager from '@ohos.application.abilityManager';
+import abilityManager from '@ohos.app.ability.abilityManager';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 
 
