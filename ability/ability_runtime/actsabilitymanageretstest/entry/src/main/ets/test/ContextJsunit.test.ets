@@ -14,11 +14,38 @@
  */
 
 import featureAbility from '@ohos.ability.featureAbility'
-import {describe, beforeEach, afterEach, it, expect} from '@ohos/hypium';
+import {describe, beforeEach, afterEach, beforeAll, afterAll, it, expect} from '@ohos/hypium';
 import Utils from './Utils';
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 export default function ContextJsunit() {
   describe('faContextTest', function () {
+
+    let TAG1 = "SUB_AA_OpenHarmony == faContextTest: ";
+    let sleepTimeOne = 1000;
+    let id = undefined;
+      beforeAll(async (done) => {
+        console.log(TAG1 + "beforeAll called");
+        let myReason = 'test FaShowOnLockTest';
+        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+            console.log(TAG1 + "Request suspension delay will time out.");
+        })
+        id = delayInfo.requestId;
+        console.log(TAG1 + "requestId is : " + id);
+        setTimeout(function () {
+            console.log(TAG1 + "beforeAll end");
+            done();
+        }, sleepTimeOne);
+    })
+
+    afterAll(async (done) => {
+        console.log(TAG1 + "afterAll called");
+        backgroundTaskManager.cancelSuspendDelay(id);
+        setTimeout(function () {
+            console.log(TAG1 + "afterAll end");
+            done();
+        }, sleepTimeOne);
+    })
     beforeEach(async function (done) {
       console.info("context before each called");
       done()
