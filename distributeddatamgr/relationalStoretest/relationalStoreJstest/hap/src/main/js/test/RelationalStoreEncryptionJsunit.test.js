@@ -41,7 +41,7 @@ const STORE_CONFIG_WRONG = {
 
 export default function relationalStoreEncryptTest() {
 async function CreatRdbStore(context, STORE_CONFIG) {
-    let rdbStore = await data_rdb.getRdbStore(context, STORE_CONFIG, 1)
+    let rdbStore = await data_rdb.getRdbStore(context, STORE_CONFIG)
     await rdbStore.executeSql(CREATE_TABLE_TEST, null)
     let u8 = new Uint8Array([1, 2, 3])
     {
@@ -107,7 +107,7 @@ describe('relationalStoreEncryptTest', function () {
         it('RdbEncryptTest_0010', 0, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0010 start *************")
             context = ability_featureAbility.getContext()
-            data_rdb.getRdbStore(context, STORE_CONFIG_ENCRYPT, 1).then((store) => {
+            data_rdb.getRdbStore(context, STORE_CONFIG_ENCRYPT).then((store) => {
                 done()
                 expect(store != null).assertTrue();
             }).catch((err) => {
@@ -124,7 +124,7 @@ describe('relationalStoreEncryptTest', function () {
         it('RdbEncryptTest_0020', 0, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0020 start *************")
             context = ability_featureAbility.getContext()
-            let storePromise = data_rdb.getRdbStore(context, STORE_CONFIG_UNENCRYPT, 1);
+            let storePromise = data_rdb.getRdbStore(context, STORE_CONFIG_UNENCRYPT);
             storePromise.then((store) => {
                 expect(store != null).assertTrue();
                 done()

@@ -33,7 +33,7 @@ var rdbStore
 var context = ability_featureAbility.getContext()
 
 async function CreatRdbStore(context, STORE_CONFIG) {
-    let RdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG, 1)
+    let RdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG)
     await RdbStore.executeSql(CREATE_TABLE_TEST, null)
     let u8 = new Uint8Array([1, 2, 3])
     {

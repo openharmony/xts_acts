@@ -34,7 +34,7 @@ describe('relationalStoreDistributedTest', function () {
     })
 
     beforeEach(async function () {
-        rdbStore = await dataRdb.getRdbStore(context, config, 1);
+        rdbStore = await dataRdb.getRdbStore(context, config);
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
         console.info(TAG + 'beforeEach')
     })

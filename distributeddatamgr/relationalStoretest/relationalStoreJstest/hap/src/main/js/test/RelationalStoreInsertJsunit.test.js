@@ -37,7 +37,7 @@ export default function relationalStoreInsertTest() {
 describe('relationalStoreInsertTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
-        rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG, 1);
+        rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
         await rdbStore.executeSql(CREATE_TABLE_BATCHINSERT_TEST, null);
     })

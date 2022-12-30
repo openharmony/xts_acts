@@ -55,7 +55,7 @@ describe('relationalStoreTest', function () {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S1
         }
-        let storePromise = dataRdb.getRdbStore(context, config, 1);
+        let storePromise = dataRdb.getRdbStore(context, config);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -84,7 +84,7 @@ describe('relationalStoreTest', function () {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S2
         }
-        let storePromise = dataRdb.getRdbStore(context, config, 1);
+        let storePromise = dataRdb.getRdbStore(context, config);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -113,7 +113,7 @@ describe('relationalStoreTest', function () {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S3
         }
-        let storePromise = dataRdb.getRdbStore(context, config, 1);
+        let storePromise = dataRdb.getRdbStore(context, config);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -142,7 +142,7 @@ describe('relationalStoreTest', function () {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S4
         }
-        let storePromise = dataRdb.getRdbStore(context, config, 1);
+        let storePromise = dataRdb.getRdbStore(context, config);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
@@ -171,7 +171,7 @@ describe('relationalStoreTest', function () {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S1
         }
-        dataRdb.getRdbStore(context, config, 1, async (err,data) => {
+        dataRdb.getRdbStore(context, config, async (err,data) => {
             if(err != null){
                 console.info(TAG + "get rdb store error" + err.message)
                 expect(null).assertFail();
@@ -198,7 +198,7 @@ describe('relationalStoreTest', function () {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S2
         }
-        dataRdb.getRdbStore(context, config, 1,async (err,data) => {
+        dataRdb.getRdbStore(context, config,async (err,data) => {
             if(err != null){
                 console.info(TAG + "get rdb store error")
                 expect(null).assertFail();
@@ -224,7 +224,7 @@ describe('relationalStoreTest', function () {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S3
         }
-        dataRdb.getRdbStore(context, config, 1,async (err,data) => {
+        dataRdb.getRdbStore(context, config,async (err,data) => {
             if(err != null){
                 console.info(TAG + "get rdb store error")
                 expect(null).assertFail();
@@ -250,7 +250,7 @@ describe('relationalStoreTest', function () {
             name: "secure.db",
             securityLevel: dataRdb.SecurityLevel.S4
         }
-        dataRdb.getRdbStore(context, config, 1,async (err,data) => {
+        dataRdb.getRdbStore(context, config,async (err,data) => {
             if(err != null){
                 console.info(TAG + "get rdb store error")
                 expect(null).assertFail();
@@ -277,7 +277,7 @@ describe('relationalStoreTest', function () {
             securityLevel: dataRdb.SecurityLevel.S4
         }
         let deleteResult = false
-        await dataRdb.getRdbStore(context, config, 1).then(async (store) => {
+        await dataRdb.getRdbStore(context, config).then(async (store) => {
             console.info(TAG + "create table success")
         })
         await dataRdb.deleteRdbStore(context,"secure.db").then(() => {
@@ -302,7 +302,7 @@ describe('relationalStoreTest', function () {
             securityLevel: dataRdb.SecurityLevel.S1
         }
         let deleteResult = false
-        await dataRdb.getRdbStore(context, config, 1).then(async (store) => {
+        await dataRdb.getRdbStore(context, config).then(async (store) => {
             console.info(TAG + "create rdb store success")
         })
         dataRdb.deleteRdbStore(context,"secure.db", (err, data) => {

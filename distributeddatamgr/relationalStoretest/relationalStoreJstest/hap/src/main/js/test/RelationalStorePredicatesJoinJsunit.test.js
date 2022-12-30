@@ -52,7 +52,7 @@ describe('relationalStorePredicatesJoinTest', function () {
 
     beforeEach(async function () {
         console.info(TAG + 'beforeEach')
-        rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG, CURRENT_STORE_VERSION);
+        rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
         await generateUserTable();
         await generateBookTable();
         console.info(TAG + 'beforeEach end')
