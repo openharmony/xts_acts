@@ -121,13 +121,9 @@ export default function CameraInputTest() {
     async function beginCameraSessionConfig() {
         console.info('Enter beginCameraSessionConfig');
 
-        mCameraSession.beginConfig(async (err) => {
-            if (!err) {
-              console.info(TAG + "Entering beginConfig PASSED");
-            } else {
-              console.info(TAG + "Entering beginConfig FAILED : " + err.message);
-            }
-        })
+        console.info(TAG + "Entering beginConfig start");
+        mCameraSession.beginConfig();
+        console.info(TAG + "Entering beginConfig end");
 
         await sleep(30);
 
@@ -188,13 +184,7 @@ export default function CameraInputTest() {
             return false;
         }
         
-        mCameraInput = null;
-        await mCameraManager.createCameraInput(mCameraDevicesArray[idx]).then((result) => {
-            console.info('createCameraInput success');
-            mCameraInput = result;
-        }).catch((err) => {
-            console.info('createCameraInput failed, err = ' + err.message);
-        });
+        mCameraInput = await mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
 
         if (isEmpty(mCameraInput)) {
             console.info(TAG + "createCameraInput FAILED");
@@ -224,7 +214,6 @@ export default function CameraInputTest() {
 
         if (!isEmpty(mCameraInput)) {
             await mCameraInput.close();
-            await mCameraInput.release();
         }
 
         console.info('Exit releaseInput');
@@ -235,14 +224,7 @@ export default function CameraInputTest() {
     async function createOutput(idx:any) {
         console.info('Enter createOutput');
 
-        let cameraOutputCap = null;
-        await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]).then((result) => {
-            console.info('getSupportedOutputCapability success');
-            cameraOutputCap = result;
-        }).catch((err) => {
-            console.info('getSupportedOutputCapability failed, err = ' + err.message);
-            mPreviewOutput = null;
-        });
+        let cameraOutputCap = mCameraManager.getSupportedOutputCapability();
 
         if (!isEmpty(cameraOutputCap)) {
             if (!isEmpty(cameraOutputCap.previewProfiles)) {
@@ -410,130 +392,100 @@ export default function CameraInputTest() {
         });
         
         /**
-         * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100
-         * @tc.name      : open/close/release Camera with cameraInput callback api
-         * @tc.desc      : open/close/release Camera with cameraInput callback api
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100
+         * @tc.name      : open/close Camera with cameraInput callback api
+         * @tc.desc      : open/close Camera with cameraInput callback api
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100--------------");
+        it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100--------------");
             if (isEmpty(mCameraManager)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100 cameraManager == null || undefined");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 cameraManager == null || undefined");
                 expect().assertFail();
             } else {
                 let camerasArray = mCameraDevicesArray;
                 for (let i = 0; i < camerasArray.length; i++) {
                     let successFlag = false;
                     console.info(TAG + "Entering createCameraInput with camera: " + camerasArray[i].cameraId);
-                    await mCameraManager.createCameraInput(camerasArray[i]).then(async (cameraInput) => {
-                        expect(isEmpty(cameraInput)).assertFalse();
-                        await cameraInput.open(async (err) => {
-                            if (!err) {
-                                successFlag = true;
-                                console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100 PASSED open with CameraID :" + camerasArray[i].cameraId);
-                            } else {
-                                successFlag = false;
-                                console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100 open FAILED: " + err.message);
-                            }
-                        });
-                        await sleep(400);
-                        successFlag = false;
-                        await cameraInput.close(async (err) => {
-                            if (!err) {
-                                successFlag = true;
-                                console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100 PASSED close with CameraID :" + camerasArray[i].cameraId);
-                            } else {
-                                successFlag = false;
-                                console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100 close FAILED: " + err.message);
-                            }
-                        });
-                        await sleep(100);
-                        successFlag = false;
-                        await cameraInput.release(async (err) => {
-                            if (!err) {
-                                successFlag = true;
-                                console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100 PASSED release with CameraID :" + camerasArray[i].cameraId);
-                            } else {
-                                successFlag = false;
-                                console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100 release FAILED: " + err.message);
-                            }
-                        });
-                        await sleep(100);
-                        expect(successFlag).assertEqual(true);
-                    }).catch((err) => {
-                        expect().assertFail();
-                        console.info(TAG + " Failed To create cameraInput cameraId: " + camerasArray[i].cameraId + +JSON.stringify(err));
+                    let cameraInput = mCameraManager.createCameraInput(camerasArray[i]);
+                    expect(isEmpty(cameraInput)).assertFalse();
+                    await cameraInput.open(async (err) => {
+                        if (!err) {
+                            successFlag = true;
+                            console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 PASSED open with CameraID :" + camerasArray[i].cameraId);
+                        } else {
+                            successFlag = false;
+                            console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 open FAILED: " + err.message);
+                        }
                     });
-                }
+                    await sleep(400);
+                    successFlag = false;
+                    await cameraInput.close(async (err) => {
+                        if (!err) {
+                            successFlag = true;
+                            console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 PASSED close with CameraID :" + camerasArray[i].cameraId);
+                        } else {
+                            successFlag = false;
+                            console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 close FAILED: " + err.message);
+                        }
+                    });
+                    await sleep(100);
+                    expect(successFlag).assertEqual(true);
             }
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_CALLBACK_0100 ends here");
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 ends here");
             await sleep(1000);
             done();
         });
 
         /**
-         * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100
-         * @tc.name      : open/close/release Camera with cameraInput promise api
-         * @tc.desc      : open/close/release Camera with cameraInput promise api
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100
+         * @tc.name      : open/close Camera with cameraInput promise api
+         * @tc.desc      : open/close Camera with cameraInput promise api
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100', 0, async function (done) {
-            let functionTag = "SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100";
+        it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100', 0, async function (done) {
+            let functionTag = "SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100";
             console.info(functionTag);
             if (isEmpty(mCameraManager)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 cameraManager == null || undefined");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 cameraManager == null || undefined");
                 expect().assertFail();
             } else {
                 let camerasArray = mCameraDevicesArray;
                 for (let i = 0; i < camerasArray.length; i++) {
                     let successFlag = false;
-                    console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 createCameraInput with camera: " + camerasArray[i].cameraId);
-                    mCameraManager.createCameraInput(camerasArray[i], async (err, cameraInput) => {
-                        if (!err) {
-                            expect(isEmpty(cameraInput)).assertFalse();
-                            console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 cameraInput open with camera: " + camerasArray[i].cameraId);
-                            await cameraInput.open().then(async () => {
-                                successFlag = true;
-                                console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 PASSED open with CameraID :" + camerasArray[i].cameraId);
-                            }).catch((err) => {
-                                successFlag = false;
-                                console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 open FAILED: " + err.message);
-                            });
-                            await sleep(400);
-                            successFlag = false;
-                            await cameraInput.close().then(async () => {
-                                successFlag = true;
-                                console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 PASSED close with CameraID :" + camerasArray[i].cameraId);
-                            }).catch((err) => {
-                                successFlag = false;
-                                console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 close FAILED: " + err.message);
-                            });
-                            await sleep(100);
-                            successFlag = false;
-                            await cameraInput.release().then(async () => {
-                                successFlag = true;
-                                console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 PASSED release with CameraID :" + camerasArray[i].cameraId);
-                            }).catch((err) => {
-                                successFlag = false;
-                                console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 release FAILED: " + err.message);
-                            });
-                            await sleep(100);
-                            expect(successFlag).assertEqual(true);
-                        } else {
-                            expect().assertFail();
-                            console.info(TAG + functionTag + " FAILED: " + err.message);
-                        }
-                    });
+                    console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 createCameraInput with camera: " + camerasArray[i].cameraId);
+                    let cameraInput = mCameraManager.createCameraInput(camerasArray[i]);
 
+                    expect(isEmpty(cameraInput)).assertFalse();
+                    console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 cameraInput open with camera: " + camerasArray[i].cameraId);
+                    await cameraInput.open().then(async () => {
+                        successFlag = true;
+                        console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 PASSED open with CameraID :" + camerasArray[i].cameraId);
+                    }).catch((err) => {
+                        successFlag = false;
+                        console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 open FAILED: " + err.message);
+                    });
+                    await sleep(400);
+                    successFlag = false;
+                    await cameraInput.close().then(async () => {
+                        successFlag = true;
+                        console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 PASSED close with CameraID :" + camerasArray[i].cameraId);
+                    }).catch((err) => {
+                        successFlag = false;
+                        console.info(TAG + functionTag + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 close FAILED: " + err.message);
+                    });
+                    await sleep(100);
+                    expect(successFlag).assertEqual(true);
                     await sleep(600);
                 }
                 //await sleep(400 * camerasArray.length);
             }
-            console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_RELEASE_PROMISE_0100 ends here");
+            console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 ends here");
             done();
         });
 
