@@ -28,7 +28,7 @@ export default function relationalStorePredicatesComplexFiledTest(){
 describe('relationalStorePredicatesComplexFiledTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
-        rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG, 1);
+        rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
         await generateTable();
     })
 

@@ -29,7 +29,7 @@ export default function relationalStoreResultSetTest(context) {
 describe('relationalStoreResultSetTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
-        rdbStore = await dataRdb.getRdbStore(context, STORE_CONFIG, 1);
+        rdbStore = await dataRdb.getRdbStore(context, STORE_CONFIG);
         await rdbStore.executeSql(CREATE_TABLE_TEST, null);
         await createTest();
     })

@@ -67,7 +67,7 @@ export default function relationalStoreDistributedTest() {
 describe('relationalStoreDistributedTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
-        rdbStore = await data_Rdb.getRdbStore(context, config, 1);
+        rdbStore = await data_Rdb.getRdbStore(context, config);
         console.info(TAG + "create RelationalStore store success")
         await executeSql1()
         await executeSql2()
@@ -399,7 +399,7 @@ describe('relationalStoreDistributedTest', function () {
             "name": STORE_NAME,
             securityLevel: data_Rdb.SecurityLevel.S1
         }
-        rdbStore = await data_Rdb.getRdbStore(context, config, 1);
+        rdbStore = await data_Rdb.getRdbStore(context, config);
         let errInfo = undefined
         try{
             rdbStore.obtainDistributedTableName(["deviceId"], "EMPLOYEE")
