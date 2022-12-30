@@ -446,13 +446,13 @@ export default function applicationBundleJsunit() {
             expect(data.systemApp).assertEqual(false);
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual(BUNDLE_NAME);
-            expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
+            expect(data.entryDir).assertEqual('');
             expect(data.enabled).assertEqual(true);
             expect(data.entityType).assertEqual('unspecified');
             expect(data.removable).assertEqual(true);
             expect(data.moduleInfos[0].moduleName).assertEqual('entry');
-            expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
-            expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
+            expect(data.moduleInfos[0].moduleSourceDir).assertEqual('');
+            expect(data.moduleSourceDirs.length).assertEqual(0);
             expect(data.permissions[0]).assertEqual("ohos.permission.GET_BUNDLE_INFO");
             expect(data.permissions[1]).assertEqual("ohos.permission.GET_BUNDLE_INFO_PRIVILEGED");
             expect(data.permissions[2]).assertEqual("ohos.permission.USE_BLUETOOTH");
@@ -472,14 +472,12 @@ export default function applicationBundleJsunit() {
             expect(data.systemApp).assertFalse();
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual(BUNDLE_NAME);
-            expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
+            expect(data.entryDir).assertEqual('');
             expect(data.permissions.length).assertEqual(0);
-            expect(data.moduleSourceDirs.length).assertEqual(1);
-            expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
+            expect(data.moduleSourceDirs.length).assertEqual(0);
             expect(data.moduleInfos.length).assertEqual(1);
             expect(data.moduleInfos[0].moduleName).assertEqual('entry');
-            expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
-            BUNDLE_NAME + '/' + BUNDLE_NAME);
+            expect(data.moduleInfos[0].moduleSourceDir).assertEqual('');
             expect(JSON.stringify(data.metaData)).assertEqual("{}");
             expect(data.enabled).assertTrue();
             expect(data.uid).assertLarger(0);
@@ -503,14 +501,12 @@ export default function applicationBundleJsunit() {
           expect(data.systemApp).assertFalse();
           expect(data.supportedModes).assertEqual(0);
           expect(data.process).assertEqual(BUNDLE_OTHER);
-          expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+          expect(data.entryDir).assertEqual('');
           expect(data.permissions.length).assertEqual(0);
-          expect(data.moduleSourceDirs.length).assertEqual(1);
-          expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+          expect(data.moduleSourceDirs.length).assertEqual(0);
           expect(data.moduleInfos.length).assertEqual(1);
           expect(data.moduleInfos[0].moduleName).assertEqual('entry');
-          expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
-          BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+          expect(data.moduleInfos[0].moduleSourceDir).assertEqual('');
           expect(JSON.stringify(data.metaData)).assertEqual("{}");
           expect(data.enabled).assertTrue();
           expect(data.uid).assertLarger(0);
@@ -532,14 +528,12 @@ export default function applicationBundleJsunit() {
             expect(data.systemApp).assertFalse();
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual(BUNDLE_OTHER);
-            expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.entryDir).assertEqual('');
             expect(data.permissions.length).assertEqual(0);
-            expect(data.moduleSourceDirs.length).assertEqual(1);
-            expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.moduleSourceDirs.length).assertEqual(0);
             expect(data.moduleInfos.length).assertEqual(1);
             expect(data.moduleInfos[0].moduleName).assertEqual('entry');
-            expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
-            BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.moduleInfos[0].moduleSourceDir).assertEqual('');
             expect(data.enabled).assertTrue();
             expect(data.uid).assertLarger(0);
             expect(data.entityType).assertEqual('unspecified');
