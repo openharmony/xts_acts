@@ -14,7 +14,6 @@
   },
   "deviceConfig": {
     "default": {
-      "process": "processTestAbility"
     }
   },
   "module": {
@@ -55,7 +54,6 @@
         "label": "$string:app_name",
         "type": "page",
         "launchType": "singleton",
-        "process": "processTestAbility",
         "permissions": ["ohos.permission.ACCELEROMETER"],
         "deviceCapability": ["SystemCapability.Ability.AbilityBase"],
         "uri": "uriTest",
@@ -75,8 +73,7 @@
           "launchType": "singleton",
           "permissions": ["ohos.permission.ACCELEROMETER"],
           "deviceCapability": ["SystemCapability.Ability.AbilityBase"],
-          "uri": "uriTest",
-          "process": "processTestAbility"
+          "uri": "uriTest"
       }
     ],
     "reqCapabilities": ["reqCapabilitiesTest1","reqCapabilitiesTest2"],
@@ -97,35 +94,11 @@
         }
       },
       {
-        "name": "ohos.permission.INSTALL_BUNDLE",
-        "reason": "need use ohos.permission.INSTALL_BUNDLE"
-      },
-      {
-        "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
-        "reason":"need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
-      },
-      {
-        "name":"ohos.permission.CHANGE_ABILITY_ENABLED_STATE",
-        "reason":"need use ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
-      },
-      {
-        "name":"ohos.permission.REMOVE_CACHE_FILES",
-        "reason":"need use ohos.permission.REMOVE_CACHE_FILES"
-      },
-      {
-        "name":"ohos.permission.LISTEN_BUNDLE_CHANGE",
-        "reason":"need use ohos.permission.LISTEN_BUNDLE_CHANGE"
-      },
-      {
-        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
-      },
-      {
         "name": "ohos.permission.ACCELEROMETER",
         "reason":"need use ohos.permission.ACCELEROMETER"
       },
       {
-        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
-        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
       }
     ],
     "js": [

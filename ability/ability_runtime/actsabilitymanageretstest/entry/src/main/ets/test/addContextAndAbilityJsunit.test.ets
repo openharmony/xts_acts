@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium';
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
-import ability_particleAbility from '@ohos.ability.particleAbility';
 import abilityManager from "@ohos.application.appManager"
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 const TAG_TEST_0100 = ' context_isUpdatingConfigurations_test_0100 ';
 const TAG_TEST_0200 = ' context_isUpdatingConfigurations_test_0200 ';
@@ -33,6 +33,33 @@ const TAG_TEST_0012 = ' context_featureAbility_test_0400 ';
 
 export default function addContextAndAbilityJsunit() {
     describe('addContextTest', function () {
+
+      let TAG1 = "SUB_AA_OpenHarmony == addContextTest: ";
+      let sleepTimeOne = 1000;
+      let id = undefined;
+      beforeAll(async (done) => {
+        console.log(TAG1 + "beforeAll called");
+        let myReason = 'test FaShowOnLockTest';
+        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+            console.log(TAG1 + "Request suspension delay will time out.");
+        })
+        id = delayInfo.requestId;
+        console.log(TAG1 + "requestId is : " + id);
+        setTimeout(function () {
+            console.log(TAG1 + "beforeAll end");
+            done();
+        }, sleepTimeOne);
+    })
+
+    afterAll(async (done) => {
+        console.log(TAG1 + "afterAll called");
+        backgroundTaskManager.cancelSuspendDelay(id);
+        setTimeout(function () {
+            console.log(TAG1 + "afterAll end");
+            done();
+        }, sleepTimeOne);
+    })
+
         /*
      * @tc.number: context_isUpdatingConfigurations_test_0100
      * @tc.name: isUpdatingConfigurations : Obtains whether the configuration of the current ability is changing.
