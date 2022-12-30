@@ -104,6 +104,13 @@ export default class MainAbility extends Ability {
         console.log("actsspecifytesthap onForeground")
         callBackSeq += "onForeground";
         onShowProcess();
+        setTimeout(()=>{
+          this.context.terminateSelf().then((data) => {
+              console.info("actsspecifytesthap MainAbility terminateSelf data = " + JSON.stringify(data));
+          }).catch((err) => {
+              console.info("actsspecifytesthap MainAbility terminateSelf err = " + JSON.stringify(err));
+          });
+      }, 2000)
     }
 
     onBackground() {
