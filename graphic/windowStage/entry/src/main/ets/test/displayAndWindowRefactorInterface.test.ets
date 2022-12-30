@@ -2082,5 +2082,25 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       }
       ;
     })
+
+    /**
+     * @tc.number		SUB_WMS_ENUM_WINDOWSTAGEEVENTTYPERENAME_JSAPI_001
+     * @tc.name			Test enumWindowStageEventTypeReName_Test_001.
+     * @tc.desc			To test the enum value of WindowStageEventType.
+     */
+    it('enumWindowStageEventTypeReName_Test_001', 0, async function (done) {
+      console.info('test the enum value of WindowStageEventType begin');
+      try {
+        expect(1).assertEqual(ohosWindow.WindowStageEventType.SHOWN);
+        expect(2).assertEqual(ohosWindow.WindowStageEventType.ACTIVE);
+        expect(3).assertEqual(ohosWindow.WindowStageEventType.INACTIVE);
+        expect(4).assertEqual(ohosWindow.WindowStageEventType.HIDDEN);
+        done();
+      } catch (err) {
+        console.info('test enum value of windowStageEventType error ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
