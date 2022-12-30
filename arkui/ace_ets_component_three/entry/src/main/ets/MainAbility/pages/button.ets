@@ -115,6 +115,29 @@ struct ButtonExample {
             console.info("button3 emit action state err: " + JSON.stringify(err.message))
           }
         })
+      Button('button4')
+        .key('button4')
+        .backgroundColor(0x317aff)
+        .width(90)
+        .fontColor(this.fontColorValue)
+        .onClick(() => {
+          try {
+            var backData = {
+              data: {
+                "fontColorValue": this.fontColorValue,
+              }
+            }
+            var backEvent = {
+              eventId: 77996,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button4 start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("button4 emit action state err: " + JSON.stringify(err.message))
+          }
+        })
+
       Button('Click')
         .backgroundColor(0x2788D9)
         .width(200)

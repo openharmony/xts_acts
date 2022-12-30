@@ -42,6 +42,11 @@ export default function buttonJsunit() {
       done()
     });
 
+    beforeEach(async function () {
+      await Utils.sleep(1000);
+      console.info("button before each called");
+    })
+
     afterEach(async function () {
       await Utils.sleep(1000);
       console.info("button after each called");
@@ -65,7 +70,7 @@ export default function buttonJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[testButton02] component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Button');
-      expect(obj.$attrs.type).assertEqual('ButtonType.Normal');
+      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
       done();
     });
 
@@ -243,7 +248,8 @@ export default function buttonJsunit() {
       }
       let callback = (indexEvent) => {
         console.info("testButton10 get state result is: " + JSON.stringify(indexEvent))
-        except(indexEvent.data.fontColorValue).assertEqual(Color.Pink)
+        expect(indexEvent.data.fontColorValue).assertEqual(Color.Pink)
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -253,7 +259,6 @@ export default function buttonJsunit() {
       console.info("testButton10 click result is: " + JSON.stringify(sendEventByKey('button3', 10, "")));
       await Utils.sleep(1000);
       console.info('[testButton10] END');
-      done();
     });
 
     it('testButton11', 0, async function (done) {
@@ -280,7 +285,8 @@ export default function buttonJsunit() {
       }
       let callback = (indexEvent) => {
         console.info("testButton11 get state result is: " + JSON.stringify(indexEvent))
-        except(indexEvent.data.fontColorValue).assertEqual(332)
+        expect(indexEvent.data.fontColorValue).assertEqual(332)
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -290,7 +296,6 @@ export default function buttonJsunit() {
       console.info("testButton11 click result is: " + JSON.stringify(sendEventByKey('button2', 10, "")));
       await Utils.sleep(1000);
       console.info('[testButton11] END');
-      done();
     });
 
     it('testButton12', 0, async function (done) {
@@ -305,6 +310,7 @@ export default function buttonJsunit() {
         expect(event.screenY).assertEqual(485)
         expect(event.x).assertEqual(100)
         expect(event.y).assertEqual(50)
+        done();
       }
       var innerEvent = {
         eventId: 4,
@@ -318,7 +324,6 @@ export default function buttonJsunit() {
       console.info('[testButton12] sendEventByKey ' + JSON.stringify(sendEventByKey('buttonClick', 10, "")));
       await Utils.sleep(1000)
       console.info('[testButton12] testSendTouchEvent END');
-      done();
     });
 
     it('testButton13', 0, async function (done) {
@@ -378,7 +383,7 @@ export default function buttonJsunit() {
       try {
         let eventData = {
           data: {
-            "fontColorValue": ab996
+            "fontColorValue": "ab996"
           }
         }
         let indexEventOne = {
@@ -390,14 +395,17 @@ export default function buttonJsunit() {
       } catch (err) {
         console.log("testButton15 change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await Utils.sleep(500);
       let indexEvent = {
-        eventId: 77,
+        eventId: 77996,
         priority: events_emitter.EventPriority.LOW
       }
       let callback = (indexEvent) => {
         console.info("testButton15 get state result is: " + JSON.stringify(indexEvent))
-        except(indexEvent.data.fontColorValue).assertEqual('ab996')
+        console.info("testButton15 indexEvent.data.fontColorValue is: " + indexEvent.data.fontColorValue)
+        expect(indexEvent.data.fontColorValue).assertEqual('ab996')
+        console.info('[testButton15] END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -405,9 +413,6 @@ export default function buttonJsunit() {
         console.info("testButton15 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("testButton15 click result is: " + JSON.stringify(sendEventByKey('button4', 10, "")));
-      await Utils.sleep(1000);
-      console.info('[testButton15] END');
-      done();
     });
   })
 }

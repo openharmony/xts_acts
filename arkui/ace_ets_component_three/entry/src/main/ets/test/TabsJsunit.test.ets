@@ -286,6 +286,7 @@ export default function tabsJsunit() {
       let callback = (indexEvent) => {
         console.info("testTabs_1400 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 212,
@@ -299,7 +300,6 @@ export default function tabsJsunit() {
       console.info("testTabs_1400 click result is: " + JSON.stringify(sendEventByKey('tabContent1', 10, "")));
       await Utils.sleep(1000);
       console.info('testTabs_1400 END');
-      done();
     });
   })
 }
