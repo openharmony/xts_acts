@@ -117,7 +117,8 @@
           "pages/hoverEffect",
           "pages/hitTestMode",
           "pages/color",
-          "pages/navigation_lack"
+          "pages/navigation_lack",
+          "pages/gestureSetting"
         ],
         "name": ".MainAbility",
         "window": {

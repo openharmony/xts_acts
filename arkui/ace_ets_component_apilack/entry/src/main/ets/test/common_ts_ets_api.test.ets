@@ -17,6 +17,7 @@ import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 import Utils from './Utils.ets'
+import font from '@ohos.font'
 
 export default function common_ts_ets_apiStaticClearJsunit() {
   describe('common_ts_ets_apiStaticClearTest', function () {
@@ -95,5 +96,29 @@ export default function common_ts_ets_apiStaticClearJsunit() {
         console.info("common_ts_ets_apiEnvProp0001 on events_emitter err : " + JSON.stringify(err));
       }
     });
+
+    /*
+    * @tc.number       SUB_ACE_BASIC_ETS_API_0003
+    * @tc.name         test_font_registerFont_0001
+    * @tc.desc        Register a customized font in the FontManager
+    */
+    it('test_font_registerFont_0001', 0, async function (done) {
+      console.info('test_font_registerFont_0001 Register a customized font in the FontManagerSTART');
+      await Utils.sleep(2000);
+      let fontOptions = {
+          familyName: "Italy",
+          familySrc: "resource/base/Italy"
+      }
+      try {
+           let result = font.registerFont(fontOptions);
+           done();
+      } catch (err) {
+           console.info("test_font_registerFont_0001  err : " + JSON.stringify(err));
+           expect().assertFail();
+           done();
+      }
+    });
+
+
   })
 }
