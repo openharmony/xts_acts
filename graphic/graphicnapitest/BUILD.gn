@@ -26,6 +26,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
     "NativeBufferTest.cpp",
     "NativeImageTest.cpp",
     "NativeVsyncTest.cpp",
+    "NativeWindowTest.cpp",
   ]
 
   cflags = [
