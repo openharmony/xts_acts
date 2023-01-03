@@ -1,17 +1,3 @@
-/*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 import prompt from '@ohos.prompt';
 import router from '@ohos.router';
 import fileio from '@ohos.fileio';
@@ -59,7 +45,7 @@ struct IndexPage {
     {title:'CanvasShadowOffsetX',uri:'pages/ArkUI/CanvasShadowOffsetX'},
     {title:'CanvasShadowOffsetY',uri:'pages/ArkUI/CanvasShadowOffsetY'},
     {title:'CanvasImageSmoothingEnabled',uri:'pages/ArkUI/CanvasImageSmoothingEnabled'},
-    {title:'',uri:'',bgc:Color.Black},
+//    {title:'',uri:'',bgc:Color.Black},
   ]
   @State ColorObject : string[] = ['#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
   '#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
@@ -72,11 +58,11 @@ struct IndexPage {
       let results = this.result;
       if (this.result === 'Pass'){
         this.ColorObject[this.current] = '#ff008000';
-        filewrite(name1,results,titles);
+        filewrite(name1,results,titles)
       }
       else if (this.result === 'Fail'){
         this.ColorObject[this.current] = '#ffff0000';
-        filewrite(name1,results,titles);
+        filewrite(name1,results,titles)
       }
       else if (this.result === 'None'){
         this.ColorObject[this.current] = this.ColorObject[this.current]
@@ -139,14 +125,13 @@ struct IndexPage {
               this.count = 1
               this.ClearAll=false
               this.current = index
-              console.info('current:'+this.current+'当前背景色：'+this.TestCaseList[index].bgc+'Index:'+index)
               router.push({
                 url: item.uri,
               })
             })
           }
         },item  => item.title)
-      }.width('100%')
+      }.width('100%').height('92%')
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
   ClearText(){

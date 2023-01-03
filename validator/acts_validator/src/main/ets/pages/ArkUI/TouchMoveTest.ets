@@ -1,17 +1,3 @@
-/*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 import prompt from '@ohos.prompt';
 import fileio from '@ohos.fileio';
 import router from '@ohos.router';
@@ -36,7 +22,7 @@ struct CustomContainer1 {
   PassBtn(text: Resource, isFullScreen: boolean) {
     Button() {
       Image($r('app.media.ic_public_pass')).width('20vp').height('20vp')
-    }.width('30%').height('30vp').backgroundColor(Color.Grey)
+    }.width('30%').height('30vp').backgroundColor(Color.Grey)   //Pass Button
     .onClick(()=>{
       router.back({
         url:this.Url,
@@ -50,7 +36,7 @@ struct CustomContainer1 {
   FailBtn(text: Resource, isFullScreen: boolean) {
     Button(){
       Image($r('app.media.ic_public_fail')).width('20vp').height('20vp')
-    }.width('30%').height('30vp').backgroundColor(Color.Grey)
+    }.width('30%').height('30vp').backgroundColor(Color.Grey)   //Fail Button
     .onClick(()=>{
       router.back({
         url:this.Url,
@@ -168,8 +154,12 @@ struct SetCircle {
         .width('20vp').height('20vp').position({ x: this.x, y: this.y }).visibility(this.isshow)
         .fill(Color.Red)
     }.onTouch((event: TouchEvent) => {
+      //console.info('11')
+      // x坐标
       let x = event.touches[0].x
+      // y坐标
       let y = event.touches[0].y
+      //console.info('this is ' + JSON.stringify(this))
       if (event.type === TouchType.Down) {
         this.x = x
         this.y = y
