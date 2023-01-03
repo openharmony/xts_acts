@@ -222,7 +222,9 @@ int ExecuteGraphMock(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs,
                 LOGE("[NNRtTest] OH_NNExecutor_SetOutput failed! ret=%d\n", ret);
                 return ret;
             }
-            ret = device->MemoryCopy(expect, operandTem.length);
+            if(expect!=nullptr){
+                ret = device->MemoryCopy(expect, operandTem.length);
+            }
             if (ret != OH_NN_SUCCESS) {
                 LOGE("[NNRtTest] device set expect output failed! ret=%d\n", ret);
                 return ret;
