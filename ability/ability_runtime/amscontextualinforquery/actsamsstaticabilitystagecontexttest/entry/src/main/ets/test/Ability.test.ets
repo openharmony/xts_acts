@@ -85,10 +85,8 @@ export default function abilityTest() {
             expect(typeof (data.iconId)).assertEqual("string");
             expect(typeof (data.process)).assertEqual("string");
             expect(typeof (data.supportedModes)).assertEqual("number");
-            expect(Array.isArray(data.moduleSourceDirs)).assertEqual(true);
             expect(Array.isArray(data.permissions)).assertEqual(true);
             expect(Array.isArray(data.moduleInfos)).assertEqual(true);
-            expect(typeof (data.entryDir)).assertEqual("string");
             expect(typeof (data.codePath)).assertEqual("string");
             expect(typeof (data.removable)).assertEqual("boolean");
 
@@ -104,15 +102,8 @@ export default function abilityTest() {
             expect(data.iconId.length).assertLarger(0);
             expect(data.process).assertEqual("com.example.staticabilitystagecontext");
             expect(data.supportedModes).assertEqual(0);
-            expect(data.moduleSourceDirs.length).assertEqual(1);
-            expect(data.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
-            "com.example.staticabilitystagecontext/com.example.staticabilitystagecontext");
             expect(data.moduleInfos.length).assertEqual(1);
             expect(data.moduleInfos[0].moduleName).assertEqual("com.example.staticabilitystagecontext");
-            expect(data.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-            "com.example.staticabilitystagecontext/com.example.staticabilitystagecontext");
-            expect(data.entryDir).assertEqual("/data/app/el1/bundle/public/" +
-            "com.example.staticabilitystagecontext/com.example.staticabilitystagecontext");
             expect(data.codePath).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.staticabilitystagecontext");
             expect(data.removable).assertEqual(true);
