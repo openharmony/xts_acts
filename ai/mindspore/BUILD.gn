@@ -15,6 +15,10 @@ import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "acts/ActsMindSporeTest"
 
+config("mindspore_config") {
+  include_dirs = [ "//third_party/mindspore/" ]
+}
+
 ohos_moduletest_suite("ActsMindSporeTest") {
   module_out_path = module_output_path
   sources = [
@@ -22,7 +26,7 @@ ohos_moduletest_suite("ActsMindSporeTest") {
     "src/ohos_common.cpp",
   ]
 
-  include_dirs = [ "//foundation/ai/mindspore/" ]
+  configs = [ ":mindspore_config" ]
 
   deps = [
     "//third_party/googletest:gmock",
