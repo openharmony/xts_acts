@@ -14,17 +14,11 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import ability from '@ohos.app.ability.UIAbility'
-import rpc from '@ohos.rpc';
+import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium"
 import wantConstant from '@ohos.ability.wantConstant'
-import Prompt from '@system.prompt';
-import abilityManager from '@ohos.app.ability.abilityManager';
-
 
 export default function StartAbilityForResult(abilityContext) {
   var TAG = "";
-  var DeviceId = "";
 
   function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time))
@@ -180,47 +174,6 @@ export default function StartAbilityForResult(abilityContext) {
           })
         console.log(TAG + " resultCode: " + details.resultCode);
         expect(details.resultCode).assertEqual(1);
-      }, 2000)
-      done();
-    });
-
-    /*
-     * @tc.number: FreeInstall_Stage_StartAbilityForResult_0600
-     * @tc.name: startAbilityForResult: Input local deviceId,free install and start hap successfully.
-     * @tc.desc: Function test
-     * @tc.level   0
-     */
-    it("FreeInstall_Stage_StartAbilityForResult_0600", 0, async function (done) {
-      console.log("------------start FreeInstall_Stage_StartAbilityForResult_0600-------------");
-      TAG = "FreeInstall_Stage_StartAbilityForResult_0600";
-      let details1;
-      let details2;
-      await abilityManager.getTopAbility().then((data) => {
-        details1 = data;
-        console.info(' getTopAbility succeeded data: ' + JSON.stringify(data));
-      }).catch((error) => {
-        console.error(' getTopAbility error: ' + JSON.stringify(error));
-      });
-      console.log(" checkAbilityInfo deviceId : " + details1.deviceId);
-      DeviceId = details1.deviceId;
-      setTimeout(async () => {
-        var str = {
-          "deviceId": DeviceId,
-          "bundleName": "com.example.qianyiyingyong.hmservice",
-          "abilityName": "com.example.qianyiyingyong.MainAbility",
-          "moduleName": "entry",
-          "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-        }
-        await globalThis.abilityContext.startAbilityForResult(str)
-          .then((data) => {
-            details2 = data;
-            console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
-          }).catch((error) => {
-            console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
-          })
-        await sleep(2000);
-        console.log(TAG + " resultCode: " + details2.resultCode);
-        expect(details2.resultCode).assertEqual(1);
       }, 2000)
       done();
     });

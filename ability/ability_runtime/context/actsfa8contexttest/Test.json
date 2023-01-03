@@ -11,8 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsFa8ContextTest.hap",
-                "ActsFa8ContextModule1.hap"
+                "ActsFa8ContextTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

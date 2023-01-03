@@ -135,9 +135,9 @@ export default function ConnectAbilityTest() {
 
       setTimeout(async () => {
         var deviceid = "0";
-        await abilityManager.getTopAbility((err, data) => {
-          console.log(TAG + 'getTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
-          console.log(TAG + 'getTopAbility result deviceid:' + JSON.stringify(data.deviceId));
+        abilityDelegator.getCurrentTopAbility((err, data) => {
+          console.log(TAG + 'getCurrentTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
+          console.log(TAG + 'getCurrentTopAbility result deviceid:' + JSON.stringify(data.deviceId));
           deviceid = data.deviceId;
         })
         var request1 = {
@@ -171,9 +171,9 @@ export default function ConnectAbilityTest() {
       })
       setTimeout(async () => {
         var deviceid = "0";
-        await abilityManager.getTopAbility((err, data) => {
-          console.log(TAG + 'getTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
-          console.log(TAG + 'getTopAbility result deviceid:' + JSON.stringify(data.deviceId));
+        abilityDelegator.getCurrentTopAbility((err, data) => {
+          console.log(TAG + 'getCurrentTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
+          console.log(TAG + 'getCurrentTopAbility result deviceid:' + JSON.stringify(data.deviceId));
           deviceid = data.deviceId;
         })
         var request2 = {
