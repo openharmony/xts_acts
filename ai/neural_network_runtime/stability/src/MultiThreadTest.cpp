@@ -48,8 +48,7 @@ void CompileModel(OH_NNCompilation *compilation, const OHNNCompileParam &compile
 
 void ExecuteModel(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs)
 {
-    float addExpectValue[4] = {0, 1, 2, 3};
-    ASSERT_EQ(OH_NN_SUCCESS, ExecuteGraphMock(executor, graphArgs, addExpectValue));
+    ASSERT_EQ(OH_NN_SUCCESS, ExecuteGraphMock(executor, graphArgs, nullptr));
 }
 
 
