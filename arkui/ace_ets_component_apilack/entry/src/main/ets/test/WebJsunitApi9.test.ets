@@ -316,10 +316,81 @@ export default function webJsunit() {
     * @tc.desic        putAcceptFileURICookieEnabled
     */
     it('testweb23', 0, async function (done) {
-      emitKey = "emitisThirdPartyCookieAllowed";
+      emitKey = "hasImage";
       Utils.registerContainEvent("isThirdPartyCookieAllowed",false,826,done);
       sendEventByKey('webcomponentapi9',10,'');
     });
-    
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0025
+     * @tc.name         testweb22
+     * @tc.desic        hasImageCallback
+    */
+    it('testweb24', 0, async function (done) {
+      emitKey = "hasImageTwo";
+      Utils.registerContainEvent("hasImage",true,828,done);
+      sendEventByKey('webcomponentapi9',10,'');
+    });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0026
+     * @tc.name         testweb22
+     * @tc.desic        hasImagePromise
+    */
+    it('testweb25', 0, async function (done) {
+      emitKey = "setNetworkAvailable";
+      Utils.registerContainEvent("hasImage",true,829,done);
+      sendEventByKey('webcomponentapi9',10,'');
+    });
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0027
+     * @tc.name         testweb22
+     * @tc.desic        setNetworkAvailable
+    */
+    it('testweb26', 0, async function (done) {
+      emitKey = "getFavicon";
+      Utils.registerContainEvent("setNetworkAvailable",false,830,done);
+      sendEventByKey('webcomponentapi9',10,'');
+    });
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0028
+     * @tc.name         testweb22
+     * @tc.desic        getFavicon
+    */
+    it('testweb27', 0, async function (done) {
+      emitKey = "getOriginalUrl";
+      Utils.registerContainEvent("getFavicon","baidu",831,done);
+      sendEventByKey('webcomponentapi9',10,'');
+    });
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0029
+     * @tc.name         testweb22
+     * @tc.desic        getFavicon
+    */
+    it('testweb28', 0, async function (done) {
+      emitKey = "history";
+      Utils.registerContainEvent("getOriginalUrl","www.baidu.com",832,done);
+      sendEventByKey('webcomponentapi9',10,'');
+    });
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0030
+     * @tc.name         testweb22
+     * @tc.desic        getFavicon
+    */
+    it('testweb29', 0, async function (done) {
+      emitKey = "pageUp";
+      Utils.registerContainEvent("history",1,833,done);
+      sendEventByKey('webcomponentapi9',10,'');
+    });
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0031
+     * @tc.name         testweb22
+     * @tc.desic        getFavicon
+    */
+    it('testweb30', 0, async function (done) {
+      emitKey = "pageUp";
+      Utils.registerContainEvent("pageUp",true,834,done);
+      sendEventByKey('webcomponentapi9',10,'');
+    });
   })
 }
