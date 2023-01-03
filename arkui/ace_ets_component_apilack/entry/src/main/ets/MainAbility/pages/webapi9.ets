@@ -29,6 +29,10 @@ struct Index {
     @State isVoid: boolean = true;
     handler: FullScreenExitHandler = null;
     @State atio: number = 150;
+    @State defaultSize: number = 13;
+    @State defaultFixed: number = 8;
+    @State minLogicalSize: number = 1;
+    @State netWorkStatus: boolean = false;
     ports: WebMessagePort[] = null;
     testObj = {
         test: (data1, data2, data3) => {
@@ -118,6 +122,17 @@ struct Index {
                 })
 
             Web({ src: 'www.baidu.com', controller: this.controller }).key('web2')
+            .webStandardFont("HarmonyOS-Sans-Condensed")
+            .webSeriFont("HarmonyOS-Sans-Condensed")
+            .webSanSeriFont("HarmonyOS-Sans-Condensed")
+            .webFixedFont("HarmonyOS-Sans-Condensed")
+            .webFantasyFont("HarmonyOS-Sans-Condensed")
+            .webCursiveFont("HarmonyOS-Sans-Condensed")
+            .defaultFixedFontSize(this.defaultFixed)
+            .defaultFontSize(this.defaultFontSize)
+            .minLogicalSize(this.minLogicalSize)
+            .blockNetwork(false)
+            .defaultFontSize()
                 .onSslErrorEventReceive((event) => {
                     AlertDialog.show({
                         title: 'onSslErrorEventReceive',
@@ -154,6 +169,24 @@ struct Index {
                       console.log('getLineNumber:' + event.message.getLineNumber());
                      console.log('getMessageLevel:' + event.message.getMessageLevel());
                     return false;
+                })
+                .onErrorReceive((event)=>{
+                    event.request.getRequestMethod();
+                })
+                .onTouchIconUrlRecevied((event)=>{
+                    event.url;
+                })
+                .onFaviconReceived((event)=>{
+                    event.favicon;
+                })
+                .onPageVisible((event)=>{
+                    event.url
+                })
+                .onDataResubmitted((event)=>{
+                    event.handler.resend
+                })
+                .onInterceptKeyEvent((e)=>{
+                    e.keyCode;
                 })
 
             Button("web click").key('webcomponentapi9').onClick(async ()=>{
@@ -245,7 +278,63 @@ struct Index {
                         let isThirdParty = web_webview.WebCookieManager.isThirdPartyCookieAllowed();
                         Utils.emitEvent(isThirdParty,827);
                         break;
+                    case "hasImage":
+                        let flag = true
+                        try{
+                            thid.controllerTwo.hasImage((err.data)=>{
+                                if(err) {
+                                    console.info("has ImageError" + JSON.stringfy(err))
+                                    return;
+                                }
+                                Utils.emitEvent(flag,828);
+                            });
+                        }catch(error){
+                            console.error(`ErrorCode:${error.code},Message:${error.message}`);
+                        }
+                        break;
+                    case "hasImageTwo":
+                        let flag = true
+                        try{
+                            thid.controllerTwo.hasImage().then((data)=>{
+                                Utils.emitEvent(flag,829);
+                            })
+                            .catch(function(error)) {
+                                console.error("error" +error)
+                            }
 
+                        }catch(error){
+                            console.error(`ErrorCode:${error.code},Message:${error.message}`);
+                        }
+                        break;
+                    case "setNetworkAvailable":
+                        this.controllerTwo.setNetworkAvailable(this.netWorkStatus);
+                        Utils.emitEvent(this.netWorkStatus,830);
+                        break;
+                    case "getFavicon":
+                        let icon = "baidu"
+                        this.controllerTwo.getFavicon();
+                        Utils.emitEvent(this.icon,831);
+                        break;
+                    case "getOriginalUrl":
+                        let url = "www.baidu.com"
+                        this.controllerTwo.getOriginalUrl();
+                        Utils.emitEvent(this.netWorkStatus,832);
+                        break;
+                    case "history":
+                        var res = 1;
+                        let historyList = this.controllerTwo.getBackForwardEntries();
+                        this.controllerTwo.initializeWebEngine();
+                        let historyItem = historyList.getItemIndex(this.res);
+                        historyItem.historyRawUrl
+                        Utils.emitEvent(this.netWorkStatus,833);
+                        break;
+                    case "pageUp":
+                        var res = true
+                        this.controllerTwo.pageUp(true);
+                        this.controllerTwo.pageDown(true);
+                        this.controllerTwo.removeCache(true);
+                        Utils.emitEvent(this.res,834);
+                        break;
 
                     default:
                         console.info("can not match case")
