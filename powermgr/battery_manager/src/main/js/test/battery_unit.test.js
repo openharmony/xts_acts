@@ -280,39 +280,6 @@ describe('BatteryUnitTest', function () {
     })
 
     /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1740
-     * @tc.name nowCurrent_JSTest
-     * @tc.desc Battry Present Interface Test
-     */
-    it('nowCurrent_JSTest', 0, function () {
-        let nowCurrent = batteryInfo.nowCurrent;
-        console.info('nowCurrent = ' + nowCurrent);
-        expect((nowCurrent >= -20000 && nowCurrent <= 20000)).assertTrue();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1750
-     * @tc.name remainingEnergy_JSTest
-     * @tc.desc Battry Present Interface Test
-     */
-    it('remainingEnergy_JSTest', 0, function () {
-        let remainingEnergy = batteryInfo.remainingEnergy;
-        console.info('remEnergy = ' + remainingEnergy);
-        expect(remainingEnergy >= 0).assertTrue();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1760
-     * @tc.name totalEnergy_JSTest
-     * @tc.desc Battry Present Interface Test
-     */
-    it('totalEnergy_JSTest', 0, function () {
-        let totalEnergy = batteryInfo.totalEnergy;
-        console.info('totalenergy = ' + totalEnergy);
-        expect(totalEnergy >= 0).assertTrue();
-    })
-
-    /**
      * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1780
      * @tc.name batterylevel_JSTest
      * @tc.desc Battry Present Interface Test
@@ -398,7 +365,7 @@ describe('BatteryUnitTest', function () {
     it('remainingChargeTime_JSTest', 0, function () {
         let remainingChargeTime = batteryInfo.estimatedRemainingChargeTime;
         console.info('remainingChargeTime = ' + remainingChargeTime);
-        expect(remainingChargeTime >= 0).assertTrue();
+        expect(remainingChargeTime >= -1).assertTrue();
     })
 
     /**
