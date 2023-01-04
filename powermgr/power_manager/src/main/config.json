@@ -85,6 +85,12 @@
                 }
             }
         ],
+        "reqPermissions": [
+            {
+              "name": "ohos.permission.RUNNING_LOCK",
+              "reason": "use ohos.permission.RUNNING_LOCK"
+            }
+        ],
         "testRunner": {
             "name": "OpenHarmonyTestRunner",
             "srcPath": "TestRunner"
