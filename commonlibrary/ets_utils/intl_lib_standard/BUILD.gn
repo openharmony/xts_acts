@@ -20,10 +20,6 @@ ohos_js_hap_suite("intl_js_test") {
     ":intl_resources",
   ]
 
-  #  shared_libraries = [
-  #    "//third_party/giflib:libgif",
-  #    "//third_party/libpng:libpng",
-  #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsEtsIntlJsTest"
 
