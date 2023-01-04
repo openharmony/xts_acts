@@ -891,10 +891,8 @@ describe('ActsFeatureAbilityTest', function () {
         expect(typeof (info.iconId)).assertEqual("string");
         expect(typeof (info.process)).assertEqual("string");
         expect(typeof (info.supportedModes)).assertEqual("number");
-        expect(Array.isArray(info.moduleSourceDirs)).assertEqual(true);
         expect(Array.isArray(info.permissions)).assertEqual(true);
         expect(Array.isArray(info.moduleInfos)).assertEqual(true);
-        expect(typeof (info.entryDir)).assertEqual("string");
 
         expect(info.name).assertEqual("com.example.actsfeatureabilitytest");
         expect(info.description).assertEqual("descriptionTest");
@@ -907,13 +905,7 @@ describe('ActsFeatureAbilityTest', function () {
         //            expect(info.iconId).assertEqual(0);   //create by DevEco when building HAP.
         expect(info.process).assertEqual("com.example.actsfeatureabilitytest");
         expect(info.supportedModes).assertEqual(0);
-        expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
-            "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
         expect(info.moduleInfos[0].moduleName).assertEqual("entry");
-        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-            "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
-        expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +
-            "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
         console.info("getApplicationInfo : end")
     }
 

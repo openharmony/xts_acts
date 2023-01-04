@@ -270,10 +270,8 @@ export default function abilityTest() {
             expect(typeof (data.iconId)).assertEqual("string");
             expect(typeof (data.process)).assertEqual("string");
             expect(typeof (data.supportedModes)).assertEqual("number");
-            expect(Array.isArray(data.moduleSourceDirs)).assertEqual(true);
             expect(Array.isArray(data.permissions)).assertEqual(true);
             expect(Array.isArray(data.moduleInfos)).assertEqual(true);
-            expect(typeof (data.entryDir)).assertEqual("string");
             expect(typeof (data.codePath)).assertEqual("string");
             expect(typeof (data.removable)).assertEqual("boolean");
             console.log("checkApplicationInfo_expect_typeof_end")
@@ -288,15 +286,8 @@ export default function abilityTest() {
             expect(data.iconId.length).assertLarger(0);
             expect(data.process).assertEqual("com.example.staticinfomationquery");
             expect(data.supportedModes).assertEqual(0);
-            expect(data.moduleSourceDirs.length).assertEqual(1);
-            expect(data.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
-            "com.example.staticinfomationquery/com.example.staticinfomationquery");
             expect(data.moduleInfos.length).assertEqual(1);
             expect(data.moduleInfos[0].moduleName).assertEqual("com.example.staticinfomationquery");
-            expect(data.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-            "com.example.staticinfomationquery/com.example.staticinfomationquery");
-            expect(data.entryDir).assertEqual("/data/app/el1/bundle/public/" +
-            "com.example.staticinfomationquery/com.example.staticinfomationquery");
             expect(data.codePath).assertEqual("/data/app/el1/bundle/public/com.example.staticinfomationquery")
             expect(data.removable).assertEqual(true);
             console.log("checkApplicationInfo end  " + data);
