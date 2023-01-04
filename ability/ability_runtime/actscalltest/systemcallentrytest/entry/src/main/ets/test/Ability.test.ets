@@ -14,6 +14,7 @@
  */
 import { describe, afterEach, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
+import missionManager from '@ohos.application.missionManager'
 
 var sysABundleName = "com.example.systemcalltest";
 var sysASecondAbilityName = "com.example.systemcalltest.SecondAbility";
@@ -520,7 +521,7 @@ export default function abilityTest() {
         done();
       }).catch(err => {
         console.log('ACTS_CommonComponent_Call_1700 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_TYPE_ERROR);
         exceptionFlag = true;
       });
@@ -546,7 +547,7 @@ export default function abilityTest() {
         globalThis.callee.on('', onTest);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3100 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -572,7 +573,7 @@ export default function abilityTest() {
         globalThis.callee.on(null, onTest);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3200 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -598,7 +599,7 @@ export default function abilityTest() {
         globalThis.callee.on(undefined, onTest);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3300 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -620,7 +621,7 @@ export default function abilityTest() {
         globalThis.callee.off('');
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3400 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -642,7 +643,7 @@ export default function abilityTest() {
         globalThis.callee.off(null);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3500 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -664,7 +665,7 @@ export default function abilityTest() {
         globalThis.callee.off(undefined);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3600 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -685,7 +686,7 @@ export default function abilityTest() {
         globalThis.callee.on('testCall', "");
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_4300 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -727,7 +728,7 @@ export default function abilityTest() {
         globalThis.callee.on('testCall', undefined);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_4500 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -761,7 +762,7 @@ export default function abilityTest() {
         globalThis.callee.on('ACTS_CommonComponent_Call_5000', testCallback_5100);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_5000 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_FUNC_REGISTERED);
         finishFlag = 1;
       }
@@ -798,7 +799,7 @@ export default function abilityTest() {
         globalThis.callee.off('ACTS_CommonComponent_Call_5100');
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_5100 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_FUNC_NOT_EXIST);
         finishFlag = 1;
       }
@@ -818,12 +819,12 @@ export default function abilityTest() {
       let exceptionFlag = false;
 
 
-        await globalThis.globalThis.abilityContext.startAbilityByCall(null)
-          .then(data => {
-            expect().assertFail();
-            done();
+      await globalThis.globalThis.abilityContext.startAbilityByCall(null)
+        .then(data => {
+          expect().assertFail();
+          done();
         }).catch(err => {
-            console.log('ACTS_CommonComponent_Call_5200 call err.code: ' + JSON.stringify(err.code) +
+          console.log('ACTS_CommonComponent_Call_5200 call err.code: ' + JSON.stringify(err.code) +
             ' err.msg: ' + JSON.stringify(err.message));
           expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
           exceptionFlag = true;
@@ -850,7 +851,7 @@ export default function abilityTest() {
         done();
       }).catch(err => {
         console.log('ACTS_CommonComponent_Call_5300 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INNER_ERROR);
         exceptionFlag = true;
       });
@@ -872,12 +873,12 @@ export default function abilityTest() {
         .then(data => {
           expect().assertFail();
           done();
-      }).catch(err => {
+        }).catch(err => {
           console.log('ACTS_CommonComponent_Call_5400 call err.code: ' + JSON.stringify(err.code) +
-          ' err.msg: ' + JSON.stringify(err.message));
-        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
-        exceptionFlag = true;
-      });
+            ' err.msg: ' + JSON.stringify(err.message));
+          expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
+          exceptionFlag = true;
+        });
 
       expect(exceptionFlag).assertEqual(true);
       done();
