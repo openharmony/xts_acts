@@ -7,22 +7,6 @@ export default class MainAbility10 extends Ability {
     onCreate(want, launchParam) {
         console.info(printLog10 + "onCreate")
 
-        let list = ["ohos.permission.CAMERA"]
-        this.context.requestPermissionsFromUser(list).then((permissionRequestResult) => {
-            console.info(printLog10 + "requestPermissionsFromUser data = " + JSON.stringify(permissionRequestResult));
-
-            var CommonEventPublishData = {
-                parameters: {
-                    permissionRequestResult: permissionRequestResult
-                }
-            }
-            commonEvent.publish(listPush10 + "onCreate", CommonEventPublishData, (err) => {
-                console.info(printLog10 + listPush10 + "onCreate");
-            });
-        }).catch((err) => {
-            console.info(printLog10 + "requestPermissionsFromUser err = " + JSON.stringify(err));
-        });
-
         setTimeout(()=>{
             this.context.terminateSelf().then((data) => {
                 console.info(printLog10 + "terminateSelf data = " + JSON.stringify(data));
