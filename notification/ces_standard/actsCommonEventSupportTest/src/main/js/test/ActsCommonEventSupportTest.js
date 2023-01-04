@@ -362,6 +362,7 @@ export default function ActscommonEventSupportTest() {
       expect(commonEvent.Support.COMMON_EVENT_SLOT_CHANGE).assertEqual('usual.event.SLOT_CHANGE')
       expect(commonEvent.Support.COMMON_EVENT_SPN_INFO_CHANGED).assertEqual('usual.event.SPN_INFO_CHANGED')
       expect(commonEvent.Support.COMMON_EVENT_QUICK_FIX_APPLY_RESULT).assertEqual('usual.event.QUICK_FIX_APPLY_RESULT')
+      expect(commonEvent.Support.COMMON_EVENT_USER_INFO_UPDATED ).assertEqual('usual.event.USER_INFO_UPDATED')
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST_2000 END`)
     })
 
