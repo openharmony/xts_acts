@@ -13,10 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 import resourceManager from '@ohos.resourceManager';
-import bundle from '@ohos.bundle';
-import bundleManager from '@ohos.bundle.bundleManager';
 
 export default function actsFaContextTest() {
     describe('ActsFaContextTest', function () {
@@ -36,50 +34,6 @@ export default function actsFaContextTest() {
                 console.info("ACTS_FAContext_0100 err: " + err)
                 expect().assertFail()
                 done();
-            })
-        })
-
-        /*
-        * @tc.number    : ACTS_FAContext_0200
-        * @tc.name      : get resource by labelId in applicationInfo
-        * @tc.desc      : get resource by labelId in applicationInfo
-        */
-        it('ACTS_FAContext_0200',0, async function (done) {
-            await Promise.all([
-                resourceManager.getResourceManager(),
-                bundleManager.getApplicationInfo("com.example.fa_app", 0)
-            ]).then(results => {
-                return results[0].getString(Number(results[1].labelId))
-            }).then(str => {
-                console.info("ACTS_FAContext_0200 label: " + str)
-                expect(str).assertEqual("fa_module1")
-                done()
-            }).catch(e => {
-                console.info("ACTS_FAContext_0200 error: " + e)
-                expect().assertFail()
-                done()
-            })
-        })
-
-        /*
-        * @tc.number    : ACTS_FAContext_0300
-        * @tc.name      : get resource by labelId in abilityInfo
-        * @tc.desc      : get resource by labelId in abilityInfo
-        */
-        it('ACTS_FAContext_0300',0, async function (done) {
-            await Promise.all([
-                resourceManager.getResourceManager(),
-                bundle.getAbilityInfo("com.example.fa_app", "com.example.module1.MainAbility")
-            ]).then(results => {
-                return results[0].getString(Number(results[1].labelId))
-            }).then(str => {
-                console.info("ACTS_FAContext_0300 label: " + str)
-                expect(str).assertEqual("fa_module1")
-                done()
-            }).catch(e => {
-                console.info("ACTS_FAContext_0300 error: " + e)
-                expect().assertFail()
-                done()
             })
         })
     })

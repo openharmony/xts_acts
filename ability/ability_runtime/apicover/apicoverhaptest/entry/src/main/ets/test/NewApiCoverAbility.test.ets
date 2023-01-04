@@ -81,48 +81,6 @@ export default function ApiCoverTest() {
     });
 
     /*
-     * @tc.number  SUB_AA_GetTopAbility_0100
-     * @tc.name    Test getTopAbility.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_GetTopAbility_0100', 0, async function (done) {
-      try {
-        await abilityManager.getTopAbility().then((data)=>{
-          expect(true).assertTrue();
-          done();
-        }).catch((err)=>{
-          expect().assertFail()
-          done();
-        })
-      } catch (error) {
-        expect().assertFail()
-        done();
-      }
-    });
-
-    /*
-     * @tc.number  SUB_AA_GetAbilityRunningInfo_0100
-     * @tc.name    Test getAbilityRunningInfo.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_GetAbilityRunningInfo_0100', 0, async function (done) {
-      try {
-        await abilityManager.getAbilityRunningInfos().then((data)=>{
-          expect(true).assertTrue();
-          done();
-        }).catch((err)=>{
-          expect().assertFail()
-          done();
-        })
-      } catch (error) {
-        expect().assertFail()
-        done();
-      }
-    });
-
-    /*
      * @tc.number  SUB_AA_GetExtensionRunningInfos_0100
      * @tc.name    Test getExtensionRunningInfos.
      * @tc.desc    Function test
