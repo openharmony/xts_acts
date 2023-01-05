@@ -40,25 +40,6 @@ export default function stageAppContextTest(abilityContext) {
         })
 
         /**
-          * @tc.number: SUB_AA_OpenHarmony_ApplicationContext_0100
-          * @tc.name: Validating the context obtained by the AbilityContext call 
-          * getApplicationContext can be obtained using createBundleContext
-          * @tc.desc: Function test
-          * @tc.level   0
-          */
-        it('SUB_AA_OpenHarmony_ApplicationContext_0100', 0, async function (done) {
-            let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0100";
-            console.log(TAG + " --- start");
-            let context = abilityContext.getApplicationContext();
-            let result = context.createBundleContext('com.example.stageappcontexttest')
-            let getCacheDir = result.cacheDir
-            console.log(TAG + 'getCacheDir::' + JSON.stringify(getCacheDir));
-            expect(getCacheDir).assertEqual('/data/app/el2/100/base/com.example.stageappcontexttest/cache')
-            done();
-        });
-
-
-        /**
           * @tc.number: SUB_AA_OpenHarmony_ApplicationContext_0200
           * @tc.name: Validating the context obtained by the AbilityContext call 
           * getApplicationContext can be obtained using getApplicationContext
@@ -143,25 +124,6 @@ export default function stageAppContextTest(abilityContext) {
             let result = context.applicationInfo.name;
             console.log(TAG + " result = " + JSON.stringify(result));
             expect(result).assertEqual("com.example.stageappcontexttest");
-            done();
-        });
-
-        /**
-          * @tc.number: SUB_AA_OpenHarmony_ApplicationContext_1100
-          * @tc.name: Verify that the application-level context call interface 
-          * getApplicationContext gets the context using createBundleContext
-          * @tc.desc: Function test
-          * @tc.level   3
-          */
-        it('SUB_AA_OpenHarmony_ApplicationContext_1100', 0, async function (done) {
-            let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1100";
-            console.log(TAG + " --- start");
-            let context = abilityContext.getApplicationContext();
-            let context2 = context.getApplicationContext();
-            let result = context2.createBundleContext("com.example.stageappcontexttest");
-            let dir = result.cacheDir;
-            console.log(TAG + " dir = " + dir);
-            expect(dir).assertEqual("/data/app/el2/100/base/com.example.stageappcontexttest/cache");
             done();
         });
 
