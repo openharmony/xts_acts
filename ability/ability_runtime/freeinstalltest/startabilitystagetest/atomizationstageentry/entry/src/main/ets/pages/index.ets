@@ -29,11 +29,4 @@ struct Index {
     }
     .height('100%')
   }
-
-  async aboutToAppear() {
-    var permissions = ["ohos.permission.DISTRIBUTED_DATASYNC"];
-    globalThis.abilityContext.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
-      console.info("start requestPermissionsFromUser!!!!")
-    })
-  }
 }

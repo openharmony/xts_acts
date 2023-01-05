@@ -64,13 +64,6 @@ struct Index {
     await globalThis.abilityContext.terminateSelf();
     console.info('fAStartAbilityForResultPromise terminateSelfWithResult END');
   }
-
-  async aboutToAppear() {
-    var permissions = ["ohos.permission.DISTRIBUTED_DATASYNC"];
-    globalThis.abilityContext.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
-      console.info("start requestPermissionsFromUser!!!!")
-    })
-  }
 }
 
 async function routePage(page) {
