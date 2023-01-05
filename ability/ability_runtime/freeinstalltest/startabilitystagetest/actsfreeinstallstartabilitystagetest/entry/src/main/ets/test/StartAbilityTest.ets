@@ -132,14 +132,14 @@ export default function startAbilityTest(abilityContext) {
     });
 
     async function abilityForeground(tag) {
-      globalThis.delegator.doAbilityForeground(globalThis.ability, (err: any, data: any) => {
-        console.info(tag + "doAbilityForeground err: " + JSON.stringify(err) + ", data: " + JSON.stringify(data));
+      globalThis.delegator.doAbilityForeground(globalThis.ability, (err: any) => {
+        console.info(tag + "doAbilityForeground err: " + JSON.stringify(err));
       });
     }
 
     async function abilityBackground(tag) {
-      globalThis.delegator.doAbilityBackground(globalThis.ability, (err: any, data: any) => {
-        console.info(tag + "abilityBackground err: " + JSON.stringify(err) + ", data: " + JSON.stringify(data));
+      globalThis.delegator.doAbilityBackground(globalThis.ability, (err: any) => {
+        console.info(tag + "abilityBackground err: " + JSON.stringify(err));
       });
     }
 
