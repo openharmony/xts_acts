@@ -17,24 +17,13 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function BytraceTest() {
 describe("BytraceTest", function () {
 
-    async function msleep(time) {
-        var promise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve("done!"), time);
-        });
-        var result = await promise;
-    }
-
     it("DFX_DFR_Bytrace_0100", 0, async function (done) {
         console.info("-------DFX_DFR_Bytrace_0100 start--------");
-        await msleep(3000);
         for (var i = 0; i < 3; i++) {
             console.info("DFX_DFR_Bytrace_0100 i = " + i)
             console.info("DFX_DFR_Bytrace_0100 " + i.toString() + " startTrace start");
             bytrace.startTrace("test-" + i.toString(), 111 + i, 5000);
             console.info("DFX_DFR_Bytrace_0100 " + i.toString() + "startTrace end");
-
-            //            await msleep(3000);
-
             console.info("DFX_DFR_Bytrace_0100 " + i.toString() + " finishTrace start");
             bytrace.finishTrace("test-" + i.toString(), 111 + i);
             console.info("DFX_DFR_Bytrace_0100 " + i.toString() + "finishTrace end");
@@ -155,7 +144,6 @@ describe("BytraceTest", function () {
         for (var i = 0; i < 3; i++) {
             console.info("DFX_DFR_Bytrace_0400 :" + i);
             bytrace.traceByValue("test4-" + i.toString(), 3 + i);
-            await msleep(1000);
         }
         console.info("DFX_DFR_Bytrace_0400 end");
         done();
