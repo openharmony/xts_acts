@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -130,9 +130,10 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
+            objectTest.off("change");
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOn001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -160,9 +161,9 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOn002 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -198,10 +199,10 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
-
+            objectTest.off("change");
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOn003 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -221,11 +222,11 @@ export default function objectStoreTest() {
             }
             objectTest.on("change", changeCallback);
             console.info(TAG + " start call watch change");
+            objectTest.off("change");
             console.info(TAG + " end call watch change");
-
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOn004 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -267,10 +268,9 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
-
+            objectTest.setSessionId("");
             done()
             console.info(TAG + "************* testOff001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -336,6 +336,7 @@ export default function objectStoreTest() {
                 objectTest.name = "jack1";
                 objectTest.age = 19;
                 objectTest.isVis = true;
+                expect(objectTest.name == "jack1").assertEqual(true);
                 expect(objectTest.age == 19).assertEqual(true);
                 console.info(TAG + " set data success!");
             } else {
@@ -351,10 +352,12 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " testObject is null,set name fail");
             }
-            done();
-            console.info(TAG + "************* testMultiObjectOn001 end *************");
+            objectTest.off("change");
+            testObject.off("change");
             objectTest.setSessionId("");
             testObject.setSessionId("");
+            done();
+            console.info(TAG + "************* testMultiObjectOn001 end *************");
         })
 
         /**
@@ -427,11 +430,10 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
-
-            done();
-            console.info(TAG + "************* testMultiObjectOff001 end *************");
             objectTest.setSessionId("");
             testObject.setSessionId("");
+            done();
+            console.info(TAG + "************* testMultiObjectOff001 end *************");
         })
 
         /**
@@ -480,9 +482,10 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
+            objectTest.off("change");
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testChangeSession001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -501,7 +504,6 @@ export default function objectStoreTest() {
             } catch (error) {
                 console.error(TAG + error);
             }
-
             done();
             console.info(TAG + "************* testUndefinedType001 end *************");
         })
@@ -515,7 +517,6 @@ export default function objectStoreTest() {
             console.info(TAG + "************* testGenSessionId001 start *************");
             var sessionId = distributedObject.genSessionId();
             expect(sessionId != null && sessionId.length > 0 && typeof (sessionId) == 'string').assertEqual(true);
-
             done();
             console.info(TAG + "************* testGenSessionId001 end *************");
         })
@@ -546,10 +547,10 @@ export default function objectStoreTest() {
             var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.on("status", statusCallback1);
             console.info(TAG + "watch success");
-
+            objectTest.off("status");
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOnStatus001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -570,10 +571,9 @@ export default function objectStoreTest() {
             console.info(TAG + "start call unwatch status");
             objectTest.off("status", statusCallback1);
             console.info(TAG + "unwatch success");
-
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOnStatus002 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -592,12 +592,11 @@ export default function objectStoreTest() {
             objectTest.on("status", statusCallback3);
             console.info(TAG + "watch success");
             console.info(TAG + "start call unwatch status");
-            objectTest.off("status");
+            objectTest.off("status", statusCallback1);
             console.info(TAG + "unwatch success");
-
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOnStatus003 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -631,10 +630,9 @@ export default function objectStoreTest() {
             expect(complexObject.parent.father == "jack Dad").assertEqual(true);
             expect(complexObject.list[0].mother == "jack2 mom2").assertEqual(true);
             expect(complexObject.list[1].father == "jack2 Dad2").assertEqual(true);
-
+            complexObject.setSessionId("");
             done();
             console.info(TAG + "************* testComplex001 end *************");
-            complexObject.setSessionId("");
         })
 
         /**
@@ -663,10 +661,9 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
-
+            objectTest.setSessionId("");
             done()
             console.info(TAG + "************* testMaxSize001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -711,12 +708,12 @@ export default function objectStoreTest() {
             console.log("testPerformance001 totalTime = " + totalTime);
             console.log("testPerformance001 baseLine = " + baseLine);
             expect(totalTime < baseLine).assertEqual(true);
-
+            complexObject.setSessionId("");
             done();
             console.log(TAG + "************* testPerformance001 end *************");
-            complexObject.setSessionId("");
+            
         })
-        /**
+       /**
          * @tc.name: testSave001
          * @tc.desc: Save object <Promise>
          * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Save_001

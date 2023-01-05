@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 Huawei Device Co., Ltd.
+* Copyright (c) 2022-2023 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -30,11 +30,13 @@ describe('systemStorageTest', function () {
     afterEach(async function (done) {
         console.info(TAG + 'afterEach')
         let promise = storage.clear({
-            success: function () {
-                expect(true).assertTrue();
+            success: function (data) {
+                console.info("Succeeded in clearing.");
+                expect(data!=undefined).assertTrue();
                 done();
             },
             fail: function (data, errCode) {
+                console.info("Failed to clearr");
                 expect(false).assertTrue();
                 done();
             }
@@ -200,8 +202,9 @@ describe('systemStorageTest', function () {
         let promise1 = storage.set({
             key: 'storageKey',
             value: 'storageVal',
-            success: async function () {
-                await expect(true).assertTrue();
+            success:async function (data) {
+                console.info("Set is success.");
+                await expect(data != undefined).assertTrue();
             },
             fail: async function (data, err) {
                 await expect(false).assertTrue();
@@ -340,8 +343,9 @@ describe('systemStorageTest', function () {
         let promise1 = storage.set({
             key: 'storageKey',
             value: 'storageVal',
-            success: async function () {
-                await expect(true).assertTrue();
+            success:async function (data) {
+                console.info("Set is success.");
+                await expect(data != undefined).assertTrue();
             },
             fail: async function (data, err) {
                 await expect(false).assertTrue();
@@ -390,8 +394,9 @@ describe('systemStorageTest', function () {
         let promise1 = storage.set({
             key: 'storageKey',
             value: 'storageVal',
-            success: async function () {
-                await expect(true).assertTrue();
+            success:async function (data) {
+                console.info("Set is success.");
+                await expect(data != undefined).assertTrue();
             },
             fail: async function (data, err) {
                 await expect(false).assertTrue();
@@ -435,8 +440,9 @@ describe('systemStorageTest', function () {
         let promise1 = storage.set({
             key: 'storageKey',
             value: 'test',
-            success: async function () {
-                await expect(true).assertTrue();
+            success:async function (data) {
+                console.info("Set is success.");
+                await expect(data != undefined).assertTrue();
             },
             fail: async function () {
                 await expect(false).assertTrue();
@@ -445,8 +451,9 @@ describe('systemStorageTest', function () {
         await promise1;
         let promise2 = storage.delete({
             key: '123',
-            success: async function () {
-                await expect(true).assertTrue();
+            success: async function (data) {
+                console.info("delete is success.");
+                await expect(data != undefined).assertTrue();
             },
             fail: async function (data, err) {
                 await expect(false).assertTrue();
@@ -486,8 +493,9 @@ describe('systemStorageTest', function () {
         let promise1 = storage.set({
             key: 'storageKey1',
             value: 'storageVal1',
-            success:async function () {
-                await expect(true).assertTrue();
+            success:async function (data) {
+                console.info("Set is success.");
+                await expect(data != undefined).assertTrue();
             },
             fail:async function () {
                 await expect(false).assertTrue();
@@ -497,8 +505,9 @@ describe('systemStorageTest', function () {
         let promise2 = storage.set({
             key: 'storageKey2',
             value: 'storageVal2',
-            success:async function () {
-                await expect(true).assertTrue();
+            success:async function (data) {
+                console.info("Set is success.")
+                await expect(data != undefined).assertTrue();
             },
             fail:async function () {
                 await expect(false).assertTrue();
