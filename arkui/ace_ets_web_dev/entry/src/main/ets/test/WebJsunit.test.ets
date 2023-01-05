@@ -91,7 +91,7 @@ export default function webJsunit() {
      */
     it('onResourceLoad',0,async function(done){
       emitKey="emitLoadUrl";
-      Utils.registerEvent("onResourceLoad","file:///data/storage/el1/bundle/phone/resources/rawfile/second.html",108,done);
+      Utils.registerContainEvent("onResourceLoad","second.html",108,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
@@ -129,7 +129,7 @@ export default function webJsunit() {
      */
     it('onRefreshAccessedHistory',0,async function(done){
       emitKey="emitGetHitTest";
-      Utils.registerEvent("onRefreshAccessedHistory","file:///data/storage/el1/bundle/phone/resources/rawfile/second.html",116,done);
+      Utils.registerContainEvent("onRefreshAccessedHistory","second.html",116,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
@@ -439,7 +439,7 @@ export default function webJsunit() {
      */
     it('onPageBegin',0,async function(done){
       emitKey="emitOnPageEnd";
-      Utils.registerEvent("onPageBegin","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",59,done);
+      Utils.registerContainEvent("onPageBegin","index.html",59,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
@@ -449,7 +449,7 @@ export default function webJsunit() {
      */
     it('onPageEnd',0,async function(done){
       emitKey="emitOnConsole";
-      Utils.registerEvent("onPageEnd","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",60,done);
+      Utils.registerContainEvent("onPageEnd","index.html",60,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
@@ -629,7 +629,7 @@ export default function webJsunit() {
      */
     it('onActive',0,async function(done){
       emitKey="emitRegisterJavaScriptProxy";
-      Utils.registerEvent("onActive","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",85,done);
+      Utils.registerContainEvent("onActive","index.html",85,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
