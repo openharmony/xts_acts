@@ -19,6 +19,7 @@ group("telephony_base") {
     deps = [
       "call_manager:ActsBaseCallManagerTest",
       "cellular_data:ActsBaseCellularDataTest",
+      "sms_mms:ActsBaseSmsMmsTest",
     ]
   }
 }
