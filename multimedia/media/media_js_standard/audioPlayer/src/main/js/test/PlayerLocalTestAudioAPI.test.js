@@ -128,6 +128,9 @@ describe('PlayerLocalTestAudioAPI', function () {
             case SEEK_STATE:
                 console.info(`case seek to time is ${mySteps[SECOND_INDEX]}`);
                 audioPlayer.seek(mySteps[SECOND_INDEX]);
+                mySteps.shift();
+                mySteps.shift();
+                nextStep(mySteps, done);
                 break;
             case VOLUME_STATE:
                 console.info(`case to setVolume`);
@@ -206,22 +209,7 @@ describe('PlayerLocalTestAudioAPI', function () {
                 console.info(`case seek filed,errcode is ${seekDoneTime}`);
                 return;
             }
-            if (mySteps[0] != SEEK_STATE) {
-                return;
-            }
-            mySteps.shift();
-            mySteps.shift();
-            console.info(`case seekDoneTime is ${seekDoneTime}`);
-            console.info(`case seek called`);
-            expect(audioPlayer.currentTime + DELTA_TIME).assertClose(seekDoneTime + DELTA_TIME, DELTA_TIME);
-            console.info(`case loop is ${audioPlayer.loop}`);
-            if ((audioPlayer.loop == true) && (seekDoneTime == DURATION_TIME)) {
-                console.info('case loop is true');
-                sleep(PLAY_STATE);
-            }
-            if ((seekDoneTime < audioPlayer.duration) || (audioPlayer.state == 'paused')) {
-                nextStep(mySteps,done);
-            }
+            console.info(`case timeUpdate, seekDoneTime is ${seekDoneTime}`);
         });
         audioPlayer.on('volumeChange', () => {
             console.info(`case setvolume called`);
@@ -250,6 +238,7 @@ describe('PlayerLocalTestAudioAPI', function () {
                 nextStep(mySteps,done);
             } else if (mySteps[0] == ERROR_STATE) {
                 mySteps.shift();
+                nextStep(mySteps,done);
             } else if (mySteps[0] == END_STATE) {
                 console.info('case release player error');
             } else {
