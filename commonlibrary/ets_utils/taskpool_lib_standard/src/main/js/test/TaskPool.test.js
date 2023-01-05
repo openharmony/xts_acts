@@ -634,5 +634,451 @@ describe('ActsAbilityTest', function () {
         }
         done();
     })
+
+    /**
+     * @tc.number    : TaskPoolTestClass049
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel tasks that have not been executed
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass049', 0, async function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        function additionDelay(arg) {
+            var start = new Date().getTime();
+            while (new Date().getTime() - start < 3000) {
+              continue;
+            }
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(additionDelay, 100);
+          var task2 = new taskpool.Task(additionDelay, 200);
+          var task3 = new taskpool.Task(addition, 300);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+
+          taskpool.cancel(task3);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("");
+        }
+        done();
+    })
+
+     /**
+      * @tc.number    : TaskPoolTestClass050
+      * @tc.name      : Sync Function Cancel task
+      * @tc.desc      : Cancel tasks that have not been executed
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+      */
+    it('TaskPoolTestClass050', 0, function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        function additionDelay(arg) {
+            var start = new Date().getTime();
+            while (new Date().getTime() - start < 3000) {
+              continue;
+            }
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(additionDelay, 100);
+          var task2 = new taskpool.Task(additionDelay, 200);
+          var task3 = new taskpool.Task(addition, 300);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+
+          taskpool.cancel(task3);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass051
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel the task in progress
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass051', 0, async function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        function additionDelay(arg) {
+            var start = new Date().getTime();
+            while (new Date().getTime() - start < 3000) {
+              continue;
+            }
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(additionDelay, 100);
+          var task2 = new taskpool.Task(additionDelay, 200);
+          var task3 = new taskpool.Task(addition, 300);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+
+          var start = new Date().getTime();
+          while (new Date().getTime() - start < 1000) {
+            continue;
+          }
+
+          taskpool.cancel(task1);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not cancel the running task");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass052
+     * @tc.name      : Sync Function Cancel task
+     * @tc.desc      : Cancel the task in progress
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass052', 0, function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        function additionDelay(arg) {
+            var start = new Date().getTime();
+            while (new Date().getTime() - start < 3000) {
+              continue;
+            }
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(additionDelay, 100);
+          var task2 = new taskpool.Task(additionDelay, 200);
+          var task3 = new taskpool.Task(addition, 300);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+
+          var start = new Date().getTime();
+          while (new Date().getTime() - start < 1000) {
+            continue;
+          }
+
+          taskpool.cancel(task1);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not cancel the running task");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass053
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel the executed task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass053', 0, async function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(addition, 100);
+          var task2 = new taskpool.Task(addition, 200);
+          var task3 = new taskpool.Task(addition, 300);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+
+          var start = new Date().getTime();
+          while (new Date().getTime() - start < 1000) {
+            continue;
+          }
+
+          taskpool.cancel(task1);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not find the task");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass054
+     * @tc.name      : Sync Function Cancel task
+     * @tc.desc      : Cancel the executed task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass054', 0, function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(addition, 100);
+          var task2 = new taskpool.Task(addition, 200);
+          var task3 = new taskpool.Task(addition, 300);
+          var task4 = new taskpool.Task(addition, 400);
+          var task5 = new taskpool.Task(addition, 500);
+          var task6 = new taskpool.Task(addition, 600);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+          var result4 = taskpool.execute(task4);
+          var result5 = taskpool.execute(task5);
+          var result6 = taskpool.execute(task6);
+
+          var start = new Date().getTime();
+          while (new Date().getTime() - start < 1000) {
+            continue;
+          }
+
+          taskpool.cancel(task3);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not find the task");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass055
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel nonexistent task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass055', 0, async function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(addition, 100);
+          var task2 = new taskpool.Task(addition, 200);
+          var task3 = new taskpool.Task(addition, 300);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+
+          taskpool.cancel(task3);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not find the task");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass056
+     * @tc.name      : Sync Function Cancel task
+     * @tc.desc      : Cancel nonexistent task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass056', 0, function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(addition, 100);
+          var task2 = new taskpool.Task(addition, 200);
+          var task3 = new taskpool.Task(addition, 300);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+
+          taskpool.cancel(task3);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not find the task");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass057
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Canceling unexecuted tasks multiple times
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass057', 0, async function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        function additionDelay(arg) {
+          var start = new Date().getTime();
+          while (new Date().getTime() - start < 3000) {
+            continue;
+          }
+          return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(additionDelay, 100);
+          var task2 = new taskpool.Task(additionDelay, 200);
+          var task3 = new taskpool.Task(addition, 300);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+
+          var start = new Date().getTime();
+          while (new Date().getTime() - start < 1000) {
+            continue;
+          }
+
+          taskpool.cancel(task3);
+          taskpool.cancel(task3);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not find the task");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass058
+     * @tc.name      : Sync Function Cancel task
+     * @tc.desc      : Canceling unexecuted tasks multiple times
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass058', 0, function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        function additionDelay(arg) {
+          var start = new Date().getTime();
+          while (new Date().getTime() - start < 3000) {
+            continue;
+          }
+          return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(additionDelay, 100);
+          var task2 = new taskpool.Task(additionDelay, 200);
+          var task3 = new taskpool.Task(addition, 300);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+
+          var start = new Date().getTime();
+          while (new Date().getTime() - start < 1000) {
+            continue;
+          }
+
+          taskpool.cancel(task3);
+          taskpool.cancel(task3);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not find the task");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass059
+     * @tc.name      : Async Function Cancel task
+     * @tc.desc      : Cancel all tasks in sequence
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass059', 0, async function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(addition, 100);
+          var task2 = new taskpool.Task(addition, 200);
+          var task3 = new taskpool.Task(addition, 300);
+          var task4 = new taskpool.Task(addition, 400);
+          var task5 = new taskpool.Task(addition, 500);
+          var task6 = new taskpool.Task(addition, 600);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+          var result4 = taskpool.execute(task4);
+          var result5 = taskpool.execute(task5);
+          var result6 = taskpool.execute(task6);
+
+          taskpool.cancel(task6);
+          taskpool.cancel(task5);
+          taskpool.cancel(task4);
+          taskpool.cancel(task3);
+          taskpool.cancel(task2);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not find the task");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass060
+     * @tc.name      : Sync Function Cancel task
+     * @tc.desc      : Cancel all tasks in sequence
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass060', 0, function () {
+        function addition(arg) {
+            return arg + 1;
+        }
+        try {
+          var task1 = new taskpool.Task(addition, 100);
+          var task2 = new taskpool.Task(addition, 200);
+          var task3 = new taskpool.Task(addition, 300);
+          var task4 = new taskpool.Task(addition, 400);
+          var task5 = new taskpool.Task(addition, 500);
+          var task6 = new taskpool.Task(addition, 600);
+
+          var result1 = taskpool.execute(task1);
+          var result2 = taskpool.execute(task2);
+          var result3 = taskpool.execute(task3);
+          var result4 = taskpool.execute(task4);
+          var result5 = taskpool.execute(task5);
+          var result6 = taskpool.execute(task6);
+
+          taskpool.cancel(task6);
+          taskpool.cancel(task5);
+          taskpool.cancel(task4);
+          taskpool.cancel(task3);
+          taskpool.cancel(task2);
+        }
+        catch (e) {
+          expect(e.toString()).assertEqual("BusinessError: taskpool:: can not find the task");
+        }
+        done();
+    })
 })
 }
