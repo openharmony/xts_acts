@@ -17,7 +17,7 @@ import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
 struct CustomContainerUser {
-  private listArr: number[] = Array.from(new Array(50).keys())
+  private listArr: number[] = Array.from(new Array(50).keys());
   @State name: string = 'ScrollingList';
   @State StepTips: string = '操作步骤：滑动列表观察是否能正常滑动'+'\n'+'预期结果：列表滑动正常';
   async aboutToAppear(){

@@ -33,11 +33,11 @@ struct LongPressGestureExample {
       LongPressGesture({ repeat: true })
         .onAction((event: GestureEvent) => {
           if (event.repeat) {
-            this.X++
+            this.X++;
           }
         })
         .onActionEnd(() => {
-          this.X = 0
+          this.X = 0;
         })
       )
       Text('长按动作连续触发:' + this.X).fontColor(Color.Black)

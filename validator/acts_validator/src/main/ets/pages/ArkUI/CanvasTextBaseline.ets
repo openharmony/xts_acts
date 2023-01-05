@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomContainer} from '../common/CanvasCustomContainer1'
-import FirstDialog from '../model/FirstDialog'
+import {CustomContainer} from '../common/CanvasCustomContainer1';
+import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
 struct SetCircle {
@@ -30,58 +30,58 @@ struct SetCircle {
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
         Text('Top').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.strokeStyle = '#0000ff'
-            this.context.lineWidth = 2
-            this.context.moveTo(0, 120)
-            this.context.lineTo(400, 120)
-            this.context.stroke()
-            this.context.textBaseline = 'top'
-            this.context.fillText('Top', 160, 120)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.strokeStyle = '#0000ff';
+            this.context.lineWidth = 2;
+            this.context.moveTo(0, 120);
+            this.context.lineTo(400, 120);
+            this.context.stroke();
+            this.context.textBaseline = 'top';
+            this.context.fillText('Top', 160, 120);
           })
         Text('Bottom').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.strokeStyle = '#0000ff'
-            this.context.lineWidth = 2
-            this.context.moveTo(0, 120)
-            this.context.lineTo(400, 120)
-            this.context.stroke()
-            this.context.textBaseline = 'bottom'
-            this.context.fillText('Bottom', 160, 120)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.strokeStyle = '#0000ff';
+            this.context.lineWidth = 2;
+            this.context.moveTo(0, 120);
+            this.context.lineTo(400, 120);
+            this.context.stroke();
+            this.context.textBaseline = 'bottom';
+            this.context.fillText('Bottom', 160, 120);
           })
         Text('Middle').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.strokeStyle = '#0000ff'
-            this.context.lineWidth = 2
-            this.context.moveTo(0, 120)
-            this.context.lineTo(400, 120)
-            this.context.stroke()
-            this.context.textBaseline = 'middle'
-            this.context.fillText('Middle', 160, 120)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.strokeStyle = '#0000ff';
+            this.context.lineWidth = 2;
+            this.context.moveTo(0, 120);
+            this.context.lineTo(400, 120);
+            this.context.stroke();
+            this.context.textBaseline = 'middle';
+            this.context.fillText('Middle', 160, 120);
           })
         Text('Alphabetic').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.strokeStyle = '#0000ff'
-            this.context.lineWidth = 2
-            this.context.moveTo(0, 120)
-            this.context.lineTo(400, 120)
-            this.context.stroke()
-            this.context.textBaseline = 'alphabetic'
-            this.context.fillText('Alphabetic', 160, 120)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.strokeStyle = '#0000ff';
+            this.context.lineWidth = 2;
+            this.context.moveTo(0, 120);
+            this.context.lineTo(400, 120);
+            this.context.stroke();
+            this.context.textBaseline = 'alphabetic';
+            this.context.fillText('Alphabetic', 160, 120);
           })
         Text('Hanging').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=> {
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.strokeStyle = '#0000ff'
-            this.context.lineWidth = 2
-            this.context.moveTo(0, 120)
-            this.context.lineTo(400, 120)
-            this.context.stroke()
-            this.context.textBaseline = 'hanging'
-            this.context.fillText('Hanging', 160, 120)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.strokeStyle = '#0000ff';
+            this.context.lineWidth = 2;
+            this.context.moveTo(0, 120);
+            this.context.lineTo(400, 120);
+            this.context.stroke();
+            this.context.textBaseline = 'hanging';
+            this.context.fillText('Hanging', 160, 120);
           })
       }.width('90%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -90,16 +90,14 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.strokeStyle = '#0000ff'
-            this.context.lineWidth = 2
-            this.context.moveTo(0, 120)
-            this.context.lineTo(400, 120)
-            this.context.stroke()
-
-            this.context.font = '60px sans-serif'
-
-            this.context.textBaseline = 'top'
-            this.context.fillText('Top', 160, 120)
+            this.context.strokeStyle = '#0000ff';
+            this.context.lineWidth = 2;
+            this.context.moveTo(0, 120);
+            this.context.lineTo(400, 120);
+            this.context.stroke();
+            this.context.font = '60px sans-serif';
+            this.context.textBaseline = 'top';
+            this.context.fillText('Top', 160, 120);
           })
       }.width('100%').height('70%')
     }.width('100%').height('80%').backgroundColor(Color.White)

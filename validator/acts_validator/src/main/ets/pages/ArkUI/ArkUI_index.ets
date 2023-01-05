@@ -27,11 +27,11 @@ path1 = path + '/report1';
 @Entry
 @Component
 struct IndexPage {
-  @State BackColor: string = '#ff808080'
-  @State ClearAll : boolean = false
-  private current : number = undefined
-  @State count : number = 0
-  @State result : string = ''
+  @State BackColor: string = '#ff808080';
+  @State ClearAll : boolean = false;
+  private current : number = undefined;
+  @State count : number = 0;
+  @State result : string = '';
   private TestCaseList = [
     {title:'Scroll List',uri:'pages/ArkUI/ScrollListTest'},
     {title:'TouchMove',uri:'pages/ArkUI/TouchMoveTest'},
@@ -57,7 +57,6 @@ struct IndexPage {
     {title:'CanvasShadowOffsetX',uri:'pages/ArkUI/CanvasShadowOffsetX'},
     {title:'CanvasShadowOffsetY',uri:'pages/ArkUI/CanvasShadowOffsetY'},
     {title:'CanvasImageSmoothingEnabled',uri:'pages/ArkUI/CanvasImageSmoothingEnabled'},
-//    {title:'',uri:'',bgc:Color.Black},
   ]
   @State ColorObject : string[] = ['#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
   '#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
@@ -74,10 +73,10 @@ struct IndexPage {
       }
       else if (this.result === 'Fail'){
         this.ColorObject[this.current] = '#ffff0000';
-        filewrite(name1,results,titles)
+        filewrite(name1,results,titles);
       }
       else if (this.result === 'None'){
-        this.ColorObject[this.current] = this.ColorObject[this.current]
+        this.ColorObject[this.current] = this.ColorObject[this.current];
       }
     }
 
@@ -89,7 +88,7 @@ struct IndexPage {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp')
         }.backgroundColor(Color.Black)
         .onClick(() => {
-          router.back()
+          router.back();
         })
         Row(){
           Text('ArkUI SubSystem')
@@ -105,12 +104,12 @@ struct IndexPage {
           .onClick(() => {
             this.ClearAll = true;
             this.ColorObject.forEach((value, index) => {
-              this.ColorObject[index] =  '#ff808080'
+              this.ColorObject[index] =  '#ff808080';
             });
             this.ClearText();
             prompt.showToast({
               message: '结果已删除', duration: 1000
-            })
+            });
           })
           Button(){
             Image($r('app.media.ic_public_save'))
@@ -134,9 +133,9 @@ struct IndexPage {
               Text(this.BackColor.toString()).visibility(Visibility.None)
             }.width('100%').height(50).alignItems(VerticalAlign.Center).backgroundColor(this.ColorObject[index])
             .onClick(( )=>{
-              this.count = 1
-              this.ClearAll=false
-              this.current = index
+              this.count = 1;
+              this.ClearAll=false;
+              this.current = index;
               router.push({
                 url: item.uri,
               })
@@ -199,7 +198,7 @@ struct IndexPage {
       }finally{
         fileIO.closeSync(xmlfd);
       }
-      return
+      return;
     }
   }
 }

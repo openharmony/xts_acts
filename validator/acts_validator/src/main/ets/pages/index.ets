@@ -56,7 +56,7 @@ struct IndexPage {
             this.ClearText();
             prompt.showToast({
               message: '所有结果已删除', duration: 1000
-            })
+            });
           })
           Button(){
             Image($r('app.media.ic_public_save'))
@@ -68,7 +68,7 @@ struct IndexPage {
             this.SaveXml();
             prompt.showToast({
               message: '总报告已生成', duration: 1000
-            })
+            });
           })
         }
       }.width('100%').justifyContent(FlexAlign.SpaceAround).margin({top:'15vp'}).height('6%')

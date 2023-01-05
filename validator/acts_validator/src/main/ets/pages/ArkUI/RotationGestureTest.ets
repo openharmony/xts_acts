@@ -34,7 +34,7 @@ struct RotationGuestureTest {
       .gesture(
       RotationGesture()
         .onActionUpdate((event: GestureEvent) => {
-          this.X = event.angle
+          this.X = event.angle;
         })
       )
       Text('旋转角度:' + this.X)

@@ -33,7 +33,7 @@ struct PinchGuestureTest {
       .gesture(
       PinchGesture()
         .onActionUpdate((event: GestureEvent) => {
-          this.X = event.scale
+          this.X = event.scale;
         })
       )
       Text('捏合放缩比例:'+this.X).fontColor(Color.Black)

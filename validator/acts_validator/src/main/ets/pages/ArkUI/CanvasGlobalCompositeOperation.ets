@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomContainer} from '../common/CanvasCustomContainer1'
-import FirstDialog from '../model/FirstDialog'
+import {CustomContainer} from '../common/CanvasCustomContainer1';
+import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
 struct SetCircle {
@@ -34,106 +34,106 @@ struct SetCircle {
         Row({space:10}){
           Text('s-over').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.fillStyle = 'rgb(255,0,0)'
-            this.context.fillRect(150, 150, 50, 50)
-            this.context.globalCompositeOperation = 'source-over'
-            this.context.fillStyle = 'rgb(0,0,255)'
-            this.context.fillRect(180, 180, 50, 50)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 50, 50);
+            this.context.globalCompositeOperation = 'source-over';
+            this.context.fillStyle = 'rgb(0,0,255)';
+            this.context.fillRect(180, 180, 50, 50);
           })
           Text('s-atop').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=>{
-              this.context.clearRect(0, 10, 350, 300)
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 50, 50)
-              this.context.globalCompositeOperation = 'source-atop'
-              this.context.fillStyle = 'rgb(0,0,255)'
-              this.context.fillRect(180, 180, 50, 50)
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-atop';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
             })
           Text('s-in').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=>{
-              this.context.clearRect(0, 10, 350, 300)
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 50, 50)
-              this.context.globalCompositeOperation = 'source-in'
-              this.context.fillStyle = 'rgb(0,0,255)'
-              this.context.fillRect(180, 180, 50, 50)
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-in';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
             })
           Text('s-out').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=>{
-              this.context.clearRect(0, 10, 350, 300)
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 50, 50)
-              this.context.globalCompositeOperation = 'source-out'
-              this.context.fillStyle = 'rgb(0,0,255)'
-              this.context.fillRect(180, 180, 50, 50)
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-out';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
             })
         }
         Row({space:10}){
           Text('d-over').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=> {
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.fillStyle = 'rgb(255,0,0)'
-            this.context.fillRect(150, 150, 50, 50)
-            this.context.globalCompositeOperation = 'destination-over'
-            this.context.fillStyle = 'rgb(0,0,255)'
-            this.context.fillRect(180, 180, 50, 50)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 50, 50);
+            this.context.globalCompositeOperation = 'destination-over';
+            this.context.fillStyle = 'rgb(0,0,255)';
+            this.context.fillRect(180, 180, 50, 50);
           })
           Text('d-atop').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
-              this.context.clearRect(0, 10, 350, 300)
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 50, 50)
-              this.context.globalCompositeOperation = 'destination-atop'
-              this.context.fillStyle = 'rgb(0,0,255)'
-              this.context.fillRect(180, 180, 50, 50)
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'destination-atop';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
             })
           Text('d-in').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
-              this.context.clearRect(0, 10, 350, 300)
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 50, 50)
-              this.context.globalCompositeOperation = 'destination-in'
-              this.context.fillStyle = 'rgb(0,0,255)'
-              this.context.fillRect(180, 180, 50, 50)
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'destination-in';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
             })
           Text('d-out').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
-              this.context.clearRect(0, 10, 350, 300)
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 50, 50)
-              this.context.globalCompositeOperation = 'destination-out'
-              this.context.fillStyle = 'rgb(0,0,255)'
-              this.context.fillRect(180, 180, 50, 50)
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'destination-out';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
             })
         }
         Row({space:10}){
           Text('lighter').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
-              this.context.clearRect(0, 10, 350, 300)
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 50, 50)
-              this.context.globalCompositeOperation = 'lighter'
-              this.context.fillStyle = 'rgb(0,0,255)'
-              this.context.fillRect(180, 180, 50, 50)
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'lighter';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
             })
           Text('copy').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
-              this.context.clearRect(0, 10, 350, 300)
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 50, 50)
-              this.context.globalCompositeOperation = 'copy'
-              this.context.fillStyle = 'rgb(0,0,255)'
-              this.context.fillRect(180, 180, 50, 50)
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'copy';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
             })
           Text('xor').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
-              this.context.clearRect(0, 10, 350, 300)
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 50, 50)
-              this.context.globalCompositeOperation = 'xor'
-              this.context.fillStyle = 'rgb(0,0,255)'
-              this.context.fillRect(180, 180, 50, 50)
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'xor';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
             })
           Text('').fontSize(0).border({width:0}).size({width:'18%',height:'20%'})
         }
@@ -144,11 +144,11 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.fillStyle = 'rgb(255,0,0)'
-            this.context.fillRect(150, 150, 50, 50)
-            this.context.globalCompositeOperation = 'source-over'
-            this.context.fillStyle = 'rgb(0,0,255)'
-            this.context.fillRect(180, 180, 50, 50)
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 50, 50);
+            this.context.globalCompositeOperation = 'source-over';
+            this.context.fillStyle = 'rgb(0,0,255)';
+            this.context.fillRect(180, 180, 50, 50);
           })
       }.width('100%').height('70%')
     }.width('100%').height('80%').backgroundColor(Color.White)

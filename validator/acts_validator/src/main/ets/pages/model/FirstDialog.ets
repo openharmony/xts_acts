@@ -24,12 +24,12 @@ export default class FirstDialog{
     let promise = data_preferences.getPreferences(context,'mystore');
     await promise.then((object) => {
       preferences = object;
-    })
+    });
     promise = preferences.get(name, 0);
     await promise.then((data) => {
       Test = data;
       console.info("Succeeded in getting value of 'startup'. Data: " + data);
-    })
+    });
     if(Test != 1) {
       AlertDialog.show(
         {
@@ -41,11 +41,11 @@ export default class FirstDialog{
               let promise = preferences.put(name, 1);
               promise.then(() => {
                 console.info("Succeeded in putting value of 'test'.");
-              })
+              });
               promise = preferences.flush();
               promise.then(() => {
                 console.info("Succeeded in flushing.");
-              })
+              });
             }
           },
           secondaryButton: {
@@ -60,6 +60,6 @@ export default class FirstDialog{
         }
       )
     }
-    return
+    return;
   }
 }

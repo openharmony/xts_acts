@@ -32,7 +32,7 @@ struct TapGestureExample {
       .gesture(
       TapGesture({ count: 2 })
         .onAction(() => {
-          this.value = 'TapGesture onAction'
+          this.value = 'TapGesture onAction';
         })
       )
       Text(this.value)

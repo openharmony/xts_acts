@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomContainer} from '../common/CanvasCustomContainer2'
-import FirstDialog from '../model/FirstDialog'
+import {CustomContainer} from '../common/CanvasCustomContainer2';
+import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
 struct SetCircle {
@@ -31,41 +31,39 @@ struct SetCircle {
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
           Text('Blue').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(10, 100, 400, 300)
-            this.context.shadowBlur = 30
-            this.context.shadowColor = 'rgb(0,0,255)'
-            this.context.fillStyle = 'rgb(255,0,0)'
-            this.context.fillRect(150, 150, 100, 100)
+            this.context.clearRect(10, 100, 400, 300);
+            this.context.shadowBlur = 30;
+            this.context.shadowColor = 'rgb(0,0,255)';
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 100, 100);
           })
           Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(10, 100, 400, 300)
-            this.context.shadowBlur = 30
-            this.context.shadowColor = '#fffffc3c'
-            this.context.fillStyle = 'rgb(255,0,0)'
-            this.context.fillRect(150, 150, 100, 100)
+            this.context.clearRect(10, 100, 400, 300);
+            this.context.shadowBlur = 30;
+            this.context.shadowColor = '#fffffc3c';
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 100, 100);
           })
           Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(10, 100, 400, 300)
-            this.context.shadowBlur = 30
-            this.context.shadowColor = '#ff19fa00'
-            this.context.fillStyle = 'rgb(255,0,0)'
-            this.context.fillRect(150, 150, 100, 100)
+            this.context.clearRect(10, 100, 400, 300);
+            this.context.shadowBlur = 30;
+            this.context.shadowColor = '#ff19fa00';
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 100, 100);
           })
-
       }.width('70%').height('30%')
-
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.shadowBlur = 30
-            this.context.shadowColor = 'rgb(0,0,255)'
-            this.context.fillStyle = 'rgb(255,0,0)'
-            this.context.fillRect(150, 150, 100, 100)
+            this.context.shadowBlur = 30;
+            this.context.shadowColor = 'rgb(0,0,255)';
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 100, 100);
           })
       }.width('100%').height('60%')
     }.width('100%').height('80%').backgroundColor(Color.White)

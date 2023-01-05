@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomContainer} from '../common/CanvasCustomContainer1'
-import FirstDialog from '../model/FirstDialog'
+import {CustomContainer} from '../common/CanvasCustomContainer1';
+import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
 struct SetCircle {
@@ -30,33 +30,33 @@ struct SetCircle {
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
         Text('butt').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(90, 90, 170, 120)
-            this.context.lineWidth = 8
-            this.context.beginPath()
-            this.context.lineCap = 'butt'
-            this.context.moveTo(100, 100)
-            this.context.lineTo(250, 100)
-            this.context.stroke()
+            this.context.clearRect(90, 90, 170, 120);
+            this.context.lineWidth = 8;
+            this.context.beginPath();
+            this.context.lineCap = 'butt';
+            this.context.moveTo(100, 100);
+            this.context.lineTo(250, 100);
+            this.context.stroke();
           })
         Text('round').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(90, 90, 170, 120)
-            this.context.lineWidth = 8
-            this.context.beginPath()
-            this.context.lineCap = 'round'
-            this.context.moveTo(100, 100)
-            this.context.lineTo(250, 100)
-            this.context.stroke()
+            this.context.clearRect(90, 90, 170, 120);
+            this.context.lineWidth = 8;
+            this.context.beginPath();
+            this.context.lineCap = 'round';
+            this.context.moveTo(100, 100);
+            this.context.lineTo(250, 100);
+            this.context.stroke();
           })
         Text('square').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(90, 90, 170, 120)
-            this.context.lineWidth = 8
-            this.context.beginPath()
-            this.context.lineCap = 'square'
-            this.context.moveTo(100, 100)
-            this.context.lineTo(250, 100)
-            this.context.stroke()
+            this.context.clearRect(90, 90, 170, 120);
+            this.context.lineWidth = 8;
+            this.context.beginPath();
+            this.context.lineCap = 'square';
+            this.context.moveTo(100, 100);
+            this.context.lineTo(250, 100);
+            this.context.stroke();
           })
       }.width('70%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -65,12 +65,12 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.lineWidth = 8
-            this.context.beginPath()
-            this.context.lineCap = 'round'
-            this.context.moveTo(100, 100)
-            this.context.lineTo(250, 100)
-            this.context.stroke()
+            this.context.lineWidth = 8;
+            this.context.beginPath();
+            this.context.lineCap = 'round';
+            this.context.moveTo(100, 100);
+            this.context.lineTo(250, 100);
+            this.context.stroke();
           })
       }.width('100%').height('70%')
     }.width('100%').height('80%').backgroundColor(Color.White)

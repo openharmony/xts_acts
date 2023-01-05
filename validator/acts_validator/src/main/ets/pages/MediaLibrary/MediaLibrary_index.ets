@@ -27,11 +27,11 @@ path1 = path + '/report2';
 @Entry
 @Component
 struct IndexPage {
-  @State BackColor: string = '#ff808080'
-  @State ClearAll : boolean = false
-  private current : number = undefined
-  @State count : number = 0
-  @State result : string = ''
+  @State BackColor: string = '#ff808080';
+  @State ClearAll : boolean = false;
+  private current : number = undefined;
+  @State count : number = 0;
+  @State result : string = '';
   private TestCaseList = [
     {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_PR_0100',uri:'pages/MediaLibrary/startImagePreviewPromise1'},
     {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_PR_0200',uri:'pages/MediaLibrary/startImagePreviewPromise2'},
@@ -61,7 +61,6 @@ struct IndexPage {
     {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_CB_0200',uri:'pages/MediaLibrary/storeMediaAssetCallback2'},
     {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_CB_0300',uri:'pages/MediaLibrary/storeMediaAssetCallback3'},
     {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_CB_0400',uri:'pages/MediaLibrary/storeMediaAssetCallback4'},
-    {title:'',uri:'',bgc:Color.Black},
   ]
   @State ColorObject : string[] = ['#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
   '#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
@@ -74,14 +73,14 @@ struct IndexPage {
       let results = this.result;
       if (this.result === 'Pass'){
         this.ColorObject[this.current] = '#ff008000';
-        filewrite(name1,results,titles)
+        filewrite(name1,results,titles);
       }
       else if (this.result === 'Fail'){
         this.ColorObject[this.current] = '#ffff0000';
-        filewrite(name1,results,titles)
+        filewrite(name1,results,titles);
       }
       else if (this.result === 'None'){
-        this.ColorObject[this.current] = this.ColorObject[this.current]
+        this.ColorObject[this.current] = this.ColorObject[this.current];
       }
     }
 
@@ -93,7 +92,7 @@ struct IndexPage {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp')
         }.backgroundColor(Color.Black)
         .onClick(() => {
-          router.back()
+          router.back();
         })
         Row(){
           Text('MediaLibrary')
@@ -107,14 +106,14 @@ struct IndexPage {
               .height('30vp')
           }.backgroundColor(Color.Black)
           .onClick(() => {
-            this.ClearAll = true
+            this.ClearAll = true;
             this.TestCaseList.forEach((value, index) => {
-              this.ColorObject[index] =  '#ff808080'
-            });
+              this.ColorObject[index] =  '#ff808080';
+            })
             this.ClearText();
             prompt.showToast({
               message: '结果已删除', duration: 1000
-            })
+            });
           })
           Button(){
             Image($r('app.media.ic_public_save'))
@@ -126,7 +125,7 @@ struct IndexPage {
             this.ReadTextParseXml();
             prompt.showToast({
               message: '报告已生成', duration: 1000
-            })
+            });
           })
         }
       }.width('100%').justifyContent(FlexAlign.SpaceAround).margin({top:'15vp'}).height('6%').backgroundColor(Color.Black)
@@ -138,17 +137,16 @@ struct IndexPage {
               Text(this.BackColor.toString()).visibility(Visibility.None)
             }.width('100%').height(50).alignItems(VerticalAlign.Center).backgroundColor(this.ColorObject[index])
             .onClick(( )=>{
-              this.count = 1
-              this.ClearAll=false
-              this.current = index
-              console.info('current:'+this.current+'当前背景色：'+this.TestCaseList[index].bgc+'Index:'+index)
+              this.count = 1;
+              this.ClearAll=false;
+              this.current = index;
               router.push({
                 url: item.uri,
-              })
+              });
             })
           }
         },item  => item.title)
-      }.width('100%')
+      }.width('100%').height('92%')
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
   ClearText(){
@@ -165,11 +163,9 @@ struct IndexPage {
       let RD = fileio.readSync(OP,buf);
       console.info("ddddd"+RD);
       let report;
-
       function ab2str(buf) {
         return report = String.fromCharCode.apply(null, new Uint8Array(buf));
       }
-
       ab2str(buf);
       let str1 = report.split(";");
       let title = [];
@@ -206,7 +202,7 @@ struct IndexPage {
       } finally {
         fileIO.closeSync(xmlfd);
       }
-      return
+      return;
     }
   }
 }

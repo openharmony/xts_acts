@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomContainer} from '../common/CanvasCustomContainer2'
-import FirstDialog from '../model/FirstDialog'
+import {CustomContainer} from '../common/CanvasCustomContainer2';
+import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
 struct SetCircle {
@@ -34,14 +34,14 @@ struct SetCircle {
           .gesture(
           PanGesture({})
             .onActionStart((event: GestureEvent) => {
-              this.context.clearRect(100, 100, 250, 200)
-              console.info('Pan start')
+              this.context.clearRect(100, 100, 250, 200);
+              console.info('Pan start');
             })
             .onActionUpdate((event: GestureEvent) => {
-              this.X = event.offsetX
+              this.X = event.offsetX;
             })
             .onActionEnd(() => {
-              console.info('Pan end')
+              console.info('Pan end');
             })
           )
         Text('虚线偏移量: ' + (this.X)*0.1 )
@@ -52,8 +52,8 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.arc(180, 150, 50, 0, 6.28)
-            this.context.setLineDash([20,30])
+            this.context.arc(180, 150, 50, 0, 6.28);
+            this.context.setLineDash([20,30]);
             this.context.lineDashOffset = (this.X)*0.1;
             this.context.stroke();
           })

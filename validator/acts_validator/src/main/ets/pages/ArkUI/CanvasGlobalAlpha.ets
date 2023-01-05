@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomContainer} from '../common/CanvasCustomContainer2'
-import FirstDialog from '../model/FirstDialog'
+import {CustomContainer} from '../common/CanvasCustomContainer2';
+import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
 struct SetCircle {
@@ -35,14 +35,14 @@ struct SetCircle {
           .gesture(
           PanGesture({})
             .onActionStart((event: GestureEvent) => {
-              this.context.clearRect(100, 100, 250, 200)
-              console.info('Pan start')
+              this.context.clearRect(100, 100, 250, 200);
+              console.info('Pan start');
             })
             .onActionUpdate((event: GestureEvent) => {
-              this.X = event.offsetX
+              this.X = event.offsetX;
             })
             .onActionEnd(() => {
-              console.info('Pan end')
+              console.info('Pan end');
             })
           )
         Text('透明度: ' + (this.X)*0.005 )
@@ -53,11 +53,11 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.fillStyle = 'rgb(255,0,0)'
-            this.context.fillRect(150, 150, 50, 50)
-            this.context.globalAlpha = (this.X)*0.005
-            this.context.fillStyle = 'rgb(0,0,255)'
-            this.context.fillRect(200, 200, 50, 50)
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 50, 50);
+            this.context.globalAlpha = (this.X)*0.005;
+            this.context.fillStyle = 'rgb(0,0,255)';
+            this.context.fillRect(200, 200, 50, 50);
           })
       }.width('100%').height('70%')
     }.width('100%').height('80%').backgroundColor(Color.White)

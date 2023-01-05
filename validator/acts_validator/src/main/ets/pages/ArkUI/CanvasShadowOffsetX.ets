@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomContainer} from '../common/CanvasCustomContainer2'
-import FirstDialog from '../model/FirstDialog'
+import {CustomContainer} from '../common/CanvasCustomContainer2';
+import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
 struct SetCircle {
@@ -34,17 +34,17 @@ struct SetCircle {
           .gesture(
           PanGesture({})
             .onActionStart((event: GestureEvent) => {
-              this.context.clearRect(10, 50, 400, 300)
-              this.context.shadowColor = 'rgb(0,0,0)'
-              this.context.fillStyle = 'rgb(255,0,0)'
-              this.context.fillRect(150, 150, 100, 100)
-              console.info('Pan start')
+              this.context.clearRect(10, 50, 400, 300);
+              this.context.shadowColor = 'rgb(0,0,0)';
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 100, 100);
+              console.info('Pan start');
             })
             .onActionUpdate((event: GestureEvent) => {
-              this.X = event.offsetX
+              this.X = event.offsetX;
             })
             .onActionEnd(() => {
-              console.info('Pan end')
+              console.info('Pan end');
             })
           )
         Text('阴影偏移: ' + (this.X)*0.05 )
@@ -55,11 +55,11 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.shadowBlur = 10
-            this.context.shadowOffsetX = (this.X)*0.05
-            this.context.shadowColor = 'rgb(0,0,0)'
-            this.context.fillStyle = 'rgb(255,0,0)'
-            this.context.fillRect(150, 150, 100, 100)
+            this.context.shadowBlur = 10;
+            this.context.shadowOffsetX = (this.X)*0.05;
+            this.context.shadowColor = 'rgb(0,0,0)';
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 100, 100);
           })
       }.width('100%').height('70%')
     }.width('100%').height('80%').backgroundColor(Color.White)

@@ -20,8 +20,8 @@ import image from '@ohos.multimedia.image';
 import Logger from '../model/Logger'
 import FirstDialog from '../model/FirstDialog';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
-const TAG = '[Screenshot]'
-let path = globalThis.dir
+const TAG = '[Screenshot]';
+let path = globalThis.dir;
 @Component
 struct CustomContainer1 {
   @Link x: number;
@@ -36,28 +36,28 @@ struct CustomContainer1 {
   PassBtn(text: Resource, isFullScreen: boolean) {
     Button() {
       Image($r('app.media.ic_public_pass')).width('20vp').height('20vp')
-    }.width('30%').height('30vp').backgroundColor(Color.Grey)   //Pass Button
+    }.width('30%').height('30vp').backgroundColor(Color.Grey)
     .onClick(()=>{
       router.back({
         url:this.Url,
         params: {result : 'Pass', title : this.name,
         }
       })
-      this.getScreen(isFullScreen)
+      this.getScreen(isFullScreen);
     })
   }
   @Builder
   FailBtn(text: Resource, isFullScreen: boolean) {
     Button(){
       Image($r('app.media.ic_public_fail')).width('20vp').height('20vp')
-    }.width('30%').height('30vp').backgroundColor(Color.Grey)   //Fail Button
+    }.width('30%').height('30vp').backgroundColor(Color.Grey)
     .onClick(()=>{
       router.back({
         url:this.Url,
         params: {result : 'Fail',title : this.name,
         }
       })
-      this.getScreen(isFullScreen)
+      this.getScreen(isFullScreen);
     })
   }
   build() {
@@ -75,10 +75,10 @@ struct CustomContainer1 {
         Text(this.title).fontColor(Color.White).fontSize('18fp').margin({left:'-20vp'})
         Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
       }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
-      this.content()
+      this.content();
       Blank()
       Row() {
-        this.PassBtn($r('app.string.btn_fullscreen'), true)
+        this.PassBtn($r('app.string.btn_fullscreen'), true);
         Button(){
           Image($r('app.media.ic_public_help')).width('20vp').height('20vp')
         }.width('30%').height('30vp').backgroundColor(Color.Grey)
@@ -95,7 +95,7 @@ struct CustomContainer1 {
             }
           )
         })
-        this.FailBtn($r('app.string.btn_fullscreen'), true)
+        this.FailBtn($r('app.string.btn_fullscreen'), true);
       }.width('100%').justifyContent(FlexAlign.SpaceEvenly).backgroundColor(Color.Black)
     }.height('98%').width('100%')
   }
@@ -103,27 +103,27 @@ struct CustomContainer1 {
     Logger.info(TAG, `savePicture`)
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
-    }
+    };
     let info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
-    }
-    let name = this.name
-    let displayName = `${info.prefix}${name}${info.suffix}`
+    };
+    let name = this.name;
+    let displayName = `${info.prefix}${name}${info.suffix}`;
     let dirPath = path + '/' + displayName;
-    let imagePackerApi = image.createImagePacker()
-    let arrayBuffer = await imagePackerApi.packing(data, packOpts)
+    let imagePackerApi = image.createImagePacker();
+    let arrayBuffer = await imagePackerApi.packing(data, packOpts);
     let fd = fileio.openSync(dirPath,0o102,0o666);
-    imagePackerApi.release()
+    imagePackerApi.release();
     try {
-      await fileio.write(fd, arrayBuffer)
+      await fileio.write(fd, arrayBuffer);
     } catch (err) {
-      Logger.error(`write failed, code is ${err.code}, message is ${err.message}`)
+      Logger.error(`write failed, code is ${err.code}, message is ${err.message}`);
     }
-    await fileio.close(fd)
-    Logger.info(TAG, `write done`)
+    await fileio.close(fd);
+    Logger.info(TAG, `write done`);
     prompt.showToast({
       message: '图片保存成功', duration: 1000
-    })
+    });
   }
   getScreen = (isFullScreen: boolean) => {
     let screenshotOptions: screenshot.ScreenshotOptions = {
@@ -131,7 +131,7 @@ struct CustomContainer1 {
       imageSize: { width: 400, height: 400 },
       rotation: 0,
       displayId: 0
-    }
+    };
     if (isFullScreen) {
       screenshotOptions = {
         rotation: 0
@@ -140,13 +140,13 @@ struct CustomContainer1 {
     try {
       screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
         if (err) {
-          Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`)
+          Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
-        Logger.info(TAG, 'save callback')
-        this.savePicture(data, getContext(this) as any)
+        Logger.info(TAG, 'save callback');
+        this.savePicture(data, getContext(this) as any);
       })
     } catch (err) {
-      Logger.error(`save failed, code is ${err.code}, message is ${err.message}`)
+      Logger.error(`save failed, code is ${err.code}, message is ${err.message}`);
     }
   }
 }
@@ -168,24 +168,20 @@ struct SetCircle {
         .width('20vp').height('20vp').position({ x: this.x, y: this.y }).visibility(this.isshow)
         .fill(Color.Red)
     }.onTouch((event: TouchEvent) => {
-      //console.info('11')
-      // x坐标
-      let x = event.touches[0].x
-      // y坐标
-      let y = event.touches[0].y
-      //console.info('this is ' + JSON.stringify(this))
+      let x = event.touches[0].x;
+      let y = event.touches[0].y;
       if (event.type === TouchType.Down) {
-        this.x = x
-        this.y = y
-        this.isshow = Visibility.Visible
+        this.x = x;
+        this.y = y;
+        this.isshow = Visibility.Visible;
       }
       else if (event.type === TouchType.Move) {
-        this.x = x
-        this.y = y
-        this.isshow = Visibility.Visible
+        this.x = x;
+        this.y = y;
+        this.isshow = Visibility.Visible;
       }
       else if (event.type === TouchType.Up) {
-        this.isshow = Visibility.None
+        this.isshow = Visibility.None;
       }
     })
     .width('100%').height('80%').backgroundColor(Color.White)

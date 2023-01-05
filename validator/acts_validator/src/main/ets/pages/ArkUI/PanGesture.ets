@@ -34,14 +34,14 @@ struct PanGestureExample {
       .gesture(
       PanGesture({})
         .onActionStart((event: GestureEvent) => {
-          console.info('Pan start')
+          console.info('Pan start');
         })
         .onActionUpdate((event: GestureEvent) => {
-          this.X = event.offsetX
-          this.Y = event.offsetY
+          this.X = event.offsetX;
+          this.Y = event.offsetY;
         })
         .onActionEnd(() => {
-          console.info('Pan end')
+          console.info('Pan end');
         })
       )
       Text('偏移坐标x: ' + this.X + '\n' + '偏移坐标y: ' + this.Y)

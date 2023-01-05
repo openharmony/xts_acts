@@ -17,11 +17,11 @@ import prompt from '@ohos.prompt';
 import router from '@ohos.router';
 import screenshot from '@ohos.screenshot';
 import image from '@ohos.multimedia.image';
-import Logger from '../model/Logger'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
+import Logger from '../model/Logger';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 
-let path = globalThis.dir
-const TAG = '[Screenshot]'
+let path = globalThis.dir;
+const TAG = '[Screenshot]';
 @Component
 export struct CustomContainer {
   @Link X: number;
@@ -42,7 +42,7 @@ export struct CustomContainer {
         params: {result : 'Pass', title : this.name,
         }
       })
-      this.getScreen(isFullScreen)
+      this.getScreen(isFullScreen);
     })
   }
   @Builder
@@ -56,7 +56,7 @@ export struct CustomContainer {
         params: {result : 'Fail',title : this.name,
         }
       })
-      this.getScreen(isFullScreen)
+      this.getScreen(isFullScreen);
     })
   }
   build() {
@@ -74,10 +74,10 @@ export struct CustomContainer {
         Text(this.title).fontColor(Color.White).fontSize('18fp').margin({left:'-20vp'})
         Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
       }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
-      this.content()
+      this.content();
       Blank()
       Row() {
-        this.PassBtn($r('app.string.btn_fullscreen'), true)
+        this.PassBtn($r('app.string.btn_fullscreen'), true);
         Button(){
           Image($r('app.media.ic_public_help')).width('20vp').height('20vp')
         }.width('30%').height('30vp').backgroundColor(Color.Grey)
@@ -94,35 +94,35 @@ export struct CustomContainer {
             }
           )
         })
-        this.FailBtn($r('app.string.btn_fullscreen'), true)
+        this.FailBtn($r('app.string.btn_fullscreen'), true);
       }.width('100%').justifyContent(FlexAlign.SpaceEvenly).backgroundColor(Color.Black)
     }.height('98%').width('100%')
   }
   async savePicture(data: image.PixelMap, context: any) {
-    Logger.info(TAG, `savePicture`)
+    Logger.info(TAG, `savePicture`);
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
-    }
+    };
     let info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
-    }
-    let name = this.name
-    let displayName = `${info.prefix}${name}${info.suffix}`
+    };
+    let name = this.name;
+    let displayName = `${info.prefix}${name}${info.suffix}`;
     let dirPath = path + '/' + displayName;
-    let imagePackerApi = image.createImagePacker()
-    let arrayBuffer = await imagePackerApi.packing(data, packOpts)
+    let imagePackerApi = image.createImagePacker();
+    let arrayBuffer = await imagePackerApi.packing(data, packOpts);
     let fd = fileio.openSync(dirPath,0o102,0o666);
-    imagePackerApi.release()
+    imagePackerApi.release();
     try {
-      await fileio.write(fd, arrayBuffer)
+      await fileio.write(fd, arrayBuffer);
     } catch (err) {
-      Logger.error(`write failed, code is ${err.code}, message is ${err.message}`)
+      Logger.error(`write failed, code is ${err.code}, message is ${err.message}`);
     }
-    await fileio.close(fd)
-    Logger.info(TAG, `write done`)
+    await fileio.close(fd);
+    Logger.info(TAG, `write done`);
     prompt.showToast({
       message: '结果保存成功', duration: 1000
-    })
+    });
   }
   getScreen = (isFullScreen: boolean) => {
     let screenshotOptions: screenshot.ScreenshotOptions = {
@@ -130,7 +130,7 @@ export struct CustomContainer {
       imageSize: { width: 400, height: 400 },
       rotation: 0,
       displayId: 0
-    }
+    };
     if (isFullScreen) {
       screenshotOptions = {
         rotation: 0
@@ -139,13 +139,13 @@ export struct CustomContainer {
     try {
       screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
         if (err) {
-          Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`)
+          Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
-        Logger.info(TAG, 'save callback')
-        this.savePicture(data, getContext(this) as any)
+        Logger.info(TAG, 'save callback');
+        this.savePicture(data, getContext(this) as any);
       })
     } catch (err) {
-      Logger.error(`save failed, code is ${err.code}, message is ${err.message}`)
+      Logger.error(`save failed, code is ${err.code}, message is ${err.message}`);
     }
   }
 }

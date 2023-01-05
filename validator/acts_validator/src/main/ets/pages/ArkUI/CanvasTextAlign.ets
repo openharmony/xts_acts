@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomContainer} from '../common/CanvasCustomContainer1'
-import FirstDialog from '../model/FirstDialog'
+import {CustomContainer} from '../common/CanvasCustomContainer1';
+import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
 struct SetCircle {
@@ -30,53 +30,53 @@ struct SetCircle {
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
         Text('start').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.lineWidth = 2
-            this.context.moveTo(180, 10)
-            this.context.lineTo(180, 310)
-            this.context.stroke()
-            this.context.textAlign = 'start'
-            this.context.fillText('textAlign=start', 180, 160)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.lineWidth = 2;
+            this.context.moveTo(180, 10);
+            this.context.lineTo(180, 310);
+            this.context.stroke();
+            this.context.textAlign = 'start';
+            this.context.fillText('textAlign=start', 180, 160);
           })
         Text('end').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.lineWidth = 2
-            this.context.moveTo(180, 10)
-            this.context.lineTo(180, 310)
-            this.context.stroke()
-            this.context.textAlign = 'end'
-            this.context.fillText('textAlign=end', 180, 160)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.lineWidth = 2;
+            this.context.moveTo(180, 10);
+            this.context.lineTo(180, 310);
+            this.context.stroke();
+            this.context.textAlign = 'end';
+            this.context.fillText('textAlign=end', 180, 160);
           })
         Text('left').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.lineWidth = 2
-            this.context.moveTo(180, 10)
-            this.context.lineTo(180, 310)
-            this.context.stroke()
-            this.context.textAlign = 'left'
-            this.context.fillText('textAlign=left', 180, 160)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.lineWidth = 2;
+            this.context.moveTo(180, 10);
+            this.context.lineTo(180, 310);
+            this.context.stroke();
+            this.context.textAlign = 'left';
+            this.context.fillText('textAlign=left', 180, 160);
           })
         Text('center').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.lineWidth = 2
-            this.context.moveTo(180, 10)
-            this.context.lineTo(180, 310)
-            this.context.stroke()
-            this.context.textAlign = 'center'
-            this.context.fillText('textAlign=center', 180, 160)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.lineWidth = 2;
+            this.context.moveTo(180, 10);
+            this.context.lineTo(180, 310);
+            this.context.stroke();
+            this.context.textAlign = 'center';
+            this.context.fillText('textAlign=center', 180, 160);
           })
         Text('right').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=> {
-            this.context.clearRect(0, 10, 350, 300)
-            this.context.lineWidth = 2
-            this.context.moveTo(180, 10)
-            this.context.lineTo(180, 310)
-            this.context.stroke()
-            this.context.textAlign = 'right'
-            this.context.fillText('textAlign=right', 180, 160)
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.lineWidth = 2;
+            this.context.moveTo(180, 10);
+            this.context.lineTo(180, 310);
+            this.context.stroke();
+            this.context.textAlign = 'right';
+            this.context.fillText('textAlign=right', 180, 160);
           })
       }.width('90%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -85,15 +85,13 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.lineWidth = 2
-            this.context.moveTo(180, 10)
-            this.context.lineTo(180, 310)
-            this.context.stroke()
-
-            this.context.font = '60px sans-serif'
-
-            this.context.textAlign = 'start'
-            this.context.fillText('textAlign=start', 180, 160)
+            this.context.lineWidth = 2;
+            this.context.moveTo(180, 10);
+            this.context.lineTo(180, 310);
+            this.context.stroke();
+            this.context.font = '60px sans-serif';
+            this.context.textAlign = 'start';
+            this.context.fillText('textAlign=start', 180, 160);
           })
       }.width('100%').height('70%')
     }.width('100%').height('80%').backgroundColor(Color.White)

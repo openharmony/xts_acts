@@ -34,8 +34,8 @@ struct SwipeGestureTest {
       .gesture(
       SwipeGesture({fingers: 1, direction: SwipeDirection.Vertical})
         .onAction((event: GestureEvent) => {
-          this.Y = event.speed
-          this.X = event.angle
+          this.Y = event.speed;
+          this.X = event.angle;
         })
       )
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
