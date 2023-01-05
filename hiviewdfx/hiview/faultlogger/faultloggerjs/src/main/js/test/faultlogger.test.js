@@ -35,10 +35,12 @@ describe("FaultlogJsTest", function () {
     })
 
     async function msleep(time) {
+        let timeoutID = null;
         let promise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve("done!"), time)
+            timeoutID = setTimeout(() => resolve("done!"), time)
         });
         let result = await promise;
+        clearTimeout(timeoutID);
     }
 
     /**
