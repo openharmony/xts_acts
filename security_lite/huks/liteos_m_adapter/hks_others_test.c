@@ -102,7 +102,7 @@ static void ExcHksOthersTest003(void const *argument)
 {
     LiteTestPrint("HksOthersTest003 Begin!\n");
     int32_t ret = HksAttestKey(NULL, NULL, NULL);
-    TEST_ASSERT_TRUE(ret == HKS_ERROR_NOT_SUPPORTED);
+    TEST_ASSERT_TRUE(ret == HKS_ERROR_API_NOT_SUPPORTED);
     LiteTestPrint("HksOthersTest003 End!\n");
     osThreadExit();
 }
@@ -111,7 +111,7 @@ static void ExcHksOthersTest004(void const *argument)
 {
     LiteTestPrint("HksOthersTest004 Begin!\n");
     int32_t ret = HksGetCertificateChain(NULL, NULL, NULL);
-    TEST_ASSERT_TRUE(ret == HKS_ERROR_NOT_SUPPORTED);
+    TEST_ASSERT_TRUE(ret == HKS_ERROR_API_NOT_SUPPORTED);
     LiteTestPrint("HksOthersTest004 End!\n");
     osThreadExit();
 }
@@ -120,7 +120,7 @@ static void ExcHksOthersTest005(void const *argument)
 {
     LiteTestPrint("HksOthersTest005 Begin!\n");
     int32_t ret = HksGetCertificateChain(NULL, NULL, NULL);
-    TEST_ASSERT_TRUE(ret == HKS_ERROR_NOT_SUPPORTED);
+    TEST_ASSERT_TRUE(ret == HKS_ERROR_API_NOT_SUPPORTED);
     LiteTestPrint("HksOthersTest005 End!\n");
     osThreadExit();
 }
@@ -129,7 +129,7 @@ static void ExcHksOthersTest006(void const *argument)
 {
     LiteTestPrint("HksOthersTest006 Begin!\n");
     int32_t ret = HksUnwrapKey(NULL, NULL, NULL, NULL);
-    TEST_ASSERT_TRUE(ret == HKS_ERROR_NOT_SUPPORTED);
+    TEST_ASSERT_TRUE(ret == HKS_ERROR_API_NOT_SUPPORTED);
     LiteTestPrint("HksOthersTest006 End!\n");
     osThreadExit();
 }
