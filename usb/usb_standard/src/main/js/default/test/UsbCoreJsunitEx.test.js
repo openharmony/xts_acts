@@ -456,14 +456,14 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
-    device.subclass = 2 + 10000
+    device.subClass = 2 + 10000
     try {
       var usbDevicePipe = usb.connectDevice(device)
     } catch (err) {
       expect(true).assertTrue();
       console.info('usb connectDevice fail：' + err);
     }
-    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) + ' subclass ' + device.subclass);
+    console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) + ' subClass ' + device.subClass);
     expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
     var isPipClose = usb.closePipe(usbDevicePipe);
     console.info('usb case closePipe ret: ' + isPipClose);
