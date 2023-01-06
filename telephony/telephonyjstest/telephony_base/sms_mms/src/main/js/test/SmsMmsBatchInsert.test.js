@@ -96,8 +96,9 @@ export default function SmsMmsBatchInsert() {
             var exitTime = now.getTime() + numberMillis;
             while (true) {
                 now = new Date();
-                if (now.getTime() > exitTime)
-                return;
+                if (now.getTime() > exitTime){
+                    return;
+                }
             }
         }
 
@@ -138,8 +139,8 @@ export default function SmsMmsBatchInsert() {
                 }
                 ExpectTrue(data.code === 0);
                 console.log(CASE_NAME + ' batchInsert Success, data:' + JSON.stringify(data));
-            })
-            await sleep(100);
+            });
+            sleep(100);
             try {
                 let data = await DAHelper.query(URL_INFO);
                 ExpectTrue(data.rowCount === num);
@@ -175,7 +176,7 @@ export default function SmsMmsBatchInsert() {
                 ExpectFalse();
                 console.log(CASE_NAME + ' batchInsert failed, data:' + JSON.stringify(data));
                 done();
-            })
+            });
         });
 
         /*
@@ -195,8 +196,8 @@ export default function SmsMmsBatchInsert() {
                 }
                 ExpectTrue(data.code === 0);
                 console.log(CASE_NAME + ' batchInsert Success, data:' + JSON.stringify(data));
-            })
-            await sleep(100);
+            });
+            sleep(100);
             try {
                 let data = await DAHelper.query(URL_INFO);
                 ExpectTrue(data.rowCount === 0);
@@ -229,8 +230,8 @@ export default function SmsMmsBatchInsert() {
                 }
                 ExpectTrue(data.code === 0);
                 console.log(CASE_NAME + ' batchInsert Success, data:' + JSON.stringify(data));
-            })
-            await sleep(2000);
+            });
+            sleep(2000);
             try {
                 let data = await DAHelper.query(URL_INFO);
                 ExpectTrue(data.rowCount === num);
@@ -266,7 +267,7 @@ export default function SmsMmsBatchInsert() {
                 ExpectFalse();
                 console.log(CASE_NAME + ' batchInsert failed, data:' + JSON.stringify(data));
                 done();
-            })
+            });
         });
 
         /*
@@ -347,7 +348,7 @@ export default function SmsMmsBatchInsert() {
                 done();
                 return;
             }
-            await sleep(100);
+            sleep(100);
             try {
                 let data = await DAHelper.query(URL_INFO);
                 ExpectTrue(data.rowCount === 0);
@@ -383,7 +384,7 @@ export default function SmsMmsBatchInsert() {
                 done();
                 return;
             }
-            await sleep(100);
+            sleep(100);
             try {
                 let data = await DAHelper.query(URL_INFO);
                 ExpectTrue(data.rowCount === num);
