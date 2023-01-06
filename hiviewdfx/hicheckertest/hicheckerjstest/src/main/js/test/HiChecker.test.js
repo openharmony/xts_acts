@@ -39,13 +39,6 @@ describe('HiCheckerTest', function () {
         console.info('HiCheckerTest afterEach called')
     })
 
-    async function msleep(time) {
-        let promise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve("done!"), time)
-        });
-        let result = await promise;
-    }
-
     /**
      * @tc.number 
      * @tc.name DFX_DFR_Hichecker_Interface_0100
