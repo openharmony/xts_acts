@@ -24,6 +24,7 @@ import cameraSessionBaseTest from './CameraSessionBaseTest.test.ets'
 import cameraInputTest from './CameraInputTest.test.ets'
 import cameraManagerTest from './CameraManagerTest.test.ets'
 import cameraEnumTest from './CameraEnumTest.test.ets'
+import CameraErrorCodeUsecaseTest from './CameraErrorCodeUsecaseTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
 
