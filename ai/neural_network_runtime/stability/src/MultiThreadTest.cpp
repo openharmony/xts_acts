@@ -83,7 +83,7 @@ HWTEST_F(MultiThreadTest, SUB_AI_NNR_Reliability_North_Stress_0200, Reliability 
     for (int i = 0; i < STRESS_COUNT; i++) {
         OH_NNExecutor *executor1 = OH_NNExecutor_Construct(compilation1);
         ASSERT_NE(nullptr, executor1);
-        ASSERT_EQ(OH_NN_SUCCESS, ExecuteGraphMock(executor, graphArgs, nullptr));
+        ASSERT_EQ(OH_NN_SUCCESS, ExecuteGraphMock(executor1, graphArgs, nullptr));
         OH_NNExecutor_Destroy(&executor1);
         ASSERT_EQ(nullptr, executor1);
         if (i % PRINT_FREQ == 0) {
@@ -91,5 +91,4 @@ HWTEST_F(MultiThreadTest, SUB_AI_NNR_Reliability_North_Stress_0200, Reliability 
         }
     }
     Free(model1, compilation1);
-    Free(model2, compilation2);
 }
