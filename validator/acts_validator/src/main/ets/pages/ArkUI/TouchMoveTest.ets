@@ -122,7 +122,7 @@ struct CustomContainer1 {
     await fileio.close(fd);
     Logger.info(TAG, `write done`);
     prompt.showToast({
-      message: '图片保存成功', duration: 1000
+      message: '结果保存成功', duration: 1000
     });
   }
   getScreen = (isFullScreen: boolean) => {
