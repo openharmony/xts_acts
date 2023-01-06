@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import SmsMmsBatchInsert from './SmsMmsBatchInsert.test'
+import SmsMmsBatchInsert from './SmsMmsBatchInsert.test';
 
 export default function testsuite() {
     SmsMmsBatchInsert();

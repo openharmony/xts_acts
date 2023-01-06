@@ -14,7 +14,7 @@
  */
 export default {
   onCreate() {
-      console.info('TestApplication onCreate')
+      console.info('TestApplication onCreate');
 
   },
   onDestroy() {
