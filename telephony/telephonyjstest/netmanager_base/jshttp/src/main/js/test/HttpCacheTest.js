@@ -26,11 +26,11 @@ export default function HttpCacheTest() {
         */
 
         it('Telephony_NetStack_HttpTestBasicGet_0100', 0, async function(done){
-            let CaseName = 'Telephony_NetStack_HttpTestBasicGet_0100';
             let http = net_http.createHttp();
             http.request('https://httpbin.org/anything', {
                 usingCache : true
             }).then(function(data){
+                http.destroy();
                 expect(data.responseCode === net_http.ResponseCode.OK).assertTrue();
                 done();
                 return;
@@ -49,6 +49,7 @@ export default function HttpCacheTest() {
             http.request('https://httpbin.org/anything', {
                 usingCache : false
             }).then(function(data){
+                http.destroy();
                 console.info(CaseName + JSON.stringify(data));
                 expect(data.responseCode === net_http.ResponseCode.OK).assertTrue();
                 done();
@@ -70,6 +71,7 @@ export default function HttpCacheTest() {
                 usingCache : true
             }).then(function (){
                 cache.flush().then(function (data){
+                    http.destroy();
                     console.info(CaseName + JSON.stringify(data));
                     expect(data === undefined).assertTrue();
                     done();
@@ -92,6 +94,7 @@ export default function HttpCacheTest() {
                 usingCache : true
             }).then(function (){
                 cache.flush(function (data){
+                    http.destroy();
                     console.info(CaseName + JSON.stringify(data));
                     expect(data === undefined).assertTrue();
                     done();
@@ -114,6 +117,7 @@ export default function HttpCacheTest() {
                 usingCache : true
             }).then(function (){
                 cache.delete().then(function (data){
+                    http.destroy();
                     console.info(CaseName + JSON.stringify(data));
                     expect(data === undefined).assertTrue();
                     done();
@@ -136,6 +140,7 @@ export default function HttpCacheTest() {
                 usingCache : true
             }).then(function (){
                 cache.delete(function (data){
+                    http.destroy();
                     console.info(CaseName + JSON.stringify(data));
                     expect(data === undefined).assertTrue();
                     done();
