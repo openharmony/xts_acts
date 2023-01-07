@@ -18,21 +18,21 @@ import { Hypium } from '@ohos/hypium';
 import testsuite from '../../../test/List.test';
 
 const injectRef = Object.getPrototypeOf(global) || global
-injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator');
 
 export default {
   data: {
     title: ''
   },
   onInit () {
-    this.title = this.$t('strings.world')
+    this.title = this.$t('strings.world');
   },
   onShow () {
     console.info('onShow finish!');
-    var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     console.info('start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   },
   onReady () {
   },
