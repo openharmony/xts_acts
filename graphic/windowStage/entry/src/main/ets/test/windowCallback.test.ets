@@ -1327,10 +1327,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               done();
             }
           })
-        } else {
-//          unexpectedError(err, caseName, 'ohosWindow.create', done);
-        }
-//      })
+        } 
     })
     /**
      * @tc.number     SUB_WINDOW_DESTROY_JSAPI_002
