@@ -16,10 +16,10 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import taskpool from '@ohos.taskpool'
 import worker from "@ohos.worker"
 export default function TaskPoolTest() {
-describe('ActsAbilityTest', function () {
+describe('ActsAbilityTest', function (done) {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
 
-    it('TaskPoolTestClass001', 0,  async function () {
+    it('TaskPoolTestClass001', 0,  async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -28,7 +28,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass002', 0,  async function () {
+    it('TaskPoolTestClass002', 0,  async function (done) {
         function Add(value1, value2) {
             if (value1 & value2)
                 return true;
@@ -40,7 +40,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass003', 0,  async function () {
+    it('TaskPoolTestClass003', 0,  async function (done) {
         function StrCat(value1, value2) {
             return value1 + value2;
         }
@@ -49,7 +49,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass004', 0,  async function () {
+    it('TaskPoolTestClass004', 0,  async function (done) {
         function StrCat(value1, value2) {
             return value1 + value2;
         }
@@ -59,7 +59,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass005', 0,  async function () {
+    it('TaskPoolTestClass005', 0,  async function (done) {
         function Sum(value1, value2) {
             function StrCat(value1, value2) {
                 return value1 + value2;
@@ -71,7 +71,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass006', 0,  async function () {
+    it('TaskPoolTestClass006', 0,  async function (done) {
         function Sum(arg1, arg2) {
             let value = [];
             value[0] = arg1[0] + arg2[0];
@@ -84,7 +84,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass007', 0,  async function () {
+    it('TaskPoolTestClass007', 0,  async function (done) {
         function Sum(arg1, arg2) {
             let value = arg1;
             value.a = arg1.a + arg2.a;
@@ -96,7 +96,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass008', 0,  async function () {
+    it('TaskPoolTestClass008', 0,  async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -105,7 +105,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass009', 0,  async function () {
+    it('TaskPoolTestClass009', 0,  async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -114,7 +114,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass010', 0,  async function () {
+    it('TaskPoolTestClass010', 0,  async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -125,7 +125,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass011', 0,  async function () {
+    it('TaskPoolTestClass011', 0,  async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -136,7 +136,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass012', 0,  async function () {
+    it('TaskPoolTestClass012', 0,  async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -154,7 +154,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass013', 0, async function () {
+    it('TaskPoolTestClass013', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -164,7 +164,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass014', 0, async function () {
+    it('TaskPoolTestClass014', 0, async function (done) {
         function Add(value1, value2) {
             if (value1 & value2)
                 return true;
@@ -177,7 +177,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass015', 0,  async function () {
+    it('TaskPoolTestClass015', 0,  async function (done) {
         function StrCat(value1, value2) {
             return value1 + value2;
         }
@@ -187,7 +187,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass016', 0,  async function () {
+    it('TaskPoolTestClass016', 0,  async function (done) {
         function Sum(value1, value2) {
             function StrCat(value1, value2) {
                 return value1 + value2;
@@ -200,7 +200,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass017', 0, async function () {
+    it('TaskPoolTestClass017', 0, async function (done) {
         function Sum(arg1, arg2) {
             let value = [];
             value[0] = arg1[0] + arg2[0];
@@ -214,7 +214,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass018', 0, async function () {
+    it('TaskPoolTestClass018', 0, async function (done) {
         function Sum(arg1, arg2) {
             let value = arg1;
             value.a = arg1.a + arg2.a;
@@ -227,7 +227,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass019', 0, async function () {
+    it('TaskPoolTestClass019', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -237,7 +237,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass020', 0, async function () {
+    it('TaskPoolTestClass020', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -247,7 +247,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass021', 0, async function () {
+    it('TaskPoolTestClass021', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -259,7 +259,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass022', 0, async function () {
+    it('TaskPoolTestClass022', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -272,7 +272,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass023', 0, async function () {
+    it('TaskPoolTestClass023', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -285,7 +285,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass024', 0,  async function () {
+    it('TaskPoolTestClass024', 0,  async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -307,7 +307,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass025', 0, async function () {
+    it('TaskPoolTestClass025', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -318,7 +318,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass026', 0, async function () {
+    it('TaskPoolTestClass026', 0, async function (done) {
         function Add(value1, value2) {
             if (value1 & value2)
                 return true;
@@ -332,7 +332,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass027', 0, async function () {
+    it('TaskPoolTestClass027', 0, async function (done) {
         function StrCat(value1, value2) {
             return value1 + value2;
         }
@@ -343,7 +343,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass028', 0,  async function () {
+    it('TaskPoolTestClass028', 0,  async function (done) {
         function Sum(value1, value2) {
             function StrCat(value1, value2) {
                 return value1 + value2;
@@ -357,7 +357,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass029', 0, async function () {
+    it('TaskPoolTestClass029', 0, async function (done) {
         function Sum(arg1, arg2) {
             let value = [];
             value[0] = arg1[0] + arg2[0];
@@ -372,7 +372,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass030', 0, async function () {
+    it('TaskPoolTestClass030', 0, async function (done) {
         function Sum(arg1, arg2) {
             let value = arg1;
             value.a = arg1.a + arg2.a;
@@ -386,7 +386,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass031', 0, async function () {
+    it('TaskPoolTestClass031', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -397,7 +397,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass032', 0, async function () {
+    it('TaskPoolTestClass032', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -408,7 +408,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass033', 0, async function () {
+    it('TaskPoolTestClass033', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -424,7 +424,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass034', 0, async function () {
+    it('TaskPoolTestClass034', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -440,7 +440,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass035', 0, async function () {
+    it('TaskPoolTestClass035', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -454,7 +454,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass036', 0, async function () {
+    it('TaskPoolTestClass036', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -481,7 +481,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass037', 0, async function () {
+    it('TaskPoolTestClass037', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -491,7 +491,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass038', 0, async function () {
+    it('TaskPoolTestClass038', 0, async function (done) {
         function Add(value1, value2) {
             if (value1 & value2)
                 return true;
@@ -504,7 +504,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass039', 0, async function () {
+    it('TaskPoolTestClass039', 0, async function (done) {
         function StrCat(value1, value2) {
             return value1 + value2;
         }
@@ -514,7 +514,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass040', 0,  async function () {
+    it('TaskPoolTestClass040', 0,  async function (done) {
         function Sum(value1, value2) {
             function StrCat(value1, value2) {
                 return value1 + value2;
@@ -527,7 +527,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass041', 0, async function () {
+    it('TaskPoolTestClass041', 0, async function (done) {
         function Sum(arg1, arg2) {
             let value = [];
             value[0] = arg1[0] + arg2[0];
@@ -541,7 +541,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass042', 0, async function () {
+    it('TaskPoolTestClass042', 0, async function (done) {
         function Sum(arg1, arg2) {
             let value = arg1;
             value.a = arg1.a + arg2.a;
@@ -554,7 +554,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass043', 0, async function () {
+    it('TaskPoolTestClass043', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -564,7 +564,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass044', 0, async function () {
+    it('TaskPoolTestClass044', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -574,7 +574,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass045', 0, async function () {
+    it('TaskPoolTestClass045', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -587,7 +587,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass046', 0, async function () {
+    it('TaskPoolTestClass046', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -600,7 +600,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass047', 0, async function () {
+    it('TaskPoolTestClass047', 0, async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -623,7 +623,7 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
-    it('TaskPoolTestClass048', 0,  async function () {
+    it('TaskPoolTestClass048', 0,  async function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
@@ -643,7 +643,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass049', 0, async function () {
+    it('TaskPoolTestClass049', 0, async function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -679,7 +679,7 @@ describe('ActsAbilityTest', function () {
       * @tc.type      : Function
       * @tc.level     : Level 0
       */
-    it('TaskPoolTestClass050', 0, function () {
+    it('TaskPoolTestClass050', 0, function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -715,7 +715,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass051', 0, async function () {
+    it('TaskPoolTestClass051', 0, async function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -756,7 +756,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass052', 0, function () {
+    it('TaskPoolTestClass052', 0, function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -797,7 +797,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass053', 0, async function () {
+    it('TaskPoolTestClass053', 0, async function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -831,7 +831,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass054', 0, function () {
+    it('TaskPoolTestClass054', 0, function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -871,7 +871,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass055', 0, async function () {
+    it('TaskPoolTestClass055', 0, async function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -899,7 +899,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass056', 0, function () {
+    it('TaskPoolTestClass056', 0, function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -927,7 +927,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass057', 0, async function () {
+    it('TaskPoolTestClass057', 0, async function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -969,7 +969,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass058', 0, function () {
+    it('TaskPoolTestClass058', 0, function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -1011,7 +1011,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass059', 0, async function () {
+    it('TaskPoolTestClass059', 0, async function (done) {
         function addition(arg) {
             return arg + 1;
         }
@@ -1050,7 +1050,7 @@ describe('ActsAbilityTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('TaskPoolTestClass060', 0, function () {
+    it('TaskPoolTestClass060', 0, function (done) {
         function addition(arg) {
             return arg + 1;
         }
