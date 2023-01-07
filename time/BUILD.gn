@@ -14,5 +14,8 @@
 import("//build/ohos_var.gni")
 group("time") {
   testonly = true
-  deps = [ "timeTest:ActsTimeAPITest" ]
+  deps = [
+    "dateTimeTest:ActsDateTimeAPITest",
+    "timeTest:ActsTimeAPITest",
+  ]
 }
