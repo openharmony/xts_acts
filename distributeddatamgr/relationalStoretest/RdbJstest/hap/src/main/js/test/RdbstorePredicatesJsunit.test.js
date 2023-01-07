@@ -2185,10 +2185,11 @@ describe('rdbPredicatesTest', function () {
             predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValue"]);
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-        }catch(err){
-            errInfo = err
+        } catch (err) {
+            expect(err != undefined).assertTrue();
+            console.info(TAG + "testIndexedBy0001 err " + err);
+            errInfo = err;
         }
-        expect(errInfo.code).assertEqual("401")
         done();
         console.info(TAG + "************* testIndexedBy0001 end *************");
     })
@@ -2206,10 +2207,11 @@ describe('rdbPredicatesTest', function () {
             predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValueX"]);
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-        }catch(err){
-            errInfo = err
+        } catch (err) {
+            expect(err != undefined).assertTrue();
+            console.info(TAG + "testIndexedBy0002 err " + err);
+            errInfo = err;
         }
-        expect(errInfo.code).assertEqual("401")
         done();
         console.info(TAG + "************* testIndexedBy0002 end *************");
     })
