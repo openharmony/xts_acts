@@ -14,36 +14,38 @@
  */
 
 import net_Http from '@ohos.net.http';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, expect, it } from '@ohos/hypium'
 
 export default function Http2Test() {
     describe('Http2Test', function () {
 
         /**
-         * @tc.number    Telephony_NETSTACK_Http2TestBasicGet_0100
-         * @tc.name      set usingCache to true
-         * @tc.desc      usingCache test
+         * @tc.number Telephony_NETSTACK_Http2TestBasicGet_0100
+         * @tc.name set usingCache to true
+         * @tc.desc usingCache test
          */
         it('Telephony_NETSTACK_Http2TestBasicGet_0100', 0, async function (done) {
-            let http = net_Http.createHttp()
+            let http = net_Http.createHttp();
             http.request("https://www.zhihu.com", {
                 usingProtocol: net_Http.HttpProtocol.HTTP1_1
             }).then(function (data) {
+                http.destroy();
                 expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
                 done();
             });
         });
 
         /**
-         * @tc.number    Telephony_NETSTACK_Http2TestBasicGet_0200
-         * @tc.name      set usingCache to true
-         * @tc.desc      usingCache test
+         * @tc.number Telephony_NETSTACK_Http2TestBasicGet_0200
+         * @tc.name set usingCache to true
+         * @tc.desc usingCache test
          */
         it('Telephony_NETSTACK_Http2TestBasicGet_0200', 0, async function (done) {
-            let http = net_Http.createHttp()
+            let http = net_Http.createHttp();
             http.request("https://www.zhihu.com", {
                 usingProtocol: net_Http.HttpProtocol.HTTP2
             }).then(function (data) {
+                http.destroy();
                 console.info("Telephony_NETSTACK_Http2TestBasicGet_0200" + JSON.stringify(data));
                 expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
                 done();
@@ -51,13 +53,14 @@ export default function Http2Test() {
         });
 
         /**
-         * @tc.number    Telephony_NETSTACK_Http2TestBasicGet_0300
-         * @tc.name      set usingCache to true
-         * @tc.desc      usingCache test
+         * @tc.number Telephony_NETSTACK_Http2TestBasicGet_0300
+         * @tc.name set usingCache to true
+         * @tc.desc usingCache test
          */
         it('Telephony_NETSTACK_Http2TestBasicGet_0300', 0, async function (done) {
-            let http = net_Http.createHttp()
+            let http = net_Http.createHttp();
             http.request("https://www.zhihu.com").then(function (data) {
+                http.destroy();
                 console.info("Telephony_NETSTACK_Http2TestBasicGet_0300" + JSON.stringify(data));
                 expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
                 done();
@@ -65,9 +68,9 @@ export default function Http2Test() {
         });
 
         /**
-         * @tc.number    Telephony_NETSTACK_Http2TestBasicGet_0400
-         * @tc.name      set usingCache to true
-         * @tc.desc      usingCache test
+         * @tc.number Telephony_NETSTACK_Http2TestBasicGet_0400
+         * @tc.name set usingCache to true
+         * @tc.desc usingCache test
          */
         it('Telephony_NETSTACK_Http2TestBasicGet_0400', 0, async function (done) {
             expect(net_Http.HttpProtocol.HTTP1_1).assertEqual(0);
@@ -76,9 +79,9 @@ export default function Http2Test() {
         });
 
         /**
-         * @tc.number    Telephony_NETSTACK_Http2TestBasicGet_0500
-         * @tc.name      set usingCache to true
-         * @tc.desc      usingCache test
+         * @tc.number Telephony_NETSTACK_Http2TestBasicGet_0500
+         * @tc.name set usingCache to true
+         * @tc.desc usingCache test
          */
         it('Telephony_NETSTACK_Http2TestBasicGet_0500', 0, async function (done) {
             expect(net_Http.HttpDataType.STRING).assertEqual(0);
@@ -87,11 +90,11 @@ export default function Http2Test() {
             done();
         });
 
-        it('Telephony_http_HttpTestPriority_0100', 0, async function(done){
+        it('Telephony_http_HttpTestPriority_0100', 0, async function (done) {
             let CaseName = 'Telephony_http_HttpTestPriority_0100';
             try {
-                let httpRequestOptions ={
-                    method: net_http.RequestMethod.GET,
+                let httpRequestOptions = {
+                    method: net_Http.RequestMethod.GET,
                     extraData: null,
                     expectDataType: net_Http.HttpDataType.STRING,
                     header: "content-type': 'application/json",
@@ -99,15 +102,16 @@ export default function Http2Test() {
                     connectTimeout: 6000,
                     priority: 100
                 }
-                var httpRequest = net_http.createHttp();
-                httpRequest.request("https://httpbin/anything", httpRequestOptions, (err,data) => {
-                    console.info(CaseName + Json.stringify(err)+ "data"+ Json.stringify(data));
-                    expect(data.responseCode === net_http.ResponseCode.Ok).assertTrue();
+                var httpRequest = net_Http.createHttp();
+                httpRequest.request("https://www.zhihu.com", httpRequestOptions, (err, data) => {
+                    httpRequest.destroy();
+                    console.info(CaseName + JSON.stringify(err) + "data" + JSON.stringify(data));
+                    expect(data.responseCode === net_Http.ResponseCode.OK).assertTrue();
                     expect(data.resultType == net_Http.HttpDataType.STRING).assertTrue();
                     done();
                 });
-            } catch(err){
-                console.info(CaseName+ "err=" + err)
+            } catch (err) {
+                console.info(CaseName + "err=" + err);
                 done();
                 return;
             }
