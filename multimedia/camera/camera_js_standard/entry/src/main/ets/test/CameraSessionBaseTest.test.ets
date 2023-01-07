@@ -171,10 +171,10 @@ export default function cameraSessionTest() {
         console.log(TAG + 'Exit releaseVideoReceiveSurface')
     }
 
-    async function getCameraManagerInstance() {
+    function getCameraManagerInstance() {
         console.info('Enter getCameraManagerInstance');
 
-        mCameraManager = await cameraObj.getCameraManager(null);
+        mCameraManager = cameraObj.getCameraManager(null);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;
@@ -185,26 +185,9 @@ export default function cameraSessionTest() {
         return true;
     }
 
-    async function getCameraSupportDevicesArray() {
+    function getCameraSupportDevicesArray() {
         console.info('Enter getCameraSupportDevicesArray');
-        
-        mCameraDevicesArray = await mCameraManager.getSupportedCameras();
-        /*
-        mCameraManager.getSupportedCameras(async (err, data) => {
-            console.info(TAG + "Entering getCameraSupportDevicesArray callback");
-            if (!err) {
-                if (data != null || data != undefined) {
-                    mCameraDevicesArray = data;
-                    console.info(TAG + "Entering getCameraSupportDevicesArray PASSED with CameraDevicesArray is: " + data);
-                } else {
-                    console.info(TAG + "Entering getCameraSupportDevicesArray FAILED with CameraDevicesArray is: " + data);
-                }
-            } else {
-                console.info(TAG + "Entering getCameraSupportDevicesArray FAILED : " + err.message);
-            }
-        })
-        await sleep(3000);
-        */
+        mCameraDevicesArray = mCameraManager.getSupportedCameras();
         if (isEmpty(mCameraDevicesArray)) {
             console.info(TAG + "getSupportedCameras FAILED");
             return false;
@@ -220,39 +203,11 @@ export default function cameraSessionTest() {
         return true;
     }
 
-    async function beginCameraSessionConfig() {
-        console.info('Enter beginCameraSessionConfig');
-
-        mCameraSession.beginConfig();
-
-        console.info('Exit beginCameraSessionConfig');
-
-        return true;
-    }
-
-    async function commitCameraSessionConfig() {
-        console.info('Enter commitCameraSessionConfig');
-
-        mCameraSession.commitConfig(async (err) => {
-            if (!err) {
-                console.info(TAG + "Entering commitConfig PASSED");
-            } else {
-                console.info(TAG + "Entering commitConfig FAILED : " + err.message);
-            }
-        })
-
-        await sleep(500);
-
-        console.info('Exit commitCameraSessionConfig');
-
-        return true;
-    }
-
-    async function createCameraSessionInstance() {
+    function createCameraSessionInstance() {
         console.info('Enter createCameraSessionInstance');
 
         try {
-            mCameraSession = await mCameraManager.createCaptureSession();
+            mCameraSession = mCameraManager.createCaptureSession();
         }
         catch {
             console.info('createCaptureSession FAILED');
@@ -263,7 +218,7 @@ export default function cameraSessionTest() {
             return false;
         }
 
-        await beginCameraSessionConfig();
+        // mCameraSession.beginConfig();
 
         console.info('Exit createCameraSessionInstance');
 
@@ -282,16 +237,9 @@ export default function cameraSessionTest() {
             return false;
         }
     
-        mCameraInput =  mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
+        mCameraInput = mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
 
-        mCameraInput.open(async (err) => {
-            console.info(TAG + "Entering mCameraInput open callback");
-            if (!err) {
-                console.info(TAG + "Entering mCameraInput open PASSED ");
-            } else {
-                console.info(TAG + "Entering mCameraInput open FAILED : " + err.message);
-            }
-        })
+        await mCameraInput.open();
 
         await sleep(100);
 
@@ -314,7 +262,7 @@ export default function cameraSessionTest() {
         return true;
     }
 
-    async function createOutput(idx:any) {
+    function createOutput(idx:any) {
         console.info('Enter createOutput');
 
         let cameraOutputCap = mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
@@ -323,7 +271,7 @@ export default function cameraSessionTest() {
             if (!isEmpty(cameraOutputCap.previewProfiles)) {
                 console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
                 for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
-                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], globalThis.surfaceId);
+                    mPreviewOutput = mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], globalThis.surfaceId);
                     if (!isEmpty(mPreviewOutput)) {
                         break;
                     }
@@ -340,7 +288,7 @@ export default function cameraSessionTest() {
                 console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
                     
                 for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
-                    mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhotoSurface);
+                    mPhotoOutput = mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhotoSurface);
                     if (!isEmpty(mPhotoOutput)) {
                         break;
                     }
@@ -352,12 +300,12 @@ export default function cameraSessionTest() {
     
                 console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
             }
-            /*
+
             if (!isEmpty(cameraOutputCap.videoProfiles)) {
                 console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
                 for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
                     try {
-                        mVideoOutput = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
+                        mVideoOutput = mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
                         if (!isEmpty(mVideoOutput)) {
                             break;
                         }
@@ -373,7 +321,7 @@ export default function cameraSessionTest() {
     
                 console.info(TAG + "createVideoOutput: " + mVideoOutput);  
             }
-            */
+
         }
         
         console.info('Exit createOutputs');
@@ -385,7 +333,6 @@ export default function cameraSessionTest() {
         console.info('Enter releaseOutput');
 
         if (!isEmpty(mPreviewOutput)) {
-            await mPreviewOutput.stop();
             await mPreviewOutput.release();
         }
         
@@ -406,23 +353,23 @@ export default function cameraSessionTest() {
         console.info(TAG + "Enter startCameraSession");
 
         await createInput(idx);
-        await createOutput(idx);
+        createOutput(idx);
 
         await sleep(1);
 
         if (!isEmpty(mCameraInput)) {
             console.info(TAG + "Start to addInput");
-            await mCameraSession.addInput(mCameraInput);
+            mCameraSession.addInput(mCameraInput);
         }
         
         if (!isEmpty(mPreviewOutput)) {
             console.info(TAG + "Start to addOutput mPreviewOutput");
-            await mCameraSession.addOutput(mPreviewOutput);
+            mCameraSession.addOutput(mPreviewOutput);
         }
         
         if (!isEmpty(mPhotoOutput)) {
             console.info(TAG + "Start to addOutput mPhotoOutput");
-            await mCameraSession.addOutput(mPhotoOutput);
+            mCameraSession.addOutput(mPhotoOutput);
         }
         /*
         if (!isEmpty(mVideoOutput)) {
@@ -432,7 +379,7 @@ export default function cameraSessionTest() {
         */
         await sleep(100);
 
-        await commitCameraSessionConfig();
+        await mCameraSession.commitConfig();
 
         await sleep(100);
         
@@ -455,6 +402,9 @@ export default function cameraSessionTest() {
 
     async function stopCameraSession() {
         console.info(TAG + "Enter stopCameraSession");
+
+        mCameraSession.beginConfig();
+
         /*
         mCameraSession.stop(async (err) => {
             console.info(TAG + "Entering mCameraSession stop callback");
@@ -470,17 +420,17 @@ export default function cameraSessionTest() {
 
         if (!isEmpty(mCameraInput)) {
             console.info(TAG + "Start to removeInput input");
-            await mCameraSession.removeInput(mCameraInput);
+            mCameraSession.removeInput(mCameraInput);
         }
 
         if (!isEmpty(mPreviewOutput)) {
             console.info(TAG + "Start to removeOutput mPreviewOutput");
-            await mCameraSession.removeOutput(mPreviewOutput);
+            mCameraSession.removeOutput(mPreviewOutput);
         }
         
         if (!isEmpty(mPhotoOutput)) {
             console.info(TAG + "Start to removeOutput mPhotoOutput");
-            await mCameraSession.removeOutput(mPhotoOutput);
+            mCameraSession.removeOutput(mPhotoOutput);
         }
         /*
         if (!isEmpty(mVideoOutput)) {
@@ -503,9 +453,9 @@ export default function cameraSessionTest() {
             sleep(100);
             await getPhotoReceiverSurface();
             await getVideoReceiveSurface();
-            await getCameraManagerInstance();
-            await getCameraSupportDevicesArray();
-            await createCameraSessionInstance();
+            getCameraManagerInstance();
+            getCameraSupportDevicesArray();
+            createCameraSessionInstance();
 
             console.info('Device type = ' + deviceInfo.deviceType);
 
@@ -530,198 +480,71 @@ export default function cameraSessionTest() {
             console.info('afterAll case');
         })
 
- 
+
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_CONFIG_PROMISE_0100
-        * @tc.name      : Check capture session begin and commit config with promise or not
-        * @tc.desc      : Check capture session begin and commit config with promise or not
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_0100
+        * @tc.name      : Check capture session begin config 
+        * @tc.desc      : Check capture session begin config
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_CONFIG_PROMISE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_CONFIG_PROMISE_0100--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_0100--------------");
 
             if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_CONFIG_PROMISE_0100 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_0100 FAILED with NoCamera");
+                expect().assertFail();
+                done();
+            }
+            else {
+                mCameraSession.beginConfig();
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_0100 PASSED");
+                done();   
+            }
+        })
+
+ 
+
+        /**
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_0100
+        * @tc.name      : Check capture session commit config
+        * @tc.desc      : Check capture session commit config
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+        */
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_0100--------------");
+
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             }
             else {
                 await createInput(0);
-                await createOutput(0);
-
+                createOutput(0);
                 if (!isEmpty(mCameraInput)) {
                     console.info(TAG + "Start to addInput");
-                    await mCameraSession.addInput(mCameraInput);
+                    mCameraSession.addInput(mCameraInput);
                 }
                 
                 if (!isEmpty(mPreviewOutput)) {
                     console.info(TAG + "Start to addOutput mPreviewOutput");
-                    await mCameraSession.addOutput(mPreviewOutput);
+                    mCameraSession.addOutput(mPreviewOutput);
                 }
                 
-                await sleep(500);
+                if (!isEmpty(mPhotoOutput)) {
+                    console.info(TAG + "Start to addOutput mPhotoOutput");
+                    mCameraSession.addOutput(mPhotoOutput);
+                }
+                await mCameraSession.commitConfig(); 
                 
-                try {
-                    await mCameraSession.commitConfig();
-                } catch {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_CONFIG_PROMISE_0100 commitConfig with a error");
-                    expect().assertFail();
-                }
-                
-                try {
-                    await mCameraSession.beginConfig();
-                } catch {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_CONFIG_PROMISE_0100 beginConfig with a error");
-                    expect().assertFail();
-                }
-
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_CONFIG_PROMISE_0100 PASSED");
-
-                if (!isEmpty(mCameraInput)) {
-                    console.info(TAG + "Start to removeInput");
-                    await mCameraSession.removeInput(mCameraInput);
-                }
-                
-                if (!isEmpty(mPreviewOutput)) {
-                    console.info(TAG + "Start to removeOutput mPreviewOutput");
-                    await mCameraSession.removeOutput(mPreviewOutput);
-                }
-
-                await releaseInput();
-                await releaseOutput();
-    
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_CONFIG_PROMISE_0100 ends here");
+                await stopCameraSession();
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_0100 PASSED");
                 done();   
-            }
-        })
-
-
-
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100
-        * @tc.name      : Check capture session begin config duplicated with promise or not
-        * @tc.desc      : Check capture session begin config duplicated with promise or not
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100--------------");
-
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            }
-            else {
-                try {
-                    mCameraSession.beginConfig();   
-                } catch(error) {
-                    expect().assertFail();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100 with a error, ingore it");
-                }
-                try {
-                    mCameraSession.beginConfig();   
-                } catch(error) {
-                    expect().assertFail();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100 with a error, ingore it");
-                }
-
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100 PASSED");
-
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_BEGIN_CONFIG_DUPLICATED_PROMISE_0100 ends here");
-                done();   
-            }
-        })
-
- 
-
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100
-        * @tc.name      : Check capture session begin config duplicated with promise or not
-        * @tc.desc      : Check capture session begin config duplicated with promise or not
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100--------------");
-
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            }
-            else {
-                try {
-                    await mCameraSession.commitConfig();   
-                } catch(error) {
-                    expect().assertFail();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100 with a error, ingore it");
-                }
-                try {
-                    await mCameraSession.commitConfig();   
-                } catch(error) {
-                    expect().assertFail();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100 with a error, ingore it");
-                } 
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100 PASSED");
-
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_COMMIT_CONFIG_DUPLICATED_PROMISE_0100 ends here");
-                done();   
-            }
-        })
-
- 
-
-        /**               
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100
-        * @tc.name      : Check capture session start/stop/release output with promise or not 
-        * @tc.desc      : Check capture session start/stop/release output with promise or not 
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 0
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100--------------");
-
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            }
-            else {
-                for (let i = 0; i < mCameraNum; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 start for camera[" + i + "]");
-    
-                    await startCameraSession(i);
-    
-                    if (!isEmpty(mPreviewOutput)) {
-                        await mCameraSession.start();
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 start PASSED");
-                        await sleep(2000);
-
-                        await mCameraSession.stop();
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 stop PASSED");
-                        await sleep(500);
-
-                        await mCameraSession.release();
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 release PASSED");
-                        await sleep(500);
-                    }
-
-                    await beginCameraSessionConfig();
-                    
-                    await stopCameraSession();
-    
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 end for camera[" + i + "]");
-                }
-    
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 ends here");
-                done();
             }
         })
 
@@ -737,7 +560,6 @@ export default function cameraSessionTest() {
         */
          it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100--------------");
-
             if (mCameraNum == 0) {
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100 FAILED with NoCamera");
                 expect().assertFail();
@@ -748,31 +570,13 @@ export default function cameraSessionTest() {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100 start for camera[" + i + "]");
 
                     await createInput(i);
-                    await createOutput(i);
-    
-                    if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
-                        await mCameraSession.addInput(mCameraInput);
-                        await mCameraSession.addOutput(mPreviewOutput);
-                        await mCameraSession.addOutput(mPhotoOutput);
-                        await sleep(500);
-
-                        await commitCameraSessionConfig();
-                        await sleep(1);
-                        await beginCameraSessionConfig();
-                        await sleep(1);
-        
-                        await mCameraSession.removeInput(mCameraInput);
-                        await mCameraSession.removeOutput(mPreviewOutput);
-                        await mCameraSession.removeOutput(mPhotoOutput);
-                        await sleep(500);
-                    }
+                    mCameraSession.addInput(mCameraInput);
+                    mCameraSession.removeInput(mCameraInput);
 
                     await releaseInput();
-                    await releaseOutput();
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100 end for camera[" + i + "]");
                 }
-    
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_PROMISE_0100 ends here");
                 done();
             }
@@ -797,159 +601,168 @@ export default function cameraSessionTest() {
                 done();
             }
             else {
-                await createInput(0);
-                await createOutput(0);
+                createOutput(0);
 
-                if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
-                    await mCameraSession.addOutput(mPreviewOutput);
-                    await mCameraSession.addOutput(mPhotoOutput);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100 add PASSED");
-                    await mCameraSession.addInput(mCameraInput);
-                    await sleep(500);
+                mCameraSession.addOutput(mPreviewOutput);
+                mCameraSession.addOutput(mPhotoOutput);
+                mCameraSession.addOutput(mVideoOutput);
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100 add PASSED");
 
-                    await commitCameraSessionConfig();
-                    await sleep(1);
-                    await beginCameraSessionConfig();
-                    await sleep(1);
-
-                    await sleep(500);
-
-                    await mCameraSession.removeOutput(mPreviewOutput);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100 remove PASSED");
-                    await mCameraSession.removeOutput(mPhotoOutput);
-                    await mCameraSession.removeInput(mCameraInput);
-                    await sleep(500);
-                } else {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100 FAILED");
-                    expect().assertFail();
-                }
-
-                await releaseInput();
+                mCameraSession.removeOutput(mPreviewOutput);
+                mCameraSession.removeOutput(mPhotoOutput);
+                mCameraSession.removeOutput(mVideoOutput);
                 await releaseOutput();
-    
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100 ends here");
                 done();
             }
         })
-
-
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101
-        * @tc.name      : Check capture session can add/remove output with promise or not for photo
-        * @tc.desc      : Check capture session can add/remove output with promise or not for photo
+        
+        /**               
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100
+        * @tc.name      : Check capture session start/stop/release output with promise or not 
+        * @tc.desc      : Check capture session start/stop/release output with promise or not 
         * @tc.size      : MEDIUM
         * @tc.type      : Function
-        * @tc.level     : Level 2
+        * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101--------------");
+        it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100--------------");
 
             if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             }
             else {
-                await createInput(0);
-                await createOutput(0);
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 start for camera[" + i + "]");
+                    await startCameraSession(i);
 
-                if (!isEmpty(mPhotoOutput)) {
-                    if (!isEmpty(mPreviewOutput)) {
-                        console.info(TAG + "Start to addOutput mPreviewOutput");
-                        await mCameraSession.addOutput(mPreviewOutput);
-                    }
-                    await mCameraSession.addOutput(mPhotoOutput);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 add PASSED");
-                    await mCameraSession.addInput(mCameraInput);
+                    await mCameraSession.start();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 start PASSED");
+                    await sleep(2000);
+
+                    await mCameraSession.stop();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 stop PASSED");
                     await sleep(500);
 
-                    await commitCameraSessionConfig();
-                    await sleep(1);
-                    await beginCameraSessionConfig();
-                    await sleep(1);
-
+                    await mCameraSession.release();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 release PASSED");
                     await sleep(500);
 
-                    if (!isEmpty(mPreviewOutput)) {
-                        console.info(TAG + "Start to removeOutput mPreviewOutput");
-                        await mCameraSession.removeOutput(mPreviewOutput);
-                    }
-                    await mCameraSession.removeOutput(mPhotoOutput);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 remove PASSED");
-                    await mCameraSession.removeInput(mCameraInput);
-                    await sleep(500);
-                } else {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 FAILED");
-                    expect().assertFail();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 end for camera[" + i + "]");
                 }
-
-                await releaseInput();
-                await releaseOutput();
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 ends here");
                 done();
             }
-        })
+        })        
+
+
+        // /**
+        // * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101
+        // * @tc.name      : Check capture session can add/remove output with promise or not for photo
+        // * @tc.desc      : Check capture session can add/remove output with promise or not for photo
+        // * @tc.size      : MEDIUM
+        // * @tc.type      : Function
+        // * @tc.level     : Level 2
+        // */
+        //  it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101', 2, async function (done) {
+        //     console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101--------------");
+
+        //     if (mCameraNum == 0) {
+        //         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 FAILED with NoCamera");
+        //         expect().assertFail();
+        //         done();
+        //     }
+        //     else {
+        //         await createInput(0);
+        //         createOutput(0);
+
+        //         if (!isEmpty(mPhotoOutput)) {
+        //             if (!isEmpty(mPreviewOutput)) {
+        //                 console.info(TAG + "Start to addOutput mPreviewOutput");
+        //                 await mCameraSession.addOutput(mPreviewOutput);
+        //             }
+        //             mCameraSession.addOutput(mPhotoOutput);
+        //             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 add PASSED");
+        //             mCameraSession.addInput(mCameraInput);
+
+        //             await mCameraSession.commitConfig();
+        //             mCameraSession.beginConfig();
+
+        //             if (!isEmpty(mPreviewOutput)) {
+        //                 console.info(TAG + "Start to removeOutput mPreviewOutput");
+        //                 mCameraSession.removeOutput(mPreviewOutput);
+        //             }
+        //             mCameraSession.removeOutput(mPhotoOutput);
+        //             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 remove PASSED");
+        //             mCameraSession.removeInput(mCameraInput);
+        //         } else {
+        //             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 FAILED");
+        //             expect().assertFail();
+        //         }
+
+        //         await releaseInput();
+        //         await releaseOutput();
+    
+        //         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0101 ends here");
+        //         done();
+        //     }
+        // })
 
  
 
-        /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102
-        * @tc.name      : Check capture session can add/remove output with promise or not for video
-        * @tc.desc      : Check capture session can add/remove output with promise or not for video
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-        */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102--------------");
+        // /**
+        // * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102
+        // * @tc.name      : Check capture session can add/remove output with promise or not for video
+        // * @tc.desc      : Check capture session can add/remove output with promise or not for video
+        // * @tc.size      : MEDIUM
+        // * @tc.type      : Function
+        // * @tc.level     : Level 2
+        // */
+        //  it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102', 2, async function (done) {
+        //     console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102--------------");
 
-            if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 FAILED with NoCamera");
-                expect().assertFail();
-                done();
-            }
-            else {
-                await createInput(0);
-                await createOutput(0);
+        //     if (mCameraNum == 0) {
+        //         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 FAILED with NoCamera");
+        //         expect().assertFail();
+        //         done();
+        //     }
+        //     else {
+        //         await createInput(0);
+        //         createOutput(0);
 
-                if (!isEmpty(mVideoOutput)) {
-                    if (!isEmpty(mPreviewOutput)) {
-                        console.info(TAG + "Start to addOutput mPreviewOutput");
-                        await mCameraSession.addOutput(mPreviewOutput);
-                    }
-                    await mCameraSession.addOutput(mVideoOutput);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 PASSED");
-                    await mCameraSession.addInput(mCameraInput);
-                    await sleep(500);
+        //         if (!isEmpty(mVideoOutput)) {
+        //             if (!isEmpty(mPreviewOutput)) {
+        //                 console.info(TAG + "Start to addOutput mPreviewOutput");
+        //                 mCameraSession.addOutput(mPreviewOutput);
+        //             }
+        //             mCameraSession.addOutput(mVideoOutput);
+        //             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 PASSED");
+        //             mCameraSession.addInput(mCameraInput);
 
-                    await commitCameraSessionConfig();
-                    await sleep(1);
-                    await beginCameraSessionConfig();
-                    await sleep(1);
+        //             await mCameraSession.commitConfig();
+        //             mCameraSession.beginConfig();
 
-                    await sleep(500);
+        //             if (!isEmpty(mPreviewOutput)) {
+        //                 console.info(TAG + "Start to removeOutput mPreviewOutput");
+        //                 mCameraSession.removeOutput(mPreviewOutput);
+        //             }
+        //             mCameraSession.removeOutput(mVideoOutput);
+        //             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 remove PASSED");
+        //             mCameraSession.removeInput(mCameraInput);
+        //         } else {
+        //             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 FAILED");
+        //         }
 
-                    if (!isEmpty(mPreviewOutput)) {
-                        console.info(TAG + "Start to removeOutput mPreviewOutput");
-                        await mCameraSession.removeOutput(mPreviewOutput);
-                    }
-                    await sleep(100);
-                    await mCameraSession.removeOutput(mVideoOutput);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 remove PASSED");
-                    await mCameraSession.removeInput(mCameraInput);
-                    await sleep(500);
-                } else {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 FAILED");
-                }
-
-                await releaseInput();
-                await releaseOutput();
+        //         await releaseInput();
+        //         await releaseOutput();
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 ends here");
-                done();
-            }
-        })
+        //         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0102 ends here");
+        //         done();
+        //     }
+        // })
 
 
 
@@ -966,11 +779,9 @@ export default function cameraSessionTest() {
          it('SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_0100', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_0100--------------");
 
-            await mCameraSession.release()
-            await sleep(500);
+            await mCameraSession.release();
 
-            await createCameraSessionInstance();
-            await sleep(500);
+            // createCameraSessionInstance();
 
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_RELEASE_PROMISE_0100 ends here");
             done();

@@ -69,10 +69,10 @@ export default function CameraInputTest() {
         }
     }
 
-    async function getCameraManagerInstance() {
+    function getCameraManagerInstance() {
         console.info('Enter getCameraManagerInstance');
 
-        mCameraManager = await cameraObj.getCameraManager(null);
+        mCameraManager = cameraObj.getCameraManager(null);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;
@@ -83,10 +83,10 @@ export default function CameraInputTest() {
         return true;
     }
 
-    async function getCameraSupportDevicesArray() {
+    function getCameraSupportDevicesArray() {
         console.info('Enter getCameraSupportDevicesArray');
         
-        mCameraDevicesArray = await mCameraManager.getSupportedCameras();
+        mCameraDevicesArray = mCameraManager.getSupportedCameras();
         /*
         mCameraManager.getSupportedCameras(async (err, data) => {
             console.info(TAG + "Entering getCameraSupportDevicesArray callback");
@@ -118,15 +118,12 @@ export default function CameraInputTest() {
         return true;
     }
     
-    async function beginCameraSessionConfig() {
+    function beginCameraSessionConfig() {
         console.info('Enter beginCameraSessionConfig');
 
         console.info(TAG + "Entering beginConfig start");
         mCameraSession.beginConfig();
         console.info(TAG + "Entering beginConfig end");
-
-        await sleep(30);
-
         console.info('Exit beginCameraSessionConfig');
 
         return true;
@@ -150,11 +147,11 @@ export default function CameraInputTest() {
         return true;
     }
 
-    async function createCameraSessionInstance() {
+    function createCameraSessionInstance() {
         console.info('Enter createCameraSessionInstance');
 
         try {
-            mCameraSession = await mCameraManager.createCaptureSession();
+            mCameraSession = mCameraManager.createCaptureSession();
         }
         catch {
             console.info('createCaptureSession FAILED');
@@ -165,7 +162,7 @@ export default function CameraInputTest() {
             return false;
         }
 
-        await beginCameraSessionConfig();
+        beginCameraSessionConfig();
 
         console.info('Exit createCameraSessionInstance');
 
@@ -184,23 +181,16 @@ export default function CameraInputTest() {
             return false;
         }
         
-        mCameraInput = await mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
+        mCameraInput = mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
 
         if (isEmpty(mCameraInput)) {
             console.info(TAG + "createCameraInput FAILED");
             return false;
         }
 
-        mCameraInput.open(async (err) => {
-            console.info(TAG + "Entering mCameraInput open callback");
-            if (!err) {
-                console.info(TAG + "Entering mCameraInput open PASSED ");
-            } else {
-                console.info(TAG + "Entering mCameraInput open FAILED : " + err.message);
-            }
-        })
+        await mCameraInput.open();
 
-        await sleep(100);
+        sleep(100);
 
         console.info(idx + 'th CameraInput is: ' + mCameraInput);
 
@@ -221,16 +211,16 @@ export default function CameraInputTest() {
         return true;
     }
 
-    async function createOutput(idx:any) {
+    function createOutput(idx:any) {
         console.info('Enter createOutput');
 
-        let cameraOutputCap = mCameraManager.getSupportedOutputCapability();
+        let cameraOutputCap = mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
 
         if (!isEmpty(cameraOutputCap)) {
             if (!isEmpty(cameraOutputCap.previewProfiles)) {
                 console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
                 for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
-                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], globalThis.surfaceId);
+                    mPreviewOutput = mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], globalThis.surfaceId);
                     if (!isEmpty(mPreviewOutput)) {
                         break;
                     }
@@ -253,7 +243,6 @@ export default function CameraInputTest() {
         console.info('Enter releaseOutput');
 
         if (!isEmpty(mPreviewOutput)) {
-            await mPreviewOutput.stop();
             await mPreviewOutput.release();
         }
 
@@ -266,18 +255,18 @@ export default function CameraInputTest() {
         console.info(TAG + "Enter startCameraSession");
 
         await createInput(idx);
-        await createOutput(idx);
+        createOutput(idx);
 
         await sleep(1);
 
         if (!isEmpty(mCameraInput)) {
             console.info(TAG + "Start to addInput");
-            await mCameraSession.addInput(mCameraInput);
+            mCameraSession.addInput(mCameraInput);
         }
         
         if (!isEmpty(mPreviewOutput)) {
             console.info(TAG + "Start to addOutput mPreviewOutput");
-            await mCameraSession.addOutput(mPreviewOutput);
+            mCameraSession.addOutput(mPreviewOutput);
         }
         
         await sleep(1);
@@ -294,12 +283,12 @@ export default function CameraInputTest() {
 
         if (!isEmpty(mCameraInput)) {
             console.info(TAG + "Start to removeInput input");
-            await mCameraSession.removeInput(mCameraInput);
+            mCameraSession.removeInput(mCameraInput);
         }
 
         if (!isEmpty(mPreviewOutput)) {
             console.info(TAG + "Start to removeOutput mPreviewOutput");
-            await mCameraSession.removeOutput(mPreviewOutput);
+            mCameraSession.removeOutput(mPreviewOutput);
         }
         
         await releaseInput();
@@ -316,9 +305,9 @@ export default function CameraInputTest() {
             await getPermission();
             sleep(1000);
             await driveFn();
-            await getCameraManagerInstance();
-            await getCameraSupportDevicesArray();
-            await createCameraSessionInstance();
+            getCameraManagerInstance();
+            getCameraSupportDevicesArray();
+            createCameraSessionInstance();
             console.info('beforeAll case');
         });
         beforeEach(function () {

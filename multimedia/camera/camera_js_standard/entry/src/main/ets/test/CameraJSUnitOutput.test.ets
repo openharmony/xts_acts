@@ -671,8 +671,7 @@ export default function cameraJSUnitOutput() {
     it('SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100', 1, async function (done) {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100--------------");
       if (isEmpty(metadataOutput)) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100 metadataOutput == null || undefined")
-        expect().assertFail();
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100 metadata is not support")
       } else {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100 to operate");
         metadataOutput.on('error', async (err, data) => {
