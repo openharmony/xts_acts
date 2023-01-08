@@ -189,8 +189,10 @@ const checkPresetsAssets = async function (media, hapName) {
         console.info(`${hapName} checkPresetsAssets failed; 
             assetsCount : presetsassetsCount = ${assetsCount} : ${presetsassetsCount}
             albumsCount : presetsalbumsCount = ${albumsCount} : ${presetsalbumsCount}`);
+        fetchFileResult.close();
     } else {
         console.info(`${hapName} checkPresetsAssets passed`);
+        fetchFileResult.close();
     }
 };
 

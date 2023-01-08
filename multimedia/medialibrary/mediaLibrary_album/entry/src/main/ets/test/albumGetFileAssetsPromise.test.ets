@@ -74,6 +74,7 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
                     console.info(`${testNum}, expectAssetsCount: ${expectAssetsCount}
                                 getCount: ${fetchFileResult.getCount()}`);
                     expect(fetchFileResult.getCount()).assertEqual(expectAssetsCount);
+                    fetchFileResult.close();
                 }
                 expect(count).assertEqual(expectAlbumCount);
                 done();
@@ -103,6 +104,7 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
                     `${testNum}, getCount:expectAssetsCount - ${fetchFileResult.getCount()} : ${expectAssetsCount}`
                 );
                 expect(fetchFileResult.getCount()).assertEqual(expectAssetsCount);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum}, error: ${error}`);
@@ -133,6 +135,7 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
                 console.info(`${testNum}, getCount: ${fetchFileResult.getCount()}`);
                 console.info(`${testNum}, expectAssetsCount: ${expectAssetsCount}`);
                 expect(fetchFileResult.getCount()).assertEqual(expectAssetsCount);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} error: ${error}`);

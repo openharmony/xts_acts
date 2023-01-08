@@ -188,6 +188,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -205,6 +206,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                     }
                     if (!isNum(asset.dateTaken)) {
                         expect(false).assertTrue();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -220,6 +222,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                     }
                     expect(asset.orientation).assertEqual(props[type].orientation);
                     expect(asset.duration.toString()).assertEqual(props[type].duration);
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -250,14 +253,18 @@ export default function mediaLibraryTestCallback(abilityContext) {
 
         const getFileAssetsAbnormal = async (done, testNum, fetchOps) => {
             try {
-                media.getFileAssets(fetchOps, async (err) => {
+                media.getFileAssets(fetchOps, async (err, fetchFileResult) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
                         expect(true).assertTrue();
+                        if (fetchFileResult != null) {
+                            fetchFileResult.close();
+                        }                        
                         done();
                         return;
                     }
                     expect(false).assertTrue();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -272,11 +279,13 @@ export default function mediaLibraryTestCallback(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
                     let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 0);
                     expect(checkAssetCountPass).assertTrue();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -296,6 +305,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -305,6 +315,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
                     await creatAsset.close(creatAssetFd);
                     await asset.close(fd);
                     expect(true).assertTrue();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -330,15 +341,18 @@ export default function mediaLibraryTestCallback(abilityContext) {
                     media.createAsset(type, name, path, async (err, creatAsset) => {
                         if (err != undefined) {
                             expect(true).assertTrue();
+                            fetchFileResult.close();
                             done();
                             return;
                         }
                         expect(false).assertTrue();
+                        fetchFileResult.close();
                         done();
                     });
                 } catch (error) {
                     console.info(`${testNum}:: error :${error}`);
                     expect(false).assertTrue();
+                    fetchFileResult.close();
                     done();
                 }
             } catch (error) {

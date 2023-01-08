@@ -89,6 +89,7 @@ export default function getExifNoLocation(abilityContext) {
                 expect(value2).assertEqual(redactionGpsValue);
                 expect(value3).assertEqual(redactionRefValue);
                 expect(value4).assertEqual(redactionRefValue);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info("SUB_MEDIA_MEDIALIBRARY_GETEXIFNOLOCATION_001 error: " + error);

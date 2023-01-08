@@ -69,6 +69,7 @@ export default function fileTestCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -85,6 +86,7 @@ export default function fileTestCallbackTest(abilityContext) {
                     await asset.close(fd);
                     console.info(`${testNum} displayName1: ${displayName1}, displayName2 :${displayName2} `);
                     expect(creatAsset1.id != creatAsset2.id).assertTrue();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -106,6 +108,7 @@ export default function fileTestCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -118,6 +121,7 @@ export default function fileTestCallbackTest(abilityContext) {
                         val = displayName;
                     }
                     expect(creatAsset[key]).assertEqual(val);
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -138,15 +142,18 @@ export default function fileTestCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
                     const id = asset.id;
                     const idOP = { selections: FILEKEY.ID + "= ?", selectionArgs: ["" + id] };
+                    fetchFileResult.close();
                     fetchFileResult = await media.getFileAssets(idOP);
                     let newAsset = await fetchFileResult.getFirstObject();
                     expect(isNum(newAsset.dateModified)).assertTrue();
                     expect(newAsset.dateModified).assertEqual(asset.dateModified);
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {

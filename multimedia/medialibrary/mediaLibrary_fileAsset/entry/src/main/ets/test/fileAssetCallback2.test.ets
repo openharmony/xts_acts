@@ -59,6 +59,7 @@ export default function fileAssetCallback2Test(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -71,7 +72,8 @@ export default function fileAssetCallback2Test(abilityContext) {
                     expect(currentAsset[prop]).assertEqual(val);
                     asset[prop] = oldVal;
                     await asset.commitModify();
-                    await fetchFileResult.close();
+                    fetchFileResult.close();
+                    await fetchFileResultById.close();
                     done();
                 });
             } catch (error) {
@@ -92,10 +94,12 @@ export default function fileAssetCallback2Test(abilityContext) {
                     if (err) {
                         console.info(`${testNum} passed : ${err}`);
                         expect(true).assertTrue();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
                     expect().assertFail();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -343,10 +347,12 @@ export default function fileAssetCallback2Test(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
                     expect(isDir).assertEqual(false);
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {

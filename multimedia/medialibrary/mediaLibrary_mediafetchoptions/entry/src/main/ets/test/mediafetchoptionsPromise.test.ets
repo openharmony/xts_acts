@@ -69,6 +69,8 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 let asset = await result.getFirstObject();
                 expect(asset.uri).assertEqual(serachUri);
                 expect(asset.id).assertEqual(id);
+                fetchFileResult.close();
+                await result.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);
@@ -157,6 +159,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
 
                 expect(checkAssetCountPass).assertTrue();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);
@@ -185,6 +188,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 try {
                     const fetchFileResult = await media.getFileAssets(currentFetchOps);
                     expect(false).assertTrue();
+                    fetchFileResult.close();
                     done();
                 } catch (err) {
                     expect(true).assertTrue();
@@ -217,6 +221,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
 
                 expect(checkAssetCountPass).assertTrue();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);

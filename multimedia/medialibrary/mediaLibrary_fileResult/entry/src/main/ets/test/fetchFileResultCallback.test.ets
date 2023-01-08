@@ -51,7 +51,7 @@ export default function fetchFileResultCallbackTest(abilityContext) {
                 media.getFileAssets(fetchOp, async (err, fetchFileResult) => {
                     let checkResult = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
                     expect(checkResult).assertTrue();
-                    await fetchFileResult.close();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -76,6 +76,7 @@ export default function fetchFileResultCallbackTest(abilityContext) {
                 fetchFileResult.getPositionObject(pos, async (err, targetObject) => {
                     if (err) {
                         expect(false).assertTrue();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -103,6 +104,7 @@ export default function fetchFileResultCallbackTest(abilityContext) {
                 fetchFileResult.getAllObject(async (err, targetObjects) => {
                     if (err) {
                         expect(false).assertTrue();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -211,6 +213,7 @@ export default function fetchFileResultCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err: ${err}`);
                         expect(false).assertTrue();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -253,6 +256,7 @@ export default function fetchFileResultCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} err: ${err}`);
                         expect(false).assertTrue();
+                        fetchFileResult.close();
                         done();
                         return;
                     }

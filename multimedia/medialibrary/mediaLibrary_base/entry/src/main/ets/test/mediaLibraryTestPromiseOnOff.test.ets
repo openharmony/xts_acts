@@ -59,6 +59,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 await asset.commitModify();
                 await sleep(1000);
                 expect(count > 0).assertTrue();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -81,6 +82,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 await asset.commitModify();
                 await sleep(1000);
                 expect(count).assertEqual(0);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -212,6 +214,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                     }, 1000);
                 });
                 expect(count == 0).assertTrue();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`MediaLibraryTest : on 006 failed, error: ${error}`);
@@ -251,6 +254,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                     }, 1000);
                 });
                 expect(count == 0).assertTrue();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`MediaLibraryTest : on 007 failed, error: ${error}`);
@@ -397,6 +401,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 });
                 console.info("MediaLibraryTest : off 006 passed");
                 expect(true).assertTrue();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`MediaLibraryTest : off 006 failed, error: ${error}`);
@@ -447,6 +452,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 });
                 console.info("MediaLibraryTest : off 007 passed");
                 expect(true).assertTrue();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`MediaLibraryTest : off 007 failed, error: ${error}`);

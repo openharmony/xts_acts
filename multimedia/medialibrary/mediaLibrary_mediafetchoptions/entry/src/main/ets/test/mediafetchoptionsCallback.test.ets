@@ -51,7 +51,10 @@ export default function mediafetchoptionsCallback(abilityContext) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
-                if (!checkAssetCountPass) return;
+                if (!checkAssetCountPass) {
+                    fetchFileResult.close();
+                    return;
+                }
                 let firstObject = await fetchFileResult.getFirstObject();
                 const id = firstObject.id;
                 const uri = firstObject.uri;
@@ -68,6 +71,8 @@ export default function mediafetchoptionsCallback(abilityContext) {
                     if (err) {
                         console.info(`${testNum}, err: ${err}`);
                         expect(false).assertTrue();
+                        fetchFileResult.close();
+                        await result.close();
                         done();
                         return;
                     }
@@ -76,6 +81,8 @@ export default function mediafetchoptionsCallback(abilityContext) {
                     let asset = await result.getFirstObject();
                     expect(asset.uri).assertEqual(serachUri);
                     expect(asset.id).assertEqual(id);
+                    fetchFileResult.close();
+                    await result.close();
                     done();
                 });
             } catch (error) {

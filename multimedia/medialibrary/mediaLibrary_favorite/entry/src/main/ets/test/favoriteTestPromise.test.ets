@@ -50,7 +50,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
                 let asset = await fetchFileResult.getFirstObject();
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(false);
-                await fetchFileResult.close();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);
@@ -67,7 +67,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
                 await asset.favorite(true);
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(true);
-                await fetchFileResult.close();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);
@@ -85,7 +85,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
                 await asset.favorite(false);
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(false);
-                await fetchFileResult.close();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);

@@ -61,6 +61,7 @@ export default function getThumbnailPromise(abilityContext) {
                 let info = await pixelmap.getImageInfo();
                 expect(info.size.width).assertEqual(size.width);
                 expect(info.size.height).assertEqual(size.height);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -75,15 +76,25 @@ export default function getThumbnailPromise(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
                 if (!checkAssetCountPass) return;
                 let asset = await fetchFileResult.getFirstObject();
-                let s: mediaLibrary.Size = size;
-                let pixelmap = await asset.getThumbnail(s);
-                let info = await pixelmap.getImageInfo();
-                console.info(`${testNum}:: pixel width ${info.size.width},pixel height: ${info.size.height}`);
-                expect(false).assertTrue();
-                done();
+
+                try {
+                    let s: mediaLibrary.Size = size;
+                    let pixelmap = await asset.getThumbnail(s);
+                    let info = await pixelmap.getImageInfo();
+                    console.info(`${testNum}:: pixel width ${info.size.width},pixel height: ${info.size.height}`);
+                    expect(false).assertTrue();
+                    fetchFileResult.close();
+                    done();
+                } catch (error) {
+                    console.info(`${testNum}:: error :${error}`);
+                    expect(true).assertTrue();
+                    fetchFileResult.close();
+                    done();
+                }
+                
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
                 done();
             }
         }

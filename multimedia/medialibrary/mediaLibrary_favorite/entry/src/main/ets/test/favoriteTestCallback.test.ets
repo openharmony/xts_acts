@@ -55,12 +55,12 @@ export default function favoriteTestCallbackTest(abilityContext) {
                 asset.isFavorite(async (err, isFavorite) => {
                     if (err) {
                         expect(false).assertTrue();
-                        await fetchFileResult.close();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
                     expect(isFavorite).assertEqual(false);
-                    await fetchFileResult.close();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -79,12 +79,13 @@ export default function favoriteTestCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} failed err: ${err}`);
                         expect(false).assertTrue();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
                     let isFavorite = await asset.isFavorite();
                     expect(isFavorite).assertEqual(true);
-                    await fetchFileResult.close();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -104,12 +105,13 @@ export default function favoriteTestCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} failed err: ${err}`);
                         expect(false).assertTrue();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
                     let isFavorite = await asset.isFavorite();
                     expect(isFavorite).assertEqual(false);
-                    await fetchFileResult.close();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {

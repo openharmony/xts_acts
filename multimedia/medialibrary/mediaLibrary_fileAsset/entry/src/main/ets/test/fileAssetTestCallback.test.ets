@@ -57,6 +57,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} :: err: ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -81,6 +82,8 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     if (!checkAssetCountPass) return;
                     let newAsset = await newFetchFileResult.getFirstObject();
                     expect(newAsset.dateModified != asset.dateModified).assertTrue();
+                    fetchFileResult.close();
+                    newFetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -104,6 +107,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} :: err: ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -118,6 +122,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     } catch (error) {
                         expect(true).assertTrue();
                         await asset.close(fd);
+                        fetchFileResult.close();
                         done();
                     }
                 });
@@ -144,6 +149,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} :: err: ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -161,6 +167,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     } catch (error) {
                         expect(true).assertTrue();
                     }
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -186,6 +193,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     if (err) {
                         console.info(`${testNum} :: err: ${err}`);
                         expect().assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
@@ -203,6 +211,7 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     }
                     await sleep(1000);
                     expect(count).assertEqual(2);
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
