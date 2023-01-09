@@ -122,7 +122,7 @@ struct Index {
                             break;
                         }
                         case "emitOnResourceLoad":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/second.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/second.html"});
                             setTimeout(()=>{
                                 Utils.emitEvent(this.loadedResource,108)
                             },3000)
@@ -137,7 +137,7 @@ struct Index {
                             break;
                         }
                         case "emitRunJavaScript":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"testRunJavaScript()",callback:(res)=>{
                                     Utils.emitEvent(res,112)
@@ -152,7 +152,7 @@ struct Index {
                             break;
                         }
                         case "emitOnRefreshAccessedHistory":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/second.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/second.html"});
                             setTimeout(()=>{
                                 Utils.emitEvent(this.newUrl,116)
                             },3000)
@@ -168,7 +168,7 @@ struct Index {
                             break;
                         }
                         case "emitGetTitle":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             setTimeout(()=>{
                                 let webTitle=this.controller.getTitle()
                                 Utils.emitEvent(webTitle,122)
@@ -176,7 +176,7 @@ struct Index {
                             break;
                         }
                         case "emitGetPageHeight":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             let webPageHeight=this.controller.getPageHeight()+""
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getPageHeight()",callback:(res)=>{
@@ -187,7 +187,7 @@ struct Index {
                             break;
                         }
                         case "emitGetRequestFocus":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/second.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/second.html"});
                             await Utils.sleep(2000)
                             sendEventByKey('textInput',10,'')
                             break;
@@ -234,7 +234,7 @@ struct Index {
                         case "emitGeolocationAccessFalse":{
                             this.geolocationAccess=false
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/geo.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/geo.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getGeoResult()",callback:(res)=>{
                                     console.info("getGeoResult==>"+res)
@@ -246,7 +246,7 @@ struct Index {
                         case "emitInitialScale":{
                             this.initialScale=120
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/second.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/second.html"});
                             this.enterPageEnd=true
                             break;
                         }
@@ -261,13 +261,13 @@ struct Index {
                             this.geolocationAccess=true
                             this.geoShow=true
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/geo.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/geo.html"});
                             break;
                         }
                         case "emitDomStorageAccessFalse":{
                             this.domStorageAccess=false
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/domApi.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/domApi.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getDomResult()",callback:(res)=>{
                                     console.info("getDomResult==>"+res)
@@ -279,7 +279,7 @@ struct Index {
                         case "emitDomStorageAccessTrue":{
                             this.domStorageAccess=true
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/domApi.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/domApi.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getDomResult()",callback:(res)=>{
                                     console.info("getDomResult==>"+res)
@@ -291,7 +291,7 @@ struct Index {
                         case "emitImageAccessFalse":{
                             this.imageAccess=false
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getImgResult()",callback:(res)=>{
                                     console.info("getImgResult==>"+res)
@@ -303,7 +303,7 @@ struct Index {
                         case "emitImageAccessTrue":{
                             this.imageAccess=true
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getImgResult()",callback:(res)=>{
                                     console.info("getImgResult==>"+res)
@@ -315,7 +315,7 @@ struct Index {
                         case "emitOnlineImageAccessFalse":{
                             this.onlineImageAccess=false
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/onlineImageAccess.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/onlineImageAccess.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getImageLoadResult()",callback:(res)=>{
                                     console.info("getImageLoadResult==>"+res)
@@ -327,7 +327,7 @@ struct Index {
                         case "emitOnlineImageAccessTrue":{
                             this.onlineImageAccess=true
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/onlineImageAccess.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/onlineImageAccess.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getImageLoadResult()",callback:(res)=>{
                                     console.info("getImageLoadResult==>"+res)
@@ -339,7 +339,7 @@ struct Index {
                         case "emitDatabaseAccessTrue":{
                             this.databaseAccess=true
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/databaseAccess.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/databaseAccess.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getDataResult()",callback:(res)=>{
                                     console.info("getDataResult==>"+res)
@@ -351,7 +351,7 @@ struct Index {
                         case "emitOverviewModeAccessFalse":{
                             this.overviewModeAccess=false
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/overview.html"});
                             setTimeout(()=>{
                                 let webPageHeight=this.controller.getPageHeight()
                                 this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
@@ -365,7 +365,7 @@ struct Index {
                         case "emitOverviewModeAccessTrue":{
                             this.overviewModeAccess=true
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/overview.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
                                     console.info("getViewResult==>"+res)
@@ -375,7 +375,7 @@ struct Index {
                             break;
                         }
                         case "emitOnPrompt":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"toPrompt()"})
                             },3000)
@@ -414,7 +414,7 @@ struct Index {
                         }
                         case "emitFileAccessTrue":{
                             this.fileAccess=true
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             this.controller.runJavaScript({script:"openRawFile()"})
                             setTimeout(()=>{
                                 let webTitle=this.controller.getTitle()
@@ -468,7 +468,7 @@ struct Index {
                             break;
                         }
                         case "emitOnTitleReceive":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             setTimeout(()=>{
                                 Utils.emitEvent(this.titleReceive,67)
                             },3000)
@@ -497,7 +497,7 @@ struct Index {
                             break;
                         }
                         case "emitZoom":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             setTimeout(()=>{
                                 this.controller.zoom(2)
                                 setTimeout(() => {
@@ -573,7 +573,7 @@ struct Index {
                         }
                         case "emitOnActive":{
                             this.controller.onActive()
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             setTimeout(()=>{
                                 let onActiveCalled = this.pageBegin
                                 Utils.emitEvent(onActiveCalled,85)
