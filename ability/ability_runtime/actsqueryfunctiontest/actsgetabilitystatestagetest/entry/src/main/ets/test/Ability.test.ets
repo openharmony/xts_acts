@@ -35,9 +35,9 @@ export default function abilityTest() {
                 abilityDelegator.getCurrentTopAbility((err, data)=>{
                     console.debug("====>getCurrentTopAbility_0200 err:" + JSON.stringify(err) + " data:" + JSON.stringify(data));
                     ability = data;
-                    abilityDelegator.doAbilityBackground(ability, (err, isBackground)=>{
-                        console.debug("====>doAbilityBackground_0200 data:" + JSON.stringify(isBackground));
-                        expect(isBackground).assertTrue();
+                    abilityDelegator.doAbilityBackground(ability, (err)=>{
+                        console.debug("====>doAbilityBackground_0200 data:" + JSON.stringify(err));
+                        expect(err.code).assertEqual(0);
                     })
                 })
             }
@@ -98,9 +98,9 @@ export default function abilityTest() {
                     expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
                     expect(state != AbilityDelegatorRegistry.AbilityLifecycleState.CREATE).assertTrue()
                     expect(state != AbilityDelegatorRegistry.AbilityLifecycleState.DESTROY).assertTrue()
-                    abilityDelegator.doAbilityBackground(ability, (err, isBackground)=>{
-                        console.debug("====>doAbilityBackground_0300 data:" + JSON.stringify(isBackground));
-                        expect(isBackground).assertTrue();
+                    abilityDelegator.doAbilityBackground(ability, (err)=>{
+                        console.debug("====>doAbilityBackground_0300 data:" + JSON.stringify(err));
+                        expect(err.code).assertEqual(0);
                         console.debug("====>ACTS_GetAbilityState_0300 end====");
                         flag=false;
                         done();
