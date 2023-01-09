@@ -92,7 +92,7 @@ export default function alphabetIndexerOnSelectJsunit() {
       console.info("[testalphabetIndexerColor0003] component fontSize strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.color).assertEqual(undefined);
+      expect(obj.$attrs.color).assertEqual('#FFFF0000');
       console.info("[testalphabetIndexerColor0003] color value :" + obj.$attrs.color);
       done();
     });
