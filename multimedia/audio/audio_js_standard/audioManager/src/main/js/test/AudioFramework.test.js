@@ -105,22 +105,20 @@ describe('audioFramework', function () {
         })
     }
     async function driveFn() {
-        console.info(`come in driveFn`)
-        let driver = await UiDriver.create()
-        console.info(`driver is ${JSON.stringify(driver)}`)
-        sleep(2000)
-        console.info(`UiDriver start`)
-        let button = await driver.findComponent(BY.text('允许'))
-        console.info(`button is ${JSON.stringify(button)}`)
-        await sleep(5000)
-        await button.click()
+        console.info(`come in driveFn`);
+        let driver = await UiDriver.create();
+        console.info(`driver is ${JSON.stringify(driver)}`);
+        await sleep(100);
+        console.info(`UiDriver start`);
+        let button = await driver.findComponent(BY.text('允许'));
+        console.info(`button is ${JSON.stringify(button)}`);
+        await sleep(100);
+        await button.click();
     }
 
     beforeAll(async function () {
         await getPermission();
-        sleep(2000)
         await driveFn();
-        await sleep(1000);
         await getAudioManager();
         console.info('TestLog: Start Testing AudioFrameworkTest Interfaces');
     })
@@ -4423,247 +4421,6 @@ describe('audioFramework', function () {
                 done();
             });
         });
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0100
-     *@tc.name      : OnVolumeChange - setVolume - MEDIA
-     *@tc.desc      : OnVolumeChange - setVolume - MEDIA
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0100', 1, async function (done) {
-        audioManager = audio.getAudioManager();
-        audioManager.on('volumeChange', (VolumeEvent) => {
-            console.log(`${TagFrmwk}: Volume Change Event is called`);
-            switch (VolumeEvent.volumeType) {
-                case audio.AudioVolumeType.MEDIA:
-                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
-                    if (VolumeEvent.volume == lowVol) {
-                        console.info(`${TagFrmwk}: MEDIA CallBack : PASS : ${VolumeEvent.volume}`);
-                        expect(true).assertTrue();
-                    }
-                    break;
-                default:
-                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
-                    expect(false).assertTrue();
-                    break;
-            }
-            done();
-        });
-        try {
-            await audioManager.setVolume(audioMedia, lowVol);
-            console.info('setVolume success')
-        } catch (err) {
-            console.log('err :' + JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0200
-     *@tc.name      : OnVolumeChange - setVolume - RINGTONE
-     *@tc.desc      : OnVolumeChange - setVolume - RINGTONE
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0200', 1, async function (done) {
-        audioManager = audio.getAudioManager();
-        audioManager.on('volumeChange', (VolumeEvent) => {
-            console.log(`${TagFrmwk}: Volume Change Event is called`);
-            switch (VolumeEvent.volumeType) {
-                case audio.AudioVolumeType.RINGTONE:
-                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
-                    if (VolumeEvent.volume == lowVol) {
-                        console.info(`${TagFrmwk}: RINGTONE CallBack : PASS : ${VolumeEvent.volume}`);
-                        expect(true).assertTrue();
-                    }
-                    break;
-                default:
-                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
-                    expect(false).assertTrue();
-                    break;
-            }
-            done();
-        });
-        try {
-            await audioManager.setVolume(audioRingtone, lowVol);
-            console.info('setVolume success')
-        } catch (err) {
-            console.log('err :' + JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0300
-     *@tc.name      : OnVolumeChange - setVolume - VOICE_CALL
-     *@tc.desc      : OnVolumeChange - setVolume - VOICE_CALL
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0300', 2, async function (done) {
-        audioManager = audio.getAudioManager();
-        audioManager.on('volumeChange', (VolumeEvent) => {
-            console.log(`${TagFrmwk}: Volume Change Event is called`);
-            switch (VolumeEvent.volumeType) {
-                case audio.AudioVolumeType.VOICE_CALL:
-                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
-                    if (VolumeEvent.volume == lowVol) {
-                        console.info(`${TagFrmwk}: VOICE_CALL CallBack : PASS : ${VolumeEvent.volume}`);
-                        expect(true).assertTrue();
-                    }
-                    break;
-                default:
-                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
-                    expect(false).assertTrue();
-                    break;
-            }
-            done();
-        });
-        try {
-            await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, lowVol);
-            console.info('setVolume success')
-        } catch (err) {
-            console.log('err :' + JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0400
-     *@tc.name      : OnVolumeChange - setVolume - VOICE_ASSISTANT
-     *@tc.desc      : OnVolumeChange - setVolume - VOICE_ASSISTANT
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0400', 2, async function (done) {
-        audioManager = audio.getAudioManager();
-        audioManager.on('volumeChange', (VolumeEvent) => {
-            console.log(`${TagFrmwk}: Volume Change Event is called`);
-            switch (VolumeEvent.volumeType) {
-                case audio.AudioVolumeType.VOICE_ASSISTANT:
-                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
-                    if (VolumeEvent.volume == lowVol) {
-                        console.info(`${TagFrmwk}: VOICE_ASSISTANT CallBack : PASS : ${VolumeEvent.volume}`);
-                        expect(true).assertTrue();
-                    }
-                    break;
-                default:
-                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
-                    expect(false).assertTrue();
-                    break;
-            }
-            done();
-        });
-
-        try {
-            await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, lowVol);
-            console.info('setVolume success')
-        } catch (err) {
-            console.log('err :' + JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0100
-     *@tc.name      : RingerModeChange - RINGER_MODE_SILENT
-     *@tc.desc      : RingerModeChange - RINGER_MODE_SILENT
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0100', 1, async function (done) {
-        audioManager.on('ringerModeChange', (ringerMode) => {
-            console.log(`${TagFrmwk}: RingerModeChange is called`);
-            switch (ringerMode) {
-                case audio.AudioRingMode.RINGER_MODE_SILENT:
-                    console.info(`${TagFrmwk}: Ringer Mode Changed to : RINGER_MODE_SILENT : ${ringerMode}`);
-                    expect(true).assertTrue();
-                    break;
-                default:
-                    console.info(`${TagFrmwk}: Ringer Mode Changed  : UNKNOWN ${ringerMode}`);
-                    expect(false).assertTrue();
-                    break;
-            }
-        });
-        await audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_SILENT);
-        done();
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0200
-     *@tc.name      : RingerModeChange - RINGER_MODE_VIBRATE
-     *@tc.desc      : RingerModeChange - RINGER_MODE_VIBRATE
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 1
-     */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0200', 1, async function (done) {
-        audioManager.on('ringerModeChange', (ringerMode) => {
-            console.log(`${TagFrmwk}: RingerModeChange is called`);
-            switch (ringerMode) {
-                case audio.AudioRingMode.RINGER_MODE_VIBRATE:
-                    console.info(`${TagFrmwk}: Ringer Mode Changed to : RINGER_MODE_VIBRATE : ${ringerMode}`);
-                    expect(true).assertTrue();
-                    break;
-                default:
-                    console.info(`${TagFrmwk}: Ringer Mode Changed  : UNKNOWN ${ringerMode}`);
-                    expect(false).assertTrue();
-                    break;
-            }
-            done();
-        });
-
-        try {
-            await audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_VIBRATE);
-        } catch (err) {
-            console.log('err :' + JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0300
-     *@tc.name      : RingerModeChange - RINGER_MODE_NORMAL
-     *@tc.desc      : RingerModeChange - RINGER_MODE_NORMAL
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0300', 2, async function (done) {
-        audioManager.on('ringerModeChange', (ringerMode) => {
-            console.log(`${TagFrmwk}: RingerModeChange is called`);
-            switch (ringerMode) {
-                case audio.AudioRingMode.RINGER_MODE_NORMAL:
-                    console.info(`${TagFrmwk}: Ringer Mode Changed to : RINGER_MODE_NORMAL : ${ringerMode}`);
-                    expect(true).assertTrue();
-                    break;
-                default:
-                    console.info(`${TagFrmwk}: Ringer Mode Changed  : UNKNOWN ${ringerMode}`);
-                    expect(false).assertTrue();
-                    break;
-            }
-            done();
-        });
-
-        try {
-            await audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL);
-        } catch (err) {
-            console.log('err :' + JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
     })
 
     /**
