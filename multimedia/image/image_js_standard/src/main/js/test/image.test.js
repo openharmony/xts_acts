@@ -303,7 +303,7 @@ describe('Image', function () {
             bufferArr[i] = i + 1;
         }
 
-        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+        let opts = { editable: true, pixelFormat: 4, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts)
             .then(pixelmap => {
                 if (pixelmap == undefined) {
@@ -361,7 +361,7 @@ describe('Image', function () {
             bufferArr[i] = i + 1;
         }
 
-        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+        let opts = { editable: true, pixelFormat: 4, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts, (err, pixelmap) => {
             if (pixelmap == undefined) {
                 console.info('TC_020-1 createPixelMap failed');
