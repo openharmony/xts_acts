@@ -87,8 +87,8 @@ export default function startAbilityTest(abilityContext) {
         });
 
         async function abilityForeground(tag) {
-            globalThis.delegator.doAbilityForeground(globalThis.ability, (err: any, data: any) => {
-                console.info(tag + "doAbilityForeground err:" + JSON.stringify(err) + ", data:" + JSON.stringify(data));
+            globalThis.delegator.doAbilityForeground(globalThis.ability, (err: any) => {
+                console.info(tag + "doAbilityForeground err:" + JSON.stringify(err));
             });
         }
 
