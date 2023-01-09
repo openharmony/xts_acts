@@ -96,12 +96,12 @@ export default function cameraEnumTest() {
         */
         it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100--------------");
-            expect(camera.CameraType.CAMERA_TYPE_UNSPECIFIED == 0).assertTrue();
+            console.info("CameraType: "+ JSON.stringify(camera.CameraType));
+            expect(camera.CameraType.CAMERA_TYPE_DEFAULT == 0).assertTrue();
             expect(camera.CameraType.CAMERA_TYPE_WIDE_ANGLE == 1).assertTrue();
             expect(camera.CameraType.CAMERA_TYPE_ULTRA_WIDE == 2).assertTrue();
             expect(camera.CameraType.CAMERA_TYPE_TELEPHOTO == 3).assertTrue();
             expect(camera.CameraType.CAMERA_TYPE_TRUE_DEPTH == 4).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100 ends here");
             done();
         })
 
@@ -121,28 +121,6 @@ export default function cameraEnumTest() {
             expect(camera.ConnectionType.CAMERA_CONNECTION_USB_PLUGIN == 1).assertTrue();
             expect(camera.ConnectionType.CAMERA_CONNECTION_REMOTE == 2).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE_0100 ends here");
-            done();
-        })
-
-
-
-        /**
-          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAINPUTERRORCODE_0100
-          * @tc.name      : Camera CameraInputErrorCode Eunm
-          * @tc.desc      : Camera CameraInputErrorCode Eunm
-          * @tc.size      : MEDIUM
-          * @tc.type      : Function
-          * @tc.level     : Level 2
-        */
-        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAINPUTERRORCODE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAINPUTERRORCODE_0100--------------");
-            expect(camera.CameraInputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
-            expect(camera.CameraInputErrorCode.ERROR_NO_PERMISSION == 0).assertTrue();
-            expect(camera.CameraInputErrorCode.ERROR_DEVICE_PREEMPTED == 1).assertTrue();
-            expect(camera.CameraInputErrorCode.ERROR_DEVICE_DISCONNECTED == 2).assertTrue();
-            expect(camera.CameraInputErrorCode.ERROR_DEVICE_IN_USE == 3).assertTrue();
-            expect(camera.CameraInputErrorCode.ERROR_DRIVER_ERROR == 4).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAINPUTERRORCODE_0100 ends here");
             done();
         })
 
@@ -260,45 +238,6 @@ export default function cameraEnumTest() {
         })
 
 
-
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAPTURESESSIONERRORCODE_0100
-         * @tc.name      : Camera CaptureSessionErrorCode  Eunm
-         * @tc.desc      : Camera CaptureSessionErrorCode  Eunm
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-       */
-        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAPTURESESSIONERRORCODE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAPTURESESSIONERRORCODE_0100--------------");
-            expect(camera.CaptureSessionErrorCode.ERROR_UNKNOWN == -1).assertTrue();
-            expect(camera.CaptureSessionErrorCode.ERROR_INSUFFICIENT_RESOURCES == 0).assertTrue();
-            expect(camera.CaptureSessionErrorCode.ERROR_TIMEOUT == 1).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAPTURESESSIONERRORCODE_0100 ends here");
-            done();
-        })
-
-
-
-
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_PREVIEWOUTPUTERRORCODE_0100
-         * @tc.name      : Camera PreviewOutputErrorCode  Eunm
-         * @tc.desc      : Camera PreviewOutputErrorCode  Eunm
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-       */
-        it('SUB_MULTIMEDIA_CAMERA_ENUM_PREVIEWOUTPUTERRORCODE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_PREVIEWOUTPUTERRORCODE_0100--------------");
-            expect(camera.PreviewOutputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_PREVIEWOUTPUTERRORCODE_0100 ends here");
-            done();
-        })
-
-
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_IMAGEROTATION_0100
          * @tc.name      : Camera ImageRotation Eunm
@@ -337,48 +276,6 @@ export default function cameraEnumTest() {
         })
 
 
-
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_PHOTOOUTPUTERRORCODE_0100
-         * @tc.name      : Camera PhotoOutputErrorCode Eunm
-         * @tc.desc      : Camera PhotoOutputErrorCode Eunm
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-       */
-        it('SUB_MULTIMEDIA_CAMERA_ENUM_PHOTOOUTPUTERRORCODE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_PHOTOOUTPUTERRORCODE_0100--------------");
-            expect(camera.PhotoOutputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
-            expect(camera.PhotoOutputErrorCode.ERROR_DRIVER_ERROR == 0).assertTrue();
-            expect(camera.PhotoOutputErrorCode.ERROR_INSUFFICIENT_RESOURCES == 1).assertTrue();
-            expect(camera.PhotoOutputErrorCode.ERROR_TIMEOUT == 2).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_PHOTOOUTPUTERRORCODE_0100 ends here");
-            done();
-        })
-
-
-
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOOUTPUTERRORCODE_0100
-         * @tc.name      : Camera VideoOutputErrorCode Eunm
-         * @tc.desc      : Camera VideoOutputErrorCode Eunm
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-       */
-        it('SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOOUTPUTERRORCODE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOOUTPUTERRORCODE_0100--------------");
-            expect(camera.VideoOutputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
-            expect(camera.VideoOutputErrorCode.ERROR_DRIVER_ERROR == 0).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOOUTPUTERRORCODE_0100 ends here");
-            done();
-        })
-
-
-
-
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOBJECTTYPE_0100
          * @tc.name      : Camera MetadataObjectType Eunm
@@ -396,21 +293,27 @@ export default function cameraEnumTest() {
 
 
         /**
-         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOUTPUTERRORCODE_0100
-         * @tc.name      : Camera MetadataOutputErrorCode Eunm
-         * @tc.desc      : Camera MetadataOutputErrorCode Eunm
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100
+         * @tc.name      : Camera CameraErrorCode  Eunm
+         * @tc.desc      : Camera CameraErrorCode Eunm
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
        */
-        it('SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOUTPUTERRORCODE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOUTPUTERRORCODE_0100--------------");
-            expect(camera.MetadataOutputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
-            expect(camera.MetadataOutputErrorCode.ERROR_INSUFFICIENT_RESOURCES == 0).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOUTPUTERRORCODE_0100 ends here");
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100--------------");
+            expect(camera.CameraErrorCode.INVALID_ARGUMENT == 7400101).assertTrue();
+            expect(camera.CameraErrorCode.OPERATION_NOT_ALLOWED == 7400102).assertTrue();
+            expect(camera.CameraErrorCode.SESSION_NOT_CONFIG == 7400103).assertTrue();
+            expect(camera.CameraErrorCode.SESSION_NOT_RUNNING == 7400104).assertTrue();
+            expect(camera.CameraErrorCode.SESSION_CONFIG_LOCKED == 7400105).assertTrue();
+            expect(camera.CameraErrorCode.DEVICE_SETTING_LOCKED == 7400106).assertTrue();
+            expect(camera.CameraErrorCode.CONFILICT_CAMERA == 7400107).assertTrue();
+            expect(camera.CameraErrorCode.DEVICE_DISABLED == 7400108).assertTrue();
+            expect(camera.CameraErrorCode.SERVICE_FATAL_ERROR == 7400201).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100 ends here");
             done();
         })
-
 
     })
 }
