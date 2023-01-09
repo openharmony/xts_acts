@@ -97,17 +97,11 @@ export default function cameraEnumTest() {
         it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100--------------");
             console.info("CameraType: "+ JSON.stringify(camera.CameraType));
-            // expect(camera.CameraType.CAMERA_TYPE_DEFAULT == 0).assertTrue();
-            // expect(camera.CameraType.CAMERA_TYPE_UNSPECIFIED == 0).assertTrue();
-            console.info("CAMERA_TYPE_WIDE_ANGLE："+camera.CameraType.CAMERA_TYPE_WIDE_ANGLE);
+            expect(camera.CameraType.CAMERA_TYPE_DEFAULT == 0).assertTrue();
             expect(camera.CameraType.CAMERA_TYPE_WIDE_ANGLE == 1).assertTrue();
-            console.info("CAMERA_TYPE_ULTRA_WIDE"+camera.CameraType.CAMERA_TYPE_ULTRA_WIDE);
             expect(camera.CameraType.CAMERA_TYPE_ULTRA_WIDE == 2).assertTrue();
-            console.info("CAMERA_TYPE_TELEPHOTO"+camera.CameraType.CAMERA_TYPE_TELEPHOTO);
             expect(camera.CameraType.CAMERA_TYPE_TELEPHOTO == 3).assertTrue();
-            console.info("CAMERA_TYPE_TRUE_DEPTH"+camera.CameraType.CAMERA_TYPE_TRUE_DEPTH);
             expect(camera.CameraType.CAMERA_TYPE_TRUE_DEPTH == 4).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100 ends here");
             done();
         })
 

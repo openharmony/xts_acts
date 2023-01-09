@@ -1267,6 +1267,9 @@ export default function cameraSessionExposureTest() {
                     await startCameraSession(i);
     
                     let exposureBiasRange = mCameraSession.getExposureBiasRange();
+                    mExposureBiasRangeArray[i] = exposureBiasRange;
+                    mExposureBiasMaxArray[i] = exposureBiasRange[exposureBiasRange.length -1];
+                    mExposureBiasMinArray[i] = exposureBiasRange[0];
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_0100 finish");
                     if (exposureBiasRange.length > 0) {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_EXPOSURE_BIAS_RANGE_PROMISE_0100 PASSED with ExposureBiasRange length is: " + exposureBiasRange.length);
@@ -1309,24 +1312,25 @@ export default function cameraSessionExposureTest() {
             } else {
                 for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 start for camera[" + i + "]");
-    
-                    await startCameraSession(i);
-    
-                    mCameraSession.setExposureBias(mExposureBiasRangeArray[i][0]);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 PASSED with ExposureBias is: " + mExposureBiasRangeArray[i][0]);
-
-                    let exposureValue = mCameraSession.getExposureValue();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 finish");
-                    if (exposureValue == mExposureBiasRangeArray[i][0]) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 PASSED with ExposureValue is: " + exposureValue);
+                    let exposureBias = mExposureBiasRangeArray[i][0];
+                    if (exposureBias == 0) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 exposureBias is 0");
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 FAILED with ExposureValue is: " + exposureValue);
-                        expect().assertFail();
-                    }
-                    
-                    await stopCameraSession();
+                        await startCameraSession(i);
+                        mCameraSession.setExposureBias(exposureBias);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 PASSED with ExposureBias is: " + mExposureBiasRangeArray[i][0]);
     
+                        let exposureValue = mCameraSession.getExposureValue();
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 finish");
+                        if (exposureValue == mExposureBiasRangeArray[i][0]) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 PASSED with ExposureValue is: " + exposureValue);
+                        } else {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 FAILED with ExposureValue is: " + exposureValue);
+                            expect().assertFail();
+                        }
+                        await stopCameraSession();
+                    }
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 end for camera[" + i + "]");
                 }
     
@@ -1355,25 +1359,27 @@ export default function cameraSessionExposureTest() {
             } else {
                 for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 start for camera[" + i + "]");
-    
-                    await startCameraSession(i);
-    
-                    mCameraSession.setExposureBias(mExposureBiasMinArray[i] - 1);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 PASSED with ExposureBias is: " + (mExposureBiasMinArray[i] - 1));
-
-                    let exposureValue = mCameraSession.getExposureValue();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 finish");
-                    if (exposureValue != (mExposureBiasMinArray[i] - 1)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 PASSED with ExposureValue is: " + exposureValue);
+                    let exposureBias =mExposureBiasMinArray[i];
+                    if (exposureBias == 0) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 exposureBias is 0");
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 FAILED with ExposureValue is: " + exposureValue);
-                        expect().assertFail();
-                    }
-                    await sleep(500);
-                    
-                    await stopCameraSession();
+                        await startCameraSession(i);
+                        mCameraSession.setExposureBias(exposureBias - 1);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 PASSED with ExposureBias is: " + (mExposureBiasMinArray[i] - 1));
     
+                        let exposureValue = mCameraSession.getExposureValue();
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 finish");
+                        if (exposureValue != (exposureBias - 1)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 PASSED with ExposureValue is: " + exposureValue);
+                        } else {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 FAILED with ExposureValue is: " + exposureValue);
+                            expect().assertFail();
+                        }
+                        await sleep(500);
+                        
+                        await stopCameraSession();
+                    }
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0101 end for camera[" + i + "]");
                 }
     
@@ -1402,24 +1408,24 @@ export default function cameraSessionExposureTest() {
             } else {
                 for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 start for camera[" + i + "]");
-    
-                    await startCameraSession(i);
-    
-                    mCameraSession.setExposureBias(mExposureBiasMinArray[i] - 0.1);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 PASSED with ExposureBias is: " + (mExposureBiasMinArray[i] - 0.1));
-
-                    let exposureValue = mCameraSession.getExposureValue();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 finish");
-                    if (exposureValue != (mExposureBiasMinArray[i] - 0.1)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 PASSED with ExposureValue is: " + exposureValue);
+                    let exposureBias =mExposureBiasMinArray[i];
+                    if (exposureBias == 0) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 exposureBias is 0");
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 FAILED with ExposureValue is: " + exposureValue);
-                        expect().assertFail();
+                        await startCameraSession(i);
+                        mCameraSession.setExposureBias(exposureBias - 0.1);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 PASSED with ExposureBias is: " + (mExposureBiasMinArray[i] - 0.1));
+                        let exposureValue = mCameraSession.getExposureValue();
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 finish");
+                        if (exposureValue != (exposureBias - 0.1)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 PASSED with ExposureValue is: " + exposureValue);
+                        } else {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 FAILED with ExposureValue is: " + exposureValue);
+                            expect().assertFail();
+                        }
+                        await stopCameraSession();
                     }
-                    
-                    await stopCameraSession();
-    
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0102 end for camera[" + i + "]");
                 }
     
@@ -1448,23 +1454,28 @@ export default function cameraSessionExposureTest() {
             } else {
                 for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 start for camera[" + i + "]");
-    
-                    await startCameraSession(i);
-    
-                    mCameraSession.setExposureBias(mExposureBiasMaxArray[i] + 1);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 PASSED with ExposureBias is: " + (mExposureBiasMaxArray[i] + 1));
-
-                    let exposureValue = mCameraSession.getExposureValue();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 finish");
-                    if (exposureValue != (mExposureBiasMaxArray[i] + 1)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 PASSED with ExposureValue is: " + exposureValue);
+                    let exposureBias = mExposureBiasMaxArray[i];
+                    if (exposureBias == 0) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 exposureBias is 0");
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 FAILED with ExposureValue is: " + exposureValue);
-                        expect().assertFail();
+                        await startCameraSession(i);
+    
+                        mCameraSession.setExposureBias(exposureBias + 1);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 PASSED with ExposureBias is: " + (mExposureBiasMaxArray[i] + 1));
+    
+                        let exposureValue = mCameraSession.getExposureValue();
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 finish");
+                        if (exposureValue != (exposureBias + 1)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 PASSED with ExposureValue is: " + exposureValue);
+                        } else {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 FAILED with ExposureValue is: " + exposureValue);
+                            expect().assertFail();
+                        }
+                        
+                        await stopCameraSession();
                     }
-                    
-                    await stopCameraSession();
+
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0103 end for camera[" + i + "]");
                 }
@@ -1493,23 +1504,28 @@ export default function cameraSessionExposureTest() {
             } else {
                 for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 start for camera[" + i + "]");
-    
-                    await startCameraSession(i);
-    
-                    mCameraSession.setExposureBias(mExposureBiasMaxArray[i] + 0.1);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 PASSED with ExposureBias is: " + (mExposureBiasMaxArray[i] + 0.1));
-
-                    let exposureValue = mCameraSession.getExposureValue();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 finish");
-                    if (exposureValue != (mExposureBiasMaxArray[i] + 0.1)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 PASSED with ExposureValue is: " + exposureValue);
+                    let exposureBias = mExposureBiasMaxArray[i];
+                    if (exposureBias == 0) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 exposureBias is 0");
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 FAILED with ExposureValue is: " + exposureValue);
-                        expect().assertFail();
+                        await startCameraSession(i);
+    
+                        mCameraSession.setExposureBias(exposureBias + 0.1);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 PASSED with ExposureBias is: " + (mExposureBiasMaxArray[i] + 0.1));
+    
+                        let exposureValue = mCameraSession.getExposureValue();
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 finish");
+                        if (exposureValue != (exposureBias + 0.1)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 PASSED with ExposureValue is: " + exposureValue);
+                        } else {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 FAILED with ExposureValue is: " + exposureValue);
+                            expect().assertFail();
+                        }
+                        
+                        await stopCameraSession();
                     }
-                    
-                    await stopCameraSession();
+
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0104 end for camera[" + i + "]");
                 }

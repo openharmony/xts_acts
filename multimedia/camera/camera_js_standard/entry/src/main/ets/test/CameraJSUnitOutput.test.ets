@@ -296,7 +296,7 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "Entering CREATE_CAMERA_INPUT cameraManager == null || undefined")
         expect().assertFail();
       } else {
-        cameraInput = await cameraManager.createCameraInput(cameraDevicesArray[0]);
+        cameraInput = cameraManager.createCameraInput(cameraDevicesArray[0]);
         if (isEmpty(cameraInput)) {
           console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100 FAILED");
         }
@@ -329,7 +329,7 @@ export default function cameraJSUnitOutput() {
         expect().assertFail();
       } else {
         console.info(TAG + "Entering  SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100")
-        let cameraOutputCap = await getSupportedOutputCapabilityInPromise(cameraDevicesArray[0]);
+        let cameraOutputCap = getSupportedOutputCapabilityInPromise(cameraDevicesArray[0]);
         let previewProfilesArray = cameraOutputCap.previewProfiles;
         if (isEmpty(previewProfilesArray)) {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100 previewProfilesArray == null || undefined")
@@ -337,7 +337,6 @@ export default function cameraJSUnitOutput() {
         }
         previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], globalThis.surfaceId);
       }
-      await sleep(1000);
       done();
     })
 
@@ -357,19 +356,18 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_PROMISE_0100 cameraManager == null || undefined")
         expect().assertFail();
       } else {
-        let cameraOutputCap = await getSupportedOutputCapabilityInPromise(cameraDevicesArray[0]);
+        let cameraOutputCap = getSupportedOutputCapabilityInPromise(cameraDevicesArray[0]);
         let photoProfilesArray = cameraOutputCap.photoProfiles;
         if (isEmpty(photoProfilesArray)) {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_PROMISE_0100 previewProfilesArray == null || undefined")
           expect().assertFalse();
         }
-        photoOutput = await cameraManager.createPhotoOutput(photoProfilesArray[0], surfaceId1);
+        photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0], surfaceId1);
         if (isEmpty(photoOutput)) {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_PROMISE_0100 data is empty");
           expect().assertFalse();
         }
       }
-      await sleep(1000);
       done();
     })
 
@@ -389,7 +387,7 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100 cameraManager == null || undefined")
         expect().assertFail();
       } else {
-        let cameraOutputCap = await getSupportedOutputCapabilityInPromise(cameraDevicesArray[0]);
+        let cameraOutputCap = getSupportedOutputCapabilityInPromise(cameraDevicesArray[0]);
         console.info("SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100 camera:" + cameraDevicesArray[0].cameraId);
         expect(isEmpty(cameraOutputCap)).assertFalse();
         let videoProfilesArray = cameraOutputCap.videoProfiles;
@@ -397,7 +395,6 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100 start createVideoOutput")
         videoOutput = cameraManager.createVideoOutput(videoProfilesArray[0], videoSurfaceId);
       }
-      await sleep(1000);
       done();
     })
 
@@ -416,7 +413,7 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 cameraManager == null || undefined")
         expect().assertFail();
       } else {
-        let cameraOutputCap = await getSupportedOutputCapabilityInPromise(cameraDevicesArray[0]);
+        let cameraOutputCap = getSupportedOutputCapabilityInPromise(cameraDevicesArray[0]);
         console.info("SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 camera:" + cameraDevicesArray[0].cameraId);
         expect(isEmpty(cameraOutputCap)).assertFalse();
         mMetadataObjectTypeArray = cameraOutputCap.supportedMetadataObjectTypes;
@@ -427,7 +424,6 @@ export default function cameraJSUnitOutput() {
           metadataOutput = cameraManager.createMetadataOutput(mMetadataObjectTypeArray);
         }
       }
-      await sleep(1000);
       done();
     })
 
@@ -450,7 +446,6 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "Entering  SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100")
         captureSession = cameraManager.createCaptureSession();
       }
-      await sleep(1000);
       done();
     })
 
@@ -471,7 +466,6 @@ export default function cameraJSUnitOutput() {
       } else {
         captureSession.beginConfig();
       }
-      await sleep(1000);
       done();
     })
 
@@ -493,7 +487,6 @@ export default function cameraJSUnitOutput() {
       } else {
         captureSession.addInput(cameraInput)
       }
-      await sleep(1000);
       done();
     })
 
@@ -519,7 +512,6 @@ export default function cameraJSUnitOutput() {
         }
         captureSession.addOutput(previewOutput)
       }
-      await sleep(1000);
       done();
     })
 
@@ -545,7 +537,6 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "captureSession start add photoOutput")
         captureSession.addOutput(photoOutput)
       }
-      await sleep(1000);
       done();
     })
 
@@ -566,7 +557,6 @@ export default function cameraJSUnitOutput() {
       } else {
         captureSession.addOutput(videoOutput)
       }
-      await sleep(1000);
       done();
     })
 
@@ -588,7 +578,6 @@ export default function cameraJSUnitOutput() {
         if (!isEmpty(metadataOutput)) {
           captureSession.addOutput(metadataOutput)
         }
-        
       }
       await sleep(1000);
       done();
