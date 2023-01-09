@@ -291,5 +291,29 @@ export default function cameraEnumTest() {
             done();
         })
 
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100
+         * @tc.name      : Camera CameraErrorCode  Eunm
+         * @tc.desc      : Camera CameraErrorCode Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100--------------");
+            expect(camera.CameraErrorCode.INVALID_ARGUMENT == 7400101).assertTrue();
+            expect(camera.CameraErrorCode.OPERATION_NOT_ALLOWED == 7400102).assertTrue();
+            expect(camera.CameraErrorCode.SESSION_NOT_CONFIG == 7400103).assertTrue();
+            expect(camera.CameraErrorCode.SESSION_NOT_RUNNING == 7400104).assertTrue();
+            expect(camera.CameraErrorCode.SESSION_CONFIG_LOCKED == 7400105).assertTrue();
+            expect(camera.CameraErrorCode.DEVICE_SETTING_LOCKED == 7400106).assertTrue();
+            expect(camera.CameraErrorCode.CONFILICT_CAMERA == 7400107).assertTrue();
+            expect(camera.CameraErrorCode.DEVICE_DISABLED == 7400108).assertTrue();
+            expect(camera.CameraErrorCode.SERVICE_FATAL_ERROR == 7400201).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100 ends here");
+            done();
+        })
+
     })
 }
