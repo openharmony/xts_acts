@@ -18,7 +18,7 @@ import { Hypium } from '@ohos/hypium';
 import testsuite from '../../../test/List.test';
 
 const injectRef = Object.getPrototypeOf(global) || global
-injectRef.regeneratorRuntime = require('@babel/runtime/regenerator');
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
   data: {

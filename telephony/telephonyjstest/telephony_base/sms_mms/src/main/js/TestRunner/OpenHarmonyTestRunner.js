@@ -39,7 +39,7 @@ function translateParamsToString(parameters) {
         var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
         var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-        var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.TestAbility';
+        var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility';
 
         var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName;
         cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
@@ -54,6 +54,6 @@ function translateParamsToString(parameters) {
             console.info('executeShellCommand : err : ' + JSON.stringify(err));
             console.info('executeShellCommand : data : ' + data.stdResult);
             console.info('executeShellCommand : data : ' + data.exitCode);
-        })
+        });
     }
 }

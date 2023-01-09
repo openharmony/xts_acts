@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import PdpProfileDataStorageFunction from './PdpProfileDataStorageFunction.test.js'
+import PdpProfileDataStorageFunction from './PdpProfileDataStorageFunction.test.js';
 
 export default function testsuite() {
     PdpProfileDataStorageFunction();
