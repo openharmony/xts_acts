@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 Huawei Device Co., Ltd.
+* Copyright (c) 2022-2023 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -455,7 +455,7 @@ describe('preferencesCallBackTest', function () {
                 expect(false).assertTrue();
             }else{
                 console.info(TAG + "Delete preferences success")
-                expect(true).assertTrue();
+                expect(data == null).assertTrue();
             }
         })
         done()
@@ -482,7 +482,7 @@ describe('preferencesCallBackTest', function () {
                 expect(false).assertTrue();
             }else{
                 console.info(TAG + "Remove preferences from cache success")
-                expect(true).assertTrue();
+                expect(data==null).assertTrue();
             }
         })
         done();
