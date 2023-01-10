@@ -17,6 +17,7 @@ import account from '@ohos.account.osAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 
 const BUNDLE_NAME1 = 'com.example.third1';
+const BUNDLE_NAME2 = 'com.example.third7';
 const SYSTEM_NAME = 'com.example.system2';
 const ABILITIY_NAME8 = 'com.example.system2.MainAbility';
 let userId: number = 0;
@@ -457,9 +458,17 @@ export default function ActsBmsQueryAbilityByWant() {
                     "action": "uri_reserved",
                     "uri": "content://www.test.com"
                 }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-                    console.info(' success bms_queryAbilityByWant_2000 '+ JSON.stringify(res))
-                    expect(res[0].description).assertEqual('uriSchemeHost')
-                    done()
+                    expect(res.length).assertEqual(3);
+                    for (let count = 0; count < 3; count++) {
+                        if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
+                            expect(res[count].description).assertEqual('uriHostEmpty');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriScheme') {
+                            expect(res[count].description).assertEqual('uriScheme');
+                        } else {
+                            expect(res[count].description).assertEqual('uriSchemeHost');
+                        }
+                    }
+                    done();
                 }).catch(err => {
                     console.error(' fail bms_queryAbilityByWant_2000 ' + JSON.stringify(err))
                     expect().assertFail()
@@ -479,7 +488,18 @@ export default function ActsBmsQueryAbilityByWant() {
                     "uri": "content://www.test.com:8080"
                 }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
                     console.info(' success bms_queryAbilityByWant_2100 '+ JSON.stringify(res))
-                    expect(res[0].description).assertEqual('uriSchemeHostPort')
+                    expect(res.length).assertEqual(4);
+                    for (let count = 0; count < 4; count++) {
+                        if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
+                            expect(res[count].description).assertEqual('uriHostEmpty');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriScheme') {
+                            expect(res[count].description).assertEqual('uriScheme');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriSchemeHostPort') {
+                            expect(res[count].description).assertEqual('uriSchemeHostPort');
+                        } else {
+                            expect(res[count].description).assertEqual('uriSchemeHost');
+                        }
+                    }
                     done()
                 }).catch(err => {
                     console.error(' fail bms_queryAbilityByWant_2100 ' + JSON.stringify(err))
@@ -500,10 +520,23 @@ export default function ActsBmsQueryAbilityByWant() {
                     "uri": "content://www.test.com:8080/query/student/name"
                 }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
                     console.info(' success bms_queryAbilityByWant_2200 '+ JSON.stringify(res))
-                    const list = ['uriSchemeHostPortPath','uriSchemeHostPortPathStartWith','uriSchemeHostPortPathRegx']
-                    if(res && res.length) {
-                        for(let i = 0; i < res.length; i++) {
-                            expect(list.includes(res[i].description)).assertEqual(true)
+                    const list = ['uriSchemeHostPortPath', 'uriSchemeHostPortPathStartWith', 'uriSchemeHostPortPathRegx']
+                    expect(res.length).assertEqual(7);
+                    for (let count = 0; count < 7; count++) {
+                        if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
+                            expect(res[count].description).assertEqual('uriHostEmpty');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriScheme') {
+                            expect(res[count].description).assertEqual('uriScheme');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriSchemeHostPort') {
+                            expect(res[count].description).assertEqual('uriSchemeHostPort');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriSchemeHostPortPathStartWith') {
+                            expect(res[count].description).assertEqual('uriSchemeHostPortPathStartWith');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriSchemeHostPortPathRegx') {
+                            expect(res[count].description).assertEqual('uriSchemeHostPortPathRegx');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriSchemeHostPortPath') {
+                            expect(res[count].description).assertEqual('uriSchemeHostPortPath');
+                        } else {
+                            expect(res[count].description).assertEqual('uriSchemeHost');
                         }
                     }
                     done()
@@ -526,10 +559,21 @@ export default function ActsBmsQueryAbilityByWant() {
                     "uri": "content://www.test.com/query/student/name"
                 }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
                     console.info(' success bms_queryAbilityByWant_2300 '+ JSON.stringify(res))
-                    const list = ['uriPortEmptyWithPath','uriPortEmptyWithPathStartWith','uriPortEmptyWithPathRegx']
-                    if(res && res.length) {
-                        for(let i = 0; i < res.length; i++) {
-                            expect(list.includes(res[i].description)).assertEqual(true)
+                    const list = ['uriPortEmptyWithPath', 'uriPortEmptyWithPathStartWith', 'uriPortEmptyWithPathRegx']
+                    expect(res.length).assertEqual(6);
+                    for (let count = 0; count < 6; count++) {
+                        if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
+                            expect(res[count].description).assertEqual('uriHostEmpty');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriScheme') {
+                            expect(res[count].description).assertEqual('uriScheme');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriPortEmptyWithPath') {
+                            expect(res[count].description).assertEqual('uriPortEmptyWithPath');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriPortEmptyWithPathStartWith') {
+                            expect(res[count].description).assertEqual('uriPortEmptyWithPathStartWith');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriPortEmptyWithPathRegx') {
+                            expect(res[count].description).assertEqual('uriPortEmptyWithPathRegx');
+                        } else {
+                            expect(res[count].description).assertEqual('uriSchemeHost');
                         }
                     }
                     done()
@@ -552,7 +596,20 @@ export default function ActsBmsQueryAbilityByWant() {
                     "uri": "content://www.test.com:8080/query/teacher/name"
                 }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
                     console.info(' success bms_queryAbilityByWant_2400 '+ JSON.stringify(res))
-                    expect(res[0].description).assertEqual('uriSchemeHostPortPathRegx')
+                    expect(res.length).assertEqual(5);
+                    for (let count = 0; count < 5; count++) {
+                        if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
+                            expect(res[count].description).assertEqual('uriHostEmpty');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriScheme') {
+                            expect(res[count].description).assertEqual('uriScheme');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriSchemeHostPort') {
+                            expect(res[count].description).assertEqual('uriSchemeHostPort');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriSchemeHostPortPathRegx') {
+                            expect(res[count].description).assertEqual('uriSchemeHostPortPathRegx');
+                        } else {
+                            expect(res[count].description).assertEqual('uriSchemeHost');
+                        }
+                    }
                     done()
                 }).catch(err => {
                     console.error(' fail bms_queryAbilityByWant_2400 ' + JSON.stringify(err))
@@ -573,7 +630,20 @@ export default function ActsBmsQueryAbilityByWant() {
                     "uri": "content://www.test.com:8080/query/student/jack"
                 }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
                     console.info(' success bms_queryAbilityByWant_2500 '+ JSON.stringify(res))
-                    expect(res[0].description).assertEqual('uriSchemeHostPortPathStartWith')
+                    expect(res.length).assertEqual(5);
+                    for (let count = 0; count < 5; count++) {
+                        if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
+                            expect(res[count].description).assertEqual('uriHostEmpty');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriScheme') {
+                            expect(res[count].description).assertEqual('uriScheme');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriSchemeHostPort') {
+                            expect(res[count].description).assertEqual('uriSchemeHostPort');
+                        } else if (res[count].name == BUNDLE_NAME2 + '.uriSchemeHostPortPathStartWith') {
+                            expect(res[count].description).assertEqual('uriSchemeHostPortPathStartWith');
+                        } else {
+                            expect(res[count].description).assertEqual('uriSchemeHost');
+                        }
+                    }
                     done()
                 }).catch(err => {
                     console.error(' fail bms_queryAbilityByWant_2500 ' + JSON.stringify(err))
@@ -635,11 +705,18 @@ export default function ActsBmsQueryAbilityByWant() {
                     "action": "uri_reserved",
                     "uri": "content://abc"
                 }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-                    expect(res).assertFail()
+                    expect(res.length).assertEqual(2);
+                    for (let count = 0; count < 2; count++) {
+                        if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
+                            expect(res[count].description).assertEqual('uriHostEmpty');
+                        } else {
+                            expect(res[count].description).assertEqual('uriScheme');
+                        }
+                    }
                     done()
                 }).catch(err => {
                     console.error(' fail bms_queryAbilityByWant_2800' + JSON.stringify(err))
-                    expect(err).assertEqual(INVALID_CODE)
+                    expect(err).assertFail()
                     done()
                 })
         });
