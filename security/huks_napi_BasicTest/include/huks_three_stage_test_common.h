@@ -87,6 +87,11 @@ extern "C"
         const struct OH_Huks_Blob *srcData,
         struct OH_Huks_Blob *hash);
 
+    OH_Huks_Result HuksAgreeKey(
+        const struct OH_Huks_ParamSet *paramSet,
+        const struct OH_Huks_Blob *keyAlias,
+        const struct OH_Huks_Blob *peerPublicKey,
+        struct OH_Huks_Blob *agreedKey);
 #ifdef __cplusplus
 }
 #endif

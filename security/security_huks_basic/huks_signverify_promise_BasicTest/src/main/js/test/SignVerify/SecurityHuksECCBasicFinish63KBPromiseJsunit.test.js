@@ -20,6 +20,10 @@ import { publicSignVerifyFunc } from '../../../../../../utils/param/signverify/p
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 let finishOutData;
+let srcData63AfterSha256 = new Uint8Array([
+  0xD2, 0xE1, 0x24, 0x8F, 0x0D, 0xBB, 0x2F, 0x98, 0x64, 0x13, 0x27, 0xE0, 0x0D, 0xEA, 0x34, 0xBB,
+  0x1D, 0x1C, 0xC2, 0xA1, 0xBE, 0x10, 0xF0, 0xB1, 0x6F, 0x8E, 0xDF, 0x9B, 0x42, 0xBA, 0x38, 0x5D,
+]);
 export default function SecurityHuksECCBasicFinish63KBPromiseJsunit() {
 describe('SecurityHuksECCBasicFinish63KBPromiseJsunit', function () {
   it('testSignVerifyECC101', 0, async function (done) {
@@ -31,9 +35,9 @@ describe('SecurityHuksECCBasicFinish63KBPromiseJsunit', function () {
         HuksSignVerifyECC.HuksTagECCDigestNONE,
         HuksSignVerifyECC.HuksKeyECCSize224
       ),
-      inData: srcData63Kb,
+      inData: srcData63AfterSha256,
     };
-    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData63Kb);
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData63AfterSha256);
     HuksOptions = {
       properties: new Array(
         HuksSignVerifyECC.HuksKeyAlgECC,
@@ -43,7 +47,7 @@ describe('SecurityHuksECCBasicFinish63KBPromiseJsunit', function () {
       ),
       inData: finishOutData,
     };
-    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData63Kb);
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData63AfterSha256);
     done();
   });
 });

@@ -159,46 +159,47 @@ function initSession(srcKeyAlies, HuksOptions) {
 }
 
 async function publicUpdateSessionFunc(HuksOptions) {
-  let dateSize = 64;
-  let tempHuksOptionsInData = HuksOptions.inData;
-  let inDataArray = HuksOptions.inData;
-  if (uint8ArrayToString(inDataArray).length < dateSize) {
-    await publicUpdateSession(handle, HuksOptions);
-    HuksOptions.inData = tempHuksOptionsInData;
-  } else {
-    let count = Math.floor(uint8ArrayToString(inDataArray).length / dateSize);
-    let remainder = uint8ArrayToString(inDataArray).length % dateSize;
-    for (let i = 0; i < count; i++) {
-      HuksOptions.inData = stringToUint8Array(
-        uint8ArrayToString(tempHuksOptionsInData).slice(dateSize * i, dateSize * (i + 1))
-      );
-      await publicUpdateSession(handle, HuksOptions);
-      HuksOptions.inData = tempHuksOptionsInData;
-    }
-    if (remainder !== 0) {
-      HuksOptions.inData = stringToUint8Array(
-        uint8ArrayToString(tempHuksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length)
-      );
-      await publicUpdateSession(handle, HuksOptions);
-      HuksOptions.inData = tempHuksOptionsInData;
-    }
-  }
-}
+  const maxUpdateSize = 64;
+  const inData = HuksOptions.inData;
+  const lastInDataPosition = inData.length - 1;
+  let inDataSegSize = maxUpdateSize;
+  let inDataSegPosition = 0;
+  let isFinished = false;
+  let outData = [];
 
-async function publicUpdateSession(handle, HuksOptions) {
-  console.info(`enter callback doUpdate`);
-  try {
-    await updateSession(handle, HuksOptions)
-      .then ((data) => {
-        console.info(`callback: doUpdate success, data = ${JSON.stringify(data)}`);
-      })
-      .catch(error => {
-        console.error(`callback: doUpdate failed, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
-      });
-  } catch (error) {
-    console.error(`callback: doUpdate input arg invalid, code: ${error.code}, msg: ${error.message}`);
-    expect(null).assertFail();
+  while (inDataSegPosition <= lastInDataPosition) {
+    HuksOptions.inData = new Uint8Array(
+      Array.from(inData).slice(inDataSegPosition, inDataSegPosition + inDataSegSize)
+    );
+    console.error(`enter promise doUpdate`);
+    try {
+      await updateSession(handle, HuksOptions)
+        .then((data) => {
+          console.error(`promise: doUpdate success, data = ${JSON.stringify(data)}`);
+          outData = outData.concat(Array.from(data.outData));
+        })
+        .catch(error => {
+          console.error(`promise: doUpdate failed, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        });
+    } catch (error) {
+      console.error(`promise: doUpdate input arg invalid, code: ${error.code}, msg: ${error.message}`);
+      expect(null).assertFail();
+    }
+    if (inDataSegPosition + maxUpdateSize > lastInDataPosition) {
+      isFinished = true;
+      inDataSegSize = lastInDataPosition - inDataSegPosition + 1;
+      console.error(`enter promise doUpdate`);
+      break;
+    }
+    if ((!isFinished) && (inDataSegPosition + maxUpdateSize > lastInDataPosition)) {
+      console.log(`update size invalid isFinished = ${isFinished}`);
+      console.log(`inDataSegPosition = ${inDataSegPosition}`);
+      console.log(`lastInDataPosition = ${lastInDataPosition}`);
+      expect(null).assertFail();
+      return;
+    }
+    inDataSegPosition += maxUpdateSize;
   }
 }
 
@@ -222,7 +223,7 @@ async function publicFinishSession(HuksOptionsFinish) {
   console.info(`enter callback doFinish`);
   try {
     await finishSession(handle, HuksOptionsFinish)
-      .then ((data) => {
+      .then((data) => {
         if (data !== null && data.outData !== null) {
           finishOutData = data.outData;
         }
@@ -258,7 +259,7 @@ async function publicAbortSession(HuksOptionsAbort) {
   console.info(`enter callback doAbort`);
   try {
     await abortSession(handle, HuksOptionsAbort)
-      .then ((data) => {
+      .then((data) => {
         console.info(`callback: doAbort success, data = ${JSON.stringify(data)}`);
       })
       .catch(error => {
@@ -289,7 +290,7 @@ async function publicDeleteKeyItem(KeyAlias, HuksOptions) {
   console.info(`enter callback deleteKeyItem`);
   try {
     await deleteKeyItem(KeyAlias, HuksOptions)
-      .then ((data) => {
+      .then((data) => {
         console.info(`callback: deleteKeyItem key success, data = ${JSON.stringify(data)}`);
       })
       .catch(error => {

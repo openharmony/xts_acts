@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 #include "huks_three_stage_test_common.h"
+#include "huks_wrapped_test_common.h"
 #ifndef HUKS_WARPPED_TEST_H
 #define HUKS_WARPPED_TEST_H
 namespace Unittest::ImportWrapped {
