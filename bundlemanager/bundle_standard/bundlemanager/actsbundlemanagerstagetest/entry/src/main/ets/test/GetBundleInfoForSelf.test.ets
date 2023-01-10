@@ -120,6 +120,7 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.appDistributionType).assertEqual("os_integration");
         expect(data.appInfo.appProvisionType).assertEqual("release");
         expect(data.appInfo.permissions.length).assertEqual(0);
+        expect(data.appInfo.systemApp).assertFalse();
         expect(JSON.stringify(data.appInfo.metadata)).assertEqual("{}");
         expect(data.hapModulesInfo.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -172,6 +173,7 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.appDistributionType).assertEqual("os_integration");
         expect(data.appInfo.appProvisionType).assertEqual("release");
         expect(data.appInfo.permissions.length).assertEqual(0);
+        expect(data.appInfo.systemApp).assertFalse();
         expect(JSON.stringify(data.appInfo.metadata)).assertEqual("{}");
         expect(data.hapModulesInfo.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -1035,6 +1037,7 @@ export default function getBundleInfoForSelf() {
       expect(data.appInfo.descriptionResource.id).assertEqual(data.appInfo.descriptionId);
       expect(data.appInfo.appDistributionType).assertEqual("os_integration");
       expect(data.appInfo.appProvisionType).assertEqual("release");
+      expect(data.appInfo.systemApp).assertFalse();
       expect(JSON.stringify(data.appInfo.metadata)).assertEqual("{}");
       console.info("checkCommonApplicationInfo end");
     }
