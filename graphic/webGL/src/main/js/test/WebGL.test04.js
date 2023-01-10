@@ -1124,10 +1124,10 @@ export default function webgl1Test_webgl4() {
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0347
-		 * @tc.name testTexSubImage2D8
+		 * @tc.name testTexSubImage2D_8
 		 * @tc.desc Test texSubImage2D.
 		 */
-		it('testTexSubImage2D8', 0, async function (done) {
+		it('testTexSubImage2D_8', 0, async function (done) {
 			//initContext();
 			console.info('jsWebGL2 texSubImage2D test start ...' + JSON.stringify(gl2));
 			var buffer = new ArrayBuffer(8);
