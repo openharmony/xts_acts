@@ -14,12 +14,10 @@
  */
 
 import cameraObj from '@ohos.multimedia.camera';
-import featureAbility from '@ohos.ability.featureAbility';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
-import {UiDriver, BY} from '@ohos.uitest'
 
 // 创建视频录制的参数
 let videoProfile = {
@@ -91,46 +89,19 @@ export default function CameraErrorCodeUsecaseTest() {
         return false;
     }
 
-    async function getPermission() {
-        let permissions = ['ohos.permission.CAMERA',
-        'ohos.permission.MICROPHONE',
-        'ohos.permission.MEDIA_LOCATION',
-        'ohos.permission.READ_MEDIA',
-        'ohos.permission.WRITE_MEDIA',
-        'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION'];
-        featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
-            console.info("request success" + JSON.stringify(data));
-        })
-    }
-
-    async function driveFn() {
-        console.info(`come in driveFn`);
-        let driver = await UiDriver.create();
-        console.info(`driver is ${JSON.stringify(driver)}`);
-        await sleep(2000);
-        console.info(`UiDriver start`);
-        let button = await driver.findComponent(BY.text('允许'));
-        while(button){
-            console.info(`button is ${JSON.stringify(button)}`);
-            await button.click();
-            await sleep(1000);
-            button = await driver.findComponent(BY.text('允许'));
-        }
-    }
-
     function getCameraManagerInstance() {
-        console.info('Enter getCameraManagerInstance');
+        console.info(TAG + 'Enter getCameraManagerInstance');
         mCameraManager = cameraObj.getCameraManager(null);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
             return false;
         }
-        console.info('Exit getCameraManagerInstance');
+        console.info(TAG + 'Exit getCameraManagerInstance');
         return true;
     }
 
     function getCameraSupportDevicesArray() {
-        console.info('Enter getCameraSupportDevicesArray');
+        console.info(TAG + 'Enter getCameraSupportDevicesArray');
         mCameraDevicesArray = mCameraManager.getSupportedCameras();
         if (isEmpty(mCameraDevicesArray)) {
             console.info(TAG + "getSupportedCameras FAILED");
@@ -138,12 +109,12 @@ export default function CameraErrorCodeUsecaseTest() {
         }
         mCameraNum = mCameraDevicesArray.length;
         console.info(TAG + "getCameraSupportDevicesArray is: " + mCameraNum);
-        console.info('Exit getCameraSupportDevicesArray');
+        console.info(TAG + 'Exit getCameraSupportDevicesArray');
         return true;
     }
 
     async function createInput(idx:any) {
-        console.info('Enter createInput');
+        console.info(TAG + 'Enter createInput');
         if (isEmpty(mCameraDevicesArray)) {
             console.info(TAG + "Entering createInputs FAILED with NoCamera");
             return false;
@@ -156,51 +127,51 @@ export default function CameraErrorCodeUsecaseTest() {
         await mCameraInput.open();
         sleep(100);
         console.info(idx + 'th CameraInput is: ' + mCameraInput);
-        console.info('Exit createInput');
+        console.info(TAG + 'Exit createInput');
         return true;
     }
 
     function releaseInput() {
-        console.info('Enter releaseInput');
+        console.info(TAG + 'Enter releaseInput');
 
         if (!isEmpty(mCameraInput)) {
             mCameraInput.close();
         }
 
-        console.info('Exit releaseInput');
+        console.info(TAG + 'Exit releaseInput');
 
         return true;
     }
 
     function beginCameraSessionConfig() {
-        console.info('Enter beginCameraSessionConfig');
+        console.info(TAG + 'Enter beginCameraSessionConfig');
         mCameraSession.beginConfig();
-        console.info('Exit beginCameraSessionConfig');
+        console.info(TAG + 'Exit beginCameraSessionConfig');
         return true;
     }
 
     async function commitCameraSessionConfig() {
-        console.info('Enter commitCameraSessionConfig');
+        console.info(TAG + 'Enter commitCameraSessionConfig');
         await mCameraSession.commitConfig();
         sleep(500);
-        console.info('Exit commitCameraSessionConfig');
+        console.info(TAG + 'Exit commitCameraSessionConfig');
         return true;
     }
 
     function createCameraSessionInstance() {
-        console.info('Enter createCameraSessionInstance');
+        console.info(TAG + 'Enter createCameraSessionInstance');
         try {
             mCameraSession = mCameraManager.createCaptureSession();
         }
         catch {
-            console.info('createCaptureSession FAILED');
+            console.info(TAG + 'createCaptureSession FAILED');
         }
         if (isEmpty(mCameraSession)) {
             console.info(TAG + "createCaptureSession FAILED");
             return false;
         }
         beginCameraSessionConfig();
-        console.info('Exit createCameraSessionInstance');
+        console.info(TAG + 'Exit createCameraSessionInstance');
         return true;
     }
 
@@ -242,8 +213,20 @@ export default function CameraErrorCodeUsecaseTest() {
         }
     }
 
+    async function closeFd() {
+        if (fileAsset != null) {
+                await fileAsset[0].close(fdNumber).then(() => {
+                console.info('[mediaLibrary] case close fd success');
+            }).catch((err) => {
+                console.info('[mediaLibrary] case close fd failed');
+            });
+        } else {
+            console.info('[mediaLibrary] case fileAsset is null');
+        }
+    }
+
     async function getvideosurface() {
-        await getFd('CameraOutput.mp4');
+        await getFd('ErrorCodeCameraOutput.mp4');
         videoConfig.url = fdPath;
         media.createVideoRecorder((err, recorder) => {
           if (!err) {
@@ -274,8 +257,17 @@ export default function CameraErrorCodeUsecaseTest() {
         })
       }
 
+    async function releaseVideoReceiveSurface() {
+        console.log(TAG + 'Entering releaseVideoReceiveSurface')
+        videoRecorder.release((err) => {
+            console.info(TAG + 'Entering release video receiver')
+        })
+        await closeFd();
+        console.log(TAG + 'Exit releaseVideoReceiveSurface')
+    }
+
     function createOutput(idx:any) {
-        console.info('Enter createOutput');
+        console.info(TAG + 'Enter createOutput');
         cameraOutputCap = mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
         if (!isEmpty(cameraOutputCap)) {
             if (!isEmpty(cameraOutputCap.previewProfiles)) {
@@ -306,20 +298,6 @@ export default function CameraErrorCodeUsecaseTest() {
             }
             console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
         }
-        // if (!isEmpty(cameraOutputCap.videoProfiles)) {
-        //     console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.videoProfiles.length);   
-                
-        //     for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
-        //         videoOutput = mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], videoSurfaceId);
-        //         if (!isEmpty(videoOutput)) {
-        //             break;
-        //         }
-        //     }
-        //     if (isEmpty(videoOutput)) {
-        //         console.info(TAG + "createPhotoOutput FAILED");
-        //     }
-        //     console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
-        // }
         if (!isEmpty(cameraOutputCap.supportedMetadataObjectTypes)) {
             mMetadataObjectTypeArray = cameraOutputCap.supportedMetadataObjectTypes;
             if (isEmpty(mMetadataObjectTypeArray)) {
@@ -329,35 +307,34 @@ export default function CameraErrorCodeUsecaseTest() {
                 metadataOutput = mCameraManager.createMetadataOutput(mMetadataObjectTypeArray);
             }
         }
-        console.info('Exit createOutputs');
+        console.info(TAG + 'Exit createOutputs');
         return true;
     }
 
     describe('CameraErrorCodeUsecaseTest', function () {
         console.info(TAG + '----------CameraErrorCodeUsecaseTest--------------');
         beforeAll(async function () {
-            await getPermission();
-            sleep(1000);
-            await driveFn();
             await getPhotoReceiverSurface();
             await getvideosurface();
             getCameraManagerInstance();
             getCameraSupportDevicesArray();
-            console.info('beforeAll case');
-        });
+            console.info(TAG + 'beforeAll case');
+        })
 
         beforeEach(function () {
-            sleep(100);
+            sleep(1000);
             console.info('beforeEach case');
-        });
+        })
 
         afterEach(async function () {
             console.info('afterEach case');
-        });
+        })
 
         afterAll(function () {
+            releaseVideoReceiveSurface();
+            sleep(1000);
             console.info('afterAll case');
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100
@@ -384,7 +361,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0200
@@ -411,7 +388,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0300
@@ -438,7 +415,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0400
@@ -465,7 +442,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_PREVIEW_OUTPUT_0100
@@ -492,7 +469,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_PREVIEW_OUTPUT_0200
@@ -519,7 +496,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_PHOTO_OUTPUT_0100
@@ -546,7 +523,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_PHOTO_OUTPUT_0200
@@ -573,7 +550,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_VIDEO_OUTPUT_0100
@@ -600,7 +577,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_VIDEO_OUTPUT_0200
@@ -627,7 +604,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_METADATA_OUTPUT_0100
@@ -654,7 +631,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_METADATA_OUTPUT_0200
@@ -672,7 +649,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 done();
               } else {
                 try {
-                    let metadataoutput = mCameraManager.createMetadataOutput(null);
+                    let metadataoutput = mCameraManager.createMetadataOutput();
                 } catch (error) {
                     console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CREATE_METADATA_OUTPUT_0200 FAILED");
                     console.info(TAG + "ERRORCODE: " + error.code);
@@ -681,7 +658,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 }
                 done();
               }
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_INPUT_0100
@@ -705,7 +682,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_INPUT_0200
@@ -729,7 +706,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_INPUT_0100
@@ -753,7 +730,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_INPUT_0200
@@ -777,7 +754,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_OUTPUT_0100
@@ -801,7 +778,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_OUTPUT_0200
@@ -825,7 +802,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0100
@@ -849,7 +826,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0200
@@ -873,7 +850,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0200
@@ -908,7 +885,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0400
@@ -941,7 +918,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_COMMITCONFIG_0100
@@ -970,7 +947,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_COMMITCONFIG_0200
@@ -997,7 +974,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_INPUT_0300
@@ -1024,7 +1001,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_INPUT_0300
@@ -1051,7 +1028,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_ADD_OUTPUT_0300
@@ -1079,7 +1056,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300
@@ -1107,7 +1084,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_START_0100
@@ -1139,7 +1116,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_START_0200
@@ -1172,7 +1149,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(1000);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100
@@ -1203,7 +1180,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(1000);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100
@@ -1234,7 +1211,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100
@@ -1265,7 +1242,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100
@@ -1296,7 +1273,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100
@@ -1327,7 +1304,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100
@@ -1358,7 +1335,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100
@@ -1388,7 +1365,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(1000);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100
@@ -1419,7 +1396,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100
@@ -1450,7 +1427,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100
@@ -1481,7 +1458,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100
@@ -1513,7 +1490,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100
@@ -1544,7 +1521,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100
@@ -1575,7 +1552,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100
@@ -1606,7 +1583,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100
@@ -1636,7 +1613,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(1000);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100
@@ -1667,7 +1644,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100
@@ -1698,7 +1675,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSLENGTH_0100
@@ -1729,7 +1706,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100
@@ -1760,7 +1737,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100
@@ -1791,7 +1768,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100
@@ -1823,7 +1800,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100
@@ -1854,7 +1831,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100
@@ -1885,7 +1862,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100
@@ -1916,7 +1893,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PREVIEW_START_0100
@@ -1949,7 +1926,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PREVIEW_START_0200
@@ -1980,7 +1957,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_VIDEO_START_0100
@@ -2023,7 +2000,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_VIDEO_START_0200
@@ -2055,7 +2032,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_METADATAOUTPUT_START_0100
@@ -2091,7 +2068,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_METADATAOUTPUT_START_0200
@@ -2125,7 +2102,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0500
@@ -2157,7 +2134,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0600
@@ -2192,7 +2169,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0700
@@ -2227,7 +2204,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0800
@@ -2259,7 +2236,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_BEGINCONFIG_0100
@@ -2287,7 +2264,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseCameraSessionInstance();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100
@@ -2326,7 +2303,7 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseInput();
             done();
-        });
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0200
@@ -2360,6 +2337,6 @@ export default function CameraErrorCodeUsecaseTest() {
             sleep(100);
             releaseInput();
             done();
-        });
+        })
     })
 }
