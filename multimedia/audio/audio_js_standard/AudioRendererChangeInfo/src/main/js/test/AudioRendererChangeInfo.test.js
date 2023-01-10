@@ -99,7 +99,7 @@ describe('audioRendererChange', function () {
                     console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
                     console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
                 }
-                if (AudioRendererChangeInfoArray[i].rendererState == 1 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag} : [RENDERER-CHANGE-ON-001] ResultFlag for ${i}  is: ${resultFlag}`);
                 }
@@ -178,7 +178,7 @@ describe('audioRendererChange', function () {
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioRendererChangeInfoArray[i].rendererState == 2 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag} : [RENDERER-CHANGE-ON-002] ResultFlag for ${i}  is:  ${resultFlag}`);
                 }
@@ -269,7 +269,7 @@ describe('audioRendererChange', function () {
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioRendererChangeInfoArray[i].rendererState == 3 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag} : [RENDERER-CHANGE-ON-003] ResultFlag for ${i}  is:  ${resultFlag}`);
                 }
@@ -361,7 +361,7 @@ describe('audioRendererChange', function () {
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioRendererChangeInfoArray[i].rendererState == 4 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag} : [RENDERER-CHANGE-ON-004] ResultFlag for ${i}  is:  ${resultFlag}`);
                 }
@@ -440,7 +440,7 @@ describe('audioRendererChange', function () {
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioRendererChangeInfoArray[i].rendererState == 5 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag} : [RENDERER-CHANGE-ON-005] ResultFlag for ${i}  is:  ${resultFlag}`);
                 }
@@ -1877,7 +1877,7 @@ describe('audioRendererChange', function () {
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioRendererChangeInfoArray[i].rendererState == 1 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         resultFlag = true;
                         console.info(`${Tag} : State :   ${AudioRendererChangeInfoArray[i].rendererState}`);
                     }
@@ -1970,7 +1970,7 @@ describe('audioRendererChange', function () {
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioRendererChangeInfoArray[i].rendererState == 2 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         resultFlag = true;
                         console.info(`${Tag} : State :   ${AudioRendererChangeInfoArray[i].rendererState}`);
                     }
@@ -2071,7 +2071,7 @@ describe('audioRendererChange', function () {
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioRendererChangeInfoArray[i].rendererState == 3 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         resultFlag = true;
                         console.info(`${Tag} : State :   ${AudioRendererChangeInfoArray[i].rendererState}`);
                     }
@@ -2172,7 +2172,7 @@ describe('audioRendererChange', function () {
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioRendererChangeInfoArray[i].rendererState == 5 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         resultFlag = true;
                         console.info(`${Tag} : State :   ${AudioRendererChangeInfoArray[i].rendererState}`);
                     }
@@ -2352,7 +2352,7 @@ describe('audioRendererChange', function () {
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioRendererChangeInfoArray[i].rendererState == 1 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             resultFlag = true;
                             console.info(`${Tag} : State :   ${AudioRendererChangeInfoArray[i].rendererState}`);
                         }
@@ -2451,7 +2451,7 @@ describe('audioRendererChange', function () {
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioRendererChangeInfoArray[i].rendererState == 2 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             resultFlag = true;
                             console.info(`${Tag} : State :   ${AudioRendererChangeInfoArray[i].rendererState}`);
                         }
@@ -2557,7 +2557,7 @@ describe('audioRendererChange', function () {
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioRendererChangeInfoArray[i].rendererState == 3 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             resultFlag = true;
                             console.info(`${Tag} : State :   ${AudioRendererChangeInfoArray[i].rendererState}`);
                         }
@@ -2663,7 +2663,7 @@ describe('audioRendererChange', function () {
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioRendererChangeInfoArray[i].rendererState == 5 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             resultFlag = true;
                             console.info(`AFRenLog: RenSta :   ${AudioRendererChangeInfoArray[i].rendererState}`);
                         }

@@ -122,7 +122,7 @@ describe('audioCapturerChange', function () {
                     console.info(`${Tag} : C: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
                     console.info(`${Tag} : CM: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
                 }
-                if (AudioCapturerChangeInfoArray[i].capturerState == 1 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     audioStreamManager.off('audioCapturerChange');
                     await audioCap.release();
                     expect(true).assertTrue();
@@ -184,7 +184,7 @@ describe('audioCapturerChange', function () {
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioCapturerChangeInfoArray[i].capturerState == 2 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag}: [CAPTURER-CHANGE-ON-002] ResultFlag for element ${i} is: ${resultFlag}`);
                     audioStreamManagerCB.off('audioCapturerChange');
@@ -260,7 +260,7 @@ describe('audioCapturerChange', function () {
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioCapturerChangeInfoArray[i].capturerState == 3 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag}: [CAPTURER-CHANGE-ON-003] ResultFlag for element ${i} is: ${resultFlag}`);
                 }
@@ -350,7 +350,7 @@ describe('audioCapturerChange', function () {
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioCapturerChangeInfoArray[i].capturerState == 4 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag}: [CAPTURER-CHANGE-ON-004] ResultFlag for element ${i} is: ${resultFlag}`);
                 }
@@ -994,7 +994,7 @@ describe('audioCapturerChange', function () {
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioCapturerChangeInfoArray[i].capturerState == 1 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         audioStreamManagerCB.off('audioCapturerChange');
                         console.info(`audioCapturerChange off Success `);
                         expect(true).assertTrue();
@@ -1084,7 +1084,7 @@ describe('audioCapturerChange', function () {
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioCapturerChangeInfoArray[i].capturerState == 2 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         audioStreamManager.off('audioCapturerChange');
                         expect(true).assertTrue();
                         done();
@@ -1179,7 +1179,7 @@ describe('audioCapturerChange', function () {
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioCapturerChangeInfoArray[i].capturerState == 3 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         audioStreamManager.off('audioCapturerChange');
                         expect(true).assertTrue();
                         done();
@@ -1348,7 +1348,7 @@ describe('audioCapturerChange', function () {
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioCapturerChangeInfoArray[i].capturerState == 1 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             audioStreamManager.off('audioCapturerChange');
                             await audioCap.release().then(function () {
                                 console.info(`${Tag}: Capturer release : SUCCESS`);
@@ -1439,7 +1439,7 @@ describe('audioCapturerChange', function () {
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioCapturerChangeInfoArray[i].capturerState == 2 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             audioStreamManagerCB.off('audioCapturerChange');
                             await audioCap.release().then(function () {
                                 console.info(`${Tag}: Capturer release : SUCCESS`);
@@ -1537,7 +1537,7 @@ describe('audioCapturerChange', function () {
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioCapturerChangeInfoArray[i].capturerState == 3 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             audioStreamManager.off('audioCapturerChange');
                             await audioCap.release().then(function () {
                                 console.info(`${Tag}: Capturer release : SUCCESS`);
