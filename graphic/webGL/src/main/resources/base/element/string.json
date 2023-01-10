@@ -2,7 +2,7 @@
   "string": [
     {
       "name": "app_name",
-      "value": "window"
+      "value": "webGL"
     },
     {
       "name": "mainability_description",
