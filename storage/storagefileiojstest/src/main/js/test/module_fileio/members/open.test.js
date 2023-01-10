@@ -57,7 +57,7 @@ describe('fileio_open', function () {
         fileio.open(fpath, 0, 0o0400, function (err, fd) {
           fileio.read(fd, new ArrayBuffer(4096))
             .then(function (res) {
-              expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue;
+              expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue();
               expect(res.bytesRead == FILE_CONTENT.length).assertTrue();
               fileio.closeSync(fd);
               fileio.unlinkSync(fpath);
@@ -87,7 +87,7 @@ describe('fileio_open', function () {
       await fileio.open(fpath, 0, 0o0400, function (err, fd) {
         fileio.read(fd, new ArrayBuffer(4096))
           .then(function (res) {
-            expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue;
+            expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue();
             expect(res.bytesRead == FILE_CONTENT.length).assertTrue();
             fileio.closeSync(fd);
             fileio.unlinkSync(fpath);
@@ -116,7 +116,7 @@ describe('fileio_open', function () {
       await fileio.open(fpath, 0, function (err, fd) {
         fileio.read(fd, new ArrayBuffer(4096))
           .then(function (res) {
-            expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue;
+            expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue();
             expect(res.bytesRead == FILE_CONTENT.length).assertTrue();
             fileio.closeSync(fd);
             fileio.unlinkSync(fpath);
@@ -145,7 +145,7 @@ describe('fileio_open', function () {
       fileio.open(fpath, 0o2, function (err, fd) {
         fileio.read(fd, new ArrayBuffer(4096))
           .then(function (res) {
-            expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue;
+            expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue();
             expect(res.bytesRead == FILE_CONTENT.length).assertTrue();
             fileio.closeSync(fd);
             fileio.unlinkSync(fpath);
@@ -175,7 +175,7 @@ describe('fileio_open', function () {
         .then(function (fd) {
           fileio.read(fd, new ArrayBuffer(4096))
             .then(function (res) {
-              expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue;
+              expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue();
               expect(res.bytesRead == FILE_CONTENT.length).assertTrue();
               fileio.closeSync(fd);
               fileio.unlinkSync(fpath);
@@ -207,7 +207,7 @@ describe('fileio_open', function () {
         .then(function (fd) {
           fileio.read(fd, new ArrayBuffer(4096))
             .then(function (res) {
-              expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue;
+              expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue();
               expect(res.bytesRead == FILE_CONTENT.length).assertTrue();
               fileio.closeSync(fd);
               fileio.unlinkSync(fpath);
@@ -239,7 +239,7 @@ describe('fileio_open', function () {
         .then(function (fd) {
           fileio.read(fd, new ArrayBuffer(4096))
             .then(function (res) {
-              expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue;
+              expect((String.fromCharCode.apply(null, new Uint8Array(res.buffer))) == FILE_CONTENT).assertTrue();
               expect(res.bytesRead == FILE_CONTENT.length).assertTrue();
               fileio.closeSync(fd);
               fileio.unlinkSync(fpath);

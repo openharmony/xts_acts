@@ -4054,7 +4054,7 @@ export default function fileIOTest() {
       let fpath = await nextFileName('fileio_test_stat_promise_011');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       fileio.chmodSync(fpath, 0o640);
-      await fileio.stat(fpath).then((stat)=> {
+      fileio.stat(fpath).then((stat)=> {
         expect((stat.mode & 0o777) == 0o640).assertTrue();
         fileio.unlinkSync(fpath);
         console.info('file stat Success');
@@ -4314,7 +4314,7 @@ export default function fileIOTest() {
       let fpath = await nextFileName('fileio_test_close_async_001');
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let fd = fileio.openSync(fpath);
-      await fileio.close(fd, function (err) {
+      fileio.close(fd, function (err) {
         fileio.unlinkSync(fpath);
       });
     });
