@@ -16,8 +16,18 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import taskpool from '@ohos.taskpool'
 import worker from "@ohos.worker"
 export default function TaskPoolTest() {
-describe('ActsAbilityTest', function (done) {
+describe('ActsAbilityTest', function () {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
+
+    function promiseCase() {
+        let p = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve()
+            }, 100)
+        }).then(undefined, (error) => {
+        })
+        return p
+    }
 
     it('TaskPoolTestClass001', 0,  async function (done) {
         function Sum(value1, value2) {
@@ -311,10 +321,17 @@ describe('ActsAbilityTest', function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
+        var result;
+        var isTerminate = false;
         var task = new taskpool.Task(Sum, 10, 20)
         taskpool.execute(task).then((ret) => {
-            expect(ret).assertEqual(30);
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual(30); 
         done();
     })
 
@@ -326,9 +343,16 @@ describe('ActsAbilityTest', function (done) {
                 return false;
         }
         var task = new taskpool.Task(Add, true, true)
+        var result;
+        var isTerminate = false;
         taskpool.execute(task).then((ret) => {
-            expect(ret).assertEqual(true);
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual(true);
         done();
     })
 
@@ -337,9 +361,16 @@ describe('ActsAbilityTest', function (done) {
             return value1 + value2;
         }
         var task = new taskpool.Task(StrCat, "abc", "def")
+        var result;
+        var isTerminate = false;
         taskpool.execute(task).then((ret) => {
-            expect(ret).assertEqual("abcdef");
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual("abcdef");
         done();
     })
 
@@ -351,9 +382,16 @@ describe('ActsAbilityTest', function (done) {
             return value1+StrCat(value2,"hello");
         }
         var task = new taskpool.Task(Sum, "abc", "def");
+        var result;
+        var isTerminate = false;
         taskpool.execute(task).then((ret) => {
-            expect(ret).assertEqual("abcdefhello");
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual("abcdefhello");
         done();
     })
 
@@ -365,10 +403,17 @@ describe('ActsAbilityTest', function (done) {
             return value;
         }
         var task = new taskpool.Task(Sum, [1,2], [3,4]);
+        var result;
+        var isTerminate = false;
         taskpool.execute(task).then((ret) => {
-            expect(ret[0]).assertEqual(4);
-            expect(ret[1]).assertEqual(6);
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result[0]).assertEqual(4);
+        expect(result[1]).assertEqual(6);
         done();
     })
 
@@ -380,9 +425,16 @@ describe('ActsAbilityTest', function (done) {
             return value;
         }
         var task = new taskpool.Task(Sum, {"a": 1, "b" : 2}, {"a": 3, "b" : 4});
+        var result;
+        var isTerminate = false;
         taskpool.execute(task).then((ret) => {
-            expect(JSON.stringify(ret)).assertEqual("{\"a\":4,\"b\":6}");
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(JSON.stringify(result)).assertEqual("{\"a\":4,\"b\":6}");
         done();
     })
 
@@ -391,9 +443,16 @@ describe('ActsAbilityTest', function (done) {
             return value1 + value2;
         }
         var task = new taskpool.Task(Sum, 10);
+        var result;
+        var isTerminate = false;
         taskpool.execute(task).then((ret) => {
-            expect(ret).assertEqual(NaN);
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result.toString()).assertEqual("NaN");
         done();
     })
 
@@ -402,9 +461,16 @@ describe('ActsAbilityTest', function (done) {
             return value1 + value2;
         }
         var task = new taskpool.Task(Sum, 10, 20, 30);
+        var result;
+        var isTerminate = false;
         taskpool.execute(task).then((ret) => {
-            expect(ret).assertEqual(30);
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual(30);
         done();
     })
 
@@ -412,15 +478,27 @@ describe('ActsAbilityTest', function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
+        var result1;
+        var result2;
+        var isTerminate1 = false;
+        var isTerminate2 = false;
+
         var task1 = new taskpool.Task(Sum, 10, 20);
         taskpool.execute(task1).then((ret1) => {
-            expect(ret1).assertEqual(30);
+            result1 = ret1;
+            isTerminate1 = true;
         })
-
+        
         var task2 = new taskpool.Task(Sum, 30, 40);
         taskpool.execute(task2).then((ret2) => {
-            expect(ret2).assertEqual(70);
+            result2 = ret2;
+            isTerminate2 = true;
         })
+        while (!isTerminate1 || !isTerminate2) {
+            await promiseCase()
+        }
+        expect(result1).assertEqual(30);
+        expect(result2).assertEqual(70);
         done();
     })
 
@@ -428,15 +506,26 @@ describe('ActsAbilityTest', function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
+        var result1;
+        var result2;
+        var isTerminate1 = false;
+        var isTerminate2 = false;
+
         var task1 = new taskpool.Task(Sum, 10, 20)
         taskpool.execute(task1).then((ret1) => {
-            expect(ret1).assertEqual(30);
+            result1 = ret1;
+            isTerminate1 = true;
         })
-
         var task2 = new taskpool.Task(Sum, 10, 20)
         taskpool.execute(task2).then((ret2) => {
-            expect(ret2).assertEqual(30);
+            result2 = ret2;
+            isTerminate2 = true;
         })
+        while (!isTerminate1 || !isTerminate2) {
+            await promiseCase()
+        }
+        expect(result1).assertEqual(30);
+        expect(result2).assertEqual(30);
         done();
     })
 
@@ -444,13 +533,25 @@ describe('ActsAbilityTest', function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
+        var result1;
+        var result2;
+        var isTerminate1 = false;
+        var isTerminate2 = false;
+
         var task = new taskpool.Task(Sum, 10, 20)
         taskpool.execute(task).then((ret1) => {
-            expect(ret1).assertEqual(30);
+            result1 = ret1;
+            isTerminate1 = true;
         })
         taskpool.execute(task).then((ret2) => {
-            expect(ret2).assertEqual(30);
+            result2 = ret2;
+            isTerminate2 = true;
         })
+        while (!isTerminate1 || !isTerminate2) {
+            await promiseCase()
+        }
+        expect(result1).assertEqual(30);
+        expect(result2).assertEqual(30);
         done();
     })
 
@@ -462,22 +563,43 @@ describe('ActsAbilityTest', function (done) {
             return value1 * value2;
         }
 
+        var result1;
+        var result2;
+        var result3;
+        var result4;
+        var isTerminate1 = false;
+        var isTerminate2 = false;
+        var isTerminate3 = false;
+        var isTerminate4 = false;
+
         var task1 = new taskpool.Task(Sum, 10, 20)
         taskpool.execute(task1).then((ret1) => {
-            expect(ret1).assertEqual(30);
+            result1 = ret1;
+            isTerminate1 = true;
         })
         var task2 = new taskpool.Task(Multi, 10, 20)
         taskpool.execute(task2).then((ret2) => {
-            expect(ret2).assertEqual(200);
+            result2 = ret2;
+            isTerminate2 = true;
         })
         var task3 = new taskpool.Task(Sum, 10, 30)
         taskpool.execute(task3).then((ret3) => {
-            expect(ret3).assertEqual(40);
+            result3 = ret3;
+            isTerminate3 = true;
         })
         var task4 = new taskpool.Task(Multi, 20, 20)
         taskpool.execute(task4).then((ret4) => {
-            expect(ret4).assertEqual(400);
+            result4 = ret4;
+            isTerminate4 = true;
         })
+
+        while (!isTerminate1 || !isTerminate2 || !isTerminate3 || !isTerminate4) {
+            await promiseCase()
+        }
+        expect(result1).assertEqual(30);
+        expect(result2).assertEqual(200);
+        expect(result3).assertEqual(40);
+        expect(result4).assertEqual(400);
         done();
     })
 
@@ -485,9 +607,16 @@ describe('ActsAbilityTest', function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
+        var result;
+        var isTerminate = false;
         taskpool.execute(Sum, 10, 20).then((ret) => {
-            expect(ret).assertEqual(30);
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual(30);
         done();
     })
 
@@ -498,9 +627,16 @@ describe('ActsAbilityTest', function (done) {
             else
                 return false;
         }
+        var result;
+        var isTerminate = false;
         taskpool.execute(Add, true, false).then((ret) => {
-            expect(ret).assertEqual(false);
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual(false);
         done();
     })
 
@@ -508,9 +644,16 @@ describe('ActsAbilityTest', function (done) {
         function StrCat(value1, value2) {
             return value1 + value2;
         }
+        var result;
+        var isTerminate = false;
         taskpool.execute(StrCat, "abc", "def").then((ret) => {
-            expect(ret).assertEqual("abcdef");
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual("abcdef");
         done();
     })
 
@@ -521,9 +664,16 @@ describe('ActsAbilityTest', function (done) {
             }
             return value1+StrCat(value2,"hello");
         }
+        var result;
+        var isTerminate = false;
         taskpool.execute(Sum, "abc", "def").then((ret) => {
-            expect(ret).assertEqual("abcdefhello");
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual("abcdefhello");
         done();
     })
 
@@ -534,10 +684,17 @@ describe('ActsAbilityTest', function (done) {
             value[1] = arg1[1] + arg2[1];
             return value;
         }
+        var result;
+        var isTerminate = false;
         taskpool.execute(Sum, [1,2], [3,4]).then((ret) => {
-            expect(ret[0]).assertEqual(4);
-            expect(ret[1]).assertEqual(6);
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result[0]).assertEqual(4);
+        expect(result[1]).assertEqual(6);
         done();
     })
 
@@ -548,9 +705,16 @@ describe('ActsAbilityTest', function (done) {
             value.b = arg1.b + arg2.b;
             return value;
         }
+        var result;
+        var isTerminate = false;
         taskpool.execute(Sum, {"a": 1, "b" : 2}, {"a": 3, "b" : 4}).then((ret) => {
-            expect(JSON.stringify(ret)).assertEqual("{\"a\":4,\"b\":6}");
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(JSON.stringify(result)).assertEqual("{\"a\":4,\"b\":6}");
         done();
     })
 
@@ -558,9 +722,16 @@ describe('ActsAbilityTest', function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
+        var result;
+        var isTerminate = false;
         taskpool.execute(Sum, 10).then((ret) => {
-            expect(ret).assertEqual(NaN);
+            result = ret;
+            isTerminate = true;
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result.toString()).assertEqual("NaN");
         done();
     })
 
@@ -568,9 +739,16 @@ describe('ActsAbilityTest', function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
+        var result;
+        var isTerminate = false;
         taskpool.execute(Sum, 10, 20, 30).then((ret) => {
-            expect(ret).assertEqual(30);
+            result = ret;
+            isTerminate = true;    
         })
+        while (!isTerminate) {
+            await promiseCase()
+        }
+        expect(result).assertEqual(30);
         done();
     })
 
@@ -578,12 +756,24 @@ describe('ActsAbilityTest', function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
+        var result1;
+        var result2;
+        var isTerminate1 = false;
+        var isTerminate2 = false;
+
         taskpool.execute(Sum, 10, 20).then((ret1) => {
-            expect(ret1).assertEqual(30);
+            result1 = ret1;
+            isTerminate1 = true;  
         })
         taskpool.execute(Sum, 30, 40).then((ret2) => {
-            expect(ret2).assertEqual(70);
+            result2 = ret2;
+            isTerminate2 = true;  
         })
+        while (!isTerminate1 || !isTerminate2) {
+            await promiseCase()
+        }
+        expect(result1).assertEqual(30);
+        expect(result2).assertEqual(70);
         done();
     })
 
@@ -591,12 +781,24 @@ describe('ActsAbilityTest', function (done) {
         function Sum(value1, value2) {
             return value1 + value2;
         }
+        var result1;
+        var result2;
+        var isTerminate1 = false;
+        var isTerminate2 = false;
+
         taskpool.execute(Sum, 10, 20).then((ret1) => {
-            expect(ret1).assertEqual(30);
+            result1 = ret1;
+            isTerminate1 = true;  
         })
         taskpool.execute(Sum, 10, 20).then((ret2) => {
-            expect(ret2).assertEqual(30);
+            result2 = ret2;
+            isTerminate2 = true;  
         })
+        while (!isTerminate1 || !isTerminate2) {
+            await promiseCase()
+        }
+        expect(result1).assertEqual(30);
+        expect(result2).assertEqual(30);
         done();
     })
 
@@ -608,18 +810,38 @@ describe('ActsAbilityTest', function (done) {
             return value1 * value2;
         }
 
+        var result1;
+        var result2;
+        var result3;
+        var result4;
+        var isTerminate1 = false;
+        var isTerminate2 = false;
+        var isTerminate3 = false;
+        var isTerminate4 = false;
+
         taskpool.execute(Sum, 10, 20).then((ret1) => {
-            expect(ret1).assertEqual(30);
+            result1 = ret1;
+            isTerminate1 = true;  
         })
         taskpool.execute(Multi, 10, 20).then((ret2) => {
-            expect(ret2).assertEqual(200);
+            result2 = ret2;
+            isTerminate2 = true; 
         })
         taskpool.execute(Sum, 10, 30).then((ret3) => {
-            expect(ret3).assertEqual(40);
+            result3 = ret3;
+            isTerminate3 = true;  
         })
         taskpool.execute(Multi, 20, 20).then((ret4) => {
-            expect(ret4).assertEqual(400);
+            result4 = ret4;
+            isTerminate4 = true;  
         })
+        while (!isTerminate1 || !isTerminate2 || !isTerminate3 || !isTerminate4) {
+            await promiseCase()
+        }
+        expect(result1).assertEqual(30);
+        expect(result2).assertEqual(200);
+        expect(result3).assertEqual(40);
+        expect(result4).assertEqual(400);
         done();
     })
 
