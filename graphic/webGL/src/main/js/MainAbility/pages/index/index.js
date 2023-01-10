@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Core,ExpectExtend} from 'deccjsunit/index'
 
 export default {
     data: {
@@ -20,22 +19,5 @@ export default {
     },
     onInit() {
         this.title = this.$t('strings.world');
-    },
-    onShow(){
-        global.el = this.$refs.canvas1;
-        global.el2 = this.$refs.canvas2;
-        
-        const core = Core.getInstance()
-        const expectExtend = new ExpectExtend({
-            'id':'extend'
-        })
-        core.addService('expect',expectExtend)
-        core.init()
-        const configService = core.getDefaultService('config')
-        this.timeout = 60000
-        configService.setConfig(this)
-        require('../../test/List.test.js')
-        core.execute()
-
     }
 }

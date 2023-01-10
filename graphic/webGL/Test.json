@@ -1,10 +1,12 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1200000",
-        "package": "com.test.webGL",
-        "shell-timeout": "60000"
+        "shell-timeout": "800000",
+        "bundle-name": "com.test.webGL",
+        "package-name": "com.test.webGL",
+        "testcase-timeout": "300000"
     },
     "kits": [
         {
@@ -17,7 +19,8 @@
 		{
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff"
+                "power-shell wakeup",
+                "power-shell setmode 602"
             ]
         }
     ]
