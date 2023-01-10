@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.ohos.cellular_data",
+    "bundleName": "com.ohos.sms_mms",
     "vendor": "ohos",
     "version": {
       "code": 1000000,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.ohos.cellular_data",
+    "package": "com.ohos.sms_mms",
     "name": ".entry",
     "mainAbility": ".MainAbility",
     "srcPath":"",
@@ -65,16 +65,6 @@
         "visible": true,
         "launchType": "standard"
     }
-    ],
-    "reqPermissions":[
-      {
-        "name":"ohos.permission.SET_TELEPHONY_STATE",
-        "reason":"need use ohos.permission.SET_TELEPHONY_STATE"
-      },
-      {
-        "name":"ohos.permission.GET_TELEPHONY_STATE",
-        "reason":"need use ohos.permission.GET_TELEPHONY_STATE"
-      }
     ],
     "js": [
       {

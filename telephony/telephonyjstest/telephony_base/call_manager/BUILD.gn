@@ -21,8 +21,8 @@ ohos_js_hap_suite("ActsBaseCallManagerTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsBaseCallManagerTest"
-  part_name = "netstack"
-  subsystem_name = "communication"
+  part_name = "call_manager"
+  subsystem_name = "telephony"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true
