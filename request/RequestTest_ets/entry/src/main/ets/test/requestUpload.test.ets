@@ -99,7 +99,7 @@ export default function requestUploadJSUnit() {
         console.info("====>SUB_REQUEST_UPLOAD_API_0001 request.ERROR_DEVICE_NOT_FOUND:" + request.ERROR_DEVICE_NOT_FOUND);
         expect(request.ERROR_DEVICE_NOT_FOUND).assertEqual(1);
       } catch (err) {
-        expect(true).assertEqual(true);
+        expect().assertFail();
         console.error("====>SUB_REQUEST_UPLOAD_API_0001 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0001 end-----------------------");
@@ -126,7 +126,7 @@ export default function requestUploadJSUnit() {
         console.info("====>SUB_REQUEST_UPLOAD_API_0002 request.ERROR_INSUFFICIENT_SPACE:" + request.ERROR_INSUFFICIENT_SPACE);
         expect(request.ERROR_INSUFFICIENT_SPACE).assertEqual(5);
       } catch (err) {
-        expect(true).assertEqual(true);
+        expect().assertFail();
         console.error("====>SUB_REQUEST_UPLOAD_API_0002 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0002 end-----------------------");
@@ -153,7 +153,7 @@ export default function requestUploadJSUnit() {
         console.info("====>SUB_REQUEST_UPLOAD_API_0003 request.PAUSED_QUEUED_FOR_WIFI:" + request.PAUSED_QUEUED_FOR_WIFI);
         expect(request.PAUSED_QUEUED_FOR_WIFI).assertEqual(0);
       } catch (err) {
-        expect(true).assertEqual(true);
+        expect().assertFail();
         console.error("====>SUB_REQUEST_UPLOAD_API_0003 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0003 end-----------------------");
@@ -177,10 +177,10 @@ export default function requestUploadJSUnit() {
         expect(request.PAUSED_WAITING_FOR_NETWORK).assertEqual(1);
         console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.PAUSED_WAITING_TO_RETRY:" + request.PAUSED_WAITING_TO_RETRY);
         expect(request.PAUSED_WAITING_TO_RETRY).assertEqual(2);
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_FAILED:" + request.SESSION_FAILED);
-        expect(request.SESSION_FAILED).assertEqual(4);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.PAUSED_BY_USER:" + request.PAUSED_BY_USER);
+        expect(request.PAUSED_BY_USER).assertEqual(3);
       } catch (err) {
-        expect(true).assertEqual(true);
+        expect().assertFail();
         console.error("====>SUB_REQUEST_UPLOAD_API_0004 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0004 end-----------------------");
@@ -198,16 +198,18 @@ export default function requestUploadJSUnit() {
     it('SUB_REQUEST_UPLOAD_API_0005', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0005 is starting-----------------------");
       try {
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_PAUSED:" + request.SESSION_PAUSED);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_FAILED:" + request.SESSION_FAILED);
+        expect(request.SESSION_FAILED).assertEqual(4);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_PAUSED:" + request.SESSION_PAUSED);
         expect(request.SESSION_PAUSED).assertEqual(3);
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_PENDING:" + request.SESSION_PENDING);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_PENDING:" + request.SESSION_PENDING);
         expect(request.SESSION_PENDING).assertEqual(2);
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_RUNNING:" + request.SESSION_RUNNING);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_RUNNING:" + request.SESSION_RUNNING);
         expect(request.SESSION_RUNNING).assertEqual(1);
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_SUCCESSFUL:" + request.SESSION_SUCCESSFUL);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_SUCCESSFUL:" + request.SESSION_SUCCESSFUL);
         expect(request.SESSION_SUCCESSFUL).assertEqual(0);
       } catch (err) {
-        expect(true).assertEqual(true);
+        expect().assertFail();
         console.error("====>SUB_REQUEST_UPLOAD_API_0005 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0005 end-----------------------");
@@ -244,7 +246,7 @@ export default function requestUploadJSUnit() {
         console.info("====>SUB_REQUEST_UPLOAD_API_0006 request.ERROR_UNSUPPORTED_NETWORK_TYPE:" + request.ERROR_UNSUPPORTED_NETWORK_TYPE);
         expect(request.ERROR_UNSUPPORTED_NETWORK_TYPE).assertEqual(10);
       } catch (err) {
-        expect(true).assertEqual(true);
+        expect().assertFail();
         console.error("====>SUB_REQUEST_UPLOAD_API_0006 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0006 end-----------------------");
