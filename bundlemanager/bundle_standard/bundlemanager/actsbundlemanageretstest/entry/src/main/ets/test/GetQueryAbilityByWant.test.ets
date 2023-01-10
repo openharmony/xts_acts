@@ -406,11 +406,14 @@ export default function ActsBmsQueryAbilityByWant() {
           "action": "uri_reserved",
           "uri": ""
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
-        console.info(' success bms_queryAbilityByWant_1800 ' + JSON.stringify(res))
-        const list = ['uriEmpty', 'uriSchemeEmpty']
-        if (res && res.length) {
-          for (let i = 0; i < res.length; i++) {
-            expect(list.includes(res[i].description)).assertEqual(true)
+        expect(res.length).assertEqual(2);
+        for (let count = 0; count < 2; count++) {
+          console.info(' success bms_queryAbilityByWant_1800 ' + JSON.stringify(res[count]));
+          if (res[count].name == BUNDLE_NAME2 + '.uriEmpty') {
+            expect(res[count].description).assertEqual('uriEmpty');
+          } else {
+            expect(res[count].name).assertEqual(BUNDLE_NAME2 + '.uriSchemeEmpty');
+            expect(res[count].description).assertEqual('uriSchemeEmpty');
           }
         }
         done()
@@ -520,7 +523,6 @@ export default function ActsBmsQueryAbilityByWant() {
           "uri": "content://www.test.com:8080/query/student/name"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
         console.info(' success bms_queryAbilityByWant_2200 ' + JSON.stringify(res))
-        const list = ['uriSchemeHostPortPath', 'uriSchemeHostPortPathStartWith', 'uriSchemeHostPortPathRegx']
         expect(res.length).assertEqual(7);
         for (let count = 0; count < 7; count++) {
           if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
@@ -559,7 +561,6 @@ export default function ActsBmsQueryAbilityByWant() {
           "uri": "content://www.test.com/query/student/name"
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
         console.info(' success bms_queryAbilityByWant_2300 ' + JSON.stringify(res))
-        const list = ['uriPortEmptyWithPath', 'uriPortEmptyWithPathStartWith', 'uriPortEmptyWithPathRegx']
         expect(res.length).assertEqual(6);
         for (let count = 0; count < 6; count++) {
           if (res[count].name == BUNDLE_NAME2 + '.uriHostEmpty') {
