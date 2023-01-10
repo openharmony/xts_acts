@@ -128,42 +128,43 @@ function init(srcKeyAlies, HuksOptions) {
 }
 
 async function publicUpdateFunc(HuksOptions) {
-  let dateSize = 64;
-  let tempHuksOptionsInData = HuksOptions.inData;
-  let inDataArray = HuksOptions.inData;
-  if (uint8ArrayToString(inDataArray).length < dateSize) {
-    await update(handle, HuksOptions);
-    HuksOptions.inData = tempHuksOptionsInData;
-  } else {
-    let count = Math.floor(uint8ArrayToString(inDataArray).length / dateSize);
-    let remainder = uint8ArrayToString(inDataArray).length % dateSize;
-    for (let i = 0; i < count; i++) {
-      HuksOptions.inData = stringToUint8Array(
-        uint8ArrayToString(tempHuksOptionsInData).slice(dateSize * i, dateSize * (i + 1))
-      );
-      await update(handle, HuksOptions);
-      HuksOptions.inData = tempHuksOptionsInData;
-    }
-    if (remainder !== 0) {
-      HuksOptions.inData = stringToUint8Array(
-        uint8ArrayToString(tempHuksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length)
-      );
-      await update(handle, HuksOptions);
-      HuksOptions.inData = tempHuksOptionsInData;
-    }
-  }
-}
+  const maxUpdateSize = 64;
+  const inData = HuksOptions.inData;
+  const lastInDataPosition = inData.length - 1;
+  let inDataSegSize = maxUpdateSize;
+  let inDataSegPosition = 0;
+  let isFinished = false;
+  let outData = [];
 
-async function update(handle, HuksOptions) {
-  await updateCallback(handle, HuksOptions)
-    .then(async (data) => {
+  while (inDataSegPosition <= lastInDataPosition) {
+    HuksOptions.inData = new Uint8Array(
+      Array.from(inData).slice(inDataSegPosition, inDataSegPosition + inDataSegSize)
+    );
+    console.error(`enter promise doUpdate`);
+    await updateCallback(handle, HuksOptions).then(async (data) => {
       console.log(`test update data ${JSON.stringify(data)}`);
+      outData = outData.concat(Array.from(data.outData));
       expect(data.errorCode == 0).assertTrue();
     })
-    .catch((err) => {
-      console.log('test update err information: ' + err);
+      .catch((err) => {
+        console.log('test update err information: ' + err);
+        expect(null).assertFail();
+      });
+    if (inDataSegPosition + maxUpdateSize > lastInDataPosition) {
+      isFinished = true;
+      inDataSegSize = lastInDataPosition - inDataSegPosition + 1;
+      console.error(`enter promise doUpdate`);
+      break;
+    }
+    if ((!isFinished) && (inDataSegPosition + maxUpdateSize > lastInDataPosition)) {
+      console.log(`update size invalid isFinished = ${isFinished}`);
+      console.log(`inDataSegPosition = ${inDataSegPosition}`);
+      console.log(`lastInDataPosition = ${lastInDataPosition}`);
       expect(null).assertFail();
-    });
+      return;
+    }
+    inDataSegPosition += maxUpdateSize;
+  }
 }
 
 function updateCallback(handle, HuksOptions) {

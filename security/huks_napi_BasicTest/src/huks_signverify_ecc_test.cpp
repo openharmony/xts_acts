@@ -56,10 +56,10 @@ static struct OH_Huks_Param g_genParamsTest001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_224
+        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_NONE
+        .uint32Param = OH_HUKS_DIGEST_SHA256
     }
 };
 static struct OH_Huks_Param g_signParamsTest001[] = {
@@ -71,10 +71,10 @@ static struct OH_Huks_Param g_signParamsTest001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_224
+        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_NONE
+        .uint32Param = OH_HUKS_DIGEST_SHA256
     }
 };
 static struct OH_Huks_Param g_verifyParamsTest001[] = {
@@ -86,10 +86,10 @@ static struct OH_Huks_Param g_verifyParamsTest001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_224
+        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_NONE
+        .uint32Param = OH_HUKS_DIGEST_SHA256
     }
 };
 

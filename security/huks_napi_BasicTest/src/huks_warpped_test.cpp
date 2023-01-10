@@ -17,12 +17,15 @@
 
 #include "huks_warpped_test.h"
 #include "huks_three_stage_test_common.h"
+#include "huks_wrapped_test_common.h"
 #include "huks_mem.h"
 #include "native_huks_type.h"
 
 using namespace testing::ext;
-namespace Unittest::ImportWrappedKey {
-    class HuksImportWrappedX25519Test : public testing::Test {
+namespace Unittest::ImportWrapped
+{
+    class HuksImportWrappedX25519Test : public testing::Test
+    {
     public:
         static void SetUpTestCase(void);
 
@@ -43,85 +46,135 @@ namespace Unittest::ImportWrappedKey {
 
     void HuksImportWrappedX25519Test::SetUp()
     {
-        
     }
 
-    void HuksImportWrappedX25519Test::TearDown() {
+    void HuksImportWrappedX25519Test::TearDown()
+    {
     }
 
-    static struct OH_Huks_Param g_genImportECCOption01[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ECC
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_UNWRAP
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
-    }, {
-        .tag = OH_HUKS_TAG_IMPORT_KEY_TYPE,
-        .uint32Param = OH_HUKS_KEY_TYPE_KEY_PAIR
-    }, 
+    struct TestImportKeyData {
+        struct OH_Huks_Blob x509PublicKey;
+        struct OH_Huks_Blob publicOrXData;
+        struct OH_Huks_Blob privateOrYData;
+        struct OH_Huks_Blob zData;
     };
 
-    static const uint8_t inputECCPair[] = {
-        0x02, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00,
-        0x20, 0x00, 0x00, 0x00, 0xa5, 0xb8, 0xa3, 0x78, 0x1d, 0x6d, 0x76, 0xe0, 0xb3, 0xf5, 0x6f, 0x43,
-        0x9d, 0xcf, 0x60, 0xf6, 0x0b, 0x3f, 0x64, 0x45, 0xa8, 0x3f, 0x1a, 0x96, 0xf1, 0xa1, 0xa4, 0x5d,
-        0x3e, 0x2c, 0x3f, 0x13, 0xd7, 0x81, 0xf7, 0x2a, 0xb5, 0x8d, 0x19, 0x3d, 0x9b, 0x96, 0xc7, 0x6a,
-        0x10, 0xf0, 0xaa, 0xbc, 0x91, 0x6f, 0x4d, 0xa7, 0x09, 0xb3, 0x57, 0x88, 0x19, 0x6f, 0x00, 0x4b,
-        0xad, 0xee, 0x34, 0x35, 0xfb, 0x8b, 0x9f, 0x12, 0xa0, 0x83, 0x19, 0xbe, 0x6a, 0x6f, 0x63, 0x2a,
-        0x7c, 0x86, 0xba, 0xca, 0x64, 0x0b, 0x88, 0x96, 0xe2, 0xfa, 0x77, 0xbc, 0x71, 0xe3, 0x0f, 0x0f,
-        0x9e, 0x3c, 0xe5, 0xf9
+    static struct OH_Huks_Blob g_wrappingKeyAliasAes256 = {
+        .size = strlen("test_wrappingKey_x25519_aes256"),
+        .data = (uint8_t *)"test_wrappingKey_x25519_aes256"};
+
+    static struct OH_Huks_Blob g_callerKeyAliasAes256 = {
+        .size = strlen("test_caller_key_x25519_aes256"),
+        .data = (uint8_t *)"test_caller_key_x25519_aes256"};
+
+    static struct OH_Huks_Blob g_callerKekAliasAes256 = {
+        .size = strlen("test_caller_kek_x25519_aes256"),
+        .data = (uint8_t *)"test_caller_kek_x25519_aes256"};
+
+    static struct OH_Huks_Blob g_callerAes256Kek = {
+        .size = strlen("This is kek to encrypt plain key"),
+        .data = (uint8_t *)"This is kek to encrypt plain key"};
+
+    static struct OH_Huks_Blob g_callerAgreeKeyAliasAes256 = {
+        .size = strlen("test_caller_agree_key_x25519_aes256"),
+        .data = (uint8_t *)"test_caller_agree_key_x25519_aes256"};
+
+    static struct OH_Huks_Blob g_importedKeyAliasAes256 = {
+        .size = strlen("test_import_key_x25519_aes256"),
+        .data = (uint8_t *)"test_import_key_x25519_aes256"};
+
+    static struct OH_Huks_Blob g_importedAes256PlainKey = {
+        .size = strlen("This is plain key to be imported"),
+        .data = (uint8_t *)"This is plain key to be imported"};
+
+    static struct OH_Huks_Param g_importWrappedAes256Params[] = {
+        {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+        {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+        {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+        {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+        {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_GCM},
+        {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE},
+        {.tag = OH_HUKS_TAG_UNWRAP_ALGORITHM_SUITE, .uint32Param = OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING},
+        {.tag = OH_HUKS_TAG_ASSOCIATED_DATA, .blob = {.size = Unittest::ImportWrapped::AAD_SIZE, .data = (uint8_t *)Unittest::ImportWrapped::AAD}},
+        {.tag = OH_HUKS_TAG_NONCE, .blob = {.size = Unittest::ImportWrapped::NONCE_SIZE, .data = (uint8_t *)Unittest::ImportWrapped::NONCE}}};
+
+    static char g_agreeKeyAlgName[] = "X25519";
+
+    static struct OH_Huks_Blob g_agreeKeyAlgNameBlob = {
+        .size = sizeof(g_agreeKeyAlgName),
+        .data = (uint8_t *)g_agreeKeyAlgName};
+
+    static const uint32_t g_x25519PubKeySize = 32;
+
+    static struct OH_Huks_Param g_genWrappingKeyParams[] = {
+        {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_X25519},
+        {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_UNWRAP},
+        {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256}};
+
+    static struct OH_Huks_Param g_genCallerX25519Params[] = {
+        {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_X25519},
+        {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_AGREE},
+        {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256}};
+
+    static struct OH_Huks_Param g_importParamsCallerKek[] = {
+        {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+        {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+        {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+        {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+        {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_GCM},
+        {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE},
+        {.tag = OH_HUKS_TAG_IV, .blob = {.size = Unittest::ImportWrapped::IV_SIZE, .data = (uint8_t *)Unittest::ImportWrapped::IV}}};
+
+    static struct OH_Huks_Param g_callerAgreeParams[] = {
+        {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_X25519},
+        {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_AGREE},
+        {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_CURVE25519_KEY_SIZE_256}
     };
 
-    static struct OH_Huks_Param g_ImportECCOption02[] = {
+    static void InitCommonTestParamsAndDoImport(
+        struct HksImportWrappedKeyTestParams *importWrappedKeyTestParams,
+        const struct OH_Huks_Param *importedKeyParamSetArray,
+        uint32_t arraySize)
     {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CBC
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
-        .uint32Param = OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
-    }, 
-    }; 
-    
-    static const uint8_t inputECCKey[] = {
-        0x5b, 0x00, 0x00, 0x00, 0x30, 0x59, 0x30, 0x13, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02,
-        0x01, 0x06, 0x08, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x03, 0x01, 0x07, 0x03, 0x42, 0x00, 0x04, 0xc0,
-        0xfe, 0x1c, 0x67, 0xde, 0x86, 0x0e, 0xfb, 0xaf, 0xb5, 0x85, 0x52, 0xb4, 0x0e, 0x1f, 0x6c, 0x6c,
-        0xaa, 0xc5, 0xd9, 0xd2, 0x4d, 0xb0, 0x8a, 0x72, 0x24, 0xa1, 0x99, 0xaf, 0xfc, 0x3e, 0x55, 0x5a,
-        0xac, 0x99, 0x3d, 0xe8, 0x34, 0x72, 0xb9, 0x47, 0x9c, 0xa6, 0xd8, 0xfb, 0x00, 0xa0, 0x1f, 0x9f,
-        0x7a, 0x41, 0xe5, 0x44, 0x3e, 0xb2, 0x76, 0x08, 0xa2, 0xbd, 0xe9, 0x41, 0xd5, 0x2b, 0x9e, 0x10,
-        0x00, 0x00, 0x00, 0xbf, 0xf9, 0x69, 0x41, 0xf5, 0x49, 0x85, 0x31, 0x35, 0x14, 0x69, 0x12, 0x57,
-        0x9c, 0xc8, 0xb7, 0x10, 0x00, 0x00, 0x00, 0x2d, 0xb7, 0xf1, 0x5a, 0x0f, 0xb8, 0x20, 0xc5, 0x90,
-        0xe5, 0xca, 0x45, 0x84, 0x5c, 0x08, 0x08, 0x10, 0x00, 0x00, 0x00, 0x43, 0x25, 0x1b, 0x2f, 0x5b,
-        0x86, 0xd8, 0x87, 0x04, 0x4d, 0x38, 0xc2, 0x65, 0xcc, 0x9e, 0xb7, 0x20, 0x00, 0x00, 0x00, 0xf4,
-        0xe8, 0x93, 0x28, 0x0c, 0xfa, 0x4e, 0x11, 0x6b, 0xe8, 0xbd, 0xa8, 0xe9, 0x3f, 0xa7, 0x8f, 0x2f,
-        0xe3, 0xb3, 0xbf, 0xaf, 0xce, 0xe5, 0x06, 0x2d, 0xe6, 0x45, 0x5d, 0x19, 0x26, 0x09, 0xe7, 0x10,
-        0x00, 0x00, 0x00, 0xf4, 0x1e, 0x7b, 0x01, 0x7a, 0x84, 0x36, 0xa4, 0xa8, 0x1c, 0x0d, 0x3d, 0xde,
-        0x57, 0x66, 0x73, 0x10, 0x00, 0x00, 0x00, 0xe3, 0xff, 0x29, 0x97, 0xad, 0xb3, 0x4a, 0x2c, 0x50,
-        0x08, 0xb5, 0x68, 0xe1, 0x90, 0x5a, 0xdc, 0x10, 0x00, 0x00, 0x00, 0x26, 0xae, 0xdc, 0x4e, 0xa5,
-        0x6e, 0xb1, 0x38, 0x14, 0x24, 0x47, 0x1c, 0x41, 0x89, 0x63, 0x11, 0x04, 0x00, 0x00, 0x00, 0x20,
-        0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x0b, 0xcb, 0xa9, 0xa8, 0x5f, 0x5a, 0x9d, 0xbf, 0xa1,
-        0xfc, 0x72, 0x74, 0x87, 0x79, 0xf2, 0xf4, 0x22, 0x0c, 0x8a, 0x4d, 0xd8, 0x7e, 0x10, 0xc8, 0x44,
-        0x17, 0x95, 0xab, 0x3b, 0xd2, 0x8f, 0x0a
-    };
+        importWrappedKeyTestParams->agreeKeyAlgName = &g_agreeKeyAlgNameBlob;
+
+        struct OH_Huks_ParamSet *genX25519KeyParamSet = nullptr;
+        OH_Huks_Result ret = InitParamSet(&genX25519KeyParamSet, g_genWrappingKeyParams,
+                           sizeof(g_genWrappingKeyParams) / sizeof(OH_Huks_Param));
+        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet(gen huks x25519) failed.";
+        importWrappedKeyTestParams->genWrappingKeyParamSet = genX25519KeyParamSet;
+        importWrappedKeyTestParams->publicKeySize = g_x25519PubKeySize;
+
+        struct OH_Huks_ParamSet *genCallerKeyParamSet = nullptr;
+        ret = InitParamSet(&genCallerKeyParamSet, g_genCallerX25519Params,
+                           sizeof(g_genCallerX25519Params) / sizeof(OH_Huks_Param));
+        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet(gen caller x25519) failed.";
+        importWrappedKeyTestParams->genCallerKeyParamSet = genCallerKeyParamSet;
+
+        struct OH_Huks_ParamSet *callerImportParamsKek = nullptr;
+        ret = InitParamSet(&callerImportParamsKek, g_importParamsCallerKek,
+                           sizeof(g_importParamsCallerKek) / sizeof(OH_Huks_Param));
+        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet(import call kek) failed.";
+        importWrappedKeyTestParams->importCallerKekParamSet = callerImportParamsKek;
+
+        struct OH_Huks_ParamSet *agreeParamSet = nullptr;
+        ret = InitParamSet(&agreeParamSet, g_callerAgreeParams,
+                           sizeof(g_callerAgreeParams) / sizeof(OH_Huks_Param));
+        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet(agreeParamSet) failed.";
+        importWrappedKeyTestParams->agreeParamSet = agreeParamSet;
+
+        struct OH_Huks_ParamSet *importPlainKeyParams = nullptr;
+        ret = InitParamSet(&importPlainKeyParams, importedKeyParamSetArray, arraySize);
+        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet(import plain key) failed.";
+        importWrappedKeyTestParams->importWrappedKeyParamSet = importPlainKeyParams;
+
+        HksImportWrappedKeyTestCommonCase(importWrappedKeyTestParams);
+
+        OH_Huks_FreeParamSet(&genX25519KeyParamSet);
+        OH_Huks_FreeParamSet(&genCallerKeyParamSet);
+        OH_Huks_FreeParamSet(&callerImportParamsKek);
+        OH_Huks_FreeParamSet(&importPlainKeyParams);
+    }
 
     /**
      * @tc.name: HuksImportWrappedX25519Test.Security_HUKS_NAPI_Wrapped_0100
@@ -131,33 +184,18 @@ namespace Unittest::ImportWrappedKey {
      */
     HWTEST_F(HuksImportWrappedX25519Test, Security_HUKS_NAPI_Wrapped_0100, TestSize.Level0)
     {
-        char tmpKey1[] = "Security_HUKS_NAPI_Wrapped_0100";
-        struct OH_Huks_Blob newKeyAlias1 = { .size = strlen(tmpKey1), .data = (uint8_t *)tmpKey1 };
+        struct HksImportWrappedKeyTestParams importWrappedKeyTestParams001 = {0};
 
-        char tmpKey2[] = "Security_HUKS_NAPI_Wrapped_0100Wrap";
-        struct OH_Huks_Blob newKeyAlias2 = { .size = strlen(tmpKey2), .data = (uint8_t *)tmpKey2 };
-
-        struct OH_Huks_Blob inputECCPairBlob = {sizeof(inputECCPair), (uint8_t *) inputECCPair};
-        struct OH_Huks_Blob inputECCKeyBlob = {sizeof(inputECCKey), (uint8_t *) inputECCKey};
-
-        struct OH_Huks_ParamSet *genParamSetOption01 = nullptr;
-        struct OH_Huks_ParamSet *genParamSetOption02 = nullptr;
-        OH_Huks_Result ret = InitParamSet(&genParamSetOption01, g_genImportECCOption01, sizeof(g_genImportECCOption01) / sizeof(OH_Huks_Param));
-        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
-        ret = InitParamSet(&genParamSetOption02, g_ImportECCOption02, sizeof(g_ImportECCOption02) / sizeof(OH_Huks_Param));
-        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
-
-        ret = OH_Huks_ImportKeyItem(&newKeyAlias1, genParamSetOption01, &inputECCPairBlob);
-        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "OH_Huks_ImportKeyItem failed.";
-        ret = OH_Huks_ImportWrappedKeyItem(&newKeyAlias2, &newKeyAlias1,
-                                  genParamSetOption02, &inputECCKeyBlob);
-        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "OH_Huks_ImportWrappedKeyItem failed.";
-        ret = OH_Huks_DeleteKeyItem(&newKeyAlias1, genParamSetOption01);
-        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "OH_Huks_DeleteKeyItem failed.";
-        ret = OH_Huks_DeleteKeyItem(&newKeyAlias2, genParamSetOption02);
-        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "OH_Huks_DeleteKeyItem failed.";
-
-        OH_Huks_FreeParamSet(&genParamSetOption01);
-        OH_Huks_FreeParamSet(&genParamSetOption02);
+        importWrappedKeyTestParams001.wrappingKeyAlias = &g_wrappingKeyAliasAes256;
+        importWrappedKeyTestParams001.keyMaterialLen = g_importedAes256PlainKey.size;
+        importWrappedKeyTestParams001.callerKeyAlias = &g_callerKeyAliasAes256;
+        importWrappedKeyTestParams001.callerKekAlias = &g_callerKekAliasAes256;
+        importWrappedKeyTestParams001.callerKek = &g_callerAes256Kek;
+        importWrappedKeyTestParams001.callerAgreeKeyAlias = &g_callerAgreeKeyAliasAes256;
+        importWrappedKeyTestParams001.importedKeyAlias = &g_importedKeyAliasAes256;
+        importWrappedKeyTestParams001.importedPlainKey = &g_importedAes256PlainKey;
+        InitCommonTestParamsAndDoImport(&importWrappedKeyTestParams001, g_importWrappedAes256Params,
+                                        sizeof(g_importWrappedAes256Params) / sizeof(struct OH_Huks_Param));
+        HksClearKeysForWrappedKeyTest(&importWrappedKeyTestParams001);
     }
 }

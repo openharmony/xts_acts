@@ -334,7 +334,6 @@ static OH_Huks_Result CreateImportKeyAlias(struct OH_Huks_Blob *importKeyAlias, 
         ret.errorCode=OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT;
         return ret;
     }
-
     return ret;
 }
 

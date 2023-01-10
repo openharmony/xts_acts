@@ -21,10 +21,10 @@ import { HuksSignVerifyRSA } from '../../../../../../utils/param/signverify/publ
 let inDataString = "Hks_RSA_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000" +
     "00000000000000000000000000000000000000000000000000000000000000000000000000000000" +
     "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
-let inDataAfterSha512 = new Uint8Array(
+let inDataAfterSha512 = new Uint8Array([
     0x68, 0xD1, 0x5F, 0xE4, 0x46, 0xF7, 0xBF, 0x8D, 0x30, 0x91, 0x46, 0x53, 0x81, 0x49, 0xA0, 0xD5,
     0x39, 0xC7, 0xDC, 0x59, 0xE7, 0xF6, 0x42, 0x5D, 0x86, 0x09, 0x30, 0xD0, 0x3F, 0x4D, 0x91, 0x85,
-);
+]);
 let srcData64 = Data.Data64b;
 let srcData64Kb = stringToUint8Array(srcData64);
 let signedResult;
