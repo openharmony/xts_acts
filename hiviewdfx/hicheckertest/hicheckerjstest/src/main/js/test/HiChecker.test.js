@@ -85,7 +85,7 @@ describe('HiCheckerTest', function () {
         expect(hichecker.contains(0)).assertEqual(false);
         hichecker.addRule(999999);
         console.log('add wrong rule!');
-        expect(hichecker.contains(-1)).assertEqual(false);
+        expect(hichecker.contains(999999)).assertEqual(false);
     })
 
     /**
