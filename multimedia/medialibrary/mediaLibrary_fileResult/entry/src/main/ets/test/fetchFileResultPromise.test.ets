@@ -40,7 +40,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
                 let checkResult = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
                 expect(checkResult).assertTrue();
-                await fetchFileResult.close();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} error: ${error}`);
@@ -425,6 +425,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 try {
                     await fetchFileResult.getPositionObject(expectCount);
                     expect(false).assertTrue();
+                    fetchFileResult.close();
                     done();
                 } catch (error) {
                     console.info(`${testNum} passed error: ${error}`);

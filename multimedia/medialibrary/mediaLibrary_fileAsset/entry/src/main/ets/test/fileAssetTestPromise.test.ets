@@ -75,6 +75,8 @@ export default function fileAssetTestPromiseTest(abilityContext) {
                 if (!checkAssetCountPass) return;
                 let newAsset = await newFetchFileResult.getFirstObject();
                 expect(newAsset.dateModified != asset.dateModified).assertTrue();
+                fetchFileResult.close();
+                newFetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
@@ -105,6 +107,7 @@ export default function fileAssetTestPromiseTest(abilityContext) {
                 } catch (error) {
                     expect(true).assertTrue();
                     await asset.close(fd);
+                    fetchFileResult.close();
                     done();
                 }
             } catch (error) {
@@ -141,6 +144,7 @@ export default function fileAssetTestPromiseTest(abilityContext) {
                 } catch (error) {
                     expect(true).assertTrue();
                 }
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
@@ -176,6 +180,7 @@ export default function fileAssetTestPromiseTest(abilityContext) {
                 }
                 await sleep(1000);
                 expect(count).assertEqual(2);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} error:${error}`);

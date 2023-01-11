@@ -56,7 +56,9 @@ export default function fileAssetPromise2Test(abilityContext) {
 
                 asset[prop] = oldVal;
                 await asset.commitModify();
-                await fetchFileResult.close();
+                
+                fetchFileResult.close();
+                await fetchFileResultById.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} error : ${error}`);
@@ -74,10 +76,12 @@ export default function fileAssetPromise2Test(abilityContext) {
                     asset[prop] = val;
                     console.info(`${testNum} failed`);
                     expect(false).assertTrue();
+                    fetchFileResult.close();
                     done();
                 } catch (error) {
                     console.info(`${testNum} passed  : ${error}`);
                     expect(true).assertTrue();
+                    fetchFileResult.close();
                     done();
                 }
                 done();
@@ -98,10 +102,12 @@ export default function fileAssetPromise2Test(abilityContext) {
                 try {
                     await asset.commitModify();
                     expect().assertFail();
+                    fetchFileResult.close();
                     done();
                 } catch (error) {
                     console.info(`${testNum} passed : ${error}`);
                     expect(true).assertTrue();
+                    fetchFileResult.close();
                     done();
                 }
             } catch (error) {
@@ -379,6 +385,7 @@ export default function fileAssetPromise2Test(abilityContext) {
                 const asset = await fetchFileResult.getFirstObject();
                 const isDir = await asset.isDirectory();
                 expect(isDir).assertEqual(false);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info("FileAsset isDirectory 001 failed, message = " + error);

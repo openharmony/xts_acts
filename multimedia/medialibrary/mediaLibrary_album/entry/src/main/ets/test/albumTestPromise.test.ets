@@ -519,6 +519,9 @@ export default function albumTestPromiseTest(abilityContext) {
                 let expectAlbumCount = 1;
                 let currentFetchOp = albumFetchOps(testNum, "Pictures/", "Static", IMAGE_TYPE);
                 const albumList = await media.getAlbums(currentFetchOp);
+                for (const album of albumList) {
+                    console.info(`URI: ${album.coverUri} + ${album.albumUri}`);
+                }
                 const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
                 if (!albumCountPass) return;
                 const album = albumList[0];
@@ -526,12 +529,14 @@ export default function albumTestPromiseTest(abilityContext) {
                 const asset = await fetchFileResult.getFirstObject();
                 if (asset == undefined) {
                     console.info(`${testNum} failed asset undefined`);
-
+                    fetchFileResult.close();
                     expect(false).assertTrue();
                     done();
                     return;
                 }
+                console.info(`Fetch URI: ${asset.uri}`);
                 expect(asset.uri).assertEqual(album.coverUri);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);

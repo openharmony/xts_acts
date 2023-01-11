@@ -196,12 +196,14 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
                 }
                 if (!isNum(asset.dateTaken)) {
                     expect(false).assertTrue();
+                    fetchFileResult.close();
                     done();
                     return;
                 }
                 if (asset.size !== props[type].size) {
                     console.info(`${testNum}:: asset.size: props.size - ${asset.size} : ${props[type].size}`);
                     expect(false).assertTrue();
+                    fetchFileResult.close();
                     done();
                     return;
                 }
@@ -216,6 +218,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
                 }
                 expect(asset.orientation).assertEqual(props[type].orientation);
                 expect(asset.duration.toString()).assertEqual(props[type].duration);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -238,8 +241,9 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
 
         const getFileAssetsAbnormal = async (done, testNum, fetchOps) => {
             try {
-                await media.getFileAssets(fetchOps);
+                let fetchFileResult = await media.getFileAssets(fetchOps);
                 expect(false).assertTrue();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -252,7 +256,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
                 let fetchFileResult = await media.getFileAssets(fetchOps);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 0);
                 expect(checkAssetCountPass).assertTrue();
-
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -274,6 +278,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
                 await creatAsset.close(creatAssetFd);
                 await asset.close(fd);
                 expect(true).assertTrue();
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -297,9 +302,11 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
                 try {
                     await media.createAsset(type, name, path);
                     expect(false).assertTrue();
+                    fetchFileResult.close();
                     done();
                 } catch (error) {
                     expect(true).assertTrue();
+                    fetchFileResult.close();
                     done();
                 }
             } catch (error) {

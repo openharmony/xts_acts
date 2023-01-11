@@ -59,6 +59,7 @@ export default function getThumbnailCallback(abilityContext) {
                         await pixelmap.getImageInfo((err, info) => {
                             expect(info.size.width).assertEqual(size.width);
                             expect(info.size.height).assertEqual(size.height);
+                            fetchFileResult.close();
                             done();
                         });
                     });
@@ -67,6 +68,7 @@ export default function getThumbnailCallback(abilityContext) {
                         await pixelmap.getImageInfo((err, info) => {
                             expect(info.size.width).assertEqual(size.width);
                             expect(info.size.height).assertEqual(size.height);
+                            fetchFileResult.close();
                             done();
                         });
                     });
@@ -88,17 +90,20 @@ export default function getThumbnailCallback(abilityContext) {
                     if (err) {
                         console.info(`${testNum}:: err :${err}`);
                         expect(true).assertTrue();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
                     if (pixelmap == undefined) {
                         expect(true).assertTrue();
+                        fetchFileResult.close();
                         done();
                     } else {
                         const info = await pixelmap.getImageInfo();
                         console.info(`${testNum} pixel width: ${info.size.width}`);
                         console.info(`${testNum} pixel height: ${info.size.height}`);
                         expect(info.size.width == size.width || info.size.height == size.height).assertFalse();
+                        fetchFileResult.close();
                         done();
                     }
                 });

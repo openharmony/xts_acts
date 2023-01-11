@@ -76,6 +76,7 @@ export default function fileTestPromiseTest(abilityContext) {
                 await asset.close(fd);
                 expect(creatAsset1.id != creatAsset2.id).assertTrue();
                 console.info(`${testNum} displayName1: ${displayName1}, displayName2 :${displayName2} `);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);
@@ -104,7 +105,7 @@ export default function fileTestPromiseTest(abilityContext) {
                     val = displayName;
                 }
                 expect(creatAsset[key]).assertEqual(val);
-
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);
@@ -125,10 +126,12 @@ export default function fileTestPromiseTest(abilityContext) {
 
                 const id = asset.id;
                 const idOP = { selections: FILEKEY.ID + "= ?", selectionArgs: ["" + id] };
+                fetchFileResult.close();
                 fetchFileResult = await media.getFileAssets(idOP);
                 let newAsset = await fetchFileResult.getFirstObject();
                 expect(isNum(newAsset.dateModified)).assertTrue();
                 expect(newAsset.dateModified).assertEqual(asset.dateModified);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);

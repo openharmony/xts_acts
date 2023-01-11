@@ -77,15 +77,18 @@ export default function filekeyTestPromiseTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
                 if (!checkAssetCountPass) return;
                 const asset = await fetchFileResult.getFirstObject();
+                const assetType = asset[type];
                 let Op = {
                     selections: fileKey + "= ?",
-                    selectionArgs: [asset[type] + ""],
+                    selectionArgs: [assetType + ""],
                 };
+                fetchFileResult.close();
                 fetchFileResult = await media.getFileAssets(Op);
                 const fetchCount = fetchFileResult.getCount();
                 expect(fetchCount > 0).assertTrue();
                 let firstObject = await fetchFileResult.getFirstObject();
-                expect(firstObject[type]).assertEqual(asset[type]);
+                expect(firstObject[type]).assertEqual(assetType);
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} error : ${error}`);

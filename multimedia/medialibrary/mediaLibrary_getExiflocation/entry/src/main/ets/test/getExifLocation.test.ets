@@ -92,6 +92,7 @@ export default function getExifLocation(abilityContext) {
                 expect(value2.search("9") != -1).assertTrue();
                 expect(value3).assertEqual("N");
                 expect(value4).assertEqual("W");
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info("SUB_MEDIA_MEDIALIBRARY_GETEXIFLOCATION_001 error: " + error);

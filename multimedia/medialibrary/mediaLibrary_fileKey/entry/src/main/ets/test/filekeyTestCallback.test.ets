@@ -80,10 +80,12 @@ export default function filekeyTestCallbackTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
                 if (!checkAssetCountPass) return;
                 const asset = await fetchFileResult.getFirstObject();
+                const assetType = asset[type];
                 let Op = {
                     selections: fileKey + "= ?",
-                    selectionArgs: [asset[type] + ""],
+                    selectionArgs: [assetType + ""],
                 };
+                fetchFileResult.close();
                 media.getFileAssets(Op, async (err, fetchFileResult) => {
                     if (err) {
                         console.info(`${testNum}, err: ${err}`);
@@ -93,8 +95,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
                     }
                     const fetchCount = fetchFileResult.getCount();
                     const currentAsset = await fetchFileResult.getFirstObject();
-                    expect(currentAsset[type]).assertEqual(asset[type]);
+                    expect(currentAsset[type]).assertEqual(assetType);
                     expect(fetchCount > 0).assertTrue();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
