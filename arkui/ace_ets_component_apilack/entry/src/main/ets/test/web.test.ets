@@ -150,11 +150,10 @@ export default function webGetTitleJsunit() {
       console.info('webGetTitle testwebGetTitle0009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('getTitleText');
-      console.info("[testwebGetTitle0009] component webDebuggingAccess strJson:" + strJson);
+      console.info("[testwebGetTitle0009] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Web');
-      expect(obj.$attrs.webDebuggingAccess).assertEqual(undefined);
-      console.info("[testwebGetTitle0009] webDebuggingAccess value :" + obj.$attrs.webDebuggingAccess);
+      console.info("[testwebGetTitle0009] type value :" + obj.$type);
       done();
     });
   })

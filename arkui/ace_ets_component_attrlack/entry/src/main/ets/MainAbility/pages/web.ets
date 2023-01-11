@@ -39,7 +39,6 @@ struct WebEditText {
         .blur(2)
         // .fileFromUrlAccess(true)
         .initialScale(2)
-        .webDebuggingAccess(true)
         .onRenderExited((event) => {
           console.info('onRenderExited getAcceptType: ', event.renderExitReason);
         })
