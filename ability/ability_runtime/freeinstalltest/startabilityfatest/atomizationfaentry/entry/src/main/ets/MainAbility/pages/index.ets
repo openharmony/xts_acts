@@ -92,11 +92,4 @@ struct Index {
     await featureAbility.terminateSelf();
     console.info('startAbilityForResultPromise terminateSelfWithResult END');
   }
-
-  async aboutToAppear() {
-    var permissions = ["ohos.permission.DISTRIBUTED_DATASYNC"];
-    featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
-      console.info("start requestPermissionsFromUser!!!!")
-    })
-  }
 }
