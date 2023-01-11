@@ -322,7 +322,6 @@ export default function ApiCoverTest() {
         let el1 = common.AreaMode.EL1;
         let el2 = common.AreaMode.EL2;
         let eventHub: common.EventHub = context.eventHub;
-        let permissionRequestResult: common.PermissionRequestResult;
         let abilityResult: common.AbilityResult;
         let connectOptions: common.ConnectOptions;
 
