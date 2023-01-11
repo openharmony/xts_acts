@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import securitylabel from './securitylabel.test.js'
+import security_label from './securitylabel.test.js'
 export default function testsuite() {
-securitylabel()
+  security_label()
 }
