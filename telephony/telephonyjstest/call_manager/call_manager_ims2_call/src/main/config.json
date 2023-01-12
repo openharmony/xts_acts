@@ -74,6 +74,10 @@
       {
         "name":"ohos.permission.READ_CONTACTS",
         "reason":"need use ohos.permission.READ_CONTACTS"
+      },
+      {
+        "name":"ohos.permission.PLACE_CALL",
+        "reason":"need use ohos.permission.PLACE_CALL"
       }
     ],
     "js": [
