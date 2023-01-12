@@ -37,22 +37,20 @@ describe('audioCapturerChange', function () {
         })
     }
     async function driveFn() {
-        console.info(`come in driveFn`)
-        let driver = await UiDriver.create()
-        console.info(`driver is ${JSON.stringify(driver)}`)
-        await sleep(2000)
-        console.info(`UiDriver start`)
-        let button = await driver.findComponent(BY.text('允许'))
-        console.info(`button is ${JSON.stringify(button)}`)
-        await sleep(5000)
-        await button.click()
+        console.info(`come in driveFn`);
+        let driver = await UiDriver.create();
+        console.info(`driver is ${JSON.stringify(driver)}`);
+        await sleep(100);
+        console.info(`UiDriver start`);
+        let button = await driver.findComponent(BY.text('允许'));
+        console.info(`button is ${JSON.stringify(button)}`);
+        await sleep(100);
+        await button.click();
     }
 
     beforeAll(async function () {
         await getPermission();
-        sleep(2000)
         await driveFn();
-        await sleep(5000);
         audioStreamManager = audioManager.getStreamManager();
         audioStreamManagerCB = audioManager.getStreamManager();
         console.info('TestLog: Start Testing AudioFrameworkTest Interfaces');
