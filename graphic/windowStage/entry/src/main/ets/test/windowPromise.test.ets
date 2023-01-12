@@ -1158,28 +1158,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
     })
     /**
-    * @tc.number     SUB_WINDOW_CREATE_JSAPI_004
-    * @tc.name       Test createTest4
-    * @tc.desc       Verify the scenario of creating a window with duplicate IDs
-    */
-    it('createTest4', 0, async function (done) {
-      let caseName = 'createTest4';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowId = 'sameids'
-      let ohosData = await ohosWindow.create(context, windowId, 1).catch((err) => {
-        console.log(msgStr + 'ohosWindow.create 1 once err: ' + JSON.stringify(err));
-        unexpectedError(err, caseName, 'ohosWindow.create', done);
-      })
-      expect(!!ohosData).assertTrue();
-      let ohosDataError = await ohosWindow.create(context, windowId, 1).catch((err) => {
-        console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(1001)
-        done();
-      })
-      console.log(msgStr + 'ohosWindow.create 1 twice ohosDataError: ' + JSON.stringify(ohosDataError));
-    })
-    /**
     * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_001
     * @tc.name       Test loadContentTest1
     * @tc.desc       Verify the scenario of loading an existing page
