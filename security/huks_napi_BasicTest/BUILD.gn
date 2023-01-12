@@ -64,6 +64,7 @@ ohos_moduletest_suite("ActsHuksNAPITest") {
     "src/huks_signverify_sm2_test.cpp",
     "src/huks_three_stage_test_common.cpp",
     "src/huks_warpped_test.cpp",
+    "src/huks_wrapped_test_common.cpp",
   ]
 
   include_dirs = [
