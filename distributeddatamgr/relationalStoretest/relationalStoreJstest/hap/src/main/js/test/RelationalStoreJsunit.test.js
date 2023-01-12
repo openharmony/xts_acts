@@ -291,7 +291,7 @@ describe('relationalStoreTest', function () {
             console.log("catch err: failed, err: code=" + e.code + " message=" + e.message);
             expect(null).assertFail();
             done();
-            console.info(TAG + "************* testRdbStore0009 end   *************");
+            console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0020 end   *************");
         }
         
     })
@@ -315,7 +315,7 @@ describe('relationalStoreTest', function () {
                 console.log("SUB_DDM_RelationalStore_OpenStatus_0030 status is " + rdbStore.OpenStatus);
             }
             console.log("Get SUB_DDM_RelationalStore_OpenStatus_0030 successfully.");
-        });
+        })
         await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
         done();
         console.log("Get SUB_DDM_RelationalStore_OpenStatus_0030 successfully end.");
