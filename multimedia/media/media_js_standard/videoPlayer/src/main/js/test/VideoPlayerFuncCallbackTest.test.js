@@ -605,7 +605,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         });
 
         eventEmitter.on('test_setSurface', () => {
-            videoPlayer.url = fdHead + fileDescriptor.fd;
+            videoPlayer.url = fdPath;
             videoPlayer.setDisplaySurface(surfaceID, (err) => {
                 if (err == null) {
                     expect(videoPlayer.state).assertEqual('idle');
@@ -690,7 +690,6 @@ describe('VideoPlayerFuncCallbackTest', function () {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_BASE_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
-        let fdPath = fdHead + fileDescriptor.fd;
         let mySteps = new Array(CREATE_EVENT, SETFDSOURCE_EVENT, fileDescriptor, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PLAY_EVENT, STOP_EVENT, RESET_EVENT, SETSOURCE_EVENT, fdPath,
             PREPARE_EVENT, SETLOOP_EVENT, true, PLAY_EVENT, SEEK_EVENT, DURATION_TIME / 2, SEEK_EVENT, 0,

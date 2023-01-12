@@ -318,7 +318,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
-        videoPlayer.url = fdHead + fileDescriptor.fd;
+        videoPlayer.url = fdPath;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -494,7 +494,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
-        videoPlayer.url = fdHead + fileDescriptor.fd;
+        videoPlayer.url = fdPath;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');

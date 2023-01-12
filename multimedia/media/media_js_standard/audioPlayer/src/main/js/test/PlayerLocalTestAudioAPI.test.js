@@ -268,7 +268,7 @@ describe('PlayerLocalTestAudioAPI', function () {
     it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         fileDescriptor.offset = 1;
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, END_STATE);
+        let mySteps = new Array(ERROR_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
         audioPlayer.fdSrc = fileDescriptor;
@@ -284,6 +284,8 @@ describe('PlayerLocalTestAudioAPI', function () {
     */
     it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_SRC_API_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
+        fileDescriptor.fd = fdNumber;
+        fileDescriptor.offset = 0;
         fileDescriptor.length = -1;
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, END_STATE);
         initAudioPlayer();
@@ -722,9 +724,9 @@ describe('PlayerLocalTestAudioAPI', function () {
     it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_TIME_API_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         initAudioPlayer();
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
         mediaTestBase.msleep(PLAY_TIME);
-        expect(audioPlayer.src).assertEqual(fdHead + fileDescriptor.fd);
+        expect(audioPlayer.src).assertEqual(fdPath);
         expect(audioPlayer.currentTime).assertEqual(0);
         expect(audioPlayer.duration).assertEqual(DURATION_TIME);
         expect(audioPlayer.state).assertEqual('idle');
