@@ -331,12 +331,13 @@ describe('SingleKvStorePromiseTest', function () {
     it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300');
         try {
-            var intValue = Number.MAX_VALUE;
+            let intValue = Number.MAX_VALUE;
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 intValue ' + intValue);
             await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 put success');
                 expect(data == undefined).assertTrue();
                 await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 get success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 get success, data ' + data);
                     expect(intValue == data).assertTrue();
                 }).catch((err) => {
                     console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
@@ -362,12 +363,13 @@ describe('SingleKvStorePromiseTest', function () {
     it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400');
         try {
-            var intValue = Number.MIN_VALUE;
+            let intValue = Number.MIN_VALUE;
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 intValue ' + intValue);
             await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 put success');
                 expect(data == undefined).assertTrue();
                 await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 get success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 get success, data ' + data);
                     expect(intValue == data).assertTrue();
                 }).catch((err) => {
                     console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
@@ -379,6 +381,102 @@ describe('SingleKvStorePromiseTest', function () {
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 put e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+ 
+    /**
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500
+     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 005
+     * @tc.type: FUNC
+     * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 005
+     */
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500');
+        try {
+            let intValue = Number.NaN;
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 intValue ' + intValue);
+            await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 put success');
+                expect(data == undefined).assertTrue();
+                await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 get success, data ' + data);
+                expect(Number.isNaN(data)).assertTrue();
+                }).catch((err) => {
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
+                });
+            }).catch((err) => {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 put fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect(null).assertFail();
+            });
+        } catch (e) {
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 put e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(null).assertFail();
+        }
+        done();
+    })
+        /**
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600
+     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 006
+     * @tc.type: FUNC
+     * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 006
+     */
+         it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600', 0, async function (done) {
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600');
+            try {
+                let intValue = Number.NEGATIVE_INFINITY;
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 intValue ' + intValue);
+                await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 put success');
+                    expect(data == undefined).assertTrue();
+                    await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
+                        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 get success, data ' + data);
+                        expect(intValue == data).assertTrue();
+                    }).catch((err) => {
+                        console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                        expect(null).assertFail();
+                    });
+                }).catch((err) => {
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 put fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
+                });
+            } catch (e) {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 put e ' + `, error code is ${e.code}, message is ${e.message}`);
+                expect(null).assertFail();
+            }
+            done();
+        })
+
+    /**
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700
+     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 007
+     * @tc.type: FUNC
+     * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 007
+     */
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700');
+        try {
+            let intValue = Number.POSITIVE_INFINITY;
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 intValue ' + intValue);
+            await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 put success');
+                expect(data == undefined).assertTrue();
+                await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 get success, data ' + data);
+                    expect(intValue == data).assertTrue();
+                }).catch((err) => {
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
+                });
+            }).catch((err) => {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 put fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect(null).assertFail();
+            });
+        } catch (e) {
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 put e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
