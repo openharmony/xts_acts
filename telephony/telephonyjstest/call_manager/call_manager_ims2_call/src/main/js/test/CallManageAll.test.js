@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,7 +22,7 @@ const DIAL_TYPE_OTT = 2;
 const MEDIA_TYPE_VOICE = 0;
 const TEL_CONFERENCE_IDLE = 0;
 const ERR_SLOT_ID = -1;
-
+const CALL_NUMBER = '10086';
 class EmergencyNumberOptions {
     slotId;
 
@@ -367,6 +367,74 @@ export default function CallManageImsCall() {
                 expect().assertFail();
                 done();
             }
+        });
+
+        /**
+         * @tc.number Telephony_CallManager_Dial_Async_0100
+         * @tc.name testDial—0100
+         * @tc.desc PhoneNumber: 10086, no options. Call dial api by callback.
+         *             The return value is true
+         */
+        it('Telephony_CallManager_Dial_Async_0100', 0, async function (done) {
+            let CaseName = 'Telephony_CallManager_Dial_Async_0100';
+            try {
+                call.dial(CALL_NUMBER, (err, data) => {
+                    console.info(CaseName + " case success" + JSON.stringify(data));
+                    expect(data == true).assertTrue();
+                    done();
+                    return;
+                });
+            } catch (err) {
+                console.info(CaseName + ' case error' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            }
+        });
+
+        /**
+         * @tc.number Telephony_CallManager_Dial_Async_0200
+         * @tc.name testDial—0200
+         * @tc.desc PhoneNumber: 10086, has options. Call dial api by callback.
+         *             The return value is true
+         */
+        it('Telephony_CallManager_Dial_Async_0200', 0, async function (done) {
+            let CaseName = 'Telephony_CallManager_Dial_Async_0200';
+            try {
+                call.dial(CALL_NUMBER, {
+                    extras: false
+                }, (err, data) => {
+                    console.info(CaseName + " case success" + JSON.stringify(data));
+                    expect(data == true).assertTrue();
+                    done();
+                    return;
+                });
+            } catch (err) {
+                console.info(CaseName + ' case error' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            }
+        });
+
+        /**
+         * @tc.number Telephony_CallManager_Dial_Promise_0100
+         * @tc.name testIsEmergencyPhoneNumber_1400
+         * @tc.desc PhoneNumber: 10086, has options. Call dila api by permise
+         *             The return value is true
+         */
+        it('Telephony_CallManager_Dial_Promise_0100', 0, async function (done) {
+            let CaseName = 'Telephony_CallManager_Dial_Promise_0100';
+            call.dial(CALL_NUMBER, {
+                extras: false
+            }).then((data) => {
+                console.info(CaseName + " case success" + JSON.stringify(data));
+                expect(data == true).assertTrue();
+                done();
+                return;
+            }).catch((err) => {
+                console.info(CaseName + ' case error' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            });
         });
     });
 }
