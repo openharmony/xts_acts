@@ -147,6 +147,7 @@ int32_t MockIDevice::IsModelCacheSupported(bool& isSupported)
 
 int32_t MockIDevice::AllocateBuffer(uint32_t length, SharedBuffer &buffer)
 {
+    std::lock_guard<std::mutex> lock(m_mtx);
     sptr<Ashmem> ashptr = Ashmem::CreateAshmem("allocateBuffer", length);
     if (ashptr == nullptr) {
         LOGE("[NNRtTest] Create shared memory failed.");
@@ -170,6 +171,7 @@ int32_t MockIDevice::AllocateBuffer(uint32_t length, SharedBuffer &buffer)
 
 int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
 {
+    std::lock_guard<std::mutex> lock(m_mtx);
     auto ash = m_ashmems[buffer.fd];
     ash->UnmapAshmem();
     return HDF_SUCCESS;
@@ -177,6 +179,7 @@ int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
 
 int32_t MockIDevice::MemoryCopy(float* data, uint32_t length)
 {
+    std::lock_guard<std::mutex> lock(m_mtx);
     auto memManager = NeuralNetworkRuntime::MemoryManager::GetInstance();
     auto memAddress = memManager->MapMemory(m_bufferFd, length);
     if (memAddress == nullptr) {

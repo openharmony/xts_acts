@@ -98,6 +98,7 @@ private:
     bool m_cache = true;
     bool m_dynamic = true;
     std::vector<bool> m_operations{true};
+    std::mutex m_mtx;
 };
 
 class MockIPreparedModel : public IPreparedModel {
