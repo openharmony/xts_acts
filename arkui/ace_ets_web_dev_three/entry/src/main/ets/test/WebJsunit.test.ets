@@ -51,7 +51,7 @@ export default function webJsunit() {
      */
     it('LoadUrl',0,async function(done){
       emitKey="emitLoadData";
-      Utils.registerContainEvent("LoadUrl","百度一下，你就知道",1,done);
+      Utils.registerContainEvent("LoadUrl","index",1,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -71,7 +71,7 @@ export default function webJsunit() {
      */
     it('Backward',0,async function(done){
       emitKey="emitForward";
-      Utils.registerEvent("Backward","百度一下，你就知道",3,done);
+      Utils.registerEvent("Backward","index",3,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 

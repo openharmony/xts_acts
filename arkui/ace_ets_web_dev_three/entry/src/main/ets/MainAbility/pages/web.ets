@@ -72,7 +72,7 @@ struct Index {
                         case "emitLoadUrl":{ 
                             try {
                                 setTimeout(()=>{
-                                    this.controller.loadUrl('www.baidu.com');
+                                    this.controller.loadUrl($rawfile("index.html"));
                                     setTimeout(()=>{
                                         let title = this.controller.getTitle();
                                         Utils.emitEvent(title,1)
@@ -150,7 +150,7 @@ struct Index {
                                 this.controller.onInactive();
                                 setTimeout(()=>{
                                     setTimeout(()=>{
-                                        this.controller.loadUrl("file:///data/storage/el1/bundle/phone/resources/rawfile/index.html")
+                                        this.controller.loadUrl("resource://rawfile/index.html")
                                     },3000)
                                     var title4 = this.controller.getTitle();
                                     Utils.emitEvent(title4,7) 
@@ -263,7 +263,7 @@ struct Index {
                         }
                         case "emitSearchAllAsync":{
                             try {
-                                this.controller.loadUrl("file:///data/storage/el1/bundle/phone/resources/rawfile/index.html")
+                                this.controller.loadUrl("resource://rawfile/index.html")
                                 setTimeout(()=>{
                                     this.controller.searchAllAsync("首页"); 
                                 },3000)  

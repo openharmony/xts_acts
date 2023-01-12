@@ -70,7 +70,7 @@ export default function buttonJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[testButton02] component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Button');
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ButtonType.Normal');
       done();
     });
 
