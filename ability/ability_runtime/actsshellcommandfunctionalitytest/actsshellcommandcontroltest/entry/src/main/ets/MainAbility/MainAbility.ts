@@ -20,42 +20,42 @@ import testsuite from '../test/List.test'
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         // Ability is creating, initialize resources for this ability
-        console.log("ActsShellCommandControlTest  MainAbility onCreate")
+        console.log("ActsShellCommandControlTest  MainAbility onCreate");
         globalThis.abilityWant = want;
-        globalThis.abilityContext = this.context
-        let abilityDelegator: any
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let abilityDelegatorArguments: any
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        console.info('start run testcase!!!')
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        globalThis.abilityContext = this.context;
+        let abilityDelegator: any;
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let abilityDelegatorArguments: any;
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+        console.info('start run testcase!!!');
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
     }
 
     onDestroy() {
         // Ability is destroying, release resources for this ability
-        console.log("ActsShellCommandControlTest  MainAbility onDestroy")
+        console.log("ActsShellCommandControlTest  MainAbility onDestroy");
     }
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
-        console.log("ActsShellCommandControlTest  MainAbility onWindowStageCreate")
+        console.log("ActsShellCommandControlTest  MainAbility onWindowStageCreate");
 
-        windowStage.setUIContent(this.context, "pages/index/index", null)
-        console.log("ActsShellCommandControlTest  MainAbility onWindowStageCreate finish")
+        windowStage.setUIContent(this.context, "pages/index/index", null);
+        console.log("ActsShellCommandControlTest  MainAbility onWindowStageCreate finish");
     }
 
     onWindowStageDestroy() {
         // Main window is destroyed, release UI related resources
-        console.log("ActsShellCommandControlTest  MainAbility onWindowStageDestroy")
+        console.log("ActsShellCommandControlTest  MainAbility onWindowStageDestroy");
     }
 
     onForeground() {
         // Ability has brought to foreground
-        console.log("ActsShellCommandControlTest  MainAbility onForeground")
+        console.log("ActsShellCommandControlTest  MainAbility onForeground");
     }
 
     onBackground() {
         // Ability has back to background
-        console.log("ActsShellCommandControlTest  MainAbility onBackground")
+        console.log("ActsShellCommandControlTest  MainAbility onBackground");
     }
 };

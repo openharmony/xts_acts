@@ -27,14 +27,14 @@ export default function shellCommandControlTest() {
      */
     it('Acts_Ability_ShellCommandControl__0100', 0, async function (done) {
       TAG = 'Acts_Ability_ShellCommandControl__0100';
-      console.log(`${TAG} --- start`)
+      console.log(`${TAG} --- start`);
       let cmd = 'aa help'
       globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-        console.log(`${TAG} stdResult = ${data.stdResult}`)
-        console.log(`${TAG} stdResult = ${JSON.stringify(err)}`)
+        console.log(`${TAG} stdResult = ${data.stdResult}`);
+        console.log(`${TAG} stdResult = ${JSON.stringify(err)}`);
         expect(data.exitCode).assertEqual(0);
-        console.log(`${TAG} --- end`)
-        done()
+        console.log(`${TAG} --- end`);
+        done();
       })
     })
 
@@ -46,16 +46,15 @@ export default function shellCommandControlTest() {
      */
     it('Acts_Ability_ShellCommandControl__0200', 0, async function (done) {
       TAG = 'Acts_Ability_ShellCommandControl__0200';
-      console.log(`${TAG} --- start`)
+      console.log(`${TAG} --- start`);
       let cmd = 'ls -l';
       globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-        console.log(`${TAG} stdResult = ${data.stdResult}`)
-        console.log(`${TAG} stdResult = ${JSON.stringify(err)}`)
+        console.log(`${TAG} stdResult = ${data.stdResult}`);
+        console.log(`${TAG} stdResult = ${JSON.stringify(err)}`);
         expect(data.exitCode).assertEqual(-1);
-        console.log(`${TAG} --- end`)
-        done()
+        console.log(`${TAG} --- end`);
+        done();
       })
     })
-
   })
 }
