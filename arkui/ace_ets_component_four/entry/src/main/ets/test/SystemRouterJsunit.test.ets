@@ -50,10 +50,13 @@ export default function systemRouterJsunit() {
       } catch (err) {
         console.error("[systemRouterTest002] push page error " + JSON.stringify(result));
       }
+      await Utils.sleep(1000);
+      router.clear();
       await Utils.sleep(1500);
       let callback = (paramsEvent) => {
         console.info("[systemRouterTest002] get state result is: " + JSON.stringify(paramsEvent));
         expect(paramsEvent.data.params).assertEqual('B Page');
+        done();
       }
       let paramsEvent = {
         eventId: 211,
@@ -69,7 +72,6 @@ export default function systemRouterJsunit() {
       await Utils.sleep(1000);
       router.back();
       await Utils.sleep(1000);
-      done();
     });
 
     it('systemRouterTest003', 0, async function (done) {
@@ -131,6 +133,7 @@ export default function systemRouterJsunit() {
       let callback = (paramsEvent) => {
         console.info("[systemRouterTest005] get state result is: " + JSON.stringify(paramsEvent));
         expect(paramsEvent.data.params).assertEqual('B Page');
+        done();
       }
       let paramsEvent = {
         eventId: 211,
@@ -143,7 +146,6 @@ export default function systemRouterJsunit() {
       }
       console.info("[systemRouterTest005] click replace button result is: "
         + JSON.stringify(sendEventByKey('ReplaceButtonA', 10, "")));
-      done();
     });
   });
 }
