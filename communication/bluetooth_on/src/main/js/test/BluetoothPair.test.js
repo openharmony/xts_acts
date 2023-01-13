@@ -283,27 +283,22 @@ describe('bluetoothhostTest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0900', 0, async function (done) {
-        let BondState=
-        {
-            BOND_STATE_INVALID : 0,
-            BOND_STATE_BONDING : 1,
-            BOND_STATE_BONDED : 2
-        };
         function BondStateParam(data) {
             console.info("[bluetooth_js] bondStateChange on:" + JSON.stringify(data)
             +'bondStateChange deviceId:' + data.deviceId + 'bondStateChange state:' + data.state);
         }
         bluetooth.BLE.on('bondStateChange', BondStateParam);
         let result = bluetooth.pairDevice("11:22:55:66:33:44");
-        expect(BondState.BOND_STATE_INVALID == 0).assertTrue();
-        expect(BondState.BOND_STATE_BONDING == 1).assertTrue();
-        expect(BondState.BOND_STATE_BONDED == 2).assertTrue();
+        expect(bluetooth.BondState.BOND_STATE_INVALID == 0).assertTrue();
+        expect(bluetooth.BondState.BOND_STATE_BONDING == 1).assertTrue();
+        expect(bluetooth.BondState.BOND_STATE_BONDED == 2).assertTrue();
         bluetooth.BLE.off('bondStateChange', BondStateParam);
         done()
     })
 
 })
 }
+
 
 
 
