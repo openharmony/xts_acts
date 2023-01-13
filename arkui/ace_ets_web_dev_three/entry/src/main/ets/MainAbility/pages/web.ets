@@ -412,7 +412,6 @@ struct Index {
                 })
             }
             Web({src:"www.example.com",controller:this.controller})
-            .webDebuggingAccess(true)
             .mediaPlayGestureAccess(true)
             .javaScriptAccess(true)
             .zoomAccess(this.text)
