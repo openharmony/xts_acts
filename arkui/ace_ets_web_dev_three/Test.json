@@ -6,7 +6,7 @@
         "bundle-name": "com.open.harmony.acewebthreetest",
         "module-name": "phone",
         "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "testcase-timeout": "70000"
     },
     "kits": [{
         "test-file-name": [
