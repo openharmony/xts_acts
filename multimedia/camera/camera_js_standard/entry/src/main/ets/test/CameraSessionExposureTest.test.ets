@@ -74,12 +74,12 @@ let mVideoConfig = {
     maxDuration: 500
 }
 
-let mPicWidthMax = 8192;
-let mPicHeightMax = 8192;
+let mPicWidthMax = 1;
+let mPicHeightMax = 1;
 
 let mMETERINGPoint = {
-    x: mPicWidthMax / 2,
-    y: mPicHeightMax / 2,
+    x: mPicWidthMax / 2.0,
+    y: mPicHeightMax / 2.0,
 }
 
 let mMETERINGPointLT = {
@@ -898,9 +898,9 @@ export default function cameraSessionExposureTest() {
             } else {
                 for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 start for camera[" + i + "]");
-    
+
                     await startCameraSession(i);
-    
+
                     mCameraSession.setMeteringPoint(mMETERINGPointLT);
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 finish");
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 PASSED with METERINGPoint is: " + mMETERINGPointLT.x + ", " + mMETERINGPointLT.y);
