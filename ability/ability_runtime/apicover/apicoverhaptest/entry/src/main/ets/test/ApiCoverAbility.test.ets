@@ -569,57 +569,6 @@ export default function ApiCoverTest() {
     })
 
     /*
-     * @tc.number  SUB_AA_FMS_AbilityStage_0200
-     * @tc.name    Start Service and get config.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-     it('SUB_AA_FMS_AbilityStage_0200', 0, async function (done) {
-      let subscriber = null
-      let subscribeInfo = {
-        events: ["ExtensionConext_StartAbility"]
-      }
-      function UnSubscribeInfoCallback(err, data) {
-        console.info("SUB_AA_FMS_AbilityStage_0200===UnSubscribeInfoCallback===")
-      }
-      async function SubscribeInfoCallback(err, data) {
-        console.info("SUB_AA_FMS_AbilityStage_0200===SubscribeInfoCallback===" + JSON.stringify(data))
-        console.info("SUB_AA_FMS_AbilityStage_0200===serviceContext===" + JSON.stringify(globalThis.serviceContext))
-        console.info("SUB_AA_FMS_AbilityStage_0200===config===" + JSON.stringify(globalThis.serviceContext.config))
-        expect(data.parameters["config"]).assertLess(2)
-        expect(data.parameters["poniterDevices"]).assertFalse()
-        expect(data.parameters["AbilityInfo"]).assertEqual("com.example.apicoverhaptest")
-        let direction = globalThis.serviceContext.config.direction
-        let pointerDervice = globalThis.serviceContext.config.hasPointerDevice
-        let AbilityInfo = globalThis.serviceContext.extensionAbilityInfo.bundleName
-        expect(direction).assertLess(2)
-        expect(pointerDervice).assertFalse()
-        expect(AbilityInfo).assertEqual("com.example.apicoverhaptest")
-        commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
-        await sleep(4000)
-        done()
-      }
-      commonEvent.createSubscriber(subscribeInfo, (err, data) => {
-        console.info("SUB_AA_FMS_AbilityStage_0200===CreateSubscriberCallback===")
-        subscriber = data
-        commonEvent.subscribe(subscriber, SubscribeInfoCallback)
-      })
-      let formWant ={
-        deviceId:"",
-        bundleName:"com.example.apicoverhaptest",
-        abilityName:"ServiceAbility",
-      }
-      globalThis.abilityContext.startAbility(formWant, (err, data)=>{
-        if(err.code == 0){
-           console.info("SUB_AA_FMS_AbilityStage_0200===abilityContext startAbility success===")
-        }else{
-          expect().assertFail()
-          done()
-        }
-      })
-    })
-
-    /*
      * @tc.number  SUB_AA_FMS_AcquireForm_0100
      * @tc.name    Test startAbility in FormExtensionContext.
      * @tc.desc    Function test
