@@ -1221,14 +1221,9 @@ export default function cameraJSUnitOutput() {
       } else {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 to operate");
         let count = 0;
-        photoOutput.on('captureStart', async (err, data) => {
-          if (!err) {
-            count++;
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 FAILED: " + err.message);
-          }
+        photoOutput.on('captureStart', async (data) => {
+          count++;
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
           await sleep(1000);
           done();
         })
@@ -1297,18 +1292,13 @@ export default function cameraJSUnitOutput() {
       } else {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 to operate");
         let count = 0;
-        photoOutput.on('captureEnd', async (err, data) => {
-          if (!err) {
-            count++;
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 success");
-            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, captureId = " + data.captureId);
-            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, frameCount = " + data.frameCount);
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 FAILED: " + err.message);
-          }
-          await sleep(1000);
-          done();
+        photoOutput.on('captureEnd', async (data) => {
+        count++;
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 success");
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, captureId = " + data.captureId);
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, frameCount = " + data.frameCount);
+        await sleep(1000);
+        done();
         })
         await sleep(1000);
         done();
