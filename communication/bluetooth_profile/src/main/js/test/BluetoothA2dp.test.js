@@ -17,27 +17,6 @@ import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 
-let ProfileId = {
-    
-    PROFILE_A2DP_SOURCE : 1,
-    PROFILE_HANDS_FREE_AUDIO_GATEWAY : 4,
-    PROFILE_HID_HOST : 6,
-    PROFILE_PAN_NETWORK : 7
-}
-
-let PlayingState = {
-        STATE_NOT_PLAYING : 0x0000 ,
-        STATE_PLAYING : 0x0001,
-    }
-
-let ProfileConnectionState=
-    {
-        STATE_CONNECTING : 1,
-        STATE_CONNECTED : 2,
-        STATE_DISCONNECTED : 0,
-        STATE_DISCONNECTING : 3
-    }
-
 export default function bluetoothhostTest_host_1() {
 describe('bluetoothhostTest_host_1', function () {
     function sleep(delay) {
@@ -97,10 +76,10 @@ describe('bluetoothhostTest_host_1', function () {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_A2DP_Conn_0100', 0, async function (done) {
         let connState = bluetooth.getBtConnectionState();
         console.info('[bluetooth_js] get bt connection state result' + JSON.stringify(connState));
-        expect(connState).assertEqual(ProfileConnectionState.STATE_DISCONNECTED);
-        expect(true).assertTrue(ProfileConnectionState.STATE_CONNECTING!= connState );
-        expect(true).assertTrue(ProfileConnectionState.STATE_CONNECTED!= connState );
-        expect(true).assertTrue(ProfileConnectionState.STATE_DISCONNECTING!= connState );
+        expect(connState).assertEqual(bluetooth.ProfileConnectionState.STATE_DISCONNECTED);
+        expect(true).assertTrue(bluetooth.ProfileConnectionState.STATE_CONNECTING!= connState );
+        expect(true).assertTrue(bluetooth.ProfileConnectionState.STATE_CONNECTED!= connState );
+        expect(true).assertTrue(bluetooth.ProfileConnectionState.STATE_DISCONNECTING!= connState );
         done();
     })
 
@@ -119,7 +98,7 @@ describe('bluetoothhostTest_host_1', function () {
             'deviceId: ' + data.deviceId + 'state:'+ data.state);
             expect(true).assertEqual(data !=null);
         }
-        let a2dpSrc = bluetooth.getProfile(ProfileId.PROFILE_A2DP_SOURCE);
+        let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
         console.info('[bluetooth_js]a2dp get profile result:' + JSON.stringify(a2dpSrc));
         a2dpSrc.on('connectionStateChange', StateChangeParam);
         a2dpSrc.connect('11:22:33:44:55:77');
@@ -145,7 +124,7 @@ describe('bluetoothhostTest_host_1', function () {
             'deviceId: ' + data.deviceId + 'state:'+ data.state);
             expect(true).assertEqual(data !=null);
         }
-        let a2dpSrc = bluetooth.getProfile(ProfileId.PROFILE_A2DP_SOURCE);
+        let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
         console.info('[bluetooth_js]a2dp get profile result:' + JSON.stringify(a2dpSrc));
         a2dpSrc.on('connectionStateChange', StateChangeParam);
         await sleep(6000);
@@ -166,7 +145,7 @@ describe('bluetoothhostTest_host_1', function () {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_A2DP_Conn_0400', 0, async function (done) {
-        let a2dpSrc = bluetooth.getProfile(ProfileId.PROFILE_A2DP_SOURCE);
+        let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
         console.info('[bluetooth_js]a2dp get profile result:' + JSON.stringify(a2dpSrc));
         let conn = a2dpSrc.disconnect('test');
         console.info('[bluetooth_js]a2dp disconnect1 result:' + JSON.stringify(conn));
@@ -184,9 +163,9 @@ describe('bluetoothhostTest_host_1', function () {
      * @tc.level Level 3
      */
       it('SUB_COMMUNICATION_BLUETOOTH_BR_A2DP_Conn_0500', 0, async function (done) {
-        let a2dpSrcConn = bluetooth.getProfileConnState(ProfileId.PROFILE_A2DP_SOURCE);
+        let a2dpSrcConn = bluetooth.getProfileConnState(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
         console.info('[bluetooth_js]get a2dp result:' + JSON.stringify(a2dpSrcConn));
-        expect(a2dpSrcConn).assertEqual(ProfileConnectionState.STATE_DISCONNECTED);
+        expect(a2dpSrcConn).assertEqual(bluetooth.ProfileConnectionState.STATE_DISCONNECTED);
         done();
     })
     
@@ -200,7 +179,7 @@ describe('bluetoothhostTest_host_1', function () {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_A2DP_Conn_0600', 0, async function (done) {
-        let a2dpSrc = bluetooth.getProfile(ProfileId.PROFILE_A2DP_SOURCE);
+        let a2dpSrc = bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
         let conn = a2dpSrc.connect('test');
         console.info('[bluetooth_js]a2dp invaild connect:' + JSON.stringify(conn));
         expect(conn).assertFalse();
@@ -217,10 +196,10 @@ describe('bluetoothhostTest_host_1', function () {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_A2DP_Conn_0700', 0, async function (done) {
-        let a2dpSrc = bluetooth.getProfile(ProfileId.PROFILE_A2DP_SOURCE);
+        let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
         console.info('[bluetooth_js]a2dp get profile result:' + JSON.stringify(a2dpSrc));
         let ret = a2dpSrc.getDeviceState('11:22:33:44:55:66');
-        expect(ret).assertEqual(ProfileConnectionState.STATE_DISCONNECTED);
+        expect(ret).assertEqual(bluetooth.ProfileConnectionState.STATE_DISCONNECTED);
         done();
     })
 
@@ -234,10 +213,10 @@ describe('bluetoothhostTest_host_1', function () {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_A2DP_Conn_0800', 0, async function (done) {
-        let a2dpSrc = bluetooth.getProfile(ProfileId.PROFILE_A2DP_SOURCE);
+        let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
         console.info('[bluetooth_js]a2dp get profile result:' + JSON.stringify(a2dpSrc));
         let ret = a2dpSrc.getDeviceState('test');
-        expect(ret).assertEqual(ProfileConnectionState.STATE_DISCONNECTED);
+        expect(ret).assertEqual(bluetooth.ProfileConnectionState.STATE_DISCONNECTED);
         done();
     })
 
@@ -251,12 +230,12 @@ describe('bluetoothhostTest_host_1', function () {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_A2DP_Conn_0900', 0, async function (done) {
-        let a2dpSrc = bluetooth.getProfile(ProfileId.PROFILE_A2DP_SOURCE);
+        let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
         console.info('[bluetooth_js]a2dp get profile result:' + JSON.stringify(a2dpSrc));
         let state = a2dpSrc.getPlayingState('11:22:33:44:55:66');
         console.info('[bluetooth_js]a2dp getPlayingState result:' + JSON.stringify(state));
-        expect(state).assertEqual(PlayingState.STATE_NOT_PLAYING);
-        expect(true).assertEqual(state!=PlayingState.STATE_PLAYING);
+        expect(state).assertEqual(bluetooth.PlayingState.STATE_NOT_PLAYING);
+        expect(true).assertEqual(state!=bluetooth.PlayingState.STATE_PLAYING);
         done();
     })
 
@@ -270,7 +249,7 @@ describe('bluetoothhostTest_host_1', function () {
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_A2DP_Conn_1000', 0, async function (done) {
-        let a2dpSrc = bluetooth.getProfile(ProfileId.PROFILE_A2DP_SOURCE);
+        let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
         console.info('[bluetooth_js]a2dp get profile result:' + JSON.stringify(a2dpSrc));
         let retArray = a2dpSrc.getConnectionDevices();
         expect(true).assertEqual(retArray.length>=0);
@@ -281,4 +260,5 @@ describe('bluetoothhostTest_host_1', function () {
 })
 
 }
+
 

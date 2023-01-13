@@ -71,11 +71,8 @@ describe('bluetoothhostTest4', function() {
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_SPP_0100', 0, async function (done) {
-        let SppType = {
-            SPP_RFCOMM : 0
-        }
         let SppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
-            secure: true, type: SppType.SPP_RFCOMM};
+            secure: true, type: bluetooth.SppType.SPP_RFCOMM};
         let serverNumber = -1;
         function serverSocket(code, number) {
             if (code) {
@@ -390,5 +387,6 @@ describe('bluetoothhostTest4', function() {
    
   })
 }
+
 
 
