@@ -71,12 +71,12 @@ let mVideoConfig = {
     maxDuration: 500
 }
 
-let mPicWidthMax = 8192;
-let mPicHeightMax = 8192;
+let mPicWidthMax = 1;
+let mPicHeightMax = 1;
 
 let mFocusPoint = {
-    x: mPicWidthMax / 2,
-    y: mPicHeightMax / 2,
+    x: mPicWidthMax / 2.0,
+    y: mPicHeightMax / 2.0,
 }
 
 let mFocusPointLT = {
