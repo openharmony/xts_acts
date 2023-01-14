@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import inputMethod from '@ohos.inputmethod'
+import inputMethod from '@ohos.inputMethod'
 
 export default function imeAbilityTest(abilityContext) {
   describe('imeAbilityTest', function () {

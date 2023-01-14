@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import inputMethod from '@ohos.inputmethod';
-import subtype from '@ohos.inputMethodSubtype';
+import inputMethod from '@ohos.inputMethod';
+import subtype from '@ohos.InputMethodSubtype';
 
 export default function inputMethodStageJSUnit() {
   describe('inputMethodTest', function () {
