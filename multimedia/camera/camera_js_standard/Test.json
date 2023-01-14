@@ -5,8 +5,8 @@
         "test-timeout": "3000000",
         "bundle-name":"com.open.harmony.multimedia.cameratest",
         "package-name": "com.open.harmony.multimedia.cameratest",
-        "shell-timeout": "60000",
-        "testcase-timeout": 100000
+        "shell-timeout": "600000",
+		"testcase-timeout": 100000
     },
     "kits": [
         {

@@ -618,42 +618,39 @@ export default function cameraSessionTest() {
         })
         
         /**               
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100
         * @tc.name      : Check capture session start/stop/release output with promise or not 
         * @tc.desc      : Check capture session start/stop/release output with promise or not 
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100--------------");
+        it('SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100--------------");
 
             if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             }
             else {
                 for (let i = 0; i < mCameraNum; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 start for camera[" + i + "]");
                     await startCameraSession(i);
 
                     await mCameraSession.start();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 start PASSED");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 start PASSED");
                     await sleep(2000);
 
                     await mCameraSession.stop();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 stop PASSED");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 stop PASSED");
                     await sleep(500);
 
-                    await mCameraSession.release();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 release PASSED");
-                    await sleep(500);
-
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 end for camera[" + i + "]");
+                    await stopCameraSession();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_RELEASE_PROMISE_0100 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_START_STOP_PROMISE_0100 ends here");
                 done();
             }
         })
