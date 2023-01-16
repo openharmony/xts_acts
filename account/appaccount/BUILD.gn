@@ -24,7 +24,6 @@ group("appaccount_hap") {
       "actsgetallaccounts:ActsGetAllAccountsTest",
       "actssetcheckdatasyncenable:ActsSetCheckDataSyncEnableTest",
       "actssetchecksyncenable:ActsSetCheckSyncEnableTest",
-      "getallaccessibleaccounts:accessibleaccounts",
       "getallaccounts:getallaccounts",
       "sceneProject:appaccount_scene",
     ]
