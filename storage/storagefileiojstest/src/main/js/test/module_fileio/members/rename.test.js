@@ -35,7 +35,7 @@ describe('fileio_rename', function () {
 
     try {
       let newf = fpath + '123';
-      await fileio.rename(fpath, newf)
+      fileio.rename(fpath, newf)
         .then(function (err) {
           expect(fileio.accessSync(newf) == null).assertTrue();
           expect(err == null).assertTrue();
@@ -65,7 +65,7 @@ describe('fileio_rename', function () {
 
     try {
       let newf = fpath + 'aaa';
-      await fileio.rename(fpath, newf, function (err) {
+      fileio.rename(fpath, newf, function (err) {
         expect(fileio.accessSync(newf) == null).assertTrue();
         expect(fileio.unlinkSync(newf) == null).assertTrue();
         done();
@@ -89,7 +89,7 @@ describe('fileio_rename', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileio.access(fpath).then(function (err) {
+      fileio.access(fpath).then(function (err) {
         let newf = fpath + '123';
         fileio.rename(fpath, newf)
           .then(function (err) {
