@@ -86,7 +86,7 @@ describe('fileio_symlink', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileio.symlink(fpath, fpath + 'pass2', function (err) {
+      fileio.symlink(fpath, fpath + 'pass2', function (err) {
         fileio.accessSync(fpath + 'pass2');
         fileio.unlinkSync(fpath);
         fileio.unlinkSync(fpath + 'pass2');
