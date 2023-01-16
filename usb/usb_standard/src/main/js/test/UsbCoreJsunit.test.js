@@ -65,7 +65,7 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_JS_0480
    * @tc.name: getDevices
    * @tc.desc: Positive test: Get device list
-   * @tc.desc:【C-ALL-HARDWARE-0502】Must support connecting standard USB peripherals
+   * @tc.desc: 【C-ALL-HARDWARE-0502】必须支持连接标准 USB 外围设备
    */
   it('SUB_USB_JS_0480', 0, function () {
     console.info('usb SUB_USB_JS_0480 begin');
