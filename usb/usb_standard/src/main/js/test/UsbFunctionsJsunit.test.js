@@ -53,7 +53,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
    * @tc.number: SUB_USB_JS_0330
    * @tc.name: getCurrentFunctions
    * @tc.desc: Positive test: Get current device mode, mask and description character conversion
-   * @tc.desc: 【C-ALL-HARDWARE-0500】The port must be able to connect to a USB port with standard A or C host mode
+   * @tc.desc: 【C-ALL-HARDWARE-0500】端口必须可连接到具有标准A型或C型的主机模式的USB端口
    */
   it('SUB_USB_JS_0330', 0, function () {
     console.info('usb SUB_USB_JS_0330 begin');
