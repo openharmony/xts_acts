@@ -61,7 +61,7 @@ export default function webJsunit() {
      */
     it('allowGeolocation',0,async function(done){
       emitKey="emitDeleteGeolocation";
-      Utils.registerEvent("allowGeolocation","file:///, result: true",402,done);
+      Utils.registerEvent("allowGeolocation","resource://rawfile/, result: true",402,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -69,19 +69,19 @@ export default function webJsunit() {
      *tc.name deleteGeolocation                                                                                                                                                                                                                
      *tc.desic delete specific restored geolocation
      */
-    it('deletGeolocation',0,async function(done){
+    it('deleteGeolocation',0,async function(done){
       emitKey="emitDeleteAllGeolocation";
-      Utils.registerEvent("deletGeolocation","",404,done);
+      Utils.registerEvent("deleteGeolocation","",404,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
      *tc.number SUB_ACE_BASIC_ETS_API_069                                                                                                                                                                   
-     *tc.name deletAllGeolocation                                                                                                                                                                                                                
+     *tc.name deleteAllGeolocation                                                                                                                                                                                                                
      *tc.desic delete all restored geolocation
      */
-    it('deletAllGeolocation',0,async function(done){
+    it('deleteAllGeolocation',0,async function(done){
       emitKey="emitIsCookieAllowed";
-      Utils.registerEvent("deletAllGeolocation","",406,done);
+      Utils.registerEvent("deleteAllGeolocation","",406,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -141,7 +141,7 @@ export default function webJsunit() {
      */
     it('getSourceId',0,async function(done){
       emitKey="emitLoaData";
-      Utils.registerEvent("getSourceId","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",422,done);
+      Utils.registerEvent("getSourceId","resource://rawfile/index.html",422,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
