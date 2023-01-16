@@ -1930,10 +1930,10 @@ describe('window_test', function () {
     it('enumWindowStageEventType_Test_001', 0, async function (done) {
         console.log('test the enum value of WindowStageEventType begin');
         try {
-            expect(1).assertEqual(window.WindowStageEventType.FOREGROUND);
+            expect(1).assertEqual(window.WindowStageEventType.SHOWN);
             expect(2).assertEqual(window.WindowStageEventType.ACTIVE);
             expect(3).assertEqual(window.WindowStageEventType.INACTIVE);
-            expect(4).assertEqual(window.WindowStageEventType.BACKGROUND);
+            expect(4).assertEqual(window.WindowStageEventType.HIDDEN);
             done();
         } catch (err) {
             console.log('test enum value of windowStageEventType error ' + JSON.stringify(err));
