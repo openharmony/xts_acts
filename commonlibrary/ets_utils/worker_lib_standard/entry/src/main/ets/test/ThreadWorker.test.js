@@ -1686,26 +1686,34 @@ describe('threadWorkerTest', function () {
        a message that cannot be serialized. The event handler is executed in the host thread
      */
     it('threadWorker_onmessageerror_test_002', 0, async function (done) {
-        var ss = new worker.ThreadWorker("entry/ets/workers/newworker_008.js")
-        var res = 0
-        var flag = false
-    
-        ss.onexit = function() {
-            flag = true
-            res++
+        try {
+            var ss = new worker.ThreadWorker("entry/ets/workers/newworker_008.js")
+            var res = 0
+            var flag = false
+            ss.onexit = function() {
+                flag = true
+                res++
+            }
+            ss.onmessageerror = function (e) {
+                flag = true
+                res++
+            }
+            var message = Symbol(42)
+            ss.postMessage(message)
+        } catch (error) {
+            while (!flag) {
+                await promiseCase()
+            }
+            expect(error.name).assertEqual("BusinessError")
+            expect(error.message).assertEqual("Serializing an uncaught exception failed, failed to serialize message.")
+            flag = false
+            ss.terminate()
+            while (!flag) {
+                await promiseCase()
+            }
+            expect(res).assertEqual(2)
+            done()
         }
-
-        ss.onmessageerror = function (e) {
-            flag = true
-        }
-        function foo() {
-        }
-        ss.postMessage(foo)
-        while (!flag) {
-            await promiseCase()
-        }
-        expect(res).assertEqual(1)
-        done()
     })
 
     // check new second worker is ok

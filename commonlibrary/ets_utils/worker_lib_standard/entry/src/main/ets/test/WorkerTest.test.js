@@ -1025,15 +1025,20 @@ describe('WorkerTest', function () {
 
         ss.onmessageerror = function (e) {
             flag = true
+            res++
         }
-        function foo() {
+        var message = Symbol(42)
+        ss.postMessage(message)
+        while (!flag) {
+            await promiseCase()
         }
-        ss.postMessage(foo)
+        flag = false
+        ss.terminate()
         while (!flag) {
             await promiseCase()
         }
 
-        expect(res).assertEqual(1)
+        expect(res).assertEqual(2)
         done()
     })
 
