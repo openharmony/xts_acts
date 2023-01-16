@@ -36,6 +36,7 @@ group("multimedia") {
       "image/image_js_standard/imageModifyProperty:image_modifyProperty_js_hap",
       "image/image_js_standard/imagePacking:image_packing_js_hap",
       "image/image_js_standard/imagePixelMapFramework:image_pixelmapframework_js_hap",
+      "image/image_js_standard/imagePixelMapNDK:image_pixel_map_ndk_js_hap",
       "image/image_js_standard/imageRGBA:image_rgba_js_hap",
       "image/image_js_standard/imageRaw:image_raw_js_hap",
       "image/image_js_standard/imageReceiver:image_receiver_js_hap",
