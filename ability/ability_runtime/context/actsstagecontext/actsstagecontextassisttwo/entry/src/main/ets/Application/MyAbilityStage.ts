@@ -49,36 +49,10 @@ export default class MyAbilityStage extends AbilityStage {
                 'preferencesDir': stageAppContext.preferencesDir, 'bundleCodeDir': stageAppContext.bundleCodeDir
             };
 
-            let bundleContext = globalThis.abilityStageContextB.createBundleContext("com.example.actsstagecontextassisttwo");
-
-            let result = await bundleContext.resourceManager.getString(16777219)
-
-            let appBundleContext = stageAppContext.createBundleContext("com.example.actsstagecontextassisttwo");
-
-            let result1 = await appBundleContext.resourceManager.getString(16777219)
-
-            console.log("ActsStageContextAssistTwo getLabel " + JSON.stringify(result1))
-
-            let stageBundleContextJson = {
-                'cacheDir': bundleContext.cacheDir, 'tempDir': bundleContext.tempDir, 'filesDir': bundleContext.filesDir,
-                'distributedFilesDir': bundleContext.distributedFilesDir, 'databaseDir': bundleContext.databaseDir,
-                'preferencesDir': bundleContext.preferencesDir, 'bundleCodeDir': bundleContext.bundleCodeDir
-            };
-
-            let stageAppBundleContextJson = {
-                'cacheDir': appBundleContext.cacheDir, 'tempDir': appBundleContext.tempDir, 'filesDir': appBundleContext.filesDir,
-                'distributedFilesDir': appBundleContext.distributedFilesDir, 'databaseDir': appBundleContext.databaseDir,
-                'preferencesDir': appBundleContext.preferencesDir, 'bundleCodeDir': appBundleContext.bundleCodeDir
-            };
-
             let commonEventData = {
                 parameters: {
                     abilityStageContextAssistOne: stageContextJson,
                     abilityStageAppContextAssistOne: stageAppContextJson,
-                    abilityStageLabel: result,
-                    abilityStageAppLabel: result1,
-                    abilityStageBundleContxtAssistOne: stageBundleContextJson,
-                    abilityStageAppBundleContextAssistOne: stageAppBundleContextJson
                 }
             }
             commonEvent.publish("AssistContextTwo_StageAbilityA_Start_CommonEvent", commonEventData, () => {

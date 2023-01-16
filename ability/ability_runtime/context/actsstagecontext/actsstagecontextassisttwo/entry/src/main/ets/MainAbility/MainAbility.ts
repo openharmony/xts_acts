@@ -15,8 +15,6 @@
 
 import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent'
-import bundle from '@ohos.bundle';
-import dataAbility from '@ohos.data.dataAbility';
 
 export default class MainAbility extends Ability {
     onCreate(want: any, launchParam: any) {
@@ -52,24 +50,6 @@ export default class MainAbility extends Ability {
             'preferencesDir': abilityAppContext.preferencesDir, 'bundleCodeDir': abilityAppContext.bundleCodeDir
         };
 
-        let bundleContext = this.context.createBundleContext("com.example.actsstagecontextassisttwo")
-
-        let bundleAppContext = abilityAppContext.createBundleContext("com.example.actsstagecontextassisttwo")
-
-        let result = await bundleContext.resourceManager.getString(16777219)
-
-        let bundleContextJson = {
-            'cacheDir': bundleContext.cacheDir, 'tempDir': bundleContext.tempDir, 'filesDir': bundleContext.filesDir,
-            'distributedFilesDir': bundleContext.distributedFilesDir, 'databaseDir': bundleContext.databaseDir,
-            'preferencesDir': bundleContext.preferencesDir, 'bundleCodeDir': bundleContext.bundleCodeDir
-        };
-
-        let appBundleContextJson = {
-            'cacheDir': bundleAppContext.cacheDir, 'tempDir': bundleAppContext.tempDir, 'filesDir': bundleAppContext.filesDir,
-            'distributedFilesDir': bundleAppContext.distributedFilesDir, 'databaseDir': bundleAppContext.databaseDir,
-            'preferencesDir': bundleAppContext.preferencesDir, 'bundleCodeDir': bundleAppContext.bundleCodeDir
-        };
-
         let errCode;
 
         try {
@@ -83,9 +63,6 @@ export default class MainAbility extends Ability {
             parameters: {
                 abilityContextAssistTwo: contextJson,
                 abilityAppContextAssistTwo: appContextJson,
-                abilityLabel: result,
-                abilityBundleContextAssistTwo: bundleContextJson,
-                abilityAppBundleContextAssistTwo: appBundleContextJson,
                 abilityBundleContextTest: errCode
             }
         }
