@@ -1912,13 +1912,14 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
               sumCount++
               console.info(msgStr + 'Succeeded in setting the window mode. count: ' + sumCount);
               console.info(msgStr + 'Succeeded in setting the window mode. loopCount.length: ' + loopCount.length);
-              if (sumCount == loopCount.length) done();
+              
               if (++i < length) {
                 getData(i, length)
                 console.log(msgStr + 'jixuzhixing  i: ' + i);
               } else {
                 console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length + '   ,tempType:' + tempType);
               }
+              if (sumCount == loopCount.length) done();
             }).catch((err) => {
               console.log(msgStr + 'currentType: ' + tempType)
               console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
@@ -2081,6 +2082,26 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         console.error(msgStr + 'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));
       }
       ;
+    })
+
+    /**
+     * @tc.number		SUB_WMS_ENUM_WINDOWSTAGEEVENTTYPERENAME_JSAPI_001
+     * @tc.name			Test enumWindowStageEventTypeReName_Test_001.
+     * @tc.desc			To test the enum value of WindowStageEventType.
+     */
+    it('enumWindowStageEventTypeReName_Test_001', 0, async function (done) {
+      console.info('test the enum value of WindowStageEventType begin');
+      try {
+        expect(1).assertEqual(ohosWindow.WindowStageEventType.SHOWN);
+        expect(2).assertEqual(ohosWindow.WindowStageEventType.ACTIVE);
+        expect(3).assertEqual(ohosWindow.WindowStageEventType.INACTIVE);
+        expect(4).assertEqual(ohosWindow.WindowStageEventType.HIDDEN);
+        done();
+      } catch (err) {
+        console.info('test enum value of windowStageEventType error ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
     })
   })
 }
