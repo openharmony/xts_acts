@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -268,7 +268,6 @@ describe('SimManagerTest', function () {
    * @tc.desc    Function test
    */
   it('Telephony_Sim_isSimActive_Async_0700', 0, async function (done) {
-      const CASE_NAME = 'Telephony_Sim_isSimActive_Async_0700';
       sim.isSimActive(env.SLOTID2, (err, data) => {
         console.info("isSimActive async err info :" + JSON.stringify(err) + "data:" + JSON.stringify(data));
         expect(err.code).assertEqual(202);
@@ -283,7 +282,6 @@ describe('SimManagerTest', function () {
    * @tc.desc    Function test
    */
   it('Telephony_Sim_isSimActive_Promise_0700', 0, async function (done) {
-    const CASE_NAME = 'Telephony_Sim_isSimActive_Promise_0700';
     let promise = sim.isSimActive(env.SLOTID2);
     promise.then(data => {
       console.log(`isSimActive success, promise: data->${JSON.stringify(data)}`);
@@ -306,12 +304,12 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_hasSimCard_Async_0600';
     sim.hasSimCard(env.SLOTID2, (err, data) => {
       if (err) {
-        expect(err.code).assertEqual(202);
-        console.info(`${CASE_NAME} fail, err: ${err.message}`);
+        expect(err.code).assertEqual(8300001);
+        console.info(CASE_NAME +' fail, err: ' + JSON.stringify(err));
         done();
         return;
       }
-      console.info(`${CASE_NAME} finish`);
+      console.info(CASE_NAME + ' finish' + JSON.stringify(data));
     });
   });
 
@@ -326,12 +324,12 @@ describe('SimManagerTest', function () {
     try {
       let data = await sim.hasSimCard(env.SLOTID2);
     } catch (err) {
-      expect(err.code).assertEqual(202);
-      console.info(`${CASE_NAME} fail, err: ${err.message}`);
+      expect(err.code).assertEqual(8300001);
+      console.info(CASE_NAME +' fail, err: ' + JSON.stringify(err));
       done();
       return;
     }
-    console.info(`${CASE_NAME} finish`);
+    console.info(CASE_NAME + ' finish');
   });
 
   /**
@@ -357,12 +355,14 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_GetCardType_Async_0400';
     sim.getCardType(env.SLOTID2, (err, cardType) => {
       if (err) {
-        console.info(`${CASE_NAME} GetCardType error: ${err.message}`);
-        expect(err.code).assertEqual(202);
+        console.info(CASE_NAME + ' GetCardType error: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(8300001);
         done();
         return;
       }
-      console.info(`${CASE_NAME} test finish.`);
+      console.info(CASE_NAME + ' finish' + JSON.stringify(cardType));
+      expect().assertFail();
+      done();
     });
   });
 
@@ -376,10 +376,10 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_GetCardType_Promise_0400';
     try {
       const cardType = await sim.getCardType(env.SLOTID2);
-      console.info(`${CASE_NAME} test finish.`);
+      console.info(CASE_NAME + ' finish');
     } catch (err) {
-      console.info(`${CASE_NAME} GetCardType error: ${err.message}`);
-      expect(err.code).assertEqual(202);
+      console.info(CASE_NAME + ' GetCardType error: ' + JSON.stringify(err));
+      expect(err.code).assertEqual(8300001);
     }
     done();
   });
@@ -394,13 +394,13 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_hasOperatorPrivileges_Async_0400';
     sim.hasOperatorPrivileges(env.SLOTID2, (error, result) => {
       if (error) {
-        console.info(`${CASE_NAME} hasOperatorPrivileges error: ${error.message}`);
-        expect(error.code).assertEqual(202);
+        console.info(CASE_NAME + 'hasOperatorPrivileges error: ' + JSON.stringify(error));
+        expect(error.code).assertEqual(8300001);
         done();
         return;
       }
-      expect(result).assertFalse();
-      console.info(`${CASE_NAME} test finish.`);
+      console.info(CASE_NAME + ' finish' + JSON.stringify(result));
+      expect().assertFail();
       done();
     });
   });
@@ -415,11 +415,12 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_hasOperatorPrivileges_Promise_0400';
     try {
       const result = await sim.hasOperatorPrivileges(env.SLOTID2);
-      expect(result).assertFalse();
-      console.info(`${CASE_NAME} test finish.`);
+      console.info(CASE_NAME + ' finish' + JSON.stringify(result));
+      expect().assertFail();
+      done();
     } catch (error) {
-      console.info(`${CASE_NAME} hasOperatorPrivileges error: ${error.message}`);
-      expect(error.code).assertEqual(202);
+      console.info(CASE_NAME + 'hasOperatorPrivileges error: ' + JSON.stringify(error));
+      expect(error.code).assertEqual(8300001);
     }
     done();
   });
