@@ -175,7 +175,6 @@ describe('userAuthTestExecute', function () {
                 auth.execute("FACE_ONLY", "S1","S1", function(data) {
                     console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,S1,S1:" + data);
                     // INVALID_PARAMETERS（6）
-                    // expect(data).assertEqual(6);
                     setTimeout(function() {
                     }, 1);
                 });
@@ -188,7 +187,6 @@ describe('userAuthTestExecute', function () {
                 auth.execute("FACE_ONLY", function(data) {
                     console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY" + data);
                     // INVALID_PARAMETERS（6）
-                    // expect(data).assertEqual(6);
                     setTimeout(function() {
                     }, 1);
                 });
@@ -287,7 +285,6 @@ describe('userAuthTestExecute', function () {
                 auth.execute("FACE_ONLY", "S1","S1").catch(function(data) {
                     console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,S1,S1:" + data);
                     // INVALID_PARAMETERS（6）
-                    // expect(data).assertEqual(6);undefined
                     setTimeout(function() {
                     }, 1);
                 });
@@ -300,7 +297,6 @@ describe('userAuthTestExecute', function () {
                 auth.execute("FACE_ONLY").catch(function(data) {
                     console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY:" + data);
                     // INVALID_PARAMETERS（6）
-                    // expect(data).assertEqual(6);  undefined
                     setTimeout(function() {
                     }, 1);
                 });
