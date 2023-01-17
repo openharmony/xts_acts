@@ -29,17 +29,8 @@
       "moduleType": "entry"
     },
     "defPermissions": [
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.GET_ALL_APP_ACCOUNTS"
-      }
     ],
     "reqPermissions": [
-      {
-        "name": "ohos.permission.GET_ALL_APP_ACCOUNTS",
-        "reason": "ceshi"
-      },
       {
         "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
         "reason":"need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
