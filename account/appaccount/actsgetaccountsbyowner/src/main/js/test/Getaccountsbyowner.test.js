@@ -171,9 +171,8 @@ export default function GetAccountsByOwner() {
             console.debug("====>creat finish====");
             var emptyBundle = "";
             appAccountManager.getAccountsByOwner(emptyBundle, (err, data)=>{
-                console.debug("====>getAccountsByOwner 0500 data:" + JSON.stringify(data));
                 console.debug("====>getAccountsByOwner 0500 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                expect(err.code == 12300002).assertEqual(true);
                 console.debug("====>GetAccountsByOwner_0500 end====");
                 done();
             })
@@ -191,11 +190,10 @@ export default function GetAccountsByOwner() {
             var emptyBundle = "";
             try{
                 var data = await appAccountManager.getAccountsByOwner(emptyBundle);
-                console.debug("====>getAccountsByOwner 0600 data:" + JSON.stringify(data));   
-                done();
-            } catch(err) {
+            }
+            catch(err){
                 console.debug("====>getAccountsByOwner 0600 err:" + JSON.stringify(err));   
-                expect(err).assertEqual(null);
+                expect(err.code == 12300002).assertEqual(true);
                 console.debug("====>GetAccountsByOwner_0600 end====");
                 done();
             }

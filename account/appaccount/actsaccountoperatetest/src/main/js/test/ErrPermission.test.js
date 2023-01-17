@@ -148,11 +148,7 @@ export default function ActsAccountErrPermission() {
                 expect(err).assertEqual(null);
                 appAccountManager.getAllAccounts((err, data)=>{
                     console.debug("====>getAllAccounts 0500 err:" + JSON.stringify(err));
-                    console.debug("====>getAllAccounts 0500 data:" + JSON.stringify(data));
-                    expect(err).assertEqual(null);
-                    expect(data.length).assertEqual(1);
-                    expect(data[0].name).assertEqual("accessibleAccount_callback_nopermission");
-                    expect(data[0].owner).assertEqual("com.example.actsaccountoperatetest");
+                    expect(err.code).assertEqual(ERR_PERMISSION_DENIED);
                     appAccountManager.removeAccount("accessibleAccount_callback_nopermission", (err)=>{
                         console.debug("====>delete Account ActsAccountErrPermission_0500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -185,11 +181,6 @@ export default function ActsAccountErrPermission() {
                 console.debug("====>ActsAccountErrPermission_0600 end====");
                 done();
             }
-            expect(data.length).assertEqual(1);
-            expect(data[0].name).assertEqual("accessibleAccount_promise_nopermission");
-            expect(data[0].owner).assertEqual("com.example.actsaccountoperatetest");
-            console.debug("====>getAllAccounts 0600 err:" + JSON.stringify(data));
-            done();
         });
 
         /*
