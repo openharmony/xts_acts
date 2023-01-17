@@ -20,7 +20,7 @@ ohos_js_hap_suite("ActsShellCommandControlTest") {
     ":shellcommandcontrol_js_assets",
     ":shellcommandcontrol_resources",
   ]
-  ets2abc = true;
+  ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsShellCommandControlTest"
   subsystem_name = "ability"
