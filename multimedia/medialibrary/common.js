@@ -235,20 +235,26 @@ const getPermission = async function (name, context) {
     console.info("getPermission start", name);
 
     let permissions = ["ohos.permission.MEDIA_LOCATION", "ohos.permission.READ_MEDIA", "ohos.permission.WRITE_MEDIA"];
-    context.requestPermissionsFromUser(permissions, (data) => {
-        console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
-    });
-    await sleep(200);
 
+    let atManager = abilityAccessCtrl.createAtManager();
+    try {
+        atManager.requestPermissionsFromUser(context, permissions, (err, data) => {
+            console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
+        });
+    } catch (err) {
+        console.log(`get permission catch err -> ${JSON.stringify(err)}`);
+    }
+    await sleep(1000);
     let driver = uitest.Driver.create();
-    await sleep(200);
-
+    
+    await sleep(2000);
     let button = await driver.findComponent(uitest.ON.text("允许"));
     await button.click();
+    await sleep(2000);
 
     let appInfo = await bundle.getApplicationInfo(name, 0, 100);
     let tokenID = appInfo.accessTokenId;
-    let atManager = abilityAccessCtrl.createAtManager();
+    
     let isGranted1 = await atManager.verifyAccessToken(tokenID, "ohos.permission.MEDIA_LOCATION");
     let isGranted2 = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_MEDIA");
     let isGranted3 = await atManager.verifyAccessToken(tokenID, "ohos.permission.WRITE_MEDIA");
