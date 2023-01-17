@@ -808,8 +808,8 @@ export default function UiTest() {
             expect(text !== null).assertTrue()
             let bounds = await text.getBounds();
             expect(bounds !== null).assertTrue()
-            expect(bounds.rightX).assertLarger(bounds.leftX)
-            expect(bounds.bottomY).assertLarger(bounds.topY)
+            expect(bounds.right).assertLarger(bounds.left)
+            expect(bounds.bottom).assertLarger(bounds.top)
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -1204,22 +1204,22 @@ export default function UiTest() {
 
                 let window5 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
                 let bounds5= await window5.getBounds()
-                await window5.resize(bounds5.rightX - bounds5.leftX,300,ResizeDirection.DOWN)
+                await window5.resize(bounds5.right - bounds5.left,300,ResizeDirection.DOWN)
                 let window6 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
                 let bounds6= await window6.getBounds()
                 expect(bounds6 != bounds5).assertTrue()
 
-                await window6.resize(bounds6.rightX - bounds6.leftX,500,ResizeDirection.UP)
+                await window6.resize(bounds6.right - bounds6.left,500,ResizeDirection.UP)
                 let window7 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
                 let bounds7 = await window7.getBounds()
                 expect(bounds7 != bounds6).assertTrue()
 
-                await window7.resize(300,bounds7.bottomY - bounds7.topY,ResizeDirection.LEFT)
+                await window7.resize(300,bounds7.bottom - bounds7.top,ResizeDirection.LEFT)
                 let window8 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
                 let bounds8 = await window8.getBounds()
                 expect(bounds8 != bounds7).assertTrue()
 
-                await window8.resize(500,bounds8.bottomY - bounds8.topY,ResizeDirection.RIGHT)
+                await window8.resize(500,bounds8.bottom - bounds8.top,ResizeDirection.RIGHT)
                 let window9 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
                 let bounds9 = await window9.getBounds()
                 expect(bounds9 != bounds8).assertTrue()
