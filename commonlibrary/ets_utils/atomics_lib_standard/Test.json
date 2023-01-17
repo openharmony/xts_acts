@@ -1,10 +1,10 @@
 {
-    "description": "Configuration for startup atomics js api Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "800000",
         "bundle-name": "com.example.atomicsxts",
-        "package-name": "com.example.atomicsxts",
+        "module-name": "entry",
         "shell-timeout": "800000"
     },
     "kits": [
@@ -15,5 +15,5 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-    ]
+    ] 
 }

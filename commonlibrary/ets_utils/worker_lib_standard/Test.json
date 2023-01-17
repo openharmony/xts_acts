@@ -1,19 +1,19 @@
 {
-    "description": "Configuration for startup worker js api Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "800000",
-        "bundle-name": "com.example.workerxts",
-        "package-name": "com.example.workerxts",
+        "bundle-name": "com.example.workertest",
+        "module-name": "entry",
         "shell-timeout": "800000"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsWorkerJSTest.hap"
+                "ActsWorkerJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-    ]
+    ] 
 }

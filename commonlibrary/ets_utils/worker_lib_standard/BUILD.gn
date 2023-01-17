@@ -1,4 +1,4 @@
-# Copyright (C) 2022 Huawei Device Co., Ltd.
+# Copyright (c) 2022 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -14,23 +14,30 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("worker_js_hap") {
-  hap_profile = "./src/main/config.json"
+  hap_profile = "entry/src/main/module.json"
+  js_build_mode = "debug"
   deps = [
-    ":worker_js_assets",
-    ":worker_resources",
+    ":workertest_js_assets",
+    ":workertest_resources",
   ]
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsWorkerJSTest"
-
+  ets2abc = true
+  certificate_profile = "signature/openharmony_sx.p7b"
+  hap_name = "ActsWorkerJsTest"
   subsystem_name = "commonlibrary"
   part_name = "ets_utils"
 }
-ohos_js_assets("worker_js_assets") {
-  js2abc = true
-  hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"
+
+ohos_app_scope("workertest_app_profile") {
+  app_profile = "AppScope/app.json"
+  sources = [ "AppScope/resources" ]
 }
-ohos_resources("worker_resources") {
-  sources = [ "./src/main/resources" ]
-  hap_profile = "./src/main/config.json"
+
+ohos_js_assets("workertest_js_assets") {
+  source_dir = "entry/src/main/ets"
+}
+
+ohos_resources("workertest_resources") {
+  sources = [ "entry/src/main/resources" ]
+  deps = [ ":workertest_app_profile" ]
+  hap_profile = "entry/src/main/module.json"
 }
