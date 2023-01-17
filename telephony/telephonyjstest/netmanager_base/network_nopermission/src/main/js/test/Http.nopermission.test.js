@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 import network from '@system.network';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 export default function Telephony_NetManager_NetWorkTest() {
 
 describe("Telephony_NetManager_NetWorkTest", function () {
@@ -31,13 +31,13 @@ describe("Telephony_NetManager_NetWorkTest", function () {
                 done();
             },
             fail : function(data,code){
-                console.info("NetManager code "+ code)
-                expect(code == 602).assertTrue()
+                console.info("NetManager code "+ code);
+                expect(code == 201).assertTrue();
                 done();
             },
             complete : function(){
             }
-        })
+        });
     });
 
     /**
@@ -48,17 +48,17 @@ describe("Telephony_NetManager_NetWorkTest", function () {
     it("Telephony_NetManager_NetWorkTest_GetType_NoPermission_0200", 0, function (done) {
         network.getType({
             success : function(data){
-                expect().assertFail()
+                expect().assertFail();
                 done();
             },
             fail : function(data,code){
-                console.info("NetManager code "+ code)
-                expect(code == 602).assertTrue()
+                console.info("NetManager code "+ code);
+                expect(code == 201).assertTrue();
                 done();
             },
             complete : function(){
             }
-        })
+        });
     });
 
     /**
@@ -69,16 +69,16 @@ describe("Telephony_NetManager_NetWorkTest", function () {
     it("Telephony_NetManager_NetWorkTest_Subscribe_NoPermission_0100", 0, function (done) {
         network.subscribe({
             success : function(data){
-                expect().assertFail()
+                expect().assertFail();
                 done();
             },
             fail : function(data,code){
-                console.info("NetManager code "+ code)
-                expect(code == 602).assertTrue()
+                console.info("NetManager code "+ code);
+                expect(code == 201).assertTrue();
                 done();
             }
-        })
-    })
+        });
+    });
 
     /**
      * @tc.number Telephony_NetManager_NetWorkTest_Subscribe_NoPermission_0200
@@ -88,16 +88,16 @@ describe("Telephony_NetManager_NetWorkTest", function () {
     it("Telephony_NetManager_NetWorkTest_Subscribe_NoPermission_0200", 0, function (done) {
         network.subscribe({
             success : function(data){
-                expect().assertFail()
+                expect().assertFail();
                 done();
             },
             fail : function(data,code){
-                console.info("NetManager code "+ code)
-                expect(code == 602).assertTrue()
+                console.info("NetManager code "+ code);
+                expect(code == 201).assertTrue();
                 done();
             }
-        })
-    })
+        });
+    });
 
 });
 }

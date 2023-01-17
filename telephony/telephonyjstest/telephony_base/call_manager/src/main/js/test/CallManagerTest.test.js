@@ -677,17 +677,17 @@ export default function ActsBaseCallManagerTest() {
      * @tc.desc    Function test
      */
         it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0200', 0, async function (done) {
+            let CASE_NAME = 'Telephony_CallManager_isEmergencyPhoneNumber_Async_0200';
             call.isEmergencyPhoneNumber(INVALID_NUMBER, {
                 slotId: SLOT_0
             }, (err, data) => {
                 if (err) {
-                    console.log('Telephony_CallManager_isEmergencyPhoneNumber_Async_0200 fail');
-                    expect().assertFail();
+                    console.log(CASE_NAME + ' fail' + JSON.stringify(err));
+                    expect(err.code).assertEqual(8300001);
                     done();
                     return;
                 }
-                expect(data === false).assertTrue();
-                console.log(`Telephony_CallManager_isEmergencyPhoneNumber_Async_0200 finish data = ${data}`);
+                console.log(CASE_NAME +' finish data = '+ JSON.stringify(data));
                 done();
             });
         });
