@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import WorkerTest from './WorkerTest.test.js'
+import threadWorkerTest from './ThreadWorker.test.js'
 
 export default function List() {
-  WorkerTest()
+  threadWorkerTest()
 }
