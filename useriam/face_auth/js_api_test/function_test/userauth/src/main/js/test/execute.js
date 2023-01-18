@@ -120,5 +120,225 @@ describe('userAuthTestExecute', function () {
         });
         console.log("JSAPI_Function_Execute_2100 end");
     })
+
+       /**
+    * @tc.name      execute_authentication_callback_Type_is_null
+    * @tc.number    JSAPI_Function_Execute_3100
+    * @tc.size      MEDIUM
+    * @tc.type      FUNC
+    * @tc.level     Level2
+    */
+        it('JSAPI_Function_Execute_3100', 0, function (done) {
+            console.log("JSAPI_Function_Execute_3100 start");
+            const auth = userAuth.getAuthenticator();
+            auth.execute("FACE", "S1", function(data) {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE,S1:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S0", function(data) {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,S0:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S5", function(data) {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,S5:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "", function(data) {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,/:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("", "", function(data) {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, /,/:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            try{
+                auth.execute("FACE_ONLY", "S1","S1", function(data) {
+                    console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,S1,S1:" + data);
+                    // INVALID_PARAMETERS（6）
+                    setTimeout(function() {
+                    }, 1);
+                });
+            }catch(e)
+            {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,S1,S1:" + e.code);
+            }
+
+            try{
+                auth.execute("FACE_ONLY", function(data) {
+                    console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY" + data);
+                    // INVALID_PARAMETERS（6）
+                    setTimeout(function() {
+                    }, 1);
+                });
+            }catch(e)
+            {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY" + e.code);
+            }
+
+            auth.execute("FACE_ONLY", "S1", function(data) {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,S1:" + data);
+                // NOT ENROLL
+                expect(data).assertEqual(8);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S2", function(data) {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,S2:" + data);
+                // NOT ENROLL
+                expect(data).assertEqual(8);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S3", function(data) {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,S3:" + data);
+                // NOT ENROLL
+                expect(data).assertEqual(8);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S4", function(data) {
+                console.log("JSAPI_Function_Execute_3100 auth.execute, FACE_ONLY,S4:" + data);
+                // NOT ENROLL
+                expect(data).assertEqual(8);
+                setTimeout(function() {
+                    done();
+                }, 1);
+            });
+            console.log("JSAPI_Function_Execute_3100 end");
+        })
+    
+    
+        /**
+        * @tc.name      execute_authentication_promise_Type_is_null
+        * @tc.number    JSAPI_Function_Execute_3101
+        * @tc.size      MEDIUM
+        * @tc.type      FUNC
+        * @tc.level     Level2
+        */
+        it('JSAPI_Function_Execute_3101', 0, function (done) {
+            console.log("JSAPI_Function_Execute_3101 start");
+            const auth = userAuth.getAuthenticator();
+            auth.execute("FACE", "S1").catch(function(data) {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE,S1:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S0").catch(function(data) {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,S0:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S5").catch(function(data) {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,S5:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "").catch(function(data) {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,/:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("", "").catch(function(data) {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,/,/:" + data);
+                // INVALID_PARAMETERS（6）
+                expect(data).assertEqual(6);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            try{
+                auth.execute("FACE_ONLY", "S1","S1").catch(function(data) {
+                    console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,S1,S1:" + data);
+                    // INVALID_PARAMETERS（6）
+                    setTimeout(function() {
+                    }, 1);
+                });
+            }catch(e)
+            {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,S1,S1:" + e.code);
+            }
+ 
+            try{
+                auth.execute("FACE_ONLY").catch(function(data) {
+                    console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY:" + data);
+                    // INVALID_PARAMETERS（6）
+                    setTimeout(function() {
+                    }, 1);
+                });
+            }catch(e)
+            {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY:" + e.code);
+            }
+
+            auth.execute("FACE_ONLY", "S1").catch(function(data) {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,S1:" + data);
+                // NOT ENROLL(8)
+                expect(data).assertEqual(8);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S2").catch(function(data) {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,S2:" + data);
+                // NOT ENROLL(8)
+                expect(data).assertEqual(8);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S3").catch(function(data) {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,S3:" + data);
+                // NOT ENROLL(8)
+                expect(data).assertEqual(8);
+                setTimeout(function() {
+                }, 1);
+            });
+
+            auth.execute("FACE_ONLY", "S4").catch(function(data) {
+                console.log("JSAPI_Function_Execute_3101 auth.execute,FACE_ONLY,S4:" + data);
+                // NOT ENROLL(8)
+                expect(data).assertEqual(8);
+                setTimeout(function() {
+                    done();
+                }, 1);
+            });
+
+            console.log("JSAPI_Function_Execute_3101 end");
+        })
 })
 }
