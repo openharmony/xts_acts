@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
-import inputmeth from '@ohos.inputmethod';
+import inputmeth from '@ohos.inputMethod';
 
 export default function settingUiJsunit() {
   describe('appInfoTest_input2', function () {
