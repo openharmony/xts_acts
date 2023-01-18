@@ -136,6 +136,7 @@ export default function CameraErrorCodeUsecaseTest() {
 
         if (!isEmpty(mCameraInput)) {
             await mCameraInput.close();
+            mCameraInput = null;
         }
 
         console.info(TAG + 'Exit releaseInput');
@@ -177,6 +178,7 @@ export default function CameraErrorCodeUsecaseTest() {
 
     function releaseCameraSessionInstance() {
         mCameraSession.release();
+        mCameraSession = null;
     }
 
     async function getPhotoReceiverSurface() {
@@ -328,6 +330,12 @@ export default function CameraErrorCodeUsecaseTest() {
 
         afterEach(async function () {
             console.info('afterEach case');
+            if (!isEmpty(mCameraInput)) {
+                await releaseInput();
+            }
+            if (!isEmpty(mCameraSession)) {
+                releaseCameraSessionInstance();
+            }
         })
 
         afterAll(function () {
@@ -679,8 +687,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -703,8 +709,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -727,8 +731,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -751,8 +753,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -775,8 +775,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -799,8 +797,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -823,8 +819,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -847,8 +841,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -877,14 +869,9 @@ export default function CameraErrorCodeUsecaseTest() {
                     console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0200 FAILED");
                     console.info(TAG + "ERRORCODE: " + err.code);
                     expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
-
-                    sleep(100);
-                    await releaseInput();
-                    sleep(100);
-                    releaseCameraSessionInstance();
-                    done();
                 }
             })
+            done();
         })
 
         /**
@@ -913,10 +900,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             });
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -942,10 +925,6 @@ export default function CameraErrorCodeUsecaseTest() {
                     expect(true).assertTrue();
                 }
             })
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -969,10 +948,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(err.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
                 expect(true).assertTrue();
             });
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -996,10 +971,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1023,10 +994,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1051,10 +1018,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1079,10 +1042,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1111,10 +1070,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             });
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1144,10 +1099,6 @@ export default function CameraErrorCodeUsecaseTest() {
                     expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 }
             })
-            sleep(1000);
-            await releaseInput();
-            sleep(1000);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1175,10 +1126,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "cameraObj.CameraErrorCode.SESSION_NOT_CONFIG: " + cameraObj.CameraErrorCode.SESSION_NOT_CONFIG);
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(1000);
-            await releaseInput();
-            sleep(1000);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1206,10 +1153,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1237,10 +1180,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1268,10 +1207,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1300,10 +1235,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code != cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1331,10 +1262,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1362,10 +1289,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1392,10 +1315,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(1000);
-            await releaseInput();
-            sleep(1000);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1424,10 +1343,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code != cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(1000);
-            await releaseInput();
-            sleep(1000);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1455,10 +1370,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1486,10 +1397,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1518,10 +1425,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code != cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1549,10 +1452,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1581,10 +1480,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1614,10 +1509,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code != cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1645,10 +1536,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1676,10 +1563,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1707,10 +1590,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1737,10 +1616,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(1000);
-            await releaseInput();
-            sleep(1000);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1769,10 +1644,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code != cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(1000);
-            await releaseInput();
-            sleep(1000);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1800,10 +1671,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1832,10 +1699,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code != cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1863,10 +1726,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1894,10 +1753,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1925,10 +1780,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1956,10 +1807,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -1988,10 +1835,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2021,10 +1864,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code != cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2052,10 +1891,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2083,10 +1918,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2114,10 +1945,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 expect(true).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2146,10 +1973,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + error.code);
                 expect(error.code != cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             };
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2179,10 +2002,6 @@ export default function CameraErrorCodeUsecaseTest() {
                     expect(true).assertTrue();
                 }
             })
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2210,10 +2029,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 console.info(TAG + "ERRORCODE: " + err.code);
                 expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
             });
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2253,10 +2068,6 @@ export default function CameraErrorCodeUsecaseTest() {
                     }
                 })
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2285,10 +2096,6 @@ export default function CameraErrorCodeUsecaseTest() {
                     expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
                 });
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2321,10 +2128,6 @@ export default function CameraErrorCodeUsecaseTest() {
                     }
                 })
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2355,10 +2158,6 @@ export default function CameraErrorCodeUsecaseTest() {
                     expect(true).assertTrue();
                 });
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2387,10 +2186,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_RUNNING).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2419,14 +2214,9 @@ export default function CameraErrorCodeUsecaseTest() {
                     console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0600 FAILED");
                     console.info(TAG + "ERRORCODE: " + err.code);
                     expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_RUNNING).assertTrue();
-                    
-                    sleep(100);
-                    await releaseInput();
-                    sleep(100);
-                    releaseCameraSessionInstance();
-                    done();
                 }
             })
+            done();
         })
 
         /**
@@ -2454,14 +2244,9 @@ export default function CameraErrorCodeUsecaseTest() {
                     console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0700 FAILED");
                     console.info(TAG + "ERRORCODE: " + err.code);
                     expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_RUNNING).assertTrue();
-                    
-                    sleep(100);
-                    await releaseInput();
-                    sleep(100);
-                    releaseCameraSessionInstance();
-                    done();
                 }
             })
+            done();
         })
 
         /**
@@ -2489,10 +2274,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_RUNNING).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2517,10 +2298,6 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(error.code == cameraObj.CameraErrorCode.SESSION_CONFIG_LOCKED).assertTrue();
                 expect(true).assertTrue();
             }
-            sleep(100);
-            await releaseInput();
-            sleep(100);
-            releaseCameraSessionInstance();
             done();
         })
 
@@ -2558,8 +2335,6 @@ export default function CameraErrorCodeUsecaseTest() {
             } else {
                 console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0100 createCameraInput FAILED");
             }
-            sleep(100);
-            await releaseInput();
             done();
         })
 
@@ -2592,8 +2367,6 @@ export default function CameraErrorCodeUsecaseTest() {
             } else {
                 console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAMERAINPUT_OPEN_CONFLICT_0200 createCameraInput FAILED");
             }
-            sleep(100);
-            await releaseInput();
             done();
         })
     })
