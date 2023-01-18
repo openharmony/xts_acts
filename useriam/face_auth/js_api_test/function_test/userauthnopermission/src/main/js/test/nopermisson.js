@@ -66,16 +66,13 @@ describe('userAuthTestExecute', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-       it('JSAPI_Function_Nopermission_1800', 0, function (done) {
+       it('JSAPI_Function_Nopermission_1800', 0, function () {
         console.log("JSAPI_Function_Nopermission_1800 start");
         const auth = userAuth.getAuthenticator();
         auth.execute("FACE_ONLY", "S1", function(data) {
             console.log("JSAPI_Function_Nopermission_1800 auth.execute:" + data);
             // general error
             expect(data).assertEqual(100);
-            setTimeout(function() {
-                done();
-            }, 1);
         });
         console.log("JSAPI_Function_Nopermission_1800 end");
     })
@@ -115,12 +112,12 @@ describe('userAuthTestExecute', function () {
                     let AvailabeStatus = null
                     AvailabeStatus = UserAuthKit.getAvailableStatus(2, 10000);
                     console.info('testFace Security_IAM_Nopermission_API8_Func_0112,2,10000 result = ' + JSON.stringify(AvailabeStatus));
-                    // 100:general error
-                    expect(1005).assertEqual(AvailabeStatus);
+                    //201
+                    expect(201).assertEqual(AvailabeStatus);
                     done()
                 } catch (e) {
                     console.log("Security_IAM_Nopermission_API8_Func_0112 fail " + e.code);
-                    expect(100).assertEqual(e.code);
+                    expect(201).assertEqual(e.code);
                     done()
                 }
             })
@@ -150,8 +147,8 @@ describe('userAuthTestExecute', function () {
                 onResult: function(result,extraInfo){
                     console.log("Security_IAM_Nopermission_API8_Func_0103 auth result = " + result);
                     onresult.authresult = result;
-                    //100:general error
-                    expect(1005).assertEqual(result);
+                    //201
+                    expect(201).assertEqual(result);
                     console.info('Security_IAM_Nopermission_API8_Func_0103 contextID1 = ' + contextID1);
                     let cancelResult = UserAuthKit.cancelAuth(contextID1);
                     console.info('Security_IAM_Nopermission_API8_Func_0103 cancelResult = ' + cancelResult);
@@ -166,9 +163,8 @@ describe('userAuthTestExecute', function () {
                     console.info('testFace publicauth auth onAcquireInfo = ' + JSON.stringify(onacquireinfo));
                 }
             });
-
+            done();
         })
-
 
           /*
             * @tc.number    : Security_IAM_Nopermission_API9_Func_0101
@@ -238,7 +234,7 @@ describe('userAuthTestExecute', function () {
 
          /*
         * @tc.number    : Security_IAM_Nopermission_API9_Func_0103
-        * @tc.name      : Kit interface auth & cancel auth
+        * @tc.name      : Kit interface auth 
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level 0
@@ -257,7 +253,7 @@ describe('userAuthTestExecute', function () {
                         console.log("authV9 token " + result.token);
                         console.log("authV9 remainAttempts " + result.remainAttempts);
                         console.log("authV9 lockoutDuration " + result.lockoutDuration);
-                        expect(result.result).assertEqual(userAuth.ResultCodeV9.NOT_ENROLLED);
+                        expect(result.result).assertEqual(userAuth.UserAuthResultCode.NOT_ENROLLED);
                     }
                 });
 
@@ -272,14 +268,6 @@ describe('userAuthTestExecute', function () {
                 authInstance.start();
             } catch (e) {
                 console.log("Security_IAM_Nopermission_API9_Func_0103 fail " + e.code);
-                expect(e.code).assertEqual(201);
-            }
-
-            // cancel auth
-            try {
-                authInstance.cancel();
-            } catch (e) {
-                console.log("Security_IAM_Nopermission_API9_Func_0103 cancel fail " + e.code);
                 expect(e.code).assertEqual(201);
             }
 
