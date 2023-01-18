@@ -3,6 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "5500000",
+        "testcase-timeout": "15000",
         "package": "ohos.acts.multimedia.audio.audiointerrupt",
         "shell-timeout": "60000"
     },
