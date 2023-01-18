@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import inputMethodEngine from '@ohos.inputmethodengine';
+import inputMethodEngine from '@ohos.inputMethodEngine';
 import Utils from './Utils';
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';

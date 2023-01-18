@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import inputMethodExtensionAbility from '@ohos.inputmethodextensionability'
+import inputMethodExtensionAbility from '@ohos.InputMethodExtensionAbility'
 
 export default class ImExtAbility extends inputMethodExtensionAbility {
 
