@@ -283,11 +283,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.getSlot(notificationManager.SlotType.UNKNOWN_TYPE, (err, NotificationSlot) => {
           if (err) {
             console.info(`${TAG} getSlot_1 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} getSlot_1 AsyncCallback success: ${NotificationSlot}`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -310,11 +310,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.getSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err, NotificationSlot) => {
           if (err) {
             console.info(`${TAG} getSlot_2 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} getSlot_2 AsyncCallback success: ${NotificationSlot}`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -337,11 +337,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.getSlot(notificationManager.SlotType.SERVICE_INFORMATION, (err, NotificationSlot) => {
           if (err) {
             console.info(`${TAG} getSlot_3 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} getSlot_3 AsyncCallback success: ${NotificationSlot}`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -364,11 +364,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.getSlot(notificationManager.SlotType.CONTENT_INFORMATION, (err, NotificationSlot) => {
           if (err) {
             console.info(`${TAG} getSlot_4 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} getSlot_4 AsyncCallback success: ${NotificationSlot}`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -391,11 +391,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.getSlot(notificationManager.SlotType.OTHER_TYPES, (err, NotificationSlot) => {
           if (err) {
             console.info(`${TAG} getSlot_5 AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} getSlot_5 AsyncCallback success: ${NotificationSlot}`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -416,11 +416,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_1600 START')
       await notificationManager.getSlot(notificationManager.SlotType.UNKNOWN_TYPE).then((NotificationSlot) => {
         console.info(`${TAG} getSlot_6 Promise success: ${NotificationSlot}`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getSlot_6 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_1600 END')
@@ -435,11 +435,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_1700 START')
       await notificationManager.getSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then((NotificationSlot) => {
         console.info(`${TAG} getSlot_7 Promise success: ${NotificationSlot}`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getSlot_7 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_1700 END')
@@ -454,11 +454,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_1800 START')
       await notificationManager.getSlot(notificationManager.SlotType.SERVICE_INFORMATION).then((NotificationSlot) => {
         console.info(`${TAG} getSlot_8 Promise success: ${NotificationSlot}`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getSlot_8 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_1800 END')
@@ -473,11 +473,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_1900 START')
       await notificationManager.getSlot(notificationManager.SlotType.CONTENT_INFORMATION).then((NotificationSlot) => {
         console.info(`${TAG} getSlot_9 Promise success: ${NotificationSlot}`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getSlot_9 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_1900 END')
@@ -492,11 +492,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2000 START')
       await notificationManager.getSlot(notificationManager.SlotType.OTHER_TYPES).then((NotificationSlot) => {
         console.info(`${TAG} getSlot_10 Promise success: ${NotificationSlot}`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getSlot_10 Promise errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2000 END')
@@ -513,11 +513,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.removeSlot(notificationManager.SlotType.UNKNOWN_TYPE, (err) => {
           if (err) {
             console.info(`${TAG} removeSlot_1 errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} removeSlot_1 success`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -540,11 +540,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.removeSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
           if (err) {
             console.info(`${TAG} removeSlot_2 errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} removeSlot_2 success`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -567,11 +567,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.removeSlot(notificationManager.SlotType.SERVICE_INFORMATION, (err) => {
           if (err) {
             console.info(`${TAG} removeSlot_3 errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} removeSlot_3 success`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -594,11 +594,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.removeSlot(notificationManager.SlotType.CONTENT_INFORMATION, (err) => {
           if (err) {
             console.info(`${TAG} removeSlot_4 errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} removeSlot_4 success`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -621,11 +621,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.removeSlot(notificationManager.SlotType.OTHER_TYPES, (err) => {
           if (err) {
             console.info(`${TAG} removeSlot_5 errCode: ${err.code}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} removeSlot_5 success`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
@@ -646,11 +646,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2600 START')
       await notificationManager.removeSlot(notificationManager.SlotType.UNKNOWN_TYPE).then(() => {
         console.info(`${TAG} removeSlot_6 success`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} removeSlot_6 errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2600 END')
@@ -665,11 +665,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2700 START')
       await notificationManager.removeSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then(() => {
         console.info(`${TAG} removeSlot_7 success`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} removeSlot_7 errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2700 END')
@@ -684,11 +684,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2800 START')
       await notificationManager.removeSlot(notificationManager.SlotType.SERVICE_INFORMATION).then(() => {
         console.info(`${TAG} removeSlot_8 success`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} removeSlot_8 errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2800 END')
@@ -703,11 +703,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2900 START')
       await notificationManager.removeSlot(notificationManager.SlotType.CONTENT_INFORMATION).then(() => {
         console.info(`${TAG} removeSlot_9 success`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} removeSlot_9 errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_2900 END')
@@ -722,11 +722,11 @@ export default function ActsNotificationManagerSlotTest() {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_3000 START')
       await notificationManager.removeSlot(notificationManager.SlotType.OTHER_TYPES).then(() => {
         console.info(`${TAG} removeSlot_10 success`)
-        expect(false).assertTrue()
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} removeSlot_10 errCode: ${err.code}, errMes: ${err.message}`)
-        expect(true).assertTrue()
+        expect(false).assertTrue()
         done()
       })
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_3000 END')
@@ -757,7 +757,7 @@ export default function ActsNotificationManagerSlotTest() {
             expect(false).assertTrue()
             done()
           } else {
-            console.info(`${TAG} getSlot UNKNOWN_TYPE success: ${NotificationSlot.type}`)
+            console.info(`${TAG} getSlot UNKNOWN_TYPE success: ${NotificationSlot}`)
             expect(true).assertTrue()
               notificationManager.removeSlot(notificationManager.SlotType.UNKNOWN_TYPE, (err) => {
                 if (err) {
@@ -808,7 +808,7 @@ export default function ActsNotificationManagerSlotTest() {
             expect(false).assertTrue()
             done()
           } else {
-            console.info(`${TAG} getSlot SOCIAL_COMMUNICATION success: ${NotificationSlot.type}`)
+            console.info(`${TAG} getSlot SOCIAL_COMMUNICATION success: ${NotificationSlot}`)
             expect(true).assertTrue()
               notificationManager.removeSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
                 if (err) {
@@ -860,7 +860,7 @@ export default function ActsNotificationManagerSlotTest() {
             expect(false).assertTrue()
             done()
           } else {
-            console.info(`${TAG} getSlot SERVICE_INFORMATION success: ${NotificationSlot.type}`)
+            console.info(`${TAG} getSlot SERVICE_INFORMATION success: ${NotificationSlot}`)
             expect(true).assertTrue()
             notificationManager.removeSlot(notificationManager.SlotType.SERVICE_INFORMATION, (err) => {
               if (err) {
@@ -910,7 +910,7 @@ export default function ActsNotificationManagerSlotTest() {
             expect(false).assertTrue()
             done()
           } else {
-            console.info(`${TAG} getSlot CONTENT_INFORMATION success: ${NotificationSlot.type}`)
+            console.info(`${TAG} getSlot CONTENT_INFORMATION success: ${NotificationSlot}`)
             expect(true).assertTrue()
             notificationManager.removeSlot(notificationManager.SlotType.CONTENT_INFORMATION, (err) => {
               if (err) {
@@ -960,7 +960,7 @@ export default function ActsNotificationManagerSlotTest() {
             expect(false).assertTrue()
             done()
           } else {
-            console.info(`${TAG} getSlot OTHER_TYPES success: ${NotificationSlot.type}`)
+            console.info(`${TAG} getSlot OTHER_TYPES success: ${NotificationSlot}`)
             expect(true).assertTrue()
             notificationManager.removeSlot(notificationManager.SlotType.OTHER_TYPES, (err) => {
               if (err) {
@@ -1004,7 +1004,7 @@ export default function ActsNotificationManagerSlotTest() {
       })
 
       await notificationManager.getSlot(notificationManager.SlotType.UNKNOWN_TYPE).then((NotificationSlot) => {
-        console.info(`${TAG} getSlot UNKNOWN_TYPE success: ${NotificationSlot.type}`)
+        console.info(`${TAG} getSlot UNKNOWN_TYPE success: ${NotificationSlot}`)
         expect(true).assertTrue()
         done()
       }).catch((err) => {
@@ -1044,7 +1044,7 @@ export default function ActsNotificationManagerSlotTest() {
       })
 
       await notificationManager.getSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).then((NotificationSlot) => {
-        console.info(`${TAG} getSlot SOCIAL_COMMUNICATION success: ${NotificationSlot.type}`)
+        console.info(`${TAG} getSlot SOCIAL_COMMUNICATION success: ${NotificationSlot}`)
         expect(true).assertTrue()
         done()
       }).catch((err) => {
@@ -1084,7 +1084,7 @@ export default function ActsNotificationManagerSlotTest() {
       })
 
       await notificationManager.getSlot(notificationManager.SlotType.SERVICE_INFORMATION).then((NotificationSlot) => {
-        console.info(`${TAG} getSlot SERVICE_INFORMATION success: ${NotificationSlot.type}`)
+        console.info(`${TAG} getSlot SERVICE_INFORMATION success: ${NotificationSlot}`)
         expect(true).assertTrue()
         done()
       }).catch((err) => {
@@ -1124,7 +1124,7 @@ export default function ActsNotificationManagerSlotTest() {
       })
 
       await notificationManager.getSlot(notificationManager.SlotType.CONTENT_INFORMATION).then((NotificationSlot) => {
-        console.info(`${TAG} getSlot CONTENT_INFORMATION success: ${NotificationSlot.type}`)
+        console.info(`${TAG} getSlot CONTENT_INFORMATION success: ${NotificationSlot}`)
         expect(true).assertTrue()
         done()
       }).catch((err) => {
@@ -1164,7 +1164,7 @@ export default function ActsNotificationManagerSlotTest() {
       })
 
       await notificationManager.getSlot(notificationManager.SlotType.OTHER_TYPES).then((NotificationSlot) => {
-        console.info(`${TAG} getSlot OTHER_TYPES success: ${NotificationSlot.type}`)
+        console.info(`${TAG} getSlot OTHER_TYPES success: ${NotificationSlot}`)
         expect(true).assertTrue()
         done()
       }).catch((err) => {
@@ -1206,11 +1206,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.getSlot(notificationManager.SlotType.CONTENT_INFORMATION, (err, NotificationSlot) => {
           if (err) {
             console.info(`${TAG} getSlot_21 err: ${err}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
-            console.info(`${TAG} getSlot_21 success: ${NotificationSlot.type}`)
-            expect(false).assertTrue()
+            console.info(`${TAG} getSlot_21 success: ${NotificationSlot}`)
+            expect(true).assertTrue()
             done()
           }
         })
@@ -1243,11 +1243,11 @@ export default function ActsNotificationManagerSlotTest() {
         await notificationManager.removeSlot(notificationManager.SlotType.SERVICE_INFORMATION, (err) => {
           if (err) {
             console.info(`${TAG} removeSlot err: ${err}, errMes: ${err.message}`)
-            expect(true).assertTrue()
+            expect(false).assertTrue()
             done()
           } else {
             console.info(`${TAG} removeSlot success`)
-            expect(false).assertTrue()
+            expect(true).assertTrue()
             done()
           }
         })
