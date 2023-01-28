@@ -85,7 +85,9 @@ protected:
 };
 
 ActsZlibTest::ActsZlibTest()
-{}
+{
+    chdir("/data/local/tmp");
+}
 
 ActsZlibTest::~ActsZlibTest()
 {}
