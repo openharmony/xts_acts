@@ -12,9 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-import WorkerTest from './WorkerTest.test.js'
-
-export default function List() {
-  WorkerTest()
+var printLog0 = 'ThreadWorker:AbilityStage:'
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.info(printLog0 + "onCreate")
+    }
 }
