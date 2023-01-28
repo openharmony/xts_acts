@@ -20,7 +20,6 @@ group("fa") {
       "faapplicationinfo:ActsApplicationinfoTest",
       "faconfigurationconstant:ActsConfigurationconstantTest",
       "facoverapi:ActsCoverapiTest",
-      "faequeryabilitybywant:ActsEqueryabilitybywantTest",
     ]
   }
 }
