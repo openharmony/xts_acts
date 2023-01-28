@@ -25,21 +25,27 @@ export default function getExifNoLocation(abilityContext) {
     describe("getExifNoLocation", function () {
         beforeAll(async function () {
             console.info("beforeAll case");
-
+            let atManager = abilityAccessCtrl.createAtManager();
             let permissions = ["ohos.permission.READ_MEDIA"];
-            abilityContext.requestPermissionsFromUser(permissions, (data) => {
-                console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
-            });
-            await sleep(200);
+
+            try {
+                atManager.requestPermissionsFromUser(abilityContext, permissions, (err, data) => {
+                    console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
+                });
+            } catch (err) {
+                console.log(`get permission catch err -> ${JSON.stringify(err)}`);
+            }
+            await sleep(1000);
 
             let driver = uitest.Driver.create();
-            await sleep(200);
+            await sleep(2000);
 
             let button = await driver.findComponent(uitest.ON.text("允许"));
             await button.click();
+            await sleep(2000);
             let appInfo = await bundle.getApplicationInfo("ohos.acts.multimedia.mediaLibrary", 0, 100);
             let tokenID = appInfo.accessTokenId;
-            let atManager = abilityAccessCtrl.createAtManager();
+            
             let isGranted = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_MEDIA");
             if (isGranted != 0) {
                 console.info("getpermission failed");
