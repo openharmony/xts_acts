@@ -15,8 +15,8 @@
 </body>
 <script>
     function getViewResult(){
-        let height=document.getElementsByTagName("body")[0].scrollHeight
-        return height
+        let scaleNumber=window.visualViewport.scale;
+        return scaleNumber;
     }
 </script>
 </html>
