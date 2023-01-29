@@ -20,10 +20,10 @@ import testsuite from '../test/List.test'
 export default {
     onCreate() {
         console.info('AceApplication onCreate');
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        console.info('start run testcase!!!')
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+        console.info('start run testcase!!!');
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
     },
     onDestroy() {
         console.info('AceApplication onDestroy');
