@@ -775,7 +775,6 @@ export default function abilityTest(abilityContext) {
       console.log('ACTS_AbilityMultiInstance_Single_1300====<begin');
       let subscriber;
       let id;
-      let result;
       let checkEventResults = ["AppB:onCreateonForeground", "AppB:onCreateonForeground"];
       let checkIndex = 0;
 
@@ -834,8 +833,7 @@ export default function abilityTest(abilityContext) {
       console.log('ACTS_AbilityMultiInstance_Single_1400====<begin');
       let subscriber;
       let id;
-      let result;
-      let checkEventResults = ["AppE:onInitonShow", "AppA:onForegroundonAcceptWantCalledId1"];
+      let checkEventResults = ["AppE:onInit", "AppA:onForegroundonAcceptWantCalledId1"];
       let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
@@ -894,7 +892,7 @@ export default function abilityTest(abilityContext) {
       let subscriber;
       let id;
       let result;
-      let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId2", "AppE:onInitonShow"];
+      let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId2", "AppE:onInit"];
       let checkIndex = 0;
 
       function subscribeCallBack(err, data) {

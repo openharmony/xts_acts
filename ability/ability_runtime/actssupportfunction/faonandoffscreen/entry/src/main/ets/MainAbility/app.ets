@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
 var TAG1 = "Fa:FaOnAndOffScreen:MainAbility:";
@@ -37,19 +36,6 @@ export default {
   onInactive() {
     console.log(TAG1 + 'onInactive');
     lifeList.push('onInactive');
-  },
-  onShow() {
-    console.log(TAG1 + 'onShow');
-    lifeList.push('onShow');
-
-    let options = {
-      parameters: {
-        lifeList: lifeList
-      }
-    }
-    commonEvent.publish(listPush1 + "onShow", options, (err) => {
-      console.log(TAG1 + listPush1 + "onShow");
-    });
   },
   onHide() {
     console.log(TAG1 + 'onHide');
