@@ -3850,10 +3850,10 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0600', 2, async function (done) {
         try {
-            await audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:";<>?,./~!@#$%^*()_+-={}|');
+            await audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:"<>?,./~!@#$%^*()_+-={}|');
             console.info(`${TagFrmwk}: Audio Parameter Test: Promise : setAudioParameter`);
             let value = await audioManager.getAudioParameter('VOICE_PHONE_STATUS');
-            if (value == '[]\:";<>?,./~!@#$%^*()_+-={}|') {
+            if (value == '[]\:"<>?,./~!@#$%^*()_+-={}|') {
                 console.info(`${TagFrmwk}: Promise: getAudioParameter: VOICE_PHONE_STATUS : PASS :${value}`);
                 expect(true).assertTrue();
             } else {
@@ -3911,7 +3911,7 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0800', 2, function (done) {
-        audioManager.setAudioParameter('VOICE_PHONE_STATUS', '~!@#$%^*()_+-={}|[]\:";<>?,./', (err) => {
+        audioManager.setAudioParameter('VOICE_PHONE_STATUS', '~!@#$%^*()_+-={}|[]\:"<>?,./', (err) => {
             console.info(`${TagFrmwk}: Audio Parameter Test: Callback : setAudioParameter`);
             if (err) {
                 console.error(`${TagFrmwk}: Callback : setAudioParameter: VOICE_PHONE_STATUS : Error: ${err.message}`);
@@ -3922,7 +3922,7 @@ describe('audioFramework', function () {
                     if (err) {
                         console.error(`${TagFrmwk}: Callback : getAudioParam: VOICE_PHONE_STATUS: Error: ${err.message}`);
                         expect(false).assertTrue();
-                    } else if (value == '~!@#$%^*()_+-={}|[]\:";<>?,./') {
+                    } else if (value == '~!@#$%^*()_+-={}|[]\:"<>?,./') {
                         console.info(`${TagFrmwk}: Callback: getAudioParameter: VOICE_PHONE_STATUS: PASS :${value}`);
                         expect(true).assertTrue();
                     } else {
@@ -4206,10 +4206,10 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0600', 2, async function (done) {
         try {
-            await audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:";<>?,./~!@#$%^*()_+-={}|');
+            await audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:"<>?,./~!@#$%^*()_+-={}|');
             console.info(`${TagFrmwk}: Audio Parameter Test: Promise : setAudioParameter`);
             let value = await audioManager.getAudioParameter('VOICE_PHONE_STATUS');
-            if (value == '[]\:";<>?,./~!@#$%^*()_+-={}|') {
+            if (value == '[]\:"<>?,./~!@#$%^*()_+-={}|') {
                 console.info(`${TagFrmwk}: Promise: getAudioParameter: VOICE_PHONE_STATUS : PASS :${value}`);
                 expect(true).assertTrue();
             } else {
@@ -4265,7 +4265,7 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0800', 2, function (done) {
-        audioManager.setAudioParameter('VOICE_PHONE_STATUS', '~!@#$%^*()_+-={}|[]\:";<>?,./', (err) => {
+        audioManager.setAudioParameter('VOICE_PHONE_STATUS', '~!@#$%^*()_+-={}|[]\:"<>?,./', (err) => {
             console.info(`${TagFrmwk}: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter`);
             if (err) {
                 console.error(`${TagFrmwk}: Callback : setAudioParameter: VOICE_PHONE_STATUS : Error: ${err.message}`);
@@ -4277,7 +4277,7 @@ describe('audioFramework', function () {
                 if (err) {
                     console.error(`${TagFrmwk}: Callback : getAudioParameter: VOICE_PHONE_STATUS: Error: ${err.message}`);
                     expect(false).assertTrue();
-                } else if (value == '~!@#$%^*()_+-={}|[]\:";<>?,./') {
+                } else if (value == '~!@#$%^*()_+-={}|[]\:"<>?,./') {
                     console.info(`${TagFrmwk}: Callback: getAudioParameter: VOICE_PHONE_STATUS: PASS :${value}`);
                     expect(true).assertTrue();
                 } else {
