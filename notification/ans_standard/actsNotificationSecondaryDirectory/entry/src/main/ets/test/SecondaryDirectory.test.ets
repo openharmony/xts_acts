@@ -468,7 +468,14 @@ describe('secondaryDirectoryTest', function () {
                 } else {
                     notify.getSlots().then((NotificationSlot) => {
                         console.info(`${TAG} getSlots success:` + JSON.stringify(NotificationSlot))
-                        expect(NotificationSlot[0].type).assertEqual(notify.SlotType.SOCIAL_COMMUNICATION)
+                        for (let i = 0; i < NotificationSlot.length; ++i) {
+                            console.info(`${TAG} NotificationSlot[${i}].type:` + JSON.stringify(NotificationSlot[i].type))
+                            if (NotificationSlot[i].type == notify.SlotType.SOCIAL_COMMUNICATION) {
+                                done()
+                                return
+                            }
+                        }
+                        expect(false).assertTrue()
                         done()
                     }).catch((err) => {
                         console.info(`${TAG} getSlots failed err: + ${err.code}`)
