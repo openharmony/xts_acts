@@ -477,7 +477,6 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
      */
     it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0900', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0900 START`);
-
         try{
             await notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
                 console.info(`${TAG} addSlot success`)
@@ -488,7 +487,14 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
                 } else {
                     notificationManager.getSlots().then((NotificationSlot) => {
                         console.info(`${TAG} getSlots success:` + JSON.stringify(NotificationSlot))
-                        expect(NotificationSlot[0].type).assertEqual(notificationManager.SlotType.SOCIAL_COMMUNICATION)
+                        for (let i = 0; i < NotificationSlot.length; ++i) {
+                            console.info(`${TAG} NotificationSlot[${i}].type:` + JSON.stringify(NotificationSlot[i].type))
+                            if (NotificationSlot[i].type == notificationManager.SlotType.SOCIAL_COMMUNICATION) {
+                                done()
+                                return
+                            }
+                        }
+                        expect(false).assertTrue()
                         done()
                     }).catch((err) => {
                         console.info(`${TAG} getSlots failed err: + ${err.code}`)
