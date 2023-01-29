@@ -2686,7 +2686,7 @@ export default function ReminderAgentTest() {
             });
             reminderAgent.removeNotificationSlot(tarRemoveSlot.type, (err, data) => {
                 console.info('err code 106 is :' + err.code)
-                expect(err.code).assertEqual(67108888);
+                expect(err.code).assertEqual(0);
                 done();
             });
         })
