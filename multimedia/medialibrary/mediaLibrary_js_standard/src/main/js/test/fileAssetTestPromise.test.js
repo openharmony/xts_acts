@@ -458,8 +458,8 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let fileType = mediaLibrary.MediaType.VIDEO;
             let fileFetchOp = {
-                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND display_name = ?',
-                selectionArgs : [ fileType.toString(), '01.mp4' ],
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND relative_path = ?',
+                selectionArgs : [ fileType.toString(), 'Camera/' ],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -517,8 +517,8 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND display_name = ?',
-                selectionArgs : [ type.toString(), '01.mp4' ],
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND relative_path = ?',
+                selectionArgs : [ fileType.toString(), 'Camera/' ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -561,8 +561,8 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND display_name = ?',
-                selectionArgs : [ type.toString(), '01.mp4' ],
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND relative_path = ?',
+                selectionArgs : [ fileType.toString(), 'Camera/' ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
