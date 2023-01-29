@@ -91,7 +91,7 @@ export default function systemTimerTest() {
         repeat: false
       };
       console.info('====>SUB_time_systemTimer_createTimer_0000 create timer.');
-      systemTimer.createTimer(options, function (err, timerID) {
+      systemTimer.createTimer(options, async (err, timerID) => {
         try {
           if (err) {
             console.info('====>SUB_time_systemTimer_createTimer_0000 create fail: ' + err);
@@ -100,6 +100,7 @@ export default function systemTimerTest() {
           }
           console.info('====>SUB_time_systemTimer_createTimer_0000 timerID: ' + timerID);
           expect(Number.isInteger(timerID)).assertTrue();
+          await systemTimer.destroyTimer(timerID)
           done();
         } catch (error) {
           console.info('====>SUB_time_systemTimer_createTimer_0000 catch err ' + error);
@@ -124,7 +125,7 @@ export default function systemTimerTest() {
         repeat: false
       };
       console.info('====>SUB_time_systemTimer_createTimer_0001 create timer.');
-      systemTimer.createTimer(options, function (err, timerID) {
+      systemTimer.createTimer(options, async (err, timerID) => {
         try {
           if (err) {
             console.info('====>SUB_time_systemTimer_createTimer_0001 create fail: ' + err);
@@ -133,6 +134,7 @@ export default function systemTimerTest() {
           }
           console.info('====>SUB_time_systemTimer_createTimer_0001 timerID: ' + timerID);
           expect(Number.isInteger(timerID)).assertTrue();
+          await systemTimer.destroyTimer(timerID)
           done();
         } catch (error) {
           console.info('====>SUB_time_systemTimer_createTimer_0001 catch err ' + error);
@@ -162,7 +164,7 @@ export default function systemTimerTest() {
         interval: interval_time
       };
       console.info('====>SUB_time_systemTimer_createTimer_0002 create timer.');
-      systemTimer.createTimer(options, function (err, timerID) {
+      systemTimer.createTimer(options, async (err, timerID) => {
         try {
           if (err) {
             console.info('====>SUB_time_systemTimer_createTimer_0002 create fail: ' + err);
@@ -171,6 +173,7 @@ export default function systemTimerTest() {
           }
           console.info('====>SUB_time_systemTimer_createTimer_0002 timerID: ' + timerID);
           expect(Number.isInteger(timerID)).assertTrue();
+          await systemTimer.destroyTimer(timerID)
           done();
         } catch (error) {
           console.info('====>SUB_time_systemTimer_createTimer_0002 catch err ' + error);
@@ -195,7 +198,7 @@ export default function systemTimerTest() {
         repeat: false
       };
       console.info('====>SUB_time_systemTimer_createTimer_0003 create timer.');
-      systemTimer.createTimer(options, function (err, timerID) {
+      systemTimer.createTimer(options, async (err, timerID) => {
         try {
           if (err) {
             console.info('====>SUB_time_systemTimer_createTimer_0003 create fail: ' + err);
@@ -204,6 +207,7 @@ export default function systemTimerTest() {
           }
           console.info('====>SUB_time_systemTimer_createTimer_0003 timerID: ' + timerID);
           expect(Number.isInteger(timerID)).assertTrue();
+          await systemTimer.destroyTimer(timerID)
           done();
         } catch (error) {
           console.info('====>SUB_time_systemTimer_createTimer_0003 catch err ' + error);
@@ -233,7 +237,7 @@ export default function systemTimerTest() {
         interval: interval_time
       };
       console.info('====>SUB_time_systemTimer_createTimer_0004 create timer.');
-      systemTimer.createTimer(options, function (err, timerID) {
+      systemTimer.createTimer(options, async (err, timerID) => {
         try {
           if (err) {
             console.info('====>SUB_time_systemTimer_createTimer_0004 create fail: ' + err);
@@ -242,6 +246,7 @@ export default function systemTimerTest() {
           }
           console.info('====>SUB_time_systemTimer_createTimer_0004 timerID: ' + timerID);
           expect(Number.isInteger(timerID)).assertTrue();
+          await systemTimer.destroyTimer(timerID)
           done();
         } catch (error) {
           console.info('====>SUB_time_systemTimer_createTimer_0004 catch err ' + error);
@@ -265,16 +270,19 @@ export default function systemTimerTest() {
         type: systemTimer.TIMER_TYPE_REALTIME,
         repeat: false
       };
+      let globalTimerID;
       await systemTimer.createTimer(options).then((timerID) => {
         console.info('====>SUB_time_systemTimer_createTimer_0005 timerID: ' + timerID);
+        globalTimerID = timerID;
         expect(Number.isInteger(timerID)).assertTrue();
-        done();
       }).catch(err => {
         console.info('====>SUB_time_systemTimer_createTimer_0005 createTimer fail: ' + err);
         expect().assertTrue();
         done();
       });
       console.info('====>SUB_time_systemTimer_createTimer_0005 end.');
+      await systemTimer.destroyTimer(globalTimerID)
+      done();
     });
 
     /**
@@ -291,16 +299,19 @@ export default function systemTimerTest() {
         type: systemTimer.TIMER_TYPE_IDLE,
         repeat: false
       };
+      let globalTimerID;
       await systemTimer.createTimer(options).then((timerID) => {
         console.info('====>SUB_time_systemTimer_createTimer_0006 timerID: ' + timerID);
+        globalTimerID = timerID;
         expect(Number.isInteger(timerID)).assertTrue();
-        done();
       }).catch(err => {
         console.info('====>SUB_time_systemTimer_createTimer_0006 createTimer fail: ' + err);
         expect().assertTrue();
         done();
       });
       console.info('====>SUB_time_systemTimer_createTimer_0006 end.');
+      await systemTimer.destroyTimer(globalTimerID)
+      done();
     });
 
     /**
@@ -322,16 +333,19 @@ export default function systemTimerTest() {
         wantAgent: wantAgent,
         interval: interval_time
       };
+      let globalTimerID;
       await systemTimer.createTimer(options).then((timerID) => {
         console.info('====>SUB_time_systemTimer_createTimer_0007 timerID: ' + timerID);
+        globalTimerID = timerID;
         expect(Number.isInteger(timerID)).assertTrue();
-        done();
       }).catch(err => {
         console.info('====>SUB_time_systemTimer_createTimer_0007 createTimer fail: ' + err);
         expect().assertTrue();
         done();
       });
       console.info('====>SUB_time_systemTimer_createTimer_0007 end.');
+      await systemTimer.destroyTimer(globalTimerID)
+      done();
     });
 
     /**
@@ -348,16 +362,19 @@ export default function systemTimerTest() {
         type: systemTimer.TIMER_TYPE_EXACT,
         repeat: false
       };
+      let globalTimerID;
       await systemTimer.createTimer(options).then((timerID) => {
         console.info('====>SUB_time_systemTimer_createTimer_0008 timerID: ' + timerID);
+        globalTimerID = timerID;
         expect(Number.isInteger(timerID)).assertTrue();
-        done();
       }).catch(err => {
         console.info('====>SUB_time_systemTimer_createTimer_0008 createTimer fail: ' + err);
         expect().assertTrue();
         done();
       });
       console.info('====>SUB_time_systemTimer_createTimer_0008 end.');
+      await systemTimer.destroyTimer(globalTimerID)
+      done();
     });
 
     /**
@@ -379,16 +396,19 @@ export default function systemTimerTest() {
         wantAgent: wantAgent,
         interval: interval_time
       };
+      let globalTimerID;
       await systemTimer.createTimer(options).then((timerID) => {
         console.info('====>SUB_time_systemTimer_createTimer_0009 timerID: ' + timerID);
+        globalTimerID = timerID;
         expect(Number.isInteger(timerID)).assertTrue();
-        done();
       }).catch(err => {
         console.info('====>SUB_time_systemTimer_createTimer_0009 createTimer fail: ' + err);
         expect().assertTrue();
         done();
       });
       console.info('====>SUB_time_systemTimer_createTimer_0009 end.');
+      await systemTimer.destroyTimer(globalTimerID)
+      done();
     });
 
     /**
@@ -413,7 +433,7 @@ export default function systemTimerTest() {
       }).catch(err => {
         console.info('====>SUB_time_systemTimer_createTimer_0009 createTimer fail: ' + err);
       });
-      systemTimer.startTimer(globalTimerID, triggerTime, function (err, data) {
+      systemTimer.startTimer(globalTimerID, triggerTime, async (err, data) => {
         try {
           if (err) {
             console.info('====>SUB_time_systemTimer_startTimer_0001 wrong since ' + err.code);
@@ -422,6 +442,7 @@ export default function systemTimerTest() {
           }
           console.info("====>SUB_time_systemTimer_startTimer_0001 success to start timerID: " + globalTimerID);
           expect(true).assertTrue();
+          await systemTimer.destroyTimer(globalTimerID)
           done();
         } catch (e) {
           console.info('====>SUB_time_systemTimer_startTimer_0001 has failed for ' + e);
@@ -452,7 +473,7 @@ export default function systemTimerTest() {
       }).catch(err => {
         console.info('====>SUB_time_systemTimer_createTimer_0009 createTimer fail: ' + err);
       });
-      systemTimer.stopTimer(globalTimerID, function (err, data) {
+      systemTimer.stopTimer(globalTimerID, async (err, data) => {
         try {
           if (err) {
             console.info("====>SUB_time_systemTimer_stopTimer_0001 stop fail timerID: " + globalTimerID);
@@ -461,6 +482,7 @@ export default function systemTimerTest() {
           };
           console.info("====>SUB_time_systemTimer_stopTimer_0001 success to stop timerID: " + globalTimerID);
           expect(true).assertTrue();
+          await systemTimer.destroyTimer(globalTimerID)
           done();
         } catch (e) {
           console.info('====>SUB_time_systemTimer_stopTimer_0001 has failed for ' + e);
@@ -523,16 +545,19 @@ export default function systemTimerTest() {
         type: systemTimer.TIMER_TYPE_REALTIME,
         repeat: false
       };
+      let globalTimerID;
       console.info('====>SUB_time_systemTimer_createTimerPromise_0001 create timer.');
       await systemTimer.createTimer(options).then((timerID) => {
         console.info('====>SUB_time_systemTimer_createTimerPromise_0001 timerID:' + timerID);
+        globalTimerID = timerID;
         expect(Number.isInteger(timerID)).assertTrue();
-        done();
       }).catch(error => {
         console.info('====>SUB_time_systemTimer_createTimerPromise_0001 failed to create timer: ' + error);
         expect().assertTrue();
         done();
       });
+      await systemTimer.destroyTimer(globalTimerID)
+      done();
     });
 
     /**
@@ -560,13 +585,14 @@ export default function systemTimerTest() {
       await systemTimer.startTimer(globalTimerID, triggerTime).then(() => {
         console.info('====>SUB_time_systemTimer_startTimer_0002 timerID:' + globalTimerID);
         expect(true).assertTrue();
-        done();
       }).catch((err) => {
         console.info('====>SUB_time_systemTimer_startTimer_0002 failed to start timer: ' + err);
         expect().assertTrue();
         done();
       });
       console.info('====>SUB_time_systemTimer_startTimer_0002 end.');
+      await systemTimer.destroyTimer(globalTimerID)
+      done();
     });
 
     /**
@@ -593,13 +619,14 @@ export default function systemTimerTest() {
       await systemTimer.stopTimer(globalTimerID).then(() => {
         console.info('====>SUB_time_systemTimer_stopTimer_0002 timerID:' + globalTimerID);
         expect(true).assertTrue();
-        done();
       }).catch((err) => {
         console.info('====>SUB_time_systemTimer_stopTimer_0002 failed to stop timer:' + err);
         expect().assertTrue();
         done();
       });
       console.info('====>SUB_time_systemTimer_stopTimer_0002 end.');
+      await systemTimer.destroyTimer(globalTimerID)
+      done();
     });
 
     /**
@@ -663,7 +690,7 @@ export default function systemTimerTest() {
                   try {
                     systemTimer.stopTimer(timerID)
                       .then(() => {
-                        systemTimer.destroyTimer(timerID, function (err, data) {
+                        systemTimer.destroyTimer(timerID, async (err, data) => {
                           console.info('====>SUB_time_systemTimer_ALL_Promise_0008 destroyTimer: ' + timerID);
                           done();
                         });
