@@ -18,7 +18,7 @@ import {LocationEventListener} from '@ohos.geolocation';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 let LocationRequestScenario = {
     UNSET: 0x300,
@@ -85,21 +85,24 @@ async function applyPermission() {
     }
 }
 
-describe('geolocationTest_geo1', function () {
 
-    console.log('#start AccessTokenTests#');
-    beforeAll(async function (done) {
-        console.info('beforeAll case');
-        await applyPermission();
-        done();
-    })
+export default function geolocationTest_geo1() {
 
-    beforeEach(async function (done) {
-        console.info('beforeEach case');
-        await changedLocationMode();
-        done();
-    })
-
+    describe('geolocationTest_geo1', function () {
+    
+        console.log('#start AccessTokenTests#');
+        beforeAll(async function (done) {
+            console.info('beforeAll case');
+            await applyPermission();
+            done();
+        })
+    
+        beforeEach(async function (done) {
+            console.info('beforeEach case');
+            await changedLocationMode();
+            done();
+        })
+    
     /**
      * @tc.number SUB_HSS_LocationSystem_Geo_0100
      * @tc.name testIsGeoServiceAvailable
@@ -108,7 +111,7 @@ describe('geolocationTest_geo1', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Geo_0100', 0, async function (done) {
+     it('SUB_HSS_LocationSystem_Geo_0100', 0, async function (done) {
         geolocation.isGeoServiceAvailable(async (err, data) => {
             if (err) {
                 console.info('[lbs_js]  getGeoServiceState err is : ' + JSON.stringify(err));
@@ -989,6 +992,8 @@ describe('geolocationTest_geo1', function () {
         }
         done();
     })
-})
+
+    })
+}
 
 
