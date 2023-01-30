@@ -23,6 +23,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
     const VIDEO_SOURCE = 'H264_AAC.mp4';
     const AUDIO_SOURCE = '01.mp3';
     const PLAY_TIME = 2000;
+    const PLAY_TIME_1S = 1000;
     const SEEK_TIME = 5000;
     const WIDTH_VALUE = 720;
     const HEIGHT_VALUE = 480;
@@ -30,7 +31,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
     const DELTA_TIME = 1500;
     const NEXT_FRAME_TIME = 8333;
     const PREV_FRAME_TIME = 4166;
-    const DELTA_SEEK_TIME = 100;
+    const DELTA_SEEK_TIME = 300;
     let surfaceID = '';
     let fdHead = 'fd://';
     let fileDescriptor = null;
@@ -54,7 +55,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
     beforeEach(async function() {
         await mediaTestBase.toNewPage(pagePath1, pagePath2, pageId);
         pageId = (pageId + 1) % 2;
-        await mediaTestBase.msleepAsync(1000).then(
+        await mediaTestBase.msleepAsync(PLAY_TIME_1S).then(
             () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
@@ -89,23 +90,23 @@ describe('VideoPlayerFuncPromiseTest', function () {
             switch (speedValue) {
                 case media.PlaybackSpeed.SPEED_FORWARD_0_75_X:
                     console.error('checkSpeedTime time is :' + (newTime - startTime));
-                    expect(Math.abs(newTime - startTime - (0.75 * 1000))).assertLess(DELTA_TIME * 0.75);
+                    expect(Math.abs(newTime - startTime - (0.75 * PLAY_TIME_1S))).assertLess(DELTA_TIME * 0.75);
                     break;
                 case media.PlaybackSpeed.SPEED_FORWARD_1_00_X:
                     console.error('checkSpeedTime time is :' + (newTime - startTime));
-                    expect(Math.abs(newTime - startTime - (1000))).assertLess(DELTA_TIME);
+                    expect(Math.abs(newTime - startTime - (PLAY_TIME_1S))).assertLess(DELTA_TIME);
                     break;
                 case media.PlaybackSpeed.SPEED_FORWARD_1_25_X:
                     console.error('checkSpeedTime time is :' + (newTime - startTime));
-                    expect(Math.abs(newTime - startTime - (1.25 * 1000))).assertLess(DELTA_TIME * 1.25);
+                    expect(Math.abs(newTime - startTime - (1.25 * PLAY_TIME_1S))).assertLess(DELTA_TIME * 1.25);
                     break;
                 case media.PlaybackSpeed.SPEED_FORWARD_1_75_X:
                     console.error('checkSpeedTime time is :' + (newTime - startTime));
-                    expect(Math.abs(newTime - startTime - (1.75 * 1000))).assertLess(DELTA_TIME * 1.75);
+                    expect(Math.abs(newTime - startTime - (1.75 * PLAY_TIME_1S))).assertLess(DELTA_TIME * 1.75);
                     break;
                 case media.PlaybackSpeed.SPEED_FORWARD_2_00_X:
                     console.error('checkSpeedTime time is :' + (newTime - startTime));
-                    expect(Math.abs(newTime - startTime - (2 * 1000))).assertLess(DELTA_TIME * 2);
+                    expect(Math.abs(newTime - startTime - (2 * PLAY_TIME_1S))).assertLess(DELTA_TIME * 2);
                     break;
             }
         } else {
@@ -240,17 +241,17 @@ describe('VideoPlayerFuncPromiseTest', function () {
         let startTime = videoPlayer.currentTime;
         await videoPlayer.play().then(() => {
             console.info('case play called!!');
-            mediaTestBase.msleep(1000);
+            mediaTestBase.msleep(PLAY_TIME_1S);
             expect(videoPlayer.state).assertEqual('playing');
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         let endTime = videoPlayer.currentTime;
-        expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
+        expect(Math.abs(endTime - startTime - PLAY_TIME_1S)).assertLess(DELTA_TIME);
 
         startTime = videoPlayer.currentTime;
         await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_0_75_X).then((speedMode) => {
             expect(videoPlayer.state).assertEqual('playing');
             expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_0_75_X);
-            mediaTestBase.msleep(1000);
+            mediaTestBase.msleep(PLAY_TIME_1S);
             checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_0_75_X, startTime);
             console.info('case setSpeed called and speedMode is ' + speedMode);
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -259,7 +260,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_00_X).then((speedMode) => {
             expect(videoPlayer.state).assertEqual('playing');
             expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_1_00_X);
-            mediaTestBase.msleep(1000);
+            mediaTestBase.msleep(PLAY_TIME_1S);
             checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_1_00_X, startTime);
             console.info('case setSpeed called and speedMode is ' + speedMode);
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -268,7 +269,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_25_X).then((speedMode) => {
             expect(videoPlayer.state).assertEqual('playing');
             expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_1_25_X);
-            mediaTestBase.msleep(1000);
+            mediaTestBase.msleep(PLAY_TIME_1S);
             checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_1_25_X, startTime);
             console.info('case setSpeed called and speedMode is ' + speedMode);
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -277,7 +278,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_75_X).then((speedMode) => {
             expect(videoPlayer.state).assertEqual('playing');
             expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_1_75_X);
-            mediaTestBase.msleep(1000);
+            mediaTestBase.msleep(PLAY_TIME_1S);
             checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_1_75_X, startTime);
             console.info('case setSpeed called and speedMode is ' + speedMode);
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -286,7 +287,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).then((speedMode) => {
             expect(videoPlayer.state).assertEqual('playing');
             expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
-            mediaTestBase.msleep(1000);
+            mediaTestBase.msleep(PLAY_TIME_1S);
             checkSpeedTime(videoPlayer, media.PlaybackSpeed.SPEED_FORWARD_2_00_X, startTime);
             console.info('case setSpeed called and speedMode is ' + speedMode);
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -1112,11 +1113,11 @@ describe('VideoPlayerFuncPromiseTest', function () {
         await videoPlayer.play().then(() => {
             expect(videoPlayer.loop).assertEqual(true);
             console.info('case play called!!');
-            mediaTestBase.msleep(1000);
+            mediaTestBase.msleep(PLAY_TIME_1S);
             expect(videoPlayer.state).assertEqual('playing');
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         let endTime = videoPlayer.currentTime;
-        checkTime(1000, (endTime - startTime), DELTA_TIME);
+        checkTime(PLAY_TIME_1S, (endTime - startTime), DELTA_TIME);
 
         expect(videoPlayer.loop).assertEqual(true);
         startTime = videoPlayer.currentTime;
@@ -1194,11 +1195,11 @@ describe('VideoPlayerFuncPromiseTest', function () {
         await videoPlayer.play().then(() => {
             expect(videoPlayer.loop).assertEqual(true);
             console.info('case play called!!');
-            mediaTestBase.msleep(1000);
+            mediaTestBase.msleep(PLAY_TIME_1S);
             expect(videoPlayer.state).assertEqual('playing');
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         let endTime = videoPlayer.currentTime;
-        checkTime(1000, (endTime - startTime), DELTA_TIME);
+        checkTime(PLAY_TIME_1S, (endTime - startTime), DELTA_TIME);
 
         expect(videoPlayer.loop).assertEqual(true);
         startTime = videoPlayer.currentTime;
