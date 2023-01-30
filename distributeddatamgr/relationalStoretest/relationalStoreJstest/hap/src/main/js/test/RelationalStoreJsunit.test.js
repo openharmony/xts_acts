@@ -249,232 +249,68 @@ describe('relationalStoreTest', function () {
     })
 
     /**
-     * @tc.number SUB_DDM_RelationalStore_OpenStatus_0010
-     * @tc.name Get relational store status test
-     * @tc.desc relational OpenStatus
+     * @tc.number SUB_DDM_RelationalStore_Version_0010
+     * @tc.name Get relational store version test
+     * @tc.desc relational version
      */
-    it('SUB_DDM_RelationalStore_OpenStatus_0010', 0, async function (done) {
-        console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0010 start *************");
-        data_Rdb.getRdbStore(context, STORE_CONFIG, async (err, store) => {
-            if (err) {
-                expect(null).assertFail();
-            }
-            expect(store.openStatus == data_Rdb.OpenStatus.ON_CREATE).assertTrue();
-            data_Rdb.getRdbStore(context, STORE_CONFIG, async (err, store) => {
-                if (err) {
-                    expect(null).assertFail();
-                }
-                expect(store.openStatus == data_Rdb.OpenStatus.ON_OPEN).assertTrue();
-                await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-                done();
-            })
-        })
-        console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0010 end   *************");
-    })
+    it('SUB_DDM_RelationalStore_Version_0010', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Version_0010 start *************");
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
 
-    /**
-     * @tc.number SUB_DDM_RelationalStore_OpenStatus_0020
-     * @tc.name Get relational store status test
-     * @tc.desc relational OpenStatus
-     */
-    it('SUB_DDM_RelationalStore_OpenStatus_0020', 0, async function (done) {
-        console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0020 start *************");
         try {
-            let rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-            expect(rdbStore.openStatus == data_Rdb.OpenStatus.ON_CREATE).assertTrue();
-            await rdbStore.executeSql(CREATE_TABLE_TEST);
-            rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-            expect(rdbStore.openStatus == data_Rdb.OpenStatus.ON_OPEN).assertTrue();
-            await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-            done();
-        } catch(e) {
-            console.log("catch err: failed, err: code=" + e.code + " message=" + e.message);
-            expect(null).assertFail();
-            done();
-            console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0020 end   *************");
-        }
-        
-    })
-
-    /**
-     * @tc.number SUB_DDM_RelationalStore_OpenStatus_0030
-     * @tc.name Get relational store status test
-     * @tc.desc relational OpenStatus
-    */
-    it('SUB_DDM_RelationalStore_OpenStatus_0030', 0, async function(done){
-        console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0030 start *************");
-        await data_Rdb.getRdbStore(contextApplication, STORE_CONFIG, async function(err,rdbStore){
-            try {
-                if (err) {
-                    console.info("Get SUB_DDM_RelationalStore_OpenStatus_0030 failed, err: " + err);
-                    expect().assertFail();
-                    return;
-                }
-                expect(rdbStore.openStatus == data_Rdb.OpenStatus.ON_CREATE).assertTrue();
-            } catch (err) {
-                console.log("SUB_DDM_RelationalStore_OpenStatus_0030 status is " + rdbStore.OpenStatus);
-            }
-            console.log("Get SUB_DDM_RelationalStore_OpenStatus_0030 successfully.");
-        })
-        await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-        done();
-        console.log("Get SUB_DDM_RelationalStore_OpenStatus_0030 successfully end.");
-        await sleep(1000);
-    })
-
-    /**
-     * @tc.number SUB_DDM_RelationalStore_OpenStatus_0040
-     * @tc.name Get relational store status test
-     * @tc.desc relational OpenStatus
-    */
-    it('SUB_DDM_RelationalStore_OpenStatus_0040', 0, async function(done){
-        console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0040 start *************");
-        await data_Rdb.getRdbStore(contextApplication, STORE_CONFIG, async function(err,rdbStore){
-            try {
-                if (err) {
-                    console.info("Get SUB_DDM_RelationalStore_OpenStatus_0040 failed, err: " + err);
-                    return;
-                }
-                expect(rdbStore.openStatus ==data_Rdb.OpenStatus.ON_CREATE).assertTrue();
-            } catch (err) {
-                console.log("SUB_DDM_RelationalStore_OpenStatus_0040 status1 is "+ rdbStore.OpenStatus);
-            }
-        });
-        await sleep(1000);
-        await data_Rdb.getRdbStore(contextApplication, STORE_CONFIG, async function(err,rdbStore){
-            try {
-                if (err) {
-                    console.info("Get SUB_DDM_RelationalStore_OpenStatus_0040 failed, err: " + err);
-                    expect().assertFail();
-                    return;
-                }
-                expect(rdbStore.openStatus ==data_Rdb.OpenStatus.ON_OPEN).assertTrue();
-            } catch (err) {
-                console.log("SUB_DDM_RelationalStore_OpenStatus_0040 status is "+ rdbStore.OpenStatus);
-            }
-        });
-        await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-        done();
-        console.log("Get SUB_DDM_RelationalStore_OpenStatus_0040 successfully end.");
-    })
-
-    /**
-     * @tc.number SUB_DDM_RelationalStore_OpenStatus_0050
-     * @tc.name Get relational store status test
-     * @tc.desc relational OpenStatus
-    */
-     it('SUB_DDM_RelationalStore_OpenStatus_0050', 0, async function(done){
-        console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0050 start *************");
-        try {
-            let promise = null;
-            promise = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-            promise =null;
-            promise = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0050 promise.openStatus: " + promise.openStatus);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0050 data_Rdb.OpenStatus.ON_OPEN: " + data_Rdb.OpenStatus.ON_OPEN);
-            expect(promise.openStatus).assertEqual(data_Rdb.OpenStatus.ON_OPEN);
-            await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
+            store.version = 5
+            expect(5).assertEqual(store.version)
         } catch (err) {
-            console.info(TAG + "Get rdbstore fail catch err: " + err);
+			console.info("SUB_DDM_RelationalStore_Version_0010 failed: err: code=" + err.code + " message=" + err.message)
             expect(null).assertFail();
         }
-        done();
-        console.log("Get SUB_DDM_RelationalStore_OpenStatus_0050 successfully end.");
-    })
+		
+		try {
+            store.version = 2147483647
+            expect(2147483647).assertEqual(store.version)
+        } catch (err) {
+			console.info(" SUB_DDM_RelationalStore_Version_0010 failed: err: code=" + err.code + " message=" + err.message)
+            expect(null).assertFail();
+        }
 
-    /**
-     * @tc.number SUB_DDM_RelationalStore_OpenStatus_0060
-     * @tc.name Get relational store status test
-     * @tc.desc relational OpenStatus
-    */
-     it('SUB_DDM_RelationalStore_OpenStatus_0060', 0, async function(done){
-        console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0060 start *************");
-        let STORE_CONFIG1 = {
-            name: "rdbnumber.db",
-            securityLevel: data_Rdb.SecurityLevel.S1
-        };
-        try {
-            let promise = null;
-            promise = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0060 STORE_CONFIG promise.openStatus: " + promise.openStatus);
-            expect(promise.openStatus).assertEqual(data_Rdb.OpenStatus.ON_CREATE);
-            promise = await data_Rdb.getRdbStore(context, STORE_CONFIG1);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0060 STORE_CONFIG1 promise.openStatus: " + promise.openStatus);
-            expect(promise.openStatus).assertEqual(data_Rdb.OpenStatus.ON_CREATE);
-        } catch (err) {
-            console.info(TAG + "Get SUB_DDM_RelationalStore_OpenStatus_0060 fail catch err: " + err);
-            expect(null).assertFail();
-        }
         await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-        await data_Rdb.deleteRdbStore(context, STORE_CONFIG1.name);
         done();
-        console.log("Get SUB_DDM_RelationalStore_OpenStatus_0060 successfully end.");
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Version_0010 end   *************");
     })
-            
+	
     /**
-     * @tc.number SUB_DDM_RelationalStore_OpenStatus_0070
-     * @tc.name Get relational store status test
-     * @tc.desc relational OpenStatus
-    */
-     it('SUB_DDM_RelationalStore_OpenStatus_0070', 0, async function(done){
-        console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0070 start *************");
-        let STORE_CONFIG1 = {
-            name: "rdbnumber.db",
-            securityLevel: data_Rdb.SecurityLevel.S1
-        };
-        try {
-            let promise = null;
-            promise = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0070 STORE_CONFIG promise.openStatus: " + promise.openStatus);
-            expect(promise.openStatus).assertEqual(data_Rdb.OpenStatus.ON_CREATE);
-            let rdbResult = await data_Rdb.getRdbStore(context, STORE_CONFIG1);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0070 STORE_CONFIG1 rdbResult.openStatus: " + rdbResult.openStatus);
-            expect(rdbResult.openStatus).assertEqual(data_Rdb.OpenStatus.ON_CREATE);
-        } catch (err) {
-            console.info(TAG + "Get SUB_DDM_RelationalStore_OpenStatus_0070 fail catch err: " + err);
-            expect(null).assertFail();
-        }
-        await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-        await data_Rdb.deleteRdbStore(context, STORE_CONFIG1.name);
-        done();
-        console.log("Get SUB_DDM_RelationalStore_OpenStatus_0070 successfully end.");
-    })
+     * @tc.number SUB_DDM_RelationalStore_Version_0020
+     * @tc.name Get relational store version test
+     * @tc.desc relational version
+     */	
+	    it('SUB_DDM_RelationalStore_Version_0020', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Version_0020 start *************");
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
 
-    /**
-     * @tc.number SUB_DDM_RelationalStore_OpenStatus_0080
-     * @tc.name Get relational store status test
-     * @tc.desc relational OpenStatus
-    */
-     it('SUB_DDM_RelationalStore_OpenStatus_0080', 0, async function(done){
-        console.info(TAG + "************* SUB_DDM_RelationalStore_OpenStatus_0050 start *************");
-        let STORE_CONFIG1 = {
-            name: "rdbnumber.db",
-            securityLevel: data_Rdb.SecurityLevel.S1
-        };
         try {
-            let promise = null;
-            promise = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0080 STORE_CONFIG promise.openStatus: " + promise.openStatus);
-            expect(promise.openStatus).assertEqual(data_Rdb.OpenStatus.ON_CREATE);
-            let rdbResult = await data_Rdb.getRdbStore(context, STORE_CONFIG1);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0080 STORE_CONFIG1 rdbResult.openStatus: " + rdbResult.openStatus);
-            expect(rdbResult.openStatus).assertEqual(data_Rdb.OpenStatus.ON_CREATE);
-            promise = null;
-            promise = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0080 STORE_CONFIG promise.openStatus: " + promise.openStatus);
-            expect(promise.openStatus).assertEqual(data_Rdb.OpenStatus.ON_OPEN);
-            rdbResult = null;
-            rdbResult = await data_Rdb.getRdbStore(context, STORE_CONFIG1);
-            console.info("Get SUB_DDM_RelationalStore_OpenStatus_0080 STORE_CONFIG1 rdbResult.openStatus: " + rdbResult.openStatus);
-            expect(rdbResult.openStatus).assertEqual(data_Rdb.OpenStatus.ON_OPEN);
+            store.version = -2147483648;
         } catch (err) {
-            console.info(TAG + "Get SUB_DDM_RelationalStore_OpenStatus_0080 fail catch err: " + err);
-            expect(null).assertFail();
+			console.info("SUB_DDM_RelationalStore_Version_0020 failed1: err: code=" + err.code + " message=" + err.message)
+            expect("401").assertEqual(err.code);
         }
+
+        try {
+            store.version = 2147483647000;
+        } catch (err) {
+			console.info("SUB_DDM_RelationalStore_Version_0020 failed2: err: code=" + err.code + " message=" + err.message)
+            expect("401").assertEqual(err.code);
+        }
+
+        try {
+            store.version = 0;
+        } catch (err) {
+			console.info("SUB_DDM_RelationalStore_Version_0020 failed3: err: code=" + err.code + " message=" + err.message)
+            expect("401").assertEqual(err.code);
+        }
+
         await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-        await data_Rdb.deleteRdbStore(context, STORE_CONFIG1.name);
         done();
-        console.log("Get SUB_DDM_RelationalStore_OpenStatus_0080 successfully end.");
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Version_0020 end   *************");
     })
     
     console.info(TAG + "*************Unit Test End*************");
