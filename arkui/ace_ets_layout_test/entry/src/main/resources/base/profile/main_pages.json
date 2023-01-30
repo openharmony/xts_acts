@@ -1,0 +1,14 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexBase",
+        "MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexPadding",
+        "MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexMargin",
+        "MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexExceed",
+        "MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexHeightModify",
+        "MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexOffset",
+        "MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexVisibility",
+        "MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexAlignSelf",
+        "MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexTextMargin"
+    ]
+}

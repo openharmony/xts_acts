@@ -1,0 +1,129 @@
+/*
+ * Copyright (c) 2020-2030 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// @ts-nocheck
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@system.router';
+import CommonFunc from "../../../../MainAbility/common/Common";
+import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
+export default function flexVisibility_AutoJsunit() {
+
+  function sleep(time) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, time * 1000)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
+
+  describe('flexItemAlignAutoTest', function () {
+    beforeEach(async function (done) {
+      let options = {
+        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexVisibility',
+      }
+      try {
+        router.clear();
+        await sleep(1);
+        let pages = router.getState();
+        console.info("get FlexVisibility state success " + JSON.stringify(pages));
+        if (!("FlexVisibility" == pages.name)) {
+          console.info("get FlexVisibility state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push FlexVisibility page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push FlexVisibility page error " + JSON.stringify(result));
+      }
+      await sleep(2)
+      done()
+    });
+
+    afterEach(async function () {
+      await sleep(1)
+      console.info("FlexVisibility after each called");
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1000
+     * @tc.name      ItemAlign_Auto_FlexVisibility
+     * @tc.desc      aceFlexAlignItemTest
+     */
+    it('ItemAlign_Auto_FlexVisibility001', 0, async function (done) {
+      console.info('new ItemAlign_Auto_FlexVisibility001 START');
+      globalThis.value.message.notify({name:'visibility', value:Visibility.None})
+      let strJson1 = getInspectorByKey('flexVisible');
+      let obj1 = JSON.parse(strJson1);
+      let strJson2 = getInspectorByKey('textVisible01');
+      let obj2 = JSON.parse(strJson2);
+      let textVisible01 = CommonFunc.getComponentRect('textVisible01')
+      let textVisible02 = CommonFunc.getComponentRect('textVisible02')
+      let textVisible03 = CommonFunc.getComponentRect('textVisible03')
+      let flexVisible = CommonFunc.getComponentRect('flexVisible')
+
+      expect(textVisible01.left).assertEqual(textVisible01.right)
+      expect(textVisible01.right).assertEqual(flexVisible.left)
+      expect(textVisible02.top).assertEqual(textVisible03.top)
+      expect(textVisible03.top).assertEqual(flexVisible.top)
+      
+      expect(textVisible02.bottom - textVisible02.top).assertEqual(vp2px(100))
+      expect(textVisible03.bottom - textVisible03.top).assertEqual(vp2px(150))
+      expect(textVisible02.right - textVisible02.left).assertEqual(vp2px(150))
+      expect(textVisible03.right - textVisible03.left).assertEqual(vp2px(150))
+
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
+      expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
+
+      console.info('new ItemAlign_Auto_FlexVisibility001 END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1100
+     * @tc.name      ItemAlign_Auto_FlexVisibility
+     * @tc.desc      aceFlexAlignItemTest
+     */
+    it('ItemAlign_Auto_FlexVisibility002', 0, async function (done) {
+      console.info('new ItemAlign_Auto_FlexVisibility002 START');
+      globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden});
+      let strJson1 = getInspectorByKey('flexVisible');
+      let obj1 = JSON.parse(strJson1);
+      let strJson2 = getInspectorByKey('textVisible01');
+      let obj2 = JSON.parse(strJson2);
+      let textVisible01 = CommonFunc.getComponentRect('textVisible01');
+      let textVisible02 = CommonFunc.getComponentRect('textVisible02');
+      let textVisible03 = CommonFunc.getComponentRect('textVisible03');
+      let flexVisible = CommonFunc.getComponentRect('flexVisible');
+      expect(textVisible01.left).assertEqual(flexVisible.left)
+      expect(textVisible01.right).assertEqual(textVisible02.left)
+      expect(textVisible02.top).assertEqual(textVisible03.top)
+      expect(textVisible03.top).assertEqual(flexVisible.top)
+      
+      expect(textVisible01.bottom - textVisible01.top).assertEqual(vp2px(50))
+      expect(textVisible02.bottom - textVisible02.top).assertEqual(vp2px(100))
+      expect(textVisible03.bottom - textVisible03.top).assertEqual(vp2px(150))
+      expect(textVisible01.right - textVisible01.left).assertEqual(vp2px(150))
+      expect(textVisible02.right - textVisible02.left).assertEqual(vp2px(150))
+      expect(textVisible03.right - textVisible03.left).assertEqual(vp2px(150))
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
+      expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
+      console.info('new ItemAlign_Auto_FlexVisibility002 END');
+      done();
+    });
+  })
+}
