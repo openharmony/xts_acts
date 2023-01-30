@@ -40,8 +40,8 @@ let imagesfetchOp = {
     selectionArgs: [imageType.toString()],
 };
 let videosfetchOp = {
-    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND relative_path = ?',
-    selectionArgs: [videoType.toString(), 'Camera/'],
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND ' + mediaLibrary.FileKey.DISPLAY_NAME + ' = ?',
+    selectionArgs: [videoType.toString(), '01.mp4'],
 };
 let audiosfetchOp = {
     selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND bucket_display_name = ?',
