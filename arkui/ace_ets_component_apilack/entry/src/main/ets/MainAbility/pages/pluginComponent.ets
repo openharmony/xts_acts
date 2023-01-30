@@ -19,9 +19,9 @@ import plugin from "../common/plugin_component.js"
 @Component
 struct PluginUserExample {
   @StorageLink("plugincount") plugincount: Object[] = [
-    { source: 'plugincomponent1', ability: 'com.example.plugin' },
-    { source: 'plugintemplate', ability: 'com.example.myapplication' },
-    { source: 'plugintemplate', ability: 'com.example.myapplication' }]
+    { source: 'plugincomponent1', bundleName: 'com.example.plugin' },
+    { source: 'plugintemplate', bundleName: 'com.example.myapplication' },
+    { source: 'plugintemplate', bundleName: 'com.example.myapplication' }]
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -48,7 +48,7 @@ struct PluginUserExample {
         })
       ForEach(this.plugincount, item => {
         PluginComponent({
-          template: { source: 'plugincomponent1', ability: 'com.example.plugin' },
+          template: { source: 'plugincomponent1', bundleName: 'com.example.plugin' },
           data: { 'countDownStartValue': 'new countDownStartValue' }
         }).size({ width: 500, height: 100 })
           .onComplete(() => {
