@@ -51,6 +51,10 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       }
     }
 
+    gDeviceList = usb.getDevices();
+    gDeviceList[0].name;
+    gDeviceList[0].version;
+    gDeviceList[0].configs;
     gPipe = usb.connectDevice(gDeviceList[0])
     console.info('usb unit connectDevice gPipe ret : ' + JSON.stringify(gPipe));
   })
@@ -72,6 +76,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var bfind = false
     for (var k = 0; k < testParam.config.interfaces[j].endpoints.length; k++) {
       var endpoint = testParam.config.interfaces[j].endpoints[k];
+      endpoint.number = 1;
+      endpoint.type = 2;
+      endpoint.interfaceid = 1;
       if (endpoint.type == EventConstants.USB_ENDPOINT_XFER_BULK) {
         bfind = true
         if (endpoint.direction == usb.USB_REQUEST_DIR_TO_DEVICE) {
@@ -96,7 +103,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     if (testParam.config.interfaces[j].clazz != 10 ||
-      testParam.config.interfaces[j].subclass != 0 ||
+      testParam.config.interfaces[j].subClass != 0 ||
       testParam.config.interfaces[j].protocol != 2) {
       return false
     }
@@ -113,7 +120,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
   }
 
-  // 预制传输相关参数
+  // Prefabrication transmission related parameters
   function getTransferTestParam() {
     var testParam = {
       config: null,
@@ -140,9 +147,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number    : SUB_USB_JS_0630
-   * @tc.name      : bulkTransfer
-   * @tc.desc      : 批量传输 收数据
+   * @tc.number: SUB_USB_JS_0630
+   * @tc.name: bulkTransfer
+   * @tc.desc: Positive test: bulk transfer, receive data
    */
   it('SUB_USB_JS_0630', 0, function () {
     console.info('usb SUB_USB_JS_0630 begin');
@@ -166,8 +173,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     usb.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, 5000).then(data => {
       console.info('usb case readData tmpUint8Array buffer : ' + CheckEmptyUtils.ab2str(tmpUint8Array));
       console.info('usb case readData ret: ' + data);
-      console.info('usb case SUB_USB_JS_0630 :  PASS');
       expect(data >= 0).assertTrue();
+      console.info('usb case SUB_USB_JS_0630 :  PASS');
     }).catch(error => {
       console.info('usb case readData error : ' + JSON.stringify(error));
       expect(false).assertTrue();
@@ -176,9 +183,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0640
-   * @tc.name      : bulkTransfer
-   * @tc.desc      : 批量传输 发数据
+   * @tc.number: SUB_USB_JS_0640
+   * @tc.name: bulkTransfer
+   * @tc.desc: Positive test: bulk transfer, send data
    */
   it('SUB_USB_JS_0640', 0, function () {
     console.info('usb SUB_USB_JS_0640 begin');
@@ -208,8 +215,8 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     usb.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, 5000).then(data => {
       console.info('usb case SUB_USB_JS_0640 ret: ' + data);
       console.info('usb case SUB_USB_JS_0640 send data: ' + testParam.sendData);
+      expect(data > 0).assertTrue();
       console.info('usb case SUB_USB_JS_0640 :  PASS');
-      expect(true).assertTrue();
     }).catch(error => {
       console.info('usb write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
@@ -218,9 +225,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0420
-   * @tc.name      : claimInterface
-   * @tc.desc      : 获取接口 并释放
+   * @tc.number: SUB_USB_JS_0420
+   * @tc.name: claimInterface
+   * @tc.desc: Positive test: Get interface, and release
    */
   it('SUB_USB_JS_0420', 0, function () {
     console.info('usb SUB_USB_JS_0420 begin');
@@ -246,6 +253,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
         console.info('usb case current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
+        //Attribute Prefabrication
+        var interfaces = gDeviceList[0].configs[j].interfaces[k];
+		    interfaces.id = 1;
+		    interfaces.name = '';
+		    interfaces.alternateSetting = 0;
         var isClaim = usb.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[k], true)
         console.info('usb case claimInterface function return: ' + isClaim);
         expect(isClaim).assertEqual(0);
@@ -259,7 +271,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     console.info('usb SUB_USB_JS_0420 :  PASS');
-    expect(true).assertTrue();
   })
 
   function getTransferParam(iCmd, iReqTarType, iReqType, iValue, iIndex) {
@@ -281,9 +292,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number    : SUB_USB_JS_0740
-   * @tc.name      : setConfiguration
-   * @tc.desc      : 设置设备配置
+   * @tc.number: SUB_USB_JS_0740
+   * @tc.name: setConfiguration
+   * @tc.desc: Positive test: Set Device Configuration
    */
   it('SUB_USB_JS_0740', 0, function () {
     console.info('usb SUB_USB_JS_0740 begin');
@@ -300,19 +311,24 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
 
     gPipe = usb.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
+      var configs = gDeviceList[0].configs[j];
+      configs.id = 1;
+      configs.name = '';
+      configs.maxPower = 1;
+      configs.isRemoteWakeup = true;
+      configs.isSelfPowered = true;
       var ret = usb.setConfiguration(gPipe, gDeviceList[0].configs[j])
       console.info('usb case setConfiguration return : ' + ret);
       expect(ret).assertEqual(0);
     }
 
     console.info('usb SUB_USB_JS_0740 :  PASS');
-    expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0750
-   * @tc.name      : setConfiguration
-   * @tc.desc      : 反向测试 设置设备配置
+   * @tc.number: SUB_USB_JS_0750
+   * @tc.name: setConfiguration
+   * @tc.desc: Negative test: Set Device Configuration
    */
   it('SUB_USB_JS_0750', 0, function () {
     console.info('usb SUB_USB_JS_0750 begin');
@@ -339,9 +355,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0800
-   * @tc.name      : setInterface
-   * @tc.desc      : 设置设备接口
+   * @tc.number: SUB_USB_JS_0800
+   * @tc.name: setInterface
+   * @tc.desc: Positive test: Set device interface
    */
   it('SUB_USB_JS_0800', 0, function () {
     console.info('usb SUB_USB_JS_0800 begin');
@@ -361,19 +377,18 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       expect(isClaim).assertEqual(0)
       if (isClaim == 0) {
         var ret = usb.setInterface(gPipe, gDeviceList[0].configs[j].interfaces[0])
-        expect(ret).assertEqual(0);
         console.info('usb case setInterface return : ' + ret);
+        expect(ret).assertEqual(0);
       }
     }
 
     console.info('usb SUB_USB_JS_0800 :  PASS');
-    expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0810
-   * @tc.name      : setInterface
-   * @tc.desc      : 反向测试 设置设备接口
+   * @tc.number: SUB_USB_JS_0810
+   * @tc.name: setInterface
+   * @tc.desc: Negative test: Set device interface, error tmpInterface.id
    */
   it('SUB_USB_JS_0810', 0, function () {
     console.info('usb SUB_USB_JS_0810 begin');
@@ -395,21 +410,20 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
         var tmpInterface = JSON.parse(JSON.stringify(gDeviceList[0].configs[j].interfaces[0]));
         tmpInterface.id = 234
         var ret = usb.setInterface(gPipe, tmpInterface)
-        expect(ret).assertLess(0)
         console.info('usb case setInterface return : ' + ret)
+        expect(ret).assertLess(0)
       }
     }
 
     console.info('usb SUB_USB_JS_0810 :  PASS');
-    expect(true).assertTrue();
   })
 
   function callControlTransfer(pip, controlParam, timeout, caseName) {
     usb.controlTransfer(pip, controlParam, timeout).then(data => {
       console.info('usb controlTransfer ret data : ' + data + ' ' + caseName);
       console.info('usb controlTransfer controlParam.data buffer : ' + controlParam.data + ' ' + caseName);
+      expect(data >= 0).assertTrue();
       console.info('usb' + caseName + ':  PASS');
-      expect(true).assertTrue();
     }).catch(error => {
       console.info('usb controlTransfer error : ' + JSON.stringify(error));
       console.info('usb' + caseName + ':  FAILED');
@@ -419,9 +433,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number    : SUB_USB_JS_0540
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 GetDescriptor: cmd 6 target 2 reqType 128 value 512 index 0
+   * @tc.number: SUB_USB_JS_0540
+   * @tc.name: controlTransfer
+   * @tc.desc: Positive test: control transfer, GetDescriptor: cmd 6 target 2 reqType 128 value 512 index 0
    */
   it('SUB_USB_JS_0540', 0, function () {
     console.info('usb SUB_USB_JS_0540 begin');
@@ -443,9 +457,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0550
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 GetStatus: cmd 0 target 0 reqType 128 value 0 index 0
+   * @tc.number: SUB_USB_JS_0550
+   * @tc.name: controlTransfer
+   * @tc.desc: Positive test: control transfer, GetStatus: cmd 0 target 0 reqType 128 value 0 index 0
    */
   it('SUB_USB_JS_0550', 0, function () {
     console.info('usb SUB_USB_JS_0550 begin');
@@ -467,9 +481,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0560
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 GetConfiguration: cmd 8 target 0 reqType 128 value 0 index 0
+   * @tc.number: SUB_USB_JS_0560
+   * @tc.name: controlTransfer
+   * @tc.desc: Positive test: control transfer, GetConfiguration: cmd 8 target 0 reqType 128 value 0 index 0
    */
   it('SUB_USB_JS_0560', 0, function () {
     console.info('usb SUB_USB_JS_0560 begin');
@@ -491,9 +505,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0570
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 GetInterface: cmd 10 target 0 reqType 129 value 0 index 1
+   * @tc.number: SUB_USB_JS_0570
+   * @tc.name: controlTransfer
+   * @tc.desc: Positive test: control transfer, GetInterface: cmd 10 target 0 reqType 129 value 0 index 1
    */
   it('SUB_USB_JS_0570', 0, function () {
     console.info('usb SUB_USB_JS_0570 begin');
@@ -515,9 +529,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0580
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 1 target 0 reqType 0 value 0 index 0
+   * @tc.number: SUB_USB_JS_0580
+   * @tc.name: controlTransfer
+   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 1 target 0 reqType 0 value 0 index 0
    */
   it('SUB_USB_JS_0580', 0, function () {
     console.info('usb SUB_USB_JS_0580 begin');
@@ -539,11 +553,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0590
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 255 target 1 reqType 129 value 512 index 0
+   * @tc.number: SUB_USB_JS_0590
+   * @tc.name: controlTransfer
+   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 1 reqType 129 value 512 index 0
    */
-   it('SUB_USB_JS_0590', 0, function () {
+  it('SUB_USB_JS_0590', 0, function () {
     console.info('usb SUB_USB_JS_0590 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -563,11 +577,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0600
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 255 target 2 reqType 34 value 512 index 0
+   * @tc.number: SUB_USB_JS_0600
+   * @tc.name: controlTransfer
+   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 2 reqType 34 value 512 index 0
    */
-   it('SUB_USB_JS_0600', 0, function () {
+  it('SUB_USB_JS_0600', 0, function () {
     console.info('usb SUB_USB_JS_0600 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -587,11 +601,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0610
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 255 target 3 reqType 67 value 512 index 0
+   * @tc.number: SUB_USB_JS_0610
+   * @tc.name: controlTransfer
+   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 3 reqType 67 value 512 index 0
    */
-   it('SUB_USB_JS_0610', 0, function () {
+  it('SUB_USB_JS_0610', 0, function () {
     console.info('usb SUB_USB_JS_0610 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -611,11 +625,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0620
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 255 target 3 reqType 35 value 0 index 0
+   * @tc.number: SUB_USB_JS_0620
+   * @tc.name: controlTransfer
+   * @tc.desc: Positive test: control transfer, ClearFeature: cmd 255 target 3 reqType 35 value 0 index 0
    */
-   it('SUB_USB_JS_0620', 0, function () {
+  it('SUB_USB_JS_0620', 0, function () {
     console.info('usb SUB_USB_JS_0620 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -635,11 +649,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1140
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 反向测试 控制传输 参数类型错误
+   * @tc.number: SUB_USB_JS_1140
+   * @tc.name: controlTransfer
+   * @tc.desc: Negative test: control transfer, parameter number exception, input a parameter
    */
-   it('SUB_USB_JS_1140', 0, function () {
+  it('SUB_USB_JS_1140', 0, function () {
     console.info('usb SUB_USB_JS_1140 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -663,11 +677,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_1300
-   * @tc.name      : controlTransfer
-   * @tc.desc      : 反向测试 控制传输 参数个数错误，必要参数未传入
+   * @tc.number: SUB_USB_JS_1300
+   * @tc.name: controlTransfer
+   * @tc.desc: Negative test: control transfer, parameter number exception, necessary parameters not input
    */
-   it('SUB_USB_JS_1300', 0, function () {
+  it('SUB_USB_JS_1300', 0, function () {
     console.info('usb SUB_USB_JS_1300 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -687,6 +701,38 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb 1300 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1300 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1440
+   * @tc.name: controlTransfer
+   * @tc.desc: Negative test: control transfer, parameter pipe type error
+   */
+   it('SUB_USB_JS_1440', 0, function () {
+    console.info('usb SUB_USB_JS_1440 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+    var testParamPip = "invalid";
+    var timeout = 5000;
+    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_OTHER, (usb.USB_REQUEST_DIR_TO_DEVICE)
+        | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
+    try {
+      var maskCode = usb.controlTransfer(testParamPip, controlParam, timeout);
+      console.info('usb 1440 case controlTransfer return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1440 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1440 :  PASS');
     }
   })
 })

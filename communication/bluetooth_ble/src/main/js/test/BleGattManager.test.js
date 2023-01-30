@@ -61,9 +61,11 @@ describe('bluetoothBLETest', function() {
     afterEach(function () {
         console.info('afterEach called')
     })
-    afterAll(function () {
+    afterAll(async function (done) {
         console.info('afterAll called')
+        await sleep(6000);
         gattClient.close();
+        done()
     })
 
     /**
@@ -123,6 +125,7 @@ describe('bluetoothBLETest', function() {
         console.info('[bluetooth_js] gattClient connect' + ret)
         expect(ret).assertTrue();
         gattClient.disconnect();
+        await sleep(2000);
         await gattClient.off("BLEConnectionStateChange");
         done()
    })
@@ -373,34 +376,39 @@ describe('bluetoothBLETest', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_ReadCharacteristic_0100', 0, async function (done) {
-        let descriptors = [];
-        let arrayBuffer = new ArrayBuffer(8);
-        let desValue =  new Uint8Array(arrayBuffer);
-        desValue[0] = 11;
-        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
-            descriptorValue: arrayBuffer};
-        descriptors[0] = descriptor;
-        let arrayBufferCCC = new ArrayBuffer(8);
-        let cccValue = new Uint8Array(arrayBufferCCC);
-        cccValue[0] = 32;
-        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-            characteristicValue: arrayBufferCCC, descriptors:descriptors};
-        await gattClient.readCharacteristicValue(characteristic).then((data) => {
-            if (object != null) {
-                expect(true).assertEqual(true);
-            } else {
+        try {
+            let descriptors = [];
+            let arrayBuffer = new ArrayBuffer(8);
+            let desValue =  new Uint8Array(arrayBuffer);
+            desValue[0] = 11;
+            let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+                descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
+                descriptorValue: arrayBuffer};
+            descriptors[0] = descriptor;
+            let arrayBufferCCC = new ArrayBuffer(8);
+            let cccValue = new Uint8Array(arrayBufferCCC);
+            cccValue[0] = 32;
+            let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+                characteristicValue: arrayBufferCCC, descriptors:descriptors};
+            await gattClient.readCharacteristicValue(characteristic).then((data) => {
                 console.info('[bluetooth_js] readCharacValue promise data:'
                 + JSON.stringify(data));
-                expect(null).assertFail();
-            }
-            done();
-        }).catch(err => {
-            console.error(`bluetooth readCharacteValue promise has error: ${err}`);
-            expect(true).assertEqual(true);
-            done();
-        })
+                expect(true).assertEqual(data.length>=0);
+                done();
+            }).catch(err => {
+                console.error(`bluetooth readCharacteValue01 promise has error: ${err}`);
+                expect(true).assertEqual(true);
+                done();
+            })
+        } catch (error) {
+            console.error(`[bluetooth_js]readDescrValue01 failed, code is ${error.code}, 
+            message is ${error.message}`);
+            expect(error.code).assertEqual(undefined);
+            done()
+        }
+        
     })
 
     /**
@@ -426,6 +434,7 @@ describe('bluetoothBLETest', function() {
         let desValue =  new Uint8Array(arrayBuffer);
         desValue[0] = 11;
         let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
                 descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
                descriptorValue:arrayBuffer};
         let arrayBufferCCC = new ArrayBuffer(8);
@@ -461,8 +470,7 @@ describe('bluetoothBLETest', function() {
             let ret = gattServer.sendResponse(serverResponse);
             console.info('[bluetooth_js] sendResponse ret : ' + ret);
             expect(ret).assertEqual(false);
-        }
-        
+        }     
         let gattServer = bluetooth.BLE.createGattServer();
         await gattServer.on("characteristicRead", ReadCharacteristicReq);
         await gattServer.off("characteristicRead");
@@ -479,27 +487,28 @@ describe('bluetoothBLETest', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_ReadDescriptor_0100', 0, async function (done) {
-        let arrayBuffer = new ArrayBuffer(8);
-        let desValue =  new Uint8Array(arrayBuffer);
-        desValue[0] = 11;
-        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-                descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
-                descriptorValue: arrayBuffer};
-        await gattClient.readDescriptorValue(descriptor).then((object) => {
-            if (object != null) {
-                console.error('readDescriptorValue promise object:'+JSON.stringify(object));                       
+        try {
+            let arrayBuffer = new ArrayBuffer(8);
+            let desValue =  new Uint8Array(arrayBuffer);
+            desValue[0] = 11;
+            let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                    characteristicUuid: '00001830-0000-1000-8000-00805F9B34FB',
+                    descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
+                    descriptorValue: arrayBuffer};
+            await gattClient.readDescriptorValue(descriptor).then((object) => {
+                    console.info('[bluetooth_js]readDescripValue null:' + JSON.stringify(object));
+                    expect(true).assertEqual(object!=null);
+                done();
+            }).catch(err => {
+                console.error('[bluetooth_js]readDescrValue promise err:'+JSON.stringify(err))
                 expect(true).assertEqual(true);
-                            
-            } else {
-                console.info('[bluetooth_js]readDescripValue null:' + JSON.stringify(object));
-                expect(null).assertFail();
-            }
-            done();
-        }).catch(err => {
-            console.error('[bluetooth_js]readDescrValue promise err:'+JSON.stringify(err));
-            expect(true).assertEqual(true);
-            done();
-       })
+                done();
+            })
+        } catch (error) {
+            console.error('[bluetooth_js]readDescrValue01 error code:'+JSON.stringify(error.code));
+            expect(error.code).assertEqual(undefined);
+            done()
+        } 
     })
 
     /**
@@ -525,6 +534,7 @@ describe('bluetoothBLETest', function() {
         let desValue =  new Uint8Array(arrayBuffer);
         desValue[0] = 11;
         let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
                 descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
         gattClient.readDescriptorValue(descriptor,readDesc);
         done()
@@ -581,6 +591,7 @@ describe('bluetoothBLETest', function() {
         let desValue =  new Uint8Array(arrayBuffer);
             desValue[0] = 11;
         let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
                 descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
             descriptors[0] = descriptor;
         let arrayBufferCCC = new ArrayBuffer(8);
@@ -656,6 +667,7 @@ describe('bluetoothBLETest', function() {
         let desValue =  new Uint8Array(arrayBuffer);
             desValue[0] = 11;
         let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
                 descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
         let ret = gattClient.writeDescriptorValue(descriptor);
         console.info('[bluetooth_js] bluetooth writeDescriptorValue ret : ' + ret);
@@ -734,9 +746,11 @@ describe('bluetoothBLETest', function() {
         let descNotifyValue = new Uint8Array(arrayBufferNotify);
         descNotifyValue[0] = 1
         let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
             descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
             descriptorValue: arrayBuffer};
         let descriptorNotify = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
             descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB',
             descriptorValue: arrayBufferNotify};
         descriptors[0] = descriptor;
@@ -770,9 +784,11 @@ describe('bluetoothBLETest', function() {
         let descNotifyValue = new Uint8Array(arrayBufferNotify);
         descNotifyValue[0] = 1
         let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
             descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
             descriptorValue: arrayBuffer};
         let descriptorNotify = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
             descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB',
             descriptorValue: arrayBufferNotify};
         descriptors[0] = descriptor;
@@ -828,6 +844,7 @@ describe('bluetoothBLETest', function() {
         let descNotifyValue = new Uint8Array(arrayBufferNotify);
         descNotifyValue[0] = 1
         let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
             descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
             descriptorValue: arrayBuffer};
         let descriptorNotify = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
@@ -865,5 +882,6 @@ describe('bluetoothBLETest', function() {
 
 })
 }
+
 
 

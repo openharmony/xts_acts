@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (C) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,9 +17,10 @@ import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
-import * as audioTestBase from '../../../../../AudioTestBase'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { UiDriver, BY} from '@ohos.uitest'
 
+export default function audioVoip() {
 describe('audioVoip', function () {
     let mediaDir;
     let fdRead;
@@ -31,14 +31,30 @@ describe('audioVoip', function () {
     let TagRec = "AudioFrameworkRecLog";
     const AUDIOMANAGER = audio.getAudioManager();
     console.info(`${TagRender}: Create AudioManger Object JS Framework`);
+    async function getPermission() {
+        let permissions = ['ohos.permission.MICROPHONE',
+        'ohos.permission.GRANT_SENSITIVE_PERMISSIONS',
+        'ohos.permission.MANAGE_AUDIO_CONFIG'];
+        featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
+            console.info("request success" + JSON.stringify(data));
+        })
+    }
+    async function driveFn() {
+        console.info(`come in driveFn`);
+        let driver = await UiDriver.create();
+        console.info(`driver is ${JSON.stringify(driver)}`);
+        await sleep(100);
+        console.info(`UiDriver start`);
+        let button = await driver.findComponent(BY.text('允许'));
+        console.info(`button is ${JSON.stringify(button)}`);
+        await sleep(100);
+        await button.click();
+    }
 
     beforeAll(async function () {
         console.info(`AudioFrameworkTest: beforeAll: Prerequisites at the test suite level`);
-        let permissionName1 = 'ohos.permission.MICROPHONE';
-        let permissionNameList = [permissionName1];
-        let appName = 'ohos.acts.multimedia.audio.audiovoip';
-        await audioTestBase.applyPermission(appName, permissionNameList);
-        await sleep(100);
+        await getPermission();
+        await driveFn();
         console.info(`AudioFrameworkTest: beforeAll: END`);
     })
 
@@ -505,4 +521,4 @@ describe('audioVoip', function () {
     })
 
 
-})
+});}

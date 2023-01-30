@@ -18,13 +18,13 @@ hcpptest_suite("ActsUpdateTest") {
   sources = [ "src/UpdateTest.cpp" ]
 
   include_dirs = [
-    "//base/update/ota_lite/interfaces/kits",
-    "//base/update/ota_lite/hals",
+    "//base/update/sys_installer_lite/interfaces/kits",
+    "//base/update/sys_installer_lite/hals",
     "//commonlibrary/utils_lite/include",
   ]
   deps = [
     "$ohos_third_party_dir/mbedtls:mbedtls_static",
-    "//base/update/ota_lite/frameworks/source:hota",
+    "//base/update/sys_installer_lite/frameworks/source:hota",
   ]
 
   cflags = [ "-Wno-error" ]

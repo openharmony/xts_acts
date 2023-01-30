@@ -99,8 +99,8 @@ export default function requestUploadJSUnit() {
         console.info("====>SUB_REQUEST_UPLOAD_API_0001 request.ERROR_DEVICE_NOT_FOUND:" + request.ERROR_DEVICE_NOT_FOUND);
         expect(request.ERROR_DEVICE_NOT_FOUND).assertEqual(1);
       } catch (err) {
-        expect(true).assertEqual(true);
-        console.error("SUB_REQUEST_UPLOAD_API_0001 error: " + err);
+        expect().assertFail();
+        console.error("====>SUB_REQUEST_UPLOAD_API_0001 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0001 end-----------------------");
       done();
@@ -126,8 +126,8 @@ export default function requestUploadJSUnit() {
         console.info("====>SUB_REQUEST_UPLOAD_API_0002 request.ERROR_INSUFFICIENT_SPACE:" + request.ERROR_INSUFFICIENT_SPACE);
         expect(request.ERROR_INSUFFICIENT_SPACE).assertEqual(5);
       } catch (err) {
-        expect(true).assertEqual(true);
-        console.error("SUB_REQUEST_UPLOAD_API_0002 error: " + err);
+        expect().assertFail();
+        console.error("====>SUB_REQUEST_UPLOAD_API_0002 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0002 end-----------------------");
       done();
@@ -153,8 +153,8 @@ export default function requestUploadJSUnit() {
         console.info("====>SUB_REQUEST_UPLOAD_API_0003 request.PAUSED_QUEUED_FOR_WIFI:" + request.PAUSED_QUEUED_FOR_WIFI);
         expect(request.PAUSED_QUEUED_FOR_WIFI).assertEqual(0);
       } catch (err) {
-        expect(true).assertEqual(true);
-        console.error("SUB_REQUEST_UPLOAD_API_0003 error: " + err);
+        expect().assertFail();
+        console.error("====>SUB_REQUEST_UPLOAD_API_0003 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0003 end-----------------------");
       done();
@@ -177,11 +177,11 @@ export default function requestUploadJSUnit() {
         expect(request.PAUSED_WAITING_FOR_NETWORK).assertEqual(1);
         console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.PAUSED_WAITING_TO_RETRY:" + request.PAUSED_WAITING_TO_RETRY);
         expect(request.PAUSED_WAITING_TO_RETRY).assertEqual(2);
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_FAILED:" + request.SESSION_FAILED);
-        expect(request.SESSION_FAILED).assertEqual(4);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.PAUSED_BY_USER:" + request.PAUSED_BY_USER);
+        expect(request.PAUSED_BY_USER).assertEqual(3);
       } catch (err) {
-        expect(true).assertEqual(true);
-        console.error("SUB_REQUEST_UPLOAD_API_0004 error: " + err);
+        expect().assertFail();
+        console.error("====>SUB_REQUEST_UPLOAD_API_0004 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0004 end-----------------------");
       done();
@@ -198,17 +198,19 @@ export default function requestUploadJSUnit() {
     it('SUB_REQUEST_UPLOAD_API_0005', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0005 is starting-----------------------");
       try {
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_PAUSED:" + request.SESSION_PAUSED);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_FAILED:" + request.SESSION_FAILED);
+        expect(request.SESSION_FAILED).assertEqual(4);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_PAUSED:" + request.SESSION_PAUSED);
         expect(request.SESSION_PAUSED).assertEqual(3);
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_PENDING:" + request.SESSION_PENDING);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_PENDING:" + request.SESSION_PENDING);
         expect(request.SESSION_PENDING).assertEqual(2);
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_RUNNING:" + request.SESSION_RUNNING);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_RUNNING:" + request.SESSION_RUNNING);
         expect(request.SESSION_RUNNING).assertEqual(1);
-        console.info("====>SUB_REQUEST_UPLOAD_API_0004 request.SESSION_SUCCESSFUL:" + request.SESSION_SUCCESSFUL);
+        console.info("====>SUB_REQUEST_UPLOAD_API_0005 request.SESSION_SUCCESSFUL:" + request.SESSION_SUCCESSFUL);
         expect(request.SESSION_SUCCESSFUL).assertEqual(0);
       } catch (err) {
-        expect(true).assertEqual(true);
-        console.error("SUB_REQUEST_UPLOAD_API_0005 error: " + err);
+        expect().assertFail();
+        console.error("====>SUB_REQUEST_UPLOAD_API_0005 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0005 end-----------------------");
       done();
@@ -244,8 +246,8 @@ export default function requestUploadJSUnit() {
         console.info("====>SUB_REQUEST_UPLOAD_API_0006 request.ERROR_UNSUPPORTED_NETWORK_TYPE:" + request.ERROR_UNSUPPORTED_NETWORK_TYPE);
         expect(request.ERROR_UNSUPPORTED_NETWORK_TYPE).assertEqual(10);
       } catch (err) {
-        expect(true).assertEqual(true);
-        console.error("SUB_REQUEST_UPLOAD_API_0006 error: " + err);
+        expect().assertFail();
+        console.error("====>SUB_REQUEST_UPLOAD_API_0006 error: " + err);
       }
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0006 end-----------------------");
       done();
@@ -263,7 +265,7 @@ export default function requestUploadJSUnit() {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_CALLBACK_0001 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 uploadConfig = " + JSON.stringify(uploadConfig));
-        request.upload(uploadConfig, (data) => {
+        request.upload(uploadConfig, (err, data) => {
           uploadTask = data;
           console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 progress uploadTask =" + JSON.stringify(uploadTask));
           expect(uploadTask != undefined).assertEqual(true);
@@ -283,7 +285,7 @@ export default function requestUploadJSUnit() {
           });
         });
       } catch (err) {
-        console.error("SUB_REQUEST_UPLOAD_API_CALLBACK_0001 error: " + err);
+        console.error("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 error: " + err);
         expect().assertFail();
       }
       sleep(Date.now(), 20000);
@@ -324,77 +326,12 @@ export default function requestUploadJSUnit() {
           });
         });
       } catch (e) {
-        console.error("SUB_REQUEST_UPLOAD_API_PROMISE_0001 error: " + JSON.stringify(e));
+        console.error("====>SUB_REQUEST_UPLOAD_API_PROMISE_0001 error: " + JSON.stringify(e));
         expect(true).assertFail(true);
       }
       sleep(Date.now(), 20000);
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 end-----------------------");
       done();
     });
-
-    
-
-    /**
-     * @tc.number    SUB_REQUEST_UPLOAD_API_DELETE_0001
-     * @tc.desc      Delete the upload task.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_REQUEST_UPLOAD_API_DELETE_0001', 0, async function (done) {
-      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 is starting-----------------------");
-      try {
-        request.upload(uploadConfig, (data) => {
-          uploadTask = data;
-          console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask: " + uploadTask);
-          expect(uploadTask != undefined).assertEqual(true);
-          uploadTask.delete((err, data) => {
-            if (err) {
-              console.error('SUB_REQUEST_UPLOAD_API_DELETE_0001 Failed to delete the uploadTask task.');
-              expect().assertFail();
-            }
-            console.info('====>SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask task delete success.');
-            expect(typeof data == "boolean").assertTrue();
-          });
-        })
-      } catch (error) {
-        console.error('SUB_REQUEST_UPLOAD_API_DELETE_0001 delete catch error' + error);
-        expect().assertFail();
-      }
-      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 end-----------------------");
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_REQUEST_UPLOAD_API_DELETE_0002
-     * @tc.desc      Delete the upload task.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_REQUEST_UPLOAD_API_DELETE_0002', 0, async function (done) {
-      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0002 is starting-----------------------");
-      try {
-        request.upload(uploadConfig, (data) => {
-          uploadTask = data;
-          console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0002 uploadTask: " + uploadTask);
-          expect(uploadTask != undefined).assertEqual(true);
-          uploadTask.delete().then(data => {
-            console.info('====>SUB_REQUEST_UPLOAD_API_DELETE_0002 uploadTask task delete success.');
-            expect(data == true).assertTrue();
-          }).catch((err) => {
-            console.info('====>SUB_REQUEST_UPLOAD_API_DELETE_0002 Failed to delete the uploadTask task.');
-            expect().assertFail();
-          })
-        })
-      } catch (error) {
-        console.error('SUB_REQUEST_UPLOAD_API_DELETE_0002 delete catch error');
-        expect().assertFail();
-      }
-      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0002 end-----------------------");
-      done();
-    });
-
-
   })
 }

@@ -93,7 +93,8 @@ struct VideoOnFullscreenChange {
         Button("FullScreen")
           .key("fullScreen")
           .onClick(() => {
-            this.controller.requestFullscreen(true)
+            this.controller.requestFullscreen(true);
+            console.info("video_101 onClick start to fullScreen");
         });
 
         Button("ExitFullScreen")

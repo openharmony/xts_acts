@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 const TIMEOUT = 5000;
 const EACHTIMEOUT = 500;
+const ERR_JS_CREDENTIAL_NOT_EXIST = 12300102;
 export default function ActsAppAccountCredential() {
     describe('ActsAppAccountCredential', function () {
         function sleep(delay) {
@@ -458,7 +459,7 @@ export default function ActsAppAccountCredential() {
                 expect(err).assertEqual(null);
                 appAccountManager.getCredential("account_name_1500", "credentialType15", (err)=>{
                     console.debug("====>getCredential ActsAppAccountCredential_1500 err:" + JSON.stringify(err));
-                    expect(err.code == 12300019).assertEqual(true);
+                    expect(err.code == ERR_JS_CREDENTIAL_NOT_EXIST).assertEqual(true);
                     appAccountManager.removeAccount("account_name_1500", (err)=>{
                         console.debug("====>delete Account ActsAppAccountCredential_1500 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -485,7 +486,7 @@ export default function ActsAppAccountCredential() {
             }
             catch(err){
                 console.debug("====>getCredential ActsAppAccountCredential_1600 err:" + JSON.stringify(err));
-                expect(err.code == 12300019).assertEqual(true);
+                expect(err.code == ERR_JS_CREDENTIAL_NOT_EXIST).assertEqual(true);
                 console.debug("====>delete account ActsAppAccountCredential_1600 start====");
                 await appAccountManager.removeAccount("account_name_1600");
                 console.debug("====>ActsAppAccountCredential_1600 end====");

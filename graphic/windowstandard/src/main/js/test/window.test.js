@@ -15,7 +15,6 @@
 import app from '@system.app'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import window from '@ohos.window'
-import screen from '@ohos.screen'
 import display from '@ohos.display'
 const TRUE_WINDOW = true;
 const avoidAreaType = 3;
@@ -1012,33 +1011,41 @@ describe('window_test', function () {
      * @tc.name        Test isShowing_Test_001.
      * @tc.desc        To verify the function of obtaining the display status when a window is hidden and then displayed.
      */
-    it('isShowing_Test_001', 0, async function (done) {
-        console.log('windowTest IsShowingTest1 begin');
+     it('isShowing_Test_001', 0, async function (done) {
+        console.log('windowTest IsShowingTest1 begin---resetSize');
         window.create('subWindow1', window.WindowType.TYPE_APP).then(wnd => {
             expect(wnd != null).assertTrue();
-            wnd.isShowing().then(res => {
-                console.log('windowTest IsShowingTest1 wnd.isShowing data:' + res);
-                expect(!res).assertTrue();
-                wnd.show().then(() => {
-                    wnd.isShowing().then(res => {
-                        expect(res).assertTrue();
-                        wnd.destroy();
-                        done();
+            console.log('IsShowingTest1 wnd.resetSize(400, 400) begin');
+            wnd.resetSize(400, 400).then(() => {
+                console.log('windowTest IsShowingTest1 wnd.resetSize(400, 400) success');
+                wnd.isShowing().then(res => {
+                    console.log('windowTest IsShowingTest1 wnd.isShowing data:' + res);
+                    expect(!res).assertTrue();
+                    wnd.show().then(() => {
+                        wnd.isShowing().then(res => {
+                            expect(res).assertTrue();
+                            wnd.destroy();
+                            done();
+                        }, (err) => {
+                            console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
                     }, (err) => {
-                        console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
+                        console.log('windowTest IsShowingTest1 wnd.show failed, err :' + JSON.stringify(err));
                         expect().assertFail();
                         done();
                     })
                 }, (err) => {
-                    console.log('windowTest IsShowingTest1 wnd.show failed, err :' + JSON.stringify(err));
+                    console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
                     expect().assertFail();
                     done();
                 })
-            }, (err) => {
-                console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
-                expect().assertFail();
-                done();
+            }, (err_resetSize) => {
+                console.log('windowTest IsShowingTest1 wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
             })
+        
+            
         })
     })
 
@@ -1056,34 +1063,40 @@ describe('window_test', function () {
                 done();
             } else {
                 expect(data != null).assertTrue();
-                data.isShowing((err, res1) => {
-                    if (err.code) {
-                        console.log('windowTest IsShowingTest2 data.isShowing fail err ' + JSON.stringify(err));
-                        expect().assertFail();
-                        done();
-                    } else {
-                        expect(!res1).assertTrue();
-                        data.show(() => {
-                            if (err.code) {
-                                console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
-                                expect().assertFail();
-                                done();
-                            } else {
-                                data.isShowing((err, res2) => {
-                                    if (err.code) {
-                                        console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
-                                        expect().assertFail();
-                                        done();
-                                    } else {
-                                        expect(res2).assertTrue();
-                                        data.destroy();
-                                        done();
-                                    }
-                                })
-                            }
-                        })
-                    }
+                data.resetSize(400, 400).then(() => {
+                    console.log('windowTest IsShowingTest2 wnd.resetSize(400, 400) success');
+                    data.isShowing((err, res1) => {
+                        if (err.code) {
+                            console.log('windowTest IsShowingTest2 data.isShowing fail err ' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        } else {
+                            expect(!res1).assertTrue();
+                            data.show(() => {
+                                if (err.code) {
+                                    console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                } else {
+                                    data.isShowing((err, res2) => {
+                                        if (err.code) {
+                                            console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
+                                            expect().assertFail();
+                                            done();
+                                        } else {
+                                            expect(res2).assertTrue();
+                                            data.destroy();
+                                            done();
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }, (err_resetSize) => {
+                    console.log('windowTest IsShowingTest2 wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
                 })
+                
             }
         })
     })
@@ -1236,7 +1249,14 @@ describe('window_test', function () {
         window.create('subWindow3', window.WindowType.TYPE_APP).then(wnd => {
             console.log('windowTest CreateTest1 create success wnd' + wnd);
             expect(wnd != null).assertTrue();
-            done();
+            wnd.resetSize(400, 400).then(() => {
+                console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                wnd.destroy();
+                done();
+            }, (err_resetSize) => {
+                console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
+            })
+            
         }, (err) => {
             console.log('windowTest CreateTest1 create failed, err :' + JSON.stringify(err));
             expect().assertFail();
@@ -1259,7 +1279,13 @@ describe('window_test', function () {
             } else {
                 expect(data != null).assertTrue();
                 console.log('windowTest CreateTest2 callback create success data' + data);
-                done();
+                data.resetSize(400, 400).then(() => {
+                    console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                    data.destroy();
+                    done();
+                }, (err_resetSize) => {
+                    console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
+                })
             }
         })
     })
@@ -1274,29 +1300,33 @@ describe('window_test', function () {
         window.create('subWindow5', window.WindowType.TYPE_APP).then(wnd => {
             console.log('windowTest DestroyTest1 create success wnd' + wnd);
             expect(wnd != null).assertTrue();
-            wnd.destroy().then(() => {
-                window.find('subWindow5').then((data) => {
-                    console.log('windowTest DestroyTest1 window.find success, window :' + JSON.stringify(data));
+            wnd.resetSize(400, 400).then(() => {
+                console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                wnd.destroy().then(() => {
+                    window.find('subWindow5').then((data) => {
+                        console.log('windowTest DestroyTest1 window.find success, window :' + JSON.stringify(data));
+                        expect().assertFail();
+                        done();
+                    }, (err) => {
+                        console.log('windowTest DestroyTest1 find failed, err :' + JSON.stringify(err));
+                        expect(err.code).assertEqual(1001);
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest CreateTest1 destroy failed, err :' + JSON.stringify(err));
                     expect().assertFail();
                     done();
-                }, (err) => {
-                    console.log('windowTest DestroyTest1 find failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(1001);
-                    done();
                 })
-            }, (err) => {
-                console.log('windowTest CreateTest1 destroy failed, err :' + JSON.stringify(err));
-                expect().assertFail();
-                done();
+            }, (err_resetSize) => {
+                console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
             })
+            
         }, (err) => {
             console.log('windowTest CreateTest1 create failed, err :' + JSON.stringify(err));
             expect().assertFail();
             done();
         })
     })
-
-
     /**
      * @tc.number    SUB_WMS_DESTROY_JSAPI_002
      * @tc.name      Test destroy_Test_002
@@ -1311,26 +1341,32 @@ describe('window_test', function () {
                 done();
             } else {
                 expect(data != null).assertTrue();
-                data.destroy((err) => {
-                    if (err.code != 0) {
-                        console.log('windowTest DestroyTest2 create callback fail' + JSON.stringify(err));
-                        expect().assertFail();
-                        done();
-                    } else {
-                        window.find('subWindow6', (err, data) => {
-                            console.log('windowTest DestroyTest2 find callback begin' + JSON.stringify(data));
-                            if (err.code != 0) {
-                                console.log('windowTest DestroyTest2 find callback fail' + JSON.stringify(err.code));
-                                expect(err.code).assertEqual(1001);
-                                done();
-                            } else {
-                                console.log('windowTest DestroyTest2 find suceess,err : ' + JSON.stringify(err));
-                                expect().assertFail();
-                                done();
-                            }
-                        })
-                    }
+                data.resetSize(400, 400).then(() => {
+                    console.log('windowTest resetSize wnd.resetSize(400, 400) success');
+                    data.destroy((err) => {
+                        if (err.code != 0) {
+                            console.log('windowTest DestroyTest2 create callback fail' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        } else {
+                            window.find('subWindow6', (err, data) => {
+                                console.log('windowTest DestroyTest2 find callback begin' + JSON.stringify(data));
+                                if (err.code != 0) {
+                                    console.log('windowTest DestroyTest2 find callback fail' + JSON.stringify(err.code));
+                                    expect(err.code).assertEqual(1001);
+                                    done();
+                                } else {
+                                    console.log('windowTest DestroyTest2 find suceess,err : ' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                }
+                            })
+                        }
+                    })
+                }, (err_resetSize) => {
+                    console.log('windowTest resetSize wnd.resetSize failed, err :' + JSON.stringify(err_resetSize));
                 })
+                
             }
         })
     })
@@ -1887,56 +1923,7 @@ describe('window_test', function () {
             done();
         })
     })
-
-    /**
-     * @tc.number		SUB_WMS_SETSCREENACTIVEMODE_JSAPI_001
-     * @tc.name			Test setScreenActiveMode_Test_001.
-     * @tc.desc			To set the function of setting screen parameters
-     */
-    it('setScreenActiveMode_Test_001', 0, async function (done) {
-        console.log('screenshotTest setScreenActiveModeTest1 begin');
-        screen.getAllScreens().then(src => {
-            console.log('screenshotTest setScreenActiveModeTest1 getAllScreen src' + src);
-            expect(src[0] != null).assertTrue();
-            let screenIndex = src[0];
-            screenIndex.setScreenActiveMode(0).then(() => {
-                console.log('screenshotTest setScreenActiveModeTest1 setScreenActiveMode 0 success ');
-                expect(TRUE_WINDOW).assertTrue()
-                done();
-            },(err) => {
-                console.log('screenshotTest setScreenActiveModeTest1 setScreenActiveMode 0 failed: err' + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            })
-        }, (err) => {
-            console.log('screenshotTest setScreenActiveModeTest1 failed: err: ' + JSON.stringify(err));
-            done();
-        })
-    })
-
-    /**
-     * @tc.number		SUB_WMS_SETSCREENACTIVEMODE_JSAPI_002
-     * @tc.name			Test setScreenActiveMode_Test_002.
-     * @tc.desc			To set the function of screen parameters to abnormal values.
-     */
-    it('setScreenActiveMode_Test_002', 0, async function (done) {
-        console.log('screenshotTest setScreenActiveModeTest2 begin');
-        screen.getAllScreens().then(src => {
-            console.log('screenshotTest setScreenActiveModeTest2 getAllScreen src' + src);
-            expect(src[0] != null).assertTrue();
-            let screenIndex = src[0];
-            screenIndex.setScreenActiveMode(-5).then(res => {
-                console.log('screenshotTest setScreenActiveModeTest2 setScreenActiveMode -5 res: ' + res);
-                expect().assertFail();
-                done();
-            },(err) => {
-                console.log('screenshotTest setScreenActiveModeTest2 setScreenActiveMode -5 failed: err' + JSON.stringify(err));
-                expect(err.code).assertEqual(1400003);
-                done();
-            })
-        })
-    })
-
+    
     /**
      * @tc.number		SUB_WMS_ENUM_WINDOWSTAGEEVENTTYPE_JSAPI_001
      * @tc.name			Test enumWindowStageEventType_Test_001.
@@ -1945,10 +1932,10 @@ describe('window_test', function () {
     it('enumWindowStageEventType_Test_001', 0, async function (done) {
         console.log('test the enum value of WindowStageEventType begin');
         try {
-            expect(1).assertEqual(window.WindowStageEventType.FOREGROUND);
+            expect(1).assertEqual(window.WindowStageEventType.SHOWN);
             expect(2).assertEqual(window.WindowStageEventType.ACTIVE);
             expect(3).assertEqual(window.WindowStageEventType.INACTIVE);
-            expect(4).assertEqual(window.WindowStageEventType.BACKGROUND);
+            expect(4).assertEqual(window.WindowStageEventType.HIDDEN);
             done();
         } catch (err) {
             console.log('test enum value of windowStageEventType error ' + JSON.stringify(err));

@@ -27,13 +27,24 @@ export default {
         featureAbility.getWant(
             (err, data) => {
                 data = data;
-                console.debug("==========data=" + JSON.stringify(data));
-                if (data.parameters.mykey5[1] == 'test123'){
+                console.info("==========err=" + JSON.stringify(err));
+                console.info("==========data=" + JSON.stringify(data));
+                if (data.parameters.hasOwnProperty("hasRemoteObject") && data.parameters.hasRemoteObject == true) {
+                    console.info("==========parameters= hasRemoteObject is true.");
+                    setTimeout(function(){
+                        featureAbility.terminateSelfWithResult(
+                            {
+                                resultCode: 1,
+                                want: data
+                            }
+                        );
+                    },800);
+                } else if (data.parameters.mykey5[1] == 'test123'){
+                    console.info("==========parameters= second value of mykey5 is test123.");
                     featureAbility.getWant().then((data) =>{
                         data = data
                         setTimeout(function(){
-                            console.debug("==========data2 bundleName is==========="
-                                           + JSON.stringify(data.bundleName));
+                            console.info("==========data2 bundleName is===========" + JSON.stringify(data.bundleName));
                             featureAbility.terminateSelfWithResult(
                                 {
                                     resultCode: 1,
@@ -41,8 +52,9 @@ export default {
                                 }
                             );
                         },1000);
-                    })
+                    });
                 }else{
+                    console.info("==========parameters= default branch.");
                     setTimeout(function(){
                         featureAbility.terminateSelfWithResult(
                             {

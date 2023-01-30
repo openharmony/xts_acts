@@ -36,13 +36,9 @@
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
-                "hilog -b D",
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files/colorspace.jpg",
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files/DisplayP3.png"
                
-            ],
-            "teardown-command":[
-                "hilog -b X"
             ]
         }
     ]

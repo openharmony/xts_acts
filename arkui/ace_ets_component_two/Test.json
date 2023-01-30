@@ -5,7 +5,8 @@
         "test-timeout": "700000",
 		"bundle-name": "com.open.harmony.acetesttwo",
         "package-name": "com.open.harmony.acetesttwo",
-        "shell-timeout": "700000"
+        "shell-timeout": "700000",
+        "testcase-timeout":"10000"
     },
     "kits": [
         {

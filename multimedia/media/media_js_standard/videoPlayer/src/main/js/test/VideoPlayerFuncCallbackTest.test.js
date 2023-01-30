@@ -236,8 +236,8 @@ describe('VideoPlayerFuncCallbackTest', function () {
         'track_index', 'track_type', 'width');
         let audioTrackKey = new Array('bitrate', 'channel_count', 'codec_mime', 'sample_rate',
                 'track_index', 'track_type');
-        let videoTrackValue = new Array(1366541, 'video/x-h264', 6000, 480, 0, 1, 720);
-        let audioTrackValue = new Array(129207, 2, 'audio/mpeg', 44100, 1, 0);
+        let videoTrackValue = new Array(1366541, 'video/avc', 6000, 480, 0, 1, 720);
+        let audioTrackValue = new Array(129207, 2, 'audio/mp4a-latm', 44100, 1, 0);
         let descriptionKey = new Array(videoTrackKey, audioTrackKey);
         let descriptionValue = new Array(videoTrackValue, audioTrackValue);
         videoPlayer.getTrackDescription((err, arrlist) => {
@@ -605,7 +605,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         });
 
         eventEmitter.on('test_setSurface', () => {
-            videoPlayer.url = fdHead + fileDescriptor.fd;
+            videoPlayer.url = fdPath;
             videoPlayer.setDisplaySurface(surfaceID, (err) => {
                 if (err == null) {
                     expect(videoPlayer.state).assertEqual('idle');
@@ -690,7 +690,6 @@ describe('VideoPlayerFuncCallbackTest', function () {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_BASE_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
-        let fdPath = fdHead + fileDescriptor.fd;
         let mySteps = new Array(CREATE_EVENT, SETFDSOURCE_EVENT, fileDescriptor, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PLAY_EVENT, STOP_EVENT, RESET_EVENT, SETSOURCE_EVENT, fdPath,
             PREPARE_EVENT, SETLOOP_EVENT, true, PLAY_EVENT, SEEK_EVENT, DURATION_TIME / 2, SEEK_EVENT, 0,

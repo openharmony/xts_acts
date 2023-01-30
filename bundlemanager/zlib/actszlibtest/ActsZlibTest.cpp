@@ -85,7 +85,9 @@ protected:
 };
 
 ActsZlibTest::ActsZlibTest()
-{}
+{
+    chdir("/data/local/tmp");
+}
 
 ActsZlibTest::~ActsZlibTest()
 {}
@@ -1803,6 +1805,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzdopen, Function | MediumTest | Level2)
 
     int err = gzeof(file);
     fprintf(stderr, "gzeof result: %d\n", err);
+    fclose(fp);
     gzclose(file);
 #endif
 }

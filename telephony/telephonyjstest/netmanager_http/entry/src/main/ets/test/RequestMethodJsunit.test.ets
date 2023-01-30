@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,9 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, afterAll, it, expect, afterEach} from 'hypium/index';
+import {describe, it, expect} from '@ohos/hypium';
 import http from '@ohos.net.http';
-import utils from './Utils'
 
 export default function requestMethodJsunit() {
   describe("requestMethodJsunit", function () {
@@ -33,23 +32,19 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.OPTIONS,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_options Test end-----------------------");
           done();
         });
       } catch (error) {
         console.log("Telephony_Http_HttpRequestMethod_options_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -70,26 +65,23 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.OPTIONS,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_options_01 Test end-----------------------");
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
+          expect(false).assertTrue();
           done();
         });
       } catch (error) {
         console.log("Telephony_http_HttpRequestMethod_options_0200 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -110,23 +102,19 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_GET Test end-----------------------");
           done();
         });
       } catch (error) {
         console.log("Telephony_Http_HttpRequestMethod_GET_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -147,18 +135,13 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_GET_01 Test end-----------------------");
           done();
         }).catch(error => {
@@ -167,6 +150,7 @@ export default function requestMethodJsunit() {
         });
       } catch (error) {
         console.log("Telephony_http_HttpRequestMethod_GET_0200 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -193,23 +177,19 @@ export default function requestMethodJsunit() {
             rn: "30"
           },
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://image.baidu.com/search/albumsdetail/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_POST Test end-----------------------");
           done();
         });
       } catch (error) {
         console.log("Telephony_Http_HttpRequestMethod_POST_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -238,26 +218,23 @@ export default function requestMethodJsunit() {
             rn: "30"
           },
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://image.baidu.com/search/albumsdetail/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_POST_01 Test end-----------------------");
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
+          expect(false).assertTrue();
           done();
         });
       } catch (error) {
         console.log("Telephony_http_HttpRequestMethod_POST_0200 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -278,23 +255,19 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.TRACE,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_TRACE Test end-----------------------");
           done();
         });
       } catch (error) {
         console.log("Telephony_Http_HttpRequestMethod_TRACE_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -314,26 +287,23 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.TRACE,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_TRACE_01 Test end-----------------------");
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
+          expect(false).assertTrue();
           done();
         });
       } catch (error) {
         console.log("Telephony_http_HttpRequestMethod_TRACE_0200 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -356,23 +326,23 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.PUT,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
-        var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
+        if (httpRequestOptions.method == http.RequestMethod.PUT) {
           done();
           return;
         }
+        var httpRequest = http.createHttp();
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_PUT Test end-----------------------");
           done();
         });
       } catch (error) {
         console.log("Telephony_http_HttpRequestMethod_PUT_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -393,26 +363,27 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.PUT,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
-        var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
+        if (httpRequestOptions.method == http.RequestMethod.PUT) {
           done();
           return;
         }
+        var httpRequest = http.createHttp();
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_PUT_01 Test end-----------------------");
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
+          expect(false).assertTrue();
           done();
         });
       } catch (error) {
         console.log("Telephony_http_HttpRequestMethod_PUT_0200 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -431,23 +402,19 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.HEAD,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_head Test end-----------------------");
           done();
         });
       } catch (error) {
         console.log("Telephony_Http_HttpRequestMethod_head_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -465,26 +432,23 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.HEAD,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_HEAD_01 Test end-----------------------");
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
+          expect(false).assertTrue();
           done();
         });
       } catch (error) {
         console.log("Telephony_http_HttpRequestMethod_HEAD_0200 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -503,23 +467,19 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.DELETE,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_DELETE Test end-----------------------");
           done();
         });
       } catch (error) {
         console.log("Telephony_Http_HttpRequestMethod_DELETE_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -537,26 +497,23 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.DELETE,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_DELETE_01 Test end-----------------------");
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
+          expect(false).assertTrue();
           done();
         });
       } catch (error) {
         console.log("Telephony_http_HttpRequestMethod_DELETE_0200 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -575,23 +532,19 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.CONNECT,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_CONNECT Test end-----------------------");
           done();
         });
       } catch (error) {
         console.log("Telephony_Http_HttpRequestMethod_CONNECT_0100 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -609,31 +562,26 @@ export default function requestMethodJsunit() {
           method: http.RequestMethod.CONNECT,
           extraData: null,
           header: "content-type': 'application/json",
-          readTimeout: 60,
-          connectTimeout: 60
+          readTimeout: 60000,
+          connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        if (utils.notCheck) {
-          expect(true).assertTrue();
-          done();
-          return;
-        }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode = 200).assertTrue();
+          expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_CONNECT_01 Test end-----------------------");
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
+          expect(false).assertTrue();
           done();
         });
       } catch (error) {
         console.log("Telephony_http_HttpRequestMethod_CONNECT_0200 : error = " + error);
+        expect(false).assertTrue();
         done();
       }
     });
-
   })
-
 };
 

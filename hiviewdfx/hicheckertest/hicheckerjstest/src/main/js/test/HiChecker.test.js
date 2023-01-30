@@ -39,13 +39,6 @@ describe('HiCheckerTest', function () {
         console.info('HiCheckerTest afterEach called')
     })
 
-    async function msleep(time) {
-        let promise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve("done!"), time)
-        });
-        let result = await promise;
-    }
-
     /**
      * @tc.number 
      * @tc.name DFX_DFR_Hichecker_Interface_0100
@@ -92,7 +85,7 @@ describe('HiCheckerTest', function () {
         expect(hichecker.contains(0)).assertEqual(false);
         hichecker.addRule(999999);
         console.log('add wrong rule!');
-        expect(hichecker.contains(-1)).assertEqual(false);
+        expect(hichecker.contains(999999)).assertEqual(false);
     })
 
     /**

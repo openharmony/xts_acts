@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 
 export default class MainAbility2 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility2 onCreate")
-        globalThis.abilityWant = want;
+        globalThis.abilityWant2 = want;
     }
 
     onDestroy() {

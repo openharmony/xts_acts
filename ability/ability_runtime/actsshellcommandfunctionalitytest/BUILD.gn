@@ -19,6 +19,7 @@ group("actsshellcommandfunctionalitytest") {
     deps = [
       "ActsExecuteShellCommandTest:ActsExecuteShellCommandTest",
       "ActsKillProcessWithAccountCloseRelyHap:ActsKillProcessWithAccountCloseRelyHap",
+      "actsshellcommandcontroltest:ActsShellCommandControlTest",
     ]
   }
 }

@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 
 export default class MainAbility11 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility11 onCreate")
-        globalThis.abilityWant = want;
+        globalThis.abilityWant11 = want;
         globalThis.ability11 = this.context;
         var listKey11 = [];
         let AbilityLifecycleCallback = {

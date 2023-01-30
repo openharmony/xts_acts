@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "ohos.acts.relationalStorejstest",
+        "bundleName": "ohos.acts.relationalstorejstest",
         "vendor": "example",
         "version": {
             "code": 1,
@@ -13,11 +13,12 @@
     },
     "deviceConfig": {},
     "module": {
-        "package": "ohos.acts.relationalStorejstest",
+        "package": "ohos.acts.relationalstorejstest",
         "name": ".entry",
         "deviceType": [
-           "tablet",
-           "default"
+      "tablet",
+      "default",
+            "phone"
         ],
         "distro": {
             "deliveryWithInstall": true,

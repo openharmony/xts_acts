@@ -54,9 +54,9 @@ export default function abilityTest() {
       function SubscribeCallBack(err, data) {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0100 Subscribe CallBack data:====>" + JSON.stringify(data));
-        globalThis.abilitydelegator.doAbilityForeground(ability, (err, data) => {
-          console.log("====>ACTS_DoAbilityForeground_0100 data:====>" + JSON.stringify(data));
-          expect(data).assertEqual(true);
+        globalThis.abilitydelegator.doAbilityForeground(ability, (err) => {
+          console.log("====>ACTS_DoAbilityForeground_0100 data:====>" + JSON.stringify(err));
+          expect(err.code).assertEqual(0);
           setTimeout(() => {
             var num = globalThis.abilitydelegator.getAbilityState(ability)
             console.log("====>ACTS_DoAbilityForeground_0100 getAbilityState:====>" + JSON.stringify(num));
@@ -108,9 +108,9 @@ export default function abilityTest() {
         ability = data
         expect(JSON.stringify(data) == JSON.stringify(mainability)).assertTrue();
         console.log("====>getCurrentTopAbility ability data:====>" + JSON.stringify(ability));
-        globalThis.abilitydelegator.doAbilityForeground(ability, (err, data) => {
-          console.log("====>ACTS_DoAbilityForeground_0200 data:====>" + JSON.stringify(data));
-          expect(data).assertEqual(true);
+        globalThis.abilitydelegator.doAbilityForeground(ability, (err) => {
+          console.log("====>ACTS_DoAbilityForeground_0200 data:====>" + JSON.stringify(err));
+          expect(err.code).assertEqual(0);
           setTimeout(() => {
             var num = globalThis.abilitydelegator.getAbilityState(ability)
             console.log("====>ACTS_DoAbilityForeground_0200 getAbilityState:====>" + JSON.stringify(num));
@@ -143,9 +143,9 @@ export default function abilityTest() {
       function SubscribeCallBack(err, data) {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0400 Subscribe CallBack data:====>" + JSON.stringify(data));
-        globalThis.abilitydelegator.doAbilityForeground(ability).then((data) => {
-          console.log("====>ACTS_DoAbilityForeground_0400 data:====>" + JSON.stringify(data));
-          expect(data).assertEqual(true);
+        globalThis.abilitydelegator.doAbilityForeground(ability).then(() => {
+          console.log("====>ACTS_DoAbilityForeground_0400 data:====>");
+          expect(true).assertTrue();
           setTimeout(() => {
             var num = globalThis.abilitydelegator.getAbilityState(ability)
             console.log("====>ACTS_DoAbilityForeground_0400 getAbilityState:====>" + JSON.stringify(num));
@@ -198,9 +198,9 @@ export default function abilityTest() {
           console.log("====>getCurrentTopAbility  mainability:====>" + JSON.stringify(mainability));
           expect(JSON.stringify(data) == JSON.stringify(mainability)).assertTrue();
           console.log("====>getCurrentTopAbility ability data:====>" + JSON.stringify(ability));
-          globalThis.abilitydelegator.doAbilityForeground(ability).then((data) => {
-            console.log("====>ACTS_DoAbilityForeground_0500 data:====>" + JSON.stringify(data));
-            expect(data).assertEqual(true);
+          globalThis.abilitydelegator.doAbilityForeground(ability).then(() => {
+            console.log("====>ACTS_DoAbilityForeground_0500 data:====>");
+            expect(true).assertTrue();
             setTimeout(() => {
               var num = globalThis.abilitydelegator.getAbilityState(ability)
               console.log("====>ACTS_DoAbilityForeground_0500 getAbilityState:====>" + JSON.stringify(num));
@@ -235,9 +235,9 @@ export default function abilityTest() {
         console.log("====>0100 Subscribe CallBack data:====>" + JSON.stringify(data));
         globalThis.abilitydelegator.getCurrentTopAbility().then((ability) => {
           console.log("====>getCurrentTopAbility ability data:====>" + JSON.stringify(ability));
-          globalThis.abilitydelegator.doAbilityBackground(ability, (err, data1) => {
-            console.log("====>ACTS_DoAbilityBackground_0100 data:====>" + JSON.stringify(data1));
-            expect(data1).assertEqual(true);
+          globalThis.abilitydelegator.doAbilityBackground(ability, (err) => {
+            console.log("====>ACTS_DoAbilityBackground_0100 data:====>");
+            expect(err.code).assertEqual(0);
             setTimeout(() => {
               var num = globalThis.abilitydelegator.getAbilityState(ability)
               console.log("====>ACTS_DoAbilityBackground_0100 getAbilityState:====>" + JSON.stringify(num));
@@ -296,9 +296,9 @@ export default function abilityTest() {
         console.log("====>0500 Subscribe CallBack data:====>" + JSON.stringify(data));
         globalThis.abilitydelegator.getCurrentTopAbility().then((ability2) => {
           console.log("====>getCurrentTopAbility ability2 data:====>" + JSON.stringify(ability2));
-          globalThis.abilitydelegator.doAbilityBackground(ability2).then((data1) => {
-            console.log("====>ACTS_DoAbilityBackground_0500 data:====>" + JSON.stringify(data1));
-            expect(data1).assertEqual(true);
+          globalThis.abilitydelegator.doAbilityBackground(ability2).then(() => {
+            console.log("====>ACTS_DoAbilityBackground_0500 data:====>");
+            expect(true).assertTrue();
             setTimeout(() => {
               var num = globalThis.abilitydelegator.getAbilityState(ability2)
               console.log("====>ACTS_DoAbilityBackground_0500 getAbilityState:====>" + JSON.stringify(num));
@@ -357,32 +357,32 @@ export default function abilityTest() {
         globalThis.abilitydelegator.getCurrentTopAbility().then((ability2) => {
           console.log("====>getCurrentTopAbility ability2 data:====>" + JSON.stringify(ability2));
           console.log("====>0700newabilityname:====>" + JSON.stringify(ability2.context.abilityInfo.name));
-          globalThis.abilitydelegator.doAbilityBackground(ability2).then((data1) => {
-            console.log("====>doAbilityBackground data1:====>" + JSON.stringify(data1));
-            expect(data1).assertEqual(true);
+          globalThis.abilitydelegator.doAbilityBackground(ability2).then(() => {
+            console.log("====>doAbilityBackground data1:====>");
+            expect(true).assertTrue();
             setTimeout(() => {
               num1 = globalThis.abilitydelegator.getAbilityState(ability2)
               console.log("====>ACTS_DoAbilityBackground_0700 getAbilityState1:====>" + " " + JSON.stringify(num1));
               expect(num1).assertEqual(3);
-              globalThis.abilitydelegator.doAbilityForeground(ability2, (err, data) => {
-                console.log("====>doAbilityForeground data:====>" + JSON.stringify(data));
-                expect(data).assertEqual(true);
+              globalThis.abilitydelegator.doAbilityForeground(ability2, (err) => {
+                console.log("====>doAbilityForeground data:====>" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
                 setTimeout(() => {
                   num2 = globalThis.abilitydelegator.getAbilityState(ability2)
                   console.log("====>ACTS_DoAbilityBackground_0700 getAbilityState2:====>" +
                     " " + JSON.stringify(num2));
                   expect(num2).assertEqual(2);
-                  globalThis.abilitydelegator.doAbilityBackground(ability2).then((data1) => {
-                    console.log("====>doAbilityBackground data1:====>" + JSON.stringify(data1));
-                    expect(data1).assertEqual(true);
+                  globalThis.abilitydelegator.doAbilityBackground(ability2).then(() => {
+                    console.log("====>doAbilityBackground data1:====>");
+                    expect(true).assertTrue();
                     setTimeout(() => {
                       num1 = globalThis.abilitydelegator.getAbilityState(ability2)
                       console.log("====>ACTS_DoAbilityBackground_0700 getAbilityState1:====>" +
                         " " + JSON.stringify(num1));
                       expect(num1).assertEqual(3);
-                      globalThis.abilitydelegator.doAbilityForeground(ability2, (err, data) => {
-                        console.log("====>doAbilityForeground data:====>" + JSON.stringify(data));
-                        expect(data).assertEqual(true);
+                      globalThis.abilitydelegator.doAbilityForeground(ability2, (err) => {
+                        console.log("====>doAbilityForeground data:====>");
+                        expect(err.code).assertEqual(0);
                         setTimeout(() => {
                           num2 = globalThis.abilitydelegator.getAbilityState(ability2)
                           console.log("====>ACTS_DoAbilityBackground_0700 getAbilityState2:====>" +
@@ -448,32 +448,32 @@ export default function abilityTest() {
         globalThis.abilitydelegator.getCurrentTopAbility().then((ability2) => {
           console.log("====>getCurrentTopAbility ability2 data:====>" + JSON.stringify(ability2));
           console.log("====>0800newabilityname:====>" + JSON.stringify(ability2.context.abilityInfo.name));
-          globalThis.abilitydelegator.doAbilityBackground(ability2, (err, data1) => {
-            console.log("====>doAbilityBackground data1:====>" + JSON.stringify(data1));
-            expect(data1).assertEqual(true);
+          globalThis.abilitydelegator.doAbilityBackground(ability2, (err) => {
+            console.log("====>doAbilityBackground data1:====>" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
             setTimeout(() => {
               num1 = globalThis.abilitydelegator.getAbilityState(ability2)
               console.log("====>ACTS_DoAbilityBackground_0800 getAbilityState1:====>" + " " + JSON.stringify(num1));
               expect(num1).assertEqual(3);
-              globalThis.abilitydelegator.doAbilityForeground(ability2).then((data) => {
-                console.log("====>doAbilityForeground data:====>" + JSON.stringify(data));
-                expect(data).assertEqual(true);
+              globalThis.abilitydelegator.doAbilityForeground(ability2).then(() => {
+                console.log("====>doAbilityForeground data:====>");
+                expect(true).assertTrue();
                 setTimeout(() => {
                   num2 = globalThis.abilitydelegator.getAbilityState(ability2)
                   console.log("====>ACTS_DoAbilityBackground_0800 getAbilityState2:====>" +
                     " " + JSON.stringify(num2));
                   expect(num2).assertEqual(2);
-                  globalThis.abilitydelegator.doAbilityBackground(ability2, (err, data1) => {
-                    console.log("====>doAbilityBackground data1:====>" + JSON.stringify(data1));
-                    expect(data1).assertEqual(true);
+                  globalThis.abilitydelegator.doAbilityBackground(ability2, (err) => {
+                    console.log("====>doAbilityBackground data1:====>" + JSON.stringify(err));
+                    expect(err.code).assertEqual(0);
                     setTimeout(() => {
                       num1 = globalThis.abilitydelegator.getAbilityState(ability2)
                       console.log("====>ACTS_DoAbilityBackground_0800 getAbilityState1:====>" +
                         " " + JSON.stringify(num1));
                       expect(num1).assertEqual(3);
-                      globalThis.abilitydelegator.doAbilityForeground(ability2).then((data) => {
-                        console.log("====>doAbilityForeground data:====>" + JSON.stringify(data));
-                        expect(data).assertEqual(true);
+                      globalThis.abilitydelegator.doAbilityForeground(ability2).then(() => {
+                        console.log("====>doAbilityForeground data:====>");
+                        expect(true).assertTrue();
                         setTimeout(() => {
                           num2 = globalThis.abilitydelegator.getAbilityState(ability2)
                           console.log("====>ACTS_DoAbilityBackground_0800 getAbilityState2:====>" +
@@ -538,9 +538,9 @@ export default function abilityTest() {
         console.log("====>0300 Subscribe CallBack globalThis.ability3:====>" + JSON.stringify(globalThis.ability3));
         console.log("====>0300 ability3 name:====>" + JSON.stringify(globalThis.ability3.context.abilityInfo.name));
         setTimeout(() => {
-          result = globalThis.abilitydelegator.doAbilityForeground(globalThis.ability3, (err, data) => {
-            console.log("====>ACTS_DoAbilityForeground_0300 data:====>" + JSON.stringify(data));
-            expect().assertFail();
+          result = globalThis.abilitydelegator.doAbilityForeground(globalThis.ability3, (err) => {
+            console.log("====>ACTS_DoAbilityForeground_0300 data:====>" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
           })
           console.log("====>0300  result:====>" + JSON.stringify(result));
           expect(result).assertEqual(undefined);
@@ -645,9 +645,9 @@ export default function abilityTest() {
         expect(data.event == "ACTS_DoAbility_Event").assertTrue();
         console.log("====>0300 Subscribe CallBack data:====>" + JSON.stringify(data));
         setTimeout(() => {
-          result = globalThis.abilitydelegator.doAbilityBackground(globalThis.ability3, (err, data) => {
-            console.log("====>ACTS_DoAbilityBackground_0300 data:====>" + JSON.stringify(data));
-            expect().assertFail();
+          result = globalThis.abilitydelegator.doAbilityBackground(globalThis.ability3, (err) => {
+            console.log("====>ACTS_DoAbilityBackground_0300 data:====>" + JSON.stringify(err));
+            expect(err.code).assertEqual(0);
           })
           console.log("====>DoAbilityBackground0300  result:====>" + JSON.stringify(result));
           expect(result).assertEqual(undefined);

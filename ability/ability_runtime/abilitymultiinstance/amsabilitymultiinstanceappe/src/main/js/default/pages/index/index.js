@@ -105,10 +105,6 @@ export default {
     onInit() {
         this.title = "AbilityMultiInstanceAppE";
         callBackSeq += "onInit";
-    },
-    onShow() {
-        console.log('AbilityMultiInstanceAppE onShow start');
-        callBackSeq += "onShow";
         onShowProcess();
     },
     onStart() {

@@ -87,7 +87,7 @@ describe('fileio_stream_flush', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = await fileio.createStreamSync(fpath, 'r+');
+      let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
       expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       ss.flush().then(
@@ -116,7 +116,7 @@ describe('fileio_stream_flush', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = await fileio.createStreamSync(fpath, 'r+');
+      let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
       expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       ss.flush(function (err) {

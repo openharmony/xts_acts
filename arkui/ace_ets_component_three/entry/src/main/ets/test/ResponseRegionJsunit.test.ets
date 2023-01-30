@@ -87,6 +87,7 @@ export default function ResponseRegionJsunit() {
         console.info("[testResponseRegion02] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(true)
         expect(eventData.data.EVENT_TYPE).assertEqual('Down')
+        done();
       }
       var innerEventTwo = {
         eventId: 31,
@@ -100,7 +101,6 @@ export default function ResponseRegionJsunit() {
       console.info('[testResponseRegion02] testSendTouchEvent ' + sendTouchEvent(point));
       await Utils.sleep(1000)
       console.info('[testResponseRegion02] END');
-      done();
     });
   })
 }

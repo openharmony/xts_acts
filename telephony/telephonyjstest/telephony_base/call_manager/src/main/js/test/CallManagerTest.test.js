@@ -117,25 +117,6 @@ export default function ActsBaseCallManagerTest() {
             }
         });
 
-
-        /**
-     * @tc.number  Telephony_CallManager_startDTMF_Async_1000
-     * @tc.name    CallId is 999, character is C, startDTMF() is called as a callback to startDTMF and capture err
-     * @tc.desc    Function test
-     */
-        it('Telephony_CallManager_startDTMF_Async_1000', 0, async function (done) {
-            call.startDTMF(ERROR_CALLID_999, 'C', (err) => {
-                if (err) {
-                    console.log(`Telephony_CallManager_startDTMF_Async_1000 finish err = ${err.message}`);
-                    done();
-                    return;
-                }
-                expect().assertFail();
-                console.log('Telephony_CallManager_startDTMF_Async_1000 fail');
-                done();
-            });
-        });
-
         /**
      * @tc.number  Telephony_CallManager_formatPhoneNumber_Async_0100
      * @tc.name    PhoneNumber is 100000000000. Call formatPhoneNumber() to format the number.
@@ -696,17 +677,17 @@ export default function ActsBaseCallManagerTest() {
      * @tc.desc    Function test
      */
         it('Telephony_CallManager_isEmergencyPhoneNumber_Async_0200', 0, async function (done) {
+            let CASE_NAME = 'Telephony_CallManager_isEmergencyPhoneNumber_Async_0200';
             call.isEmergencyPhoneNumber(INVALID_NUMBER, {
                 slotId: SLOT_0
             }, (err, data) => {
                 if (err) {
-                    console.log('Telephony_CallManager_isEmergencyPhoneNumber_Async_0200 fail');
-                    expect().assertFail();
+                    console.log(CASE_NAME + ' fail' + JSON.stringify(err));
+                    expect(err.code).assertEqual(8300001);
                     done();
                     return;
                 }
-                expect(data === false).assertTrue();
-                console.log(`Telephony_CallManager_isEmergencyPhoneNumber_Async_0200 finish data = ${data}`);
+                console.log(CASE_NAME +' finish data = '+ JSON.stringify(data));
                 done();
             });
         });

@@ -35,8 +35,14 @@ uint32_t PluginRender::xcHeight_ = 0;
 uint32_t PluginRender::xcWidth_ = 0;
 double PluginRender::off_x = 0;
 double PluginRender::off_y = 0;
+uint32_t PluginRender::toolType_ = 5;
+uint32_t PluginRender::mousecallback_ = 0;
+float PluginRender::tiltX_ = 0;
+float PluginRender::tiltY_ = 0;
 uint32_t PluginRender::touchType = 4;
 OH_NativeXComponent_TouchEvent PluginRender::testTouchEvent_;
+OH_NativeXComponent_MouseEvent PluginRender::testMouseEvent_;
+OH_NativeXComponent_MouseEvent_Callback PluginRender::mouseEventcallback_;
 
 void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
 {
@@ -101,7 +107,7 @@ void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
 
 void DispatchMouseEventCB(OH_NativeXComponent* component, void* window)
 {
-    LOGE("DispatchMouseEventCB");
+    LOGD("DispatchMouseEventCB");
     int32_t ret;
     char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {};
     uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
@@ -110,6 +116,8 @@ void DispatchMouseEventCB(OH_NativeXComponent* component, void* window)
         return;
     }
     std::string id(idStr);
+    auto render = PluginRender::GetInstance(id);
+    render->DispatchMouseEvent(component, window);
 }
 
 PluginRender::PluginRender(std::string& id)
@@ -122,6 +130,8 @@ PluginRender::PluginRender(std::string& id)
     renderCallback->OnSurfaceChanged = OnSurfaceChangedCB;
     renderCallback->OnSurfaceDestroyed = OnSurfaceDestroyedCB;
     renderCallback->DispatchTouchEvent = DispatchTouchEventCB;
+    auto renderMouseEventCallback = PluginRender::GetNXComponentMouseEventCallback();
+    renderMouseEventCallback->DispatchMouseEvent = DispatchMouseEventCB;
 }
 
 PluginRender* PluginRender::GetInstance(std::string& id)
@@ -140,10 +150,18 @@ OH_NativeXComponent_Callback* PluginRender::GetNXComponentCallback()
     return &PluginRender::callback_;
 }
 
+OH_NativeXComponent_MouseEvent_Callback* PluginRender::GetNXComponentMouseEventCallback()
+{
+    return &PluginRender::mouseEventcallback_;
+}
+
 void PluginRender::SetNativeXComponent(OH_NativeXComponent* component)
 {
     component_ = component;
     OH_NativeXComponent_RegisterCallback(component_, &PluginRender::callback_);
+    uint32_t mousecallback = OH_NativeXComponent_RegisterMouseEventCallback(component_,
+        &PluginRender::mouseEventcallback_);
+    mousecallback_ = mousecallback;
 }
 
 void PluginRender::OnSurfaceCreated(OH_NativeXComponent* component, void* window)
@@ -203,12 +221,26 @@ void PluginRender::DispatchTouchEvent(OH_NativeXComponent* component, void* wind
     if (ret == OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
         testTouchEvent_ = touchEvent_;
         LOGE("Touch Info : x = %{public}f, y = %{public}f screenx = %{public}f, screeny = %{public}f",
-             touchEvent_.x, touchEvent_.y, touchEvent_.screenX, touchEvent_.screenY);
+            touchEvent_.x, touchEvent_.y, touchEvent_.screenX, touchEvent_.screenY);
         for (uint32_t i = 0; i < touchEvent_.numPoints; i++) {
             LOGE("Touch Info : dots[%{public}d] id %{public}d x = %{public}f, y = %{public}f", i,
-                 touchEvent_.touchPoints[i].id, touchEvent_.touchPoints[i].x, touchEvent_.touchPoints[i].y);
+                touchEvent_.touchPoints[i].id, touchEvent_.touchPoints[i].x, touchEvent_.touchPoints[i].y);
             LOGE("Touch Info : screenx = %{public}f, screeny = %{public}f",
-                 touchEvent_.touchPoints[i].screenX, touchEvent_.touchPoints[i].screenY);
+                touchEvent_.touchPoints[i].screenX, touchEvent_.touchPoints[i].screenY);
+            OH_NativeXComponent_TouchPointToolType toolType = OH_NativeXComponent_TouchPointToolType::OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN;
+            float tiltX = 123.0;
+            float tiltY = 321.0;
+            int32_t ret1;
+            int32_t ret2;
+            int32_t ret3;
+            ret1 = OH_NativeXComponent_GetTouchPointToolType(component, i, &toolType);
+            ret2 = OH_NativeXComponent_GetTouchPointTiltX(component, i, &tiltX);
+            ret3 = OH_NativeXComponent_GetTouchPointTiltY(component, i, &tiltY);
+            toolType_ = toolType;
+            tiltX_ = tiltX;
+            tiltY_ = tiltY;
+            LOGE("Touch Info : DispatchTouchEvent dots[%{public}d] toolType=%{public}u, tiltX=%{public}f, tiltY=%{public}f",
+                i, toolType, tiltX, tiltY);
         }
     } else {
         LOGE("Touch fail");
@@ -230,10 +262,31 @@ napi_value PluginRender::Export(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("TestGetXComponentOffset_x", PluginRender::TestGetXComponentOffset_x),
         DECLARE_NAPI_FUNCTION("TestGetXComponentOffset_y", PluginRender::TestGetXComponentOffset_y),
         DECLARE_NAPI_FUNCTION("TestGetXComponent_TouchEvent", PluginRender::TestGetXComponent_TouchEvent),
+        DECLARE_NAPI_FUNCTION("TestGetXComponent_MouseEvent", PluginRender::TestGetXComponent_MouseEvent),
+        DECLARE_NAPI_FUNCTION("TestGetXComponentpointtool_tilty", PluginRender::TestGetXComponentpointtool_tilty),
+        DECLARE_NAPI_FUNCTION("TestGetXComponentpointtool_type", PluginRender::TestGetXComponentpointtool_type),
+        DECLARE_NAPI_FUNCTION("TestGetXComponentpointtool_tiltx", PluginRender::TestGetXComponentpointtool_tiltx),
+        DECLARE_NAPI_FUNCTION("TestGetXComponent_RegisterMouseEventCallback",
+            PluginRender::TestGetXComponent_RegisterMouseEventCallback),
 
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc));
     return exports;
+}
+
+void PluginRender::DispatchMouseEvent(OH_NativeXComponent* component, void* window)
+{
+    LOGE("----------TestMouse Mouse Info DispatchMouseEvent 11");
+    int32_t ret = OH_NativeXComponent_GetMouseEvent(component, window, &mouseEvent_);
+    LOGE("----------TestMouse Mouse Info DispatchMouseEvent");
+    if (ret == OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+        testMouseEvent_ = mouseEvent_;
+        LOGE("TestMouse Mouse Info : x = %{public}f, y = %{public}f screenx = %{public}f, screeny = %{public}f",
+            mouseEvent_.x, mouseEvent_.y, mouseEvent_.screenX, mouseEvent_.screenY);
+        LOGE("TestMouse Mouse Info : action = %{public}d, button = %{public}d", mouseEvent_.action, mouseEvent_.button);
+    } else {
+        LOGE("Mouse Info fail");
+    }
 }
 
 napi_value PluginRender::NapiChangeShape(napi_env env, napi_callback_info info)
@@ -425,6 +478,39 @@ napi_value PluginRender::TestGetXComponentOffset_y(napi_env env, napi_callback_i
     return output;
 }
 
+napi_value PluginRender::TestGetXComponentpointtool_tiltx(napi_env env, napi_callback_info info)
+{
+    LOGE("xclog running PluginRender::TestGetXComponentpointtool_tiltx");
+
+    napi_value output;
+    NAPI_CALL(env, napi_create_double(env, tiltX_, &output));
+    LOGE("xclog TestGetXComponentpointtool_tiltx : %{public}f", tiltX_);
+
+    return output;
+}
+
+napi_value PluginRender::TestGetXComponentpointtool_tilty(napi_env env, napi_callback_info info)
+{
+    LOGE("xclog running PluginRender::TestGetXComponentpointtool_tilty");
+
+    napi_value output;
+    NAPI_CALL(env, napi_create_double(env, tiltY_, &output));
+    LOGE("xclog TestGetXComponentpointtool_tilty : %{public}f", tiltY_);
+
+    return output;
+}
+
+napi_value PluginRender::TestGetXComponentpointtool_type(napi_env env, napi_callback_info info)
+{
+    LOGE("xclog running PluginRender::TestGetXComponentpointtool_type");
+
+    napi_value output;
+    NAPI_CALL(env, napi_create_double(env, toolType_, &output));
+    LOGE("xclog TestGetXComponentpointtool_type : %{public}u", toolType_);
+
+    return output;
+}
+
 napi_value PluginRender::TestGetXComponent_TouchEvent(napi_env env, napi_callback_info info)
 {
     LOGE("xclog running PluginRender::TestGetXComponent_TouchEvent");
@@ -442,6 +528,42 @@ napi_value PluginRender::TestGetXComponent_TouchEvent(napi_env env, napi_callbac
     NAPI_CALL(env, napi_set_named_property(env, obj, "surface_X", surf_x));  // float x
     NAPI_CALL(env, napi_set_named_property(env, obj, "surface_Y", surf_y));  // float y
     NAPI_CALL(env, napi_set_named_property(env, obj, "touchType", t_type));  // int32_t
+
+    return obj;
+}
+
+napi_value PluginRender::TestGetXComponent_MouseEvent(napi_env env, napi_callback_info info)
+{
+    LOGE("xclog running PluginRender::TestGetXComponent_MouseEvent");
+
+    napi_value surf_x;
+    napi_value surf_y;
+    napi_value t_button;
+
+    NAPI_CALL(env, napi_create_double(env, testMouseEvent_.x, &(surf_x)));
+    NAPI_CALL(env, napi_create_double(env, testMouseEvent_.y, &(surf_y)));
+    NAPI_CALL(env, napi_create_uint32(env, testMouseEvent_.button, &(t_button)));
+
+    napi_value obj;
+    NAPI_CALL(env, napi_create_object(env, &obj));
+    NAPI_CALL(env, napi_set_named_property(env, obj, "surface_X1", surf_x));  // float x
+    NAPI_CALL(env, napi_set_named_property(env, obj, "surface_Y1", surf_y));  // float y
+    NAPI_CALL(env, napi_set_named_property(env, obj, "mousebutton", t_button));  // int32_t
+
+    return obj;
+}
+
+
+napi_value PluginRender::TestGetXComponent_RegisterMouseEventCallback(napi_env env, napi_callback_info info)
+{
+    LOGE("xclog running PluginRender::TestGetXComponent_RegisterMouseEventCallback");
+
+    napi_value callback_;
+    NAPI_CALL(env, napi_create_double(env, mousecallback_, &(callback_)));
+
+    napi_value obj;
+    NAPI_CALL(env, napi_create_object(env, &obj));
+    NAPI_CALL(env, napi_set_named_property(env, obj, "MouseCallback_", callback_));  // float x
 
     return obj;
 }

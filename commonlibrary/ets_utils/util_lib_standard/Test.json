@@ -2,8 +2,8 @@
     "description": "Configuration for startup util js api Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "800000",
-	"shell-timeout": "800000",
+        "test-timeout": "60000",
+	"shell-timeout": "60000",
 	"bundle-name": "com.example.util",
 	"package-name": "com.example.util"
     },

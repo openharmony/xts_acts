@@ -435,7 +435,7 @@ describe('fileio_write', function () {
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       expect(isIntNum(fd)).assertTrue();
-      await fileio.write(fd, new ArrayBuffer(4096), function (
+      fileio.write(fd, new ArrayBuffer(4096), function (
           error,
           bytesWritten
       ) {
@@ -465,7 +465,7 @@ describe('fileio_write', function () {
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       expect(isIntNum(fd)).assertTrue();
-      await fileio.write(
+      fileio.write(
         fd,
         FILE_CONTENT,
         {
@@ -498,7 +498,7 @@ describe('fileio_write', function () {
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       expect(isIntNum(fd)).assertTrue();
-      await fileio.write(
+      fileio.write(
         fd,
         FILE_CONTENT,
         {
@@ -532,7 +532,7 @@ describe('fileio_write', function () {
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       expect(isIntNum(fd)).assertTrue();
-      await fileio.write(
+      fileio.write(
         fd,
         FILE_CONTENT,
         {
@@ -567,7 +567,7 @@ describe('fileio_write', function () {
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       expect(isIntNum(fd)).assertTrue();
-      await fileio.write(
+      fileio.write(
         fd,
         FILE_CONTENT,
         {

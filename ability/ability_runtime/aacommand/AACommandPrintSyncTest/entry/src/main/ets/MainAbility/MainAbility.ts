@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
@@ -45,59 +45,54 @@ export default class MainAbility extends Ability {
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
 
         cmd = 'aa test -b com.example.aacommandprintsync -m entry_test  -s class ' +
-            'ACTS_AACommand_01_3#ACTS_AACommand_printSync_01_0100 -s unittest OpenHarmonyTestRunner'
+            'AACommandPrintTest#ACTS_AACommand_printSync_01_0100 -s unittest OpenHarmonyTestRunner'
         abilityDelegator.executeShellCommand(cmd, async (err, data) => {
             console.log('ACTS_AACommand_printSync_01_0100 start err: ' + JSON.stringify(err))
             console.log('ACTS_AACommand_printSync_01_0100 stdResult = ' + data.stdResult)
             globalThis.stdResult1 = data.stdResult;
             console.log('ACTS_AACommand_printSync_01_0100 - executeShellCommand: end ')
-
             await startAbilityTest('ACTS_AACommand_printSync_01_0100', this.context);
         })
 
         await sleep(3000)
 
         cmd = 'aa test -m entry_test -b com.example.aacommandprintsync -s class ' +
-            'ACTS_AACommand_01_3#ACTS_AACommand_printSync_01_0200 -s unittest OpenHarmonyTestRunner'
+            'AACommandPrintTest#ACTS_AACommand_printSync_01_0200 -s unittest OpenHarmonyTestRunner'
         abilityDelegator.executeShellCommand(cmd, async (err, data) => {
             console.log('ACTS_AACommand_printSync_01_0200 start err: ' + JSON.stringify(err))
             console.log('ACTS_AACommand_printSync_01_0200 stdResult = ' + data.stdResult)
             globalThis.stdResult2 = data.stdResult;
             console.log('ACTS_AACommand_printSync_01_0200 - executeShellCommand: end ')
-
             await startAbilityTest('ACTS_AACommand_printSync_01_0200', this.context);
         })
 
         await sleep(3000)
 
         cmd = 'aa test -m entry_test -b com.example.aacommandprintsync -s class ' +
-            'ACTS_AACommand_01_3#ACTS_AACommand_printSync_01_0300 -s unittest OpenHarmonyTestRunner'
+            'AACommandPrintTest#ACTS_AACommand_printSync_01_0300 -s unittest OpenHarmonyTestRunner'
         abilityDelegator.executeShellCommand(cmd, async (err, data) => {
             console.log('ACTS_AACommand_printSync_01_0300 start err: ' + JSON.stringify(err))
             console.log('ACTS_AACommand_printSync_01_0300 stdResult = ' + data.stdResult)
             globalThis.stdResult3 = data.stdResult;
             console.log('ACTS_AACommand_printSync_01_0300 - executeShellCommand: end ')
-
             await startAbilityTest('ACTS_AACommand_printSync_01_0300', this.context);
         })
 
         await sleep(3000)
 
         cmd = 'aa test -m entry_test -b com.example.aacommandprintsync -s class ' +
-            'ACTS_AACommand_01_3#ACTS_AACommand_printSync_01_0400 -s unittest OpenHarmonyTestRunner'
+            'AACommandPrintTest#ACTS_AACommand_printSync_01_0400 -s unittest OpenHarmonyTestRunner'
         abilityDelegator.executeShellCommand(cmd, async (err, data) => {
             console.log('ACTS_AACommand_printSync_01_0400 start err: ' + JSON.stringify(err))
             console.log('ACTS_AACommand_printSync_01_0400 stdResult = ' + data.stdResult)
             globalThis.stdResult4 = data.stdResult;
             console.log('ACTS_AACommand_printSync_01_0400 - executeShellCommand: end ')
-
             await startAbilityTest('ACTS_AACommand_printSync_01_0400', this.context);
         })
 
         setTimeout(() => {
             Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-
-        }, 5000)
+        }, 6000)
     }
 
     onDestroy() {

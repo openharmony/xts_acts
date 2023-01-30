@@ -6,8 +6,8 @@
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-        "default",
-        "tablet"
+      "default",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": true,
@@ -32,18 +32,6 @@
             ]
           }
         ]
-      }
-    ],
-    "extensionAbilities": [
-      {
-        "name": "com.example.different.ServiceAbility",
-        "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
-        "label": "$string:form_FormAbility_label",
-        "description": "$string:form_FormAbility_desc",
-        "type": "service",
-        "visible": true,
-        "icon": "$media:icon"
-
       }
     ]
   }

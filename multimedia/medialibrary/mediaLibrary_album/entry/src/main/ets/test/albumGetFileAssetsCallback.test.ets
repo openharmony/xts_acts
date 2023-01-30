@@ -35,7 +35,7 @@ export default function albumGetFileAssetsCallbackTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await getPermission();
+            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, 'ActsMediaLibraryAlbumTest');
         });
         beforeEach(function () {
@@ -76,6 +76,7 @@ export default function albumGetFileAssetsCallbackTest(abilityContext) {
                         console.info(`${testNum}, expectAssetsCount: ${expectAssetsCount} 
                                     getCount: ${fetchFileResult.getCount()}`)
                         expect(fetchFileResult.getCount()).assertEqual(expectAssetsCount);
+                        fetchFileResult.close();
                     });
                     await sleep(500)
                 }
@@ -107,6 +108,7 @@ export default function albumGetFileAssetsCallbackTest(abilityContext) {
                     }
                     console.info(`${testNum}, getCount:expectAssetsCount - ${fetchFileResult.getCount()} : ${expectAssetsCount}`)
                     expect(fetchFileResult.getCount()).assertEqual(expectAssetsCount);
+                    fetchFileResult.close();
                     done();
                 });
 
@@ -133,6 +135,7 @@ export default function albumGetFileAssetsCallbackTest(abilityContext) {
                     console.info(`${testNum}, getCount: ${fetchFileResult.getCount()}`)
                     console.info(`${testNum}, expectAssetsCount: ${expectAssetsCount}`)
                     expect(fetchFileResult.getCount()).assertEqual(expectAssetsCount);
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {

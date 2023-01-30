@@ -13,10 +13,17 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import inputMethod from '@ohos.inputmethod'
+import inputMethod from '@ohos.inputMethod'
 
 export default function imeAbilityTest(abilityContext) {
   describe('imeAbilityTest', function () {
+    var prop = {
+      packageName: '',
+      methodId: '',
+      name:'',
+      id:'',
+      extra:{}
+    }
     /**
      * sleep function.
      */
@@ -28,28 +35,26 @@ export default function imeAbilityTest(abilityContext) {
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
-    beforeEach(function () {
-      console.info('====>beforeEach: switchInputMethod to kikakeyboard.');
-      let serviceAbilityProperty = {
-        packageName: "com.example.kikakeyboard",
-        methodId: "ServiceExtAbility",
-        name:"com.example.kikakeyboard",
-        id:"ServiceExtAbility",
-        extra:{}
-      }
-
-      inputMethod.switchInputMethod(serviceAbilityProperty).then((data)=>{
-        console.info('====>SUB_InputMethod_IMEAbility_0001 switchInputMethod to Kika :' + data);
-        expect(data == true).assertTrue();
-      })
-
+    beforeAll(function () {
+      let inputM = inputMethod.getCurrentInputMethod()
+      console.info("====>beforeAll: switchInputMethod to: " +  JSON.stringify(inputM));
+      prop.packageName = inputM.packageName;
+      prop.methodId = inputM.methodId;
+      prop.name = inputM.packageName;
+      prop.id = inputM.methodId;
     });
 
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
-    afterEach(function () {
-      console.info('====>afterEach: Test case-level clearance conditions is executed.');
+    afterAll(async function () {
+      console.info('====>afterAll: switchInputMethod to origionInput.' + JSON.stringify(prop));
+      await inputMethod.switchInputMethod(prop).then((data)=>{
+        console.info('====>afterAll switchInputMethod to origionInput :' + data);
+        expect(data == true).assertTrue();
+      }).catch(err =>{
+        console.info('====>afterAll switchInputMethod to origionInput error: ' + err);
+      })
     });
 
     /**
@@ -75,7 +80,6 @@ export default function imeAbilityTest(abilityContext) {
       });
       sleep(Date.now(), 3000);
       console.info('====>----------SUB_InputMethod_IMEAbility_0001 end-------------');
-
       done();
     })
 
@@ -98,7 +102,7 @@ export default function imeAbilityTest(abilityContext) {
       }
 
       inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
-        console.info('====>SUB_InputMethod_IMEAbility_0004 switchInputMethod to IME :' + data);
+        console.info('====>SUB_InputMethod_IMEAbility_0002 switchInputMethod to IME :' + data);
         expect(data == true).assertTrue();
       });
       sleep(Date.now(), 2500);

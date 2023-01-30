@@ -57,8 +57,8 @@
             }
         ],
         "deviceType": [
-      "tablet",
-      "default",
+            "tablet",
+            "default",
             "default",
             "tablet",
             "tv",
@@ -68,10 +68,6 @@
             {
                 "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
                 "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
-            },
-            {
-                "name": "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
-                "reason": "use ohos.permission.REVOKE_SENSITIVE_PERMISSIONS"
             },
             {
                 "name": "ohos.permission.MICROPHONE",

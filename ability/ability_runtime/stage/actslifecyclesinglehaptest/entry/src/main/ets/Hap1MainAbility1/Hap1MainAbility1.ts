@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 
 export default class Hap1MainAbility1 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] Hap1MainAbility1 onCreate")
-        globalThis.abilityWant = want;
+        globalThis.ability1Hap1Want = want;
         setTimeout(() => {
             this.context.terminateSelf().then((data) => {
                 console.log("Hap1MainAbility1 EventTest terminateSelf data: " + JSON.stringify(data));

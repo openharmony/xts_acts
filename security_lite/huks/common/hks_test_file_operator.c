@@ -104,6 +104,9 @@ static uint32_t FileRead(const char *fileName, uint32_t offset, uint8_t *buf, ui
     }
 
     char filePath[PATH_MAX + 1] = {0};
+    if (memcpy_s(filePath, sizeof(filePath) - 1, fileName, strlen(fileName)) != EOK) {
+        return HKS_ERROR_BAD_STATE;
+    }
     if (strstr(filePath, "../") != NULL) {
         HKS_TEST_LOG_E("invalid filePath, path %s", filePath);
         return 0;

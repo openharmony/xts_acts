@@ -872,7 +872,7 @@ FA_TS 模式适配指导请参考
 
    ```
    //加载测试用例
-   import Ability from '@ohos.application.Ability'
+   import Ability from '@ohos.app.ability.UIAbility'
    import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
    import { Hypium } from '@ohos/hypium'
    import testsuite from '../test/List.test'

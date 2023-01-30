@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import mediaLibrary from "@ohos.multimedia.mediaLibrary";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 import {
     sleep,
     IMAGE_TYPE,
@@ -23,23 +23,23 @@ import {
     FILE_TYPE,
     nameFetchOps,
     checkAssetsCount,
-} from '../../../../../../common';
+} from "../../../../../../common";
 
 export default function favoriteTestPromiseTest(abilityContext) {
-    describe('favoriteTestPromiseTest', function () {
+    describe("favoriteTestPromiseTest", function () {
         var media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
-            console.info('beforeAll case');
+            console.info("beforeAll case");
         });
         beforeEach(function () {
-            console.info('beforeEach case');
+            console.info("beforeEach case");
         });
         afterEach(async function () {
-            console.info('afterEach case');
-            await sleep()
+            console.info("afterEach case");
+            await sleep();
         });
         afterAll(function () {
-            console.info('afterAll case');
+            console.info("afterAll case");
         });
 
         const favoriteDefaultState = async function (done, testNum, fetchOp) {
@@ -50,14 +50,14 @@ export default function favoriteTestPromiseTest(abilityContext) {
                 let asset = await fetchFileResult.getFirstObject();
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(false);
-                await fetchFileResult.close();
-                done()
+                fetchFileResult.close();
+                done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
         const favoriteByTrue = async function (done, testNum, fetchOp) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
@@ -67,14 +67,14 @@ export default function favoriteTestPromiseTest(abilityContext) {
                 await asset.favorite(true);
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(true);
-                await fetchFileResult.close();
+                fetchFileResult.close();
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
         const favoriteByFalse = async function (done, testNum, fetchOp) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
@@ -85,14 +85,14 @@ export default function favoriteTestPromiseTest(abilityContext) {
                 await asset.favorite(false);
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(false);
-                await fetchFileResult.close();
+                fetchFileResult.close();
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
 
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_01
@@ -102,10 +102,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_01'
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticPro/', '01', IMAGE_TYPE)
-            await favoriteDefaultState(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_01";
+            let currentFetchOp = nameFetchOps(testNum, "Pictures/StaticPro/", "01.jpg", IMAGE_TYPE);
+            await favoriteDefaultState(done, testNum, currentFetchOp);
         });
 
         /**
@@ -116,10 +116,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_02'
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticPro/', '02', IMAGE_TYPE)
-            await favoriteByTrue(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_02";
+            let currentFetchOp = nameFetchOps(testNum, "Pictures/StaticPro/", "02.jpg", IMAGE_TYPE);
+            await favoriteByTrue(done, testNum, currentFetchOp);
         });
 
         /**
@@ -130,10 +130,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_03'
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticPro/', '03', IMAGE_TYPE)
-            await favoriteByFalse(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_03";
+            let currentFetchOp = nameFetchOps(testNum, "Pictures/StaticPro/", "03.jpg", IMAGE_TYPE);
+            await favoriteByFalse(done, testNum, currentFetchOp);
         });
 
         /**
@@ -144,10 +144,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_01'
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticPro/', '01', VIDEO_TYPE)
-            await favoriteDefaultState(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_01";
+            let currentFetchOp = nameFetchOps(testNum, "Videos/StaticPro/", "01.mp4", VIDEO_TYPE);
+            await favoriteDefaultState(done, testNum, currentFetchOp);
         });
 
         /**
@@ -158,10 +158,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_02'
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticPro/', '02', VIDEO_TYPE)
-            await favoriteByTrue(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_02";
+            let currentFetchOp = nameFetchOps(testNum, "Videos/StaticPro/", "02.mp4", VIDEO_TYPE);
+            await favoriteByTrue(done, testNum, currentFetchOp);
         });
 
         /**
@@ -172,10 +172,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_03'
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticPro/', '03', VIDEO_TYPE)
-            await favoriteByFalse(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_03";
+            let currentFetchOp = nameFetchOps(testNum, "Videos/StaticPro/", "03.mp4", VIDEO_TYPE);
+            await favoriteByFalse(done, testNum, currentFetchOp);
         });
 
         /**
@@ -186,10 +186,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_01'
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticPro/', '01', AUDIO_TYPE)
-            await favoriteDefaultState(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_01";
+            let currentFetchOp = nameFetchOps(testNum, "Audios/StaticPro/", "01.mp3", AUDIO_TYPE);
+            await favoriteDefaultState(done, testNum, currentFetchOp);
         });
 
         /**
@@ -200,10 +200,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_02'
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticPro/', '02', AUDIO_TYPE)
-            await favoriteByTrue(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_02";
+            let currentFetchOp = nameFetchOps(testNum, "Audios/StaticPro/", "02.mp3", AUDIO_TYPE);
+            await favoriteByTrue(done, testNum, currentFetchOp);
         });
 
         /**
@@ -214,10 +214,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_03'
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticPro/', '03', AUDIO_TYPE)
-            await favoriteByFalse(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_03";
+            let currentFetchOp = nameFetchOps(testNum, "Audios/StaticPro/", "03.mp3", AUDIO_TYPE);
+            await favoriteByFalse(done, testNum, currentFetchOp);
         });
 
         /**
@@ -228,10 +228,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_01'
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticPro/', '01', FILE_TYPE)
-            await favoriteDefaultState(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_01";
+            let currentFetchOp = nameFetchOps(testNum, "Documents/StaticPro/", "01.dat", FILE_TYPE);
+            await favoriteDefaultState(done, testNum, currentFetchOp);
         });
 
         /**
@@ -242,10 +242,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_02'
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticPro/', '02', FILE_TYPE)
-            await favoriteByTrue(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_02";
+            let currentFetchOp = nameFetchOps(testNum, "Documents/StaticPro/", "02.dat", FILE_TYPE);
+            await favoriteByTrue(done, testNum, currentFetchOp);
         });
 
         /**
@@ -256,10 +256,10 @@ export default function favoriteTestPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_03'
-            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticPro/', '03', FILE_TYPE)
-            await favoriteByFalse(done, testNum, currentFetchOp)
+        it("SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_03";
+            let currentFetchOp = nameFetchOps(testNum, "Documents/StaticPro/", "03.dat", FILE_TYPE);
+            await favoriteByFalse(done, testNum, currentFetchOp);
         });
     });
 }

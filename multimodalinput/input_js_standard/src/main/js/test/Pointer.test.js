@@ -20,365 +20,368 @@ export default function MultimodalInput_Pointer_test() {
   describe('MultimodalInput_Pointer_test', function () {
 
     const errCode = {
-      COMMON_PARAMETER_CODE : 401
+      COMMON_PARAMETER_CODE: 401
     }
     const errMsg = {
-      PARAMETER_COUNT_MSG : `Parameter count error`,
-      PARAMETER_TYPE_MSG : `Parameter error. The type of type must be string.`,
-      PARAMETER_VISIBLE_TYPE_MSG : `Parameter error. The type of visible must be boolean.`,
-      PARAMETER_SPEED_TYPE_MSG : `Parameter error. The type of speed must be number.`,
-      PARAMETER_WINDOWID_TYPE_MSG : `Parameter error. The type of windowId must be number.`,
-      PARAMETER_CALLBACK_TYPE_MSG : `Parameter error. The type of callback must be function.`
+      PARAMETER_COUNT_MSG: `Parameter count error`,
+      PARAMETER_TYPE_MSG: `Parameter error. The type of type must be string.`,
+      PARAMETER_VISIBLE_TYPE_MSG: `Parameter error. The type of visible must be boolean.`,
+      PARAMETER_SPEED_TYPE_MSG: `Parameter error. The type of speed must be number.`,
+      PARAMETER_WINDOWID_TYPE_MSG: `Parameter error. The type of windowId must be number.`,
+      PARAMETER_CALLBACK_TYPE_MSG: `Parameter error. The type of callback must be function.`
     }
 
-    it('MultimodalInput_Pointer_test::PointerVisibleTest_001', 0, function () {
-      console.info(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 enter`);
+    it('Pointer_PointerVisibleTest_001', 0, async function (done) {
+      console.info(`Pointer_SetPointerVisibleTest_001 enter`);
       try {
         pointer.setPointerVisible(false, (err, data) => {
           if (err) {
-            console.info(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 failed, err=${JSON.stringify(err)}`);
+            console.info(`Pointer_SetPointerVisibleTest_001 failed, err=${JSON.stringify(err)}`);
             expect(false).assertTrue();
           } else {
-            console.info(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 success. data=${JSON.stringify(data)}`);
+            console.info(`Pointer_SetPointerVisibleTest_001 success_1. data=${JSON.stringify(data)}`);
             expect(true).assertTrue();
           }
         });
       } catch (error) {
-        console.info(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 error`);
+        console.info(`Pointer_SetPointerVisibleTest_001 error`);
         expect(false).assertTrue();
       }
       try {
-        pointer.isPointerVisible().then(data => {
-          console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_001 success, data=${JSON.stringify(data)}`);
+        await pointer.isPointerVisible().then(data => {
+          console.info(`Pointer_PointerVisibleTest_001 success_2, data=${JSON.stringify(data)}`);
           expect(data == false).assertTrue();
+          done();
         }).catch((err) => {
-          console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_001 failed, err=${JSON.stringify(err)}`);
+          console.info(`Pointer_PointerVisibleTest_001 failed, err=${JSON.stringify(err)}`);
           expect(false).assertTrue();
         });
       } catch (error) {
-        console.info(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 error`);
+        console.info(`Pointer_SetPointerVisibleTest_001 error`);
         expect(false).assertTrue();
       }
-      console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_001 exit`);
+      console.info(`Pointer_PointerVisibleTest_001 exit`);
     })
 
-    it('MultimodalInput_Pointer_test::PointerVisibleTest_002', 0, function () {
-      console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 enter`);
+    it('Pointer_PointerVisibleTest_002', 0, async function (done) {
+      console.info(`Pointer_PointerVisibleTest_002 enter`);
       try {
-        pointer.setPointerVisible(true).then(data => {
-          console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 success, data=${JSON.stringify(data)}`);
+        await pointer.setPointerVisible(true).then(data => {
+          console.info(`Pointer_PointerVisibleTest_002 success_1, data=${JSON.stringify(data)}`);
           expect(true).assertTrue();
         }).catch((err) => {
-          console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
+          console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
           expect(false).assertTrue();
         });
       } catch (error) {
-        console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 error`);
+        console.info(`Pointer_PointerVisibleTest_002 error`);
         expect(false).assertTrue();
       }
       try {
         pointer.isPointerVisible((err, data) => {
           if (err) {
-            console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
+            console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
             expect(false).assertTrue();
           } else {
-            console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 success, data=${JSON.stringify(data)}`);
+            console.info(`Pointer_PointerVisibleTest_002 success_2, data=${JSON.stringify(data)}`);
             expect(data == true).assertTrue();
+            done();
           }
         });
       } catch (error) {
-        console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 error`);
+        console.info(`Pointer_PointerVisibleTest_002 error`);
         expect(false).assertTrue();
       }
-      console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 exit`);
+      console.info(`Pointer_PointerVisibleTest_002 exit`);
     })
 
-    it('MultimodalInput_Pointer_test::PointerSpeedTest_001', 0, function () {
-      console.info(`MultimodalInput_Pointer_test::PointerSpeedTest_001 enter`);
-      var callback = function (err, data) {
-        if (err) {
-          console.info(`MultimodalInput_Pointer_test::SetPointerSpeedTest_001 failed, err=${JSON.stringify(err)}`);
-          expect(false).assertTrue();
-        } else {
-          console.info(`MultimodalInput_Pointer_test::SetPointerSpeedTest_001 success`);
-          expect(true).assertTrue();
-        }
-      };
-      pointer.setPointerSpeed(10, callback);
-
-      pointer.getPointerSpeed().then((data) => {
-        console.info(`MultimodalInput_Pointer_test::GetPointerSpeedTest_001 success, data=${JSON.stringify(data)}`);
-        expect(data == 10).assertTrue();
-      }, (err) => {
-        console.info(`MultimodalInput_Pointer_test::GetPointerSpeedTest_001 failed, err=${JSON.stringify(err)}`);
-        expect(false).assertTrue();
-      });
-      console.info(`MultimodalInput_Pointer_test::PointerSpeedTest_001 exit`);
-    })
-
-    it('MultimodalInput_Pointer_test::PointerSpeedTest_002', 0, function () {
-      console.info(`MultimodalInput_Pointer_test::PointerSpeedTest_002 enter`);
-      pointer.setPointerSpeed(10).then(data => {
-        console.info(`MultimodalInput_Pointer_test::SetPointerSpeedTest_002 success, data=${JSON.stringify(data)}`);
-        expect(true).assertTrue();
-      }, (err) => {
-        console.info(`MultimodalInput_Pointer_test::SetPointerSpeedTest_002 failed, err=${JSON.stringify(err)}`);
-        expect(false).assertTrue();
-      });
-
-      var callback = function (err, data) {
-        if (err) {
-          console.info(`MultimodalInput_Pointer_test::GetPointerSpeedTest_002 failed, err=${JSON.stringify(err)}`);
-          expect(false).assertTrue();
-        } else {
-          console.info(`MultimodalInput_Pointer_test::GetPointerSpeedTest_002 success, data=${JSON.stringify(data)}`);
-          expect(data == 10).assertTrue();
-        }
-      };
-      pointer.getPointerSpeed(callback);
-      console.info(`MultimodalInput_Pointer_test::PointerSpeedTest_002 exit`);
-    })
-
-    it('MultimodalInput_Pointer_test::SetPointerStyle_001', 0, function () {
+    it('Pointer_SetPointerStyle_001', 0, async function (done) {
       console.info(`SetPointerStyle_001 enter`);
-      window.getTopWindow((err, data) => {
-        if (err) {
-          console.info(`SetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
-          expect(false).assertTrue();
-        }
-        var windowClass = data;
-        windowClass.getProperties((err, data) => {
-          if (err) {
-            console.info(`SetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
-            expect(false).assertTrue();
-          }
-          try {
-            var windowId = data.id;
-            pointer.setPointerStyle(windowId, 4).then(() => {
-              expect(true).assertTrue();
-              console.info(`SetPointerStyle_001 success`);
-            }).catch((err) => {
-              expect(false).assertTrue();
+      function getPropertiesPromise(windowClass) {
+        return new Promise((resolve, reject) => {
+          windowClass.getProperties(async (err, data) => {
+            if (err && err.code != 0) {
               console.info(`SetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
-            });
-          } catch (error) {
-            console.info(`SetPointerStyle_001 error`);
-            expect(false).assertTrue();
-          }
-        })
-      })
-    })
-
-    it('MultimodalInput_Pointer_test::SetPointerStyle_002', 0, function () {
-      console.info(`SetPointerStyle_002 enter`);
-      window.getTopWindow((err, data) => {
-        var windowClass = data;
-        if (err) {
-          console.info(`SetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
-          expect(false).assertTrue();
-        }
-        windowClass.getProperties((err, data) => {
-          if (err) {
-            console.info(`SetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
-            expect(false).assertTrue();
-          }
-          try {
-            var windowId = data.id;
-            pointer.setPointerStyle(windowId, 4, (err) => {
-              if (err) {
-                console.info(`SetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
-                expect(false).assertTrue();
-              } else {
-                console.info(`SetPointerStyle_002 success`);
+              expect(false).assertTrue();
+            }
+            try {
+              var windowId = data.id;
+              await pointer.setPointerStyle(windowId, 4).then(() => {
                 expect(true).assertTrue();
-              }
-            });
-          } catch (error) {
-            console.info(`SetPointerStyle_002 error`);
-            expect(false).assertTrue();
-          }
+                console.info(`SetPointerStyle_001 success`);
+                resolve();
+              }).catch((err) => {
+                expect(false).assertTrue();
+                console.info(`SetPointerStyle_001 failed_1, err=${JSON.stringify(err)}`);
+              });
+            } catch (error) {
+              console.info(`SetPointerStyle_001 error`);
+              expect(false).assertTrue();
+              reject(error);
+            }
+          })
         })
+      }
+      window.getTopWindow(async (err, data) => {
+        console.info(`case:SetPointerStyle_001 enter`);
+        var windowClass = data;
+        if (err && err.code != 0) {
+          console.info(`case:SetPointerStyle_001,getTopWindow failed, err=${JSON.stringify(err)}`);
+          return;
+        }
+        console.info(`case:SetPointerStyle_001 ===========`);
+        await getPropertiesPromise(data);
+        console.info(`case:SetPointerStyle_001 exit`);
+        done();
       })
     })
 
-    it('MultimodalInput_Pointer_test::GetPointerStyle_001', 0, function () {
-      console.info(`GetPointerStyle_001 enter`);
-      window.getTopWindow((err, data) => {
-        if (err) {
-          console.info(`GetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
-          expect(false).assertTrue();
-        }
+
+    it('Pointer_SetPointerStyle_002', 0, async function (done) {
+      console.info(`SetPointerStyle_002 enter`);
+      function getPropertiesPromise(windowClass) {
+        return new Promise((resolve, reject) => {
+          windowClass.getProperties((err, data) => {
+            if (err && err.code != 0) {
+              console.info(`SetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
+              expect(false).assertTrue();
+            }
+            try {
+              var windowId = data.id;
+              pointer.setPointerStyle(windowId, 4, (err) => {
+                if (err) {
+                  console.info(`SetPointerStyle_002 failed_1, err=${JSON.stringify(err)}`);
+                  expect(false).assertTrue();
+                } else {
+                  console.info(`SetPointerStyle_002 success`);
+                  expect(true).assertTrue();
+                  resolve();
+                }
+              });
+            } catch (error) {
+              console.info(`SetPointerStyle_002 error`);
+              expect(false).assertTrue();
+              reject(error);
+            }
+          })
+        })
+      }
+      window.getTopWindow(async (err, data) => {
+        console.info(`case:SetPointerStyle_002 enter`);
         var windowClass = data;
-        windowClass.getProperties((err, data) => {
-          if (err) {
-            console.info(`GetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
-            expect(false).assertTrue();
-          }
-          var windowId = data.id;
-          try {
-            pointer.getPointerStyle(windowId).then((data) => {
-              console.info(`GetPointerStyle_001 success, data=${JSON.stringify(data)}`);
-              expect(data).assertTrue('Number');
-            }).catch((err) => {
+        if (err && err.code != 0) {
+          console.info(`case:SetPointerStyle_002,getTopWindow failed, err=${JSON.stringify(err)}`);
+          return;
+        }
+        console.info(`case:SetPointerStyle_002 ===========`);
+        await getPropertiesPromise(data);
+        console.info(`case:SetPointerStyle_002 exit`);
+        done();
+      })
+    })
+
+    it('Pointer_GetPointerStyle_001', 0, async function (done) {
+      console.info(`GetPointerStyle_001 enter`);
+      function getPropertiesPromise(windowClass) {
+        return new Promise((resolve, reject) => {
+          windowClass.getProperties(async (err, data) => {
+            if (err && err.code != 0) {
               console.info(`GetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
               expect(false).assertTrue();
-            });
-          } catch (error) {
-            console.info(`GetPointerStyle_001 error`);
-            expect(false).assertTrue();
-          }
-        })
-      })
-    })
-
-    it('MultimodalInput_Pointer_test::GetPointerStyle_002', 0, function () {
-      console.info(`GetPointerStyle_002 enter`);
-      window.getTopWindow((err, data) => {
-        if (err) {
-          console.info(`GetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
-          expect(false).assertTrue();
-        }
-        var windowClass = data;
-        windowClass.getProperties((err, data) => {
-          if (err) {
-            console.info(`GetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
-            expect(false).assertTrue();
-          }
-          try {
-            var windowId = data.id;
-            pointer.getPointerStyle(windowId, (err, data) => {
-              if (err) {
-                console.info(`GetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
+            }
+            try {
+              var windowId = data.id;
+              await pointer.getPointerStyle(windowId).then((data) => {
+                console.info(`GetPointerStyle_001 success, data=${JSON.stringify(data)}`);
+                expect(typeof (data)).assertEqual("number");
+                resolve();
+              }).catch((err) => {
+                console.info(`GetPointerStyle_001 failed_1, err=${JSON.stringify(err)}`);
                 expect(false).assertTrue();
-              } else {
-                console.info(`GetPointerStyle_002 success, data=${JSON.stringify(data)}`);
-                expect(data).assertTrue('Number');
-              }
-            });
-          } catch (error) {
-            console.info(`GetPointerStyle_002 error`);
-            expect(false).assertTrue();
-          }
+              });
+            } catch (error) {
+              console.info(`GetPointerStyle_001 error`);
+              expect(false).assertTrue();
+              reject(error);
+            }
+          })
         })
+      }
+      window.getTopWindow(async (err, data) => {
+        console.info(`case:GetPointerStyle_001 enter`);
+        var windowClass = data;
+        if (err && err.code != 0) {
+          console.info(`case:GetPointerStyle_001,getTopWindow failed, err=${JSON.stringify(err)}`);
+          return;
+        }
+        console.info(`case:GetPointerStyle_001 ===========`);
+        await getPropertiesPromise(data);
+        console.info(`case:GetPointerStyle_001 exit`);
+        done();
       })
     })
 
-    it('MultimodalInput_Pointer_test::Pointer_PointerStyle_test', 0, function () {
-      console.info('MultimodalInput_Pointer_test::Pointer_PointerStyle_test = ' + pointer.PointerStyle.DEFAULT);
+    it('Pointer_GetPointerStyle_002', 0, async function (done) {
+      console.info(`GetPointerStyle_002 enter`);
+      function getPropertiesPromise(windowClass) {
+        return new Promise((resolve, reject) => {
+          windowClass.getProperties((err, data) => {
+            if (err && err.code != 0) {
+              console.info(`GetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
+              reject();
+            }
+            try {
+              var windowId = data.id;
+              pointer.getPointerStyle(windowId, (err, data) => {
+                if (err) {
+                  console.info(`GetPointerStyle_002 failed_1, err=${JSON.stringify(err)}`);
+                  expect(false).assertTrue();
+                  reject();
+                } else {
+                  console.info(`GetPointerStyle_002 success, data=` + typeof (data));
+                  expect(data).assertInstanceOf('Number');
+                  resolve();
+                }
+              })
+            } catch (error) {
+              console.info(`GetPointerStyle_002 error=${JSON.stringify(error)}`);
+              expect(false).assertTrue();
+              reject(error);
+            }
+          })
+        })
+      }
+      window.getTopWindow(async (err, data) => {
+        console.info(`case:GetPointerStyle_002 enter`);
+        var windowClass = data;
+        if (err && err.code != 0) {
+          console.info(`case:GetPointerStyle_002,getTopWindow failed, err=${JSON.stringify(err)}`);
+          done();
+          return;
+        }
+        console.info(`case:GetPointerStyle_002 ===========`);
+        await getPropertiesPromise(data);
+        console.info(`case:GetPointerStyle_002 exit`);
+        done();
+      })
+    })
+
+    it('Pointer_PointerStyle_test', 0, function () {
+      console.info('Pointer_PointerStyle_test = ' + pointer.PointerStyle.DEFAULT);
       expect(pointer.PointerStyle.DEFAULT == 0).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_EAST_test = ' + pointer.PointerStyle.EAST);
+      console.info('Pointer_EAST_test = ' + pointer.PointerStyle.EAST);
       expect(pointer.PointerStyle.EAST == 1).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_WEST_test = ' + pointer.PointerStyle.WEST);
+      console.info('Pointer_WEST_test = ' + pointer.PointerStyle.WEST);
       expect(pointer.PointerStyle.WEST == 2).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_SOUTH_test = ' + pointer.PointerStyle.SOUTH);
+      console.info('Pointer_SOUTH_test = ' + pointer.PointerStyle.SOUTH);
       expect(pointer.PointerStyle.SOUTH == 3).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_NORTH_test = ' + pointer.PointerStyle.NORTH);
+      console.info('Pointer_NORTH_test = ' + pointer.PointerStyle.NORTH);
       expect(pointer.PointerStyle.NORTH == 4).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_WEST_EAST_test = ' + pointer.PointerStyle.WEST_EAST);
+      console.info('Pointer_WEST_EAST_test = ' + pointer.PointerStyle.WEST_EAST);
       expect(pointer.PointerStyle.WEST_EAST == 5).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_NORTH_SOUTH_test = ' + pointer.PointerStyle.NORTH_SOUTH);
+      console.info('Pointer_NORTH_SOUTH_test = ' + pointer.PointerStyle.NORTH_SOUTH);
       expect(pointer.PointerStyle.NORTH_SOUTH == 6).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_NORTH_EAST_test = ' + pointer.PointerStyle.NORTH_EAST);
+      console.info('Pointer_NORTH_EAST_test = ' + pointer.PointerStyle.NORTH_EAST);
       expect(pointer.PointerStyle.NORTH_EAST == 7).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_NORTH_WEST_test = ' + pointer.PointerStyle.NORTH_WEST);
+      console.info('Pointer_NORTH_WEST_test = ' + pointer.PointerStyle.NORTH_WEST);
       expect(pointer.PointerStyle.NORTH_WEST == 8).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_SOUTH_EAST_test = ' + pointer.PointerStyle.SOUTH_EAST);
+      console.info('Pointer_SOUTH_EAST_test = ' + pointer.PointerStyle.SOUTH_EAST);
       expect(pointer.PointerStyle.SOUTH_EAST == 9).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_SOUTH_WEST_test = ' + pointer.PointerStyle.SOUTH_WEST);
+      console.info('Pointer_SOUTH_WEST_test = ' + pointer.PointerStyle.SOUTH_WEST);
       expect(pointer.PointerStyle.SOUTH_WEST == 10).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_NORTH_EAST_SOUTH_WEST_test = ' + pointer.PointerStyle.NORTH_EAST_SOUTH_WEST);
+      console.info('Pointer_NORTH_EAST_SOUTH_WEST_test = ' + pointer.PointerStyle.NORTH_EAST_SOUTH_WEST);
       expect(pointer.PointerStyle.NORTH_EAST_SOUTH_WEST == 11).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_NORTH_WEST_SOUTH_EAST_test = ' + pointer.PointerStyle.NORTH_WEST_SOUTH_EAST);
+      console.info('Pointer_NORTH_WEST_SOUTH_EAST_test = ' + pointer.PointerStyle.NORTH_WEST_SOUTH_EAST);
       expect(pointer.PointerStyle.NORTH_WEST_SOUTH_EAST == 12).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_CROSS_test = ' + pointer.PointerStyle.CROSS);
+      console.info('Pointer_CROSS_test = ' + pointer.PointerStyle.CROSS);
       expect(pointer.PointerStyle.CROSS == 13).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_CURSOR_COPY_test = ' + pointer.PointerStyle.CURSOR_COPY);
+      console.info('Pointer_CURSOR_COPY_test = ' + pointer.PointerStyle.CURSOR_COPY);
       expect(pointer.PointerStyle.CURSOR_COPY == 14).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_CURSOR_FORBID_test = ' + pointer.PointerStyle.CURSOR_FORBID);
+      console.info('Pointer_CURSOR_FORBID_test = ' + pointer.PointerStyle.CURSOR_FORBID);
       expect(pointer.PointerStyle.CURSOR_FORBID == 15).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_COLOR_SUCKER_test = ' + pointer.PointerStyle.COLOR_SUCKER);
+      console.info('Pointer_COLOR_SUCKER_test = ' + pointer.PointerStyle.COLOR_SUCKER);
       expect(pointer.PointerStyle.COLOR_SUCKER == 16).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_HAND_GRABBING_test = ' + pointer.PointerStyle.HAND_GRABBING);
+      console.info('Pointer_HAND_GRABBING_test = ' + pointer.PointerStyle.HAND_GRABBING);
       expect(pointer.PointerStyle.HAND_GRABBING == 17).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_HAND_OPEN_test = ' + pointer.PointerStyle.HAND_OPEN);
+      console.info('Pointer_HAND_OPEN_test = ' + pointer.PointerStyle.HAND_OPEN);
       expect(pointer.PointerStyle.HAND_OPEN == 18).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_HAND_POINTING_test = ' + pointer.PointerStyle.HAND_POINTING);
+      console.info('Pointer_HAND_POINTING_test = ' + pointer.PointerStyle.HAND_POINTING);
       expect(pointer.PointerStyle.HAND_POINTING == 19).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_HELP_test = ' + pointer.PointerStyle.HELP);
+      console.info('Pointer_HELP_test = ' + pointer.PointerStyle.HELP);
       expect(pointer.PointerStyle.HELP == 20).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MOVE_test = ' + pointer.PointerStyle.MOVE);
+      console.info('Pointer_MOVE_test = ' + pointer.PointerStyle.MOVE);
       expect(pointer.PointerStyle.MOVE == 21).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_RESIZE_UP_DOWN_test = ' + pointer.PointerStyle.RESIZE_UP_DOWN);
+      console.info('Pointer_RESIZE_UP_DOWN_test = ' + pointer.PointerStyle.RESIZE_UP_DOWN);
       expect(pointer.PointerStyle.RESIZE_UP_DOWN == 22).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_RESIZE_LEFT_RIGHT_test = ' + pointer.PointerStyle.RESIZE_LEFT_RIGHT);
+      console.info('Pointer_RESIZE_LEFT_RIGHT_test = ' + pointer.PointerStyle.RESIZE_LEFT_RIGHT);
       expect(pointer.PointerStyle.RESIZE_LEFT_RIGHT == 23).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_SCREENSHOT_CHOOSE_test = ' + pointer.PointerStyle.SCREENSHOT_CHOOSE);
+      console.info('Pointer_SCREENSHOT_CHOOSE_test = ' + pointer.PointerStyle.SCREENSHOT_CHOOSE);
       expect(pointer.PointerStyle.SCREENSHOT_CHOOSE == 24).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_SCREENSHOT_CURSOR_test = ' + pointer.PointerStyle.SCREENSHOT_CURSOR);
+      console.info('Pointer_SCREENSHOT_CURSOR_test = ' + pointer.PointerStyle.SCREENSHOT_CURSOR);
       expect(pointer.PointerStyle.SCREENSHOT_CURSOR == 25).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_TEXT_CURSOR_test = ' + pointer.PointerStyle.TEXT_CURSOR);
+      console.info('Pointer_TEXT_CURSOR_test = ' + pointer.PointerStyle.TEXT_CURSOR);
       expect(pointer.PointerStyle.TEXT_CURSOR == 26).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_ZOOM_IN_test = ' + pointer.PointerStyle.ZOOM_IN);
+      console.info('Pointer_ZOOM_IN_test = ' + pointer.PointerStyle.ZOOM_IN);
       expect(pointer.PointerStyle.ZOOM_IN == 27).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_ZOOM_OUT_test = ' + pointer.PointerStyle.ZOOM_OUT);
+      console.info('Pointer_ZOOM_OUT_test = ' + pointer.PointerStyle.ZOOM_OUT);
       expect(pointer.PointerStyle.ZOOM_OUT == 28).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_EAST);
+      console.info('Pointer_MIDDLE_BTN_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_EAST);
       expect(pointer.PointerStyle.MIDDLE_BTN_EAST == 29).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_WEST_test = ' + pointer.PointerStyle.MIDDLE_BTN_WEST);
+      console.info('Pointer_MIDDLE_BTN_WEST_test = ' + pointer.PointerStyle.MIDDLE_BTN_WEST);
       expect(pointer.PointerStyle.MIDDLE_BTN_WEST == 30).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_SOUTH_test = ' + pointer.PointerStyle.MIDDLE_BTN_SOUTH);
+      console.info('Pointer_MIDDLE_BTN_SOUTH_test = ' + pointer.PointerStyle.MIDDLE_BTN_SOUTH);
       expect(pointer.PointerStyle.MIDDLE_BTN_SOUTH == 31).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_NORTH_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH);
+      console.info('Pointer_MIDDLE_BTN_NORTH_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH);
       expect(pointer.PointerStyle.MIDDLE_BTN_NORTH == 32).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_NORTH_SOUTH_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH);
+      console.info('Pointer_MIDDLE_BTN_NORTH_SOUTH_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH);
       expect(pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH == 33).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_NORTH_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_EAST);
+      console.info('Pointer_MIDDLE_BTN_NORTH_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_EAST);
       expect(pointer.PointerStyle.MIDDLE_BTN_NORTH_EAST == 34).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_NORTH_WEST_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_WEST);
+      console.info('Pointer_MIDDLE_BTN_NORTH_WEST_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_WEST);
       expect(pointer.PointerStyle.MIDDLE_BTN_NORTH_WEST == 35).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_SOUTH_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_SOUTH_EAST);
+      console.info('Pointer_MIDDLE_BTN_SOUTH_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_SOUTH_EAST);
       expect(pointer.PointerStyle.MIDDLE_BTN_SOUTH_EAST == 36).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_SOUTH_WEST_test = ' + pointer.PointerStyle.MIDDLE_BTN_SOUTH_WEST);
+      console.info('Pointer_MIDDLE_BTN_SOUTH_WEST_test = ' + pointer.PointerStyle.MIDDLE_BTN_SOUTH_WEST);
       expect(pointer.PointerStyle.MIDDLE_BTN_SOUTH_WEST == 37).assertTrue();
 
-      console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_NORTH_SOUTH_WEST_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH_WEST_EAST);
+      console.info('Pointer_MIDDLE_BTN_NORTH_SOUTH_WEST_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH_WEST_EAST);
       expect(pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH_WEST_EAST == 38).assertTrue();
     })
 
@@ -387,16 +390,15 @@ export default function MultimodalInput_Pointer_test() {
      * @tc.name MultimodalInputDevice_PointerVisibleTest_Exception_Test_001
      * @tc.desc Pointer interface PointerVisible exception test
      */
-    it('MultimodalInputDevice_PointerVisibleTest_Exception_Test_001', 0, function () {
-      console.info(`MultimodalInputDevice_PointerVisibleTest_Exception_Test_001 enter`);
+    it('Pointer_PointerVisibleTest_Exception_Test_001', 0, async function (done) {
+      console.info(`Pointer_PointerVisibleTest_Exception_Test_001 enter`);
       try {
-        pointer.setPointerVisible();
+        await pointer.setPointerVisible();
       } catch (error) {
         console.info(`PointerVisibleTest_Exception_Test_001: ${JSON.stringify(error, [`code`, `message`])}`);
         expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
         expect(error.message).assertEqual(errMsg.PARAMETER_VISIBLE_TYPE_MSG);
       }
-
       try {
         pointer.isPointerVisible((error, data) => {
           if (error) {
@@ -404,13 +406,14 @@ export default function MultimodalInput_Pointer_test() {
             expect(false).assertTrue();
           } else {
             console.info(`PointerVisibleTest_Exception_Test_001 success`);
-            expect(data).assertInstanceOf('Bool');
+            expect(data).assertInstanceOf('Boolean');
           }
+          done();
         });
       } catch (error) {
         console.info(`PointerVisibleTest_Exception_Test_001: ${JSON.stringify(error, [`code`, `message`])}`);
       }
-      console.info(`MultimodalInputDevice_PointerVisibleTest_Exception_Test_001 exit`);
+      console.info(`Pointer_PointerVisibleTest_Exception_Test_001 exit`);
     })
 
     /**
@@ -418,8 +421,8 @@ export default function MultimodalInput_Pointer_test() {
      * @tc.name MultimodalInputDevice_PointerVisibleTest_Exception_Test_002
      * @tc.desc Pointer interface PointerVisible exception test
      */
-    it('MultimodalInputDevice_PointerVisibleTest_Exception_Test_002', 0, function () {
-      console.info(`MultimodalInputDevice_PointerVisibleTest_Exception_Test_002 enter`);
+    it('Pointer_PointerVisibleTest_Exception_Test_002', 0, async function (done) {
+      console.info(`Pointer_PointerVisibleTest_Exception_Test_002 enter`);
       try {
         pointer.setPointerVisible(`state`, (error, data) => {
           if (error) {
@@ -437,73 +440,14 @@ export default function MultimodalInput_Pointer_test() {
       }
 
       try {
-        pointer.isPointerVisible(null);
+        await pointer.isPointerVisible(null);
       } catch (error) {
         console.info(`PointerVisibleTest_Exception_Test_002: ${JSON.stringify(error, [`code`, `message`])}`);
         expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
         expect(error.message).assertEqual(errMsg.PARAMETER_CALLBACK_TYPE_MSG);
       }
-      console.info(`MultimodalInputDevice_PointerVisibleTest_Exception_Test_002 exit`);
-    })
-
-    /**
-     * @tc.number MultimodalInputPointer_Test_003
-     * @tc.name MultimodalInputDevice_PointerSpeedTest_Exception_Test_001
-     * @tc.desc Pointer interface PointerSpeed exception test
-     */
-    it('MultimodalInputDevice_PointerSpeedTest_Exception_Test_001', 0, function () {
-      console.info(`MultimodalInputDevice_PointerSpeedTest_Exception_Test_001 enter`);
-      try {
-        pointer.setPointerSpeed(10, null);
-      } catch (error) {
-        console.info(`PointerSpeedTest_Exception_Test_001: ${JSON.stringify(error, [`code`, `message`])}`);
-        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
-        expect(error.message).assertEqual(errMsg.PARAMETER_CALLBACK_TYPE_MSG);
-      }
-
-      try {
-        pointer.getPointerSpeed().then((error, data) => {
-          console.info(`PointerSpeedTest_Exception_Test_001 success`);
-          expect(data).assertInstanceOf('Number');
-        }, (error) => {
-          console.info(`PointerSpeedTest_Exception_Test_001 failed, err=${JSON.stringify(error)}`);
-          expect(false).assertTrue();
-        });
-      } catch (error) {
-        console.info(`PointerSpeedTest_Exception_Test_001: ${JSON.stringify(error, [`code`, `message`])}`);
-      }
-      console.info(`MultimodalInputDevice_PointerSpeedTest_Exception_Test_001 exit`);
-    })
-
-    /**
-     * @tc.number MultimodalInputPointer_Test_004
-     * @tc.name MultimodalInputDevice_PointerSpeedTest_Exception_Test_002
-     * @tc.desc Pointer interface PointerSpeed exception test
-     */
-    it('MultimodalInputDevice_PointerSpeedTest_Exception_Test_002', 0, function () {
-      console.info(`MultimodalInputDevice_PointerSpeedTest_Exception_Test_002 enter`);
-      try {
-        pointer.setPointerSpeed().then((data) => {
-          console.info(`PointerSpeedTest_Exception_Test_002 success`);
-          expect(true).assertTrue();
-        }, (error) => {
-          console.info(`PointerSpeedTest_Exception_Test_002 failed, err=${JSON.stringify(error)}`);
-          expect(false).assertTrue();
-        });
-      } catch (error) {
-        console.info(`PointerSpeedTest_Exception_Test_002: ${JSON.stringify(error, [`code`, `message`])}`);
-        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
-        expect(error.message).assertEqual(errMsg.PARAMETER_SPEED_TYPE_MSG);
-      }
-
-      try {
-        pointer.getPointerSpeed(null);
-      } catch (error) {
-        console.info(`PointerSpeedTest_Exception_Test_002: ${JSON.stringify(error, [`code`, `message`])}`);
-        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
-        expect(error.message).assertEqual(errMsg.PARAMETER_CALLBACK_TYPE_MSG);
-      }
-      console.info(`MultimodalInputDevice_PointerSpeedTest_Exception_Test_002 exit`);
+      console.info(`Pointer_PointerVisibleTest_Exception_Test_002 exit`);
+      done();
     })
 
     /**
@@ -511,10 +455,10 @@ export default function MultimodalInput_Pointer_test() {
      * @tc.name MultimodalInputDevice_PointerStyleTest_Exception_Test_001
      * @tc.desc Pointer interface PointerStyle exception test
      */
-    it('MultimodalInputDevice_PointerStyleTest_Exception_Test_001', 0, function () {
-      console.info(`MultimodalInputDevice_PointerStyleTest_Exception_Test_001 enter`);
+    it('Pointer_PointerStyleTest_Exception_Test_001', 0, async function (done) {
+      console.info(`Pointer_PointerStyleTest_Exception_Test_001 enter`);
       try {
-        pointer.setPointerStyle(10, 10, null);
+        await pointer.setPointerStyle(10, 10, null);
       } catch (error) {
         console.info(`PointerStyleTest_Exception_Test_001: ${JSON.stringify(error, [`code`, `message`])}`);
         expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
@@ -522,7 +466,7 @@ export default function MultimodalInput_Pointer_test() {
       }
 
       try {
-        pointer.getPointerStyle(10, null).then((data) => {
+        await pointer.getPointerStyle(10, null).then((data) => {
           console.info(`PointerStyleTest_Exception_Test_001 success`);
           expect(true).assertTrue();
         }, (error) => {
@@ -534,7 +478,8 @@ export default function MultimodalInput_Pointer_test() {
         expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
         expect(error.message).assertEqual(errMsg.PARAMETER_CALLBACK_TYPE_MSG);
       }
-      console.info(`MultimodalInputDevice_PointerStyleTest_Exception_Test_001 exit`);
+      console.info(`Pointer_PointerStyleTest_Exception_Test_001 exit`);
+      done();
     })
 
     /**
@@ -542,10 +487,10 @@ export default function MultimodalInput_Pointer_test() {
      * @tc.name MultimodalInputDevice_PointerStyleTest_Exception_Test_002
      * @tc.desc Pointer interface PointerStyle exception test
      */
-    it('MultimodalInputDevice_PointerStyleTest_Exception_Test_002', 0, function () {
-      console.info(`MultimodalInputDevice_PointerStyleTest_Exception_Test_002 enter`);
+    it('Pointer_PointerStyleTest_Exception_Test_002', 0, async function (done) {
+      console.info(`Pointer_PointerStyleTest_Exception_Test_002 enter`);
       try {
-        pointer.setPointerStyle().then((data) => {
+        await pointer.setPointerStyle().then((data) => {
           console.info(`PointerStyleTest_Exception_Test_002 success`);
           expect(true).assertTrue();
         }, (error) => {
@@ -559,13 +504,14 @@ export default function MultimodalInput_Pointer_test() {
       }
 
       try {
-        pointer.getPointerStyle();
+        await pointer.getPointerStyle();
       } catch (error) {
         console.info(`PointerStyleTest_Exception_Test_002: ${JSON.stringify(error, [`code`, `message`])}`);
         expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
         expect(error.message).assertEqual(errMsg.PARAMETER_WINDOWID_TYPE_MSG);
       }
-      console.info(`MultimodalInputDevice_PointerStyleTest_Exception_Test_002 exit`);
+      console.info(`Pointer_PointerStyleTest_Exception_Test_002 exit`);
+      done();
     })
   })
 }

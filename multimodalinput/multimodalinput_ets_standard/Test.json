@@ -3,8 +3,8 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "bundle-name": "ohos.acts.multimodalinput.input",
-        "package-name": "ohos.acts.multimodalinput.input",
+        "bundle-name": "ohos.acts.multimodalinputets.input",
+        "package-name": "ohos.acts.multimodalinputets.input",
         "shell-timeout": "600000"
     },
     "kits": [

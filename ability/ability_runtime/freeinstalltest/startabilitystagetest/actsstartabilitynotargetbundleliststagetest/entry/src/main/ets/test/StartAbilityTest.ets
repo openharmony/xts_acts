@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +16,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import ability from '@ohos.application.Ability'
+import ability from '@ohos.app.ability.UIAbility'
 import rpc from '@ohos.rpc';
 import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';
@@ -85,8 +87,8 @@ export default function startAbilityTest(abilityContext) {
         });
 
         async function abilityForeground(tag) {
-            globalThis.delegator.doAbilityForeground(globalThis.ability, (err: any, data: any) => {
-                console.info(tag + "doAbilityForeground err:" + JSON.stringify(err) + ", data:" + JSON.stringify(data));
+            globalThis.delegator.doAbilityForeground(globalThis.ability, (err: any) => {
+                console.info(tag + "doAbilityForeground err:" + JSON.stringify(err));
             });
         }
 

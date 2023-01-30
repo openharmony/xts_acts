@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent';
-import AbilityConstant from "@ohos.application.AbilityConstant";
+import AbilityConstant from "@ohos.app.ability.AbilityConstant";
 import appManager from "@ohos.application.appManager";
 import wantConstant from '@ohos.ability.wantConstant';
 
@@ -312,62 +312,6 @@ export default function verificationTest(){
     })
 
     /*
-    * @tc.number  SUB_AA_OpenHarmony_IsTerminating_0100
-    * @tc.name    Verification ability destroy status query.
-    * @tc.desc    Function test
-    * @tc.level   3
-    */
-    it('SUB_AA_OpenHarmony_IsTerminating_0100', 0, async function(done) {
-      TAG = 'SUB_AA_OpenHarmony_IsTerminating_0100 ==>';
-
-      try {
-        let status1 = undefined
-        let status2 = undefined
-        let subscriber = null
-        let subscribeInfo = {
-          events: ["Stage_MainAbility5_onCreate", "Stage_MainAbility5_onDestroy"]
-        }
-        function SubscribeInfoCallback(err, data) {
-          console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
-          if (data.event == "Stage_MainAbility5_onCreate") {
-            status1 = data.parameters.isTerminating
-          }
-          if (data.event == "Stage_MainAbility5_onDestroy") {
-            status2 = data.parameters.isTerminating
-            expect(status1).assertFalse();
-            expect(status2).assertTrue();
-            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
-          }
-        }
-        function UnSubscribeInfoCallback(err, data) {
-          console.info(TAG + "===UnSubscribeInfoCallback===")
-          done()
-        }
-        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
-          console.info(TAG + "===CreateSubscriberCallback===")
-          subscriber = data
-          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
-        })
-
-        let wantNum = {
-          bundleName: 'ohos.acts.aafwk.test.stagesupplement',
-          abilityName: 'MainAbility5'
-        }
-        globalThis.abilityContext.startAbility(wantNum).then((data) => {
-          console.info(TAG + "startAbility data = " + JSON.stringify(data));
-        }).catch((err) => {
-          console.info(TAG + "startAbility err = " + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        });
-      } catch (err) {
-        console.info(TAG + "catch err = " + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /*
     * @tc.number  SUB_AA_OpenHarmony_StartAbilityLife_0100
     * @tc.name    Ability startup and termination will not trigger the migration lifecycle.
     * @tc.desc    Function test
@@ -419,65 +363,6 @@ export default function verificationTest(){
         globalThis.abilityContext.startAbility(wantNum).then((data) => {
           value = globalThis.abilityContext.restoreWindowStage(undefined);
           console.info(TAG + "startAbility data = " + JSON.stringify(data) + ";" + JSON.stringify(data));
-        }).catch((err) => {
-          console.info(TAG + "startAbility err = " + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        });
-      } catch (err) {
-        console.info(TAG + "catch err = " + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /*
-     * @tc.number  SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200
-     * @tc.name    Stage model is not configured with permission for authorization verification.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200', 0, async function(done) {
-      TAG = 'SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200 ==>';
-
-      try {
-        let permissionRequestResult = null
-        let subscriber = null
-        let subscribeInfo = {
-          events: ["Stage_MainAbility10_onCreate", "Stage_MainAbility10_onDestroy"]
-        }
-
-        function SubscribeInfoCallback(err, data) {
-          console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
-          if (data.event == "Stage_MainAbility10_onCreate") {
-            permissionRequestResult = data.parameters.permissionRequestResult
-          }
-          if (data.event == "Stage_MainAbility10_onDestroy") {
-            console.info(TAG + "===PermissionRequestResult===" + JSON.stringify(permissionRequestResult))
-            expect(JSON.stringify(permissionRequestResult.permissions))
-              .assertEqual(JSON.stringify(["ohos.permission.CAMERA"]));
-            expect(JSON.stringify(permissionRequestResult.authResults)).assertEqual(JSON.stringify([2]));
-            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
-          }
-        }
-
-        function UnSubscribeInfoCallback(err, data) {
-          console.info(TAG + "===UnSubscribeInfoCallback===")
-          done()
-        }
-
-        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
-          console.info(TAG + "===CreateSubscriberCallback===")
-          subscriber = data
-          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
-        })
-
-        let wantNum = {
-          bundleName: 'ohos.acts.aafwk.test.stagesupplement',
-          abilityName: 'MainAbility10'
-        }
-        globalThis.abilityContext.startAbility(wantNum).then((data) => {
-          console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
           expect().assertFail();

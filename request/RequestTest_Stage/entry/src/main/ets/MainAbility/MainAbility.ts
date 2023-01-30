@@ -2,7 +2,7 @@ import hilog from '@ohos.hilog';
 import Window from '@ohos.window';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
-import Ability from '@ohos.application.Ability';
+import Ability from '@ohos.app.ability.UIAbility';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default class MainAbility extends Ability {

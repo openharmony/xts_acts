@@ -27,7 +27,7 @@ describe('CoverApiTest', function () {
      */
     it('SUB_AA_OpenHarmony_CoverApi_0500', 0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_CoverApi_0500-------------");
-        appManager.isRunningInStabilityTest()
+        await appManager.isRunningInStabilityTest()
             .then((data) => {
                 console.info('SUB_AA_OpenHarmony_CoverApi_0500 successful. data: ' + JSON.stringify(data));
                 expect(data == false).assertTrue();

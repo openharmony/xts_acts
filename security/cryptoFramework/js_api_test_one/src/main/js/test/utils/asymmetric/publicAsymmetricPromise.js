@@ -222,8 +222,7 @@ async function generateAsySecret(generator, priKey, pubKey) {
 
 async function encryptAndDecryptNormalProcess(asyAlgoName, cipherAlgoName) {
   var globalCipherText;
-  var globalPubKey;
-  var globalPriKey;
+  var globalRsaKeyPair;
   var globalText = "This is a cipher test";
   var input = { data: stringTouInt8Array(globalText) };
   var encryptMode = cryptoFramework.CryptoMode.ENCRYPT_MODE;
@@ -240,12 +239,11 @@ async function encryptAndDecryptNormalProcess(asyAlgoName, cipherAlgoName) {
     generateAsyKeyPair(rsaGenerator)
       .then((rsaKeyPair) => {
         expect(rsaKeyPair != null).assertTrue();
-        globalPubKey = rsaKeyPair.pubKey;
-        globalPriKey = rsaKeyPair.priKey;
+        globalRsaKeyPair = rsaKeyPair;
         return initCipher(
           cipherGeneratorEncrypt,
           encryptMode,
-          globalPubKey,
+          globalRsaKeyPair.pubKey,
           null
         );
       })
@@ -262,7 +260,7 @@ async function encryptAndDecryptNormalProcess(asyAlgoName, cipherAlgoName) {
         return initCipher(
           cipherGeneratorDecrypt,
           decryptMode,
-          globalPriKey,
+          globalRsaKeyPair.priKey,
           null
         );
       })
@@ -297,8 +295,7 @@ async function encryptAndDecryptNormalProcess(asyAlgoName, cipherAlgoName) {
 }
 
 async function signAndVerifyNormalProcess(asyAlgoName, signVerifyAlgoName) {
-  var globalPubKey;
-  var globalPriKey;
+  var globalRsaKeyPair;
   var globalSignBlob;
   var globalText = "This is a sign test";
   var input = { data: stringTouInt8Array(globalText) };
@@ -314,9 +311,8 @@ async function signAndVerifyNormalProcess(asyAlgoName, signVerifyAlgoName) {
     generateAsyKeyPair(rsaGenerator)
       .then((rsaKeyPair) => {
         expect(rsaKeyPair != null).assertTrue();
-        globalPubKey = rsaKeyPair.pubKey;
-        globalPriKey = rsaKeyPair.priKey;
-        return initSign(signGenerator, globalPriKey);
+        globalRsaKeyPair = rsaKeyPair;
+        return initSign(signGenerator, globalRsaKeyPair.priKey);
       })
       .then((initData) => {
         expect(initData === "init success").assertTrue();
@@ -330,7 +326,7 @@ async function signAndVerifyNormalProcess(asyAlgoName, signVerifyAlgoName) {
         expect(finalOutput != null).assertTrue();
         globalSignBlob = finalOutput;
         console.log("signOutput: " + uInt8ArrayToShowStr(globalSignBlob.data));
-        return initVerify(verifyGenerator, globalPubKey);
+        return initVerify(verifyGenerator, globalRsaKeyPair.pubKey);
       })
       .then((initData) => {
         expect(initData === "init success").assertTrue();
@@ -347,6 +343,72 @@ async function signAndVerifyNormalProcess(asyAlgoName, signVerifyAlgoName) {
       .catch((err) => {
         console.error("[promise] signAndVerifyNormalProcess catch err:" + err);
         reject(err);
+      });
+  });
+}
+
+async function signAndVerifyNormalProcessDataException(asyAlgoName, signVerifyAlgoName, dataType) {
+  var globalRsaKeyPair;
+  var globalSignBlob;
+  var globalText = "This is a sign test";
+  var input;
+  if (dataType == "null") {
+    input = null;
+  } else {
+    input = { data: stringTouInt8Array(globalText) };
+  };
+
+  return new Promise((resolve, reject) => {
+    var rsaGenerator = createAsyKeyGenerator(asyAlgoName);
+    expect(rsaGenerator != null).assertTrue();
+    var signGenerator = createAsySign(signVerifyAlgoName);
+    expect(signGenerator != null).assertTrue();
+    var verifyGenerator = createAsyVerify(signVerifyAlgoName);
+    expect(verifyGenerator != null).assertTrue();
+
+    generateAsyKeyPair(rsaGenerator)
+      .then((rsaKeyPair) => {
+        expect(rsaKeyPair != null).assertTrue();
+        globalRsaKeyPair = rsaKeyPair;
+        return initSign(signGenerator, globalRsaKeyPair.priKey);
+      })
+      .then((initData) => {
+        expect(initData === "init success").assertTrue();
+        return updateSign(signGenerator, input);
+      })
+      .then((updateData) => {
+        expect(updateData === "update success").assertTrue();
+        return signForSign(signGenerator, input);
+      })
+      .then((finalOutput) => {
+        expect(finalOutput != null).assertTrue();
+        globalSignBlob = finalOutput;
+        console.log("signOutput: " + uInt8ArrayToShowStr(globalSignBlob.data));
+        return initVerify(verifyGenerator, globalRsaKeyPair.pubKey);
+      })
+      .then((initData) => {
+        expect(initData === "init success").assertTrue();
+        return updateVerify(verifyGenerator, input);
+      })
+      .then((updateData) => {
+        expect(updateData === "update success").assertTrue();
+        return verifyForVerify(verifyGenerator, input, globalSignBlob);
+      })
+      .then((finalStatus) => {
+        expect(finalStatus).assertTrue();
+        if (dataType == "null") {
+          reject();
+        } else {
+          resolve();
+        }
+      })
+      .catch((err) => {
+        console.error("[promise] signAndVerifyNormalProcess catch err:" + err);
+        if (dataType =="null") {
+          resolve(err);
+        } else {
+          reject(err);
+        }
       });
   });
 }
@@ -397,8 +459,7 @@ async function convertKeyEncryptAndDecryptProcess(asyAlgoName) {
 }
 
 async function keyAgreementProcess(ECDHAlgoName) {
-  var globalPubKey;
-  var globalPriKey;
+  var globalRsaKeyPair;
 
   return new Promise((resolve, reject) => {
     var rsaGenerator = createAsyKeyGenerator(ECDHAlgoName);
@@ -409,9 +470,8 @@ async function keyAgreementProcess(ECDHAlgoName) {
     generateAsyKeyPair(rsaGenerator)
       .then((rsaKeyPair) => {
         expect(rsaKeyPair != null).assertTrue();
-        globalPubKey = rsaKeyPair.pubKey;
-        globalPriKey = rsaKeyPair.priKey;
-        return generateAsySecret(globalECDHData, globalPriKey, globalPubKey);
+        globalRsaKeyPair = rsaKeyPair;
+        return generateAsySecret(globalECDHData, globalRsaKeyPair.priKey, globalRsaKeyPair.pubKey);
       })
       .then((result) => {
         console.warn("result data is  " + uInt8ArrayToShowStr(result.data));
@@ -445,10 +505,84 @@ async function AsyPriKeyClearProcess(asyAlgoName) {
   });
 }
 
+async function createAsyKeyGeneratorFail(asyAlgoName) {
+  return new Promise((resolve, reject) => {
+    var rsaGenerator = createAsyKeyGenerator(asyAlgoName);
+    resolve(rsaGenerator);
+    expect(rsaGenerator == "TypeError: Cannot read property algName of null").assertTrue();
+    if (rsaGenerator != "TypeError: Cannot read property algName of null") {
+      reject();
+    }
+  });
+}
+
+async function createAsySignFail(
+    asyAlgoName,
+    signVerifyAlgoName,
+    signVerifyAlgoName1,
+    signVerifyAlgoName2,
+    signVerifyAlgoName3
+) {
+  return new Promise((resolve, reject) => {
+    var rsaGenerator = createAsyKeyGenerator(asyAlgoName);
+    expect(rsaGenerator != null).assertTrue();
+    var rsaKeyPair = generateAsyKeyPair(rsaGenerator);
+    expect(rsaKeyPair != null).assertTrue();
+    var signGenerator = createAsySign(signVerifyAlgoName);
+    expect(signGenerator == "TypeError: Cannot read property algName of undefined").assertTrue();
+
+    var signGenerator = createAsySign(signVerifyAlgoName1);
+    expect(signGenerator == "TypeError: Cannot read property algName of undefined").assertTrue();
+
+    var signGenerator = createAsySign(signVerifyAlgoName2);
+    expect(signGenerator == "TypeError: Cannot read property algName of undefined").assertTrue();
+
+    var signGenerator = createAsySign(signVerifyAlgoName3);
+    resolve(signGenerator);
+    expect(signGenerator == "TypeError: Cannot read property algName of undefined").assertTrue();
+    if (signGenerator != "TypeError: Cannot read property algName of undefined") {
+      reject();
+    }
+  });
+}
+
+async function createAsyVerifyFail(
+    asyAlgoName,
+    signVerifyAlgoName,
+    signVerifyAlgoName1,
+    signVerifyAlgoName2,
+    signVerifyAlgoName3
+) {
+  return new Promise((resolve, reject) => {
+    var rsaGenerator = createAsyKeyGenerator(asyAlgoName);
+    expect(rsaGenerator != null).assertTrue();
+    var rsaKeyPair = generateAsyKeyPair(rsaGenerator);
+    expect(rsaKeyPair != null).assertTrue();
+    var verifyGenerator = createAsyVerify(signVerifyAlgoName);
+    expect(verifyGenerator == "TypeError: Cannot read property algName of undefined").assertTrue();
+
+    var verifyGenerator = createAsyVerify(signVerifyAlgoName1);
+    expect(verifyGenerator == "TypeError: Cannot read property algName of undefined").assertTrue();
+
+    var verifyGenerator = createAsyVerify(signVerifyAlgoName2);
+    expect(verifyGenerator == "TypeError: Cannot read property algName of undefined").assertTrue();
+
+    var verifyGenerator = createAsyVerify(signVerifyAlgoName3);
+    resolve(verifyGenerator);
+    expect(verifyGenerator == "TypeError: Cannot read property algName of undefined").assertTrue();
+    if (verifyGenerator != "TypeError: Cannot read property algName of undefined") {
+      reject();
+    }
+  });
+}
 export {
   encryptAndDecryptNormalProcess,
   signAndVerifyNormalProcess,
   convertKeyEncryptAndDecryptProcess,
   keyAgreementProcess,
   AsyPriKeyClearProcess,
+  signAndVerifyNormalProcessDataException,
+  createAsyKeyGeneratorFail,
+  createAsySignFail,
+  createAsyVerifyFail,
 };

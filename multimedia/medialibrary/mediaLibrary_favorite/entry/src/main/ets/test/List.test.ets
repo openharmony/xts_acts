@@ -15,7 +15,7 @@
 
 import favoriteTestPromise from './favoriteTestPromise.test.ets'
 import favoriteTestCallback from './favoriteTestCallback.test.ets'
-export default function testsuite(abilityContext) {
-  favoriteTestCallback(abilityContext)
-  favoriteTestPromise(abilityContext)
+export default function testsuite() {
+  favoriteTestCallback(globalThis.abilityContext)
+  favoriteTestPromise(globalThis.abilityContext)
 }

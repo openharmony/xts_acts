@@ -26,6 +26,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
     "NativeBufferTest.cpp",
     "NativeImageTest.cpp",
     "NativeVsyncTest.cpp",
+    "NativeWindowTest.cpp",
   ]
 
   cflags = [
@@ -54,6 +55,8 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
     "//base/security/access_token/interfaces/innerkits/token_setproc:libtoken_setproc",
     "//foundation/graphic/graphic_2d:libnative_image",
     "//foundation/graphic/graphic_2d:libsurface",
+    "//foundation/graphic/graphic_2d/frameworks/opengl_wrapper:EGL",
+    "//foundation/graphic/graphic_2d/frameworks/opengl_wrapper:GLESv3",
     "//foundation/graphic/graphic_2d/rosen/modules/composer/native_vsync:libnative_vsync",
     "//foundation/graphic/graphic_2d/rosen/modules/composer/vsync:libvsync",
     "//foundation/graphic/graphic_2d/utils:buffer_handle",

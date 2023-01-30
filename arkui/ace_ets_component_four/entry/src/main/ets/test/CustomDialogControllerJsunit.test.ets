@@ -50,6 +50,7 @@ export default function customDialogControllerJsunit() {
       var callback = (eventData) => {
         console.info("[testClickEvent001] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(true)
+        done();
       }
       var innerEvent = {
         eventId: 236,
@@ -60,10 +61,9 @@ export default function customDialogControllerJsunit() {
       } catch (err) {
         console.info("[testClickEvent001] on events_emitter err : " + JSON.stringify(err));
       }
-      console.info('[testClickEvent001] sendEventByKey ' + JSON.stringify(sendEventByKey('button', 10, "")));
+      console.info('[testClickEvent001] sendEventByKey ' + JSON.stringify(sendEventByKey('dialogController', 10, "")));
       await Utils.sleep(1000)
       console.info('[testClickEvent001] testSendTouchEvent END');
-      done();
     });
 
   })

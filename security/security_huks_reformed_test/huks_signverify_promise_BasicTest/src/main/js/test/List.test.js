@@ -30,6 +30,8 @@ import SecurityHuksSM2BasicAbort63KBPromiseJsunit from './SignVerify/SecurityHuk
 import SecurityHuksSM2BasicAbort65KBPromiseJsunit from './SignVerify/SecurityHuksSM2BasicAbort65KBPromiseJsunit.test.js'
 import SecurityHuksSM2BasicFinish63KBPromiseJsunit from './SignVerify/SecurityHuksSM2BasicFinish63KBPromiseJsunit.test.js'
 import SecurityHuksSM2BasicFinish65KBPromiseJsunit from './SignVerify/SecurityHuksSM2BasicFinish65KBPromiseJsunit.test.js'
+import SecurityHuksRSASignExtendJsunit from './SignVerify/SecurityHuksRSASignExtendJsunit.test.js'
+
 export default function testsuite() {
 SecurityHuksDSABasicAbort63KBPromiseJsunit()
 SecurityHuksDSABasicAbort65KBPromiseJsunit()
@@ -48,4 +50,5 @@ SecurityHuksSM2BasicAbort63KBPromiseJsunit()
 SecurityHuksSM2BasicAbort65KBPromiseJsunit()
 SecurityHuksSM2BasicFinish63KBPromiseJsunit()
 SecurityHuksSM2BasicFinish65KBPromiseJsunit()
+SecurityHuksRSASignExtendJsunit()
 }

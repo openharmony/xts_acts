@@ -15,7 +15,7 @@
 
 import fetchFileResultPromise from './fetchFileResultPromise.test.ets'
 import fetchFileResultCallback from './fetchFileResultCallback.test.ets'
-export default function testsuite(abilityContext) {
-  fetchFileResultCallback(abilityContext)
-  fetchFileResultPromise(abilityContext)
+export default function testsuite() {
+  fetchFileResultCallback(globalThis.abilityContext)
+  fetchFileResultPromise(globalThis.abilityContext)
 }

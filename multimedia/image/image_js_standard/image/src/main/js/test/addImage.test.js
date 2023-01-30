@@ -69,10 +69,10 @@ export default function addImage() {
             let offset = 0;
             if (type == "sourceOpts") {
                 console.info(`${testNum} have sourceopts`);
-                incSouce = image.createIncrementalSource(new ArrayBuffer(1), opts);
+                incSouce = image.CreateIncrementalSource(new ArrayBuffer(1), opts);
             } else {
                 console.info(`${testNum} no sourceopts`);
-                incSouce = image.createIncrementalSource(new ArrayBuffer(1));
+                incSouce = image.CreateIncrementalSource(new ArrayBuffer(1));
             }
             let ret;
             let isFinished = false;
@@ -120,9 +120,9 @@ export default function addImage() {
             let bufferSize = 5000;
             let offset = 0;
             if (type == "sourceOpts") {
-                incSouce = image.createIncrementalSource(new ArrayBuffer(1), opts);
+                incSouce = image.CreateIncrementalSource(new ArrayBuffer(1), opts);
             } else {
-                incSouce = image.createIncrementalSource(new ArrayBuffer(1));
+                incSouce = image.CreateIncrementalSource(new ArrayBuffer(1));
             }
             let ret;
             let isFinished = false;

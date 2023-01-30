@@ -52,6 +52,7 @@ export default function longPressGestureJsunit() {
       let callback = (eventData) => {
         console.info("testLongPressGesture01 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual('onAction')
+        done();
       }
       let innerEvent = {
         eventId: 125,
@@ -75,6 +76,7 @@ export default function longPressGestureJsunit() {
       let callback = (eventData) => {
         console.info("testLongPressGesture02 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual('onActionEnd')
+        done();
       }
       let innerEvent = {
         eventId: 126,
@@ -89,7 +91,6 @@ export default function longPressGestureJsunit() {
       console.info("testLongPressGesture02 sendEventByKey result: " + JSON.stringify(sendEventByKey('flex', 11, "")));
       await Utils.sleep(1000);
       console.info('testLongPressGesture02 END');
-      done();
     });
   })
 }

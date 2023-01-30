@@ -24,6 +24,10 @@ describe('continuationManagerTest', function() {
 
     beforeAll(async function (done) {
         console.info('beforeAll');
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        await sleep(20000)
         done();
     })
 

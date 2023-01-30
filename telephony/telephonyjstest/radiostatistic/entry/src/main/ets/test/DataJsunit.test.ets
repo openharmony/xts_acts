@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index'
+import {describe, it, expect} from '@ohos/hypium';
 import data from '@ohos.telephony.data';
 
 
@@ -22,7 +22,7 @@ export function toString(data) {
   } else {
     return data;
   }
-}
+};
 
 export default function dataJsunit() {
   describe('dataTest', function () {
@@ -158,8 +158,6 @@ export default function dataJsunit() {
       console.log(`==========> ${caseName} Test end ==========>`);
       done();
     });
-
-
   });
 }
 

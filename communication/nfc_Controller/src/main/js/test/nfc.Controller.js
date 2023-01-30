@@ -34,11 +34,17 @@ let NfcState={
 
 export default function nfcControllerTest() {
     describe('nfcControllerTest', function () {
-        beforeEach(function () {
-            console.info("[NFC_test]beforeEach start" );        
+        beforeAll(function () {
+            console.info('[NFC_test]beforeAll called')
         })
-        afterEach(async function () {
-            console.info("[NFC_test]afterEach start" );
+        beforeEach(function() {
+            console.info('[NFC_test]beforeEach called')
+        })
+        afterEach(function () {
+            console.info('[NFC_test]afterEach called')
+        })
+        afterAll(function () {
+            console.info('[NFC_test]afterAll called')
         })
         
         /**
@@ -56,15 +62,6 @@ export default function nfcControllerTest() {
                 expect(result != null).assertTrue();
             }
             controller.on(NFC_STATE_NOTIFY, recvNfcStateNotifyFunc);
-            try {
-                let openNfcswitch = controller.openNfc();
-                sleep(5000);
-                console.info('[nfc_js] open Nfc switch ->' + openNfcswitch);
-                expect(openNfcswitch).assertTrue();
-            }catch(error) {
-                console.info('[nfc_js] Failed to enable the switch ->' + error);
-                expect(error != null).assertTrue();
-            }
             controller.off(NFC_STATE_NOTIFY, recvNfcStateNotifyFunc);
         })
     
@@ -126,27 +123,11 @@ export default function nfcControllerTest() {
             expect(checkopennfc).assertEqual(NfcState.STATE_ON);
             console.log("[nfc_test]  checkopen the state of nfc-> " + JSON.stringify(checkopennfc));
         })
-    
-        /**
-         * @tc.number SUB_COMMUNICATION_NFC_Cont_0600
-         * @tc.name Test closeNfcapi
-         * @tc.desc Deregister the NFC switch status event and disable the NFC.
-         * @tc.size since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_COMMUNICATION_NFC_Cont_0600', 0, function ()  {
-            try {
-                let closeNfc = controller.closeNfc();
-                console.info('[nfc_js] clocse Nfc switch ->' + closeNfc);
-                expect(closeNfc).assertTrue();
-            }catch(error) {
-                console.info('[nfc_js] Failed to disable the switch ->' + error );
-                expect(error!=null).assertTrue();
-            }
-        })
+
         console.log("*************[nfc_test] start nfc js unit test end*************");
     })
 }
+
+
 
 

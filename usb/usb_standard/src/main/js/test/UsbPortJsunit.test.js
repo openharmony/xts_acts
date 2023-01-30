@@ -37,9 +37,9 @@ describe('UsbPortJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0410
-   * @tc.name      : getPorts
-   * @tc.desc      : 获取USB端口描述信息列表
+   * @tc.number: SUB_USB_JS_0410
+   * @tc.name: getPorts
+   * @tc.desc: Positive test: Get USB port description information list
    */
   it('SUB_USB_JS_0410', 0, function () {
     console.info('usb SUB_USB_JS_0410 begin');
@@ -51,13 +51,12 @@ describe('UsbPortJsFunctionsTest', function () {
     }
     expect(usbPortList.length > 0).assertTrue();
     console.info('usb SUB_USB_JS_0410 :  PASS');
-    expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_JS_0220
-   * @tc.name      : getSupportedModes
-   * @tc.desc      : 获取指定的端口支持的模式列表的组合掩码
+   * @tc.number: SUB_USB_JS_0220
+   * @tc.name: getSupportedModes
+   * @tc.desc: Positive test: Get the combination mask of the mode list supported by the specified port
    */
   it('SUB_USB_JS_0220', 0, function () {
     console.info('usb SUB_USB_JS_0220 begin');
@@ -75,7 +74,6 @@ describe('UsbPortJsFunctionsTest', function () {
     }
 
     console.info('usb SUB_USB_JS_0220 :  PASS');
-    expect(true).assertTrue();
   })
 
 })

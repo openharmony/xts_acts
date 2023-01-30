@@ -24,7 +24,7 @@ const SELF_BUNDLENAME = "com.example.actsbmsetsunpermissiontest";
 const SELF_ABILITYNAME = "com.example.actsbmsetsunpermissiontest.MainAbility";
 const BUNDLE_NAME_OTHER = "com.example.myapplication1";
 const ABILITIY_NAME_OTHER = "com.example.myapplication1.MainAbility";
-const BUNDLE_NAME1 = "ohos.acts.bundle.stage";
+const BUNDLE_NAME1 = "com.acts.bundle.stage";
 const ABILITY_NAME1 = "ExtensionAbility1";
 let userId = 0;
 
@@ -239,10 +239,10 @@ export default function actsBmsJsUnPermissionTest() {
             expect(info.label).assertEqual("$string:entry_MainAbility");
             expect(info.labelId > 0).assertTrue();
             expect(info.systemApp).assertEqual(false);
-            expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
+            expect(info.entryDir).assertEqual("");
             expect(info.supportedModes).assertEqual(0);
             expect(info.process).assertEqual("com.example.actsbmsetsunpermissiontest");
-            expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
+            expect(info.moduleSourceDirs.length).assertEqual(0);
             expect(info.enabled).assertEqual(true);
             expect(info.uid).assertLarger(0);
             expect(info.entityType).assertEqual("unspecified");

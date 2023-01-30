@@ -13,6 +13,10 @@
  * limitations under the License.
  */
 
-require('./AudioCapturer.test.js')
+ import audioCapturer from './AudioCapturer.test.js'
+ 
+ export default function testsuite() {
+    audioCapturer()
+ }
 
 

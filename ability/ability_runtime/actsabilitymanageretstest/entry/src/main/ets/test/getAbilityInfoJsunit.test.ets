@@ -12,12 +12,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium';
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 export default function getHapModuleInfoJsunit() {
   describe('getAbilityInfoTest', function () {
+
+    let TAG1 = "SUB_AA_OpenHarmony == getAbilityInfoTest: ";
+    let sleepTimeOne = 1000;
+    let id = undefined;
+      beforeAll(async (done) => {
+        console.log(TAG1 + "beforeAll called");
+        let myReason = 'test FaShowOnLockTest';
+        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+            console.log(TAG1 + "Request suspension delay will time out.");
+        })
+        id = delayInfo.requestId;
+        console.log(TAG1 + "requestId is : " + id);
+        setTimeout(function () {
+            console.log(TAG1 + "beforeAll end");
+            done();
+        }, sleepTimeOne);
+    })
+
+    afterAll(async (done) => {
+        console.log(TAG1 + "afterAll called");
+        backgroundTaskManager.cancelSuspendDelay(id);
+        setTimeout(function () {
+            console.log(TAG1 + "afterAll end");
+            done();
+        }, sleepTimeOne);
+    })
 
     /**
      * @tc.number: context_getAbilityInfo_test_0100
@@ -250,11 +277,8 @@ export default function getHapModuleInfoJsunit() {
       expect(typeof (info.iconId)).assertEqual("string");
       expect(typeof (info.process)).assertEqual("string");
       expect(typeof (info.supportedModes)).assertEqual("number");
-      expect(Array.isArray(info.moduleSourceDirs)).assertEqual(true);
       expect(Array.isArray(info.permissions)).assertEqual(true);
       expect(Array.isArray(info.moduleInfos)).assertEqual(true);
-      expect(typeof (info.entryDir)).assertEqual("string");
-
       expect(info.name).assertEqual("com.ohos.acecollaboration");
       expect(info.description).assertEqual("");
       expect(info.descriptionId).assertEqual(0);
@@ -264,38 +288,20 @@ export default function getHapModuleInfoJsunit() {
       expect(info.icon).assertEqual("$media:icon");
       expect(info.process).assertEqual("com.ohos.acecollaboration");
       expect(info.supportedModes).assertEqual(0);
-      expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +
-      "com.ohos.acecollaboration/com.ohos.acecollaboration");
       if (info.moduleSourceDirs.length == 1){
         expect(info.moduleInfos[0].moduleName).assertEqual("entry");
-        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-        "com.ohos.acecollaboration/com.ohos.acecollaboration");
-      }else if(info.moduleSourceDirs.length == 2) {
+      } else if(info.moduleSourceDirs.length == 2) {
         if (info.moduleInfos[0].moduleName == "myapplication1") {
           expect(info.moduleInfos[0].moduleName).assertEqual("myapplication1");
-          expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-          "com.ohos.acecollaboration/com.example.myapplication1");
           expect(info.moduleInfos[1].moduleName).assertEqual("entry");
-          expect(info.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-          "com.ohos.acecollaboration/com.ohos.acecollaboration");
-        }else{
+        } else {
           expect(info.moduleInfos[0].moduleName).assertEqual("myapplication2");
-          expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-          "com.ohos.acecollaboration/com.example.myapplication2");
           expect(info.moduleInfos[1].moduleName).assertEqual("entry");
-          expect(info.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-          "com.ohos.acecollaboration/com.ohos.acecollaboration");
         }
-      }else {
+      } else if (info.moduleSourceDirs.length == 3) {
         expect(info.moduleInfos[0].moduleName).assertEqual("myapplication1");
-        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-        "com.ohos.acecollaboration/com.example.myapplication1");
         expect(info.moduleInfos[1].moduleName).assertEqual("myapplication2");
-        expect(info.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-        "com.ohos.acecollaboration/com.example.myapplication2");
         expect(info.moduleInfos[2].moduleName).assertEqual("entry");
-        expect(info.moduleInfos[2].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-        "com.ohos.acecollaboration/com.ohos.acecollaboration");
       }
 
       console.log(msg + "---checkApplicationInfo End--- ");

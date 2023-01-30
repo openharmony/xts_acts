@@ -101,13 +101,6 @@ struct Index {
     console.info(tag + ' startAbility fAStartAbilityPromise END');
   }
 
-  async aboutToAppear() {
-    var permissions = ["ohos.permission.DISTRIBUTED_DATASYNC"];
-    globalThis.abilityContext.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
-      console.info("start requestPermissionsFromUser!!!!")
-    })
-  }
-
   async terminateSelfWithResult() {
     console.info('fAStartAbilityForResultPromise terminateSelfWithResult START');
     await globalThis.abilityContext.terminateSelfWithResult(

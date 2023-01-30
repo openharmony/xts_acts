@@ -75,12 +75,7 @@ describe('SingleKvStorePromiseTest', function () {
 
     beforeAll(async function (done) {
         console.info('beforeAll config:'+ JSON.stringify(config));
-        await factory.createKVManager(config).then((manager) => {
-            kvManager = manager;
-            console.info('beforeAll createKVManager success');
-        }).catch((err) => {
-            console.error('beforeAll createKVManager err ' + `, error code is ${err.code}, message is ${err.message}`);
-        });
+        kvManager = factory.createKVManager(config)
         console.info('beforeAll end');
         done();
     })
@@ -336,12 +331,13 @@ describe('SingleKvStorePromiseTest', function () {
     it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300');
         try {
-            var intValue = Number.MAX_VALUE;
+            let intValue = Number.MAX_VALUE;
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 intValue ' + intValue);
             await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 put success');
                 expect(data == undefined).assertTrue();
                 await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 get success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 get success, data ' + data);
                     expect(intValue == data).assertTrue();
                 }).catch((err) => {
                     console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0300 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
@@ -367,12 +363,13 @@ describe('SingleKvStorePromiseTest', function () {
     it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400');
         try {
-            var intValue = Number.MIN_VALUE;
+            let intValue = Number.MIN_VALUE;
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 intValue ' + intValue);
             await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 put success');
                 expect(data == undefined).assertTrue();
                 await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 get success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 get success, data ' + data);
                     expect(intValue == data).assertTrue();
                 }).catch((err) => {
                     console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
@@ -384,6 +381,102 @@ describe('SingleKvStorePromiseTest', function () {
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0400 put e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+ 
+    /**
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500
+     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 005
+     * @tc.type: FUNC
+     * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 005
+     */
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500');
+        try {
+            let intValue = Number.NaN;
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 intValue ' + intValue);
+            await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 put success');
+                expect(data == undefined).assertTrue();
+                await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 get success, data ' + data);
+                expect(Number.isNaN(data)).assertTrue();
+                }).catch((err) => {
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
+                });
+            }).catch((err) => {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 put fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect(null).assertFail();
+            });
+        } catch (e) {
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0500 put e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(null).assertFail();
+        }
+        done();
+    })
+        /**
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600
+     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 006
+     * @tc.type: FUNC
+     * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 006
+     */
+         it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600', 0, async function (done) {
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600');
+            try {
+                let intValue = Number.NEGATIVE_INFINITY;
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 intValue ' + intValue);
+                await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 put success');
+                    expect(data == undefined).assertTrue();
+                    await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
+                        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 get success, data ' + data);
+                        expect(intValue == data).assertTrue();
+                    }).catch((err) => {
+                        console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                        expect(null).assertFail();
+                    });
+                }).catch((err) => {
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 put fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
+                });
+            } catch (e) {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0600 put e ' + `, error code is ${e.code}, message is ${e.message}`);
+                expect(null).assertFail();
+            }
+            done();
+        })
+
+    /**
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700
+     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 007
+     * @tc.type: FUNC
+     * @tc.name Test Js Api SingleKvStore.Put(Int) testcase 007
+     */
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700');
+        try {
+            let intValue = Number.POSITIVE_INFINITY;
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 intValue ' + intValue);
+            await kvStore.put(KEY_TEST_INT_ELEMENT, intValue).then(async (data) => {
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 put success');
+                expect(data == undefined).assertTrue();
+                await kvStore.get(KEY_TEST_INT_ELEMENT).then((data) => {
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 get success, data ' + data);
+                    expect(intValue == data).assertTrue();
+                }).catch((err) => {
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 get fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
+                });
+            }).catch((err) => {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 put fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect(null).assertFail();
+            });
+        } catch (e) {
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTINT_PROMISE_0700 put e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
@@ -776,17 +869,16 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100', 0, async function (done) {
         console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            await kvStore.delete(predicates).then((data) => {
+            await kvStore.delete("KEY_TEST_STRING_ELEMENTS").then((data) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100 delete success');
-                    expect(null).assertFail();
+                    expect(data == undefined).assertTrue();
                 }).catch((err) => {
-                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100 delete fail ' + `, error code is ${err.code}, message is ${err.message}`);
-                    expect(err != undefined).assertTrue();
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100 delete fail err ' + err);
+                    expect(null).assertFail();
                 });
         }catch(e) {
             console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0100 e' + `, error code is ${e.code}, message is ${e.message}`);
-            expect(e.code == 401).assertTrue();
+            expect(null).assertFail();
         }
         done();
     })
@@ -800,13 +892,10 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0200', 0, async function (done) {
         console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0200');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            let arr = ["name"];
-            predicates.inKeys(arr);
             await kvStore.put("name", "Bob").then(async (data) => {
                 console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0200 put success');
                 expect(data == undefined).assertTrue();
-                await kvStore.delete(predicates).then((data) => {
+                await kvStore.delete("name").then((data) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0200 delete success');
                     expect(data == undefined).assertTrue();
                 }).catch((err) => {
@@ -833,22 +922,23 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300', 0, async function (done) {
         console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            let arr = [null];
-            predicates.inKeys(arr);
-            await kvStore.put("name", "Bob").then(async (data) => {
+
+            await kvStore.put("number", "123").then(async (data) => {
                 console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 put success');
+                expect(data == undefined).assertTrue();
+                await kvStore.delete("number").then((data) => {
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 delete success');
+                    expect(data == undefined).assertTrue();
+                }).catch((err) => {
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 delete fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
+                });
             }).catch((err) => {
                 console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 put fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
-            await kvStore.delete(predicates, function (err,data) {
-                console.log('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 delete success');
-                expect(err != undefined).assertTrue();
-                done();
-            });
-        }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 e' + `, error code is ${e.code}, message is ${e.message}`);
+        } catch (e) {
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEPREDICATES_PROMISE_0300 put e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
@@ -863,7 +953,7 @@ describe('SingleKvStorePromiseTest', function () {
     it('SUB_DDM_DKV_SINGLEKVSTORE_ONCHANGE_PROMISE_0100', 0, async function (done) {
         try {
             kvStore.on('dataChange', 0, function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_ONCHANGE_PROMISE_0100 ' + JSON.stringify(data));
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_ONCHANGE_PROMISE_0100 dataChange'+ JSON.stringify(data));
                 expect(data != null).assertTrue();
             });
             await kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT).then((data) => {
@@ -889,7 +979,7 @@ describe('SingleKvStorePromiseTest', function () {
     it('SUB_DDM_DKV_SINGLEKVSTORE_ONCHANGE_PROMISE_0200', 0, async function (done) {
         try {
             kvStore.on('dataChange', 1, function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_ONCHANGE_PROMISE_0200 on ' + JSON.stringify(data));
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_ONCHANGE_PROMISE_0200 dataChange' + JSON.stringify(data));
                 expect(data != null).assertTrue();
             });
             await kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT).then((data) => {
@@ -915,7 +1005,7 @@ describe('SingleKvStorePromiseTest', function () {
     it('SUB_DDM_DKV_SINGLEKVSTORE_ONCHANGE_PROMISE_0300', 0, async function (done) {
         try {
             kvStore.on('dataChange', 2, function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_ONCHANGE_PROMISE_0300 ' + JSON.stringify(data));
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_ONCHANGE_PROMISE_0300 dataChange' + JSON.stringify(data));
                 expect(data != null).assertTrue();
             });
             await kvStore.put(KEY_TEST_FLOAT_ELEMENT, VALUE_TEST_FLOAT_ELEMENT).then((data) => {
@@ -957,6 +1047,7 @@ describe('SingleKvStorePromiseTest', function () {
                 kvStore.sync(syncDeviceIds, mode, 10);
             } catch (e) {
                 console.error('SUB_DDM_DKV_SINGLEKVSTORE_ONSYNCCOMPLETE_PROMISE_0100 sync no peer device :e:' + `, error code is ${e.code}, message is ${e.message}`);
+                expect(null).assertFail();
             }
         }catch(e) {
             console.error('SUB_DDM_DKV_SINGLEKVSTORE_ONSYNCCOMPLETE_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
@@ -990,6 +1081,7 @@ describe('SingleKvStorePromiseTest', function () {
                 kvStore.sync(syncDeviceIds, mode, 10);
             } catch (e) {
                 console.error('SUB_DDM_DKV_SINGLEKVSTORE_ONSYNCCOMPLETE_PROMISE_0200 sync no peer device :e:' + `, error code is ${e.code}, message is ${e.message}`);
+                expect(null).assertFail();
             }
         }catch(e) {
             console.error('SUB_DDM_DKV_SINGLEKVSTORE_ONSYNCCOMPLETE_PROMISE_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);
@@ -1023,6 +1115,7 @@ describe('SingleKvStorePromiseTest', function () {
                 kvStore.sync(syncDeviceIds, mode, 10);
             } catch (e) {
                 console.error('SUB_DDM_DKV_SINGLEKVSTORE_ONSYNCCOMPLETE_PROMISE_0300 sync no peer device :e:' + `, error code is ${e.code}, message is ${e.message}`);
+                expect(null).assertFail();
             }
         }catch(e) {
             console.error('SUB_DDM_DKV_SINGLEKVSTORE_ONSYNCCOMPLETE_PROMISE_0300 e ' + `, error code is ${e.code}, message is ${e.message}`);
@@ -1041,7 +1134,7 @@ describe('SingleKvStorePromiseTest', function () {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0100');
         try {
             var func = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0100 ' + JSON.stringify(data));
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0100 dataChange' + JSON.stringify(data));
             };
             kvStore.on('dataChange', 0, func);
             kvStore.off('dataChange', func);
@@ -1063,10 +1156,10 @@ describe('SingleKvStorePromiseTest', function () {
         let ret = false;
         try {
             var func = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0200 ' + JSON.stringify(data));
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0200 dataChange' + JSON.stringify(data));
             };
             var func1 = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0200 ' + JSON.stringify(data));
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0200 dataChange1' + JSON.stringify(data));
             };
             kvStore.on('dataChange', 0, func);
             kvStore.on('dataChange', 0, func1);
@@ -1088,10 +1181,10 @@ describe('SingleKvStorePromiseTest', function () {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0300');
         try {
             var func = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0300 0' + data)
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0300 dataChange' + data)
             };
             var func1 = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0300 0' + data)
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0300 dataChange1' + data)
             };
             kvStore.on('dataChange', 0, func);
             kvStore.on('dataChange', 0, func1);
@@ -1114,7 +1207,7 @@ describe('SingleKvStorePromiseTest', function () {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0400');
         try {
             var func = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0400 ' + JSON.stringify(data));
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFCHANGE_PROMISE_0400 dataChange' + JSON.stringify(data));
             };
             kvStore.on('dataChange', 0, func);
             kvStore.off('dataChange');
@@ -1135,7 +1228,7 @@ describe('SingleKvStorePromiseTest', function () {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0100');
         try {
             var func = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0100 0' + data)
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0100 syncComplete' + data)
             };
             kvStore.on('syncComplete', func);
             kvStore.off('syncComplete', func);
@@ -1156,10 +1249,10 @@ describe('SingleKvStorePromiseTest', function () {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0200');
         try {
             var func = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0200 0' + data)
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0200 syncComplete' + data)
             };
             var func1 = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0200 0' + data)
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0200 syncComplete1' + data)
             };
             kvStore.on('syncComplete', func);
             kvStore.on('syncComplete', func1);
@@ -1181,10 +1274,10 @@ describe('SingleKvStorePromiseTest', function () {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0300');
         try {
             var func = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0300 0' + data)
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0300 syncComplete' + data)
             };
             var func1 = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0300 0' + data)
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0300 syncComplete1' + data)
             };
             kvStore.on('syncComplete', func);
             kvStore.on('syncComplete', func1);
@@ -1207,7 +1300,7 @@ describe('SingleKvStorePromiseTest', function () {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0400');
         try {
             var func = function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0400 0' + data)
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_OFFSYNCCOMPLETE_PROMISE_0400 syncComplete' + data)
             };
             kvStore.on('syncComplete', func);
             kvStore.off('syncComplete');
@@ -1233,7 +1326,7 @@ describe('SingleKvStorePromiseTest', function () {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 setSyncRange success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETESTRING_PROMISE_0300 delete fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100  fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
@@ -1258,7 +1351,7 @@ describe('SingleKvStorePromiseTest', function () {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200 setSyncRange success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200 delete fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200 fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
@@ -1283,7 +1376,7 @@ describe('SingleKvStorePromiseTest', function () {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300 setSyncRange success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300 delete fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300 fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
@@ -1294,47 +1387,47 @@ describe('SingleKvStorePromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 001
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100');
         try {
             let entries = putBatchString(10, 'batch_test_string_key');
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 entries: ' + JSON.stringify(entries));
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100 entries: ' + JSON.stringify(entries));
             await kvStore.putBatch(entries).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 putBatch success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100 putBatch success');
                 expect(err == undefined).assertTrue();
                 await kvStore.getEntries('batch_test_string_key').then((entrys) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 getEntries success');
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 ' + JSON.stringify(entries));
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100 getEntries success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100 ' + JSON.stringify(entries));
                     expect(entrys.length == 10).assertTrue();
                     expect(entrys[0].value.value == 'batch_test_string_value').assertTrue();
                 }).catch((err) => {
-                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
                     expect(null).assertFail();
                 });
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0200
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 002
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0200', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0200');
         try {
             let entries = [];
             for (var i = 0; i < 10; i++) {
@@ -1348,37 +1441,37 @@ describe('SingleKvStorePromiseTest', function () {
                 }
                 entries.push(entry);
             }
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200 entries: ' + JSON.stringify(entries));
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0200 entries: ' + JSON.stringify(entries));
             await kvStore.putBatch(entries).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200 putBatch success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0200 putBatch success');
                 expect(err == undefined).assertTrue();
                 await kvStore.getEntries('batch_test_number_key').then((entrys) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200 getEntries success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0200 getEntries success');
                     expect(entrys.length == 10).assertTrue();
                     expect(entrys[0].value.value == 222).assertTrue();
                 }).catch((err) => {
-                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0200 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
                     expect(null).assertFail();
                 });
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0200 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0300
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 003
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0300', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0300');
         try {
             let entries = [];
             for (var i = 0; i < 10; i++) {
@@ -1392,37 +1485,37 @@ describe('SingleKvStorePromiseTest', function () {
                 }
                 entries.push(entry);
             }
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300 entries: ' + JSON.stringify(entries));
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0300 entries: ' + JSON.stringify(entries));
             await kvStore.putBatch(entries).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300 putBatch success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0300 putBatch success');
                 expect(err == undefined).assertTrue();
                 await kvStore.getEntries('batch_test_number_key').then((entrys) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300 getEntries success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0300 getEntries success');
                     expect(entrys.length == 10).assertTrue();
                     expect(entrys[0].value.value == 2.0).assertTrue();
                 }).catch((err) => {
-                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0300 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
                     expect(null).assertFail();
                 });
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0300 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0300 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0300 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0400
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0400
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 004
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0400', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0400');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0400', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0400');
         try {
             let entries = [];
             for (var i = 0; i < 10; i++) {
@@ -1436,37 +1529,37 @@ describe('SingleKvStorePromiseTest', function () {
                 }
                 entries.push(entry);
             }
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0400 entries: ' + JSON.stringify(entries));
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0400 entries: ' + JSON.stringify(entries));
             await kvStore.putBatch(entries).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0400 putBatch success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0400 putBatch success');
                 expect(err == undefined).assertTrue();
                 await kvStore.getEntries('batch_test_number_key').then((entrys) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0400 getEntries success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0400 getEntries success');
                     expect(entrys.length == 10).assertTrue();
                     expect(entrys[0].value.value == 2.00).assertTrue();
                 }).catch((err) => {
-                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0400 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0400 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
                     expect(null).assertFail();
                 });
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0400 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0400 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0500
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0500
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 005
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 005
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0500', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0500');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0500', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0500');
         try {
             var bo = false;
             let entries = [];
@@ -1481,37 +1574,37 @@ describe('SingleKvStorePromiseTest', function () {
                 }
                 entries.push(entry);
             }
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0500 entries: ' + JSON.stringify(entries));
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0500 entries: ' + JSON.stringify(entries));
             await kvStore.putBatch(entries).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0500 putBatch success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0500 putBatch success');
                 expect(err == undefined).assertTrue();
                 await kvStore.getEntries('batch_test_bool_key').then((entrys) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0500 getEntries success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0500 getEntries success');
                     expect(entrys.length == 10).assertTrue();
                     expect(entrys[0].value.value == bo).assertTrue();
                 }).catch((err) => {
-                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0500 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0500 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
                     expect(null).assertFail();
                 });
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0500 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0500 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0500 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0500 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0600
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0600
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 006
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStore.PutBatch() testcase 006
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0600', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0600');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0600', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0600');
         try {
             var arr = new Uint8Array([21,31]);
             let entries = [];
@@ -1526,24 +1619,24 @@ describe('SingleKvStorePromiseTest', function () {
                 }
                 entries.push(entry);
             }
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0600 entries: ' + JSON.stringify(entries));
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0600 entries: ' + JSON.stringify(entries));
             await kvStore.putBatch(entries).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0600 putBatch success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0600 putBatch success');
                 expect(err == undefined).assertTrue();
                 await kvStore.getEntries('batch_test_bool_key').then((entrys) => {
-                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0600 getEntries success');
+                    console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0600 getEntries success');
                     expect(entrys.length == 10).assertTrue();
                     expect(entrys[0].value.value.toString() == arr.toString()).assertTrue();
                 }).catch((err) => {
-                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0600 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                    console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0600 getEntries fail ' + `, error code is ${err.code}, message is ${err.message}`);
                     expect(null).assertFail();
                 });
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0600 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0600 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_SETSYNCRANGE_PROMISE_0600 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCH_PROMISE_0600 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
@@ -1558,24 +1651,29 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100');
         try {
-            let values = [];
-            let arr1 = new Uint8Array([4,5,6,7]);
-            let arr2 = new Uint8Array([4,5,6,7,8]);
-            let vb1 = {key : "name_1", value : arr1};
-            let vb2 = {key : "name_2", value : arr2};
-            values.push(vb1);
-            values.push(vb2);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'batch_test_number_key';
+                var entry = {
+                    key : key + i,
+                    value : {
+                        type : factory.ValueType.DOUBLE,
+                        value : 2.00
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("batch_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 entrys.length: ' + entrys.length);
-                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 entrys[0]: ' + JSON.stringify(entrys[1]));
-                    expect(entrys.length == 2).assertTrue();
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 entrys[0]: ' + JSON.stringify(entrys[0]));
+                    expect(entrys.length == 10).assertTrue();
                     done();
                 });
             });
@@ -1595,22 +1693,29 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200');
         try {
-            let values = [];
-            let vb1 = {key : "name_1", value : "arr1"};
-            let vb2 = {key : "name_2", value : "arr2"};
-            values.push(vb1);
-            values.push(vb2);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'key_test_int';
+                var entry = {
+                    key: key + i,
+                    value: {
+                        type: factory.ValueType.INTEGER,
+                        value: '123'
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0100 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("key_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 entrys.length: ' + entrys.length);
-                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 entrys[0]: ' + JSON.stringify(entrys[1]));
-                    expect(entrys.length == 2).assertTrue();
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 entrys[0]: ' + JSON.stringify(entrys[0]));
+                    expect(entrys.length == 10).assertTrue();
                     done();
                 }).catch((err) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0200 delete fail ' + err);
@@ -1636,24 +1741,29 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300');
         try {
-            let values = [];
-            let vb1 = {key : "name_1", value : 123};
-            let vb2 = {key : "name_2", value : 321.0};
-            let vb3 = {key : "name_3", value : 321.00};
-            values.push(vb1);
-            values.push(vb2);
-            values.push(vb3);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'key_test_boolean';
+                var entry = {
+                    key: key + i,
+                    value: {
+                        type: factory.ValueType.BOOLEAN,
+                        value: 'true'
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("key_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 entrys.length: ' + entrys.length);
-                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 entrys[0]: ' + JSON.stringify(entrys[2]));
-                    expect(entrys.length == 3).assertTrue();
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0300 entrys[0]: ' + JSON.stringify(entrys[0]));
+                    expect(entrys.length == 10).assertTrue();
                     done();
                 });
             });
@@ -1673,22 +1783,29 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400');
         try {
-            let values = [];
-            let vb1 = {key : "name_1", value : true};
-            let vb2 = {key : "name_2", value : false};
-            values.push(vb1);
-            values.push(vb2);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'key_test_float';
+                var entry = {
+                    key: key + i,
+                    value: {
+                        type: factory.ValueType.FLOAT,
+                        value: '321.12'
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("key_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 entrys.length: ' + entrys.length);
-                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 entrys[0]: ' + JSON.stringify(entrys[1]));
-                    expect(entrys.length == 2).assertTrue();
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0400 entrys[0]: ' + JSON.stringify(entrys[0]));
+                    expect(entrys.length == 10).assertTrue();
                     done();
                 });
             });
@@ -1708,23 +1825,32 @@ describe('SingleKvStorePromiseTest', function () {
      it('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500');
         try {
-            let values = [];
-            let vb1 = {key : "name_1", value : null};
-            let vb2 = {key : "name_2", value : null};
-            values.push(vb1);
-            values.push(vb2);
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 values: ' + JSON.stringify(values));
-            await kvStore.putBatch(values).then(async (err) => {
+            let entries = [];
+            for (var i = 0; i < 10; i++) {
+                var key = 'key_test_string';
+                var entry = {
+                    key: key + i,
+                    value: {
+                        type: factory.ValueType.STRING,
+                        value: 'value-string-001'
+                    }
+                }
+                entries.push(entry);
+            }
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entries: ' + JSON.stringify(entries));
+            await kvStore.putBatch(entries).then(async (err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 putBatch success');
                 expect(err == undefined).assertTrue();
                 var query = new factory.Query();
-                query.prefixKey("name_");
+                query.prefixKey("key_test_");
                 await kvStore.getEntries(query).then((entrys) => {
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 getEntries success');
                     console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys.length: ' + entrys.length);
-                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys[0]: ' + JSON.stringify(entrys[1]));
-                    expect(entrys.length == 2).assertTrue();
-                    expect(entrys[0].value == null).assertTrue();
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys[1]: ' + JSON.stringify(entrys[1]));
+                    expect(entrys.length == 10).assertTrue();
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys[0]: ' + JSON.stringify(entrys[0]));
+                    console.log('SUB_DDM_DKV_SINGLEKVSTORE_PUTBATCHVALUE_PROMISE_0500 entrys[0]: ' + JSON.stringify(entrys[0].value));
+                    expect(entrys[0].value.value == 'value-string-001').assertTrue();
                     done();
                 });
             });
@@ -1792,6 +1918,7 @@ describe('SingleKvStorePromiseTest', function () {
             let keys = ['batch_test_string_key1', 'batch_test_string_key2'];
             await kvStore.deleteBatch(keys).then((err) => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_DELETEBATCHVALUE_PROMISE_0200 deleteBatch success');
+                expect(err == undefined).assertTrue();
             }).catch((err) => {
                 console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEBATCHVALUE_PROMISE_0200 deleteBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
@@ -1831,6 +1958,7 @@ describe('SingleKvStorePromiseTest', function () {
                 let keys = ['batch_test_string_key1', 'batch_test_string_keya'];
                 await kvStore.deleteBatch(keys).then((err) => {
                     console.info('SUB_DDM_DKV_SINGLEKVSTORE_DELETEBATCHVALUE_PROMISE_0300 deleteBatch success');
+                    expect(err == undefined).assertTrue();
                 }).catch((err) => {
                     console.error('SUB_DDM_DKV_SINGLEKVSTORE_DELETEBATCHVALUE_PROMISE_0300 deleteBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                     expect(null).assertFail();
@@ -1857,7 +1985,7 @@ describe('SingleKvStorePromiseTest', function () {
         try {
             var count = 0;
             kvStore.on('dataChange', factory.SubscribeType.SUBSCRIBE_TYPE_ALL, function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100 ' + JSON.stringify(data));
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100 dataChange ' + JSON.stringify(data));
                 count++;
             });
             await kvStore.startTransaction().then(async (err) => {
@@ -1911,7 +2039,7 @@ describe('SingleKvStorePromiseTest', function () {
         try {
             var count = 0;
             kvStore.on('dataChange', 0, function (data) {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0200 ' + JSON.stringify(data));
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0200 dataChange ' + JSON.stringify(data));
                 count++;
             });
             await kvStore.startTransaction().then(async (err) => {
@@ -2023,59 +2151,59 @@ describe('SingleKvStorePromiseTest', function () {
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreCommit testcase 001
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100');
         try {
             await kvStore.commit(1).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100 commit success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100 commit success');
                 expect(null).assertFail();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100 commit fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100 commit fail ' + `, error code is ${err.code}, message is ${err.message}`);
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0200
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0200
      * @tc.desc Test Js Api SingleKvStoreCommit testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreCommit testcase 002
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0200', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0200');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0200', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0200');
         try {
             await kvStore.commit('test_string').then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0200 commit success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0200 commit success');
                 expect(null).assertFail();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0200 commit fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0200 commit fail ' + `, error code is ${err.code}, message is ${err.message}`);
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0300
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0300
      * @tc.desc Test Js Api SingleKvStoreCommit testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreCommit testcase 003
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0300', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0300');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0300', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0300');
         try {
             await kvStore.commit(2.000).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0300 commit success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0300 commit success');
                 expect(null).assertFail();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0300 commit fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0300 commit fail ' + `, error code is ${err.code}, message is ${err.message}`);
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_STARTTRANSACTION_PROMISE_0300 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_COMMIT_PROMISE_0300 e ' + `, error code is ${e.code}, message is ${e.message}`);
         }
         done();
     })
@@ -2420,47 +2548,45 @@ describe('SingleKvStorePromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0100
      * @tc.desc Test Js Api SingleKvStoreGetSecurityLevel testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreGetSecurityLevel testcase 001
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0100', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0100');
         try {
             await kvStore.getSecurityLevel().then((data) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 getSecurityLevel success');
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 getSecurityLevel success: ' + data);
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 getSecurityLevel success: ' + factory.SecurityLevel.S2);
+                console.info(`SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0100 getSecurityLevel success, result is ${data}, SecurityLevel is ${factory.SecurityLevel.S2}`);
                 expect(data == factory.SecurityLevel.S2).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 getSecurityLevel fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0100 getSecurityLevel fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0200
      * @tc.desc Test Js Api SingleKvStoreGetSecurityLevel testcase 002
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreGetSecurityLevel testcase 002
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0200', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0200');
         try {
             await kvStore.getSecurityLevel(1).then((data) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800 getSecurityLevel success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0200 getSecurityLevel success');
                 expect(null).assertFail();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800 getSecurityLevel fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0200 getSecurityLevel fail ' + `, error code is ${err.code}, message is ${err.message}`);
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);
         }
         done();
     })
@@ -2508,13 +2634,13 @@ describe('SingleKvStorePromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700
-     * @tc.desc Test Js Api SingleKvStoreGetResultSet testcase 007
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100
+     * @tc.desc Test Js Api SingleKvStoreGetResultSet testcase 001
      * @tc.type: FUNC
-     * @tc.name Test Js Api SingleKvStoreGetResultSet testcase 007
+     * @tc.name Test Js Api SingleKvStoreGetResultSet testcase 001
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100');
         try {
             let resultSet;
             let entries = [];
@@ -2530,119 +2656,130 @@ describe('SingleKvStorePromiseTest', function () {
                 entries.push(entry);
             }
             await kvStore.putBatch(entries).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 putBatch success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 putBatch success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             await kvStore.getResultSet('batch_test_string_key').then((result) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 getResultSet success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 getResultSet success');
                 resultSet = result;
                 expect(resultSet.getCount() == 10).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             await kvStore.closeResultSet(resultSet).then((err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 closeResultSet success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 closeResultSet success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0700 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800
-     * @tc.desc Test Js Api SingleKvStoreGetResultSet testcase 008
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200
+     * @tc.desc Test Js Api SingleKvStoreGetResultSet testcase 002
      * @tc.type: FUNC
-     * @tc.name Test Js Api SingleKvStoreGetResultSet testcase 008
+     * @tc.name Test Js Api SingleKvStoreGetResultSet testcase 002
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200');
         try {
             let resultSet;
             await kvStore.getResultSet('batch_test_string_key').then((result) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800 getResultSet success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200 getResultSet success');
                 resultSet = result;
                 expect(resultSet.getCount() == 0).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             await kvStore.closeResultSet(resultSet).then((err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800 closeResultSet success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200 closeResultSet success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0800 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0300
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0300
      * @tc.desc Test Js Api SingleKvStoreGetResultSet testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreGetResultSet testcase 003
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0300', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0300');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0300', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0300');
         try {
             let resultSet;
             await kvStore.getResultSet().then((result) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0300 getResultSet success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0300 getResultSet success');
                 expect(null).assertFail();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0300 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0300 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0300 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0300 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(e.code == 401).assertTrue();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0400
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0400
      * @tc.desc Test Js Api SingleKvStoreGetResultSet testcase 004
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreGetResultSet testcase 004
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0400', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0400');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0400', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0400');
         try {
+            let resultSet;
             await kvStore.getResultSet('test_key_string', 123).then((result) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0400 getResultSet success');
-                expect(true).assertTrue();
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0400 getResultSet success');
+                resultSet = result;
+                expect(resultSet.getCount() == 0).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0400 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0400 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect(null).assertFail();
+            });
+            await kvStore.closeResultSet(resultSet).then((err) => {
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0400 closeResultSet success');
+                expect(err == undefined).assertTrue();
+            }).catch((err) => {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0400 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
+
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500
      * @tc.desc Test Js Api SingleKvStoreGetResultSet testcase 005
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreGetResultSet testcase 005
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500');
         try {
             let resultSet;
             let entries = [];
@@ -2658,44 +2795,44 @@ describe('SingleKvStorePromiseTest', function () {
                 entries.push(entry);
             }
             await kvStore.putBatch(entries).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500 putBatch success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500 putBatch success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             var query = new factory.Query();
             query.prefixKey("batch_test");
             await kvStore.getResultSet(query).then((result) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500 getResultSet success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500 getResultSet success');
                 resultSet = result;
                 expect(resultSet.getCount() == 10).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             await kvStore.closeResultSet(resultSet).then((err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500 closeResultSet success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500 closeResultSet success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0500 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0500 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600
      * @tc.desc Test Js Api SingleKvStoreGetResultSet testcase 006
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreGetResultSet testcase 006
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600', 0, async function (done) {
-        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600', 0, async function (done) {
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600');
         try {
             let resultSet;
             let entries = [];
@@ -2711,44 +2848,44 @@ describe('SingleKvStorePromiseTest', function () {
                 entries.push(entry);
             }
             await kvStore.putBatch(entries).then(async (err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600 putBatch success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600 putBatch success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             var query = new factory.Query();
             query.prefixKey("batch_test");
             await kvStore.getResultSet(query).then((result) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600 getResultSet success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600 getResultSet success');
                 resultSet = result;
                 expect(resultSet.getCount() == 10).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             await kvStore.closeResultSet(resultSet).then((err) => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600 closeResultSet success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600 closeResultSet success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETSECURITYLEVEL_PROMISE_0600 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0600 e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100
-     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 001
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700
+     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 007
      * @tc.type: FUNC
-     * @tc.name Test Js Api SingleKvStore.GetResultSet() testcase 001
+     * @tc.name Test Js Api SingleKvStore.GetResultSet() testcase 007
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100', 0, async function (done) {
-        console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100');
+    it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700', 0, async function (done) {
+        console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700');
         try {
             let entries = [];
             let resultSet;
@@ -2765,53 +2902,65 @@ describe('SingleKvStorePromiseTest', function () {
                 entries.push(entry);
             }
             await kvStore.putBatch(entries).then(async (err) => {
-                console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 putBatch success');
+                console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700 putBatch success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700 putBatch fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
-            let predicates = new dataShare.DataSharePredicates();
-            predicates.prefixKey("name_");
-            await kvStore.getResultSet(predicates).then((result) => {
-                console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 getResultSet success');
+            let query = new factory.Query();
+            query.prefixKey("name_");
+            await kvStore.getResultSet(query).then((result) => {
+                console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700 getResultSet success');
                 resultSet = result;
                 expect(resultSet.getCount() == 10).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
             await kvStore.closeResultSet(resultSet).then((err) => {
-                console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 closeResultSet success');
+                console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700 closeResultSet success');
                 expect(err == undefined).assertTrue();
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
         }catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0100 e' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0700 e' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200
-     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 002
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800
+     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 008
      * @tc.type: FUNC
-     * @tc.name Test Js Api SingleKvStore.GetResultSet() testcase 002
+     * @tc.name Test Js Api SingleKvStore.GetResultSet() testcase 008
      */
-     it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200', 0, async function (done) {
-        console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200');
+     it('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800', 0, async function (done) {
+        console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800');
         try {
-            let predicates = new dataShare.DataSharePredicates();
-            await kvStore.getResultSet(predicates, async function (err, result) {
-                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200 GetResultSet success: '+`, error code is ${err.code}, message is ${err.message}`);
-                expect(err == undefined).assertTrue();
-                done();
+            let resultSet;
+            let query = new factory.Query();
+            await kvStore.getResultSet(query).then((result) => {
+                console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800 getResultSet success');
+                resultSet = result;
+                expect(resultSet.getCount() == 0).assertTrue();
+            }).catch((err) => {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800 getResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect(null).assertFail();
             });
+            await kvStore.closeResultSet(resultSet).then((err) => {
+                console.log('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800 closeResultSet success');
+                expect(err == undefined).assertTrue();
+            }).catch((err) => {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect(null).assertFail();
+            });
+
         } catch(e) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0200 e' + `, error code is ${e.code}, message is ${e.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_GETRESULTSET_PROMISE_0800 e' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
         done();
@@ -2881,7 +3030,6 @@ describe('SingleKvStorePromiseTest', function () {
     it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0300', 0, async function (done) {
         console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0300');
         try {
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0300 success');
             let resultSet = null;
             await kvStore.closeResultSet().then(() => {
                 console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0300 closeResultSet success');
@@ -2903,16 +3051,21 @@ describe('SingleKvStorePromiseTest', function () {
      * @tc.name Test Js Api SingleKvStoreCloseResultSet testcase 004
      */
     it('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400', 0, async function (done) {
-        let errorInfo = undefined;
+        console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400');
         try {
-            kvStore.closeResultSet("")
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 success');
-        }catch(err) {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 e ' + `, error code is ${err.code}, message is ${err.message}`);
-            errorInfo = err
+            let resultSet = null;
+            await kvStore.closeResultSet("").then(() => {
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 closeResultSet success');
+                expect(null).assertFail();
+            }).catch((err) => {
+                console.error('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 closeResultSet fail ' + `, error code is ${err.code}, message is ${err.message}`);
+            });
+        }catch(e) {
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_CLOSERESULTSET_PROMISE_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
         }
-        expect(errorInfo.code).assertEqual("401");
         done();
+
     })
 
     /**
@@ -2976,9 +3129,11 @@ describe('SingleKvStorePromiseTest', function () {
         });
         await getInsertEntries.then(function(insertEntries){
             console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0100 getInsertEntries' + JSON.stringify(insertEntries));
-            expect(insertEntries).assertNotNull();
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0100 getInsertEntries key ' + insertEntries[0].key);
+            expect(insertEntries[0].key == "getInsertEntries").assertTrue();
         }).catch((error) => {
             console.error('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0100 can NOT getInsertEntries, fail:' + `, error code is ${error.code}, message is ${error.message}`);
+            expect(null).assertFail();
         });
         done();
     })
@@ -3003,36 +3158,40 @@ describe('SingleKvStorePromiseTest', function () {
         });
         await getUpdateEntries.then(function(updateEntries){
             console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0200 getUpdateEntries' + JSON.stringify(updateEntries));
-            expect(updateEntries).assertNotNull();
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0200 getUpdateEntries key ' + updateEntries[0].key);
+            expect(updateEntries[0].key == "getUpdateEntries").assertTrue();
         }).catch((error) => {
             console.error('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0200 can NOT getUpdateEntries, fail:' + `, error code is ${error.code}, message is ${error.message}`);
+            expect(null).assertFail();
         });
         done();
     })
 
     /**
-     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0100
+     * @tc.number SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0300
      * @tc.desc Test Js Api SingleKvStoreChangeNotification testcase 003
      * @tc.type: FUNC
      * @tc.name Test Js Api SingleKvStoreChangeNotification testcase 003
      */
-    it('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0100', 0, async function (done) {
+    it('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0300', 0, async function (done) {
         await kvStore.put('deleteEntries', 'byPut').then(() => {
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0100 put success');
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0300 put success');
         });
         var getdeleteEntries = new Promise((resolve, reject) => {
             kvStore.on('dataChange', 0, function(ChangeNotification){
                 resolve(ChangeNotification.deleteEntries);
             });
             kvStore.delete("deleteEntries").then(() => {
-                console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0100 delete success');
+                console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0300 delete success');
             });
         });
         await getdeleteEntries.then(function(deleteEntries){
-            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0100 deleteEntries' + JSON.stringify(getdeleteEntries));
-            expect(deleteEntries != null).assertNotNull();
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0300 deleteEntries' + JSON.stringify(deleteEntries));
+            console.info('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0200 getUpdateEntries key ' + deleteEntries[0].key);
+            expect(deleteEntries[0].key == "deleteEntries").assertTrue();
         }).catch((error) => {
-            console.error('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0100 can NOT getdeleteEntries, fail:' + `, error code is ${error.code}, message is ${error.message}`);
+            console.error('SUB_DDM_DKV_SINGLEKVSTORE_CHANGENOTIFICATION_PROMISE_0300 can NOT getdeleteEntries, fail:' + `, error code is ${error.code}, message is ${error.message}`);
+            expect(null).assertFail();
         });
         done();
     })

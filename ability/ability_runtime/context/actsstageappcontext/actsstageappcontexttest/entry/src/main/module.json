@@ -32,21 +32,6 @@
           }
         ]
       }
-    ],
-    "extensionAbilities": [
-      {
-        "name": "ServiceAbility",
-        "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
-        "label": "$string:form_ServiceAbility_label",
-        "description": "$string:form_ServiceAbility_desc",
-        "type": "service"
-      }
-    ],
-    "requestPermissions": [
-      {
-        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
-        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
-      }
     ]
   }
 }

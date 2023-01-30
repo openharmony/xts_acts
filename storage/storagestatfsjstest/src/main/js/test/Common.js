@@ -14,6 +14,7 @@
  */
 
 import statfs from '@ohos.statfs';
+import statvfs from '@ohos.file.statvfs'
 
 export const FILE_CONTENT = 'hello world';
 
@@ -32,5 +33,6 @@ export {
   afterAll,
   it,
   expect,
-  statfs
+  statfs,
+  statvfs
 };

@@ -156,6 +156,7 @@ async function encryptAndDecryptNormalProcess(
   cipherAlgoName,
   paramType
 ) {
+  var updateOutputdata;
   var globalCipherText;
   var globalKey;
   var globalText = "aaa this is test! this is test! bbb";
@@ -230,13 +231,11 @@ async function encryptAndDecryptNormalProcess(
         return updateCipher(cipherGenerator, decryptMode, globalCipherText);
       })
       .then((updateOutput) => {
+        updateOutputdata = uInt8ArrayToString(updateOutput.data);
         console.warn(
           "[Callback]decrypt update out: " +
             uInt8ArrayToString(updateOutput.data)
         );
-        expect(
-          uInt8ArrayToString(updateOutput.data) == globalText
-        ).assertTrue();
         return doFinalCipher(cipherGenerator, decryptMode, null);
       })
       .then((finalOutput) => {
@@ -245,8 +244,15 @@ async function encryptAndDecryptNormalProcess(
         } else {
           console.log(
             "[Callback]decrypt doFinal out hex: " +
-              uInt8ArrayToShowStr(finalOutput.data)
+              uInt8ArrayToString(finalOutput.data)
           );
+          console.log(
+            "[Callback]Decrypt plaintext data: " +
+            updateOutputdata + uInt8ArrayToString(finalOutput.data)
+          );
+          expect(
+          updateOutputdata + uInt8ArrayToString(finalOutput.data) == globalText
+          ).assertTrue();
         }
         resolve();
       })
@@ -262,6 +268,7 @@ async function convertKeyEncryptAndDecryptProcess(
   cipherAlgoName,
   paramType
 ) {
+  var updateOutputdata;
   var globalCipherText;
   var globalKey;
   var globalText = "aaa this is test! this is test! bbb";
@@ -341,13 +348,11 @@ async function convertKeyEncryptAndDecryptProcess(
         return updateCipher(cipherGenerator, decryptMode, globalCipherText);
       })
       .then((updateOutput) => {
+        updateOutputdata = uInt8ArrayToString(updateOutput.data);
         console.warn(
           "[Callback]decrypt update out: " +
             uInt8ArrayToString(updateOutput.data)
         );
-        expect(
-          uInt8ArrayToString(updateOutput.data) == globalText
-        ).assertTrue();
         return doFinalCipher(cipherGenerator, decryptMode, null);
       })
       .then((finalOutput) => {
@@ -355,9 +360,16 @@ async function convertKeyEncryptAndDecryptProcess(
           console.error("[Callback]decrypt doFinal out is null");
         } else {
           console.log(
-            "[Callback]decrypt doFinal out hex: " +
-              uInt8ArrayToShowStr(finalOutput.data)
+            "[promise]decrypt doFinal out hex: " +
+            uInt8ArrayToString(finalOutput.data)
           );
+          console.log(
+            "[promise]Decrypt plaintext data: " +
+            updateOutputdata + uInt8ArrayToString(finalOutput.data)
+          );
+          expect(
+            updateOutputdata + uInt8ArrayToString(finalOutput.data) == globalText
+          ).assertTrue();
         }
         resolve();
       })

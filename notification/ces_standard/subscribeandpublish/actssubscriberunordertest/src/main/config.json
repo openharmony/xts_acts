@@ -17,8 +17,8 @@
         "package": "com.example.actssubscribertestunorder",
         "name": ".entry",
         "deviceType": [
-      "tablet",
-      "default",
+            "tablet",
+            "default",
             "phone"
         ],
         "distro": {
@@ -26,20 +26,6 @@
             "moduleName": "entry",
             "moduleType": "entry"
         },
-        "reqPermissions": [
-            {
-                "name": "ohos.permission.USE_BLUETOOTH",
-                "reason": "use ohos.permission.USE_BLUETOOTH"
-            },
-            {
-                "name": "publish_event0800_publisherPermission",
-                "reason": "ceshi"
-            },
-            {
-                "name": "ohos.permission.COMMONEVENT_STICKY",
-                "reason": "ceshi"
-            }
-        ],
         "abilities": [
             {
                 "skills": [

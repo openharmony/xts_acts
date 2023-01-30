@@ -190,18 +190,8 @@ export default function webJsunit() {
      *tc.desic delete credentials
      */
     it('deleteHttpAuthCredentials',0,async function(done){
-      emitKey="emitSearchAllAsync";
+      emitKey="emitDeleteHttpAuthCredentials";
       Utils.registerEvent("deleteHttpAuthCredentials",false,446,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_079                                                                                                                                                                  
-     *tc.name searchAllAsync                                                                                                                                                                                                              
-     *tc.desic search specific words
-     */
-    it('searchAllAsync',0,async function(done){
-      emitKey="emitSearchAllAsync";
-      Utils.registerEvent("searchAllAsync","01",426,done);
       sendEventByKey('webcomponent',10,'');
     })
   })

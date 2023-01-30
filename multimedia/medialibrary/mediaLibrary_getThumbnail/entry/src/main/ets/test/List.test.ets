@@ -14,7 +14,7 @@
  */
 import getThumbnailPromise from './getThumbnailPromise.test.ets'
 import getThumbnailCallback from './getThumbnailCallback.test.ets'
-export default function testsuite(abilityContext) {
-  getThumbnailCallback(abilityContext)
-  getThumbnailPromise(abilityContext)
+export default function testsuite() {
+  getThumbnailCallback(globalThis.abilityContext)
+  getThumbnailPromise(globalThis.abilityContext)
 }

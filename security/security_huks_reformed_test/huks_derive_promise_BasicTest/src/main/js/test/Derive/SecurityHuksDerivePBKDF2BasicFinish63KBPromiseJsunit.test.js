@@ -54,7 +54,8 @@ describe('SecurityHuksDerivePBKDF2BasicFinish63KBPromiseJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, 'finish');
+    let deriveArray = new Array(HuksDerivePBKDF2.HuksKeyAlgPBKDF2,HuksDerivePBKDF2.HuksKeyDERIVEKEYSIZE);
+    await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
     done();
   });
 });

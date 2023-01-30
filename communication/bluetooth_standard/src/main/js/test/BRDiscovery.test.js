@@ -14,17 +14,26 @@
  */
 
 import bluetooth from '@ohos.bluetooth';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+import bundle from '@ohos.bundle'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-let ScanMode =
-    {
-        SCAN_MODE_NONE : 0,
-        SCAN_MODE_CONNECTABLE : 1,
-        SCAN_MODE_GENERAL_DISCOVERABLE : 2,
-        SCAN_MODE_LIMITED_DISCOVERABLE : 3,
-        SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE : 4,
-        SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE : 5,
-    }
+const PERMISSION_USER_SET = 1;
+const PERMISSION_USER_NAME1 = "ohos.permission.LOCATION";
+const PERMISSION_USER_NAME2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
+let tokenID = undefined;
+async function grantPerm() {
+    console.info("====grant Permission start====");
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.bluetooth.bluetoothhost', 0, 100);
+    tokenID = appInfo.accessTokenId;
+    console.info("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
+    let atManager = abilityAccessCtrl.createAtManager();
+    let result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME1, PERMISSION_USER_SET);
+    console.info("tokenId" + tokenID + " result:" + result);
+    let result1 = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME2, PERMISSION_USER_SET);
+    console.info("tokenId" + tokenID + " result1:" + result1);
+    console.info("====grant Permission end====");
+}
 export default function bluetoothhostTest3() {
 describe('bluetoothhostTest3', function() {
     function sleep(delay) {
@@ -57,8 +66,11 @@ describe('bluetoothhostTest3', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function () {
+
+    beforeAll(async function (done) {
         console.info('beforeAll called')
+        await grantPerm();
+        done()
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
@@ -109,11 +121,11 @@ describe('bluetoothhostTest3', function() {
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_Discovery_0300', 0, async function (done) {
-        let result1 = bluetooth.setBluetoothScanMode(ScanMode.SCAN_MODE_CONNECTABLE,10);
+        let result1 = bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_CONNECTABLE,10);
         expect(result1).assertTrue();
         let getScanMode = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] getScanMode = '+ JSON.stringify(getScanMode));
-        expect(true).assertEqual(getScanMode == ScanMode.SCAN_MODE_CONNECTABLE);
+        expect(true).assertEqual(getScanMode == bluetooth.ScanMode.SCAN_MODE_CONNECTABLE);
         let result = bluetooth.startBluetoothDiscovery();
         await sleep(2000);
         console.info('[bluetooth_js] startDiscovery1'+result);
@@ -125,4 +137,5 @@ describe('bluetoothhostTest3', function() {
     })
 })
 }
+
 

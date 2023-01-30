@@ -52,6 +52,7 @@ export default function aboutToDisappearJsunit() {
       let callback = (indexEvent) => {
         console.info("aboutToDisappearTest_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(false);
+        done();
       }
       let indexEvent = {
         eventId: 49,
@@ -65,7 +66,6 @@ export default function aboutToDisappearJsunit() {
       console.info("aboutToDisappearTest_0100 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
       await Utils.sleep(1000);
       console.info('aboutToDisappearTest_0100 END');
-      done();
     });
   })
 }

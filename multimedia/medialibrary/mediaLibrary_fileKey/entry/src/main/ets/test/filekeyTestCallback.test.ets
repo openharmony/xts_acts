@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import mediaLibrary from "@ohos.multimedia.mediaLibrary";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 
 import {
     sleep,
@@ -29,60 +29,79 @@ import {
 } from "../../../../../../common";
 
 export default function filekeyTestCallbackTest(abilityContext) {
-    describe('filekeyTestCallbackTest', function () {
+    describe("filekeyTestCallbackTest", function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
 
         beforeAll(async function () {
-            console.info('beforeAll case');
-            await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileKeyTest')
+            console.info("beforeAll case");
+            await getPermission(null, abilityContext);
+            await checkPresetsAssets(media, "ActsMediaLibraryFileKeyTest");
         });
         beforeEach(function () {
-            console.info('beforeEach case');
+            console.info("beforeEach case");
         });
         afterEach(async function () {
-            console.info('afterEach case');
-            await sleep()
+            console.info("afterEach case");
+            await sleep();
         });
         afterAll(function () {
-            console.info('afterAll case');
+            console.info("afterAll case");
         });
 
-        const { PARENT, MIME_TYPE, SIZE, DATE_ADDED, TITLE, ALBUM_NAME, DURATION,
-            WIDTH, HEIGHT, ORIENTATION, ALBUM_ID, ARTIST, AUDIOALBUM, DATE_MODIFIED,
-            DATE_TAKEN, RELATIVE_PATH, DISPLAY_NAME, MEDIA_TYPE
+        const {
+            PARENT,
+            MIME_TYPE,
+            SIZE,
+            DATE_ADDED,
+            TITLE,
+            ALBUM_NAME,
+            DURATION,
+            WIDTH,
+            HEIGHT,
+            ORIENTATION,
+            ALBUM_ID,
+            ARTIST,
+            AUDIOALBUM,
+            DATE_MODIFIED,
+            DATE_TAKEN,
+            RELATIVE_PATH,
+            DISPLAY_NAME,
+            MEDIA_TYPE,
         } = FILEKEY;
 
         async function getFileAssetsBy(done, testNum, type, fileKey) {
             try {
-                let assetOp = fetchOps(testNum, 'Pictures/ImageInfo/', IMAGE_TYPE);
-                if (type == 'audioAlbum' || type == 'artist' || type == 'duration') {
-                    assetOp = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
+                let assetOp = fetchOps(testNum, "Pictures/ImageInfo/", IMAGE_TYPE);
+                if (type == "audioAlbum" || type == "artist" || type == "duration") {
+                    assetOp = fetchOps(testNum, "Audios/Static/", AUDIO_TYPE);
                 }
-                console.info(`${testNum} assOp : ${JSON.stringify(assetOp)}`)
+                console.info(`${testNum} assOp : ${JSON.stringify(assetOp)}`);
                 let fetchFileResult = await media.getFileAssets(assetOp);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
                 if (!checkAssetCountPass) return;
                 const asset = await fetchFileResult.getFirstObject();
+                const assetType = asset[type];
                 let Op = {
-                    selections: fileKey + '= ?',
-                    selectionArgs: [asset[type] + ''],
+                    selections: fileKey + "= ?",
+                    selectionArgs: [assetType + ""],
                 };
+                fetchFileResult.close();
                 media.getFileAssets(Op, async (err, fetchFileResult) => {
                     if (err) {
-                        console.info(`${testNum}, err: ${err}`)
+                        console.info(`${testNum}, err: ${err}`);
                         expect(false).assertTrue();
                         done();
                         return;
                     }
                     const fetchCount = fetchFileResult.getCount();
                     const currentAsset = await fetchFileResult.getFirstObject();
-                    expect(currentAsset[type]).assertEqual(asset[type]);
+                    expect(currentAsset[type]).assertEqual(assetType);
                     expect(fetchCount > 0).assertTrue();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
-                console.info(`${testNum} error : ${error}`)
+                console.info(`${testNum} error : ${error}`);
                 expect(false).assertTrue();
                 done();
             }
@@ -97,9 +116,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.level     : Level 0
          */
 
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001'
-            await getFileAssetsBy(done, testNum, 'parent', PARENT);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001";
+            await getFileAssetsBy(done, testNum, "parent", PARENT);
         });
 
         /**
@@ -110,9 +129,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_002', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_002'
-            await getFileAssetsBy(done, testNum, 'mimeType', MIME_TYPE);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_002", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_002";
+            await getFileAssetsBy(done, testNum, "mimeType", MIME_TYPE);
         });
 
         /**
@@ -123,9 +142,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_003', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_003'
-            await getFileAssetsBy(done, testNum, 'size', SIZE);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_003", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_003";
+            await getFileAssetsBy(done, testNum, "size", SIZE);
         });
 
         /**
@@ -136,9 +155,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_004', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_004'
-            await getFileAssetsBy(done, testNum, 'dateAdded', DATE_ADDED);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_004", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_004";
+            await getFileAssetsBy(done, testNum, "dateAdded", DATE_ADDED);
         });
 
         /**
@@ -149,9 +168,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_005', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_005'
-            await getFileAssetsBy(done, testNum, 'dateModified', DATE_MODIFIED);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_005", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_005";
+            await getFileAssetsBy(done, testNum, "dateModified", DATE_MODIFIED);
         });
 
         /**
@@ -162,9 +181,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_006', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_006'
-            await getFileAssetsBy(done, testNum, 'dateTaken', DATE_TAKEN);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_006", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_006";
+            await getFileAssetsBy(done, testNum, "dateTaken", DATE_TAKEN);
         });
 
         /**
@@ -175,9 +194,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_007', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_007'
-            await getFileAssetsBy(done, testNum, 'title', TITLE,);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_007", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_007";
+            await getFileAssetsBy(done, testNum, "title", TITLE);
         });
 
         /**
@@ -188,9 +207,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_008', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_008'
-            await getFileAssetsBy(done, testNum, 'duration', DURATION);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_008", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_008";
+            await getFileAssetsBy(done, testNum, "duration", DURATION);
         });
 
         /**
@@ -201,9 +220,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_009', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_009'
-            await getFileAssetsBy(done, testNum, 'width', WIDTH);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_009", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_009";
+            await getFileAssetsBy(done, testNum, "width", WIDTH);
         });
 
         /**
@@ -214,9 +233,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_010', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_010'
-            await getFileAssetsBy(done, testNum, 'height', HEIGHT);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_010", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_010";
+            await getFileAssetsBy(done, testNum, "height", HEIGHT);
         });
 
         /**
@@ -227,9 +246,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_011', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_011'
-            await getFileAssetsBy(done, testNum, 'orientation', ORIENTATION);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_011", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_011";
+            await getFileAssetsBy(done, testNum, "orientation", ORIENTATION);
         });
 
         /**
@@ -240,9 +259,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_012', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_012'
-            await getFileAssetsBy(done, testNum, 'albumId', ALBUM_ID);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_012", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_012";
+            await getFileAssetsBy(done, testNum, "albumId", ALBUM_ID);
         });
 
         /**
@@ -253,9 +272,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_014', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_014'
-            await getFileAssetsBy(done, testNum, 'artist', ARTIST);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_014", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_014";
+            await getFileAssetsBy(done, testNum, "artist", ARTIST);
         });
 
         /**
@@ -266,22 +285,22 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_015', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_015'
-            await getFileAssetsBy(done, testNum, 'audioAlbum', AUDIOALBUM);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_015", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_015";
+            await getFileAssetsBy(done, testNum, "audioAlbum", AUDIOALBUM);
         });
 
         /**
-        * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_0016
-        * @tc.name      : getFileAssets
-        * @tc.desc      : filekey relative_path
-        * @tc.size      : MEDIUM
-        * @tc.type      : Function
-        * @tc.level     : Level 0
-        */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_016', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_016'
-            await getFileAssetsBy(done, testNum, 'relativePath', RELATIVE_PATH);
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_0016
+         * @tc.name      : getFileAssets
+         * @tc.desc      : filekey relative_path
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_016", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_016";
+            await getFileAssetsBy(done, testNum, "relativePath", RELATIVE_PATH);
         });
 
         /**
@@ -292,9 +311,9 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_017', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_017'
-            await getFileAssetsBy(done, testNum, 'displayName', DISPLAY_NAME);
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_017", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_017";
+            await getFileAssetsBy(done, testNum, "displayName", DISPLAY_NAME);
         });
 
         /**
@@ -305,15 +324,15 @@ export default function filekeyTestCallbackTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_018', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_018'
+        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_018", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_018";
             try {
-                let albumName = 'ImageInfo'
+                let albumName = "ImageInfo";
                 let currentFetchOp = {
-                    selections: RELATIVE_PATH + '= ? AND ' + ALBUM_NAME + '= ? AND ' + MEDIA_TYPE + '= ?',
-                    selectionArgs: ['Pictures/', albumName, IMAGE_TYPE.toString()],
-                }
-                console.info(`${testNum} currentFetchOp : ${JSON.stringify(currentFetchOp)}`)
+                    selections: RELATIVE_PATH + "= ? AND " + ALBUM_NAME + "= ? AND " + MEDIA_TYPE + "= ?",
+                    selectionArgs: ["Pictures/", albumName, IMAGE_TYPE.toString()],
+                };
+                console.info(`${testNum} currentFetchOp : ${JSON.stringify(currentFetchOp)}`);
                 const albumList = await media.getAlbums(currentFetchOp);
                 const album = albumList[0];
                 const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
@@ -321,12 +340,10 @@ export default function filekeyTestCallbackTest(abilityContext) {
                 expect(album.albumName).assertEqual(albumName);
                 done();
             } catch (error) {
-                console.info(`${testNum} error : ${error}`)
+                console.info(`${testNum} error : ${error}`);
                 expect(false).assertTrue();
                 done();
             }
         });
-
     });
 }
-

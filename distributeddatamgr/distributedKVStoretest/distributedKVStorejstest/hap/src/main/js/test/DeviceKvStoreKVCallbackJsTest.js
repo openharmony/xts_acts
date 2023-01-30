@@ -76,12 +76,7 @@ describe('deviceKvStoreCallbackTest', function () {
 
     beforeAll(async function (done) {
         console.info('beforeAll config:'+ JSON.stringify(config));
-        await factory.createKVManager(config).then((manager) => {
-            kvManager = manager;
-            console.info('beforeAll createKVManager success');
-        }).catch((err) => {
-            console.error('beforeAll createKVManager err ' + `, error code is ${err.code}, message is ${err.message}`);
-        });
+        kvManager = factory.createKVManager(config)
         await kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
             kvStore = store;
             console.info('beforeAll getKVStore for getDeviceId success');
@@ -2110,7 +2105,7 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.type: FUNC
      * @tc.name Test Js Api DeviceKvStore.GetResultSet() testcase 007
      */
-     it('SUB_DDM_DKV_DEVICESTORE_GETRESULTSET_0700', 0, async function (done) {
+    it('SUB_DDM_DKV_DEVICESTORE_GETRESULTSET_0700', 0, async function (done) {
         console.info('SUB_DDM_DKV_DEVICESTORE_GETRESULTSET_0700');
         try {
             let resultSet;
@@ -2129,9 +2124,9 @@ describe('deviceKvStoreCallbackTest', function () {
             await kvStore.putBatch(entries, async function (err, data) {
                 console.info('SUB_DDM_DKV_DEVICESTORE_GETRESULTSET_0700 putBatch success');
                 expect(err == undefined).assertTrue();
-                let predicates = new dataSharePredicates.DataSharePredicates();
-                predicates.inKeys("batch_test");
-                await kvStore.getResultSet(localDeviceId, predicates, async function (err, result) {
+                let query = new factory.Query();
+                query.prefixKey("batch_test");                
+                await kvStore.getResultSet(localDeviceId, query, async function (err, result) {
                     console.info('SUB_DDM_DKV_DEVICESTORE_GETRESULTSET_0700 getResultSet success');
                     resultSet = result;
                     expect(resultSet.getCount() == 10).assertTrue();

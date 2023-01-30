@@ -28,12 +28,11 @@ if (info != "false")
 {
     nfcATagSessionTest();
     nfcControllerTest();
+    ConnectedTagTest();
     nfcIsoDepTagTest();
     nfcMifareClassicTag();
     nfcMifareUltralightTag();
-    nfcTagABFVTest();
     nfcNDEFTagTest();
-    ConnectedTagTest();
+    nfcTagABFVTest();
 }
 }
-

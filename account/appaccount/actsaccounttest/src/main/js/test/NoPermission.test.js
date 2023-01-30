@@ -186,7 +186,7 @@ export default function ActsAccountNoPermission() {
         /*
         * @tc.number    : ActsAccountNoPermission_0700
         * @tc.name      : getAllAccounts callback
-        * @tc.desc      : This application gets its own application information after adding an account without permission
+        * @tc.desc      : This application gets its own application information after adding an account  permission
         */
         it('ActsAccountNoPermission_0700', 0, async function (done) {
             console.debug("====>ActsAccountNoPermission_0700 start====");
@@ -213,7 +213,7 @@ export default function ActsAccountNoPermission() {
         /*
         * @tc.number    : ActsAccountNoPermission_0800
         * @tc.name      : getAllAccounts promise
-        * @tc.desc      : This application gets its own application information after adding an account without permission
+        * @tc.desc      : This application gets its own application information after adding an account  permission
         */
         it('ActsAccountNoPermission_0800', 0, async function (done) {
             console.debug("====>ActsAccountNoPermission_0800 start====");
@@ -234,6 +234,65 @@ export default function ActsAccountNoPermission() {
                 expect(err.code).assertEqual(account.ResultCode.ERROR_PERMISSION_DENIED);
                 await appAccountManager.deleteAccount("getAll_promise_nopermission");      
                 console.debug("====>ActsAccountNoPermission_0800 end====");
+                done();
+            }          
+        });
+        
+        /*
+        * @tc.number    : ActsAccountNoPermission_0900
+        * @tc.name      : getAllAccounts callback
+        * @tc.desc      : This application gets its own application information after adding an account  permission
+        */
+        it('ActsAccountNoPermission_0900', 0, async function (done) {
+            console.debug("====>ActsAccountNoPermission_0900 start====");
+            var appAccountManager = account.createAppAccountManager();
+            console.debug("====>creat finish====");
+            var selfBundle = "com.example.actsaccounttest";
+            appAccountManager.addAccount("ActsAccountNoPermission_0900", (err)=>{
+                console.debug("====>add account 0900 err:" + JSON.stringify(err));
+                expect(err).assertEqual(null);
+                appAccountManager.getAllAccounts("com.example.accountauthenticator", (err, data)=>{                    
+                    console.debug("====>getAllAccounts 0900 err:" + JSON.stringify(err));
+                    expect(err.code).assertEqual(account.ResultCode.ERROR_PERMISSION_DENIED);
+                    appAccountManager.deleteAccount("ActsAccountNoPermission_0900", (err)=>{
+                        console.debug("====>delete account 0900 err:" + JSON.stringify(err));
+                        expect(err).assertEqual(null);
+                        console.debug("====>ActsAccountNoPermission_0900 end====");
+                        done();
+                    });
+                })
+            });
+        });
+
+        /*
+        * @tc.number    : ActsAccountNoPermission_1000
+        * @tc.name      : getAllAccounts promise
+        * @tc.desc      : This application gets its own application information after adding an account  permission
+        */
+        it('ActsAccountNoPermission_1000', 0, async function (done) {
+            console.debug("====>ActsAccountNoPermission_1000 start====");
+            var appAccountManager = account.createAppAccountManager();
+            console.debug("====>creat finish====");
+            console.debug("====>add account 1000 start====");
+            try{
+                await appAccountManager.addAccount("ActsAccountNoPermission_1000");
+            }catch(err){
+                console.error("====>addAccount 1000 err:" + JSON.stringify(err));
+                expect().assertFalse();
+                done();
+            }            
+            console.debug("====>getAllAccounts 1000 start====");
+            try{
+                var data = await appAccountManager.getAllAccounts("com.example.accountauthenticator");
+                console.debug("====>getAll_promise_nopermission data:" + JSON.stringify(data))
+                expect().assertFalse();
+                done();
+            }
+            catch(err){
+                console.error("====>getAllAccounts 1000 err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(account.ResultCode.ERROR_PERMISSION_DENIED);
+                await appAccountManager.deleteAccount("ActsAccountNoPermission_1000");      
+                console.debug("====>ActsAccountNoPermission_1000 end====");
                 done();
             }          
         });

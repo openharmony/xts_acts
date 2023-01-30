@@ -20,6 +20,7 @@ let bundleName = 'ohso.act.aafwk';
 let mainAbilityName = 'ohos.acts.aafwk.jsap';
 const errCode = 1;
 const errCode1 = 202;
+
 export default function startAbilityTest() {
 describe('StartAbilityTest', function () {
   

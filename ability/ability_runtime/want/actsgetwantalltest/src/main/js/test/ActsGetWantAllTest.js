@@ -12,18 +12,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureAbility'
-import wantConstant from '@ohos.ability.wantConstant'
+import featureAbility from '@ohos.ability.featureAbility';
+import wantConstant from '@ohos.ability.wantConstant';
+import rpc from '@ohos.rpc';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+class WantRemoteObject extends rpc.RemoteObject {
+    constructor(descriptor) {
+        super(descriptor);
+    }
+}
+
 export default function ActsGetWantTest() {
 describe('ActsGetWantTest', function () {
     var TIMEOUT_NUMBER = 3000;
     afterEach(async (done) => {
         setTimeout(function () {
-          done();
+            done();
         }, 1500);
-      })
+    });
+
+    it('ACTS_RemoteObject_0100', 0, async function(done) {
+        let wantRemoteOjbect = new WantRemoteObject("wantRemoteObject");
+
+        featureAbility.startAbilityForResult({
+            want: {
+                // deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                // action: "action1",
+                parameters: {
+                    hasRemoteObject: true,
+                    wantRemoteOjbect: {
+                        type: "RemoteObject",
+                        value: wantRemoteOjbect
+                    }
+                }
+            }
+        }).then((data) => {
+            setTimeout(() => {
+                console.info('====> ACTS_RemoteObject_0100 start startAbilityForResult=====>' + JSON.stringify(data));
+                expect(data.want.parameters.hasOwnProperty("wantRemoteOjbect")).assertEqual(false);
+                done();
+            }, TIMEOUT_NUMBER);
+        }).catch((error) => {
+            console.log('ACTS_RemoteObject_0100 error: ' + JSON.stringify(error));
+            expect.assertFail();
+            done();
+        })
+    })
 
     //  @tc.number: ACTS_GetWant_0100
     //  @tc.name: getWant : get want in current ability

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import appManager from '@ohos.application.appManager'
 
 export default class MainAbility extends Ability {
@@ -44,11 +44,6 @@ export default class MainAbility extends Ability {
         // Ability has brought to foreground
         console.log("MainAbility onForeground")
         console.log("in killhap onForeground")
-        setTimeout(()=>{
-            appManager.killProcessesByBundleName('com.example.killprocessthirdhap').then((data)=>{
-              console.info('====>ACTS_KillProcess_0100 killProcessesByBundleName=====>' + JSON.stringify(data))
-            })
-        },2000)
     }
 
     onBackground() {

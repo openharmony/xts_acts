@@ -17,9 +17,9 @@ import fileAssetCallback2 from './fileAssetCallback2.test.ets'
 import fileAssetPromise2 from './fileAssetPromise2.test.ets'
 import fileAssetTestCallback from './fileAssetTestCallback.test.ets'
 import fileAssetTestPromise from './fileAssetTestPromise.test.ets'
-export default function testsuite(abilityContext) {
-  fileAssetCallback2(abilityContext)
-  fileAssetPromise2(abilityContext)
-  fileAssetTestCallback(abilityContext)
-  fileAssetTestPromise(abilityContext)
+export default function testsuite() {
+  fileAssetCallback2(globalThis.abilityContext)
+  fileAssetPromise2(globalThis.abilityContext)
+  fileAssetTestCallback(globalThis.abilityContext)
+  fileAssetTestPromise(globalThis.abilityContext)
 }

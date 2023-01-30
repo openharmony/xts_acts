@@ -25,64 +25,50 @@ import { HuksKeyAlgX25519, HuksAgreeECDH } from '../../../../../../utils/param/a
 let IV = '0000000000000000';
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
-let inputEccPair = new Uint8Array([
-    0x02, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00,
-    0x20, 0x00, 0x00, 0x00, 0xa5, 0xb8, 0xa3, 0x78, 0x1d, 0x6d, 0x76, 0xe0, 0xb3, 0xf5, 0x6f, 0x43,
-    0x9d, 0xcf, 0x60, 0xf6, 0x0b, 0x3f, 0x64, 0x45, 0xa8, 0x3f, 0x1a, 0x96, 0xf1, 0xa1, 0xa4, 0x5d,
-    0x3e, 0x2c, 0x3f, 0x13, 0xd7, 0x81, 0xf7, 0x2a, 0xb5, 0x8d, 0x19, 0x3d, 0x9b, 0x96, 0xc7, 0x6a,
-    0x10, 0xf0, 0xaa, 0xbc, 0x91, 0x6f, 0x4d, 0xa7, 0x09, 0xb3, 0x57, 0x88, 0x19, 0x6f, 0x00, 0x4b,
-    0xad, 0xee, 0x34, 0x35, 0xfb, 0x8b, 0x9f, 0x12, 0xa0, 0x83, 0x19, 0xbe, 0x6a, 0x6f, 0x63, 0x2a,
-    0x7c, 0x86, 0xba, 0xca, 0x64, 0x0b, 0x88, 0x96, 0xe2, 0xfa, 0x77, 0xbc, 0x71, 0xe3, 0x0f, 0x0f,
-    0x9e, 0x3c, 0xe5, 0xf9]);
-let inputECCKey = new Uint8Array([
-    0x5b, 0x00, 0x00, 0x00, 0x30, 0x59, 0x30, 0x13, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02,
-    0x01, 0x06, 0x08, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x03, 0x01, 0x07, 0x03, 0x42, 0x00, 0x04, 0xc0,
-    0xfe, 0x1c, 0x67, 0xde, 0x86, 0x0e, 0xfb, 0xaf, 0xb5, 0x85, 0x52, 0xb4, 0x0e, 0x1f, 0x6c, 0x6c,
-    0xaa, 0xc5, 0xd9, 0xd2, 0x4d, 0xb0, 0x8a, 0x72, 0x24, 0xa1, 0x99, 0xaf, 0xfc, 0x3e, 0x55, 0x5a,
-    0xac, 0x99, 0x3d, 0xe8, 0x34, 0x72, 0xb9, 0x47, 0x9c, 0xa6, 0xd8, 0xfb, 0x00, 0xa0, 0x1f, 0x9f,
-    0x7a, 0x41, 0xe5, 0x44, 0x3e, 0xb2, 0x76, 0x08, 0xa2, 0xbd, 0xe9, 0x41, 0xd5, 0x2b, 0x9e, 0x10,
-    0x00, 0x00, 0x00, 0xbf, 0xf9, 0x69, 0x41, 0xf5, 0x49, 0x85, 0x31, 0x35, 0x14, 0x69, 0x12, 0x57,
-    0x9c, 0xc8, 0xb7, 0x10, 0x00, 0x00, 0x00, 0x2d, 0xb7, 0xf1, 0x5a, 0x0f, 0xb8, 0x20, 0xc5, 0x90,
-    0xe5, 0xca, 0x45, 0x84, 0x5c, 0x08, 0x08, 0x10, 0x00, 0x00, 0x00, 0x43, 0x25, 0x1b, 0x2f, 0x5b,
-    0x86, 0xd8, 0x87, 0x04, 0x4d, 0x38, 0xc2, 0x65, 0xcc, 0x9e, 0xb7, 0x20, 0x00, 0x00, 0x00, 0xf4,
-    0xe8, 0x93, 0x28, 0x0c, 0xfa, 0x4e, 0x11, 0x6b, 0xe8, 0xbd, 0xa8, 0xe9, 0x3f, 0xa7, 0x8f, 0x2f,
-    0xe3, 0xb3, 0xbf, 0xaf, 0xce, 0xe5, 0x06, 0x2d, 0xe6, 0x45, 0x5d, 0x19, 0x26, 0x09, 0xe7, 0x10,
-    0x00, 0x00, 0x00, 0xf4, 0x1e, 0x7b, 0x01, 0x7a, 0x84, 0x36, 0xa4, 0xa8, 0x1c, 0x0d, 0x3d, 0xde,
-    0x57, 0x66, 0x73, 0x10, 0x00, 0x00, 0x00, 0xe3, 0xff, 0x29, 0x97, 0xad, 0xb3, 0x4a, 0x2c, 0x50,
-    0x08, 0xb5, 0x68, 0xe1, 0x90, 0x5a, 0xdc, 0x10, 0x00, 0x00, 0x00, 0x26, 0xae, 0xdc, 0x4e, 0xa5,
-    0x6e, 0xb1, 0x38, 0x14, 0x24, 0x47, 0x1c, 0x41, 0x89, 0x63, 0x11, 0x04, 0x00, 0x00, 0x00, 0x20,
-    0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x0b, 0xcb, 0xa9, 0xa8, 0x5f, 0x5a, 0x9d, 0xbf, 0xa1,
-    0xfc, 0x72, 0x74, 0x87, 0x79, 0xf2, 0xf4, 0x22, 0x0c, 0x8a, 0x4d, 0xd8, 0x7e, 0x10, 0xc8, 0x44,
-    0x17, 0x95, 0xab, 0x3b, 0xd2, 0x8f, 0x0a
-]);
+let AAD = "abababababababab";
+let NONCE = "hahahahahaha";
+let TAG_SIZE = 16;
+let importedAes192PlainKey = "The aes192 key to import";
+let callerAes256Kek = "The is kek to encrypt aes192 key";
 
-let inputX25519Pair = new Uint8Array([
-    0x65, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x9c, 0xf6, 0x7a, 0x8d, 0xce, 0xc2, 0x7f, 0xa7, 0xd9, 0xfd, 0xf1, 0xad,
-    0xac, 0xf0, 0xb3, 0x8c, 0xe8, 0x16, 0xa2, 0x65, 0xcc, 0x18, 0x55, 0x60, 0xcd, 0x2f, 0xf5, 0xe5,
-    0x72, 0xc9, 0x3c, 0x54, 0x20, 0xd5, 0xbb, 0x54, 0x6f, 0x1f, 0x00, 0x30, 0x4e, 0x33, 0x38, 0xb9,
-    0x8e, 0x6a, 0xdf, 0xad, 0x33, 0x6f, 0x51, 0x23, 0xff, 0x4d, 0x95, 0x26, 0xdc, 0xb0, 0x74, 0xb2,
-    0x5c, 0x7e, 0x85, 0x6c]);
-let inputX25519Key = new Uint8Array([
-    0x20, 0x00, 0x00, 0x00, 0xdc, 0xa3, 0xe3, 0xec, 0xa3, 0x99, 0x06, 0x59, 0xc8, 0x7f, 0xb8, 0x6a,
-    0x82, 0xe3, 0x35, 0xfb, 0xa8, 0x8e, 0x0e, 0x10, 0x71, 0x65, 0x22, 0x98, 0x8a, 0x75, 0x94, 0xeb,
-    0x01, 0x32, 0xa0, 0x41, 0x10, 0x00, 0x00, 0x00, 0xbf, 0xf9, 0x69, 0x41, 0xf5, 0x49, 0x85, 0x31,
-    0x35, 0x14, 0x69, 0x12, 0x57, 0x9c, 0xc8, 0xb7, 0x10, 0x00, 0x00, 0x00, 0x2d, 0xb7, 0xf1, 0x5a,
-    0x0f, 0xb8, 0x20, 0xc5, 0x90, 0xe5, 0xca, 0x45, 0x84, 0x5c, 0x08, 0x08, 0x10, 0x00, 0x00, 0x00,
-    0x4d, 0xcc, 0xa1, 0x39, 0x68, 0x38, 0xb7, 0x6b, 0xeb, 0xdc, 0x61, 0x6a, 0xe8, 0xe2, 0x47, 0x4b,
-    0x20, 0x00, 0x00, 0x00, 0xfa, 0x88, 0xdb, 0x7b, 0x01, 0x89, 0xce, 0x6b, 0x86, 0x09, 0x0a, 0x3d,
-    0x3d, 0xb0, 0x80, 0x2b, 0x35, 0x01, 0xdf, 0xa4, 0xb2, 0x3b, 0x58, 0xf3, 0xf2, 0x20, 0xcb, 0x42,
-    0x71, 0xf8, 0x91, 0x73, 0x10, 0x00, 0x00, 0x00, 0xf4, 0x1e, 0x7b, 0x01, 0x7a, 0x84, 0x36, 0xa4,
-    0xa8, 0x1c, 0x0d, 0x3d, 0xde, 0x57, 0x66, 0x73, 0x10, 0x00, 0x00, 0x00, 0xe3, 0xff, 0x29, 0x97,
-    0xad, 0xb3, 0x4a, 0x2c, 0x50, 0x08, 0xb5, 0x68, 0xe1, 0x90, 0x5a, 0xdc, 0x10, 0x00, 0x00, 0x00,
-    0xed, 0x0e, 0x12, 0x2d, 0x6b, 0x3d, 0xb3, 0x44, 0xdc, 0x9f, 0xc3, 0xb8, 0xb7, 0x25, 0xff, 0x99,
-    0x04, 0x00, 0x00, 0x00, 0x54, 0x00, 0x00, 0x00, 0x54, 0x00, 0x00, 0x00, 0x25, 0x78, 0xc2, 0xd2,
-    0x91, 0x75, 0x1c, 0x82, 0xb9, 0xc9, 0x2b, 0xa8, 0x9e, 0xf3, 0x65, 0x0a, 0x02, 0x8a, 0xaa, 0x96,
-    0x26, 0x81, 0x3c, 0x9b, 0xbe, 0x26, 0xfc, 0x7b, 0x7b, 0xca, 0x7d, 0xcb, 0x7e, 0x07, 0x0e, 0xdd,
-    0xa3, 0x9b, 0xc5, 0x52, 0xff, 0x8c, 0xe2, 0x4f, 0x8d, 0x64, 0x04, 0x48, 0x79, 0x80, 0x1e, 0x44,
-    0xc8, 0xf2, 0x49, 0x07, 0xfc, 0xaa, 0xd5, 0x7e, 0x4d, 0xf9, 0x72, 0x68, 0xda, 0x05, 0xb7, 0x1f,
-    0xf8, 0xca, 0x75, 0xb8, 0x55, 0x14, 0xe9, 0xa4, 0x4b, 0xb1, 0x85, 0x28, 0xae, 0xe2, 0xb6, 0x1b
-]);
+let wrappingKeyAliasAes192 = "test_wrappingKey_ecdh_aes192";
+let callerKeyAlias = "test_caller_key_ecdh_aes192";
+let callerKekAliasAes256 = "test_caller_kek_ecdh_aes256";
+let callerAgreeKeyAliasAes256 = "test_caller_agree_key_ecdh_aes256";
+let importedKeyAliasAes192 = "test_import_key_ecdh_aes192";
+
+let huksPubKey;
+let callerSelfPublicKey;
+let outSharedKey;
+let outPlainKeyEncData;
+let outKekEncData;
+let outKekEncTag;
+let outAgreeKeyEncTag;
+
+let mask = [0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000];
+function subUint8ArrayOf(arrayBuf, start, end) {
+    let arr = [];
+    for (let i = start; i < end && i < arrayBuf.length; ++i) {
+        arr.push(arrayBuf[i]);
+    }
+    return new Uint8Array(arr);
+}
+
+function assignLength(length, arrayBuf, startIndex) {
+    let index = startIndex;
+    for (let i = 0; i < 4; i++) {
+        arrayBuf[index++] = (length & mask[i]) >> (i * 8);
+    }
+    return 4;
+}
+
+function assignData(data, arrayBuf, startIndex) {
+    let index = startIndex;
+    for (let i = 0; i < data.length; i++) {
+        arrayBuf[index++] = data[i];
+    }
+    return data.length;
+}
 
 let aes128Key = new Uint8Array([
     0x20, 0x00, 0x00, 0x00, 0xdc, 0xa3, 0xe3, 0xec, 0xa3, 0x99, 0x06, 0x59, 0xc8, 0x7f, 0xb8, 0x6a
@@ -453,113 +439,287 @@ let dsa2048Key = new Uint8Array([
     0x62, 0x69, 0xce, 0xee, 0x53, 0x2a, 0x7c, 0xec, 0x46, 0x5c, 0x51, 0x33,
 ]);
 
-function makeImportECCOptions() {
-    let properties = new Array();
-    properties[0] = {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_ECC
-    };
-    properties[1] = {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
-    };
-    properties[2] = {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP
-    };
-    properties[3] = {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    };
-    properties[4] = {
-        tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
-        value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR,
-    };
-    let options = { properties: properties, inData: inputEccPair };
-    return options;
-};
+let genWrappingKeyParams = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_ECC
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PADDING,
+            value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+        }
+    )
+}
 
-function makeImportECCOptions2() {
-    let properties = new Array();
-    properties[0] = {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_AES
-    };
-    properties[1] = {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
-    };
-    properties[2] = {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-    };
-    properties[3] = {
-        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-        value: huks.HuksCipherMode.HUKS_MODE_CBC
-    };
-    properties[4] = {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_NONE
-    };
-    properties[5] = {
-        tag: huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
-        value: huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
-    };
-    let options = { properties: properties };
-    return options;
-};
+let genWrappingKeyParamsX25519 = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_X25519
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+        }
+    )
+}
 
-function makeImportX25519Options() {
-    let properties = new Array();
-    properties[0] = {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_X25519
-    };
-    properties[1] = {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
-    };
-    properties[2] = {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP
-    };
-    properties[3] = {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    };
-    properties[4] = {
-        tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
-        value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR,
-    };
-    let options = { properties: properties, inData: inputX25519Pair };
-    return options;
-};
+let genCallerEcdhParams = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_ECC
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+        }
+    )
+}
 
-function makeImportX25519Options2() {
-    let properties = new Array();
-    properties[0] = {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_ED25519
-    };
-    properties[1] = {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
-    };
-    properties[2] = {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-    };
-    properties[3] = {
-        tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
-        value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR,
-    };
-    properties[4] = {
-        tag: huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
-        value: huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING
-    };
-    let options = { properties: properties };
-    return options;
-};
+let genCallerX25519Params = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_X25519
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+        }
+    )
+}
+
+let importParamsCallerKek = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_AES
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PADDING,
+            value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+            value: huks.HuksCipherMode.HUKS_MODE_GCM
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_DIGEST,
+            value: huks.HuksKeyDigest.HUKS_DIGEST_NONE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_IV,
+            value: stringToUint8Array(IV)
+        }
+    ),
+    inData: stringToUint8Array(callerAes256Kek)
+}
+
+let importParamsAgreeKey = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_AES
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PADDING,
+            value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+            value: huks.HuksCipherMode.HUKS_MODE_GCM
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_DIGEST,
+            value: huks.HuksKeyDigest.HUKS_DIGEST_NONE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_IV,
+            value: stringToUint8Array(IV)
+        }
+    ),
+}
+
+let callerAgreeParams = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_ECDH
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+        }
+    )
+}
+
+let callerAgreeParamsX25519 = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_X25519
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+        }
+    )
+}
+
+let encryptKeyCommonParams = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_AES
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PADDING,
+            value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+            value: huks.HuksCipherMode.HUKS_MODE_GCM
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_NONCE,
+            value: stringToUint8Array(NONCE)
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_ASSOCIATED_DATA,
+            value: stringToUint8Array(AAD)
+        }
+    ),
+}
+
+let importWrappedAes192Params = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_AES
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+                huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_192
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PADDING,
+            value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+            value: huks.HuksCipherMode.HUKS_MODE_CBC
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_DIGEST,
+            value: huks.HuksKeyDigest.HUKS_DIGEST_NONE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
+            value: huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_IV,
+            value: stringToUint8Array(IV)
+        }
+    )
+}
+
+let importWrappedAes192ParamsX25519 = {
+    properties: new Array(
+        {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_AES
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+                huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_192
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_PADDING,
+            value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+            value: huks.HuksCipherMode.HUKS_MODE_CBC
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_DIGEST,
+            value: huks.HuksKeyDigest.HUKS_DIGEST_NONE
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
+            value: huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING
+        },
+        {
+            tag: huks.HuksTag.HUKS_TAG_IV,
+            value: stringToUint8Array(IV)
+        }
+    )
+}
 
 async function publicGenerateItemFunc(keyAlias, huksOptions) {
     console.info(`enter promise generateKeyItem`);
@@ -627,7 +787,7 @@ function importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions) {
     });
 }
 
-async function publicImportWrappedKey(keyAlias, wrappingKeyAlias, huksOptions) {
+async function publicImportWrappedKeyFunc(keyAlias, wrappingKeyAlias, huksOptions) {
     console.info(`enter callback importWrappedKeyItem`);
     try {
         await importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
@@ -644,16 +804,237 @@ async function publicImportWrappedKey(keyAlias, wrappingKeyAlias, huksOptions) {
     }
 }
 
-async function TestImportWrappedKeyECCFunc(alias, wrappingAlias, genOptions, importOptions) {
-    await publicImportKeyItemFunc(wrappingAlias, genOptions);
-    importOptions.inData = inputECCKey;
-    await publicImportWrappedKey(alias, wrappingAlias, importOptions);
+async function publicImportWrappedKeyPromise(keyAlias, wrappingKeyAlias, huksOptions) {
+    console.info(`enter callback importWrappedKeyItem`);
+    try {
+        await huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
+            .then((data) => {
+                console.info(`callback: importWrappedKeyItem success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+                console.error(`callback: importWrappedKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+                expect(null).assertFail();
+            });
+    } catch (error) {
+        console.error(`callback: importWrappedKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+        expect(null).assertFail();
+    }
 }
 
-async function TestImportWrappedKeyX25519Func(alias, wrappingAlias, genOptions, importOptions) {
-    await publicImportKeyItemFunc(wrappingAlias, genOptions);
-    importOptions.inData = inputX25519Key;
-    await publicImportWrappedKey(alias, wrappingAlias, importOptions);
+async function publicInitFunc(srcKeyAlias, HuksOptions) {
+    let handle;
+    console.info(`enter promise doInit`);
+    try {
+        await huks.initSession(srcKeyAlias, HuksOptions)
+            .then((data) => {
+                console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
+                handle = data.handle;
+            })
+            .catch(error => {
+                console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
+                expect(null).assertFail();
+            });
+    } catch (error) {
+        console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
+        expect(null).assertFail();
+    }
+    return handle;
+}
+
+async function publicUpdateSessionFunction(handle, HuksOptions) {
+    const maxUpdateSize = 64;
+    const inData = HuksOptions.inData;
+    const lastInDataPosition = inData.length - 1;
+    let inDataSegSize = maxUpdateSize;
+    let inDataSegPosition = 0;
+    let isFinished = false;
+    let outData = [];
+
+    while (inDataSegPosition <= lastInDataPosition) {
+        if (inDataSegPosition + maxUpdateSize > lastInDataPosition) {
+            isFinished = true;
+            inDataSegSize = lastInDataPosition - inDataSegPosition + 1;
+            console.error(`enter promise doUpdate`);
+            break;
+        }
+        HuksOptions.inData = new Uint8Array(
+            Array.from(inData).slice(inDataSegPosition, inDataSegPosition + inDataSegSize)
+        );
+        console.error(`enter promise doUpdate`);
+        try {
+            await huks.updateSession(handle, HuksOptions)
+                .then((data) => {
+                    console.error(`promise: doUpdate success, data = ${JSON.stringify(data)}`);
+                    outData = outData.concat(Array.from(data.outData));
+                })
+                .catch(error => {
+                    console.error(`promise: doUpdate failed, code: ${error.code}, msg: ${error.message}`);
+                    expect(null).assertFail();
+                });
+        } catch (error) {
+            console.error(`promise: doUpdate input arg invalid, code: ${error.code}, msg: ${error.message}`);
+            expect(null).assertFail();
+        }
+        if ((!isFinished) && (inDataSegPosition + maxUpdateSize > lastInDataPosition)) {
+            console.log(`update size invalid isFinished = ${isFinished}`);
+            console.log(`inDataSegPosition = ${inDataSegPosition}`);
+            console.log(`lastInDataPosition = ${lastInDataPosition}`);
+            expect(null).assertFail();
+            return;
+        }
+        inDataSegPosition += maxUpdateSize;
+    }
+    return outData;
+}
+
+async function publicFinishSession(handle, HuksOptions, inData) {
+    let outData = [];
+    console.info(`enter promise doFinish`);
+    try {
+        await huks.finishSession(handle, HuksOptions)
+            .then((data) => {
+                console.info(`promise: doFinish success, data = ${JSON.stringify(data)}`);
+                outData = inData.concat(Array.from(data.outData));
+            })
+            .catch(error => {
+                console.error(`promise: doFinish key failed, code: ${error.code}, msg: ${error.message}`);
+                expect(null).assertFail();
+            });
+    } catch (error) {
+        console.error(`promise: doFinish input arg invalid, code: ${error.code}, msg: ${error.message}`);
+        expect(null).assertFail();
+    }
+    return new Uint8Array(outData);
+}
+
+async function cipherFunction(keyAlias, HuksOptions) {
+    let handle = await publicInitFunc(keyAlias, HuksOptions);
+    let tmpData = await publicUpdateSessionFunction(handle, HuksOptions);
+    let outData = await publicFinishSession(handle, HuksOptions, tmpData);
+    return outData;
+}
+
+async function agreeFunction(keyAlias, HuksOptions, huksPublicKey) {
+    let handle = await publicInitFunc(keyAlias, HuksOptions);
+    let outSharedKey;
+    HuksOptions.inData = huksPublicKey;
+    console.error(`enter promise doUpdate`);
+    try {
+        await huks.updateSession(handle, HuksOptions)
+            .then((data) => {
+                console.error(`promise: doUpdate success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+                console.error(`promise: doUpdate failed, code: ${error.code}, msg: ${error.message}`);
+                expect(null).assertFail();
+            });
+    } catch (error) {
+        console.error(`promise: doUpdate input arg invalid, code: ${error.code}, msg: ${error.message}`);
+        expect(null).assertFail();
+    }
+    console.info(`enter promise doInit`);
+    try {
+        await huks.finishSession(handle, HuksOptions)
+            .then((data) => {
+                console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
+                outSharedKey = data.outData;
+            })
+            .catch(error => {
+                console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
+                expect(null).assertFail();
+            });
+    } catch (error) {
+        console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
+        expect(null).assertFail();
+    }
+    return outSharedKey;
+}
+
+async function ImportKekAndAgreeSharedSecret(callerKekAlias, importKekParams, callerKeyAlias, huksPublicKey, agreeParams) {
+    await publicImportKeyItemFunc(callerKekAlias, importKekParams);
+    outSharedKey = await agreeFunction(callerKeyAlias, agreeParams, huksPublicKey);
+
+    importParamsAgreeKey.inData = outSharedKey;
+    await publicImportKeyItemFunc(callerAgreeKeyAliasAes256, importParamsAgreeKey);
+}
+
+async function generateAndExportPublicKey(keyAlias, HuksOptions, caller) {
+    await publicGenerateItemFunc(keyAlias, HuksOptions);
+    try {
+        await huks.exportKeyItem(keyAlias, HuksOptions)
+            .then((data) => {
+                console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
+                if (caller) {
+                    callerSelfPublicKey = data.outData;
+                } else {
+                    huksPubKey = data.outData;
+                }
+            })
+            .catch(error => {
+                console.error(`promise: exportKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+                // @ts-ignore
+                expect(null).assertFail();
+            });
+    } catch (e) {
+        console.error(`promise: generate pubKey failed, code: ${e.code}, msg: ${e.message}`);
+        expect(null).assertFail();
+    }
+}
+
+async function EncryptImportedPlainKeyAndKek(keyAlias) {
+    encryptKeyCommonParams.inData = stringToUint8Array(keyAlias)
+    let plainKeyEncData = await cipherFunction(callerKekAliasAes256, encryptKeyCommonParams);
+    outKekEncTag = subUint8ArrayOf(plainKeyEncData, plainKeyEncData.length - TAG_SIZE, plainKeyEncData.length)
+    outPlainKeyEncData = subUint8ArrayOf(plainKeyEncData, 0, plainKeyEncData.length - TAG_SIZE)
+
+    encryptKeyCommonParams.inData = stringToUint8Array(callerAes256Kek)
+    let kekEncData = await cipherFunction(callerAgreeKeyAliasAes256, encryptKeyCommonParams)
+    outAgreeKeyEncTag = subUint8ArrayOf(kekEncData, kekEncData.length - TAG_SIZE, kekEncData.length)
+    outKekEncData = subUint8ArrayOf(kekEncData, 0, kekEncData.length - TAG_SIZE)
+}
+
+async function BuildWrappedDataAndImportWrappedKey(plainKey) {
+    let plainKeySizeBuff = new Uint8Array(4);
+    assignLength(plainKey.length, plainKeySizeBuff, 0);
+
+    let wrappedData = new Uint8Array(
+        4 + huksPubKey.length +
+        4 + AAD.length +
+        4 + NONCE.length +
+        4 + TAG_SIZE +
+        4 + outKekEncData.length +
+        4 + AAD.length +
+        4 + NONCE.length +
+        4 + TAG_SIZE +
+        4 + plainKeySizeBuff.length +
+        4 + outPlainKeyEncData.length
+    );
+    let index = 0;
+    let AADUint8Array = stringToUint8Array(AAD);
+    let NonceArray = stringToUint8Array(NONCE);
+
+    index += assignLength(callerSelfPublicKey.length, wrappedData, index);  // 4
+    index += assignData(callerSelfPublicKey, wrappedData, index); // 91
+    index += assignLength(AADUint8Array.length, wrappedData, index); // 4
+    index += assignData(AADUint8Array, wrappedData, index); // 16
+    index += assignLength(NonceArray.length, wrappedData, index); // 4
+    index += assignData(NonceArray, wrappedData, index); // 12
+    index += assignLength(outAgreeKeyEncTag.length, wrappedData, index); // 4
+    index += assignData(outAgreeKeyEncTag, wrappedData, index); // 16
+    index += assignLength(outKekEncData.length, wrappedData, index); // 4
+    index += assignData(outKekEncData, wrappedData, index); // 32
+    index += assignLength(AADUint8Array.length, wrappedData, index); // 4
+    index += assignData(AADUint8Array, wrappedData, index); // 16
+    index += assignLength(NonceArray.length, wrappedData, index); // 4
+    index += assignData(NonceArray, wrappedData, index); // 12
+    index += assignLength(outKekEncTag.length, wrappedData, index); // 4
+    index += assignData(outKekEncTag, wrappedData, index); // 16
+    index += assignLength(plainKeySizeBuff.length, wrappedData, index); // 4
+    index += assignData(plainKeySizeBuff, wrappedData, index); // 4
+    index += assignLength(outPlainKeyEncData.length, wrappedData, index); // 4
+    index += assignData(outPlainKeyEncData, wrappedData, index); // 24
+
+    return wrappedData;
 }
 
 export function SecurityHuksImportJsunit() {
@@ -705,24 +1086,36 @@ export function SecurityHuksImportJsunit() {
         });
 
         it('HUKS_Basic_Capability_Import_Reformed_0300', 0, async function (done) {
-            const srcKeyAlies1 = 'HUKS_Basic_Capability_Import_0300';
-            const srcKeyAlies2 = 'HUKS_Basic_Capability_Import_0300Wrap';
-            let genOptionsECC = makeImportECCOptions();
-            let importOptionsECC = makeImportECCOptions2();
-            await TestImportWrappedKeyECCFunc(srcKeyAlies1, srcKeyAlies2, genOptionsECC, importOptionsECC);
-            await publicDeleteKeyItemFunc(srcKeyAlies1, genOptionsECC);
-            await publicDeleteKeyItemFunc(srcKeyAlies2, importOptionsECC);
+            const srcKeyAliesWrap = 'HUKS_Basic_Capability_Import_0200';
+            await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParams, false);
+            await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
+
+            await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
+            await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
+            let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
+            importWrappedAes192Params.inData = wrappedData;
+            await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192Params);
+            await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParams);
+            await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
+            await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params);
+            await publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams);
             done();
         });
 
         it('HUKS_Basic_Capability_Import_Reformed_0400', 0, async function (done) {
-            const srcKeyAlies1 = 'HUKS_Basic_Capability_Import_0400';
-            const srcKeyAlies2 = 'HUKS_Basic_Capability_Import_0400Wrap';
-            let genOptionsX25519 = makeImportX25519Options();
-            let importOptionsX25519 = makeImportX25519Options2();
-            await TestImportWrappedKeyX25519Func(srcKeyAlies1, srcKeyAlies2, genOptionsX25519, importOptionsX25519);
-            await publicDeleteKeyItemFunc(srcKeyAlies1, genOptionsX25519);
-            await publicDeleteKeyItemFunc(srcKeyAlies2, importOptionsX25519);
+            const srcKeyAliesWrap = 'HUKS_Basic_Capability_Import_0400';
+            await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParamsX25519, false);
+            await generateAndExportPublicKey(callerKeyAlias, genCallerX25519Params, true);
+
+            await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParamsX25519);
+            await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
+            let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
+            importWrappedAes192ParamsX25519.inData = wrappedData;
+            await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192ParamsX25519);
+            await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParamsX25519);
+            await publicDeleteKeyItemFunc(callerKeyAlias, genCallerX25519Params);
+            await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192ParamsX25519);
+            await publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams);
             done();
         });
 
@@ -1118,44 +1511,46 @@ export function SecurityHuksImportJsunit() {
         });
 
         it('HUKS_Basic_Capability_Import_Reformed_2600', 0, async function (done) {
-            const srcKeyAlies1 = 'HUKS_Basic_Capability_Import_2600';
-            const srcKeyAlies2 = 'HUKS_Basic_Capability_Import_2600Wrap';
-            let genOptionsECC = makeImportECCOptions();
-            let importOptionsECC = makeImportECCOptions2();
-            await TestImportWrappedKeyECCFunc(srcKeyAlies1, srcKeyAlies2, genOptionsECC, importOptionsECC);
-            await TestImportWrappedKeyECCFunc(srcKeyAlies1, srcKeyAlies2, genOptionsECC, importOptionsECC);
-            await publicDeleteKeyItemFunc(srcKeyAlies1, genOptionsECC);
-            await publicDeleteKeyItemFunc(srcKeyAlies2, importOptionsECC);
+            const srcKeyAliesWrap = 'HUKS_Basic_Capability_Import_0200';
+            await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParams, false);
+            await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
+
+            await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
+            await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
+            let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
+            importWrappedAes192Params.inData = wrappedData;
+            await publicImportWrappedKeyPromise(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192Params);
+            await publicImportWrappedKeyPromise(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192Params);
+            await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParams);
+            await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
+            await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params);
+            await publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams);
             done();
         });
 
         it('HUKS_Basic_Capability_Import_Reformed_2700', 0, async function (done) {
-            const srcKeyAlies1 = 'HUKS_Basic_Capability_Import_2700_ECC';
-            const srcKeyAlies2 = 'HUKS_Basic_Capability_Import_2700_ECCWrap';
-            const srcKeyAlies4 = 'HUKS_Basic_Capability_Import_2700_X25519Wrap';
-            let genOptionsECC = makeImportECCOptions();
-            let importOptionsECC = makeImportECCOptions2();
-            let genOptionsx25519 = makeImportX25519Options();
-            let importOptionsx25519 = makeImportX25519Options2();
-            await publicImportKeyItemFunc(srcKeyAlies2, genOptionsECC);
-            importOptionsECC.inData = inputECCKey;
-            await publicImportKeyItemFunc(srcKeyAlies4, genOptionsx25519);
-            importOptionsx25519.inData = inputECCKey;
+            const srcKeyAliesWrap = 'HUKS_Basic_Capability_Import_2700';
+            await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParams, false);
+            await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
+            await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
+            await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
+            let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
+            importWrappedAes192ParamsX25519.inData = wrappedData;
             try {
-                await huks.importWrappedKeyItem(srcKeyAlies1, srcKeyAlies2, importOptionsx25519)
-                    .then(data => {
-                        console.info(`promise: importWrappedKeyItem success, data = ${JSON.stringify(data)}`);
+                await importWrappedKeyItem(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192ParamsX25519)
+                    .then((data) => {
+                        console.info(`callback: importWrappedKeyItem success, data = ${JSON.stringify(data)}`);
                     })
-                    .catch(err => {
-                        console.error(`promise: importWrappedKeyItem failed, code: ${err.code}, msg: ${err.message}`);
-                        expect(err.code == 12000006).assertTrue();
-                    })
-            } catch (err) {
-                console.error(`promise: importWrappedKeyItem input arg invalid, code: ${err.code}, msg: ${err.message}`);
+                    .catch(error => {
+                        console.error(`callback: importWrappedKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+                        expect(error.code == 12000006).assertTrue();
+                    });
+            } catch (error) {
+                console.error(`callback: importWrappedKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
                 expect(null).assertFail();
             }
-            await publicDeleteKeyItemFunc(srcKeyAlies2, importOptionsECC);
-            await publicDeleteKeyItemFunc(srcKeyAlies4, genOptionsx25519);
+            await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParams);
+            await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
             done();
         });
 

@@ -2263,6 +2263,8 @@ describe('singleKvStoreCallbackTest', function () {
      */
     it('testSingleKvStoreCloseResultSet104', 0, async function (done) {
         console.info('SingleKvStoreCloseResultSetCallbackTest004');
+
+
         kvStore.closeResultSet("",(err, data) => {
             if(err != undefined){
                 console.info(`SingleKvStoreCloseResultSetCallbackTest004 close result error, error is ${err}`)

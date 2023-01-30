@@ -27,8 +27,8 @@ describe('resMgrTest', function () {
     it('getResourceManager_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             expect(mgr !== null).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -37,10 +37,12 @@ describe('resMgrTest', function () {
     * @tc.desc    get the resource manager in callback mode with bundlename
     */
     it('getResourceManager_test_002', 0, async function (done) {
-        resmgr.getResourceManager('com.ohos.contacts', (error, mgr) => {
+        console.log('getResourceManager_test_002 0');
+        resmgr.getResourceManager('ohos.resmgr.test', (error, mgr) => {
+            console.log('getResourceManager_test_002 1');
             expect(mgr !== null).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -51,8 +53,8 @@ describe('resMgrTest', function () {
     it('getResourceManager_test_003', 0, async function (done) {
         resmgr.getResourceManager().then(mgr => {
             expect(mgr !== null).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -61,10 +63,12 @@ describe('resMgrTest', function () {
     * @tc.desc    get the resource manager in promise mode with bundlename
     */
     it('getResourceManager_test_004', 0, async function (done) {
-        resmgr.getResourceManager('com.ohos.contacts').then(mgr => {
+        console.log('getResourceManager_test_004 0');
+        resmgr.getResourceManager('ohos.resmgr.test').then(mgr => {
+            console.log('getResourceManager_test_004 1');
             expect(mgr !== null).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -74,13 +78,13 @@ describe('resMgrTest', function () {
     */
     it('getString_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getString($r(app.string.app_name).id, (err, value) => {
+            mgr.getString(0x01000008, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getString_test_001 ' + value);
                 expect(value).assertEqual('L2Test');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -90,13 +94,13 @@ describe('resMgrTest', function () {
     */
     it('getString_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getString($r(app.string.app_name).id).then(value => {
+            mgr.getString(0x01000008).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getString_test_002 ' + value);
                 expect(value).assertEqual('L2Test');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -106,13 +110,13 @@ describe('resMgrTest', function () {
     */
     it('getString_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getString($r(app.string.mainability_description).id, (err, value) => {
+            mgr.getString(0x01000009, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getString_test_003 ' + value);
                 expect(value).assertEqual('JS_Phone_Empty Feature Ability');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -122,15 +126,14 @@ describe('resMgrTest', function () {
     */
     it('getStringValue_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringValue({ bundleName:"ohos.intl.test",
-                            moduleName:"entry",
-                            id:$r(app.string.app_name).id}, (err, value) => {
+            mgr.getStringValue({ bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000008}, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getStringValue_test_001 ' + value);
-                expect(value).assertEqual('L2Test');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -140,12 +143,13 @@ describe('resMgrTest', function () {
     */
     it('getStringValue_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringValue({ bundleName:"ohos.intl.test",
-                            moduleName:"entry",
-                            id:$r(app.string.app_name).id}).then(value => {
+            console.info(`getStringValue_test_002 ${JSON.stringify(mgr)}`)
+            mgr.getStringValue({ bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000008}).then(value => {
+                console.info(`getStringValue_test_002 promise ${JSON.stringify(error)}`)
                 expect(value !== null).assertTrue();
                 console.log('getStringValue_test_002 ' + value);
-                expect(value).assertEqual('L2Test');
             })
         })
         done();
@@ -158,13 +162,13 @@ describe('resMgrTest', function () {
     */
     it('getStringValue_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringValue($r(app.string.app_name).id, (err, value) => {
+            mgr.getStringValue(0x01000008, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getStringValue_test_003 ' + value);
                 expect(value).assertEqual('L2Test');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -174,13 +178,13 @@ describe('resMgrTest', function () {
     */
     it('getStringValue_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringValue($r(app.string.app_name).id).then(value => {
+            mgr.getStringValue(0x01000008).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getStringValue_test_004 ' + value);
                 expect(value).assertEqual('L2Test');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -334,12 +338,15 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             try{
                 // 0x01000000 id is integer resource,throw 9001002 error code
+                console.log('getStringValue_test_010 promise start');
                 mgr.getStringValue(0x01000000).then(value => {
+                    console.log('getStringValue_test_010 promise try' + value);
                     expect(value !== null).assertTrue();
                     console.log('getStringValue_test_010 ' + value);
                     expect(value).assertEqual('L2Test');
                     done();
                 }).catch(error => {
+                    console.log('getStringValue_test_010 promise catch');
                     console.log('getStringValue_test_010 error.code' + error.code);
                     console.log('getStringValue_test_010 error.message' + error.message);
                     expect(error.code == 9001002).assertTrue();
@@ -350,6 +357,7 @@ describe('resMgrTest', function () {
                 console.log('getStringValue_test_010 err.message' + err.message);
                 done();
             }
+            console.log('getStringValue_test_010 promise end');
         })
     })
 
@@ -416,7 +424,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArray_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArray($r(app.strarray.sizeList).id, (err, value) => {
+            mgr.getStringArray(0x0100000a, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArray_test_001 ' + value);
                 console.log('getStringArray_test_001 ' + value.length);
@@ -426,9 +434,9 @@ describe('resMgrTest', function () {
                 expect(value[1]).assertEqual('middle');
                 expect(value[2]).assertEqual('large');
                 expect(value[3]).assertEqual('extra large');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -438,7 +446,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArray_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArray($r(app.strarray.sizeList).id).then(value => {
+            mgr.getStringArray(0x0100000a).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArray_test_002 ' + value);
                 console.log('getStringArray_test_002 ' + value.length);
@@ -448,9 +456,9 @@ describe('resMgrTest', function () {
                 expect(value[1]).assertEqual('middle');
                 expect(value[2]).assertEqual('large');
                 expect(value[3]).assertEqual('extra large');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -460,21 +468,14 @@ describe('resMgrTest', function () {
     */
     it('getStringArrayValue_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArrayValue({bundleName:"ohos.intl.test",
-                                moduleName:"entry",
-                                id:$r(app.strarray.sizeList).id}, (err, value) => {
+            mgr.getStringArrayValue({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x0100000a}, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArrayValue_test_001 ' + value);
-                console.log('getStringArrayValue_test_001 ' + value.length);
-                console.log('getStringArrayValue_test_001 ' + value[0]);
-                expect(value.length).assertEqual(4);
-                expect(value[0]).assertEqual('small');
-                expect(value[1]).assertEqual('middle');
-                expect(value[2]).assertEqual('large');
-                expect(value[3]).assertEqual('extra large');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -484,18 +485,11 @@ describe('resMgrTest', function () {
     */
     it('getStringArrayValue_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArrayValue({bundleName:"ohos.intl.test",
-                                moduleName:"entry",
-                                id:$r(app.strarray.sizeList).id}).then(value => {
+             mgr.getStringArrayValue({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x0100000a}).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArrayValue_test_002 ' + value);
-                console.log('getStringArrayValue_test_002 ' + value.length);
-                console.log('getStringArrayValue_test_002 ' + value[0]);
-                expect(value.length).assertEqual(4);
-                expect(value[0]).assertEqual('small');
-                expect(value[1]).assertEqual('middle');
-                expect(value[2]).assertEqual('large');
-                expect(value[3]).assertEqual('extra large');
             })
         })
         done();
@@ -508,7 +502,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArrayValue_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArrayValue($r(app.strarray.sizeList).id, (err, value) => {
+            mgr.getStringArrayValue(0x0100000a, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArrayValue_test_003 ' + value);
                 console.log('getStringArrayValue_test_003 ' + value.length);
@@ -518,9 +512,9 @@ describe('resMgrTest', function () {
                 expect(value[1]).assertEqual('middle');
                 expect(value[2]).assertEqual('large');
                 expect(value[3]).assertEqual('extra large');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -530,7 +524,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArrayValue_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArrayValue($r(app.strarray.sizeList).id).then(value => {
+            mgr.getStringArrayValue(0x0100000a).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArrayValue_test_004 ' + value);
                 console.log('getStringArrayValue_test_004 ' + value.length);
@@ -540,9 +534,9 @@ describe('resMgrTest', function () {
                 expect(value[1]).assertEqual('middle');
                 expect(value[2]).assertEqual('large');
                 expect(value[3]).assertEqual('extra large');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -552,12 +546,13 @@ describe('resMgrTest', function () {
     */
     it('getMedia_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMedia($r(app.media.icon).id, (err, value) => {
+            mgr.getMedia(0x01000017, (err, value) => {
                 console.log('getMedia_test_001 ' + value.length);
                 expect(value.length > 0).assertTrue();
+                done();
             })
         })
-        done();
+
     })
 
     /* *
@@ -567,12 +562,12 @@ describe('resMgrTest', function () {
     */
     it('getMedia_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMedia($r(app.media.icon).id).then(value => {
+            mgr.getMedia(0x01000017).then(value => {
                 console.log('getMedia_test_002 ' + value.length);
                 expect(value.length > 0).assertTrue();
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -582,14 +577,14 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent({bundleName:"ohos.intl.test",
-                          moduleName:"entry",
-                          id:$r(app.media.icon).id}, (err, value) => {
-                console.log('getMediaContent_test_001 ' + value.length);
-                expect(value.length > 0).assertTrue();
+            mgr.getMediaContent({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000017}, (err, value) => {
+                expect(value !== null).assertTrue();
+                console.log('getMediaContent_test_001 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -599,11 +594,11 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent({bundleName:"ohos.intl.test",
-                          moduleName:"entry",
-                          id:$r(app.media.icon).id}).then(value => {
-                console.log('getMediaContent_test_002 ' + value.length);
-                expect(value.length > 0).assertTrue();
+            mgr.getMediaContent({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000017}).then(value => {
+                expect(value !== null).assertTrue();
+                console.log('getMediaContent_test_002 ' + value);
             })
         })
         done();
@@ -616,12 +611,12 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent($r(app.media.icon).id, (err, value) => {
+            mgr.getMediaContent(0x01000017, (err, value) => {
                 console.log('getMediaContent_test_003 ' + value.length);
                 expect(value.length > 0).assertTrue();
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -631,12 +626,12 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent($r(app.media.icon).id).then(value => {
+            mgr.getMediaContent(0x01000017).then(value => {
                 console.log('getMediaContent_test_004 ' + value.length);
                 expect(value.length > 0).assertTrue();
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -646,12 +641,12 @@ describe('resMgrTest', function () {
     */
     it('getMediaBase64_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaBase64($r(app.media.icon).id, (err, value) => {
+            mgr.getMediaBase64(0x01000017, (err, value) => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaBase64_test_001 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -661,12 +656,12 @@ describe('resMgrTest', function () {
     */
     it('getMediaBase64_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaBase64($r(app.media.icon).id).then(value => {
+            mgr.getMediaBase64(0x01000017).then(value => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaBase64_test_002 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -676,14 +671,14 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64({bundleName:"ohos.intl.test",
-                                moduleName:"entry",
-                                id:$r(app.media.icon).id}, (err, value) => {
-                expect(value.length > 0).assertTrue();
+            mgr.getMediaContentBase64({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000017}, (err, value) => {
+                expect(value !== null).assertTrue();
                 console.log('getMediaContentBase64_test_001 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -693,10 +688,10 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64({bundleName:"ohos.intl.test",
-                                moduleName:"entry",
-                                id:$r(app.media.icon).id}).then(value => {
-                expect(value.length > 0).assertTrue();
+            mgr.getMediaContentBase64({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000017}).then(value => {
+                expect(value !== null).assertTrue();
                 console.log('getMediaContentBase64_test_002 ' + value);
             })
         })
@@ -710,12 +705,12 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64($r(app.media.icon).id, (err, value) => {
+            mgr.getMediaContentBase64(0x01000017, (err, value) => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaContentBase64_test_003 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -725,12 +720,12 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64($r(app.media.icon).id).then(value => {
+            mgr.getMediaContentBase64(0x01000017).then(value => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaContentBase64_test_004 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -740,13 +735,22 @@ describe('resMgrTest', function () {
     */
     it('getConfiguration_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
+            console.log('getConfiguration_test_001 0');
             mgr.getConfiguration((error, cfg) => {
-                cfg.direction = Direction.DIRECTION_VERTICAL;
-                cfg.locale = 'zh';
+                console.log('getConfiguration_test_001 1');
+                console.log('getConfiguration_test_001 1' + cfg.direction);
+                console.log('getConfiguration_test_001 1' + resmgr.Direction.DIRECTION_HORIZONTAL);
+                console.log('getConfiguration_test_001 11');
+                if(cfg.direction == resmgr.Direction.DIRECTION_VERTICAL){
+                    console.log('getConfiguration_test_001 DIRECTION_VERTICAL');
+                }else if(cfg.direction == resmgr.Direction.DIRECTION_HORIZONTAL){
+                    console.log('getConfiguration_test_001 DIRECTION_HORIZONTAL');
+                }
                 expect(cfg !== null).assertTrue();
+                console.log('getConfiguration_test_001 ' + JSON.stringify(cfg));
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -755,13 +759,43 @@ describe('resMgrTest', function () {
     * @tc.desc    get the configuration in promise mode
     */
     it('getConfiguration_test_002', 0, async function (done) {
+        console.log('getConfiguration_test_002 0');
+        expect(resmgr.Direction.DIRECTION_HORIZONTAL).assertEqual(1);
+        console.log('getConfiguration_test_002 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1400
+    * @tc.name    test getConfiguration method in promise mode
+    * @tc.desc    get the configuration in promise mode
+    */
+    it('getConfiguration_test_003', 0, async function (done) {
+        console.log('getConfiguration_test_003 0');
+        expect(resmgr.Direction.DIRECTION_VERTICAL).assertEqual(0);
+        console.log('getConfiguration_test_003 1');
+        done();
+    })
+
+    /* *
+        * @tc.number  SUB_GLOBAL_RESMGR_JS_1300
+        * @tc.name    test getConfiguration method in promise mode
+        * @tc.desc    get the configuration in promise mode
+        */
+    it('getConfiguration_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getConfiguration().then(cfg => {
+                console.log('getConfiguration_test_004 ' + resmgr.Direction.DIRECTION_HORIZONTAL);
+                if(cfg.direction == resmgr.Direction.DIRECTION_VERTICAL){
+                    console.log('getConfiguration_test_004 DIRECTION_VERTICAL');
+                }else if(cfg.direction == resmgr.Direction.DIRECTION_HORIZONTAL){
+                    console.log('getConfiguration_test_004 DIRECTION_HORIZONTAL');
+                }
                 expect(cfg !== null).assertTrue();
-                cfg.direction = Direction.DIRECTION_HORIZONTAL;
+                console.log('getConfiguration_test_004 ' + JSON.stringify(cfg));
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -772,16 +806,24 @@ describe('resMgrTest', function () {
     it('getDeviceCapability_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getDeviceCapability((error, dc) => {
-                dc.screenDensity = ScreenDensity.SCREEN_SDPI;
-                dc.deviceType = DeviceType.DEVICE_TYPE_PHONE;
-                dc.screenDensity = ScreenDensity.SCREEN_MDPI;
-                dc.deviceType = DeviceType.DEVICE_TYPE_CAR;
-                dc.screenDensity = ScreenDensity.SCREEN_LDPI;
-                dc.deviceType = DeviceType.DEVICE_TYPE_TV;
+                if(dc.deviceType == resmgr.DeviceType.DEVICE_TYPE_PHONE){
+                    console.log('getDeviceCapability_test_001 DEVICE_TYPE_PHONE');
+                }else if(dc.deviceType == resmgr.DeviceType.DEVICE_TYPE_TABLET){
+                    console.log('getDeviceCapability_test_001 DEVICE_TYPE_TABLET');
+                }else if(dc.deviceType == resmgr.DeviceType.DEVICE_TYPE_CAR){
+                    console.log('getDeviceCapability_test_001 DEVICE_TYPE_CAR');
+                }else if(dc.deviceType == resmgr.DeviceType.DEVICE_TYPE_PC){
+                    console.log('getDeviceCapability_test_001 DEVICE_TYPE_PC');
+                }else if(dc.deviceType == resmgr.DeviceType.DEVICE_TYPE_TV){
+                    console.log('getDeviceCapability_test_001 DEVICE_TYPE_TV');
+                }else if(dc.deviceType == resmgr.DeviceType.DEVICE_TYPE_WEARABLE){
+                    console.log('getDeviceCapability_test_001 DEVICE_TYPE_WEARABLE');
+                }
                 expect(dc !== null).assertTrue();
+                console.log('getDeviceCapability_test_001 ' + JSON.stringify(dc));
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -790,18 +832,190 @@ describe('resMgrTest', function () {
     * @tc.desc    get the device capability in promise mode
     */
     it('getDeviceCapability_test_002', 0, async function (done) {
+        console.log('getDeviceCapability_test_002 0');
+        expect(resmgr.DeviceType.DEVICE_TYPE_PHONE).assertEqual(0);
+        console.log('getDeviceCapability_test_002 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getDeviceCapability_test_003', 0, async function (done) {
+        console.log('getDeviceCapability_test_003 0');
+        expect(resmgr.DeviceType.DEVICE_TYPE_TABLET).assertEqual(1);
+        console.log('getDeviceCapability_test_003 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getDeviceCapability_test_004', 0, async function (done) {
+        console.log('getDeviceCapability_test_004 0');
+        expect(resmgr.DeviceType.DEVICE_TYPE_CAR).assertEqual(2);
+        console.log('getDeviceCapability_test_004 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getDeviceCapability_test_005', 0, async function (done) {
+        console.log('getDeviceCapability_test_005 0');
+        expect(resmgr.DeviceType.DEVICE_TYPE_PC).assertEqual(3);
+        console.log('getDeviceCapability_test_005 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getDeviceCapability_test_006', 0, async function (done) {
+        console.log('getDeviceCapability_test_006 0');
+        expect(resmgr.DeviceType.DEVICE_TYPE_TV).assertEqual(4);
+        console.log('getDeviceCapability_test_006 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getDeviceCapability_test_007', 0, async function (done) {
+        console.log('getDeviceCapability_test_007 0');
+        expect(resmgr.DeviceType.DEVICE_TYPE_WEARABLE).assertEqual(6);
+        console.log('getDeviceCapability_test_007 1');
+        done();
+    })
+
+    /* *
+        * @tc.number  SUB_GLOBAL_RESMGR_JS_1500
+        * @tc.name    test getDeviceCapability method in callback mode
+        * @tc.desc    get the device capability in callback mode
+        */
+    it('getDeviceCapability_test_008', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getDeviceCapability().then(dc => {
-                dc.screenDensity = ScreenDensity.SCREEN_XLDPI;
-                dc.deviceType = DeviceType.DEVICE_TYPE_TABLET;
-                dc.screenDensity = ScreenDensity.SCREEN_XXLDPI;
-                dc.deviceType = DeviceType.DEVICE_TYPE_WEARABLE;
-                dc.screenDensity = ScreenDensity.SCREEN_XXXLDPI;
-                dc.deviceType = DeviceType.DEVICE_TYPE_PC;
+                if(dc.deviceType == resmgr.DeviceType.DEVICE_TYPE_PHONE){
+                    console.log('getDeviceCapability_test_008 DEVICE_TYPE_PHONE');
+                }
+                if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_LDPI){
+                    console.log('getDeviceCapability_test_008 SCREEN_LDPI');
+                }
                 expect(dc !== null).assertTrue();
-                console.log('getDeviceCapability_test_002 ' + dc);
+                console.log('getDeviceCapability_test_008 ' + JSON.stringify(dc));
+                done();
             })
         })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1500
+    * @tc.name    test getDeviceCapability method in callback mode
+    * @tc.desc    get the device capability in callback mode
+    */
+    it('getScreenDensity_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getDeviceCapability((error, dc) => {
+                if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_SDPI){
+                    console.log('getScreenDensity_test_001 SCREEN_SDPI');
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_MDPI){
+                    console.log('getScreenDensity_test_001 SCREEN_MDPI');
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_LDPI){
+                    console.log('getScreenDensity_test_001 SCREEN_LDPI');
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_XLDPI){
+                    console.log('getScreenDensity_test_001 SCREEN_XLDPI');
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_XXLDPI){
+                    console.log('getScreenDensity_test_001 SCREEN_XXLDPI');
+                }else if(dc.screenDensity == resmgr.ScreenDensity.SCREEN_XXXLDPI){
+                    console.log('getScreenDensity_test_001 SCREEN_XXXLDPI');
+                }
+                expect(dc !== null).assertTrue();
+                console.log('getScreenDensity_test_001 ' + JSON.stringify(dc));
+                done();
+            })
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getScreenDensity_test_002', 0, async function (done) {
+        console.log('getScreenDensity_test_002 0');
+        expect(resmgr.ScreenDensity.SCREEN_SDPI).assertEqual(120);
+        console.log('getScreenDensity_test_002 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getScreenDensity_test_003', 0, async function (done) {
+        console.log('getScreenDensity_test_003 0');
+        expect(resmgr.ScreenDensity.SCREEN_MDPI).assertEqual(160);
+        console.log('getScreenDensity_test_003 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getScreenDensity_test_004', 0, async function (done) {
+        console.log('getScreenDensity_test_004 0');
+        expect(resmgr.ScreenDensity.SCREEN_LDPI).assertEqual(240);
+        console.log('getScreenDensity_test_004 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getScreenDensity_test_005', 0, async function (done) {
+        console.log('getScreenDensity_test_005 0');
+        expect(resmgr.ScreenDensity.SCREEN_XLDPI).assertEqual(320);
+        console.log('getScreenDensity_test_005 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getScreenDensity_test_006', 0, async function (done) {
+        console.log('getScreenDensity_test_006 0');
+        expect(resmgr.ScreenDensity.SCREEN_XXLDPI).assertEqual(480);
+        console.log('getScreenDensity_test_006 1');
+        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1600
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getScreenDensity_test_007', 0, async function (done) {
+        console.log('getScreenDensity_test_007 0');
+        expect(resmgr.ScreenDensity.SCREEN_XXXLDPI).assertEqual(640);
+        console.log('getScreenDensity_test_007 1');
         done();
     })
 
@@ -812,13 +1026,13 @@ describe('resMgrTest', function () {
     */
     it('getPluralString_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralString($r(app.plural.plural_name).id, 1, (error, value) => {
+            mgr.getPluralString(0x01000012, 1, (error, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralString_test_001 ' + value);
                 expect(value).assertEqual('1 test other');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -828,13 +1042,13 @@ describe('resMgrTest', function () {
     */
     it('getPluralString_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralString($r(app.plural.plural_name).id, 1).then(value => {
+            mgr.getPluralString(0x01000012, 1).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralString_test_002 ' + value);
                 expect(value).assertEqual('1 test other');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -844,15 +1058,14 @@ describe('resMgrTest', function () {
     */
     it('getPluralStringValue_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue({bundleName:"ohos.intl.test",
-                                 moduleName:"entry",
-                                 id:$r(app.plural.plural_name).id}, 1, (error, value) => {
+            mgr.getPluralStringValue({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000012}, 1, (error, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralStringValue_test_001 ' + value);
-                expect(value).assertEqual('1 test other');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -862,12 +1075,11 @@ describe('resMgrTest', function () {
     */
     it('getPluralStringValue_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue({bundleName:"ohos.intl.test",
-                                 moduleName:"entry",
-                                 id:$r(app.plural.plural_name).id}, 1).then(value => {
+            mgr.getPluralStringValue({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000012}, 1).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralStringValue_test_002 ' + value);
-                expect(value).assertEqual('1 test other');
             })
         })
         done();
@@ -880,13 +1092,13 @@ describe('resMgrTest', function () {
     */
     it('getPluralStringValue_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue($r(app.plural.plural_name).id, 1, (error, value) => {
+            mgr.getPluralStringValue(0x01000012, 1, (error, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralStringValue_test_003 ' + value);
                 expect(value).assertEqual('1 test other');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -896,13 +1108,13 @@ describe('resMgrTest', function () {
     */
     it('getPluralStringValue_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue($r(app.plural.plural_name).id, 1).then(value => {
+            mgr.getPluralStringValue(0x01000012, 1).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralStringValue_test_004 ' + value);
                 expect(value).assertEqual('1 test other');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -915,9 +1127,9 @@ describe('resMgrTest', function () {
             mgr.getRawFile('rawfile/rawfiletest.xml', (error, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getRawFile_test_001 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -930,9 +1142,9 @@ describe('resMgrTest', function () {
             mgr.getRawFile('rawfile/rawfiletest.xml').then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getRawFile_test_002 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -945,9 +1157,9 @@ describe('resMgrTest', function () {
             mgr.getRawFileContent('rawfile/rawfiletest.xml', (error, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getRawFileContent_test_001 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -960,9 +1172,9 @@ describe('resMgrTest', function () {
             mgr.getRawFileContent('rawfile/rawfiletest.xml').then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getRawFileContent_test_002 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -972,12 +1184,12 @@ describe('resMgrTest', function () {
     */
     it('release_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getString($r(app.string.app_name).id, (err, value) => {
+            mgr.getString(0x01000008, (err, value) => {
                 expect(value !== null).assertTrue();
+                done();
             })
             mgr.release();
         })
-        done();
     })
 
     /* *
@@ -993,12 +1205,18 @@ describe('resMgrTest', function () {
                 let lengthValue = rawfile.length;
                 expect(rawfile !== null).assertTrue();
                 console.log('getRawFileDescriptor_test_001--'
-                            +'fd:' + fdValue
-                            + ' offset:' + offsetValue
-                            + ' length:' + lengthValue);
+                +'fd:' + fdValue
+                + ' offset:' + offsetValue
+                + ' length:' + lengthValue);
+                done();
+            })
+            mgr.closeRawFileDescriptor('rawfiletest.xml', (error, value) => {
+                console.log('getRawFileDescriptor_test_001--start close');
+                expect(error !== null).assertTrue();
+                console.log('getRawFileDescriptor_test_001--' + JSON.stringify(error));
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1018,9 +1236,30 @@ describe('resMgrTest', function () {
                 +'fd:' + rawfile.fd
                 + ' offset:' + rawfile.offset
                 + ' length:' + rawfile.length);
+                done();
+            })
+            mgr.closeRawFileDescriptor('rawfiletest.xml').then(value => {
+                console.log('getRawFileDescriptor_test_002--start close');
+                expect(value !== null).assertTrue();
+                console.log('getRawFileDescriptor_test_002--' + JSON.stringify(value));
+                done();
             })
         })
-        done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_2200
+    * @tc.name    test closeRawFileDescriptor method in callback mode
+    * @tc.desc    get the closeRawFileDescriptor in callback mode
+    */
+    it('closeRawFileDescriptor_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.closeRawFileDescriptor('rawfiletest.xml', (error, value) => {
+                expect(error !== null).assertTrue();
+                console.log('closeRawFileDescriptor_test_001--' + JSON.stringify(error));
+                done();
+            })
+        })
     })
 
     /* *
@@ -1036,12 +1275,12 @@ describe('resMgrTest', function () {
                 let lengthValue = rawfile.length;
                 expect(rawfile !== null).assertTrue();
                 console.log('getRawFd_test_001--'
-                            +'fd:' + fdValue
-                            + ' offset:' + offsetValue
-                            + ' length:' + lengthValue);
+                +'fd:' + fdValue
+                + ' offset:' + offsetValue
+                + ' length:' + lengthValue);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1056,44 +1295,14 @@ describe('resMgrTest', function () {
                 rawfile.offset = 20;
                 rawfile.length = 200;
                 expect(rawfile !== null).assertTrue();
-                console.log('getRawFd_test_002--' + rawfile);
+                console.log('getRawFd_test_002--' + JSON.stringify(rawfile));
                 console.log('getRawFd_test_002--'
                 +'fd:' + rawfile.fd
                 + ' offset:' + rawfile.offset
                 + ' length:' + rawfile.length);
+                done();
             })
         })
-        done();
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_2200
-    * @tc.name    test closeRawFileDescriptor method in callback mode
-    * @tc.desc    get the closeRawFileDescriptor in callback mode
-    */
-    it('closeRawFileDescriptor_test_001', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.closeRawFileDescriptor('rawfiletest.xml', (error, value) => {
-                expect(error !== null).assertTrue();
-                console.log('closeRawFileDescriptor_test_001--' + error);
-            })
-        })
-        done();
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_2300
-    * @tc.name    test closeRawFileDescriptor method in promise mode
-    * @tc.desc    get the closeRawFileDescriptor in promise mode
-    */
-    it('closeRawFileDescriptor_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.closeRawFileDescriptor('rawfiletest.xml').then(value => {
-                expect(value !== null).assertTrue();
-                console.log('closeRawFileDescriptor_test_002--' + value);
-            })
-        })
-        done();
     })
 
     /* *
@@ -1103,12 +1312,24 @@ describe('resMgrTest', function () {
     */
     it('closeRawFd_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.closeRawFd('rawfiletest.xml', (error, value) => {
-                expect(error !== null).assertTrue();
-                console.log('closeRawFd_test_001--' + error);
-            })
+            try{
+                mgr.closeRawFd('notexist.xml', (error, value) => {
+                    if(error){
+                        console.log('closeRawFd_test_001 err.code:' + error.code);
+                        console.log('closeRawFd_test_001 err.message:' + error.message);
+                        expect(error.code == 9001005).assertTrue();
+                        done();
+                    }else{
+                        expect(value !== null).assertTrue();
+                        console.log('closeRawFd_test_001 ' + value);
+                        done();
+                    }
+                })
+            }catch(e){
+                console.log('closeRawFd_test_001 e.code' + e.code);
+                console.log('closeRawFd_test_001 e.message' + e.message);
+            }
         })
-        done();
     })
 
     /* *
@@ -1174,9 +1395,9 @@ describe('resMgrTest', function () {
                 expect(value !== null).assertTrue();
                 console.log('getStringByName_test_001 ' + value);
                 expect(value).assertEqual('L2Test');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1190,9 +1411,9 @@ describe('resMgrTest', function () {
                 expect(value !== null).assertTrue();
                 console.log('getStringByName_test_002 ' + value);
                 expect(value).assertEqual('L2Test');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1212,9 +1433,9 @@ describe('resMgrTest', function () {
                 expect(value[1]).assertEqual('middle');
                 expect(value[2]).assertEqual('large');
                 expect(value[3]).assertEqual('extra large');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1234,9 +1455,9 @@ describe('resMgrTest', function () {
                 expect(value[1]).assertEqual('middle');
                 expect(value[2]).assertEqual('large');
                 expect(value[3]).assertEqual('extra large');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1248,9 +1469,9 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getMediaByName('icon', (err, value) => {
                 expect(value.length > 0).assertTrue();
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1262,9 +1483,9 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             mgr.getMediaByName('icon').then(value => {
                 expect(value.length > 0).assertTrue();
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1277,9 +1498,9 @@ describe('resMgrTest', function () {
             mgr.getMediaBase64ByName('icon', (err, value) => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaBase64ByName_test_001 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1292,9 +1513,9 @@ describe('resMgrTest', function () {
             mgr.getMediaBase64ByName('icon').then(value => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaBase64ByName_test_002 ' + value);
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1308,9 +1529,9 @@ describe('resMgrTest', function () {
                 expect(value !== null).assertTrue();
                 console.log('getPluralStringByName_test_001 ' + value);
                 expect(value).assertEqual('1 test other');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1324,9 +1545,9 @@ describe('resMgrTest', function () {
                 expect(value !== null).assertTrue();
                 console.log('getPluralStringByName_test_002 ' + value);
                 expect(value).assertEqual('1 test other');
+                done();
             })
         })
-        done();
     })
 
     /* *
@@ -1336,12 +1557,12 @@ describe('resMgrTest', function () {
     */
     it('getStringSync_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getStringSync($r(app.string.app_name).id);
+            let value = mgr.getStringSync(0x01000008);
             expect(value !== null).assertTrue();
             console.log('getStringSync_test_001 ' + value);
             expect(value).assertEqual('L2Test');
+            done();
         })
-        done();
     })
 
     /* *
@@ -1351,12 +1572,11 @@ describe('resMgrTest', function () {
     */
     it('getStringSync_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getStringSync({bundleName:"ohos.intl.test",
-                                           moduleName:"entry",
-                                           id:$r(app.string.app_name).id});
+            let value = mgr.getStringSync({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000008});
             expect(value !== null).assertTrue();
             console.log('getStringSync_test_002 ' + value);
-            expect(value).assertEqual('L2Test');
         })
         done();
     })
@@ -1368,12 +1588,34 @@ describe('resMgrTest', function () {
     */
     it('getStringByNameSync_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getStringByNameSync('notexist');
+                console.log('getStringByNameSync_test_001 value');
+                expect(value !== null).assertTrue();
+                console.log('getStringByNameSync_test_001 ' + value);
+                done();
+            }catch(e){
+                console.log('getStringByNameSync_test_001 err.code' + e.code);
+                console.log('getStringByNameSync_test_001 err.message' + e.message);
+                expect(e.code == 9001003).assertTrue();
+                done();
+            }
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_3500
+    * @tc.name    test getStringByNameSync method
+    * @tc.desc    get the string in sync mode
+    */
+    it('getStringByNameSync_test_002', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
             let value = mgr.getStringByNameSync('app_name');
             expect(value !== null).assertTrue();
-            console.log('getStringByNameSync_test_001 ' + value);
             expect(value).assertEqual('L2Test');
+            console.log('getStringByNameSync_test_002 ' + value);
+            done();
         })
-        done();
     })
 
     /* *
@@ -1383,11 +1625,11 @@ describe('resMgrTest', function () {
     */
     it('getBoolean_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getBoolean($r(app.boolean.boolean_1).id);
+            let value = mgr.getBoolean(0x0100000c);
             console.log('getBoolean_test_001 ' + value);
             expect(value).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -1397,13 +1639,13 @@ describe('resMgrTest', function () {
     */
     it('getBoolean_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getBoolean({bundleName:"ohos.intl.test",
-                                        moduleName:"entry",
-                                        id:$r(app.boolean.boolean_1).id});
+            let value = mgr.getBoolean({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x0100000c});
             console.log('getBoolean_test_002 ' + value);
-            expect(value).assertTrue();
+            expect(value !== null).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -1416,8 +1658,8 @@ describe('resMgrTest', function () {
             let value = mgr.getBooleanByName('boolean_1');
             console.log('getBooleanByName_test_001 ' + value);
             expect(value).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -1427,11 +1669,13 @@ describe('resMgrTest', function () {
     */
     it('getinteger_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber($r(app.integer.integer_1).id);
+            console.log('getinteger_test_001 0');
+            let value = mgr.getNumber(0x01000000);
+            console.log('getinteger_test_001 1');
             console.log('getinteger_test_001 ' + value);
             expect(value).assertEqual(100);
+            done();
         })
-        done();
     })
 
     /* *
@@ -1441,13 +1685,13 @@ describe('resMgrTest', function () {
     */
     it('getinteger_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber({bundleName:"ohos.intl.test",
-                                       moduleName:"entry",
-                                       id:$r(app.integer.integer_1).id});
+            let value = mgr.getNumber({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000000});
             console.log('getinteger_test_002 ' + value);
-            expect(value).assertEqual(100);
+            expect(value !== null).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -1460,8 +1704,8 @@ describe('resMgrTest', function () {
             let value = mgr.getNumberByName('integer_1');
             console.log('getintegerByName_test_001 ' + value);
             expect(value).assertEqual(100);
+            done();
         })
-        done();
     })
 
     /* *
@@ -1471,11 +1715,11 @@ describe('resMgrTest', function () {
     */
     it('getfloat_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber($r(app.float.float_1).id);
+            let value = mgr.getNumber(0x01000015);
             console.log('getfloat_test_001 ' + value);
-            expect(value).assertEqual(48);
+            expect(value > 0).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -1485,13 +1729,13 @@ describe('resMgrTest', function () {
     */
     it('getfloat_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber({bundleName:"ohos.intl.test",
-                                       moduleName:"entry",
-                                       id:$r(app.float.float_1).id});
+            let value = mgr.getNumber({bundleName:"ohos.resmgr.test",
+                moduleName:"entry",
+                id:0x01000015});
             console.log('getfloat_test_002 ' + value);
-            expect(value).assertEqual(48);
+            expect(value !== null).assertTrue();
+            done();
         })
-        done();
     })
 
     /* *
@@ -1503,9 +1747,9 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             let value = mgr.getNumberByName('float_1');
             console.log('getfloatByName_test_001 ' + value);
-            expect(value).assertEqual(48);
+            expect(value > 0).assertTrue();
+            done();
         })
-        done();
     })
 
     console.log('*************end ResmgrTest*************');

@@ -37,12 +37,35 @@ export default function abilityTest() {
                 Subscriber.publish("ACTS_AddAbilityMonitor_0100", AddAbilityData, publishCallback);
             }
             console.debug("====>ACTS_AddAbilityMonitor_0100 start====>");
-            var AddAbilityData
+            var AddAbilityData;
             var commonEventSubscribeInfo = {
                 events: ["ACTS_AddAbilityMonitor_0100"]
             };
-            var data = abilityDelegatorRegistry.getAbilityDelegator()
-            console.log("0100getAbilityDelegator data is" + JSON.stringify(data))
+            var data = abilityDelegatorRegistry.getAbilityDelegator();
+            console.log("0100getAbilityDelegator data is" + JSON.stringify(data));
+            Subscriber.createSubscriber(commonEventSubscribeInfo, async (err, data) => {
+                console.info("===ACTS_AddAbilityMonitor_0100===createSubscriber" + JSON.stringify(data));
+                var AddAbility = data;
+                await Subscriber.subscribe(AddAbility, (err, data) => {
+                    console.log('===ACTS_AddAbilityMonitor_0100CallBack==='
+                        + err.code + JSON.stringify(data));
+                    Subscriber.unsubscribe(AddAbility, (err, data) => {
+                        console.log('===UnSubscribeCallBacka===' + err.code);
+                    });
+                    if (data.code == 1) {
+                        expect(data.code).assertEqual(1);
+                        setTimeout(() => {
+                            done();
+                        }, 2500);
+                    }
+                    else {
+                        expect().assertFail();
+                        setTimeout(() => {
+                            done();
+                        }, 2500);
+                    }
+                });
+            });
             data.addAbilityMonitor(
                 {
                     abilityName: 'MainAbility2',
@@ -55,31 +78,8 @@ export default function abilityTest() {
                             abilityName: 'MainAbility2'
                         }).then(async () => {
                             console.debug("====>0100startAbility success====>");
-                            await Subscriber.createSubscriber(commonEventSubscribeInfo, async (err, data) => {
-                                console.info("===ACTS_AddAbilityMonitor_0100===createSubscriber" + JSON.stringify(data));
-                                var AddAbility = data
-                                await Subscriber.subscribe(AddAbility, (err, data) => {
-                                    console.log('===ACTS_AddAbilityMonitor_0100CallBack==='
-                                        + err.code + JSON.stringify(data))
-                                    Subscriber.unsubscribe(AddAbility, (err, data) => {
-                                        console.log('===UnSubscribeCallBacka===' + err.code)
-                                    })
-                                    if (data.code == 1) {
-                                        expect(data.code).assertEqual(1);
-                                        setTimeout(() => {
-                                            done();
-                                        }, 2500)
-                                    }
-                                    else {
-                                        expect().assertFail();
-                                        setTimeout(() => {
-                                            done();
-                                        }, 2500)
-                                    }
-                                })
-                            })
-                        })
-                }))
+                        });
+                }));
         })
 
         /**
@@ -176,7 +176,7 @@ export default function abilityTest() {
                     console.info("===ACTS_AddAbilityMonitor_0300===createSubscriber" + JSON.stringify(data));
                     var AddAbility = data
                     Delegator.getCurrentTopAbility().then((ability) => {
-                        console.info("===ACTS_AddAbilityMonitor_0300===ability" + JSON.stringify(ability));
+                        console.info("===ACTS_AddAbilityMonitor_0300===ability " + JSON.stringify(ability).length);
                         Subscriber.subscribe(AddAbility, (err, data) => {
                             console.log('===ACTS_AddAbilityMonitor_0300CallBack==='
                                 + err.code + JSON.stringify(data))
@@ -198,9 +198,12 @@ export default function abilityTest() {
                             }
                         })
                         Delegator.doAbilityBackground(ability).then(async (data) => {
-                            console.info("===ACTS_AddAbilityMonitor_0300===data" + JSON.stringify(data));
-                            expect(data).assertEqual(true)
-                        })
+                            console.info("===ACTS_AddAbilityMonitor_0300===data succeed.");
+                            expect(true).assertTrue();
+                        }).catch((err: any) => {
+                            console.info("===ACTS_AddAbilityMonitor_0300===data failed.");
+                            expect(false).assertTrue();
+                        });
                     })
                 })
             }
@@ -655,10 +658,10 @@ export default function abilityTest() {
                     console.info("===ACTS_AddAbilityMonitor_1000===createSubscriber" + JSON.stringify(data));
                     var AddAbility = data
                     Delegator.getCurrentTopAbility().then((ability) => {
-                        console.info("===ACTS_AddAbilityMonitor_1000===ability" + JSON.stringify(ability));
-                        Delegator.doAbilityBackground(ability).then(async (data) => {
-                            console.info("===ACTS_AddAbilityMonitor_1000===data" + JSON.stringify(data));
-                            expect(data).assertEqual(true)
+                        console.info("===ACTS_AddAbilityMonitor_1000===ability" + JSON.stringify(ability).length);
+                        Delegator.doAbilityBackground(ability).then(async () => {
+                            console.info("===ACTS_AddAbilityMonitor_1000===data succeed.");
+                            expect(true).assertTrue();
                             await Subscriber.subscribe(AddAbility, (err, data) => {
                                 console.log('===ACTS_AddAbilityMonitor_1000CallBack==='
                                     + err.code + JSON.stringify(data))
@@ -679,7 +682,10 @@ export default function abilityTest() {
                                     }, 2500)
                                 }
                             })
-                        })
+                        }).catch(() => {
+                            console.info("===ACTS_AddAbilityMonitor_1000===data succeed.");
+                            expect(false).assertTrue();
+                        });
                     })
                 })
             }

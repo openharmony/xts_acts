@@ -17,16 +17,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function HitraceMeterTest() {
 describe("HitraceMeterTest", function () {
 
-    async function msleep(time) {
-        var promise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve("done!"), time);
-        });
-        var result = await promise;
-    }
-
     it("DFX_DFR_HitraceMeter_0100", 0, async function (done) {
         console.info("-------DFX_DFR_HitraceMeter_0100 start--------");
-        await msleep(3000);
         for (var i = 0; i < 3; i++) {
             console.info("DFX_DFR_HitraceMeter_0100 i = " + i)
             console.info("DFX_DFR_HitraceMeter_0100 " + i.toString() + " startTrace start");
@@ -152,7 +144,6 @@ describe("HitraceMeterTest", function () {
         for (var i = 0; i < 3; i++) {
             console.info("DFX_DFR_HitraceMeter_0400 :" + i);
             hiTraceMeter.traceByValue("test4-" + i.toString(), 3 + i);
-            await msleep(1000);
         }
         console.info("DFX_DFR_HitraceMeter_0400 end");
         done();

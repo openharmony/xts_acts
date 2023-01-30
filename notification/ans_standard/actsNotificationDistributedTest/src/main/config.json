@@ -17,8 +17,8 @@
         "package": "com.example.actsnotificationdistributed",
         "name": ".entry",
         "deviceType": [
-      "tablet",
-      "default",
+            "tablet",
+            "default",
             "phone"
         ],
         "distro": {
@@ -26,11 +26,6 @@
             "moduleName": "entry",
             "moduleType": "entry"
         },
-        "reqPermissions": [
-            {
-                "name": "ohos.permission.NOTIFICATION_CONTROLLER"
-            }
-        ],
         "abilities": [
             {
                 "skills": [

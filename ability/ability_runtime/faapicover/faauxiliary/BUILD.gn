@@ -13,19 +13,18 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("FaAuxiliary") {
+ohos_hap_assist_suite("FaAuxiliary") {
   hap_name = "FaAuxiliary"
   js_build_mode = "debug"
   hap_profile = "entry/src/main/config.json"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
     ":faauxiliary_resources",
     ":faauxiliary_ts_assets",
   ]
-  certificate_profile = "signature/openharmony_sx.p7b"
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_js_assets("faauxiliary_ts_assets") {

@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, done } from '@ohos/hypium'
 
 import account from '@ohos.account.distributedAccount'
@@ -408,7 +407,7 @@ export default function ActsDAGetSetTest() {
         it('setOsAccountDistributedInfo_test009', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitNickName = '';
-            for (var i = 0; i < 21; i++) {
+            for (var i = 0; i < 1025; i++) {
                 limitNickName += 'n';
             }
             let obj = {
@@ -435,7 +434,7 @@ export default function ActsDAGetSetTest() {
         it('setOsAccountDistributedInfo_test010', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             var limitNickName = '';
-            for (var i = 0; i < 21; i++) {
+            for (var i = 0; i < 1025; i++) {
                 limitNickName += 'n';
             }
             let obj = {
@@ -465,23 +464,8 @@ export default function ActsDAGetSetTest() {
         */
         it('setOsAccountDistributedInfo_test011', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
-            var limitAvatar = '';
-            for (var i = 0; i < LIMIT*3; i++) {
-                limitAvatar +=
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '012345678901234567890123';
-            }
-            limitAvatar += 'n'
-            console.debug(limitAvatar.length)
+            var limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o')          
+            console.debug('====>setOsAccountDistributedInfo_test011 avatar_length:' + limitAvatar.length)
             let obj = {
                 id: '12345',
                 name: 'ZhangSan',
@@ -505,23 +489,9 @@ export default function ActsDAGetSetTest() {
         */
         it('setOsAccountDistributedInfo_test012', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
-            var limitAvatar = '';
-            for (var i = 0; i < LIMIT*3; i++) {
-                limitAvatar +=
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789' +
-                '012345678901234567890123';
-            }
-            limitAvatar += 'n'
+            var limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o')          
             console.debug(limitAvatar.length)
+            console.debug('====>setOsAccountDistributedInfo_test012 avatar_length:' + limitAvatar.length)
             let obj = {
                 id: '12345',
                 name: 'ZhangSan',

@@ -25,12 +25,6 @@ function checkWifiPowerOn(){
     console.info("[wifi_test]wifi status:" + wifi.isWifiActive());
 }
 
-let groupOwnerBand = {
-    GO_BAND_AUTO : 0,
-    GO_BAND_2GHZ : 1,
-    GO_BAND_5GHZ : 2,
-}
-
 export default function actsWifiEventTest() {
     describe('actsWifiEventTest', function () {
         beforeEach(function () {
@@ -42,13 +36,13 @@ export default function actsWifiEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0008
+        * @tc.number Communication_WiFi_Event_Test_0008
         * @tc.name testp2pStateChange
         * @tc.desc Test p2pStateChange callback
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_Event_Test_0008', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0008', 0, async function (done) {
             let p2pState = "p2pStateChange";
             let p2pStateChangeCallback = result => {
                 console.info("[wifi_test]p2pStateChange callback, result: " + JSON.stringify(result));
@@ -60,28 +54,24 @@ export default function actsWifiEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0009
+        * @tc.number Communication_WiFi_Event_Test_0009
         * @tc.name testp2pConnectionChange
         * @tc.desc Test p2pConnectionChange callback
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_Event_Test_0009', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0009', 0, async function (done) {
             let p2pConnectionState = "p2pConnectionChange";
             let p2pConnectionChangeCallback = result => {
                 console.info("[wifi_test]p2pConnectionChange callback, result: " + JSON.stringify(result));
             }
             wifi.on(p2pConnectionState, p2pConnectionChangeCallback);
-            let p2pConnectState = {
-                DISCONNECTED :0,
-                CONNECTED : 1,
-            };
             let wifiP2PConfig = {
                 deviceAddress : "00:00:00:00:00:00",
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "AAAZZZ456",
-                goBand : 0
+                goBand : wifi.GroupOwnerBand.GO_BAND_AUTO
             };
             let connectResult = wifi.p2pConnect(wifiP2PConfig);
             console.info("[wifi_test]test p2pConnect result." + connectResult);
@@ -101,13 +91,13 @@ export default function actsWifiEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0012
+        * @tc.number Communication_WiFi_Event_Test_0012
         * @tc.name testp2pDeviceChange
         * @tc.desc Test p2pDeviceChange callback
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_Event_Test_0012', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0012', 0, async function (done) {
             let p2pDeviceState = "p2pDeviceChange";
             let p2pDeviceChangeCallback = result => {
                 console.info("[wifi_test]p2pDeviceChange callback, result: " + JSON.stringify(result));
@@ -119,13 +109,13 @@ export default function actsWifiEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0010
+        * @tc.number Communication_WiFi_Event_Test_0010
         * @tc.name testp2pPeerDeviceChange
         * @tc.desc Test p2pPeerDeviceChange callback
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_Event_Test_0010', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0010', 0, async function (done) {
             let p2pPeerDeviceState = "p2pPeerDeviceChange";
             let p2pPeerDeviceChangeCallback = result => {
                 console.info("[wifi_test]p2pPeerDeviceChange callback, result: " + JSON.stringify(result));
@@ -141,13 +131,13 @@ export default function actsWifiEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0013
+        * @tc.number Communication_WiFi_Event_Test_0013
         * @tc.name testp2pPersistentGroupChange
         * @tc.desc Test p2pPersistentGroupChange callback
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_Event_Test_0013', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0013', 0, async function (done) {
             let p2pGroupState = "p2pPersistentGroupChange";
             let p2pPersistentGroupChangeCallback = () => {
                 console.info("[wifi_test]p2pPersistentGroupChange callback, result: " + JSON.stringify(result));
@@ -158,7 +148,7 @@ export default function actsWifiEventTest() {
                 netId : -2,
                 passphrase : "12345678",
                 groupName : "AAAZZZ123",
-                goBand : 0,
+                goBand : wifi.GroupOwnerBand.GO_BAND_AUTO,
             };
             let createGroupResult = wifi.createGroup(WifiP2PConfig);
             await (2000);
@@ -175,13 +165,13 @@ export default function actsWifiEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0011
+        * @tc.number Communication_WiFi_Event_Test_0011
         * @tc.name testpp2pDiscoveryChange
         * @tc.desc Test p2pDiscoveryChange callback
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('SUB_Communication_WiFi_Event_Test_0011', 0, async function (done) {
+        it('Communication_WiFi_Event_Test_0011', 0, async function (done) {
             let p2pPeerDeviceState = "p2pDiscoveryChange";
             let p2pDiscoveryChangeCallback = result => {
                 console.info("[wifi_test]p2pDiscoveryChange callback, result: " + JSON.stringify(result));
@@ -198,4 +188,5 @@ export default function actsWifiEventTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
+
 

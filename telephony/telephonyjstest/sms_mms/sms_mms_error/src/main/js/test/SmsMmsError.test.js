@@ -17,20 +17,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function SmsMmsErrorTest() {
 
 describe('SmsMmsErrorTest', function () {
-  const FALSE_SLOT_ID = 9;
-  const CORRECT_SMS_PDU = '01000F9168683106019196F400080A00680065006C006C006F';
-  const ERROR_MESSAGE_PATH = '/data/telephony/deSrc/EorroMessagePath.mms';
-  const IDENTIFIER_MIN = 0;
-  const IDENTIFIER_MAX = 0xFFFF;
-  const RANTYPE_GSM = 1;
+
   var rawArrayNull = [];
-  const SMS_SEND_DST_NUMBER = '';
-  const MAX_CHINESE_MESSAGE_LENTH = 63;
-  const MAX_MESSAGE_LENTH = 2401;
-
-  const TRUE_SLOT_ID = 0;
-  const RECEIVE_SMS_PDU = '240D91689141468496F600001270721142432302B319';
-
 
   /*
    * @tc.number  Telephony_SmsMms_createMessage_Async_0200

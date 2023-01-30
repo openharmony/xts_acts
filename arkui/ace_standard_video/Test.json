@@ -5,7 +5,8 @@
         "test-timeout": "1000000",
         "shell-timeout": "1000000",
         "bundle-name": "com.example.acevideo",
-        "package-name": "com.example.acevideo"
+        "package-name": "com.example.acevideo",
+        "testcase-timeout":"10000"
     },
     "kits": [
         {

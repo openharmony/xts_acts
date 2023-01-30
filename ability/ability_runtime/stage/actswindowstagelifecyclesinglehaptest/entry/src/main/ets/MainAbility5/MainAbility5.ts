@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 
 export default class MainAbility5 extends Ability {
     onCreate(want, launchParam) {
@@ -46,7 +46,7 @@ export default class MainAbility5 extends Ability {
                 }).catch((error) => {
                 console.error('[Demo] MainAbility5 terminateself failed. Cause: ' + error);
             })
-        }, 500);
+        }, 1000);
     }
 
     onBackground() {

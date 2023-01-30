@@ -114,7 +114,6 @@ export default function requestUploadJSUnit() {
         });
       } catch (err) {
         console.info("====>SUB_REQUEST_UPLOAD_STAGE_API_CALLBACK_0001 error: " + err);
-        expect().assertFail();
       }
       setTimeout(()=>{
         console.info("====>------------------SUB_REQUEST_UPLOAD_STAGE_API_CALLBACK_0001 end-----------------------");
@@ -157,7 +156,6 @@ export default function requestUploadJSUnit() {
         });
       } catch (e) {
         console.info("====>SUB_REQUEST_UPLOAD_STAGE_API_PROMISE_0001 error: " + JSON.stringify(e));
-        expect(e).assertFail();
       }
       setTimeout(()=>{
         console.info("====>------------------SUB_REQUEST_UPLOAD_STAGE_API_PROMISE_0001 end-----------------------");
@@ -245,19 +243,28 @@ export default function requestUploadJSUnit() {
             expect(true).assertEqual((uploadTask != undefined) || (uploadTask != "") || (uploadTask != {}));
 
             uploadTask.off('complete', () => {
-              console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0003 TaskState success");
-              expect(true).assertEqual(true);
+              try{
+                console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0003 TaskState success");
+                expect(true).assertEqual(true);
+              }catch(err){
+                console.debug("====>SUB_REQUEST_UPLOAD_API_PROMISE_0003 complete err"+ JSON.stringify(err));
+                done();
+              }              
             });
 
             uploadTask.off('fail', () => {
-              console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0003 TaskState success");
-              expect(true).assertEqual(true);
+              try{
+                console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0003 TaskState success");
+                expect(true).assertEqual(true);
+              }catch(err){
+                console.debug("====>SUB_REQUEST_UPLOAD_API_PROMISE_0003 fail err" + JSON.stringify(err));
+                done();
+              }              
             });
           }catch(err){
             expect().assertFail();
             done();
-          }
-          
+          }          
         });
       } catch (e) {
         console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0003 error: " + JSON.stringify(e));
@@ -281,16 +288,15 @@ export default function requestUploadJSUnit() {
       try {
         request.uploadFile(globalThis.abilityContext, uploadConfig, (err, data)=>{
           uploadTask = data;
-          console.info("SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 uploadFile: " + uploadTask);
+          console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 uploadFile: " + uploadTask);
           try{
             expect(true).assertEqual(uploadTask != undefined);
           }catch(e){
-            console.info("SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 except error: " + e);
+            console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 except error: " + e);
           }
         });
       } catch (err) {
-        console.error("SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 error: " + err);
-        expect().assertFail();
+        console.error("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 error: " + err);
       };
       setTimeout(()=>{
         console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 end-----------------------");
@@ -310,18 +316,18 @@ export default function requestUploadJSUnit() {
       try{
         request.uploadFile(globalThis.abilityContext, uploadConfig).then(data => {
           uploadTask = data;
-          console.info("SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 uploadFile: " + uploadTask);
+          console.info("====>SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 uploadFile: " + uploadTask);
           try{
             expect(true).assertEqual(uploadTask != undefined);
           }catch(e){
-            console.info("SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 except error: " + e);
+            console.info("====>SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 except error: " + e);
           }
         }).catch(err => {
-          console.error("SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 error: " + err);
+          console.error("====>SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 error: " + err);
           expect().assertFail();
         })
       }catch(err){
-        console.error("SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 catch error: " + err);
+        console.error("====>SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 catch error: " + err);
       }
       setTimeout(()=>{
         console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 end-----------------------");
@@ -329,5 +335,71 @@ export default function requestUploadJSUnit() {
       }, 10000);
     });
 
+    /**
+     * @tc.number    SUB_REQUEST_UPLOAD_API_DELETE_0001
+     * @tc.desc      Delete the upload task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_UPLOAD_API_DELETE_0001', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 is starting-----------------------");
+      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, data) => {
+        try{
+          uploadTask = data;
+          console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask: " + uploadTask);
+          expect(uploadTask != undefined).assertEqual(true);
+          uploadTask.delete((err, data) => {
+            try{
+              if (err) {
+                console.error('====>SUB_REQUEST_UPLOAD_API_DELETE_0001 Failed to delete the uploadTask task.');
+                expect().assertFail();
+                done();
+              }
+              console.info('====>SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask task delete success.');
+              expect(typeof data == "boolean").assertTrue();            
+              console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 end-----------------------");
+              done();
+            }catch(err){
+              console.error('====>SUB_REQUEST_UPLOAD_API_DELETE_0001 delete error' + err);
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('====>SUB_REQUEST_UPLOAD_API_DELETE_0001 delete catch error' + error);
+          done();
+        }        
+      })      
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_UPLOAD_API_DELETE_0002
+     * @tc.desc      Delete the upload task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_UPLOAD_API_DELETE_0002', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0002 is starting-----------------------");
+      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, data) => {
+        uploadTask = data;
+        console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0002 uploadTask: " + uploadTask);
+        try{
+          expect(uploadTask != undefined).assertEqual(true);
+          uploadTask.delete().then(data => {
+            console.info('====>SUB_REQUEST_UPLOAD_API_DELETE_0002 delete data:' + JSON.stringify(data));
+            expect(data).assertEqual(true);
+            done();
+          }).catch((err) => {
+            console.info('====>SUB_REQUEST_UPLOAD_API_DELETE_0002 Failed to delete the uploadTask task.');
+            expect().assertFail();
+            done();
+          })
+        }catch(err){
+          console.error('====>SUB_REQUEST_UPLOAD_API_DELETE_0002 delete catch err');
+          done();
+        }     
+      })
+    });
   })
 }

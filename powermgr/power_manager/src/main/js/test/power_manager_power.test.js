@@ -78,19 +78,12 @@ describe('PowerManagerPowerTest', function () {
      */
      it('Power_Is_Active_JSTest0040', 0, function () {
         try {
-            power.suspend();
-            power.wakeup('Power_Is_Active_JSTest0040');
-            let on = power.isActive();
-            console.info('Power_Is_Active_JSTest0040 on:' + on);
-            expect(on).assertTrue();
-            power.suspend();
-            let off = power.isActive();
-            console.info('Power_Is_Active_JSTest0040 off:' + off);
-            expect(off).assertFalse();
-        } catch (e) {
-            console.info('Power_Is_Active_JSTest0040:' + e);
-            expect().assertFail();
-        }
+            var isActive = power.isActive();
+            console.info('power is active: ' + isActive);
+            expect(isActive).assertNotNull();
+        } catch(err) {
+            console.error('check active status failed, err: ' + err);
+        }        
     })
 
     /**

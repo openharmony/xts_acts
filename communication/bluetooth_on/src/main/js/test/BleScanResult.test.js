@@ -15,18 +15,6 @@
 
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-let ScanDuty=
-    {
-        SCAN_MODE_LOW_POWER : 0,
-        SCAN_MODE_BALANCED : 1,
-        SCAN_MODE_LOW_LATENCY : 2,
-    };
-
-let MatchMode=
-    {
-        MATCH_MODE_AGGRESSIVE : 1,
-        MATCH_MODE_STICKY : 2,
-    };
 
 export default function bluetoothhostTest() {
 describe('bluetoothhostTest', function() {
@@ -190,8 +178,8 @@ describe('bluetoothhostTest', function() {
             [{}],
            {
                 interval: 100,
-                dutyMode: ScanDuty.SCAN_MODE_LOW_POWER,
-                matchMode: MatchMode.MATCH_MODE_AGGRESSIVE,
+                dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
+                matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
             }
         );
         await sleep(1000);
@@ -218,8 +206,8 @@ describe('bluetoothhostTest', function() {
         }
         let ScanOptions=  {
             interval: 100,
-            dutyMode: ScanDuty.SCAN_MODE_BALANCED,
-            matchMode: MatchMode.MATCH_MODE_AGGRESSIVE,
+            dutyMode: bluetooth.ScanDuty.SCAN_MODE_BALANCED,
+            matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
         }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan([{}],ScanOptions);
@@ -250,8 +238,8 @@ describe('bluetoothhostTest', function() {
             [{}],
            {
                 interval: 100,
-                dutyMode: ScanDuty.SCAN_MODE_LOW_LATENCY,
-                matchMode: MatchMode.MATCH_MODE_AGGRESSIVE,
+                dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_LATENCY,
+                matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
             }
         );
         await sleep(1000);
@@ -284,8 +272,8 @@ describe('bluetoothhostTest', function() {
             [{}],
            {
                 interval: 100,
-                dutyMode: ScanDuty.SCAN_MODE_LOW_POWER,
-                matchMode: MatchMode.MATCH_MODE_AGGRESSIVE,
+                dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
+                matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
             }
         );
         await sleep(1000);
@@ -315,8 +303,8 @@ describe('bluetoothhostTest', function() {
             [{}],
            {
                 interval: 0,
-                dutyMode: ScanDuty.SCAN_MODE_LOW_LATENCY,
-                matchMode: MatchMode.MATCH_MODE_AGGRESSIVE,
+                dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_LATENCY,
+                matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
             }
         );
         await sleep(1000);
@@ -346,8 +334,8 @@ describe('bluetoothhostTest', function() {
             [{}],
            {
                 interval: 500,
-                dutyMode: ScanDuty.SCAN_MODE_LOW_POWER,
-                matchMode: MatchMode.MATCH_MODE_AGGRESSIVE,
+                dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
+                matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
             }
         );
         await sleep(1000);
@@ -377,8 +365,8 @@ describe('bluetoothhostTest', function() {
             [{}],
            {
                 interval: 500,
-                dutyMode: ScanDuty.SCAN_MODE_LOW_POWER,
-                matchMode: MatchMode.MATCH_MODE_AGGRESSIVE,
+                dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
+                matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
             }
         );
         await sleep(1000);
@@ -408,8 +396,8 @@ describe('bluetoothhostTest', function() {
             [{}],
            {
                interval: 500,
-               dutyMode: ScanDuty.SCAN_MODE_LOW_LATENCY,
-               matchMode: MatchMode.MATCH_MODE_STICKY,
+               dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_LATENCY,
+               matchMode: bluetooth.MatchMode.MATCH_MODE_STICKY,
             }
         );
         await sleep(1000);
@@ -613,8 +601,8 @@ describe('bluetoothhostTest', function() {
             [{}],
            {
                interval: 500,
-               dutyMode: ScanDuty.SCAN_MODE_LOW_LATENCY,
-               matchMode: MatchMode.MATCH_MODE_STICKY,
+               dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_LATENCY,
+               matchMode: bluetooth.MatchMode.MATCH_MODE_STICKY,
             }
         );
         console.info('[bluetooth_js] BLE scan offC');
@@ -626,4 +614,5 @@ describe('bluetoothhostTest', function() {
 
 })
 }
+
 

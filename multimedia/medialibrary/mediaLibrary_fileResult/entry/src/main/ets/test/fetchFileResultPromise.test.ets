@@ -13,53 +13,48 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import mediaLibrary from "@ohos.multimedia.mediaLibrary";
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
-import {
-    sleep,
-    IMAGE_TYPE,
-    FILE_TYPE,
-    FILEKEY,
-    checkAssetsCount,
-    fetchOps,
-} from '../../../../../../common';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
+import { sleep, IMAGE_TYPE, FILE_TYPE, FILEKEY, checkAssetsCount, fetchOps } from "../../../../../../common";
 
 export default function fetchFileResultPromiseTest(abilityContext) {
-    describe('fetchFileResultPromiseTest', function () {
+    describe("fetchFileResultPromiseTest", function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
-            console.info('beforeAll case');
+            console.info("beforeAll case");
         });
         beforeEach(function () {
-            console.info('beforeEach case');
+            console.info("beforeEach case");
         });
         afterEach(async function () {
-            console.info('afterEach case');
-            await sleep()
+            console.info("afterEach case");
+            await sleep();
         });
         afterAll(function () {
-            console.info('afterAll case');
+            console.info("afterAll case");
         });
 
         const checkAssetCount = async function (done, testNum, fetchOp, expectCount) {
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkResult = await checkAssetsCount(done, testNum, fetchFileResult, expectCount)
+                let checkResult = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
                 expect(checkResult).assertTrue();
-                await fetchFileResult.close();
+                fetchFileResult.close();
                 done();
             } catch (error) {
-                console.info(`${testNum} error: ${error}`)
+                console.info(`${testNum} error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
 
         const checkGetPositionObject = async function (done, testNum, pos) {
             try {
-                let currentFetchOp = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE, { order: FILEKEY.DATE_ADDED + " DESC" })
-                console.info(`${testNum} currentFetchOp ${currentFetchOp} `)
+                let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE, {
+                    order: FILEKEY.DATE_ADDED + " DESC",
+                });
+                console.info(`${testNum} currentFetchOp ${currentFetchOp} `);
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
@@ -75,12 +70,14 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
 
         const checkGetAllObject = async function (done, testNum, expectCount) {
             try {
-                let currentFetchOp = fetchOps(testNum, 'Documents/Static/', FILE_TYPE, { order: FILEKEY.DATE_ADDED + ` DESC LIMIT 0,${expectCount}` })
-                console.info(`${testNum} currentFetchOp ${currentFetchOp} `)
+                let currentFetchOp = fetchOps(testNum, "Documents/Static/", FILE_TYPE, {
+                    order: FILEKEY.DATE_ADDED + ` DESC LIMIT 0,${expectCount}`,
+                });
+                console.info(`${testNum} currentFetchOp ${currentFetchOp} `);
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
@@ -94,7 +91,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 expect(false).assertTrue();
                 done();
             }
-        }
+        };
 
         // ------------------------------ 001 test start -------------------------
         /**
@@ -105,12 +102,13 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_01'
-            let expectCount = 1
-            let currentFetchOp = fetchOps(testNum, 'Documents/Static/', FILE_TYPE,
-                { order: FILEKEY.DATE_ADDED + " DESC LIMIT 0,1", })
-            await checkAssetCount(done, testNum, currentFetchOp, expectCount)
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_01";
+            let expectCount = 1;
+            let currentFetchOp = fetchOps(testNum, "Documents/Static/", FILE_TYPE, {
+                order: FILEKEY.DATE_ADDED + " DESC LIMIT 0,1",
+            });
+            await checkAssetCount(done, testNum, currentFetchOp, expectCount);
         });
 
         /**
@@ -121,12 +119,13 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_02'
-            let expectCount = 2
-            let currentFetchOp = fetchOps(testNum, 'Documents/Static/', FILE_TYPE,
-                { order: FILEKEY.DATE_ADDED + " DESC LIMIT 0,2", })
-            await checkAssetCount(done, testNum, currentFetchOp, expectCount)
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_02";
+            let expectCount = 2;
+            let currentFetchOp = fetchOps(testNum, "Documents/Static/", FILE_TYPE, {
+                order: FILEKEY.DATE_ADDED + " DESC LIMIT 0,2",
+            });
+            await checkAssetCount(done, testNum, currentFetchOp, expectCount);
         });
 
         /**
@@ -137,12 +136,13 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_03'
-            let expectCount = 100
-            let currentFetchOp = fetchOps(testNum, 'Documents/Static/', FILE_TYPE,
-                { order: FILEKEY.DATE_ADDED + " DESC LIMIT 0,100", })
-            await checkAssetCount(done, testNum, currentFetchOp, expectCount)
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_03";
+            let expectCount = 100;
+            let currentFetchOp = fetchOps(testNum, "Documents/Static/", FILE_TYPE, {
+                order: FILEKEY.DATE_ADDED + " DESC LIMIT 0,100",
+            });
+            await checkAssetCount(done, testNum, currentFetchOp, expectCount);
         });
 
         /**
@@ -153,11 +153,11 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04'
-            let expectCount = 0
-            let currentFetchOp = fetchOps(testNum, 'Documents/zeor/', FILE_TYPE)
-            await checkAssetCount(done, testNum, currentFetchOp, expectCount)
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04";
+            let expectCount = 0;
+            let currentFetchOp = fetchOps(testNum, "Documents/zeor/", FILE_TYPE);
+            await checkAssetCount(done, testNum, currentFetchOp, expectCount);
         });
 
         // ------------------------------ 001 test end -------------------------
@@ -171,11 +171,11 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_ISAFTERLAST_PROMISE_002', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_ISAFTERLAST_PROMISE_002'
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_ISAFTERLAST_PROMISE_002", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_ISAFTERLAST_PROMISE_002";
             try {
-                let currentFetchOp = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
-                console.info(`${testNum} currentFetchOp :${JSON.stringify(currentFetchOp)}`)
+                let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE);
+                console.info(`${testNum} currentFetchOp :${JSON.stringify(currentFetchOp)}`);
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
@@ -207,11 +207,11 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_CLOSE_PROMISE_003', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_CLOSE_PROMISE_003';
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_CLOSE_PROMISE_003", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_CLOSE_PROMISE_003";
             try {
                 let expectCount = 4;
-                let currentFetchOp = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE)
+                let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE);
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
                 if (!checkAssetCountPass) return;
@@ -219,24 +219,34 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 let count = 0;
                 try {
                     fetchFileResult.getCount();
-                } catch { count++ }
+                } catch {
+                    count++;
+                }
                 try {
                     await fetchFileResult.getFirstObject();
-                } catch { count++ }
+                } catch {
+                    count++;
+                }
                 try {
                     await fetchFileResult.getNextObject();
-                } catch { count++ }
+                } catch {
+                    count++;
+                }
                 try {
                     await fetchFileResult.getLastObject();
-                } catch { count++ }
+                } catch {
+                    count++;
+                }
                 try {
                     await fetchFileResult.getPositionObject(0);
-                } catch { count++ }
-                await sleep(1000)
+                } catch {
+                    count++;
+                }
+                await sleep(1000);
                 expect(count).assertEqual(5);
                 done();
             } catch (error) {
-                console.info(`${testNum} error:${error}`)
+                console.info(`${testNum} error:${error}`);
                 expect(false).assertTrue();
                 done();
             }
@@ -253,11 +263,13 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_PROMISE_004', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_PROMISE_004'
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_PROMISE_004", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_PROMISE_004";
             try {
-                let currentFetchOp = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE, { order: FILEKEY.DATE_ADDED + " DESC" })
-                console.info(`${testNum} currentFetchOp ${JSON.stringify(currentFetchOp)} `)
+                let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE, {
+                    order: FILEKEY.DATE_ADDED + " DESC",
+                });
+                console.info(`${testNum} currentFetchOp ${JSON.stringify(currentFetchOp)} `);
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
@@ -285,11 +297,13 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETNEXTOBJECT_PROMISE_005', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETNEXTOBJECT_PROMISE_005'
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETNEXTOBJECT_PROMISE_005", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETNEXTOBJECT_PROMISE_005";
             try {
-                let currentFetchOp = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE, { order: FILEKEY.DATE_ADDED + " DESC" })
-                console.info(`${testNum} currentFetchOp ${JSON.stringify(currentFetchOp)} `)
+                let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE, {
+                    order: FILEKEY.DATE_ADDED + " DESC",
+                });
+                console.info(`${testNum} currentFetchOp ${JSON.stringify(currentFetchOp)} `);
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
@@ -320,11 +334,13 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETLASTOBJECT_PROMISE_006', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETLASTOBJECT_PROMISE_006'
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETLASTOBJECT_PROMISE_006", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETLASTOBJECT_PROMISE_006";
             try {
-                let currentFetchOp = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE, { order: FILEKEY.DATE_ADDED + " DESC" })
-                console.info(`${testNum} currentFetchOp ${JSON.stringify(currentFetchOp)} `)
+                let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE, {
+                    order: FILEKEY.DATE_ADDED + " DESC",
+                });
+                console.info(`${testNum} currentFetchOp ${JSON.stringify(currentFetchOp)} `);
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
@@ -352,10 +368,10 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_01';
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_01";
             let pos = 0;
-            await checkGetPositionObject(done, testNum, pos)
+            await checkGetPositionObject(done, testNum, pos);
         });
 
         /**
@@ -366,10 +382,10 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_02';
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_02";
             let pos = 1;
-            await checkGetPositionObject(done, testNum, pos)
+            await checkGetPositionObject(done, testNum, pos);
         });
 
         /**
@@ -380,10 +396,10 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_03';
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_03";
             let pos = 3;
-            await checkGetPositionObject(done, testNum, pos)
+            await checkGetPositionObject(done, testNum, pos);
         });
 
         /**
@@ -394,11 +410,13 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_04', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_04'
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_04", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_04";
             try {
-                let currentFetchOp = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE, { order: FILEKEY.DATE_ADDED + " DESC" })
-                console.info(`${testNum} currentFetchOp ${currentFetchOp} `)
+                let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE, {
+                    order: FILEKEY.DATE_ADDED + " DESC",
+                });
+                console.info(`${testNum} currentFetchOp ${currentFetchOp} `);
 
                 let fetchFileResult = await media.getFileAssets(currentFetchOp);
                 let expectCount = 4;
@@ -407,11 +425,12 @@ export default function fetchFileResultPromiseTest(abilityContext) {
                 try {
                     await fetchFileResult.getPositionObject(expectCount);
                     expect(false).assertTrue();
+                    fetchFileResult.close();
                     done();
                 } catch (error) {
                     console.info(`${testNum} passed error: ${error}`);
                     expect(true).assertTrue();
-                    fetchFileResult.close()
+                    fetchFileResult.close();
                     done();
                 }
             } catch (error) {
@@ -431,10 +450,10 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_01';
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_01", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_01";
             let expectCount = 1;
-            await checkGetAllObject(done, testNum, expectCount)
+            await checkGetAllObject(done, testNum, expectCount);
         });
 
         /**
@@ -445,10 +464,10 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_02';
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_02", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_02";
             let expectCount = 50;
-            await checkGetAllObject(done, testNum, expectCount)
+            await checkGetAllObject(done, testNum, expectCount);
         });
 
         /**
@@ -459,12 +478,11 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_03';
+        it("SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_03", 0, async function (done) {
+            let testNum = "SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_PROMISE_008_03";
             let expectCount = 100;
-            await checkGetAllObject(done, testNum, expectCount)
+            await checkGetAllObject(done, testNum, expectCount);
         });
         // ------------------------------ 008 test end -------------------------
-
     });
 }

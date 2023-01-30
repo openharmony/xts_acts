@@ -21,11 +21,9 @@ export default function ImageReceiver() {
         const HEIGHT = 8;
         const CAPACITY = 8;
         const RGBA = 12;
-        const YCBCR = 22;
-        const Jpg_YStride = 1;
-        const UVStride = 2;
-        const { JPEG: FORMATJPEG, YCBCR_422_SP } = image.ImageFormat;
-        const { YUV_Y, YUV_U, YUV_V, JPEG } = image.ComponentType;
+        const Jpg_Stride = 1;
+        const { JPEG: FORMATJPEG } = image.ImageFormat;
+        const { JPEG } = image.ComponentType;
         beforeAll(async function () {
             console.info("beforeAll case");
         });
@@ -99,11 +97,7 @@ export default function ImageReceiver() {
                     });
                     expect(true).assertTrue();
                 });
-                if (format == FORMATJPEG) {
-                    var dummy = receiver.test;
-                } else {
-                    var dummy = receiver.testYUV;
-                }
+                var dummy = receiver.test;
             }
         }
 
@@ -145,11 +139,7 @@ export default function ImageReceiver() {
                     });
                     expect(true).assertTrue();
                 });
-                if (format == FORMATJPEG) {
-                    var dummy = receiver.test;
-                } else {
-                    var dummy = receiver.testYUV;
-                }
+                var dummy = receiver.test;
             }
         }
 
@@ -198,11 +188,7 @@ export default function ImageReceiver() {
                 });
                 expect(true).assertTrue();
             });
-            if (format == FORMATJPEG) {
-                var dummy = receiver.test;
-            } else {
-                var dummy = receiver.testYUV;
-            }
+            var dummy = receiver.test;
         }
 
         async function getComponentCb(done, testNum, format, param, checkFormat, checkStride) {
@@ -247,11 +233,7 @@ export default function ImageReceiver() {
                 });
                 expect(true).assertTrue();
             });
-            if (format == FORMATJPEG) {
-                var dummy = receiver.test;
-            } else {
-                var dummy = receiver.testYUV;
-            }
+            var dummy = receiver.test;
         }
 
         async function onErr(done, testNum, param) {
@@ -513,31 +495,6 @@ export default function ImageReceiver() {
                 expect(receiver.size.height == HEIGHT).assertTrue();
                 expect(receiver.capacity == CAPACITY).assertTrue();
                 expect(receiver.format == FORMATJPEG).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0500
-         * @tc.name      : createImageReceiver
-         * @tc.desc      : 1.set width,height,format,capacity
-         *                 2.create ImageReceiver
-         *                 3.return ImageReceiver not empty
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0500", 0, async function (done) {
-            var receiver = image.createImageReceiver(WIDTH, HEIGHT, YCBCR_422_SP, CAPACITY);
-            if (receiver == undefined) {
-                expect(false).assertTrue();
-                console.info("SUB_GRAPHIC_IMAGE_RECEIVER_CREATEIMAGERECEIVER_0500 undefined");
-                done();
-            } else {
-                expect(receiver.size.width == WIDTH).assertTrue();
-                expect(receiver.size.height == HEIGHT).assertTrue();
-                expect(receiver.capacity == CAPACITY).assertTrue();
-                expect(receiver.format == YCBCR_422_SP).assertTrue();
                 done();
             }
         });
@@ -810,101 +767,14 @@ export default function ImageReceiver() {
                 expect(imgformat == RGBA);
             }
             function checkStride(rowStride, pixelStride) {
-                expect(rowStride == WIDTH / Jpg_YStride);
-                expect(pixelStride == Jpg_YStride);
+                expect(rowStride == WIDTH / Jpg_Stride);
+                expect(pixelStride == Jpg_Stride);
             }
             getComponentPromise(
                 done,
                 "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100",
                 FORMATJPEG,
                 JPEG,
-                checkFormat,
-                checkStride
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_U_0100
-         * @tc.name      : getComponent-YUV_U
-         * @tc.desc      : 1.create ImageReceiver
-         *                 2.call on
-         *                 3.readLatestImage
-         *                 4.call getComponent
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_U_0100", 0, async function (done) {
-            function checkFormat(imgformat) {
-                expect(imgformat == YCBCR);
-            }
-            function checkStride(rowStride, pixelStride) {
-                expect(rowStride == WIDTH / UVStride);
-                expect(pixelStride == UVStride);
-            }
-            getComponentPromise(
-                done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_U_0100",
-                YCBCR_422_SP,
-                YUV_U,
-                checkFormat,
-                checkStride
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_V_0100
-         * @tc.name      : getComponent-YUV_V
-         * @tc.desc      : 1.create ImageReceiver
-         *                 2.call on
-         *                 3.readLatestImage
-         *                 4.call getComponent
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_V_0100", 0, async function (done) {
-            function checkFormat(imgformat) {
-                expect(imgformat == YCBCR);
-            }
-            function checkStride(rowStride, pixelStride) {
-                expect(rowStride == WIDTH / UVStride);
-                expect(pixelStride == UVStride);
-            }
-            getComponentPromise(
-                done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_V_0100",
-                YCBCR_422_SP,
-                YUV_V,
-                checkFormat,
-                checkStride
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_Y_0100
-         * @tc.name      : getComponent-YUV_Y
-         * @tc.desc      : 1.create ImageReceiver
-         *                 2.call on
-         *                 3.readLatestImage
-         *                 4.call getComponent
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_Y_0100", 0, async function (done) {
-            function checkFormat(imgformat) {
-                expect(imgformat == YCBCR);
-            }
-            function checkStride(rowStride, pixelStride) {
-                expect(rowStride == WIDTH / Jpg_YStride);
-                expect(pixelStride == Jpg_YStride);
-            }
-            getComponentPromise(
-                done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_Y_0100",
-                YCBCR_422_SP,
-                YUV_Y,
                 checkFormat,
                 checkStride
             );
@@ -926,101 +796,14 @@ export default function ImageReceiver() {
                 expect(imgformat == RGBA);
             }
             function checkStride(rowStride, pixelStride) {
-                expect(rowStride == WIDTH / Jpg_YStride);
-                expect(pixelStride == Jpg_YStride);
+                expect(rowStride == WIDTH / Jpg_Stride);
+                expect(pixelStride == Jpg_Stride);
             }
             getComponentCb(
                 done,
                 "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100",
                 FORMATJPEG,
                 JPEG,
-                checkFormat,
-                checkStride
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_Y_0100
-         * @tc.name      : getComponent-YUV_Y
-         * @tc.desc      : 1.create ImageReceiver
-         *                 2.call on
-         *                 3.readLatestImage
-         *                 4.call getComponent
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_Y_0100", 0, async function (done) {
-            function checkFormat(imgformat) {
-                expect(imgformat == YCBCR);
-            }
-            function checkStride(rowStride, pixelStride) {
-                expect(rowStride == WIDTH / Jpg_YStride);
-                expect(pixelStride == Jpg_YStride);
-            }
-            getComponentCb(
-                done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_Y_0100",
-                YCBCR_422_SP,
-                YUV_Y,
-                checkFormat,
-                checkStride
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_V_0100
-         * @tc.name      : getComponent-YUV_V
-         * @tc.desc      : 1.create ImageReceiver
-         *                 2.call on
-         *                 3.readLatestImage
-         *                 4.call getComponent
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_V_0100", 0, async function (done) {
-            function checkFormat(imgformat) {
-                expect(imgformat == YCBCR);
-            }
-            function checkStride(rowStride, pixelStride) {
-                expect(rowStride == WIDTH / UVStride);
-                expect(pixelStride == UVStride);
-            }
-            getComponentCb(
-                done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_V_0100",
-                YCBCR_422_SP,
-                YUV_V,
-                checkFormat,
-                checkStride
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_U_0100
-         * @tc.name      : getComponent-YUV_U
-         * @tc.desc      : 1.create ImageReceiver
-         *                 2.call on
-         *                 3.readLatestImage
-         *                 4.call getComponent
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_U_0100", 0, async function (done) {
-            function checkFormat(imgformat) {
-                expect(imgformat == YCBCR);
-            }
-            function checkStride(rowStride, pixelStride) {
-                expect(rowStride == WIDTH / UVStride);
-                expect(pixelStride == UVStride);
-            }
-            getComponentCb(
-                done,
-                "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_U_0100",
-                YCBCR_422_SP,
-                YUV_U,
                 checkFormat,
                 checkStride
             );
@@ -1291,51 +1074,6 @@ export default function ImageReceiver() {
          */
         it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800", 0, async function (done) {
             getComponentProErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0800", FORMATJPEG, { a: 1 });
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0900
-         * @tc.name      : getComponent-wrong format
-         * @tc.desc      : 1.create ImageReceiver
-         *                 2.call on
-         *                 3.readLatestImage
-         *                 4.call getComponent
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0900", 0, async function (done) {
-            getComponentCbErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_0900", FORMATJPEG, YUV_U);
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_1000
-         * @tc.name      : getComponent-wrong format
-         * @tc.desc      : 1.create ImageReceiver
-         *                 2.call on
-         *                 3.readLatestImage
-         *                 4.call getComponent
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_1000", 0, async function (done) {
-            getComponentProErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_1000", YCBCR_422_SP, JPEG);
-        });
-
-        /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_1100
-        * @tc.name      : getComponent-wrong format
-        * @tc.desc      : 1.create ImageReceiver
-        *                 2.call on
-        *                 3.readLatestImage
-        *                 4.call getComponent
-        * @tc.size      : MEDIUM
-        * @tc.type      : Functional
-        * @tc.level     : Level 0
-        */
-        it("SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_1100", 0, async function (done) {
-            getComponentProErr(done, "SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_ERROR_1100", FORMATJPEG, YUV_V);
         });
 
         /**

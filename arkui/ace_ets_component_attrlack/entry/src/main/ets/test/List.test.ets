@@ -46,6 +46,7 @@ import responseTypeJsunit from './responseType.test.ets';
 import copyOptionJsunit from './copyOption.test.ets';
 import hitTestModeJsunit from './hitTestMode.test.ets';
 import colorEnumJsunit from './color.test.ets';
+import ohosrouterJsunit from './ohosrouter.test.ets';
 
 export default function testsuite() {
   animatorOnframeJsunit()
@@ -75,4 +76,5 @@ export default function testsuite() {
   copyOptionJsunit()
   hitTestModeJsunit()
   colorEnumJsunit()
+  ohosrouterJsunit()
 }
