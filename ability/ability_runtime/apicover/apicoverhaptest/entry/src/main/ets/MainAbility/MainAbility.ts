@@ -47,4 +47,28 @@ export default class MainAbility extends Ability {
         // Ability has back to background
         console.log("[Demo] MainAbility onBackground")
     }
+
+    onConfigurationUpdate(config) {
+        console.log('[Demo] MainAbility onConfigurationUpdate: ' + this.context.config.language)
+        console.log('[Demo] MainAbility onConfigurationUpdate: ' + config.language)
+        if (globalThis.UpdateConfiguration_0200_prepare_resolve) {
+            globalThis.UpdateConfiguration_0200_prepare_resolve();
+        }
+
+        if (!globalThis.UpdateConfiguration_0200_resolve) {
+            console.log("[Demo] MainAbility invalid resolve")
+            return;
+        }
+
+        if (!globalThis.UpdateConfiguration_0200_reject) {
+            console.log("[Demo] MainAbility invalid reject")
+            return;
+        }
+
+        if (this.context.config.language == "English" && config.language == "zh-Hans") {
+            globalThis.UpdateConfiguration_0200_resolve();
+        } else {
+            globalThis.UpdateConfiguration_0200_reject();
+        }
+    }
 };

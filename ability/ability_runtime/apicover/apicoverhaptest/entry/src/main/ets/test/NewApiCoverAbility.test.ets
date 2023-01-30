@@ -131,5 +131,65 @@ export default function ApiCoverTest() {
         done();
       }
     });
+
+    /*
+     * @tc.number  SUB_AA_UpdateConfiguration_0200
+     * @tc.name    Test updateConfiguration.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_UpdateConfiguration_0200', 0, async function (done) {
+      let enLanguage = {
+        language: 'English'
+      }
+      let zhLanguage = {
+        language: 'zh-Hans'
+      }
+
+    // set language to english
+    await new Promise((resolve, reject) => {
+      globalThis.UpdateConfiguration_0200_prepare_resolve = resolve;
+      console.info("SUB_AA_UpdateConfiguration_0200 ----> before set language to english.");
+      abilityManager.updateConfiguration(enLanguage).then(() => {
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> set language to english succeed.");
+      }).catch(err => {
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language to english: " + err);
+        globalThis.UpdateConfiguration_0200_prepare_resolve();
+      });
+    }).then(() => {
+      console.info("SUB_AA_UpdateConfiguration_0200 ----> succees to set language.");
+    }).catch(err => {
+      console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language: " + err);
+    }).finally(() => {
+      globalThis.UpdateConfiguration_0200_prepare_resolve = null;
+      globalThis.UpdateConfiguration_0200_resolve = null;
+      globalThis.UpdateConfiguration_0200_reject = null;
+      console.info("SUB_AA_UpdateConfiguration_0200 ----> set promise to null after all");
+    });
+
+
+    // set language to chinese
+      await new Promise((resolve, reject) => {
+        globalThis.UpdateConfiguration_0200_resolve = resolve;
+        globalThis.UpdateConfiguration_0200_reject = reject;
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> before set language to chinese.");
+        abilityManager.updateConfiguration(zhLanguage).then(() => {
+          console.info("SUB_AA_UpdateConfiguration_0200 ----> set language to chinese succeed.");
+        }).catch(err => {
+          console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language to chinese: " + err);
+        });
+      }).then(() => {
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> succees to set language.");
+        expect(true).assertTrue();
+      }).catch(err => {
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language: " + err);
+        expect(false).assertTrue();
+      }).finally(() => {
+        globalThis.UpdateConfiguration_0200_resolve = null;
+        globalThis.UpdateConfiguration_0200_reject = null;
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> set promise to null after all");
+        done();
+      });
+    });
   })
 }
