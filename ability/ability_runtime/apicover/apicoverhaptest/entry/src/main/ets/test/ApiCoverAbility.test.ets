@@ -27,6 +27,7 @@ import commonEvent from '@ohos.commonEvent';
 import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import common from '@ohos.app.ability.common';
+import contextConstant from "@ohos.app.ability.contextConstant"
 
 var EXTENSION_INFO_ERR = 16000001
 var INNER_ERROR = 16000050
@@ -319,16 +320,13 @@ export default function ApiCoverTest() {
         let appContext: common.ApplicationContext = abilityContext.getApplicationContext();
         let baseContext: common.BaseContext = stageContext;
         let context: common.Context = stageContext;
-        let el1 = common.AreaMode.EL1;
-        let el2 = common.AreaMode.EL2;
+        let el1 = contextConstant.AreaMode.EL1;
+        let el2 = contextConstant.AreaMode.EL2;
         let eventHub: common.EventHub = context.eventHub;
         let abilityResult: common.AbilityResult;
         let connectOptions: common.ConnectOptions;
 
-        appContext.killProcessesBySelf();
-        appContext.killProcessesBySelf((err, data) => {
-            console.log(`killProcessesBySelf, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
-        })
+        console.log("killAllProcesses:" + JSON.stringify(appContext.killAllProcesses));
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
         let abilityDelegatorArgs: abilityDelegatorRegistry.AbilityDelegatorArgs;
