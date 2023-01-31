@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import * as mediaTestBase from '../../../../../../MediaTestBaseAV';
+import * as mediaTestBase from '../../../../../../MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
 import { testAVPlayerFun, AV_PLAYER_STATE, setSource } from '../../../../../../AVPlayerTestBase.js';

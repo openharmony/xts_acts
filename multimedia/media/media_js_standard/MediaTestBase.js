@@ -112,6 +112,12 @@ export function printError(error, done) {
     done();
 }
 
+export function assertErr(opera, err, done) {
+    console.info(`case ${opera} error,errMessage is ${err.message}`);
+    expect().assertFail();
+    done();
+}
+
 // callback function for promise call back error
 export function failureCallback(error) {
     expect().assertFail();
@@ -130,7 +136,12 @@ export function checkDescription(actualDescription, descriptionKey, descriptionV
         console.info('case key is  '+ descriptionKey[i]);
         console.info('case actual value is  '+ property);
         console.info('case hope value is  '+ descriptionValue[i]);
-        expect(property).assertEqual(descriptionValue[i]);
+        if (descriptionKey[i] == 'codec_mime') {
+            expect(property).assertEqual(CODECMIMEVALUE[descriptionValue[i]]);
+        } else {
+            expect(property).assertEqual(descriptionValue[i]);
+        }
+        
     }
 }
 
