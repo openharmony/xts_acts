@@ -15,6 +15,7 @@
 
 #include <thread>
 #include <inttypes.h>
+#include <securec.h>
 #include "ohos_common.h"
 #include "gtest/gtest.h"
 #include "include/c_api/context_c.h"
@@ -90,9 +91,9 @@ void FillInputsData(OH_AI_TensorHandleArray inputs, string model_name, bool is_t
             const int64_t *shape = OH_AI_TensorGetShape(tensor, &shape_num);
             auto imageBuf_nhwc = new char[size1];
             PackNCHWToNHWCFp32(imageBuf, imageBuf_nhwc, shape[0], shape[1] * shape[2], shape[3]);
-            memcpy(input_data, imageBuf_nhwc, size1);
+            memcpy_s(input_data, size1, imageBuf_nhwc, size1);
         } else {
-            memcpy(input_data, imageBuf, size1);
+            memcpy_s(input_data, size1, imageBuf, size1);
         }
         printf("input data after filling is: ");
         for (int j = 0; j < element_num && j <= 20; ++j) {
@@ -958,7 +959,7 @@ HWTEST(MSLiteTest, OHOS_Model_GetInputByTensorName_0001, Function | MediumTest |
     const int64_t *shape = OH_AI_TensorGetShape(tensor, &shape_num);
     auto imageBuf_nhwc = new char[size1];
     PackNCHWToNHWCFp32(imageBuf, imageBuf_nhwc, shape[0], shape[1] * shape[2], shape[3]);
-    memcpy(input_data, imageBuf_nhwc, size1);
+    memcpy_s(input_data, size1, imageBuf_nhwc, size1);
     printf("input data is:");
     for (int j = 0; j < element_num && j <= 20; ++j) {
         printf("%f ", input_data[j]);
@@ -1479,7 +1480,7 @@ HWTEST(MSLiteTest, OHOS_Input_0003, Function | MediumTest | Level1) {
         printf("Tensor name: %s, elements num: %" PRId64 ".\n", OH_AI_TensorGetName(tensor), element_num);
         void *input_data = OH_AI_TensorGetMutableData(inputs.handle_list[i]);
         ASSERT_NE(input_data, nullptr);
-        memcpy(input_data, imageBuf, size1);
+        memcpy_s(input_data, size1, imageBuf, size1);
     }
     printf("==========Model Predict==========\n");
     OH_AI_TensorHandleArray outputs;
