@@ -177,9 +177,10 @@ describe('SingleKvStoreCallbackTest', function () {
             await kvStore.get(KEY_TEST_STRING_ELEMENT, function (err,data) {
                 if (err == undefined) {
                     console.info('SingleKvStoreGetStringCallbackTest001 get success');
-                    expect(true).assertTrue();
+                    expect(null).assertFail();
                 } else {
-                    console.info('SingleKvStoreGetStringCallbackTest001 get fail');
+                    console.error('SingleKvStoreGetStringCallbackTest001 get fail' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(err.code == 15100004).assertTrue();
                 }
                 done();
             });
@@ -355,9 +356,10 @@ describe('SingleKvStoreCallbackTest', function () {
             await kvStore.get(KEY_TEST_INT_ELEMENT, function (err,data) {
                 if (err == undefined) {
                     console.info('SingleKvStoreGetIntCallbackTest002 get success');
-                    expect(true).assertTrue();
+                    expect(null).assertFail();
                 } else {
-                    console.info('SingleKvStoreGetIntCallbackTest002 get fail');
+                    console.error('SingleKvStoreGetIntCallbackTest002 get fail' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(err.code == 15100004).assertTrue();
                 }
                 done();
             })
@@ -401,9 +403,10 @@ describe('SingleKvStoreCallbackTest', function () {
             await kvStore.get(KEY_TEST_BOOLEAN_ELEMENT, function (err,data) {
                 if (err == undefined) {
                     console.info('SingleKvStoreGetBoolCallbackTest001 get success');
-                    expect(true).assertTrue();
+                    expect(null).assertFail();
                 } else {
                     console.error('SingleKvStoreGetBoolCallbackTest001 get fail' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(err.code == 15100004).assertTrue();
                 }
                 done();
             });
@@ -553,9 +556,10 @@ describe('SingleKvStoreCallbackTest', function () {
             await kvStore.get(KEY_TEST_FLOAT_ELEMENT, function (err,data) {
                 if (err == undefined) {
                     console.info('SingleKvStoreGetFloatCallbackTest001 get success');
-                    expect(true).assertTrue();
+                    expect(null).assertFail();
                 } else {
                     console.error('SingleKvStoreGetFloatCallbackTest001 get fail' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(err.code == 15100004).assertTrue();
                 }
                 done();
             });
