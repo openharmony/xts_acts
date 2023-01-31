@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import media from '@ohos.multimedia.media'
-import * as mediaTestBase from '../../../../../../MediaTestBaseAV';
+import * as mediaTestBase from '../../../../../../MediaTestBase';
 import * as AVPlayerTestBase from '../../../../../../AVPlayerTestBase.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 

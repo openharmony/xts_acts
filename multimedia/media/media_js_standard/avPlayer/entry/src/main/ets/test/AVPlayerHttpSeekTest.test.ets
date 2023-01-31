@@ -14,7 +14,7 @@
  */
 
 import {testAVPlayerSeek} from '../../../../../../AVPlayerTestBase.js';
-import * as mediaTestBase from '../../../../../../MediaTestBaseAV';
+import * as mediaTestBase from '../../../../../../MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 export default function AVPlayerHttpSeekTest() {
