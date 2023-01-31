@@ -14,7 +14,6 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import taskpool from '@ohos.taskpool'
-import worker from "@ohos.worker"
 export default function TaskPoolTest() {
 describe('ActsAbilityTest', function () {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -31,6 +30,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass001', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result = await taskpool.execute(Sum, 10, 20);
@@ -40,6 +40,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass002', 0,  async function (done) {
         function Add(value1, value2) {
+            "use concurrent"
             if (value1 & value2)
                 return true;
             else
@@ -52,6 +53,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass003', 0,  async function (done) {
         function StrCat(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result = await taskpool.execute(StrCat, "abc", "def");
@@ -61,6 +63,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass004', 0,  async function (done) {
         function StrCat(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result = await taskpool.execute(StrCat, "abc", "def");
@@ -71,6 +74,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass005', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             function StrCat(value1, value2) {
                 return value1 + value2;
             }
@@ -83,6 +87,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass006', 0,  async function (done) {
         function Sum(arg1, arg2) {
+            "use concurrent"
             let value = [];
             value[0] = arg1[0] + arg2[0];
             value[1] = arg1[1] + arg2[1];
@@ -96,6 +101,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass007', 0,  async function (done) {
         function Sum(arg1, arg2) {
+            "use concurrent"
             let value = arg1;
             value.a = arg1.a + arg2.a;
             value.b = arg1.b + arg2.b;
@@ -108,6 +114,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass008', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result = await taskpool.execute(Sum, 10);
@@ -117,6 +124,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass009', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result = await taskpool.execute(Sum, 10, 20, 30);
@@ -126,6 +134,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass010', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result1 = await taskpool.execute(Sum, 10, 20);
@@ -137,6 +146,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass011', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result1 = await taskpool.execute(Sum, 10, 20);
@@ -148,9 +158,11 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass012', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         function Multi(value1, value2) {
+            "use concurrent"
             return value1 * value2;
         }
         var result1 = await taskpool.execute(Sum, 10, 20);
@@ -166,6 +178,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass013', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task = new taskpool.Task(Sum, 10, 20);
@@ -176,6 +189,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass014', 0, async function (done) {
         function Add(value1, value2) {
+            "use concurrent"
             if (value1 & value2)
                 return true;
             else
@@ -189,6 +203,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass015', 0,  async function (done) {
         function StrCat(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task = new taskpool.Task(StrCat, "abc", "def");
@@ -199,6 +214,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass016', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             function StrCat(value1, value2) {
                 return value1 + value2;
             }
@@ -212,6 +228,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass017', 0, async function (done) {
         function Sum(arg1, arg2) {
+            "use concurrent"
             let value = [];
             value[0] = arg1[0] + arg2[0];
             value[1] = arg1[1] + arg2[1];
@@ -226,6 +243,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass018', 0, async function (done) {
         function Sum(arg1, arg2) {
+            "use concurrent"
             let value = arg1;
             value.a = arg1.a + arg2.a;
             value.b = arg1.b + arg2.b;
@@ -239,6 +257,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass019', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task = new taskpool.Task(Sum, 10);
@@ -249,6 +268,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass020', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task = new taskpool.Task(Sum, 10, 20, 30);
@@ -259,6 +279,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass021', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task = new taskpool.Task(Sum, 10, 20);
@@ -271,6 +292,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass022', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task1 = new taskpool.Task(Sum, 10, 20);
@@ -284,6 +306,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass023', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task1 = new taskpool.Task(Sum, 10, 20);
@@ -297,9 +320,11 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass024', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         function Multi(value1, value2) {
+            "use concurrent"
             return value1 * value2;
         }
         var task1 = new taskpool.Task(Sum, 10, 20);
@@ -319,6 +344,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass025', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result;
@@ -337,6 +363,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass026', 0, async function (done) {
         function Add(value1, value2) {
+            "use concurrent"
             if (value1 & value2)
                 return true;
             else
@@ -358,6 +385,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass027', 0, async function (done) {
         function StrCat(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task = new taskpool.Task(StrCat, "abc", "def")
@@ -376,6 +404,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass028', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             function StrCat(value1, value2) {
                 return value1 + value2;
             }
@@ -397,6 +426,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass029', 0, async function (done) {
         function Sum(arg1, arg2) {
+            "use concurrent"
             let value = [];
             value[0] = arg1[0] + arg2[0];
             value[1] = arg1[1] + arg2[1];
@@ -419,6 +449,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass030', 0, async function (done) {
         function Sum(arg1, arg2) {
+            "use concurrent"
             let value = arg1;
             value.a = arg1.a + arg2.a;
             value.b = arg1.b + arg2.b;
@@ -440,6 +471,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass031', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task = new taskpool.Task(Sum, 10);
@@ -458,6 +490,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass032', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var task = new taskpool.Task(Sum, 10, 20, 30);
@@ -476,6 +509,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass033', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result1;
@@ -504,6 +538,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass034', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result1;
@@ -531,6 +566,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass035', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result1;
@@ -557,9 +593,11 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass036', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         function Multi(value1, value2) {
+            "use concurrent"
             return value1 * value2;
         }
 
@@ -605,6 +643,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass037', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result;
@@ -622,6 +661,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass038', 0, async function (done) {
         function Add(value1, value2) {
+            "use concurrent"
             if (value1 & value2)
                 return true;
             else
@@ -642,6 +682,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass039', 0, async function (done) {
         function StrCat(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result;
@@ -659,6 +700,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass040', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             function StrCat(value1, value2) {
                 return value1 + value2;
             }
@@ -679,6 +721,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass041', 0, async function (done) {
         function Sum(arg1, arg2) {
+            "use concurrent"
             let value = [];
             value[0] = arg1[0] + arg2[0];
             value[1] = arg1[1] + arg2[1];
@@ -700,6 +743,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass042', 0, async function (done) {
         function Sum(arg1, arg2) {
+            "use concurrent"
             let value = arg1;
             value.a = arg1.a + arg2.a;
             value.b = arg1.b + arg2.b;
@@ -720,6 +764,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass043', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result;
@@ -737,6 +782,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass044', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result;
@@ -754,6 +800,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass045', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result1;
@@ -779,6 +826,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass046', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         var result1;
@@ -804,9 +852,11 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass047', 0, async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         function Multi(value1, value2) {
+            "use concurrent"
             return value1 * value2;
         }
 
@@ -847,6 +897,7 @@ describe('ActsAbilityTest', function () {
 
     it('TaskPoolTestClass048', 0,  async function (done) {
         function Sum(value1, value2) {
+            "use concurrent"
             return value1 + value2;
         }
         try {
@@ -867,9 +918,11 @@ describe('ActsAbilityTest', function () {
      */
      it('TaskPoolTestClass049', 0, async function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         function additionDelay(arg) {
+            "use concurrent"
             var start = new Date().getTime();
             while (new Date().getTime() - start < 3000) {
               continue;
@@ -903,9 +956,11 @@ describe('ActsAbilityTest', function () {
       */
     it('TaskPoolTestClass050', 0, function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         function additionDelay(arg) {
+            "use concurrent"
             var start = new Date().getTime();
             while (new Date().getTime() - start < 3000) {
               continue;
@@ -939,9 +994,11 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass051', 0, async function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         function additionDelay(arg) {
+            "use concurrent"
             var start = new Date().getTime();
             while (new Date().getTime() - start < 3000) {
               continue;
@@ -981,9 +1038,11 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass052', 0, function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         function additionDelay(arg) {
+            "use concurrent"
             var start = new Date().getTime();
             while (new Date().getTime() - start < 3000) {
               continue;
@@ -1023,6 +1082,7 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass053', 0, async function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         try {
@@ -1058,6 +1118,7 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass054', 0, function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         try {
@@ -1099,6 +1160,7 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass055', 0, async function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         try {
@@ -1128,6 +1190,7 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass056', 0, function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         try {
@@ -1157,14 +1220,16 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass057', 0, async function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         function additionDelay(arg) {
-          var start = new Date().getTime();
-          while (new Date().getTime() - start < 3000) {
-            continue;
-          }
-          return arg + 1;
+            "use concurrent"
+            var start = new Date().getTime();
+            while (new Date().getTime() - start < 3000) {
+                continue;
+            }
+            return arg + 1;
         }
         try {
             var task1 = new taskpool.Task(additionDelay, 100);
@@ -1200,14 +1265,16 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass058', 0, function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         function additionDelay(arg) {
-          var start = new Date().getTime();
-          while (new Date().getTime() - start < 3000) {
-            continue;
-          }
-          return arg + 1;
+            "use concurrent"
+            var start = new Date().getTime();
+            while (new Date().getTime() - start < 3000) {
+                continue;
+            }
+            return arg + 1;
         }
         try {
             var task1 = new taskpool.Task(additionDelay, 100);
@@ -1243,6 +1310,7 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass059', 0, async function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         try {
@@ -1288,6 +1356,7 @@ describe('ActsAbilityTest', function () {
      */
     it('TaskPoolTestClass060', 0, function (done) {
         function addition(arg) {
+            "use concurrent"
             return arg + 1;
         }
         try {
