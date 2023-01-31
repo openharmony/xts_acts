@@ -259,17 +259,17 @@ describe('relationalStoreTest', function () {
 
         try {
             store.version = 5
-            expect(5).assertEqual(store.version)
+            expect(5).assertEqual(store.version);
         } catch (err) {
-			console.info("SUB_DDM_RelationalStore_Version_0010 failed: err: code=" + err.code + " message=" + err.message)
+			console.info("SUB_DDM_RelationalStore_Version_0010 failed: err: code=" + err.code + " message=" + err.message);
             expect(null).assertFail();
         }
 		
 		try {
             store.version = 2147483647
-            expect(2147483647).assertEqual(store.version)
+            expect(2147483647).assertEqual(store.version);
         } catch (err) {
-			console.info(" SUB_DDM_RelationalStore_Version_0010 failed: err: code=" + err.code + " message=" + err.message)
+			console.info(" SUB_DDM_RelationalStore_Version_0010 failed: err: code=" + err.code + " message=" + err.message);
             expect(null).assertFail();
         }
 
@@ -290,21 +290,21 @@ describe('relationalStoreTest', function () {
         try {
             store.version = -2147483648;
         } catch (err) {
-			console.info("SUB_DDM_RelationalStore_Version_0020 failed1: err: code=" + err.code + " message=" + err.message)
+			console.info("SUB_DDM_RelationalStore_Version_0020 failed1: err: code=" + err.code + " message=" + err.message);
             expect("401").assertEqual(err.code);
         }
 
         try {
             store.version = 2147483647000;
         } catch (err) {
-			console.info("SUB_DDM_RelationalStore_Version_0020 failed2: err: code=" + err.code + " message=" + err.message)
+			console.info("SUB_DDM_RelationalStore_Version_0020 failed2: err: code=" + err.code + " message=" + err.message);
             expect("401").assertEqual(err.code);
         }
 
         try {
             store.version = 0;
         } catch (err) {
-			console.info("SUB_DDM_RelationalStore_Version_0020 failed3: err: code=" + err.code + " message=" + err.message)
+			console.info("SUB_DDM_RelationalStore_Version_0020 failed3: err: code=" + err.code + " message=" + err.message);
             expect("401").assertEqual(err.code);
         }
 
