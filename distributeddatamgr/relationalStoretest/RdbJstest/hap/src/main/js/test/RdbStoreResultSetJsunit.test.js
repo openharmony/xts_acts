@@ -1652,9 +1652,9 @@ describe('rdbResultSetTest', function () {
      it('testGetColumnIndex0004', 0, async function (done) {
         console.info(TAG + '************* testGetColumnIndex0004 start *************');
         {
-            let predicates = await new dataRdb.RdbPredicates('test')
-            let resultSet = await rdbStore.query(predicates)
-            expect(-1).assertEqual(resultSet.getColumnIndex(''))
+            let predicates = await new dataRdb.RdbPredicates('test');
+            let resultSet = await rdbStore.query(predicates);
+            expect(-1).assertEqual(resultSet.getColumnIndex(''));
 
             resultSet = null;
             done();
