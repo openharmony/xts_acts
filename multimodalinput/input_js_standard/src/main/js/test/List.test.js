@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import MultimodalInput_Device_test from './InputDevice.test.js'
+import InputDevice_test from './InputDevice.test.js'
 import MultimodalInput_KeyCode_test from './MultimodalInput_KeyCode.test.js'
-import MultimodalInput_Pointer_test from './Pointer.test.js'
+import Pointer_test from './Pointer.test.js'
 export default function testsuite() {
-    MultimodalInput_Device_test()
+    InputDevice_test()
     MultimodalInput_KeyCode_test()
-    MultimodalInput_Pointer_test()
+    Pointer_test()
 }
