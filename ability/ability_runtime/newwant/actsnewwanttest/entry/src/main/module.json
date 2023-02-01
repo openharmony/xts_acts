@@ -43,6 +43,10 @@
       {
         "name": "ohos.permission.GET_BUNDLE_INFO",
         "reason": "need use ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ]
   }
