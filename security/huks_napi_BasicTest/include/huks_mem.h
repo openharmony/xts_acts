@@ -30,6 +30,14 @@ int32_t HksMemCmp(const void *ptr1, const void *ptr2, uint32_t size);
 
 #define OH_HUKS_KEY_BYTES(keySize) (((keySize) + 7) / 8)
 
+#define HUKS_FREE_BLOB(blob) do { \
+    if ((blob).data != nullptr) { \
+        HksFree((blob).data); \
+        (blob).data = nullptr; \
+    } \
+    (blob).size = 0; \
+} while (0)
+
 #ifdef __cplusplus
 }
 #endif

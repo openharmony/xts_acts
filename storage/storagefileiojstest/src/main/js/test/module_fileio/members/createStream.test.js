@@ -61,7 +61,7 @@ describe('fileio_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileio.createStream(fpath, 'r+', function (err, stream) {
+      fileio.createStream(fpath, 'r+', function (err, stream) {
         expect(stream.closeSync() == null).assertTrue();
         expect(fileio.unlinkSync(fpath) == null).assertTrue();
         done();
@@ -86,7 +86,7 @@ describe('fileio_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileio.createStream(fpath, 'r+', function (err, stream) {
+      fileio.createStream(fpath, 'r+', function (err, stream) {
         expect(stream.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
         expect(stream.closeSync() == null).assertTrue();
         expect(fileio.unlinkSync(fpath) == null).assertTrue();

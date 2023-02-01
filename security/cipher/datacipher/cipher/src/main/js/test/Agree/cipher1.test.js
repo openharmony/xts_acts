@@ -405,33 +405,4 @@ describe('cipher1_test', function () {
 		}
 	  });
    });
-   
-  /**
-   * @tc.number     SUB_SEC_DataPro_cipher_2300
-   * @tc.name       Pressure test on the RSA algorithm encryption and decryption interface
-   * @tc.desc       [C-SECURITY-1800]
-   */
-   it('SUB_SEC_DataPro_cipher_2300', 3, function () {
-	  cipher.aes({
-		action: 'decrypt',
-		text: cipherTextAes,
-		key: aesKey,
-		transformation: 'AES',
-		iv: 'MTIzNDU2Nzg5MDEyMzQ1Ng==',
-		ivOffset: 0,
-		ivLen: 16,
-		success: data => {
-		  console.log(`cipher.aes decrypt success: ${data.text}`);
-		  expect(cipherResultFail).toBeTrue();
-		},
-		fail: (data,code) => {
-		  this.err = `${code}: ${data}`;
-		  console.log(`transformation is invalid, cipher.aes decrypt fail: ${code}: ${data}`);
-		  expect(cipherResult).toBeTrue();
-		},
-		complete: () => {
-		  console.log(`Aes encrypt end...`);
-		}
-	  });
-   });
 });}

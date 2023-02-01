@@ -24,6 +24,7 @@
 #include "cmsis_os2.h"
 #include "ohos_types.h"
 
+#include <unistd.h>
 #define TEST_INDEX_0    0
 #define TEST_INDEX_1    1
 #define TEST_INDEX_2    2

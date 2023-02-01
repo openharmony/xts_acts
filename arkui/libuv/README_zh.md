@@ -14,8 +14,8 @@ Libuv测试套件使用Libuv三方库内原有的unittest，通过acts测试套�
 ├── cplibuv.sh
 ├── genlocal.py
 ├── src
-│   ├── ActsLibuvTestSuite.cpp
-│   └── ActsLibuvTestSuite.h
+│   ├── ActsLibuvTest.cpp
+│   └── ActsLibuvTest.h
 └── Test.json
 ```
 
@@ -35,12 +35,12 @@ Libuv测试套件使用Libuv三方库内原有的unittest，通过acts测试套�
   ./build.sh --product-name rk3568 --gn-args build_xts=true --build-target "acts" --gn-args is_standard_system=true
   ```
 
-  
+
 
 * 测试运行：进入suites/acts目录，执行python -m xdevice，然后在命令框里输入一下命令
 
   ```bash
-  run -l ActsLibuvTestSuite
+  run -l ActsLibuvTest
   ```
 
-  
+

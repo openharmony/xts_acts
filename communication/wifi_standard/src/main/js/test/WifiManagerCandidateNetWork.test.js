@@ -31,35 +31,11 @@ function resolveIP(ip) {
 
 let wifiSecurityType = {
     WIFI_SEC_TYPE_INVALID: 0,
-    WIFI_SEC_TYPE_OPEN: 1,
-    WIFI_SEC_TYPE_WEP: 2,
-    WIFI_SEC_TYPE_PSK: 3,
-    WIFI_SEC_TYPE_SAE: 4,
     WIFI_SEC_TYPE_EAP: 5,
     WIFI_SEC_TYPE_EAP_SUITE_B: 6,
     WIFI_SEC_TYPE_OWE:7 ,
     WIFI_SEC_TYPE_WAPI_CERT:8 ,
     WIFI_SEC_TYPE_WAPI_PSK:9 ,
-}
-
-let connState = {
-    SCANNING: 0,
-    CONNECTING: 1,
-    AUTHENTICATING: 2,
-    OBTAINING_IPADDR: 3,
-    CONNECTED: 4,
-    DISCONNECTING: 5,
-    DISCONNECTED: 6,
-    UNKNOWN: 7,
-}
-
-let wifiChannelWidth = {
-    WIDTH_20MHZ : 0,
-    WIDTH_40MHZ : 1,
-    WIDTH_80MHZ : 2,
-    WIDTH_160MHZ : 3,
-    WIDTH_80MHZ_PLUS : 4,
-    WIDTH_INVALID:null,
 }
 
 export default function actsWifiManagerCandidateNetWorkTest() {
@@ -83,7 +59,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "bssid": "",
                 "preSharedKey": "",
                 "isHiddenSsid": false,
-                "securityType": wifiSecurityType.WIFI_SEC_TYPE_OPEN,
+                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_OPEN,
             };
             await wifiMg.addCandidateConfig(wifiDeviceConfig)
                 .then(netWorkId => {
@@ -91,7 +67,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                     expect(true).assertEqual(netWorkId = -1);
                 }).catch((error) => {
                     console.error('[wifi_test]add OPEN CandidateConfig promise failed -> ' + JSON.stringify(error));
-                    expect(false).assertFalse();
+                    expect(true).assertEqual( (JSON.stringify(error)) !=null);
                 });
             let getconfig = wifiMg.getCandidateConfigs();
             console.info("[wifi_test]wifi get OPEN CandidateConfigs result : " + JSON.stringify(getconfig));
@@ -100,7 +76,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "bssid": "",
                 "preSharedKey": "ABCDEF1234",
                 "isHiddenSsid": false,
-                "securityType": wifiSecurityType.WIFI_SEC_TYPE_WEP,
+                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_WEP,
             };
 
             await wifiMg.addCandidateConfig(wifiDeviceConfig1)
@@ -109,7 +85,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                     expect(true).assertEqual(netWorkId = -1);
                 }).catch((error) => {
                     console.error('[wifi_test]add WEP CandidateConfig promise failed -> ' + JSON.stringify(error));
-                    expect(false).assertFalse();
+                    expect(true).assertEqual( (JSON.stringify(error)) !=null);
                 });
             console.info("[wifi_test]wifi get WEP CandidateConfigs result : " + JSON.stringify(getconfig));
             done();
@@ -128,7 +104,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "bssid": "",
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
-                "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK,
+                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
                 "netId": -1,
                 "ipType": 1,
                 "creatorUid": 7,
@@ -175,7 +151,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "bssid": "",
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
-                "securityType": wifiSecurityType.WIFI_SEC_TYPE_SAE,
+                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_SAE,
             };
             await wifiMg.addCandidateConfig(wifiDeviceConfig)
                 .then(netWorkId => {
@@ -218,7 +194,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                     "bssid": "",
                     "preSharedKey": "12345678",
                     "isHiddenSsid": false,
-                    "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK,
+                    "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
                 };
                 console.info("[wifi_test]get wifiDeviceConfig ssid result : " + JSON.stringify(wifiDeviceConfig.ssid));
                 await wifiMg.addCandidateConfig(wifiDeviceConfig)
@@ -235,7 +211,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "bssid": "",
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
-                "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK,
+                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
             };
             await wifiMg.addCandidateConfig(wifiDeviceConfig1)
                 .then(netWorkId => {
@@ -275,7 +251,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "bssid": "",
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
-                "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK,
+                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
             }
             function addCandidate() {
                 return new Promise((resolve, reject) => {
@@ -321,19 +297,12 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         * @tc.level Level 2
         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0006', 0, async function (done) {
-            let wifiSecurityType = {
-                WIFI_SEC_TYPE_INVALID: 0,
-                WIFI_SEC_TYPE_OPEN: 1,
-                WIFI_SEC_TYPE_WEP: 2,
-                WIFI_SEC_TYPE_PSK: 3,
-                WIFI_SEC_TYPE_SAE: 4,
-            }
             let wifiDeviceConfig = {
                 "ssid": "HONOR 3000",
                 "bssid": "",
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
-                "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK,
+                "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
             };
             await wifiMg.addCandidateConfig(wifiDeviceConfig)
                 .then(netWorkId => {
@@ -373,4 +342,5 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         })
     })
 }
+
 

@@ -9,12 +9,7 @@
     },
     "kits": [
         {
-            "type": "ShellKit",
-            "run-command": [
-               " hilog -Q pidoff",
-                "hilog -Q domainoff",
-                "hilog -b D"
-            ]
+            "type": "ShellKit"
         },
         {
             "type": "PushKit",

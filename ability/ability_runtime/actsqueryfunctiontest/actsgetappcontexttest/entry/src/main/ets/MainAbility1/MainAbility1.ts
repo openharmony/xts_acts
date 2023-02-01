@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent'
 function PublishCallBackOne2() {
     console.debug("====>Publish CallBack ACTS_StartAbility2_CommonEvent====>");

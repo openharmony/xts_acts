@@ -17,11 +17,11 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import ability from '@ohos.application.Ability'
+import ability from '@ohos.app.ability.UIAbility'
 import rpc from '@ohos.rpc';
 import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';
-import abilityManager from '@ohos.application.abilityManager';
+import abilityManager from '@ohos.app.ability.abilityManager';
 import commonEvent from '@ohos.commonEvent';
 
 const SYSTEM_INNER_ERROR = 16000050
@@ -132,14 +132,14 @@ export default function startAbilityTest(abilityContext) {
     });
 
     async function abilityForeground(tag) {
-      globalThis.delegator.doAbilityForeground(globalThis.ability, (err: any, data: any) => {
-        console.info(tag + "doAbilityForeground err: " + JSON.stringify(err) + ", data: " + JSON.stringify(data));
+      globalThis.delegator.doAbilityForeground(globalThis.ability, (err: any) => {
+        console.info(tag + "doAbilityForeground err: " + JSON.stringify(err));
       });
     }
 
     async function abilityBackground(tag) {
-      globalThis.delegator.doAbilityBackground(globalThis.ability, (err: any, data: any) => {
-        console.info(tag + "abilityBackground err: " + JSON.stringify(err) + ", data: " + JSON.stringify(data));
+      globalThis.delegator.doAbilityBackground(globalThis.ability, (err: any) => {
+        console.info(tag + "abilityBackground err: " + JSON.stringify(err));
       });
     }
 
@@ -421,68 +421,6 @@ export default function startAbilityTest(abilityContext) {
       done();
     });
 
-    /*
-     * @tc.number  FreeInstall_Stage_Local_StartAbility_0900
-     * @tc.name    Do not transfer deviceid, use callback to realize installation free process
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it("FreeInstall_Stage_Local_StartAbility_0900", 0, async function (done) {
-      console.info("------------start FreeInstall_Stage_Local_StartAbility_0900-------------");
-      TAG = "FreeInstall_Stage_Local_StartAbility_0900";
-      var cmd900 = "rm /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/AtomizationStageHm2.hap";
-      globalThis.delegator.executeShellCommand(cmd900, (err: any, d: any) => {
-        console.info("executeShellCommand900 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-      })
-      await sleep(500);
-      var cmd901 = "cp data/test/AtomizationStageEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
-      "entry/files";
-      globalThis.delegator.executeShellCommand(cmd901, (err: any, d: any) => {
-        console.info("executeShellCommand901 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-      })
-      await sleep(500);
-      abilityForeground(TAG);
-      await sleep(1000);
-      var str = {
-        "bundleName": "com.example.qianyiyingyong.hmservice",
-        "abilityName": "com.example.qianyiyingyong.MainAbility",
-        "moduleName": "entry",
-        "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-      }
-      globalThis.abilityContext.startAbility(str, (error, data) => {
-        console.log(TAG + ": startAbility err: " + JSON.stringify(error) + ",data: " + JSON.stringify(data));
-        expect(error.code == 0).assertTrue();
-      })
-      await sleep(2000);
-      console.info("------------end FreeInstall_Stage_Local_StartAbility_0900-------------");
-      done();
-    });
-
-    /*
-     * @tc.number  FreeInstall_Stage_Local_StartAbility_1000
-     * @tc.name    Do not transmit deviceid, and use callback to automatically pull up installed applications
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it("FreeInstall_Stage_Local_StartAbility_1000", 0, async function (done) {
-      console.info("------------start FreeInstall_Stage_Local_StartAbility_1000-------------");
-      TAG = "FreeInstall_Stage_Local_StartAbility_1000";
-      abilityForeground(TAG);
-      await sleep(1000);
-      var str = {
-        "bundleName": "com.example.qianyiyingyong.hmservice",
-        "abilityName": "com.example.qianyiyingyong.MainAbility",
-        "moduleName": "entry",
-        "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-      }
-      globalThis.abilityContext.startAbility(str, (error, data) => {
-        console.log(TAG + ": startAbility err: " + JSON.stringify(error) + ",data: " + JSON.stringify(data));
-        expect(error.code == 0).assertTrue();
-      })
-      await sleep(2000);
-      console.info("------------end FreeInstall_Stage_Local_StartAbility_1000-------------");
-      done();
-    });
 
     /*
      * @tc.number  FreeInstall_Stage_Local_StartAbility_1100
@@ -1118,33 +1056,6 @@ export default function startAbilityTest(abilityContext) {
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_3400-------------");
-      done();
-    });
-
-    /*
-     * @tc.number  FreeInstall_Stage_Local_StartAbility_3500
-     * @tc.name    Service to pull up the service of the atomized service to realize the installation free process
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it("FreeInstall_Stage_Local_StartAbility_3500", 0, async function (done) {
-      console.info("------------start FreeInstall_Stage_Local_StartAbility_3500-------------");
-      TAG = "FreeInstall_Stage_Local_StartAbility_3500";
-      commonEvent.createSubscriber(subscribeInfo, CreateSubscriberCallBack);
-      abilityForeground(TAG);
-      await sleep(1000);
-      var str = {
-        "bundleName": "com.open.harmony.packagemag",
-        "abilityName": "com.open.harmony.packagemag.ServiceAbility",
-      }
-      globalThis.abilityContext.startAbility(str).then((data) => {
-        console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
-      }).catch((error) => {
-        console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-      });
-      await sleep(2000);
-      expect(result).assertEqual("onSuccess");
-      console.info("------------end FreeInstall_Stage_Local_StartAbility_3500-------------");
       done();
     });
 

@@ -122,14 +122,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_0100', 0, function ()  {
             let NfcATag ;
-            try{
+            try {
                 NfcATag = tag.getNfcATag(aTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_0100 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            expect(NfcATag != null).assertTrue();
-            expect(NfcATag instanceof Object).assertTrue();
-            console.info('aTag is--<-!!!->' + JSON.stringify(NfcATag));
+            if (NfcATag != null && NfcATag != undefined) {
+                expect(NfcATag != null).assertTrue();
+                expect(NfcATag instanceof Object).assertTrue();
+                console.info('aTag is--<-!!!->' + JSON.stringify(NfcATag));
+            } else {
+                console.info("[NFC_test]NfcATag1 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         }) 
 
         /**
@@ -142,14 +147,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_0200', 0, function ()  {
             let NfcBTag ;
-            try{
+            try {
                 NfcBTag = tag.getNfcBTag(bTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_0200 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            expect(NfcBTag != null).assertTrue();
-            expect(NfcBTag instanceof Object).assertTrue();
-            console.info('bTag is--<-!!!->' + JSON.stringify(NfcBTag));
+            if (NfcBTag != null && NfcBTag != undefined) {
+                expect(NfcBTag != null).assertTrue();
+                expect(NfcBTag instanceof Object).assertTrue();
+                console.info('bTag is--<-!!!->' + JSON.stringify(NfcBTag));
+            } else {
+                console.info("[NFC_test]NfcBTag1 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         }) 
 
         /**
@@ -162,14 +172,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_0300', 0, function ()  {
             let NfcFTag ;
-            try{
+            try {
                 NfcFTag = tag.getNfcFTag(fTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_0300 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            expect(NfcFTag != null).assertTrue();
-            expect(NfcFTag instanceof Object).assertTrue();
-            console.info('fTag is--<-!!!->' + JSON.stringify(NfcFTag));
+            if (NfcFTag != null && NfcFTag != undefined) {
+                expect(NfcFTag != null).assertTrue();
+                expect(NfcFTag instanceof Object).assertTrue();
+                console.info('fTag is--<-!!!->' + JSON.stringify(NfcFTag));
+            } else {
+                console.info("[NFC_test]NfcFTag1 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         }) 
 
         /**
@@ -182,14 +197,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_0400', 0, function ()  {
             let NfcVTag ;
-            try{
+            try {
                 NfcVTag = tag.getNfcVTag(vTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_0400 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            expect(NfcVTag != null).assertTrue();
-            expect(NfcVTag instanceof Object).assertTrue();
-            console.info('vTag is--<-!!!->' + JSON.stringify(NfcVTag));
+            if (NfcVTag != null && NfcVTag != undefined) {
+                expect(NfcVTag != null).assertTrue();
+                expect(NfcVTag instanceof Object).assertTrue();
+                console.info('vTag is--<-!!!->' + JSON.stringify(NfcVTag));
+            } else {
+                console.info("[NFC_test]NfcVTag1 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         }) 
 
         /**
@@ -202,14 +222,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_0500', 0, function ()  {
             let NfcATag ;
-            try{
+            try {
                 NfcATag = tag.getNfcATag(aTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_0500 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            let sak = NfcATag.getSak(); 
-            expect(sak).assertInstanceOf('Number');
-            console.info('[nfc_js] test sak data>:' + sak);
+            if (NfcATag != null && NfcATag != undefined) {
+                let sak = NfcATag.getSak(); 
+                expect(sak).assertInstanceOf('Number');
+                console.info('[nfc_js] test sak data>:' + sak);
+            } else {
+                console.info("[NFC_test]NfcATag2 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -222,14 +247,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_0600', 0, function ()  {
             let NfcATag ;
-            try{
+            try {
                 NfcATag = tag.getNfcATag(aTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_0600 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            let Atqa = NfcATag.getAtqa(); 
-            expect(Atqa).assertInstanceOf('Array');
-            console.info('[nfc_js] test Atqa data>:' + Atqa);
+            if (NfcATag != null && NfcATag != undefined) {
+                let Atqa = NfcATag.getAtqa(); 
+                expect(Atqa).assertInstanceOf('Array');
+                console.info('[nfc_js] test Atqa data>:' + Atqa);
+            } else {
+                console.info("[NFC_test]NfcATag3 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -242,14 +272,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_0700', 0, function ()  {
             let NfcBTag ;
-            try{
+            try {
                 NfcBTag = tag.getNfcBTag(bTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_0700 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            let AppData = NfcBTag.getRespAppData(); 
-            expect(AppData).assertInstanceOf('Array');
-            console.info('[nfc_js] test AppData data>:' + AppData);
+            if (NfcBTag != null && NfcBTag != undefined) {
+                let AppData = NfcBTag.getRespAppData(); 
+                expect(AppData).assertInstanceOf('Array');
+                console.info('[nfc_js] test AppData data>:' + AppData);
+            } else {
+                console.info("[NFC_test]NfcBTag2 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -262,14 +297,19 @@ export default function nfcTagABFVTest() {
          */
          it('SUB_Communication_NFC_nfctage_js_0800', 0, function ()  {
             let NfcBTag ;
-            try{
+            try {
                 NfcBTag = tag.getNfcBTag(bTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_0800 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            let Protocol = NfcBTag.getRespProtocol(); 
-            expect(Protocol).assertInstanceOf('Array');
-            console.info('[nfc_js] test Protocol data>:' + Protocol);
+            if (NfcBTag != null && NfcBTag != undefined) {
+                let Protocol = NfcBTag.getRespProtocol(); 
+                expect(Protocol).assertInstanceOf('Array');
+                console.info('[nfc_js] test Protocol data>:' + Protocol);
+            } else {
+                console.info("[NFC_test]NfcBTag3 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -282,14 +322,19 @@ export default function nfcTagABFVTest() {
          */
          it('SUB_Communication_NFC_nfctage_js_0900', 0, function ()  {
             let NfcFTag ;
-            try{
+            try {
                 NfcFTag = tag.getNfcFTag(fTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_0900 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            let SystemCode = NfcFTag.getSystemCode(); 
-            expect(SystemCode).assertInstanceOf('Array');
-            console.info('[nfc_js] test SystemCode data>:' + SystemCode);
+            if (NfcFTag != null && NfcFTag != undefined) {
+                let SystemCode = NfcFTag.getSystemCode(); 
+                expect(SystemCode).assertInstanceOf('Array');
+                console.info('[nfc_js] test SystemCode data>:' + SystemCode);
+            } else {
+                console.info("[NFC_test]NfcFTag2 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -302,14 +347,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_1000', 0, function ()  {
             let NfcFTag ;
-            try{
+            try {
                 NfcFTag = tag.getNfcFTag(fTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_1000 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            let Pmm = NfcFTag.getPmm(); 
-            expect(Pmm).assertInstanceOf('Array');
-            console.info('[nfc_js] test Pmm data>:' + Pmm);
+            if (NfcFTag != null && NfcFTag != undefined) {
+                let Pmm = NfcFTag.getPmm(); 
+                expect(Pmm).assertInstanceOf('Array');
+                console.info('[nfc_js] test Pmm data>:' + Pmm);
+            } else {
+                console.info("[NFC_test]NfcFTag3 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -322,14 +372,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_1100', 0, function ()  {
             let NfcVTag ;
-            try{
+            try {
                 NfcVTag = tag.getNfcVTag(vTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_1100 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            let ResponseFlags = NfcVTag.getResponseFlags(); 
-            expect(ResponseFlags).assertInstanceOf('Number');
-            console.info('[nfc_js] test ResponseFlags data>:' + ResponseFlags);
+            if (NfcVTag != null && NfcVTag != undefined) {
+                let ResponseFlags = NfcVTag.getResponseFlags(); 
+                expect(ResponseFlags).assertInstanceOf('Number');
+                console.info('[nfc_js] test ResponseFlags3 data>:' + ResponseFlags);
+            } else {
+                console.info("[NFC_test]NfcVTag2 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -342,14 +397,19 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_1200', 0, function ()  {
             let NfcVTag ;
-            try{
+            try {
                 NfcVTag = tag.getNfcVTag(vTag);
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_1200 error' + error)
+                console.info('Nfcget tagABFV error' + error)
             }
-            let DsfId = NfcVTag.getDsfId(); 
-            expect(DsfId).assertInstanceOf('Number');
-            console.info('[nfc_js] test DsfId data>:' + DsfId);
+            if (NfcVTag != null && NfcVTag != undefined) {
+                let DsfId = NfcVTag.getDsfId(); 
+                expect(DsfId).assertInstanceOf('Number');
+                console.info('[nfc_js] test DsfId data>:' + DsfId);
+            } else {
+                console.info("[NFC_test]NfcVTag3 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
         })
 
         /**
@@ -362,18 +422,99 @@ export default function nfcTagABFVTest() {
          */
         it('SUB_Communication_NFC_nfctage_js_1300', 0, function ()  {
             let TagInfo ;
-            try{
+            try {
                 TagInfo = tag.getTagInfo(Want);
-                console.info('SUB_Communication_NFC_nfctage_js1111111' + TagInfo)
+                console.info('Nfcget tagABFV gettaginfo is: ' + TagInfo)
                 expect(TagInfo instanceof Object).assertTrue();
             }catch(error){
-                console.info('SUB_Communication_NFC_nfctage_js_1300 error' + error)
+                console.info('Nfcget taginfo error' + error)
                 expect(true).assertTrue();
             }
             console.info('[nfc_js] test TagInfo data>:' + TagInfo);
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_1400
+         * @tc.name Test getNfcATag
+         * @tc.desc This interface is used to obtain the NFC A tag object.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+         it('SUB_Communication_NFC_nfctage_js_1400', 0, function ()  {
+            let NfcATag ;
+            try {
+                NfcATag = tag.getNfcA(aTag);
+            } catch (error) {
+                console.info('nfc gertaga error' + error)
+            }
+            expect(NfcATag != null).assertTrue();
+            expect(NfcATag instanceof Object).assertTrue();
+            console.info('aTag is--<-!!!->' + JSON.stringify(NfcATag));
+        }) 
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_1500
+         * @tc.name Test getNfcBTag
+         * @tc.desc This interface is used to obtain the NFC B tag object.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_1500', 0, function ()  {
+            let NfcBTag ;
+            try {
+                NfcBTag = tag.getNfcB(bTag);
+            } catch (error) {
+                console.info('SUB_Communication_NFC_nfctage_js_0200 error' + error)
+            }
+            expect(NfcBTag != null).assertTrue();
+            expect(NfcBTag instanceof Object).assertTrue();
+            console.info('bTag is--<-!!!->' + JSON.stringify(NfcBTag));
+        }) 
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_1600
+         * @tc.name Test getNfcFTag
+         * @tc.desc This interface is used to obtain the NFC F tag object.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_1600', 0, function ()  {
+            let NfcFTag ;
+            try {
+                NfcFTag = tag.getNfcF(fTag);
+            } catch (error) {
+                console.info('SUB_Communication_NFC_nfctage_js_0300 error' + error)
+            }
+            expect(NfcFTag != null).assertTrue();
+            expect(NfcFTag instanceof Object).assertTrue();
+            console.info('fTag is--<-!!!->' + JSON.stringify(NfcFTag));
+        }) 
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_1700
+         * @tc.name Test getNfcVTag
+         * @tc.desc This interface is used to obtain the NFC V tag object.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_1700', 0, function ()  {
+            let NfcVTag ;
+            try {
+                NfcVTag = tag.getNfcV(vTag);
+            } catch (error) {
+                console.info('SUB_Communication_NFC_nfctage_js_0400 error' + error)
+            }
+            expect(NfcVTag != null).assertTrue();
+            expect(NfcVTag instanceof Object).assertTrue();
+            console.info('vTag is--<-!!!->' + JSON.stringify(NfcVTag));
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
+
 

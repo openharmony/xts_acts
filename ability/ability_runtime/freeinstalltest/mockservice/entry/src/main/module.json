@@ -33,17 +33,6 @@
           }
         ]
       }
-    ],
-    "extensionAbilities": [
-      {
-        "name": "HapInstallServiceAbility",
-        "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
-        "label": "$string:form_ServiceAbility_label",
-        "description": "$string:form_ServiceAbility_desc",
-        "type": "service",
-        "visible": true,
-        "icon": "$media:icon"
-      }
     ]
   }
 }

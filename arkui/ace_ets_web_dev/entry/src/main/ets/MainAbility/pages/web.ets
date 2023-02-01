@@ -35,7 +35,7 @@ struct Index {
     @State errorReceive:string=""
     @State httpErrorReceive:number=0
     @State titleReceive:string=""
-    @State downloadStart:string=""
+    @State isDownloadStart:boolean=false
     @State javaScriptAccess:boolean=true
     @State fileAccess:boolean=true
     @State domStorageAccess:boolean=false
@@ -55,6 +55,8 @@ struct Index {
     @State mixedSwitch:boolean=false
     @State mixedAllSwitch:boolean=false
     @State overViewFalseHeight:number=0
+    @State isProgressFinish:boolean=false
+    @State isHttpErrorReceive:boolean=false
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -145,7 +147,11 @@ struct Index {
                 if(this.enterPageEnd){
                     Utils.emitEvent(this.newScale,97)
                     this.enterPageEnd=false
-                }
+                }else if(this.isProgressFinish){
+                    console.info("isProgressFinish==>")
+                    Utils.emitEvent(this.progress,114)
+                    this.isProgressFinish=false
+                 }
             })
             .onConsole((event) => {
                 this.console = event.message.getMessage()
@@ -178,13 +184,22 @@ struct Index {
                 }               
             })
             .onHttpErrorReceive((event) => {
-                this.httpErrorReceive = event.response.getResponseCode()              
+                if(this.isHttpErrorReceive){
+                    console.info("isHttpErrorReceive==>")
+                    this.httpErrorReceive = event.response.getResponseCode()
+                    Utils.emitEvent(this.httpErrorReceive,66)
+                    this.isHttpErrorReceive=false
+                }              
             })
             .onTitleReceive((event) => {
                 this.titleReceive = event.title
             })
             .onDownloadStart((event) => {
-                this.downloadStart = event.url
+                if(this.isDownloadStart){
+                    console.info("isDownloadStart==>")
+                    Utils.emitEvent(event.url,68)
+                    this.isDownloadStart=false
+                }
             })
             .onScaleChange((event)=>{
                 console.log("onScaleChange==>")
@@ -243,7 +258,7 @@ struct Index {
                             break;
                         }
                         case "emitOnUrlLoadIntercept":{
-                            this.controller.loadUrl({url:"https://www.gitee.com/"})
+                            this.controller.loadUrl({url:"https://gitee.com/"})
                             setTimeout(()=>{
                                 Utils.emitEvent(loadedUrl,104)
                             },3000)
@@ -278,10 +293,9 @@ struct Index {
                             break;
                         }
                         case "emitOnProgressChange":{
+                            this.isProgressFinish=true
+                            await Utils.sleep(1000)
                             this.controller.loadUrl({url:"https://www.gitee.com"})
-                            setTimeout(()=>{
-                                Utils.emitEvent(this.progress,114)
-                            },3000)
                             break;
                         }
                         case "emitOnRefreshAccessedHistory":{
@@ -595,14 +609,10 @@ struct Index {
                             },3000)
                             break;
                         }
-                        case "emitOnHttpErrorReceive":{                           
+                        case "emitOnHttpErrorReceive":{  
+                            this.isHttpErrorReceive=true
+                            await Utils.sleep(1000)
                             this.controller.loadUrl({url:'https://example1.com/path/does/not/exist/index.jsp'})
-                            setTimeout(()=>{
-                                this.controller.loadUrl({url:'https://example1.com/path/does/not/exist/index.jsp'})    
-                                setTimeout(()=>{     
-                                    Utils.emitEvent(this.httpErrorReceive,66)                                                                                
-                                },3000)
-                            },3000)
                             break;
                         }
                         case "emitOnTitleReceive":{                           
@@ -612,11 +622,10 @@ struct Index {
                             },3000)
                             break;
                         }
-                        case "emitOnDownloadStart":{                           
+                        case "emitOnDownloadStart":{        
+                            this.isDownloadStart=true
+                            await Utils.sleep(1000)           
                             this.controller.loadUrl({url:"https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/mobileservices/2022/download/PC107f1b3947c942ffaa14334a879065d8.2107261020.exe"})
-                            setTimeout(()=>{     
-                                Utils.emitEvent(this.downloadStart,68)                                                                                
-                            },5000)
                             break;
                         }
                         case "emitSetCookie":{                           

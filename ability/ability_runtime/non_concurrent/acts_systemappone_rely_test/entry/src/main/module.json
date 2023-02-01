@@ -33,17 +33,6 @@
           }
         ]
       }
-    ],
-    "extensionAbilities": [
-      {
-        "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
-        "name": "com.example.actssystemappuonehundredonerelytest.ServiceAbility",
-        "icon": "$media:icon",
-        "srcLanguage": "ets",
-        "description": "$string:phone_entry_main",
-        "type": "service",
-        "visible": true
-      }
     ]
   }
 }

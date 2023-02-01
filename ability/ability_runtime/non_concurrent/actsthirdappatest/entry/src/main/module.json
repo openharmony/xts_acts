@@ -41,17 +41,6 @@
         "label": "$string:MainAbility2_label",
         "launchType": "standard"
       }
-    ],
-    "extensionAbilities": [
-      {
-        "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
-        "name": "ServiceAbility",
-        "icon": "$media:icon",
-        "srcLanguage": "ets",
-        "description": "$string:Service_desc",
-        "label": "$string:Service_label",
-        "type": "service|dataShare"
-      }
     ]
   }
 }

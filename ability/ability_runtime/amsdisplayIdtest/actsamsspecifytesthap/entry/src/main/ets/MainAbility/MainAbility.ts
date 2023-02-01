@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent'
 
 var callBackSeq = "";
@@ -104,6 +104,13 @@ export default class MainAbility extends Ability {
         console.log("actsspecifytesthap onForeground")
         callBackSeq += "onForeground";
         onShowProcess();
+        setTimeout(()=>{
+          this.context.terminateSelf().then((data) => {
+              console.info("actsspecifytesthap MainAbility terminateSelf data = " + JSON.stringify(data));
+          }).catch((err) => {
+              console.info("actsspecifytesthap MainAbility terminateSelf err = " + JSON.stringify(err));
+          });
+      }, 2000)
     }
 
     onBackground() {

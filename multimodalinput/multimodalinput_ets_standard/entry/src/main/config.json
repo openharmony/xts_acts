@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "ohos.acts.multimodalinput.input",
+    "bundleName": "ohos.acts.multimodalinputets.input",
     "vendor": "open",
     "version": {
       "code": 1000000,
@@ -14,9 +14,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.acts.multimodalinput.input",
+    "package": "ohos.acts.multimodalinputets.input",
     "name": ".MyApplication",
-    "mainAbility": "ohos.acts.multimodalinput.input.MainAbility",
+    "mainAbility": "ohos.acts.multimodalinputets.input.MainAbility",
     "deviceType": [
       "tablet",
       "default",

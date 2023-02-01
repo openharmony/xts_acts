@@ -32,25 +32,16 @@ let mKVMgrConfig = {
 function publicgetKvStore(optionsp){
     console.log(`Test getKvStore `)
     return new Promise(function(resolve, reject) {
-        distributedData.createKVManager(mKVMgrConfig, (err, data) => {
-            console.info('Test createKVManager begin')
+        kvManager = distributedData.createKVManager(mKVMgrConfig);
+        kvManager.getKVStore(STORE_ID, optionsp, (err, data) => {
+            console.info('Test getKVStore begin')
             if (err) {
-                console.info('Test createKVManager err = ' + err );
+                console.info('Test getKVStore err = ' + err);
                 reject(err);
             }
-            console.info('Test createKVManager data = ' + data);
-
-            kvManager = data;
-            data.getKVStore(STORE_ID, optionsp, (err, data) => {
-                console.info('Test getKVStore begin')
-                if (err) {
-                    console.info('Test getKVStore err = ' + err);
-                    reject(err);
-                }
-                console.info('Test getKVStore data = ' + data);
-                kvStore = data;
-                resolve(data);
-            });
+            console.info('Test getKVStore data = ' + data);
+            kvStore = data;
+            resolve(data);
         });
     })
 }
@@ -781,7 +772,7 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     it('SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200', 0, async function (done) {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 before putdata");
-            publicput(kvStore,"PutPromise0002","value") ;
+            await publicput(kvStore,"PutPromise0002","value") ;
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 going putdata");
             await publicget(kvStore,"PutPromise0002").then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 going getdata" + JSON.stringify(data));

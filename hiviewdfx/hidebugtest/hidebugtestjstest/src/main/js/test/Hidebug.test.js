@@ -426,7 +426,7 @@ describe('HidebugJsTest', function () {
             }
             hidebug.stopJsCpuProfiling();
             var pid = process.pid;
-            let path = "/proc/" + pid + "/root/data/storage/el2/base/files/" + filename + ".json";
+            let path = "/proc/" + pid + "/root/data/storage/el2/base/files/" + filename + ".cpuprofile";
             let data = fileio.readTextSync(path);
             if (data.includes("napi")) {
                 expect(true).assertTrue();

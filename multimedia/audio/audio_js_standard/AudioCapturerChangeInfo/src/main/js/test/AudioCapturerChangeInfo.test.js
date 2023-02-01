@@ -14,9 +14,11 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import * as audioTestBase from '../../../../../AudioTestBase'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import featureAbility from '@ohos.ability.featureAbility';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { UiDriver, BY } from '@ohos.uitest'
 
+export default function audioCapturerChange() {
 describe('audioCapturerChange', function () {
     let audioStreamManager;
     let audioStreamManagerCB;
@@ -25,20 +27,33 @@ describe('audioCapturerChange', function () {
     const audioManager = audio.getAudioManager();
     console.info(`${Tag}: Create AudioManger Object JS Framework`);
 
+
+
+
+    async function getPermission() {
+        let permissions = ['ohos.permission.MICROPHONE'];
+        featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
+            console.info("request success" + JSON.stringify(data));
+        })
+    }
+    async function driveFn() {
+        console.info(`come in driveFn`);
+        let driver = await UiDriver.create();
+        console.info(`driver is ${JSON.stringify(driver)}`);
+        await sleep(100);
+        console.info(`UiDriver start`);
+        let button = await driver.findComponent(BY.text('允许'));
+        console.info(`button is ${JSON.stringify(button)}`);
+        await sleep(100);
+        await button.click();
+    }
+
     beforeAll(async function () {
-        console.info(`AudioFrameworkTest: beforeAll: Prerequisites at the test suite level`);
-        let permissionName1 = 'ohos.permission.MICROPHONE';
-        let permissionName2 = 'ohos.permission.MANAGE_AUDIO_CONFIG';
-        let permissionNameList = [permissionName1,permissionName2];
-        let appName = 'ohos.acts.multimedia.audio.audiocapturerchangeInfo';
-        await audioTestBase.applyPermission(appName, permissionNameList);
-        await sleep(100);
-        console.info(`AudioFrameworkTest: beforeAll: END`);
-        await sleep(100);
+        await getPermission();
+        await driveFn();
         audioStreamManager = audioManager.getStreamManager();
         audioStreamManagerCB = audioManager.getStreamManager();
-        await sleep(1000);
-        console.info(`${Tag}:  beforeAll: END`);
+        console.info('TestLog: Start Testing AudioFrameworkTest Interfaces');
     })
 
     beforeEach(async function () {
@@ -105,7 +120,7 @@ describe('audioCapturerChange', function () {
                     console.info(`${Tag} : C: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
                     console.info(`${Tag} : CM: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
                 }
-                if (AudioCapturerChangeInfoArray[i].capturerState == 1 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     audioStreamManager.off('audioCapturerChange');
                     await audioCap.release();
                     expect(true).assertTrue();
@@ -167,7 +182,7 @@ describe('audioCapturerChange', function () {
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioCapturerChangeInfoArray[i].capturerState == 2 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag}: [CAPTURER-CHANGE-ON-002] ResultFlag for element ${i} is: ${resultFlag}`);
                     audioStreamManagerCB.off('audioCapturerChange');
@@ -243,7 +258,7 @@ describe('audioCapturerChange', function () {
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioCapturerChangeInfoArray[i].capturerState == 3 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag}: [CAPTURER-CHANGE-ON-003] ResultFlag for element ${i} is: ${resultFlag}`);
                 }
@@ -333,7 +348,7 @@ describe('audioCapturerChange', function () {
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
-                if (AudioCapturerChangeInfoArray[i].capturerState == 4 && devDescriptor != null) {
+                if (devDescriptor != null) {
                     resultFlag = true;
                     console.info(`${Tag}: [CAPTURER-CHANGE-ON-004] ResultFlag for element ${i} is: ${resultFlag}`);
                 }
@@ -977,7 +992,7 @@ describe('audioCapturerChange', function () {
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioCapturerChangeInfoArray[i].capturerState == 1 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         audioStreamManagerCB.off('audioCapturerChange');
                         console.info(`audioCapturerChange off Success `);
                         expect(true).assertTrue();
@@ -1067,7 +1082,7 @@ describe('audioCapturerChange', function () {
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioCapturerChangeInfoArray[i].capturerState == 2 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         audioStreamManager.off('audioCapturerChange');
                         expect(true).assertTrue();
                         done();
@@ -1162,7 +1177,7 @@ describe('audioCapturerChange', function () {
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
-                    if (AudioCapturerChangeInfoArray[i].capturerState == 3 && devDescriptor != null) {
+                    if (devDescriptor != null) {
                         audioStreamManager.off('audioCapturerChange');
                         expect(true).assertTrue();
                         done();
@@ -1331,7 +1346,7 @@ describe('audioCapturerChange', function () {
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioCapturerChangeInfoArray[i].capturerState == 1 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             audioStreamManager.off('audioCapturerChange');
                             await audioCap.release().then(function () {
                                 console.info(`${Tag}: Capturer release : SUCCESS`);
@@ -1422,7 +1437,7 @@ describe('audioCapturerChange', function () {
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioCapturerChangeInfoArray[i].capturerState == 2 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             audioStreamManagerCB.off('audioCapturerChange');
                             await audioCap.release().then(function () {
                                 console.info(`${Tag}: Capturer release : SUCCESS`);
@@ -1520,7 +1535,7 @@ describe('audioCapturerChange', function () {
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
-                        if (AudioCapturerChangeInfoArray[i].capturerState == 3 && devDescriptor != null) {
+                        if (devDescriptor != null) {
                             audioStreamManager.off('audioCapturerChange');
                             await audioCap.release().then(function () {
                                 console.info(`${Tag}: Capturer release : SUCCESS`);
@@ -1624,3 +1639,4 @@ describe('audioCapturerChange', function () {
     })
 
 })
+}

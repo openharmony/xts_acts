@@ -1,7 +1,7 @@
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 
 export default class MainAbility extends Ability {
-    onCreate(want,launchParam){
+    onCreate(want, launchParam) {
         // Ability is creating, initialize resources for this ability
         console.log("[Demo] MainAbility onCreate")
         globalThis.abilityWant = want;
@@ -12,11 +12,11 @@ export default class MainAbility extends Ability {
         console.log("[Demo] MainAbility onDestroy")
     }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("[Demo] MainAbility onWindowStageCreate")
+    async onWindowStageCreate(windowStage) {
+        console.log("[Demo] MainAbility onWindowStageCreate windowStage=" + windowStage)
+        globalThis.windowStage = windowStage
         globalThis.abilityContext = this.context
-        windowStage.setUIContent(this.context, "pages/index/index", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
     }
 
     onWindowStageDestroy() {

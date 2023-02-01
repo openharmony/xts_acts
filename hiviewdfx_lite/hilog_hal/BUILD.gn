@@ -26,5 +26,7 @@ hctest_suite("ActsDfxFuncTest") {
     "//vendor/hisi/hi3861/hi3861/components/lwip_sack/include",
   ]
 
-  cflags = [ "-Wno-error" ]
+  if (board_toolchain_type != "iccarm") {
+    cflags = [ "-Wno-error" ]
+  }
 }

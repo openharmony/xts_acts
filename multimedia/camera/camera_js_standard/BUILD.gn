@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 ohos_js_hap_suite("camera_framework_ets_hap") {
-  hap_profile = "./src/main/config.json"
+  hap_profile = "./entry/src/config.json"
   deps = [
     ":camera_ets_assets",
     ":camera_ets_resources",
@@ -26,9 +26,9 @@ ohos_js_hap_suite("camera_framework_ets_hap") {
   part_name = "multimedia_camera_framework"
 }
 ohos_js_assets("camera_ets_assets") {
-  source_dir = "./src/main/ets/MainAbility"
+  source_dir = "./entry/src/main/ets/MainAbility"
 }
 ohos_resources("camera_ets_resources") {
-  sources = [ "./src/main/resources" ]
-  hap_profile = "./src/main/config.json"
+  sources = [ "./entry/src/resources" ]
+  hap_profile = "./entry/src/config.json"
 }

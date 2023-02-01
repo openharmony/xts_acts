@@ -45,17 +45,12 @@ describe('KVManagerPromiseTest', function () {
 
     beforeAll(async function (done) {
         console.info('beforeAll');
-        await factory.createKVManager(config).then((manager) => {
-            kvManager = manager;
-            console.info('beforeAll createKVManager success');
-            kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
-                console.info("beforeAll getKVStore success");
-                kvStoreNew = store;
-            }).catch((err) => {
-                console.info("beforeAll getKVStore err: "  + JSON.stringify(err));
-            });
+        kvManager = factory.createKVManager(config)
+        kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
+            console.info("beforeAll getKVStore success");
+            kvStoreNew = store;
         }).catch((err) => {
-            console.error('beforeAll createKVManager err ' + `, error code is ${err.code}, message is ${err.message}`);
+            console.info("beforeAll getKVStore err: "  + JSON.stringify(err));
         });
         console.info('beforeAll end');
         done();
@@ -394,36 +389,30 @@ describe('KVManagerPromiseTest', function () {
             context:context
         }
         try {
-            await factory.createKVManager(config).then(async (manager) => {
-                kvManager = manager;
-                expect(manager !=null).assertTrue();
-                console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 createKVManager success');
-                await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-                    console.info("testcreateKVManager001 getKVStore success");
-                    await store.put(STORE_KEY, STORE_VALUE).then(async (data) => {
-                        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 put data success');
-                        await store.get(STORE_KEY).then((data) => {
-                            console.info("testcreateKVManager001  get data success");
-                            expect(data).assertEqual(STORE_VALUE);
-                        }).catch((err) => {
-                            console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 get data err' + `, error code is ${err.code}, message is ${err.message}`);
-                        });
+            kvManager = factory.createKVManager(config)
+            kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
+                console.info("testcreateKVManager001 getKVStore success");
+                store.put(STORE_KEY, STORE_VALUE).then(async (data) => {
+                    console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 put data success');
+                    store.get(STORE_KEY).then((data) => {
+                        console.info("testcreateKVManager001  get data success");
+                        expect(data).assertEqual(STORE_VALUE);
+                        done();
                     }).catch((err) => {
-                        console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 put data err' + `, error code is ${err.code}, message is ${err.message}`);
+                        console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 get data err' + `, error code is ${err.code}, message is ${err.message}`);
                     });
                 }).catch((err) => {
-                    console.info("testcreateKVManager001 getKVStore err: "  + JSON.stringify(err));
-                    expect(null).assertFail();
+                    console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 put data err' + `, error code is ${err.code}, message is ${err.message}`);
                 });
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 createKVManager err ' + `, error code is ${err.code}, message is ${err.message}`);
-                expect(null).assertFail()
+                console.info("testcreateKVManager001 getKVStore err: "  + JSON.stringify(err));
+                expect(null).assertFail();
             });
         }catch (e) {
-            console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 promise delete fail err' + `, error code is ${err.code}, message is ${err.message}`);
+            console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 promise delete fail err' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
         }
-        done();
+
     })
 
     /**
@@ -439,35 +428,31 @@ describe('KVManagerPromiseTest', function () {
             context:contextApplication
         }
         try {
-            await factory.createKVManager(config).then(async (manager) => {
-                kvManager = manager;
-                console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 createKVManager success');
-                await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-                    console.info("testcreateKVManager002 getKVStore success");
-                    await store.put(STORE_KEY, STORE_VALUE).then(async (data) => {
-                        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 put data success');
-                        await store.get(STORE_KEY).then((data) => {
-                            console.info("testcreateKVManager002  get data success");
-                            expect(data).assertEqual(STORE_VALUE);
-                        }).catch((err) => {
-                            console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 get data err' + `, error code is ${err.code}, message is ${err.message}`);
-                        });
+            kvManager = factory.createKVManager(config)
+            kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
+                console.info("testcreateKVManager002 getKVStore success");
+                store.put(STORE_KEY, STORE_VALUE).then(async (data) => {
+                    console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 put data success');
+                    store.get(STORE_KEY).then((data) => {
+                        console.info("testcreateKVManager002  get data success");
+                        expect(data).assertEqual(STORE_VALUE);
+                        done();
                     }).catch((err) => {
-                        console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 put data err' + `, error code is ${err.code}, message is ${err.message}`);
+                        console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 get data err' + `, error code is ${err.code}, message is ${err.message}`);
                     });
                 }).catch((err) => {
-                    console.info("testcreateKVManager002 getKVStore err: "  + JSON.stringify(err));
-                    expect(null).assertFail();
+                    console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 put data err' + `, error code is ${err.code}, message is ${err.message}`);
                 });
+                
             }).catch((err) => {
-                console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 createKVManager err ' + `, error code is ${err.code}, message is ${err.message}`);
-                expect(null).assertFail()
+                console.info("testcreateKVManager002 getKVStore err: "  + JSON.stringify(err));
+                expect(null).assertFail();
             });
         }catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 promise delete fail err' + `, error code is ${err.code}, message is ${err.message}`);
             expect(null).assertFail();
         }
-        done();
+        
     })
 })
 }

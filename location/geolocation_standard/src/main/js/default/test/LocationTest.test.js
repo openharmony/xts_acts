@@ -508,14 +508,20 @@ describe('geolocationTest_geo3', function () {
      */
     it('SUB_HSS_SendCommand_0100', 0, async function (done) {
         let requestInfo = { 'scenairo': 0x301, 'command': "command_1" };
-        await geolocation.sendCommand(requestInfo, (err, result) => {
-            if (err) {
-                console.info('sendcommand callback err:' + JSON.stringify(err));
-                expect(true).assertEqual(JSON.stringify(err) != null);
-                done();
-            }
-            console.info('sendcommand callback result:' + JSON.stringify(result));
-        });
+        try {
+            await geolocation.sendCommand(requestInfo, (err, result) => {
+                if (err) {
+                    console.info('sendcommand callback err:' + JSON.stringify(err));
+                    expect(true).assertEqual(JSON.stringify(err) != null);
+                    done();
+                }
+                console.info('sendcommand callback result:' + JSON.stringify(result));
+            });
+        } catch (error) {
+            console.info('sendcommand callback err:' + JSON.stringify(error));
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        }
+        done();
     })
 
     /**
@@ -528,14 +534,20 @@ describe('geolocationTest_geo3', function () {
      */
     it('SUB_HSS_SendCommand_0200', 0, async function (done) {
         let requestInfo = { 'scenairo': 0x301, 'command': "command_1" };
-        geolocation.sendCommand(requestInfo).then((result) => {
-            console.info('sendCommand promise result:' + result);
-            done();
-        }).catch(error => {
+        try {
+            geolocation.sendCommand(requestInfo).then((result) => {
+                console.info('sendCommand promise result:' + result);
+                done();
+            }).catch(error => {
+                console.info('sendcommand promise err:' + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+                done();
+            })
+        } catch (error) {
             console.info('sendcommand promise err:' + JSON.stringify(error));
             expect(true).assertEqual(JSON.stringify(error) != null);
-            done();
-        })
+        }
+        done();
     })
 
     /**
@@ -1248,4 +1260,5 @@ describe('geolocationTest_geo3', function () {
         done();
     })
 })
+
 

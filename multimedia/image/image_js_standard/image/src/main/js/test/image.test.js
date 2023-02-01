@@ -363,7 +363,7 @@ export default function imageJsTest() {
                 bufferArr[i] = i + 1;
             }
 
-            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            let opts = { editable: true, pixelFormat: 4, size: { height: 4, width: 6 } }
             image.createPixelMap(color, opts)
                 .then(pixelmap => {
                     globalpixelmap = pixelmap;
@@ -422,7 +422,7 @@ export default function imageJsTest() {
                 bufferArr[i] = i + 1;
             }
 
-            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            let opts = { editable: true, pixelFormat: 4, size: { height: 4, width: 6 } }
             image.createPixelMap(color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {

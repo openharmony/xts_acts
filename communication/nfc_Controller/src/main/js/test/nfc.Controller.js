@@ -34,11 +34,17 @@ let NfcState={
 
 export default function nfcControllerTest() {
     describe('nfcControllerTest', function () {
-        beforeEach(function () {
-            console.info("[NFC_test]beforeEach start" );        
+        beforeAll(function () {
+            console.info('[NFC_test]beforeAll called')
         })
-        afterEach(async function () {
-            console.info("[NFC_test]afterEach start" );
+        beforeEach(function() {
+            console.info('[NFC_test]beforeEach called')
+        })
+        afterEach(function () {
+            console.info('[NFC_test]afterEach called')
+        })
+        afterAll(function () {
+            console.info('[NFC_test]afterAll called')
         })
         
         /**
@@ -121,6 +127,7 @@ export default function nfcControllerTest() {
         console.log("*************[nfc_test] start nfc js unit test end*************");
     })
 }
+
 
 
 

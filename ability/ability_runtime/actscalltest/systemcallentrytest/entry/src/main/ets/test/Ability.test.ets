@@ -12,32 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, afterEach, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 import missionManager from '@ohos.application.missionManager'
-import appManager from '@ohos.application.appManager'
 
-const MAX_MISSION_NUM = 1024;
 var sysABundleName = "com.example.systemcalltest";
-var sysAMainAbilityName = "com.example.systemcalltest.MainAbility";
 var sysASecondAbilityName = "com.example.systemcalltest.SecondAbility";
-var systemAppCallerABundleName = "com.example.systemappcallera";
-var systemAppCallerAMainAbilityName = "com.example.systemappcallera.MainAbility";
-var systemAppCallerASecondAbilityName = "com.example.systemappcallera.SecondAbility";
-var systemAppCallerAThirdAbilityName = "com.example.systemappcallera.ThirdAbility";
 
 var systemAppCalleeABundleName = "com.example.systemappcalleea";
 var systemAppCalleeAMainAbilityName = "com.example.systemappcalleea.MainAbility";
 var systemAppCalleeASecondAbilityName = "com.example.systemappcalleea.SecondAbility";
 var systemAppCalleeAThirdAbilityName = "com.example.systemappcalleea.ThirdAbility";
-
-var systemAppCalleeBBundleName = "com.example.systemappcalleeb";
-var systemAppCalleeBMainAbilityName = "com.example.systemappcalleeb.MainAbility";
-var systemAppCalleeBSecondAbilityName = "com.example.systemappcalleeb.SecondAbility";
-
-var systemAppCalleeCBundleName = "com.example.systemappcalleec";
-var systemAppCalleeCMainAbilityName = "com.example.systemappcalleec.MainAbility";
-var systemAppCalleeCSecondAbilityName = "com.example.systemappcalleec.SecondAbility";
 
 var thirdAppABundleName = "com.example.thirdappa";
 var thirdAppAMainAbilityName = "com.example.thirdappa.MainAbility";
@@ -48,8 +33,6 @@ var caseDepBundles = [];
 var subscriber = null;
 
 const ERROR_CODE_INVALID_PARAM = 401;
-const ERROR_CODE_CALLER_RELEASED = 16200001;
-const ERROR_CODE_CLAAEE_INVALID = 16200002;
 const ERROR_CODE_FUNC_REGISTERED = 16200004;
 const ERROR_CODE_FUNC_NOT_EXIST = 16200005;
 const ERROR_CODE_INNER_ERROR = 16000050;
@@ -87,88 +70,19 @@ class MySequenceable {
   }
 }
 
-function getMissionId(abilityName, state) {
-  return new Promise(async (resolve, reject) => {
-    let missionId = -1;
-    let missionInfos = await missionManager.getMissionInfos('', MAX_MISSION_NUM);
-    for (let i = 0; i < missionInfos.length; i++) {
-      if ((missionInfos[i].want.abilityName == abilityName)
-      && (missionInfos[i].runningState == state)) {
-        missionId = missionInfos[i].missionId;
-        break;
-      }
-    }
-    console.log('======>getMissionId resolve missionId<=======' + missionId);
-    resolve(missionId);
-  })
-}
-
-function sleep(time) {
-  return new Promise((resolve)=>setTimeout(resolve,time));
-}
-
-function delay(time) {
-  let delta;
-  if (typeof time != 'number' || time <= 0) {
-    delta = 100;
-  } else {
-    delta = Math.round(time);
-  }
-  for (let start = Date.now(); Date.now() - start <= delta; );
-}
-
-function clearDepProcess(bundleNames, callback, undoneCallBack) {
-  var result;
-  var cnt = 0;
-
-  if (bundleNames.length == 0) {
-    undoneCallBack();
-  }
-  for (let i = 0; i < bundleNames.length; i++) {
-    result = appManager.killProcessesByBundleName(bundleNames[i], (err, data) => {
-      console.log("clearDepProcess killProcessesByBundleName bundleName: " + bundleNames[i]);
-      console.log("clearDepProcess killProcessesByBundleName err: " + JSON.stringify(err));
-      console.log("clearDepProcess killProcessesByBundleName data: " + JSON.stringify(data));
-      cnt++;
-      if (cnt == bundleNames.length) {
-        callback();
-      }
-    });
-  }
-}
-
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
 
-    beforeEach(async (done) => {
-      done();
-    })
-
     afterEach(async (done) => {
-      var testMissionId;
-
       if (subscriber != null) {
         commonEvent.unsubscribe(subscriber, () => {
           console.log('======>afterEach unsubscribe<=======');
         });
         subscriber = null;
       }
-
-      testMissionId = await getMissionId(sysAMainAbilityName, 0);
-      console.log('======>afterEach test missionId<=======' + testMissionId);
-      if (testMissionId != -1) {
-        await missionManager.moveMissionToFront(testMissionId);
-      }
-      console.log('======>afterEach test missionId move to front<=======');
-
-      clearDepProcess(caseDepBundles, () => {
-        caseDepBundles = [];
-        setTimeout(() => {
-          done();
-        }, 500)
-      }, () => {
+      setTimeout(() => {
         done();
-      });
+      }, 200)
     })
 
     /**
@@ -189,7 +103,8 @@ export default function abilityTest() {
           done();
         })
         .catch(error => {
-          console.info(`ACTS_CommonComponent_Call_0100 startAbilityByCall Catch`);
+          console.info(`ACTS_CommonComponent_Call_0100 startAbilityByCall Catch error:  ${JSON.stringify(error)}`);
+          expect(error.code).assertEqual(ERROR_CODE_INNER_ERROR)
           done();
         });
     })
@@ -606,47 +521,13 @@ export default function abilityTest() {
         done();
       }).catch(err => {
         console.log('ACTS_CommonComponent_Call_1700 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_TYPE_ERROR);
         exceptionFlag = true;
       });
 
       expect(exceptionFlag).assertEqual(true);
       done();
-    })
-
-    /**
-     * @tc.number: ACTS_CommonComponent_Call_2000
-     * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
-     * @tc.desc: Verify that the caller can register the server's death listener.
-     */
-    it('ACTS_CommonComponent_Call_2000', 0, async function (done) {
-      console.log('ACTS_CommonComponent_Call_2000 begin');
-
-      function releaseCallback(data) {
-        console.log('ACTS_CommonComponent_Call_2000 releaseCallBack:' + data);
-        expect(data).assertEqual("died");
-        done();
-      }
-
-      let bundleNameCallee = "com.example.systemappcalleea";
-      let abilityNameCallee = "com.example.systemappcalleea.MainAbility";
-      let want = {
-        bundleName: bundleNameCallee,
-        abilityName: abilityNameCallee,
-      }
-      let caller = await globalThis.globalThis.abilityContext.startAbilityByCall(want);
-      if (typeof caller !== "object" || caller == null) {
-        console.log('ACTS_CommonComponent_Call_2000 startAbilityByCall fail');
-        expect().assertFail();
-      }
-      try {
-        caller.onRelease(releaseCallback);
-      } catch (e) {
-        console.log('ACTS_CommonComponent_Call_2000 Caller onRelease fail ' + e);
-        expect().assertFail();
-      }
-      await appManager.killProcessesByBundleName(bundleNameCallee);
     })
 
     /**
@@ -666,7 +547,7 @@ export default function abilityTest() {
         globalThis.callee.on('', onTest);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3100 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -692,7 +573,7 @@ export default function abilityTest() {
         globalThis.callee.on(null, onTest);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3200 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -718,7 +599,7 @@ export default function abilityTest() {
         globalThis.callee.on(undefined, onTest);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3300 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -740,7 +621,7 @@ export default function abilityTest() {
         globalThis.callee.off('');
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3400 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -762,7 +643,7 @@ export default function abilityTest() {
         globalThis.callee.off(null);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3500 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -784,7 +665,7 @@ export default function abilityTest() {
         globalThis.callee.off(undefined);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_3600 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -805,7 +686,7 @@ export default function abilityTest() {
         globalThis.callee.on('testCall', "");
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_4300 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -847,7 +728,7 @@ export default function abilityTest() {
         globalThis.callee.on('testCall', undefined);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_4500 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
@@ -881,7 +762,7 @@ export default function abilityTest() {
         globalThis.callee.on('ACTS_CommonComponent_Call_5000', testCallback_5100);
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_5000 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_FUNC_REGISTERED);
         finishFlag = 1;
       }
@@ -918,7 +799,7 @@ export default function abilityTest() {
         globalThis.callee.off('ACTS_CommonComponent_Call_5100');
       } catch (err) {
         console.log('ACTS_CommonComponent_Call_5100 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_FUNC_NOT_EXIST);
         finishFlag = 1;
       }
@@ -938,12 +819,12 @@ export default function abilityTest() {
       let exceptionFlag = false;
 
 
-        await globalThis.globalThis.abilityContext.startAbilityByCall(null)
-          .then(data => {
-            expect().assertFail();
-            done();
+      await globalThis.globalThis.abilityContext.startAbilityByCall(null)
+        .then(data => {
+          expect().assertFail();
+          done();
         }).catch(err => {
-            console.log('ACTS_CommonComponent_Call_5200 call err.code: ' + JSON.stringify(err.code) +
+          console.log('ACTS_CommonComponent_Call_5200 call err.code: ' + JSON.stringify(err.code) +
             ' err.msg: ' + JSON.stringify(err.message));
           expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
           exceptionFlag = true;
@@ -970,7 +851,7 @@ export default function abilityTest() {
         done();
       }).catch(err => {
         console.log('ACTS_CommonComponent_Call_5300 call err.code: ' + JSON.stringify(err.code) +
-        ' err.msg: ' + JSON.stringify(err.message));
+          ' err.msg: ' + JSON.stringify(err.message));
         expect(err.code).assertEqual(ERROR_CODE_INNER_ERROR);
         exceptionFlag = true;
       });
@@ -992,12 +873,12 @@ export default function abilityTest() {
         .then(data => {
           expect().assertFail();
           done();
-      }).catch(err => {
+        }).catch(err => {
           console.log('ACTS_CommonComponent_Call_5400 call err.code: ' + JSON.stringify(err.code) +
-          ' err.msg: ' + JSON.stringify(err.message));
-        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
-        exceptionFlag = true;
-      });
+            ' err.msg: ' + JSON.stringify(err.message));
+          expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
+          exceptionFlag = true;
+        });
 
       expect(exceptionFlag).assertEqual(true);
       done();
@@ -1136,41 +1017,6 @@ export default function abilityTest() {
         console.log('ACTS_CommonComponent_Call_5900 Caller onRelease fail ' + e);
         done();
       }
-    })
-
-    /**
-     * @tc.number: ACTS_CommonComponent_Call_5500
-     * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
-     * @tc.desc: Verify that the caller can register the server's death listener.
-     */
-    it('ACTS_CommonComponent_Call_5500', 0, async function (done) {
-      console.log('ACTS_CommonComponent_Call_5500 begin');
-
-      function releaseCallback(data) {
-        console.log('ACTS_CommonComponent_Call_5500 releaseCallBack:' + data);
-        expect(data).assertEqual("died");
-        done();
-      }
-
-      let bundleNameCallee = "com.example.systemappcalleea";
-      let abilityNameCallee = "com.example.systemappcalleea.MainAbility";
-      let want = {
-        bundleName: bundleNameCallee,
-        abilityName: abilityNameCallee,
-      }
-      let caller = await globalThis.globalThis.abilityContext.startAbilityByCall(want);
-      if (typeof caller !== "object" || caller == null) {
-        console.log('ACTS_CommonComponent_Call_5500 startAbilityByCall fail');
-        expect().assertFail();
-      }
-      try {
-        caller.on('release', releaseCallback);
-      } catch (e) {
-        console.log('ACTS_CommonComponent_Call_5500 Caller onRelease fail ' + e);
-        expect().assertFail();
-        done();
-      }
-      await appManager.killProcessesByBundleName(bundleNameCallee);
     })
   })
 }

@@ -1,6 +1,6 @@
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent';
-import AbilityConstant from '@ohos.application.AbilityConstant';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 var printLog9 = "Stage:MainAbility9:";
 var listPush9 = "Stage_MainAbility9_";
@@ -34,6 +34,10 @@ export default class MainAbility9 extends Ability {
         commonEvent.publish(listPush9 + "onDestroy", lifeList, (err) => {
             console.info(printLog9 + listPush9 + "onDestroy");
         });
+
+        setTimeout(()=>{
+          console.info(`${printLog9} onDestroy end`);
+      }, 1000)
     }
 
     onWindowStageCreate(windowStage) {

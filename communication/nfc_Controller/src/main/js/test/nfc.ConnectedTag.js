@@ -58,11 +58,10 @@ export default function ConnectedTagTest() {
             if (!isAccessToken) {
                 console.info("The device does not support active label chips.")
                 expect(isAccessToken).assertFalse()
-            }
-            else{
+            } else {
                 let inittag = connectedTag.init();
                 expect(inittag).assertTrue();
-                console.info("mifareUltralight readMultiplePages1 err: " + inittag );
+                console.info("ConnectedTag readMultiplePages1 err: " + inittag );
             }
         })
 
@@ -81,14 +80,13 @@ export default function ConnectedTagTest() {
                 console.info("The device does not support active label chips.")
                 expect(isAccessToken).assertFalse()
                 done();
-            }
-            else{
+            } else {
                 await connectedTag.readNdefTag().then(result => {
-                    console.info("mifareUltralight readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
-                    expect(true).assertTrue(result != null);
+                    console.info("ConnectedTag readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    expect(result != null).assertTrue();
                     done();
                 }).catch((err)=> {
-                    console.info("mifareUltralight readMultiplePages1 err: " + err);
+                    console.info("ConnectedTag readMultiplePages1 err: " + err);
                     expect(true).assertEqual(true);
                     done();
                 });
@@ -111,8 +109,7 @@ export default function ConnectedTagTest() {
                 console.info("The device does not support active label chips.")
                 expect(isAccessToken).assertFalse()
                 done();
-            }
-            else{
+            } else {
                 connectedTag.readNdefTag((err, result)=> {
                     if (err) {
                         expect().assertFail();
@@ -141,14 +138,13 @@ export default function ConnectedTagTest() {
                 console.info("The device does not support active label chips.")
                 expect(isAccessToken).assertFalse()
                 done();
-            }
-            else{
+            } else {
                 await connectedTag.writeNdefTag().then(result => {
-                    console.info("mifareUltralight readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
-                    expect(true).assertTrue(result != null);
+                    console.info("ConnectedTag readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    expect(result != null).assertTrue();
                     done();
                 }).catch((err)=> {
-                    console.info("mifareUltralight readMultiplePages1 err: " + err);
+                    console.info("ConnectedTag readMultiplePages1 err: " + err);
                     expect(true).assertEqual(true);
                     done();
                 });
@@ -170,8 +166,7 @@ export default function ConnectedTagTest() {
             if (!isAccessToken) {
                 console.info("The device does not support active label chips.")
                 expect(isAccessToken).assertFalse()
-            }
-            else{
+            } else {
                 connectedTag.writeNdefTag((err, result)=> {
                     if (err) {
                         expect().assertFail();
@@ -199,8 +194,7 @@ export default function ConnectedTagTest() {
             if (!isAccessToken) {
                 console.info("The device does not support active label chips.")
                 expect(isAccessToken).assertFalse()
-            }
-            else{
+            } else {
                 let recvNfcRfNotifyFunc = result => {
                     console.info("nfc state receive state ->" + result);
                     expect(result != null).assertTrue();
@@ -224,16 +218,178 @@ export default function ConnectedTagTest() {
             if (!isAccessToken) {
                 console.info("The device does not support active label chips.")
                 expect(isAccessToken).assertFalse()
+            } else {
+                let uninittag = connectedTag.uninit();
+                expect(uninittag).assertTrue();
+                console.info("ConnectedTag readMultiplePages1 err: " + uninittag );
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0800
+         * @tc.name Test initialize connectedTag
+         * @tc.desc Initializes the active label chip.
+         * @tc.size since 8
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+         it('SUB_Communication_NFC_nfcConnectedTag_js_0800', 0, function ()  {
+            var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
+            console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+            if (!isAccessToken) {
+                console.info("The device does not support active label chips.")
+                expect(isAccessToken).assertFalse()
             }
             else{
-                let uninittag = connectedTag.uninit();
+                let inittag = connectedTag.initialize();
+                expect(inittag).assertTrue();
+                console.info("mifareUltralight readMultiplePages1 err: " + inittag );
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0900
+         * @tc.name Test uninitialize connectedTag
+         * @tc.desc uninitialize active label chip resources.
+         * @tc.size since 8
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfcConnectedTag_js_0900', 0, function () {
+            var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
+            console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+            if (!isAccessToken) {
+                console.info("The device does not support active label chips.")
+                expect(isAccessToken).assertFalse()
+            }
+            else{
+                let uninittag = connectedTag.uninitialize();
                 expect(uninittag).assertTrue();
                 console.info("mifareUltralight readMultiplePages1 err: " + uninittag );
             }
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1000
+         * @tc.name Test read connectedTag
+         * @tc.desc Reads the content of the active tag.
+         * @tc.size since 8
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1000', 0, async function (done) {
+            var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
+            console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+            if (!isAccessToken) {
+                console.info("The device does not support active label chips.")
+                expect(isAccessToken).assertFalse()
+                done();
+            }
+            else{
+                await connectedTag.read().then(result => {
+                    console.info("mifareUltralight readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    expect(result != null).assertTrue();
+                    done();
+                }).catch((err)=> {
+                    console.info("mifareUltralight readMultiplePages1 err: " + err);
+                    expect(true).assertEqual(true);
+                    done();
+                });
+                sleep(3000);
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1100
+         * @tc.name Test read connectedTag
+         * @tc.desc Reads the content of the active tag.
+         * @tc.size since 8
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1100', 0, async function (done) {
+            var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
+            console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+            if (!isAccessToken) {
+                console.info("The device does not support active label chips.")
+                expect(isAccessToken).assertFalse()
+                done();
+            }
+            else{
+                connectedTag.read((err, result)=> {
+                    if (err) {
+                        expect().assertFail();
+                        console.info("isoDep isExtendedApduSupported err: " + err);
+                    } else {
+                        expect(result!=null).assertEqual(data);
+                        console.info("isoDep isExtendedApduSupported data: " + result);
+                    }
+                });
+            }
+            done();
+        })
+
+       /**
+         * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1200
+         * @tc.name Test write connectedTag
+         * @tc.desc Write Content to Active Tags
+         * @tc.size since 8
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1200', 0, async function (done) {
+            var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
+            console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+            if (!isAccessToken) {
+                console.info("The device does not support active label chips.")
+                expect(isAccessToken).assertFalse()
+                done();
+            }
+            else{
+                await connectedTag.write().then(result => {
+                    console.info("mifareUltralight readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    expect(result != null).assertTrue();
+                    done();
+                }).catch((err)=> {
+                    console.info("mifareUltralight readMultiplePages1 err: " + err);
+                    expect(true).assertEqual(true);
+                    done();
+                });
+                sleep(3000);
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1200
+         * @tc.name Test write connectedTag
+         * @tc.desc Write Content to Active Tags
+         * @tc.size since 8
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1200', 0, async function (done) {
+            var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
+            console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
+            if (!isAccessToken) {
+                console.info("The device does not support active label chips.")
+                expect(isAccessToken).assertFalse()
+            }
+            else{
+                connectedTag.write((err, result)=> {
+                    if (err) {
+                        expect().assertFail();
+                        console.info("isoDep isExtendedApduSupported err: " + err);
+                    } else {
+                        expect(result!=null).assertEqual(data);
+                        console.info("isoDep isExtendedApduSupported data: " + result);
+                    }
+                });
+            }
+            done();
+        })
 
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
+
 

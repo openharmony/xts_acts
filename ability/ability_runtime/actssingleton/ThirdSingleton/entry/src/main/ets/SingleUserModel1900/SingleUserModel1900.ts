@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 function PublishCallBackOne4() {
     console.debug("====>Publish CallBack ACTS_StartAbility_1900_CommonEvent====>");
     console.debug("====>close this context====>1900====>")

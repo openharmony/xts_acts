@@ -26,6 +26,7 @@
 #include "cmsis_os2.h"
 #include "ohos_types.h"
 
+#include <unistd.h>
 #define HKS_TEST_MAC_REE_KEY_SIZE_32 32
 #define HKS_DEFAULT_MAC_SRCDATA_SIZE 253
 #define HKS_DEFAULT_MAC_SHA256_SIZE 32
@@ -167,7 +168,7 @@ static int32_t BaseTestMac(uint32_t index)
             g_testMacParams[index].keyParams.blobDataSize);
     } else {
         if (g_testMacParams[index].keyAliasParams.blobExist) {
-            ret = GenerateKey(&key, &(g_testMacParams[index].keyAliasParams),
+            ret = HuksGenerateKey(&key, &(g_testMacParams[index].keyAliasParams),
                 &g_testMacParams[index].genKeyParamSetParams, NULL);
         } else {
             ret = TestConstuctBlob(&key,

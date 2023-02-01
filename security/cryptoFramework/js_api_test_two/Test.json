@@ -4,6 +4,7 @@
     "type": "OHJSUnitTest",
     "test-timeout": "900000",
     "shell-timeout": "900000",
+    "testcase-timeout": "60000",
     "bundle-name": "com.openharmony.cryptoFramework2",
     "package-name": "com.openharmony.cryptoFramework2"
   },

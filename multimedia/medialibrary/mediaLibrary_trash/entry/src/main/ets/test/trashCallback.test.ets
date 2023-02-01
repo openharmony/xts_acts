@@ -31,16 +31,16 @@ import {
 export default function trashCallback(abilityContext) {
     describe("trashCallback", function () {
         beforeAll(async function () {
-            await getPermission();
+            await getPermission(null, abilityContext);
             console.info("beforeAll case");
-            await checkPresetsAssets(media, 'ActsMediaLibraryTrashJsTest');
+            await checkPresetsAssets(media, "ActsMediaLibraryTrashJsTest");
         });
         beforeEach(function () {
             console.info("beforeEach case");
         });
         afterEach(async function () {
             console.info("afterEach case");
-            await sleep;
+            await sleep();
         });
         afterAll(async function () {
             console.info("afterAll case");

@@ -84,8 +84,8 @@ describe('fileio_stream_close', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let fd = await fileio.openSync(fpath, 0o2);
-      let ss = await fileio.fdopenStreamSync(fd, 'r+');
+      let fd = fileio.openSync(fpath, 0o2);
+      let ss = fileio.fdopenStreamSync(fd, 'r+');
       expect(ss !== null).assertTrue();
       await ss.close();
       fileio.unlinkSync(fpath);
@@ -110,8 +110,8 @@ describe('fileio_stream_close', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let fd = await fileio.openSync(fpath, 0o2);
-      let ss = await fileio.fdopenStreamSync(fd, 'r+');
+      let fd = fileio.openSync(fpath, 0o2);
+      let ss = fileio.fdopenStreamSync(fd, 'r+');
       expect(ss !== null).assertTrue();
       ss.close(function (err) {
         fileio.unlinkSync(fpath);

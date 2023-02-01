@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from 'deccjsunit/index';
+import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it} from '@ohos/hypium';
 import distributedObject from '@ohos.data.distributedDataObject';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import featureAbility from '@ohos.ability.featureAbility';
 import bundle from '@ohos.bundle';
-var context;
+let context;
 const TAG = "OBJECTSTORE_TEST";
 function changeCallback(sessionId, changeData) {
     console.info("changeCallback start");
@@ -83,7 +83,7 @@ describe('objectStoreTest', function () {
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001
      * @tc.type: FUNC
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001 start *************");
         var g_object;
         try {
@@ -112,6 +112,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId((error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
     /**
@@ -120,7 +121,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -139,6 +140,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId((error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
     /**
@@ -147,7 +149,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -163,6 +165,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId((error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
     /**
@@ -171,7 +174,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -185,6 +188,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId((error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
     /**
@@ -193,7 +197,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -218,6 +222,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId("", (error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
 
@@ -227,7 +232,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_On_001
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_On_001', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_On_001', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_001 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -263,6 +268,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId("", (error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
     /**
@@ -271,7 +277,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_On_002
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_On_002', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_On_002', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_002 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -298,6 +304,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId("", (error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
     /**
@@ -306,7 +313,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_On_003
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_On_003', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_On_003', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_003 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -334,6 +341,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId("", (error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
     /**
@@ -342,7 +350,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_Off_001
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Off_001', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_Off_001', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_001 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -381,6 +389,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId((error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
     /**
@@ -389,7 +398,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_Off_002
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Off_002', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_Off_002', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_002 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -413,6 +422,7 @@ describe('objectStoreTest', function () {
         }).catch((error) => {
             console.info(TAG + error.code + error.message);
         });
+        done();
     })
 
     /**
@@ -421,7 +431,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001 start *************");
         console.log(TAG + "start watch status");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
@@ -440,6 +450,7 @@ describe('objectStoreTest', function () {
         }).catch((error) => {
             console.info(TAG + error.code + error.message);
         });
+        done();
     })
 
     /**
@@ -448,7 +459,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002', 0, function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002', 0, function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002 start *************");
         console.log(TAG + "start watch status");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
@@ -465,6 +476,7 @@ describe('objectStoreTest', function () {
         }).catch((error) => {
             console.info(TAG + error.code + error.message);
         });
+        done();
     })
 
     /**
@@ -473,7 +485,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_Save_001
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Save_001', 0, async function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_Save_001', 0, async function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_001 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -511,6 +523,7 @@ describe('objectStoreTest', function () {
         }).catch((error) => {
             console.info(TAG + error.code + error.message);
         });
+        done();
     })
 
     /**
@@ -519,7 +532,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_Save_002
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Save_002', 0, async function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_Save_002', 0, async function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_002 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -559,6 +572,7 @@ describe('objectStoreTest', function () {
         }).catch((error) => {
             console.info(TAG + error.code + error.message);
         });
+        done();
     })
 
     /**
@@ -567,7 +581,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001', 0, async function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001', 0, async function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -605,6 +619,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId("", (error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
 
     /**
@@ -613,7 +628,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002', 0, async function () {
+    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002', 0, async function (done) {
         console.log(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object == undefined).assertEqual(false);
@@ -642,6 +657,7 @@ describe('objectStoreTest', function () {
         g_object.setSessionId("", (error, data) => {
             console.info(TAG + error + "," + data);
         });
+        done();
     })
     
     console.log(TAG + "*************Unit Test End*************");

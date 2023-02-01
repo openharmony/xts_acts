@@ -1,4 +1,4 @@
-import Ability from '@ohos.application.Ability'
+import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent';
 
 var printLog3 = "Stage:MainAbility3:";
@@ -31,11 +31,12 @@ export default class MainAbility3 extends Ability {
     }
 
     onDestroy() {
-        console.info(printLog3 + "onDestroy")
-
         commonEvent.publish(listPush3 + "onDestroy", (err) => {
             console.info(printLog3 + listPush3 + "onDestroy");
         });
+        setTimeout(()=>{
+          console.info(printLog3 + "onDestroy")
+      }, 1000)
     }
 
     onWindowStageCreate(windowStage) {

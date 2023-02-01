@@ -29,38 +29,6 @@ function resolveIP(ip) {
     return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
 }
 
-let wifiSecurityType = {
-    WIFI_SEC_TYPE_INVALID: 0,
-    WIFI_SEC_TYPE_OPEN: 1,
-    WIFI_SEC_TYPE_WEP: 2,
-    WIFI_SEC_TYPE_PSK: 3,
-    WIFI_SEC_TYPE_SAE: 4,
-    WIFI_SEC_TYPE_EAP: 5,
-    WIFI_SEC_TYPE_EAP_SUITE_B: 6,
-    WIFI_SEC_TYPE_OWE:7 ,
-    WIFI_SEC_TYPE_WAPI_CERT:8 ,
-    WIFI_SEC_TYPE_WAPI_PSK:9 ,
-}
-
-let connState = {
-    SCANNING: 0,
-    CONNECTING: 1,
-    AUTHENTICATING: 2,
-    OBTAINING_IPADDR: 3,
-    CONNECTED: 4,
-    DISCONNECTING: 5,
-    DISCONNECTED: 6,
-    UNKNOWN: 7,
-}
-
-let untrustedDeviceConfig = {
-    "ssid": "untrusted_ssid",
-    "bssid": "",
-    "preSharedKey": "12345678",
-    "isHiddenSsid": false,
-    "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK
-}
-
 let wifiChannelWidth = {
     WIDTH_20MHZ : 0,
     WIDTH_40MHZ : 1,
@@ -278,28 +246,28 @@ export default function actsWifiManagerFunctionsTest() {
                             "suppState: " + result.suppState + "connState: " + result.connState
                             + "macType: " + result.macType);
                             let state = wifiMg.getLinkedInfo().ConnState;
-                            if (state == connState.SCANNING) {
+                            if (state == wifiMg.connState.SCANNING) {
                                 expect(true).assertEqual(state == 0);
                             }
-                            if (state == connState.CONNECTING) {
+                            if (state == wifiMg.connState.CONNECTING) {
                                 expect(true).assertEqual(state == 1);
                             }
-                            if (state == connState.AUTHENTICATING) {
+                            if (state == wifiMg.connState.AUTHENTICATING) {
                                 expect(true).assertEqual(state == 2);
                             }
-                            if (state == connState.OBTAINING_IPADDR) {
+                            if (state == wifiMg.connState.OBTAINING_IPADDR) {
                                 expect(true).assertEqual(state == 3);
                             }
-                            if (state == connState.CONNECTED) {
+                            if (state == wifiMg.connState.CONNECTED) {
                                 expect(true).assertEqual(state == 4);
                             }
-                            if (state == connState.DISCONNECTING) {
+                            if (state == wifiMg.connState.DISCONNECTING) {
                                 expect(true).assertEqual(state == 5);
                             }
-                            if (state == connState.DISCONNECTED) {
+                            if (state == wifiMg.connState.DISCONNECTED) {
                                 expect(true).assertEqual(state == 6);
                             }
-                            if (state == connState.UNKNOWN) {
+                            if (state == wifiMg.connState.UNKNOWN) {
                                 expect(true).assertEqual(state == 7);
                             }
                             resolve();
@@ -326,6 +294,7 @@ export default function actsWifiManagerFunctionsTest() {
             done();
         })
         console.log("*************[wifi_test] start wifi js unit test end*************");
-        })
+    })
 }
+
 

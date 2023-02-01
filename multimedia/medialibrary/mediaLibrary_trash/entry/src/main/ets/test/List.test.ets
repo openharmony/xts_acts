@@ -14,7 +14,7 @@
  */
 import trashPromise from './trashPromise.test.ets'
 import trashCallback from './trashCallback.test.ets'
-export default function testsuite(abilityContext) {
-  trashCallback(abilityContext)
-  trashPromise(abilityContext)
+export default function testsuite() {
+  trashCallback(globalThis.abilityContext)
+  trashPromise(globalThis.abilityContext)
 }

@@ -15,15 +15,13 @@
  */
 
 import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
-import {
-  testSecurityRandomPromise,
-  testSecurityRandomEnumPromise,
-} from "./utils/securityrandom/publicSecurityRandomPromise";
+import { testSecurityRandomPromise } from "./utils/securityrandom/publicSecurityRandomPromise";
 import {
   testSecurityRandomCallback,
   testSecurityRandomLengthCallback,
   testSecurityRandomCallbackSeed,
 } from "./utils/securityrandom/publicSecurityRandomCallback";
+import { testSecurityRandomEnumCommon } from "./utils/securityrandom/publicSecurityRandomCommon";
 
 export default function SecurityRandomJsunit() {
   describe("SecurityRandomJsunit", function () {
@@ -136,7 +134,7 @@ export default function SecurityRandomJsunit() {
      * @tc.desc cover 100% Enumerated values
      */
     it("Security_crypto_framework_Random_0500", 0, async function (done) {
-      testSecurityRandomEnumPromise();
+      testSecurityRandomEnumCommon();
       done();
     });
   });

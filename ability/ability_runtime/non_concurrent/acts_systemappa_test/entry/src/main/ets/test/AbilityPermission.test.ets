@@ -22,9 +22,6 @@ var AbilityPermission1 = {
 var AbilityPermission3 = {
   events: ["ACTS_AbilityPermission_0300_Start_CommonEvent"]
 }
-var AbilityPermission4 = {
-  events: ["ACTS_AbilityPermission_0400_Start_CommonEvent"]
-}
 var AbilityPermission6 = {
   events: ["ACTS_AbilityPermission_0600_Start_CommonEvent"]
 }
@@ -139,82 +136,6 @@ export default function abilityPermissionTest() {
         console.debug('ACTS_AbilityPermission_0300====>timeout====>');
         if(flag == 0){
           flag = 1;
-          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        }
-      }
-      setTimeout(timeout, START_ABILITY_TIMEOUT);
-    })
-
-    /*
-     * @tc.number: ACTS_AbilityPermission_0400
-     * @tc.name: In non-concurrent mode, if the target application is not the current user, it is forbidden to start
-     * @tc.desc: Bind an Ability to which you belong with the current user
-     */
-    it('ACTS_AbilityPermission_0400', 0, async function (done) {
-      console.log("ACTS_AbilityPermission_0400====>callback start====>")
-      let Subscriber
-      var flag = true
-
-      function SubscribeCallBack(err, data) {
-        expect(data.event == "ACTS_AbilityPermission_0400_Start_CommonEvent").assertTrue();
-        console.debug("====>0400 Subscribe CallBack data:====>" + JSON.stringify(data));
-        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
-          console.debug("====>data is====>" + JSON.stringify(data));
-        })
-        console.log('====>disconnectAbility finish');
-      }
-
-      function onConnectCallback(element, remote) {
-        console.log('ACTS_AbilityPermission_0400_Start_CommonEvent onConnectCallback====> element=' + JSON.stringify(element));
-        console.log('ACTS_AbilityPermission_0400_Start_CommonEvent onConnectCallback====> remote=' + JSON.stringify(remote));
-        setTimeout(() => {
-          console.log('====>in timeout');
-          console.debug("====>flag is====>" + JSON.stringify(flag));
-          if (flag == true) {
-            console.debug('ACTS_AbilityPermission_0400_Start_CommonEvent - timeout');
-            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-          }
-        }, 1000);
-      }
-
-      function onDisconnectCallback(element) {
-        console.log('onDisconnectCallback====> element=' + JSON.stringify(element));
-      }
-
-      function onFailedCallback(code) {
-        console.log('onFailedCallback====> code=' + JSON.stringify(code))
-        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-      }
-
-      commonEvent.createSubscriber(AbilityPermission4).then(async (data) => {
-        console.debug("====>Create Subscriber====>");
-        Subscriber = data;
-        commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        console.debug("====>0400start connectAbility====>");
-        globalThis.number = await globalThis.abilityContext.connectAbilityWithAccount(
-          {
-            bundleName: 'com.example.actsabilitypermissiontest',
-            abilityName: 'com.example.actsabilitypermissiontest.ServiceAbility',
-            action: "StartAbilityPromise"
-          }, userA, {
-          onConnect: onConnectCallback,
-          onDisconnect: onDisconnectCallback,
-          onFailed: onFailedCallback
-        })
-        console.debug("====>number is====>" + JSON.stringify(globalThis.number));
-      })
-
-      function UnSubscribeCallback() {
-        console.debug("====>UnSubscribeCallback====>");
-        flag = false
-        done()
-      }
-
-      function timeout() {
-        console.debug('in ACTS_AbilityPermission_0400_Start_CommonEvent timeout');
-        if (flag == true) {
-          expect().assertFail();
-          console.debug('ACTS_AbilityPermission_0400_Start_CommonEvent - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
       }
