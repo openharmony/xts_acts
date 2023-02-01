@@ -13,22 +13,11 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexTextMargin_AutoJsunit() {
-
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
@@ -37,7 +26,7 @@ export default function flexTextMargin_AutoJsunit() {
       }
       try {
         router.clear();
-        await sleep(1);
+        await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get FlexTextMargin state success " + JSON.stringify(pages));
         if (!("FlexTextMargin" == pages.name)) {
@@ -46,13 +35,13 @@ export default function flexTextMargin_AutoJsunit() {
           console.info("push FlexTextMargin page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexTextMargin page error " + JSON.stringify(result));
+        console.error("push FlexTextMargin page error " + JSON.stringify(err));
       }
-      await sleep(2)
+      await CommonFunc.sleep(2000);
       done()
     });
     afterEach(async function () {
-      await sleep(1)
+      await CommonFunc.sleep(1000);
       console.info("FlexTextMargin after each called");
     });
 
@@ -61,9 +50,10 @@ export default function flexTextMargin_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_TextMargin
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_TextMargin001', 0, async function (done) {
-      console.info('new ItemAlign_Auto_TextMargin001 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1300', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1300 START');
       globalThis.value.message.notify({name:'margin', value:10});
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
       let obj1 = JSON.parse(strJson1);
       let textMargin01 = CommonFunc.getComponentRect('textMargin01');
@@ -73,11 +63,9 @@ export default function flexTextMargin_AutoJsunit() {
       expect(textMargin01.left - flexTextMargin01.left).assertEqual(vp2px(10))
       expect(textMargin02.left).assertEqual(textMargin01.right)
       expect(textMargin03.right).assertLess(flexTextMargin01.right)
-      
       expect(textMargin01.top).assertEqual(textMargin02.top)
       expect(textMargin02.top).assertEqual(textMargin03.top)
       expect(textMargin02.top).assertEqual(flexTextMargin01.top)
-
       expect(textMargin01.bottom - textMargin01.top).assertEqual(vp2px(70))
       expect(textMargin02.bottom - textMargin02.top).assertEqual(vp2px(100))
       expect(textMargin03.bottom - textMargin03.top).assertEqual(vp2px(150))
@@ -86,7 +74,7 @@ export default function flexTextMargin_AutoJsunit() {
       expect(textMargin03.right - textMargin03.left).assertEqual(vp2px(150))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_TextMargin001 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1300 END');
       done();
     });
 
@@ -95,9 +83,10 @@ export default function flexTextMargin_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_TextMargin
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_TextMargin002', 0, async function (done) {
-      console.info('new ItemAlign_Auto_TextMargin002 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1400', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1400 START');
       globalThis.value.message.notify({name:'margin', value:30});
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
       let obj1 = JSON.parse(strJson1);
       let textMargin01 = CommonFunc.getComponentRect('textMargin01');
@@ -110,7 +99,6 @@ export default function flexTextMargin_AutoJsunit() {
       expect(textMargin01.top).assertEqual(textMargin02.top)
       expect(textMargin02.top).assertEqual(textMargin03.top)
       expect(textMargin02.top).assertEqual(flexTextMargin01.top)
-
       expect(textMargin01.bottom - textMargin01.top).assertEqual(vp2px(50))
       expect(textMargin02.bottom - textMargin02.top).assertEqual(vp2px(100))
       expect(textMargin03.bottom - textMargin03.top).assertEqual(vp2px(150))
@@ -119,7 +107,7 @@ export default function flexTextMargin_AutoJsunit() {
       expect(textMargin03.right - textMargin03.left).assertLess(vp2px(150))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_TextMargin002 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1400 END');
       done();
     });
   })

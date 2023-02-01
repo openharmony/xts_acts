@@ -13,23 +13,11 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 
 export default function flexMargin_AutoJsunit() {
-
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
       let options = {
@@ -37,7 +25,7 @@ export default function flexMargin_AutoJsunit() {
       }
       try {
         router.clear();
-        await sleep(1);
+        await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get FlexMargin state success " + JSON.stringify(pages));
         if (!("FlexMargin" == pages.name)) {
@@ -46,13 +34,13 @@ export default function flexMargin_AutoJsunit() {
           console.info("push FlexMargin page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexMargin page error " + JSON.stringify(result));
+        console.error("push FlexMargin page error " + JSON.stringify(err));
       }
-      await sleep(2)
+      await CommonFunc.sleep(2000);
       done()
     });
     afterEach(async function () {
-      await sleep(1)
+      await CommonFunc.sleep(1000);
       console.info("FlexMargin after each called");
     });
 
@@ -61,8 +49,8 @@ export default function flexMargin_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexMargin
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_FlexMargin001', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexMargin001 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0500', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0500 START');
       let strJson1 = getInspectorByKey('flexMargin');
       let obj1 = JSON.parse(strJson1);
       let textFlexMargin01 = CommonFunc.getComponentRect('textFlexMargin01');
@@ -82,7 +70,7 @@ export default function flexMargin_AutoJsunit() {
       expect(textFlexMargin03.right - textFlexMargin03.left).assertEqual(vp2px(150))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_FlexMargin001 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0500 END');
       done();
     });
 

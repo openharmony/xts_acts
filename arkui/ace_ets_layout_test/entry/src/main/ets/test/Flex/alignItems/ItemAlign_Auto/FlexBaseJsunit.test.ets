@@ -13,23 +13,11 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexBase_AutoJsunit() {
-
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
       let options = {
@@ -37,7 +25,7 @@ export default function flexBase_AutoJsunit() {
       }
       try {
         router.clear();
-        await sleep(1);
+        await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get FlexBase state success " + JSON.stringify(pages));
         if (!("FlexBase" == pages.name)) {
@@ -46,13 +34,13 @@ export default function flexBase_AutoJsunit() {
           console.info("push FlexBase page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexBase page error " + JSON.stringify(result));
+        console.error("push FlexBase page error " + JSON.stringify(err));
       }
-      await sleep(2)
+      await CommonFunc.sleep(2000);
       done()
     });
     afterEach(async function () {
-      await sleep(1)
+      await CommonFunc.sleep(1000);
       console.info("FlexBase after each called");
     });
 
@@ -61,10 +49,11 @@ export default function flexBase_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexBase
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_FlexBase001', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexBase001 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0100', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0100 START');
       globalThis.value.message.notify({name:'height', value:200});
       globalThis.value.message.notify({name:'width', value:500});
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
       let obj1 = JSON.parse(strJson1);
       let textFlex01 = CommonFunc.getComponentRect('textFlex01');
@@ -87,7 +76,7 @@ export default function flexBase_AutoJsunit() {
       expect(textFlex03.right - textFlex03.left).assertEqual(vp2px(150))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_FlexBase001 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0100 END');
       done();
     });
 
@@ -96,10 +85,11 @@ export default function flexBase_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexBase
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_FlexBase002', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexBase002 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0200', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0200 START');
       globalThis.value.message.notify({name:'height', value:140});
       globalThis.value.message.notify({name:'width', value:420});
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
       let obj1 = JSON.parse(strJson1);
       let textFlex01 = CommonFunc.getComponentRect('textFlex01');
@@ -121,7 +111,7 @@ export default function flexBase_AutoJsunit() {
 
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_FlexBase002 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0200 END');
       done();
     });
   })

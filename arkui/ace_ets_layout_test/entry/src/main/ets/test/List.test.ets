@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import flexBase_AutoJsunit from './alignItems/ItemAlign_Auto/FlexBaseJsunit.test.ets';
- import flexPadding_AutoJsunit from './alignItems/ItemAlign_Auto/FlexPaddingJsunit.test.ets';
- import flexMargin_AutoJsunit from './alignItems/ItemAlign_Auto/FlexMarginJsunit.test.ets';
- import flexExceed_AutoJsunit from './alignItems/ItemAlign_Auto/FlexExceedJsunit.test.ets';
- import flexHeightModify_AutoJsunit from './alignItems/ItemAlign_Auto/FlexHeightModifyJsunit.test.ets';
- import flexOffset_AutoJsunit from './alignItems/ItemAlign_Auto/FlexOffsetJsunit.test.ets';
- import flexVisibility_AutoJsunit from './alignItems/ItemAlign_Auto/FlexVisibilityJsunit.test.ets';
- import flexAlignSelf_AutoJsunit from './alignItems/ItemAlign_Auto/FlexAlignSelfJsunit.test.ets';
- import flexTextMargin_AutoJsunit from './alignItems/ItemAlign_Auto/FlexTextMarginJsunit.test.ets';
+ import flexBase_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexBaseJsunit.test.ets';
+ import flexPadding_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexPaddingJsunit.test.ets';
+ import flexMargin_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexMarginJsunit.test.ets';
+ import flexExceed_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexExceedJsunit.test.ets';
+ import flexHeightModify_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexHeightModifyJsunit.test.ets';
+ import flexOffset_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexOffsetJsunit.test.ets';
+ import flexVisibility_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexVisibilityJsunit.test.ets';
+ import flexAlignSelf_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexAlignSelfJsunit.test.ets';
+ import flexTextMargin_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexTextMarginJsunit.test.ets';
 
 export default function testsuite() {
   flexBase_AutoJsunit()

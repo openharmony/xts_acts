@@ -13,23 +13,11 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 
 export default function flexAlignSelf_AutoJsunit() {
-
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
       let options = {
@@ -37,7 +25,7 @@ export default function flexAlignSelf_AutoJsunit() {
       }
       try {
         router.clear();
-        await sleep(1);
+        await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get FlexSecond state success " + JSON.stringify(pages));
         if (!("FlexSecond" == pages.name)) {
@@ -46,14 +34,14 @@ export default function flexAlignSelf_AutoJsunit() {
           console.info("push FlexSecond page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexSecond page error " + JSON.stringify(result));
+        console.error("push FlexSecond page error " + JSON.stringify(err));
       }
-      await sleep(2)
+      await CommonFunc.sleep(2000);
       done()
     });
 
     afterEach(async function () {
-      await sleep(1)
+      await CommonFunc.sleep(1000);
       console.info("FlexSecond after each called");
     });
 
@@ -62,8 +50,8 @@ export default function flexAlignSelf_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexAlignSelf
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_FlexAlignSelf001', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexAlignSelf001 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1200', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1200 START');
       let strJson1 = getInspectorByKey('flexAlignSelf');
       let obj1 = JSON.parse(strJson1);
       let strJson2 = getInspectorByKey('textAlignSelf01');
@@ -88,7 +76,7 @@ export default function flexAlignSelf_AutoJsunit() {
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       expect(obj2.$attrs.alignSelf).assertEqual("ItemAlign.End")
-      console.info('new ItemAlign_Auto_FlexAlignSelf001 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1200 END');
       done();
     });
   })

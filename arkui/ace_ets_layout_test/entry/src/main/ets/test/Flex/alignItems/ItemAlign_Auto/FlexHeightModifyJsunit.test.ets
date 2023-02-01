@@ -13,23 +13,11 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexHeightModify_AutoJsunit() {
-
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
       let options = {
@@ -37,7 +25,7 @@ export default function flexHeightModify_AutoJsunit() {
       }
       try {
         router.clear();
-        await sleep(1);
+        await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get FlexHeightModify state success " + JSON.stringify(pages));
         if (!("FlexHeightModify" == pages.name)) {
@@ -46,13 +34,13 @@ export default function flexHeightModify_AutoJsunit() {
           console.info("push FlexHeightModify page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexHeightModify page error " + JSON.stringify(result));
+        console.error("push FlexHeightModify page error " + JSON.stringify(err));
       }
-      await sleep(2)
+      await CommonFunc.sleep(2000);
       done()
     });
     afterEach(async function () {
-      await sleep(1)
+      await CommonFunc.sleep(1000);
       console.info("FlexHeightModify after each called");
     });
 
@@ -61,9 +49,10 @@ export default function flexHeightModify_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexHeightModify
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_FlexHeightModify001', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexHeightModify001 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0800', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0800 START');
       globalThis.value.message.notify({name:'height', value:80})
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexHeightModify');
       let obj1 = JSON.parse(strJson1);
       let textHeightModify01 = CommonFunc.getComponentRect('textHeightModify01');
@@ -86,7 +75,7 @@ export default function flexHeightModify_AutoJsunit() {
       expect(textHeightModify03.right - textHeightModify03.left).assertEqual(vp2px(150))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_FlexHeightModify001 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0800 END');
       done();
     });
   })

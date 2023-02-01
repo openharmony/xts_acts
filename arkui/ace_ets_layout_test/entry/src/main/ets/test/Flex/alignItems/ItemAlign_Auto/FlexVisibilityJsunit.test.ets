@@ -13,23 +13,11 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexVisibility_AutoJsunit() {
-
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
       let options = {
@@ -37,7 +25,7 @@ export default function flexVisibility_AutoJsunit() {
       }
       try {
         router.clear();
-        await sleep(1);
+        await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get FlexVisibility state success " + JSON.stringify(pages));
         if (!("FlexVisibility" == pages.name)) {
@@ -46,14 +34,14 @@ export default function flexVisibility_AutoJsunit() {
           console.info("push FlexVisibility page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexVisibility page error " + JSON.stringify(result));
+        console.error("push FlexVisibility page error " + JSON.stringify(err));
       }
-      await sleep(2)
+      await CommonFunc.sleep(2000);
       done()
     });
 
     afterEach(async function () {
-      await sleep(1)
+      await CommonFunc.sleep(1000);
       console.info("FlexVisibility after each called");
     });
 
@@ -62,9 +50,10 @@ export default function flexVisibility_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexVisibility
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_FlexVisibility001', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexVisibility001 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1000', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1000 START');
       globalThis.value.message.notify({name:'visibility', value:Visibility.None})
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexVisible');
       let obj1 = JSON.parse(strJson1);
       let strJson2 = getInspectorByKey('textVisible01');
@@ -88,7 +77,7 @@ export default function flexVisibility_AutoJsunit() {
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
 
-      console.info('new ItemAlign_Auto_FlexVisibility001 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1000 END');
       done();
     });
 
@@ -97,9 +86,10 @@ export default function flexVisibility_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexVisibility
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_FlexVisibility002', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexVisibility002 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1100', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1100 START');
       globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden});
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexVisible');
       let obj1 = JSON.parse(strJson1);
       let strJson2 = getInspectorByKey('textVisible01');
@@ -122,7 +112,7 @@ export default function flexVisibility_AutoJsunit() {
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
-      console.info('new ItemAlign_Auto_FlexVisibility002 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1100 END');
       done();
     });
   })

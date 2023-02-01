@@ -13,23 +13,11 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexExceed_AutoJsunit() {
-
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
       let options = {
@@ -37,7 +25,7 @@ export default function flexExceed_AutoJsunit() {
       }
       try {
         router.clear();
-        await sleep(1);
+        await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get FlexExceed state success " + JSON.stringify(pages));
         if (!("FlexExceed" == pages.name)) {
@@ -46,13 +34,13 @@ export default function flexExceed_AutoJsunit() {
           console.info("push FlexExceed page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexExceed page error " + JSON.stringify(result));
+        console.error("push FlexExceed page error " + JSON.stringify(err));
       }
-      await sleep(2)
+      await CommonFunc.sleep(2000);
       done()
     });
     afterEach(async function () {
-      await sleep(1)
+      await CommonFunc.sleep(1000);
       console.info("FlexExceed after each called");
     });
 
@@ -61,10 +49,11 @@ export default function flexExceed_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexExceed
      * @tc.desc      aceEtsTest
      */
-    it('ItemAlign_Auto_FlexExceed001', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexExceed001 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0600', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0600 START');
       globalThis.value.message.notify({name:'padding', value:10})
       globalThis.value.message.notify({name:'margin', value:10})
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexExceed01');
       let obj1 = JSON.parse(strJson1);
       let textExceed01 = CommonFunc.getComponentRect('textExceed01');
@@ -84,7 +73,7 @@ export default function flexExceed_AutoJsunit() {
       expect(textExceed03.right - textExceed03.left).assertEqual(vp2px(150))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_FlexExceed001 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0600 END');
       done();
     });
 
@@ -93,17 +82,17 @@ export default function flexExceed_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexExceed
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_FlexExceed002', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexExceed002 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0700', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0700 START');
       globalThis.value.message.notify({name:'padding', value:30});
       globalThis.value.message.notify({name:'margin', value:30});
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexExceed01');
       let obj1 = JSON.parse(strJson1);
       let textExceed01 = CommonFunc.getComponentRect('textExceed01');
       let textExceed02 = CommonFunc.getComponentRect('textExceed02');
       let textExceed03 = CommonFunc.getComponentRect('textExceed03');
       let flexExceed01 = CommonFunc.getComponentRect('flexExceed01');
-
       expect(textExceed01.top).assertEqual(textExceed02.top)
       expect(textExceed02.top).assertEqual(textExceed03.top)
       expect(textExceed01.top).assertLarger(flexExceed01.top)
@@ -117,7 +106,7 @@ export default function flexExceed_AutoJsunit() {
       expect(textExceed03.right - textExceed03.left).assertEqual(vp2px(440/3))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_FlexExceed002 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0700 END');
       done();
     });
   })

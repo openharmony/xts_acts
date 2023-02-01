@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2020-2030 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 import router from '@ohos.router';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
-import testsuite from '../../../test/Flex/List.test'
+import testsuite from '../../../test/List.test'
 
 
 @Entry

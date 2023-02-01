@@ -13,22 +13,11 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexPadding_AutoJsunit() {
-
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
@@ -37,7 +26,7 @@ export default function flexPadding_AutoJsunit() {
       }
       try {
         router.clear();
-        await sleep(1);
+        await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get FlexPadding state success " + JSON.stringify(pages));
         if (!("FlexPadding" == pages.name)) {
@@ -46,13 +35,13 @@ export default function flexPadding_AutoJsunit() {
           console.info("push FlexPadding page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexPadding page error " + JSON.stringify(result));
+        console.error("push FlexPadding page error " + JSON.stringify(err));
       }
-      await sleep(2)
+      await CommonFunc.sleep(2000);
       done()
     });
     afterEach(async function () {
-      await sleep(1)
+      await CommonFunc.sleep(1000);
       console.info("FlexPadding after each called");
     });
 
@@ -61,9 +50,10 @@ export default function flexPadding_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_testFlexPadding
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_testFlexPadding001', 0, async function (done) {
-      console.info('new ItemAlign_Auto_testFlexPadding001 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0300', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0300 START');
       globalThis.value.message.notify({name:'padding', value:10})
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexPadding01');
       let obj1 = JSON.parse(strJson1);
       let textFlexPadding01 = CommonFunc.getComponentRect('textFlexPadding01')
@@ -85,7 +75,7 @@ export default function flexPadding_AutoJsunit() {
       expect(textFlexPadding03.right - textFlexPadding03.left).assertEqual(vp2px(150))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_testFlexPadding001 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0300 END');
       done();
     });
 
@@ -94,9 +84,10 @@ export default function flexPadding_AutoJsunit() {
      * @tc.name      ItemAlign_Auto_FlexPadding
      * @tc.desc      aceFlexAlignItemTest
      */
-    it('ItemAlign_Auto_FlexPadding002', 0, async function (done) {
-      console.info('new ItemAlign_Auto_FlexPadding002 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0400', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0400 START');
       globalThis.value.message.notify({name:'padding', value:30});
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexPadding01');
       let obj1 = JSON.parse(strJson1);
       let textFlexPadding01 = CommonFunc.getComponentRect('textFlexPadding01');
@@ -116,7 +107,7 @@ export default function flexPadding_AutoJsunit() {
       expect(textFlexPadding03.right - textFlexPadding03.left).assertEqual(vp2px(440/3))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new ItemAlign_Auto_FlexPadding002 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0400 END');
       done();
     });
   })
