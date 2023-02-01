@@ -58,7 +58,17 @@ export async function getFileDescriptor(fileName) {
     });
     return fileDescriptor;
 }
-
+export async function getStageFileDescriptor(fileName) {
+    let fileDescriptor = undefined;
+    let mgr = globalThis.abilityContext.resourceManager
+    await mgr.getRawFileDescriptor(fileName).then(value => {
+        fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
+        console.log('case getRawFileDescriptor success fileName: ' + fileName);
+    }).catch(error => {
+        console.log('case getRawFileDescriptor err: ' + error);
+    });
+    return fileDescriptor;
+}
 export async function closeFileDescriptor(fileName) {
     await resourceManager.getResourceManager().then(async (mgr) => {
         await mgr.closeRawFileDescriptor(fileName).then(()=> {

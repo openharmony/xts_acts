@@ -40,13 +40,13 @@ export default function AVPlayerLocalTest() {
 
         beforeAll(async function() {
             console.info('beforeAll case');
-            await mediaTestBase.getFileDescriptor(VIDEO_SOURCE).then((res) => {
+            await mediaTestBase.getStageFileDescriptor(VIDEO_SOURCE).then((res) => {
                 fileDescriptor = res;
             });
-            await mediaTestBase.getFileDescriptor(AUDIO_SOURCE).then((res) => {
+            await mediaTestBase.getStageFileDescriptor(AUDIO_SOURCE).then((res) => {
                 fileDescriptor2 = res;
             });
-            await mediaTestBase.getFileDescriptor(VIDEO_NOAUDIO).then((res) => {
+            await mediaTestBase.getStageFileDescriptor(VIDEO_NOAUDIO).then((res) => {
                 fileDescriptor3 = res;
             });
         })
