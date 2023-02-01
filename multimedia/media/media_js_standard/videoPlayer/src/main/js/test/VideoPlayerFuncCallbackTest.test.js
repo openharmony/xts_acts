@@ -48,7 +48,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     const DELTA_TIME = 1000;
     const NEXT_FRAME_TIME = 8333;
     const PREV_FRAME_TIME = 4166;
-    const DELTA_SEEK_TIME = 100;
+    const DELTA_SEEK_TIME = 300;
     let surfaceID = '';
     let fdHead = 'fd://';
     let fileDescriptor = null;

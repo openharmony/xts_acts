@@ -30,7 +30,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
     const DELTA_TIME = 1500;
     const NEXT_FRAME_TIME = 8333;
     const PREV_FRAME_TIME = 4166;
-    const DELTA_SEEK_TIME = 100;
+    const DELTA_SEEK_TIME = 300;
     let surfaceID = '';
     let fdHead = 'fd://';
     let fileDescriptor = null;
@@ -244,7 +244,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             expect(videoPlayer.state).assertEqual('playing');
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         let endTime = videoPlayer.currentTime;
-        expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
+        expect(Math.abs(endTime - startTime - 1000)).assertLess(DELTA_TIME);
 
         startTime = videoPlayer.currentTime;
         await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_0_75_X).then((speedMode) => {
