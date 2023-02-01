@@ -15,8 +15,8 @@
 
 import inputDevice from '@ohos.multimodalInput.inputDevice';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
-export default function MultimodalInput_Device_test() {
-  describe('MultimodalInput_Device_test', function () {
+export default function InputDevice_test() {
+  describe('InputDevice_test', function () {
 
     const errCode = {
       COMMON_PARAMETER_CODE: 401
@@ -30,8 +30,8 @@ export default function MultimodalInput_Device_test() {
     }
 
     // 参数正确,返回一个数组
-    it("InputDevice_getDeviceIds_test-01", 0, async function (done) {
-      console.info(`InputDevice_getDeviceIds_test-01 enter`);
+    it("InputDevice_getDeviceIds_test_01", 0, async function (done) {
+      console.info(`InputDevice_getDeviceIds_test_01 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
           if (err) {
@@ -39,53 +39,53 @@ export default function MultimodalInput_Device_test() {
           } else {
             expect(data).assertInstanceOf('Array');
           }
-          console.info(`InputDevice_getDeviceIds_test-01 exit`);
+          console.info(`InputDevice_getDeviceIds_test_01 exit`);
           done();
         })
       } catch (error) {
-        console.info(`InputDevice_getDeviceIds_test-01 error`);
+        console.info(`InputDevice_getDeviceIds_test_01 error`);
         expect(false).assertTrue();
         done();
       }
     })
 
     // 参数正确,判断一种或多种设备
-    it("InputDevice_getDeviceIds_test-02", 0, async function (done) {
-      console.info(`InputDevice_getDeviceIds_test-02 enter`);
+    it("InputDevice_getDeviceIds_test_02", 0, async function (done) {
+      console.info(`InputDevice_getDeviceIds_test_02 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
-          console.info(`InputDevice_getDeviceIds_test-02 err:${JSON.stringify(err)}`);
-          console.info(`InputDevice_getDeviceIds_test-02 data:${JSON.stringify(data)}`);
+          console.info(`InputDevice_getDeviceIds_test_02 err:${JSON.stringify(err)}`);
+          console.info(`InputDevice_getDeviceIds_test_02 data:${JSON.stringify(data)}`);
           if (err) {
             expect(false).assertTrue();
           } else {
             expect(data.length > 0).assertTrue();
           }
-          console.info(`InputDevice_getDeviceIds_test-02 exit`);
+          console.info(`InputDevice_getDeviceIds_test_02 exit`);
           done();
         })
       } catch (error) {
-        console.info(`InputDevice_getDeviceIds_test-02 error`);
+        console.info(`InputDevice_getDeviceIds_test_02 error`);
         expect(false).assertTrue();
         done();
       }
     })
 
     // 参数类型错误
-    it("InputDevice_getDeviceIds_test-03", 0, async function (done) {
-      console.info(`InputDevice_getDeviceIds_test-03 enter`);
+    it("InputDevice_getDeviceIds_test_03", 0, async function (done) {
+      console.info(`InputDevice_getDeviceIds_test_03 enter`);
       try {
         inputDevice.getDeviceIds(-1);
       } catch (error) {
         expect(error.message).assertEqual("GetDeviceIds: \"The first parameter type is wrong\"");
       }
-      console.info(`InputDevice_getDeviceIds_test-03 exit`);
+      console.info(`InputDevice_getDeviceIds_test_03 exit`);
       done();
     })
 
     // 参数数量错误
-    it("InputDevice_getDeviceIds_test-04", 0, async function (done) {
-      console.info(`InputDevice_getDeviceIds_test-04 enter`);
+    it("InputDevice_getDeviceIds_test_04", 0, async function (done) {
+      console.info(`InputDevice_getDeviceIds_test_04 enter`);
       try {
         inputDevice.getDeviceIds(-1, (err, data) => {
           console.info(data);
@@ -93,25 +93,25 @@ export default function MultimodalInput_Device_test() {
       } catch (error) {
         expect(error.message).assertEqual("GetDeviceIds: \"too many parameters\"");
       }
-      console.info(`InputDevice_getDeviceIds_test-04 exit`);
+      console.info(`InputDevice_getDeviceIds_test_04 exit`);
       done();
     })
 
     // 无效的设备id
-    it("InputDevice_getDevice_test-01", 0, async function (done) {
-      console.info(`InputDevice_getDevice_test-01 enter`);
+    it("InputDevice_getDevice_test_01", 0, async function (done) {
+      console.info(`InputDevice_getDevice_test_01 enter`);
       try {
         inputDevice.getDevice(-1, (err, data) => {
           if (err) {
             expect(false).assertTrue();
-            console.info(`InputDevice_getDevice_test-01 ${JSON.stringify(err)}`);
+            console.info(`InputDevice_getDevice_test_01 ${JSON.stringify(err)}`);
           } else {
             expect(JSON.stringify(data) !== "{}").assertTrue();
           }
-          console.info(`InputDevice_getDevice_test-01 exit`);
+          console.info(`InputDevice_getDevice_test_01 exit`);
         })
       } catch (error) {
-        console.info(`InputDevice_getDevice_test-01 error`);
+        console.info(`InputDevice_getDevice_test_01 error`);
         expect(false).assertTrue();
       } finally {
         done();
@@ -119,21 +119,21 @@ export default function MultimodalInput_Device_test() {
     })
 
     // 参数正常,返回值正常
-    it("InputDevice_getDevice_test-02", 0, async function (done) {
-      console.info(`InputDevice_getDevice_test-02 enter`);
+    it("InputDevice_getDevice_test_02", 0, async function (done) {
+      console.info(`InputDevice_getDevice_test_02 enter`);
       try {
         inputDevice.getDeviceIds(async (err, data) => {
-          console.info(`InputDevice_getDeviceIds_test-02 err:${JSON.stringify(err)}`);
-          console.info(`InputDevice_getDeviceIds_test-02 data:${JSON.stringify(data)}`);
+          console.info(`InputDevice_getDeviceIds_test_02 err:${JSON.stringify(err)}`);
+          console.info(`InputDevice_getDeviceIds_test_02 data:${JSON.stringify(data)}`);
           if (err) {
             expect(false).assertTrue();
           } else {
             for (let i = 0; i < data.length; i++) {
-              console.info(`InputDevice_getDevice_test-02 for`);
+              console.info(`InputDevice_getDevice_test_02 for`);
               await getDevicePromise(data[i])
             }
             function getDevicePromise(data) {
-              console.info(`InputDevice_getDevice_test-02  getDevicePromise`)
+              console.info(`InputDevice_getDevice_test_02  getDevicePromise`)
               return new Promise((resolve, reject) => {
                 inputDevice.getDevice(data, (err, res) => {
                   console.info(`getDevice:data =${JSON.stringify(data)}`);
@@ -150,7 +150,7 @@ export default function MultimodalInput_Device_test() {
                   expect(res.phys).assertInstanceOf('String');
                   expect(res.uniq).assertInstanceOf('String');
                   expect(res).assertInstanceOf('Object');
-                  console.info(`InputDevice_getDevice_test-02  getDevice expect res`);
+                  console.info(`InputDevice_getDevice_test_02  getDevice expect res`);
                   for (let j = 0; j < res.axisRanges.length; j++) {
                     expect(res.axisRanges[j].source == 'keyboard' || res.axisRanges[j].source == 'mouse'
                       || res.axisRanges[j].source == 'touchpad' || res.axisRanges[j].source == 'touchscreen'
@@ -172,19 +172,19 @@ export default function MultimodalInput_Device_test() {
               })
             }
           }
-          console.info(`InputDevice_getDevice_test-02 exit`);
+          console.info(`InputDevice_getDevice_test_02 exit`);
           done();
         });
       } catch (error) {
-        console.info(`InputDevice_getDevice_test-02 error`);
+        console.info(`InputDevice_getDevice_test_02 error`);
         expect(false).assertTrue();
         done();
       }
     })
 
     // 参数正常,返回值正常
-    it("InputDevice_supportKeys_test-01", 0, async function (done) {
-      console.info(`InputDevice_supportKeys_test-01 enter`);
+    it("InputDevice_supportKeys_test_01", 0, async function (done) {
+      console.info(`InputDevice_supportKeys_test_01 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
           if (err) {
@@ -196,19 +196,19 @@ export default function MultimodalInput_Device_test() {
               });
             }
           }
-          console.info(`InputDevice_supportKeys_test-01 exit`);
+          console.info(`InputDevice_supportKeys_test_01 exit`);
           done();
         });
       } catch (error) {
-        console.info(`InputDevice_supportKeys_test-01 error`);
+        console.info(`InputDevice_supportKeys_test_01 error`);
         expect(false).assertTrue();
         done();
       }
     })
 
     // 第二个参数异常
-    it("InputDevice_supportKeys_test-02", 0, async function (done) {
-      console.info(`InputDevice_supportKeys_test-02 enter`);
+    it("InputDevice_supportKeys_test_02", 0, async function (done) {
+      console.info(`InputDevice_supportKeys_test_02 enter`);
       try {
         inputDevice.supportKeys(0, 2022, (err, res) => {
           console.info(res);
@@ -216,13 +216,13 @@ export default function MultimodalInput_Device_test() {
       } catch (error) {
         expect(error.message).assertEqual("Parameter error. The type of keys must be array.");
       }
-      console.info(`InputDevice_supportKeys_test-02 exit`);
+      console.info(`InputDevice_supportKeys_test_02 exit`);
       done();
     })
 
     // 参数正常
-    it("InputDevice_getKeyboardType_test-01", 0, async function (done) {
-      console.info(`InputDevice_getKeyboardType_test-01 enter`);
+    it("InputDevice_getKeyboardType_test_01", 0, async function (done) {
+      console.info(`InputDevice_getKeyboardType_test_01 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
           if (err) {
@@ -234,31 +234,31 @@ export default function MultimodalInput_Device_test() {
               });
             }
           }
-          console.info(`InputDevice_getKeyboardType_test-01 exit`);
+          console.info(`InputDevice_getKeyboardType_test_01 exit`);
           done();
         });
       } catch (error) {
-        console.info(`InputDevice_getKeyboardType_test-01 error`);
+        console.info(`InputDevice_getKeyboardType_test_01 error`);
         expect(false).assertTrue();
         done();
       }
     })
 
     //参数异常
-    it("InputDevice_getKeyboardType_test-02", 0, async function (done) {
-      console.info(`InputDevice_getKeyboardType_test-02 enter`);
+    it("InputDevice_getKeyboardType_test_02", 0, async function (done) {
+      console.info(`InputDevice_getKeyboardType_test_02 enter`);
       try {
         inputDevice.getKeyboardType(-1);
       } catch (error) {
         expect(error.message).assertEqual("Invalid input device id");
       }
-      console.info(`InputDevice_getKeyboardType_test-02 exit`);
+      console.info(`InputDevice_getKeyboardType_test_02 exit`);
       done();
     });
 
     // 参数正常
-    it("InputDevice_getKeyboardType_test-03", 0, async function (done) {
-      console.info(`InputDevice_getKeyboardType_test-03 enter`);
+    it("InputDevice_getKeyboardType_test_03", 0, async function (done) {
+      console.info(`InputDevice_getKeyboardType_test_03 enter`);
       try {
         inputDevice.getDeviceIds((err, data) => {
           if (err) {
@@ -268,16 +268,16 @@ export default function MultimodalInput_Device_test() {
               inputDevice.getKeyboardType(data[i]).then((res) => {
                 expect(res).assertInstanceOf('Number');
               }).catch((err) => {
-                console.info(`InputDevice_getKeyboardType_test-03 failed, err=${JSON.stringify(err)}`);
+                console.info(`InputDevice_getKeyboardType_test_03 failed, err=${JSON.stringify(err)}`);
                 expect(false).assertTrue();
               });
             }
           }
-          console.info(`InputDevice_getKeyboardType_test-03 exit`);
+          console.info(`InputDevice_getKeyboardType_test_03 exit`);
           done();
         });
       } catch (error) {
-        console.info(`InputDevice_getKeyboardType_test-03 error`);
+        console.info(`InputDevice_getKeyboardType_test_03 error`);
         expect(false).assertTrue();
         done();
       }
@@ -461,7 +461,7 @@ export default function MultimodalInput_Device_test() {
      * @tc.name MultimodalInputDevice_GetDeviceList_test
      * @tc.desc inputdevice interface getDeviceList test
      */
-    it("InputDevice_getDeviceList_test-01", 0, async function (done) {
+    it("InputDevice_getDeviceList_test_01", 0, async function (done) {
       console.info(`InputDevice_getDeviceList_async_test enter`);
       try {
         inputDevice.getDeviceList((err, data) => {
@@ -485,7 +485,7 @@ export default function MultimodalInput_Device_test() {
      * @tc.name MultimodalInputDevice_GetDeviceList_test
      * @tc.desc inputdevice interface getDeviceList test
      */
-    it("InputDevice_getDeviceList_test-02", 0, async function (done) {
+    it("InputDevice_getDeviceList_test_02", 0, async function (done) {
       console.info(`InputDevice_getDeviceList_promise_test enter`);
       try {
         inputDevice.getDeviceList().then(data => {
@@ -505,7 +505,7 @@ export default function MultimodalInput_Device_test() {
      * @tc.name MultimodalInputDevice_GetDeviceInfo_test
      * @tc.desc inputdevice interface getDeviceInfo test
      */
-    it("InputDevice_getDeviceInfo_test-01", 0, async function (done) {
+    it("InputDevice_getDeviceInfo_test_01", 0, async function (done) {
       console.info(`InputDevice_getDeviceInfo_async_test enter`);
       try {
         await inputDevice.getDeviceList().then((data) => {
@@ -557,12 +557,12 @@ export default function MultimodalInput_Device_test() {
               done()
             })
           } catch (err) {
-            console.info(`InputDevice_getDeviceInfo_test-01 inputDevice.getDeviceInfo ${JSON.stringify(err)}`);
+            console.info(`InputDevice_getDeviceInfo_test_01 inputDevice.getDeviceInfo ${JSON.stringify(err)}`);
             expect(false).assertTrue();
           }
         })
       } catch (err) {
-        console.info(`InputDevice_getDeviceInfo_test-01 inputDevice.getDeviceList ${JSON.stringify(err)}`);
+        console.info(`InputDevice_getDeviceInfo_test_01 inputDevice.getDeviceList ${JSON.stringify(err)}`);
         expect(false).assertTrue();
       }
       console.info(`InputDevice_getDeviceInfo_async_test exit`);
@@ -573,7 +573,7 @@ export default function MultimodalInput_Device_test() {
      * @tc.name MultimodalInputDevice_GetDeviceInfo_test
      * @tc.desc inputdevice interface getDeviceInfo test
      */
-    it("InputDevice_getDeviceInfo_test-02", 0, async function (done) {
+    it("InputDevice_getDeviceInfo_test_02", 0, async function (done) {
       console.info(`InputDevice_getDeviceInfo_promise_test enter`);
       try {
         inputDevice.getDeviceList().then((data) => {
