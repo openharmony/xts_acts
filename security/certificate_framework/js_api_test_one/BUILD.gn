@@ -13,14 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsCryptoFrameworkJSNormalTwoTest") {
+ohos_js_hap_suite("ActsCertificateFrameworkJSNormalTest") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsCryptoFrameworkJSNormalTwoTest"
+  hap_name = "ActsCertificateFrameworkJSNormalTest"
   subsystem_name = "security"
   part_name = "crypto_framework"
 }

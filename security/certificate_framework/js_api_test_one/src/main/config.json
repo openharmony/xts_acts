@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.openharmony.cryptoFramework2",
+    "bundleName": "com.openharmony.certificateframework",
     "vendor": "acts",
     "version": {
       "code": 12,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.openharmony.cryptoFramework2",
+    "package": "com.openharmony.certificateframework",
     "name": ".entry",
     "mainAbility": ".MainAbility",
     "deviceType": ["default", "tablet", "tv", "wearable", "phone"],
