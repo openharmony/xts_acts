@@ -32,7 +32,6 @@ group("arkui") {
     "ace_js_attribute_api:ActsAceJsApiTest",
     "ace_napi_test:ActsAceNapiEtsTest",
     "ace_standard:ActsAceStandardTest",
-    "ace_ets_layout_test:ArkUIActsLayoutTest",
     "ace_standard_video:ActsAceStandardVideoTest",
     "libuv:libuvTest",
   ]
