@@ -179,11 +179,12 @@ describe('FieldNodeTest', function() {
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0100', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.value.type.STRING;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.STRING).assertTrue()
+            node.type = ddm.ValueType.STRING;
+            console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0100 type = ' + node.type);
+            expect(node.type === ddm.ValueType.STRING).assertTrue();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0100 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
@@ -197,11 +198,12 @@ describe('FieldNodeTest', function() {
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0200', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.INTEGER;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.INTEGER).assertTrue()
+            node.type = ddm.ValueType.INTEGER;
+            console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0200 type = ' + node.type);
+            expect(node.type === ddm.ValueType.INTEGER).assertTrue();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0200 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
@@ -215,11 +217,12 @@ describe('FieldNodeTest', function() {
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0300', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.FLOAT;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.FLOAT).assertTrue()
+            node.type = ddm.ValueType.FLOAT;
+            console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0300 type = ' + node.type);
+            expect(node.type === ddm.ValueType.FLOAT).assertTrue();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0300 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
@@ -233,11 +236,12 @@ describe('FieldNodeTest', function() {
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0400', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.BYTE_ARRAY;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.BYTE_ARRAY).assertTrue()
+            node.type = ddm.ValueType.BYTE_ARRAY;
+            console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0400 type = ' + node.type);
+            expect(node.type === ddm.ValueType.BYTE_ARRAY).assertTrue();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0400 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
@@ -251,11 +255,12 @@ describe('FieldNodeTest', function() {
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0500', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.BOOLEAN;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.ValueType.BOOLEAN).assertTrue()
+            node.type = ddm.ValueType.BOOLEAN;
+            console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0500 type = ' + node.type);
+            expect(node.type === ddm.ValueType.BOOLEAN).assertTrue();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0500 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
@@ -269,11 +274,12 @@ describe('FieldNodeTest', function() {
      it('SUB_DDM_DKV_FIELDNODE_TYPE_0600', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.DOUBLE;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.DOUBLE).assertTrue()
+            node.type = ddm.ValueType.DOUBLE;
+            console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0600 type = ' + node.type);
+            expect(node.type === ddm.ValueType.DOUBLE).assertTrue();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0600 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
