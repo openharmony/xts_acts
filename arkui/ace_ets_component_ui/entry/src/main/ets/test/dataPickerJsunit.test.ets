@@ -49,7 +49,7 @@ export default function  dataPickerJsunit() {
        let strJson = getInspectorByKey('dataPicker');
        let obj = JSON.parse(strJson);
         console.info("obj is: " + JSON.stringify(obj));
-       console.info("dataPickerJsunit_0100'] component obj is: " + obj.$attrs.options);
+       console.info("dataPickerJsunit_0100'] component obj is: " + obj.$attrs.options + "---" + obj.$attrs.startDate);
        console.info("dataPickerJsunit_0100'] component obj is: " + obj.$attrs.start + "--" + obj.$attrs.end + "--" + obj.$attrs.selected);
        expect(obj.$attrs.lunar).assertEqual('false');
        done();

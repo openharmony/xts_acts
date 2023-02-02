@@ -63,7 +63,7 @@ export default function buttonJsunit() {
     it('buttonJsunit_0200', 0, async function (done) {
       console.info('buttonJsunitUITest_0200 START');
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'stateEffect', value:false);
+      globalThis.value.message.notify({name:'stateEffect', value:false});
       await CommonFunc.sleep(200);
       let strJson2 = getInspectorByKey('btok');
       let obj2 = JSON.parse(strJson2);
@@ -76,7 +76,7 @@ export default function buttonJsunit() {
        console.info('buttonJsunitUITest_0300 START');
        await CommonFunc.sleep(1000);
        // 动态修改Button组件的属性,设置为非法值
-       globalThis.value.message.notify({name:'bttype', value:'5');
+       globalThis.value.message.notify({name:'bttype', value:'5'});
        await CommonFunc.sleep(500);
        let strJson = getInspectorByKey('btok');
        let obj = JSON.parse(strJson);

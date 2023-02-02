@@ -20,7 +20,7 @@ struct DividerExample {
   @State color:string = '#acbdef'
   @State strokeWidth:number = 20
   @State lineCapStyle:LineCapStyle = LineCapStyle.Butt
-  @State width:number = 0
+  @State widthK:number = 0
   messageManager:MessageManager = new MessageManager()
    onPageShow() {
     console.info('divider onPageShow')
@@ -41,8 +41,8 @@ struct DividerExample {
       if (message.name == 'lineCapStyle') {
           this.lineCapStyle = message.value
       }
-      if (message.name == 'width') {
-          this.width = message.value
+      if (message.name == 'widthK') {
+          this.widthK = message.value
          
       }
     }
@@ -84,7 +84,7 @@ struct DividerExample {
               .fontColor('#007DFF')
               .fontWeight(500)
               .backgroundColor(Color.Transparent)
-            Divider().vertical(this.vertical).height(22).color(this.color).width(this.width).margin({ left: 8, right: 8 }).strokeWidth(this.strokeWidth).lineCap(this.lineCapStyle).key("divider")
+            Divider().vertical(this.vertical).height(22).color(this.color).width(this.widthK).margin({ left: 8, right: 8 }).strokeWidth(this.strokeWidth).lineCap(this.lineCapStyle).key("divider")
             Button('Button')
               .width(136)
               .height(22)

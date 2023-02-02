@@ -116,7 +116,7 @@ export default function dividerJsunit() {
       console.info('dividerJsunit_0500 START');
       await CommonFunc.sleep(1000);
       // test the common attribute
-      globalThis.value.message.notify({name:'width',value:'1.0'})
+      globalThis.value.message.notify({name:'widthK',value:'1.0'})
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('divider');

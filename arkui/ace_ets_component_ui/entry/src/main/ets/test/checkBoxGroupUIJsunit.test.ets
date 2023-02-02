@@ -41,9 +41,7 @@ export default function checkBoxGroupUIJsunit() {
       }
       done();
     });
-    // add default testcase 
-
-    // add enum of resource color test case 
+  
 
     it('checkBoxGroupUIJsunit_0100', 0, async function (done) {
        console.info('checkBoxGroupUIJsunit_0100 START');
@@ -52,15 +50,14 @@ export default function checkBoxGroupUIJsunit() {
        let strJson = getInspectorByKey('allck');
        console.info("checkBoxGroupUIJsunit_0100 strJson:" + strJson);
        let obj = JSON.parse(strJson);
-       console.info("checkBoxGroupUIJsunit_0100 component obj is: " + JSON.stringify(obj));
-       expect(obj.$attrs.selectAll).assertEqual('true');
+       console.info("checkBoxGroupUIJsunit_0100 component obj is: " + JSON.stringify(obj.$attrs.selectedColor));
        expect(obj.$attrs.selectedColor).assertEqual('#FF007DFF');
-       // add assert single checkbox selectedState
+       // add assert single checkbox selectedColor
        let strJson2 = getInspectorByKey('cb1');
        console.info("checkBoxGroupUIJsunit_cb1_0100 strJson:" + strJson2);
        let obj2 = JSON.parse(strJson2);
-       console.info("checkBoxGroupUIJsunit_cb1_0100 component obj2 is: " + JSON.stringify(obj));
-       expect(obj2.$attrs.select).assertEqual('true');
+       console.info("checkBoxGroupUIJsunit_cb1_0100 component obj2 is: " + JSON.stringify(obj2.$attrs.selectedColor));
+       expect(obj2.$attrs.selectedColor).assertEqual('#FF007DEF');
        done();
     });
 
@@ -68,7 +65,6 @@ export default function checkBoxGroupUIJsunit() {
       console.info('checkBoxGroupUIJsunit_0200 START');
       await CommonFunc.sleep(1000);
       // modify the attribute normal value of checkbox dynamically
-      globalThis.value.message.notify({name:'selectAll',value:'false'})
       await CommonFunc.sleep(2000);
       globalThis.value.message.notify({name:'selectedColor',value:'#EEAAFF'})
       await CommonFunc.sleep(2000);
@@ -76,14 +72,12 @@ export default function checkBoxGroupUIJsunit() {
       let strJson = getInspectorByKey('allck');
       let obj = JSON.parse(strJson);
       console.info("[checkBoxGroupUIJsunit_0200'] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.selectAll).assertEqual('false');
       expect(obj.$attrs.selectedColor).assertEqual('#FFEEAAFF');
-      // add assert single checkbox selectedState
+      // add assert single checkbox selectedColor
       let strJson2 = getInspectorByKey('cb1');
-      console.info("checkBoxGroupUIJsunit_cb1_0200 strJson:" + strJson2);
       let obj2 = JSON.parse(strJson2);
-      console.info("checkBoxGroupUIJsunit_cb1_0200 component obj2 is: " + JSON.stringify(obj));
-      expect(obj2.$attrs.select).assertEqual('false');
+      console.info("checkBoxGroupUIJsunit_cb1_0200 component obj2 is: " + JSON.stringify(obj2.$attrs.selectedColor));
+      expect(obj2.$attrs.selectedColor).assertEqual('#FF007DEF');
       done();
     });
 
@@ -104,45 +98,75 @@ export default function checkBoxGroupUIJsunit() {
     it('checkBoxGroupUIJsunit_0400', 0, async function (done) {
       console.info('checkBoxGroupUIJsunit_0400 START');
       await CommonFunc.sleep(1000);
-      // test the clicking event of checkboxGroup
-      let driver = await UiDriver.create();
-      await driver.delayMs(waitUiReadyMs);
-      let checkboxAll = await driver.findComponent(BY.key('allck'));
-      expect(checkboxAll != null).assertTrue();
-      // checkboxGroup click
-      await checkboxAll.click();
-      await driver.delayMs(waitUiReadyMs);
-      // check the click event by text message
-      let text1 = await driver.findComponent(BY.text('SelectStatus.All'));
-      let text1tt = await text1.getText();
-      expect(text1tt == 'SelectStatus.All').assertTrue();
-      await checkboxAll.click();
-      await driver.delayMs(waitUiReadyMs);
-     // add assert single checkbox selectedState
+      // modify the selectedColor 
+      globalThis.value.message.notify({name:'selectedColor',value:'rgb(238, 130, 238)'})
+      await CommonFunc.sleep(2000);
+      // check the value of changed attribute
+      let strJson = getInspectorByKey('allck');
+      let obj = JSON.parse(strJson);
+      console.info("[checkBoxGroupUIJsunit_0400 '] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.selectedColor).assertEqual('#FFEE82EE');
       done();
     });
 
-    it('checkBoxGroupUIJsunit_0500', 0, async function (done) {
+     it('checkBoxGroupUIJsunit_0500', 0, async function (done) {
       console.info('checkBoxGroupUIJsunit_0500 START');
       await CommonFunc.sleep(1000);
-      // test the clicking event of checkboxGroup
-       let driver = await UiDriver.create();
-      await driver.delayMs(waitUiReadyMs);
-      let checkbox2 = await driver.findComponent(BY.key('cb2'));
-      expect(checkbox2 != null).assertTrue();
-      await checkbox2.click();
-      await driver.delayMs(waitUiReadyMs);
-      // test CheckboxGroup atrribute
+      // modify the selectedColor 
+      globalThis.value.message.notify({name:'selectedColor',value:Color.Green})
+      await CommonFunc.sleep(2000);
+      // check the value of changed attribute
       let strJson = getInspectorByKey('allck');
-       console.info("checkBoxGroupUIJsunit_0500 strJson:" + strJson);
-       let obj = JSON.parse(strJson);
-       console.info("checkBoxGroupUIJsunit_0500 component obj is: " + JSON.stringify(obj));
-       expect(obj.$attrs.selectAll).assertEqual('true'); // false ?
-       expect(obj.$attrs.selectedColor).assertEqual('#007DFF');
-       //add the select state onchange event  assert
-       done();
+      let obj = JSON.parse(strJson);
+      console.info("[checkBoxGroupUIJsunit_0500 '] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.selectedColor).assertEqual('#FF008000');
+      done();
     });
-    // 1.first click  2.two click   test the name and checkboxstate
+
+    it('checkBoxGroupUIJsunit_0600', 0, async function (done) {
+      console.info('checkBoxGroupUIJsunit_0600 START');
+      await CommonFunc.sleep(1000);
+      // test the clicking event of checkboxGroup
+      let driver = Driver.create();
+      await driver.delayMs(waitUiReadyMs);
+      let checkGoup = await driver.findComponent(ON.id('allck'));
+      await checkGoup.click();
+      await driver.delayMs(waitUiReadyMs);
+      await checkGoup.click();
+      await driver.delayMs(waitUiReadyMs);
+      // check the isSelect and name
+      let ttx = await driver.findComponent(ON.id('text1'));
+      let txt = await ttx.getText();
+      console.info("[checkBoxGroupUIJsunit_0600'] component obj is: " + txt);
+      expect(txt).assertEqual('["checkbox1","checkbox2","checkbox3"]');
+      let ttxx = await driver.findComponent(ON.id('text2'));
+      let txtt = await ttxx.getText();
+      console.info("[checkBoxGroupUIJsunit_0600'] component obj2 is: " + txtt);
+      expect(txtt).assertEqual('0');
+      await checkGoup.click();
+      await driver.delayMs(waitUiReadyMs);
+      done();   
+    });
+
+    it('checkBoxGroupUIJsunit_0700', 0, async function (done) {
+      console.info('checkBoxGroupUIJsunit_0700 START');
+      await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      await driver.delayMs(waitUiReadyMs);
+      let checkGoup = await driver.findComponent(ON.id('cb2'));
+      await checkGoup.click();
+      await driver.delayMs(waitUiReadyMs);
+       // check the isSelect and name
+      let ttx = await driver.findComponent(ON.id('text1'));
+      let txt = await ttx.getText();
+      console.info("[checkBoxGroupUIJsunit_0700'] component obj is: " + txt);
+      expect(txt).assertEqual('["checkbox2"]');
+      let ttxx = await driver.findComponent(ON.id('text2'));
+      let txtt = await ttxx.getText();
+      console.info("[checkBoxGroupUIJsunit_0700'] component obj2 is: " + txtt);
+      expect(txtt).assertEqual('1');
+      done();   
+    });
     
   })
 }

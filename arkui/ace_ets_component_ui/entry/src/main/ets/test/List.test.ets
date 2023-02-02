@@ -27,7 +27,7 @@ import marqueeJsunit from './marqueeJsunit.test.ets';
 export default function testsuite() {
   blankJsunit();
   buttonJsunit();
-  //checkBoxGroupUIJsunit();
+  checkBoxGroupUIJsunit();
   CheckBoxJsunit();
   dataPickerJsunit();
   datelPanelJsunit();
@@ -35,6 +35,4 @@ export default function testsuite() {
   gaugeJsunit();
   loadingProgressJsunit();
   marqueeJsunit();
-  
-
 }

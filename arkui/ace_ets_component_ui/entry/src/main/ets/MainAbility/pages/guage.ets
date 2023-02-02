@@ -20,7 +20,7 @@ import {MessageManager,Callback} from '../utils/MessageManager';
 struct GaugeExample {
   @State startAngle:number = 0;
   @State endAngle:number = 0;
-  @State colors:Array<ColorStop> = [[0x317AF7, 0.1], [0x5BA854, 0.2], [0xE08C3A, 0.3], [0x9C554B, 0.4]]
+  @State colors:Array<[number,number]> = [[0x317AF7, 0.1], [0x5BA854, 0.2], [0xE08C3A, 0.3], [0x9C554B, 0.4]]
   @State strokeWidth:number = 0;
   @State value:number = 30;
   @State min:number = 0;

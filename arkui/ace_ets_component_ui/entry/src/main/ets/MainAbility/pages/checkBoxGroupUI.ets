@@ -20,6 +20,7 @@ struct CheckboxExample {
    @State  selectAll:boolean = true;
    @State  selectedColor:string = "#007DFF";
    @State  message:string = "testclick";
+   @State  message2:string = "testclick2";
    messageManager:MessageManager = new MessageManager()
    onPageShow() {
     console.info('Checkbox onPageShow')
@@ -54,15 +55,15 @@ struct CheckboxExample {
               console.info("checkbox group content" + JSON.stringify(itemName))
               console.info("checkbox group content" + JSON.stringify(itemName.status))
               console.info("checkbox group content" + JSON.stringify(itemName.name))
-              this.message = JSON.stringify(itemName.name) + itemName.status;
+              this.message = JSON.stringify(itemName.name);
+              this.message2 = JSON.stringify(itemName.status);
             }).key("allck")
           Text('Select All').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
-          Text(this.message).fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500).margin({left:20}).key('text1')
         }
         // 选项1
         Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
           Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
-            .selectedColor('#007DFF')
+            .selectedColor('#007DEF')
             .select(false)
             .onChange((value: boolean) => {
               console.info('Checkbox1 change is' + value)
@@ -89,6 +90,9 @@ struct CheckboxExample {
             })
           Text('Checkbox3').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
         }.margin({ left: 36 })
+
+        Text(this.message).fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500).margin({left:20,top:20}).key('text1')
+        Text(this.message2).fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500).margin({left:20,top:20}).key('text2')
 
       }
     }
