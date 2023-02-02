@@ -36,14 +36,10 @@
             }
         ],
         "requestPermissions": [
-            {
-              "name":"ohos.permission.GET_BUNDLE_INFO",
-              "reason":"need use ohos.permission.GET_BUNDLE_INFO"
-            },
-            {
-              "name":"ohos.permission.CLEAN_BACKGROUND_PROCESSES",
-              "reason":"need use ohos.permission.CLEAN_BACKGROUND_PROCESSES"
-            }
-          ]
+          {
+            "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+            "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+          }
+        ]
     }
 }
