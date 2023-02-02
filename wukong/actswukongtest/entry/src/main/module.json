@@ -15,6 +15,12 @@
     "installationFree": false,
     "pages": "$profile:main_pages",
     "uiSyntax": "ets",
+    "metadata": [
+        {
+          "name": "ArkTSPartialUpdate",
+          "value": "false"
+        }
+      ],
     "abilities": [
       {
         "name": "com.example.ActsWukongTest.MainAbility",
