@@ -13,6 +13,12 @@
     "installationFree": true,
     "pages": "$profile:main_pages",
     "uiSyntax": "ets",
+    "metadata": [
+      {
+        "name": "ArkTSPartialUpdate",
+        "value": "false"
+      }
+    ],
     "abilities": [
       {
         "name": "com.example.hm2.MainAbility",

@@ -14,6 +14,12 @@
         "uiSyntax": "ets",
         "process": "hap4mainability",
         "pages": "$profile:main_pages",
+        "metadata": [
+            {
+              "name": "ArkTSPartialUpdate",
+              "value": "false"
+            }
+          ],
         "abilities": [
             {
                 "name": "com.example.lifecycletest.hap4mainability",
