@@ -5,12 +5,12 @@
     "test-timeout": "900000",
     "shell-timeout": "900000",
     "testcase-timeout": "60000",
-    "bundle-name": "com.openharmony.cryptoFramework2",
-    "package-name": "com.openharmony.cryptoFramework2"
+    "bundle-name": "com.openharmony.certificateframework",
+    "package-name": "com.openharmony.certificateframework"
   },
   "kits": [
     {
-      "test-file-name": ["ActsCryptoFrameworkJSNormalTwoTest.hap"],
+      "test-file-name": ["ActsCertificateFrameworkJSNormalTest.hap"],
       "type": "AppInstallKit",
       "cleanup-apps": true
     },
@@ -21,7 +21,7 @@
     {
       "type": "PushKit",
       "push": [
-        "ActsCryptoFrameworkJSNormalTwoTest.hap->/data/test/ActsCryptoFrameworkJSNormalTwoTest.hap"
+        "ActsCertificateFrameworkJSNormalTest.hap->/data/test/ActsCertificateFrameworkJSNormalTest.hap"
       ]
     },
     {

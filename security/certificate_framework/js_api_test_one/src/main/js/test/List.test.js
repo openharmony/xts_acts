@@ -13,12 +13,10 @@
  * limitations under the License.
  */
 
-import SecurityRandomJsunit from "./SecurityRandom.test";
 import CertificateJsunit from "./Certificate.test";
 import CertificateCrlJsunit from "./CertificateCrl.test";
 
 export default function testsuite() {
-  SecurityRandomJsunit();
   CertificateJsunit();
   CertificateCrlJsunit();
 }
