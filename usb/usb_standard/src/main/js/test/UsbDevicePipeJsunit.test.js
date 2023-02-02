@@ -328,7 +328,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number: SUB_USB_JS_0750
    * @tc.name: setConfiguration
-   * @tc.desc: Negative test: Set Device Configuration
+   * @tc.desc: Negative test: Set Device Configuration, USBConfig id error
    */
   it('SUB_USB_JS_0750', 0, function () {
     console.info('usb SUB_USB_JS_0750 begin');
