@@ -1,6 +1,6 @@
 {
     "app":{
-        "bundleName":"com.example.staticinfomationquery",
+        "bundleName":"com.acts.staticinfomationquery",
         "vendor":"huawei",
         "versionCode":1000000,
         "versionName":"1.0.0",

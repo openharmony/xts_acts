@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "com.example.actssystemappuonehundredonerelytest",
+    "name": "com.acts.systemapponerely",
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:phone_entry_dsc",
@@ -15,7 +15,7 @@
     "pages": "$profile:main_pages",
     "abilities": [
       {
-        "name": "com.example.actssystemappuonehundredonerelytest.MainAbility",
+        "name": "com.acts.systemapponerely.MainAbility",
         "srcEntrance": "./ets/MainAbility/MainAbility.ts",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",

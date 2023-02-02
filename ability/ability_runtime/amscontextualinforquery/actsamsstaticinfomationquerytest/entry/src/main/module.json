@@ -1,10 +1,10 @@
 {
     "module": {
-        "name": "com.example.staticinfomationquery",
+        "name": "com.acts.staticinfomationquery",
         "type": "entry",
         "srcEntrance": "./ets/Application/AbilityStage.ts",
         "description": "$string:phone_entry_dsc",
-        "mainElement": "com.example.staticinfomationquery.MainAbility",
+        "mainElement": "com.acts.staticinfomationquery.MainAbility",
         "deviceTypes": [
             "default",
             "tablet"
@@ -15,7 +15,7 @@
         "pages": "$profile:main_pages",
         "abilities": [
             {
-                "name": "com.example.staticinfomationquery.MainAbility",
+                "name": "com.acts.staticinfomationquery.MainAbility",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "description": "$string:phone_entry_main",
                 "icon": "$media:icon",

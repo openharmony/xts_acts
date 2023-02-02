@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "com.example.staticinformationmultihappackage",
+    "name": "com.acts.stinformationmulapp",
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:phone_entry_dsc",
@@ -15,7 +15,7 @@
     "pages": "$profile:main_pages",
     "abilities": [
       {
-        "name": "com.example.staticinformationmultihappackage.MainAbility",
+        "name": "com.acts.stinformationmulapp.MainAbility",
         "srcEntrance": "./ets/MainAbility/MainAbility.ts",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",
