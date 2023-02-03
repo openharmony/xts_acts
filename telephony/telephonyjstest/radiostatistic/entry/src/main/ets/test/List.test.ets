@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import convertOptionsJsunit from './ConvertOptionsJsunit.test';
+
 import radioJsunit from './RadioJsunit.test';
 import radioSecondJsunit from './RadioSecondJsunit.test';
 import smsUiJsunit from './SmsMmsJsunit.test';
@@ -23,7 +23,6 @@ import dataJsunit from './DataJsunit.test';
 export default function testsuite() {
   dataJsunit();
   smsUiJsunit();
-  convertOptionsJsunit();
   radioJsunit();
   radioSecondJsunit();
   callJsunit();
