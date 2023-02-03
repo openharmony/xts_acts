@@ -36,8 +36,8 @@ export default function abilityTest() {
             var FeatureHap = false;
 
             globalThis.abilityContext.startAbility({
-                bundleName: "com.example.staticinformationmultihappackage",
-                abilityName: "com.example.staticinformationmultihappackage.MainAbility",
+                bundleName: "com.acts.stinformationmulapp",
+                abilityName: "com.acts.stinformationmulapp.MainAbility",
                 action:"startHapA"
             }, (error, data) => {
                 console.log('ACTS_getAbilityInfo_0400 - startAbility start HapA: '
@@ -64,9 +64,9 @@ export default function abilityTest() {
                     console.log("ACTS_getAbilityInfo_0400_entry_abilityInfo" + abilityInfo.name)
                     console.log("ACTS_getAbilityInfo_0400_entry_applicationInfo" + applicationInfo.name)
                     console.log("ACTS_getAbilityInfo_0400_entry_hapModuleInfo" + hapModuleInfo.name)
-                    expect(abilityInfo.name).assertEqual("com.example.staticinformationmultihappackage.MainAbility");
-                    expect(applicationInfo.name).assertEqual("com.example.staticinformationmultihappackage");
-                    expect(hapModuleInfo.name).assertEqual("com.example.staticinformationmultihappackage");
+                    expect(abilityInfo.name).assertEqual("com.acts.stinformationmulapp.MainAbility");
+                    expect(applicationInfo.name).assertEqual("com.acts.stinformationmulapp");
+                    expect(hapModuleInfo.name).assertEqual("com.acts.stinformationmulapp");
                 } else if (data.event == 'MainAbility_Start_CommonEvent_multi_hap_feature'){
                     FeatureHap = true;
                     console.log("ACTS_getAbilityInfo_0400====> MainAbility_Start_CommonEvent_multi_hap_feature")
@@ -77,7 +77,7 @@ export default function abilityTest() {
                     console.log("ACTS_getAbilityInfo_0400_feature_applicationInfo" + applicationInfo1.name)
                     console.log("ACTS_getAbilityInfo_0400_feature_hapModuleInfo" + hapModuleInfo1.name)
                     expect(abilityInfo1.name).assertEqual("com.example.feature.MainAbility");
-                    expect(applicationInfo1.name).assertEqual("com.example.staticinformationmultihappackage");
+                    expect(applicationInfo1.name).assertEqual("com.acts.stinformationmulapp");
                     expect(hapModuleInfo1.name).assertEqual("com.example.feature");
                 }
                 if(EntryHap && FeatureHap){

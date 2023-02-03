@@ -76,9 +76,9 @@ export default function abilityTest() {
           console.log("ACTS_getAbilityInfo_0500_feature_abilityInfo" + abilityInfo1.name)
           console.log("ACTS_getAbilityInfo_0500_feature_applicationInfo" + applicationInfo1.name)
           console.log("ACTS_getAbilityInfo_0500_feature_hapModuleInfo" + hapModuleInfo1.name)
-          expect(abilityInfo1.name).assertEqual("com.example.staticinformationmultihappackage.MainAbility");
-          expect(applicationInfo1.name).assertEqual("com.example.staticinformationmultihappackage");
-          expect(hapModuleInfo1.name).assertEqual("com.example.staticinformationmultihappackage");
+          expect(abilityInfo1.name).assertEqual("com.acts.stinformationmulapp.MainAbility");
+          expect(applicationInfo1.name).assertEqual("com.acts.stinformationmulapp");
+          expect(hapModuleInfo1.name).assertEqual("com.acts.stinformationmulapp");
         }
         if(EntryHap && FeatureHap){
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
