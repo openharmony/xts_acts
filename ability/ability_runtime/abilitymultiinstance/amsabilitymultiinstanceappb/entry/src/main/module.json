@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "com.example.amsabilitymultiinstanceappb",
+    "name": "com.acts.abilitymultiinstanceb",
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:phone_entry_dsc",
@@ -21,7 +21,7 @@
     ],
     "abilities": [
       {
-        "name": "com.example.amsabilitymultiinstanceappb.MainAbility",
+        "name": "com.acts.abilitymultiinstanceb.MainAbility",
         "srcEntrance": "./ets/MainAbility/MainAbility.ts",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",

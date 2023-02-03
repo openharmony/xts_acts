@@ -193,15 +193,15 @@ export default function abilityTest() {
             expect(typeof (data.defaultFormWidth)).assertEqual("number");
             expect(typeof (data.uri)).assertEqual("string");
 
-            expect(data.bundleName).assertEqual("com.example.staticinfomationquery");
-            expect(data.name).assertEqual("com.example.staticinfomationquery.MainAbility");
+            expect(data.bundleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.name).assertEqual("com.acts.staticinfomationquery.MainAbility");
             expect(data.label).assertEqual("$string:entry_label");
             expect(data.description).assertEqual("$string:phone_entry_main");
             expect(data.icon).assertEqual("$media:icon");
             expect(data.labelId).assertLarger(0);
             expect(data.descriptionId).assertLarger(0);
             expect(data.iconId).assertLarger(0);
-            expect(data.moduleName).assertEqual("com.example.staticinfomationquery");
+            expect(data.moduleName).assertEqual("com.acts.staticinfomationquery");
             expect(data.process).assertEqual("");
             expect(data.targetAbility).assertEqual("");
             expect(data.backgroundModes).assertEqual(0);
@@ -275,7 +275,7 @@ export default function abilityTest() {
             expect(typeof (data.codePath)).assertEqual("string");
             expect(typeof (data.removable)).assertEqual("boolean");
             console.log("checkApplicationInfo_expect_typeof_end")
-            expect(data.name).assertEqual("com.example.staticinfomationquery");
+            expect(data.name).assertEqual("com.acts.staticinfomationquery");
             expect(data.description).assertEqual("$string:description_application");
             expect(data.descriptionId).assertLarger(0);
             expect(data.systemApp).assertEqual(true);
@@ -284,11 +284,11 @@ export default function abilityTest() {
             expect(data.labelId.length).assertLarger(0);
             expect(data.icon).assertEqual("$media:icon");
             expect(data.iconId.length).assertLarger(0);
-            expect(data.process).assertEqual("com.example.staticinfomationquery");
+            expect(data.process).assertEqual("com.acts.staticinfomationquery");
             expect(data.supportedModes).assertEqual(0);
             expect(data.moduleInfos.length).assertEqual(1);
-            expect(data.moduleInfos[0].moduleName).assertEqual("com.example.staticinfomationquery");
-            expect(data.codePath).assertEqual("/data/app/el1/bundle/public/com.example.staticinfomationquery")
+            expect(data.moduleInfos[0].moduleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.codePath).assertEqual("/data/app/el1/bundle/public/com.acts.staticinfomationquery")
             expect(data.removable).assertEqual(true);
             console.log("checkApplicationInfo end  " + data);
         }
@@ -329,7 +329,7 @@ export default function abilityTest() {
             expect(typeof (data.moduleName)).assertEqual("string");
             expect(typeof (data.mainAbilityName)).assertEqual("string");
             console.log("checkHapModuleInfo_expect_typeof_end")
-            expect(data.name).assertEqual("com.example.staticinfomationquery");
+            expect(data.name).assertEqual("com.acts.staticinfomationquery");
             expect(data.description).assertEqual("$string:phone_entry_dsc");
             expect(data.descriptionId).assertEqual(16777221);
             expect(data.icon).assertEqual("$media:icon");
@@ -341,10 +341,10 @@ export default function abilityTest() {
             expect(data.reqCapabilities.length).assertEqual(0);
             expect(data.deviceTypes.length).assertEqual(2);
             expect(data.deviceTypes[0]).assertEqual("default");
-            expect(data.moduleName).assertEqual("com.example.staticinfomationquery")
-            expect(data.mainAbilityName).assertEqual("com.example.staticinfomationquery.MainAbility");
+            expect(data.moduleName).assertEqual("com.acts.staticinfomationquery")
+            expect(data.mainAbilityName).assertEqual("com.acts.staticinfomationquery.MainAbility");
             expect(data.installationFree).assertEqual(false);
-            expect(data.mainElementName).assertEqual('com.example.staticinfomationquery.MainAbility');
+            expect(data.mainElementName).assertEqual('com.acts.staticinfomationquery.MainAbility');
             expect(data.hashValue).assertEqual('');
             console.log("checkHapModuleInfo end  " + data);
         }
