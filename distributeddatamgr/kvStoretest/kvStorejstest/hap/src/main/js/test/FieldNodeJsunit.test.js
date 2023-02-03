@@ -248,7 +248,6 @@ describe('fieldNodeTest', function() {
         } catch (e) {
             console.info("testtype005 fail on exception: " + e);
             expect(null).assertFail();
-
         }
         done();
     })
