@@ -170,7 +170,7 @@ describe('FieldNodeTest', function() {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.STRING;
             console.info('testtype001 type = ' + node.type);
-            expect(node.type === ddm.ValueType.STRING).assertTrue()
+            expect(node.type === ddm.ValueType.STRING).assertTrue();
         } catch (e) {
             console.log("testtype001 fail on exception: " + e);
             expect(null).assertFail();
@@ -188,7 +188,7 @@ describe('FieldNodeTest', function() {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.INTEGER;
             console.info('testtype002 type = ' + node.type);
-            expect(node.type === ddm.ValueType.INTEGER).assertTrue()
+            expect(node.type === ddm.ValueType.INTEGER).assertTrue();
         } catch (e) {
             console.log("testtype002 fail on exception: " + e);
             expect(null).assertFail();
@@ -206,7 +206,7 @@ describe('FieldNodeTest', function() {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.FLOAT;
             console.info('testtype003 type = ' + node.type);
-            expect(node.type === ddm.ValueType.FLOAT).assertTrue()
+            expect(node.type === ddm.ValueType.FLOAT).assertTrue();
         } catch (e) {
             console.log("testtype003 fail on exception: " + e);
             expect(null).assertFail();
@@ -224,7 +224,7 @@ describe('FieldNodeTest', function() {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.BYTE_ARRAY;
             console.info('testtype004 type = ' + node.type);
-            expect(node.type === ddm.ValueType.BYTE_ARRAY).assertTrue()
+            expect(node.type === ddm.ValueType.BYTE_ARRAY).assertTrue();
         } catch (e) {
             console.log("testtype004 fail on exception: " + e);
             expect(null).assertFail();
@@ -242,7 +242,7 @@ describe('FieldNodeTest', function() {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.BOOLEAN;
             console.info('testtype005 type = ' + node.type);
-            expect(node.type === ddm.ValueType.BOOLEAN).assertTrue()
+            expect(node.type === ddm.ValueType.BOOLEAN).assertTrue();
         } catch (e) {
             console.log("testtype005 fail on exception: " + e);
             expect(null).assertFail();
@@ -260,7 +260,7 @@ describe('FieldNodeTest', function() {
             let node = new ddm.FieldNode('first');
             node.type = ddm.ValueType.DOUBLE;
             console.info('testtype006 type = ' + node.type);
-            expect(node.type === ddm.ValueType.DOUBLE).assertTrue()
+            expect(node.type === ddm.ValueType.DOUBLE).assertTrue();
         } catch (e) {
             console.log("testtype006 fail on exception: " + e);
             expect(null).assertFail();
