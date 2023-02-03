@@ -155,6 +155,16 @@ export function checkDescription(actualDescription, descriptionKey, descriptionV
     }
 }
 
+export function checkOldDescription(actualDescription, descriptionKey, descriptionValue) {
+    for (let i = 0; i < descriptionKey.length; i++) {
+        let property = actualDescription[descriptionKey[i]];
+        console.info('case key is  '+ descriptionKey[i]);
+        console.info('case actual value is  '+ property);
+        console.info('case hope value is  '+ descriptionValue[i]);
+        expect(property).assertEqual(descriptionValue[i]);
+    }
+}
+
 export function printDescription(obj) { 
     let description = ""; 
     for(let i in obj) { 

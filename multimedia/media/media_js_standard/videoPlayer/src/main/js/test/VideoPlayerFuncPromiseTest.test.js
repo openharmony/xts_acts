@@ -517,7 +517,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
         for (let i = 0; i < arrayDescription.length; i++) {
-            mediaTestBase.checkDescription(arrayDescription[i], descriptionKey[i], descriptionValue[i]);
+            mediaTestBase.checkOldDescription(arrayDescription[i], descriptionKey[i], descriptionValue[i]);
         }
 
         await videoPlayer.release().then(() => {
