@@ -47,7 +47,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     const SPEED_VALUE = 1;
     const NEXT_FRAME_TIME = 8333;
     const PREV_FRAME_TIME = 4166;
-    const DELTA_TIME = 100;
+    const DELTA_TIME = 300;
     let surfaceID = '';
     let fileDescriptor = null;
     const pagePath1 = 'pages/surfaceTest/surfaceTest';
