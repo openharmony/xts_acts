@@ -1,0 +1,16 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/second/second",
+        "MainAbility/pages/blankParentWidth",
+        "MainAbility/pages/buttonExample",
+        "MainAbility/pages/checkBoxExample",
+        "MainAbility/pages/checkBoxGroupUI",
+        "MainAbility/pages/DatelPanel",
+        "MainAbility/pages/dataPicker",
+        "MainAbility/pages/divider",
+        "MainAbility/pages/loadingprogress",
+        "MainAbility/pages/guage",
+        "MainAbility/pages/marquee"
+    ]
+}
