@@ -3,6 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "1500000",
+        "testcase-timeout": "50000",
         "bundle-name": "ohos.acts.multimedia.audio.audiocapturer",
         "package-name": "ohos.acts.multimedia.audio.audiocapturer",
         "shell-timeout": "60000"
