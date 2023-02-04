@@ -32,7 +32,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
             },
             fail : function(data,code){
                 console.info("NetManager code "+ code);
-                expect(code == 201).assertTrue();
+                expect(code == 602).assertTrue();
                 done();
             },
             complete : function(){
@@ -53,7 +53,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
             },
             fail : function(data,code){
                 console.info("NetManager code "+ code);
-                expect(code == 201).assertTrue();
+                expect(code == 602).assertTrue();
                 done();
             },
             complete : function(){
@@ -74,7 +74,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
             },
             fail : function(data,code){
                 console.info("NetManager code "+ code);
-                expect(code == 201).assertTrue();
+                expect(code == 602).assertTrue();
                 done();
             }
         });
@@ -93,7 +93,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
             },
             fail : function(data,code){
                 console.info("NetManager code "+ code);
-                expect(code == 201).assertTrue();
+                expect(code == 602).assertTrue();
                 done();
             }
         });
