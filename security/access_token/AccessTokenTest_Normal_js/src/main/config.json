@@ -26,34 +26,9 @@
             "moduleName": "entry",
             "moduleType": "entry"
         },
-        "definePermissions": [
-            {
-                "name": "ohos.permission.ALPHA",
-                "grantMode": "user_grant",
-                "availableLevel": "system_basic",
-                "provisionEnable": true,
-                "distributedSceneEnable": true,
-                "label": "ALPHA label",
-                "description": "ALPHA description"
-            },
-            {
-                "name": "ohos.permission.BETA",
-                "grantMode": "system_grant",
-                "availableLevel": "system_basic",
-                "provisionEnable": true,
-                "distributedSceneEnable": true,
-                "label": "BETA label",
-                "description": "BETA description"
-            }
-        ],
         "reqPermissions": [
             {
-                "name": "ohos.permission.ALPHA",
-                "reason": "use ohos.permission.ALPHA"
-            },
-            {
-                "name": "ohos.permission.BETA",
-                "reason": "use ohos.permission.BETA"
+                "name": "ohos.permission.DISTRIBUTED_DATASYNC"
             },
             {
                 "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
