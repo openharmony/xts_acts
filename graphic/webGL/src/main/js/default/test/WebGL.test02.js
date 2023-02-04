@@ -2441,12 +2441,15 @@ describe('webgl1Test_webgl2', function() {
 	it('webgl_test_drawElementsInstanced', 0, async function(done) {
 		//initContext();
 		console.info("webgltest into drawElementsInstanced");
+		const indexBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+		gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices.buffer, gl.STATIC_DRAW);
 
 		const a = gl2.drawElementsInstanced(gl.POINTS, 2, gl.UNSIGNED_SHORT, 0, 4);
 
 		let errorCode = gl.getError();
 		console.info("webgltest drawElementsInstanced getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_VALUE);
+		expect(errorCode).assertEqual(gl.NO_ERROR);
 		//deleteContext();
 		done();
 	});
@@ -2460,12 +2463,15 @@ describe('webgl1Test_webgl2', function() {
 	it('webgl_test_drawRangeElements', 0, async function(done) {
 		//initContext();
 		console.info("webgltest into drawRangeElements");
+		const indexBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+		gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices.buffer, gl.STATIC_DRAW);
 
 		const a = gl2.drawRangeElements(gl.POINTS, 0, 7, 8, gl.UNSIGNED_BYTE, 0);
 
 		let errorCode = gl.getError();
 		console.info("webgltest drawRangeElements getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_VALUE);
+		expect(errorCode).assertEqual(gl.NO_ERROR);
 
 		//deleteContext();
 		done();
