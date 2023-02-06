@@ -86,15 +86,21 @@ describe('HiCheckerTest', function () {
      */
      it('HiCheckerTest003', 0, async function (done) {
         console.info('HiCheckerTest003 start');
-        hichecker.addRule(-1);
-        console.log('add wrong rule!');
-        expect(hichecker.contains(-1)).assertEqual(false);
-        hichecker.addRule(0);
-        console.log('add wrong rule!');
-        expect(hichecker.contains(0)).assertEqual(false);
-        hichecker.addRule(999999);
-        console.log('add wrong rule!');
-        expect(hichecker.contains(-1)).assertEqual(false);
+        hichecker.addRule(1n);
+        console.log('add right rule!');
+        expect(hichecker.contains(1n)).assertEqual(true);
+        try {
+            hichecker.addRule(0n);
+        } catch(e) {
+            console.log('add wrong rule!');
+            expect(hichecker.contains(0n)).assertEqual(false);
+        }
+        try {
+            hichecker.addRule(999999n);
+        } catch(e) {
+            console.log('add wrong rule!');
+            expect(hichecker.contains(999999n)).assertEqual(false);
+        }
         done();
     })
 
