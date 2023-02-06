@@ -13,15 +13,25 @@
  * limitations under the License.
  */
 
+import fileIOFdatasync from './members/fdatasync.test.js'
+import fileIOFsync from './members/fsync.test.js'
+import fileIOLstat from './members/lstat.test.js'
+import fileIOMoveFile from './members/moveFile.test.js'
 import fileIOOpen from './members/open.test.js'
 import fileIORead from './members/read.test.js'
 import fileIOStat from './members/stat.test.js'
+import fileIOSymlink from './members/symlink.test.js'
 import fileIOTruncate from './members/truncate.test.js'
 import fileIOWrite from './members/write.test.js'
 export default function testsuite() {
+    fileIOFdatasync()
+    fileIOFsync()
+    fileIOLstat()
+    fileIOMoveFile()
     fileIOOpen()
     fileIORead()
     fileIOStat()
+    fileIOSymlink()
     fileIOTruncate()
     fileIOWrite()
 }
