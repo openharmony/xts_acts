@@ -2441,6 +2441,9 @@ describe('webgl1Test_webgl3', function() {
 	it('webgl_test_drawElementsInstanced', 0, async function(done) {
 		//initContext();
 		console.info("webgltest into drawElementsInstanced");
+		const indexBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+		gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices.buffer, gl.STATIC_DRAW);
 
 		const a = gl2.drawElementsInstanced(gl.POINTS, 2, gl.UNSIGNED_SHORT, 0, 4);
 
@@ -2462,6 +2465,9 @@ describe('webgl1Test_webgl3', function() {
 	it('webgl_test_drawRangeElements', 0, async function(done) {
 		//initContext();
 		console.info("webgltest into drawRangeElements");
+		const indexBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+		gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices.buffer, gl.STATIC_DRAW);
 
 		const a = gl2.drawRangeElements(gl.POINTS, 0, 7, 8, gl.UNSIGNED_BYTE, 0);
 

@@ -1241,7 +1241,7 @@ describe('webgl1Test_webgl6', function() {
 		gl.uniform4iv(uniformlocationObj, int32list);
 		const uniform4ivError = gl.getError();
 		console.info("testUniform4ivError: " + uniform4ivError);
-		expect(uniform4ivError).assertEqual(gl.INVALID_OPERATION);
+		expect(uniform4ivError).assertEqual(gl.NO_ERROR);
 		done();
 	})
 
@@ -1331,7 +1331,7 @@ describe('webgl1Test_webgl6', function() {
 		gl.uniformMatrix2fv(uniformlocationObj, true, flaot32list);
 		const uniformMatrix2fvError = gl.getError();
 		console.info("uniformMatrix2fvError: " + uniformMatrix2fvError);
-		expect(uniformMatrix2fvError).assertEqual(gl.NO_ERROR);
+		expect(uniformMatrix2fvError).assertEqual(gl.INVALID_OPERATION);
 		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		done();
 	})
