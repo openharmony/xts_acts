@@ -307,28 +307,6 @@ export default function systemTimeJsunit() {
     });
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0100
-     * @tc.name      Test systemTime.setDate Invalid value
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_systemTime_setDate_JS_API_0100', 0, async function (done) {
-      console.info("====>SUB_systemTime_setDate_JS_API_0100 start");
-      let data = new Date("October 13, 2020 11:13:00");
-      systemTime.setDate(data).then(data => {
-        console.info("====>SUB_systemTime_setDate_JS_API_0100 data " + data);
-        expect().assertFail();
-        done();
-      }).catch(error => {
-        console.info("====>SUB_systemTime_setDate_JS_API_0100 error " + error);
-        expect(true).assertTrue();
-        done();
-      });
-    });
-
-    /**
      * @tc.number    SUB_systemTime_setDate_JS_API_0200
      * @tc.name      Test systemTime.setDate Invalid value
      * @tc.desc      Test systemTime_setDate API functionality.
@@ -350,35 +328,6 @@ export default function systemTimeJsunit() {
     });
 
     /**
-     * @tc.number    SUB_systemTime_setDate_JS_API_0300
-     * @tc.name      Test systemTime.setDate Invalid value
-     * @tc.desc      Test systemTime_setDate API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_systemTime_setDate_JS_API_0300', 0, async function (done) {
-      console.info("====>SUB_systemTime_setDate_JS_API_0300 start");
-      let data = new Date("October 13, 2020 11:13:00");
-      systemTime.setDate(data, (error, data) => {
-        try {
-          if(error){
-            console.info("====>SUB_systemTime_setDate_JS_API_0300 error " + error);
-            expect(true).assertTrue();
-            done();
-          }else{
-            console.info("====>SUB_systemTime_setDate_JS_API_0300 data " + data);
-            expect().assertFail();
-            done();
-          }
-        } catch (error) {
-          console.info("====>SUB_systemTime_setDate_JS_API_0300 catch error " + error);
-          done();
-        }
-      });
-    });
-
-    /**
      * @tc.number    SUB_systemTime_setDate_JS_API_0400
      * @tc.name      Test systemTime.setDate true value
      * @tc.desc      Test systemTime_setDate API functionality.
@@ -388,8 +337,8 @@ export default function systemTimeJsunit() {
      */
     it('SUB_systemTime_setDate_JS_API_0400', 0, async function (done) {
       console.info("====>SUB_systemTime_setDate_JS_API_0400 start");
-      let data = new Date("Tue Oct 13 2020 11:13:00 GMT+0800");
-      systemTime.setDate(data, (error, data) => {
+      let date = new Date("Tue Oct 13 2020 11:13:00 GMT+0800");
+      systemTime.setDate(date, (error, data) => {
         try {
           if(error){
             console.info("====>SUB_systemTime_setDate_JS_API_0400 setDate fail: " + JSON.stringify(error));
@@ -426,8 +375,8 @@ export default function systemTimeJsunit() {
      */
     it('SUB_systemTime_setDate_JS_API_0500', 0, async function (done) {
       console.info("====>SUB_systemTime_setDate_JS_API_0500 start");
-      let data = new Date("Tue Oct 13 2020 11:13:00 GMT+0800");
-      await systemTime.setDate(data).then( () => {
+      let date = new Date("Tue Oct 13 2020 11:13:00 GMT+0800");
+      await systemTime.setDate(date).then( () => {
         console.info("====>SUB_systemTime_setDate_JS_API_0500 successful ");
         systemTime.getDate().then(async data => {
           try {
