@@ -13,12 +13,18 @@
  * limitations under the License.
  */
 
+import fileIOFileLock from './members/fileLock.test.js'
+import fileIOListfile from './members/listFile.test.js'
+import fileIOMoveFile from './members/moveFile.test.js'
 import fileIOOpen from './members/open.test.js'
 import fileIORead from './members/read.test.js'
 import fileIOStat from './members/stat.test.js'
 import fileIOTruncate from './members/truncate.test.js'
 import fileIOWrite from './members/write.test.js'
 export default function testsuite() {
+    fileIOFileLock()
+    fileIOListfile()
+    fileIOMoveFile()
     fileIOOpen()
     fileIORead()
     fileIOStat()
