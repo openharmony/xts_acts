@@ -639,7 +639,7 @@ describe('fileAssetTestCallback.test.js', async function() {
         try {
             let fileType = mediaLibrary.MediaType.VIDEO;
             let fileFetchOp = {
-                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND display_name = ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND ' + mediaLibrary.FileKey.DISPLAY_NAME + ' = ?',
                 selectionArgs : [ fileType.toString(), '01.mp4' ],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
@@ -708,7 +708,7 @@ describe('fileAssetTestCallback.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND display_name = ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND ' + mediaLibrary.FileKey.DISPLAY_NAME + ' = ?',
                 selectionArgs : [ type.toString(), '01.mp4' ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -773,7 +773,7 @@ describe('fileAssetTestCallback.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND display_name = ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND ' + mediaLibrary.FileKey.DISPLAY_NAME + ' = ?',
                 selectionArgs : [ type.toString(), '01.mp4' ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);

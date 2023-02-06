@@ -40,7 +40,7 @@ let imagesfetchOp = {
     selectionArgs: [imageType.toString()],
 };
 let videosfetchOp = {
-    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND display_name = ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND ' + mediaLibrary.FileKey.DISPLAY_NAME + ' = ?',
     selectionArgs: [videoType.toString(), '01.mp4'],
 };
 let audiosfetchOp = {
