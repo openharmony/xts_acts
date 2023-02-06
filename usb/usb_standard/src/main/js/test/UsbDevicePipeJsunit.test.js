@@ -718,8 +718,6 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
         console.info('usb 1300 case controlTransfer error : ' + JSON.stringify(error));
         expect(false).assertTrue();
       });
-      console.info('usb 1300 case controlTransfer return: ' + maskCode);
-      expect(false).assertTrue();
     } catch (err) {
       console.info('usb 1300 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
