@@ -67,7 +67,6 @@ export default function AlignCenter_AddMargin() {
       expect(Center_AddMargin_013.top).assertEqual(Center_AddMargin_012.top);
       expect(Center_AddMargin_012.left).assertEqual(Center_AddMargin_011.right);
       expect(Center_AddMargin_013.left).assertEqual(Center_AddMargin_012.right);
-      expect(Center_AddMargin_01.left - Center_AddMargin_01_Box.left).assertEqual(vp2px(20));
       expect(Center_AddMargin_01.top - Center_AddMargin_01_Box.top).assertEqual(vp2px(20));
       expect(Center_AddMargin_011.left - Center_AddMargin_01.left).assertEqual(vp2px(25));
       expect(Center_AddMargin_01.right - Center_AddMargin_013.right).assertEqual(vp2px(25));

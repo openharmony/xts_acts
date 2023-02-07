@@ -66,16 +66,16 @@ export default function AlignCenter_AddOneMargin() {
       expect(Center_AddOneMargin_012.top).assertEqual(Center_AddOneMargin_01.top);
       expect(Center_AddOneMargin_013.top).assertEqual(Center_AddOneMargin_012.top);
       expect(Center_AddOneMargin_013.left).assertEqual(Center_AddOneMargin_012.right);
-      expect(Center_AddOneMargin_011.left - Center_AddOneMargin_01.left).assertLess(vp2px(25));
-      expect(Center_AddOneMargin_011.top - Center_AddOneMargin_01.top).assertLess(vp2px(20));
+      expect(Center_AddOneMargin_011.left - Center_AddOneMargin_01.left).assertEqual(vp2px(25));
+      expect(Center_AddOneMargin_011.top - Center_AddOneMargin_01.top).assertEqual(vp2px(20));
       expect(Center_AddOneMargin_012.left - Center_AddOneMargin_011.right).assertEqual(vp2px(20));
       expect(Center_AddOneMargin_01.right - Center_AddOneMargin_013.right).assertEqual(vp2px(5));
       expect(Center_AddOneMargin_011.bottom - Center_AddOneMargin_011.top).assertEqual(vp2px(50));
       expect(Center_AddOneMargin_012.bottom - Center_AddOneMargin_012.top).assertEqual(vp2px(100));
       expect(Center_AddOneMargin_013.bottom - Center_AddOneMargin_013.top).assertEqual(vp2px(150));
-      expect(Center_AddOneMargin_011.left - Center_AddOneMargin_011.right).assertEqual(vp2px(150));
-      expect(Center_AddOneMargin_012.left - Center_AddOneMargin_012.right).assertEqual(vp2px(150));
-      expect(Center_AddOneMargin_013.left - Center_AddOneMargin_013.right).assertEqual(vp2px(150));
+      expect(Center_AddOneMargin_011.right - Center_AddOneMargin_011.left).assertEqual(vp2px(150));
+      expect(Center_AddOneMargin_012.right - Center_AddOneMargin_012.left).assertEqual(vp2px(150));
+      expect(Center_AddOneMargin_013.right - Center_AddOneMargin_013.left).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1400] END');
       done();
     })
@@ -99,16 +99,16 @@ export default function AlignCenter_AddOneMargin() {
       let Center_AddOneMargin_01 = CommonFunc.getComponentRect('Center_AddOneMargin_01');
       expect(Center_AddOneMargin_01.top).assertEqual(Center_AddOneMargin_012.top);
       expect(Center_AddOneMargin_013.top).assertEqual(Center_AddOneMargin_012.top);
-      expect(Center_AddOneMargin_011.left - Center_AddOneMargin_01.left).assertLess(vp2px(30));
-      expect(Center_AddOneMargin_011.top - Center_AddOneMargin_01.top).assertLess(vp2px(30));
+      expect(Center_AddOneMargin_011.left - Center_AddOneMargin_01.left).assertEqual(vp2px(30));
+      expect(Center_AddOneMargin_011.top - Center_AddOneMargin_01.top).assertEqual(vp2px(30));
       expect(Center_AddOneMargin_012.left - Center_AddOneMargin_011.right).assertEqual(vp2px(30));
       expect(Center_AddOneMargin_012.right).assertEqual(Center_AddOneMargin_013.left);
       expect(Center_AddOneMargin_011.bottom - Center_AddOneMargin_011.top).assertEqual(vp2px(50));
       expect(Center_AddOneMargin_012.bottom - Center_AddOneMargin_012.top).assertEqual(vp2px(100));
       expect(Center_AddOneMargin_013.bottom - Center_AddOneMargin_013.top).assertEqual(vp2px(150));
-      expect(Center_AddOneMargin_011.left - Center_AddOneMargin_011.right).assertEqual(vp2px(440/3));
-      expect(Center_AddOneMargin_012.left - Center_AddOneMargin_012.right).assertEqual(vp2px(440/3));
-      expect(Center_AddOneMargin_013.left - Center_AddOneMargin_013.right).assertEqual(vp2px(440/3));
+      expect(Center_AddOneMargin_011.right - Center_AddOneMargin_011.left).assertEqual(vp2px(440/3));
+      expect(Center_AddOneMargin_012.right - Center_AddOneMargin_012.left).assertEqual(vp2px(440/3));
+      expect(Center_AddOneMargin_013.right - Center_AddOneMargin_013.left).assertEqual(vp2px(440/3));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1500] END');
       done();
     })
