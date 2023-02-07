@@ -35,8 +35,8 @@ const TIMEOUT = 5000;
 const ERR_PARAM_INVALID = 12100001;
 
 const DEFAULT_PERMISSION_FALG = 0;
-var permissionNameUser = "ohos.permission.ALPHA";
-var permissionNameSystem = "ohos.permission.BETA";
+var permissionNameUser = "ohos.permission.DISTRIBUTED_DATASYNC";
+var permissionNameSystem = "ohos.permission.GET_BUNDLE_INFO";
 var tokenID = undefined;
 export default function AccessTokenTest() {
 describe('AccessTokenTest', function () {
