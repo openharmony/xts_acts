@@ -1,0 +1,83 @@
+/*
+ * Copyright (c) 2023-2030 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@system.router';
+import CommonFunc from "./../../../../MainAbility/common/Common";
+import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
+export default function AlignStart_AddLayoutWeight() {
+  describe('AlignStart_AddLayoutWeight', function () {
+    beforeEach(async function (done) {
+      let options = {
+        uri: 'MainAbility/pages/Flex/justifyContent/Start/AlignStart_AddLayoutWeight'
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get AlignStart_AddLayoutWeight state success " + JSON.stringify(pages));
+        if (!("AlignStart_AddLayoutWeight" == pages.name)) {
+          console.info("get AlignStart_AddLayoutWeight state pages.name " + JSON.stringify(pages.name));
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
+          console.info("push AlignStart_AddLayoutWeight page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push AlignStart_AddLayoutWeight page error " + JSON.stringify(err));
+        expect().assertFail();
+      }
+      done()
+    });
+
+    afterEach(async function () {
+      await CommonFunc.sleep(2000);
+      console.info("AlignStart_AddLayoutWeight after each called");
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1200
+     * @tc.name      Align_Start_Row_AddLayoutWeight
+     * @tc.desc      aceFlexAlignStartTest
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1200', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1200] START');
+      globalThis.value.message.notify({name:'OneLayoutWeight', value:1});
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('Start_AddLayoutWeight_01');
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+      let Start_AddLayoutWeight_011 = CommonFunc.getComponentRect('Start_AddLayoutWeight_011');
+      let Start_AddLayoutWeight_012 = CommonFunc.getComponentRect('Start_AddLayoutWeight_012');
+      let Start_AddLayoutWeight_013 = CommonFunc.getComponentRect('Start_AddLayoutWeight_013');
+      let Start_AddLayoutWeight_01 = CommonFunc.getComponentRect('Start_AddLayoutWeight_01');
+      expect(Start_AddLayoutWeight_011.top).assertEqual(Start_AddLayoutWeight_012.top);
+      expect(Start_AddLayoutWeight_013.top).assertEqual(Start_AddLayoutWeight_012.top);
+      expect(Start_AddLayoutWeight_011.top).assertEqual(Start_AddLayoutWeight_01.top);
+      expect(Start_AddLayoutWeight_011.right).assertEqual(Start_AddLayoutWeight_012.left);
+      expect(Start_AddLayoutWeight_012.right).assertEqual(Start_AddLayoutWeight_013.left);
+      expect(Start_AddLayoutWeight_01.left).assertEqual(Start_AddLayoutWeight_011.left);
+      expect(Start_AddLayoutWeight_013.right).assertEqual(Start_AddLayoutWeight_01.right);
+      expect(Start_AddLayoutWeight_011.right - Start_AddLayoutWeight_011.left).assertEqual(vp2px(200));
+      expect(Start_AddLayoutWeight_012.right - Start_AddLayoutWeight_012.left).assertEqual(vp2px(150));
+      expect(Start_AddLayoutWeight_013.right - Start_AddLayoutWeight_013.left).assertEqual(vp2px(150));
+      expect(Start_AddLayoutWeight_011.bottom - Start_AddLayoutWeight_011.top).assertEqual(vp2px(50));
+      expect(Start_AddLayoutWeight_012.bottom - Start_AddLayoutWeight_012.top).assertEqual(vp2px(100));
+      expect(Start_AddLayoutWeight_013.bottom - Start_AddLayoutWeight_013.top).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1200] END');
+      done();
+    });
+  })
+}
