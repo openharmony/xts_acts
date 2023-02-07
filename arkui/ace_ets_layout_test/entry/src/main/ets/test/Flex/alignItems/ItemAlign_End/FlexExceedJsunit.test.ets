@@ -1,0 +1,114 @@
+/*
+ * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@system.router';
+import CommonFunc from "../../../../MainAbility/common/Common";
+import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+export default function flexExceed_EndJsunit() {
+  describe('flexItemAlignEndTest', function () {
+    beforeEach(async function (done) {
+      let options = {
+        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexExceed',
+      }
+      try {
+        router.clear();
+        await CommonFunc.sleep(1000);
+        let pages = router.getState();
+        console.info("get FlexExceed state success " + JSON.stringify(pages));
+        if (!("FlexExceed" == pages.name)) {
+          console.info("get FlexExceed state success " + JSON.stringify(pages.name));
+          let result = await router.push(options)
+          console.info("push FlexExceed page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push FlexExceed page error " + JSON.stringify(err));
+      }
+      await CommonFunc.sleep(2000);
+      done()
+    });
+    afterEach(async function () {
+      await CommonFunc.sleep(1000);
+      console.info("FlexExceed after each called");
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEXALIGNITEMS_END_0600
+     * @tc.name      testFlexItemAlignEndSetMarPad
+     * @tc.desc      Subcomponent inside when parent component set margin and padding.
+     */
+    it('testFlexItemAlignEndSetMarPad', 0, async function (done) {
+      console.info('new testFlexItemAlignEndSetMarPad START');
+      globalThis.value.message.notify({name:'padding', value:10});
+      globalThis.value.message.notify({name:'margin', value:10});
+      await CommonFunc.sleep(2000);
+      let strJson1 = getInspectorByKey('flexExceed01');
+      let obj1 = JSON.parse(strJson1);
+      let textExceed01 = CommonFunc.getComponentRect('textExceed01');
+      let textExceed02 = CommonFunc.getComponentRect('textExceed02');
+      let textExceed03 = CommonFunc.getComponentRect('textExceed03');
+      let flexExceed01 = CommonFunc.getComponentRect('flexExceed01');
+      expect(textExceed01.bottom).assertEqual(textExceed02.bottom)
+      expect(textExceed02.bottom).assertEqual(textExceed03.bottom)
+      expect(Math.round(flexExceed01.bottom - textExceed01.bottom)).assertEqual(vp2px(10))
+      expect(Math.round(textExceed01.left - flexExceed01.left)).assertEqual(vp2px(10))
+
+      expect(Math.round(textExceed01.bottom - textExceed01.top)).assertEqual(vp2px(50))
+      expect(Math.round(textExceed02.bottom - textExceed02.top)).assertEqual(vp2px(100))
+      expect(Math.round(textExceed03.bottom - textExceed03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textExceed01.right - textExceed01.left)).assertEqual(vp2px(150))
+      expect(Math.round(textExceed02.right - textExceed02.left)).assertEqual(vp2px(150))
+      expect(Math.round(textExceed03.right - textExceed03.left)).assertEqual(vp2px(150))
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
+      console.info('new testFlexItemAlignEndSetMarPad END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEXALIGNITEMS_END_0700
+     * @tc.name      testFlexItemAlignEndSetMarPadExceed
+     * @tc.desc      Subcomponent outside when parent component set margin and padding.
+     */
+    it('testFlexItemAlignEndSetMarPadExceed', 0, async function (done) {
+      console.info('new testFlexItemAlignEndSetMarPadExceed START');
+      globalThis.value.message.notify({name:'padding', value:30});
+      globalThis.value.message.notify({name:'margin', value:30});
+      await CommonFunc.sleep(2000);
+      let strJson1 = getInspectorByKey('flexExceed01');
+      let obj1 = JSON.parse(strJson1);
+      let textExceed01 = CommonFunc.getComponentRect('textExceed01');
+      let textExceed02 = CommonFunc.getComponentRect('textExceed02');
+      let textExceed03 = CommonFunc.getComponentRect('textExceed03');
+      let flexExceed01 = CommonFunc.getComponentRect('flexExceed01');
+
+      expect(textExceed01.bottom).assertEqual(textExceed02.bottom)
+      expect(textExceed02.bottom).assertEqual(textExceed03.bottom)
+      expect(flexExceed01.bottom - textExceed01.bottom).assertEqual(vp2px(30))
+      expect(textExceed01.left - flexExceed01.left).assertEqual(vp2px(30))
+
+      expect(textExceed01.bottom - textExceed01.top).assertEqual(vp2px(50))
+      expect(textExceed02.bottom - textExceed02.top).assertEqual(vp2px(100))
+      expect(textExceed03.bottom - textExceed03.top).assertEqual(vp2px(150))
+      expect(textExceed01.right - textExceed01.left).assertEqual(vp2px(440/3))
+      expect(textExceed02.right - textExceed02.left).assertEqual(vp2px(440/3))
+      expect(textExceed03.right - textExceed03.left).assertEqual(vp2px(440/3))
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
+      console.info('new testFlexItemAlignEndSetMarPadExceed END');
+      done();
+    });
+  })
+}
