@@ -52,7 +52,9 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200] START');
-      globalThis.value.message.notify({name:'OneLayoutWeight', value:1});
+      globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
+      globalThis.value.message.notify({name:'OneLayoutWeight2', value:2});
+      globalThis.value.message.notify({name:'OneLayoutWeight3', value:2});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddLayoutWeight_01');
       let obj = JSON.parse(strJson);
@@ -73,10 +75,47 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
       expect(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top).assertEqual(vp2px(50));
       expect(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top).assertEqual(vp2px(100));
       expect(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top).assertEqual(vp2px(150));
-      expect(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left).assertEqual(vp2px(200));
-      expect(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left).assertEqual(vp2px(150));
-      expect(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left).assertEqual(vp2px(150));
+      expect(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left).assertEqual(vp2px(100));
+      expect(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left).assertEqual(vp2px(200));
+      expect(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left).assertEqual(vp2px(200));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200] END');
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300
+     * @tc.name      Align_SpaceEvenly_Row_AddLayoutWeight
+     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300] START');
+      globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
+      globalThis.value.message.notify({name:'OneLayoutWeight2', value:2});
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('SpaceEvenly_AddLayoutWeight_02');
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+      let SpaceEvenly_AddLayoutWeight_011 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_021');
+      let SpaceEvenly_AddLayoutWeight_012 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_022');
+      let SpaceEvenly_AddLayoutWeight_013 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_023');
+      let SpaceEvenly_AddLayoutWeight_01 = CommonFunc.getComponentRect('SpaceEvenly_AddLayoutWeight_02');
+      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
+      expect(SpaceEvenly_AddLayoutWeight_013.top).assertEqual(SpaceEvenly_AddLayoutWeight_012.top);
+      expect(SpaceEvenly_AddLayoutWeight_011.top).assertEqual(SpaceEvenly_AddLayoutWeight_01.top);
+      expect(SpaceEvenly_AddLayoutWeight_011.right).assertEqual(SpaceEvenly_AddLayoutWeight_012.left);
+      expect(SpaceEvenly_AddLayoutWeight_012.right).assertEqual(SpaceEvenly_AddLayoutWeight_013.left);
+      expect(SpaceEvenly_AddLayoutWeight_011.left).assertEqual(SpaceEvenly_AddLayoutWeight_01.left);
+      expect(SpaceEvenly_AddLayoutWeight_013.right).assertEqual(SpaceEvenly_AddLayoutWeight_01.right);
+      expect(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top).assertEqual(vp2px(50));
+      expect(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top).assertEqual(vp2px(100));
+      expect(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top).assertEqual(vp2px(150));
+      let oneWidth = SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left;
+      let twoWidth = SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left;
+      expect(twoWidth / oneWidth).assertEqual(2);
+      expect(twoWidth + oneWidth).assertEqual(vp2px(350));
+      expect(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300] END');
       done();
     });
   })
