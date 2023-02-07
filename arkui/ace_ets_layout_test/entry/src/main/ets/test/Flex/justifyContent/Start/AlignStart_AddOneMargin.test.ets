@@ -107,9 +107,9 @@ export default function AlignStart_AddOneMargin() {
       expect(Start_AddOneMargin_011.right - Start_AddOneMargin_011.left).assertEqual(vp2px(440/3));
       expect(Start_AddOneMargin_012.right - Start_AddOneMargin_012.left).assertEqual(vp2px(440/3));
       expect(Start_AddOneMargin_013.right - Start_AddOneMargin_013.left).assertEqual(vp2px(440/3));
-//      expect(Start_AddOneMargin_011.bottom - Start_AddOneMargin_011.top).assertEqual(vp2px(50));
-//      expect(Start_AddOneMargin_012.bottom - Start_AddOneMargin_012.top).assertEqual(vp2px(100));
-//      expect(Start_AddOneMargin_013.bottom - Start_AddOneMargin_013.top).assertEqual(vp2px(150));
+      expect(Start_AddOneMargin_011.bottom - Start_AddOneMargin_011.top).assertEqual(vp2px(50));
+      expect(Start_AddOneMargin_012.bottom - Start_AddOneMargin_012.top).assertEqual(vp2px(100));
+      expect(Start_AddOneMargin_013.bottom - Start_AddOneMargin_013.top).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1500] END');
       done();
     })

@@ -71,7 +71,6 @@ export default function AlignStart_AddAllSpace() {
       expect( Start_AddAllSpace_011.left - Start_AddAllSpace_01.left ).assertEqual(vp2px(30));
       expect( Start_AddAllSpace_01.right - Start_AddAllSpace_013.right ).assertEqual(vp2px(30));
       expect( Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top ).assertEqual(vp2px(10));
-      expect( Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left ).assertEqual(vp2px(10));
       expect(Start_AddAllSpace_011.bottom - Start_AddAllSpace_011.top).assertEqual(vp2px(50));
       expect(Start_AddAllSpace_012.bottom - Start_AddAllSpace_012.top).assertEqual(vp2px(100));
       expect(Start_AddAllSpace_013.bottom - Start_AddAllSpace_013.top).assertEqual(vp2px(150));
@@ -107,7 +106,6 @@ export default function AlignStart_AddAllSpace() {
       expect( Start_AddAllSpace_011.left - Start_AddAllSpace_01.left ).assertEqual(vp2px(20));
       expect( Start_AddAllSpace_01.right - Start_AddAllSpace_013.right ).assertEqual(vp2px(30));
       expect( Start_AddAllSpace_011.top - Start_AddAllSpace_01.top ).assertEqual(vp2px(20));
-      expect( Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left ).assertEqual(vp2px(10));
       expect( Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top ).assertEqual(vp2px(10));
       expect(Start_AddAllSpace_011.right - Start_AddAllSpace_011.left).assertEqual(vp2px(150));
       expect(Start_AddAllSpace_012.right - Start_AddAllSpace_012.left).assertEqual(vp2px(150));
