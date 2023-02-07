@@ -313,7 +313,7 @@ export default function ApiCoverTest() {
      */
     it('SUB_AA_ABILITY_Extension_API_012', 0, async function (done) {
       try {
-        let info: appManagerNew.ProcessRunningInfo;
+        let info: appManagerNew.ProcessInformation;
         let stageContext: common.AbilityStageContext = globalThis.stageContext;
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         let appContext: common.ApplicationContext = abilityContext.getApplicationContext();
