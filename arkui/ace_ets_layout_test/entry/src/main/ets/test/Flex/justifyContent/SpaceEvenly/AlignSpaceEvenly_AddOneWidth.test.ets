@@ -1,0 +1,84 @@
+/*
+ * Copyright (c) 2023-2030 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@system.router';
+import CommonFunc from "./../../../../MainAbility/common/Common"
+import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
+export default function AlignSpaceEvenly_AddOneWidth() {
+  describe('AlignSpaceEvenly_AddOneWidth', function () {
+    beforeEach(async function (done) {
+      let options = {
+        uri: 'MainAbility/pages/Flex/justifyContent/SpaceEvenly/AlignSpaceEvenly_AddOneWidth',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get AlignSpaceEvenly_AddOneWidth state success " + JSON.stringify(pages));
+        if (!("AlignSpaceEvenly_AddOneWidth" == pages.name)) {
+          console.info("get AlignSpaceEvenly_AddOneWidth( state pages.name " + JSON.stringify(pages.name));
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
+          console.info("push AlignSpaceEvenly_AddOneWidth( page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push AlignSpaceEvenly_AddOneWidth( page error " + JSON.stringify(err));
+        expect().assertFail();
+      }
+      done()
+    });
+
+    afterEach(async function () {
+      await CommonFunc.sleep(2000);
+      console.info("AlignSpaceEvenly_AddOneWidth after each called");
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300
+     * @tc.name      Align_SpaceEvenly_Row_ChangeOneWidth
+     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300] START');
+      globalThis.value.message.notify({name:'OneWidth', value:160});
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('SpaceEvenly_AddOneWidth_01');
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+      let SpaceEvenly_AddOneWidth_011 = CommonFunc.getComponentRect('SpaceEvenly_AddOneWidth_011');
+      let SpaceEvenly_AddOneWidth_012 = CommonFunc.getComponentRect('SpaceEvenly_AddOneWidth_012');
+      let SpaceEvenly_AddOneWidth_013 = CommonFunc.getComponentRect('SpaceEvenly_AddOneWidth_013');
+      let SpaceEvenly_AddOneWidth_01 = CommonFunc.getComponentRect('SpaceEvenly_AddOneWidth_01');
+      expect(SpaceEvenly_AddOneWidth_012.left - SpaceEvenly_AddOneWidth_011.right)
+        .assertEqual(SpaceEvenly_AddOneWidth_013.left - SpaceEvenly_AddOneWidth_012.right);
+      expect(SpaceEvenly_AddOneWidth_012.left - SpaceEvenly_AddOneWidth_011.right).assertEqual(vp2px(10));
+      expect(SpaceEvenly_AddOneWidth_011.top).assertEqual(SpaceEvenly_AddOneWidth_012.top);
+      expect(SpaceEvenly_AddOneWidth_013.top).assertEqual(SpaceEvenly_AddOneWidth_012.top);
+      expect(SpaceEvenly_AddOneWidth_011.top).assertEqual(SpaceEvenly_AddOneWidth_01.top);
+      expect(SpaceEvenly_AddOneWidth_011.left - SpaceEvenly_AddOneWidth_01.left).assertEqual(vp2px(10));
+      expect(SpaceEvenly_AddOneWidth_01.right - SpaceEvenly_AddOneWidth_013.right).assertEqual(vp2px(10));
+      expect(SpaceEvenly_AddOneWidth_011.right - SpaceEvenly_AddOneWidth_011.left).assertEqual(vp2px(160));
+      expect(SpaceEvenly_AddOneWidth_012.right - SpaceEvenly_AddOneWidth_012.left).assertEqual(vp2px(150));
+      expect(SpaceEvenly_AddOneWidth_013.right - SpaceEvenly_AddOneWidth_013.left).assertEqual(vp2px(150));
+      expect(SpaceEvenly_AddOneWidth_011.bottom - SpaceEvenly_AddOneWidth_011.top).assertEqual(vp2px(50));
+      expect(SpaceEvenly_AddOneWidth_012.bottom - SpaceEvenly_AddOneWidth_012.top).assertEqual(vp2px(100));
+      expect(SpaceEvenly_AddOneWidth_013.bottom - SpaceEvenly_AddOneWidth_013.top).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300] END');
+      done();
+    });
+  })
+}

@@ -1,0 +1,117 @@
+/*
+ * Copyright (c) 2023-2030 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@system.router';
+import CommonFunc from "./../../../../MainAbility/common/Common"
+import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
+export default function AlignSpaceEvenly_NoSpace() {
+  describe('AlignSpaceEvenly_NoSpace', function () {
+    beforeEach(async function (done) {
+      let options = {
+        uri: 'MainAbility/pages/Flex/justifyContent/SpaceEvenly/AlignSpaceEvenly_NoSpace'
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get AlignSpaceEvenly_NoSpace state success " + JSON.stringify(pages));
+        if (!("AlignSpaceEvenly_NoSpace" == pages.name)) {
+          console.info("get AlignSpaceEvenly_NoSpace state pages.name " + JSON.stringify(pages.name));
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
+          console.info("push AlignSpaceEvenly_NoSpace page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push AlignSpaceEvenly_NoSpace page error " + JSON.stringify(err));
+        expect().assertFail();
+      }
+      done()
+    });
+
+    afterEach(async function () {
+      await CommonFunc.sleep(2000);
+      console.info("AlignSpaceEvenly_NoSpace after each called");
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0100
+     * @tc.name      Align_SpaceEvenly_Row_ChangeWidth
+     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0100', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0100] START');
+      globalThis.value.message.notify({name:'DadWidth', value:400});
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('SpaceEvenly_NoSpace_01');
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+      let SpaceEvenly_NoSpace_011 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_011');
+      let SpaceEvenly_NoSpace_012 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_012');
+      let SpaceEvenly_NoSpace_013 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_013');
+      let SpaceEvenly_NoSpace_01 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_01');
+      expect(SpaceEvenly_NoSpace_011.top).assertEqual(SpaceEvenly_NoSpace_012.top);
+      expect(SpaceEvenly_NoSpace_012.top).assertEqual(SpaceEvenly_NoSpace_013.top);
+      expect(SpaceEvenly_NoSpace_011.top).assertEqual(SpaceEvenly_NoSpace_01.top);
+      expect(SpaceEvenly_NoSpace_011.left).assertEqual(SpaceEvenly_NoSpace_01.left);
+      expect(SpaceEvenly_NoSpace_01.right).assertEqual(SpaceEvenly_NoSpace_013.right);
+      expect(SpaceEvenly_NoSpace_012.left).assertEqual(SpaceEvenly_NoSpace_011.right);
+      expect(SpaceEvenly_NoSpace_013.left).assertEqual(SpaceEvenly_NoSpace_012.right);
+      expect(SpaceEvenly_NoSpace_011.right - SpaceEvenly_NoSpace_011.left).assertEqual(vp2px(400/3));
+      expect(SpaceEvenly_NoSpace_012.right - SpaceEvenly_NoSpace_012.left).assertEqual(vp2px(400/3));
+      expect(SpaceEvenly_NoSpace_013.right - SpaceEvenly_NoSpace_013.left).assertEqual(vp2px(400/3));
+      expect(SpaceEvenly_NoSpace_011.bottom - SpaceEvenly_NoSpace_011.top).assertEqual(vp2px(50));
+      expect(SpaceEvenly_NoSpace_012.bottom - SpaceEvenly_NoSpace_012.top).assertEqual(vp2px(100));
+      expect(SpaceEvenly_NoSpace_013.bottom - SpaceEvenly_NoSpace_013.top).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0100] END');
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0200
+     * @tc.name      Align_SpaceEvenly_Row_ChangeWidth
+     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0200', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0200] START');
+      let strJson = getInspectorByKey('SpaceEvenly_NoSpace_01');
+      globalThis.value.message.notify({name:'DadWidth', value:500});
+      await CommonFunc.sleep(3000);
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+      let SpaceEvenly_NoSpace_011 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_011');
+      let SpaceEvenly_NoSpace_012 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_012');
+      let SpaceEvenly_NoSpace_013 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_013');
+      let SpaceEvenly_NoSpace_01 = CommonFunc.getComponentRect('SpaceEvenly_NoSpace_01');
+      expect(SpaceEvenly_NoSpace_011.top).assertEqual(SpaceEvenly_NoSpace_012.top);
+      expect(SpaceEvenly_NoSpace_012.top).assertEqual(SpaceEvenly_NoSpace_013.top);
+      expect(SpaceEvenly_NoSpace_011.top).assertEqual(SpaceEvenly_NoSpace_01.top);
+      expect(SpaceEvenly_NoSpace_012.left - SpaceEvenly_NoSpace_011.right).assertEqual(vp2px(12.5));
+      expect(SpaceEvenly_NoSpace_011.left - SpaceEvenly_NoSpace_01.left).assertEqual(vp2px(12.5));
+      expect(SpaceEvenly_NoSpace_013.left - SpaceEvenly_NoSpace_012.right).assertEqual(vp2px(12.5));
+      expect(SpaceEvenly_NoSpace_01.right - SpaceEvenly_NoSpace_013.right).assertEqual(vp2px(12.5));
+      expect(SpaceEvenly_NoSpace_011.right - SpaceEvenly_NoSpace_011.left).assertEqual(vp2px(150));
+      expect(SpaceEvenly_NoSpace_012.right - SpaceEvenly_NoSpace_012.left).assertEqual(vp2px(150));
+      expect(SpaceEvenly_NoSpace_013.right - SpaceEvenly_NoSpace_013.left).assertEqual(vp2px(150));
+      expect(SpaceEvenly_NoSpace_011.bottom - SpaceEvenly_NoSpace_011.top).assertEqual(vp2px(50));
+      expect(SpaceEvenly_NoSpace_012.bottom - SpaceEvenly_NoSpace_012.top).assertEqual(vp2px(100));
+      expect(SpaceEvenly_NoSpace_013.bottom - SpaceEvenly_NoSpace_013.top).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0200] END');
+      done();
+    });
+  });
+}
