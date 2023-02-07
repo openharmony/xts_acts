@@ -73,7 +73,7 @@ public:
 
     static inline BufferRequestConfig requestConfig = {};
     static inline BufferFlushConfig flushConfig = {};
-    static inline sptr<OHOS::Surface> cSurface = nullptr;
+    static inline sptr<OHOS::IConsumerSurface> cSurface = nullptr;
     static inline sptr<OHOS::IBufferProducer> producer = nullptr;
     static inline sptr<OHOS::Surface> pSurface = nullptr;
     static inline sptr<OHOS::SurfaceBuffer> sBuffer = nullptr;
