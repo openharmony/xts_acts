@@ -19,6 +19,7 @@
 #include "surface_type.h"
 #include "buffer_log.h"
 #include "external_window.h"
+#include "iconsumer_surface.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -92,7 +93,7 @@ void NativeWindowTest::SetUpTestCase()
         .timeout = 0,
     };
 
-    cSurface = Surface::CreateSurfaceAsConsumer();
+    cSurface = IConsumerSurface::Create();
     sptr<IBufferConsumerListener> listener = new BufferConsumerListener();
     cSurface->RegisterConsumerListener(listener);
     producer = cSurface->GetProducer();
