@@ -34,9 +34,9 @@ struct AlignStart_AddAlign {
   }
   build() {
     Column({space:this.addSpace}) {
-      Column(){Text('1')}.width(300).height(50).backgroundColor(0xF5DEB3).key('Column_Sapace_011')
-      Column(){Text('2')}.width(300).height(100).backgroundColor(0xD2B48C).key('Column_Sapace_012')
-      Column(){Text('3')}.width(300).height(150).backgroundColor(0xF5DEB3).key('Column_Sapace_013')
-    }.key('Column_Sapace_01').width(350).height(400).backgroundColor(0xAFEEEE)
+      Column(){Text('1')}.width(300).height(50).backgroundColor(0xF5DEB3).key('Column_Space_011')
+      Column(){Text('2')}.width(300).height(100).backgroundColor(0xD2B48C).key('Column_Space_012')
+      Column(){Text('3')}.width(300).height(150).backgroundColor(0xF5DEB3).key('Column_Space_013')
+    }.key('Column_Space_01').width(350).height(400).backgroundColor(0xAFEEEE)
   }
 }

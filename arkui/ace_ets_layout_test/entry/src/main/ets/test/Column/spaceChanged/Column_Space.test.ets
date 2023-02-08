@@ -47,87 +47,87 @@ export default function Column_Space() {
     /**
      * @tc.number    SUB_ACE_COLUMN_SPACE_TEST_0100
      * @tc.name      Column_Space
-     * @tc.desc      aceColumnSpaceTest
+     * @tc.desc      The value of space changes, and the layout size of the parent and child components is fixed
      */
     it('SUB_ACE_COLUMN_SPACE_TEST_0100', 0, async function (done) {
       console.info('[SUB_ACE_COLUMN_SPACE_TEST_0100] START');
       globalThis.value.message.notify({name:'addSpace', value:30});
       await CommonFunc.sleep(3000);
-      let Column_Sapace_011 = CommonFunc.getComponentRect('Column_Sapace_011');
-      let Column_Sapace_012 = CommonFunc.getComponentRect('Column_Sapace_012');
-      let Column_Sapace_013 = CommonFunc.getComponentRect('Column_Sapace_013');
-      let Column_Sapace_01 = CommonFunc.getComponentRect('Column_Sapace_01');
-      expect(Column_Sapace_011.left - Column_Sapace_01.left).assertEqual(Column_Sapace_01.right - Column_Sapace_011.right);
-      expect(Column_Sapace_012.left - Column_Sapace_01.left).assertEqual(Column_Sapace_01.right - Column_Sapace_012.right);
-      expect(Column_Sapace_013.left - Column_Sapace_01.left).assertEqual(Column_Sapace_01.right - Column_Sapace_013.right);
-      expect(Column_Sapace_012.top - Column_Sapace_011.bottom).assertEqual(Column_Sapace_013.top - Column_Sapace_012.bottom)
-      expect(Column_Sapace_012.top - Column_Sapace_011.bottom).assertEqual(vp2px(30));
-      expect(Column_Sapace_01.top).assertEqual(Column_Sapace_011.top);
-      expect(Column_Sapace_013.bottom).assertLess(Column_Sapace_01.bottom);
-      expect(Column_Sapace_011.bottom - Column_Sapace_011.top).assertEqual(vp2px(50));
-      expect(Column_Sapace_012.bottom - Column_Sapace_012.top).assertEqual(vp2px(100));
-      expect(Column_Sapace_013.bottom - Column_Sapace_013.top).assertEqual(vp2px(150));
-      expect(Column_Sapace_011.right - Column_Sapace_011.left).assertEqual(vp2px(300));
-      expect(Column_Sapace_012.right - Column_Sapace_012.left).assertEqual(vp2px(300));
-      expect(Column_Sapace_013.right - Column_Sapace_013.left).assertEqual(vp2px(300));
+      let Column_Space_011 = CommonFunc.getComponentRect('Column_Space_011');
+      let Column_Space_012 = CommonFunc.getComponentRect('Column_Space_012');
+      let Column_Space_013 = CommonFunc.getComponentRect('Column_Space_013');
+      let Column_Space_01 = CommonFunc.getComponentRect('Column_Space_01');
+      expect(Column_Space_011.left - Column_Space_01.left).assertEqual(Column_Space_01.right - Column_Space_011.right);
+      expect(Column_Space_012.left - Column_Space_01.left).assertEqual(Column_Space_01.right - Column_Space_012.right);
+      expect(Column_Space_013.left - Column_Space_01.left).assertEqual(Column_Space_01.right - Column_Space_013.right);
+      expect(Column_Space_012.top - Column_Space_011.bottom).assertEqual(Column_Space_013.top - Column_Space_012.bottom)
+      expect(Column_Space_012.top - Column_Space_011.bottom).assertEqual(vp2px(30));
+      expect(Column_Space_01.top).assertEqual(Column_Space_011.top);
+      expect(Column_Space_013.bottom).assertLess(Column_Space_01.bottom);
+      expect(Column_Space_011.bottom - Column_Space_011.top).assertEqual(vp2px(50));
+      expect(Column_Space_012.bottom - Column_Space_012.top).assertEqual(vp2px(100));
+      expect(Column_Space_013.bottom - Column_Space_013.top).assertEqual(vp2px(150));
+      expect(Column_Space_011.right - Column_Space_011.left).assertEqual(vp2px(300));
+      expect(Column_Space_012.right - Column_Space_012.left).assertEqual(vp2px(300));
+      expect(Column_Space_013.right - Column_Space_013.left).assertEqual(vp2px(300));
       console.info('[SUB_ACE_COLUMN_SPACE_TEST_0100] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_COLUMN_SPACE_TEST_0200
      * @tc.name      Column_Space
-     * @tc.desc      aceColumnSpaceTest
+     * @tc.desc      The value of space changes, and the layout size of the parent and child components is fixed
      */
     it('SUB_ACE_COLUMN_SPACE_TEST_0200', 0, async function (done) {
       console.info('[SUB_ACE_COLUMN_SPACE_TEST_0200] START');
       globalThis.value.message.notify({name:'addSpace', value:50});
       await CommonFunc.sleep(3000);
-      let Column_Sapace_011 = CommonFunc.getComponentRect('Column_Sapace_011');
-      let Column_Sapace_012 = CommonFunc.getComponentRect('Column_Sapace_012');
-      let Column_Sapace_013 = CommonFunc.getComponentRect('Column_Sapace_013');
-      let Column_Sapace_01 = CommonFunc.getComponentRect('Column_Sapace_01');
-      expect(Column_Sapace_011.left - Column_Sapace_01.left).assertEqual(Column_Sapace_01.right - Column_Sapace_011.right);
-      expect(Column_Sapace_012.left - Column_Sapace_01.left).assertEqual(Column_Sapace_01.right - Column_Sapace_012.right);
-      expect(Column_Sapace_013.left - Column_Sapace_01.left).assertEqual(Column_Sapace_01.right - Column_Sapace_013.right);
-      expect(Column_Sapace_012.top - Column_Sapace_011.bottom).assertEqual(Column_Sapace_013.top - Column_Sapace_012.bottom);
-      expect(Column_Sapace_012.top - Column_Sapace_011.bottom).assertEqual(vp2px(50));
-      expect(Column_Sapace_01.top).assertEqual(Column_Sapace_011.top);
-      expect(Column_Sapace_013.bottom).assertEqual(Column_Sapace_01.bottom);
-      expect(Column_Sapace_011.bottom - Column_Sapace_011.top).assertEqual(vp2px(50));
-      expect(Column_Sapace_012.bottom - Column_Sapace_012.top).assertEqual(vp2px(100));
-      expect(Column_Sapace_013.bottom - Column_Sapace_013.top).assertEqual(vp2px(150));
-      expect(Column_Sapace_011.right - Column_Sapace_011.left).assertEqual(vp2px(300));
-      expect(Column_Sapace_012.right - Column_Sapace_012.left).assertEqual(vp2px(300));
-      expect(Column_Sapace_013.right - Column_Sapace_013.left).assertEqual(vp2px(300));
+      let Column_Space_011 = CommonFunc.getComponentRect('Column_Space_011');
+      let Column_Space_012 = CommonFunc.getComponentRect('Column_Space_012');
+      let Column_Space_013 = CommonFunc.getComponentRect('Column_Space_013');
+      let Column_Space_01 = CommonFunc.getComponentRect('Column_Space_01');
+      expect(Column_Space_011.left - Column_Space_01.left).assertEqual(Column_Space_01.right - Column_Space_011.right);
+      expect(Column_Space_012.left - Column_Space_01.left).assertEqual(Column_Space_01.right - Column_Space_012.right);
+      expect(Column_Space_013.left - Column_Space_01.left).assertEqual(Column_Space_01.right - Column_Space_013.right);
+      expect(Column_Space_012.top - Column_Space_011.bottom).assertEqual(Column_Space_013.top - Column_Space_012.bottom);
+      expect(Column_Space_012.top - Column_Space_011.bottom).assertEqual(vp2px(50));
+      expect(Column_Space_01.top).assertEqual(Column_Space_011.top);
+      expect(Column_Space_013.bottom).assertEqual(Column_Space_01.bottom);
+      expect(Column_Space_011.bottom - Column_Space_011.top).assertEqual(vp2px(50));
+      expect(Column_Space_012.bottom - Column_Space_012.top).assertEqual(vp2px(100));
+      expect(Column_Space_013.bottom - Column_Space_013.top).assertEqual(vp2px(150));
+      expect(Column_Space_011.right - Column_Space_011.left).assertEqual(vp2px(300));
+      expect(Column_Space_012.right - Column_Space_012.left).assertEqual(vp2px(300));
+      expect(Column_Space_013.right - Column_Space_013.left).assertEqual(vp2px(300));
       console.info('[SUB_ACE_COLUMN_SPACE_TEST_0200] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_COLUMN_SPACE_TEST_0300
      * @tc.name      Column_Space
-     * @tc.desc      aceColumnSpaceTest
+     * @tc.desc      The value of space changes, and the layout size of the parent and child components is fixed
      */
     it('SUB_ACE_COLUMN_SPACE_TEST_0300', 0, async function (done) {
       console.info('[SUB_ACE_COLUMN_SPACE_TEST_0300] START');
       globalThis.value.message.notify({name:'addSpace', value:70});
       await CommonFunc.sleep(3000);
-      let Column_Sapace_011 = CommonFunc.getComponentRect('Column_Sapace_011');
-      let Column_Sapace_012 = CommonFunc.getComponentRect('Column_Sapace_012');
-      let Column_Sapace_013 = CommonFunc.getComponentRect('Column_Sapace_013');
-      let Column_Sapace_01 = CommonFunc.getComponentRect('Column_Sapace_01');
-      expect(Column_Sapace_011.left - Column_Sapace_01.left).assertEqual(Column_Sapace_01.right - Column_Sapace_011.right);
-      expect(Column_Sapace_012.left - Column_Sapace_01.left).assertEqual(Column_Sapace_01.right - Column_Sapace_012.right);
-      expect(Column_Sapace_013.left - Column_Sapace_01.left).assertEqual(Column_Sapace_01.right - Column_Sapace_013.right);
-      expect(Column_Sapace_012.top - Column_Sapace_011.bottom).assertEqual(Column_Sapace_013.top - Column_Sapace_012.bottom);
-      expect(Column_Sapace_012.top - Column_Sapace_011.bottom).assertEqual(vp2px(70));
-      expect(Column_Sapace_01.top).assertEqual(Column_Sapace_011.top);
-      expect(Column_Sapace_013.bottom).assertLarger(Column_Sapace_01.bottom);
-      expect(Column_Sapace_011.bottom - Column_Sapace_011.top).assertEqual(vp2px(50));
-      expect(Column_Sapace_012.bottom - Column_Sapace_012.top).assertEqual(vp2px(100));
-      expect(Column_Sapace_013.bottom - Column_Sapace_013.top).assertEqual(vp2px(150));
-      expect(Column_Sapace_011.right - Column_Sapace_011.left).assertEqual(vp2px(300));
-      expect(Column_Sapace_012.right - Column_Sapace_012.left).assertEqual(vp2px(300));
-      expect(Column_Sapace_013.right - Column_Sapace_013.left).assertEqual(vp2px(300));
+      let Column_Space_011 = CommonFunc.getComponentRect('Column_Space_011');
+      let Column_Space_012 = CommonFunc.getComponentRect('Column_Space_012');
+      let Column_Space_013 = CommonFunc.getComponentRect('Column_Space_013');
+      let Column_Space_01 = CommonFunc.getComponentRect('Column_Space_01');
+      expect(Column_Space_011.left - Column_Space_01.left).assertEqual(Column_Space_01.right - Column_Space_011.right);
+      expect(Column_Space_012.left - Column_Space_01.left).assertEqual(Column_Space_01.right - Column_Space_012.right);
+      expect(Column_Space_013.left - Column_Space_01.left).assertEqual(Column_Space_01.right - Column_Space_013.right);
+      expect(Column_Space_012.top - Column_Space_011.bottom).assertEqual(Column_Space_013.top - Column_Space_012.bottom);
+      expect(Column_Space_012.top - Column_Space_011.bottom).assertEqual(vp2px(70));
+      expect(Column_Space_01.top).assertEqual(Column_Space_011.top);
+      expect(Column_Space_013.bottom).assertLarger(Column_Space_01.bottom);
+      expect(Column_Space_011.bottom - Column_Space_011.top).assertEqual(vp2px(50));
+      expect(Column_Space_012.bottom - Column_Space_012.top).assertEqual(vp2px(100));
+      expect(Column_Space_013.bottom - Column_Space_013.top).assertEqual(vp2px(150));
+      expect(Column_Space_011.right - Column_Space_011.left).assertEqual(vp2px(300));
+      expect(Column_Space_012.right - Column_Space_012.left).assertEqual(vp2px(300));
+      expect(Column_Space_013.right - Column_Space_013.left).assertEqual(vp2px(300));
       console.info('[SUB_ACE_COLUMN_SPACE_TEST_0300] END');
       done();
     });

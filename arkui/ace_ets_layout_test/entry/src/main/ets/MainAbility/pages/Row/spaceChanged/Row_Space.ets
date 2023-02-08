@@ -33,13 +33,13 @@ struct Row_FlexPad_TextMarPad{
   }
   build(){
     Row({space:this.addSpace}){
-      Text('1').width(100).height(50).backgroundColor(0xF5DEB3).key('Row_Sapace_011')
-      Text('2').width(100).height(100).backgroundColor(0xD2B48C).key('Row_Sapace_012')
-      Text('3').width(100).height(150).backgroundColor(0xF5DEB3).key('Row_Sapace_013')
+      Text('1').width(100).height(50).backgroundColor(0xF5DEB3).key('Row_Space_011')
+      Text('2').width(100).height(100).backgroundColor(0xD2B48C).key('Row_Space_012')
+      Text('3').width(100).height(150).backgroundColor(0xF5DEB3).key('Row_Space_013')
     }
     .width(350)
     .height(200)
-    .key('Row_Sapace_01')
+    .key('Row_Space_01')
     .backgroundColor(0xAFEEEE)
   }
 }
