@@ -17,7 +17,9 @@ import {MessageManager,Callback} from './../../../../common/MessageManager';
 @Entry
 @Component
 struct AlignEnd_AddLayoutWeight {
-  @State OneLayoutWeight: number = 2
+  @State OneLayoutWeight1: number = 1;
+  @State OneLayoutWeight2: number = 1;
+  @State OneLayoutWeight3: number = 1;
   messageManager:MessageManager = new MessageManager()
   onPageShow() {
     console.info('AlignSpaceEvenly_AddLayoutWeight onPageShow');
@@ -26,9 +28,16 @@ struct AlignEnd_AddLayoutWeight {
     }
     let callback:Callback = (message:any) => {
       console.error('message = ' + message.name + "--" + message.value);
-      if (message.name == 'OneLayoutWeight') {
-        this.OneLayoutWeight = message.value;
+      if (message.name == 'OneLayoutWeight1') {
+        this.OneLayoutWeight1 = message.value;
       }
+      if (message.name == 'OneLayoutWeight2') {
+        this.OneLayoutWeight2 = message.value;
+      }
+      if (message.name == 'OneLayoutWeight3') {
+        this.OneLayoutWeight3 = message.value;
+      }
+
     }
     this.messageManager.registerCallback(callback);
   }
@@ -42,14 +51,31 @@ struct AlignEnd_AddLayoutWeight {
             .height(50)
             .backgroundColor(0xF5DEB3)
             .key("End_AddLayoutWeight_011")
-            .layoutWeight( this.OneLayoutWeight)
+            .layoutWeight( this.OneLayoutWeight1)
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("End_AddLayoutWeight_012")
+            .layoutWeight( this.OneLayoutWeight2)
           Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("End_AddLayoutWeight_013")
+            .layoutWeight( this.OneLayoutWeight3)
         }
         .key("End_AddLayoutWeight_01")
         .width(500)
         .height(200)
         .backgroundColor(0xAFEEEE)
+      Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
+        Text('1')
+          .width(150)
+          .height(50)
+          .backgroundColor(0xF5DEB3)
+          .key("End_AddLayoutWeight_021")
+          .layoutWeight( this.OneLayoutWeight1)
+        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("End_AddLayoutWeight_022")
+          .layoutWeight( this.OneLayoutWeight2)
+        Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("End_AddLayoutWeight_023")
+      }
+      .key("End_AddLayoutWeight_02")
+      .width(500)
+      .height(200)
+      .backgroundColor(0xAFEEEE)
       }
   }
 }

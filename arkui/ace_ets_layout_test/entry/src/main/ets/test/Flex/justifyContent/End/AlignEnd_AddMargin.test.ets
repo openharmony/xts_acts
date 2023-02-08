@@ -48,7 +48,8 @@ export default function AlignEnd_AddMargin() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0500
      * @tc.name      Align_End_Row_AddMargin
-     * @tc.desc      aceFlexAlignEndTest
+     * @tc.desc      The interface display where the child component is offset by the margin setting of the parent
+     * component
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0500', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0500] START');
@@ -69,6 +70,7 @@ export default function AlignEnd_AddMargin() {
       expect(End_AddMargin_012.left).assertEqual(End_AddMargin_011.right);
       expect(End_AddMargin_013.left).assertEqual(End_AddMargin_012.right);
       expect(End_AddMargin_013.right).assertEqual(End_AddMargin_01.right);
+      expect(End_AddMargin_01.left - End_AddMargin_01_Box.left).assertEqual(vp2px(20));
       expect(End_AddMargin_01.top - End_AddMargin_01_Box.top).assertEqual(vp2px(20));
       expect(End_AddMargin_011.left - End_AddMargin_01.left).assertEqual(vp2px(50));
       expect(End_AddMargin_011.bottom - End_AddMargin_011.top).assertEqual(vp2px(50));

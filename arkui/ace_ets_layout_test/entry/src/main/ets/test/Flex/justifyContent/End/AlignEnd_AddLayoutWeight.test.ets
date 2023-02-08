@@ -48,11 +48,13 @@ export default function AlignEnd_AddLayoutWeight() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1200
      * @tc.name      Align_End_Row_AddLayoutWeight
-     * @tc.desc      aceFlexAlignEndTest
+     * @tc.desc      The interface displays all subcomponents that set different layoutWeight properties
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1200', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1200] START');
-      globalThis.value.message.notify({name:'OneLayoutWeight', value:1})
+      globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
+      globalThis.value.message.notify({name:'OneLayoutWeight2', value:2})
+      globalThis.value.message.notify({name:'OneLayoutWeight3', value:2})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddLayoutWeight_01');
       let obj = JSON.parse(strJson);
@@ -70,13 +72,51 @@ export default function AlignEnd_AddLayoutWeight() {
       expect(End_AddLayoutWeight_012.right).assertEqual(End_AddLayoutWeight_013.left);
       expect(End_AddLayoutWeight_011.left).assertEqual(End_AddLayoutWeight_01.left);
       expect(End_AddLayoutWeight_013.right).assertEqual(End_AddLayoutWeight_01.right);
-      expect(End_AddLayoutWeight_011.right - End_AddLayoutWeight_011.left).assertEqual(vp2px(200));
-      expect(End_AddLayoutWeight_012.right - End_AddLayoutWeight_012.left).assertEqual(vp2px(150));
-      expect(End_AddLayoutWeight_013.right - End_AddLayoutWeight_013.left).assertEqual(vp2px(150));
+      expect(End_AddLayoutWeight_011.right - End_AddLayoutWeight_011.left).assertEqual(vp2px(100));
+      expect(End_AddLayoutWeight_012.right - End_AddLayoutWeight_012.left).assertEqual(vp2px(200));
+      expect(End_AddLayoutWeight_013.right - End_AddLayoutWeight_013.left).assertEqual(vp2px(200));
       expect(End_AddLayoutWeight_011.bottom - End_AddLayoutWeight_011.top).assertEqual(vp2px(50));
       expect(End_AddLayoutWeight_012.bottom - End_AddLayoutWeight_012.top).assertEqual(vp2px(100));
       expect(End_AddLayoutWeight_013.bottom - End_AddLayoutWeight_013.top).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1200] END');
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1600
+     * @tc.name      Align_End_Row_AddLayoutWeight
+     * @tc.desc      Some subcomponents are displayed with different layoutWeight properties
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1600', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1600] START');
+      globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
+      globalThis.value.message.notify({name:'OneLayoutWeight2', value:2})
+      globalThis.value.message.notify({name:'OneLayoutWeight3', value:2})
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('End_AddLayoutWeight_01');
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
+      let End_AddLayoutWeight_011 = CommonFunc.getComponentRect('End_AddLayoutWeight_021');
+      let End_AddLayoutWeight_012 = CommonFunc.getComponentRect('End_AddLayoutWeight_022');
+      let End_AddLayoutWeight_013 = CommonFunc.getComponentRect('End_AddLayoutWeight_023');
+      let End_AddLayoutWeight_01 = CommonFunc.getComponentRect('End_AddLayoutWeight_02');
+      expect(End_AddLayoutWeight_011.top).assertEqual(End_AddLayoutWeight_01.top);
+      expect(End_AddLayoutWeight_011.top).assertEqual(End_AddLayoutWeight_012.top);
+      expect(End_AddLayoutWeight_013.top).assertEqual(End_AddLayoutWeight_012.top);
+      expect(End_AddLayoutWeight_011.right).assertEqual(End_AddLayoutWeight_012.left);
+      expect(End_AddLayoutWeight_012.right).assertEqual(End_AddLayoutWeight_013.left);
+      expect(End_AddLayoutWeight_011.left).assertEqual(End_AddLayoutWeight_01.left);
+      expect(End_AddLayoutWeight_013.right).assertEqual(End_AddLayoutWeight_01.right);
+      let oneWidth = End_AddLayoutWeight_011.right - End_AddLayoutWeight_011.left;
+      let twoWidth = End_AddLayoutWeight_012.right - End_AddLayoutWeight_012.left;
+      expect(twoWidth / oneWidth).assertEqual(2);
+      expect(twoWidth + oneWidth).assertEqual(vp2px(350));
+      expect(End_AddLayoutWeight_013.right - End_AddLayoutWeight_013.left).assertEqual(vp2px(150));
+      expect(End_AddLayoutWeight_011.bottom - End_AddLayoutWeight_011.top).assertEqual(vp2px(50));
+      expect(End_AddLayoutWeight_012.bottom - End_AddLayoutWeight_012.top).assertEqual(vp2px(100));
+      expect(End_AddLayoutWeight_013.bottom - End_AddLayoutWeight_013.top).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1600] END');
       done();
     });
   })
