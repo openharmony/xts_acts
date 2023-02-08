@@ -36,7 +36,7 @@ struct button_testcase {
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
       Button('1.value', { type: ButtonType.Circle, stateEffect: this.stateEffect })
-        .fontSize(12)
+        .fontSize("12.00px")
         .fontWeight(FontWeight.Bold)
         .fontColor(0xCCCCCC)
         .height(40)

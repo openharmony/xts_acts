@@ -89,8 +89,8 @@ export default function textInputJsunit() {
       let strJson = getInspectorByKey('TextInput');
       console.info("[textInputTest03] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      console.info("[textInputTest03] fontColor:" + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual('#E6000000');
+      console.info("[textInputTest03] borderColor:" + obj.$attrs.borderColor);
+      expect(obj.$attrs.borderColor).assertEqual('#FF000000');
       done();
     });
 
@@ -99,7 +99,7 @@ export default function textInputJsunit() {
       try {
         var eventData = {
           data: {
-            "fontColor": Color.Red
+            "borderColor": Color.Red
           }
         }
         var innerEvent = {
@@ -115,7 +115,7 @@ export default function textInputJsunit() {
       let strJson = getInspectorByKey('TextInput');
       let obj = JSON.parse(strJson);
       console.info("[textInputTest04] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.fontColor).assertEqual('#E6000000');
+      expect(obj.$attrs.borderColor).assertEqual('#FF000000');
       done();
     });
 

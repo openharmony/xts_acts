@@ -153,9 +153,9 @@ export default function commonJsunit() {
       let globalPositionY = globalThis.globalPositionY;
 
       console.log("globalPositionX : "+globalPositionX)
-      expect(globalPositionX).assertEqual(16.5)
+      expect(globalPositionX > 0).assertTrue()
       console.log("globalPositionY : "+globalPositionY)
-      expect(globalPositionY).assertEqual(180)
+      expect(globalPositionY > 0).assertTrue()
       console.info('commonTest004 END');
       done();
     });

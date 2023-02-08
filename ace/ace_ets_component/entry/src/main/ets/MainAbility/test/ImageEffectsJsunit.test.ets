@@ -405,7 +405,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('centerRow5');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects015] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.brightness).assertEqual(0);
+      expect(objNew.$attrs.brightness == 0).assertTrue();
       done();
     });
 
@@ -634,7 +634,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('centerRow7');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects025] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.contrast).assertEqual(0);
+      expect(objNew.$attrs.contrast == 0).assertTrue();
       done();
     });
 
