@@ -2305,7 +2305,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         expect(!!tempWnd).assertTrue();
         await tempWnd.setWindowMode(ohosWindow.WindowMode.UNDEFINED).catch(async (err) => {
           console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
-          expect(err.code == 401).assertTrue();
+          expect(err.code == 1300002).assertTrue();
           await tempWnd.destroyWindow()
           console.log(msgStr + 'tempWnd.setWindowMode failed ' + 'finished');
           done();
@@ -2341,7 +2341,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
               console.log(msgStr + 'currentType: ' + tempType)
               console.error(msgStr + 'Failed to set the window mode. Cause: ' + JSON.stringify(err));
               try {
-                expect(err.code == 401).assertTrue();
+                expect(err.code == 1300002).assertTrue();
               } catch (error) {
                 console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
               }
