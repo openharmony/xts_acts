@@ -48,7 +48,7 @@ export default function AlignCenter_AddOffset() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0900
      * @tc.name      Align_Center_Row_AddOffset
-     * @tc.desc      aceFlexAlignCenterTest
+     * @tc.desc      The interface display of the component that sets the offset position when drawing
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0900', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0900] START');

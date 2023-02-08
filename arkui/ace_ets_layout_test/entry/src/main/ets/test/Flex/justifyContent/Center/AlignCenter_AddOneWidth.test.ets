@@ -48,7 +48,7 @@ export default function AlignCenter_AddOneWidth() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1300
      * @tc.name      Align_Center_Row_ChangeOneWidth
-     * @tc.desc      aceFlexAlignCenterTest
+     * @tc.desc      The interface is displayed when you change the spindle length (width) of the first subassembly
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1300', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1300] START');

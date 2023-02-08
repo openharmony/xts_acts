@@ -17,7 +17,7 @@ import {MessageManager,Callback} from './../../../../common/MessageManager';
 @Entry
 @Component
 struct AlignCenter_AddVisibility {
-  @State OneVisibility: number = Visibility.None
+  @State OneVisibility: number = Visibility.Visible;
   messageManager:MessageManager = new MessageManager()
   onPageShow() {
     console.info('AlignSpaceEvenly_AddVisibility onPageShow');

@@ -35,7 +35,6 @@ struct AlignCenter_AddOneMargin {
   @State justifyContent: FlexAlign = FlexAlign.Center
   build() {
     Column() {
-      Text('justifyContent:FlexAlign.Center').fontSize(9).fontColor(0xCCCCCC).width('90%')
       Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
         Text('1')
           .width(150)

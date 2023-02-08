@@ -48,7 +48,8 @@ export default function AlignCenter_AddPadding() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0300
      * @tc.name      Align_Center_Row_AddPadding
-     * @tc.desc      aceFlexAlignCenterTest
+     * @tc.desc      After subtracting the padding from the parent component layout space, the interface
+     * display that does not meet the spindle layout of the child component
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0300', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0300] START');
@@ -82,7 +83,8 @@ export default function AlignCenter_AddPadding() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0400
      * @tc.name      Align_Center_Row_AddPadding
-     * @tc.desc      aceFlexAlignCenterTest
+     * @tc.desc      After subtracting the padding from the parent component layout space, the interface that
+     * satisfies the spindle layout of the child component is displayed
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0400', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0400] START');

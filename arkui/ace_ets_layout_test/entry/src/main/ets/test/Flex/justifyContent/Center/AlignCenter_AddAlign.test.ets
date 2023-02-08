@@ -48,7 +48,7 @@ export default function AlignCenter_AddAlign() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0800
      * @tc.name      Align_Center_Row_AddAlign
-     * @tc.desc      aceFlexAlignCenterTest
+     * @tc.desc      Setting generic properties does not take effect, and owned properties take precedence
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0800', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0800] START');
