@@ -153,8 +153,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
 
       console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
-      await sleep(1000);
       listenerOnFlag = true;
+      await sleep(1000);
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
