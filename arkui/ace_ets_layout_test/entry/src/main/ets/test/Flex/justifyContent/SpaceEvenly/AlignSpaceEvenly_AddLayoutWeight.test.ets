@@ -48,7 +48,7 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200
      * @tc.name      Align_SpaceEvenly_Row_AddLayoutWeight
-     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     * @tc.desc      The interface displays all subcomponents that set different layoutWeight properties
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200] START');
@@ -84,7 +84,7 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300
      * @tc.name      Align_SpaceEvenly_Row_AddLayoutWeight
-     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     * @tc.desc      Some subcomponents are displayed with different layoutWeight properties
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300] START');

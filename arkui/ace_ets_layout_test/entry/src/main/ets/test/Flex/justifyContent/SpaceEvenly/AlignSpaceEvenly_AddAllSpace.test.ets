@@ -48,7 +48,8 @@ export default function AlignSpaceEvenly_AddAllSpace() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0600
      * @tc.name      Align_SpaceEvenly_Row_AddAllSpace
-     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     * @tc.desc      After setting margin, after subtracting the padding from the layout space of the parent component,
+     * the interface display of the spindle layout that does not meet the sub-component
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0600', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0600] START');
@@ -71,6 +72,7 @@ export default function AlignSpaceEvenly_AddAllSpace() {
       expect(SpaceEvenly_AddAllSpace_011.left - SpaceEvenly_AddAllSpace_01.left).assertEqual(vp2px(30));
       expect(SpaceEvenly_AddAllSpace_012.left).assertEqual(SpaceEvenly_AddAllSpace_011.right);
       expect(SpaceEvenly_AddAllSpace_013.left).assertEqual(SpaceEvenly_AddAllSpace_012.right);
+      expect(SpaceEvenly_AddAllSpace_01.left - SpaceEvenly_AddAllSpace_01_Box.left ).assertEqual(vp2px(10));
       expect(SpaceEvenly_AddAllSpace_01.top - SpaceEvenly_AddAllSpace_01_Box.top).assertEqual(vp2px(10));
       expect(SpaceEvenly_AddAllSpace_011.bottom - SpaceEvenly_AddAllSpace_011.top).assertEqual(vp2px(50));
       expect(SpaceEvenly_AddAllSpace_012.bottom - SpaceEvenly_AddAllSpace_012.top).assertEqual(vp2px(100));
@@ -84,7 +86,8 @@ export default function AlignSpaceEvenly_AddAllSpace() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0700
      * @tc.name      Align_SpaceEvenly_Row_AddAllSpace
-     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     * @tc.desc      After setting margin, the interface that satisfies the spindle layout of the child component is
+     * displayed after subtracting the padding from the layout space of the parent component
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0700', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0700] START');
@@ -105,6 +108,7 @@ export default function AlignSpaceEvenly_AddAllSpace() {
       expect(SpaceEvenly_AddAllSpace_011.top - SpaceEvenly_AddAllSpace_01.top).assertEqual(vp2px(20));
       expect(SpaceEvenly_AddAllSpace_01.right - SpaceEvenly_AddAllSpace_013.right).assertEqual(vp2px(22.5));
       expect(SpaceEvenly_AddAllSpace_011.left - SpaceEvenly_AddAllSpace_01.left).assertEqual(vp2px(22.5));
+      expect(SpaceEvenly_AddAllSpace_01.left - SpaceEvenly_AddAllSpace_01_Box.left).assertEqual(vp2px(10));
       expect(SpaceEvenly_AddAllSpace_01.top - SpaceEvenly_AddAllSpace_01_Box.top).assertEqual(vp2px(10));
       expect(SpaceEvenly_AddAllSpace_011.right - SpaceEvenly_AddAllSpace_011.left).assertEqual(vp2px(150));
       expect(SpaceEvenly_AddAllSpace_012.right - SpaceEvenly_AddAllSpace_012.left).assertEqual(vp2px(150));

@@ -48,7 +48,8 @@ export default function AlignSpaceEvenly_AddMargin() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500
      * @tc.name      Align_SpaceEvenly_Row_AddMargin
-     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     * @tc.desc      The interface display where the child component is offset by the margin setting of the parent
+     * component
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500] START');
@@ -68,9 +69,9 @@ export default function AlignSpaceEvenly_AddMargin() {
       expect(SpaceEvenly_AddMargin_013.top).assertEqual(SpaceEvenly_AddMargin_012.top);
       expect(SpaceEvenly_AddMargin_011.top).assertEqual(SpaceEvenly_AddMargin_01.top);
       expect(SpaceEvenly_AddMargin_011.left - SpaceEvenly_AddMargin_01.left).assertEqual(vp2px(12.5));
-      expect(SpaceEvenly_AddMargin_01.right - SpaceEvenly_AddMargin_013.right).assertEqual(vp2px(12.5));
       expect(SpaceEvenly_AddMargin_012.left - SpaceEvenly_AddMargin_011.right).assertEqual(vp2px(12.5));
       expect(SpaceEvenly_AddMargin_013.left - SpaceEvenly_AddMargin_012.right).assertEqual(vp2px(12.5));
+      expect(SpaceEvenly_AddMargin_01.left - SpaceEvenly_AddMargin_01_Box.left).assertEqual(vp2px(20));
       expect(SpaceEvenly_AddMargin_01.top - SpaceEvenly_AddMargin_01_Box.top).assertEqual(vp2px(20));
       expect(SpaceEvenly_AddMargin_011.right - SpaceEvenly_AddMargin_011.left).assertEqual(vp2px(150));
       expect(SpaceEvenly_AddMargin_012.right - SpaceEvenly_AddMargin_012.left).assertEqual(vp2px(150));

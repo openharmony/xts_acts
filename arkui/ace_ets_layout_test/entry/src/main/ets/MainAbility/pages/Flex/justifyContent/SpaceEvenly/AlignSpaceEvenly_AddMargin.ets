@@ -35,7 +35,6 @@ struct AlignSpaceEvenly_AddMargin {
   @State justifyContent: FlexAlign = FlexAlign.SpaceEvenly
   build() {
       Column() {
-        Text('justifyContent:FlexAlign.SpaceEvenly').fontSize(9).fontColor(0xCCCCCC).width('90%')
         Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
           Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key("SpaceEvenly_AddMargin_011")
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("SpaceEvenly_AddMargin_012")

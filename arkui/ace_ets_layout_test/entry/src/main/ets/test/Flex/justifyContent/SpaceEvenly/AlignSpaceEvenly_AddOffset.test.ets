@@ -48,7 +48,7 @@ export default function AlignSpaceEvenly_AddOffset() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0900
      * @tc.name      Align_SpaceEvenly_Row_AddOffset
-     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     * @tc.desc      The interface display of the component that sets the offset position when drawing
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0900', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0900] START');

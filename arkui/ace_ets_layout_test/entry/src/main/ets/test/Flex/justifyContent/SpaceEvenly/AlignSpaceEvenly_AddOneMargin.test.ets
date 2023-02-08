@@ -46,12 +46,13 @@ export default function AlignSpaceEvenly_AddOneMargin() {
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1400
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1500
      * @tc.name      Align_SpaceEvenly_Row_AddOneMargin
-     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     * @tc.desc      After setting margin for the first subcomponent, the layout of the parent component's spindle
+     * meets the interface display of the subcomponent's layout
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1400', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1400] START');
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1500', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1500] START');
       globalThis.value.message.notify({name:'OneMargin', value:20});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddOneMargin_01');
@@ -77,16 +78,17 @@ export default function AlignSpaceEvenly_AddOneMargin() {
       expect(SpaceEvenly_AddOneMargin_011.right - SpaceEvenly_AddOneMargin_011.left).assertEqual(vp2px(150));
       expect(SpaceEvenly_AddOneMargin_012.right - SpaceEvenly_AddOneMargin_012.left).assertEqual(vp2px(150));
       expect(SpaceEvenly_AddOneMargin_013.right - SpaceEvenly_AddOneMargin_013.left).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1400] END');
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1500] END');
       done();
     })
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1500
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1600
      * @tc.name      Align_SpaceEvenly_Row_AddOneMargin
-     * @tc.desc      aceFlexAlignSpaceEvenlyTest
+     * @tc.desc      After setting margin for the first subcomponent, the layout of the parent component's spindle does
+     * not meet the interface display of the subcomponent's layout
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1500', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1500] START');
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1600', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1600] START');
       globalThis.value.message.notify({name:'OneMargin', value:30});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddOneMargin_01');
@@ -112,7 +114,7 @@ export default function AlignSpaceEvenly_AddOneMargin() {
       expect(SpaceEvenly_AddOneMargin_011.right - SpaceEvenly_AddOneMargin_011.left).assertEqual(vp2px(440/3));
       expect(SpaceEvenly_AddOneMargin_012.right - SpaceEvenly_AddOneMargin_012.left).assertEqual(vp2px(440/3));
       expect(SpaceEvenly_AddOneMargin_013.right - SpaceEvenly_AddOneMargin_013.left).assertEqual(vp2px(440/3));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1500] END');
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1600] END');
       done();
     })
   })
