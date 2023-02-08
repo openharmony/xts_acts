@@ -48,7 +48,7 @@ export default function AlignStart_AddAlign() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0800
      * @tc.name      Align_Start_Row_AddAlign
-     * @tc.desc      aceFlexAlignStartTest
+     * @tc.desc      Setting generic properties does not take effect, and owned properties take precedence
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0800', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0800] START');

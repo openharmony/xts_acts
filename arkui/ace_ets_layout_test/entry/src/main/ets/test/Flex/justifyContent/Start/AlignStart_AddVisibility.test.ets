@@ -46,7 +46,7 @@ export default function AlignStart_AddVisibility() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000
      * @tc.name      Align_Start_Row_AddVisibility
-     * @tc.desc      aceFlexAlignStartTest
+     * @tc.desc      The subcomponent sets the visibility. None, the child components are hidden in the interface display
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000] START');
@@ -78,7 +78,8 @@ export default function AlignStart_AddVisibility() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100
      * @tc.name      Align_Start_Row_AddVisibility
-     * @tc.desc      aceFlexAlignStartTest
+     * @tc.desc      When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
+     * position
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100] START');
@@ -110,6 +111,44 @@ export default function AlignStart_AddVisibility() {
       expect(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top).assertEqual(vp2px(150));
       expect(Start_AddVisibility_012.left - Start_AddVisibility_01.left).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100] END');
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700
+     * @tc.name      Align_Start_Row_AddVisibility
+     * @tc.desc      The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
+     * interface display
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700] START');
+      globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Visible});
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('Start_AddVisibility_01');
+      let obj = JSON.parse(strJson);
+      let strJson2 = getInspectorByKey('Start_AddVisibility_011');
+      let obj2 = JSON.parse(strJson2);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+      expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
+      let Start_AddVisibility_011 = CommonFunc.getComponentRect('Start_AddVisibility_011');
+      let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
+      let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
+      let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
+      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_011.top);
+      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_013.top);
+      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_01.top);
+      expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_011.right);
+      expect(Start_AddVisibility_013.left).assertEqual(Start_AddVisibility_012.right);
+      expect(Start_AddVisibility_01.left).assertEqual(Start_AddVisibility_011.left);
+      expect(Start_AddVisibility_011.right - Start_AddVisibility_011.left).assertEqual(vp2px(150));
+      expect(Start_AddVisibility_012.right - Start_AddVisibility_012.left).assertEqual(vp2px(150));
+      expect(Start_AddVisibility_013.right - Start_AddVisibility_013.left).assertEqual(vp2px(150));
+      expect(Start_AddVisibility_011.bottom - Start_AddVisibility_011.top).assertEqual(vp2px(50));
+      expect(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top).assertEqual(vp2px(100));
+      expect(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top).assertEqual(vp2px(150));
+      expect(Start_AddVisibility_012.left - Start_AddVisibility_01.left).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700] END');
       done();
     });
   })

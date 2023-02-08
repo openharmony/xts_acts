@@ -48,7 +48,8 @@ export default function AlignStart_NoSpace() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0100
      * @tc.name      Align_Start_Row_ChangeWidth
-     * @tc.desc      aceFlexAlignStartTest
+     * @tc.desc      The parent component layout space does not meet the interface display of the spindle layout of
+     * the child component
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0100', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0100] START');
@@ -82,7 +83,8 @@ export default function AlignStart_NoSpace() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0200
      * @tc.name      Align_Start_Row_ChangeWidth
-     * @tc.desc      aceFlexAlignStartTest
+     * @tc.desc      The interface display where the parent component layout space satisfies the spindle layout of
+     * the child component
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0200', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0200] START');

@@ -48,7 +48,8 @@ export default function AlignStart_AddOneMargin() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1400
      * @tc.name      Align_Start_Row_AddOneMargin
-     * @tc.desc      aceFlexAlignStartTest
+     * @tc.desc      After setting margin for the first subcomponent, the layout of the parent component's spindle
+     * meets the interface display of the subcomponent's layout
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1400', 0, async function (done) {
       //await CommonFunc.sleep(2000);
@@ -82,7 +83,8 @@ export default function AlignStart_AddOneMargin() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1500
      * @tc.name      Align_Start_Row_AddOneMargin
-     * @tc.desc      aceFlexAlignStartTest
+     * @tc.desc      After setting margin for the first subcomponent, the layout of the parent component's spindle does
+     * not meet the interface display of the subcomponent's layout
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1500', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1500] START');

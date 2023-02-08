@@ -47,7 +47,8 @@ export default function AlignStart_AddAllSpace() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0600
      * @tc.name      Align_Start_Row_AddAllSpace
-     * @tc.desc      aceFlexAlignStartTest
+     * @tc.desc      After setting margin, after subtracting the padding from the layout space of the parent component,
+     * the interface display of the spindle layout that does not meet the sub-component
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0600', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0600] START');
@@ -71,6 +72,7 @@ export default function AlignStart_AddAllSpace() {
       expect( Start_AddAllSpace_011.left - Start_AddAllSpace_01.left ).assertEqual(vp2px(30));
       expect( Start_AddAllSpace_01.right - Start_AddAllSpace_013.right ).assertEqual(vp2px(30));
       expect( Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top ).assertEqual(vp2px(10));
+      expect( Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left ).assertEqual(vp2px(10));
       expect(Start_AddAllSpace_011.bottom - Start_AddAllSpace_011.top).assertEqual(vp2px(50));
       expect(Start_AddAllSpace_012.bottom - Start_AddAllSpace_012.top).assertEqual(vp2px(100));
       expect(Start_AddAllSpace_013.bottom - Start_AddAllSpace_013.top).assertEqual(vp2px(150));
@@ -83,7 +85,8 @@ export default function AlignStart_AddAllSpace() {
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0700
      * @tc.name      Align_Start_Row_AddAllSpace
-     * @tc.desc      aceFlexAlignStartTest
+     * @tc.desc      After setting margin, the interface that satisfies the spindle layout of the child component is
+     * displayed after subtracting the padding from the layout space of the parent component
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0700', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0700] START');
@@ -106,6 +109,7 @@ export default function AlignStart_AddAllSpace() {
       expect( Start_AddAllSpace_011.left - Start_AddAllSpace_01.left ).assertEqual(vp2px(20));
       expect( Start_AddAllSpace_01.right - Start_AddAllSpace_013.right ).assertEqual(vp2px(30));
       expect( Start_AddAllSpace_011.top - Start_AddAllSpace_01.top ).assertEqual(vp2px(20));
+      expect( Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left ).assertEqual(vp2px(10));
       expect( Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top ).assertEqual(vp2px(10));
       expect(Start_AddAllSpace_011.right - Start_AddAllSpace_011.left).assertEqual(vp2px(150));
       expect(Start_AddAllSpace_012.right - Start_AddAllSpace_012.left).assertEqual(vp2px(150));
