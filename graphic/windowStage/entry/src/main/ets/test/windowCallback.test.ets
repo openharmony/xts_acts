@@ -1494,7 +1494,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code) {
               console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
               try {
-                expect(err.code).assertEqual(1300001)
+                expect(err.code).assertEqual(1001)
               } catch (error) {
                 console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
               }
