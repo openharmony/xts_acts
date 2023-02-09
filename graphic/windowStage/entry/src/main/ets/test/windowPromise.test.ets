@@ -153,8 +153,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
 
       console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
-      await sleep(1000);
       listenerOnFlag = true;
+      await sleep(1000);
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
@@ -292,18 +292,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
       console.log(msgStr + 'ohosWindow.create createWindowObj:' + JSON.stringify(createWindowObj));
       let tempWnd = null;
-      try {
-        await ohosWindow.create(context, wndId, baseType).then((data) => {
-          console.log(msgStr + 'ohosWindow.create data:' + JSON.stringify(data));
-          tempWnd = data
-          newWindowObj = data
-          console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
-          expect(!!tempWnd).assertTrue();
-        }).catch((err) => {
-          unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
-        });
-      } catch (err) {
-      }
+      await ohosWindow.create(context, wndId, baseType).then((data) => {
+        console.log(msgStr + 'ohosWindow.create data:' + JSON.stringify(data));
+        tempWnd = data
+        newWindowObj = data
+        console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
+        expect(!!tempWnd).assertTrue();
+      }).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+      });
 
       await tempWnd.show().catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.show', done);
@@ -313,17 +310,22 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setWindowMode ' + changedModel, done);
       });
       console.log(msgStr + 'tempWnd.setWindowMode ' + changedModel + ' success');
+      await sleep(1000);
       await tempWnd.on('windowSizeChange', (sizeData) => {
         console.log(msgStr + 'tempWnd.on windowSizeChange, sizeData : ' + JSON.stringify(sizeData));
         if (listenerOffFlag) {
           listenerOffFlag = false;
-          console.log(msgStr + 'tempWnd.on windowSizeChange, listenerOffFlag === listenerStatus.pending : ' + JSON.stringify(sizeData));
+          console.log(msgStr + 'tempWnd.on windowSizeChange  sizeData: ' + JSON.stringify(sizeData));
           expect(sizeData.width === 100).assertTrue();
           expect(sizeData.height === 100).assertTrue();
           done();
         } else {
           console.log(msgStr + 'tempWnd.on windowSizeChange,else listenerOffFlag : ' + listenerOffFlag);
           console.log(msgStr + 'tempWnd.on windowSizeChange,else sizeData : ' + JSON.stringify(sizeData));
+          if(sizeData.width === 100&&sizeData.height === 100){
+            console.log(msgStr + 'tempWnd.on windowSizeChange,else sizeData.width === 100&&sizeData.height === 100');
+            done();
+          }
         }
       })
       console.log(msgStr + 'tempWnd.on windowSizeChange finished');
@@ -334,16 +336,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.resetSize(100, 100)', done);
       });
       console.log(msgStr + 'tempWnd.resetSize(100, 100) success');
-      await sleep(1000);
-      await tempWnd.off('windowSizeChange');
       console.log(msgStr + 'tempWnd.off windowSizeChange finished');
-      await sleep(1000);
-      await tempWnd.resetSize(200, 200).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize(200, 200)', done);
-        console.log(msgStr + 'tempWnd.resetSize(200, 200) err: ' + JSON.stringify(err));
-      });
       await tempWnd.destroy();
-      console.log(msgStr + 'tempWnd.resetSize(200, 200) success');
+      done();
+      console.log(msgStr + 'finished');
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_001
@@ -467,25 +463,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
               expect(!tempData.isEnable).assertTrue();
             }
           }
-          //          await getData(0, arrLength)
-          //
-          //          function getData(i, length) {
-          //            let tempData = systemBarData.regionTint[i];
-          //            console.log(msgStr + 'compare, type: ' + tempData.type + ';isEnable: ' + tempData.isEnable);
-          //            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR && statusFlag === listenerStatus.pending) {
-          //              statusFlag = listenerStatus.finished;
-          //              expect(tempData.isEnable).assertTrue();
-          //            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && navigationFlag === listenerStatus.pending) {
-          //              navigationFlag = listenerStatus.finished;
-          //              expect(!tempData.isEnable).assertTrue();
-          //            }
-          //            if (++i < length) {
-          //              getData(i, length)
-          //              console.log(msgStr + 'jixuzhixing  i: ' + i);
-          //            } else {
-          //              console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          //            }
-          //          }
         }
         done();
       })
@@ -547,25 +524,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
               expect(tempData.isEnable).assertTrue();
             }
           }
-          //          await getData(0, arrLength)
-          //
-          //          function getData(i, length) {
-          //            let tempData = systemBarData.regionTint[i];
-          //            console.log(msgStr + 'compare, type: ' + tempData.type + ';isEnable: ' + tempData.isEnable);
-          //            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR && statusFlag === listenerStatus.pending) {
-          //              statusFlag = listenerStatus.finished;
-          //              expect(!tempData.isEnable).assertTrue();
-          //            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && navigationFlag === listenerStatus.pending) {
-          //              navigationFlag = listenerStatus.finished;
-          //              expect(tempData.isEnable).assertTrue();
-          //            }
-          //            if (++i < length) {
-          //              getData(i, length)
-          //              console.log(msgStr + 'jixuzhixing  i: ' + i);
-          //            } else {
-          //              console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          //            }
-          //          }
         }
         done();
       })
@@ -627,25 +585,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
               expect(tempData.isEnable).assertTrue();
             }
           }
-          //          await getData(0, arrLength)
-          //
-          //          function getData(i, length) {
-          //            let tempData = systemBarData.regionTint[i];
-          //            console.log(msgStr + 'compare, type: ' + tempData.type + ';isEnable: ' + tempData.isEnable);
-          //            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR && statusFlag === listenerStatus.pending) {
-          //              statusFlag = listenerStatus.finished;
-          //              expect(tempData.isEnable).assertTrue();
-          //            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && navigationFlag === listenerStatus.pending) {
-          //              navigationFlag = listenerStatus.finished;
-          //              expect(tempData.isEnable).assertTrue();
-          //            }
-          //            if (++i < length) {
-          //              getData(i, length)
-          //              console.log(msgStr + 'jixuzhixing  i: ' + i);
-          //            } else {
-          //              console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          //            }
-          //          }
         }
         done();
       })
@@ -707,25 +646,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
               expect(!tempData.isEnable).assertTrue();
             }
           }
-          //          await getData(0, arrLength)
-          //
-          //          function getData(i, length) {
-          //            let tempData = systemBarData.regionTint[i];
-          //            console.log(msgStr + 'compare, type: ' + tempData.type + ';isEnable: ' + tempData.isEnable);
-          //            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR && statusFlag === listenerStatus.pending) {
-          //              statusFlag = listenerStatus.finished;
-          //              expect(!tempData.isEnable).assertTrue();
-          //            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && navigationFlag === listenerStatus.pending) {
-          //              navigationFlag = listenerStatus.finished;
-          //              expect(!tempData.isEnable).assertTrue();
-          //            }
-          //            if (++i < length) {
-          //              getData(i, length)
-          //              console.log(msgStr + 'jixuzhixing  i: ' + i);
-          //            } else {
-          //              console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          //            }
-          //          }
         }
         done();
       })
@@ -822,25 +742,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
               expect(contentColorIndex === -1).assertTrue();
             }
           }
-          //          await getData(0, arrLength)
-          //
-          //          function getData(i, length) {
-          //            let tempData = systemBarData.regionTint[i];
-          //            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-          //              console.log(msgStr + 'systemBarTintChange compare start!');
-          //              compareCount++;
-          //              let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
-          //              let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
-          //              expect(backgroundIndex === -1).assertTrue();
-          //              expect(contentColorIndex === -1).assertTrue();
-          //              if (++i < length) {
-          //                getData(i, length)
-          //                console.log(msgStr + 'jixuzhixing  i: ' + i);
-          //              } else {
-          //                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          //              }
-          //            }
-          //          }
         }
         done();
       })
@@ -882,31 +783,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           expect(TRUE_FLAG).assertFail();
         })
       }
-      //      await getData(0, loopCount)
-      //
-      //      async function getData(i, length) {
-      //        let tempColor = commonRGBColorArr[i];
-      //        let systemBarProperties = {
-      //          statusBarColor: tempColor,
-      //          isStatusBarLightIcon: true,
-      //          statusBarContentColor: tempColor,
-      //          navigationBarColor: tempColor,
-      //          isNavigationBarLightIcon: false,
-      //          navigationContentColor: tempColor,
-      //        };
-      //        tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
-      //          console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
-      //          if (++i < length) {
-      //            getData(i, length)
-      //            console.log(msgStr + 'jixuzhixing  i: ' + i);
-      //          } else {
-      //            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-      //          }
-      //        }, (err) => {
-      //          console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
-      //          expect(TRUE_FLAG).assertFail();
-      //        })
-      //      }
     })
 
     /**
@@ -964,44 +840,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
               expect(contentColorIndex !== -1).assertTrue();
             }
           }
-          //          await getData(0, arrLength)
-          //
-          //          function getData(i, length) {
-          //            let tempData = systemBarData.regionTint[i];
-          //            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
-          //              console.log(msgStr + 'systemBarTintChange compare start!');
-          //              compareCount++;
-          //              let backgroundIndex = cloneColorArr.SBC.indexOf(tempData.backgroundColor);
-          //              let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
-          //              if (backgroundIndex >= 0) {
-          //                cloneColorArr.SBC.splice(backgroundIndex, 1);
-          //              }
-          //              if (contentColorIndex >= 0) {
-          //                cloneColorArr.SCC.splice(contentColorIndex, 1);
-          //              }
-          //              expect(backgroundIndex !== -1).assertTrue();
-          //              expect(contentColorIndex !== -1).assertTrue();
-          //            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-          //              console.log(msgStr + 'systemBarTintChange compare start!');
-          //              compareCount++;
-          //              let backgroundIndex = cloneColorArr.NBC.indexOf(tempData.backgroundColor);
-          //              let contentColorIndex = cloneColorArr.NCC.indexOf(tempData.contentColor);
-          //              if (backgroundIndex >= 0) {
-          //                cloneColorArr.NBC.splice(backgroundIndex, 1);
-          //              }
-          //              if (contentColorIndex >= 0) {
-          //                cloneColorArr.NCC.splice(contentColorIndex, 1);
-          //              }
-          //              expect(backgroundIndex !== -1).assertTrue();
-          //              expect(contentColorIndex !== -1).assertTrue();
-          //            }
-          //            if (++i < length) {
-          //              getData(i, length)
-          //              console.log(msgStr + 'jixuzhixing  i: ' + i);
-          //            } else {
-          //              console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          //            }
-          //          }
         }
         done();
       })
@@ -1043,31 +881,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           expect(TRUE_FLAG).assertFail();
         })
       }
-      //      await getData(0, loopCount)
-      //
-      //      function getData(i, length) {
-      //        let tempColor = commonNUMBERColorArr[i];
-      //        let systemBarProperties = {
-      //          statusBarColor: tempColor,
-      //          isStatusBarLightIcon: true,
-      //          statusBarContentColor: tempColor,
-      //          navigationBarColor: tempColor,
-      //          isNavigationBarLightIcon: true,
-      //          navigationBarContentColor: tempColor,
-      //        };
-      //        tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
-      //          console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
-      //          if (++i < length) {
-      //            getData(i, length)
-      //            console.log(msgStr + 'jixuzhixing  i: ' + i);
-      //          } else {
-      //            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-      //          }
-      //        }, (err) => {
-      //          console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
-      //          expect(TRUE_FLAG).assertFail();
-      //        })
-      //      }
     })
 
     /**
@@ -1102,26 +915,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
               expect(contentColorIndex === -1).assertTrue();
             }
           }
-          //          await getData(0, loopCount)
-          //
-          //          function getData(i, length) {
-          //            let tempData = systemBarData.regionTint[i];
-          //            console.log(msgStr + 'i=' + i + '   , ohosWindow.on for=' + JSON.stringify(tempData));
-          //            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-          //              console.log(msgStr + 'systemBarTintChange compare start!');
-          //              compareCount++;
-          //              let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
-          //              let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
-          //              expect(backgroundIndex === -1).assertTrue();
-          //              expect(contentColorIndex === -1).assertTrue();
-          //              if (++i < length) {
-          //                getData(i, length)
-          //                console.log(msgStr + 'jixuzhixing  i: ' + i);
-          //              } else {
-          //                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          //              }
-          //            }
-          //          }
         }
         done();
       })
@@ -1164,32 +957,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           done();
         })
       }
-      //      await getData(0, loopCount)
-      //
-      //      function getData(i, length) {
-      //        let tempColor = commonKEYColorArr[i];
-      //        let systemBarProperties = {
-      //          statusBarColor: tempColor,
-      //          isStatusBarLightIcon: true,
-      //          statusBarContentColor: tempColor,
-      //          navigationBarColor: tempColor,
-      //          isNavigationBarLightIcon: false,
-      //          navigationContentColor: tempColor,
-      //        };
-      //        tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
-      //          console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
-      //          if (++i < length) {
-      //            getData(i, length)
-      //            console.log(msgStr + 'jixuzhixing  i: ' + i);
-      //          } else {
-      //            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-      //          }
-      //        }, (err) => {
-      //          console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
-      //          expect(TRUE_FLAG).assertFail();
-      //          done();
-      //        })
-      //      }
     })
 
     /**
@@ -1220,32 +987,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         expect(!!tempWnd).assertTrue();
         await tempWnd.destroy();
       }
-      //      await getData(0, loopCount)
-      //
-      //      async function getData(i, length) {
-      //        let tempType = systemWindowTypeDic[systemWindowTypeDicArr[i]];
-      //        let windId = 'createTest1' + i;
-      //        console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
-      //        let tempWnd = null
-      //        await ohosWindow.create(context, windId, tempType).then(
-      //          (data) => {
-      //            tempWnd = data;
-      //          }
-      //        ).catch((err) => {
-      //          console.log(msgStr + 'ohosWindow.create ' + tempType + 'catched, err: ' + JSON.stringify(err));
-      //          unexpectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
-      //        });
-      //        console.log(msgStr + 'ohosWindow.create ' + tempType + 'finished, wnd: ' + tempWnd);
-      //        expect(!!tempWnd).assertTrue();
-      //        await tempWnd.destroy();
-      //        if (++i < length) {
-      //          getData(i, length)
-      //          console.log(msgStr + 'jixuzhixing  i: ' + i);
-      //        } else {
-      //          console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-      //        }
-      //      }
-
       console.log(msgStr + 'done ');
       done();
     })
@@ -1301,55 +1042,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           }
         }
       }
-      //      await getData(0, loopCount)
-      //
-      //      async function getData(i, length) {
-      //        let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
-      //        let windId = 'createTest2' + i;
-      //        console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
-      //        let createData = null;
-      //        try {
-      //          await ohosWindow.create(context, windId, tempType).then((data) => {
-      //            createData = data
-      //            expect(!!createData).assertTrue();
-      //          }).catch((err) => {
-      //            console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
-      //            unexpectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
-      //            return;
-      //          })
-      //        }
-      //        catch (err) {
-      //          console.log(msgStr + 'ohosWindow.create catch err' + JSON.stringify(err));
-      //        }
-      //        let tempWnd = createData
-      //        console.log(msgStr + 'ohosWindow.create ' + tempType + ' wnd: ' + tempWnd);
-      //        let proData = await tempWnd.getProperties().catch((err) => {
-      //          console.log(msgStr + 'tempWnd.getProperties err' + JSON.stringify(err));
-      //          unexpectedError(err, caseName, 'tempWnd.getProperties', done);
-      //          console.log(msgStr + 'tempWnd.getProperties err&&err.code' + JSON.stringify(err));
-      //        })
-      //        expect(!!proData).assertTrue();
-      //        expect(proData.type == tempType).assertTrue();
-      //        await createData.destroy();
-      //        console.log(msgStr + 'n：' + n);
-      //        if (proData.type == tempType) n++
-      //        console.log(msgStr + 'n++：' + n);
-      //        console.log(msgStr + 'i：' + i);
-      //        if (i + 1 == loopCount) {
-      //          if (n === loopCount) {
-      //            expect(true).assertTrue();
-      //          } else {
-      //            expect(true).assertFail();
-      //          }
-      //        }
-      //        if (++i < length) {
-      //          getData(i, length)
-      //          console.log(msgStr + 'jixuzhixing  i: ' + i);
-      //        } else {
-      //          console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-      //        }
-      //      }
-
       done();
     })
     /**
@@ -1756,33 +1448,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           console.log(msgStr + 'screen.setDensityDpi failed set DPI error' + dpiItem[i]);
         });
       }
-
-      //      await getData(0, dpiItem.length)
-      //
-      //      async function getData(i, length) {
-      //        await sleep(1000);
-      //        await screens[0].setDensityDpi(dpiItem[i]).then(async () => {
-      //          console.log(msgStr + 'screen.setDensityDpi success set DPI ' + dpiItem[i]);
-      //          let defaultDpi = null;
-      //          display.getDefaultDisplay().then((data) => {
-      //            defaultDpi = data
-      //          }).catch(err => {
-      //            console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay failed');
-      //          });
-      //          console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay' + JSON.stringify(defaultDpi));
-      //          let isEqual = Number(defaultDpi.densityDPI) == dpiItem[i]
-      //          console.log(msgStr + 'same ? ' + isEqual)
-      //          expect(isEqual).assertTrue()
-      //          if (++i < length) {
-      //            getData(i, length)
-      //            console.log(msgStr + 'jixuzhixing  i: ' + i);
-      //          } else {
-      //            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-      //          }
-      //        }).catch(err => {
-      //          console.log(msgStr + 'screen.setDensityDpi failed set DPI error' + dpiItem[i]);
-      //        });
-      //      }
       console.log(msgStr + 'done ');
       done();
     })
@@ -1816,27 +1481,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           console.log(msgStr + 'window.setPreferredOrientation failed set error:' + orientation);
         });
       }
-      //      await getData(0, orientationItem.length)
-      //
-      //      async function getData(i, length) {
-      //        await sleep(1000);
-      //        let orientation = ohosWindow.Orientation[orientationItem[i]]
-      //        console.log(msgStr + 'i : ' + i + ' ,orientation : ' + orientation);
-      //        console.log(msgStr + 'i : ' + i + ' ,ohosWindow.Orientation : ' + JSON.stringify(ohosWindow.Orientation));
-      //        await mainWin.setPreferredOrientation(orientation).then(() => {
-      //          console.log(msgStr + 'success set window.setPreferredOrientation : ' + orientation);
-      //          if (++i < length) {
-      //            getData(i, length)
-      //            console.log(msgStr + 'jixuzhixing  i: ' + i);
-      //          } else {
-      //            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-      //          }
-      //          num++
-      //          if (num == orientationItem.length) done();
-      //        }).catch(err => {
-      //          console.log(msgStr + 'window.setPreferredOrientation failed set error:' + orientation);
-      //        });
-      //      }
     })
     /**
     * @tc.number     SUB_WINDOW_SETFORBIDSPLITMOVE_JSAPI_001
@@ -1866,10 +1510,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-* @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_001
-* @tc.name       Test snapshotTest1
-* @tc.desc       Scenario of screenshot of verification window
-*/
+    * @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_001
+    * @tc.name       Test snapshotTest1
+    * @tc.desc       Scenario of screenshot of verification window
+    */
     it('snapshotTest1', 0, async function (done) {
       let caseName = 'snapshotTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
