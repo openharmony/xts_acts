@@ -143,28 +143,27 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       function ohosWindowOn() {
         ohosWindow.on('systemBarTintChange', systembartintstate => {
           console.log(msgStr + 'ohosWindow.on  systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-          console.log(msgStr + 'ohosWindow.on  flagStatus : ' + JSON.stringify(flagStatus));
           if (flagStatus) {
+            console.log(msgStr + 'systembartintstate.regionTint[0].type : ' + JSON.stringify(systembartintstate.regionTint[0].type));
+            console.log(msgStr + 'systembartintstate.regionTint[0].isEnable : ' + JSON.stringify(systembartintstate.regionTint[0].isEnable));
             try {
               expect(!!systembartintstate).assertTrue();
-              expect(!!systembartintstate.regionTint).assertTrue();
+              expect(systembartintstate.regionTint[0].type == 3 && systembartintstate.regionTint[0].isEnable).assertTrue();
             } catch (error) {
               console.info(msgStr + `ohosWindow.on ${JSON.stringify(error)}`)
             }
-            console.log(msgStr + 'flagStatus || flagNav' + msgStr + 'ohosWindow.on systemBarTintChange regionTint:' + JSON.stringify(systembartintstate.regionTint));
             done();
           }
         })
       }
 
       let mainWnd = null;
-      console.log(msgStr + 'mainWnd = null');
       console.log(msgStr + 'windowStage = ' + JSON.stringify(windowStage));
 
       function getMainWindow() {
         return new Promise(function (resolve, reject) {
           windowStage.getMainWindow((err, data) => {
-            console.log(msgStr + 'getMainWindow data2' + JSON.stringify(data));
+            console.log(msgStr + 'getMainWindow data:' + JSON.stringify(data));
             if (err && err.code) {
               unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
             }
@@ -220,9 +219,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       function setSystemBarEnableStatus() {
         return new Promise(function (resolve, reject) {
           mainWnd.setSystemBarEnable(['status'], (err, data) => {
-            console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)===' + JSON.stringify(data));
+            console.log(msgStr + 'mainWnd.setSystemBarEnable status data===' + JSON.stringify(data));
             if (err && err.code) {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(err)===' + JSON.stringify(err));
+              console.log(msgStr + 'mainWnd.setSystemBarEnable status err===' + JSON.stringify(err));
               unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
             }
             try {
@@ -277,7 +276,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       function getMainWindow() {
         return new Promise(function (resolve, reject) {
           windowStage.getMainWindow((err, data) => {
-            console.log(msgStr + 'getMainWindow data2' + JSON.stringify(data));
+            console.log(msgStr + 'getMainWindow data:' + JSON.stringify(data));
             if (err && err.code) {
               unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
             }
@@ -1151,6 +1150,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }
 
       let tempWnd = null
+
       function getMainWindow() {
         return new Promise(function (resolve, reject) {
           windowStage.getMainWindow((err, data) => {
@@ -1494,7 +1494,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code) {
               console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
               try {
-                expect(err.code).assertEqual(1001)
+                expect(err.code).assertEqual(1300001)
               } catch (error) {
                 console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
               }
@@ -3236,18 +3236,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           return;
         }
         console.log(msgStr + 'snapshot success data:' + JSON.stringify(data));
-        mainWin.on('snapshot', (err, data) => {
-          if (err && err.code) {
-            console.log(msgStr + 'mainWin.on(snapshot)  err.code:' + JSON.stringify(err.code));
-            return;
-          }
-          mainWin.off('snapshot', (err, data) => {
-            if (err && err.code) {
-              console.log(msgStr + 'mainWin.off(snapshot) err.code:' + JSON.stringify(err.code));
-              return;
-            }
-          })
-        })
       })
       done();
     })
