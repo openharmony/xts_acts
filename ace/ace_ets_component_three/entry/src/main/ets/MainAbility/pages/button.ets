@@ -19,7 +19,7 @@ import events_emitter from '@ohos.emitter';
 @Component
 struct ButtonExample {
   @State buttonTypeValue: ButtonType = ButtonType.Normal;
-  @State fontSizeValue: number = 20;
+  @State fontSizeValue: string = "20.00px";
   @State fontColorValue: Color = Color.Black;
   @State text: string = '';
   @State onClickValue: boolean = false;

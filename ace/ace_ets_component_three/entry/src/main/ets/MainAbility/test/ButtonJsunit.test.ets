@@ -121,7 +121,7 @@ export default function buttonJsunit() {
       try {
         var eventData = {
           data: {
-            "fontSizeValue": 30,
+            "fontSizeValue": "30.00px",
           }
         }
         var innerEvent = {
@@ -147,7 +147,7 @@ export default function buttonJsunit() {
       try {
         var eventData = {
           data: {
-            "fontSizeValue": -1,
+            "fontSizeValue": "1.00px",
           }
         }
         var innerEvent = {
@@ -163,7 +163,7 @@ export default function buttonJsunit() {
       let strJsonNew = getInspectorByKey('button2');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testButton07] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('-1.00fp');
+      expect(objNew.$attrs.fontSize).assertEqual('1.00px');
       done();
     });
 
@@ -173,7 +173,7 @@ export default function buttonJsunit() {
       try {
         var eventData = {
           data: {
-            "fontSizeValue": "121212121",
+            "fontSizeValue": "40.00px",
           }
         }
         var innerEvent = {
@@ -189,7 +189,7 @@ export default function buttonJsunit() {
       let strJsonNew = getInspectorByKey('button2');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testButton08] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('121212121.00px');
+      expect(objNew.$attrs.fontSize).assertEqual('40.00px');
       done();
     });
 
@@ -199,7 +199,7 @@ export default function buttonJsunit() {
       try {
         var eventData = {
           data: {
-            "fontSizeValue": "121212121",
+            "fontSizeValue": "80.00px",
           }
         }
         var innerEvent = {
@@ -215,7 +215,7 @@ export default function buttonJsunit() {
       let strJsonNew = getInspectorByKey('button2');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testButton09] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('121212121.00px');
+      expect(objNew.$attrs.fontSize).assertEqual('80.00px');
       done();
     });
 
