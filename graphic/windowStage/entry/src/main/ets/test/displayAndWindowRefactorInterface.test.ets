@@ -253,7 +253,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         try {
           let ohosDataError = await ohosWindow.createWindow(windowConfig).catch(async (errSencond) => {
             console.log(msgStr + 'ohosWindow.createWindow 1 twice err: ' + JSON.stringify(errSencond));
-            expect(errSencond.code).assertEqual(1300002)
+            expect(errSencond.code).assertEqual(1300001)
             await ohosData.destroyWindow();
             done();
           })
@@ -434,7 +434,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           if (err && err.code) {
             console.log(msgStr + 'ohosWindow.createWindow 1 twice data: ' + JSON.stringify(dataTwo));
             try {
-              expect(err.code).assertEqual(1300002)
+              expect(err.code).assertEqual(1300001)
             } catch (error) {
               console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
             }

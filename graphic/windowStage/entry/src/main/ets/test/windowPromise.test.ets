@@ -1083,7 +1083,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       expect(!!ohosData).assertTrue();
       let ohosDataError = await ohosWindow.create(context, windowId, 1).catch((err) => {
         console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(1001)
+        expect(err.code).assertEqual(1300001)
         done();
       })
       await ohosData.destroy();
