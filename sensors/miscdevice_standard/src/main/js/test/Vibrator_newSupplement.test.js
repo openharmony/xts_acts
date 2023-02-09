@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 import vibrator from '@ohos.vibrator'
+import deviceInfo from '@ohos.deviceInfo'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function VibratorJsTest_misc_3() {
 describe("VibratorJsTest_misc_3", function () {
+    var g_execute = true;
      beforeAll(function () {
 
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
+        if (deviceInfo.deviceType == "tablet") {
+            g_execute = false;
+        }
     })
 
     afterAll(function () {
@@ -31,7 +36,7 @@ describe("VibratorJsTest_misc_3", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -39,7 +44,7 @@ describe("VibratorJsTest_misc_3", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -47,17 +52,17 @@ describe("VibratorJsTest_misc_3", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
 		vibrator.stop("preset");
         vibrator.stop("time");
         console.info('afterEach called')
     })
 
-    const OPERATION_FAIL_CODE = 14600101; 
+    const DEVICE_OPERATION_FAILED = 14600101; 
     const PERMISSION_ERROR_CODE = 201;
     const PARAMETER_ERROR_CODE = 401;
     
-    const OPERATION_FAIL_MSG = 'Device operation failed.'
+    const DEVICE_OPERATION_MSG = 'Device operation failed.'
     const PERMISSION_ERROR_MSG = 'Permission denied.'
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
 	
@@ -122,24 +127,30 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0310
      */
     it("VibratorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
-            type: "preset",
-            effectId: "haptic.clock.timer",
-            count: 1,
-        }, {
-            usage: "unknown"
-        }, (error)=>{
-            if (error) {
-                console.info('VibratorJsTest021 vibrator error');
-                expect(false).assertTrue();
-            } else {
-                console.info('VibratorJsTest021 vibrator success');
-                expect(true).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        });
+        if (g_execute) {
+            vibrator.vibrate({
+                type: "preset",
+                effectId: "haptic.clock.timer",
+                count: 1,
+            }, {
+                usage: "unknown"
+            }, (error)=>{
+                if (error) {
+                    console.info('VibratorJsTest021 vibrator error');
+                    expect(false).assertTrue();
+                } else {
+                    console.info('VibratorJsTest021 vibrator success');
+                    expect(true).assertTrue();
+                }
+                setTimeout(()=>{
+                    done();
+                }, 500);
+            });
+        } else {
+            console.info('VibratorJsTest021 vibrator success');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
     /*
@@ -180,30 +191,35 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0330
      */
     it("VibratorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        try {
-            vibrator.vibrate({
-                type: "preset",
-                effectId: "haptic.clock.timer",
-                count: 3,
-            }, {
-                usage: ""
-            }, (error)=>{
-                if (error) {
-                    expect(true).assertTrue();
-                } else {
-                    expect(false).assertTrue();
-                }
-                setTimeout(()=>{
-                    done();
-                }, 500);
-            });
-        } catch (error) {
-            console.info(error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        if (g_execute) {
+            try {
+                vibrator.vibrate({
+                    type: "preset",
+                    effectId: "haptic.clock.timer",
+                    count: 3,
+                }, {
+                    usage: ""
+                }, (error)=>{
+                    if (error) {
+                        expect(true).assertTrue();
+                    } else {
+                        expect(false).assertTrue();
+                    }
+                    setTimeout(()=>{
+                        done();
+                    }, 500);
+                });
+            } catch (error) {
+                console.info(error);
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done();
+            }
+        } else {
+            console.info('VibratorJsTest023 is not supported on this device');
+            expect(true).assertTrue();
             done();
         }
-        
     })
 
     /*
@@ -272,18 +288,24 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0370
      */
     it("VibratorJsTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        await vibrator.vibrate({
-            type: "preset",
-            effectId: "haptic.clock.timer",
-            count: 1,
-        }, {
-            usage: "unknown"
-        }).then(()=>{
+        if (g_execute) {
+            await vibrator.vibrate({
+                type: "preset",
+                effectId: "haptic.clock.timer",
+                count: 1,
+            }, {
+                usage: "unknown"
+            }).then(()=>{
+                expect(true).assertTrue();
+            }).catch((error)=>{
+                expect(false).assertTrue();
+            });
+            done();
+        } else {
+            console.info('VibratorJsTest027 is not supported on this device');
             expect(true).assertTrue();
-        }).catch((error)=>{
-            expect(false).assertTrue();
-        });
-        done();
+            done();
+        }
     })
 
     /*
@@ -320,24 +342,30 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0390
      */
     it("VibratorJsTest029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        try {
-            vibrator.vibrate({
-                type: "preset",
-                effectId: "haptic.clock.timer",
-                count: 3,
-            }, {
-                usage: ""
-            }).then(()=>{
-                expect(false).assertTrue();
+        if (g_execute) {
+            try {
+                vibrator.vibrate({
+                    type: "preset",
+                    effectId: "haptic.clock.timer",
+                    count: 3,
+                }, {
+                    usage: ""
+                }).then(()=>{
+                    expect(false).assertTrue();
+                    done();
+                }).catch((error)=>{
+                    expect(true).assertTrue();
+                    done();
+                });
+            } catch (error) {
+                console.info(error);
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
-            }).catch((error)=>{
-                expect(true).assertTrue();
-                done();
-            });
-        } catch (error) {
-            console.info(error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            }
+        } else {
+            console.info('VibratorJsTest029 is not supported on this device');
+            expect(true).assertTrue();
             done();
         }
     })
@@ -456,13 +484,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest032 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest032 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest032 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
     /*
@@ -509,12 +542,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest033 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest033 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest033 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
     /*
@@ -561,13 +600,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest034 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest034 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest034 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
     /*
@@ -613,13 +657,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest035 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest035 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest035 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
     /*
@@ -665,13 +714,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest036 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest036 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest036 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
     /*
@@ -718,13 +772,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest037 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest037 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest037 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
     /*
@@ -771,13 +830,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest038 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest038 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest038 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
     /*
@@ -824,13 +888,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest039 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest039 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest039 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 	    /*
      * @tc.name:VibratorJsTest040
@@ -895,25 +964,31 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0520
      */
     it("VibratorJsTest042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
-            type: "preset",
-            effectId: "haptic.clock.timer",
-            count: 1,
-        }, {
-			id:"xxx",
-            usage: "unknown"
-        }, (error)=>{
-            if (error) {
-                console.info('VibratorJsTest042 vibrator error');
-                expect(false).assertTrue();
-            } else {
-                console.info('VibratorJsTest042 vibrator success');
-                expect(true).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        });
+        if (g_execute) {
+            vibrator.vibrate({
+                type: "preset",
+                effectId: "haptic.clock.timer",
+                count: 1,
+            }, {
+                id:"xxx",
+                usage: "unknown"
+            }, (error)=>{
+                if (error) {
+                    console.info('VibratorJsTest042 vibrator error');
+                    expect(false).assertTrue();
+                } else {
+                    console.info('VibratorJsTest042 vibrator success');
+                    expect(true).assertTrue();
+                }
+                setTimeout(()=>{
+                    done();
+                }, 500);
+            });
+        } else {
+            console.info('VibratorJsTest042 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
     /*
@@ -1009,24 +1084,30 @@ describe("VibratorJsTest_misc_3", function () {
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0560
     */
     it("VibratorJsTest046", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.startVibration({
-            type: "preset",
-            effectId: "haptic.clock.timer",
-            count: 1,
-        }, {
-            usage: "unknown"
-        }, (error)=>{
-            if (error) {
-                console.info('VibratorJsTest046 vibrator error');
-                expect(false).assertTrue();
-            } else {
-                console.info('VibratorJsTest046 vibrator success');
-                expect(true).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        });
+        if (g_execute) {
+            vibrator.startVibration({
+                type: "preset",
+                effectId: "haptic.clock.timer",
+                count: 1,
+            }, {
+                usage: "unknown"
+            }, (error)=>{
+                if (error) {
+                    console.info('VibratorJsTest046 vibrator error');
+                    expect(false).assertTrue();
+                } else {
+                    console.info('VibratorJsTest046 vibrator success');
+                    expect(true).assertTrue();
+                }
+                setTimeout(()=>{
+                    done();
+                }, 500);
+            });
+        } else {
+            console.info('VibratorJsTest046 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
    /*
@@ -1066,23 +1147,29 @@ describe("VibratorJsTest_misc_3", function () {
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0580
     */
     it("VibratorJsTest048", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        try {
-            vibrator.startVibration({
-                type: "preset",
-                effectId: "haptic.clock.timer",
-                count: 3,
-            }, {
-                usage: ""
-            }, (error)=>{
-                expect(false).assertTrue();
-                setTimeout(()=>{
-                    done();
-                }, 500);
-            });
-        } catch (error) {
-            console.info("VibratorJsTest048 error :" + error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        if (g_execute) {
+            try {
+                vibrator.startVibration({
+                    type: "preset",
+                    effectId: "haptic.clock.timer",
+                    count: 3,
+                }, {
+                    usage: ""
+                }, (error)=>{
+                    expect(false).assertTrue();
+                    setTimeout(()=>{
+                        done();
+                    }, 500);
+                });
+            } catch (error) {
+                console.info("VibratorJsTest048 error :" + error);
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done();
+            }
+        } else {
+            console.info('VibratorJsTest048 is not supported on this device');
+            expect(true).assertTrue();
             done();
         }
     })
@@ -1158,20 +1245,26 @@ describe("VibratorJsTest_misc_3", function () {
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0620
     */
     it("VibratorJsTest052", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        await vibrator.startVibration({
-            type: "preset",
-            effectId: "haptic.clock.timer",
-            count: 1,
-        }, {
-            usage: "unknown"
-        }).then(()=>{
-			console.info("VibratorJsTest052 success");
+        if (g_execute) {
+            await vibrator.startVibration({
+                type: "preset",
+                effectId: "haptic.clock.timer",
+                count: 1,
+            }, {
+                usage: "unknown"
+            }).then(()=>{
+                console.info("VibratorJsTest052 success");
+                expect(true).assertTrue();
+            }).catch((error)=>{
+                console.info("VibratorJsTest052 error :" + error);
+                expect(false).assertTrue();
+            });
+            done();
+        } else {
+            console.info('VibratorJsTest052 is not supported on this device');
             expect(true).assertTrue();
-        }).catch((error)=>{
-			console.info("VibratorJsTest052 error :" + error);
-            expect(false).assertTrue();
-        });
-        done();
+            done();
+        }
     })
 
    /*
@@ -1210,26 +1303,32 @@ describe("VibratorJsTest_misc_3", function () {
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0640
     */
     it("VibratorJsTest054", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        try {
-            vibrator.startVibration({
-                type: "preset",
-                effectId: "haptic.clock.timer",
-                count: 3,
-            }, {
-                usage: ""
-            }).then(()=>{
-				console.info("VibratorJsTest054 success");
-                expect(false).assertTrue();
+        if (g_execute) {
+            try {
+                vibrator.startVibration({
+                    type: "preset",
+                    effectId: "haptic.clock.timer",
+                    count: 3,
+                }, {
+                    usage: ""
+                }).then(()=>{
+                    console.info("VibratorJsTest054 success");
+                    expect(false).assertTrue();
+                    done();
+                }).catch((error)=>{
+                    console.info("VibratorJsTest054 error :" + error);
+                    expect(true).assertTrue();
+                    done();
+                });
+            } catch (error) {
+                console.info("VibratorJsTest054 catch error :" + error);
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
-            }).catch((error)=>{
-				console.info("VibratorJsTest054 error :" + error);
-                expect(true).assertTrue();
-                done();
-            });
-        } catch (error) {
-            console.info("VibratorJsTest054 catch error :" + error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            }
+        } else {
+            console.info('VibratorJsTest054 is not supported on this device');
+            expect(true).assertTrue();
             done();
         }
     })
@@ -1326,9 +1425,9 @@ describe("VibratorJsTest_misc_3", function () {
                     usage: "unknown"
                 }, (error)=>{
                     if (error) {
-						console.info("VibratorJsTest057_1 error :" + error);
-                        expect(error.code).assertEqual(OPERATION_FAIL_CODE);
-                        expect(error.message).assertEqual(OPERATION_FAIL_MSG);
+                        console.info("VibratorJsTest057_1 error :" + error);
+                        expect(error.code).assertEqual(DEVICE_OPERATION_FAILED);
+                        expect(error.message).assertEqual(DEVICE_OPERATION_MSG);
                     } else {
                         expect(false).assertTrue();
                     }
@@ -1347,23 +1446,28 @@ describe("VibratorJsTest_misc_3", function () {
                 usage: "alarm"
             }, (error)=>{
                 if (error) {
-					console.info("VibratorJsTest057_2 error :" + error);
+                    console.info("VibratorJsTest057_2 error :" + error);
                     expect(false).assertTrue();
                     reject();
                 } else {
-					console.info("VibratorJsTest057_2 success");
+                    console.info("VibratorJsTest057_2 success");
                     expect(true).assertTrue();
                     resolve();
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest057 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest057 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest057 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
    /*
@@ -1382,10 +1486,10 @@ describe("VibratorJsTest_misc_3", function () {
                     usage: "unknown",
                 }, (error)=>{
                     if (error) {
-						console.info("VibratorJsTest058_1 error :" + error);
+                        console.info("VibratorJsTest058_1 error :" + error);
                         expect(false).assertTrue();
                     } else {
-						console.info("VibratorJsTest058_1 success");
+                        console.info("VibratorJsTest058_1 success");
                         expect(true).assertTrue();
                     }
                     setTimeout(()=>{
@@ -1403,22 +1507,28 @@ describe("VibratorJsTest_misc_3", function () {
                 usage: "alarm"
             }, (error)=>{
                 if (error) {
-					console.info("VibratorJsTest058 error :" + error);
+                    console.info("VibratorJsTest058 error :" + error);
                     expect(false).assertTrue();
                     reject();
                 } else {
-					console.info("VibratorJsTest058 success");
+                    console.info("VibratorJsTest058 success");
                     expect(true).assertTrue();
                     resolve();
                 }
             });
         })
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest058 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest058 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest058 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
    /*
@@ -1437,8 +1547,8 @@ describe("VibratorJsTest_misc_3", function () {
                     usage: "unknown",
                 }, (error)=>{
                     if (error) {
-                        expect(error.code).assertEqual(OPERATION_FAIL_CODE);
-                        expect(error.message).assertEqual(OPERATION_FAIL_MSG);
+                        expect(error.code).assertEqual(DEVICE_OPERATION_FAILED);
+                        expect(error.message).assertEqual(DEVICE_OPERATION_MSG);
                     } else {
                         expect(false).assertTrue();
                     }
@@ -1466,13 +1576,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest059 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest059 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest059 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
    /*
@@ -1490,8 +1605,8 @@ describe("VibratorJsTest_misc_3", function () {
                     usage: "alarm"
                 }, (error)=>{
                     if (error) {
-                        expect(error.code).assertEqual(OPERATION_FAIL_CODE);
-                        expect(error.message).assertEqual(OPERATION_FAIL_MSG);
+                        expect(error.code).assertEqual(DEVICE_OPERATION_FAILED);
+                        expect(error.message).assertEqual(DEVICE_OPERATION_MSG);
                     } else {
                         expect(false).assertTrue();
                     }
@@ -1519,13 +1634,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest060 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest060 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest060 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
    /*
@@ -1571,13 +1691,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest061 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest061 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest061 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
    /*
@@ -1624,13 +1749,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest062 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest062 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest062 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
    /*
     * @tc.name:VibratorJsTest063
@@ -1676,13 +1806,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest063 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest063 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest063 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
    /*
@@ -1701,8 +1836,8 @@ describe("VibratorJsTest_misc_3", function () {
                     usage: "unknown"
                 }, (error)=>{
                     if (error) {
-                        expect(error.code).assertEqual(OPERATION_FAIL_CODE);
-                        expect(error.message).assertEqual(OPERATION_FAIL_MSG);
+                        expect(error.code).assertEqual(DEVICE_OPERATION_FAILED);
+                        expect(error.message).assertEqual(DEVICE_OPERATION_MSG);
                     } else {
                         expect(false).assertTrue();
                     }
@@ -1730,13 +1865,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }
             });
         })
-
-        await promise.then(() =>{
-            return vibratePromise();
-        }, ()=>{
-            console.info("VibratorJsTest064 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return vibratePromise();
+            }, ()=>{
+                console.info("VibratorJsTest064 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest064 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
    /*
@@ -1807,13 +1947,18 @@ describe("VibratorJsTest_misc_3", function () {
                 }, 500);
             });
         })
-
-        await promise.then(() =>{
-            return stopPromise();
-        }, ()=>{
-            console.info("VibratorJsTest066 reject");
-        })
-        done();
+        if (g_execute) {
+            await promise.then(() =>{
+                return stopPromise();
+            }, ()=>{
+                console.info("VibratorJsTest066 reject");
+            })
+            done();
+        } else {
+            console.info('VibratorJsTest066 is not supported on this device');
+            expect(true).assertTrue();
+            done();
+        }
     })
 
    /*
