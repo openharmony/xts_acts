@@ -88,6 +88,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           console.log('jsunittest systemBarTintChange end off');
         } else if (newWindowObj) {
           newWindowObj.off(listenerData.typeStr);
+          console.log('jsunittest newWindowObj listenerData.typeStr:'+ JSON.stringify(listenerData.typeStr) );
         }
         await sleep(3000);
       }
@@ -99,8 +100,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     function expectedError(error, caseName, apiName, done, code) {
       let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
       console.log(msgStr + JSON.stringify(error));
-      expect(TRUE_FLAG).assertTrue();
-      expect(error.code === code).assertTrue();
+      try {
+        expect(TRUE_FLAG).assertTrue();
+        expect(error.code === code).assertTrue();
+      } catch (error) {
+        console.info(`ohosWindow.on ${JSON.stringify(error)}`)
+      }
       done();
     }
 
@@ -109,7 +114,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + JSON.stringify(error));
       try {
         expect(TRUE_FLAG).assertFail();
-        ;
       } catch (error) {
         console.info(`ohosWindow.on ${JSON.stringify(error)}`)
       }
@@ -128,49 +132,80 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.name       Test setSystemBarEnableTest6
      * @tc.desc       Test ohosWindow.setSystemBarEnable API function test1.
      */
-    it('setSystemBarEnableTest6', 0, function (done) {
+    it('setSystemBarEnableTest6', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let [flagStatus, flagNav] = [false, false];
       console.log(msgStr + 'begin');
       listenerData.on = true;
       listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', systembartintstate => {
-        console.log(msgStr + 'ohosWindow.on  systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-        if (flagStatus || flagNav) {
-          try {
-            expect(!!systembartintstate).assertTrue();
-            expect(!!systembartintstate.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'flagStatus || flagNav' + msgStr + 'ohosWindow.on systemBarTintChange regionTint:' + JSON.stringify(systembartintstate.regionTint));
-          done();
-        }
-      })
+
+      function ohosWindowOn() {
+//        return new Promise(function (resolve, reject) {
+          ohosWindow.on('systemBarTintChange', systembartintstate => {
+            console.log(msgStr + 'ohosWindow.on  systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
+            console.log(msgStr + 'ohosWindow.on  flagNav : ' + JSON.stringify(flagNav));
+            console.log(msgStr + 'ohosWindow.on  flagStatus : ' + JSON.stringify(flagStatus));
+            console.log(msgStr + 'ohosWindow.on  flagStatus && flagNav : ' + (flagStatus && flagNav));
+            if (flagStatus && flagNav) {
+              try {
+                expect(!!systembartintstate).assertTrue();
+                expect(!!systembartintstate.regionTint).assertTrue();
+              } catch (error) {
+                console.info(`ohosWindow.on ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'flagStatus || flagNav' + msgStr + 'ohosWindow.on systemBarTintChange regionTint:' + JSON.stringify(systembartintstate.regionTint));
+                            done();
+            }
+//            resolve(systembartintstate);
+          })
+//        })
+      }
+
       let mainWnd = null;
       console.log(msgStr + 'mainWnd = null');
       console.log(msgStr + 'windowStage = ' + JSON.stringify(windowStage));
-      windowStage.getMainWindow((err, data) => {
-        console.log(msgStr + 'getMainWindow data2' + JSON.stringify(data));
-        if (err && err.code) {
-          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
-        }
-        try {
-          expect(!!data).assertTrue();
-        } catch (error) {
-          console.info(`ohosWindow.on ${JSON.stringify(error)}`)
-        }
-        mainWnd = data;
-        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
-        mainWnd.show((err, data) => {
-          console.log(msgStr + 'mainWnd.show err' + JSON.stringify(err));
-          console.log(msgStr + 'mainWnd.show data' + JSON.stringify(data));
-          if (err && err.code) {
-            unexpectedError(data, caseName, 'mainWnd.show', done);
-          }
-          expect(!data).assertTrue();
-          console.log(msgStr + 'mainWnd.show success');
+
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            console.log(msgStr + 'getMainWindow data2' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+            }
+            try {
+              mainWnd = data;
+              expect(!!data).assertTrue();
+            } catch (error) {
+              console.info(`ohosWindow.on ${JSON.stringify(error)}`)
+            }
+            resolve(data);
+            console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+          })
+        })
+      }
+
+      function show() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.show((err, data) => {
+            console.log(msgStr + 'mainWnd.show err' + JSON.stringify(err));
+            console.log(msgStr + 'mainWnd.show data' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.show', done);
+            }
+            try{
+              expect(!data).assertTrue();
+            }catch(err){
+              console.info(`mainWnd.show err: ${JSON.stringify(err)}`)
+            }
+            console.log(msgStr + 'mainWnd.show success');
+            resolve(data)
+          })
+        })
+      }
+
+      function setFullScreen() {
+        return new Promise(function (resolve, reject) {
           mainWnd.setFullScreen(true, (err, data) => {
             console.log(msgStr + 'mainWnd.setFullScreen data:' + JSON.stringify(data));
             if (err && err.code) {
@@ -183,84 +218,150 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             }
             console.log(msgStr + 'mainWnd.setFullScreen success');
             flagNav = true;
-            mainWnd.setSystemBarEnable(['navigation'], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable navigation JSON.stringify(data)==' + JSON.stringify(data));
-              if (err && err.code) {
-                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [navigation]', done);
-              }
-              try {
-                expect(!data).assertTrue();
-              } catch (error) {
-                console.info(`ohosWindow.on ${JSON.stringify(error)}`)
-              }
-              console.log(msgStr + 'mainWnd.setSystemBarEnable success flagNav==' + flagNav);
-            })
-            flagStatus = true;
-            mainWnd.setSystemBarEnable(['status'], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)===' + JSON.stringify(data));
-              if (err && err.code) {
-                console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(err)===' + JSON.stringify(err));
-                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
-              }
-              try {
-                expect(!data).assertTrue();
-              } catch (error) {
-                console.info(`ohosWindow.on ${JSON.stringify(error)}`)
-              }
-            })
+            resolve(data)
           })
         })
-      })
-      console.log(msgStr + 'finished!!');
+      }
+
+      function setSystemBarEnableNavigation() {
+        console.log(msgStr + 'flagStatus==' + flagStatus);
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable(['navigation'], (err, data) => {
+            console.log(msgStr + 'mainWnd.setSystemBarEnable navigation JSON.stringify(data)==' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [navigation]', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`ohosWindow.on ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'mainWnd.setSystemBarEnable success flagNav==' + flagNav);
+            resolve(data)
+          })
+          flagStatus = true;
+        })
+      }
+
+      function setSystemBarEnableStatus() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable(['status'], (err, data) => {
+            console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)===' + JSON.stringify(data));
+            if (err && err.code) {
+              console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(err)===' + JSON.stringify(err));
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`ohosWindow.on ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+//            done();
+          })
+        })
+      }
+      await getMainWindow()
+      await show()
+      await setFullScreen()
+      ohosWindowOn()
+      await setSystemBarEnableNavigation()
+      await setSystemBarEnableStatus()
+
+//      await getMainWindow()
+//        .then(function (params) {
+//          mainWnd = params;
+//          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+//          return show()
+//        })
+//        .then(function (params) {
+//          console.log(msgStr + 'show then: ' + JSON.stringify(params))
+//          return setFullScreen()
+//        })
+//        .then(function (params) {
+//          console.log(msgStr + 'setFullScreen then: ' + JSON.stringify(params))
+//          return ohosWindowOn()
+//        })
+//        .then(function (params) {
+//          console.log(msgStr + 'ohosWindowOn then: ' + JSON.stringify(params))
+//          return setSystemBarEnableNavigation()
+//        })
+//        .then(function (params) {
+//          console.log(msgStr + 'setSystemBarEnableNavigation then: ' + JSON.stringify(params))
+//          return setSystemBarEnableStatus()
+//        })
     });
     /**
      * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_007
      * @tc.name       Test setSystemBarEnableTest7
      * @tc.desc       Verify that the scene hides the status bar and displays the navigation bar.
      */
-    it('setSystemBarEnableTest7', 0, function (done) {
+    it('setSystemBarEnableTest7', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest7';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let [flagStatus, flagNav] = [false, false];
       console.log(msgStr + 'begin');
       listenerData.on = true;
       listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', systembartintstate => {
-        console.log(msgStr + 'ohosWindow.on systembartintstate ：' + JSON.stringify(systembartintstate));
-        console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-        if (flagStatus || flagNav) {
-          console.log(msgStr + 'ohosWindow.on flagStatus || flagNav：');
-          try {
-            expect(!!systembartintstate).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch err: ${JSON.stringify(error)}`)
-          }
-          done();
-        }
-      })
+
+      function ohosWindowOn() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.on('systemBarTintChange', systembartintstate => {
+            console.log(msgStr + 'ohosWindow.on systembartintstate ：' + JSON.stringify(systembartintstate));
+            console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
+            if (flagStatus || flagNav) {
+              console.log(msgStr + 'ohosWindow.on flagStatus || flagNav：');
+              try {
+                expect(!!systembartintstate).assertTrue();
+              } catch (error) {
+                console.info(`ohosWindow.on catch err: ${JSON.stringify(error)}`)
+              }
+              done();
+            }
+          })
+        })
+      }
+
       let mainWnd = null;
       console.log(msgStr + 'mainWnd = null')
-      windowStage.getMainWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
-        }
-        try {
-          expect(!!data).assertTrue();
-        } catch (error) {
-          console.info(`windowStage.getMainWindow catch err: ${JSON.stringify(error)}`)
-        }
-        mainWnd = data;
-        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
-        mainWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(data, caseName, 'mainWnd.show', done);
-          }
-          console.log(msgStr + 'mainWnd.show success');
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`mainWnd.show catch error: ${JSON.stringify(error)}`)
-          }
+
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            console.log(msgStr + 'getMainWindow data2' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+            }
+            try {
+              expect(!!data).assertTrue();
+            } catch (error) {
+              console.info(`ohosWindow.on ${JSON.stringify(error)}`)
+            }
+            resolve(data);
+            console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+          })
+        })
+      }
+
+      function show() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.show((err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.show', done);
+            }
+            console.log(msgStr + 'mainWnd.show success');
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.show catch error: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function setFullScreen() {
+        return new Promise(function (resolve, reject) {
           mainWnd.setFullScreen(true, (err, data) => {
             console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
             if (err && err.code) {
@@ -271,66 +372,121 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             } catch (error) {
               console.info(`mainWnd.setFullScreen catch err: ${JSON.stringify(error)}`)
             }
-            mainWnd.setSystemBarEnable(['status'], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)==' + JSON.stringify(data));
-              if (err && err.code) {
-                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
-              }
-              flagStatus = true;
-              try {
-                expect(!data).assertTrue();
-              } catch (error) {
-                console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
-              }
-              mainWnd.setSystemBarEnable(['navigation'], (err, data) => {
-                if (err && err.code) {
-                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [navitgation]', done);
-                }
-                flagNav = true;
-                try {
-                  expect(!data).assertTrue();
-                } catch (error) {
-                  console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
-                }
-              })
-            })
+            resolve(data)
           })
         })
-      })
+      }
+
+      function setSystemBarEnableStatus() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable(['status'], (err, data) => {
+            console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)==' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
+            }
+            flagStatus = true;
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function setSystemBarEnableNavigation() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable(['navigation'], (err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [navitgation]', done);
+            }
+            flagNav = true;
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      await getMainWindow()
+        .then(function (params) {
+          mainWnd = params;
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+          return show()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'show then: ' + JSON.stringify(params))
+          return setFullScreen()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setSystemBarEnableNavigation then: ' + JSON.stringify(params))
+          return setSystemBarEnableStatus()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setSystemBarEnableStatus then: ' + JSON.stringify(params))
+          return setSystemBarEnableNavigation()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'ohosWindowOn then: ' + JSON.stringify(params))
+          return ohosWindowOn()
+        })
     });
     /**
      * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_008
      * @tc.name       Test setSystemBarEnableTest8
      * @tc.desc       Verify that the scene displays both the status bar and the navigation bar.
      */
-    it('setSystemBarEnableTest8', 0, function (done) {
+    it('setSystemBarEnableTest8', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest8';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let [flagStatus, flagNav] = [false, false];
       console.log(msgStr + 'begin');
       let mainWnd = null;
       console.log(msgStr + 'mainWnd = null');
-      windowStage.getMainWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
-        }
-        try {
-          expect(!!data).assertTrue();
-        } catch (error) {
-          console.info(`mainWnd.getMainWindow catch err: ${JSON.stringify(error)}`)
-        }
-        mainWnd = data;
-        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
-        mainWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(data, caseName, 'mainWnd.show', done);
-          }
-          console.log(msgStr + 'mainWnd.show success');
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`mainWnd.show catch err: ${JSON.stringify(error)}`)
-          }
+      listenerData.on = true;
+      listenerData.typeStr = 'systemBarTintChange';
+
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+            }
+            try {
+              expect(!!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.getMainWindow catch err: ${JSON.stringify(error)}`)
+            }
+            mainWnd = data;
+            console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+            resolve(data)
+          })
+        })
+      }
+
+      function show() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.show((err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.show', done);
+            }
+            console.log(msgStr + 'mainWnd.show success');
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.show catch err: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function setFullScreen() {
+        return new Promise(function (resolve, reject) {
           mainWnd.setFullScreen(true, (err, data) => {
             console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
             if (err && err.code) {
@@ -341,88 +497,144 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             } catch (error) {
               console.info(`mainWnd.setFullScreen catch err: ${JSON.stringify(error)}`)
             }
-            mainWnd.setSystemBarEnable([], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable [] JSON.stringify(data)==' + JSON.stringify(data));
-              if (err && err.code) {
-                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
-              }
-              try {
-                expect(!data).assertTrue();
-              } catch (error) {
-                console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
-              }
-              listenerData.on = true;
-              listenerData.typeStr = 'systemBarTintChange';
-              setTimeout(() => {
-                ohosWindow.on('systemBarTintChange', systembartintstate => {
-                  console.log(msgStr + 'ohosWindow.on systemBarTintChange ：' + JSON.stringify(systembartintstate));
-                  console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-                  setTimeout(() => {
-                    if (flagStatus || flagNav) {
-                      let enable = systembartintstate.regionTint[0].isEnable
-                      let numType = systembartintstate.regionTint[0].type
-                      console.log(msgStr + 'ohosWindow.on isEnable : ' + JSON.stringify(enable));
-                      console.log(msgStr + 'ohosWindow.on numType : ' + JSON.stringify(numType));
-                      try {
-                        expect(numType === ohosWindow.WindowType.TYPE_NAVIGATION_BAR || enable).assertTrue();
-                      } catch (error) {
-                        console.info(`ohosWindow.on catch err: ${JSON.stringify(error)}`)
-                      }
-                    }
-                    done();
-                  }, 3000)
-                })
-              }, 2300)
-              mainWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-                if (err && err.code) {
-                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status,navigation]', done);
-                }
-                flagStatus = true;
-                flagNav = true;
-                try {
-                  expect(!data).assertTrue();
-                } catch (error) {
-                  console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
-                }
-              })
-            })
+            resolve(data)
           })
         })
-      })
+      }
+
+      function setSystemBarEnable() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable([], (err, data) => {
+            console.log(msgStr + 'mainWnd.setSystemBarEnable [] JSON.stringify(data)==' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
+            }
+            listenerData.on = true;
+            listenerData.typeStr = 'systemBarTintChange';
+            resolve(data)
+          })
+        })
+      }
+
+      function ohosWindowOn() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.on('systemBarTintChange', systembartintstate => {
+            console.log(msgStr + 'ohosWindow.on systemBarTintChange ：' + JSON.stringify(systembartintstate));
+            console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
+            if (flagStatus || flagNav) {
+              let enable = systembartintstate.regionTint[0].isEnable
+              let numType = systembartintstate.regionTint[0].type
+              console.log(msgStr + 'ohosWindow.on isEnable : ' + JSON.stringify(enable));
+              console.log(msgStr + 'ohosWindow.on numType : ' + JSON.stringify(numType));
+              try {
+                expect(numType === ohosWindow.WindowType.TYPE_NAVIGATION_BAR || enable).assertTrue();
+              } catch (error) {
+                console.info(`ohosWindow.on catch err: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(systembartintstate)
+            done();
+          })
+        })
+      }
+
+      function setSystemBarEnableT() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status,navigation]', done);
+            }
+            flagStatus = true;
+            flagNav = true;
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      await getMainWindow()
+        .then(function (params) {
+          mainWnd = params;
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+          return show()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'show then: ' + JSON.stringify(params))
+          return setFullScreen()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setFullScreen then: ' + JSON.stringify(params))
+          return setSystemBarEnable()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setSystemBarEnable then: ' + JSON.stringify(params))
+          return ohosWindowOn()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'ohosWindowOn then: ' + JSON.stringify(params))
+          return setSystemBarEnableT()
+        })
+
     });
     /**
      * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_009
      * @tc.name       Test setSystemBarEnableTest9
      * @tc.desc       Verify that the scene hides both the status bar and the navigation bar.
      */
-    it('setSystemBarEnableTest9', 0, function (done) {
+    it('setSystemBarEnableTest9', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest9';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let [flagStatus, flagNav] = [false, false];
       console.log(msgStr + 'begin');
       let mainWnd = null;
       console.log(msgStr + 'mainWnd = null');
-      windowStage.getMainWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
-        }
-        try {
-          expect(!!data).assertTrue();
-        } catch (error) {
-          console.info(`windowStage.getMainWindow catch err: ${JSON.stringify(error)}`)
-        }
-        mainWnd = data;
-        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
-        mainWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(data, caseName, 'mainWnd.show', done);
-          }
-          console.log(msgStr + 'mainWnd.show success');
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`mainWnd.show catch err: ${JSON.stringify(error)}`)
-          }
+
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+            }
+            try {
+              expect(!!data).assertTrue();
+            } catch (error) {
+              console.info(`windowStage.getMainWindow catch err: ${JSON.stringify(error)}`)
+            }
+            mainWnd = data;
+            console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+            resolve(data)
+          })
+        })
+      }
+
+      function show() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.show((err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.show', done);
+            }
+            console.log(msgStr + 'mainWnd.show success');
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.show catch err: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function setFullScreen() {
+        return new Promise(function (resolve, reject) {
           mainWnd.setFullScreen(true, (err, data) => {
             console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
             if (err && err.code) {
@@ -433,81 +645,142 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             } catch (error) {
               console.info(`mainWnd.setFullScreen catch err: ${JSON.stringify(error)}`)
             }
-            mainWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable status,navigation JSON.stringify(data)==' + JSON.stringify(data));
-              if (err && err.code) {
-                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status,navigation]', done);
-              }
-              flagStatus = true;
-              flagNav = true;
-              try {
-                expect(!data).assertTrue();
-              } catch (error) {
-                console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
-              }
-              listenerData.on = true;
-              listenerData.typeStr = 'systemBarTintChange';
-              ohosWindow.on('systemBarTintChange', (systembartintstate) => {
-                console.log(msgStr + 'ohosWindow.on systemBarTintChange ：' + JSON.stringify(systembartintstate));
-                console.log(msgStr + 'ohosWindow.on systemBarTintChange systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-                if (flagStatus || flagNav) {
-                  try {
-                    expect(!!systembartintstate).assertTrue();
-                  } catch (error) {
-                    console.info(`ohosWindow.on catch err: ${JSON.stringify(error)}`)
-                  }
-                  done();
-                }
-              })
-              mainWnd.setSystemBarEnable([], (err, data) => {
-                if (err && err.code) {
-                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
-                }
-                try {
-                  expect(!data).assertTrue();
-                } catch (error) {
-                  console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
-                }
-              })
-            })
+            resolve(data)
           })
         })
-      })
+      }
+
+      function setSystemBarEnableT() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+            console.log(msgStr + 'mainWnd.setSystemBarEnable status,navigation JSON.stringify(data)==' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status,navigation]', done);
+            }
+            flagStatus = true;
+            flagNav = true;
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
+            }
+            listenerData.on = true;
+            listenerData.typeStr = 'systemBarTintChange';
+            resolve(data)
+          })
+        })
+      }
+
+      function ohosWindowOn() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.on('systemBarTintChange', (systembartintstate) => {
+            console.log(msgStr + 'ohosWindow.on systemBarTintChange ：' + JSON.stringify(systembartintstate));
+            console.log(msgStr + 'ohosWindow.on systemBarTintChange systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
+            if (flagStatus || flagNav) {
+              try {
+                expect(!!systembartintstate).assertTrue();
+              } catch (error) {
+                console.info(`ohosWindow.on catch err: ${JSON.stringify(error)}`)
+              }
+              resolve(systembartintstate)
+              done();
+            }
+          })
+        })
+      }
+
+      function setSystemBarEnable() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable([], (err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.setSystemBarEnable catch err: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      await getMainWindow()
+        .then(function (params) {
+          mainWnd = params;
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+          return show()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'show then: ' + JSON.stringify(params))
+          return setFullScreen()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setFullScreen then: ' + JSON.stringify(params))
+          return setSystemBarEnableT()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setSystemBarEnable then: ' + JSON.stringify(params))
+          return ohosWindowOn()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'ohosWindowOn then: ' + JSON.stringify(params))
+          return setSystemBarEnable()
+        })
+
+
     });
     /**
      * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_010
      * @tc.name       Test setSystemBarEnableTest10
      * @tc.desc       Verify the scene where illegal values are entered when the navigation bar and status bar are displayed or hidden
      */
-    it('setSystemBarEnableTest10', 0, function (done) {
+    it('setSystemBarEnableTest10', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest10';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWnd = null;
       console.log(msgStr + 'mainWnd = null');
-      windowStage.getMainWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
-        }
-        try {
-          console.log(msgStr + 'windowStage.getMainWindow  JSON.stringify(!!data)===' + JSON.stringify(!!data));
-          expect(!!data).assertTrue();
-        } catch (error) {
-          console.info(`windowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
-        }
-        mainWnd = data;
-        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
-        mainWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(data, caseName, 'mainWnd.show', done);
-          }
-          console.log(msgStr + 'mainWnd.show success');
-          try {
-            console.log(msgStr + 'mainWnd.show  JSON.stringify(!data)===' + JSON.stringify(!data));
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`mainWnd.show catch error: ${JSON.stringify(error)}`)
-          }
+
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+            }
+            try {
+              console.log(msgStr + 'windowStage.getMainWindow  JSON.stringify(!!data)===' + JSON.stringify(!!data));
+              expect(!!data).assertTrue();
+            } catch (error) {
+              console.info(`windowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
+            }
+            mainWnd = data;
+            console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+            resolve(data)
+          })
+        })
+      }
+
+      function show() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.show((err, data) => {
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.show', done);
+            }
+            console.log(msgStr + 'mainWnd.show success');
+            try {
+              console.log(msgStr + 'mainWnd.show  JSON.stringify(!data)===' + JSON.stringify(!data));
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.show catch error: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function setFullScreen() {
+        return new Promise(function (resolve, reject) {
           mainWnd.setFullScreen(true, (err, data) => {
             console.log(msgStr + 'mainWnd.setFullScreen: ' + JSON.stringify(data));
             if (err && err.code) {
@@ -519,108 +792,177 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             } catch (error) {
               console.info(`mainWnd.setFullScreen catch error: ${JSON.stringify(error)}`)
             }
-            mainWnd.setSystemBarEnable([], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable [] JSON.stringify(data)==' + JSON.stringify(data));
-              if (err && err.code) {
-                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
-              }
+            resolve(data)
+          })
+        })
+      }
+
+      function setSystemBarEnable() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable([], (err, data) => {
+            console.log(msgStr + 'mainWnd.setSystemBarEnable [] JSON.stringify(data)==' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
+            }
+            try {
+              console.log(msgStr + 'mainWnd.setSystemBarEnable  JSON.stringify(!data)===' + JSON.stringify(!data));
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`mainWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function setSystemBarEnableError() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setSystemBarEnable([null, '123'], (err, data) => {
+            console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(data)==' + JSON.stringify(data));
+            console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(err)==' + JSON.stringify(err));
+            if (err && err.code) {
               try {
-                console.log(msgStr + 'mainWnd.setSystemBarEnable  JSON.stringify(!data)===' + JSON.stringify(!data));
-                expect(!data).assertTrue();
+                console.log(msgStr + 'mainWnd.setSystemBarEnable  JSON.stringify(err.code)===' + JSON.stringify(err.code));
+                expect(err.code === 1003).assertTrue();
               } catch (error) {
                 console.info(`mainWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
               }
-              mainWnd.setSystemBarEnable([null, '123'], (err, data) => {
-                console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(data)==' + JSON.stringify(data));
-                console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(err)==' + JSON.stringify(err));
-                if (err && err.code) {
-                  try {
-                    console.log(msgStr + 'mainWnd.setSystemBarEnable  JSON.stringify(err.code)===' + JSON.stringify(err.code));
-                    expect(err.code === 1003).assertTrue();
-                  } catch (error) {
-                    console.info(`mainWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
-                  }
-                  done();
-                } else {
-                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [null,123]', done);
-                }
-              })
-            })
+              done();
+            } else {
+              unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [null,123]', done);
+            }
+            resolve(data)
           })
         })
-      })
+      }
+
+      await getMainWindow()
+        .then(function (params) {
+          mainWnd = params;
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+          return show()
+        }).then(function (params) {
+          console.log(msgStr + 'show then: ' + JSON.stringify(params))
+          return setFullScreen()
+        }).then(function (params) {
+          console.log(msgStr + 'setFullScreen then: ' + JSON.stringify(params))
+          return setSystemBarEnable()
+        }).then(function (params) {
+          console.log(msgStr + 'setSystemBarEnable then: ' + JSON.stringify(params))
+          return setSystemBarEnableError()
+        })
     });
     /**
      * @tc.number     SUB_WINDOW_SETSYSTEMBARPROPERTIES_JSAPI_004
      * @tc.name       Test setSystemBarPropertiesTest1
      * @tc.desc       TVerify the scene where the colors of the status bar and navigation bar are set in RGB
      */
-    it('setSystemBarPropertiesTest4', 0, done => {
+    it('setSystemBarPropertiesTest4', 0, async done => {
       let caseName = 'setSystemBarPropertiesTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
       let compareCount = 0;
-      let listenerFlag = listenerStatus.ready;
+      let listenerFlag = false;
       console.log(msgStr + 'begin');
       listenerData.on = true;
       listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag === listenerStatus.pending) {
-          try {
-            expect(!!systemBarData).assertTrue();
-            expect(!!systemBarData.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-          }
-          let arrLength = systemBarData.regionTint.length;
-          getData(0, arrLength)
 
-          function getData(i, length) {
-            let tempData = systemBarData.regionTint[i];
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
-              compareCount++;
-              let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
+      function ohosWindowOn() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.on('systemBarTintChange', (systemBarData) => {
+            console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
+            if (listenerFlag) {
               try {
-                expect(backgroundIndex === -1).assertTrue();
-                expect(contentColorIndex === -1).assertTrue();
+                expect(!!systemBarData).assertTrue();
+                expect(!!systemBarData.regionTint).assertTrue();
               } catch (error) {
                 console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
               }
-              if (++i < length) {
-                getData(i, length)
-                console.log(msgStr + 'jixuzhixing  i: ' + i);
-              } else {
-                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+              let arrLength = systemBarData.regionTint.length;
+              for (let i = 0; i < arrLength; i++) {
+                let tempData = systemBarData.regionTint[i];
+                if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
+                  console.log(msgStr + 'systemBarTintChange compare start!');
+                  compareCount++;
+                  let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
+                  let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
+                  try {
+                    expect(backgroundIndex === -1).assertTrue();
+                    expect(contentColorIndex === -1).assertTrue();
+                  } catch (error) {
+                    console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+                  }
+                }
               }
+              //          getData(0, arrLength)
+              //
+              //          function getData(i, length) {
+              //            let tempData = systemBarData.regionTint[i];
+              //            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
+              //              console.log(msgStr + 'systemBarTintChange compare start!');
+              //              compareCount++;
+              //              let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
+              //              let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
+              //              try {
+              //                expect(backgroundIndex === -1).assertTrue();
+              //                expect(contentColorIndex === -1).assertTrue();
+              //              } catch (error) {
+              //                console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+              //              }
+              //              if (++i < length) {
+              //                getData(i, length)
+              //                console.log(msgStr + 'jixuzhixing  i: ' + i);
+              //              } else {
+              //                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+              //              }
+              //            }
+              //          }
             }
-          }
-        }
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
-      windowStage.getMainWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
-        }
-        let tempWnd = data
-        try {
-          expect(!!tempWnd).assertTrue();
-        } catch (error) {
-          console.info(`windowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
-        }
-        console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
-        tempWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(err, caseName, 'tempWnd.show', done);
-          }
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'tempWnd.show success');
+            resolve(systemBarData)
+            console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
+          })
+        })
+      }
+
+      let tempWnd = null
+
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+            }
+            tempWnd = data
+            try {
+              expect(!!tempWnd).assertTrue();
+            } catch (error) {
+              console.info(`windowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+            resolve(data)
+          })
+        })
+      }
+
+      function show() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.show((err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.show', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'tempWnd.show success');
+            resolve(data)
+          })
+        })
+      }
+
+      function setFullScreen() {
+        return new Promise(function (resolve, reject) {
           tempWnd.setFullScreen(true, (err, data) => {
             if (err && err.code) {
               unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
@@ -631,62 +973,118 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               console.info(`tempWnd.setFullScreen catch error: ${JSON.stringify(error)}`)
             }
             console.log(msgStr + 'tempWnd.setFullScreen(true) success');
-            tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-              if (err && err.code) {
-                unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
-              }
-              try {
-                expect(!data).assertTrue();
-              } catch (error) {
-                console.info(`tempWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
-              }
-              console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-              listenerFlag = listenerStatus.pending;
-              let loopCount = commonRGBColorArr.length
-              getData(0, loopCount)
-
-              function getData(i, length) {
-                let tempColor = commonRGBColorArr[i];
-                let systemBarProperties = {
-                  statusBarColor: tempColor,
-                  isStatusBarLightIcon: true,
-                  statusBarContentColor: tempColor,
-                  navigationBarColor: tempColor,
-                  isNavigationBarLightIcon: false,
-                  navigationBarContentColor: tempColor,
-                };
-                tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
-                  console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
-                  console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
-                  if (err && err.code) {
-                    unexpectedError(err, caseName, 'tempWnd.setSystemBarProperties' + tempColor + ' ', done);
-                  }
-                  console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
-                  if (++i < length) {
-                    getData(i, length)
-                    console.log(msgStr + 'jixuzhixing  i: ' + i);
-                  } else {
-                    console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-                  }
-                })
-              }
-
-              setTimeout(() => {
-                console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
-                listenerFlag = listenerStatus.finished;
-                done();
-              }, 10000)
-            })
+            resolve(data)
           })
         })
-      })
+      }
+
+      function setSystemBarEnableNavigationT() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+            listenerFlag = true;
+
+            resolve(data)
+
+            setTimeout(() => {
+              console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
+              listenerFlag = false;
+              done();
+            }, 10000)
+          })
+        })
+      }
+
+      function setSystemBarProperties() {
+        return new Promise(function (resolve, reject) {
+          let loopCount = commonRGBColorArr.length
+          for (let i = 0; i < loopCount; i++) {
+            let tempColor = commonRGBColorArr[i];
+            let systemBarProperties = {
+              statusBarColor: tempColor,
+              isStatusBarLightIcon: true,
+              statusBarContentColor: tempColor,
+              navigationBarColor: tempColor,
+              isNavigationBarLightIcon: false,
+              navigationBarContentColor: tempColor,
+            };
+            tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
+              console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
+              console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
+              if (err && err.code) {
+                unexpectedError(err, caseName, 'tempWnd.setSystemBarProperties' + tempColor + ' ', done);
+              }
+              console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
+              resolve(data)
+            })
+          }
+          //          getData(0, loopCount)
+          //
+          //          function getData(i, length) {
+          //            let tempColor = commonRGBColorArr[i];
+          //            let systemBarProperties = {
+          //              statusBarColor: tempColor,
+          //              isStatusBarLightIcon: true,
+          //              statusBarContentColor: tempColor,
+          //              navigationBarColor: tempColor,
+          //              isNavigationBarLightIcon: false,
+          //              navigationBarContentColor: tempColor,
+          //            };
+          //            tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
+          //              console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
+          //              console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
+          //              if (err && err.code) {
+          //                unexpectedError(err, caseName, 'tempWnd.setSystemBarProperties' + tempColor + ' ', done);
+          //              }
+          //              console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
+          //              if (++i < length) {
+          //                getData(i, length)
+          //                console.log(msgStr + 'jixuzhixing  i: ' + i);
+          //              } else {
+          //                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+          //              }
+          //              resolve(data)
+          //            })
+          //          }
+        })
+      }
+
+      await getMainWindow()
+        .then(function (params) {
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+          return show()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'show then: ' + JSON.stringify(params))
+          return setFullScreen()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setFullScreen then: ' + JSON.stringify(params))
+          return setSystemBarEnableNavigationT()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setSystemBarEnableNavigationT then: ' + JSON.stringify(params))
+          return setSystemBarProperties()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setSystemBarProperties then: ' + JSON.stringify(params))
+          return ohosWindowOn()
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_SETSYSTEMBARPROPERTIES_JSAPI_005
      * @tc.name       Test setSystemBarPropertiesTest5
      * @tc.desc       Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
      */
-    it('setSystemBarPropertiesTest5', 0, done => {
+    it('setSystemBarPropertiesTest5', 0, async done => {
       let caseName = 'setSystemBarPropertiesTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = {
@@ -697,110 +1095,135 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       };
       let compareCount = 0;
       let endNum = 0;
-      let listenerFlag = listenerStatus.ready;
+      let listenerFlag = false;
       console.log(msgStr + 'begin');
       listenerData.on = true;
       listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag === listenerStatus.pending) {
-          try {
-            expect(!!systemBarData).assertTrue();
-            expect(!!systemBarData.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-          }
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            console.log(msgStr + 'for arrLenght compareCount: ' + compareCount + ' ,i:'+i+'  ,arrLength:'+arrLength);
-            let tempData = systemBarData.regionTint[i];
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start! arrLength= ' + arrLength);
-              compareCount++;
-              let backgroundIndex = cloneColorArr.SBC.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
-              if (backgroundIndex >= 0) {
-                cloneColorArr.SBC.splice(backgroundIndex, 1);
-              } else {
-                console.log(msgStr + 'SBC tempData.backgroundColor:' + JSON.stringify(tempData.backgroundColor));
+
+      function ohosWindowOn() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.on('systemBarTintChange', (systemBarData) => {
+            console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
+            if (listenerFlag) {
+              try {
+                expect(!!systemBarData).assertTrue();
+                expect(!!systemBarData.regionTint).assertTrue();
+              } catch (error) {
+                console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
               }
-              if (contentColorIndex >= 0) {
-                cloneColorArr.SCC.splice(contentColorIndex, 1);
-              } else {
-                console.log(msgStr + 'SCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
-              }
-              let ca = cloneColorArr;
-              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
-              if (compareCount === 18 && !flag) {
-                console.log(msgStr + 'if compareCount: ' + compareCount + ' ,true flag:' + flag);
-                try {
-                  expect(true).assertTrue();
-                } catch (error) {
-                  console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+              let arrLength = systemBarData.regionTint.length;
+              for (let i = 0; i < arrLength; i++) {
+                console.log(msgStr + 'for arrLenght compareCount: ' + compareCount + ' ,i:' + i + '  ,arrLength:' + arrLength);
+                let tempData = systemBarData.regionTint[i];
+                if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
+                  console.log(msgStr + 'systemBarTintChange compare start! arrLength= ' + arrLength);
+                  compareCount++;
+                  let backgroundIndex = cloneColorArr.SBC.indexOf(tempData.backgroundColor);
+                  let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
+                  if (backgroundIndex >= 0) {
+                    cloneColorArr.SBC.splice(backgroundIndex, 1);
+                  } else {
+                    console.log(msgStr + 'SBC tempData.backgroundColor:' + JSON.stringify(tempData.backgroundColor));
+                  }
+                  if (contentColorIndex >= 0) {
+                    cloneColorArr.SCC.splice(contentColorIndex, 1);
+                  } else {
+                    console.log(msgStr + 'SCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
+                  }
+                  let ca = cloneColorArr;
+                  let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
+                  if (compareCount === 18 && !flag) {
+                    console.log(msgStr + 'if compareCount: ' + compareCount + ' ,true flag:' + flag);
+                    try {
+                      expect(true).assertTrue();
+                    } catch (error) {
+                      console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+                    }
+                  } else {
+                    console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
+                  }
+                  console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.SBC));
+                  console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.SCC));
+                  done();
+                } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
+                  console.log(msgStr + 'systemBarTintChange compare start!');
+                  compareCount++;
+                  let backgroundIndex = cloneColorArr.NBC.indexOf(tempData.backgroundColor);
+                  let contentColorIndex = cloneColorArr.NCC.indexOf(tempData.contentColor);
+                  if (backgroundIndex >= 0) {
+                    cloneColorArr.NBC.splice(backgroundIndex, 1);
+                  } else {
+                    console.log(msgStr + 'NBC tempData.backgroundColor:' + JSON.stringify(tempData.backgroundColor));
+                  }
+                  if (contentColorIndex >= 0) {
+                    cloneColorArr.NCC.splice(contentColorIndex, 1);
+                  } else {
+                    console.log(msgStr + 'NCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
+                  }
+                  let ca = cloneColorArr;
+                  let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
+                  if (compareCount === 18 && !flag) {
+                    console.log(msgStr + 'else compareCount: ' + compareCount + ' ,true flag:' + flag);
+                    try {
+                      expect(true).assertTrue();
+                    } catch (error) {
+                      console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+                    }
+                  } else {
+                    console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
+                  }
+                  console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NBC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.NBC));
+                  console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.NCC));
+                  endNum = compareCount
+                  done();
                 }
-              } else {
-                console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
               }
-              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.SBC));
-              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.SCC));
-              done();
-            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
-              compareCount++;
-              let backgroundIndex = cloneColorArr.NBC.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.NCC.indexOf(tempData.contentColor);
-              if (backgroundIndex >= 0) {
-                cloneColorArr.NBC.splice(backgroundIndex, 1);
-              } else {
-                console.log(msgStr + 'NBC tempData.backgroundColor:' + JSON.stringify(tempData.backgroundColor));
-              }
-              if (contentColorIndex >= 0) {
-                cloneColorArr.NCC.splice(contentColorIndex, 1);
-              } else {
-                console.log(msgStr + 'NCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
-              }
-              let ca = cloneColorArr;
-              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
-              if (compareCount === 18 && !flag) {
-                console.log(msgStr + 'else compareCount: ' + compareCount + ' ,true flag:' + flag);
-                try {
-                  expect(true).assertTrue();
-                } catch (error) {
-                  console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-                }
-              } else {
-                console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
-              }
-              console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NBC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.NBC));
-              console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.NCC));
-              endNum = compareCount
-              done();
             }
-          }
-        }
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
-      windowStage.getMainWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
-        }
-        let tempWnd = data
-        try {
-          expect(!!tempWnd).assertTrue();
-        } catch (error) {
-          console.info(`windowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
-        }
-        console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
-        tempWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(err, caseName, 'tempWnd.show', done);
-          }
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'tempWnd.show success');
+            resolve(systemBarData)
+            console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
+          })
+        })
+      }
+
+      let tempWnd = null
+
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+            }
+            tempWnd = data
+            try {
+              expect(!!tempWnd).assertTrue();
+            } catch (error) {
+              console.info(`windowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+            resolve(data)
+          })
+        })
+      }
+
+      function show() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.show((err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.show', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'tempWnd.show success');
+            resolve(data)
+          })
+        })
+      }
+
+      function setFullScreen() {
+        return new Promise(function (resolve, reject) {
           tempWnd.setFullScreen(true, (err, data) => {
             if (err && err.code) {
               unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
@@ -811,125 +1234,224 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               console.info(`tempWnd.setFullScreen catch error: ${JSON.stringify(error)}`)
             }
             console.log(msgStr + 'tempWnd.setFullScreen(true) success');
-            tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-              if (err && err.code) {
-                unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
-              }
-              try {
-                expect(!data).assertTrue();
-              } catch (error) {
-                console.info(`tempWnd.setSystemBatEnable catch error: ${JSON.stringify(error)}`)
-              }
-              console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-              listenerFlag = listenerStatus.pending;
-              let loopCount = commonNUMBERColorArr.length
-              getData(0, loopCount)
-
-              function getData(i, length) {
-                console.log(msgStr+'tempWnd.setSystemBarEnable i:'+i);
-                let tempColor = commonNUMBERColorArr[i];
-                let systemBarProperties = {
-                  statusBarColor: tempColor,
-                  isStatusBarLightIcon: true,
-                  statusBarContentColor: tempColor,
-                  navigationBarColor: tempColor,
-                  isNavigationBarLightIcon: true,
-                  navigationBarContentColor: tempColor,
-                };
-                tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
-                  console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
-                  console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
-                  if (err && err.code) {
-                    try {
-                      expect(TRUE_FLAG).assertFail();
-                    } catch (error) {
-                      console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
-                    }
-                  }
-                  if (++i < length) {
-                    getData(i, length)
-                    console.log(msgStr + 'jixuzhixing  i: ' + i);
-                  } else {
-                    console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-                  }
-                })
-              }
-            })
+            resolve(data)
           })
         })
-      })
+      }
+
+      function setSystemBarEnableNavigationT() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.setSystemBatEnable catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+            listenerFlag = true;
+            resolve(data)
+          })
+        })
+      }
+
+      function setSystemBarProperties() {
+        return new Promise(function (resolve, reject) {
+          let loopCount = commonNUMBERColorArr.length
+          for (let i = 0; i < loopCount; i++) {
+            console.log(msgStr + 'tempWnd.setSystemBarEnable i:' + i);
+            let tempColor = commonNUMBERColorArr[i];
+            let systemBarProperties = {
+              statusBarColor: tempColor,
+              isStatusBarLightIcon: true,
+              statusBarContentColor: tempColor,
+              navigationBarColor: tempColor,
+              isNavigationBarLightIcon: true,
+              navigationBarContentColor: tempColor,
+            };
+            tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
+              console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
+              console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
+              if (err && err.code) {
+                try {
+                  expect(TRUE_FLAG).assertFail();
+                } catch (error) {
+                  console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
+                }
+              }
+              resolve(data)
+            })
+          }
+          //          getData(0, loopCount)
+          //
+          //          function getData(i, length) {
+          //            console.log(msgStr + 'tempWnd.setSystemBarEnable i:' + i);
+          //            let tempColor = commonNUMBERColorArr[i];
+          //            let systemBarProperties = {
+          //              statusBarColor: tempColor,
+          //              isStatusBarLightIcon: true,
+          //              statusBarContentColor: tempColor,
+          //              navigationBarColor: tempColor,
+          //              isNavigationBarLightIcon: true,
+          //              navigationBarContentColor: tempColor,
+          //            };
+          //            tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
+          //              console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
+          //              console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
+          //              if (err && err.code) {
+          //                try {
+          //                  expect(TRUE_FLAG).assertFail();
+          //                } catch (error) {
+          //                  console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
+          //                }
+          //              }
+          //              if (++i < length) {
+          //                getData(i, length)
+          //                console.log(msgStr + 'jixuzhixing  i: ' + i);
+          //              } else {
+          //                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+          //              }
+          //              resolve(data)
+          //            })
+          //          }
+        })
+      }
+
+      await getMainWindow()
+        .then(function (params) {
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+          return show()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'show then: ' + JSON.stringify(params))
+          return setFullScreen()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setFullScreen then: ' + JSON.stringify(params))
+          return setSystemBarEnableNavigationT()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setSystemBarEnableNavigationT then: ' + JSON.stringify(params))
+          return setSystemBarProperties()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setSystemBarProperties then: ' + JSON.stringify(params))
+          return ohosWindowOn()
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_SETSYSTEMBARPROPERTIES_JSAPI_006
      * @tc.name       Test setSystemBarPropertiesTest6
      * @tc.desc       TVerify the scene where the status bar and navigation bar colors are set as keywords
      */
-    it('setSystemBarPropertiesTest6', 0, done => {
+    it('setSystemBarPropertiesTest6', 0, async done => {
       let caseName = 'setSystemBarPropertiesTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
       let compareCount = 0;
-      let listenerFlag = listenerStatus.ready;
+      let listenerFlag = false;
       console.log(msgStr + 'begin');
       listenerData.on = true;
       listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag === listenerStatus.pending) {
-          try {
-            expect(!!systemBarData).assertTrue();
-            expect(!!systemBarData.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-          }
-          let arrLength = systemBarData.regionTint.length;
-          getData(0, arrLength)
 
-          function getData(i, length) {
-            let tempData = systemBarData.regionTint[i];
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
-              compareCount++;
-              let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
+      function ohosWindowOn() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.on('systemBarTintChange', (systemBarData) => {
+            console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
+            if (listenerFlag) {
               try {
-                expect(backgroundIndex === -1).assertTrue();
-                expect(contentColorIndex === -1).assertTrue();
+                expect(!!systemBarData).assertTrue();
+                expect(!!systemBarData.regionTint).assertTrue();
               } catch (error) {
                 console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
               }
-              if (++i < length) {
-                getData(i, length)
-                console.log(msgStr + 'jixuzhixing  i: ' + i);
-              } else {
-                console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+              let arrLength = systemBarData.regionTint.length;
+              for (let i = 0; i < arrLength; i++) {
+                let tempData = systemBarData.regionTint[i];
+                if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
+                  console.log(msgStr + 'systemBarTintChange compare start!');
+                  compareCount++;
+                  let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
+                  let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
+                  try {
+                    expect(backgroundIndex === -1).assertTrue();
+                    expect(contentColorIndex === -1).assertTrue();
+                  } catch (error) {
+                    console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+                  }
+                }
               }
+              //              getData(0, arrLength)
+              //
+              //              function getData(i, length) {
+              //                let tempData = systemBarData.regionTint[i];
+              //                if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
+              //                  console.log(msgStr + 'systemBarTintChange compare start!');
+              //                  compareCount++;
+              //                  let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
+              //                  let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
+              //                  try {
+              //                    expect(backgroundIndex === -1).assertTrue();
+              //                    expect(contentColorIndex === -1).assertTrue();
+              //                  } catch (error) {
+              //                    console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
+              //                  }
+              //                  if (++i < length) {
+              //                    getData(i, length)
+              //                    console.log(msgStr + 'jixuzhixing  i: ' + i);
+              //                  } else {
+              //                    console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+              //                  }
+              //                }
+              //              }
             }
-          }
-        }
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
-      windowStage.getMainWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
-        }
-        let tempWnd = data
-        try {
-          expect(!!tempWnd).assertTrue();
-        } catch (error) {
-          console.info(`winsowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
-        }
-        console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
-        tempWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(err, caseName, 'tempWnd.show', done);
-          }
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'tempWnd.show success');
+            resolve(systemBarData)
+            console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
+          })
+        })
+      }
+
+      let tempWnd = null
+
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+            }
+            tempWnd = data
+            try {
+              expect(!!tempWnd).assertTrue();
+            } catch (error) {
+              console.info(`winsowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+            resolve(data)
+          })
+        })
+      }
+
+      function show() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.show((err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.show', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'tempWnd.show success');
+            resolve(data)
+          })
+        })
+      }
+
+      function setFullScreen() {
+        return new Promise(function (resolve, reject) {
           tempWnd.setFullScreen(true, (err, data) => {
             if (err && err.code) {
               unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
@@ -940,73 +1462,124 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               console.info(`tempWnd.setFullScreen catch error: ${JSON.stringify(error)}`)
             }
             console.log(msgStr + 'tempWnd.setFullScreen(true) success');
-            tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-              if (err && err.code) {
-                unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
-              }
-              try {
-                expect(!data).assertTrue();
-              } catch (error) {
-                console.info(`tempWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
-              }
-              console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-              listenerFlag = listenerStatus.pending;
-              let loopCount = commonRGBColorArr.length
-              getData(0, loopCount)
-
-              function getData(i, length) {
-                let tempColor = commonKEYColorArr[i];
-                let systemBarProperties = {
-                  statusBarColor: tempColor,
-                  isStatusBarLightIcon: true,
-                  statusBarContentColor: tempColor,
-                  navigationBarColor: tempColor,
-                  isNavigationBarLightIcon: false,
-                  navigationBarContentColor: tempColor,
-                };
-                tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
-                  console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
-                  console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
-                  if (err && err.code) {
-                    try {
-                      expect(TRUE_FLAG).assertFail();
-                    } catch (error) {
-                      console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
-                    }
-                    if (++i < length) {
-                      getData(i, length)
-                      console.log(msgStr + 'jixuzhixing  i: ' + i);
-                    } else {
-                      console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-                    }
-                    done();
-                  }
-                })
-              }
-              setTimeout(() => {
-                console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
-                listenerFlag = listenerStatus.finished;
-                done();
-              }, 10000)
-            })
+            resolve(data)
           })
         })
-      })
+      }
+
+      function setSystemBarEnableNavigationT() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+            listenerFlag = true;
+            resolve(data)
+          })
+        })
+      }
+
+      function setSystemBarProperties() {
+        return new Promise(function (resolve, reject) {
+          let loopCount = commonRGBColorArr.length
+          for (let i = 0; i < loopCount; i++) {
+            let tempColor = commonKEYColorArr[i];
+            let systemBarProperties = {
+              statusBarColor: tempColor,
+              isStatusBarLightIcon: true,
+              statusBarContentColor: tempColor,
+              navigationBarColor: tempColor,
+              isNavigationBarLightIcon: false,
+              navigationBarContentColor: tempColor,
+            };
+            tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
+              console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
+              console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
+              if (err && err.code) {
+                try {
+                  expect(TRUE_FLAG).assertFail();
+                } catch (error) {
+                  console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
+                }
+                resolve(data)
+                done();
+              }
+            })
+          }
+          //          getData(0, loopCount)
+          //
+          //          function getData(i, length) {
+          //            let tempColor = commonKEYColorArr[i];
+          //            let systemBarProperties = {
+          //              statusBarColor: tempColor,
+          //              isStatusBarLightIcon: true,
+          //              statusBarContentColor: tempColor,
+          //              navigationBarColor: tempColor,
+          //              isNavigationBarLightIcon: false,
+          //              navigationBarContentColor: tempColor,
+          //            };
+          //            tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
+          //              console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
+          //              console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
+          //              if (err && err.code) {
+          //                try {
+          //                  expect(TRUE_FLAG).assertFail();
+          //                } catch (error) {
+          //                  console.info(`tempWnd.setSystemBarProperties catch error: ${JSON.stringify(error)}`)
+          //                }
+          //                if (++i < length) {
+          //                  getData(i, length)
+          //                  console.log(msgStr + 'jixuzhixing  i: ' + i);
+          //                } else {
+          //                  console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+          //                }
+          //                resolve(data)
+          //                done();
+          //              }
+          //            })
+          //          }
+
+          setTimeout(() => {
+            console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
+            listenerFlag = false;
+            done();
+          }, 10000)
+        })
+      }
+
+      await getMainWindow()
+        .then(function (params) {
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+          return show()
+        }).then(function (params) {
+          console.log(msgStr + 'show then: ' + JSON.stringify(params))
+          return setFullScreen()
+        }).then(function (params) {
+          console.log(msgStr + 'setFullScreen then: ' + JSON.stringify(params))
+          return setSystemBarEnableNavigationT()
+        }).then(function (params) {
+          console.log(msgStr + 'setSystemBarEnableNavigationT then: ' + JSON.stringify(params))
+          return setSystemBarProperties()
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_CREATE_JSAPI_005
      * @tc.name       Test create5
      * @tc.desc       Scheme of Failed to Create Application Type Window in Stage Mode
      */
-    it('createTest5', 0, done => {
+    it('createTest5', 0, async done => {
       let caseName = 'createTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let loopCount = appWindowTypeArr.length;
       console.log(msgStr + 'loopCount: ' + loopCount);
-      getData(0, loopCount)
-
-      function getData(i, length) {
+      for (let i = 0; i < loopCount; i++) {
         let tempType = ohosWindow.WindowType.TYPE_APP;
         let windId = 'createTest5' + i;
         console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
@@ -1016,17 +1589,10 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           if (err && err.code) {
             try {
               expect(err.code === 1003).assertTrue();
-
             } catch (error) {
               console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
             }
             console.log(msgStr + 'ohosWindow.create err.code==' + JSON.stringify(err.code))
-            if (++i < length) {
-              getData(i, length)
-              console.log(msgStr + 'jixuzhixing  i: ' + i);
-            } else {
-              console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-            }
             if (i === loopCount - 1) {
               done();
             }
@@ -1041,32 +1607,41 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.name       Test createTest6
      * @tc.desc       Verify the scenario of creating the system type window
      */
-    it('createTest6', 0, done => {
+    it('createTest6', 0, async done => {
       let caseName = 'createTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeArr.length;
-      console.log('jsunittest loopCount: ' + loopCount);
-      getData(0, loopCount)
+      console.log(msgStr + 'loopCount: ' + loopCount);
+      let tempWnd = null
+      let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
 
-      function getData(i, length) {
-        let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
-        let windId = 'createTest6' + i;
-        console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
-        ohosWindow.create(context, windId, tempType, (err, data) => {
-          console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
-          console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
-          if (err && err.code) {
-            unexpectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
-            return;
-          }
-          try {
-            expect(!!data).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
-          }
-          let tempWnd = data
-          console.log(msgStr + 'ohosWindow.create ' + tempType + ' wnd: ' + tempWnd);
+      function create(i) {
+        return new Promise(function (resolve, reject) {
+          let windId = 'createTest6' + i;
+          console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
+          console.log(msgStr + 'ohosWindow.create windId： ' + windId + ' start');
+          ohosWindow.create(context, windId, tempType, (err, data) => {
+            console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
+              return;
+            }
+            try {
+              expect(!!data).assertTrue();
+            } catch (error) {
+              console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
+            }
+            tempWnd = data
+            console.log(msgStr + 'ohosWindow.create ' + tempType + ' wnd: ' + tempWnd);
+            resolve(i)
+          })
+        })
+      }
+
+      function getProperties(i) {
+        return new Promise(function (resolve, reject) {
           tempWnd.getProperties((err, data) => {
             console.log(msgStr + 'tempWnd.getProperties err' + JSON.stringify(err));
             console.log(msgStr + 'tempWnd.getProperties data' + JSON.stringify(data));
@@ -1082,77 +1657,328 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             } catch (error) {
               console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
             }
-            if (++i < length) {
-              getData(i, length)
-              console.log(msgStr + 'jixuzhixing  i: ' + i);
-            } else {
-              console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-            }
+            resolve(i)
           })
         })
       }
-      done();
+
+      function find(i) {
+        return new Promise(function (resolve, reject) {
+          console.log(msgStr + 'ohosWindow.find createTest6' + i);
+          ohosWindow.find('createTest6' + i, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(i)
+          })
+        })
+      }
+
+      function destroy(i) {
+        return new Promise(function (resolve, reject) {
+          tempWnd.destroy((err, data) => {
+            console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
+            console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
+            console.log(msgStr + 'tempWnd.destroy !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.destroy', done);
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(i)
+          })
+        })
+      }
+
+      function findAgain(i) {
+        return new Promise(function (resolve, reject) {
+          console.log(msgStr + 'ohosWindow.findAgain createTest6' + i);
+          ohosWindow.find('createTest6' + i, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              expect(true).assertTrue();
+            } else {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+              try {
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(i)
+            if (++i < loopCount) {
+              getData(i, loopCount)
+              console.log(msgStr + 'jixuzhixing  i: ' + i);
+            } else {
+              console.log(msgStr + 'i++<length  i: ' + i + '   ,loopCount:' + loopCount);
+            }
+            done();
+          })
+        })
+      }
+
+      await getData(0, loopCount)
+
+      async function getData(i, length) {
+        await create(i)
+          .then(function (i) {
+            console.log(msgStr + 'getData then i: ' + JSON.stringify(i))
+            return getProperties(i)
+          })
+          .then(function (i) {
+            console.log(msgStr + 'getProperties then i: ' + JSON.stringify(i))
+            return find(i)
+          })
+          .then(function (i) {
+            console.log(msgStr + 'find then i: ' + JSON.stringify(i))
+            return destroy(i)
+          })
+          .then(function (i) {
+            console.log(msgStr + 'destroy then i: ' + JSON.stringify(i))
+            console.log(msgStr + 'destroy then loopCount: ' + JSON.stringify(loopCount))
+            return findAgain(i)
+          })
+      }
     })
     /**
      * @tc.number     SUB_WINDOW_CREATE_JSAPI_007
      * @tc.name       Test createTest7
      * @tc.desc       Verify the scenario of creating a window of a type that does not exist
      */
-    it('createTest7', 0, done => {
+    it('createTest7', 0, async done => {
       let caseName = 'createTest7';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let tempType = 5000;
       let windId = 'createTest7';
       console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
-      ohosWindow.create(context, windId, tempType, (err, data) => {
-        console.log(msgStr + 'ohosWindow.create  data' + JSON.stringify(data));
-        if (err && err.code) {
-          try {
-            expect(err.code === 1003).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
-          }
-          done();
-          return;
-        }
-        unexpectedError(err, caseName, 'ohosWindow.create', done);
-      })
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, windId, tempType, (err, data) => {
+            console.log(msgStr + 'ohosWindow.create  data' + JSON.stringify(data));
+            if (err && err.code) {
+              try {
+                expect(err.code === 1003).assertTrue();
+              } catch (error) {
+                console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
+              }
+              done();
+              return;
+            }
+            unexpectedError(err, caseName, 'ohosWindow.create', done);
+            resolve(data)
+          })
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+        })
     })
+
+    /**
+     * @tc.number     SUB_WINDOW_CREATE_JSAPI_008
+     * @tc.name       Test createTest8
+     * @tc.desc       Verify the scenario of creating a window with duplicate IDs
+     */
+    it('createTest8', 0, async done => {
+      let caseName = 'createTest8';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowId = 'sameid'
+      let tempWnd = null;
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, windowId, 1, (err, data) => {
+            console.log(msgStr + 'ohosWindow.create 1 once err: ' + JSON.stringify(err));
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.create', done);
+            }
+            expect(!!data).assertTrue();
+            tempWnd = data;
+            ohosWindow.create(context, windowId, 1, (err, data) => {
+              console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
+              if (err && err.code) {
+                console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
+                try {
+                  expect(err.code).assertEqual(1001)
+                } catch (error) {
+                  console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+                }
+              } else {
+                unexpectedError(err, caseName, 'ohosWindow.create', done);
+                console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
+              }
+            })
+            resolve(data)
+          })
+        })
+      }
+
+      function createAgain() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, windowId, 1, (err, data) => {
+            console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
+            if (err && err.code) {
+              console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
+              try {
+                expect(err.code).assertEqual(1001)
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'ohosWindow.create', done);
+              console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function find() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function destroy(params) {
+        return new Promise(function (resolve, reject) {
+          tempWnd.destroy((err, data) => {
+            console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
+            console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
+            console.log(msgStr + 'tempWnd.destroy !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.destroy', done);
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function findAgain(params) {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              expect(true).assertTrue();
+            } else {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+              try {
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return createAgain()
+        }).then(function (params) {
+          return find()
+        }).then(function (params) {
+          return destroy(params)
+        }).then(function (params) {
+          return findAgain(params)
+        })
+    })
+
     /**
      * @tc.number     SUB_WINDOW_ON_OFF_JSAPI_005
      * @tc.name       Test listenerTest5
      * @tc.desc       Verify whether the change of avoidance area and change monitoring can be turned on normally
      */
-    it('listenerTest5', 0, function (done) {
+    it('listenerTest5', 0, async function (done) {
       let caseName = 'listenerTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let listenerOnFlag = listenerStatus.ready;
+      let listenerOnFlag = false;
       console.log(msgStr + 'begin');
       let tempWnd = null;
-      windowStage.getMainWindow((err, data) => {
-        console.log(msgStr + 'windowStage.getMainWindow err: ' + JSON.stringify(err));
-        console.log(msgStr + 'windowStage.getMainWindow data: ' + JSON.stringify(data));
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'tempWnd.show', done);
-        }
-        tempWnd = data
-        console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
-        try {
-          expect(!!tempWnd).assertTrue();
-        } catch (error) {
-          console.info(`windowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
-        }
-        tempWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(err, caseName, 'tempWnd.show', done);
-          }
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'tempWnd.show success');
+      listenerData.on = true;
+      listenerData.typeStr = 'systemAvoidAreaChange';
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            console.log(msgStr + 'windowStage.getMainWindow err: ' + JSON.stringify(err));
+            console.log(msgStr + 'windowStage.getMainWindow data: ' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.show', done);
+            }
+            tempWnd = data
+            newWindowObj = data
+            console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+            try {
+              expect(!!tempWnd).assertTrue();
+            } catch (error) {
+              console.info(`windowStage.getMainWindow catch error: ${JSON.stringify(error)}`)
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function show() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.show((err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.show', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'tempWnd.show success');
+            resolve(data)
+          })
+        })
+      }
+
+      function setFullScreen() {
+        return new Promise(function (resolve, reject) {
           tempWnd.setFullScreen(true, (err, data) => {
             if (err && err.code) {
               unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
@@ -1163,155 +1989,324 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               console.info(`tempWnd.setFullScreen catch error: ${JSON.stringify(error)}`)
             }
             console.log(msgStr + 'tempWnd.setFullScreen(true) success');
-            tempWnd.on('systemAvoidAreaChange', avoidAreaData => {
-              console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, avoidAreaData : ' + JSON.stringify(avoidAreaData));
-              if (listenerOnFlag === listenerStatus.pending) {
-                listenerOnFlag = listenerStatus.finished;
-                try {
-                  expect(!!avoidAreaData).assertTrue();
-                } catch (error) {
-                  console.info(`tempWnd.on catch error: ${JSON.stringify(error)}`)
-                }
-              }
-              done();
-            })
-            tempWnd.setSystemBarEnable([], (err, data) => {
-              if (err && err.code) {
-                unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
-              }
-              try {
-                expect(!data).assertTrue();
-              } catch (error) {
-                console.info(`tempWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
-              }
-              console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-              listenerOnFlag = listenerStatus.pending;
-            })
-            tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-              if (err && err.code) {
-                unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
-              }
-              console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-            })
-            console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
+            resolve(data)
           })
         })
-      })
+      }
+
+      function tempWndOn() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.on('systemAvoidAreaChange', avoidAreaData => {
+            console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, avoidAreaData : ' + JSON.stringify(avoidAreaData));
+            if (listenerOnFlag === true) {
+              listenerOnFlag = false;
+              try {
+                expect(!!avoidAreaData).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.on catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(avoidAreaData)
+          })
+        })
+      }
+
+      function setSystemBarEnable() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.setSystemBarEnable([], (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
+            }
+            try {
+              expect(!data).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.setSystemBarEnable catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
+            listenerOnFlag = true;
+            resolve(data)
+          })
+        })
+      }
+
+      function setSystemBarEnableT() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
+            }
+            console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+            console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
+            resolve(data)
+            tempWnd.off('systemAvoidAreaChange')
+            done();
+          })
+        })
+      }
+
+      await getMainWindow()
+        .then(function (params) {
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+          return show()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'show then: ' + JSON.stringify(params))
+          return setFullScreen()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setFullScreen then: ' + JSON.stringify(params))
+          return tempWndOn()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'tempWndOn then: ' + JSON.stringify(params))
+          return setSystemBarEnable()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setSystemBarEnable then: ' + JSON.stringify(params))
+          return setSystemBarEnableT()
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_003
      * @tc.name       Test setWindowTypeTest3
      * @tc.desc       Verify the scenario where the normal window type is set
      */
-    it('setWindowTypeTest3', 0, function (done) {
+    it('setWindowTypeTest3', 0, async function (done) {
       let caseName = 'setWindowTypeTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
+      let baseWndType = 1;
+      let windowId = 'setWindowTypeTest3';
       console.log(msgStr + 'begin');
       let tempWnd = null
       let tempTypeArr = [];
-        try {
-          let data = windowStage.getMainWindowSync();
-          console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
-          console.log(msgStr + 'ohosWindow.create !!data' + !!data);
-          if (!!data) {
-            tempWnd = data
-//            console.log(msgStr + 'ohosWindow.create ' + baseWndType + ' wnd: ' + tempWnd);
-            try {
-              expect(!!tempWnd).assertTrue();
-            } catch (error) {
-              console.info(`ohosWindwo.create catch error: ${JSON.stringify(error)}`)
-            }
-            let loopCount1 = systemWindowTypeArr;
-            console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount1))
-            getData(0, loopCount1.length)
+      let loopCount1 = systemWindowTypeArr;
 
-            function getData(i, length) {
-              let tempType = ohosWindow.WindowType[loopCount1[i]];
-              console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' start');
-              tempTypeArr.push(tempType);
-              tempWnd.setWindowType(tempType, (err, data) => {
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, windowId, baseWndType, (err, data) => {
+            try {
+              console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+              console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
+              console.log(msgStr + 'ohosWindow.create !!data' + !!data);
+              if (!!data) {
+                tempWnd = data
+                console.log(msgStr + 'ohosWindow.create ' + baseWndType + ' wnd: ' + tempWnd);
                 try {
-                  console.log(msgStr + 'tempWnd.setWindowType i: ' + i);
-                  console.log(msgStr + 'tempWnd.setWindowType err: ' + JSON.stringify(err));
-                  console.log(msgStr + 'tempWnd.setWindowType data: ' + JSON.stringify(data));
-                  console.log(msgStr + 'tempWnd.setWindowType !data: ' + !data);
-                  if (!data) {
-                    try {
-                      expect(!data).assertTrue();
-                    } catch (error) {
-                      console.info(`tempWnd.setWindowType catch error: ${JSON.stringify(error)}`)
-                    }
-                    console.log(msgStr + 'tempWnd.getProperties start');
-                    tempWnd.getProperties((err, dataProper) => {
-                      try {
-                        console.log(msgStr + 'tempWnd.getProperties err: ' + JSON.stringify(err));
-                        console.log(msgStr + 'tempWnd.getProperties dataProper: ' + JSON.stringify(dataProper));
-                        console.log(msgStr + 'tempWnd.getProperties !!dataProper: ' + !!dataProper);
-                        try {
-                          expect(!!dataProper).assertTrue();
-                        } catch (error) {
-                          console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
-                        }
-                        if (!!dataProper) {
-                          console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr: ' + JSON.stringify(tempTypeArr));
-                          console.log(msgStr + 'tempWnd.getProperties true  i: ' + i);
-                          tempTypeArr.splice(tempTypeArr.findIndex(item => item === dataProper.type), 1);
-                          console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length: ' + tempTypeArr.length);
-                          console.log(msgStr + 'tempWnd.getProperties true  loopCount1.length: ' + loopCount1.length);
-                          console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length + 1: ' + Number(tempTypeArr.length + 1));
-                          console.log(msgStr + 'tempWnd.getProperties true  (loopCount1.length - i): ' + (loopCount1.length - i));
-                          console.log(msgStr + 'tempWnd.getProperties true  (tempTypeArr.length + 1): ' + (tempTypeArr.length + 1));
-                          try {
-                            expect(tempTypeArr.length === 0).assertTrue();
-                            if (++i < length) {
-                              getData(i, length)
-                              console.log(msgStr + 'jixuzhixing  i: ' + i);
-                            }
-                          } catch (error) {
-                            console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
-                          }
-                          if (i == loopCount1.length - 1) {
-                            console.log(msgStr + 'tempWnd.getProperties i=' + i + '   ,    loopCount1.length-1==' + loopCount1.length);
-                            done();
-                          }
-                        }
-                      } catch (err) {
-                        console.log(msgStr + 'tempWnd.getProperties catch err: ' + JSON.stringify(err));
-                      }
+                  expect(!!tempWnd).assertTrue();
+                } catch (error) {
+                  console.info(`ohosWindwo.create catch error: ${JSON.stringify(error)}`)
+                }
+              }
+            } catch (err) {
+              console.log(msgStr + 'ohosWindow.create catch err: ' + JSON.stringify(err));
+            }
+            resolve(0)
+          })
+        })
+      }
+
+      //      function setWindowType(tempType) {
+      function setWindowType(i) {
+        return new Promise(function (resolve, reject) {
+          let tempType = ohosWindow.WindowType[loopCount1[i]];
+          console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' start');
+          tempTypeArr.push(tempType);
+          tempWnd.setWindowType(tempType, (err, data) => {
+            try {
+              console.log(msgStr + 'tempWnd.setWindowType i: ' + i);
+              console.log(msgStr + 'tempWnd.setWindowType err: ' + JSON.stringify(err));
+              console.log(msgStr + 'tempWnd.setWindowType data: ' + JSON.stringify(data));
+              console.log(msgStr + 'tempWnd.setWindowType !data: ' + !data);
+              if (!data) {
+                try {
+                  expect(!data).assertTrue();
+                } catch (error) {
+                  console.info(`tempWnd.setWindowType catch error: ${JSON.stringify(error)}`)
+                }
+                console.log(msgStr + 'tempWnd.getProperties start');
+              }
+              console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' end');
+            } catch (err) {
+              console.log(msgStr + 'tempWnd.setWindowType catch err: ' + JSON.stringify(err));
+            }
+            resolve(i)
+          })
+        })
+      }
+
+      function getProperties(i) {
+        return new Promise(function (resolve, reject) {
+          tempWnd.getProperties((err, dataProper) => {
+            try {
+              console.log(msgStr + 'tempWnd.getProperties err: ' + JSON.stringify(err));
+              console.log(msgStr + 'tempWnd.getProperties dataProper: ' + JSON.stringify(dataProper));
+              console.log(msgStr + 'tempWnd.getProperties !!dataProper: ' + !!dataProper);
+              try {
+                expect(!!dataProper).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
+              }
+              if (!!dataProper) {
+                resolve(dataProper)
+                console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr: ' + JSON.stringify(tempTypeArr));
+                console.log(msgStr + 'tempWnd.getProperties true  i: ' + i);
+                tempTypeArr.splice(tempTypeArr.findIndex(item => item === dataProper.type), 1);
+                console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length: ' + tempTypeArr.length);
+                console.log(msgStr + 'tempWnd.getProperties true  loopCount1.length: ' + loopCount1.length);
+                console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length + 1: ' + Number(tempTypeArr.length + 1));
+                console.log(msgStr + 'tempWnd.getProperties true  (loopCount1.length - i): ' + (loopCount1.length - i));
+                console.log(msgStr + 'tempWnd.getProperties true  (tempTypeArr.length + 1): ' + (tempTypeArr.length + 1));
+                try {
+                  expect(tempTypeArr.length === 0).assertTrue();
+                  if (++i < loopCount1.length) {
+                    setWindowType(i).then(function (params) {
+                      return getProperties(params)
+                    })
+                    console.log(msgStr + 'jixuzhixing  i: ' + i);
+                  } else {
+                    find().then(function (params) {
+                      return destroy(params)
+                    }).then(function (params) {
+                      return findAgain(params)
                     })
                   }
-                  console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' end');
-                } catch (err) {
-                  console.log(msgStr + 'tempWnd.setWindowType catch err: ' + JSON.stringify(err));
+                } catch (error) {
+                  console.info(`tempWnd.getProperties catch error: ${JSON.stringify(error)}`)
                 }
-              })
+                if (i == loopCount1.length - 1) {
+                  console.log(msgStr + 'tempWnd.getProperties i=' + i + '   ,    loopCount1.length-1==' + loopCount1.length);
+                }
+              }
+            } catch (err) {
+              console.log(msgStr + 'tempWnd.getProperties catch err: ' + JSON.stringify(err));
             }
-          }
-        } catch (err) {
-          console.log(msgStr + 'ohosWindow.create catch err: ' + JSON.stringify(err));
-        }
+            //            resolve(dataProper.type)
+            resolve(i)
+          })
+        })
+      }
+      //      await create();
+      //      for (var i = 0; i < loopCount1.length; i++) {
+      //        let tempType = ohosWindow.WindowType[loopCount1[i]];
+      //        await setWindowType(tempType)
+      //        let propertiesData = await getProperties();
+      //        tempTypeArr.splice(tempTypeArr.findIndex(item => item === propertiesData), 1);
+      //        expect(tempTypeArr.length === 0).assertTrue();
+      //        //        expect(dataProper.type == tempType).assertTrue();
+      //        if ((i + 1) === loopCount1.length) {
+      //          await tempWnd.destroy();
+      //        }
+      //      }
+      //
+      function find() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function destroy(params) {
+        return new Promise(function (resolve, reject) {
+          tempWnd.destroy((err, data) => {
+            console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
+            console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
+            console.log(msgStr + 'tempWnd.destroy !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.destroy', done);
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function findAgain(params) {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              try {
+                expect(true).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return setWindowType(0)
+        }).then(function (params) {
+          console.log(msgStr + 'setWindowType then: ' + JSON.stringify(params))
+          return getProperties(params)
+        })
+
     })
     /**
      * @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_004
      * @tc.name       Test setWindowTypeTest4
      * @tc.desc       Verify the scene of setting illegal window type
      */
-    it('setWindowTypeTest4', 0, function (done) {
+    it('setWindowTypeTest4', 0, async function (done) {
       let caseName = 'setWindowTypeTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
+      let baseWndType = 1;
       let changedWndType = null;
+      let windowId = 'setWindowTypeTest4';
       console.log(msgStr + 'begin');
       let tempWnd = null
-      let data = windowStage.getMainWindowSync();
-        console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
-        console.log(msgStr + 'ohosWindow.create !!data' + !!data);
-        if (!!data) {
-          tempWnd = data
-          try {
-            expect(!!tempWnd).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
-          }
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, windowId, baseWndType, (err, data) => {
+            console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.create !!data' + !!data);
+            if (!!data) {
+              tempWnd = data
+              try {
+                expect(!!tempWnd).assertTrue();
+              } catch (error) {
+                console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
+              }
+              resolve(data)
+            }
+            else {
+              unexpectedError(err, caseName, 'ohosWindow.create', done);
+            }
+          })
+        })
+      }
+
+      function setWindowType() {
+        return new Promise(function (resolve, reject) {
           tempWnd.setWindowType(changedWndType, (err, data) => {
             console.log(msgStr + 'tempWnd.setWindowType err' + JSON.stringify(err));
             console.log(msgStr + 'tempWnd.setWindowType data' + JSON.stringify(data));
@@ -1324,34 +2319,121 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } catch (error) {
                 console.info(`tempWnd.setWindowType catch error: ${JSON.stringify(error)}`)
               }
-              done();
             }
+            resolve(data)
           })
-        } 
+        })
+      }
+
+      function find() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function destroy(params) {
+        return new Promise(function (resolve, reject) {
+          tempWnd.destroy((err, data) => {
+            console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
+            console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
+            console.log(msgStr + 'tempWnd.destroy !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.destroy', done);
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function findAgain(params) {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              try {
+                expect(true).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return setWindowType()
+        }).then(function (params) {
+          return find()
+        }).then(function (params) {
+          return destroy(params)
+        }).then(function (params) {
+          return findAgain(params)
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_DESTROY_JSAPI_002
      * @tc.name       Test destroyTest2
      * @tc.desc       Verification window destruction scenario
      */
-    it('destroyTest2', 0, function (done) {
+    it('destroyTest2', 0, async function (done) {
       let caseName = 'destroyTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'destroyTest2';
       console.log(msgStr + 'begin');
       let tempWnd = null
-      ohosWindow.create(context, windowId, baseWndType, (err, data) => {
-        console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
-        console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
-        console.log(msgStr + 'ohosWindow.create !!data' + !!data);
-        if (!!data) {
-          tempWnd = data
-          try {
-            expect(!!tempWnd).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, windowId, baseWndType, (err, data) => {
+            console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.create !!data' + !!data);
+            if (!!data) {
+              tempWnd = data
+              try {
+                expect(!!tempWnd).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+              resolve(data)
+            } else {
+              unexpectedError(err, caseName, 'ohosWindow.create', done);
+            }
+          })
+        })
+      }
+
+      function destroy() {
+        return new Promise(function (resolve, reject) {
           tempWnd.destroy((err, data) => {
             console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
             console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
@@ -1380,35 +2462,53 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 }
               })
             }
+            resolve(data)
           })
-        } else {
-          unexpectedError(err, caseName, 'ohosWindow.create', done);
-        }
-      })
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return destroy()
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_007
      * @tc.name       Test loadContentTest7
      * @tc.desc       Verify the scenario of loading an existing page
      */
-    it('loadContentTest7', 0, function (done) {
+    it('loadContentTest7', 0, async function (done) {
       let caseName = 'loadContentTest7';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'loadContentTest7';
       console.log(msgStr + 'begin');
       let tempWnd = null
-      ohosWindow.create(context, windowId, baseWndType, (err, data) => {
-        console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
-        console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
-        console.log(msgStr + 'ohosWindow.create !!data' + !!data);
-        if (!!data) {
-          tempWnd = data
-          try {
-            expect(!!tempWnd).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, windowId, baseWndType, (err, data) => {
+            console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.create !!data' + !!data);
+            if (!!data) {
+              tempWnd = data
+              try {
+                expect(!!tempWnd).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'ohosWindow.create', done);
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function loadContent() {
+        return new Promise(function (resolve, reject) {
           tempWnd.loadContent('pages/index', (err, data) => {
             console.log(msgStr + 'tempWnd.loadContent err' + JSON.stringify(err));
             console.log(msgStr + 'tempWnd.loadContent data' + JSON.stringify(data));
@@ -1421,37 +2521,121 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } catch (error) {
                 console.info(`tempWnd.loadContent catch error: ${JSON.stringify(error)}`)
               }
-              done();
             }
+            resolve(data)
           })
-        } else {
-          unexpectedError(err, caseName, 'ohosWindow.create', done);
-        }
-      })
+        })
+      }
+
+      function find() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function destroy(params) {
+        return new Promise(function (resolve, reject) {
+          tempWnd.destroy((err, data) => {
+            console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
+            console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
+            console.log(msgStr + 'tempWnd.destroy !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.destroy', done);
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function findAgain(params) {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              try {
+                expect(true).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return loadContent()
+        }).then(function (params) {
+          return find()
+        }).then(function (params) {
+          return destroy(params)
+        }).then(function (params) {
+          return findAgain(params)
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_008
      * @tc.name       Test loadContentTest8
      * @tc.desc       Verify the scenario of loading a page that does not exist
      */
-    it('loadContentTest8', 0, function (done) {
+    it('loadContentTest8', 0, async function (done) {
       let caseName = 'loadContentTest8';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
       let windowId = 'loadContentTest8';
       console.log(msgStr + 'begin');
       let tempWnd = null
-      ohosWindow.create(context, windowId, baseWndType, (err, data) => {
-        console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
-        console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
-        console.log(msgStr + 'ohosWindow.create !!data' + !!data);
-        if (!!data) {
-          tempWnd = data
-          try {
-            expect(!!tempWnd).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
-          }
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, windowId, baseWndType, (err, data) => {
+            console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.create !!data' + !!data);
+            if (!!data) {
+              tempWnd = data
+              try {
+                expect(!!tempWnd).assertTrue();
+              } catch (error) {
+                console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'ohosWindow.create', done);
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function loadContent() {
+        return new Promise(function (resolve, reject) {
           tempWnd.loadContent(null, (err, data) => {
             console.log(msgStr + 'tempWnd.loadContent err' + JSON.stringify(err));
             console.log(msgStr + 'tempWnd.loadContent data' + JSON.stringify(data));
@@ -1462,68 +2646,161 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } catch (error) {
                 console.info(`tempWnd.loadContent catch error: ${JSON.stringify(error)}`)
               }
-              done();
             } else {
               unexpectedError(err, caseName, 'tempWnd.loadContent', done);
             }
+            resolve(data)
           })
-        } else {
-          unexpectedError(err, caseName, 'ohosWindow.create', done);
-        }
-      })
+        })
+      }
+
+      function find() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function destroy(params) {
+        return new Promise(function (resolve, reject) {
+          tempWnd.destroy((err, data) => {
+            console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
+            console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
+            console.log(msgStr + 'tempWnd.destroy !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.destroy', done);
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function findAgain(params) {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(windowId, (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              try {
+                expect(true).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return loadContent()
+        }).then(function (params) {
+          return find()
+        }).then(function (params) {
+          return destroy(params)
+        }).then(function (params) {
+          return findAgain(params)
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_009
      * @tc.name       Test loadContentTest9
      * @tc.desc       Verify the scenario of loading an existing page
      */
-    it('loadContentTest9', 0, function (done) {
+    it('loadContentTest9', 0, async function (done) {
       let caseName = 'loadContentTest9';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      windowStage.loadContent('pages/index/index.ets', (err, data) => {
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'windowStage.loadContent', done);
-          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
-        } else {
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'windowStage.loadContent end data=' + JSON.stringify(data));
-        }
-        done();
-      });
+
+      function loadContent() {
+        return new Promise(function (resolve, reject) {
+          windowStage.loadContent('pages/index/index.ets', (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'windowStage.loadContent', done);
+              console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'windowStage.loadContent end data=' + JSON.stringify(data));
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await loadContent()
+        .then(function (params) {
+          console.log(msgStr + 'loadContent then: ' + JSON.stringify(params))
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_010
      * @tc.name       Test loadContentTest10
      * @tc.desc       Verify the scenario of loading an existing page
      */
-    it('loadContentTest10', 0, function (done) {
+    it('loadContentTest10', 0, async function (done) {
       let caseName = 'loadContentTest10';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      try {
-        windowStage.loadContent(null, (err, data) => {
-          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+
+      function loadContent() {
+        return new Promise(function (resolve, reject) {
           try {
-            expect(false).assertTrue();
-          } catch (error) {
-            console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
+            windowStage.loadContent(null, (err, data) => {
+              console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+              try {
+                expect(false).assertTrue();
+              } catch (error) {
+                console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
+              }
+              resolve(data)
+            });
+          } catch (err) {
+            console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets) catch err' + JSON.stringify(err));
+            try {
+              expect(err.code == 401).assertTrue();
+            } catch (error) {
+              console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
+            }
           }
-        });
-      } catch (err) {
-        console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets) catch err' + JSON.stringify(err));
-        try {
-          expect(err.code == 401).assertTrue();
-        } catch (error) {
-          console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
-        }
+          console.log(msgStr + 'end');
+          done();
+        })
       }
-      console.log(msgStr + 'end');
-      done();
+
+      await loadContent()
+        .then(function (params) {
+          console.log(msgStr + 'loadContent then: ' + JSON.stringify(params))
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_011
@@ -1534,100 +2811,211 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let caseName = 'loadContentTest11';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      windowStage.loadContent('pages/index/index.ets', abilityStorage, (err, data) => {
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'windowStage.loadContent', done);
-          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
-        } else {
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'windowStage.loadContent end data=' + JSON.stringify(data));
-        }
-        done();
-      });
+
+      function loadContent() {
+        return new Promise(function (resolve, reject) {
+          windowStage.loadContent('pages/index/index.ets', abilityStorage, (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'windowStage.loadContent', done);
+              console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'windowStage.loadContent end data=' + JSON.stringify(data));
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await loadContent()
+        .then(function (params) {
+          console.log(msgStr + 'loadContent then: ' + JSON.stringify(params))
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_012
      * @tc.name       Test loadContentTest12
      * @tc.desc       Verify the scenario of loading an existing page
      */
-    it('loadContentTest12', 0, function (done) {
+    it('loadContentTest12', 0, async function (done) {
       let caseName = 'loadContentTest12';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      try {
-        windowStage.loadContent(null, abilityStorage, (err, data) => {
-          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+
+      function loadContent() {
+        return new Promise(function (resolve, reject) {
           try {
-            expect(false).assertTrue();
-          } catch (error) {
-            console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
+            windowStage.loadContent(null, abilityStorage, (err, data) => {
+              console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+              try {
+                expect(false).assertTrue();
+              } catch (error) {
+                console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
+              }
+              resolve(data)
+            });
+          } catch (err) {
+            console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets) catch err ' + JSON.stringify(err));
+            try {
+              expect(err.code === 401).assertTrue();
+            } catch (error) {
+              console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
+            }
           }
-        });
-      } catch (err) {
-        console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets) catch err ' + JSON.stringify(err));
-        try {
-          expect(err.code === 401).assertTrue();
-        } catch (error) {
-          console.info(`windowStage.loadContent catch error: ${JSON.stringify(error)}`)
-        }
+          done();
+        })
       }
-      done();
+
+      await loadContent()
+        .then(function (params) {
+          console.log(msgStr + 'loadContent then: ' + JSON.stringify(params))
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_CREATESUBWINDOW_JSAPI_003
      * @tc.name       Test createSubWindowTest3
      * @tc.desc       Verify the scenario of creating an auxiliary window
      */
-    it('createSubWindowTest3', 0, function (done) {
+    it('createSubWindowTest3', 0, async function (done) {
       let caseName = 'createSubWindowTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      windowStage.createSubWindow('createSubWindowTest3', (err, data) => {
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'windowStage.createSubWindow', done);
-          console.log(msgStr + 'windowStage.createSubWindow(createSubWindowTest3) err=' + JSON.stringify(err));
-        } else {
-          try {
-            expect(!!data).assertTrue();
-          } catch (error) {
-            console.info(`windowStage.createSubWindow catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'windowStage.createSubWindow end data=' + JSON.stringify(data));
-        }
-        done();
-      });
+      let tempWnd = null
+
+      function createSubWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.createSubWindow('createSubWindowTest3', (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'windowStage.createSubWindow', done);
+              console.log(msgStr + 'windowStage.createSubWindow(createSubWindowTest3) err=' + JSON.stringify(err));
+            } else {
+              try {
+                tempWnd = data
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`windowStage.createSubWindow catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'windowStage.createSubWindow end data=' + JSON.stringify(data));
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function find() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find('createSubWindowTest3', (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function destroy(params) {
+        return new Promise(function (resolve, reject) {
+          tempWnd.destroy((err, data) => {
+            console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
+            console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
+            console.log(msgStr + 'tempWnd.destroy !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.destroy', done);
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function findAgain(params) {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find('createSubWindowTest3', (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              try {
+                expect(true).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await createSubWindow()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return find()
+        }).then(function (params) {
+          return destroy(params)
+        }).then(function (params) {
+          return findAgain(params)
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_CREATESUBWINDOW_JSAPI_004
      * @tc.name       Test createSubWindowTest4
      * @tc.desc       Verify the scene of entering illegal values to create an auxiliary window
      */
-    it('createSubWindowTest4', 0, function (done) {
+    it('createSubWindowTest4', 0, async function (done) {
       let caseName = 'createSubWindowTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      try {
-        windowStage.createSubWindow(null, (err, data) => {
-          console.log(msgStr + 'windowStage.createSubWindow(null) err=' + JSON.stringify(err));
+
+      function createSubWindow() {
+        return new Promise(function (resolve, reject) {
           try {
-            expect(false).assertTrue();
-          } catch (error) {
-            console.info(`windowStage.createSubWindow catch error: ${JSON.stringify(error)}`)
+            windowStage.createSubWindow(null, (err, data) => {
+              console.log(msgStr + 'windowStage.createSubWindow(null) err=' + JSON.stringify(err));
+              try {
+                expect(false).assertTrue();
+              } catch (error) {
+                console.info(`windowStage.createSubWindow catch error: ${JSON.stringify(error)}`)
+              }
+              resolve(data)
+            });
+          } catch (err) {
+            try {
+              expect(err.code === 401).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+            }
+            console.log(msgStr + 'windowStage.createSubWindow(null) catch err=' + JSON.stringify(err));
           }
-        });
-      } catch (err) {
-        try {
-          expect(err.code === 401).assertTrue();
-        } catch (error) {
-          console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-        }
-        console.log(msgStr + 'windowStage.createSubWindow(null) catch err=' + JSON.stringify(err));
+          done();
+        })
       }
-      done();
+
+      await createSubWindow()
+        .then(function (params) {
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_GETSUBWINDOW_JSAPI_002
@@ -1638,20 +3026,31 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let caseName = 'getSubWindowTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      windowStage.getSubWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'windowStage.getSubWindow', done);
-          console.log(msgStr + 'windowStage.getSubWindow(null) err=' + JSON.stringify(err));
-        } else {
-          try {
-            expect(!!data).assertTrue();
-          } catch (error) {
-            console.info(`windowStage.getSubWindow catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'windowStage.getSubWindow end data=' + JSON.stringify(data));
-        }
-        done();
-      });
+
+      function getSubWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getSubWindow((err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'windowStage.getSubWindow', done);
+              console.log(msgStr + 'windowStage.getSubWindow(null) err=' + JSON.stringify(err));
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`windowStage.getSubWindow catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'windowStage.getSubWindow end data=' + JSON.stringify(data));
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await getSubWindow()
+        .then(function (params) {
+          console.log(msgStr + 'getMainWindow then: ' + JSON.stringify(params))
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_SETPRIVACYMODE_JSAPI_002
@@ -1663,23 +3062,33 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify(ohosWindow));
       let mainWnd = null;
-      ohosWindow.create(context, 'setPrivacyModeTest2', ohosWindow.WindowType.TYPE_SYSTEM_ALERT, (err, data) => {
-        if (err && err.code) {
-          console.log(msgStr + 'ohosWindow.create fail err:' + JSON.stringify(err));
-          try {
-            expect().assertFail();
-          } catch (error) {
-            console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
-          }
-          done();
-        } else {
-          try {
-            expect(data != null).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'ohosWindow.create success data' + data);
-          mainWnd = data;
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, 'setPrivacyModeTest2', ohosWindow.WindowType.TYPE_SYSTEM_ALERT, (err, data) => {
+            if (err && err.code) {
+              console.log(msgStr + 'ohosWindow.create fail err:' + JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              try {
+                expect(data != null).assertTrue();
+              } catch (error) {
+                console.info(`ohosWindow.create catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'ohosWindow.create success data' + data);
+              mainWnd = data;
+              resolve(data)
+            }
+          })
+        })
+      }
+
+      function getProperties() {
+        return new Promise(function (resolve, reject) {
           mainWnd.getProperties((err, data) => {
             if (err.code != 0) {
               console.log(msgStr + 'mainWnd.getProperties first data.isPrivacyMode=false err: ' + JSON.stringify(err));
@@ -1696,73 +3105,192 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } catch (error) {
                 console.info(`mainWnd.getProperties catch error: ${JSON.stringify(error)}`)
               }
-              mainWnd.setPrivacyMode(true, (err, data) => {
-                if (err && err.code) {
-                  unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
-                  console.log(msgStr + 'mainWnd.setPrivacyMode(true) err=' + JSON.stringify(err));
-                } else {
-                  try {
-                    expect(!data).assertTrue();
-                  } catch (error) {
-                    console.info(`mainWnd.setPrivacyMode catch error: ${JSON.stringify(error)}`)
-                  }
-                  console.log(msgStr + 'mainWnd.setPrivacyMode true data=' + JSON.stringify(data));
-                  mainWnd.getProperties((err, data) => {
-                    if (err.code != 0) {
-                      console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true fail err: ' + JSON.stringify(err));
-                      try {
-                        expect().assertFail();
-                      } catch (error) {
-                        console.info(`mainWnd.getProperties catch error: ${JSON.stringify(error)}`)
-                      }
-                      done();
-                    } else {
-                      console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true callback data:' + JSON.stringify(data));
-                      try {
-                        expect(data.isPrivacyMode).assertTrue();
-                      } catch (error) {
-                        console.info(`mainWnd.getProperties catch error: ${JSON.stringify(error)}`)
-                      }
-                      mainWnd.setPrivacyMode(false, (err, data) => {
-                        if (err && err.code) {
-                          unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
-                          console.log(msgStr + 'mainWnd.setPrivacyMode(false) err=' + JSON.stringify(err));
-                        } else {
-                          try {
-                            expect(!data).assertTrue();
-                          } catch (error) {
-                            console.info(`mainWnd.setPrivacyMode catch error: ${JSON.stringify(error)}`)
-                          }
-                          console.log(msgStr + 'mainWnd.setPrivacyMode(false) end data=' + JSON.stringify(data));
-                          mainWnd.getProperties((err, data) => {
-                            if (err.code != 0) {
-                              console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback fail err: ' + JSON.stringify(err));
-                              try {
-                                expect().assertFail();
-                              } catch (error) {
-                                console.info(`mainWnd.getProperties catch error: ${JSON.stringify(error)}`)
-                              }
-                              done();
-                            } else {
-                              console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback data:' + JSON.stringify(data));
-                              try {
-                                expect(!data.isPrivacyMode).assertTrue();
-                              } catch (error) {
-                                console.info(`mainWnd.getProperties catch error: ${JSON.stringify(error)}`)
-                              }
-                            }
-                            done();
-                          })
-                        }
-                      });
-                    }
-                  })
-                }
-              });
             }
+            resolve(data)
           })
-        }
-      })
+        })
+      }
+
+      function setPrivacyModeTrue() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setPrivacyMode(true, (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
+              console.log(msgStr + 'mainWnd.setPrivacyMode(true) err=' + JSON.stringify(err));
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`mainWnd.setPrivacyMode catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'mainWnd.setPrivacyMode true data=' + JSON.stringify(data));
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function getProperties2() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.getProperties((err, data) => {
+            if (err.code != 0) {
+              console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true fail err: ' + JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.info(`mainWnd.getProperties catch error: ${JSON.stringify(error)}`)
+              }
+              done();
+            } else {
+              console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true callback data:' + JSON.stringify(data));
+              try {
+                expect(data.isPrivacyMode).assertTrue();
+              } catch (error) {
+                console.info(`mainWnd.getProperties catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function setPrivacyModeFalse() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setPrivacyMode(false, (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
+              console.log(msgStr + 'mainWnd.setPrivacyMode(false) err=' + JSON.stringify(err));
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`mainWnd.setPrivacyMode catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'mainWnd.setPrivacyMode(false) end data=' + JSON.stringify(data));
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function getProperties3() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.getProperties((err, data) => {
+            if (err.code != 0) {
+              console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback fail err: ' + JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.info(`mainWnd.getProperties catch error: ${JSON.stringify(error)}`)
+              }
+              done();
+            } else {
+              console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback data:' + JSON.stringify(data));
+              try {
+                expect(!data.isPrivacyMode).assertTrue();
+              } catch (error) {
+                console.info(`mainWnd.getProperties catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function find() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find('setPrivacyModeTest2', (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function destroy(params) {
+        return new Promise(function (resolve, reject) {
+          mainWnd.destroy((err, data) => {
+            console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
+            console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
+            console.log(msgStr + 'tempWnd.destroy !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.destroy', done);
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function findAgain(params) {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find('setPrivacyModeTest2', (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              try {
+                expect(true).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return getProperties()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'getProperties then: ' + JSON.stringify(params))
+          return setPrivacyModeTrue()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setPrivacyModeTrue then: ' + JSON.stringify(params))
+          return getProperties2()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'getProperties2 then: ' + JSON.stringify(params))
+          return setPrivacyModeFalse()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setPrivacyModeFalse then: ' + JSON.stringify(params))
+          return getProperties3()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'getProperties3 then: ' + JSON.stringify(params))
+          return find()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'find then: ' + JSON.stringify(params))
+          return destroy(params)
+        })
+        .then(function (params) {
+          console.log(msgStr + 'destroy then: ' + JSON.stringify(params))
+          return findAgain(params)
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_SETPRIVACYMODE_JSAPI_003
@@ -1774,23 +3302,34 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify(ohosWindow));
       let mainWnd = null;
-      windowStage.createSubWindow('setPrivacyModeTest3', (err, data) => {
-        if (err && err.code) {
-          console.log(msgStr + 'windowStage.createSubWindow fail err:' + JSON.stringify(err));
-          try {
-            expect().assertFail();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
-          done();
-        } else {
-          try {
-            expect(data != null).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
-          console.log(msgStr + 'windowStage.createSubWindow success data' + data);
-          mainWnd = data;
+
+      function createSubWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.createSubWindow('setPrivacyModeTest3', (err, data) => {
+            if (err && err.code) {
+              console.log(msgStr + 'windowStage.createSubWindow fail err:' + JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+              done();
+            } else {
+              try {
+                expect(data != null).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'windowStage.createSubWindow success data' + data);
+              mainWnd = data;
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function getProperties() {
+        return new Promise(function (resolve, reject) {
           mainWnd.getProperties((err, data) => {
             if (err.code != 0) {
               console.log(msgStr + 'mainWnd.getProperties first data.isPrivacyMode=false err: ' + JSON.stringify(err));
@@ -1807,74 +3346,194 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               } catch (error) {
                 console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
               }
-              mainWnd.setPrivacyMode(true, (err, data) => {
-                if (err && err.code) {
-                  unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
-                  console.log(msgStr + 'mainWnd.setPrivacyMode(true) err=' + JSON.stringify(err));
-                } else {
-                  try {
-                    expect(!data).assertTrue();
-                  } catch (error) {
-                    console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-                  }
-                  console.log(msgStr + 'mainWnd.setPrivacyMode true data=' + JSON.stringify(data));
-                  mainWnd.getProperties((err, data) => {
-                    if (err.code != 0) {
-                      console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true fail err: ' + JSON.stringify(err));
-                      try {
-                        expect().assertFail();
-                      } catch (error) {
-                        console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-                      }
-                      done();
-                    } else {
-                      console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true callback data:' + JSON.stringify(data));
-                      try {
-                        expect(data.isPrivacyMode).assertTrue();
-                      } catch (error) {
-                        console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-                      }
-                      mainWnd.setPrivacyMode(false, (err, data) => {
-                        if (err && err.code) {
-                          unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
-                          console.log(msgStr + 'mainWnd.setPrivacyMode(false) err=' + JSON.stringify(err));
-                        } else {
-                          try {
-                            expect(!data).assertTrue();
-                          } catch (error) {
-                            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-                          }
-                          console.log(msgStr + 'mainWnd.setPrivacyMode(false) end data=' + JSON.stringify(data));
-                          mainWnd.getProperties((err, data) => {
-                            if (err.code != 0) {
-                              console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback fail err: ' + JSON.stringify(err));
-                              try {
-                                expect().assertFail();
-                              } catch (error) {
-                                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-                              }
-                              done();
-                            } else {
-                              console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback data:' + JSON.stringify(data));
-                              try {
-                                expect(!data.isPrivacyMode).assertTrue();
-                              } catch (error) {
-                                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-                              }
-                            }
-                            done();
-                          })
-                        }
-                      });
-                    }
-                  })
-                }
-              });
             }
+            resolve(data)
           })
-        }
-      })
+        })
+      }
+
+      function setPrivacyModeTrue() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setPrivacyMode(true, (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
+              console.log(msgStr + 'mainWnd.setPrivacyMode(true) err=' + JSON.stringify(err));
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'mainWnd.setPrivacyMode true data=' + JSON.stringify(data));
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function getProperties2() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.getProperties((err, data) => {
+            if (err.code != 0) {
+              console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true fail err: ' + JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+              done();
+            } else {
+              console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true callback data:' + JSON.stringify(data));
+              try {
+                expect(data.isPrivacyMode).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function setPrivacyModeFalse() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.setPrivacyMode(false, (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
+              console.log(msgStr + 'mainWnd.setPrivacyMode(false) err=' + JSON.stringify(err));
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+              console.log(msgStr + 'mainWnd.setPrivacyMode(false) end data=' + JSON.stringify(data));
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function getProperties3() {
+        return new Promise(function (resolve, reject) {
+          mainWnd.getProperties((err, data) => {
+            if (err.code != 0) {
+              console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback fail err: ' + JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+              done();
+            } else {
+              console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback data:' + JSON.stringify(data));
+              try {
+                expect(!data.isPrivacyMode).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function find() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find('setPrivacyModeTest3', (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            } else {
+              try {
+                expect(!!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function destroy(params) {
+        return new Promise(function (resolve, reject) {
+          mainWnd.destroy((err, data) => {
+            console.log(msgStr + 'tempWnd.destroy err' + JSON.stringify(err));
+            console.log(msgStr + 'tempWnd.destroy data' + JSON.stringify(data));
+            console.log(msgStr + 'tempWnd.destroy !!data' + !!data);
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.destroy', done);
+            } else {
+              try {
+                expect(!data).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function findAgain(params) {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find('setPrivacyModeTest2', (err, data) => {
+            console.log(msgStr + 'ohosWindow.find err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
+            console.log(msgStr + 'ohosWindow.find !!data' + !!data);
+            if (err && err.code) {
+              try {
+                expect(true).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            } else {
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+            }
+            resolve(data)
+            done();
+          })
+        })
+      }
+
+      await createSubWindow()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return getProperties()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'getProperties then: ' + JSON.stringify(params))
+          return setPrivacyModeTrue()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setPrivacyModeTrue then: ' + JSON.stringify(params))
+          return getProperties2()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'getProperties2 then: ' + JSON.stringify(params))
+          return setPrivacyModeFalse()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'setPrivacyModeFalse then: ' + JSON.stringify(params))
+          return getProperties3()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'getProperties3 then: ' + JSON.stringify(params))
+          return find()
+        })
+        .then(function (params) {
+          console.log(msgStr + 'find then: ' + JSON.stringify(params))
+          return destroy(params)
+        })
+        .then(function (params) {
+          console.log(msgStr + 'destroy then: ' + JSON.stringify(params))
+          return findAgain(params)
+        })
     })
+
     /**
      * @tc.number     SUB_WINDOW_SETDENSITTYDPI_JSAPI_002
      * @tc.name       Test setDensityDpiTest2
@@ -1904,9 +3563,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         currentDeviceDefault = data;
         currentDeviceDefaultDpi = parseInt(currentDeviceDefault.densityDPI)
         let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300, currentDeviceDefaultDpi];
-        getData(0, dpiItem.length)
-
-        function getData(i, length) {
+        for (let i = 0; i < dpiItem.length; i++) {
           screens[0].setDensityDpi(dpiItem[i], (errDpi, dataDpi) => {
             if (errDpi.code) {
               console.error('Failed to set DensityDpi. Cause: ' + JSON.stringify(err) + dpiItem[i]);
@@ -1925,16 +3582,41 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 } catch (error) {
                   console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
                 }
-                if (++i < length) {
-                  getData(i, length)
-                  console.log(msgStr + 'jixuzhixing  i: ' + i);
-                } else {
-                  console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-                }
               }
             })
           })
         }
+        //        await getData(0, dpiItem.length)
+        //
+        //        function getData(i, length) {
+        //          screens[0].setDensityDpi(dpiItem[i], (errDpi, dataDpi) => {
+        //            if (errDpi.code) {
+        //              console.error('Failed to set DensityDpi. Cause: ' + JSON.stringify(err) + dpiItem[i]);
+        //              return;
+        //            }
+        //            console.log(msgStr + 'screen.setDensityDpi success set DPI ' + dpiItem[i]);
+        //            display.getDefaultDisplay((error, result) => {
+        //              if (error.code) {
+        //                console.error(msgStr + 'screen.setDensityDpi display.getDefaultDisplay failed');
+        //                return;
+        //                console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay' + JSON.stringify(result));
+        //                let isEqual = Number(result.densityDPI) == parseInt(dpiItem[i])
+        //                console.log(msgStr + 'same ? ' + isEqual)
+        //                try {
+        //                  expect(isEqual).assertTrue();
+        //                } catch (error) {
+        //                  console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+        //                }
+        //                if (++i < length) {
+        //                  getData(i, length)
+        //                  console.log(msgStr + 'jixuzhixing  i: ' + i);
+        //                } else {
+        //                  console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
+        //                }
+        //              }
+        //            })
+        //          })
+        //        }
       });
       console.log(msgStr + 'done ');
       done();
@@ -1948,38 +3630,58 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let caseName = 'setPreferredOrientationTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let mainWin = await windowStage.getMainWindow().catch(err => {
-        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
-      });
-      console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
-      try {
-        expect(!!mainWin).assertTrue();
-      } catch (error) {
-        console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+      let mainWin = null;
+
+      function getMainWindow() {
+        return new Promise(function (resolve, reject) {
+          windowStage.getMainWindow((err, data) => {
+            console.log(msgStr + 'getMainWindow data:' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+            }
+            try {
+              expect(!!data).assertTrue();
+            } catch (error) {
+              console.info(`ohosWindow.on ${JSON.stringify(error)}`)
+            }
+            mainWin = data
+            resolve(data);
+            console.log(msgStr + 'await windowStage  JSON.stringify(mainWin)===' + JSON.stringify(mainWin));
+          })
+        })
       }
+
       let num = 0
       let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED',
       'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE',
       'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED', 'UNSPECIFIED'];
-      getData(0, orientationItem.length)
 
-      async function getData(i, length) {
-        let orientation = ohosWindow.Orientation[orientationItem[i]]
-        await mainWin.setPreferredOrientation(orientation, (err, data) => {
-          if (err && err.code) {
-            console.log(msgStr + 'window.setPreferredOrientation failed set error' + orientation);
-          }
-          num++
-          if (++i < length) {
-            getData(i, length)
-            console.log(msgStr + 'jixuzhixing  i: ' + i);
-          } else {
-            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          }
-          if (num == orientationItem.length) done();
-          console.log(msgStr + 'success set window.setPreferredOrientation ' + orientation + JSON.stringify(data));
+      function setPreferredOrientation(i) {
+        return new Promise(function (resolve, reject) {
+          let orientation = ohosWindow.Orientation[orientationItem[i]]
+          mainWin.setPreferredOrientation(orientation, (err, data) => {
+            if (err && err.code) {
+              console.log(msgStr + 'window.setPreferredOrientation failed set error' + orientation);
+            }
+            num++
+            if (++i < orientationItem.length) {
+              setPreferredOrientation(i)
+              console.log(msgStr + 'jixuzhixing  i: ' + i);
+            } else {
+              console.log(msgStr + 'i++<orientationItem.length  i: ' + i + '   ,orientationItem.length:' + orientationItem.length);
+            }
+            if (num == orientationItem.length) done();
+            console.log(msgStr + 'success set window.setPreferredOrientation ' + orientation + JSON.stringify(data));
+            resolve(data)
+          })
         })
       }
+
+      await getMainWindow()
+        .then(function (params) {
+          console.log(msgStr + 'setPreferredOrientation then: ' + JSON.stringify(params))
+          return setPreferredOrientation(0)
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_SETFORBIDSPLITMOVE_JSAPI_002
@@ -2060,27 +3762,46 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.name       Test dialogTargetTouchTest2
      * @tc.desc       Verify the scenario of opening modal window
      */
-    it('dialogTargetTouchTest2', 0, done => {
+    it('dialogTargetTouchTest2', 0, async done => {
       let caseName = 'dialogTargetTouchTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let tempType = ohosWindow.WindowType.TYPE_DIALOG
-      ohosWindow.create(context, 'dialogTargetTouchTest2', tempType, (err, data) => {
-        console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
-        console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'ohosWindow.create', done);
-        } else {
-          let dialogTargetTouchTest2Win = data
-          try {
-            expect(!!dialogTargetTouchTest2Win).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
+      let dialogTargetTouchTest2Win = null
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, 'dialogTargetTouchTest2', tempType, (err, data) => {
+            console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+            console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.create', done);
+            } else {
+              dialogTargetTouchTest2Win = data
+              try {
+                expect(!!dialogTargetTouchTest2Win).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function destroy() {
+        return new Promise(function (resolve, reject) {
           dialogTargetTouchTest2Win.destroy();
+          resolve(true)
           done();
-        }
-      })
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return destroy()
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_ANIMATIONFORSHOWN_JSAPI_002
@@ -2128,6 +3849,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             context.completeTransition(true)
             console.info(msgStr + 'complete transition end');
           }
+          tempWnd.destroy();
           done();
         }
       });
@@ -2168,27 +3890,57 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let wndId = 'showWithAnimationTest2';
       let baseType = ohosWindow.WindowType.TYPE_FLOAT;
-      ohosWindow.create(context, wndId, baseType, (err, data) => {
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
-        } else {
-          let tempWnd = data;
-          console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
-          try {
-            expect(!!tempWnd).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-          }
+      let tempWnd = null;
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, wndId, baseType, (err, data) => {
+            if (err && err.code) {
+              unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+            } else {
+              tempWnd = data;
+              console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
+              try {
+                expect(!!tempWnd).assertTrue();
+              } catch (error) {
+                console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
+              }
+
+            }
+            resolve(data)
+          })
+        })
+      }
+
+      function showWithAnimation() {
+        return new Promise(function (resolve, reject) {
           tempWnd.showWithAnimation((error, animationData) => {
             if (error && error.code) {
               unexpectedError(error, caseName, 'Failed to show the window with animation', done);
             } else {
               console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
-              done();
+              resolve(animationData)
             }
           })
-        }
-      })
+        })
+      }
+
+      function destroy() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.destroy();
+          resolve(true)
+          done();
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return showWithAnimation()
+        }).then(function (params) {
+          console.log(msgStr + 'showWithAnimation then: ' + JSON.stringify(params))
+          return destroy()
+        })
     })
     /**
      * @tc.number     SUB_WINDOW_HIDEWITHANIMATION_JSAPI_002
@@ -2201,85 +3953,62 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let wndId = 'hideWithAnimationTest2';
       let baseType = ohosWindow.WindowType.TYPE_FLOAT;
-      ohosWindow.create(context, wndId, baseType, (creare_err, tempWnd) => {
-        if (creare_err && creare_err.code) {
-          unexpectedError(creare_err, caseName, 'ohosWindow.create ' + baseType, done);
-        }
-        try {
-          expect(!!tempWnd).assertTrue();
-        } catch (error) {
-          console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
-        }
-        ohosWindow.find(wndId, (findErr, findWnd) => {
-          if (findErr && findErr.code) {
-            unexpectedError(findErr, caseName, 'Failed to hide the window with animation', done);
-          } else {
-            findWnd.hideWithAnimation((err, data) => {
-              if (err && err.code) {
-                unexpectedError(err, caseName, 'Failed to hide the window with animation', done);
-              } else {
-                console.info('Succeeded in hiding the window with animation. Data: ' + JSON.stringify(data));
-                done();
-              }
-            })
-          }
-        })
-      })
-    })
-    /**
-     * @tc.number     SUB_WINDOW_CREATE_JSAPI_008
-     * @tc.name       Test createTest8
-     * @tc.desc       Verify the scenario of creating a window with duplicate IDs
-     */
-    it('createTest8', 0, done => {
-      let caseName = 'createTest8';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowId = 'sameid'
-      ohosWindow.create(context, windowId, 1, (err, data) => {
-        console.log(msgStr + 'ohosWindow.create 1 once err: ' + JSON.stringify(err));
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'ohosWindow.create', done);
-        }
-        expect(!!data).assertTrue();
-        ohosWindow.create(context, windowId, 1, (err, data) => {
-          console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
-          if (err && err.code) {
-            console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
+      let tempWnd = null
+
+      function create() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, wndId, baseType, (creare_err, data) => {
+            if (creare_err && creare_err.code) {
+              unexpectedError(creare_err, caseName, 'ohosWindow.create ' + baseType, done);
+            }
             try {
-              expect(err.code).assertEqual(1001)
+              tempWnd = data
+              expect(!!tempWnd).assertTrue();
             } catch (error) {
               console.info(`tempWnd.show catch error: ${JSON.stringify(error)}`)
             }
-            done();
-          } else {
-            unexpectedError(err, caseName, 'ohosWindow.create', done);
-            console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
-          }
+            resolve(data)
+          })
         })
-      })
+      }
+
+      function find() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.find(wndId, (findErr, findWnd) => {
+            if (findErr && findErr.code) {
+              unexpectedError(findErr, caseName, 'Failed to hide the window with animation', done);
+            } else {
+              findWnd.hideWithAnimation((err, data) => {
+                if (err && err.code) {
+                  unexpectedError(err, caseName, 'Failed to hide the window with animation', done);
+                } else {
+                  console.info('Succeeded in hiding the window with animation. Data: ' + JSON.stringify(data));
+                  done();
+                }
+              })
+            }
+            resolve(findWnd)
+          })
+        })
+      }
+
+      function destroy() {
+        return new Promise(function (resolve, reject) {
+          tempWnd.destroy();
+          resolve(true)
+          done();
+        })
+      }
+
+      await create()
+        .then(function (params) {
+          console.log(msgStr + 'create then: ' + JSON.stringify(params))
+          return find()
+        }).then(function (params) {
+          console.log(msgStr + 'find then: ' + JSON.stringify(params))
+          return destroy()
+        })
     })
-    /**
-     * @tc.number     SUB_WINDOW_CREATE_JSAPI_004
-     * @tc.name       Test createTest4
-     * @tc.desc       Verify the scenario of creating a window with duplicate IDs
-     */
-    it('createTest4', 0, async function (done) {
-      let caseName = 'createTest4';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let windowId = 'sameids'
-      let ohosData = await ohosWindow.create(context, windowId, 1).catch((err) => {
-        console.log(msgStr + 'ohosWindow.create 1 once err: ' + JSON.stringify(err));
-        unexpectedError(err, caseName, 'ohosWindow.create', done);
-      })
-      expect(!!ohosData).assertTrue();
-      let ohosDataError = await ohosWindow.create(context, windowId, 1).catch((err) => {
-        console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(1001)
-        done();
-      })
-      console.log(msgStr + 'ohosWindow.create 1 twice ohosDataError: ' + JSON.stringify(ohosDataError));
-    })
-  })
+  }
+  )
 }

@@ -1,10 +1,10 @@
 {
     "module": {
-        "name": "com.example.staticabilitystagecontext",
+        "name": "com.acts.stabilitystagecontext",
         "type": "entry",
         "srcEntrance": "./ets/Application/AbilityStage.ts",
         "description": "$string:phone_entry_dsc",
-        "mainElement": "com.example.staticabilitystagecontext.MainAbility",
+        "mainElement": "com.acts.stabilitystagecontext.MainAbility",
         "deviceTypes": [
             "default",
             "tablet"
@@ -13,9 +13,15 @@
         "installationFree": false,
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
+        "metadata": [
+            {
+              "name": "ArkTSPartialUpdate",
+              "value": "false"
+            }
+          ],
         "abilities": [
             {
-                "name": "com.example.staticabilitystagecontext.MainAbility",
+                "name": "com.acts.stabilitystagecontext.MainAbility",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "description": "$string:phone_entry_main",
                 "icon": "$media:icon",

@@ -24,8 +24,8 @@ const ONACCEPTWANT_KEY_UNDEFINED_ID = -2;
 const UNSUBSCRIBE_TIMEOUT = 5000;
 
 async function startAbilityProcess(abilityContext, parameters) {
-  let bundleName = "com.example.amsabilitymultiinstanceappa";
-  let abilityName = "com.example.amsabilitymultiinstanceappa.MainAbility";
+  let bundleName = "com.acts.abilitymultiinstancea";
+  let abilityName = "com.acts.abilitymultiinstancea.MainAbility";
 
   let idx = parameters.nextStep;
   switch (parameters.step[idx]) {
@@ -45,34 +45,34 @@ async function startAbilityProcess(abilityContext, parameters) {
       parameters.startId = ONACCEPTWANT_KEY_UNDEFINED_ID;
       break;
     case "StartB":
-      bundleName = "com.example.amsabilitymultiinstanceappb";
-      abilityName = "com.example.amsabilitymultiinstanceappb.MainAbility";
+      bundleName = "com.acts.abilitymultiinstanceb";
+      abilityName = "com.acts.abilitymultiinstanceb.MainAbility";
       break;
     case "StartC":
-      bundleName = "com.example.amsabilitymultiinstanceappc";
-      abilityName = "com.example.amsabilitymultiinstanceappc.MainAbility";
+      bundleName = "com.acts.abilitymultiinstancec";
+      abilityName = "com.acts.abilitymultiinstancec.MainAbility";
       break;
     case "StartDMain1":
-      bundleName = "com.example.amsabilitymultiinstanceappd";
-      abilityName = "com.example.amsabilitymultiinstanceappd.MainAbility";
+      bundleName = "com.acts.abilitymultiinstanced";
+      abilityName = "com.acts.abilitymultiinstanced.MainAbility";
       parameters.startId = 1;
       break;
     case "StartDMain2":
-      bundleName = "com.example.amsabilitymultiinstanceappd";
-      abilityName = "com.example.amsabilitymultiinstanceappd.MainAbility";
+      bundleName = "com.acts.abilitymultiinstanced";
+      abilityName = "com.acts.abilitymultiinstanced.MainAbility";
       parameters.startId = 2;
       break;
     case "StartDSec":
-      bundleName = "com.example.amsabilitymultiinstanceappd";
-      abilityName = "com.example.amsabilitymultiinstanceappd.SecondAbility";
+      bundleName = "com.acts.abilitymultiinstanced";
+      abilityName = "com.acts.abilitymultiinstanced.SecondAbility";
       break;
     case "StartDThd":
-      bundleName = "com.example.amsabilitymultiinstanceappd";
-      abilityName = "com.example.amsabilitymultiinstanceappd.ThirdAbility";
+      bundleName = "com.acts.abilitymultiinstanced";
+      abilityName = "com.acts.abilitymultiinstanced.ThirdAbility";
       break;
     case "StartE":
-      bundleName = "com.example.amsabilitymultiinstanceappe";
-      abilityName = "com.example.amsabilitymultiinstanceappe.MainAbility";
+      bundleName = "com.acts.abilitymultiinstancee";
+      abilityName = "com.acts.abilitymultiinstancee.MainAbility";
       break;
 
     default:

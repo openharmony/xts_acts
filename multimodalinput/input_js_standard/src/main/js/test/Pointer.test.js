@@ -16,8 +16,8 @@
 import pointer from '@ohos.multimodalInput.pointer'
 import window from '@ohos.window'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
-export default function MultimodalInput_Pointer_test() {
-  describe('MultimodalInput_Pointer_test', function () {
+export default function Pointer_test() {
+  describe('Pointer_test', function () {
 
     const errCode = {
       COMMON_PARAMETER_CODE: 401

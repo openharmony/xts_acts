@@ -20,7 +20,7 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
 import { UiDriver, BY, PointerMatrix } from '@ohos.uitest'
-
+const CODECMIMEVALUE = ['video/avc', 'audio/mp4a-latm', 'audio/mpeg']
 const context = featureAbility.getContext();
 
 export async function getPermission(permissionNames) {
@@ -58,7 +58,17 @@ export async function getFileDescriptor(fileName) {
     });
     return fileDescriptor;
 }
-
+export async function getStageFileDescriptor(fileName) {
+    let fileDescriptor = undefined;
+    let mgr = globalThis.abilityContext.resourceManager
+    await mgr.getRawFileDescriptor(fileName).then(value => {
+        fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
+        console.log('case getRawFileDescriptor success fileName: ' + fileName);
+    }).catch(error => {
+        console.log('case getRawFileDescriptor err: ' + error);
+    });
+    return fileDescriptor;
+}
 export async function closeFileDescriptor(fileName) {
     await resourceManager.getResourceManager().then(async (mgr) => {
         await mgr.closeRawFileDescriptor(fileName).then(()=> {
@@ -142,6 +152,16 @@ export function checkDescription(actualDescription, descriptionKey, descriptionV
             expect(property).assertEqual(descriptionValue[i]);
         }
         
+    }
+}
+
+export function checkOldDescription(actualDescription, descriptionKey, descriptionValue) {
+    for (let i = 0; i < descriptionKey.length; i++) {
+        let property = actualDescription[descriptionKey[i]];
+        console.info('case key is  '+ descriptionKey[i]);
+        console.info('case actual value is  '+ property);
+        console.info('case hope value is  '+ descriptionValue[i]);
+        expect(property).assertEqual(descriptionValue[i]);
     }
 }
 

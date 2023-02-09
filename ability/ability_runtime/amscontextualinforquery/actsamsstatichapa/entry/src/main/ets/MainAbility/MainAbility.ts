@@ -44,7 +44,7 @@ export default class MainAbility extends Ability {
         console.log("ACTS_getAbilityInfo_0400 MainAbility onForeground")
         if (globalThis.abilityWant.action == 'startHapA') {
             globalThis.abilityContext.startAbility({
-                bundleName: "com.example.staticinformationmultihappackage",
+                bundleName: "com.acts.stinformationmulapp",
                 abilityName: "com.example.feature.MainAbility",
                 action: "startHapB"
             }, (error, data) => {

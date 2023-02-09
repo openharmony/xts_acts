@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.amsabilitymultiinstanceappe",
+    "bundleName": "com.acts.abilitymultiinstancee",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -14,11 +14,11 @@
   },
   "deviceConfig": {
     "default": {
-      "process": "com.example.amsabilitymultiinstanceappe"
+      "process": "com.acts.abilitymultiinstancee"
     }
   },
   "module": {
-    "package": "com.example.amsabilitymultiinstanceappe",
+    "package": "com.acts.abilitymultiinstancee",
     "name": ".MyApplication",
     "deviceType": [
       "default",
@@ -41,7 +41,7 @@
             ]
           }
         ],
-        "name": "com.example.amsabilitymultiinstanceappe.MainAbility",
+        "name": "com.acts.abilitymultiinstancee.MainAbility",
         "visible": true,
         "icon": "$media:icon",
         "description": "$string:mainability_description",

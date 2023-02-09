@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "com.example.amsabilitymultiinstanceappa",
+    "name": "com.acts.abilitymultiinstancea",
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:phone_entry_dsc",
@@ -13,9 +13,15 @@
     "installationFree": false,
     "uiSyntax": "ets",
     "pages": "$profile:main_pages",
+    "metadata": [
+      {
+        "name": "ArkTSPartialUpdate",
+        "value": "false"
+      }
+    ],
     "abilities": [
       {
-        "name": "com.example.amsabilitymultiinstanceappa.MainAbility",
+        "name": "com.acts.abilitymultiinstancea.MainAbility",
         "srcEntrance": "./ets/MainAbility/MainAbility.ts",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",

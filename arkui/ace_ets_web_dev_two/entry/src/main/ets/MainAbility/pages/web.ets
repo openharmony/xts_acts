@@ -32,7 +32,7 @@ struct Index {
     host: string = "www.spincast.org"
     realm: string = "protected example"
     username_password: string[]
-    origin: string="file:///"
+    origin: string="resource://rawfile/"
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -84,8 +84,12 @@ struct Index {
                             })                                                             
                             break;
                         }
-                        case "emitAllowGeolocation":{                                                                                 
-                            web_webview.GeolocationPermissions.allowGeolocation("file:///")
+                        case "emitAllowGeolocation":{
+                            try {
+                                web_webview.GeolocationPermissions.allowGeolocation("resource://rawfile/");
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                            }                                                                                 
                             web_webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                                 if (error) {
                                     console.log('error:' + JSON.stringify(error));
@@ -98,7 +102,7 @@ struct Index {
                             break;
                         }
                         case "emitDeleteGeolocation":{                                                                                 
-                            web_webview.GeolocationPermissions.deleteGeolocation("file:///")
+                            web_webview.GeolocationPermissions.deleteGeolocation("resource://rawfile/")
                             web_webview.GeolocationPermissions.getStoredGeolocation((error,origins) => {
                                 if (error) {
                                     console.log('error:' + JSON.stringify(error));
@@ -111,7 +115,7 @@ struct Index {
                             break;
                         }
                         case "emitDeleteAllGeolocation":{                                                                                 
-                            web_webview.GeolocationPermissions.allowGeolocation("file:///")
+                            web_webview.GeolocationPermissions.allowGeolocation("resource://rawfile/")
                             web_webview.GeolocationPermissions.deleteAllGeolocation()    
                             web_webview.GeolocationPermissions.getStoredGeolocation((error,origins) => {
                                 if (error) {
@@ -160,7 +164,7 @@ struct Index {
                             break;
                         }
                         case "emitLoaData":{ 
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"})
                             setTimeout(()=>{
                                 this.controller.loadData({
                                 data: "<html><title>index</title></html>",

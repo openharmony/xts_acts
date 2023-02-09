@@ -13,6 +13,12 @@
         "installationFree": false,
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
+        "metadata": [
+          {
+            "name": "ArkTSPartialUpdate",
+            "value": "false"
+          }
+        ],
         "abilities": [
             {
                 "name": "com.acts.actsinterfacemultiuserstest.MainAbility",
@@ -80,6 +86,10 @@
           {
             "name": "ohos.permission.GET_RUNNING_INFO",
             "reason": "need use ohos.permission.GET_RUNNING_INFO"
+          },
+          {
+            "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+            "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
           }
         ]
     }

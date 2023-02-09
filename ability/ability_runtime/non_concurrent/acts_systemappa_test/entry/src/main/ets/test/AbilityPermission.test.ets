@@ -71,8 +71,8 @@ export default function abilityPermissionTest() {
         console.debug("====>start startAbility_100====>");
         await globalThis.abilityContext.startAbilityWithAccount(
           {
-            bundleName: 'com.example.actsabilitypermissiontest',
-            abilityName: 'com.example.actsabilitypermissiontest.MainAbility2'
+            bundleName: 'com.acts.abilitypermissiontest',
+            abilityName: 'com.acts.abilitypermissiontest.MainAbility2'
           }, userA, () => {
           console.debug("====>startAbility end_100====>");
         })
@@ -117,8 +117,8 @@ export default function abilityPermissionTest() {
         console.debug("====>start startAbility_0300====>");
         await globalThis.abilityContext.startAbilityWithAccount(
           {
-            bundleName: 'com.example.actssystemappuonehundredonerelytest',
-            abilityName: 'com.example.actssystemappuonehundredonerelytest.MainAbility'
+            bundleName: 'com.acts.systemapponerely',
+            abilityName: 'com.acts.systemapponerely.MainAbility'
           }, userA ).then().catch((err) => {
           console.debug("ACTS_AbilityPermission_0300====>" + err)
 
@@ -176,8 +176,8 @@ export default function abilityPermissionTest() {
       console.debug("====>0600start connectAbility====>");
       connId = await globalThis.abilityContext.connectAbilityWithAccount(
         {
-          bundleName: 'com.example.actssystemappuonehundredonerelytest',
-          abilityName: 'com.example.actssystemappuonehundredonerelytest.ServiceAbility',
+          bundleName: 'com.acts.systemapponerely',
+          abilityName: 'com.acts.systemapponerely.ServiceAbility',
           action: "StartAbilityPromise"
         }, userA, {
         onConnect: onConnectCallbackC,

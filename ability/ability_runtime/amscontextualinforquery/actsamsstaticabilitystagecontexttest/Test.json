@@ -3,8 +3,8 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.example.staticabilitystagecontext",
-        "module-name": "com.example.staticabilitystagecontext",
+        "bundle-name": "com.acts.stabilitystagecontext",
+        "module-name": "com.acts.stabilitystagecontext",
         "shell-timeout": "600000",
         "testcase-timeout": 70000
     },

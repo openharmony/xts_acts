@@ -15,7 +15,7 @@
 
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
-import testsuite from '../test/ListMultimodalinput.test'
+import testsuite from '../test/List.test'
 
 export default {
     onCreate() {

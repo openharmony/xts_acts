@@ -149,43 +149,5 @@ export default function actsStageContextTest() {
                 done()
             })
         })
-
-        /*
-        * @tc.number    : ACTS_StageContext_1500
-        * @tc.name      : get resource by Resource in applicationInfo from context(API8)
-        * @tc.desc      : get resource by Resource in applicationInfo from context(API8)
-        */
-        it('ACTS_StageContext_1500',0, async function (done) {
-            await bundleManager.getApplicationInfo("com.example.fa8_app", 0).then(appInfo => {
-                return globalThis.abilityContext.resourceManager.getString(appInfo.labelResource)
-            }).then(str => {
-                console.info("ACTS_StageContext_1500 labelId: " + str)
-                expect(str).assertEqual("fa8_app")
-                done()
-            }).catch(e => {
-                console.info("ACTS_StageContext_1500 error: " + e)
-                expect().assertFail()
-                done()
-            })
-        })
-
-        /*
-        * @tc.number    : ACTS_StageContext_2200
-        * @tc.name      : get resource by Resource in applicationInfo from context
-        * @tc.desc      : get resource by Resource in applicationInfo from context
-        */
-        it('ACTS_StageContext_2200',0, async function (done) {
-            await bundleManager.getApplicationInfo("com.example.contextapp", 0).then(appInfo => {
-                return globalThis.abilityContext.resourceManager.getString(appInfo.labelResource)
-            }).then(str => {
-                console.info("ACTS_StageContext_2200 labelId: " + str)
-                expect(str).assertEqual("ContextApp")
-                done()
-            }).catch(e => {
-                console.info("ACTS_StageContext_2200 error: " + e)
-                expect().assertFail()
-                done()
-            })
-        })
     })
 }

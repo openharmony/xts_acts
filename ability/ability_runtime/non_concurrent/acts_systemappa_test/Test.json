@@ -3,8 +3,8 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "bundle-name": "com.example.actsabilitypermissiontest",
-        "module-name": "com.example.actsabilitypermissiontest",
+        "bundle-name": "com.acts.abilitypermissiontest",
+        "module-name": "com.acts.abilitypermissiontest",
         "shell-timeout": "600000",
         "testcase-timeout": 70000
     },

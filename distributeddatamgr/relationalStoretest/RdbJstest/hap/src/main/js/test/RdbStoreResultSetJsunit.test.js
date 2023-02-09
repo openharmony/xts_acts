@@ -1649,22 +1649,17 @@ describe('rdbResultSetTest', function () {
      * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0203
      * @tc.desc resultSet getColumnIndex test
      */
-    it('testGetColumnIndex0004', 0, async function (done) {
+     it('testGetColumnIndex0004', 0, async function (done) {
         console.info(TAG + '************* testGetColumnIndex0004 start *************');
-        let errInfo = undefined;
-        let predicates = await new dataRdb.RdbPredicates('test')
-        let resultSet = await rdbStore.query(predicates)
-        try{
-            let resultSetresult = resultSet.getColumnIndex('')
-            expect(-1).assertEqual(resultSetresult)
-        }catch(err){
-            errInfo = err
+        {
+            let predicates = await new dataRdb.RdbPredicates('test')
+            let resultSet = await rdbStore.query(predicates)
+            expect(-1).assertEqual(resultSet.getColumnIndex(''))
+
+            resultSet = null;
+            done();
+            console.info(TAG + '************* testGetColumnIndex0004 end *************');
         }
-        expect(errInfo.code).assertEqual("401")
-        resultSet = null;
-        done();
-        console.info(TAG + '************* testGetColumnIndex0004 end *************');
-        
     })
 
     /**

@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "com.example.amsabilitymultiinstanceappd",
+    "name": "com.acts.abilitymultiinstanced",
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:phone_entry_dsc",
@@ -13,9 +13,15 @@
     "installationFree": false,
     "uiSyntax": "ets",
     "pages": "$profile:main_pages",
+    "metadata": [
+      {
+        "name": "ArkTSPartialUpdate",
+        "value": "false"
+      }
+    ],
     "abilities": [
       {
-        "name": "com.example.amsabilitymultiinstanceappd.MainAbility",
+        "name": "com.acts.abilitymultiinstanced.MainAbility",
         "srcEntrance": "./ets/MainAbility/MainAbility.ts",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",
@@ -35,7 +41,7 @@
         ]
       },
       {
-        "name": "com.example.amsabilitymultiinstanceappd.SecondAbility",
+        "name": "com.acts.abilitymultiinstanced.SecondAbility",
         "srcEntrance": "./ets/SecondAbility/SecondAbility.ts",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",
@@ -55,7 +61,7 @@
         ]
       },
       {
-        "name": "com.example.amsabilitymultiinstanceappd.ThirdAbility",
+        "name": "com.acts.abilitymultiinstanced.ThirdAbility",
         "srcEntrance": "./ets/ThirdAbility/ThirdAbility.ts",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",
