@@ -69,7 +69,6 @@ namespace OHOS {
                     // test OH_ResourceManager_GetRawFileDescriptor
                     RawFileDescriptor descriptor;
                     bool getFd = OH_ResourceManager_GetRawFileDescriptor(rawFile, descriptor);
-//                            getFd, descriptor.fd, descriptor.length, descriptor.start);
 
                     // test OH_ResourceManager_ReadRawFile
                     asyncContext->mediaData = std::make_unique<char[]>(asyncContext->len_);
