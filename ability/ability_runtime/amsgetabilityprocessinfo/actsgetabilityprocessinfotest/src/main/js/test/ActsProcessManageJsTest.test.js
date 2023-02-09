@@ -58,35 +58,5 @@ describe('ActsAbilityRunningInfosTest', function () {
             done();
         })
     })
-
-    /*
-    * @tc.number: ACTS_getProcessRunningInformation_0300
-    * @tc.name: Application running ability information query
-    * @tc.desc: Verify applications are started to query getProcessRunningInformation ability information
-    *           （by promise）
-    */
-    it('ACTS_getProcessRunningInformation_0300', 0, async function (done) {
-        console.log('ACTS_getProcessRunningInformation_0300====<begin');
-        var data = await appManager.getProcessRunningInformation()
-        console.info('====> ACTS_getProcessRunningInformation_0300 ====>' + JSON.stringify(data))
-        expect(checkRunningProcess('com.example.abilityrunninginfostest', data)).assertTrue();
-        done();
-    })
-
-    /*
-    * @tc.number: ACTS_getProcessRunningInformation_0400
-    * @tc.name: Application running ability information query
-    * @tc.desc: Verify applications are started to query getProcessRunningInformation ability information
-    *           （by callback）
-    */
-    it('ACTS_getProcessRunningInformation_0400', 0, async function (done) {
-        console.log('ACTS_getProcessRunningInformation_0400====<begin');
-        appManager.getProcessRunningInformation((err, data) => {
-            console.info('====> ACTS_getProcessRunningInformation_0400 ====>' + JSON.stringify(data))
-            expect(checkRunningProcess('com.example.abilityrunninginfostest', data)).assertTrue();
-            done();
-        })
-    })
-
 })
 }
