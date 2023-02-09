@@ -18,7 +18,6 @@ group("telephony_base") {
   if (is_standard_system) {
     deps = [
       "call_manager:ActsBaseCallManagerTest",
-      "cellular_data:ActsBaseCellularDataTest",
       "sms_mms:ActsBaseSmsMmsTest",
     ]
   }

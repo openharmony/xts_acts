@@ -527,15 +527,23 @@ export default function ObjectInterfaceTest() {
                 }
                 console.info("contactsApi_addContact_test_100  data = " + JSON.stringify(data));
                 expect(data > 0).assertTrue();
-                contact.deleteContact(data + '', (err) => {
+                contact.queryKey(data, (err, keyData) => {
                     if (err) {
                         console.info("contactsApi_addContact_test_100  err = " + JSON.stringify(err));
                         expect(false).assertTrue();
                         done();
                         return;
                     }
-                    console.log('deleteContact success');
-                    done();
+                    contact.deleteContact(keyData, (keyData) => {
+                        if (err) {
+                            console.info("contactsApi_addContact_test_100  err = " + JSON.stringify(err));
+                            expect(false).assertTrue();
+                            done();
+                            return;
+                        }
+                        console.log('deleteContact success');
+                        done();
+                    });
                 });
             });
             sleep(500);
@@ -546,15 +554,23 @@ export default function ObjectInterfaceTest() {
             promise.then((data) => {
                 console.info("contactsApi_addContact_test_200  data = " + JSON.stringify(data));
                 expect(data > 0).assertTrue();
-                let promise = contact.deleteContact(data + '');
-                promise.then(() => {
-                    console.log(`deleteContact success`);
-                    done();
-                }).catch((err) => {
-                    console.info("contactsApi_addContact_test_200  err = " + JSON.stringify(err));
-                    expect(false).assertTrue();
-                    done();
-                    return;
+                contact.queryKey(data, (err, keyData) => {
+                    if (err) {
+                        console.info("contactsApi_addContact_test_200  err = " + JSON.stringify(err));
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
+                    let promise = contact.deleteContact(keyData);
+                    promise.then(() => {
+                        console.log(`deleteContact success`);
+                        done();
+                    }).catch((err) => {
+                        console.info("contactsApi_addContact_test_200  err = " + JSON.stringify(err));
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    });
                 });
             }).catch((err) => {
                 console.info("contactsApi_addContact_test_200  err = " + JSON.stringify(err));
@@ -581,16 +597,24 @@ export default function ObjectInterfaceTest() {
                 }
                 console.info("contactsApi_queryContact_test_100  data = " + JSON.stringify(data));
                 expect(data > 0).assertTrue();
-                contact.queryContact(data + '', (err, data) => {
+                contact.queryKey(data, holder, (err, keyData) => {
                     if (err) {
                         console.info("contactsApi_queryContact_test_100  err = " + JSON.stringify(err));
                         expect(false).assertTrue();
                         done();
                         return;
                     }
-                    console.info("contactsApi_queryContact_test_100  data = " + JSON.stringify(data));
-                    expect(data.emails[0].email != '').assertTrue();
-                    done();
+                    contact.queryContact(keyData, (err, data) => {
+                        if (err) {
+                            console.info("contactsApi_queryContact_test_100  err = " + JSON.stringify(err));
+                            expect(false).assertTrue();
+                            done();
+                            return;
+                        }
+                        console.info("contactsApi_queryContact_test_100  data = " + JSON.stringify(data));
+                        expect(data.emails[0].email != '').assertTrue();
+                        done();
+                    });
                 });
             });
             sleep(500);
@@ -606,16 +630,24 @@ export default function ObjectInterfaceTest() {
                 }
                 console.info("contactsApi_queryContact_test_200  data = " + JSON.stringify(data));
                 expect(data > 0).assertTrue();
-                contact.queryContact(data + '', holder, (err, data) => {
+                contact.queryKey(data, (err, keyData) => {
                     if (err) {
                         console.info("contactsApi_queryContact_test_200  err = " + JSON.stringify(err));
                         expect(false).assertTrue();
                         done();
                         return;
                     }
-                    console.info("contactsApi_queryContact_test_200  data = " + JSON.stringify(data));
-                    expect(data.emails[0].email != '').assertTrue();
-                    done();
+                    contact.queryContact(keyData, holder, (err, data) => {
+                        if (err) {
+                            console.info("contactsApi_queryContact_test_200  err = " + JSON.stringify(err));
+                            expect(false).assertTrue();
+                            done();
+                            return;
+                        }
+                        console.info("contactsApi_queryContact_test_200  data = " + JSON.stringify(data));
+                        expect(data.emails[0].email != '').assertTrue();
+                        done();
+                    });
                 });
             });
             sleep(500);
@@ -631,16 +663,24 @@ export default function ObjectInterfaceTest() {
                 }
                 console.info("contactsApi_queryContact_test_300  data = " + JSON.stringify(data));
                 expect(data > 0).assertTrue();
-                contact.queryContact(data + '', attr, (err, data) => {
+                contact.queryKey(data, (err, keyData) => {
                     if (err) {
                         console.info("contactsApi_queryContact_test_300  err = " + JSON.stringify(err));
                         expect(false).assertTrue();
                         done();
                         return;
                     }
-                    console.info("contactsApi_queryContact_test_300  data = " + JSON.stringify(data));
-                    expect(data.emails[0].email != '').assertTrue();
-                    done();
+                    contact.queryContact(keyData, attr, (err, data) => {
+                        if (err) {
+                            console.info("contactsApi_queryContact_test_300  err = " + JSON.stringify(err));
+                            expect(false).assertTrue();
+                            done();
+                            return;
+                        }
+                        console.info("contactsApi_queryContact_test_300  data = " + JSON.stringify(data));
+                        expect(data.emails[0].email != '').assertTrue();
+                        done();
+                    });
                 });
             });
             sleep(500);
@@ -656,16 +696,24 @@ export default function ObjectInterfaceTest() {
                 }
                 console.info("contactsApi_queryContact_test_400  data = " + JSON.stringify(data));
                 expect(data > 0).assertTrue();
-                contact.queryContact(data + '', holder, attr, (err, data) => {
+                contact.queryKey(data, (err, keyData) => {
                     if (err) {
                         console.info("contactsApi_queryContact_test_400  err = " + JSON.stringify(err));
                         expect(false).assertTrue();
                         done();
                         return;
                     }
-                    console.info("contactsApi_queryContact_test_400  data = " + JSON.stringify(data));
-                    expect(data.emails[0].email != '').assertTrue();
-                    done();
+                    contact.queryContact(keyData, holder, attr, (err, data) => {
+                        if (err) {
+                            console.info("contactsApi_queryContact_test_400  err = " + JSON.stringify(err));
+                            expect(false).assertTrue();
+                            done();
+                            return;
+                        }
+                        console.info("contactsApi_queryContact_test_400  data = " + JSON.stringify(data));
+                        expect(data.emails[0].email != '').assertTrue();
+                        done();
+                    });
                 });
             });
             sleep(500);
@@ -681,16 +729,24 @@ export default function ObjectInterfaceTest() {
                 }
                 console.info("contactsApi_queryContact_test_500  data = " + JSON.stringify(data));
                 expect(data > 0).assertTrue();
-                let promise = contact.queryContact(data + '', holder, attr);
-                promise.then((data) => {
-                    console.info("contactsApi_queryContact_test_500  data = " + JSON.stringify(data));
-                    expect(data.emails[0].email != '').assertTrue();
-                    done();
-                }).catch((err) => {
-                    console.info("contactsApi_queryContact_test_500  err = " + JSON.stringify(err));
-                    expect(false).assertTrue();
-                    done();
-                    return;
+                contact.queryKey(data, (err, keyData) => {
+                    if (err) {
+                        console.info("contactsApi_queryContact_test_500  err = " + JSON.stringify(err));
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
+                    let promise = contact.queryContact(keyData, holder, attr);
+                    promise.then((data) => {
+                        console.info("contactsApi_queryContact_test_500  data = " + JSON.stringify(data));
+                        expect(data.emails[0].email != '').assertTrue();
+                        done();
+                    }).catch((err) => {
+                        console.info("contactsApi_queryContact_test_500  err = " + JSON.stringify(err));
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    });
                 });
             });
             sleep(500);
@@ -1325,16 +1381,24 @@ export default function ObjectInterfaceTest() {
                         return;
                     }
                     console.log('updateContact success');
-                    contact.queryContact(data + '', (err, data) => {
+                    contact.queryKey(data, (err, keyData) => {
                         if (err) {
                             console.info("contactsApi_updateContact_test_100  err = " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                             return;
                         }
-                        console.info("contactsApi_updateContact_test_100  data = " + JSON.stringify(data));
-                        expect(data.emails[0].email == "13800000001@email.com").assertTrue();
-                        done();
+                        contact.queryContact(keyData, (err, data) => {
+                            if (err) {
+                                console.info("contactsApi_updateContact_test_100  err = " + JSON.stringify(err));
+                                expect(false).assertTrue();
+                                done();
+                                return;
+                            }
+                            console.info("contactsApi_updateContact_test_100  data = " + JSON.stringify(data));
+                            expect(data.emails[0].email == "13800000001@email.com").assertTrue();
+                            done();
+                        });
                     });
                 });
             });
@@ -1368,16 +1432,24 @@ export default function ObjectInterfaceTest() {
                         return;
                     }
                     console.log('updateContact success');
-                    contact.queryContact(data + '', (err, data) => {
+                    contact.queryKey(data, (err, keyData) => {
                         if (err) {
                             console.info("contactsApi_updateContact_test_200  err = " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                             return;
                         }
-                        console.info("contactsApi_updateContact_test_200  data = " + JSON.stringify(data));
-                        expect(data.emails[0].email == "13800000001@email.com").assertTrue();
-                        done();
+                        contact.queryContact(keyData, (err, data) => {
+                            if (err) {
+                                console.info("contactsApi_updateContact_test_200  err = " + JSON.stringify(err));
+                                expect(false).assertTrue();
+                                done();
+                                return;
+                            }
+                            console.info("contactsApi_updateContact_test_200  data = " + JSON.stringify(data));
+                            expect(data.emails[0].email == "13800000001@email.com").assertTrue();
+                            done();
+                        });
                     });
                 });
             });
@@ -1406,16 +1478,24 @@ export default function ObjectInterfaceTest() {
                 }, attr);
                 promise.then(() => {
                     console.log('updateContact success');
-                    contact.queryContact(data + '', (err, data) => {
+                    contact.queryKey(data, (err, keyData) => {
                         if (err) {
                             console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                             return;
                         }
-                        console.info("contactsApi_updateContact_test_300  data = " + JSON.stringify(data));
-                        expect(data.emails[0].email == "13800000001@email.com").assertTrue();
-                        done();
+                        contact.queryContact(keyData, (err, data) => {
+                            if (err) {
+                                console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
+                                expect(false).assertTrue();
+                                done();
+                                return;
+                            }
+                            console.info("contactsApi_updateContact_test_300  data = " + JSON.stringify(data));
+                            expect(data.emails[0].email == "13800000001@email.com").assertTrue();
+                            done();
+                        });
                     });
                 }).catch((err) => {
                     console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
