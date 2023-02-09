@@ -53,6 +53,8 @@ describe('AccessibleAbilityList', function () {
             if (err != null && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0210 has error: ${err.code}`);
                 expect(null).assertFail();
+				done();
+				return();
             }
             console.info(`AccessibleAbilityList: AbilityList_0210 result ${data.length}`);
 			for (let item of data) {
