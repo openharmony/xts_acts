@@ -146,7 +146,7 @@ void ModelPredict(OH_AI_ModelHandle model, OH_AI_ContextHandle context, string m
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     ASSERT_NE(inputs.handle_list, nullptr);
-    if (shape_infos.shape_num != NULL) {
+    if (shape_infos.shape_num != 0) {
         printf("==========Resizes==========\n");
         OH_AI_Status resize_ret = OH_AI_ModelResize(model, inputs, &shape_infos, inputs.handle_num);
         printf("==========Resizes return code:%d\n", resize_ret);
