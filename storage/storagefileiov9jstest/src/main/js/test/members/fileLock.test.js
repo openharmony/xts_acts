@@ -18,11 +18,11 @@ import {
     describe, it, expect,
 } from '../Common';
 
-export default function fileIOOpen() {
+export default function fileIOFileLock() {
   describe('fileIO_fs_file_lock', function () {
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_000
-     * @tc.name fileIO_test_filelock_promise_000
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_0000
+     * @tc.name fileIO_test_filelock_promise_0000
      * @tc.desc Test lock() interfaces. argument is : default.
      * Open the file, file lock() and unlock()
      * @tc.size MEDIUM
@@ -30,8 +30,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_000', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_000');
+    it('fileIO_test_filelock_promise_0000', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_0000');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -39,17 +39,19 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
             file.unlock();
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(true).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_000 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_0000 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_001
-     * @tc.name fileIO_test_filelock_promise_001
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_0001
+     * @tc.name fileIO_test_filelock_promise_0001
      * @tc.desc Test lock() interfaces. argument is : true.
      * Open the file, file lock(true) and unlock()
      * @tc.size MEDIUM
@@ -57,8 +59,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_001', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_001');
+    it('fileIO_test_filelock_promise_0001', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_0001');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -66,17 +68,19 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(true);
             file.unlock();
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(true).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_001 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_0001 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_002
-     * @tc.name fileIO_test_filelock_promise_002
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_0002
+     * @tc.name fileIO_test_filelock_promise_0002
      * @tc.desc Test lock() interfaces. argument is : false.
      * Open the file, file lock(false) and unlock()
      * @tc.size MEDIUM
@@ -84,8 +88,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_002', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_002');
+    it('fileIO_test_filelock_promise_0002', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_0002');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -93,17 +97,19 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(false);
             file.unlock();
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(true).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_002 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_0002 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_003
-     * @tc.name fileIO_test_filelock_promise_003
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_0003
+     * @tc.name fileIO_test_filelock_promise_0003
      * @tc.desc Test tryLock() interfaces. argument is : default.
      * Open the file, file lock() ,tryLock() and unlock()
      * @tc.size MEDIUM
@@ -111,8 +117,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_003', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_003');
+    it('fileIO_test_filelock_promise_0003', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_0003');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -121,17 +127,19 @@ export default function fileIOOpen() {
             await file.lock();
 			file.tryLock();
             file.unlock();
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(true).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_003 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_0003 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_004
-     * @tc.name fileIO_test_filelock_promise_004
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_0004
+     * @tc.name fileIO_test_filelock_promise_0004
      * @tc.desc Test tryLock() interfaces. argument is : true.
      * Open the file, file lock() ,tryLock(true) and unlock()
      * @tc.size MEDIUM
@@ -139,8 +147,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_004', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_004');
+    it('fileIO_test_filelock_promise_0004', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_0004');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -149,17 +157,19 @@ export default function fileIOOpen() {
             await file.lock();
 			file.tryLock(true);
             file.unlock();
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(true).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_004 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_0004 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_005
-     * @tc.name fileIO_test_filelock_promise_005
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_0005
+     * @tc.name fileIO_test_filelock_promise_0005
      * @tc.desc Test tryLock() interfaces. argument is : false.
      * Open the file, file lock() ,tryLock(false) and unlock()
      * @tc.size MEDIUM
@@ -167,8 +177,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_005', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_005');
+    it('fileIO_test_filelock_promise_0005', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_0005');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -177,25 +187,27 @@ export default function fileIOOpen() {
             await file.lock();
 			file.tryLock(false);
             file.unlock();
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(true).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_005 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_0005 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_006
-     * @tc.name fileIO_test_filelock_promise_006
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_0006
+     * @tc.name fileIO_test_filelock_promise_0006
      * @tc.desc Open the file, no file lock(), tryLock(), unlock(),
      * @tc.size MEDIUM
      * @tc.type Functoin
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_006', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_006');
+    it('fileIO_test_filelock_promise_0006', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_0006');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -203,42 +215,46 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
 			file.tryLock();
 			file.unlock();
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(true).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_006 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_0006 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_007
-     * @tc.name fileIO_test_filelock_promise_007
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_0007
+     * @tc.name fileIO_test_filelock_promise_0007
      * @tc.desc Open the file, no file lock(), no tryLock(), unlock(),
      * @tc.size MEDIUM
      * @tc.type Functoin
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_007', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_007');
+    it('fileIO_test_filelock_promise_0007', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_0007');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
 			file.unlock();
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(true).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_007 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_0007 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_000
-     * @tc.name fileIO_test_filelock_promise_abnormal_000
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0000
+     * @tc.name fileIO_test_filelock_promise_abnormal_0000
      * @tc.desc Test lock() interfaces. argument is : null.
      * Open the file, file lock(null).
      * @tc.size MEDIUM
@@ -246,25 +262,27 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_abnormal_000', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_000');
+    it('fileIO_test_filelock_promise_abnormal_0000', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_0000');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(null);
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(false).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_abnormal_000 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_abnormal_0000 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_001
-     * @tc.name fileIO_test_filelock_promise_abnormal_001
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0001
+     * @tc.name fileIO_test_filelock_promise_abnormal_0001
      * @tc.desc Test lock() interfaces. argument is : true, true.
      * Open the file, file lock(true, true).
      * @tc.size MEDIUM
@@ -272,25 +290,27 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_abnormal_001', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_001');
+    it('fileIO_test_filelock_promise_abnormal_0001', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_0001');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(true, true);
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(false).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_abnormal_001 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_abnormal_0001 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_002
-     * @tc.name fileIO_test_filelock_promise_abnormal_002
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0002
+     * @tc.name fileIO_test_filelock_promise_abnormal_0002
      * @tc.desc Test lock() interfaces. argument is : -1.
      * Open the file, file lock(-1).
      * @tc.size MEDIUM
@@ -298,25 +318,27 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_abnormal_002', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_002');
+    it('fileIO_test_filelock_promise_abnormal_0002', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_0002');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(-1);
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(false).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_abnormal_002 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_abnormal_0002 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_003
-     * @tc.name fileIO_test_filelock_promise_abnormal_003
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0003
+     * @tc.name fileIO_test_filelock_promise_abnormal_0003
      * @tc.desc Test tryLock() interfaces. argument is : null.
      * Open the file, file lock(), tryLock(null).
      * @tc.size MEDIUM
@@ -324,8 +346,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_abnormal_003', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_003');
+    it('fileIO_test_filelock_promise_abnormal_0003', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_0003');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -333,17 +355,19 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
 			file.tryLock(null);
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(false).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_abnormal_003 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_abnormal_0003 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_004
-     * @tc.name fileIO_test_filelock_promise_abnormal_004
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0004
+     * @tc.name fileIO_test_filelock_promise_abnormal_0004
      * @tc.desc Test tryLock() interfaces. argument is : true, true.
      * Open the file, file lock(), tryLock(true, true).
      * @tc.size MEDIUM
@@ -351,8 +375,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_abnormal_004', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_004');
+    it('fileIO_test_filelock_promise_abnormal_0004', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_0004');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -360,17 +384,19 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
 			file.tryLock(true, true);
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(false).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_abnormal_004 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_abnormal_0004 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_005
-     * @tc.name fileIO_test_filelock_promise_abnormal_005
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0005
+     * @tc.name fileIO_test_filelock_promise_abnormal_0005
      * @tc.desc Test tryLock() interfaces. argument is : -1.
      * Open the file, file lock(), tryLock(-1).
      * @tc.size MEDIUM
@@ -378,8 +404,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_abnormal_005', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_005');
+    it('fileIO_test_filelock_promise_abnormal_0005', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_0005');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -387,17 +413,19 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
 			file.tryLock(-1);
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(false).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_abnormal_005 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_abnormal_0005 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_006
-     * @tc.name fileIO_test_filelock_promise_abnormal_006
+     * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0006
+     * @tc.name fileIO_test_filelock_promise_abnormal_0006
      * @tc.desc Test unlock() interfaces. argument is : true.
      * Open the file, file lock(), tryLock(), unlock(true),
      * @tc.size MEDIUM
@@ -405,8 +433,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_promise_abnormal_006', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_006');
+    it('fileIO_test_filelock_promise_abnormal_0006', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_0006');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -415,18 +443,20 @@ export default function fileIOOpen() {
             await file.lock();
 			file.tryLock();
 			file.unlock(true);
+            file.closeSync(file.fd);
+            file.unlinkSync(fpath);
             expect(false).assertTrue();
             done();
         } catch (e) {
-            console.log('fileIO_test_filelock_promise_abnormal_006 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_promise_abnormal_0006 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
     });
 
     /**
-     * @tc.number FILE_TEST_FILELOCK_CALLBACK_000
-     * @tc.name fileIO_test_filelock_callback_000
+     * @tc.number FILE_TEST_FILELOCK_CALLBACK_0000
+     * @tc.name fileIO_test_filelock_callback_0000
      * @tc.desc Test lock() interfaces. argument is : default.
      * Open the file, file lock() and unlock()
      * @tc.size MEDIUM
@@ -434,8 +464,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_callback_000', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_callback_000');
+    it('fileIO_test_filelock_callback_0000', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_callback_0000');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -443,24 +473,25 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             file.lock((err) => {
                 if (err) {
-                    console.log('fileIO_test_filelock_callback_000 err ' + JSON.stringify(err));
+                    console.log('fileIO_test_filelock_callback_0000 err ' + JSON.stringify(err));
                     expect(false).assertTrue();
                     done();
                 }
-                file.tryLock();
                 file.unlock();
+                file.closeSync(file.fd);
+                file.unlinkSync(fpath);
                 expect(true).assertTrue();
                 done();
             });
         } catch (e) {
-            console.log('fileIO_test_filelock_callback_000 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_callback_0000 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_CALLBACK_001
-     * @tc.name fileIO_test_filelock_callback_001
+     * @tc.number FILE_TEST_FILELOCK_CALLBACK_0001
+     * @tc.name fileIO_test_filelock_callback_0001
      * @tc.desc Test lock() interfaces. argument is : true.
      * Open the file, file lock(true) and unlock()
      * @tc.size MEDIUM
@@ -468,8 +499,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_callback_001', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_callback_001');
+    it('fileIO_test_filelock_callback_0001', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_callback_0001');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -477,24 +508,25 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             file.lock(true, (err) => {
                 if (err) {
-                    console.log('fileIO_test_filelock_callback_001 err ' + JSON.stringify(err));
+                    console.log('fileIO_test_filelock_callback_0001 err ' + JSON.stringify(err));
                     expect(false).assertTrue();
                     done();
                 }
-                file.tryLock();
                 file.unlock();
+                file.closeSync(file.fd);
+                file.unlinkSync(fpath);
                 expect(true).assertTrue();
                 done();
             });
         } catch (e) {
-            console.log('fileIO_test_filelock_callback_001 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_callback_0001 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
      * @tc.number FILE_TEST_FILELOCK_CALLBACK_002
-     * @tc.name fileIO_test_filelock_callback_002
+     * @tc.name fileIO_test_filelock_callback_0002
      * @tc.desc Test lock() interfaces. argument is : false.
      * Open the file, file lock(false) and unlock()
      * @tc.size MEDIUM
@@ -502,8 +534,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_callback_002', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_callback_002');
+    it('fileIO_test_filelock_callback_0002', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_callback_0002');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -511,23 +543,25 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             file.lock(false, (err) => {
                 if (err) {
-                    console.log('fileIO_test_filelock_callback_002 err ' + JSON.stringify(err));
+                    console.log('fileIO_test_filelock_callback_0002 err ' + JSON.stringify(err));
                     expect(false).assertTrue();
                     done();
                 }
                 file.unlock();
+                file.closeSync(file.fd);
+                file.unlinkSync(fpath);
                 expect(true).assertTrue();
                 done();
             });
         } catch (e) {
-            console.log('fileIO_test_filelock_callback_002 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_callback_0002 has failed for ' + e.message + ', code: ' + e.code);
             expect(false).assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_CALLBACK_ABNORMAL_000
-     * @tc.name fileIO_test_filelock_callback_abnormal_000
+     * @tc.number FILE_TEST_FILELOCK_CALLBACK_ABNORMAL_0000
+     * @tc.name fileIO_test_filelock_callback_abnormal_0000
      * @tc.desc Test lock() interfaces. argument is : null.
      * Open the file, file lock(null).
      * @tc.size MEDIUM
@@ -535,8 +569,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_callback_abnormal_000', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_callback_abnormal_000');
+    it('fileIO_test_filelock_callback_abnormal_0000', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_callback_abnormal_0000');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -544,23 +578,25 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             file.lock(null, (err) => {
                 if (err) {
-                    console.log('fileIO_test_filelock_callback_abnormal_000 err ' + JSON.stringify(err));
+                    console.log('fileIO_test_filelock_callback_abnormal_0000 err ' + JSON.stringify(err));
                     expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
                     done();
                 }
                 file.unlock();
+                file.closeSync(file.fd);
+                file.unlinkSync(fpath);
                 expect(false).assertTrue();
                 done();
             });
         } catch (e) {
-            console.log('fileIO_test_filelock_callback_abnormal_000 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_callback_abnormal_0000 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_CALLBACK_ABNORMAL_001
-     * @tc.name fileIO_test_filelock_callback_abnormal_001
+     * @tc.number FILE_TEST_FILELOCK_CALLBACK_ABNORMAL_0001
+     * @tc.name fileIO_test_filelock_callback_abnormal_0001
      * @tc.desc Test lock() interfaces. argument is : true, true.
      * Open the file, file lock(true, true).
      * @tc.size MEDIUM
@@ -568,8 +604,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_callback_abnormal_001', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_callback_abnormal_001');
+    it('fileIO_test_filelock_callback_abnormal_0001', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_callback_abnormal_0001');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -577,23 +613,25 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             file.lock(true, true, (err) => {
                 if (err) {
-                    console.log('fileIO_test_filelock_callback_abnormal_001 err ' + JSON.stringify(err));
+                    console.log('fileIO_test_filelock_callback_abnormal_0001 err ' + JSON.stringify(err));
                     expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
                     done();
                 }
                 file.unlock();
+                file.closeSync(file.fd);
+                file.unlinkSync(fpath);
                 expect(false).assertTrue();
                 done();
             });
         } catch (e) {
-            console.log('fileIO_test_filelock_callback_abnormal_001 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_callback_abnormal_0001 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
     });
     /**
-     * @tc.number FILE_TEST_FILELOCK_CALLBACK_ABNORMAL_002
-     * @tc.name fileIO_test_filelock_callback_abnormal_002
+     * @tc.number FILE_TEST_FILELOCK_CALLBACK_ABNORMAL_0002
+     * @tc.name fileIO_test_filelock_callback_abnormal_0002
      * @tc.desc Test lock() interfaces. argument is : -1.
      * Open the file, file lock(-1).
      * @tc.size MEDIUM
@@ -601,8 +639,8 @@ export default function fileIOOpen() {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_filelock_callback_abnormal_002', 0, async function (done) {
-        let fpath = await nextFileName('fileIO_test_filelock_callback_abnormal_002');
+    it('fileIO_test_filelock_callback_abnormal_0002', 0, async function (done) {
+        let fpath = await nextFileName('fileIO_test_filelock_callback_abnormal_0002');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
         try {
@@ -610,16 +648,18 @@ export default function fileIOOpen() {
             expect(isIntNum(file.fd)).assertTrue();
             file.lock(-1, (err) => {
                 if (err) {
-                    console.log('fileIO_test_filelock_callback_abnormal_002 err ' + JSON.stringify(err));
+                    console.log('fileIO_test_filelock_callback_abnormal_0002 err ' + JSON.stringify(err));
                     expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
                     done();
                 }
                 file.unlock();
+                file.closeSync(file.fd);
+                file.unlinkSync(fpath);
                 expect(false).assertTrue();
                 done();
             });
         } catch (e) {
-            console.log('fileIO_test_filelock_callback_abnormal_002 has failed for ' + e.message + ', code: ' + e.code);
+            console.log('fileIO_test_filelock_callback_abnormal_0002 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
             done();
         }
