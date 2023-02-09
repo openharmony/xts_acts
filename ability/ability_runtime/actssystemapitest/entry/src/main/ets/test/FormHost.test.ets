@@ -905,7 +905,8 @@ export default function formHostTest() {
       let TAG = 'System_API_Test_Form_Host_3500';
       try {
         let formId = "1337079774";
-        formHost.shareForm(formId, null, (error, data) => {
+        let deviceId = "12400633174999288";
+        formHost.shareForm(formId, deviceId, (error, data) => {
           if (error) {
             console.log(TAG + ' formHost shareForm, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
@@ -929,8 +930,9 @@ export default function formHostTest() {
      */
     it('System_API_Test_Form_Host_3600',0, async function (done) {
       let TAG = 'System_API_Test_Form_Host_3600';
-      let formId = "12400633174999288";
-      formHost.shareForm(formId, null)
+      let formId = "1337079774";
+      let deviceId = "12400633174999288";
+      formHost.shareForm(formId, deviceId)
         .then(() => {
           expect().assertFail();
           done();

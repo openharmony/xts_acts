@@ -67,8 +67,8 @@ export default class MainAbility extends Ability {
 
         if (globalThis.abilityWant.action == 'startmultiple') {
                 globalThis.abilityContext.startAbility({
-                    bundleName: "com.example.staticinformationmultihappackage",
-                    abilityName: "com.example.staticinformationmultihappackage.MainAbility",
+                    bundleName: "com.acts.stinformationmulapp",
+                    abilityName: "com.acts.stinformationmulapp.MainAbility",
                     action: "multiple"
                 }, (err, data) => {
                     console.log('ACTS_getAbilityInfo_0500 MainAbility onForeground - startAbility restart singleton: '

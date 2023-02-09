@@ -98,13 +98,13 @@ struct ListLanes {
           .alignListItem(ListItemAlign.Start)
           .border({ width: 3, color: Color.Red })
           .lanes({ minLength: 40, maxLength: 60 })
-          .onScrollBegin((dx: number, dy: number) => {
-            if ((this.listPosition == 0 && dy >= 0) || (this.listPosition == 2 && dy <= 0)) {
-              this.scroller.scrollBy(0, -dy)
-              return { dxRemain: dx, dyRemain: 0 }
+          .onScrollFrameBegin((offset: number, state: ScrollState) => {
+            if ((this.listPosition == 0 && offset >= 0) || (this.listPosition == 2 && offset <= 0)) {
+              this.scroller.scrollBy(0, -offset)
+              return { offsetRemain: 0 }
             }
             this.listPosition = 1;
-            return { dxRemain: dx, dyRemain: dy }
+            return { offsetRemain: offset }
 
             try {
               var backData = {

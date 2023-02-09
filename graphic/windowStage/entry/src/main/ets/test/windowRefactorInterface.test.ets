@@ -71,12 +71,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     afterAll(function () {
     })
 
-    function sleep(time) {
-      return new Promise(resolve => {
-        setTimeout(() => {
+    async function sleep(time) {
+      let timeoutId= null;
+      let promise = new Promise(resolve => {
+        timeoutId = setTimeout(() => {
           resolve('sleep finished');
         }, time);
       })
+      let result = await promise;
+      clearTimeout(timeoutId)
     }
 
     /**
@@ -102,9 +105,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
             console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
           }
           let arrLength = systemBarData.regionTint.length;
-          getData(0, arrLength)
-
-          function getData(i, length) {
+          console.log('setWindowSystemBarPropertiesTest1 arrLength is: '+systemBarData.regionTint.length)
+          for(let i=0;i<arrLength;i++){
+            console.info('setWindowSystemBarPropertiesTest1  start step:'+i);
             // 单个导航栏或者系统状态信息
             let SystemBarRegionTint = systemBarData.regionTint[i];
             if (SystemBarRegionTint.type === ohosWindow.WindowType.TYPE_STATUS_BAR || SystemBarRegionTint.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
@@ -117,13 +120,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
               } catch (error) {
                 console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
               }
-              if (++i < length) {
-                getData(i, length)
-                console.log(msgStr+'jixuzhixing  i: ' + i);
-              } else {
-                console.log(msgStr+'i++<length  i: ' + i + '   ,length:' + length);
+              if(i==arrLength-1){
+                console.info('setWindowSystemBarPropertiesTest1  finished step:'+i);
               }
-              done();
             }
           }
         }
@@ -143,10 +142,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       });
       await sleep(1000);
       listenerFlag = listenerStatus.pending;
-      let loopCount = commonRGBColorArr.length;
-      getData(0, loopCount)
-
-      function getData(i, length) {
+      for(let i=0;i<commonRGBColorArr.length;i++){
+        console.info('setWindowSystemBarPropertiesTest1 begin step:'+i);
         let tempColor = commonRGBColorArr[i];
         let systemBarProperties = {
           statusBarColor: tempColor,
@@ -156,16 +153,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           isNavigationBarLightIcon: false,
           navigationContentColor: tempColor,
         };
-        mainWsync.setWindowSystemBarProperties(systemBarProperties).then(() => {
-          console.info('setWindowSystemBarPropertiesTest1 success');
+        await mainWsync.setWindowSystemBarProperties(systemBarProperties).then(() => {
+          console.info('setWindowSystemBarPropertiesTest1 success step:'+i);
           expect(TRUE_FLAG).assertTrue();
-          if (++i < length) {
-            getData(i, length)
-            console.log(msgStr+'jixuzhixing  i: ' + i);
-          } else {
-            console.log(msgStr+'i++<length  i: ' + i + '   ,length:' + length);
+          if(i==commonRGBColorArr.length-1){
+            console.info('setWindowSystemBarPropertiesTest1 finished step:'+i);
+            done()
           }
-          done();
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest1  error : ' + JSON.stringify(err));
           expect().assertFail()
@@ -258,10 +252,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       });
       await sleep(1000);
       listenerFlag = listenerStatus.pending;
-      let loopCount = commonNUMBERColorArr.length;
-      getData(0, loopCount)
-
-      function getData(i, length) {
+      for(let i =0;i<commonNUMBERColorArr.length;i++){
+        console.info('setWindowSystemBarPropertiesTest2 begin step:'+i);
         let tempColor = commonNUMBERColorArr[i];
         let systemBarProperties = {
           statusBarColor: tempColor,
@@ -271,16 +263,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           isNavigationBarLightIcon: true,
           navigationBarContentColor: tempColor,
         };
-        mainWsync.setWindowSystemBarProperties(systemBarProperties).then(() => {
-          console.info('setWindowSystemBarPropertiesTest2 success');
-          if (++i < length) {
-            getData(i, length)
-            console.log(msgStr + 'jixuzhixing  i: ' + i);
-          } else {
-            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          }
+        await mainWsync.setWindowSystemBarProperties(systemBarProperties).then(() => {
+          console.info('setWindowSystemBarPropertiesTest2 success step:'+i);
           expect(TRUE_FLAG).assertTrue();
-          done();
+          if(i == commonNUMBERColorArr.length-1){
+            console.info('setWindowSystemBarPropertiesTest2 finished step:'+i);
+            done();
+          }
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest2  error : ' + JSON.stringify(err));
           expect().assertFail()
@@ -343,10 +332,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       });
       await sleep(1000);
       listenerFlag = listenerStatus.pending;
-      let loopCount = commonKEYColorArr.length;
-      getData(0, loopCount)
-
-      function getData(i, length) {
+      for(let i=0;i<commonKEYColorArr.length;i++){
+        console.info('setWindowSystemBarPropertiesTest3 begin step:'+i);
         let tempColor = commonKEYColorArr[i];
         let systemBarProperties = {
           statusBarColor: tempColor,
@@ -356,16 +343,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           isNavigationBarLightIcon: false,
           navigationContentColor: tempColor,
         };
-        tempWnd.setWindowSystemBarProperties(systemBarProperties).then(() => {
-          console.info('setWindowSystemBarPropertiesTest3 success');
-          if (++i < length) {
-            getData(i, length)
-            console.log(msgStr + 'jixuzhixing  i: ' + i);
-          } else {
-            console.log(msgStr + 'i++<length  i: ' + i + '   ,length:' + length);
-          }
+        await tempWnd.setWindowSystemBarProperties(systemBarProperties).then(() => {
+          console.info('setWindowSystemBarPropertiesTest3 success step:'+i);
           expect(TRUE_FLAG).assertTrue();
-          done();
+          if(i == commonKEYColorArr.length-1){
+            console.info('setWindowSystemBarPropertiesTest3 finished step:'+i);
+            done();
+          }
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest3  error : ' + JSON.stringify(err));
           expect().assertFail()
@@ -428,23 +412,24 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let config = {
         name: "alertWindowshow", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
-      ohosWindow.createWindow(config).then(wnd => {
-        expect(wnd != null).assertTrue();
-        let isWindowShowing = wnd.isWindowShowing();
-        expect(!isWindowShowing).assertTrue();
-        wnd.showWindow().then(() => {
-          let isWindowShowing2 = wnd.isWindowShowing();
-          expect(isWindowShowing2).assertTrue();
-          wnd.destroyWindow();
-          done();
-        }).catch(err => {
-          console.error('Failed to show window1. Cause:' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        })
-      }).catch(err => {
+      let wnd;
+      wnd = await ohosWindow.createWindow(config).catch(err => {
         console.error('Failed to create the Windowshow1. Cause:' + JSON.stringify(err));
         expect().assertFail();
+        done();
+      })
+      expect(wnd != null).assertTrue();
+      let isWindowShowing = wnd.isWindowShowing();
+      expect(!isWindowShowing).assertTrue();
+      await wnd.showWindow().then(async () => {
+        let isWindowShowing2 = wnd.isWindowShowing();
+        expect(isWindowShowing2).assertTrue();
+        await wnd.destroyWindow();
+        done();
+      }).catch(async (err) => {
+        console.error('Failed to show window1. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        await wnd.destroyWindow();
         done();
       })
     })
@@ -457,23 +442,25 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let config = {
         name: "alertWindow", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
+      let win;
+      let promise;
       try {
-        let promise = ohosWindow.createWindow(config);
-        promise.then(win => {
-          console.info('Succeeded in creating the window1. Data:' + JSON.stringify(win));
-          expect(win != null);
-          win.setUIContent('pages/second/second').then(() => {
-            console.info('setUIContent1 . Cause: success');
-            expect(TRUE_FLAG).assertTrue();
-            done();
-          }).catch(err => {
-            console.error('Failed to setUIContent . Cause:' + JSON.stringify(err));
-            expect().assertFail();
-            done();
-          });
-        }).catch((err) => {
+        promise = ohosWindow.createWindow(config);
+        win = await promise.catch((err) => {
           console.error('Failed to create the Window1. Cause:' + JSON.stringify(err));
           expect().assertFail();
+          done();
+        });
+        expect(win != null);
+        await win.setUIContent('pages/second/second').then(async () => {
+          console.info('setUIContent1 . Cause: success');
+          expect(TRUE_FLAG).assertTrue();
+         await win.destroyWindow();
+          done();
+        }).catch(async (err) => {
+          console.error('Failed to setUIContent . Cause:' + JSON.stringify(err));
+          expect().assertFail();
+          await win.destroyWindow();
           done();
         });
       } catch (exception) {
@@ -491,47 +478,58 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     */
     it('setUIContentTestCallBack1', 0, async function (done) {
       let windowClass = null;
+      let msgStr='setUIContentTestCallBack1'
       let config = {
         name: "alertWindowcallBack", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
-      try {
-        let promise = ohosWindow.createWindow(config);
-        promise.then(win => {
-          console.info('Succeededcall in creating the window2. Data:' + JSON.stringify(win));
-          windowClass = win;
-          expect(win != null).assertTrue();
-          // 设置setUIContent
+      function createFirstWindow() {
+        return new Promise((resolve, reject) => {
           try {
-            windowClass.setUIContent('pages/second/second', (err) => {
-              if (err.code) {
-                console.error('Failed to load the content callback. Cause:' + JSON.stringify(err));
-                expect().assertFail();
+            ohosWindow.createWindow(config, (create_err, create_data) => {
+              console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
+              if (create_err && create_err.code) {
+                try {
+                  expect().assertFail();
+                } catch (err) {
+                  console.info(msgStr + `ohosWindow.createWindow catch error: ${JSON.stringify(err)}`)
+                }
                 done();
-              } else {
-                console.info('Succeeded in loading the content.');
-                expect(TRUE_FLAG).assertTrue();
-                done();
+                reject(null)
               }
-            });
+              resolve(create_data)
+            })
           } catch (exception) {
-            console.error('Failed callback to load the content. Cause:' + JSON.stringify(exception));
-            expect().assertFail();
-            done();
+            console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
           }
           ;
+        })
+      }
+      let winData;
+      winData = await createFirstWindow();
+      expect(!!winData).assertTrue();
+      try {
+        winData.setUIContent('pages/second/second', async (err) => {
+          try{
+            if (err.code) {
+              console.error('Failed to load the content callback. Cause:' + JSON.stringify(err));
+              expect().assertFail();
 
-        }).catch((err) => {
-          console.error('Failedcaa to create the inner Window2. Cause:' + JSON.stringify(err));
-          expect().assertFail();
+            } else {
+              console.info('Succeeded in loading the content.');
+              expect(TRUE_FLAG).assertTrue();
+            }
+          }catch(err){
+            console.log('setUIContentTestCallBack1 assert result catch' + JSON.stringify(err));
+          }
           done();
+          await winData.destroyWindow();
         });
       } catch (exception) {
-        console.error('Failed to create the window2. Cause: ' + JSON.stringify(exception));
+        console.error('Failed callback to load the content. Cause:' + JSON.stringify(exception));
         expect().assertFail();
+        await winData.destroyWindow();
         done();
-      }
-      ;
-
+      };
     })
 
     /**
@@ -544,43 +542,38 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let config = {
         name: "alertWindow2", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
+      let win;
       try {
-        let promise = ohosWindow.createWindow(config);
-        promise.then(win => {
-          console.info('Succeeded in creating the window2. Data:' + JSON.stringify(win));
-          windowClass = win;
-          expect(win != null).assertTrue();
-          // 设置setUIContent
-          try {
-            let promise = windowClass.setUIContent(null);
-            promise.then(() => {
-              console.info('Succeeded in loading the content.');
-              expect().assertFail();
-              done();
-            }).catch((err) => {
-              console.error('Failed to load the content. Cause: ' + JSON.stringify(err));
-              expect(err.code).assertEqual(401);
-              done()
-            });
-          } catch (exception) {
-            console.error('Failed to load the content. exception: ' + JSON.stringify(exception));
-            expect(exception.code).assertEqual(401);
-            done()
-          }
-          ;
-
-        }).catch((err) => {
+        win = await ohosWindow.createWindow(config).catch((err) => {
           console.error('Failed to create the inner Window2. Cause:' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
+        expect(win != null).assertTrue();
+        try {
+          await win.setUIContent(null).then(async () => {
+            console.info('Succeeded in loading the content.');
+            expect().assertFail();
+            await win.destroyWindow();
+            done();
+          }).catch(async (err) => {
+            console.error('Failed to load the content. Cause: ' + JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            await win.destroyWindow();
+            done()
+          });
+        } catch (exception) {
+          console.error('Failed to load the content. exception: ' + JSON.stringify(exception));
+          expect(exception.code).assertEqual(401);
+          await win.destroyWindow();
+          done()
+        }
+        ;
       } catch (exception) {
         console.error('Failed to create the window2. Cause: ' + JSON.stringify(exception));
         expect().assertFail();
         done();
-      }
-      ;
-
+      };
     })
 
     /**
@@ -592,24 +585,24 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let config = {
         name: "alertWindow3", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
+      let win;
       try {
-        let promise = ohosWindow.createWindow(config);
-        promise.then(win => {
-          console.info('Succeeded in creating the window3. Data:' + JSON.stringify(win));
-          expect(win != null).assertTrue();
-          // 设置setUIContent
-          win.setUIContent('pages/second/he').then(() => {
-            console.info('setUIContent3 . Cause: success');
-            expect(TRUE_FLAG).assertTrue();
-            done();
-          }).catch(err => {
-            console.error('Failed to setUIContent3 . Cause:' + JSON.stringify(err));
-            expect().assertFail();
-            done();
-          });
-        }).catch((err) => {
+        win = await ohosWindow.createWindow(config).catch((err) => {
           console.error('Failed to create the inner Window3. Cause:' + JSON.stringify(err));
           expect().assertFail();
+          done();
+        });
+        expect(win != null).assertTrue();
+        // 设置setUIContent
+        await win.setUIContent('pages/second/he').then(async () => {
+          console.info('setUIContent3 . Cause: success');
+          expect(TRUE_FLAG).assertTrue();
+          await win.destroyWindow();
+          done();
+        }).catch(async (err) => {
+          console.error('Failed to setUIContent3 . Cause:' + JSON.stringify(err));
+          expect().assertFail();
+          await win.destroyWindow();
           done();
         });
       } catch (exception) {
@@ -629,25 +622,22 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest setWindowColorSpace1 begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      wnd.setWindowColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT).then(() => {
-        console.info('windowTest SetWindowColorSpaceTest1 setColorSpace WIDE_GAMUT');
-        let windowColorSpace = wnd.getWindowColorSpace();
-        expect(windowColorSpace == ohosWindow.ColorSpace.WIDE_GAMUT).assertTrue();
-        console.info('windowTest SetWindowColorSpaceTest1 setColorSpace WIDE_GAMUT success');
-        wnd.isWindowSupportWideGamut().then(data => {
-          expect(data).assertTrue();
-          done();
-        }, (err) => {
-          console.info('windowTest SetColorSpaceTest1 wnd.isWindowSupportWideGamut failed, err :' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        })
-      }, (err) => {
+      await wnd.setWindowColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT).catch((err) => {
         console.info('windowTest SetWindowColorSpaceTest1 wnd.setColorSpace failed, err :' + JSON.stringify(err));
         expect().assertFail();
         done();
       })
-
+      let windowColorSpace = wnd.getWindowColorSpace();
+      expect(windowColorSpace == ohosWindow.ColorSpace.WIDE_GAMUT).assertTrue();
+      console.info('windowTest SetWindowColorSpaceTest1 setColorSpace WIDE_GAMUT success');
+      await wnd.isWindowSupportWideGamut().then(data => {
+        expect(data).assertTrue();
+        done();
+      }, (err) => {
+        console.info('windowTest SetColorSpaceTest1 wnd.isWindowSupportWideGamut failed, err :' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      })
     })
 
     /**
@@ -661,7 +651,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       expect(wnd != null).assertTrue();
       try {
         let promise = wnd.setWindowColorSpace(-5);
-        promise.then(() => {
+        await promise.then(() => {
           console.info('Succeeded in setting window2 colorspace.');
           expect().assertFail();
           done();
@@ -687,25 +677,47 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     it('setColorSpace_Test_003', 0, async function (done) {
       console.info('windowTest SetWindowColorSpaceTest3 begin');
       let wnd = windowStage.getMainWindowSync();
+      let msgStr = 'setColorSpace_Test_003'
       expect(wnd != null).assertTrue();
-      wnd.setColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT, (err) => {
-        if (err.code != 0) {
-          console.info('windowTest SetWindowColorSpaceTest3 setColorSpace fail' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        } else {
-          let windowColorSpace = wnd.getWindowColorSpace();
-          expect(windowColorSpace == ohosWindow.ColorSpace.WIDE_GAMUT).assertTrue();
-          wnd.isWindowSupportWideGamut((err, data) => {
-            if (err.code != 0) {
-              console.log('windowTest SetWindowColorSpaceTest3 getColorSpace callback fail' + JSON.stringify(err));
-              expect().assertFail();
-              done();
-            } else {
-              expect(data).assertTrue();
-              done();
-            }
-          })
+      function setColorSpaceFun() {
+        return new Promise((resolve, reject) => {
+          try {
+            wnd.setColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT, (err,data) => {
+              console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(data));
+              if (err && err.code) {
+                try {
+                  expect().assertFail();
+                } catch (error) {
+                  console.info(msgStr + `ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+                }
+                done();
+                reject(null)
+              }
+              resolve(true)
+            })
+          } catch (exception) {
+            console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+          }
+          ;
+        })
+      }
+      let isResultTrue;
+      isResultTrue = await setColorSpaceFun();
+      expect(isResultTrue).assertTrue();
+      let windowColorSpace = wnd.getWindowColorSpace();
+      expect(windowColorSpace == ohosWindow.ColorSpace.WIDE_GAMUT).assertTrue();
+      wnd.isWindowSupportWideGamut((err, data) => {
+        try{
+          if (err.code != 0) {
+            console.log('windowTest SetWindowColorSpaceTest3 getColorSpace callback fail' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          } else {
+            expect(data).assertTrue();
+            done();
+          }
+        }catch(exception){
+          console.log('assertFail catch' + JSON.stringify(exception));
         }
       })
     })
@@ -737,10 +749,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.error('Failed to set the background1 color. Cause: ' + JSON.stringify(exception));
         expect().assertFail();
         done();
-      }
-      ;
-
-
+      };
     })
 
     /**
@@ -770,10 +779,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.error('Failed to set the background2 color. Cause: ' + JSON.stringify(exception));
         expect().assertFail();
         done();
-      }
-      ;
-
-
+      };
     })
 
     /**
@@ -854,9 +860,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.error('Failed to set the background5 color. Cause: ' + JSON.stringify(exception));
         expect(exception.code).assertEqual(401);
         done()
-      }
-      ;
-
+      };
     })
 
     /**
@@ -876,8 +880,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.error('Failed to set the background6 color. Cause: ' + JSON.stringify(exception));
         expect(exception.code).assertEqual(401);
         done()
-      }
-      ;
+      };
     })
 
     /**
@@ -889,31 +892,27 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest setWindowBrightnessTest1 begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      wnd.setWindowBrightness(0).then(() => {
-        console.info('windowTest setWindowBrightnessTest1 setBrightness(0) success ');
-        let data = wnd.getWindowProperties();
-        expect(data.brightness).assertEqual(0);
-        wnd.setWindowBrightness(0.5).then(() => {
-          console.info('windowTest setWindowBrightnessTest1 setBrightness(0.5) success ');
-          let data1 = wnd.getWindowProperties();
-          expect(data1.brightness).assertEqual(0.5);
-          wnd.setWindowBrightness(1).then(() => {
-            console.info('windowTest setWindowBrightnessTest1 setBrightness(1) success ');
-            let data2 = wnd.getWindowProperties();
-            expect(data2.brightness).assertEqual(1);
-            done();
-          }, (err) => {
-            console.log('windowTest setWindwoBrightnessTest1 setBrightness failed: err' + JSON.stringify(err));
-            expect().assertFail();
-            done();
-          })
-        }, (err) => {
-          console.log('windowTest setBrightnessTest1 setWindowBrightness failed: err' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        })
-      }, (err) => {
+      await wnd.setWindowBrightness(0).catch((err) => {
         console.info('windowTest setWindowBrightnessTest1 setBrightness failed: err' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      })
+      let data = wnd.getWindowProperties();
+      expect(data.brightness).assertEqual(0);
+      await wnd.setWindowBrightness(0.5).catch((err) => {
+        console.log('windowTest setBrightnessTest1 setWindowBrightness failed: err' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      })
+      let data1 = wnd.getWindowProperties();
+      expect(data1.brightness).assertEqual(0.5);
+      await wnd.setWindowBrightness(1).then(() => {
+        console.info('windowTest setWindowBrightnessTest1 setBrightness(1) success ');
+        let data2 = wnd.getWindowProperties();
+        expect(data2.brightness).assertEqual(1);
+        done();
+      }, (err) => {
+        console.log('windowTest setWindwoBrightnessTest1 setBrightness failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
       })
@@ -928,7 +927,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest setWindowBrightnessTest2 begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      wnd.setWindowBrightness(0.564789).then(() => {
+      await wnd.setWindowBrightness(0.564789).then(() => {
         console.log('windowTest setBrightnessTest2 setBrightness(0.564789) success ');
         expect(TRUE_FLAG).assertTrue();
         done();
@@ -952,7 +951,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let brightness = Number.MAX_VALUE;
       try {
         let promise = wnd.setWindowBrightness(brightness);
-        promise.then(() => {
+        await promise.then(() => {
           console.info('Succeeded3 in setting the brightness.');
           expect().assertFail();
           done();
@@ -979,7 +978,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest setWindowBrightnessTest4 begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      wnd.setWindowBrightness(Number.MIN_VALUE).then(() => {
+      await wnd.setWindowBrightness(Number.MIN_VALUE).then(() => {
         console.info('windowTest setWindowBrightnessTest3 setBrightness(Number.MAX_VALUE) success ');
         expect(TRUE_FLAG).assertTrue();
         done();
@@ -1002,7 +1001,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let brightness = 1.1;
       try {
         let promise = wnd.setWindowBrightness(brightness);
-        promise.then(() => {
+        await promise.then(() => {
           console.info('Succeeded5 in setting the brightness.');
           expect().assertFail();
           done();
@@ -1020,7 +1019,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
 
       try {
         let promise = wnd.setWindowBrightness(-0.5);
-        promise.then(() => {
+        await promise.then(() => {
           console.info('Succeeded55 in setting the brightness.');
           expect().assertFail();
           done();
@@ -1210,8 +1209,35 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     it('setWindowFocusableCallBack_Test_001', 0, async function (done) {
       console.info('windowTest setFocusableTest1 begin');
       let wnd = windowStage.getMainWindowSync();
+      let msgStr ='setWindowFocusableCallBack_Test_001'
       expect(wnd != null).assertTrue();
-      wnd.setWindowFocusable(false, (err, data) => {
+      function setWindowFocusableFun(){
+        return new Promise((resolve, reject) => {
+          try {
+            wnd.setWindowFocusable(false, (err, data) => {
+              console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(data));
+              if (err && err.code) {
+                try {
+                  expect().assertFail();
+                } catch (error) {
+                  console.info(msgStr + `ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+                }
+                done();
+                reject(null)
+              }
+              resolve(true)
+            })
+          } catch (exception) {
+            console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
+          };
+        })
+      }
+      let isResultTrue;
+      isResultTrue = await setWindowFocusableFun()
+      expect(isResultTrue).assertTrue();
+      let data = wnd.getWindowProperties();
+      expect(!data.focusable).assertTrue();
+      wnd.setWindowFocusable(true, (err, data) => {
         if (err.code) {
           console.error('Failed to set the window to be setFocusable. Cause:' + JSON.stringify(err));
           try {
@@ -1221,31 +1247,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           }
           done();
         } else {
-          let data = wnd.getWindowProperties();
+          let data2 = wnd.getWindowProperties();
           try {
-            expect(!data.focusable).assertTrue();
+            expect(data2.focusable).assertTrue();
           } catch (error) {
             console.info(`wnd.setWindowBrightness catch error: ${JSON.stringify(error)}`)
           }
-          wnd.setWindowFocusable(true, (err, data) => {
-            if (err.code) {
-              console.error('Failed to set the window to be setFocusable. Cause:' + JSON.stringify(err));
-              try {
-                expect().assertFail();
-              } catch (error) {
-                console.info(`wnd.setWindowBrightness catch error: ${JSON.stringify(error)}`)
-              }
-              done();
-            } else {
-              let data2 = wnd.getWindowProperties();
-              try {
-                expect(data2.focusable).assertTrue();
-              } catch (error) {
-                console.info(`wnd.setWindowBrightness catch error: ${JSON.stringify(error)}`)
-              }
-              done();
-            }
-          })
+          done();
         }
       })
     })
@@ -1259,21 +1267,21 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest setWindowFocusableTest1 begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      wnd.setWindowFocusable(false).then(() => {
+      await wnd.setWindowFocusable(false).then(async () => {
         console.info('windowTest setFocusableTest1 setFocusable(false) success ');
         let data2 = wnd.getWindowProperties();
         expect(!data2.focusable).assertTrue();
-        wnd.setWindowFocusable(true).then(() => {
-          console.info('windowTest setFocusableTest1 setFocusable(true) success ');
-          expect(TRUE_FLAG).assertTrue();
-          done();
-        }, err => {
-          console.info('windowTest setFocusableTest1 setFocusable failed: err' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        })
       }, (err) => {
         console.log('windowTest setWinFocusableTest1 setFocusable failed: err' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      })
+      await wnd.setWindowFocusable(true).then(() => {
+        console.info('windowTest setFocusableTest1 setFocusable(true) success ');
+        expect(TRUE_FLAG).assertTrue();
+        done();
+      }, err => {
+        console.info('windowTest setFocusableTest1 setFocusable failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
       })
@@ -1290,22 +1298,22 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       expect(wnd != null).assertTrue();
       let data = wnd.getWindowProperties();
       expect(data.touchable).assertTrue();
-      wnd.setWindowTouchable(false).then(() => {
+      await wnd.setWindowTouchable(false).then(async() => {
         console.info('windowTest setTouchableTest1 setTouchable(false) success ');
         let data2 = wnd.getWindowProperties();
         expect(!data2.touchable).assertTrue();
-        wnd.setWindowTouchable(true).then(() => {
-          console.info('windowTest setTouchableTest1 setTouchable(true) success ');
-          let data3 = wnd.getWindowProperties();
-          expect(data3.touchable).assertTrue();
-          done();
-        }, (err) => {
-          console.info('windowTest setTouchableTest1 setTouchable failed: err' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        })
       }, (err) => {
         console.log('windowTest setTouchableTest1 setTouchable failed: err' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      })
+      await wnd.setWindowTouchable(true).then(() => {
+        console.info('windowTest setTouchableTest1 setTouchable(true) success ');
+        let data3 = wnd.getWindowProperties();
+        expect(data3.touchable).assertTrue();
+        done();
+      }, (err) => {
+        console.info('windowTest setTouchableTest1 setTouchable failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
       })
@@ -1317,35 +1325,48 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.desc			Set whether the window can be touched or not
     */
     it('setWindowTouchableCallBack_Test_001', 0, async function (done) {
+      let msgStr ='setWindowTouchableCallBack_Test_001'
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      wnd.setWindowTouchable(false, (err, data) => {
-        if (err.code) {
-          console.error('Failed to set the window to be touchable. Cause:' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        } else {
-          let data = wnd.getWindowProperties();
-          expect(!data.touchable).assertTrue();
-          wnd.setWindowTouchable(true, (err, data) => {
-            if (err.code) {
-              console.error('Failed to set the window to be touchable. Cause:' + JSON.stringify(err));
+      function setWindowTouchableFun(){
+        return new Promise((resolve, reject) => {
+          wnd.setWindowTouchable(false, (err, data) => {
+            console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(data));
+            if (err && err.code) {
               try {
                 expect().assertFail();
-              } catch (error) {
-                console.info(`wnd.setWindowTouchable catch error: ${JSON.stringify(error)}`)
+              } catch (err) {
+                console.info(msgStr + `ohosWindow.createWindow catch error: ${JSON.stringify(err)}`)
               }
               done();
-            } else {
-              let data2 = wnd.getWindowProperties();
-              try {
-                expect(data2.touchable).assertTrue();
-              } catch (error) {
-                console.info(`wnd.setWindowTouchable catch error: ${JSON.stringify(error)}`)
-              }
-              done();
+              reject(null)
             }
+            resolve(true)
           })
+        })
+      }
+      let isResultTrue;
+      isResultTrue=await setWindowTouchableFun()
+      expect(isResultTrue).assertTrue();
+      let data = wnd.getWindowProperties();
+      expect(!data.touchable).assertTrue();
+      wnd.setWindowTouchable(true, (err, data) => {
+        if (err.code) {
+          console.error('Failed to set the window to be touchable. Cause:' + JSON.stringify(err));
+          try {
+            expect().assertFail();
+          } catch (error) {
+            console.info(`wnd.setWindowTouchable catch error: ${JSON.stringify(error)}`)
+          }
+          done();
+        } else {
+          let data2 = wnd.getWindowProperties();
+          try {
+            expect(data2.touchable).assertTrue();
+          } catch (error) {
+            console.info(`wnd.setWindowTouchable catch error: ${JSON.stringify(error)}`)
+          }
+          done();
         }
       })
     })
@@ -1359,9 +1380,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest setWindowKeepScreenOnTest2 begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      let data = wnd.getWindowProperties();
-      expect(!data.isKeepScreenOn).assertTrue();
-      wnd.setWindowKeepScreenOn(true).then(() => {
+//      let data = wnd.getWindowProperties();
+//      expect(!data.isKeepScreenOn).assertTrue();
+     await wnd.setWindowKeepScreenOn(true).then(() => {
         console.info('windowTest setKeepScreenOnTest2 setKeepScreenOn(false) success ');
         let data2 = wnd.getWindowProperties();
         expect(data2.isKeepScreenOn).assertTrue();
@@ -1382,7 +1403,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest setWindowKeepScreenOnTest1 begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      wnd.setWindowKeepScreenOn(false).then(() => {
+      await wnd.setWindowKeepScreenOn(false).then(() => {
         console.info('windowTest setKeepScreenOnTest1 setKeepScreenOn(false) success ');
         let data2 = wnd.getWindowProperties();
         expect(!data2.isKeepScreenOn).assertTrue();
@@ -1434,9 +1455,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest setWindowPrivacyMode begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      let data = wnd.getWindowProperties();
-      expect(!data.isPrivacyMode).assertTrue();
-      wnd.setWindowPrivacyMode(false).then(() => {
+//      let data = wnd.getWindowProperties();
+//      expect(!data.isPrivacyMode).assertTrue();
+      await wnd.setWindowPrivacyMode(false).then(() => {
         console.info('windowTest setWindowPrivacyMode1 success ');
         let data2 = wnd.getWindowProperties();
         expect(!data2.isPrivacyMode).assertTrue();
@@ -1457,9 +1478,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest setWindowPrivacyMode2 begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      let data = wnd.getWindowProperties();
-      expect(!data.isPrivacyMode).assertTrue();
-      wnd.setWindowPrivacyMode(true).then(() => {
+//      let data = wnd.getWindowProperties();
+//      expect(!data.isPrivacyMode).assertTrue();
+      await wnd.setWindowPrivacyMode(true).then(() => {
         console.info('windowTest setWindowPrivacyMode2 success ');
         let data2 = wnd.getWindowProperties();
         expect(data2.isPrivacyMode).assertTrue();

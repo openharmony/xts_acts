@@ -170,11 +170,12 @@ describe('fieldNodeTest', function() {
      it('testtype001', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.value.type.STRING;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.STRING).assertTrue()
+            node.type = ddm.ValueType.STRING;
+            console.info('testtype001 type = ' + node.type);
+            expect(node.type === ddm.ValueType.STRING).assertTrue();
         } catch (e) {
             console.info("testtype001 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
@@ -187,11 +188,12 @@ describe('fieldNodeTest', function() {
      it('testtype002', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.INTEGER;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.INTEGER).assertTrue()
+            node.type = ddm.ValueType.INTEGER;
+            console.info('testtype002 type = ' + node.type);
+            expect(node.type === ddm.ValueType.INTEGER).assertTrue();
         } catch (e) {
             console.info("testtype002 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
@@ -204,11 +206,12 @@ describe('fieldNodeTest', function() {
      it('testtype003', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.FLOAT;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.FLOAT).assertTrue()
+            node.type = ddm.ValueType.FLOAT;
+            console.info('testtype003 type = ' + node.type);
+            expect(node.type === ddm.ValueType.FLOAT).assertTrue();
         } catch (e) {
             console.info("testtype003 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
@@ -221,11 +224,12 @@ describe('fieldNodeTest', function() {
      it('testtype004', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.BYTE_ARRAY;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.BYTE_ARRAY).assertTrue()
+            node.type = ddm.ValueType.BYTE_ARRAY;
+            console.info('testtype004 type = ' + node.type);
+            expect(node.type === ddm.ValueType.BYTE_ARRAY).assertTrue();
         } catch (e) {
             console.info("testtype004 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
@@ -238,11 +242,13 @@ describe('fieldNodeTest', function() {
      it('testtype005', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.BOOLEAN;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.ValueType.BOOLEAN).assertTrue()
+            node.type = ddm.ValueType.BOOLEAN;
+            console.info('testtype005 type = ' + node.type);
+            expect(node.type === ddm.ValueType.BOOLEAN).assertTrue();
         } catch (e) {
             console.info("testtype005 fail on exception: " + e);
+            expect(null).assertFail();
+
         }
         done();
     })
@@ -255,11 +261,12 @@ describe('fieldNodeTest', function() {
      it('testtype006', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.DOUBLE;
-            console.info('type = ' + node.type);
-            expect(node.type === ddm.type.DOUBLE).assertTrue()
+            node.type = ddm.ValueType.DOUBLE;
+            console.info('testtype006 type = ' + node.type);
+            expect(node.type === ddm.ValueType.DOUBLE).assertTrue();
         } catch (e) {
             console.info("testtype006 fail on exception: " + e);
+            expect(null).assertFail();
         }
         done();
     })
