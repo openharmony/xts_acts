@@ -1122,6 +1122,31 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
   })
 
   /**
+   * @tc.number: SUB_USB_JS_1580
+   * @tc.name: releaseInterface
+   * @tc.desc: Negative test: release Interface, parameter iface type error
+   */
+  it('SUB_USB_JS_1580', 0, function () {
+    console.info('usb SUB_USB_JS_1580 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb 1580 case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    
+    var TmpInterface = "invalid";
+    try {
+      var maskCode = usb.releaseInterface(gPipe, TmpInterface);
+      console.info('usb 1580 case releaseInterface return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1580 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1580 :  PASS');
+    }
+  })
+
+  /**
    * @tc.number: SUB_USB_JS_0820
    * @tc.name: setInterface
    * @tc.desc: Negative test: Set device interface, Interface protocol error
@@ -1257,6 +1282,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
       return
+
     }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
@@ -1338,6 +1364,36 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       console.info('usb 1460 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1460 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1550
+   * @tc.name: setInterface
+   * @tc.desc: Negative test: Set device interface, parameter iface type error
+   */
+  it('SUB_USB_JS_1550', 0, function () {
+    console.info('usb SUB_USB_JS_1550 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case 1550 get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case 1550 get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    
+    var TmpInterface = "invalid";
+    try {
+      var maskCode = usb.setInterface(gPipe, TmpInterface);
+      console.info('usb 1550 case setInterface return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1550 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1550 :  PASS');
     }
   })
 
@@ -1537,20 +1593,46 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
     try {
       for (var j = 0; j < gDeviceList[0].configs.length; j++) {
-        if (gDeviceList[0].configs[j].interfaces.length == 0) {
-          console.info('usb case SUB_USB_JS_1470 current device.configs.interfaces.length = 0');
-        }
-        for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
-          var TmpInterface = gDeviceList[0].configs[j].interfaces[k];
-          var maskCode = usb.setConfiguration(testParamPip, TmpInterface);
-          console.info('usb 1470 case setConfiguration return: ' + maskCode);
-          expect(false).assertTrue();
-        }
+        var TmpConfig = gDeviceList[0].configs[j];
+        var maskCode = usb.setConfiguration(testParamPip, TmpConfig);
+        console.info('usb 1470 case setConfiguration return: ' + maskCode);
+        expect(false).assertTrue();
       }
     } catch (err) {
       console.info('usb 1470 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1470 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1540
+   * @tc.name: setConfiguration
+   * @tc.desc: Negative test: Set Device Configuration, parameter pipe type error
+   */
+  it('SUB_USB_JS_1540', 0, function () {
+    console.info('usb SUB_USB_JS_1540 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    
+    var TmpConfig = "invalid";
+
+    try {
+      var maskCode = usb.setConfiguration(gPipe, TmpConfig);
+      console.info('usb 1540 case setConfiguration return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1540 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1540 :  PASS');
     }
   })
 })
