@@ -71,5 +71,27 @@ export default function alertDialogCenterStartJsunit() {
         console.info("testalertDialogCenterStart0001 on events_emitter err : " + JSON.stringify(err));
       }
     });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0002
+     * @tc.name         testMeasureText0001
+     * @tc.desic        test text width
+     */
+    it('testMeasureText0001', 0, async function (done) {
+      console.info('testMeasureText0001 start');
+      await Utils.sleep(2000);
+      try {
+           let measureOptions = {textContent : "alertDialog-CenterStart"};
+           let width = measure.measureText(measureOptions);
+           console.info("++++++++++++++++++++++" + width.toString());
+           expect(width > 0).assertFalse();
+           done();
+      } catch (err) {
+        console.info("testMeasureText0001 err : " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
   })
 }

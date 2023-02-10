@@ -5,7 +5,8 @@
         "test-timeout": "600000",
         "bundle-name": "com.open.harmony.aceEtsAttrLack",
         "package-name": "com.open.harmony.aceEtsAttrLack",
-        "shell-timeout": "600000"
+        "shell-timeout": "600000",
+        "testcase-timeout":"10000"
     },
     "kits": [
         {
