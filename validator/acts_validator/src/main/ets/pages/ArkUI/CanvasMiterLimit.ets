@@ -23,6 +23,7 @@ struct SetCircle {
   @State X: number = 0;
   @State name: string = 'CanvasMiterLimit';
   @State StepTips: string = '操作步骤：向右拖动MiterLimit按键'+'\n'+'预期结果：斜接面限制值会随拖动距离变化，并显示限制值大小';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -36,6 +37,7 @@ struct SetCircle {
               .onActionStart((event: GestureEvent) => {
                 this.context.clearRect(100, 100, 250, 200);
                 console.info('Pan start');
+                this.Vue = true;
               })
               .onActionUpdate((event: GestureEvent) => {
                 this.X = event.offsetX;
@@ -67,12 +69,13 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        X:$X,
-        name:$name
+        FillColor: $FillColor,
+        X: $X,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

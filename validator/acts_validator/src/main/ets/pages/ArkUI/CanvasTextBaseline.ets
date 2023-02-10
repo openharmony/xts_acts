@@ -22,6 +22,7 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasTextBaseline';
   @State StepTips: string = '操作步骤：点击不同的水平对齐方式'+'\n'+'预期结果：原本默认水平对齐方式会随点击变化';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -38,6 +39,7 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'top';
             this.context.fillText('Top', 160, 120);
+            this.Vue = true;
           })
         Text('Bottom').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
@@ -49,6 +51,7 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'bottom';
             this.context.fillText('Bottom', 160, 120);
+            this.Vue = true;
           })
         Text('Middle').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
@@ -60,6 +63,7 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'middle';
             this.context.fillText('Middle', 160, 120);
+            this.Vue = true;
           })
         Text('Alphabetic').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
@@ -71,6 +75,7 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'alphabetic';
             this.context.fillText('Alphabetic', 160, 120);
+            this.Vue = true;
           })
         Text('Hanging').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=> {
@@ -82,6 +87,7 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'hanging';
             this.context.fillText('Hanging', 160, 120);
+            this.Vue = true;
           })
       }.width('90%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -106,11 +112,12 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        name:$name
+        FillColor: $FillColor,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

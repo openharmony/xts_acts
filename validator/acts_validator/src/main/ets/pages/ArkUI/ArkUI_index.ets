@@ -22,7 +22,9 @@ import util from '@ohos.util';
 const TAG = 'ParseXML';
 let path = globalThis.dir;
 let path1;
-path1 = path + '/report1';
+path1 = path + '/ArkUI';
+
+
 
 @Entry
 @Component
@@ -102,14 +104,33 @@ struct IndexPage {
               .height('30vp')
           }.backgroundColor(Color.Black)
           .onClick(() => {
-            this.ClearAll = true;
-            this.ColorObject.forEach((value, index) => {
-              this.ColorObject[index] =  '#ff808080';
-            });
-            this.ClearText();
-            prompt.showToast({
-              message: '结果已删除', duration: 1000
-            });
+            AlertDialog.show(
+              {
+                message: "是否删除所有记录",
+                primaryButton: {
+                  value: 'Yes',
+                  action: () => {
+                    this.ClearAll = true;
+                    this.ColorObject.forEach((value, index) => {
+                      this.ColorObject[index] =  '#ff808080';
+                    });
+                    this.ClearText();
+                    prompt.showToast({
+                      message: '结果已删除', duration: 1000
+                    });
+                  }
+                },
+                secondaryButton: {
+                  value: 'No',
+                  action: () => {
+
+                  }
+                },
+                cancel: () => {
+
+                }
+              }
+            )
           })
           Button(){
             Image($r('app.media.ic_public_save'))
@@ -119,8 +140,21 @@ struct IndexPage {
           }.backgroundColor(Color.Black)
           .onClick(() => {
             this.ReadTextParseXml();
-            prompt.showToast({
-              message: '报告已生成', duration: 1000
+            AlertDialog.show({
+              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/ArkUI/ArkUITest.xml -本地路径'",
+              confirm:{
+                value:'OK',
+                action:()=>{
+                  prompt.showToast({
+                    message: '报告已生成', duration: 1000
+                  })
+                }
+              },
+              cancel: () => {
+                prompt.showToast({
+                  message: '报告已生成', duration: 1000
+                });
+              }
             })
           })
         }
@@ -150,7 +184,7 @@ struct IndexPage {
     fileio.mkdirSync(path1);
   }
   ReadTextParseXml(){
-    let ReportPath = path1 + '/report1.txt';
+    let ReportPath = path1 + '/ArkUIReport.txt';
     let dir = fileio.opendirSync(path1);
     console.info("ssssss"+dir);
     while (dir) {
@@ -170,16 +204,47 @@ struct IndexPage {
         title[i] = str1[i*2];
         result[i] = str1[i*2+1];
       }
+      let FailIndex = report.indexOf('Fail');
+      let FailNum = 0;
+      while (FailIndex != -1) {
+        console.log(FailIndex);
+        FailNum++;
+        FailIndex = report.indexOf('Fail',FailIndex + 1);
+      }
+      let failNum = (FailNum).toString();
+      let PassIndex = report.indexOf('Pass');
+      let PassNum = 0;
+      while (PassIndex != -1) {
+        console.log(PassIndex);
+        PassNum++;
+        PassIndex = report.indexOf('Pass',PassIndex + 1);
+      }
+      let TestNum = FailNum + PassNum;
+      let testNum = (TestNum).toString();
+      let ignoreNum = (24-TestNum).toString();
       let arrayBuffer = new ArrayBuffer(40960);
       let bufView = new DataView(arrayBuffer);
       let serializer = new xml.XmlSerializer(bufView);
       serializer.setDeclaration();
       serializer.startElement("testsuite");
       serializer.setAttributes("name","ActsArkUITest");
-      for(let i=0; i<title.length; i++){
+      serializer.setAttributes("time", " ");
+      serializer.setAttributes("errors", "0");
+      serializer.setAttributes("disabled", "0");
+      serializer.setAttributes("failures", failNum);
+      serializer.setAttributes("ignored", ignoreNum);
+      serializer.setAttributes("tests", testNum);
+      serializer.setAttributes("message", " ");
+      serializer.setAttributes("modulename", "ActsArkUITest");
+      for (let i = 0; i < title.length; i++) {
         serializer.startElement("testcase");
-        serializer.setAttributes("name",String(title[i]));
-        serializer.setAttributes("result",String(result[i]));
+        serializer.setAttributes("name", String(title[i]));
+        serializer.setAttributes("status", " ");
+        serializer.setAttributes("time", " ");
+        serializer.setAttributes("classname", " ");
+        serializer.setAttributes("result", String(result[i]));
+        serializer.setAttributes("level", " ");
+        serializer.setAttributes("message", " ");
         serializer.endElement();
       }
       serializer.endElement();
@@ -203,7 +268,7 @@ struct IndexPage {
   }
 }
 function filewrite(name1,results,titles){
-  let txtpath = path1 + '/report1.txt';
+  let txtpath = path1 + '/ArkUIReport.txt';
   let fd = fileio.openSync(txtpath, 0o100 | 0o2002, 0o664);
   let buf = new ArrayBuffer(4096);
   let RD = fileio.readSync(fd,buf);

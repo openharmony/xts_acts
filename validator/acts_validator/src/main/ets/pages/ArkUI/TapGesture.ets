@@ -20,6 +20,7 @@ struct TapGestureExample {
   @State value: string = '';
   @State name: string = 'TapGesture';
   @State StepTips: string = '操作步骤：用至少一根手指连续双击图像（最多十根手指）'+'\n'+'预期结果：双击图片后文本提示正常弹出';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -33,6 +34,7 @@ struct TapGestureExample {
       TapGesture({ count: 2 })
         .onAction(() => {
           this.value = 'TapGesture onAction';
+          this.Vue = true;
         })
       )
       Text(this.value)
@@ -43,11 +45,12 @@ struct TapGestureExample {
     Column() {
       CustomContainer({
         title: this.name,
-        StepTips:this.StepTips,
-        Url:'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
         content: this.specificNoParam,
-        value:$value,
-        name:$name
+        value: $value,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
