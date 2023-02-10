@@ -227,7 +227,7 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_6500, Function | Me
     EXPECT_EQ(ret, PERM_ERRORCODE_INVALID_PARAMS) << "update perms flag ret =" << ret << endl;
 
     // pkg flag empty
-    ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, NULL);
+    ret = g_interface->UpdatePermissionFlags(TEST_APP_ID, g_systemPers[0].name, 0);
     EXPECT_EQ(ret, PERM_ERRORCODE_SUCCESS) << "update perms flag ret =" << ret << endl;
     ClrPers(permissions);
 
