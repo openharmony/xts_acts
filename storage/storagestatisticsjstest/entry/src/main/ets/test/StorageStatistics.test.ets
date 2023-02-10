@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import storageStatistics from "@ohos.storageStatistics";
+import storageStatistics from "@ohos.file.storageStatistics";
 import { describe, it, expect } from "@ohos/hypium"
 import {isIntNum, isNegativeNum, isInclude} from "./Common";
 
