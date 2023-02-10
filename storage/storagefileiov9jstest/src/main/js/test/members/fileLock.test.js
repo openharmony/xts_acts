@@ -39,9 +39,9 @@ export default function fileIOFileLock() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
             file.unlock();
+            expect(true).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(true).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_0000 has failed for ' + e.message + ', code: ' + e.code);
@@ -68,9 +68,9 @@ export default function fileIOFileLock() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(true);
             file.unlock();
+            expect(true).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(true).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_0001 has failed for ' + e.message + ', code: ' + e.code);
@@ -97,9 +97,9 @@ export default function fileIOFileLock() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(false);
             file.unlock();
+            expect(true).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(true).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_0002 has failed for ' + e.message + ', code: ' + e.code);
@@ -127,9 +127,9 @@ export default function fileIOFileLock() {
             await file.lock();
 			file.tryLock();
             file.unlock();
+            expect(true).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(true).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_0003 has failed for ' + e.message + ', code: ' + e.code);
@@ -157,9 +157,9 @@ export default function fileIOFileLock() {
             await file.lock();
 			file.tryLock(true);
             file.unlock();
+            expect(true).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(true).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_0004 has failed for ' + e.message + ', code: ' + e.code);
@@ -187,9 +187,9 @@ export default function fileIOFileLock() {
             await file.lock();
 			file.tryLock(false);
             file.unlock();
+            expect(true).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(true).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_0005 has failed for ' + e.message + ', code: ' + e.code);
@@ -215,9 +215,9 @@ export default function fileIOFileLock() {
             expect(isIntNum(file.fd)).assertTrue();
 			file.tryLock();
 			file.unlock();
+            expect(true).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(true).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_0006 has failed for ' + e.message + ', code: ' + e.code);
@@ -242,9 +242,9 @@ export default function fileIOFileLock() {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
 			file.unlock();
+            expect(true).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(true).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_0007 has failed for ' + e.message + ', code: ' + e.code);
@@ -270,9 +270,9 @@ export default function fileIOFileLock() {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(null);
+            expect(false).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(false).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_abnormal_0000 has failed for ' + e.message + ', code: ' + e.code);
@@ -298,9 +298,9 @@ export default function fileIOFileLock() {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(true, true);
+            expect(false).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(false).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_abnormal_0001 has failed for ' + e.message + ', code: ' + e.code);
@@ -326,9 +326,9 @@ export default function fileIOFileLock() {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock(-1);
+            expect(false).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(false).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_abnormal_0002 has failed for ' + e.message + ', code: ' + e.code);
@@ -355,9 +355,9 @@ export default function fileIOFileLock() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
 			file.tryLock(null);
+            expect(false).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(false).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_abnormal_0003 has failed for ' + e.message + ', code: ' + e.code);
@@ -384,9 +384,9 @@ export default function fileIOFileLock() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
 			file.tryLock(true, true);
+            expect(false).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(false).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_abnormal_0004 has failed for ' + e.message + ', code: ' + e.code);
@@ -413,9 +413,9 @@ export default function fileIOFileLock() {
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
 			file.tryLock(-1);
+            expect(false).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(false).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_abnormal_0005 has failed for ' + e.message + ', code: ' + e.code);
@@ -443,9 +443,9 @@ export default function fileIOFileLock() {
             await file.lock();
 			file.tryLock();
 			file.unlock(true);
+            expect(false).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
-            expect(false).assertTrue();
             done();
         } catch (e) {
             console.log('fileIO_test_filelock_promise_abnormal_0006 has failed for ' + e.message + ', code: ' + e.code);
@@ -478,9 +478,9 @@ export default function fileIOFileLock() {
                     done();
                 }
                 file.unlock();
+                expect(true).assertTrue();
                 file.closeSync(file.fd);
                 file.unlinkSync(fpath);
-                expect(true).assertTrue();
                 done();
             });
         } catch (e) {
@@ -513,9 +513,9 @@ export default function fileIOFileLock() {
                     done();
                 }
                 file.unlock();
+                expect(true).assertTrue();
                 file.closeSync(file.fd);
                 file.unlinkSync(fpath);
-                expect(true).assertTrue();
                 done();
             });
         } catch (e) {
@@ -548,9 +548,9 @@ export default function fileIOFileLock() {
                     done();
                 }
                 file.unlock();
+                expect(true).assertTrue();
                 file.closeSync(file.fd);
                 file.unlinkSync(fpath);
-                expect(true).assertTrue();
                 done();
             });
         } catch (e) {
@@ -583,9 +583,9 @@ export default function fileIOFileLock() {
                     done();
                 }
                 file.unlock();
+                expect(false).assertTrue();
                 file.closeSync(file.fd);
                 file.unlinkSync(fpath);
-                expect(false).assertTrue();
                 done();
             });
         } catch (e) {
@@ -618,9 +618,9 @@ export default function fileIOFileLock() {
                     done();
                 }
                 file.unlock();
+                expect(false).assertTrue();
                 file.closeSync(file.fd);
                 file.unlinkSync(fpath);
-                expect(false).assertTrue();
                 done();
             });
         } catch (e) {
@@ -653,9 +653,9 @@ export default function fileIOFileLock() {
                     done();
                 }
                 file.unlock();
+                expect(false).assertTrue();
                 file.closeSync(file.fd);
                 file.unlinkSync(fpath);
-                expect(false).assertTrue();
                 done();
             });
         } catch (e) {
