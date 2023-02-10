@@ -40,12 +40,12 @@ export default function oauthTokenInfoTest() {
         /*
          * @tc.number  OAuthTokenInfoTest_0100
          * @tc.name    OAuthTokenInfoTest_0100
-         * @tc.desc    OAuthTokenInfo without account. 
+         * @tc.desc    AuthTokenInfo without account. 
          * @tc.size    SmallTest
          * @tc.type    User
          */
         it('OAuthTokenInfoTest_0100', 0, async function (done) {
-            let info : appAccount.OAuthTokenInfo = {
+            let info : appAccount.AuthTokenInfo = {
                 authType: "getSocialData",
                 token: "xxxxx"
             }
@@ -58,12 +58,12 @@ export default function oauthTokenInfoTest() {
         /*
          * @tc.number  OAuthTokenInfoTest_0200
          * @tc.name    OAuthTokenInfoTest_0200
-         * @tc.desc    OAuthTokenInfo with account. 
+         * @tc.desc    AuthTokenInfo with account. 
          * @tc.size    SmallTest
          * @tc.type    User
          */
         it('OAuthTokenInfoTest_0200', 0, async function (done) {
-            let info : appAccount.OAuthTokenInfo = {
+            let info : appAccount.AuthTokenInfo = {
                 authType: "getSocialData",
                 token: "xxxxx",
                 account: {
