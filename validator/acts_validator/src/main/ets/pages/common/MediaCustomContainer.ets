@@ -42,6 +42,9 @@ export struct CustomContainer {
         }
       })
       this.getScreen(isFullScreen);
+      prompt.showToast({
+        message: '通过', duration: 1000
+      });
     })
   }
   @Builder
@@ -56,6 +59,9 @@ export struct CustomContainer {
         }
       })
       this.getScreen(isFullScreen);
+      prompt.showToast({
+        message: '失败', duration: 1000
+      });
     })
   }
   build() {
@@ -119,9 +125,6 @@ export struct CustomContainer {
     }
     await fileio.close(fd);
     Logger.info(TAG, `write done`);
-    prompt.showToast({
-      message: '结果保存成功', duration: 1000
-    });
   }
   getScreen = (isFullScreen: boolean) => {
     let screenshotOptions: screenshot.ScreenshotOptions = {

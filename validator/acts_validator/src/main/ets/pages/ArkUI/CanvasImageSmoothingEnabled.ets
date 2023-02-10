@@ -24,6 +24,7 @@ struct SetCircle {
   @State X: number = 0;
   @State name: string = 'CanvasImageSmoothingEnabled';
   @State StepTips: string = '操作步骤：点击不同的控件'+'\n'+'预期结果：切换平滑过渡效果';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -35,12 +36,14 @@ struct SetCircle {
             this.context.clearRect(10, 100, 400, 300);
             this.context.imageSmoothingEnabled = true;
             this.context.drawImage( this.img,0,0,400,200);
+            this.Vue = true;
           })
         Text('False').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
             this.context.clearRect(10, 100, 400, 300);
             this.context.imageSmoothingEnabled = false;
             this.context.drawImage( this.img,0,0,400,200);
+            this.Vue = true;
           })
       }.width('70%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -59,12 +62,13 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        X:$X,
-        name:$name
+        FillColor: $FillColor,
+        X: $X,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

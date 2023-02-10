@@ -21,6 +21,7 @@ struct PanGestureExample {
   @State Y: number = 0;
   @State name: string = 'PanGesture';
   @State StepTips: string = '操作步骤：用至少一根手指拖动图像（最多十根手指）'+'\n'+'预期结果：图片正常拖动，偏移坐标显示正常';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -35,6 +36,7 @@ struct PanGestureExample {
       PanGesture({})
         .onActionStart((event: GestureEvent) => {
           console.info('Pan start');
+          this.Vue = true;
         })
         .onActionUpdate((event: GestureEvent) => {
           this.X = event.offsetX;
@@ -56,7 +58,8 @@ struct PanGestureExample {
         StepTips:this.StepTips,
         content: this.specificNoParam,
         X:$X, Y:$Y,
-        name:$name
+        name:$name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

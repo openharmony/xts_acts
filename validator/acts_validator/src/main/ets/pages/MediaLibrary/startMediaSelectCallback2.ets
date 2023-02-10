@@ -34,7 +34,7 @@ struct SetCircle {
               type : "image",
               count : 2
             };
-            mediaLibrary.getMediaLibrary().startMediaSelect(option, (err, value) => {
+            mediaLibrary.getMediaLibrary(globalThis.abilityContext).startMediaSelect(option, (err, value) => {
               if (err) {
                 console.log(TAG + "An error occurred when selecting image resources." + JSON.stringify(err));
                 return;

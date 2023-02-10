@@ -20,8 +20,10 @@ struct CustomContainerUser {
   private listArr: number[] = Array.from(new Array(50).keys());
   @State name: string = 'ScrollingList';
   @State StepTips: string = '操作步骤：滑动列表观察是否能正常滑动'+'\n'+'预期结果：列表滑动正常';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
+    this.Vue = true;
   }
   @Builder specificNoParam() {
     Column() {
@@ -37,11 +39,12 @@ struct CustomContainerUser {
   build() {
     Column() {
       CustomContainer({
-        title:this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        title: this.name,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam.bind(this),
-        name:$name
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

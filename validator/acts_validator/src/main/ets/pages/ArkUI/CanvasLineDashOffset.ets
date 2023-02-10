@@ -23,6 +23,7 @@ struct SetCircle {
   @State X: number = 0;
   @State name: string = 'CanvasLineDashOffset';
   @State StepTips: string = '操作步骤：拖动滑块向右移动'+'\n'+'预期结果：虚线偏移量随着拖拽距离而改变，并显示偏移量';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -36,6 +37,7 @@ struct SetCircle {
             .onActionStart((event: GestureEvent) => {
               this.context.clearRect(100, 100, 250, 200);
               console.info('Pan start');
+              this.Vue = true;
             })
             .onActionUpdate((event: GestureEvent) => {
               this.X = event.offsetX;
@@ -64,12 +66,13 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        X:$X,
-        name:$name
+        FillColor: $FillColor,
+        X: $X,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

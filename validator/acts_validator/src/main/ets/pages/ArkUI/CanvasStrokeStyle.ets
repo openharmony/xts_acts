@@ -22,6 +22,7 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasStrokeStyle';
   @State StepTips: string = '操作步骤：点击不同的颜色控件'+'\n'+'预期结果：原本默认黑色的边框会随点击变化';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -35,6 +36,7 @@ struct SetCircle {
             this.context.lineWidth = 10;
             this.context.strokeStyle = '#FFFF0000';
             this.context.strokeRect(100, 160, 150, 100);
+            this.Vue = true;
           })
         Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -43,6 +45,7 @@ struct SetCircle {
             this.context.lineWidth = 10;
             this.context.strokeStyle = '#fffffc3c';
             this.context.strokeRect(100, 160, 150, 100);
+            this.Vue = true;
           })
         Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -51,6 +54,7 @@ struct SetCircle {
             this.context.lineWidth = 10;
             this.context.strokeStyle = '#ff19fa00';
             this.context.strokeRect(100, 160, 150, 100);
+            this.Vue = true;
           })
       }.width('70%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -70,11 +74,12 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        name:$name
+        FillColor: $FillColor,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
