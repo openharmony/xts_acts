@@ -245,7 +245,7 @@ export default function fileIOFileLock() {
             }
         });
         /**
-         * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0800
+         * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0000
          * @tc.name fileIO_test_filelock_promise_abnormal_000
          * @tc.desc Test lock() interfaces. argument is : null.
          * Open the file, file lock(null).
@@ -257,9 +257,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_promise_abnormal_000', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_000');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 await file.lock(null);
                 expect(false).assertTrue();
@@ -284,9 +284,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_promise_abnormal_001', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_001');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 await file.lock(true, true);
                 expect(false).assertTrue();
@@ -311,9 +311,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_promise_abnormal_002', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_002');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 await file.lock(-1);
                 expect(false).assertTrue();
@@ -338,9 +338,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_promise_abnormal_003', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_003');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 await file.lock();
                 file.tryLock(null);
@@ -366,9 +366,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_promise_abnormal_004', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_004');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 await file.lock();
                 file.tryLock(true, true);
@@ -394,9 +394,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_promise_abnormal_005', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_005');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 await file.lock();
                 file.tryLock(-1);
@@ -422,9 +422,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_promise_abnormal_006', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_promise_abnormal_006');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 await file.lock();
                 file.tryLock();
@@ -551,9 +551,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_callback_abnormal_000', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_callback_abnormal_000');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 file.lock(null, (err) => {
                     expect(false).assertTrue();
@@ -579,9 +579,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_callback_abnormal_001', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_callback_abnormal_001');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 file.lock(true, true, (err) => {
                     expect(false).assertTrue();
@@ -607,9 +607,9 @@ export default function fileIOFileLock() {
         it('fileIO_test_filelock_callback_abnormal_002', 0, async function (done) {
             let fpath = await nextFileName('fileIO_test_filelock_callback_abnormal_002');
             expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
+            let file;
             try {
-                let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+                file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
                 expect(isIntNum(file.fd)).assertTrue();
                 file.lock(-1, (err) => {
                     expect(false).assertTrue();
