@@ -20,6 +20,7 @@ import {
 
 export default function fileIOFileLock() {
     describe('fileIO_fs_file_lock', function () {
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_0000
          * @tc.name fileIO_test_filelock_promise_000
@@ -48,6 +49,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_0100
          * @tc.name fileIO_test_filelock_promise_001
@@ -76,6 +78,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_0200
          * @tc.name fileIO_test_filelock_promise_002
@@ -104,6 +107,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_0300
          * @tc.name fileIO_test_filelock_promise_003
@@ -133,6 +137,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_0400
          * @tc.name fileIO_test_filelock_promise_004
@@ -162,6 +167,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_0500
          * @tc.name fileIO_test_filelock_promise_005
@@ -191,6 +197,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_0600
          * @tc.name fileIO_test_filelock_promise_006
@@ -218,6 +225,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_0700
          * @tc.name fileIO_test_filelock_promise_007
@@ -244,6 +252,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0000
          * @tc.name fileIO_test_filelock_promise_abnormal_000
@@ -271,6 +280,7 @@ export default function fileIOFileLock() {
                 done();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0100
          * @tc.name fileIO_test_filelock_promise_abnormal_001
@@ -298,6 +308,7 @@ export default function fileIOFileLock() {
                 done();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0200
          * @tc.name fileIO_test_filelock_promise_abnormal_002
@@ -325,6 +336,7 @@ export default function fileIOFileLock() {
                 done();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0300
          * @tc.name fileIO_test_filelock_promise_abnormal_003
@@ -353,6 +365,7 @@ export default function fileIOFileLock() {
                 done();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0400
          * @tc.name fileIO_test_filelock_promise_abnormal_004
@@ -381,6 +394,7 @@ export default function fileIOFileLock() {
                 done();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0500
          * @tc.name fileIO_test_filelock_promise_abnormal_005
@@ -409,6 +423,7 @@ export default function fileIOFileLock() {
                 done();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_PROMISE_ABNORMAL_0600
          * @tc.name fileIO_test_filelock_promise_abnormal_006
@@ -472,6 +487,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_CALLBACK_0100
          * @tc.name fileIO_test_filelock_callback_001
@@ -505,6 +521,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_CALLBACK_0200
          * @tc.name fileIO_test_filelock_callback_002
@@ -538,6 +555,7 @@ export default function fileIOFileLock() {
                 expect(false).assertTrue();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_CALLBACK_ABNORMAL_0000
          * @tc.name fileIO_test_filelock_callback_abnormal_000
@@ -566,6 +584,7 @@ export default function fileIOFileLock() {
                 done();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_CALLBACK_ABNORMAL_0100
          * @tc.name fileIO_test_filelock_callback_abnormal_001
@@ -594,6 +613,7 @@ export default function fileIOFileLock() {
                 done();
             }
         });
+
         /**
          * @tc.number FILE_TEST_FILELOCK_CALLBACK_ABNORMAL_0200
          * @tc.name fileIO_test_filelock_callback_abnormal_002
