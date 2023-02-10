@@ -49,6 +49,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/applications:applications",
   "${ACTS_ROOT}/wukong:wukong",
   "${ACTS_ROOT}/msdp:msdp",
+  "${ACTS_ROOT}/validator:validator",
 ]
 
 _all_test_packages_ivi = [
