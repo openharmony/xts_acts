@@ -412,7 +412,7 @@ export default function fileIOFileLock() {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
-			file.tryLock(-1);
+            file.tryLock(-1);
             expect(false).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
@@ -441,8 +441,8 @@ export default function fileIOFileLock() {
             let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
             expect(isIntNum(file.fd)).assertTrue();
             await file.lock();
-			file.tryLock();
-			file.unlock(true);
+            file.tryLock();
+            file.unlock(true);
             expect(false).assertTrue();
             file.closeSync(file.fd);
             file.unlinkSync(fpath);
