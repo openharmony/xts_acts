@@ -1989,6 +1989,10 @@ export default function webgl1Test_webgl1(){
 				return;
 			}
 
+			const indexBuffer = gl.createBuffer();
+			gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+			gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices.buffer, gl.STATIC_DRAW);
+
 			var maxViewPortDimsParameter = gl.getParameter(gl.MAX_VIEWPORT_DIMS);
 			console.log('maxViewPortDimsParameter: ' + maxViewPortDimsParameter);
 			var viewPortParameter = gl.getParameter(gl.VIEWPORT);

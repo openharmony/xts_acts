@@ -29,7 +29,6 @@ let module1FormInfo: formInfo.FormInfo = {
     isDefault: true,
     updateEnabled: true,
     formVisibleNotify: true,
-    relatedBundleName : "com.example.getformsinfotest",
     scheduledUpdateTime: "10:30",
     formConfigAbility: "ability://xxxxx",
     updateDuration: 1,
@@ -50,7 +49,6 @@ let module2FormInfo: formInfo.FormInfo = {
     isDefault: true,
     updateEnabled: true,
     formVisibleNotify: true,
-    relatedBundleName : "com.example.getformsinfotest",
     scheduledUpdateTime: "10:30",
     formConfigAbility: "ability://xxxxx",
     updateDuration: 1,
@@ -396,8 +394,6 @@ export default function abilityTest() {
         expect(expectInfo.isDefault).assertEqual(result.isDefault);
         console.info("formProvider::GetFormsInfoTest: formVisibleNotify expect " + expectInfo.formVisibleNotify);
         expect(expectInfo.formVisibleNotify).assertEqual(result.formVisibleNotify);
-        console.info("formProvider::GetFormsInfoTest: relatedBundleName expect " + expectInfo.relatedBundleName);
-        expect(expectInfo.relatedBundleName).assertEqual(result.relatedBundleName);
         console.info("formProvider::GetFormsInfoTest: scheduledUpdateTime expect " + expectInfo.scheduledUpdateTime);
         expect(expectInfo.scheduledUpdateTime).assertEqual(result.scheduledUpdateTime);
         console.info("formProvider::GetFormsInfoTest: formConfigAbility expect " + expectInfo.formConfigAbility);
