@@ -50,7 +50,7 @@ let callSeq = "";
 export default class MainAbility extends Ability {
     test2300(data) {
         let recvData = new MySequenceable(0, '', '');
-        data.readSequenceable(recvData);
+        data.readParcelable(recvData);
         let sendData = new MySequenceable(0, '', '');
         if (recvData.num == 2300 && recvData.str == 'case2300') {
             sendData.num = 0;
@@ -63,7 +63,7 @@ export default class MainAbility extends Ability {
 
     test4600(data) {
         let recvData = new MySequenceable(0, '', '');
-        data.readSequenceable(recvData);
+        data.readParcelable(recvData);
         let sendData = new MySequenceable(0, '', '');
         if (recvData.num == 4600 && recvData.str == 'case4600') {
             sendData.num = 0;
