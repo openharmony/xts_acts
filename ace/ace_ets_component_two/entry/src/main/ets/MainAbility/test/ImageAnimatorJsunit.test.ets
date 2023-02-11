@@ -64,7 +64,7 @@ export default function imageAnimatorJsunit(){
         console.info("imageAnimatorTest_0100 on events_emitter err : " + JSON.stringify(err));
       }
       await Utils.sleep(1000);
-      console.info("imageAnimatorTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
+      console.info("imageAnimatorTest_0100 click result is: " + JSON.stringify(sendEventByKey('buttonStart',10,"")));
       await Utils.sleep(1000);
       console.info('imageAnimatorTest_0100 END');
       done();
@@ -176,7 +176,7 @@ export default function imageAnimatorJsunit(){
       } catch (err) {
         console.info("imageAnimatorTest_0600 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("imageAnimatorTest_0600 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
+      console.info("imageAnimatorTest_0600 click result is: " + JSON.stringify(sendEventByKey('buttonStart',10,"")));
       await Utils.sleep(1000);
       console.info('imageAnimatorTest_0600 END');
       done();
