@@ -183,7 +183,7 @@ export default function abilityTest() {
       caller.callWithResult('testCallWithResult', param).then((data) => {
         console.log('ACTS_CommonComponent_Call_0400 call success');
         var result = new MySequenceable(0, '', '');
-        data.readSequenceable(result);
+        data.readParcelable(result);
         expect(result.num).assertEqual(400);
         expect(result.str).assertEqual('ACTS_CommonComponent_Call_0400');
         expect(result.result).assertEqual('ACTS_CommonComponent_Call_0400processed');
@@ -282,7 +282,7 @@ export default function abilityTest() {
       caller2.callWithResult('testCallWithResult', param).then((data) => {
         console.log('ACTS_CommonComponent_Call_0600 call success');
         var result = new MySequenceable(0, '', '');
-        data.readSequenceable(result);
+        data.readParcelable(result);
         expect(result.num).assertEqual(600);
         expect(result.str).assertEqual('ACTS_CommonComponent_Call_0600');
         expect(result.result).assertEqual('ACTS_CommonComponent_Call_0600processed');
@@ -392,7 +392,7 @@ export default function abilityTest() {
             caller.callWithResult('testCallWithResult', param).then((data) => {
               console.log('ACTS_CommonComponent_Call_0800 call success');
               var result = new MySequenceable(0, '', '');
-              data.readSequenceable(result);
+              data.readParcelable(result);
               expect(result.num).assertEqual(800);
               expect(result.str).assertEqual('ACTS_CommonComponent_Call_0800');
               expect(result.result).assertEqual('ACTS_CommonComponent_Call_0800processed');
@@ -492,7 +492,7 @@ export default function abilityTest() {
       caller.callWithResult('testCallWithResult', param).then((data) => {
         console.log('ACTS_CommonComponent_Call_1000 call success');
         var result = new MySequenceable(0, '', '');
-        data.readSequenceable(result);
+        data.readParcelable(result);
         expect(result.num).assertEqual(1000);
         expect(result.str).assertEqual('ACTS_CommonComponent_Call_1000');
         expect(result.result).assertEqual('ACTS_CommonComponent_Call_1000processed');
