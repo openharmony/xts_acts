@@ -15,6 +15,7 @@
 
 import fileIOFdatasync from './members/fdatasync.test.js'
 import fileIOFsync from './members/fsync.test.js'
+import fileIOListfile from './members/listFile.test.js'
 import fileIOLstat from './members/lstat.test.js'
 import fileIOOpen from './members/open.test.js'
 import fileIORead from './members/read.test.js'
@@ -25,6 +26,7 @@ import fileIOWrite from './members/write.test.js'
 export default function testsuite() {
     fileIOFdatasync()
     fileIOFsync()
+    fileIOListfile()
     fileIOLstat()
     fileIOOpen()
     fileIORead()
