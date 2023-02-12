@@ -377,6 +377,7 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_SPN_INFO_CHANGED).assertEqual('usual.event.SPN_INFO_CHANGED')
       expect(commonEventManager.Support.COMMON_EVENT_QUICK_FIX_APPLY_RESULT).assertEqual('usual.event.QUICK_FIX_APPLY_RESULT')
       expect(commonEventManager.Support.COMMON_EVENT_USER_INFO_UPDATED ).assertEqual('usual.event.USER_INFO_UPDATED')
+      expect(commonEventManager.Support.COMMON_EVENT_HTTP_PROXY_CHANGE ).assertEqual('usual.event.HTTP_PROXY_CHANGE')
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2000 END`)
     })
 
