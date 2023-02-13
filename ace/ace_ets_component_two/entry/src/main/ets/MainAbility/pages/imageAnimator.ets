@@ -97,7 +97,7 @@ struct ImageAnimatorExample {
           console.info('Finish')
         })
       Row() {
-        Button('start').key('button').width(100).padding(5).onClick(() => {
+        Button('start').key('buttonStart').width(100).padding(5).onClick(() => {
           this.state = AnimationStatus.Running
           try {
             var backData = {
