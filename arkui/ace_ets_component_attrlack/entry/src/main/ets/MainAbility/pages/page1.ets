@@ -25,7 +25,7 @@ const TAG = 'ets_apiLack_add';
 struct Second {
   private content: string = "这是第二页"
   @State text: string = router.getParams()['text']
-  @State data: any = router.getParams()['data']
+  @State data: string = router.getParams()['data']
   @State secondData : string = ''
 
   build() {
