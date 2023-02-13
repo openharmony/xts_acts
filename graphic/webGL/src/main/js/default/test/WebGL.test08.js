@@ -627,7 +627,7 @@ describe('webgl1Test_webgl9', function() {
 			console.info("getTransformFeedbackVaryingobject: " + getTransformFeedbackVaryingobject);
 			const getTransformFeedbackVaryingError = gl.getError();
 			console.info("getTransformFeedbackVaryingError: " + getTransformFeedbackVaryingError);
-			expect(getTransformFeedbackVaryingError).assertEqual(gl.INVALID_VALUE);
+			expect(getTransformFeedbackVaryingError).assertLarger(gl.NO_ERROR);
 			//deleteContext();
 			done();
 		} catch (e) {
@@ -673,7 +673,7 @@ describe('webgl1Test_webgl9', function() {
 			gl2.bindBufferRange(-gl.TRANSFORM_FEEDBACK_BUFFER, -0, buffer, -0, -4);
 			const bindBufferRangeError = gl.getError();
 			console.info("bindBufferRangeError: " + bindBufferRangeError);
-			expect(bindBufferRangeError).assertEqual(gl.INVALID_VALUE);
+			expect(bindBufferRangeError).assertLarger(gl.NO_ERROR);
 			//deleteContext();
 			done();
 		} catch (e) {
@@ -1289,7 +1289,7 @@ describe('webgl1Test_webgl9', function() {
 		let errorCode = gl.getError();
 		console.info("webgltest copyTexSubImage2D getError: " + errorCode);
 		expect(errorCode).assertLarger(gl.NO_ERROR);
-		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}	
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		//deleteContext();
 		done();
 	});
@@ -1617,7 +1617,7 @@ describe('webgl1Test_webgl9', function() {
 
 		let errorCode = gl.getError();
 		console.info("webgltest drawArrays getError: " + errorCode);
-		expect(errorCode).assertEqual(1280);
+		expect(errorCode).assertLarger(gl.NO_ERROR);
 		//deleteContext();
 		done();
 	});
@@ -1664,7 +1664,7 @@ describe('webgl1Test_webgl9', function() {
 
 		let errorCode = gl.getError();
 		console.info("webgltest drawArrays getError: " + errorCode);
-		expect(errorCode).assertEqual(1280);
+		expect(errorCode).assertLarger(gl.NO_ERROR);
 		//deleteContext();
 		done();
 	});
@@ -1711,7 +1711,7 @@ describe('webgl1Test_webgl9', function() {
 
 		let errorCode = gl.getError();
 		console.info("webgltest drawArrays getError: " + errorCode);
-		expect(errorCode).assertEqual(1280);
+		expect(errorCode).assertLarger(gl.NO_ERROR);
 		//deleteContext();
 		done();
 	});

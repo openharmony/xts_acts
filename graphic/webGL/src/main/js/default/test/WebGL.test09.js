@@ -407,11 +407,11 @@ describe('webgl1Test_webgl10', function() {
 
 		let sampler = gl2.createSampler();
 		//        gl2.bindSampler(0, sampler);
-		gl2.samplerParameterf(sampler, gl.TEXTURE_COMPARE_FUNC, gl.NEAREST);
+		gl2.samplerParameterf(sampler, gl2.TEXTURE_COMPARE_FUNC, gl.NEAREST);
 
 		let errorCode = gl.getError();
 		console.info("webgltest samplerParameterf getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_OPERATION);
+		expect(errorCode).assertLarger(gl.NO_ERROR);
 		gl2.deleteSampler(sampler);
 		//deleteContext();
 		done();

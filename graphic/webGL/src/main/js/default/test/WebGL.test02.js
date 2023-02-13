@@ -831,11 +831,11 @@ describe('webgl1Test_webgl3', function() {
 		expect(isSync1).assertEqual(true);
 
 		console.info("webgltest fenceSync clientWaitSync: " + status);
-
-		expect(status).assertEqual(gl2.ALREADY_SIGNALED || gl2.TIMEOUT_EXPIRED || gl
-			.CONDITION_SATISFIED ||
-			gl.WAIT_FAILED);
-
+		let statusFlag = false;
+		if (status == gl2.ALREADY_SIGNALED || status == gl2.TIMEOUT_EXPIRED ||
+			status == gl.CONDITION_SATISFIED || status == gl.WAIT_FAILED) {
+				statusFlag = true;}
+		expect(statusFlag).assertEqual(true);
 		//deleteContext();
 		done();
 	});

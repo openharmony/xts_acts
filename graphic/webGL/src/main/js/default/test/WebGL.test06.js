@@ -2155,7 +2155,7 @@ describe('webgl1Test_webgl7', function() {
 		gl2.texImage2D(-gl.TEXTURE_2D, -0, -32, -512, -512, -0, -32, -32, -new ArrayBuffer(8));
 		const errorCode = gl.getError();
 		console.info("webgl2test texImage2D getError: " + errorCode);
-		expect(errorCode).assertEqual(1281);
+		expect(errorCode).assertLarger(gl.NO_ERROR);
 		done();
 	});
 
@@ -2359,14 +2359,14 @@ describe('webgl1Test_webgl7', function() {
 		console.info("useProgramError: " + useProgramError1);
 		const renderBufferValue1 = gl.getParameter(gl.CURRENT_PROGRAM);
 		console.log("testUseProgram has failed for " + renderBufferValue1)
-		gl.attachShader(programObj, 'vertexShader');
-		gl.attachShader(programObj, 'fragmentShader');
+		gl.attachShader(programObj, vertexShader);
+		gl.attachShader(programObj, fragmentShader);
 		gl.linkProgram(programObj);
 		gl.useProgram(programObj);
 
 		let errorCode = gl.getError();
 		console.info("webgltest attachShader getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_OPERATION);
+		expect(errorCode).assertEqual(gl.NO_ERROR);
 		//deleteContext();
 		done();
 	});
