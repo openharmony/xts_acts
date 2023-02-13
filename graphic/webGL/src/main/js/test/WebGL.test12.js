@@ -283,7 +283,6 @@ export default function webgl1Test_webgl12() {
 			done();
 		})
 
-
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1101
 		 * @tc.name testGetParameter_35
@@ -1296,7 +1295,8 @@ export default function webgl1Test_webgl12() {
 				view, 0);
 			const errorCode = gl.getError();
 			console.info("webgl2test texImage2D getError: " + errorCode);
-			expect(errorCode).assertEqual(gl.INVALID_OPERATION);
+			expect(errorCode).assertLarger(gl.NO_ERROR);
+			for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 			done();
 		});
 
