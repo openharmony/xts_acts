@@ -74,8 +74,6 @@
         },
         "pages": [
           "pages/index",
-          "pages/page1",
-          "pages/page2",
           "pages/alertDialog",
           "pages/animate_play_mode",
           "pages/animator",
