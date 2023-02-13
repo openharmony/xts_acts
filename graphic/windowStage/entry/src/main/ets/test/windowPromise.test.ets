@@ -1711,5 +1711,43 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         console.error('Failed to hide the window with animation. Cause: ' + JSON.stringify(err));
       })
     })
+    /**
+    * @tc.number     SUB_WINDOW_SETASPECTRATIO_JSAPI_002
+    * @tc.name       Test setAspectRatioTest2
+    * @tc.desc       Validate the scenario cancelled after setting the proportion of the content layout of the main window
+    */
+    it('setAspectRatioTest2', 0, async function (done) {
+      let caseName = 'setAspectRatioTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWnd = null;
+      await windowStage.getMainWindow().then((data) => {
+        mainWnd = data;
+        expect(!!mainWnd).assertTrue();
+        console.info(msgStr + 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      }).catch((err) => {
+        console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+      });
+      try {
+        let ratio = 1.0;
+        await mainWnd.setAspectRatio(ratio).then(() => {
+          console.info(msgStr + 'Succeeded in setting aspect ratio of window.');
+        }).catch((err) => {
+          console.error(msgStr + 'Failed to set the aspect ratio of window. Cause:' + JSON.stringify(err));
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the aspect ratio of window. Cause: ' + JSON.stringify(exception));
+      }
+      try {
+        await mainWnd.resetAspectRatio().then(() => {
+          console.info(msgStr + 'Succeeded in resetting aspect ratio of window.');
+        }).catch((err) => {
+          console.error(msgStr + 'Failed to reset the aspect ratio of window. Cause:' + JSON.stringify(err));
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to reset the aspect ratio of window. Cause: ' + JSON.stringify(exception));
+      }
+      done();
+    })
   })
 }
