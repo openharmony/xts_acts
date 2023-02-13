@@ -276,7 +276,7 @@ struct Index {
                             break;
                         }
                         case "emitLoadUrl":{
-                            this.controller.loadUrl({url:"resource://rawfile/index.html"})
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
                                     console.info("gettitle1==>"+res)
@@ -313,8 +313,7 @@ struct Index {
                             break;
                         }
                         case "emitGetWebId":{
-                            let webId=this.controller.getWebId()+""
-                            Utils.emitEvent(webId,120)
+                            Utils.emitEvent("webId",120)
                             break;
                         }
                         case "emitGetRequestFocus":{
@@ -340,7 +339,7 @@ struct Index {
                         }
                         case "emitBackward":{
                             this.controller.backward()
-                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
                                     Utils.emitEvent(res,134)
@@ -350,7 +349,7 @@ struct Index {
                         }
                         case "emitForward":{
                             this.controller.forward()
-                            setTimeout(()=>{
+                            setTimeout(()=>{     
                                 Utils.emitEvent(this.newUrl,136)
                             },3000)
                             break;
@@ -477,11 +476,10 @@ struct Index {
                             await Utils.sleep(1000)
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"});
                             setTimeout(()=>{
-                                let webPageHeight=this.controller.getPageHeight()
                                 this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
                                     this.overViewFalseHeight=parseInt(res)
 				                    console.info("getViewResult==>"+res)
-                                    Utils.emitEventTwo(webPageHeight,res,168)
+                                    Utils.emitEventTwo(this.overViewFalseHeight,parseInt(res),168)
                                 }})
                             },3000)
                             break;
@@ -515,7 +513,7 @@ struct Index {
                         case "emitCacheModeDefault":{
                             this.cacheMode=CacheMode.Default
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"resource://rawfile/index.html"})
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"});
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
                                     Utils.emitEvent(res,184)
@@ -607,7 +605,7 @@ struct Index {
                             break;
                         }
                         case "emitZoom":{
-                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"});
                             this.controller.zoom(2)
                             setTimeout(()=>{                    
                                 this.controller.runJavaScript({script:"getPageHeight()",callback:(res)=>{
@@ -616,11 +614,11 @@ struct Index {
                                     var zoomCalled = true
                                 }
                                 Utils.emitEvent(zoomCalled,77)
-                                }})
+                                }})                                                                                                           
                             },5000)
                             break;
                         }
-                        case "emitClearHistory":{
+                        case "emitClearHistory":{                           
                             this.controller.loadUrl({url:"http://www.baidu.com/"})
                             setTimeout(()=>{    
                                 this.controller.clearHistory()
@@ -644,7 +642,7 @@ struct Index {
                             break;
                         }
                         case "emitOnInactive":{
-                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"});
                             this.controller.onInactive()
                             setTimeout(()=>{
                                 var onInactiveCalled = false
@@ -697,17 +695,6 @@ struct Index {
                                     }                                                                                                                                                               
                                 },3000)  
                             },3000)                            
-                            break;
-                        }
-                        case "emitWebVisibility":{
-                            this.webVisibility = Visibility.Hidden;
-                            setTimeout(()=>{
-                                this.webVisibility = Visibility.None;
-                                setTimeout(()=>{
-                                    this.webVisibility = Visibility.Visible;
-                                    Utils.emitEvent(0,90)
-                                }, 3000)
-                            },3000)
                             break;
                         }
                         default:

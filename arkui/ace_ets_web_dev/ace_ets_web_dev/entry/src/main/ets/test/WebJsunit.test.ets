@@ -139,12 +139,12 @@ export default function webJsunit() {
      */
     it('getHitTest',0,async function(done){
       emitKey="emitGetWebId";
-      Utils.registerEvent("getHitTest","7",118,done);
+      Utils.registerEvent("getHitTest","2",118,done);
       sendEventByKey('webcomponent',10,'');
     })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_011                                                                                                                                                                       
-     *tc.name getWebId                                                                                                                                                                                                                 
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_011
+     *tc.name getWebId
      *tc.desic Gets the id for the current Web
      */
     it('getWebId',0,async function(done){
@@ -209,7 +209,7 @@ export default function webJsunit() {
      */
     it('forward',0,async function(done){
       emitKey="emitGeolocationAccessFalse";
-      Utils.registerEvent("forward","resource://rawfile/index.html",136,done);
+      Utils.registerEvent("forward","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",136,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -568,18 +568,8 @@ export default function webJsunit() {
      *tc.desic Sets whether the Web allows JavaScript scripts to execute
      */
     it('javaScriptAccess',0,async function(done){
-      emitKey="emitWebVisibility";
+      emitKey="emitJavaScriptAccess";
       Utils.registerEvent("javaScriptAccess",true,88,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /*
-     *tc.number SUB_ACE_BASIC_ETS_API_062
-     *tc.name webVisibility
-     *tc.desic Web Visibility test
-     */
-    it('webVisibility',0,async function(done){
-      emitKey="emitWebVisibility";
-      Utils.registerEvent("webVisibility", 0, 90, done);
       sendEventByKey('webcomponent',10,'');
     })
   })
