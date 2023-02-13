@@ -202,13 +202,6 @@ struct Index {
                             },3000)                                                                               
                             break;
                         }
-                        case "emitSearchAllAsync":{ 
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
-                            setTimeout(()=>{
-                                this.controller.searchAllAsync("首页"); 
-                            },3000)                                                                                
-                            break ;
-                        }
                         default:
                             console.info("can not match case")
                     }
@@ -231,14 +224,6 @@ struct Index {
                     Utils.emitEvent(sourceId,422)
                 },3000)
                 return false
-            })
-            .onSearchResultReceive(ret=>{
-                var searchResult = ret.activeMatchOrdinal.toString() + 
-                ret.numberOfMatches.toString()
-                console.log("searchResult" + searchResult)
-                setTimeout(()=>{
-                    Utils.emitEvent(searchResult,426)
-                },3000)
             })
         }
     }
