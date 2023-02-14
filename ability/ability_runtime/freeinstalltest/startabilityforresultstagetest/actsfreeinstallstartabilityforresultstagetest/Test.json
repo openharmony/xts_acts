@@ -26,10 +26,10 @@
         {
             "type": "PushKit",
             "push":[
-                "atomizationresultstageentry.hap -> /data/test/AtomizationResultStageEntry.hap",
-                "atomizationresultstagehm2.hap -> /data/test/AtomizationResultStageHm2.hap",
-                "atomizationresultstagehnm2.hap -> /data/test/AtomizationResultStageHnm2.hap",
-				"stageresultmyapplication1.hap -> /data/test/StageResultMyApplication1.hap",
+                "AtomizationResultStageEntry.hap -> /data/test/AtomizationResultStageEntry.hap",
+                "AtomizationResultStageHm2.hap -> /data/test/AtomizationResultStageHm2.hap",
+                "AtomizationResultStageHnm2.hap -> /data/test/AtomizationResultStageHnm2.hap",
+                "StageResultMyApplication1.hap -> /data/test/StageResultMyApplication1.hap",
                 "MockService.hap -> /data/test/MockService.hap"
             ]
         }
