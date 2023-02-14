@@ -14,7 +14,7 @@
 */
 
 import notification from '@ohos.notification'
-import {UiComponent,UiDriver,Component,Driver,UiWindow,ON,BY,MatchPattern,DisplayRotation,ResizeDirection,WindowMode,PointerMatrix} from '@ohos.uitest'
+import {UiComponent,UiDriver,Component,Driver,UiWindow,ON,BY,MatchPattern,DisplayRotation,ResizeDirection,WindowMode,PointerMatrix} from '@ohos.UiTest'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 export default function ActsNotificationRequestTest() {

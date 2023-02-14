@@ -17,7 +17,7 @@ import mediaLibrary from "@ohos.multimedia.mediaLibrary";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 import abilityAccessCtrl from "@ohos.abilityAccessCtrl";
 import bundle from "@ohos.bundle";
-import uitest from "@ohos.uitest";
+import uitest from "@ohos.UiTest";
 
 import { sleep } from "../../../../../../common";
 

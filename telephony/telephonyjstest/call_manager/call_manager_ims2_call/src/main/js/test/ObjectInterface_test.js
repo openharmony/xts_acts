@@ -17,7 +17,7 @@ import contact from '@ohos.contact';
 import sms from '@ohos.telephony.sms';
 import featureAbility from '@ohos.ability.featureAbility';
 import { afterAll, beforeAll, describe, expect, it } from '@ohos/hypium';
-import { BY, UiDriver } from '@ohos.uitest';
+import { BY, UiDriver } from '@ohos.UiTest';
 
 export default function ObjectInterfaceTest() {
 
