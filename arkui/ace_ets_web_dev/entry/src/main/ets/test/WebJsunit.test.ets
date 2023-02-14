@@ -139,7 +139,7 @@ export default function webJsunit() {
      */
     it('getHitTest',0,async function(done){
       emitKey="emitGetWebId";
-      Utils.registerEvent("getHitTest","2",118,done);
+      Utils.registerEvent("getHitTest","7",118,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
