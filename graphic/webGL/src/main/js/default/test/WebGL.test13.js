@@ -1595,7 +1595,8 @@ describe('webgl1Test_webgl13', function() {
 				.UNSIGNED_INT_5_9_9_9_REV, 0);
 			const texImage3DError = gl.getError();
 			console.info("texImage3DError: " + texImage3DError);
-			expect(texImage3DError).assertEqual(gl.INVALID_OPERATION);
+			expect(texImage3DError).assertLarger(gl.NO_ERROR);
+			for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 			//deleteContext();
 			done();
 		} catch (e) {

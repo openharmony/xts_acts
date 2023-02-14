@@ -17,6 +17,7 @@ group("multimedia") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "audio/audio_cpp_standard:ActsOpenslesNdkTest",
       "audio/audio_js_standard/AudioCapturer:audio_capturer_js_hap",
       "audio/audio_js_standard/AudioCapturerChangeInfo:audio_capturerchangeInfo_js_hap",
       "audio/audio_js_standard/AudioEventManagement:audio_eventmanagement_js_hap",

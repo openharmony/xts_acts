@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonEvent';
+import batteryInfo from '@ohos.batteryInfo';
 import { describe, it, expect } from '@ohos/hypium'
 
 export default function BatteryCommonEventTest() {
@@ -7444,8 +7445,9 @@ function createBatteryChangedSubscriber() {
                 console.info("commonEventData event: " + commonEventData.event);
                 console.info("commonEventData bundleName: " + commonEventData.bundleName);
                 console.info("commonEventData data: " + commonEventData.data);
-                console.info("commonEventData parameter: " + commonEventData.parameters[0]);
-                var capacity = commonEventData.parameters['0'];
+                let socKey = batteryInfo.CommonEventBatteryChangedKey.EXTRA_SOC;
+                console.info("commonEventData parameter: " + commonEventData.parameters[socKey]);
+                var capacity = commonEventData.parameters[socKey];
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
