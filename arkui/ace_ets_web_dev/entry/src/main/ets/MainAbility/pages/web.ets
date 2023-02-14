@@ -43,7 +43,6 @@ struct Index {
     @State geolocationAccess:boolean=true
     @State onlineImageAccess:boolean=true
     @State databaseAccess:boolean=true
-    @State overviewModeAccess:boolean=false
     @State initialScale:number=100
     @State enterPageEnd:boolean=false
     @State newScale:number=0
@@ -54,7 +53,6 @@ struct Index {
     @State cacheError:boolean=false
     @State mixedSwitch:boolean=false
     @State mixedAllSwitch:boolean=false
-    @State overViewFalseHeight:number=0
     @State isProgressFinish:boolean=false
     @State isHttpErrorReceive:boolean=false
     onPageShow(){
@@ -106,7 +104,6 @@ struct Index {
             .cacheMode(this.cacheMode)
             .initialScale(this.initialScale)
             .mixedMode(this.mixedMode)
-            .overviewModeAccess(this.overviewModeAccess)
             .userAgent("Mozila/5.0 (Linux; Andriod 9; VRD-AL10; HMSCore 6.3.0.331) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.105 HuaweiBrowser/12.0.4.1 MobileSafari/537.36")
             .javaScriptProxy({
                 object:this.jsObj,
@@ -313,7 +310,7 @@ struct Index {
                             break;
                         }
                         case "emitGetWebId":{
-                            Utils.emitEvent("webId",120)
+                            Utils.emitEvent(webId,120)
                             break;
                         }
                         case "emitGetRequestFocus":{
@@ -471,31 +468,6 @@ struct Index {
                             },3000)
                             break;
                         }
-                        case "emitOverviewModeAccessFalse":{
-                            this.overviewModeAccess=false
-                            await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"});
-                            setTimeout(()=>{
-                                this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
-                                    this.overViewFalseHeight=parseInt(res)
-				                    console.info("getViewResult==>"+res)
-                                    Utils.emitEventTwo(this.overViewFalseHeight,parseInt(res),168)
-                                }})
-                            },3000)
-                            break;
-                        }
-                        case "emitOverviewModeAccessTrue":{
-                            this.overviewModeAccess=true
-                            await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"});
-                            setTimeout(()=>{
-                                this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
-				                    console.info("getViewResult==>"+res)
-                                    Utils.emitEventTwo(this.overViewFalseHeight,parseInt(res),170)
-                                }})
-                            },3000)
-                            break;
-                        }
                         case "emitOnPrompt":{
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"});
                             setTimeout(()=>{
@@ -641,18 +613,17 @@ struct Index {
                             },3000)
                             break;
                         }
-                        case "emitOnInactive":{
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"});
+                        case "emitOnInactive":{       
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"});                    
                             this.controller.onInactive()
-                            setTimeout(()=>{
-                                var onInactiveCalled = false
+                            setTimeout(()=>{    
                                 this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
                                     console.info("gettitle++++++"+res)
                                     if(res == "\"index\""){
                                     onInactiveCalled = true
                                 }
                                 Utils.emitEvent(onInactiveCalled,84)
-                                }})        
+                                }})                                                                                                            
                             },3000)
                             break;
                         }

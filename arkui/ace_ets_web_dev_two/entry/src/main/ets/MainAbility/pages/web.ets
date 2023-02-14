@@ -74,13 +74,9 @@ struct Index {
             Row(){
                 Button("web click").key('webcomponent').onClick(async ()=>{
                     console.info("key==>"+this.str)
-                    switch(this.str){                                                                                
-                        case "emitAllowGeolocation":{
-                            try {
-                                web_webview.GeolocationPermissions.allowGeolocation("resource://rawfile/");
-                            } catch (error) {
-                                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
-                            }                                                                                 
+                    switch(this.str){
+                        case "emitAllowGeolocation":{                                                                                 
+                            web_webview.GeolocationPermissions.allowGeolocation("file:///")
                             web_webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                                 if (error) {
                                     console.log('error:' + JSON.stringify(error));
@@ -174,7 +170,7 @@ struct Index {
                                 }
                                 Utils.emitEvent(zoomInCalled,428);
                                     }})
-                                }})                                                                                
+                                }})                                                                                 
                             },3000);                                                                                  
                             break ;
                         }
