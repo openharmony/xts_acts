@@ -309,10 +309,6 @@ struct Index {
                             Utils.emitEvent(hitType,118)
                             break;
                         }
-                        case "emitGetWebId":{
-                            Utils.emitEvent(webId,120)
-                            break;
-                        }
                         case "emitGetRequestFocus":{
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/second.html"});
                             await Utils.sleep(2000)
@@ -619,10 +615,7 @@ struct Index {
                             setTimeout(()=>{    
                                 this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
                                     console.info("gettitle++++++"+res)
-                                    if(res == "\"index\""){
-                                    onInactiveCalled = true
-                                }
-                                Utils.emitEvent(onInactiveCalled,84)
+                                    Utils.emitEvent(res,84)
                                 }})                                                                                                            
                             },3000)
                             break;

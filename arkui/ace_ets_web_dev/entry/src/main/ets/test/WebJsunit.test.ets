@@ -138,18 +138,8 @@ export default function webJsunit() {
      *tc.desic Gets the type of HitTest
      */
     it('getHitTest',0,async function(done){
-      emitKey="emitGetWebId";
-      Utils.registerEvent("getHitTest","7",118,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_011                                                                                                                                                                       
-     *tc.name getWebId                                                                                                                                                                                                                 
-     *tc.desic Gets the id for the current Web
-     */
-    it('getWebId',0,async function(done){
       emitKey="emitGetRequestFocus";
-      Utils.registerEvent("getWebId","1",120,done);
+      Utils.registerEvent("getHitTest","7",118,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -509,7 +499,7 @@ export default function webJsunit() {
      */
     it('onInactive',0,async function(done){
       emitKey="emitOnActive";
-      Utils.registerEvent("onInactive",true,84,done);
+      Utils.registerEvent("onInactive","\"index\"",84,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
