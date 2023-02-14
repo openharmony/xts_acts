@@ -35,7 +35,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 console.log("Telephony_NetworkManager_register_Async_0100 register ");
                 if (error) {
                     console.info(caseName + " register fail: " + JSON.stringify(error));
-                    expect().assertFail();
+                    expect(true).assertFalse();
                     done();
                     return;
                 }
@@ -57,7 +57,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                     console.log("Telephony_NetworkManager_register_Async_0100 unregister ");
                     if (error) {
                         console.info(caseName + " register fail: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -106,7 +106,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregisterresult: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -158,7 +158,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -210,7 +210,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregisterresult: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -262,7 +262,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -314,7 +314,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregisterresult: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -366,7 +366,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -418,7 +418,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -469,7 +469,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -521,7 +521,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -574,7 +574,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -627,7 +627,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -681,7 +681,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -735,7 +735,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -788,7 +788,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -842,7 +842,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -895,7 +895,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -930,7 +930,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                         return;
                     }
@@ -944,7 +944,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                         netConn1.unregister((error) => {
                             if (error) {
                                 console.info(caseName + " unregister result: " + JSON.stringify(error));
-                                expect().assertFail();
+                                expect(true).assertFalse();
                                 done();
                             }
                             done();
@@ -981,7 +981,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -1034,7 +1034,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister fail " + error);
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -1068,7 +1068,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                         return;
                     }
@@ -1084,14 +1084,14 @@ export default function Telephony_NetworkManagerRegisterTest() {
                     netConn1.register(function (error) {
                         if (error) {
                             console.info(caseName + " register fail: " + JSON.stringify(error));
-                            expect().assertFail();
+                            expect(true).assertFalse();
                             done();
                             return;
                         }
                         netConn1.unregister((error) => {
                             if (error) {
                                 console.info(caseName + " unregister result: " + JSON.stringify(error));
-                                expect().assertFail();
+                                expect(true).assertFalse();
                                 done();
                             }
                             done();
@@ -1127,7 +1127,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                         return;
                     }
@@ -1143,14 +1143,14 @@ export default function Telephony_NetworkManagerRegisterTest() {
                     netConn1.register(function (error) {
                         if (error) {
                             console.info(caseName + " register fail: " + JSON.stringify(error));
-                            expect().assertFail();
+                            expect(true).assertFalse();
                             done();
                             return;
                         }
                         netConn1.unregister((error) => {
                             if (error) {
                                 console.info(caseName + " unregister result: " + JSON.stringify(error));
-                                expect().assertFail();
+                                expect(true).assertFalse();
                                 done();
                             }
                             done();
@@ -1172,7 +1172,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
             netConn.register(function (error) {
                 if (error) {
                     console.info(caseName + " register fail: " + JSON.stringify(error));
-                    expect().assertFail();
+                    expect(true).assertFalse();
                     done();
                     return;
                 }
@@ -1197,7 +1197,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -1249,7 +1249,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -1270,7 +1270,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
             netConn.register(function (error) {
                 if (error) {
                     console.info(caseName + " register fail: " + JSON.stringify(error));
-                    expect().assertFail();
+                    expect(true).assertFalse();
                     done();
                     return;
                 }
@@ -1295,7 +1295,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
@@ -1315,7 +1315,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
             netConn.register(function (error) {
                 if (error) {
                     console.info(caseName + " register fail: " + JSON.stringify(error));
-                    expect().assertFail();
+                    expect(true).assertFalse();
                     done();
                     return;
                 }
@@ -1341,7 +1341,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 netConn.unregister((error) => {
                     if (error) {
                         console.info(caseName + " unregister result: " + JSON.stringify(error));
-                        expect().assertFail();
+                        expect(true).assertFalse();
                         done();
                     }
                     done();
