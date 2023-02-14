@@ -15,7 +15,7 @@
 import mediaLibrary from "@ohos.multimedia.mediaLibrary";
 import abilityAccessCtrl from "@ohos.abilityAccessCtrl";
 import bundle from "@ohos.bundle";
-import uitest from "@ohos.uitest";
+import uitest from "@ohos.UiTest";
 const presetsCount = {
     ActsMediaLibraryAlbumTest: { albumsCount: 15, assetsCount: 27 },
     ActsMediaLibraryBaseTest: { albumsCount: 11, assetsCount: 14 },

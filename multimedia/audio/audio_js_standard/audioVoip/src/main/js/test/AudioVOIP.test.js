@@ -18,7 +18,7 @@ import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { UiDriver, BY} from '@ohos.uitest'
+import { UiDriver, BY} from '@ohos.UiTest'
 
 export default function audioVoip() {
 describe('audioVoip', function () {
