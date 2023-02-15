@@ -15,7 +15,7 @@
 
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
-import { UiDriver, BY } from '@ohos.uitest'
+import { UiDriver, BY } from '@ohos.UiTest'
 import testsuite from '../test/List.test'
 
 import featureAbility from '@ohos.ability.featureAbility';
