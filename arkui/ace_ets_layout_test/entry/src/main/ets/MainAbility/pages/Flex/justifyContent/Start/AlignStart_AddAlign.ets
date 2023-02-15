@@ -17,7 +17,7 @@ import {MessageManager,Callback} from './../../../../common/MessageManager';
 @Entry
 @Component
 struct AlignStart_AddAlign {
-  @State DadAddAlign: number = Alignment.TopStart
+  @State DadAddAlign: number = Alignment.TopStart;
   messageManager:MessageManager = new MessageManager()
   onPageShow() {
     console.info('AlignSpaceEvenly_NoSpace onPageShow');
