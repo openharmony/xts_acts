@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import { UiDriver } from '@ohos.uitest'
+import { UiDriver } from '@ohos.UiTest'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import prompt from '@ohos.prompt'
 

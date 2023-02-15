@@ -15,7 +15,7 @@
 
 import {testAVPlayerFun} from '../../../../../../AVPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../../MediaTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function AVPlayerHttpCompatibilityTest() {
     describe('AVPlayerHttpCompatibilityTest', function () {

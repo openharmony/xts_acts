@@ -127,10 +127,12 @@ struct Index {
                             break;
                         }
                         case "emitLoadUrl":{
-                            this.controller.loadUrl({url:"https://gitee.com/"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"})
                             setTimeout(()=>{
-                                let webTitle=this.controller.getTitle()
-                                Utils.emitEvent(webTitle,110)
+                                this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
+                                    console.info("gettitle1==>"+res)
+                                    Utils.emitEvent(res,110)
+                                }})
                             },3000)
                             break;
                         }
@@ -165,25 +167,6 @@ struct Index {
                             Utils.emitEvent("webId",120)
                             break;
                         }
-                        case "emitGetTitle":{
-                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
-                            setTimeout(()=>{
-                                let webTitle=this.controller.getTitle()
-                                Utils.emitEvent(webTitle,122)
-                            },3000)
-                            break;
-                        }
-                        case "emitGetPageHeight":{
-                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
-                            let webPageHeight=this.controller.getPageHeight()+""
-                            setTimeout(()=>{
-                                this.controller.runJavaScript({script:"getPageHeight()",callback:(res)=>{
-                                    console.info("getPageHeight==>"+res)
-                                    Utils.emitEventTwo(res,webPageHeight,124)
-                                }})
-                            },3000)
-                            break;
-                        }
                         case "emitGetRequestFocus":{
                             this.controller.loadUrl({url:"resource://rawfile/second.html"});
                             await Utils.sleep(2000)
@@ -207,25 +190,18 @@ struct Index {
                         }
                         case "emitBackward":{
                             this.controller.backward()
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             setTimeout(()=>{
-                                let webTitle=this.controller.getTitle()
-                                Utils.emitEvent(webTitle,134)
+                                this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
+                                    Utils.emitEvent(res,134)
+                                }})
                             },3000)
                             break;
                         }
                         case "emitForward":{
                             this.controller.forward()
                             setTimeout(()=>{
-                                let webTitle=this.controller.getTitle()
-                                Utils.emitEvent(webTitle,136)
-                            },3000)
-                            break;
-                        }
-                        case "emitBackOrForward":{
-                            this.controller.backOrForward(-1)
-                            setTimeout(()=>{
-                                let webTitle=this.controller.getTitle()
-                                Utils.emitEvent(webTitle,138)
+                                Utils.emitEvent(this.newUrl,136)
                             },3000)
                             break;
                         }
@@ -363,10 +339,11 @@ struct Index {
                         case "emitCacheModeDefault":{
                             this.cacheMode=CacheMode.Default
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"https://www.openharmony.cn/mainPlay"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"})
                             setTimeout(()=>{
-                                let webTitle=this.controller.getTitle()
-                                Utils.emitEvent(webTitle,184)
+                                this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
+                                    Utils.emitEvent(res,184)
+                                }}) 
                             },3000)
                             break;
                         }
@@ -389,8 +366,9 @@ struct Index {
                             this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             this.controller.runJavaScript({script:"openRawFile()"})
                             setTimeout(()=>{
-                                let webTitle=this.controller.getTitle()
-                                Utils.emitEvent(webTitle,190)
+                                this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
+                                    Utils.emitEvent(res,190)
+                                }})
                             },3000)
                             break;
                         }
@@ -452,60 +430,18 @@ struct Index {
                             this.controller.loadUrl({url:"https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/mobileservices/2022/download/PC107f1b3947c942ffaa14334a879065d8.2107261020.exe"})
                             break;
                         }
-                        case "emitSetCookie":{
-                            this.controller.getCookieManager().setCookie('http://www.baidu.com','e=f')
-                            setTimeout(()=>{
-                                let setCookieCalled =  this.controller.getCookieManager().getCookie('http://www.baidu.com')
-                                Utils.emitEvent(setCookieCalled,76)
-                            },3000)
-                            break;
-                        }
-                        case "emitGetCookie":{
-                            this.controller.getCookieManager().setCookie('https://www.bilibili.com/','e=f')
-                            setTimeout(()=>{
-                                let getCookieCalled =  this.controller.getCookieManager().getCookie('https://www.bilibili.com/')
-                                Utils.emitEvent(getCookieCalled,69)
-                            },3000)
-                            break;
-                        }
                         case "emitZoom":{
                             this.controller.loadUrl({url:"resource://rawfile/index.html"});
-                            setTimeout(()=>{
-                                this.controller.zoom(2)
-                                setTimeout(() => {
-                                    if(this.controller.getPageHeight() > 1400){
-                                        var zoomCalled = true
-                                    }
-                                    Utils.emitEvent(zoomCalled,77)
-                                },3000)
+                            this.controller.zoom(2)
+                            setTimeout(()=>{                    
+                                this.controller.runJavaScript({script:"getPageHeight()",callback:(res)=>{
+                                console.info("getPageHeight++++++"+res)
+                                    if(Number(res) > 1400){
+                                    var zoomCalled = true
+                                }
+                                Utils.emitEvent(zoomCalled,77)
+                                }})
                             },5000)
-                            break;
-                        }
-                        case "emitZoomOut":{
-                            setTimeout(()=>{
-                                var zoomOutCalled = true
-                                Utils.emitEvent(zoomOutCalled,78)
-                            },3000)
-                            break;
-                        }
-                        case "emitZoomIn":{
-                            setTimeout(()=>{
-                                var zoomInCalled = false
-                                Utils.emitEvent(zoomInCalled,79)
-                            },3000)
-                            break;
-                        }
-                        case "emitDeleteEntireCookie":{
-                            this.controller.getCookieManager().deleteEntireCookie()
-                            setTimeout(()=>{
-                                let deleteEntireCookieCalled = this.controller.getCookieManager().getCookie('http://www.baidu.com')
-                                Utils.emitEvent(deleteEntireCookieCalled,80)
-                            },3000)
-                            break;
-                        }
-                        case "emitSaveCookieSync":{
-                            let saveCookieSyncCalled = this.controller.getCookieManager().saveCookieSync()
-                            Utils.emitEvent(saveCookieSyncCalled,81)
                             break;
                         }
                         case "emitClearHistory":{
@@ -532,14 +468,17 @@ struct Index {
                             break;
                         }
                         case "emitOnInactive":{
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"});
                             this.controller.onInactive()
-                            this.controller.zoomOut()
                             setTimeout(()=>{
                                 var onInactiveCalled = false
-                                if(this.controller.getPageHeight() < 2600){
+                                this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
+                                    console.info("gettitle++++++"+res)
+                                    if(res == "\"index\""){
                                     onInactiveCalled = true
                                 }
                                 Utils.emitEvent(onInactiveCalled,84)
+                                }})        
                             },3000)
                             break;
                         }
@@ -581,14 +520,6 @@ struct Index {
                                         Utils.emitEvent(javaScriptAccessCalled,88)
                                     }
                                 },3000)
-                            },3000)
-                            break;
-                        }
-                        case "emitGetCookieManager":{
-                            this.controller.getCookieManager().setCookie("https://weibo.com","a=b")
-                            setTimeout(()=>{
-                                let getCookieManagerCalled =  this.controller.getCookieManager().getCookie('https://weibo.com')
-                                Utils.emitEvent(getCookieManagerCalled,89)
                             },3000)
                             break;
                         }

@@ -48,7 +48,7 @@ struct SetCircle {
               mimeType : "image/*",
               relativePath : "Pictures/"
             };
-            mediaLibrary.getMediaLibrary().storeMediaAsset(option).then((value) => {
+            mediaLibrary.getMediaLibrary(globalThis.abilityContext).storeMediaAsset(option).then((value) => {
               AlertDialog.show(
                 {
                   title: '保存成功',

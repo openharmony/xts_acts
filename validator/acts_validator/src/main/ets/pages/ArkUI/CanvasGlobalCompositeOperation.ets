@@ -22,6 +22,7 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasGlobalCompositeOperation';
   @State StepTips: string = '操作步骤：点击不同的合成操作的方式'+'\n'+'预期结果：原本默认合成方式会随点击变化';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -40,6 +41,7 @@ struct SetCircle {
             this.context.globalCompositeOperation = 'source-over';
             this.context.fillStyle = 'rgb(0,0,255)';
             this.context.fillRect(180, 180, 50, 50);
+            this.Vue = true;
           })
           Text('s-atop').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=>{
@@ -49,6 +51,7 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'source-atop';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
+              this.Vue = true;
             })
           Text('s-in').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=>{
@@ -58,6 +61,7 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'source-in';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
+              this.Vue = true;
             })
           Text('s-out').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=>{
@@ -67,6 +71,7 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'source-out';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
+              this.Vue = true;
             })
         }
         Row({space:10}){
@@ -78,6 +83,7 @@ struct SetCircle {
             this.context.globalCompositeOperation = 'destination-over';
             this.context.fillStyle = 'rgb(0,0,255)';
             this.context.fillRect(180, 180, 50, 50);
+            this.Vue = true;
           })
           Text('d-atop').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -87,6 +93,7 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'destination-atop';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
+              this.Vue = true;
             })
           Text('d-in').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -96,6 +103,7 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'destination-in';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
+              this.Vue = true;
             })
           Text('d-out').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -105,6 +113,7 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'destination-out';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
+              this.Vue = true;
             })
         }
         Row({space:10}){
@@ -116,6 +125,7 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'lighter';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
+              this.Vue = true;
             })
           Text('copy').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -125,6 +135,7 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'copy';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
+              this.Vue = true;
             })
           Text('xor').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -134,6 +145,7 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'xor';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
+              this.Vue = true;
             })
           Text('').fontSize(0).border({width:0}).size({width:'18%',height:'20%'})
         }
@@ -157,11 +169,12 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        name:$name
+        FillColor: $FillColor,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

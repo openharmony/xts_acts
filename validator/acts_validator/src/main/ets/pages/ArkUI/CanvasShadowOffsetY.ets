@@ -23,6 +23,7 @@ struct SetCircle {
   @State X: number = 0;
   @State name: string = 'CanvasShadowOffsetY';
   @State StepTips: string = '操作步骤：拖动滑块向右移动'+'\n'+'预期结果：阴影会随着拖动距离增大而向下偏移，并显示偏移数值';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -39,6 +40,7 @@ struct SetCircle {
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 100, 100);
               console.info('Pan start');
+              this.Vue = true;
             })
             .onActionUpdate((event: GestureEvent) => {
               this.X = event.offsetX;
@@ -67,13 +69,14 @@ struct SetCircle {
   build() {
     Column() {
       CustomContainer({
-        title:this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        title: this.name,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        X:$X,
-        name:$name
+        FillColor: $FillColor,
+        X: $X,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

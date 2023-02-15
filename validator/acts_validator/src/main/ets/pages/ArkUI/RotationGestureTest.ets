@@ -20,6 +20,7 @@ struct RotationGuestureTest {
   @State X: number = 0;
   @State name: string = 'RotationGuesture';
   @State StepTips: string = '操作步骤：用至少两根手指旋转图像（最多五根手指）'+'\n'+'预期结果：图片能够正常旋转';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -35,6 +36,7 @@ struct RotationGuestureTest {
       RotationGesture()
         .onActionUpdate((event: GestureEvent) => {
           this.X = event.angle;
+          this.Vue = true;
         })
       )
       Text('旋转角度:' + this.X)
@@ -44,11 +46,12 @@ struct RotationGuestureTest {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        X:$X,
-        name:$name
+        X: $X,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

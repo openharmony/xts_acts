@@ -35,7 +35,6 @@ const unsubscribeCallback = (tcNumber) => {
 
 const unsubscribeOnDeletedCallback = (tcNumber, done) => {
     console.info(`${tcNumber} unsubscribeOnDeleted Callback`);
-    done();
 }
 const unsubscribeOnAcquiredCallback = (tcNumber) => {
     console.info(`${tcNumber} unsubscribeOnAcquired Callback`);

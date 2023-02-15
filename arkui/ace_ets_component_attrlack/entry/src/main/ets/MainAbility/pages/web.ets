@@ -79,8 +79,6 @@ struct WebEditText {
         })
         .onHttpErrorReceive((event) => {
           console.log('setResponseHeader:' + event.response.setResponseHeader([]));
-          console.log('web getExtra:' + this.controller.getHitTestValue().getExtra());
-          console.log('web getType:' + this.controller.getHitTestValue().getType());
           let result = event.request.getRequestHeader();
           console.log('The request header result size is ' + result.length);
           for (let i of result) {

@@ -12,11 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import file from '@system.file';
-import { Core, ExpectExtend, InstrumentLog, ReportExtend } from "deccjsunit/index"
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
 import testsuite from "../../../test/List.test.ets"
-import featureAbility from "@ohos.ability.featureAbility"
-import { UiDriver, BY } from '@ohos.uitest'
 
 var mXComponentController: XComponentController = new XComponentController()
 var surfaceId: any
@@ -26,7 +24,7 @@ var surfaceId: any
 struct Index {
   aboutToAppear() {
     console.info("start run testcase!!!!");
-}
+  }
   build() {
     Flex() {
       XComponent({
@@ -41,23 +39,10 @@ struct Index {
           surfaceId = mXComponentController.getXComponentSurfaceId()
           globalThis.value = surfaceId
           console.info('CameraModuleTest: XComponent onLoad surfaceId: ' + globalThis.value)
-          const core = Core.getInstance()
-          const expectExtend = new ExpectExtend({
-            'id': 'extend'
-          })
-          core.addService('expect', expectExtend)
-          const reportExtend = new ReportExtend(file)
-
-          core.addService('report', reportExtend)
-          core.init()
-          core.subscribeEvent('task', reportExtend)
-          const configService = core.getDefaultService('config')
-          globalThis.abilityWant.parameters.timeout = 70000;
-          configService.setConfig(globalThis.abilityWant.parameters)
-          console.info('testsuite()---->')
-          testsuite()
-          core.execute()
-          console.info('core.execute()---->')
+          var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+          var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+          console.info('start run testcase!!!')
+          Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
         })
         .width('1920px')
         .height('1080px')

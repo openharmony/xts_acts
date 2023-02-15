@@ -3,6 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "1500000",
+        "testcase-timeout": "50000",
         "bundle-name": "ohos.acts.multimedia.audio.audiocapturer",
         "package-name": "ohos.acts.multimedia.audio.audiocapturer",
         "shell-timeout": "60000"
@@ -19,8 +20,6 @@
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files",
-                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry",
                 "power-shell wakeup",
                 "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
                 "power-shell setmode 602"
@@ -34,20 +33,6 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/audio/audioManager/Believer.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/Believer60s.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-1C-8000-2SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-1C-16000-2SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-1C-32000-1SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-1C-44100-2SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-1C-64000-3SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-1C-96000-4SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-2C-11025-1SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-2C-12000-2SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-2C-16000-3SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-2C-22050-2SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-2C-24000-3SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-2C-48000-4SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/"
             ]
         }
     ]

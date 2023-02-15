@@ -22,11 +22,16 @@ var mainability
 const START_ABILITY_TIMEOUT = 10000;
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 const START_ABILITY_TIMEOUT_THOUSAND = 1000;
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 export default function abilityTest() {
 
   describe('ActsChangeAbilityStagetest', function () {
     beforeAll(async function (done) {
       console.info('beforeAll called')
+      await sleep(2000)
       await globalThis.abilitydelegator.getCurrentTopAbility().then((data) => {
         mainability = data
         done()

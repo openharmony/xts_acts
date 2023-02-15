@@ -20,6 +20,7 @@ struct LongPressGestureExample {
   @State X: number = 0;
   @State name: string = 'LongPressGesture';
   @State StepTips: string = '操作步骤：用至少一根手指长按图像（最多十根手指）'+'\n'+'预期结果：长按动作触发计数增加';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -34,6 +35,7 @@ struct LongPressGestureExample {
         .onAction((event: GestureEvent) => {
           if (event.repeat) {
             this.X++;
+            this.Vue = true;
           }
         })
         .onActionEnd(() => {
@@ -48,11 +50,12 @@ struct LongPressGestureExample {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
+        Url: 'pages/ArkUI/ArkUI_index',
         content: this.specificNoParam,
-        StepTips:this.StepTips,
-        X:$X,
-        name:$name
+        StepTips: this.StepTips,
+        X: $X,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

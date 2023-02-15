@@ -22,6 +22,7 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasFillStyle';
   @State StepTips: string = '操作步骤：点击不同的颜色控件'+'\n'+'预期结果：原本默认黑色的填色区域会随点击变化';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -35,6 +36,7 @@ struct SetCircle {
             this.FillColor = '#FFFF0000';
             this.context.fillStyle = this.FillColor;
             this.context.fillRect(100, 160, 150, 100);
+            this.Vue = true;
           })
         Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -42,6 +44,7 @@ struct SetCircle {
             this.FillColor = '#fffffc3c';
             this.context.fillStyle = this.FillColor;
             this.context.fillRect(100, 160, 150, 100);
+            this.Vue = true;
           })
         Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -49,6 +52,7 @@ struct SetCircle {
             this.FillColor = '#ff19fa00';
             this.context.fillStyle = this.FillColor;
             this.context.fillRect(100, 160, 150, 100);
+            this.Vue = true;
           })
       }.width('70%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -70,8 +74,9 @@ struct SetCircle {
         Url:'pages/ArkUI/ArkUI_index',
         StepTips:this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        name:$name
+        FillColor: $FillColor,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

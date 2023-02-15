@@ -22,6 +22,7 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasFillStyle';
   @State StepTips: string = '操作步骤：点击不同的字体控件'+'\n'+'预期结果：原本默认字体会改变';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -38,12 +39,14 @@ struct SetCircle {
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal normal 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('italic').fontSize(13).border({width:2}).size({width:'24%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'italic normal 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
         }
         Row({space:8}) {
@@ -53,24 +56,28 @@ struct SetCircle {
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal normal 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('bold').fontSize(13).border({width:2}).size({width:'16%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal bold 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('bolder').fontSize(13).border({width:2}).size({width:'16%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal bolder 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('lighter').fontSize(13).border({width:2}).size({width:'16%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal lighter 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
         }
         Row({space:5}) {
@@ -79,54 +86,63 @@ struct SetCircle {
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal 100 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('200').fontSize(13).border({width:2}).size({width:'10%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal 200 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('300').fontSize(13).border({width:2}).size({width:'10%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal 300 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('400').fontSize(13).border({width:2}).size({width:'10%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal 400 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('500').fontSize(13).border({width:2}).size({width:'10%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal 500 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('600').fontSize(13).border({width:2}).size({width:'10%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal 600 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('700').fontSize(13).border({width:2}).size({width:'10%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal 700 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('800').fontSize(13).border({width:2}).size({width:'10%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal 800 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('900').fontSize(13).border({width:2}).size({width:'10%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal 900 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
         }
         Row({space:10}){
@@ -136,18 +152,21 @@ struct SetCircle {
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal normal 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('serif').fontSize(13).border({width:2}).size({width:'24%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal normal 120px serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('monospace').fontSize(13).border({width:2}).size({width:'24%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal normal 120px monospace';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
         }
         Row({space:10}) {
@@ -157,24 +176,28 @@ struct SetCircle {
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal normal 10px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('medium').fontSize(13).border({width:2}).size({width:'18%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal normal 50px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('large').fontSize(13).border({width:2}).size({width:'18%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal normal 80px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
           Text('extra').fontSize(13).border({width:2}).size({width:'18%',height:'18%'})
             .onClick(()=>{
               this.context.clearRect(0, 10, 350, 300);
               this.context.font = 'normal normal 120px sans-serif';
               this.context.fillText("Hello World", 80, 120);
+              this.Vue = true;
             })
         }
       }.width('90%').height('30%')
@@ -195,10 +218,11 @@ struct SetCircle {
       CustomContainer({
         title: this.name,
         Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        name:$name
+        FillColor: $FillColor,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

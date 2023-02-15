@@ -21,6 +21,7 @@ group("arkui") {
     "ace_ets_component_four:ActsAceEtsComponentFourTest",
     "ace_ets_component_three:ActsAceEtsComponentThreeTest",
     "ace_ets_component_two:ActsAceEtsComponentTwoTest",
+    "ace_ets_component_ui:ActsAceEtsComponentUITest",
     "ace_ets_dev:ActsAceDevTest",
     "ace_ets_standard:ActsAceEtsStTest",
     "ace_ets_test:ActsAceEtsTest",

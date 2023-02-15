@@ -14,6 +14,7 @@
  */
 import data_preferences from '@ohos.data.preferences';
 
+
 export default class FirstDialog{
   static ChooseDialog = async (StepTips:string,name: string)=>{
     let Test = null;

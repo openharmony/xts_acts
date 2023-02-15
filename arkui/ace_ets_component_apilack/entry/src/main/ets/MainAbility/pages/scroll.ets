@@ -61,9 +61,9 @@ struct ScrollOnScrollBegin {
         }.width('100%')
       }
       .scrollable(ScrollDirection.Vertical)
-      .onScrollBegin((dx: number, dy: number) => {
-        console.info('dx=' + dx + ",dy=" + dy)
-        return { dxRemain: dx, dyRemain: dy }
+      .onScrollFrameBegin((offset: number, state: ScrollState) => {
+        console.info('offset=' + offset)
+        return { offsetRemain: offset }
       })
       .scrollBar(BarState.On)
       .scrollBarColor(Color.Gray)

@@ -32,8 +32,7 @@ struct SetCircle {
         Text('点击保存').margin('2%').backgroundColor('#FFDDDDF8').fontSize(20).border({ width: 1 }).size({ width: '70%', height: '20%' })
           .onClick(async () => {
             let TAG = 'storeMediaAssetCallback3';
-            let context0 = featureAbility.getContext();
-              let data = await context0.getFilesDir();
+            let data = await globalThis.abilityContext.getFilesDir();
               let time = new Date().getTime();
               console.log("data is"+ JSON.stringify(data));
               data = 'data/storage/el2/base/haps/entry';
@@ -48,7 +47,7 @@ struct SetCircle {
                 mimeType : "video/mp4",
                 relativePath : "Videos/"
               };
-              mediaLibrary.getMediaLibrary().storeMediaAsset(option, (err, value) => {
+            mediaLibrary.getMediaLibrary(globalThis.abilityContext).storeMediaAsset(option, (err, value) => {
                 if (err) {
                   console.log(TAG + "An error occurred when storing videos resources."+ JSON.stringify(err));
                   return;

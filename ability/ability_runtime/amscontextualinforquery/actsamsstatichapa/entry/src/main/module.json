@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "com.example.staticinformationmultihappackage",
+    "name": "com.acts.stinformationmulapp",
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:phone_entry_dsc",
@@ -13,9 +13,15 @@
     "installationFree": false,
     "uiSyntax": "ets",
     "pages": "$profile:main_pages",
+    "metadata": [
+      {
+        "name": "ArkTSPartialUpdate",
+        "value": "false"
+      }
+    ],
     "abilities": [
       {
-        "name": "com.example.staticinformationmultihappackage.MainAbility",
+        "name": "com.acts.stinformationmulapp.MainAbility",
         "srcEntrance": "./ets/MainAbility/MainAbility.ts",
         "description": "$string:phone_entry_main",
         "icon": "$media:icon",

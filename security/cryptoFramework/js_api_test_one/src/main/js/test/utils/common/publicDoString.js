@@ -67,7 +67,7 @@ function genIvParamsSpec(n) {
   var dataBlob = { data: dataIv };
   var ivParamSpec = {
     iv: dataBlob,
-    algoName: "IvParamsSpec",
+    algName: "IvParamsSpec",
   };
   return ivParamSpec;
 }
@@ -86,7 +86,7 @@ function genGcmParamsSpec() {
     iv: ivBlob,
     aad: aadBlob,
     authTag: tagBlob,
-    algoName: "GcmParamsSpec",
+    algName: "GcmParamsSpec",
   };
   return gcmParamsSpec;
 }
@@ -105,7 +105,7 @@ function genCcmParamsSpec() {
     iv: ivBlob,
     aad: aadBlob,
     authTag: tagBlob,
-    algoName: "CcmParamsSpec",
+    algName: "CcmParamsSpec",
   };
   return ccmParamsSpec;
 }
