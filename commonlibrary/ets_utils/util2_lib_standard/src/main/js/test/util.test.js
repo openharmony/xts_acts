@@ -4440,8 +4440,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_001', 0, function () {
-        var  that = new util.TextDecoder()
-        that.create('utf-8', { ignoreBOM : true })
+        var that = util.TextDecoder.create('utf-8', { ignoreBOM : true })
         var retStr = that.encoding
         expect(retStr).assertEqual('utf-8')
     })
@@ -4451,8 +4450,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_002', 0, function () {
-        var that = new util.TextDecoder()
-        that.create('utf-16le')
+        var that = util.TextDecoder.create('utf-16le')
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16le')
     })
@@ -4462,8 +4460,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_003', 0, function () {
-        var that = new util.TextDecoder()
-        that.create('utf-16be')
+        var that = util.TextDecoder.create('utf-16be')
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
@@ -4473,8 +4470,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_004', 0, function () {
-        var that = new util.TextDecoder()
-        that.create('utf-16be', { ignoreBOM : true })
+        var that = util.TextDecoder.create('utf-16be', { ignoreBOM : true })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
@@ -4484,8 +4480,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_005', 0, function () {
-        var that = new util.TextDecoder()
-        that.create('utf-16be', { ignoreBOM : false })
+        var that = util.TextDecoder.create('utf-16be', { ignoreBOM : false })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
@@ -4496,8 +4491,7 @@ describe('DecodeEncodeTest', function () {
      */
     it('testencoding_textdecoder_ThrowError_001', 0, function () {
         try {
-            var that = new util.TextDecoder()
-            that.create(123, { ignoreBOM : false })
+            var that = util.TextDecoder.create(123, { ignoreBOM : false })
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
@@ -4511,8 +4505,7 @@ describe('DecodeEncodeTest', function () {
      */
     it('testencoding_textdecoder_ThrowError_002', 0, function () {
         try {
-            var that = new util.TextDecoder()
-            that.create('utf-16be', 'ignoreBOM')
+            var that = util.TextDecoder.create('utf-16be', 'ignoreBOM')
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
@@ -4526,8 +4519,7 @@ describe('DecodeEncodeTest', function () {
      */
     it('testencoding_textdecoder_ThrowError_002', 0, function () {
         try {
-            var that = new util.TextDecoder()
-            that.create('utf-16be', 123)
+            var that = util.TextDecoder.create('utf-16be', 123)
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
