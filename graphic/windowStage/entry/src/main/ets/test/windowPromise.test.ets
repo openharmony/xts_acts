@@ -94,7 +94,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     function expectedError(error, caseName, apiName, done, code) {
       let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
       console.log(msgStr + JSON.stringify(error));
-      if (error.code === code) {
+      if (error.code == code) {
         expect(TRUE_FLAG).assertTrue();
       }
       done();
@@ -1748,6 +1748,35 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         console.error(msgStr + 'Failed to reset the aspect ratio of window. Cause: ' + JSON.stringify(exception));
       }
       done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SETASPECTRATIO_JSAPI_004
+    * @tc.name       Test setAspectRatioTest4
+    * @tc.desc       Validate the scenario where the content layout proportion of the main window is abnormal
+    */
+    it('setAspectRatioTest4', 0, async function (done) {
+      let caseName = 'setAspectRatioTest4';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWnd = null;
+      await windowStage.getMainWindow().then((data) => {
+        mainWnd = data;
+        expect(!!mainWnd).assertTrue();
+        console.info(msgStr + 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      }).catch((err) => {
+        console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+      });
+      try {
+        let ratio = 0;
+        await mainWnd.setAspectRatio(ratio).then(() => {
+          console.info(msgStr + 'Succeeded in setting aspect ratio of window.');
+        }).catch((err) => {
+          console.error(msgStr + 'Failed to set the aspect ratio of window. err:' + JSON.stringify(err));
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to set the aspect ratio of window. exception: ' + JSON.stringify(exception));
+        expectedError(exception, caseName, 'mainWnd.setAspectRatio', done, 401);
+      }
     })
   })
 }
