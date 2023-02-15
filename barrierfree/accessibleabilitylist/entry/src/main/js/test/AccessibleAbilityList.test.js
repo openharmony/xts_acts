@@ -61,7 +61,7 @@ describe('AccessibleAbilityList', function () {
 				console.info(item.id);
 				expect(item.id != undefined).assertEqual(true);
 				console.info(item.name);
-				expect(item.name !== undefined).assertEqual(true);
+				expect(item.name != undefined).assertEqual(true);
 				console.info(item.description);
 				expect(item.description != undefined).assertEqual(true);
 				console.info(item.abilityTypes);
