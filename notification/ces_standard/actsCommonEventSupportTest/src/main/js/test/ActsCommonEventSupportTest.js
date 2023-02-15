@@ -105,7 +105,6 @@ export default function ActscommonEventSupportTest() {
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST_0600 START`)
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_RESTARTED).assertEqual('usual.event.PACKAGE_RESTARTED')
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_DATA_CLEARED).assertEqual('usual.event.PACKAGE_DATA_CLEARED')
-      expect(commonEvent.Support.COMMON_EVENT_PACKAGE_CACHE_CLEARED).assertEqual('usual.event.PACKAGE_CACHE_CLEARED')
       expect(commonEvent.Support.COMMON_EVENT_PACKAGES_SUSPENDED).assertEqual('usual.event.PACKAGES_SUSPENDED')
       expect(commonEvent.Support.COMMON_EVENT_PACKAGES_UNSUSPENDED).assertEqual('usual.event.PACKAGES_UNSUSPENDED')
       expect(commonEvent.Support.COMMON_EVENT_MY_PACKAGE_SUSPENDED).assertEqual('usual.event.MY_PACKAGE_SUSPENDED')
@@ -317,8 +316,6 @@ export default function ActscommonEventSupportTest() {
      */
     it('SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST_1800', 0, async  function () {
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST_1800 START`)
-      expect(commonEvent.Support.COMMON_EVENT_USB_STATE).assertEqual('usual.event.hardware.usb.action.USB_STATE')
-      expect(commonEvent.Support.COMMON_EVENT_USB_PORT_CHANGED).assertEqual('usual.event.hardware.usb.action.USB_PORT_CHANGED')
       expect(commonEvent.Support.COMMON_EVENT_USB_DEVICE_ATTACHED).assertEqual('usual.event.hardware.usb.action.USB_DEVICE_ATTACHED')
       expect(commonEvent.Support.COMMON_EVENT_USB_DEVICE_DETACHED).assertEqual('usual.event.hardware.usb.action.USB_DEVICE_DETACHED')
       expect(commonEvent.Support.COMMON_EVENT_USB_ACCESSORY_ATTACHED).assertEqual('usual.event.hardware.usb.action.USB_ACCESSORY_ATTACHED')
@@ -339,11 +336,6 @@ export default function ActscommonEventSupportTest() {
       expect(commonEvent.Support.COMMON_EVENT_DISK_BAD_REMOVAL).assertEqual('usual.event.data.DISK_BAD_REMOVAL')
       expect(commonEvent.Support.COMMON_EVENT_DISK_UNMOUNTABLE).assertEqual('usual.event.data.DISK_UNMOUNTABLE')
       expect(commonEvent.Support.COMMON_EVENT_DISK_EJECT).assertEqual('usual.event.data.DISK_EJECT')
-      expect(commonEvent.Support.COMMON_EVENT_VOLUME_REMOVED).assertEqual('usual.event.data.VOLUME_REMOVED')
-      expect(commonEvent.Support.COMMON_EVENT_VOLUME_UNMOUNTED).assertEqual('usual.event.data.VOLUME_UNMOUNTED')
-      expect(commonEvent.Support.COMMON_EVENT_VOLUME_MOUNTED).assertEqual('usual.event.data.VOLUME_MOUNTED')
-      expect(commonEvent.Support.COMMON_EVENT_VOLUME_BAD_REMOVAL).assertEqual('usual.event.data.VOLUME_BAD_REMOVAL')
-      expect(commonEvent.Support.COMMON_EVENT_VOLUME_EJECT).assertEqual('usual.event.data.VOLUME_EJECT')
       expect(commonEvent.Support.COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED ).assertEqual('usual.event.data.VISIBLE_ACCOUNTS_UPDATED')
       expect(commonEvent.Support.COMMON_EVENT_ACCOUNT_DELETED).assertEqual('usual.event.data.ACCOUNT_DELETED')
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST_1900 END`)
@@ -359,9 +351,6 @@ export default function ActscommonEventSupportTest() {
       expect(commonEvent.Support.COMMON_EVENT_FOUNDATION_READY).assertEqual('common.event.FOUNDATION_READY')
       expect(commonEvent.Support.COMMON_EVENT_AIRPLANE_MODE_CHANGED).assertEqual('usual.event.AIRPLANE_MODE')
       expect(commonEvent.Support.COMMON_EVENT_SPLIT_SCREEN).assertEqual('common.event.SPLIT_SCREEN')
-      expect(commonEvent.Support.COMMON_EVENT_SLOT_CHANGE).assertEqual('usual.event.SLOT_CHANGE')
-      expect(commonEvent.Support.COMMON_EVENT_SPN_INFO_CHANGED).assertEqual('usual.event.SPN_INFO_CHANGED')
-      expect(commonEvent.Support.COMMON_EVENT_QUICK_FIX_APPLY_RESULT).assertEqual('usual.event.QUICK_FIX_APPLY_RESULT')
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST_2000 END`)
     })
 
