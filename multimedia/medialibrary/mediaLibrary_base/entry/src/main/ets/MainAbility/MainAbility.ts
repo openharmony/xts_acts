@@ -12,7 +12,7 @@ import {
     ResizeDirection,
     WindowMode,
     PointerMatrix,
-} from "@ohos.uitest";
+} from "@ohos.UiTest";
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         // Ability is creating, initialize resources for this ability
