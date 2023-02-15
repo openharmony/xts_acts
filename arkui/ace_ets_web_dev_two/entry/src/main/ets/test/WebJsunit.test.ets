@@ -131,7 +131,7 @@ export default function webJsunit() {
      */
     it('loadData',0,async function(done){
       emitKey="emitZoomAccess";
-      Utils.registerEvent("loadData","index",424,done);
+      Utils.registerEvent("loadData","\"index\"",424,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
