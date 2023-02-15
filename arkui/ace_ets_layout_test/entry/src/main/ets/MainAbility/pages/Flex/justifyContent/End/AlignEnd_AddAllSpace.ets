@@ -51,5 +51,6 @@ struct AlignEnd_AddAllSpace {
       .width("100%")
       .height(200)
       .backgroundColor(0xAFEEE)
+      .alignItems(HorizontalAlign.Start)
     }
 }
