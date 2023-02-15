@@ -15,10 +15,12 @@
 
  import audioFramework from './AudioFramework.test.js'
  import audioManagerApi9 from './AudioManagerApi9.test.js'
+ import audioRoutingManager from './AudioRoutingManager.test.js'
  
  export default function testsuite() {
     audioFramework()
     audioManagerApi9()
+    audioRoutingManager()
  }
 
 
