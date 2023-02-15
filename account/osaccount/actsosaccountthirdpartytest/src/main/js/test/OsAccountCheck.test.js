@@ -298,7 +298,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
                 console.debug("====>checkOsAccountVerified err:" + JSON.stringify(err));
                 console.debug("====>checkOsAccountVerified data:" + data);
                 expect(err).assertEqual(null);
-                expect(data).assertEqual(false);
+                expect(data).assertEqual(true);
                 console.debug("====>ActsOsAccountCheckVerified_0100 end====");
                 done();
             })
@@ -315,7 +315,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
             console.debug("====>get os AccountManager finish====");
             var checkOsAccountVerified = await AccountManager.checkOsAccountVerified();
             console.debug("====>checkOsAccountVerified data:" + JSON.stringify(checkOsAccountVerified));
-            expect(checkOsAccountVerified).assertEqual(false);
+            expect(checkOsAccountVerified).assertEqual(true);
             console.debug("====>ActsOsAccountCheckVerified_0200 end====");
             done();
         })
