@@ -51,5 +51,6 @@ struct AlignCenter_AddOneMargin {
       .backgroundColor(0xAFEEEE)
     }
     .width("100%")
+    .alignItems(HorizontalAlign.Start)
   }
 }
