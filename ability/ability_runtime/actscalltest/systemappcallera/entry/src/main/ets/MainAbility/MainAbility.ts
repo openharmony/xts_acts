@@ -114,7 +114,7 @@ function startNext(context) {
 function testCall(data) {
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCallerA MainAbility on testCall <======')
-    data.readSequenceable(recvSequence);
+    data.readParcelable(recvSequence);
     var result = recvSequence.str + 'processed';
     var commonEventData = {
         code: 0,
@@ -134,7 +134,7 @@ function testCall(data) {
 function testCallWithResult(data) {
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCallerA MainAbility on testCall <======')
-    data.readSequenceable(recvSequence);
+    data.readParcelable(recvSequence);
     let result = recvSequence.str + 'processed';
     recvSequence.setMySequence(recvSequence.num, recvSequence.str, result);
 
