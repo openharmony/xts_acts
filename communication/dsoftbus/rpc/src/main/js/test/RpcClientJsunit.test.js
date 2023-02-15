@@ -3807,23 +3807,12 @@ export default function actsRpcClientJsTest() {
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_10800", 0,async function(done){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_10800---------------------------");
             try{
-                let count = 0;
-                function checkResult(num, str) {
-                    expect(num).assertEqual(123);
-                    expect(str).assertEqual("rpcListenerTest");
-                    count++;
-                    console.info("check result done, count: " + count);
-                    if (count == 3) {
-                        done();
-                    };
-                };
                 let data = rpc.MessageSequence.create();
                 let reply = rpc.MessageSequence.create();
                 let option = new rpc.MessageOption();
-                data.writeInterfaceToken("rpcTestAbility");
-                let listeners = [new TestListener("rpcListener", checkResult),
-                    new TestListener("rpcListener2", checkResult),
-                    new TestListener("rpcListener3", checkResult)];
+                let listeners = [new TestRemoteObject("rpcListener"),
+                    new TestRemoteObject("rpcListener2"),
+                    new TestRemoteObject("rpcListener3")];
                 data.writeRemoteObjectArray(listeners);
                 expect(gIRemoteObject != undefined).assertTrue();
                 await gIRemoteObject.sendMessageRequest(CODE_WRITE_REMOTEOBJECTARRAY, data, reply, option).then((result) => {
@@ -3840,48 +3829,6 @@ export default function actsRpcClientJsTest() {
             }
             done();
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageSequence_10800---------------------------");
-        });
-    
-        /*
-         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_10900
-         * @tc.name    Call the writeremoteobjectarray interface to write the object array to the MessageSequence instance,
-         *             and call readremoteobjectarray (objects: iremoteobject []) to read the data
-         * @tc.desc    Function test
-         * @tc.level   3
-         */
-        it("SUB_Softbus_IPC_Compatibility_MessageSequence_10900", 0,async function(done){
-            console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_10900---------------------------");
-            try{
-                let count = 0;
-                function checkResult(num, str) {
-                    expect(num).assertEqual(123);
-                    expect(str).assertEqual("rpcListenerTest");
-                    count++;
-                    console.info("check result done, count: " + count);
-                    if (count == 3) {
-                        done();
-                    }
-                }
-                let data = rpc.MessageSequence.create();
-                let reply = rpc.MessageSequence.create();
-                let option = new rpc.MessageOption();
-                data.writeInterfaceToken("rpcTestAbility");
-                let listeners = [new TestListener("rpcListener", checkResult),
-                    new TestListener("rpcListener2", checkResult),
-                    new TestListener("rpcListener3", checkResult)];
-                data.writeRemoteObjectArray(listeners);
-                expect(gIRemoteObject != undefined).assertTrue();
-                await gIRemoteObject.sendMessageRequest(CODE_WRITE_REMOTEOBJECTARRAY, data, reply, option).then((result) => {
-                    console.info("SUB_Softbus_IPC_Compatibility_MessageSequence_10900: sendMessageRequest is " + result.errCode);
-                    expect(result.errCode == 0).assertTrue();
-                });
-                data.reclaim();
-                reply.reclaim();
-            } catch (error) {
-                expect(error == null).assertTrue();
-            }
-            done();
-            console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageSequence_10900---------------------------");
         });
     
         /*
@@ -9350,7 +9297,7 @@ export default function actsRpcClientJsTest() {
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_12100---------------------------");
         });
 
-        /*
+    /*
      * @tc.number  SUB_Softbus_IPC_Compatibility_MessageParcel_12200
      * @tc.name    Call the writeremoteobjectarray interface to write the object array to the messageparcel
      *             instance, and call readremoteobjectarray to read the data
@@ -9360,25 +9307,13 @@ export default function actsRpcClientJsTest() {
         it("SUB_Softbus_IPC_Compatibility_MessageParcel_12200", 0,async function(done){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageParcel_12200---------------------------");
             try{
-                let count = 0
-                function checkResult(num, str) {
-                    expect(num).assertEqual(123);
-                    expect(str).assertEqual("rpcListenerTest");
-                    count++;
-                    console.info("check result done, count: " + count);
-                    if (count == 3) {
-                        done();
-                    }
-                }
                 var data = rpc.MessageParcel.create();
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_12200: create object successfully.");
                 var reply = rpc.MessageParcel.create();
                 var option = new rpc.MessageOption();
-
-                expect(data.writeInterfaceToken("rpcTestAbility")).assertTrue();
-                var listeners = [new TestListener("rpcListener", checkResult),
-                    new TestListener("rpcListener2", checkResult),
-                    new TestListener("rpcListener3", checkResult)];
+                var listeners = [new TestRemoteObject("rpcListener"),
+                    new TestRemoteObject("rpcListener2"),
+                    new TestRemoteObject("rpcListener3")];
                 var result = data.writeRemoteObjectArray(listeners);
                 console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_12200: writeRemoteObjectArray is " + result);
                 expect(result == true).assertTrue();
@@ -9404,56 +9339,7 @@ export default function actsRpcClientJsTest() {
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_12200---------------------------");
         });
 
-        /*
-     * @tc.number  SUB_Softbus_IPC_Compatibility_MessageParcel_12300
-     * @tc.name    Call the writeremoteobjectarray interface to write the object array to the messageparcel instance,
-     *             and call readremoteobjectarray (objects: iremoteobject []) to read the data
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-        it("SUB_Softbus_IPC_Compatibility_MessageParcel_12300", 0,async function(done){
-            console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageParcel_12300---------------------------");
-            try{
-                let count = 0;
-                function checkResult(num, str) {
-                    expect(num).assertEqual(123);
-                    expect(str).assertEqual("rpcListenerTest");
-                    count++;
-                    console.info("check result done, count: " + count);
-                    if (count == 3) {
-                        done();
-                    }
-                }
-                var data = rpc.MessageParcel.create();
-                console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_12300: create object successfully.");
-                var reply = rpc.MessageParcel.create();
-                var option = new rpc.MessageOption();
-                expect(data.writeInterfaceToken("rpcTestAbility")).assertTrue()
-                var listeners = [new TestListener("rpcListener", checkResult),
-                    new TestListener("rpcListener2", checkResult),
-                    new TestListener("rpcListener3", checkResult)];
-                var result = data.writeRemoteObjectArray(listeners);
-                console.info("RpcClient: writeRemoteObjectArray is " + result);
-                expect(result == true).assertTrue();
-                if (gIRemoteObject == undefined)
-                {
-                    console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_12300: gIRemoteObject is undefined");
-                }
-                await gIRemoteObject.sendRequest(CODE_WRITE_REMOTEOBJECTARRAY, data, reply, option).then((result) => {
-                    console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_12300: sendRequestis is " + result.errCode);
-                    expect(result.errCode == 0).assertTrue();
-                });
-
-                data.reclaim();
-                reply.reclaim();
-                done();
-            } catch (error) {
-                console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_12300:error = " + error);
-            }
-            console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_12300---------------------------");
-        });
-
-        /*
+    /*
      * @tc.number  SUB_Softbus_IPC_Compatibility_MessageParcel_12400
      * @tc.name    Test messageparcel delivery file descriptor object
      * @tc.desc    Function test

@@ -2308,10 +2308,10 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-* @tc.number     SUB_WINDOW_SETASPECTRATIO_JSAPI_001
-* @tc.name       Test setAspectRatioTest1
-* @tc.desc       Validate the scenario cancelled after setting the proportion of the content layout of the main window
-*/
+    * @tc.number     SUB_WINDOW_SETASPECTRATIO_JSAPI_001
+    * @tc.name       Test setAspectRatioTest1
+    * @tc.desc       Validate the scenario cancelled after setting the proportion of the content layout of the main window
+    */
     it('setAspectRatioTest1', 0, async function (done) {
       let caseName = 'setAspectRatioTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
