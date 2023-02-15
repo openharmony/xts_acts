@@ -60,7 +60,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
       console.info('usb case ' + caseName + ' error : ' + error);
       expect(false).assertTrue();
     });
-    CheckEmptyUtils.sleep(6000)
+    CheckEmptyUtils.sleep(6000);
   }
 
   /**
@@ -69,13 +69,13 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
    * @tc.desc: Positive test: Set the current USB function list in device mode, Set 1, Set as ACM function
    */
   it('SUB_USB_JS_0350', 0, function () {
-    CheckEmptyUtils.sleep(3000)
+    CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0350 set ACM begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0350 ACM 1', usb.ACM)
+    callSetCurFunction('SUB_USB_JS_0350 ACM 1', usb.ACM);
   })
 
   /**
@@ -84,13 +84,13 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
    * @tc.desc: Positive test: Set the current USB function list in device mode, Set 2, Set as ECM function
    */
   it('SUB_USB_JS_0360', 0, function () {
-    CheckEmptyUtils.sleep(3000)
+    CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0360 set ECM begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0360 ECM 2', usb.ECM)
+    callSetCurFunction('SUB_USB_JS_0360 ECM 2', usb.ECM);
   })
 
   /**
@@ -99,13 +99,13 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
    * @tc.desc: Positive test: Set the current USB function list in device mode, Set 3, Set as ACM、ECM function
    */
   it('SUB_USB_JS_0370', 0, function () {
-    CheckEmptyUtils.sleep(3000)
+    CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0370 set ACM ECM begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0370 ACM ECM 3', (usb.ACM | usb.ECM))
+    callSetCurFunction('SUB_USB_JS_0370 ACM ECM 3', (usb.ACM | usb.ECM));
   })
 
   /**
@@ -114,13 +114,13 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
    * @tc.desc: Positive test: Set the current USB function list in device mode, Set 4, Set as HDC function
    */
   it('SUB_USB_JS_0380', 0, function () {
-    CheckEmptyUtils.sleep(3000)
+    CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0380 set HDC begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0380 HDC 4', usb.HDC)
+    callSetCurFunction('SUB_USB_JS_0380 HDC 4', usb.HDC);
   })
 
   /**
@@ -129,13 +129,13 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
    * @tc.desc: Positive test: Set the current USB function list in device mode, Set 5, Set as ACM、HDC function
    */
   it('SUB_USB_JS_0390', 0, function () {
-    CheckEmptyUtils.sleep(3000)
+    CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0390 set ACM HDC begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0390 ACM HDC 5', (usb.HDC | usb.ACM))
+    callSetCurFunction('SUB_USB_JS_0390 ACM HDC 5', (usb.HDC | usb.ACM));
   })
 
   /**
@@ -144,13 +144,133 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
    * @tc.desc: Positive test: Set the current USB function list in device mode, Set 6, Set as ECM、HDC function
    */
   it('SUB_USB_JS_0400', 0, function () {
-    CheckEmptyUtils.sleep(3000)
+    CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0400 set ECM HDC begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0400 ECM HDC 6', (usb.HDC | usb.ECM))
+    callSetCurFunction('SUB_USB_JS_0400 ECM HDC 6', (usb.HDC | usb.ECM));
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1620
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 8, Set as MTP function
+   */
+  it('SUB_USB_JS_1620', 0, function () {
+    CheckEmptyUtils.sleep(3000);
+    console.info('usb SUB_USB_JS_1620 set MTP begin');
+    var maskCode = usb.getCurrentFunctions();
+    console.info('usb case getCurrentFunctions return: ' + maskCode);
+    var funcString = usb.usbFunctionsToString(maskCode);
+    console.info('usb case funcString:' + funcString);
+    callSetCurFunction('SUB_USB_JS_1620 MTP 8', (usb.MTP));
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1630
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 12, Set as MTP、HDC function
+   */
+  it('SUB_USB_JS_1630', 0, function () {
+    CheckEmptyUtils.sleep(3000);
+    console.info('usb SUB_USB_JS_1630 set MTP HDC begin');
+    var maskCode = usb.getCurrentFunctions();
+    console.info('usb case getCurrentFunctions return: ' + maskCode);
+    var funcString = usb.usbFunctionsToString(maskCode);
+    console.info('usb case funcString:' + funcString);
+    callSetCurFunction('SUB_USB_JS_1630 MTP HDC 12', (usb.MTP | usb.HDC));
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1640
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 16, Set as PTP function
+   */
+  it('SUB_USB_JS_1640', 0, function () {
+    CheckEmptyUtils.sleep(3000);
+    console.info('usb SUB_USB_JS_1640 set PTP begin');
+    var maskCode = usb.getCurrentFunctions();
+    console.info('usb case getCurrentFunctions return: ' + maskCode);
+    var funcString = usb.usbFunctionsToString(maskCode);
+    console.info('usb case funcString:' + funcString);
+    callSetCurFunction('SUB_USB_JS_1640 PTP 16', (usb.PTP));
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1650
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 20, Set as PTP、HDC function
+   */
+  it('SUB_USB_JS_1650', 0, function () {
+    CheckEmptyUtils.sleep(3000);
+    console.info('usb SUB_USB_JS_1650 set PTP HDC begin');
+    var maskCode = usb.getCurrentFunctions();
+    console.info('usb case getCurrentFunctions return: ' + maskCode);
+    var funcString = usb.usbFunctionsToString(maskCode);
+    console.info('usb case funcString:' + funcString);
+    callSetCurFunction('SUB_USB_JS_1650 PTP HDC 20', (usb.PTP | usb.HDC));
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1660
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 32, Set as RNDIS function
+   */
+  it('SUB_USB_JS_1660', 0, function () {
+    CheckEmptyUtils.sleep(3000);
+    console.info('usb SUB_USB_JS_1660 set RNDIS begin');
+    var maskCode = usb.getCurrentFunctions();
+    console.info('usb case getCurrentFunctions return: ' + maskCode);
+    var funcString = usb.usbFunctionsToString(maskCode);
+    console.info('usb case funcString:' + funcString);
+    callSetCurFunction('SUB_USB_JS_1660 RNDIS 32', (usb.RNDIS));
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1670
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 36, Set as RNDIS、HDC function
+   */
+  it('SUB_USB_JS_1670', 0, function () {
+    CheckEmptyUtils.sleep(3000);
+    console.info('usb SUB_USB_JS_1670 set RNDIS HDC begin');
+    var maskCode = usb.getCurrentFunctions();
+    console.info('usb case getCurrentFunctions return: ' + maskCode);
+    var funcString = usb.usbFunctionsToString(maskCode);
+    console.info('usb case funcString:' + funcString);
+    callSetCurFunction('SUB_USB_JS_1670 RNDIS HDC 36', (usb.RNDIS | usb.HDC));
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1680
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 512, Set as STORAGE function
+   */
+  it('SUB_USB_JS_1680', 0, function () {
+    CheckEmptyUtils.sleep(3000);
+    console.info('usb SUB_USB_JS_1680 set STORAGE begin');
+    var maskCode = usb.getCurrentFunctions();
+    console.info('usb case getCurrentFunctions return: ' + maskCode);
+    var funcString = usb.usbFunctionsToString(maskCode);
+    console.info('usb case funcString:' + funcString);
+    callSetCurFunction('SUB_USB_JS_1680 STORAGE 512', (usb.STORAGE));
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1690
+   * @tc.name: functions_test
+   * @tc.desc: Positive test: Set the current USB function list in device mode, Set 516, Set as STORAGE、HDC function
+   */
+  it('SUB_USB_JS_1690', 0, function () {
+    CheckEmptyUtils.sleep(3000);
+    console.info('usb SUB_USB_JS_1690 set STORAGE HDC begin');
+    var maskCode = usb.getCurrentFunctions();
+    console.info('usb case getCurrentFunctions return: ' + maskCode);
+    var funcString = usb.usbFunctionsToString(maskCode);
+    console.info('usb case funcString:' + funcString);
+    callSetCurFunction('SUB_USB_JS_1690 STORAGE HDC 516', (usb.STORAGE | usb.HDC));
   })
 
     /**
