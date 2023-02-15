@@ -890,7 +890,7 @@ describe('TextEncoderTest', function () {
         var result = util.randomUUID(true);
         expect(result.length).assertEqual(36);
     })
-    
+
     /**
      * @tc.name: testUtilRandomUUID002
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
@@ -949,6 +949,42 @@ describe('TextEncoderTest', function () {
         } catch(e) {
             expect(e.message).assertEqual('Syntax Error.Invalid 84Wdf796-66cc-4655-9b89-d6218d100f9c string');
         }
+    })
+
+    /**
+     * @tc.name: testUtilgenerateRandomUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     */
+    it('testUtilgenerateRandomUUID001', 0, async function () {
+        var result = util.generateRandomUUID(true);
+        expect(result.length).assertEqual(36);
+    })
+
+    /**
+     * @tc.name: testUtilgenerateRandomUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     */
+    it('testUtilgenerateRandomUUID002', 0, async function () {
+        var result = util.generateRandomUUID(false);
+        expect(result.length).assertEqual(36);
+    })
+
+    /**
+     * @tc.name: testUtilgenerateRandomBinaryUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     */
+    it('testUtilgenerateRandomBinaryUUID001', 0, async function () {
+        var result = util.generateRandomBinaryUUID(true);
+        expect(result.length).assertEqual(16);
+    })
+
+    /**
+     * @tc.name: testUtilgenerateRandomBinaryUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     */
+    it('testUtilgenerateRandomBinaryUUID002', 0, async function () {
+        var result = util.generateRandomBinaryUUID(false);
+        expect(result.length).assertEqual(16);
     })
 })
 
