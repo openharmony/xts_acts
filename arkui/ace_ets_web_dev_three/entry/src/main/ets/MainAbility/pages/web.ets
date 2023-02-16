@@ -18,17 +18,22 @@ import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
-
+import fileio from '@ohos.fileio';
 let loadedUrl;
 @Entry
 @Component
 struct Index {
     controller: web_webview.WebviewController = new web_webview.WebviewController();
     controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
+    scheme1: web_webview.WebCustomScheme = {schemeName: "name1", isSupportCORS: true, isSupportFetch: true}
     responseweb: WebResourceResponse = new WebResourceResponse()
     @State str:string="emitLoadUrl"
     @State text:boolean=false
     @State num:number=0
+    @State mode: WebDarkMode = WebDarkMode.Off
+    @State mode1: WebDarkMode = WebDarkMode.On
+    @State mode2: WebDarkMode = WebDarkMode.Auto
+    ports: web_webview.WebMessagePort[];
     testObj = {
         testOne: (data) => {
             Utils.emitEvent(data,13)
@@ -62,6 +67,14 @@ struct Index {
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         console.info('start run testcase!!!')
         Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite) 
+        try{
+            web_webview.once("webInited",()=>{
+                web_webview.WebCookieManager.setCookie("https://www.huawei.com", "a=b");
+            })
+        }catch(error){
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+        }
+
     }
     build(){
         Column(){
@@ -72,7 +85,7 @@ struct Index {
                         case "emitLoadUrl":{ 
                             try {
                                 setTimeout(()=>{
-                                    this.controller.loadUrl('www.baidu.com');
+                                    this.controller.loadUrl("file:///data/storage/el1/bundle/phone/resources/rawfile/index.html");
                                     setTimeout(()=>{
                                         let title = this.controller.getTitle();
                                         Utils.emitEvent(title,1)
@@ -406,16 +419,126 @@ struct Index {
                             }                                                                                                                                         
                             break;
                         }
+                        case "emitOnce":{   
+                            try {
+                                let re = web_webview.WebCookieManager.getCookie("https://www.huawei.com")
+                                Utils.emitEvent(re, 31)
+                                console.log("result: " + re);
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`); 
+                            }                                                                                                                                         
+                            break;
+                        }
+                        case "emitGetItemAtIndex":{   
+                            try {
+                                let res = this.controller.getBackForwardEntries()
+                                let item =res.getItemAtIndex(0)
+                                 Utils.emitEvent(item.title, 32)
+                                console.log("result: " + item.title);
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`); 
+                            }                                                                                                                                         
+                            break;
+                        }
+                        case "emitSlideScroll":{   
+                            try {
+                                this.controller.slideScroll(10, 10);                               
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`); 
+                            }
+                            try {
+                                let state = this.controller.serializeWebState();
+                                let path = globalThis.AbilityContext.cacheDir;
+                                path += '/WebState';
+                                let fd = fileio.openSync(path, 0o2 | 0o100, 0o666);
+                                fileio.writeSync(fd, state.buffer);
+                                fileio.closeSync(fd);
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            try {
+                                let path = globalThis.AbilityContext.cacheDir;
+                                path += '/WebState';
+                                let fd = fileio.openSync(path, 0o002, 0o666);
+                                let stat = fileio.fstatSync(fd);
+                                let size = stat.size;
+                                let buf = new ArrayBuffer(size);
+                                fileio.read(fd, buf, (err, data) => {
+                                if (data) {
+                                    this.controller.restoreWebState(new Uint8Array(data.buffer));
+                                }
+                                fileio.closeSync(fd);
+                                });
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }
+                            try {
+                                this.ports = this.controller.createWebMessagePorts();
+                                this.ports[1].onMessageEvent((msg) => {
+                                if (typeof(msg) == "string") {
+                                    console.log("received string message from html5, string is:" + msg);
+                                } else if (typeof(msg) == "object") {
+                                    if (msg instanceof ArrayBuffer) {
+                                    console.log("received arraybuffer from html5, length is:" + msg.byteLength);
+                                    } else {
+                                    console.log("not support");
+                                    }
+                                } else {
+                                    console.log("not support");
+                                }
+                                })
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                                                                                          
+                            break;
+                        }
+                        case "emitContextMenuMediaType":{   
+                            try {
+                                let con = ContextMenuMediaType.Image
+                                Utils.emitEvent(con, 33)
+                                console.log("result: " + con);
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`); 
+                            }                                                                                                                                         
+                            break;
+                        }
+                        case "emitContextMenuInputFieldType":{   
+                            try {
+                                 Utils.emitEvent(ContextMenuInputFieldType.PlainText, 34)
+                                 Utils.emitEvent(ContextMenuInputFieldType.Telephone, 35)
+                                 Utils.emitEvent(ContextMenuInputFieldType.Other, 36)
+                                console.log("result: " + ContextMenuInputFieldType.PlainText);
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`); 
+                            }                                                                                                                                         
+                            break;
+                        }
+                        case "emitContextMenuEditStateFlags":{   
+                            try {
+                                 Utils.emitEvent(ContextMenuEditStateFlags.NONE, 37)
+                                 Utils.emitEvent(ContextMenuEditStateFlags.CAN_CUT, 38)
+                                 Utils.emitEvent(ContextMenuEditStateFlags.CAN_COPY, 39)
+                                 Utils.emitEvent(ContextMenuEditStateFlags.CAN_PASTE, 40)
+                                 Utils.emitEvent(ContextMenuEditStateFlags.CAN_SELECT_ALL, 41)
+                                console.log("result: " + ContextMenuEditStateFlags.CAN_SELECT_ALL);
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`); 
+                            }                                                                                                                                         
+                            break;
+                        }
                         default:
                             console.info("can not match case")
                     }
                 })
             }
             Web({src:"www.example.com",controller:this.controller})
-            .webDebuggingAccess(true)
             .mediaPlayGestureAccess(true)
             .javaScriptAccess(true)
             .zoomAccess(this.text)
+            .onDataResubmitted((event) => {
+                console.log('onDataResubmitted')
+                event.handler.resend();
+            })
             .onSearchResultReceive(ret=>{
                 var searchResult = ret.activeMatchOrdinal.toString() + 
                 ret.numberOfMatches.toString()
@@ -423,6 +546,29 @@ struct Index {
                 setTimeout(()=>{
                     Utils.emitEvent(searchResult,16) 
                 },3000)
+            })
+             .onContextMenuShow((event) => {
+                console.info(event.param.getMediaType() + event.param.getSelectionText() + event.param.getSourceType())
+                console.info(event.param.getInputFieldType().toString())
+                console.info(event.param.isEditable().toString())
+                console.info(event.param.getEditStateFlags().toString())
+                event.result.paste()
+                event.result.cut()
+                return true
+            })
+            .onHttpErrorReceive((event) => {
+                event.response.setResponseIsReady(true)
+            })
+            .darkMode(this.mode)
+            .forceDarkAccess(false)
+            .webSerifFont('serif')
+            .webFixedFont('fixed')
+            .webSansSerifFont('serif')
+            .minLogicalFontSize(1)
+            .horizontalScrollBarAccess(true)
+            .verticalScrollBarAccess(true)
+            .onTouchIconUrlReceived((event) => {
+                console.log('onTouchIconUrlReceived:' + JSON.stringify(event))
             })
             
         }
