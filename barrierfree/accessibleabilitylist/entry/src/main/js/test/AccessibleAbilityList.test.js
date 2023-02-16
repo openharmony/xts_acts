@@ -53,41 +53,34 @@ describe('AccessibleAbilityList', function () {
             if (err != null && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0210 has error: ${err.code}`);
                 expect(null).assertFail();
-                done();
+				done();
+				return;
             }
             console.info(`AccessibleAbilityList: AbilityList_0210 result ${data.length}`);
 			for (let item of data) {
 				console.info(item.id);
 				expect(item.id != undefined).assertEqual(true);
-				done();
 				console.info(item.name);
 				expect(item.name != undefined).assertEqual(true);
-				done();
 				console.info(item.description);
 				expect(item.description != undefined).assertEqual(true);
-				done();
 				console.info(item.abilityTypes);
 				expect(item.abilityTypes != undefined).assertEqual(true);
-				done();
 				console.info(item.eventTypes);
 				expect(item.eventTypes != undefined).assertEqual(true);
-				done();
 				console.info(item.capabilities);
-                if (item.capabilities == retrieve ||
-				item.capabilities == touchGuide ||
-				item.capabilities == keyEventObserver ||
-				item.capabilities == zoom ||
-				item.capabilities == gesture ||
-				item.capabilities == undefined) {
+                if (item.capabilities[0] == 'retrieve' ||
+				item.capabilities[0] == 'touchGuide' ||
+				item.capabilities[0] == 'keyEventObserver' ||
+				item.capabilities[0] == 'zoom' ||
+				item.capabilities[0] == 'gesture') {
                     expect(true).assertTrue();
-					done();
                 }else{
 					expect(null).assertFail();
 					done();
 				}
 				console.info(item.bundleName);
 				expect(item.bundleName != undefined).assertEqual(true);
-				done();
 			}
             expect(Array.isArray(data)).assertEqual(true);
             done();
