@@ -2403,8 +2403,7 @@ describe('RationalNumberFunTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_001', 0, function () {
-        var pro = new util.RationalNumber(1, 2)
-        var res = pro.createRationalFromString('-1:2')
+        var res = util.RationalNumber.createRationalFromString('-1:2')
         var result1 = res.valueOf()
         expect(result1).assertEqual(-0.5)
     })
@@ -2414,8 +2413,7 @@ describe('RationalNumberFunTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_002', 0, function () {
-        var pro = new util.RationalNumber(1, 2)
-        var res = pro.createRationalFromString('+3/4')
+        var res = util.RationalNumber.createRationalFromString('+3/4')
         var result1 = res.valueOf()
         expect(result1).assertEqual(0.75)
     })
@@ -2425,8 +2423,7 @@ describe('RationalNumberFunTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_003', 0, function () {
-        var pro = new util.RationalNumber(1, 2)
-        var res = pro.createRationalFromString('+3:-4')
+        var res = util.RationalNumber.createRationalFromString('+3:-4')
         var result1 = res.valueOf()
         expect(result1).assertEqual(-0.75)
     })
@@ -2436,8 +2433,7 @@ describe('RationalNumberFunTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_004', 0, function () {
-        var pro = new util.RationalNumber(1, 2)
-        var res = pro.createRationalFromString('+2:4')
+        var res = util.RationalNumber.createRationalFromString('+2:4')
         var result1 = res.valueOf()
         expect(result1).assertEqual(0.5)
     })
@@ -2447,10 +2443,9 @@ describe('RationalNumberFunTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_005', 0, function () {
-        var pro = new util.RationalNumber(1, 2)
-        var res = pro.createRationalFromString('+2:-4')
+        var res = util.RationalNumber.createRationalFromString('-2:-4')
         var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.5)
+        expect(result1).assertEqual(0.5)
     })
 
     /**
