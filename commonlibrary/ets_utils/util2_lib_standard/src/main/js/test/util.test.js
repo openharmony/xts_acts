@@ -3582,11 +3582,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_parseRationalNumber_001', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1, 2)
-        var res = pro.createRationalFromString('+2:-4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.5)
+        var res = util.RationalNumber.parseRationalNumber(2, 1)
+        var result = res.valueOf()
+        expect(result).assertEqual(2)
     })
 
     /**
@@ -3595,11 +3593,9 @@ describe('RationalNumberTest', function () {
      */
     it('test_parseRationalNumberThrowError_001', 0, function () {
         try {
-            var pro = new util.RationalNumber()
-            pro.parseRationalNumber('str', 2)
-            var res = pro.createRationalFromString('+2:-4')
-            var result1 = res.valueOf()
-            expect(result1).assertEqual(-0.5)
+            var pro = util.RationalNumber.parseRationalNumber('str', 2)
+            var result = res.valueOf()
+            expect(result).assertEqual(2)
         } catch (e) {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
         }
@@ -3610,11 +3606,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_001', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('-1:2')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.5)
+        var res = util.RationalNumber.createRationalFromString('-1:2')
+        var result = res.valueOf()
+        expect(result).assertEqual(-0.5)
     })
 
     /**
@@ -3622,11 +3616,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_002', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('+3/4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(0.75)
+        var res = util.RationalNumber.createRationalFromString('+3/4')
+        var result = res.valueOf()
+        expect(result).assertEqual(0.75)
     })
 
     /**
@@ -3634,11 +3626,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_003', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('+3:-4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.75)
+        var res = util.RationalNumber.createRationalFromString('+3:-4')
+        var result = res.valueOf()
+        expect(result).assertEqual(-0.75)
     })
 
     /**
@@ -3646,11 +3636,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_004', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('+2:4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(0.5)
+        var res = util.RationalNumber.createRationalFromString('+2:4')
+        var result = res.valueOf()
+        expect(result).assertEqual(0.5)
     })
 
     /**
@@ -3658,11 +3646,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_005', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('+2:-4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.5)
+        var res = util.RationalNumber.createRationalFromString('+2:-4')
+        var result = res.valueOf()
+        expect(result).assertEqual(-0.5)
     })
 
     /**
@@ -3671,11 +3657,9 @@ describe('RationalNumberTest', function () {
      */
     it('test_createRationalFromStringThrowError_001', 0, function () {
         try {
-            var pro = new util.RationalNumber()
-            pro.parseRationalNumber(1, 2)
-            var res = pro.createRationalFromString(123)
-            var result1 = res.valueOf()
-            expect(result1).assertEqual(-0.5)
+            var res = util.RationalNumber.createRationalFromString(123)
+            var result = res.valueOf()
+            expect(result).assertEqual(-0.5)
         } catch (e) {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string");
         }
@@ -3686,10 +3670,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_001', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(2, 1)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(3, 4)
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(3, 4)
         var res = pro.compare(proc)
         expect(res).assertEqual(1)
     })
@@ -3699,10 +3681,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_002', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(2, 1)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(0, 0)
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(0, 0)
         var res = pro.compare(proc)
         expect(res).assertEqual(-1)
     })
@@ -3712,10 +3692,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_003', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(2, 1)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(8, 3)
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(8, 3)
         var res = pro.compare(proc)
         expect(res).assertEqual(-1)
     })
@@ -3725,10 +3703,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_004', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(2, 1)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(2, 1)
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(2, 1)
         var res = pro.compare(proc)
         expect(res).assertEqual(0)
     })
@@ -3738,10 +3714,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_005', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(2, 1)
+        var pro = util.RationalNumber.parseRationalNumber(0, 0)
+        var proc = util.RationalNumber.parseRationalNumber(2, 1)
         var res = pro.compare(proc)
         expect(res).assertEqual(1)
     })
@@ -3752,8 +3726,7 @@ describe('RationalNumberTest', function () {
      */
     it('test_compareThrowError_001', 0, function () {
         try {
-            var pro = new util.RationalNumber()
-            pro.parseRationalNumber(2, 1)
+            var pro = util.RationalNumber.parseRationalNumber(2, 1)
             var proc = 'str'
             var res = pro.compare(proc)
             expect(res).assertEqual(1)
@@ -3767,9 +3740,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor001', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(4, 8)
+        var res = util.RationalNumber.getCommonFactor(4, 8)
         expect(res).assertEqual(4)
     })
 
@@ -3778,9 +3749,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor002', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(10, 15)
+        var res = util.RationalNumber.getCommonFactor(10, 15)
         expect(res).assertEqual(5)
     })
 
@@ -3789,9 +3758,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor003', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(8, 4)
+        var res = util.RationalNumber.getCommonFactor(8, 4)
         expect(res).assertEqual(4)
     })
 
@@ -3800,9 +3767,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor004', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(8, 16)
+        var res = util.RationalNumber.getCommonFactor(8, 16)
         expect(res).assertEqual(8)
     })
 
@@ -3811,9 +3776,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor005', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(2, 16)
+        var res = util.RationalNumber.getCommonFactor(2, 16)
         expect(res).assertEqual(2)
     })
 
@@ -3823,9 +3786,7 @@ describe('RationalNumberTest', function () {
      */
     it('testgetCommonFactorThrowError001', 0, function () {
         try {
-            var pro = new util.RationalNumber()
-            pro.parseRationalNumber(0, 0)
-            var res = pro.getCommonFactor('str', 8)
+            var res = util.RationalNumber.getCommonFactor('str', 8)
             expect(res).assertEqual(4)
         } catch (e) {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
