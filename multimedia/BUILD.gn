@@ -34,6 +34,7 @@ group("multimedia") {
       "image/image_js_standard/imageDecodeOptions:image_DecodeOptions_js_hap",
       "image/image_js_standard/imageExif:image_exif_js_hap",
       "image/image_js_standard/imageGetImageProperty:image_getProperty_js_hap",
+      "image/image_js_standard/imageGif:image_gif_js_hap",
       "image/image_js_standard/imageModifyProperty:image_modifyProperty_js_hap",
       "image/image_js_standard/imagePacking:image_packing_js_hap",
       "image/image_js_standard/imagePixelMapFramework:image_pixelmapframework_js_hap",
