@@ -16,59 +16,67 @@ import commonEvent from '@ohos.commonEvent';
 import thermal from "@ohos.thermal"
 
 export default function ThermalCommonEvent() {
-describe('ThermalCommonEvent', function () {
-    console.log("*************Thermal commonEvent Test Begin*************");
+    describe('ThermalCommonEvent', function () {
+        console.log("*************Thermal commonEvent Test Begin*************");
 
-    /**
-     * @tc.number ThermalCommonEventTest_001
-     * @tc.name subscribe thermal level changed common event
-     * @tc.desc Thermal acquisition kit
-     */
-    it('ThermalCommonEventTest_001', 0, function (done) {
-        createSubscriber();
-        done();
+        /**
+         * @tc.number ThermalCommonEventTest_001
+         * @tc.name subscribe thermal level changed common event
+         * @tc.desc Thermal acquisition kit
+         */
+        it('ThermalCommonEventTest_001', 0, function (done) {
+            createSubscriber();
+            done();
+        })
+        console.log("*************Thermal commonEvent Test End*************");
     })
-    console.log("*************Thermal commonEvent Test End*************");
-})
 
-function createSubscriber() {
-    let commonEventSubscribeInfo = {
-        events: [commonEvent.Support.COMMON_EVENT_THERMAL_LEVEL_CHANGED],
-    };
-    commonEvent.createSubscriber(commonEventSubscribeInfo)
-        .then(subscriber => {
-            console.info('createSubscriber success');
-            let mySubscriber = subscriber;
-            console.log(subscriber);
+    function createSubscriber() {
+        let commonEventSubscribeInfo = {
+            events: [commonEvent.Support.COMMON_EVENT_THERMAL_LEVEL_CHANGED],
+        };
+        commonEvent.createSubscriber(commonEventSubscribeInfo)
+            .then(subscriber => {
+                console.info('createSubscriber success');
+                let mySubscriber = subscriber;
+                console.log(subscriber);
 
-            if (subscriber == "" || subscriber == undefined || subscriber == null) {
-                console.info("createSubscriber failed");
-            }
-            mySubscriber.getCode()
-                .then((data) => {
-                    console.info('Subscriber getCode success : ' + JSON.stringify(data));
-                }).catch((error) => {
-                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                if (subscriber == "" || subscriber == undefined || subscriber == null) {
+                    console.info("createSubscriber failed");
+                }
+                mySubscriber.getCode()
+                    .then((data) => {
+                        console.info('Subscriber getCode success : ' + JSON.stringify(data));
+                    }).catch((error) => {
+                        console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                    })
+                mySubscriber.getData()
+                    .then((data) => {
+                        console.info('Subscriber getData success : ' + JSON.stringify(data));
+                    }).catch((error) => {
+                        console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                    })
+                console.info('subscribe begin ');
+
+                commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
+                    console.error('err code: ' + JSON.stringify(error));
+                    console.info('subscribe callback: ' + JSON.stringify(commonEventData));
+                    console.info("commonEventData event: " + commonEventData.event);
+                    console.info("commonEventData bundleName: " + commonEventData.bundleName);
+                    console.info("commonEventData data: " + commonEventData.data);
+                    console.info("commonEventData parameter: " + commonEventData.parameters[0]);
+                    let level = -1;
+                    expect(level >= thermal.ThermalLevel.COOL && warm <= level.ThermalLevel.EMERGENCY).assertTrue();
+                });
+                commonEvent.unsubscribe(mySubscriber, (error) => {
+                    if (error.code) {
+                        console.error(`unsubscribe failed, code is ${err.code}`);
+                    } else {
+                        console.info("unsubscribe");
+                    }
                 })
-            mySubscriber.getData()
-                .then((data) => {
-                    console.info('Subscriber getData success : ' + JSON.stringify(data));
-                }).catch((error) => {
-                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
-                })
-            console.info('subscribe begin ');
-
-            commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
-                console.error('err code: ' + JSON.stringify(error));
-                console.info('subscribe callback: ' + JSON.stringify(commonEventData));
-                console.info("commonEventData event: " + commonEventData.event);
-                console.info("commonEventData bundleName: " + commonEventData.bundleName);
-                console.info("commonEventData data: " + commonEventData.data);
-                console.info("commonEventData parameter: " + commonEventData.parameters[0]);
-                let level = -1;
-                expect(level >= thermal.ThermalLevel.COOL && warm <= level.ThermalLevel.EMERGENCY).assertTrue();
+            }).catch((error) => {
+                console.error('Operation failed. Cause: ' + JSON.stringify(error));
             });
-        }).catch((error) => {
-            console.error('Operation failed. Cause: ' + JSON.stringify(error));
-        });
-}}
+    }
+}
