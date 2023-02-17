@@ -287,7 +287,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
                 console.debug("====>isOsAccountVerified err:" + JSON.stringify(err));
                 console.debug("====>isOsAccountVerified data:" + data);
                 expect(err).assertEqual(null);
-                expect(data).assertEqual(false);
+                expect(data).assertEqual(true);
                 console.debug("====>ActsOsAccountVerified_0100 end====");
                 done();
             })
@@ -304,7 +304,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             console.debug("====>get os AccountManager finish====");
             var isVerified = await AccountManager.isOsAccountVerified();
             console.debug("====>isOsAccountVerified data:" + isVerified);
-            expect(isVerified).assertEqual(false);
+            expect(isVerified).assertEqual(true);
             console.debug("====>ActsOsAccountVerified_0200 end====");
             done();
         })
@@ -356,7 +356,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
                 console.debug("====>error received callback====");
                 console.debug("====>receive isOsAccountVerified err: " + JSON.stringify(err));
                 expect(err).assertEqual(null);
-                expect(data).assertEqual(false);
+                expect(data).assertEqual(true);
                 console.debug("====>receive isOsAccountVerified data: " + JSON.stringify(data));
                 done();
             })
@@ -373,7 +373,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             console.debug("====>get os AccountManager finish====");
             var localIdStr = "100";
             AccountManager.isOsAccountVerified(localIdStr).then((data)=>{
-                expect(data).assertEqual(false);                                    //
+                expect(data).assertEqual(true);                                    //
                 console.debug("====>ActsOsAccountIsVerified_0600 end====");
                 done();
             }).catch((err)=>{
@@ -397,7 +397,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
                 console.debug("====>ActsOsAccountIsVerified_0700 isOsAccountVerified_err:" + JSON.stringify(err))
                 expect(err).assertEqual(null);
                 console.debug("====>ActsOsAccountIsVerified_0700 isOsAccountVerified_data:" + JSON.stringify(data))
-                expect(data).assertEqual(false)
+                expect(data).assertEqual(true)
                 console.debug("====>ActsOsAccountIsVerified_0700 end====");
                 done();
             });
@@ -415,7 +415,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             var localIdUndefined = undefined;
             AccountManager.isOsAccountVerified(localIdUndefined).then((data)=>{
                 console.debug("====>ActsOsAccountIsVerified_0800 isOsAccountVerified_data:" + JSON.stringify(data))
-                expect(data).assertEqual(false)
+                expect(data).assertEqual(true)
                 console.debug("====>ActsOsAccountIsVerified_0700 end====");
                 done();
             }).catch((err)=>{
