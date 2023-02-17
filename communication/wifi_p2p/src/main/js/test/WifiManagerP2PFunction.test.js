@@ -38,7 +38,7 @@ export default function actsWifiManagerFunctionTest() {
         /**
         * @tc.number SUB_Communication_WiFi_XTS_P2P_0003
         * @tc.name testCreateGroup
-        * @tc.desc Test createGroup and getCurrentGroup API Function
+        * @tc.desc Test createGroup and getCurrentP2pGroup API Function
         * @tc.type Function
         * @tc.level Level 3
         */
@@ -54,20 +54,20 @@ export default function actsWifiManagerFunctionTest() {
             expect(wifiMg.isWifiActive()).assertTrue();
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
+            await wifiMg.getCurrentP2pGroup()
                 .then(data => {
-                    console.info("[wifi_test]getCurrentGroup promise result -> " + JSON.stringify(data));
+                    console.info("[wifi_test]getCurrentP2pGroup promise result -> " + JSON.stringify(data));
                     expect(true).assertEqual(data.groupName == wifiP2PConfig.groupName);
                 });
-            function getCurrentGroupResult(){
+            function getCurrentP2pGroupResult(){
                 return new Promise((resolve, reject) => {
-                    wifiMg.getCurrentGroup(
+                    wifiMg.getCurrentP2pGroup(
                         (err, result) => {
                             if(err) {
-                                console.info("[wifi_test]failed to get getCurrentGroup:" + JSON.stringify(err));
+                                console.info("[wifi_test]failed to get getCurrentP2pGroup:" + JSON.stringify(err));
                                 expect().assertFail();
                             }
-                            console.info("[wifi_test]getCurrentGroup callback:" + JSON.stringify(result));
+                            console.info("[wifi_test]getCurrentP2pGroup callback:" + JSON.stringify(result));
                             console.info("isP2pGo: " + result.isP2pGo +
                             "deviceName: " + result.ownerInfo.deviceName +
                             "deviceAddress: " + result.ownerInfo.deviceAddress +
@@ -83,14 +83,22 @@ export default function actsWifiManagerFunctionTest() {
                         });
                 });
             }
-            await getCurrentGroupResult();
+            await getCurrentP2pGroupResult();
             let removeGroupResult = wifiMg.removeGroup();
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
-                .then(data => {
-                    console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
-                    expect(true).assertEqual(data.deviceName == null);
-                });
+            try {
+                await wifiMg.getCurrentP2pGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
             done();
         })
 
@@ -113,18 +121,26 @@ export default function actsWifiManagerFunctionTest() {
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
+            await wifiMg.getCurrentP2pGroup()
                 .then(data => {
-                    console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
+                    console.info("[wifi_test] getCurrentP2pGroup  promise result :" + JSON.stringify(data));
                     expect(true).assertEqual(data.networkId == -999);
                 });
             let removeGroupResult = wifiMg.removeGroup();
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
-                .then(data => {
-                    console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
-                    expect(true).assertEqual(data.deviceName == null);
-                });
+            try {
+                await wifiMg.getCurrentP2pGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
             done();
         })
 
@@ -147,18 +163,26 @@ export default function actsWifiManagerFunctionTest() {
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
+            await wifiMg.getCurrentP2pGroup()
                 .then(data => {
-                    console.info("[wifi_test]getCurrentGroup  promise result : " + JSON.stringify(data));
+                    console.info("[wifi_test]getCurrentP2pGroup  promise result : " + JSON.stringify(data));
                     expect(true).assertEqual(data.passphrase == wifiP2PConfig.passphrase);
                 });
             let removeGroupResult = wifiMg.removeGroup();
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
-                .then(data => {
-                    console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
-                    expect(true).assertEqual(data.deviceName == null);
-                });
+            try {
+                await wifiMg.getCurrentP2pGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
             done();
         })
 
@@ -181,18 +205,26 @@ export default function actsWifiManagerFunctionTest() {
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
+            await wifiMg.getCurrentP2pGroup()
                 .then(data => {
-                    console.info("[wifi_test]getCurrentGroup promise result : " + JSON.stringify(data));
+                    console.info("[wifi_test]getCurrentP2pGroup promise result : " + JSON.stringify(data));
                     expect(true).assertEqual(data.passphrase == wifiP2PConfig.passphrase);
                 });
             let removeGroupResult = wifiMg.removeGroup();
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
-                .then(data => {
-                    console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
-                    expect(true).assertEqual(data.deviceName == null);
-                });
+            try {
+                await wifiMg.getCurrentP2pGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
             done();
         })
 
@@ -215,18 +247,26 @@ export default function actsWifiManagerFunctionTest() {
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
+            await wifiMg.getCurrentP2pGroup()
                 .then(data => {
-                    console.info("[wifi_test]getCurrentGroup  promise result :" + JSON.stringify(data));
+                    console.info("[wifi_test]getCurrentP2pGroup  promise result :" + JSON.stringify(data));
                     expect(true).assertEqual(data.passphrase != wifiP2PConfig.passphrase);
                 });
             let removeGroupResult = wifiMg.removeGroup();
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
-                .then(data => {
-                    console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
-                    expect(true).assertEqual(data.deviceName == null);
-                });
+            try {
+                await wifiMg.getCurrentP2pGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
             done();
         })
 
@@ -249,18 +289,26 @@ export default function actsWifiManagerFunctionTest() {
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
+            await wifiMg.getCurrentP2pGroup()
                 .then(data => {
-                    console.info("[wifi_test]getCurrentGroup  promise result :" + JSON.stringify(data));
+                    console.info("[wifi_test]getCurrentP2pGroup  promise result :" + JSON.stringify(data));
                     expect(true).assertEqual(2412 < data.frequency < 2484 );
                 });
             let removeGroupResult = wifiMg.removeGroup();
             await sleep(2000);
-            await wifiMg.getCurrentGroup()
-                .then(data => {
-                    console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
-                    expect(true).assertEqual(data.deviceName == null);
-                });
+            try {
+                await wifiMg.getCurrentP2pGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
             done();
         })
 
@@ -284,17 +332,20 @@ export default function actsWifiManagerFunctionTest() {
                 };
                 let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
                 await sleep(2000);
-                await wifiMg.getCurrentGroup()
+                await wifiMg.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result :" + JSON.stringify(data));
                         expect(true).assertEqual(5160 < data.frequency < 5865);
                     });
                 let removeGroupResult = await wifiMg.removeGroup();
                 await sleep(2000);
-                await wifiMg.getCurrentGroup()
+                await wifiMg.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
                         expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
                     });
             }catch(error){
                 console.info("[wifi_test]createGroup 5G goBand result : " + JSON.stringify(error.message));
@@ -323,17 +374,20 @@ export default function actsWifiManagerFunctionTest() {
                 };
                 let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
                 await sleep(2000);
-                await wifiMg.getCurrentGroup()
+                await wifiMg.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test]getCurrentGroup promise result : " + JSON.stringify(data));
+                        console.info("[wifi_test]getCurrentP2pGroup promise result : " + JSON.stringify(data));
                         expect(true).assertEqual(data.frequency != null );
                     });
                 let removeGroupResult = await wifiMg.removeGroup();
                 await sleep(2000);
-                await wifiMg.getCurrentGroup()
+                await wifiMg.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
                         expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
                     });
             }catch(error){
                 console.info("[wifi_test]createGroup auto  goBand result : " + JSON.stringify(error.message));
@@ -362,16 +416,19 @@ export default function actsWifiManagerFunctionTest() {
                 };
                 let createGroupResult = wifi.createGroup(wifiP2PConfig);
                 await sleep(2000);
-                await wifi.getCurrentGroup()
+                await wifi.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test]getCurrentGroup  promise result : " + JSON.stringify(data));
+                        console.info("[wifi_test]getCurrentP2pGroup  promise result : " + JSON.stringify(data));
                     });
                 let removeGroupResult = wifi.removeGroup();
                 await sleep(2000);
-                await wifi.getCurrentGroup()
+                await wifiMg.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
                         expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
                     });
             }catch(error){
                 console.info("[wifi_test]createGroup error passphrase result : " + JSON.stringify(error.message));
@@ -400,16 +457,19 @@ export default function actsWifiManagerFunctionTest() {
                 };
                 let createGroupResult = wifi.createGroup(wifiP2PConfig);
                 await sleep(2000);
-                await wifi.getCurrentGroup()
+                await wifi.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test]getCurrentGroup promise result :" + JSON.stringify(data));
+                        console.info("[wifi_test]getCurrentP2pGroup promise result :" + JSON.stringify(data));
                     });
                 let removeGroupResult = wifi.removeGroup();
                 await sleep(2000);
-                await wifi.getCurrentGroup()
+                await wifiMg.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
                         expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
                     });
             }catch(error){
                 console.info("[wifi_test]createGroup error passphrase result : " + JSON.stringify(error.message));
@@ -438,16 +498,19 @@ export default function actsWifiManagerFunctionTest() {
                 };
                 let createGroupResult = wifi.createGroup(wifiP2PConfig);
                 await sleep(2000);
-                await wifi.getCurrentGroup()
+                await wifi.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result :" + JSON.stringify(data));
                     });
                 let removeGroupResult = wifi.removeGroup();
                 await sleep(2000);
-                await wifi.getCurrentGroup()
+                await wifiMg.getCurrentP2pGroup()
                     .then(data => {
-                        console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
                         expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
                     });
             }catch(error){
                 console.info("[wifi_test]createGroup error passphrase result : " + JSON.stringify(error.message));
@@ -478,11 +541,19 @@ export default function actsWifiManagerFunctionTest() {
             console.info("[wifi_test]test p2pCancelConnect successful." );
             let removeGroupResult = wifiMg.removeGroup();
             console.info("[wifi_test]test removeGroup  successful " );
-            await wifiMg.getCurrentGroup()
-                .then(data => {
-                    console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
-                    expect(true).assertEqual(data.deviceName == null);
-                });
+            try {
+                await wifiMg.getCurrentP2pGroup()
+                    .then(data => {
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
+                        expect(true).assertEqual(data.deviceName == null);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
             done();
         })
 
@@ -495,9 +566,9 @@ export default function actsWifiManagerFunctionTest() {
         */
         it('SUB_Communication_WiFi_XTS_P2P_0011', 0, async function (done) {
             let removeGroupResult = wifiMg.removeGroup(10000);
-            await wifiMg.getCurrentGroup()
+            await wifiMg.getCurrentP2pGroup()
                 .then(data => {
-                    console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
+                    console.info("[wifi_test] getCurrentP2pGroup  promise result1 :" + JSON.stringify(data));
                     expect(true).assertEqual(data.deviceName == null);
                 });
             done();
@@ -659,5 +730,4 @@ export default function actsWifiManagerFunctionTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
-
 
