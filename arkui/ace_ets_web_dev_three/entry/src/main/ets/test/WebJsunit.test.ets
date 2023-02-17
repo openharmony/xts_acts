@@ -392,12 +392,22 @@ export default function webJsunit() {
      *tc.desic Save current page
      */
     it('ContextMenuEditStateFlags',0,async function(done){
-      emitKey="emitContextMenuEditStateFlags";
+      emitKey="emitGetStoredGeolocation";
       Utils.registerEvent("ContextMenuEditStateFlags",0,37,done);
       Utils.registerEvent("ContextMenuEditStateFlags",1,38,done);
       Utils.registerEvent("ContextMenuEditStateFlags",2,39,done);
       Utils.registerEvent("ContextMenuEditStateFlags",4,40,done);
       Utils.registerEvent("ContextMenuEditStateFlags",8,41,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_036                                                                                                                                                               
+     *tc.name GetStoredGeolocation                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('GetStoredGeolocation',0,async function(done){
+      emitKey="emitGetStoredGeolocation";
+      Utils.registerEvent("GetStoredGeolocation","file:///",120,done);
       sendEventByKey('webcomponent',10,'');
     })
   })
