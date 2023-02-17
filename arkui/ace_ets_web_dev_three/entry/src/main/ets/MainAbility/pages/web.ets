@@ -26,6 +26,8 @@ struct Index {
     controller: web_webview.WebviewController = new web_webview.WebviewController();
     controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
     scheme1: web_webview.WebCustomScheme = {schemeName: "name1", isSupportCORS: true, isSupportFetch: true}
+    scheme2: web_webview.WebCustomScheme = {schemeName: "name2", isSupportCORS: true, isSupportFetch: true}
+    scheme3: web_webview.WebCustomScheme = {schemeName: "name3", isSupportCORS: true, isSupportFetch: true}
     responseweb: WebResourceResponse = new WebResourceResponse()
     @State str:string="emitLoadUrl"
     @State text:boolean=false
@@ -68,6 +70,8 @@ struct Index {
         console.info('start run testcase!!!')
         Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite) 
         try{
+            web_webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3])
+            web_webview.WebviewController.setWebDebuggingAccess(true)
             web_webview.once("webInited",()=>{
                 web_webview.WebCookieManager.setCookie("https://www.huawei.com", "a=b");
             })
@@ -524,6 +528,25 @@ struct Index {
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`); 
                             }                                                                                                                                         
+                            break;
+                        }
+                        case "emitGetStoredGeolocation":{  
+                             try {
+                                web_webview.GeolocationPermissions.allowGeolocation("file:///") 
+                                web_webview.GeolocationPermissions.getStoredGeolocation((error, origins) => {
+                                if (error) {
+                                    console.log('getStoredGeolocationAsync error: ' + JSON.stringify(error))
+                                    return;
+                                }
+                                if (origins) {
+                                    let origins_str: string = origins.join()
+                                    console.log('getStoredGeolocationAsync origins: ' + origins_str);
+                                    Utils.emitEvent(origins_str, 120);
+                                }
+                            });
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                            }                                                                                                                                     
                             break;
                         }
                         default:
