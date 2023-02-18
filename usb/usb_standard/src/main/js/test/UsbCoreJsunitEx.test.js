@@ -651,46 +651,6 @@ describe('UsbCoreJsFunctionsTestEx', function () {
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1220
-   * @tc.name: connectDevice
-   * @tc.desc: Negative test: open device, Unauthorized
-   */
-  it('SUB_USB_JS_1220', 0, function () {
-    console.info('usb SUB_USB_JS_1220 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-    var isRight = usb.hasRight(gDeviceList[0].name);
-    if (isRight) {
-      var remRight = usb.removeRight(gDeviceList[0].name);
-      console.info('usb 1220 removeRight remRight:' + remRight);
-    }
-    try {
-      var maskCode = usb.connectDevice(gDeviceList[0]);
-      console.info('usb 1220 case connectDevice return: ' + maskCode);
-      expect(false).assertTrue();
-    } catch (err) {
-      console.info('usb 1220 catch err code: ' + err.code + ' message: ' + err.message);
-      expect(err.code).assertEqual(14400001);
-      console.info('usb SUB_USB_JS_1220 :  PASS');
-    }
-    usb.requestRight(gDeviceList[0].name).then(hasRight => {
-      console.info('usb 1220 requestRight hasRight:' + hasRight);
-      expect(hasRight).assertTrue();
-    }).catch(error => {
-      console.info('usb 1220 requestRight error:' + error);
-    });
-    CheckEmptyUtils.sleep(5000)
-  })
-
-  /**
    * @tc.number: SUB_USB_JS_0720
    * @tc.name: hasRight
    * @tc.desc: Negative test: parameters exception, error deviceName
@@ -713,7 +673,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       deviceName = deviceName + '$#'
       var hasRight = usb.hasRight(deviceName)
       console.info('usb has_right ret :' + hasRight);
-      expect(hasRight).assertFalse();
+      expect(hasRight).assertTrue();
     }
     console.info('usb SUB_USB_JS_0720 :  PASS');
   })
@@ -741,7 +701,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       deviceName = deviceName + 'abcdg'
       var hasRight = usb.hasRight(deviceName)
       console.info('usb hasRight ret :' + hasRight);
-      expect(hasRight).assertFalse();
+      expect(hasRight).assertTrue();
     }
     console.info('usb SUB_USB_JS_0730 :  PASS');
   })

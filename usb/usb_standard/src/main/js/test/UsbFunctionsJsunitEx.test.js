@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -158,6 +158,126 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
   })
 
   /**
+   * @tc.number: SUB_USB_JS_1770
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 8, return 'mtp'
+   */
+  it('SUB_USB_JS_1770', 0, function () {
+    console.info('usb SUB_USB_JS_1770 begin');
+    var maskCode = usb.MTP;
+    console.info('usb case maskCode : ' + maskCode);
+    var strMaskCode = usb.usbFunctionsToString(maskCode);
+    console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('mtp');
+    console.info('usb SUB_USB_JS_1770 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1780
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 12, return 'hdc,mtp'
+   */
+  it('SUB_USB_JS_1780', 0, function () {
+    console.info('usb SUB_USB_JS_1780 begin');
+    var maskCode = usb.MTP | usb.HDC;
+    console.info('usb case maskCode : ' + maskCode);
+    var strMaskCode = usb.usbFunctionsToString(maskCode);
+    console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('hdc,mtp');
+    console.info('usb SUB_USB_JS_1780 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1790
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 16, return 'ptp'
+   */
+  it('SUB_USB_JS_1790', 0, function () {
+    console.info('usb SUB_USB_JS_1790 begin');
+    var maskCode = usb.PTP;
+    console.info('usb case maskCode : ' + maskCode);
+    var strMaskCode = usb.usbFunctionsToString(maskCode);
+    console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('ptp');
+    console.info('usb SUB_USB_JS_1790 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1800
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 20, return 'hdc,ptp'
+   */
+  it('SUB_USB_JS_1800', 0, function () {
+    console.info('usb SUB_USB_JS_1800 begin');
+    var maskCode = usb.PTP | usb.HDC;
+    console.info('usb case maskCode : ' + maskCode);
+    var strMaskCode = usb.usbFunctionsToString(maskCode);
+    console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('hdc,ptp');
+    console.info('usb SUB_USB_JS_1800 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1810
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 32, return 'rndis'
+   */
+  it('SUB_USB_JS_1810', 0, function () {
+    console.info('usb SUB_USB_JS_1810 begin');
+    var maskCode = usb.RNDIS;
+    console.info('usb case maskCode : ' + maskCode);
+    var strMaskCode = usb.usbFunctionsToString(maskCode);
+    console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('rndis');
+    console.info('usb SUB_USB_JS_1810 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1820
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 36, return 'hdc,rndis'
+   */
+  it('SUB_USB_JS_1820', 0, function () {
+    console.info('usb SUB_USB_JS_1820 begin');
+    var maskCode = usb.RNDIS | usb.HDC;
+    console.info('usb case maskCode : ' + maskCode);
+    var strMaskCode = usb.usbFunctionsToString(maskCode);
+    console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('hdc,rndis');
+    console.info('usb SUB_USB_JS_1820 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1830
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 512, return 'storage'
+   */
+  it('SUB_USB_JS_1830', 0, function () {
+    console.info('usb SUB_USB_JS_1830 begin');
+    var maskCode = usb.STORAGE;
+    console.info('usb case maskCode : ' + maskCode);
+    var strMaskCode = usb.usbFunctionsToString(maskCode);
+    console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('storage');
+    console.info('usb SUB_USB_JS_1830 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1840
+   * @tc.name: usbFunctionsToString
+   * @tc.desc: Positive test: input 516, return 'hdc,storage'
+   */
+  it('SUB_USB_JS_1840', 0, function () {
+    console.info('usb SUB_USB_JS_1840 begin');
+    var maskCode = usb.STORAGE | usb.HDC;
+    console.info('usb case maskCode : ' + maskCode);
+    var strMaskCode = usb.usbFunctionsToString(maskCode);
+    console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
+    expect(strMaskCode).assertEqual('hdc,storage');
+    console.info('usb SUB_USB_JS_1840 :  PASS');
+  })
+
+  /**
    * @tc.number: SUB_USB_JS_1160
    * @tc.name: usbFunctionsToString
    * @tc.desc: Negative test: Mask converted to description character, parameter type error
@@ -290,6 +410,118 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
     console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
     expect(nMaskCode).assertEqual(usb.HDC | usb.ECM);
     console.info('usb SUB_USB_JS_0920 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1220
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'mtp', return 8
+   */
+  it('SUB_USB_JS_1220', 0, function () {
+    console.info('usb SUB_USB_JS_1220 begin');
+    var strMaskCode = 'mtp'
+    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.MTP);
+    console.info('usb SUB_USB_JS_1220 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1700
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'hdc,mtp', return 12
+   */
+  it('SUB_USB_JS_1700', 0, function () {
+    console.info('usb SUB_USB_JS_1700 begin');
+    var strMaskCode = 'hdc,mtp'
+    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.MTP | usb.HDC);
+    console.info('usb SUB_USB_JS_1700 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1710
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'ptp', return 16
+   */
+  it('SUB_USB_JS_1710', 0, function () {
+    console.info('usb SUB_USB_JS_1710 begin');
+    var strMaskCode = 'ptp'
+    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.PTP);
+    console.info('usb SUB_USB_JS_1710 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1720
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'hdc,ptp', return 20
+   */
+  it('SUB_USB_JS_1720', 0, function () {
+    console.info('usb SUB_USB_JS_1720 begin');
+    var strMaskCode = 'hdc,ptp'
+    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.PTP | usb.HDC);
+    console.info('usb SUB_USB_JS_1720 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1730
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'rndis', return 32
+   */
+  it('SUB_USB_JS_1730', 0, function () {
+    console.info('usb SUB_USB_JS_1730 begin');
+    var strMaskCode = 'rndis'
+    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.RNDIS);
+    console.info('usb SUB_USB_JS_1730 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1740
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'hdc,rndis', return 36
+   */
+  it('SUB_USB_JS_1740', 0, function () {
+    console.info('usb SUB_USB_JS_1740 begin');
+    var strMaskCode = 'hdc,rndis'
+    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.RNDIS | usb.HDC);
+    console.info('usb SUB_USB_JS_1740 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1750
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'storage', return 512
+   */
+  it('SUB_USB_JS_1750', 0, function () {
+    console.info('usb SUB_USB_JS_1750 begin');
+    var strMaskCode = 'storage'
+    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.STORAGE);
+    console.info('usb SUB_USB_JS_1750 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1760
+   * @tc.name: usbFunctionsFromString
+   * @tc.desc: Positive test: input 'hdc,storage', return 516
+   */
+  it('SUB_USB_JS_1760', 0, function () {
+    console.info('usb SUB_USB_JS_1760 begin');
+    var strMaskCode = 'hdc,storage'
+    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    console.info('usb case strMaskCode ' + strMaskCode + ' usbFunctionsFromString return int: ' + nMaskCode);
+    expect(nMaskCode).assertEqual(usb.STORAGE | usb.HDC);
+    console.info('usb SUB_USB_JS_1760 :  PASS');
   })
 
   /**
