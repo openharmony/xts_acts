@@ -25,7 +25,7 @@ let loadedUrl;
 struct Index {
     controller:WebController = new WebController()
     responseweb: WebResourceResponse = new WebResourceResponse()
-    @State str:string="emitStoreWebArchive"
+    @State str:string="emitAllowGeolocation"
     @State text:string=""
     @State textRatio:number=100
     @State zoomAccessValue:boolean=true
@@ -75,15 +75,6 @@ struct Index {
                 Button("web click").key('webcomponent').onClick(async ()=>{
                     console.info("key==>"+this.str)
                     switch(this.str){
-                        case "emitStoreWebArchive":{                                                                                 
-                            let webAsyncController = new web_webview.WebAsyncController(this.controller)
-                            webAsyncController.storeWebArchive("/data/storage/el2/base/",true,(filename) => {
-                                if(filename != null) {
-                                    Utils.emitEvent(filename,400) 
-                                }
-                            })                                                             
-                            break;
-                        }
                         case "emitAllowGeolocation":{                                                                                 
                             web_webview.GeolocationPermissions.allowGeolocation("file:///")
                             web_webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
@@ -146,15 +137,6 @@ struct Index {
                             },3000)                                                                                      
                             break;
                         }
-                        case "emitExistCookie":{ 
-                            this.controller.getCookieManager().deleteEntireCookie();
-                            setTimeout(()=>{ 
-                                var result = web_webview.WebCookieManager.existCookie();
-                                console.log(result.toString()); 
-                                Utils.emitEvent(result,414)
-                            },3000)                                                                                   
-                            break ;
-                        }
                         case "emitOnConsole":{                           
                             this.controller.runJavaScript({script:"consoleTest()"})
                             break;
@@ -163,29 +145,32 @@ struct Index {
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
                             setTimeout(()=>{
                                 this.controller.loadData({
-                                data: "<html><title>index</title></html>",
+                                data: "<html><head><title>index</title></head><body bgcolor=\"white\">Source:<pre>source</pre</body><script>function gettitle(){return document.title}</script></html>",
                                 mimeType: "text/html",
                                 encoding: "UTF-8"
                                 })
                             },3000)
                             setTimeout(()=>{
-                                this.text = this.controller.getTitle();
-                                Utils.emitEvent(this.text,424)
+                                this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
+                                    Utils.emitEvent(res,424)
+                                }})
                                 },4000)                                                                                     
                             break ;
                         }
                         case "emitZoomAccess":{ 
                             this.zoomAccessValue = false
-                            this.controller.refresh()  
-                            var origin = this.controller.getPageHeight()
-                            var zoomInCalled = false  
-                            setTimeout(()=>{ 
-                                this.controller.zoomIn()    
-                                if (this.controller.getPageHeight() > origin) {
+                            this.controller.refresh() 
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getPageHeight()",callback:(res1)=>{
+                                var zoomInCalled = false
+                                this.controller.runJavaScript({script:"getPageHeight()",callback:(res)=>{
+                                    console.info("getPageHeight==>"+res)
+                                    if (Number(res) > Number(res1)) {
                                     zoomInCalled = true
                                 }
-                                console.log("final" + this.controller.getPageHeight())
-                                Utils.emitEvent(zoomInCalled,428);                                                                                 
+                                Utils.emitEvent(zoomInCalled,428);
+                                    }})
+                                }})                                                                                 
                             },3000);                                                                                  
                             break ;
                         }
@@ -213,13 +198,6 @@ struct Index {
                             },3000)                                                                               
                             break;
                         }
-                        case "emitSearchAllAsync":{ 
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
-                            setTimeout(()=>{
-                                this.controller.searchAllAsync("首页"); 
-                            },3000)                                                                                
-                            break ;
-                        }
                         default:
                             console.info("can not match case")
                     }
@@ -242,14 +220,6 @@ struct Index {
                     Utils.emitEvent(sourceId,422)
                 },3000)
                 return false
-            })
-            .onSearchResultReceive(ret=>{
-                var searchResult = ret.activeMatchOrdinal.toString() + 
-                ret.numberOfMatches.toString()
-                console.log("searchResult" + searchResult)
-                setTimeout(()=>{
-                    Utils.emitEvent(searchResult,426)
-                },3000)
             })
         }
     }

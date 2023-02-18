@@ -15,11 +15,11 @@
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
         "metadata": [
-            {
-              "name": "ArkTSPartialUpdate",
-              "value": "false"
-            }
-          ],
+          {
+            "name": "ArkTSPartialUpdate",
+            "value": "true"
+          }
+        ],
         "abilities": [{
             "name": "com.example.myapplication.MainAbility",
             "srcEntrance": "./ets/MainAbility/MainAbility.ts",

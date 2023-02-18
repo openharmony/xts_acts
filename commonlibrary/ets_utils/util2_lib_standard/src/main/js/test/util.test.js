@@ -890,7 +890,7 @@ describe('TextEncoderTest', function () {
         var result = util.randomUUID(true);
         expect(result.length).assertEqual(36);
     })
-    
+
     /**
      * @tc.name: testUtilRandomUUID002
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
@@ -949,6 +949,42 @@ describe('TextEncoderTest', function () {
         } catch(e) {
             expect(e.message).assertEqual('Syntax Error.Invalid 84Wdf796-66cc-4655-9b89-d6218d100f9c string');
         }
+    })
+
+    /**
+     * @tc.name: testUtilgenerateRandomUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     */
+    it('testUtilgenerateRandomUUID001', 0, async function () {
+        var result = util.generateRandomUUID(true);
+        expect(result.length).assertEqual(36);
+    })
+
+    /**
+     * @tc.name: testUtilgenerateRandomUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     */
+    it('testUtilgenerateRandomUUID002', 0, async function () {
+        var result = util.generateRandomUUID(false);
+        expect(result.length).assertEqual(36);
+    })
+
+    /**
+     * @tc.name: testUtilgenerateRandomBinaryUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     */
+    it('testUtilgenerateRandomBinaryUUID001', 0, async function () {
+        var result = util.generateRandomBinaryUUID(true);
+        expect(result.length).assertEqual(16);
+    })
+
+    /**
+     * @tc.name: testUtilgenerateRandomBinaryUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     */
+    it('testUtilgenerateRandomBinaryUUID002', 0, async function () {
+        var result = util.generateRandomBinaryUUID(false);
+        expect(result.length).assertEqual(16);
     })
 })
 
@@ -3371,7 +3407,7 @@ describe('FunctionTest', function () {
     })
 
     /**
-     * @tc.name: testUtilformat001
+     * @tc.name: testUtilformatThrowError001
      * @tc.desc: Returns the formatted string.
      */
     it('testUtilformatThrowError001', 0, function () {
@@ -3515,11 +3551,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_parseRationalNumber_001', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1, 2)
-        var res = pro.createRationalFromString('+2:-4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.5)
+        var res = util.RationalNumber.parseRationalNumber(2, 1)
+        var result = res.valueOf()
+        expect(result).assertEqual(2)
     })
 
     /**
@@ -3528,11 +3562,9 @@ describe('RationalNumberTest', function () {
      */
     it('test_parseRationalNumberThrowError_001', 0, function () {
         try {
-            var pro = new util.RationalNumber()
-            pro.parseRationalNumber('str', 2)
-            var res = pro.createRationalFromString('+2:-4')
-            var result1 = res.valueOf()
-            expect(result1).assertEqual(-0.5)
+            var pro = util.RationalNumber.parseRationalNumber('str', 2)
+            var result = res.valueOf()
+            expect(result).assertEqual(2)
         } catch (e) {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
         }
@@ -3543,11 +3575,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_001', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('-1:2')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.5)
+        var res = util.RationalNumber.createRationalFromString('-1:2')
+        var result = res.valueOf()
+        expect(result).assertEqual(-0.5)
     })
 
     /**
@@ -3555,11 +3585,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_002', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('+3/4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(0.75)
+        var res = util.RationalNumber.createRationalFromString('+3/4')
+        var result = res.valueOf()
+        expect(result).assertEqual(0.75)
     })
 
     /**
@@ -3567,11 +3595,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_003', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('+3:-4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.75)
+        var res = util.RationalNumber.createRationalFromString('+3:-4')
+        var result = res.valueOf()
+        expect(result).assertEqual(-0.75)
     })
 
     /**
@@ -3579,11 +3605,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_004', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('+2:4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(0.5)
+        var res = util.RationalNumber.createRationalFromString('+2:4')
+        var result = res.valueOf()
+        expect(result).assertEqual(0.5)
     })
 
     /**
@@ -3591,11 +3615,9 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Creates a RationalNumber object based on a given string.
      */
     it('test_createRationalFromString_005', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(1,2)
-        var res = pro.createRationalFromString('+2:-4')
-        var result1 = res.valueOf()
-        expect(result1).assertEqual(-0.5)
+        var res = util.RationalNumber.createRationalFromString('+2:-4')
+        var result = res.valueOf()
+        expect(result).assertEqual(-0.5)
     })
 
     /**
@@ -3604,11 +3626,9 @@ describe('RationalNumberTest', function () {
      */
     it('test_createRationalFromStringThrowError_001', 0, function () {
         try {
-            var pro = new util.RationalNumber()
-            pro.parseRationalNumber(1, 2)
-            var res = pro.createRationalFromString(123)
-            var result1 = res.valueOf()
-            expect(result1).assertEqual(-0.5)
+            var res = util.RationalNumber.createRationalFromString(123)
+            var result = res.valueOf()
+            expect(result).assertEqual(-0.5)
         } catch (e) {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string");
         }
@@ -3619,10 +3639,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_001', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(2, 1)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(3, 4)
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(3, 4)
         var res = pro.compare(proc)
         expect(res).assertEqual(1)
     })
@@ -3632,10 +3650,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_002', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(2, 1)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(0, 0)
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(0, 0)
         var res = pro.compare(proc)
         expect(res).assertEqual(-1)
     })
@@ -3645,10 +3661,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_003', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(2, 1)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(8, 3)
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(8, 3)
         var res = pro.compare(proc)
         expect(res).assertEqual(-1)
     })
@@ -3658,10 +3672,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_004', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(2, 1)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(2, 1)
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(2, 1)
         var res = pro.compare(proc)
         expect(res).assertEqual(0)
     })
@@ -3671,10 +3683,8 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Compares the current RationalNumber object with a given object.
      */
     it('test_compare_005', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var proc = new util.RationalNumber()
-        proc.parseRationalNumber(2, 1)
+        var pro = util.RationalNumber.parseRationalNumber(0, 0)
+        var proc = util.RationalNumber.parseRationalNumber(2, 1)
         var res = pro.compare(proc)
         expect(res).assertEqual(1)
     })
@@ -3685,8 +3695,7 @@ describe('RationalNumberTest', function () {
      */
     it('test_compareThrowError_001', 0, function () {
         try {
-            var pro = new util.RationalNumber()
-            pro.parseRationalNumber(2, 1)
+            var pro = util.RationalNumber.parseRationalNumber(2, 1)
             var proc = 'str'
             var res = pro.compare(proc)
             expect(res).assertEqual(1)
@@ -3700,9 +3709,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor001', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(4, 8)
+        var res = util.RationalNumber.getCommonFactor(4, 8)
         expect(res).assertEqual(4)
     })
 
@@ -3711,9 +3718,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor002', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(10, 15)
+        var res = util.RationalNumber.getCommonFactor(10, 15)
         expect(res).assertEqual(5)
     })
 
@@ -3722,9 +3727,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor003', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(8, 4)
+        var res = util.RationalNumber.getCommonFactor(8, 4)
         expect(res).assertEqual(4)
     })
 
@@ -3733,9 +3736,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor004', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(8, 16)
+        var res = util.RationalNumber.getCommonFactor(8, 16)
         expect(res).assertEqual(8)
     })
 
@@ -3744,9 +3745,7 @@ describe('RationalNumberTest', function () {
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      */
     it('testgetCommonFactor005', 0, function () {
-        var pro = new util.RationalNumber()
-        pro.parseRationalNumber(0, 0)
-        var res = pro.getCommonFactor(2, 16)
+        var res = util.RationalNumber.getCommonFactor(2, 16)
         expect(res).assertEqual(2)
     })
 
@@ -3756,9 +3755,7 @@ describe('RationalNumberTest', function () {
      */
     it('testgetCommonFactorThrowError001', 0, function () {
         try {
-            var pro = new util.RationalNumber()
-            pro.parseRationalNumber(0, 0)
-            var res = pro.getCommonFactor('str', 8)
+            var res = util.RationalNumber.getCommonFactor('str', 8)
             expect(res).assertEqual(4)
         } catch (e) {
             expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
@@ -4166,11 +4163,11 @@ describe('Base64HelperTest', function () {
     })
 
     /**
-     * @tc.name: test_encodeSync_base64_005
+     * @tc.name: test_encodeSync_base64_throwError_001
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
         array using the Base64 encoding scheme.
      */
-        it('test_encodeSync_base64_005', 0, async function () {
+        it('test_encodeSync_base64_throwError_001', 0, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
@@ -4419,11 +4416,11 @@ describe('Base64HelperTest', function () {
     })
 
     /**
-     * @tc.name: test_decode_base64_011
+     * @tc.name: test_decode_base64_throwError_001
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
         array into a newly allocated u8 array.
      */
-    it('test_decode_base64_006', 0, async function () {
+    it('test_decode_base64_throwError_001', 0, async function () {
         try {
             var that = new util.Base64Helper()
             var array = new Uint16Array([99,122,69,122]);
@@ -4440,8 +4437,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_001', 0, function () {
-        var  that = new util.TextDecoder()
-        that.create('utf-8', { ignoreBOM : true })
+        var that = util.TextDecoder.create('utf-8', { ignoreBOM : true })
         var retStr = that.encoding
         expect(retStr).assertEqual('utf-8')
     })
@@ -4451,8 +4447,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_002', 0, function () {
-        var that = new util.TextDecoder()
-        that.create('utf-16le')
+        var that = util.TextDecoder.create('utf-16le')
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16le')
     })
@@ -4462,8 +4457,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_003', 0, function () {
-        var that = new util.TextDecoder()
-        that.create('utf-16be')
+        var that = util.TextDecoder.create('utf-16be')
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
@@ -4473,8 +4467,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_004', 0, function () {
-        var that = new util.TextDecoder()
-        that.create('utf-16be', { ignoreBOM : true })
+        var that = util.TextDecoder.create('utf-16be', { ignoreBOM : true })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
@@ -4484,8 +4477,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.desc: The source encoding's name, lowercased.
      */
     it('testencoding_textdecoder_005', 0, function () {
-        var that = new util.TextDecoder()
-        that.create('utf-16be', { ignoreBOM : false })
+        var that = util.TextDecoder.create('utf-16be', { ignoreBOM : false })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
@@ -4496,8 +4488,7 @@ describe('DecodeEncodeTest', function () {
      */
     it('testencoding_textdecoder_ThrowError_001', 0, function () {
         try {
-            var that = new util.TextDecoder()
-            that.create(123, { ignoreBOM : false })
+            var that = util.TextDecoder.create(123, { ignoreBOM : false })
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
@@ -4511,8 +4502,7 @@ describe('DecodeEncodeTest', function () {
      */
     it('testencoding_textdecoder_ThrowError_002', 0, function () {
         try {
-            var that = new util.TextDecoder()
-            that.create('utf-16be', 'ignoreBOM')
+            var that = util.TextDecoder.create('utf-16be', 'ignoreBOM')
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
@@ -4521,13 +4511,12 @@ describe('DecodeEncodeTest', function () {
     })
 
     /**
-     * @tc.name: testencoding_textdecoder_ThrowError_002
+     * @tc.name: testencoding_textdecoder_ThrowError_003
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_ThrowError_002', 0, function () {
+    it('testencoding_textdecoder_ThrowError_003', 0, function () {
         try {
-            var that = new util.TextDecoder()
-            that.create('utf-16be', 123)
+            var that = util.TextDecoder.create('utf-16be', 123)
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
@@ -4652,7 +4641,7 @@ describe('DecodeEncodeTest', function () {
      * @tc.name: testEncodeInto010
      * @tc.desc: Returns the result of encoder for GB18030.
      */
-    it('testEncodeInto0010', 0, function () {
+    it('testEncodeInto010', 0, function () {
         let that = new util.TextEncoder('GB18030')
         let buffer = new ArrayBuffer(20)
         let result = new Uint8Array(buffer)
