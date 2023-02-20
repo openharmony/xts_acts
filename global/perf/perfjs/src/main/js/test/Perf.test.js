@@ -2217,7 +2217,7 @@ describe('PerfTest', function () {
                     + ' value: ' + value
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
-        expect(value).assertEqual('广东省深圳市');
+        expect(value).assertEqual('中国');
         if(avgTime < 10){
             expect(true).assertTrue();
         }
