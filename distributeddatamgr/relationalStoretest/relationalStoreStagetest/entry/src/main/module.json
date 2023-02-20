@@ -17,11 +17,11 @@
     "pages": "$profile:main_pages",
     "uiSyntax": "ets",
     "metadata": [
-      {
-        "name": "ArkTSPartialUpdate",
-        "value": "false"
-      }
-    ],
+        {
+          "name": "ArkTSPartialUpdate",
+          "value": "false"
+        }
+      ],
     "abilities": [
       {
         "name": "ohos.acts.RelationalStoreStage.MainAbility",
