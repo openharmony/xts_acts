@@ -33,15 +33,15 @@ describe('fileIO_fs_createStream', function () {
   it('fileIO_test_create_stream_sync_000', 0, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    let ss = fileIO.createStreamSync(fpath, 'r');
+    let sr = fileIO.createStreamSync(fpath, 'r');
 
     try {
-      expect(ss !== null).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      ss.writeSync(FILE_CONTENT);
+      expect(sr !== null).assertTrue();
+      expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      sr.writeSync(FILE_CONTENT);
       expect(false).assertTrue();
     } catch (e) {
-      ss.closeSync();
+      sr.closeSync();
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_create_stream_sync_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -85,11 +85,11 @@ describe('fileIO_fs_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'r+');
-      expect(ss !== null).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      ss.closeSync();
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(sr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      sr.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_create_stream_sync_002 has failed for ' + e.message + ', code: ' + e.code);
@@ -263,11 +263,11 @@ describe('fileIO_fs_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'w+');
-      expect(ss !== null).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      ss.closeSync();
+      let sw = fileIO.createStreamSync(fpath, 'w+');
+      expect(sw !== null).assertTrue();
+      expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      sw.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_create_stream_sync_009 has failed for ' + e.message + ', code: ' + e.code);
@@ -289,11 +289,11 @@ describe('fileIO_fs_createStream', function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_010');
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'w+');
-      expect(ss !== null).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      ss.closeSync();
+      let sw = fileIO.createStreamSync(fpath, 'w+');
+      expect(sw !== null).assertTrue();
+      expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      sw.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_create_stream_sync_010 has failed for ' + e.message + ', code: ' + e.code);
@@ -316,10 +316,10 @@ describe('fileIO_fs_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'a');
-      expect(ss !== null).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      ss.closeSync();
+      let sa = fileIO.createStreamSync(fpath, 'a');
+      expect(sa !== null).assertTrue();
+      expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      sa.closeSync();
 
       let sr = fileIO.createStreamSync(fpath, 'r');
       expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
@@ -345,10 +345,10 @@ describe('fileIO_fs_createStream', function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_012');
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'a');
-      expect(ss !== null).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      ss.closeSync();
+      let sa = fileIO.createStreamSync(fpath, 'a');
+      expect(sa !== null).assertTrue();
+      expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      sa.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_create_stream_sync_012 has failed for ' + e.message + ', code: ' + e.code);
@@ -369,15 +369,15 @@ describe('fileIO_fs_createStream', function () {
   it('fileIO_test_create_stream_sync_013', 0, async function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    let ss = fileIO.createStreamSync(fpath, 'a');
+    let sa = fileIO.createStreamSync(fpath, 'a');
 
     try {
-      expect(ss !== null).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      ss.readSync(new ArrayBuffer(4096));
+      expect(sa !== null).assertTrue();
+      expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      sa.readSync(new ArrayBuffer(4096));
       expect(false).assertTrue();
     } catch (e) {
-      ss.closeSync();
+      sa.closeSync();
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_create_stream_sync_013 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -399,11 +399,11 @@ describe('fileIO_fs_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'a+');
-      expect(ss !== null).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
-      ss.closeSync();
+      let sa = fileIO.createStreamSync(fpath, 'a+');
+      expect(sa !== null).assertTrue();
+      expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      sa.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_create_stream_sync_014 has failed for ' + e.message + ', code: ' + e.code);
@@ -425,11 +425,11 @@ describe('fileIO_fs_createStream', function () {
     let fpath = await nextFileName('fileIO_test_create_stream_sync_015');
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'a+');
-      expect(ss !== null).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      ss.closeSync();
+      let sa = fileIO.createStreamSync(fpath, 'a+');
+      expect(sa !== null).assertTrue();
+      expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      sa.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_create_stream_sync_015 has failed for ' + e.message + ', code: ' + e.code);
@@ -450,15 +450,15 @@ describe('fileIO_fs_createStream', function () {
   it('fileIO_test_create_stream_async_000', 0, async function (done) {
     let fpath = await nextFileName('fileIO_test_create_stream_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    let ss = await fileIO.createStream(fpath, 'r');
+    let sr = await fileIO.createStream(fpath, 'r');
 
     try {
-      expect(ss !== null).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      ss.writeSync(FILE_CONTENT);
+      expect(sr !== null).assertTrue();
+      expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      sr.writeSync(FILE_CONTENT);
       expect(false).assertTrue();
     } catch (e) {
-      ss.closeSync();
+      sr.closeSync();
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_create_stream_async_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -481,16 +481,16 @@ describe('fileIO_fs_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileIO.createStream(fpath, 'r', (err, ss) => {
+      fileIO.createStream(fpath, 'r', (err, sr) => {
         if (err) {
           console.log('fileIO_test_create_stream_async_001 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(ss !== null).assertTrue();
-        expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-        ss.write(FILE_CONTENT, (err) => {
+        expect(sr !== null).assertTrue();
+        expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+        sr.write(FILE_CONTENT, (err) => {
           if (err) {
-            ss.closeSync();
+            sr.closeSync();
             fileIO.unlinkSync(fpath);
             console.log(
               'fileIO_test_create_stream_async_001 error: {message: ' + err.message + ', code: ' + err.code + '}'
@@ -573,11 +573,11 @@ describe('fileIO_fs_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = await fileIO.createStream(fpath, 'r+');
-      expect(ss !== null).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      ss.closeSync();
+      let sr = await fileIO.createStream(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(sr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      sr.closeSync();
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -601,15 +601,15 @@ describe('fileIO_fs_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileIO.createStream(fpath, 'r+', (err, ss) => {
+      fileIO.createStream(fpath, 'r+', (err, sr) => {
         if (err) {
           console.log('fileIO_test_create_stream_async_005 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(ss !== null).assertTrue();
-        expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-        expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        ss.closeSync();
+        expect(sr !== null).assertTrue();
+        expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+        expect(sr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+        sr.closeSync();
         fileIO.unlinkSync(fpath);
         done();
       });
@@ -829,11 +829,11 @@ describe('fileIO_fs_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = await fileIO.createStream(fpath, 'w+');
-      expect(ss !== null).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      ss.closeSync();
+      let sw = await fileIO.createStream(fpath, 'w+');
+      expect(sw !== null).assertTrue();
+      expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      sw.closeSync();
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -856,11 +856,11 @@ describe('fileIO_fs_createStream', function () {
     let fpath = await nextFileName('fileIO_test_create_stream_async_014');
 
     try {
-      let ss = await fileIO.createStream(fpath, 'w+');
-      expect(ss !== null).assertTrue();
-      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      ss.closeSync();
+      let sw = await fileIO.createStream(fpath, 'w+');
+      expect(sw !== null).assertTrue();
+      expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      sw.closeSync();
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -884,15 +884,15 @@ describe('fileIO_fs_createStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileIO.createStream(fpath, 'w+', (err, ss) => {
+      fileIO.createStream(fpath, 'w+', (err, sw) => {
         if (err) {
           console.log('fileIO_test_create_stream_async_015 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(ss !== null).assertTrue();
-        expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        expect(ss.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-        ss.closeSync();
+        expect(sw !== null).assertTrue();
+        expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+        expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+        sw.closeSync();
         fileIO.unlinkSync(fpath);
         done();
       });

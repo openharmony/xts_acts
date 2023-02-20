@@ -52,7 +52,7 @@ describe('fileIO_fs_symlink', function () {
    * Missing parameter.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_symlink_sync_001', 0, async function () {
@@ -84,10 +84,10 @@ describe('fileIO_fs_symlink', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileIO.symlink(fpath, fpath + 'link3').then(() => {
-        expect(fileIO.accessSync(fpath + 'link3')).assertTrue();
+      fileIO.symlink(fpath, fpath + 'link1').then(() => {
+        expect(fileIO.accessSync(fpath + 'link1')).assertTrue();
         fileIO.unlinkSync(fpath);
-        fileIO.unlinkSync(fpath + 'link3');
+        fileIO.unlinkSync(fpath + 'link1');
       }).catch((err) => {
         console.log('fileIO_test_symlink_async_000 error package: ' + JSON.stringify(err));
         expect(false).assertTrue();
@@ -106,7 +106,7 @@ describe('fileIO_fs_symlink', function () {
    * Create a symbolic link to verify normal function.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_symlink_async_001', 0, async function (done) {
@@ -114,10 +114,10 @@ describe('fileIO_fs_symlink', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileIO.symlink(fpath, fpath + 'link4');
-      expect(fileIO.accessSync(fpath + 'link4')).assertTrue();
+      await fileIO.symlink(fpath, fpath + 'link2');
+      expect(fileIO.accessSync(fpath + 'link2')).assertTrue();
       fileIO.unlinkSync(fpath);
-      fileIO.unlinkSync(fpath + 'link4');
+      fileIO.unlinkSync(fpath + 'link2');
       done();
     } catch (e) {
       console.log('fileIO_test_symlink_async_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -132,7 +132,7 @@ describe('fileIO_fs_symlink', function () {
    * Create a symbolic link to verify normal function.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_symlink_async_002', 0, async function (done) {
@@ -140,14 +140,14 @@ describe('fileIO_fs_symlink', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileIO.symlink(fpath, fpath + 'link5', (err) => {
+      fileIO.symlink(fpath, fpath + 'link3', (err) => {
         if (err) {
           console.log('fileIO_test_symlink_async_002 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(fileIO.accessSync(fpath + 'link5')).assertTrue();
+        expect(fileIO.accessSync(fpath + 'link3')).assertTrue();
         fileIO.unlinkSync(fpath);
-        fileIO.unlinkSync(fpath + 'link5');
+        fileIO.unlinkSync(fpath + 'link3');
         done();
       });
     } catch (e) {
@@ -163,7 +163,7 @@ describe('fileIO_fs_symlink', function () {
    * Missing parameter.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_symlink_async_003', 0, async function (done) {

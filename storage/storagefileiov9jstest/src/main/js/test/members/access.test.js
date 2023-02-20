@@ -21,7 +21,7 @@ export default function fileIOAccess() {
 describe('fileIO_fs_access', function () {
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0000
+   * @tc.number SUB_DF_FILEIO_ACCESS_SYNC_0000
    * @tc.name fileIO_test_access_sync_000
    * @tc.desc Test accessSync() interface.
    * This interface shall work properly in normal case.
@@ -49,7 +49,7 @@ describe('fileIO_fs_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0100
+   * @tc.number SUB_DF_FILEIO_ACCESS_SYNC_0100
    * @tc.name fileIO_test_access_sync_001
    * @tc.desc Test accessSync() interface.
    * The test file is not exist.
@@ -71,7 +71,7 @@ describe('fileIO_fs_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0200
+   * @tc.number SUB_DF_FILEIO_ACCESS_SYNC_0200
    * @tc.name fileIO_test_access_sync_002
    * @tc.desc Test accessSync() interface.
    * The test file path is illegal.
@@ -92,7 +92,7 @@ describe('fileIO_fs_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0000
+   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_0000
    * @tc.name fileIO_test_access_async_000
    * @tc.desc Test access() interface. Promise.
    * Use promise to test that the file is exist. Sync method reads data from file.
@@ -122,7 +122,7 @@ describe('fileIO_fs_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0100
+   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_0100
    * @tc.name fileIO_test_access_async_001
    * @tc.desc Test access() interface. Callback.
    * Use callback to test that the file is exist. Sync method reads data from file.
@@ -157,7 +157,7 @@ describe('fileIO_fs_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0200
+   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_0200
    * @tc.name fileIO_test_access_async_002
    * @tc.desc Test access() interface. Promise.
    * Async test file does not exist.
@@ -180,7 +180,7 @@ describe('fileIO_fs_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0300
+   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_0300
    * @tc.name fileIO_test_access_async_003
    * @tc.desc Test access() interface. Callback.
    * Async test file does not exist.
@@ -208,7 +208,7 @@ describe('fileIO_fs_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0400
+   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_0400
    * @tc.name fileIO_test_access_async_004
    * @tc.desc Test access() interface. Promise.
    * Invalid path parameter.
@@ -230,7 +230,7 @@ describe('fileIO_fs_access', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0500
+   * @tc.number SUB_DF_FILEIO_ACCESS_ASYNC_0500
    * @tc.name fileIO_test_access_async_005
    * @tc.desc Test access() interface. Callback.
    * Invalid path parameter.

@@ -21,7 +21,7 @@ export default function fileIOStreamClose() {
 describe('fileIO_fs_stream_close', function () {
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_CLOSESYNC_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSE_SYNC_0000
    * @tc.name fileIO_test_stream_close_sync_000
    * @tc.desc Test the closeSync() interface of class Stream.
    * Open a file stream, close file stream.
@@ -35,9 +35,9 @@ describe('fileIO_fs_stream_close', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'r');
-      expect(ss !== null).assertTrue();
-      ss.closeSync();
+      let sr = fileIO.createStreamSync(fpath, 'r');
+      expect(sr !== null).assertTrue();
+      sr.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_stream_close_sync_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -46,7 +46,7 @@ describe('fileIO_fs_stream_close', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_CLOSESYNC_0100
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSE_SYNC_0100
    * @tc.name fileIO_test_stream_close_sync_001
    * @tc.desc Test the closeSync() interface of class Stream.
    * Invalid parameter, don't requrie any parameters.
@@ -58,14 +58,14 @@ describe('fileIO_fs_stream_close', function () {
   it('fileIO_test_stream_close_sync_001', 0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_close_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    let ss = fileIO.createStreamSync(fpath, 'r');
+    let sr = fileIO.createStreamSync(fpath, 'r');
 
     try {
-      expect(ss !== null).assertTrue();
-      ss.closeSync(1);
+      expect(sr !== null).assertTrue();
+      sr.closeSync(1);
       expect(false).assertTrue();
     } catch (e) {
-      ss.closeSync();
+      sr.closeSync();
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_stream_close_sync_001 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
@@ -73,7 +73,7 @@ describe('fileIO_fs_stream_close', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_CLOSESYNC_0200
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSE_SYNC_0200
    * @tc.name fileIO_test_stream_close_sync_002
    * @tc.desc Test the closeSync() interface of class Stream.
    * The file stream has been closed.
@@ -85,12 +85,12 @@ describe('fileIO_fs_stream_close', function () {
   it('fileIO_test_stream_close_sync_002', 0, async function () {
     let fpath = await nextFileName('fileIO_test_stream_close_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    let ss = fileIO.createStreamSync(fpath, 'r');
+    let sr = fileIO.createStreamSync(fpath, 'r');
 
     try {
-      expect(ss !== null).assertTrue();
-      ss.closeSync();
-      ss.closeSync();
+      expect(sr !== null).assertTrue();
+      sr.closeSync();
+      sr.closeSync();
       expect(false).assertTrue();
     } catch (e) {
       fileIO.unlinkSync(fpath);
@@ -100,7 +100,7 @@ describe('fileIO_fs_stream_close', function () {
   })
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_CLOSEASYNC_0000
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSE_ASYNC_0000
    * @tc.name fileIO_test_stream_close_async_000
    * @tc.desc Test the close() interface of class Stream. Promise.
    * Open a file stream, close file stream.
@@ -114,9 +114,9 @@ describe('fileIO_fs_stream_close', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'r');
-      expect(ss !== null).assertTrue();
-      await ss.close();
+      let sr = fileIO.createStreamSync(fpath, 'r');
+      expect(sr !== null).assertTrue();
+      await sr.close();
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -126,7 +126,7 @@ describe('fileIO_fs_stream_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_CLOSEASYNC_0100
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSE_ASYNC_0100
    * @tc.name fileIO_test_stream_close_async_001
    * @tc.desc Test the close() interface of class Stream. Callback.
    * Open a file stream, close file stream.
@@ -140,9 +140,9 @@ describe('fileIO_fs_stream_close', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'r');
-      expect(ss !== null).assertTrue();
-      ss.close((err) => {
+      let sr = fileIO.createStreamSync(fpath, 'r');
+      expect(sr !== null).assertTrue();
+      sr.close((err) => {
         if (err) {
           console.log('fileIO_test_stream_close_async_001 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
@@ -157,7 +157,7 @@ describe('fileIO_fs_stream_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_CLOSEASYNC_0200
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSE_ASYNC_0200
    * @tc.name fileIO_test_stream_close_async_002
    * @tc.desc Test the close() interface of class Stream. Promise.
    * The file stream has been closed.
@@ -171,10 +171,10 @@ describe('fileIO_fs_stream_close', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'r');
-      expect(ss !== null).assertTrue();
-      await ss.close();
-      await ss.close();
+      let sr = fileIO.createStreamSync(fpath, 'r');
+      expect(sr !== null).assertTrue();
+      await sr.close();
+      await sr.close();
       expect(false).assertTrue();
     } catch (e) {
       fileIO.unlinkSync(fpath);
@@ -185,7 +185,7 @@ describe('fileIO_fs_stream_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_CLOSEASYNC_0300
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSE_ASYNC_0300
    * @tc.name fileIO_test_stream_close_async_003
    * @tc.desc Test the close() interface of class Stream. Promise.
    * Invalid parameter, don't requrie any parameters.
@@ -199,9 +199,9 @@ describe('fileIO_fs_stream_close', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let ss = fileIO.createStreamSync(fpath, 'r');
-      expect(ss !== null).assertTrue();
-      await ss.close(1);
+      let sr = fileIO.createStreamSync(fpath, 'r');
+      expect(sr !== null).assertTrue();
+      await sr.close(1);
       expect(false).assertTrue();
     } catch (e) {
       fileIO.unlinkSync(fpath);

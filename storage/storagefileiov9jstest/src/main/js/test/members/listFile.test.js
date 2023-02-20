@@ -57,7 +57,7 @@ export default function fileIOListfile() {
    * Do not have prop filter.Filter files by quantity only.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_sync_001', 0, async function () {
@@ -90,7 +90,7 @@ export default function fileIOListfile() {
    * Do not have prop listNum.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_sync_002', 0, async function () {
@@ -129,7 +129,7 @@ export default function fileIOListfile() {
   * Do not have prop suffix. Not filter files by suffix.
   * @tc.size MEDIUM
   * @tc.type Function
-  * @tc.level Level 0
+  * @tc.level Level 3
   * @tc.require
   */
   it('fileIO_test_listfile_sync_003', 0, async function () {
@@ -168,7 +168,7 @@ export default function fileIOListfile() {
    * Scanfile.Retain six files in the three-level directory.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_sync_004', 0, async function () {
@@ -226,7 +226,7 @@ export default function fileIOListfile() {
    * Filter out files whose suffix is not '. txt' and does not meet other conditions.Two files are retained.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_sync_005', 0, async function () {
@@ -268,7 +268,7 @@ export default function fileIOListfile() {
    * Invalid file suffix name format.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_sync_006', 0, async function () {
@@ -308,7 +308,7 @@ export default function fileIOListfile() {
    * Filter out all files because the size of all files less than 12.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_sync_007', 0, async function () {
@@ -348,7 +348,7 @@ export default function fileIOListfile() {
    * listNum is 0.Traverse all files.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_sync_008', 0, async function () {
@@ -390,7 +390,7 @@ export default function fileIOListfile() {
    * Missing all arguments.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_sync_009', 0, async function () {
@@ -411,7 +411,7 @@ export default function fileIOListfile() {
   * Invalid option args.
   * @tc.size MEDIUM
   * @tc.type Function
-  * @tc.level Level 0
+  * @tc.level Level 3
   * @tc.require
   */
   it('fileIO_test_listfile_sync_010', 0, async function () {
@@ -463,7 +463,7 @@ export default function fileIOListfile() {
         fileIO.rmdirSync(dpath);
       });
     } catch (e) {
-      console.info('fileIO_test_listfile_async_000 has failed for ' + e.message + ', code:' + e.code);
+      console.log('fileIO_test_listfile_async_000 has failed for ' + e.message + ', code:' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -475,7 +475,7 @@ export default function fileIOListfile() {
    * Only path, do not filter file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_001', 0, async function (done) {
@@ -494,7 +494,7 @@ export default function fileIOListfile() {
       fileIO.rmdirSync(dpath);
       done();
     } catch (err) {
-      console.info('fileIO_test_listfile_async_001 has failed for ' + err.message + ', code:' + err.code);
+      console.log('fileIO_test_listfile_async_001 has failed for ' + err.message + ', code:' + err.code);
       expect(false).assertTrue();
     }
   });
@@ -506,7 +506,7 @@ export default function fileIOListfile() {
   * Do not have prop filter.Filter files by quantity only.
   * @tc.size MEDIUM
   * @tc.type Function
-  * @tc.level Level 0
+  * @tc.level Level 3
   * @tc.require
   */
   it('fileIO_test_listfile_async_002', 0, async function () {
@@ -544,7 +544,7 @@ export default function fileIOListfile() {
    * Do not have prop filter.Filter files by quantity only.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_003', 0, async function (done) {
@@ -578,7 +578,7 @@ export default function fileIOListfile() {
    * Do not have prop listNum.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_004', 0, async function () {
@@ -610,7 +610,7 @@ export default function fileIOListfile() {
           fileIO.rmdirSync(dpath);
       });
     } catch (e) {
-      console.info('fileIO_test_listfile_async_004 has failed for ' + e.message + ', code:' + e.code);
+      console.log('fileIO_test_listfile_async_004 has failed for ' + e.message + ', code:' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -622,7 +622,7 @@ export default function fileIOListfile() {
    * Do not have prop listNum.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_005', 0, async function (done) {
@@ -650,7 +650,7 @@ export default function fileIOListfile() {
       fileIO.rmdirSync(dpath);
       done();
     } catch (err) {
-      console.info('fileIO_test_listfile_async_005 has failed for ' + err.message + ', code:' + err.code);
+      console.log('fileIO_test_listfile_async_005 has failed for ' + err.message + ', code:' + err.code);
       expect(false).assertTrue();
     }
   });
@@ -662,7 +662,7 @@ export default function fileIOListfile() {
    * Do not have prop suffix. Not filter files by suffix.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_006', 0, async function () {
@@ -706,7 +706,7 @@ export default function fileIOListfile() {
    * Do not have prop suffix. Not filter files by suffix.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_007', 0, async function (done) {
@@ -746,7 +746,7 @@ export default function fileIOListfile() {
    * Scanfile.Retain six files in the three-level directory.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_008', 0, async function () {
@@ -809,7 +809,7 @@ export default function fileIOListfile() {
    * Scanfile.Retain six files in the three-level directory.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_009', 0, async function (done) {
@@ -868,7 +868,7 @@ export default function fileIOListfile() {
    * Filter out files whose suffix is not '. txt' and does not meet other conditions.Two files are retained.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_010', 0, async function () {
@@ -915,7 +915,7 @@ export default function fileIOListfile() {
    * Filter out files whose suffix is not '. txt' and does not meet other conditions.Two files are retained.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_011', 0, async function (done) {
@@ -958,7 +958,7 @@ export default function fileIOListfile() {
    * Invalid file suffix name format.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_012', 0, async function () {
@@ -1001,7 +1001,7 @@ export default function fileIOListfile() {
    * Invalid file suffix name format.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_013', 0, async function (done) {
@@ -1044,7 +1044,7 @@ export default function fileIOListfile() {
    * Filter out all files because the size of all files less than 12.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_014', 0, async function () {
@@ -1089,7 +1089,7 @@ export default function fileIOListfile() {
    * Filter out all files because the size of all files less than 12.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_015', 0, async function (done) {
@@ -1130,7 +1130,7 @@ export default function fileIOListfile() {
    * listNum is 0.Traverse all files.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_016', 0, async function () {
@@ -1177,7 +1177,7 @@ export default function fileIOListfile() {
    * listNum is 0.Traverse all files.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_017', 0, async function (done) {
@@ -1220,7 +1220,7 @@ export default function fileIOListfile() {
    * Missing all arguments.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_018', 0, async function (done) {
@@ -1242,7 +1242,7 @@ export default function fileIOListfile() {
    * Invalid option args.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_listfile_async_019', 0, async function (done) {
