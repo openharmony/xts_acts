@@ -472,15 +472,13 @@ export async function avPlayerWithCallBack(src, avPlayer, playTest, playTime, do
     setSource(avPlayer, src);
 }
 
-export async function playToPauseLoop(avPlayer,prepared){
-    if(prepared == 1){
-        await avPlayer.play().then(() => {
-            console.info('playToPauseLoop play success');
-            expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
-        }, (err) => {
+async function playToPauseLoop(avPlayer){
+    await avPlayer.play().then(() => {
+        console.info('playToPauseLoop play success');
+        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
+    }, (err) => {
             console.error('playToPauseLoop play filed,error message is :' + err.message)
-        })
-    }
+    })
     if(avPlayer.state == AV_PLAYER_STATE.PLAYING){
         avPlayer.loop = true;
         await mediaTestBase.msleepAsync(2);
@@ -496,7 +494,6 @@ export async function playToPauseLoop(avPlayer,prepared){
 
 export async function avPlayerWithoutCallBack(src, avPlayer, playTest, done) {
     let surfaceID = globalThis.value;
-    let prepared = 0;
     console.info(`case avPlayerWithoutCallBack in, surfaceID is ${surfaceID}`);
     console.info(`case media source: ${src}`)
     await media.createAVPlayer().then((video) => {
@@ -517,12 +514,11 @@ export async function avPlayerWithoutCallBack(src, avPlayer, playTest, done) {
     }
     if(avPlayer.state == AV_PLAYER_STATE.PREPARED){
         console.info('avPlayerWithoutCallBack avPlayer from PREPARED to play')
-        prepared = 1
-    }
-    // play to pause loop 1000 times
-    for(var i = 0;i < 1000; i++){
-        await playToPauseLoop(avPlayer,prepared)
-        console.info(`case avPlayerWithoutCallBack playToPauseLoop is ${i}`);
+        // play to pause loop 1000 times
+        for(var i = 0;i < 1000; i++){
+            await playToPauseLoop(avPlayer)
+            console.info(`case avPlayerWithoutCallBack playToPauseLoop is ${i}`);
+        }
     }
     await avPlayer.stop().then(() => {
         console.info('avPlayerWithoutCallBack avPlayer from play to stop')
