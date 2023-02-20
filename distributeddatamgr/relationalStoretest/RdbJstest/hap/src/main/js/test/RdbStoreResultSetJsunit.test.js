@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -1652,9 +1652,9 @@ describe('rdbResultSetTest', function () {
      it('testGetColumnIndex0004', 0, async function (done) {
         console.info(TAG + '************* testGetColumnIndex0004 start *************');
         {
-            let predicates = await new dataRdb.RdbPredicates('test');
-            let resultSet = await rdbStore.query(predicates);
-            expect(-1).assertEqual(resultSet.getColumnIndex(''));
+            let predicates = await new dataRdb.RdbPredicates('test')
+            let resultSet = await rdbStore.query(predicates)
+            expect(-1).assertEqual(resultSet.getColumnIndex(''))
 
             resultSet = null;
             done();

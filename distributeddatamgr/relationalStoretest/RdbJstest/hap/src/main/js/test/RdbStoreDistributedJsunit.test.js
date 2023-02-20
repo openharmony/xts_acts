@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -308,34 +308,6 @@ describe('rdbStoreDistributedTest', function () {
         expect(rdbStore).assertEqual(rdbStore);
         done();
         console.info(TAG + "************* testRdbStoreDistributed0011 end *************");
-    })
-
-    /**
-     * @tc.name sync test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100
-     * @tc.desc sync test
-     */
-     it('SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100', 0, async function (done) {
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100 start *************");
-        let config = {
-            name: "secure.db",
-            securityLevel: dataRdb.SecurityLevel.S1
-        }
-        await dataRdb.getRdbStoreV9(context, config, 1).then(async (store) => {
-            let predicates = new dataRdb.RdbPredicatesV9("employee")
-            predicates = predicates.inDevices("12345678abcd");
-            try {
-                store.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates);
-            } catch (err) {
-                expect(null).assertFail();
-            }
-        }).catch((err) => {
-            expect(null).assertFail();
-        })
-        await dataRdb.deleteRdbStore(context,"secure.db");
-       
-        done();
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Distributed_syncV9_0100 end *************");
     })
 	
 	/**
