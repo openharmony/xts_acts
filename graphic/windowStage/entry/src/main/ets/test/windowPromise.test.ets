@@ -1727,5 +1727,49 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         expectedError(exception, caseName, 'mainWnd.setAspectRatio', done, 401);
       }
     })
+    /**
+* @tc.number     WINDOWEVENTTYPE_JSAPI_001
+* @tc.name       Test windowEventType_Test_001.
+* @tc.desc       Test the enumeration value of WindowEventType
+*/
+    it('windowEventType_Test_001', 0, async function (done) {
+      let caseName = 'windowEventType_Test_001';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      console.log(msgStr + 'ohosWindow.WindowEventType:' +JSON.stringify(ohosWindow.WindowEventType));
+      try {
+        expect(1).assertEqual(ohosWindow.WindowEventType.WINDOW_SHOWN);
+        expect(2).assertEqual(ohosWindow.WindowEventType.WINDOW_ACTIVE);
+        expect(3).assertEqual(ohosWindow.WindowEventType.WINDOW_INACTIVE);
+        expect(4).assertEqual(ohosWindow.WindowEventType.WINDOW_HIDDEN);
+        done();
+      } catch (err) {
+        console.info(msgStr + 'windowEventType error :' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+    * @tc.number     ORIENTATION_JSAPI_001
+    * @tc.name       Test orientation_Test_001.
+    * @tc.desc       Test the enumeration value of Orientation
+    */
+    it('orientation_Test_001', 0, async function (done) {
+      let caseName = 'orientation_Test_001';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      console.log(msgStr + 'display.orientation:' +JSON.stringify(display.Orientation));
+      try {
+        expect(0).assertEqual(display.Orientation.PORTRAIT);
+        expect(1).assertEqual(display.Orientation.LANDSCAPE);
+        expect(2).assertEqual(display.Orientation.PORTRAIT_INVERTED);
+        expect(3).assertEqual(display.Orientation.LANDSCAPE_INVERTED);
+        done();
+      } catch (err) {
+        console.info(msgStr + 'Orientation error :' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
