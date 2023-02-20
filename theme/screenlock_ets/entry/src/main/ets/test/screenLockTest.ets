@@ -170,7 +170,7 @@ export default function screenLockJSUnit() {
                 screenLock.isSecureMode((err, data) => {
                     try{
                         console.info("====>SUB_MISC_THEME_screenLock_API_0003 secureMode's result is " + data);
-                        expect(data == result).assertTrue();
+                        expect(data == false).assertTrue();
                         console.info("====>------------------end SUB_MISC_THEME_screenLock_API_0003-------------------");
                         done();
                     }catch(err){
@@ -288,7 +288,7 @@ export default function screenLockJSUnit() {
             try{
                 secured = screenLock.isSecure()
                 console.info('====>SUB_MISC_THEME_screenLock_API_0011 data : ' + JSON.stringify(secured));
-                if (typeof secured == "boolean") {
+                if (secured == false) {
                     expect(true).assertTrue();
                     console.info('====>-------------SUB_MISC_THEME_screenLock_API_0011 end----------------------');
                     done()

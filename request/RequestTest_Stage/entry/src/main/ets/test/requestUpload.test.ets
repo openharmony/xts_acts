@@ -89,8 +89,7 @@ export default function requestUploadJSUnit() {
     it('SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001', 0, async function (done) {
       console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 is starting-----------------------");
       try {
-        request.uploadFile(globalThis.abilityContext, uploadConfig, (err, data)=>{
-          uploadTask = data;
+        request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask)=>{
           console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 uploadFile: " + uploadTask);
           try{
             expect(true).assertEqual(uploadTask != undefined);
@@ -101,8 +100,9 @@ export default function requestUploadJSUnit() {
       } catch (err) {
         console.error("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 error: " + err);
       };
-      setTimeout(()=>{
+      let t = setTimeout(()=>{
         console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 end-----------------------");
+        clearTimeout(t);
         done();
       }, 10000);
     });
@@ -117,8 +117,7 @@ export default function requestUploadJSUnit() {
     it('SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001', 0, async function (done) {
       console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
       try{
-        request.uploadFile(globalThis.abilityContext, uploadConfig).then(data => {
-          uploadTask = data;
+        request.uploadFile(globalThis.abilityContext, uploadConfig).then(uploadTask => {
           console.info("====>SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 uploadFile: " + uploadTask);
           try{
             expect(true).assertEqual(uploadTask != undefined);
@@ -132,8 +131,9 @@ export default function requestUploadJSUnit() {
       }catch(err){
         console.error("====>SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 catch error: " + err);
       }
-      setTimeout(()=>{
+      let t = setTimeout(()=>{
         console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 end-----------------------");
+        clearTimeout(t);
         done();
       }, 10000);
     });
@@ -147,9 +147,8 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_REQUEST_UPLOAD_API_DELETE_0001', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 is starting-----------------------");
-      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, data) => {
+      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask) => {
         try{
-          uploadTask = data;
           console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask: " + uploadTask);
           expect(uploadTask != undefined).assertEqual(true);
           uploadTask.delete((err, data) => {
@@ -184,8 +183,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_REQUEST_UPLOAD_API_DELETE_0002', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0002 is starting-----------------------");
-      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, data) => {
-        uploadTask = data;
+      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask) => {
         console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0002 uploadTask: " + uploadTask);
         try{
           expect(uploadTask != undefined).assertEqual(true);
