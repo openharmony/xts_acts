@@ -218,6 +218,12 @@ static SLresult OpenSlTestConcurrent()
         AUDIO_INFO_LOG("OpenSlTestConcurrent outPut Realize result: %{public}lu", result);
         return result;
     }
+    SLuint32 state;
+    result = (*outputMixObject)->GetState(outputMixObject, &state);
+    if (SL_RESULT_SUCCESS != result) {
+        AUDIO_INFO_LOG("OpenSlTestConcurrent outPut GetState result: %{public}lu", result);
+        return result;
+    }
 
     SLDataLocator_OutputMix slOutputMix = {SL_DATALOCATOR_OUTPUTMIX, outputMixObject};
     SLDataSink slSink = {&slOutputMix, nullptr};
@@ -359,6 +365,12 @@ static SLresult PlayerStart(SLPlayItf sPlayItf, SLOHBufferQueueItf sBufferQueueI
     SLresult result = (*playItf)->SetPlayState(sPlayItf, SL_PLAYSTATE_PLAYING);
     if (SL_RESULT_SUCCESS != result) {
         AUDIO_INFO_LOG("PlayerStart SetPlayState result: %{public}lu", result);
+        return result;
+    }
+    SLuint32 state = SL_PLAYSTATE_PLAYING;
+    result = (*playItf)->GetPlayState(sPlayItf, &state);
+    if (SL_RESULT_SUCCESS != result) {
+        AUDIO_INFO_LOG("PlayerStart GetPlayState result: %{public}lu", result);
         return result;
     }
     if (!feof(wavFile)) {
