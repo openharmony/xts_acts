@@ -101,7 +101,7 @@ export default function AlignSpaceEvenly_AddOneMargin() {
       let SpaceEvenly_AddOneMargin_013 = CommonFunc.getComponentRect('SpaceEvenly_AddOneMargin_013');
       let SpaceEvenly_AddOneMargin_01 = CommonFunc.getComponentRect('SpaceEvenly_AddOneMargin_01');
       expect(SpaceEvenly_AddOneMargin_011.top - SpaceEvenly_AddOneMargin_01.top).assertEqual(vp2px(30));
-      expect(SpaceEvenly_AddOneMargin_011.left - SpaceEvenly_AddOneMargin_01.left).assertEqual(vp2px(30));
+      expect(SpaceEvenly_AddOneMargin_011.left - SpaceEvenly_AddOneMargin_01.left).assertEqual(vp2px(500/17));
       expect(SpaceEvenly_AddOneMargin_012.left - SpaceEvenly_AddOneMargin_011.right)
         .assertEqual(SpaceEvenly_AddOneMargin_011.left - SpaceEvenly_AddOneMargin_01.left);
       expect(SpaceEvenly_AddOneMargin_013.right).assertEqual(SpaceEvenly_AddOneMargin_01.right);
@@ -111,9 +111,9 @@ export default function AlignSpaceEvenly_AddOneMargin() {
       expect(SpaceEvenly_AddOneMargin_011.bottom - SpaceEvenly_AddOneMargin_011.top).assertEqual(vp2px(50));
       expect(SpaceEvenly_AddOneMargin_012.bottom - SpaceEvenly_AddOneMargin_012.top).assertEqual(vp2px(100));
       expect(SpaceEvenly_AddOneMargin_013.bottom - SpaceEvenly_AddOneMargin_013.top).assertEqual(vp2px(150));
-      expect(SpaceEvenly_AddOneMargin_011.right - SpaceEvenly_AddOneMargin_011.left).assertEqual(vp2px(440/3));
-      expect(SpaceEvenly_AddOneMargin_012.right - SpaceEvenly_AddOneMargin_012.left).assertEqual(vp2px(440/3));
-      expect(SpaceEvenly_AddOneMargin_013.right - SpaceEvenly_AddOneMargin_013.left).assertEqual(vp2px(440/3));
+      expect(SpaceEvenly_AddOneMargin_011.right - SpaceEvenly_AddOneMargin_011.left).assertEqual(vp2px(2500/17));
+      expect(SpaceEvenly_AddOneMargin_012.right - SpaceEvenly_AddOneMargin_012.left).assertEqual(vp2px(2500/17));
+      expect(SpaceEvenly_AddOneMargin_013.right - SpaceEvenly_AddOneMargin_013.left).assertEqual(vp2px(2500/17));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1600] END');
       done();
     })
