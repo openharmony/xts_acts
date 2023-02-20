@@ -386,6 +386,150 @@ export function setAVPlayerFunCb(src, avPlayer, playTest, playTime, done) {
     });
 }
 
+export function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTest, playTime, done) {
+    let playPauseCount = 0;
+    let surfaceID = globalThis.value;
+    console.info(`case setAVPlayerPlayAndPauseWithCallBack in, surfaceID is ${surfaceID}`);
+    avPlayer.on('stateChange', async (state, reason) => {
+        console.info(`case stateChange called, state is ${state}, reason is ${reason}`);
+        console.info(`case state is ${state}`);
+        switch (state) {
+            case AV_PLAYER_STATE.INITIALIZED:
+                avPlayer.surfaceId = surfaceID;
+                console.info('playPauseLoopWithCallBack play state is INITIALIZED')
+            // step 1: initialized -> prepared -> play
+                toPreparePromise(avPlayer, playTest);
+                await sleep(2000);
+                avPlayer.play()
+                break;
+            case AV_PLAYER_STATE.PLAYING:
+                avPlayer.loop = true;
+                console.info('playPauseLoopWithCallBack play state is PLAYING')
+                expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
+                playPauseCount++;
+                await mediaTestBase.msleepAsync(playTime);
+                if(playPauseCount == 1001){
+                    // step 4: playing -> stop -> release
+                    avPlayer.stop().then(() => {
+                        console.info('playPauseLoopWithCallBack avPlayer from play to stop')
+                        avPlayer.release().then(() => {
+                            console.info('playPauseLoopWithCallBack avPlayer from stop to release')
+                            offCallback(avPlayer, ['stateChange', 'error']);
+                            done();
+                        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                }else{
+                    // step 2: playing -> pause loop
+                    avPlayer.pause().then(() => {
+                        console.info('playPauseLoopWithCallBack avPlayer from play to pause,time is :' + playPauseCount)
+                    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                }
+                break;
+            case AV_PLAYER_STATE.PAUSED:
+                console.info('playPauseLoopWithCallBack play state is PAUSED')
+                expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PAUSED);
+            // step 3: pause -> playing loop
+                avPlayer.play().then(() => {
+                    console.info('playPauseLoopWithCallBack avPlayer from pause to play,time is :' + playPauseCount)
+                }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                break;
+            case AV_PLAYER_STATE.ERROR:
+                expect().assertFail();
+                avPlayer.release().then(() => {
+                }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                break;
+            default:
+                break;
+        }
+    });
+    avPlayer.on('error', async (err) => {
+        console.error(`case error called, errMessage is ${err.message}`);
+        expect().assertFail();
+        await avPlayer.release().then(() => {
+            avPlayer = null;
+            done();
+        });
+    });
+}
+
+export async function avPlayerWithCallBack(src, avPlayer, playTest, playTime, done) {
+    console.info(`case media source: ${src}`)
+    await media.createAVPlayer().then((video) => {
+        if (typeof(video) != 'undefined') {
+            console.info('case createAVPlayer success');
+            avPlayer = video;
+        } else {
+            console.error('case createAVPlayer failed');
+            expect().assertFail();
+            done();
+        }
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTest, playTime, done);
+    setSource(avPlayer, src);
+}
+
+async function playToPauseLoop(avPlayer){
+    await avPlayer.play().then(() => {
+        console.info('playToPauseLoop play success');
+        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
+    }, (err) => {
+            console.error('playToPauseLoop play filed,error message is :' + err.message)
+    })
+    if(avPlayer.state == AV_PLAYER_STATE.PLAYING){
+        avPlayer.loop = true;
+        await mediaTestBase.msleepAsync(2);
+        console.info('playToPauseLoop avPlayer from play to pause')
+    }
+    await avPlayer.pause().then(() => {
+        console.info('playToPauseLoop pause success');
+        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PAUSED);
+    }, (err) => {
+        console.error('playToPauseLoop pause filed,error message is :' + err.message)
+    })
+}
+
+export async function avPlayerWithoutCallBack(src, avPlayer, playTest, done) {
+    let surfaceID = globalThis.value;
+    console.info(`case avPlayerWithoutCallBack in, surfaceID is ${surfaceID}`);
+    console.info(`case media source: ${src}`)
+    await media.createAVPlayer().then((video) => {
+        if (typeof(video) != 'undefined') {
+            console.info('case createAVPlayer success');
+            avPlayer = video;
+        } else {
+            console.error('case createAVPlayer failed');
+            expect().assertFail();
+        }
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    setSource(avPlayer, src);
+    console.info('avPlayerWithoutCallBack setSource');
+    avPlayer.surfaceId = surfaceID;
+    if(avPlayer.state == AV_PLAYER_STATE.INITIALIZED) {
+        toPreparePromise(avPlayer, playTest);
+        await sleep(2000);
+    }
+    if(avPlayer.state == AV_PLAYER_STATE.PREPARED){
+        console.info('avPlayerWithoutCallBack avPlayer from PREPARED to play')
+        // play to pause loop 1000 times
+        for(var i = 0;i < 1000; i++){
+            await playToPauseLoop(avPlayer)
+            console.info(`case avPlayerWithoutCallBack playToPauseLoop is ${i}`);
+        }
+    }
+    await avPlayer.stop().then(() => {
+        console.info('avPlayerWithoutCallBack avPlayer from play to stop')
+        avPlayer.release().then(() => {
+            console.info('avPlayerWithoutCallBack avPlayer from stop to release')
+            expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
+            done();
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+}
+
 export async function testAVPlayerFun(src, avPlayer, playTest, playTime, done) {
     console.info(`case media source: ${src}`)    
     await media.createAVPlayer().then((video) => {
