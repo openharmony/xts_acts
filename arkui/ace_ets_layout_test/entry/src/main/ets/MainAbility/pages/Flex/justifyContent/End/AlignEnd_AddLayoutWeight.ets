@@ -61,21 +61,6 @@ struct AlignEnd_AddLayoutWeight {
         .width(500)
         .height(200)
         .backgroundColor(0xAFEEEE)
-      Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
-        Text('1')
-          .width(150)
-          .height(50)
-          .backgroundColor(0xF5DEB3)
-          .key("End_AddLayoutWeight_021")
-          .layoutWeight( this.OneLayoutWeight1)
-        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("End_AddLayoutWeight_022")
-          .layoutWeight( this.OneLayoutWeight2)
-        Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("End_AddLayoutWeight_023")
-      }
-      .key("End_AddLayoutWeight_02")
-      .width(500)
-      .height(200)
-      .backgroundColor(0xAFEEEE)
       }
   }
 }

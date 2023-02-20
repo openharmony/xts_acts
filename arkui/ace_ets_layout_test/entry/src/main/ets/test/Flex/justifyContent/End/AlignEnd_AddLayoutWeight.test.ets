@@ -90,17 +90,17 @@ export default function AlignEnd_AddLayoutWeight() {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1600] START');
       globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
       globalThis.value.message.notify({name:'OneLayoutWeight2', value:2})
-      globalThis.value.message.notify({name:'OneLayoutWeight3', value:2})
+      globalThis.value.message.notify({name:'OneLayoutWeight3', value:0})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddLayoutWeight_01');
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
-      let End_AddLayoutWeight_011 = CommonFunc.getComponentRect('End_AddLayoutWeight_021');
-      let End_AddLayoutWeight_012 = CommonFunc.getComponentRect('End_AddLayoutWeight_022');
-      let End_AddLayoutWeight_013 = CommonFunc.getComponentRect('End_AddLayoutWeight_023');
-      let End_AddLayoutWeight_01 = CommonFunc.getComponentRect('End_AddLayoutWeight_02');
+      let End_AddLayoutWeight_011 = CommonFunc.getComponentRect('End_AddLayoutWeight_011');
+      let End_AddLayoutWeight_012 = CommonFunc.getComponentRect('End_AddLayoutWeight_012');
+      let End_AddLayoutWeight_013 = CommonFunc.getComponentRect('End_AddLayoutWeight_013');
+      let End_AddLayoutWeight_01 = CommonFunc.getComponentRect('End_AddLayoutWeight_01');
       expect(End_AddLayoutWeight_011.top).assertEqual(End_AddLayoutWeight_01.top);
       expect(End_AddLayoutWeight_011.top).assertEqual(End_AddLayoutWeight_012.top);
       expect(End_AddLayoutWeight_013.top).assertEqual(End_AddLayoutWeight_012.top);
