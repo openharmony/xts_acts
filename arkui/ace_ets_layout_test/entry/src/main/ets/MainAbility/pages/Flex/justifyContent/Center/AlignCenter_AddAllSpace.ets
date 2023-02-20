@@ -36,7 +36,6 @@ struct AlignCenter_AddAllSpace {
   build() {
       Column() {
         Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
-
           Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key("Center_AddAllSpace_011")
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("Center_AddAllSpace_012")
           Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("Center_AddAllSpace_013")
@@ -50,8 +49,6 @@ struct AlignCenter_AddAllSpace {
       }
       .key("Center_AddAllSpace_01_Box")
       .width("100%")
-      .height(200)
-      .backgroundColor(0xAFEEE)
       .alignItems(HorizontalAlign.Start)
   }
 }

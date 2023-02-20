@@ -48,6 +48,5 @@ struct AlignCenter_AddAlign {
         .align(this.DadAddAlign)
       }
       .width("100%")
-      .backgroundColor(0xAFEEE)
     }
 }
