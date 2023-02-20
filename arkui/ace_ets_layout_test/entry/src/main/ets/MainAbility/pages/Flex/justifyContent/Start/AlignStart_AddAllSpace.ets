@@ -50,8 +50,6 @@ struct AlignStart_AddAllSpace {
       }
       .key("Start_AddAllSpace_01_Box")
       .width("100%")
-      .height(200)
-      .backgroundColor(0xAFEEE)
       .alignItems(HorizontalAlign.Start)
     }
 }

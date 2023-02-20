@@ -103,12 +103,12 @@ export default function AlignStart_AddOneMargin() {
       expect(Start_AddOneMargin_01.top).assertEqual(Start_AddOneMargin_012.top);
       expect(Start_AddOneMargin_013.left).assertEqual(Start_AddOneMargin_012.right);
       expect(Start_AddOneMargin_013.right).assertEqual(Start_AddOneMargin_01.right);
-      expect(Start_AddOneMargin_012.left - Start_AddOneMargin_011.right).assertEqual(vp2px(30));
+      expect(Start_AddOneMargin_012.left - Start_AddOneMargin_011.right).assertEqual(vp2px(500/17));
       expect(Start_AddOneMargin_011.top - Start_AddOneMargin_01.top).assertEqual(vp2px(30));
-      expect(Start_AddOneMargin_011.left - Start_AddOneMargin_01.left).assertEqual(vp2px(30));
-      expect(Start_AddOneMargin_011.right - Start_AddOneMargin_011.left).assertEqual(vp2px(440/3));
-      expect(Start_AddOneMargin_012.right - Start_AddOneMargin_012.left).assertEqual(vp2px(440/3));
-      expect(Start_AddOneMargin_013.right - Start_AddOneMargin_013.left).assertEqual(vp2px(440/3));
+      expect(Start_AddOneMargin_011.left - Start_AddOneMargin_01.left).assertEqual(vp2px(500/17));
+      expect(Start_AddOneMargin_011.right - Start_AddOneMargin_011.left).assertEqual(vp2px(2500/17));
+      expect(Start_AddOneMargin_012.right - Start_AddOneMargin_012.left).assertEqual(vp2px(2500/17));
+      expect(Start_AddOneMargin_013.right - Start_AddOneMargin_013.left).assertEqual(vp2px(2500/17));
       expect(Start_AddOneMargin_011.bottom - Start_AddOneMargin_011.top).assertEqual(vp2px(50));
       expect(Start_AddOneMargin_012.bottom - Start_AddOneMargin_012.top).assertEqual(vp2px(100));
       expect(Start_AddOneMargin_013.bottom - Start_AddOneMargin_013.top).assertEqual(vp2px(150));
