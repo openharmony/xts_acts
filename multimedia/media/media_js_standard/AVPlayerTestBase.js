@@ -390,7 +390,7 @@ export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export function setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTest, playTime, done) {
+function setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTest, playTime, done) {
     let playPauseCount = 0;
     let surfaceID = globalThis.value;
     console.info(`case setAVPlayerPlayAndPauseWithCallBack in, surfaceID is ${surfaceID}`);
