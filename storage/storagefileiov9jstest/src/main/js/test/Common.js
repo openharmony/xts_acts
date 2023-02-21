@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-import fileio from '@ohos.fileio';
 import fileIO from '@ohos.file.fs';
 import util from '@ohos.util';
 import featureAbility from '@ohos.ability.featureAbility';
@@ -30,52 +29,12 @@ export function prepareFile(fpath, content) {
     let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE)
     fileIO.truncateSync(file.fd)
     fileIO.writeSync(file.fd, content)
-    fileio.fsyncSync(file.fd)
-    fileio.closeSync(file.fd)
+    fileIO.fsyncSync(file.fd)
+    fileIO.closeSync(file)
     return true
   } 
   catch (e) {
     console.log('Failed to prepareFile for ' + e)
-    return false
-  }
-}
-
-export function prepareEmptyFile(fpath) {
-  try {
-    let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE)
-    fileio.closeSync(file.fd)
-    return true
-  }
-  catch (e) {
-    console.log('Failed to prepareFile for ' + e)
-    return false
-  }
-}
-
-export function fileToReadOnly(fpath) {
-  try {
-    let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE)
-    fileio.fchmodSync(file.fd, 0o444)
-    fileio.fsyncSync(file.fd)
-    fileio.closeSync(file.fd)
-    return true
-  }
-  catch (e) {
-    console.log('Failed to fileToReadOnly for ' + e);
-    return false
-  }
-}
-
-export function fileToWriteOnly(fpath) {
-  try {
-    let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.WRITE_ONLY)
-    fileio.fchmodSync(file.fd, 0o222)
-    fileio.fsyncSync(file.fd)
-    fileio.closeSync(file.fd)
-    return true
-  }
-  catch (e) {
-    console.log('Failed to fileToWriteOnly ' + e)
     return false
   }
 }
@@ -105,15 +64,6 @@ export function randomString(num) {
   return pwd;
 }
 
-export function forceRemoveDir(path, num) {
-  for (let i = num; i >= 0; i--) {
-    if (i < num) {
-      path = path.replace(`/d${i}`, "");
-    }
-    fileio.rmdirSync(path);
-  }
-}
-
 function isIntNum(val) {
   return typeof val === 'number' && val % 1 === 0;
 }
@@ -126,22 +76,11 @@ function isString(str) {
   return (typeof str == 'string') && str.constructor == String;
 }
 
-function isBoolean(val) {
-  return typeof val == 'boolean';
-}
-
-function isInclude(error, message) {
-  return error.toString().indexOf(message) != -1;
-}
-
 export {
-  fileio,
   fileIO,
   isIntNum,
   isBigInt,
   isString,
-  isBoolean,
-  isInclude,
   describe,
   it,
   expect,
