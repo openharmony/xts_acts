@@ -156,7 +156,7 @@ action("cpvkgl") {
   script = "cpvkgl.sh"
   outputs = [ "${target_out_dir}/cpvkgl.log" ]
   root_vkgl_path = rebase_path("//")
-  args = ["$root_vkgl_path"]
+  args = [ "$root_vkgl_path" ]
   deps = [
     ":VKGLCTSTest",
     "//third_party/vk-gl-cts/framework/platform:glcts",
