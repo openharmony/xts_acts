@@ -10427,7 +10427,7 @@ describe('audioRenderer', function () {
             } else {
                 expect(false).assertTrue();
             }
-            // await audioManager.setVolume(audio.AudioVolumeType.ALARM, lowVol);
+            await audioManager.setVolume(audio.AudioVolumeType.ALARM, lowVol);
             let data = await audioManager.isMute(audio.AudioVolumeType.ALARM);
             if (data == true) {
                 console.log(`${TagFrmwk}: Promise: Is Stream Mute ALARM: SetVolume: PASS:${data}`);
@@ -10473,7 +10473,7 @@ describe('audioRenderer', function () {
                     } else {
                         expect(false).assertTrue();
                     }
-                    // await audioManager.setVolume(audio.AudioVolumeType.ALARM, lowVol);
+                    await audioManager.setVolume(audio.AudioVolumeType.ALARM, lowVol);
                 } catch (err) {
                     console.log('err :' + JSON.stringify(err));
                     expect().assertFail();
@@ -10517,7 +10517,7 @@ describe('audioRenderer', function () {
             } else {
                 expect(false).assertTrue();
             }
-            // await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
+            await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
             let data = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
             if (data == true) {
                 console.log(`${TagFrmwk}: Promise: Is Stream Mute ACCESSIBILITY: SetVolume: PASS:${data}`);
@@ -10563,7 +10563,7 @@ describe('audioRenderer', function () {
                     } else {
                         expect(false).assertTrue();
                     }
-                    // await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
+                    await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
                 } catch (err) {
                     console.log('err :' + JSON.stringify(err));
                     expect().assertFail();
