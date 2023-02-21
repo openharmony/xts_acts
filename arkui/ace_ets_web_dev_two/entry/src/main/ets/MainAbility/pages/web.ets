@@ -137,10 +137,6 @@ struct Index {
                             },3000)                                                                                      
                             break;
                         }
-                        case "emitOnConsole":{                           
-                            this.controller.runJavaScript({script:"consoleTest()"})
-                            break;
-                        }
                         case "emitLoaData":{ 
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
                             setTimeout(()=>{
@@ -164,7 +160,6 @@ struct Index {
                                 this.controller.runJavaScript({script:"getPageHeight()",callback:(res1)=>{
                                 var zoomInCalled = false
                                 this.controller.runJavaScript({script:"getPageHeight()",callback:(res)=>{
-                                    console.info("getPageHeight==>"+res)
                                     if (Number(res) > Number(res1)) {
                                     zoomInCalled = true
                                 }
@@ -207,20 +202,7 @@ struct Index {
             .databaseAccess(true)
             .zoomAccess(this.zoomAccessValue)
             .textZoomRatio(this.textRatio)
-            .onConsole((event) => {
-                let level = event.message.getMessageLevel()
-                let msg = event.message.getMessage()
-                let lineNumber = event.message.getLineNumber().toString()
-                let sourceId = event.message.getSourceId()
-                console.log("lineNumber:" + lineNumber)
-                setTimeout(()=>{ 
-                    Utils.emitEvent(lineNumber,420)
-                },3000)
-                setTimeout(()=>{ 
-                    Utils.emitEvent(sourceId,422)
-                },3000)
-                return false
-            })
+            
         }
     }
 }

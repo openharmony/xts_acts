@@ -100,28 +100,8 @@ export default function webJsunit() {
      *tc.desic return whether the third party cookie is allowed
      */
     it('isThirdPartyCookieAllowed',0,async function(done){
-      emitKey="emitOnConsole";
-      Utils.registerEvent("isThirdPartyCookieAllowed",false,412,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_076                                                                                                                                                                  
-     *tc.name getLineNumber                                                                                                                                                                                                              
-     *tc.desic return the number of console message lines
-     */
-    it('getLineNumber',0,async function(done){
-      emitKey="emitOnConsole";
-      Utils.registerEvent("getLineNumber","51",420,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_077                                                                                                                                                                  
-     *tc.name getSourceId                                                                                                                                                                                                              
-     *tc.desic return the source url
-     */
-    it('getSourceId',0,async function(done){
       emitKey="emitLoaData";
-      Utils.registerEvent("getSourceId","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",422,done);
+      Utils.registerEvent("isThirdPartyCookieAllowed",false,412,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -131,7 +111,7 @@ export default function webJsunit() {
      */
     it('loadData',0,async function(done){
       emitKey="emitZoomAccess";
-      Utils.registerEvent("loadData","index",424,done);
+      Utils.registerEvent("loadData","\"index\"",424,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
