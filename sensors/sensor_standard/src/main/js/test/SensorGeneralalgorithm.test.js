@@ -1009,8 +1009,8 @@ describe("SensorJsTest_sensor_1", function () {
     it('SensorJsTest_107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------SensorJsTest_107----------------------------------");
         sensor.transformCoordinateSystem([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], {
-            'axisX': 1,
-            'axisY': 2
+            'x': 1,
+            'y': 2
         }, (error, data) => {
             if (error) {
                 console.info('SensorJsTest_107 failed');
@@ -1031,7 +1031,7 @@ describe("SensorJsTest_sensor_1", function () {
     it('SensorJsTest_108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------SensorJsTest_108----------------------------------");
         sensor.transformCoordinateSystem([3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38,
-            3.40282e+38, 3.40282e+38, 3.40282e+38], { 'axisX': 1, 'axisY': 2 }, (error, data) => {
+            3.40282e+38, 3.40282e+38, 3.40282e+38], { 'x': 1, 'y': 2 }, (error, data) => {
                 if (error) {
                     console.info('SensorJsTest_108 failed');
                     expect(false).assertTrue();
@@ -1051,8 +1051,8 @@ describe("SensorJsTest_sensor_1", function () {
     it("SensorJsTest_109", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------SensorJsTest_109----------------------------------");
         sensor.transformCoordinateSystem([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], {
-            'axisX': 1,
-            'axisY': 2
+            'x': 1,
+            'y': 2
         }).then((data) => {
             for (let i = 0; i < data.length; i++) {
                 console.info("SensorJsTest_109 data[ " + i + "] = " + data[i]);
@@ -1074,7 +1074,7 @@ describe("SensorJsTest_sensor_1", function () {
     it("SensorJsTest_110", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("---------------------------SensorJsTest_110----------------------------------");
         sensor.transformCoordinateSystem([3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39,
-            3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39], { 'axisX': 1, 'axisY': 3 }).then((data) => {
+            3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39], { 'x': 1, 'y': 3 }).then((data) => {
                 for (let i = 0; i < data.length; i++) {
                     console.info("SensorJsTest_110 data[ " + i + "] = " + data[i]);
                     expect(data[i]).assertEqual(transformCoordinateSystemResult[2][i]);

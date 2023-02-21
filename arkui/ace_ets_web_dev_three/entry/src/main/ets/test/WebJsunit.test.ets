@@ -51,7 +51,7 @@ export default function webJsunit() {
      */
     it('LoadUrl',0,async function(done){
       emitKey="emitLoadData";
-      Utils.registerContainEvent("LoadUrl","百度一下，你就知道",1,done);
+      Utils.registerContainEvent("LoadUrl","index",1,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -71,7 +71,7 @@ export default function webJsunit() {
      */
     it('Backward',0,async function(done){
       emitKey="emitForward";
-      Utils.registerEvent("Backward","百度一下，你就知道",3,done);
+      Utils.registerEvent("Backward","index",3,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -340,8 +340,74 @@ export default function webJsunit() {
      *tc.desic Save current page
      */
     it('GetUrl',0,async function(done){
-      emitKey="emitGetUrl";
+      emitKey="emitOnce";
       Utils.registerContainEvent("GetUrl","17100001",30,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_031                                                                                                                                                                    
+     *tc.name Once                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('Once',0,async function(done){
+      emitKey="emitGetItemAtIndex";
+      Utils.registerContainEvent("Once","a=b",31,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_032                                                                                                                                                                   
+     *tc.name GetItemAtIndex                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('GetItemAtIndex',0,async function(done){
+      emitKey="emitContextMenuMediaType";
+      Utils.registerEvent("GetItemAtIndex","index",32,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_033                                                                                                                                                                  
+     *tc.name ContextMenuMediaType                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('ContextMenuMediaType',0,async function(done){
+      emitKey="emitContextMenuInputFieldType";
+      Utils.registerEvent("ContextMenuMediaType",1,33,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_034                                                                                                                                                                 
+     *tc.name ContextMenuInputFieldType                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('ContextMenuInputFieldType',0,async function(done){
+      emitKey="emitContextMenuEditStateFlags";
+      Utils.registerEvent("ContextMenuInputFieldType",1,34,done);
+      Utils.registerEvent("ContextMenuInputFieldType",4,35,done);
+      Utils.registerEvent("ContextMenuInputFieldType",5,36,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_035                                                                                                                                                                 
+     *tc.name ContextMenuEditStateFlags                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('ContextMenuEditStateFlags',0,async function(done){
+      emitKey="emitGetStoredGeolocation";
+      Utils.registerEvent("ContextMenuEditStateFlags",0,37,done);
+      Utils.registerEvent("ContextMenuEditStateFlags",1,38,done);
+      Utils.registerEvent("ContextMenuEditStateFlags",2,39,done);
+      Utils.registerEvent("ContextMenuEditStateFlags",4,40,done);
+      Utils.registerEvent("ContextMenuEditStateFlags",8,41,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_036                                                                                                                                                               
+     *tc.name GetStoredGeolocation                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('GetStoredGeolocation',0,async function(done){
+      emitKey="emitGetStoredGeolocation";
+      Utils.registerEvent("GetStoredGeolocation","file:///",120,done);
       sendEventByKey('webcomponent',10,'');
     })
   })

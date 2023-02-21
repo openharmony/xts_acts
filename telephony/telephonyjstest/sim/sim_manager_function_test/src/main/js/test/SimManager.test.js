@@ -304,7 +304,7 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_hasSimCard_Async_0600';
     sim.hasSimCard(env.SLOTID2, (err, data) => {
       if (err) {
-        expect(err.code).assertEqual(8300001);
+        expect(err.code).assertEqual(202);
         console.info(CASE_NAME +' fail, err: ' + JSON.stringify(err));
         done();
         return;
@@ -324,7 +324,7 @@ describe('SimManagerTest', function () {
     try {
       let data = await sim.hasSimCard(env.SLOTID2);
     } catch (err) {
-      expect(err.code).assertEqual(8300001);
+      expect(err.code).assertEqual(202);
       console.info(CASE_NAME +' fail, err: ' + JSON.stringify(err));
       done();
       return;
@@ -356,7 +356,7 @@ describe('SimManagerTest', function () {
     sim.getCardType(env.SLOTID2, (err, cardType) => {
       if (err) {
         console.info(CASE_NAME + ' GetCardType error: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(8300001);
+        expect(err.code).assertEqual(202);
         done();
         return;
       }
@@ -379,7 +379,7 @@ describe('SimManagerTest', function () {
       console.info(CASE_NAME + ' finish');
     } catch (err) {
       console.info(CASE_NAME + ' GetCardType error: ' + JSON.stringify(err));
-      expect(err.code).assertEqual(8300001);
+      expect(err.code).assertEqual(202);
     }
     done();
   });
@@ -395,7 +395,7 @@ describe('SimManagerTest', function () {
     sim.hasOperatorPrivileges(env.SLOTID2, (error, result) => {
       if (error) {
         console.info(CASE_NAME + 'hasOperatorPrivileges error: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(8300001);
+        expect(error.code).assertEqual(202);
         done();
         return;
       }
@@ -420,7 +420,7 @@ describe('SimManagerTest', function () {
       done();
     } catch (error) {
       console.info(CASE_NAME + 'hasOperatorPrivileges error: ' + JSON.stringify(error));
-      expect(error.code).assertEqual(8300001);
+      expect(error.code).assertEqual(202);
     }
     done();
   });

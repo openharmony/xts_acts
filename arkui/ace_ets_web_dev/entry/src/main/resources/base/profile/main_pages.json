@@ -1,5 +1,6 @@
 {
     "src": [
-        "MainAbility/pages/web"
+        "MainAbility/pages/web",
+        "MainAbility/pages/webTwo"
     ]
 }

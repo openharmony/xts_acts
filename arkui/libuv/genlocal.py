@@ -78,7 +78,6 @@ def writemulbuildgn():
                     pagenametext = suitename + "-" + casenamecap
                     pagefilename = hapdirpath + G_PATHDIRPATH + suitename + ".ets"
                     attrtmp = G_TMPPATH + G_PAGEATTRTEMPPATH
-                    #print("addattr:", subattcnt, pagename, attrtmp)
                     with open(attrtmp, encoding="utf-8", mode="r") as attrtmpfile:
                         for attrtempline in attrtmpfile:
                             attrtempline = attrtempline.replace(" ", "\ ")
@@ -109,7 +108,6 @@ def writemulbuildgn():
                     #追加page里的attr
                     pagenametext = suitename + "-" + casenamecap
                     attrtmp = G_TMPPATH + G_PAGEATTRTEMPPATH
-                    #print("addattr:", subattcnt, pagename, attrtmp)
                     with open(attrtmp, encoding="utf-8", mode="r") as attrtmpfile:
                         for attrtempline in attrtmpfile:
                             attrtempline = attrtempline.replace(" ", "\ ")
@@ -121,7 +119,6 @@ def writemulbuildgn():
 
                     temptestfilename = G_TMPPATH + G_TESTCASETEMPPATH
                     testfilename = hapdirpath + G_TESTDIRPATH + suitename + ".test.ets"
-                    #print("createpage:", subgncnt, dirpath, pagefilename, testfilename)
                     os.system(r"cp {} {}".format(temptestfilename, testfilename))
                     #替换test里的名称
                     os.system(r"sed -i 's/{}/{}/g' {}".format(G_ATTRNAMEPATTERN, testname, testfilename))
@@ -136,7 +133,6 @@ def writemulbuildgn():
                     buildgnname = hapdirpath + G_BUILDGNPATH
                     os.system(r"sed -i 's/{}/{}/g' {}".format(G_SUITENAMEPATTERN, suiteitemcap, buildgnname))
                     # formate gn
-                    #print("Formate: dirpath:",buildgnname)
                     formatcmd = "cat "+buildgnname+" | ~/workspace/oh31/prebuilts/build-tools/linux-x86/bin/gn format --stdin > FORMAT_RESULT.gn;cp -f FORMAT_RESULT.gn "+buildgnname+";rm FORMAT_RESULT.gn"
                     os.system(formatcmd)
                     #替换index.ets里的名称
@@ -147,12 +143,9 @@ def writemulbuildgn():
                     testjsonname = hapdirpath + G_TESTJSONPATH
                     os.system(r"sed -i 's/{}/{}/g' {}".format(G_SUITENAMEPATTERN, suiteitemcap, testjsonname))
 
-                    #G_IMPORTTEST = "import {} from './{}Jsunit.test';\n"
                     importtestheads.append(G_IMPORTTEST.format(testname, suitename))
                     importtests.append(G_IMPORTTESTCASE.format(testname))
                 subcasecnt += 1
-            #print("importtestheads:", importtestheads)
-            #print("importtests:", importtests)
             #插入List.test.ets，装载多个testcase
             ind = 16
             for importtestsline in importtests:
@@ -187,7 +180,6 @@ def new_report(bakdir, str):
     files = os.listdir(bakdir)
     lists = [] #列出目录的下所有文件和文件夹保存到lists
     for f in files:
-        # if f.startswith(str):
         if "latest" in f:
             continue
         lists.append(f)
@@ -239,7 +231,6 @@ if __name__ == '__main__':
                 total +=1
                 failcnt += 1
                 testcaselist.append(caseline[1]+"-false")
-                #print("tasklogfile line:", caseline[0], caseline[1])
     #将testcase信息生成文件
     xmlfile = open(tmpfile, mode='w+')
     xmlfile.write("<?xml version='1.0' encoding='UTF-8'?>\n")

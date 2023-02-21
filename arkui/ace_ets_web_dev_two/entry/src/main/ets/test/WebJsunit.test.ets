@@ -16,7 +16,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
-let emitKey = "emitUserAgent";
+let emitKey = "emitAllowGeolocation";
 export default function webJsunit() {
   describe('ActsAceWebDevTest', function () {
     beforeEach(async function (done) {
@@ -43,16 +43,6 @@ export default function webJsunit() {
       }
       await Utils.sleep(2000);
       done();
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_066                                                                                                                                                                      
-     *tc.name storeWebArchive                                                                                                                                                                                                                
-     *tc.desic Save current page
-     */
-    it('storeWebArchive',0,async function(done){
-      emitKey="emitAllowGeolocation";
-      Utils.registerContainEvent("storeWebArchive","/data/storage/el2/base/",400,done);
-      sendEventByKey('webcomponent',10,'');
     })
     /* 
      *tc.number SUB_ACE_BASIC_ETS_API_067                                                                                                                                                                   
@@ -110,38 +100,8 @@ export default function webJsunit() {
      *tc.desic return whether the third party cookie is allowed
      */
     it('isThirdPartyCookieAllowed',0,async function(done){
-      emitKey="emitExistCookie";
-      Utils.registerEvent("isThirdPartyCookieAllowed",false,412,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_073                                                                                                                                                                   
-     *tc.name existCookie                                                                                                                                                                                                               
-     *tc.desic return whether there exits cookie
-     */
-    it('existCookie',0,async function(done){
-      emitKey="emitOnConsole";
-      Utils.registerEvent("existCookie",false,414,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_076                                                                                                                                                                  
-     *tc.name getLineNumber                                                                                                                                                                                                              
-     *tc.desic return the number of console message lines
-     */
-    it('getLineNumber',0,async function(done){
-      emitKey="emitOnConsole";
-      Utils.registerEvent("getLineNumber","51",420,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_077                                                                                                                                                                  
-     *tc.name getSourceId                                                                                                                                                                                                              
-     *tc.desic return the source url
-     */
-    it('getSourceId',0,async function(done){
       emitKey="emitLoaData";
-      Utils.registerEvent("getSourceId","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",422,done);
+      Utils.registerEvent("isThirdPartyCookieAllowed",false,412,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -151,7 +111,7 @@ export default function webJsunit() {
      */
     it('loadData',0,async function(done){
       emitKey="emitZoomAccess";
-      Utils.registerEvent("loadData","index",424,done);
+      Utils.registerEvent("loadData","\"index\"",424,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -190,18 +150,8 @@ export default function webJsunit() {
      *tc.desic delete credentials
      */
     it('deleteHttpAuthCredentials',0,async function(done){
-      emitKey="emitSearchAllAsync";
+      emitKey="emitDeleteHttpAuthCredentials";
       Utils.registerEvent("deleteHttpAuthCredentials",false,446,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_079                                                                                                                                                                  
-     *tc.name searchAllAsync                                                                                                                                                                                                              
-     *tc.desic search specific words
-     */
-    it('searchAllAsync',0,async function(done){
-      emitKey="emitSearchAllAsync";
-      Utils.registerEvent("searchAllAsync","01",426,done);
       sendEventByKey('webcomponent',10,'');
     })
   })

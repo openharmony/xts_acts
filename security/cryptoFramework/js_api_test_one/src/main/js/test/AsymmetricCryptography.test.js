@@ -982,7 +982,7 @@ export default function AsymmetricCryptographyJsunit() {
         0,
         async function (done) {
             await asyPromise
-                .signAndVerifyNormalProcess("ECC512", "ECC512|SHA384")
+                .signAndVerifyNormalProcess("ECC521", "ECC521|SHA384")
                 .then((data) => {
                     expect(data == null).assertTrue();
                 })
@@ -1227,7 +1227,7 @@ export default function AsymmetricCryptographyJsunit() {
 
     /**
      * @tc.number Security_crypto_framework_ASymmetric_SignVerify_ECDH_0400
-     * @tc.name Test ECC512 SignVerify ECDH
+     * @tc.name Test ECC521 SignVerify ECDH
      * @tc.desc Use the Callback Style of Interface
      */
     it(
@@ -1235,7 +1235,7 @@ export default function AsymmetricCryptographyJsunit() {
         0,
         async function (done) {
             await asyCallback
-                .keyAgreementProcess("ECC512")
+                .keyAgreementProcess("ECC521")
                 .then((data) => {
                     expect(data == null).assertTrue();
                 })
@@ -1322,7 +1322,7 @@ export default function AsymmetricCryptographyJsunit() {
         0,
         async function (done) {
             await asyCallback
-                .keyAgreementProcessFail("RSA3072", "ECC512")
+                .keyAgreementProcessFail("RSA3072", "ECC521")
                 .then((data) => {
                     expect(data == "Error: An exception occurs.").assertTrue();
                 })

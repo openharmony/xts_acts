@@ -19,7 +19,7 @@ import router from '@system.router'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
-import { UiDriver, BY, PointerMatrix } from '@ohos.uitest'
+import { UiDriver, BY, PointerMatrix } from '@ohos.UiTest'
 
 const context = featureAbility.getContext();
 

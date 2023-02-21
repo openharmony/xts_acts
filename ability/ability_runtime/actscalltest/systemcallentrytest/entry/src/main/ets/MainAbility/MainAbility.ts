@@ -50,7 +50,7 @@ export default class MainAbility extends Ability {
     test2100(data) {
         console.log("SystemCallTest MainAbility test2100 begin");
         let recvData = new MySequenceable(0, '', '');
-        data.readSequenceable(recvData);
+        data.readParcelable(recvData);
         return new MySequenceable(recvData.num + 1, recvData.str + "Main", recvData.result);
     }
 

@@ -13,1414 +13,1415 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonEvent';
+import batteryInfo from '@ohos.batteryInfo';
 import { describe, it, expect } from '@ohos/hypium'
 
 export default function BatteryCommonEventTest() {
-describe('BatteryCommonEventTest', function () {
-    console.log("*************Battery commonEvent Test Begin*************");
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0100
-     * @tc.name Subscribe_Battery_Changed_Common_Event
-     * @tc.desc battery acquisition kit
-     */
-    it('Subscribe_Battery_Changed_Common_Event', 0, function (done) {
-        createBatteryChangedSubscriber();
-        done();
+    describe('BatteryCommonEventTest', function () {
+        console.log("*************Battery commonEvent Test Begin*************");
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0100
+         * @tc.name Subscribe_Battery_Changed_Common_Event
+         * @tc.desc battery acquisition kit
+         */
+        it('Subscribe_Battery_Changed_Common_Event', 0, function (done) {
+            createBatteryChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0110
+         * @tc.name Subscribe_Battery_Okay_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Battery_Okay_Common_Event', 0, function (done) {
+            createBatteryOkaySubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0120
+         * @tc.name Subscribe_Battery_Low_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Battery_Low_Common_Event', 0, function (done) {
+            createBatteryLowSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0130
+         * @tc.name Subscribe_Power_Connected_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Power_Connected_Common_Event', 0, function (done) {
+            createBatteryPowerConnectedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0140
+         * @tc.name Subscribe_Power_Disconnected_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Power_Disconnected_Common_Event', 0, function (done) {
+            createBatteryPowerDisconnectedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0150
+         * @tc.name Subscribe_Battery_Charging_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Battery_Charging_Common_Event', 0, function (done) {
+            createBatteryChargingSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0160
+         * @tc.name Subscribe_Battery_Discharging_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Battery_Discharging_Common_Event', 0, function (done) {
+            createBatteryDischargingSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0170
+         * @tc.name Subscribe_Boot_Completed_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Boot_Completed_Common_Event', 0, function (done) {
+            createBootCompletedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0180
+         * @tc.name Subscribe_Locked_Boot_Completed_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Locked_Boot_Completed_Common_Event', 0, function (done) {
+            createLockedBootCompletedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_powersystem_batterymanager_jstest_0190
+         * @tc.name Subscribe_Shutdown_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Shutdown_Common_Event', 0, function (done) {
+            createShutdownSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0200
+         * @tc.name Subscribe_Screen_On_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Screen_On_Common_Event', 0, function (done) {
+            createScreenOnSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0210
+         * @tc.name Subscribe_User_Present_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_User_Present_Common_Event', 0, function (done) {
+            createUserPresentSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0220
+         * @tc.name Subscribe_Time_Tick_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Time_Tick_Common_Event', 0, function (done) {
+            createTimeTickSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0230
+         * @tc.name Subscribe_Screen_Off_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Screen_Off_Common_Event', 0, function (done) {
+            createScreenOffSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0240
+         * @tc.name Subscribe_Time_Changed_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Time_Changed_Common_Event', 0, function (done) {
+            createTimeChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0250
+         * @tc.name Subscribe_Date_Changed_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Date_Changed_Common_Event', 0, function (done) {
+            createDateChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0260
+         * @tc.name Subscribe_Timezone_Changed_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Timezone_Changed_Common_Event', 0, function (done) {
+            createTimezoneChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0270
+         * @tc.name Subscribe_Close_System_Dialogs_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Close_System_Dialogs_Common_Event', 0, function (done) {
+            createCloseSystemDialogsSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0280
+         * @tc.name Subscribe_Package_Added_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Package_Added_Common_Event', 0, function (done) {
+            createPackageAddedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0290
+         * @tc.name Subscribe_Package_Replaced_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Package_Replaced_Common_Event', 0, function (done) {
+            createPackageReplacedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0300
+         * @tc.name Subscribe_My_Package_Replaced_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_My_Package_Replaced_Common_Event', 0, function (done) {
+            createMyPackageReplacedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0310
+         * @tc.name Subscribe_Package_Removed_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Package_Removed_Common_Event', 0, function (done) {
+            createPackageRemovedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0320
+         * @tc.name Subscribe_Bundle_Removed_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bundle_Removed_Common_Event', 0, function (done) {
+            createBundleRemovedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0330
+         * @tc.name Subscribe_Packagefullyremoved_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Packagefullyremoved_Common_Event', 0, function (done) {
+            createPackageFullyRemovedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0340
+         * @tc.name Subscribe_Packagechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Packagechanged_Common_Event', 0, function (done) {
+            createPackageChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0350
+         * @tc.name Subscribe_Packagerestarted_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Packagerestarted_Common_Event', 0, function (done) {
+            createPackageRestartedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0360
+         * @tc.name Subscribe_Packagedatacleared_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Packagedatacleared_Common_Event', 0, function (done) {
+            createPackageDataClearedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0370
+         * @tc.name Subscribe_Packagesuspended_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Packagesuspended_Common_Event', 0, function (done) {
+            createPackageSuspendedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0380
+         * @tc.name Subscribe_Packagesunsuspended_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Packagesunsuspended_Common_Event', 0, function (done) {
+            createPackagesUnsuspendedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0390
+         * @tc.name Subscribe_Mypackagesuspended_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Mypackagesuspended_Common_Event', 0, function (done) {
+            createMyPackageSuspendedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0400
+         * @tc.name Subscribe_Mypackageunsuspended_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Mypackageunsuspended_Common_Event', 0, function (done) {
+            createMyPackageUnsuspendedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0410
+         * @tc.name Subscribe_Mypackagefirstlaunch_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Mypackagefirstlaunch_Common_Event', 0, function (done) {
+            createMyPackageFirstLaunchSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0420
+         * @tc.name Subscribe_Mypackageneedsverification_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Mypackageneedsverification_Common_Event', 0, function (done) {
+            createMyPackageNeedsVerificationSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0430
+         * @tc.name Subscribe_Externalapplicationsavailable_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Externalapplicationsavailable_Common_Event', 0, function (done) {
+            createExternalApplicationsAvailableSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0440
+         * @tc.name Subscribe_Externalapplicationsunavailable_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Externalapplicationsunavailable_Common_Event', 0, function (done) {
+            createExternalApplicationsUnAvailableSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0450
+         * @tc.name Subscribe_Configurationchanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Configurationchanged_Common_Event', 0, function (done) {
+            createConfigurationChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0460
+         * @tc.name Subscribe_Locatechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Locatechanged_Common_Event', 0, function (done) {
+            createLocateChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0470
+         * @tc.name Subscribe_Managepackagestorage_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Managepackagestorage_Common_Event', 0, function (done) {
+            createManagePackageStorageSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0480
+         * @tc.name Subscribe_Drivemode_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Drivemode_Common_Event', 0, function (done) {
+            createDriveModeSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0490
+         * @tc.name Subscribe_Homemode_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Homemode_Common_Event', 0, function (done) {
+            createHomeModeSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0500
+         * @tc.name Subscribe_Officemode_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Officemode_Common_Event', 0, function (done) {
+            createOfficeModeSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0510
+         * @tc.name Subscribe_Userstarted_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Userstarted_Common_Event', 0, function (done) {
+            createUserStartedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0520
+         * @tc.name Subscribe_Userbackground_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Userbackground_Common_Event', 0, function (done) {
+            createUserBackgroundSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0530
+         * @tc.name Subscribe_Userforground_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Userforground_Common_Event', 0, function (done) {
+            createUserForgroundSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0540
+         * @tc.name Subscribe_Userswitched_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Userswitched_Common_Event', 0, function (done) {
+            createUserSwitchedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0550
+         * @tc.name Subscribe_Userstarting_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Userstarting_Common_Event', 0, function (done) {
+            createUserStartingSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0560
+         * @tc.name Subscribe_Userunlocked_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Userunlocked_Common_Event', 0, function (done) {
+            createUserUnlockedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0570
+         * @tc.name Subscribe_Userstopping_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Userstopping_Common_Event', 0, function (done) {
+            createUserStoppingSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0580
+         * @tc.name Subscribe_Userstopped_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Userstopped_Common_Event', 0, function (done) {
+            createUserStoppedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0590
+         * @tc.name Subscribe_Hwidlogin_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Hwidlogin_Common_Event', 0, function (done) {
+            createHwidLoginSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0600
+         * @tc.name Subscribe_Hwidlogout_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Hwidlogout_Common_Event', 0, function (done) {
+            createHwidLogoutSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0610
+         * @tc.name Subscribe_Hwidtokeninvalid_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Hwidtokeninvalid_Common_Event', 0, function (done) {
+            createHwidTokenInvalidSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0620
+         * @tc.name Subscribe_Hwidlogoff_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Hwidlogoff_Common_Event', 0, function (done) {
+            createHwidLogOffSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0630
+         * @tc.name Subscribe_Wifipowerstate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifipowerstate_Common_Event', 0, function (done) {
+            createWifiPowerStateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0640
+         * @tc.name Subscribe_Wifiscanfinished_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifiscanfinished_Common_Event', 0, function (done) {
+            createWifiScanFinishedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0650
+         * @tc.name Subscribe_Wifirssivalue_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifirssivalue_Common_Event', 0, function (done) {
+            createWifiRssiValueSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0660
+         * @tc.name Subscribe_Wificonnstate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wificonnstate_Common_Event', 0, function (done) {
+            createWifiConnStateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0670
+         * @tc.name Subscribe_Wifihostpotstate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifihostpotstate_Common_Event', 0, function (done) {
+            createWifiHostpotStateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0680
+         * @tc.name Subscribe_Wifiapstajoin_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifiapstajoin_Common_Event', 0, function (done) {
+            createWifiApStaJoinSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0690
+         * @tc.name Subscribe_Wifiapstaleave_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifiapstaleave_Common_Event', 0, function (done) {
+            createWifiApStaLeaveSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0700
+         * @tc.name Subscribe_Wifimplinkstatechange_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifimplinkstatechange_Common_Event', 0, function (done) {
+            createWifiMplinkStateChangeSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0710
+         * @tc.name Subscribe_Wifip2pconnstate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifip2pconnstate_Common_Event', 0, function (done) {
+            createWifiP2PConnStateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0720
+         * @tc.name Subscribe_Wifip2pstatechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifip2pstatechanged_Common_Event', 0, function (done) {
+            createWifiP2PStateChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0730
+         * @tc.name Subscribe_Wifip2ppeersstatechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifip2ppeersstatechanged_Common_Event', 0, function (done) {
+            createWifiP2PPeersStateChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0740
+         * @tc.name Subscribe_Wifip2ppeersdiscoverystatechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifip2ppeersdiscoverystatechanged_Common_Event', 0, function (done) {
+            createWifiP2PPeersDiscoveryStateChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0750
+         * @tc.name Subscribe_Wifip2pcurrentdevicestatechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifip2pcurrentdevicestatechanged_Common_Event', 0, function (done) {
+            createWifiP2PCurrentDeviceStateChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0760
+         * @tc.name Subscribe_Wifip2pgroupstatechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Wifip2pgroupstatechanged_Common_Event', 0, function (done) {
+            createWifiP2PGroupStateChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0770
+         * @tc.name Subscribe_Bluetoothhandsfreeagconntectstateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothhandsfreeagconntectstateupdate_Common_Event', 0, function (done) {
+            createBluetoothHandsfreeAgConntectStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0780
+         * @tc.name Subscribe_Bluetoothhandsfreeagconntectdeviceupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothhandsfreeagconntectdeviceupdate_Common_Event', 0, function (done) {
+            createBluetoothHandsfreeAgConntectDeviceUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0790
+         * @tc.name Subscribe_Bluetoothhandsfreeagaudiostateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothhandsfreeagaudiostateupdate_Common_Event', 0, function (done) {
+            createBluetoothHandsfreeAgAudioStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0800
+         * @tc.name Subscribe_Bluetootha2dpsourceconnectstateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetootha2dpsourceconnectstateupdate_Common_Event', 0, function (done) {
+            createBluetoothA2DPsourceConnectStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0810
+         * @tc.name Subscribe_Bluetootha2dpsourcecurrentdeviceupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetootha2dpsourcecurrentdeviceupdate_Common_Event', 0, function (done) {
+            createBluetoothA2DPsourceCurrentDeviceUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0820
+         * @tc.name Subscribe_Bluetootha2dpsourceplayingstateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetootha2dpsourceplayingstateupdate_Common_Event', 0, function (done) {
+            createBluetoothA2DPsourcePlayingStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0830
+         * @tc.name Subscribe_Bluetootha2dpsourceavrcpconntectstateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetootha2dpsourceavrcpconntectstateupdate_Common_Event', 0, function (done) {
+            createBluetoothA2DPsourceAvrcpConntectStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0840
+         * @tc.name Subscribe_Bluetootha2dpsourcecodecvalueupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetootha2dpsourcecodecvalueupdate_Common_Event', 0, function (done) {
+            createBluetoothA2DPsourceCodecValueUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0850
+         * @tc.name Subscribe_Bluetoothremotedevicediscovered_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedevicediscovered_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceDiscoveredSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0860
+         * @tc.name Subscribe_Bluetoothremotedeviceclassvalueupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedeviceclassvalueupdate_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceClassValueUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0870
+         * @tc.name Subscribe_Bluetoothremotedeviceaclconnected_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedeviceaclconnected_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceAclConnectedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0880
+         * @tc.name Subscribe_Bluetoothremotedeviceacldisconnected_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedeviceacldisconnected_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceAclDisconnectedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0890
+         * @tc.name Subscribe_Bluetoothremotedevicenameupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedevicenameupdate_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceNameUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0900
+         * @tc.name Subscribe_Bluetoothremotedevicepairstate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedevicepairstate_Common_Event', 0, function (done) {
+            createBluetoothRemotedevicePairStateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0910
+         * @tc.name Subscribe_Bluetoothremotedevicebateryvalueupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedevicebateryvalueupdate_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceBateryValueUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0920
+         * @tc.name Subscribe_Bluetoothremotedevicesdpresult_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedevicesdpresult_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceSdpResultSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0930
+         * @tc.name Subscribe_Bluetoothremotedeviceuuidvalue_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedeviceuuidvalue_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceUuidValueSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0940
+         * @tc.name Subscribe_Bluetoothpairingreq_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothpairingreq_Common_Event', 0, function (done) {
+            createBluetoothPairingReqSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0950
+         * @tc.name Subscribe_Bluetoothremotedevicepairingcancel_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedevicepairingcancel_Common_Event', 0, function (done) {
+            createBluetoothRemotedevicePairingCancelSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0960
+         * @tc.name Subscribe_Bluetoothremotedeviceconntectreq_Common_Event
+         * @tc.desc Battery acquisition Kit
+         */
+        it('Subscribe_Bluetoothremotedeviceconntectreq_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceConntectReqSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0970
+         * @tc.name Subscribe_Bluetoothremotedeviceconntectreply_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedeviceconntectreply_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceConntectReplySubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0980
+         * @tc.name Subscribe_Bluetoothremotedeviceconntectcancel_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothremotedeviceconntectcancel_Common_Event', 0, function (done) {
+            createBluetoothRemotedeviceConntectCancelSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0990
+         * @tc.name Subscribe_Bluetoothhandsfreeunitconntectstateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothhandsfreeunitconntectstateupdate_Common_Event', 0, function (done) {
+            createBluetoothHandsfreeunitConntectStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1010
+         * @tc.name Subscribe_Bluetoothhandsfreeunitaudiostateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothhandsfreeunitaudiostateupdate_Common_Event', 0, function (done) {
+            createBluetoothHandsfreeunitAudioStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1020
+         * @tc.name Subscribe_Bluetoothhandsfreeunitagcommonevent_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothhandsfreeunitagcommonevent_Common_Event', 0, function (done) {
+            createBluetoothHandsfreeunitAgCommonEventSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1030
+         * @tc.name Subscribe_Bluetoothhandsfreeunitagcallstateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothhandsfreeunitagcallstateupdate_Common_Event', 0, function (done) {
+            createBluetoothHandsfreeunitAgCallStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1040
+         * @tc.name Subscribe_Bluetoothhoststateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothhoststateupdate_Common_Event', 0, function (done) {
+            createBluetoothHostStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1050
+         * @tc.name Subscribe_Bluetoothhostreqdiscoverable_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Bluetoothhostreqdiscoverable_Common_Event', 0, function (done) {
+            createBluetoothHostReqDiscoverableSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1060
+         * @tc.name Subscribe_Commoneventhostreqenable_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventhostreqenable_Common_Event', 0, function (done) {
+            createCommonEventHostReqEnableSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1070
+         * @tc.name Subscribe_Commoneventhostreqdisable_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventhostreqdisable_Common_Event', 0, function (done) {
+            createCommonEventHostReqDisableSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1080
+         * @tc.name Subscribe_Commoneventhostscanmodeupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventhostscanmodeupdate_Common_Event', 0, function (done) {
+            createCommonEventHostScanModeUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1090
+         * @tc.name Subscribe_Commoneventhostdiscovetystarted_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventhostdiscovetystarted_Common_Event', 0, function (done) {
+            createCommonEventHostDiscovetyStartedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1100
+         * @tc.name Subscribe_Commoneventhostdiscovetyfinished_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventhostdiscovetyfinished_Common_Event', 0, function (done) {
+            createCommonEventHostDiscovetyFinishedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1110
+         * @tc.name Subscribe_Commoneventhostnameupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventhostnameupdate_Common_Event', 0, function (done) {
+            createCommonEventHostNameUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1120
+         * @tc.name Subscribe_Commoneventhoststateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventhoststateupdate_Common_Event', 0, function (done) {
+            createCommonEventHostStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1130
+         * @tc.name Subscribe_Commoneventa2dpsinkplayingstateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventa2dpsinkplayingstateupdate_Common_Event', 0, function (done) {
+            createCommonEventA2DPsinkPlayingStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1140
+         * @tc.name Subscribe_Commoneventa2dpsinkaudiostateupdate_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventa2dpsinkaudiostateupdate_Common_Event', 0, function (done) {
+            createCommonEventA2DPsinkAudioStateUpdateSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1150
+         * @tc.name Subscribe_Commoneventnfcactionadapterstatechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventnfcactionadapterstatechanged_Common_Event', 0, function (done) {
+            createCommonEventNFCActionAdapterStateChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1160
+         * @tc.name Subscribe_Commoneventnfcactionrffieldondetected_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventnfcactionrffieldondetected_Common_Event', 0, function (done) {
+            createCommonEventNFCActionRFFieldOnDetectedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1170
+         * @tc.name Subscribe_Commoneventnfcactionrffieldoffdetected_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventnfcactionrffieldoffdetected_Common_Event', 0, function (done) {
+            createCommonEventNFCActionRFFieldOffDetectedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1180
+         * @tc.name Subscribe_Commoneventdeviceidlemodechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventdeviceidlemodechanged_Common_Event', 0, function (done) {
+            createCommonEventDeviceIdleModeChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1190
+         * @tc.name Subscribe_Commoneventpowersavemodechanged_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventpowersavemodechanged_Common_Event', 0, function (done) {
+            createCommonEventPowerSaveModeChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1200
+         * @tc.name Subscribe_Commoneventuseradded_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventuseradded_Common_Event', 0, function (done) {
+            createCommonEventUserAddedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1210
+         * @tc.name Subscribe_Commoneventuserremoved_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventuserremoved_Common_Event', 0, function (done) {
+            createCommonEventUserRemovedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1220
+         * @tc.name Subscribe_Commoneventabilityadded_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventabilityadded_Common_Event', 0, function (done) {
+            createCommonEventAbilityAddedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1230
+         * @tc.name subscribe_CommonEventAbilityRemoved_common_event
+         * @tc.desc Battery acquisition kit
+         */
+        it('subscribe_CommonEventAbilityRemoved_common_event', 0, function (done) {
+            createCommonEventAbilityRemovedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1240
+         * @tc.name subscribe_CommonEventAbilityUpdated_common_event
+         * @tc.desc Battery acquisition kit
+         */
+        it('subscribe_CommonEventAbilityUpdated_common_event', 0, function (done) {
+            createCommonEventAbilityUpdatedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1250
+         * @tc.name subscribe_CommonEventLocationModeStateChanged_common_event
+         * @tc.desc Battery acquisition kit
+         */
+        it('subscribe_CommonEventLocationModeStateChanged_common_event', 0, function (done) {
+            createCommonEventLocationModeStateChangedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1260
+         * @tc.name subscribe_CommonEventIVISleep_common_event
+         * @tc.desc Battery acquisition kit
+         */
+        it('subscribe_CommonEventIVISleep_common_event', 0, function (done) {
+            createCommonEventIVISleepSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1270
+         * @tc.name subscribe_CommonEventIVIPause_common_event
+         * @tc.desc Battery acquisition kit
+         */
+        it('subscribe_CommonEventIVIPause_common_event', 0, function (done) {
+            createCommonEventIVIPauseSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1280
+         * @tc.name Subscribe_Commoneventivistandby_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventivistandby_Common_Event', 0, function (done) {
+            createCommonEventIVIStandBySubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1290
+         * @tc.name Subscribe_Commoneventivilastmodesave_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventivilastmodesave_Common_Event', 0, function (done) {
+            createCommonEventIVILastmodeSaveSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1300
+         * @tc.name Subscribe_Commoneventivivoltageabnormal_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventivivoltageabnormal_Common_Event', 0, function (done) {
+            createCommonEventIVIVoltageAbnormalSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1310
+         * @tc.name Subscribe_Commoneventivihighttemperature_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventivihighttemperature_Common_Event', 0, function (done) {
+            createCommonEventIVIHightTemperatureSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1320
+         * @tc.name Subscribe_Commoneventiviextremetemperature_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventiviextremetemperature_Common_Event', 0, function (done) {
+            createCommonEventIVIExtremeTemperatureSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1330
+         * @tc.name Subscribe_Commoneventivitemperatureabnormal_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventivitemperatureabnormal_Common_Event', 0, function (done) {
+            createCommonEventIVITemperatureAbnormalSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1340
+         * @tc.name Subscribe_Commoneventivivoltagerecovery_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventivivoltagerecovery_Common_Event', 0, function (done) {
+            createCommonEventIVIVoltageRecoverySubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1350
+         * @tc.name Subscribe_Commoneventivitempraturerecovery_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventivitempraturerecovery_Common_Event', 0, function (done) {
+            createCommonEventIVITempratureRecoverySubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1360
+         * @tc.name Subscribe_Commoneventiviactive_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventiviactive_Common_Event', 0, function (done) {
+            createCommonEventIVIActiveSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1370
+         * @tc.name Subscribe_Commoneventusbdevidceattached_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventusbdevidceattached_Common_Event', 0, function (done) {
+            createCommonEventSUBDevidceAttachedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1380
+         * @tc.name Subscribe_Commoneventusbdevidcedetached_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventusbdevidcedetached_Common_Event', 0, function (done) {
+            createCommonEventSUBDevidceDetachedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1390
+         * @tc.name Subscribe_Commoneventusbaccessoryattached_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventusbaccessoryattached_Common_Event', 0, function (done) {
+            createCommonEventSUBAccessoryAttachedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1400
+         * @tc.name Subscribe_Commoneventusbaccessorydetached_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventusbaccessorydetached_Common_Event', 0, function (done) {
+            createCommonEventSUBAccessoryDetachedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1410
+         * @tc.name Subscribe_Commoneventdickremoved_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventdickremoved_Common_Event', 0, function (done) {
+            createCommonEventDickRemovedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1420
+         * @tc.name Subscribe_Commoneventdickunmounted_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventdickunmounted_Common_Event', 0, function (done) {
+            createCommonEventDickUnmountedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1430
+         * @tc.name Subscribe_Commoneventdickmounted_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventdickmounted_Common_Event', 0, function (done) {
+            createCommonEventDickMountedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1440
+         * @tc.name Subscribe_Commoneventdicknadremoval_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventdicknadremoval_Common_Event', 0, function (done) {
+            createCommonEventDickNadRemovalSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1450
+         * @tc.name Subscribe_Commoneventdickunmoutable_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_Commoneventdickunmoutable_Common_Event', 0, function (done) {
+            createCommonEventDickUnmoutableSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1460
+         * @tc.name Subscribe_CommonEventDickEject_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_CommonEventDickEject_Common_Event', 0, function (done) {
+            createCommonEventDickEjectSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1470
+         * @tc.name Subscribe_CommonEventVisibleAccountsUpdated_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_CommonEventVisibleAccountsUpdated_Common_Event', 0, function (done) {
+            createCommonEventVisibleAccountsUpdatedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1480
+         * @tc.name Subscribe_CommonEventAccountDeleted_Common_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_CommonEventAccountDeleted_Common_Event', 0, function (done) {
+            createCommonEventAccountDeletedSubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1490
+         * @tc.name Subscribe_CommonEventFoundation_ReadyCommon_Event
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_CommonEventFoundation_ReadyCommon_Event', 0, function (done) {
+            createCommonEventFoundationReadySubscriber();
+            done();
+        })
+
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1500
+         * @tc.name Subscribe_CommonEventAirplane_ModeChanged_CommonEvent
+         * @tc.desc Battery acquisition kit
+         */
+        it('Subscribe_CommonEventAirplane_ModeChanged_CommonEvent', 0, function (done) {
+            createCommonEventAirplaneModeChangedSubscriber();
+            done();
+        })
+
+        console.log("*************Battery commonEvent Test End*************");
     })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0110
-     * @tc.name Subscribe_Battery_Okay_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Battery_Okay_Common_Event', 0, function (done) {
-        createBatteryOkaySubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0120
-     * @tc.name Subscribe_Battery_Low_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Battery_Low_Common_Event', 0, function (done) {
-        createBatteryLowSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0130
-     * @tc.name Subscribe_Power_Connected_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Power_Connected_Common_Event', 0, function (done) {
-        createBatteryPowerConnectedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0140
-     * @tc.name Subscribe_Power_Disconnected_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Power_Disconnected_Common_Event', 0, function (done) {
-        createBatteryPowerDisconnectedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0150
-     * @tc.name Subscribe_Battery_Charging_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Battery_Charging_Common_Event', 0, function (done) {
-        createBatteryChargingSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0160
-     * @tc.name Subscribe_Battery_Discharging_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Battery_Discharging_Common_Event', 0, function (done) {
-        createBatteryDischargingSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0170
-     * @tc.name Subscribe_Boot_Completed_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Boot_Completed_Common_Event', 0, function (done) {
-        createBootCompletedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0180
-     * @tc.name Subscribe_Locked_Boot_Completed_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Locked_Boot_Completed_Common_Event', 0, function (done) {
-        createLockedBootCompletedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_powersystem_batterymanager_jstest_0190
-     * @tc.name Subscribe_Shutdown_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Shutdown_Common_Event', 0, function (done) {
-        createShutdownSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0200
-     * @tc.name Subscribe_Screen_On_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Screen_On_Common_Event', 0, function (done) {
-        createScreenOnSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0210
-     * @tc.name Subscribe_User_Present_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_User_Present_Common_Event', 0, function (done) {
-        createUserPresentSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0220
-     * @tc.name Subscribe_Time_Tick_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Time_Tick_Common_Event', 0, function (done) {
-        createTimeTickSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0230
-     * @tc.name Subscribe_Screen_Off_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Screen_Off_Common_Event', 0, function (done) {
-        createScreenOffSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0240
-     * @tc.name Subscribe_Time_Changed_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Time_Changed_Common_Event', 0, function (done) {
-        createTimeChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0250
-     * @tc.name Subscribe_Date_Changed_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Date_Changed_Common_Event', 0, function (done) {
-        createDateChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0260
-     * @tc.name Subscribe_Timezone_Changed_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Timezone_Changed_Common_Event', 0, function (done) {
-        createTimezoneChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0270
-     * @tc.name Subscribe_Close_System_Dialogs_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Close_System_Dialogs_Common_Event', 0, function (done) {
-        createCloseSystemDialogsSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0280
-     * @tc.name Subscribe_Package_Added_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Package_Added_Common_Event', 0, function (done) {
-        createPackageAddedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0290
-     * @tc.name Subscribe_Package_Replaced_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Package_Replaced_Common_Event', 0, function (done) {
-        createPackageReplacedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0300
-     * @tc.name Subscribe_My_Package_Replaced_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_My_Package_Replaced_Common_Event', 0, function (done) {
-        createMyPackageReplacedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0310
-     * @tc.name Subscribe_Package_Removed_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Package_Removed_Common_Event', 0, function (done) {
-        createPackageRemovedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0320
-     * @tc.name Subscribe_Bundle_Removed_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bundle_Removed_Common_Event', 0, function (done) {
-        createBundleRemovedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0330
-     * @tc.name Subscribe_Packagefullyremoved_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Packagefullyremoved_Common_Event', 0, function (done) {
-        createPackageFullyRemovedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0340
-     * @tc.name Subscribe_Packagechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Packagechanged_Common_Event', 0, function (done) {
-        createPackageChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0350
-     * @tc.name Subscribe_Packagerestarted_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Packagerestarted_Common_Event', 0, function (done) {
-        createPackageRestartedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0360
-     * @tc.name Subscribe_Packagedatacleared_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Packagedatacleared_Common_Event', 0, function (done) {
-        createPackageDataClearedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0370
-     * @tc.name Subscribe_Packagesuspended_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Packagesuspended_Common_Event', 0, function (done) {
-        createPackageSuspendedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0380
-     * @tc.name Subscribe_Packagesunsuspended_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Packagesunsuspended_Common_Event', 0, function (done) {
-        createPackagesUnsuspendedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0390
-     * @tc.name Subscribe_Mypackagesuspended_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Mypackagesuspended_Common_Event', 0, function (done) {
-        createMyPackageSuspendedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0400
-     * @tc.name Subscribe_Mypackageunsuspended_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Mypackageunsuspended_Common_Event', 0, function (done) {
-        createMyPackageUnsuspendedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0410
-     * @tc.name Subscribe_Mypackagefirstlaunch_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Mypackagefirstlaunch_Common_Event', 0, function (done) {
-        createMyPackageFirstLaunchSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0420
-     * @tc.name Subscribe_Mypackageneedsverification_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Mypackageneedsverification_Common_Event', 0, function (done) {
-        createMyPackageNeedsVerificationSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0430
-     * @tc.name Subscribe_Externalapplicationsavailable_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Externalapplicationsavailable_Common_Event', 0, function (done) {
-        createExternalApplicationsAvailableSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0440
-     * @tc.name Subscribe_Externalapplicationsunavailable_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Externalapplicationsunavailable_Common_Event', 0, function (done) {
-        createExternalApplicationsUnAvailableSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0450
-     * @tc.name Subscribe_Configurationchanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Configurationchanged_Common_Event', 0, function (done) {
-        createConfigurationChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0460
-     * @tc.name Subscribe_Locatechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Locatechanged_Common_Event', 0, function (done) {
-        createLocateChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0470
-     * @tc.name Subscribe_Managepackagestorage_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Managepackagestorage_Common_Event', 0, function (done) {
-        createManagePackageStorageSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0480
-     * @tc.name Subscribe_Drivemode_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Drivemode_Common_Event', 0, function (done) {
-        createDriveModeSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0490
-     * @tc.name Subscribe_Homemode_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Homemode_Common_Event', 0, function (done) {
-        createHomeModeSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0500
-     * @tc.name Subscribe_Officemode_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Officemode_Common_Event', 0, function (done) {
-        createOfficeModeSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0510
-     * @tc.name Subscribe_Userstarted_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Userstarted_Common_Event', 0, function (done) {
-        createUserStartedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0520
-     * @tc.name Subscribe_Userbackground_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Userbackground_Common_Event', 0, function (done) {
-        createUserBackgroundSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0530
-     * @tc.name Subscribe_Userforground_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Userforground_Common_Event', 0, function (done) {
-        createUserForgroundSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0540
-     * @tc.name Subscribe_Userswitched_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Userswitched_Common_Event', 0, function (done) {
-        createUserSwitchedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0550
-     * @tc.name Subscribe_Userstarting_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Userstarting_Common_Event', 0, function (done) {
-        createUserStartingSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0560
-     * @tc.name Subscribe_Userunlocked_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Userunlocked_Common_Event', 0, function (done) {
-        createUserUnlockedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0570
-     * @tc.name Subscribe_Userstopping_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Userstopping_Common_Event', 0, function (done) {
-        createUserStoppingSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0580
-     * @tc.name Subscribe_Userstopped_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Userstopped_Common_Event', 0, function (done) {
-        createUserStoppedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0590
-     * @tc.name Subscribe_Hwidlogin_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Hwidlogin_Common_Event', 0, function (done) {
-        createHwidLoginSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0600
-     * @tc.name Subscribe_Hwidlogout_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Hwidlogout_Common_Event', 0, function (done) {
-        createHwidLogoutSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0610
-     * @tc.name Subscribe_Hwidtokeninvalid_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Hwidtokeninvalid_Common_Event', 0, function (done) {
-        createHwidTokenInvalidSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0620
-     * @tc.name Subscribe_Hwidlogoff_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Hwidlogoff_Common_Event', 0, function (done) {
-        createHwidLogOffSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0630
-     * @tc.name Subscribe_Wifipowerstate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifipowerstate_Common_Event', 0, function (done) {
-        createWifiPowerStateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0640
-     * @tc.name Subscribe_Wifiscanfinished_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifiscanfinished_Common_Event', 0, function (done) {
-        createWifiScanFinishedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0650
-     * @tc.name Subscribe_Wifirssivalue_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifirssivalue_Common_Event', 0, function (done) {
-        createWifiRssiValueSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0660
-     * @tc.name Subscribe_Wificonnstate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wificonnstate_Common_Event', 0, function (done) {
-        createWifiConnStateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0670
-     * @tc.name Subscribe_Wifihostpotstate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifihostpotstate_Common_Event', 0, function (done) {
-        createWifiHostpotStateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0680
-     * @tc.name Subscribe_Wifiapstajoin_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifiapstajoin_Common_Event', 0, function (done) {
-        createWifiApStaJoinSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0690
-     * @tc.name Subscribe_Wifiapstaleave_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifiapstaleave_Common_Event', 0, function (done) {
-        createWifiApStaLeaveSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0700
-     * @tc.name Subscribe_Wifimplinkstatechange_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifimplinkstatechange_Common_Event', 0, function (done) {
-        createWifiMplinkStateChangeSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0710
-     * @tc.name Subscribe_Wifip2pconnstate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifip2pconnstate_Common_Event', 0, function (done) {
-        createWifiP2PConnStateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0720
-     * @tc.name Subscribe_Wifip2pstatechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifip2pstatechanged_Common_Event', 0, function (done) {
-        createWifiP2PStateChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0730
-     * @tc.name Subscribe_Wifip2ppeersstatechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifip2ppeersstatechanged_Common_Event', 0, function (done) {
-        createWifiP2PPeersStateChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0740
-     * @tc.name Subscribe_Wifip2ppeersdiscoverystatechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifip2ppeersdiscoverystatechanged_Common_Event', 0, function (done) {
-        createWifiP2PPeersDiscoveryStateChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0750
-     * @tc.name Subscribe_Wifip2pcurrentdevicestatechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifip2pcurrentdevicestatechanged_Common_Event', 0, function (done) {
-        createWifiP2PCurrentDeviceStateChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0760
-     * @tc.name Subscribe_Wifip2pgroupstatechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Wifip2pgroupstatechanged_Common_Event', 0, function (done) {
-        createWifiP2PGroupStateChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0770
-     * @tc.name Subscribe_Bluetoothhandsfreeagconntectstateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothhandsfreeagconntectstateupdate_Common_Event', 0, function (done) {
-        createBluetoothHandsfreeAgConntectStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0780
-     * @tc.name Subscribe_Bluetoothhandsfreeagconntectdeviceupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothhandsfreeagconntectdeviceupdate_Common_Event', 0, function (done) {
-        createBluetoothHandsfreeAgConntectDeviceUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0790
-     * @tc.name Subscribe_Bluetoothhandsfreeagaudiostateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothhandsfreeagaudiostateupdate_Common_Event', 0, function (done) {
-        createBluetoothHandsfreeAgAudioStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0800
-     * @tc.name Subscribe_Bluetootha2dpsourceconnectstateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetootha2dpsourceconnectstateupdate_Common_Event', 0, function (done) {
-        createBluetoothA2DPsourceConnectStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0810
-     * @tc.name Subscribe_Bluetootha2dpsourcecurrentdeviceupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetootha2dpsourcecurrentdeviceupdate_Common_Event', 0, function (done) {
-        createBluetoothA2DPsourceCurrentDeviceUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0820
-     * @tc.name Subscribe_Bluetootha2dpsourceplayingstateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetootha2dpsourceplayingstateupdate_Common_Event', 0, function (done) {
-        createBluetoothA2DPsourcePlayingStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0830
-     * @tc.name Subscribe_Bluetootha2dpsourceavrcpconntectstateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetootha2dpsourceavrcpconntectstateupdate_Common_Event', 0, function (done) {
-        createBluetoothA2DPsourceAvrcpConntectStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0840
-     * @tc.name Subscribe_Bluetootha2dpsourcecodecvalueupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetootha2dpsourcecodecvalueupdate_Common_Event', 0, function (done) {
-        createBluetoothA2DPsourceCodecValueUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0850
-     * @tc.name Subscribe_Bluetoothremotedevicediscovered_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedevicediscovered_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceDiscoveredSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0860
-     * @tc.name Subscribe_Bluetoothremotedeviceclassvalueupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedeviceclassvalueupdate_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceClassValueUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0870
-     * @tc.name Subscribe_Bluetoothremotedeviceaclconnected_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedeviceaclconnected_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceAclConnectedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0880
-     * @tc.name Subscribe_Bluetoothremotedeviceacldisconnected_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedeviceacldisconnected_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceAclDisconnectedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0890
-     * @tc.name Subscribe_Bluetoothremotedevicenameupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedevicenameupdate_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceNameUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0900
-     * @tc.name Subscribe_Bluetoothremotedevicepairstate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedevicepairstate_Common_Event', 0, function (done) {
-        createBluetoothRemotedevicePairStateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0910
-     * @tc.name Subscribe_Bluetoothremotedevicebateryvalueupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedevicebateryvalueupdate_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceBateryValueUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0920
-     * @tc.name Subscribe_Bluetoothremotedevicesdpresult_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedevicesdpresult_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceSdpResultSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0930
-     * @tc.name Subscribe_Bluetoothremotedeviceuuidvalue_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedeviceuuidvalue_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceUuidValueSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0940
-     * @tc.name Subscribe_Bluetoothpairingreq_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothpairingreq_Common_Event', 0, function (done) {
-        createBluetoothPairingReqSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0950
-     * @tc.name Subscribe_Bluetoothremotedevicepairingcancel_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedevicepairingcancel_Common_Event', 0, function (done) {
-        createBluetoothRemotedevicePairingCancelSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0960
-     * @tc.name Subscribe_Bluetoothremotedeviceconntectreq_Common_Event
-     * @tc.desc Battery acquisition Kit
-     */
-    it('Subscribe_Bluetoothremotedeviceconntectreq_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceConntectReqSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0970
-     * @tc.name Subscribe_Bluetoothremotedeviceconntectreply_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedeviceconntectreply_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceConntectReplySubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0980
-     * @tc.name Subscribe_Bluetoothremotedeviceconntectcancel_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothremotedeviceconntectcancel_Common_Event', 0, function (done) {
-        createBluetoothRemotedeviceConntectCancelSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0990
-     * @tc.name Subscribe_Bluetoothhandsfreeunitconntectstateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothhandsfreeunitconntectstateupdate_Common_Event', 0, function (done) {
-        createBluetoothHandsfreeunitConntectStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1010
-     * @tc.name Subscribe_Bluetoothhandsfreeunitaudiostateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothhandsfreeunitaudiostateupdate_Common_Event', 0, function (done) {
-        createBluetoothHandsfreeunitAudioStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1020
-     * @tc.name Subscribe_Bluetoothhandsfreeunitagcommonevent_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothhandsfreeunitagcommonevent_Common_Event', 0, function (done) {
-        createBluetoothHandsfreeunitAgCommonEventSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1030
-     * @tc.name Subscribe_Bluetoothhandsfreeunitagcallstateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothhandsfreeunitagcallstateupdate_Common_Event', 0, function (done) {
-        createBluetoothHandsfreeunitAgCallStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1040
-     * @tc.name Subscribe_Bluetoothhoststateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothhoststateupdate_Common_Event', 0, function (done) {
-        createBluetoothHostStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1050
-     * @tc.name Subscribe_Bluetoothhostreqdiscoverable_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Bluetoothhostreqdiscoverable_Common_Event', 0, function (done) {
-        createBluetoothHostReqDiscoverableSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1060
-     * @tc.name Subscribe_Commoneventhostreqenable_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventhostreqenable_Common_Event', 0, function (done) {
-        createCommonEventHostReqEnableSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1070
-     * @tc.name Subscribe_Commoneventhostreqdisable_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventhostreqdisable_Common_Event', 0, function (done) {
-        createCommonEventHostReqDisableSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1080
-     * @tc.name Subscribe_Commoneventhostscanmodeupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventhostscanmodeupdate_Common_Event', 0, function (done) {
-        createCommonEventHostScanModeUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1090
-     * @tc.name Subscribe_Commoneventhostdiscovetystarted_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventhostdiscovetystarted_Common_Event', 0, function (done) {
-        createCommonEventHostDiscovetyStartedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1100
-     * @tc.name Subscribe_Commoneventhostdiscovetyfinished_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventhostdiscovetyfinished_Common_Event', 0, function (done) {
-        createCommonEventHostDiscovetyFinishedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1110
-     * @tc.name Subscribe_Commoneventhostnameupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventhostnameupdate_Common_Event', 0, function (done) {
-        createCommonEventHostNameUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1120
-     * @tc.name Subscribe_Commoneventhoststateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventhoststateupdate_Common_Event', 0, function (done) {
-        createCommonEventHostStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1130
-     * @tc.name Subscribe_Commoneventa2dpsinkplayingstateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventa2dpsinkplayingstateupdate_Common_Event', 0, function (done) {
-        createCommonEventA2DPsinkPlayingStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1140
-     * @tc.name Subscribe_Commoneventa2dpsinkaudiostateupdate_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventa2dpsinkaudiostateupdate_Common_Event', 0, function (done) {
-        createCommonEventA2DPsinkAudioStateUpdateSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1150
-     * @tc.name Subscribe_Commoneventnfcactionadapterstatechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventnfcactionadapterstatechanged_Common_Event', 0, function (done) {
-        createCommonEventNFCActionAdapterStateChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1160
-     * @tc.name Subscribe_Commoneventnfcactionrffieldondetected_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventnfcactionrffieldondetected_Common_Event', 0, function (done) {
-        createCommonEventNFCActionRFFieldOnDetectedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1170
-     * @tc.name Subscribe_Commoneventnfcactionrffieldoffdetected_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventnfcactionrffieldoffdetected_Common_Event', 0, function (done) {
-        createCommonEventNFCActionRFFieldOffDetectedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1180
-     * @tc.name Subscribe_Commoneventdeviceidlemodechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventdeviceidlemodechanged_Common_Event', 0, function (done) {
-        createCommonEventDeviceIdleModeChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1190
-     * @tc.name Subscribe_Commoneventpowersavemodechanged_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventpowersavemodechanged_Common_Event', 0, function (done) {
-        createCommonEventPowerSaveModeChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1200
-     * @tc.name Subscribe_Commoneventuseradded_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventuseradded_Common_Event', 0, function (done) {
-        createCommonEventUserAddedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1210
-     * @tc.name Subscribe_Commoneventuserremoved_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventuserremoved_Common_Event', 0, function (done) {
-        createCommonEventUserRemovedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1220
-     * @tc.name Subscribe_Commoneventabilityadded_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventabilityadded_Common_Event', 0, function (done) {
-        createCommonEventAbilityAddedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1230
-     * @tc.name subscribe_CommonEventAbilityRemoved_common_event
-     * @tc.desc Battery acquisition kit
-     */
-    it('subscribe_CommonEventAbilityRemoved_common_event', 0, function (done) {
-        createCommonEventAbilityRemovedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1240
-     * @tc.name subscribe_CommonEventAbilityUpdated_common_event
-     * @tc.desc Battery acquisition kit
-     */
-    it('subscribe_CommonEventAbilityUpdated_common_event', 0, function (done) {
-        createCommonEventAbilityUpdatedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1250
-     * @tc.name subscribe_CommonEventLocationModeStateChanged_common_event
-     * @tc.desc Battery acquisition kit
-     */
-    it('subscribe_CommonEventLocationModeStateChanged_common_event', 0, function (done) {
-        createCommonEventLocationModeStateChangedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1260
-     * @tc.name subscribe_CommonEventIVISleep_common_event
-     * @tc.desc Battery acquisition kit
-     */
-    it('subscribe_CommonEventIVISleep_common_event', 0, function (done) {
-        createCommonEventIVISleepSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1270
-     * @tc.name subscribe_CommonEventIVIPause_common_event
-     * @tc.desc Battery acquisition kit
-     */
-    it('subscribe_CommonEventIVIPause_common_event', 0, function (done) {
-        createCommonEventIVIPauseSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1280
-     * @tc.name Subscribe_Commoneventivistandby_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventivistandby_Common_Event', 0, function (done) {
-        createCommonEventIVIStandBySubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1290
-     * @tc.name Subscribe_Commoneventivilastmodesave_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventivilastmodesave_Common_Event', 0, function (done) {
-        createCommonEventIVILastmodeSaveSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1300
-     * @tc.name Subscribe_Commoneventivivoltageabnormal_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventivivoltageabnormal_Common_Event', 0, function (done) {
-        createCommonEventIVIVoltageAbnormalSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1310
-     * @tc.name Subscribe_Commoneventivihighttemperature_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventivihighttemperature_Common_Event', 0, function (done) {
-        createCommonEventIVIHightTemperatureSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1320
-     * @tc.name Subscribe_Commoneventiviextremetemperature_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventiviextremetemperature_Common_Event', 0, function (done) {
-        createCommonEventIVIExtremeTemperatureSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1330
-     * @tc.name Subscribe_Commoneventivitemperatureabnormal_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventivitemperatureabnormal_Common_Event', 0, function (done) {
-        createCommonEventIVITemperatureAbnormalSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1340
-     * @tc.name Subscribe_Commoneventivivoltagerecovery_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventivivoltagerecovery_Common_Event', 0, function (done) {
-        createCommonEventIVIVoltageRecoverySubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1350
-     * @tc.name Subscribe_Commoneventivitempraturerecovery_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventivitempraturerecovery_Common_Event', 0, function (done) {
-        createCommonEventIVITempratureRecoverySubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1360
-     * @tc.name Subscribe_Commoneventiviactive_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventiviactive_Common_Event', 0, function (done) {
-        createCommonEventIVIActiveSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1370
-     * @tc.name Subscribe_Commoneventusbdevidceattached_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventusbdevidceattached_Common_Event', 0, function (done) {
-        createCommonEventSUBDevidceAttachedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1380
-     * @tc.name Subscribe_Commoneventusbdevidcedetached_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventusbdevidcedetached_Common_Event', 0, function (done) {
-        createCommonEventSUBDevidceDetachedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1390
-     * @tc.name Subscribe_Commoneventusbaccessoryattached_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventusbaccessoryattached_Common_Event', 0, function (done) {
-        createCommonEventSUBAccessoryAttachedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1400
-     * @tc.name Subscribe_Commoneventusbaccessorydetached_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventusbaccessorydetached_Common_Event', 0, function (done) {
-        createCommonEventSUBAccessoryDetachedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1410
-     * @tc.name Subscribe_Commoneventdickremoved_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventdickremoved_Common_Event', 0, function (done) {
-        createCommonEventDickRemovedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1420
-     * @tc.name Subscribe_Commoneventdickunmounted_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventdickunmounted_Common_Event', 0, function (done) {
-        createCommonEventDickUnmountedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1430
-     * @tc.name Subscribe_Commoneventdickmounted_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventdickmounted_Common_Event', 0, function (done) {
-        createCommonEventDickMountedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1440
-     * @tc.name Subscribe_Commoneventdicknadremoval_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventdicknadremoval_Common_Event', 0, function (done) {
-        createCommonEventDickNadRemovalSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1450
-     * @tc.name Subscribe_Commoneventdickunmoutable_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_Commoneventdickunmoutable_Common_Event', 0, function (done) {
-        createCommonEventDickUnmoutableSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1460
-     * @tc.name Subscribe_CommonEventDickEject_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_CommonEventDickEject_Common_Event', 0, function (done) {
-        createCommonEventDickEjectSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1470
-     * @tc.name Subscribe_CommonEventVisibleAccountsUpdated_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_CommonEventVisibleAccountsUpdated_Common_Event', 0, function (done) {
-        createCommonEventVisibleAccountsUpdatedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1480
-     * @tc.name Subscribe_CommonEventAccountDeleted_Common_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_CommonEventAccountDeleted_Common_Event', 0, function (done) {
-        createCommonEventAccountDeletedSubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1490
-     * @tc.name Subscribe_CommonEventFoundation_ReadyCommon_Event
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_CommonEventFoundation_ReadyCommon_Event', 0, function (done) {
-        createCommonEventFoundationReadySubscriber();
-        done();
-    })
-
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1500
-     * @tc.name Subscribe_CommonEventAirplane_ModeChanged_CommonEvent
-     * @tc.desc Battery acquisition kit
-     */
-    it('Subscribe_CommonEventAirplane_ModeChanged_CommonEvent', 0, function (done) {
-        createCommonEventAirplaneModeChangedSubscriber();
-        done();
-    })
-
-    console.log("*************Battery commonEvent Test End*************");
-})
 }
 
 function createCommonEventAirplaneModeChangedSubscriber() {
@@ -1442,14 +1443,14 @@ function createCommonEventAirplaneModeChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Airplane_Mode_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1463,9 +1464,16 @@ function createCommonEventAirplaneModeChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 
@@ -1488,14 +1496,14 @@ function createCommonEventFoundationReadySubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Foundation_Ready begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1509,9 +1517,16 @@ function createCommonEventFoundationReadySubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventAccountDeletedSubscriber() {
@@ -1533,14 +1548,14 @@ function createCommonEventAccountDeletedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_AccountDeleted begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1554,9 +1569,16 @@ function createCommonEventAccountDeletedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventVisibleAccountsUpdatedSubscriber() {
@@ -1578,14 +1600,14 @@ function createCommonEventVisibleAccountsUpdatedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Visible_Accounts_Updated begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1599,9 +1621,16 @@ function createCommonEventVisibleAccountsUpdatedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventDickEjectSubscriber() {
@@ -1623,14 +1652,14 @@ function createCommonEventDickEjectSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Dick_Eject begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1644,9 +1673,16 @@ function createCommonEventDickEjectSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventDickUnmoutableSubscriber() {
@@ -1668,14 +1704,14 @@ function createCommonEventDickUnmoutableSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Dick_Unmountable begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1689,9 +1725,16 @@ function createCommonEventDickUnmoutableSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventDickNadRemovalSubscriber() {
@@ -1713,14 +1756,14 @@ function createCommonEventDickNadRemovalSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Dick_Nad_Removal begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1734,9 +1777,16 @@ function createCommonEventDickNadRemovalSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventDickMountedSubscriber() {
@@ -1758,14 +1808,14 @@ function createCommonEventDickMountedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Dick_Mounted begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1779,9 +1829,16 @@ function createCommonEventDickMountedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventDickUnmountedSubscriber() {
@@ -1803,14 +1860,14 @@ function createCommonEventDickUnmountedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Dick_Unmounted begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1824,9 +1881,16 @@ function createCommonEventDickUnmountedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventDickRemovedSubscriber() {
@@ -1848,14 +1912,14 @@ function createCommonEventDickRemovedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Dick_Removed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1869,9 +1933,16 @@ function createCommonEventDickRemovedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventSUBAccessoryDetachedSubscriber() {
@@ -1893,14 +1964,14 @@ function createCommonEventSUBAccessoryDetachedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_SUB_Accessory_Detached begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1914,9 +1985,16 @@ function createCommonEventSUBAccessoryDetachedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventSUBAccessoryAttachedSubscriber() {
@@ -1938,14 +2016,14 @@ function createCommonEventSUBAccessoryAttachedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_SUB_Accessory_Attached begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -1959,9 +2037,16 @@ function createCommonEventSUBAccessoryAttachedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventSUBDevidceDetachedSubscriber() {
@@ -1983,14 +2068,14 @@ function createCommonEventSUBDevidceDetachedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_SUB_Devidce_Detached begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2004,9 +2089,16 @@ function createCommonEventSUBDevidceDetachedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventSUBDevidceAttachedSubscriber() {
@@ -2028,14 +2120,14 @@ function createCommonEventSUBDevidceAttachedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_SUB_Devidce_Attached begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2049,9 +2141,16 @@ function createCommonEventSUBDevidceAttachedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVIActiveSubscriber() {
@@ -2073,14 +2172,14 @@ function createCommonEventIVIActiveSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_IVI_Active begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2094,9 +2193,16 @@ function createCommonEventIVIActiveSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVITempratureRecoverySubscriber() {
@@ -2118,14 +2224,14 @@ function createCommonEventIVITempratureRecoverySubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_IVI_Temprature_Recovery begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2139,9 +2245,16 @@ function createCommonEventIVITempratureRecoverySubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVIVoltageRecoverySubscriber() {
@@ -2163,14 +2276,14 @@ function createCommonEventIVIVoltageRecoverySubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_IVI_Voltage_Recovery begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2184,9 +2297,16 @@ function createCommonEventIVIVoltageRecoverySubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVITemperatureAbnormalSubscriber() {
@@ -2208,14 +2328,14 @@ function createCommonEventIVITemperatureAbnormalSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_IVI_Temperature_Abnormal begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2229,9 +2349,16 @@ function createCommonEventIVITemperatureAbnormalSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVIExtremeTemperatureSubscriber() {
@@ -2253,14 +2380,14 @@ function createCommonEventIVIExtremeTemperatureSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_IVI_Extreme_Temperature begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2274,9 +2401,16 @@ function createCommonEventIVIExtremeTemperatureSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVIHightTemperatureSubscriber() {
@@ -2298,14 +2432,14 @@ function createCommonEventIVIHightTemperatureSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_IVI_Hight_Temperature begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2319,9 +2453,16 @@ function createCommonEventIVIHightTemperatureSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVIVoltageAbnormalSubscriber() {
@@ -2343,14 +2484,14 @@ function createCommonEventIVIVoltageAbnormalSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Voltage_Abnormal begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2364,9 +2505,16 @@ function createCommonEventIVIVoltageAbnormalSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVILastmodeSaveSubscriber() {
@@ -2388,14 +2536,14 @@ function createCommonEventIVILastmodeSaveSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Last_modeSave begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2409,9 +2557,16 @@ function createCommonEventIVILastmodeSaveSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVIStandBySubscriber() {
@@ -2433,14 +2588,14 @@ function createCommonEventIVIStandBySubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_IVI_StandBy begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2454,9 +2609,16 @@ function createCommonEventIVIStandBySubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVIPauseSubscriber() {
@@ -2478,14 +2640,14 @@ function createCommonEventIVIPauseSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_IVI_Pause begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2499,9 +2661,16 @@ function createCommonEventIVIPauseSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventIVISleepSubscriber() {
@@ -2523,14 +2692,14 @@ function createCommonEventIVISleepSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_IVI_Sleep begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2544,9 +2713,16 @@ function createCommonEventIVISleepSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventLocationModeStateChangedSubscriber() {
@@ -2568,14 +2744,14 @@ function createCommonEventLocationModeStateChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Location_Mode_State_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2589,9 +2765,16 @@ function createCommonEventLocationModeStateChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventAbilityUpdatedSubscriber() {
@@ -2613,14 +2796,14 @@ function createCommonEventAbilityUpdatedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Ability_Updated begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2634,9 +2817,16 @@ function createCommonEventAbilityUpdatedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventAbilityRemovedSubscriber() {
@@ -2658,14 +2848,14 @@ function createCommonEventAbilityRemovedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Ability_Removed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2679,9 +2869,16 @@ function createCommonEventAbilityRemovedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventAbilityAddedSubscriber() {
@@ -2703,14 +2900,14 @@ function createCommonEventAbilityAddedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Ability_Added begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2724,9 +2921,16 @@ function createCommonEventAbilityAddedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventUserRemovedSubscriber() {
@@ -2748,14 +2952,14 @@ function createCommonEventUserRemovedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_User_Removed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2769,9 +2973,16 @@ function createCommonEventUserRemovedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventUserAddedSubscriber() {
@@ -2793,14 +3004,14 @@ function createCommonEventUserAddedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_User_Added begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2814,9 +3025,16 @@ function createCommonEventUserAddedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventPowerSaveModeChangedSubscriber() {
@@ -2838,14 +3056,14 @@ function createCommonEventPowerSaveModeChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Power_Save_Mode_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2859,9 +3077,16 @@ function createCommonEventPowerSaveModeChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventDeviceIdleModeChangedSubscriber() {
@@ -2883,14 +3108,14 @@ function createCommonEventDeviceIdleModeChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_DeviceIdle_Mode_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2904,9 +3129,16 @@ function createCommonEventDeviceIdleModeChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventNFCActionRFFieldOffDetectedSubscriber() {
@@ -2928,14 +3160,14 @@ function createCommonEventNFCActionRFFieldOffDetectedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_NFC_Action_RF_Field_Off_Detected begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2949,9 +3181,16 @@ function createCommonEventNFCActionRFFieldOffDetectedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventNFCActionRFFieldOnDetectedSubscriber() {
@@ -2973,14 +3212,14 @@ function createCommonEventNFCActionRFFieldOnDetectedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_NFC_Action_RF_Field_On_Detected begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -2994,9 +3233,16 @@ function createCommonEventNFCActionRFFieldOnDetectedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventNFCActionAdapterStateChangedSubscriber() {
@@ -3018,14 +3264,14 @@ function createCommonEventNFCActionAdapterStateChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_NFCA_ction_Adapter_State_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3039,9 +3285,16 @@ function createCommonEventNFCActionAdapterStateChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventA2DPsinkAudioStateUpdateSubscriber() {
@@ -3063,14 +3316,14 @@ function createCommonEventA2DPsinkAudioStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_A2DPsink_Audio_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3084,9 +3337,16 @@ function createCommonEventA2DPsinkAudioStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventA2DPsinkPlayingStateUpdateSubscriber() {
@@ -3108,14 +3368,14 @@ function createCommonEventA2DPsinkPlayingStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_A2DPsink_Playing_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3129,9 +3389,16 @@ function createCommonEventA2DPsinkPlayingStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventHostStateUpdateSubscriber() {
@@ -3153,14 +3420,14 @@ function createCommonEventHostStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Host_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3174,9 +3441,16 @@ function createCommonEventHostStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventHostNameUpdateSubscriber() {
@@ -3198,14 +3472,14 @@ function createCommonEventHostNameUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Host_Name_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3219,9 +3493,16 @@ function createCommonEventHostNameUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventHostDiscovetyFinishedSubscriber() {
@@ -3243,14 +3524,14 @@ function createCommonEventHostDiscovetyFinishedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_HostDiscovery_Finished begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3264,9 +3545,16 @@ function createCommonEventHostDiscovetyFinishedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventHostDiscovetyStartedSubscriber() {
@@ -3288,14 +3576,14 @@ function createCommonEventHostDiscovetyStartedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_HostDiscovery_Started begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3309,9 +3597,16 @@ function createCommonEventHostDiscovetyStartedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventHostScanModeUpdateSubscriber() {
@@ -3333,14 +3628,14 @@ function createCommonEventHostScanModeUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Host_Scan_Mode_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3354,9 +3649,16 @@ function createCommonEventHostScanModeUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventHostReqDisableSubscriber() {
@@ -3378,14 +3680,14 @@ function createCommonEventHostReqDisableSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Host_Req_Disable begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3399,9 +3701,16 @@ function createCommonEventHostReqDisableSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCommonEventHostReqEnableSubscriber() {
@@ -3423,14 +3732,14 @@ function createCommonEventHostReqEnableSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Common_Event_Host_Req_Enable begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3444,9 +3753,16 @@ function createCommonEventHostReqEnableSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothHostReqDiscoverableSubscriber() {
@@ -3468,14 +3784,14 @@ function createBluetoothHostReqDiscoverableSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Host_Req_Discoverable begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3489,9 +3805,16 @@ function createBluetoothHostReqDiscoverableSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothHostStateUpdateSubscriber() {
@@ -3513,14 +3836,14 @@ function createBluetoothHostStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_HostState_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3534,9 +3857,16 @@ function createBluetoothHostStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothHandsfreeunitAgCallStateUpdateSubscriber() {
@@ -3558,14 +3888,14 @@ function createBluetoothHandsfreeunitAgCallStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Handsfreeunit_Ag_CallStateUpdate begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3579,9 +3909,16 @@ function createBluetoothHandsfreeunitAgCallStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothHandsfreeunitAgCommonEventSubscriber() {
@@ -3603,14 +3940,14 @@ function createBluetoothHandsfreeunitAgCommonEventSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Handsfreeunit_Ag_Common_Event begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3624,9 +3961,16 @@ function createBluetoothHandsfreeunitAgCommonEventSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothHandsfreeunitAudioStateUpdateSubscriber() {
@@ -3648,14 +3992,14 @@ function createBluetoothHandsfreeunitAudioStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Handsfreeunit_Audio_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3669,9 +4013,16 @@ function createBluetoothHandsfreeunitAudioStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothHandsfreeunitConntectStateUpdateSubscriber() {
@@ -3693,14 +4044,14 @@ function createBluetoothHandsfreeunitConntectStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Handsfreeunit_Conntect_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3714,9 +4065,16 @@ function createBluetoothHandsfreeunitConntectStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceConntectCancelSubscriber() {
@@ -3738,14 +4096,14 @@ function createBluetoothRemotedeviceConntectCancelSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Conntect_Cancel begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3759,9 +4117,16 @@ function createBluetoothRemotedeviceConntectCancelSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceConntectReplySubscriber() {
@@ -3783,14 +4148,14 @@ function createBluetoothRemotedeviceConntectReplySubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Conntect_Reply begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3804,9 +4169,16 @@ function createBluetoothRemotedeviceConntectReplySubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceConntectReqSubscriber() {
@@ -3828,14 +4200,14 @@ function createBluetoothRemotedeviceConntectReqSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_ConntectReq begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3849,9 +4221,16 @@ function createBluetoothRemotedeviceConntectReqSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedevicePairingCancelSubscriber() {
@@ -3873,14 +4252,14 @@ function createBluetoothRemotedevicePairingCancelSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Pairing_Cancel begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3894,9 +4273,16 @@ function createBluetoothRemotedevicePairingCancelSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothPairingReqSubscriber() {
@@ -3918,14 +4304,14 @@ function createBluetoothPairingReqSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Pairing_Req begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3939,9 +4325,16 @@ function createBluetoothPairingReqSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceUuidValueSubscriber() {
@@ -3963,14 +4356,14 @@ function createBluetoothRemotedeviceUuidValueSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Uuid_Value begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -3984,9 +4377,16 @@ function createBluetoothRemotedeviceUuidValueSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceSdpResultSubscriber() {
@@ -4008,14 +4408,14 @@ function createBluetoothRemotedeviceSdpResultSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remote_device_Sdp_Result begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4029,9 +4429,16 @@ function createBluetoothRemotedeviceSdpResultSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceBateryValueUpdateSubscriber() {
@@ -4053,14 +4460,14 @@ function createBluetoothRemotedeviceBateryValueUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Batery_Value_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4074,9 +4481,16 @@ function createBluetoothRemotedeviceBateryValueUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedevicePairStateSubscriber() {
@@ -4098,14 +4512,14 @@ function createBluetoothRemotedevicePairStateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Pair_State begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4119,9 +4533,16 @@ function createBluetoothRemotedevicePairStateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceNameUpdateSubscriber() {
@@ -4143,14 +4564,14 @@ function createBluetoothRemotedeviceNameUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Name_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4164,9 +4585,16 @@ function createBluetoothRemotedeviceNameUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceAclDisconnectedSubscriber() {
@@ -4188,14 +4616,14 @@ function createBluetoothRemotedeviceAclDisconnectedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Scl_Disconntected begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4209,9 +4637,16 @@ function createBluetoothRemotedeviceAclDisconnectedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceAclConnectedSubscriber() {
@@ -4233,14 +4668,14 @@ function createBluetoothRemotedeviceAclConnectedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Scl_Conntected begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4254,9 +4689,16 @@ function createBluetoothRemotedeviceAclConnectedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceClassValueUpdateSubscriber() {
@@ -4278,14 +4720,14 @@ function createBluetoothRemotedeviceClassValueUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Class_Value_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4299,9 +4741,16 @@ function createBluetoothRemotedeviceClassValueUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothRemotedeviceDiscoveredSubscriber() {
@@ -4323,14 +4772,14 @@ function createBluetoothRemotedeviceDiscoveredSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Remotedevice_Discovered begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4344,9 +4793,16 @@ function createBluetoothRemotedeviceDiscoveredSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothA2DPsourceCodecValueUpdateSubscriber() {
@@ -4368,14 +4824,14 @@ function createBluetoothA2DPsourceCodecValueUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_A2DPsource_Codec_Value_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4389,9 +4845,16 @@ function createBluetoothA2DPsourceCodecValueUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothA2DPsourceAvrcpConntectStateUpdateSubscriber() {
@@ -4413,14 +4876,14 @@ function createBluetoothA2DPsourceAvrcpConntectStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_A2DPsource_Avrcp_Connect_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4434,9 +4897,16 @@ function createBluetoothA2DPsourceAvrcpConntectStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothA2DPsourcePlayingStateUpdateSubscriber() {
@@ -4458,14 +4928,14 @@ function createBluetoothA2DPsourcePlayingStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_A2DPsource_Playing_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4479,9 +4949,16 @@ function createBluetoothA2DPsourcePlayingStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothA2DPsourceCurrentDeviceUpdateSubscriber() {
@@ -4503,14 +4980,14 @@ function createBluetoothA2DPsourceCurrentDeviceUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_A2DPsource_Connect_Device_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4524,9 +5001,16 @@ function createBluetoothA2DPsourceCurrentDeviceUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothA2DPsourceConnectStateUpdateSubscriber() {
@@ -4548,14 +5032,14 @@ function createBluetoothA2DPsourceConnectStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_A2DPsource_Connect_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4569,9 +5053,16 @@ function createBluetoothA2DPsourceConnectStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothHandsfreeAgAudioStateUpdateSubscriber() {
@@ -4593,14 +5084,14 @@ function createBluetoothHandsfreeAgAudioStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Hands_free_Ag_Audio_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4614,9 +5105,16 @@ function createBluetoothHandsfreeAgAudioStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothHandsfreeAgConntectDeviceUpdateSubscriber() {
@@ -4638,14 +5136,14 @@ function createBluetoothHandsfreeAgConntectDeviceUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Hands_free_Ag_Conntect_Device_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4659,9 +5157,16 @@ function createBluetoothHandsfreeAgConntectDeviceUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBluetoothHandsfreeAgConntectStateUpdateSubscriber() {
@@ -4683,14 +5188,14 @@ function createBluetoothHandsfreeAgConntectStateUpdateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Bluetooth_Hands_free_Ag_Conntect_State_Update begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4704,9 +5209,16 @@ function createBluetoothHandsfreeAgConntectStateUpdateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiP2PGroupStateChangedSubscriber() {
@@ -4728,14 +5240,14 @@ function createWifiP2PGroupStateChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_P2P_Group_State_Change begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4749,9 +5261,16 @@ function createWifiP2PGroupStateChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiP2PCurrentDeviceStateChangedSubscriber() {
@@ -4773,14 +5292,14 @@ function createWifiP2PCurrentDeviceStateChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_P2P_Current_Device_State_Change begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4794,9 +5313,16 @@ function createWifiP2PCurrentDeviceStateChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiP2PPeersDiscoveryStateChangedSubscriber() {
@@ -4818,14 +5344,14 @@ function createWifiP2PPeersDiscoveryStateChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_P2P_Peers_Discovery_State_Change begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4839,9 +5365,16 @@ function createWifiP2PPeersDiscoveryStateChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiP2PPeersStateChangedSubscriber() {
@@ -4863,14 +5396,14 @@ function createWifiP2PPeersStateChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_P2P_—Peers—State_Change begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4884,9 +5417,16 @@ function createWifiP2PPeersStateChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiP2PStateChangedSubscriber() {
@@ -4908,14 +5448,14 @@ function createWifiP2PStateChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_P2P_State_Change begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4929,9 +5469,16 @@ function createWifiP2PStateChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiP2PConnStateSubscriber() {
@@ -4953,14 +5500,14 @@ function createWifiP2PConnStateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_P2P_COnn_State begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -4974,9 +5521,16 @@ function createWifiP2PConnStateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiMplinkStateChangeSubscriber() {
@@ -4998,14 +5552,14 @@ function createWifiMplinkStateChangeSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_Mplink_State_Change begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5019,9 +5573,16 @@ function createWifiMplinkStateChangeSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiApStaLeaveSubscriber() {
@@ -5043,14 +5604,14 @@ function createWifiApStaLeaveSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_Ap_Sta_Leave begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5064,9 +5625,16 @@ function createWifiApStaLeaveSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiApStaJoinSubscriber() {
@@ -5088,14 +5656,14 @@ function createWifiApStaJoinSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_Ap_Sta_Join begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5109,9 +5677,16 @@ function createWifiApStaJoinSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiHostpotStateSubscriber() {
@@ -5133,14 +5708,14 @@ function createWifiHostpotStateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_Hostpot_State begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5154,9 +5729,16 @@ function createWifiHostpotStateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiConnStateSubscriber() {
@@ -5178,14 +5760,14 @@ function createWifiConnStateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_Conn_State begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5199,9 +5781,16 @@ function createWifiConnStateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiRssiValueSubscriber() {
@@ -5223,14 +5812,14 @@ function createWifiRssiValueSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_Rssi_Value begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5244,9 +5833,16 @@ function createWifiRssiValueSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiScanFinishedSubscriber() {
@@ -5268,14 +5864,14 @@ function createWifiScanFinishedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_Scan_Finished begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5289,9 +5885,16 @@ function createWifiScanFinishedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createWifiPowerStateSubscriber() {
@@ -5313,14 +5916,14 @@ function createWifiPowerStateSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Wifi_Power_State begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5334,9 +5937,16 @@ function createWifiPowerStateSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createHwidLogOffSubscriber() {
@@ -5358,14 +5968,14 @@ function createHwidLogOffSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Hwid_Logoff begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5379,9 +5989,16 @@ function createHwidLogOffSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createHwidTokenInvalidSubscriber() {
@@ -5403,14 +6020,14 @@ function createHwidTokenInvalidSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Hwid_Token_Invalid begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5424,9 +6041,16 @@ function createHwidTokenInvalidSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createHwidLogoutSubscriber() {
@@ -5448,14 +6072,14 @@ function createHwidLogoutSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Hwid_loguot begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5469,9 +6093,16 @@ function createHwidLogoutSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createHwidLoginSubscriber() {
@@ -5493,14 +6124,14 @@ function createHwidLoginSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Hwid_Login begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5514,9 +6145,16 @@ function createHwidLoginSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createUserStoppedSubscriber() {
@@ -5538,14 +6176,14 @@ function createUserStoppedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe User_Stopped begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5559,9 +6197,16 @@ function createUserStoppedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createUserStoppingSubscriber() {
@@ -5583,14 +6228,14 @@ function createUserStoppingSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe User_Stopping begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5604,9 +6249,16 @@ function createUserStoppingSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createUserUnlockedSubscriber() {
@@ -5628,14 +6280,14 @@ function createUserUnlockedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe User_Unlocked begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5649,9 +6301,16 @@ function createUserUnlockedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createUserStartingSubscriber() {
@@ -5673,14 +6332,14 @@ function createUserStartingSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe User_Starting begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5694,9 +6353,16 @@ function createUserStartingSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createUserSwitchedSubscriber() {
@@ -5718,14 +6384,14 @@ function createUserSwitchedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe User_Switched begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5739,9 +6405,16 @@ function createUserSwitchedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createUserForgroundSubscriber() {
@@ -5763,14 +6436,14 @@ function createUserForgroundSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe User_Forground begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5784,9 +6457,16 @@ function createUserForgroundSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createUserBackgroundSubscriber() {
@@ -5808,14 +6488,14 @@ function createUserBackgroundSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe User_Background begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5829,9 +6509,16 @@ function createUserBackgroundSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createUserStartedSubscriber() {
@@ -5853,14 +6540,14 @@ function createUserStartedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe User_Started begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5874,9 +6561,16 @@ function createUserStartedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createOfficeModeSubscriber() {
@@ -5898,14 +6592,14 @@ function createOfficeModeSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Office_Mode begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5919,9 +6613,16 @@ function createOfficeModeSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createHomeModeSubscriber() {
@@ -5943,14 +6644,14 @@ function createHomeModeSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Home_Mode begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -5964,9 +6665,16 @@ function createHomeModeSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createDriveModeSubscriber() {
@@ -5988,14 +6696,14 @@ function createDriveModeSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Drive_Mode begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6009,9 +6717,16 @@ function createDriveModeSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createManagePackageStorageSubscriber() {
@@ -6033,14 +6748,14 @@ function createManagePackageStorageSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Manage_Package_Storage begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6054,9 +6769,16 @@ function createManagePackageStorageSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createLocateChangedSubscriber() {
@@ -6078,14 +6800,14 @@ function createLocateChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Locate_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6099,9 +6821,16 @@ function createLocateChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createConfigurationChangedSubscriber() {
@@ -6123,14 +6852,14 @@ function createConfigurationChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Configuration_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6144,9 +6873,16 @@ function createConfigurationChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createExternalApplicationsUnAvailableSubscriber() {
@@ -6168,14 +6904,14 @@ function createExternalApplicationsUnAvailableSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe External_Applications_UnAvailable begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6189,9 +6925,16 @@ function createExternalApplicationsUnAvailableSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createExternalApplicationsAvailableSubscriber() {
@@ -6213,14 +6956,14 @@ function createExternalApplicationsAvailableSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe External_Applications_Available begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6234,9 +6977,16 @@ function createExternalApplicationsAvailableSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createMyPackageNeedsVerificationSubscriber() {
@@ -6258,14 +7008,14 @@ function createMyPackageNeedsVerificationSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Package_Needs_Verification begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6279,9 +7029,16 @@ function createMyPackageNeedsVerificationSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createMyPackageFirstLaunchSubscriber() {
@@ -6303,14 +7060,14 @@ function createMyPackageFirstLaunchSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Package_Firsh_Launch begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6324,9 +7081,16 @@ function createMyPackageFirstLaunchSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createMyPackageUnsuspendedSubscriber() {
@@ -6348,14 +7112,14 @@ function createMyPackageUnsuspendedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe My_Packages_UnSuspended begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6369,9 +7133,16 @@ function createMyPackageUnsuspendedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createMyPackageSuspendedSubscriber() {
@@ -6393,14 +7164,14 @@ function createMyPackageSuspendedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe My_Packages_Suspended begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6414,9 +7185,16 @@ function createMyPackageSuspendedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createPackagesUnsuspendedSubscriber() {
@@ -6438,14 +7216,14 @@ function createPackagesUnsuspendedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Packages_Unsuspended begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6459,9 +7237,16 @@ function createPackagesUnsuspendedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createPackageSuspendedSubscriber() {
@@ -6483,14 +7268,14 @@ function createPackageSuspendedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Package_Suspended begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6504,9 +7289,16 @@ function createPackageSuspendedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createPackageDataClearedSubscriber() {
@@ -6528,14 +7320,14 @@ function createPackageDataClearedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Package_Data_Cleared begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6549,9 +7341,16 @@ function createPackageDataClearedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createPackageRestartedSubscriber() {
@@ -6573,14 +7372,14 @@ function createPackageRestartedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Package_Restarted begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6594,9 +7393,16 @@ function createPackageRestartedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createPackageChangedSubscriber() {
@@ -6618,14 +7424,14 @@ function createPackageChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Package_Fully_Removed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6639,9 +7445,16 @@ function createPackageChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createPackageFullyRemovedSubscriber() {
@@ -6663,14 +7476,14 @@ function createPackageFullyRemovedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Package_Fully_Removed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6684,9 +7497,16 @@ function createPackageFullyRemovedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBundleRemovedSubscriber() {
@@ -6708,14 +7528,14 @@ function createBundleRemovedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe BundleRemoved begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6729,9 +7549,16 @@ function createBundleRemovedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createPackageRemovedSubscriber() {
@@ -6753,14 +7580,14 @@ function createPackageRemovedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe PackageRemoved begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6774,9 +7601,16 @@ function createPackageRemovedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createMyPackageReplacedSubscriber() {
@@ -6798,14 +7632,14 @@ function createMyPackageReplacedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe My_Package_Replaced begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6819,9 +7653,16 @@ function createMyPackageReplacedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createPackageReplacedSubscriber() {
@@ -6843,14 +7684,14 @@ function createPackageReplacedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Package_Replaced begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6864,9 +7705,16 @@ function createPackageReplacedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createPackageAddedSubscriber() {
@@ -6888,14 +7736,14 @@ function createPackageAddedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Close_System_Dialogs begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6909,9 +7757,16 @@ function createPackageAddedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createCloseSystemDialogsSubscriber() {
@@ -6933,14 +7788,14 @@ function createCloseSystemDialogsSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Close_System_Dialogs begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6954,9 +7809,16 @@ function createCloseSystemDialogsSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createTimezoneChangedSubscriber() {
@@ -6978,14 +7840,14 @@ function createTimezoneChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Timezone_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -6999,9 +7861,16 @@ function createTimezoneChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createDateChangedSubscriber() {
@@ -7023,14 +7892,14 @@ function createDateChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Date_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7044,9 +7913,16 @@ function createDateChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createTimeChangedSubscriber() {
@@ -7068,14 +7944,14 @@ function createTimeChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Time_Changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7089,9 +7965,16 @@ function createTimeChangedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createTimeTickSubscriber() {
@@ -7113,14 +7996,14 @@ function createTimeTickSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Time_Tick begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7134,9 +8017,16 @@ function createTimeTickSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createUserPresentSubscriber() {
@@ -7158,14 +8048,14 @@ function createUserPresentSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe User_Present begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7179,9 +8069,16 @@ function createUserPresentSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createScreenOnSubscriber() {
@@ -7203,14 +8100,14 @@ function createScreenOnSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Screen_On begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7224,9 +8121,16 @@ function createScreenOnSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createScreenOffSubscriber() {
@@ -7248,14 +8152,14 @@ function createScreenOffSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe Screen_Off begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7269,9 +8173,16 @@ function createScreenOffSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createShutdownSubscriber() {
@@ -7293,14 +8204,14 @@ function createShutdownSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe shutdown begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7314,9 +8225,16 @@ function createShutdownSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createLockedBootCompletedSubscriber() {
@@ -7338,14 +8256,14 @@ function createLockedBootCompletedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe locked_boot_completed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7359,9 +8277,16 @@ function createLockedBootCompletedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBootCompletedSubscriber() {
@@ -7383,14 +8308,14 @@ function createBootCompletedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe boot_completed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7404,15 +8329,22 @@ function createBootCompletedSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+            console.error('Operation failed. Cause: ' + JSON.stringify(error));
+        });
 }
 
 function createBatteryChangedSubscriber() {
-     var commonEventSubscribeInfo = {
-         events: [commonEvent.Support.COMMON_EVENT_BATTERY_CHANGED],
-     };
+    var commonEventSubscribeInfo = {
+        events: [commonEvent.Support.COMMON_EVENT_BATTERY_CHANGED],
+    };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
             console.info('createBatteryChangedSubscriber success');
@@ -7428,14 +8360,14 @@ function createBatteryChangedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe battery_changed begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7444,20 +8376,28 @@ function createBatteryChangedSubscriber() {
                 console.info("commonEventData event: " + commonEventData.event);
                 console.info("commonEventData bundleName: " + commonEventData.bundleName);
                 console.info("commonEventData data: " + commonEventData.data);
-                console.info("commonEventData parameter: " + commonEventData.parameters[0]);
-                var capacity = commonEventData.parameters['0'];
+                let socKey = batteryInfo.CommonEventBatteryChangedKey.EXTRA_SOC;
+                console.info("commonEventData parameter: " + commonEventData.parameters[socKey]);
+                var capacity = commonEventData.parameters[socKey];
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
             console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+        });
 }
 
 function createBatteryOkaySubscriber() {
-     var commonEventSubscribeInfo = {
-         events: [commonEvent.Support.COMMON_EVENT_BATTERY_OKAY],
-     };
+    var commonEventSubscribeInfo = {
+        events: [commonEvent.Support.COMMON_EVENT_BATTERY_OKAY],
+    };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
             console.info('createBatteryOkaySubscriber success');
@@ -7473,14 +8413,14 @@ function createBatteryOkaySubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe battery_okay begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7494,15 +8434,22 @@ function createBatteryOkaySubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
             console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+        });
 }
 
 function createBatteryLowSubscriber() {
-     var commonEventSubscribeInfo = {
-         events: [commonEvent.Support.COMMON_EVENT_BATTERY_LOW],
-     };
+    var commonEventSubscribeInfo = {
+        events: [commonEvent.Support.COMMON_EVENT_BATTERY_LOW],
+    };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
             console.info('createBatteryLowSubscriber success');
@@ -7518,14 +8465,14 @@ function createBatteryLowSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe battery_low begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7539,15 +8486,22 @@ function createBatteryLowSubscriber() {
                 console.info("capacity is:" + capacity);
                 expect(capacity >= 0 && capacity <= 100).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
             console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+        });
 }
 
 function createBatteryPowerConnectedSubscriber() {
-     var commonEventSubscribeInfo = {
-         events: [commonEvent.Support.COMMON_EVENT_POWER_CONNECTED],
-     };
+    var commonEventSubscribeInfo = {
+        events: [commonEvent.Support.COMMON_EVENT_POWER_CONNECTED],
+    };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
             console.info('createBatteryPowerConnectedSubscriber success');
@@ -7563,14 +8517,14 @@ function createBatteryPowerConnectedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe power_connected begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7584,15 +8538,22 @@ function createBatteryPowerConnectedSubscriber() {
                 console.info("pluggedType is:" + pluggedType);
                 expect(pluggedType >= 0 && pluggedType <= 4).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
             console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+        });
 }
 
 function createBatteryPowerDisconnectedSubscriber() {
-     var commonEventSubscribeInfo = {
-         events: [commonEvent.Support.COMMON_EVENT_POWER_DISCONNECTED],
-     };
+    var commonEventSubscribeInfo = {
+        events: [commonEvent.Support.COMMON_EVENT_POWER_DISCONNECTED],
+    };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
             console.info('createBatteryPowerDisconnectedSubscriber success');
@@ -7608,14 +8569,14 @@ function createBatteryPowerDisconnectedSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe power_disconnected begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7629,15 +8590,22 @@ function createBatteryPowerDisconnectedSubscriber() {
                 console.info("pluggedType is:" + pluggedType);
                 expect(pluggedType >= 0 && pluggedType <= 4).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
             console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+        });
 }
 
 function createBatteryChargingSubscriber() {
-     var commonEventSubscribeInfo = {
-         events: [commonEvent.Support.COMMON_EVENT_CHARGING],
-     };
+    var commonEventSubscribeInfo = {
+        events: [commonEvent.Support.COMMON_EVENT_CHARGING],
+    };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
             console.info('createBatteryChargingSubscriber success');
@@ -7653,14 +8621,14 @@ function createBatteryChargingSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe charging begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7674,15 +8642,22 @@ function createBatteryChargingSubscriber() {
                 console.info("chargeState is:" + chargeState);
                 expect(chargeState >= 0 && chargeState <= 10).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
             console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+        });
 }
 
 function createBatteryDischargingSubscriber() {
-     var commonEventSubscribeInfo = {
-         events: [commonEvent.Support.COMMON_EVENT_DISCHARGING],
-     };
+    var commonEventSubscribeInfo = {
+        events: [commonEvent.Support.COMMON_EVENT_DISCHARGING],
+    };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
             console.info('createBatteryDischargingSubscriber success');
@@ -7698,14 +8673,14 @@ function createBatteryDischargingSubscriber() {
                 .then((data) => {
                     console.info('Subscriber getCode success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+                })
             mySubscriber.getData()
                 .then((data) => {
                     console.info('Subscriber getData success : ' + JSON.stringify(data));
                 }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
+                    console.error('Subscriber getData error because: ' + JSON.stringify(error));
+                })
             console.info('subscribe discharging begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
@@ -7719,7 +8694,14 @@ function createBatteryDischargingSubscriber() {
                 console.info("chargeState is:" + chargeState);
                 expect(chargeState >= 0 && chargeState <= 10).assertTrue();
             });
+            commonEvent.unsubscribe(mySubscriber, (error) => {
+                if (error.code) {
+                    console.error(`unsubscribe failed, code is ${err.code}`);
+                } else {
+                    console.info("unsubscribe");
+                }
+            })
         }).catch((error) => {
             console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
+        });
 }

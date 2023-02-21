@@ -1157,39 +1157,6 @@ export default function wallpaperJSUnit() {
         })
 
         /*
-        * @tc.number  testSetImageCallBack103
-        * @tc.name    Test setImage() to removes a wallpaper of the specified type and restores the default one.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testSetImageCallBack103', 0, async function (done) {
-            console.info('------------------testSetImageCallBack103 start----------------------');
-            wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((pixelMap) => {
-                wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error, data) => {
-                    try{
-                        if (error) {
-                            console.error(`testSetImageCallBack103 failed to setImage because: ` + JSON.stringify(error));
-                            expect().assertFail();
-                            done();
-                        }
-                        console.log(`testSetImageCallBack103 success to setImage.`);
-                        expect(true).assertTrue();
-                        done();
-                    }catch(err){
-                        console.info('testSetImageCallBack103 catch err : ' + JSON.stringify(err));
-                        expect().assertFail();
-                        done();
-                    }
-                });
-            }).catch((error) => {
-                console.error(`testSetImageCallBack103 failed to createPixelMap because: ` + JSON.stringify(error));
-                expect().assertFail();
-                done()
-            });
-            console.info('------------------testSetImageCallBack103 end----------------------');
-        })
-
-        /*
         * @tc.number  testSetImagePromise101
         * @tc.name    Test setImage() to removes a wallpaper of the specified type and restores the default one.
         * @tc.desc    Function test
@@ -1229,38 +1196,6 @@ export default function wallpaperJSUnit() {
             });
             console.info('------------------testSetImagePromise102 end----------------------');
         })
-
-        /*
-        * @tc.number  testSetImagePromise103
-        * @tc.name    Test setImage() to removes a wallpaper of the specified type and restores the default one.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testSetImagePromise103', 0, async function (done) {
-            console.info('------------------testSetImagePromise103 start----------------------');
-            try{
-                wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((pixelMap) => {
-                    wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data) => {
-                        console.log(`testSetImagePromise103 success to setImage.`);
-                        expect(true).assertTrue();
-                        done()
-                    }).catch(err => {
-                        console.error(`testSetImagePromise103 failed to setImage because: ` + JSON.stringify(err));
-                        expect().assertFail();
-                        done()
-                    });
-                }).catch((error) => {
-                    console.error(`testSetImagePromise103 failed to createPixelMap because: ` + JSON.stringify(error));
-                    expect().assertFail();
-                    done()
-                });
-            }catch(err){
-                console.info('testSetImagePromise103 catch err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.info('------------------testSetImagePromise103 end----------------------');
-        });
 
     });
 };

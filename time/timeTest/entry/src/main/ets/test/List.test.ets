@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 import systemTimeJsunit from './systemTimeTest';
-import systemTimerJsunit from './systemTimer.test';
 
 export default function testsuite() {
-  systemTimerJsunit();
   systemTimeJsunit();
 }

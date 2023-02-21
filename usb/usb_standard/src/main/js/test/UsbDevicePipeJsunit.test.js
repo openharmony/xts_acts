@@ -328,7 +328,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number: SUB_USB_JS_0750
    * @tc.name: setConfiguration
-   * @tc.desc: Negative test: Set Device Configuration
+   * @tc.desc: Negative test: Set Device Configuration, USBConfig id error
    */
   it('SUB_USB_JS_0750', 0, function () {
     console.info('usb SUB_USB_JS_0750 begin');
@@ -648,6 +648,19 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0620 ClearFeature')
   })
 
+  function callControlTransferEx(pip, controlParam, timeout, caseName) {
+    usb.controlTransfer(pip, controlParam, timeout).then(data => {
+      console.info('usb controlTransfer ret data : ' + data + ' ' + caseName);
+      expect(false).assertTrue();
+      console.info('usb' + caseName + ':  FAILED');
+    }).catch(error => {
+      console.info('usb controlTransfer error : ' + JSON.stringify(error));
+      console.info('usb' + caseName + ':  FAILED');
+      expect(false).assertTrue();
+    });
+    CheckEmptyUtils.sleep(3000);
+  }
+
   /**
    * @tc.number: SUB_USB_JS_1140
    * @tc.name: controlTransfer
@@ -666,9 +679,13 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
     try {
-      var maskCode = usb.controlTransfer("invalid");
-      console.info('usb 1140 case controlTransfer return: ' + maskCode);
-      expect(false).assertTrue();
+      usb.controlTransfer("invalid").then(data => {
+        console.info('usb 1140 case controlTransfer ret data : ' + data);
+        expect(false).assertTrue();
+      }).catch(error => {
+        console.info('usb 1140 case controlTransfer error : ' + JSON.stringify(error));
+        expect(false).assertTrue();
+      });
     } catch (err) {
       console.info('usb 1140 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
@@ -694,9 +711,13 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
     try {
-      var maskCode = usb.controlTransfer();
-      console.info('usb 1300 case controlTransfer return: ' + maskCode);
-      expect(false).assertTrue();
+      usb.controlTransfer().then(data => {
+        console.info('usb 1300 case controlTransfer ret data : ' + data);
+        expect(false).assertTrue();
+      }).catch(error => {
+        console.info('usb 1300 case controlTransfer error : ' + JSON.stringify(error));
+        expect(false).assertTrue();
+      });
     } catch (err) {
       console.info('usb 1300 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
@@ -716,7 +737,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       expect(false).assertFalse();
       return
     }
-    var testParam = getTransferTestParam()
+    var testParam = getTransferTestParam();
     if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
       return
@@ -726,13 +747,40 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_OTHER, (usb.USB_REQUEST_DIR_TO_DEVICE)
         | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
     try {
-      var maskCode = usb.controlTransfer(testParamPip, controlParam, timeout);
-      console.info('usb 1440 case controlTransfer return: ' + maskCode);
-      expect(false).assertTrue();
+      callControlTransferEx(testParamPip, controlParam, timeout, 'SUB_USB_JS_1440 ClearFeature');
     } catch (err) {
       console.info('usb 1440 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1440 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1560
+   * @tc.name: controlTransfer
+   * @tc.desc: Negative test: control transfer,
+   * parameter contrlparam type error(The controlParam should have the data property)
+   */
+  it('SUB_USB_JS_1560', 0, function () {
+    console.info('usb SUB_USB_JS_1560 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb 1560 case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+    var controlParam = "invalid";
+    var timeout = 5000;
+    try {
+      callControlTransferEx(testParam.pip, controlParam, timeout, 'SUB_USB_JS_1560 ClearFeature');
+    } catch (err) {
+      console.info('usb 1560 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1560 :  PASS');
     }
   })
 })

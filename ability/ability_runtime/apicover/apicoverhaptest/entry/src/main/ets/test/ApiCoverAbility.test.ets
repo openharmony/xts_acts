@@ -27,6 +27,7 @@ import commonEvent from '@ohos.commonEvent';
 import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import common from '@ohos.app.ability.common';
+import contextConstant from "@ohos.app.ability.contextConstant"
 
 var EXTENSION_INFO_ERR = 16000001
 var INNER_ERROR = 16000050
@@ -313,22 +314,19 @@ export default function ApiCoverTest() {
      */
     it('SUB_AA_ABILITY_Extension_API_012', 0, async function (done) {
       try {
-        let info: appManagerNew.ProcessRunningInfo;
+        let info: appManagerNew.ProcessInformation;
         let stageContext: common.AbilityStageContext = globalThis.stageContext;
         let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         let appContext: common.ApplicationContext = abilityContext.getApplicationContext();
         let baseContext: common.BaseContext = stageContext;
         let context: common.Context = stageContext;
-        let el1 = common.AreaMode.EL1;
-        let el2 = common.AreaMode.EL2;
+        let el1 = contextConstant.AreaMode.EL1;
+        let el2 = contextConstant.AreaMode.EL2;
         let eventHub: common.EventHub = context.eventHub;
         let abilityResult: common.AbilityResult;
         let connectOptions: common.ConnectOptions;
 
-        appContext.killProcessesBySelf();
-        appContext.killProcessesBySelf((err, data) => {
-            console.log(`killProcessesBySelf, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
-        })
+        console.log("killAllProcesses:" + JSON.stringify(appContext.killAllProcesses));
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
         let abilityDelegatorArgs: abilityDelegatorRegistry.AbilityDelegatorArgs;
@@ -520,54 +518,54 @@ export default function ApiCoverTest() {
     });
 
     /*
-     * @tc.number  SUB_AA_Test_ProcessRunningInformation_0100
-     * @tc.name    Test getProcessRunningInformation in appManager.
+     * @tc.number  SUB_AA_Test_ProcessInformation_0100
+     * @tc.name    Test getRunningProcessInformation in appManager.
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_Test_ProcessRunningInformation_0100', 0, async function (done) {
-      let processRunningInformation:appManagerNew.ProcessRunningInformation;
+    it('SUB_AA_Test_ProcessInformation_0100', 0, async function (done) {
+      let ProcessInformation:appManagerNew.ProcessInformation;
       let process;
-      appManagerNew.getProcessRunningInformation().then((processRunningInformations)=>{
-        console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations));
-        for(let i = 0; i < processRunningInformations.length; i++){
-          console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations[i]));
-          expect(processRunningInformations[i].pid).assertLarger(0)
-          expect(processRunningInformations[i].uid).assertLarger(0)
-          if(processRunningInformations[i].processName == "com.example.apicoverhaptest"){
-            process = processRunningInformations[i]
+      appManagerNew.getRunningProcessInformation().then((ProcessInformations)=>{
+        console.info("SUB_AA_Test_ProcessInformation_0100:" + JSON.stringify(ProcessInformations));
+        for(let i = 0; i < ProcessInformations.length; i++){
+          console.info("SUB_AA_Test_ProcessInformation_0100:" + JSON.stringify(ProcessInformations[i]));
+          expect(ProcessInformations[i].pid).assertLarger(0)
+          expect(ProcessInformations[i].uid).assertLarger(0)
+          if(ProcessInformations[i].processName == "com.example.apicoverhaptest"){
+            process = ProcessInformations[i]
           }
         }
         expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")
         done()
       }).catch((error)=>{
-        console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(error));
+        console.info("SUB_AA_Test_ProcessInformation_0100:" + JSON.stringify(error));
         expect().assertFail()
         done()
       })
     });
 
     /*
-     * @tc.number  SUB_AA_Test_ProcessRunningInformation_0200
-     * @tc.name    Test getProcessRunningInformation by callback in appManager.
+     * @tc.number  SUB_AA_Test_ProcessInformation_0200
+     * @tc.name    Test getRunningProcessInformation by callback in appManager.
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_Test_ProcessRunningInformation_0200', 0, async function (done) {
+    it('SUB_AA_Test_ProcessInformation_0200', 0, async function (done) {
       let process;
-      appManagerNew.getProcessRunningInformation((error, processRunningInformations)=>{
+      appManagerNew.getRunningProcessInformation((error, ProcessInformations)=>{
         if (error) {
-          console.info("SUB_AA_Test_ProcessRunningInformation_0200:" + JSON.stringify(error));
+          console.info("SUB_AA_Test_ProcessInformation_0200:" + JSON.stringify(error));
           expect().assertFail()
           done()
         }
-        console.info("SUB_AA_Test_ProcessRunningInformation_0200:" + JSON.stringify(processRunningInformations));
-        for(let i = 0; i < processRunningInformations.length; i++){
-          console.info("SUB_AA_Test_ProcessRunningInformation_0200:" + JSON.stringify(processRunningInformations[i]));
-          expect(processRunningInformations[i].pid).assertLarger(0)
-          expect(processRunningInformations[i].uid).assertLarger(0)
-          if(processRunningInformations[i].processName == "com.example.apicoverhaptest"){
-            process = processRunningInformations[i]
+        console.info("SUB_AA_Test_ProcessInformation_0200:" + JSON.stringify(ProcessInformations));
+        for(let i = 0; i < ProcessInformations.length; i++){
+          console.info("SUB_AA_Test_ProcessInformation_0200:" + JSON.stringify(ProcessInformations[i]));
+          expect(ProcessInformations[i].pid).assertLarger(0)
+          expect(ProcessInformations[i].uid).assertLarger(0)
+          if(ProcessInformations[i].processName == "com.example.apicoverhaptest"){
+            process = ProcessInformations[i]
           }
         }
         expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")

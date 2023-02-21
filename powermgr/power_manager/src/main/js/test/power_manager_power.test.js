@@ -67,8 +67,8 @@ describe('PowerManagerPowerTest', function () {
                 console.log('Power_Is_Screnn_On_Callback_JSTest0030: ' + error);
                 expect().assertFail();
             }
-        })
-        done();
+            done();
+        })  
     })
 
     /**
