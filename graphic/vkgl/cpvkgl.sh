@@ -14,10 +14,10 @@
 # limitations under the License.
 
 set -e
-
+root_vkgl_path=$1
 mkdir -p  "suites/acts/testcases/vkgldata"
-cp -rf "../../third_party/vk-gl-cts/data" "suites/acts/testcases/vkgldata"
-cp -rf "../../third_party/vk-gl-cts/external/openglcts/data" "suites/acts/testcases/vkgldata"
+cp -rf "$root_vkgl_path/third_party/vk-gl-cts/data" "suites/acts/testcases/vkgldata"
+cp -rf "$root_vkgl_path/third_party/vk-gl-cts/external/openglcts/data" "suites/acts/testcases/vkgldata"
 tar czvf "vkgldata.tar.gz" -C "suites/acts/testcases/vkgldata" "."
 mv "vkgldata.tar.gz" "suites/acts/testcases/vkgldata"
 cp -rf "common/common/libdeqp_ohos_platform.z.so" "suites/acts/testcases/vkgldata"
