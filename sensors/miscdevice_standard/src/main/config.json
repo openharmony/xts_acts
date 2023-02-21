@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "ohos.acts.sensors.sensor.function",
+        "bundleName": "ohos.acts.sensors.miscdevice.function",
         "vendor": "example",
         "version": {
             "code": 1,
@@ -13,7 +13,7 @@
     },
     "deviceConfig": {},
     "module": {
-        "package": "ohos.acts.sensors.sensor.function",
+        "package": "ohos.acts.sensors.miscdevice.function",
         "name": ".entry",
         "deviceType": [
       "tablet",
