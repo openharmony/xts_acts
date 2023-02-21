@@ -248,15 +248,28 @@ static napi_value deleteReference(napi_env env, napi_callback_info info) {
 }
 
 static napi_value referenceRef(napi_env env, napi_callback_info info) {
-    NAPI_ASSERT(env, test_reference != NULL,
+    napi_value result = nullptr;
+    napi_ref resultRef = nullptr;
+
+    napi_create_object(env, &result);
+    napi_create_reference(env, result, 1, &resultRef);
+
+    uint32_t resultRefCount = 0;
+    napi_reference_ref(env, resultRef, &resultRefCount);
+    napi_reference_unref(env, resultRef, &resultRefCount);
+
+    napi_value refValue = nullptr;
+    napi_get_reference_value(env, resultRef, &refValue);
+    NAPI_ASSERT(env, refValue!= NULL,
             "A reference must have been created.");
+    napi_delete_reference(env, resultRef);
 
-    uint32_t refcount;
-    NAPI_CALL(env, napi_reference_ref(env, test_reference, &refcount));
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;            
 
-    napi_value result;
-    NAPI_CALL(env, napi_create_uint32(env, refcount, &result));
-    return result;
+    
 }
 
 static napi_value referenceUnref(napi_env env, napi_callback_info info) {
@@ -390,7 +403,15 @@ static napi_value createSymbol(napi_env env, napi_callback_info info) {
     napi_value symbol;
     NAPI_CALL(env, napi_create_symbol(env, description, &symbol));
 
-    return symbol;
+    napi_valuetype valuetypeSymbol;
+    NAPI_CALL(env, napi_typeof(env, symbol, &valuetypeSymbol)); 
+
+    NAPI_ASSERT(env, valuetypeSymbol == napi_symbol,
+                "Wrong type of arguments. Expects a string.");
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    
+    return _value;            
 }
 
 static napi_value createTypeArray(napi_env env, napi_callback_info info) {
@@ -582,39 +603,37 @@ static napi_value getPrototype(napi_env env, napi_callback_info info) {
 }
 
 static napi_value getDataViewInfo(napi_env env, napi_callback_info info) {
-    size_t argc = 1;
-    napi_value args [1];
-    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
 
-    NAPI_ASSERT(env, argc == 1, "Wrong number of arguments");
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 1024;
+    napi_create_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    NAPI_ASSERT(env, arrayBufferPtr != nullptr, "napi_create_arraybuffer success");
+    bool isArrayBuffer = false;
+    napi_is_arraybuffer(env, arrayBuffer, &isArrayBuffer);
+    
+    napi_value result = nullptr;
+    napi_create_dataview(env, arrayBufferSize, arrayBuffer, 0, &result);
 
-    napi_valuetype valuetype;
-    napi_value input_dataview = args[0];
+    bool isDataView = false;
+    napi_is_dataview(env, result, &isDataView);
 
-    NAPI_CALL(env, napi_typeof(env, input_dataview, &valuetype));
-    NAPI_ASSERT(env, valuetype == napi_object,
-            "Wrong type of arguments. Expects a DataView as the first "
-            "argument.");
+    napi_value retArrayBuffer = nullptr;
+    void* data = nullptr;
+    size_t byteLength = 0;
+    size_t byteOffset = 0;
+    napi_get_dataview_info(env, result, &byteLength, &data, &retArrayBuffer, &byteOffset);
 
-    bool is_dataview;
-    NAPI_CALL(env, napi_is_dataview(env, input_dataview, &is_dataview));
-    NAPI_ASSERT(env, is_dataview,
-            "Wrong type of arguments. Expects a DataView as the first "
-            "argument.");
-    size_t byte_offset = 0;
-    size_t length = 0;
-    napi_value buffer;
-    NAPI_CALL(env,
-            napi_get_dataview_info(env, input_dataview, &length, NULL,
-                    &buffer, &byte_offset));
+    bool retIsArrayBuffer = false;
+    napi_is_arraybuffer(env, arrayBuffer, &retIsArrayBuffer);
 
-    napi_value output_dataview;
-    NAPI_CALL(env,
-            napi_create_dataview(env, length, buffer,
-                    byte_offset, &output_dataview));
+    NAPI_ASSERT(env, arrayBufferPtr == data, "napi_get_dataview_info success");
+    NAPI_ASSERT(env, arrayBufferSize == byteLength, "napi_get_dataview_info success two");
 
-
-    return output_dataview;
+    napi_value _value;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    return _value;
+    
 }
 
 static napi_value getValueBool(napi_env env, napi_callback_info info) {
@@ -1336,6 +1355,27 @@ static napi_value napCreateArrayBuffer(napi_env env, napi_callback_info info)
     return arrayBuffer;
 }
 
+static napi_value napiGetCbInfo(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    napi_status status = napi_get_cb_info(env, info, &argc, args, NULL, NULL);
+    NAPI_ASSERT(env, status == napi_ok, "get_cb_info ok");
+    NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments");
+    double value;
+    napi_get_value_double(env, args[0], &value);
+    
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_number, "Wrong type of argment. Expects a nunber.");
+
+    napi_value returnValue;
+    napi_status statusDouble = napi_create_double(env, value, &returnValue);
+    NAPI_ASSERT(env, statusDouble == napi_ok, "success to napi_create_double");
+
+    return returnValue;
+}
+
 static napi_value naiGetArrayBufferInfo(napi_env env, napi_callback_info info)
 {
     // the value to return
@@ -1687,6 +1727,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("napiCreateBigintUint64", napiCreateBigintUint64),
         DECLARE_NAPI_FUNCTION("napiCreateBigintInt64", napiCreateBigintInt64),
         DECLARE_NAPI_FUNCTION("napiCreateBigintWords", napiCreateBigintWords),
+        DECLARE_NAPI_FUNCTION("napiGetCbInfo", napiGetCbInfo),
         { "napiCancelAsyncWork", nullptr, napiCancelAsyncWork, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "napiCreateFunction", nullptr, napiCreateFunction, nullptr, nullptr, nullptr, napi_default, nullptr },
         DECLARE_NAPI_FUNCTION("napiFatalerror", napiFatalerror), };
