@@ -227,7 +227,7 @@ action("cpLibuv") {
   script = "cplibuv.sh"
   outputs = [ "${target_out_dir}/cplibuv.log" ]
   root_libuv_path = rebase_path("//")
-  args = ["$root_libuv_path"]
+  args = [ "$root_libuv_path" ]
   deps = [
     ":ActsLibuvTest",
     ":libuvruntest",
