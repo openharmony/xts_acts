@@ -253,5 +253,85 @@ export default function nativeApiStringJsunit() {
        done();
     });
 
+     /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0018
+     * @tc.name      napiGetCbInfo
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('napiGetCbInfo018', 0, async function (done) {
+       console.info('napiGetCbInfo018 START');
+       value = napitest.napiGetCbInfo(12.06);
+       console.info('napiGetCbInfo018 testString result is: ' + JSON.stringify(value));
+       expect(value == 12).assertTrue
+       done();
+    });
+
+   /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0220
+    * @tc.name      aceNapiTest013
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest013', 0, async function (done) {
+      console.info('aceNapiTest013 START');
+      let value = napitest.getAndClearLastException();
+      console.info('aceNapiTest013 testString result is: ' + JSON.stringify(value) + "--" + value);
+      expect(value == undefined).assertTrue();
+      done();
+    });
+
+   /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0280
+    * @tc.name      aceNapiTest019
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest019', 0, async function (done) {
+      console.info('aceNapiTest019 START');
+      let value = napitest.referenceRef();
+      console.info('napireferenceRef019 testString result is: ' + value + "---" + JSON.stringify(value) );
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0370
+    * @tc.name      napicreateSymbol028
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('napicreateSymbol028', 0, async function (done) {
+      console.info('napicreateSymbol028 START');
+      let value = napitest.createSymbol('symbol');
+      console.info('napicreateSymbol028 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
+
+   /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0420
+    * @tc.name      napicreateAndGetInt033
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('napicreateAndGetInt033', 0, async function (done) {
+      console.info('aceNapiTest033 START');
+      let value = napitest.createAndGetInt64(6);
+      console.info('aceNapiTest033 testString result is: '+ value + "---" + JSON.stringify(value));
+      expect(value).assertEqual(6)
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0480
+    * @tc.name      napigetDataView039
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('napigetDataView039', 0, async function (done) {
+      console.info('napigetDataView039 START');
+      var buffer = new ArrayBuffer(2);
+      let dView = new DataView(buffer).setInt16(0, 256, true);
+      let value = napitest.getDataViewInfo(dView);
+      console.info('napigetDataView039 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(0)
+      done();
+    });
+
   })
 }
