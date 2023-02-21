@@ -4,8 +4,8 @@
         "type": "OHJSUnitTest",
         "test-timeout": "160000",
         "shell-timeout": "160000",
-        "bundle-name": "ohos.acts.sensors.sensor.function",
-        "package-name": "ohos.acts.sensors.sensor.function"
+        "bundle-name": "ohos.acts.sensors.miscdevice.function",
+        "package-name": "ohos.acts.sensors.miscdevice.function"
     },
     "kits": [
         {

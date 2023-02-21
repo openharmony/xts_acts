@@ -19,6 +19,7 @@ import SensorJsTest_sensor_60 from './SensorOnOffTest.test_newSensorGeomagnetic.
 import SensorJsTest_sensor_3 from './SensorOnOffTest.test_oldAccelerometer.js'
 import SensorJsTest_sensor_25 from './Subscribe_subscribeAccelerometer.js'
 import SensorJsTest_sensor_39 from './SensorOnOffTest.test_newAccelerometer.js'
+import SensorJsTest_sensor_43 from './SensorOnOffTest.test_newGyroScope.js'
 
 export default function testsuite() {
 SensorJsTest_sensor_1()
@@ -28,4 +29,5 @@ SystemParameterTest()
 SensorJsTest_sensor_3()
 SensorJsTest_sensor_25()
 SensorJsTest_sensor_39()
+SensorJsTest_sensor_43()
 }
