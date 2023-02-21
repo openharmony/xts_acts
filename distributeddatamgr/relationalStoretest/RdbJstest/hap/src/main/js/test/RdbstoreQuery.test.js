@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,7 +23,7 @@ const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIM
 const STORE_CONFIG = {
     name: "Query.db",
 }
-const TEST_BUNDLE_NAME="ohos.acts.relationalStorejstest"
+const TEST_BUNDLE_NAME="ohos.acts.rdbjstest"
 
 var kvManager = null
 var kvStore = null

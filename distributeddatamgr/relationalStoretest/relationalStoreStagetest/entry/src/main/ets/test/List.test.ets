@@ -12,11 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import rdbStoreV9Test from './RdbstoreRdbstoreV9.test.ets'
-import rdbStoreDistributedTest from './RdbstoreDistributedEtsunit.test.ets'
-import rdbResultSetTest from './RdbstoreResultsetV9Etsunit.test.ets'
+ 
+import relationalStoreDistributedTest from './relationalStoreDistributedEtsunit.test.ets'
+import relationalStoreTest from './relationalStoreEtsunit.test.ets'
+import relationalStoreResultSetTest from './relationalStoreTestResultsetEtsunit.test.ets'
 export default function testsuite() {
-  rdbStoreDistributedTest(globalThis.abilityContext)
-  rdbStoreV9Test(globalThis.abilityContext);
-  rdbResultSetTest(globalThis.abilityContext)
+  relationalStoreDistributedTest(globalThis.abilityContext)
+  relationalStoreTest(globalThis.abilityContext)
+  relationalStoreResultSetTest(globalThis.abilityContext)
 }
