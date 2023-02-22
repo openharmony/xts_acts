@@ -26,7 +26,5 @@ hctest_suite("ActsParameterTest") {
     "src",
     "///base/startup/init/interfaces/innerkits/include/syspara",
   ]
-  if (board_toolchain_type != "iccarm") {
-    cflags = [ "-Wno-error" ]
-  }
+  cflags = [ "-Wno-error" ]
 }

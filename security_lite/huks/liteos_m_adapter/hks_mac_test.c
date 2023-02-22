@@ -168,7 +168,7 @@ static int32_t BaseTestMac(uint32_t index)
             g_testMacParams[index].keyParams.blobDataSize);
     } else {
         if (g_testMacParams[index].keyAliasParams.blobExist) {
-            ret = HuksGenerateKey(&key, &(g_testMacParams[index].keyAliasParams),
+            ret = GenerateKey(&key, &(g_testMacParams[index].keyAliasParams),
                 &g_testMacParams[index].genKeyParamSetParams, NULL);
         } else {
             ret = TestConstuctBlob(&key,
