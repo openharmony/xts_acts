@@ -45,6 +45,7 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_BATTERY_OKAY).assertEqual('usual.event.BATTERY_OKAY')
       expect(commonEventManager.Support.COMMON_EVENT_POWER_CONNECTED).assertEqual('usual.event.POWER_CONNECTED')
       expect(commonEventManager.Support.COMMON_EVENT_POWER_DISCONNECTED).assertEqual('usual.event.POWER_DISCONNECTED')
+      expect(commonEventManager.Support.COMMON_EVENT_CHARGE_TYPE_CHANGED).assertEqual('usual.event.CHARGE_TYPE_CHANGED')
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_0200 END`)
     })
 

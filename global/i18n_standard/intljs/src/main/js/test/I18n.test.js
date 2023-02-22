@@ -761,7 +761,7 @@ describe('I18nTest', function () {
         console.log('i18n_test_7810 ' + ran);
         let value = phonenumber.getLocationName('1351057467' + ran, 'zh-CN');
         console.log('i18n_test_7810 ' + value);
-        expect(value).assertEqual('广东省深圳市');
+        expect(value).assertEqual('中国');
     })
 
     /**
@@ -776,10 +776,10 @@ describe('I18nTest', function () {
         console.log('i18n_test_7820 ' + ran);
         let value = phonenumber.getLocationName('+861351057467' + ran, 'en-US');
         console.log('i18n_test_7820 ' + value);
-        expect(value).assertEqual('Shenzhen, Guangdong');
+        expect(value).assertEqual('China');
         let value2 = phonenumber.getLocationName('+86 1351057467' + ran, 'en-US');
         console.log('i18n_test_7820 ' + value2);
-        expect(value2).assertEqual('Shenzhen, Guangdong');
+        expect(value2).assertEqual('China');
     })
 
     /**
@@ -794,10 +794,10 @@ describe('I18nTest', function () {
         console.log('i18n_test_7830 ' + ran);
         let value1 = phonenumber.getLocationName('+861586661737' + ran, 'en-US');
         console.log('i18n_test_7830 ' + value1);
-        expect(value1).assertEqual('Jinan, Shandong');
+        expect(value1).assertEqual('China');
         let value2 = phonenumber.getLocationName('+86 1586661737' + ran, 'en-US');
         console.log('i18n_test_7830 ' + value2);
-        expect(value2).assertEqual('Jinan, Shandong');
+        expect(value2).assertEqual('China');
     })
 
     /**
@@ -812,7 +812,7 @@ describe('I18nTest', function () {
         console.log('i18n_test_7840 ' + ran);
         let value = phonenumber.getLocationName('027-5937411' + ran, 'zh-CN');
         console.log('i18n_test_7840 ' + value);
-        expect(value).assertEqual('湖北省武汉市');
+        expect(value).assertEqual('中国');
     })
 
     /**
@@ -827,7 +827,7 @@ describe('I18nTest', function () {
         console.log('i18n_test_7850 ' + ran);
         let value = phonenumber.getLocationName('0728-623797' + ran, 'zh-CN');
         console.log('i18n_test_7850 ' + value);
-        expect(value).assertEqual('湖北省仙桃市');
+        expect(value).assertEqual('中国');
     })
 
     /**

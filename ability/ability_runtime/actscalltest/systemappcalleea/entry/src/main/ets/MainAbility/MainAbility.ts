@@ -61,7 +61,7 @@ var test2200ReleaseFlag = '';
 function testCall(data) {
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCalleeA MainAbility on testCall <======')
-    data.readSequenceable(recvSequence);
+    data.readParcelable(recvSequence);
     var result = recvSequence.str + 'processed';
     var commonEventData = {
         code: 0,
@@ -82,7 +82,7 @@ function testCall(data) {
 function testCallWithResult(data) {
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCalleeA MainAbility on testCall <======')
-    data.readSequenceable(recvSequence);
+    data.readParcelable(recvSequence);
     let result = recvSequence.str + 'processed';
     recvSequence.setMySequence(recvSequence.num, recvSequence.str, result);
 
@@ -94,7 +94,7 @@ export default class MainAbility extends Ability {
     test2200(data) {
         console.log("SystemAppCalleeA MainAbility test2200");
         let recvData = new MySequenceable(0, '', '');
-        data.readSequenceable(recvData);
+        data.readParcelable(recvData);
 
         let want = {
             bundleName: "com.example.systemappcalleea",
@@ -106,7 +106,7 @@ export default class MainAbility extends Ability {
             let param = new MySequenceable(recvData.num + 1, recvData.str + "SystemAppCalleeA", '');
             caller.onRelease(test2200ReleaseCallback);
             caller.callWithResult('test2200', param).then((data2) => {
-                data2.readSequenceable(resultData);
+                data2.readParcelable(resultData);
                 caller.release();
                 for (let start=Date.now(); Date.now() - start <= 200;);
                 resultData.result = test2200ReleaseFlag;

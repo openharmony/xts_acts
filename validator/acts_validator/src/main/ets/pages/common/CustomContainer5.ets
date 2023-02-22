@@ -31,20 +31,34 @@ export struct CustomContainer {
   title : string = '';
   StepTips: string = '';
   Url : string = '';
+  @Link Vue : boolean;
   @BuilderParam content: () => void;
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
-    Button() {
-      Image($r('app.media.ic_public_pass')).width('20vp').height('20vp')
-    }.width('30%').height('30vp').backgroundColor(Color.Grey)
-    .onClick(()=>{
-      router.back({
-        url:this.Url,
-        params: {result : 'Pass', title : this.name,
-        }
+    if(this.Vue == false){
+      Button({stateEffect:this.Vue}) {
+        Image($r('app.media.ic_public_pass')).width('20vp').height('20vp')
+      }.width('30%').height('30vp').backgroundColor(Color.Grey).opacity(0.4)
+      .onClick(()=>{
+
       })
-      this.getScreen(isFullScreen);
-    })
+    }
+    else{
+      Button({stateEffect:this.Vue}) {
+        Image($r('app.media.ic_public_pass')).width('20vp').height('20vp')
+      }.width('30%').height('30vp').backgroundColor(Color.Grey)
+      .onClick(()=>{
+        router.back({
+          url:this.Url,
+          params: {result : 'Pass', title : this.name,
+          }
+        })
+        this.getScreen(isFullScreen);
+        prompt.showToast({
+          message: '通过', duration: 1000
+        });
+      })
+    }
   }
   @Builder
   FailBtn(text: Resource, isFullScreen: boolean) {
@@ -58,6 +72,9 @@ export struct CustomContainer {
         }
       })
       this.getScreen(isFullScreen);
+      prompt.showToast({
+        message: '失败', duration: 1000
+      });
     })
   }
   build() {
@@ -121,9 +138,6 @@ export struct CustomContainer {
     }
     await fileio.close(fd);
     Logger.info(TAG, `write done`);
-    prompt.showToast({
-      message: '结果保存成功', duration: 1000
-    });
   }
   getScreen = (isFullScreen: boolean) => {
     let screenshotOptions: screenshot.ScreenshotOptions = {

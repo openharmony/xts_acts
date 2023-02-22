@@ -23,6 +23,7 @@ struct SetCircle {
   @State X: number = 0;
   @State name: string = 'CanvasShadowColor';
   @State StepTips: string = '操作步骤：点击不同的颜色控件'+'\n'+'预期结果：原本默认蓝色的阴影会随点击变化';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -36,6 +37,7 @@ struct SetCircle {
             this.context.shadowColor = 'rgb(0,0,255)';
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 100, 100);
+            this.Vue = true;
           })
           Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -44,6 +46,7 @@ struct SetCircle {
             this.context.shadowColor = '#fffffc3c';
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 100, 100);
+            this.Vue = true;
           })
           Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -52,6 +55,7 @@ struct SetCircle {
             this.context.shadowColor = '#ff19fa00';
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 100, 100);
+            this.Vue = true;
           })
       }.width('70%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -72,12 +76,13 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        X:$X,
-        name:$name
+        FillColor: $FillColor,
+        X: $X,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

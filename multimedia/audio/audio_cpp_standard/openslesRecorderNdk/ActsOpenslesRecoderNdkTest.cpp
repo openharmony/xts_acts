@@ -180,6 +180,12 @@ static SLresult CaptureStart(SLRecordItf sRecordItf, SLOHBufferQueueItf sBufferQ
         AUDIO_INFO_LOG("CaptureStart SetRecordState result: %{public}lu", result);
         return result;
     }
+    SLuint32 state = SL_RECORDSTATE_RECORDING;
+    result = (*recordItf)->GetRecordState(sRecordItf, &state);
+    if (SL_RESULT_SUCCESS != result) {
+        AUDIO_INFO_LOG("CaptureStart GetRecordState result: %{public}lu", result);
+        return result;
+    }
     if (wavFile != nullptr) {
         SLuint8* buffer = nullptr;
         SLuint32 pSize = 0;

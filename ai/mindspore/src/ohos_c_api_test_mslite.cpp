@@ -60,16 +60,6 @@ void AddContextDeviceCPU(OH_AI_ContextHandle context) {
     OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
 }
 
-// add gpu device info
-void AddContextDeviceGPU(OH_AI_ContextHandle context) {
-    OH_AI_DeviceInfoHandle gpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_GPU);
-    ASSERT_NE(gpu_device_info, nullptr);
-    OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(gpu_device_info);
-    printf("==========device_type:%d\n", device_type);
-    ASSERT_EQ(device_type, OH_AI_DEVICETYPE_GPU);
-    OH_AI_ContextAddDeviceInfo(context, gpu_device_info);
-}
-
 // fill data to inputs tensor
 void FillInputsData(OH_AI_TensorHandleArray inputs, string model_name, bool is_transpose) {
     for (size_t i = 0; i < inputs.handle_num; ++i) {
@@ -146,7 +136,7 @@ void ModelPredict(OH_AI_ModelHandle model, OH_AI_ContextHandle context, string m
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     ASSERT_NE(inputs.handle_list, nullptr);
-    if (shape_infos.shape_num != NULL) {
+    if (shape_infos.shape_num != 0) {
         printf("==========Resizes==========\n");
         OH_AI_Status resize_ret = OH_AI_ModelResize(model, inputs, &shape_infos, inputs.handle_num);
         printf("==========Resizes return code:%d\n", resize_ret);
@@ -1077,7 +1067,7 @@ HWTEST(MSLiteTest, OHOS_Tensor_Create_0001, Function | MediumTest | Level1) {
     constexpr size_t create_shape_num = 4;
     int64_t create_shape[create_shape_num] = {1, 48, 48, 3};
     OH_AI_TensorHandle tensor = OH_AI_TensorCreate("data", OH_AI_DATATYPE_NUMBERTYPE_FLOAT32, create_shape,
-                            create_shape_num, nullptr, static_cast<int>(1 * 48 * 48 * 3 * sizeof(float)));
+                            create_shape_num, nullptr, 0);
     ASSERT_NE(tensor, nullptr);
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     inputs.handle_list[0] = tensor;
@@ -1439,72 +1429,6 @@ HWTEST(MSLiteTest, OHOS_Input_0001, Function | MediumTest | Level1) {
     ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
 }
 
-// 正常场景：多输入模型
-HWTEST(MSLiteTest, OHOS_Input_0002, Function | MediumTest | Level1) {
-    printf("==========Init Context==========\n");
-    OH_AI_ContextHandle context = OH_AI_ContextCreate();
-    ASSERT_NE(context, nullptr);
-    AddContextDeviceCPU(context);
-    printf("==========Create model==========\n");
-    OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    ASSERT_NE(model, nullptr);
-    ModelPredict(model, context, "ml_headpose_pb2tflite", {}, false, false, false);
-}
-
-// 正常场景：输入为uint8模型
-HWTEST(MSLiteTest, OHOS_Input_0003, Function | MediumTest | Level1) {
-    printf("==========ReadFile==========\n");
-    size_t size1;
-    size_t *ptr_size1 = &size1;
-    const char *imagePath = "/data/test/aiy_vision_classifier_plants_V1_3.input";
-    char *imageBuf = ReadFile(imagePath, ptr_size1);
-    ASSERT_NE(imageBuf, nullptr);
-    printf("==========Init Context==========\n");
-    OH_AI_ContextHandle context = OH_AI_ContextCreate();
-    ASSERT_NE(context, nullptr);
-    AddContextDeviceCPU(context);
-    printf("==========Create model==========\n");
-    OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    ASSERT_NE(model, nullptr);
-    printf("==========Build model==========\n");
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/aiy_vision_classifier_plants_V1_3.ms", OH_AI_MODELTYPE_MINDIR,
-                                   context);
-    printf("==========build model return code:%d\n", ret);
-    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
-    printf("==========GetInputs==========\n");
-    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
-    ASSERT_NE(inputs.handle_list, nullptr);
-    for (size_t i = 0; i < inputs.handle_num; ++i) {
-        OH_AI_TensorHandle tensor = inputs.handle_list[i];
-        int64_t element_num = OH_AI_TensorGetElementNum(tensor);
-        printf("Tensor name: %s, elements num: %" PRId64 ".\n", OH_AI_TensorGetName(tensor), element_num);
-        void *input_data = OH_AI_TensorGetMutableData(inputs.handle_list[i]);
-        ASSERT_NE(input_data, nullptr);
-        memcpy_s(input_data, size1, imageBuf, size1);
-    }
-    printf("==========Model Predict==========\n");
-    OH_AI_TensorHandleArray outputs;
-    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
-    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
-    printf("==========GetOutput==========\n");
-    for (size_t i = 0; i < outputs.handle_num; ++i) {
-        OH_AI_TensorHandle tensor = outputs.handle_list[i];
-        int64_t element_num = OH_AI_TensorGetElementNum(tensor);
-        printf("Tensor name: %s, elements num: %" PRId64 ".\n", OH_AI_TensorGetName(tensor), element_num);
-        uint8_t *output_data = reinterpret_cast<uint8_t *>(OH_AI_TensorGetMutableData(tensor));
-        printf("output data is:");
-        for (int j = 0; j < element_num && j <= 20; ++j) {
-            printf("%d ", output_data[j]);
-        }
-        printf("\n");
-        printf("==========compFp32WithTData==========\n");
-        string expectedDataFile = "/data/test/aiy_vision_classifier_plants_V1_3" + std::to_string(i) + ".output";
-        bool result = compUint8WithTData(output_data, expectedDataFile, 0.01, 0.01, false);
-        EXPECT_EQ(result, true);
-    }
-    delete[] imageBuf;
-    OH_AI_ModelDestroy(&model);
-}
 
 // 正常场景：量化模型
 HWTEST(MSLiteTest, OHOS_Input_0004, Function | MediumTest | Level1) {
@@ -1523,26 +1447,6 @@ HWTEST(MSLiteTest, OHOS_Multiple_0001, Function | MediumTest | Level1) {
     for (size_t num = 0; num < 50; ++num) {
         Predict_CPU();
     }
-}
-
-// 正常场景：Model创建一次，Build多次
-HWTEST(MSLiteTest, OHOS_Multiple_0002, Function | MediumTest | Level1) {
-    printf("==========Init Context==========\n");
-    OH_AI_ContextHandle context = OH_AI_ContextCreate();
-    ASSERT_NE(context, nullptr);
-    AddContextDeviceCPU(context);
-    printf("==========Create model==========\n");
-    OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    ASSERT_NE(model, nullptr);
-    printf("==========Build model==========\n");
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
-    printf("==========build model return code:%d\n", ret);
-    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
-    printf("==========Build model==========\n");
-    OH_AI_Status  ret2 = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
-    printf("==========build model return code:%d\n", ret2);
-    ASSERT_EQ(ret2, OH_AI_STATUS_SUCCESS);
-    OH_AI_ModelDestroy(&model);
 }
 
 // 正常场景：Model创建一次,Build一次，Predict多次

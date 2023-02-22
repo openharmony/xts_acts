@@ -84,6 +84,7 @@ export default function alertDialogCenterStartJsunit() {
       try {
            let measureOptions = {textContent : "alertDialog-CenterStart"};
            let width = measure.measureText(measureOptions);
+           console.info("++++++++++++++++++++++" + width.toString());
            expect(width > 0).assertFalse();
            done();
       } catch (err) {

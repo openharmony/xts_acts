@@ -37,7 +37,7 @@ hctest_suite("ActsHuksHalFunctionTest") {
     "hks_safe_compare_key_test.c",
   ]
   include_dirs = [
-    "//base/security/huks/interfaces/innerkits/huks_standard/main/include",
+    "//base/security/huks/interfaces/inner_api/huks_standard/main/include",
     "//base/iothardware/peripheral/interfaces/inner_api",
     "//base/security/huks/frameworks/huks_standard/main/common/include",
     "../common/include",

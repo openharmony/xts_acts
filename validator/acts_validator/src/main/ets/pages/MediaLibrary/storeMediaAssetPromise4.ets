@@ -32,8 +32,7 @@ struct SetCircle {
         Text('点击保存').margin('2%').backgroundColor('#FFDDDDF8').fontSize(20).border({ width: 1 }).size({ width: '70%', height: '20%' })
           .onClick(async () => {
             let TAG = 'storeMediaAssetPromise4';
-            let context0 = featureAbility.getContext();
-            let data = await context0.getFilesDir();
+            let data = await globalThis.abilityContext.getFilesDir();
             let time = new Date().getTime();
             console.log("data is"+ JSON.stringify(data));
             data = 'data/storage/el2/base/haps/entry';
@@ -48,8 +47,7 @@ struct SetCircle {
               mimeType : "file/pdf",
               relativePath : "Documents/"
             };
-
-            mediaLibrary.getMediaLibrary().storeMediaAsset(option).then((value) => {
+            mediaLibrary.getMediaLibrary(globalThis.abilityContext).storeMediaAsset(option).then((value) => {
               AlertDialog.show(
                 {
                   title: '保存成功',

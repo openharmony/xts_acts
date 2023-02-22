@@ -25,7 +25,7 @@ let loadedUrl;
 struct Index {
     controller:WebController = new WebController()
     responseweb: WebResourceResponse = new WebResourceResponse()
-    @State str:string="emitStoreWebArchive"
+    @State str:string="emitAllowGeolocation"
     @State text:string=""
     @State textRatio:number=100
     @State zoomAccessValue:boolean=true
@@ -74,16 +74,7 @@ struct Index {
             Row(){
                 Button("web click").key('webcomponent').onClick(async ()=>{
                     console.info("key==>"+this.str)
-                    switch(this.str){
-                        case "emitStoreWebArchive":{                                                                                 
-                            let webAsyncController = new web_webview.WebAsyncController(this.controller)
-                            webAsyncController.storeWebArchive("/data/storage/el2/base/",true,(filename) => {
-                                if(filename != null) {
-                                    Utils.emitEvent(filename,400) 
-                                }
-                            })                                                             
-                            break;
-                        }
+                    switch(this.str){                                                                                
                         case "emitAllowGeolocation":{
                             try {
                                 web_webview.GeolocationPermissions.allowGeolocation("resource://rawfile/");
@@ -150,15 +141,6 @@ struct Index {
                             },3000)                                                                                      
                             break;
                         }
-                        case "emitExistCookie":{ 
-                            this.controller.getCookieManager().deleteEntireCookie();
-                            setTimeout(()=>{ 
-                                var result = web_webview.WebCookieManager.existCookie();
-                                console.log(result.toString()); 
-                                Utils.emitEvent(result,414)
-                            },3000)                                                                                   
-                            break ;
-                        }
                         case "emitOnConsole":{                           
                             this.controller.runJavaScript({script:"consoleTest()"})
                             break;
@@ -167,28 +149,32 @@ struct Index {
                             this.controller.loadUrl({url:"resource://rawfile/index.html"})
                             setTimeout(()=>{
                                 this.controller.loadData({
-                                data: "<html><title>index</title></html>",
+                                data: "<html><head><title>index</title></head><body bgcolor=\"white\">Source:<pre>source</pre</body><script>function gettitle(){return document.title}</script></html>",
                                 mimeType: "text/html",
                                 encoding: "UTF-8"
                                 })
                             },3000)
                             setTimeout(()=>{
-                                this.text = this.controller.getTitle();
-                                Utils.emitEvent(this.text,424)
+                                this.controller.runJavaScript({script:"gettitle()",callback:(res)=>{
+                                    Utils.emitEvent(res,424)
+                                }})
                                 },4000)                                                                                     
                             break ;
                         }
                         case "emitZoomAccess":{ 
                             this.zoomAccessValue = false
-                            this.controller.refresh()  
-                            var origin = this.controller.getPageHeight()
-                            var zoomInCalled = false  
-                            setTimeout(()=>{  
-                                if (this.controller.getPageHeight() > origin) {
+                            this.controller.refresh() 
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getPageHeight()",callback:(res1)=>{
+                                var zoomInCalled = false
+                                this.controller.runJavaScript({script:"getPageHeight()",callback:(res)=>{
+                                    console.info("getPageHeight==>"+res)
+                                    if (Number(res) > Number(res1)) {
                                     zoomInCalled = true
                                 }
-                                console.log("final" + this.controller.getPageHeight())
-                                Utils.emitEvent(zoomInCalled,428);                                                                                 
+                                Utils.emitEvent(zoomInCalled,428);
+                                    }})
+                                }})                                                                                
                             },3000);                                                                                  
                             break ;
                         }

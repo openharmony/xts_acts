@@ -58,6 +58,6 @@
         "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddVisibility",
         "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddLayoutWeight",
         "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddOneWidth",
-        "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddOneMargin"
+        "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddOneMargin"   
     ]
 }

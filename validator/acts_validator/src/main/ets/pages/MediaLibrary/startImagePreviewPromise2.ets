@@ -34,8 +34,8 @@ struct SetCircle {
               "datashare:///media/image/3",
               "datashare:///media/image/4",
             ];
-            let index = 0;
-            mediaLibrary.getMediaLibrary().startImagePreview(images, index).then(() => {
+            let index = 1;
+            mediaLibrary.getMediaLibrary(globalThis.abilityContext).startImagePreview(images, index).then(() => {
               console.log(TAG + "Succeeded in previewing the images.");
             }).catch((err) => {
               console.log(TAG + "An error occurred when previewing the images." + JSON.stringify(err));

@@ -21,6 +21,7 @@ struct SwipeGestureTest {
   @State Y : number = 0;
   @State name: string = 'SwipeGesture';
   @State StepTips: string = '操作步骤：用至少一根手指滑动图像（最多十根手指）'+'\n'+'预期结果：图片正常滑动，手势滑动角度及速度显示正常';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -36,6 +37,7 @@ struct SwipeGestureTest {
         .onAction((event: GestureEvent) => {
           this.Y = event.speed;
           this.X = event.angle;
+          this.Vue = true;
         })
       )
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
@@ -51,11 +53,12 @@ struct SwipeGestureTest {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        X :$X, Y :$Y,
-        name:$name
+        X: $X, Y: $Y,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

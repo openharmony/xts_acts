@@ -22,6 +22,7 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasLineJoin';
   @State StepTips: string = '操作步骤：点击不同的交点样式控件'+'\n'+'预期结果：原本默认交点样式会随点击变化';
+  @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -38,6 +39,7 @@ struct SetCircle {
             this.context.lineTo(210, 130);
             this.context.lineTo(120, 180);
             this.context.stroke();
+            this.Vue = true;
           })
         Text('bevel').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -49,6 +51,7 @@ struct SetCircle {
             this.context.lineTo(210, 130);
             this.context.lineTo(120, 180);
             this.context.stroke();
+            this.Vue = true;
           })
         Text('miter').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -60,6 +63,7 @@ struct SetCircle {
             this.context.lineTo(210, 130);
             this.context.lineTo(120, 180);
             this.context.stroke();
+            this.Vue = true;
           })
       }.width('70%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -83,11 +87,12 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/ArkUI/ArkUI_index',
-        StepTips:this.StepTips,
+        Url: 'pages/ArkUI/ArkUI_index',
+        StepTips: this.StepTips,
         content: this.specificNoParam,
-        FillColor:$FillColor,
-        name:$name
+        FillColor: $FillColor,
+        name: $name,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }

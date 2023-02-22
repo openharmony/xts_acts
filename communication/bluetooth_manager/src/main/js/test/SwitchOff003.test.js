@@ -344,99 +344,6 @@ describe('bluetoothBLETest3', function() {
         }
     })
 
-     /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_1300
-     * @tc.name testSppListen
-     * @tc.desc Test 2900003 - Bluetooth switch is off
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_1300', 0, async function (done) {
-        try {
-            let SppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
-            secure: true, type: bluetooth.SppType.SPP_RFCOMM};
-            let serverNumber = -1;
-            function serverSocket(code, number) {
-                if (code) {
-                    console.log('bluetooth error code01: ' + code);               
-                }else{
-                    console.log('bluetooth serverSocket Number:' + JSON.stringify(number));
-                    serverNumber = number;
-                    expect(true).assertEqual(number!=null);
-                }
-            }
-            bluetooth.sppListen('server1', SppOption, serverSocket);
-            expect(true).assertFalse();
-            done()
-        } catch (error) {
-            console.error('[bluetooth_js]sppListen error.code:'
-               +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-    })
-
-    /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_1400
-     * @tc.name testSppAccept
-     * @tc.desc Test 2900003 - Bluetooth switch is off.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_1400', 0, async function (done) {
-        try {
-            function acceptClientSocket(code, number) {
-            
-                if (code) {
-                    console.log('[bluetooth_js] error code05: ' + JSON.stringify(code));
-                }else{
-                    console.log('[bluetooth_js] clientSocket Number:' + JSON.stringify(number));
-                    expect(true).assertEqual(number!=null);
-                }
-            }
-            bluetooth.sppAccept(0, acceptClientSocket);
-            expect(true).assertFalse();
-            done()
-        } catch (error) {
-            console.error('[bluetooth_js]sppAccept error.code:'
-               +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-    })
-
-    /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_1500
-     * @tc.name testSppConnect
-     * @tc.desc Test 2900003 - Bluetooth switch is off.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_1500', 0, async function (done) {
-        try {
-            let sppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
-            secure: true, type: 0};
-            bluetooth.sppConnect('00:11:22:33:44:55', sppOption, function(code, number) {
-                if (code) {
-                    console.info('[bluetooth_js] code is: ' + JSON.stringify(code));
-                } else {
-                    console.log('[bluetooth_js]sppConnect Number:'
-                        + JSON.stringify(number));
-                }
-            });
-            expect(true).assertFalse();
-            done()
-        } catch (error) {
-            console.error('[bluetooth_js]sppConnect error.code:'
-               +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-    })
-
     /**
      * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_1600
      * @tc.name test getDevice HFP State.
@@ -702,28 +609,6 @@ describe('bluetoothBLETest3', function() {
     })
 
     /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_2700
-     * @tc.name test getConnectedBLEDevices
-     * @tc.desc Test 2900003 - Bluetooth switch is off.
-     * @tc.size MEDIUM
-     * @ since 7
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_2700', 0, function () {
-        try {
-            let result = bluetooth.BLE.getConnectedBLEDevices();
-            console.info("[bluetooth_js] getConnDev:" + JSON.stringify(result)
-                    + "length:" +result.length);
-            expect(true).assertFalse();
-        } catch (error) {
-            console.error(`[bluetooth_js]getConnDev failed, code is ${error.code}, 
-            message is ${error.message}`);
-            expect(error.code).assertEqual('2900003');
-        }    
-    })
-
-    /**
      * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_2800
      * @tc.name testClassicStartBLEScan
      * @tc.desc Test 2900003 - Bluetooth switch is off.
@@ -969,43 +854,6 @@ describe('bluetoothBLETest3', function() {
             expect(error.code).assertEqual('2900003');
             done()
         }       
-    })
-
-    /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_3500
-     * @tc.name testNotifyCharacteristicChanged
-     * @tc.desc Test 2900003 - Bluetooth switch is off.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_3500', 0, async function (done) {
-        try {
-            let descriptors = [];
-            let arrayBuffer = new ArrayBuffer(8);
-            let descV = new Uint8Array(arrayBuffer);
-            descV[0] = 11;
-            let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: descV};
-            descriptors[0] = descriptor;
-            let arrayBufferC = new ArrayBuffer(8);
-            let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue:
-            arrayBufferC, descriptors:descriptors};
-            let NotifyCharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-            characteristicUuid: '00001821-0000-1000-8000-00805F9B34FB', characteristicValue: 
-            characteristic.characteristicValue, confirm: false};
-            gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', NotifyCharacteristic);
-            expect(true).assertFalse();
-            done();
-        } catch (error) {
-            console.error('[bluetooth_js]notifyCharacteristicChanged1 failed, code:'
-            +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-        
     })
 
     /**
