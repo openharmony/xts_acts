@@ -45,6 +45,42 @@ export async function driveFn(num) {
     await msleepAsync(2000)
 }
 
+export async function getAvRecorderFd(pathName, fileType) {
+    console.info('case come in getAvRecorderFd')
+    let fdObject = {
+        fileAsset : null,
+        fdNumber : null
+    }
+    let displayName = pathName;
+    console.info('[mediaLibrary] displayName is ' + displayName);
+    console.info('[mediaLibrary] fileType is ' + fileType);
+    const mediaTest = mediaLibrary.getMediaLibrary();
+    let fileKeyObj = mediaLibrary.FileKey;
+    let mediaType;
+    let publicPath;
+    if (fileType == 'audio') {
+        mediaType = mediaLibrary.MediaType.AUDIO;
+        publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
+    } else {
+        mediaType = mediaLibrary.MediaType.VIDEO;
+        publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
+    }
+    console.info('[mediaLibrary] publicPath is ' + publicPath);
+    let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
+    if (dataUri != undefined) {
+        let args = dataUri.id.toString();
+        let fetchOp = {
+            selections : fileKeyObj.ID + "=?",
+            selectionArgs : [args],
+        }
+        let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
+        fdObject.fileAsset = await fetchFileResult.getAllObject();
+        fdObject.fdNumber = await fdObject.fileAsset[0].open('rw');
+        console.info('case getFd number is: ' + fdObject.fdNumber);
+    }
+    return fdObject;
+}
+
 // File operation
 export async function getFileDescriptor(fileName) {
     let fileDescriptor = undefined;
