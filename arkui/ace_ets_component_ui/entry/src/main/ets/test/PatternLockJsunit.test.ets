@@ -207,7 +207,7 @@ export default function PatternLockJsunit() {
     it('PatternLockJsunit_1200', 0, async function (done) {
       // Modify the autoReset value of the PatternLock component
       console.info('[PatternLockJsunit_1200] START');
-      globalThis.value.message.notify({name:'autoReset',value:'false'})
+      globalThis.value.message.notify({name:'autoReset',value:false})
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('lock');
       let obj = JSON.parse(strJson);
