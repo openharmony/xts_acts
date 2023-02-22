@@ -1691,7 +1691,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
   /**
    * @tc.number: SUB_USB_JS_1540
    * @tc.name: setConfiguration
-   * @tc.desc: Negative test: Set Device Configuration, parameter pipe type error
+   * @tc.desc: Negative test: Set Device Configuration, parameter config type error
    */
   it('SUB_USB_JS_1540', 0, function () {
     console.info('usb SUB_USB_JS_1540 begin');
