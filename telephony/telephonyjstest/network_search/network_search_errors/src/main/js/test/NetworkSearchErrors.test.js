@@ -397,6 +397,7 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_isRadioOn_Promise_0200', 0, async function (done) {
         try {
             await radio.isRadioOn();
+            done();
         } catch (err) {
             console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
             expect(err.code).assertEqual(8300000);
@@ -432,6 +433,7 @@ describe('ActsNetworkSearchTest', function () {
         try {
             let data = await radio.isRadioOn(0);
             console.info('Telephony_NetworkSearch_isRadioOn_Promise_0300  finish ' + JSON.stringify(data));
+            done();
         } catch (err) {
             console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
             expect(err.code).assertEqual(8300000);

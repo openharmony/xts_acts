@@ -270,7 +270,7 @@ describe('SimManagerTest', function () {
   it('Telephony_Sim_isSimActive_Async_0700', 0, async function (done) {
       sim.isSimActive(env.SLOTID2, (err, data) => {
         console.info("isSimActive async err info :" + JSON.stringify(err) + "data:" + JSON.stringify(data));
-        expect(err.code).assertEqual(202);
+        expect(err.code).assertEqual(8300001);
         done();
       });
   });
@@ -289,7 +289,7 @@ describe('SimManagerTest', function () {
       done();
     }).catch(err => {
       console.info("isSimActive promise err info :" + JSON.stringify(err));
-      expect(err.code).assertEqual(202);
+      expect(err.code).assertEqual(8300001);
       done();
     });
   });
