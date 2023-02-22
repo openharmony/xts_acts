@@ -1,17 +1,17 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* Copyright (c) 2022 Huawei Device Co., Ltd.
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
 import pointer from '@ohos.multimodalInput.pointer'
 import window from '@ohos.window'
@@ -65,32 +65,40 @@ export default function Pointer_test() {
 
     it('Pointer_PointerVisibleTest_002', 0, async function (done) {
       console.info(`Pointer_PointerVisibleTest_002 enter`);
-      try {
-        await pointer.setPointerVisible(true).then(data => {
-          console.info(`Pointer_PointerVisibleTest_002 success_1, data=${JSON.stringify(data)}`);
-          expect(true).assertTrue();
-        }).catch((err) => {
-          console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
-          expect(false).assertTrue();
-        });
-      } catch (error) {
-        console.info(`Pointer_PointerVisibleTest_002 error`);
-        expect(false).assertTrue();
-      }
-      try {
-        pointer.isPointerVisible((err, data) => {
-          if (err) {
+      var result = canIUse("SystemCapability.MultimodalInput.Input.Pointer");
+      console.info('Pointer_PointerVisibleTest_002 segregate result=' + result);
+      if (result) {
+        try {
+          await pointer.setPointerVisible(true).then(data => {
+            console.info(`Pointer_PointerVisibleTest_002 success_1, data=${JSON.stringify(data)}`);
+            expect(true).assertTrue();
+          }).catch((err) => {
             console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
             expect(false).assertTrue();
-          } else {
-            console.info(`Pointer_PointerVisibleTest_002 success_2, data=${JSON.stringify(data)}`);
-            expect(data == true).assertTrue();
-            done();
-          }
-        });
-      } catch (error) {
-        console.info(`Pointer_PointerVisibleTest_002 error`);
-        expect(false).assertTrue();
+          });
+        } catch (error) {
+          console.info(`Pointer_PointerVisibleTest_002 error`);
+          expect(false).assertTrue();
+        }
+        try {
+          pointer.isPointerVisible((err, data) => {
+            if (err) {
+              console.info(`Pointer_PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
+              expect(false).assertTrue();
+            } else {
+              console.info(`Pointer_PointerVisibleTest_002 success_2, data=${JSON.stringify(data)}`);
+              expect(data == true).assertTrue();
+              done();
+            }
+          });
+        } catch (error) {
+          console.info(`Pointer_PointerVisibleTest_002 error`);
+          expect(false).assertTrue();
+        }
+      } else {
+        expect(true).assertTrue();
+        console.info('Pointer_PointerVisibleTest_002 SystemCapability.MultimodalInput.Input.Pointer segregate');
+        done();
       }
       console.info(`Pointer_PointerVisibleTest_002 exit`);
     })
@@ -122,20 +130,27 @@ export default function Pointer_test() {
           })
         })
       }
-      window.getTopWindow(async (err, data) => {
-        console.info(`case:SetPointerStyle_001 enter`);
-        var windowClass = data;
-        if (err && err.code != 0) {
-          console.info(`case:SetPointerStyle_001,getTopWindow failed, err=${JSON.stringify(err)}`);
-          return;
-        }
-        console.info(`case:SetPointerStyle_001 ===========`);
-        await getPropertiesPromise(data);
-        console.info(`case:SetPointerStyle_001 exit`);
+      var result = canIUse("SystemCapability.MultimodalInput.Input.Pointer");
+      console.info('Pointer_SetPointerStyle_001 segregate result=' + result);
+      if (result) {
+        window.getTopWindow(async (err, data) => {
+          console.info(`case:SetPointerStyle_001 enter`);
+          var windowClass = data;
+          if (err && err.code != 0) {
+            console.info(`case:SetPointerStyle_001,getTopWindow failed, err=${JSON.stringify(err)}`);
+            return;
+          }
+          console.info(`case:SetPointerStyle_001 ===========`);
+          await getPropertiesPromise(data);
+          console.info(`case:SetPointerStyle_001 exit`);
+          done();
+        })
+      } else {
+        expect(true).assertTrue();
+        console.info('Pointer_SetPointerStyle_001 SystemCapability.MultimodalInput.Input.Pointer segregate');
         done();
-      })
+      }
     })
-
 
     it('Pointer_SetPointerStyle_002', 0, async function (done) {
       console.info(`SetPointerStyle_002 enter`);
@@ -166,18 +181,26 @@ export default function Pointer_test() {
           })
         })
       }
-      window.getTopWindow(async (err, data) => {
-        console.info(`case:SetPointerStyle_002 enter`);
-        var windowClass = data;
-        if (err && err.code != 0) {
-          console.info(`case:SetPointerStyle_002,getTopWindow failed, err=${JSON.stringify(err)}`);
-          return;
-        }
-        console.info(`case:SetPointerStyle_002 ===========`);
-        await getPropertiesPromise(data);
-        console.info(`case:SetPointerStyle_002 exit`);
+      var result = canIUse("SystemCapability.MultimodalInput.Input.Pointer");
+      console.info('Pointer_SetPointerStyle_002 segregate result=' + result);
+      if (result) {
+        window.getTopWindow(async (err, data) => {
+          console.info(`case:SetPointerStyle_002 enter`);
+          var windowClass = data;
+          if (err && err.code != 0) {
+            console.info(`case:SetPointerStyle_002,getTopWindow failed, err=${JSON.stringify(err)}`);
+            return;
+          }
+          console.info(`case:SetPointerStyle_002 ===========`);
+          await getPropertiesPromise(data);
+          console.info(`case:SetPointerStyle_002 exit`);
+          done();
+        })
+      } else {
+        expect(true).assertTrue();
+        console.info('Pointer_SetPointerStyle_002 SystemCapability.MultimodalInput.Input.Pointer segregate');
         done();
-      })
+      }
     })
 
     it('Pointer_GetPointerStyle_001', 0, async function (done) {
@@ -207,18 +230,26 @@ export default function Pointer_test() {
           })
         })
       }
-      window.getTopWindow(async (err, data) => {
-        console.info(`case:GetPointerStyle_001 enter`);
-        var windowClass = data;
-        if (err && err.code != 0) {
-          console.info(`case:GetPointerStyle_001,getTopWindow failed, err=${JSON.stringify(err)}`);
-          return;
-        }
-        console.info(`case:GetPointerStyle_001 ===========`);
-        await getPropertiesPromise(data);
-        console.info(`case:GetPointerStyle_001 exit`);
+      var result = canIUse("SystemCapability.MultimodalInput.Input.Pointer");
+      console.info('Pointer_GetPointerStyle_001 segregate result=' + result);
+      if (result) {
+        window.getTopWindow(async (err, data) => {
+          console.info(`case:GetPointerStyle_001 enter`);
+          var windowClass = data;
+          if (err && err.code != 0) {
+            console.info(`case:GetPointerStyle_001,getTopWindow failed, err=${JSON.stringify(err)}`);
+            return;
+          }
+          console.info(`case:GetPointerStyle_001 ===========`);
+          await getPropertiesPromise(data);
+          console.info(`case:GetPointerStyle_001 exit`);
+          done();
+        })
+      } else {
+        expect(true).assertTrue();
+        console.info('Pointer_GetPointerStyle_001 SystemCapability.MultimodalInput.Input.Pointer segregate');
         done();
-      })
+      }
     })
 
     it('Pointer_GetPointerStyle_002', 0, async function (done) {
@@ -251,19 +282,27 @@ export default function Pointer_test() {
           })
         })
       }
-      window.getTopWindow(async (err, data) => {
-        console.info(`case:GetPointerStyle_002 enter`);
-        var windowClass = data;
-        if (err && err.code != 0) {
-          console.info(`case:GetPointerStyle_002,getTopWindow failed, err=${JSON.stringify(err)}`);
+      var result = canIUse("SystemCapability.MultimodalInput.Input.Pointer");
+      console.info('Pointer_GetPointerStyle_002 segregate result=' + result);
+      if (result) {
+        window.getTopWindow(async (err, data) => {
+          console.info(`case:GetPointerStyle_002 enter`);
+          var windowClass = data;
+          if (err && err.code != 0) {
+            console.info(`case:GetPointerStyle_002,getTopWindow failed, err=${JSON.stringify(err)}`);
+            done();
+            return;
+          }
+          console.info(`case:GetPointerStyle_002 ===========`);
+          await getPropertiesPromise(data);
+          console.info(`case:GetPointerStyle_002 exit`);
           done();
-          return;
-        }
-        console.info(`case:GetPointerStyle_002 ===========`);
-        await getPropertiesPromise(data);
-        console.info(`case:GetPointerStyle_002 exit`);
+        })
+      } else {
+        expect(true).assertTrue();
+        console.info('Pointer_GetPointerStyle_002 SystemCapability.MultimodalInput.Input.Pointer segregate');
         done();
-      })
+      }
     })
 
     it('Pointer_PointerStyle_test', 0, function () {
