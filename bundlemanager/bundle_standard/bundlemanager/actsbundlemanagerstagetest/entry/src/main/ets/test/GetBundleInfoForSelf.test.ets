@@ -43,7 +43,7 @@ export default function getBundleInfoForSelf() {
         expect(data.versionCode).assertEqual(1000000);
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode).assertEqual(1000000);
-        expect(data.targetVersion).assertEqual(8);
+        expect(data.targetVersion).assertEqual(9);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
         expect(data.appInfo).assertEqual(null);
@@ -72,7 +72,7 @@ export default function getBundleInfoForSelf() {
         expect(data.versionCode).assertEqual(1000000);
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode).assertEqual(1000000);
-        expect(data.targetVersion).assertEqual(8);
+        expect(data.targetVersion).assertEqual(9);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
         expect(data.appInfo).assertEqual(null);
@@ -94,6 +94,7 @@ export default function getBundleInfoForSelf() {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).then(data => {
         console.info("getBundleInfoForSelfApplicationPro" + JSON.stringify(data.appInfo));
         checkCommonBundleInfo(data);
+        expect(data.appInfo.bundleType).assertEqual(bundle.BundleType.APP);
         expect(data.appInfo.name).assertEqual(BUNDLE_NAME);
         expect(data.appInfo.description).assertEqual("$string:description_application");
         expect(data.appInfo.descriptionId).assertLarger(0);
@@ -1001,7 +1002,7 @@ export default function getBundleInfoForSelf() {
       expect(data.versionCode).assertEqual(1000000);
       expect(data.versionName).assertEqual("1.0.0");
       expect(data.minCompatibleVersionCode).assertEqual(1000000);
-      expect(data.targetVersion).assertEqual(8);
+      expect(data.targetVersion).assertEqual(9);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
       console.info("checkCommonBundleInfo end");

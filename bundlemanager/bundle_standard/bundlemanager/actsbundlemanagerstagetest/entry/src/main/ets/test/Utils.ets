@@ -13,7 +13,14 @@
  * limitations under the License.
  */
 
+import hiLog from '@ohos.hilog';
+
 export default class Utils {
+
+  static info(str) {
+    hiLog.info(0 , "BMSTEST" , str);
+  }
+
   static sleep(time) {
     return new Promise((resolve, reject) => {
       setTimeout((data) => {
