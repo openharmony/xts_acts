@@ -761,10 +761,17 @@ describe('webgl1Test_webgl10', function() {
 		gl.texParameteri(gl2.TEXTURE_CUBE_MAP, gl2.TEXTURE_MAG_FILTER, gl2.NEAREST);
 		const framebuffer = gl.createFramebuffer();
 		gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
-		gl2.framebufferTextureLayer(gl.DRAW_FRAMEBUFFER, gl2.COLOR_ATTACHMENT0, texture, 0, 8)
+		gl2.framebufferTextureLayer(gl2.DRAW_FRAMEBUFFER, gl.COLOR_ATTACHMENT0, texture, 0, 8)
 		const framebufferTextureLayerError = gl.getError();
 		console.info("framebufferTextureLayerError: " + framebufferTextureLayerError);
-		expect(framebufferTextureLayerError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(framebufferTextureLayerError).assertEqual(0);
+		} else {
+		    expect(framebufferTextureLayerError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -782,10 +789,17 @@ describe('webgl1Test_webgl10', function() {
 		gl.texParameteri(gl2.TEXTURE_CUBE_MAP, gl2.TEXTURE_MAG_FILTER, gl2.NEAREST);
 		const framebuffer = gl.createFramebuffer();
 		gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
-		gl2.framebufferTextureLayer(gl.READ_FRAMEBUFFER, gl2.COLOR_ATTACHMENT0, texture, 0, 8)
+		gl2.framebufferTextureLayer(gl2.READ_FRAMEBUFFER, gl.COLOR_ATTACHMENT0, texture, 0, 8)
 		const framebufferTextureLayerError = gl.getError();
 		console.info("framebufferTextureLayerError: " + framebufferTextureLayerError);
-		expect(framebufferTextureLayerError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(framebufferTextureLayerError).assertEqual(0);
+		} else {
+		    expect(framebufferTextureLayerError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -803,10 +817,17 @@ describe('webgl1Test_webgl10', function() {
 		gl.texParameteri(gl2.TEXTURE_CUBE_MAP, gl2.TEXTURE_MAG_FILTER, gl2.NEAREST);
 		const framebuffer = gl.createFramebuffer();
 		gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
-		gl2.framebufferTextureLayer(gl.FRAMEBUFFER, gl2.DEPTH_ATTACHMENT, texture, 0, 8)
+		gl2.framebufferTextureLayer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, texture, 0, 8)
 		const framebufferTextureLayerError = gl.getError();
 		console.info("framebufferTextureLayerError: " + framebufferTextureLayerError);
-		expect(framebufferTextureLayerError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(framebufferTextureLayerError).assertEqual(0);
+		} else {
+		    expect(framebufferTextureLayerError).assertEqual(gl.INVALID_OPERATION);
+		}
 		done();
 	})
 
@@ -824,10 +845,17 @@ describe('webgl1Test_webgl10', function() {
 		gl.texParameteri(gl2.TEXTURE_CUBE_MAP, gl2.TEXTURE_MAG_FILTER, gl2.NEAREST);
 		const framebuffer = gl.createFramebuffer();
 		gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
-		gl2.framebufferTextureLayer(gl.FRAMEBUFFER, gl2.STENCIL_ATTACHMENT, texture, 0, 8)
+		gl2.framebufferTextureLayer(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, texture, 0, 8)
 		const framebufferTextureLayerError = gl.getError();
 		console.info("framebufferTextureLayerError: " + framebufferTextureLayerError);
-		expect(framebufferTextureLayerError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(framebufferTextureLayerError).assertEqual(0);
+		} else {
+		    expect(framebufferTextureLayerError).assertEqual(gl.INVALID_OPERATION);
+		}
 		done();
 	})
 
@@ -845,10 +873,17 @@ describe('webgl1Test_webgl10', function() {
 		gl.texParameteri(gl2.TEXTURE_CUBE_MAP, gl2.TEXTURE_MAG_FILTER, gl2.NEAREST);
 		const framebuffer = gl.createFramebuffer();
 		gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
-		gl2.framebufferTextureLayer(gl.FRAMEBUFFER, gl2.DEPTH_STENCIL_ATTACHMENT, texture, 0, 8)
+		gl2.framebufferTextureLayer(gl.FRAMEBUFFER, gl.DEPTH_STENCIL_ATTACHMENT, texture, 0, 8)
 		const framebufferTextureLayerError = gl.getError();
 		console.info("framebufferTextureLayerError: " + framebufferTextureLayerError);
-		expect(framebufferTextureLayerError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(framebufferTextureLayerError).assertEqual(0);
+		} else {
+		    expect(framebufferTextureLayerError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
