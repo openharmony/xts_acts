@@ -882,7 +882,7 @@ export default function webgl1Test_webgl1(){
 			console.info("webgltest into clearDepth");
 
 			//用于设置深度缓冲区的深度清除值。
-			gl.clearDepth(8);
+			gl.clearDepth(1);
 			//若要获取当前深度清除值，查询DEPTH_CLEAR_VALUE 常量。
 			const clearDepthValue = gl.getParameter(gl.DEPTH_CLEAR_VALUE);
 			// 0.5

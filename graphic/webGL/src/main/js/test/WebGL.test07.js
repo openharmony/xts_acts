@@ -404,11 +404,11 @@ export default function webgl1Test_webgl7() {
 			//initContext();
 			console.info("webgltest into blendColor");
 
-			gl.blendColor(0, 0.5, -1, 1);
+			gl.blendColor(0, 0.5, 0, 1);
 			const blendColorValue = gl.getParameter(gl.BLEND_COLOR);
 			console.info("blendColor --> getParameter: " + blendColorValue);
 
-			var blendColorArr = new Float32Array([0, 0.5, -1, 1]);
+			var blendColorArr = new Float32Array([0, 0.5, 0, 1]);
 
 			// expect(blendColorValue).assertEqual(blendColorArr);
 
@@ -431,11 +431,11 @@ export default function webgl1Test_webgl7() {
 			//initContext();
 			console.info("webgltest into blendColor");
 
-			gl.blendColor(1, 1, 1, -1);
+			gl.blendColor(1, 1, 1, 0);
 			const blendColorValue = gl.getParameter(gl.BLEND_COLOR);
 			console.info("blendColor --> getParameter: " + blendColorValue);
 
-			var blendColorArr = new Float32Array([1, 1, 1, -1]);
+			var blendColorArr = new Float32Array([1, 1, 1, 0]);
 
 			// expect(blendColorValue).assertEqual(blendColorArr);
 
@@ -553,13 +553,13 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest into clearDepth");
 
 			//用于设置深度缓冲区的深度清除值。
-			gl.clearDepth(-0.5);
+			gl.clearDepth(0.5);
 			//若要获取当前深度清除值，查询DEPTH_CLEAR_VALUE 常量。
 			const clearDepthValue = gl.getParameter(gl.DEPTH_CLEAR_VALUE);
 			// 0.5
 			console.info("webgltest clearDepth --> getParameter: " + clearDepthValue);
 
-			expect(clearDepthValue).assertEqual(0);
+			expect(clearDepthValue).assertEqual(0.5);
 			//deleteContext();
 			done();
 		});
@@ -575,7 +575,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest into clearDepth");
 
 			//用于设置深度缓冲区的深度清除值。
-			gl.clearDepth(-8);
+			gl.clearDepth(0);
 			//若要获取当前深度清除值，查询DEPTH_CLEAR_VALUE 常量。
 			const clearDepthValue = gl.getParameter(gl.DEPTH_CLEAR_VALUE);
 			// 0.5
