@@ -63,8 +63,8 @@ export default function SearchJsunit() {
       expect(obj.$attrs.searchButton).assertEqual('SEARCH');
       expect(obj.$attrs.placeholderColor).assertEqual('#FF808080');
       expect(obj.$attrs.value).assertEqual('');
-      expect(obj.$attrs.placeholderFont).assertEqual('{ "style": "FontStyle.Normal", "size": "14.00fp", "weight": "400", "fontFamily ": "sans-serif" }');
-      expect(obj.$attrs.textFont).assertEqual('{ "fontSize":"14.00fp","fontStyle":"FontStyle.Normal","fontWeight":"FontWeight.400","fontFamily":"HarmonyOS Sans"}');
+      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}');
+      expect(obj.$attrs.textFont).assertEqual('{"fontSize":"14.00fp","fontStyle":"FontStyle.Normal","fontWeight":"FontWeight.400","fontFamily":"HarmonyOS Sans"}');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.InApp');
       expect(obj.$attrs.placeholder).assertEqual('Type to search...');
@@ -113,8 +113,8 @@ export default function SearchJsunit() {
       expect(obj.$attrs.icon).assertEqual('./resources/base/media/star_3.png');
       expect(obj.$attrs.searchButton).assertEqual('CLICK_SEARCH');
       expect(obj.$attrs.value).assertEqual('hello');
-      expect(obj.$attrs.placeholderFont).assertEqual('{ "style": "FontStyle.Normal", "size": "20.00fp", "weight": "500", "fontFamily ": "sans-serif" }');
-      expect(obj.$attrs.textFont).assertEqual('{ "fontSize":"20.00fp","fontStyle":"FontStyle.Normal","fontWeight":"FontWeight.500","fontFamily":"HarmonyOS Sans"}');
+      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"20.00fp","weight":"500","fontFamily":"sans-serif"}');
+      expect(obj.$attrs.textFont).assertEqual('{"fontSize":"20.00fp","fontStyle":"FontStyle.Normal","fontWeight":"FontWeight.500","fontFamily":"HarmonyOS Sans"}');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center');
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.LocalDevice');
       expect(obj.$attrs.placeholderColor).assertEqual('#FF008000');
@@ -156,7 +156,7 @@ export default function SearchJsunit() {
       await textComponent4.click()
       let copy = await driver.findComponent(BY.key('copy'));
       let text3 = await copy.getText();
-      expect(text3).assertEqual('onCopy:');
+      expect(text3).assertEqual('onCopy:hello');
 
       // Verify the onCut function of the Search component
       await textComponent1.longClick()
@@ -226,8 +226,8 @@ export default function SearchJsunit() {
       expect(obj.$attrs.searchButton).assertEqual('10');
       expect(obj.$attrs.placeholderColor).assertEqual('#FF00000A');
       expect(obj.$attrs.value).assertEqual('hello');
-      expect(obj.$attrs.placeholderFont).assertEqual('{ "style": "FontStyle.Normal", "size": "14.00fp", "weight": "400", "fontFamily ": "sans-serif" }');
-      expect(obj.$attrs.textFont).assertEqual('{ "fontSize":"14.00fp","fontStyle":"FontStyle.Normal","fontWeight":"FontWeight.400","fontFamily":"HarmonyOS Sans"}');
+      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}');
+      expect(obj.$attrs.textFont).assertEqual('{"fontSize":"14.00fp","fontStyle":"FontStyle.Normal","fontWeight":"FontWeight.400","fontFamily":"HarmonyOS Sans"}');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
       expect(obj.$attrs.copyOption).assertEqual('');
       expect(obj.$attrs.placeholder).assertEqual('Click to search...');

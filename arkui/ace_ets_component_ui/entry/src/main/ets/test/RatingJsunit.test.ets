@@ -51,7 +51,7 @@ export default function RatingJsunit() {
       console.info("[RatingJsunit_0100] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.rating).assertEqual('3.500000');
-      expect(obj.$attrs.indicator).assertEqual('false');
+      expect(obj.$attrs.indicator).assertEqual('true');
       expect(obj.$attrs.stars).assertEqual('5');
       expect(obj.$attrs.stepSize).assertEqual('0.500000');
       expect(obj.$attrs.starStyle).assertEqual('{"backgroundUri":"resources/base/media/star_1.png","foregroundUri":"resources/base/media/star_2.png","secondaryUri":"resources/base/media/star_3.png"}');
@@ -134,7 +134,8 @@ export default function RatingJsunit() {
       console.info('[RatingJsunit_0600] START');
       await CommonFunc.sleep(1000);
       // Modify the indicator value of the Rating component
-      globalThis.value.message.notify({name:'indicator',value:false})
+      globalThis.value.message.notify({name:'rating',value:1})
+      await CommonFunc.sleep(1000);
 
       let driver = await UiDriver.create()
       let textComponent1 = await driver.findComponent(BY.key('text'));

@@ -18,7 +18,7 @@ import {MessageManager,Callback} from '../utils/MessageManager';
 @Component
 struct RatingPage {
   @State rating: number = 3.5
-  @State indicator : boolean = false
+  @State indicator : boolean = true
   @State stars: number = 5
   @State stepSize: number = 0.5
   @State text: string = 'no change'
