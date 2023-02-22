@@ -35,10 +35,10 @@ injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 export default {
     data: {
     },
-    onInit() {
+    onShow() {
         this.title = "scene on off";
     },
-    onShow() {
+    onInit() {
         console.debug("====>change on off scene start====");
         var appAccountManager = account.createAppAccountManager();
         var commonEventSubscribeInfo = {
@@ -55,7 +55,7 @@ export default {
                     console.debug("====>scene off finish====");
                 });
             });
-            featureAbility.terminateSelf()
+           // featureAbility.terminateSelf()
         }
 
         // Subscribe to the callback of account information changes, verify the received account information, and send
