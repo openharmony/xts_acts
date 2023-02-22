@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021~2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -19,12 +19,14 @@ import testsuite from '../../test/List.test';
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
 import fileio from '@ohos.fileio';
+import prompt from '@system.prompt';
 let loadedUrl;
 @Entry
 @Component
 struct Index {
     controller: web_webview.WebviewController = new web_webview.WebviewController();
     controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
+    dialogController:CustomDialogController;
     scheme1: web_webview.WebCustomScheme = {schemeName: "name1", isSupportCORS: true, isSupportFetch: true}
     scheme2: web_webview.WebCustomScheme = {schemeName: "name2", isSupportCORS: true, isSupportFetch: true}
     scheme3: web_webview.WebCustomScheme = {schemeName: "name3", isSupportCORS: true, isSupportFetch: true}
@@ -594,7 +596,6 @@ struct Index {
                 console.log('onTouchIconUrlReceived:' + JSON.stringify(event))
             })
             .pinchSmooth(true)
-            
         }
     }
 }
