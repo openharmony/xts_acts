@@ -30,5 +30,7 @@ hctest_suite("ActsDsoftbusMgrTest") {
     "//foundation/communication/dsoftbus/adapter/common/include",
     "//foundation/communication/dsoftbus/adapter/default_config/spec_config",
   ]
-  cflags = [ "-Wno-error" ]
+  if (board_toolchain_type != "iccarm") {
+    cflags = [ "-Wno-error" ]
+  }
 }
