@@ -592,7 +592,7 @@ struct Index {
             .onTouchIconUrlReceived((event) => {
                 console.log('onTouchIconUrlReceived:' + JSON.stringify(event))
             })
-            
+            .pinchSmooth(true)
         }
     }
 }
