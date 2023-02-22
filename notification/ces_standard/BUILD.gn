@@ -18,6 +18,7 @@ group("ces_standard") {
   if (is_standard_system) {
     deps = [
       "actsCommonEventManagerSupportTest:ActsCommonEventManagerSupportTest",
+      "actsCommonEventManagerTest:ActsCommonEventManagerTest",
       "actsCommonEventSupportTest:ActsCommonEventSupportTest",
       "subscribeandpublish:SubscribeAndPublish",
     ]
