@@ -105,6 +105,7 @@ export default function RatingJsunit() {
       console.info('[RatingJsunit_0400] START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'stars',value:7})
+      await CommonFunc.sleep(2000);
       // Get the stars value of the Rating component
       let strJson = getInspectorByKey('rating1');
       let obj = JSON.parse(strJson);
@@ -140,12 +141,12 @@ export default function RatingJsunit() {
       let driver = await UiDriver.create()
       let textComponent1 = await driver.findComponent(BY.key('text'));
       let text1 = await textComponent1.getText();
-      console.info("[TimePickerJsunit_0100] text1: " + JSON.stringify(text1));
+      console.info("[RatingJsunit_0600] text1: " + JSON.stringify(text1));
       expect(text1).assertEqual('no change');
 
       // Get the rating value of the Rating component
-      let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let strJson1 = getInspectorByKey('rating1');
+      let obj = JSON.parse(strJson1);
       console.info("[RatingJsunit_0600] component obj is: " + JSON.stringify(obj));
       let rating1 = obj.$attrs.rating
       console.info("[RatingJsunit_0600] rating1: " + JSON.stringify(rating1));
@@ -154,12 +155,15 @@ export default function RatingJsunit() {
       let textComponent = await driver.findComponent(BY.key('rating1'));
       await textComponent.click();
       await CommonFunc.sleep(1000);
-      let rating2 = obj.$attrs.rating
+      let strJson2 = getInspectorByKey('rating1');
+      let obj2 = JSON.parse(strJson2);
+      let rating2 = obj2.$attrs.rating
       console.info("[RatingJsunit_0600] rating2: " + JSON.stringify(rating2));
       expect(rating1 == rating2).assertFalse();
 
-      let text2 = await textComponent1.getText();
-      console.info("[TimePickerJsunit_0100] text2: " + JSON.stringify(text2));
+      let textComponent2 = await driver.findComponent(BY.key('text'));
+      let text2 = await textComponent2.getText();
+      console.info("[RatingJsunit_0600] text2: " + JSON.stringify(text2));
       expect(text2).assertEqual('change succ');
       console.info('[RatingJsunit_0600] END');
       done();

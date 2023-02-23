@@ -180,6 +180,11 @@ export default function GridJsunit() {
       let strJson1 = getInspectorByKey('grid_default');
       let obj = JSON.parse(strJson1);
       console.info("[GridJsunit_0500] component obj is: " + JSON.stringify(obj));
+      console.info("[GridJsunit_0500] columnsGap: " + JSON.stringify(obj.$attrs.columnsGap));
+      console.info("[GridJsunit_0500] rowsGap: " + JSON.stringify(obj.$attrs.rowsGap));
+      console.info("[GridJsunit_0500] scrollBar: " + JSON.stringify(obj.$attrs.scrollBar));
+      console.info("[GridJsunit_0500] cachedCount: " + JSON.stringify(obj.$attrs.cachedCount));
+      console.info("[GridJsunit_0500] supportAnimation: " + JSON.stringify(obj.$attrs.supportAnimation));
       expect(obj.$attrs.columnsGap).assertEqual('0.00vp');
       expect(obj.$attrs.rowsGap).assertEqual('0.00vp');
       expect(obj.$attrs.scrollBar).assertEqual('BarState.Off');
