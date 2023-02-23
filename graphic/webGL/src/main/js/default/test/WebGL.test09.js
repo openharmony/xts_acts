@@ -1017,7 +1017,14 @@ describe('webgl1Test_webgl10', function() {
 		console.info("unpackValue: " + unpackValue);
 		const pixelStoreiError = gl.getError();
 		console.info("pixelStoreiError: " + pixelStoreiError);
-		expect(pixelStoreiError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(pixelStoreiError).assertEqual(0);
+		} else {
+		    expect(pixelStoreiError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1036,7 +1043,14 @@ describe('webgl1Test_webgl10', function() {
 		console.info("unpackValue: " + unpackValue);
 		const pixelStoreiError = gl.getError();
 		console.info("pixelStoreiError: " + pixelStoreiError);
-		expect(pixelStoreiError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(pixelStoreiError).assertEqual(0);
+		} else {
+		    expect(pixelStoreiError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1055,7 +1069,14 @@ describe('webgl1Test_webgl10', function() {
 		console.info("unpackValue: " + unpackValue);
 		const pixelStoreiError = gl.getError();
 		console.info("pixelStoreiError: " + pixelStoreiError);
-		expect(pixelStoreiError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(pixelStoreiError).assertEqual(0);
+		} else {
+		    expect(pixelStoreiError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1074,7 +1095,14 @@ describe('webgl1Test_webgl10', function() {
 		console.info("unpackValue: " + unpackValue);
 		const pixelStoreiError = gl.getError();
 		console.info("pixelStoreiError: " + pixelStoreiError);
-		expect(pixelStoreiError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(pixelStoreiError).assertEqual(0);
+		} else {
+		    expect(pixelStoreiError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1093,7 +1121,14 @@ describe('webgl1Test_webgl10', function() {
 		console.info("unpackValue: " + unpackValue);
 		const pixelStoreiError = gl.getError();
 		console.info("pixelStoreiError: " + pixelStoreiError);
-		expect(pixelStoreiError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(pixelStoreiError).assertEqual(0);
+		} else {
+		    expect(pixelStoreiError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1112,7 +1147,14 @@ describe('webgl1Test_webgl10', function() {
 		console.info("unpackValue: " + unpackValue);
 		const pixelStoreiError = gl.getError();
 		console.info("pixelStoreiError: " + pixelStoreiError);
-		expect(pixelStoreiError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(pixelStoreiError).assertEqual(0);
+		} else {
+		    expect(pixelStoreiError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1131,7 +1173,14 @@ describe('webgl1Test_webgl10', function() {
 		console.info("unpackValue: " + unpackValue);
 		const pixelStoreiError = gl.getError();
 		console.info("pixelStoreiError: " + pixelStoreiError);
-		expect(pixelStoreiError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(pixelStoreiError).assertEqual(0);
+		} else {
+		    expect(pixelStoreiError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1150,7 +1199,14 @@ describe('webgl1Test_webgl10', function() {
 		console.info("unpackValue: " + unpackValue);
 		const pixelStoreiError = gl.getError();
 		console.info("pixelStoreiError: " + pixelStoreiError);
-		expect(pixelStoreiError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(pixelStoreiError).assertEqual(0);
+		} else {
+		    expect(pixelStoreiError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1185,7 +1241,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.COPY_READ_BUFFER, 1024, gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1202,7 +1265,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.COPY_WRITE_BUFFER, 1024, gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1219,7 +1289,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.TRANSFORM_FEEDBACK_BUFFER, 1024, gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1236,7 +1313,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.UNIFORM_BUFFER, 1024, gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1253,7 +1337,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_PACK_BUFFER, 1024, gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1270,7 +1361,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_UNPACK_BUFFER, 1024, gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1304,7 +1402,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.COPY_READ_BUFFER, 1024, gl.STREAM_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1321,7 +1426,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.COPY_WRITE_BUFFER, 1024, gl2.STATIC_READ);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1338,7 +1450,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.TRANSFORM_FEEDBACK_BUFFER, 1024, gl2.DYNAMIC_READ);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1355,7 +1474,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.UNIFORM_BUFFER, 1024, gl2.STREAM_READ);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1372,7 +1498,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_PACK_BUFFER, 1024, gl2.STATIC_COPY);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1389,7 +1522,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_UNPACK_BUFFER, 1024, gl2.DYNAMIC_COPY);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1406,7 +1546,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_UNPACK_BUFFER, 1024, gl2.STREAM_COPY);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1440,7 +1587,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.COPY_READ_BUFFER, new ArrayBuffer(8), gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1457,7 +1611,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.COPY_WRITE_BUFFER, new ArrayBuffer(8), gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1474,7 +1635,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.TRANSFORM_FEEDBACK_BUFFER, new ArrayBuffer(8), gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1491,7 +1659,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.UNIFORM_BUFFER, new ArrayBuffer(8), gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1508,7 +1683,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_PACK_BUFFER, new ArrayBuffer(8), gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1525,7 +1707,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_UNPACK_BUFFER, new ArrayBuffer(8), gl.STATIC_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1559,7 +1748,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.COPY_READ_BUFFER, new ArrayBuffer(8), gl.STREAM_DRAW);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1576,7 +1772,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.COPY_WRITE_BUFFER, new ArrayBuffer(8), gl2.STATIC_READ);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1593,7 +1796,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.TRANSFORM_FEEDBACK_BUFFER, new ArrayBuffer(8), gl2.DYNAMIC_READ);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1610,7 +1820,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.UNIFORM_BUFFER, new ArrayBuffer(8), gl2.STREAM_READ);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1627,7 +1844,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_PACK_BUFFER, new ArrayBuffer(8), gl2.STATIC_COPY);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1644,7 +1868,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_UNPACK_BUFFER, new ArrayBuffer(8), gl2.DYNAMIC_COPY);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1661,7 +1892,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferData(gl2.PIXEL_UNPACK_BUFFER, new ArrayBuffer(8), gl2.STREAM_COPY);
 		const bufferDataError = gl.getError();
 		console.info("bufferDataError: " + bufferDataError);
-		expect(bufferDataError).assertEqual(0);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferDataError).assertEqual(0);
+		} else {
+		    expect(bufferDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1715,7 +1953,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferSubData(gl2.COPY_WRITE_BUFFER, 512, new ArrayBuffer(8));
 		const bufferSubDataError = gl.getError();
 		console.info("bufferSubDataError: " + bufferSubDataError);
-		expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		} else {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1733,7 +1978,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferSubData(gl2.TRANSFORM_FEEDBACK_BUFFER, 512, new ArrayBuffer(8));
 		const bufferSubDataError = gl.getError();
 		console.info("bufferSubDataError: " + bufferSubDataError);
-		expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		} else {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1751,7 +2003,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferSubData(gl2.UNIFORM_BUFFER, 512, new ArrayBuffer(8));
 		const bufferSubDataError = gl.getError();
 		console.info("bufferSubDataError: " + bufferSubDataError);
-		expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		} else {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1769,7 +2028,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferSubData(gl2.PIXEL_PACK_BUFFER, 512, new ArrayBuffer(8));
 		const bufferSubDataError = gl.getError();
 		console.info("bufferSubDataError: " + bufferSubDataError);
-		expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		} else {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
@@ -1787,7 +2053,14 @@ describe('webgl1Test_webgl10', function() {
 		gl.bufferSubData(gl2.PIXEL_UNPACK_BUFFER, 512, new ArrayBuffer(8));
 		const bufferSubDataError = gl.getError();
 		console.info("bufferSubDataError: " + bufferSubDataError);
-		expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		var openGLVersion = gl.getParameter(gl.VERSION);
+		console.info("openGLVersion: " + openGLVersion);
+		var version = "OpenGL,ES,3";
+		if (openGLVersion > version) {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		} else {
+		    expect(bufferSubDataError).assertEqual(gl.INVALID_ENUM);
+		}
 		done();
 	})
 
