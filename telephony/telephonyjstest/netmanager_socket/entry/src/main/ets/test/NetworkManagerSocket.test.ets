@@ -30,7 +30,7 @@ let options = {
     key: "key",
     cert: "cert",
     ca: ["ca"],
-    passwd: "123456",
+    password: "123456",
     protocols: [socket.Protocol.TLSv12, socket.Protocol.TLSv13],
     useRemoteCipherPrefer: true,
     signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
@@ -82,7 +82,7 @@ export default function networkManagerSocketTest() {
         expect(options.secureOptions.key != undefined).assertEqual(true);
         expect(options.secureOptions.cert != undefined).assertEqual(true);
         expect(options.secureOptions.ca != undefined).assertEqual(true);
-        expect(options.secureOptions.passwd != undefined).assertEqual(true);
+        expect(options.secureOptions.password != undefined).assertEqual(true);
         expect(options.secureOptions.protocols != undefined).assertEqual(true);
         expect(options.secureOptions.protocols[0] == "TLSv1.2").assertEqual(true);
         expect(options.secureOptions.protocols[1] == "TLSv1.3").assertEqual(true);

@@ -1294,6 +1294,77 @@ export default function connectionJsunit() {
       done();
     });
 
+
+    /*
+         * @tc.number    : Telephony_Connection_setAppNet_callback_0100
+         * @tc.name      : Telephony_Connection_setAppNet_callback_0100
+         * @tc.desc      : Telephony_Connection_setAppNet_callback_0100
+         */
+    it('Telephony_Connection_setAppNet_callback_0100', 0, function (done) {
+      connection.getDefaultNet(function (error, netHandle) {
+        if (error) {
+          console.log("getDefaultNet error " + JSON.stringify(error));
+          expect(true).assertFalse();
+          done();
+          return;
+        }
+        console.log("getDefaultNet success " + JSON.stringify(netHandle));
+        connection.setAppNet(netHandle, (error, data) => {
+          if (error) {
+            console.log("setAppNet error " + JSON.stringify(error));
+            expect(true).assertFalse();
+            done();
+            return;
+          }
+          console.log("setAppNet success " + JSON.stringify(data));
+          connection.getAppNet(function (error, data) {
+            if (error) {
+              console.log("getAppNet error " + JSON.stringify(error));
+              expect(true).assertFalse();
+              done();
+              return;
+            }
+            console.log("getAppNet success " + JSON.stringify(data));
+            expect(netHandle.netId == data.netId).assertTrue();
+            done();
+          })
+        });
+      })
+    });
+
+    /*
+         * @tc.number    : Telephony_Connection_setAppNet_promise_0100
+         * @tc.name      : Telephony_Connection_setAppNet_promise_0100
+         * @tc.desc      : Telephony_Connection_setAppNet_promise_0100
+         */
+    it('Telephony_Connection_setAppNet_promise_0100', 0, function (done) {
+      connection.getDefaultNet(function (error, netHandle) {
+        if (error) {
+          console.log("getDefaultNet error " + JSON.stringify(error));
+          expect(true).assertFalse();
+          done();
+          return;
+        }
+        console.log("getDefaultNet success " + JSON.stringify(netHandle));
+        connection.setAppNet(netHandle).then((data) => {
+          console.log("setAppNet success " + JSON.stringify(data));
+          connection.getAppNet().then((data) => {
+            console.log("getAppNet success " + JSON.stringify(data));
+            expect(netHandle.netId == data.netId).assertTrue();
+            done();
+          }).catch(error => {
+            console.log("getAppNet error " + JSON.stringify(error));
+            expect(true).assertFalse();
+            done();
+          })
+        }).catch(error => {
+          console.log("setAppNet error " + JSON.stringify(error));
+          expect(true).assertFalse();
+          done();
+        })
+      })
+    });
+
     console.log("************* connection Test end*************");
   })
 }

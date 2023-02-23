@@ -76,5 +76,26 @@ export default function radioJsunit() {
         done();
       }
     });
+
+    /**
+     * @tc.number Telephony_NetworkSearch_isNRSupported_Async_0100
+     * @tc.name Test The function isNRSupported(soltId)
+     * @tc.desc Function test
+     */
+    it('Telephony_NetworkSearch_isNRSupported_Async_0100', 0, async function (done) {
+      let CaseName = "Telephony_NetworkSearch_isNRSupported_Async_0100 ";
+      try {
+        let result = radio.isNRSupported();
+        console.info("Result: " + result);
+        let result0 = radio.isNRSupported(SLOT_0);
+        console.info("Result0: " + result0);
+        console.info(CaseName + "is complete!");
+        done();
+      } catch (err) {
+        console.info(CaseName + "err " + JSON.stringify(err));
+        expect(false).assertTrue();
+        done();
+      }
+    });
   })
 }
