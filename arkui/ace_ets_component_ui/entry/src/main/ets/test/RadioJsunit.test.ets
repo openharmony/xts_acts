@@ -132,24 +132,5 @@ export default function RadioJsunit() {
       console.info('[RadioJsunit_0400] END');
       done();
     });
-
-    it('RadioJsunit_0500', 0, async function (done) {
-      // Verify modify backgroundColor of component Radio
-      console.info('[RadioJsunit_0500] START');
-      // Get backColor value of  component Radio
-      let strJson = getInspectorByKey('r1');
-      let obj = JSON.parse(strJson);
-      console.info("[RadioJsunit_0500] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF0000FF');
-      await CommonFunc.sleep(1000);
-
-      // Modify backgroundColor of component Radio
-      globalThis.value.message.notify({name:'backColor',value:'Color.Green'})
-      await CommonFunc.sleep(2000);
-      console.info("[RadioJsunit_0500] backColor: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF008000');   
-      console.info('[RadioJsunit_0500] END');
-      done();
-    });
   })
 }

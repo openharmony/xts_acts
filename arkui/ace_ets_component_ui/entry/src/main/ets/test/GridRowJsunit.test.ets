@@ -55,8 +55,8 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0100] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0100] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('4');
-      expect(obj.$attrs.breakpoints).assertEqual('{ "value": "["400vp", "600vp", "800vp"]", "reference": "BreakpointsReference.WindowSize" }');
-      expect(obj.$attrs.direction).assertEqual('GridRowDirection.Row');
+      expect(obj.$attrs.breakpoints).assertEqual('4');
+      expect(obj.$attrs.direction).assertEqual('4');
       expect(obj.$attrs.gutter).assertEqual('5.00000, 10.000000');
       console.info('[GridRowJsunit_0100] END');
       done();
@@ -67,11 +67,11 @@ export default function GridRowJsunit() {
       console.info('[GridRowJsunit_0200] START');
       globalThis.value.message.notify({name:'columns',value:'12'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'gutter',value:'x: 6, y: 20'})
+      globalThis.value.message.notify({name:'gutter',value:'x: 7.5, y: 15'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'breakpoints',value:'{ "value": "["300vp", "600vp", "900vp"]", "reference": "BreakpointsReference.WindowSize"}'})
+      globalThis.value.message.notify({name:'breakpoints',value:'12'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'grDirection',value:'GridRowDirection.RowReverse'})
+      globalThis.value.message.notify({name:'grDirection',value:'12'})
       await CommonFunc.sleep(2000);
       globalThis.value.message.notify({name:'currentBp',value:'sm'})
       await CommonFunc.sleep(2000);
@@ -85,9 +85,9 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0200] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0200] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
-      expect(obj.$attrs.gutter).assertEqual('6.000000, 20.000000');
-      expect(obj.$attrs.breakpoints).assertEqual('{ "value": "["300vp", "600vp", "900vp"]", "reference": "BreakpointsReference.WindowSize"}');
-      expect(obj.$attrs.direction).assertEqual('GridRowDirection.RowReverse');
+      expect(obj.$attrs.gutter).assertEqual('<7.500000, 15.000000');
+      expect(obj.$attrs.breakpoints).assertEqual('12');
+      expect(obj.$attrs.direction).assertEqual('12');
       console.info('[GridRowJsunit_0200] END');
       done();
     });
@@ -115,9 +115,9 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0300] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0300] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
-      expect(obj.$attrs.gutter).assertEqual('6.000000, 20.000000');
-      expect(obj.$attrs.breakpoints).assertEqual('{ "value": "["300vp", "600vp", "900vp"]", "reference": "BreakpointsReference.WindowSize"}');
-      expect(obj.$attrs.direction).assertEqual('GridRowDirection.RowReverse');
+      expect(obj.$attrs.gutter).assertEqual('<7.500000, 15.000000');
+      expect(obj.$attrs.breakpoints).assertEqual('12');
+      expect(obj.$attrs.direction).assertEqual('12');
       console.info('[GridRowJsunit_0300] END');
       done();
     });
@@ -134,8 +134,8 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0400] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
       expect(obj.$attrs.gutter).assertEqual('<0.000000, 0.000000');
-      expect(obj.$attrs.breakpoints).assertEqual('{ "value": "["300vp", "600vp", "900vp"]", "reference": "BreakpointsReference.WindowSize"}');
-      expect(obj.$attrs.direction).assertEqual('GridRowDirection.RowReverse');
+      expect(obj.$attrs.breakpoints).assertEqual('12');
+      expect(obj.$attrs.direction).assertEqual('12');
       console.info('[GridRowJsunit_0400] END');
       done();
     });

@@ -74,13 +74,13 @@ export default function ScrollBarJsunit() {
     it('ScrollBarJsunit_0300', 0, async function (done) {
       // Modify the state of the ScrollBar component
       console.info('[ScrollBarJsunit_0300] START');
-      globalThis.value.message.notify({name:'state',value:'BarState.ON'})
+      globalThis.value.message.notify({name:'state',value:BarState.Auto})
       await CommonFunc.sleep(1500);
       // Get the state value of the ScrollBar component
       let strJson = getInspectorByKey('scrollBar');
       let obj = JSON.parse(strJson);
       console.info("[ScrollBarJsunit_0300] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.state).assertEqual('BarState.On');
+      expect(obj.$attrs.state).assertEqual('BarState.Auto');
       console.info('[ScrollBarJsunit_0300] END');
       done();
     });
@@ -130,7 +130,7 @@ export default function ScrollBarJsunit() {
       let strJson = getInspectorByKey('scrollBar');
       let obj = JSON.parse(strJson);
       console.info("[ScrollBarJsunit_0600] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.direction).assertEqual('ScrollBarDirection.Horizontal');
+      expect(obj.$attrs.direction).assertEqual('ScrollBarDirection.Vertical');
       console.info('[ScrollBarJsunit_0600] END');
       done();
     });

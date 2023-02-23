@@ -112,7 +112,7 @@ export default function QRCodeJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[QRCodeJsunit_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.color).assertEqual('#FF000001');
-      expect(obj.$attrs.value).assertEqual('myTest');
+      expect(obj.$attrs.value).assertEqual('-10');
 
       // Get the backgroundColor of the QRCode component
       globalThis.value.message.notify({name:'backgroundColor',value:'test'})

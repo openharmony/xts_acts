@@ -17,7 +17,7 @@ import {MessageManager,Callback} from '../utils/MessageManager';
 @Entry
 @Component
 struct QRCodePage {
-  private value: string = 'normal'
+  @State value: string = 'normal'
   @State color : Color = Color.Black
   @State backColor : Color = Color.White
   @State text : string = 'unclick'

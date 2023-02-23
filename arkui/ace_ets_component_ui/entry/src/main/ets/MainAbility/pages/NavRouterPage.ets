@@ -90,7 +90,8 @@ struct NavRouterPage {
       .mode(NavigationMode.Split)
       .hideTitleBar(true)
       .hideToolBar(true)
-      Text(this.stateChange).fontSize(20).margin(10).id('123')
+      .height('80%')
+    Text(this.stateChange).fontSize(20).margin(10).id('123')
     }.height('100%')
   }
 }

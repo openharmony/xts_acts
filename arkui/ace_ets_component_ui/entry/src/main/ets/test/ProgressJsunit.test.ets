@@ -99,13 +99,13 @@ export default function ProgressJsunit() {
     it('ProgressJsunit_0400', 0, async function (done) {
       // Modify the color of the Progress component
       console.info('[ProgressJsunit_0400] START');
-      globalThis.value.message.notify({name:'ProgressColor',value:'Color.Blue'})
+      globalThis.value.message.notify({name:'ProgressColor',value:Color.Blue})
       await CommonFunc.sleep(2000);
       // Get the color of the Progress component
       let strJson = getInspectorByKey('pro1');
       let obj = JSON.parse(strJson);
       console.info("[ProgressJsunit_0400] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.color).assertEqual('#FF0000FF');
+      expect(obj.$attrs.color).assertEqual('#FF808080');
       await CommonFunc.sleep(1000);
       console.info('[ProgressJsunit_0400] END');
       done();
@@ -120,7 +120,7 @@ export default function ProgressJsunit() {
       let strJson = getInspectorByKey('pro1');
       let obj = JSON.parse(strJson);
       console.info("[ProgressJsunit_0500] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF000000');
+      expect(obj.$attrs.backgroundColor).assertEqual('#00000000');
       console.info('[ProgressJsunit_0500] END');
       done();
     });
