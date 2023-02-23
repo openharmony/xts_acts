@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -781,6 +781,35 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb 1560 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1560 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1570
+   * @tc.name: controlTransfer
+   * @tc.desc: Negative test: control transfer, parameter timeout type error
+   */
+  it('SUB_USB_JS_1570', 0, function () {
+    console.info('usb SUB_USB_JS_1570 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb 1570 case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+    var timeout = "invalid";
+    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_OTHER, (usb.USB_REQUEST_DIR_TO_DEVICE)
+        | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
+    try {
+      callControlTransferEx(testParam.pip, controlParam, timeout, 'SUB_USB_JS_1570 ClearFeature');
+    } catch (err) {
+      console.info('usb 1570 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1570 :  PASS');
     }
   })
 })
