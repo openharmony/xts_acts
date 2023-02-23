@@ -1,0 +1,157 @@
+/*
+ * Copyright (c) 2023-2030 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@system.router';
+import CommonFunc from "./../../../../MainAbility/common/Common"
+import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
+export default function AlignEnd_AddVisibility() {
+  describe('AlignEnd_AddVisibility', function () {
+    beforeEach(async function (done) {
+      let options = {
+        uri: 'MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddVisibility',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get AlignEnd_AddVisibility state success " + JSON.stringify(pages));
+        if (!("AlignEnd_AddVisibility" == pages.name)) {
+          console.info("get AlignEnd_AddVisibility state pages.name " + JSON.stringify(pages.name));
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
+          console.info("push AlignEnd_AddVisibility page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push AlignEnd_AddVisibility page error " + JSON.stringify(err));
+        expect().assertFail();
+      }
+      done()
+    });
+
+    afterEach(async function () {
+      await CommonFunc.sleep(2000);
+      console.info("AlignEnd_AddVisibility after each called");
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1000
+     * @tc.name      Align_End_Row_AddVisibility
+     * @tc.desc      The subcomponent sets the visibility. None, the child components are hidden in the interface display
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1000', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1000] START');
+      globalThis.value.message.notify({name:'OneVisibility',value:Visibility.None});
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('End_AddVisibility_01');
+      let obj = JSON.parse(strJson);
+      let strJson2 = getInspectorByKey('End_AddVisibility_011');
+      let obj2 = JSON.parse(strJson2);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
+      expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
+      let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
+      let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
+      let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
+      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_013.top);
+      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_01.top);
+      expect(End_AddVisibility_012.right).assertEqual(End_AddVisibility_013.left);
+      expect(End_AddVisibility_013.right).assertEqual(End_AddVisibility_01.right);
+      expect(End_AddVisibility_012.left - End_AddVisibility_01.left).assertEqual(vp2px(200));
+      expect(End_AddVisibility_012.right - End_AddVisibility_012.left).assertEqual(vp2px(150));
+      expect(End_AddVisibility_013.right - End_AddVisibility_013.left).assertEqual(vp2px(150));
+      expect(End_AddVisibility_012.bottom - End_AddVisibility_012.top).assertEqual(vp2px(100));
+      expect(End_AddVisibility_013.bottom - End_AddVisibility_013.top).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1000] END');
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1100
+     * @tc.name      Align_End_Row_AddVisibility
+     * @tc.desc      When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
+     * position
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1100', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1100] START');
+      globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Hidden})
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('End_AddVisibility_01');
+      let obj = JSON.parse(strJson);
+      let strJson2 = getInspectorByKey('End_AddVisibility_011');
+      let obj2 = JSON.parse(strJson2);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
+      expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
+      let End_AddVisibility_011 = CommonFunc.getComponentRect('End_AddVisibility_011');
+      let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
+      let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
+      let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
+      expect(End_AddVisibility_011.top).assertEqual(End_AddVisibility_012.top);
+      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_013.top);
+      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_01.top);
+      expect(End_AddVisibility_011.right).assertEqual(End_AddVisibility_012.left);
+      expect(End_AddVisibility_013.right).assertEqual(End_AddVisibility_01.right);
+      expect(End_AddVisibility_013.left).assertEqual(End_AddVisibility_012.right);
+      expect(End_AddVisibility_011.left - End_AddVisibility_01.left).assertEqual(vp2px(50));
+      expect(End_AddVisibility_011.right - End_AddVisibility_011.left).assertEqual(vp2px(150));
+      expect(End_AddVisibility_012.right - End_AddVisibility_012.left).assertEqual(vp2px(150));
+      expect(End_AddVisibility_013.right - End_AddVisibility_013.left).assertEqual(vp2px(150));
+      expect(End_AddVisibility_011.bottom - End_AddVisibility_011.top).assertEqual(vp2px(50));
+      expect(End_AddVisibility_012.bottom - End_AddVisibility_012.top).assertEqual(vp2px(100));
+      expect(End_AddVisibility_013.bottom - End_AddVisibility_013.top).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1100] END');
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1700
+     * @tc.name      Align_End_Row_AddVisibility
+     * @tc.desc      The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
+     * interface display
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1700', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1700] START');
+      globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Visible})
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('End_AddVisibility_01');
+      let obj = JSON.parse(strJson);
+      let strJson2 = getInspectorByKey('End_AddVisibility_011');
+      let obj2 = JSON.parse(strJson2);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
+      expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
+      let End_AddVisibility_011 = CommonFunc.getComponentRect('End_AddVisibility_011');
+      let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
+      let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
+      let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
+      expect(End_AddVisibility_011.top).assertEqual(End_AddVisibility_012.top);
+      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_013.top);
+      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_01.top);
+      expect(End_AddVisibility_011.right).assertEqual(End_AddVisibility_012.left);
+      expect(End_AddVisibility_013.right).assertEqual(End_AddVisibility_01.right);
+      expect(End_AddVisibility_013.left).assertEqual(End_AddVisibility_012.right);
+      expect(End_AddVisibility_011.left - End_AddVisibility_01.left).assertEqual(vp2px(50));
+      expect(End_AddVisibility_011.right - End_AddVisibility_011.left).assertEqual(vp2px(150));
+      expect(End_AddVisibility_012.right - End_AddVisibility_012.left).assertEqual(vp2px(150));
+      expect(End_AddVisibility_013.right - End_AddVisibility_013.left).assertEqual(vp2px(150));
+      expect(End_AddVisibility_011.bottom - End_AddVisibility_011.top).assertEqual(vp2px(50));
+      expect(End_AddVisibility_012.bottom - End_AddVisibility_012.top).assertEqual(vp2px(100));
+      expect(End_AddVisibility_013.bottom - End_AddVisibility_013.top).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1700] END');
+      done();
+    });
+  })
+}
