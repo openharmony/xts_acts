@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -445,6 +445,89 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       console.info('usb 1490 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1490 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1500
+   * @tc.name: bulkTransfer
+   * @tc.desc: Negative test: bulk transfer, parameter Uint8Array type error
+   */
+  it('SUB_USB_JS_1500', 0, function () {
+    console.info('usb SUB_USB_JS_1500 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device');
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.interface == null || testParam.inEndpoint == null) {
+      console.info('usb case testParam_interface and testParam_inEndpoint is null');
+      expect(false).assertTrue();
+      return
+    }
+
+    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    expect(testParam.isClaimed).assertEqual(0);
+
+    console.info('usb case readData begin');
+    var tmpUint8Array = "invalid";
+    try {
+      usb.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, 5000).then(data => {
+        console.info('usb case SUB_USB_JS_1500 ret: ' + data);
+        expect(false).assertTrue();
+        console.info('usb case SUB_USB_JS_1500 :  FAILED');
+      }).catch(error => {
+        console.info('usb 1500 write error : ' + JSON.stringify(error));
+        expect(false).assertTrue();
+        console.info('usb case SUB_USB_JS_1500 :  FAILED');
+      });
+    } catch (err) {
+      console.info('usb 1500 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1500 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1530
+   * @tc.name: bulkTransfer
+   * @tc.desc: Negative test: bulk transfer, parameter timeout type error
+   */
+  it('SUB_USB_JS_1530', 0, function () {
+    console.info('usb SUB_USB_JS_1530 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device');
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.interface == null || testParam.inEndpoint == null) {
+      console.info('usb case testParam_interface and testParam_inEndpoint is null');
+      expect(false).assertTrue();
+      return
+    }
+
+    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    expect(testParam.isClaimed).assertEqual(0);
+
+    console.info('usb case readData begin');
+    var tmpTimeOut = "invalid";
+    var tmpUint8Array = new Uint8Array(testParam.maxInSize);
+    try {
+      usb.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, tmpTimeOut).then(data => {
+        console.info('usb case SUB_USB_JS_1530 ret: ' + data);
+        expect(false).assertTrue();
+        console.info('usb case SUB_USB_JS_1530 :  FAILED');
+      }).catch(error => {
+        console.info('usb 1530 write error : ' + JSON.stringify(error));
+        expect(false).assertTrue();
+        console.info('usb case SUB_USB_JS_1530 :  FAILED');
+      });
+    } catch (err) {
+      console.info('usb 1530 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1530 :  PASS');
     }
   })
 
@@ -1608,7 +1691,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
   /**
    * @tc.number: SUB_USB_JS_1540
    * @tc.name: setConfiguration
-   * @tc.desc: Negative test: Set Device Configuration, parameter pipe type error
+   * @tc.desc: Negative test: Set Device Configuration, parameter config type error
    */
   it('SUB_USB_JS_1540', 0, function () {
     console.info('usb SUB_USB_JS_1540 begin');
