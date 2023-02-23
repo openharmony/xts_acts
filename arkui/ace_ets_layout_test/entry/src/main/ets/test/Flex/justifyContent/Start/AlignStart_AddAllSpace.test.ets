@@ -1,0 +1,124 @@
+/*
+ * Copyright (c) 2023-2030 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@system.router';
+import CommonFunc from "./../../../../MainAbility/common/Common"
+import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
+export default function AlignStart_AddAllSpace() {
+  describe('AlignStart_AddAllSpace', function () {
+    beforeEach(async function (done) {
+      let options = {
+        uri: 'MainAbility/pages/Flex/justifyContent/Start/AlignStart_AddAllSpace'
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info("get AlignStart_AddAllSpace state success " + JSON.stringify(pages));
+        if (!("AlignStart_AddAllSpace" == pages.name)) {
+          console.info("get AlignStart_AddAllSpace state pages.name " + JSON.stringify(pages.name));
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
+          console.info("push AlignStart_AddAllSpace page success " + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push AlignStart_AddAllSpace page error " + JSON.stringify(err));
+        expect().assertFail();
+      }
+      done()
+    });
+    afterEach(async function () {
+      await CommonFunc.sleep(2000);
+      console.info("AlignStart_AddAllSpace after each called");
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0600
+     * @tc.name      Align_Start_Row_AddAllSpace
+     * @tc.desc      After setting margin, after subtracting the padding from the layout space of the parent component,
+     * the interface display of the spindle layout that does not meet the sub-component
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0600', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0600] START');
+      globalThis.value.message.notify({name:'DadAllSpace', value:30});
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('Start_AddAllSpace_01');
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+      let Start_AddAllSpace_011 = CommonFunc.getComponentRect('Start_AddAllSpace_011');
+      let Start_AddAllSpace_012 = CommonFunc.getComponentRect('Start_AddAllSpace_012');
+      let Start_AddAllSpace_013 = CommonFunc.getComponentRect('Start_AddAllSpace_013');
+      let Start_AddAllSpace_01 = CommonFunc.getComponentRect('Start_AddAllSpace_01');
+      let Start_AddAllSpace_01_Box = CommonFunc.getComponentRect('Start_AddAllSpace_01_Box');
+      expect( Start_AddAllSpace_011.top ).assertEqual(Start_AddAllSpace_012.top);
+      expect( Start_AddAllSpace_012.top ).assertEqual(Start_AddAllSpace_013.top);
+      expect( Start_AddAllSpace_012.left ).assertEqual(Start_AddAllSpace_011.right);
+      expect( Start_AddAllSpace_013.left ).assertEqual(Start_AddAllSpace_012.right);
+      expect( Start_AddAllSpace_011.top - Start_AddAllSpace_01.top ).assertEqual(vp2px(30));
+      expect( Start_AddAllSpace_011.left - Start_AddAllSpace_01.left ).assertEqual(vp2px(30));
+      expect( Start_AddAllSpace_01.right - Start_AddAllSpace_013.right ).assertEqual(vp2px(30));
+      expect( Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top ).assertEqual(vp2px(10));
+      expect( Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left ).assertEqual(vp2px(10));
+      expect(Start_AddAllSpace_011.bottom - Start_AddAllSpace_011.top).assertEqual(vp2px(50));
+      expect(Start_AddAllSpace_012.bottom - Start_AddAllSpace_012.top).assertEqual(vp2px(100));
+      expect(Start_AddAllSpace_013.bottom - Start_AddAllSpace_013.top).assertEqual(vp2px(150));
+      expect(Start_AddAllSpace_011.right - Start_AddAllSpace_011.left).assertEqual(vp2px(440/3));
+      expect(Start_AddAllSpace_012.right - Start_AddAllSpace_012.left).assertEqual(vp2px(440/3));
+      expect(Start_AddAllSpace_013.right - Start_AddAllSpace_013.left).assertEqual(vp2px(440/3));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0600] END');
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0700
+     * @tc.name      Align_Start_Row_AddAllSpace
+     * @tc.desc      After setting margin, the interface that satisfies the spindle layout of the child component is
+     * displayed after subtracting the padding from the layout space of the parent component
+     */
+    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0700', 0, async function (done) {
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0700] START');
+      globalThis.value.message.notify({name:'DadAllSpace', value:20});
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('Start_AddAllSpace_01');
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+      let Start_AddAllSpace_011 = CommonFunc.getComponentRect('Start_AddAllSpace_011');
+      let Start_AddAllSpace_012 = CommonFunc.getComponentRect('Start_AddAllSpace_012');
+      let Start_AddAllSpace_013 = CommonFunc.getComponentRect('Start_AddAllSpace_013');
+      let Start_AddAllSpace_01 = CommonFunc.getComponentRect('Start_AddAllSpace_01');
+      let Start_AddAllSpace_01_Box = CommonFunc.getComponentRect('Start_AddAllSpace_01_Box');
+      expect(Start_AddAllSpace_011.top).assertEqual(Start_AddAllSpace_012.top);
+      expect(Start_AddAllSpace_012.top).assertEqual(Start_AddAllSpace_013.top);
+      expect(Start_AddAllSpace_012.left).assertEqual(Start_AddAllSpace_011.right);
+      expect(Start_AddAllSpace_013.left).assertEqual(Start_AddAllSpace_012.right);
+      expect( Start_AddAllSpace_011.left - Start_AddAllSpace_01.left ).assertEqual(vp2px(20));
+      expect( Start_AddAllSpace_01.right - Start_AddAllSpace_013.right ).assertEqual(vp2px(30));
+      expect( Start_AddAllSpace_011.top - Start_AddAllSpace_01.top ).assertEqual(vp2px(20));
+      expect( Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left ).assertEqual(vp2px(10));
+      expect( Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top ).assertEqual(vp2px(10));
+      expect(Start_AddAllSpace_011.right - Start_AddAllSpace_011.left).assertEqual(vp2px(150));
+      expect(Start_AddAllSpace_012.right - Start_AddAllSpace_012.left).assertEqual(vp2px(150));
+      expect(Start_AddAllSpace_013.right - Start_AddAllSpace_013.left).assertEqual(vp2px(150));
+      expect(Start_AddAllSpace_011.bottom - Start_AddAllSpace_011.top).assertEqual(vp2px(50));
+      expect(Start_AddAllSpace_012.bottom - Start_AddAllSpace_012.top).assertEqual(vp2px(100));
+      expect(Start_AddAllSpace_013.bottom - Start_AddAllSpace_013.top).assertEqual(vp2px(150));
+      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0700] END');
+      done();
+    });
+  })
+}
