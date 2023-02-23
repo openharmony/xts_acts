@@ -14,7 +14,7 @@
  */
 
 import {
-  fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, isBoolean, isBigInt,
+  fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, isBigInt,
   describe, it, expect,
 } from '../Common';
 
@@ -52,7 +52,7 @@ describe('fileIO_fs_lstat', function () {
    * The path point to nothing, no such file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_sync_001', 0, async function () {
@@ -74,7 +74,7 @@ describe('fileIO_fs_lstat', function () {
    * Missing parameters.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_sync_002', 0, async function () {
@@ -94,7 +94,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.ino of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_ino_000', 0, async function () {
@@ -117,7 +117,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.mode of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_mode_000', 0, async function () {
@@ -141,7 +141,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.uid of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_uid_000', 0, async function () {
@@ -165,7 +165,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.gid of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_gid_000', 0, async function () {
@@ -189,7 +189,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.size of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_size_000', 0, async function () {
@@ -213,7 +213,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or parameter to get stat.atime of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_atime_000', 0, async function () {
@@ -237,7 +237,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.mtime of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_mtime_000', 0, async function () {
@@ -261,7 +261,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.ctime of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_ctime_000', 0, async function () {
@@ -285,7 +285,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a block special device.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_block_device_000', 0, async function () {
@@ -309,7 +309,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface does not require parameters.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_lstat_is_block_device_001', 0, async function () {
@@ -321,7 +321,7 @@ describe('fileIO_fs_lstat', function () {
       expect(false).assertTrue();
     } catch (e) {
       fileIO.unlinkSync(fpath);
-      console.info('fileIO_test_lstat_is_block_device_001 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_lstat_is_block_device_001 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
@@ -333,7 +333,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a character special device.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_character_device_000', 0, async function () {
@@ -357,7 +357,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface does not require parameters.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_lstat_is_character_device_001', 0, async function () {
@@ -381,7 +381,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a directory.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_directory_000', 0, async function () {
@@ -405,7 +405,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall treat a directory as a directory.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_directory_001', 0, async function () {
@@ -429,7 +429,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface does not require parameters.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_directory_002', 0, async function () {
@@ -453,7 +453,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a FIFO.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_fifo_000', 0, async function () {
@@ -477,7 +477,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface does not require parameters.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_lstat_is_fifo_002', 0, async function () {
@@ -501,7 +501,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall treat a normal file as a normal file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_file_000', 0, async function () {
@@ -525,7 +525,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a directory as a normal file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_file_001', 0, async function () {
@@ -549,7 +549,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface does not require parameters.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_lstat_is_file_002', 0, async function () {
@@ -573,7 +573,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a file as a socket.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_socket_000', 0, async function () {
@@ -597,7 +597,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface does not require parameters.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_socket_001', 0, async function () {
@@ -621,7 +621,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a symbolic link.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_symbolic_link_000', 0, async function () {
@@ -645,7 +645,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface does not require parameters.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_is_symbolic_link_001', 0, async function () {
@@ -698,7 +698,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or parameter to get the file stat.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_001', 0, async function (done) {
@@ -727,7 +727,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or parameter to get the file stat.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_002', 0, async function (done) {
@@ -752,7 +752,7 @@ describe('fileIO_fs_lstat', function () {
    * The path point to nothing, no such file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_003', 0, async function (done) {
@@ -761,7 +761,7 @@ describe('fileIO_fs_lstat', function () {
     try {
       fileIO.lstat(fpath, (err) => {
         if (err) {
-          console.log('fileIO_lstat_async_003 error package: {' + err.message + ', code: ' + err.code + '}');
+          console.log('fileIO_lstat_async_003 error: {message: ' + err.message + ', code: ' + err.code + '}');
           expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
           done();
         }
@@ -779,7 +779,7 @@ describe('fileIO_fs_lstat', function () {
    * The path point to nothing, no such file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_004', 0, async function (done) {
@@ -802,7 +802,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.ino of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_ino_000', 0, async function (done) {
@@ -827,7 +827,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.ino of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_ino_001', 0, async function (done) {
@@ -857,7 +857,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or parameter to get stat.mode of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_mode_000', 0, async function (done) {
@@ -882,7 +882,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or parameter to get stat.mode of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_mode_001', 0, async function (done) {
@@ -912,7 +912,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.uid of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_uid_000', 0, async function (done) {
@@ -937,7 +937,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.uid of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_uid_001', 0, async function (done) {
@@ -967,7 +967,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.gid of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_gid_000', 0, async function (done) {
@@ -992,7 +992,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.gid of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_gid_001', 0, async function (done) {
@@ -1022,7 +1022,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.size of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_size_000', 0, async function (done) {
@@ -1047,7 +1047,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.size of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_size_001', 0, async function (done) {
@@ -1077,7 +1077,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path parameter to get stat.atime of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_atime_000', 0, async function (done) {
@@ -1102,7 +1102,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or fd parameter to get stat.atime of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_atime_001', 0, async function (done) {
@@ -1132,7 +1132,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or fd parameter to get stat.mtime of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_mtime_000', 0, async function (done) {
@@ -1157,7 +1157,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or fd parameter to get stat.mtime of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_mtime_001', 0, async function (done) {
@@ -1187,7 +1187,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or fd parameter to get stat.ctime of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_ctime_000', 0, async function (done) {
@@ -1212,7 +1212,7 @@ describe('fileIO_fs_lstat', function () {
    * Enter the path or fd parameter to get stat.ctime of the file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_ctime_001', 0, async function (done) {
@@ -1242,7 +1242,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a block special device.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_block_device_000', 0, async function (done) {
@@ -1267,7 +1267,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a block special device.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_block_device_001', 0, async function (done) {
@@ -1297,7 +1297,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a character special device.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_character_device_000', 0, async function (done) {
@@ -1322,7 +1322,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a character special device.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_character_device_001', 0, async function (done) {
@@ -1352,7 +1352,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a directory.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_directory_000', 0, async function (done) {
@@ -1377,7 +1377,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a directory as a directory.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_directory_001', 0, async function (done) {
@@ -1403,7 +1403,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a directory as a directory.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_directory_002', 0, async function (done) {
@@ -1433,7 +1433,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a FIFO.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_fifo_000', 0, async function (done) {
@@ -1458,7 +1458,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a FIFO.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_fifo_001', 0, async function (done) {
@@ -1488,7 +1488,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall treat a normal file as a normal file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_file_000', 0, async function (done) {
@@ -1513,7 +1513,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall treat a normal file as a normal file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_file_001', 0, async function (done) {
@@ -1543,7 +1543,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a directory as a normal file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_file_002', 0, async function (done) {
@@ -1568,7 +1568,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a file as a socket.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_socket_000', 0, async function (done) {
@@ -1593,7 +1593,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a file as a socket.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_socket_001', 0, async function (done) {
@@ -1623,7 +1623,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a symbolic link.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_symbolic_link_000', 0, async function (done) {
@@ -1648,7 +1648,7 @@ describe('fileIO_fs_lstat', function () {
    * This interface shall not treat a normal file as a symbolic link.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_lstat_async_is_symbolic_link_001', 0, async function (done) {
@@ -1678,7 +1678,7 @@ describe('fileIO_fs_lstat', function () {
    * Modify the file, view the file status changes by path.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_append_file_sync_000', 0, async function () {
@@ -1693,7 +1693,7 @@ describe('fileIO_fs_lstat', function () {
       expect(isIntNum(file.fd)).assertTrue();
 
       expect(fileIO.writeSync(file.fd, FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      fileIO.closeSync(file.fd);
+      fileIO.closeSync(file);
 
       stat = fileIO.lstatSync(fpath);
       expect(stat.size == FILE_CONTENT.length * 2).assertTrue();

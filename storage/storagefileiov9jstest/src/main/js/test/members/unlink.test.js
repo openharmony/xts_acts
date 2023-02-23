@@ -14,8 +14,7 @@
  */
 
 import {
-  fileIO, FILE_CONTENT, prepareFile, nextFileName,
-  describe, it, expect,
+  fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
 
 export default function fileIOUnlink() {
@@ -88,7 +87,7 @@ describe('fileIO_fs_unlink', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_UNLINKASYNC_0000
+   * @tc.number SUB_DF_FileIO_UNLINK_ASYNC_0000
    * @tc.name fileIO_test_unlink_async_000
    * @tc.desc Test unlinkAsync() interfaces. Promise.
    * Delete the file by path, verify the normal function.
@@ -113,7 +112,7 @@ describe('fileIO_fs_unlink', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_UNLINKASYNC_0100
+   * @tc.number SUB_DF_FileIO_UNLINK_ASYNC_0100
    * @tc.name fileIO_test_unlink_async_001
    * @tc.desc Test unlinkAsync() interfaces. Callback.
    * Delete the file by path, verify the normal function.
@@ -143,7 +142,7 @@ describe('fileIO_fs_unlink', function () {
   });
   
   /**
-   * @tc.number SUB_DF_FileIO_UNLINKASYNC_0200
+   * @tc.number SUB_DF_FileIO_UNLINK_ASYNC_0200
    * @tc.name fileIO_test_unlink_async_002
    * @tc.desc Test unlink() interfaces. Callback.
    * The path point to nothing, no such file.
@@ -158,7 +157,7 @@ describe('fileIO_fs_unlink', function () {
     try {
       fileIO.unlink(fpath, (err) => {
         if (err) {
-          console.log('fileIO_test_unlink_async_002 error package: {' + err.message + ', code: ' + err.code + '}');
+          console.log('fileIO_test_unlink_async_002 error: {message: ' + err.message + ', code: ' + err.code + '}');
           expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
           done();
         }
@@ -170,7 +169,7 @@ describe('fileIO_fs_unlink', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_UNLINKASYNC_0300
+   * @tc.number SUB_DF_FileIO_UNLINK_ASYNC_0300
    * @tc.name fileIO_test_unlink_async_003
    * @tc.desc Test unlink() interfaces. Promise.
    * The path point to nothing, no such file.
@@ -193,7 +192,7 @@ describe('fileIO_fs_unlink', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_UNLINKASYNC_0400
+   * @tc.number SUB_DF_FileIO_UNLINK_ASYNC_0400
    * @tc.name fileIO_test_unlink_async_004
    * @tc.desc Test unlink() interfaces. Promise.
    * Missing parameter.

@@ -14,8 +14,7 @@
  */
 
 import {
-  fileio, fileIO, FILE_CONTENT, prepareFile, nextFileName,
-  describe, it, expect,
+  fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
 
 export default function fileIOFdatasync() {
@@ -38,8 +37,8 @@ export default function fileIOFdatasync() {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       fileIO.fdatasyncSync(file.fd);
-      fileio.closeSync(file.fd);
-      fileio.unlinkSync(fpath);
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdatasync_sync_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
@@ -47,12 +46,12 @@ export default function fileIOFdatasync() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_FDATASYNC_SYNC_0010
+   * @tc.number SUB_DF_FILEIO_FDATASYNC_SYNC_0100
    * @tc.name fileIO_test_fdatasync_sync_001
    * @tc.desc Test fdatasyncSync() interfaces. Invalid fd parameter.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_fdatasync_sync_001', 0, async function () {
@@ -67,12 +66,12 @@ export default function fileIOFdatasync() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_FDATASYNC_SYNC_0020
+   * @tc.number SUB_DF_FILEIO_FDATASYNC_SYNC_0200
    * @tc.name fileIO_test_fdatasync_sync_002
    * @tc.desc Test fdatasyncSync() interfaces. Missing parameter.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_fdatasync_sync_002', 0, async function () {
@@ -107,8 +106,8 @@ export default function fileIOFdatasync() {
           console.log('fileIO_test_fdatasync_async_000 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        fileio.closeSync(file.fd);
-        fileio.unlinkSync(fpath);
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
         done();
       });
     } catch (e) {
@@ -118,13 +117,13 @@ export default function fileIOFdatasync() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0010
+   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0100
    * @tc.name fileIO_test_fdatasync_async_001
    * @tc.desc Test fdatasync() interfaces. Promise.then().catch().
    * Open the file in read-write mode, and synchronize the file content data.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_fdatasync_async_001', 0, async function (done) {
@@ -133,9 +132,9 @@ export default function fileIOFdatasync() {
 
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      fileio.fdatasync(file.fd).then(() => {
-        fileio.closeSync(file.fd);
-        fileio.unlinkSync(fpath);
+      fileIO.fdatasync(file.fd).then(() => {
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
         done();
       }).catch((err) => {
         console.log('fileIO_test_fdatasync_async_001 error package: ' + JSON.stringify(err));
@@ -148,13 +147,13 @@ export default function fileIOFdatasync() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0020
+   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0200
    * @tc.name fileIO_test_fdatasync_async_002
    * @tc.desc Test fdatasync() interfaces. await Promise.
    * Open the file in read-write mode, and synchronize the file content data.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_fdatasync_async_002', 0, async function (done) {
@@ -163,9 +162,9 @@ export default function fileIOFdatasync() {
 
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      await fileio.fdatasync(file.fd);
-      fileio.closeSync(file.fd);
-      fileio.unlinkSync(fpath);
+      await fileIO.fdatasync(file.fd);
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
       console.log('fileIO_test_fdatasync_async_002 has failed for ' + e.message + ', code: ' + e.code);
@@ -174,13 +173,13 @@ export default function fileIOFdatasync() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0030
+   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0300
    * @tc.name fileIO_test_fdatasync_async_003
    * @tc.desc Test fdatasync() interfaces. await Promise.
    * Invalid fd parameter.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_fdatasync_async_003', 0, async function (done) {
@@ -196,13 +195,13 @@ export default function fileIOFdatasync() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0040
+   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0400
    * @tc.name fileIO_test_fdatasync_async_004
    * @tc.desc Test fdatasync() interfaces. Callback.
    * Invalid fd parameter.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_fdatasync_async_004', 0, async function (done) {
@@ -210,7 +209,7 @@ export default function fileIOFdatasync() {
     try {
       fileIO.fdatasync(-1, (err) => {
         if (err) {
-          console.log('fileIO_test_fdatasync_async_004 error package: {' + err.message + ', code: ' + err.code + '}');
+          console.log('fileIO_test_fdatasync_async_004 error: {message: ' + err.message + ', code: ' + err.code + '}');
           expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
           done();
         }
@@ -222,13 +221,13 @@ export default function fileIOFdatasync() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0050
+   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0500
    * @tc.name fileIO_test_fdatasync_async_005
    * @tc.desc Test fdatasync() interfaces. Promise.then().catch()
    * Invalid fd parameter.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_fdatasync_async_005', 0, async function (done) {
@@ -237,7 +236,7 @@ export default function fileIOFdatasync() {
       fileIO.fdatasync(-1).then(() => {
         expect(false).assertTrue();
       }).catch((err) => {
-        console.log('fileIO_test_fdatasync_async_005 error package: {' + err.message + ', code: ' + err.code + '}');
+        console.log('fileIO_test_fdatasync_async_005 error: {message: ' + err.message + ', code: ' + err.code + '}');
         expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
         done();
       });
@@ -248,13 +247,13 @@ export default function fileIOFdatasync() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0060
+   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0600
    * @tc.name fileIO_test_fdatasync_async_006
    * @tc.desc Test fdatasync() interfaces. Promise.
    * Missing parameter.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_fdatasync_async_006', 0, async function (done) {
@@ -270,19 +269,19 @@ export default function fileIOFdatasync() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0070
+   * @tc.number SUB_DF_FILEIO_FDATASYNC_ASYNC_0700
    * @tc.name fileIO_test_fdatasync_async_007
    * @tc.desc Test fdatasync() interfaces. Callback.
    * Missing parameter.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_fdatasync_async_007', 0, async function (done) {
 
     try {
-      fileIO.fdatasync(() => {
+      fileIO.fdatasync((err) => {
         expect(false).assertTrue();
       });
     } catch (e) {

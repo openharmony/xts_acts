@@ -96,7 +96,7 @@ describe('fileIO_fs_mkdir', function () {
    * @tc.require
    */
   it('fileIO_test_mkdir_sync_003', 0, async function () {
-    let fpath = await nextFileName('fileIO_test_open_sync_000');
+    let fpath = await nextFileName('fileIO_test_mkdir_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
@@ -198,7 +198,7 @@ describe('fileIO_fs_mkdir', function () {
     try {
       fileIO.mkdir('/', (err) => {
         if(err) {
-          console.log('fileIO_test_mkdir_async_003 error package: {' + err.message + ', code: ' + err.code + '}');
+          console.log('fileIO_test_mkdir_async_003 error: {message: ' + err.message + ', code: ' + err.code + '}');
           expect(err.code == 13900015 && err.message == 'File exists').assertTrue();
           done();
         }

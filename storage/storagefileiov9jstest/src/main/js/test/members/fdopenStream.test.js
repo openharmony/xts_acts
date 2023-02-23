@@ -35,15 +35,15 @@ describe('fileIO_fs_FdOpenStream', async function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
     expect(isIntNum(file.fd)).assertTrue();
-    let fp = fileIO.fdopenStreamSync(file.fd, 'r');
+    let fpr = fileIO.fdopenStreamSync(file.fd, 'r');
 
     try {
-      expect(fp !== null).assertTrue();
-      expect(fp.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      fp.writeSync(FILE_CONTENT);
+      expect(fpr !== null).assertTrue();
+      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      fpr.writeSync(FILE_CONTENT);
       expect(false).assertTrue();
     } catch (e) {
-      fp.closeSync();
+      fpr.closeSync();
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_sync_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -88,11 +88,11 @@ describe('fileIO_fs_FdOpenStream', async function () {
     
     try {
       expect(isIntNum(file.fd)).assertTrue();
-      let fp = fileIO.fdopenStreamSync(file.fd, 'r+');
-      expect(fp !== null).assertTrue();
-      expect(fp.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      expect(fp.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      fp.closeSync();
+      let fpr = fileIO.fdopenStreamSync(file.fd, 'r+');
+      expect(fpr !== null).assertTrue();
+      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      fpr.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdopenstream_sync_002 has failed for ' + e.message + ', code: ' + e.code);
@@ -224,9 +224,9 @@ describe('fileIO_fs_FdOpenStream', async function () {
       fpw.closeSync();
 
       let file2 = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
-      let sr = fileIO.fdopenStreamSync(file2.fd, 'r');
-      expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      sr.closeSync();
+      let fpr = fileIO.fdopenStreamSync(file2.fd, 'r');
+      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      fpr.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdopenstream_sync_007 has failed for ' + e.message + ', code: ' + e.code);
@@ -280,15 +280,15 @@ describe('fileIO_fs_FdOpenStream', async function () {
     try {
       let file1 = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       expect(isIntNum(file1.fd)).assertTrue();
-      let fpw = fileIO.fdopenStreamSync(file1.fd, 'a');
-      expect(fpw !== null).assertTrue();
-      expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      fpw.closeSync();
+      let fpa = fileIO.fdopenStreamSync(file1.fd, 'a');
+      expect(fpa !== null).assertTrue();
+      expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      fpa.closeSync();
 
       let file2 = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      let sr = fileIO.fdopenStreamSync(file2.fd, 'r');
-      expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
-      sr.closeSync();
+      let fpr = fileIO.fdopenStreamSync(file2.fd, 'r');
+      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      fpr.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdopenstream_sync_009 has failed for ' + e.message + ', code: ' + e.code);
@@ -311,15 +311,15 @@ describe('fileIO_fs_FdOpenStream', async function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
     expect(isIntNum(file.fd)).assertTrue();
-    let sa = fileIO.fdopenStreamSync(file.fd, 'a');
+    let fpa = fileIO.fdopenStreamSync(file.fd, 'a');
 
     try {
-      expect(sa !== null).assertTrue();
-      expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      sa.readSync(new ArrayBuffer(4096));
+      expect(fpa !== null).assertTrue();
+      expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      fpa.readSync(new ArrayBuffer(4096));
       expect(false).assertTrue();
     } catch (e) {
-      sa.closeSync();
+      fpa.closeSync();
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_sync_010 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -343,11 +343,11 @@ describe('fileIO_fs_FdOpenStream', async function () {
 
     try {
       expect(isIntNum(file.fd)).assertTrue();
-      let sa = fileIO.fdopenStreamSync(file.fd, 'a+');
-      expect(sa !== null).assertTrue();
-      expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
-      sa.closeSync();
+      let fpa = fileIO.fdopenStreamSync(file.fd, 'a+');
+      expect(fpa !== null).assertTrue();
+      expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(fpa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      fpa.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdopenstream_sync_011 has failed for ' + e.message + ', code: ' + e.code);
@@ -369,16 +369,16 @@ describe('fileIO_fs_FdOpenStream', async function () {
     let fpath = await nextFileName('fileIO_test_fdopenstream_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-    let fp = await fileIO.fdopenStream(file.fd, 'r');
+    let fpr = await fileIO.fdopenStream(file.fd, 'r');
 
     try {
       expect(isIntNum(file.fd)).assertTrue();
-      expect(fp !== null).assertTrue();
-      expect(fp.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      fp.writeSync(FILE_CONTENT);
+      expect(fpr !== null).assertTrue();
+      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      fpr.writeSync(FILE_CONTENT);
       expect(false).assertTrue();
     } catch (e) {
-      fp.closeSync();
+      fpr.closeSync();
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_async_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -403,16 +403,16 @@ describe('fileIO_fs_FdOpenStream', async function () {
     
     try {
       expect(isIntNum(file.fd)).assertTrue();
-      fileIO.fdopenStream(file.fd, 'r', (err, fp) => {
+      fileIO.fdopenStream(file.fd, 'r', (err, fpr) => {
         if (err) {
           console.log('fileIO_test_fdopenstream_async_001 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(fp !== null).assertTrue();
-        expect(fp.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-        fp.write(FILE_CONTENT, (err) => {
+        expect(fpr !== null).assertTrue();
+        expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+        fpr.write(FILE_CONTENT, (err) => {
           if (err) {
-            fp.closeSync();
+            fpr.closeSync();
             fileIO.unlinkSync(fpath);
             console.log(
               'fileIO_test_fdopenstream_async_001 error: {message: ' + err.message + ', code: ' + err.code + '}'
@@ -492,11 +492,11 @@ describe('fileIO_fs_FdOpenStream', async function () {
 
     try {
       expect(isIntNum(file.fd)).assertTrue();
-      let fp = await fileIO.fdopenStream(file.fd, 'r+');
-      expect(fp !== null).assertTrue();
-      expect(fp.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(fp.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      fp.closeSync();
+      let fpr = await fileIO.fdopenStream(file.fd, 'r+');
+      expect(fpr !== null).assertTrue();
+      expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      fpr.closeSync();
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -522,15 +522,15 @@ describe('fileIO_fs_FdOpenStream', async function () {
 
     try {
       expect(isIntNum(file.fd)).assertTrue();
-      fileIO.fdopenStream(file.fd, 'r+', (err, fp) => {
+      fileIO.fdopenStream(file.fd, 'r+', (err, fpr) => {
         if (err) {
           console.log('fileIO_test_fdopenstream_async_005 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(fp !== null).assertTrue();
-        expect(fp.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        expect(fp.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-        fp.closeSync();
+        expect(fpr !== null).assertTrue();
+        expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+        expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+        fpr.closeSync();
         fileIO.unlinkSync(fpath);
         done();
       });
@@ -689,9 +689,9 @@ describe('fileIO_fs_FdOpenStream', async function () {
       fpw.closeSync();
 
       let file2 = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      let sr = await fileIO.fdopenStream(file2.fd, 'r');
-      expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      sr.closeSync();
+      let fpr = await fileIO.fdopenStream(file2.fd, 'r');
+      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      fpr.closeSync();
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -781,15 +781,15 @@ describe('fileIO_fs_FdOpenStream', async function () {
 
     try {
       let file1 = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      let fpw = await fileIO.fdopenStream(file1.fd, 'a');
-      expect(fpw !== null).assertTrue();
-      expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      fpw.closeSync();
+      let fpa = await fileIO.fdopenStream(file1.fd, 'a');
+      expect(fpa !== null).assertTrue();
+      expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      fpa.closeSync();
 
       let file2 = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      let sr = await fileIO.fdopenStream(file2.fd, 'r');
-      expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
-      sr.closeSync();
+      let fpr = await fileIO.fdopenStream(file2.fd, 'r');
+      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      fpr.closeSync();
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -813,15 +813,15 @@ describe('fileIO_fs_FdOpenStream', async function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
     expect(isIntNum(file.fd)).assertTrue();
-    let sa = await fileIO.fdopenStream(file.fd, 'a');
+    let fpa = await fileIO.fdopenStream(file.fd, 'a');
 
     try {
-      expect(sa !== null).assertTrue();
-      expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      sa.readSync(new ArrayBuffer(4096));
+      expect(fpa !== null).assertTrue();
+      expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      fpa.readSync(new ArrayBuffer(4096));
       expect(false).assertTrue();
     } catch (e) {
-      sa.closeSync();
+      fpa.closeSync();
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_async_014 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -846,16 +846,16 @@ describe('fileIO_fs_FdOpenStream', async function () {
     expect(isIntNum(file.fd)).assertTrue();
     
     try {
-      fileIO.fdopenStream(file.fd, 'a', (err, sa) => {
+      fileIO.fdopenStream(file.fd, 'a', (err, fpa) => {
         if (err) {
           console.log('fileIO_test_fdopenstream_async_015 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(sa !== null).assertTrue();
-        expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        sa.read(new ArrayBuffer(4096), (err) => {
+        expect(fpa !== null).assertTrue();
+        expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+        fpa.read(new ArrayBuffer(4096), (err) => {
           if (err) {
-            sa.closeSync();
+            fpa.closeSync();
             fileIO.unlinkSync(fpath);
             console.log(
               'fileIO_test_fdopenstream_async_015 error: {message: ' + err.message + ', code: ' + err.code + '}'
@@ -890,11 +890,11 @@ describe('fileIO_fs_FdOpenStream', async function () {
 
     try {
       expect(isIntNum(file.fd)).assertTrue();
-      let sa = await fileIO.fdopenStream(file.fd, 'a+');
-      expect(sa !== null).assertTrue();
-      expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
-      sa.closeSync();
+      let fpa = await fileIO.fdopenStream(file.fd, 'a+');
+      expect(fpa !== null).assertTrue();
+      expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(fpa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      fpa.closeSync();
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -920,15 +920,15 @@ describe('fileIO_fs_FdOpenStream', async function () {
 
     try {
       expect(isIntNum(file.fd)).assertTrue();
-      fileIO.fdopenStream(file.fd, 'a+', (err, sa) => {
+      fileIO.fdopenStream(file.fd, 'a+', (err, fpa) => {
         if (err) {
           console.log('fileIO_test_fdopenstream_async_017 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(sa !== null).assertTrue();
-        expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
-        sa.closeSync();
+        expect(fpa !== null).assertTrue();
+        expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+        expect(fpa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+        fpa.closeSync();
         fileIO.unlinkSync(fpath);
         done();
       });

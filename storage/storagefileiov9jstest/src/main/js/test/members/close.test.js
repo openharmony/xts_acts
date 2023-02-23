@@ -14,15 +14,14 @@
  */
 
 import {
-    fileIO, FILE_CONTENT, nextFileName, prepareFile,
-    describe, it, expect, 
+  fileIO, FILE_CONTENT, nextFileName, prepareFile, describe, it, expect, 
 } from '../Common';
 
 export default function fileIOClose() {
 describe('fileIO_fs_close', function () {
 
   /**
-   * @tc.number SUB_DF_FILEIO_CLOSESYNC_0000
+   * @tc.number SUB_DF_FILEIO_CLOSE_SYNC_0000
    * @tc.name fileIO_test_close_sync_000
    * @tc.desc Test closeSync() interfaces.
    * Open file and close file by fd.
@@ -45,7 +44,7 @@ describe('fileIO_fs_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CLOSESYNC_0100
+   * @tc.number SUB_DF_FILEIO_CLOSE_SYNC_0100
    * @tc.name fileIO_test_close_sync_001
    * @tc.desc Test closeSync() interfaces.
    * Open file and close file by file object.
@@ -68,7 +67,7 @@ describe('fileIO_fs_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CLOSESYNC_0200
+   * @tc.number SUB_DF_FILEIO_CLOSE_SYNC_0200
    * @tc.name fileIO_test_close_sync_002
    * @tc.desc Test closeSync() interfaces.
    * Test fd has been closed.
@@ -94,7 +93,7 @@ describe('fileIO_fs_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CLOSESYNC_0300
+   * @tc.number SUB_DF_FILEIO_CLOSE_SYNC_0300
    * @tc.name fileIO_test_close_sync_003
    * @tc.desc Test closeSync() interfaces.
    * Test file has been closed.
@@ -120,7 +119,7 @@ describe('fileIO_fs_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CLOSESYNC_0400
+   * @tc.number SUB_DF_FILEIO_CLOSE_SYNC_0400
    * @tc.name fileIO_test_close_sync_004
    * @tc.desc Test closeSync() interfaces.
    * No parameters.
@@ -141,7 +140,7 @@ describe('fileIO_fs_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CLOSESYNC_0500
+   * @tc.number SUB_DF_FILEIO_CLOSE_SYNC_0500
    * @tc.name fileIO_test_close_sync_005
    * @tc.desc Test closeSync() interfaces.
    * Illegal type of parameter.
@@ -301,7 +300,7 @@ describe('fileIO_fs_close', function () {
   /**
    * @tc.number SUB_DF_FILEIO_CLOSE_ASYNC_0500
    * @tc.name fileIO_test_close_async_005
-   * @tc.desc Test close() interfaces. Promise. 
+   * @tc.desc Test close() interfaces. Promise.
    * Test file has been closed.
    * @tc.size MEDIUM
    * @tc.type Function
@@ -315,12 +314,12 @@ describe('fileIO_fs_close', function () {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       await fileIO.close(file);
-      fileIO.close(file);
+      await fileIO.close(file);
       expect(false).assertTrue();
     } catch (e) {
+      fileIO.unlinkSync(fpath);
       console.log('fileIO_test_close_async_005 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
-      fileIO.unlinkSync(fpath);
       done();
     }
   });
@@ -335,7 +334,7 @@ describe('fileIO_fs_close', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_close_async_006', 0, async function (done) {
+  it('fileIO_test_close_async_006', 0, async function (done) {
     let fpath = await nextFileName('fileIO_test_close_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

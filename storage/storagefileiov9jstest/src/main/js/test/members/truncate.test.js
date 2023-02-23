@@ -14,8 +14,7 @@
  */
 
 import {
-  fileio, fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
-  describe, it, expect,
+  fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect,
 } from '../Common';
 
   export default function fileIOTruncate() {
@@ -40,13 +39,13 @@ import {
       await fileIO.truncate(fpath, truncateLen);
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       expect(isIntNum(file.fd)).assertTrue();
-      let len = fileIO.readSync(file.fd, new ArrayBuffer(4096));
-      expect(len == truncateLen).assertTrue();
-      fileio.closeSync(file.fd);
-      fileio.unlinkSync(fpath);
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+      expect(readLen == truncateLen).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
-      console.info('fileIO_truncate_async_000 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_truncate_async_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -58,7 +57,7 @@ import {
    * Truncate the file with fd and truncateLen = 5.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_truncate_async_001', 0, async function (done) {
@@ -74,12 +73,12 @@ import {
           console.log('fileIO_truncate_async_001 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        let len = fileIO.readSync(file.fd, new ArrayBuffer(4096));
-        expect(len == truncateLen).assertTrue();
-        fileio.closeSync(file.fd);
-        fileio.unlinkSync(fpath);
+        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        expect(readLen == truncateLen).assertTrue();
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
         done();
-      })
+      });
     } catch (e) {
       console.log('fileIO_truncate_async_001 has failed for '  + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
@@ -93,7 +92,7 @@ import {
    * Truncate the file with path and truncateLen = 2.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_truncate_async_002', 0, async function (done) {
@@ -105,10 +104,10 @@ import {
       fileIO.truncate(fpath, truncateLen).then(() => {
         let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
-        let len = fileIO.readSync(file.fd, new ArrayBuffer(4096));
-        expect(len == truncateLen).assertTrue();
-        fileio.closeSync(file.fd);
-        fileio.unlinkSync(fpath);
+        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        expect(readLen == truncateLen).assertTrue();
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
         done();
       }).catch((err) => {
         console.log('fileIO_truncate_async_002 error package: ' + JSON.stringify(err));
@@ -127,7 +126,7 @@ import {
    * Truncate the file with fd and truncateLen = 2.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_truncate_async_003', 0, async function (done) {
@@ -139,15 +138,15 @@ import {
     try {
       expect(isIntNum(file.fd)).assertTrue();
       fileIO.truncate(file.fd, truncateLen).then(() => {
-        let len = fileIO.readSync(file.fd, new ArrayBuffer(4096));
-        expect(len == truncateLen).assertTrue();
-        fileio.closeSync(file.fd);
-        fileio.unlinkSync(fpath);
+        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        expect(readLen == truncateLen).assertTrue();
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
         done();
       }).catch((err) => {
         console.log('fileIO_truncate_async_003 error package: ' + JSON.stringify(err));
         expect(false).assertTrue();
-      })
+      });
     } catch(e) {
       console.log('fileIO_truncate_async_003 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
@@ -158,10 +157,10 @@ import {
    * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0400
    * @tc.name fileIO_truncate_async_004
    * @tc.desc Test the truncate() interface. Callback.
-   * Truncate the file with path and truncateLen = 2.
+   * The path point to nothing, no such file.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_truncate_async_004', 0, async function (done) {
@@ -171,7 +170,7 @@ import {
     try {
       fileIO.truncate(fpath, truncateLen, (err) => {
         if (err) {
-          console.log('fileIO_truncate_async_004 error package: {' + err.message + ', code: ' + err.code + '}');
+          console.log('fileIO_truncate_async_004 error: {message: ' + err.message + ', code: ' + err.code + '}');
           expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
           done();
         }
@@ -186,10 +185,10 @@ import {
    * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0500
    * @tc.name fileIO_truncate_async_005
    * @tc.desc Test the truncate() interface. Promise.
-   * Truncate the file with path and truncateLen = 2.
+   * The path point to nothing, no such file.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_truncate_async_005', 0, async function (done) {
@@ -207,13 +206,81 @@ import {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0600
+   * @tc.name fileIO_truncate_async_006
+   * @tc.desc Test the truncate() interface. Callback.
+   * Truncate the file with fd and truncateLen = 0.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_truncate_async_006', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_truncate_async_006');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+
+    try {
+      expect(isIntNum(file.fd)).assertTrue();
+      fileIO.truncate(file.fd, (err) => {
+        if(err) {
+          console.log('fileIO_truncate_async_006 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        expect(readLen == 0).assertTrue();
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_truncate_async_006 has failed for '  + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0700
+   * @tc.name fileIO_truncate_async_007
+   * @tc.desc Test the truncate() interface. Callback.
+   * Truncate the file with fd and truncateLen = 0.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_truncate_async_007', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_truncate_async_007');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.truncate(fpath, (err) => {
+        if(err) {
+          console.log('fileIO_truncate_async_007 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        expect(isIntNum(file.fd)).assertTrue();
+        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        expect(readLen == 0).assertTrue();
+        fileIO.closeSync(file);
+        fileIO.unlinkSync(fpath);
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_truncate_async_008 has failed for '  + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0000
    * @tc.name fileIO_test_truncate_sync_000
    * @tc.desc Test the truncateSync() interface.
    * Truncate the file with path.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_truncate_sync_000', 0, async function () {
@@ -223,7 +290,7 @@ import {
     try {
       fileIO.truncateSync(fpath);
       expect(fileIO.statSync(fpath).size == 0).assertTrue();
-      fileio.unlinkSync(fpath);
+      fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_truncate_sync_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
@@ -237,7 +304,7 @@ import {
    * Truncate the file with fd and truncateLen = 5.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_truncate_sync_001', 0, async function () {
@@ -249,10 +316,10 @@ import {
     try {
       expect(isIntNum(file.fd)).assertTrue();
       fileIO.truncateSync(file.fd, truncateLen);
-      let len = fileIO.readSync(file.fd, new ArrayBuffer(4096));
-      expect(len == truncateLen).assertTrue();
-      fileio.closeSync(file.fd);
-      fileio.unlinkSync(fpath);
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+      expect(readLen == truncateLen).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_truncate_sync_001 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
@@ -266,7 +333,7 @@ import {
    * The path point to nothing, no such file.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_truncate_sync_002', 0, async function () {
@@ -287,7 +354,7 @@ import {
    * @tc.desc Test the truncateSync() interface. Invalid parameter.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_truncate_sync_003', 0, async function () {
@@ -308,7 +375,7 @@ import {
    * @tc.desc Test truncateSync() interfaces. Missing parameters.
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_truncate_sync_004', 0, function () {

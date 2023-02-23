@@ -21,7 +21,7 @@ export default function fileIOMoveFile() {
   describe('fileIO_fs_moveFile', function () {
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILESYNC_0000
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_SYNC_0000
    * @tc.name fileIO_test_moveFile_sync_000
    * @tc.desc Test moveFileSync() interface.
    * Move a single file, shall work properly in normal case.
@@ -51,13 +51,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILESYNC_0100
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_SYNC_0100
    * @tc.name fileIO_test_moveFile_sync_001
    * @tc.desc Test moveFileSync() interface.
    * A file with the same name already exists under the destination path.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_sync_001', 0, async function () {
@@ -81,13 +81,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILESYNC_0200
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_SYNC_0200
    * @tc.name fileIO_test_moveFile_sync_002
    * @tc.desc Test moveFileSync() interface.
    * The path point to nothing, no such file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_sync_002', 0, async function () {
@@ -109,13 +109,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILESYNC_0400
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_SYNC_0400
    * @tc.name fileIO_test_moveFile_sync_004
    * @tc.desc Test moveFileSync() interface.
    * The path point to a directory, not a file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_sync_004', 0, async function () {
@@ -134,13 +134,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILESYNC_0500
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_SYNC_0500
    * @tc.name fileIO_test_moveFile_sync_005
    * @tc.desc Test moveFileSync() interface.
    * Missing parameter.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_sync_005', 0, async function () {
@@ -158,13 +158,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILESYNC_0600
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_SYNC_0600
    * @tc.name fileIO_test_moveFile_sync_006
    * @tc.desc Test moveFileSync() interface.
    * Entry parameters increase forced movement when mode = 0.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_sync_006', 0, async function () {
@@ -189,7 +189,7 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0000
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0000
    * @tc.name fileIO_test_moveFile_async_000
    * @tc.desc Test moveFile() interface. Promise.
    * Move a single file, shall work properly in normal case.
@@ -220,13 +220,13 @@ export default function fileIOMoveFile() {
   });
 
 /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0100
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0100
    * @tc.name fileIO_test_moveFile_async_001
    * @tc.desc Test moveFile() interface. Callback.
    * Move a single file, shall work properly in normal case.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_001', 0, async function (done) {
@@ -256,13 +256,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0200
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0200
    * @tc.name fileIO_test_moveFile_async_002
    * @tc.desc Test moveFile() interface. Promise.
    * A file with the same name already exists under the destination path.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_002', 0, async function (done) {
@@ -287,13 +287,13 @@ export default function fileIOMoveFile() {
   });
 
 /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0300
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0300
    * @tc.name fileIO_test_moveFile_async_003
    * @tc.desc Test moveFile() interface. Callback.
    * A file with the same name already exists under the destination path.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_003', 0, async function (done) {
@@ -310,7 +310,7 @@ export default function fileIOMoveFile() {
       fileIO.moveFile(fpath, ffpath, 1, (err) => {
         if (err) {
           fileIO.rmdirSync(dpath);
-          console.log('fileIO_test_moveFile_async_003 error package: {' + err.message + ', code: ' + err.code + '}');
+          console.log('fileIO_test_moveFile_async_003 error: {message: ' + err.message + ', code: ' + err.code + '}');
           expect(err.code == 13900015 && err.message == 'File exists').assertTrue();
           done();
         }
@@ -322,13 +322,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0400
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0400
    * @tc.name fileIO_test_moveFile_async_004
    * @tc.desc Test moveFile() interface. Promise.
    * The path point to nothing, no such file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_004', 0, async function (done) {
@@ -351,13 +351,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0500
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0500
    * @tc.name fileIO_test_moveFile_async_005
    * @tc.desc Test moveFile() interface. Callback.
    * The path point to nothing, no such file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_005', 0, async function (done) {
@@ -372,7 +372,7 @@ export default function fileIOMoveFile() {
       fileIO.moveFile(fpath, ffpath, (err) => {
         if (err) {
           fileIO.rmdirSync(dpath);
-          console.log('fileIO_test_moveFile_async_005 error package: {' + err.message + ', code: ' + err.code + '}');
+          console.log('fileIO_test_moveFile_async_005 error: {message: ' + err.message + ', code: ' + err.code + '}');
           expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
           done();
         }
@@ -384,13 +384,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0600
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0600
    * @tc.name fileIO_test_moveFile_async_006
    * @tc.desc Test moveFile() interface. Promise.
    * The path point to a directory, not a file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_006', 0, async function (done) {
@@ -410,13 +410,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0700
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0700
    * @tc.name fileIO_test_moveFile_async_007
    * @tc.desc Test moveFile() interface. Callback.
    * The path point to a directory, not a file.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_007', 0, async function (done) {
@@ -440,13 +440,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0800
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0800
    * @tc.name fileIO_test_moveFile_async_008
    * @tc.desc Test moveFile() interface. Promise.
    * Missing parameter.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_008', 0, async function (done) {
@@ -465,13 +465,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_0900
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0900
    * @tc.name fileIO_test_moveFile_async_009
    * @tc.desc Test moveFile() interface. Promise.
    * Entry parameters increase forced movement when mode = 0.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_009', 0, async function (done) {
@@ -497,13 +497,13 @@ export default function fileIOMoveFile() {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MOVEFILEASYNC_1000
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_1000
    * @tc.name fileIO_test_moveFile_async_010
    * @tc.desc Test moveFile() interface. Callback.
    * Entry parameters increase forced movement when mode = 0.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
   it('fileIO_test_moveFile_async_010', 0, async function (done) {

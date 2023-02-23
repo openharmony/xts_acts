@@ -14,14 +14,14 @@
  */
 
 import {
-    fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
+  fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
 
 export default function fileIORmdir() {
 describe('fileIO_fs_rmdir', function () {
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0000
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_SYNC_0000
    * @tc.name fileIO_test_rmdir_sync_000
    * @tc.desc Test rmdirSync() interface.
    * Recursively delete all files and subfolders in a directory.
@@ -56,7 +56,7 @@ describe('fileIO_fs_rmdir', function () {
 });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0100
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_SYNC_0100
    * @tc.name fileIO_test_rmdir_sync_001
    * @tc.desc Test rmdirSync() interface.
    * Invalid path.
@@ -78,7 +78,7 @@ describe('fileIO_fs_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0200
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_SYNC_0200
    * @tc.name fileIO_test_rmdir_sync_002
    * @tc.desc Test rmdirSync() interface.
    * Missing parameters.
@@ -99,7 +99,7 @@ describe('fileIO_fs_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0300
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_SYNC_0300
    * @tc.name fileIO_test_rmdir_sync_003
    * @tc.desc Test rmdirSync() interface.
    * Invalid type of parameter.
@@ -108,19 +108,19 @@ describe('fileIO_fs_rmdir', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rmdirsync_003', 0, function () {
+  it('fileIO_test_rmdir_sync_003', 0, function () {
 
     try {
       fileIO.rmdirSync(12);
       expect(false).assertTrue();
     } catch (e) {
-      console.log('fileIO_test_rmdirsync_003 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_rmdir_sync_003 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0400
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_SYNC_0400
    * @tc.name fileIO_test_rmdir_sync_004
    * @tc.desc Test rmdirSync() interface.
    * The path contains ../, normal call.
@@ -144,7 +144,7 @@ describe('fileIO_fs_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0000
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_ASYNC_0000
    * @tc.name fileIO_test_rmdir_async_000
    * @tc.desc Test rmdir() interface. Promise.
    * Recursively delete all files and subfolders in a directory.
@@ -180,7 +180,7 @@ describe('fileIO_fs_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0100
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_ASYNC_0100
    * @tc.name fileIO_test_rmdir_async_001
    * @tc.desc Test rmdir() interface. Callback.
    * Recursively delete all files and subfolders in a directory.
@@ -221,7 +221,7 @@ describe('fileIO_fs_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0200
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_ASYNC_0200
    * @tc.name fileIO_test_rmdir_async_002
    * @tc.desc Test rmdir() interface. Promise.
    * Invalid path.
@@ -244,7 +244,7 @@ describe('fileIO_fs_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0300
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_ASYNC_0300
    * @tc.name fileIO_test_rmdir_async_003
    * @tc.desc Test rmdir() interface. Callback.
    * Invalid path.
@@ -259,7 +259,7 @@ describe('fileIO_fs_rmdir', function () {
     try {
       fileIO.rmdir(dpath, (err) => {
         if (err) {
-          console.log('fileIO_test_rmdir_async_003 error package: {' + err.message + ', code: ' + err.code + '}');
+          console.log('fileIO_test_rmdir_async_003 error: {message: ' + err.message + ', code: ' + err.code + '}');
           expect(err.code == 13900002 && err.message == 'No such file or directory').assertTrue();
           done();
         }
@@ -271,7 +271,7 @@ describe('fileIO_fs_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0400
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_ASYNC_0400
    * @tc.name fileIO_test_rmdir_async_004
    * @tc.desc Test rmdir() interface. Callback.
    * Parameter mismatch.
@@ -286,7 +286,7 @@ describe('fileIO_fs_rmdir', function () {
     try {
       fileIO.mkdirSync(dpath);
       expect(fileIO.accessSync(dpath)).assertTrue();
-      fileIO.rmdir(dpath, '', () => {
+      fileIO.rmdir(dpath, '', (err) => {
         expect(false).assertTrue();
       });
     } catch (e) {
@@ -298,7 +298,7 @@ describe('fileIO_fs_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_0500
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_ASYNC_0500
    * @tc.name fileIO_test_rmdir_async_005
    * @tc.desc Test rmdir() interfaces. Promise.
    * Missing parameter.
@@ -320,7 +320,7 @@ describe('fileIO_fs_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0600
+   * @tc.number SUB_STORAGE_FILEIO_RMDIR_ASYNC_0600
    * @tc.name fileIO_test_rmdir_async_006
    * @tc.desc Test rmdirSync() interface. Promise.
    * The path contains ../, normal call.
