@@ -1276,7 +1276,14 @@ export default function webgl1Test_webgl12() {
 				.UNSIGNED_INT_2_10_10_10_REV, view, 0);
 			const errorCode = gl.getError();
 			console.info("webgl2test texImage2D getError: " + errorCode);
-			expect(errorCode).assertEqual(gl.INVALID_OPERATION);
+			var openGLVersion = gl.getParameter(gl.VERSION);
+			console.info("openGLVersion: " + openGLVersion);
+			var version = "OpenGL,ES,3";
+			if (openGLVersion > version) {
+			    expect(errorCode).assertEqual(gl.INVALID_OPERATION);
+			} else {
+			    expect(errorCode).assertEqual(gl.INVALID_ENUM);
+			}
 			done();
 		});
 
@@ -1334,7 +1341,14 @@ export default function webgl1Test_webgl12() {
 				.FLOAT_32_UNSIGNED_INT_24_8_REV, view, 0);
 			const errorCode = gl.getError();
 			console.info("webgl2test texImage2D getError: " + errorCode);
-			expect(errorCode).assertEqual(gl.INVALID_OPERATION);
+			var openGLVersion = gl.getParameter(gl.VERSION);
+			console.info("openGLVersion: " + openGLVersion);
+			var version = "OpenGL,ES,3";
+			if (openGLVersion > version) {
+			    expect(errorCode).assertEqual(gl.INVALID_OPERATION);
+			} else {
+			    expect(errorCode).assertEqual(gl.INVALID_ENUM);
+			}
 			done();
 		});
 
