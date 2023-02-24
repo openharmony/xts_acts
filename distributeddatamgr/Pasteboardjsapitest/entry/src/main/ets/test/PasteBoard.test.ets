@@ -206,218 +206,73 @@ export default function pasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0100
-         * @tc.name      coerceToText
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0100
+         * @tc.name      toPlainText
          * @tc.desc      Successfully cast string record to text
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
         */
-         it('SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0100', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0100 start")
+         it('SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0100', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0100 start")
             let pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_PLAIN,"valueType")
-            await pasteDataRecord.coerceToText((err, data) => {
-                if(err != null){
-                    console.info("Cast string record to text error, error message is: " + err)
-                    expect(false).assertTrue();
-                }else{
-                    console.info("Cast string record to text success,result is: " + data)
-                    expect(data).assertEqual("valueType")
-                }
-            })
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0100 end")
+            std::string str = await pasteDataRecord.toPlainText();
+            expect(str).assertEqual("valueType")
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0100 end")
             done();
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0200
-         * @tc.name      coerceToText
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0200
+         * @tc.name      toPlainText
          * @tc.desc      Successfully cast pixelMap record to text
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
         */
-         it('SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0200', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0200 start")
-            let pasteDataRecord =undefined;
+         it('SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0200', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0200 start")
+            let pasteDataRecord = undefined;
             await image.createPixelMap(color, opt).then((pixelMap) => {
                 pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_PIXELMAP,pixelMap);
             })
-            await pasteDataRecord.coerceToText((err, data) => {
-                if(err != null){
-                    console.info("Cast pixelMap record to text error, error message is: " + err)
-                    expect(false).assertTrue();
-                }else{
-                    console.info("Cast pixelMap record to text success,result is: " + data)
-                    expect(data).assertEqual("")
-                }
-            })
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0200 end")
+            std::string str = await pasteDataRecord.toPlainText();
+            expect(str).assertEqual("");
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0200 end")
             done();
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0300
-         * @tc.name      coerceToText
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0300
+         * @tc.name      toPlainText
          * @tc.desc      Successfully cast want record to text
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
         */
-         it('SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0300', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0300 start")
+         it('SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0300', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0300 start")
             let pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_WANT,WANT)
-            await pasteDataRecord.coerceToText((err, data) => {
-                if(err != null){
-                    console.info("Cast want record to text error, error message is: " + err)
-                    expect(false).assertTrue();
-                }else{
-                    console.info("Cast want record to text success,result is: " + data)
-                    expect(data).assertEqual("")
-                }
-            })
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0300 end")
+            std::string str = await pasteDataRecord.toPlainText();
+            expect(str).assertEqual("")
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0300 end")
             done();
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0400
-         * @tc.name      coerceToText
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0400
+         * @tc.name      toPlainText
          * @tc.desc      Successfully cast arrayBuffer record to text
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
         */
-         it('SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0400', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0400 start")
+         it('SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0400', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0400 start")
             let pasteDataRecord = pasteboard.createRecord("ArrayBuffer",ARRAY_BUFFER)
-            await pasteDataRecord.coerceToText((err, data) => {
-                if(err != null){
-                    console.info("Cast arrayBuffer record to text error, error message is: " + err)
-                    expect(false).assertTrue();
-                }else{
-                    console.info("Cast arrayBuffer record to text success,result is: " + data)
-                    expect(data).assertEqual("")
-                }
-            })
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0400 end")
-            done();
-        })
-
-        /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0500
-         * @tc.name      coerceToText
-         * @tc.desc      Cast arrayBuffer record to text failed,
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-        */
-         it('SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0500', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0500 start")
-            let pasteDataRecord = pasteboard.createRecord("string",ARRAY_BUFFER)
-            function convert(callBack){
-                pasteDataRecord.coerceToText(callBack)
-            }
-            try{
-                convert("callback")
-            }catch(err){
-                console.info("Cast string record to text error, error code is: " + err.code)
-                error = err
-                expect(err.code).assertEqual("401")
-            }
-            expect(error != undefined).assertTrue();
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_CALLBACK_0500 end")
-            done();
-        })
-
-        /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0100
-         * @tc.name      coerceToText
-         * @tc.desc      Successfully cast string record to text
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-        */
-         it('SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0100', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0100 start")
-            let pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_PLAIN,"valueType")
-            await pasteDataRecord.coerceToText().then((data) => {
-                console.info("Cast string record to text success,result is: " + data)
-                expect(data).assertEqual("valueType")
-            }).catch((err) => {
-                console.info("Cast string record to text error, error message is: " + err)
-                expect(false).assertTrue();
-            })
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0100 end")
-            done();
-        })
-
-        /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0200
-         * @tc.name      coerceToText
-         * @tc.desc      Successfully cast pixelMap record to text
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-        */  
-         it('SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0200', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0200 start")
-            let pasteDataRecord =undefined;
-            await image.createPixelMap(color, opt).then((pixelMap) => {
-                pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_PIXELMAP,pixelMap);
-            })
-            await pasteDataRecord.coerceToText().then((data) => {
-                console.info("Cast pixelMap record to text success,result is: " + data)
-                expect(data).assertEqual("")
-            }).catch((err) => {
-                console.info("Cast pixelMap record to text error, error message is: " + err)
-                expect(false).assertTrue();
-            })
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0200 end")
-            done();
-        })
-
-        /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0300
-         * @tc.name      coerceToText
-         * @tc.desc      Successfully cast want record to text
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-        */
-         it('SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0300', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0300 start")
-            let pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_WANT,WANT)
-            await pasteDataRecord.coerceToText().then((data) => {
-                console.info("Cast want record to text success,result is: " + data)
-                expect(data).assertEqual("")
-            }).catch(err => {
-                console.info("Cast want record to text error, error message is: " + err)
-                expect(false).assertTrue();
-            })
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0300 end")
-            done();
-        })
-
-        /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0400
-         * @tc.name      coerceToText
-         * @tc.desc      Successfully cast arrayBuffer record to text
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-        */
-         it('SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0400', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0400 start")
-            let pasteDataRecord = pasteboard.createRecord("ArrayBuffer",ARRAY_BUFFER)
-            await pasteDataRecord.coerceToText().then((data) => {
-                console.info("Cast arrayBuffer record to text success,result is: " + data)
-                expect(data).assertEqual("")
-            }).catch(err => {
-                console.info("Cast arrayBuffer record to text error, error message is: " + err)
-                expect(false).assertTrue();
-            })
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_COERCETOTEXT_PROMISE_0400 end")
+            std::string str = await pasteDataRecord.toPlainText();
+            expect(str).assertEqual("")
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0400 end")
             done();
         })
 
