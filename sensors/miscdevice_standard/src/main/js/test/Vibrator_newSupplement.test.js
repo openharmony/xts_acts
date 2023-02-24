@@ -16,8 +16,8 @@ import vibrator from '@ohos.vibrator'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
-export default function VibratorJsTest_misc_3() {
-describe("VibratorJsTest_misc_3", function () {
+export default function VibratorJsTest_misc_5() {
+describe("VibratorJsTest_misc_5", function () {
      beforeAll(function () {
 
         /*
