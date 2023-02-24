@@ -71,6 +71,7 @@ struct Index {
         Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite) 
         try{
             web_webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3])
+            web_webview.WebviewController.setWebDebuggingAccess(true)
             web_webview.once("webInited",()=>{
                 web_webview.WebCookieManager.setCookie("https://www.huawei.com", "a=b");
             })
