@@ -216,7 +216,7 @@ export default function pasteBoardTest(){
          it('SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0100', 0, async function (done) {
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0100 start")
             let pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_PLAIN,"valueType")
-            std::string str = await pasteDataRecord.toPlainText();
+            var str = await pasteDataRecord.toPlainText();
             expect(str).assertEqual("valueType")
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0100 end")
             done();
@@ -236,7 +236,7 @@ export default function pasteBoardTest(){
             await image.createPixelMap(color, opt).then((pixelMap) => {
                 pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_PIXELMAP,pixelMap);
             })
-            std::string str = await pasteDataRecord.toPlainText();
+            var str = await pasteDataRecord.toPlainText();
             expect(str).assertEqual("");
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0200 end")
             done();
@@ -253,8 +253,8 @@ export default function pasteBoardTest(){
          it('SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0300', 0, async function (done) {
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0300 start")
             let pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_WANT,WANT)
-            std::string str = await pasteDataRecord.toPlainText();
-            expect(str).assertEqual("")
+            var str = await pasteDataRecord.toPlainText();
+            expect(str).assertEqual("");
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0300 end")
             done();
         })
@@ -270,7 +270,7 @@ export default function pasteBoardTest(){
          it('SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0400', 0, async function (done) {
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0400 start")
             let pasteDataRecord = pasteboard.createRecord("ArrayBuffer",ARRAY_BUFFER)
-            std::string str = await pasteDataRecord.toPlainText();
+            var str = await pasteDataRecord.toPlainText();
             expect(str).assertEqual("")
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0400 end")
             done();
