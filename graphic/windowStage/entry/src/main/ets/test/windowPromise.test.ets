@@ -1598,7 +1598,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           tempWnd = data
           console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
           expect(!!tempWnd).assertTrue();
-          console.info('showWithAnimationTest1 ****' + Reflect.has(tempWnd, 'showWithAnimation'))
         }).catch((err) => {
           unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
         });
@@ -1608,13 +1607,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
 
       await tempWnd.showWithAnimation().then((data) => {
-        console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(data));
-        tempWnd.destroy();
+        console.info(msgStr + 'Succeeded in showing the window with animation. Data: ' + JSON.stringify(data));
         done();
       }).catch((err) => {
-        unexpectedError(err, caseName, 'Failed to show the window with animation', done);
+        tempWnd.destroy();
+        expectedError(err, caseName, 'tempWnd.showWithAnimation', done, 202);
       })
-
     })
     /**
     * @tc.number     SUB_WINDOW_HIDEWITHANIMATION_JSAPI_001
