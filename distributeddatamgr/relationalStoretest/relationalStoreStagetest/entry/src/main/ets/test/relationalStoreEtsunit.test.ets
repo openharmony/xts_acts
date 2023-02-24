@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -137,27 +137,25 @@ describe('relationalStoreTest', function () {
      * @tc.require: I5PIL6
      */
     it('SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400', 0, async function (done) {
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400 start *************");
-        let config = {
-            name: "secure.db",
-            securityLevel: dataRdb.SecurityLevel.S4
-        }
-        let storePromise = dataRdb.getRdbStore(context, config);
-        storePromise.then(async (store) => {
-            try {
-                await store.executeSql(CREATE_TABLE_TEST);
-            } catch (err) {
-                expect(null).assertFail();
+            console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400 start *************");
+            let config = {
+                name: "secure.db",
+                securityLevel: dataRdb.SecurityLevel.S4
             }
-        }).catch((err) => {
-            expect(null).assertFail();
+            let storePromise = dataRdb.getRdbStore(context, config);
+            storePromise.then(async (store) => {
+                try {
+                    await store.executeSql(CREATE_TABLE_TEST);
+                } catch (err) {
+                    expect(null).assertFail();
+                }
+                await dataRdb.deleteRdbStore(context,"secure.db");
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+            })
+            console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400 end   *************");
         })
-        await storePromise
-        storePromise = null
-        await dataRdb.deleteRdbStore(context,"secure.db");
-        done();
-        console.log(TAG + "************* SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400 end   *************");
-    })
 
     /**
      * @tc.name rdb store getRdbStore with securityLevel S1
