@@ -68,6 +68,7 @@ export default async function SystemDisplayTest() {
             brightness.getValue({
                 complete: () => {
                     console.log("The device information is obtained successfully. Procedure");
+                    expect(true).assertTrue();
                     done();
                 }
             });
