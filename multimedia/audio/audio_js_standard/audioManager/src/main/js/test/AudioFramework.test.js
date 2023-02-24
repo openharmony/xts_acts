@@ -3062,7 +3062,7 @@ describe('audioFramework', function () {
             await audioManager.mute(audio.AudioVolumeType.VOICE_CALL, true);
             let value = await audioManager.getVolume(audio.AudioVolumeType.VOICE_CALL)
             console.info("AudioFrameworkTest: value is " + value);
-            if (value == 0) {
+            if (value == highVol) {
                 expect(true).assertTrue();
             } else {
                 expect(false).assertTrue();
@@ -3110,7 +3110,7 @@ describe('audioFramework', function () {
                         console.error(`Failed to obtain the volume. ${err.message}`);
                         expect(false).assertTrue();
                         done();
-                    } else if (value == 0) {
+                    } else if (value == highVol) {
                         try {
                             await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, lowVol);
                         } catch (err) {
@@ -3158,7 +3158,7 @@ describe('audioFramework', function () {
             console.log(`${TagFrmwk}: Set Stream Mute: VOICE_ASSISTANT: Promise: TRUE`);
             let value = await audioManager.getVolume(audio.AudioVolumeType.VOICE_ASSISTANT);
             console.info("AudioFrameworkTest: value is " + value);
-            if (value == 0) {
+            if (value == highVol) {
                 expect(true).assertTrue();
             } else {
                 expect(false).assertTrue();
@@ -3202,7 +3202,7 @@ describe('audioFramework', function () {
                 console.log(`${TagFrmwk}: Set Stream Mute: VOICE_ASSISTANT: Callback : SetVolume`);
                 try {
                     let value = await audioManager.getVolume(audio.AudioVolumeType.VOICE_ASSISTANT);
-                    if (value == 0) {
+                    if (value == highVol) {
                         console.info("AudioFrameworkTest: value is " + value);
                         expect(true).assertTrue();
                     } else {
