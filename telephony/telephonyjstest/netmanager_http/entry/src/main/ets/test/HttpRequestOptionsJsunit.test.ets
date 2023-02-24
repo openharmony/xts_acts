@@ -464,6 +464,68 @@ export default function HttpRequestOptionsJsunit() {
       }
     });
 
+    /**
+     * @tc.number Telephony_Http_HttpRequestOptions_UsingProxy_0100
+     * @tc.name Telephony_Http_HttpRequestOptions_UsingProxy_0100
+     * @tc.desc Telephony_Http_HttpRequestOptions_UsingProxy_0100
+     */
+    it("Telephony_Http_HttpRequestOptions_UsingProxy_0100", 0, async function (done) {
+      let httpRequest = http.createHttp();
+      httpRequest.request(
+        "https://www.baidu.com/",
+        {
+          connectTimeout: 60000,
+          readTimeout: 60000,
+          usingProxy: true,
+        }, (err, data) => {
+        if (!err) {
+          console.info('Telephony_Http_HttpRequestOptions_UsingProxy_0100 code:' + data.responseCode);
+          expect(data.responseCode == http.ResponseCode.OK).assertTrue();
+          done();
+        } else {
+          console.info('Telephony_Http_HttpRequestOptions_UsingProxy_0100 error:' + JSON.stringify(err));
+          httpRequest.destroy();
+          expect(true).assertFalse();
+          done();
+        }
+      }
+      );
+    });
+
+    /**
+     * @tc.number Telephony_Http_HttpRequestOptions_UsingProxy_0200
+     * @tc.name Telephony_Http_HttpRequestOptions_UsingProxy_0200
+     * @tc.desc Telephony_Http_HttpRequestOptions_UsingProxy_0200
+     */
+    it("Telephony_Http_HttpRequestOptions_UsingProxy_0200", 0, async function (done) {
+      let httpRequest = http.createHttp();
+      let ExclusionList = ""
+      let array = ExclusionList.split(',');
+      let httpProxy = {
+        host: "host",
+        port: 1,
+        exclusionList: array
+      }
+      httpRequest.request(
+        "https://www.baidu.com/",
+        {
+          connectTimeout: 60000,
+          readTimeout: 60000,
+          usingProxy: httpProxy,
+        }, (err, data) => {
+        if (!err) {
+          console.info('Telephony_Http_HttpRequestOptions_UsingProxy_0200 code:' + data.responseCode);
+          expect(true).assertFalse();
+          done();
+        } else {
+          console.info('Telephony_Http_HttpRequestOptions_UsingProxy_0200 error:' + JSON.stringify(err));
+          httpRequest.destroy();
+          expect(err.code == 2300005).assertTrue();
+          done();
+        }
+      }
+      );
+    });
   })
 
 };

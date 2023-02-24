@@ -315,6 +315,7 @@ export default function radioSecondJsunit() {
         expect(data[i].timeStamp).assertLarger(0);
         expect(NETWORK_TYPES).assertContain(data[i].signalInformation.signalType);
         expect(NETWORK_SIGNAL).assertContain(data[i].signalInformation.signalLevel);
+        expect(NETWORK_SIGNAL).assertContain(data[i].signalInformation.dBm);
         expect(data[i].data != undefined && data[i].data != '' && data[i].data != null).assertTrue();
         if (data[i].networkType === radio.NetworkType.NETWORK_TYPE_LTE) {
           console.log("radio.NetworkType.NETWORK_TYPE_LTE:" + radio.NetworkType.NETWORK_TYPE_LTE);
