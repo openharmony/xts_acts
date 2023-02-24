@@ -40,6 +40,7 @@ group("multimedia") {
       "image/image_js_standard/imageRGBA:image_rgba_js_hap",
       "image/image_js_standard/imageRaw:image_raw_js_hap",
       "image/image_js_standard/imageReceiver:image_receiver_js_hap",
+      "image/image_js_standard/imageReceiverMultiThread:image_receiver_multi_thread_hap",
       "image/image_js_standard/imageSvg:image_svg_js_hap",
       "image/image_js_standard/imageWebp:image_webp_js_hap",
       "image/image_js_standard/imageYUV:image_yuv_js_hap",
