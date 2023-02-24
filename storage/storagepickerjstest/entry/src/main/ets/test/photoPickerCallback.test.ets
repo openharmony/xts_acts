@@ -14,12 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
-import { doSingleSelect, doMultiSelect, doFileSelect, doSave } from "./Common"
+import { getPermission, doSingleSelect, doMultiSelect, doFileSelect, doSave, saveAndConcel } from "./Common"
 import picker from '@ohos.file.picker'
 
 export default function photoPickerCallback(abilityContext) {
     describe("photoPickerCallback", function () {
-        async function select(testNum, done, expectSelectNum = 2) {
+        beforeAll(async function () {
+            //await getPermission(abilityContext);
+        });
+
+        async function select(testNum, done, isSelectOriginal, expectSelectNum = 2) {
             try {
                 let photoPicker = new picker.PhotoViewPicker();
                 photoPicker.select((err, result) => {
@@ -31,9 +35,10 @@ export default function photoPickerCallback(abilityContext) {
                     }
                     console.info(`${testNum}::select result: ${JSON.stringify(result)}`);
                     expect(result.photoUris.length).assertEqual(expectSelectNum);
+                    expect(result.isOriginalPhoto).assertEqual(isSelectOriginal);
                     done();
                 });
-                await doMultiSelect(testNum, expectSelectNum);
+                await doMultiSelect(testNum, expectSelectNum, isSelectOriginal);
             } catch (error) {
                 console.info(`${testNum}::select error: ${JSON.stringify(error)}`);
                 expect(false).assertTrue();
@@ -58,10 +63,32 @@ export default function photoPickerCallback(abilityContext) {
                 if (option.maxSelectNumber != undefined && option.maxSelectNumber == 1) {
                     await doSingleSelect(testNum);
                 } else {
-                    await doMultiSelect(testNum, expectSelectNum);
+                    await doMultiSelect(testNum, expectSelectNum, false);
                 }
             } catch (error) {
                 console.info(`${testNum}::selectWithOption error: ${JSON.stringify(error)}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function saveWithoutSelect(testNum, done) {
+            try {
+                let photoPicker = new picker.PhotoViewPicker();
+                photoPicker.save((err, result) => {
+                    if (err != undefined) {
+                        console.info(`${testNum}::saveWithoutSelect err: ${JSON.stringify(err)}`);
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
+                    console.info(`${testNum}::saveWithoutSelect result: ${JSON.stringify(result)}`);
+                    expect(result.length).assertEqual(0);
+                    done();
+                });
+                await saveAndConcel(testNum);
+            } catch (error) {
+                console.info(`${testNum}::saveWithoutSelect error: ${JSON.stringify(error)}`);
                 expect(false).assertTrue();
                 done();
             }
@@ -199,7 +226,8 @@ export default function photoPickerCallback(abilityContext) {
         it("photopicker_select_callback_006", 0, async function (done) {
             let testNum = "photopicker_select_callback_006";
             let expectSelectNum = 2;
-            await select(testNum, done, expectSelectNum);
+            let isSelectOriginal = true;
+            await select(testNum, done, isSelectOriginal, expectSelectNum);
         });
 
         /**
@@ -232,6 +260,19 @@ export default function photoPickerCallback(abilityContext) {
             option.newFileNames = ["PhotoViewPicker01.mp4"];
             let saveDir = "Videos";
             await saveWithOption(testNum, done, option, saveDir);
+        });
+
+        /**
+         * @tc.number	 : SUB_STORAGE_PHOTOPICKER_SAVE_CALLBACK_0200
+         * @tc.name 	 : photopicker_save_callback_002
+         * @tc.desc 	 : save without option, cancel
+         * @tc.size 	 : MEDIUM
+         * @tc.type 	 : Function
+         * @tc.level	 : Level 3
+         */
+        it("photopicker_save_callback_002", 0, async function (done) {
+            let testNum = "photopicker_save_callback_002";
+            await saveWithoutSelect(testNum, done);
         });
     });
 }

@@ -15,7 +15,7 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
-import { doSingleSelect, doMultiSelect, doFileSelect, doSave } from "./Common"
+import { doSingleSelect, doMultiSelect, doFileSelect, doSave, saveAndConcel } from "./Common"
 import picker from '@ohos.file.picker'
 
 export default function documentPickerPromise(abilityContext) {
@@ -55,6 +55,26 @@ export default function documentPickerPromise(abilityContext) {
                 await doFileSelect(testNum, dirName, fileName);
             } catch (error) {
                 console.info(`${testNum}::selectWithOption error: ${JSON.stringify(error)}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function saveWithoutSelect(testNum, done) {
+            try {
+                let documentPicker = new picker.DocumentViewPicker();
+                documentPicker.save().then((result) => {
+                    console.info(`${testNum}::saveWithoutSelect result: ${JSON.stringify(result)}`);
+                    expect(result.length).assertEqual(0);
+                    done();
+                }).catch((err) => {
+                    console.info(`${testNum}::saveWithoutSelect err: ${JSON.stringify(err)}`);
+                    expect(false).assertTrue();
+                    done();
+                })
+                await saveAndConcel(testNum);
+            } catch (error) {
+                console.info(`${testNum}::saveWithoutSelect error: ${JSON.stringify(error)}`);
                 expect(false).assertTrue();
                 done();
             }

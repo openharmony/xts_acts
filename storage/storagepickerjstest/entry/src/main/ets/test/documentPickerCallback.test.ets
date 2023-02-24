@@ -15,7 +15,7 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
-import { doSingleSelect, doMultiSelect, doFileSelect, doSave } from "./Common"
+import { doSingleSelect, doMultiSelect, doFileSelect, doSave, saveAndConcel } from "./Common"
 import picker from '@ohos.file.picker'
 
 export default function documentPickerCallback(abilityContext) {
@@ -59,6 +59,28 @@ export default function documentPickerCallback(abilityContext) {
                 await doFileSelect(testNum, dirName, fileName);
             } catch (error) {
                 console.info(`${testNum}::selectWithOption error: ${JSON.stringify(error)}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function saveWithoutSelect(testNum, done) {
+            try {
+                let documentPicker = new picker.DocumentViewPicker();
+                documentPicker.save((err, result) => {
+                    if (err != undefined) {
+                        console.info(`${testNum}::saveWithoutSelect err: ${JSON.stringify(err)}`);
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
+                    console.info(`${testNum}::saveWithoutSelect result: ${JSON.stringify(result)}`);
+                    expect(result.length).assertEqual(0);
+                    done();
+                });
+                await saveAndConcel(testNum);
+            } catch (error) {
+                console.info(`${testNum}::saveWithoutSelect error: ${JSON.stringify(error)}`);
                 expect(false).assertTrue();
                 done();
             }
@@ -125,8 +147,8 @@ export default function documentPickerCallback(abilityContext) {
          * @tc.type 	 : Function
          * @tc.level	 : Level 0
          */
-        it("documentpicker_save_callback_001", 0, async function (done) {
-            let testNum = "documentpicker_save_callback_001";
+        it("documentpicker_save_callback_000", 0, async function (done) {
+            let testNum = "documentpicker_save_callback_000";
             let option = new picker.DocumentSaveOptions();
             option.newFileNames = ["DocumentViewPicker01.jpg"];
             let saveDir = "Pictures";
@@ -179,6 +201,19 @@ export default function documentPickerCallback(abilityContext) {
             option.newFileNames = ["DocumentViewPicker01.mp3"];
             let saveDir = "Audios";
             await saveWithOption(testNum, done, option, saveDir);
-        });        
+        });
+
+        /**
+         * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SAVE_CALLBACK_0400
+         * @tc.name 	 : documentpicker_save_callback_004
+         * @tc.desc 	 : save without option, cancel
+         * @tc.size 	 : MEDIUM
+         * @tc.type 	 : Function
+         * @tc.level	 : Level 3
+         */
+        it("documentpicker_save_callback_004", 0, async function (done) {
+            let testNum = "documentpicker_save_callback_004";
+            await saveWithoutSelect(testNum, done);
+        });
     });
 }

@@ -14,7 +14,7 @@
             "pre-push": [],
             "run-command": [
                 "rm -rf /storage/media/100/local/files/*",
-                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.MediaLibraryDataA/*",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
                 "mkdir -pv /storage/media/100/local/files/{Pictures,Videos,Audios,Documents}",
                 "mkdir -p /storage/media/100/local/temp",
                 "param set persist.ace.testmode.enabled 1",

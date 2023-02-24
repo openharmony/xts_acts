@@ -10,23 +10,23 @@
         },
         {
             "name": "entry_label",
-            "value": "ActsMediaLibraryTest"
+            "value": "ActsStoragePickerTest"
         },
         {
             "name": "form_description",
-            "value": "mediaLibrary"
+            "value": "picker"
         },
         {
             "name": "serviceability_description",
-            "value": "mediaLibrary"
+            "value": "picker"
         },
         {
             "name": "description_application",
-            "value": "mediaLibrary test"
+            "value": "picker test"
         },
         {
             "name": "app_name",
-            "value": "ActsMediaLibraryTest"
+            "value": "ActsStoragePickerTest"
         }
     ]
 }

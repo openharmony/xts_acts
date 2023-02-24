@@ -13,9 +13,8 @@
  * limitations under the License.
  */
 
-
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
-import { doSingleSelect, doMultiSelect, doFileSelect, doSave } from "./Common"
+import { doSingleSelect, doMultiSelect, doFileSelect, doSave, saveAndConcel } from "./Common"
 import picker from '@ohos.file.picker'
 
 export default function audioPickerCallback(abilityContext) {
@@ -59,6 +58,28 @@ export default function audioPickerCallback(abilityContext) {
                 await doFileSelect(testNum, dirName, fileName);
             } catch (error) {
                 console.info(`${testNum}::selectWithOption error: ${JSON.stringify(error)}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function saveWithoutSelect(testNum, done) {
+            try {
+                let audioPicker = new picker.AudioViewPicker();
+                audioPicker.save((err, result) => {
+                    if (err != undefined) {
+                        console.info(`${testNum}::saveWithoutSelect err: ${JSON.stringify(err)}`);
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
+                    console.info(`${testNum}::saveWithoutSelect result: ${JSON.stringify(result)}`);
+                    expect(result.length).assertEqual(0);
+                    done();
+                });
+                await saveAndConcel(testNum);
+            } catch (error) {
+                console.info(`${testNum}::saveWithoutSelect error: ${JSON.stringify(error)}`);
                 expect(false).assertTrue();
                 done();
             }
@@ -120,7 +141,7 @@ export default function audioPickerCallback(abilityContext) {
         /**
          * @tc.number	 : SUB_STORAGE_AUDIOPICKER_SAVE_CALLBACK_0000
          * @tc.name 	 : audiopicker_save_callback_000
-         * @tc.desc 	 : save image in Pictures
+         * @tc.desc 	 : save mp3 in Audios
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
          * @tc.level	 : Level 0
@@ -131,6 +152,19 @@ export default function audioPickerCallback(abilityContext) {
             option.newFileNames = ["AudioViewPicker01.mp3"];
             let saveDir = "Audios";
             await saveWithOption(testNum, done, option, saveDir);
+        });
+
+        /**
+         * @tc.number	 : SUB_STORAGE_AUDIOPICKER_SAVE_CALLBACK_0100
+         * @tc.name 	 : audiopicker_save_callback_001
+         * @tc.desc 	 : save without option, cancel
+         * @tc.size 	 : MEDIUM
+         * @tc.type 	 : Function
+         * @tc.level	 : Level 0
+         */
+        it("audiopicker_save_callback_001", 0, async function (done) {
+            let testNum = "audiopicker_save_callback_001";
+            await saveWithoutSelect(testNum, done);
         });
     });
 }

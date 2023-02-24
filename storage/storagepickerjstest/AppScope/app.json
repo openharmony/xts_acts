@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "ohos.acts.multimedia.mediaLibrary",
+        "bundleName": "ohos.acts.storage.picker",
         "vendor": "huawei",
         "versionCode": 1000000,
         "versionName": "1.0.0",
