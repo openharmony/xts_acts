@@ -11,15 +11,31 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBundleMgrStageEtsTest.hap"
+                "ActsBundleMgrStageEtsTest.hap",
+                "bmsJstest1.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
         },
         {
             "type": "ShellKit",
+            "run-command":[
+                "remount",
+                "mkdir -p /data/app/el2/100/base/ohos.acts.bundle.stage.test/haps/entry/files/",
+                "mkdir /data/test/"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push":[
+                "bmsJstest1.hap -> /data/test/bmsJstest1.hap"
+            ]
+        },
+        {
+            "type": "ShellKit",
             "teardown-command":[
-                "bm uninstall -n ohos.acts.bundle.stage.test"
+                "bm uninstall -n ohos.acts.bundle.stage.test",
+                "rm -rf /data/test/"
             ]
         }
     ] 
