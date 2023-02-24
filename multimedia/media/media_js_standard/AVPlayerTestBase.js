@@ -298,9 +298,6 @@ export function setAVPlayerFunCb(src, avPlayer, playTest, playTime, done) {
                 break;
             case AV_PLAYER_STATE.RELEASED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
-                offCallback(avPlayer, ['stateChange', 'volumeChange', 'endOfStream', 'seekDone', 'speedDone',
-                'bitrateDone', 'timeUpdate', 'durationUpdate', 'bufferingUpdate', 'startRenderFrame', 'videoSizeChange',
-                'audioInterrupt', 'availableBitrates', 'error']);
                 // step 18: release -> done
                 avPlayer = null;
                 expect(volumeCnt[0]).assertLarger(0);
