@@ -740,7 +740,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code) {
               reject(null)
             } else {
-              console.log(msgStr + 'tempWnd.setSystemBarProperties ' + JSON.stringify(systemBarProperties)+ ' success');
+              console.log(msgStr + 'tempWnd.setSystemBarProperties ' + JSON.stringify(systemBarProperties) + ' success');
               resolve(true)
             }
 
@@ -766,7 +766,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           isNavigationBarLightIcon: false,
           navigationBarContentColor: tempColor,
         };
-        await setSystemBarPropertiesFun(tempWnd,systemBarProperties).catch((err) => {
+        await setSystemBarPropertiesFun(tempWnd, systemBarProperties).catch((err) => {
           console.info(msgStr + 'setSystemBarProperties error : ' + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -2218,47 +2218,46 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.desc Displays the current window, playing an animation in the process
      */
     it('showWithAnimationTest2', 0, async function (done) {
-      it('showWithAnimationTest2', 0, async function (done) {
-        let caseName = 'showWithAnimationTest2';
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin context==' + JSON.stringify(context));
-        let wndId = 'showWithAnimationTest2';
-        let baseType = ohosWindow.WindowType.TYPE_FLOAT;
-        let tempWnd = null;
+      let caseName = 'showWithAnimationTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let wndId = 'showWithAnimationTest2';
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
+      let tempWnd = null;
 
-        function createWin() {
-          return new Promise(function (resolve, reject) {
-            ohosWindow.create(context, wndId, baseType, (err, data) => {
-              if (err && err.code) {
-                reject(null)
-              } else {
-                resolve(data)
-              }
-            })
+      function createWin() {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, wndId, baseType, (err, data) => {
+            if (err && err.code) {
+              reject(null)
+            } else {
+              resolve(data)
+            }
           })
-        }
+        })
+      }
 
-        await createWin().then((data) => {
-          console.info(msgStr + `ohosWindow.create success  data: ${JSON.stringify(data)}`)
-          tempWnd = data;
-        }).catch(err => {
-          console.info(msgStr + `ohosWindow.create failed  error: ${JSON.stringify(err)}`)
-          expect().assertFail();
-          done();
-        })
-        expect(!!tempWnd).assertTrue();
-        console.info(msgStr + `ohosWindow.create success  tempWnd: ${JSON.stringify(tempWnd)}`)
-        tempWnd.showWithAnimation(async (error, animationData) => {
-          if (error && error.code) {
-            console.info(msgStr + 'showWithAnimation fail. error: ' + JSON.stringify(error));
-            await tempWnd.destroy()
-            expectedError(error, caseName, 'tempWnd.showWithAnimation', done, 202);
-          } else {
-            console.info(msgStr + 'Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
-            done()
-          }
-        })
+      await createWin().then((data) => {
+        console.info(msgStr + `ohosWindow.create success  data: ${JSON.stringify(data)}`)
+        tempWnd = data;
+      }).catch(err => {
+        console.info(msgStr + `ohosWindow.create failed  error: ${JSON.stringify(err)}`)
+        expect().assertFail();
+        done();
       })
+      expect(!!tempWnd).assertTrue();
+      console.info(msgStr + `ohosWindow.create success  tempWnd: ${JSON.stringify(tempWnd)}`)
+      tempWnd.showWithAnimation(async (error, animationData) => {
+        if (error && error.code) {
+          console.info(msgStr + 'showWithAnimation fail. error: ' + JSON.stringify(error));
+          await tempWnd.destroy()
+          expectedError(error, caseName, 'tempWnd.showWithAnimation', done, 202);
+        } else {
+          console.info(msgStr + 'Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
+          done()
+        }
+      })
+    })
     /**
      * @tc.number SUB_WINDOW_HIDEWITHANIMATION_JSAPI_002
      * @tc.name Test hideWithAnimationTest2
@@ -2335,6 +2334,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }).catch((err) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
       });
+
       function setAspectRatio() {
         return new Promise(function (resolve, reject) {
           try {
@@ -2351,6 +2351,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           }
         })
       }
+
       function resetAspectRatio() {
         return new Promise(function (resolve, reject) {
           console.info(msgStr + 'Succeeded start');
@@ -2388,6 +2389,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }).catch((err) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
       });
+
       function setAspectRatio() {
         return new Promise(function (resolve, reject) {
           try {
