@@ -19,7 +19,6 @@
 #include "surface_type.h"
 #include "buffer_log.h"
 #include "external_window.h"
-#include "iconsumer_surface.h"
 
 using namespace testing;
 using namespace testing::ext;
