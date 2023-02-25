@@ -443,9 +443,9 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                         }
                     })
                 }
-            })
             done();
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1300 end *************")
+            })
         })
         console.info(TAG + "*************Unit Test End*************")
     })
