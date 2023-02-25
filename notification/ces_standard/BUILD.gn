@@ -19,6 +19,7 @@ group("ces_standard") {
     deps = [
       "actsCommonEventManagerSupportTest:ActsCommonEventManagerSupportTest",
       "actsCommonEventSupportTest:ActsCommonEventSupportTest",
+      "actsCommonEventSystemAPITest:ActsCommonEventSystemAPITest",
       "subscribeandpublish:SubscribeAndPublish",
     ]
   }
