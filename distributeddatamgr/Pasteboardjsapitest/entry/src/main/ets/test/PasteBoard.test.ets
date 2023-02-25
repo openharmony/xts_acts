@@ -212,7 +212,7 @@ export default function pasteBoardTest(){
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
-         */
+        */
          it('SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0100', 0, async function (done) {
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TOPLAINTEXT_0100 start")
             let pasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_PLAIN,"valueType")
