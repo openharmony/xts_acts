@@ -17,7 +17,8 @@ import data_Rdb from '@ohos.data.relationalStore'
 import ability_featureAbility from '@ohos.ability.featureAbility'
 import fileio from '@ohos.fileio'
 
-const TAG = "[RelationalStore_JSKITS_TEST]"
+const TAG = "[RelationalS
+tore_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS backupTest (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
 + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)"
 const DATABASE_DIR = "/data/storage/el2/database/entry/rdb/"
@@ -440,9 +441,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
                         }
                     })
                 }
+				done();
+                console.info(TAG + "************* RdbBackupRestoreCallbackTest_1300 end *************")
             })
-            done();
-            console.info(TAG + "************* RdbBackupRestoreCallbackTest_1300 end *************")
         })
         console.info(TAG + "*************Unit Test End*************")
     })
