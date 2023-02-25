@@ -443,7 +443,7 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                         }
                     })
                 }
-				done();
+                done();
                 console.info(TAG + "************* RdbBackupRestoreCallbackTest_1300 end *************")
             })
             
