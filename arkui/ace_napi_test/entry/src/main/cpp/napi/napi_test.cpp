@@ -250,7 +250,6 @@ static napi_value getAndClearLastException(napi_env env, napi_callback_info info
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
     return _value;
-
 }
 
 static napi_value isExceptionPending(napi_env env, napi_callback_info info) {
@@ -300,9 +299,9 @@ static napi_value createReference(napi_env env, napi_callback_info info) {
 
     napi_create_object(env, &result);
     NAPI_CALL(env, napi_create_reference(env, result, 1, &resultRef));
-    napi_value _value;        
-    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
-    return _value;
+    napi_value value;        
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
 }
 
 static napi_value deleteReference(napi_env env, napi_callback_info info) {
@@ -334,13 +333,10 @@ static napi_value referenceRef(napi_env env, napi_callback_info info) {
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
     
-    return _value;            
-
-    
+    return _value;
 }
 
 static napi_value referenceUnref(napi_env env, napi_callback_info info) {
-
     napi_value result = nullptr;
     napi_ref resultRef = nullptr;
 
@@ -1355,7 +1351,7 @@ static napi_value unwrap(napi_env env, napi_callback_info info) {
     napi_wrap(
         env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr, nullptr);
 
-    char* tmpTestStr = nullptr;
+    const char* tmpTestStr = nullptr;
     NAPI_CALL(env, napi_unwrap(env, instanceValue, (void**)&tmpTestStr));
 
     napi_value _value;
@@ -1382,10 +1378,10 @@ static napi_value removeWrap(napi_env env, napi_callback_info info) {
     napi_wrap(
         env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr, nullptr);
 
-    char* tmpTestStr = nullptr;
+    const char* tmpTestStr = nullptr;
     NAPI_CALL(env, napi_unwrap(env, instanceValue, (void**)&tmpTestStr));
 
-    char* tmpTestStr1 = nullptr;
+    const char* tmpTestStr1 = nullptr;
     napi_remove_wrap(env, instanceValue, (void**)&tmpTestStr1);
     
     napi_value _value;
