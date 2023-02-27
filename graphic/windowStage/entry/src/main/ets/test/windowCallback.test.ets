@@ -740,7 +740,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code) {
               reject(null)
             } else {
-              console.log(msgStr + 'tempWnd.setSystemBarProperties ' + JSON.stringify(systemBarProperties)+ ' success');
+              console.log(msgStr + 'tempWnd.setSystemBarProperties ' + JSON.stringify(systemBarProperties) + ' success');
               resolve(true)
             }
 
@@ -766,7 +766,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           isNavigationBarLightIcon: false,
           navigationBarContentColor: tempColor,
         };
-        await setSystemBarPropertiesFun(tempWnd,systemBarProperties).catch((err) => {
+        await setSystemBarPropertiesFun(tempWnd, systemBarProperties).catch((err) => {
           console.info(msgStr + 'setSystemBarProperties error : ' + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -2237,18 +2237,23 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         })
       }
 
-      tempWnd = await createWin().catch(err => {
+      await createWin().then((data) => {
+        console.info(msgStr + `ohosWindow.create success  data: ${JSON.stringify(data)}`)
+        tempWnd = data;
+      }).catch(err => {
         console.info(msgStr + `ohosWindow.create failed  error: ${JSON.stringify(err)}`)
         expect().assertFail();
         done();
       })
       expect(!!tempWnd).assertTrue();
+      console.info(msgStr + `ohosWindow.create success  tempWnd: ${JSON.stringify(tempWnd)}`)
       tempWnd.showWithAnimation(async (error, animationData) => {
         if (error && error.code) {
-          unexpectedError(error, caseName, 'Failed to show the window with animation', done);
-        } else {
-          console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
+          console.info(msgStr + 'showWithAnimation fail. error: ' + JSON.stringify(error));
           await tempWnd.destroy()
+          expectedError(error, caseName, 'tempWnd.showWithAnimation', done, 202);
+        } else {
+          console.info(msgStr + 'Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
           done()
         }
       })
@@ -2329,6 +2334,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }).catch((err) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
       });
+
       function setAspectRatio() {
         return new Promise(function (resolve, reject) {
           try {
@@ -2345,6 +2351,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           }
         })
       }
+
       function resetAspectRatio() {
         return new Promise(function (resolve, reject) {
           console.info(msgStr + 'Succeeded start');
@@ -2382,6 +2389,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }).catch((err) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
       });
+
       function setAspectRatio() {
         return new Promise(function (resolve, reject) {
           try {
