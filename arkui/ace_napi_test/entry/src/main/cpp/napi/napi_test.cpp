@@ -101,7 +101,6 @@ static napi_value cleanUpErrorInfo(napi_env env, napi_callback_info info) {
 }
 
 static napi_value throwExistingError(napi_env env, napi_callback_info info) {
-
     napi_value code = nullptr;
     napi_value message = nullptr;
     napi_create_string_latin1(env, "600", NAPI_AUTO_LENGTH, &code);
@@ -255,7 +254,6 @@ static napi_value getAndClearLastException(napi_env env, napi_callback_info info
 }
 
 static napi_value isExceptionPending(napi_env env, napi_callback_info info) {
-
     napi_value code = nullptr;
     napi_value message = nullptr;
     napi_create_string_latin1(env, "500", NAPI_AUTO_LENGTH, &code);
@@ -302,7 +300,6 @@ static napi_value createReference(napi_env env, napi_callback_info info) {
 
     napi_create_object(env, &result);
     NAPI_CALL(env, napi_create_reference(env, result, 1, &resultRef));
-
     napi_value _value;        
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
     return _value;
@@ -452,7 +449,6 @@ static napi_value createExternal(napi_env env, napi_callback_info info) {
 }
 
 static napi_value createExternalArraybuffer(napi_env env, napi_callback_info info) {
-
     const char testStr[] = "test";
     napi_value external = nullptr;
     size_t arrayBufferSize = 1024;
@@ -468,7 +464,6 @@ static napi_value createExternalArraybuffer(napi_env env, napi_callback_info inf
 }
 
 static napi_value createObject(napi_env env, napi_callback_info info) {
-
     napi_value result = nullptr;
     NAPI_CALL(env, napi_create_object(env, &result));
     NAPI_ASSERT(env, result != nullptr, "napi_create_object");
@@ -659,7 +654,6 @@ static napi_value createAndGetStringUtf8(napi_env env, napi_callback_info info) 
 }
 
 static napi_value getPrototype(napi_env env, napi_callback_info info) {
-
     napi_value testWrapClass = nullptr;
     napi_define_class(env, "TestWrapClass", NAPI_AUTO_LENGTH, [](napi_env env, napi_callback_info info) -> napi_value {
                   napi_value thisVar = nullptr;
@@ -739,7 +733,6 @@ static napi_value getValueDouble(napi_env env, napi_callback_info info) {
 }
 
 static napi_value getValueExternal(napi_env env, napi_callback_info info) {
-
     const char testStr[] = "test";
     napi_value external = nullptr;
     napi_create_external(
@@ -769,7 +762,6 @@ static napi_value getNull(napi_env env, napi_callback_info info) {
 }
 
 static napi_value getUndefined(napi_env env, napi_callback_info info) {
-
     napi_value result = nullptr;
     NAPI_CALL(env, napi_get_undefined(env, &result));
     NAPI_ASSERT(env, result != nullptr, "napi_get_undefined success");
@@ -825,7 +817,6 @@ static napi_value coerceToString(napi_env env, napi_callback_info info) {
 }
 
 static napi_value instanceOf(napi_env env, napi_callback_info info) {
-
     napi_value customClass = nullptr;
 
     napi_define_class(env, "TestWrapClass", NAPI_AUTO_LENGTH, [](napi_env env, napi_callback_info info) -> napi_value {
@@ -877,7 +868,6 @@ static napi_value isDate(napi_env env, napi_callback_info info) {
 }
 
 static napi_value strictEquals(napi_env env, napi_callback_info info) {
-
     const char* testStringStr = "test";
     napi_value testString = nullptr;
     napi_create_string_utf8(env, testStringStr, strlen(testStringStr), &testString);
@@ -897,7 +887,6 @@ static napi_value strictEquals(napi_env env, napi_callback_info info) {
 }
 
 static napi_value getPropertyNames(napi_env env, napi_callback_info info) {
-
     napi_value result = nullptr;
     NAPI_CALL(env, napi_create_object(env, &result));
 
@@ -991,7 +980,6 @@ static napi_value getProperty(napi_env env,
 }
 
 static napi_value hasProperty(napi_env env, napi_callback_info info) {
-
     napi_value result = nullptr;
     NAPI_CALL(env, napi_create_object(env, &result));
 
@@ -1426,7 +1414,6 @@ static napi_value createPromise(napi_env env, napi_callback_info info) {
 }
 
 static napi_value resolveAndRejectDeferred(napi_env env, napi_callback_info info) {
-
     napi_deferred deferred = nullptr;
     napi_value promise = nullptr;
     NAPI_CALL(env, napi_create_promise(env, &deferred, &promise));
@@ -1444,7 +1431,6 @@ static napi_value resolveAndRejectDeferred(napi_env env, napi_callback_info info
 }
 
 static napi_value isPromise(napi_env env, napi_callback_info info) {
-
     napi_deferred deferred = nullptr;
     napi_value promise = nullptr;
     NAPI_CALL(env, napi_create_promise(env, &deferred, &promise));
