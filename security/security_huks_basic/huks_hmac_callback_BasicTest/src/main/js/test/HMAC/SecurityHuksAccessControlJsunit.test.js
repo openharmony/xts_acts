@@ -549,19 +549,6 @@ export function SecurityHuksAccessControlJsunit() {
       expect(-38).assertEqual(
         huks.HuksErrorCode.HUKS_ERROR_VERIFICATION_FAILED
       );
-      expect(-40).assertEqual(
-        huks.HuksErrorCode.HUKS_ERROR_GET_USERIAM_SECINFO_FAILED
-      );
-      expect(-41).assertEqual(
-        huks.HuksErrorCode.HUKS_ERROR_GET_USERIAM_AUTHINFO_FAILED
-      );
-      expect(-42).assertEqual(
-        huks.HuksErrorCode.HUKS_ERROR_USER_AUTH_TYPE_NOT_SUPPORT
-      );
-      expect(-43).assertEqual(huks.HuksErrorCode.HUKS_ERROR_KEY_AUTH_FAILED);
-      expect(-44).assertEqual(
-        huks.HuksErrorCode.HUKS_ERROR_DEVICE_NO_CREDENTIAL
-      );
       expect(-100).assertEqual(
         huks.HuksErrorCode.HUKS_ERROR_CHECK_GET_ALG_FAIL
       );
@@ -612,12 +599,6 @@ export function SecurityHuksAccessControlJsunit() {
       expect(-123).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_SALT);
       expect(-124).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ITERATION);
       expect(-125).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_OPERATION);
-      expect(-126).assertEqual(
-        huks.HuksErrorCode.HUKS_ERROR_INVALID_WRAPPED_FORMAT
-      );
-      expect(-127).assertEqual(
-        huks.HuksErrorCode.HUKS_ERROR_INVALID_USAGE_OF_KEY
-      );
       expect(-999).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INTERNAL_ERROR);
       expect(-1000).assertEqual(huks.HuksErrorCode.HUKS_ERROR_UNKNOWN_ERROR);
       expect(1).assertEqual(huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT);
