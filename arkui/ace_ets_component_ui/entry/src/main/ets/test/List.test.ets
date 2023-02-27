@@ -41,6 +41,16 @@ import TextInputJsunit from './TextInputJsunit.test.ets';
 import TextPickerJsunit from './TextPickerJsunit.test.ets';
 import TextTimerJsunit from './TextTimerJsunit.test.ets';
 import TimePickerJsunit from './TimePickerJsunit.test.ets';
+import imageAnimatorJsunit from './imageAnimatorJsunit.test.ets';
+import imageOneJsunit from './imageOneJsunit.test.ets';
+import imageThreeJsunit from './imageThreeJsunit.test.ets';
+import imageTwoJsunit from './imageTwoJsunit.test.ets';
+import sliderJsunit from './sliderJsunit.test.ets';
+import spanJsunit from './spanJsunit.test.ets';
+import stepperJsunit from './stepperJsunit.test.ets';
+import textAreaJsunit from './textAreaJsunit.test.ets';
+import textOneJsunit from './textOneJsunit.test.ets';
+import textTwoJsunit from './textTwoJsunit.test.ets';
 
 export default function testsuite() {
   blankJsunit();
@@ -71,4 +81,14 @@ export default function testsuite() {
   TextPickerJsunit();
   TextTimerJsunit();
   TimePickerJsunit();
+  imageAnimatorJsunit();
+  imageOneJsunit();
+  imageThreeJsunit();
+  imageTwoJsunit();
+  sliderJsunit();
+  spanJsunit();
+  stepperJsunit();
+  textAreaJsunit();
+  textOneJsunit();
+  textTwoJsunit();
 }
