@@ -146,7 +146,6 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                     }
                 }
             
-            
                 // RDB before restored, delete data
                 let deleteData = new dataRdb.RdbPredicates("backupTest")
                 deleteData.equalTo("name", "zhangsan")
@@ -159,7 +158,7 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                                 fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)
                                 expect(false).assertTrue()
                             } catch (err) {
-                                expect(true).assertTrue()
+                                console.info(TAG + "rdb restore1 done")
                             }
             
                             try {
@@ -275,14 +274,10 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                             fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)
                         }catch(err){
                             console.info(TAG + 'error2  ' + err)
-                            expect(true).assertTrue();
                         }
                         RdbStore.backup(DATABASE_BACKUP_NAME, (err, data) => {
                             if(err != null){
-                                console.info(`${TAG} Backup database second failed, error: message: ${err.message}`)
-                                expect(true).assertTrue()
-                                done();
-                                console.info(TAG + "************* RdbBackupRestoreCallbackTest_0500 end *************")
+                                console.info(`${TAG} Backup database second failed`)
                             }else{
                                 try{
                                     console.info(TAG + 'Backup database second success')
@@ -291,12 +286,12 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                                     expect(false).assertTrue();
                                 }
                             }
+                            done();
+                            console.info(TAG + "************* RdbBackupRestoreCallbackTest_0500 end *************")
                         })
                     })
                 }
             })
-           
-            
         })
     
         /**
@@ -304,27 +299,21 @@ export default function rdbStoreBackupRestoreCallbackTest() {
          * @tc.number SUB_DDM_RDB_JS_RdbBackupRestoreCallbackTest_0600
          * @tc.desc RDB restore function test
          */
-            it('RdbBackupRestoreCallbackTest_0600', 0, async function (done) {
+         it('RdbBackupRestoreCallbackTest_0600', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0600 start *************")
-            
+
             // Backup file is specified to database name
             RdbStore.backup(STORE_CONFIG.name, (err, data) => {
-                if(err != null){
-                    expect(true).assertTrue()
-                }else{
-                    expect(false).assertTrue()
-                }
-            })
+                expect(err != null).assertTrue()
+                console.info(TAG + "RdbBackupRestoreCallbackTest_0600 backup1 done")
 
-            RdbStore.backup(STORE_CONFIG.name, (err, data) => {
-                if(err != null){
-                    expect(true).assertTrue()
-                }else{
-                    expect(false).assertTrue()
-                }
+                RdbStore.backup(STORE_CONFIG.name, (err, data) => {
+                    expect(err != null).assertTrue()
+                    console.info(TAG + "RdbBackupRestoreCallbackTest_0600 backup2 done")
+                    done();
+                    console.info(TAG + "************* RdbBackupRestoreCallbackTest_0600 end *************")
+                })
             })
-            done();
-            console.info(TAG + "************* RdbBackupRestoreCallbackTest_0600 end *************")
         })
     
         /**
@@ -332,30 +321,26 @@ export default function rdbStoreBackupRestoreCallbackTest() {
          * @tc.number SUB_DDM_RDB_JS_RdbBackupRestoreCallbackTest_0700
          * @tc.desc RDB restore function test
          */
-            it('RdbBackupRestoreCallbackTest_0700', 0, async function (done) {
+        it('RdbBackupRestoreCallbackTest_0700', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0700 start *************")
             let DATABASE_BACKUP_TEST_NAME = "BackupTest.db"
-            RdbStore.backup(DATABASE_BACKUP_TEST_NAME, (err, data) => {
-                if(err != null){
-                    expect(false).assertTrue()
-                }else{
-                    expect(true).assertTrue()
-                }
-            })
-            await dataRdb.deleteRdbStore(context, DATABASE_BACKUP_TEST_NAME).then(() => {
-                try{
-                    fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_TEST_NAME)
-                }catch(err){
-                    expect(true).assertTrue();
-                }
-            })
+            RdbStore.backup(DATABASE_BACKUP_TEST_NAME, async (err, data) => {
+                expect(err == null).assertTrue()
+                console.info(TAG + "RdbBackupRestoreCallbackTest_0700 backup done")
 
-            RdbStore.restore(DATABASE_BACKUP_TEST_NAME, (err, data) => {
-                if(err != null){
-                    expect(true).assertTrue()
-                }
+                dataRdb.deleteRdbStore(context, DATABASE_BACKUP_TEST_NAME, () => {
+                    try {
+                        fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_TEST_NAME)
+                    } catch (err) {
+                        console.info(TAG + "RdbBackupRestoreCallbackTest_0700 deleteRdbStore done")
+                    }
+                    RdbStore.restore(DATABASE_BACKUP_TEST_NAME, (err, data) => {
+                        expect(err != null).assertTrue()
+                        console.info(TAG + "RdbBackupRestoreCallbackTest_0700 restore done")
+                        done();
+                    })
+                })
             })
-            done();
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0700 end *************")
         })
     
@@ -394,9 +379,11 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                 if(err != null){
                     expect(false).assertTrue()
                 }
+                ReStoreCallbackTest([DATABASE_BACKUP_NAME])
+                 done();
             })
-            ReStoreCallbackTest([DATABASE_BACKUP_NAME])
-            done();
+            
+           
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1000 end *************")
         })
     
@@ -411,9 +398,11 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                 if(err != null){
                     expect(false).assertTrue()
                 }
+                   ReStoreCallbackTest()
+                   done();
             })
-            ReStoreCallbackTest()
-            done();
+         
+            
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1100 end *************")
         })
 
@@ -428,9 +417,10 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                 if(err != null){
                     expect(false).assertTrue()
                 }
-            })
             BackupCallbackTest(DATABASE_BACKUP_NAME)
             done();
+            })
+    
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1200 end *************")
         })
 
@@ -453,9 +443,9 @@ export default function rdbStoreBackupRestoreCallbackTest() {
                         }
                     })
                 }
-            })
             done();
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1300 end *************")
+            })
         })
         console.info(TAG + "*************Unit Test End*************")
     })
