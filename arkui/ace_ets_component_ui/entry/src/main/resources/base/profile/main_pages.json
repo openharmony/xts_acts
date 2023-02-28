@@ -41,6 +41,10 @@
         "MainAbility/pages/stepper",
         "MainAbility/pages/textArea",
         "MainAbility/pages/textOne",
-        "MainAbility/pages/textTwo"
+        "MainAbility/pages/textTwo",
+        "MainAbility/pages/TogglePage",
+        "MainAbility/pages/NavDestinationPage",
+        "MainAbility/pages/NavigationPage",
+        "MainAbility/pages/GridItemPage"
     ]
 }
