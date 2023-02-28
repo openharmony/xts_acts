@@ -21,8 +21,8 @@ const KEY_TEST_LONG_ELEMENT = 'key_test_long';
 const KEY_TEST_FLOAT_ELEMENT = 'key_test_float';
 const KEY_TEST_BOOLEAN_ELEMENT = 'key_test_boolean';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
-const MAX_KEY_LENGTH = 'X'.repeat(32)
-const MAX_VALUE_LENGTH = 'y'.repeat(8191)
+const MAX_KEY_LENGTH = 'X'.repeat(80)
+const MAX_VALUE_LENGTH = 'y'.repeat(8192)
 var mPref;
 
 export default function storagePromiseTest() {
