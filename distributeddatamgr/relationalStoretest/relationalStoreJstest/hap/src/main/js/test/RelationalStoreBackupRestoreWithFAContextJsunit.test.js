@@ -110,12 +110,16 @@ describe('relationalStoreBackupRestorePromiseTest', function () {
             RdbStore = await CreatRdbStore(context, STORE_CONFIG)
         })
 
-        afterEach(async function () {
-            console.info(TAG + 'afterEach')
+    afterEach(async function () {
+        console.info(TAG + 'afterEach')
+        try {
             await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name)
             await data_Rdb.deleteRdbStore(context, DATABASE_BACKUP_NAME)
             await data_Rdb.deleteRdbStore(context, "BackupTest003.db")
-        })
+        } catch (err) {
+            console.info(TAG + "deleteRdbStore err" + JSON.stringify(err))
+        }
+    })
 
         afterAll(async function () {
             console.info(TAG + 'afterAll')

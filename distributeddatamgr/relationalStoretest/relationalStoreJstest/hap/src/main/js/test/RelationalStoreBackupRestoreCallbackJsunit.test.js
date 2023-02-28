@@ -114,9 +114,13 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
         afterEach(async function () {
             console.info(TAG + 'afterEach')
-            await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name)
-            await data_Rdb.deleteRdbStore(context, DATABASE_BACKUP_NAME)
-            await data_Rdb.deleteRdbStore(context, "BackupTest003.db")
+            try {
+                await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name)
+                await data_Rdb.deleteRdbStore(context, DATABASE_BACKUP_NAME)
+                await data_Rdb.deleteRdbStore(context, "BackupTest003.db")
+            } catch (err) {
+                console.info(TAG + "deleteRdbStore err" + JSON.stringify(err))
+            }
         })
 
         afterAll(async function () {
