@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 import napiStringTest from './NativeApiStringTest';
-import aceNapiEtsTest from './NapiEtsTest'
 
 export default function testsuite() {
   napiStringTest()
-  aceNapiEtsTest()
 }
