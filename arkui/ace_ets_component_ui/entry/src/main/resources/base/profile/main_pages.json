@@ -29,6 +29,18 @@
         "MainAbility/pages/TextInputPage",
 		"MainAbility/pages/TextPickerPage",
         "MainAbility/pages/TextTimerPage",
-        "MainAbility/pages/TimePickerPage"
+        "MainAbility/pages/TimePickerPage",
+        "MainAbility/pages/imageAnimator",
+        "MainAbility/pages/imageOne",
+        "MainAbility/pages/imageThree",
+        "MainAbility/pages/imageTwo",
+        "MainAbility/pages/DatelPanel",
+        "MainAbility/pages/slider",
+        "MainAbility/pages/span",
+        "MainAbility/pages/loadingprogress",
+        "MainAbility/pages/stepper",
+        "MainAbility/pages/textArea",
+        "MainAbility/pages/textOne",
+        "MainAbility/pages/textTwo"
     ]
 }
