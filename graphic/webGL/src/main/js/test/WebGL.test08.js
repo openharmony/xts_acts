@@ -805,15 +805,15 @@ export default function webgl1Test_webgl8() {
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0728
-		 * @tc.name webgl_test_activeTexture_2
-		 * @tc.desc Test activeTexture.
+		 * @tc.name webgl_test_activeTexture_01
+		 * @tc.desc Test activeTexture_01.
 		 */
-		it('webgl_test_activeTexture_1', 0, async function (done) {
+		it('webgl_test_activeTexture_01', 0, async function (done) {
 			//initContext();
-			console.info("webgltest into activeTexture");
+			console.info("webgltest into activeTexture_01");
 			gl.activeTexture(gl.TEXTURE2);
 			const activeTextureParameter = gl.getParameter(gl.ACTIVE_TEXTURE);
-			console.info("webgltest activeTexture --> getParameter: " + activeTextureParameter);
+			console.info("webgltest activeTexture_01 --> getParameter: " + activeTextureParameter);
 			expect(activeTextureParameter).assertEqual(33986);
 			//deleteContext();
 			done();
@@ -822,15 +822,15 @@ export default function webgl1Test_webgl8() {
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0729
-		 * @tc.name webgl_test_activeTexture_3
-		 * @tc.desc Test activeTexture.
+		 * @tc.name webgl_test_activeTexture_02
+		 * @tc.desc Test activeTexture_02.
 		 */
-		it('webgl_test_activeTexture_1', 0, async function (done) {
+		it('webgl_test_activeTexture_02', 0, async function (done) {
 			//initContext();
-			console.info("webgltest into activeTexture");
+			console.info("webgltest into activeTexture_02");
 			gl.activeTexture(gl.TEXTURE3);
 			const activeTextureParameter = gl.getParameter(gl.ACTIVE_TEXTURE);
-			console.info("webgltest activeTexture --> getParameter: " + activeTextureParameter);
+			console.info("webgltest activeTexture_02 --> getParameter: " + activeTextureParameter);
 			expect(activeTextureParameter).assertEqual(33987);
 			//deleteContext();
 			done();
