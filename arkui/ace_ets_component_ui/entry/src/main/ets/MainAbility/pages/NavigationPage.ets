@@ -170,8 +170,8 @@ struct NavigationPage {
         .margin({ top: 12, left: 12 })
         .key('list')
 
-        Text('TitleModeChange:' + this.titleModeChange).fontSize(20).margin(10).key('titleModeChange')
-        Text('NavBarStateChange:' + this.navBarStateChange).fontSize(20).margin(10).key('navBarStateChange')
+        Text('TitleModeChange:' + this.titleModeChange).fontSize(10).margin(10).key('titleModeChange')
+        Text('NavBarStateChange:' + this.navBarStateChange).fontSize(10).margin(10).key('navBarStateChange')
       }
       .title(this.NavigationTitle)
       .menus(this.NavigationMenus)

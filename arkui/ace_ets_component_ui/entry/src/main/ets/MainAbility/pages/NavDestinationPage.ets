@@ -21,13 +21,13 @@ struct NavDestinationPage {
   @State isActive: boolean = false
   @State dex: number = 0
   @State stateChange: string = ''
-  @State hideTitleBar: boolean = true
+  @State hideTitleBar: boolean = false
   @State backColor: Color = Color.Grey
   @State title: string = 'NavDestination'
   messageManager: MessageManager = new MessageManager()
 
   onPageShow() {
-    console.info('NavDestination onPageShow')
+    console.info('NavRouter onPageShow')
     globalThis.value = {
       name: 'messageManager', message: this.messageManager
     }
@@ -35,12 +35,6 @@ struct NavDestinationPage {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'arr') {
         this.arr = message.value
-      }
-      if (message.name == 'dex') {
-        this.dex = message.value
-      }
-      if (message.name == 'stateChange') {
-        this.stateChange = message.value
       }
       if (message.name == 'hideTitleBar') {
         this.hideTitleBar = message.value
@@ -50,6 +44,12 @@ struct NavDestinationPage {
       }
       if (message.name == 'title') {
         this.title = message.value
+      }
+      if (message.name == 'dex') {
+        this.dex = message.value
+      }
+      if (message.name == 'stateChange') {
+        this.stateChange = message.value
       }
     }
     this.messageManager.registerCallback(callback)
@@ -71,6 +71,7 @@ struct NavDestinationPage {
                 }
                 .width(180)
                 .height(72)
+                .backgroundColor(this.dex === index ? '#ccc' : '#fff')
                 .borderRadius(24)
 
                 NavDestination() {
@@ -78,7 +79,7 @@ struct NavDestinationPage {
                   Flex({ direction: FlexDirection.Row }) {
                     Row() {
                       Image($r('app.media.icon')).width(40).height(40).borderRadius(40).margin({ right: 15 })
-                      Text('今天共有七节课').fontSize(30).key('textContent${item + 1}')
+                      Text('Hello').fontSize(30).key('textContent' + (item + 1).toString())
                     }.padding({ left: 15 })
                   }
                 }.backgroundColor(this.backColor)
@@ -89,7 +90,7 @@ struct NavDestinationPage {
               .onStateChange((isActivated: boolean) => {
                 this.stateChange = "stateChange " + isActivated.toString()
                 this.dex = index
-              }).width('40%')
+              })
             }
           }, item => item)
         }
@@ -99,7 +100,7 @@ struct NavDestinationPage {
       .mode(NavigationMode.Split)
       .hideTitleBar(true)
       .hideToolBar(true)
-      Text(this.stateChange).fontSize(20).margin(10).key('stateChange')
+      Text(this.stateChange).fontSize(20).margin(10).id('12')
     }.height('100%')
   }
 }
