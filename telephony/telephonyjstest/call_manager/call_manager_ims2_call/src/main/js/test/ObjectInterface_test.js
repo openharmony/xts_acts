@@ -57,11 +57,11 @@ export default function ObjectInterfaceTest() {
         afterAll(async function () {
             contact.queryContacts((err, data) => {
                 if (err) {
-                    console.info("contactsApi_selectContact_test_100  err = " + JSON.stringify(err));
+                    console.info("afterAll  err = " + JSON.stringify(err));
                     expect(false).assertTrue();
                     return;
                 }
-                console.info("contactsApi_selectContact_test_100  data = " + JSON.stringify(data));
+                console.info("afterAll  data = " + JSON.stringify(data));
                 if (data.length == 0) {
                     return;
                 }
@@ -70,7 +70,7 @@ export default function ObjectInterfaceTest() {
                     promise.then(() => {
                         console.info("deleteContact success");
                     }).catch((err) => {
-                        console.info("contactsApi_selectContact_test_100  err = " + JSON.stringify(err));
+                        console.info("afterAll  err = " + JSON.stringify(err));
                     });
                 }
                 sleep(3000);
@@ -1530,12 +1530,12 @@ export default function ObjectInterfaceTest() {
                                 done();
                             });
                         });
+                    }).catch((err) => {
+                        console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
+                        expect(false).assertTrue();
+                        done();
+                        return;
                     });
-                }).catch((err) => {
-                    console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
-                    expect(false).assertTrue();
-                    done();
-                    return;
                 });
             });
             sleep(500);
@@ -1673,11 +1673,11 @@ export default function ObjectInterfaceTest() {
             contact.selectContact((err, data) => {
                 if (err) {
                     console.info("contactsApi_selectContact_test_100  err = " + JSON.stringify(err));
+                    expect(false).assertTrue();
                     done();
                     return;
                 }
                 console.info("contactsApi_selectContact_test_100  data = " + JSON.stringify(data));
-                expect(false).assertTrue();
                 done();
             });
         });
@@ -1685,10 +1685,10 @@ export default function ObjectInterfaceTest() {
         it("contactsApi_selectContact_test_200", 0, async function (done) {
             let promise = contact.selectContact();
             promise.then((data) => {
-                console.info("contactsApi_selectContact_test_100  data = " + JSON.stringify(data));
+                console.info("contactsApi_selectContact_test_200  data = " + JSON.stringify(data));
                 done();
             }).catch((err) => {
-                console.info("contactsApi_selectContact_test_100  err = " + JSON.stringify(err));
+                console.info("contactsApi_selectContact_test_200  err = " + JSON.stringify(err));
                 expect(false).assertTrue();
                 done();
             });
