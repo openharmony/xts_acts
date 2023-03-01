@@ -18,72 +18,141 @@ import fileio from '@ohos.fileio';
 import xml from '@ohos.xml';
 import fileIO from '@ohos.fileio';
 import util from '@ohos.util';
+import data_preferences from '@ohos.data.preferences';
 
 const TAG = 'ParseXML';
 let path = globalThis.dir;
-let path1;
-path1 = path + '/MediaLibrary';
+let path1 = path + '/MediaLibrary';
+
+let VarColor = [];
+let ColorBackPath = path + '/MediaColorBack.txt';
+let txtPath = path1 + '/MediaLibraryReport.txt';
+let xmlPath = path1 + "/MediaLibraryTest.xml";
 
 @Entry
 @Component
 struct IndexPage {
-  @State BackColor: string = '#ff808080';
   @State ClearAll : boolean = false;
   private current : number = undefined;
   @State count : number = 0;
   @State result : string = '';
+  @State TEST : number = 0;
   private TestCaseList = [
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_PR_0100',uri:'pages/MediaLibrary/startImagePreviewPromise1'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_PR_0200',uri:'pages/MediaLibrary/startImagePreviewPromise2'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_PR_0300',uri:'pages/MediaLibrary/startImagePreviewPromise3'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_PR_ERR_0400',uri:'pages/MediaLibrary/startImagePreviewPromise4'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_INDEX_CB_0100',uri:'pages/MediaLibrary/startImagePreviewCallback1'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_INDEX_CB_0200',uri:'pages/MediaLibrary/startImagePreviewCallback2'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_INDEX_CB_0300',uri:'pages/MediaLibrary/startImagePreviewCallback3'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_INDEX_CB_ERR_0400',uri:'pages/MediaLibrary/startImagePreviewCallback4'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_CB_0100',uri:'pages/MediaLibrary/startImagePreviewCallback5'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_CB_0200',uri:'pages/MediaLibrary/startImagePreviewCallback6'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGEPREVIEW_CB_ERR_0300',uri:'pages/MediaLibrary/startImagePreviewCallback7'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGESELECT_CB_0100',uri:'pages/MediaLibrary/startMediaSelectCallback1'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGESELECT_CB_0200',uri:'pages/MediaLibrary/startMediaSelectCallback2'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGESELECT_CB_0300',uri:'pages/MediaLibrary/startMediaSelectCallback3'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGESELECT_CB_0400',uri:'pages/MediaLibrary/startMediaSelectCallback4'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGESELECT_PR_0100',uri:'pages/MediaLibrary/startMediaSelectPromise1'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGESELECT_PR_0200',uri:'pages/MediaLibrary/startMediaSelectPromise2'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGESELECT_PR_0300',uri:'pages/MediaLibrary/startMediaSelectPromise3'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STARTIMAGESELECT_PR_0400',uri:'pages/MediaLibrary/startMediaSelectPromise4'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_PR_0100',uri:'pages/MediaLibrary/storeMediaAssetPromise1'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_PR_0200',uri:'pages/MediaLibrary/storeMediaAssetPromise2'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_PR_0300',uri:'pages/MediaLibrary/storeMediaAssetPromise3'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_PR_0400',uri:'pages/MediaLibrary/storeMediaAssetPromise4'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_PR_ERR_0500',uri:'pages/MediaLibrary/storeMediaAssetPromise5'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_CB_0100',uri:'pages/MediaLibrary/storeMediaAssetCallback1'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_CB_0200',uri:'pages/MediaLibrary/storeMediaAssetCallback2'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_CB_0300',uri:'pages/MediaLibrary/storeMediaAssetCallback3'},
-    {title:'SUB_MULTIMEDIA_MEDIALIBRARY_STOREMEDIAASSET_CB_0400',uri:'pages/MediaLibrary/storeMediaAssetCallback4'},
+    {title:'startImagePreviewPromise1',uri:'pages/MediaLibrary/startImagePreviewPromise1'},
+    {title:'startImagePreviewPromise2',uri:'pages/MediaLibrary/startImagePreviewPromise2'},
+    {title:'startImagePreviewPromise3',uri:'pages/MediaLibrary/startImagePreviewPromise3'},
+    {title:'startImagePreviewPromise4',uri:'pages/MediaLibrary/startImagePreviewPromise4'},
+    {title:'startImagePreviewCallback1',uri:'pages/MediaLibrary/startImagePreviewCallback1'},
+    {title:'startImagePreviewCallback2',uri:'pages/MediaLibrary/startImagePreviewCallback2'},
+    {title:'startImagePreviewCallback3',uri:'pages/MediaLibrary/startImagePreviewCallback3'},
+    {title:'startImagePreviewCallback4',uri:'pages/MediaLibrary/startImagePreviewCallback4'},
+    {title:'startImagePreviewCallback5',uri:'pages/MediaLibrary/startImagePreviewCallback5'},
+    {title:'startImagePreviewCallback6',uri:'pages/MediaLibrary/startImagePreviewCallback6'},
+    {title:'startImagePreviewCallback7',uri:'pages/MediaLibrary/startImagePreviewCallback7'},
+    {title:'startMediaSelectCallback1',uri:'pages/MediaLibrary/startMediaSelectCallback1'},
+    {title:'startMediaSelectCallback2',uri:'pages/MediaLibrary/startMediaSelectCallback2'},
+    {title:'startMediaSelectCallback3',uri:'pages/MediaLibrary/startMediaSelectCallback3'},
+    {title:'startMediaSelectCallback4',uri:'pages/MediaLibrary/startMediaSelectCallback4'},
+    {title:'startMediaSelectPromise1',uri:'pages/MediaLibrary/startMediaSelectPromise1'},
+    {title:'startMediaSelectPromise2',uri:'pages/MediaLibrary/startMediaSelectPromise2'},
+    {title:'startMediaSelectPromise3',uri:'pages/MediaLibrary/startMediaSelectPromise3'},
+    {title:'startMediaSelectPromise4',uri:'pages/MediaLibrary/startMediaSelectPromise4'},
+    {title:'storeMediaAssetPromise1',uri:'pages/MediaLibrary/storeMediaAssetPromise1'},
+    {title:'storeMediaAssetPromise2',uri:'pages/MediaLibrary/storeMediaAssetPromise2'},
+    {title:'storeMediaAssetPromise3',uri:'pages/MediaLibrary/storeMediaAssetPromise3'},
+    {title:'storeMediaAssetPromise4',uri:'pages/MediaLibrary/storeMediaAssetPromise4'},
+    {title:'storeMediaAssetPromise5',uri:'pages/MediaLibrary/storeMediaAssetPromise5'},
+    {title:'storeMediaAssetCallback1',uri:'pages/MediaLibrary/storeMediaAssetCallback1'},
+    {title:'storeMediaAssetCallback2',uri:'pages/MediaLibrary/storeMediaAssetCallback2'},
+    {title:'storeMediaAssetCallback3',uri:'pages/MediaLibrary/storeMediaAssetCallback3'},
+    {title:'storeMediaAssetCallback4',uri:'pages/MediaLibrary/storeMediaAssetCallback4'},
   ]
-  @State ColorObject : string[] = ['#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
-  '#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
-  '#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080']
-  onPageShow(){
+  @State ColorObject : string[] = VarColor;
+  async onPageShow(){
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Media', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Media'. Data: " + data);
+    });
+
+    if(Test != 1) {
+      let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+      for(let i = 0; i < this.TestCaseList.length; i++) {
+        let log = (this.TestCaseList[i].title+';'+'#ff808080'+';').toString();
+        fileio.writeSync(fd,log);
+      }
+      fileio.closeSync(fd);
+    }
+    promise = preferences.put('Media', 1);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Media'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+    this.TEST = Test;
+
+    let opt = fileio.openSync(ColorBackPath, 0o100 | 0o2002, 0o664);
+    let buff = new ArrayBuffer(40960);
+    fileio.readSync(opt,buff);
+    let ColorBack = String.fromCharCode.apply(null, new Uint8Array(buff));
+    let TestList = ColorBack.split(';');
+    for (let i = 0; i < Math.floor(TestList.length / 2); i++) {
+      VarColor[i] = TestList[i*2+1];
+    }
+    fileio.closeSync(opt);
+
     if (this.count === 1){
       this.result = router.getParams()['result'];
       let titles = router.getParams()['title'];
       let name1 = '刚刚点进了哪个用例：'+ titles;
       let results = this.result;
+      let WriteTitle = (titles).toString();
+      let number = WriteTitle.length + 11;
+      let Index = ColorBack.indexOf(WriteTitle);
+
       if (this.result === 'Pass'){
         this.ColorObject[this.current] = '#ff008000';
-        filewrite(name1,results,titles);
+        let Log = (titles+';'+'#ff008000'+';');
+        let key = ColorBack.substring(Index,Index+number);
+        let FD = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        ColorBack = ColorBack.replace(key,Log);
+        let buffer = new ArrayBuffer(4096);
+        let rd = fileio.readSync(FD,buffer);
+        let Report = ColorBack.substring(0,rd);
+        fileio.closeSync(FD);
+        let Fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        fileio.writeSync(Fd,Report);
+        filewrite(name1,results,titles)
       }
       else if (this.result === 'Fail'){
         this.ColorObject[this.current] = '#ffff0000';
+        let Log = (titles+';'+'#ffff0000'+';');
+        let key = ColorBack.substring(Index,Index+number);
+        let FD = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        ColorBack = ColorBack.replace(key,Log);
+        let buffer = new ArrayBuffer(4096);
+        let rd = fileio.readSync(FD,buffer);
+        let Report = ColorBack.substring(0,rd);
+        fileio.closeSync(FD);
+        let Fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        fileio.writeSync(Fd,Report);
         filewrite(name1,results,titles);
       }
       else if (this.result === 'None'){
         this.ColorObject[this.current] = this.ColorObject[this.current];
       }
     }
-
   }
   build(){
     Column(){
@@ -166,8 +235,7 @@ struct IndexPage {
           ListItem(){
             Row(){
               Text(item.title).fontSize(16).fontColor(Color.Black)
-              Text(this.BackColor.toString()).visibility(Visibility.None)
-            }.width('100%').height(50).alignItems(VerticalAlign.Center).backgroundColor(this.ColorObject[index])
+            }.width('100%').height(50).alignItems(VerticalAlign.Center).backgroundColor(this.count===0&&this.TEST===0?'#ff808080':this.ColorObject[index])
             .onClick(( )=>{
               this.count = 1;
               this.ClearAll=false;
@@ -184,6 +252,11 @@ struct IndexPage {
   ClearText(){
     fileio.rmdirSync(path1);
     fileio.mkdirSync(path1);
+    let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+    for(let i = 0; i < this.TestCaseList.length; i++) {
+      let log = (this.TestCaseList[i].title+';'+'#ff808080'+';').toString();
+      fileio.writeSync(fd,log);
+    }
   }
   ReadTextParseXml() {
     let ReportPath = path1 + '/MediaLibraryReport.txt';
@@ -254,7 +327,6 @@ struct IndexPage {
       let that = new util.TextDecoder('utf-8');
       let array = new Uint8Array(arrayBuffer);
       let serializerStr = that.decode(array);
-      let xmlPath = path1 + "/MediaLibraryTest.xml";
       console.info(xmlPath);
       try {
         console.error(TAG, "write xmlPath =" + xmlPath);
@@ -270,8 +342,7 @@ struct IndexPage {
   }
 }
 function filewrite(name1,results,titles){
-  let txtpath = path1 + '/MediaLibraryReport.txt';
-  let fd = fileio.openSync(txtpath, 0o100 | 0o2002, 0o664);
+  let fd = fileio.openSync(txtPath, 0o100 | 0o2002, 0o664);
   let buf = new ArrayBuffer(4096);
   let RD = fileio.readSync(fd,buf);
   console.info("RRRRRRRRRRd"+RD);
@@ -285,13 +356,13 @@ function filewrite(name1,results,titles){
   }
   else if (Index != -1){
     let key = report.substring(Index,Index+number);
-    let FD = fileio.openSync(txtpath, 0o102, 0o666);
+    let FD = fileio.openSync(txtPath, 0o102, 0o666);
     report = report.replace(key,Log);
     let buffer = new ArrayBuffer(4096);
     let rd = fileio.readSync(FD,buffer);
     let Report = report.substring(0,rd);
     fileio.closeSync(FD);
-    let Fd = fileio.openSync(txtpath, 0o102, 0o666);
+    let Fd = fileio.openSync(txtPath, 0o102, 0o666);
     fileio.writeSync(Fd,Report);
   }
 }
