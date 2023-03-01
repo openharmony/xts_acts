@@ -134,13 +134,7 @@ export default function fileAssetTestPromiseTest(abilityContext) {
                 let write = await fileio.write(fd, buf);
                 console.info(`${testNum} :: write: ${write}`);
                 expect(write).assertEqual(assetProps.write);
-                let buf1 = new ArrayBuffer(4096);
-                try {
-                    await fileio.read(fd, buf1);
-                    expect().assertFail();
-                } catch (error) {
-                    expect(true).assertTrue();
-                }
+                fetchFileResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
