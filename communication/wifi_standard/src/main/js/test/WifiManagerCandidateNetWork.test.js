@@ -78,7 +78,6 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "isHiddenSsid": false,
                 "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_WEP,
             };
-
             await wifiMg.addCandidateConfig(wifiDeviceConfig1)
                 .then(netWorkId => {
                     console.info("[wifi_test]add WEP CandidateConfig promise : " + JSON.stringify(netWorkId));
@@ -342,5 +341,4 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         })
     })
 }
-
 

@@ -47,52 +47,6 @@ export default function actsWifiManagerFunctionsTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_Sta_0002
-        * @tc.name testgetScanResults
-        * @tc.desc Test getScanResults promise and callback API functionality.
-        * @tc.type Function
-        * @tc.level Level 0
-        */
-        it('SUB_Communication_WiFi_XTS_Sta_0002', 0, async function (done) {
-            let scanResult = wifiMg.scan();
-            await sleep(3000);
-            await wifiMg.getScanResults()
-                .then(result => {
-                    let clen = Object.keys(result).length;
-                    expect(true).assertEqual(clen >= 0);
-                    console.info("[wifi_test]getScanInfos promise result:" + JSON.stringify(result));
-                });
-            function getScan() {
-                return new Promise((resolve, reject) => {
-                    wifiMg.getScanResults(
-                        (err, result) => {
-                            if (err) {
-                                console.log("[wifi_test] wifi getScanInfos failed:" + err);
-                            }
-                            let clen = Object.keys(result).length;
-                            if (!(clen == 0)) {
-                                expect(clen).assertLarger(0);
-                                console.info("[wifi_test] getScanInfos callback result: " + JSON.stringify(result));
-                                for (let j = 0; j < clen; ++j) {
-                                    console.info("ssid: " + result[j].ssid + "bssid: " + result[j].bssid +
-                                    "securityType: " + result[j].securityType +
-                                    "rssi: " + result[j].rssi + "band: " + result[j].band +
-                                    "frequency: " + result[j].frequency + "channelWidth: " + result[j].channelWidth +
-                                    "timestamp" + result[j].timestamp + "capabilities" + result[j].capabilities
-                                    + "centerFrequency0: " + result[j].centerFrequency0
-                                    + "centerFrequency1: " + result[j].centerFrequency1
-                                    + "eid: " + result[j].infoElems.eid + "content: " + result[j].infoElems.content);
-                                }
-                            }
-                            resolve();
-                        });
-                });
-            }
-            await getScan();
-            done();
-        })
-
-        /**
         * @tc.number SUB_Communication_WiFi_XTS_Sta_0021
         * @tc.name testGetSignalLevel
         * @tc.desc Test getSignalLevel API functionality..
@@ -230,7 +184,7 @@ export default function actsWifiManagerFunctionsTest() {
             function getLinked(){
                 return new Promise((resolve, reject) => {
                     wifiMg.getLinkedInfo(
-                        (err, result) => {
+                    (err, result) => {
                             if(err) {
                                 console.log("[wifi_test]wifi getLinkedInfo failed " + err);
                             }
@@ -246,28 +200,28 @@ export default function actsWifiManagerFunctionsTest() {
                             "suppState: " + result.suppState + "connState: " + result.connState
                             + "macType: " + result.macType);
                             let state = wifiMg.getLinkedInfo().ConnState;
-                            if (state == wifiMg.connState.SCANNING) {
+                            if (state == wifiMg.ConnState.SCANNING) {
                                 expect(true).assertEqual(state == 0);
                             }
-                            if (state == wifiMg.connState.CONNECTING) {
+                            if (state == wifiMg.ConnState.CONNECTING) {
                                 expect(true).assertEqual(state == 1);
                             }
-                            if (state == wifiMg.connState.AUTHENTICATING) {
+                            if (state == wifiMg.ConnState.AUTHENTICATING) {
                                 expect(true).assertEqual(state == 2);
                             }
-                            if (state == wifiMg.connState.OBTAINING_IPADDR) {
+                            if (state == wifiMg.ConnState.OBTAINING_IPADDR) {
                                 expect(true).assertEqual(state == 3);
                             }
-                            if (state == wifiMg.connState.CONNECTED) {
+                            if (state == wifiMg.ConnState.CONNECTED) {
                                 expect(true).assertEqual(state == 4);
                             }
-                            if (state == wifiMg.connState.DISCONNECTING) {
+                            if (state == wifiMg.ConnState.DISCONNECTING) {
                                 expect(true).assertEqual(state == 5);
                             }
-                            if (state == wifiMg.connState.DISCONNECTED) {
+                            if (state == wifiMg.ConnState.DISCONNECTED) {
                                 expect(true).assertEqual(state == 6);
                             }
-                            if (state == wifiMg.connState.UNKNOWN) {
+                            if (state == wifiMg.ConnState.UNKNOWN) {
                                 expect(true).assertEqual(state == 7);
                             }
                             resolve();
@@ -286,15 +240,29 @@ export default function actsWifiManagerFunctionsTest() {
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_Sta_0034', 0, async function (done) {
-            let getScanResultsResult = wifiMg.getScanResultsSync();
-            console.info("[wifi_test]wifi getScanResultsSync  result : " + JSON.stringify(getScanResultsResult));
-            let scanInfolenth = Object.keys(getScanResultsResult).length;
-            console.info("[wifi_test]wifi ScanInfosSync length  result : " + JSON.stringify(scanInfolenth));
-            expect(true).assertEqual(scanInfolenth >= 0);
+            let scanResult = wifiMg.scan();
+            await sleep(3000);
+            let getScanInfoListResult = wifiMg.getScanInfoList();
+            console.info("[wifi_test]wifi getScanInfoList  result : " + JSON.stringify(getScanInfoListResult));
+            let clen = Object.keys(getScanInfoListResult).length;
+            console.info("[wifi_test]wifi getScanInfoList length  result : " + JSON.stringify(clen));
+            let result = getScanInfoListResult;
+            if (clen >= 0) {
+                expect(true).assertEqual(clen >= 0);
+                for (let j = 0; j < clen; ++j) {
+                    console.info("ssid: " + result[j].ssid + "bssid: " + result[j].bssid +
+                    "securityType: " + result[j].securityType +
+                    "rssi: " + result[j].rssi + "band: " + result[j].band +
+                    "frequency: " + result[j].frequency + "channelWidth: " + result[j].channelWidth +
+                    "timestamp" + result[j].timestamp + "capabilities" + result[j].capabilities
+                    + "centerFrequency0: " + result[j].centerFrequency0
+                    + "centerFrequency1: " + result[j].centerFrequency1
+                    + "eid: " + result[j].infoElems.eid + "content: " + result[j].infoElems.content);
+                }
+            }
             done();
         })
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
-
 
