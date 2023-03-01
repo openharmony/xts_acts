@@ -55,6 +55,15 @@
     "pages/MediaLibrary/storeMediaAssetPromise2",
     "pages/MediaLibrary/storeMediaAssetPromise3",
     "pages/MediaLibrary/storeMediaAssetPromise4",
-    "pages/MediaLibrary/storeMediaAssetPromise5"
+    "pages/MediaLibrary/storeMediaAssetPromise5",
+    "pages/CameraOrientation/Camera_Orientation_index",
+    "pages/CameraOrientation/CameraOrientation0",
+    "pages/CameraOrientation/CameraOrientation90",
+    "pages/CameraOrientation/CameraOrientation180",
+    "pages/CameraOrientation/CameraOrientation270",
+    "pages/CameraOrientation/CameraFormat",
+    "pages/CameraOrientation/CameraVideo",
+    "pages/Audio/Audio_index",
+    "pages/Audio/ScrollListTest"
   ]
 }

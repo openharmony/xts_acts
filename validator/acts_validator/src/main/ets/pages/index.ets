@@ -18,21 +18,32 @@ import fileio from '@ohos.fileio';
 import xml from '@ohos.xml';
 import fileIO from '@ohos.fileio';
 import util from '@ohos.util';
-import DateTimeUtil from './model/DateTimeUtil'
+import DateTimeUtil from './model/DateTimeUtil';
+import data_preferences from '@ohos.data.preferences';
+import FlushData from '../pages/model/FlushData'
 
 const TAG = 'ParseXML';
 let path=globalThis.dir;
-let path1;
-let path2;
-console.info("ssssssssss"+path);
-path1 = path + '/ArkUI';
-console.info("ssssssssss"+path1);
-path2 = path + '/MediaLibrary';
-console.info("ssssssssss"+path2);
-fileio.rmdirSync(path);
-fileio.mkdirSync(path);
-fileio.mkdirSync(path1);
-fileio.mkdirSync(path2);
+let path1 = path + '/ArkUI';
+let path2 = path + '/MediaLibrary';
+let path3 = path + '/Camera';
+let path4 = path + '/Audio';
+let ArkUIColorBackPath = path + '/ArkUIColorBack.txt';
+let MediaColorBackPath = path + '/MediaColorBack.txt';
+let CameraColorBackPath = path + '/CameraColorBack.txt';
+let AudioColorBackPath = path + '/AudioColorBack.txt';
+fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
+fileio.openSync(MediaColorBackPath, 0o100 | 0o2002, 0o664);
+fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
+fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
+let TimePath = path + '/Time.txt';
+fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
+let xmlPath = path + '/Test.xml';
+fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
+let path11 = path1 + '/ArkUIReport.txt';
+let path22 = path2 + '/MediaReport.txt';
+let path33 = path3 + '/CameraReport.txt';
+let path44 = path4 + '/AudioReport.txt';
 
 @Entry
 @Component
@@ -40,9 +51,45 @@ struct IndexPage {
   private TestCaseList = [
     {title:'ArkUI',uri:'pages/ArkUI/ArkUI_index'},
     {title:'MediaLibrary',uri:'pages/MediaLibrary/MediaLibrary_index'},
-    {title:'Camera',uri:'pages/Camera/Camera_index'},
+    {title:'Camera',uri:'pages/CameraOrientation/Camera_Orientation_index'},
+    {title:'Audio',uri:'pages/Audio/Audio_index'},
   ]
-  @State ColorObject : string[] = ['#ff808080','#ff808080','#ff808080']
+  @State ColorObject : string[] = ['#ff808080','#ff808080','#ff808080','#ff808080','#ff808080']
+  async onPageShow(){
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('index', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'index'. Data: " + data);
+    });
+    if(Test != 1) {
+      fileio.mkdirSync(path1);
+      fileio.mkdirSync(path2);
+      fileio.mkdirSync(path3);
+      fileio.mkdirSync(path4);
+
+      let promise = preferences.put('index', 1);
+      promise.then(() => {
+        console.info("Succeeded in putting value of 'index'.");
+      });
+      promise = preferences.flush();
+      promise.then(() => {
+        console.info("Succeeded in flushing.");
+      });
+    }
+    fileio.openSync(path11, 0o100 | 0o2002, 0o664);
+    fileio.openSync(path22, 0o100 | 0o2002, 0o664);
+    fileio.openSync(path33, 0o100 | 0o2002, 0o664);
+    fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+  }
   build(){
     Column(){
       Row() {
@@ -118,7 +165,7 @@ struct IndexPage {
                 url: item.uri,
               })
               let dateTimeUtil = new DateTimeUtil();
-              let time = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDate()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
+              let time = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDay()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
               let TimePath = path + "/Time.txt";
               let OP = fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
               let buf = new ArrayBuffer(4096);
@@ -132,15 +179,33 @@ struct IndexPage {
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
   ClearText(){
-    fileio.rmdirSync(path);
-    fileio.mkdirSync(path);
-    fileio.mkdirSync(path1);
-    fileio.mkdirSync(path2);
+    fileio.unlinkSync(TimePath);
+    fileio.unlinkSync(xmlPath);
+    fileio.unlinkSync(path11);
+    fileio.unlinkSync(path22);
+    fileio.unlinkSync(path33);
+    fileio.unlinkSync(path44);
+    fileio.unlinkSync(ArkUIColorBackPath);
+    fileio.unlinkSync(MediaColorBackPath);
+    fileio.unlinkSync(CameraColorBackPath);
+    fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(path11, 0o100 | 0o2002, 0o664);
+    fileio.openSync(path22, 0o100 | 0o2002, 0o664);
+    fileio.openSync(path33, 0o100 | 0o2002, 0o664);
+    fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(MediaColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
+    FlushData.ResetArkUI();
+    FlushData.ResetMedia();
+    FlushData.ResetCamera();
+    FlushData.ResetAudio();
   }
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
-    let endtime = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDate()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
-    let TimePath = path + "/Time.txt";
+    let endtime = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDay()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
     let fd = fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
     let buf = new ArrayBuffer(40960);
     fileio.readSync(fd,buf);
@@ -148,8 +213,6 @@ struct IndexPage {
     let Index = StartTime.indexOf(';');
     let starttime = StartTime.substring(0,Index);
 
-    let path11 = path1 + '/ArkUI.txt';
-    let path22 = path2 + '/MediaLibrary.txt';
     let OP1 = fileio.openSync(path11, 0o100 | 0o2002, 0o664);
     let buf1 = new ArrayBuffer(40960);
     fileio.readSync(OP1,buf1);
@@ -308,7 +371,6 @@ struct IndexPage {
     let that = new util.TextDecoder('utf-8');
     let array = new Uint8Array(arrayBuffer);
     let serializerStr = that.decode(array);
-    let xmlPath = path + "/Test.xml";
     console.info(xmlPath);
     try {
       console.error(TAG, "write xmlPath =" + xmlPath);

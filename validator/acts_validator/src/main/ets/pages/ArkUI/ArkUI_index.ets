@@ -18,24 +18,27 @@ import fileio from '@ohos.fileio';
 import xml from '@ohos.xml';
 import fileIO from '@ohos.fileio';
 import util from '@ohos.util';
+import data_preferences from '@ohos.data.preferences';
 
 const TAG = 'ParseXML';
 let path = globalThis.dir;
-let path1;
-path1 = path + '/ArkUI';
+let path1 = path + '/ArkUI';
 
-
+let VarColor = [];
+let ColorBackPath = path + '/ArkUIColorBack.txt';
+let txtPath = path1 + 'ArkUIReport.txt';
+let xmlPath =path1 + 'ArkUITest.xml';
 
 @Entry
 @Component
 struct IndexPage {
-  @State BackColor: string = '#ff808080';
   @State ClearAll : boolean = false;
   private current : number = undefined;
   @State count : number = 0;
   @State result : string = '';
+  @State TEST : number = 0;
   private TestCaseList = [
-    {title:'Scroll List',uri:'pages/ArkUI/ScrollListTest'},
+    {title:'ScrollingList',uri:'pages/ArkUI/ScrollListTest'},
     {title:'TouchMove',uri:'pages/ArkUI/TouchMoveTest'},
     {title:'PinchGesture',uri:'pages/ArkUI/PinchGestureTest'},
     {title:'RotationGesture',uri:'pages/ArkUI/RotationGestureTest'},
@@ -60,28 +63,92 @@ struct IndexPage {
     {title:'CanvasShadowOffsetY',uri:'pages/ArkUI/CanvasShadowOffsetY'},
     {title:'CanvasImageSmoothingEnabled',uri:'pages/ArkUI/CanvasImageSmoothingEnabled'},
   ]
-  @State ColorObject : string[] = ['#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
-  '#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080',
-  '#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080','#ff808080']
-  onPageShow(){
+  @State ColorObject : string[] = VarColor;
+  async onPageShow(){
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('ArkUI', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'ArkUI'. Data: " + data);
+    });
+
+    if(Test != 1) {
+      let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+      for(let i = 0; i < this.TestCaseList.length; i++) {
+        let log = (this.TestCaseList[i].title+';'+'#ff808080'+';').toString();
+        fileio.writeSync(fd,log);
+      }
+      fileio.closeSync(fd);
+    }
+    promise = preferences.put('ArkUI', 1);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'ArkUI'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+    this.TEST = Test;
+
+    let opt = fileio.openSync(ColorBackPath, 0o100 | 0o2002, 0o664);
+    let buff = new ArrayBuffer(40960);
+    fileio.readSync(opt,buff);
+    let ColorBack = String.fromCharCode.apply(null, new Uint8Array(buff));
+    let TestList = ColorBack.split(';');
+    for (let i = 0; i < Math.floor(TestList.length / 2); i++) {
+      VarColor[i] = TestList[i*2+1];
+    }
+    fileio.closeSync(opt);
+
     if (this.count === 1){
       this.result = router.getParams()['result'];
       let titles = router.getParams()['title'];
       let name1 = '刚刚点进了哪个用例：'+ titles;
       let results = this.result;
+      let WriteTitle = (titles).toString();
+      let number = WriteTitle.length + 11;
+      let Index = ColorBack.indexOf(WriteTitle);
+
       if (this.result === 'Pass'){
         this.ColorObject[this.current] = '#ff008000';
+        let Log = (titles+';'+'#ff008000'+';');
+        let key = ColorBack.substring(Index,Index+number);
+        let FD = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        ColorBack = ColorBack.replace(key,Log);
+        let buffer = new ArrayBuffer(4096);
+        let rd = fileio.readSync(FD,buffer);
+        let Report = ColorBack.substring(0,rd);
+        fileio.closeSync(FD);
+        let Fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        fileio.writeSync(Fd,Report);
         filewrite(name1,results,titles)
       }
       else if (this.result === 'Fail'){
         this.ColorObject[this.current] = '#ffff0000';
+        let Log = (titles+';'+'#ffff0000'+';');
+        let key = ColorBack.substring(Index,Index+number);
+        let FD = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        ColorBack = ColorBack.replace(key,Log);
+        let buffer = new ArrayBuffer(4096);
+        let rd = fileio.readSync(FD,buffer);
+        let Report = ColorBack.substring(0,rd);
+        fileio.closeSync(FD);
+        let Fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        fileio.writeSync(Fd,Report);
         filewrite(name1,results,titles);
       }
       else if (this.result === 'None'){
         this.ColorObject[this.current] = this.ColorObject[this.current];
       }
     }
-
   }
   build(){
     Column(){
@@ -164,8 +231,7 @@ struct IndexPage {
           ListItem(){
             Row(){
               Text(item.title).fontSize(16).fontColor(Color.Black)
-              Text(this.BackColor.toString()).visibility(Visibility.None)
-            }.width('100%').height(50).alignItems(VerticalAlign.Center).backgroundColor(this.ColorObject[index])
+            }.width('100%').height(50).alignItems(VerticalAlign.Center).backgroundColor(this.count===0&&this.TEST===0?'#ff808080':this.ColorObject[index])
             .onClick(( )=>{
               this.count = 1;
               this.ClearAll=false;
@@ -182,6 +248,11 @@ struct IndexPage {
   ClearText(){
     fileio.rmdirSync(path1);
     fileio.mkdirSync(path1);
+    let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+    for(let i = 0; i < this.TestCaseList.length; i++) {
+      let log = (this.TestCaseList[i].title+';'+'#ff808080'+';').toString();
+      fileio.writeSync(fd,log);
+    }
   }
   ReadTextParseXml(){
     let ReportPath = path1 + '/ArkUIReport.txt';
@@ -252,7 +323,6 @@ struct IndexPage {
       let that = new util.TextDecoder('utf-8');
       let array = new Uint8Array(arrayBuffer);
       let serializerStr = that.decode(array);
-      let xmlPath = path1 + "/ArkUITest.xml";
       console.info(xmlPath);
       try{
         console.error(TAG,"write xmlPath =" +xmlPath);
@@ -268,8 +338,7 @@ struct IndexPage {
   }
 }
 function filewrite(name1,results,titles){
-  let txtpath = path1 + '/ArkUIReport.txt';
-  let fd = fileio.openSync(txtpath, 0o100 | 0o2002, 0o664);
+  let fd = fileio.openSync(txtPath, 0o100 | 0o2002, 0o664);
   let buf = new ArrayBuffer(4096);
   let RD = fileio.readSync(fd,buf);
   console.info("RRRRRRRRRRd"+RD);
@@ -283,13 +352,13 @@ function filewrite(name1,results,titles){
   }
   else if (Index != -1){
     let key = report.substring(Index,Index+number);
-    let FD = fileio.openSync(txtpath, 0o102, 0o666);
+    let FD = fileio.openSync(txtPath, 0o102, 0o666);
     report = report.replace(key,Log);
     let buffer = new ArrayBuffer(4096);
     let rd = fileio.readSync(FD,buffer);
     let Report = report.substring(0,rd);
     fileio.closeSync(FD);
-    let Fd = fileio.openSync(txtpath, 0o102, 0o666);
+    let Fd = fileio.openSync(txtPath, 0o102, 0o666);
     fileio.writeSync(Fd,Report);
   }
 }
