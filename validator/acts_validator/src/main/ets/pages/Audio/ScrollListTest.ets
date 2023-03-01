@@ -12,45 +12,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomContainer} from '../common/CustomContainer2';
+
+import {CustomContainer} from '../common/CustomContainer';
 import FirstDialog from '../model/FirstDialog';
 @Entry
 @Component
-struct PinchGuestureTest {
-  @State X: number = 1;
-  @State name: string = 'PinchGesture';
-  @State StepTips: string = '操作步骤：用手指触摸捏合图片（至少2根手指，最大为5指）'+'\n'+'预期结果：图片能够被正常捏合放缩';
+struct CustomContainerUser {
+  private listArr: number[] = Array.from(new Array(50).keys());
+  @State name: string = 'ScrollingList';
+  @State StepTips: string = '操作步骤：滑动列表观察是否能正常滑动'+'\n'+'预期结果：列表滑动正常';
   @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
+    this.Vue = true;
   }
   @Builder specificNoParam() {
-    Column(){
-      Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Image($r("app.media.flower")).height('60%').width('70%')
-      }
-      .height('250vp').width('350vp').padding(20)
-      .scale({ x: this.X, y: this.X, z: this.X })
-      .gesture(
-      PinchGesture()
-        .onActionUpdate((event: GestureEvent) => {
-          this.X = event.scale;
-          this.Vue = true;
-        })
-      )
-      Text('捏合放缩比例:'+this.X).fontColor(Color.Black)
-    } .width('100%').height('80%').backgroundColor(Color.White)
-    .justifyContent(FlexAlign.SpaceEvenly)
+    Column() {
+      List() {
+        ForEach(this.listArr,(item:any,index:number) => {
+          ListItem() {
+            Text('Item #' + (index + 1)).width('100%').height(50).fontSize(16).fontColor(Color.White).margin({left:'10vp'})
+          }
+        },index => index)
+      }.height('100%').width('100%').divider({strokeWidth:1,color:Color.Grey})
+    }.height('83%').width('100%')
   }
-
   build() {
     Column() {
       CustomContainer({
         title: this.name,
-        Url: 'pages/ArkUI/ArkUI_index',
+        Url: 'pages/Audio/Audio_index',
         StepTips: this.StepTips,
-        content: this.specificNoParam,
-        X: $X,
+        content: this.specificNoParam.bind(this),
         name: $name,
         Vue: $Vue,
       })

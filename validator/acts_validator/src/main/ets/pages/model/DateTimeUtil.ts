@@ -21,6 +21,10 @@ export default class DateTimeUtil {
   /**
  * 时分秒
  */
+  getTime() {
+    const DATETIME = new Date()
+    return this.concatTime(DATETIME.getHours(), DATETIME.getMinutes(), DATETIME.getSeconds())
+  }
   getHour() {
     const DATETIME = new Date()
     return DATETIME.getHours()
@@ -37,6 +41,10 @@ export default class DateTimeUtil {
   /**
  * 年月日
  */
+  getDate() {
+    const DATETIME = new Date()
+    return this.concatDate(DATETIME.getFullYear(), DATETIME.getMonth() + 1, DATETIME.getDate())
+  }
   getFullYear() {
     const DATETIME = new Date()
     return DATETIME.getFullYear()
@@ -45,7 +53,7 @@ export default class DateTimeUtil {
     const DATETIME = new Date()
     return DATETIME.getMonth() + 1
   }
-  getDate() {
+  getDay() {
     const DATETIME = new Date()
     return DATETIME.getDate()
   }
