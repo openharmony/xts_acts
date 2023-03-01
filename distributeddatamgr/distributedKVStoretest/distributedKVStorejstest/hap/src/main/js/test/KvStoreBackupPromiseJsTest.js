@@ -192,9 +192,6 @@ describe('kvStoreBackupPromiseJsunittest', function () {
         console.info('afterAll: Test suite-level cleanup condition, ' +
         'which is executed after the test suite is executed');
         publiccloseKvStore();
-        await kvManager.getAllKVStoreId(TEST_BUNDLE_NAME).then((data) => {
-            console.info(data.length);
-        })
         kvManager = null;
         console.info("Test kvstore = " + kvStore)
     })

@@ -35,8 +35,8 @@ export default function testsuite() {
     queryTest()
     SingleKvStoreCallbackTest()
     FieldNodeTest()
-    kvStoreBackupCallbackJsunittest()
-    kvStoreBackupPromiseJsunittest()
     schemaTest()
     singleKvStoreEnumTest()
+    kvStoreBackupPromiseJsunittest()
+    kvStoreBackupCallbackJsunittest()
 }
