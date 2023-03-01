@@ -51,6 +51,10 @@ import stepperJsunit from './stepperJsunit.test.ets';
 import textAreaJsunit from './textAreaJsunit.test.ets';
 import textOneJsunit from './textOneJsunit.test.ets';
 import textTwoJsunit from './textTwoJsunit.test.ets';
+import ToggleJsunit from './ToggleJsunit.test.ets';
+import NavDestinationJsunit from './NavDestinationJsunit.test.ets';
+import GridItemJsunit from './GridItemJsunit.test.ets';
+import NavigationJsunit from './NavigationJsunit.test.ets';
 
 export default function testsuite() {
   blankJsunit();
@@ -91,4 +95,8 @@ export default function testsuite() {
   textAreaJsunit();
   textOneJsunit();
   textTwoJsunit();
+  ToggleJsunit();
+  NavDestinationJsunit();
+  GridItemJsunit();
+  NavigationJsunit();
 }
