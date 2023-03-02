@@ -1,0 +1,37 @@
+import {CustomContainer} from '../common/CustomContainer';
+import FirstDialog from '../model/FirstDialog';
+@Entry
+@Component
+struct CustomContainerUser {
+  private listArr: number[] = Array.from(new Array(50).keys());
+  @State name: string = 'ScrollingList';
+  @State StepTips: string = '操作步骤：滑动列表观察是否能正常滑动'+'\n'+'预期结果：列表滑动正常';
+  @State Vue: boolean = false;
+  async aboutToAppear(){
+    await FirstDialog.ChooseDialog(this.StepTips,this.name);
+    this.Vue = true;
+  }
+  @Builder specificNoParam() {
+    Column() {
+      List() {
+        ForEach(this.listArr,(item:any,index:number) => {
+          ListItem() {
+            Text('Item #' + (index + 1)).width('100%').height(50).fontSize(16).fontColor(Color.White).margin({left:'10vp'})
+          }
+        },index => index)
+      }.height('100%').width('100%').divider({strokeWidth:1,color:Color.Grey})
+    }.height('83%').width('100%')
+  }
+  build() {
+    Column() {
+      CustomContainer({
+        title: this.name,
+        Url: 'pages/Player/Player_index',
+        StepTips: this.StepTips,
+        content: this.specificNoParam.bind(this),
+        name: $name,
+        Vue: $Vue,
+      })
+    }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+}

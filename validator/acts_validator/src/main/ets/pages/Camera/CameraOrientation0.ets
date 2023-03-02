@@ -1,18 +1,3 @@
-/*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import camera from '@ohos.multimedia.camera'
 import Logger from '../model/Logger'
 import CameraService from '../model/CameraService'
@@ -27,24 +12,23 @@ const CameraMode = {
 @Component
 struct SetCircle {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'CameraFormat';
+  @State name: string = 'CameraOrientation0';
   @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示给定旋转角度后的预览窗口\n-右侧显示拍照后的图片\n-对于前置摄像头会有镜像效果'+'\n'+'预期结果：拍照图片与预览窗口的画面一致';
   private tag: string = 'qlw'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
-  private x: number = 0;
   @State curModel: number = CameraMode.MODE_PHOTO
   @State cameraDeviceIndex: number = 0
   @State imageRotationValue: number = camera.ImageRotation.ROTATION_90
   @State qualityLevelValue: number = camera.QualityLevel.QUALITY_LEVEL_LOW
-  @State photoUri: string = undefined
+  @State assetUri: string = undefined
   @State Vue: boolean = false
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
-  handleTakePicture = (photoUri: string) => {
-    this.photoUri = photoUri
-    Logger.info(this.tag, `takePicture end, photoUri: ${this.photoUri}`)
+  handleTakePicture = (assetUri: string) => {
+    this.assetUri = assetUri
+    Logger.info(this.tag, `takePicture end, assetUri: ${this.assetUri}`)
   }
 
   @Builder specificNoParam() {
@@ -55,7 +39,7 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/CameraOrientation/Camera_Orientation_index',
+        Url:'pages/Camera/Camera_index',
         StepTips:this.StepTips,
         content: this.specificNoParam,
         FillColor:$FillColor,
@@ -81,19 +65,10 @@ struct SetCircle {
           .height('40%')
           .width('40%')
         Text('Camera Preview').fontSize('20fp')
-        Text('Camera').fontSize(20)
-//        Select(qualityLevel)
-//          .selected(2)
-//          .value('请选择')
-//          .font({ size: 20, weight: 20, family: 'serif', style: FontStyle.Normal })
-//          .selectedOptionFont({ size: 20, weight: 20, family: 'serif', style: FontStyle.Normal })
-//          .optionFont({ size: 20, weight: 40, family: 'serif', style: FontStyle.Normal })
-//          .onSelect((index: number, value: string) => {
-//            console.info("Select:" + index)
-//            console.info("Select qualityLevelValue:" + value)
-//            this.qualityLevelValue = Number(value)
-//          })
-        Button('NEXT', {
+        Image(this.assetUri || $r('app.media.img'))
+          .width('40%').height('40%').border({ width: 1 }).objectFit(ImageFit.Contain)
+        Text('Oriented Photo').fontSize('20fp')
+        Button('拍照', {
           type: ButtonType.Normal,
           stateEffect: true
         }).borderRadius(8).backgroundColor(0x317aff).width('20%').onClick(() => {
@@ -105,14 +80,3 @@ struct SetCircle {
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
 }
-//@CustomDialog
-//struct CustomDialogExample {
-//  @Link textValue: string
-//  @Link inputValue: string
-//  @Link qualityLevelValue: number
-//  @Link imageRotationValue: number
-//  @Link imageResolutionValue: string
-//  controller: CustomDialogController
-//  cancel: () => void
-//  confirm: () => void
-//}

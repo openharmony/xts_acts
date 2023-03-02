@@ -40,7 +40,7 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  static ResetMedia = async ()=>{
+  static ResetAudio = async ()=>{
     let Test = null;
     let context =null;
     context = globalThis.getContext();
@@ -50,14 +50,14 @@ export default class FlushData{
     await promise.then((object) => {
       preferences = object;
     });
-    promise = preferences.get('Media', 0);
+    promise = preferences.get('Audio', 0);
     await promise.then((data) => {
       Test = data;
-      console.info("Succeeded in getting value of 'startup'. Data: " + data);
+      console.info("Succeeded in getting value of 'Audio'. Data: " + data);
     });
-    promise = preferences.put('Media', 0);
+    promise = preferences.put('Audio', 0);
     promise.then(() => {
-      console.info("Succeeded in putting value of 'test'.");
+      console.info("Succeeded in putting value of 'Audio'.");
     });
     promise = preferences.flush();
     promise.then(() => {
@@ -88,7 +88,7 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  static ResetAudio = async ()=>{
+  static ResetPlayer = async ()=>{
     let Test = null;
     let context =null;
     context = globalThis.getContext();
@@ -98,14 +98,38 @@ export default class FlushData{
     await promise.then((object) => {
       preferences = object;
     });
-    promise = preferences.get('Camera', 0);
+    promise = preferences.get('Player', 0);
     await promise.then((data) => {
       Test = data;
-      console.info("Succeeded in getting value of 'startup'. Data: " + data);
+      console.info("Succeeded in getting value of 'Player'. Data: " + data);
     });
-    promise = preferences.put('Camera', 0);
+    promise = preferences.put('Player', 0);
     promise.then(() => {
-      console.info("Succeeded in putting value of 'test'.");
+      console.info("Succeeded in putting value of 'Player'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+  static ResetExperience = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Experience', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Experience'. Data: " + data);
+    });
+    promise = preferences.put('Experience', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Experience'.");
     });
     promise = preferences.flush();
     promise.then(() => {

@@ -1,18 +1,3 @@
-/*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import camera from '@ohos.multimedia.camera'
 import Logger from '../model/Logger'
 import CameraService from '../model/CameraService'
@@ -22,19 +7,18 @@ const CameraMode = {
   MODE_PHOTO: 0, // 拍照模式
   MODE_VIDEO: 1 // 录像模式
 }
-
 @Entry
 @Component
 struct SetCircle {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'CameraOrientation0';
+  @State name: string = 'CameraOrientation180';
   @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示给定旋转角度后的预览窗口\n-右侧显示拍照后的图片\n-对于前置摄像头会有镜像效果'+'\n'+'预期结果：拍照图片与预览窗口的画面一致';
   private tag: string = 'qlw'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
   @State curModel: number = CameraMode.MODE_PHOTO
   @State cameraDeviceIndex: number = 0
-  @State imageRotationValue: number = camera.ImageRotation.ROTATION_90
+  @State imageRotationValue: number = camera.ImageRotation.ROTATION_180
   @State qualityLevelValue: number = camera.QualityLevel.QUALITY_LEVEL_LOW
   @State assetUri: string = undefined
   @State Vue: boolean = false
@@ -54,12 +38,12 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/CameraOrientation/Camera_Orientation_index',
+        Url:'pages/Camera/Camera_index',
         StepTips:this.StepTips,
         content: this.specificNoParam,
         FillColor:$FillColor,
-        name: $name,
-        Vue: $Vue
+        name:$name,
+        Vue: $Vue,
       }).height('30%').width('100%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         XComponent({
