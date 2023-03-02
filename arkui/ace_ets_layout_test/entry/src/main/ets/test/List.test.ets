@@ -70,6 +70,22 @@
  import AlignEnd_AddLayoutWeight from './Flex/justifyContent/End/AlignEnd_AddLayoutWeight.test.ets';
  import AlignEnd_AddOneWidth from './Flex/justifyContent/End/AlignEnd_AddOneWidth.test.ets';
  import AlignEnd_AddOneMargin from './Flex/justifyContent/End/AlignEnd_AddOneMargin.test.ets';
+ import flex_AlignContent_SpaceBetween_FlexSizeTest from './Flex/alignContent/SpaceBeTween/Flex_AlignContent_SpaceBetween_FlexSize.test';
+ import flex_AlignContent_SpaceBetween_FlexPadTest from './Flex/alignContent/SpaceBeTween/Flex_AlignContent_SpaceBetween_FlexPad.test';
+ import flex_AlignContent_SpaceBetween_FlexMarTest from './Flex/alignContent/SpaceBeTween/Flex_AlignContent_SpaceBetween_FlexMar.test';
+ import flex_AlignContent_SpaceBetween_FlexMarPadTest from './Flex/alignContent/SpaceBeTween/Flex_AlignContent_SpaceBetween_FlexMarPad.test';
+ import flex_AlignContent_SpaceBetween_TextSizeTest from './Flex/alignContent/SpaceBeTween/Flex_AlignContent_SpaceBetween_TextSize.test';
+ import flex_AlignContent_SpaceBetween_TextMarTest from './Flex/alignContent/SpaceBeTween/Flex_AlignContent_SpaceBetween_TextMar.test';
+ import flex_AlignContent_SpaceBetween_TextOffsetTest from './Flex/alignContent/SpaceBeTween/Flex_AlignContent_SpaceBetween_TextOffset.test';
+ import flex_AlignContent_SpaceBetween_TextVisibilityTest from './Flex/alignContent/SpaceBeTween/Flex_AlignContent_SpaceBetween_TextVisibility.test';
+ import flex_AlignContent_SpaceAround_FlexSizeTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexSize.test';
+ import flex_AlignContent_SpaceAround_FlexPadTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexPad.test';
+ import flex_AlignContent_SpaceAround_FlexMarTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexMar.test';
+ import flex_AlignContent_SpaceAround_FlexMarPadTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexMarPad.test';
+ import flex_AlignContent_SpaceAround_TextSizeTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextSize.test';
+ import flex_AlignContent_SpaceAround_TextMarTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextMar.test';
+ import flex_AlignContent_SpaceAround_TextOffsetTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextOffset.test';
+ import flex_AlignContent_SpaceAround_TextVisibilityTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextVisibility.test';
 export default function testsuite() {
   flexBase_AutoJsunit()
   flexPadding_AutoJsunit()
@@ -129,4 +145,20 @@ export default function testsuite() {
   AlignEnd_AddLayoutWeight()
   AlignEnd_AddOneWidth()
   AlignEnd_AddOneMargin()
+  flex_AlignContent_SpaceBetween_FlexSizeTest();
+  flex_AlignContent_SpaceBetween_FlexPadTest();
+  flex_AlignContent_SpaceBetween_FlexMarTest();
+  flex_AlignContent_SpaceBetween_FlexMarPadTest();
+  flex_AlignContent_SpaceBetween_TextSizeTest();
+  flex_AlignContent_SpaceBetween_TextMarTest();
+  flex_AlignContent_SpaceBetween_TextOffsetTest();
+  flex_AlignContent_SpaceBetween_TextVisibilityTest();
+  flex_AlignContent_SpaceAround_FlexSizeTest();
+  flex_AlignContent_SpaceAround_FlexPadTest();
+  flex_AlignContent_SpaceAround_FlexMarTest();
+  flex_AlignContent_SpaceAround_FlexMarPadTest();
+  flex_AlignContent_SpaceAround_TextSizeTest();
+  flex_AlignContent_SpaceAround_TextMarTest();
+  flex_AlignContent_SpaceAround_TextOffsetTest();
+  flex_AlignContent_SpaceAround_TextVisibilityTest();
 }
