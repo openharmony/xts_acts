@@ -867,10 +867,8 @@ describe('hiSysEventJsTest', function () {
 				console.log('testHiSysEventApi24 into json-callback');
 				if (err) {
 					console.error('in testHiSysEventApi24 test callback: err.code = ' + err.code)
-					result = err.code
 				} else {
 					console.info('in testHiSysEventApi24 test callback: result = ' + value)
-					result = value;
 				}
 			});
 			setTimeout(() => {
@@ -882,11 +880,10 @@ describe('hiSysEventJsTest', function () {
 					domain: "ACCOUNT",
 					names: ["PERMISSION_EXCEPTION"],
 				}], {
-					onQuery: function (infos, seqs) {
+					onQuery: function (infos) {
 						console.info(`testHiSysEventApi24: onQuery...`)
 						expect(infos.length >= 0).assertTrue()
-						expect(seqs.length >= 0).assertTrue()
-						console.info(`testHiSysEventApi24: infos.size is ${infos.length}, seqs.length is ${seqs.length}`)
+						console.info(`testHiSysEventApi24: infos.size is ${infos.length}`)
 						if (infos instanceof Array) {
 							for (let i = 0; i < infos.length; i++) {
 								let item = infos[i];
@@ -897,12 +894,6 @@ describe('hiSysEventJsTest', function () {
 										console.info(`testHiSysEventApi24: ${key}: ${item.params[key]}`)
 									}
 								}
-							}
-						}
-						if (seqs instanceof Array) {
-							for (let i = 0; i < seqs.length; i++) {
-								let item = seqs[i];
-								console.info(`testHiSysEventApi24: seq${i}: ${item}`)
 							}
 						}
 					},
@@ -935,10 +926,8 @@ describe('hiSysEventJsTest', function () {
 				console.log('testHiSysEventApi25 into json-callback');
 				if (err) {
 					console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
-					result = err.code
 				} else {
 					console.info('in testHiSysEventApi25 test callback: result = ' + value)
-					result = value;
 				}
 			});
 			console.info('add second..')
@@ -951,10 +940,8 @@ describe('hiSysEventJsTest', function () {
 					console.log('testHiSysEventApi25 into json-callback');
 					if (err) {
 						console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
-						result = err.code
 					} else {
 						console.info('in testHiSysEventApi25 test callback: result = ' + value)
-						result = value;
 					}
 				})
 			},1000)
@@ -967,11 +954,10 @@ describe('hiSysEventJsTest', function () {
 					domain: "HIVIEWDFX",
 					names: ["SYS_USAGE","PLUGIN_STATS"],
 				}], {
-					onQuery: function (infos, seqs) {
+					onQuery: function (infos) {
 						console.info(`testHiSysEventApi25: onQuery...`)
 						expect(infos.length >= 0).assertTrue()
-						expect(seqs.length >= 0).assertTrue()
-						console.info(`testHiSysEventApi25: infos.size is ${infos.length}, seqs.length is ${seqs.length}`)
+						console.info(`testHiSysEventApi25: infos.size is ${infos.length}`)
 						if (infos instanceof Array) {
 							for (let i = 0; i < infos.length; i++) {
 								let item = infos[i];
@@ -982,12 +968,6 @@ describe('hiSysEventJsTest', function () {
 										console.info(`testHiSysEventApi25: ${key}: ${item.params[key]}`)
 									}
 								}
-							}
-						}
-						if (seqs instanceof Array) {
-							for (let i = 0; i < seqs.length; i++) {
-								let item = seqs[i];
-								console.info(`testHiSysEventApi25: seq${i}: ${item}`)
 							}
 						}
 					},
