@@ -57,12 +57,7 @@
             }
         ],
         "deviceType": [
-            "tablet",
-            "default",
-            "phone",
-            "tablet",
-            "tv",
-            "wearable"
+            "default"
         ],
         "mainAbility": ".MainAbility",
         "distro": {
