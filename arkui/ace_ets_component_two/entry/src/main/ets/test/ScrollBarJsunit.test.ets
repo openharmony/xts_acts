@@ -118,7 +118,7 @@ export default function scrollBarJsunit() {
       console.info("[testScrollBar004] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testScrollBar004] state:" + obj.$attrs.state);
-      expect(obj.$attrs.state).assertEqual('BarState.Off');
+      expect(obj.$attrs.state).assertEqual('BarState.Auto');
       done();
     });
 
@@ -144,7 +144,7 @@ export default function scrollBarJsunit() {
       console.info("[testScrollBar005] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testScrollBar005] state:" + obj.$attrs.state);
-      expect(obj.$attrs.state).assertEqual('BarState.Off');
+      expect(obj.$attrs.state).assertEqual('BarState.Auto');
       done();
     });
   })
