@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import prompt from '@ohos.prompt';
 import router from '@ohos.router';
 import fileio from '@ohos.fileio';
@@ -23,12 +22,12 @@ import data_preferences from '@ohos.data.preferences';
 
 const TAG = 'ParseXML';
 let path = globalThis.dir;
-let path1 = path + '/Audio';
+let path1 = path + '/Player';
 
 let VarColor = [];
-let ColorBackPath = path + '/AudioColorBack.txt';
-let txtPath = path1 + 'AudioReport.txt';
-let xmlPath =path1 + 'AudioTest.xml';
+let ColorBackPath = path + '/PlayerColorBack.txt';
+let txtPath = path1 + 'PlayerReport.txt';
+let xmlPath =path1 + 'PlayerTest.xml';
 
 @Entry
 @Component
@@ -39,7 +38,7 @@ struct IndexPage {
   @State result : string = '';
   @State TEST : number = 0;
   private TestCaseList = [
-    {title:'ScrollingList',uri:'pages/Audio/ScrollListTest'},
+    {title:'ScrollingList',uri:'pages/Player/ScrollListTest'},
   ]
   @State ColorObject : string[] = VarColor;
   async onPageShow(){
@@ -52,10 +51,10 @@ struct IndexPage {
     await promise.then((object) => {
       preferences = object;
     });
-    promise = preferences.get('Audio', 0);
+    promise = preferences.get('Player', 0);
     await promise.then((data) => {
       Test = data;
-      console.info("Succeeded in getting value of 'Audio'. Data: " + data);
+      console.info("Succeeded in getting value of 'Player'. Data: " + data);
     });
 
     if(Test != 1) {
@@ -66,9 +65,9 @@ struct IndexPage {
       }
       fileio.closeSync(fd);
     }
-    promise = preferences.put('Audio', 1);
+    promise = preferences.put('Player', 1);
     promise.then(() => {
-      console.info("Succeeded in putting value of 'Audio'.");
+      console.info("Succeeded in putting value of 'Player'.");
     });
     promise = preferences.flush();
     promise.then(() => {
@@ -138,7 +137,7 @@ struct IndexPage {
           router.back();
         })
         Row(){
-          Text('Audio SubSystem')
+          Text('Player SubSystem')
             .fontColor(Color.White)
             .fontSize('22fp')
         }.justifyContent(FlexAlign.SpaceAround).backgroundColor(Color.Black)
@@ -186,7 +185,7 @@ struct IndexPage {
           .onClick(() => {
             this.ReadTextParseXml();
             AlertDialog.show({
-              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/Audio/AudioTest.xml -本地路径'",
+              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/Player/PlayerTest.xml -本地路径'",
               confirm:{
                 value:'OK',
                 action:()=>{
@@ -233,7 +232,7 @@ struct IndexPage {
     }
   }
   ReadTextParseXml(){
-    let ReportPath = path1 + '/AudioReport.txt';
+    let ReportPath = path1 + '/PlayerReport.txt';
     let dir = fileio.opendirSync(path1);
     console.info("ssssss"+dir);
     while (dir) {
@@ -276,7 +275,7 @@ struct IndexPage {
       let serializer = new xml.XmlSerializer(bufView);
       serializer.setDeclaration();
       serializer.startElement("testsuite");
-      serializer.setAttributes("name","ActsAudioTest");
+      serializer.setAttributes("name","ActsPlayerTest");
       serializer.setAttributes("time", " ");
       serializer.setAttributes("errors", "0");
       serializer.setAttributes("disabled", "0");
@@ -284,7 +283,7 @@ struct IndexPage {
       serializer.setAttributes("ignored", ignoreNum);
       serializer.setAttributes("tests", testNum);
       serializer.setAttributes("message", " ");
-      serializer.setAttributes("modulename", "ActsAudioTest");
+      serializer.setAttributes("modulename", "ActsPlayerTest");
       for (let i = 0; i < title.length; i++) {
         serializer.startElement("testcase");
         serializer.setAttributes("name", String(title[i]));

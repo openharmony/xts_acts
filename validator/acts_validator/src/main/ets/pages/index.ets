@@ -25,34 +25,39 @@ import FlushData from '../pages/model/FlushData'
 const TAG = 'ParseXML';
 let path=globalThis.dir;
 let path1 = path + '/ArkUI';
-let path2 = path + '/MediaLibrary';
+let path2 = path + '/Audio';
 let path3 = path + '/Camera';
-let path4 = path + '/Audio';
+let path4 = path + '/Player';
+let path5 = path + '/Experience';
 let ArkUIColorBackPath = path + '/ArkUIColorBack.txt';
-let MediaColorBackPath = path + '/MediaColorBack.txt';
-let CameraColorBackPath = path + '/CameraColorBack.txt';
 let AudioColorBackPath = path + '/AudioColorBack.txt';
+let CameraColorBackPath = path + '/CameraColorBack.txt';
+let PlayerColorBackPath = path + '/PlayerColorBack.txt';
+let ExperienceColorBackPath = path + '/ExperienceColorBack.txt';
 fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(MediaColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
 fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
+fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
+fileio.openSync(PlayerColorBackPath, 0o100 | 0o2002, 0o664);
+fileio.openSync(ExperienceColorBackPath, 0o100 | 0o2002, 0o664);
 let TimePath = path + '/Time.txt';
 fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
 let xmlPath = path + '/Test.xml';
 fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
 let path11 = path1 + '/ArkUIReport.txt';
-let path22 = path2 + '/MediaReport.txt';
+let path22 = path2 + '/AudioReport.txt';
 let path33 = path3 + '/CameraReport.txt';
-let path44 = path4 + '/AudioReport.txt';
+let path44 = path4 + '/PlayerReport.txt';
+let path55 = path5 + '/ExperienceReport.txt';
 
 @Entry
 @Component
 struct IndexPage {
   private TestCaseList = [
     {title:'ArkUI',uri:'pages/ArkUI/ArkUI_index'},
-    {title:'MediaLibrary',uri:'pages/MediaLibrary/MediaLibrary_index'},
-    {title:'Camera',uri:'pages/CameraOrientation/Camera_Orientation_index'},
     {title:'Audio',uri:'pages/Audio/Audio_index'},
+    {title:'Camera',uri:'pages/Camera/Camera_index'},
+    {title:'Player',uri:'pages/Player/Player_index'},
+    {title:'Experience',uri:'pages/Experience/Experience_index'},
   ]
   @State ColorObject : string[] = ['#ff808080','#ff808080','#ff808080','#ff808080','#ff808080']
   async onPageShow(){
@@ -75,6 +80,7 @@ struct IndexPage {
       fileio.mkdirSync(path2);
       fileio.mkdirSync(path3);
       fileio.mkdirSync(path4);
+      fileio.mkdirSync(path5);
 
       let promise = preferences.put('index', 1);
       promise.then(() => {
@@ -89,11 +95,12 @@ struct IndexPage {
     fileio.openSync(path22, 0o100 | 0o2002, 0o664);
     fileio.openSync(path33, 0o100 | 0o2002, 0o664);
     fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    fileio.openSync(path55, 0o100 | 0o2002, 0o664);
   }
   build(){
     Column(){
       Row() {
-        Text('ActValidator')
+        Text('ActsValidator')
           .fontColor(Color.White)
           .fontSize('22fp')
         Row() {
@@ -185,23 +192,29 @@ struct IndexPage {
     fileio.unlinkSync(path22);
     fileio.unlinkSync(path33);
     fileio.unlinkSync(path44);
+    fileio.unlinkSync(path55);
     fileio.unlinkSync(ArkUIColorBackPath);
-    fileio.unlinkSync(MediaColorBackPath);
+    fileio.unlinkSync(AudioColorBackPath);
     fileio.unlinkSync(CameraColorBackPath);
+    fileio.unlinkSync(PlayerColorBackPath);
+    fileio.unlinkSync(ExperienceColorBackPath);
     fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
     fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(path11, 0o100 | 0o2002, 0o664);
     fileio.openSync(path22, 0o100 | 0o2002, 0o664);
     fileio.openSync(path33, 0o100 | 0o2002, 0o664);
     fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    fileio.openSync(path55, 0o100 | 0o2002, 0o664);
     fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(MediaColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(ExperienceColorBackPath, 0o100 | 0o2002, 0o664);
     FlushData.ResetArkUI();
-    FlushData.ResetMedia();
-    FlushData.ResetCamera();
     FlushData.ResetAudio();
+    FlushData.ResetCamera();
+    FlushData.ResetPlayer();
+    FlushData.ResetExperience();
   }
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
@@ -212,17 +225,18 @@ struct IndexPage {
     let StartTime = String.fromCharCode.apply(null, new Uint8Array(buf));
     let Index = StartTime.indexOf(';');
     let starttime = StartTime.substring(0,Index);
-
+    let ArkUIReport;
+    let AudioReport;
+    let CameraReport;
+    let PlayerReport;
+    let ExperienceReport;
+    /*
+     * ArkUI
+     */
     let OP1 = fileio.openSync(path11, 0o100 | 0o2002, 0o664);
     let buf1 = new ArrayBuffer(40960);
     fileio.readSync(OP1,buf1);
-    let ArkUIReport;
-    let MediaLibraryReport;
-
-    function ab2str1(buf1) {
-      return ArkUIReport = String.fromCharCode.apply(null, new Uint8Array(buf1));
-    }
-    ab2str1(buf1);
+    ArkUIReport = String.fromCharCode.apply(null, new Uint8Array(buf1));
     let str1 = ArkUIReport.split(";");
     let title1 = [];
     let result1 = [];
@@ -230,23 +244,64 @@ struct IndexPage {
       title1[i] = str1[i * 2];
       result1[i] = str1[i * 2 + 1];
     }
-
+    /*
+     * Audio
+     */
     let OP2 = fileio.openSync(path22, 0o100 | 0o2002, 0o664);
     let buf2 = new ArrayBuffer(40960);
     fileio.readSync(OP2,buf2);
-    function ab2str2(buf2) {
-      return MediaLibraryReport = String.fromCharCode.apply(null, new Uint8Array(buf2));
-    }
-    ab2str2(buf2);
-    let str2 = MediaLibraryReport.split(";");
+    AudioReport = String.fromCharCode.apply(null, new Uint8Array(buf2));
+    let str2 = AudioReport.split(";");
     let title2 = [];
     let result2 = [];
     for (let i = 0; i < Math.floor(str2.length / 2); i++) {
       title2[i] = str2[i * 2];
       result2[i] = str2[i * 2 + 1];
     }
+    /*
+     * Camera
+     */
+    let OP3 = fileio.openSync(path33, 0o100 | 0o2002, 0o664);
+    let buf3 = new ArrayBuffer(40960);
+    fileio.readSync(OP3,buf3);
+    CameraReport = String.fromCharCode.apply(null, new Uint8Array(buf3));
+    let str3 = CameraReport.split(";");
+    let title3 = [];
+    let result3 = [];
+    for (let i = 0; i < Math.floor(str3.length / 2); i++) {
+      title3[i] = str3[i * 2];
+      result3[i] = str3[i * 2 + 1];
+    }
+    /*
+ * Player
+ */
+    let OP4 = fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    let buf4 = new ArrayBuffer(40960);
+    fileio.readSync(OP4,buf4);
+    PlayerReport = String.fromCharCode.apply(null, new Uint8Array(buf4));
+    let str4 = PlayerReport.split(";");
+    let title4 = [];
+    let result4 = [];
+    for (let i = 0; i < Math.floor(str4.length / 2); i++) {
+      title4[i] = str4[i * 2];
+      result4[i] = str4[i * 2 + 1];
+    }
+    /*
+ * Experience
+ */
+    let OP5 = fileio.openSync(path55, 0o100 | 0o2002, 0o664);
+    let buf5 = new ArrayBuffer(40960);
+    fileio.readSync(OP5,buf5);
+    ExperienceReport = String.fromCharCode.apply(null, new Uint8Array(buf5));
+    let str5 = ExperienceReport.split(";");
+    let title5 = [];
+    let result5 = [];
+    for (let i = 0; i < Math.floor(str5.length / 2); i++) {
+      title5[i] = str5[i * 2];
+      result5[i] = str5[i * 2 + 1];
+    }
 
-    let report = ArkUIReport + MediaLibraryReport;
+    let report = ArkUIReport + AudioReport + CameraReport + PlayerReport + ExperienceReport;
     let FailIndex = report.indexOf('Fail');
     let FailNum = 0;
     while(FailIndex != -1) {
@@ -264,8 +319,10 @@ struct IndexPage {
     }
     let TestNum = FailNum + PassNum;
     let testNum = (TestNum).toString();
-    let ignoreNum = (52-TestNum).toString();
-
+    let ignoreNum = (54-TestNum).toString();
+    /*
+     * ArkUI
+     */
     let ArkUIFailIndex = ArkUIReport.indexOf('Fail');
     let ArkUIFailNum = 0;
     while (ArkUIFailIndex != -1) {
@@ -283,26 +340,91 @@ struct IndexPage {
     }
     let ArkUITestNum = ArkUIFailNum + ArkUIPassNum;
     let ArkuiTestNum = (ArkUIPassNum).toString();
-    let ArkUIIgnoreNum = (24-ArkUITestNum).toString();
-
-    let MediaLibraryFailIndex = MediaLibraryReport.indexOf('Fail');
-    let MediaLibraryFailNum = 0;
-    while (MediaLibraryFailIndex != -1) {
-      console.log(MediaLibraryFailIndex);
-      MediaLibraryFailNum++;
-      MediaLibraryFailIndex = MediaLibraryReport.indexOf('Fail',MediaLibraryFailIndex + 1);
+    let ArkUIIgnoreNum = (23-ArkUITestNum).toString();
+    /*
+     * Audio
+     */
+    let AudioFailIndex = AudioReport.indexOf('Fail');
+    let AudioFailNum = 0;
+    while (AudioFailIndex != -1) {
+      console.log(AudioFailIndex);
+      AudioFailNum++;
+      AudioFailIndex = AudioReport.indexOf('Fail',AudioFailIndex + 1);
     }
-    let medialibraryFailNum = (MediaLibraryFailNum).toString();
-    let MediaLibraryPassIndex = MediaLibraryReport.indexOf('Pass');
-    let MediaLibraryPassNum = 0;
-    while (MediaLibraryPassIndex != -1) {
-      console.log(MediaLibraryPassIndex);
-      MediaLibraryPassNum++;
-      MediaLibraryPassIndex = MediaLibraryReport.indexOf('Pass',MediaLibraryPassIndex + 1);
+    let audioFailNum = (AudioFailNum).toString();
+    let AudioPassIndex = AudioReport.indexOf('Pass');
+    let AudioPassNum = 0;
+    while (AudioPassIndex != -1) {
+      console.log(AudioPassIndex);
+      AudioPassNum++;
+      AudioPassIndex = AudioReport.indexOf('Pass',AudioPassIndex + 1);
     }
-    let MediaLibraryTestNum = MediaLibraryFailNum + MediaLibraryPassNum;
-    let medialibraryTestNum = (MediaLibraryPassNum).toString();
-    let MediaLibraryIgnoreNum = (28-MediaLibraryTestNum).toString();
+    let AudioTestNum = AudioFailNum + AudioPassNum;
+    let audioTestNum = (AudioPassNum).toString();
+    let AudioIgnoreNum = (28-AudioTestNum).toString();
+    /*
+     * Camera
+     */
+    let CameraFailIndex = CameraReport.indexOf('Fail');
+    let CameraFailNum = 0;
+    while (CameraFailIndex != -1) {
+      console.log(CameraFailIndex);
+      CameraFailNum++;
+      CameraFailIndex = CameraReport.indexOf('Fail',CameraFailIndex + 1);
+    }
+    let cameraFailNum = (CameraFailNum).toString();
+    let CameraPassIndex = CameraReport.indexOf('Pass');
+    let CameraPassNum = 0;
+    while (CameraPassIndex != -1) {
+      console.log(CameraPassIndex);
+      CameraPassNum++;
+      CameraPassIndex = CameraReport.indexOf('Pass',CameraPassIndex + 1);
+    }
+    let CameraTestNum = CameraFailNum + CameraPassNum;
+    let cameraTestNum = (CameraPassNum).toString();
+    let CameraIgnoreNum = (28-CameraTestNum).toString();
+    /*
+ * Player
+ */
+    let PlayerFailIndex = PlayerReport.indexOf('Fail');
+    let PlayerFailNum = 0;
+    while (PlayerFailIndex != -1) {
+      console.log(PlayerFailIndex);
+      PlayerFailNum++;
+      PlayerFailIndex = PlayerReport.indexOf('Fail',PlayerFailIndex + 1);
+    }
+    let playerFailNum = (PlayerFailNum).toString();
+    let PlayerPassIndex = PlayerReport.indexOf('Pass');
+    let PlayerPassNum = 0;
+    while (PlayerPassIndex != -1) {
+      console.log(PlayerPassIndex);
+      PlayerPassNum++;
+      PlayerPassIndex = PlayerReport.indexOf('Pass',PlayerPassIndex + 1);
+    }
+    let PlayerTestNum = PlayerFailNum + PlayerPassNum;
+    let playerTestNum = (PlayerPassNum).toString();
+    let PlayerIgnoreNum = (28-PlayerTestNum).toString();
+    /*
+* Experience
+*/
+    let ExperienceFailIndex = ExperienceReport.indexOf('Fail');
+    let ExperienceFailNum = 0;
+    while (ExperienceFailIndex != -1) {
+      console.log(ExperienceFailIndex);
+      ExperienceFailNum++;
+      ExperienceFailIndex = ExperienceReport.indexOf('Fail',ExperienceFailIndex + 1);
+    }
+    let experienceFailNum = (ExperienceFailNum).toString();
+    let ExperiencePassIndex = ExperienceReport.indexOf('Pass');
+    let ExperiencePassNum = 0;
+    while (ExperiencePassIndex != -1) {
+      console.log(ExperiencePassIndex);
+      ExperiencePassNum++;
+      ExperiencePassIndex = ExperienceReport.indexOf('Pass',ExperiencePassIndex + 1);
+    }
+    let ExperienceTestNum = ExperienceFailNum + ExperiencePassNum;
+    let experienceTestNum = (ExperiencePassNum).toString();
+    let ExperienceIgnoreNum = (28-ExperienceTestNum).toString();
 
     let arrayBuffer = new ArrayBuffer(40960);
     let bufView = new DataView(arrayBuffer);
@@ -321,6 +443,9 @@ struct IndexPage {
     serializer.setAttributes("productinfo", "{ }");
     serializer.setAttributes("modules", " ");
     serializer.setAttributes("runmodules", " ");
+    /*
+     * ArkUI
+     */
     serializer.startElement("testsuite");
     serializer.setAttributes("name", "ActsArkUITest");
     serializer.setAttributes("time", " ");
@@ -343,17 +468,19 @@ struct IndexPage {
       serializer.endElement();
     }
     serializer.endElement();
-
+    /*
+     * Audio
+     */
     serializer.startElement("testsuite");
-    serializer.setAttributes("name", "ActsMediaLibraryTest");
+    serializer.setAttributes("name", "ActsAudioTest");
     serializer.setAttributes("time", " ");
     serializer.setAttributes("errors", "0");
     serializer.setAttributes("disabled", "0");
-    serializer.setAttributes("failures", medialibraryFailNum);
-    serializer.setAttributes("ignored", MediaLibraryIgnoreNum);
-    serializer.setAttributes("tests", medialibraryTestNum);
+    serializer.setAttributes("failures", audioFailNum);
+    serializer.setAttributes("ignored", AudioIgnoreNum);
+    serializer.setAttributes("tests", audioTestNum);
     serializer.setAttributes("message", " ");
-    serializer.setAttributes("modulename", "ActsMediaLibraryTest");
+    serializer.setAttributes("modulename", "ActsAudioTest");
     for (let i = 0; i < title2.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title2[i]));
@@ -361,6 +488,81 @@ struct IndexPage {
       serializer.setAttributes("time", " ");
       serializer.setAttributes("classname", " ");
       serializer.setAttributes("result", String(result2[i]));
+      serializer.setAttributes("level", " ");
+      serializer.setAttributes("message", " ");
+      serializer.endElement();
+    }
+    serializer.endElement();
+    /*
+     * Camera
+     */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsCameraTest");
+    serializer.setAttributes("time", " ");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", cameraFailNum);
+    serializer.setAttributes("ignored", CameraIgnoreNum);
+    serializer.setAttributes("tests", cameraTestNum);
+    serializer.setAttributes("message", " ");
+    serializer.setAttributes("modulename", "ActsCameraTest");
+    for (let i = 0; i < title2.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title3[i]));
+      serializer.setAttributes("status", " ");
+      serializer.setAttributes("time", " ");
+      serializer.setAttributes("classname", " ");
+      serializer.setAttributes("result", String(result3[i]));
+      serializer.setAttributes("level", " ");
+      serializer.setAttributes("message", " ");
+      serializer.endElement();
+    }
+    serializer.endElement();
+    /*
+ * Player
+ */
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsPlayerTest");
+    serializer.setAttributes("time", " ");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", playerFailNum);
+    serializer.setAttributes("ignored", PlayerIgnoreNum);
+    serializer.setAttributes("tests", playerTestNum);
+    serializer.setAttributes("message", " ");
+    serializer.setAttributes("modulename", "ActsPlayerTest");
+    for (let i = 0; i < title2.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title4[i]));
+      serializer.setAttributes("status", " ");
+      serializer.setAttributes("time", " ");
+      serializer.setAttributes("classname", " ");
+      serializer.setAttributes("result", String(result4[i]));
+      serializer.setAttributes("level", " ");
+      serializer.setAttributes("message", " ");
+      serializer.endElement();
+    }
+    serializer.endElement();
+    /*
+* Experience
+*/
+    serializer.startElement("testsuite");
+    serializer.setAttributes("name", "ActsExperienceTest");
+    serializer.setAttributes("time", " ");
+    serializer.setAttributes("errors", "0");
+    serializer.setAttributes("disabled", "0");
+    serializer.setAttributes("failures", experienceFailNum);
+    serializer.setAttributes("ignored", ExperienceIgnoreNum);
+    serializer.setAttributes("tests", experienceTestNum);
+    serializer.setAttributes("message", " ");
+    serializer.setAttributes("modulename", "ActsExperienceTest");
+    for (let i = 0; i < title2.length; i++) {
+      serializer.startElement("testcase");
+      serializer.setAttributes("name", String(title5[i]));
+      serializer.setAttributes("status", " ");
+      serializer.setAttributes("time", " ");
+      serializer.setAttributes("classname", " ");
+      serializer.setAttributes("result", String(result5[i]));
       serializer.setAttributes("level", " ");
       serializer.setAttributes("message", " ");
       serializer.endElement();

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import {CustomContainer} from '../common/CustomContainer';
 import FirstDialog from '../model/FirstDialog';
 @Entry
@@ -41,7 +40,7 @@ struct CustomContainerUser {
     Column() {
       CustomContainer({
         title: this.name,
-        Url: 'pages/Audio/Audio_index',
+        Url: 'pages/Experience/Experience_index',
         StepTips: this.StepTips,
         content: this.specificNoParam.bind(this),
         name: $name,

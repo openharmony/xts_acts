@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import prompt from '@ohos.prompt';
 import router from '@ohos.router';
 import fileio from '@ohos.fileio';
@@ -39,12 +38,12 @@ struct IndexPage {
   @State result : string = '';
   @State TEST : number = 0;
   private TestCaseList = [
-    {title:'CameraOrientation0',uri:'pages/CameraOrientation/CameraOrientation0'},
-    {title:'CameraOrientation90',uri:'pages/CameraOrientation/CameraOrientation90'},
-    {title:'CameraOrientation180',uri:'pages/CameraOrientation/CameraOrientation180'},
-    {title:'CameraOrientation270',uri:'pages/CameraOrientation/CameraOrientation270'},
-    {title:'CameraFormat',uri:'pages/CameraOrientation/CameraFormat'},
-    {title:'CameraVideo',uri:'pages/CameraOrientation/CameraVideo'},
+    {title:'CameraOrientation0',uri:'pages/Camera/CameraOrientation0'},
+    {title:'CameraOrientation90',uri:'pages/Camera/CameraOrientation90'},
+    {title:'CameraOrientation180',uri:'pages/Camera/CameraOrientation180'},
+    {title:'CameraOrientation270',uri:'pages/Camera/CameraOrientation270'},
+    {title:'CameraFormat',uri:'pages/Camera/CameraFormat'},
+    {title:'CameraVideo',uri:'pages/Camera/CameraVideo'},
   ]
   @State ColorObject : string[] = VarColor;
   async onPageShow(){
@@ -143,7 +142,7 @@ struct IndexPage {
           router.back();
         })
         Row(){
-          Text('Camera Oritentation')
+          Text('Camera')
             .fontColor(Color.White)
             .fontSize('20fp')
         }.justifyContent(FlexAlign.SpaceAround).backgroundColor(Color.Black)

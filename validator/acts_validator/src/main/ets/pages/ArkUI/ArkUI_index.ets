@@ -61,7 +61,6 @@ struct IndexPage {
     {title:'CanvasShadowColor',uri:'pages/ArkUI/CanvasShadowColor'},
     {title:'CanvasShadowOffsetX',uri:'pages/ArkUI/CanvasShadowOffsetX'},
     {title:'CanvasShadowOffsetY',uri:'pages/ArkUI/CanvasShadowOffsetY'},
-    {title:'CanvasImageSmoothingEnabled',uri:'pages/ArkUI/CanvasImageSmoothingEnabled'},
   ]
   @State ColorObject : string[] = VarColor;
   async onPageShow(){
