@@ -55,7 +55,7 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/CameraOrientation/Camera_Orientation_index',
+        Url:'pages/Camera/Camera_index',
         StepTips:this.StepTips,
         content: this.specificNoParam,
         FillColor:$FillColor,

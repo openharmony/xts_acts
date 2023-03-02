@@ -26,14 +26,14 @@ const CameraMode = {
 @Component
 struct SetCircle {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'CameraOrientation180';
+  @State name: string = 'CameraOrientation270';
   @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示给定旋转角度后的预览窗口\n-右侧显示拍照后的图片\n-对于前置摄像头会有镜像效果'+'\n'+'预期结果：拍照图片与预览窗口的画面一致';
   private tag: string = 'qlw'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
   @State curModel: number = CameraMode.MODE_PHOTO
   @State cameraDeviceIndex: number = 0
-  @State imageRotationValue: number = camera.ImageRotation.ROTATION_180
+  @State imageRotationValue: number = camera.ImageRotation.ROTATION_270
   @State qualityLevelValue: number = camera.QualityLevel.QUALITY_LEVEL_LOW
   @State assetUri: string = undefined
   @State Vue: boolean = false
@@ -53,12 +53,12 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/CameraOrientation/Camera_Orientation_index',
+        Url:'pages/Camera/Camera_index',
         StepTips:this.StepTips,
         content: this.specificNoParam,
         FillColor:$FillColor,
         name:$name,
-        Vue: $Vue,
+        Vue: $Vue
       }).height('30%').width('100%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         XComponent({

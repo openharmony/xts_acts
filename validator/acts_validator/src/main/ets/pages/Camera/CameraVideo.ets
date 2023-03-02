@@ -27,11 +27,12 @@ const CameraMode = {
 @Component
 struct SetCircle {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'CameraOrientation0';
-  @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示给定旋转角度后的预览窗口\n-右侧显示拍照后的图片\n-对于前置摄像头会有镜像效果'+'\n'+'预期结果：拍照图片与预览窗口的画面一致';
+  @State name: string = 'CameraVideo';
+  @State StepTips: string = '测试目的：用于测试相机不同分辨率下的录像能力\n-上边显示录像的预览窗口\n-按下测试按钮后触发3s录像，回放的录像文件将在录像结束后显示在下边窗口\n-使用下拉框可以选择相机设备和分辨率'+'\n'+'预期结果：回放的录像视频与预览窗口的画面一致';
   private tag: string = 'qlw'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
+  private x: number = 0;
   @State curModel: number = CameraMode.MODE_PHOTO
   @State cameraDeviceIndex: number = 0
   @State imageRotationValue: number = camera.ImageRotation.ROTATION_90
@@ -43,7 +44,7 @@ struct SetCircle {
   }
   handleTakePicture = (assetUri: string) => {
     this.assetUri = assetUri
-    Logger.info(this.tag, `takePicture end, assetUri: ${this.assetUri}`)
+    Logger.info(this.tag, `Video recorder end, assetUri: ${this.assetUri}`)
   }
 
   @Builder specificNoParam() {
@@ -54,7 +55,7 @@ struct SetCircle {
     Column() {
       CustomContainer({
         title: this.name,
-        Url:'pages/CameraOrientation/Camera_Orientation_index',
+        Url:'pages/Camera/Camera_index',
         StepTips:this.StepTips,
         content: this.specificNoParam,
         FillColor:$FillColor,
@@ -80,14 +81,13 @@ struct SetCircle {
           .height('40%')
           .width('40%')
         Text('Camera Preview').fontSize('20fp')
-        Image(this.assetUri || $r('app.media.img'))
-          .width('40%').height('40%').border({ width: 1 }).objectFit(ImageFit.Contain)
-        Text('Oriented Photo').fontSize('20fp')
-        Button('拍照', {
+//        Video()
+        Text('Video playback').fontSize('20fp')
+        Button('Test', {
           type: ButtonType.Normal,
           stateEffect: true
         }).borderRadius(8).backgroundColor(0x317aff).width('20%').onClick(() => {
-          CameraService.takePicture(this.imageRotationValue, this.qualityLevelValue)
+          CameraService.startVideo()
           CameraService.setTakePictureCallback(this.handleTakePicture.bind(this))
           this.Vue = true
         })

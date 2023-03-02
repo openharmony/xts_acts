@@ -23,12 +23,12 @@ import data_preferences from '@ohos.data.preferences';
 
 const TAG = 'ParseXML';
 let path = globalThis.dir;
-let path1 = path + '/Camera';
+let path1 = path + '/Experience';
 
 let VarColor = [];
-let ColorBackPath = path + '/CameraColorBack.txt';
-let txtPath = path1 + 'CameraReport.txt';
-let xmlPath = path1 + 'CameraTest.xml';
+let ColorBackPath = path + '/ExperienceColorBack.txt';
+let txtPath = path1 + 'ExperienceReport.txt';
+let xmlPath =path1 + 'ExperienceTest.xml';
 
 @Entry
 @Component
@@ -39,12 +39,7 @@ struct IndexPage {
   @State result : string = '';
   @State TEST : number = 0;
   private TestCaseList = [
-    {title:'CameraOrientation0',uri:'pages/CameraOrientation/CameraOrientation0'},
-    {title:'CameraOrientation90',uri:'pages/CameraOrientation/CameraOrientation90'},
-    {title:'CameraOrientation180',uri:'pages/CameraOrientation/CameraOrientation180'},
-    {title:'CameraOrientation270',uri:'pages/CameraOrientation/CameraOrientation270'},
-    {title:'CameraFormat',uri:'pages/CameraOrientation/CameraFormat'},
-    {title:'CameraVideo',uri:'pages/CameraOrientation/CameraVideo'},
+    {title:'ScrollingList',uri:'pages/Experience/ScrollListTest'},
   ]
   @State ColorObject : string[] = VarColor;
   async onPageShow(){
@@ -57,10 +52,10 @@ struct IndexPage {
     await promise.then((object) => {
       preferences = object;
     });
-    promise = preferences.get('Camera', 0);
+    promise = preferences.get('Experience', 0);
     await promise.then((data) => {
       Test = data;
-      console.info("Succeeded in getting value of 'Camera'. Data: " + data);
+      console.info("Succeeded in getting value of 'Experience'. Data: " + data);
     });
 
     if(Test != 1) {
@@ -71,9 +66,9 @@ struct IndexPage {
       }
       fileio.closeSync(fd);
     }
-    promise = preferences.put('Camera', 1);
+    promise = preferences.put('Experience', 1);
     promise.then(() => {
-      console.info("Succeeded in putting value of 'Camera'.");
+      console.info("Succeeded in putting value of 'Experience'.");
     });
     promise = preferences.flush();
     promise.then(() => {
@@ -143,9 +138,9 @@ struct IndexPage {
           router.back();
         })
         Row(){
-          Text('Camera Oritentation')
+          Text('Experience SubSystem')
             .fontColor(Color.White)
-            .fontSize('20fp')
+            .fontSize('22fp')
         }.justifyContent(FlexAlign.SpaceAround).backgroundColor(Color.Black)
         Row() {
           Button(){
@@ -191,7 +186,7 @@ struct IndexPage {
           .onClick(() => {
             this.ReadTextParseXml();
             AlertDialog.show({
-              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/report1/CameraTest.xml -本地路径'",
+              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/Experience/ExperienceTest.xml -本地路径'",
               confirm:{
                 value:'OK',
                 action:()=>{
@@ -203,7 +198,7 @@ struct IndexPage {
               cancel: () => {
                 prompt.showToast({
                   message: '报告已生成', duration: 1000
-                })
+                });
               }
             })
           })
@@ -238,7 +233,7 @@ struct IndexPage {
     }
   }
   ReadTextParseXml(){
-    let ReportPath = path1 + '/CameraReport.txt';
+    let ReportPath = path1 + '/ExperienceReport.txt';
     let dir = fileio.opendirSync(path1);
     console.info("ssssss"+dir);
     while (dir) {
@@ -275,13 +270,13 @@ struct IndexPage {
       }
       let TestNum = FailNum + PassNum;
       let testNum = (TestNum).toString();
-      let ignoreNum = (4-TestNum).toString();
+      let ignoreNum = (24-TestNum).toString();
       let arrayBuffer = new ArrayBuffer(40960);
       let bufView = new DataView(arrayBuffer);
       let serializer = new xml.XmlSerializer(bufView);
       serializer.setDeclaration();
       serializer.startElement("testsuite");
-      serializer.setAttributes("name", "ActsCameraTest");
+      serializer.setAttributes("name","ActsExperienceTest");
       serializer.setAttributes("time", " ");
       serializer.setAttributes("errors", "0");
       serializer.setAttributes("disabled", "0");
@@ -289,7 +284,7 @@ struct IndexPage {
       serializer.setAttributes("ignored", ignoreNum);
       serializer.setAttributes("tests", testNum);
       serializer.setAttributes("message", " ");
-      serializer.setAttributes("modulename", "ActsCameraTest");
+      serializer.setAttributes("modulename", "ActsExperienceTest");
       for (let i = 0; i < title.length; i++) {
         serializer.startElement("testcase");
         serializer.setAttributes("name", String(title[i]));
