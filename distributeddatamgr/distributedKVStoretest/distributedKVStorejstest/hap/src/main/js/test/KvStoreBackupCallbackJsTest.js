@@ -784,14 +784,14 @@ describe('kvStoreBackupCallbackJsunittest', function () {
     it('SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0200', 0, async function (done) {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0200 before putdata");
-            publicput(kvStore,"key","value") ;
+            await publicput(kvStore,"key","value") ;
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0200 going putdata");
             await publicget(kvStore,"key").then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0200 going getdata" + JSON.stringify(data));
                 expect(true).assertEqual(data == "value");
                 done();
             }).catch((err) => {
-                console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0200 Get fail 1 " + err);
+                console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0200 Get fail 1 " + JSON.stringify(err));
                 expect(err).assertFail();
                 done();
             })
@@ -811,14 +811,14 @@ describe('kvStoreBackupCallbackJsunittest', function () {
     it('SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0300', 0, async function (done) {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0300 before putdata");
-            publicput(kvStore,"putcallback003","value1") ;
+            await publicput(kvStore,"putcallback003","value1") ;
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0300 going putdata");
             await publicget(kvStore,"putcallback").then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0300 going getdata" + JSON.stringify(data));
                 expect(true).assertEqual(false);
                 done();
             }).catch((err) => {
-                console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0300 Get fail 1 " + err);
+                console.log("SUB_DDM_DKV_KVBACKUP_PUT_CALLBACK_0300 Get fail 1 " + JSON.stringify(err));
                 expect(true).assertEqual(true);
                 done();
             })
