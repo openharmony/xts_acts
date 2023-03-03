@@ -183,7 +183,7 @@ describe('audioRenderer', function () {
             console.info(`${TagFrmwkRender}:BufferAudioFramework: bytes read from file: ${rlen}`);
             await audioRen.write(buf);
             if (rlen > (totalSize / 2)) {
-                await AUDIOMANAGER.getAudioScene().then((data) =>{
+                await AUDIOMANAGER.getAudioScene().then((data) => {
                     console.info(`${TagFrmwkRender}:AudioFrameworkAudioScene: getAudioScene : Value : ${data}`);
                 }).catch((err) => {
                     console.info(`${TagFrmwkRender}:AudioFrameworkAudioScene: getAudioScene : ERROR : ${err.message}`);
@@ -1071,10 +1071,15 @@ describe('audioRenderer', function () {
         audioRen.on('periodReach', 55, (position) => {
             console.log(`${TagFrmwk}: periodReach Event is called : ${position}`);
             resultFlag = true;
-            audioRen.on('periodReach', 73, (position) => {
-                console.log(`${TagFrmwk}: periodReach Event is called : ${position}`);
-                resultFlag = false;
-            });
+            try {
+                audioRen.on('periodReach', 73, (position) => {
+                    console.log(`${TagFrmwk}: periodReach Event is called : ${position}`);
+                    resultFlag = false;
+                });
+            } catch (err) {
+                console.log(`${TagFrmwk}: periodReach Event is : ERROR : ${err.message}`);
+                resultFlag = true;
+            }
         });
 
         console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
@@ -1197,7 +1202,7 @@ describe('audioRenderer', function () {
             console.info(`${TagFrmwkRender}:BufferAudioFramework: bytes read from file: ${rlen}`);
             await audioRen.write(buf);
             if (rlen > (totalSize / 8)) {
-                await AUDIOMANAGER.getAudioScene().then((data) =>{
+                await AUDIOMANAGER.getAudioScene().then((data) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : Value : ${data}`);
                 }).catch((err) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : ERROR : ${err.message}`);
@@ -1490,7 +1495,7 @@ describe('audioRenderer', function () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-     it('SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0100', 2, async function (done) {
         let interrput_flag = false;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1520,7 +1525,7 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             });
 
-            audioRen.on('audioInterrupt',async (interruptEvent)=>{
+            audioRen.on('audioInterrupt', async (interruptEvent) => {
                 console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
                 console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
                 console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
@@ -1618,7 +1623,7 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             });
 
-            audioRen.on('audioInterrupt',async (interruptEvent)=>{
+            audioRen.on('audioInterrupt', async (interruptEvent) => {
                 console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
                 console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
                 console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
@@ -1716,7 +1721,7 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             });
 
-            audioRen.on('audioInterrupt',async (interruptEvent)=>{
+            audioRen.on('audioInterrupt', async (interruptEvent) => {
                 console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
                 console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
                 console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
@@ -1814,7 +1819,7 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             });
 
-            audioRen.on('audioInterrupt',async (interruptEvent)=>{
+            audioRen.on('audioInterrupt', async (interruptEvent) => {
                 console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
                 console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
                 console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
@@ -1912,7 +1917,7 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             });
 
-            audioRen.on('audioInterrupt',async (interruptEvent)=>{
+            audioRen.on('audioInterrupt', async (interruptEvent) => {
                 console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
                 console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
                 console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
@@ -2010,7 +2015,7 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             });
 
-            audioRen.on('audioInterrupt',async (interruptEvent)=>{
+            audioRen.on('audioInterrupt', async (interruptEvent) => {
                 console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
                 console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
                 console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
@@ -2108,7 +2113,7 @@ describe('audioRenderer', function () {
                 console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             });
 
-            audioRen.on('audioInterrupt',async (interruptEvent)=>{
+            audioRen.on('audioInterrupt', async (interruptEvent) => {
                 console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
                 console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
                 console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
@@ -2534,7 +2539,7 @@ describe('audioRenderer', function () {
             done();
         }
     })
-    
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_0200
      * @tc.name      : AudioRenderer - getAudioStreamId
@@ -2910,8 +2915,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = 0;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
@@ -2970,8 +2975,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = 0.5;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
@@ -3030,8 +3035,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = 1.1;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     if (err.code == 6800104) {
                         console.info(`${TagFrmwkRender}: setVolume to 1.1 : OK`);
                         expect(true).assertTrue();
@@ -3095,8 +3100,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = "string";
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     if (err.code == 6800101) {
                         console.info(`${TagFrmwkRender}: setVolume to string : OK`);
                         expect(true).assertTrue();
@@ -7526,7 +7531,7 @@ describe('audioRenderer', function () {
             console.info(`${TagFrmwkRender}:BufferAudioFramework: bytes read from file: ${rlen}`);
             await audioRen.write(buf);
             if (rlen > (totalSize / 8)) {
-                await AUDIOMANAGER.getAudioScene().then((data) =>{
+                await AUDIOMANAGER.getAudioScene().then((data) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : Value : ${data}`);
                 }).catch((err) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : ERROR : ${err.message}`);
@@ -7697,7 +7702,7 @@ describe('audioRenderer', function () {
             console.info(`${TagFrmwkRender}:BufferAudioFramework: bytes read from file: ${rlen}`);
             await audioRen.write(buf);
             if (rlen > (totalSize / 8)) {
-                await AUDIOMANAGER.getAudioScene().then((data) =>{
+                await AUDIOMANAGER.getAudioScene().then((data) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : Value : ${data}`);
                 }).catch((err) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : ERROR : ${err.message}`);
@@ -7843,7 +7848,7 @@ describe('audioRenderer', function () {
             console.info(`${TagFrmwkRender}:BufferAudioFramework: bytes read from file: ${rlen}`);
             await audioRen.write(buf);
             if (rlen > (totalSize / 8)) {
-                await AUDIOMANAGER.getAudioScene().then((data) =>{
+                await AUDIOMANAGER.getAudioScene().then((data) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : Value : ${data}`);
                 }).catch((err) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : ERROR : ${err.message}`);
@@ -8020,7 +8025,7 @@ describe('audioRenderer', function () {
             console.info(`${TagFrmwkRender}:BufferAudioFramework: bytes read from file: ${rlen}`);
             await audioRen.write(buf);
             if (rlen > (totalSize / 2)) {
-                await AUDIOMANAGER.getAudioScene().then((data) =>{
+                await AUDIOMANAGER.getAudioScene().then((data) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : Value : ${data}`);
                 }).catch((err) => {
                     console.info(`${TagFrmwkAudioScene}: getAudioScene : ERROR : ${err.message}`);
@@ -8859,7 +8864,7 @@ describe('audioRenderer', function () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-        it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8800', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -8981,15 +8986,15 @@ describe('audioRenderer', function () {
 
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_9000
-     * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - SetACCESSIBILITY
-     * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - SetACCESSIBILITY
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_9000', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_9000
+    * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - SetACCESSIBILITY
+    * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - SetACCESSIBILITY
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_9000', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -9014,7 +9019,7 @@ describe('audioRenderer', function () {
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
             audioRen = data;
-            console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS ${JSON.stringify(data)}` );
+            console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS ${JSON.stringify(data)}`);
         }).catch((err) => {
             console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ${err.message}`);
             LE24 = audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE;
@@ -9068,15 +9073,15 @@ describe('audioRenderer', function () {
 
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_9100
-     * @tc.name      : AudioRenderer-isActive - MUSIC - ALARM
-     * @tc.desc      : AudioRenderer-isActive - MUSIC - ALARM
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_9100', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_9100
+    * @tc.name      : AudioRenderer-isActive - MUSIC - ALARM
+    * @tc.desc      : AudioRenderer-isActive - MUSIC - ALARM
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_9100', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -9259,7 +9264,7 @@ describe('audioRenderer', function () {
 
             let inputVolume = -1;
 
-            await audioRen.setVolume(4 , inputVolume).then(() => {
+            await audioRen.setVolume(4, inputVolume).then(() => {
                 expect(false).assertTrue();
                 console.info(`${TagFrmwkRender}: setVolume to -1 TEST: ERROR`);
             }).catch((err) => {
@@ -9285,15 +9290,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-      /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1100
-     * @tc.name      : AudioRenderer - setVolume 1 - promise
-     * @tc.desc      : AudioRenderer - setVolume 1 - promise
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-      it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1100', 2, async function (done) {
+    /**
+   * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1100
+   * @tc.name      : AudioRenderer - setVolume 1 - promise
+   * @tc.desc      : AudioRenderer - setVolume 1 - promise
+   * @tc.size      : MEDIUM
+   * @tc.type      : Function
+   * @tc.level     : Level 2
+   */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1100', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -9406,14 +9411,14 @@ describe('audioRenderer', function () {
         done();
     })
 
-      /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1300
-     * @tc.name      : AudioRenderer - setVolume "string" - promise
-     * @tc.desc      : AudioRenderer - setVolume "string" - promise
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+    /**
+   * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1300
+   * @tc.name      : AudioRenderer - setVolume "string" - promise
+   * @tc.desc      : AudioRenderer - setVolume "string" - promise
+   * @tc.size      : MEDIUM
+   * @tc.type      : Function
+   * @tc.level     : Level 2
+   */
     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1300', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -9470,15 +9475,15 @@ describe('audioRenderer', function () {
     })
 
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1400
-     * @tc.name      : AudioRenderer - setVolume 0 - callback
-     * @tc.desc      : AudioRenderer - setVolume 0 - callback
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1400', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1400
+    * @tc.name      : AudioRenderer - setVolume 0 - callback
+    * @tc.desc      : AudioRenderer - setVolume 0 - callback
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1400', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -9507,8 +9512,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = 0;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
@@ -9530,15 +9535,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1500
-     * @tc.name      : AudioRenderer - setVolume -1 - callback
-     * @tc.desc      : AudioRenderer - setVolume -1 - callback
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1500', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1500
+    * @tc.name      : AudioRenderer - setVolume -1 - callback
+    * @tc.desc      : AudioRenderer - setVolume -1 - callback
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1500', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -9567,8 +9572,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = -1;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     if (err.code == 6800104) {
                         console.info(`${TagFrmwkRender}: setVolume to -1 : OK`);
                         expect(true).assertTrue();
@@ -9595,15 +9600,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1600
-     * @tc.name      : AudioRenderer - setVolume 1 - callback
-     * @tc.desc      : AudioRenderer - setVolume 1 - callback
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1600', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1600
+    * @tc.name      : AudioRenderer - setVolume 1 - callback
+    * @tc.desc      : AudioRenderer - setVolume 1 - callback
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1600', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -9632,8 +9637,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = 1;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
@@ -9655,15 +9660,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1700
-     * @tc.name      : AudioRenderer - setVolume 1.1 - callback
-     * @tc.desc      : AudioRenderer - setVolume 1.1 - callback
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1700', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1700
+    * @tc.name      : AudioRenderer - setVolume 1.1 - callback
+    * @tc.desc      : AudioRenderer - setVolume 1.1 - callback
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1700', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -9692,8 +9697,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = 1.1;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     if (err.code == 6800104) {
                         console.info(`${TagFrmwkRender}: setVolume to 16 : OK`);
                         expect(true).assertTrue();
@@ -9720,15 +9725,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1800
-     * @tc.name      : AudioRenderer - setVolume "string" - callback
-     * @tc.desc      : AudioRenderer - setVolume "string" - callback
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1300', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1800
+    * @tc.name      : AudioRenderer - setVolume "string" - callback
+    * @tc.desc      : AudioRenderer - setVolume "string" - callback
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1300', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -9757,8 +9762,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = "string";
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     if (err.code == 6800101) {
                         console.info(`${TagFrmwkRender}: setVolume to string : OK`);
                         expect(true).assertTrue();
@@ -9785,15 +9790,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1900
-     * @tc.name      : AudioRenderer - setVolume 0 - promise
-     * @tc.desc      : AudioRenderer - setVolume 0 - promise
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1900', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1900
+    * @tc.name      : AudioRenderer - setVolume 0 - promise
+    * @tc.desc      : AudioRenderer - setVolume 0 - promise
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1900', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -9906,15 +9911,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2100
-     * @tc.name      : AudioRenderer - setVolume 1 - promise
-     * @tc.desc      : AudioRenderer - setVolume 1 - promise
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2100', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2100
+    * @tc.name      : AudioRenderer - setVolume 1 - promise
+    * @tc.desc      : AudioRenderer - setVolume 1 - promise
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2100', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -10027,14 +10032,14 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2300
-     * @tc.name      : AudioRenderer - setVolume "string" - promise
-     * @tc.desc      : AudioRenderer - setVolume "string" - promise
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2300
+    * @tc.name      : AudioRenderer - setVolume "string" - promise
+    * @tc.desc      : AudioRenderer - setVolume "string" - promise
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0400', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -10128,8 +10133,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = 0;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
@@ -10151,15 +10156,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2500
-     * @tc.name      : AudioRenderer - setVolume -1 - callback
-     * @tc.desc      : AudioRenderer - setVolume -1 - callback
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2500', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2500
+    * @tc.name      : AudioRenderer - setVolume -1 - callback
+    * @tc.desc      : AudioRenderer - setVolume -1 - callback
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2500', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -10188,8 +10193,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = -1;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     if (err.code == 6800104) {
                         console.info(`${TagFrmwkRender}: setVolume to -1 : OK`);
                         expect(true).assertTrue();
@@ -10253,8 +10258,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = 1;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     console.info(`${TagFrmwkRender}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
@@ -10276,15 +10281,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2700
-     * @tc.name      : AudioRenderer - setVolume 1.1 - callback
-     * @tc.desc      : AudioRenderer - setVolume 1.1 - callback
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2700', 2, async function (done) {
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2700
+    * @tc.name      : AudioRenderer - setVolume 1.1 - callback
+    * @tc.desc      : AudioRenderer - setVolume 1.1 - callback
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_2700', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -10313,8 +10318,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = 1.1;
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     if (err.code == 6800104) {
                         console.info(`${TagFrmwkRender}: setVolume to 16 : OK`);
                         expect(true).assertTrue();
@@ -10379,8 +10384,8 @@ describe('audioRenderer', function () {
 
             let inputVolume = "string";
 
-            audioRen.setVolume(inputVolume, (err)=>{
-                if(err) {
+            audioRen.setVolume(inputVolume, (err) => {
+                if (err) {
                     if (err.code == 6800101) {
                         console.info(`${TagFrmwkRender}: setVolume to string : OK`);
                         expect(true).assertTrue();
@@ -10407,15 +10412,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900
-     *@tc.name      : mute - ALARM - Promise - SetVolume
-     *@tc.desc      : mute - ALARM - Promise - Enable mute -SetVolume
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900', 2, async function (done) {
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900
+    *@tc.name      : mute - ALARM - Promise - SetVolume
+    *@tc.desc      : mute - ALARM - Promise - Enable mute -SetVolume
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900', 2, async function (done) {
         try {
             await audioManager.setVolume(audio.AudioVolumeType.ALARM, highVol);
             await audioManager.mute(audio.AudioVolumeType.ALARM, true);
@@ -10441,15 +10446,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3000
-     *@tc.name      : mute - ALARM - callback - SetVolume
-     *@tc.desc      : mute - ALARM - callback - Enable mute - SetVolume
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3000', 2, async function (done) {
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3000
+    *@tc.name      : mute - ALARM - callback - SetVolume
+    *@tc.desc      : mute - ALARM - callback - Enable mute - SetVolume
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3000', 2, async function (done) {
         try {
             await audioManager.setVolume(audio.AudioVolumeType.ALARM, highVol);
         } catch (err) {
@@ -10505,7 +10510,7 @@ describe('audioRenderer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3100', 2, async function (done) {
         try {
             await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
             await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
@@ -10531,15 +10536,15 @@ describe('audioRenderer', function () {
         done();
     })
 
-     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3200
-     *@tc.name      : mute - ACCESSIBILITY - callback - SetVolume
-     *@tc.desc      : mute - ACCESSIBILITY - callback - Enable mute - SetVolume
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3200', 2, async function (done) {
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3200
+    *@tc.name      : mute - ACCESSIBILITY - callback - SetVolume
+    *@tc.desc      : mute - ACCESSIBILITY - callback - Enable mute - SetVolume
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3200', 2, async function (done) {
         try {
             await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
         } catch (err) {
