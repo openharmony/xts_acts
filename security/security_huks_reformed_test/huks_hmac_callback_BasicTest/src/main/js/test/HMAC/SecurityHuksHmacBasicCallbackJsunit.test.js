@@ -269,13 +269,13 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
 
 export function SecurityHuksHmacCallbackJsunit() {
   describe("SecurityHuksHmacCallbackJsunit", function () {
-    it("testReformedHmacSHA1001", 0, async function (done) {
-      let srcKeyAlies = "testHmacDigestSHA1KeyAlias001";
+    it("testReformedHmacSHA256001", 0, async function (done) {
+      let srcKeyAlies = "testHmacDigestSHA256KeyAlias001";
       let HuksOptions = {
         properties: new Array(
           HuksHmac.HuksKeyAlg,
           HuksHmac.HuksKeyPurpose,
-          HuksHmac.HuksTagDigestSHA1
+          HuksHmac.HuksTagDigestSHA256
         ),
         inData: srcData63Kb,
       };
@@ -284,39 +284,39 @@ export function SecurityHuksHmacCallbackJsunit() {
       done();
     });
 
-    it("testReformedHmacSHA1002", 0, async function (done) {
-      let srcKeyAlies = "testHmacDigestSHA1KeyAlias002";
+    it("testReformedHmacSHA256002", 0, async function (done) {
+      let srcKeyAlies = "testHmacDigestSHA256KeyAlias002";
       let HuksOptions = {
         properties: new Array(
           HuksHmac.HuksKeyAlg,
           HuksHmac.HuksKeyPurpose,
-          HuksHmac.HuksTagDigestSHA1
+          HuksHmac.HuksTagDigestSHA256
         ),
         inData: srcData63Kb,
       };
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "abort");
       done();
     });
-    it("testReformedHmacSHA1003", 0, async function (done) {
-      let srcKeyAlies = "testHmacDigestSHA1KeyAlias003";
+    it("testReformedHmacSHA256003", 0, async function (done) {
+      let srcKeyAlies = "testHmacDigestSHA256KeyAlias003";
       let HuksOptions = {
         properties: new Array(
           HuksHmac.HuksKeyAlg,
           HuksHmac.HuksKeyPurpose,
-          HuksHmac.HuksTagDigestSHA1
+          HuksHmac.HuksTagDigestSHA256
         ),
         inData: srcData65Kb,
       };
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "finish");
       done();
     });
-    it("testReformedHmacSHA1004", 0, async function (done) {
-      let srcKeyAlies = "testHmacDigestSHA1KeyAlias004";
+    it("testReformedHmacSHA256004", 0, async function (done) {
+      let srcKeyAlies = "testHmacDigestSHA256KeyAlias004";
       let HuksOptions = {
         properties: new Array(
           HuksHmac.HuksKeyAlg,
           HuksHmac.HuksKeyPurpose,
-          HuksHmac.HuksTagDigestSHA1
+          HuksHmac.HuksTagDigestSHA256
         ),
         inData: srcData65Kb,
       };

@@ -72,7 +72,7 @@ static struct OH_Huks_Param g_genParams001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_AGREE
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_224
+        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
         .uint32Param = OH_HUKS_DIGEST_NONE
@@ -93,7 +93,7 @@ static struct OH_Huks_Param g_agreeParams01Init001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_AGREE
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_224
+        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
     }
 };
 static struct OH_Huks_Param g_agreeParams01Finish001[] = {
@@ -135,7 +135,7 @@ static struct OH_Huks_Param g_agreeParams02Init001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_AGREE
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_224
+        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
     }
 };
 static struct OH_Huks_Param g_agreeParams02Finish001[] = {
@@ -199,8 +199,8 @@ HWTEST_F(HuksAgreeECDHTest, Security_HUKS_NAPI_Agree_ECDH_0100, TestSize.Level0)
     ret1 = OH_Huks_GenerateKeyItem(&g_keyAlias02001, genParamSet, nullptr);
     EXPECT_EQ(ret1.errorCode, (int32_t)OH_HUKS_SUCCESS) << "GenerateKey02 failed.";
 
-    struct OH_Huks_Blob publicKey01 = { .size = OH_HUKS_ECC_KEY_SIZE_224, .data = nullptr };
-    struct OH_Huks_Blob publicKey02 = { .size = OH_HUKS_ECC_KEY_SIZE_224, .data = nullptr };
+    struct OH_Huks_Blob publicKey01 = { .size = OH_HUKS_ECC_KEY_SIZE_256, .data = nullptr };
+    struct OH_Huks_Blob publicKey02 = { .size = OH_HUKS_ECC_KEY_SIZE_256, .data = nullptr };
     ret = MallocAndCheckBlobData(&publicKey01, publicKey01.size);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Malloc publicKey01 failed.";
     ret = MallocAndCheckBlobData(&publicKey02, publicKey02.size);

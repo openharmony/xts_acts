@@ -12,27 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it } from '@ohos/hypium';
+import { describe, it, beforeAll } from '@ohos/hypium';
 import Data from '../../../../../../utils/data.json';
 import { HuksSignVerifyDSA } from '../../../../../../utils/param/signverify/publicSignverifyParam';
-import { stringToUint8Array } from '../../../../../../utils/param/publicFunc';
+import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import { publicSignVerifyFunc } from '../../../../../../utils/param/signverify/publicSignverifyPromise.js';
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
+let useSoftware = true;
 export default function SecurityHuksDSABasicAbort63KBPromiseJsunit() {
-describe('SecurityHuksDSABasicAbort63KBPromiseJsunit', function () {
-  it('testReformedSignVerifyDSA102', 0, async function (done) {
-    const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias102';
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyDSA.HuksKeyAlgDSA,
-        HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN,
-        HuksSignVerifyDSA.HuksTagDSADigestSHA1
-      ),
-      inData: srcData63Kb,
-    };
-    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
-    done();
+  describe('SecurityHuksDSABasicAbort63KBPromiseJsunit', function () {
+    beforeAll(async function (done) {
+      useSoftware = checkSoftware();
+      done();
+    })
+    it('testReformedSignVerifyDSA102', 0, async function (done) {
+      const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias102';
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyDSA.HuksKeyAlgDSA,
+          HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN,
+          HuksSignVerifyDSA.HuksTagDSADigestSHA1
+        ),
+        inData: srcData63Kb,
+      };
+      await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
+      done();
+    });
   });
-});
 }

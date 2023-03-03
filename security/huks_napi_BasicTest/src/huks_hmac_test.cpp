@@ -56,7 +56,7 @@ static struct OH_Huks_Param g_genParams001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_MAC
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
+        .uint32Param = OH_HUKS_DIGEST_SHA384
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
         .uint32Param = Unittest::Hmac::COMMON_SIZE
@@ -71,7 +71,7 @@ static struct OH_Huks_Param g_hmacParams001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_MAC
     }, {
         .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA1
+        .uint32Param = OH_HUKS_DIGEST_SHA384
     }
 };
 
@@ -141,7 +141,7 @@ static OH_Huks_Result HksHmacTestCase(const struct OH_Huks_Blob *keyAlias, struc
 
 /**
  * @tc.name: HksHmacTest.Security_HUKS_NAPI_HMAC_hmac_0100
- * @tc.desc: alg-HMAC pur-MAC dig-SHA1.
+ * @tc.desc: alg-HMAC pur-MAC dig-SHA384.
  * @tc.type: FUNC
  */
 HWTEST_F(HksHmacTest, Security_HUKS_NAPI_HMAC_hmac_0100, TestSize.Level0)

@@ -27,35 +27,37 @@ let HuksOptions63kb = {
     HuksDerivePBKDF2.HuksKeyAlgAES,
     HuksDerivePBKDF2.HuksKeyPurposePBKDF2,
     HuksDerivePBKDF2.HuksTagPBKDF2DigestSHA256,
-    HuksDerivePBKDF2.HuksKeyPBKDF2Size128
+    HuksDerivePBKDF2.HuksKeyPBKDF2Size256,
+    HuksDerivePBKDF2.HuksKeyPBKDF2Iteration,
+    HuksDerivePBKDF2.HuksKeyPBKDF2Salt
   ),
   inData: srcData63Kb,
 };
 
 export default function SecurityHuksPBKDF2BasicFinish63KBCallbackJsunit() {
-describe('SecurityHuksPBKDF2BasicFinish63KBCallbackJsunit', function () {
-  it('testDerivePBKDF2001', 0, async function (done) {
-    const srcKeyAliesFirst = 'testDerivePBKDF2Size128SHA256Finish63KBDeriveKeyAlias_01_001';
-    let huksOptionsFinish = {
-      properties: new Array(
-        HuksDerivePBKDF2.HuksKeySTORAGE,
-        HuksDerivePBKDF2.HuksKeyISKEYALIAS,
-        HuksDerivePBKDF2.HuksKeyALGORITHMAES,
-        HuksDerivePBKDF2.HuksKeySIZE256,
-        HuksDerivePBKDF2.HuksKeyPurposeENCRYPTDECRYPT,
-        HuksDerivePBKDF2.HuksKeyDIGESTNONE,
-        {
-          tag: HksTag.HKS_TAG_KEY_ALIAS,
-          value: stringToUint8Array(srcKeyAliesFirst),
-        },
-        HuksDerivePBKDF2.HuksKeyPADDINGNONE,
-        HuksDerivePBKDF2.HuksKeyBLOCKMODEECB
-      ),
-      inData: srcData63Kb,
-    };
-    let deriveArray = new Array(HuksDerivePBKDF2.HuksKeyAlgPBKDF2,HuksDerivePBKDF2.HuksKeyDERIVEKEYSIZE);
-    await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
-    done();
+  describe('SecurityHuksPBKDF2BasicFinish63KBCallbackJsunit', function () {
+    it('testDerivePBKDF2001', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA256Finish63KBDeriveKeyAlias_01_001';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDerivePBKDF2.HuksKeySTORAGE,
+          HuksDerivePBKDF2.HuksKeyISKEYALIAS,
+          HuksDerivePBKDF2.HuksKeyALGORITHMAES,
+          HuksDerivePBKDF2.HuksKeySIZE256,
+          HuksDerivePBKDF2.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksDerivePBKDF2.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDerivePBKDF2.HuksKeyPADDINGNONE,
+          HuksDerivePBKDF2.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDerivePBKDF2.HuksKeyAlgPBKDF2, HuksDerivePBKDF2.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
   });
-});
 }
