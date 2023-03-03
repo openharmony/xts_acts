@@ -120,7 +120,7 @@ export default function imageAnimatorJsunit(){
       await Utils.sleep(1500);
       let callback = (indexEvent) => {
         console.info("imageAnimatorTest_0400 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.fillMode).assertEqual(Forwards);
+        expect(indexEvent.data.fillMode).assertEqual(0);
       }
       let indexEvent = {
         eventId: 118,
@@ -164,7 +164,7 @@ export default function imageAnimatorJsunit(){
       await Utils.sleep(1500);
       let callback = (indexEvent) => {
         console.info("imageAnimatorTest_0600 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.string).assertEqual('repeat');
+        expect(indexEvent.data.string).assertEqual('Repeat');
       }
       let indexEvent = {
         eventId: 114,
