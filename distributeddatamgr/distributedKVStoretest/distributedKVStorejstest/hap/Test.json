@@ -3,7 +3,6 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "1200000",
-        "testcase-timeout": 60000,
         "bundle-name": "ohos.acts.distributedKvStore",
         "package-name": "ohos.acts.distributedKvStore",
         "shell-timeout": "60000"
