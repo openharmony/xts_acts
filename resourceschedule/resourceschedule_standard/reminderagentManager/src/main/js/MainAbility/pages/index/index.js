@@ -12,10 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import bundlestate_test from './BundleState.test.js'
-import DeviceUsageStatisticsJsTest from './DeviceUsageStatisticsJsunit.test.js'
 
-export default function testsuite() {
-    bundlestate_test()
-    DeviceUsageStatisticsJsTest()
+
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+
+export default {
+    data: {
+        title: ""
+    },
+    onInit() {
+        this.title = this.$t('strings.world');
+    },
+    onShow() {
+        console.info('onShow finish')
+    },
+    onReady() {
+    },
 }
