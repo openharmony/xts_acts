@@ -32,7 +32,7 @@ describe('SecurityHuksECCBasicAbort65KBCallbackJsunit', function () {
         HuksSignVerifyECC.HuksKeyAlgECC,
         HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
         HuksSignVerifyECC.HuksTagECCDigestNONE,
-        HuksSignVerifyECC.HuksKeyECCSize224
+        HuksSignVerifyECC.HuksKeyECCSize256
       ),
       inData: srcData65Sha256,
     };

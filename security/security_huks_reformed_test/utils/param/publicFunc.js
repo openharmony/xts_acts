@@ -12,27 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import huks from '@ohos.security.huks';
+import { HuksSignVerifyDSA } from "./signverify/publicSignverifyParam";
+import Data from "../data.json";
+let srcData65 = Data.Data65b;
+
 function stringToArray(str) {
-  var arr = [];
-  for (var i = 0, j = str.length; i < j; ++i) {
+  let arr = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return arr;
 }
 
 function uint8ArrayToString(fileData) {
-  var dataString = '';
-  for (var i = 0; i < fileData.length; i++) {
+  let dataString = '';
+  for (let i = 0; i < fileData.length; i++) {
     dataString += String.fromCharCode(fileData[i]);
   }
   return dataString;
 }
 function stringToUint8Array(str) {
-  var arr = [];
-  for (var i = 0, j = str.length; i < j; ++i) {
+  let arr = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
-  var tmpUint8Array = new Uint8Array(arr);
+  let tmpUint8Array = new Uint8Array(arr);
   return tmpUint8Array;
 }
 function arrayEqual(a, b) {
@@ -53,4 +58,29 @@ function arrayEqual(a, b) {
   return true;
 }
 
-export { stringToArray, uint8ArrayToString, stringToUint8Array, arrayEqual };
+async function checkSoftware() {
+  let dsaAlies = "useDsaToCheckSoftware";
+  let dsaOption = {
+    properties: new Array(
+      HuksSignVerifyDSA.HuksKeyAlgDSA,
+      HuksSignVerifyDSA.HuksKeyRSAPurposeSINGVERIFY,
+      HuksSignVerifyDSA.HuksKeySIZE1024,
+      HuksSignVerifyDSA.HuksTagDSADigestSHA256
+    )
+  };
+  try {
+    let res = await huks.generateKeyItem(dsaAlies, dsaOption);
+    if (res == null) {
+      await huks.deleteKeyItem(dsaAlies, dsaOption);
+      console.error("This device uses software");
+      return true;
+    } else {
+      console.error("This device does not use software");
+      return false;
+    }
+  } catch (e) {
+    return false;
+  }
+}
+
+export { stringToArray, uint8ArrayToString, stringToUint8Array, arrayEqual, checkSoftware };

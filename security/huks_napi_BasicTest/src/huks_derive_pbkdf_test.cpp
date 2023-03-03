@@ -49,6 +49,9 @@ void HuksDerivePBKDFTest::TearDown()
 }
 
 uint8_t g_saltdata1[16] = {0};
+uint8_t g_saltgen[16] = {
+    0x14, 0x10, 0x11, 0x3a, 0x27, 0x9e, 0xc8, 0x5f, 0xe0, 0xf3, 0x36, 0x17, 0x57, 0x42, 0x8e, 0xff
+};
 
 static struct OH_Huks_Param g_genParams001[] = {
     {
@@ -62,7 +65,16 @@ static struct OH_Huks_Param g_genParams001[] = {
         .uint32Param = OH_HUKS_DIGEST_SHA256
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = 256
+        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
+    }, {
+        .tag = OH_HUKS_TAG_ITERATION,
+        .uint32Param = 1000
+    }, {
+        .tag = OH_HUKS_TAG_SALT,
+        .blob = {
+            sizeof(g_saltgen),
+            (uint8_t *)g_saltgen
+        }
     }
 };
 static struct OH_Huks_Param g_pbkdf2Params001[] = {

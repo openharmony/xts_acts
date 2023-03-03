@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from "@ohos/hypium";
+import { describe, it, expect, beforeAll } from "@ohos/hypium";
 import huks from "@ohos.security.huks";
 import Data from "../../../../../../utils/data.json";
-import { stringToUint8Array } from "../../../../../../utils/param/publicFunc";
+import { stringToUint8Array, checkSoftware } from "../../../../../../utils/param/publicFunc";
 import {
   HuksSignVerifyDSA,
   HuksSignVerifyRSA,
@@ -33,6 +33,7 @@ import { HuksHmac } from "../../../../../../utils/param/hmac/publicHmacParam";
 
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
+let useSoftware = true;
 
 function generateKey(srcKeyAlies, HuksOptions) {
   return new Promise((resolve, reject) => {
@@ -126,6 +127,11 @@ async function exportKeyFunc(srcKeyAlias, HuksOptions) {
 
 export function SecurityHuksAccessControlJsunit() {
   describe("SecurityHuksAccessControlJsunit", function () {
+    beforeAll(async function (done) {
+      useSoftware = await checkSoftware();
+      done();
+    })
+
     it("HUKS_Basic_Capability_AccessControl_0100", 0, async function (done) {
       let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0100";
       let HuksOptions = {
@@ -137,22 +143,24 @@ export function SecurityHuksAccessControlJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await generateKeyFunc(srcKeyAlias, HuksOptions);
-      await exportKeyFunc(srcKeyAlias, HuksOptions);
+      if (useSoftware) {
+        await generateKeyFunc(srcKeyAlias, HuksOptions);
+        await exportKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(1, 1, HuksAgreeDH.HuksKeyPurposeDH);
-      HuksOptions.properties.splice(3, 1);
-      await init(srcKeyAlias, HuksOptions)
-        .then((data) => {
-          console.log(`test init data: ${JSON.stringify(data)}`);
-          expect(data.errorCode == -112).assertTrue();
-        })
-        .catch((err) => {
-          console.log(`test init err: " + ${JSON.stringify(err)}`);
-          expect(err.code == -112).assertTrue();
-        });
+        HuksOptions.properties.splice(1, 1, HuksAgreeDH.HuksKeyPurposeDH);
+        HuksOptions.properties.splice(3, 1);
+        await init(srcKeyAlias, HuksOptions)
+          .then((data) => {
+            console.log(`test init data: ${JSON.stringify(data)}`);
+            expect(data.errorCode == -112).assertTrue();
+          })
+          .catch((err) => {
+            console.log(`test init err: " + ${JSON.stringify(err)}`);
+            expect(err.code == -112).assertTrue();
+          });
 
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
+        await deleteKeyFunc(srcKeyAlias, HuksOptions);
+      }
       done();
     });
 
@@ -162,7 +170,7 @@ export function SecurityHuksAccessControlJsunit() {
         properties: new Array(
           HuksSignVerifyECC.HuksKeyAlgECC,
           HuksSignVerifyECC.HuksKeyECCPurposeSINGVERIFY,
-          HuksSignVerifyECC.HuksKeyECCSize224,
+          HuksSignVerifyECC.HuksKeyECCSize384,
           HuksSignVerifyECC.HuksTagECCDigestNONE
         ),
         inData: srcData63Kb,
@@ -196,32 +204,34 @@ export function SecurityHuksAccessControlJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await generateKeyFunc(srcKeyAlias, HuksOptions);
-      await exportKeyFunc(srcKeyAlias, HuksOptions);
+      if (useSoftware) {
+        await generateKeyFunc(srcKeyAlias, HuksOptions);
+        await exportKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(1, 1, HuksCipherAES.HuksKeyPurposeENCRYPT);
-      await init(srcKeyAlias, HuksOptions)
-        .then((data) => {
-          console.log(`test init data: ${JSON.stringify(data)}`);
-          expect(null).assertFail();
-        })
-        .catch((err) => {
-          console.log(`test init err: " + ${JSON.stringify(err)}`);
-          expect(err.code == -112).assertTrue();
-        });
+        HuksOptions.properties.splice(1, 1, HuksCipherAES.HuksKeyPurposeENCRYPT);
+        await init(srcKeyAlias, HuksOptions)
+          .then((data) => {
+            console.log(`test init data: ${JSON.stringify(data)}`);
+            expect(null).assertFail();
+          })
+          .catch((err) => {
+            console.log(`test init err: " + ${JSON.stringify(err)}`);
+            expect(err.code == -112).assertTrue();
+          });
 
-      HuksOptions.properties.splice(1, 1, HuksCipherAES.HuksKeyPurposeDECRYPT);
-      await init(srcKeyAlias, HuksOptions)
-        .then((data) => {
-          console.log(`test init data: ${JSON.stringify(data)}`);
-          expect(null).assertFail();
-        })
-        .catch((err) => {
-          console.log(`test init err: " + ${JSON.stringify(err)}`);
-          expect(err.code == -112).assertTrue();
-        });
+        HuksOptions.properties.splice(1, 1, HuksCipherAES.HuksKeyPurposeDECRYPT);
+        await init(srcKeyAlias, HuksOptions)
+          .then((data) => {
+            console.log(`test init data: ${JSON.stringify(data)}`);
+            expect(null).assertFail();
+          })
+          .catch((err) => {
+            console.log(`test init err: " + ${JSON.stringify(err)}`);
+            expect(err.code == -112).assertTrue();
+          });
 
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
+        await deleteKeyFunc(srcKeyAlias, HuksOptions);
+      }
       done();
     });
 
@@ -233,7 +243,7 @@ export function SecurityHuksAccessControlJsunit() {
           HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
           HuksSignVerifyRSA.HuksTagPKCS1DigestMD5,
           HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-          HuksSignVerifyRSA.HuksKeyRSASize512
+          HuksSignVerifyRSA.HuksKeyRSASize3072
         ),
         inData: srcData63Kb,
       };
@@ -315,21 +325,23 @@ export function SecurityHuksAccessControlJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await generateKeyFunc(srcKeyAlias, HuksOptions);
-      await exportKeyFunc(srcKeyAlias, HuksOptions);
+      if (useSoftware) {
+        await generateKeyFunc(srcKeyAlias, HuksOptions);
+        await exportKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(1, 1, HuksHmac.HuksKeyPurpose);
-      await init(srcKeyAlias, HuksOptions)
-        .then((data) => {
-          console.log(`test init data: ${JSON.stringify(data)}`);
-          expect(null).assertFail();
-        })
-        .catch((err) => {
-          console.log(`test init err: " + ${JSON.stringify(err)}`);
-          expect(err.code == -112).assertTrue();
-        });
+        HuksOptions.properties.splice(1, 1, HuksHmac.HuksKeyPurpose);
+        await init(srcKeyAlias, HuksOptions)
+          .then((data) => {
+            console.log(`test init data: ${JSON.stringify(data)}`);
+            expect(null).assertFail();
+          })
+          .catch((err) => {
+            console.log(`test init err: " + ${JSON.stringify(err)}`);
+            expect(err.code == -112).assertTrue();
+          });
 
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
+        await deleteKeyFunc(srcKeyAlias, HuksOptions);
+      }
       done();
     });
 
@@ -391,7 +403,7 @@ export function SecurityHuksAccessControlJsunit() {
         properties: new Array(
           HuksAgreeECDH.HuksKeyAlgECC,
           HuksAgreeECDH.HuksKeyPurposeECDH,
-          HuksAgreeECDH.HuksKeyECCSize224,
+          HuksAgreeECDH.HuksKeyECCSize384,
           HuksAgreeECDH.HuksKeyECCDIGEST,
           HuksAgreeECDH.HuksKeyECCPADDING,
           HuksAgreeECDH.HuksKeyECCBLOCKMODE
@@ -448,23 +460,25 @@ export function SecurityHuksAccessControlJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await generateKeyFunc(srcKeyAlias, HuksOptions);
-      await exportKeyFunc(srcKeyAlias, HuksOptions);
+      if (useSoftware) {
+        await generateKeyFunc(srcKeyAlias, HuksOptions);
+        await exportKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(1, 1, HuksAgreeDH.HuksKeyPurposeDH);
-      HuksOptions.properties.splice(3, 1);
-      await huks
-        .init(srcKeyAlias, HuksOptions)
-        .then((data) => {
-          console.log(`test init data: ${JSON.stringify(data)}`);
-          expect(data.errorCode == -112).assertTrue();
-        })
-        .catch((err) => {
-          console.log(`test init err: " + ${JSON.stringify(err)}`);
-          expect(err.code == -112).assertTrue();
-        });
+        HuksOptions.properties.splice(1, 1, HuksAgreeDH.HuksKeyPurposeDH);
+        HuksOptions.properties.splice(3, 1);
+        await huks
+          .init(srcKeyAlias, HuksOptions)
+          .then((data) => {
+            console.log(`test init data: ${JSON.stringify(data)}`);
+            expect(data.errorCode == -112).assertTrue();
+          })
+          .catch((err) => {
+            console.log(`test init err: " + ${JSON.stringify(err)}`);
+            expect(err.code == -112).assertTrue();
+          });
 
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
+        await deleteKeyFunc(srcKeyAlias, HuksOptions);
+      }
       done();
     });
 
@@ -835,7 +849,7 @@ export function SecurityHuksAccessControlJsunit() {
       expect(1342197283).assertEqual(
         huks.HuksTag.HUKS_TAG_ASYMMETRIC_PRIVATE_KEY_DATA
       );
-      expect(0).assertEqual(huks.HuksKeyStorageType.HUKS_STORAGE_TEMP	);
+      expect(0).assertEqual(huks.HuksKeyStorageType.HUKS_STORAGE_TEMP);
       expect(1).assertEqual(huks.HuksKeyStorageType.HUKS_STORAGE_PERSISTENT);
       done();
     });

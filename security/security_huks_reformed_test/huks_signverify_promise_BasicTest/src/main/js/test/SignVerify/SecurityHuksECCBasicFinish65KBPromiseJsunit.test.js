@@ -27,13 +27,13 @@ const srcData65Sha256 = new Uint8Array([
 export default function SecurityHuksECCBasicFinish65KBPromiseJsunit() {
 describe('SecurityHuksECCBasicFinish65KBPromiseJsunit', function () {
   it('testReformedSignVerifyECC103', 0, async function (done) {
-    const srcKeyAlies = 'testSignVerifyECCSize224SIGNNONEKeyAlias103';
+    const srcKeyAlies = 'testSignVerifyECCSize256SIGNNONEKeyAlias103';
     let HuksOptions = {
       properties: new Array(
         HuksSignVerifyECC.HuksKeyAlgECC,
         HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
         HuksSignVerifyECC.HuksTagECCDigestNONE,
-        HuksSignVerifyECC.HuksKeyECCSize224
+        HuksSignVerifyECC.HuksKeyECCSize256
       ),
       inData: srcData65Sha256,
     };
@@ -43,11 +43,436 @@ describe('SecurityHuksECCBasicFinish65KBPromiseJsunit', function () {
         HuksSignVerifyECC.HuksKeyAlgECC,
         HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
         HuksSignVerifyECC.HuksTagECCDigestNONE,
-        HuksSignVerifyECC.HuksKeyECCSize224
+        HuksSignVerifyECC.HuksKeyECCSize256
       ),
       inData: finishOutData,
     };
     await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Sha256);
+    done();
+  });
+
+  it('testSignVerifyECCSize384SIGNNONE103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNNONEKeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestNONE,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: srcData65Sha256,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Sha256);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestNONE,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Sha256);
+    done();
+  });
+
+  it('testSignVerifyECCSize521SIGNNONE103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize521SIGNNONEKeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestNONE,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: srcData65Sha256,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Sha256);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestNONE,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Sha256);
+    done();
+  });
+
+  it('testSignVerifyECCSize256SIGNSHA1103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize256SIGNSHA1KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA1,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA1,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize384SIGNSHA1103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA1KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA1,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA1,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize521SIGNSHA1103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA1KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA1,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA1,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize256SIGNSHA224103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize256SIGNSHA224KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA224,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA224,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize384SIGNSHA224103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA224KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA224,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA224,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize521SIGNSHA224103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA224KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA224,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA224,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize256SIGNSHA256103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize256SIGNSHA256KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA256,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA256,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize384SIGNSHA256103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA256KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA256,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA256,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize521SIGNSHA256103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA256KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA256,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA256,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize256SIGNSHA384103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize256SIGNSHA384KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA384,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA384,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize384SIGNSHA384103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA384KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA384,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA384,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize521SIGNSHA384103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA384KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA384,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA384,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize256SIGNSHA512103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize256SIGNSHA512KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA512,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA512,
+        HuksSignVerifyECC.HuksKeyECCSize256
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize384SIGNSHA512103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA512KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA512,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA512,
+        HuksSignVerifyECC.HuksKeyECCSize384
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
+    done();
+  });
+
+  it('testSignVerifyECCSize521SIGNSHA512103', 0, async function (done) {
+    const srcKeyAlies = 'testSignVerifyECCSize384SIGNSHA512KeyAlias103';
+    let HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+        HuksSignVerifyECC.HuksTagECCDigestSHA512,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: srcData65Kb,
+    };
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
+    HuksOptions = {
+      properties: new Array(
+        HuksSignVerifyECC.HuksKeyAlgECC,
+        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY,
+        HuksSignVerifyECC.HuksTagECCDigestSHA512,
+        HuksSignVerifyECC.HuksKeyECCSize521
+      ),
+      inData: finishOutData,
+    };
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
     done();
   });
 });

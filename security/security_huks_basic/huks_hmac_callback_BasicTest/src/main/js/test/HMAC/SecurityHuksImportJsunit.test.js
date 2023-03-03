@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
-import { stringToUint8Array } from '../../../../../../utils/param/publicFunc';
+import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import huks from '@ohos.security.huks';
 import Data from '../../../../../../utils/data.json';
 import { HuksCipherAES, HuksCipherRSA, HuksCipherSM4 } from '../../../../../../utils/param/cipher/publicCipherParam'
@@ -25,6 +25,7 @@ import { HuksKeyAlgX25519, HuksAgreeECDH } from '../../../../../../utils/param/a
 let IV = '0000000000000000';
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
+let useSoftware = true;
 
 let aes128Key = new Uint8Array([
     0x20, 0x00, 0x00, 0x00, 0xdc, 0xa3, 0xe3, 0xec, 0xa3, 0x99, 0x06, 0x59, 0xc8, 0x7f, 0xb8, 0x6a
@@ -433,503 +434,537 @@ async function publicDeleteKeyFunc(KeyAlias, HuksOptions) {
 }
 
 export function SecurityHuksImportJsunit() {
-describe('SecurityHuksImportJsunit', function () {
-    it('HUKS_Basic_Capability_Import_0100', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_0100';
-        let HuksOptions = {
-            properties: new Array(
-                HuksSignVerifyECC.HuksKeyAlgECC,
-                HuksSignVerifyECC.HuksKeyECCPurposeSINGVERIFY,
-                HuksSignVerifyECC.HuksKeyECCSize224,
-                HuksSignVerifyECC.HuksTagECCDigestNONE,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ecc224Key,
-        };
-        await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+    beforeAll(async function (done) {
+        useSoftware = await checkSoftware();
         done();
     });
+    describe('SecurityHuksImportJsunit', function () {
+        it('HUKS_Basic_Capability_Import_0100', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_0100';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksSignVerifyECC.HuksKeyAlgECC,
+                    HuksSignVerifyECC.HuksKeyECCPurposeSINGVERIFY,
+                    HuksSignVerifyECC.HuksKeyECCSize256,
+                    HuksSignVerifyECC.HuksTagECCDigestNONE,
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+                        value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR
+                    }
+                ),
+                inData: ecc256Key,
+            };
+            await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_0200', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_0200';
-        let HuksOptions = {
-            properties: new Array(
-                HuksSignVerifyECC.HuksKeyAlgECC,
-                HuksSignVerifyECC.HuksKeyECCPurposeSINGVERIFY,
-                HuksSignVerifyECC.HuksKeyECCSize224,
-                HuksSignVerifyECC.HuksTagECCDigestNONE,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: dsa2048Key,
-        };
-        await huks.importKey(srcKeyAlies, HuksOptions)
-            .then((data) => {
-                console.error(`test ImportKey data: ${JSON.stringify(data)}`);
-                expect(data.errorCode == -19).assertTrue();
-            })
-            .catch((err) => {
-                console.error('test exportKey err information: ' + JSON.stringify(err));
-                expect(err.code == -19).assertTrue();
-            });
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_0200', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_0200';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksSignVerifyECC.HuksKeyAlgECC,
+                    HuksSignVerifyECC.HuksKeyECCPurposeSINGVERIFY,
+                    HuksSignVerifyECC.HuksKeyECCSize256,
+                    HuksSignVerifyECC.HuksTagECCDigestNONE,
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+                        value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR
+                    }
+                ),
+                inData: dsa2048Key,
+            };
+            await huks.importKey(srcKeyAlies, HuksOptions)
+                .then((data) => {
+                    console.error(`test ImportKey data: ${JSON.stringify(data)}`);
+                    expect(data.errorCode == -19).assertTrue();
+                })
+                .catch((err) => {
+                    console.error('test exportKey err information: ' + JSON.stringify(err));
+                    expect(err.code == -19).assertTrue();
+                });
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_0500', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_0500';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherAES.HuksKeyAlgAES,
-                HuksCipherAES.HuksKeyPurposeENCRYPT,
-                HuksCipherAES.HuksKeyAESSize128,
-                HuksCipherAES.HuksKeyAESPADDINGNONE,
-                HuksCipherAES.HuksKeyAESBLOCKMODE,
-                HuksCipherAES.HuksKeyAESDIGESTNONE
-            ),
-            inData: aes128Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_0500', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_0500';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherAES.HuksKeyAlgAES,
+                    HuksCipherAES.HuksKeyPurposeENCRYPT,
+                    HuksCipherAES.HuksKeyAESSize128,
+                    HuksCipherAES.HuksKeyAESPADDINGNONE,
+                    HuksCipherAES.HuksKeyAESBLOCKMODE,
+                    HuksCipherAES.HuksKeyAESDIGESTNONE
+                ),
+                inData: aes128Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_0600', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_0600';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherAES.HuksKeyAlgAES,
-                HuksCipherAES.HuksKeyPurposeENCRYPT,
-                HuksCipherAES.HuksKeyAESSize192,
-                HuksCipherAES.HuksKeyAESPADDINGNONE,
-                HuksCipherAES.HuksKeyAESBLOCKMODE,
-                HuksCipherAES.HuksKeyAESDIGESTNONE
-            ),
-            inData: aes192Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_0600', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_0600';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherAES.HuksKeyAlgAES,
+                    HuksCipherAES.HuksKeyPurposeENCRYPT,
+                    HuksCipherAES.HuksKeyAESSize192,
+                    HuksCipherAES.HuksKeyAESPADDINGNONE,
+                    HuksCipherAES.HuksKeyAESBLOCKMODE,
+                    HuksCipherAES.HuksKeyAESDIGESTNONE
+                ),
+                inData: aes192Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_0700', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_0700';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherAES.HuksKeyAlgAES,
-                HuksCipherAES.HuksKeyPurposeENCRYPT,
-                HuksCipherAES.HuksKeyAESSize256,
-                HuksCipherAES.HuksKeyAESPADDINGNONE,
-                HuksCipherAES.HuksKeyAESBLOCKMODE,
-                HuksCipherAES.HuksKeyAESDIGESTNONE
-            ),
-            inData: aes256Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_0700', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_0700';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherAES.HuksKeyAlgAES,
+                    HuksCipherAES.HuksKeyPurposeENCRYPT,
+                    HuksCipherAES.HuksKeyAESSize256,
+                    HuksCipherAES.HuksKeyAESPADDINGNONE,
+                    HuksCipherAES.HuksKeyAESBLOCKMODE,
+                    HuksCipherAES.HuksKeyAESDIGESTNONE
+                ),
+                inData: aes256Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_0800', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_0800';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherAES.HuksKeyAlgAES,
-                HuksCipherAES.HuksKeyPurposeENCRYPT,
-                HuksCipherAES.HuksKeyAESSize512,
-                HuksCipherAES.HuksKeyAESPADDINGNONE,
-                HuksCipherAES.HuksKeyAESBLOCKMODE,
-                HuksCipherAES.HuksKeyAESDIGESTNONE
-            ),
-            inData: aes512Key,
-        };
-        await huks.importKey(srcKeyAlies, HuksOptions)
-            .then((data) => {
-                console.error(`test ImportKey data: ${JSON.stringify(data)}`);
-                expect(data.errorCode == -19).assertTrue();
-            })
-            .catch((err) => {
-                console.error('test exportKey err information: ' + JSON.stringify(err));
-                expect(err.code == -19).assertTrue();
-            });
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_0800', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_0800';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherAES.HuksKeyAlgAES,
+                    HuksCipherAES.HuksKeyPurposeENCRYPT,
+                    HuksCipherAES.HuksKeyAESSize512,
+                    HuksCipherAES.HuksKeyAESPADDINGNONE,
+                    HuksCipherAES.HuksKeyAESBLOCKMODE,
+                    HuksCipherAES.HuksKeyAESDIGESTNONE
+                ),
+                inData: aes512Key,
+            };
+            if (useSoftware) {
+                await huks.importKey(srcKeyAlies, HuksOptions)
+                    .then((data) => {
+                        console.error(`test ImportKey data: ${JSON.stringify(data)}`);
+                        expect(data.errorCode == -19).assertTrue();
+                    })
+                    .catch((err) => {
+                        console.error('test exportKey err information: ' + JSON.stringify(err));
+                        expect(err.code == -19).assertTrue();
+                    });
+            }
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_0900', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_0900';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherRSA.HuksKeyAlgRSA,
-                HuksCipherRSA.HuksKeyPurpose,
-                HuksSignVerifyRSA.HuksKeyRSASize512,
-                HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-                HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-                HuksCipherRSA.HuksKeyRSADIGESTSHA256,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: rsa512Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_0900', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_0900';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherRSA.HuksKeyAlgRSA,
+                    HuksCipherRSA.HuksKeyPurpose,
+                    HuksSignVerifyRSA.HuksKeyRSASize512,
+                    HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+                    HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+                    HuksCipherRSA.HuksKeyRSADIGESTSHA256,
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+                        value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR
+                    }
+                ),
+                inData: rsa512Key,
+            };
+            if (useSoftware) {
+                await publicImportKey(srcKeyAlies, HuksOptions);
+                await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            }
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1000', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1000';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherRSA.HuksKeyAlgRSA,
-                HuksCipherRSA.HuksKeyPurpose,
-                HuksSignVerifyRSA.HuksKeyRSASize768,
-                HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-                HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-                HuksCipherRSA.HuksKeyRSADIGESTSHA256,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: rsa768Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1000', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1000';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherRSA.HuksKeyAlgRSA,
+                    HuksCipherRSA.HuksKeyPurpose,
+                    HuksSignVerifyRSA.HuksKeyRSASize768,
+                    HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+                    HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+                    HuksCipherRSA.HuksKeyRSADIGESTSHA256,
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+                        value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR
+                    }
+                ),
+                inData: rsa768Key,
+            };
+            if (useSoftware) {
+                await publicImportKey(srcKeyAlies, HuksOptions);
+                await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            }
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1100', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1100';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherRSA.HuksKeyAlgRSA,
-                HuksCipherRSA.HuksKeyPurpose,
-                HuksSignVerifyRSA.HuksKeyRSASize1024,
-                HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-                HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-                HuksCipherRSA.HuksKeyRSADIGESTSHA256,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: rsa1024Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1100', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1100';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherRSA.HuksKeyAlgRSA,
+                    HuksCipherRSA.HuksKeyPurpose,
+                    HuksSignVerifyRSA.HuksKeyRSASize1024,
+                    HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+                    HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+                    HuksCipherRSA.HuksKeyRSADIGESTSHA256,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: rsa1024Key,
+            };
+            if (useSoftware) {
+                await publicImportKey(srcKeyAlies, HuksOptions);
+                await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            }
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1200', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1200';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherRSA.HuksKeyAlgRSA,
-                HuksCipherRSA.HuksKeyPurpose,
-                HuksSignVerifyRSA.HuksKeyRSASize2048,
-                HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-                HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-                HuksCipherRSA.HuksKeyRSADIGESTSHA256,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: rsa2048Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1200', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1200';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherRSA.HuksKeyAlgRSA,
+                    HuksCipherRSA.HuksKeyPurpose,
+                    HuksSignVerifyRSA.HuksKeyRSASize2048,
+                    HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+                    HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+                    HuksCipherRSA.HuksKeyRSADIGESTSHA256,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: rsa2048Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1300', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1300';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherRSA.HuksKeyAlgRSA,
-                HuksCipherRSA.HuksKeyPurpose,
-                HuksSignVerifyRSA.HuksKeyRSASize3072,
-                HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-                HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-                HuksCipherRSA.HuksKeyRSADIGESTSHA256,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: rsa3072Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1300', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1300';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherRSA.HuksKeyAlgRSA,
+                    HuksCipherRSA.HuksKeyPurpose,
+                    HuksSignVerifyRSA.HuksKeyRSASize3072,
+                    HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+                    HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+                    HuksCipherRSA.HuksKeyRSADIGESTSHA256,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: rsa3072Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1400', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1400';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherRSA.HuksKeyAlgRSA,
-                HuksCipherRSA.HuksKeyPurpose,
-                HuksSignVerifyRSA.HuksKeyRSASize4096,
-                HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-                HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-                HuksCipherRSA.HuksKeyRSADIGESTSHA256,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: rsa4096Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1400', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1400';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherRSA.HuksKeyAlgRSA,
+                    HuksCipherRSA.HuksKeyPurpose,
+                    HuksSignVerifyRSA.HuksKeyRSASize4096,
+                    HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+                    HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+                    HuksCipherRSA.HuksKeyRSADIGESTSHA256,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: rsa4096Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1500', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1500';
-        let HuksOptions = {
-            properties: new Array(
-                HuksHmac.HuksKeyAlg,
-                HuksHmac.HuksKeySIZE,
-                HuksHmac.HuksKeyPurpose,
-                HuksHmac.HuksTagDigestSHA1
-            ),
-            inData: aes512Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1500', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1500';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksHmac.HuksKeyAlg,
+                    HuksHmac.HuksKeySIZE,
+                    HuksHmac.HuksKeyPurpose,
+                    HuksHmac.HuksTagDigestSHA1
+                ),
+                inData: aes512Key,
+            };
+            if (useSoftware) {
+                await publicImportKey(srcKeyAlies, HuksOptions);
+                await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            }
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1600', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1600';
-        let HuksOptions = {
-            properties: new Array(
-                HuksSignVerifyECC.HuksKeyAlgECC,
-                HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
-                HuksSignVerifyECC.HuksTagECCDigestNONE,
-                HuksSignVerifyECC.HuksKeyECCSize224,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ecc224Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1600', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1600';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksSignVerifyECC.HuksKeyAlgECC,
+                    HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+                    HuksSignVerifyECC.HuksTagECCDigestNONE,
+                    HuksSignVerifyECC.HuksKeyECCSize224,
+                    {
+                        tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+                        value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR
+                    }
+                ),
+                inData: ecc224Key,
+            };
+            if (useSoftware) {
+                await publicImportKey(srcKeyAlies, HuksOptions);
+                await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            }
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1700', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1700';
-        let HuksOptions = {
-            properties: new Array(
-                HuksSignVerifyECC.HuksKeyAlgECC,
-                HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
-                HuksSignVerifyECC.HuksTagECCDigestNONE,
-                HuksSignVerifyECC.HuksKeyECCSize256,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ecc256Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1700', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1700';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksSignVerifyECC.HuksKeyAlgECC,
+                    HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+                    HuksSignVerifyECC.HuksTagECCDigestNONE,
+                    HuksSignVerifyECC.HuksKeyECCSize256,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: ecc256Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1800', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1800';
-        let HuksOptions = {
-            properties: new Array(
-                HuksSignVerifyECC.HuksKeyAlgECC,
-                HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
-                HuksSignVerifyECC.HuksTagECCDigestNONE,
-                HuksSignVerifyECC.HuksKeyECCSize384,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ecc384Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1800', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1800';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksSignVerifyECC.HuksKeyAlgECC,
+                    HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+                    HuksSignVerifyECC.HuksTagECCDigestNONE,
+                    HuksSignVerifyECC.HuksKeyECCSize384,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: ecc384Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_1900', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_1900';
-        let HuksOptions = {
-            properties: new Array(
-                HuksSignVerifyECC.HuksKeyAlgECC,
-                HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
-                HuksSignVerifyECC.HuksTagECCDigestNONE,
-                HuksSignVerifyECC.HuksKeyECCSize521,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ecc521Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_1900', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_1900';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksSignVerifyECC.HuksKeyAlgECC,
+                    HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
+                    HuksSignVerifyECC.HuksTagECCDigestNONE,
+                    HuksSignVerifyECC.HuksKeyECCSize521,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: ecc521Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_2000', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_2000';
-        let HuksOptions = {
-            properties: new Array(
-                HuksAgreeECDH.HuksKeyAlgECC,
-                HuksAgreeECDH.HuksKeyPurposeECDH,
-                HuksAgreeECDH.HuksKeyECCSize224,
-                HuksAgreeECDH.HuksKeyECCDIGEST,
-                HuksAgreeECDH.HuksKeyECCPADDING,
-                HuksAgreeECDH.HuksKeyECCBLOCKMODE,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ecc224Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_2000', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_2000';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksAgreeECDH.HuksKeyAlgECC,
+                    HuksAgreeECDH.HuksKeyPurposeECDH,
+                    HuksAgreeECDH.HuksKeyECCSize224,
+                    HuksAgreeECDH.HuksKeyECCDIGEST,
+                    HuksAgreeECDH.HuksKeyECCPADDING,
+                    HuksAgreeECDH.HuksKeyECCBLOCKMODE,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: ecc224Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_2100', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_2100';
-        let HuksOptions = {
-            properties: new Array(
-                HuksAgreeECDH.HuksKeyAlgECC,
-                HuksAgreeECDH.HuksKeyPurposeECDH,
-                HuksAgreeECDH.HuksKeyECCSize256,
-                HuksAgreeECDH.HuksKeyECCDIGEST,
-                HuksAgreeECDH.HuksKeyECCPADDING,
-                HuksAgreeECDH.HuksKeyECCBLOCKMODE,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ecc256Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_2100', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_2100';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksAgreeECDH.HuksKeyAlgECC,
+                    HuksAgreeECDH.HuksKeyPurposeECDH,
+                    HuksAgreeECDH.HuksKeyECCSize256,
+                    HuksAgreeECDH.HuksKeyECCDIGEST,
+                    HuksAgreeECDH.HuksKeyECCPADDING,
+                    HuksAgreeECDH.HuksKeyECCBLOCKMODE,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: ecc256Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_2200', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_2200';
-        let HuksOptions = {
-            properties: new Array(
-                HuksAgreeECDH.HuksKeyAlgECC,
-                HuksAgreeECDH.HuksKeyPurposeECDH,
-                HuksAgreeECDH.HuksKeyECCSize384,
-                HuksAgreeECDH.HuksKeyECCDIGEST,
-                HuksAgreeECDH.HuksKeyECCPADDING,
-                HuksAgreeECDH.HuksKeyECCBLOCKMODE,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ecc384Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_2200', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_2200';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksAgreeECDH.HuksKeyAlgECC,
+                    HuksAgreeECDH.HuksKeyPurposeECDH,
+                    HuksAgreeECDH.HuksKeyECCSize384,
+                    HuksAgreeECDH.HuksKeyECCDIGEST,
+                    HuksAgreeECDH.HuksKeyECCPADDING,
+                    HuksAgreeECDH.HuksKeyECCBLOCKMODE,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: ecc384Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_2300', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_2300';
-        let HuksOptions = {
-            properties: new Array(
-                HuksAgreeECDH.HuksKeyAlgECC,
-                HuksAgreeECDH.HuksKeyPurposeECDH,
-                HuksAgreeECDH.HuksKeyECCSize521,
-                HuksAgreeECDH.HuksKeyECCDIGEST,
-                HuksAgreeECDH.HuksKeyECCPADDING,
-                HuksAgreeECDH.HuksKeyECCBLOCKMODE,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ecc521Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_2300', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_2300';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksAgreeECDH.HuksKeyAlgECC,
+                    HuksAgreeECDH.HuksKeyPurposeECDH,
+                    HuksAgreeECDH.HuksKeyECCSize521,
+                    HuksAgreeECDH.HuksKeyECCDIGEST,
+                    HuksAgreeECDH.HuksKeyECCPADDING,
+                    HuksAgreeECDH.HuksKeyECCBLOCKMODE,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: ecc521Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_2400', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_2400';
-        let HuksOptions = {
-            properties: new Array(
-                HuksKeyAlgX25519.HuksKeyAlgX25519,
-                HuksKeyAlgX25519.HuksKeyPurposeAGREE,
-                HuksKeyAlgX25519.HuksKeyCURVE25519Size256,
-                HuksKeyAlgX25519.HuksKeyDIGEST,
-                HuksKeyAlgX25519.HuksKeyPADDING,
-                HuksKeyAlgX25519.HuksKeyBLOCKMODE,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: x25519Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_2400', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_2400';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksKeyAlgX25519.HuksKeyAlgX25519,
+                    HuksKeyAlgX25519.HuksKeyPurposeAGREE,
+                    HuksKeyAlgX25519.HuksKeyCURVE25519Size256,
+                    HuksKeyAlgX25519.HuksKeyDIGEST,
+                    HuksKeyAlgX25519.HuksKeyPADDING,
+                    HuksKeyAlgX25519.HuksKeyBLOCKMODE,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: x25519Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_2500', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_2500';
-        let HuksOptions = {
-            properties: new Array(
-                HuksSignVerifyED25519.HuksKeyAlgED25519,
-                HuksSignVerifyED25519.HuksKeyED25519PurposeSIGN,
-                HuksSignVerifyED25519.HuksKeyED25519Size256,
-                HuksSignVerifyED25519.HuksTagDigestSHA1,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: ed25519Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_2500', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_2500';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksSignVerifyED25519.HuksKeyAlgED25519,
+                    HuksSignVerifyED25519.HuksKeyED25519PurposeSIGN,
+                    HuksSignVerifyED25519.HuksKeyED25519Size256,
+                    HuksSignVerifyED25519.HuksTagDigestSHA256,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: ed25519Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_2800', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_2800';
-        let HuksOptions = {
-            properties: new Array(
-                HuksSignVerifyDSA.HuksKeyAlgDSA,
-                HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN,
-                HuksSignVerifyDSA.HuksTagDSADigestSHA256,
-                { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: dsa2048Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_2800', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_2800';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksSignVerifyDSA.HuksKeyAlgDSA,
+                    HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN,
+                    HuksSignVerifyDSA.HuksTagDSADigestSHA256,
+                    { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: dsa2048Key,
+            };
+            if (useSoftware) {
+                await publicImportKey(srcKeyAlies, HuksOptions);
+                await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            }
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_2900', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_2900';
-        let HuksOptions = {
-            properties: new Array(
-                HuksSignVerifySM2.HuksKeyAlgSM2,
-                HuksSignVerifySM2.HuksKeySM2PurposeSINGVERIFY,
-                HuksSignVerifySM2.HuksKeySize256,
-                HuksSignVerifySM2.HuksTagSM2DigestSM3,
-                { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
-            ),
-            inData: sm2Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_2900', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_2900';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksSignVerifySM2.HuksKeyAlgSM2,
+                    HuksSignVerifySM2.HuksKeySM2PurposeSINGVERIFY,
+                    HuksSignVerifySM2.HuksKeySize256,
+                    HuksSignVerifySM2.HuksTagSM2DigestSM3,
+                    { tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE, value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR }
+                ),
+                inData: sm2Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_3000', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_3000';
-        let HuksOptions = {
-            properties: new Array(
-                HuksHmac.HuksKeyAlg,
-                HuksHmac.HuksKeyPurpose,
-                HuksHmac.HuksKeySIZE,
-                HuksHmac.HuksTagDigestSM3
-            ),
-            inData: aes512Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
+        it('HUKS_Basic_Capability_Import_3000', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_3000';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksHmac.HuksKeyAlg,
+                    HuksHmac.HuksKeyPurpose,
+                    HuksHmac.HuksKeySIZE,
+                    HuksHmac.HuksTagDigestSM3
+                ),
+                inData: aes512Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
 
-    it('HUKS_Basic_Capability_Import_3100', 0, async function (done) {
-        const srcKeyAlies = 'HUKS_Basic_Capability_Import_3100';
-        let HuksOptions = {
-            properties: new Array(
-                HuksCipherSM4.HuksKeyAlgSM4,
-                HuksCipherSM4.HuksKeyPurposeENCRYPT,
-                HuksCipherSM4.HuksKeySM4Size128,
-                HuksCipherSM4.HuksKeySM4PADDINGNONE,
-                HuksCipherSM4.HuksKeySM4BLOCKMODECBC
-            ),
-            inData: aes128Key,
-        };
-        await publicImportKey(srcKeyAlies, HuksOptions);
-        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
-        done();
-    });
-})}
+        it('HUKS_Basic_Capability_Import_3100', 0, async function (done) {
+            const srcKeyAlies = 'HUKS_Basic_Capability_Import_3100';
+            let HuksOptions = {
+                properties: new Array(
+                    HuksCipherSM4.HuksKeyAlgSM4,
+                    HuksCipherSM4.HuksKeyPurposeENCRYPT,
+                    HuksCipherSM4.HuksKeySM4Size128,
+                    HuksCipherSM4.HuksKeySM4PADDINGNONE,
+                    HuksCipherSM4.HuksKeySM4BLOCKMODECBC
+                ),
+                inData: aes128Key,
+            };
+            await publicImportKey(srcKeyAlies, HuksOptions);
+            await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+            done();
+        });
+    })
+}

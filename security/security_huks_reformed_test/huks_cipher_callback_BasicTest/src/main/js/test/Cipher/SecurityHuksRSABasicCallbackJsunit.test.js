@@ -17,9 +17,17 @@ import { describe, it, expect } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HuksCipherRSA } from '../../../../../../utils/param/cipher/publicCipherParam';
 import { stringToUint8Array, uint8ArrayToString } from '../../../../../../utils/param/publicFunc';
-let gInData64 = 'RSA_64_ttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
+let gInData512 = 'RSA_512_tttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+  'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+  'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+  'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+  'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+  'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+  'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+  'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
 
-let gInData64Array = stringToUint8Array(gInData64);
+let gInData512Array = stringToUint8Array(gInData512);
+let defaultData = '0';
 let encryptedData;
 let inputInData;
 var handle;
@@ -27,8 +35,11 @@ let updateResult = new Array();
 let exportKey;
 
 let genHuksOptions = {
-  properties: new Array(HuksCipherRSA.HuksKeyAlgRSA, HuksCipherRSA.HuksKeyPurpose, HuksCipherRSA.HuksKeyRSASize512),
-  inData: new Uint8Array(new Array()),
+  properties: new Array(
+    HuksCipherRSA.HuksKeyAlgRSA,
+    HuksCipherRSA.HuksKeyPurpose,
+    HuksCipherRSA.HuksKeyRSASize4096),
+  inData: new Uint8Array(defaultData),
 };
 
 async function publicGenerateKeyItemFunc(keyAlias, huksOptions) {
@@ -375,19 +386,19 @@ export default function SecurityHuksRSABasicCallbackJsunit() {
         properties: new Array(
           HuksCipherRSA.HuksKeyAlgRSA,
           HuksCipherRSA.HuksKeyPurposeENCRYPT,
-          HuksCipherRSA.HuksKeyRSASize512,
+          HuksCipherRSA.HuksKeyRSASize4096,
           HuksCipherRSA.HuksKeyRSAPADDINGNONE,
           HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
           HuksCipherRSA.HuksKeyRSADIGESTSHA256
         ),
-        inData: gInData64Array,
+        inData: gInData512Array,
       };
       await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'finish', true);
       HuksOptions = {
         properties: new Array(
           HuksCipherRSA.HuksKeyAlgRSA,
           HuksCipherRSA.HuksKeyPurposeDECRYPT,
-          HuksCipherRSA.HuksKeyRSASize512,
+          HuksCipherRSA.HuksKeyRSASize4096,
           HuksCipherRSA.HuksKeyRSAPADDINGNONE,
           HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
           HuksCipherRSA.HuksKeyRSADIGESTSHA256
@@ -405,12 +416,12 @@ export default function SecurityHuksRSABasicCallbackJsunit() {
         properties: new Array(
           HuksCipherRSA.HuksKeyAlgRSA,
           HuksCipherRSA.HuksKeyPurposeENCRYPT,
-          HuksCipherRSA.HuksKeyRSASize512,
+          HuksCipherRSA.HuksKeyRSASize4096,
           HuksCipherRSA.HuksKeyRSAPADDINGNONE,
           HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
           HuksCipherRSA.HuksKeyRSADIGESTSHA256
         ),
-        inData: gInData64Array,
+        inData: gInData512Array,
       };
       await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'abort', true);
       done();
@@ -423,19 +434,19 @@ export default function SecurityHuksRSABasicCallbackJsunit() {
         properties: new Array(
           HuksCipherRSA.HuksKeyAlgRSA,
           HuksCipherRSA.HuksKeyPurposeENCRYPT,
-          HuksCipherRSA.HuksKeyRSASize512,
+          HuksCipherRSA.HuksKeyRSASize4096,
           HuksCipherRSA.HuksKeyRSAPADDINGNONE,
           HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
           HuksCipherRSA.HuksKeyRSADIGESTSHA256
         ),
-        inData: gInData64Array,
+        inData: gInData512Array,
       };
       await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'finish', true);
       HuksOptions = {
         properties: new Array(
           HuksCipherRSA.HuksKeyAlgRSA,
           HuksCipherRSA.HuksKeyPurposeDECRYPT,
-          HuksCipherRSA.HuksKeyRSASize512,
+          HuksCipherRSA.HuksKeyRSASize4096,
           HuksCipherRSA.HuksKeyRSAPADDINGNONE,
           HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
           HuksCipherRSA.HuksKeyRSADIGESTSHA256
@@ -453,12 +464,12 @@ export default function SecurityHuksRSABasicCallbackJsunit() {
         properties: new Array(
           HuksCipherRSA.HuksKeyAlgRSA,
           HuksCipherRSA.HuksKeyPurposeENCRYPT,
-          HuksCipherRSA.HuksKeyRSASize512,
+          HuksCipherRSA.HuksKeyRSASize4096,
           HuksCipherRSA.HuksKeyRSAPADDINGNONE,
           HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
           HuksCipherRSA.HuksKeyRSADIGESTSHA256
         ),
-        inData: gInData64Array,
+        inData: gInData512Array,
       };
       await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'abort', true);
       done();

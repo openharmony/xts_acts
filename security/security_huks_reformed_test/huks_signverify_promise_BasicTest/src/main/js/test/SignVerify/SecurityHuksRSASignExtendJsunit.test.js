@@ -197,7 +197,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyAlgRSA,
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSINGVERIFY,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             };
@@ -207,7 +207,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             }
@@ -224,7 +224,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeVERIFY,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             }
@@ -249,7 +249,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyAlgRSA,
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSINGVERIFY,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             };
@@ -259,7 +259,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             }
@@ -276,7 +276,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeVERIFY,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             }
@@ -300,7 +300,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                 properties: new Array(
                     HuksSignVerifyRSA.HuksKeyAlgRSA,
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSINGVERIFY,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             };
@@ -310,7 +310,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             }
@@ -327,7 +327,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeVERIFY,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             }
@@ -353,7 +353,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSINGVERIFY,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestNONE,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: inDataAfterSha512,
             }
@@ -363,7 +363,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestNONE,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: inDataAfterSha512,
             }
@@ -380,7 +380,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeVERIFY,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestNONE,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: signedResult,
             }
@@ -406,7 +406,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             };
@@ -415,7 +415,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyAlgRSA,
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             }
@@ -438,7 +438,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             };
@@ -447,7 +447,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyAlgRSA,
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             }
@@ -470,7 +470,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             };
@@ -478,7 +478,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                 properties: new Array(
                     HuksSignVerifyRSA.HuksKeyAlgRSA,
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: srcData64Kb,
             }
@@ -501,7 +501,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestNONE,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: inDataAfterSha512,
             };
@@ -511,7 +511,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                     HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
                     HuksSignVerifyRSA.HuksTagPKCS1DigestNONE,
                     HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-                    HuksSignVerifyRSA.HuksKeyRSASize1024
+                    HuksSignVerifyRSA.HuksKeyRSASize4096
                 ),
                 inData: inDataString,
             }

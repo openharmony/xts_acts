@@ -22,14 +22,14 @@ let srcData63Kb = stringToUint8Array(srcData63);
 export default function SecurityHuksRSABasicAbort63KBPromiseJsunit() {
 describe('SecurityHuksRSABasicAbort63KBPromiseJsunit', function () {
   it('testSignVerifyRSA102', 0, async function (done) {
-    const srcKeyAlies = 'testSignVerifyRSASize512SIGNPKCS1MD5KeyAlias102';
+    const srcKeyAlies = 'testSignVerifyRSASize2048SIGNPKCS1SHA384KeyAlias102';
     let HuksOptions = {
       properties: new Array(
         HuksSignVerifyRSA.HuksKeyAlgRSA,
         HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
-        HuksSignVerifyRSA.HuksTagPKCS1DigestMD5,
+        HuksSignVerifyRSA.HuksTagPKCS1DigestSHA384,
         HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-        HuksSignVerifyRSA.HuksKeyRSASize512
+        HuksSignVerifyRSA.HuksKeyRSASize2048
       ),
       inData: srcData63Kb,
     };
