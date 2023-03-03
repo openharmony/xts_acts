@@ -22,13 +22,13 @@ let srcData63Kb = stringToUint8Array(srcData63);
 export default function SecurityHuksECCBasicAbort63KBCallbackJsunit() {
 describe('SecurityHuksECCBasicAbort63KBCallbackJsunit', function () {
   it('testReformedSignVerifyECC002', 0, async function (done) {
-    const srcKeyAlies = 'testSignVerifyECCSize224SIGNNONEKeyAlias002';
+    const srcKeyAlies = 'testSignVerifyECCSize256SIGNNONEKeyAlias002';
     let HuksOptions = {
       properties: new Array(
         HuksSignVerifyECC.HuksKeyAlgECC,
         HuksSignVerifyECC.HuksKeyECCPurposeSIGN,
-        HuksSignVerifyECC.HuksTagECCDigestNONE,
-        HuksSignVerifyECC.HuksKeyECCSize224
+        HuksSignVerifyECC.HuksTagECCDigestSHA512,
+        HuksSignVerifyECC.HuksKeyECCSize256
       ),
       inData: srcData63Kb,
     };

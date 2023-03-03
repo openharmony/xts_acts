@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, beforeAll } from '@ohos/hypium';
 import { HuksCipherRSA } from '../../../../../../utils/param/cipher/publicCipherParam';
-import { stringToUint8Array } from '../../../../../../utils/param/publicFunc';
-import huks from '@ohos.security.huks'
+import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
+import huks from '@ohos.security.huks';
 import { HuksKeyAlgX25519, HuksAgreeECDH } from '../../../../../../utils/param/agree/publicAgreeParam';
 import {
   HuksSignVerifySM2,
@@ -26,6 +26,7 @@ import {
 } from '../../../../../../utils/param/signverify/publicSignverifyParam';
 let gInData64 = 'RSA_64_ttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
 let gInData64Array = stringToUint8Array(gInData64);
+let useSoftware = true;
 
 async function publicGenerateKeyItemFunc(keyAlias, huksOptions) {
   console.info(`enter callback generateKeyItem`);
@@ -128,6 +129,10 @@ function deleteKeyItem(srcKeyAlies, HuksOptions) {
 
 export default function securityHuksExportSupportJsunit() {
   describe('securityHuksExportSupportJsunit', function () {
+    beforeAll(async function (done) {
+      useSoftware = await checkSoftware();
+      done();
+    })
     // HKS_SUPPORT_SM4_CBC_NOPADDING
     it('HUKS_Basic_Capability_Export_Reformed_0100', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0100";
@@ -142,9 +147,11 @@ export default function securityHuksExportSupportJsunit() {
         ),
         inData: gInData64Array,
       };
-      await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
-      await publicExportKeyItem(srcKeyAlies, HuksOptions);
-      await publicDeleteKeyItem(srcKeyAlies, HuksOptions)
+      if (useSoftware) {
+        await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyItem(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyItem(srcKeyAlies, HuksOptions);
+      }
       done();
     });
 
@@ -161,9 +168,11 @@ export default function securityHuksExportSupportJsunit() {
         ),
         inData: gInData64Array,
       };
-      await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
-      await publicExportKeyItem(srcKeyAlies, HuksOptions);
-      await publicDeleteKeyItem(srcKeyAlies, HuksOptions)
+      if (useSoftware) {
+        await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyItem(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyItem(srcKeyAlies, HuksOptions);
+      }
       done();
     });
 
@@ -180,9 +189,11 @@ export default function securityHuksExportSupportJsunit() {
         ),
         inData: gInData64Array,
       };
-      await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
-      await publicExportKeyItem(srcKeyAlies, HuksOptions);
-      await publicDeleteKeyItem(srcKeyAlies, HuksOptions)
+      if (useSoftware) {
+        await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyItem(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyItem(srcKeyAlies, HuksOptions);
+      }
       done();
     });
 
@@ -254,9 +265,11 @@ export default function securityHuksExportSupportJsunit() {
         ),
         inData: gInData64Array,
       };
-      await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
-      await publicExportKeyItem(srcKeyAlies, HuksOptions);
-      await publicDeleteKeyItem(srcKeyAlies, HuksOptions)
+      if (useSoftware) {
+        await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyItem(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyItem(srcKeyAlies, HuksOptions);
+      }
       done();
     });
 
@@ -266,7 +279,7 @@ export default function securityHuksExportSupportJsunit() {
         properties: new Array(
           HuksAgreeECDH.HuksKeyAlgECC,
           HuksAgreeECDH.HuksKeyECCSize256,
-          HuksAgreeECDH.HuksKeyPurposeECDH,//没找到
+          HuksAgreeECDH.HuksKeyPurposeECDH,
           HuksAgreeECDH.HuksKeyECCDIGEST
         ),
         inData: gInData64Array,
@@ -283,7 +296,7 @@ export default function securityHuksExportSupportJsunit() {
         properties: new Array(
           HuksAgreeECDH.HuksKeyAlgECC,
           HuksAgreeECDH.HuksKeyECCSize384,
-          HuksAgreeECDH.HuksKeyPurposeECDH,//没找到
+          HuksAgreeECDH.HuksKeyPurposeECDH,
           HuksAgreeECDH.HuksKeyECCDIGEST
         ),
         inData: gInData64Array,
@@ -300,7 +313,7 @@ export default function securityHuksExportSupportJsunit() {
         properties: new Array(
           HuksAgreeECDH.HuksKeyAlgECC,
           HuksAgreeECDH.HuksKeyECCSize521,
-          HuksAgreeECDH.HuksKeyPurposeECDH,//没找到
+          HuksAgreeECDH.HuksKeyPurposeECDH,
           HuksAgreeECDH.HuksKeyECCDIGEST
         ),
         inData: gInData64Array,
@@ -324,9 +337,11 @@ export default function securityHuksExportSupportJsunit() {
         ),
         inData: gInData64Array,
       };
-      await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
-      await publicExportKeyItem(srcKeyAlies, HuksOptions);
-      await publicDeleteKeyItem(srcKeyAlies, HuksOptions)
+      if (useSoftware) {
+        await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyItem(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyItem(srcKeyAlies, HuksOptions);
+      }
       done();
     });
 
@@ -434,9 +449,11 @@ export default function securityHuksExportSupportJsunit() {
         ),
         inData: gInData64Array,
       };
-      await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
-      await publicExportKeyItem(srcKeyAlies, HuksOptions);
-      await publicDeleteKeyItem(srcKeyAlies, HuksOptions)
+      if (useSoftware) {
+        await publicGenerateKeyItemFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyItem(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyItem(srcKeyAlies, HuksOptions);
+      }
       done();
     });
 
@@ -463,7 +480,7 @@ export default function securityHuksExportSupportJsunit() {
         properties: new Array(
           HuksCipherRSA.HuksKeyAlgRSA,
           HuksCipherRSA.HuksKeyPurposeENCRYPT,
-          HuksCipherRSA.HuksKeyRSASize512,
+          HuksCipherRSA.HuksKeyRSASize4096,
           HuksCipherRSA.HuksKeyRSAPADDINGNONE,
           HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
           HuksCipherRSA.HuksKeyRSADIGESTSHA256,

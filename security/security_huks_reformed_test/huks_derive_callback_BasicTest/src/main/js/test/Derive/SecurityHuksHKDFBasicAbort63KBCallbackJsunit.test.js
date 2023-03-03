@@ -27,7 +27,7 @@ let HuksOptions63kb = {
     HuksDeriveHKDF.HuksKeyAlgAES,
     HuksDeriveHKDF.HuksKeyPurposeHKDF,
     HuksDeriveHKDF.HuksTagHKDFDigestSHA256,
-    HuksDeriveHKDF.HuksKeyHKDFSize128
+    HuksDeriveHKDF.HuksKeyHKDFSize256
   ),
   inData: srcData63Kb,
 };
@@ -35,7 +35,7 @@ let HuksOptions63kb = {
 export default function SecurityHuksHKDFBasicAbort63KBCallbackJsunit() {
 describe('SecurityHuksHKDFBasicAbort63KBCallbackJsunit', function () {
   it('testReformedDeriveHKDF002', 0, async function (done) {
-    const srcKeyAliesFirst = 'testDeriveHKDFSize128SHA256Abort63KBDeriveKeyAlias_01_001';
+    const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA256Abort63KBDeriveKeyAlias_01_001';
     let huksOptionsFinish = {
       properties: new Array(
         HuksDeriveHKDF.HuksKeySTORAGE,
@@ -49,7 +49,7 @@ describe('SecurityHuksHKDFBasicAbort63KBCallbackJsunit', function () {
           value: stringToUint8Array(srcKeyAliesFirst),
         },
         HuksDeriveHKDF.HuksKeyPADDINGNONE,
-        HuksDeriveHKDF.HuksKeyBLOCKMODEECB
+        HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
       ),
       inData: srcData63Kb,
     };

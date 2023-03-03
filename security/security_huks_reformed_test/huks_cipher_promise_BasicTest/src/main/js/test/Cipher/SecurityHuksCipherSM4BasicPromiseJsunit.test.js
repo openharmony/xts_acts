@@ -13,16 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, beforeAll } from '@ohos/hypium';
 import { HuksCipherSM4 } from '../../../../../../utils/param/cipher/publicCipherParam';
 import { HksTag } from '../../../../../../utils/param/publicParam';
-import { stringToUint8Array, arrayEqual } from '../../../../../../utils/param/publicFunc';
+import { stringToUint8Array, arrayEqual, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import huks from '@ohos.security.huks';
 
 let IV = '0000000000000000';
 let plainData;
 let encryptedResult;
-var handle;
+let handle;
+let useSoftware = true;
 
 const plainString48Bytes = 'Hks_SM4_Cipher_Test_000000000000000000000_string';
 const plainData48Bytes = stringToUint8Array(plainString48Bytes);
@@ -199,6 +200,10 @@ async function publicCipherFunc(
 
 export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
   describe('SecurityHuksCipherSM4BasicPromiseJsunit', function () {
+    beforeAll(async function (done) {
+      useSoftware = await checkSoftware();
+      done();
+    })
     // HKS_SUPPORT_SM4_CBC_NOPADDING
     it('testReformedCipherSM4101_48', 0, async function (done) {
       const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECBCKeyAlias101';
@@ -216,13 +221,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData48Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
       HuksOptions = {
         properties: new Array(
           HuksCipherSM4.HuksKeyAlgSM4,
@@ -234,13 +233,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(encryptedResult),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
       done();
     });
 
@@ -260,13 +253,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData240Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
       HuksOptions = {
         properties: new Array(
           HuksCipherSM4.HuksKeyAlgSM4,
@@ -278,13 +265,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(encryptedResult),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
       done();
     });
 
@@ -304,13 +285,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData48Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
       done();
     });
 
@@ -330,13 +305,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData240Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
       done();
     });
 
@@ -357,31 +326,21 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData48Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
-      HuksOptions = {
-        properties: new Array(
-          HuksCipherSM4.HuksKeyAlgSM4,
-          HuksCipherSM4.HuksKeyPurposeDECRYPT,
-          HuksCipherSM4.HuksKeySM4Size128,
-          HuksCipherSM4.HuksKeySM4PADDINGPKCS7,
-          HuksCipherSM4.HuksKeySM4BLOCKMODECBC,
-          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
-        ),
-        inData: new Uint8Array(encryptedResult),
-      };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
+        HuksOptions = {
+          properties: new Array(
+            HuksCipherSM4.HuksKeyAlgSM4,
+            HuksCipherSM4.HuksKeyPurposeDECRYPT,
+            HuksCipherSM4.HuksKeySM4Size128,
+            HuksCipherSM4.HuksKeySM4PADDINGPKCS7,
+            HuksCipherSM4.HuksKeySM4BLOCKMODECBC,
+            { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
+          ),
+          inData: new Uint8Array(encryptedResult),
+        };
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
+      }
       done();
     });
 
@@ -401,31 +360,21 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData240Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
-      HuksOptions = {
-        properties: new Array(
-          HuksCipherSM4.HuksKeyAlgSM4,
-          HuksCipherSM4.HuksKeyPurposeDECRYPT,
-          HuksCipherSM4.HuksKeySM4Size128,
-          HuksCipherSM4.HuksKeySM4PADDINGPKCS7,
-          HuksCipherSM4.HuksKeySM4BLOCKMODECBC,
-          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
-        ),
-        inData: new Uint8Array(encryptedResult),
-      };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
+        HuksOptions = {
+          properties: new Array(
+            HuksCipherSM4.HuksKeyAlgSM4,
+            HuksCipherSM4.HuksKeyPurposeDECRYPT,
+            HuksCipherSM4.HuksKeySM4Size128,
+            HuksCipherSM4.HuksKeySM4PADDINGPKCS7,
+            HuksCipherSM4.HuksKeySM4BLOCKMODECBC,
+            { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
+          ),
+          inData: new Uint8Array(encryptedResult),
+        };
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
+      }
       done();
     });
 
@@ -445,13 +394,9 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData48Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
+      }
       done();
     });
 
@@ -471,13 +416,9 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData240Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
+      }
       done();
     });
 
@@ -498,13 +439,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData48Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
       HuksOptions = {
         properties: new Array(
           HuksCipherSM4.HuksKeyAlgSM4,
@@ -516,13 +451,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(encryptedResult),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
       done();
     });
 
@@ -542,13 +471,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData240Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
       HuksOptions = {
         properties: new Array(
           HuksCipherSM4.HuksKeyAlgSM4,
@@ -560,13 +483,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(encryptedResult),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
       done();
     });
 
@@ -586,13 +503,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData48Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
       done();
     });
 
@@ -612,13 +523,7 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData240Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
       done();
     });
 
@@ -639,31 +544,21 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData48Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
-      HuksOptions = {
-        properties: new Array(
-          HuksCipherSM4.HuksKeyAlgSM4,
-          HuksCipherSM4.HuksKeyPurposeDECRYPT,
-          HuksCipherSM4.HuksKeySM4Size128,
-          HuksCipherSM4.HuksKeySM4PADDINGNONE,
-          HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
-          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
-        ),
-        inData: new Uint8Array(encryptedResult),
-      };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
+        HuksOptions = {
+          properties: new Array(
+            HuksCipherSM4.HuksKeyAlgSM4,
+            HuksCipherSM4.HuksKeyPurposeDECRYPT,
+            HuksCipherSM4.HuksKeySM4Size128,
+            HuksCipherSM4.HuksKeySM4PADDINGNONE,
+            HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
+            { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
+          ),
+          inData: new Uint8Array(encryptedResult),
+        };
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
+      }
       done();
     });
 
@@ -683,31 +578,21 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData240Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
-      HuksOptions = {
-        properties: new Array(
-          HuksCipherSM4.HuksKeyAlgSM4,
-          HuksCipherSM4.HuksKeyPurposeDECRYPT,
-          HuksCipherSM4.HuksKeySM4Size128,
-          HuksCipherSM4.HuksKeySM4PADDINGNONE,
-          HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
-          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
-        ),
-        inData: new Uint8Array(encryptedResult),
-      };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
+        HuksOptions = {
+          properties: new Array(
+            HuksCipherSM4.HuksKeyAlgSM4,
+            HuksCipherSM4.HuksKeyPurposeDECRYPT,
+            HuksCipherSM4.HuksKeySM4Size128,
+            HuksCipherSM4.HuksKeySM4PADDINGNONE,
+            HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
+            { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
+          ),
+          inData: new Uint8Array(encryptedResult),
+        };
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
+      }
       done();
     });
 
@@ -727,13 +612,9 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData48Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
+      }
       done();
     });
 
@@ -753,13 +634,9 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData240Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
+      }
       done();
     });
 
@@ -780,31 +657,21 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData48Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
-      HuksOptions = {
-        properties: new Array(
-          HuksCipherSM4.HuksKeyAlgSM4,
-          HuksCipherSM4.HuksKeyPurposeDECRYPT,
-          HuksCipherSM4.HuksKeySM4Size128,
-          HuksCipherSM4.HuksKeySM4PADDINGPKCS7,
-          HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
-          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
-        ),
-        inData: new Uint8Array(encryptedResult),
-      };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
+        HuksOptions = {
+          properties: new Array(
+            HuksCipherSM4.HuksKeyAlgSM4,
+            HuksCipherSM4.HuksKeyPurposeDECRYPT,
+            HuksCipherSM4.HuksKeySM4Size128,
+            HuksCipherSM4.HuksKeySM4PADDINGPKCS7,
+            HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
+            { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
+          ),
+          inData: new Uint8Array(encryptedResult),
+        };
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
+      }
       done();
     });
 
@@ -824,31 +691,21 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: plainData240Bytes,
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        true
-      );
-      HuksOptions = {
-        properties: new Array(
-          HuksCipherSM4.HuksKeyAlgSM4,
-          HuksCipherSM4.HuksKeyPurposeDECRYPT,
-          HuksCipherSM4.HuksKeySM4Size128,
-          HuksCipherSM4.HuksKeySM4PADDINGPKCS7,
-          HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
-          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
-        ),
-        inData: new Uint8Array(encryptedResult),
-      };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'finish',
-        false
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', true);
+        HuksOptions = {
+          properties: new Array(
+            HuksCipherSM4.HuksKeyAlgSM4,
+            HuksCipherSM4.HuksKeyPurposeDECRYPT,
+            HuksCipherSM4.HuksKeySM4Size128,
+            HuksCipherSM4.HuksKeySM4PADDINGPKCS7,
+            HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
+            { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
+          ),
+          inData: new Uint8Array(encryptedResult),
+        };
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'finish', false);
+      }
       done();
     });
 
@@ -868,13 +725,9 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData48Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
+      }
       done();
     });
 
@@ -894,13 +747,9 @@ export default function SecurityHuksCipherSM4BasicPromiseJsunit() {
         ),
         inData: new Uint8Array(plainData240Bytes),
       };
-      await publicCipherFunc(
-        srcKeyAlias,
-        genHuksOptions,
-        HuksOptions,
-        'abort',
-        true
-      );
+      if (useSoftware) {
+        await publicCipherFunc(srcKeyAlias, genHuksOptions, HuksOptions, 'abort', true);
+      }
       done();
     });
   });

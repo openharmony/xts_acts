@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import * as param from '../publicParam';
+import huks from '@ohos.security.huks';
 let DSA_COMMON_SIZE = 1024;
 let HuksSignVerifyDSA = {
   HuksTagDSACOMMONSIZE: {

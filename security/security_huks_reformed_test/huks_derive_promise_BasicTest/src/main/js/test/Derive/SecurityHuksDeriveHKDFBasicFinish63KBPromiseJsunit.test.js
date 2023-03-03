@@ -27,35 +27,286 @@ let HuksOptions63kb = {
     HuksDeriveHKDF.HuksKeyAlgAES,
     HuksDeriveHKDF.HuksKeyPurposeHKDF,
     HuksDeriveHKDF.HuksTagHKDFDigestSHA256,
-    HuksDeriveHKDF.HuksKeyHKDFSize128
+    HuksDeriveHKDF.HuksKeyHKDFSize192
   ),
   inData: srcData63Kb,
 };
 
 export default function SecurityHuksDeriveHKDFBasicFinish63KBPromiseJsunit() {
-describe('SecurityHuksDeriveHKDFBasicFinish63KBPromiseJsunit', function () {
-  it('testReformedDeriveHKDF101', 0, async function (done) {
-    const srcKeyAliesFirst = 'testDeriveHKDFSize128SHA256Finish63KBDeriveKeyAlias_01_101';
-    let huksOptionsFinish = {
-      properties: new Array(
-        HuksDeriveHKDF.HuksKeySTORAGE,
-        HuksDeriveHKDF.HuksKeyISKEYALIAS,
-        HuksDeriveHKDF.HuksKeyALGORITHMAES,
-        HuksDeriveHKDF.HuksKeySIZE256,
-        HuksDeriveHKDF.HuksKeyPurposeENCRYPTDECRYPT,
-        HuksDeriveHKDF.HuksKeyDIGESTNONE,
-        {
-          tag: HksTag.HKS_TAG_KEY_ALIAS,
-          value: stringToUint8Array(srcKeyAliesFirst),
-        },
-        HuksDeriveHKDF.HuksKeyPADDINGNONE,
-        HuksDeriveHKDF.HuksKeyBLOCKMODEECB
-      ),
-      inData: srcData63Kb,
-    };
-    let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF,HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
-    await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
-    done();
+  describe('SecurityHuksDeriveHKDFBasicFinish63KBPromiseJsunit', function () {
+    it('testReformedDeriveHKDF101', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize192SHA256Finish63KBDeriveKeyAlias_01_101';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeySTORAGE,
+          HuksDeriveHKDF.HuksKeyISKEYALIAS,
+          HuksDeriveHKDF.HuksKeyALGORITHMAES,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksDeriveHKDF.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize192SHA256Finish63KBDerive108', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize192SHA256Finish63KBDeriveKeyAlias_01_108';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeyALGORITHMAES,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeDERIVE,
+          HuksDeriveHKDF.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize192SHA256Finish63KBDerive130', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize192SHA256Finish63KBDeriveKeyAlias_01_130';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeyALGORITHMHMAC,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeMAC,
+          HuksDeriveHKDF.HuksKeyDIGESTSHA256,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize256SHA256Finish63KBDerive101', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA256Finish63KBDeriveKeyAlias_01_101';
+      HuksOptions63kb.properties.splice(3, 1, HuksDeriveHKDF.HuksKeyHKDFSize256);
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeySTORAGE,
+          HuksDeriveHKDF.HuksKeyISKEYALIAS,
+          HuksDeriveHKDF.HuksKeyALGORITHMAES,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksDeriveHKDF.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize256SHA256Finish63KBDerive108', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA256Finish63KBDeriveKeyAlias_01_108';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeyALGORITHMAES,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeDERIVE,
+          HuksDeriveHKDF.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize256SHA256Finish63KBDerive130', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA256Finish63KBDeriveKeyAlias_01_130';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeyALGORITHMHMAC,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeMAC,
+          HuksDeriveHKDF.HuksKeyDIGESTSHA256,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize256SHA384Finish63KBDerive101', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA384Finish63KBDeriveKeyAlias_01_101';
+      HuksOptions63kb.properties.splice(2, 1, HuksDeriveHKDF.HuksTagHKDFDigestSHA384);
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeySTORAGE,
+          HuksDeriveHKDF.HuksKeyISKEYALIAS,
+          HuksDeriveHKDF.HuksKeyALGORITHMAES,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksDeriveHKDF.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize256SHA384Finish63KBDerive108', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA384Finish63KBDeriveKeyAlias_01_108';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeyALGORITHMAES,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeDERIVE,
+          HuksDeriveHKDF.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize256SHA384Finish63KBDerive130', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA384Finish63KBDeriveKeyAlias_01_130';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeyALGORITHMHMAC,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeMAC,
+          HuksDeriveHKDF.HuksKeyDIGESTSHA256,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize256SHA512Finish63KBDerive101', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA512Finish63KBDeriveKeyAlias_01_101';
+      HuksOptions63kb.properties.splice(2, 1, HuksDeriveHKDF.HuksTagHKDFDigestSHA512);
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeySTORAGE,
+          HuksDeriveHKDF.HuksKeyISKEYALIAS,
+          HuksDeriveHKDF.HuksKeyALGORITHMAES,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksDeriveHKDF.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize256SHA512Finish63KBDerive108', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA512Finish63KBDeriveKeyAlias_01_108';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeyALGORITHMAES,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeDERIVE,
+          HuksDeriveHKDF.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
+
+    it('testDeriveHKDFSize256SHA512Finish63KBDerive130', 0, async function (done) {
+      const srcKeyAliesFirst = 'testDeriveHKDFSize256SHA512Finish63KBDeriveKeyAlias_01_130';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksDeriveHKDF.HuksKeyALGORITHMHMAC,
+          HuksDeriveHKDF.HuksKeySIZE256,
+          HuksDeriveHKDF.HuksKeyPurposeMAC,
+          HuksDeriveHKDF.HuksKeyDIGESTSHA256,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksDeriveHKDF.HuksKeyPADDINGNONE,
+          HuksDeriveHKDF.HuksKeyBLOCKMODEGCM
+        ),
+        inData: srcData63Kb,
+      };
+      let deriveArray = new Array(HuksDeriveHKDF.HuksKeyAlgHKDF, HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
+      await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
+      done();
+    });
   });
-});
 }

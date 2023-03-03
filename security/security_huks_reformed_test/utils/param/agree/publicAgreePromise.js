@@ -142,6 +142,7 @@ async function publicAgreeFinishAbortFunc(HuksOptionsFinish, thirdInderfaceName)
 
 async function publicAgreeDeleteFunc(srcKeyAlies, HuksOptions) {
   console.info(`enter promise deleteKeyItem`);
+  console.info(`promise: deleteKeyItem now, data = ${srcKeyAlies}`);
   try {
     await huks.deleteKeyItem(srcKeyAlies, HuksOptions)
       .then((data) => {

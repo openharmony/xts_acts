@@ -14,6 +14,7 @@
  */
 
 import * as param from '../publicParam';
+import huks from '@ohos.security.huks';
 
 let HuksCipherAES = {
   HuksKeyAlgAES: {
@@ -94,6 +95,10 @@ let HuksCipherRSA = {
   HuksKeyRSASize512: {
     tag: param.HksTag.HKS_TAG_KEY_SIZE,
     value: param.HksKeySize.HKS_RSA_KEY_SIZE_512,
+  },
+  HuksKeyRSASize4096: {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
   },
   HuksKeyRSAPADDINGNONE: {
     tag: param.HksTag.HKS_TAG_PADDING,
