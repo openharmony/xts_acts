@@ -124,7 +124,7 @@ export default function AccountTest() {
                 scalableData:data
             };
             accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
-                accountAbility.queryOsAccountDistributedInfo(function (data) {
+                accountAbility.queryOsAccountDistributedInfo(function (err, data) {
                     console.debug('====>account_updateOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id).assertEqual('12345')
