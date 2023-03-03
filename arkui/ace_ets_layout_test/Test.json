@@ -9,7 +9,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ArkUIActsLayoutTest.hap"
+            "ActsAceEtsLayoutTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
