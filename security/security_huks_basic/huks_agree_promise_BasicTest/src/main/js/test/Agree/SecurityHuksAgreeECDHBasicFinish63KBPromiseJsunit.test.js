@@ -22,58 +22,47 @@ import { HksTag } from '../../../../../../utils/param/publicParam';
 
 let srcData63 = Data.Date63KB;
 let srcData63Kb = stringToUint8Array(srcData63);
-
-let HuksOptions63kb = {
-  properties: new Array(
-    HuksAgreeECDH.HuksKeyAlgECC,
-    HuksAgreeECDH.HuksKeyPurposeECDH,
-    HuksAgreeECDH.HuksKeyECCSize224,
-    HuksAgreeECDH.HuksKeyECCDIGEST,
-    HuksAgreeECDH.HuksKeyECCPADDING,
-    HuksAgreeECDH.HuksKeyECCBLOCKMODE
-  ),
-  inData: srcData63Kb,
-};
+let HuksOptions63kb = {};
 
 export default function SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit() {
-describe('SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit', function () {
-  beforeEach(function () {
-    HuksOptions63kb = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeyAlgECC,
-        HuksAgreeECDH.HuksKeyPurposeECDH,
-        HuksAgreeECDH.HuksKeyECCSize224,
-        HuksAgreeECDH.HuksKeyECCDIGEST,
-        HuksAgreeECDH.HuksKeyECCPADDING,
-        HuksAgreeECDH.HuksKeyECCBLOCKMODE
-      ),
-      inData: srcData63Kb,
-    };
-    console.info('test beforeEach called');
-  });
+  describe('SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit', function () {
+    beforeEach(function () {
+      HuksOptions63kb = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyAlgECC,
+          HuksAgreeECDH.HuksKeyPurposeECDH,
+          HuksAgreeECDH.HuksKeyECCSize256,
+          HuksAgreeECDH.HuksKeyECCDIGEST,
+          HuksAgreeECDH.HuksKeyECCPADDING,
+          HuksAgreeECDH.HuksKeyECCBLOCKMODE
+        ),
+        inData: srcData63Kb,
+      };
+      console.info('test beforeEach called');
+    });
 
-  it('testAgreeECDH101', 0, async function (done) {
-    const srcKeyAliesFirst = 'testAgreeECDHSize224Finish63KBAgreeKeyAlias_01_101';
-    const srcKeyAliesSecond = 'testAgreeECDHSize224Finish63KBAgreeKeyAlias_02_101';
-    let huksOptionsFinish = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeySTORAGE,
-        HuksAgreeECDH.HuksKeyISKEYALIAS,
-        HuksAgreeECDH.HuksKeyALGORITHMAES,
-        HuksAgreeECDH.HuksKeySIZE256,
-        HuksAgreeECDH.HuksKeyPurposeENCRYPTDECRYPT,
-        HuksAgreeECDH.HuksKeyDIGESTNONE,
-        {
-          tag: HksTag.HKS_TAG_KEY_ALIAS,
-          value: stringToUint8Array(srcKeyAliesFirst),
-        },
-        HuksAgreeECDH.HuksKeyPADDINGNONE,
-        HuksAgreeECDH.HuksKeyBLOCKMODEECB
-      ),
-      inData: srcData63Kb,
-    };
-    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish');
-    done();
+    it('testAgreeECDH101', 0, async function (done) {
+      const srcKeyAliesFirst = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_01_101';
+      const srcKeyAliesSecond = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_02_101';
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeySTORAGE,
+          HuksAgreeECDH.HuksKeyISKEYALIAS,
+          HuksAgreeECDH.HuksKeyALGORITHMAES,
+          HuksAgreeECDH.HuksKeySIZE256,
+          HuksAgreeECDH.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksAgreeECDH.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksAgreeECDH.HuksKeyPADDINGNONE,
+          HuksAgreeECDH.HuksKeyBLOCKMODEECB
+        ),
+        inData: srcData63Kb,
+      };
+      await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish');
+      done();
+    });
   });
-});
 }

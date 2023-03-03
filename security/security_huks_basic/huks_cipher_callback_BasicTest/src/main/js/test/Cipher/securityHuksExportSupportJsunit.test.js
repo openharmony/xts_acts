@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, beforeAll } from '@ohos/hypium';
 import { HuksCipherRSA } from '../../../../../../utils/param/cipher/publicCipherParam';
-import { stringToUint8Array } from '../../../../../../utils/param/publicFunc';
+import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import huks from '@ohos.security.huks'
 import { HuksKeyAlgX25519, HuksAgreeECDH } from '../../../../../../utils/param/agree/publicAgreeParam';
 import {
@@ -26,6 +26,7 @@ import {
 } from '../../../../../../utils/param/signverify/publicSignverifyParam';
 let gInData64 = 'RSA_64_ttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
 let gInData64Array = stringToUint8Array(gInData64);
+let useSoftware = true;
 
 async function publicGenerateKeyFunc(srcKeyAlies, HuksOptions) {
   await generateKey(srcKeyAlies, HuksOptions)
@@ -105,359 +106,375 @@ function deleteKey(srcKeyAlies, HuksOptions) {
 }
 
 export default function securityHuksExportSupportJsunit() {
-describe('securityHuksExportSupportJsunit', function () {
-  // HKS_SUPPORT_SM4_CBC_NOPADDING
-  it('HUKS_Basic_Capability_Export_0100', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_0100";
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyRSA.HuksKeyAlgRSA,
-        HuksSignVerifyRSA.HuksKeyRSASize512,
-        HuksCipherRSA.HuksKeyPurposeDECRYPT,
-        HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-        HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-        HuksCipherRSA.HuksKeyRSADIGESTSHA256
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_0200', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_0200";
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyRSA.HuksKeyAlgRSA,
-        HuksSignVerifyRSA.HuksKeyRSASize768,
-        HuksCipherRSA.HuksKeyPurposeDECRYPT,
-        HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-        HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-        HuksCipherRSA.HuksKeyRSADIGESTSHA256
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_0300', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_0300";
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyRSA.HuksKeyAlgRSA,
-        HuksSignVerifyRSA.HuksKeyRSASize1024,
-        HuksCipherRSA.HuksKeyPurposeDECRYPT,
-        HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-        HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-        HuksCipherRSA.HuksKeyRSADIGESTSHA256
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_0400', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_0400";
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyRSA.HuksKeyAlgRSA,
-        HuksSignVerifyRSA.HuksKeyRSASize2048,
-        HuksCipherRSA.HuksKeyPurposeDECRYPT,
-        HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-        HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-        HuksCipherRSA.HuksKeyRSADIGESTSHA256
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_0500', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_0500";
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyRSA.HuksKeyAlgRSA,
-        HuksSignVerifyRSA.HuksKeyRSASize3072,
-        HuksCipherRSA.HuksKeyPurposeDECRYPT,
-        HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-        HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-        HuksCipherRSA.HuksKeyRSADIGESTSHA256
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_0600', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_0600";
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyRSA.HuksKeyAlgRSA,
-        HuksSignVerifyRSA.HuksKeyRSASize4096,
-        HuksCipherRSA.HuksKeyPurposeDECRYPT,
-        HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-        HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-        HuksCipherRSA.HuksKeyRSADIGESTSHA256
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_0700', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_0700";
-    let HuksOptions = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeyAlgECC,
-        HuksAgreeECDH.HuksKeyECCSize224,
-        HuksAgreeECDH.HuksKeyPurposeECDH,
-        HuksAgreeECDH.HuksKeyECCDIGEST
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_0800', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_0800";
-    let HuksOptions = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeyAlgECC,
-        HuksAgreeECDH.HuksKeyECCSize256,
-        HuksAgreeECDH.HuksKeyPurposeECDH,//没找到
-        HuksAgreeECDH.HuksKeyECCDIGEST
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_0900', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_0900";
-    let HuksOptions = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeyAlgECC,
-        HuksAgreeECDH.HuksKeyECCSize384,
-        HuksAgreeECDH.HuksKeyPurposeECDH,//没找到
-        HuksAgreeECDH.HuksKeyECCDIGEST
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_1000', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_1000";
-    let HuksOptions = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeyAlgECC,
-        HuksAgreeECDH.HuksKeyECCSize521,
-        HuksAgreeECDH.HuksKeyPurposeECDH,//没找到
-        HuksAgreeECDH.HuksKeyECCDIGEST
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_1100', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_1100";
-    let HuksOptions = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeyAlgECC,
-        HuksAgreeECDH.HuksKeyPurposeECDH,
-        HuksAgreeECDH.HuksKeyECCSize224,
-        HuksAgreeECDH.HuksKeyECCDIGEST,
-        HuksAgreeECDH.HuksKeyECCPADDING,
-        HuksAgreeECDH.HuksKeyECCBLOCKMODE,
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_1200', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_1200";
-    let HuksOptions = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeyAlgECC,
-        HuksAgreeECDH.HuksKeyPurposeECDH,
-        HuksAgreeECDH.HuksKeyECCSize256,
-        HuksAgreeECDH.HuksKeyECCDIGEST,
-        HuksAgreeECDH.HuksKeyECCPADDING,
-        HuksAgreeECDH.HuksKeyECCBLOCKMODE
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_1300', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_1300";
-    let HuksOptions = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeyAlgECC,
-        HuksAgreeECDH.HuksKeyPurposeECDH,
-        HuksAgreeECDH.HuksKeyECCSize384,
-        HuksAgreeECDH.HuksKeyECCDIGEST,
-        HuksAgreeECDH.HuksKeyECCPADDING,
-        HuksAgreeECDH.HuksKeyECCBLOCKMODE
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_1400', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_1400";
-    let HuksOptions = {
-      properties: new Array(
-        HuksAgreeECDH.HuksKeyAlgECC,
-        HuksAgreeECDH.HuksKeyPurposeECDH,
-        HuksAgreeECDH.HuksKeyECCSize521,
-        HuksAgreeECDH.HuksKeyECCDIGEST,
-        HuksAgreeECDH.HuksKeyECCPADDING,
-        HuksAgreeECDH.HuksKeyECCBLOCKMODE
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_1500', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_1500";
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyED25519.HuksKeyAlgED25519,
-        HuksSignVerifyED25519.HuksKeyRSAPurposeSINGVERIFY,
-        HuksSignVerifyED25519.HuksKeyED25519Size256,
-        HuksSignVerifyED25519.HuksTagDigestSHA1
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_1600', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_1600";
-    let HuksOptions = {
-      properties: new Array(
-        HuksKeyAlgX25519.HuksKeyAlgX25519,
-        HuksKeyAlgX25519.HuksKeyCURVE25519Size256,
-        HuksKeyAlgX25519.HuksKeyDIGEST,
-        HuksKeyAlgX25519.HuksKeyPADDING,
-        HuksKeyAlgX25519.HuksKeyPurposeAGREE,
-        HuksKeyAlgX25519.HuksKeyBLOCKMODE
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_1700', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_1700";
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyDSA.HuksKeyAlgDSA,
-        HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN,
-        HuksSignVerifyDSA.HuksTagDSADigestSHA1,
-        HuksSignVerifyDSA.HuksKeySIZE1024
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_1800', 0, async function (done) {
-    let srcKeyAlies = "HUKS_Basic_Capability_Export_1800";
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifySM2.HuksKeyAlgSM2,
-        HuksSignVerifySM2.HuksKeySM2PurposeSIGN,
-        HuksSignVerifySM2.HuksKeySize256,
-        HuksSignVerifySM2.HuksTagSM2DigestSM3,
-      ),
-      inData: gInData64Array,
-    };
-    await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
-    await publicExportKeyFunc(srcKeyAlies, HuksOptions);
-    await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
-    done();
-  });
-
-  it('HUKS_Basic_Capability_Export_2000', 0, async function (done) {
-    const srcKeyAlies = '****'
-    let HuksOptions = {
-      properties: new Array(
-        HuksCipherRSA.HuksKeyAlgRSA,
-        HuksCipherRSA.HuksKeyPurposeENCRYPT,
-        HuksCipherRSA.HuksKeyRSASize512,
-        HuksCipherRSA.HuksKeyRSAPADDINGNONE,
-        HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
-        HuksCipherRSA.HuksKeyRSADIGESTSHA256,
-      ),
-      inData: gInData64Array,
-    };
-    await exportkey(srcKeyAlies, HuksOptions)
-    .then((data) => {
-      console.log(`test ExportKey data: ${JSON.stringify(data)}`);
-      expect(null).assertFail();
+  describe('securityHuksExportSupportJsunit', function () {
+    beforeAll(async function (done) {
+      useSoftware = await checkSoftware();
+      done();
     })
-    .catch((err) => {
-      console.log('test ImportKey err information: ' + JSON.stringify(err));
-      expect(err.code == -13).assertTrue();
+    // HKS_SUPPORT_SM4_CBC_NOPADDING
+    it('HUKS_Basic_Capability_Export_0100', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_0100";
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyRSA.HuksKeyAlgRSA,
+          HuksSignVerifyRSA.HuksKeyRSASize512,
+          HuksCipherRSA.HuksKeyPurposeDECRYPT,
+          HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+          HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+          HuksCipherRSA.HuksKeyRSADIGESTSHA256
+        ),
+        inData: gInData64Array,
+      };
+      if (useSoftware) {
+        await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+      }
+      done();
     });
-    done();
+
+    it('HUKS_Basic_Capability_Export_0200', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_0200";
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyRSA.HuksKeyAlgRSA,
+          HuksSignVerifyRSA.HuksKeyRSASize768,
+          HuksCipherRSA.HuksKeyPurposeDECRYPT,
+          HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+          HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+          HuksCipherRSA.HuksKeyRSADIGESTSHA256
+        ),
+        inData: gInData64Array,
+      };
+      if (useSoftware) {
+        await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+      }
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_0300', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_0300";
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyRSA.HuksKeyAlgRSA,
+          HuksSignVerifyRSA.HuksKeyRSASize1024,
+          HuksCipherRSA.HuksKeyPurposeDECRYPT,
+          HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+          HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+          HuksCipherRSA.HuksKeyRSADIGESTSHA256
+        ),
+        inData: gInData64Array,
+      };
+      if (useSoftware) {
+        await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+      }
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_0400', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_0400";
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyRSA.HuksKeyAlgRSA,
+          HuksSignVerifyRSA.HuksKeyRSASize2048,
+          HuksCipherRSA.HuksKeyPurposeDECRYPT,
+          HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+          HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+          HuksCipherRSA.HuksKeyRSADIGESTSHA256
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_0500', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_0500";
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyRSA.HuksKeyAlgRSA,
+          HuksSignVerifyRSA.HuksKeyRSASize3072,
+          HuksCipherRSA.HuksKeyPurposeDECRYPT,
+          HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+          HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+          HuksCipherRSA.HuksKeyRSADIGESTSHA256
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_0600', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_0600";
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyRSA.HuksKeyAlgRSA,
+          HuksSignVerifyRSA.HuksKeyRSASize4096,
+          HuksCipherRSA.HuksKeyPurposeDECRYPT,
+          HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+          HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+          HuksCipherRSA.HuksKeyRSADIGESTSHA256
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_0700', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_0700";
+      let HuksOptions = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyAlgECC,
+          HuksAgreeECDH.HuksKeyECCSize224,
+          HuksAgreeECDH.HuksKeyPurposeECDH,
+          HuksAgreeECDH.HuksKeyECCDIGEST
+        ),
+        inData: gInData64Array,
+      };
+      if (useSoftware) {
+        await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+      }
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_0800', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_0800";
+      let HuksOptions = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyAlgECC,
+          HuksAgreeECDH.HuksKeyECCSize256,
+          HuksAgreeECDH.HuksKeyPurposeECDH,
+          HuksAgreeECDH.HuksKeyECCDIGEST
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_0900', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_0900";
+      let HuksOptions = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyAlgECC,
+          HuksAgreeECDH.HuksKeyECCSize384,
+          HuksAgreeECDH.HuksKeyPurposeECDH,
+          HuksAgreeECDH.HuksKeyECCDIGEST
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_1000', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_1000";
+      let HuksOptions = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyAlgECC,
+          HuksAgreeECDH.HuksKeyECCSize521,
+          HuksAgreeECDH.HuksKeyPurposeECDH,
+          HuksAgreeECDH.HuksKeyECCDIGEST
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_1100', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_1100";
+      let HuksOptions = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyAlgECC,
+          HuksAgreeECDH.HuksKeyPurposeECDH,
+          HuksAgreeECDH.HuksKeyECCSize224,
+          HuksAgreeECDH.HuksKeyECCDIGEST,
+          HuksAgreeECDH.HuksKeyECCPADDING,
+          HuksAgreeECDH.HuksKeyECCBLOCKMODE,
+        ),
+        inData: gInData64Array,
+      };
+      if (useSoftware) {
+        await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+      }
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_1200', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_1200";
+      let HuksOptions = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyAlgECC,
+          HuksAgreeECDH.HuksKeyPurposeECDH,
+          HuksAgreeECDH.HuksKeyECCSize256,
+          HuksAgreeECDH.HuksKeyECCDIGEST,
+          HuksAgreeECDH.HuksKeyECCPADDING,
+          HuksAgreeECDH.HuksKeyECCBLOCKMODE
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_1300', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_1300";
+      let HuksOptions = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyAlgECC,
+          HuksAgreeECDH.HuksKeyPurposeECDH,
+          HuksAgreeECDH.HuksKeyECCSize384,
+          HuksAgreeECDH.HuksKeyECCDIGEST,
+          HuksAgreeECDH.HuksKeyECCPADDING,
+          HuksAgreeECDH.HuksKeyECCBLOCKMODE
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_1400', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_1400";
+      let HuksOptions = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyAlgECC,
+          HuksAgreeECDH.HuksKeyPurposeECDH,
+          HuksAgreeECDH.HuksKeyECCSize521,
+          HuksAgreeECDH.HuksKeyECCDIGEST,
+          HuksAgreeECDH.HuksKeyECCPADDING,
+          HuksAgreeECDH.HuksKeyECCBLOCKMODE
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_1500', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_1500";
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyED25519.HuksKeyAlgED25519,
+          HuksSignVerifyED25519.HuksKeyRSAPurposeSINGVERIFY,
+          HuksSignVerifyED25519.HuksKeyED25519Size256,
+          HuksSignVerifyED25519.HuksTagDigestSHA256
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_1600', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_1600";
+      let HuksOptions = {
+        properties: new Array(
+          HuksKeyAlgX25519.HuksKeyAlgX25519,
+          HuksKeyAlgX25519.HuksKeyCURVE25519Size256,
+          HuksKeyAlgX25519.HuksKeyDIGEST,
+          HuksKeyAlgX25519.HuksKeyPADDING,
+          HuksKeyAlgX25519.HuksKeyPurposeAGREE,
+          HuksKeyAlgX25519.HuksKeyBLOCKMODE
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_1700', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_1700";
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyDSA.HuksKeyAlgDSA,
+          HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN,
+          HuksSignVerifyDSA.HuksTagDSADigestSHA1,
+          HuksSignVerifyDSA.HuksKeySIZE1024
+        ),
+        inData: gInData64Array,
+      };
+      if (useSoftware) {
+        await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+        await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+        await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+      }
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_1800', 0, async function (done) {
+      let srcKeyAlies = "HUKS_Basic_Capability_Export_1800";
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifySM2.HuksKeyAlgSM2,
+          HuksSignVerifySM2.HuksKeySM2PurposeSIGN,
+          HuksSignVerifySM2.HuksKeySize256,
+          HuksSignVerifySM2.HuksTagSM2DigestSM3,
+        ),
+        inData: gInData64Array,
+      };
+      await publicGenerateKeyFunc(srcKeyAlies, HuksOptions);
+      await publicExportKeyFunc(srcKeyAlies, HuksOptions);
+      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions)
+      done();
+    });
+
+    it('HUKS_Basic_Capability_Export_2000', 0, async function (done) {
+      const srcKeyAlies = '****'
+      let HuksOptions = {
+        properties: new Array(
+          HuksCipherRSA.HuksKeyAlgRSA,
+          HuksCipherRSA.HuksKeyPurposeENCRYPT,
+          HuksCipherRSA.HuksKeyRSASize4096,
+          HuksCipherRSA.HuksKeyRSAPADDINGNONE,
+          HuksCipherRSA.HuksKeyRSABLOCKMODEECB,
+          HuksCipherRSA.HuksKeyRSADIGESTSHA256,
+        ),
+        inData: gInData64Array,
+      };
+      await exportkey(srcKeyAlies, HuksOptions)
+        .then((data) => {
+          console.log(`test ExportKey data: ${JSON.stringify(data)}`);
+          expect(null).assertFail();
+        })
+        .catch((err) => {
+          console.log('test ImportKey err information: ' + JSON.stringify(err));
+          expect(err.code == -13).assertTrue();
+        });
+      done();
+    });
   });
-});
 }

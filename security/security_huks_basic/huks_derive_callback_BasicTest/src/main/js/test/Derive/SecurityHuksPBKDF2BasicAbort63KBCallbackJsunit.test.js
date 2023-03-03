@@ -27,7 +27,9 @@ let HuksOptions63kb = {
     HuksDerivePBKDF2.HuksKeyAlgAES,
     HuksDerivePBKDF2.HuksKeyPurposePBKDF2,
     HuksDerivePBKDF2.HuksTagPBKDF2DigestSHA256,
-    HuksDerivePBKDF2.HuksKeyPBKDF2Size128
+    HuksDerivePBKDF2.HuksKeyPBKDF2Size256,
+    HuksDerivePBKDF2.HuksKeyPBKDF2Iteration,
+    HuksDerivePBKDF2.HuksKeyPBKDF2Salt
   ),
   inData: srcData63Kb,
 };
@@ -35,7 +37,7 @@ let HuksOptions63kb = {
 export default function SecurityHuksPBKDF2BasicAbort63KBCallbackJsunit() {
 describe('SecurityHuksPBKDF2BasicAbort63KBCallbackJsunit', function () {
   it('testDerivePBKDF2002', 0, async function (done) {
-    const srcKeyAliesFirst = 'testDerivePBKDF2Size128SHA256Abort63KBDeriveKeyAlias_01_001';
+    const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA256Abort63KBDeriveKeyAlias_01_001';
     let huksOptionsFinish = {
       properties: new Array(
         HuksDerivePBKDF2.HuksKeySTORAGE,
@@ -49,7 +51,7 @@ describe('SecurityHuksPBKDF2BasicAbort63KBCallbackJsunit', function () {
           value: stringToUint8Array(srcKeyAliesFirst),
         },
         HuksDerivePBKDF2.HuksKeyPADDINGNONE,
-        HuksDerivePBKDF2.HuksKeyBLOCKMODEECB
+        HuksDerivePBKDF2.HuksKeyBLOCKMODEGCM
       ),
       inData: srcData63Kb,
     };

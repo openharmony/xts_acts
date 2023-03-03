@@ -31,7 +31,7 @@ describe('SecurityHuksAgreeECDHBasicFinish65KBPromiseJsunit', function () {
       properties: new Array(
         HuksAgreeECDH.HuksKeyAlgECC,
         HuksAgreeECDH.HuksKeyPurposeECDH,
-        HuksAgreeECDH.HuksKeyECCSize224,
+        HuksAgreeECDH.HuksKeyECCSize256,
         HuksAgreeECDH.HuksKeyECCDIGEST,
         HuksAgreeECDH.HuksKeyECCPADDING,
         HuksAgreeECDH.HuksKeyECCBLOCKMODE
@@ -42,8 +42,8 @@ describe('SecurityHuksAgreeECDHBasicFinish65KBPromiseJsunit', function () {
   });
 
   it('testReformedAgreeECDH103', 0, async function (done) {
-    const srcKeyAliesFirst = 'testAgreeECDHSize224Finish65KBAgreeKeyAlias_01_101';
-    const srcKeyAliesSecond = 'testAgreeECDHSize224Finish65KBAgreeKeyAlias_02_101';
+    const srcKeyAliesFirst = 'testAgreeECDHSize256Finish65KBAgreeKeyAlias_01_101';
+    const srcKeyAliesSecond = 'testAgreeECDHSize256Finish65KBAgreeKeyAlias_02_101';
     let huksOptionsFinish = {
       properties: new Array(
         HuksAgreeECDH.HuksKeySTORAGE,

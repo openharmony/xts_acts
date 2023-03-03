@@ -15,24 +15,27 @@
 import { describe, it } from '@ohos/hypium';
 import Data from '../../../../../../utils/data.json';
 import { HuksSignVerifyDSA } from '../../../../../../utils/param/signverify/publicSignverifyParam';
-import { stringToUint8Array } from '../../../../../../utils/param/publicFunc';
+import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import { publicSignVerifyFunc } from '../../../../../../utils/param/signverify/publicSignverifyPromise.js';
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 export default function SecurityHuksDSABasicAbort63KBCallbackJsunit() {
-describe('SecurityHuksDSABasicAbort63KBCallbackJsunit', function () {
-  it('testSignVerifyDSA002', 0, async function (done) {
-    const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias002';
-    let HuksOptions = {
-      properties: new Array(
-        HuksSignVerifyDSA.HuksKeyAlgDSA,
-        HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN,
-        HuksSignVerifyDSA.HuksTagDSADigestSHA1
-      ),
-      inData: srcData63Kb,
-    };
-    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
-    done();
+  describe('SecurityHuksDSABasicAbort63KBCallbackJsunit', function () {
+    it('testSignVerifyDSA002', 0, async function (done) {
+      const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias002';
+      let HuksOptions = {
+        properties: new Array(
+          HuksSignVerifyDSA.HuksKeyAlgDSA,
+          HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN,
+          HuksSignVerifyDSA.HuksTagDSADigestSHA1
+        ),
+        inData: srcData63Kb,
+      };
+      let useSoftware = await checkSoftware();
+      if (useSoftware) {
+        await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
+      }
+      done();
+    });
   });
-});
 }

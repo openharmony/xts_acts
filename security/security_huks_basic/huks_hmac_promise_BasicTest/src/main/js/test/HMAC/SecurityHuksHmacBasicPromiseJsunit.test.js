@@ -234,12 +234,12 @@ async function update(handle, HuksOptions) {
 export default function SecurityHuksHmacBasicPromiseJsunit() {
   describe("SecurityHuksHmacBasicPromiseJsunit", function () {
     it("testHmac101", 0, async function (done) {
-      const srcKeyAlies = "testHmacDigestSHA1KeyAlias101";
+      const srcKeyAlies = "testHmacDigestSHA256KeyAlias101";
       let HuksOptions = {
         properties: new Array(
           HuksHmac.HuksKeyAlg,
           HuksHmac.HuksKeyPurpose,
-          HuksHmac.HuksTagDigestSHA1
+          HuksHmac.HuksTagDigestSHA256
         ),
         inData: srcData63Kb,
       };
@@ -248,12 +248,12 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
     });
 
     it("testHmac102", 0, async function (done) {
-      const srcKeyAlies = "testHmacDigestSHA1KeyAlias102";
+      const srcKeyAlies = "testHmacDigestSHA256KeyAlias102";
       let HuksOptions = {
         properties: new Array(
           HuksHmac.HuksKeyAlg,
           HuksHmac.HuksKeyPurpose,
-          HuksHmac.HuksTagDigestSHA1
+          HuksHmac.HuksTagDigestSHA256
         ),
         inData: srcData63Kb,
       };
@@ -262,12 +262,12 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
     });
 
     it("testHmac103", 0, async function (done) {
-      const srcKeyAlies = "testHmacDigestSHA1KeyAlias103";
+      const srcKeyAlies = "testHmacDigestSHA256KeyAlias103";
       let HuksOptions = {
         properties: new Array(
           HuksHmac.HuksKeyAlg,
           HuksHmac.HuksKeyPurpose,
-          HuksHmac.HuksTagDigestSHA1
+          HuksHmac.HuksTagDigestSHA256
         ),
         inData: srcData65Kb,
       };
@@ -276,12 +276,12 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
     });
 
     it("testHmac104", 0, async function (done) {
-      const srcKeyAlies = "testHmacDigestSHA1KeyAlias104";
+      const srcKeyAlies = "testHmacDigestSHA256KeyAlias104";
       let HuksOptions = {
         properties: new Array(
           HuksHmac.HuksKeyAlg,
           HuksHmac.HuksKeyPurpose,
-          HuksHmac.HuksTagDigestSHA1
+          HuksHmac.HuksTagDigestSHA256
         ),
         inData: srcData65Kb,
       };
