@@ -15,8 +15,6 @@
  */
 #include <stdio.h>
 #include <dlfcn.h>
-//#include <memory>
-#include <stdio.h>
 #include <unistd.h>
 
 /* The cJSON structure: */
@@ -64,7 +62,7 @@ int main()
 	}
 	// 返回值不为null，没有修复漏洞，应该收到signal 11段错误提示
 	printf("OpenHarmony-SA-2022-0901 : vulnerable\n");
-	//cJSON_Delete(root);
+      printf("But the vulnerability trigger failed\n");
 
 	return 0;
 }
