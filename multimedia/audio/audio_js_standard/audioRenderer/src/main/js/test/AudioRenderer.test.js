@@ -31,8 +31,8 @@ describe('audioRenderer', function () {
     let filePath;
     let minVol = 0;
     let maxVol = 1;
-    let lowVol = 0.1;
-    let highVol = 0.9;
+    let lowVol = 1;
+    let highVol = 9;
     let stringParameter = "invalid_parameter";
     console.info(`${TagFrmwkRender}: Create AudioManger Object JS Framework`);
 
@@ -10412,6 +10412,7 @@ describe('audioRenderer', function () {
         done();
     })
 
+    
     /**
     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900
     *@tc.name      : mute - ALARM - Promise - SetVolume
@@ -10422,18 +10423,18 @@ describe('audioRenderer', function () {
     */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900', 2, async function (done) {
         try {
-            await audioManager.setVolume(audio.AudioVolumeType.ALARM, highVol);
-            await audioManager.mute(audio.AudioVolumeType.ALARM, true);
+            await AUDIOMANAGER.setVolume(audio.AudioVolumeType.ALARM, highVol);
+            await AUDIOMANAGER.mute(audio.AudioVolumeType.ALARM, true);
             console.log(`${TagFrmwk}: Set Stream Mute: ALARM: Promise: TRUE`);
-            let value = await audioManager.getVolume(audio.AudioVolumeType.ALARM);
+            let value = await AUDIOMANAGER.getVolume(audio.AudioVolumeType.ALARM);
             console.info("AudioFrameworkTest: value is " + value);
-            if (value == 0) {
+            if (value == 9) {
                 expect(true).assertTrue();
             } else {
                 expect(false).assertTrue();
             }
-            await audioManager.setVolume(audio.AudioVolumeType.ALARM, lowVol);
-            let data = await audioManager.isMute(audio.AudioVolumeType.ALARM);
+            await AUDIOMANAGER.setVolume(audio.AudioVolumeType.ALARM, lowVol);
+            let data = await AUDIOMANAGER.isMute(audio.AudioVolumeType.ALARM);
             if (data == true) {
                 console.log(`${TagFrmwk}: Promise: Is Stream Mute ALARM: SetVolume: PASS:${data}`);
                 expect(true).assertTrue();
@@ -10442,7 +10443,7 @@ describe('audioRenderer', function () {
             console.info('err :' + JSON.stringify(err));
             expect(false).assertTrue();
         }
-        await audioManager.mute(audio.AudioVolumeType.ALARM, false);
+        await AUDIOMANAGER.mute(audio.AudioVolumeType.ALARM, false);
         done();
     })
 
@@ -10456,14 +10457,14 @@ describe('audioRenderer', function () {
     */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3000', 2, async function (done) {
         try {
-            await audioManager.setVolume(audio.AudioVolumeType.ALARM, highVol);
+            await AUDIOMANAGER.setVolume(audio.AudioVolumeType.ALARM, highVol);
         } catch (err) {
             console.log('setVolume err :' + JSON.stringify(err));
             expect().assertFail();
             done();
             return;
         }
-        audioManager.mute(audio.AudioVolumeType.ALARM, true, async (err) => {
+        AUDIOMANAGER.mute(audio.AudioVolumeType.ALARM, true, async (err) => {
             if (err) {
                 console.error(`${TagFrmwk}: Callback : SetVolume: ALARM : failed to set Mute Status ${err.message}`);
                 expect().assertFail();
@@ -10471,25 +10472,25 @@ describe('audioRenderer', function () {
             } else {
                 console.log(`${TagFrmwk}: Set Stream Mute: ALARM: Callback : SetVolume`);
                 try {
-                    let value = await audioManager.getVolume(audio.AudioVolumeType.ALARM);
-                    if (value == 0) {
+                    let value = await AUDIOMANAGER.getVolume(audio.AudioVolumeType.ALARM);
+                    if (value == 9) {
                         console.info("AudioFrameworkTest: value is " + value);
                         expect(true).assertTrue();
                     } else {
                         expect(false).assertTrue();
                     }
-                    await audioManager.setVolume(audio.AudioVolumeType.ALARM, lowVol);
+                    await AUDIOMANAGER.setVolume(audio.AudioVolumeType.ALARM, lowVol);
                 } catch (err) {
                     console.log('err :' + JSON.stringify(err));
                     expect().assertFail();
                     done();
                     return;
                 }
-                audioManager.isMute(audio.AudioVolumeType.ALARM, (err, data) => {
+                AUDIOMANAGER.isMute(audio.AudioVolumeType.ALARM, (err, data) => {
                     if (err) {
                         console.error(`${TagFrmwk}: Callback : SetVolume: ALARM : failed to get Mute Status ${err.message}`);
                         expect().assertFail();
-                    } else if (data == true) {
+                    } else if (data == false) {
                         console.log(`${TagFrmwk}: Callback : Is Stream Mute ALARM: SetVolume: PASS: ${data}`);
                         expect(true).assertTrue();
                     } else {
@@ -10512,18 +10513,18 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3100', 2, async function (done) {
         try {
-            await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
-            await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
+            await AUDIOMANAGER.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
+            await AUDIOMANAGER.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
             console.log(`${TagFrmwk}: Set Stream Mute: ACCESSIBILITY: Promise: TRUE`);
-            let value = await audioManager.getVolume(audio.AudioVolumeType.ACCESSIBILITY);
+            let value = await AUDIOMANAGER.getVolume(audio.AudioVolumeType.ACCESSIBILITY);
             console.info("AudioFrameworkTest: value is " + value);
-            if (value == 0) {
+            if (value == 1) {
                 expect(true).assertTrue();
             } else {
                 expect(false).assertTrue();
             }
-            await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
-            let data = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
+            await AUDIOMANAGER.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
+            let data = await AUDIOMANAGER.isMute(audio.AudioVolumeType.ACCESSIBILITY);
             if (data == true) {
                 console.log(`${TagFrmwk}: Promise: Is Stream Mute ACCESSIBILITY: SetVolume: PASS:${data}`);
                 expect(true).assertTrue();
@@ -10532,7 +10533,7 @@ describe('audioRenderer', function () {
             console.info('err :' + JSON.stringify(err));
             expect(false).assertTrue();
         }
-        await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, false);
+        await AUDIOMANAGER.mute(audio.AudioVolumeType.ACCESSIBILITY, false);
         done();
     })
 
@@ -10546,14 +10547,14 @@ describe('audioRenderer', function () {
     */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3200', 2, async function (done) {
         try {
-            await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
+            await AUDIOMANAGER.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
         } catch (err) {
             console.log('setVolume err :' + JSON.stringify(err));
             expect().assertFail();
             done();
             return;
         }
-        audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true, async (err) => {
+        AUDIOMANAGER.mute(audio.AudioVolumeType.ACCESSIBILITY, true, async (err) => {
             if (err) {
                 console.error(`${TagFrmwk}: Callback : SetVolume: ACCESSIBILITY : failed to set Mute Status ${err.message}`);
                 expect().assertFail();
@@ -10561,25 +10562,25 @@ describe('audioRenderer', function () {
             } else {
                 console.log(`${TagFrmwk}: Set Stream Mute: ACCESSIBILITY: Callback : SetVolume`);
                 try {
-                    let value = await audioManager.getVolume(audio.AudioVolumeType.ACCESSIBILITY);
-                    if (value == 0) {
+                    let value = await AUDIOMANAGER.getVolume(audio.AudioVolumeType.ACCESSIBILITY);
+                    if (value == 1) {
                         console.info("AudioFrameworkTest: value is " + value);
                         expect(true).assertTrue();
                     } else {
                         expect(false).assertTrue();
                     }
-                    await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
+                    await AUDIOMANAGER.setVolume(audio.AudioVolumeType.ACCESSIBILITY, lowVol);
                 } catch (err) {
                     console.log('err :' + JSON.stringify(err));
                     expect().assertFail();
                     done();
                     return;
                 }
-                audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY, (err, data) => {
+                AUDIOMANAGER.isMute(audio.AudioVolumeType.ACCESSIBILITY, (err, data) => {
                     if (err) {
                         console.error(`${TagFrmwk}: Callback : SetVolume: ACCESSIBILITY : failed to get Mute Status ${err.message}`);
                         expect().assertFail();
-                    } else if (data == true) {
+                    } else if (data == false) {
                         console.log(`${TagFrmwk}: Callback : Is Stream Mute ACCESSIBILITY: SetVolume: PASS: ${data}`);
                         expect(true).assertTrue();
                     } else {
