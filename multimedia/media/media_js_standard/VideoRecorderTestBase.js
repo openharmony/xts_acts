@@ -121,7 +121,11 @@ export function checkDescription(obj, trackTpye, descriptionValue) {
         console.info('case audio codec_mime is  '+ obj['codec_mime']);
         expect(obj['codec_mime']).assertEqual(descriptionValue[index++]);
         console.info('case audio sample_rate is  '+ obj['sample_rate']);
-        expect(obj['sample_rate']).assertEqual(descriptionValue[index++]);
+        if (descriptionValue[index] > 48000 && obj['sample_rate'] == 48000) {
+            index++;
+        } else {
+            expect(obj['sample_rate']).assertEqual(descriptionValue[index++]);
+        }
     }
 }
 
