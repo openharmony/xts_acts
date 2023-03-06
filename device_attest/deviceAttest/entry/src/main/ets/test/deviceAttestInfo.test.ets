@@ -67,20 +67,20 @@ export default function deviceAttestInfoTest(context, windowStage, abilityStorag
     it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_002', 0, async function (done) {
         console.info('test the enum value of attestResultInfo begin');
         try{
-            deviceAttest.getAttestStatus(async (err, attestResultInfo) => {
-		          if(err){
-			          console.info("!!!====>[FormComponent]2:error_1====>" + JSON.stringify(err));
-                expect(err.code == 202).assertTrue();
-			        }
-			        else{
-			          console.info("!!!====>[FormComponent]2:data====>" + JSON.stringify(attestResultInfo));
-                expect(attestResultInfo.authResult).assertEqual("");
-                expect(attestResultInfo.softwareResult).assertEqual("");
-                expect(attestResultInfo.softwareResultDetail).assertEqual("");
-                expect(attestResultInfo.ticket).assertEqual("");
-			        }
-              done();
-            });
+          deviceAttest.getAttestStatus(async (err, attestResultInfo) => {
+            if(err){
+			        console.info("!!!====>[FormComponent]2:error_1====>" + JSON.stringify(err));
+              expect(err.code == 202).assertTrue();
+			      }
+			      else{
+			        console.info("!!!====>[FormComponent]2:data====>" + JSON.stringify(attestResultInfo));
+              expect(attestResultInfo.authResult).assertEqual("");
+              expect(attestResultInfo.softwareResult).assertEqual("");
+              expect(attestResultInfo.softwareResultDetail).assertEqual("");
+              expect(attestResultInfo.ticket).assertEqual("");
+			      }
+            done();
+          });
         } catch(err) {
           console.info("!!!====>[FormComponent]2:error_2====>" + JSON.stringify(err));
           expect(err.code == 202).assetTrue();
@@ -96,19 +96,19 @@ export default function deviceAttestInfoTest(context, windowStage, abilityStorag
     it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_003', 0, async function (done) {
         console.info('test the enum value of attestResultInfo begin');
         try{
-            let attestResultInfo = deviceAttest.getAttestStatusSync();
-            if(attestResultInfo != null){
-			        console.info("!!!====>[FormComponent]3:data====>" + JSON.stringify(attestResultInfo));
-              expect(attestResultInfo.authResult).assertEqual("");
-              expect(attestResultInfo.softwareResult).assertEqual("");
-              expect(attestResultInfo.softwareResultDetail).assertEqual("");
-              expect(attestResultInfo.ticket).assertEqual("");
-            }
-            else{
-              console.info("!!!====>[FormComponent]3:error_1====>");
-              expect().assetTrue();
-            }
-            done();
+          let attestResultInfo = deviceAttest.getAttestStatusSync();
+          if(attestResultInfo != null){
+			      console.info("!!!====>[FormComponent]3:data====>" + JSON.stringify(attestResultInfo));
+            expect(attestResultInfo.authResult).assertEqual("");
+            expect(attestResultInfo.softwareResult).assertEqual("");
+            expect(attestResultInfo.softwareResultDetail).assertEqual("");
+            expect(attestResultInfo.ticket).assertEqual("");
+          }
+          else{
+            console.info("!!!====>[FormComponent]3:error_1====>");
+            expect().assetTrue();
+          }
+          done();
         } catch(err) {
           console.info("!!!====>[FormComponent]3:error_2====>" + JSON.stringify(err));
           expect(err.code).assertEqual(202);
