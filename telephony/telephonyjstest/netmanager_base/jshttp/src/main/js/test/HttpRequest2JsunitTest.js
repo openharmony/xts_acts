@@ -43,7 +43,7 @@ function dataEnd_on_callback() {
 
 function dataProgress_on_callback(data) {
     console.log("dataProgress_on_callback receive datProgress:" + JSON.stringify(data));
-    dataProgress_on_callback = true;
+    dataProgress_status = true;
 }
 
 export default function HttpRequest2JsunitTest() {
