@@ -13,8 +13,8 @@
 # limitations under the License.
 
 if(cat "~/etc/group" | grep "servicectrl:x:3047:root,shell,system,samgr,hdf_devmgr");then
-	echo "OpenHarmony-SA-2022-1201 testcase pass"
+	echo "OpenHarmony-SA-2022-1001 testcase pass"
 else
-	echo "OpenHarmony-SA-2022-1201 testcase fail"
+	echo "OpenHarmony-SA-2022-1001 testcase fail"
 fi
 
