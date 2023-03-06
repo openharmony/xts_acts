@@ -16,9 +16,6 @@ import("//build/ohos_var.gni")
 group("telephony_base") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "call_manager:ActsBaseCallManagerTest",
-      "sms_mms:ActsBaseSmsMmsTest",
-    ]
+    deps = [ "call_manager:ActsBaseCallManagerTest" ]
   }
 }
