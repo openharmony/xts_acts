@@ -14,7 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsAppRecoveryTestCaller") {
-  hap_profile = "entry/src/ohosTest/module.json"
+  hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
     ":actsapprecoverytestcaller_js_assets",
@@ -33,11 +33,11 @@ ohos_app_scope("actsapprecoverytestcaller_app_profile") {
 }
 
 ohos_js_assets("actsapprecoverytestcaller_js_assets") {
-  source_dir = "entry/src/ohosTest/ets"
+  source_dir = "entry/src/main/ets"
 }
 
 ohos_resources("actsapprecoverytestcaller_resources") {
-  sources = [ "entry/src/ohosTest/resources" ]
+  sources = [ "entry/src/main/resources" ]
   deps = [ ":actsapprecoverytestcaller_app_profile" ]
-  hap_profile = "entry/src/ohosTest/module.json"
+  hap_profile = "entry/src/main/module.json"
 }
