@@ -2180,5 +2180,117 @@ describe('I18nTest', function () {
         expect(value).assertEqual('U_SPACE_SEPARATOR');
     })
 
+    /**
+    * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_0100
+    * @tc.name   normalize the '1e9b 0323' in NFC mode
+    * @tc.desc   get the NFC mode value
+    */
+     it('i18n_normalizer_test_0100', 0, function () {
+        console.log('i18n_normalizer_test_0100 ' + 'start');
+        let str = '\u1e9b\u0323';
+        let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFC);
+        let value = normal.normalize(str);
+        console.log('i18n_normalizer_test_0100 ' + value);
+        expect(value).assertEqual('\u1e9b\u0323');
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_0200
+     * @tc.name   normalize the '1e9b 0323' in NFD mode
+     * @tc.desc   get the NFD mode value
+     */
+    it('i18n_normalizer_test_0200', 0, function () {
+        console.log('i18n_normalizer_test_0200 ' + 'start');
+        let str = '\u1e9b\u0323';
+        let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFD);
+        let value = normal.normalize(str);
+        console.log('i18n_normalizer_test_0200 ' + value);
+        expect(value).assertEqual('\u017f\u0323\u0307');
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_0300
+     * @tc.name   normalize the '1e9b 0323' in NFKC mode
+     * @tc.desc   get the NFKC mode value
+     */
+    it('i18n_normalizer_test_0300', 0, function () {
+        console.log('i18n_normalizer_test_0300 ' + 'start');
+        let str = '\u1e9b\u0323';
+        let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFKC);
+        let value = normal.normalize(str);
+        console.log('i18n_normalizer_test_0300 ' + value);
+        expect(value).assertEqual('\u1e69');
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_0400
+     * @tc.name   normalize the '1e9b 0323' in NFKD mode
+     * @tc.desc   get the NFKD mode value
+     */
+    it('i18n_normalizer_test_0400', 0, function () {
+        console.log('i18n_normalizer_test_0400 ' + 'start');
+        let str = '\u1e9b\u0323';
+        let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFKD);
+        let value = normal.normalize(str);
+        console.log('i18n_normalizer_test_0400 ' + value);
+        expect(value).assertEqual('\u0073\u0323\u0307');
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_0500
+     * @tc.name   normalize the '0032 2075' in NFC mode
+     * @tc.desc   get the NFC mode value
+     */
+    it('i18n_normalizer_test_0500', 0, function () {
+        console.log('i18n_normalizer_test_0500 ' + 'start');
+        let str = '\u0032\u2075';
+        let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFC);
+        let value = normal.normalize(str);
+        console.log('i18n_normalizer_test_0500 ' + value);
+        expect(value).assertEqual('\u0032\u2075');
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_0600
+     * @tc.name   normalize the '0032 2075' in NFD mode
+     * @tc.desc   get the NFD mode value
+     */
+    it('i18n_normalizer_test_0600', 0, function () {
+        console.log('i18n_normalizer_test_0600 ' + 'start');
+        let str = '\u0032\u2075';
+        let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFD);
+        let value = normal.normalize(str);
+        console.log('i18n_normalizer_test_0600 ' + value);
+        expect(value).assertEqual('\u0032\u2075');
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_0700
+     * @tc.name   normalize the '0032 2075' in NFKC mode
+     * @tc.desc   get the NFKC mode value
+     */
+    it('i18n_normalizer_test_0700', 0, function () {
+        console.log('i18n_normalizer_test_0700 ' + 'start');
+        let str = '\u0032\u2075';
+        let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFKC);
+        let value = normal.normalize(str);
+        console.log('i18n_normalizer_test_0700 ' + value);
+        expect(value).assertEqual('\u0032\u0035');
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_0800
+     * @tc.name   normalize the '0032 2075' in NFKD mode
+     * @tc.desc   get the NFKD mode value
+     */
+    it('i18n_normalizer_test_0800', 0, function () {
+        console.log('i18n_normalizer_test_0800 ' + 'start');
+        let str = '\u0032\u2075';
+        let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFKD);
+        let value = normal.normalize(str);
+        console.log('i18n_normalizer_test_0800 ' + value);
+        expect(value).assertEqual('\u0032\u0035');
+    })
+
     console.log('*************end I18NTest*************');
 })}
