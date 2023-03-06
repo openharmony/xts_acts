@@ -17,9 +17,9 @@ group("apprecovery") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "ActsAppRecoveryTestCaller:ActsAppRecoveryTestCaller",
       "AppRecoveryRely:AppRecoveryRely",
       "AppRecoverysRely:AppRecoverysRely",
-      "ActsAppRecoveryTestCaller:ActsAppRecoveryTestCaller",
     ]
   }
 }
