@@ -379,7 +379,7 @@ export default function ActsNetworkSearchTest() {
             radio.isRadioOn((err, data) => {
                 if (err) {
                     console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
-                    expect(err.code).assertEqual(8300000);
+                    expect(err.code).assertEqual(8300003);
                     done();
                     return;
                 }
@@ -400,7 +400,7 @@ export default function ActsNetworkSearchTest() {
                 done();
             } catch (err) {
                 console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
-                expect(err.code).assertEqual(8300000);
+                expect(err.code).assertEqual(8300003);
                 done();
             }
         });
@@ -414,7 +414,7 @@ export default function ActsNetworkSearchTest() {
             radio.isRadioOn(0, (err,data) => {
                 if (err) {
                     console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
-                    expect(err.code).assertEqual(8300000);
+                    expect(err.code).assertEqual(8300003);
                     done();
                     return;
                 }
@@ -436,7 +436,7 @@ export default function ActsNetworkSearchTest() {
                 done();
             } catch (err) {
                 console.error('When the device has no modem, the interface reports an error' + JSON.stringify(err));
-                expect(err.code).assertEqual(8300000);
+                expect(err.code).assertEqual(8300003);
                 done();
             }
         });

@@ -1670,27 +1670,43 @@ export default function ObjectInterfaceTest() {
         });
 
         it("contactsApi_selectContact_test_100", 0, async function (done) {
-            contact.selectContact((err, data) => {
-                if (err) {
-                    console.info("contactsApi_selectContact_test_100  err = " + JSON.stringify(err));
-                    expect(false).assertTrue();
+            contact.addContact(contactData, (err, data) => {
+                if (!err) {
+                    console.info("contactsApi_selectContact_test_100  data = " + JSON.stringify(data));
+                    expect(data > 0).assertTrue();
                     done();
                     return;
                 }
-                console.info("contactsApi_selectContact_test_100  data = " + JSON.stringify(data));
-                done();
+                contact.selectContact((err, data) => {
+                    if (err) {
+                        console.info("contactsApi_selectContact_test_100  err = " + JSON.stringify(err));
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
+                    console.info("contactsApi_selectContact_test_100  data = " + JSON.stringify(data));
+                    done();
+                });
             });
         });
 
         it("contactsApi_selectContact_test_200", 0, async function (done) {
-            let promise = contact.selectContact();
-            promise.then((data) => {
-                console.info("contactsApi_selectContact_test_200  data = " + JSON.stringify(data));
-                done();
-            }).catch((err) => {
-                console.info("contactsApi_selectContact_test_200  err = " + JSON.stringify(err));
-                expect(false).assertTrue();
-                done();
+            contact.addContact(contactData, (err, data) => {
+                if (!err) {
+                    console.info("contactsApi_selectContact_test_200  data = " + JSON.stringify(data));
+                    expect(data > 0).assertTrue();
+                    done();
+                    return;
+                }
+                let promise = contact.selectContact();
+                promise.then((data) => {
+                    console.info("contactsApi_selectContact_test_200  data = " + JSON.stringify(data));
+                    done();
+                }).catch((err) => {
+                    console.info("contactsApi_selectContact_test_200  err = " + JSON.stringify(err));
+                    expect(false).assertTrue();
+                    done();
+                });
             });
         });
     });
