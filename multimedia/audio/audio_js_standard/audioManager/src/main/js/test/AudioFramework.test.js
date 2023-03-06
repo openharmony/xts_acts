@@ -105,15 +105,20 @@ describe('audioFramework', function () {
         })
     }
     async function driveFn() {
-        console.info(`come in driveFn`);
-        let driver = await UiDriver.create();
-        console.info(`driver is ${JSON.stringify(driver)}`);
-        await sleep(100);
-        console.info(`UiDriver start`);
-        let button = await driver.findComponent(BY.text('允许'));
-        console.info(`button is ${JSON.stringify(button)}`);
-        await sleep(100);
-        await button.click();
+        try {
+            let driver = await UiDriver.create()
+            console.info(`case come in driveFn 222`)
+            console.info(`driver is ${JSON.stringify(driver)}`)
+            await sleep(100);
+            console.info(`UiDriver start`);
+            let button = await driver.findComponent(BY.text('允许'));
+            console.info(`button is ${JSON.stringify(button)}`);
+            await sleep(100);
+            await button.click();
+        } catch (err) {
+            console.info('err is ' + err);
+            return;
+        }
     }
 
     beforeAll(async function () {
