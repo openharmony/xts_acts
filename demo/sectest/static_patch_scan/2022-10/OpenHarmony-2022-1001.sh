@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if(echo "~/etc/group" | grep "servicectrl:x:3047:root,shell,system,samgr,hdf_devmgr");then
+if(cat "~/etc/group" | grep "servicectrl:x:3047:root,shell,system,samgr,hdf_devmgr");then
 	echo "OpenHarmony-SA-2022-1201 testcase pass"
 else
 	echo "OpenHarmony-SA-2022-1201 testcase fail"
