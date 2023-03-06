@@ -18,7 +18,6 @@ import commonEvent from '@ohos.commonEvent'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import missionManager from '@ohos.application.missionManager';
 
-
 const CASE_TIME_OUT=5000;
 var ACTS_AppRecovery = {
   events: ["ACTS_AppRecovery_First", "ACTS_AppRecovery_Second"]
