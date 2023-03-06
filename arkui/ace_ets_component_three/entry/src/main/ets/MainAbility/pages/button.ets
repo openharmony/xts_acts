@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -90,6 +90,31 @@ struct ButtonExample {
             events_emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button2 emit action state err: " + JSON.stringify(err.message))
+          }
+        })
+
+       Button('ok2')
+        .type(this.buttonTypeValue)
+        .key('buttontest')
+        .fontSize(this.fontSizeValue)
+        .backgroundColor(0x317aff)
+        .width(90)
+        .fontColor(this.fontColorValue)
+        .onClick(() => {
+          try {
+            var backData = {
+              data: {
+                "fontColorValue": this.fontColorValue,
+              }
+            }
+            var backEvent = {
+              eventId: 9907,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("buttontest start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("buttontest emit action state err: " + JSON.stringify(err.message))
           }
         })
       Button('ok!')

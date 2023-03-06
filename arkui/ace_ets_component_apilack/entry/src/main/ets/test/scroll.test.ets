@@ -126,7 +126,7 @@ export default function scrollOnScrollBeginJsunit() {
       console.info("[testscrollOnScrollBegin0005] component align strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Scroll');
-      expect(obj.$attrs.scrollBarWidth).assertEqual("30.00px");
+      expect(obj.$attrs.scrollBarWidth).assertEqual("30.00vp");
       console.info("[testscrollOnScrollBegin0005] scrollBarWidth value :" + obj.$attrs.scrollBarWidth);
       done();
     });
