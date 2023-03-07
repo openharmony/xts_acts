@@ -20,7 +20,7 @@ config("nnrt_config") {
     "//foundation/ai/neural_network_runtime/third_party/include",
     "//third_party/googletest/googletest/include",
     "//third_party/googletest/googlemock/include",
-    "//third_party/mindspore/mindspore/lite/mindir/include",
+    "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
   ]
   cflags = [ "-Wno-error" ]
 }
