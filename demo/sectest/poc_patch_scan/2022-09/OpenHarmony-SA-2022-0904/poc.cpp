@@ -88,7 +88,7 @@ int main() {
     void* PixelMap = nullptr;
     PixelMap = GetPixelMap(obj,displayId).get();
     if (PixelMap == nullptr) {
-        printf("GetDefaultDisplayId failed!\n");
+        printf("GetPixelMap failed!\n");
     } else{
         printf("PixelMap: %p\n", PixelMap);
     }
