@@ -23,6 +23,8 @@ ohos_js_hap_suite("deviceAttest_hap_test") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsDeviceAttestTest"
+  subsystem_name = "xts"
+  part_name = "device_attest"
 }
 
 ohos_app_scope("graphicColorSpace_app_profile") {
