@@ -37,21 +37,20 @@ namespace Media {
 uint32_t ImageReceiverNDKTest::sOnEvnentCount = 0;
 napi_value ImageReceiverNDKTest::Init(napi_env env, napi_value exports)
 {
-
     napi_property_descriptor props[] = {
-        STATIC_FUNCTION("createImageReceiver",JsCreateImageReceiver),
-        STATIC_FUNCTION("getReceivingSurfaceId",JsGetReceivingSurfaceId),
-        STATIC_FUNCTION("readLatestImage",JsReadLatestImage),
-        STATIC_FUNCTION("readNextImage",JsReadNextImage),
-        STATIC_FUNCTION("on",JsOn),
-        STATIC_FUNCTION("getSize",JsGetSize),
-        STATIC_FUNCTION("getCapacity",JsGetCapacity),
-        STATIC_FUNCTION("getFormat",JsGetFormat),
-        STATIC_FUNCTION("getOnEventCount",JsGetOnEventCount),
-        STATIC_FUNCTION("imageClipRect",JsImageClipRect),
-        STATIC_FUNCTION("imageSize",JsImageSize),
-        STATIC_FUNCTION("imageFormat",JsImageFormat),
-        STATIC_FUNCTION("imageGetComponent",JsImageGetComponent),
+        STATIC_FUNCTION("createImageReceiver", JsCreateImageReceiver),
+        STATIC_FUNCTION("getReceivingSurfaceId", JsGetReceivingSurfaceId),
+        STATIC_FUNCTION("readLatestImage", JsReadLatestImage),
+        STATIC_FUNCTION("readNextImage", JsReadNextImage),
+        STATIC_FUNCTION("on", JsOn),
+        STATIC_FUNCTION("getSize", JsGetSize),
+        STATIC_FUNCTION("getCapacity", JsGetCapacity),
+        STATIC_FUNCTION("getFormat", JsGetFormat),
+        STATIC_FUNCTION("getOnEventCount", JsGetOnEventCount),
+        STATIC_FUNCTION("imageClipRect", JsImageClipRect),
+        STATIC_FUNCTION("imageSize", JsImageSize),
+        STATIC_FUNCTION("imageFormat", JsImageFormat),
+        STATIC_FUNCTION("imageGetComponent", JsImageGetComponent),
     };
     napi_define_properties(env, exports, sizeof(props) / sizeof(props[0]), props);
     return exports;
@@ -219,7 +218,6 @@ napi_value ImageReceiverNDKTest::JsGetSize(napi_env env, napi_callback_info info
     setInt32NamedProperty(env, result, "width", size.width);
     setInt32NamedProperty(env, result, "height", size.height);
     return result;
-
 }
 
 napi_value ImageReceiverNDKTest::JsGetCapacity(napi_env env, napi_callback_info info)
