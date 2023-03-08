@@ -32,6 +32,13 @@ export default function deviceAttestInfoTest(context, windowStage, abilityStorag
       console.info('afterAll');
     })
 
+    function isEmpty(data) {
+      if(data == null || data == undefined) {
+        return true;
+      }
+      return false;
+    }
+
     /**
      * @tc.number     SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_001
      * @tc.name       Test function getAttestStatus() : Promise<AttestResultInfo>
@@ -96,7 +103,7 @@ export default function deviceAttestInfoTest(context, windowStage, abilityStorag
       console.info('test the enum value of attestResultInfo begin');
       try{
         let attestResultInfo = deviceAttest.getAttestStatusSync();
-        if (attestResultInfo != null) {
+        if (!isEmpty(attestResultInfo)) {
           console.info("!!!====>[FormComponent]3:data====>" + JSON.stringify(attestResultInfo));
           expect(attestResultInfo.authResult).assertEqual("");
           expect(attestResultInfo.softwareResult).assertEqual("");
