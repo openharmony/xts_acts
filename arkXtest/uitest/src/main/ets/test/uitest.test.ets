@@ -39,7 +39,7 @@ async function stopApplication(bundleName: string) {
 
 export default function UiTest() {
     
-describe('UiTest_API10', function () {
+    describe('UiTest_API10', function () {
         /*
          * @tc.number: uiTest_10001
          * @tc.name: testWithIn
@@ -107,8 +107,7 @@ describe('UiTest_API10', function () {
          * @tc.desc: click in the specified location on the screen by mouse.
          */
         it('testMouseClick', 0, async function () {
-//            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await startAbility('com.example.myapplication_scene', 'com.example.entry.MainAbility')
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
             let Button = await driver.findComponent(ON.text('jump'))
@@ -134,8 +133,7 @@ describe('UiTest_API10', function () {
          * @tc.desc: move the mouse cursor to the specified location.
          */
         it('testMouseMoveTo', 0, async function () {
-//            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await startAbility('com.example.myapplication_scene', 'com.example.entry.MainAbility')
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
             let Button = await driver.findComponent(ON.text('jump'))
@@ -153,8 +151,7 @@ describe('UiTest_API10', function () {
          * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
          */
         it('testMouseScroll', 0, async function () {
-            //            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await startAbility('com.example.myapplication_scene', 'com.example.entry.MainAbility')
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
             let Scroll = await driver.findComponent(ON.type('Scroll'))
@@ -170,7 +167,7 @@ describe('UiTest_API10', function () {
             await stopApplication('com.uitestScene.acts')
         })
     })
-    
+
     describe('UiTest_API8', function () {
         /*
          * @tc.number: uiTest_8001
