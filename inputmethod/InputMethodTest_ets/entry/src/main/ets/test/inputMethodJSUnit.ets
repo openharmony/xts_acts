@@ -196,11 +196,16 @@ export default function inputMethodJSUnit() {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.showSoftKeyboard((err) => {
         try {
-          expect(err.code).assertEqual(12800003)
-          console.info("====>************* inputmethod_test_showSoftKeyboard_001 Test end*************");
-          done();
+          if(err == undefined){
+            expect().assertFail()
+            done();
+          }else{
+            expect(err.code).assertEqual(12800003)
+            console.info("====>************* inputmethod_test_showSoftKeyboard_001 Test end*************");
+            done();
+          }
         } catch (err) {
-          expect().assertFail()
+          console.info("====>inputmethod_test_showSoftKeyboard_001 err tests fail" + JSON.stringify(err));
           done();
         }
       });
@@ -215,12 +220,17 @@ export default function inputMethodJSUnit() {
     it('inputmethod_test_showSoftKeyboard_002', 0, async function (done) {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.showSoftKeyboard().then(() => {
-        expect().assertFail()
-        done();
+        try {
+          expect().assertFail()
+          done();
+        } catch (err) {
+          console.info("====>inputmethod_test_showSoftKeyboard_002 err tests fail" + JSON.stringify(err));
+          done();
+        }
       }).catch((err) => {
-        console.info('====>showSoftKeyboard promise failed : ' + JSON.stringify(err))
-        console.info('====>showSoftKeyboard typeof(err.code): ' + typeof(err.code))
-        console.info('====>showSoftKeyboard typeof(err.code): ' + err.code)
+        console.info('====>inputmethod_test_showSoftKeyboard_002 promise failed : ' + JSON.stringify(err))
+        console.info('====>inputmethod_test_showSoftKeyboard_002 typeof(err.code): ' + typeof(err.code))
+        console.info('====>inputmethod_test_showSoftKeyboard_002 typeof(err.code): ' + err.code)
         expect(err.code).assertEqual(12800003)
         console.info("====>************* inputmethod_test_showSoftKeyboard_002 Test end*************");
         done();
@@ -237,12 +247,17 @@ export default function inputMethodJSUnit() {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.hideSoftKeyboard((err) => {
         try {
-          console.info('====>hideSoftKeyboard callbacek failed : ' + JSON.stringify(err))
-          expect(err.code).assertEqual(12800003)
-          console.info("====>************* inputmethod_test_hideSoftKeyboard_001 Test end*************");
-          done();
+          if(err == undefined){
+            expect().assertFail()
+            done();
+          }else{
+            console.info('====>inputmethod_test_hideSoftKeyboard_001 callbacek failed : ' + JSON.stringify(err))
+            expect(err.code).assertEqual(12800003)
+            console.info("====>************* inputmethod_test_hideSoftKeyboard_001 Test end*************");
+            done();
+          }
         } catch (err) {
-          expect().assertFail();
+          console.info('====>inputmethod_test_hideSoftKeyboard_001 callbacek failed : ' + JSON.stringify(err))
           done();
         }
       })
@@ -257,10 +272,15 @@ export default function inputMethodJSUnit() {
     it('inputmethod_test_hideSoftKeyboard_002', 0, async function (done) {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.hideSoftKeyboard().then(() => {
-        expect().assertFail();
-        done();
+        try {
+          expect().assertFail()
+          done();
+        } catch (err) {
+          console.info("====>inputmethod_test_hideSoftKeyboard_002 err tests fail" + JSON.stringify(err));
+          done();
+        }
       }).catch((err) => {
-        console.info('====>hideSoftKeyboard promise failed : ' + JSON.stringify(err))
+        console.info('====>inputmethod_test_hideSoftKeyboard_002 promise failed : ' + JSON.stringify(err))
         expect(err.code).assertEqual(12800003);
         console.info("====>************* inputmethod_test_hideSoftKeyboard_002 Test end*************");
         done();

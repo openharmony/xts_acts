@@ -24,13 +24,6 @@ export default function imeAbilityTest(abilityContext) {
       id:'',
       extra:{}
     }
-    /**
-     * sleep function.
-     */
-    function sleep(date, time){
-      while(Date.now() - date <= time);
-    }
-
 
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
@@ -75,12 +68,14 @@ export default function imeAbilityTest(abilityContext) {
       }
 
       inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
-        console.info('====>SUB_InputMethod_IMEAbility_0004 switchInputMethod to IME :' + data);
+        console.info('====>SUB_InputMethod_IMEAbility_0001 switchInputMethod to IME :' + data);
         expect(data == true).assertTrue();
       });
-      sleep(Date.now(), 3000);
-      console.info('====>----------SUB_InputMethod_IMEAbility_0001 end-------------');
-      done();
+      let t = setTimeout(() => {
+        console.info('====>----------SUB_InputMethod_IMEAbility_0001 end-------------' + t);
+        clearTimeout(t);
+        done();
+      }, 500);
     })
 
     /**
@@ -105,9 +100,11 @@ export default function imeAbilityTest(abilityContext) {
         console.info('====>SUB_InputMethod_IMEAbility_0002 switchInputMethod to IME :' + data);
         expect(data == true).assertTrue();
       });
-      sleep(Date.now(), 2500);
-      console.info('====>-----------SUB_InputMethod_IMEAbility_0002 end-------------');
-      done();
+      let t = setTimeout(() => {
+        console.info('====>----------SUB_InputMethod_IMEAbility_0001 end-------------' + t);
+        clearTimeout(t);
+        done();
+      }, 500);
     })
   })
 }
