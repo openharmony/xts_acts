@@ -13,9 +13,9 @@
 
 import("//build/ohos_var.gni")
 
-group("xts") {
+group("device_attest") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "device_attest:deviceAttest_hap_test" ]
+    deps = [ "deviceAttest:deviceAttest_hap_test" ]
   }
 }
