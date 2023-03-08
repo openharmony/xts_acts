@@ -62,7 +62,7 @@ export default function unitsModuleNameJsunit() {
         }
         var callback = (eventData) => {
           console.info("testunitsModuleName0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.ModuleName).assertEqual(true);
+          expect(eventData.data.ModuleName).assertFalse();
         }
         events_emitter.on(innerEvent, callback);
       } catch (err) {

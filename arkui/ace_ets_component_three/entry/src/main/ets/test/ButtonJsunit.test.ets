@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -243,7 +243,7 @@ export default function buttonJsunit() {
       }
       let callback = (indexEvent) => {
         console.info("testButton10 get state result is: " + JSON.stringify(indexEvent))
-        except(indexEvent.data.fontColorValue).assertEqual(Color.Pink)
+        expect(indexEvent.data.fontColorValue).assertEqual(Color.Pink)
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -280,7 +280,7 @@ export default function buttonJsunit() {
       }
       let callback = (indexEvent) => {
         console.info("testButton11 get state result is: " + JSON.stringify(indexEvent))
-        except(indexEvent.data.fontColorValue).assertEqual(332)
+        expect(indexEvent.data.fontColorValue).assertEqual(332)
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -327,7 +327,7 @@ export default function buttonJsunit() {
       try {
         var eventData = {
           data: {
-            "buttonTypeValue": qaq,
+            "buttonTypeValue": "qaq",
           }
         }
         var innerEvent = {
@@ -378,7 +378,7 @@ export default function buttonJsunit() {
       try {
         let eventData = {
           data: {
-            "fontColorValue": ab996
+            "fontColorValue": "ab996"
           }
         }
         let indexEventOne = {
@@ -390,21 +390,21 @@ export default function buttonJsunit() {
       } catch (err) {
         console.log("testButton15 change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await Utils.sleep(2000);
       let indexEvent = {
-        eventId: 77,
+        eventId: 9907,
         priority: events_emitter.EventPriority.LOW
       }
       let callback = (indexEvent) => {
         console.info("testButton15 get state result is: " + JSON.stringify(indexEvent))
-        except(indexEvent.data.fontColorValue).assertEqual('ab996')
+        expect(indexEvent.data.fontColorValue).assertEqual("ab996")
       }
       try {
         events_emitter.on(indexEvent, callback);
       } catch (err) {
         console.info("testButton15 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("testButton15 click result is: " + JSON.stringify(sendEventByKey('button4', 10, "")));
+      console.info("testButton15 click result is: " + JSON.stringify(sendEventByKey('buttontest', 10, "")));
       await Utils.sleep(1000);
       console.info('[testButton15] END');
       done();

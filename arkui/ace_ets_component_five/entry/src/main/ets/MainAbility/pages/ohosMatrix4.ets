@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,36 +20,36 @@ import prompt from '@system.prompt'
 @Entry
 @Component
 struct ohosMatrix4 {
-  @State rotateValue: object= {
+  @State rotateValue:RotateOptions = {
     x: 1,
     y: 1,
     z: 1,
-    centerX: '50%',
-    centerY: '50%',
+    centerX: 7,
+    centerY: 8,
     angle: 300
   }
   @State translateValue: object= { x: 100, y: 5 }
   @State scaleValue: object= { x: 2, y: 0.5 }
   @State transformValue: object= Matrix4.identity().translate({ x: 100, y: 100, z: 30 })
-  @State transformValue: object= Matrix4.identity().translate({ x: 100, y: 100, z: 30 })
+  @State transformValue1: object= Matrix4.identity().translate({ x: 100, y: 100, z: 30 })
   @State matrix1: object= Matrix4.identity().transformPoint([100, 10])
-  @State matrix2: object = Matrix4.identity().translate({ x: 300 }).copy()
-  @State matrix3: object = Matrix4.identity().scale({ x: 3 }).copy()
+  @State matrix2: Matrix4.Matrix4Transit = Matrix4.identity().translate({ x: 300 }).copy()
+  @State matrix3: Matrix4.Matrix4Transit= Matrix4.identity().scale({ x: 3 }).copy()
   @State matrix4: object = Matrix4.identity().rotate({x:1, y:1, z:2, angle:30})
   @State matrix5: object = Matrix4.identity().scale({x:5, y:1, z:1, centerX:50, centerY:50})
   @State matrix6: object = Matrix4.identity().translate({x:100, y:200, z:30})
-
+  @State matrix7: Matrix4.Matrix4Transit = Matrix4.identity().translate({ x: 300 }).combine(Matrix4.identity().scale({ x: 3 }));
+  @State onClickValue:boolean = false;
   private stateChangCallBack = (eventData) => {
     console.info("transFormExample page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
       console.info("eventData value is");
       if (eventData.data.matrix2 != null && eventData.data.matrix3 != null) {
-        console.info("this.matrix2 value is" + Matrix4.identity()
-          .translate(eventData.data.matrix2)
-          .copy() + "2" + JSON.stringify(Matrix4.identity().translate(eventData.data.matrix2).copy()));
-        this.matrix2 = Matrix4.identity().translate(eventData.data.matrix2).copy();
-        console.info("this.matrix3 value is");
-        this.matrix3 = Matrix4.identity().scale(eventData.data.matrix3).copy();
+        let matrixV = Matrix4.identity().translate(eventData.data.matrix2);
+        if (matrixV != null) {
+           this.matrix2 = Matrix4.identity().translate(eventData.data.matrix2).copy();
+           this.matrix3 = Matrix4.identity().scale(eventData.data.matrix3).copy();
+        }
       } else {
         console.info("this.matrix value is not");
       }
@@ -129,7 +129,7 @@ struct ohosMatrix4 {
         }).backgroundColor(0x2788D9).key('rotate5')
       Image('/images/bg.jpg')
         .padding(5)
-        .transform(this.matrix2.combine(this.matrix3))
+        .transform(this.matrix7)
         .width("40%")
         .height(100)
         .margin({ top: 5 })
