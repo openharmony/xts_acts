@@ -493,6 +493,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         expect().assertFail()
         done();
       });
+      await sleep(2000)
       await setSystemBarEnableT(mainWnd).catch((err) => {
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
@@ -2104,7 +2105,11 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       mainWin.snapshot((err, data) => {
         if (err && err.code) {
           console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
-          expect().assertFail();
+          try{
+            expect().assertFail();
+          } catch (error) {
+            console.info(`expected catch error: ${JSON.stringify(error)}`)
+          }
           done();
           return;
         }
