@@ -161,9 +161,9 @@ napi_value ImageReceiverNDKTest::JsReadNextImage(napi_env env, napi_callback_inf
     }
     return result;
 }
-void ImageReceiverNDKTest::onEvent()
+void ImageReceiverNDKTest::OnEvent()
 {
-    HiviewDFX::HiLog::Debug(LABEL, "ImageReceiverNDKTest::onEvent IN [%{public}p]", &sOnEvnentCount);
+    HiviewDFX::HiLog::Debug(LABEL, "ImageReceiverNDKTest::OnEvent IN [%{public}p]", &sOnEvnentCount);
     sOnEvnentCount++;
 }
 
@@ -178,7 +178,7 @@ napi_value ImageReceiverNDKTest::JsOn(napi_env env, napi_callback_info info)
     }
 
     sOnEvnentCount = NUM_0;
-    int32_t res = OH_Image_Receiver_On(native, onEvent);
+    int32_t res = OH_Image_Receiver_On(native, OnEvent);
     napi_create_int32(env, res, &result);
     return result;
 }

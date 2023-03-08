@@ -44,7 +44,7 @@ public:
     
 private:
     static uint32_t sOnEvnentCount;
-    static void onEvent();
+    static void OnEvent();
 };
 } // namespace Media
 } // namespace OHOS
