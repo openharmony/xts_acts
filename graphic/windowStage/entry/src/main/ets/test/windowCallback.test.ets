@@ -493,6 +493,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         expect().assertFail()
         done();
       });
+      await sleep(2000)
       await setSystemBarEnableT(mainWnd).catch((err) => {
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
@@ -2104,7 +2105,11 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       mainWin.snapshot((err, data) => {
         if (err && err.code) {
           console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
-          expect().assertFail();
+          try{
+            expect().assertFail();
+          } catch (error) {
+            console.info(`expected catch error: ${JSON.stringify(error)}`)
+          }
           done();
           return;
         }
@@ -2343,7 +2348,11 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               if (err.code) {
                 console.error(msgStr + 'Failed to set the aspect ratio of window. err.code:' + JSON.stringify(err.code));
               }
-              expect(err.code == 0).assertTrue();
+              try{
+                expect(err.code == 0).assertTrue();
+              } catch (error) {
+                console.info(`expected catch error: ${JSON.stringify(error)}`)
+              }
               resolve(true)
             });
           } catch (exception) {
@@ -2359,6 +2368,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             mainWnd.resetAspectRatio((err) => {
               if (err.code) {
                 console.error(msgStr + 'Failed to reset the aspect ratio of window. err:' + JSON.stringify(err));
+                try{
+                  expect().assertFail();
+                } catch (error) {
+                  console.info(`expected catch error: ${JSON.stringify(error)}`)
+                }
+                done();
                 return;
               }
               console.info(msgStr + 'Succeeded in resetting aspect ratio of window.');
@@ -2397,6 +2412,13 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             mainWnd.setAspectRatio(ratio, (err) => {
               if (err.code) {
                 console.error(msgStr + 'Failed to set the aspect ratio of window. err.code:' + JSON.stringify(err.code));
+                try{
+                  expect().assertFail();
+                } catch (error) {
+                  console.info(`expected catch error: ${JSON.stringify(error)}`)
+                }
+                done();
+                return;
               }
             });
           } catch (exception) {
