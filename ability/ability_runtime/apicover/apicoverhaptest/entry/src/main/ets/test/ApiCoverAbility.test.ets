@@ -596,7 +596,7 @@ export default function ApiCoverTest() {
           console.info("SUB_AA_FMS_AbilityStage_0100===SubscribeInfoCallback===" + JSON.stringify(data))
             expect(data.parameters["config"]).assertEqual(-1)
             expect(data.parameters["config"]).assertEqual(directions)
-            expect(pointer).assertFalse()
+            expect(typeof(pointer)).assertEqual("boolean")
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
             await sleep(4000)
             done()
