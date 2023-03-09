@@ -20,6 +20,7 @@ group("ces_standard") {
       "actsCommonEventManagerSupportTest:ActsCommonEventManagerSupportTest",
       "actsCommonEventManagerTest:ActsCommonEventManagerTest",
       "actsCommonEventSupportTest:ActsCommonEventSupportTest",
+      "actsCommonEventSystemAPITest:ActsCommonEventSystemAPITest",
       "subscribeandpublish:SubscribeAndPublish",
     ]
   }

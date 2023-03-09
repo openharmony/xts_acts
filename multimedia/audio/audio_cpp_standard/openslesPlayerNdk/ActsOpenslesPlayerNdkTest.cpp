@@ -166,6 +166,10 @@ static SLresult OpenSlTest()
     }
     SLmillibel pLevel = 0;
     result = (*volumeItf)->GetVolumeLevel(volumeItf, &pLevel);
+    if (SL_RESULT_SUCCESS != result) {
+        AUDIO_INFO_LOG("OpenSlTest GetVolumeLevel result: %{public}lu", result);
+        return result;
+    }
     result = (*pcmPlayerObject)->GetInterface(pcmPlayerObject, SL_IID_OH_BUFFERQUEUE, &bufferQueueItf);
     if (SL_RESULT_SUCCESS != result) {
         AUDIO_INFO_LOG("OpenSlTest get bufferQueueItf result: %{public}lu", result);

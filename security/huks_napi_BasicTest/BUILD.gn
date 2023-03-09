@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//base/security/huks/build/config.gni")
 import("//base/security/huks/huks.gni")
 import("//test/xts/tools/build/suite.gni")
 
@@ -39,8 +40,6 @@ ohos_moduletest_suite("ActsHuksNAPITest") {
     "src/huks_agree_ecdh_test.cpp",
     "src/huks_agree_ecdh_test_common.cpp",
     "src/huks_agree_x25519_test.cpp",
-    "src/huks_attest_test.cpp",
-    "src/huks_attest_test_common.cpp",
     "src/huks_cipher_aes_test.cpp",
     "src/huks_cipher_aes_test_common.cpp",
     "src/huks_cipher_rsa_test.cpp",
@@ -55,7 +54,6 @@ ohos_moduletest_suite("ActsHuksNAPITest") {
     "src/huks_mem.cpp",
     "src/huks_misc_test.cpp",
     "src/huks_nullptr_test.cpp",
-    "src/huks_signverify_dsa_test.cpp",
     "src/huks_signverify_ecc_test.cpp",
     "src/huks_signverify_ecc_test_common.cpp",
     "src/huks_signverify_ed25519_test.cpp",
@@ -66,6 +64,14 @@ ohos_moduletest_suite("ActsHuksNAPITest") {
     "src/huks_warpped_test.cpp",
     "src/huks_wrapped_test_common.cpp",
   ]
+
+  if (huks_security_level != "trusted_environment") {
+    sources += [
+      "src/huks_attest_test.cpp",
+      "src/huks_attest_test_common.cpp",
+      "src/huks_signverify_dsa_test.cpp",
+    ]
+  }
 
   include_dirs = [
     "//test/xts/acts/security/security_huks_basic/huks_napi_BasicTest/include",

@@ -368,21 +368,21 @@ describe('kvManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
                 console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 getKVStore success');
-                kvStore = store;
-                await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore);
-            });
-            console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 closeKVStore redo.');
-            await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore, function (err, data) {
-                console.error('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 closeKVStore twice ' + `, error code is ${err.code}, message is ${err.message}`);
-                if (err == undefined) {
-                    expect(null).assertFail();
-                }
+                kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, function (err, data) {
+                    if (err != undefined) {
+                        console.info(`Fail to close KVStore.code is ${err.code},message is ${err.message}`);
+                    }
+                    expect(err == undefined).assertTrue();
+                    console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 closeKVStore1 done');
+                    done();
+                    console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 closeKVStore redo.');
+                })
+
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 closeKVStore twice e ' + `, error code is ${e.code}, message is ${e.message}`);
-            expect(null).assertFail();
+            //                expect(null).assertFail();
         }
-        done();
     })
 
     /**

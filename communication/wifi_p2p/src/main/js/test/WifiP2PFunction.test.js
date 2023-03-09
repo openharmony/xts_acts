@@ -130,6 +130,9 @@ export default function actsWifiFunctionTest() {
                 .then(data => {
                     console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
                     expect(true).assertEqual(data.networkId == -999);
+                }).catch((error) => {
+                    console.error('[wifi_test] getCurrentGroup  promise failed :' + JSON.stringify(error));
+                    expect(true).assertEqual(error !=null);
                 });
             let removeGroupResult = wifi.removeGroup();
             await sleep(2000);
@@ -140,7 +143,7 @@ export default function actsWifiFunctionTest() {
                         console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
                         expect(true).assertEqual(data.deviceName == null);
                     }).catch((error) => {
-                        console.error('[wifi_test] getCurrentGroup  promise failed :' + JSON.stringify(error));
+                        console.error('[wifi_test] getCurrentGroup  promise failed1 :' + JSON.stringify(error));
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){
@@ -265,6 +268,9 @@ export default function actsWifiFunctionTest() {
                 .then(data => {
                     console.info("[wifi_test]getCurrentGroup  promise result :" + JSON.stringify(data));
                     expect(true).assertEqual(data.passphrase != wifiP2PConfig.passphrase);
+                }).catch((error) => {
+                    console.error('[wifi_test] getCurrentGroup  promise failed :' + JSON.stringify(error));
+                    expect(true).assertEqual(error !=null);
                 });
             let removeGroupResult = wifi.removeGroup();
             await sleep(2000);
@@ -275,7 +281,7 @@ export default function actsWifiFunctionTest() {
                         console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
                         expect(true).assertEqual(data.deviceName == null);
                     }).catch((error) => {
-                        console.error('[wifi_test] getCurrentGroup  promise failed :' + JSON.stringify(error));
+                        console.error('[wifi_test] getCurrentGroup  promise failed1 :' + JSON.stringify(error));
                         expect(true).assertEqual(error !=null);
                     });
             }catch(error){

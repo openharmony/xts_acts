@@ -175,7 +175,6 @@ describe('kvStoreBackupPromiseJsunittest', function () {
         console.info('Test beforeAll: Prerequisites at the test suite level, ' +
         'which are executed before the test suite is executed.');
         await publicgetKvStore(optionLock);
-        await sleep(5000);
         console.info("Test kvstore = " + kvStore)
     })
     beforeEach(function () {
@@ -185,16 +184,12 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     afterEach( async function () {
         console.info('afterEach: Test case-level clearance conditions, ' +
         'which are executed after each test case is executed.');
-        publicdeleteBackup(kvStore,files);
-        await sleep(5000);
+        await publicdeleteBackup(kvStore,files);
     })
     afterAll( async function () {
         console.info('afterAll: Test suite-level cleanup condition, ' +
         'which is executed after the test suite is executed');
-        publiccloseKvStore();
-        await kvManager.getAllKVStoreId(TEST_BUNDLE_NAME).then((data) => {
-            console.info(data.length);
-        })
+        await publiccloseKvStore();
         kvManager = null;
         console.info("Test kvstore = " + kvStore)
     })
@@ -779,7 +774,7 @@ describe('kvStoreBackupPromiseJsunittest', function () {
                 expect(true).assertEqual(data == "value");
                 done();
             }).catch((err) => {
-                console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 Get fail 1 " + err);
+                console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 Get fail 1 " + JSON.stringify(err));
                 expect(err).assertFail();
                 done();
             })
@@ -799,14 +794,14 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     it('SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300', 0, async function (done) {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300 before putdata");
-            publicput(kvStore,"PutPromise0004","value1") ;
+            await publicput(kvStore,"PutPromise0004","value1") ;
             console.log("KvStoreBackupestDbBuckupPutPromiseTest004t going putdata");
             await publicget(kvStore,"PutPromise").then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300 going getdata" + JSON.stringify(data));
                 expect(true).assertEqual(JSON.stringify(data) == '{}');
                 done();
             }).catch((err) => {
-                console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300 Get fail 1 " + err);
+                console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300 Get fail 1 " + JSON.stringify(err));
                 console.log(JSON.stringify(err));
                 expect(true).assertEqual(err.code == 15100004);
                 done();

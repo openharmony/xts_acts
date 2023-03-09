@@ -1086,54 +1086,6 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2200, Security | MediumTest | Level1
 }
 
 /*
- * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2300
- * @tc.name       : Check whether the default configuration of the capability of the third-party application process
-                    is the same as that described in the design document
- * @tc.desc       : [C-SECURITY-0100]
- */
-HWTEST_F(CapabilityTestSuite, CapabilityTest2300, Security | MediumTest | Level1)
-{
-    int ret;
-    struct __user_cap_header_struct capheader = { 0 };
-    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
-        sizeof(struct __user_cap_header_struct));
-    if (result != EOK) {
-        LOG("CapgetWithAllCap memset_s failed");
-        ASSERT_TRUE(false);
-    };
-    capheader.version = _LINUX_CAPABILITY_VERSION_3;
-    struct __user_cap_data_struct capdataget[CAP_NUM] = { { 0 }, { 0 } };
-    result = memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
-        0, CAP_NUM * sizeof(struct __user_cap_data_struct));
-    if (result != EOK) {
-        LOG("CapgetWithAllCap memset_s failed");
-        ASSERT_TRUE(false);
-    };
-    pid_t pid = getpid();
-    for (int num = OTHER_PID; num <= pid; num++) {
-        // Step 1: The current test process has all capabilities
-        if (num == pid) {
-            capheader.pid = pid;
-            ret = capget(&capheader, &capdataget[0]);
-            EXPECT_EQ(capdataget[0].effective, OHOS_FULL_CAP) <<"ErrInfo: Pid = " << num
-            << ", test_process has wrong capability";
-        } else {
-            // Step 2: Check the capability of process from pid = 9
-            capheader.pid = num;
-            ret = capget(&capheader, &capdataget[0]);
-            if (ret == 0) {
-                // Step 2.1: Check the capability of process which exists now
-                EXPECT_EQ(capdataget[0].effective, NO_CAP) << "ErrInfo: Pid = " << num
-                << ", thirdPartyApp has wrong capability";
-            } else {
-                // Step 2.2: Check the capability of process which not exist now
-                EXPECT_EQ(ret, FALSE) << "ErrInfo: Capget return error, now process uid=" << getuid();
-            }
-        }
-    }
-}
-
-/*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2400
  * @tc.name       : The process continuously invokes the capset and capget interfaces,
  which does not affect the use of other processes

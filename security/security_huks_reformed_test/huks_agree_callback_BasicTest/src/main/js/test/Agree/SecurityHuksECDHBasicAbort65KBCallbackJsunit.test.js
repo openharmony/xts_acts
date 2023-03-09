@@ -26,7 +26,7 @@ let HuksOptions65kb = {
   properties: new Array(
     HuksAgreeECDH.HuksKeyAlgECC,
     HuksAgreeECDH.HuksKeyPurposeECDH,
-    HuksAgreeECDH.HuksKeyECCSize224,
+    HuksAgreeECDH.HuksKeyECCSize256,
     HuksAgreeECDH.HuksKeyECCDIGEST,
     HuksAgreeECDH.HuksKeyECCPADDING,
     HuksAgreeECDH.HuksKeyECCBLOCKMODE
@@ -37,8 +37,8 @@ let HuksOptions65kb = {
 export default function SecurityHuksECDHBasicAbort65KBCallbackJsunit() {
 describe('SecurityHuksECDHBasicAbort65KBCallbackJsunit', function () {
   it('testReformedAgreeEDCH004', 0, async function (done) {
-    const srcKeyAliesFirst = 'testAgreeECDHSize224Abort65KBAgreeKeyAlias_01_001';
-    const srcKeyAliesSecond = 'testAgreeECDHSize224Abort65KBAgreeKeyAlias_02_001';
+    const srcKeyAliesFirst = 'testAgreeECDHSize256Abort65KBAgreeKeyAlias_01_001';
+    const srcKeyAliesSecond = 'testAgreeECDHSize256Abort65KBAgreeKeyAlias_02_001';
     let huksOptionsFinish = {
       properties: new Array(
         HuksAgreeECDH.HuksKeySTORAGE,

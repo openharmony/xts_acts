@@ -31,7 +31,7 @@ function resolveIP(ip) {
     return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
 }
 
-let powerModel = {
+let PowerModel = {
     SLEEPING : 0,
     GENERAL : 1,
     THROUGH_WALL : 2,
@@ -338,5 +338,4 @@ export default function actsWifiEventTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
-
 

@@ -12,28 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from "@ohos/hypium";
+import { describe, it, expect, beforeAll } from "@ohos/hypium";
 import huks from "@ohos.security.huks";
 import Data from "../../../../../../utils/data.json";
-import { stringToUint8Array } from "../../../../../../utils/param/publicFunc";
-import {
-  HuksSignVerifyDSA,
-  HuksSignVerifyRSA,
-  HuksSignVerifyECC,
-} from "../../../../../../utils/param/signverify/publicSignverifyParam";
-import {
-  HuksAgreeDH,
-  HuksAgreeECDH,
-} from "../../../../../../utils/param/agree/publicAgreeParam";
-import {
-  HuksCipherAES,
-  HuksCipherRSA,
-} from "../../../../../../utils/param/cipher/publicCipherParam";
+import { stringToUint8Array, checkSoftware } from "../../../../../../utils/param/publicFunc";
+import { HuksSignVerifyDSA, HuksSignVerifyRSA, HuksSignVerifyECC }
+  from "../../../../../../utils/param/signverify/publicSignverifyParam";
+import { HuksAgreeDH, HuksAgreeECDH }
+  from "../../../../../../utils/param/agree/publicAgreeParam";
+import { HuksCipherAES, HuksCipherRSA }
+  from "../../../../../../utils/param/cipher/publicCipherParam";
 import { HuksHmac } from "../../../../../../utils/param/hmac/publicHmacParam";
 
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 let exportKey;
+let useSoftware = true;
 
 async function generateKeyFunc(srcKeyAlies, HuksOptions) {
   console.info(`enter promise generateKeyItem`);
@@ -123,6 +117,10 @@ function isKeyItemExist(srcKeyAlies, HuksOptions) {
 
 export function SecurityHuksAccessControlJsunit() {
   describe("SecurityHuksAccessControlJsunit", function () {
+    beforeAll(async function (done) {
+      useSoftware = await checkSoftware();
+      done();
+    })
     it("HUKS_Basic_Capability_AccessControl_Reformed_0100", 0, async function (done) {
       let srcKeyAlias = "HUKS_Basic_Capability_AccessControl_0100";
       let HuksOptions = {
@@ -134,27 +132,29 @@ export function SecurityHuksAccessControlJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await generateKeyFunc(srcKeyAlias, HuksOptions);
-      await publicIsKeyItemExist(srcKeyAlias, HuksOptions);
-      await exportKeyFunc(srcKeyAlias, HuksOptions);
+      if (useSoftware) {
+        await generateKeyFunc(srcKeyAlias, HuksOptions);
+        await publicIsKeyItemExist(srcKeyAlias, HuksOptions);
+        await exportKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(1, 1, HuksAgreeDH.HuksKeyPurposeDH);
-      HuksOptions.properties.splice(3, 1);
-      console.info(`enter promise doInit`);
-      try {
-        await huks.initSession(srcKeyAlias, HuksOptions)
-          .then((data) => {
-            console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 12000003).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+        HuksOptions.properties.splice(1, 1, HuksAgreeDH.HuksKeyPurposeDH);
+        HuksOptions.properties.splice(3, 1);
+        console.info(`enter promise doInit`);
+        try {
+          await huks.initSession(srcKeyAlias, HuksOptions)
+            .then((data) => {
+              console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 12000003).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
+        await deleteKeyFunc(srcKeyAlias, HuksOptions);
       }
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
       done();
     });
 
@@ -164,7 +164,7 @@ export function SecurityHuksAccessControlJsunit() {
         properties: new Array(
           HuksSignVerifyECC.HuksKeyAlgECC,
           HuksSignVerifyECC.HuksKeyECCPurposeSINGVERIFY,
-          HuksSignVerifyECC.HuksKeyECCSize224,
+          HuksSignVerifyECC.HuksKeyECCSize384,
           HuksSignVerifyECC.HuksTagECCDigestNONE
         ),
         inData: srcData63Kb,
@@ -218,42 +218,44 @@ export function SecurityHuksAccessControlJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await generateKeyFunc(srcKeyAlias, HuksOptions);
-      await exportKeyFunc(srcKeyAlias, HuksOptions);
+      if (useSoftware) {
+        await generateKeyFunc(srcKeyAlias, HuksOptions);
+        await exportKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(1, 1, HuksCipherAES.HuksKeyPurposeENCRYPT);
-      console.info(`enter promise doInit`);
-      try {
-        await huks.initSession(srcKeyAlias, HuksOptions)
-          .then((data) => {
-            console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 12000003).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+        HuksOptions.properties.splice(1, 1, HuksCipherAES.HuksKeyPurposeENCRYPT);
+        console.info(`enter promise doInit`);
+        try {
+          await huks.initSession(srcKeyAlias, HuksOptions)
+            .then((data) => {
+              console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 12000003).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
+
+        HuksOptions.properties.splice(1, 1, HuksCipherAES.HuksKeyPurposeDECRYPT);
+        console.info(`enter promise doInit`);
+        try {
+          await huks.initSession(srcKeyAlias, HuksOptions)
+            .then((data) => {
+              console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 12000003).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
+
+        await deleteKeyFunc(srcKeyAlias, HuksOptions);
       }
-
-      HuksOptions.properties.splice(1, 1, HuksCipherAES.HuksKeyPurposeDECRYPT);
-      console.info(`enter promise doInit`);
-      try {
-        await huks.initSession(srcKeyAlias, HuksOptions)
-          .then((data) => {
-            console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 12000003).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
-      }
-
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
       done();
     });
 
@@ -263,9 +265,9 @@ export function SecurityHuksAccessControlJsunit() {
         properties: new Array(
           HuksSignVerifyRSA.HuksKeyAlgRSA,
           HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN,
-          HuksSignVerifyRSA.HuksTagPKCS1DigestMD5,
+          HuksSignVerifyRSA.HuksTagPKCS1DigestSHA256,
           HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
-          HuksSignVerifyRSA.HuksKeyRSASize512
+          HuksSignVerifyRSA.HuksKeyRSASize3072
         ),
         inData: srcData63Kb,
       };
@@ -367,26 +369,28 @@ export function SecurityHuksAccessControlJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await generateKeyFunc(srcKeyAlias, HuksOptions);
-      await exportKeyFunc(srcKeyAlias, HuksOptions);
+      if (useSoftware) {
+        await generateKeyFunc(srcKeyAlias, HuksOptions);
+        await exportKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(1, 1, HuksHmac.HuksKeyPurpose);
-      console.info(`enter promise doInit`);
-      try {
-        await huks.initSession(srcKeyAlias, HuksOptions)
-          .then((data) => {
-            console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 12000003).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+        HuksOptions.properties.splice(1, 1, HuksHmac.HuksKeyPurpose);
+        console.info(`enter promise doInit`);
+        try {
+          await huks.initSession(srcKeyAlias, HuksOptions)
+            .then((data) => {
+              console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 12000003).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
+
+        await deleteKeyFunc(srcKeyAlias, HuksOptions);
       }
-
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
       done();
     });
 
@@ -403,16 +407,8 @@ export function SecurityHuksAccessControlJsunit() {
       };
       await generateKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(
-        1,
-        1,
-        HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN
-      );
-      HuksOptions.properties.splice(
-        5,
-        1,
-        HuksSignVerifyRSA.HuksTagPKCS1DigestNONE
-      );
+      HuksOptions.properties.splice(1, 1, HuksSignVerifyRSA.HuksKeyRSAPurposeSIGN);
+      HuksOptions.properties.splice(5, 1, HuksSignVerifyRSA.HuksTagPKCS1DigestNONE);
       console.info(`enter promise doInit`);
       try {
         await huks.initSession(srcKeyAlias, HuksOptions)
@@ -428,11 +424,7 @@ export function SecurityHuksAccessControlJsunit() {
         expect(null).assertFail();
       }
 
-      HuksOptions.properties.splice(
-        1,
-        1,
-        HuksSignVerifyRSA.HuksKeyRSAPurposeVERIFY
-      );
+      HuksOptions.properties.splice(1, 1, HuksSignVerifyRSA.HuksKeyRSAPurposeVERIFY);
       console.info(`enter promise doInit`);
       try {
         await huks.initSession(srcKeyAlias, HuksOptions)
@@ -458,7 +450,7 @@ export function SecurityHuksAccessControlJsunit() {
         properties: new Array(
           HuksAgreeECDH.HuksKeyAlgECC,
           HuksAgreeECDH.HuksKeyPurposeECDH,
-          HuksAgreeECDH.HuksKeyECCSize224,
+          HuksAgreeECDH.HuksKeyECCSize384,
           HuksAgreeECDH.HuksKeyECCDIGEST,
           HuksAgreeECDH.HuksKeyECCPADDING,
           HuksAgreeECDH.HuksKeyECCBLOCKMODE
@@ -468,11 +460,7 @@ export function SecurityHuksAccessControlJsunit() {
       await generateKeyFunc(srcKeyAlias, HuksOptions);
       await exportKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(
-        0,
-        1,
-        HuksSignVerifyECC.HuksKeyECCPurposeSIGN
-      );
+      HuksOptions.properties.splice(0, 1, HuksSignVerifyECC.HuksKeyECCPurposeSIGN);
       HuksOptions.properties.splice(4, 2);
       console.info(`enter promise doInit`);
       try {
@@ -489,11 +477,7 @@ export function SecurityHuksAccessControlJsunit() {
         expect(null).assertFail();
       }
 
-      HuksOptions.properties.splice(
-        0,
-        1,
-        HuksSignVerifyECC.HuksKeyECCPurposeVERIFY
-      );
+      HuksOptions.properties.splice(0, 1, HuksSignVerifyECC.HuksKeyECCPurposeVERIFY);
       HuksOptions.properties.splice(4, 2);
       console.info(`enter promise doInit`);
       try {
@@ -525,27 +509,29 @@ export function SecurityHuksAccessControlJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await generateKeyFunc(srcKeyAlias, HuksOptions);
-      await exportKeyFunc(srcKeyAlias, HuksOptions);
+      if (useSoftware) {
+        await generateKeyFunc(srcKeyAlias, HuksOptions);
+        await exportKeyFunc(srcKeyAlias, HuksOptions);
 
-      HuksOptions.properties.splice(1, 1, HuksAgreeDH.HuksKeyPurposeDH);
-      HuksOptions.properties.splice(3, 1);
-      console.info(`enter promise doInit`);
-      try {
-        await huks.initSession(srcKeyAlias, HuksOptions)
-          .then((data) => {
-            console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 12000003).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+        HuksOptions.properties.splice(1, 1, HuksAgreeDH.HuksKeyPurposeDH);
+        HuksOptions.properties.splice(3, 1);
+        console.info(`enter promise doInit`);
+        try {
+          await huks.initSession(srcKeyAlias, HuksOptions)
+            .then((data) => {
+              console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 12000003).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
+
+        await deleteKeyFunc(srcKeyAlias, HuksOptions);
       }
-
-      await deleteKeyFunc(srcKeyAlias, HuksOptions);
       done();
     });
 

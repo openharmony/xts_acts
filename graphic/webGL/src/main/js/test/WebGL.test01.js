@@ -999,15 +999,15 @@ export default function webgl1Test_webgl1(){
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0033
-		 * @tc.name webgl_test_copyTexImage2D
-		 * @tc.desc Test copyTexImage2D.
+		 * @tc.name webgl_test_copyTexImage2D_01
+		 * @tc.desc Test copyTexImage2D_01.
 		 */
-		it('webgl_test_copyTexImage2D', 0, async function(done) {
+		it('webgl_test_copyTexImage2D_01', 0, async function(done) {
 			//initContext();
-			console.info("webgltest into copyTexImage2D");
+			console.info("webgltest into copyTexImage2D_01");
 			gl.copyTexImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 0, 0, 512, 512, 0);
 			let errorCode = gl.getError();
-			console.info("webgltest copyTexImage2D getError: " + errorCode);
+			console.info("webgltest copyTexImage2D_01 getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
 
 			//deleteContext();
@@ -1017,15 +1017,15 @@ export default function webgl1Test_webgl1(){
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0034
-		 * @tc.name webgl_test_copyTexImage2D
-		 * @tc.desc Test copyTexImage2D.
+		 * @tc.name webgl_test_copyTexImage2D_02
+		 * @tc.desc Test copyTexImage2D_02.
 		 */
-		it('webgl_test_copyTexImage2D', 0, async function(done) {
+		it('webgl_test_copyTexImage2D_02', 0, async function(done) {
 			//initContext();
-			console.info("webgltest into copyTexImage2D");
+			console.info("webgltest into copyTexImage2D_02");
 			gl.copyTexImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 0, 0, '512', 512, 0);
 			let errorCode = gl.getError();
-			console.info("webgltest copyTexImage2D getError: " + errorCode);
+			console.info("webgltest copyTexImage2D_02 getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
 
 			//deleteContext();

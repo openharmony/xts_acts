@@ -157,6 +157,10 @@ let HuksSignVerifyED25519 = {
     tag: param.HksTag.HKS_TAG_DIGEST,
     value: param.HksKeyDigest.HKS_DIGEST_SHA1,
   },
+  HuksTagDigestSHA256: {
+    tag: param.HksTag.HKS_TAG_DIGEST,
+    value: param.HksKeyDigest.HKS_DIGEST_SHA256,
+  },
 };
 
 let HuksSignVerifyRSA = {

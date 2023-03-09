@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 import huks from "@ohos.security.huks";
-import { describe, it, expect } from "@ohos/hypium";
+import { describe, it, expect, beforeAll } from "@ohos/hypium";
+import { checkSoftware } from "../../../../../../utils/param/publicFunc.js";
 
 let securityLevel = stringToUint8Array("sec_level");
 let challenge = stringToUint8Array("challenge_data");
 let versionInfo = stringToUint8Array("version_info");
 let keyAliasString = "key attest";
+let useSoftware = true;
 
 function publicAttestKey(srcKeyAlies, HuksOptions) {
   return new Promise((resolve, reject) => {
@@ -181,6 +183,10 @@ async function generateKeyAttest(alias) {
 
 export default function SecurityHuksFaceFingerNormalJsunit() {
   describe("SecurityHuksFaceFingerNormalJsunit", function () {
+    beforeAll(async function (done) {
+      useSoftware = await checkSoftware();
+      done();
+    })
     /**
      * @tc.number HUKS_Cipher_AuthToken_2900
      * @tc.name HUKS_Cipher_AuthToken_2900.
@@ -196,18 +202,20 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
       };
       option.properties.splice(5, 1, err);
       console.info(`enter promise generateKeyItem`);
-      try {
-        await huks.generateKeyItem(alias, option)
-          .then((data) => {
-            console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 401).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+      if (useSoftware) {
+        try {
+          await huks.generateKeyItem(alias, option)
+            .then((data) => {
+              console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 401).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
       }
       done();
     });
@@ -227,18 +235,20 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
       };
       option.properties.splice(6, 1, err);
       console.info(`enter promise generateKeyItem`);
-      try {
-        await huks.generateKeyItem(alias, option)
-          .then((data) => {
-            console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 12000013).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+      if (useSoftware) {
+        try {
+          await huks.generateKeyItem(alias, option)
+            .then((data) => {
+              console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 12000013).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
       }
       done();
     });
@@ -258,18 +268,20 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
       };
       option.properties.splice(7, 1, err);
       console.info(`enter promise generateKeyItem`);
-      try {
-        await huks.generateKeyItem(alias, option)
-          .then((data) => {
-            console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 401).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+      if (useSoftware) {
+        try {
+          await huks.generateKeyItem(alias, option)
+            .then((data) => {
+              console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 401).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
       }
       done();
     });
@@ -288,18 +300,20 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
         value: -1,
       };
       option.properties.splice(8, 1, err);
-      try {
-        await huks.generateKeyItem(alias, option)
-          .then((data) => {
-            console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 12000013).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+      if (useSoftware) {
+        try {
+          await huks.generateKeyItem(alias, option)
+            .then((data) => {
+              console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 12000013).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
       }
       done();
     });
@@ -318,18 +332,20 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
         value: -1,
       };
       option.properties.splice(8, 1, err);
-      try {
-        await huks.generateKeyItem(alias, option)
-          .then((data) => {
-            console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 401).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+      if (useSoftware) {
+        try {
+          await huks.generateKeyItem(alias, option)
+            .then((data) => {
+              console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 401).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
       }
       done();
     });
@@ -348,18 +364,20 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
         value: huks.HuksAuthAccessType.HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL,
       };
       option.properties.splice(6, 1, err);
-      try {
-        await huks.generateKeyItem(alias, option)
-          .then((data) => {
-            console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-            expect(error.code == 401).assertTrue();
-          });
-      } catch (error) {
-        console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+      if (useSoftware) {
+        try {
+          await huks.generateKeyItem(alias, option)
+            .then((data) => {
+              console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`promise: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+              expect(error.code == 401).assertTrue();
+            });
+        } catch (error) {
+          console.error(`promise: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
       }
       done();
     });
@@ -392,35 +410,37 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
       let options = {
         properties: properties,
       };
-      await generateKeyAttest(aliasString);
-      try {
-        await huks.attestKeyItem(aliasString, options)
-          .then((data) => {
-            console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
-            expect(data.certChains != null).assertTrue();
-          })
-          .catch(error => {
-            console.error(`promise: attestKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-            expect(null).assertFail();
-          });
-      } catch (error) {
-        console.error(`promise: attestKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
-      }
+      if (useSoftware) {
+        await generateKeyAttest(aliasString);
+        try {
+          await huks.attestKeyItem(aliasString, options)
+            .then((data) => {
+              console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
+              expect(data.certChains != null).assertTrue();
+            })
+            .catch(error => {
+              console.error(`promise: attestKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+              expect(null).assertFail();
+            });
+        } catch (error) {
+          console.error(`promise: attestKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
 
-      console.info(`enter callback attestKeyItem`);
-      try {
-        await publicAttestKey(aliasString, options)
-          .then((data) => {
-            console.info(`callback: attestKeyItem success, data = ${JSON.stringify(data)}`);
-          })
-          .catch(error => {
-            console.error(`callback: attestKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-            expect(null).assertFail();
-          });
-      } catch (error) {
-        console.error(`callback: attestKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+        console.info(`enter callback attestKeyItem`);
+        try {
+          await publicAttestKey(aliasString, options)
+            .then((data) => {
+              console.info(`callback: attestKeyItem success, data = ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+              console.error(`callback: attestKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+              expect(null).assertFail();
+            });
+        } catch (error) {
+          console.error(`callback: attestKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+          expect(null).assertFail();
+        }
       }
       done();
     });

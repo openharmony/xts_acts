@@ -19,10 +19,10 @@ export default {
     data: {
         title: "Hello World"
     },
-    onInit() {
+    onShow() {
         this.title = this.$t('strings.world');
     },
-    onShow() {
+    onInit() {
         console.info('====>ServiceAbility onStart');
         var accountMgr = account_appAccount.createAppAccountManager();        
         accountMgr.createAccount("zhangsan", async(data)=>{

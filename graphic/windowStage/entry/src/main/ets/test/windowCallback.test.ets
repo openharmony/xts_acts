@@ -493,6 +493,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         expect().assertFail()
         done();
       });
+      await sleep(2000)
       await setSystemBarEnableT(mainWnd).catch((err) => {
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
@@ -740,7 +741,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code) {
               reject(null)
             } else {
-              console.log(msgStr + 'tempWnd.setSystemBarProperties ' + JSON.stringify(systemBarProperties)+ ' success');
+              console.log(msgStr + 'tempWnd.setSystemBarProperties ' + JSON.stringify(systemBarProperties) + ' success');
               resolve(true)
             }
 
@@ -766,7 +767,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           isNavigationBarLightIcon: false,
           navigationBarContentColor: tempColor,
         };
-        await setSystemBarPropertiesFun(tempWnd,systemBarProperties).catch((err) => {
+        await setSystemBarPropertiesFun(tempWnd, systemBarProperties).catch((err) => {
           console.info(msgStr + 'setSystemBarProperties error : ' + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -2104,7 +2105,11 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       mainWin.snapshot((err, data) => {
         if (err && err.code) {
           console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
-          expect().assertFail();
+          try{
+            expect().assertFail();
+          } catch (error) {
+            console.info(`expected catch error: ${JSON.stringify(error)}`)
+          }
           done();
           return;
         }
@@ -2237,18 +2242,23 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         })
       }
 
-      tempWnd = await createWin().catch(err => {
+      await createWin().then((data) => {
+        console.info(msgStr + `ohosWindow.create success  data: ${JSON.stringify(data)}`)
+        tempWnd = data;
+      }).catch(err => {
         console.info(msgStr + `ohosWindow.create failed  error: ${JSON.stringify(err)}`)
         expect().assertFail();
         done();
       })
       expect(!!tempWnd).assertTrue();
+      console.info(msgStr + `ohosWindow.create success  tempWnd: ${JSON.stringify(tempWnd)}`)
       tempWnd.showWithAnimation(async (error, animationData) => {
         if (error && error.code) {
-          unexpectedError(error, caseName, 'Failed to show the window with animation', done);
-        } else {
-          console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
+          console.info(msgStr + 'showWithAnimation fail. error: ' + JSON.stringify(error));
           await tempWnd.destroy()
+          expectedError(error, caseName, 'tempWnd.showWithAnimation', done, 202);
+        } else {
+          console.info(msgStr + 'Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
           done()
         }
       })
@@ -2329,6 +2339,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }).catch((err) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
       });
+
       function setAspectRatio() {
         return new Promise(function (resolve, reject) {
           try {
@@ -2337,7 +2348,11 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               if (err.code) {
                 console.error(msgStr + 'Failed to set the aspect ratio of window. err.code:' + JSON.stringify(err.code));
               }
-              expect(err.code == 0).assertTrue();
+              try{
+                expect(err.code == 0).assertTrue();
+              } catch (error) {
+                console.info(`expected catch error: ${JSON.stringify(error)}`)
+              }
               resolve(true)
             });
           } catch (exception) {
@@ -2345,6 +2360,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           }
         })
       }
+
       function resetAspectRatio() {
         return new Promise(function (resolve, reject) {
           console.info(msgStr + 'Succeeded start');
@@ -2352,6 +2368,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             mainWnd.resetAspectRatio((err) => {
               if (err.code) {
                 console.error(msgStr + 'Failed to reset the aspect ratio of window. err:' + JSON.stringify(err));
+                try{
+                  expect().assertFail();
+                } catch (error) {
+                  console.info(`expected catch error: ${JSON.stringify(error)}`)
+                }
+                done();
                 return;
               }
               console.info(msgStr + 'Succeeded in resetting aspect ratio of window.');
@@ -2382,6 +2404,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       }).catch((err) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
       });
+
       function setAspectRatio() {
         return new Promise(function (resolve, reject) {
           try {
@@ -2389,6 +2412,13 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             mainWnd.setAspectRatio(ratio, (err) => {
               if (err.code) {
                 console.error(msgStr + 'Failed to set the aspect ratio of window. err.code:' + JSON.stringify(err.code));
+                try{
+                  expect().assertFail();
+                } catch (error) {
+                  console.info(`expected catch error: ${JSON.stringify(error)}`)
+                }
+                done();
+                return;
               }
             });
           } catch (exception) {

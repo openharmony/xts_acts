@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest'
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix } from '@ohos.UiTest'
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -38,6 +38,136 @@ async function stopApplication(bundleName: string) {
 }
 
 export default function UiTest() {
+    
+    describe('UiTest_API10', function () {
+        /*
+         * @tc.number: uiTest_10001
+         * @tc.name: testWithIn
+         * @tc.desc: find UiComponent inside of the given UiComponent.
+         */
+        it('testWithIn', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let scroll = await driver.findComponent(ON.type('Scroll'))
+            let btn = await driver.findComponent(ON.within(ON.type('Scroll')).text('next page'))
+            let bounds1 = await scroll.getBounds()
+            let bounds2 = await btn.getBounds()
+            expect(bounds1.top < bounds2.top).assertTrue()
+            expect(bounds1.bottom > bounds2.bottom).assertTrue()
+            expect(bounds1.left < bounds2.right).assertTrue()
+            expect(bounds1.right > bounds2.right).assertTrue()
+        })
+
+        /*
+         * @tc.number: uiTest_10002
+         * @tc.name: testFling
+         * @tc.desc: inject fling on the device display.
+         */
+        it('testFling', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            await driver.fling(UiDirection.DOWN, 39000)
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponents(ON.text('next page'))
+            expect (button).assertNull()
+            await driver.fling(UiDirection.LEFT, 39000)
+            await driver.delayMs(waitUiReadyMs)
+            let text = await driver.findComponents(ON.text('1'))
+            expect (text).assertNull()
+            await driver.fling(UiDirection.RIGHT, 39000)
+            await driver.delayMs(waitUiReadyMs)
+            let text2 = await driver.findComponents(ON.text('2'))
+            expect (text2).assertNull()
+            await driver.fling(UiDirection.UP, 39000)
+            await driver.delayMs(2000)
+            let button2 = await driver.findComponents(ON.text('next page'))
+            expect (button2 != null).assertTrue()
+        })
+
+        /*
+         * @tc.number: uiTest_10003
+         * @tc.name: testScreenCapture
+         * @tc.desc: capture the specified area of current screen.
+         */
+        it('testScreenCapture', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let savePath = '/data/storage/el2/base/cache/1.png'
+            let success = await driver.screenCapture(savePath, {left: 0, top: 0, right: 100, bottom: 100})
+            expect(success == true).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_10004
+         * @tc.name: testMouseClick
+         * @tc.desc: click in the specified location on the screen by mouse.
+         */
+        it('testMouseClick', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let Button = await driver.findComponent(ON.text('jump'))
+            let center = await Button.getBoundsCenter()
+            await driver.mouseClick({x:center.x, y:center.y}, MouseButton.MOUSE_BUTTON_RIGHT)
+            await driver.delayMs(waitUiReadyMs)
+            let Button1 = await driver.findComponent(ON.text('right'))
+            expect(Button1 != null).assertTrue()
+            await driver.mouseClick({x:center.x, y:center.y}, MouseButton.MOUSE_BUTTON_MIDDLE,2072,2045)
+            await driver.delayMs(waitUiReadyMs)
+            let Button2 = await driver.findComponent(ON.text('middle'))
+            expect(Button2 != null).assertTrue()
+            await driver.mouseClick({x:center.x, y:center.y}, MouseButton.MOUSE_BUTTON_LEFT)
+            await driver.delayMs(waitUiReadyMs)
+            let Button3 = await driver.findComponent(ON.text('jump'))
+            expect(Button3 == null).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_10005
+         * @tc.name: testMouseMoveTo
+         * @tc.desc: move the mouse cursor to the specified location.
+         */
+        it('testMouseMoveTo', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let Button = await driver.findComponent(ON.text('jump'))
+            let center = await Button.getBoundsCenter()
+            await driver.mouseMoveTo(center)
+            await driver.delayMs(waitUiReadyMs)
+            let newButton = await driver.findComponent(ON.text('hover'))
+            expect(newButton != null).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_10006
+         * @tc.name: testMouseScroll
+         * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
+         */
+        it('testMouseScroll', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let Scroll = await driver.findComponent(ON.type('Scroll'))
+            let center = await Scroll.getBoundsCenter()
+            await driver.mouseScroll(center,true,30)
+            await driver.delayMs(waitUiReadyMs)
+            let button1 = await driver.findComponent(ON.text('next page'))
+            expect(button1 == null).assertTrue()
+            await driver.mouseScroll(center,false,30,2072,2048)
+            await driver.delayMs(waitUiReadyMs)
+            let button2 = await driver.findComponent(ON.text('next page'))
+            expect(button2 != null).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+    })
+
     describe('UiTest_API8', function () {
         /*
          * @tc.number: uiTest_8001
@@ -316,7 +446,7 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
-            let savePath = '/data/local/tmp/1.png'
+            let savePath = '/data/storage/el2/base/cache/1.png'
             let success = await driver.screenCap(savePath)
             expect(success == true).assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -851,7 +981,7 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let savePath = '/data/local/tmp/1.png'
+            let savePath = '/data/storage/el2/base/cache/1.png'
             let success = await driver.screenCap(savePath)
             expect(success == true).assertTrue()
             await stopApplication('com.uitestScene.acts')

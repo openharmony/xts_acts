@@ -44,8 +44,6 @@ export default function actsWifiFunctionsTest() {
         * @tc.level Level 0
         */
         it('Communication_WiFi_XTS_Sta_0002', 0, async function (done) {
-            let scan = wifi.scan();
-            await sleep(3000);
             await wifi.getScanInfos()
                 .then(result => {
                     let clen = Object.keys(result).length;
@@ -267,5 +265,4 @@ export default function actsWifiFunctionsTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
-
 
