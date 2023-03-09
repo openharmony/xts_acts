@@ -49,9 +49,9 @@ export default function deviceAttestInfoTest(context, windowStage, abilityStorag
       try {
         deviceAttest.getAttestStatus().then(attestResultInfo => {
           console.info("!!!====>[FormComponent]1:data====>" + JSON.stringify(attestResultInfo));
-          expect(attestResultInfo.authResult).assertEqual("");
-          expect(attestResultInfo.softwareResult).assertEqual("");
-          expect(attestResultInfo.softwareResultDetail).assertEqual("");
+          expect(attestResultInfo.authResult).assertEqual(-2);
+          expect(attestResultInfo.softwareResult).assertEqual(-2);
+          expect(JSON.stringify(attestResultInfo.softwareResultDetail)).assertEqual(JSON.stringify([-2,-2,-2,-2,-2]));
           expect(attestResultInfo.ticket).assertEqual("");
           done();
         } ,err => {
@@ -80,9 +80,9 @@ export default function deviceAttestInfoTest(context, windowStage, abilityStorag
             expect(err.code == 202).assertTrue();
           } else {
             console.info("!!!====>[FormComponent]2:data====>" + JSON.stringify(attestResultInfo));
-            expect(attestResultInfo.authResult).assertEqual("");
-            expect(attestResultInfo.softwareResult).assertEqual("");
-            expect(attestResultInfo.softwareResultDetail).assertEqual("");
+            expect(attestResultInfo.authResult).assertEqual(-2);
+            expect(attestResultInfo.softwareResult).assertEqual(-2);
+            expect(JSON.stringify(attestResultInfo.softwareResultDetail)).assertEqual(JSON.stringify([-2,-2,-2,-2,-2]));
             expect(attestResultInfo.ticket).assertEqual("");
           }
           done();
@@ -105,9 +105,9 @@ export default function deviceAttestInfoTest(context, windowStage, abilityStorag
         let attestResultInfo = deviceAttest.getAttestStatusSync();
         if (!isEmpty(attestResultInfo)) {
           console.info("!!!====>[FormComponent]3:data====>" + JSON.stringify(attestResultInfo));
-          expect(attestResultInfo.authResult).assertEqual("");
-          expect(attestResultInfo.softwareResult).assertEqual("");
-          expect(attestResultInfo.softwareResultDetail).assertEqual("");
+          expect(attestResultInfo.authResult).assertEqual(-2);
+          expect(attestResultInfo.softwareResult).assertEqual(-2);
+          expect(JSON.stringify(attestResultInfo.softwareResultDetail)).assertEqual(JSON.stringify([-2,-2,-2,-2,-2]));
           expect(attestResultInfo.ticket).assertEqual("");
         } else {
           console.info("!!!====>[FormComponent]3:error_1====>");
