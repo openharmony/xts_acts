@@ -55,7 +55,7 @@ export default function playModeJsunit(){
       }
       let callback= (indexEvent) => {
         console.info("playModeTest_0100 get state result is: " + JSON.stringify(indexEvent))
-        except(indexEvent.data.playMode).assertEqual(PlayMode.AlternateReverse)
+        expect(indexEvent.data.playMode).assertEqual(PlayMode.AlternateReverse);
       }
       try {
         events_emitter.on(indexEvent, callback);
