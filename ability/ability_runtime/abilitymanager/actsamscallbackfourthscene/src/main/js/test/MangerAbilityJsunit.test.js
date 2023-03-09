@@ -83,7 +83,7 @@ export default function ActsAmsCallBackFourthScene() {
                     },
                 }, (error, data) => {
                     console.info('ActsAmsCallBackFourthScene SimulateEntryAbilityFir start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
+                    ' + error.code + ', data length [' + data?.length + ']');
                 }
             );
             sleep(500);
