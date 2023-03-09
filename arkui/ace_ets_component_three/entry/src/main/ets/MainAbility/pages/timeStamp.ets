@@ -25,7 +25,7 @@ struct ClickExample {
       Button('Click').backgroundColor(0x2788D9)
         .key('button')
         .onClick((event: ClickEvent) => {
-          this.text = event.timestamp
+          this.text = event.timestamp.toString()
           console.info(this.text)
           try {
             var backData = {

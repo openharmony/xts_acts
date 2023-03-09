@@ -77,7 +77,7 @@ struct ImageAnimatorExample {
           try {
             var backData = {
               data: {
-                "string": 'Repeat'
+                "string": "Repeat"
               }
             }
             var backEvent = {

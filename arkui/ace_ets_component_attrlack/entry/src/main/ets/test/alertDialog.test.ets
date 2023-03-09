@@ -63,7 +63,7 @@ export default function alertDialogCenterStartJsunit() {
         var callback = (eventData) => {
           console.info("testalertDialogCenterStart0001 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual(true);
-          console.info('testalertDialogCenterStart0011 END');
+          console.info('testalertDialogCenterStart0001 END');
           done();
         }
         console.info("testalertDialogCenterStart0001 click result is: " + JSON.stringify(sendEventByKey('CenterStartButton', 10, "")));
@@ -85,7 +85,7 @@ export default function alertDialogCenterStartJsunit() {
            let measureOptions = {textContent : "alertDialog-CenterStart"};
            let width = measure.measureText(measureOptions);
            console.info("++++++++++++++++++++++" + width.toString());
-           expect(width > 0).assertFalse();
+           expect(width > 0).assertTrue();
            done();
       } catch (err) {
         console.info("testMeasureText0001 err : " + JSON.stringify(err));

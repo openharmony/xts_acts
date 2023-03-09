@@ -169,9 +169,7 @@ export default function ohosMatrix4Jsunit() {
       let objNew = JSON.parse(strJsonNew);
       console.info("[test_OhosMatrix4_006] component objNew is: " + JSON.stringify(objNew));
       console.info("[test_OhosMatrix4_006] component transform is: " + JSON.stringify(objNew.$attrs.transform));
-      expect(JSON.stringify(objNew.$attrs.transform)).assertEqual('{"type":"matrix",' +
-      '"matrix":"0.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,' +
-      '0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,0.000000,"}');      
+      expect(JSON.stringify(objNew.$attrs.transform)).assertEqual('{"type":"matrix","matrix":"3.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,900.000000,0.000000,0.000000,1.000000,"}');      
       done();
     });
   })

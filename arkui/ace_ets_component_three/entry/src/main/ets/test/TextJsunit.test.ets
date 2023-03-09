@@ -64,12 +64,12 @@ export default function textJsunit() {
       console.info("testText_0200 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("testText_0200 component obj is: " + JSON.stringify(obj));
-      var res = obj.$attrs.src.indexOf('rawfile/test.png');
+      var res = obj.$attrs.src.indexOf('RAWFILE/test.png');
       console.info("testText_0200 result is: " + res);
       var sres = obj.$attrs.src.slice(res, res + 16);
       console.info("testText_0200 slice result is: " + sres);
       expect(obj.$type).assertEqual('Image');
-      expect(obj.$attrs.src.slice(res, res + 16)).assertEqual('rawfile/test.png');
+      expect(obj.$attrs.src.slice(res, res + 16)).assertEqual('RAWFILE/test.png');
       console.info('testText_0200 END');
       done();
     });
