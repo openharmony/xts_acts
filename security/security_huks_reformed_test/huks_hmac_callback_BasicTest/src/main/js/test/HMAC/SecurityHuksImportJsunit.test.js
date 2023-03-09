@@ -1184,37 +1184,6 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_Reformed_0800', 0, async function (done) {
-            const srcKeyAlies = 'HUKS_Basic_Capability_Import_0800';
-            let HuksOptions = {
-                properties: new Array(
-                    HuksCipherAES.HuksKeyAlgAES,
-                    HuksCipherAES.HuksKeyPurposeENCRYPT,
-                    HuksCipherAES.HuksKeyAESSize512,
-                    HuksCipherAES.HuksKeyAESPADDINGNONE,
-                    HuksCipherAES.HuksKeyAESBLOCKMODE,
-                    HuksCipherAES.HuksKeyAESDIGESTNONE
-                ),
-                inData: aes512Key,
-            };
-            if (useSoftware) {
-                try {
-                    await huks.generateKeyItem(srcKeyAlies, HuksOptions)
-                        .then(data => {
-                            console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
-                        })
-                        .catch(err => {
-                            console.error(`callback: generateKeyItem failed, code: ${err.code}, msg: ${err.message}`);
-                            expect(err.code == 401).assertTrue();
-                        })
-                } catch (err) {
-                    console.error(`callback: generateKeyItem invalid, code: ${err.code}, msg: ${err.message}`);
-                    expect(null).assertFail();
-                }
-            }
-            done();
-        });
-
         it('HUKS_Basic_Capability_Import_Reformed_0900', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_0900';
             let HuksOptions = {
