@@ -365,7 +365,6 @@ napi_value ImageReceiverNDKTest::JsImageGetComponent(napi_env env, napi_callback
 
     napi_create_object(env, &result);
     HiviewDFX::HiLog::Debug(LABEL, "ImageReceiverNDKTest::JsImageGetComponent IN [%{public}p]", component.byteBuffer);
-    HiviewDFX::HiLog::Debug(LABEL, "ImageReceiverNDKTest::JsImageGetComponent IN [%{public}d]", component.size);
     setByteArrayNamedProperty(env, result, "byteBuffer", component.byteBuffer, component.size);
     setInt32NamedProperty(env, result, "componentType", component.componentType);
     setInt32NamedProperty(env, result, "rowStride", component.rowStride);
