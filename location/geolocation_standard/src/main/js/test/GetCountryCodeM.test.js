@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import geolocation from '@ohos.geolocation';
 import geolocationm from '@ohos.geoLocationManager';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
@@ -25,21 +26,19 @@ function sleep(ms) {
 }
 
 async function changedLocationMode(){
-    await geolocation.isLocationEnabled().then(async(result) => {
-        console.info('[lbs_js] getLocationSwitchState result: ' + JSON.stringify(result));
-        if(!result){
-            await geolocation.requestEnableLocation().then(async(result) => {
-                await sleep(3000);
-                console.info('[lbs_js] test requestEnableLocation promise result: ' + JSON.stringify(result));
-            }).catch((error) => {
-                console.info("[lbs_js] promise then error." + JSON.stringify(error));
-                expect().assertFail();
-            });
-        }
-    });
-    await geolocation.isLocationEnabled().then(async(result) => {
-        console.info('[lbs_js] check LocationSwitchState result: ' + JSON.stringify(result));
-    });
+    let result1 = geolocationm.isLocationEnabled();
+    console.info('[lbs_js] getLocationSwitchState result: ' + JSON.stringify(result1));
+    if(!result1){
+        await geolocation.requestEnableLocation().then(async(result) => {
+            await sleep(3000);
+            console.info('[lbs_js] test requestEnableLocation promise result: ' + JSON.stringify(result));
+        }).catch((error) => {
+            console.info("[lbs_js] promise then error." + JSON.stringify(error));
+            expect().assertFail();
+        });
+    }
+    let result2 = geolocationm.isLocationEnabled();
+    console.info('[lbs_js] check LocationSwitchState result: ' + JSON.stringify(result2));
 }
 
 async function applyPermission() {
@@ -76,10 +75,10 @@ let CountryCodeType = {
         COUNTRY_CODE_FROM_NETWORK:4,
     }
 
-export default function geolocationTest_4() {
+export default function geolocationTest_6() {
 
 
-    describe('geolocationTest_4', function () {
+    describe('geolocationTest_6', function () {
         beforeAll(async function (done) {
             console.info('beforeAll case');
             await applyPermission();
@@ -93,13 +92,13 @@ export default function geolocationTest_4() {
         })
     
     /**
-     * @tc.number SUB_HSS_LocationSystem_CountryCode_0100
+     * @tc.number SUB_HSS_LocationSystem_CountryCode_0400
      * @tc.name Test getCountryCode
      * @tc.desc Obtaining Country Code Information
      * @tc.type Function
      * @tc.level since 9
      */
-     it('SUB_HSS_LocationSystem_CountryCode_0100', 0, async function (done) {
+     it('SUB_HSS_LocationSystem_CountryCode_0400', 0, async function (done) {
         try {
             await geolocationm.getCountryCode().then((result) => {
                 console.info("[lbs_js] getCountryCode promise result: " + JSON.stringify(result));
@@ -113,53 +112,53 @@ export default function geolocationTest_4() {
                 expect().assertFail();
             });
         } catch (error) {
-            console.info("[lbs_js] getCountryCode promise try err."  + JSON.stringify(error));
+            console.info("[lbs_js] getCountryCode promise try err." + JSON.stringify(error));
             expect().assertFail();
         }
         done();
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_CountryCode_0200
+     * @tc.number SUB_HSS_LocationSystem_CountryCode_0500
      * @tc.name Test getCountryCode
      * @tc.desc Obtaining Country Code Information
      * @tc.type Function
      * @tc.level since 9
      */
-     it('SUB_HSS_LocationSystem_CountryCode_0200', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_CountryCode_0500', 0, async function (done) {
         try {
             geolocationm.getCountryCode((err,data) => {
                 if (err) {
-                    return console.info("getCountryCode callback err:  " + JSON.stringify(err));
+                    return console.info("[lbs_js] getCountryCode callback err:  " + JSON.stringify(err));
                 } else {
-                    console.info("getCountryCode callback success"+ JSON.stringify(data));
+                    console.info("[lbs_js] getCountryCode callback success"+ JSON.stringify(data));
                     expect(true).assertEqual(data != null);
                 }
-            });
+            })
         } catch (error) {
-            console.info("[lbs_js] getCountryCode callback try err."  + JSON.stringify(error));
+            console.info("[lbs_js] getCountryCode callback try err." + JSON.stringify(error));
             expect().assertFail();
         }
-        await sleep(1000);
+        await sleep(1500);
         done();
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_CountryCode_0300
+     * @tc.number SUB_HSS_LocationSystem_CountryCode_0600
      * @tc.name getCountryCode_on_off
      * @tc.desc The interception country code is changed.
      * @tc.type Function
      * @tc.level since 9
      */
-    it('SUB_HSS_LocationSystem_CountryCode_0300', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_CountryCode_0600', 0, async function (done) {
         console.info("[lbs_js] countryCodeChange");
         try {
             geolocationm.on('countryCodeChange', function (data) {
                 console.info('[lbs_js] countryCodeChange' +JSON.stringify(data) );
             });
         } catch (error) {
-            console.info("[lbs_js] countryCodeChangeOn try err."  + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error)!=null);
+            console.info("[lbs_js] countryCodeChangeOn try err." + JSON.stringify(error));
+            expect(true).assertEqual(error != null);
         }
         try {
             await geolocationm.getCountryCode().then((result) => {
@@ -170,7 +169,7 @@ export default function geolocationTest_4() {
                 expect().assertFail();
             });
         } catch (error) {
-            console.info("[lbs_js] getCountryCode callback try err."  + JSON.stringify(error));
+            console.info("[lbs_js] getCountryCode promise try err." + JSON.stringify(error));
             expect().assertFail();
         }
         try {
@@ -178,12 +177,12 @@ export default function geolocationTest_4() {
                 console.info('[lbs_js] countryCodeChange' + JSON.stringify(data));
             })
         } catch (error) {
-            console.info("[lbs_js] countryCodeChangeOff try err."  + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error)!=null);
+            console.info("[lbs_js] countryCodeChangeOn try err." + JSON.stringify(error));
+            expect(true).assertEqual(error != null);
         }
         done();
     })
-    
+
     })
 }
 

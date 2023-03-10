@@ -13,18 +13,8 @@
  * limitations under the License.
  */
 
-import app from '@system.app'
 
-export default {
-    data: {
-        title: ""
-    },
-    onInit() {
-        this.title = this.$t('strings.world');
-    },
-    onShow() {
-        console.info('onShow finish')
-    },
-    onReady() {
-    },
-}
+require('./GeocoderErrorTest.test.js')
+require('./LocationErrorTest.test.js')
+require('./GetCountryCodeError.test.js')
+require('./ListeningError.test.js')
