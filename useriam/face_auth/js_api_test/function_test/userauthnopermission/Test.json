@@ -19,20 +19,19 @@
             "type": "ShellKit",
             "run-command": [
                 "remount",
-                "mkdir /data/test"
+                "mkdir -p /data/local/tmp/xts-test"
             ]
         },
         {
             "type": "PushKit",
             "push": [
-                "ActsUserauthnopermissionTest.hap->/data/test/ActsUserauthnopermissionTest.hap"
+                "ActsUserauthnopermissionTest.hap->/data/local/tmp/xts-test/ActsUserauthnopermissionTest.hap"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /data/test/*.hap",
-                "chmod 777 -R data"
+                "chmod 777 -R /data/local/tmp/xts-test"
             ]
         }
     ]

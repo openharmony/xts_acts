@@ -16,17 +16,17 @@
     },
     {
       "type": "ShellKit",
-      "run-command": ["remount", "mkdir /data/test"]
+      "run-command": ["remount", "mkdir -p /data/local/tmp/xts-test"]
     },
     {
       "type": "PushKit",
       "push": [
-        "ActsCertificateFrameworkJSNormalTest.hap->/data/test/ActsCertificateFrameworkJSNormalTest.hap"
+        "ActsCertificateFrameworkJSNormalTest.hap->/data/local/tmp/xts-test/ActsCertificateFrameworkJSNormalTest.hap"
       ]
     },
     {
       "type": "ShellKit",
-      "run-command": ["chmod 644 /data/test/*.hap", "chmod 777 -R data"]
+      "run-command": ["chmod 777 -R /data/local/tmp/xts-test"]
     }
   ]
 }
