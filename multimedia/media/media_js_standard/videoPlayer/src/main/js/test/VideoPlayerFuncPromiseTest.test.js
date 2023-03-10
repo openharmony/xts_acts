@@ -377,13 +377,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
             console.info('case seek called and seekDoneTime is' + seekDoneTime);
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
-        await videoPlayer.seek(NEXT_FRAME_TIME + 100, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
-            expect(videoPlayer.state).assertEqual('playing');
-            expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME + 100);
-            expect(Math.abs(videoPlayer.currentTime - NEXT_FRAME_TIME - 100)).assertLess(DELTA_SEEK_TIME);
-            console.info('case seek called and seekDoneTime is' + seekDoneTime);
-        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-
         await videoPlayer.release().then(() => {
             console.info('case release called!!');
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);

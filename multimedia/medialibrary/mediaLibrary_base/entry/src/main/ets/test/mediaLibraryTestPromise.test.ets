@@ -127,7 +127,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
 
         const props = {
             image: {
-                mimeType: "image/*",
+                mimeType: "image/jpeg",
                 displayName: "01.jpg",
                 relativePath: "Pictures/Static/",
                 size: 348113,

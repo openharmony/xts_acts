@@ -12,12 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import Telephony_NETSTACK_HTTPTest from './NetworkManagerHttp.test.js';
- import Http2Test from './Http2Test.js';
- import HttpCacheTest from './HttpCacheTest.js';
+import Telephony_NETSTACK_HTTPTest from './NetworkManagerHttp.test.js';
+import Http2Test from './Http2Test.js';
+import HttpCacheTest from './HttpCacheTest.js';
+import HttpRequest2JsunitTest from './HttpRequest2JsunitTest.js';
 
- export default function testsuite() {
-   HttpCacheTest(); 
-   Telephony_NETSTACK_HTTPTest();
-    Http2Test();    
- }
+export default function testsuite() {
+    HttpCacheTest();
+    Telephony_NETSTACK_HTTPTest();
+    Http2Test();
+    HttpRequest2JsunitTest();
+}

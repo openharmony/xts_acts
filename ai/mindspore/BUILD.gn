@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 module_output_path = "acts/ActsMindSporeTest"
 
 config("mindspore_config") {
-  include_dirs = [ "//third_party/mindspore/" ]
+  include_dirs = [ "//third_party/mindspore/mindspore-src/source/" ]
 }
 
 ohos_moduletest_suite("ActsMindSporeTest") {
@@ -32,7 +32,7 @@ ohos_moduletest_suite("ActsMindSporeTest") {
   deps = [
     "//third_party/googletest:gmock",
     "//third_party/googletest:gtest",
-    "//third_party/mindspore/mindspore/lite:mindspore_lib",
+    "//third_party/mindspore/mindspore-src/source/mindspore/lite:mindspore_lib",
   ]
 
   subsystem_name = "ai"

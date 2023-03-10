@@ -175,7 +175,6 @@ describe('kvStoreBackupPromiseJsunittest', function () {
         console.info('Test beforeAll: Prerequisites at the test suite level, ' +
         'which are executed before the test suite is executed.');
         await publicgetKvStore(optionLock);
-        await sleep(5000);
         console.info("Test kvstore = " + kvStore)
     })
     beforeEach(function () {
@@ -185,13 +184,12 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     afterEach( async function () {
         console.info('afterEach: Test case-level clearance conditions, ' +
         'which are executed after each test case is executed.');
-        publicdeleteBackup(kvStore,files);
-        await sleep(5000);
+        await publicdeleteBackup(kvStore,files);
     })
     afterAll( async function () {
         console.info('afterAll: Test suite-level cleanup condition, ' +
         'which is executed after the test suite is executed');
-        publiccloseKvStore();
+        await publiccloseKvStore();
         kvManager = null;
         console.info("Test kvstore = " + kvStore)
     })

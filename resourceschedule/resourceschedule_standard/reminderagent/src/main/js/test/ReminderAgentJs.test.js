@@ -2800,7 +2800,8 @@ export default function ReminderAgentTest() {
             let firstId = 0;
             let secondId = 0;
             let diffId = 0
-            for (let i = 0; i < maxLimitNumsOfApp; i++) {
+            reminderAgent.cancelAllReminders().then(() =>{
+              for (let i = 0; i < maxLimitNumsOfApp; i++) {
                 (function (i) {
                     setTimeout(function () {
                         reminderAgent.publishReminder(timer).then((reminderId) => {
@@ -2811,12 +2812,13 @@ export default function ReminderAgentTest() {
                                 secondId = reminderId
                                 diffId = secondId - firstId
                                 expect(29).assertEqual(diffId);
+                                done();
                             }
                         });
-                    }, 500 * i);
+                    }, 500);
                 })(i);
             }
-            done();
+            })
         })
 
         /**

@@ -18,7 +18,6 @@ import commonEvent from '@ohos.commonEvent'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import missionManager from '@ohos.application.missionManager';
 
-
 const CASE_TIME_OUT=5000;
 var ACTS_AppRecovery = {
   events: ["ACTS_AppRecovery_First", "ACTS_AppRecovery_Second"]
@@ -281,7 +280,6 @@ export default function abilityTest() {
       },CASE_TIME_OUT)
     })
 
-
     /*
      * @tc.number: Acts_AppRecovery_0400
      * @tc.name: Fault recovery of multi-Ability application
@@ -378,7 +376,7 @@ export default function abilityTest() {
       },CASE_TIME_OUT)
     })
 
-    /*
+   /*
     * @tc.number: Acts_AppRecovery_0700
     * @tc.name: Fault recovery of multi-Ability application
     * @tc.desc: If the restart recovery status is not set, the Ability application pre-failure state will not be
@@ -454,11 +452,11 @@ export default function abilityTest() {
       },CASE_TIME_OUT)
     })
 
-    /*
+  /*
    * @tc.number: Acts_AppRecovery_0800
    * @tc.name: Fault recovery of multi-Ability application
    * @tc.desc: If the restart recovery status is not set, the Ability application pre-failure state will not be
-    *          restored after the application exits abnormally and restarts.
+   *          restored after the application exits abnormally and restarts.
    */
     it('Acts_AppRecovery_0800',0, async function (done) {
       let subscriber;
@@ -718,8 +716,6 @@ export default function abilityTest() {
       },CASE_TIME_OUT)
     })
 
-
-
     /*
      * @tc.number: Acts_AppRecovery_1100
      * @tc.name: Fault recovery of multi-Ability application
@@ -889,6 +885,5 @@ export default function abilityTest() {
         }
       },CASE_TIME_OUT)
     })
-
   })
 }
