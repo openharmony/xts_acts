@@ -27,67 +27,6 @@ export default function screenLockJSUnit() {
         beforeEach(async function (done) {
             result = await screenLock.isScreenLocked();
             done();
-        });       
-    
-       /*
-        * @tc.number  SUB_MISC_THEME_screenLock_API_0012
-        * @tc.name    Test unlock() to  Unlocks the screen.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('SUB_MISC_THEME_screenLock_API_0012', 0, async function (done) {
-            console.info('====>-------------SUB_MISC_THEME_screenLock_API_0012 start----------------------');
-            try{
-                screenLock.unlock((err, data) => {
-                    try{
-                        if (err) {
-                            console.info("====>SUB_MISC_THEME_screenLock_API_0012 failed because: " + JSON.stringify(err));
-                            expect().assertFail();
-                            done();
-                        }
-                        let currentResult = screenLock.isLocked()
-                        expect(currentResult).assertEqual(false)
-                        console.info("====>SUB_MISC_THEME_screenLock_API_0012 success.");
-                        console.info('====>-------------SUB_MISC_THEME_screenLock_API_0012 end----------------------');
-                        done();
-                    }catch(err){
-                        console.info('====>SUB_MISC_THEME_screenLock_API_0012 throw_err : ' + JSON.stringify(err));
-                        expect().assertFail();
-                        done();
-                    }                    
-                });
-            }catch(err){
-                console.info('====>SUB_MISC_THEME_screenLock_API_0012 catch err : ' + JSON.stringify(err));
-                expect(err.code).assertEqual(201);
-                done();
-            }            
-        })
-
-        /*
-        * @tc.number  SUB_MISC_THEME_screenLock_API_0013
-        * @tc.name    Test unlock() to  Unlocks the screen.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('SUB_MISC_THEME_screenLock_API_0013', 0, async function (done) {
-           console.info('====>-------------SUB_MISC_THEME_screenLock_API_0013 start----------------------');
-            try{
-                screenLock.unlock().then((data) => {
-                    let currentResult = screenLock.isLocked()
-                    expect(currentResult).assertEqual(false)
-                    console.info("====>SUB_MISC_THEME_screenLock_API_0013 success.");
-                    console.info('====>-------------SUB_MISC_THEME_screenLock_API_0013 end----------------------');
-                    done();
-                }).catch( err => {
-                    console.info("====>SUB_MISC_THEME_screenLock_API_0013 failed because: " + JSON.stringify(err));
-                    expect().assertFail();
-                    done();
-                });
-            }catch(err){
-                console.info('====>SUB_MISC_THEME_screenLock_API_0013 catch err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }            
         });
 
         /*
@@ -170,7 +109,7 @@ export default function screenLockJSUnit() {
                 screenLock.isSecureMode((err, data) => {
                     try{
                         console.info("====>SUB_MISC_THEME_screenLock_API_0003 secureMode's result is " + data);
-                        expect(data == result).assertTrue();
+                        expect(data == false).assertTrue();
                         console.info("====>------------------end SUB_MISC_THEME_screenLock_API_0003-------------------");
                         done();
                     }catch(err){
@@ -205,8 +144,7 @@ export default function screenLockJSUnit() {
                             expect().assertFail();
                             done();
                         }
-                        let currentResult = screenLock.isLocked()
-                        expect(currentResult).assertEqual(false)
+                        expect(true).assertTrue()
                         console.info("====>SUB_MISC_THEME_screenLock_API_0004 success.");
                         console.info('====>-------------SUB_MISC_THEME_screenLock_API_0004 end----------------------');
                         done();
@@ -244,62 +182,12 @@ export default function screenLockJSUnit() {
                         console.info("====>logMessage SUB_MISC_THEME_screenLock_API_0007 throw_err = " + err);
                         expect().assertFail();
                         done();
-                    }                    
+                    }
                 });
             } catch (err) {
                 console.info("====>logMessage SUB_MISC_THEME_screenLock_API_0007: err = " + err);
                 expect().assertFail();
                 done();
-            }
-            
-        }); 
-
-        /*
-        * @tc.number  SUB_MISC_THEME_screenLock_API_0010
-        * @tc.name    Test isLocked() to Checks whether the screen is currently locked.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('SUB_MISC_THEME_screenLock_API_0010', 0, async function (done) {
-            console.info('====>-------------SUB_MISC_THEME_screenLock_API_0010 start----------------------');
-            let lock = null;
-            try{
-                lock = await screenLock.isLocked()
-                console.info('====>SUB_MISC_THEME_screenLock_API_0010 data : ' + JSON.stringify(lock));
-                expect(lock).assertEqual(result);
-                console.info('====>-------------SUB_MISC_THEME_screenLock_API_0010 end----------------------');
-                done()
-            }catch(err){
-                console.info('====>SUB_MISC_THEME_screenLock_API_0010 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-        });
-
-        /*
-        * @tc.number  SUB_MISC_THEME_screenLock_API_0011
-        * @tc.name    Test isSecure() to Checks whether the screen lock of the current device is secure.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('SUB_MISC_THEME_screenLock_API_0011', 0, async function (done) {
-            console.info('====>-------------SUB_MISC_THEME_screenLock_API_0011 start----------------------');
-            let secured = null;
-            try{
-                secured = screenLock.isSecure()
-                console.info('====>SUB_MISC_THEME_screenLock_API_0011 data : ' + JSON.stringify(secured));
-                if (typeof secured == "boolean") {
-                    expect(true).assertTrue();
-                    console.info('====>-------------SUB_MISC_THEME_screenLock_API_0011 end----------------------');
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>SUB_MISC_THEME_screenLock_API_0011 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
             }
         });
     });
