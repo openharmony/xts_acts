@@ -13,9 +13,8 @@
  * limitations under the License.
  */
 import ReminderAgentTest from './ReminderAgentJs.test.js'
-import ReminderAgentManagerTest from './ReminderAgentManagerJs.test.js'
+
 export default function testsuite() {
 ReminderAgentTest()
-ReminderAgentManagerTest()
 
 }

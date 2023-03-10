@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import bundlestate_test from './BundleState.test.js'
-import DeviceUsageStatisticsJsTest from './DeviceUsageStatisticsJsunit.test.js'
-
+import ReminderAgentManagerTest from './ReminderAgentManagerJs.test.js'
 export default function testsuite() {
-    bundlestate_test()
-    DeviceUsageStatisticsJsTest()
+ReminderAgentManagerTest()
+
 }
