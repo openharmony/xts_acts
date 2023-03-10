@@ -69,11 +69,9 @@ export default class EntryAbility extends Ability {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
 
-        // 第一次启动设置项目
         if (strAction == "Acts_AppRecovery_0100_once" || strAction == "Acts_AppRecovery_0300_once" ||
             strAction == "Acts_AppRecovery_0700_once" || strAction == "Acts_AppRecovery_0900_once" ||
             strAction == "Acts_AppRecovery_1100_once") {
-            // 是否包存状态
             if (strAction == "Acts_AppRecovery_0100_once" || strAction == "Acts_AppRecovery_0300_once" ||
                 strAction == "Acts_AppRecovery_1100_once") {
                 appRecovery.saveAppState(this.context);
@@ -81,11 +79,9 @@ export default class EntryAbility extends Ability {
             } else {
                 console.log(strAction + "Rely====> not saveAppState");
             }
-            // 回复ACTS_AppRecovery_First消息
             setTimeout(() => {
                 commonEvent.publish("ACTS_AppRecovery_First",commonEventData,(err)=>{
                     console.log(strAction + "Rely====> publish err:" + JSON.stringify(err));
-                    // 是否退出
                     if (strAction == "Acts_AppRecovery_0100_once" ||
                         strAction == "Acts_AppRecovery_0700_once") {
                         setTimeout(()=>{
@@ -100,7 +96,6 @@ export default class EntryAbility extends Ability {
             }, 200);
         }
 
-        // 第二次启动设置项目
         if (strAction == "Acts_AppRecovery_0100_twice" || strAction == "Acts_AppRecovery_0300_twice" ||
             strAction == "Acts_AppRecovery_0700_twice" || strAction == "Acts_AppRecovery_0900_twice" ||
             strAction == "Acts_AppRecovery_1100_twice") {
