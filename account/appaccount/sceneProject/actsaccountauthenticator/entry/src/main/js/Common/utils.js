@@ -261,7 +261,7 @@ class MyAuthenticator extends rpc.RemoteObject {
             case 5 :
                 name = readString8(data)
                 callback = new MyAuthenticatorCallback(data.readRemoteObject())
-                this.authenticatorImpl.isAccountRemovable(name, callback)
+                this.authenticatorImpl.checkAccountRemovable(name, callback)
                 break
         }
         return true
@@ -345,7 +345,7 @@ class MyAuthenticatorImpl {
         callback.onResult(10016, {})
     }
 
-    isAccountRemovable(name, callback) {
+    checkAccountRemovable(name, callback) {
         console.log(TAG + "name: " + name)
         var isRemovable = this.accountRemovability[name]
         if (isRemovable == undefined || isRemovable == false) {

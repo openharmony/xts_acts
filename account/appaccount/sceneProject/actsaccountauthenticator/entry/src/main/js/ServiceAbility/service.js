@@ -160,7 +160,7 @@ class MyAuthenticator extends account_appAccount.Authenticator {
         callback.onResult(10016, {})
     }
 
-    isAccountRemovable(name, callback) {
+    checkAccountRemovable(name, callback) {
         console.log(TAG + "name: " + name)
         var isRemovable = false;
         try {
