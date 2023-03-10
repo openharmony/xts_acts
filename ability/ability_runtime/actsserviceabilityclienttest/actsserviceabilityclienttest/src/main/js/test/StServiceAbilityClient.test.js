@@ -14,6 +14,7 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import commonEvent from '@ohos.commonEvent'
+import rpc from "@ohos.rpc";
 
 import { describe, afterEach, it, expect } from '@ohos/hypium'
 export default function ActsStServiceAbilityTest() {
