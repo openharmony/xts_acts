@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsRequestDialog.hap"
+                "ActsRequestDialogTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
@@ -26,7 +26,7 @@
         {
             "type": "PushKit",
             "push": [
-                "ActsRequestDialog.hap->/data/test/ActsRequestDialog.hap"
+                "ActsRequestDialogTest.hap->/data/test/ActsRequestDialogTest.hap"
             ]
         },
         {
