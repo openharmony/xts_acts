@@ -148,7 +148,7 @@ struct Index {
                         case "emitOnProgressChange":{
                             this.isProgressFinish=true
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"https://gitee.com/"})
+                            this.controller.loadUrl({url:"resource://rawfile/index.html"})
                             break;
                         }
                         case "emitOnRefreshAccessedHistory":{

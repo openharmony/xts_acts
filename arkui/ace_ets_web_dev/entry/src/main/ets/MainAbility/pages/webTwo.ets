@@ -45,6 +45,7 @@ struct Second {
                     console.info("key==>"+this.str);
                     switch(this.str){
                         case "emitOverviewModeAccessTrue":{
+                            this.controller.loadUrl({url:"resource://rawfile/overview.html"})
                             this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
                                 console.info("getViewResult==>"+res);
                                 this.overviewScale=res;
