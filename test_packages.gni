@@ -31,7 +31,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/inputmethod:inputmethod",
   "${ACTS_ROOT}/powermgr:powermgr",
   "${ACTS_ROOT}/startup:startup",
-  "${ACTS_ROOT}/sensors:sensor",
+  "${ACTS_ROOT}/sensors:sensors",
   "${ACTS_ROOT}/distributeddatamgr:pasteboard",
   "${ACTS_ROOT}/distributeddatamgr:distributeddatamgr",
   "${ACTS_ROOT}/graphic:graphic",
