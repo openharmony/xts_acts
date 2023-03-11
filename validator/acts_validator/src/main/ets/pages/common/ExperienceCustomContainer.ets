@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import fileio from '@ohos.fileio';
 import prompt from '@ohos.prompt';
+import fileio from '@ohos.fileio';
 import router from '@ohos.router';
 import screenshot from '@ohos.screenshot';
 import image from '@ohos.multimedia.image';
@@ -21,15 +21,17 @@ import Logger from '../model/Logger';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 
 let path = globalThis.dir;
+
 const TAG = '[Screenshot]';
 @Component
 export struct CustomContainer {
-  @Link value: string;
-  @Link name: string;
+  @Link name : string;
   title : string = '';
   StepTips: string = '';
   Url : string = '';
+  @Link StartEnable : boolean
   @Link Vue : boolean;
+  @Link Fps : string;
   @BuilderParam content: () => void;
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
@@ -84,7 +86,7 @@ export struct CustomContainer {
         .onClick(()=>{
           router.back({
             url:this.Url,
-            params: {result : 'None', }
+            params: {result : 'None',}
           })
         })
         Text(this.title).fontColor(Color.White).fontSize('18fp').margin({left:'-20vp'})
@@ -134,6 +136,7 @@ export struct CustomContainer {
     }
     await fileio.close(fd);
     Logger.info(TAG, `write done`);
+
   }
   getScreen = (isFullScreen: boolean) => {
     let screenshotOptions: screenshot.ScreenshotOptions = {
