@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("ActslocationJsTest") {
+ohos_js_hap_suite("ActslocationErrorCodeTest") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":geolocation_js_assets",
@@ -24,14 +24,12 @@ ohos_js_hap_suite("ActslocationJsTest") {
   #    "//third_party/libpng:libpng",
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActslocationJSApiTest"
+  hap_name = "ActslocationErrorCodeApiTest"
   part_name = "location"
   subsystem_name = "location"
 }
 ohos_js_assets("geolocation_js_assets") {
-  js2abc = true
-  hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"
+  source_dir = "./src/main/js/default"
 }
 ohos_resources("geolocation_resources") {
   sources = [ "./src/main/resources" ]

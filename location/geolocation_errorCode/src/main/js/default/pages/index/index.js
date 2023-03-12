@@ -15,6 +15,7 @@
 
 import app from '@system.app'
 
+
 export default {
     data: {
         title: ""

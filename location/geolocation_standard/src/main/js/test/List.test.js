@@ -14,13 +14,19 @@
  */
 
 
+import geolocationTest_geo5 from './GeocoderMTest.test.js'
 import geolocationTest_geo1 from './GeocoderTest.test.js'
 import geolocationTest_4 from './GetCountryCode.test.js'
+import geolocationTest_6 from './GetCountryCodeM.test.js'
 import geolocationTest_geo3 from './LocationTest.test.js'
+import geolocationTest_geo7 from './LocationMTest.test.js'
 import geolocationTest_geo2 from './SystemLocation.test.js'
 export default function testsuite() {
+   geolocationTest_geo5()
    geolocationTest_geo1()
    geolocationTest_4()
+   geolocationTest_6()
    geolocationTest_geo3()
+   geolocationTest_geo7()
    geolocationTest_geo2()
 }

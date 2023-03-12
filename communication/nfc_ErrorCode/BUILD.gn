@@ -11,22 +11,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
-group("communication") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "bluetooth_ble:ActsBluetoothBleJsTest",
-      "bluetooth_on:ActsBluetoothOnJsTest",
-      "bluetooth_profile:ActsBluetoothProFileJsTest",
-      "bluetooth_standard:ActsBluetoothJsTest",
-      "dsoftbus/rpc:ActsRpcJsTest",
-      "nfc_Controller:ActsNFCJSTest",
-      "nfc_ErrorCode:ActsNFCErrorJSTest",
-      "wifi_p2p:ActsP2PJSTest",
-      "wifi_standard:ActsWifiJSTest",
-    ]
-  } else {
-    deps = [ "wifi_standard:ActsWifiJSTest" ]
-  }
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_hap_suite("ActsNFCErrorJSTest") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":nfc_js_assets",
+    ":nfc_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsNFCErrorJSTest"
+  part_name = "nfc"
+  subsystem_name = "communication"
+}
+ohos_js_assets("nfc_js_assets") {
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
+}
+ohos_resources("nfc_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
