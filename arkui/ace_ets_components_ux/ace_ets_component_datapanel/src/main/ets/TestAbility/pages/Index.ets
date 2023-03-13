@@ -1,0 +1,369 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ //@ts-nocheck
+import events_emitter from '@ohos.events.emitter';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import { Hypium } from '@ohos/hypium';
+import hilog from '@ohos.hilog';
+import testsuite from '../../test/List.test'
+@Entry
+@Component
+struct DatapanelTest {
+
+  aboutToAppear(){
+    var abilityDelegator: any
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    var abilityDelegatorArguments: any
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+  }
+
+  public color1: Color[] = ["#FFFF0000", "#FF00FF00", "#FF0000FF", "#FF000000"];
+  public color2: Color[] = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(0,0,0)']
+  public color3: Color[] = [Color.Red, Color.Green, Color.Blue, Color.Black]
+  public color4: Color[] = ["#FFFF0000", "#FF00FF00", "#FF0000FF", "#FF000000"]
+  public color5: Color[] = ["#FF000000", "#FFFF0000", "#FF00FF00"]
+  public color6: LinearGradient = new LinearGradient([{ color: "#FFA500", offset: 0 }, {
+    color: "#FFFFFF00", offset: 1 }])
+  public color7: LinearGradient = new LinearGradient([{ color: "#FFC0CB", offset: 0 }, {
+    color: "#FF00FF00", offset: 1 }])
+  public color8: LinearGradient = new LinearGradient([{ color: "#FF0000FF", offset: 0 }, {
+    color: "#FFFF0000", offset: 1 }])
+  public color9: LinearGradient = new LinearGradient([{ color: 'rgb(255,165,0)', offset: 0 }, {
+    color: 'rgb(255,255,0)', offset: 1 }])
+  public color10: LinearGradient = new LinearGradient([{ color: 'rgb(255,192,203)', offset: 0 }, {
+    color: 'rgb(0,128,0)', offset: 1 }])
+  public color11: LinearGradient = new LinearGradient([{ color: 'rgb(0,0,255)', offset: 0 }, {
+    color: 'rgb(255,0,0)', offset: 1 }])
+  public color12: LinearGradient = new LinearGradient([{ color: Color.Orange, offset: 0 }, {
+    color: Color.Yellow, offset: 1 }])
+  public color13: LinearGradient = new LinearGradient([{ color: Color.Pink, offset: 0 }, {
+    color: Color.Green, offset: 1 }])
+  public color14: LinearGradient = new LinearGradient([{ color: Color.Blue, offset: 0 }, {
+    color: Color.Red, offset: 1 }])
+  public color15: Color[] = ["#01FFA500", "#4CFFFF00", "#9AFFC0CB", "#FF00FF00"]
+  public color16: Color[] = ['rgba(255,165,0,0)', 'rgba(255,255,0,0)', 'rgba(255,192,203,0)', 'rgba(0,128,0,0)']
+  public color17: Color[] = [Color.Orange, Color.Yellow, Color.Pink, Color.Green]
+  public color18: Color[] = ["#01FFA500", "#4C800080", "#9AFFFF00", "#FF00FF00"]
+  public color19: LinearGradient = new LinearGradient([{ color: "#01FFA500", offset: 0 }, {
+    color: "#01FFFF00", offset: 1 }])
+  public color39: LinearGradient = new LinearGradient([{ color: "#01FFC0CB", offset: 0 }, {
+    color: "#0100FF00", offset: 1 }])
+  public color20: Color[] = ["#FFFF0000", "#FFFFFF00", "#FF00FF00"]
+  public color21: Color[] = ['rgb(255,0,0)', 'rgb(255,255,0)', 'rgb(0,255,0)']
+  public color22: Color[] = [Color.Red, Color.Yellow, Color.Green]
+  public color23: LinearGradient = new LinearGradient([{ color: "#FFA500", offset: 0 }, {
+    color: "#FFFFFF00", offset: 1 }])
+  public color24: LinearGradient = new LinearGradient([{ color: "#FFC0CB", offset: 0 }, {
+    color: "#FF00FF00", offset: 1 }])
+  public color25: LinearGradient = new LinearGradient([{ color: "#FF0000FF", offset: 0 }, {
+    color: "#FFFF0000", offset: 1 }])
+  public color26: LinearGradient = new LinearGradient([{ color: 'rgb(255,165,0)', offset: 0 }, {
+    color: 'rgb(255,255,0)', offset: 1 }])
+  public color27: LinearGradient = new LinearGradient([{ color: 'rgb(255,192,203)', offset: 0 }, {
+    color: 'rgb(0,128,0)', offset: 1 }])
+  public color28: LinearGradient = new LinearGradient([{ color: 'rgb(0,0,255)', offset: 0 }, {
+    color: 'rgb(255,0,0)', offset: 1 }])
+  public color29: LinearGradient = new LinearGradient([{ color: Color.Orange, offset: 0 }, {
+    color: Color.Yellow, offset: 1 }])
+  public color30: LinearGradient = new LinearGradient([{ color: Color.Pink, offset: 0 }, {
+    color: Color.Green, offset: 1 }])
+  public color31: LinearGradient = new LinearGradient([{ color: Color.Blue, offset: 0 }, {
+    color: Color.Red, offset: 1 }])
+  public color32: Color = "#FF0000FF"
+  public color33: LinearGradient = new LinearGradient([{ color: "#FFA500", offset: 0 }, {
+    color: "#FFC0CB", offset: 1 }])
+  public color34: Color = 'rgb(255,0,0)'
+  public color35: LinearGradient = new LinearGradient([{ color: 'rgb(255,165,0)', offset: 0 }, {
+    color: 'rgb(255,192,203)', offset: 1 }])
+  public color36: Color = Color.Red
+  public color37: LinearGradient = new LinearGradient([{ color: Color.Orange, offset: 0 }, {
+    color: Color.Pink, offset: 1 }])
+  public colorArray1: Array<LinearGradient | ResourceColor> = [ "#FF0000FF", this.color33 ]
+  public colorArray2: Array<LinearGradient | ResourceColor> = [ 'rgb(255,0,0)', this.color35 ]
+  public colorArray3: Array<LinearGradient | ResourceColor> = [ Color.Red, this.color35 ]
+  public colorArray4: Array<LinearGradient | ResourceColor> = [ $r("app.color.DataPanel_TrackBackgroundColor")]
+
+  build() {
+    Row() {
+      Column() {
+        List({ space: 0, initialIndex: 0 }) {
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(undefined)
+              .key("ArkUX_Stage_DataPanel_ValueColors_2500")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(['rgba(255,165,0,0)', 'rgba(0,255,255,0,0)', 'rgba(255,192,203,0)', 'rgba(0,0,128,0)'])
+              .valueColors(undefined)
+              .key("ArkUX_Stage_DataPanel_ValueColors_2600")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors('color')
+              .key("ArkUX_Stage_DataPanel_ValueColors_2700")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(this.color18)
+              .key("ArkUX_Stage_DataPanel_ValueColors_2800")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors([this.color19, this.color39])
+              .key("ArkUX_Stage_DataPanel_ValueColors_2900")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor('#FF00FF00')
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_0100")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor('rgb(0,255,0)')
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_0200")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor(Color.Green)
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_0300")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor($r("app.color.DataPanel_TrackBackgroundColor"))
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_0400")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor("#FF00FF00")
+              .trackBackgroundColor(Color.Yellow)
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_0500")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor("#FF0000FF")
+              .backgroundColor(Color.Green)
+              .padding(10)
+              .margin(20)
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_0600")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor('')
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_0700")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor(null)
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_0800")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor(undefined)
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_0900")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor("#FF00FF00")
+              .trackBackgroundColor(undefined)
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_1000")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackBackgroundColor('color')
+              .key("ArkUX_Stage_DataPanel_TrackBackgroundColor_1100")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .strokeWidth(30.00)
+              .key("ArkUX_Stage_DataPanel_StrokeWidth_0100")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .strokeWidth('30.00vp')
+              .key("ArkUX_Stage_DataPanel_StrokeWidth_0200")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .strokeWidth($r("app.string.DataPanel_StrokeWidth"))
+              .key("ArkUX_Stage_DataPanel_StrokeWidth_0300")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .strokeWidth('')
+              .key("ArkUX_Stage_DataPanel_StrokeWidth_0400")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .strokeWidth(null)
+              .key("ArkUX_Stage_DataPanel_StrokeWidth_0500")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .strokeWidth(undefined)
+              .key("ArkUX_Stage_DataPanel_StrokeWidth_0600")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ radius: 20 })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_0100")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ radius: -1 })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_0200")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ radius: '' })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_0300")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ radius: null })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_0400")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ radius: undefined })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_0500")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ offsetX: 15 })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_0600")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ offsetX: -10 })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_0700")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ offsetX: '' })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_0800")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ offsetX: null })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_0900")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ offsetX: undefined })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_1000")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ offsetY: 15 })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_1100")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ offsetY: -10 })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_1200")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ offsetY: '' })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_1300")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .trackShadow({ offsetY: null })
+              .key("ArkUX_Stage_DataPanel_TrackShadow_1400")
+          }
+        }
+      }
+    .width('100%')
+    }
+  .height('100%')
+}
+}
