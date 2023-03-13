@@ -49,10 +49,10 @@ export default function imageAnimatorJsunit(){
 
     it('imageAnimatorTest_0100', 0, async function (done) {
       console.info('imageAnimatorTest_0100 START');
-      await Utils.sleep(500);
+      await Utils.sleep(1500);
       let callback = (indexEvent) => {
-        console.info("imageAnimatorTest_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.state).assertEqual(1);
+        console.info("imageAnimatorTest_0100 get state result is: " + JSON.stringify(indexEvent.data.state));
+        expect(indexEvent.data.state).assertEqual(AnimationStatus.Running);
         done();
       }
       let indexEvent = {
@@ -163,7 +163,7 @@ export default function imageAnimatorJsunit(){
       await Utils.sleep(1500);
       let callback = (indexEvent) => {
         console.info("imageAnimatorTest_0600 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.string).assertEqual('repeat');
+        expect(indexEvent.data.string).assertEqual('Repeat');
       }
       let indexEvent = {
         eventId: 114,

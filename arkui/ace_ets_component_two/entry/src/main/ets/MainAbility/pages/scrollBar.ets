@@ -32,8 +32,7 @@ struct ScrollBarExample {
         this.directionValue = directionObject.directionValue;
       }
       if (eventData.data.stateValue != null) {
-        let stateObject = JSON.parse(eventData.data.stateObject);
-        this.stateValue = stateObject.stateValue;
+        this.stateValue = eventData.data.stateValue;
       }
     }
   }

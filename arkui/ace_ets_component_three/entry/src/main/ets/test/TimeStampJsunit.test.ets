@@ -50,7 +50,7 @@ export default function timeStampJsunit() {
       await Utils.sleep(1500);
       let callback = (indexEvent) => {
         console.info("timeStampTest_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.Text).assertNotEqual(null);
+        expect(isNaN(indexEvent.data.Text)).assertFalse();
       }
       let indexEvent = {
         eventId: 230,

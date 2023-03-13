@@ -28,9 +28,9 @@ struct QrCode {
       var colorValue = eventData.data.color;
       if (colorValue != null && colorValue.length != 0) {
         this.qrCodeColor = colorValue;
-        console.info("qrCodeColor:" + qrCodeColor);
+        console.info("qrCodeColor:" + this.qrCodeColor);
       } else {
-        console.info("qrCodeColor is null or empty " + qrCodeColor);
+        console.info("qrCodeColor is null or empty " + this.qrCodeColor);
       }
     } else {
       console.info("qrCode page color not change called:" + JSON.stringify(eventData));
@@ -42,9 +42,9 @@ struct QrCode {
       var backgroundColorValue = eventData.data.backgroundColor;
       if (backgroundColorValue != null && backgroundColorValue.length != 0) {
         this.qrCodeBackgroundColor = backgroundColorValue;
-        console.info("qrCodeBackgroundColor:" + qrCodeBackgroundColor);
+        console.info("qrCodeBackgroundColor:" + this.qrCodeBackgroundColor);
       } else {
-        console.info("backgroundColorValue is null or empty " + qrCodeColor);
+        console.info("backgroundColorValue is null or empty " + this.qrCodeColor);
       }
     } else {
       console.info("qrCode page backgroundColorValue not change called:" + JSON.stringify(eventData));

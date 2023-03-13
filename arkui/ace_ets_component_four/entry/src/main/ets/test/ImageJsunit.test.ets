@@ -66,12 +66,12 @@ export default function imageJsunit() {
       let obj = JSON.parse(strJson);
       console.info("imageTest_0200 obj.$attrs.src is: " + obj.$attrs.src);
       console.info("imageTest_0200 obj.obj.$type is: " + obj.$type);
-      var res = obj.$attrs.src.indexOf('rawfile/test.png');
+      var res = obj.$attrs.src.indexOf('RAWFILE/test.png');
       console.info("imageTest_0200 result is: " + res);
       var sres = obj.$attrs.src.slice(res, res + 16);
       console.info("imageTest_0200 slice result is: " + sres);
       expect(obj.$type).assertEqual('Image');
-      expect(obj.$attrs.src.slice(res, res + 16)).assertEqual('rawfile/test.png');
+      expect(obj.$attrs.src.slice(res, res + 16)).assertEqual('RAWFILE/test.png');
       console.info('imageTest_0200 END');
       done();
     });
