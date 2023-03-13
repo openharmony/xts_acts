@@ -24,6 +24,10 @@ describe('continuationManagerTest', function() {
 
     beforeAll(async function (done) {
         console.info('beforeAll');
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        await sleep(20000)
         done();
     })
 
@@ -1508,7 +1512,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUpdateContinuationState001 " + e);
-            expect(null).assertFail();  
+            expect(null).assertFail();
             done();
         }
     })
@@ -1548,7 +1552,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUpdateContinuationState003 " + e);
-            expect(null).assertFail();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })

@@ -86,6 +86,11 @@
                 }
             }
         ],
+        "reqPermissions": [
+            {
+                "name": "ohos.permission.DISTRIBUTED_DATASYNC"
+            }
+        ],
         "testRunner": {
             "name": "OpenHarmonyTestRunner",
             "srcPath": "TestRunner"
