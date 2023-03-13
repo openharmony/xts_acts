@@ -12,16 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, afterEach, it, expect } from '@ohos/hypium'
 
-import formProvider from '@ohos.application.formProvider';
 import FormInfo from '@ohos.application.formInfo';
 import formInfoNew from '@ohos.app.form.formInfo';
 import formError from '@ohos.application.formError';
 import formHost from '@ohos.application.formHost';
-import errorManager from '@ohos.app.ability.errorManager';
 import abilityConstant from '@ohos.app.ability.AbilityConstant'
-import appManager from '@ohos.application.appManager'
 import appManagerNew from '@ohos.app.ability.appManager'
 import commonEvent from '@ohos.commonEvent';
 import ability from '@ohos.ability.ability';
@@ -29,12 +26,11 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import common from '@ohos.app.ability.common';
 import contextConstant from "@ohos.app.ability.contextConstant"
 
-var EXTENSION_INFO_ERR = 16000001
-var INNER_ERROR = 16000050
-var CROSS_USER_DENY = 201
-var INVALID_PARAM = 401
-var trueInfo;
-var array = new Array();
+let EXTENSION_INFO_ERR = 16000001;
+let INNER_ERROR = 16000050;
+let CROSS_USER_DENY = 201;
+let array = new Array();
+let TAG = '';
 function sleep(time) {
   return new Promise((resolve)=>setTimeout(resolve,time));
 }
@@ -518,62 +514,6 @@ export default function ApiCoverTest() {
     });
 
     /*
-     * @tc.number  SUB_AA_Test_ProcessInformation_0100
-     * @tc.name    Test getRunningProcessInformation in appManager.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_Test_ProcessInformation_0100', 0, async function (done) {
-      let ProcessInformation:appManagerNew.ProcessInformation;
-      let process;
-      appManagerNew.getRunningProcessInformation().then((ProcessInformations)=>{
-        console.info("SUB_AA_Test_ProcessInformation_0100:" + JSON.stringify(ProcessInformations));
-        for(let i = 0; i < ProcessInformations.length; i++){
-          console.info("SUB_AA_Test_ProcessInformation_0100:" + JSON.stringify(ProcessInformations[i]));
-          expect(ProcessInformations[i].pid).assertLarger(0)
-          expect(ProcessInformations[i].uid).assertLarger(0)
-          if(ProcessInformations[i].processName == "com.example.apicoverhaptest"){
-            process = ProcessInformations[i]
-          }
-        }
-        expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")
-        done()
-      }).catch((error)=>{
-        console.info("SUB_AA_Test_ProcessInformation_0100:" + JSON.stringify(error));
-        expect().assertFail()
-        done()
-      })
-    });
-
-    /*
-     * @tc.number  SUB_AA_Test_ProcessInformation_0200
-     * @tc.name    Test getRunningProcessInformation by callback in appManager.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_Test_ProcessInformation_0200', 0, async function (done) {
-      let process;
-      appManagerNew.getRunningProcessInformation((error, ProcessInformations)=>{
-        if (error) {
-          console.info("SUB_AA_Test_ProcessInformation_0200:" + JSON.stringify(error));
-          expect().assertFail()
-          done()
-        }
-        console.info("SUB_AA_Test_ProcessInformation_0200:" + JSON.stringify(ProcessInformations));
-        for(let i = 0; i < ProcessInformations.length; i++){
-          console.info("SUB_AA_Test_ProcessInformation_0200:" + JSON.stringify(ProcessInformations[i]));
-          expect(ProcessInformations[i].pid).assertLarger(0)
-          expect(ProcessInformations[i].uid).assertLarger(0)
-          if(ProcessInformations[i].processName == "com.example.apicoverhaptest"){
-            process = ProcessInformations[i]
-          }
-        }
-        expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")
-        done()
-      })
-    });
-
-    /*
      * @tc.number  SUB_AA_FMS_AbilityStage_0100
      * @tc.name    Start AbilityStage and get config.
      * @tc.desc    Function test
@@ -715,6 +655,116 @@ export default function ApiCoverTest() {
         console.info("SUB_AA_FormDisplaySpecifications_0200===deleteForm failed===" + JSON.stringify(err))
         expect().assertFail()
         done()
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_AbilityAppManager_0100
+     * @tc.name    The form of a promise getRunningProcessInformation
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_AbilityAppManager_0100', 0, async function (done) {
+      TAG = 'SUB_AA_AbilityAppManager_0100';
+      await appManagerNew.getRunningProcessInformation().then((data)=>{
+        console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}`);
+        for (let i = 0; i < data.length; i++) {
+          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          expect(typeof (data[i].pid)).assertEqual("number");
+          expect(data[i].pid).assertLarger(0);
+          expect(typeof (data[i].uid)).assertEqual("number");
+          expect(data[i].uid).assertLarger(0);
+          expect(typeof (data[i].processName)).assertEqual("string");
+          expect(data[i].processName.length).assertLarger(0);
+          expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
+          expect(data[i].bundleNames.length).assertLarger(0);
+        }
+        done();
+      }).catch((err)=>{
+        console.log(`${TAG} getRunningProcessInformation err  ${JSON.stringify(err)}`);
+        expect().assertFail();
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_AbilityAppManager_0200
+     * @tc.name    The form of a callback getRunningProcessInformation
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_AbilityAppManager_0200', 0, async function (done) {
+      TAG = 'SUB_AA_AbilityAppManager_0100';
+      appManagerNew.getRunningProcessInformation((err, data) => {
+        console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}
+        err: ${JSON.stringify(err)}`);
+        for (let i = 0; i < data.length; i++) {
+          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          expect(typeof (data[i].pid)).assertEqual("number");
+          expect(data[i].pid).assertLarger(0);
+          expect(typeof (data[i].uid)).assertEqual("number");
+          expect(data[i].uid).assertLarger(0);
+          expect(typeof (data[i].processName)).assertEqual("string");
+          expect(data[i].processName.length).assertLarger(0);
+          expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
+          expect(data[i].bundleNames.length).assertLarger(0);
+        }
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_ApplicationContext_0100
+     * @tc.name    The form of a promise getRunningProcessInformation
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ApplicationContext_0100', 0, async function (done) {
+      TAG = 'SUB_AA_ApplicationContext_0100';
+      await globalThis.applicationContext.getRunningProcessInformation().then((data)=>{
+        console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}`);
+        for (let i = 0; i < data.length; i++) {
+          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          expect(typeof (data[i].pid)).assertEqual("number");
+          expect(data[i].pid).assertLarger(0);
+          expect(typeof (data[i].uid)).assertEqual("number");
+          expect(data[i].uid).assertLarger(0);
+          expect(typeof (data[i].processName)).assertEqual("string");
+          expect(data[i].processName.length).assertLarger(0);
+          expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
+          expect(data[i].bundleNames.length).assertLarger(0);
+        }
+        done();
+      }).catch((err)=>{
+        console.log(`${TAG} getRunningProcessInformation err  ${JSON.stringify(err)}`);
+        expect().assertFail();
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_ApplicationContext_0200
+     * @tc.name    The form of a callback getRunningProcessInformation
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ApplicationContext_0200', 0, async function (done) {
+      TAG = 'SUB_AA_ApplicationContext_0200';
+      globalThis.applicationContext.getRunningProcessInformation((err, data) => {
+        console.log(`${TAG} getRunningProcessInformation data  ${JSON.stringify(data.length)}
+        err: ${JSON.stringify(err)}`);
+        for (let i = 0; i < data.length; i++) {
+          console.log(`${TAG} getRunningProcessInformation${i} : JSON.stringify(data[i])`);
+          expect(typeof (data[i].pid)).assertEqual("number");
+          expect(data[i].pid).assertLarger(0);
+          expect(typeof (data[i].uid)).assertEqual("number");
+          expect(data[i].uid).assertLarger(0);
+          expect(typeof (data[i].processName)).assertEqual("string");
+          expect(data[i].processName.length).assertLarger(0);
+          expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
+          expect(data[i].bundleNames.length).assertLarger(0);
+        }
+        done();
       })
     })
   })
