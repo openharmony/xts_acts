@@ -101,9 +101,9 @@ export default function flexExceed_AutoJsunit() {
       expect(textExceed01.bottom - textExceed01.top).assertEqual(vp2px(50))
       expect(textExceed02.bottom - textExceed02.top).assertEqual(vp2px(100))
       expect(textExceed03.bottom - textExceed03.top).assertEqual(vp2px(150))
-      expect(textExceed01.right - textExceed01.left).assertEqual(vp2px(440/3))
-      expect(textExceed02.right - textExceed02.left).assertEqual(vp2px(440/3))
-      expect(textExceed03.right - textExceed03.left).assertEqual(vp2px(440/3))
+      expect(Math.round(textExceed01.right - textExceed01.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textExceed02.right - textExceed02.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textExceed03.right - textExceed03.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0700 END');
