@@ -18,7 +18,7 @@ export default class MainAbility extends Ability {
         console.log("[Demo] MainAbility onWindowStageCreate")
         let AtManager = abilityAccessCtrl.createAtManager();
         AtManager.requestPermissionsFromUser(this.context,["ohos.permission.READ_MEDIA","ohos.permission.WRITE_MEDIA",
-        "ohos.permission.CAPTURE_SCREEN","ohos.permission.INTERNET"]).then(() => {})
+        "ohos.permission.CAPTURE_SCREEN","ohos.permission.INTERNET","ohos.permission.CAMERA"]).then(() => {})
         windowStage.loadContent("pages/index", (err, data) => {
             if (err.code) {
                 console.error('Failed to load the content. Cause:' + JSON.stringify(err));

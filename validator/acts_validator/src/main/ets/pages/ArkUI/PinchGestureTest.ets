@@ -18,7 +18,7 @@ import FirstDialog from '../model/FirstDialog';
 @Component
 struct PinchGuestureTest {
   @State X: number = 1;
-  @State name: string = 'PinchGuesture';
+  @State name: string = 'PinchGesture';
   @State StepTips: string = '操作步骤：用手指触摸捏合图片（至少2根手指，最大为5指）'+'\n'+'预期结果：图片能够被正常捏合放缩';
   @State Vue: boolean = false;
   async aboutToAppear(){
