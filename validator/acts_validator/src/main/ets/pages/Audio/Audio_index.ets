@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -27,8 +27,8 @@ let path1 = path + '/Audio';
 
 let VarColor = [];
 let ColorBackPath = path + '/AudioColorBack.txt';
-let txtPath = path1 + 'AudioReport.txt';
-let xmlPath =path1 + 'AudioTest.xml';
+let txtPath = path1 + '/AudioReport.txt';
+let xmlPath =path1 + '/AudioTest.xml';
 
 @Entry
 @Component
@@ -277,23 +277,23 @@ struct IndexPage {
       serializer.setDeclaration();
       serializer.startElement("testsuite");
       serializer.setAttributes("name","ActsAudioTest");
-      serializer.setAttributes("time", " ");
+      serializer.setAttributes("time", "");
       serializer.setAttributes("errors", "0");
       serializer.setAttributes("disabled", "0");
       serializer.setAttributes("failures", failNum);
-      serializer.setAttributes("ignored", ignoreNum);
+      serializer.setAttributes("ignored", "0");
       serializer.setAttributes("tests", testNum);
-      serializer.setAttributes("message", " ");
+      serializer.setAttributes("message", "");
       serializer.setAttributes("modulename", "ActsAudioTest");
       for (let i = 0; i < title.length; i++) {
         serializer.startElement("testcase");
         serializer.setAttributes("name", String(title[i]));
-        serializer.setAttributes("status", " ");
-        serializer.setAttributes("time", " ");
-        serializer.setAttributes("classname", " ");
+        serializer.setAttributes("status", "");
+        serializer.setAttributes("time", "");
+        serializer.setAttributes("classname", "");
         serializer.setAttributes("result", String(result[i]));
-        serializer.setAttributes("level", " ");
-        serializer.setAttributes("message", " ");
+        serializer.setAttributes("level", "");
+        serializer.setAttributes("message", "");
         serializer.endElement();
       }
       serializer.endElement();
