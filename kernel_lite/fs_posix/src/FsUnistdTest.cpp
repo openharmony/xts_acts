@@ -174,56 +174,6 @@ HWTEST_F(FileSystemTest, testChdirEnotdir, Function | MediumTest | Level3)
     EXPECT_EQ(errno, ENOTDIR);
     EXPECT_NE(chdir(TOP_DIR), -1) << "> chdir errno = " << errno;
 }
-#if 0
-#if defined(LITE_FS_NFS) || defined(LITE_FS_VFAT)
-/**
- * @tc.number   SUB_KERNEL_FS_UNISTD_0300
- * @tc.name     basic function test : dup copy file description, then write and read
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(FileSystemTest, testDup, Function | MediumTest | Level3)
-{
-    int fd = 0;
-    int fdNew = 0;
-    fd = open(FILE0, O_CREAT | O_RDWR, 0777);
-    EXPECT_NE(fd, -1) << "> open faild errno = " << errno;
-    WriteCloseTest(fd);
-    fd = open(FILE0, O_RDONLY, 0777);
-    EXPECT_NE(fd, -1) << "> open faild errno = " << errno;
-    fdNew = dup(fd);
-    #if defined(LITE_FS_NFS)
-    EXPECT_NE(fdNew, -1) << "> dup errno = " << errno;
-    #endif
-    // vfat not suuport, after support change to NE
-    #if defined(LITE_FS_VFAT)
-    EXPECT_EQ(fdNew, -1) << "> dup errno = " << errno;
-    #endif
-    if (fdNew != -1) {
-        ReadCloseTest(fdNew);
-    }    
-    EXPECT_NE(close(fd), -1) << "> close errno = " << errno;
-}
-#endif
-
-/**
- * @tc.number   SUB_KERNEL_FS_UNISTD_0400
- * @tc.name     basic function test : dup2 copy file description, then write and read
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(FileSystemTest, testDup2, Function | MediumTest | Level3)
-{
-    int fd = 0;
-    int fdNew = 0;
-    fd = open(FILE0, O_CREAT | O_RDWR, 0777);
-    EXPECT_NE(fd, -1) << "> open faild errno = " << errno;
-    WriteCloseTest(fd);
-    fd = open(FILE0, O_RDONLY, 0777);
-    EXPECT_NE(fd, -1) << "> open faild errno = " << errno;
-    EXPECT_NE(dup2(fd, fdNew), -1) << "> dup2 errno = " << errno;
-    ReadCloseTest(fdNew);
-    EXPECT_NE(close(fd), -1) << "> close errno = " << errno;
-}
-#endif
 #if defined(LITE_FS_VFAT)
 /**
  * @tc.number   SUB_KERNEL_FS_UNISTD_0500
