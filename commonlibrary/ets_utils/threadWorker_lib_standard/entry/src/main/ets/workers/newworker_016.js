@@ -14,10 +14,10 @@
  */
 
 import worker from '@ohos.worker';
-const parentPort = worker.parentPort;
+const parentPort = worker.workerPort;
 
 parentPort.onmessage = function(e) {
-    console.log("worker:: worker receive data " + e.data);
-    let data = e.data + " worker";
-    parentPort.postMessage(data)
+    console.info("worker:: worker receive data " + e.data);
+    let data = e.data;
+    parentPort.postMessage(data.length);
 }
