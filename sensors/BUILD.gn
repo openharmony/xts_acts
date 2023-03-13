@@ -13,7 +13,7 @@
 
 import("//build/ohos_var.gni")
 
-group("sensor") {
+group("sensors") {
   testonly = true
   if (is_standard_system) {
     deps = [

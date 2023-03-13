@@ -60,213 +60,370 @@ describe("SensorJsTest_sensor_7", function () {
          */
         console.info('afterEach caled')
     })
-
+	
+    const PARAMETER_ERROR_CODE = 401
+	const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+    const SERVICE_EXCEPTION_CODE = 14500101
+    const SERVICE_EXCEPTION_MSG = 'Service exception.'
     let errMessages = ['string is not defined','The parameter invalid'];
     let errMessage;
 
-     /*
-     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0010
+    /*
+     * @tc.number:SUB_SensorsSystem_HALL_JSTest_0010
      * @tc.name: Hall_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------Hall_SensorJsTest001---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
-        setTimeout(() => {
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {
+				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+				setTimeout(() => {
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+					done();
+				}, 500);
+				})
+		} catch (error) {
+            console.info('Hall_SensorJsTest001 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 500);
+        }
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0020
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0020
      * @tc.name: Hall_SensorJsTest002
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest002---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
-        setTimeout(() => {
-            console.info('----------------------Hall_SensorJsTest002 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
-            console.info('----------------------Hall_SensorJsTest002 off end---------------------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {        
+				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
+				setTimeout(() => {
+					console.info('----------------------Hall_SensorJsTest002 off in---------------------------');
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+					console.info('----------------------Hall_SensorJsTest002 off end---------------------------');
+					done();
+				}, 500);
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest002 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 500);
+        }
     })
 	
     /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0030
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0030
      * @tc.name: Hall_SensorJsTest003
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest003---------------------------');
-        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
-        setTimeout(() => {
-            expect(true).assertTrue();
+        function onSensorCallback(data) {
+            console.info('Hall_SensorJsTest003  on error');
+			expect(typeof (data.status)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
             done();
-        }, 500);
+        }
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {   
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, onSensorCallback, { 'interval': 100000000 }, 5);
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest003 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
     })
-
-   /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0040
+	
+    /*
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0040
      * @tc.name: Hall_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest004---------------------------');
-        try {
-            sensor.off(string, "");
-        } catch (error) {
-            console.info("Hall_SensorJsTest004 error:" + error);
-            errMessage = error.toString().slice(16, 40);
-            expect(errMessage).assertEqual(errMessages[0]);
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {           
+				sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+				setTimeout(() => {
+					expect(true).assertTrue();
+					done();
+				}, 500);
+				})
+		} catch (error) {
+            console.info('Hall_SensorJsTest004 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
     })
 
-   /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0050
+    /*
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0050
      * @tc.name: Hall_SensorJsTest005
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest005---------------------------');
-        function onSensorCallback(data) {
-            console.info('Hall_SensorJsTest005 on error');
-            expect(false).assertTrue();
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {    		
+				try {
+					sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, 5);
+					setTimeout(() => {
+					expect(true).assertTrue();
+					done();
+				}, 500);
+				} catch (error) {
+					console.info("Hall_SensorJsTest005 error:" + error);
+					expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+					expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+				}
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest005 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, onSensorCallback);
-        sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, onSensorCallback);
-        setTimeout(() => {
-            expect(true).assertTrue();
-            done();
-        }, 500);
     })
-
-    /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0060
+	
+   /*
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0060
      * @tc.name: Hall_SensorJsTest006
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest006---------------------------');
-        function onSensorCallback(data) {
-            console.info('Hall_SensorJsTest006  on error');
-            expect(false).assertTrue();
-        }
-        try {
-            sensor.off(1000000, onSensorCallback);
-        } catch (error) {
-            console.info("Hall_SensorJsTest006 error:" + error);
-            errMessage = error.toString().slice(7, 28);
-            expect(errMessage).assertEqual(errMessages[1]);
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {    	       
+				   try {
+						sensor.off(string, "");
+					} catch (error) {
+						console.info("Hall_SensorJsTest006 error:" + error);
+						errMessage = error.toString().slice(16, 40);
+						expect(errMessage).assertEqual(errMessages[0]);
+						done();
+					}
+				})
+		} catch (error) {
+            console.info('Hall_SensorJsTest006 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
     })
-
-    /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0070
+	
+	/*
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0070
      * @tc.name: Hall_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest007---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
-        setTimeout(() => {
-            console.info('----------------------Hall_SensorJsTest007 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
-            console.info('----------------------Hall_SensorJsTest007 off end---------------------------');
+        function onSensorCallback(data) {
+            console.info('Hall_SensorJsTest007  on error');
+            expect(false).assertTrue();
             done();
-        }, 1000);
+        }
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {    	
+				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, onSensorCallback);
+				sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, onSensorCallback);
+				setTimeout(() => {
+					expect(true).assertTrue();
+					done();
+				}, 500);
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest007 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
     })
-
+	
     /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0080
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0080
      * @tc.name: Hall_SensorJsTest008
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest008---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
-        setTimeout(() => {
-            console.info('----------------------Hall_SensorJsTest008 off in---------------------------');
-            try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
-			} catch (error) {
-            console.info("Hall_SensorJsTest008 error:" + error);
-			}
-            console.info('----------------------Hall_SensorJsTest008 off end---------------------------');
-        }, 500);
-        setTimeout(() => {
-            console.info('----------------------Hall_SensorJsTest008 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
-            console.info('----------------------Hall_SensorJsTest008 off end---------------------------');
+        function onSensorCallback(data) {
+            console.info('Hall_SensorJsTest008  on error');
+            expect(false).assertTrue();
+        }
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {   
+				try {
+					sensor.off(1000000, onSensorCallback);
+				} catch (error) {
+					console.info("Hall_SensorJsTest008 error:" + error);
+					errMessage = error.toString().slice(7, 28);
+					expect(errMessage).assertEqual(errMessages[1]);
+					done();
+				}
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest008 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 1000);
+        }
     })
-
+	
     /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0090
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0090
      * @tc.name: Hall_SensorJsTest009
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest009---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
-        sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
-        setTimeout(() => {
-            console.info('----------------------Hall_SensorJsTest009 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
-            console.info('----------------------Hall_SensorJsTest009 off end---------------------------');
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {   		
+				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
+				setTimeout(() => {
+					console.info('----------------------Hall_SensorJsTest009 off in---------------------------');
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+					console.info('----------------------Hall_SensorJsTest009 off end---------------------------');
+					done();
+				}, 1000);
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest009 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 1000);
+        }
     })
-
+	
     /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0100
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0100
      * @tc.name: Hall_SensorJsTest010
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest010---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2, { 'interval': 100000000 });
-        setTimeout(() => {
-            console.info('----------------------Hall_SensorJsTest010 off in---------------------------');
-            try {
-			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
-			} catch (error) {
-            console.info("Hall_SensorJsTest010 error:" + error);
-			}
-            console
-            console.info('----------------------Hall_SensorJsTest010 off end---------------------------');
-        }, 500);
-        setTimeout(() => {
-            console.info('----------------------Hall_SensorJsTest010 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
-            console.info('----------------------Hall_SensorJsTest010 off end---------------------------');
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {  		
+				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
+				setTimeout(() => {
+					console.info('----------------------Hall_SensorJsTest010 off in---------------------------');
+					try {
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+					} catch (error) {
+					console.info("Hall_SensorJsTest010 error:" + error);
+					}
+					console.info('----------------------Hall_SensorJsTest010 off end---------------------------');
+				}, 500);
+				setTimeout(() => {
+					console.info('----------------------Hall_SensorJsTest010 off in---------------------------');
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
+					console.info('----------------------Hall_SensorJsTest010 off end---------------------------');
+					done();
+				}, 1000);
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest010 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 1000);
+        }
     })
-
+	
     /*
-     * @tc.number: SUB_SensorsSystem_Hall_JSTest_0110
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0110
      * @tc.name: Hall_SensorJsTest011
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("Hall_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest011---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2, { 'interval': 100000000 });
-        setTimeout(() => {
-            console.info('----------------------Hall_SensorJsTest011 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
-            console.info('----------------------Hall_SensorJsTest011 off end---------------------------');
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {  	       
+			   sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
+				sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
+				setTimeout(() => {
+					console.info('----------------------Hall_SensorJsTest011 off in---------------------------');
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+					console.info('----------------------Hall_SensorJsTest011 off end---------------------------');
+					done();
+				}, 1000);
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest011 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 1000);
+        }
+    })
+	
+    /*
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0120
+     * @tc.name:Hall_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("Hall_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------Hall_SensorJsTest012---------------------------');
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {  	    
+				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2, { 'interval': 100000000 });
+					setTimeout(() => {
+						console.info('----------------------Hall_SensorJsTest012 off in---------------------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+						} catch (error) {
+						console.info("Hall_SensorJsTest012 error:" + error);
+						}
+						console
+						console.info('----------------------Hall_SensorJsTest012 off end---------------------------');
+					}, 500);
+					setTimeout(() => {
+						console.info('----------------------Hall_SensorJsTest012 off in---------------------------');
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
+						console.info('----------------------Hall_SensorJsTest012 off end---------------------------');
+						done();
+					}, 1000);
+				})
+		} catch (error) {
+            console.info('Hall_SensorJsTest012 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+    /*
+     * @tc.number: SUB_SensorsSystem_HALL_JSTest_0130
+     * @tc.name:Hall_SensorJsTest013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("Hall_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------Hall_SensorJsTest013---------------------------');
+		try{
+		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {  	        
+			   sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
+				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2, { 'interval': 100000000 });
+				setTimeout(() => {
+					console.info('----------------------Hall_SensorJsTest013 off in---------------------------');
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+					console.info('----------------------Hall_SensorJsTest013 off end---------------------------');
+					done();
+				}, 1000);
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest013 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
     })
 })}
