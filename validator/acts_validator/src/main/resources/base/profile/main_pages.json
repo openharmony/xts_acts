@@ -38,6 +38,7 @@
     "pages/Player/Player_index",
     "pages/Player/ScrollListTest",
     "pages/Experience/Experience_index",
-    "pages/Experience/ScrollListTest"
+    "pages/Experience/PhotoFps",
+    "pages/Experience/DeskFps"
   ]
 }

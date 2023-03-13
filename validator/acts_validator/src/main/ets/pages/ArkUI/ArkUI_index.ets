@@ -26,8 +26,8 @@ let path1 = path + '/ArkUI';
 
 let VarColor = [];
 let ColorBackPath = path + '/ArkUIColorBack.txt';
-let txtPath = path1 + 'ArkUIReport.txt';
-let xmlPath =path1 + 'ArkUITest.xml';
+let txtPath = path1 + '/ArkUIReport.txt';
+let xmlPath =path1 + '/ArkUITest.xml';
 
 @Entry
 @Component
@@ -298,23 +298,23 @@ struct IndexPage {
       serializer.setDeclaration();
       serializer.startElement("testsuite");
       serializer.setAttributes("name","ActsArkUITest");
-      serializer.setAttributes("time", " ");
+      serializer.setAttributes("time", "");
       serializer.setAttributes("errors", "0");
       serializer.setAttributes("disabled", "0");
       serializer.setAttributes("failures", failNum);
-      serializer.setAttributes("ignored", ignoreNum);
+      serializer.setAttributes("ignored", "0");
       serializer.setAttributes("tests", testNum);
-      serializer.setAttributes("message", " ");
+      serializer.setAttributes("message", "");
       serializer.setAttributes("modulename", "ActsArkUITest");
       for (let i = 0; i < title.length; i++) {
         serializer.startElement("testcase");
         serializer.setAttributes("name", String(title[i]));
-        serializer.setAttributes("status", " ");
-        serializer.setAttributes("time", " ");
-        serializer.setAttributes("classname", " ");
+        serializer.setAttributes("status", "");
+        serializer.setAttributes("time", "");
+        serializer.setAttributes("classname", "");
         serializer.setAttributes("result", String(result[i]));
-        serializer.setAttributes("level", " ");
-        serializer.setAttributes("message", " ");
+        serializer.setAttributes("level", "");
+        serializer.setAttributes("message", "");
         serializer.endElement();
       }
       serializer.endElement();
