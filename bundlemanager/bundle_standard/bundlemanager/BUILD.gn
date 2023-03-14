@@ -26,10 +26,10 @@ group("bundlemanager") {
       "actsbmsjsunpermissiontest:ActsBmsJsUnPermissionTest",
       "actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
+      "actsbundlemanageroverlaytest:ActsBundleMgrOverlayEtsTest",
       "actsbundlemanagerstagetest:ActsBundleMgrStageEtsTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlenativetest:ActsBundleNativeTest",
-      "actsbundlemanageroverlaytest:ActsBundleMgrOverlayEtsTest",
       "sceneProject/bmsaccesstokenfive:bmsAccessTokenTest5",
       "sceneProject/bmsaccesstokenfour:bmsAccessTokenTest4",
       "sceneProject/bmsaccesstokenone:bmsAccessTokenTest1",
@@ -53,6 +53,7 @@ group("bundlemanager") {
       "sceneProject/bmsmainabilitysecondscene:bmsMainAbilitySecondScene",
       "sceneProject/bmsmodulenameone:bmsModuleNameTest1",
       "sceneProject/bmsmodulenametwo:bmsModuleNameTest2",
+      "sceneProject/bmsoverlaydemo:bmsOverlayDemo",
       "sceneProject/bmsscenefive:bmsJstest5",
       "sceneProject/bmsscenefour:bmsJstest4",
       "sceneProject/bmssceneone:bmsJstest1",
@@ -62,7 +63,6 @@ group("bundlemanager") {
       "sceneProject/bmssecondright:second_right",
       "sceneProject/bmsstagedemoone:bmsStageDemo1",
       "sceneProject/bmsstagedemotwo:bmsStageDemo2",
-      "sceneProject/bmsoverlaydemo:bmsOverlayDemo"
     ]
   }
 }
