@@ -783,6 +783,178 @@ export default function effectKitTest() {
       expect(true).assertTrue()
       done()
     })
+    /**
+     * @tc.number     EFFECT_KIT_GETLARGESTPROPORTIONCOLOR_JSAPI_001
+     * @tc.name       Test getLargestProportionColor
+     * @tc.desc       Read the color value with the largest proportion of the image
+     */
+    it('getLargestProportionColor', 0, function (done) {
+      let caseName = 'getLargestProportionColor'
+      let msgStr = 'jsunittest effectKitTest' + caseName + ' '
+      console.log(msgStr + 'begin')
+      var imageSource = image.createImageSource(testPng.buffer)
+      imageSource.getImageInfo((err, value) => {
+        if(err) {
+          expect(true).assertFail()
+          done()
+          return;
+        }
+        console.info(msgStr + "Napi size=" + value.size.width + " X " + value.size.height)
+        let size ={width:value.size.width,height:value.size.height}
+        console.info(msgStr + "promise create pixmap.start")
+        imageSource.createPixelMap({desiredSize:size}).then(pixelMap => {
+          console.info(msgStr + "Napi create ColorPicker.start")
+          effectKit.createColorPicker(pixelMap).then(colorPicker => {
+            console.info(msgStr + "Napi createColorPicker")
+            let color =colorPicker.getLargestProportionColor();
+            console.log(msgStr +JSON.stringify(color))
+            expect(color.alpha!==null).assertTrue()
+            expect(color.red!==null).assertTrue()
+            expect(color.green!==null).assertTrue()
+            expect(color.blue!==null).assertTrue()
+            done()
+          }).catch(ex => {
+            console.error(msgStr + "Napi colorPicker.error=" + ex.toString())
+            expect(true).assertFail()
+            done()
+          })
+        }).catch(ex => {
+          console.error(msgStr + "Napi pixelMap.error=" + ex.toString())
+          expect(true).assertFail()
+          done()
+        })
+      })
+    })
+    /**
+     * @tc.number     EFFECT_KIT_GETHIGHESTSATURATIONCOLOR_JSAPI_001
+     * @tc.name       Test getHighestSaturationColor
+     * @tc.desc       Read the color value with the highest saturation of the image
+     */
+    it('getHighestSaturationColor', 0, function (done) {
+      let caseName = 'getHighestSaturationColor'
+      let msgStr = 'jsunittest effectKitTest' + caseName + ' '
+      console.log(msgStr + 'begin')
+      var imageSource = image.createImageSource(testPng.buffer)
+      imageSource.getImageInfo((err, value) => {
+        if(err) {
+          expect(true).assertFail()
+          done()
+          return;
+        }
+        console.info(msgStr + "Napi size=" + value.size.width + " X " + value.size.height)
+        let size ={width:value.size.width,height:value.size.height}
+        console.info(msgStr + "promise create pixmap.start")
+        imageSource.createPixelMap({desiredSize:size}).then(pixelMap => {
+          console.info(msgStr + "Napi create ColorPicker.start")
+          effectKit.createColorPicker(pixelMap).then(colorPicker => {
+            console.info(msgStr + "Napi createColorPicker")
+            let color =colorPicker.getHighestSaturationColor();
+            console.log(msgStr +JSON.stringify(color))
+            expect(color.alpha!==null).assertTrue()
+            expect(color.red!==null).assertTrue()
+            expect(color.green!==null).assertTrue()
+            expect(color.blue!==null).assertTrue()
+            done()
+          }).catch(ex => {
+            console.error(msgStr + "Napi colorPicker.error=" + ex.toString())
+            expect(true).assertFail()
+            done()
+          })
+        }).catch(ex => {
+          console.error(msgStr + "Napi pixelMap.error=" + ex.toString())
+          expect(true).assertFail()
+          done()
+        })
+      })
+    })
+    /**
+     * @tc.number     EFFECT_KIT_GETAVERAGECOLOR_JSAPI_001
+     * @tc.name       Test getAverageColor
+     * @tc.desc       Read the average color value of the image
+     */
+    it('getAverageColor', 0, function (done) {
+      let caseName = 'getAverageColor'
+      let msgStr = 'jsunittest effectKitTest' + caseName + ' '
+      console.log(msgStr + 'begin')
+      var imageSource = image.createImageSource(testPng.buffer)
+      imageSource.getImageInfo((err, value) => {
+        if(err) {
+          expect(true).assertFail()
+          done()
+          return;
+        }
+        console.info(msgStr + "Napi size=" + value.size.width + " X " + value.size.height)
+        let size ={width:value.size.width,height:value.size.height}
+        console.info(msgStr + "promise create pixmap.start")
+        imageSource.createPixelMap({desiredSize:size}).then(pixelMap => {
+          console.info(msgStr + "Napi create ColorPicker.start")
+          effectKit.createColorPicker(pixelMap).then(colorPicker => {
+            console.info(msgStr + "Napi createColorPicker")
+            let color =colorPicker.getAverageColor();
+            console.log(msgStr +JSON.stringify(color))
+            expect(color.alpha!==null).assertTrue()
+            expect(color.red!==null).assertTrue()
+            expect(color.green!==null).assertTrue()
+            expect(color.blue!==null).assertTrue()
+            done()
+          }).catch(ex => {
+            console.error(msgStr + "Napi colorPicker.error=" + ex.toString())
+            expect(true).assertFail()
+            done()
+          })
+        }).catch(ex => {
+          console.error(msgStr + "Napi pixelMap.error=" + ex.toString())
+          expect(true).assertFail()
+          done()
+        })
+      })
+    })
+    /**
+     * @tc.number     EFFECT_KIT_ISBLACKORWHITEORGRAYCOLOR_JSAPI_001
+     * @tc.name       Test isBlackOrWhiteOrGrayColor
+     * @tc.desc       Determine if the image is black, white and gray
+     */
+    it('isBlackOrWhiteOrGrayColor', 0, function (done) {
+      let caseName = 'isBlackOrWhiteOrGrayColor'
+      let msgStr = 'jsunittest effectKitTest' + caseName + ' '
+      console.log(msgStr + 'begin')
+      var imageSource = image.createImageSource(testPng.buffer)
+      imageSource.getImageInfo((err, value) => {
+        if(err) {
+          expect(true).assertFail()
+          done()
+          return;
+        }
+        console.info(msgStr + "Napi size=" + value.size.width + " X " + value.size.height)
+        let size ={width:value.size.width,height:value.size.height}
+        console.info(msgStr + "promise create pixmap.start")
+        imageSource.createPixelMap({desiredSize:size}).then(pixelMap => {
+          console.info(msgStr + "Napi create ColorPicker.start")
+          effectKit.createColorPicker(pixelMap).then(colorPicker => {
+            console.info(msgStr + "Napi createColorPicker")
+            let color_white =colorPicker.isBlackOrWhiteOrGrayColor(0xFFFFFFFF);
+            expect(color_white).assertTrue()
+            let color_blue =colorPicker.isBlackOrWhiteOrGrayColor(0xFF0000FF);
+            expect(!color_blue).assertTrue()
+            let color_green =colorPicker.isBlackOrWhiteOrGrayColor(0xFF00FF00);
+            expect(!color_green).assertTrue()
+            let color_red =colorPicker.isBlackOrWhiteOrGrayColor(0xFFFF0000);
+            expect(!color_red).assertTrue()
+            let color_zero =colorPicker.isBlackOrWhiteOrGrayColor(0);
+            expect(color_zero).assertTrue()
+            done()
+          }).catch(ex => {
+            console.error(msgStr + "Napi colorPicker.error=" + ex.toString())
+            expect(true).assertFail()
+            done()
+          })
+        }).catch(ex => {
+          console.error(msgStr + "Napi pixelMap.error=" + ex.toString())
+          expect(true).assertFail()
+          done()
+        })
+      })
+    })
 
   })
 }
