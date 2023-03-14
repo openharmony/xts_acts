@@ -1,0 +1,138 @@
+/**
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or impligetProfileByAbilityEmptyAbilityCalled.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import overlay from '@ohos.bundle.overlay';
+import Utils from "./Utils";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+
+const MODULE_NAME = "testModule";
+const MODULE_NAME1 = "test1";
+const MODULE_NAME2 = "stage1";
+const ERROR_INCOMING_MODULE_NAME_NOT_INSTALL = 17700002;
+const ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY = 17700033;
+const ERROR_CODE = 401;
+
+export default function getOverlayModuleInfo() {
+  describe('getOverlayModuleInfo', function () {
+    /*
+     * @tc.number: SUB_BMS_APPINFO_OVERLAY_0001
+     * @tc.name: GetOverlayModuleInfoModuleNameIsNull
+     * @tc.desc: The query fails when the incoming moduleName is empty
+     */
+    it('GetOverlayModuleInfoModuleNameIsNull', 0, async function (done) {
+      try {
+        await overlay.getOverlayModuleInfo("").then(data => {
+          Utils.info("GetOverlayModuleInfoModuleNameIsNull result" + JSON.stringify(data));
+          expect().assertFail();
+        }).catch(err => {
+          Utils.info("GetOverlayModuleInfoModuleNameIsNull fail" + JSON.stringify(err));
+          expect(err.code).assertEqual(ERROR_CODE);
+        });
+      } catch (e) {
+        Utils.info("GetOverlayModuleInfoModuleNameIsNull catch" + JSON.stringify(e));
+        expect(e.code).assertEqual(ERROR_CODE);
+      }
+
+      try {
+        overlay.getOverlayModuleInfo("", (err,data) => {
+          Utils.info("GetOverlayModuleInfoModuleNameIsNull result" + JSON.stringify(data));
+          Utils.info("GetOverlayModuleInfoModuleNameIsNull fail" + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
+      } catch (e) {
+        Utils.info("GetOverlayModuleInfoModuleNameIsNull callback catch" + JSON.stringify(e));
+        expect(e.code).assertEqual(ERROR_CODE);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_OVERLAY_0003
+     * @tc.name: GetOverlayModuleInfoModuleNameNotInstall
+     * @tc.desc: The query fails when the incoming moduleName is not installed
+     */
+    it('GetOverlayModuleInfoModuleNameNotInstall', 0, async function (done) {
+      await overlay.getOverlayModuleInfo(MODULE_NAME1).then(data => {
+        Utils.info("GetOverlayModuleInfoModuleNameNotInstall result" + JSON.stringify(data));
+        expect().assertFail();
+      }).catch(err => {
+        Utils.info("GetOverlayModuleInfoModuleNameNotInstall fail" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
+      });
+
+      overlay.getOverlayModuleInfo(MODULE_NAME1, (err,data) => {
+        Utils.info("GetOverlayModuleInfoModuleNameNotInstall result" + JSON.stringify(data));
+        Utils.info("GetOverlayModuleInfoModuleNameNotInstall fail" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
+        done();
+      });
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_OVERLAY_0004
+     * @tc.name: GetOverlayModuleInfoModuleNameNotOverlay
+     * @tc.desc: Failed to set when the incoming moduleName is not overlay
+     */
+    it('GetOverlayModuleInfoModuleNameNotOverlay', 0, async function (done) {
+      await overlay.getOverlayModuleInfo(MODULE_NAME).then(data => {
+        Utils.info("GetOverlayModuleInfoModuleNameNotOverlay result" + JSON.stringify(data));
+        expect().assertFail();
+      }).catch(err => {
+        Utils.info("GetOverlayModuleInfoModuleNameNotOverlay fail" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY);
+      });
+
+      overlay.getOverlayModuleInfo(MODULE_NAME, (err,data) => {
+        Utils.info("GetOverlayModuleInfoModuleNameNotOverlay result" + JSON.stringify(data));
+        Utils.info("GetOverlayModuleInfoModuleNameNotOverlay fail" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY);
+        done();
+      });
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_OVERLAY_000X
+     * @tc.name: GetOverlayModuleInfoModuleNameIsOverlay
+     * @tc.desc: Query succeeded when the moduleName passed in is overlay
+     */
+    it('GetOverlayModuleInfoModuleNameIsOverlay', 0, async function (done) {
+      await overlay.getOverlayModuleInfo(MODULE_NAME2).then(data => {
+        Utils.info("GetOverlayModuleInfoModuleNameIsOverlay result" + JSON.stringify(data));
+        expect(data.bundleName).assertEqual("ohos.acts.bundle.overlay.test");
+        expect(data.moduleName).assertEqual("stage1");
+        expect(data.targetModuleName).assertEqual("entry1");
+        expect(data.priority).assertEqual(1);
+        expect(data.state).assertEqual(2);
+      }).catch(err => {
+        Utils.info("GetOverlayModuleInfoModuleNameIsOverlay fail" + JSON.stringify(err));
+        expect().assertFail()
+      });
+
+      overlay.getOverlayModuleInfo(MODULE_NAME2, (err,data) => {
+        // "bundleName":"ohos.acts.bundle.overlay.test","moduleName":"stage1","targetModuleName":"entry1","priority":1,"state":2
+        Utils.info("GetOverlayModuleInfoModuleNameIsOverlay result" + JSON.stringify(data));
+        Utils.info("GetOverlayModuleInfoModuleNameIsOverlay fail" + JSON.stringify(err));
+        expect(data.bundleName).assertEqual("ohos.acts.bundle.overlay.test");
+        expect(data.moduleName).assertEqual("stage1");
+        expect(data.targetModuleName).assertEqual("entry1");
+        expect(data.priority).assertEqual(1);
+        expect(data.state).assertEqual(2);
+        expect(err).assertNull();
+        done();
+      });
+    })
+  })
+}
