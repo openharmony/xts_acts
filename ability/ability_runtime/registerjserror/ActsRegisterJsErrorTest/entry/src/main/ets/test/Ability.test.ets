@@ -26,16 +26,13 @@ export default function abilityTest() {
     beforeAll(function () {
       observer = {
         onUnhandledException(strMsg){
-          console.info("====>Acts_RegisterJsErrorCallback onUnhandledException Message：" + strMsg);
+          console.info("====>Acts_RegisterJsErrorCallback onUnhandledException Message: " + strMsg);
         },
         onException(errObject){
-          console.info("====>Acts_RegisterJsErrorCallback onException Message：" + errObject);
+          console.info("====>Acts_RegisterJsErrorCallback onException Message: " + errObject);
         }
       }
     })
-    beforeEach(function () {})
-    afterEach(function () {})
-    afterAll(function () {})
 
     /*
      * @tc.number: Acts_RegisterJsErrorCallback_0100
@@ -57,13 +54,13 @@ export default function abilityTest() {
             abilityName: "EntryAbility",
             action: "Acts_RegisterJsErrorCallback_0100"
           },(err)=>{
-          console.debug("====>Acts_RegisterJsErrorCallback_0100 startAbility err:"+JSON.stringify(err));
+          console.debug("====>Acts_RegisterJsErrorCallback_0100 startAbility err: "+JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
       })
 
       function subscribeCallBack(err, data) {
-        console.debug("====>Acts_RegisterJsErrorCallback_0100 subscribeCallBack data:" + JSON.stringify(data));
+        console.debug("====>Acts_RegisterJsErrorCallback_0100 subscribeCallBack data: " + JSON.stringify(data));
         if(data.event == "ACTS_RegisterEvent_First") {
           flag = true;
           expect(data.parameters.message).assertContain("Error message:Cannot read property terminateSelf");
@@ -73,7 +70,9 @@ export default function abilityTest() {
 
       function unSubscribeCallback() {
         console.debug("====>Acts_RegisterJsErrorCallback_0100 unSubscribeCallback");
-        setTimeout(() => {done();}, 800);
+        setTimeout(()=>{
+          done();
+        }, 800);
       }
 
       setTimeout(()=>{
@@ -104,7 +103,7 @@ export default function abilityTest() {
             abilityName: "EntryAbility",
             action: "Acts_RegisterJsErrorCallback_0200"
           },(err)=>{
-          console.debug("====>Acts_RegisterJsErrorCallback_0200 startAbility err:"+JSON.stringify(err));
+          console.debug("====>Acts_RegisterJsErrorCallback_0200 startAbility err: "+JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
       })
@@ -112,11 +111,12 @@ export default function abilityTest() {
       var msg = {"ACTS_RegisterEvent_First": false, "ACTS_RegisterEvent_Second": false}
       function subscribeCallBack(err, data) {
         if (data.event === 'ACTS_RegisterEvent_First') {
-          console.debug("====>Acts_RegisterJsErrorCallback_0200 subscribeCallBack First data:" + JSON.stringify(data));
+          console.debug("====>Acts_RegisterJsErrorCallback_0200 subscribeCallBack First data: " + JSON.stringify(data));
           expect(data.parameters.message).assertContain("Error message:Cannot read property terminateSelf");
           msg["ACTS_RegisterEvent_First"] = true;
         } else if (data.event === 'ACTS_RegisterEvent_Second') {
-          console.debug("====>Acts_RegisterJsErrorCallback_0200 subscribeCallBack Second data:" + JSON.stringify(data));
+          console.debug("====>Acts_RegisterJsErrorCallback_0200 subscribeCallBack Second data: " +
+            JSON.stringify(data));
           expect(data.parameters.message.name).assertEqual("TypeError");
           expect(data.parameters.message.message).assertEqual("Cannot read property terminateSelf of undefined");
           expect(data.parameters.message.stack).assertContain("at anonymous");
@@ -130,7 +130,7 @@ export default function abilityTest() {
       }
 
       function unSubscribeCallback() {
-        setTimeout(() => {
+        setTimeout(()=>{
           console.debug("====>Acts_RegisterJsErrorCallback_0200 unSubscribeCallback");
           done();
         }, 800);
@@ -236,12 +236,12 @@ export default function abilityTest() {
           expect().assertFail();
           done();
         }).catch((err)=>{
-          console.info("====>Acts_UnregisterJsErrorCallback_0100 err:" + JSON.stringify(err));
+          console.info("====>Acts_UnregisterJsErrorCallback_0100 err: " + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
         })
       } catch (err) {
-        console.info("====>Acts_UnregisterJsErrorCallback_0100 catch:" + JSON.stringify(err));
+        console.info("====>Acts_UnregisterJsErrorCallback_0100 catch: " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
         console.info("====>Acts_UnregisterJsErrorCallback_0100 end");
         done();
@@ -262,12 +262,12 @@ export default function abilityTest() {
           expect().assertFail();
           done();
         }).catch((err)=>{
-          console.info("====>Acts_UnregisterJsErrorCallback_0200 err:" + JSON.stringify(err));
+          console.info("====>Acts_UnregisterJsErrorCallback_0200 err: " + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
         })
       } catch (err) {
-        console.info("====>Acts_UnregisterJsErrorCallback_0200 catch:" + JSON.stringify(err));
+        console.info("====>Acts_UnregisterJsErrorCallback_0200 catch: " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
         console.info("====>Acts_UnregisterJsErrorCallback_0200 end");
         done();
@@ -286,7 +286,7 @@ export default function abilityTest() {
         expect().assertFail();
         done();
       }).catch((err)=>{
-        console.info("====>Acts_UnregisterJsErrorCallback_0300 err:" + JSON.stringify(err));
+        console.info("====>Acts_UnregisterJsErrorCallback_0300 err: " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
         done();
       })
@@ -304,7 +304,7 @@ export default function abilityTest() {
         expect().assertFail();
         done();
       }).catch((err)=>{
-        console.info("====>Acts_UnregisterJsErrorCallback_0400 err:" + JSON.stringify(err));
+        console.info("====>Acts_UnregisterJsErrorCallback_0400 err: " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
         done();
       })
@@ -322,7 +322,7 @@ export default function abilityTest() {
         expect().assertFail();
         done();
       }).catch((err)=>{
-        console.info("====>Acts_UnregisterJsErrorCallback_0500 err:" + JSON.stringify(err));
+        console.info("====>Acts_UnregisterJsErrorCallback_0500 err: " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
         done();
       })
@@ -340,7 +340,7 @@ export default function abilityTest() {
         expect().assertFail();
         done();
       }).catch((err)=>{
-        console.info("====>Acts_UnregisterJsErrorCallback_0600 err:" + JSON.stringify(err));
+        console.info("====>Acts_UnregisterJsErrorCallback_0600 err: " + JSON.stringify(err));
         expect(err.code).assertEqual(16000003);
         done();
       })
@@ -361,12 +361,12 @@ export default function abilityTest() {
           expect(true).assertTrue();
           done();
         }).catch((err)=>{
-          console.info("====>Acts_UnregisterJsErrorCallback_0700 err:" + JSON.stringify(err));
+          console.info("====>Acts_UnregisterJsErrorCallback_0700 err: " + JSON.stringify(err));
           expect().assertFail();
           done();
         })
       } catch (err) {
-        console.info("====>Acts_UnregisterJsErrorCallback_0700 catch:" + JSON.stringify(err));
+        console.info("====>Acts_UnregisterJsErrorCallback_0700 catch: " + JSON.stringify(err));
         expect().assertFail();
         done();
       }
@@ -392,7 +392,7 @@ export default function abilityTest() {
             abilityName: "EntryAbility",
             action: "Acts_UnregisterJsErrorCallback_0800"
           },(err)=>{
-          console.debug("====>Acts_UnregisterJsErrorCallback_0800 startAbility err:"+JSON.stringify(err));
+          console.debug("====>Acts_UnregisterJsErrorCallback_0800 startAbility err: "+JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
       })
@@ -400,11 +400,13 @@ export default function abilityTest() {
       var msg = {"ACTS_RegisterEvent_First": false, "ACTS_RegisterEvent_Second": false}
       function subscribeCallBack(err, data) {
         if (data.event === 'ACTS_RegisterEvent_First') {
-          console.debug("====>Acts_UnregisterJsErrorCallback_0800 subscribeCallBack First data:" + JSON.stringify(data));
+          console.debug("====>Acts_UnregisterJsErrorCallback_0800 subscribeCallBack First data: " +
+            JSON.stringify(data));
           expect(data.parameters.message).assertContain("Error message:Cannot read property terminateSelf");
           msg["ACTS_RegisterEvent_First"] = true;
         } else if (data.event === 'ACTS_RegisterEvent_Second') {
-          console.debug("====>Acts_UnregisterJsErrorCallback_0800 subscribeCallBack Second data:" + JSON.stringify(data));
+          console.debug("====>Acts_UnregisterJsErrorCallback_0800 subscribeCallBack Second data: " +
+            JSON.stringify(data));
           expect(data.parameters.message.name).assertEqual("TypeError");
           expect(data.parameters.message.message).assertEqual("Cannot read property terminateSelf of undefined");
           expect(data.parameters.message.stack).assertContain("at anonymous");

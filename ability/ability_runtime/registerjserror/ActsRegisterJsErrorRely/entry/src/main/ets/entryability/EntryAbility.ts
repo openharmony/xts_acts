@@ -71,7 +71,7 @@ export default class EntryAbility extends Ability {
                     commonEventData.parameters.message = strMsg;
                     console.info("====>Acts_RegisterJsErrorCallback_0100 onUnhandledException Message: " + strMsg);
                     commonEvent.publish("ACTS_RegisterEvent_First", commonEventData, (err) => {
-                        console.info("====>Acts_RegisterJsErrorCallback_0100 publish err:" + JSON.stringify(err));
+                        console.info("====>Acts_RegisterJsErrorCallback_0100 publish err: " + JSON.stringify(err));
                         setTimeout(()=>{
                             globalThis.context.terminateSelf().then(()=>{
                                 console.info("====>Acts_RegisterJsErrorCallback_0100 rely terminateSelf end");
