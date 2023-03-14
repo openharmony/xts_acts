@@ -36,9 +36,10 @@ export default {
     data: {
     },
     onShow() {
-        this.title = "scene on off";
+       // this.title = "scene on off";
     },
     onInit() {
+        this.title = "scene on off";
         console.debug("====>change on off scene start====");
         var appAccountManager = account.createAppAccountManager();
         var commonEventSubscribeInfo = {
@@ -51,11 +52,12 @@ export default {
             console.debug("====>publish call back scene err:" + JSON.stringify(err));
             console.debug("====>scene off start====");
             appAccountManager.off('accountChange', function (){
-                appAccountManager.off('change', function (){
-                    console.debug("====>scene off finish====");
-                });
+                console.debug("====>scene off accountChange finish====");
             });
-           // featureAbility.terminateSelf()
+            appAccountManager.off('change', function (){
+                console.debug("====>scene off change finish====");
+            });
+            featureAbility.terminateSelf()
         }
 
         // Subscribe to the callback of account information changes, verify the received account information, and send
