@@ -18,8 +18,6 @@ group("VKGLCTSTest") {
   deps = [
     "src/deqpgles2/build0001:ActsDeqpgles2TestSuite0001",
     "src/deqpgles2/build0002:ActsDeqpgles2TestSuite0002",
-
-    #"src/deqpgles2/build0003:ActsDeqpgles2TestSuite0003",
     "src/deqpgles2/build0004:ActsDeqpgles2TestSuite0004",
     "src/deqpgles2/build0005:ActsDeqpgles2TestSuite0005",
     "src/deqpgles2/build0006:ActsDeqpgles2TestSuite0006",
@@ -29,13 +27,8 @@ group("VKGLCTSTest") {
     "src/deqpgles2/build0010:ActsDeqpgles2TestSuite0010",
     "src/deqpgles2/build0011:ActsDeqpgles2TestSuite0011",
     "src/deqpgles2/build0012:ActsDeqpgles2TestSuite0012",
-
-    #"src/deqpgles2/build0013:ActsDeqpgles2TestSuite0013",
-    #"src/deqpgles2/build0014:ActsDeqpgles2TestSuite0014",
     "src/deqpgles2/build0015:ActsDeqpgles2TestSuite0015",
     "src/deqpgles2/build0016:ActsDeqpgles2TestSuite0016",
-
-    #"src/deqpgles2/build0017:ActsDeqpgles2TestSuite0017",
     "src/deqpgles3/build0001:ActsDeqpgles3TestSuite0001",
     "src/deqpgles3/build0002:ActsDeqpgles3TestSuite0002",
     "src/deqpgles3/build0003:ActsDeqpgles3TestSuite0003",
@@ -61,8 +54,6 @@ group("VKGLCTSTest") {
     "src/deqpgles3/build0023:ActsDeqpgles3TestSuite0023",
     "src/deqpgles3/build0024:ActsDeqpgles3TestSuite0024",
     "src/deqpgles3/build0025:ActsDeqpgles3TestSuite0025",
-
-    #"src/deqpgles3/build0026:ActsDeqpgles3TestSuite0026",
     "src/deqpgles3/build0027:ActsDeqpgles3TestSuite0027",
     "src/deqpgles3/build0028:ActsDeqpgles3TestSuite0028",
     "src/deqpgles3/build0029:ActsDeqpgles3TestSuite0029",
@@ -72,19 +63,13 @@ group("VKGLCTSTest") {
     "src/deqpgles3/build0033:ActsDeqpgles3TestSuite0033",
     "src/deqpgles3/build0034:ActsDeqpgles3TestSuite0034",
     "src/deqpgles3/build0035:ActsDeqpgles3TestSuite0035",
-
-    #"src/deqpgles3/build0036:ActsDeqpgles3TestSuite0036",
     "src/deqpgles3/build0037:ActsDeqpgles3TestSuite0037",
     "src/deqpgles3/build0038:ActsDeqpgles3TestSuite0038",
     "src/deqpgles3/build0039:ActsDeqpgles3TestSuite0039",
-
-    #"src/deqpgles3/build0040:ActsDeqpgles3TestSuite0040",
     "src/deqpgles3/build0041:ActsDeqpgles3TestSuite0041",
     "src/deqpgles3/build0042:ActsDeqpgles3TestSuite0042",
     "src/deqpgles3/build0043:ActsDeqpgles3TestSuite0043",
     "src/deqpgles3/build0044:ActsDeqpgles3TestSuite0044",
-
-    #"src/deqpgles3/build0045:ActsDeqpgles3TestSuite0045",
     "src/deqpgles31/build0001:ActsDeqpgles31TestSuite0001",
     "src/deqpgles31/build0002:ActsDeqpgles31TestSuite0002",
     "src/deqpgles31/build0003:ActsDeqpgles31TestSuite0003",
@@ -97,8 +82,6 @@ group("VKGLCTSTest") {
     "src/deqpgles31/build0010:ActsDeqpgles31TestSuite0010",
     "src/deqpgles31/build0011:ActsDeqpgles31TestSuite0011",
     "src/deqpgles31/build0012:ActsDeqpgles31TestSuite0012",
-
-    #"src/deqpgles31/build0013:ActsDeqpgles31TestSuite0013",
     "src/deqpgles31/build0014:ActsDeqpgles31TestSuite0014",
     "src/deqpgles31/build0015:ActsDeqpgles31TestSuite0015",
     "src/deqpgles31/build0016:ActsDeqpgles31TestSuite0016",
@@ -128,26 +111,10 @@ group("VKGLCTSTest") {
     "src/khrgles3/build0001:ActsKhrgles3TestSuite0001",
     "src/khrgles3/build0002:ActsKhrgles3TestSuite0002",
     "src/khrgles3/build0003:ActsKhrgles3TestSuite0003",
-
-    #"src/khrgles3/build0004:ActsKhrgles3TestSuite0004",
     "src/khrgles3/build0005:ActsKhrgles3TestSuite0005",
     "src/khrgles31/build0001:ActsKhrgles31TestSuite0001",
     "src/khrgles31/build0002:ActsKhrgles31TestSuite0002",
-
-    #"src/khrgles31/build0003:ActsKhrgles31TestSuite0003",
     "src/khrgles31/build0004:ActsKhrgles31TestSuite0004",
-
-    #"src/khrgles32/build0001:ActsKhrgles32TestSuite0001",
-    #"src/khrgles32/build0002:ActsKhrgles32TestSuite0002",
-
-    #"src/khrgles32single/build0001:ActsKhrgles32singleTestSuite0001",
-    #"src/khrgles32single/build0002:ActsKhrgles32singleTestSuite0002",
-    #"src/khrgles32single/build0003:ActsKhrgles32singleTestSuite0003",
-    #"src/khrgles32single/build0004:ActsKhrgles32singleTestSuite0004",
-    #"src/khrgles32single/build0005:ActsKhrgles32singleTestSuite0005",
-    #"src/khrgles32single/build0006:ActsKhrgles32singleTestSuite0006",
-    #"src/khrgles32single/build0007:ActsKhrgles32singleTestSuite0007",
-    #"src/khrglesext/build0001:ActsKhrglesextTestSuite0001",
   ]
 }
 
