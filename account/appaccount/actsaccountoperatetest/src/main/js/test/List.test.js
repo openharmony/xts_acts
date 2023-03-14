@@ -32,7 +32,7 @@ export default function testsuite() {
     ActsAccountRemoveAccount()
     ActsAccountErrPermission()
     ActsAccountAuthToken()
-    ActsAccountOnOff()
     ActsAccountAuthenticator()
     ActsAccountErrCode()
+    ActsAccountOnOff()
 }
