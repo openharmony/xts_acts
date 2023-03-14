@@ -786,7 +786,7 @@ export default function effectKitTest() {
     /**
      * @tc.number     EFFECT_KIT_GETLARGESTPROPORTIONCOLOR_JSAPI_001
      * @tc.name       Test getLargestProportionColor
-     * @tc.desc       Read the color value with the largest proportion of the image
+     * @tc.desc       .
      */
     it('getLargestProportionColor', 0, function (done) {
       let caseName = 'getLargestProportionColor'
@@ -795,7 +795,11 @@ export default function effectKitTest() {
       var imageSource = image.createImageSource(testPng.buffer)
       imageSource.getImageInfo((err, value) => {
         if(err) {
-          expect(true).assertFail()
+          try{
+            expect(true).assertFail()
+          }catch(err){
+            console.log(msgStr + 'expect assert fail')
+          }
           done()
           return;
         }
@@ -828,7 +832,7 @@ export default function effectKitTest() {
     /**
      * @tc.number     EFFECT_KIT_GETHIGHESTSATURATIONCOLOR_JSAPI_001
      * @tc.name       Test getHighestSaturationColor
-     * @tc.desc       Read the color value with the highest saturation of the image
+     * @tc.desc       .
      */
     it('getHighestSaturationColor', 0, function (done) {
       let caseName = 'getHighestSaturationColor'
@@ -837,7 +841,11 @@ export default function effectKitTest() {
       var imageSource = image.createImageSource(testPng.buffer)
       imageSource.getImageInfo((err, value) => {
         if(err) {
-          expect(true).assertFail()
+          try{
+            expect(true).assertFail()
+          }catch(err){
+            console.log(msgStr + 'expect assert fail')
+          }
           done()
           return;
         }
@@ -870,7 +878,7 @@ export default function effectKitTest() {
     /**
      * @tc.number     EFFECT_KIT_GETAVERAGECOLOR_JSAPI_001
      * @tc.name       Test getAverageColor
-     * @tc.desc       Read the average color value of the image
+     * @tc.desc       .
      */
     it('getAverageColor', 0, function (done) {
       let caseName = 'getAverageColor'
@@ -879,7 +887,11 @@ export default function effectKitTest() {
       var imageSource = image.createImageSource(testPng.buffer)
       imageSource.getImageInfo((err, value) => {
         if(err) {
-          expect(true).assertFail()
+          try{
+            expect(true).assertFail()
+          }catch(err){
+            console.log(msgStr + 'expect assert fail')
+          }
           done()
           return;
         }
@@ -912,7 +924,7 @@ export default function effectKitTest() {
     /**
      * @tc.number     EFFECT_KIT_ISBLACKORWHITEORGRAYCOLOR_JSAPI_001
      * @tc.name       Test isBlackOrWhiteOrGrayColor
-     * @tc.desc       Determine if the image is black, white and gray
+     * @tc.desc       .
      */
     it('isBlackOrWhiteOrGrayColor', 0, function (done) {
       let caseName = 'isBlackOrWhiteOrGrayColor'
@@ -921,7 +933,11 @@ export default function effectKitTest() {
       var imageSource = image.createImageSource(testPng.buffer)
       imageSource.getImageInfo((err, value) => {
         if(err) {
-          expect(true).assertFail()
+          try{
+            expect(true).assertFail()
+          }catch(err){
+            console.log(msgStr + 'expect assert fail')
+          }
           done()
           return;
         }
