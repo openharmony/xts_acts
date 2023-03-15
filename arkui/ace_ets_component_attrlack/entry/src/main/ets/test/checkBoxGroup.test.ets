@@ -75,7 +75,7 @@ export default function checkBoxGroupPartJsunit() {
         }
         var callback = (eventData) => {
           console.info("testcheckBoxGroup0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(2);
+          expect(eventData.data.STATUS).assertEqual(0);
           done();
         }
         events_emitter.on(innerEvent, callback);

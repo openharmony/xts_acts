@@ -390,8 +390,6 @@ HWTEST_F(ActsUtilCheckApiTest, testIsascii2200, Function | MediumTest | Level1) 
 //     int returnVal;
 
 //     paraVal = 128;
-//     returnVal = isastream(paraVal);
-//     LOGD("    isastream returnVal:='%d'\n", returnVal);
 //     ASSERT_TRUE(-1 == returnVal) << "ErrInfo: isastream returnVal:='" << returnVal << "'";
 // }
 

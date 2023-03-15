@@ -36,7 +36,6 @@ namespace OHOS {
             {
                 errMsg_ = msg;
                 success_ = false;
-//                HiLog::Error(LABEL, "%{public}s", msg.c_str());
             }
 
             napi_async_execute_callback TestRawFileExecute()
@@ -46,41 +45,30 @@ namespace OHOS {
 
                     // test OH_ResourceManager_OpenRawDir
                     RawDir* rawDir = OH_ResourceManager_OpenRawDir(asyncContext->ndk_, asyncContext->path_.c_str());
-//                    HiLog::Error(LABEL, "OpenRawDir ndk_:%{public}p  path_:%{public}s",asyncContext->ndk_, asyncContext->path_.c_str());
 
                     // test OH_ResourceManager_GetRawFileCount
                     int count = OH_ResourceManager_GetRawFileCount(rawDir);
-//                    HiLog::Error(LABEL, "GetRawFileCount:%{public}d", count);
 
                     // test OH_ResourceManager_GetRawFileName
                     for (int i = 0; i< count; i++) {
                         std::string tempFileName = OH_ResourceManager_GetRawFileName(rawDir, i);
-//                        HiLog::Error(LABEL, "GetRawFileName[%{public}d]:%{public}s", i, tempFileName.c_str());
                     }
 
                     // test OH_ResourceManager_OpenRawFile
                     std::string fileName = OH_ResourceManager_GetRawFileName(rawDir, 0);
                     asyncContext->path_ = fileName;
                     RawFile* rawFile = OH_ResourceManager_OpenRawFile(asyncContext->ndk_, fileName.c_str());
-//                    HiLog::Error(LABEL, "OpenRawFile  fileName:%{public}s", fileName.c_str());
 
                     // test OH_ResourceManager_GetRawFileSize
                     asyncContext->len_ = OH_ResourceManager_GetRawFileSize(rawFile);
-//                    HiLog::Error(LABEL, "GetRawFileSize:%{public}ld", asyncContext->len_);
 
                     // // test OH_ResourceManager_SeekRawFile
-//                    HiLog::Error(LABEL, "SeekRawFile SEEK_END:%{public}d", OH_ResourceManager_SeekRawFile(rawFile, 0 ,2));
-//                    HiLog::Error(LABEL, "SeekRawFile SEEK_SET:%{public}d", OH_ResourceManager_SeekRawFile(rawFile, 0 ,0));
-//                    HiLog::Error(LABEL, "SeekRawFile SEEK_CUR:%{public}d", OH_ResourceManager_SeekRawFile(rawFile, 0 ,1));
 
                     // // test OH_ResourceManager_GetRawFileOffset
-//                    HiLog::Error(LABEL, "GetRawFileOffset:%{public}ld", OH_ResourceManager_GetRawFileOffset(rawFile));
 
                     // test OH_ResourceManager_GetRawFileDescriptor
                     RawFileDescriptor descriptor;
                     bool getFd = OH_ResourceManager_GetRawFileDescriptor(rawFile, descriptor);
-//                    HiLog::Error(LABEL, "GetRawFileDescriptor getFd:%{public}d fd:%{public}d  length:%{public}ld start:%{public}ld",
-//                            getFd, descriptor.fd, descriptor.length, descriptor.start);
 
                     // test OH_ResourceManager_ReadRawFile
                     asyncContext->mediaData = std::make_unique<char[]>(asyncContext->len_);
@@ -88,25 +76,20 @@ namespace OHOS {
 
                     // test OH_ResourceManager_ReleaseRawFileDescriptor
                     OH_ResourceManager_ReleaseRawFileDescriptor(descriptor);
-//                    HiLog::Error(LABEL, "ReleaseRawFileDescriptor ok");
 
                     // test OH_ResourceManager_CloseRawFile
                     OH_ResourceManager_CloseRawFile(rawFile);
-//                    HiLog::Error(LABEL, "CloseRawFile ok");
 
                     // test OH_ResourceManager_CloseRawDir
                     OH_ResourceManager_CloseRawDir(rawDir);
-//                    HiLog::Error(LABEL, "CloseRawDir ok");
 
                     // test OH_ResourceManager_ReleaseNativeResourceManager
                     OH_ResourceManager_ReleaseNativeResourceManager(asyncContext->ndk_);
-//                    HiLog::Error(LABEL, "ReleaseNativeResourceManager ok  asyncContext->ndk_:%{public}p", asyncContext->ndk_);
 
                     asyncContext->createValueFunc_ = [](napi_env env, NdkAsyncContext &context) -> napi_value {
                         napi_value buffer;
                         napi_status status = napi_create_external_arraybuffer(env, context.mediaData.get(), context.len_,
                                 [](napi_env env, void *data, void *hint) {
-//                                    HiLog::Error(LABEL, "Media buffer finalized");
                                     delete[] static_cast<char*>(data);
                                 }, nullptr, &buffer);
                         if (status != napi_ok) {
@@ -148,29 +131,24 @@ namespace OHOS {
                     if (asyncContext->deferred_) {
                         if (asyncContext->success_) {
                             if (napi_resolve_deferred(env, asyncContext->deferred_, result[1]) != napi_ok) {
-//                                HiLog::Error(LABEL, "napi_resolve_deferred failed");
                             }
                         } else {
                             if (napi_reject_deferred(env, asyncContext->deferred_, result[0]) != napi_ok) {
-//                                HiLog::Error(LABEL, "napi_reject_deferred failed");
                             }
                         }
                     } else {
                         napi_value callback = nullptr;
                         napi_status status = napi_get_reference_value(env, asyncContext->callbackRef_, &callback);
                         if (status != napi_ok) {
-//                            HiLog::Error(LABEL, "napi_get_reference_value failed status=%{public}d", status);
                             break;
                         }
                         napi_value userRet = nullptr;
                         status = napi_call_function(env, nullptr, callback, sizeof(result) / sizeof(napi_value), result, &userRet);
                         if (status != napi_ok) {
-//                            HiLog::Error(LABEL, "napi_call_function failed status=%{public}d", status);
                             break;
                         }
                         status = napi_delete_reference(env, asyncContext->callbackRef_);
                         if (status != napi_ok) {
-//                            HiLog::Error(LABEL, "napi_delete_reference failed status=%{public}d", status);
                             break;
                         }
                     }
@@ -191,20 +169,17 @@ namespace OHOS {
                         size_t len = 0;
                         napi_status status = napi_get_value_string_utf8(env, argv[0], nullptr, 0, &len);
                         if (status != napi_ok) {
-//                            HiLog::Error(LABEL, "Failed to get bundle name length");
                             return nullptr;
                         }
                         std::vector<char> buf(len + 1);
                         status = napi_get_value_string_utf8(env, argv[0], buf.data(), len + 1, &len);
                         if (status != napi_ok) {
-//                            HiLog::Error(LABEL, "Failed to get bundle name");
                             return nullptr;
                         }
                         asyncContext->path_ = buf.data();
                     } else if (i == 1 && valueType == napi_object) {
                         // test OH_ResourceManager_InitNativeResourceManager
                         asyncContext->ndk_ = OH_ResourceManager_InitNativeResourceManager(env, argv[i]);
-//                        HiLog::Error(LABEL, "InitNativeResourceManager asyncContext->ndk_:%{public}p", asyncContext->ndk_);
                     } else if (i == 2 && valueType == napi_function) {
                         napi_create_reference(env, argv[i], 1, &asyncContext->callbackRef_);
                         break;
@@ -222,16 +197,13 @@ namespace OHOS {
 
                 napi_value resource = nullptr;
                 napi_create_string_utf8(env, "testRawFile", NAPI_AUTO_LENGTH, &resource);
-//                HiLog::Error(LABEL, "guojia testRawFile");
                 napi_status status = napi_create_async_work(env, nullptr, resource, TestRawFileExecute(), completeFunc,
                         static_cast<void*>(asyncContext.get()), &asyncContext->work_);
                 if (status != napi_ok) {
-//                    HiLog::Error(LABEL, "Failed to create async work for testRawFile %{public}d",status);
                     return result;
                 }
                 status = napi_queue_async_work(env, asyncContext->work_);
                 if (status != napi_ok) {
-//                    HiLog::Error(LABEL, "Failed to queue async work for testRawFile %{public}d",status);
                     return result;
                 }
 

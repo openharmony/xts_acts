@@ -376,7 +376,7 @@ export default function abilityTest() {
       },CASE_TIME_OUT)
     })
 
-    /*
+   /*
     * @tc.number: Acts_AppRecovery_0700
     * @tc.name: Fault recovery of multi-Ability application
     * @tc.desc: If the restart recovery status is not set, the Ability application pre-failure state will not be
@@ -440,6 +440,440 @@ export default function abilityTest() {
       function unSubscribeCallback() {
         setTimeout(() => {
           console.debug("Acts_AppRecovery_0700====> unSubscribeCallback");
+          done();
+        }, 800);
+      }
+
+      setTimeout(()=>{
+        if(flag==false){
+          expect().assertFail();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      },CASE_TIME_OUT)
+    })
+
+  /*
+   * @tc.number: Acts_AppRecovery_0800
+   * @tc.name: Fault recovery of multi-Ability application
+   * @tc.desc: If the restart recovery status is not set, the Ability application pre-failure state will not be
+   *          restored after the application exits abnormally and restarts.
+   */
+    it('Acts_AppRecovery_0800',0, async function (done) {
+      let subscriber;
+      let flag = false;
+      let countFirst = 0;
+      let countSecond = 0;
+      console.info("Acts_AppRecovery_0800====> start")
+      commonEvent.createSubscriber(ACTS_AppRecovery).then(async (data) => {
+        console.debug("Acts_AppRecovery_0800====> Create Subscribe");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        globalThis.abilityContext.startAbility(
+          {
+            bundleName: "com.example.apprecoverysrely",
+            abilityName: "EntryAbility",
+            action: "Acts_AppRecovery_0800_once"
+          },(err)=>{
+          console.debug("Acts_AppRecovery_0800====> startAbility err:"+JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        })
+      })
+
+      function subscribeCallBack(err, data) {
+        console.debug("Acts_AppRecovery_0800====> subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_First") {
+          countFirst++;
+          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
+            expect(true).assertTrue();
+          } else {
+            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
+          }
+          if (countFirst < 2) {
+            return;
+          }
+          setTimeout(() => {
+            commonEvent.subscribe(subscriber, subscribeCallBackSecond);
+            globalThis.abilityContext.startAbility(
+              {
+                bundleName: "com.example.apprecoverysrely",
+                abilityName: "EntryAbility",
+                action: "Acts_AppRecovery_0800_twice"
+              },
+              (err) => {
+                console.debug("Acts_AppRecovery_0800====> second startAbility err:" + JSON.stringify(err));
+                expect(err.code).assertEqual(0);
+              }
+            );
+          }, 800);
+        }
+      }
+
+      function subscribeCallBackSecond(err, data) {
+        console.debug("Acts_AppRecovery_0800====> second subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_Second") {
+          countSecond++;
+          flag=true;
+          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
+            expect(true).assertTrue();
+          } else {
+            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
+          }
+          if (countSecond < 2) {
+            return;
+          }
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      }
+
+      function unSubscribeCallback() {
+        setTimeout(() => {
+          console.debug("Acts_AppRecovery_0800====> unSubscribeCallback");
+          done();
+        }, 800);
+      }
+
+      setTimeout(()=>{
+        if(flag==false){
+          expect().assertFail();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      },CASE_TIME_OUT)
+    })
+
+    /*
+     * @tc.number: Acts_AppRecovery_0900
+     * @tc.name: Fault recovery of multi-Ability application
+     * @tc.desc: When the application settings restart recovery status is valid, the application exits abnormally
+     *           and restarts to restore the pre-failure state of Ability application.
+     */
+    it('Acts_AppRecovery_0900',0, async function (done) {
+      let subscriber;
+      let flag = false;
+      console.info("Acts_AppRecovery_0900====> start")
+      commonEvent.createSubscriber(ACTS_AppRecovery).then(async (data) => {
+        console.debug("Acts_AppRecovery_0900====> Create Subscribe");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        globalThis.abilityContext.startAbility(
+          {
+            bundleName: "com.example.apprecoveryrely",
+            abilityName: "EntryAbility",
+            action: "Acts_AppRecovery_0900_once"
+          },(err)=>{
+          console.debug("Acts_AppRecovery_0900====> startAbility err:"+JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        })
+      })
+
+      function subscribeCallBack(err, data) {
+        console.debug("Acts_AppRecovery_0900====> subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_First") {
+          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
+            expect(true).assertTrue();
+          } else {
+            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
+          }
+          let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+          let pkillCmd = "pkill -f com.example.apprecoveryrely";
+          console.debug("Acts_AppRecovery_0900====> shell command call " + pkillCmd);
+          abilityDelegator.executeShellCommand(pkillCmd, 1, (err, data) => {
+            console.debug("Acts_AppRecovery_0900====> shell command callback " + JSON.stringify(err) + " " + JSON.stringify(data));
+            setTimeout(() => {
+              commonEvent.subscribe(subscriber, subscribeCallBackSecond);
+              globalThis.abilityContext.startAbility(
+                {
+                  bundleName: "com.example.apprecoveryrely",
+                  abilityName: "EntryAbility",
+                  action: "Acts_AppRecovery_0900_twice"
+                },
+                (err) => {
+                  console.debug("Acts_AppRecovery_0900====> second startAbility err:" + JSON.stringify(err));
+                  expect(err.code).assertEqual(0);
+                }
+              );
+            }, 800);
+          });
+        }
+      }
+
+      function subscribeCallBackSecond(err, data) {
+        console.debug("Acts_AppRecovery_0900====> second subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_Second") {
+          flag=true;
+          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
+            expect(true).assertTrue();
+          } else {
+            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
+          }
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      }
+
+      function unSubscribeCallback() {
+        setTimeout(() => {
+          console.debug("Acts_AppRecovery_0900====> unSubscribeCallback");
+          done();
+        }, 800);
+      }
+
+      setTimeout(()=>{
+        if(flag==false){
+          expect().assertFail();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      },CASE_TIME_OUT)
+    })
+
+    /*
+     * @tc.number: Acts_AppRecovery_1000
+     * @tc.name: Fault recovery of multi-Ability application
+     * @tc.desc: When the application settings restart recovery status is valid, the application exits abnormally
+     *           and restarts to restore the pre-failure state of Ability application.
+     */
+    it('Acts_AppRecovery_1000',0, async function (done) {
+      let subscriber;
+      let flag = false;
+      let countFirst = 0;
+      let countSecond = 0;
+      console.info("Acts_AppRecovery_1000====> start")
+      commonEvent.createSubscriber(ACTS_AppRecovery).then(async (data) => {
+        console.debug("Acts_AppRecovery_1000====> Create Subscribe");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        globalThis.abilityContext.startAbility(
+          {
+            bundleName: "com.example.apprecoverysrely",
+            abilityName: "EntryAbility",
+            action: "Acts_AppRecovery_1000_once"
+          },(err)=>{
+          console.debug("Acts_AppRecovery_1000====> startAbility err:"+JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        })
+      })
+
+      function subscribeCallBack(err, data) {
+        console.debug("Acts_AppRecovery_1000====> subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_First") {
+          countFirst++;
+          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
+            expect(true).assertTrue();
+          } else {
+            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
+          }
+          if (countFirst < 2) {
+            return;
+          }
+          let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+          let pkillCmd = "pkill -f com.example.apprecoverysrely";
+          abilityDelegator.executeShellCommand(pkillCmd, 1, (err, data) => {
+            setTimeout(() => {
+              commonEvent.subscribe(subscriber, subscribeCallBackSecond);
+              globalThis.abilityContext.startAbility(
+                {
+                  bundleName: "com.example.apprecoverysrely",
+                  abilityName: "EntryAbility",
+                  action: "Acts_AppRecovery_1000_twice"
+                },
+                (err) => {
+                  console.debug("Acts_AppRecovery_1000====> second startAbility err:" + JSON.stringify(err));
+                  expect(err.code).assertEqual(0);
+                }
+              );
+            }, 800);
+          });
+        }
+      }
+
+      function subscribeCallBackSecond(err, data) {
+        console.debug("Acts_AppRecovery_1000====> second subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_Second") {
+          countSecond++;
+          flag=true;
+          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
+            expect(true).assertTrue();
+          } else {
+            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
+          }
+          if (countSecond < 2) {
+            return;
+          }
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      }
+
+      function unSubscribeCallback() {
+        setTimeout(() => {
+          console.debug("Acts_AppRecovery_1000====> unSubscribeCallback");
+          done();
+        }, 800);
+      }
+
+      setTimeout(()=>{
+        if(flag==false){
+          expect().assertFail();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      },CASE_TIME_OUT)
+    })
+
+    /*
+     * @tc.number: Acts_AppRecovery_1100
+     * @tc.name: Fault recovery of multi-Ability application
+     * @tc.desc: When setting restart recovery status is valid, exit the application by clearing the task list and
+     *           do not restore the pre-failure state of the Ability application after the application restart.
+     */
+    it('Acts_AppRecovery_1100',0, async function (done) {
+      let subscriber;
+      let flag = false;
+      console.info("Acts_AppRecovery_1100====> start")
+      commonEvent.createSubscriber(ACTS_AppRecovery).then(async (data) => {
+        console.debug("Acts_AppRecovery_1100====> Create Subscribe");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        globalThis.abilityContext.startAbility(
+          {
+            bundleName: "com.example.apprecoveryrely",
+            abilityName: "EntryAbility",
+            action: "Acts_AppRecovery_1100_once"
+          },(err)=>{
+          console.debug("Acts_AppRecovery_1100====> startAbility err:"+JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        })
+      })
+
+      function subscribeCallBack(err, data) {
+        console.debug("Acts_AppRecovery_1100====> subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_First") {
+          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
+            expect(true).assertTrue();
+          } else {
+            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
+          }
+          let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+          let pkillCmd = "pkill -f com.example.apprecoveryrely";
+          abilityDelegator.executeShellCommand(pkillCmd, 1, (err, data) => {
+            setTimeout(() => {
+              commonEvent.subscribe(subscriber, subscribeCallBackSecond);
+              globalThis.abilityContext.startAbility(
+                {
+                  bundleName: "com.example.apprecoveryrely",
+                  abilityName: "EntryAbility",
+                  action: "Acts_AppRecovery_1100_twice"
+                },
+                (err) => {
+                  console.debug("Acts_AppRecovery_1100====> second startAbility err:" + JSON.stringify(err));
+                  expect(err.code).assertEqual(0);
+                }
+              );
+            }, 800);
+          });
+        }
+      }
+
+      function subscribeCallBackSecond(err, data) {
+        console.debug("Acts_AppRecovery_1100====> second subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_Second") {
+          flag=true;
+          let message = data.parameters.message;
+          expect(message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertTrue();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      }
+
+      function unSubscribeCallback() {
+        setTimeout(() => {
+          console.debug("Acts_AppRecovery_1100====> unSubscribeCallback");
+          done();
+        }, 800);
+      }
+
+      setTimeout(()=>{
+        if(flag==false){
+          expect().assertFail();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      },CASE_TIME_OUT)
+    })
+
+    /*
+     * @tc.number: Acts_AppRecovery_1200
+     * @tc.name: Fault recovery of multi-Ability application
+     * @tc.desc: When setting restart recovery status is valid, exit the application by clearing the task list and
+     *           do not restore the pre-failure state of the Ability application after the application restart.
+     */
+    it('Acts_AppRecovery_1200',0, async function (done) {
+      let subscriber;
+      let flag = false;
+      let countFirst = 0;
+      let countSecond = 0;
+      console.info("Acts_AppRecovery_1200====> start")
+      commonEvent.createSubscriber(ACTS_AppRecovery).then(async (data) => {
+        console.debug("Acts_AppRecovery_1200====> Create Subscribe");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        globalThis.abilityContext.startAbility(
+          {
+            bundleName: "com.example.apprecoverysrely",
+            abilityName: "EntryAbility",
+            action: "Acts_AppRecovery_1200_once"
+          },(err)=>{
+          console.debug("Acts_AppRecovery_1200====> startAbility err:"+JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        })
+      })
+
+      function subscribeCallBack(err, data) {
+        console.debug("Acts_AppRecovery_1200====> subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_First") {
+          countFirst++;
+          let message = data.parameters.message;
+          let strJson = JSON.stringify(data.parameters.message);
+          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
+            expect(true).assertTrue();
+          } else {
+            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
+          }
+          if (countFirst < 2) {
+            return;
+          }
+          let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+          let pkillCmd = "pkill -f com.example.apprecoverysrely";
+          abilityDelegator.executeShellCommand(pkillCmd, 1, (err, data) => {
+            setTimeout(() => {
+              commonEvent.subscribe(subscriber, subscribeCallBackSecond);
+              globalThis.abilityContext.startAbility(
+                {
+                  bundleName: "com.example.apprecoverysrely",
+                  abilityName: "EntryAbility",
+                  action: "Acts_AppRecovery_1200_twice"
+                },
+                (err) => {
+                  console.debug("Acts_AppRecovery_1200====> second startAbility err:" + JSON.stringify(err));
+                  expect(err.code).assertEqual(0);
+                }
+              );
+            }, 800);
+          });
+        }
+      }
+
+      function subscribeCallBackSecond(err, data) {
+        console.debug("Acts_AppRecovery_1200====> second subscribeCallBack data:" + JSON.stringify(data));
+        if(data.event == "ACTS_AppRecovery_Second") {
+          countSecond++;
+          flag=true;
+          let message = data.parameters.message;
+          expect(message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertTrue();
+          if (countSecond < 2) {
+            return;
+          }
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      }
+
+      function unSubscribeCallback() {
+        setTimeout(() => {
+          console.debug("Acts_AppRecovery_1200====> unSubscribeCallback");
           done();
         }, 800);
       }

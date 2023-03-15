@@ -33,61 +33,6 @@
 #include "libfs.h"
 
 using namespace testing::ext;
-#if 0
-/**
- * @tc.number   SUB_KERNEL_FS_STDLIB_0100
- * @tc.name     basic function test : mkstemp create a temporary file
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(FileSystemTest, testMkstemp, Function | MediumTest | Level2)
-{
-    int fd = 0;
-    char tmpFileName[]= "tmpFile_XXXXXX";
-    fd = mkstemp(tmpFileName);
-    EXPECT_NE(fd, -1) << "> mkstemp errno = " << errno;
-    WriteCloseTest(fd);
-    fd = open(tmpFileName, O_RDWR);
-    EXPECT_NE(fd, -1) << "> open errno = " << errno;
-    ReadCloseTest(fd);
-    EXPECT_NE(unlink(tmpFileName), -1) << "> unlink errno = " << errno;
-}
-
-/**
- * @tc.number   SUB_KERNEL_FS_STDLIB_0200
- * @tc.name     basic function test : mkstemps create a temporary file
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(FileSystemTest, testMkstemps, Function | MediumTest | Level2)
-{
-    int fd = 0;
-    char tmpFileName[] = "tmpFile_XXXXXX";
-    fd = mkstemps(tmpFileName, 0);
-    EXPECT_NE(fd, -1) << "> mkstemp errno = " << errno;
-    WriteCloseTest(fd);
-    fd = open(tmpFileName, O_RDWR);
-    EXPECT_NE(fd, -1) << "> open errno = " << errno;
-    ReadCloseTest(fd);
-    EXPECT_NE(unlink(tmpFileName), -1) << "> unlink errno = " << errno;
-}
-
-/**
- * @tc.number   SUB_KERNEL_FS_STDLIB_0300
- * @tc.name     basic function test : mkostemp create a temporary file with read and write
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(FileSystemTest, testMkostemp, Function | MediumTest | Level2)
-{
-    int fd = 0;
-    char tmpFileName[] = "tmpFile_XXXXXX";
-    fd = mkostemp(tmpFileName, O_RDWR);
-    EXPECT_NE(fd, -1) << "> mkstemp errno = " << errno;
-    WriteCloseTest(fd);
-    fd = open(tmpFileName, O_RDWR);
-    EXPECT_NE(fd, -1) << "> open errno = " << errno;
-    ReadCloseTest(fd);
-    EXPECT_NE(unlink(tmpFileName), -1) << "> unlink errno = " << errno;
-}
-#endif
 /**
  * @tc.number   SUB_KERNEL_FS_STDLIB_0400
  * @tc.name     basic function test : mktemp create a temporary file name, mkdtemp create a directory

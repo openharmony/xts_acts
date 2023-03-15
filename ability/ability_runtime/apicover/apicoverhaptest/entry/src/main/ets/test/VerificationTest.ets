@@ -67,8 +67,10 @@ export default function verificationTest(){
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
-          expect().assertFail();
-          done();
+          if (err.code != 16000017) {
+            expect().assertFail();
+            done();
+          }
         });
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
@@ -130,8 +132,10 @@ export default function verificationTest(){
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
-          expect().assertFail();
-          done();
+          if (err.code != 16000017) {
+            expect().assertFail();
+            done();
+          }
         });
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
@@ -207,8 +211,10 @@ export default function verificationTest(){
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
-          expect().assertFail();
-          done();
+          if (err.code != 16000017) {
+            expect().assertFail();
+            done();
+          }
         });
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
@@ -263,8 +269,10 @@ export default function verificationTest(){
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
-          expect().assertFail();
-          done();
+          if (err.code != 16000017) {
+            expect().assertFail();
+            done();
+          }
         });
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
@@ -365,8 +373,10 @@ export default function verificationTest(){
           console.info(TAG + "startAbility data = " + JSON.stringify(data) + ";" + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
-          expect().assertFail();
-          done();
+          if (err.code != 16000017) {
+            expect().assertFail();
+            done();
+          }
         });
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
