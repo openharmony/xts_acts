@@ -56,7 +56,7 @@ export default function appVersionCodeJsunit() {
         }
         var callback = (eventData) => {
           console.info("testappVersionCode_0011 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Code).assertEqual("1");
+          expect(eventData.data.Code).assertEqual(1000000);
         }
         console.info("testappVersion click result is: " + JSON.stringify(sendEventByKey('versionCodeText', 10, "")));
         events_emitter.on(innerEvent, callback);

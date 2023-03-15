@@ -55,7 +55,7 @@ export default function scrollCodeJsunit() {
       expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Vertical');
       expect(obj.$attrs.scrollBar).assertEqual('BarState.On');
       expect(obj.$attrs.scrollBarColor).assertEqual('#FF0000FF');
-      expect(obj.$attrs.scrollBarWidth).assertEqual('30.00px');
+      expect(obj.$attrs.scrollBarWidth).assertEqual('30.00vp');
       done();
     });
 
@@ -159,7 +159,7 @@ export default function scrollCodeJsunit() {
       let strJson = getInspectorByKey('ScrollCode');
       let obj = JSON.parse(strJson);
       console.info("[test_scrollCode_005] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.scrollBarWidth).assertEqual('40.00px');
+      expect(obj.$attrs.scrollBarWidth).assertEqual('40.00vp');
       done();
     });
 

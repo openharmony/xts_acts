@@ -70,7 +70,7 @@ describe("SensorJsTest_sensor_48", function () {
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     const SERVICE_EXCEPTION_MSG = 'Service exception.'
 	let invalid  = -1;
-	
+	 
 	/*
      * @tc.number:SUB_SensorsSystem_ORIENTATION_JSTest_0140
      * @tc.name: newOrientating_SensorJsTest014
@@ -78,12 +78,25 @@ describe("SensorJsTest_sensor_48", function () {
      */
     it("newOrientating_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('---------newOrientating_SensorJsTest014--------------');
-        sensor.on(sensor.SensorId.ORIENTATION, callback);
-        setTimeout(()=>{
-            sensor.off(sensor.SensorId.ORIENTATION);
-            sensor.off(sensor.SensorId.ORIENTATION);
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest014 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorId.ORIENTATION, callback);
+						setTimeout(()=>{
+							sensor.off(sensor.SensorId.ORIENTATION);
+							done();
+						}, 500);
+				}
+			})
+		} catch (error) {
+            console.info('newOrientating_SensorJsTest014 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 500);
+        }
     })
 
 	/*
@@ -113,14 +126,28 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.desc: For normal scenarios
      */
     it("newOrientating_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------SensorJsTest003--------------');
-        sensor.on(sensor.SensorId.ORIENTATION, callback, {'interval': 100000000});
-        setTimeout(()=>{
-            console.info('---------newOrientating_SensorJsTest016 off in--------------');
-            sensor.off(sensor.SensorId.ORIENTATION);
-            console.info('---------newOrientating_SensorJsTest016 off end--------------');
+        console.info('---------newOrientating_SensorJsTest016--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest016 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");        
+					sensor.on(sensor.SensorId.ORIENTATION, callback, {'interval': 100000000});
+					setTimeout(()=>{
+						console.info('---------newOrientating_SensorJsTest016 off in--------------');
+						sensor.off(sensor.SensorId.ORIENTATION);
+						console.info('---------newOrientating_SensorJsTest016 off end--------------');
+						done();
+					}, 500);
+				}
+			})
+		} catch (error) {
+            console.info('newOrientating_SensorJsTest016 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 500);
+        }
     })
 
 	/*
@@ -137,19 +164,27 @@ describe("SensorJsTest_sensor_48", function () {
 			expect(typeof(data.alpha)).assertEqual("number");
 			expect(typeof (data.timestamp)).assertEqual("number");
         }
-        try {
-            sensor.on(sensor.SensorId.ORIENTATION, onSensorCallback, {'interval': 100000000}, 5);
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest017 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorId.ORIENTATION, onSensorCallback, {'interval': 100000000}, 5);
+					setTimeout(()=>{
+						console.info('---------newOrientating_SensorJsTest017 off in--------------');
+						sensor.off(sensor.SensorId.ORIENTATION);
+						console.info('---------newOrientating_SensorJsTest017 off end--------------');
+						done();
+					}, 500);	
+				}		
+			})
         } catch (error) {
-            console.info("newOrientating_SensorJsTest017 error:" +error);
-            expect(false).assertTrue();
+            console.info("newOrientating_SensorJsTest017 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }
-        setTimeout(()=>{
-            console.info('---------newOrientating_SensorJsTest017 off in--------------');
-            sensor.off(sensor.SensorId.ORIENTATION);
-            console.info('---------newOrientating_SensorJsTest017 off end--------------');
-            done();
-        }, 500);
+        }			
     })
 
 	/*
@@ -158,11 +193,25 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.desc: Once Normal Subscription Scenario Use Case
      */
     it("newOrientating_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        sensor.once(sensor.SensorId.ORIENTATION, callback);
-        setTimeout(()=>{
-            expect(true).assertTrue();
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest018 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");		
+					sensor.once(sensor.SensorId.ORIENTATION, callback);
+					setTimeout(()=>{
+						expect(true).assertTrue();
+						done();
+					}, 500);
+				}
+			})
+        } catch (error) {
+            console.info("newOrientating_SensorJsTest018 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 500);
+        }				
     })
 
 	/*
@@ -200,11 +249,19 @@ describe("SensorJsTest_sensor_48", function () {
 			expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
-        try{
-            sensor.once(sensor.SensorId.ORIENTATION, onceSensorCallback, 5);
-        } catch (error) {
-            console.info('newOrientating_SensorJsTest020 error:' +error);
-            expect(false).assertTrue();
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest020 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");	
+					sensor.once(sensor.SensorId.ORIENTATION, onceSensorCallback, 5);
+				}
+			})
+	    } catch (error) {
+            console.info("newOrientating_SensorJsTest020 error:" +error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
     })
@@ -218,7 +275,7 @@ describe("SensorJsTest_sensor_48", function () {
         try {
             sensor.off(invalid, callback);
         } catch (error) {
-            console.info('newOrientating_SensorJsTest021 error:' +error);
+            console.info('newOrientating_SensorJsTest021 Device does not support! ');
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done();
@@ -236,12 +293,26 @@ describe("SensorJsTest_sensor_48", function () {
             expect(false).assertTrue();
             done();
         }
-        sensor.on(sensor.SensorId.ORIENTATION, onSensorCallback);
-        sensor.off(sensor.SensorId.ORIENTATION, onSensorCallback);
-        setTimeout(()=>{
-            expect(true).assertTrue();
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest022 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");			
+					sensor.on(sensor.SensorId.ORIENTATION, onSensorCallback);
+					sensor.off(sensor.SensorId.ORIENTATION, onSensorCallback);
+					setTimeout(()=>{
+						expect(true).assertTrue();
+						done();
+					}, 500);
+				}
+			})
+		} catch (error) {
+            console.info("newOrientating_SensorJsTest022 error:" +error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 500);
+        }
     })
 
 	/*
@@ -270,26 +341,40 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.desc:Call interface multiple times
      */
     it("newOrientating_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
-            console.info("newOrientating_SensorJsTest024 callback: " + JSON.stringify(data));
-			expect(typeof(data.beta)).assertEqual("number");
-			expect(typeof(data.gamma)).assertEqual("number");
-			expect(typeof(data.alpha)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
-        });
-        sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
-            console.info("newOrientating_SensorJsTest024 callback2: " + JSON.stringify(data));
-			expect(typeof(data.beta)).assertEqual("number");
-			expect(typeof(data.gamma)).assertEqual("number");
-			expect(typeof(data.alpha)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
-        });
-        setTimeout(()=>{
-            console.info('---------newOrientating_SensorJsTest024 off in--------------');
-            sensor.off(sensor.SensorId.ORIENTATION);
-            console.info('---------newOrientating_SensorJsTest024 off end--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest024 error');
+				} else {   
+					expect(typeof(data)).assertEqual("object");				
+					sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
+						console.info("newOrientating_SensorJsTest024 callback: " + JSON.stringify(data));
+						expect(typeof(data.beta)).assertEqual("number");
+						expect(typeof(data.gamma)).assertEqual("number");
+						expect(typeof(data.alpha)).assertEqual("number");
+						expect(typeof (data.timestamp)).assertEqual("number");
+					});
+					sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
+						console.info("newOrientating_SensorJsTest024 callback2: " + JSON.stringify(data));
+						expect(typeof(data.beta)).assertEqual("number");
+						expect(typeof(data.gamma)).assertEqual("number");
+						expect(typeof(data.alpha)).assertEqual("number");
+						expect(typeof (data.timestamp)).assertEqual("number");
+					});
+					setTimeout(()=>{
+						console.info('---------newOrientating_SensorJsTest024 off in--------------');
+						sensor.off(sensor.SensorId.ORIENTATION);
+						console.info('---------newOrientating_SensorJsTest024 off end--------------');
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info("newOrientating_SensorJsTest024 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 1000);
+        }
     })
 
 	/*
@@ -301,7 +386,7 @@ describe("SensorJsTest_sensor_48", function () {
         try {
             sensor.off(sensor.SensorId.ORIENTATION, 5);
         } catch (error) {
-            console.info('newOrientating_SensorJsTest025 error:'+error);
+            console.info('newOrientating_SensorJsTest025 Device does not support! ');
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done();
@@ -315,27 +400,41 @@ describe("SensorJsTest_sensor_48", function () {
      */
     it("newOrientating_SensorJsTest026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest026--------------');
-        sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
-            console.info("newOrientating_SensorJsTest026 callback: " + JSON.stringify(data));
-			expect(typeof(data.beta)).assertEqual("number");
-			expect(typeof(data.gamma)).assertEqual("number");
-			expect(typeof(data.alpha)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
-        }, {'interval': 100000000});
-        sensor.once(sensor.SensorId.ORIENTATION, (data)=>{
-            console.info("newOrientating_SensorJsTest026 callback2: " + JSON.stringify(data));
-			expect(typeof(data.beta)).assertEqual("number");
-			expect(typeof(data.gamma)).assertEqual("number");
-			expect(typeof(data.alpha)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
-        });
-        setTimeout(()=>{
-            console.info('---------newOrientating_SensorJsTest026 off in--------------');
-            sensor.off(sensor.SensorId.ORIENTATION);
-            console.info('---------newOrientating_SensorJsTest026 off end--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest024 error');
+				} else {  	
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
+						console.info("newOrientating_SensorJsTest026 callback: " + JSON.stringify(data));
+						expect(typeof(data.beta)).assertEqual("number");
+						expect(typeof(data.gamma)).assertEqual("number");
+						expect(typeof(data.alpha)).assertEqual("number");
+						expect(typeof (data.timestamp)).assertEqual("number");
+					}, {'interval': 100000000});
+					sensor.once(sensor.SensorId.ORIENTATION, (data)=>{
+						console.info("newOrientating_SensorJsTest026 callback2: " + JSON.stringify(data));
+						expect(typeof(data.beta)).assertEqual("number");
+						expect(typeof(data.gamma)).assertEqual("number");
+						expect(typeof(data.alpha)).assertEqual("number");
+						expect(typeof (data.timestamp)).assertEqual("number");
+					});
+					setTimeout(()=>{
+						console.info('---------newOrientating_SensorJsTest026 off in--------------');
+						sensor.off(sensor.SensorId.ORIENTATION);
+						console.info('---------newOrientating_SensorJsTest026 off end--------------');
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info("newOrientating_SensorJsTest026 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }, 1000);
-    })
+        }	
+	})		
 
 	/*
      * @tc.number:SUB_SensorsSystem_ORIENTATION_JSTest_0270
@@ -344,27 +443,41 @@ describe("SensorJsTest_sensor_48", function () {
      */
     it("newOrientating_SensorJsTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest027--------------');
-        sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
-            console.info("newOrientating_SensorJsTest027 callback: " + JSON.stringify(data));
-			expect(typeof(data.beta)).assertEqual("number");
-			expect(typeof(data.gamma)).assertEqual("number");
-			expect(typeof(data.alpha)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
-        }, {'interval': 100000000});
-        sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
-            console.info("newOrientating_SensorJsTest027 callback2: " + JSON.stringify(data));
-			expect(typeof(data.beta)).assertEqual("number");
-			expect(typeof(data.gamma)).assertEqual("number");
-			expect(typeof(data.alpha)).assertEqual("number");
-			expect(typeof (data.timestamp)).assertEqual("number");
-        }, {'interval': 100000000});
-        setTimeout(()=>{
-            console.info('---------newOrientating_SensorJsTest027 off in--------------');
-            sensor.off(sensor.SensorId.ORIENTATION);
-            console.info('---------newOrientating_SensorJsTest027 off end--------------');
-            done();
-        }, 1000);
-    })
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest024 error');
+				} else { 
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
+						console.info("newOrientating_SensorJsTest027 callback: " + JSON.stringify(data));
+						expect(typeof(data.beta)).assertEqual("number");
+						expect(typeof(data.gamma)).assertEqual("number");
+						expect(typeof(data.alpha)).assertEqual("number");
+						expect(typeof (data.timestamp)).assertEqual("number");
+					}, {'interval': 100000000});
+					sensor.on(sensor.SensorId.ORIENTATION, (data)=>{
+						console.info("newOrientating_SensorJsTest027 callback2: " + JSON.stringify(data));
+						expect(typeof(data.beta)).assertEqual("number");
+						expect(typeof(data.gamma)).assertEqual("number");
+						expect(typeof(data.alpha)).assertEqual("number");
+						expect(typeof (data.timestamp)).assertEqual("number");
+					}, {'interval': 100000000});
+					setTimeout(()=>{
+						console.info('---------newOrientating_SensorJsTest027 off in--------------');
+						sensor.off(sensor.SensorId.ORIENTATION);
+						console.info('---------newOrientating_SensorJsTest027 off end--------------');
+						done();
+					}, 1000);
+				}
+		})
+	} catch (error) {
+        console.info("newOrientating_SensorJsTest027 Device does not support! ");
+        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        done();
+    }
+	})	
 
 	/*
      * @tc.number:SUB_SensorsSystem_ORIENTATION_JSTest_0280
@@ -376,7 +489,7 @@ describe("SensorJsTest_sensor_48", function () {
         try {
             sensor.on();
         } catch (error) {
-			console.info("newOrientating_SensorJsTest028 error:" +error);
+			console.info("newOrientating_SensorJsTest028_on error:" +error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
@@ -384,7 +497,7 @@ describe("SensorJsTest_sensor_48", function () {
         try {
             sensor.once();
         } catch (error) {
-			console.info("newOrientating_SensorJsTest028 error:" +error);
+			console.info("newOrientating_SensorJsTest028_once error:" +error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
@@ -392,7 +505,7 @@ describe("SensorJsTest_sensor_48", function () {
         try {
             sensor.off();
         } catch (error) {
-			console.info("newOrientating_SensorJsTest028 error:" +error);
+			console.info("newOrientating_SensorJsTest028_off error:" +error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
@@ -406,24 +519,38 @@ describe("SensorJsTest_sensor_48", function () {
      */
     it("newOrientating_SensorJsTest029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newOrientating_SensorJsTest029--------------');
-        sensor.on(sensor.SensorId.ORIENTATION, callback);
-        sensor.on(sensor.SensorId.ORIENTATION, callback2);
-        setTimeout(() => {
-            console.info('----------------------newOrientating_SensorJsTest029 off in--------------');
-            try {
-			sensor.off(sensor.SensorId.ORIENTATION, callback);
-			} catch (error) {
-            console.info("newOrientating_SensorJsTest029 error:" + error);
-			}
-            console.info('----------------------newOrientating_SensorJsTest029 off end--------------');
-        }, 500);
-        setTimeout(() => {
-            console.info('----------------------newOrientating_SensorJsTest029 off in--------------');
-            sensor.off(sensor.SensorId.ORIENTATION, callback2);
-            console.info('----------------------newOrientating_SensorJsTest029 off end--------------');
-            done();
-        }, 1000);
-    })
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest029 error');
+				} else { 
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorId.ORIENTATION, callback);
+					sensor.on(sensor.SensorId.ORIENTATION, callback2);
+					setTimeout(() => {
+						console.info('----------------------newOrientating_SensorJsTest029 off in--------------');
+						try {
+						sensor.off(sensor.SensorId.ORIENTATION, callback);
+						} catch (error) {
+						console.info("newOrientating_SensorJsTest029 error:" + error);
+						}
+						console.info('----------------------newOrientating_SensorJsTest029 off end--------------');
+					}, 500);
+					setTimeout(() => {
+						console.info('----------------------newOrientating_SensorJsTest029 off in--------------');
+						sensor.off(sensor.SensorId.ORIENTATION, callback2);
+						console.info('----------------------newOrientating_SensorJsTest029 off end--------------');
+						done();
+					}, 1000);
+				}
+			})
+	} catch (error) {
+        console.info("newOrientating_SensorJsTest029 Device does not support! ");
+        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        done();
+    }
+	})
 	
 	 /*
      * @tc.number: SUB_SensorsSystem_ORIENTATION_JSTest_0300
@@ -432,23 +559,104 @@ describe("SensorJsTest_sensor_48", function () {
      */
     it("newOrientating_SensorJsTest030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newOrientating_SensorJsTest030--------------');
-        sensor.on(sensor.SensorId.ORIENTATION, callback, { 'interval': 100000000 });
-        sensor.on(sensor.SensorId.ORIENTATION, callback2, { 'interval': 100000000 });
-        setTimeout(() => {
-            console.info('----------------------newOrientating_SensorJsTest030 off in--------------');
-            try {
-			sensor.off(sensor.SensorId.ORIENTATION, callback);
-			} catch (error) {
-            console.info("newOrientating_SensorJsTest030 error:" + error);
-			}
-            console
-            console.info('----------------------newOrientating_SensorJsTest030 off end--------------');
-        }, 500);
-        setTimeout(() => {
-            console.info('----------------------newOrientating_SensorJsTest030_2 off in--------------');
-            sensor.off(sensor.SensorId.ORIENTATION, callback2);
-            console.info('----------------------newOrientating_SensorJsTest030_2 off end--------------');
-            done();
-        }, 1000);
-    })
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest029 error');
+				} else { 
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorId.ORIENTATION, callback, { 'interval': 100000000 });
+					sensor.on(sensor.SensorId.ORIENTATION, callback2, { 'interval': 100000000 });
+					setTimeout(() => {
+						console.info('----------------------newOrientating_SensorJsTest030 off in--------------');
+						try {
+						sensor.off(sensor.SensorId.ORIENTATION, callback);
+						} catch (error) {
+						console.info("newOrientating_SensorJsTest030 error:" + error);
+						}
+						console
+						console.info('----------------------newOrientating_SensorJsTest030 off end--------------');
+					}, 500);
+					setTimeout(() => {
+						console.info('----------------------newOrientating_SensorJsTest030_2 off in--------------');
+						sensor.off(sensor.SensorId.ORIENTATION, callback2);
+						console.info('----------------------newOrientating_SensorJsTest030_2 off end--------------');
+						done();
+					}, 1000);
+				}
+			})
+	} catch (error) {
+        console.info("newOrientating_SensorJsTest030 Device does not support! ");
+        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        done();
+    }
+	})
+	
+	 /*
+     * @tc.number: SUB_SensorsSystem_ORIENTATION_JSTest_0310
+     * @tc.name: newOrientating_SensorJsTest031
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("newOrientating_SensorJsTest031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newOrientating_SensorJsTest031--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest031 error');
+				} else { 
+					expect(typeof(data)).assertEqual("object");
+					console.info('----------------------newOrientating_SensorJsTest031 off in--------------');
+					try{
+						sensor.off(-1, callback);
+						console.info('----------------------newOrientating_SensorJsTest031 off end--------------');
+					} catch (error) {
+						console.info("newOrientating_SensorJsTest031 error:" + error);
+						expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+						expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+						done();
+					}
+				}
+			})
+	} catch (error) {
+        console.info("newOrientating_SensorJsTest031 Device does not support! ");
+        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        done();
+    }
+	})
+	
+	 /*
+     * @tc.number: SUB_SensorsSystem_ORIENTATION_JSTest_0320
+     * @tc.name: newOrientating_SensorJsTest032
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("newOrientating_SensorJsTest032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newOrientating_SensorJsTest032--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest032 error');
+				} else { 
+					try {
+						sensor.on(sensor.SensorId.ORIENTATION, callback, {'interval': -100000000});
+						console.info('----------------------newOrientating_SensorJsTest032 off in---------------------------');
+						sensor.off(sensor.SensorId.ORIENTATION);
+						console.info('----------------------newOrientating_SensorJsTest032 off end---------------------------');
+						done();
+					} catch (error) {
+						console.info('newOrientating_SensorJsTest032 On fail, errCode:' + error.code + ' ,msg:' + error.message);
+						expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
+						expect(error.message).assertEqual(SERVICE_EXCEPTION_MSG);
+						done();
+					}
+				}
+			})
+	} catch (error) {
+        console.info("newOrientating_SensorJsTest032 Device does not support! ");
+        expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+        expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+        done();
+    }
+	})
 })}

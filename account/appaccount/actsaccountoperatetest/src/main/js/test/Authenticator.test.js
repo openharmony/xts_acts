@@ -14,7 +14,7 @@
  */
 import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureAbility'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 const NAMELIMIT = 512;
 const LENGTHLIMIT = 1024;
@@ -46,11 +46,12 @@ export default function ActsAccountAppAccess() {
                         parameters:
                         {},
                     },
-                },
-            )          
-            await sleep(1500);
+                }, (err, data) => {
+                    console.debug("====>accountauthenticatorfeatureAbility.startAbilityForResult err:" + JSON.stringify(err))
+                    console.debug("====>accountauthenticatorfeatureAbility.startAbilityForResult data:" + JSON.stringify(data))
+                    done();
+                })
             console.debug("====>ActsAccountAuthenticator beforeAll end====");
-            done();
         });
         beforeEach(async (done)=>{
             console.debug("====>afterEach start====");

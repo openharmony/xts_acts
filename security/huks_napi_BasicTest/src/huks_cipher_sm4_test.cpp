@@ -60,7 +60,7 @@ static struct OH_Huks_Param g_genParams001[] = {
         .uint32Param = OH_HUKS_SM4_KEY_SIZE_128
     }, {
         .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_PKCS7
+        .uint32Param = OH_HUKS_PADDING_NONE
     }, {
         .tag = OH_HUKS_TAG_BLOCK_MODE,
         .uint32Param = OH_HUKS_MODE_CBC
@@ -81,7 +81,7 @@ static struct OH_Huks_Param g_encryptParams001[] = {
         .uint32Param = OH_HUKS_SM4_KEY_SIZE_128
     }, {
         .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_PKCS7
+        .uint32Param = OH_HUKS_PADDING_NONE
     }, {
         .tag = OH_HUKS_TAG_BLOCK_MODE,
         .uint32Param = OH_HUKS_MODE_CBC
@@ -106,7 +106,7 @@ static struct OH_Huks_Param g_decryptParams001[] = {
         .uint32Param = OH_HUKS_SM4_KEY_SIZE_128
     }, {
         .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_PKCS7
+        .uint32Param = OH_HUKS_PADDING_NONE
     }, {
         .tag = OH_HUKS_TAG_BLOCK_MODE,
         .uint32Param = OH_HUKS_MODE_CBC

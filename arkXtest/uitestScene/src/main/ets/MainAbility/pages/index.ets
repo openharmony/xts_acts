@@ -19,7 +19,8 @@ import prompt from '@ohos.prompt';
 @Component
 struct ScrollExample {
   scroller: Scroller = new Scroller()
-  private arr: number[] = [1,2,3,4]
+  private arr: number[] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+  @State hoverText : string = 'jump'
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -60,12 +61,30 @@ struct ScrollExample {
               })
             )
             Button() {
-              Text('jump')
+              Text(this.hoverText)
                 .fontSize(25)
                 .fontWeight(FontWeight.Bold)
             }
             .type(ButtonType.Capsule)
             .margin({ top: 20 })
+            .onHover((isHover: boolean) => {
+              if (isHover) {
+                this.hoverText = 'hover'
+              }
+          })
+            .onMouse((event: MouseEvent) => {
+              switch (event.button) {
+                case MouseButton.Left :
+                  this.hoverText = 'left'
+                  break
+                case MouseButton.Right :
+                  this.hoverText = 'right'
+                  break
+                case MouseButton.Middle :
+                  this.hoverText = 'middle'
+                  break
+              }
+            })
             .onClick(() => {
               router.push({ uri: 'pages/screen' })
             })

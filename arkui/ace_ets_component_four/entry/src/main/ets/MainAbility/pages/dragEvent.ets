@@ -156,7 +156,7 @@ struct DragExample {
         try {
           var backData = {
             data: {
-              "ACTION": 'onDragMove onAction'
+              "ACTION": "onDragMove onAction"
             }
           }
           var backEvent = {

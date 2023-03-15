@@ -15,8 +15,10 @@
 import VibratorJsTest_misc_1 from './Vibrator_old.test.js'
 import VibratorJsTest_misc_2 from './Vibrator_new_common.test.js'
 import VibratorJsTest_misc_3 from './Vibrator_newSupplement_common.test.js'
+import VibratorJsTest_misc_6 from './Vibrator_newSupportTest.js'
 export default function testsuite() {
     VibratorJsTest_misc_1()
     VibratorJsTest_misc_2()
 	VibratorJsTest_misc_3()
+	VibratorJsTest_misc_6()
 }

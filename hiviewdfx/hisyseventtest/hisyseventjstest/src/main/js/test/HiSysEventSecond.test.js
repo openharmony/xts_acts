@@ -1212,7 +1212,7 @@ describe('hiSysEventJsSecondTest', function () {
 	it('testHiSysEventApi53', 3, async function (done) {
 		console.info('testHiSysEventApi53 start')
 		try {
-			hiSysEvent.write((err, val) => {
+			hiSysEvent.write({}, (err, val) => {
 				if (err) {
 					console.error('in testHiSysEventApi53 test callback: err.code = ' + err.code)
 				} else {

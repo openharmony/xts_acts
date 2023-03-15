@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -59,7 +59,7 @@ export default function scrollBarJsunit() {
     it('testScrollBar002', 0, async function (done) {
       console.info('[testScrollBar002] START');
       let object = {
-        "directionValue": ScrollBarDirection.Horizontal
+        "directionValue": "ScrollBarDirection.Horizontal"
       };
       try {
         var eventData = {
@@ -101,7 +101,7 @@ export default function scrollBarJsunit() {
       try {
         let eventData = {
           data: {
-            "stateValue":"BarState.On"
+            "stateValue": BarState.On
           }
         }
         let indexEvent = {
@@ -118,7 +118,7 @@ export default function scrollBarJsunit() {
       console.info("[testScrollBar004] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testScrollBar004] state:" + obj.$attrs.state);
-      expect(obj.$attrs.state).assertEqual('BarState.Off');
+      expect(obj.$attrs.state).assertEqual("BarState.On");
       done();
     });
 
@@ -144,7 +144,7 @@ export default function scrollBarJsunit() {
       console.info("[testScrollBar005] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testScrollBar005] state:" + obj.$attrs.state);
-      expect(obj.$attrs.state).assertEqual('BarState.Off');
+      expect(obj.$attrs.state).assertEqual("BarState.Auto");
       done();
     });
   })

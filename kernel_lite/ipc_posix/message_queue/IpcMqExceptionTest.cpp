@@ -237,7 +237,7 @@ HWTEST_F(IpcMqTest, testMqOpenENOSPC, Function | MediumTest | Level3)
  */
 HWTEST_F(IpcMqTest, testMqCloseEBADF, Function | MediumTest | Level2)
 {
-    ASSERT_TRUE(mq_close(NULL) == -1) << "ERROR: mq_close() != -1";
+    ASSERT_TRUE(mq_close(0) == -1) << "ERROR: mq_close() != -1";
     ASSERT_TRUE(errno == EBADF) << "ERROR: errno != EBADF, errno = " << errno << " EBADF = " << EBADF;
 }
 
@@ -283,7 +283,7 @@ HWTEST_F(IpcMqTest, testMqSendEBADFEMSGSIZE, Function | MediumTest | Level2)
     queue = mq_open(qName, O_CREAT | O_RDWR | O_NONBLOCK, S_IRUSR | S_IWUSR, &attr);
     ASSERT_TRUE(queue != (mqd_t)-1) << "ERROR: mq_open() == (mqd_t)-1";
 
-    EXPECT_TRUE(mq_send(NULL, MQ_MSG, 1, MQ_MSG_PRIO) == -1) << "ERROR: mq_send() != -1";
+    EXPECT_TRUE(mq_send(0, MQ_MSG, 1, MQ_MSG_PRIO) == -1) << "ERROR: mq_send() != -1";
     EXPECT_TRUE(errno == EBADF) << "ERROR: errno != EBADF, errno = " << errno << " EBADF = " << EBADF;
 
     EXPECT_TRUE(mq_send(queue, MQ_MSG, MQ_MSG_LEN, MQ_MSG_PRIO) == -1) << "ERROR: mq_send() != -1";
@@ -390,7 +390,7 @@ HWTEST_F(IpcMqTest, testMqReceiveEBADFEMSGSIZE, Function | MediumTest | Level2)
     EXPECT_TRUE(strncmp(MQ_MSG, rMsg, MQ_MSG_LEN) == 0) << "ERROR: strncmp() != 0, sent != received: sent = " <<
         MQ_MSG << ", received = " << rMsg;
 
-    EXPECT_TRUE(mq_receive(NULL, rMsg, getAttr.mq_msgsize, &prio) == -1) << "ERROR: mq_receive() != -1";
+    EXPECT_TRUE(mq_receive(0, rMsg, getAttr.mq_msgsize, &prio) == -1) << "ERROR: mq_receive() != -1";
     EXPECT_TRUE(errno == EBADF) << "ERROR: errno != EBADF, errno = " << errno << " EBADF = " << EBADF;
 
     EXPECT_TRUE(mq_send(queue, MQ_MSG, MQ_MSG_LEN, MQ_MSG_PRIO) == 0) << "ERROR: mq_send() != 0";
@@ -469,7 +469,7 @@ HWTEST_F(IpcMqTest, testMqTimedSendEAGAINEBADF, Function | MediumTest | Level2)
     EXPECT_TRUE(mq_timedsend(queue, MQ_MSG, MQ_MSG_LEN, MQ_MSG_PRIO, &ts) == -1) << "ERROR: mq_timedsend() != 0";
     EXPECT_TRUE(errno == EAGAIN) << "ERROR: errno != EAGAIN, errno = " << errno << " EAGAIN = " << EAGAIN;
 
-    EXPECT_TRUE(mq_timedsend(NULL, MQ_MSG, MQ_MSG_LEN, MQ_MSG_PRIO, &ts) == -1) << "ERROR: mq_timedsend() != -1";
+    EXPECT_TRUE(mq_timedsend(0, MQ_MSG, MQ_MSG_LEN, MQ_MSG_PRIO, &ts) == -1) << "ERROR: mq_timedsend() != -1";
     EXPECT_TRUE(errno == EBADF) << "ERROR: errno != EBADF, errno = " << errno << " EBADF = " << EBADF;
 
     EXPECT_TRUE(mq_close(queue) == 0) << "ERROR: mq_close() != 0";
@@ -624,7 +624,7 @@ HWTEST_F(IpcMqTest, testMqTimedReceiveEAGAINEBADF, Function | MediumTest | Level
     EXPECT_TRUE(mq_timedreceive(queue, rMsg, getAttr.mq_msgsize, &prio, &ts) == -1) << "ERROR: mq_timedreceive() != -1";
     EXPECT_TRUE(errno == EAGAIN) << "ERROR: errno != EAGAIN, errno = " << errno << " EAGAIN = " << EAGAIN;
 
-    EXPECT_TRUE(mq_timedreceive(NULL, rMsg, getAttr.mq_msgsize, &prio, &ts) == -1) << "ERROR: mq_timedreceive() != -1";
+    EXPECT_TRUE(mq_timedreceive(0, rMsg, getAttr.mq_msgsize, &prio, &ts) == -1) << "ERROR: mq_timedreceive() != -1";
     EXPECT_TRUE(errno == EBADF) << "ERROR: errno != EBADF, errno = " << errno << " EBADF = " << EBADF;
 
     EXPECT_TRUE(mq_close(queue) == 0) << "ERROR: mq_close() != 0";
@@ -635,12 +635,12 @@ HWTEST_F(IpcMqTest, testMqTimedReceiveEAGAINEBADF, Function | MediumTest | Level
     queue = mq_open(qName, O_CREAT | O_WRONLY | O_NONBLOCK, S_IRUSR | S_IWUSR, &attr);
     ASSERT_TRUE(queue != (mqd_t)-1) << "ERROR: mq_open() == (mqd_t)-1";
 
-    EXPECT_TRUE(mq_timedreceive(NULL, rMsg, getAttr.mq_msgsize, &prio, &ts) == -1) << "ERROR: mq_timedreceive() != -1";
+    EXPECT_TRUE(mq_timedreceive(0, rMsg, getAttr.mq_msgsize, &prio, &ts) == -1) << "ERROR: mq_timedreceive() != -1";
     EXPECT_TRUE(errno == EBADF) << "ERROR: errno != EBADF, errno = " << errno << " EBADF = " << EBADF;
 
     attr.mq_flags |= O_NONBLOCK;
     EXPECT_TRUE(mq_setattr(queue, &attr, NULL) == 0) << "ERROR: mq_setattr() != 0";
-    EXPECT_TRUE(mq_timedreceive(NULL, rMsg, getAttr.mq_msgsize, &prio, &ts) == -1) << "ERROR: mq_timedreceive() != -1";
+    EXPECT_TRUE(mq_timedreceive(0, rMsg, getAttr.mq_msgsize, &prio, &ts) == -1) << "ERROR: mq_timedreceive() != -1";
     EXPECT_TRUE(errno == EBADF) << "ERROR: errno != EBADF, errno = " << errno << " EBADF = " << EBADF;
 
     EXPECT_TRUE(mq_close(queue) == 0) << "ERROR: mq_close() != 0";
@@ -819,7 +819,7 @@ HWTEST_F(IpcMqTest, testMqGetAttrEBADFEINVAL, Function | MediumTest | Level2)
     sprintf(qName, "testMqSendEINVAL_%d", GetRandom(10000));
     queue = mq_open(qName, O_CREAT | O_RDWR | O_NONBLOCK, S_IRUSR | S_IWUSR, NULL);
 
-    ret = mq_getattr(NULL, &mqstat);
+    ret = mq_getattr(0, &mqstat);
     EXPECT_TRUE(ret == -1) << "ERROR: mq_getattr() != -1, ret = " << ret;
     EXPECT_TRUE(errno == EBADF) << "ERROR: errno != EBADF, errno = " << errno << " EBADF = " << EBADF;
 
@@ -859,7 +859,7 @@ HWTEST_F(IpcMqTest, testMqSetAttrEBADFEINVAL, Function | MediumTest | Level2)
     EXPECT_TRUE(gMqstat.mq_flags != sMqstat.mq_flags) << "ERROR: gMqstat != sMqstat, gMqstat.mq_flags = " <<
         gMqstat.mq_flags << "sMqstat.mq_flags = " << sMqstat.mq_flags;
 
-    EXPECT_TRUE(mq_setattr(NULL, &sMqstat, NULL) == -1) << "ERROR: mq_setattr() != -1";
+    EXPECT_TRUE(mq_setattr(0, &sMqstat, NULL) == -1) << "ERROR: mq_setattr() != -1";
     EXPECT_TRUE(errno == EBADF) << "ERROR: errno != EBADF, errno = " << errno << " EBADF = " << EBADF;
 
     EXPECT_TRUE(mq_setattr(queue, NULL, NULL) == -1) << "ERROR: mq_setattr() != -1";

@@ -58,6 +58,22 @@
         "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddVisibility",
         "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddLayoutWeight",
         "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddOneWidth",
-        "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddOneMargin"   
+        "MainAbility/pages/Flex/justifyContent/End/AlignEnd_AddOneMargin",
+        "MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexSize",
+        "MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexPad",
+        "MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexMar",
+        "MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexMarPad",
+        "MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_TextSize",
+        "MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_TextMar",
+        "MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_TextOffset",
+        "MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_TextVisibility",
+        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexSize",
+        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexPad",
+        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexMar",
+        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexMarPad",
+        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextSize",
+        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextMar",
+        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextOffset",
+        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextVisibility"
     ]
 }

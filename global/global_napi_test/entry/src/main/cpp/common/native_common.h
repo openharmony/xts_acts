@@ -20,7 +20,6 @@
 #include <string>
 
 #include "napi/native_api.h"
-//#include "napi/native_node_api.h"
 #include "rawfile/raw_file_manager.h"
 
 namespace OHOS {

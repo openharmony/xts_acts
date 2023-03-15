@@ -3,9 +3,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -116,7 +116,7 @@ static void* CommTcpClientTask(void *param)
     *ret = 0;
     int clnFd = socket(AF_INET, SOCK_STREAM, 0);
     if (clnFd == -1) {
-        printf("[@@@][comm client]socket fail\n");  
+        printf("[@@@][comm client]socket fail\n");
         *ret = -1;
         return ret;
     }
@@ -930,7 +930,7 @@ HWTEST_F(ActsNetTest, testSelectMultiClients, Function | MediumTest | Level2)
         sleep(2);
         int ret;
         pthread_t pCli[4];
-        int pEroId[4] = {0};  
+        int pEroId[4] = {0};
         int interval[4] = {2, 1, 3, 1};
         for (int i = 0; i < 4; i++) {
             ret = pthread_create(&pCli[i], nullptr, CommTcpClientTask, &interval[i]);
@@ -1044,7 +1044,7 @@ HWTEST_F(ActsNetTest, testPollMultiClients, Function | MediumTest | Level2)
         sleep(2);
         int ret;
         pthread_t pCli[6];
-        int  pEroId[6] = {0};             
+        int  pEroId[6] = {0};
         int interval[6] = {2, 1, 3, 1, 2, 1};
         for (int i = 0; i < 6; i++)
         {
@@ -1648,9 +1648,9 @@ HWTEST_F(ActsNetTest, testHerror, Function | MediumTest | Level2)
     fclose(stderr);
 
     char buffer[256];
-    const char* expectStr = "herror msg: Unknown errorherror msg: Host not foundherror msg: \
-Try againherror msg: Non-recoverable errorherror msg: Address not availableherror msg: \
-Address not availableherror msg: Unknown errorherror msg: Unknown errorherror msg: Unknown error";
+    const char* expectStr = "herror msg: Unknown error\nherror msg: Host not found\nherror msg: \
+Try again\nherror msg: Non-recoverable error\nherror msg: Address not available\nherror msg: \
+Address not available\nherror msg: Unknown error\nherror msg: Unknown error\nherror msg: Unknown error\n";
     FILE* fpRead = fopen(fileName, "rb");
     size_t bytes = fread(buffer, 1, sizeof(buffer), fpRead);
     buffer[bytes] = 0;
@@ -1809,7 +1809,7 @@ HWTEST_F(ActsNetTest, testInetPtonIpv6Normal, Function | MediumTest | Level2)
 {
     int ret;
     struct in6_addr rst = {0};
-    char cpAddrs[6][40] = {"0101:0101:0101:0101:1010:1010:1010:1010", "0:0:0:0:0:0:0:0", 
+    char cpAddrs[6][40] = {"0101:0101:0101:0101:1010:1010:1010:1010", "0:0:0:0:0:0:0:0",
         "FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF", "::", "1::", "0011:0011:0011:0011:11:11:11:11"};
     for (int i = 0; i < 6; i++) {
         ret = inet_pton(AF_INET6, cpAddrs[i], &rst);
@@ -1913,9 +1913,9 @@ HWTEST_F(ActsNetTest, testInetNtopIpv6Normal, Function | MediumTest | Level2)
     const char* ret = nullptr;
     struct in6_addr inputAddr = {0};
     char rstBuff[INET6_ADDRSTRLEN];
-    char inputAddrs[6][40] = {"0101:0101:0101:0101:1010:1010:1010:1010", "0:0:0:0:0:0:0:0", 
+    char inputAddrs[6][40] = {"0101:0101:0101:0101:1010:1010:1010:1010", "0:0:0:0:0:0:0:0",
         "FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF", "::", "1::", "0011:0011:0011:0011:11:11:11:11"};
-    char expectAddrs[6][40] = {"101:101:101:101:1010:1010:1010:1010", "::", 
+    char expectAddrs[6][40] = {"101:101:101:101:1010:1010:1010:1010", "::",
         "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", "::", "1::", "11:11:11:11:11:11:11:11"};
     for (int i = 0; i < 6; i++) {
         iret = inet_pton(AF_INET6, inputAddrs[i], &inputAddr);

@@ -122,25 +122,31 @@ export default function ActsDAGetSetTest() {
                 scalableData:{}
             };
             accountAbility.setOsAccountDistributedInfo(obj).then(function () {
-                accountAbility.getOsAccountDistributedInfo(function (data) {
+                accountAbility.getOsAccountDistributedInfo(function (err, data) {
+                    console.debug('====>setOsAccountDistributedInfo_test001 ccerr:' + JSON.stringify(err))
                     console.debug('====>setOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('12345')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
                     let obj = {
                         id: '12345',
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOUT'
                     };
-                    accountAbility.setOsAccountDistributedInfo(obj).then(function (err) {
-                        expect(err).assertEqual(null)
-                    });
+                    accountAbility.setOsAccountDistributedInfo(obj).then(function () {
+                        accountAbility.getOsAccountDistributedInfo(function (err, data) {
+                            console.debug('====>setOsAccountDistributedInfo_test001 get ccerr:' + JSON.stringify(err))
+                            console.debug('====>setOsAccountDistributedInfo_test001 get ccdata:' + JSON.stringify(data))
+                            expect(err).assertEqual(null)
+                            done();
+                        })
+                    }).catch((err) => {
+                        console.debug('====>setOsAccountDistributedInfo_test001 ccerr:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    })
                 });
             });
-            accountAbility.getOsAccountDistributedInfo(function (data) {
-                console.debug('====>setOsAccountDistributedInfo_test001 get data:' + JSON.stringify(data))
-                expect(data).assertEqual(null)
-                done();
-            })
+            
         })
 
         /**
@@ -156,9 +162,11 @@ export default function ActsDAGetSetTest() {
                 event: 'Ohos.account.event.LOGIN',
                 scalableData:{}
             };
-            accountAbility.setOsAccountDistributedInfo(obj, function () {
+            accountAbility.setOsAccountDistributedInfo(obj, function (err) {
+                console.debug('====>setOsAccountDistributedInfo_test002 ccerr callback:' + JSON.stringify(err))
                 accountAbility.getOsAccountDistributedInfo(function (err, data) {
-                    console.debug("====>setOsAccountDistributedInfo_test002 data:" + JSON.stringify(data))
+                    console.debug('====>setOsAccountDistributedInfo_test002 get ccerr:' + JSON.stringify(err))
+                    console.debug("====>setOsAccountDistributedInfo_test002 get data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
                     let obj = {
@@ -166,8 +174,11 @@ export default function ActsDAGetSetTest() {
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOUT'
                     };
-                    accountAbility.setOsAccountDistributedInfo(obj).then(function (data) {
-                        expect(data).assertEqual(null)
+                    accountAbility.setOsAccountDistributedInfo(obj).then(function () {
+                        done();
+                    }).catch((err) => {
+                        console.debug('====>setOsAccountDistributedInfo_test002 set ccerr:' + JSON.stringify(err))
+                        expect().assertFail();
                         done();
                     });
                 });

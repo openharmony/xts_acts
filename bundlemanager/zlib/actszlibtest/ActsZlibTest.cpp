@@ -1267,13 +1267,12 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzUnGetc, Function | MediumTest | Level2)
 #else
     std::lock_guard<std::mutex> lock(file_mutex);
     gzFile file;
-    file = gzopen(TESTFILE, "wb");
-    ASSERT_TRUE(file != NULL);
-    gzseek(file, 1L, SEEK_CUR); /* add one zero byte */
-    gzclose(file);
     file = gzopen(TESTFILE, "rb");
     ASSERT_TRUE(file != NULL);
-    ASSERT_FALSE(gzungetc(' ', file) != ' ');
+    ASSERT_FALSE(gzungetc('a', file) != 'a');
+    char sz_read[5] = {0};
+    gzread(file, sz_read, 1);
+    ASSERT_TRUE(sz_read[0] == 'a');
     gzclose(file);
 #endif
 }

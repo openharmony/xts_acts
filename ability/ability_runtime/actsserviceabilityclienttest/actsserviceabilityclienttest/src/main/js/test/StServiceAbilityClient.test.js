@@ -14,6 +14,7 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import commonEvent from '@ohos.commonEvent'
+import rpc from "@ohos.rpc";
 
 import { describe, afterEach, it, expect } from '@ohos/hypium'
 export default function ActsStServiceAbilityTest() {
@@ -43,7 +44,6 @@ export default function ActsStServiceAbilityTest() {
             "ACTS_SerivceAbilityServer_onCommand_PageStartService_0401",
             ],
         };
-        let subscriber0500;
         let CommonEventSubscribeInfo0500 = {
             events: ["ACTS_SerivceAbilityServer_onConnect_PageConnectService_0500",
             "ACTS_SerivceAbilityServer_onDisConnect_PageConnectService_0500",
@@ -349,6 +349,7 @@ export default function ActsStServiceAbilityTest() {
             console.log('ACTS_JsServiceAbility_0500====<begin');
             try {
                 let mConnIdJsPromise;
+                let subscriber0500;
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0500).then((data) => {
                     console.debug("=ACTS_JsServiceAbility_0500 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")

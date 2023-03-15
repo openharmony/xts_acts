@@ -17,7 +17,7 @@ import {MessageManager,Callback} from './../../../../common/MessageManager';
 @Entry
 @Component
 struct AlignStart_AddOffset {
-  @State OneOffset: any = { x: 0, y: 0 }
+  @State OneOffset: object = { x: 0, y: 0 }
   messageManager:MessageManager = new MessageManager()
   onPageShow() {
     console.info('AlignSpaceEvenly_AddOffset onPageShow');

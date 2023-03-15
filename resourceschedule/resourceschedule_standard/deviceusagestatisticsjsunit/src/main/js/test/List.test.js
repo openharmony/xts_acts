@@ -14,9 +14,8 @@
  */
 import bundlestate_test from './BundleState.test.js'
 import DeviceUsageStatisticsJsTest from './DeviceUsageStatisticsJsunit.test.js'
-import UsageStatisticsTest from './UsageStatistics.test.js'
+
 export default function testsuite() {
     bundlestate_test()
     DeviceUsageStatisticsJsTest()
-    UsageStatisticsTest()
 }

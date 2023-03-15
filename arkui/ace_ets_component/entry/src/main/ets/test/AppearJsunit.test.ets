@@ -65,6 +65,7 @@ export default function appearJsunit() {
         console.info("testAppear01 on appearEvent err : " + JSON.stringify(err));
       }
       console.info("testAppear01 click result is: " + JSON.stringify(sendEventByKey('appear', 10, "")));
+      await Utils.sleep(1000);
       console.info('[testAppear01] END');
 
       console.info('[testAppear02] START');

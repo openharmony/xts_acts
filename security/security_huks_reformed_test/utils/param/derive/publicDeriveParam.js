@@ -13,6 +13,11 @@
  * limitations under the License.
  */
 import * as param from '../publicParam';
+import huks from '@ohos.security.huks';
+
+let salt = new Uint8Array([
+  0x14, 0x10, 0x11, 0x3a, 0x27, 0x9e, 0xc8, 0x5f, 0xe0, 0xf3, 0x36, 0x17, 0x57, 0x42, 0x8e, 0xff
+]);
 
 let HuksDeriveHKDF = {
   HuksKeySIZE: {
@@ -285,6 +290,14 @@ let HuksDerivePBKDF2 = {
   HuksKeyBLOCKMODEGCM: {
     tag: param.HksTag.HKS_TAG_BLOCK_MODE,
     value: param.HksCipherMode.HKS_MODE_GCM,
+  },
+  HuksKeyPBKDF2Iteration: {
+    tag: huks.HuksTag.HUKS_TAG_ITERATION,
+    value: 1000
+  },
+  HuksKeyPBKDF2Salt: {
+    tag: huks.HuksTag.HUKS_TAG_SALT,
+    value: salt
   },
 };
 
