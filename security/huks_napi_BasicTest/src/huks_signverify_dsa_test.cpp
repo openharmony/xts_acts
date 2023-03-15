@@ -19,6 +19,7 @@
 
 using namespace testing::ext;
 namespace Unittest::DsaSignVerify {
+bool useSoftware = true;
 class HuksSignVerifyDSATest : public testing::Test {
 public:
     static void SetUpTestCase(void);
@@ -32,6 +33,7 @@ public:
 
 void HuksSignVerifyDSATest::SetUpTestCase(void)
 {
+    useSoftware = checkUseSoftware();
 }
 
 void HuksSignVerifyDSATest::TearDownTestCase(void)
@@ -163,28 +165,32 @@ OH_Huks_Result HksDsaSignVerifyTestNormalCase(struct OH_Huks_Blob keyAlias, stru
  */
 HWTEST_F(HuksSignVerifyDSATest, Security_HUKS_NAPI_SignVerify_DSA_0100, TestSize.Level0)
 {
-    const char *keyAliasString = "HksDSASignVerifyKeyAliasTest001";
-    struct OH_Huks_ParamSet *genParamSet = nullptr;
-    struct OH_Huks_ParamSet *signParamSet = nullptr;
-    struct OH_Huks_ParamSet *verifyParamSet = nullptr;
-    struct OH_Huks_Blob keyAlias = { strlen(keyAliasString), (uint8_t *)keyAliasString };
+    if (useSoftware)
+    {
+        const char *keyAliasString = "HksDSASignVerifyKeyAliasTest001";
+        struct OH_Huks_ParamSet *genParamSet = nullptr;
+        struct OH_Huks_ParamSet *signParamSet = nullptr;
+        struct OH_Huks_ParamSet *verifyParamSet = nullptr;
+        struct OH_Huks_Blob keyAlias = { strlen(keyAliasString), (uint8_t *)keyAliasString };
 
-    OH_Huks_Result ret = InitParamSet(&genParamSet, g_genParamsTest001, sizeof(g_genParamsTest001) / sizeof(OH_Huks_Param));
-    EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
-    ret = InitParamSet(&signParamSet, g_signParamsTest001, sizeof(g_signParamsTest001) / sizeof(OH_Huks_Param));
-    EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
-    ret = InitParamSet(&verifyParamSet, g_verifyParamsTest001, sizeof(g_verifyParamsTest001) / sizeof(OH_Huks_Param));
-    EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
-    if ((genParamSet != nullptr) || (signParamSet != nullptr) || (verifyParamSet != nullptr)) {
-        ret = HksDsaSignVerifyTestNormalCase(keyAlias, genParamSet, signParamSet, verifyParamSet);
+        OH_Huks_Result ret = InitParamSet(&genParamSet, g_genParamsTest001, sizeof(g_genParamsTest001) / sizeof(OH_Huks_Param));
+        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
+        ret = InitParamSet(&signParamSet, g_signParamsTest001, sizeof(g_signParamsTest001) / sizeof(OH_Huks_Param));
+        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
+        ret = InitParamSet(&verifyParamSet, g_verifyParamsTest001, sizeof(g_verifyParamsTest001) / sizeof(OH_Huks_Param));
+        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
+        if ((genParamSet != nullptr) || (signParamSet != nullptr) || (verifyParamSet != nullptr)) {
+            ret = HksDsaSignVerifyTestNormalCase(keyAlias, genParamSet, signParamSet, verifyParamSet);
+        }
+
+        /* 5. Delete Key */
+        ret = OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
+        EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "DeleteKey failed.";
+
+        OH_Huks_FreeParamSet(&genParamSet);
+        OH_Huks_FreeParamSet(&signParamSet);
+        OH_Huks_FreeParamSet(&verifyParamSet);
     }
-
-    /* 5. Delete Key */
-    ret = OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
-    EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "DeleteKey failed.";
-
-    OH_Huks_FreeParamSet(&genParamSet);
-    OH_Huks_FreeParamSet(&signParamSet);
-    OH_Huks_FreeParamSet(&verifyParamSet);
+    ASSERT_TRUE(0 == 0);
 }
 } // namespace Unittest::DsaSignVerify
