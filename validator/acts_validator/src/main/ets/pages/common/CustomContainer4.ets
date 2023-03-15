@@ -122,7 +122,7 @@ export struct CustomContainer {
     };
     let name = this.name;
     let displayName = `${info.prefix}${name}${info.suffix}`;
-    let dirPath = path + '/' + displayName;
+    let dirPath = path + '/screenshot' + '/' + displayName;
     let imagePackerApi = image.createImagePacker();
     let arrayBuffer = await imagePackerApi.packing(data, packOpts);
     let fd = fileio.openSync(dirPath,0o102,0o666);

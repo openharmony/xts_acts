@@ -32,6 +32,10 @@ describe('UsbCoreJsFunctionsTest', function () {
     console.info('begin test getversion :' + Version)
     // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
+    if (usbPortList == undefined) {
+      portCurrentMode = 1;
+      return
+    }
     gDeviceList = usb.getDevices();
     if (usbPortList.length > 0) {
       console.info('usb case gDeviceList.length return: ' + gDeviceList.length);

@@ -274,45 +274,6 @@ HWTEST_F(ProcessTest, testExit, Function | MediumTest | Level2)
         ASSERT_EQ(exitCode, reInt[i]);
     }
 }
-#if 0
-/**
- * @tc.number   SUB_KERNEL_PROCESS_EXIT_0200
- * @tc.name     Test exit about IO flush
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(ProcessTest, testExitFlush, Function | MediumTest | Level3)
-{
-    const char* testFile = "TEST_FILE.txt";
-    char writeBuf[] = "this is a file";
-    char readBuf[20] = {0};
-    pid_t pid;
-
-    pid = fork();
-    ASSERT_TRUE(pid >= 0) << "> parent: fork errno = " << errno;
-    if (pid == 0) {
-
-        // write
-        FILE *fp = fopen(testFile, "w+");
-        if (fp == nullptr) {
-            LOG("> child fopen errno = %d", errno);
-            exit(1);
-        }
-        fwrite(writeBuf, sizeof(writeBuf), 1, fp);
-        exit(0);
-    }
-
-    WaitProcExitedOK(pid);
-
-    // read
-    FILE *fp = fopen(testFile, "r+");
-    ASSERT_NE(fp, nullptr) << "> fopen errno = " << errno;
-    EXPECT_NE(fread(readBuf, sizeof(writeBuf), 1, fp), 0);
-    EXPECT_STREQ(writeBuf, readBuf) << "> writeBuf = " << writeBuf\
-                                    << "\n> readBuf = " << readBuf;
-    EXPECT_NE(fclose(fp), -1) << "> fclose errno =" <<errno;
-    remove(testFile);
-}
-#endif
 /**
  * @tc.number   SUB_KERNEL_PROCESS_ASSERT_0100
  * @tc.name     Basic test about assert true

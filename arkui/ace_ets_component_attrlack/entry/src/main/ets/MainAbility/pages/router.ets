@@ -30,9 +30,7 @@ struct RouterStandard {
       url: 'pages/page1',
       params: {
         text: '这是第一页的值',
-        data: {
-          array: [12, 45, 78]
-        }
+        data: [12, 45, 78]
       }
     }
     try {

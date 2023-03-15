@@ -57,22 +57,29 @@ describe("SensorJsTest_sensor_26", function () {
      */
     it("subscribeBarometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest001---------------------------');
-        sensor.subscribeBarometer({
-            success: function (data) {
-                console.info("subscribeBarometer_SensorJsTest001 success" + JSON.stringify(data));
-                expect(typeof (data.pressure)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.error('subscribeBarometer_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
-                expect(code).assertEqual(1001);
-            },
-        });
-        setTimeout(() => {
-          sensor.unsubscribeBarometer();
-          done();
-        }, 1000);
+		try{
+		   sensor.getSingleSensor(sensor.subscribeBarometer ,(error, data) => {			
+				sensor.subscribeBarometer({
+					success: function (data) {
+						console.info("subscribeBarometer_SensorJsTest001 success" + JSON.stringify(data));
+						expect(typeof (data.pressure)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.error('subscribeBarometer_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
+						expect(code).assertEqual(1001);
+					},
+				});
+				setTimeout(() => {
+				  sensor.unsubscribeBarometer();
+				  done();
+				}, 1000);
+			})
+		} catch (error) {
+            console.info('subscribeBarometer_SensorJsTest001 Device does not support! ');
+            done();
+        }
     })
-
+	
      /*
      * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0020
      * @tc.name: subscribeBarometer_SensorJsTest002
@@ -80,32 +87,39 @@ describe("SensorJsTest_sensor_26", function () {
      */
     it("subscribeBarometer_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest002---------------------------');
-        sensor.subscribeBarometer({
-            success: function (data) {
-                console.info("subscribeBarometer_SensorJsTest002 success:" + JSON.stringify(data));
-                expect(typeof (data.pressure)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.error('subscribeBarometer_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
-                expect(code).assertEqual(1001);
-            },
-        });
-        sensor.subscribeBarometer({
-            success: function (data) {
-                console.info("subscribeBarometer_SensorJsTest002_1 success:" + JSON.stringify(data));
-                expect(typeof (data.pressure)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.error('subscribeBarometer_SensorJsTest002_1 failed. Code: ' + code + '; Data: ' + data);
-                expect(code).assertEqual(1001);
-            },
-        });
-        setTimeout(() => {
-           sensor.unsubscribeBarometer();
-           done();
-        }, 1000);
+		try{
+		   sensor.getSingleSensor(sensor.subscribeBarometer ,(error, data) => {	        
+				sensor.subscribeBarometer({
+					success: function (data) {
+						console.info("subscribeBarometer_SensorJsTest002 success:" + JSON.stringify(data));
+						expect(typeof (data.pressure)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.error('subscribeBarometer_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
+						expect(code).assertEqual(1001);
+					},
+				});
+				sensor.subscribeBarometer({
+					success: function (data) {
+						console.info("subscribeBarometer_SensorJsTest002_1 success:" + JSON.stringify(data));
+						expect(typeof (data.pressure)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.error('subscribeBarometer_SensorJsTest002_1 failed. Code: ' + code + '; Data: ' + data);
+						expect(code).assertEqual(1001);
+					},
+				});
+				setTimeout(() => {
+				   sensor.unsubscribeBarometer();
+				   done();
+				}, 1000);
+			})
+		} catch (error) {
+            console.info('subscribeBarometer_SensorJsTest002 Device does not support! ');
+            done();
+        }
     })
-
+	
      /*
      * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0030
      * @tc.name: subscribeBarometer_SensorJsTest003
@@ -113,19 +127,26 @@ describe("SensorJsTest_sensor_26", function () {
      */
     it("subscribeBarometer_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest003---------------------------');
-        sensor.subscribeBarometer({
-            success: function (data) {
-                console.info("subscribeBarometer_SensorJsTest003 success:" + JSON.stringify(data));
-                expect(typeof (data.pressure)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.error('subscribeBarometer_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
-                expect(code).assertEqual(1001);
-            },
-        });
-		setTimeout(() => {
-            sensor.unsubscribeBarometer();
+		try{
+		   sensor.getSingleSensor(sensor.subscribeBarometer ,(error, data) => {	       
+			   sensor.subscribeBarometer({
+					success: function (data) {
+						console.info("subscribeBarometer_SensorJsTest003 success:" + JSON.stringify(data));
+						expect(typeof (data.pressure)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.error('subscribeBarometer_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
+						expect(code).assertEqual(1001);
+					},
+				});
+				setTimeout(() => {
+					sensor.unsubscribeBarometer();
+					done();
+				}, 500);
+			})
+		} catch (error) {
+            console.info('subscribeBarometer_SensorJsTest003 Device does not support! ');
             done();
-        }, 500);
-    })
+        }
+    })			
 })}

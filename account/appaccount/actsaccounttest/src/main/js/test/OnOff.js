@@ -60,6 +60,7 @@ export default function ActsAccountChangeOnOff() {
         */
         it('ActsAccountChangeOnOff_0100', 0, async function (done) {
             testInit();
+            await sleep(1000);
             console.debug("====>ActsAccountChangeOnOff_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -129,6 +130,7 @@ export default function ActsAccountChangeOnOff() {
         */
         it('ActsAccountChangeOnOff_0200', 0, async function (done) {
             testInit();
+            await sleep(1000);
             console.debug("====>ActsAccountChangeOnOff_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -193,6 +195,7 @@ export default function ActsAccountChangeOnOff() {
         */
         it('ActsAccountChangeOnOff_0300', 0, async function (done) {
             testInit();
+            await sleep(1000);
             console.debug("====>ActsAccountChangeOnOff_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -257,6 +260,7 @@ export default function ActsAccountChangeOnOff() {
         */
         it('ActsAccountChangeOnOff_0400', 0, async function (done) {
             testInit();
+            await sleep(1000);
             console.debug("====>ActsAccountChangeOnOff_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -325,6 +329,7 @@ export default function ActsAccountChangeOnOff() {
         */
         it('ActsAccountChangeOnOff_0500', 0, async function (done) {
             testInit();
+            await sleep(1000);
             console.debug("====>ActsAccountChangeOnOff_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -384,6 +389,7 @@ export default function ActsAccountChangeOnOff() {
         */
         it('ActsAccountChangeOnOff_0600', 0, async function (done) {
             testInit();
+            await sleep(1000);
             console.debug("====>ActsAccountChangeOnOff_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -456,6 +462,7 @@ export default function ActsAccountChangeOnOff() {
         */
         it('ActsAccountChangeOnOff_0700', 0, async function (done) {
             testInit();
+            await sleep(1000);
             console.debug("====>ActsAccountChangeOnOff_0700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -520,6 +527,7 @@ export default function ActsAccountChangeOnOff() {
         it('ActsAccountChangeOnOff_0800', 0, async function (done) {
             console.debug("====>ActsAccountChangeOnOff_0800 start====");
             let dataMap = new Map();
+            await sleep(1000);
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
             console.debug("====>add account ActsAccountChangeOnOff_0800 start");
@@ -575,6 +583,7 @@ export default function ActsAccountChangeOnOff() {
         it('ActsAccountChangeOnOff_0900', 0, async function (done) {
             console.debug("====>ActsAccountChangeOnOff_0900 start====");
             let dataMap = new Map();
+            await sleep(1000);
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
             console.debug("====>add first account ActsAccountChangeOnOff_0900 start");
@@ -642,6 +651,7 @@ export default function ActsAccountChangeOnOff() {
             console.debug("====>ActsAccountChangeOnOff_1000 start====");
             let dataMapFir = new Map();
             let dataMapSec = new Map();
+            await sleep(1000);
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
             console.debug("====>add account ActsAccountChangeOnOff_1000 start");
@@ -718,6 +728,7 @@ export default function ActsAccountChangeOnOff() {
         it('ActsAccountChangeOnOff_1100', 0, async function (done) {
             console.debug("====>ActsAccountChangeOnOff_1100 start====");
             let dataMap = new Map();
+            await sleep(1000);
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
             console.debug("====>add account ActsAccountChangeOnOff_1100 start");
@@ -778,6 +789,7 @@ export default function ActsAccountChangeOnOff() {
         it('ActsAccountChangeOnOff_1200', 0, async function (done) {
             console.debug("====>ActsAccountChangeOnOff_1200 start====");
             let dataMap = new Map();
+            await sleep(1000);
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
             console.debug("====>add account ActsAccountChangeOnOff_1200 start");
@@ -838,6 +850,7 @@ export default function ActsAccountChangeOnOff() {
         */
         it('ActsAccountChangeOnOff_1300', 0, async function (done) {
             console.debug("====>ActsAccountChangeOnOff_1300 start====");
+            await sleep(1000);
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
             console.debug("====>add account ActsAccountChangeOnOff_1300 start");
@@ -884,6 +897,7 @@ export default function ActsAccountChangeOnOff() {
         */
         it('ActsAccountChangeOnOff_1400', 0, async function (done) {
             console.debug("====>ActsAccountChangeOnOff_1400 start====");
+            await sleep(1000);
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
             console.debug("====>add account ActsAccountChangeOnOff_1400 start");

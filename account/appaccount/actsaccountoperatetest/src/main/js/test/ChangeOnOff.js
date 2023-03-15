@@ -60,6 +60,7 @@ export default function ActsAccountOnOff() {
         */
         it('ActsAccountOnOff_0300', 0, async function (done) {
             testInit();
+	    await sleep(500);
             console.debug("====>ActsAccountOnOff_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -124,6 +125,7 @@ export default function ActsAccountOnOff() {
         */
         it('ActsAccountOnOff_0400', 0, async function (done) {
             testInit();
+	    await sleep(500);
             console.debug("====>ActsAccountOnOff_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -192,6 +194,7 @@ export default function ActsAccountOnOff() {
         */
         it('ActsAccountOnOff_0500', 0, async function (done) {
             testInit();
+	    await sleep(500);
             console.debug("====>ActsAccountOnOff_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -251,6 +254,7 @@ export default function ActsAccountOnOff() {
         */
         it('ActsAccountOnOff_0600', 0, async function (done) {
             testInit();
+	    await sleep(500);
             console.debug("====>ActsAccountOnOff_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");

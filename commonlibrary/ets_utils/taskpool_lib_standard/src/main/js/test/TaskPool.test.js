@@ -908,6 +908,23 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
+    it('TaskPoolTestClass061', 0,  async function (done) {
+        function Sum(value1, value2) {
+          "use concurrent"
+          return value1 + value2;
+        }
+        var task1 = new taskpool.Task(Sum, 10, 20);
+        var task2 = new taskpool.Task(Sum, 30, 40);
+        var task3 = new taskpool.Task(Sum, 50, 60);
+        var result1 = await taskpool.execute(task1,taskpool.Priority.LOW);
+        var result2 = await taskpool.execute(task2,taskpool.Priority.HIGH);
+        var result3 = await taskpool.execute(task3,taskpool.Priority.MEDIUM);
+        expect(result1).assertEqual(30);
+        expect(result2).assertEqual(70);
+        expect(result3).assertEqual(110);
+        done();
+    })
+
     /**
      * @tc.number    : TaskPoolTestClass049
      * @tc.name      : Async Function Cancel task
