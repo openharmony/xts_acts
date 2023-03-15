@@ -1,6 +1,7 @@
 {
     "app": {
       "bundleName": "com.example.startAbilityForResult.hmservice",
+      "bundleType": "atomicService",
       "vendor": "example",
       "versionCode": 1000000,
       "versionName": "1.0.0",
@@ -11,10 +12,9 @@
       "keepAlive": true,
       "singleUser": true,
       "minAPIVersion": 9,
-      "targetAPIVersion": 9,  
+      "targetAPIVersion": 9,
       "targetBundleList": [
         "com.example.qianyiyingyong.hmservice"
       ]
     }
   }
-  
