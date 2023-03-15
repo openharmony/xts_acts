@@ -1,6 +1,7 @@
 {
   "app": {
     "bundleName": "com.example.qianyiyingyong.hmservice",
+    "bundleType": "atomicService",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
@@ -11,7 +12,7 @@
     "keepAlive": true,
     "singleUser": true,
     "minAPIVersion": 9,
-    "targetAPIVersion": 9,  
+    "targetAPIVersion": 9,
 	"car": {
         "apiCompatibleVersion": 9,
         "singleUser": false
