@@ -27,10 +27,6 @@
     "pages/ArkUI/CanvasLineDashOffset",
     "pages/ArkUI/CanvasShadowOffsetY",
     "pages/Camera/Camera_index",
-    "pages/Camera/CameraOrientation0",
-    "pages/Camera/CameraOrientation90",
-    "pages/Camera/CameraOrientation180",
-    "pages/Camera/CameraOrientation270",
     "pages/Camera/CameraFormat",
     "pages/Camera/CameraVideo",
     "pages/Audio/Audio_index",
@@ -39,6 +35,8 @@
     "pages/Player/ScrollListTest",
     "pages/Experience/Experience_index",
     "pages/Experience/PhotoFps",
-    "pages/Experience/DeskFps"
+    "pages/Experience/DeskFps",
+    "pages/Experience/ColdStartTest",
+    "pages/Experience/HotStartTest"
   ]
 }

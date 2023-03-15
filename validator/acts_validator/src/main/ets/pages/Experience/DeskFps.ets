@@ -83,11 +83,26 @@ struct CustomContainerUser {
                   let buf = new ArrayBuffer(4096);
                   fileio.readSync(fd,buf);
                   let report = String.fromCharCode.apply(null,new Uint8Array(buf));
-                  let head = report.indexOf(':');
+                  let headList = new Array();
+                  let endList = new Array();
+                  let head = report.indexOf(":");
                   let end = report.indexOf('|');
-                  this.Fps = report.substring(head+1,end);
-                  let num = Number(this.Fps)
-                  if(num >= 54 ) {
+                  let Fps = new Array();
+
+                  while(head > -1){
+                    headList.push(head);
+                    head = report.indexOf(":",head + 1);
+                  }
+                  while(end > -1){
+                    endList.push(end);
+                    end = report.indexOf("|",end + 1);
+                  }
+                  for(let i = 0; i < headList.length; i++) {
+                    Fps[i] = Number(report.substring(headList[i]+1,endList[i]));
+                  }
+                  let maxFps = Math.max(...Fps);
+                  this.Fps = maxFps.toString();
+                  if(maxFps >= 54) {
                     this.Vue = true;
                   }
                 })
