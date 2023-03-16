@@ -15,6 +15,7 @@ group("componentUxTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "ace_ets_component_checkbox:ActsAceCheckboxTest",
       "ace_ets_component_select:ActsAceSelectTest",
       "ace_ets_component_sidebar:ActsAceSideBarTest",
     ]
