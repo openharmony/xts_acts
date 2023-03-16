@@ -35,7 +35,7 @@ struct SetCircle {
           .gesture(
           PanGesture({})
             .onActionStart((event: GestureEvent) => {
-              this.context.clearRect(10, 50, 400, 300);
+              this.context.clearRect(0, 0, 600, 500);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 100, 100);
               console.info('Pan start');
@@ -48,8 +48,10 @@ struct SetCircle {
               console.info('Pan end');
             })
           )
+      }.width('70%').height('25%')
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Text('阴影模糊: ' + this.X )
-      }.width('70%').height('30%')
+      }.width('100%').height('20%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
@@ -61,7 +63,7 @@ struct SetCircle {
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 100, 100);
           })
-      }.width('100%').height('70%')
+      }.width('100%').height('55%')
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

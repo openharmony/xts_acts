@@ -15,7 +15,6 @@
     "pages/ArkUI/CanvasStrokeStyle",
     "pages/ArkUI/CanvasLineCap",
     "pages/ArkUI/CanvasLineJoin",
-    "pages/ArkUI/CanvasMiterLimit",
     "pages/ArkUI/CanvasFont",
     "pages/ArkUI/CanvasTextAlign",
     "pages/ArkUI/CanvasTextBaseline",
@@ -37,6 +36,13 @@
     "pages/Experience/PhotoFps",
     "pages/Experience/DeskFps",
     "pages/Experience/ColdStartTest",
-    "pages/Experience/HotStartTest"
+    "pages/Experience/HotStartTest",
+    "pages/Experience/ViewPhotoTest",
+    "pages/Experience/KeyboardDisplayTest",
+    "pages/Experience/StartTaskManager",
+    "pages/Experience/StartBackgroundTask",
+    "pages/Experience/StartNotification",
+    "pages/Experience/ScrollPhotosList",
+    "pages/Experience/KeyboardInputTest"
   ]
 }

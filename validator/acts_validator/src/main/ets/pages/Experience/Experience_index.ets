@@ -43,6 +43,13 @@ struct IndexPage {
     {title:'PhotoFps',uri:'pages/Experience/PhotoFps'},
     {title:'ColdStart',uri:'pages/Experience/ColdStartTest'},
     {title:'HotStart',uri:'pages/Experience/HotStartTest'},
+    {title:'ViewPhoto',uri:'pages/Experience/ViewPhotoTest'},
+    {title:'KeyboardDisplay',uri:'pages/Experience/KeyboardDisplayTest'},
+    {title:'StartTaskManager',uri:'pages/Experience/StartTaskManager'},
+    {title:'StartBackgroundTask',uri:'pages/Experience/StartBackgroundTask'},
+    {title:'StartNotification',uri:'pages/Experience/StartNotification'},
+    {title:'ScrollPhotosList',uri:'pages/Experience/ScrollPhotosList'},
+    {title:'KeyboardInput',uri:'pages/Experience/KeyboardInputTest'},
   ]
   @State ColorObject : string[] = VarColor;
   async onPageShow(){

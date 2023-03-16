@@ -19,11 +19,11 @@ import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
-let SettingsColdPath = path + '/coldStartSettings.log';
-let PhotosColdPath = path + '/coldStartPhotos.log';
-let MmsColdPath = path + '/coldStartMms.log';
-let CameraColdPath = path + '/coldStartCamera.log';
-let ContactsColdPath = path + '/coldStartContacts.log';
+let SettingsColdPath = path + '/ColdStartSetting.log';
+let PhotosColdPath = path + '/ColdStartPhotos.log';
+let MmsColdPath = path + '/ColdStartMms.log';
+let CameraColdPath = path + '/ColdStartCamera.log';
+let ContactsColdPath = path + '/ColdStartContacts.log';
 @Entry
 @Component
 struct CustomContainerUser {
