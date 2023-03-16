@@ -13,10 +13,7 @@
         "singleUser":true,
         "minAPIVersion":9,
         "targetAPIVersion":9,
-        "atomicService":{
-            "split":true,
-            "main":"testModule"
-        },
+        "bundleType": "atomicService",
         "car":{
             "apiCompatibleVersion":9,
             "singleUser":false
