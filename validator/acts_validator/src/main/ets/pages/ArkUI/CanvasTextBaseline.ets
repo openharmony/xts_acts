@@ -23,6 +23,11 @@ struct SetCircle {
   @State name: string = 'CanvasTextBaseline';
   @State StepTips: string = '操作步骤：点击不同的水平对齐方式'+'\n'+'预期结果：原本默认水平对齐方式会随点击变化';
   @State Vue: boolean = false;
+  @State num1: number = 0;
+  @State num2: number = 0;
+  @State num3: number = 0;
+  @State num4: number = 0;
+  @State num5: number = 0;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -31,7 +36,7 @@ struct SetCircle {
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
         Text('Top').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300);
+            this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
             this.context.lineWidth = 2;
             this.context.moveTo(0, 120);
@@ -39,11 +44,14 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'top';
             this.context.fillText('Top', 160, 120);
-            this.Vue = true;
+            this.num1 = 1;
+            if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
+              this.Vue = true;
+            }
           })
         Text('Bottom').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300);
+            this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
             this.context.lineWidth = 2;
             this.context.moveTo(0, 120);
@@ -51,11 +59,14 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'bottom';
             this.context.fillText('Bottom', 160, 120);
-            this.Vue = true;
+            this.num2 = 1;
+            if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
+              this.Vue = true;
+            }
           })
         Text('Middle').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300);
+            this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
             this.context.lineWidth = 2;
             this.context.moveTo(0, 120);
@@ -63,11 +74,14 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'middle';
             this.context.fillText('Middle', 160, 120);
-            this.Vue = true;
+            this.num3 = 1;
+            if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
+              this.Vue = true;
+            }
           })
         Text('Alphabetic').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
-            this.context.clearRect(0, 10, 350, 300);
+            this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
             this.context.lineWidth = 2;
             this.context.moveTo(0, 120);
@@ -75,11 +89,14 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'alphabetic';
             this.context.fillText('Alphabetic', 160, 120);
-            this.Vue = true;
+            this.num4 = 1;
+            if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
+              this.Vue = true;
+            }
           })
         Text('Hanging').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=> {
-            this.context.clearRect(0, 10, 350, 300);
+            this.context.clearRect(0, 10, 500, 500);
             this.context.strokeStyle = '#0000ff';
             this.context.lineWidth = 2;
             this.context.moveTo(0, 120);
@@ -87,7 +104,10 @@ struct SetCircle {
             this.context.stroke();
             this.context.textBaseline = 'hanging';
             this.context.fillText('Hanging', 160, 120);
-            this.Vue = true;
+            this.num5 = 1;
+            if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
+              this.Vue = true;
+            }
           })
       }.width('90%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {

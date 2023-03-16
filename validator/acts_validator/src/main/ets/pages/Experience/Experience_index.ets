@@ -41,6 +41,15 @@ struct IndexPage {
   private TestCaseList = [
     {title:'DeskFps',uri:'pages/Experience/DeskFps'},
     {title:'PhotoFps',uri:'pages/Experience/PhotoFps'},
+    {title:'ColdStart',uri:'pages/Experience/ColdStartTest'},
+    {title:'HotStart',uri:'pages/Experience/HotStartTest'},
+    {title:'ViewPhoto',uri:'pages/Experience/ViewPhotoTest'},
+    {title:'KeyboardDisplay',uri:'pages/Experience/KeyboardDisplayTest'},
+    {title:'StartTaskManager',uri:'pages/Experience/StartTaskManager'},
+    {title:'StartBackgroundTask',uri:'pages/Experience/StartBackgroundTask'},
+    {title:'StartNotification',uri:'pages/Experience/StartNotification'},
+    {title:'ScrollPhotosList',uri:'pages/Experience/ScrollPhotosList'},
+    {title:'KeyboardInput',uri:'pages/Experience/KeyboardInputTest'},
   ]
   @State ColorObject : string[] = VarColor;
   async onPageShow(){
@@ -271,30 +280,29 @@ struct IndexPage {
       }
       let TestNum = FailNum + PassNum;
       let testNum = (TestNum).toString();
-      let ignoreNum = (24-TestNum).toString();
       let arrayBuffer = new ArrayBuffer(40960);
       let bufView = new DataView(arrayBuffer);
       let serializer = new xml.XmlSerializer(bufView);
       serializer.setDeclaration();
       serializer.startElement("testsuite");
       serializer.setAttributes("name","ActsExperienceTest");
-      serializer.setAttributes("time", "");
+      serializer.setAttributes("time", "*");
       serializer.setAttributes("errors", "0");
       serializer.setAttributes("disabled", "0");
       serializer.setAttributes("failures", failNum);
       serializer.setAttributes("ignored", "0");
       serializer.setAttributes("tests", testNum);
-      serializer.setAttributes("message", "");
+      serializer.setAttributes("message", "*");
       serializer.setAttributes("modulename", "ActsExperienceTest");
       for (let i = 0; i < title.length; i++) {
         serializer.startElement("testcase");
         serializer.setAttributes("name", String(title[i]));
-        serializer.setAttributes("status", "");
-        serializer.setAttributes("time", "");
-        serializer.setAttributes("classname", "");
+        serializer.setAttributes("status", "*");
+        serializer.setAttributes("time", "*");
+        serializer.setAttributes("classname", "*");
         serializer.setAttributes("result", String(result[i]));
-        serializer.setAttributes("level", "");
-        serializer.setAttributes("message", "");
+        serializer.setAttributes("level", "*");
+        serializer.setAttributes("message", "*");
         serializer.endElement();
       }
       serializer.endElement();
