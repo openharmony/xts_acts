@@ -190,7 +190,7 @@ export default function relationalStoreTest(context){
                 name: "secure.db",
                 securityLevel: dataRdb.SecurityLevel.S2
             }
-            dataRdb.getRdbStore(this.context, config,async (err,data) => {
+            dataRdb.getRdbStore(context, config,async (err,data) => {
                 if(err != null){
                     console.info(TAG + "get rdb store error")
                     expect(null).assertFail();
