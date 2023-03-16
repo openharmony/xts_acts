@@ -22,7 +22,7 @@ import osAccount from '@ohos.account.osAccount'
 var PermissionFlag = {
     PERMISSION_USER_SET: 1,
     PERMISSION_USER_FIXED: 2,
-    PERMISSION_SYSTEM_FIXED: 3
+    PERMISSION_SYSTEM_FIXED: 4
 };
 
 var GrantStatus = {
@@ -42,7 +42,7 @@ export default function AccessTokenTest() {
 describe('AccessTokenTest', function () {
     console.info('##########start AccessTokenTest');
     beforeAll(async function (done){
-        var accountManager = osAccount.getAccountManager();  
+        var accountManager = osAccount.getAccountManager();
         var userId = await accountManager.getOsAccountLocalIdFromProcess();
         var appInfo = await bundle.getApplicationInfo('ohos.acts.security.access_token.normal', 0, userId);
         tokenID = appInfo.accessTokenId;
