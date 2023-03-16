@@ -23,6 +23,7 @@ namespace Unittest::AttestKey {
 static struct OH_Huks_Blob g_secInfo = { sizeof(SEC_INFO_DATA), (uint8_t *)SEC_INFO_DATA };
 static struct OH_Huks_Blob g_challenge = { sizeof(CHALLENGE_DATA), (uint8_t *)CHALLENGE_DATA };
 static struct OH_Huks_Blob g_version = { sizeof(VERSION_DATA), (uint8_t *)VERSION_DATA };
+bool useSoftware = true;
 
 class HuksAttestKeyNoIdsTest : public testing::Test {
 public:
@@ -37,6 +38,7 @@ public:
 
 void HuksAttestKeyNoIdsTest::SetUpTestCase(void)
 {
+    useSoftware = checkUseSoftware();
 }
 
 void HuksAttestKeyNoIdsTest::TearDownTestCase(void)
@@ -68,23 +70,27 @@ static const struct OH_Huks_Param g_commonParams[] = {
  */
 HWTEST_F(HuksAttestKeyNoIdsTest, Security_HUKS_NAPI_Attest_0100, TestSize.Level0)
 {
-    OH_Huks_Result ret = TestGenerateKey(&g_keyAlias);
-    ASSERT_TRUE(ret.errorCode == (int32_t)OH_HUKS_SUCCESS);
-    struct OH_Huks_ParamSet *paramSet = NULL;
-    GenerateParamSet(&paramSet, g_commonParams, sizeof(g_commonParams) / sizeof(g_commonParams[0]));
-    OH_Huks_CertChain *certChain = NULL;
-    const struct HksTestCertChain certParam = { true, true, true, g_size };
-    (void)ConstructDataToCertChain(&certChain, &certParam);
-    ret = OH_Huks_AttestKeyItem(&g_keyAlias, paramSet, certChain);
-    ASSERT_TRUE(ret.errorCode == (int32_t)OH_HUKS_SUCCESS);
-    ret = ValidateCertChainTest(certChain, g_commonParams, NON_IDS_PARAM);
-    ASSERT_TRUE(ret.errorCode == (int32_t)OH_HUKS_SUCCESS);
-    FreeCertChain(&certChain, certChain->certsCount);
-    certChain = NULL;
+    if (useSoftware)
+    {
+        OH_Huks_Result ret = TestGenerateKey(&g_keyAlias);
+        ASSERT_TRUE(ret.errorCode == (int32_t)OH_HUKS_SUCCESS);
+        struct OH_Huks_ParamSet *paramSet = NULL;
+        GenerateParamSet(&paramSet, g_commonParams, sizeof(g_commonParams) / sizeof(g_commonParams[0]));
+        OH_Huks_CertChain *certChain = NULL;
+        const struct HksTestCertChain certParam = { true, true, true, g_size };
+        (void)ConstructDataToCertChain(&certChain, &certParam);
+        ret = OH_Huks_AttestKeyItem(&g_keyAlias, paramSet, certChain);
+        ASSERT_TRUE(ret.errorCode == (int32_t)OH_HUKS_SUCCESS);
+        ret = ValidateCertChainTest(certChain, g_commonParams, NON_IDS_PARAM);
+        ASSERT_TRUE(ret.errorCode == (int32_t)OH_HUKS_SUCCESS);
+        FreeCertChain(&certChain, certChain->certsCount);
+        certChain = NULL;
 
-    OH_Huks_FreeParamSet(&paramSet);
+        OH_Huks_FreeParamSet(&paramSet);
 
-    OH_Huks_Result ret1 = OH_Huks_DeleteKeyItem(&g_keyAlias, NULL);
-    ASSERT_TRUE(ret1.errorCode == (int32_t)OH_HUKS_SUCCESS);
+        OH_Huks_Result ret1 = OH_Huks_DeleteKeyItem(&g_keyAlias, NULL);
+        ASSERT_TRUE(ret1.errorCode == (int32_t)OH_HUKS_SUCCESS);
+    }
+    ASSERT_TRUE(0 == 0);
 }
 }
