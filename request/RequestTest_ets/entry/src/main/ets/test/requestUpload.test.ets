@@ -49,13 +49,6 @@ export default function requestUploadJSUnit() {
       console.info('====>afterAll: Test suite-level cleanup condition is executed');
     });
 
-    /**
-    * sleep function.
-    */
-    function sleep(date, time){
-      while(Date.now() - date <= time);
-    }
-
     let uploadTask;
     let RequestData = {
       name: 'name',
@@ -265,11 +258,9 @@ export default function requestUploadJSUnit() {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_CALLBACK_0001 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 uploadConfig = " + JSON.stringify(uploadConfig));
-        request.upload(uploadConfig, (err, data) => {
-          uploadTask = data;
+        request.upload(uploadConfig, (err, uploadTask) => {
           console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 progress uploadTask =" + JSON.stringify(uploadTask));
           expect(uploadTask != undefined).assertEqual(true);
-
           uploadTask.on('progress', function (data1, data2) {
             console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 on data1 =" + data1);
             console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 on data2 =" + data2);
@@ -282,15 +273,15 @@ export default function requestUploadJSUnit() {
 
           uploadTask.remove((err, data) => {
             console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 remove =" + data);
+            expect(data).assertEqual(true);
+            console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_CALLBACK_0001 end-----------------------");
+            done();
           });
         });
       } catch (err) {
         console.error("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 error: " + err);
         expect().assertFail();
       }
-      sleep(Date.now(), 20000);
-      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_CALLBACK_0001 end-----------------------");
-      done();
     });
 
    /**
@@ -305,33 +296,30 @@ export default function requestUploadJSUnit() {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 is starting-----------------------");
       try {
         console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0001 UploadConfig = " + JSON.stringify(uploadConfig));
-        request.upload(uploadConfig).then((data) => {
-          uploadTask = data;
+        request.upload(uploadConfig).then((uploadTask) => {
           console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0001 uploadTask = " + uploadTask);
-          expect(true).assertEqual((uploadTask != undefined) || (uploadTask != "") || (uploadTask != {}));
-
+          expect(true).assertEqual((uploadTask != undefined));
           uploadTask.on('headerReceive', (header) => {
             console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0001 header = " + header);
-            expect(true).assertEqual((header != undefined) || (header != "") || (header != {}));
+             expect(true).assertEqual((header != {} || header != undefined));
           });
 
           uploadTask.off('headerReceive', (header) => {
             console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0001 header = " + header);
-            expect(true).assertEqual((header != undefined) || (header != "") || (header != {}));
+             expect(true).assertEqual((header != {} || header != undefined));
           });
 
           uploadTask.remove().then((result)=>{
             console.info("====>SUB_REQUEST_UPLOAD_API_PROMISE_0001 remove result = " + result);
             expect(result).assertEqual(true);
+            console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 end-----------------------");
+            done();
           });
         });
       } catch (e) {
         console.error("====>SUB_REQUEST_UPLOAD_API_PROMISE_0001 error: " + JSON.stringify(e));
         expect(true).assertFail(true);
       }
-      sleep(Date.now(), 20000);
-      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 end-----------------------");
-      done();
     });
   })
 }
