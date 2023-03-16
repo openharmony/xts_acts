@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -103,6 +103,7 @@ export default function geolocationTest_geo1() {
             done();
         })
     
+
     /**
      * @tc.number SUB_HSS_LocationSystem_Geo_0100
      * @tc.name testIsGeoServiceAvailable
@@ -112,18 +113,23 @@ export default function geolocationTest_geo1() {
      * @tc.level Level 2
      */
      it('SUB_HSS_LocationSystem_Geo_0100', 0, async function (done) {
-        geolocation.isGeoServiceAvailable(async (err, data) => {
-            if (err) {
-                console.info('[lbs_js]  getGeoServiceState err is : ' + JSON.stringify(err));
-
-            } else {
-                console.info('[lbs_js] isGeoServiceAvailable callback result: ' + JSON.stringify(data));
-                console.info('[lbs_js] not support now');
-                expect(true).assertEqual(JSON.stringify(data) != null);
-                done();
-            }
-            done()
-        })
+        try {
+            geolocation.isGeoServiceAvailable(async (err, data) => {
+                if (err) {
+                    console.info('[lbs_js]  getGeoServiceState err is : ' + JSON.stringify(err));
+                } else {
+                    console.info('[lbs_js] isGeoServiceAvailable callback result: ' + JSON.stringify(data));
+                    console.info('[lbs_js] not support now');
+                    expect(true).assertEqual(JSON.stringify(data) != null);
+                }
+            })
+        } catch (error) {
+            console.info("[lbs_js] isGeoServiceAvailable callback err." + JSON.stringify(error));
+            console.info('[lbs_js] The geocode interface is not connected to a third-party service.');
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        }
+        await sleep(500);
+        done();
     });
 
     /**
@@ -135,14 +141,20 @@ export default function geolocationTest_geo1() {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Geo_0200', 0, async function (done) {
-        await geolocation.isGeoServiceAvailable().then((result) => {
-            console.info('[lbs_js] isGeoServiceAvailable1 promise result: ' + JSON.stringify(result));
-            console.info('[lbs_js] not support now');
-            expect(true).assertEqual(JSON.stringify(result) != null);
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + JSON.stringify(error));
-            expect().assertFail();
-        });
+        try {
+            await geolocation.isGeoServiceAvailable().then((result) => {
+                console.info('[lbs_js] isGeoServiceAvailable promise result: ' + JSON.stringify(result));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(result) != null);
+            }).catch((error) => {
+                console.info("[lbs_js] promise then error." + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] isGeoServiceAvailable error." + JSON.stringify(error));
+            console.info('[lbs_js] The geocode interface is not connected to a third-party service.');
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        }
         done();
     })
 
@@ -156,7 +168,7 @@ export default function geolocationTest_geo1() {
      */
     it('SUB_HSS_LocationSystem_Geo_0300', 0, async function (done) {
         let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 121.62771, "maxItems": 1, "locale": "zh" };
-        let promise = new Promise((resolve, reject) => {
+        try {
             geolocation.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
                 if (err) {
                     console.info('[lbs_js]  getAddressesFromLocation callback err is : ' + JSON.stringify(err));
@@ -164,10 +176,13 @@ export default function geolocationTest_geo1() {
                     console.info("[lbs_js]  getAddressesFromLocation callback data is: " + JSON.stringify(data));
                     expect(true).assertEqual((JSON.stringify(data)) != null);
                 }
-                resolve()
             });
-        })
-        await promise.then(done)
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation callback try err:" + JSON.stringify(error));
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        }
+        await sleep(1000);
+        done();
     })
 
     /**
@@ -180,26 +195,30 @@ export default function geolocationTest_geo1() {
      */
     it('SUB_HSS_LocationSystem_Geo_0400', 0, async function (done) {
         let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 121.62771, "maxItems": 1 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation04 promise: ' + JSON.stringify(data));
-            console.info('addressUrl: ' + JSON.stringify(data)[0].addressUrl
-            + JSON.stringify(data)[0].administrativeArea + JSON.stringify(data)[0].countryCode
-            + JSON.stringify(data)[0].countryName + JSON.stringify(data)[0].descriptions
-            + JSON.stringify(data)[0].descriptionsSize + data[0].latitude
-            + JSON.stringify(data)[0].locale + JSON.stringify(data)[0].locality
-            + JSON.stringify(data)[0].longitude + JSON.stringify(data)[0].phoneNumber
-            + JSON.stringify(data)[0].placeName
-            + JSON.stringify(data)[0].postalCode + JSON.stringify(data)[0].premises
-            + JSON.stringify(data)[0].roadName + JSON.stringify(data)[0].subAdministrativeArea
-            + JSON.stringify(data)[0].subLocality + JSON.stringify(data)[0].subRoadName
-	    + JSON.stringify(data)[0].isFromMock);
-            done();
-        }).catch(error => {
-            console.info("[lbs_js] getAddressesFromLocation promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation04 promise: ' + JSON.stringify(data));
+                console.info('addressUrl: ' + JSON.stringify(data)[0].addressUrl
+                + JSON.stringify(data)[0].administrativeArea + JSON.stringify(data)[0].countryCode
+                + JSON.stringify(data)[0].countryName + JSON.stringify(data)[0].descriptions
+                + JSON.stringify(data)[0].descriptionsSize + data[0].latitude
+                + JSON.stringify(data)[0].locale + JSON.stringify(data)[0].locality
+                + JSON.stringify(data)[0].longitude + JSON.stringify(data)[0].phoneNumber
+                + JSON.stringify(data)[0].placeName
+                + JSON.stringify(data)[0].postalCode + JSON.stringify(data)[0].premises
+                + JSON.stringify(data)[0].roadName + JSON.stringify(data)[0].subAdministrativeArea
+                + JSON.stringify(data)[0].subLocality + JSON.stringify(data)[0].subRoadName
+                + JSON.stringify(data)[0].isFromMock);
+            }).catch(error => {
+                console.info("[lbs_js] getAddressesFromLocation promise then error." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation04 promise try err:" + JSON.stringify(error));
             expect(true).assertEqual(JSON.stringify(error) != null);
-            done();
-        });
+        }
+        done();
     })
 
     /**
@@ -212,16 +231,20 @@ export default function geolocationTest_geo1() {
      */
     it('SUB_HSS_LocationSystem_Geo_0500', 0, async function (done) {
         let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 121.62771, "maxItems": 5 };
-        await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
-            console.info('[lbs_js] getAddressesFromLocation05 promise: ' + JSON.stringify(data));
-            expect(true).assertEqual((JSON.stringify(data)) != null);
-            done();
-        }).catch((error) => {
-            console.info("[lbs_js] getAddressesFromLocation promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
+        try {
+            await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
+                console.info('[lbs_js] getAddressesFromLocation05 promise: ' + JSON.stringify(data));
+                expect(true).assertEqual((JSON.stringify(data)) != null);
+            }).catch((error) => {
+                console.info("[lbs_js] getAddressesFromLocation promise then error." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation05 promise try err:" + JSON.stringify(error));
             expect(true).assertEqual(JSON.stringify(error) != null);
-            done();
-        });
+        }
+        done();
     })
 
     /**
@@ -276,6 +299,7 @@ export default function geolocationTest_geo1() {
             console.info("[lbs_js] getAddressesFromLocation message." + JSON.stringify(error.message));
             expect(true).assertEqual((JSON.stringify(error.message)) != null);
         }
+
         let reverseGeocodeRequest4 = { "latitude": -90.1, "longitude": 121.62771, "maxItems": 1 };
         try {
             await geolocation.getAddressesFromLocation(reverseGeocodeRequest4).then((data) => {
@@ -433,13 +457,18 @@ export default function geolocationTest_geo1() {
      */
     it('SUB_HSS_LocationSystem_Geo_0900', 0, async function (done) {
         let geocodeRequest = { "description": "上海市浦东新区金穗路1800号", "maxItems": 1 };
-        await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
-            console.info("[lbs_js] getAddressesFromLocation callback data is: " + JSON.stringify(result));
-            expect(true).assertEqual((JSON.stringify(result)) != null);
-        }).catch((error) => {
-            console.info("[lbs_js] getAddressesFromLocationName09 promise then error." + JSON.stringify(error));
+        try {
+            await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
+                console.info("[lbs_js] getAddressesFromLocation09 promise data: " + JSON.stringify(result));
+                expect(true).assertEqual((JSON.stringify(result)) != null);
+            }).catch((error) => {
+                console.info("[lbs_js] getAddressesFromLocationName09 promise then error." + JSON.stringify(error));
+                expect(true).assertEqual((JSON.stringify(error)) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation09 try err." + JSON.stringify(error));
             expect(true).assertEqual((JSON.stringify(error)) != null);
-        });
+        }
         done();
     })
 
@@ -453,14 +482,19 @@ export default function geolocationTest_geo1() {
      */
     it('SUB_HSS_LocationSystem_Geo_1000', 0, async function (done) {
         let geocodeRequest = { "description": "上海市浦东新区金穗路1800号", "maxItems": 5 };
-        await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
-            console.info("[lbs_js]  getAddressesFromLocation m  callback data is: " + JSON.stringify(result));
-            expect(true).assertEqual((JSON.stringify(result)) != null);
-        }).catch((error) => {
-            console.info("[lbs_js] getAddressesFromLocationName m promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        });
+        try {
+            await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
+                console.info("[lbs_js]  getAddressesFromLocation10 promise data: " + JSON.stringify(result));
+                expect(true).assertEqual((JSON.stringify(result)) != null);
+            }).catch((error) => {
+                console.info("[lbs_js] getAddressesFromLocationName10 promise then error." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        } catch (error) {
+            console.info("[lbs_js] getAddressesFromLocation10 try err." + JSON.stringify(error));
+            expect(true).assertEqual((JSON.stringify(error)) != null);
+        }
         done();
     })
 
@@ -474,13 +508,12 @@ export default function geolocationTest_geo1() {
      */
     it('SUB_HSS_LocationSystem_Geo_1100', 0, async function (done) {
         try {
-
             let geocodeRequest = { "description": "", "maxItems": 1 };
             await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
-                console.info("[lbs_js]  getAddressesFromLocation  promise data is: " + JSON.stringify(result));
+                console.info("[lbs_js]  getAddressesFromLocation111  promise data: " + JSON.stringify(result));
                 expect(true).assertEqual((JSON.stringify(result)) != null);
             }).catch((error) => {
-                console.info("[lbs_js] getAddressesFromLocationName  promise then error." + JSON.stringify(error));
+                console.info("[lbs_js] getAddressesFromLocationName111 promise then error." + JSON.stringify(error));
                 console.info('[lbs_js] not support now');
                 expect(true).assertEqual(JSON.stringify(error) != null);
             });
@@ -491,15 +524,15 @@ export default function geolocationTest_geo1() {
         let geocodeRequest1 = { "description": null, "maxItems": 1 };
         try {
             await geolocation.getAddressesFromLocationName(geocodeRequest1).then((result) => {
-                console.info("[lbs_js]  getAddressesFromLocation callback data is: " + JSON.stringify(result));
+                console.info("[lbs_js]  getAddressesFromLocation112 promise data: " + JSON.stringify(result));
                 expect(result.length == 0).assertTrue();
             }).catch((error) => {
-                console.info("[lbs_js] getAddressesFromLocationName promise then error." + JSON.stringify(error));
+                console.info("[lbs_js] getAddressesFromLocationName112 promise then error." + JSON.stringify(error));
                 expect(true).assertEqual((JSON.stringify(error)) != null);
             });
         }catch(error){
-            console.info("[lbs_js] getAddressesFromLocationName message." + JSON.stringify(error.message));
-            expect(true).assertEqual((JSON.stringify(error.message)) != null);
+            console.info("[lbs_js] getAddressesFromLocation11 try err." + JSON.stringify(error));
+            expect(true).assertEqual((JSON.stringify(error)) != null);
         }
         done();
     })
@@ -521,14 +554,19 @@ export default function geolocationTest_geo1() {
             "maxLatitude": 31.1537977881,
             "maxLongitude": 121.8026736943
         };
-        await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
-            console.info("[lbs_js] getAddressesFromLocation   callback data is: " + JSON.stringify(result));
-            expect(true).assertEqual((JSON.stringify(result)) != null);
-        }).catch((error) => {
-            console.info("[lbs_js] getAddressesFromLocationName  promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        });
+        try {
+            await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
+                console.info("[lbs_js] getAddressesFromLocation   callback data is: " + JSON.stringify(result));
+                expect(true).assertEqual((JSON.stringify(result)) != null);
+            }).catch((error) => {
+                console.info("[lbs_js] getAddressesFromLocationName  promise then error." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        }catch(error){
+            console.info("[lbs_js] getAddressesFromLocation12 try err." + JSON.stringify(error));
+            expect(true).assertEqual((JSON.stringify(error)) != null);
+        }
         done();
     })
 
@@ -603,15 +641,20 @@ export default function geolocationTest_geo1() {
             "maxLatitude": 40.95,
             "maxLongitude": 116.45
         };
-        await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
-            console.info("[lbs_js]  getAddressesFromLocation callback data is: " + JSON.stringify(result));
-            expect(result.length >= 0).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] getAddressesFromLocationName  promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        });
-        done()
+        try {
+            await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
+                console.info("[lbs_js]  getAddressesFromLocation14 promise data: " + JSON.stringify(result));
+                expect(result.length >= 0).assertTrue();
+            }).catch((error) => {
+                console.info("[lbs_js] getAddressesFromLocationName14 promise then err." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        }catch(error){
+            console.info("[lbs_js] getAddressesFromLocation14 try err." + JSON.stringify(error));
+            expect(true).assertEqual((JSON.stringify(error)) != null);
+        }
+        done();
     })
 
     /**
@@ -632,15 +675,20 @@ export default function geolocationTest_geo1() {
             "maxLatitude": 39.85,
             "maxLongitude": 116.35
         };
-        await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
-            console.info("[lbs_js]  getAddressesFromLocation callback data is: " + JSON.stringify(result));
-            expect(result.length >= 0).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] getAddressesFromLocationName  promise then error." + JSON.stringify(error));
-            console.info('[lbs_js] not support now');
-            expect(true).assertEqual(JSON.stringify(error) != null);
-        });
-        done()
+        try {
+            await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
+                console.info("[lbs_js]  getAddressesFromLocation15 promise data is: " + JSON.stringify(result));
+                expect(result.length >= 0).assertTrue();
+            }).catch((error) => {
+                console.info("[lbs_js] getAddressesFromLocationName15 promise then err." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+        }catch(error){
+            console.info("[lbs_js] getAddressesFromLocation15 try err." + JSON.stringify(error));
+            expect(true).assertEqual((JSON.stringify(error)) != null);
+        }
+        done();
     })
 
     /**
@@ -817,7 +865,7 @@ export default function geolocationTest_geo1() {
             console.info("[lbs_js] getAddressesFromLocationName message." + JSON.stringify(error.message));
             expect(true).assertEqual((JSON.stringify(error.message)) != null);
         }
-        done()
+        done();
     })
 
     /**

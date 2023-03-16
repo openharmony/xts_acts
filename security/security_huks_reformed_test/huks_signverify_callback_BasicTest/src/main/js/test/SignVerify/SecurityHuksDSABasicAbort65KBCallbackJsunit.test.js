@@ -24,7 +24,7 @@ let useSoftware = true;
 export default function SecurityHuksDSABasicAbort65KBCallbackJsunit() {
   describe('SecurityHuksDSABasicAbort65KBCallbackJsunit', function () {
     beforeAll(async function (done) {
-      useSoftware = checkSoftware();
+      useSoftware = await checkSoftware();
       done();
     })
     it('testReformedSignVerifyDSA004', 0, async function (done) {

@@ -294,7 +294,7 @@ struct Index {
                         case "emitOnProgressChange":{
                             this.isProgressFinish=true
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:"https://www.gitee.com"})
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"});
                             break;
                         }
                         case "emitOnRefreshAccessedHistory":{

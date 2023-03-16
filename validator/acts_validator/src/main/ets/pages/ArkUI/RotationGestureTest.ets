@@ -18,7 +18,7 @@ import FirstDialog from '../model/FirstDialog';
 @Component
 struct RotationGuestureTest {
   @State X: number = 0;
-  @State name: string = 'RotationGuesture';
+  @State name: string = 'RotationGesture';
   @State StepTips: string = '操作步骤：用至少两根手指旋转图像（最多五根手指）'+'\n'+'预期结果：图片能够正常旋转';
   @State Vue: boolean = false;
   async aboutToAppear(){

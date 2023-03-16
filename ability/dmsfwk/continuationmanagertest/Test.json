@@ -5,7 +5,8 @@
         "test-timeout": "1200000",
         "shell-timeout": "1200000",
         "bundle-name": "ohos.acts.distributedschedule.continuationmanager",
-        "package-name": "ohos.acts.distributedschedule.continuationmanager"
+        "package-name": "ohos.acts.distributedschedule.continuationmanager",
+        "testcase-timeout": 60000
     },
     "kits": [
         {
@@ -14,6 +15,14 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602",
+                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
+            ]
         }
     ]
 }

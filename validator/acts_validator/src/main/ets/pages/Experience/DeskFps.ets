@@ -1,0 +1,120 @@
+/*
+ * Copyright (c) 2022-2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import fileio from '@ohos.fileio';
+import {CustomContainer} from '../common/ExperienceCustomContainer';
+import FirstDialog from '../model/FirstDialog';
+import context from '@ohos.app.ability.common';
+
+let abilityContext = getContext(this) as context.UIAbilityContext;
+let path = globalThis.dir;
+let Xpath = path + '/DeskFps.log'
+@Entry
+@Component
+struct CustomContainerUser {
+  @State name: string = 'DeskFps';
+  @State StepTips: string = '操作步骤：根据操作提示滑动系统桌面测试帧率'+'\n'+'预期结果：帧率高于54帧测试通过';
+  @State Vue: boolean = false;
+  @State StartEnable: boolean = true;
+  @State Fps: string = '0';
+  async aboutToAppear(){
+    await FirstDialog.ChooseDialog(this.StepTips,this.name);
+    this.Vue = false;
+  }
+
+  @Builder specificNoParam() {
+    Column() {
+      Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Column(){
+          Row(){
+            Text(`根据以下操作步骤完成测试`+ '\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n')
+              .fontColor(Color.White).fontSize('24fp')
+          }
+          Row(){
+            Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n'
+            + `2.双击执行DeskFps.bat`+ '\n' + '\n' +`3.左右滑动系统桌面连续10s以上` + '\n' + '\n'
+            + '4.回到DeskFps测试项点击停止键' + '\n' + '\n' + `5.若测试最高帧率大于54帧则通过测试`
+            + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' )
+              .fontColor(Color.White).fontSize('20fp')
+          }
+          Row(){
+            Column(){
+              Button(`开始`)
+                .borderRadius(8)
+                .backgroundColor(0x317aff)
+                .width('30%')
+                .enabled(this.StartEnable)
+                .opacity(this.StartEnable? 1 : 0.4)
+                .onClick(async () => {
+                  this.StartEnable = !this.StartEnable;
+                  let str = {
+                    bundleName:"com.ohos.launcher",
+                    abilityName: "com.ohos.launcher.MainAbility",
+                  }
+                  abilityContext.startAbility(str).then((data) => {
+
+                  }).catch((error) => {
+
+                  })
+                })
+            }
+            Column(){
+              Button(`结束`)
+                .borderRadius(8)
+                .backgroundColor(0x317aff)
+                .width('30%')
+                .enabled(!this.StartEnable)
+                .opacity(!this.StartEnable? 1 : 0.4)
+                .onClick(() => {
+                  this.StartEnable = !this.StartEnable
+                  let fd = fileio.openSync(Xpath, 0o100 | 0o2002, 0o664);
+                  let buf = new ArrayBuffer(4096);
+                  fileio.readSync(fd,buf);
+                  let report = String.fromCharCode.apply(null,new Uint8Array(buf));
+                  let head = report.indexOf(':');
+                  let end = report.indexOf('|');
+                  this.Fps = report.substring(head+1,end);
+                  let num = Number(this.Fps)
+                  if(num >= 54 ) {
+                    this.Vue = true;
+                  }
+                })
+            }
+          }
+          Row(){
+            Text('\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n' + `测试结果：` + this.Fps + '帧' )
+              .fontColor(Color.White).fontSize('24fp')
+          }
+        }
+
+      }
+    }.width('100%').height('80%').backgroundColor(Color.Black)
+    .justifyContent(FlexAlign.SpaceEvenly)
+  }
+  build() {
+    Column() {
+      CustomContainer({
+        title: this.name,
+        Url:'pages/Experience/Experience_index',
+        StepTips:this.StepTips,
+        content: this.specificNoParam,
+        name:$name,
+        Vue: $Vue,
+        StartEnable: $StartEnable,
+        Fps: $Fps
+      })
+    }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+}

@@ -59,7 +59,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
         }
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', 'cmd : %{public}s', cmd);
-        abilityDelegator.executeShellCommand("echo \"123456\" > /data/app/el2/100/base/com.acts.requesttest.test/haps/entry_test/cache/test.txt",
+        abilityDelegator.executeShellCommand("echo \"123456\" > /data/app/el2/100/base/com.acts.request.test/haps/entry_test/cache/test.txt",
             (err: any, d: any) => {
                 console.info('executeShellCommand : err : ' + JSON.stringify(err));
                 console.info('executeShellCommand : data : ' + d.stdResult);
