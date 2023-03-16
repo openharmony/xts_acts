@@ -19,7 +19,7 @@ import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
-let Xpath = path + '/CompleteTimeLauncher.log';
+let Xpath = path + '/ResponseTimeLauncher.log';
 
 @Entry
 @Component

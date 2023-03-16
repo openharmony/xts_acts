@@ -22,7 +22,6 @@ let path = globalThis.dir;
 let SettingsColdPath = path + '/HotStartSetting.log';
 let PhotosColdPath = path + '/HotStartPhotos.log';
 let MmsColdPath = path + '/HotStartMms.log';
-let CameraColdPath = path + '/HotStartCamera.log';
 let ContactsColdPath = path + '/HotStartContacts.log';
 @Entry
 @Component
@@ -128,19 +127,6 @@ struct CustomContainerUser {
                     this.num++
                   }
                   /*
-                            camera
-                   */
-                  let CameraFd = fileio.openSync(CameraColdPath, 0o100 | 0o2002, 0o664);
-                  let CameraBuf = new ArrayBuffer(4096);
-                  fileio.readSync(CameraFd,CameraBuf);
-                  let CameraReport = String.fromCharCode.apply(null,new Uint8Array(CameraBuf));
-                  let CameraHead = CameraReport.indexOf(':');
-                  let CameraTime = CameraReport.substring(CameraHead+1);
-                  this.cameraNum = parseFloat(CameraTime);
-                  if( this.cameraNum < 1000 ) {
-                    this.num++
-                  }
-                  /*
                             mms
                    */
                   let ContactsFd = fileio.openSync(ContactsColdPath, 0o100 | 0o2002, 0o664);
@@ -153,17 +139,16 @@ struct CustomContainerUser {
                   if( this.contactsNum < 1000 ) {
                     this.num++
                   }
-                  if( this.num === 5 ) {
+                  if( this.num === 4 ) {
                     this.Vue = true;
                   }
                 })
             }
           }
           Row(){
-            Text('\n' + '\n' + '\n' + '\n' + `测试结果：` + '设置热启动时延' + this.setNum + 'ms'
+            Text('\n' + '\n' + '\n' + '\n' + `测试结果：` + '\n' + '设置热启动时延' + this.setNum + 'ms'
             + '\n' + '图库热启动时延' + this.photosNum + 'ms' + '\n'+ '信息热启动时延' + this.mmsNum + 'ms' + '\n'
-            + '相机热启动时延' + this.cameraNum + 'ms' + '\n'+ '联系人热启动时延' + this.contactsNum + 'ms' + '\n'
-            + '通过热启动测试项' + this.num + '个' )
+            + '联系人热启动时延' + this.contactsNum + 'ms' + '\n' + '通过热启动测试项' + this.num + '个' )
               .fontColor(Color.White).fontSize('24fp')
           }
         }

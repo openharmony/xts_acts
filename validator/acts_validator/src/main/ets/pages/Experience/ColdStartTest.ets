@@ -47,12 +47,12 @@ struct CustomContainerUser {
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         Column(){
           Row(){
-            Text(`根据以下操作步骤完成测试`+ '\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n')
+            Text(`根据以下操作步骤完成测试`+ '\n' + '\n' )
               .fontColor(Color.White).fontSize('24fp')
           }
           Row(){
             Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n' + `2.清空后台应用`+ '\n' + '\n'
-            + `3.双击执行DeskFps.bat选择冷启动测试输入待测应用编号`+ '\n' + '\n' +`4.依次测试完所有应用冷启动返回validator界面`
+            + `3.双击执行.bat选择冷启动测试输入待测应用编号`+ '\n' + '\n' +`4.依次测试完所有应用冷启动返回validator界面`
             + '\n' + '\n' + '5.点击停止键观察测试结果' + '\n' + '\n' + `5.若所有冷启动测试均在规定时延内完成则通过测试`
             + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
@@ -160,7 +160,7 @@ struct CustomContainerUser {
             }
           }
           Row(){
-            Text('\n' + '\n' + `测试结果：` + '设置冷启动时延' + this.setNum + 'ms' + '\n' + '图库冷启动时延' + this.photosNum
+            Text('\n' + '\n' + `测试结果：` + '\n' + '设置冷启动时延' + this.setNum + 'ms' + '\n' + '图库冷启动时延' + this.photosNum
             + 'ms' + '\n'+ '信息冷启动时延' + this.mmsNum + 'ms' + '\n' + '相机冷启动时延' + this.cameraNum + 'ms' + '\n'
             + '联系人冷启动时延' + this.contactsNum + 'ms' + '\n' + '通过冷启动测试项' + this.num + '个')
               .fontColor(Color.White).fontSize('24fp')
