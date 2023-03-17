@@ -142,7 +142,7 @@ struct cameraOrientation {
       Flex({ direction: FlexDirection.Column }) {
         Text(`Camera: ${this.cameraDeviceIndex}`).fontSize('16fp').fontColor(Color.White)
         Text(`Orientation: ${this.imageRotation}°`).fontSize('16fp').fontColor(Color.White)
-        Text(`逆时针`).fontSize('16fp').fontColor(Color.White)
+        Text(`顺时针`).fontSize('16fp').fontColor(Color.White)
         Text(`提示：`).fontSize('16fp').fontColor(Color.White)
         Text(`如果左边窗口旋转后与右边窗口相同，选择pass，否则选择fail`)
           .fontSize('16fp').fontColor(Color.White)
