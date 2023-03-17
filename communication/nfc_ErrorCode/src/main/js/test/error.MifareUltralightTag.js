@@ -176,10 +176,10 @@ export default function UltralightTagErrorTest() {
                 try {
                     MifareUltralightTag.writeSinglePage('test', rawData, (err, data)=> {
                         if (err) {
-                            console.log("[NFC_test]mifareUltralight4 writeSinglePage errcode: " + err);
+                            console.info("[NFC_test]mifareUltralight4 writeSinglePage errcode: " + err);
                             expect(true).assertEqual(true);
                         } else {
-                            console.log("[NFC_test]mifareUltralight4 writeSinglePage data: " + data + "json2:" + JSON.stringify(data));
+                            console.info("[NFC_test]mifareUltralight4 writeSinglePage data: " + data + "json2:" + JSON.stringify(data));
                             expect(true).assertTrue(data >= 0);
                         }
                     });

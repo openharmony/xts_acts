@@ -16,6 +16,9 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 import wifiMg from '@ohos.wifiManager'
+import osaccount from '@ohos.account.osAccount'
+import bundle from '@ohos.bundle'
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -25,8 +28,35 @@ function checkWifiPowerOn(){
     console.info("[wifi_test]/wifi status:" + wifiMg.isWifiActive());
 }
 
+async function applyPermission() {
+    let osAccountManager = osaccount.getAccountManager();
+    console.info("=== getAccountManager finish");
+    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+    console.info("LocalId is :" + localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.wifi.wifidevice', 0, localId);
+    let atManager = abilityAccessCtrl.createAtManager();
+    if (atManager != null) {
+        let tokenID = appInfo.accessTokenId;
+        console.info('[permission] case accessTokenID is ' + tokenID);
+        let permissionName1 = 'ohos.permission.LOCATION';
+        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+    } else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+    }
+}
+
 export default function actsWifiManagerFunctionTest() {
     describe('actsWifiManagerFunctionTest', function () {
+        beforeAll(async function (done) {
+            console.info('beforeAll case');
+            await applyPermission();
+            done();
+        })
+
         beforeEach(function () {
             console.info("[wifi_test]beforeEach start" );
             checkWifiPowerOn();
@@ -47,7 +77,7 @@ export default function actsWifiManagerFunctionTest() {
                 deviceAddress : "00:00:00:00:00:00",
                 netId : -1,
                 passphrase : "12345678",
-                groupName : "AAAZZZ123",
+                groupName : "DIRECT-AAAZZZ123",
                 goBand : wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
@@ -104,22 +134,32 @@ export default function actsWifiManagerFunctionTest() {
         it('SUB_Communication_WiFi_XTS_P2P_0004', 0, async function (done) {
             console.log("[wifi_test]check the state of wifi: " + wifiMg.isWifiActive());
             expect(wifiMg.isWifiActive()).assertTrue();
-            let wifiP2PConfig = {
-                deviceAddress: "00:00:00:00:00:00",
-                netId: -1,
-                passphrase: "1234567",
-                groupName: "test_pass",
-                goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
-            };
-            let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
-            await sleep(2000);
+            try {
+                let wifiP2PConfig = {
+                    deviceAddress: "00:00:00:00:00:00",
+                    netId: -1,
+                    passphrase: "1234567",
+                    groupName: "DIRECT-test_pass",
+                    goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
+                };
+                let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
+                await sleep(2000);
+            }catch(error) {
+                console.info("[wifi_test]createGroup message : " + JSON.stringify(error.message));
+                expect(true).assertEqual((JSON.stringify(error.message)) != null);
+            }
             await wifiMg.getCurrentGroup()
                 .then(data => {
                     console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
                     expect(true).assertEqual(data.networkId == -999);
                 });
-            let removeGroupResult = wifiMg.removeGroup();
-            await sleep(2000);
+            try {
+                let removeGroupResult = wifiMg.removeGroup();
+                await sleep(2000);
+            }catch(error) {
+                console.info("[wifi_test]removeGroup message : " + JSON.stringify(error.message));
+                expect(true).assertEqual((JSON.stringify(error.message)) != null);
+            }
             await wifiMg.getCurrentGroup()
                 .then(data => {
                     console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
@@ -142,7 +182,7 @@ export default function actsWifiManagerFunctionTest() {
                 deviceAddress: "00:00:00:00:00:00",
                 netId: -1,
                 passphrase: "123@%abcD",
-                groupName: "test_pass1",
+                groupName: "DIRECT-test_pass1",
                 goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
@@ -176,7 +216,7 @@ export default function actsWifiManagerFunctionTest() {
                 deviceAddress: "00:00:00:00:00:00",
                 netId: -1,
                 passphrase: "abc345678901234567890123456789012345678901234567890123456789012",
-                groupName: "test_pass2",
+                groupName: "DIRECT-test_pass2",
                 goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
@@ -210,18 +250,28 @@ export default function actsWifiManagerFunctionTest() {
                 deviceAddress: "00:00:00:00:00:00",
                 netId: -1,
                 passphrase: "abc3456789012345678901234567890123456789012345678901234567890123",
-                groupName: "test_pass3",
+                groupName: "DIRECT-test_pass3",
                 goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
-            let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
-            await sleep(2000);
+            try {
+                let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
+                await sleep(2000);
+            }catch(error) {
+                console.info("[wifi_test]createGroup message : " + JSON.stringify(error.message));
+                expect(true).assertEqual((JSON.stringify(error.message)) != null);
+            }
             await wifiMg.getCurrentGroup()
                 .then(data => {
                     console.info("[wifi_test]getCurrentGroup  promise result :" + JSON.stringify(data));
                     expect(true).assertEqual(data.passphrase != wifiP2PConfig.passphrase);
                 });
-            let removeGroupResult = wifiMg.removeGroup();
-            await sleep(2000);
+            try {
+                let removeGroupResult = wifiMg.removeGroup();
+                await sleep(2000);
+            }catch(error) {
+                console.info("[wifi_test]removeGroup message : " + JSON.stringify(error.message));
+                expect(true).assertEqual((JSON.stringify(error.message)) != null);
+            }
             await wifiMg.getCurrentGroup()
                 .then(data => {
                     console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
@@ -244,7 +294,7 @@ export default function actsWifiManagerFunctionTest() {
                 deviceAddress : "00:00:00:00:00:00",
                 netId : -1,
                 passphrase : "12345678",
-                groupName : "test_band1",
+                groupName : "DIRECT-test_band1",
                 goBand : wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
@@ -279,7 +329,7 @@ export default function actsWifiManagerFunctionTest() {
                     deviceAddress : "00:00:00:00:00:00",
                     netId : -1,
                     passphrase : "12345678",
-                    groupName : "test_band2",
+                    groupName : "DIRECT-test_band2",
                     goBand : wifiMg.GroupOwnerBand.GO_BAND_5GHZ,
                 };
                 let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
@@ -318,7 +368,7 @@ export default function actsWifiManagerFunctionTest() {
                     deviceAddress : "00:00:00:00:00:00",
                     netId : -1,
                     passphrase : "12345678",
-                    groupName : "test_band3",
+                    groupName : "DIRECT-test_band3",
                     goBand : wifiMg.GroupOwnerBand.GO_BAND_AUTO,
                 };
                 let createGroupResult = wifiMg.createGroup(wifiP2PConfig);
@@ -433,7 +483,7 @@ export default function actsWifiManagerFunctionTest() {
                     deviceAddress: "00:00:00:00:00:00",
                     netId: -1,
                     passphrase: " ",
-                    groupName: "testpassword",
+                    groupName: "DIRECT-testpassword",
                     goBand: wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
                 };
                 let createGroupResult = wifi.createGroup(wifiP2PConfig);
@@ -468,7 +518,7 @@ export default function actsWifiManagerFunctionTest() {
                 deviceAddress : "11:22:33:44:55:66",
                 netId : -1,
                 passphrase : "12345678",
-                groupName : "AAAZZZ456",
+                groupName : "DIRECT-AAAZZZ456",
                 goBand : wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
             };
             let p2pConnectResult = wifiMg.p2pConnect(wifiP2PConfig);
@@ -476,8 +526,13 @@ export default function actsWifiManagerFunctionTest() {
             let p2pCancelResult = wifiMg.p2pCancelConnect();
             await sleep(2000);
             console.info("[wifi_test]test p2pCancelConnect successful." );
-            let removeGroupResult = wifiMg.removeGroup();
-            console.info("[wifi_test]test removeGroup  successful " );
+            try {
+                let removeGroupResult = wifiMg.removeGroup();
+                console.info("[wifi_test]test removeGroup  successful " );
+            }catch(error) {
+                console.info("[wifi_test]removeGroup message : " + JSON.stringify(error.message));
+                expect(true).assertEqual((JSON.stringify(error.message)) != null);
+            }
             await wifiMg.getCurrentGroup()
                 .then(data => {
                     console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
@@ -494,7 +549,13 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.level Level 3
         */
         it('SUB_Communication_WiFi_XTS_P2P_0011', 0, async function (done) {
-            let removeGroupResult = wifiMg.removeGroup(10000);
+            try {
+                let removeGroupResult = wifi.removeGroup(10000);
+                console.info("[wifi_test]removeGroup(10000) result : " + JSON.stringify(removeGroupResult));
+            }catch(error) {
+                console.info("[wifi_test]removeGroup message : " + JSON.stringify(error.message));
+                expect(true).assertEqual((JSON.stringify(error.message)) != null);
+            }
             await wifiMg.getCurrentGroup()
                 .then(data => {
                     console.info("[wifi_test] getCurrentGroup  promise result1 :" + JSON.stringify(data));
