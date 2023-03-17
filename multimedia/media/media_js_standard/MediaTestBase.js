@@ -19,7 +19,7 @@ import router from '@system.router'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
-import { UiDriver, BY, PointerMatrix } from '@ohos.UiTest'
+import { UiDriver, BY, PointerMatrix } from '@ohos.uitest'
 const CODECMIMEVALUE = ['video/avc', 'audio/mp4a-latm', 'audio/mpeg']
 const context = featureAbility.getContext();
 
