@@ -59,6 +59,7 @@ import textPickerDefaultPickerItemHeightJsunit from './textPicker.test.ets';
 import videoOnFullscreenChangeJsunit from './video.test.ets';
 import webGetTitleJsunit from './web.test.ets';
 import xcomponentGetXComponentContextJsunit from './xcomponent.test.ets';
+import routerJsunit from './router.test.ets';
 
 export default function testsuite() {
   lazyForEachOnDataAddJsunit()
@@ -104,4 +105,5 @@ export default function testsuite() {
   videoOnFullscreenChangeJsunit()
   webGetTitleJsunit()
   xcomponentGetXComponentContextJsunit()
+  routerJsunit()
 }

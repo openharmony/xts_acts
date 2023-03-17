@@ -136,6 +136,10 @@ struct ListLanes {
         .onScrollEnd(() => {
           console.info('Scroll Stop')
         })
+        .onScrollStart(() => {
+          console.info('Scroll Start');
+        })
+
 
         Button('scroll 100')
 

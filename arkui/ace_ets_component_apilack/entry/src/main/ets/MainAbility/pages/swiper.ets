@@ -86,6 +86,12 @@ struct SwiperCurve {
         .onChange((index: number) => {
           console.info(index.toString())
         })
+        .onAnimationStart((index: number) => {
+          console.info("swiper nAnimationStart info index is " + index);
+        })
+         .onAnimationEnd((index: number) => {
+          console.info("swiper onAnimationEnd info index is " + index);
+        })
 
         Flex({ justifyContent: FlexAlign.SpaceAround }) {
           Button('next')
