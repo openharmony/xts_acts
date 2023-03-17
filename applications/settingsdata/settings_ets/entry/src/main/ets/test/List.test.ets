@@ -15,5 +15,6 @@
 import settingUiJsunit from './SettingUiJsunit.test.ets';
 
 export default function testsuite() {
+  console.log("testsuite start")
   settingUiJsunit();
 }

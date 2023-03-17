@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
 import settings from '@ohos.settings'
-import featureAbility from '@ohos.ability.featureAbility';
 
 export default function settingUiJsunit() {
   describe('appInfoTest', function () {
@@ -62,9 +61,7 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_005', 0, async function (done) {
       var name = 'settings.screen.brightness20';
-      var uri = settings.getUriSync(name);
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
-      let value = settings.getValueSync(helper, name, "test getValueSync");
+      let value = settings.getValueSync(globalThis.abilityContext, name, "test getValueSync");
       console.info("[settings_get_value_005] value is: " + value);
       expect(value).assertEqual("test getValueSync");
       done();
@@ -72,14 +69,12 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_006', 0, async function (done) {
       var name = 'settings.screen.brightness2';
-      var uri = settings.getUriSync(name);
-      console.info("[settings_get_value_006] uri is: " + uri);
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
+
       let obj = {
         aa: "aa"
       }
       try {
-        let value = settings.getValueSync(helper, name, obj);
+        let value = settings.getValueSync(globalThis.abilityContext, name, obj);
         console.info("[settings_get_value_006] value is: " + value);
         expect(value).assertEqual("test getValueSync");
       } catch (err) {
@@ -92,12 +87,9 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_007', 0, async function (done) {
       var name = 'settings.screen.brightness3';
-      var uri = settings.getUriSync(name);
-      console.info("[settings_get_value_007] uri is: " + uri);
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
       let obj = '';
       try {
-        let value = settings.getValueSync(helper, name, obj);
+        let value = settings.getValueSync(globalThis.abilityContext, name, obj);
         console.info("[settings_get_value_007] value is: " + value);
         expect(value).assertEqual('');
       } catch (err) {
@@ -110,12 +102,9 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_008', 0, async function (done) {
       var name = 'settings.screen.brightness4';
-      var uri = settings.getUriSync(name);
-      console.info("[settings_get_value_008] uri is: " + uri);
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
       let obj = null;
       try {
-        let value = settings.getValueSync(helper, name, obj);
+        let value = settings.getValueSync(globalThis.abilityContext, name, obj);
         console.info("[settings_get_value_008] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_008] error = " + err);
@@ -129,9 +118,9 @@ export default function settingUiJsunit() {
       var name = 'settings.screen.brightness5';
       var uri = settings.getUriSync(name);
       console.info("[settings_get_value_009] uri is: " + uri);
-      var helper = "helper";
+      var context = "context";
       try {
-        let value = settings.getValueSync(helper, name, "test getValueSync");
+        let value = settings.getValueSync(context, name, "test getValueSync");
         console.info("[settings_get_value_009] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_009] error = " + err);
@@ -145,9 +134,9 @@ export default function settingUiJsunit() {
       var name = 'settings.screen.brightness6';
       var uri = settings.getUriSync(name);
       console.info("[settings_get_value_010] uri is: " + uri);
-      var helper = null;
+      var context = null;
       try {
-        let value = settings.getValueSync(helper, name, "test getValueSync");
+        let value = settings.getValueSync(context, name, "test getValueSync");
         console.info("[settings_get_value_010] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_010] error = " + err);
@@ -161,10 +150,10 @@ export default function settingUiJsunit() {
       var name = 'settings.screen.brightness7';
       var uri = settings.getUriSync(name);
       console.info("[settings_get_value_0011] uri is: " + uri);
-      var helper = "helper";
+      var context = "context";
       let obj = 121;
       try {
-        let value = settings.getValueSync(helper, name, obj);
+        let value = settings.getValueSync(context, name, obj);
         console.info("[settings_get_value_0011] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_0011] error = " + err);
@@ -178,10 +167,10 @@ export default function settingUiJsunit() {
       var name = 'settings.screen.brightness8';
       var uri = settings.getUriSync(name);
       console.info("[settings_get_value_0012] uri is: " + uri);
-      var helper = null;
+      var context = null;
       let obj = null;
       try {
-        let value = settings.getValueSync(helper, name, obj);
+        let value = settings.getValueSync(context, name, obj);
         console.info("[settings_get_value_0012] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_0012] error = " + err);
@@ -202,9 +191,9 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
+      let context = "context";
       try {
-        let value = settings.getValueSync(helper, name, "test getValueSync");
+        let value = settings.getValueSync(context, name, "test getValueSync");
         console.info("[settings_get_value_013] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_013] error = " + err);
@@ -225,9 +214,9 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
+      let context = "context";
       try {
-        let value = settings.getValueSync(helper, name, "test getValueSync");
+        let value = settings.getValueSync(context, name, "test getValueSync");
         console.info("[settings_get_value_014] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_014] error = " + err);
@@ -248,10 +237,11 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
+
       let obj = 22223;
+      let context = "context";
       try {
-        let value = settings.getValueSync(helper, name, obj);
+        let value = settings.getValueSync(context, name, obj);
         console.info("[settings_get_value_0015] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_0015] error = " + err);
@@ -272,9 +262,9 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = "helper";
+      var context = "context";
       try {
-        let value = settings.getValueSync(helper, name, "test getValueSync");
+        let value = settings.getValueSync(context, name, "test getValueSync");
         console.info("[settings_get_value_0016] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_0016] error = " + err);
@@ -295,10 +285,10 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = "helper";
+      var context = "context";
       let obj = 221323;
       try {
-        let value = settings.getValueSync(helper, name, obj);
+        let value = settings.getValueSync(context, name, obj);
         console.info("[settings_get_value_0017] value is: " + value);
       } catch (err) {
         console.error("[settings_get_value_0017] error = " + err);
@@ -310,20 +300,16 @@ export default function settingUiJsunit() {
 
     it('settings_set_value_018', 0, async function (done) {
       let name = 'settings.screen.brightness10';
-      var uri = settings.getUriSync(name);
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
-      let value = settings.setValueSync(helper, name, "test getValueSync");
+      let value = settings.setValueSync(globalThis.abilityContext, name, "test getValueSync");
       expect(value).assertEqual(true);
       done();
     });
 
     it('settings_set_value_019', 0, async function (done) {
       let name = 'settings.screen.brightness11';
-      var uri = settings.getUriSync(name);
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
       let obj = 32344.00;
       try {
-        let value = settings.setValueSync(helper, name, obj);
+        let value = settings.setValueSync(globalThis.abilityContext, name, obj);
         console.info("[settings_set_value_019] value is: " + value);
         expect(value).assertEqual(true);
       } catch (err) {
@@ -336,11 +322,9 @@ export default function settingUiJsunit() {
 
     it('settings_set_value_020', 0, async function (done) {
       let name = 'settings.screen.brightness12';
-      var uri = settings.getUriSync(name);
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
       let obj = null;
       try {
-        let value = settings.setValueSync(helper, name, obj);
+        let value = settings.setValueSync(globalThis.abilityContext, name, obj);
         console.info("[settings_set_value_020] value is: " + value);
         expect(value).assertEqual(true);
       } catch (err) {
@@ -353,9 +337,9 @@ export default function settingUiJsunit() {
 
     it('settings_set_value_021', 0, async function (done) {
       let name = 'settings.screen.brightness13';
-      var helper = "helper";
+      var context = "context";
       try {
-        let value = settings.setValueSync(helper, name, "test getValueSync");
+        let value = settings.setValueSync(context, name, "test getValueSync");
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_021] error = " + err);
@@ -367,9 +351,9 @@ export default function settingUiJsunit() {
 
     it('settings_set_value_022', 0, async function (done) {
       let name = 'settings.screen.brightness13';
-      var helper = null;
+      var context = null;
       try {
-        let value = settings.setValueSync(helper, name, "test getValueSync");
+        let value = settings.setValueSync(context, name, "test getValueSync");
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_022] error = " + err);
@@ -381,10 +365,10 @@ export default function settingUiJsunit() {
 
     it('settings_set_value_023', 0, async function (done) {
       let name = 'settings.screen.brightness14';
-      var helper = "helper";
+      var context = "context";
       let obj = 343434.00;
       try {
-        let value = settings.setValueSync(helper, name, obj);
+        let value = settings.setValueSync(context, name, obj);
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_023] error = " + err);
@@ -396,10 +380,10 @@ export default function settingUiJsunit() {
 
     it('settings_set_value_024', 0, async function (done) {
       let name = 'settings.screen.brightness14';
-      var helper = "helper";
+      var context = "context";
       let obj = null;
       try {
-        let value = settings.setValueSync(helper, name, obj);
+        let value = settings.setValueSync(context, name, obj);
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_024] error = " + err);
@@ -411,10 +395,10 @@ export default function settingUiJsunit() {
 
     it('settings_set_value_025', 0, async function (done) {
       let name = 'settings.screen.brightness14';
-      var helper = null;
+      var context = null;
       let obj = 2323.00;
       try {
-        let value = settings.setValueSync(helper, name, obj);
+        let value = settings.setValueSync(context, name, obj);
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_025] error = " + err);
@@ -435,9 +419,9 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
+      let context = "context";
       try {
-        let value = settings.setValueSync(helper, name, "test getValueSync");
+        let value = settings.setValueSync(context, name, "test getValueSync");
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_026] error = " + err);
@@ -458,9 +442,9 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
+      let context = "context";
       try {
-        let value = settings.setValueSync(helper, name, "test getValueSync");
+        let value = settings.setValueSync(context, name, "test getValueSync");
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_027] error = " + err);
@@ -481,10 +465,11 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
+      
       let obj = 232.00;
+      let context = "context";
       try {
-        let value = settings.setValueSync(helper, name, obj);
+        let value = settings.setValueSync(context, name, obj);
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_028] error = " + err);
@@ -505,10 +490,11 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = featureAbility.acquireDataAbilityHelper(uri);
+      
       let obj = null;
+      let context = "context";
       try {
-        let value = settings.setValueSync(helper, name, obj);
+        let value = settings.setValueSync(context, name, obj);
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_029] error = " + err);
@@ -529,9 +515,9 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = "helper";
+      var context = "context";
       try {
-        let value = settings.setValueSync(helper, name, "text value");
+        let value = settings.setValueSync(context, name, "text value");
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_030] error = " + err);
@@ -552,9 +538,9 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = null;
+      var context = null;
       try {
-        let value = settings.setValueSync(helper, name, "text value");
+        let value = settings.setValueSync(context, name, "text value");
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_031] error = " + err);
@@ -575,10 +561,10 @@ export default function settingUiJsunit() {
         expect(errMsg == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
           .assertTrue();
       }
-      var helper = "helper";
+      var context = "context";
       let obj = 2323;
       try {
-        let value = settings.setValueSync(helper, name, obj);
+        let value = settings.setValueSync(context, name, obj);
         expect(value).assertEqual(true);
       } catch (err) {
         console.error("[settings_set_value_032] error = " + err);
@@ -590,13 +576,12 @@ export default function settingUiJsunit() {
 	
 	it('settings_get_value_033', 0, async function (done){
         let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
-        let helper = featureAbility.acquireDataAbilityHelper(uri);
 
         let name = 'settings.screen.brightness33';
         let value = 'brightness33'
         try{
-            settings.setValueSync(helper, name, value);
-            settings.getValue(helper, name, ret =>{
+            settings.setValueSync(globalThis.abilityContext, name, value);
+            settings.getValue(globalThis.abilityContext, name, (err, ret) => {
                 console.info("[settings_get_value_033] value is: " + ret);
                 expect(ret).assertEqual(value);
                 done();
@@ -611,14 +596,13 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_034', 0, async function (done){
         let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
-        let helper = featureAbility.acquireDataAbilityHelper(uri);
 
         let name = 'settings.screen.brightness34';
         let value = 'brightness34'
 
         try{
-            settings.setValueSync(helper, name, value);
-            settings.getValue(helper, name).then(ret =>{
+            settings.setValueSync(globalThis.abilityContext, name, value);
+            settings.getValue(globalThis.abilityContext, name).then(ret =>{
                 console.info("[settings_get_value_034] value is: " + ret);
                 expect(ret).assertEqual(value);
                 done();
@@ -1134,14 +1118,12 @@ export default function settingUiJsunit() {
     });
 	
 	it('settings_get_value_111',0,async function (done) {
-      let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
-      let helper = featureAbility.acquireDataAbilityHelper(uri);
       let name = 'settings.screen.brightness111';//关键字
       let value = 'brightness111'//值
       try{
-        settings.setValue(helper, name, value,(data)=>{
+        settings.setValue(globalThis.abilityContext, name, value,(data)=>{
           console.info("[settings_get_value_111] value is:" + data);
-          settings.getValue(helper, name).then(ret => {
+          settings.getValue(globalThis.abilityContext, name).then(ret => {
             console.info("[settings_get_value_111] value is:" + ret);
             expect(ret).assertEqual(value);
             done();
@@ -1156,15 +1138,13 @@ export default function settingUiJsunit() {
     });
 
     it('settings_get_value_112',0,async function (done) {
-      let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
-      let helper = featureAbility.acquireDataAbilityHelper(uri);
       let name = 'settings.screen.brightness112';//关键字
       let value = 'brightness112'//值
       try{
-        settings.setValue(helper, name, value)
+        settings.setValue(globalThis.abilityContext, name, value)
         .then((data)=>{
           console.info("[settings_get_value_112] value is:" + data);
-          settings.getValue(helper, name).then(ret => {
+          settings.getValue(globalThis.abilityContext, name).then(ret => {
             console.info("[settings_get_value_112] value is:" + ret);
             expect(ret).assertEqual(value);
             done();
