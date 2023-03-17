@@ -15,7 +15,6 @@
     "pages/ArkUI/CanvasStrokeStyle",
     "pages/ArkUI/CanvasLineCap",
     "pages/ArkUI/CanvasLineJoin",
-    "pages/ArkUI/CanvasMiterLimit",
     "pages/ArkUI/CanvasFont",
     "pages/ArkUI/CanvasTextAlign",
     "pages/ArkUI/CanvasTextBaseline",
@@ -27,10 +26,6 @@
     "pages/ArkUI/CanvasLineDashOffset",
     "pages/ArkUI/CanvasShadowOffsetY",
     "pages/Camera/Camera_index",
-    "pages/Camera/CameraOrientation0",
-    "pages/Camera/CameraOrientation90",
-    "pages/Camera/CameraOrientation180",
-    "pages/Camera/CameraOrientation270",
     "pages/Camera/CameraFormat",
     "pages/Camera/CameraVideo",
     "pages/Audio/Audio_index",
@@ -39,6 +34,15 @@
     "pages/Player/ScrollListTest",
     "pages/Experience/Experience_index",
     "pages/Experience/PhotoFps",
-    "pages/Experience/DeskFps"
+    "pages/Experience/DeskFps",
+    "pages/Experience/ColdStartTest",
+    "pages/Experience/HotStartTest",
+    "pages/Experience/ViewPhotoTest",
+    "pages/Experience/KeyboardDisplayTest",
+    "pages/Experience/StartTaskManager",
+    "pages/Experience/StartBackgroundTask",
+    "pages/Experience/StartNotification",
+    "pages/Experience/ScrollPhotosList",
+    "pages/Experience/KeyboardInputTest"
   ]
 }
