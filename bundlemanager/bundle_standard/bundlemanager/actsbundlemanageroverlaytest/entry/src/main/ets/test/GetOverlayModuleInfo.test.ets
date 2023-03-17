@@ -111,6 +111,8 @@ export default function getOverlayModuleInfo() {
     it('GetOverlayModuleInfoModuleNameIsOverlay', 0, async function (done) {
       await overlay.getOverlayModuleInfo(MODULE_NAME2).then(data => {
         Utils.info("GetOverlayModuleInfoModuleNameIsOverlay result" + JSON.stringify(data));
+        let overlayModuleInfoTest: overlay.OverlayModuleInfo = data;
+        expect(typeof (overlayModuleInfoTest.bundleName)).assertEqual('string');
         expect(data.bundleName).assertEqual("ohos.acts.bundle.overlay.test");
         expect(data.moduleName).assertEqual("stage1");
         expect(data.targetModuleName).assertEqual("entry1");
