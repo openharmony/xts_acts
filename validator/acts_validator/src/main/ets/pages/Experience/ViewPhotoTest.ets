@@ -13,20 +13,20 @@
  * limitations under the License.
  */
 import fileio from '@ohos.fileio';
-import {CustomContainer} from '../common/ExperienceCustomContainer';
+import {CustomContainer} from '../common/TimeExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 
 let path = globalThis.dir;
-let Xpath = path + '/PhotoFps.log';
+let Xpath = path + '/ResponseTimePhotos.log';
 
 @Entry
 @Component
 struct CustomContainerUser {
-  @State name: string = 'PhotoFps';
-  @State StepTips: string = '操作步骤：根据操作提示滑动图库测试帧率'+'\n'+'预期结果：帧率高于或等于54帧测试通过';
+  @State name: string = 'ViewPhoto';
+  @State StepTips: string = '操作步骤：根据操作提示点击图片等待加载'+'\n'+'预期结果：图片响应时延低于150ms测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
-  @State Fps: string = '0';
+  @State time: string = '0';
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
     this.Vue = false;
@@ -42,9 +42,9 @@ struct CustomContainerUser {
           }
           Row(){
             Text(`测试步骤:`+ '\n' + '\n' +`1.在图库中预置500张图片`+ '\n' + '\n' +`2.点击开始键进入图库`+ '\n' + '\n'
-            + `3.双击执行.bat选择帧率>图库`+ '\n' + '\n' +`4.滑动图库缩略图界面连续10s以上` + '\n' + '\n'
-            + '5.回到PhotoFps测试项点击停止键' + '\n' + '\n' + `6.若测试最高帧率大于或等于54帧则通过测试`
-            + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' )
+            + `3.双击执行.bat选择响应时延>查看图片`+ '\n' + '\n' +`4.点击一张图库缩略图等待响应` + '\n' + '\n'
+            + '5.待脚本执行结束回到Validator点击停止键' + '\n' + '\n' + `6.若图片响应时延小于或等于150ms则通过测试`
+            + '\n' + '\n' + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
           }
           Row(){
@@ -84,33 +84,17 @@ struct CustomContainerUser {
                   let buf = new ArrayBuffer(4096);
                   fileio.readSync(fd,buf);
                   let report = String.fromCharCode.apply(null,new Uint8Array(buf));
-                  let headList = new Array();
-                  let endList = new Array();
                   let head = report.indexOf(":");
-                  let end = report.indexOf('|');
-                  let Fps = new Array();
-
-                  while(head > -1){
-                    headList.push(head);
-                    head = report.indexOf(":",head + 1);
-                  }
-                  while(end > -1){
-                    endList.push(end);
-                    end = report.indexOf("|",end + 1);
-                  }
-                  for(let i = 0; i < headList.length; i++) {
-                    Fps[i] = Number(report.substring(headList[i]+1,endList[i]));
-                  }
-                  let maxFps = Math.max(...Fps);
-                  this.Fps = maxFps.toString();
-                  if(maxFps >= 54) {
+                  this.time = report.substring(head+1);
+                  let time = parseFloat(this.time)
+                  if( time < 150 ) {
                     this.Vue = true;
                   }
                 })
             }
           }
           Row(){
-            Text('\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n' + `测试结果：` + this.Fps + '帧' )
+            Text('\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n' + `图片响应时延：` + this.time + 'ms' )
               .fontColor(Color.White).fontSize('24fp')
           }
         }
@@ -129,7 +113,7 @@ struct CustomContainerUser {
         name:$name,
         Vue: $Vue,
         StartEnable: $StartEnable,
-        Fps: $Fps
+        time: $time
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
