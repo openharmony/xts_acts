@@ -31,25 +31,30 @@ export async function getPermission(permissionNames) {
 
 export async function driveFn(num) {
     console.info(`case come in driveFn 111`)
-    let driver = await UiDriver.create()
-    console.info(`case come in driveFn 222`)
-    console.info(`driver is ${JSON.stringify(driver)}`)
-    await msleepAsync(2000)
-    console.info(`UiDriver start`)
-    for (let i = 0; i < num; i++) {
-        let button = await driver.findComponent(BY.text('允许'))
-        console.info(`button is ${JSON.stringify(button)}`)
+    try {
+        let driver = await UiDriver.create()
+        console.info(`case come in driveFn 222`)
+        console.info(`driver is ${JSON.stringify(driver)}`)
         await msleepAsync(2000)
-        await button.click()
+        console.info(`UiDriver start`)
+        for (let i = 0; i < num; i++) {
+            let button = await driver.findComponent(BY.text('允许'))
+            console.info(`button is ${JSON.stringify(button)}`)
+            await msleepAsync(2000)
+            await button.click()
+        }
     }
-    await msleepAsync(2000)
+    catch (err) {
+        console.info('err is ' + err);
+        return;
+    }
 }
 
 export async function getAvRecorderFd(pathName, fileType) {
     console.info('case come in getAvRecorderFd')
     let fdObject = {
-        fileAsset : null,
-        fdNumber : null
+        fileAsset: null,
+        fdNumber: null
     }
     let displayName = pathName;
     console.info('[mediaLibrary] displayName is ' + displayName);
@@ -70,8 +75,8 @@ export async function getAvRecorderFd(pathName, fileType) {
     if (dataUri != undefined) {
         let args = dataUri.id.toString();
         let fetchOp = {
-            selections : fileKeyObj.ID + "=?",
-            selectionArgs : [args],
+            selections: fileKeyObj.ID + "=?",
+            selectionArgs: [args],
         }
         let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
         fdObject.fileAsset = await fetchFileResult.getAllObject();
@@ -98,7 +103,7 @@ export async function getStageFileDescriptor(fileName) {
     let fileDescriptor = undefined;
     let mgr = globalThis.abilityContext.resourceManager
     await mgr.getRawFileDescriptor(fileName).then(value => {
-        fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
+        fileDescriptor = { fd: value.fd, offset: value.offset, length: value.length };
         console.log('case getRawFileDescriptor success fileName: ' + fileName);
     }).catch(error => {
         console.log('case getRawFileDescriptor err: ' + error);
@@ -179,15 +184,15 @@ export function catchCallback(error) {
 export function checkDescription(actualDescription, descriptionKey, descriptionValue) {
     for (let i = 0; i < descriptionKey.length; i++) {
         let property = actualDescription[descriptionKey[i]];
-        console.info('case key is  '+ descriptionKey[i]);
-        console.info('case actual value is  '+ property);
-        console.info('case hope value is  '+ descriptionValue[i]);
+        console.info('case key is  ' + descriptionKey[i]);
+        console.info('case actual value is  ' + property);
+        console.info('case hope value is  ' + descriptionValue[i]);
         if (descriptionKey[i] == 'codec_mime') {
             expect(property).assertEqual(CODECMIMEVALUE[descriptionValue[i]]);
         } else {
             expect(property).assertEqual(descriptionValue[i]);
         }
-        
+
     }
 }
 
