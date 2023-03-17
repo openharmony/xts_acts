@@ -46,8 +46,11 @@ struct SetCircle {
               console.info('Pan end');
             })
           )
-        Text('边框粗细: ' + (this.X)*0.05 )
+
       }.width('70%').height('30%')
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Text('边框粗细: ' + (this.X)*0.05 )
+      }.width('100%').height('20%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
@@ -57,7 +60,7 @@ struct SetCircle {
             this.context.lineWidth = (this.X)*0.05;
             this.context.strokeRect(120, 120, 120, 120);
           })
-      }.width('100%').height('70%')
+      }.width('100%').height('50%')
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

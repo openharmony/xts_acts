@@ -18,6 +18,7 @@ group("componentUxTest") {
       "ace_ets_component_select:ActsAceSelectTest",
       "ace_ets_component_sidebar:ActsAceSideBarTest",
       "ace_ets_component_swiper:ActsAceSwiperTest",
+      "ace_ets_component_tabs:ActsAceTabsTest",
     ]
   }
 }
