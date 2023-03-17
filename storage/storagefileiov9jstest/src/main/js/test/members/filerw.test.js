@@ -17,10 +17,10 @@ import {
     fileIO, FILE_CONTENT, prepareFile, prepare200MFile, nextFileName, isIntNum, describe, it, expect,
 } from '../Common';
 
-const RAND_READ = 3.5;
-const RAND_WRITE = 0.5;
-const SEQUENCE_READ = 15;
-const SEQUENCE_WRITE = 5;
+const RAND_READ_BASELINE = 3.5;
+const RAND_WRITE_BASELINE = 0.5;
+const SEQUENCE_READ_BASELINE = 15;
+const SEQUENCE_WRITE_BASELINE = 5;
 
 export default function FileIOFilerw_test() {
     describe('FileIO_fs_filerw_test', function () {
@@ -101,7 +101,7 @@ export default function FileIOFilerw_test() {
                 expect(isIntNum(file.fd)).assertTrue();
                 let averagerate = await IOfunc(file, 0x1000, 0xC800000, true, true, true);
                 console.log("RAND_READ Rate is" + averagerate + "M/s");
-                expect(averagerate > RAND_READ).assertTrue();
+                expect(averagerate > RAND_READ_BASELINE).assertTrue();
                 fileIO.closeSync(file);
                 fileIO.unlinkSync(fpath);
                 done();
@@ -130,7 +130,7 @@ export default function FileIOFilerw_test() {
                 expect(isIntNum(file.fd)).assertTrue();
                 let averagerate = await IOfunc(file, 0x1000, 0xC800000, true, false, true);
                 console.log("RAND_WRITE Rate is" + averagerate + "M/s");
-                expect(averagerate > RAND_WRITE).assertTrue();
+                expect(averagerate > RAND_WRITE_BASELINE).assertTrue();
                 fileIO.closeSync(file);
                 fileIO.unlinkSync(fpath);
                 done();
@@ -159,7 +159,7 @@ export default function FileIOFilerw_test() {
                 expect(isIntNum(file.fd)).assertTrue();
                 let averagerate = await IOfunc(file, 0x1000, 0xC800000, false, true, true);
                 console.log("SEQUENCE_READ Rate is" + averagerate + "M/s");
-                expect(averagerate > SEQUENCE_READ).assertTrue();
+                expect(averagerate > SEQUENCE_READ_BASELINE).assertTrue();
                 fileIO.closeSync(file);
                 fileIO.unlinkSync(fpath);
                 done();
@@ -188,7 +188,7 @@ export default function FileIOFilerw_test() {
                 expect(isIntNum(file.fd)).assertTrue();
                 let averagerate = await IOfunc(file, 0x1000, 0xC800000, false, false, true);
                 console.log("SEQUENCE_WRITE Rate is" + averagerate + "M/s");
-                expect(averagerate > SEQUENCE_WRITE).assertTrue();
+                expect(averagerate > SEQUENCE_WRITE_BASELINE).assertTrue();
                 fileIO.closeSync(file);
                 fileIO.unlinkSync(fpath);
                 done();
@@ -217,7 +217,7 @@ export default function FileIOFilerw_test() {
                 expect(isIntNum(file.fd)).assertTrue();
                 let averagerate = await IOfunc(file, 0x1000, 0xC800000, true, true, false);
                 console.log("RAND_READ Rate is" + averagerate + "M/s");
-                expect(averagerate > RAND_READ).assertTrue();
+                expect(averagerate > RAND_READ_BASELINE).assertTrue();
                 fileIO.closeSync(file);
                 fileIO.unlinkSync(fpath);
                 done();
@@ -246,7 +246,7 @@ export default function FileIOFilerw_test() {
                 expect(isIntNum(file.fd)).assertTrue();
                 let averagerate = await IOfunc(file, 0x1000, 0xC800000, true, false, false);
                 console.log("RAND_WRITE Rate is" + averagerate + "M/s");
-                expect(averagerate > RAND_WRITE).assertTrue();
+                expect(averagerate > RAND_WRITE_BASELINE).assertTrue();
                 fileIO.closeSync(file);
                 fileIO.unlinkSync(fpath);
                 done();
@@ -275,7 +275,7 @@ export default function FileIOFilerw_test() {
                 expect(isIntNum(file.fd)).assertTrue();
                 let averagerate = await IOfunc(file, 0x1000, 0xC800000, false, true, false);
                 console.log("SEQUENCE_READ Rate is" + averagerate + "M/s");
-                expect(averagerate > SEQUENCE_READ).assertTrue();
+                expect(averagerate > SEQUENCE_READ_BASELINE).assertTrue();
                 fileIO.closeSync(file);
                 fileIO.unlinkSync(fpath);
                 done();
@@ -304,7 +304,7 @@ export default function FileIOFilerw_test() {
                 expect(isIntNum(file.fd)).assertTrue();
                 let averagerate = await IOfunc(file, 0x1000, 0xC800000, false, false, false);
                 console.log("SEQUENCE_WRITE Rate is" + averagerate + "M/s");
-                expect(averagerate > SEQUENCE_WRITE).assertTrue();
+                expect(averagerate > SEQUENCE_WRITE_BASELINE).assertTrue();
                 fileIO.closeSync(file);
                 fileIO.unlinkSync(fpath);
                 done();
