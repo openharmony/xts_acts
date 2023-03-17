@@ -19,7 +19,7 @@ import abilityFeatureAbility from '@ohos.ability.featureAbility'
 
 var context = abilityFeatureAbility.getContext();
 const TEST_BUNDLE_NAME = 'ohos.acts.distributedKvStore';
-const TEST_STORE_ID = 'storeId';
+const TEST_STORE_ID = 'SchemaStoreId';
 
 var kvManager = null;
 var kvStore = null;
