@@ -39,9 +39,12 @@ struct IndexPage {
   @State result : string = '';
   @State TEST : number = 0;
   private TestCaseList = [
-    {title:'Camera Orientation',uri:'pages/Camera/CameraOrientation'},
-    {title:'Camera Format',uri:'pages/Camera/CameraFormat'},
-    {title:'Camera Video',uri:'pages/Camera/CameraVideo'},
+    { title: 'CameraPreviewFormat', uri: 'pages/Camera/CameraPreviewFormat' },
+    { title: 'CameraPhotoFormat', uri: 'pages/Camera/CameraPhotoFormat' },
+    { title: 'CameraOrientation', uri: 'pages/Camera/CameraOrientation' },
+    { title: 'CameraSerialPhoto', uri: 'pages/Camera/CameraSerialPhoto' },
+    { title: 'CameraVideo', uri: 'pages/Camera/CameraVideo' },
+    { title: 'CameraFlash', uri: 'pages/Camera/CameraFlash' },
   ]
   @State ColorObject : string[] = VarColor;
   async onPageShow(){
