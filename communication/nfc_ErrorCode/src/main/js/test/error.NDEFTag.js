@@ -461,7 +461,7 @@ export default function nfcNDEFErrorTest() {
                 try {
                     NdefFormatable.format('test', (err, data)=> {
                         if (err) {
-                            console.log("[NFC_test]ndef12 format errcode: " + err);
+                            console.info("[NFC_test]ndef12 format errcode: " + err);
                             expect(true).assertTrue();
                         } else {
                             console.info("[NFC_test]ndef12 format formatReadOnly2" );

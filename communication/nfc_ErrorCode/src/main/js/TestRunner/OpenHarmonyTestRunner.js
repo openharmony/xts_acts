@@ -35,7 +35,7 @@ function translateParamsToString(parameters) {
         console.info('OpenHarmonyTestRunner OnPrepare')
     },
     onRun() {
-        console.log('OpenHarmonyTestRunner onRun run')
+        console.info('OpenHarmonyTestRunner onRun run')
         var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
 
