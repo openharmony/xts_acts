@@ -39,7 +39,8 @@ struct IndexPage {
   @State result : string = '';
   @State TEST : number = 0;
   private TestCaseList = [
-    {title:'ScrollingList',uri:'pages/Player/ScrollListTest'},
+    {title:'PlayAudio',uri:'pages/Player/PlayAudio'},
+    {title:'PlayVideo',uri:'pages/Player/PlayVideo'},
   ]
   @State ColorObject : string[] = VarColor;
   async onPageShow(){
