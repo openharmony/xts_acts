@@ -10,6 +10,7 @@
       "distributedNotificationEnabled": true,
       "keepAlive": true,
       "singleUser": true,
+      "bundleType": "atomicService",
       "minAPIVersion": 9,
       "targetAPIVersion": 9,  
       "targetBundleList": [

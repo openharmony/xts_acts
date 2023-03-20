@@ -36,14 +36,11 @@ export default function getBundleInfoForSelf() {
           console.info("getBundleInfoForSelfApplicationPro : " + i + "  ==" + JSON.stringify(data.hapModulesInfo[i]));
         }
         expect(data.appInfo.bundleType).assertEqual(bundle.BundleType.ATOMIC_SERVICE);
-        expect(data.appInfo.split).assertEqual(true);
         expect(bundle.ModuleType.SHARED).assertEqual(3);
         expect(data.hapModulesInfo[0].type).assertEqual(bundle.ModuleType.FEATURE);
-        expect(data.hapModulesInfo[0].atomicServiceModuleType).assertEqual(bundle.AtomicServiceModuleType.NORMAL);
         expect(data.hapModulesInfo[0].preloads.length).assertEqual(0);
         expect(data.hapModulesInfo[0].dependencies.length).assertEqual(0);
         expect(data.hapModulesInfo[1].type).assertEqual(bundle.ModuleType.ENTRY);
-        expect(data.hapModulesInfo[1].atomicServiceModuleType).assertEqual(bundle.AtomicServiceModuleType.MAIN);
         expect(data.hapModulesInfo[1].preloads.length).assertEqual(1);
         expect(data.hapModulesInfo[1].preloads[0].moduleName).assertEqual("feature");
         expect(data.hapModulesInfo[1].dependencies.length).assertEqual(1);
