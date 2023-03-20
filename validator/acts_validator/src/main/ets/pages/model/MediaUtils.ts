@@ -37,7 +37,12 @@ export default class MediaUtils {
         Logger.info(this.tag, `displayName = ${displayName},mediaType = ${mediaType}`)
         let publicPath = await this.mediaTest.getPublicDirectory(info.directory)
         Logger.info(this.tag, `publicPath = ${publicPath}`)
-        return await this.mediaTest.createAsset(mediaType, displayName, publicPath)
+        try{
+            return await this.mediaTest.createAsset(mediaType, displayName, publicPath)
+        }catch(err){
+            Logger.info(this.tag, `createAsset err ` + JSON.stringify(err))
+        }
+
     }
 
     async queryFile(dataUri: any) {
