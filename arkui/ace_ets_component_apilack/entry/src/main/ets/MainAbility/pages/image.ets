@@ -29,6 +29,7 @@ struct ImageExample {
             .width(240).height(240)
             .colorFilter([1,2,3])
             .overlay('colorFilter', { align: Alignment.Bottom, offset: { x: 0, y: -15 } })
+            .draggable(false)
         }.border({ color: Color.Black, width: 2 })
       }.width('100%')
     }.padding({ top: 20 })

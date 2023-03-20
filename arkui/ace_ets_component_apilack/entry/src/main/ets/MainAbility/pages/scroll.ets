@@ -75,8 +75,11 @@ struct ScrollOnScrollBegin {
         console.info('To the edge')
       })
       .onScrollEnd(() => {
-        console.info('Scroll Stop')
+        console.info('Scroll Stop');
       })
+      .onScrollStart(() => {
+          console.info('Scroll Start');
+       })
       .key("Scroll")
       .width("100%")
       .height("100%")
