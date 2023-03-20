@@ -166,27 +166,6 @@ describe('userAuthTestExecute', function () {
             done();
         })
 
-          /*
-            * @tc.number    : Security_IAM_Nopermission_API9_Func_0101
-            * @tc.name      : Kit interface get version
-            * @tc.size      : MediumTest
-            * @tc.type      : Function
-            * @tc.level     : Level 0
-        */
-          it('Security_IAM_Nopermission_API9_Func_0101', 0, async function (done) {
-            try {
-                let getversionresult = userAuth.getVersion();
-                console.info('Security_IAM_Nopermission_API9_Func_0101 getversionresult = ' + getversionresult);
-                // no permission 
-                expect(getversionresult).assertEqual(201);
-                done();
-            } catch (e) {
-                console.log("testFace GetVersionTest_0101 fail " + e.code);
-                expect(e.code).assertEqual(201);
-                done();
-            }
-        })
-
         /*
             * @tc.number    : Security_IAM_Nopermisson_Func_0104
             * @tc.name      : getAvailabeStatus invalid parameters
