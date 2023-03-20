@@ -684,6 +684,22 @@ describe('UrlFunTest', function () {
     })
 
     /**
+     * @tc.name: testParamsHas006
+     * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
+     */
+    it('testParamsHas006', 0, function () {
+        let params = new Url.URLParams("小=value1&￥=value2&key3=大")
+        try {
+            var a = 1;
+            params.has(a);
+        } catch(e) {
+            expect(e.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+        }
+    })
+
+    /**
      * @tc.name: testParamsKeys001
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
      */
@@ -1231,6 +1247,23 @@ describe('UrlFunTest', function () {
     })
 
     /**
+     * @tc.name: testUrlAppend006
+     * @tc.desc: Appends a specified key/value pair as a new search parameter.
+     */
+    it('testUrlAppend006', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2')
+        let params = new Url.URLSearchParams(that.search)
+        try {
+            var a = 1;
+            params.append(a, "123")
+        } catch(e) {
+            expect(e.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+        }
+    })
+
+    /**
      * @tc.name: testUrlDelete001
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
      */
@@ -1712,6 +1745,23 @@ describe('UrlFunTest', function () {
     })
 
     /**
+     * @tc.name: testUrlHas006
+     * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
+     */
+    it('testUrlHas006', 0, function () {
+        let params = new Url.URLSearchParams("小=value1&￥=value2&key3=大")
+        params.append("￥","ACA")
+        try {
+            var a = 1;
+            params.has(a);
+        } catch(e) {
+            expect(e.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+        }
+    })
+
+    /**
      * @tc.name: testUrlKeys001
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
      */
@@ -1851,6 +1901,24 @@ describe('UrlFunTest', function () {
         params.set('12','BBB');
         var res = params.toString();
         expect(res).assertEqual("1=value1&2=value2&key3=3&12=BBB");
+    })
+
+    /**
+     * @tc.name: testUrlSet006
+     * @tc.desc: Sets the value associated with a given search parameter to the given value.
+     * If there were several matching values, this method deletes the others.
+     * If the search parameter doesn't exist, this method creates it.
+     */
+    it('testUrlSet006', 0, function () {
+        try {
+            let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
+            var a = 12;
+            params.set(a, 'BBB');
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+        }
     })
 
     /**
