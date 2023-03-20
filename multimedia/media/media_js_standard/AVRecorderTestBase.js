@@ -381,28 +381,9 @@ export async function avRecorderReliabilitTest02(avConfig, avRecorder, recorderT
 }
 
 export async function avRecorderReliabilitTest03(avConfig, avRecorder, recorderTime, done) {
-    let result = true;
     avRecorder = await idle(avRecorder);
     setPrepareOnCallback(avConfig, avRecorder, recorderTime, done)
     await avRecorder.prepare(avConfig)
-}
-
-export async function avRecorderReliabilitTest04(avConfig, avRecorder, recorderTime, done) {
-    avRecorder = await idle(avRecorder);
-
-    await avRecorder.prepare(avConfig).then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
-        console.info('avRecorderReliabilitTest04 prepare success');
-    }).catch((err) => {
-        console.info('avRecorderReliabilitTest04 prepare failed and catch error is ' + err.message);
-    });
-    await avRecorder.release().then(() => {
-        console.info('avRecorderReliabilitTest04 release AVRecorder success');
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('avRecorderReliabilitTest04 release AVRecorder failed and catch error is ' + err.message);
-    });
 }
 
 
