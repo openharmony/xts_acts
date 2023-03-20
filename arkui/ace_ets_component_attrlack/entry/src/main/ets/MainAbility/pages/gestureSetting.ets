@@ -45,6 +45,9 @@ struct GestureSettingsExample {
           console.info("Gesture sourceTool object" + event.sourceTool);
           console.info("Gesture sourceTool enum value " + SourceTool.Finger);
           console.info("Gesture sourceTool enum value " + SourceTool.Pen);
+           console.info("Gesture sourceTool enum value " + SourceTool.FINGER);
+          console.info("Gesture sourceTool enum value " + SourceTool.PEN);
+
 
         }), GestureMask.IgnoreInternal)
 
