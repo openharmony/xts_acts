@@ -7,9 +7,9 @@
       "name": "1.0.0"
     },
     "apiVersion": {
-      "compatible": 7,
-      "releaseType": "Release",
-      "target": 8
+      "compatible": 9,
+      "releaseType": "beta5",
+      "target": 9
     }
   },
   "deviceConfig": {},
