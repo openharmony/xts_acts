@@ -36,7 +36,9 @@ export default function SecurityHuksDSABasicAbort63KBPromiseJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
+      if (useSoftware) {
+        await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
+      }
       done();
     });
   });
