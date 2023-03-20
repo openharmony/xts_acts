@@ -17,7 +17,6 @@ import media from '@ohos.multimedia.media'
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import * as avRecorderTestBase from '../../../../../AVRecorderTestBase.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { UiDriver, BY, PointerMatrix } from '@ohos.uitest'
 
 export default function avRecorderTest() {
     describe('avRecorderTest', function () {
@@ -153,6 +152,23 @@ export default function avRecorderTest() {
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest03(avConfig, avRecorder, RECORDER_TIME, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0300 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0400
+            * @tc.name      : 001.test resume->prepare
+            * @tc.desc      : Local audio resume->prepare
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0400', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0400 start')
+            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[4], "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            avRecorderTestBase.avRecorderReliabilitTest03(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0400 end')
         })
     })
 
