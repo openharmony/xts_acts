@@ -1992,15 +1992,12 @@ export default function WorkSchedulerMgrApiTest() {
             workScheduler.isLastWorkTimeOut(-1, (error, res) =>{
                 if (error) {
                     console.info('testIsLastWorkTimeOutFun001 isLastWorkTimeOut callback fail, because:' + error.code);
-                    expect(error.code).assertLarger(0)
+                    expect(error.code).assertEqual(9700004);
+                    done();
                 } else {
                     console.info('testIsLastWorkTimeOutFun001 isLastWorkTimeOut callback success, data is:' + res);
-                    expect(res).assertInstanceOf('Boolean')
                 }
             });
-            setTimeout(()=>{
-                done();
-            }, 500);
         })
     
         /*
@@ -2013,18 +2010,15 @@ export default function WorkSchedulerMgrApiTest() {
             try{
                 workScheduler.isLastWorkTimeOut('1').then(res => {
                     console.info('testIsLastWorkTimeOutFun003 isLastWorkTimeOut promise success, data is:' + res);
-                    expect(res).assertInstanceOf('Boolean')
                 })
                 .catch(error => {
                     console.info('testIsLastWorkTimeOutFun003 isLastWorkTimeOut promise fail, because:' + error.code);
-                    expect(error.code).assertLarger(0)
             });
             }catch(error){
                 console.info('testIsLastWorkTimeOutFun003 isLastWorkTimeOut promise fail ,' + error);
-            }
-            setTimeout(()=>{
+                expect(error.code).assertEqual('401');
                 done();
-            }, 500);
+            }
         })
     
         /*testStartWorkFun020
@@ -2037,18 +2031,15 @@ export default function WorkSchedulerMgrApiTest() {
             try{
                 workScheduler.isLastWorkTimeOut(null).then(res => {
                     console.info('testIsLastWorkTimeOutFun004 isLastWorkTimeOut promise success, data is:' + res);
-                    expect(res).assertInstanceOf('Boolean')
                 })
                 .catch(error => {
                     console.info('testIsLastWorkTimeOutFun004 isLastWorkTimeOut promise fail, because:' + error.code);
-                    expect(error.code).assertLarger(0)
             });
             }catch(error){
                 console.info('testIsLastWorkTimeOutFun004 isLastWorkTimeOut promise fail ,' + error);
-            }
-            setTimeout(()=>{
+                expect(error.code).assertEqual('401');
                 done();
-            }, 500);
+            }
         })
     })
 }
