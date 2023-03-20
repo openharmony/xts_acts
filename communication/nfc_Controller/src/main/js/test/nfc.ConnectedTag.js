@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -32,16 +32,16 @@ let NfcRfType = {
 export default function ConnectedTagTest() {
     describe('ConnectedTagTest', function () {
         beforeAll(function () {
-            console.info('[NFC_test]beforeAll called')
+            console.info('rbeforeAll called')
         })
         beforeEach(function() {
-            console.info('[NFC_test]beforeEach called')
+            console.info('beforeEach called')
         })
         afterEach(function () {
-            console.info('[NFC_test]afterEach called')
+            console.info('afterEach called')
         })
         afterAll(function () {
-            console.info('[NFC_test]afterAll called')
+            console.info('afterAll called')
         })
 
         /**
@@ -60,8 +60,8 @@ export default function ConnectedTagTest() {
                 expect(isAccessToken).assertFalse()
             } else {
                 let inittag = connectedTag.init();
+                console.info("[NFC_test] ConnectedTag1 readMultiplePages1 err: " + inittag );
                 expect(inittag).assertTrue();
-                console.info("ConnectedTag readMultiplePages1 err: " + inittag );
             }
         })
 
@@ -82,12 +82,12 @@ export default function ConnectedTagTest() {
                 done();
             } else {
                 await connectedTag.readNdefTag().then(result => {
-                    console.info("ConnectedTag readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    console.info("[NFC_test] ConnectedTag2 readMultiplePages1 result: " + result );
                     expect(result != null).assertTrue();
                     done();
                 }).catch((err)=> {
-                    console.info("ConnectedTag readMultiplePages1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] ConnectedTag2 readMultiplePages1 err: " + err);
+                    expect(true).assertTrue();
                     done();
                 });
                 sleep(3000);
@@ -112,11 +112,11 @@ export default function ConnectedTagTest() {
             } else {
                 connectedTag.readNdefTag((err, result)=> {
                     if (err) {
+                        console.info("[NFC_test] ConnectedTag3 isExtendedApduSupported err: " + err);
                         expect().assertFail();
-                        console.info("isoDep isExtendedApduSupported err: " + err);
                     } else {
-                        expect(result!=null).assertEqual(data);
-                        console.info("isoDep isExtendedApduSupported data: " + result);
+                        console.info("[NFC_test] ConnectedTag3 isExtendedApduSupported result: " + result);
+                        expect(result!=null).assertTrue();
                     }
                 });
             }
@@ -140,12 +140,12 @@ export default function ConnectedTagTest() {
                 done();
             } else {
                 await connectedTag.writeNdefTag().then(result => {
-                    console.info("ConnectedTag readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    console.info("[NFC_test] ConnectedTag4 readMultiplePages1 result: " + result );
                     expect(result != null).assertTrue();
                     done();
                 }).catch((err)=> {
-                    console.info("ConnectedTag readMultiplePages1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] ConnectedTag4 readMultiplePages1 err: " + err);
+                    expect(true).assertTrue(true);
                     done();
                 });
                 sleep(3000);
@@ -166,18 +166,20 @@ export default function ConnectedTagTest() {
             if (!isAccessToken) {
                 console.info("The device does not support active label chips.")
                 expect(isAccessToken).assertFalse()
+                done()
             } else {
                 connectedTag.writeNdefTag((err, result)=> {
                     if (err) {
+                        console.info("[NFC_test] ConnectedTag5 isExtendedApduSupported err: " + err);
                         expect().assertFail();
-                        console.info("isoDep isExtendedApduSupported err: " + err);
+                        done();
                     } else {
-                        expect(result!=null).assertEqual(data);
-                        console.info("isoDep isExtendedApduSupported data: " + result);
+                        console.info("[NFC_test] ConnectedTag5 isExtendedApduSupported result: " + result);
+                        expect(result!=null).assertTrue();
+                        done();
                     }
                 });
             }
-            done();
         })
 
         /**
@@ -196,11 +198,11 @@ export default function ConnectedTagTest() {
                 expect(isAccessToken).assertFalse()
             } else {
                 let recvNfcRfNotifyFunc = result => {
-                    console.info("nfc state receive state ->" + result);
+                    console.info("[NFC_test] ConnectedTag6 nfc state receive state ->" + result);
                     expect(result != null).assertTrue();
                 }
-                connectedTag.on('notify',recvNfcRfNotifyFunc)
-                connectedTag.off('notify',recvNfcRfNotifyFunc)
+                connectedTag.on('[NFC_test] ConnectedTag6 notify',recvNfcRfNotifyFunc)
+                connectedTag.off('[NFC_test] ConnectedTag6 notify',recvNfcRfNotifyFunc)
             }
         })
 
@@ -220,8 +222,8 @@ export default function ConnectedTagTest() {
                 expect(isAccessToken).assertFalse()
             } else {
                 let uninittag = connectedTag.uninit();
+                console.info("[NFC_test] ConnectedTag7 readMultiplePages1 err: " + uninittag );
                 expect(uninittag).assertTrue();
-                console.info("ConnectedTag readMultiplePages1 err: " + uninittag );
             }
         })
 
@@ -242,8 +244,8 @@ export default function ConnectedTagTest() {
             }
             else{
                 let inittag = connectedTag.initialize();
+                console.info("[NFC_test] ConnectedTag8 readMultiplePages1 err: " + inittag );
                 expect(inittag).assertTrue();
-                console.info("mifareUltralight readMultiplePages1 err: " + inittag );
             }
         })
 
@@ -264,8 +266,8 @@ export default function ConnectedTagTest() {
             }
             else{
                 let uninittag = connectedTag.uninitialize();
+                console.info("[NFC_test] ConnectedTag9 readMultiplePages1 err: " + uninittag );
                 expect(uninittag).assertTrue();
-                console.info("mifareUltralight readMultiplePages1 err: " + uninittag );
             }
         })
 
@@ -287,12 +289,12 @@ export default function ConnectedTagTest() {
             }
             else{
                 await connectedTag.read().then(result => {
-                    console.info("mifareUltralight readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    console.info("[NFC_test] ConnectedTag10 readMultiplePages1 result: " + result);
                     expect(result != null).assertTrue();
                     done();
                 }).catch((err)=> {
-                    console.info("mifareUltralight readMultiplePages1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] ConnectedTag10 readMultiplePages1 err: " + err);
+                    expect(true).assertTrue();
                     done();
                 });
                 sleep(3000);
@@ -318,15 +320,16 @@ export default function ConnectedTagTest() {
             else{
                 connectedTag.read((err, result)=> {
                     if (err) {
+                        console.info("[NFC_test] ConnectedTag11 isExtendedApduSupported err: " + err);
                         expect().assertFail();
-                        console.info("isoDep isExtendedApduSupported err: " + err);
+                        done();
                     } else {
-                        expect(result!=null).assertEqual(data);
-                        console.info("isoDep isExtendedApduSupported data: " + result);
+                        console.info("[NFC_test] ConnectedTag11 isExtendedApduSupported result: " + result);
+                        expect(result!=null).assertTrue();
+                        done();
                     }
                 });
             }
-            done();
         })
 
        /**
@@ -347,12 +350,12 @@ export default function ConnectedTagTest() {
             }
             else{
                 await connectedTag.write().then(result => {
-                    console.info("mifareUltralight readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
+                    console.info("[NFC_test] ConnectedTag12 readMultiplePages1 result: " + result);
                     expect(result != null).assertTrue();
                     done();
                 }).catch((err)=> {
-                    console.info("mifareUltralight readMultiplePages1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] ConnectedTag12 readMultiplePages1 err: " + err);
+                    expect(true).assertTrue();
                     done();
                 });
                 sleep(3000);
@@ -373,19 +376,21 @@ export default function ConnectedTagTest() {
             if (!isAccessToken) {
                 console.info("The device does not support active label chips.")
                 expect(isAccessToken).assertFalse()
+                done();
             }
             else{
                 connectedTag.write((err, result)=> {
                     if (err) {
+                        console.info("[NFC_test] ConnectedTag13 isExtendedApduSupported err: " + err);
                         expect().assertFail();
-                        console.info("isoDep isExtendedApduSupported err: " + err);
+                        done();
                     } else {
-                        expect(result!=null).assertEqual(data);
-                        console.info("isoDep isExtendedApduSupported data: " + result);
+                        console.info("[NFC_test] ConnectedTag13 isExtendedApduSupported result: " + result);
+                        expect(result!=null).assertTrue();
+                        done();
                     }
                 });
             }
-            done();
         })
 
         console.info("*************[nfc_test] start nfc js unit test end*************");
