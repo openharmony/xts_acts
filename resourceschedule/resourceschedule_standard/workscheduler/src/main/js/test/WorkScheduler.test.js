@@ -421,15 +421,13 @@ describe("WorkSchedulerJsTest", function () {
         console.info('----------------------WorkSchedulerJsTest014---------------------------');
         workScheduler.isLastWorkTimeOut(14, (err, res) =>{
             if (err) {
-                expect(false).assertEqual(true)
+                console.info('WorkSchedulerJsTest014 isLastWorkTimeOut callback failed, err:' + err.code);
+                expect(err.code).assertEqual(9700004);
+                done();
             } else {
                 console.info('WorkSchedulerJsTest014 isLastWorkTimeOut callback success, data is:' + res);
-                expect(true).assertEqual(true)
             }
         });
-        setTimeout(()=>{
-            done();
-        }, 500);
     })
 
     /*
@@ -442,14 +440,12 @@ describe("WorkSchedulerJsTest", function () {
         workScheduler.isLastWorkTimeOut(15)
             .then(res => {
                 console.info('WorkSchedulerJsTest015 isLastWorkTimeOut promise success, data is:' + res);
-                expect(true).assertEqual(true)
             })
             .catch(err =>  {
-                expect(false).assertEqual(true)
+                console.info('WorkSchedulerJsTest015 isLastWorkTimeOut promise failed, err:' + err.code);
+                expect(err.code).assertEqual(9700004);
+                done();
         });
-        setTimeout(()=>{
-            done();
-        }, 500);
     })
 
     /*
