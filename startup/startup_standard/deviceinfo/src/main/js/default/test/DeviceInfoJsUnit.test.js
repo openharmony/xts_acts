@@ -381,7 +381,7 @@ describe('DeviceInfoTest', function () {
         }
         expect(ret).assertTrue();
 
-        let str = /[\w-\.\(\)]/g;
+        let str = /[\w\/\.\(\)]/g;
         let arr = securityPatchTagInfo.match(str);
         let bufferstr = arr.join('');
         console.info('the value of the bufferstr is :' + bufferstr);
