@@ -56,7 +56,6 @@ export default function avRecorderTest() {
         }
         let avConfig = {
             audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-            //videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
             profile : avProfile,
             url : 'fd://',
             rotation : 0,
