@@ -19,10 +19,6 @@ ohos_js_hap_suite("ActslocationErrorCodeTest") {
     ":geolocation_resources",
   ]
 
-  #  shared_libraries = [
-  #    "//third_party/giflib:libgif",
-  #    "//third_party/libpng:libpng",
-  #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActslocationErrorCodeApiTest"
   part_name = "location"
