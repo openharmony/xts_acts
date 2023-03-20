@@ -39,6 +39,22 @@ async function stopApplication(bundleName: string) {
 
 export default function UiTest() {
     describe('UiTest_API8', function () {
+        it('inputPermission', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = UiDriver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let input = await driver.findComponent(BY.type('TextInput'))
+            await input.click()
+            await driver.delayMs(waitUiReadyMs)
+            try {
+                await driver.click(864, 2524)
+                await driver.delayMs(waitUiReadyMs)
+            } catch (err) {
+                console.info("inputPermission error: %s", err.message)
+            }
+            await stopApplication('com.uitestScene.acts')
+        })
+
         /*
          * @tc.number: uiTest_8001
          * @tc.name: testInputText
