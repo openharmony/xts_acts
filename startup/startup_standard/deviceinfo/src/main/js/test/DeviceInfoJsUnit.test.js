@@ -386,7 +386,7 @@ export default function DeviceInfoTest() {
 
             expect(securityPatchTagInfo).assertInstanceOf('String');
             if (securityPatchTagInfo != "" && securityPatchTagInfo != null && securityPatchTagInfo != undefined) {
-                let str = /[\w-\.\(\)]/g;
+                let str = /[\w\/\.\(\)]/g;
                 let arr = securityPatchTagInfo.match(str);
                 let bufferstr = arr.join('');
                 console.info('the value of the bufferstr is :' + bufferstr);
@@ -1572,7 +1572,7 @@ export default function DeviceInfoTest() {
             let securityPatchTagInfo = deviceinfo.securityPatchTag;
             console.info('the value of the deviceinfo securityPatchTag is :' + securityPatchTagInfo);
 
-            let reFormat = /^(\d{4})-(\d{2})-(\d{2})$/;
+            let reFormat = /^(\d{4})\/(\d{2})\/(\d{2})$/;
             let re = securityPatchTagInfo.match(reFormat);
 
             if (re != null) {
