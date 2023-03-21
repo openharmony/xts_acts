@@ -157,7 +157,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
                     console.info('case getTrackDescription called!!');
                     if (typeof (arrayList) != 'undefined') {
                         for (let i = 0; i < arrayList.length; i++) {
-                            mediaTestBase.checkDescription(arrayList[i], descriptionKey[i], descriptionValue[i]);
+                            mediaTestBase.checkOldDescription(arrayList[i], descriptionKey[i], descriptionValue[i]);
                         }
                     } else {
                         console.info('case getTrackDescription is failed');
@@ -171,7 +171,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 audioPlayer.getTrackDescription((err, arrayList) => {
                     if (typeof (err) == 'undefined') {
                         for (let i = 0; i < arrayList.length; i++) {
-                            mediaTestBase.checkDescription(arrayList[i], descriptionKey[i], descriptionValue[i]);
+                            mediaTestBase.checkOldDescription(arrayList[i], descriptionKey[i], descriptionValue[i]);
                         }
                         nextStep(mySteps, done);
                     } else {

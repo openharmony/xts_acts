@@ -243,7 +243,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         videoPlayer.getTrackDescription((err, arrlist) => {
             if (err == null) {
                 for (let i = 0; i < arrlist.length; i++) {
-                    mediaTestBase.checkDescription(arrlist[i], descriptionKey[i], descriptionValue[i]);
+                    mediaTestBase.checkOldDescription(arrlist[i], descriptionKey[i], descriptionValue[i]);
                 }
                 toNextStep(videoPlayer, steps, done);
             } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
