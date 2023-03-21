@@ -618,7 +618,7 @@ describe('objectStoreTest', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002', 0, async function (done) {
+    it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002', 0, async function () {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002 start *************");
         var g_object = distributedObject.create(context, {name: "Amy", age: 18, isVis: false});
         expect(g_object != undefined).assertEqual(true);
