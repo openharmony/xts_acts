@@ -39,12 +39,12 @@ struct IndexPage {
   @State result : string = '';
   @State TEST : number = 0;
   private TestCaseList = [
-    {title:'CameraOrientation0',uri:'pages/Camera/CameraOrientation0'},
-    {title:'CameraOrientation90',uri:'pages/Camera/CameraOrientation90'},
-    {title:'CameraOrientation180',uri:'pages/Camera/CameraOrientation180'},
-    {title:'CameraOrientation270',uri:'pages/Camera/CameraOrientation270'},
-    {title:'CameraFormat',uri:'pages/Camera/CameraFormat'},
-    {title:'CameraVideo',uri:'pages/Camera/CameraVideo'},
+    { title: 'CameraPreviewFormat', uri: 'pages/Camera/CameraPreviewFormat' },
+    { title: 'CameraPhotoFormat', uri: 'pages/Camera/CameraPhotoFormat' },
+    { title: 'CameraOrientation', uri: 'pages/Camera/CameraOrientation' },
+    { title: 'CameraSerialPhoto', uri: 'pages/Camera/CameraSerialPhoto' },
+    { title: 'CameraVideo', uri: 'pages/Camera/CameraVideo' },
+    { title: 'CameraFlash', uri: 'pages/Camera/CameraFlash' },
   ]
   @State ColorObject : string[] = VarColor;
   async onPageShow(){
@@ -275,30 +275,29 @@ struct IndexPage {
       }
       let TestNum = FailNum + PassNum;
       let testNum = (TestNum).toString();
-      let ignoreNum = (4-TestNum).toString();
       let arrayBuffer = new ArrayBuffer(40960);
       let bufView = new DataView(arrayBuffer);
       let serializer = new xml.XmlSerializer(bufView);
       serializer.setDeclaration();
       serializer.startElement("testsuite");
       serializer.setAttributes("name", "ActsCameraTest");
-      serializer.setAttributes("time", "");
+      serializer.setAttributes("time", "*");
       serializer.setAttributes("errors", "0");
       serializer.setAttributes("disabled", "0");
       serializer.setAttributes("failures", failNum);
       serializer.setAttributes("ignored", "0");
       serializer.setAttributes("tests", testNum);
-      serializer.setAttributes("message", "");
+      serializer.setAttributes("message", "*");
       serializer.setAttributes("modulename", "ActsCameraTest");
       for (let i = 0; i < title.length; i++) {
         serializer.startElement("testcase");
         serializer.setAttributes("name", String(title[i]));
-        serializer.setAttributes("status", "");
-        serializer.setAttributes("time", "");
-        serializer.setAttributes("classname", "");
+        serializer.setAttributes("status", "*");
+        serializer.setAttributes("time", "*");
+        serializer.setAttributes("classname", "*");
         serializer.setAttributes("result", String(result[i]));
-        serializer.setAttributes("level", "");
-        serializer.setAttributes("message", "");
+        serializer.setAttributes("level", "*");
+        serializer.setAttributes("message", "*");
         serializer.endElement();
       }
       serializer.endElement();

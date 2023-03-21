@@ -43,7 +43,4 @@ executable("ActsKitFwkApiTest") {
   ]
 
   output_extension = "bin"
-
-  # un-comment this Macro for token-persist-test
-  # defines = [ "TOKEN_PERSIST_TEST" ]
 }

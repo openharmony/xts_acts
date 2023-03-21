@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,7 +23,7 @@ function sleep(delay) { // delay x ms
         continue;
     }
 }
-
+ 
 let NdefRecord = {
     NFC_A : 1,
     NFC_B : 2,
@@ -63,7 +63,10 @@ let isoDepTaginfo = {
     ],
     "tagRfDiscId": 1,
 };
+
 let IsoDepTag ;
+
+let parametertest = 1; 
 export default function nfcIsoDepErrorTest() {
     describe('nfcIsoDepErrorTest', function () {
         beforeAll(function () {
@@ -93,10 +96,11 @@ export default function nfcIsoDepErrorTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_nfcIsoDep_js_0100', 0, async function (done) {
-            if (IsoDepTag != null && IsoDepTag != undefined) {    
+            if (IsoDepTag != null && IsoDepTag != undefined) {
                 (async () => {
                     try {
-                        let result = await IsoDepTag.isExtendedApduSupported('test');
+                        
+                        let result = await IsoDepTag.isExtendedApduSupported("test");
                         console.info("[NFC_test]isoDep1 isExtendedApduSupported data: " + result);
                         expect(result).assertInstanceOf('Array')
                         expect().assertFail()
@@ -124,7 +128,7 @@ export default function nfcIsoDepErrorTest() {
         it('SUB_Communication_NFC_nfcIsoDep_js_0200', 0, async function (done) {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 try {
-                    IsoDepTag.isExtendedApduSupported('test')((err, data)=> {
+                    IsoDepTag.isExtendedApduSupported("test")((err, data)=> {
                         if (err) {
                             expect().assertFail();
                             console.info("[NFC_test]isoDep2 isExtendedApduSupported errcode: " + err);

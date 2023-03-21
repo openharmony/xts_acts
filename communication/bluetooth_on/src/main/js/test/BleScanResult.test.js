@@ -76,7 +76,7 @@ describe('bluetoothhostTest', function() {
     	function onReceiveEvent(data)
         {
             console.info('[bluetooth_js] BLEscan device result1 '+JSON.stringify(data));
-            except(true).assertTrue(data.length>0);
+            expect(true).assertTrue(data.length>0);
         }
         bluetooth.BLE.on("BLEDeviceFind",onReceiveEvent)
         bluetooth.BLE.startBLEScan(null);
@@ -98,8 +98,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0200', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result2'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result2'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
          }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan([{deviceId:"00:11:22:33:44:55"}]);
@@ -122,8 +122,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0300', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result3'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result3'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
          }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan([{name:"blue_test"}]);
@@ -146,8 +146,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0400', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result4'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result4'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
          }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan([{serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"}]);
@@ -170,8 +170,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0500', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result5'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result5'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
          }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan(
@@ -201,8 +201,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0600', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result6'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result6'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
         }
         let ScanOptions=  {
             interval: 100,
@@ -230,8 +230,8 @@ describe('bluetoothhostTest', function() {
      it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0700', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result7'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result7'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
         }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan(
@@ -264,8 +264,8 @@ describe('bluetoothhostTest', function() {
         console.info('[bluetooth_js] bt turn off1:'+ JSON.stringify(state));
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));          
-            except(true).assertTrue(data.length=0);
+            console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));
+            expect(true).assertTrue(data.length=0);
          }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan(
@@ -295,8 +295,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0900', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result9'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result9'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
         }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan(
@@ -326,8 +326,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_1000', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result10'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result10'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
         }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan(
@@ -357,8 +357,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_1100', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result11'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result11'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
         }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan(
@@ -388,8 +388,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_1200', 0, async function (done) {
         function onReceiveEvent(data)
         {
-            console.info('[bluetooth_js] BLEscan device result12'+JSON.stringify(data));          
-            except(true).assertTrue(data.length>0);
+            console.info('[bluetooth_js] BLEscan device result12'+JSON.stringify(data));
+            expect(true).assertTrue(data.length>0);
          }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan(
@@ -419,8 +419,8 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_1300', 0, async function (done) {
         function onReceiveEvent(data)
 		 {
-	    	 console.info('[bluetooth_js] BLEscan device result13'+JSON.stringify(data));          
-			 except(true).assertTrue(data.length>0);
+	    	 console.info('[bluetooth_js] BLEscan device result13'+JSON.stringify(data));
+             expect(true).assertTrue(data.length>0);
          }
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan(
@@ -584,8 +584,8 @@ describe('bluetoothhostTest', function() {
         async function onReceiveEvent(ScanResult)
         {
             console.info('[bluetooth_js] BLEscan device result12'+JSON.stringify(ScanResult)
-               +ScanResult.deviceId+ScanResult.rssi+ ScanResult.data);          
-            except(true).assertTrue(ScanResult.length>0);
+               +ScanResult.deviceId+ScanResult.rssi+ ScanResult.data);
+            expect(true).assertTrue(ScanResult.length>0);
             await sleep(1000);
             let gattClient = bluetooth.BLE.createGattClientDevice(ScanResult[0].deviceId);
             let ret = gattClient.connect();
