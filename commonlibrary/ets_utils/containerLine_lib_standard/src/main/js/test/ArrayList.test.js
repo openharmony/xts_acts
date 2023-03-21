@@ -1115,5 +1115,121 @@ describe("ArraylistTest", function () {
       expect(err.message).assertEqual(`The type of "fromIndex" must be number. Received value is: a`);
     }
   });
+
+  /**
+   * @tc.name: testHas059
+   * @tc.desc: Check whether the ArrayList contains a specified element.
+   * For example: arrayList.has.bind({})().
+   */
+  it('testHas059', 0, function () {
+    let arrayList = new ArrayList();
+    try {
+      arrayList.has.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The has method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveByIndex060
+   * @tc.desc: In the ArrayList instance, delete the element based on its index. 
+   * For example: arrayList.removeByIndex.bind({})().
+   */
+  it('testRemoveByIndex060', 0, function () {
+    let arrayList = new ArrayList();
+    try {
+      arrayList.removeByIndex.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The removeByIndex method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemove061
+   * @tc.desc: Delete the specified element . For example: arrayList.remove.bind({})().
+   */
+  it('testRemove061', 0, function () {
+    let arrayList = new ArrayList();
+    try {
+      arrayList.remove.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The remove method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach062
+   * @tc.desc: Traversing elements in an ArrayList instance. 
+   * For example: arrayList.forEach.bind({}, "a")(() => {}).
+   */
+  it('testForEach062', 0, function () {
+    let arrayList = new ArrayList();
+    try {
+      arrayList.forEach.bind({}, "a")(() => {});
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The forEach method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach063
+   * @tc.desc: Traversing elements in an ArrayList instance. 
+   * For example: arrayList.forEach(11).
+   */
+  it('testForEach063', 0, function () {
+    let arrayList = new ArrayList();
+    try {
+      arrayList.forEach(11);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "callbackfn" must be callable. Received value is: 11`);
+    }
+  });
+
+  /**
+   * @tc.name: testClear064
+   * @tc.desc: Clear all elements in the ArrayList instance. For example: arrayList.clear.bind({}, "a")().
+   */
+  it('testClear064', 0, function () {
+    let arrayList = new ArrayList();
+    try {
+      arrayList.clear.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The clear method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testIsEmpty065
+   * @tc.desc: Determine whether the ArrayList instance is empty. For example: arrayList.isEmpty.bind({}, "a")().
+   */
+  it('testIsEmpty065', 0, function () {
+    let arrayList = new ArrayList();
+    try {
+      arrayList.isEmpty.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The isEmpty method cannot be bound`);
+    }
+  });
 });
 }

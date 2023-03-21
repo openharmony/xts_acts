@@ -740,5 +740,117 @@ describe("HashMapTest", function () {
       expect(err.message).assertEqual(`The set method cannot be bound`);
     }
   });
+
+  /**
+   * @tc.name: testIsEmpty050   
+   * @tc.desc: Determine whether the HashMap instance is empty. For example: hashMap.isEmpty.bind({}, "a")().
+   */
+  it('testIsEmpty050', 0, function () {
+    let  hashMap = new HashMap();
+    try {
+      hashMap.isEmpty.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The isEmpty method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testHasKey051
+   * @tc.desc: Determine whether the HashMap contains the specified key. For example: hashMap.hasKey.bind({}, "a")().
+   */
+  it('testHasKey051', 0, function () {
+    let  hashMap = new HashMap();
+    try {
+      hashMap.hasKey.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The hasKey method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testGet052
+   * @tc.desc: Get the corresponding value through the key. For example: hashMap.get.bind({}, "a")().
+   */
+  it('testGet052', 0, function () {
+    let  hashMap = new HashMap();
+    try {
+      hashMap.get.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The get method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testSet053
+   * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(undefined, 11).
+   */
+  it('testSet053', 0, function () {
+    let  hashMap = new HashMap();
+    try {
+      hashMap.set(undefined, 11);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "key" must be Key of JS. Received value is: undefined`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemove054
+   * @tc.desc: Delete key value pairs according to key. For example: hashMap.remove.bind({}, "a")().
+   */
+  it('testRemove054', 0, function () {
+    let  hashMap = new HashMap();
+    try {
+      hashMap.remove.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The remove method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach055
+   * @tc.desc: Traverse all key value pairs in the HashMap instance.For example: hashMap.forEach.bind({}, "a")().
+   */
+  it('testForEach055', 0, function () {
+    let  hashMap = new HashMap();
+    try {
+      hashMap.forEach.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The forEach method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach056
+   * @tc.desc: Traverse all key value pairs in the HashMap instance.For example: hashMap.forEach(11).
+   */
+  it('testForEach056', 0, function () {
+    let  hashMap = new HashMap();
+    try {
+      hashMap.forEach(11);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "callbackfn" must be callable. Received value is: 11`);
+    }
+  });
 });
 }
