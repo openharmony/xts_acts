@@ -21,6 +21,7 @@ group("communication") {
       "bluetooth_on:ActsBluetoothOnJsTest",
       "bluetooth_profile:ActsBluetoothProFileJsTest",
       "bluetooth_standard:ActsBluetoothJsTest",
+      "bluetooth_switchoff:ActsBluetoothSwitchTest",
       "dsoftbus/rpc:ActsRpcJsTest",
       "nfc_Controller:ActsNFCJSTest",
       "nfc_ErrorCode:ActsNFCErrorJSTest",
