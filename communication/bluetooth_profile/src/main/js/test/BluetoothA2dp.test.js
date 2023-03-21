@@ -14,19 +14,8 @@
  */
 
 import bluetooth from '@ohos.bluetooth';
-import geolocation from '@ohos.geolocation';
-import geolocationm from '@ohos.geoLocationManager';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import bundle from '@ohos.bundle';
-import osaccount from '@ohos.account.osAccount';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-let ProfileId = {
-    PROFILE_A2DP_SOURCE: 1,
-    PROFILE_HANDS_FREE_AUDIO_GATEWAY: 4,
-    PROFILE_HID_HOST: 6,
-    PROFILE_PAN_NETWORK: 7
-};
 
 export default function bluetoothhostTest_host_1() {
 describe('bluetoothhostTest_host_1', function () {
@@ -60,32 +49,6 @@ describe('bluetoothhostTest_host_1', function () {
                 console.info('[bluetooth_js] enable success');
         }
     }
-	async function applyPermission() {
-		let osAccountManager = osaccount.getAccountManager();
-		console.info("=== getAccountManager finish");
-		let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
-		console.info("LocalId is :" + localId);
-		let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, localId);
-		let atManager = abilityAccessCtrl.createAtManager();
-		if (atManager != null) {
-        let tokenID = appInfo.accessTokenId;
-        console.info('[permission] case accessTokenID is ' + tokenID);
-        let permissionName1 = 'ohos.permission.LOCATION';
-        let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
-        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
-        }).catch((err) => {
-            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
-        });
-        await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
-        }).catch((err) => {
-            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
-        });
-		} else {
-        console.info('[permission] case apply permission failed, createAtManager failed');
-		}
-	}
     beforeAll(function () {
         console.info('beforeAll called')
     })
