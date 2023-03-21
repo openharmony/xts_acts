@@ -53,15 +53,6 @@ async function applyPermission() {
     }
 }
 
-let wifiChannelWidth = {
-    WIDTH_20MHZ : 0,
-    WIDTH_40MHZ : 1,
-    WIDTH_80MHZ : 2,
-    WIDTH_160MHZ : 3,
-    WIDTH_80MHZ_PLUS : 4,
-    WIDTH_INVALID:null,
-}
-
 export default function actsWifiManagerFunctionsTest() {
     describe('actsWifiManagerFunctionsTest', function() {
         beforeAll(async function (done) {
@@ -185,6 +176,25 @@ export default function actsWifiManagerFunctionsTest() {
             let countrylenth = getCountryCodeResult.length;
             console.info("[wifi_test]getCountryCode.length :" + JSON.stringify(countrylenth));
             expect(true).assertEqual(countrylenth == 2);
+            
+            let WIDTH_20MHZ = wifiMg.WifiChannelWidth .WIDTH_20MHZ;
+            console.info("[wifi_test]WIDTH_20MHZ : " + JSON.stringify(WIDTH_20MHZ));
+            expect(true).assertEqual( WIDTH_20MHZ == 0);
+            let WIDTH_40MHZ = wifiMg.WifiChannelWidth .WIDTH_40MHZ;
+            console.info("[wifi_test]WIDTH_40MHZ : " + JSON.stringify(WIDTH_40MHZ));
+            expect(true).assertEqual( WIDTH_40MHZ == 1);
+            let WIDTH_80MHZ = wifiMg.WifiChannelWidth .WIDTH_80MHZ;
+            console.info("[wifi_test]WIDTH_80MHZ : " + JSON.stringify(WIDTH_80MHZ));
+            expect(true).assertEqual( WIDTH_80MHZ == 2);
+            let WIDTH_160MHZ = wifiMg.WifiChannelWidth .WIDTH_160MHZ;
+            console.info("[wifi_test]WIDTH_160MHZ : " + JSON.stringify(WIDTH_160MHZ));
+            expect(true).assertEqual( WIDTH_160MHZ == 3);
+            let WIDTH_80MHZ_PLUS = wifiMg.WifiChannelWidth .WIDTH_80MHZ_PLUS;
+            console.info("[wifi_test]WIDTH_80MHZ_PLUS : " + JSON.stringify(WIDTH_80MHZ_PLUS));
+            expect(true).assertEqual( WIDTH_80MHZ_PLUS == 4);
+            let WIDTH_INVALID = wifiMg.WifiChannelWidth .WIDTH_INVALID;
+            console.info("[wifi_test]WIDTH_INVALID : " + JSON.stringify(WIDTH_INVALID));
+            expect(true).assertEqual( WIDTH_INVALID == 5);
         })
 
         /**

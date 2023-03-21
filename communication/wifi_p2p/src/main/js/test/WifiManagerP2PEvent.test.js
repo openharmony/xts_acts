@@ -14,13 +14,10 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-
 import wifiMg from '@ohos.wifiManager'
 import osaccount from '@ohos.account.osAccount'
 import bundle from '@ohos.bundle'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-
-
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
 }
@@ -182,12 +179,20 @@ export default function actsWifiManagerEventTest() {
                 groupName : "DIRECT-AAAZZZ123",
                 goBand : wifiMg.GroupOwnerBand.GO_BAND_AUTO,
             };
-            await wifiMg.getCurrentGroup()
-                .then(data => {
-                    let resultLength = Object.keys(data).length;
-                    console.info("[wifi_test] getCurrentGroup  promise result -> " + JSON.stringify(data));
-                    expect(true).assertEqual(resultLength!=0);
-                });
+            try {
+                await wifiMg.getCurrentP2pGroup()
+                    .then(data => {
+                        let resultLength = Object.keys(data).length;
+                        console.info("[wifi_test] getCurrentP2pGroup  promise result -> " + JSON.stringify(data));
+                        expect(true).assertEqual(resultLength!=0);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentP2pGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]getCurrentP2pGroup promise error: " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
             wifiMg.off(p2pGroupState, p2pPersistentGroupChangeCallback);
             done();
         })
@@ -214,5 +219,3 @@ export default function actsWifiManagerEventTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
-
-

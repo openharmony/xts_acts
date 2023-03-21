@@ -20,6 +20,17 @@ import osaccount from '@ohos.account.osAccount'
 import bundle from '@ohos.bundle'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 
+function sleep(delay) {
+    return new Promise(resovle => setTimeout(resovle, delay))
+}
+
+function checkWifiPowerOn(){
+    console.info("[wifi_test]wifi status:" + wifi.isWifiActive());
+}
+function resolveIP(ip) {
+    return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
+}
+
 async function applyPermission() {
     let osAccountManager = osaccount.getAccountManager();
     console.info("=== getAccountManager finish");
@@ -39,17 +50,6 @@ async function applyPermission() {
     } else {
         console.info('[permission] case apply permission failed, createAtManager failed');
     }
-}
-
-function sleep(delay) {
-    return new Promise(resovle => setTimeout(resovle, delay))
-}
-
-function checkWifiPowerOn(){
-    console.info("[wifi_test]wifi status:" + wifi.isWifiActive());
-}
-function resolveIP(ip) {
-    return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
 }
 
 export default function actsWifiFunctionsTest() {
@@ -74,8 +74,6 @@ export default function actsWifiFunctionsTest() {
         * @tc.level Level 0
         */
         it('Communication_WiFi_XTS_Sta_0002', 0, async function (done) {
-            let scan = wifi.scan();
-            await sleep(3000);
             await wifi.getScanInfos()
                 .then(result => {
                     let clen = Object.keys(result).length;
