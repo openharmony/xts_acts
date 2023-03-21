@@ -474,7 +474,7 @@ export default function AVPlayerLocalTest() {
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0200', 0, async function (done) {
             let audioTrackKey = new Array('channel_count', 'codec_mime', 'sample_rate', 'track_index',
             'track_type');
-            let audioTrackValue = new Array(1, 2, 48000, 0, 0);
+            let audioTrackValue = new Array(1, 1, 48000, 0, 0);
             let descriptionKey = new Array(audioTrackKey);
             let descriptionValue = new Array(audioTrackValue);
             testCheckTrackDescription(fileDescriptor2, avPlayer, descriptionKey, descriptionValue, done)
