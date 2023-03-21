@@ -23,6 +23,9 @@ struct SetCircle {
   @State name: string = 'CanvasLineCap';
   @State StepTips: string = '操作步骤：点击不同的端点样式控件'+'\n'+'预期结果：原本默认端点样式会随点击变化';
   @State Vue: boolean = false;
+  @State num1: number = 0;
+  @State num2: number = 0;
+  @State num3: number = 0;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -38,7 +41,10 @@ struct SetCircle {
             this.context.moveTo(100, 100);
             this.context.lineTo(250, 100);
             this.context.stroke();
-            this.Vue = true;
+            this.num1 = 1;
+            if ( this.num1 == this.num3 && this.num2 == 1 ){
+              this.Vue = true;
+            }
           })
         Text('round').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -49,7 +55,10 @@ struct SetCircle {
             this.context.moveTo(100, 100);
             this.context.lineTo(250, 100);
             this.context.stroke();
-            this.Vue = true;
+            this.num2 = 1;
+            if ( this.num1 == 1 && this.num3 == this.num2 ){
+              this.Vue = true;
+            }
           })
         Text('square').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
           .onClick(()=>{
@@ -60,7 +69,10 @@ struct SetCircle {
             this.context.moveTo(100, 100);
             this.context.lineTo(250, 100);
             this.context.stroke();
-            this.Vue = true;
+            this.num3 = 1;
+            if ( this.num1 == 1 && this.num3 == this.num2 ){
+              this.Vue = true;
+            }
           })
       }.width('70%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {

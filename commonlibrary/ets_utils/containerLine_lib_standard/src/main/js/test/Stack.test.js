@@ -496,5 +496,37 @@ describe("StackTest", function () {
       expect(err.message).assertEqual(`The push method cannot be bound`);
     }
   });
+
+  /**
+   * @tc.name: testIsEmpty037
+   * @tc.desc: Determine whether the Stack instance is empty. For example: stack.isEmpty.bind({}, "a")().
+   */  
+  it('testIsEmpty037', 0, function () {
+    let  stack = new Stack();
+    try {
+      stack.isEmpty.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The isEmpty method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testPop038
+   * @tc.desc: Delete top of stack element. For example: stack.pop.bind({}, "a")().
+   */
+  it('testPop038', 0, function () {
+    let  stack = new Stack();
+    try {
+      stack.pop.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The pop method cannot be bound`);
+    }
+  });
 });
 }

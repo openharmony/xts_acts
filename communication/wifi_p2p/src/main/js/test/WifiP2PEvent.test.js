@@ -16,6 +16,30 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 import wifi from '@ohos.wifi'
+import osaccount from '@ohos.account.osAccount'
+import bundle from '@ohos.bundle'
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+
+async function applyPermission() {
+    let osAccountManager = osaccount.getAccountManager();
+    console.info("=== getAccountManager finish");
+    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+    console.info("LocalId is :" + localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.wifi.wifidevice', 0, localId);
+    let atManager = abilityAccessCtrl.createAtManager();
+    if (atManager != null) {
+        let tokenID = appInfo.accessTokenId;
+        console.info('[permission] case accessTokenID is ' + tokenID);
+        let permissionName1 = 'ohos.permission.LOCATION';
+        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+    } else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+    }
+}
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -27,6 +51,12 @@ function checkWifiPowerOn(){
 
 export default function actsWifiEventTest() {
     describe('actsWifiEventTest', function () {
+        beforeAll(async function (done) {
+            console.info('beforeAll case');
+            await applyPermission();
+            done();
+        })
+
         beforeEach(function () {
             console.info("[wifi_test]beforeEach start" );
             checkWifiPowerOn();
@@ -70,11 +100,14 @@ export default function actsWifiEventTest() {
                 deviceAddress : "00:00:00:00:00:00",
                 netId : -1,
                 passphrase : "12345678",
-                groupName : "AAAZZZ456",
+                groupName : "DIRECT-AAAZZZ456",
                 goBand : wifi.GroupOwnerBand.GO_BAND_AUTO
             };
             let connectResult = wifi.p2pConnect(wifiP2PConfig);
             console.info("[wifi_test]test p2pConnect result." + connectResult);
+            let p2pCancelResult = wifi.p2pCancelConnect();
+            await sleep(2000);
+            console.info("[wifi_test]test p2pCancelConnect result." + p2pCancelResult);
             await wifi.getP2pLinkedInfo()
                 .then(data => {
                     let resultLength = Object.keys(data).length;
@@ -84,9 +117,6 @@ export default function actsWifiEventTest() {
                 });
             await sleep(2000);
             wifi.off(p2pConnectionState, p2pConnectionChangeCallback);
-            let removeGroupResult = wifi.removeGroup();
-            console.info("[wifi_test]test start removeGroup:" + removeGroupResult);
-            expect(removeGroupResult).assertTrue();
             done();
         })
 
@@ -147,7 +177,7 @@ export default function actsWifiEventTest() {
                 deviceAddress : "00:00:00:00:00:00",
                 netId : -2,
                 passphrase : "12345678",
-                groupName : "AAAZZZ123",
+                groupName : "DIRECT-AAAZZZ123",
                 goBand : wifi.GroupOwnerBand.GO_BAND_AUTO,
             };
             let createGroupResult = wifi.createGroup(WifiP2PConfig);

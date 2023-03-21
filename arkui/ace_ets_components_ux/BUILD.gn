@@ -16,8 +16,12 @@ group("componentUxTest") {
   if (is_standard_system) {
     deps = [
       "ace_ets_component_button:ActsAceButtonTest",
+      "ace_ets_component_datepicker:ActsAceDatePickerTest",
+      "ace_ets_component_radio:ActsAceRadioTest",
       "ace_ets_component_select:ActsAceSelectTest",
       "ace_ets_component_sidebar:ActsAceSideBarTest",
+      "ace_ets_component_tabs:ActsAceTabsTest",
+      "ace_ets_component_text:ActsAceTextTest",
     ]
   }
 }

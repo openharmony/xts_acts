@@ -41,6 +41,7 @@ import fileIOSymlink from './members/symlink.test.js'
 import fileIOTruncate from './members/truncate.test.js'
 import fileIOUnlink from './members/unlink.test.js'
 import fileIOWrite from './members/write.test.js'
+import fileIORW from './members/filerw.test.js'
 export default function testsuite() {
     fileIOAccess()
     fileIOClose()
@@ -70,4 +71,5 @@ export default function testsuite() {
     fileIOTruncate()
     fileIOUnlink()
     fileIOWrite()
+    fileIORW()
 }

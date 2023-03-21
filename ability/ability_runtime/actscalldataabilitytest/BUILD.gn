@@ -22,6 +22,8 @@ ohos_js_hap_suite("ActsCallDataAbilityTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsCallDataAbilityTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 ohos_js_assets("actscalldataabilitytest_ets_assets") {
   source_dir = "./entry/src/main/ets"

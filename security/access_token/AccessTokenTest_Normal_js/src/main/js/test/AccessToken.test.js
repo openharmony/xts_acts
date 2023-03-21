@@ -65,7 +65,7 @@ describe('AccessTokenTest', function () {
         }
     }
 
-    /**
+   /**
      * @tc.number Test_verifyAccessToken_001
      * @tc.name Test atManager.verifyAccessToken.
      * @tc.desc After the installation, user_grant permission is not granted by default(Promise).
@@ -139,6 +139,39 @@ describe('AccessTokenTest', function () {
 
         var result = await atManager.verifyAccessToken(tokenID, permissionName);
         console.info("Test_verifyAccessToken_005 tokenID" + tokenID + "-" + result)
+        expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
+
+        done();
+    })
+     /**
+     * @tc.number Test_verifyAccessToken_006
+     * @tc.name Test atManager.verifyAccessToken.
+     * @tc.desc Test Error tokenID(Promise).
+     */
+    it('Test_verifyAccessToken_006', 0, async function(done){
+        console.info("Test_verifyAccessToken_006 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        var permissionName = "ohos.permission.GRANT_SENSITIVE_PERMISSIONS";
+
+        var result = await atManager.verifyAccessToken(1111111111, permissionName);
+        console.info("Test_verifyAccessToken_006 tokenID" + tokenID + "-" + result)
+        expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
+
+        done();
+    })
+
+     /**
+     * @tc.number Test_verifyAccessToken_007
+     * @tc.name Test atManager.verifyAccessToken.
+     * @tc.desc Test Error permission(Promise).
+     */
+    it('Test_verifyAccessToken_007', 0, async function(done){
+        console.info("Test_verifyAccessToken_007 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        var permissionName = "ohos.permission.GRANT_SENSITIVE_PERMISSIO";
+
+        var result = await atManager.verifyAccessToken(tokenID, permissionName);
+        console.info("Test_verifyAccessToken_007 tokenID" + tokenID + "-" + result)
         expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
 
         done();
@@ -218,6 +251,42 @@ describe('AccessTokenTest', function () {
             atManager.verifyAccessTokenSync(tokenID, permissionName);
         } catch (error) {
             console.info("Test_verifyAccessTokenSync_004 tokenID" + JSON.stringify(error))
+            expect(error.code).assertEqual(ERR_PARAM_INVALID);
+        }
+    })
+
+    /**
+     * @tc.number Test_verifyAccessTokenSync_0500
+     * @tc.name Test_verifyAccessTokenSync_005.
+     * @tc.desc Test Error tokenID(Promise).
+     */
+    it('Test_verifyAccessTokenSync_005', 0, function(){
+        console.info("Test_verifyAccessTokenSync_005 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        var permissionName = "ohos.permission.GRANT_SENSITIVE_PERMISSIONS";
+
+        try {
+            atManager.verifyAccessTokenSync(1111111111, permissionName);
+        } catch (error) {
+            console.info("Test_verifyAccessTokenSync_005 tokenID" + JSON.stringify(error))
+            expect(error.code).assertEqual(ERR_PARAM_INVALID);
+        }
+    })
+
+    /**
+     * @tc.number Test_verifyAccessTokenSync_0600
+     * @tc.name Test_verifyAccessTokenSync_006.
+     * @tc.desc Test Error permission(Promise).
+     */
+    it('Test_verifyAccessTokenSync_006', 0, function(){
+        console.info("Test_verifyAccessTokenSync_006 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        var permissionName = "ohos.permission.GRANT_SENSITIVE_PERMISSIO";
+
+        try {
+            atManager.verifyAccessTokenSync(tokenID, permissionName);
+        } catch (error) {
+            console.info("Test_verifyAccessTokenSync_006 tokenID" + JSON.stringify(error))
             expect(error.code).assertEqual(ERR_PARAM_INVALID);
         }
     })
@@ -314,6 +383,61 @@ describe('AccessTokenTest', function () {
     })
 
     /**
+     * @tc.number Test_checkAccessToken_006
+     * @tc.name Test atManager.checkAccessToken.
+     * @tc.desc After the installation, user_grant permission is not granted by default(Promise).
+     */
+    it('Test_checkAccessToken_006', 0, async function(done){
+        console.info("Test_checkAccessToken_006 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.checkAccessToken(tokenID, permissionNameUser);
+        } catch(error) {
+            console.info("Test_checkAccessToken_006 tokenID" + JSON.stringify(error))
+            expect(error.code).assertEqual(GrantStatus.PERMISSION_DENIED);
+        }
+        done();
+    })
+
+    /**
+     * @tc.number Test_checkAccessToken_007
+     * @tc.name Test atManager.checkAccessToken.
+     * @tc.desc Test Error tokenID(Promise).
+     */
+    it('Test_checkAccessToken_007', 0, async function(done){
+        console.info("Test_checkAccessToken_007 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        var permissionName = "ohos.permission.GRANT_SENSITIVE_PERMISSIONS";
+
+        try {
+            atManager.checkAccessToken(1111111111, permissionName)
+        } catch (err) {
+            expect(err.code).assertEqual(ERR_PARAM_INVALID);
+        }
+
+        done();
+    })
+
+     /**
+     * @tc.number Test_checkAccessToken_008
+     * @tc.name Test atManager.checkAccessToken.
+     * @tc.desc Test Error permission(Promise).
+     */
+    it('Test_checkAccessToken_008', 0, async function(done){
+        console.info("Test_checkAccessToken_008 start");
+        var atManager = abilityAccessCtrl.createAtManager();
+        var permissionName = "ohos.permission.GRANT_SENSITIVE_PERMISSIO";
+
+        try {
+            atManager.checkAccessToken(tokenID, permissionName)
+        } catch (err) {
+            expect(err.code).assertEqual(ERR_PARAM_INVALID);
+        }
+
+        done();
+    })
+	
+	 /**
      * @tc.number Test_requestPermissionsFromUser_0100
      * @tc.name Test_requestPermissionsFromUser_001.
      * @tc.desc RequestPermissionsFromUser normal scenario(Promise).
@@ -402,6 +526,6 @@ describe('AccessTokenTest', function () {
         }
         done();
     })
-
+    
 })
 }
