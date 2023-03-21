@@ -131,6 +131,105 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       clearTimeout(timeoutId)
     }
     /**
+     * @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_001
+     * @tc.name       Test snapshotTest1
+     * @tc.desc       Scenario of screenshot of verification window
+     */
+    it('snapshotTest1', 0, async function (done) {
+      let caseName = 'snapshotTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let baseWndType = 1;
+      let windowId = 'snapshotTest1';
+      let tempWnd = null
+      tempWnd = await ohosWindow.create(context, windowId, baseWndType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      })
+      console.log(msgStr + 'ohosWindow.create ' + baseWndType + '   ,tempWnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      console.log(msgStr + 'tempWnd.show success');
+      await sleep(5000);
+      let snapshotData = await tempWnd.snapshot().catch((err) => {
+        tempWnd.destroyWindow();
+        unexpectedError(err, caseName, 'mainWin.snapshot', done);
+        console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
+      })
+      expect(!!snapshotData).assertTrue();
+      await tempWnd.destroyWindow();
+      done();
+    })
+    /**
+     * @tc.number SUB_WINDOW_SNAPSHOT_JSAPI_002
+     * @tc.name Test snapshotTest2
+     * @tc.desc Scenario of screenshot of verification window
+     */
+    it('snapshotTest2', 0, async function (done) {
+      let caseName = 'snapshotTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      function createWin(windId) {
+        return new Promise(function (resolve, reject) {
+          ohosWindow.create(context, windId, tempType, (err, data) => {
+            if (err && err.code) {
+              reject(null)
+            } else {
+              console.log(msgStr + 'ohosWindow.create ' + tempType + ' wnd: ' + tempWnd);
+              resolve(data)
+            }
+          })
+        })
+      }
+      function show(tempWnd) {
+        return new Promise(function (resolve, reject) {
+          tempWnd.show((err) => {
+            if (err && err.code) {
+              reject(null)
+            } else {
+              console.log(msgStr + 'mainWnd.show success');
+              resolve(true)
+            }
+          })
+        })
+      }
+      let windId = 'snapshotTest2';
+      let tempWnd;
+      tempWnd = await createWin(windId).catch(err => {
+        console.info(msgStr + `ohosWindow.create catch error: ${JSON.stringify(err)}`)
+        expect().assertFail();
+        done();
+      })
+      console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(tempWnd));
+      expect(!!tempWnd).assertTrue();
+      await show(tempWnd).catch((err) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      });
+      console.log(msgStr + 'tempWnd.show success');
+      await sleep(5000);
+      tempWnd.snapshot(async(err, data) => {
+        if (err && err.code) {
+          console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
+          try{
+            expect().assertFail();
+          } catch (error) {
+            console.info(`expected catch error: ${JSON.stringify(error)}`)
+          }
+          await tempWnd.destroyWindow();
+          done();
+          return;
+        }
+        await tempWnd.destroyWindow();
+        done();
+        console.log(msgStr + 'snapshot success data:' + JSON.stringify(data));
+      })
+
+    })
+    /**
      * @tc.number SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_006
      * @tc.name Test setSystemBarEnableTest6
      * @tc.desc Test ohosWindow.setSystemBarEnable API function test1.
@@ -2085,38 +2184,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
       console.log(msgStr + 'done ');
       done();
-    })
-    /**
-     * @tc.number SUB_WINDOW_SNAPSHOT_JSAPI_002
-     * @tc.name Test snapshotTest2
-     * @tc.desc Scenario of screenshot of verification window
-     */
-    it('snapshotTest2', 0, async function (done) {
-      let caseName = 'snapshotTest2';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let mainWin = null
-      mainWin = await windowStage.getMainWindow().catch(err => {
-        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
-      });
-      console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
-
-      expect(!!mainWin).assertTrue();
-      mainWin.snapshot((err, data) => {
-        if (err && err.code) {
-          console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
-          try{
-            expect().assertFail();
-          } catch (error) {
-            console.info(`expected catch error: ${JSON.stringify(error)}`)
-          }
-          done();
-          return;
-        }
-        done();
-        console.log(msgStr + 'snapshot success data:' + JSON.stringify(data));
-      })
-
     })
     /**
      * @tc.number SUB_WINDOW_DIALOGTARGETTOUCH_JSAPI_002

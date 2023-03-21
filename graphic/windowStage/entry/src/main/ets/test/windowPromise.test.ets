@@ -1459,27 +1459,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-    * @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_001
-    * @tc.name       Test snapshotTest1
-    * @tc.desc       Scenario of screenshot of verification window
-    */
-    it('snapshotTest1', 0, async function (done) {
-      let caseName = 'snapshotTest1';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let mainWin = await windowStage.getMainWindow().catch((err) => {
-        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
-      });
-      console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
-      expect(!!mainWin).assertTrue();
-      let snapshotData = await mainWin.snapshot().catch((err) => {
-        unexpectedError(err, caseName, 'mainWin.snapshot', done);
-        console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
-      })
-      expect(!!snapshotData).assertTrue();
-      done();
-    })
-    /**
     * @tc.number     SUB_WINDOW_DIALOGTARGETTOUCH_JSAPI_001
     * @tc.name       Test dialogTargetTouchTest1
     * @tc.desc       Verify the scenario of opening modal window
