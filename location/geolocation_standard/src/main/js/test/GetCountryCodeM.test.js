@@ -30,7 +30,7 @@ async function changedLocationMode(){
     console.info('[lbs_js] getLocationSwitchState result: ' + JSON.stringify(result1));
     if(!result1){
         await geolocation.requestEnableLocation().then(async(result) => {
-            await sleep(3000);
+            await sleep(1000);
             console.info('[lbs_js] test requestEnableLocation promise result: ' + JSON.stringify(result));
         }).catch((error) => {
             console.info("[lbs_js] promise then error." + JSON.stringify(error));
@@ -130,6 +130,7 @@ export default function geolocationTest_6() {
             geolocationm.getCountryCode((err,data) => {
                 if (err) {
                     return console.info("[lbs_js] getCountryCode callback err:  " + JSON.stringify(err));
+                    expect().assertFail();
                 } else {
                     console.info("[lbs_js] getCountryCode callback success"+ JSON.stringify(data));
                     expect(true).assertEqual(data != null);
@@ -158,7 +159,7 @@ export default function geolocationTest_6() {
             });
         } catch (error) {
             console.info("[lbs_js] countryCodeChangeOn try err." + JSON.stringify(error));
-            expect(true).assertEqual(error != null);
+            expect().assertFail();
         }
         try {
             await geolocationm.getCountryCode().then((result) => {
@@ -178,7 +179,7 @@ export default function geolocationTest_6() {
             })
         } catch (error) {
             console.info("[lbs_js] countryCodeChangeOn try err." + JSON.stringify(error));
-            expect(true).assertEqual(error != null);
+            expect().assertFail();
         }
         done();
     })

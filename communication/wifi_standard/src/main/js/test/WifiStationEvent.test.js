@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 import wifi from '@ohos.wifi'
-
 import wifiext from '@ohos.wifiext'
 import osaccount from '@ohos.account.osAccount'
 import bundle from '@ohos.bundle'
@@ -54,11 +53,6 @@ function resolveIP(ip) {
     return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
 }
 
-let PowerModel = {
-    SLEEPING : 0,
-    GENERAL : 1,
-    THROUGH_WALL : 2,
-}
 
 export default function actsWifiEventTest() {
     describe('actsWifiEventTest', function() {
@@ -362,6 +356,15 @@ export default function actsWifiEventTest() {
                 console.info("SUB_Communication_WiFi_SysCaps_Test_0007 canIUse isAccessToken error: " + e);
             }
             console.info('SUB_Communication_WiFi_SysCaps_Test_0007 end');
+            let SLEEPING = wifiext.PowerModel.SLEEPING;
+            console.info("[wifi_test]SLEEPING : " + JSON.stringify(SLEEPING));
+            expect(true).assertEqual( SLEEPING == 0);
+            let GENERAL = wifiext.PowerModel.GENERAL;
+            console.info("[wifi_test]GENERAL : " + JSON.stringify(GENERAL));
+            expect(true).assertEqual( GENERAL == 1);
+            let THROUGH = wifiext.PowerModel.THROUGH_WALL;
+            console.info("[wifi_test]THROUGH : " + JSON.stringify(THROUGH));
+            expect(true).assertEqual( THROUGH == 2);
             done();
         })
         console.log("*************[wifi_test] start wifi js unit test end*************");

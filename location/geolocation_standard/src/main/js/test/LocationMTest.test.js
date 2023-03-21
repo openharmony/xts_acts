@@ -39,7 +39,7 @@ async function changedLocationMode(){
     console.info('[lbs_js] getLocationSwitchState result: ' + JSON.stringify(result1));
     if(!result1){
         await geolocation.requestEnableLocation().then(async(result) => {
-            await sleep(3000);
+            ;
             console.info('[lbs_js] test requestEnableLocation promise result: ' + JSON.stringify(result));
         }).catch((error) => {
             console.info("[lbs_js] promise then error." + JSON.stringify(error));
@@ -80,12 +80,18 @@ async function applyPermission() {
         console.info('[permission] case accessTokenID is ' + tokenID);
         let permissionName1 = 'ohos.permission.LOCATION';
         let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
+        let permissionName3 = 'ohos.permission.APPROXIMATELY_LOCATION';
         await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
             console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
         }).catch((err) => {
             console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
         });
         await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+        await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
             console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
         }).catch((err) => {
             console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
@@ -113,6 +119,7 @@ export default function geolocationTest_geo7() {
         })
 
 
+
     /**
      * @tc.number SUB_HSS_LocationSystem_LocSwitch_0600
      * @tc.name Test requestrequestEnableLocation api
@@ -124,8 +131,8 @@ export default function geolocationTest_geo7() {
      it('SUB_HSS_LocationSystem_LocSwitch_0600', 0, function () {
         try {
             let state = geolocationm.isLocationEnabled();
-            console.info('[lbs_js] getLocationSwitchState06 result: ' + JSON.stringify(state));       
-            expect(true).assertEqual(JSON.stringify(state) != null);
+            console.info('[lbs_js] getLocationSwitchState06 result: ' + JSON.stringify(state));
+            expect(true).assertEqual(state);
         } catch (error) {
             console.info("[lbs_js] getLocationSwitchState06 try err." + JSON.stringify(error));
             expect().assertFail();
@@ -147,15 +154,16 @@ export default function geolocationTest_geo7() {
         }
         try {
             geolocationm.on('locationEnabledChange', locationServiceState);
+
         } catch (error) {
             console.info("[lbs_js] locationServiceStateOn07 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect().assertFail();
         }
         try {
             geolocationm.off('locationEnabledChange', locationServiceState);
         } catch (error) {
             console.info("[lbs_js] locationServiceStateOff07 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect().assertFail();
         }
         done();
     })
@@ -174,7 +182,7 @@ export default function geolocationTest_geo7() {
             geolocationm.getCurrentLocation(currentLocationRequest, (err, result) => {
                 if (err) {
                     console.info("[lbs_js] getCurrentLocation15 callback err:  " + JSON.stringify(err));
-                    expect(true).assertEqual(err != null);
+                    expect(err.code).assertEqual(3301200);
                     console.info('[lbs_js] getCurrentLocationCallback reject after');
                     done();
                 } else {
@@ -184,9 +192,9 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation15 callback try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
-        await sleep(1500);
+        await sleep(1000);
         done();
     })
 
@@ -205,12 +213,13 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation16 promise result ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation16 promise err:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation16 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -230,12 +239,13 @@ export default function geolocationTest_geo7() {
                 expect(true).assertEqual(result != null);
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation callback17:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation callback17 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -254,12 +264,13 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation18 promise result ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation18 promise err:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation18 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -278,12 +289,13 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation19 promise result:' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation19 promise err:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation18 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -300,27 +312,29 @@ export default function geolocationTest_geo7() {
         let currentLocationRequest1 = { "priority": 0x200, "scenario": 0x305, "timeoutMs": 1000, "maxAccuracy": 10 };
         let currentLocationRequest2 = { "priority": 0x200, "scenario": 0x301, "timeoutMs": 1000, "maxAccuracy": 10 };
         try {
-            await geolocationm.getCurrentLocation(currentLocationRequest).then((result) => {
+            await geolocationm.getCurrentLocation(currentLocationRequest1).then((result) => {
                 console.info('[lbs_js] getCurrentLocation1901 promise result:' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation1901 promise err:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation1901 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         try {
             await geolocationm.getCurrentLocation(currentLocationRequest2).then((result) => {
                 console.info('[lbs_js] getCurrentLocation1902 promise result:' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation1902 promise err:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation1902 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -339,12 +353,13 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation21 promise result ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation21 promise err:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation21 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -363,12 +378,13 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation22 promise result:' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation22 promise err:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation22 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -387,12 +403,13 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation promise result23:' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation promise err23:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation23 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -412,23 +429,25 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation promise result241 ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation promise err241:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation241 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         try {
             await geolocationm.getCurrentLocation(currentLocationRequest1).then((result) => {
                 console.info('[lbs_js] getCurrentLocation promise result242 ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation promise err242:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation242 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -449,23 +468,25 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation promise result251 ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation promise err251:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation251 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         try {
             await geolocationm.getCurrentLocation(currentLocationRequest1).then((result) => {
                 console.info('[lbs_js] getCurrentLocation promise result252 ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation promise err252:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation252 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -485,23 +506,25 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation promise result261 ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation promise err261:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation261 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         try {
             await geolocationm.getCurrentLocation(currentLocationRequest1).then((result) => {
                 console.info('[lbs_js] getCurrentLocation promise result262 ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation promise err262:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation262 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -521,23 +544,25 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] getCurrentLocation promise result271 ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation promise err271:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             });
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation271 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         try {
             await geolocationm.getCurrentLocation(currentLocationRequest1).then((result) => {
                 console.info('[lbs_js] getCurrentLocation promise result272 ' + JSON.stringify(result));
             }).catch(error => {
                 console.info('[lbs_js] getCurrentLocation promise err272:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                expect(error.code).assertEqual(3301200);
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation272 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -550,20 +575,22 @@ export default function geolocationTest_geo7() {
      * @tc.level Level 2
      */
     it('SUB_HSS_SendCommand_0300', 0, async function (done) {
-        let requestInfo = { 'scenairo': 0x301, 'command': "command_1" };
+        let requestInfo = { 'scenario': 0x301, 'command': "command_1" };
         try {
             await geolocationm.sendCommand(requestInfo, (err, result) => {
                 if (err) {
                     console.info('sendcommand callback err:' + JSON.stringify(err));
-                    expect(true).assertEqual(JSON.stringify(err) != null);
+                    console.info('sendcommand not support');
+                    expect(err.code).assertEqual(801);
                     done();
                 }
                 console.info('sendcommand callback result:' + JSON.stringify(result));
             });
         } catch (error) {
             console.info('sendcommand callback err:' + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -576,20 +603,23 @@ export default function geolocationTest_geo7() {
      * @tc.level Level 2
      */
     it('SUB_HSS_SendCommand_0400', 0, async function (done) {
-        let requestInfo = { 'scenairo': 0x301, 'command': "command_1" };
+        let requestInfo = { 'scenario': 0x301, 'command': "command_1" };
         try {
             geolocationm.sendCommand(requestInfo).then((result) => {
-                console.info('sendCommand promise result:' + result);
+                console.info('[lbs_js] sendCommand promise result:' + result);
                 done();
             }).catch(error => {
-                console.info('sendcommand promise err:' + JSON.stringify(error));
-                expect(true).assertEqual(JSON.stringify(error) != null);
+                console.info('[lbs_js] sendcommand promise err:' + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(error.code).assertEqual(801);
+                //expect(true).assertEqual(JSON.stringify(error) != null);
                 done();
             })
         } catch (error) {
-            console.info('sendcommand promise err:' + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] sendcommand promise err:' + JSON.stringify(error));
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -613,14 +643,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn16 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff16 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -644,14 +675,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn17 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff17 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -675,14 +707,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn18 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff18 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -706,14 +739,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn19 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff19 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -742,26 +776,27 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange1);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn201 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.on('locationChange', requestInfo, locationChange2);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn202 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange1);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff201 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange2);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff202 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -786,14 +821,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn21 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff21 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -818,14 +854,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn22 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff22 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -850,14 +887,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn23 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff23 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -881,14 +919,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn24 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff24 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -912,14 +951,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn25 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff25 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -943,14 +983,15 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn26 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff26 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -980,26 +1021,28 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo1, locationChange1);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn271 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange1);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff271 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         try {
             geolocationm.on('locationChange', requestInfo2, locationChange2);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn272 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+           expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange2);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff272 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -1029,26 +1072,28 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo1, locationChange1);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn281 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange1);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff281 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         try {
             geolocationm.on('locationChange', requestInfo2, locationChange2);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn282 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange2);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff282 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -1078,26 +1123,28 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo1, locationChange1);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn291 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange1);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff291 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         try {
             geolocationm.on('locationChange', requestInfo2, locationChange2);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn292 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange2);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff292 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -1121,26 +1168,30 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn03 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff03 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         try {
-            let last =geolocationm.getLastLocation();     
-            console.info('[lbs_js] getLastLocation latitude: ' + result.latitude +
+            let last =geolocationm.getLastLocation();
+            console.info('[lbs_js] getLastLocation latitude: ' + last.latitude +
             ' longitude: ' + result.longitude +' altitude: ' + result.altitude
             +' accuracy: ' + result.accuracy+' speed: ' + result.speed +
             'timeStamp: ' + result.timeStamp+'direction:' + result.direction+' timeSinceBoot: '
             + result.timeSinceBoot +'additions: ' + result.additions+' additionSize' + result.additionSize
             + 'isFromMock' +result.isFromMock);
+
             expect(true).assertEqual(JSON.stringify(last) != null);
         } catch (error) {
             console.info("[lbs_js] getLastLocation error:"+ error)
+            expect(error.code).assertEqual("3301200");
         }
+        await sleep(1500);
         done();
     })
 
@@ -1166,7 +1217,7 @@ export default function geolocationTest_geo7() {
             geolocationm.on('satelliteStatusChange', gnssStatusCb);
         } catch (error) {
             console.info("[lbs_js] satelliteStatusOn03 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x301, "timeInterval":0,
@@ -1179,20 +1230,21 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo, locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn03 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('satelliteStatusChange', gnssStatusCb);
         } catch (error) {
             console.info("[lbs_js] satelliteStatusOff03 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff03 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -1219,8 +1271,7 @@ export default function geolocationTest_geo7() {
             geolocationm.on('nmeaMessage', nmeaCb);
         } catch (error) {
             console.info("nmea on err:" + JSON.stringify(error));
-            expect(true).assertEqual(error !=null);
-            done();
+            expect(true).assertFalse();
         }
         try {
             geolocationm.on('locationChange', requestInfo, locationChange);
@@ -1232,14 +1283,15 @@ export default function geolocationTest_geo7() {
             geolocationm.off('nmeaMessage', nmeaCb);
         } catch (error) { 
             console.info("nmea off err:" + JSON.stringify(error));
-            expect(true).assertEqual(error !=null);
+            expect(true).assertFalse();
         }
         try {
             geolocationm.off('locationChange', locationChange);
         } catch (error) {
             console.info("[lbs_js] locationChangerOff03 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -1261,14 +1313,16 @@ export default function geolocationTest_geo7() {
             geolocationm.on('cachedGnssLocationsChange', CachedGnssLoactionsRequest1, cachedLocationsCb1);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOn071 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(error.code).assertEqual("801");
         }
         try {
             geolocationm.off('cachedGnssLocationsChange',cachedLocationsCb1);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOff071 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
+        await sleep(1500);
         var cachedLocationsCb2 = (locations) => {
             console.log('[lbs_js] cachedGnssLocationsReporting7:locations:' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1278,14 +1332,17 @@ export default function geolocationTest_geo7() {
             geolocationm.on('cachedGnssLocationsChange', CachedGnssLoactionsRequest2, cachedLocationsCb2);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOn072 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         try {
             geolocationm.off('cachedGnssLocationsChange',cachedLocationsCb1);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOff072 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
+        await sleep(1500);
         done();
     })
 
@@ -1307,14 +1364,17 @@ export default function geolocationTest_geo7() {
             geolocationm.on('cachedGnssLocationsChange', CachedGnssLoactionsRequest, cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOn08 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         try {
             geolocationm.off('cachedGnssLocationsChange',cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOff08 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
+        await sleep(1500);
         done();
     })
 
@@ -1336,19 +1396,23 @@ export default function geolocationTest_geo7() {
             geolocationm.on('cachedGnssLocationsChange', CachedGnssLoactionsRequest, cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOn09 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         try {
             geolocationm.off('cachedGnssLocationsChange',cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOff09 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
+        await sleep(1500);
         try {
             geolocationm.getCachedGnssLocationsSize((err, data) => {
                 if (err) {
                     console.info('[lbs_js] getCachedGnssLocationsSize09 callback err:' + JSON.stringify(err));
-                    expect(true).assertEqual(err != null);
+                    console.info('[lbs_js] not support now');
+                    expect(err.code).assertEqual(801);
                 }else {
                     console.info("[lbs_js] getCachedGnssLocationsSize09 callback data:" + JSON.stringify(data));
                     expect(true).assertEqual(data != null);
@@ -1356,7 +1420,8 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] getCachedGnssLocationsSize09 callback try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
+
         }
         await sleep(1000);
         done();
@@ -1380,26 +1445,31 @@ export default function geolocationTest_geo7() {
             geolocationm.on('cachedGnssLocationsChange', CachedGnssLoactionsRequest, cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOn10 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         try {
             geolocationm.off('cachedGnssLocationsChange',cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOff10 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
+        await sleep(1000);
         try {
             await geolocationm.getCachedGnssLocationsSize().then( (result) => {
                 console.info('[lbs_js] getCachedGnssLocationsSiz promise '+ JSON.stringify(result));
                 expect(true).assertEqual(result != null);
             }).catch((error) => {
                 console.info("[lbs_js] promise then error." + JSON.stringify(error));
-                expect(true).assertEqual(error != null);
+                console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual(801);
             });
         } catch (error) {
             console.info("[lbs_js] getCachedGnssLocationsSize promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1500);
         done();
     })
 
@@ -1421,19 +1491,23 @@ export default function geolocationTest_geo7() {
             geolocationm.on('cachedGnssLocationsChange', CachedGnssLoactionsRequest, cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOn11 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         try {
             geolocationm.off('cachedGnssLocationsChange',cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOff11 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
+        await sleep(1000);
         try {
             geolocationm.flushCachedGnssLocations((err, data) => {
                 if (err) {
                     console.info('[lbs_js] flushCachedGnssLocations11 callback err is : ' + JSON.stringify(err));
-                    expect(true).assertEqual(err != null);
+                    console.info('[lbs_js] not support now');
+                    expect(err.code).assertEqual(801);
                 }else {
                     console.info("[lbs_js] flushCachedGnssLocations11 callback data is: " + JSON.stringify(data));
                     expect(true).assertEqual(data != null);
@@ -1441,7 +1515,7 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] flushCachedGnssLocations11 callback try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
         await sleep(1000);
         done();
@@ -1465,25 +1539,31 @@ export default function geolocationTest_geo7() {
             geolocationm.on('cachedGnssLocationsChange', CachedGnssLoactionsRequest, cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOn11 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         try {
             geolocationm.off('cachedGnssLocationsChange',cachedLocationsCb);
         } catch (error) {
             console.info("[lbs_js] cachedGnssLocOff11 try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
+        await sleep(1000);
         try {
             await geolocationm.flushCachedGnssLocations().then( (result) => {
                 console.info('[lbs_js] flushCachedGnssLocations promise '+ JSON.stringify(result));
                 expect(true).assertEqual(result != null);
             }).catch((error) => {
                 console.info("[lbs_js] promise then error." + JSON.stringify(error));
+                console.info('[lbs_js] not support now');
+                expect(error.code).assertEqual(801);
             });
         } catch (error) {
             console.info("[lbs_js] flushCachedGnssLocations11 promise try err." + JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            expect(true).assertFalse();
         }
+        await sleep(1000);
         done();
     })
 
@@ -1510,7 +1590,8 @@ export default function geolocationTest_geo7() {
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOn2 try error:"+ JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         try {
             geolocationm.off('gnssFenceStatusChange',geofenceRequest,
@@ -1523,7 +1604,8 @@ export default function geolocationTest_geo7() {
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOff2 try error:"+ JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         await sleep(1000);
         done();
@@ -1546,13 +1628,16 @@ export default function geolocationTest_geo7() {
                 (want) => {
                     if(err){
                         return console.info("[lbs_js] fenceStatusChange3 on callback err: " + err);
+                        console.info("[lbs_js] fenceStatusChange not support ");
+                        expect(err.code).assertEqual(801);
                     }
                     console.info("[lbs_js] fenceStatusChange3 callback result: " + JSON.stringify(want));
                     expect(true).assertEqual(want !=null);
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOn3 try error:"+ JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         try {
             geolocationm.off('gnssFenceStatusChange',geofenceRequest,
@@ -1565,7 +1650,8 @@ export default function geolocationTest_geo7() {
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOff3 try error:"+ JSON.stringify(error));
-            expect(true).assertEqual(JSON.stringify(error) != null);
+            console.info('[lbs_js] not support now');
+            expect(error.code).assertEqual("801");
         }
         await sleep(1000);
         done();

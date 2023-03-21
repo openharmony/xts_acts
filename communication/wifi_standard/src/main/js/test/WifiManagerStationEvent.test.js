@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 import wifiMg from '@ohos.wifiManager'
-
 import wifiManagerExt from '@ohos.wifiManagerExt'
 import osaccount from '@ohos.account.osAccount'
 import bundle from '@ohos.bundle'
