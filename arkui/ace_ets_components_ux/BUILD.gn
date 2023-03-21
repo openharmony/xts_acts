@@ -22,6 +22,7 @@ group("componentUxTest") {
       "ace_ets_component_sidebar:ActsAceSideBarTest",
       "ace_ets_component_tabs:ActsAceTabsTest",
       "ace_ets_component_text:ActsAceTextTest",
+      "ace_ets_component_textpicker:ActsAceTextPickerTest",
     ]
   }
 }
