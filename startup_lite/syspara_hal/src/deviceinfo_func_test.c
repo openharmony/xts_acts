@@ -427,15 +427,15 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
     printf("Secure Patch Level=%s\n", value);
 
     int year, month, day;
-    sscanf(value, "%04d-%02d-%02d", &year, &month, &day);
-    printf("%04d-%02d-%02d\n", year, month, day);
+    sscanf(value, "%04d\/%02d\/%02d", &year, &month, &day);
+    printf("%04d\/%02d\/%02d\n", year, month, day);
 
     TEST_ASSERT_TRUE(year > 1900 && year < 2056);
     TEST_ASSERT_TRUE(month <= 12 && month > 0);
     TEST_ASSERT_TRUE(day <= 31 && day > 0);
 
     char str[10] = {0};
-    sprintf(str, "%d-%02d-%02d", year, month, day);
+    sprintf(str, "%d\/%02d\/%02d", year, month, day);
     printf("str=%s\n", str);
     TEST_ASSERT_EQUAL_STRING(str, value);
 };
