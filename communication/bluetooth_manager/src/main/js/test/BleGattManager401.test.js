@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+//import bluetooth from '@ohos.bluetooth';
 import bluetooth from '@ohos.bluetoothManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
@@ -47,7 +48,7 @@ describe('bluetoothBLETest4', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function() {
+    beforeAll(function () {
         console.info('beforeAll called')
         gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
     })
