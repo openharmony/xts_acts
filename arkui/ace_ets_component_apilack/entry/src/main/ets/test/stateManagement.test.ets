@@ -213,5 +213,24 @@ export default function stateManagementGetSharedJsunit() {
         done();
       }
     });
+
+     /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0005
+     * @tc.name         test_staticClear_0001
+     * @tc.desc         delete the property
+     */
+    it('test_staticClear_0001', 0, async function (done) {
+      console.info('test_staticClear_0001 Register a customized font in the FontManagerSTART');
+      await Utils.sleep(2000);
+      try {
+        let simple = AppStorage.staticClear();
+        expect(simple).assertFalse();
+        done();
+      } catch (err) {
+        console.info("test_font_registerFont_0001  err : " + JSON.stringify(err));
+        expect(true).assertTrue();
+        done();
+      }
+    });
   })
 }
