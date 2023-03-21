@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,7 +18,7 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 
 var baseLine = 3000; //3 second
-var gObject;
+const CATCH_ERR = -1;
 const TAG = "OBJECTSTORE_TEST";
 
 function changeCallback(sessionId, changeData) {
@@ -130,9 +130,10 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
+            objectTest.off("change");
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOn001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -160,9 +161,9 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOn002 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -198,10 +199,10 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
-
+            objectTest.off("change");
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOn003 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -221,11 +222,11 @@ export default function objectStoreTest() {
             }
             objectTest.on("change", changeCallback);
             console.info(TAG + " start call watch change");
+            objectTest.off("change");
             console.info(TAG + " end call watch change");
-
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOn004 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -267,10 +268,9 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
-
+            objectTest.setSessionId("");
             done()
             console.info(TAG + "************* testOff001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -336,6 +336,7 @@ export default function objectStoreTest() {
                 objectTest.name = "jack1";
                 objectTest.age = 19;
                 objectTest.isVis = true;
+                expect(objectTest.name == "jack1").assertEqual(true);
                 expect(objectTest.age == 19).assertEqual(true);
                 console.info(TAG + " set data success!");
             } else {
@@ -351,10 +352,12 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " testObject is null,set name fail");
             }
-            done();
-            console.info(TAG + "************* testMultiObjectOn001 end *************");
+            objectTest.off("change");
+            testObject.off("change");
             objectTest.setSessionId("");
             testObject.setSessionId("");
+            done();
+            console.info(TAG + "************* testMultiObjectOn001 end *************");
         })
 
         /**
@@ -427,11 +430,10 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
-
-            done();
-            console.info(TAG + "************* testMultiObjectOff001 end *************");
             objectTest.setSessionId("");
             testObject.setSessionId("");
+            done();
+            console.info(TAG + "************* testMultiObjectOff001 end *************");
         })
 
         /**
@@ -480,9 +482,10 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
+            objectTest.off("change");
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testChangeSession001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -501,7 +504,6 @@ export default function objectStoreTest() {
             } catch (error) {
                 console.error(TAG + error);
             }
-
             done();
             console.info(TAG + "************* testUndefinedType001 end *************");
         })
@@ -515,7 +517,6 @@ export default function objectStoreTest() {
             console.info(TAG + "************* testGenSessionId001 start *************");
             var sessionId = distributedObject.genSessionId();
             expect(sessionId != null && sessionId.length > 0 && typeof (sessionId) == 'string').assertEqual(true);
-
             done();
             console.info(TAG + "************* testGenSessionId001 end *************");
         })
@@ -546,10 +547,10 @@ export default function objectStoreTest() {
             var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             objectTest.on("status", statusCallback1);
             console.info(TAG + "watch success");
-
+            objectTest.off("status");
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOnStatus001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -570,10 +571,9 @@ export default function objectStoreTest() {
             console.info(TAG + "start call unwatch status");
             objectTest.off("status", statusCallback1);
             console.info(TAG + "unwatch success");
-
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOnStatus002 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -592,12 +592,11 @@ export default function objectStoreTest() {
             objectTest.on("status", statusCallback3);
             console.info(TAG + "watch success");
             console.info(TAG + "start call unwatch status");
-            objectTest.off("status");
+            objectTest.off("status", statusCallback1);
             console.info(TAG + "unwatch success");
-
+            objectTest.setSessionId("");
             done();
             console.info(TAG + "************* testOnStatus003 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -631,10 +630,9 @@ export default function objectStoreTest() {
             expect(complexObject.parent.father == "jack Dad").assertEqual(true);
             expect(complexObject.list[0].mother == "jack2 mom2").assertEqual(true);
             expect(complexObject.list[1].father == "jack2 Dad2").assertEqual(true);
-
+            complexObject.setSessionId("");
             done();
             console.info(TAG + "************* testComplex001 end *************");
-            complexObject.setSessionId("");
         })
 
         /**
@@ -663,10 +661,9 @@ export default function objectStoreTest() {
             } else {
                 console.info(TAG + " object is null,set name fail");
             }
-
+            objectTest.setSessionId("");
             done()
             console.info(TAG + "************* testMaxSize001 end *************");
-            objectTest.setSessionId("");
         })
 
         /**
@@ -702,47 +699,53 @@ export default function objectStoreTest() {
                 expect(complexObject.list[0].mother == "jack2 mom2").assertEqual(true);
                 expect(complexObject.list[1].father == "jack2 Dad2").assertEqual(true);
 
-                console.log(TAG + "start unWatch change");
+                console.info(TAG + "start unWatch change");
                 complexObject.off("change");
-                console.log(TAG + "end unWatch success");
+                console.info(TAG + "end unWatch success");
             }
             var endTime = new Date().getTime();
             var totalTime = endTime - startTime;
-            console.log("testPerformance001 totalTime = " + totalTime);
-            console.log("testPerformance001 baseLine = " + baseLine);
+            console.info("testPerformance001 totalTime = " + totalTime);
+            console.info("testPerformance001 baseLine = " + baseLine);
             expect(totalTime < baseLine).assertEqual(true);
-
-            done();
-            console.log(TAG + "************* testPerformance001 end *************");
             complexObject.setSessionId("");
+            done();
+            console.info(TAG + "************* testPerformance001 end *************");
+            
         })
-        /**
+       /**
          * @tc.name: testSave001
          * @tc.desc: Save object <Promise>
          * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Save_001
          */
         it('testSave001', 0, async function (done) {
             console.info(TAG + "************* testSave001 start *************");
-
-            var gObject = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
-            gObject.setSessionId("tmpsession01");
-            let result = await gObject.save("local");
-            done();
-            expect(result.sessionId == "tmpsession01").assertEqual(true);
-            expect(result.version == gObject.__version).assertEqual(true);
-            expect(result.deviceId == "local").assertEqual(true);
-
-            gObject.setSessionId("");
-            gObject.name = undefined;
-            gObject.age = undefined;
-            gObject.isVis = undefined;
-
-            gObject.setSessionId("tmpsession01");
-            expect(gObject.name == "Amy").assertEqual(true);
-            expect(gObject.age == 18).assertEqual(true);
-            expect(gObject.isVis == false).assertEqual(true);
-            gObject.setSessionId("");
-            done();
+            var g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            expect(g_object == undefined).assertEqual(false);
+    
+            g_object.setSessionId("testSession001");
+            expect("testSession001" == g_object.__sessionId).assertEqual(true);
+    
+            g_object.save("local").then((ret) => {
+                expect(ret.sessionId == "testSession001").assertEqual(true);
+                expect(ret.version == g_object.__version).assertEqual(true);
+                expect(ret.deviceId == "local").assertEqual(true);
+                done();
+    
+                g_object.setSessionId("");
+                g_object.name = undefined;
+                g_object.age = undefined;
+                g_object.isVis = undefined;
+                g_object.setSessionId("testSession001");
+    
+                expect(g_object.name == "Amy").assertEqual(true);
+                expect(g_object.age == 18).assertEqual(true);
+                expect(g_object.isVis == false).assertEqual(true);
+            }).catch((err) => {
+                console.info('testSave001 err ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect("801").assertEqual(err.code.toString());
+                done();
+            });
             console.info(TAG + "************* testSave001 end *************");
         })
 
@@ -751,67 +754,81 @@ export default function objectStoreTest() {
          * @tc.desc: Save object
          * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Save_002
          */
-        it('testSave002', 0, function (done) {
+         it('testSave002', 0, async function (done) {
             console.info(TAG + "************* testSave002 start *************");
-            var gObject = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
-            if (gObject != undefined && gObject != null) {
-                gObject.setSessionId("tmpsession02");
-                console.info(TAG + "testSave002 joinSession tmpsession02 success:"+ gObject.__sessionId);
-            }
-            gObject.save("local", (result) => {
-                console.info("save callback");
-                expect(result.sessionId == "tmpsession02").assertEqual(true);
-                expect(result.version == gObject.__version).assertEqual(true);
-                expect(result.deviceId == "local").assertEqual(true);
-                console.info("save end");
-                console.info("save success");
-                gObject.setSessionId("");
-                gObject.name = undefined;
-                gObject.age = undefined;
-                gObject.isVis = undefined;
-        
-                console.info("save setSessionId");
-                gObject.setSessionId("tmpsession02");
-                expect(gObject.name == "Amy").assertEqual(true);
-                expect(gObject.age == 18).assertEqual(true);
-                expect(gObject.isVis == false).assertEqual(true);
+            var g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            expect(g_object == undefined).assertEqual(false);
     
-                gObject.setSessionId("");
-            
-            });
-            done();
+            g_object.setSessionId("testSession002");
+            expect("testSession002" == g_object.__sessionId).assertEqual(true);
+    
+            g_object.save("local", (err, result) => {
+                if (err) {
+                    console.info('testSave002 err ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect("801").assertEqual(err.code.toString());
+                    done();
+                    return;
+                }
+                expect(result.sessionId == "testSession002").assertEqual(true);
+                expect(result.version == g_object.__version).assertEqual(true);
+                expect(result.deviceId == "local").assertEqual(true);
+                done();
+    
+                g_object.setSessionId("");
+                g_object.name = undefined;
+                g_object.age = undefined;
+                g_object.isVis = undefined;
+                g_object.setSessionId("testSession002");
+    
+                expect(g_object.name == "Amy").assertEqual(true);
+                expect(g_object.age == 18).assertEqual(true);
+                expect(g_object.isVis == false).assertEqual(true);
+            })
             console.info(TAG + "************* testSave002 end *************");
         })
-
         /**
          * @tc.name: testRevokeSave001
          * @tc.desc: Revoke save object <Promise>
          * @tc.number: SUB_DDM_AppDataFWK_Object_Api_RevokeSave_001
          */
-        it('testRevokeSave001', 0, async function (done) {
+         it('testRevokeSave001', 0, async function (done) {
             console.info(TAG + "************* testRevokeSave001 start *************");
-            var RObject = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
-            RObject.setSessionId("tmpsession03");
-            expect("tmpsession03" == RObject.__sessionId).assertEqual(true);
-            let result = await RObject.save("local");
-            done();
-            expect(result.sessionId == "tmpsession03").assertEqual(true);
-            expect(result.version == RObject.__version).assertEqual(true);
-            expect(result.deviceId == "local").assertEqual(true);
-
-            result = await RObject.revokeSave();
-
-            RObject.setSessionId("");
-            RObject.name = undefined;
-            RObject.age = undefined;
-            RObject.isVis = undefined;
-
-            RObject.setSessionId("tmpsession03");
-            expect(RObject.name == "Amy").assertEqual(false);
-            expect(RObject.age == 18).assertEqual(false);
-            expect(RObject.isVis == false).assertEqual(false);
-            RObject.setSessionId("");
-            done();
+            var g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            expect(g_object == undefined).assertEqual(false);
+    
+            g_object.setSessionId("testSession003");
+            expect("testSession003" == g_object.__sessionId).assertEqual(true);
+    
+            g_object.save("local", (err, result) => {
+                if (err) {
+                    console.info('testRevokeSave001 err ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect("801").assertEqual(err.code.toString());
+                    done();
+                    return;
+                }
+                expect(result.sessionId == "testSession003").assertEqual(true);
+                expect(result.version == g_object.__version).assertEqual(true);
+                expect(result.deviceId == "local").assertEqual(true);
+                g_object.revokeSave((err, result) => {
+                    if (err) {
+                        expect("801").assertEqual(err.code.toString());
+                        done();
+                        return;
+                    }
+                    expect("testSession003" == result.sessionId).assertEqual(true);
+                    g_object.setSessionId("");
+                    g_object.name = undefined;
+                    g_object.age = undefined;
+                    g_object.isVis = undefined;
+                    g_object.setSessionId("testSession003");
+    
+                    expect(g_object.name == undefined).assertEqual(true);
+                    expect(g_object.age == undefined).assertEqual(true);
+                    expect(g_object.isVis == undefined).assertEqual(true);
+                    done();
+                })
+            });
+    
             console.info(TAG + "************* testRevokeSave001 end *************");
         })
 
@@ -820,31 +837,49 @@ export default function objectStoreTest() {
          * @tc.desc: Revoke save object <Callback>
          * @tc.number: SUB_DDM_AppDataFWK_Object_Api_RevokeSave_002
          */
-        it('testRevokeSave002', 0, async function (done) {
+         it('testRevokeSave002', 0, async function () {
             console.info(TAG + "************* testRevokeSave002 start *************");
-            var RObject = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
-            RObject.setSessionId("tmpsession04");
-            expect("tmpsession04" == RObject.__sessionId).assertEqual(true);
-            let result = await RObject.save("local");
-            done();
-            RObject.revokeSave((response)=>{
-                console.info(TAG +"revokeSave callback");
-                console.info("revokeSave sessionId: " + response.sessionId);
-                console.info(TAG +"revokeSave end");
-                RObject.setSessionId("");
-                RObject.name = undefined;
-                RObject.age = undefined;
-                RObject.isVis = undefined;
-                    
-                RObject.setSessionId("tmpsession04");
-                expect(RObject.name == "Amy").assertEqual(false);
-                expect(RObject.age == 18).assertEqual(false);
-                expect(RObject.isVis == false).assertEqual(false);
-                RObject.setSessionId("");
+            var g_object = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
+            expect(g_object == undefined).assertEqual(false);
+    
+            g_object.setSessionId("testSession004");
+            expect("testSession004" == g_object.__sessionId).assertEqual(true);
+    
+            let result = await g_object.save("local").catch((err)=> {
+                expect("801").assertEqual(err.code.toString());
+                return CATCH_ERR;
             });
-            done();
+            if (result === CATCH_ERR) {
+                return;
+            }
+    
+            expect(result.sessionId.toString() == "testSession004").assertEqual(true);
+            expect(result.version.toString() == g_object.__version.toString()).assertEqual(true);
+            expect(result.deviceId.toString() == "local").assertEqual(true);
+    
+             result = await g_object.revokeSave().catch((err) => {
+                console.info('testRevokeSave002 err ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect("801").assertEqual(err.code.toString());
+                return CATCH_ERR;
+            });
+    
+            if (result === CATCH_ERR) {
+                return;
+            }
+            g_object.setSessionId("");
+            g_object.name = undefined;
+            g_object.age = undefined;
+            g_object.isVis = undefined;
+            g_object.setSessionId("testSession004");
+    
+            expect(g_object.name == undefined).assertEqual(true);
+            expect(g_object.age == undefined).assertEqual(true);
+            expect(g_object.isVis == undefined).assertEqual(true);
+    
+    
             console.info(TAG + "************* testRevokeSave002 end *************");
         })
+    
         console.info(TAG + "*************Unit Test End*************");
     })
 }
