@@ -15,15 +15,18 @@ group("componentUxTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "ace_ets_component_badge:ActsAcebadgeTest",
       "ace_ets_component_button:ActsAceButtonTest",
       "ace_ets_component_datepicker:ActsAceDatePickerTest",
       "ace_ets_component_radio:ActsAceRadioTest",
       "ace_ets_component_select:ActsAceSelectTest",
       "ace_ets_component_sidebar:ActsAceSideBarTest",
       "ace_ets_component_slider:ActsAceSliderTest",
+      "ace_ets_component_swiper:ActsAceSwiperTest",
       "ace_ets_component_tabs:ActsAceTabsTest",
       "ace_ets_component_text:ActsAceTextTest",
       "ace_ets_component_textpicker:ActsAceTextPickerTest",
+      "ace_ets_component_timepicker:ActsAceTimePickerTest",
     ]
   }
 }
