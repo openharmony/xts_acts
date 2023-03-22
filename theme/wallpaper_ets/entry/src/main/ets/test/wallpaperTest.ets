@@ -62,13 +62,8 @@ export default function wallpaperJSUnit() {
         */
         it('testGetColorsCallbackSystem101', 0, async function (done) {
             console.info('--------------testGetColorsCallbackSystem101 start-----------------');
+            await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
             wallpaper.getColors(WALLPAPER_SYSTEM, (err, RgbaColors) => {
-                let RgbaColor = {
-                    red: 152,
-                    green: 182,
-                    blue: 211,
-                    alpha: 255
-                }
                 try {
                     if (err) {
                         console.info('====>testGetColorsCallbackSystem101  fail: ' + JSON.stringify(err));
@@ -97,6 +92,7 @@ export default function wallpaperJSUnit() {
         */
         it('testGetColorsPromiseSystem101', 0, async function (done) {
             console.info('--------------testGetColorsPromiseSystem101 start-----------------');
+            await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
             await wallpaper.getColors(WALLPAPER_SYSTEM).then((RgbaColors) => {
                 console.info('====>testGetColorsPromiseSystem101  succesful RgbaColors: ' + JSON.stringify(RgbaColors));
                 expect(Number.isInteger(RgbaColors[0].red)).assertTrue();
@@ -120,6 +116,7 @@ export default function wallpaperJSUnit() {
         */
         it('testGetColorsCallbackLock102', 0, async function (done) {
             console.info('--------------testGetColorsCallbackLock102 start-----------------');
+            await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN);
             wallpaper.getColors(WALLPAPER_LOCKSCREEN, (err, RgbaColors) => {
                 try {
                     if (err) {
@@ -149,6 +146,7 @@ export default function wallpaperJSUnit() {
         */
         it('testGetColorsPromiseLock102', 0, async function (done) {
             console.info('--------------testGetColorsPromiseLock102 start-----------------');
+            await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN);
             await wallpaper.getColors(WALLPAPER_LOCKSCREEN).then((RgbaColors) => {
                 console.info('====>testGetColorsPromiseLock102  succesful RgbaColors: ' + JSON.stringify(RgbaColors));
                 expect(Number.isInteger(RgbaColors[0].red)).assertTrue();
@@ -446,7 +444,7 @@ export default function wallpaperJSUnit() {
 
         /*
         * @tc.number  testResetCallbackSystem101
-        * @tc.name    Test reset() to removes a wallpaper of the specified type and restores the default one.
+        * @tc.name    Test reset() to removes a wallpaper of the specified type and reset the default one.
         * @tc.desc    Function test
         * @tc.level   0
         */
@@ -472,7 +470,7 @@ export default function wallpaperJSUnit() {
 
         /*
         * @tc.number  testResetPromiseSystem101
-        * @tc.name    Test reset() to removes a wallpaper of the specified type and restores the default one.
+        * @tc.name    Test reset() to removes a wallpaper of the specified type and reset the default one.
         * @tc.desc    Function test
         * @tc.level   0
         */
@@ -492,7 +490,7 @@ export default function wallpaperJSUnit() {
 
         /*
         * @tc.number  testResetCallbackLock102
-        * @tc.name    Test reset() to removes a wallpaper of the specified type and restores the default one.
+        * @tc.name    Test reset() to removes a wallpaper of the specified type and reset the default one.
         * @tc.desc    Function test
         * @tc.level   0
         */
@@ -518,7 +516,7 @@ export default function wallpaperJSUnit() {
 
         /*
         * @tc.number  testResetPromiseLock102
-        * @tc.name    Test reset() to removes a wallpaper of the specified type and restores the default one.
+        * @tc.name    Test reset() to removes a wallpaper of the specified type and reset the default one.
         * @tc.desc    Function test
         * @tc.level   0
         */
@@ -642,7 +640,7 @@ export default function wallpaperJSUnit() {
         it('testOnCallback101', 0, async function (done) {
             console.info('--------------testOnCallback101 start-----------------');
             let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
-            await wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN)
+            await wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN)
             try {
                 wallpaper.on('colorChange', async (colors, wallpaperType) => {
                     try {
@@ -654,7 +652,7 @@ export default function wallpaperJSUnit() {
                         console.info('====>testOnCallback101 off');
                         done();
                     } catch (err) {
-                        console.info('====>testOnCallback101 setImage or other err : ' + JSON.stringify(err));
+                        console.info('====>testOnCallback101 setWallpaper or other err : ' + JSON.stringify(err));
                         done();
                     }
                 });
@@ -662,8 +660,8 @@ export default function wallpaperJSUnit() {
                 console.info('====>testOnCallback101 catch err : ' + JSON.stringify(err));
                 done();
             }
-            await wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN)
-            console.info('====>testOnCallback10 setImage successful');
+            await wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN)
+            console.info('====>testOnCallback10 setWallpaper successful');
             console.info('--------------testOnCallback101 end-----------------');
         });
 
@@ -678,7 +676,7 @@ export default function wallpaperJSUnit() {
             console.info('--------------testOffCallback101 start-----------------');
             let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
             let callbackTimes = 0;
-            await wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM)
+            await wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM)
             try {
                 wallpaper.on('colorChange', async (colors, wallpaperType) => {
                     try {
@@ -688,11 +686,13 @@ export default function wallpaperJSUnit() {
                         console.info('====>testOffCallback101 on callbackTime: ' + callbackTimes);
                         expect(callbackTimes == 1).assertTrue();
                         wallpaper.off('colorChange');
-                        setTimeout(() => {
-                            done();
-                        }, 3000)
+                        await wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN)
+                        await wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN)
+                        console.info('====>testOffCallback101 setWallpaper successful');
+                        console.info('--------------testOffCallback101 end-----------------');
+                        done();
                     } catch (err) {
-                        console.info('====>testOffCallback101 setImage or other err : ' + JSON.stringify(err));
+                        console.info('====>testOffCallback101 setWallpaper or other err : ' + JSON.stringify(err));
                         done();
                     }
                 });
@@ -700,11 +700,7 @@ export default function wallpaperJSUnit() {
                 console.info('====>testOffCallback101 catch err : ' + JSON.stringify(err));
                 done();
             }
-            await wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM)
-            await wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM)
-            await wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM)
-            console.info('====>testOffCallback101 setImage successful');
-            console.info('--------------testOffCallback101 end-----------------');
+            await wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM)
         });
 
         /*
@@ -741,6 +737,7 @@ export default function wallpaperJSUnit() {
         */
         it('testGetFilePromise101', 0, async function (done) {
             console.info('--------------testGetFilePromise101 start-----------------');
+            await wallpaper.setWallpaper(imageSourceLockscreen, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN);
             await wallpaper.getFile(WALLPAPER_LOCKSCREEN).then((data) => {
                 console.info('====>testGetFilePromise101 successful data : ' + JSON.stringify(data));
                 expect(Number.isInteger(data)).assertTrue();
@@ -753,448 +750,5 @@ export default function wallpaperJSUnit() {
             console.info('--------------testGetFilePromise101 end-----------------');
         });
 
-        /*
-        * @tc.number  testGetColorsSync101
-        * @tc.name    Test getColorsSync() to obtains the wallpaper colors for the wallpaper of the specified type.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testGetColorsSync101', 0, async function (done) {
-            console.info('------------------testGetColorsSync101 start----------------------');
-            let colors = null;
-            try{
-                colors = wallpaper.getColorsSync(WALLPAPER_SYSTEM)
-                console.info('wallpaperXTS ===> testGetColorsSync101 data : ' + JSON.stringify(colors));
-                if (colors.length >= 1) {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('wallpaperXTS ===> testGetColorsSync101 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testGetColorsSync101 end----------------------');
-            done()
-        })
-
-        /*
-        * @tc.number  testGetColorsSync102
-        * @tc.name    Test getColorsSync() to obtains the wallpaper colors for the wallpaper of the specified type.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testGetColorsSync102', 0, async function (done) {
-            console.info('------------------testGetColorsSync102 start----------------------');
-            let colors = null;
-            try{
-                colors = wallpaper.getColorsSync(WALLPAPER_LOCKSCREEN)
-                console.info('====>testGetColorsSync102 data : ' + JSON.stringify(colors));
-                if (colors.length >= 1) {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testGetColorsSync102 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testGetColorsSync102 end----------------------');
-        })
-
-        /*
-        * @tc.number  testGetIdSync101
-        * @tc.name    Test getIdSync() to Obtains the ID of the wallpaper of the specified type.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testGetIdSync101', 0, async function (done) {
-            console.info('------------------testGetIdSync101 start----------------------');
-            let number = null;
-            try{
-                number = wallpaper.getIdSync(WALLPAPER_SYSTEM)
-                console.info('====>testGetIdSync101 data : ' + JSON.stringify(number));
-                if (typeof number == "number") {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testGetIdSync101 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testGetIdSync101 end----------------------');
-        })
-
-        /*
-        * @tc.number  testGetIdSync102
-        * @tc.name    Test getIdSync() to Obtains the ID of the wallpaper of the specified type.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testGetIdSync102', 0, async function (done) {
-            console.info('------------------testGetIdSync102 start----------------------');
-            let number = null;
-            try{
-                number = wallpaper.getIdSync(WALLPAPER_LOCKSCREEN)
-                console.info('====>testGetIdSync102 data : ' + JSON.stringify(number));
-                if (typeof number == "number") {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testGetIdSync102 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testGetIdSync102 end----------------------');
-        })
-
-        /*
-        * @tc.number  testGetFileSync101
-        * @tc.name    Test getFileSync() to Obtains a file of the wallpaper of the specified type.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testGetFileSync101', 0, async function (done) {
-            console.info('------------------testGetFileSync101 start----------------------');
-            let number = null;
-            try{
-                number = wallpaper.getFileSync(WALLPAPER_SYSTEM)
-                console.info('====>testGetFileSync101 data : ' + JSON.stringify(number));
-                if (typeof number == "number") {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testGetFileSync101 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testGetFileSync101 end----------------------');
-        })
-
-        /*
-        * @tc.number  testGetFileSync102
-        * @tc.name    Test getFileSync() to Obtains a file of the wallpaper of the specified type.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testGetFileSync102', 0, async function (done) {
-            console.info('------------------testGetFileSync102 start----------------------');
-            let number = null;
-            try{
-                number = wallpaper.getFileSync(WALLPAPER_LOCKSCREEN)
-                console.info('====>testGetFileSync102 data : ' + JSON.stringify(number));
-                if (typeof number == "number") {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testGetFileSync102 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testGetFileSync102 end----------------------');
-        })
-
-        /*
-        * @tc.number  testGetFileSync103
-        * @tc.name    Test getFileSync() to Obtains a file of the wallpaper of the specified type.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testGetFileSync103', 0, async function (done) {
-            console.info('------------------testGetFileSync103 start----------------------');
-            let number = null;
-            try{
-                number = wallpaper.getFileSync(3)
-                console.info('====>testGetFileSync103 data : ' + JSON.stringify(number));
-                if (typeof number == "number") {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testGetFileSync103 err : ' + JSON.stringify(err));
-                console.info('====>testGetFileSync103 (err.code : ' + err.code);
-                expect(err.code == "401").assertTrue();
-                done()
-            }
-            console.info('------------------testGetFileSync103 end----------------------');
-        })
-
-        /*
-        * @tc.number  testGetMinHeightSync101
-        * @tc.name    Test getMinHeightSync() to Obtains the minimum height of the wallpaper.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testGetMinHeightSync101', 0, async function (done) {
-            console.info('------------------testGetMinHeightSync101 start----------------------');
-            let number = null;
-            try{
-                number = wallpaper.getMinHeightSync()
-                console.info('====>testGetMinHeightSync101 data : ' + JSON.stringify(number));
-                if (typeof number == "number") {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testGetMinHeightSync101 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testGetMinHeightSync101 end----------------------');
-            done()
-        })
-
-        /*
-        * @tc.number  testGetMinWidthSync101
-        * @tc.name    Test getMinWidthSync() to Obtains the minimum width of the wallpaper.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testGetMinWidthSync101', 0, async function (done) {
-            console.info('------------------testGetMinWidthSync101 start----------------------');
-            let number = null;
-            try{
-                number = wallpaper.getMinWidthSync()
-                console.info('====>testGetMinWidthSync101 data : ' + JSON.stringify(number));
-                if (typeof number == "number") {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testGetMinWidthSync101 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testGetMinWidthSync101 end----------------------');
-        })
-
-        /*
-        * @tc.number  testIsChangeAllowed101
-        * @tc.name    Test isChangeAllowed() to Checks whether to allow the application to change the wallpaper for the current user.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testIsChangeAllowed101', 0, async function (done) {
-            console.info('------------------testIsChangeAllowed101 start----------------------');
-            let allow = null;
-            try{
-                allow = wallpaper.isChangeAllowed()
-                console.info('====>testIsChangeAllowed101 data : ' + JSON.stringify(allow));
-                if (typeof allow == "boolean") {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testIsChangeAllowed101 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testIsChangeAllowed101 end----------------------');
-        })
-
-        /*
-        * @tc.number  testIsChangeAllowed101
-        * @tc.name    Test isUserChangeAllowed() to Checks whether a user is allowed to set wallpapers.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testIsUserChangeAllowed101', 0, async function (done) {
-            console.info('------------------testIsUserChangeAllowed101 start----------------------');
-            let allow = null;
-            try{
-                allow = wallpaper.isUserChangeAllowed()
-                console.info('====>testIsUserChangeAllowed101 data : ' + JSON.stringify(allow));
-                if (typeof allow == "boolean") {
-                    expect(true).assertTrue();
-                    done()
-                }else{
-                    expect().assertFail();
-                    done()
-                }
-            }catch(err){
-                console.info('====>testIsUserChangeAllowed101 err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            }
-            console.info('------------------testIsUserChangeAllowed101 end----------------------');
-            done()
-        })
-
-        /*
-        * @tc.number  testRestoreCallback101
-        * @tc.name    Test restore() to removes a wallpaper of the specified type and restores the default one.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testRestoreCallback101', 0, async function (done) {
-            console.info('------------------testRestoreCallback101 start----------------------');
-            wallpaper.restore(WALLPAPER_LOCKSCREEN, function (err, data) {
-                try{
-                    console.info('====>testRestoreCallback101 data : ' + data);
-                    if (err) {
-                        console.info('====>testRestoreCallback101 fail: ' + JSON.stringify(err));
-                        expect().assertFail();
-                        done();
-                    }
-                    console.info('====>testRestoreCallback101 restore success');
-                    expect(true).assertTrue();
-                    done();
-                }catch(err){
-                    console.info('====>testRestoreCallback101 catch err : ' + JSON.stringify(err));
-                    done();
-                }
-            });
-            console.info('------------------testRestoreCallback101 end----------------------');
-        })
-
-        /*
-        * @tc.number  testRestorePromise101
-        * @tc.name    Test restore() to removes a wallpaper of the specified type and restores the default one.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testRestorePromise101', 0, async function (done) {
-            console.info('------------------testRestorePromise101 start----------------------');
-            await wallpaper.restore(WALLPAPER_SYSTEM).then((data) => {
-                console.info('====>testRestorePromise101 data : ' + JSON.stringify(data));
-                console.info('====>testRestorePromise101 restore success');
-                expect(true).assertTrue();
-                done()
-            }).catch((err) => {
-                console.info('====>testRestorePromise101 fail: ' + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            });
-            console.info('------------------testRestorePromise101 end----------------------');
-        })
-
-        /*
-        * @tc.number  testSetImageCallBack101
-        * @tc.name    Test setImage() to removes a wallpaper of the specified type and restores the default one.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testSetImageCallBack101', 0, async function (done) {
-            console.info('------------------testSetImageCallBack101 start----------------------');
-            let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
-            wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error, data) => {
-                try{
-                    if (error) {
-                        console.error(`====>testSetImageCallBack101 failed to setImage because: ` + JSON.stringify(error));
-                        expect().assertFail();
-                        done();
-                    }
-                    console.log(`====>testSetImageCallBack101 success to setImage.`);
-                    expect(true).assertTrue();
-                    done();
-                }catch(err){
-                    console.info('====>testSetImageCallBack101 catch err : ' + JSON.stringify(err));
-                    done();
-                }
-            });
-            console.info('------------------testSetImageCallBack101 end----------------------');
-        })
-
-        /*
-        * @tc.number  testSetImageCallBack102
-        * @tc.name    Test setImage() to removes a wallpaper of the specified type and restores the default one.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testSetImageCallBack102', 0, async function (done) {
-            console.info('------------------testSetImageCallBack102 start----------------------');
-            let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
-            wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN, (error, data) => {
-                try{
-                    if (error) {
-                        console.error(`====>testSetImageCallBack102 failed to setImage because: ` + JSON.stringify(error));
-                        expect().assertFail();
-                        done();
-                    }
-                    console.log(`====>testSetImageCallBack102 success to setImage.`);
-                    expect(true).assertTrue();
-                    done();
-                }catch(err){
-                    console.info('====>testSetImageCallBack102 catch err : ' + JSON.stringify(err));
-                    done();
-                }
-            });
-            console.info('------------------testSetImageCallBack102 end----------------------');
-        })
-
-        /*
-        * @tc.number  testSetImagePromise101
-        * @tc.name    Test setImage() to removes a wallpaper of the specified type and restores the default one.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testSetImagePromise101', 0, async function (done) {
-            console.info('------------------testSetImagePromise101 start----------------------');
-            let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
-            await wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data) => {
-                console.log(`====>testSetImagePromise101 success to setImage.`);
-                expect(true).assertTrue();
-                done();
-            }).catch(err => {
-                expect().assertFail();
-                console.log(`====>testSetImagePromise101 promise fail: ` + JSON.stringify(err));
-            });
-            console.info('------------------testSetImagePromise101 end----------------------');
-        })
-
-        /*
-        * @tc.number  testSetImagePromise102
-        * @tc.name    Test setImage() to removes a wallpaper of the specified type and restores the default one.
-        * @tc.desc    Function test
-        * @tc.level   0
-        */
-        it('testSetImagePromise102', 0, async function (done) {
-            console.info('------------------testSetImagePromise102 start----------------------');
-            let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
-            await wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN).then((data) => {
-                console.log(`====>testSetImagePromise102 success to setImage.`);
-                expect(true).assertTrue();
-                done();
-            }).catch(err => {
-                console.log(`====>testSetImagePromise102 promise catch: ` + JSON.stringify(err));
-                expect().assertFail();
-                done()
-            });
-            console.info('------------------testSetImagePromise102 end----------------------');
-        })
     });
 };

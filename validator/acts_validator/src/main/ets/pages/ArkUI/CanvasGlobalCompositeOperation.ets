@@ -23,6 +23,17 @@ struct SetCircle {
   @State name: string = 'CanvasGlobalCompositeOperation';
   @State StepTips: string = '操作步骤：点击不同的合成操作的方式'+'\n'+'预期结果：原本默认合成方式会随点击变化';
   @State Vue: boolean = false;
+  @State num1: number = 0;
+  @State num2: number = 0;
+  @State num3: number = 0;
+  @State num4: number = 0;
+  @State num5: number = 0;
+  @State num6: number = 0;
+  @State num7: number = 0;
+  @State num8: number = 0;
+  @State num9: number = 0;
+  @State num10: number = 0;
+  @State num11: number = 0;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
   }
@@ -41,7 +52,12 @@ struct SetCircle {
             this.context.globalCompositeOperation = 'source-over';
             this.context.fillStyle = 'rgb(0,0,255)';
             this.context.fillRect(180, 180, 50, 50);
-            this.Vue = true;
+            this.num1 = 1;
+            if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+            && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+            && this.num11 == 1 ){
+              this.Vue = true;
+            }
           })
           Text('s-atop').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=>{
@@ -51,7 +67,12 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'source-atop';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
-              this.Vue = true;
+              this.num2 = 1;
+              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+              && this.num11 == 1 ){
+                this.Vue = true;
+              }
             })
           Text('s-in').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=>{
@@ -61,7 +82,12 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'source-in';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
-              this.Vue = true;
+              this.num3 = 1;
+              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+              && this.num11 == 1 ){
+                this.Vue = true;
+              }
             })
           Text('s-out').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=>{
@@ -71,7 +97,12 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'source-out';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
-              this.Vue = true;
+              this.num4 = 1;
+              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+              && this.num11 == 1 ){
+                this.Vue = true;
+              }
             })
         }
         Row({space:10}){
@@ -83,7 +114,12 @@ struct SetCircle {
             this.context.globalCompositeOperation = 'destination-over';
             this.context.fillStyle = 'rgb(0,0,255)';
             this.context.fillRect(180, 180, 50, 50);
-            this.Vue = true;
+            this.num5 = 1;
+            if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+            && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+            && this.num11 == 1 ){
+              this.Vue = true;
+            }
           })
           Text('d-atop').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -93,7 +129,12 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'destination-atop';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
-              this.Vue = true;
+              this.num6 = 1;
+              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+              && this.num11 == 1 ){
+                this.Vue = true;
+              }
             })
           Text('d-in').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -103,7 +144,12 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'destination-in';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
-              this.Vue = true;
+              this.num7 = 1;
+              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+              && this.num11 == 1 ){
+                this.Vue = true;
+              }
             })
           Text('d-out').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -113,7 +159,12 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'destination-out';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
-              this.Vue = true;
+              this.num8 = 1;
+              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+              && this.num11 == 1 ){
+                this.Vue = true;
+              }
             })
         }
         Row({space:10}){
@@ -125,7 +176,12 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'lighter';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
-              this.Vue = true;
+              this.num9 = 1;
+              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+              && this.num11 == 1 ){
+                this.Vue = true;
+              }
             })
           Text('copy').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -135,7 +191,12 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'copy';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
-              this.Vue = true;
+              this.num10 = 1;
+              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+              && this.num11 == 1 ){
+                this.Vue = true;
+              }
             })
           Text('xor').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
             .onClick(()=> {
@@ -145,7 +206,12 @@ struct SetCircle {
               this.context.globalCompositeOperation = 'xor';
               this.context.fillStyle = 'rgb(0,0,255)';
               this.context.fillRect(180, 180, 50, 50);
-              this.Vue = true;
+              this.num11 = 1;
+              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+              && this.num11 == 1 ){
+                this.Vue = true;
+              }
             })
           Text('').fontSize(0).border({width:0}).size({width:'18%',height:'20%'})
         }

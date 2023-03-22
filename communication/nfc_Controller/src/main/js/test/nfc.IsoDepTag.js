@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -75,7 +75,7 @@ let IsoDepTag ;
 export default function nfcIsoDepTagTest() {
     describe('nfcIsoDepTagTest', function () {
         beforeAll(function () {
-            console.info('[NFC_test]beforeAll called')
+            console.info('rbeforeAll called')
             try {
                 IsoDepTag = tag.getIsoDep(isoDepTaginfo);
             } catch (error) {
@@ -83,13 +83,13 @@ export default function nfcIsoDepTagTest() {
             }
         })
         beforeEach(function() {
-            console.info('[NFC_test]beforeEach called')
+            console.info('beforeEach called')
         })
         afterEach(function () {
-            console.info('[NFC_test]afterEach called')
+            console.info('afterEach called')
         })
         afterAll(function () {
-            console.info('[NFC_test]afterAll called')
+            console.info('afterAll called')
         })
 
         /**
@@ -104,10 +104,10 @@ export default function nfcIsoDepTagTest() {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 let ResponseFlags = IsoDepTag.getHistoricalBytes(); 
                 expect(ResponseFlags).assertInstanceOf('Array')
-                console.info('[nfc_js] test ResponseFlags data>:' + ResponseFlags);
+                console.info('[NFC_test] Isodep1 test ResponseFlags data>:' + ResponseFlags);
             } else {
                 console.info("[NFC_test]IsoDepTag1 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -123,10 +123,10 @@ export default function nfcIsoDepTagTest() {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 let HiLayerResponse = IsoDepTag.getHiLayerResponse(); 
                 expect(HiLayerResponse).assertInstanceOf('Array')
-                console.info('[nfc_js] test ResponseFlags data2>:' + HiLayerResponse);
+                console.info('[NFC_test] Isodep2 test ResponseFlags data2>:' + HiLayerResponse);
             } else {
                 console.info("[NFC_test]IsoDepTag2 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -141,17 +141,17 @@ export default function nfcIsoDepTagTest() {
         it('SUB_Communication_NFC_nfcIsoDep_js_0300', 0, async function (done) {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 await IsoDepTag.isExtendedApduSupported().then((data) => {
-                    expect(false).assertEqual(data);
-                    console.info("isoDep isExtendedApduSupported data: " + data);
+                    console.info("[NFC_test] Isodep3 isExtendedApduSupported data: " + data);
+                    expect(true).assertEqual(data);
                     done();
                 }).catch((err)=> {
-                    console.info("isoDep isExtendedApduSupported err: " + err);
-                    expect(true).assertFalse();
+                    console.info("[NFC_test] Isodep3 isExtendedApduSupported err: " + err);
+                    expect().assertFail();
                     done();
                 });
             } else {
                 console.info("[NFC_test]IsoDepTag3 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -167,17 +167,18 @@ export default function nfcIsoDepTagTest() {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 IsoDepTag.isExtendedApduSupported((err, data)=> {
                     if (err) {
-                        expect(true).assertFalse();
-                        console.info("isoDep isExtendedApduSupported err: " + err);
+                        console.info("[NFC_test] Isodep4 isExtendedApduSupported err: " + err);
+                        expect().assertFail();
+                        done();
                     } else {
-                        expect(false).assertEqual(data);
-                        console.info("isoDep isExtendedApduSupported data: " + data);
+                        console.info("[NFC_test] Isodep4 isExtendedApduSupported data: " + data);
+                        expect(true).assertEqual(data);
+                        done();
                     }
                 });
-                done();
             } else {
                 console.info("[NFC_test]IsoDepTag4 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -194,15 +195,15 @@ export default function nfcIsoDepTagTest() {
                 let cardEmulationnfc ;
                 try {
                     cardEmulationnfc = cardEmulation.isSupported(FeatureType.ESE);
-                    console.info('cardEmulationnfc type ->' + cardEmulationnfc )
+                    console.info('[NFC_test] cardEmulationnfc5 type ->' + cardEmulationnfc )
                     expect(cardEmulationnfc).assertFalse();
                 } catch (error) {
-                    console.info('cardEmulationnfc error' + error)
-                    expect(true).assertFalse();
+                    console.info('[NFC_test] cardEmulationnfc5 error' + error)
+                    expect().assertFail();
                 }
             } else {
                 console.info("[NFC_test]IsoDepTag5 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -218,11 +219,11 @@ export default function nfcIsoDepTagTest() {
             let cardEmulationnfc ;
             try {
                 cardEmulationnfc = cardEmulation.hasHceCapability();
-                console.info('cardEmulationnfc hasHceCapability type ->' + cardEmulationnfc )
+                console.info('[NFC_test] cardEmulationnfc6 hasHceCapability type ->' + cardEmulationnfc )
                 expect(cardEmulationnfc).assertFalse();
             } catch (error) {
-                console.info('cardEmulationnfc error' + error)
-                expect(true).assertFalse();
+                console.info('[NFC_test] cardEmulationnfc6 error' + error)
+                expect().assertFail();
             }
         })
 
@@ -242,11 +243,11 @@ export default function nfcIsoDepTagTest() {
             };
             try {
                 cardEmulationnfc = cardEmulation.isDefaultService(elementName, CardType.PAYMENT);
-                console.info('cardEmulationnfc isDefaultService type ->' + cardEmulationnfc )
+                console.info('[NFC_test] cardEmulationnfc7 isDefaultService type ->' + cardEmulationnfc )
                 expect(cardEmulationnfc).assertFalse();
             } catch (error) {
-                console.info('cardEmulationnfc error' + error)
-                expect(true).assertFalse();
+                console.info('[NFC_test] cardEmulationnfc7 error' + error)
+                expect().assertFail();
             }
         })
 

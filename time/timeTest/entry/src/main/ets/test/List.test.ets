@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import systemTimeJsunit from './systemTimeTest';
+import systemTimeCommonEventTest from './systemTimeCommonEvent.test'
 
 export default function testsuite() {
   systemTimeJsunit();
+  systemTimeCommonEventTest();
 }

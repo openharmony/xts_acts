@@ -18,8 +18,5 @@ group("ActsGlobalTest") {
     "//test/xts/acts/global_lite/i18n_lite/number_posix:ActsNumberTest",
     "//test/xts/acts/global_lite/i18n_lite/numberrecall_posix:ActsNumberRecallTest",
     "//test/xts/acts/global_lite/i18n_lite/week_plural_number/src:WeekPluralNumbertest",
-
-    # depend on the resources
-    #"//test/xts/acts/global_lite/i18n_lite/resource_parse_load/src:ResourceParseLoadtest",
   ]
 }

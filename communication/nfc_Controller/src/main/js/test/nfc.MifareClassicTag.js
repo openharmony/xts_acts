@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -55,7 +55,7 @@ let MifareClassicTag = null;
 export default function nfcMifareClassicTag() {
     describe('nfcMifareClassicTag', function () {
         beforeAll(function () {
-            console.info('[NFC_test]beforeAll called')
+            console.info('rbeforeAll called')
             try{
                 MifareClassicTag = tag.getMifareClassic(mifareclassicTaginfo);
             } catch (error) {
@@ -63,13 +63,13 @@ export default function nfcMifareClassicTag() {
             }
         })
         beforeEach(function() {
-            console.info('[NFC_test]beforeEach called')
+            console.info('beforeEach called')
         })
         afterEach(function () {
-            console.info('[NFC_test]afterEach called')
+            console.info('afterEach called')
         })
         afterAll(function () {
-            console.info('[NFC_test]afterAll called')
+            console.info('afterAll called')
         })          
 
         /**
@@ -86,18 +86,18 @@ export default function nfcMifareClassicTag() {
                 let sectorIndex = 1; 
                 let key = [0x04, 0x05];  
                 await MifareClassicTag.authenticateSector(sectorIndex, key, true).then((data) => {
-                    console.info("mifareClassic authenticateSector1 data: " + data + "json1:" + JSON.stringify(data));
-                    expect(data).assertTrue();
+                    console.info("[NFC_test] MifareClassicTag1 authenticateSector1 data: " + data + "json1:" + JSON.stringify(data));
+                    expect(data != 0).assertTrue();
                     done();
                 }).catch((err)=> {
-                    console.info("mifareClassic authenticateSector1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] MifareClassicTag1 authenticateSector1 err: " + err);
+                    expect(true).assertTrue();
                     done();
                 });
                 sleep(3000);
             } else {
                 console.info("[NFC_test]MifareClassicTag1 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -116,18 +116,19 @@ export default function nfcMifareClassicTag() {
                 let key = [0x04, 0x05];  
                 MifareClassicTag.authenticateSector(sectorIndex, key, true, (err, data)=> {
                     if (err) {
-                        console.info("mifareClassic authenticateSector2 err: " + err);
-                        expect(true).assertEqual(true);
+                        console.info("[NFC_test] MifareClassicTag2 authenticateSector2 err: " + err);
+                        expect(true).assertTrue();
+                        done();
                     } else {
-                        console.info("mifareClassic authenticateSector2 data: " + data + "json2:" + JSON.stringify(data));
-                        expect(data).assertTrue();
+                        console.info("[NFC_test] MifareClassicTag2 authenticateSector2 data: " + data + "json2:" + JSON.stringify(data));
+                        expect(data != 0).assertTrue();
+                        done();
                     }
                 });
                 sleep(3000);
-                done();
             } else {
                 console.info("[NFC_test]MifareClassicTag2 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -144,18 +145,18 @@ export default function nfcMifareClassicTag() {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 await MifareClassicTag.readSingleBlock(blockIndex).then((data) => {
-                    console.info("mifareClassic readSingleBlock1 data: " + data + "json3:" + JSON.stringify(data));
+                    console.info("[NFC_test] MifareClassicTag3 readSingleBlock1 data: " + data + "json3:" + JSON.stringify(data));
                     expect(data).assertInstanceOf('Array')
                     done();
                 }).catch((err)=> {
-                    console.info("mifareClassic readSingleBlock1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] MifareClassicTag3 readSingleBlock1 err: " + err);
+                    expect(true).assertTrue();
                     done();
                 });
                 sleep(3000);
             } else {
                 console.info("[NFC_test]MifareClassicTag3 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -173,17 +174,19 @@ export default function nfcMifareClassicTag() {
                 let blockIndex = 1; 
                 MifareClassicTag.readSingleBlock(blockIndex, (err, data)=> {
                     if (err) {
-                        console.info("mifareClassic readSingleBlock2 err: " + err);
-                        expect(true).assertEqual(true);
+                        console.info("[NFC_test] MifareClassicTag4 readSingleBlock2 err: " + err);
+                        expect(true).assertTrue();
+                        done();
                     } else {
-                        console.info("mifareClassic readSingleBlock2 data: " + data+ "json4:" + JSON.stringify(data));
+                        console.info("[NFC_test] MifareClassicTag4 readSingleBlock2 data: " + data+ "json4:" + JSON.stringify(data));
                         expect(data).assertInstanceOf('Array')
+                        done();
                     }
                 });
-                done();
+                sleep(3000);
             } else {
                 console.info("[NFC_test]MifareClassicTag4 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -201,18 +204,18 @@ export default function nfcMifareClassicTag() {
                 let blockIndex = 1;
                 let rawData = [0x0a, 0x14]; 
                 await MifareClassicTag.writeSingleBlock(blockIndex, rawData).then((data) => {
-                    console.info("mifareClassic writeSingleBlock1 data: " + data + "json5:" + JSON.stringify(data));
-                    expect(data).assertTrue();
+                    console.info("[NFC_test] MifareClassicTag5 writeSingleBlock1 data: " + data + "json5:" + JSON.stringify(data));
+                    expect(data).assertInstanceOf('Number')
                     done();
                 }).catch((err)=> {
-                    console.info("mifareClassic writeSingleBlock1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] MifareClassicTag5 writeSingleBlock1 err: " + err);
+                    expect(true).assertTrue();
                     done();
                 });
                 sleep(3000);
             } else {
                 console.info("[NFC_test]MifareClassicTag5 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -231,18 +234,19 @@ export default function nfcMifareClassicTag() {
                 let rawData = [0x0a, 0x14]; 
                 MifareClassicTag.writeSingleBlock(blockIndex, rawData, (err, data)=> {
                     if (err) {
-                        console.info("mifareClassic writeSingleBlock2 err: " + err);
-                        expect(true).assertEqual(true);
+                        console.info("[NFC_test] MifareClassicTag6 writeSingleBlock2 err: " + err);
+                        expect(true).assertTrue();
+                        done();
                     } else {
-                        console.info("mifareClassic writeSingleBlock2 data: " + data + "json6:" + JSON.stringify(data));
-                        expect(data).assertTrue();
+                        console.info("[NFC_test] MifareClassicTag6 writeSingleBlock2 data: " + data + "json6:" + JSON.stringify(data));
+                        expect(data).assertInstanceOf('Number')
+                        done();
                     }
                 });
                 sleep(3000);
-                done();
             } else {
                 console.info("[NFC_test]MifareClassicTag6 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -260,18 +264,18 @@ export default function nfcMifareClassicTag() {
                 let blockIndex = 1; 
                 let value = 0x20;
                 await MifareClassicTag.incrementBlock(blockIndex, value).then((data) => {
-                    console.info("mifareClassic incrementBlock1 data: " + data + "json7:" + JSON.stringify(data));
+                    console.info("[NFC_test] MifareClassicTag7 incrementBlock1 data: " + data );
                     expect(data).assertInstanceOf('Number')
-                    done();
                 }).catch((err)=> {
-                    console.info("mifareClassic incrementBlock1 err: " + err);
+                    console.info("[NFC_test] MifareClassicTag7 incrementBlock1 err: " + err);
                     expect(true).assertEqual(true);
-                    done();
                 });
+                done();
                 sleep(3000);
             } else {
                 console.info("[NFC_test]MifareClassicTag7 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
+                done();
             }
         })
 
@@ -284,16 +288,17 @@ export default function nfcMifareClassicTag() {
          * @tc.type Function
          * @tc.level Level 2
          */
+
         it('SUB_Communication_NFC_mifareClassic_js_0800', 0, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 let value = 0x20;
                 MifareClassicTag.incrementBlock(blockIndex, value, (err, data)=> {
                     if (err) {
-                        console.info("mifareClassic incrementBlock2 err: " + err);
+                        console.info("[NFC_test] mifareClassic8 incrementBlock2 err: " + err);
                         expect(true).assertEqual(true);
                     } else {
-                        console.info("mifareClassic incrementBlock2 data: " + data + "json8:" + JSON.stringify(data));
+                        console.info("[NFC_test] mifareClassic8 incrementBlock2 data: " + data + "json8:" + JSON.stringify(data));
                         expect(data).assertInstanceOf('Number')
                     }
                 });
@@ -301,7 +306,7 @@ export default function nfcMifareClassicTag() {
                 done();
             } else {
                 console.info("[NFC_test]MifareClassicTag8 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -319,18 +324,18 @@ export default function nfcMifareClassicTag() {
                 let blockIndex = 1; 
                 let value = 0x20;
                 await MifareClassicTag.decrementBlock(blockIndex, value).then((data) => {
-                    console.info("mifareClassic decrementBlock1 data: " + data + "json9:" + JSON.stringify(data));
+                    console.info("[NFC_test] MifareClassicTag9 decrementBlock1 data: " + data + "json9:" + JSON.stringify(data));
                     expect(data).assertInstanceOf('Number')
                     done();
                 }).catch((err)=> {
-                    console.info("mifareClassic decrementBlock1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] MifareClassicTag9 decrementBlock1 err: " + err);
+                    expect(true).assertTrue();
                     done();
                 });
                 sleep(3000);
             } else {
                 console.info("[NFC_test]MifareClassicTag9 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -349,18 +354,19 @@ export default function nfcMifareClassicTag() {
                 let value = 0x20;
                 MifareClassicTag.decrementBlock(blockIndex, value, (err, data)=> {
                     if (err) {
-                        console.info("mifareClassic decrementBlock2 err: " + err);
-                        expect(true).assertEqual(true);
+                        console.info("[NFC_test] MifareClassicTag10 decrementBlock2 err: " + err);
+                        expect(true).assertTrue();
+                        done();
                     } else {
-                        console.info("mifareClassic decrementBlock2 data: " + data + "json10:" + JSON.stringify(data));
+                        console.info("[NFC_test] MifareClassicTag10 decrementBlock2 data: " + data + "json10:" + JSON.stringify(data));
                         expect(data).assertInstanceOf('Number')
+                        done();
                     }
                 });
                 sleep(3000);
-                done();
             } else {
                 console.info("[NFC_test]MifareClassicTag10 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -373,16 +379,17 @@ export default function nfcMifareClassicTag() {
          * @tc.type Function
          * @tc.level Level 2
          */
+
         it('SUB_Communication_NFC_mifareClassic_js_1100', 0, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 await MifareClassicTag.transferToBlock(blockIndex).then((data) => {
-                    console.info("mifareClassic transferToBlock1 data: " + data + "json9:" + JSON.stringify(data));
+                    console.info("[NFC_test] mifareClassic11 transferToBlock1 data: " + data );
                     expect(data).assertInstanceOf('Number')
                     done();
                 }).catch((err)=> {
-                    console.info("mifareClassic transferToBlock1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] mifareClassic11 transferToBlock1 err: " + err);
+                    expect(true).assertTrue();
                     done();
                 });
                 sleep(3000);
@@ -406,18 +413,19 @@ export default function nfcMifareClassicTag() {
                 let blockIndex = 1; 
                 MifareClassicTag.transferToBlock(blockIndex, (err, data)=> {
                     if (err) {
-                        console.info("mifareClassic transferToBlock2 err: " + err);
-                        expect(true).assertEqual(true);
+                        console.info("[NFC_test] MifareClassicTag12 transferToBlock2 err: " + err);
+                        expect(true).assertTrue();
+                        done();
                     } else {
-                        console.info("mifareClassic transferToBlock2 data: " + data + "json10:" + JSON.stringify(data));
+                        console.info("[NFC_test] MifareClassicTag12 transferToBlock2 data: " + data + "json10:" + JSON.stringify(data));
                         expect(data).assertInstanceOf('Number')
+                        done();
                     }
                 });
                 sleep(3000);
-                done();
             } else {
                 console.info("[NFC_test]MifareClassicTag12 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -434,18 +442,18 @@ export default function nfcMifareClassicTag() {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 await MifareClassicTag.restoreFromBlock(blockIndex).then((data) => {
-                    console.info("mifareClassic restoreFromBlock1 data: " + data + "json11:" + JSON.stringify(data));
+                    console.info("[NFC_test] MifareClassicTag13 restoreFromBlock1 data: " + data + "json11:" + JSON.stringify(data));
                     expect(data).assertInstanceOf('Number')
                     done();
                 }).catch((err)=> {
-                    console.info("mifareClassic restoreFromBlock1 err: " + err);
-                    expect(true).assertEqual(true);
+                    console.info("[NFC_test] MifareClassicTag13 restoreFromBlock1 err: " + err);
+                    expect(true).assertTrue();
                     done();
                 });
                 sleep(3000);
             } else {
                 console.info("[NFC_test]MifareClassicTag13 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -463,18 +471,19 @@ export default function nfcMifareClassicTag() {
                 let blockIndex = 1; 
                 MifareClassicTag.restoreFromBlock(blockIndex, (err, data)=> {
                     if (err) {
-                        console.info("mifareClassic restoreFromBlock2 err: " + err);
-                        expect(true).assertEqual(true);
+                        console.info("[NFC_test] MifareClassicTag14 restoreFromBlock2 err: " + err);
+                        expect(true).assertTrue();
+                        done();
                     } else {
-                        console.info("mifareClassic restoreFromBlock2 data: " + data + "json12:" + JSON.stringify(data));
+                        console.info("[NFC_test] MifareClassicTag14 restoreFromBlock2 data: " + data + "json12:" + JSON.stringify(data));
                         expect(data).assertInstanceOf('Number')
+                        done();
                     }
                 });
                 sleep(3000);
-                done();
             } else {
                 console.info("[NFC_test]MifareClassicTag14 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -491,15 +500,15 @@ export default function nfcMifareClassicTag() {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 try{
                     let sectorCount = MifareClassicTag.getSectorCount();
-                    console.info("mifareClassic sectorCount: " + sectorCount);
+                    console.info("[NFC_test] MifareClassicTag15 sectorCount: " + sectorCount);
                     expect(sectorCount).assertInstanceOf('Number')
                 } catch (error) {
-                    console.info('mifareClassic sectorCount error' + error)
-                    expect(true).assertFalse();
+                    console.info('[NFC_test] MifareClassicTag15 sectorCount error' + error)
+                    expect().assertFail();
                 }
             } else {
                 console.info("[NFC_test]MifareClassicTag15 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -517,15 +526,15 @@ export default function nfcMifareClassicTag() {
                 try{
                     let sectorIndex = 1;
                     let blockCountInSector = MifareClassicTag.getBlockCountInSector(sectorIndex);
-                    console.info("mifareClassic blockCountInSector: " + blockCountInSector);
+                    console.info("[NFC_test] MifareClassicTag16 blockCountInSector: " + blockCountInSector);
                     expect(blockCountInSector).assertInstanceOf('Number')
                 } catch (error) {
-                    console.info('mifareClassic blockCountInSector error' + error)
-                    expect(true).assertFalse();
+                    console.info('[NFC_test] MifareClassicTag16 blockCountInSector error' + error)
+                    expect().assertFail();
                 }
             } else {
                 console.info("[NFC_test]MifareClassicTag16 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -542,15 +551,15 @@ export default function nfcMifareClassicTag() {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 try{
                     let getType = MifareClassicTag.getType();
-                    console.info("mifareClassic getType: " + getType);
+                    console.info("[NFC_test] MifareClassicTag17 getType: " + getType);
                     expect(getType >= -1).assertTrue();
                 } catch (error) {
-                    console.info('mifareClassic getType error' + error)
-                    expect(true).assertFalse();
+                    console.info('[NFC_test] MifareClassicTag17 getType error' + error)
+                    expect().assertFail();
                 }
             } else {
                 console.info("[NFC_test]MifareClassicTag17 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -567,15 +576,15 @@ export default function nfcMifareClassicTag() {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 try{
                     let tagSize = MifareClassicTag.getTagSize();
-                    console.info("mifareClassic tagSize: " + tagSize);
+                    console.info("[NFC_test] MifareClassicTag18 tagSize: " + tagSize);
                     expect(tagSize).assertInstanceOf('Number')
                 } catch (error) {
-                    console.info('mifareClassic tagSize error' + error)
-                    expect(true).assertFalse();
+                    console.info('[NFC_test] MifareClassicTag18 tagSize error' + error)
+                    expect().assertFail();
                 }
             } else {
                 console.info("[NFC_test]MifareClassicTag18 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         }) 
 
@@ -592,15 +601,15 @@ export default function nfcMifareClassicTag() {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 try{
                     let isEmulatedTag = MifareClassicTag.isEmulatedTag();
-                    console.info("mifareClassic isEmulatedTag: " + isEmulatedTag);
+                    console.info("[NFC_test] MifareClassicTag19 isEmulatedTag: " + isEmulatedTag);
                     expect(false).assertEqual(isEmulatedTag);
                 } catch (error) {
-                    console.info('mifareClassic isEmulatedTag error' + error)
-                    expect(true).assertFalse();
+                    console.info('[NFC_test] MifareClassicTag19 isEmulatedTag error' + error)
+                    expect().assertFail();
                 }
             } else {
                 console.info("[NFC_test]MifareClassicTag19 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 
@@ -618,15 +627,15 @@ export default function nfcMifareClassicTag() {
                 try{
                     let sectorIndex = 1; 
                     let blockIndex = MifareClassicTag.getBlockIndex(sectorIndex);
-                    console.info("mifareClassic blockIndex: " + blockIndex);
+                    console.info("[NFC_test] MifareClassicTag20 blockIndex: " + blockIndex);
                     expect(blockIndex >= 0).assertTrue();
                 } catch (error) {
-                    console.info('mifareClassic blockIndex error' + error)
-                    expect(true).assertFalse();
+                    console.info('[NFC_test] MifareClassicTag20 blockIndex error' + error)
+                    expect().assertFail();
                 }
             } else {
                 console.info("[NFC_test]MifareClassicTag20 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })         
 
@@ -644,15 +653,15 @@ export default function nfcMifareClassicTag() {
                 try{
                     let blockIndex = 1; 
                     let sectorIndex = MifareClassicTag.getSectorIndex(blockIndex);
-                    console.info("mifareClassic sectorIndex: " + sectorIndex);
+                    console.info("[NFC_test] mifareClassic21 sectorIndex: " + sectorIndex);
                     expect(sectorIndex >= 0).assertTrue();
                 } catch (error) {
-                    console.info('mifareClassic sectorIndex error' + error)
-                    expect(true).assertFalse();
+                    console.info('[NFC_test] mifareClassic21 sectorIndex error' + error)
+                    expect().assertFail();
                 }
             } else {
                 console.info("[NFC_test]MifareClassicTag21 = null & = undefined: ");
-                expect(true).assertFalse();
+                expect().assertFail();
             }
         })
 

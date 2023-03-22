@@ -89,6 +89,561 @@ struct SwiperTest {
             .loop(true)
             .duration(1000)
             .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemWidth_0100")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemWidth(5))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemWidth_0200")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemWidth(""))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemWidth_0300")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemWidth("9999vp"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemWidth_0400")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemWidth(-1))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemWidth_0500")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemWidth("abc"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemWidth_0600")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemWidth(0))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemWidth_0700")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemWidth("8fp"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemWidth_0800")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemWidth("8lpx"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemHeight_0100")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemHeight(3))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemHeight_0200")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemHeight(""))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemHeight_0300")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemHeight("9999fp"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemHeight_0400")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemHeight(-1))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemHeight_0500")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemHeight("abc"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemHeight_0600")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemHeight(0))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemHeight_0700")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemHeight("8vp"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_SelectedItemHeight_0800")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .selectedItemHeight("8lpx"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_ItemWidth_0100")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .itemWidth(3))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_ItemWidth_0200")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .itemWidth(""))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_ItemWidth_0300")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .itemWidth("9999lpx"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_ItemWidth_0400")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .itemWidth(-1))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_ItemWidth_0500")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .itemWidth("abc"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_ItemWidth_0600")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .itemWidth("8px"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
+            .key("ArkUX_Stage_Swiper_ItemWidth_0700")
+            .curve(Curve.Linear)
+            .indicator(Indicator.dot()
+              .itemWidth("8fp"))
+            .onChange((index: number) => {
+              console.info(index.toString())
+            })
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .autoPlay(true)
+            .interval(4000)
+            .loop(true)
+            .duration(1000)
+            .itemSpace(0)
             .key("ArkUX_Stage_Swiper_ItemHeight_0100")
             .curve(Curve.Linear)
             .indicator(Indicator.dot()
@@ -241,7 +796,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }		
-		ListItem() {
+		      ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
                 Text(item)
