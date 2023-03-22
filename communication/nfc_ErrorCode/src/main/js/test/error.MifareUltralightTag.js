@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -176,10 +176,10 @@ export default function UltralightTagErrorTest() {
                 try {
                     MifareUltralightTag.writeSinglePage('test', rawData, (err, data)=> {
                         if (err) {
-                            console.log("[NFC_test]mifareUltralight4 writeSinglePage errcode: " + err);
+                            console.info("[NFC_test]mifareUltralight4 writeSinglePage errcode: " + err);
                             expect(true).assertEqual(true);
                         } else {
-                            console.log("[NFC_test]mifareUltralight4 writeSinglePage data: " + data + "json2:" + JSON.stringify(data));
+                            console.info("[NFC_test]mifareUltralight4 writeSinglePage data: " + data + "json2:" + JSON.stringify(data));
                             expect(true).assertTrue(data >= 0);
                         }
                     });

@@ -1145,5 +1145,69 @@ describe("ListTest", function () {
       expect(err.message).assertEqual(`The type of "fromIndex" must be number. Received value is: a`);
     }
   });
+
+  /**
+   * @tc.name: testAdd072
+   * @tc.desc: Add a element to the end of the List instance. For example: list.add.bind({}, "a")().
+   */
+  it('testAdd072', 0, function () {
+    let  list = new List();
+    try {
+      list.add.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The add method cannot be bound`);
+    }
   });
+
+  /**
+   * @tc.name: testForEach073
+   * @tc.desc: Traversing elements in an List instance. For example: list.forEach(11).
+   */
+  it('testForEach073', 0, function () {
+    let  list = new List();
+    try {
+      list.forEach(11);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "callbackfn" must be callable. Received value is: 11`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach074
+   * @tc.desc: Traversing elements in an List instance. For example: list.forEach.bind({}, "a")().
+   */
+  it('testForEach074', 0, function () {
+    let  list = new List();
+    try {
+      list.forEach.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The forEach method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testIsEmpty075
+   * @tc.desc: Determine whether the List instance is empty. For example: list.isEmpty.bind({}, "a")().
+   */
+  it('testIsEmpty075', 0, function () {
+    let  list = new List();
+    try {
+      list.isEmpty.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The isEmpty method cannot be bound`);
+    }
+  });
+});
 }

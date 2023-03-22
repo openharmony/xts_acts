@@ -31,7 +31,7 @@ struct CustomContainer1 {
   title : string = '';
   StepTips: string = '';
   Url : string = '';
-  Vue : boolean;
+  @Link Vue : boolean;
   @BuilderParam content: () => void;
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
@@ -215,7 +215,7 @@ struct SetCircle {
         y: $y,
         isshow: $isshow,
         name: $name,
-        Vue: this.Vue,
+        Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
