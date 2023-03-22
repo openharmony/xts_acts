@@ -17,38 +17,13 @@
 import tag from '@ohos.nfc.tag';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import cardEmulation from '@ohos.nfc.cardEmulation';
+import controller from '@ohos.nfc.controller';
 
 function sleep(delay) { // delay x ms
     let start = (new Date()).getTime();
     while ((new Date()).getTime() - start < delay) {
         continue;
     }
-}
-
-let NdefRecord = {
-    NFC_A : 1,
-    NFC_B : 2,
-    ISO_DEP	 : 3,
-    NFC_F : 4,
-    NFC_V : 5,
-    NDEF : 6,
-    MIFARE_CLASSIC : 8,
-    MIFARE_ULTRALIGHT : 9,
-    NDEF_FORMATABLE : 10,
-};
-
-let NfcForumType = {
-    NFC_FORUM_TYPE_1 : 1,
-    NFC_FORUM_TYPE_2 : 2,
-    NFC_FORUM_TYPE_3 : 3,
-    NFC_FORUM_TYPE_4 : 4,
-    MIFARE_CLASSIC : 101,
-};
-
-let FeatureType = {
-    HCE : 0,
-    UICC : 0,
-    ESE : 0,
 }
 
 let isoDepTaginfo = {
@@ -194,7 +169,7 @@ export default function nfcIsoDepTagTest() {
             if (IsoDepTag != null && IsoDepTag != undefined) {
                 let cardEmulationnfc ;
                 try {
-                    cardEmulationnfc = cardEmulation.isSupported(FeatureType.ESE);
+                    cardEmulationnfc = cardEmulation.isSupported(cardEmulation.FeatureType.ESE);
                     console.info('[NFC_test] cardEmulationnfc5 type ->' + cardEmulationnfc )
                     expect(cardEmulationnfc).assertFalse();
                 } catch (error) {
@@ -251,8 +226,103 @@ export default function nfcIsoDepTagTest() {
             }
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_Enumerated_js_0800
+         * @tc.name Test Enumerated
+         * @tc.desc Enumeration return value test
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+         it('SUB_Communication_NFC_Enumerated_js_0800', 0, function ()  {
+            console.info('[nfc_test]1 PAYMENT Enumerated value test pass:' + cardEmulation.CardType.PAYMENT)
+            expect(cardEmulation.CardType.PAYMENT).assertEqual("payment");
+            console.info('[nfc_test]2 OTHER Enumerated value test pass:' + cardEmulation.CardType.OTHER)
+            expect(cardEmulation.CardType.OTHER).assertEqual("other");
+            console.info('[nfc_test]3 NFC_FORUM_TYPE_1 Enumerated value test pass:' + tag.NfcForumType.NFC_FORUM_TYPE_1)
+            expect(tag.NfcForumType.NFC_FORUM_TYPE_1).assertEqual(1);
+            console.info('[nfc_test]4 NFC_FORUM_TYPE_2 Enumerated value test pass:' + tag.NfcForumType.NFC_FORUM_TYPE_2)
+            expect(tag.NfcForumType.NFC_FORUM_TYPE_2).assertEqual(2);
+            console.info('[nfc_test]5 NFC_FORUM_TYPE_3 Enumerated value test pass:' + tag.NfcForumType.NFC_FORUM_TYPE_3)
+            expect(tag.NfcForumType.NFC_FORUM_TYPE_3).assertEqual(3);
+            console.info('[nfc_test]6 NFC_FORUM_TYPE_4 Enumerated value test pass:' + tag.NfcForumType.NFC_FORUM_TYPE_4)
+            expect(tag.NfcForumType.NFC_FORUM_TYPE_4).assertEqual(4);
+            console.info('[nfc_test]7 MIFARE_CLASSIC Enumerated value test pass:' + tag.NfcForumType.MIFARE_CLASSIC)
+            expect(tag.NfcForumType.MIFARE_CLASSIC).assertEqual(101);
+            console.info('[nfc_test]8 HCE Enumerated value test pass:' + cardEmulation.FeatureType.HCE)
+            expect(cardEmulation.FeatureType.HCE).assertEqual(0);
+            console.info('[nfc_test]9 UICC Enumerated value test pass:' + cardEmulation.FeatureType.UICC)
+            expect(cardEmulation.FeatureType.UICC).assertEqual(1);
+            console.info('[nfc_test]10 ESE Enumerated value test pass:' + cardEmulation.FeatureType.ESE)
+            expect(cardEmulation.FeatureType.ESE).assertEqual(2);
+            console.info('[nfc_test]11 TYPE_UNKNOWN Enumerated value test pass:' + tag.MifareClassicType.TYPE_UNKNOWN)
+            expect(tag.MifareClassicType.TYPE_UNKNOWN).assertEqual(0);
+            console.info('[nfc_test]12 TYPE_CLASSIC Enumerated value test pass:' + tag.MifareClassicType.TYPE_CLASSIC)
+            expect(tag.MifareClassicType.TYPE_CLASSIC).assertEqual(1);
+            console.info('[nfc_test]13 TYPE_PLUS Enumerated value test pass:' + tag.MifareClassicType.TYPE_PLUS)
+            expect(tag.MifareClassicType.TYPE_PLUS).assertEqual(2);
+            console.info('[nfc_test]14 TYPE_PRO Enumerated value test pass:' + tag.MifareClassicType.TYPE_PRO)
+            expect(tag.MifareClassicType.TYPE_PRO).assertEqual(3);
+            console.info('[nfc_test]15 MC_SIZE_MINI Enumerated value test pass:' + tag.MifareClassicSize.MC_SIZE_MINI)
+            expect(tag.MifareClassicSize.MC_SIZE_MINI).assertEqual(320);
+            console.info('[nfc_test]16 MC_SIZE_1K Enumerated value test pass:' + tag.MifareClassicSize.MC_SIZE_1K)
+            expect(tag.MifareClassicSize.MC_SIZE_1K).assertEqual(1024);
+            console.info('[nfc_test]17 MC_SIZE_2K Enumerated value test pass:' + tag.MifareClassicSize.MC_SIZE_2K)
+            expect(tag.MifareClassicSize.MC_SIZE_2K).assertEqual(2048);
+            console.info('[nfc_test]18 MC_SIZE_4K Enumerated value test pass:' + tag.MifareClassicSize.MC_SIZE_4K)
+            expect(tag.MifareClassicSize.MC_SIZE_4K).assertEqual(4096);
+            console.info('[nfc_test]19 TYPE_UNKNOWN Enumerated value test pass:' + tag.MifareUltralightType.TYPE_UNKNOWN)
+            expect(tag.MifareUltralightType.TYPE_UNKNOWN).assertEqual(0);
+            console.info('[nfc_test]20 TYPE_ULTRALIGHT Enumerated value pass:' + tag.MifareUltralightType.TYPE_ULTRALIGHT)
+            expect(tag.MifareUltralightType.TYPE_ULTRALIGHT).assertEqual(1);
+            console.info('[nfc_test]21 TYPE_ULTRALIGHT_C Enumerated value pass:' + tag.MifareUltralightType.TYPE_ULTRALIGHT_C)
+            expect(tag.MifareUltralightType.TYPE_ULTRALIGHT_C).assertEqual(2);
+            console.info('[nfc_test]22 TNF_EMPTY Enumerated value test pass:' + tag.TnfType.TNF_EMPTY)
+            expect(tag.TnfType.TNF_EMPTY).assertEqual(0x0);
+            console.info('[nfc_test]23 TNF_WELL_KNOWN Enumerated value test pass:' + tag.TnfType.TNF_WELL_KNOWN)
+            expect(tag.TnfType.TNF_WELL_KNOWN).assertEqual(0x01);
+            console.info('[nfc_test]24 TNF_MEDIA Enumerated value test pass:' + tag.TnfType.TNF_MEDIA)
+            expect(tag.TnfType.TNF_MEDIA).assertEqual(0x02);
+            console.info('[nfc_test]25 TNF_ABSOLUTE_URI Enumerated value test pass:' + tag.TnfType.TNF_ABSOLUTE_URI)
+            expect(tag.TnfType.TNF_ABSOLUTE_URI).assertEqual(0x03);
+            console.info('[nfc_test]26 TNF_EXT_APP Enumerated value test pass:' + tag.TnfType.TNF_EXT_APP)
+            expect(tag.TnfType.TNF_EXT_APP).assertEqual(0x04);
+            console.info('[nfc_test]27 TNF_UNKNOWN Enumerated value test pass:' + tag.TnfType.TNF_UNKNOWN)
+            expect(tag.TnfType.TNF_UNKNOWN).assertEqual(0x05);
+            console.info('[nfc_test]28 TNF_UNCHANGED Enumerated value test pass:' + tag.TnfType.TNF_UNCHANGED)
+            expect(tag.TnfType.TNF_UNCHANGED).assertEqual(0x06);
+            console.info('[nfc_test]29 RTD_TEXT Enumerated value pass:' + String(tag.RtdType.RTD_TEXT) + '--' + String(0x54))
+            expect(String(tag.RtdType.RTD_TEXT)).assertEqual(String(0x54));
+            console.info('[nfc_test]30 RTD_URI Enumerated value pass:' + String(tag.RtdType.RTD_URI) + '--' + String(0x55))
+            expect(String(tag.RtdType.RTD_URI)).assertEqual(String(0x55));
+            console.info('[nfc_test]31 STATE_OFF Enumerated value test pass:' + controller.NfcState.STATE_OFF)
+            expect(controller.NfcState.STATE_OFF).assertEqual(1);
+            console.info('[nfc_test]32 STATE_TURNING_ON Enumerated value test pass:' + controller.NfcState.STATE_TURNING_ON)
+            expect(controller.NfcState.STATE_TURNING_ON).assertEqual(2);
+            console.info('[nfc_test]33 STATE_ON Enumerated value test pass:' + controller.NfcState.STATE_ON)
+            expect(controller.NfcState.STATE_ON).assertEqual(3);
+            console.info('[nfc_test]34 STATE_TURNING_OFF Enumerated value test pass:' + controller.NfcState.STATE_TURNING_OFF)
+            expect(controller.NfcState.STATE_TURNING_OFF).assertEqual(4);
+            console.info('[nfc_test]35 NFC_A Enumerated value test pass:' + tag.NFC_A)
+            expect(tag.NFC_A).assertEqual(1);
+            console.info('[nfc_test]36 NFC_B Enumerated value test pass:' + tag.NFC_B)
+            expect(tag.NFC_B).assertEqual(2);
+            console.info('[nfc_test]37 ISO_DEP Enumerated value test pass:' + tag.ISO_DEP)
+            expect(tag.ISO_DEP).assertEqual(3);
+            console.info('[nfc_test]38 NFC_F Enumerated value test pass:' + tag.NFC_F)
+            expect(tag.NFC_F).assertEqual(4);
+            console.info('[nfc_test]39 NFC_V Enumerated value test pass:' + tag.NFC_V)
+            expect(tag.NFC_V).assertEqual(5);
+            console.info('[nfc_test]40 NDEF Enumerated value test pass:' + tag.NDEF)
+            expect(tag.NDEF).assertEqual(6);
+            console.info('[nfc_test]41 MIFARE_CLASSIC Enumerated value test pass:' + tag.MIFARE_CLASSIC)
+            expect(tag.MIFARE_CLASSIC).assertEqual(8);
+            console.info('[nfc_test]42 MIFARE_ULTRALIGHT Enumerated value test pass:' + tag.MIFARE_ULTRALIGHT)
+            expect(tag.MIFARE_ULTRALIGHT).assertEqual(9);
+            console.info('[nfc_test]43 NDEF_FORMATABLE Enumerated value test pass:' + tag.NDEF_FORMATABLE)
+            expect(tag.NDEF_FORMATABLE).assertEqual(7);
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
-
-

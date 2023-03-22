@@ -249,7 +249,7 @@ describe('bluetoothBLETest', function() {
                     console.error('getname1 failed ');
                   }
                 console.info('[bluetooth_js]getname value:'+JSON.stringify(data));
-                expect(data).assertNull();
+                expect(true).assertEqual(data != null);
             });
             await sleep(2000);
             done(); 
