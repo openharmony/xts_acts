@@ -934,8 +934,6 @@ export default function UiTest() {
             await driver.swipe(300,600,300,300)
             let text = await driver.findComponent(ON.text('next page'))
             expect(text == null).assertTrue()
-            let scrollBar = await driver.findComponent(ON.type('Scroll'))
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -951,8 +949,6 @@ export default function UiTest() {
             await driver.fling({x:300, y:600},{x:300, y:300}, 20, 600)
             let text = await driver.findComponent(ON.text('next page'))
             expect(text == null).assertTrue()
-            let scrollBar = await driver.findComponent(ON.type('Scroll'))
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -985,7 +981,6 @@ export default function UiTest() {
             await scrollBar.scrollToBottom()
             let button = await driver.findComponent(ON.text('bottom'))
             expect(await button.getText() == 'bottom').assertTrue()
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
