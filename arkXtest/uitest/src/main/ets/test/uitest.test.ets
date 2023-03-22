@@ -19,7 +19,7 @@ import ability_featureAbility from '@ohos.ability.featureAbility';
 
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-const waitUiReadyMs = 1000;
+const waitUiReadyMs = 2000;
 
 async function startAbility(bundleName: string, abilityName: string) {
     await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
@@ -39,7 +39,7 @@ async function stopApplication(bundleName: string) {
 
 export default function UiTest() {
     describe('UiTest_API8', function () {
-        it('inputPermission', 0, async function () {
+        beforeAll(async function () {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -52,6 +52,10 @@ export default function UiTest() {
             } catch (err) {
                 console.info("inputPermission error: %s", err.message)
             }
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        beforeEach(async function () {
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -411,6 +415,10 @@ export default function UiTest() {
     })
 
     describe('UiTest_API9', function () {
+        beforeEach(async function () {
+            await stopApplication('com.uitestScene.acts')
+        })
+
         /*
          * @tc.number: uiTest_9001
          * @tc.name: testInputText
@@ -458,9 +466,9 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponent(ON.checkable(true).type('Checkbox'))
+            let button = await driver.findComponent(ON.checkable(false).type('Checkbox'))
             let checkable = await button.isCheckable()
-            expect(checkable == true).assertTrue()
+            expect(checkable == false).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -1439,14 +1447,14 @@ export default function UiTest() {
             let point2 = await text2.getBoundsCenter()
             await driver.drag(point1.x, point1.y, point2.x, point2.y)
             await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('four'))
-            expect(text == null).assertTrue()
+            let text = await driver.findComponent(ON.text('orange').isAfter(ON.text('banana')))
+            expect(text != null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
 
         /*
          * @tc.number: uiTest_9055
-         * @tc.name: testDragTos
+         * @tc.name: testDragTo
          * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent.
          */
         it('testDragTo', 0, async function () {
@@ -1460,8 +1468,8 @@ export default function UiTest() {
             let text2 = await driver.findComponent(ON.text('one'))
             await text1.dragTo(text2)
             await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('four'))
-            expect(text == null).assertTrue()
+            let text = await driver.findComponent(ON.text('orange').isAfter(ON.text('banana')))
+            expect(text != null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
 
