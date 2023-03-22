@@ -82,7 +82,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_0200 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("check permission deny, need to request ohos.permission.REQUIRE_FORM.");
+                expect(data.data).assertEqual("check permission deny, need to request ohos.permission.REQUIRE_FORM or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS.");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_0200"));
                 console.info(`FMS_acquireForm_0200 end`);
                 done();
