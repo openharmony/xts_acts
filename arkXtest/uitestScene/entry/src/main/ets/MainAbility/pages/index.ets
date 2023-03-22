@@ -38,12 +38,12 @@ struct ScrollExample {
             .type(ButtonType.Capsule)
             .margin({ top: 20 })
             .onClick(() => {
-              router.push({ uri: 'pages/second' })
+              router.push({ uri: 'MainAbility/pages/second' })
             })
             .gesture(
             LongPressGesture({ repeat: false })
               .onAction((event: GestureEvent) => {
-                router.push({ uri: 'pages/fourth' })
+                router.push({ uri: 'MainAbility/pages/fourth' })
               })
             )
             Button() {
@@ -56,7 +56,7 @@ struct ScrollExample {
             .gesture(
             TapGesture({ count: 1 })
               .onAction(() => {
-                router.push({ uri: 'pages/third' })
+                router.push({ uri: 'MainAbility/pages/third' })
               })
             )
             Button() {
@@ -67,12 +67,12 @@ struct ScrollExample {
             .type(ButtonType.Capsule)
             .margin({ top: 20 })
             .onClick(() => {
-              router.push({ uri: 'pages/screen' })
+              router.push({ uri: 'MainAbility/pages/screen' })
             })
             .gesture(
             LongPressGesture({ repeat: false })
               .onAction((event: GestureEvent) => {
-                router.push({ uri: 'pages/drag' })
+                router.push({ uri: 'MainAbility/pages/drag' })
               })
             )
             Checkbox({ name: 'hi' })
@@ -103,7 +103,7 @@ struct ScrollExample {
               top: 20, left: 150
             })
             .onClick(() => {
-              router.push({ uri: 'pages/second' })
+              router.push({ uri: 'MainAbility/pages/second' })
             })
           }.width('100%')
         }
