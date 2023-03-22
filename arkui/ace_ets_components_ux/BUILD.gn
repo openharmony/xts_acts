@@ -19,6 +19,7 @@ group("componentUxTest") {
       "ace_ets_component_button:ActsAceButtonTest",
       "ace_ets_component_datapanel:ActsAceDatapanelTest",
       "ace_ets_component_datepicker:ActsAceDatePickerTest",
+      "ace_ets_component_progress:ActsAceProgressTest",
       "ace_ets_component_radio:ActsAceRadioTest",
       "ace_ets_component_select:ActsAceSelectTest",
       "ace_ets_component_sidebar:ActsAceSideBarTest",
