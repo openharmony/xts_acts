@@ -95,6 +95,7 @@ export default function getBundleInfoForSelf() {
         console.info("getBundleInfoForSelfApplicationPro" + JSON.stringify(data.appInfo));
         checkCommonBundleInfo(data);
         expect(data.appInfo.debug).assertFalse();
+        expect(bundle.ExtensionAbilityType.PRINT).assertEqual(15);
         expect(data.appInfo.bundleType).assertEqual(bundle.BundleType.APP);
         expect(data.appInfo.name).assertEqual(BUNDLE_NAME);
         expect(data.appInfo.description).assertEqual("$string:description_application");

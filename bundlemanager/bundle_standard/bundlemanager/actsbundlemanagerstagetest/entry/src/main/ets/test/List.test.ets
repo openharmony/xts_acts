@@ -19,6 +19,7 @@ import getBundleInfoForSelf from './GetBundleInfoForSelf.test.ets';
 import getSecondModuleTest from './GetSecondModule.test.ets';
 import isDefaultApplicationTest from './IsDefaultApplication.test.ets';
 import PublicApiEightTest from './PublicApiEightTest.test.ets';
+import PublicApiNineTest from './PublicApiNineTest.test.ets';
 
 export default function testsuite() {
   getProfileByAbility();
@@ -27,4 +28,5 @@ export default function testsuite() {
   getSecondModuleTest();
   isDefaultApplicationTest();
   PublicApiEightTest();
+  PublicApiNineTest();
 }
