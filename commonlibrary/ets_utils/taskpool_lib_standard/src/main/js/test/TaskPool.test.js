@@ -941,7 +941,7 @@ describe('ActsAbilityTest', function () {
         function additionDelay(arg) {
             "use concurrent"
             var start = new Date().getTime();
-            while (new Date().getTime() - start < 3000) {
+            while (new Date().getTime() - start < 200) {
               continue;
             }
             return arg + 1;
@@ -949,13 +949,34 @@ describe('ActsAbilityTest', function () {
         try {
             var task1 = new taskpool.Task(additionDelay, 100);
             var task2 = new taskpool.Task(additionDelay, 200);
-            var task3 = new taskpool.Task(addition, 300);
+            var task3 = new taskpool.Task(additionDelay, 200);
+            var task4 = new taskpool.Task(additionDelay, 200);
+            var task5 = new taskpool.Task(additionDelay, 200);
+            var task6 = new taskpool.Task(additionDelay, 200);
+            var task7 = new taskpool.Task(additionDelay, 200);
+            var task8 = new taskpool.Task(additionDelay, 200);
+            var task9 = new taskpool.Task(additionDelay, 200);
+            var task10 = new taskpool.Task(additionDelay, 200);
+            var task11 = new taskpool.Task(addition, 300);
 
             var result1 = taskpool.execute(task1);
             var result2 = taskpool.execute(task2);
             var result3 = taskpool.execute(task3);
+            var result4 = taskpool.execute(task4);
+            var result5 = taskpool.execute(task5);
+            var result6 = taskpool.execute(task6);
+            var result7 = taskpool.execute(task7);
+            var result8 = taskpool.execute(task8);
+            var result9 = taskpool.execute(task9);
+            var result10 = taskpool.execute(task10);
+            var result11 = taskpool.execute(task11);
 
-            taskpool.cancel(task3);
+            var start = new Date().getTime();
+            while (new Date().getTime() - start < 20) {
+                continue;
+            }
+
+            taskpool.cancel(task11);
         }
         catch (e) {
             expect(e.toString()).assertEqual("");
@@ -979,7 +1000,7 @@ describe('ActsAbilityTest', function () {
         function additionDelay(arg) {
             "use concurrent"
             var start = new Date().getTime();
-            while (new Date().getTime() - start < 3000) {
+            while (new Date().getTime() - start < 200) {
               continue;
             }
             return arg + 1;
@@ -987,13 +1008,34 @@ describe('ActsAbilityTest', function () {
         try {
             var task1 = new taskpool.Task(additionDelay, 100);
             var task2 = new taskpool.Task(additionDelay, 200);
-            var task3 = new taskpool.Task(addition, 300);
+            var task3 = new taskpool.Task(additionDelay, 200);
+            var task4 = new taskpool.Task(additionDelay, 200);
+            var task5 = new taskpool.Task(additionDelay, 200);
+            var task6 = new taskpool.Task(additionDelay, 200);
+            var task7 = new taskpool.Task(additionDelay, 200);
+            var task8 = new taskpool.Task(additionDelay, 200);
+            var task9 = new taskpool.Task(additionDelay, 200);
+            var task10 = new taskpool.Task(additionDelay, 200);
+            var task11 = new taskpool.Task(addition, 300);
 
             var result1 = taskpool.execute(task1);
             var result2 = taskpool.execute(task2);
             var result3 = taskpool.execute(task3);
+            var result4 = taskpool.execute(task4);
+            var result5 = taskpool.execute(task5);
+            var result6 = taskpool.execute(task6);
+            var result7 = taskpool.execute(task7);
+            var result8 = taskpool.execute(task8);
+            var result9 = taskpool.execute(task9);
+            var result10 = taskpool.execute(task10);
+            var result11 = taskpool.execute(task11);
 
-            taskpool.cancel(task3);
+            var start = new Date().getTime();
+            while (new Date().getTime() - start < 20) {
+                continue;
+            }
+
+            taskpool.cancel(task11);
         }
         catch (e) {
             expect(e.toString()).assertEqual("");

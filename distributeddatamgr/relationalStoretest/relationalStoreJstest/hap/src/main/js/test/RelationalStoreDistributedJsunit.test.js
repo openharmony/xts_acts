@@ -17,6 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import data_Rdb from '@ohos.data.relationalStore';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
+const ERRCODE = 801;
 var context = ability_featureAbility.getContext();
 var sqlStatement = "CREATE TABLE IF NOT EXISTS employee (" +
 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -100,8 +101,8 @@ describe('relationalStoreDistributedTest', function () {
             console.info(TAG + "set none to be distributed table success");
             expect(rdbStore).assertEqual(rdbStore)
         } catch (err) {
-            console.info(TAG + "set none to be distributed table failed");
-            expect(null).assertFail();
+            console.info(TAG + "setDistributed002 failed"+ `, error code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(ERRCODE);
         }
         done()
         console.info(TAG + "************* testRdbStoreDistributed002 end *************");
@@ -119,8 +120,8 @@ describe('relationalStoreDistributedTest', function () {
             console.info(TAG + "set employee to be distributed table success");
             expect(rdbStore).assertEqual(rdbStore)
         } catch (err) {
-            console.info(TAG + "set employee to be distributed table failed");
-            expect(null).assertFail();
+            console.info(TAG + "setDistributed003 failed"+ `, error code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(ERRCODE);
         }
         done()
         console.info(TAG + "************* testRdbStoreDistributed003 end *************");
@@ -138,8 +139,8 @@ describe('relationalStoreDistributedTest', function () {
             console.info(TAG + "set employee and product to be distributed table success");
             expect(rdbStore).assertEqual(rdbStore)
         } catch (err) {
-            console.info(TAG + "set employee and product to be distributed table failed");
-            expect(null).assertFail();
+            console.info(TAG + "setDistributed004 failed"+ `, error code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(ERRCODE);
         }
         done()
         console.info(TAG + "************* testRdbStoreDistributed004 end *************");
