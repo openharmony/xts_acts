@@ -31,18 +31,31 @@ export async function idle(avRecorder) {
     return avRecorder;
 }
 
+export async function idleCallback(avRecorder) {
+    console.info('case idleCallback called');
+    media.createAVRecorder((error, recorder) => {
+        if (recorder != null) {
+            avRecorder = recorder;
+            console.info('createAVRecorder success');
+        } else {
+            console.info(`createAVRecorder fail, error:${error}`);
+        }
+    });
+    return avRecorder;
+}
+
 export const AV_RECORDER_STATE = {
-    IDLE : 'idle',
-    PREPARED : 'prepared',
-    STARTED : 'started',
-    PAUSED : 'paused',
-    STOPPED : 'stopped',
-    RELEASED : 'released',
-    ERROR : 'error',
+    IDLE: 'idle',
+    PREPARED: 'prepared',
+    STARTED: 'started',
+    PAUSED: 'paused',
+    STOPPED: 'stopped',
+    RELEASED: 'released',
+    ERROR: 'error',
 }
 
 export function prepareCallback(avRecorder, avConfig) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.prepare(avConfig, (err) => {
@@ -56,31 +69,31 @@ export function prepareCallback(avRecorder, avConfig) {
 }
 
 export function preparePromise(avRecorder, avConfig) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.prepare(avConfig).then(() => {
         console.info('prepare success');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback); 
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 export function getInputSurfacePromise(avRecorder) {
     let surfaceID = null;
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
-    } 
+    }
     avRecorder.getInputSurface().then((surfaceId) => {
         console.info('getInputSurface success');
         surfaceID = surfaceId;
     }).catch((err) => {
         console.info('getInputSurface failed and catch error is ' + err.message);
     });
-    
+
     // videoOutput = await cameraManager.createVideoOutput(videoProfiles[0], surfaceID);
 }
 
 export function getInputSurfaceCallback(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     let surfaceID = null;
@@ -96,7 +109,7 @@ export function getInputSurfaceCallback(avRecorder) {
 }
 
 export function startCallback(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.start((err) => {
@@ -110,16 +123,16 @@ export function startCallback(avRecorder) {
 }
 
 export function startPromise(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.start().then(() => {
         console.info('start success');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback); 
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 export function pauseCallback(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.pause((err) => {
@@ -133,16 +146,16 @@ export function pauseCallback(avRecorder) {
 }
 
 export function pausePromise(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.pause().then(() => {
         console.info('pause success');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback); 
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 export function resumeCallback(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.resume((err) => {
@@ -156,16 +169,16 @@ export function resumeCallback(avRecorder) {
 }
 
 export function resumePromise(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.resume().then(() => {
         console.info('resume success');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback); 
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 export function stopCallback(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.stop((err) => {
@@ -179,16 +192,16 @@ export function stopCallback(avRecorder) {
 }
 
 export function stopPromise(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.stop().then(() => {
         console.info('stop success');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback); 
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 export function resetCallback(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.reset((err) => {
@@ -202,16 +215,16 @@ export function resetCallback(avRecorder) {
 }
 
 export function resetPromise(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.reset().then(() => {
         console.info('reset success');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback); 
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 export function releaseCallback(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.release((err) => {
@@ -225,24 +238,23 @@ export function releaseCallback(avRecorder) {
 }
 
 export function releasePromise(avRecorder) {
-    if (typeof(avRecorder) == 'undefined') {
+    if (typeof (avRecorder) == 'undefined') {
         return;
     }
     avRecorder.release().then(() => {
         console.info('release success');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback); 
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export function offCallback(avRecorder, typeArr)
-{
+export function offCallback(avRecorder, typeArr) {
     if (avRecorder == null) {
         return;
     }
-    for (let i = 0; i < typeArr.length; i++) { 
+    for (let i = 0; i < typeArr.length; i++) {
         switch (typeArr[i]) {
             case 'stateChange':
                 avRecorder.off('stateChange');
@@ -300,7 +312,7 @@ export async function setOnCallback(avConfig, avRecorder, recorderTime, done) {
                 console.info('case state is unknown');
         }
     });
-    
+
     avRecorder.on('error', (err) => {
         console.info('case avRecorder.on(error) called, errMessage is ' + err.message);
     });
@@ -381,7 +393,7 @@ export async function avRecorderReliabilitTest02(avConfig, avRecorder, recorderT
 }
 
 export async function avRecorderReliabilitTest03(avConfig, avRecorder, recorderTime, done) {
-    avRecorder = await idle(avRecorder);
+    avRecorder = await idleCallback(avRecorder);
     setPrepareOnCallback(avConfig, avRecorder, recorderTime, done)
     await avRecorder.prepare(avConfig)
 }
