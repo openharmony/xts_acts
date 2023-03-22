@@ -20,7 +20,7 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
 import { UiDriver, BY, PointerMatrix } from '@ohos.UiTest'
-const CODECMIMEVALUE = ['video/avc', 'audio/mp4a-latm', 'audio/mpeg']
+const CODECMIMEVALUE = ['video/x-h264', 'audio/mpeg', 'video/avc', 'audio/mp4a-latm']
 const context = featureAbility.getContext();
 
 export async function getPermission(permissionNames) {
