@@ -19,15 +19,8 @@ ohos_js_hap_suite("ActsHiSysEventJsTest") {
     ":hisysevent_resources",
   ]
 
-  #  shared_libraries = [
-  #    "//third_party/giflib:libgif",
-  #    "//third_party/libpng:libpng",
-  #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsHiSysEventJsTest"
-
-  #  part_name = "prebuilt_hap"
-  #  subsystem_name = "xts"
 }
 ohos_js_assets("hisysevent_js_assets") {
   js2abc = true

@@ -103,6 +103,195 @@ struct DatapanelTest {
       Column() {
         List({ space: 0, initialIndex: 0 }) {
           ListItem() {
+            DataPanel({ values: [20, 10, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(this.color1)
+              .key("ArkUX_Stage_DataPanel_ValueColors_0100")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(this.color2)
+              .key("ArkUX_Stage_DataPanel_ValueColors_0200")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(this.color3)
+              .key("ArkUX_Stage_DataPanel_ValueColors_0300")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors([$r("app.color.DataPanel_ValueColors1"), $r("app.color.DataPanel_ValueColors2"),
+                $r("app.color.DataPanel_ValueColors3"), $r("app.color.DataPanel_ValueColors4")])
+              .key("ArkUX_Stage_DataPanel_ValueColors_0400")
+          }
+          ListItem() {
+            DataPanel({ values: [10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(this.color4)
+              .key("ArkUX_Stage_DataPanel_ValueColors_0500")
+          }
+          ListItem() {
+            DataPanel({ values: [10, 10, 10, 10, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(this.color5)
+              .key("ArkUX_Stage_DataPanel_ValueColors_0600")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(0,0,0)'])
+              .valueColors([Color.Red, Color.Green, Color.Blue, Color.Black])
+              .key("ArkUX_Stage_DataPanel_ValueColors_0700")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(["#FFFF0000", "#FF00FF00", "#FF0000FF", "#FF000000"])
+              .backgroundColor(Color.Pink)
+              .width(80)
+              .padding(10)
+              .margin(20)
+              .key("ArkUX_Stage_DataPanel_ValueColors_0800")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors('rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(0,0,0)')
+              .valueColors(undefined)
+              .key("ArkUX_Stage_DataPanel_ValueColors_0900")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors([this.color6, this.color7, this.color8])
+              .key("ArkUX_Stage_DataPanel_ValueColors_1000")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors([this.color9, this.color10, this.color11])
+              .key("ArkUX_Stage_DataPanel_ValueColors_1100")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors([this.color12, this.color13, this.color14])
+              .key("ArkUX_Stage_DataPanel_ValueColors_1200")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors([$r("app.color.DataPanel_ValueColors5"), $r("app.color.DataPanel_ValueColors6"),
+                $r("app.color.DataPanel_ValueColors7"), $r("app.color.DataPanel_ValueColors8"),
+                $r("app.color.DataPanel_ValueColors9"), $r("app.color.DataPanel_ValueColors10")])
+              .key("ArkUX_Stage_DataPanel_ValueColors_1300")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors([this.color26, this.color27, this.color28])
+              .valueColors([this.color29, this.color30, this.color31])
+              .key("ArkUX_Stage_DataPanel_ValueColors_1400")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors([this.color23, this.color24, this.color25])
+              .backgroundColor(Color.Green)
+              .padding(10)
+              .margin(20)
+              .key("ArkUX_Stage_DataPanel_ValueColors_1500")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(([{ color: 'rgb(255,165,0)', offset: 0 }, { color: 'rgb(255,255,0)', offset: 1 }],
+                [{ color: 'rgb(255,192,203)', offset: 0 }, { color: 'rgb(0,128,0)', offset: 1 }],
+                [{ color: 'rgb(0,0,255)', offset: 0 },{ color: 'rgb(255,0,0)', offset: 1 }]))
+              .valueColors(undefined)
+              .key("ArkUX_Stage_DataPanel_ValueColors_1600")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(this.color15)
+              .key("ArkUX_Stage_DataPanel_ValueColors_1700")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(this.color16)
+              .key("ArkUX_Stage_DataPanel_ValueColors_1800")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(this.color17)
+              .key("ArkUX_Stage_DataPanel_ValueColors_1900")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors([$r("app.color.DataPanel_ValueColors11"), $r("app.color.DataPanel_ValueColors12"),
+                $r("app.color.DataPanel_ValueColors13"), $r("app.color.DataPanel_ValueColors14")])
+              .key("ArkUX_Stage_DataPanel_ValueColors_2000")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(['rgba(255,165,0,0)', 'rgba(255,255,0,0)', 'rgba(255,192,203,0)', 'rgba(0,128,0,0)'])
+              .valueColors([Color.Orange, Color.Yellow, Color.Pink, Color.Green])
+              .key("ArkUX_Stage_DataPanel_ValueColors_2100")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(["#01FFA500", "#4CFFFF00", "#9AFFC0CB", "#FF00FF00"])
+              .backgroundColor(Color.Green)
+              .padding(10)
+              .margin(20)
+              .key("ArkUX_Stage_DataPanel_ValueColors_2200")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors('')
+              .key("ArkUX_Stage_DataPanel_ValueColors_2300")
+          }
+          ListItem() {
+            DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
+              .width(200)
+              .height(200)
+              .valueColors(null)
+              .key("ArkUX_Stage_DataPanel_ValueColors_2400")
+          }
+           ListItem() {
             DataPanel({ values: [20, 10, 10], max: 80, type: DataPanelType.Circle })
               .width(200)
               .height(200)

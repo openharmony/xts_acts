@@ -23,7 +23,7 @@ let useSoftware = true;
 export default function SecurityHuksDSABasicAbort63KBPromiseJsunit() {
   describe('SecurityHuksDSABasicAbort63KBPromiseJsunit', function () {
     beforeAll(async function (done) {
-      useSoftware = checkSoftware();
+      useSoftware = await checkSoftware();
       done();
     })
     it('testReformedSignVerifyDSA102', 0, async function (done) {
@@ -36,7 +36,9 @@ export default function SecurityHuksDSABasicAbort63KBPromiseJsunit() {
         ),
         inData: srcData63Kb,
       };
-      await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
+      if (useSoftware) {
+        await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
+      }
       done();
     });
   });

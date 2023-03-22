@@ -32,7 +32,8 @@ export default function ActsAccountAppAccess() {
                 console.info(`sleep #{time} over ...`)
             })
         }
-        beforeAll(async function (done) {      
+        beforeAll(async function (done) {  
+            console.debug("====>accountauthenticatorbeforeAll start====");		
             await featureAbility.startAbility(
                 {
                     want:
@@ -44,10 +45,12 @@ export default function ActsAccountAppAccess() {
                         parameters:
                         {},
                     },
-                },
-            )
-            await sleep(1000)      
-            done();
+                }, (err, data) => {
+                    console.debug("====>accountauthenticatorfeatureAbility.startAbility err:" + JSON.stringify(err))
+                    console.debug("====>accountauthenticatorfeatureAbility.startAbility data:" + JSON.stringify(data))
+                    done();
+                })
+            console.debug("====>accountauthenticatorfeatureAbility.startAbility end")
         });
         beforeEach(async function (done) {            
             console.debug("====>afterEach start====");

@@ -450,15 +450,13 @@ describe('TextEncoderTest', function () {
        returns a function following the error-first callback style.
      */
     it('testUtilCallbackWrapper006', 0, async function () {
-        async function promiseFn(){
+        async function promiseFn() {
             return null;
         }
         var cb = util.callbackWrapper(promiseFn);
         try {
-            (async () => {
-                cb([1, 2])
-            })();
-        } catch(err) {
+            cb([1, 2]);
+        } catch (err) {
             expect(err.message).assertEqual('maybe is not function');
         }
     })
