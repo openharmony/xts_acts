@@ -26,21 +26,9 @@ affected_files = "libupdateservice.z.so" //OpenHarmony-v3.0-LTS到OpenHarmony-v3
 
 
 strings:
-	/*
-	.text:0028DEC2 38 F0 46 ED  
-	.text:0028DEC2 38 F0 46 ED  
-	.text:0028DEC2 39 F0 2E E9   
+
+	$fix={DD E9 05 20 07 99}
 	
-	.text:0028EDC2 39 F0 5E EA  
-	.text:0028EDC2 39 F0 6E EA  
-	.text:0028EDC2 39 F0 6E EA 
-	*/
-	$fix={39 F0 ?E EA}
-	
-
-
-
-
 condition:
- (elf.machine == elf.EM_ARM) and $fix and console.log("OpenHarmony-SA-2022-0702 testcase pass")
+ (elf.machine == elf.EM_ARM) and (not $fix) and console.log("OpenHarmony-SA-2022-0702 testcase pass")
 }
