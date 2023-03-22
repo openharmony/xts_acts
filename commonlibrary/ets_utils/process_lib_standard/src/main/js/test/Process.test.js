@@ -142,6 +142,16 @@ describe('ProcessTest', function () {
     })
 
     /**
+     * @tc.name: testKill006
+     * @tc.desc: Return whether the signal was sent successfully.
+     */
+    it('testKill006', 0, function () {
+        let pres = process.pid
+        let result = process.kill('17', pres)
+        expect(result).assertEqual(true)
+    })
+
+    /**
      * @tc.name: testUptime001
      * @tc.desc: Returns the running time of the system.
      */

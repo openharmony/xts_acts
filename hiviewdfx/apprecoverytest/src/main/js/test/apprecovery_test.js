@@ -192,7 +192,7 @@ describe("ActsAppRecoveryTest", function () {
 
     /**
     * @tc.number: DFX_DFR_AppRecovery_Interface_1100
-    * @tc.name: 调用saveAppState接口
+    * @tc.name: 调用saveAppState接口(不传参)
     * @tc.desc: appRecovery interface test.
     */
     it("DFX_DFR_AppRecovery_Interface_1100", 0, function () {
@@ -390,6 +390,42 @@ describe("ActsAppRecoveryTest", function () {
             expect(false).assertTrue();
         }
         console.info("DFX_DFR_AppRecovery_Interface_2100 end");
+    })
+
+    /**
+    * @tc.number: DFX_DFR_AppRecovery_Interface_2200
+    * @tc.name: 调用saveAppState接口(传参Ability)
+    * @tc.desc: appRecovery interface test.
+    */
+    it("DFX_DFR_AppRecovery_Interface_2200", 0, function () {
+        console.info("-------------------------DFX_DFR_AppRecovery_Interface_2200 start-------------------------");
+        try{
+            appRecovery.saveAppState(globalThis.abilityContext);
+        }catch(error){
+            console.info("DFX_DFR_AppRecovery_Interface_2200 err = " + error);
+            expect(false).assertTrue();
+        }
+        console.info("DFX_DFR_AppRecovery_Interface_2200 end");
+    })
+
+    /**
+    * @tc.number: DFX_DFR_AppRecovery_Interface_2300
+    * @tc.name: 调用setRestartWant接口
+    * @tc.desc: appRecovery interface test.
+    */
+     it("DFX_DFR_AppRecovery_Interface_2300", 0, function () {
+        console.info("-------------------------DFX_DFR_AppRecovery_Interface_2300 start-------------------------");
+        try{
+            let want = {
+                bundleName: "ohos.samples.recovery",
+                abilityName: "RecoveryAbility"
+              };
+            appRecovery.setRestartWant(want);
+        }catch(error){
+            console.info("DFX_DFR_AppRecovery_Interface_2300 err = " + error);
+            expect(false).assertTrue();
+        }
+        console.info("DFX_DFR_AppRecovery_Interface_2300 end");
     })
 
 })

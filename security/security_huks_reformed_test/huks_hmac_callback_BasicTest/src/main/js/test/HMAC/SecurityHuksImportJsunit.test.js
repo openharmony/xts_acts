@@ -1098,35 +1098,39 @@ export function SecurityHuksImportJsunit() {
 
         it('HUKS_Basic_Capability_Import_Reformed_0300', 0, async function (done) {
             const srcKeyAliesWrap = 'HUKS_Basic_Capability_Import_0200';
-            await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParams, false);
-            await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
+            if (useSoftware) {
+                await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParams, false);
+                await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
 
-            await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
-            await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
-            let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
-            importWrappedAes192Params.inData = wrappedData;
-            await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192Params);
-            await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParams);
-            await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
-            await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params);
-            await publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams);
+                await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
+                await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
+                let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
+                importWrappedAes192Params.inData = wrappedData;
+                await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192Params);
+                await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParams);
+                await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
+                await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params);
+                await publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams);
+            }
             done();
         });
 
         it('HUKS_Basic_Capability_Import_Reformed_0400', 0, async function (done) {
             const srcKeyAliesWrap = 'HUKS_Basic_Capability_Import_0400';
-            await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParamsX25519, false);
-            await generateAndExportPublicKey(callerKeyAlias, genCallerX25519Params, true);
+            if (useSoftware) {
+                await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParamsX25519, false);
+                await generateAndExportPublicKey(callerKeyAlias, genCallerX25519Params, true);
 
-            await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParamsX25519);
-            await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
-            let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
-            importWrappedAes192ParamsX25519.inData = wrappedData;
-            await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192ParamsX25519);
-            await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParamsX25519);
-            await publicDeleteKeyItemFunc(callerKeyAlias, genCallerX25519Params);
-            await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192ParamsX25519);
-            await publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams);
+                await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParamsX25519);
+                await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
+                let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
+                importWrappedAes192ParamsX25519.inData = wrappedData;
+                await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192ParamsX25519);
+                await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParamsX25519);
+                await publicDeleteKeyItemFunc(callerKeyAlias, genCallerX25519Params);
+                await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192ParamsX25519);
+                await publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams);
+            }
             done();
         });
 
@@ -1556,45 +1560,49 @@ export function SecurityHuksImportJsunit() {
 
         it('HUKS_Basic_Capability_Import_Reformed_2600', 0, async function (done) {
             const srcKeyAliesWrap = 'HUKS_Basic_Capability_Import_0200';
-            await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParams, false);
-            await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
+            if (useSoftware) {
+                await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParams, false);
+                await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
 
-            await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
-            await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
-            let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
-            importWrappedAes192Params.inData = wrappedData;
-            await publicImportWrappedKeyPromise(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192Params);
-            await publicImportWrappedKeyPromise(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192Params);
-            await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParams);
-            await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
-            await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params);
-            await publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams);
+                await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
+                await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
+                let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
+                importWrappedAes192Params.inData = wrappedData;
+                await publicImportWrappedKeyPromise(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192Params);
+                await publicImportWrappedKeyPromise(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192Params);
+                await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParams);
+                await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
+                await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params);
+                await publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams);
+            }
             done();
         });
 
         it('HUKS_Basic_Capability_Import_Reformed_2700', 0, async function (done) {
             const srcKeyAliesWrap = 'HUKS_Basic_Capability_Import_2700';
-            await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParams, false);
-            await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
-            await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
-            await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
-            let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
-            importWrappedAes192ParamsX25519.inData = wrappedData;
-            try {
-                await importWrappedKeyItem(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192ParamsX25519)
-                    .then((data) => {
-                        console.info(`callback: importWrappedKeyItem success, data = ${JSON.stringify(data)}`);
-                    })
-                    .catch(error => {
-                        console.error(`callback: importWrappedKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-                        expect(error.code == 12000006).assertTrue();
-                    });
-            } catch (error) {
-                console.error(`callback: importWrappedKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
-                expect(null).assertFail();
+            if (useSoftware) {
+                await generateAndExportPublicKey(srcKeyAliesWrap, genWrappingKeyParams, false);
+                await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
+                await ImportKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
+                await EncryptImportedPlainKeyAndKek(importedAes192PlainKey);
+                let wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
+                importWrappedAes192ParamsX25519.inData = wrappedData;
+                try {
+                    await importWrappedKeyItem(importedKeyAliasAes192, srcKeyAliesWrap, importWrappedAes192ParamsX25519)
+                        .then((data) => {
+                            console.info(`callback: importWrappedKeyItem success, data = ${JSON.stringify(data)}`);
+                        })
+                        .catch(error => {
+                            console.error(`callback: importWrappedKeyItem failed, code: ${error.code}, msg: ${error.message}`);
+                            expect(error.code == 12000006).assertTrue();
+                        });
+                } catch (error) {
+                    console.error(`callback: importWrappedKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);
+                    expect(null).assertFail();
+                }
+                await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParams);
+                await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
             }
-            await publicDeleteKeyItemFunc(srcKeyAliesWrap, genWrappingKeyParams);
-            await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
             done();
         });
 

@@ -205,9 +205,12 @@ describe("SensorJsTest_sensor_25", function () {
                 expect(typeof (data.x)).assertEqual("number");
                 expect(typeof (data.y)).assertEqual("number");
                 expect(typeof (data.z)).assertEqual("number");
-                done();
             },
         });
+		setTimeout(() => {
+           sensor.unsubscribeAccelerometer();
+           done();
+        }, 1000);
     })
 
     /*
@@ -215,21 +218,38 @@ describe("SensorJsTest_sensor_25", function () {
      * @tc.name: subscribeAccelerometer_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeAccelerometer_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+	it("subscribeAccelerometer_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeAccelerometer_SensorJsTest007---------------------------');
         sensor.subscribeAccelerometer({
-            interval: 'normal',
+            interval: 'game',
             success: function (data) {
                 console.info("subscribeAccelerometer_SensorJsTest007 success" + JSON.stringify(data));
                 expect(typeof (data.x)).assertEqual("number");
                 expect(typeof (data.y)).assertEqual("number");
                 expect(typeof (data.z)).assertEqual("number");
-                done();
             },
             fail: function (data, code) {
                 console.log("subscribeAccelerometer_SensorJsTest007 is failed, data: " + data + ", code: " + code);
                 expect(false).assertTrue();
             },
         });
+
+        sensor.subscribeAccelerometer({
+            interval: 'normal',
+            success: function (data) {
+                console.info("subscribeAccelerometer_SensorJsTest007_1 success" + JSON.stringify(data));
+                expect(typeof (data.x)).assertEqual("number");
+                expect(typeof (data.y)).assertEqual("number");
+                expect(typeof (data.z)).assertEqual("number");
+            },
+            fail: function (data, code) {
+                console.log("subscribeAccelerometer_SensorJsTest007_1 is failed, data: " + data + ", code: " + code);
+                expect(false).assertTrue();
+            },
+        });
+        setTimeout(() => {
+           sensor.unsubscribeAccelerometer();
+           done();
+        }, 1000);
     })
 })}

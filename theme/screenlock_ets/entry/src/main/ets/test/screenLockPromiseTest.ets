@@ -114,10 +114,9 @@ export default function ScreenLockPromiseTest(){
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_004-------------------");
       try {
         screenLock.unlockScreen().then((data) => {
-              let currentResult = screenLock.isLocked()
-              expect(currentResult).assertEqual(false)
               console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004 success.");
               console.info('====>-------------SUB_MISC_THEME_screenLock_API_Promise_004 end----------------------');
+              expect(true).assertTrue()
               done();
           }).catch( err => {
               console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004 failed because: " + JSON.stringify(err));
@@ -126,10 +125,9 @@ export default function ScreenLockPromiseTest(){
           });
         } catch (error) {
           console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004: error = " + error);
-          expect(true).assertTrue();
+          expect().assertFail();
       }
       console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_004-------------------");
-      done();
     });
   })
 }

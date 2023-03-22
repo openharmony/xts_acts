@@ -50,34 +50,6 @@ HWTEST_F(FileSystemTest, testUmask, Function | MediumTest | Level2)
     EXPECT_EQ(umask(maskPre), maskNew) << "> umask error";
 }
 #endif
-#if 0
-/**
- * @tc.number   SUB_KERNEL_FS_STAT_0200
- * @tc.name     basic function test : Run the stat function to obtain the file status.
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(FileSystemTest, testStat, Function | MediumTest | Level3)
-{
-    int fd = 0;
-    mode_t mode = 0777;
-    const char *filePath = TOP_DIR "/" FILE0;
-    struct stat buf = {0};
-    char writeBuf[] = "this is a file";
-
-    fd = open(FILE0, O_CREAT | O_RDWR, mode);
-    EXPECT_NE(fd, -1) << "> open faild errno = " << errno;
-    WriteCloseTest(fd);
-
-    EXPECT_NE(stat(filePath, &buf), -1) << "> fstat errno = " << errno;
-    LOG("> buf.st_dev = %lu", buf.st_dev);                          // IDs of device on which file resides
-    LOG("> buf.st_ino = %lu", buf.st_ino);                          // I-node number of file
-    EXPECT_EQ(buf.st_rdev, 0) << "> buf.st_rdev not expect";        // IDs for device special files
-    EXPECT_EQ(buf.st_size, sizeof(writeBuf)) << "> buf.st_size = " << buf.st_size;
-    LOG("> buf.st_atim = %lds,%ldns", buf.st_atim.tv_sec, buf.st_atim.tv_nsec);     // time for last file access
-    LOG("> buf.st_mtim = %lds,%ldns", buf.st_mtim.tv_sec, buf.st_mtim.tv_nsec);     // time for last file modification
-    LOG("> buf.st_ctim = %lds,%ldns", buf.st_ctim.tv_sec, buf.st_ctim.tv_nsec);     // time for last file status change
-}
-#endif
 #if defined(LITE_FS_JFFS2)
 #ifndef COMMERCIAL
 /**
@@ -112,35 +84,6 @@ HWTEST_F(FileSystemTest, testStatLimt, Function | MediumTest | Level3)
     umask(maskPre);
 }
 #endif
-#endif
-#if 0
-/**
- * @tc.number   SUB_KERNEL_FS_STAT_0300
- * @tc.name     basic function test : Run the lstat function to obtain the file status.
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(FileSystemTest, testLstat, Function | MediumTest | Level3)
-{
-    int fd = 0;
-    mode_t mode = 0777;
-    const char *filePath = TOP_DIR "/" FILE0;
-    struct stat buf = {0};
-    char writeBuf[] = "this is a file";
-
-    fd = open(filePath, O_CREAT | O_RDWR, mode);
-    EXPECT_NE(fd, -1) << "> open faild errno = " << errno;
-    WriteCloseTest(fd);
-
-    EXPECT_NE(lstat(filePath, &buf), -1) << "> fstat errno = " << errno;
-    LOG("> buf.st_dev = %lu", buf.st_dev);                          // IDs of device on which file resides
-    LOG("> buf.st_ino = %lu", buf.st_ino);                          // I-node number of file
-    EXPECT_EQ(buf.st_rdev, 0) << "> buf.st_rdev not expect";        // IDs for device special files
-    EXPECT_EQ(buf.st_size, sizeof(writeBuf)) << "> buf.st_size = " << buf.st_size;
-
-    LOG("> buf.st_atim = %lds,%ldns", buf.st_atim.tv_sec, buf.st_atim.tv_nsec);     // time for last file access
-    LOG("> buf.st_mtim = %lds,%ldns", buf.st_mtim.tv_sec, buf.st_mtim.tv_nsec);     // time for last file modification
-    LOG("> buf.st_ctim = %lds,%ldns", buf.st_ctim.tv_sec, buf.st_ctim.tv_nsec);     // time for last file status change
-}
 #endif
 #if defined(LITE_FS_JFFS2)
 #ifndef COMMERCIAL
@@ -177,34 +120,6 @@ HWTEST_F(FileSystemTest, testLstatLimt, Function | MediumTest | Level3)
     umask(maskPre);
 }
 #endif
-#endif
-#if 0
-/**
- * @tc.number   SUB_KERNEL_FS_STAT_0400
- * @tc.name     basic function test : Run the fstat function to obtain the file status.
- * @tc.desc     [C- SOFTWARE -0200]
- */
-HWTEST_F(FileSystemTest, testFstat, Function | MediumTest | Level3)
-{
-    int fd = 0;
-    mode_t mode = 0777;
-    struct stat buf = {0};
-    char writeBuf[] = "this is a file";
-
-    fd = open(FILE0, O_CREAT | O_RDWR, mode);
-    EXPECT_NE(fd, -1) << "> open faild errno = " << errno;
-    EXPECT_NE(write(fd, writeBuf, sizeof(writeBuf)), -1) << "> write errno = " << errno;
-
-    EXPECT_NE(fstat(fd, &buf), -1) << "> fstat errno = " << errno;
-    LOG("> buf.st_dev = %lu", buf.st_dev);                          // IDs of device on which file resides
-    LOG("> buf.st_ino = %lu", buf.st_ino);                          // I-node number of file
-    EXPECT_EQ(buf.st_rdev, 0) << "> buf.st_rdev not expect";        // IDs for device special files
-    EXPECT_EQ(buf.st_size, sizeof(writeBuf)) << "> buf.st_size = " << buf.st_size;
-    LOG("> buf.st_atim = %lds,%ldns", buf.st_atim.tv_sec, buf.st_atim.tv_nsec);     // time for last file access
-    LOG("> buf.st_mtim = %lds,%ldns", buf.st_mtim.tv_sec, buf.st_mtim.tv_nsec);     // time for last file modification
-    LOG("> buf.st_ctim = %lds,%ldns", buf.st_ctim.tv_sec, buf.st_ctim.tv_nsec);     // time for last file status change
-    EXPECT_NE(close(fd), -1) << "> close errno = " << errno;
-}
 #endif
 #if defined(LITE_FS_JFFS2)
 #ifndef COMMERCIAL

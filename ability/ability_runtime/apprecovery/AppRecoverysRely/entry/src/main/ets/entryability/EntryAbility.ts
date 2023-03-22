@@ -67,11 +67,9 @@ export default class EntryAbility extends Ability {
         // Ability has brought to foreground
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
-        // 第一次启动
         if (strAction == "Acts_AppRecovery_0200_once" || strAction == "Acts_AppRecovery_0400_once" ||
             strAction == "Acts_AppRecovery_0800_once" ||
             strAction == "Acts_AppRecovery_1000_once" || strAction == "Acts_AppRecovery_1200_once") {
-            // 需要包存状态的用例
             if (strAction == "Acts_AppRecovery_0200_once" ||
                 strAction == "Acts_AppRecovery_0400_once" ||
                 strAction == "Acts_AppRecovery_1200_once") {
@@ -86,7 +84,6 @@ export default class EntryAbility extends Ability {
                 })
             }, 200);
         }
-        // 第二次启动
         if (strAction == "Acts_AppRecovery_0200_twice" || strAction == "Acts_AppRecovery_0400_twice" ||
             strAction == "Acts_AppRecovery_0800_twice" ||
             strAction == "Acts_AppRecovery_1000_twice" || strAction == "Acts_AppRecovery_1200_twice") {
@@ -96,14 +93,12 @@ export default class EntryAbility extends Ability {
                 })
             }, 200);
         }
-        // 拉起第二个Ability
         this.context.startAbility({
             bundleName: "com.example.apprecoverysrely",
             abilityName: "EntryAbilitySec",
             action: strAction
         },(err) => {
             console.debug(strAction + "Rely1====> startAbility err:"+JSON.stringify(err));
-            // 需要自己正常退出的用例
             if (strAction == "Acts_AppRecovery_0200_once" || strAction == "Acts_AppRecovery_0200_twice" ||
                 strAction == "Acts_AppRecovery_0400_twice" ||
                 strAction == "Acts_AppRecovery_0800_once" || strAction == "Acts_AppRecovery_0800_twice" ||

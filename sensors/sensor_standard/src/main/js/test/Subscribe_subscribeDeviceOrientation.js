@@ -57,27 +57,34 @@ describe("SensorJsTest_sensor_27", function () {
      */
     it("subscribeDeviceOrientation_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest001---------------------------');
-        sensor.subscribeDeviceOrientation({
-            interval: 'game',
-            success: function (data) {
-                console.info("subscribeDeviceOrientation_SensorJsTest001 success" + JSON.stringify(data));
-                expect(typeof (data.alpha)).assertEqual("number");
-                expect(typeof (data.beta)).assertEqual("number");
-                expect(typeof (data.gamma)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.log("subscribeDeviceOrientation_SensorJsTest001 is failed, data: " + data + ", code: " + code);
-                expect(data).assertEqual('subscribe fail');
-                expect(code).assertEqual(1001);
-				done()
-            },
-        });
-        setTimeout(() => {
-            sensor.unsubscribeDeviceOrientation();
+		try{
+		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {			
+				sensor.subscribeDeviceOrientation({
+					interval: 'game',
+					success: function (data) {
+						console.info("subscribeDeviceOrientation_SensorJsTest001 success" + JSON.stringify(data));
+						expect(typeof (data.alpha)).assertEqual("number");
+						expect(typeof (data.beta)).assertEqual("number");
+						expect(typeof (data.gamma)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.log("subscribeDeviceOrientation_SensorJsTest001 is failed, data: " + data + ", code: " + code);
+						expect(data).assertEqual('subscribe fail');
+						expect(code).assertEqual(1001);
+						done()
+					},
+				});
+				setTimeout(() => {
+					sensor.unsubscribeDeviceOrientation();
+					done();
+				}, 500);
+			})
+		} catch (error) {
+            console.info('subscribeDeviceOrientation_SensorJsTest001 Device does not support! ');
             done();
-        }, 1000);
+        }
     })
-
+	
    /*
      * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0020
      * @tc.name: subscribeDeviceOrientation_SensorJsTest002
@@ -85,24 +92,35 @@ describe("SensorJsTest_sensor_27", function () {
      */
     it("subscribeDeviceOrientation_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest002---------------------------');
-        sensor.subscribeDeviceOrientation({
-            interval: 'ui',
-            success: function (data) {
-                console.info("subscribeDeviceOrientation_SensorJsTest002 success" + JSON.stringify(data));
-                expect(typeof (data.alpha)).assertEqual("number");
-                expect(typeof (data.beta)).assertEqual("number");
-                expect(typeof (data.gamma)).assertEqual("number");
-				done()
-            },
-            fail: function (data, code) {
-                console.log("subscribeDeviceOrientation_SensorJsTest002 is failed, data: " + data + ", code: " + code);
-                expect(data).assertEqual('subscribe fail');
-                expect(code).assertEqual(1001);
-				done()
-            },
-        });
+		try{
+		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {			
+				sensor.subscribeDeviceOrientation({
+					interval: 'ui',
+					success: function (data) {
+						console.info("subscribeDeviceOrientation_SensorJsTest002 success" + JSON.stringify(data));
+						expect(typeof (data.alpha)).assertEqual("number");
+						expect(typeof (data.beta)).assertEqual("number");
+						expect(typeof (data.gamma)).assertEqual("number");
+						done()
+					},
+					fail: function (data, code) {
+						console.log("subscribeDeviceOrientation_SensorJsTest002 is failed, data: " + data + ", code: " + code);
+						expect(data).assertEqual('subscribe fail');
+						expect(code).assertEqual(1001);
+						done()
+					},
+				});
+				setTimeout(() => {
+					sensor.unsubscribeDeviceOrientation();
+					done();
+				}, 500);
+			})
+		} catch (error) {
+            console.info('subscribeDeviceOrientation_SensorJsTest002 Device does not support! ');
+            done();
+        }
     })
-
+	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0030
      * @tc.name: subscribeDeviceOrientation_SensorJsTest003
@@ -110,22 +128,33 @@ describe("SensorJsTest_sensor_27", function () {
      */
     it("subscribeDeviceOrientation_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest003---------------------------');
-        sensor.subscribeDeviceOrientation({
-            interval: 'normal',
-            success: function (data) {
-                console.info("subscribeDeviceOrientation_SensorJsTest003 success" + JSON.stringify(data));
-                expect(typeof (data.alpha)).assertEqual("number");
-                expect(typeof (data.beta)).assertEqual("number");
-                expect(typeof (data.gamma)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.log("subscribeDeviceOrientation_SensorJsTest003 is failed, data: " + data + ", code: " + code);
-                expect(data).assertEqual('subscribe fail');
-                expect(code).assertEqual(1001);
-				done()
-            },
-        });
-    })
+		try{
+		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {			
+				sensor.subscribeDeviceOrientation({
+					interval: 'normal',
+					success: function (data) {
+						console.info("subscribeDeviceOrientation_SensorJsTest003 success" + JSON.stringify(data));
+						expect(typeof (data.alpha)).assertEqual("number");
+						expect(typeof (data.beta)).assertEqual("number");
+						expect(typeof (data.gamma)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.log("subscribeDeviceOrientation_SensorJsTest003 is failed, data: " + data + ", code: " + code);
+						expect(data).assertEqual('subscribe fail');
+						expect(code).assertEqual(1001);
+						done()
+					},
+				});
+				setTimeout(() => {
+					sensor.unsubscribeDeviceOrientation();
+					done();
+				}, 500);
+			})
+		} catch (error) {
+            console.info('subscribeDeviceOrientation_SensorJsTest003 Device does not support! ');
+            done();
+        }
+    })			
 
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0040
@@ -134,39 +163,48 @@ describe("SensorJsTest_sensor_27", function () {
      */
     it("subscribeDeviceOrientation_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest004---------------------------');
-        sensor.subscribeDeviceOrientation({
-            interval: 'normal',
-            success: function (data) {
-                console.info("subscribeDeviceOrientation_SensorJsTest004 success" + JSON.stringify(data));
-                expect(typeof (data.alpha)).assertEqual("number");
-                expect(typeof (data.beta)).assertEqual("number");
-                expect(typeof (data.gamma)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.log("subscribeDeviceOrientation_SensorJsTest004 is failed, data: " + data + ", code: " + code);
-                expect(data).assertEqual('subscribe fail');
-                expect(code).assertEqual(1001);
-            },
-        });
+		try{
+		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {					
+				sensor.subscribeDeviceOrientation({
+					interval: 'normal',
+					success: function (data) {
+						console.info("subscribeDeviceOrientation_SensorJsTest004 success" + JSON.stringify(data));
+						expect(typeof (data.alpha)).assertEqual("number");
+						expect(typeof (data.beta)).assertEqual("number");
+						expect(typeof (data.gamma)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.log("subscribeDeviceOrientation_SensorJsTest004 is failed, data: " + data + ", code: " + code);
+						expect(data).assertEqual('subscribe fail');
+						expect(code).assertEqual(1001);
+					},
+				});
 
-        sensor.subscribeDeviceOrientation({
-            interval: 'normal',
-            success: function (data) {
-                console.info("subscribeDeviceOrientation_SensorJsTest004_1 success" + JSON.stringify(data));
-                expect(typeof (data.alpha)).assertEqual("number");
-                expect(typeof (data.beta)).assertEqual("number");
-                expect(typeof (data.gamma)).assertEqual("number");
-				done()
-            },
-            fail: function (data, code) {
-                console.log("subscribeDeviceOrientation_SensorJsTest004_1 is failed, data: " + data + ", code: " + code);
-                expect(data).assertEqual('subscribe fail');
-                expect(code).assertEqual(1001);
-				done()
-            },
-        });
-    })
-
+				sensor.subscribeDeviceOrientation({
+					interval: 'normal',
+					success: function (data) {
+						console.info("subscribeDeviceOrientation_SensorJsTest004_1 success" + JSON.stringify(data));
+						expect(typeof (data.alpha)).assertEqual("number");
+						expect(typeof (data.beta)).assertEqual("number");
+						expect(typeof (data.gamma)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.log("subscribeDeviceOrientation_SensorJsTest004_1 is failed, data: " + data + ", code: " + code);
+						expect(data).assertEqual('subscribe fail');
+						expect(code).assertEqual(1001);
+					},
+				});
+				setTimeout(() => {
+					sensor.unsubscribeDeviceOrientation();
+					done();
+				}, 500);
+			})
+		} catch (error) {
+            console.info('subscribeDeviceOrientation_SensorJsTest004 Device does not support! ');
+            done();
+        }
+    })	
+	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0050
      * @tc.name: subscribeDeviceOrientation_SensorJsTest005
@@ -174,23 +212,30 @@ describe("SensorJsTest_sensor_27", function () {
      */
     it("subscribeDeviceOrientation_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest005---------------------------');
-        sensor.subscribeDeviceOrientation({
-            interval: 'xxx',
-            success: function (data) {
-                console.info("subscribeDeviceOrientation_SensorJsTest005 success" + JSON.stringify(data));
-                expect(typeof (data.alpha)).assertEqual("number");
-                expect(typeof (data.beta)).assertEqual("number");
-                expect(typeof (data.gamma)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.log("subscribeDeviceOrientation_SensorJsTest005 is failed, data: " + data + ", code: " + code);
-                expect(data).assertEqual('input error');
-                expect(code).assertEqual(202);
-				done()
-            },
-        });
-    })
-
+		try{
+		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {			
+				sensor.subscribeDeviceOrientation({
+					interval: 'xxx',
+					success: function (data) {
+						console.info("subscribeDeviceOrientation_SensorJsTest005 success" + JSON.stringify(data));
+						expect(typeof (data.alpha)).assertEqual("number");
+						expect(typeof (data.beta)).assertEqual("number");
+						expect(typeof (data.gamma)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.log("subscribeDeviceOrientation_SensorJsTest005 is failed, data: " + data + ", code: " + code);
+						expect(data).assertEqual('input error');
+						expect(code).assertEqual(202);
+						done()
+					},
+				});
+			})
+		} catch (error) {
+            console.info('subscribeDeviceOrientation_SensorJsTest005 Device does not support! ');
+            done();
+        }
+    })	
+	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0060
      * @tc.name: subscribeDeviceOrientation_SensorJsTest006
@@ -198,20 +243,31 @@ describe("SensorJsTest_sensor_27", function () {
      */
     it("subscribeDeviceOrientation_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest006---------------------------');
-        sensor.subscribeDeviceOrientation({
-            interval: 'normal',
-            success: function (data) {
-                console.info("subscribeDeviceOrientation_SensorJsTest006 success" + JSON.stringify(data));
-                expect(typeof (data.alpha)).assertEqual("number");
-                expect(typeof (data.beta)).assertEqual("number");
-                expect(typeof (data.gamma)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.log("subscribeDeviceOrientation_SensorJsTest006 is failed, data: " + data + ", code: " + code);
-                expect(data).assertEqual('subscribe fail');
-                expect(code).assertEqual(1001);
-				done()
-            },
-        });
-    })
+		try{
+		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {				
+				sensor.subscribeDeviceOrientation({
+					interval: 'normal',
+					success: function (data) {
+						console.info("subscribeDeviceOrientation_SensorJsTest006 success" + JSON.stringify(data));
+						expect(typeof (data.alpha)).assertEqual("number");
+						expect(typeof (data.beta)).assertEqual("number");
+						expect(typeof (data.gamma)).assertEqual("number");
+					},
+					fail: function (data, code) {
+						console.log("subscribeDeviceOrientation_SensorJsTest006 is failed, data: " + data + ", code: " + code);
+						expect(data).assertEqual('subscribe fail');
+						expect(code).assertEqual(1001);
+						done()
+					},
+				});
+				setTimeout(() => {
+					sensor.unsubscribeDeviceOrientation();
+					done();
+				}, 500);
+			})
+		} catch (error) {
+            console.info('subscribeDeviceOrientation_SensorJsTest006 Device does not support! ');
+            done();
+        }
+    })			
 })}

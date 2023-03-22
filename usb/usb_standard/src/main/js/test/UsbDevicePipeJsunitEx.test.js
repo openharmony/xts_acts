@@ -33,6 +33,10 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
     // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
+    if (usbPortList == undefined) {
+      portCurrentMode = 1;
+      return
+    }
     gDeviceList = usb.getDevices();
     if (usbPortList.length > 0) {
       if (gDeviceList.length > 0) {

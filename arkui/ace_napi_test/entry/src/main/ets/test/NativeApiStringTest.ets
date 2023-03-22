@@ -1115,17 +1115,26 @@ export default function nativeApiStringJsunit() {
       console.info('aceNapiTest079 START');
       value = napitest.testPromise(1).then(
           (result)=>{
-              console.info('aceNapiTest079 testString result is: ' + result + "--" + JSON.stringify(result));
-              expect(result > 0).assertTrue();
+            console.info('aceNapiTest079 testString resolve1 result is: ' + result + "--" + JSON.stringify(result));
+            expect(result > 0).assertTrue();
+            done();
+          }, (result) =>{
+            console.info('aceNapiTest079 testString reject1 result is: ' + result + "--" + JSON.stringify(result));
+            expect(result < 0).assertTrue();
+            done();
           }
       );
       value = napitest.testPromise(-1).then(
-          (result)=>{
-              console.info('aceNapiTest079 testString result is: ' + result + "--" + JSON.stringify(result));
-              expect(result > 0).assertTrue();
-          }
+        (result)=>{
+          console.info('aceNapiTest079 testString resolve2 result is: ' + result + "--" + JSON.stringify(result));
+          expect(result > 0).assertTrue();
+          done();
+        }, (result) =>{
+          console.info('aceNapiTest079 testString reject2 result is: ' + result + "--" + JSON.stringify(result));
+          expect(result < 0).assertTrue();
+          done();
+        }
       );  
-      done();
     });
     
     /**

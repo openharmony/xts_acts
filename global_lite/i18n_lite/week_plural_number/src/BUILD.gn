@@ -22,8 +22,5 @@ hcpptest_suite("WeekPluralNumbertest") {
     "//third_party/bounds_checking_function/include",
   ]
 
-  deps = [
-    "//base/global/i18n_lite/frameworks/i18n:global_i18n",
-    #"//third_party/bounds_checking_function:libsec_shared",
-  ]
+  deps = [ "//base/global/i18n_lite/frameworks/i18n:global_i18n" ]
 }
