@@ -15,6 +15,11 @@
  */
 
 import bluetooth from '@ohos.bluetoothManager';
+import geolocation from '@ohos.geolocation';
+import geolocationm from '@ohos.geoLocationManager';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import bundle from '@ohos.bundle';
+import osaccount from '@ohos.account.osAccount';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 
@@ -31,7 +36,7 @@ describe('bluetoothBLETest2', function() {
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 break;
             case 1:
                 console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
@@ -43,12 +48,38 @@ describe('bluetoothBLETest2', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 break;
             default:
                 console.info('[bluetooth_js] enable success');
         }
     }
+	async function applyPermission() {
+		let osAccountManager = osaccount.getAccountManager();
+		console.info("=== getAccountManager finish");
+		let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+		console.info("LocalId is :" + localId);
+		let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, localId);
+		let atManager = abilityAccessCtrl.createAtManager();
+		if (atManager != null) {
+        let tokenID = appInfo.accessTokenId;
+        console.info('[permission] case accessTokenID is ' + tokenID);
+        let permissionName1 = 'ohos.permission.LOCATION';
+        let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
+        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+        await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+		} else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+		}
+	}
     beforeAll(async function (done) {
         console.info('beforeAll called')
         await tryToEnableBt()
