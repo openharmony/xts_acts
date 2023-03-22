@@ -21,6 +21,7 @@ group("componentUxTest") {
       "ace_ets_component_radio:ActsAceRadioTest",
       "ace_ets_component_select:ActsAceSelectTest",
       "ace_ets_component_sidebar:ActsAceSideBarTest",
+      "ace_ets_component_swiper:ActsAceSwiperTest",
       "ace_ets_component_tabs:ActsAceTabsTest",
       "ace_ets_component_text:ActsAceTextTest",
       "ace_ets_component_textpicker:ActsAceTextPickerTest",
