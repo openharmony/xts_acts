@@ -323,7 +323,6 @@ struct IndexPage {
     }
     let TestNum = FailNum + PassNum;
     let testNum = (TestNum).toString();
-    let ignoreNum = (54-TestNum).toString();
     /*
      * ArkUI
      */
@@ -343,8 +342,7 @@ struct IndexPage {
       ArkUIPassIndex = ArkUIReport.indexOf('Pass',ArkUIPassIndex + 1);
     }
     let ArkUITestNum = ArkUIFailNum + ArkUIPassNum;
-    let ArkuiTestNum = (ArkUIPassNum).toString();
-    let ArkUIIgnoreNum = (23-ArkUITestNum).toString();
+    let ArkuiTestNum = (ArkUITestNum).toString();
     /*
      * Audio
      */
@@ -364,8 +362,7 @@ struct IndexPage {
       AudioPassIndex = AudioReport.indexOf('Pass',AudioPassIndex + 1);
     }
     let AudioTestNum = AudioFailNum + AudioPassNum;
-    let audioTestNum = (AudioPassNum).toString();
-    let AudioIgnoreNum = (28-AudioTestNum).toString();
+    let audioTestNum = (AudioTestNum).toString();
     /*
      * Camera
      */
@@ -385,8 +382,7 @@ struct IndexPage {
       CameraPassIndex = CameraReport.indexOf('Pass',CameraPassIndex + 1);
     }
     let CameraTestNum = CameraFailNum + CameraPassNum;
-    let cameraTestNum = (CameraPassNum).toString();
-    let CameraIgnoreNum = (28-CameraTestNum).toString();
+    let cameraTestNum = (CameraTestNum).toString();
     /*
  * Player
  */
@@ -406,8 +402,7 @@ struct IndexPage {
       PlayerPassIndex = PlayerReport.indexOf('Pass',PlayerPassIndex + 1);
     }
     let PlayerTestNum = PlayerFailNum + PlayerPassNum;
-    let playerTestNum = (PlayerPassNum).toString();
-    let PlayerIgnoreNum = (28-PlayerTestNum).toString();
+    let playerTestNum = (PlayerTestNum).toString();
     /*
 * Experience
 */
@@ -427,8 +422,7 @@ struct IndexPage {
       ExperiencePassIndex = ExperienceReport.indexOf('Pass',ExperiencePassIndex + 1);
     }
     let ExperienceTestNum = ExperienceFailNum + ExperiencePassNum;
-    let experienceTestNum = (ExperiencePassNum).toString();
-    let ExperienceIgnoreNum = (28-ExperienceTestNum).toString();
+    let experienceTestNum = (ExperienceTestNum).toString();
 
     let arrayBuffer = new ArrayBuffer(40960);
     let bufView = new DataView(arrayBuffer);
@@ -445,30 +439,30 @@ struct IndexPage {
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("unavailable", "0");
     serializer.setAttributes("productinfo", "{ }");
-    serializer.setAttributes("modules", "");
-    serializer.setAttributes("runmodules", "");
+    serializer.setAttributes("modules", "*");
+    serializer.setAttributes("runmodules", "*");
     /*
      * ArkUI
      */
     serializer.startElement("testsuite");
     serializer.setAttributes("name", "ActsArkUITest");
-    serializer.setAttributes("time", "");
+    serializer.setAttributes("time", "*");
     serializer.setAttributes("errors", "0");
     serializer.setAttributes("disabled", "0");
     serializer.setAttributes("failures", ArkuiFailNum);
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", ArkuiTestNum);
-    serializer.setAttributes("message", "");
+    serializer.setAttributes("message", "*");
     serializer.setAttributes("modulename", "ActsArkUITest");
     for (let i = 0; i < title1.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title1[i]));
-      serializer.setAttributes("status", "");
-      serializer.setAttributes("time", "");
-      serializer.setAttributes("classname", "");
+      serializer.setAttributes("status", "*");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "*");
       serializer.setAttributes("result", String(result1[i]));
-      serializer.setAttributes("level", "");
-      serializer.setAttributes("message", "");
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
       serializer.endElement();
     }
     serializer.endElement();
@@ -477,23 +471,23 @@ struct IndexPage {
      */
     serializer.startElement("testsuite");
     serializer.setAttributes("name", "ActsAudioTest");
-    serializer.setAttributes("time", "");
+    serializer.setAttributes("time", "*");
     serializer.setAttributes("errors", "0");
     serializer.setAttributes("disabled", "0");
     serializer.setAttributes("failures", audioFailNum);
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", audioTestNum);
-    serializer.setAttributes("message", "");
+    serializer.setAttributes("message", "*");
     serializer.setAttributes("modulename", "ActsAudioTest");
     for (let i = 0; i < title2.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title2[i]));
-      serializer.setAttributes("status", "");
-      serializer.setAttributes("time", "");
-      serializer.setAttributes("classname", "");
+      serializer.setAttributes("status", "*");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "*");
       serializer.setAttributes("result", String(result2[i]));
-      serializer.setAttributes("level", "");
-      serializer.setAttributes("message", "");
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
       serializer.endElement();
     }
     serializer.endElement();
@@ -502,23 +496,23 @@ struct IndexPage {
      */
     serializer.startElement("testsuite");
     serializer.setAttributes("name", "ActsCameraTest");
-    serializer.setAttributes("time", "");
+    serializer.setAttributes("time", "*");
     serializer.setAttributes("errors", "0");
     serializer.setAttributes("disabled", "0");
     serializer.setAttributes("failures", cameraFailNum);
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", cameraTestNum);
-    serializer.setAttributes("message", "");
+    serializer.setAttributes("message", "*");
     serializer.setAttributes("modulename", "ActsCameraTest");
     for (let i = 0; i < title2.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title3[i]));
-      serializer.setAttributes("status", "");
-      serializer.setAttributes("time", "");
-      serializer.setAttributes("classname", "");
+      serializer.setAttributes("status", "*");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "*");
       serializer.setAttributes("result", String(result3[i]));
-      serializer.setAttributes("level", "");
-      serializer.setAttributes("message", "");
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
       serializer.endElement();
     }
     serializer.endElement();
@@ -527,23 +521,23 @@ struct IndexPage {
  */
     serializer.startElement("testsuite");
     serializer.setAttributes("name", "ActsPlayerTest");
-    serializer.setAttributes("time", "");
+    serializer.setAttributes("time", "*");
     serializer.setAttributes("errors", "0");
     serializer.setAttributes("disabled", "0");
     serializer.setAttributes("failures", playerFailNum);
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", playerTestNum);
-    serializer.setAttributes("message", "");
+    serializer.setAttributes("message", "*");
     serializer.setAttributes("modulename", "ActsPlayerTest");
     for (let i = 0; i < title2.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title4[i]));
-      serializer.setAttributes("status", "");
-      serializer.setAttributes("time", "");
-      serializer.setAttributes("classname", "");
+      serializer.setAttributes("status", "*");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "*");
       serializer.setAttributes("result", String(result4[i]));
-      serializer.setAttributes("level", "");
-      serializer.setAttributes("message", "");
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
       serializer.endElement();
     }
     serializer.endElement();
@@ -552,23 +546,23 @@ struct IndexPage {
 */
     serializer.startElement("testsuite");
     serializer.setAttributes("name", "ActsExperienceTest");
-    serializer.setAttributes("time", "");
+    serializer.setAttributes("time", "*");
     serializer.setAttributes("errors", "0");
     serializer.setAttributes("disabled", "0");
     serializer.setAttributes("failures", experienceFailNum);
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", experienceTestNum);
-    serializer.setAttributes("message", "");
+    serializer.setAttributes("message", "*");
     serializer.setAttributes("modulename", "ActsExperienceTest");
     for (let i = 0; i < title2.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title5[i]));
-      serializer.setAttributes("status", "");
-      serializer.setAttributes("time", "");
-      serializer.setAttributes("classname", "");
+      serializer.setAttributes("status", "*");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("classname", "*");
       serializer.setAttributes("result", String(result5[i]));
-      serializer.setAttributes("level", "");
-      serializer.setAttributes("message", "");
+      serializer.setAttributes("level", "*");
+      serializer.setAttributes("message", "*");
       serializer.endElement();
     }
     serializer.endElement();

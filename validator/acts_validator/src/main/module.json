@@ -18,9 +18,9 @@
         "name": "MainAbility",
         "srcEntrance": "./ets/MainAbility/MainAbility.ts",
         "description": "$string:MainAbility_desc",
-        "icon": "$media:img",
+        "icon": "$media:image",
         "label": "$string:MainAbility_label",
-        "startWindowIcon": "$media:img",
+        "startWindowIcon": "$media:image",
         "startWindowBackground": "$color:white",
         "visible": true,
         "skills": [
