@@ -15,15 +15,13 @@
 import featureAbility from '@ohos.ability.featureAbility'
 import wantConstant from '@ohos.ability.wantConstant'
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect } from '@ohos/hypium'
 export default function ActsGetWantTest() {
 describe('ActsGetWantTest', function () {
     beforeAll(async (done) => {
         console.info('ActsGetWantTest begin')
         done();
     })
-
-    var TIMEOUT_NUMBER = 2500;
 
     //  @tc.number: ACTS_GetWant_0100
     //  @tc.name: getWant : get want in current ability
@@ -68,9 +66,7 @@ describe('ActsGetWantTest', function () {
             expect(data.want.parameters.mykey6["subKey1"]).assertEqual("STRING");
             expect(data.want.parameters.mykey6["subKey2"]).assertEqual(10);
             expect(data.want.parameters.mykey6["subKey3"]).assertEqual(true);
-            setTimeout(()=>{
-                done();
-            }, TIMEOUT_NUMBER);
+            done();
         }).catch((error) => {
             console.log('ACTS_GetWant_0100 error: ' + JSON.stringify(error))
             expect.assertFail()
@@ -118,9 +114,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[0]).assertEqual("str");
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             })
     })
 
@@ -152,9 +146,7 @@ describe('ActsGetWantTest', function () {
             },
         }).then((data) => {
             checkOnAbilityResult0300(data);
-            setTimeout(()=>{
-                done();
-            }, TIMEOUT_NUMBER);
+            done();
         }).catch((error) => {
             console.log('ACTS_GetWant_0300 error: ' + JSON.stringify(error))
             expect.assertFail()
@@ -237,9 +229,7 @@ describe('ActsGetWantTest', function () {
             expect(data.want.parameters.mykey5[1]).assertEqual("STR");
             expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
             console.info('====> ACTS_GetWant_0500 before done=====>')
-            setTimeout(()=>{
-                done();
-            }, TIMEOUT_NUMBER);
+            done();
         }).catch((error) => {
             console.log('ACTS_GetWant_0500 error: ' + JSON.stringify(error))
             expect.assertFail()
@@ -297,9 +287,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                 console.info('====> ACTS_GetWant_0600 before done=====>')
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             })
     })
 
@@ -352,9 +340,7 @@ describe('ActsGetWantTest', function () {
             expect(data.want.parameters.mykey5[1]).assertEqual("STR");
             expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
             console.info('====> ACTS_GetWant_0700 before done=====>')
-            setTimeout(()=>{
-                done();
-            }, TIMEOUT_NUMBER);
+            done();
         }).catch((error) => {
             console.log('ACTS_GetWant_0700 error: ' + JSON.stringify(error))
             expect.assertFail()
@@ -391,9 +377,7 @@ describe('ActsGetWantTest', function () {
             },
                 (err, data) => {
                     checkOnAbilityResult0800(data);
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
+                    done();
                 })
         })
 
@@ -471,9 +455,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                 console.info('====> ACTS_GetWant_0900 before done=====>')
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             }).catch((error) => {
                 console.log('ACTS_GetWant_0900 error: ' + JSON.stringify(error))
                 expect.assertFail()
@@ -510,9 +492,7 @@ describe('ActsGetWantTest', function () {
         },
             (err, data) => {
                 checkOnAbilityResult1000(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             })
     })
 
@@ -568,9 +548,7 @@ describe('ActsGetWantTest', function () {
                 },
             }).then((data) => {
                 checkOnAbilityResult1100(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             }).catch((error) => {
                 console.log('ACTS_GetWant_1100 error: ' + JSON.stringify(error))
                 expect.assertFail()
@@ -650,9 +628,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                 console.info('====> ACTS_GetWant_1200 before done=====>')
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             })
     })
 
@@ -705,9 +681,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                 console.info('====> ACTS_GetWant_1300 before done=====>')
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             }).catch((error) => {
                 console.log('ACTS_GetWant_1300 error: ' + JSON.stringify(error))
                 expect.assertFail()
@@ -744,9 +718,7 @@ describe('ActsGetWantTest', function () {
         },
             (err, data) => {
                 checkOnAbilityResult1400(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             })
     })
 
@@ -803,9 +775,7 @@ describe('ActsGetWantTest', function () {
                 },
             }).then((data) => {
                 checkOnAbilityResult1500(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             }).catch((error) => {
                 console.log('ACTS_GetWant_1500 error: ' + JSON.stringify(error))
                 expect.assertFail()
@@ -888,9 +858,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                 console.info('====> ACTS_GetWant_1600 setTimeout before done.=====>')
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             })
     })
 
@@ -943,9 +911,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                 console.info('====> ACTS_GetWant_1700 setTimeout before done.=====>')
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             }).catch((error) => {
                 console.log('ACTS_GetWant_1700 error: ' + JSON.stringify(error))
                 expect.assertFail()
@@ -981,9 +947,7 @@ describe('ActsGetWantTest', function () {
                 },
             }).then((data) => {
                 checkOnAbilityResult1900(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             }).catch((error) => {
                 console.log('ACTS_GetWant_1900 error: ' + JSON.stringify(error))
                 expect.assertFail()
@@ -1044,9 +1008,7 @@ describe('ActsGetWantTest', function () {
                 },
             }).then((data) => {
                 checkOnAbilityResult2100(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             }).catch((error) => {
                 console.log('ACTS_GetWant_2100 error: ' + JSON.stringify(error))
                 expect.assertFail()
@@ -1108,9 +1070,7 @@ describe('ActsGetWantTest', function () {
         },
             (err, data) => {
                 checkOnAbilityResult2200(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             })
     })
 
@@ -1167,9 +1127,7 @@ describe('ActsGetWantTest', function () {
                 },
             }).then((data) => {
                 checkOnAbilityResult2300(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             }).catch((error) => {
                 console.log('ACTS_GetWant_2300 error: ' + JSON.stringify(error))
                 expect.assertFail()
@@ -1231,9 +1189,7 @@ describe('ActsGetWantTest', function () {
         },
             (err, data) => {
                 checkOnAbilityResult2400(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             })
     })
 
@@ -1292,9 +1248,7 @@ describe('ActsGetWantTest', function () {
             },
         }).then((data) => {
             checkOnAbilityResult2500(data);
-            setTimeout(()=>{
-                done();
-            }, TIMEOUT_NUMBER);
+            done();
         }).catch((error) => {
             console.log('ACTS_GetWant_2500 error: ' + JSON.stringify(error))
             expect.assertFail()
@@ -1358,9 +1312,7 @@ describe('ActsGetWantTest', function () {
         },
             (err, data) => {
                 checkOnAbilityResult2600(data);
-                setTimeout(()=>{
-                    done();
-                }, TIMEOUT_NUMBER);
+                done();
             })
     });
 
