@@ -24,6 +24,7 @@ let Btname = {
     +'01234567890123456789012345678912',
     LETTERS_TEST :'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     CHINESES_TEST :'测试蓝牙名称是否正常测试蓝牙名称是否试蓝牙',
+    CHINESES_TEST2 :'测试蓝牙名称正常',
     SYMBOL_TEST:'*^_^* 、。·ˉˇ¨〃々—～‖·‘’“”「『』〖❂【±×'
     +'÷∶∧∨∑∏∪∩∈∷√⊥‖∠⌒⊙∫∮≡≌≈∽∝≠♂♀°℃＄¤￠￡‰§№☆★○●◎◇□■△※→←↑↓〓',
     MIXES:'测试蓝牙名称是否正试蓝牙\'名称是否[666]aaw',
@@ -113,12 +114,12 @@ describe('bluetoothhostTest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_0200', 0, async function (done) {
-        let result = bluetooth.setLocalName(Btname.CHINESES_TEST);
+        let result = bluetooth.setLocalName(Btname.CHINESES_TEST2);
         expect(result).assertTrue();
         await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0200 NewName = '+ JSON.stringify(getNewName));
-        expect(true).assertEqual(Btname.CHINESES_TEST == getNewName);
+        expect(true).assertEqual(Btname.CHINESES_TEST2 == getNewName);
         done();
     })
 

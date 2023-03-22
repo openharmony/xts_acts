@@ -159,7 +159,10 @@ void NativeImageTest::InitEglContext()
         return;
     }
 
-    eglMakeCurrent(eglDisplay_, EGL_NO_SURFACE, EGL_NO_SURFACE, eglContext_);
+    EGLint attribs[] = {EGL_WIDTH, 1, EGL_HEIGHT, 1, EGL_NONE};
+    EGLSurface pbufferSurface_ = eglCreatePbufferSurface(eglDisplay_, config_, attribs);
+
+    eglMakeCurrent(eglDisplay_, pbufferSurface_, pbufferSurface_, eglContext_);
 
     BLOGW("Create EGL context successfully, version %{public}d.%{public}d", major, minor);
 }

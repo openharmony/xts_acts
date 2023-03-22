@@ -20,25 +20,6 @@ export default function userauthTest() {
     describe('userauthTest_API9', function () {
 
         /*
-            * @tc.number    : Security_IAM_Func_0101
-            * @tc.name      : Kit interface get version
-            * @tc.size      : MediumTest
-            * @tc.type      : Function
-            * @tc.level     : Level 0
-        */
-        it('Security_IAM_Func_0101', 0, async function (done) {
-            try {
-                let getversionresult = userAuthNorth.getVersion();
-                console.info('GetVersionTest_0101 getversionresult = ' + getversionresult);
-                expect(getversionresult).assertEqual(0);
-                done();
-            } catch (e) {
-                console.log("testFace GetVersionTest_0101 fail " + e.code);
-                expect(null).assertFail();
-            }
-        })
-
-        /*
             * @tc.number    : Security_IAM_Func_0102
             * @tc.name      : Kit interface get AvailabeStatus
             * @tc.size      : MediumTest

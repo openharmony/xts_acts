@@ -540,5 +540,55 @@ describe("HashSetTest", function () {
       expect(err.message).assertEqual(`The add method cannot be bound`);
     }
   });
+
+  /**
+   * @tc.name: testIsEmpty034
+   * @tc.desc: Determine whether the HashSet instance is empty. For example: hashSet.isEmpty.bind({}, "a")().
+   */
+  it('testIsEmpty034', 0, function () {
+    let  hashSet = new HashSet();
+    try {
+      hashSet.isEmpty.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The isEmpty method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach035
+   * @tc.desc: Traverse the collection of all elements of the HashSet instance.
+   * For example: hashSet.forEach.bind({}, "a")().
+   */
+  it('testForEach035', 0, function () {
+    let  hashSet = new HashSet();
+    try {
+      hashSet.forEach.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The forEach method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach036
+   * @tc.desc: Traverse the collection of all elements of the HashSet instance.
+   * For example: hashSet.forEach(11).
+   */
+  it('testForEach036', 0, function () {
+    let  hashSet = new HashSet();
+    try {
+      hashSet.forEach(11);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "callbackfn" must be callable. Received value is: 11`);
+    }
+  });
 });
 }

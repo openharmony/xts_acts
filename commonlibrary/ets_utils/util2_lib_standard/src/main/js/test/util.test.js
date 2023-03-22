@@ -1634,6 +1634,21 @@ describe('LRUCacheTest', function () {
     })
 
     /**
+     * @tc.name: testLRUCacheUpdateGetCapacity006
+     * @tc.desc: Updates the buffer capacity to a specified capacity.
+     */
+    it('testLRUCacheUpdateGetCapacity006', 0, function () {
+        var that = new util.LRUCache(200)
+        try {
+            that.updateCapacity('a');
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of a must be number');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error.The type of a must be number");
+        }
+    })
+
+    /**
      * @tc.name: testLRUCacheGet001
      * @tc.desc: Obtains the value associated with a specified key.
      */
@@ -1712,6 +1727,23 @@ describe('LRUCacheTest', function () {
     })
 
     /**
+     * @tc.name: testLRUCacheGet006
+     * @tc.desc: Obtains the value associated with a specified key.
+     */
+    it('testLRUCacheGet006', 0, function () {
+        var that = new util.LRUCache()
+        let un = undefined;
+        that.put(20,'cdjcaxb')
+        try {
+            var result1 = that.get(un);
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+        }
+    })
+
+    /**
      * @tc.name: testLRUCachePut001
      * @tc.desc: Adds a key-value pair to the buffer.
      */
@@ -1786,6 +1818,22 @@ describe('LRUCacheTest', function () {
         expect(temp3).assertEqual(12)
         expect(temp4).assertEqual(5)
         expect(temp5).assertEqual(22)
+    })
+
+    /**
+     * @tc.name: testLRUCachePut006
+     * @tc.desc: Adds a key-value pair to the buffer.
+     */
+    it('testLRUCachePut006', 0, function () {
+        var that = new util.LRUCache()
+        let un = undefined;
+        try {
+            that.put(un,'bcjdshc')
+          } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+          }
     })
 
     /**
@@ -2532,6 +2580,23 @@ describe('LRUCacheTest', function () {
     })
 
     /**
+     * @tc.name: testLRUCacheContains006
+     * @tc.desc: Checks whether the current buffer contains a specified key.
+     */
+    it('testLRUCacheContains006', 0, function () {
+        var that = new util.LRUCache()
+        that.put('abc','abc')
+        let un = undefined;
+        try {
+            that.contains(un)
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+        }
+    })
+
+    /**
      * @tc.name: testLRUCacheRemove001
      * @tc.desc: Deletes a specified key and its associated value from the current buffer.
      */
@@ -2601,6 +2666,23 @@ describe('LRUCacheTest', function () {
     })
 
     /**
+     * @tc.name: testLRUCacheRemove006
+     * @tc.desc: Deletes a specified key and its associated value from the current buffer.
+     */
+    it('testLRUCacheRemove006', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        let un = undefined;
+        try {
+            that.remove(un)
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+        }
+    })
+
+    /**
      * @tc.name: testLRUCacheCreateDefault001
      * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
      */
@@ -2650,6 +2732,22 @@ describe('LRUCacheTest', function () {
         var result2 = that.createDefault('ab')
         expect(result1).assertEqual(undefined)
         expect(result2).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.name: testLRUCacheCreateDefault006
+     * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
+     */
+    it('testLRUCacheCreateDefault006', 0, function () {
+        var that = new util.LRUCache()
+        let un = undefined;
+        try {
+            that.createDefault(un);
+        } catch(e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.code).assertEqual(401)
+            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+        }
     })
 
     /**

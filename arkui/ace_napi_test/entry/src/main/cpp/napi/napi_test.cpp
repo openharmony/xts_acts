@@ -1862,9 +1862,6 @@ static void AddPromiseCompleteCB(napi_env env, napi_status status, void *data) {
     } else {
         NAPI_CALL_RETURN_VOID(env, napi_reject_deferred(env, addonData->deferred, result));
     }
-    if (addonData->callback != nullptr) {
-    NAPI_CALL_RETURN_VOID(env, napi_delete_reference(env, addonData->callback));
-    }
 
     NAPI_CALL_RETURN_VOID(env, napi_delete_async_work(env, addonData->asyncWork));
     free(addonData);
