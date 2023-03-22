@@ -23,6 +23,8 @@ ohos_js_hap_suite("storagepicker_js_test") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsStoragePickerJSTest"
+  part_name = "user_file_service"
+  subsystem_name = "filemanagement"
 }
 
 ohos_app_scope("storagepicker_app_profile") {
