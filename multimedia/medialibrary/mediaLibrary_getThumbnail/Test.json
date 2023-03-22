@@ -35,6 +35,9 @@
         {
             "type": "ShellKit",
             "run-command": [
+                "param set persist.ace.testmode.enabled 1",
+                "param set persist.sys.suspend_manager_enabled 0",
+                "reboot",
                 "mkdir -pv /storage/media/100/local/files/Pictures/Thumbnail",
                 "mkdir -pv /storage/media/100/local/files/Videos/Thumbnail",
                 "mkdir -pv /storage/media/100/local/files/Audios/Thumbnail",
@@ -51,6 +54,8 @@
                 "sleep 10"
             ],
             "teardown-command": [
+                "param set persist.sys.suspend_manager_enabled 1",
+                "reboot",
                 "hilog -b X -D 0xD002B70",
                 "power-shell setmode 600"
             ]
