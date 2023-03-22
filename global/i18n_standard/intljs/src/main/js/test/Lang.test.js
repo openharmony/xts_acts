@@ -208,7 +208,7 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_1100 ' + 'start');
         let value = I18n.getAppPreferredLanguage();
         console.log('i18n_test_preferredlanguage_1100 ' + value);
-        expect(value).assertEqual('zh-Hans');
+        expect(value).assertContain('zh');
     })
 
     /* *

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -35,16 +35,16 @@ let NfcState={
 export default function nfcControllerTest() {
     describe('nfcControllerTest', function () {
         beforeAll(function () {
-            console.info('[NFC_test]beforeAll called')
+            console.info('rbeforeAll called')
         })
         beforeEach(function() {
-            console.info('[NFC_test]beforeEach called')
+            console.info('beforeEach called')
         })
         afterEach(function () {
-            console.info('[NFC_test]afterEach called')
+            console.info('afterEach called')
         })
         afterAll(function () {
-            console.info('[NFC_test]afterAll called')
+            console.info('afterAll called')
         })
         
         /**
@@ -58,7 +58,7 @@ export default function nfcControllerTest() {
         it('SUB_COMMUNICATION_NFC_Cont_0100', 0, function () {
             let NFC_STATE_NOTIFY = "nfcStateChange";
             let recvNfcStateNotifyFunc = result => {
-                console.info("nfc state receive state ->" + result);
+                console.info("[NFC_test] controller1 nfc state receive state ->" + result);
                 expect(result != null).assertTrue();
             }
             controller.on(NFC_STATE_NOTIFY, recvNfcStateNotifyFunc);
@@ -75,10 +75,10 @@ export default function nfcControllerTest() {
          */
         it('SUB_COMMUNICATION_NFC_Cont_0200', 0, function ()  {
             let nfcisAvailable = controller.isNfcAvailable();
+            console.info('[NFC_test] controller2 Nfc Available ->' + JSON.stringify(nfcisAvailable));
             expect(nfcisAvailable).assertTrue();
-            console.info('[nfc_js]  Nfc Available ->' + JSON.stringify(nfcisAvailable));
         })
-    
+        
         /**
          * @tc.number SUB_COMMUNICATION_NFC_Cont_0300
          * @tc.name Test isNfcOpenapi
@@ -86,11 +86,11 @@ export default function nfcControllerTest() {
          * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
-         */
+        */
         it('SUB_COMMUNICATION_NFC_Cont_0300', 0, function ()  {
             let nfcswitchis = controller.isNfcOpen();
+            console.info('[NFC_test] controller3 Nfc isopen state is ->' + JSON.stringify(nfcswitchis));
             expect(nfcswitchis).assertTrue();
-            console.info('[nfc_js]  Nfc isopen state is ->' + JSON.stringify(nfcswitchis));
         })
     
         /**
@@ -100,14 +100,14 @@ export default function nfcControllerTest() {
          * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
-         */
+        */
         it('SUB_COMMUNICATION_NFC_Cont_0400', 0, function ()  {
             let nfcisAvailable1 = controller.isNfcAvailable();
+            console.info('[NFC_test] controller4 NfcAvailable 1 ->' + JSON.stringify(nfcisAvailable1));
             expect(nfcisAvailable1).assertTrue();
-            console.info('[nfc_js]  NfcAvailable 1 ->' + JSON.stringify(nfcisAvailable1));
             let nfcenable1 = controller.isNfcOpen();
+            console.info('[NFC_test] controller4 Nfc isopen 1 state is ->' + JSON.stringify(nfcenable1));
             expect(nfcenable1).assertTrue();
-            console.info('[nfc_js]  Nfc isopen 1 state is ->' + JSON.stringify(nfcenable1));
         })
     
         /**
@@ -120,11 +120,11 @@ export default function nfcControllerTest() {
          */
         it('SUB_COMMUNICATION_NFC_Cont_0500', 0, function ()  {
             let checkopennfc = controller.getNfcState();
+            console.info("[NFC_test] controller5 checkopen the state of nfc-> " + JSON.stringify(checkopennfc));
             expect(checkopennfc).assertEqual(NfcState.STATE_ON);
-            console.log("[nfc_test]  checkopen the state of nfc-> " + JSON.stringify(checkopennfc));
         })
 
-        console.log("*************[nfc_test] start nfc js unit test end*************");
+        console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
 

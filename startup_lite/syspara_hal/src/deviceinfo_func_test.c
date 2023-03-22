@@ -465,12 +465,12 @@ LITE_TEST_CASE(DeviceInfoFuncTestSuite,
 
   int year, month, day;
   const int RET_SUCCESS = 0;
-  int ret = sscanf_s(value, "%04d-%02d-%02d", &year, &month, &day);
+  int ret = sscanf_s(value, "%04d\/%02d\/%02d", &year, &month, &day);
   if (ret < RET_SUCCESS)
   {
     TEST_ASSERT_TRUE(ret >= 0);
   }
-  printf("%04d-%02d-%02d\n", year, month, day);
+  printf("%04d\/%02d\/%02d\n", year, month, day);
 
   TEST_ASSERT_TRUE(year > 1900 && year < 2056);
   TEST_ASSERT_TRUE(month <= 12 && month > 0);

@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it } from '@ohos/hypium';
+import { describe, it, beforeAll } from '@ohos/hypium';
 import Data from '../../../../../../utils/data.json';
 import { HuksSignVerifyRSA } from '../../../../../../utils/param/signverify/publicSignverifyParam';
-import { stringToUint8Array } from '../../../../../../utils/param/publicFunc';
+import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import { publicSignVerifyFunc } from '../../../../../../utils/param/signverify/publicSignverifyPromise.js';
 let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
