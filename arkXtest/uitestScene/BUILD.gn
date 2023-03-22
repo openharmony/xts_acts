@@ -34,7 +34,7 @@ ohos_app_scope("uiTestScene_app_profile") {
 }
 
 ohos_js_assets("uitest_scene_ets_assets") {
-  source_dir = "entry/src/main"
+  source_dir = "entry/src/main/ets"
 }
 
 ohos_resources("uitest_scene_ets_resources") {
