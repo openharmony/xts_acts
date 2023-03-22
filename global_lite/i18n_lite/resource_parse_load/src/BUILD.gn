@@ -36,8 +36,5 @@ hcpptest_suite("ResourceParseLoadtest") {
     "//base/global/resmgr_lite/interfaces/innerkits/include",
   ]
 
-  deps = [
-    "//base/global/resmgr_lite/frameworks/resmgr_lite:global_resmgr",
-    #"//third_party/bounds_checking_function:libsec_shared",
-  ]
+  deps = [ "//base/global/resmgr_lite/frameworks/resmgr_lite:global_resmgr" ]
 }

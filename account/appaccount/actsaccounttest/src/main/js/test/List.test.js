@@ -33,6 +33,6 @@ export default function testsuite() {
     ActsAccountSetGetExtraInfo()
     ActsAccountNoPermission()
     ActsAccountOAuthToken()
-    ActsAccountChangeOnOff()
     ActsAccountAuthenticator()
+    ActsAccountChangeOnOff()
 }

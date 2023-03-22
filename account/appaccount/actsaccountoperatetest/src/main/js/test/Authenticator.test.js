@@ -46,11 +46,12 @@ export default function ActsAccountAppAccess() {
                         parameters:
                         {},
                     },
-                },
-            )          
-            await sleep(1500);
+                }, (err, data) => {
+                    console.debug("====>accountauthenticatorfeatureAbility.startAbilityForResult err:" + JSON.stringify(err))
+                    console.debug("====>accountauthenticatorfeatureAbility.startAbilityForResult data:" + JSON.stringify(data))
+                    done();
+                })
             console.debug("====>ActsAccountAuthenticator beforeAll end====");
-            done();
         });
         beforeEach(async (done)=>{
             console.debug("====>afterEach start====");

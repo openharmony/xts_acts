@@ -31,7 +31,4 @@ hctest_suite("ActsKitFwkApiTest") {
     # dir for oem_auth_config.h and oem_auth_result_storage.h
     "//vendor/kitframework/include/",
   ]
-
-  # un-comment this Macro for token-persist-test
-  # defines = [ "TOKEN_PERSIST_TEST" ]
 }
