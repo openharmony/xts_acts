@@ -14,7 +14,7 @@
         "targetAPIVersion": 9,
         "car": {
             "apiCompatibleVersion": 9,
-            "singleUser": false
+            "singleUser": true
         }
     }
 }
