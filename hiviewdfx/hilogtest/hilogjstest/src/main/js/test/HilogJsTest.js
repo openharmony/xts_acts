@@ -417,7 +417,7 @@ describe('HilogJsTest', function () {
     })
 
     /**
-     * @tc.number DFX_DFT_Hiview_Libhilog_Hilog_JS_3800
+     * @tc.number DFX_DFT_Hiview_Libhilog_Hilog_JS_3900
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
@@ -429,7 +429,7 @@ describe('HilogJsTest', function () {
     })
 
     /**
-     * @tc.number DFX_DFT_Hiview_Libhilog_Hilog_JS_3800
+     * @tc.number DFX_DFT_Hiview_Libhilog_Hilog_JS_4000
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
@@ -439,7 +439,5 @@ describe('HilogJsTest', function () {
         expect(res).assertEqual(true);
         console.info('testHilogJsApi28 end');
     })
-
-
 })
 }
