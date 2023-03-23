@@ -39,6 +39,8 @@ ohos_static_library("libdeqpgles31func0021") {
 }
 
 ohos_moduletest_suite("ActsDeqpgles31TestSuite0021") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = [
     "../ActsDeqpgles310021TestSuite.cpp",
     "../functional/Deqpgles31array_arrayTestCase.cpp",

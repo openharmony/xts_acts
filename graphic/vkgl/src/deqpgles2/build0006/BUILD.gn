@@ -39,6 +39,8 @@ ohos_static_library("libdeqpgles2func0006") {
 }
 
 ohos_moduletest_suite("ActsDeqpgles2TestSuite0006") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = [
     "../ActsDeqpgles20006TestSuite.cpp",
     "../functional/Deqpgles2angle_and_trigonometry_acosTestCase.cpp",
