@@ -19,7 +19,7 @@ import ability_featureAbility from '@ohos.ability.featureAbility';
 
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-const waitUiReadyMs = 1000;
+const waitUiReadyMs = 2000;
 
 async function startAbility(bundleName: string, abilityName: string) {
     await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
@@ -39,6 +39,26 @@ async function stopApplication(bundleName: string) {
 
 export default function UiTest() {
     describe('UiTest_API8', function () {
+        beforeAll(async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = UiDriver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let input = await driver.findComponent(BY.type('TextInput'))
+            await input.click()
+            await driver.delayMs(waitUiReadyMs)
+            try {
+                await driver.click(864, 2524)
+                await driver.delayMs(waitUiReadyMs)
+            } catch (err) {
+                console.info("inputPermission error: %s", err.message)
+            }
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        beforeEach(async function () {
+            await stopApplication('com.uitestScene.acts')
+        })
+
         /*
          * @tc.number: uiTest_8001
          * @tc.name: testInputText
@@ -395,6 +415,10 @@ export default function UiTest() {
     })
 
     describe('UiTest_API9', function () {
+        beforeEach(async function () {
+            await stopApplication('com.uitestScene.acts')
+        })
+
         /*
          * @tc.number: uiTest_9001
          * @tc.name: testInputText
@@ -442,9 +466,9 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponent(ON.checkable(true).type('Checkbox'))
+            let button = await driver.findComponent(ON.checkable(false).type('Checkbox'))
             let checkable = await button.isCheckable()
-            expect(checkable == true).assertTrue()
+            expect(checkable == false).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -910,8 +934,6 @@ export default function UiTest() {
             await driver.swipe(300,600,300,300)
             let text = await driver.findComponent(ON.text('next page'))
             expect(text == null).assertTrue()
-            let scrollBar = await driver.findComponent(ON.type('Scroll'))
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -927,8 +949,6 @@ export default function UiTest() {
             await driver.fling({x:300, y:600},{x:300, y:300}, 20, 600)
             let text = await driver.findComponent(ON.text('next page'))
             expect(text == null).assertTrue()
-            let scrollBar = await driver.findComponent(ON.type('Scroll'))
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -961,7 +981,6 @@ export default function UiTest() {
             await scrollBar.scrollToBottom()
             let button = await driver.findComponent(ON.text('bottom'))
             expect(await button.getText() == 'bottom').assertTrue()
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -1364,6 +1383,118 @@ export default function UiTest() {
         })
 
         /*
+         * @tc.number: uiTest_9051
+         * @tc.name: testWakeUpDisplay
+         * @tc.desc: wake up the device display.
+         */
+        it('testWakeUpDisplay', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            await driver.wakeUpDisplay()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_9052
+         * @tc.name: testPressHome
+         * @tc.desc: press the home key.
+         */
+        it('testPressHome', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            await driver.pressHome()
+            let button = await driver.findComponent(ON.text('next page'))
+            expect(button != null).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_9053
+         * @tc.name: testWaitForIdle
+         * @tc.desc: wait for the UI become idle.
+         */
+        it('testWaitForIdle', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(2000)
+            let idled = await driver.waitForIdle(4000,5000)
+            expect(idled = true).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_9054
+         * @tc.name: testDrag
+         * @tc.desc: drag on the screen between the specified points.
+         */
+        it('testDrag', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponent(ON.text('jump'))
+            await button.longClick()
+            await driver.delayMs(waitUiReadyMs)
+            let text1 = await driver.findComponent(ON.text('orange'))
+            let text2 = await driver.findComponent(ON.text('one'))
+            let point1 = await text1.getBoundsCenter()
+            let point2 = await text2.getBoundsCenter()
+            await driver.drag(point1.x, point1.y, point2.x, point2.y)
+            await driver.delayMs(waitUiReadyMs)
+            let text = await driver.findComponent(ON.text('orange').isAfter(ON.text('banana')))
+            expect(text != null).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_9055
+         * @tc.name: testDragTo
+         * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent.
+         */
+        it('testDragTo', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponent(ON.text('jump'))
+            await button.longClick()
+            await driver.delayMs(waitUiReadyMs)
+            let text1 = await driver.findComponent(ON.text('orange'))
+            let text2 = await driver.findComponent(ON.text('one'))
+            await text1.dragTo(text2)
+            await driver.delayMs(waitUiReadyMs)
+            let text = await driver.findComponent(ON.text('orange').isAfter(ON.text('banana')))
+            expect(text != null).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_9056
+         * @tc.name: testSplit
+         * @tc.desc: change this UiWindow into split screen mode.
+         */
+        it('testSplit', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+            try {
+                await window1.split()
+                await driver.delayMs(waitUiReadyMs)
+                let bar = await driver.findComponent(ON.type('DecorBar'))
+                expect(bar == null).assertTrue()
+            }
+            catch (err) {
+                if (err.message == 'this device can not support this action') {
+                    expect(window1 != null).assertTrue()
+                } else {
+                    expect(false).assertTrue()
+                }
+            }
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
          * @tc.number: uiTest_9049
          * @tc.name: testDisplayRotation
          * @tc.desc: get the rotation of the device display and set it.
@@ -1439,118 +1570,6 @@ export default function UiTest() {
             } else {
                 expect(rotation2 == DisplayRotation.ROTATION_0)
                 console.info('The device is displayed in horizontal on default')
-            }
-            await stopApplication('com.uitestScene.acts')
-        })
-
-        /*
-         * @tc.number: uiTest_9051
-         * @tc.name: testWakeUpDisplay
-         * @tc.desc: wake up the device display.
-         */
-        it('testWakeUpDisplay', 0, async function () {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
-            await driver.delayMs(waitUiReadyMs)
-            await driver.wakeUpDisplay()
-            await stopApplication('com.uitestScene.acts')
-        })
-
-        /*
-         * @tc.number: uiTest_9052
-         * @tc.name: testPressHome
-         * @tc.desc: press the home key.
-         */
-        it('testPressHome', 0, async function () {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
-            await driver.delayMs(waitUiReadyMs)
-            await driver.pressHome()
-            let button = await driver.findComponent(ON.text('next page'))
-            expect(button != null).assertTrue()
-            await stopApplication('com.uitestScene.acts')
-        })
-
-        /*
-         * @tc.number: uiTest_9053
-         * @tc.name: testWaitForIdle
-         * @tc.desc: wait for the UI become idle.
-         */
-        it('testWaitForIdle', 0, async function () {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
-            await driver.delayMs(2000)
-            let idled = await driver.waitForIdle(4000,5000)
-            expect(idled = true).assertTrue()
-            await stopApplication('com.uitestScene.acts')
-        })
-
-        /*
-         * @tc.number: uiTest_9054
-         * @tc.name: testDrag
-         * @tc.desc: drag on the screen between the specified points.
-         */
-        it('testDrag', 0, async function () {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
-            await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponent(ON.text('jump'))
-            await button.longClick()
-            await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('orange'))
-            let text2 = await driver.findComponent(ON.text('one'))
-            let point1 = await text1.getBoundsCenter()
-            let point2 = await text2.getBoundsCenter()
-            await driver.drag(point1.x, point1.y, point2.x, point2.y)
-            await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('four'))
-            expect(text == null).assertTrue()
-            await stopApplication('com.uitestScene.acts')
-        })
-
-        /*
-         * @tc.number: uiTest_9055
-         * @tc.name: testDragTos
-         * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent.
-         */
-        it('testDragTo', 0, async function () {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
-            await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponent(ON.text('jump'))
-            await button.longClick()
-            await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('orange'))
-            let text2 = await driver.findComponent(ON.text('one'))
-            await text1.dragTo(text2)
-            await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('four'))
-            expect(text == null).assertTrue()
-            await stopApplication('com.uitestScene.acts')
-        })
-
-        /*
-         * @tc.number: uiTest_9056
-         * @tc.name: testSplit
-         * @tc.desc: change this UiWindow into split screen mode.
-         */
-        it('testSplit', 0, async function () {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
-            await driver.delayMs(waitUiReadyMs)
-            let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-            try {
-                await window1.split()
-                await driver.delayMs(waitUiReadyMs)
-                let bar = await driver.findComponent(ON.type('DecorBar'))
-                expect(bar == null).assertTrue()
-            }
-            catch (err) {
-                if (err.message == 'this device can not support this action') {
-                    expect(window1 != null).assertTrue()
-                } else {
-                    expect(false).assertTrue()
-                }
             }
             await stopApplication('com.uitestScene.acts')
         })
