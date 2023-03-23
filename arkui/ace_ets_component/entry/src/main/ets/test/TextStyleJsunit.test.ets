@@ -397,7 +397,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle016] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle016] fontWeight: " + obj.$attrs.fontWeight);
-      expect(obj.$attrs.fontWeight).assertEqual('FontWeight.700');
+      expect(obj.$attrs.fontWeight).assertEqual('700');
       done();
     });
 
@@ -423,7 +423,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle017] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle017] fontWeight: " + obj.$attrs.fontWeight);
-      expect(obj.$attrs.fontWeight).assertEqual('FontWeight.400');
+      expect(obj.$attrs.fontWeight).assertEqual('400');
       done();
     });
 
