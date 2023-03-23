@@ -41,7 +41,7 @@ function translateParamsToString(parameters) {
 
         var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.TestAbility'
 
-        var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
+        var cmd = 'aa start -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
         cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters)
         var debug = abilityDelegatorArguments.parameters["-D"]
         console.info('debug value : '+debug)
