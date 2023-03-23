@@ -509,3 +509,213 @@ HWTEST_F(ActsOpenslesPlayerNdkTest, SUB_MULTIMEDIA_AUDIO_OPENSELES_PALYER_FUNCTI
         ASSERT_EQ(SL_RESULT_SUCCESS, result);
         (*pcmPlayerObject)->Destroy(pcmPlayerObject);
 }
+
+/**
+ * @tc.number    : SUB_MULTIMEDIA_AUDIO_OPENSELES_ENGINEITF_INVALID_0100
+ * @tc.name      : engine itf invalid
+ * @tc.desc      : Basic function test
+ */
+HWTEST_F(ActsOpenslesPlayerNdkTest, SUB_MULTIMEDIA_AUDIO_OPENSELES_ENGINEITF_INVALID_0100, TestSize.Level1)
+{
+    SLEngineItf engineEngine = nullptr;
+    engineObject = nullptr;
+    SLresult result = slCreateEngine(&engineObject, 0, nullptr, 0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_SUCCESS, result);
+
+    result = (*engineObject)->GetInterface(engineObject, SL_IID_ENGINE, &engineEngine);
+    ASSERT_EQ(SL_RESULT_SUCCESS, result);
+
+    SLresult result1 = (*engineEngine)->CreateLEDDevice(engineEngine, nullptr, 0, 0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result1);
+
+    SLresult result2 = (*engineEngine)->CreateVibraDevice(engineEngine, nullptr, 0, 0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result2);
+
+    SLresult result4 = (*engineEngine)->CreateListener(engineEngine, nullptr, 0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result4);
+
+    SLresult result5 = (*engineEngine)->Create3DGroup(engineEngine, nullptr, 0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result5);
+
+    SLresult result6 = (*engineEngine)->CreateMetadataExtractor(engineEngine, nullptr, nullptr, 0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result6);
+
+    SLresult result7 = (*engineEngine)->CreateExtensionObject(engineEngine, nullptr, nullptr, 0,
+        0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result7);
+
+    SLresult result8 = (*engineEngine)->QueryNumSupportedInterfaces(engineEngine, 0, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result8);
+
+    SLresult result9 = (*engineEngine)->QuerySupportedInterfaces(engineEngine, 0, 0, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result9);
+
+    SLresult result10 = (*engineEngine)->QueryNumSupportedExtensions(engineEngine, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result10);
+
+    SLresult result11 = (*engineEngine)->QuerySupportedExtension(engineEngine, 0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result11);
+
+    SLresult result12 = (*engineEngine)->IsExtensionSupported(engineEngine, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_FEATURE_UNSUPPORTED, result12);
+}
+
+/**
+ * @tc.number    : SUB_MULTIMEDIA_AUDIO_OPENSELES_ENGINEITF_INVALID_0200
+ * @tc.name      : engine itf invalid
+ * @tc.desc      : Basic function test
+ */
+HWTEST_F(ActsOpenslesPlayerNdkTest, SUB_MULTIMEDIA_AUDIO_OPENSELES_ENGINEITF_INVALID_0200, TestSize.Level1)
+{
+    SLObjectItf engineObject_;
+    SLresult result = slCreateEngine(&engineObject_, 0, nullptr, 0, nullptr, nullptr);
+    EXPECT_TRUE(result == SL_RESULT_SUCCESS);
+
+    SLresult result1 = (*engineObject_)->RegisterCallback(engineObject_, nullptr, nullptr);
+    EXPECT_TRUE(result1 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    (*engineObject_)->AbortAsyncOperation(engineObject_);
+
+    SLresult result2 = (*engineObject_)->SetPriority(engineObject_, 0, SL_BOOLEAN_FALSE);
+    EXPECT_TRUE(result2 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result3 = (*engineObject_)->GetPriority(engineObject_, nullptr, nullptr);
+    EXPECT_TRUE(result3 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result4 = (*engineObject_)->SetLossOfControlInterfaces(engineObject_, 0, nullptr, false);
+    EXPECT_TRUE(result4 == SL_RESULT_FEATURE_UNSUPPORTED);
+}
+
+/**
+ * @tc.number    : SUB_MULTIMEDIA_AUDIO_OPENSELES_ENGINEITF_INVALID_0300
+ * @tc.name      : engine itf invalid
+ * @tc.desc      : Basic function test
+ */
+HWTEST_F(ActsOpenslesPlayerNdkTest, SUB_MULTIMEDIA_AUDIO_OPENSELES_ENGINEITF_INVALID_0300, TestSize.Level1)
+{
+    // get engineObject
+    engineObject = nullptr;
+    SLresult result = slCreateEngine(&engineObject, 0, nullptr, 0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_SUCCESS, result);
+
+    // get engineEngine
+    SLEngineItf engineEngine = nullptr;
+    result = (*engineObject)->GetInterface(engineObject, SL_IID_ENGINE, &engineEngine);
+    ASSERT_EQ(SL_RESULT_SUCCESS, result);
+
+    // get pcmPlayerObject
+    pcmPlayerObject = nullptr;
+    SLDataLocator_OutputMix slOutputMix = {SL_DATALOCATOR_OUTPUTMIX, outputMixObject};
+    SLDataSink slSink = {&slOutputMix, nullptr};
+    SLDataLocator_BufferQueue slBufferQueue = {
+        SL_DATALOCATOR_BUFFERQUEUE,
+        0};
+    SLDataFormat_PCM pcmFormat = {
+        SL_DATAFORMAT_PCM,
+        wavHeader_.NumOfChan,
+        wavHeader_.SamplesPerSec * 1000,
+        wavHeader_.bitsPerSample,
+        0,
+        0,
+        0};
+    SLDataSource slSource = {&slBufferQueue, &pcmFormat};
+    result = (*engineEngine)->CreateAudioPlayer(engineEngine, &pcmPlayerObject, &slSource, &slSink,
+        number, nullptr, nullptr);
+    EXPECT_TRUE(result == SL_RESULT_SUCCESS);
+
+    // get playItf
+    playItf = nullptr;
+    result = (*pcmPlayerObject)->GetInterface(pcmPlayerObject, SL_IID_PLAY, &playItf);
+    EXPECT_TRUE(result == SL_RESULT_SUCCESS);
+
+    SLresult result1 = (*playItf)->GetDuration(playItf, nullptr);
+    EXPECT_TRUE(result1 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result2 = (*playItf)->GetPositionUpdatePeriod(playItf, nullptr);
+    EXPECT_TRUE(result2 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result3 = (*playItf)->RegisterCallback(playItf, nullptr, nullptr);
+    EXPECT_TRUE(result3 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result4 = (*playItf)->SetCallbackEventsMask(playItf, 0);
+    EXPECT_TRUE(result4 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result5 = (*playItf)->GetCallbackEventsMask(playItf, 0);
+    EXPECT_TRUE(result5 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result6 = (*playItf)->SetMarkerPosition(playItf, 0);
+    EXPECT_TRUE(result6 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result7 = (*playItf)->GetMarkerPosition(playItf, nullptr);
+    EXPECT_TRUE(result7 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result8 = (*playItf)->SetPositionUpdatePeriod(playItf, 0);
+    EXPECT_TRUE(result8 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result9 = (*playItf)->ClearMarkerPosition(playItf);
+    EXPECT_TRUE(result9 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result10 = (*playItf)->GetPosition(playItf, nullptr);
+    EXPECT_TRUE(result10 == SL_RESULT_FEATURE_UNSUPPORTED);
+}
+
+/**
+ * @tc.number    : SUB_MULTIMEDIA_AUDIO_OPENSELES_ENGINEITF_INVALID_0400
+ * @tc.name      : engine itf invalid
+ * @tc.desc      : Basic function test
+ */
+HWTEST_F(ActsOpenslesPlayerNdkTest, SUB_MULTIMEDIA_AUDIO_OPENSELES_ENGINEITF_INVALID_0400, TestSize.Level1)
+{
+    // get engineObject
+    engineObject = nullptr;
+    SLresult result = slCreateEngine(&engineObject, 0, nullptr, 0, nullptr, nullptr);
+    ASSERT_EQ(SL_RESULT_SUCCESS, result);
+
+    // get engineEngine
+    SLEngineItf engineEngine = nullptr;
+    result = (*engineObject)->GetInterface(engineObject, SL_IID_ENGINE, &engineEngine);
+    ASSERT_EQ(SL_RESULT_SUCCESS, result);
+
+    // get pcmPlayerObject
+    pcmPlayerObject = nullptr;
+    SLDataLocator_OutputMix slOutputMix = {SL_DATALOCATOR_OUTPUTMIX, outputMixObject};
+    SLDataSink slSink = {&slOutputMix, nullptr};
+    SLDataLocator_BufferQueue slBufferQueue = {
+        SL_DATALOCATOR_BUFFERQUEUE,
+        0};
+    SLDataFormat_PCM pcmFormat = {
+        SL_DATAFORMAT_PCM,
+        wavHeader_.NumOfChan,
+        wavHeader_.SamplesPerSec * 1000,
+        wavHeader_.bitsPerSample,
+        0,
+        0,
+        0};
+    SLDataSource slSource = {&slBufferQueue, &pcmFormat};
+    result = (*engineEngine)->CreateAudioPlayer(engineEngine, &pcmPlayerObject, &slSource,
+        &slSink, number, nullptr, nullptr);
+    EXPECT_TRUE(result == SL_RESULT_SUCCESS);
+
+    // get volumeItf
+    SLVolumeItf volumeItf = nullptr;
+    result = (*pcmPlayerObject)->GetInterface(pcmPlayerObject, SL_IID_VOLUME, &volumeItf);
+    EXPECT_TRUE(result == SL_RESULT_SUCCESS);
+
+    SLresult result1 = (*volumeItf)->SetMute(volumeItf, SL_BOOLEAN_FALSE);
+    EXPECT_TRUE(result1 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result2 = (*volumeItf)->GetMute(volumeItf, nullptr);
+    EXPECT_TRUE(result2 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result3 = (*volumeItf)->EnableStereoPosition(volumeItf, SL_BOOLEAN_FALSE);
+    EXPECT_TRUE(result3 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result4 = (*volumeItf)->IsEnabledStereoPosition(volumeItf, nullptr);
+    EXPECT_TRUE(result4 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result5 = (*volumeItf)->SetStereoPosition(volumeItf, 0);
+    EXPECT_TRUE(result5 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result6 = (*volumeItf)->GetStereoPosition(volumeItf, nullptr);
+    EXPECT_TRUE(result6 == SL_RESULT_FEATURE_UNSUPPORTED);
+}
