@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import checkBoxTest from './checkBox'
+import checkBoxGroupTest from './checkBoxGroup'
 
 export default function testsuite() {
        checkBoxTest()
+       checkBoxGroupTest()
 }
