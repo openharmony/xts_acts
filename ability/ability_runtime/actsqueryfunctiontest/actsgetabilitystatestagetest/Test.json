@@ -5,7 +5,7 @@
         "test-timeout": "600000",
         "bundle-name": "com.example.actsgetabilitystatestagetest",
         "module-name": "entry",
-        "shell-timeout": "600000"
+        "shell-timeout": "10000"
     },
     "kits": [
         {
