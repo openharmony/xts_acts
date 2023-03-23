@@ -11,7 +11,9 @@
             "target": 5
         }
     },
-    "deviceConfig": {},
+    "deviceConfig": {
+        "default" :{"debug" : true}
+    },
     "module": {
         "package": "ohos.acts.hiviewdfx.hilog.function",
         "name": ".entry",
