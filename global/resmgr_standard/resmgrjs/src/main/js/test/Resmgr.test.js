@@ -1752,5 +1752,395 @@ describe('resMgrTest', function () {
         })
     })
 
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0100
+     * @tc.name getDrawableDescriptor with normal pic
+     * @tc.desc test the getDrawableDescriptor method
+     */
+     it('getDrawableDescriptor_test_0100', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01000017);
+                console.log('getDrawableDescriptor_test_0100 ' + JSON.stringify(value));
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0100 ' + error.code);
+                console.log('getDrawableDescriptor_test_0100 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0200
+     * @tc.name getDrawableDescriptor with normal pic and density
+     * @tc.desc test the getDrawableDescriptor method
+     */
+    it('getDrawableDescriptor_test_0200', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01000017,120);
+                console.log('getDrawableDescriptor_test_0200 ' + JSON.stringify(value));
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0200 ' + error.code);
+                console.log('getDrawableDescriptor_test_0200 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0300
+     * @tc.name getDrawableDescriptor with json style pic
+     * @tc.desc test the getDrawableDescriptor method
+     */
+    it('getDrawableDescriptor_test_0300', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01000018);
+                console.log('getDrawableDescriptor_test_0300 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0300 ' + error.code);
+                console.log('getDrawableDescriptor_test_0300 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0400
+     * @tc.name getDrawableDescriptor with json style pic and density
+     * @tc.desc test the getDrawableDescriptor method
+     */
+    it('getDrawableDescriptor_test_0400', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01000018, 240);
+                console.log('getDrawableDescriptor_test_0400 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0400 ' + error.code);
+                console.log('getDrawableDescriptor_test_0400 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0500
+     * @tc.name getDrawableDescriptor with string param
+     * @tc.desc test the getDrawableDescriptor method return 401
+     */
+    it('getDrawableDescriptor_test_0500', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor('0x01000018');
+                console.log('getDrawableDescriptor_test_0500 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0500 ' + error.code);
+                console.log('getDrawableDescriptor_test_0500 ' + error.message);
+                expect(error.code == 401).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0600
+     * @tc.name getDrawableDescriptor with not exist resource id
+     * @tc.desc test the getDrawableDescriptor method return 9001001
+     */
+    it('getDrawableDescriptor_test_0600', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01110000);
+                console.log('getDrawableDescriptor_test_0600 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0600 ' + error.code);
+                console.log('getDrawableDescriptor_test_0600 ' + error.message);
+                expect(error.code == 9001001).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0700
+     * @tc.name getDrawableDescriptor with string resource id
+     * @tc.desc test the getDrawableDescriptor method return 9001002
+     */
+    it('getDrawableDescriptor_test_0700', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01000000);
+                console.log('getDrawableDescriptor_test_0700 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0700 ' + error.code);
+                console.log('getDrawableDescriptor_test_0700 ' + error.message);
+                expect(error.code == 9001002).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0800
+     * @tc.name getDrawableDescriptor with not exist density
+     * @tc.desc test the getDrawableDescriptor method return 401
+     */
+    it('getDrawableDescriptor_test_0800', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01000018, 130);
+                console.log('getDrawableDescriptor_test_0800 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0800 ' + error.code);
+                console.log('getDrawableDescriptor_test_0800 ' + error.message);
+                expect(error.code == 401).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0900
+     * @tc.name getDrawableDescriptor with string type density
+     * @tc.desc test the getDrawableDescriptor method return 401
+     */
+    it('getDrawableDescriptor_test_0900', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01000018, '120');
+                console.log('getDrawableDescriptor_test_0900 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0900 ' + error.code);
+                console.log('getDrawableDescriptor_test_0900 ' + error.message);
+                expect(error.code == 401).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1000
+     * @tc.name getDrawableDescriptor with 0 density
+     * @tc.desc test the getDrawableDescriptor method
+     */
+    it('getDrawableDescriptor_test_1000', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01000018, 0);
+                console.log('getDrawableDescriptor_test_1000 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1000 ' + error.code);
+                console.log('getDrawableDescriptor_test_1000 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1100
+     * @tc.name getDrawableDescriptorByName with normal pic
+     * @tc.desc test the getDrawableDescriptorByName method
+     */
+    it('getDrawableDescriptor_test_1100', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName('icon');
+                console.log('getDrawableDescriptor_test_1100 ' + JSON.stringify(value));
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1100 ' + error.code);
+                console.log('getDrawableDescriptor_test_1100 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1200
+     * @tc.name getDrawableDescriptorByName with normal pic and density
+     * @tc.desc test the getDrawableDescriptorByName method
+     */
+    it('getDrawableDescriptor_test_1200', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName('icon',120);
+                console.log('getDrawableDescriptor_test_1200 ' + JSON.stringify(value));
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1200 ' + error.code);
+                console.log('getDrawableDescriptor_test_1200 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1300
+     * @tc.name getDrawableDescriptorByName with json style pic
+     * @tc.desc test the getDrawableDescriptorByName method
+     */
+    it('getDrawableDescriptor_test_1300', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName('stratify');
+                console.log('getDrawableDescriptor_test_1300 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1300 ' + error.code);
+                console.log('getDrawableDescriptor_test_1300 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1400
+     * @tc.name getDrawableDescriptorByName with json style pic and density
+     * @tc.desc test the getDrawableDescriptorByName method
+     */
+    it('getDrawableDescriptor_test_1400', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName('stratify', 240);
+                console.log('getDrawableDescriptor_test_1400 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1400 ' + error.code);
+                console.log('getDrawableDescriptor_test_1400 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1500
+     * @tc.name getDrawableDescriptorByName with number param
+     * @tc.desc test the getDrawableDescriptorByName method return 401
+     */
+    it('getDrawableDescriptor_test_1500', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName(0x01000018);
+                console.log('getDrawableDescriptor_test_1500 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1500 ' + error.code);
+                console.log('getDrawableDescriptor_test_1500 ' + error.message);
+                expect(error.code == 401).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1600
+     * @tc.name getDrawableDescriptorByName with not exist pic name
+     * @tc.desc test the getDrawableDescriptorByName method return 9001003
+     */
+    it('getDrawableDescriptor_test_1600', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName('stratify1');
+                console.log('getDrawableDescriptor_test_1600 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1600 ' + error.code);
+                console.log('getDrawableDescriptor_test_1600 ' + error.message);
+                expect(error.code == 9001003).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1800
+     * @tc.name getDrawableDescriptorByName with not exist density
+     * @tc.desc test the getDrawableDescriptorByName method return 401
+     */
+    it('getDrawableDescriptor_test_1800', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName('stratify', 130);
+                console.log('getDrawableDescriptor_test_1800 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1800 ' + error.code);
+                console.log('getDrawableDescriptor_test_1800 ' + error.message);
+                expect(error.code == 401).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1900
+     * @tc.name getDrawableDescriptorByName with string type density
+     * @tc.desc test the getDrawableDescriptorByName method return 401
+     */
+    it('getDrawableDescriptor_test_1900', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName('stratify', '120');
+                console.log('getDrawableDescriptor_test_1900 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1900 ' + error.code);
+                console.log('getDrawableDescriptor_test_1900 ' + error.message);
+                expect(error.code == 401).assertTrue();
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_2000
+     * @tc.name getDrawableDescriptorByName with 0 density
+     * @tc.desc test the getDrawableDescriptorByName method
+     */
+    it('getDrawableDescriptor_test_2000', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName('stratify', 0);
+                console.log('getDrawableDescriptor_test_2000 ' + value);
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_2000 ' + error.code);
+                console.log('getDrawableDescriptor_test_2000 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_2100
+     * @tc.name getDrawableDescriptor with resource object
+     * @tc.desc test the getDrawableDescriptor method
+     */
+    it('getDrawableDescriptor_test_2100', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            let out = true;
+            let value = mgr.getDrawableDescriptor(
+                    { bundleName:"ohos.intl.test", moduleName:"entry", id:0x01000018});
+            console.log('getDrawableDescriptor_test_2100 ' + value);
+            if(value == null){
+                out = false;
+            }
+            console.log('getDrawableDescriptor_test_2100 ' + out);
+            expect(out).assertFalse();
+        })
+        done();
+    })
+
     console.log('*************end ResmgrTest*************');
 })}
