@@ -146,8 +146,10 @@ struct Index {
                     this.enterPageEnd=false
                 }else if(this.isProgressFinish){
                     console.info("isProgressFinish==>")
-                    Utils.emitEvent(this.progress,114)
-                    this.isProgressFinish=false
+                    if(this.progress="100"){
+                        Utils.emitEvent(this.progress,114)
+                        this.isProgressFinish=false
+                    } 
                  }
             })
             .onConsole((event) => {
