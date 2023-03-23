@@ -36,6 +36,13 @@ export default class MainAbility extends Ability {
 
         globalThis.ability3Context = this.context
         windowStage.setUIContent(this.context, "pages/index1", null)
+        windowStage.on('windowStageEvent', (data) => {
+          console.log(`ActsGetCurrentTopAbilityStagebTest onWindwoStage is : ${JSON.stringify(data)}`)
+          if (data == 2 ) {
+            console.log(`ActsGetCurrentTopAbilityStagebTest getWindowStageActive is sucess`)
+            commonEvent.publish("GetCurrentTopAbility", publishCallBackOne);
+          }
+        })
     }
 
     onWindowStageDestroy() {
@@ -46,7 +53,6 @@ export default class MainAbility extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("Ability1 onForeground")
-        commonEvent.publish("GetCurrentTopAbility", publishCallBackOne);
     }
 
 
