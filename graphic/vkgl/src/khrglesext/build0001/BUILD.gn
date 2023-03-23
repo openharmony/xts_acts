@@ -39,6 +39,8 @@ ohos_static_library("libkhrglesextfunc0001") {
 }
 
 ohos_moduletest_suite("ActsKhrglesextTestSuite0001") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = [
     "../ActsKhrglesext0001TestSuite.cpp",
     "../disjoint_timer_query/KhrglesextKHR-GLESEXT_disjoint_timer_queryTestCase.cpp",
