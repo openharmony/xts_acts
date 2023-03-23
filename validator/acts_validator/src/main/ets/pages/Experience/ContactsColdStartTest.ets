@@ -14,22 +14,26 @@
  */
 import router from '@ohos.router';
 import fileio from '@ohos.fileio';
-import {CustomContainer} from '../common/TimeExperienceCustomContainer';
+import {CustomContainer} from '../common/StartExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
-let Xpath = path + '/ResponseTimeLauncher.log';
-
+let ContactsColdPath = path + '/ColdStartContacts.log';
 @Entry
 @Component
 struct CustomContainerUser {
-  @State name: string = 'StartNotification';
-  @State StepTips: string = '操作步骤：根据操作提示下拉通知栏'+'\n'+'预期结果：下拉通知栏时延低于150ms测试通过';
+  @State name: string = 'ContactsColdStart';
+  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用冷启动时延低于2000ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
-  @State time: string = '0';
+  @State num: number = 0;
+  @State setNum: number = 0;
+  @State photosNum: number = 0;
+  @State mmsNum: number = 0;
+  @State cameraNum: number = 0;
+  @State contactsNum: number = 0;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
     this.Vue = false;
@@ -40,13 +44,14 @@ struct CustomContainerUser {
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         Column(){
           Row(){
-            Text(`根据以下操作步骤完成测试`+ '\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n')
+            Text(`根据以下操作步骤完成测试`+ '\n' + '\n' )
               .fontColor(Color.White).fontSize('24fp')
           }
           Row(){
-            Text(`测试步骤:`+ '\n' + '\n' +`1.点击开始键进入桌面` + '\n' + '\n' + `2.双击执行.bat选择响应时延>下拉状态栏`+
-            '\n' + '\n' +`3.从屏幕顶部滑动下拉通知栏` + '\n' + '\n' + '4.待脚本执行结束回到Validator点击停止键'
-            + '\n' + '\n' + `5.若下拉通知栏时延小于或等于150ms则通过测试` + '\n' + '\n' + '\n' + '\n' )
+            Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n' + `2.清空后台应用`+ '\n' + '\n'
+            + `3.双击执行.bat选择冷启动测试输入待测应用编号`+ '\n' + '\n' +`4.测试应用冷启动返回validator界面`
+            + '\n' + '\n' + '5.点击停止键观察测试结果' + '\n' + '\n' + `6.若冷启动测试在规定时延内完成则通过测试`
+            + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
           }
           Row(){
@@ -58,6 +63,7 @@ struct CustomContainerUser {
                 .enabled(this.StartEnable)
                 .opacity(this.StartEnable? 1 : 0.4)
                 .onClick(async () => {
+                  this.num = 0;
                   this.StartEnable = !this.StartEnable;
                   let str = {
                     bundleName:"com.ohos.launcher",
@@ -79,21 +85,27 @@ struct CustomContainerUser {
                 .opacity(!this.StartEnable? 1 : 0.4)
                 .onClick(() => {
                   this.StartEnable = !this.StartEnable
-                  let fd = fileio.openSync(Xpath, 0o100 | 0o2002, 0o664);
-                  let buf = new ArrayBuffer(4096);
-                  fileio.readSync(fd,buf);
-                  let report = String.fromCharCode.apply(null,new Uint8Array(buf));
-                  let head = report.indexOf(":");
-                  this.time = report.substring(head+1);
-                  let time = parseFloat(this.time)
-                  if( time < 150 ) {
+                  /*
+                            Contacts
+                   */
+                  let ContactsFd = fileio.openSync(ContactsColdPath, 0o100 | 0o2002, 0o664);
+                  let ContactsBuf = new ArrayBuffer(4096);
+                  fileio.readSync(ContactsFd,ContactsBuf);
+                  let ContactsReport = String.fromCharCode.apply(null,new Uint8Array(ContactsBuf));
+                  let ContactsHead = ContactsReport.indexOf(':');
+                  let ContactsTime = ContactsReport.substring(ContactsHead+1);
+                  this.contactsNum = parseFloat(ContactsTime);
+                  if( this.contactsNum < 2000 ) {
+                    this.num++
+                  }
+                  if( this.num === 1 ) {
                     this.Vue = true;
                   }
                 })
             }
           }
           Row(){
-            Text('\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n' + `下拉通知栏时延：` + this.time + 'ms' )
+            Text('\n' + '\n' + `测试结果：` + '\n' + '\n' + '联系人冷启动时延' + this.contactsNum + 'ms' )
               .fontColor(Color.White).fontSize('24fp')
           }
         }
@@ -112,7 +124,12 @@ struct CustomContainerUser {
         name:$name,
         Vue: $Vue,
         StartEnable: $StartEnable,
-        time: $time
+        num: $num,
+        setNum: $setNum,
+        photosNum: $photosNum,
+        mmsNum: $mmsNum,
+        cameraNum: $cameraNum,
+        contactsNum: $contactsNum,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
