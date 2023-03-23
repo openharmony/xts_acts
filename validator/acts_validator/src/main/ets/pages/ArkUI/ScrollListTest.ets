@@ -14,6 +14,7 @@
  */
 import {CustomContainer} from '../common/CustomContainer';
 import FirstDialog from '../model/FirstDialog';
+import router from '@ohos.router';
 @Entry
 @Component
 struct CustomContainerUser {
@@ -47,5 +48,10 @@ struct CustomContainerUser {
         Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/ArkUI/ArkUI_index',
+    })
   }
 }

@@ -128,7 +128,7 @@ struct IndexPage {
         fileio.closeSync(FD);
         let Fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
         fileio.writeSync(Fd,Report);
-        filewrite(name1,results,titles)
+        filewrite(name1,results,titles);
       }
       else if (this.result === 'Fail'){
         this.ColorObject[this.current] = '#ffff0000';
@@ -144,7 +144,7 @@ struct IndexPage {
         fileio.writeSync(Fd,Report);
         filewrite(name1,results,titles);
       }
-      else if (this.result === 'None'){
+      else {
         this.ColorObject[this.current] = this.ColorObject[this.current];
       }
     }

@@ -17,6 +17,7 @@ import fileio from '@ohos.fileio';
 import {CustomContainer} from '../common/ExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 import context from '@ohos.app.ability.common';
+import router from '@ohos.router';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
@@ -131,5 +132,10 @@ struct CustomContainerUser {
         Fps: $Fps
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/Experience/Experience_index',
+    })
   }
 }
