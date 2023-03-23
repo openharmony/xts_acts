@@ -31,7 +31,18 @@ export default function abilityTest() {
   describe('ActsChangeAbilityStagetest', function () {
     beforeAll(async function (done) {
       console.info('beforeAll called')
-      await sleep(2000)
+      let delay = 3000;
+      let start = new Date().getTime();
+      while (true) {
+        if (globalThis.onWindowStageActive) {
+          console.log(`ActsApiTest getWindwoStageActive is success`)
+          break;
+        }
+        if (new Date().getTime() - start > delay) {
+          console.log(`ActsApiTest getWindwoStageActive is failed`)
+            break;
+        }
+    }
       await globalThis.abilitydelegator.getCurrentTopAbility().then((data) => {
         mainability = data
         done()
