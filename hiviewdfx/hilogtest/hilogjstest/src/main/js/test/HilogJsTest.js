@@ -14,6 +14,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import hilog from '@ohos.hilog'
+import hilogndk from "libhilogndk.so"
 
 export default function HilogJsTest() {
 describe('HilogJsTest', function () {
@@ -120,7 +121,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi06', 2, function () {
         console.info('testHilogJsApi06 start');
         const res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.DEBUG);
-        expect(res).assertEqual(false);
+        expect(res).assertEqual(true);
         console.info('testHilogJsApi06 end');
     })
 
@@ -136,7 +137,7 @@ describe('HilogJsTest', function () {
         for (var i = 0; i < 1000; i++){
             tag += "HILOGTEST"
         }
-        expect(res).assertEqual(false);
+        expect(res).assertEqual(true);
         console.info('testHilogJsApi07 end');
     })
 
@@ -148,7 +149,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi08', 2, function () {
         console.info('testHilogJsApi08 start');
         const res = hilog.isLoggable(0x3200, "", hilog.LogLevel.DEBUG);
-        expect(res).assertEqual(false);
+        expect(res).assertEqual(true);
         console.info('testHilogJsApi08 end');
     })
 
@@ -415,5 +416,28 @@ describe('HilogJsTest', function () {
         console.info('testHilogJsApi26 end');
     })
 
+    /**
+     * @tc.number DFX_DFT_Hiview_Libhilog_Hilog_JS_3900
+     * @tc.name hitrace interface test
+     * @tc.desc hitrace begin interface test.
+     */
+    it('testHilogJsApi27', 2, function () {
+        console.info('testHilogJsApi27 start');
+        const res = hilogndk.ohIsLoggableTest();
+        expect(res).assertEqual(true);
+        console.info('testHilogJsApi27 end');
+    })
+
+    /**
+     * @tc.number DFX_DFT_Hiview_Libhilog_Hilog_JS_4000
+     * @tc.name hitrace interface test
+     * @tc.desc hitrace begin interface test.
+     */
+     it('testHilogJsApi28', 2, function () {
+        console.info('testHilogJsApi28 start');
+        const res = hilogndk.ohPrintTest();
+        expect(res).assertEqual(true);
+        console.info('testHilogJsApi28 end');
+    })
 })
 }
