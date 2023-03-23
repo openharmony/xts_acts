@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,24 +13,34 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent'
 
+function publishCallBackOne() {
+  console.log("====MainAbility4 Publish CallBack GetCurrentTopAbility");
+}
 export default class MainAbility4 extends Ability {
 
     onCreate(want, launchParam) {
         console.log("MainAbility4 onCreate")
     }
 
-    onDestroy(want) {
+    onDestroy() {
         // Ability is destroying, release resources for this ability
         console.log("MainAbility4 onDestroy")
     }
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
-        console.log("MainAbility4 onWindowStageCreate")
-        windowStage.setUIContent(this.context, "pages/index", null)
+        console.log("MainAbility4 onWindowStageCreate");
+        windowStage.setUIContent(this.context, "pages/index", null);
         globalThis.ability4Context = this.context;
-        //commonEvent.publish("ACTS_GetAppContext", PublishCallBackOne4);
+        windowStage.on('windowStageEvent', (data) => {
+          console.log(`ActsGetAbilityStatestAgeTest onWindwoStageMainAbilty4 is : ${JSON.stringify(data)}`);
+          if (data == 2 ) {
+            console.log(`ActsGetAbilityStatestAgeTest getWindowStageActiveMainAbility4 is sucess`);
+            commonEvent.publish("GetCurrentTopAbility", publishCallBackOne);
+          }
+        })
     }
 
     onWindowStageDestroy() {
