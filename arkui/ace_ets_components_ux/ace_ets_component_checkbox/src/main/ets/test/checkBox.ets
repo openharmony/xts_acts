@@ -740,7 +740,6 @@ export default function checkBoxTest() {
       }, 500)
     });
 
-
     /*
      *tc.number ArkUX_Stage_Checkbox_CheckMarkSize_0100
      *tc.name   Tests the CheckMarkSize property of the Checkbox component

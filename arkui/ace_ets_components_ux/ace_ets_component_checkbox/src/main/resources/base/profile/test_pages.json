@@ -1,7 +1,6 @@
 {
   "src": [
     "TestAbility/pages/Index",
-    "TestAbility/pages/CheckBox",
-    "TestAbility/pages/CheckBoxGroup"
+    "TestAbility/pages/CheckBox"
   ]
 }
