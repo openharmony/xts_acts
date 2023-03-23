@@ -22,6 +22,8 @@ ohos_js_hap_suite("ActsUiTest") {
   ets2abc = true
   certificate_profile = "//test/xts/acts/arkXtest/uitest/signature/auto_ohos_default_com.uitest.test.p7b"
   hap_name = "ActsUiTest"
+  part_name = "arkXtest"
+  subsystem_name = "arkXtest"
 }
 
 ohos_js_assets("uitest_ets_assets") {
