@@ -158,7 +158,7 @@ export default function InputDevice_test() {
                     expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
                       || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
                       || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
-                      || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
+                      || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'toolMajor'
                       || res.axisRanges[j].axis == 'NULL').assertTrue();
                     expect(res.axisRanges[j].max).assertInstanceOf('Number');
                     expect(res.axisRanges[j]).assertInstanceOf('Object');
