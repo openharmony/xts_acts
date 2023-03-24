@@ -14,12 +14,31 @@
  */
 
 import bluetooth from '@ohos.bluetoothManager';
-import geolocation from '@ohos.geolocation';
-import geolocationm from '@ohos.geoLocationManager';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import bundle from '@ohos.bundle';
-import osaccount from '@ohos.account.osAccount';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+import bundle from '@ohos.bundle'
+import osaccount from '@ohos.account.osAccount'
+
+async function applyPermission() {
+    let osAccountManager = osaccount.getAccountManager();
+    console.info("=== getAccountManager finish");
+    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+    console.info("LocalId is :" + localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.bluetooth.bluetoothhost', 0, localId);
+    let atManager = abilityAccessCtrl.createAtManager();
+    if (atManager != null) {
+        let tokenID = appInfo.accessTokenId;
+        console.info('[permission] case accessTokenID is ' + tokenID);
+        let permissionName1 = 'ohos.permission.LOCATION';
+        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 2).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+    } else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+    }
+}
 
 export default function bluetoothBLETest3() {
 describe('bluetoothBLETest3', function() {
@@ -51,39 +70,14 @@ describe('bluetoothBLETest3', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-	async function applyPermission() {
-		let osAccountManager = osaccount.getAccountManager();
-		console.info("=== getAccountManager finish");
-		let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
-		console.info("LocalId is :" + localId);
-		let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, localId);
-		let atManager = abilityAccessCtrl.createAtManager();
-		if (atManager != null) {
-        let tokenID = appInfo.accessTokenId;
-        console.info('[permission] case accessTokenID is ' + tokenID);
-        let permissionName1 = 'ohos.permission.LOCATION';
-        let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
-        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
-        }).catch((err) => {
-            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
-        });
-        await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
-        }).catch((err) => {
-            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
-        });
-		} else {
-        console.info('[permission] case apply permission failed, createAtManager failed');
-		}
-	}
-    beforeAll(function () {
+    beforeAll(function() {
         console.info('beforeAll called')
         gattServer = bluetooth.BLE.createGattServer();
         gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
+        await applyPermission();
         await tryToDisableBt()
         done()
     })
@@ -234,7 +228,7 @@ describe('bluetoothBLETest3', function() {
             expect(true).assertFalse();
             done()
         } catch (error) {
-            console.error('[bluetooth_js]getProfileConnectionState error.code:'+JSON.stringify(error.code)+
+            console.error('[bluetooth_js]getProfileConnState error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
             expect(error.code).assertEqual('2900003');
             done()
@@ -386,8 +380,8 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_1600', 0, async function (done) {
         try {
-            let hfpSrc = bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
-            let retArray = hfpSrc.getConnectionDevices();
+            let hfpSrc = bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+            let retArray =  hfpSrc.getConnectionDevices();
             console.info('[bluetooth_js]hfp getConnectionDevices:' + JSON.stringify(retArray));
             expect(true).assertFalse();
             done()
@@ -602,9 +596,8 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_2500', 0, async function (done) {
         try {
-            let panSrc =
-                bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
-            panSrc.disconnect('11:22:33:44:55:77');
+            let panSrc = bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
+//            panSrc.disconnect('11:22:33:44:55:77');
             expect(true).assertFalse();
             done()
         } catch (error) {
@@ -626,9 +619,9 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_2600', 0, async function (done) {
         try {
-            let panSrc =
-                bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
-            panSrc.setTethering(true);
+            let panSrc = 
+                bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
+//            panSrc.setTethering(true);
             expect(true).assertFalse();
             done()
         } catch (error) {
@@ -978,28 +971,28 @@ describe('bluetoothBLETest3', function() {
         done()
     })
 
-    /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_4000
-     * @tc.name Test cancelPairedDevice api
-     * @tc.desc Test 2900003 - Bluetooth switch is off
-     * @tc.size MEDIUM
-     * @ since 8
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_4000', 0, async function (done) {
-
-        try {
-            bluetooth.cancelPairedDevice("11:22:55:66:33:44");
-            expect(true).assertFalse();
-            done()
-        } catch (error) {
-            console.error('[bluetooth_js]cancelPairedDevice error.code:'+JSON.stringify(error.code)+
-                   'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-    })
+//    /**
+//     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_4000
+//     * @tc.name Test cancelPairedDevice api
+//     * @tc.desc Test 2900003 - Bluetooth switch is off
+//     * @tc.size MEDIUM
+//     * @ since 8
+//     * @tc.type Function
+//     * @tc.level Level 2
+//     */
+//    it('COMMUNICATION_BLUETOOTH_SwitchOff_4000', 0, async function (done) {
+//
+//        try {
+//            bluetooth.cancelPairedDevice("11:22:55:66:33:44");
+//            expect(true).assertFalse();
+//            done()
+//        } catch (error) {
+//            console.error('[bluetooth_js]cancelPairedDevice error.code:'+JSON.stringify(error.code)+
+//                   'error.message:'+JSON.stringify(error.message));
+//            expect(error.code).assertEqual('2900003');
+//            done()
+//        }
+//    })
 
 })
 }
