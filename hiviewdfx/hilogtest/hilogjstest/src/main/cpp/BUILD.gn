@@ -11,24 +11,47 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/tools/build/suite.gni")
-module_output_path = "hits/ActsHilogndkTest"
+import("//build/config/ohos/config.gni")
+import("//build/ohos.gni")
+import("//foundation/arkui/napi/napi.gni")
 
-config("hilogndktest_config") {
+config("config") {
   visibility = [ ":*" ]
-  include_dirs = [
-    "//base/hiviewdfx/hilog/interfaces/native/kits/include",
-    "//commonlibrary/c_utils/base/include/",
+
+  cflags = [
+    "-Wall",
+    "-Werror",
+    "-g3",
+    "-Wunused-variable",
   ]
 }
-ohos_moduletest_suite("ActsHilogndkTest") {
-  module_out_path = module_output_path
-  sources = [ "hilogndktest.cpp" ]
-  external_deps = [ "c_utils:utils" ]
+
+config("public_config") {
+}
+
+ohos_shared_library("hilogndk") {
+  sources = [ "./hilogndk.cpp" ]
+  if (!(product_name == "m40")) {
+    if (target_cpu == "arm") {
+      libs = [ "${clang_base_path}/../libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so" ]
+    } else if (target_cpu == "arm64") {
+      libs = [ "${clang_base_path}/../libcxx-ndk/lib/aarch64-linux-ohos/c++/libc++_shared.so" ]
+    } else {
+      libs = []
+    }
+  }
+
+  include_dirs = [
+    "//test/xts/acts/hiviewdfx/hilogtest/hilogjstest/src/main/cpp",
+    "//base/hiviewdfx/hilog/interfaces/native/kits/include",
+  ]
+  configs = [ ":config" ]
+
   deps = [
     "//base/hiviewdfx/hilog/frameworks/hilog_ndk:hilog_ndk",
     "//base/hiviewdfx/hilog/interfaces/native/kits:libhilog_ndk",
-    "//third_party/googletest:gtest_main",
+    "//foundation/arkui/napi:ace_napi",
   ]
-  configs = [ ":hilogndktest_config" ]
+
+  output_extension = "so"
 }
