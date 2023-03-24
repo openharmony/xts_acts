@@ -99,6 +99,7 @@ describe('KVManagerPromiseTest', function () {
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0100 getKVStore e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
         }
         done();
     })
@@ -120,6 +121,7 @@ describe('KVManagerPromiseTest', function () {
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0200 getKVStore e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
         }
         done();
     })
@@ -146,6 +148,7 @@ describe('KVManagerPromiseTest', function () {
             expect(null).assertFail();
         }).catch((err) => {
             console.error('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0300 getKVStore err ' + `, error code is ${err.code}, message is ${err.message}`);
+            expect(err.code == 401).assertTrue();
         });
         done();
     })
