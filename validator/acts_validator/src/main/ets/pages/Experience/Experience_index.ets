@@ -112,7 +112,7 @@ struct IndexPage {
       let number = WriteTitle.length + 11;
       let Index = ColorBack.indexOf(WriteTitle);
 
-      if (this.result === 'Pass'){
+      if (this.result === 'true'){
         this.ColorObject[this.current] = '#ff008000';
         let Log = (titles+';'+'#ff008000'+';');
         let key = ColorBack.substring(Index,Index+number);
@@ -126,7 +126,7 @@ struct IndexPage {
         fileio.writeSync(Fd,Report);
         filewrite(name1,results,titles)
       }
-      else if (this.result === 'Fail'){
+      else if (this.result === 'false'){
         this.ColorObject[this.current] = '#ffff0000';
         let Log = (titles+';'+'#ffff0000'+';');
         let key = ColorBack.substring(Index,Index+number);
@@ -270,20 +270,20 @@ struct IndexPage {
         title[i] = str1[i*2];
         result[i] = str1[i*2+1];
       }
-      let FailIndex = report.indexOf('Fail');
+      let FailIndex = report.indexOf('false');
       let FailNum = 0;
       while (FailIndex != -1) {
         console.log(FailIndex);
         FailNum++;
-        FailIndex = report.indexOf('Fail',FailIndex + 1);
+        FailIndex = report.indexOf('false',FailIndex + 1);
       }
       let failNum = (FailNum).toString();
-      let PassIndex = report.indexOf('Pass');
+      let PassIndex = report.indexOf('true');
       let PassNum = 0;
       while (PassIndex != -1) {
         console.log(PassIndex);
         PassNum++;
-        PassIndex = report.indexOf('Pass',PassIndex + 1);
+        PassIndex = report.indexOf('true',PassIndex + 1);
       }
       let TestNum = FailNum + PassNum;
       let testNum = (TestNum).toString();
@@ -338,7 +338,8 @@ function filewrite(name1,results,titles){
   console.info("RRRRRRRRRRd"+RD);
   let report = String.fromCharCode.apply(null,new Uint8Array(buf));
   let WriteTitle = (titles).toString();
-  let number = WriteTitle.length + 6;
+  let WriteResult = (results).toString();
+  let number = WriteTitle.length + WriteResult.length + 2;
   let Index = report.indexOf(WriteTitle);
   let Log = (titles+";"+results+";").toString();
   if (Index == -1){
