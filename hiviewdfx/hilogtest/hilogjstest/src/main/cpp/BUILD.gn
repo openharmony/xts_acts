@@ -41,14 +41,16 @@ ohos_shared_library("hilogndk") {
     }
   }
 
-  include_dirs = [ "//test/xts/acts/hiviewdfx/hilogtest/hilogjstest/src/main/cpp",
-    "//base/hiviewdfx/hilog/interfaces/native/kits/include", ]
+  include_dirs = [
+    "//test/xts/acts/hiviewdfx/hilogtest/hilogjstest/src/main/cpp",
+    "//base/hiviewdfx/hilog/interfaces/native/kits/include",
+  ]
   configs = [ ":config" ]
 
   deps = [
-    "//foundation/arkui/napi:ace_napi",
     "//base/hiviewdfx/hilog/frameworks/hilog_ndk:hilog_ndk",
     "//base/hiviewdfx/hilog/interfaces/native/kits:libhilog_ndk",
+    "//foundation/arkui/napi:ace_napi",
   ]
 
   output_extension = "so"
