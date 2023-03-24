@@ -2051,7 +2051,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         try {
           let isLayoutFullScreen = false;
          await wnd.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
-            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+            console.info(msgStr + 'Succeeded in setting the window not layout to full-screen mode.');
             try {
               let propData = wnd.getWindowProperties()
               console.info(msgStr + 'wnd.getWindowProperties propData: ' + JSON.stringify(propData));
@@ -2141,7 +2141,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         try {
           wnd.setWindowLayoutFullScreen(isLayoutFullScreen, (err) => {
             if (err.code) {
-              console.error(msgStr + 'err Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+              console.error(msgStr + 'err Failed to set the window not layout to full-screen mode. Cause:' + JSON.stringify(err));
               try {
                 expect().assertFail();
               } catch (error) {
@@ -2150,7 +2150,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
               done();
               return;
             }
-            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+            console.info(msgStr + 'Succeeded in setting the window not layout to full-screen mode.');
             try {
               let propData = wnd.getWindowProperties()
               console.log(msgStr + JSON.stringify(propData));
