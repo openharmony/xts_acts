@@ -537,5 +537,139 @@ describe("TreeSetTest", function () {
       expect(err.message).assertEqual(`The add method cannot be bound`);
     }
   });
+
+  /**
+   * @tc.name: testClear039
+   * @tc.desc: Clear all elements of the TreeSet instance. For example: treeSet.clear.bind({}, "a")().
+   */ 
+  it('testClear039', 0, function () {
+    let  treeSet = new TreeSet();
+    try {
+      treeSet.clear.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The clear method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testGetLowerValue040
+   * @tc.desc: Get a value that is a little lower than the specified value sort. 
+   * For example: treeSet.getLowerValue.bind({}, "a")().
+   */  
+  it('testGetLowerValue040', 0, function () {
+    let  treeSet = new TreeSet();
+    try {
+      treeSet.getLowerValue.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The getLowerValue method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testGetLowerValue041
+   * @tc.desc: Get a value that is a little lower than the specified value sort. 
+   * For example: treeSet.getLowerValue(null).
+   */  
+  it('testGetLowerValue041', 0, function () {
+    let  treeSet = new TreeSet();
+    try {
+      treeSet.getLowerValue(null);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "key" must be not null. Received value is: null`);
+    }
+  });
+
+  /**
+   * @tc.name: testGetHigherValue042
+   * @tc.desc: Get a value that is a little higher than the specified value sort. 
+   * For example: treeSet.getHigherValue(null).
+   */  
+  it('testGetHigherValue042', 0, function () {
+    let  treeSet = new TreeSet();
+    try {
+      treeSet.getHigherValue(null);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "key" must be not null. Received value is: null`);
+    }
+  });
+
+  /**
+   * @tc.name: testGetHigherValue043
+   * @tc.desc: Get a value that is a little higher than the specified value sort. 
+   * For example: treeSet.getHigherValue.bind({}, "a")().
+   */  
+  it('testGetHigherValue043', 0, function () {
+    let  treeSet = new TreeSet();
+    try {
+      treeSet.getHigherValue.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The getHigherValue method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach044
+   * @tc.desc: Traverse the collection of all elements of the TreeSet instance.
+   * For example: treeSet.forEach.bind({}, "a")().
+   */ 
+  it('testForEach044', 0, function () {
+    let  treeSet = new TreeSet();
+    try {
+      treeSet.forEach.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The forEach method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach045
+   * @tc.desc: Traverse the collection of all elements of the TreeSet instance.
+   * For example: treeSet.forEach(11).
+   */ 
+  it('testForEach045', 0, function () {
+    let  treeSet = new TreeSet();
+    try {
+      treeSet.forEach(11);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "callbackfn" must be callable. Received value is: 11`);
+    }
+  });
+
+  /**
+   * @tc.name: testValues046
+   * @tc.desc: Get a collection of all the values in the TreeSet. For example: treeSet.values.bind({}, "a")().
+   */ 
+  it('testValues046', 0, function () {
+    let  treeSet = new TreeSet();
+    try {
+      treeSet.values.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The Symbol.iterator method cannot be bound`);
+    }
+  });
 });
 }

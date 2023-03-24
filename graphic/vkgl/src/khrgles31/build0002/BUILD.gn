@@ -39,6 +39,8 @@ ohos_static_library("libkhrgles31func0002") {
 }
 
 ohos_moduletest_suite("ActsKhrgles31TestSuite0002") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = [
     "../ActsKhrgles310002TestSuite.cpp",
     "../core/Khrgles31blend_equation_advanced_BlendEquationSeparateTestCase.cpp",

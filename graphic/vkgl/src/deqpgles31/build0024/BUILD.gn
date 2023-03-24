@@ -39,6 +39,8 @@ ohos_static_library("libdeqpgles31func0024") {
 }
 
 ohos_moduletest_suite("ActsDeqpgles31TestSuite0024") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = [
     "../ActsDeqpgles310024TestSuite.cpp",
     "../functional/Deqpgles31array_size_vertex_geo_fragmentTestCase.cpp",

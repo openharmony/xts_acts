@@ -14,6 +14,10 @@
 */
 
 import Ability from '@ohos.app.ability.UIAbility'
+import commonEvent from '@ohos.commonEvent'
+function publishCallBackOne() {
+  console.log("====MainAbility2 Publish CallBack GetCurrentTopAbility");
+}
 
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
@@ -27,9 +31,15 @@ export default class MainAbility extends Ability {
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
-        console.log("[Demo] MainAbility onWindowStageCreate")
-
-        windowStage.setUIContent(this.context, "pages/index", null)
+        console.log("[Demo] MainAbility onWindowStageCreate");
+        windowStage.setUIContent(this.context, "pages/index", null);
+        windowStage.on('windowStageEvent', (data) => {
+          console.log(`ActsGetAbilityStatestAgeTest onWindwoStageMainAbilty2 is : ${JSON.stringify(data)}`);
+          if (data == 2 ) {
+            console.log(`ActsGetAbilityStatestAgeTest getWindowStageActiveMainAbility2 is sucess`);
+            commonEvent.publish("GetCurrentTopAbility", publishCallBackOne);
+          }
+        })
     }
 
     onWindowStageDestroy() {

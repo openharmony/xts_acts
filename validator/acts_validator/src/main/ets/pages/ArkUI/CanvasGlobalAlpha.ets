@@ -47,8 +47,11 @@ struct SetCircle {
               console.info('Pan end');
             })
           )
+
+      }.width('70%').height('25%')
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }){
         Text('透明度: ' + (this.X)*0.005 )
-      }.width('70%').height('30%')
+      }.width('100%').height('20%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
@@ -61,7 +64,7 @@ struct SetCircle {
             this.context.fillStyle = 'rgb(0,0,255)';
             this.context.fillRect(200, 200, 50, 50);
           })
-      }.width('100%').height('70%')
+      }.width('100%').height('55%')
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

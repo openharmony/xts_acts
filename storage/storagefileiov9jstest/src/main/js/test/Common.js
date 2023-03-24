@@ -39,6 +39,25 @@ export function prepareFile(fpath, content) {
   }
 }
 
+export function prepare200MFile(fpath) {
+  try {
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE)
+    fileIO.truncateSync(file.fd)
+    let bf = new ArrayBuffer(1024 * 1024 * 20);
+    for (let i = 0; i < 10; i++) {
+      let position = bf.byteLength * i;
+      let writeLen = fileIO.writeSync(file.fd, bf, { offset: 0, length: bf.byteLength, position: position, encoding: 'utf-8' });
+    }
+    fileIO.fsyncSync(file.fd)
+    fileIO.closeSync(file)
+    return true
+  }
+  catch (e) {
+    console.log('Failed to prepare200MFile for ' + e)
+    return false
+  }
+}
+
 export async function nextFileName(testName) {
   let context = featureAbility.getContext();
   let data = await context.getCacheDir();
