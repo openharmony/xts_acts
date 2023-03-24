@@ -35,14 +35,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     var systemWindowTypeDicArr = [];
     var systemWindowTypeDic = {
       'TYPE_SYSTEM_ALERT': 1,
-      'TYPE_INPUT_METHOD': 2,
-      'TYPE_STATUS_BAR': 3,
-      'TYPE_PANEL': 4,
-      'TYPE_KEYGUARD': 5,
-      'TYPE_VOLUME_OVERLAY': 6,
-      'TYPE_NAVIGATION_BAR': 7,
       'TYPE_FLOAT': 8,
-      //      'TYPE_FLOAT_CAMERA': 9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {

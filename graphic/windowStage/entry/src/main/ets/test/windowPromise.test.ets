@@ -37,14 +37,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     var systemWindowTypeDicArr = [];
     var systemWindowTypeDic = {
       'TYPE_SYSTEM_ALERT': 1,
-      'TYPE_INPUT_METHOD': 2,
-      'TYPE_STATUS_BAR': 3,
-      'TYPE_PANEL': 4,
-      'TYPE_KEYGUARD': 5,
-      'TYPE_VOLUME_OVERLAY': 6,
-      'TYPE_NAVIGATION_BAR': 7,
       'TYPE_FLOAT': 8,
-      'TYPE_FLOAT_CAMERA': 9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
@@ -175,7 +168,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'listenerTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest2';
-      let baseType = 2;
+      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
       let changedModel = 102;
       let baseValue = 100;
       let resizeValue = 200;
@@ -284,7 +277,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'listenerTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest4';
-      let baseType = 2;
+      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
       let changedModel = 102;
       let listenerOffFlag = false;
       listenerData.on = true;
