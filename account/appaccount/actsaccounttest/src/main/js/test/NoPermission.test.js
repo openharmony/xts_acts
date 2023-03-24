@@ -19,21 +19,6 @@ const TIMEOUT = 5000;
 const ERR_APPACCOUNT_SERVICE_PERMISSION_DENIED = 4521993;
 export default function ActsAccountNoPermission() {
     describe('ActsAccountNoPermission', function () {
-        function sleep(delay) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve()
-                }, delay)
-            }).then(() => {
-                console.info(`sleep #{time} over ...`)
-            })
-        }
-        beforeAll(async function (done) {
-            console.debug("====>beforeAll start====");
-            await sleep(TIMEOUT);
-            console.debug("====>beforeAll end====");
-            done();
-        });
 
         /*
         * @tc.number    : ActsAccountNoPermission_0100

@@ -20,6 +20,16 @@ const TIMEOUT = 2000;
 const SELFBUNDLE = 'com.example.getallaccountsnoparameter'
 export default function ActsGetAllAccountsNoParameter() {
     describe('ActsGetAllAccountsNoParameter', function () {
+        async function sleep(delay) {
+            let timeoutId = null;
+            var promise = new Promise((resolve, reject) => {
+                timeoutId = setTimeout(() => {
+                    resolve("done")
+                }, delay)
+            })
+            await promise
+            clearTimeout(timeoutId)
+        }
 
         /*
         * @tc.number    : ActsGetAllAccountsNoParameter_0100
@@ -567,34 +577,33 @@ export default function ActsGetAllAccountsNoParameter() {
                     },
                 },
             );
-            setTimeout(async function(){
-                console.debug("====>getAllAccounts 1100 start====");
-                try{
-                    var data = await appAccountManager.getAllAccounts();
-                }
-                catch(err){
-                    console.error("====>getAllAccounts 1100 fail err:" + JSON.stringify(err));
-                    expect().assertFail();
-                    done();
-                }
-                console.debug("====>getAllAccounts 1100 data:" + JSON.stringify(data));
-                expect(data.length).assertEqual(2);
-                try{
-                    expect(data[0].name).assertEqual("account_name_scene_single");
-                    expect(data[0].owner).assertEqual("com.example.actsaccountsceneaccessible");
-                    expect(data[1].name).assertEqual("accessibleAccount_this_application");
-                    expect(data[1].owner).assertEqual("com.example.getallaccountsnoparameter");
-                }
-                catch(err){
-                    console.error("====>check data 1100 fail err:" + JSON.stringify(err));
-                    expect().assertFail();
-                    done();
-                }
-                console.debug("====>delete account 1100 start====");
-                await appAccountManager.removeAccount("accessibleAccount_this_application");
-                console.debug("====>ActsGetAllAccountsNoParameter_1100 end====");
+            await sleep(TIMEOUT)
+            console.debug("====>getAllAccounts 1100 start====");
+            try{
+                var data = await appAccountManager.getAllAccounts();
+            }
+            catch(err){
+                console.error("====>getAllAccounts 1100 fail err:" + JSON.stringify(err));
+                expect().assertFail();
                 done();
-            }, TIMEOUT);
+            }
+            console.debug("====>getAllAccounts 1100 data:" + JSON.stringify(data));
+            expect(data.length).assertEqual(2);
+            try{
+                expect(data[0].name).assertEqual("account_name_scene_single");
+                expect(data[0].owner).assertEqual("com.example.actsaccountsceneaccessible");
+                expect(data[1].name).assertEqual("accessibleAccount_this_application");
+                expect(data[1].owner).assertEqual("com.example.getallaccountsnoparameter");
+            }
+            catch(err){
+                console.error("====>check data 1100 fail err:" + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            }
+            console.debug("====>delete account 1100 start====");
+            await appAccountManager.removeAccount("accessibleAccount_this_application");
+            console.debug("====>ActsGetAllAccountsNoParameter_1100 end====");
+            done();
         });
     })
 }

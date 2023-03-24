@@ -21,18 +21,14 @@ const TIMEOUT = 2000;
 export default function ActsAccountOnOff() {
     describe('ActsAccountOnOff', async function () {
 
-        function sleep(delay) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve()
-                }, delay)
-            }).then(() => {
-                console.info(`sleep #{time} over ...`)
-            })
+        async function sleep(delay) {
+            let timeoutId = null;
+            var promise = new Promise((resolve, reject) => {
+                timeoutId = setTimeout(() => resolve("done!"), delay);
+            });
+            await promise
+            clearTimeout(timeoutId)
         }
-        beforeAll(async function (done) {            
-            done();
-        });
 
         async function testInit(){
             console.debug("====>startAbility start====");
@@ -83,9 +79,9 @@ export default function ActsAccountOnOff() {
                 commonevent.unsubscribe(subscriber, unSubscriberCallback);
                 appAccountManager.removeAccount("onoff_setcredential", removeAccountCallback);
             }
-            function publishCallback(err){
+            async function publishCallback(err){
                 console.debug("====>publish call back err:" + JSON.stringify(err));
-                setTimeout(async function (){
+                await sleep(500)
                     console.debug("====>setCredential start====");
                     try{
                         await appAccountManager.setCredential("onoff_setcredential", "credentialType", "credential");
@@ -96,7 +92,6 @@ export default function ActsAccountOnOff() {
                         done();
                     }
                     console.debug("====>setCredential finish====");
-                }, 500)
             }
             var commonEventSubscribeInfo = {
                 events: ["account_on_change_setcredential"]
@@ -111,10 +106,9 @@ export default function ActsAccountOnOff() {
             var commonEventPublishData = {
                 code: 9
             }
-            setTimeout(function (){
-                console.debug("====>publish event account_on_change 0300====");
-                commonevent.publish("account_on_change", commonEventPublishData, publishCallback);
-            }, 1000);
+            await sleep(1000)
+            console.debug("====>publish event account_on_change 0300====");
+            commonevent.publish("account_on_change", commonEventPublishData, publishCallback);
         });
 
         /*
@@ -152,9 +146,9 @@ export default function ActsAccountOnOff() {
                 commonevent.unsubscribe(subscriber, unSubscriberCallback);
                 appAccountManager.removeAccount("onoff_removeFir", removeAccountCallback);
             }
-            function publishCallback(err){
+            async function publishCallback(err){
                 console.debug("====>publish call back err:" + JSON.stringify(err));
-                setTimeout(async function (){
+                await sleep(500)
                     console.debug("====>removeAccount start====");
                     try{
                         await appAccountManager.removeAccount("onoff_removeSec");
@@ -165,7 +159,6 @@ export default function ActsAccountOnOff() {
                         done();
                     }
                     console.debug("====>removeAccount finish====");
-                }, 500)
             }
             var commonEventSubscribeInfo = {
                 events: ["account_on_remove_another"]
@@ -180,10 +173,9 @@ export default function ActsAccountOnOff() {
             var commonEventPublishData = {
                 code: 10
             }
-            setTimeout(function (){
+            await sleep(1000)
                 console.debug("====>publish event account_on_change 0400====");
                 commonevent.publish("account_on_change", commonEventPublishData, publishCallback);
-            }, 1000);
         });
 
         /*
@@ -212,9 +204,9 @@ export default function ActsAccountOnOff() {
                 commonevent.unsubscribe(subscriber, unSubscriberCallback);
                 done();
             }
-            function publishCallback(err){
-                console.debug("====>publish call back err:" + JSON.stringify(err));
-                setTimeout(async function (){
+            async function publishCallback(err){
+                console.debug("====>publish call back err:" + JSON.stringify(err)); 
+                await sleep(500)
                     console.debug("====>removeAccount start====");
                     try{
                         await appAccountManager.removeAccount("onoff_remove");
@@ -225,7 +217,6 @@ export default function ActsAccountOnOff() {
                         done();
                     }
                     console.debug("====>removeAccount finish====");
-                }, 500)
             }
             var commonEventSubscribeInfo = {
                 events: ["account_on_change_remove"]
@@ -240,10 +231,9 @@ export default function ActsAccountOnOff() {
             var commonEventPublishData = {
                 code: 11
             }
-            setTimeout(function (){
+            await sleep(1000)
                 console.debug("====>publish event account_on_change 0500====");
                 commonevent.publish("account_on_change", commonEventPublishData, publishCallback);
-            }, 1000);
         });
 
         /*
@@ -285,9 +275,9 @@ export default function ActsAccountOnOff() {
                 commonevent.unsubscribe(subscriber, unSubscriberCallback);
                 appAccountManager.removeAccount("onoff_disableFir", removeAccountCallback);
             }
-            function publishCallback(err){
+            async function publishCallback(err){
                 console.debug("====>publish call back err:" + JSON.stringify(err));
-                setTimeout(async function (){
+                await sleep(500)
                     console.debug("====>disableAppAccess start====");
                     try{
                         await appAccountManager.setAppAccess("onoff_disableSec", "com.example.actsaccountsceneonoff", false);
@@ -298,7 +288,6 @@ export default function ActsAccountOnOff() {
                         done();
                     }
                     console.debug("====>disableAppAccess finish====");
-                }, 500)
             }
             var commonEventSubscribeInfo = {
                 events: ["account_on_set_another_disable"]
@@ -313,10 +302,9 @@ export default function ActsAccountOnOff() {
             var commonEventPublishData = {
                 code: 12
             }
-            setTimeout(function (){
+            await sleep(1000)
                 console.debug("====>publish event account_on_change 0600====");
                 commonevent.publish("account_on_change", commonEventPublishData, publishCallback);
-            }, 1000);
         });
           
     })
