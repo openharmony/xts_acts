@@ -14,18 +14,13 @@
  */
 
 import bluetooth from '@ohos.bluetoothManager';
-import geolocation from '@ohos.geolocation';
-import geolocationm from '@ohos.geoLocationManager';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import bundle from '@ohos.bundle';
-import osaccount from '@ohos.account.osAccount';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 let BluetoothState = {
     STATE_OFF: 0,STATE_TURNING_ON: 1,
     STATE_ON: 2,STATE_TURNING_OFF: 3,
     STATE_BLE_TURNING_ON: 4, STATE_BLE_ON: 5,
-    STATE_BLE_ON: 6
+    STATE_BLE_TURNING_OFF: 6
 };
 
 let SppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
@@ -78,8 +73,10 @@ let MajorMinorClass = {
     HEALTH_KNEE_PROSTHESIS : 0x0930,HEALTH_ANKLE_PROSTHESIS : 0x0934,
     HEALTH_GENERIC_HEALTH_MANAGER : 0x0938,
     HEALTH_PERSONAL_MOBILITY_DEVICE : 0x093C,
-    HEALTH_PERSONAL_MOBILITY_DEVICE : 0x093C
+    HEALTH_PERSONAL_MOBILITY_DEVICE : 0x093C,
+    HEALTH_PEAK_FLOW_MONITOR : 0x0928
 };
+
 let MajorClass = {
     MAJOR_MISC : 0x0000,MAJOR_COMPUTER : 0x0100,
     MAJOR_PHONE : 0x0200,MAJOR_NETWORKING : 0x0300,
@@ -129,42 +126,15 @@ describe('bluetoothBLETest1', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-	async function applyPermission() {
-		let osAccountManager = osaccount.getAccountManager();
-		console.info("=== getAccountManager finish");
-		let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
-		console.info("LocalId is :" + localId);
-		let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, localId);
-		let atManager = abilityAccessCtrl.createAtManager();
-		if (atManager != null) {
-        let tokenID = appInfo.accessTokenId;
-        console.info('[permission] case accessTokenID is ' + tokenID);
-        let permissionName1 = 'ohos.permission.LOCATION';
-        let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
-        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
-        }).catch((err) => {
-            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
-        });
-        await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
-        }).catch((err) => {
-            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
-        });
-		} else {
-        console.info('[permission] case apply permission failed, createAtManager failed');
-		}
-	}
     beforeAll(async function (done) {
         console.info('beforeAll called')
-        await tryToEnableBt()
         gattServer = bluetooth.BLE.createGattServer();
         gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
         done()
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
-        await tryToEnableBt()
+        await tryToEnableBt();
         done()
     })
     afterEach(function () {
