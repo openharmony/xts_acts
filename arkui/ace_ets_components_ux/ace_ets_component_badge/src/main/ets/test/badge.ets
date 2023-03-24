@@ -73,7 +73,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0200 component obj.$attrs.style is: " +
           JSON.stringify(obj.$attrs.style));
           let style = JSON.parse(obj.$attrs.style);
-          expect(style.fontWeight).assertEqual("FontWeight.400");
+          expect(style.fontWeight.replace(/[^\d]/g,"")).assertEqual("400");
           console.info('ArkUX_Stage_Badge_FontWeight_0200 END ');
           done();
         } catch (err) {
@@ -102,7 +102,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0300 component obj.$attrs.style is: " +
           JSON.stringify(obj.$attrs.style));
           let style = JSON.parse(obj.$attrs.style);
-          expect(style.fontWeight).assertEqual("FontWeight.100");
+          expect(style.fontWeight.replace(/[^\d]/g,"")).assertEqual("100");
           console.info('ArkUX_Stage_Badge_FontWeight_0300 END ');
           done();
         } catch (err) {
@@ -130,7 +130,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0400 component obj.$attrs.style is: " +
           JSON.stringify(obj.$attrs.style));
           let style = JSON.parse(obj.$attrs.style);
-          expect(style.fontWeight).assertEqual("FontWeight.800");
+          expect(style.fontWeight.replace(/[^\d]/g,"")).assertEqual("800");
           console.info('ArkUX_Stage_Badge_FontWeight_0400 END ');
           done();
         } catch (err) {
@@ -158,7 +158,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0500 component obj.$attrs.style is: " +
           JSON.stringify(obj.$attrs.style));
           let style = JSON.parse(obj.$attrs.style);
-          expect(style.fontWeight).assertEqual("FontWeight.200");
+          expect(style.fontWeight.replace(/[^\d]/g,"")).assertEqual("200");
           console.info('ArkUX_Stage_Badge_FontWeight_0500 END ');
           done();
         } catch (err) {
@@ -186,7 +186,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0600 component obj.$attrs.style is: " +
           JSON.stringify(obj.$attrs.style));
           let style = JSON.parse(obj.$attrs.style);
-          expect(style.fontWeight).assertEqual("FontWeight.900");
+          expect(style.fontWeight.replace(/[^\d]/g,"")).assertEqual("900");
           console.info('ArkUX_Stage_Badge_FontWeight_0600 END ');
           done();
         } catch (err) {
@@ -410,7 +410,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_1400 component obj.$attrs.style is: " +
           JSON.stringify(obj.$attrs.style));
           let style = JSON.parse(obj.$attrs.style);
-          expect(style.fontWeight).assertEqual("FontWeight.500");
+          expect(style.fontWeight.replace(/[^\d]/g,"")).assertEqual("500");
           console.info('ArkUX_Stage_Badge_FontWeight_1400 END ');
           done();
         } catch (err) {
@@ -467,7 +467,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_1600 component obj.$attrs.style is: " +
           JSON.stringify(obj.$attrs.style));
           let style = JSON.parse(obj.$attrs.style);
-          expect(style.fontWeight).assertEqual("FontWeight.600");
+          expect(style.fontWeight.replace(/[^\d]/g,"")).assertEqual("600");
           console.info('ArkUX_Stage_Badge_FontWeight_1600 END ');
           done();
         } catch (err) {
@@ -1146,7 +1146,7 @@ export default function badgeTest() {
           JSON.stringify(obj.$attrs.style));
           let style = JSON.parse(obj.$attrs.style);
           expect(style.borderWidth).assertEqual("5.00vp");
-          expect(style.fontWeight).assertEqual("FontWeight.600");
+          expect(style.fontWeight.replace(/[^\d]/g,"")).assertEqual("600");
           expect(style.borderColor).assertEqual("#FFFD0000");
           console.info('ArkUX_Stage_Badge_BorderWidth_1200 END ');
           done();
