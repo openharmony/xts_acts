@@ -1174,7 +1174,7 @@ describe("ArraylistTest", function () {
   it('testForEach062', 0, function () {
     let arrayList = new ArrayList();
     try {
-      arrayList.forEach.bind({}, "a")(() => {});
+      arrayList.forEach.bind({}, "a")();
       expect(true).assertEqual(false);
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
