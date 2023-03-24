@@ -15,28 +15,11 @@
 import account from '@ohos.account.appAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 const NAMELIMIT = 512;
-const TIMEOUT = 5000;
 const ERR_INVALID_PARAMETER = 12300002
 const ERR_ACCOUNT_NO_EXIST = 12300003
 const createAccountOptions = {customData:{age:'12'}}
 export default function ActsAccountRemoveAccount() {
     describe('ActsAccountRemoveAccount', function () {
-        function sleep(delay) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve()
-                }, delay)
-            }).then(() => {
-                console.info(`sleep #{time} over ...`)
-            })
-        }
-
-        beforeAll(async function (done) {
-            console.debug("====>beforeAll start====");
-            await sleep(TIMEOUT);
-            console.debug("====>beforeAll end====");
-            done();
-        });
 
         /*
         * @tc.number    : ActsAccountRemoveAccount_0100
