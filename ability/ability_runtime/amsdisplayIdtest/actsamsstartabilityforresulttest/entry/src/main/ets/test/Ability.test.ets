@@ -23,6 +23,17 @@ console.debug("====>in Ability.test====>");
 
 export default function abilityTest() {
   describe('ActsGetDisplayIdStartAbilityForResultTest', function () {
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    afterEach(async (done) => {
+        console.debug('= ACTS_afterEach ====<begin');
+        await sleep(2000);
+        console.debug('= ACTS_afterEach ====<end');
+        done();
+    })
+
     console.debug("====>in ActsGetDisplayIdStartAbilityForResultTest====>");
 
     /*
@@ -31,7 +42,7 @@ export default function abilityTest() {
     * @tc.desc: Verify Get displayId to startAbilityForResult Ability
     */
     it('ACTS_startAbilityForResult_0800', 0, async function (done) {
-      console.log('ACTS_startAbilityForResult_0100====<begin');
+      console.log('ACTS_startAbilityForResult_0800====<begin');
       var subscriber;
       let id;
 
@@ -70,7 +81,7 @@ export default function abilityTest() {
       })
 
       function unSubscribeCallback() {
-        console.debug("====>UnSubscribe0100 CallBack====>");
+        console.debug("====>UnSubscribe0800 CallBack====>");
       }
 
       function timeout() {
@@ -158,7 +169,7 @@ export default function abilityTest() {
         console.debug("====>ACTS_startAbilityForResult_1000 Subscribe CallBack data:====>" + JSON.stringify(data));
 
         async function processInfoCheck(data) {
-          console.info('====> ACTS_getDisplayIdTest_0600=====>');
+          console.info('====> ACTS_startAbilityForResult_1000=====>');
           expect(data.parameters['displayId']).assertEqual(0);
           expect(data.parameters['windowMode']).assertEqual(0);
           done();
