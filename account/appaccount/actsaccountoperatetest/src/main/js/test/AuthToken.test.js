@@ -19,9 +19,6 @@ import featureAbility from '@ohos.ability.featureAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import {AccountErrCode} from './AccountErrCode.test.js'
 
-
-const TIMEOUT = 1000;
-const EACHTIMEOUT = 500;
 const LENGTHLIMIT = 512;
 const TOKENLENGTHLIMIT = 1024;
 const AUTHTYPELENGTHLIMIT = 1024;
@@ -30,28 +27,6 @@ const ERR_JS_AUTH_TYPE_NOT_FOUND = 12300107;
 const OWNERSELF = "com.example.actsaccountoperatetest";
 export default function ActsAccountAuthToken() {
     describe('ActsAccountAuthToken', function () {
-        function sleep(delay) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve()
-                }, delay)
-            }).then(() => {
-                console.info(`sleep #{time} over ...`)
-            })
-        }
-
-        beforeAll(async function (done) {
-            console.debug("====>beforeAll start====");
-            await sleep(TIMEOUT);
-            console.debug("====>beforeAll end====");
-            done();
-        });
-
-        beforeEach(async function (done) {
-            console.debug("====>beforeAll enter====");
-            await sleep(EACHTIMEOUT);
-            done();
-        });
 
         /*
             * @tc.number    : testGetEntriesString101
