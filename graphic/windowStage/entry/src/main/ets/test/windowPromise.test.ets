@@ -37,14 +37,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     var systemWindowTypeDicArr = [];
     var systemWindowTypeDic = {
       'TYPE_SYSTEM_ALERT': 1,
-      'TYPE_INPUT_METHOD': 2,
-      'TYPE_STATUS_BAR': 3,
-      'TYPE_PANEL': 4,
-      'TYPE_KEYGUARD': 5,
-      'TYPE_VOLUME_OVERLAY': 6,
-      'TYPE_NAVIGATION_BAR': 7,
       'TYPE_FLOAT': 8,
-      'TYPE_FLOAT_CAMERA': 9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
@@ -107,12 +100,15 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     }
 
-    function sleep(time) {
-      return new Promise(resolve => {
-        setTimeout(() => {
+    async function sleep(time) {
+      let timeoutId = null;
+      let promise = new Promise(resolve => {
+        timeoutId = setTimeout(() => {
           resolve('sleep finished');
         }, time);
       })
+      let result = await promise;
+      clearTimeout(timeoutId)
     }
     /**
 	 * @tc.number     SUB_WINDOW_ON_OFF_JSAPI_001
@@ -172,7 +168,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'listenerTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest2';
-      let baseType = 2;
+      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
       let changedModel = 102;
       let baseValue = 100;
       let resizeValue = 200;
@@ -281,7 +277,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'listenerTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wndId = 'listenerTest4';
-      let baseType = 2;
+      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
       let changedModel = 102;
       let listenerOffFlag = false;
       listenerData.on = true;
@@ -1185,9 +1181,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'loadContentTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let load3 = await windowStage.loadContent('pages/index/index.ets').catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
-        console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+      let load3 = await windowStage.loadContent('MainAbility/pages/second/second').catch((err) => {
+        unexpectedError(err, caseName, 'windowStage loadContent', done);
+        console.log(msgStr + 'windowStage loadContent MainAbility/pages/second/second' + JSON.stringify(err));
       });
       expect(!load3).assertTrue();
       console.log(msgStr + 'tempWnd.loadContent end load=' + JSON.stringify(load3));
@@ -1205,9 +1201,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       try {
         let load4 = await windowStage.loadContent(null).catch((err) => {
           expect(false).assertTrue();
-          console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+          console.log(msgStr + 'windowStage loadContent(null)' + JSON.stringify(err));
         });
-        console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load4));
+        console.log(msgStr + 'windowStage loadContent end load5=' + JSON.stringify(load4));
       }
       catch (err) {
         console.log(msgStr + 'tempWnd.loadContent catch err=' + JSON.stringify(err));
@@ -1227,9 +1223,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       try {
         let load5 = await windowStage.loadContent(null, abilityStorage).catch((err) => {
           expect(false).assertTrue();
-          console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+          console.log(msgStr + 'windowStage loadContent(null)' + JSON.stringify(err));
         });
-        console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load5));
+        console.log(msgStr + 'windowStage loadContent end load5=' + JSON.stringify(load5));
       }
       catch (err) {
         console.log(msgStr + 'tempWnd.loadContent catch err=' + JSON.stringify(err));
@@ -1246,9 +1242,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'loadContentTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let load6 = await windowStage.loadContent('pages/index/index.ets', null).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
-        console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+      let load6 = await windowStage.loadContent('MainAbility/pages/second/second', null).catch((err) => {
+        unexpectedError(err, caseName, 'windowStage loadContent', done);
+        console.log(msgStr + 'windowStage loadContent MainAbility/pages/second/second' + JSON.stringify(err));
       });
       expect(!load6).assertTrue();
       done();
@@ -1429,6 +1425,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         }).catch(err => {
           console.log(msgStr + 'window.setPreferredOrientation failed set error:' + orientation);
         });
+        await sleep(3000)
       }
     })
     /**
@@ -1472,6 +1469,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
+      await sleep(2000)
       let snapshotData = await mainWin.snapshot().catch((err) => {
         unexpectedError(err, caseName, 'mainWin.snapshot', done);
         console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));

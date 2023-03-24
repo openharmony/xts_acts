@@ -40,14 +40,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     var systemWindowTypeArr = [];
     var systemWindowTypeDic = {
       'TYPE_SYSTEM_ALERT': 1,
-      'TYPE_INPUT_METHOD': 2,
-      'TYPE_STATUS_BAR': 3,
-      'TYPE_PANEL': 4,
-      'TYPE_KEYGUARD': 5,
-      'TYPE_VOLUME_OVERLAY': 6,
-      'TYPE_NAVIGATION_BAR': 7,
       'TYPE_FLOAT': 8,
-      'TYPE_FLOAT_CAMERA': 9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
@@ -1591,10 +1584,10 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let caseName = 'loadContentTest9';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      windowStage.loadContent('pages/index/index.ets', (err, data) => {
+      windowStage.loadContent('MainAbility/pages/second/second', (err, data) => {
         if (err && err.code) {
           unexpectedError(err, caseName, 'windowStage.loadContent', done);
-          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+          console.log(msgStr + 'windowStage loadContent MainAbility/pages/second/second ' + JSON.stringify(err));
         } else {
           try {
             expect(!data).assertTrue();
@@ -1618,7 +1611,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       try {
         windowStage.loadContent(null, (err, data) => {
-          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+          console.log(msgStr + 'windowStage loadContent null' + JSON.stringify(err));
           try {
             expect(false).assertTrue();
           } catch (error) {
@@ -1627,7 +1620,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           done();
         });
       } catch (err) {
-        console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets) catch err' + JSON.stringify(err));
+        console.log(msgStr + 'windowStage loadContent null catch err' + JSON.stringify(err));
         try {
           expect(err.code == 401).assertTrue();
         } catch (error) {
@@ -1647,10 +1640,10 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
-      windowStage.loadContent('pages/index/index.ets', abilityStorage, (err, data) => {
+      windowStage.loadContent('MainAbility/pages/second/second', abilityStorage, (err, data) => {
         if (err && err.code) {
-          unexpectedError(err, caseName, 'windowStage.loadContent', done);
-          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+          unexpectedError(err, caseName, 'windowStage loadContent', done);
+          console.log(msgStr + 'windowStage loadContent MainAbility/pages/second/second' + JSON.stringify(err));
         } else {
           try {
             expect(!data).assertTrue();
@@ -1674,7 +1667,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       try {
         windowStage.loadContent(null, abilityStorage, (err, data) => {
-          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+          console.log(msgStr + 'windowStage loadContent null' + JSON.stringify(err));
           try {
             expect(false).assertTrue();
           } catch (error) {
@@ -1683,7 +1676,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           done();
         });
       } catch (err) {
-        console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets) catch err ' + JSON.stringify(err));
+        console.log(msgStr + 'windowStage loadContent null catch err ' + JSON.stringify(err));
         try {
           expect(err.code === 401).assertTrue();
         } catch (error) {
@@ -2038,6 +2031,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           done();
         });
         console.info(msgStr + 'Succeeded in setting window orientation. orientation: ' + orientation + "step: " + i);
+        await sleep(3000)
       }
       done()
     })
@@ -2102,6 +2096,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
 
       expect(!!mainWin).assertTrue();
+      await sleep(2000)
       mainWin.snapshot((err, data) => {
         if (err && err.code) {
           console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
