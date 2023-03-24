@@ -17,24 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 const TIMEOUT = 5000;
 export default function ActsCreatAppAccountManager() {
-    describe('ActsCreatAppAccountManager', function () {
-        function sleep(delay) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve()
-                }, delay)
-            }).then(() => {
-                console.info(`sleep #{time} over ...`)
-            })
-        }
-
-        beforeAll(async function (done) {
-            console.debug("====>beforeAll start====");
-            await sleep(TIMEOUT);
-            console.debug("====>beforeAll end====");
-            done();
-        });
-        
+    describe('ActsCreatAppAccountManager', function () {        
         /*
         * @tc.number    : ActsCreatAppAccountManager_0100
         * @tc.name      : createAppAccountManager

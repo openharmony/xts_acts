@@ -20,18 +20,8 @@ const NAMELIMIT = 512;
 const LENGTHLIMIT = 1024;
 const name = 'zhangsan'
 const owner = 'com.example.accountauthenticator'
-export default function ActsAccountAppAccess() {
+export default function ActsAccountAuthenticator() {
     describe('ActsAccountAuthenticator', function () {
-
-        function sleep(delay) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve()
-                }, delay)
-            }).then(() => {
-                console.info(`sleep #{time} over ...`)
-            })
-        }
         beforeAll(async function (done) {  
             console.debug("====>accountauthenticatorbeforeAll start====");		
             await featureAbility.startAbility(
@@ -607,7 +597,6 @@ export default function ActsAccountAppAccess() {
         */
 
         it('ActsAccountSelectAccountByOptions_0100', 0, async function (done) {  
-            await sleep(1000)
             console.debug("====>ActsAccountSelectAccountByOptions_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedAccounts:[{"name":name,"owner":owner}]}

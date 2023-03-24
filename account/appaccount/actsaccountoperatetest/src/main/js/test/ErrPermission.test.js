@@ -15,26 +15,9 @@
 import account from '@ohos.account.appAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
-const TIMEOUT = 5000;
 const ERR_PERMISSION_DENIED = 201;
 export default function ActsAccountErrPermission() {
     describe('ActsAccountErrPermission', function () {
-        function sleep(delay) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve()
-                }, delay)
-            }).then(() => {
-                console.info(`sleep #{time} over ...`)
-            })
-        }
-        beforeAll(async function (done) {
-            console.debug("====>beforeAll start====");
-            await sleep(TIMEOUT);
-            console.debug("====>beforeAll end====");
-            done();
-        });
-
         /*
         * @tc.number    : ActsAccountErrPermission_0100
         * @tc.name      : setDataSyncEnabled callback
