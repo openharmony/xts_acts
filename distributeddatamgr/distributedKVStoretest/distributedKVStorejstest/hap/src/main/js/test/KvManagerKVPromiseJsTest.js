@@ -99,6 +99,7 @@ describe('KVManagerPromiseTest', function () {
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0100 getKVStore e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
         }
         done();
     })
@@ -120,6 +121,7 @@ describe('KVManagerPromiseTest', function () {
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0200 getKVStore e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
         }
         done();
     })
@@ -146,6 +148,7 @@ describe('KVManagerPromiseTest', function () {
             expect(null).assertFail();
         }).catch((err) => {
             console.error('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_PROMISE_0300 getKVStore err ' + `, error code is ${err.code}, message is ${err.message}`);
+            expect(err.code == 401).assertTrue();
         });
         done();
     })
@@ -157,14 +160,14 @@ describe('KVManagerPromiseTest', function () {
      * @tc.name Test Js Api KVManager.CloseKVStore() testcase 001
      */
     it('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_PROMISE_0100', 0, async function (done) {
-        console.info('KVManagerCloseKVStorePromiseTest004');
+        console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_PROMISE_0100');
         await kvManager.getKVStore(TEST_STORE_ID, options).then( async () => {
             console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_PROMISE_0100 getKVStore success');
             await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
                 console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_PROMISE_0100 closeKVStore success');
-                expect(true).assertTrue();
             }).catch((err) => {
                 console.error('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_PROMISE_0100 closeKVStore twice err ' + `, error code is ${err.code}, message is ${err.message}`);
+                expect(null).assertFail();
             });
         });
         done();
@@ -195,13 +198,19 @@ describe('KVManagerPromiseTest', function () {
      * @tc.name Test Js Api KVManager.On() testcase 001
      */
     it('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0100', 0, function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0100');
-        var deathCallback = function () {
-            console.info('death callback call');
+        try{
+            console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0100');
+            var deathCallback = function () {
+                console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0100 death callback call');
+            }
+            kvManager.on('distributedDataServiceDie', deathCallback);
+            kvManager.off('distributedDataServiceDie', deathCallback);
+        } catch(e) {
+            console.log(`SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0100 error.code is ${e.code},message is ${e.message}`);
+            expect(null).assertFail();
         }
-        kvManager.on('distributedDataServiceDie', deathCallback);
-        kvManager.off('distributedDataServiceDie', deathCallback);
         done();
+        
     })
 
     /**
@@ -211,17 +220,22 @@ describe('KVManagerPromiseTest', function () {
      * @tc.name Test Js Api KVManager.On() testcase 002
      */
     it('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0200', 0, function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0200');
-        var deathCallback1 = function () {
-            console.info('death callback call');
+        try{
+            console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0200');
+            var deathCallback1 = function () {
+                console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0200 death callback call');
+            }
+            var deathCallback2 = function () {
+                console.info('death callback call');
+            }
+            kvManager.on('distributedDataServiceDie', deathCallback1);
+            kvManager.on('distributedDataServiceDie', deathCallback2);
+            kvManager.off('distributedDataServiceDie', deathCallback1);
+            kvManager.off('distributedDataServiceDie', deathCallback2);
+        } catch(e) {
+            console.log(`SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0200 error.code is ${e.code},message is ${e.message}`);
+            expect(null).assertFail();
         }
-        var deathCallback2 = function () {
-            console.info('death callback call');
-        }
-        kvManager.on('distributedDataServiceDie', deathCallback1);
-        kvManager.on('distributedDataServiceDie', deathCallback2);
-        kvManager.off('distributedDataServiceDie', deathCallback1);
-        kvManager.off('distributedDataServiceDie', deathCallback2);
         done();
     })
 
@@ -232,13 +246,18 @@ describe('KVManagerPromiseTest', function () {
      * @tc.name Test Js Api KVManager.On() testcase 003
      */
     it('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0300', 0, function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0300');
-        var deathCallback = function () {
-            console.info('death callback call');
+        try{
+            console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0300');
+            var deathCallback = function () {
+                console.info('SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0300 death callback call');
+            }
+            kvManager.on('distributedDataServiceDie', deathCallback);
+            kvManager.on('distributedDataServiceDie', deathCallback);
+            kvManager.off('distributedDataServiceDie', deathCallback);
+        } catch(e) {
+            console.log(`SUB_DDM_DKV_KVMANAGER_ON_PROMISE_0300 error.code is ${e.code},message is ${e.message}`);
+            expect(null).assertFail();
         }
-        kvManager.on('distributedDataServiceDie', deathCallback);
-        kvManager.on('distributedDataServiceDie', deathCallback);
-        kvManager.off('distributedDataServiceDie', deathCallback);
         done();
     })
 
@@ -249,11 +268,16 @@ describe('KVManagerPromiseTest', function () {
      * @tc.name Test Js Api KVManager.Off() testcase 001
      */
     it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0100', 0, function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0100');
-        var deathCallback = function () {
-            console.info('death callback call');
+        try{
+            console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0100');
+            var deathCallback = function () {
+                console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0100 death callback call');
+            }
+            kvManager.off('distributedDataServiceDie', deathCallback);
+        } catch(e) {
+            console.log(`SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0100 error.code is ${e.code},message is ${e.message}`);
+            expect(null).assertFail();
         }
-        kvManager.off('distributedDataServiceDie', deathCallback);
         done();
     })
 
@@ -264,12 +288,17 @@ describe('KVManagerPromiseTest', function () {
      * @tc.name Test Js Api KVManager.Off() testcase 002
      */
     it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0200', 0, function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0200');
-        var deathCallback = function () {
-            console.info('death callback call');
+        try{
+            console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0200');
+            var deathCallback = function () {
+                console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0200 death callback call');
+            }
+            kvManager.on('distributedDataServiceDie', deathCallback);
+            kvManager.off('distributedDataServiceDie', deathCallback);
+        } catch(e) {
+            console.log(`SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0200 error.code is ${e.code},message is ${e.message}`);
+            expect(null).assertFail();
         }
-        kvManager.on('distributedDataServiceDie', deathCallback);
-        kvManager.off('distributedDataServiceDie', deathCallback);
         done();
     })
 
@@ -280,16 +309,21 @@ describe('KVManagerPromiseTest', function () {
      * @tc.name Test Js Api KVManager.Off() testcase 003
      */
     it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0300', 0, function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0300');
-        var deathCallback1 = function () {
-            console.info('death callback call');
+        try{
+            console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0300');
+            var deathCallback1 = function () {
+                console.info('death callback call');
+            }
+            var deathCallback2 = function () {
+                console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0300 death callback call');
+            }
+            kvManager.on('distributedDataServiceDie', deathCallback1);
+            kvManager.on('distributedDataServiceDie', deathCallback2);
+            kvManager.off('distributedDataServiceDie', deathCallback1);
+        } catch(e) {
+            console.log(`SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0300 error.code is ${e.code},message is ${e.message}`);
+            expect(null).assertFail();
         }
-        var deathCallback2 = function () {
-            console.info('death callback call');
-        }
-        kvManager.on('distributedDataServiceDie', deathCallback1);
-        kvManager.on('distributedDataServiceDie', deathCallback2);
-        kvManager.off('distributedDataServiceDie', deathCallback1);
         done();
     })
 
@@ -300,13 +334,18 @@ describe('KVManagerPromiseTest', function () {
      * @tc.name Test Js Api KVManager.Off() testcase 004
      */
     it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0400', 0, function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0400');
-        var deathCallback = function () {
-            console.info('death callback call');
+        try{
+            console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0400');
+            var deathCallback = function () {
+                console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0400 death callback call');
+            }
+            kvManager.on('distributedDataServiceDie', deathCallback);
+            kvManager.off('distributedDataServiceDie', deathCallback);
+            kvManager.off('distributedDataServiceDie', deathCallback);
+        } catch(e) {
+            console.log(`SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0400 error.code is ${e.code},message is ${e.message}`);
+            expect(null).assertFail();
         }
-        kvManager.on('distributedDataServiceDie', deathCallback);
-        kvManager.off('distributedDataServiceDie', deathCallback);
-        kvManager.off('distributedDataServiceDie', deathCallback);
         done();
     })
 
@@ -317,12 +356,17 @@ describe('KVManagerPromiseTest', function () {
      * @tc.name Test Js Api KVManager.Off() testcase 005
      */
     it('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0500', 0, function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0100');
-        var deathCallback = function () {
-            console.info('death callback call');
+        try{
+            console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0500');
+            var deathCallback = function () {
+                console.info('SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0500 death callback call');
+            }
+            kvManager.on('distributedDataServiceDie', deathCallback);
+            kvManager.off('distributedDataServiceDie');
+        } catch(e) {
+            console.log(`SUB_DDM_DKV_KVMANAGER_OFF_PROMISE_0500 error.code is ${e.code},message is ${e.message}`);
+            expect(null).assertFail();
         }
-        kvManager.on('distributedDataServiceDie', deathCallback);
-        kvManager.off('distributedDataServiceDie');
         done();
     })
 
@@ -395,14 +439,16 @@ describe('KVManagerPromiseTest', function () {
                 store.put(STORE_KEY, STORE_VALUE).then(async (data) => {
                     console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 put data success');
                     store.get(STORE_KEY).then((data) => {
-                        console.info("testcreateKVManager001  get data success");
+                        console.info("SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100  get data success");
                         expect(data).assertEqual(STORE_VALUE);
                         done();
                     }).catch((err) => {
                         console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 get data err' + `, error code is ${err.code}, message is ${err.message}`);
+                        expect(null).assertFail();
                     });
                 }).catch((err) => {
                     console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0100 put data err' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
                 });
             }).catch((err) => {
                 console.info("testcreateKVManager001 getKVStore err: "  + JSON.stringify(err));
@@ -434,14 +480,16 @@ describe('KVManagerPromiseTest', function () {
                 store.put(STORE_KEY, STORE_VALUE).then(async (data) => {
                     console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 put data success');
                     store.get(STORE_KEY).then((data) => {
-                        console.info("testcreateKVManager002  get data success");
+                        console.info("SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200  get data success");
                         expect(data).assertEqual(STORE_VALUE);
                         done();
                     }).catch((err) => {
                         console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 get data err' + `, error code is ${err.code}, message is ${err.message}`);
+                        expect(null).assertFail();
                     });
                 }).catch((err) => {
                     console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_PROMISE_0200 put data err' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
                 });
                 
             }).catch((err) => {
