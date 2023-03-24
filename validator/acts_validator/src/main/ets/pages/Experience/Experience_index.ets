@@ -28,7 +28,7 @@ let path1 = path + '/Experience';
 let VarColor = [];
 let ColorBackPath = path + '/ExperienceColorBack.txt';
 let txtPath = path1 + '/ExperienceReport.txt';
-let xmlPath =path1 + '/ExperienceTest.xml';
+let xmlPath = path1 + '/ExperienceTest.xml';
 
 @Entry
 @Component
@@ -304,9 +304,9 @@ struct IndexPage {
       for (let i = 0; i < title.length; i++) {
         serializer.startElement("testcase");
         serializer.setAttributes("name", String(title[i]));
-        serializer.setAttributes("status", "*");
+        serializer.setAttributes("status", "run");
         serializer.setAttributes("time", "*");
-        serializer.setAttributes("classname", "*");
+        serializer.setAttributes("classname", "Experience");
         serializer.setAttributes("result", String(result[i]));
         serializer.setAttributes("level", "*");
         serializer.setAttributes("message", "*");

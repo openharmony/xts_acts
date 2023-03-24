@@ -457,9 +457,9 @@ struct IndexPage {
     for (let i = 0; i < title1.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title1[i]));
-      serializer.setAttributes("status", "*");
+      serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "*");
+      serializer.setAttributes("classname", "ArkUI");
       serializer.setAttributes("result", String(result1[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
@@ -482,9 +482,9 @@ struct IndexPage {
     for (let i = 0; i < title2.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title2[i]));
-      serializer.setAttributes("status", "*");
+      serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "*");
+      serializer.setAttributes("classname", "Audio");
       serializer.setAttributes("result", String(result2[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
@@ -507,9 +507,9 @@ struct IndexPage {
     for (let i = 0; i < title3.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title3[i]));
-      serializer.setAttributes("status", "*");
+      serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "*");
+      serializer.setAttributes("classname", "Camera");
       serializer.setAttributes("result", String(result3[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
@@ -532,9 +532,9 @@ struct IndexPage {
     for (let i = 0; i < title4.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title4[i]));
-      serializer.setAttributes("status", "*");
+      serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "*");
+      serializer.setAttributes("classname", "Player");
       serializer.setAttributes("result", String(result4[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
@@ -557,9 +557,9 @@ struct IndexPage {
     for (let i = 0; i < title5.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title5[i]));
-      serializer.setAttributes("status", "*");
+      serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "*");
+      serializer.setAttributes("classname", "Experience");
       serializer.setAttributes("result", String(result5[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
