@@ -19,8 +19,6 @@ group("non_concurrent") {
     deps = [
       "acts_systemappa_test:ActsSystemAppATest",
       "acts_systemappone_rely_test:ActsSystemAppOneRelyHap",
-      "actsthirdappatest:ActsThirdAppATest",
-      "actsthirdapponerelytest:ActsThirdAppOneRelyHap",
     ]
   }
 }

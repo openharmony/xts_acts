@@ -24,6 +24,8 @@ ohos_hap_assist_suite("ActsUiTestScene") {
   testonly = true
   certificate_profile = "//test/xts/acts/arkXtest/uitestScene/signature/auto_ohos_default_com.uitestScene.test.p7b"
   hap_name = "ActsUiTestScene"
+  part_name = "arkXtest"
+  subsystem_name = "arkXtest"
 }
 
 ohos_js_assets("uitest_scene_ets_assets") {

@@ -78,7 +78,6 @@ export default function tabs() {
       done();
     })
 
-
     /**
      * @tc.number    ArkUI_Tabs_Divider_0100
      * @tc.name      Tests the divier property of the tabs component
@@ -504,6 +503,1257 @@ export default function tabs() {
       expect(dividerObject.strokeWidth).assertEqual('10.00lpx');
       expect(dividerObject.startMargin).assertEqual('10.00lpx');
       expect(dividerObject.endMargin).assertEqual('10.00lpx');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_LabelStyle_0100
+     * @tc.name      Tests the labelStyle default
+     * @tc.desc      the default labelStyle parameter is true
+     */
+    it('ArkUI_Tabs_LabelStyle_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_LabelStyle_0100 start");
+      let strJson = getInspectorByKey('indicatorTest5');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_LabelStyle_0100] labelStyle:" + obj.$attrs.tabBar.labelStyle);
+
+      expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Ellipsis');
+      expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('1');
+      expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MAX_LINES_FIRST');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_LabelStyle_0200
+     * @tc.name      Tests the labelStyle when single line truncation with ellipsis
+     * @tc.desc      set labelStyle to Single line truncation with ellipsis
+     */
+    it('ArkUI_Tabs_LabelStyle_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_LabelStyle_0200 start");
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_LabelStyle_0200] labelStyle:" + obj.$attrs.tabBar.labelStyle);
+      console.info("[ArkUI_Tabs_LabelStyle_0200] labelStyle:" + obj.$attrs.tabBar.labelStyle.font);
+
+      expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Ellipsis');
+      expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('1');
+      expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('5.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST');
+      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('15.00fp');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_LabelStyle_0300
+     * @tc.name      Tests the labelStyle when Reduce and then truncate
+     * @tc.desc      set labelStyle to Reduce and then truncate
+     */
+    it('ArkUI_Tabs_LabelStyle_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_LabelStyle_0300 start");
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_LabelStyle_0300] labelStyle:" + obj.$attrs.tabBar.labelStyle);
+      expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Clip');
+      expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('1');
+      expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('5.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.maxFontSize).assertEqual('20.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST');
+      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('15.00fp');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_LabelStyle_0400
+     * @tc.name      Tests the labelStyle when shrink, wrap, and truncate
+     * @tc.desc      set labelStyle to shrink, wrap, and truncate
+     */
+    it('ArkUI_Tabs_LabelStyle_0400', 0, async function (done) {
+      console.info("ArkUI_Tabs_LabelStyle_0400 start");
+
+      let strJson = getInspectorByKey('indicatorTest3');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_LabelStyle_0400] labelStyle:" + obj.$attrs.tabBar.labelStyle);
+      expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.None');
+      expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('2');
+      expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('5.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.maxFontSize).assertEqual('20.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST');
+      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('15.00fp');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_LabelStyle_0500
+     * @tc.name      Tests the labelStyle when line feed
+     * @tc.desc      set labelStyle to line feed
+     */
+    it('ArkUI_Tabs_LabelStyle_0400', 0, async function (done) {
+      console.info("ArkUI_Tabs_LabelStyle_0400 start");
+
+      let strJson = getInspectorByKey('indicatorTest4');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_LabelStyle_0400] labelStyle:" + obj.$attrs.tabBar.labelStyle);
+      expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.None');
+      expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('10');
+      expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('5.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.maxFontSize).assertEqual('20.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MAX_LINES_FIRST');
+      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('15.00fp');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_FadingEdge_0100
+     * @tc.name      Tests the fadingEdge property of the tabs component
+     * @tc.desc      the default fadingEdge parameter is true
+     */
+    it('ArkUI_Tabs_FadingEdge_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_FadingEdge_0100 start");      
+      let strJson = getInspectorByKey('tabsTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_FadingEdge_0100] fadingEdge:" + obj.$attrs.fadingEdge);
+      expect(obj.$attrs.fadingEdge).assertEqual('true');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_FadingEdge_0200
+     * @tc.name      Tests the fadingEdge property of the tabs component
+     * @tc.desc      set fadingEdge to true
+     */
+    it('ArkUI_Tabs_FadingEdge_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_FadingEdge_0200 start");
+
+      try {
+        var eventData = {
+          data: {
+            "overflowFlag": true
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_FadingEdge_0200] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_FadingEdge_0200] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('tabsTest');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_FadingEdge_0200] fadingEdge:" + obj.$attrs.fadingEdge);
+      expect(obj.$attrs.fadingEdge).assertEqual('true');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_FadingEdge_0300
+     * @tc.name      Tests the fadingEdge property of the tabs component
+     * @tc.desc      set fadingEdge to false
+     */
+    it('ArkUI_Tabs_FadingEdge_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_FadingEdge_0300 start");
+
+      try {
+        var eventData = {
+          data: {
+            "overflowFlag": false
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_FadingEdge_0300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_FadingEdge_0300] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('tabsTest');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_FadingEdge_0300] fadingEdge:" + obj.$attrs.fadingEdge);
+      expect(obj.$attrs.fadingEdge).assertEqual('false');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorColor_0100
+     * @tc.name      Tests the indicator.color property of the tabs component
+     * @tc.desc      the default indicator.color parameter is "#FF007DFF"
+     */
+    it('ArkUI_Tabs_IndicatorColor_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorColor_0100 start");
+      let strJson = getInspectorByKey('indicatorTest5');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorColor_0100] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      expect(indicatorColor).assertEqual("#FF007DFF");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorColor_0200
+     * @tc.name      Tests the indicator.color property of the tabs component
+     * @tc.desc      set indicator.color to number type
+     */
+    it('ArkUI_Tabs_IndicatorColor_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorColor_0200 start");
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorColor_0200] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      expect(indicatorColor).assertEqual("#FFFF0000");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorColor_0300
+     * @tc.name      Tests the indicator.color property of the tabs component
+     * @tc.desc      set indicator.color to string type
+     */
+    it('ArkUI_Tabs_IndicatorColor_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorColor_0300 start");
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorColor_0300] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      expect(indicatorColor).assertEqual("#FFFF0000");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorColor_0400
+     * @tc.name      Tests the indicator.color property of the tabs component
+     * @tc.desc      set indicator.color to Resource type
+     */
+    it('ArkUI_Tabs_IndicatorColor_0400', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorColor_0400 start");
+      let strJson = getInspectorByKey('indicatorTest3');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorColor_0400] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      expect(indicatorColor).assertEqual("#FFFF0000");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorColor_0500
+     * @tc.name      Tests the indicator.color property of the tabs component
+     * @tc.desc      set indicator.color to Color type
+     */
+    it('ArkUI_Tabs_IndicatorColor_0500', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorColor_0500 start");
+      let strJson = getInspectorByKey('indicatorTest4');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorColor_0500] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      expect(indicatorColor).assertEqual("#FFFF0000");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorColor_0600
+     * @tc.name      Tests the indicator.color property of the tabs component
+     * @tc.desc      set indicator.color to abnormol value "xxxxxxxx" then get the default value "#FF007DFF"
+     */
+    it('ArkUI_Tabs_IndicatorColor_0600', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorColor_0600 start");
+
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorColor": "xxxxxxxx"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorColor_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorColor_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorColor_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      expect(indicatorColor).assertEqual("#FF007DFF");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorColor_0700
+     * @tc.name      Tests the indicator property of the tabs component
+     * @tc.desc      set indicator property
+     */
+    it('ArkUI_Tabs_IndicatorColor_0700', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorColor_0700 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorColor": Color.Red,
+            "selfIndicatorHeight": 5,
+            "selfIndicatorWidth": 20,
+            "selfIndicatorBorderRadius": 5,
+            "selfMarginTop": 10
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorColor_0700] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorColor_0700] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorColor_0700] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius;
+      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorColor).assertEqual("#FFFF0000");
+      expect(indicatorHeight).assertEqual("5.00vp");
+      expect(indicatorWidth).assertEqual("20.00vp");
+      expect(indicatorBorderRadius).assertEqual("5.00vp");
+      expect(indicatorSpace).assertEqual("10.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorHeight_0100
+     * @tc.name      Tests the indicator.height property of the tabs component
+     * @tc.desc      the default indicator.height parameter is "2.00vp".
+     */
+    it('ArkUI_Tabs_IndicatorHeight_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0100 start ")
+      let strJson = getInspectorByKey('indicatorTest5');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0100] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      expect(indicatorHeight).assertEqual("2.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorHeight_0200
+     * @tc.name      Tests the indicator.height property of the tabs component
+     * @tc.desc      set indicator.height to number type
+     */
+    it('ArkUI_Tabs_IndicatorHeight_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0200 start ")
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0200] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      expect(indicatorHeight).assertEqual("10.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorHeight_0300
+     * @tc.name      Tests the indicator.height property of the tabs component
+     * @tc.desc      set indicator.height to string type
+     */
+    it('ArkUI_Tabs_IndicatorHeight_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0300 start ")
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0300] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      expect(indicatorHeight).assertEqual("10.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorHeight_0400
+     * @tc.name      Tests the indicator.height property of the tabs component
+     * @tc.desc      set indicator.height to resource type
+     */
+    it('ArkUI_Tabs_IndicatorHeight_0400', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0400 start ")
+      let strJson = getInspectorByKey('indicatorTest3');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0400] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      expect(indicatorHeight).assertEqual("10.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorHeight_0500
+     * @tc.name      Tests the indicator.height property of the tabs component
+     * @tc.desc      set indicator.height to abnormol value -1 then get the default value "2.00vp"
+     */
+    it('ArkUI_Tabs_IndicatorHeight_0500', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorHeight": -1
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorHeight_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorHeight_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0500] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      expect(indicatorHeight).assertEqual("2.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorHeight_0600
+     * @tc.name      Tests the indicator.height property of the tabs component
+     * @tc.desc      set indicator.height with different length's unit
+     */
+    it('ArkUI_Tabs_IndicatorHeight_0600', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorHeightStr": "10px"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorHeight_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorHeight_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      expect(indicatorHeight).assertEqual("10.00px");
+
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorHeightStr": "10fp"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorHeight_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorHeight_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      expect(indicatorHeight).assertEqual("10.00fp");
+
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorHeightStr": "10lpx"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorHeight_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorHeight_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      expect(indicatorHeight).assertEqual("10.00lpx");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorWidth_0100
+     * @tc.name      Tests the indicator.width property of the tabs component
+     * @tc.desc      the default indicator.width parameter is "0.00vp".
+     */
+    it('ArkUI_Tabs_IndicatorWidth_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorWidth_0100 start");
+      let strJson = getInspectorByKey('indicatorTest5');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorWidth_0100] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      expect(indicatorWidth).assertEqual("0.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorWidth_0200
+     * @tc.name      Tests the indicator.width property of the tabs component
+     * @tc.desc      set indicator.width to number type
+     */
+    it('ArkUI_Tabs_IndicatorWidth_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorWidth_0200 start");
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorWidth_0200] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      expect(indicatorWidth).assertEqual("30.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorWidth_0300
+     * @tc.name      Tests the indicator.width property of the tabs component
+     * @tc.desc      set indicator.width to string type
+     */
+    it('ArkUI_Tabs_IndicatorWidth_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorWidth_0300 start");
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorWidth_0300] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      expect(indicatorWidth).assertEqual("30.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorWidth_0400
+     * @tc.name      Tests the indicator.width property of the tabs component
+     * @tc.desc      set indicator.width to Resource type
+     */
+    it('ArkUI_Tabs_IndicatorWidth_0400', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorWidth_0400 start");
+      let strJson = getInspectorByKey('indicatorTest3');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorWidth_0400] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      expect(indicatorWidth).assertEqual("30.00vp");
+      done();
+    });
+
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorWidth_0500
+     * @tc.name      Tests the indicator.width property of the tabs component
+     * @tc.desc      set indicator.color to abnormol value -1 then get the default value "0.00vp"
+     */
+    it('ArkUI_Tabs_IndicatorWidth_0500', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorWidth_0500 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorWidth": -1
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorWidth_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorWidth_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorWidth_0300] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      expect(indicatorWidth).assertEqual("0.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorWidth_0600
+     * @tc.name      Tests the indicator.width property of the tabs component
+     * @tc.desc      set indicator.width with different length's unit
+     */
+    it('ArkUI_Tabs_IndicatorWidth_0600', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorWidthStr": "10px"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorWidth_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorWidth_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorWidth_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      expect(indicatorWidth).assertEqual("10.00px");
+
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorWidthStr": "10fp"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorWidth_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorWidth_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorWidth_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      expect(indicatorWidth).assertEqual("10.00fp");
+
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorWidthStr": "10lpx"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorWidth_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorWidth_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorWidth_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      expect(indicatorWidth).assertEqual("10.00lpx");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorBorderRadius_0100
+     * @tc.name      Tests the indicator.borderRadius property of the tabs component
+     * @tc.desc      the default indicator.borderRadius parameter is "0.00vp".
+     */
+    it('ArkUI_Tabs_IndicatorBorderRadius_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorBorderRadius_0100 start");
+      let strJson = getInspectorByKey('indicatorTest5');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorBorderRadius_0100] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius
+      expect(indicatorBorderRadius).assertEqual("0.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorBorderRadius_0200
+     * @tc.name      Tests the indicator.borderRadius property of the tabs component
+     * @tc.desc      set indicator.borderRadius to number type
+     */
+    it('ArkUI_Tabs_IndicatorBorderRadius_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorBorderRadius_0200 start");
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorBorderRadius_0200] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius
+      expect(indicatorBorderRadius).assertEqual("5.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorBorderRadius_0300
+     * @tc.name      Tests the indicator.borderRadius property of the tabs component
+     * @tc.desc      set indicator.borderRadius to string type
+     */
+    it('ArkUI_Tabs_IndicatorBorderRadius_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorBorderRadius_0300 start");
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorBorderRadius_0300] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius
+      expect(indicatorBorderRadius).assertEqual("5.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorBorderRadius_0400
+     * @tc.name      Tests the indicator.borderRadius property of the tabs component
+     * @tc.desc      set indicator.borderRadius to Resource type
+     */
+    it('ArkUI_Tabs_IndicatorBorderRadius_0400', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorBorderRadius_0400 start");
+      let strJson = getInspectorByKey('indicatorTest3');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorBorderRadius_0400] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius
+      expect(indicatorBorderRadius).assertEqual("5.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorBorderRadius_0500
+     * @tc.name      Tests the indicator.borderRadius property of the tabs component
+     * @tc.desc      set indicator.borderRadius to abnormol value -1 then get the default value "0.00vp"
+     */
+    it('ArkUI_Tabs_IndicatorBorderRadius_0500', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorBorderRadius_0500 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorBorderRadius": -1
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorBorderRadius_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorBorderRadius_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorBorderRadius_0500] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius;
+      expect(indicatorBorderRadius).assertEqual("0.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorBorderRadius_0600
+     * @tc.name      Tests the indicator.borderRadius property of the tabs component
+     * @tc.desc      set indicator.borderRadius with different length's unit
+     */
+    it('ArkUI_Tabs_IndicatorBorderRadius_0600', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorBorderRadiusStr": "10px"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorBorderRadius_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorBorderRadius_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorBorderRadius_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius;
+      expect(indicatorBorderRadius).assertEqual("10.00px");
+
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorBorderRadiusStr": "10fp"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorBorderRadius_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorBorderRadius_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorBorderRadius_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius;
+      expect(indicatorBorderRadius).assertEqual("10.00fp");
+
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorBorderRadiusStr": "10lpx"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorBorderRadius_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorBorderRadius_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorBorderRadius_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius;
+      expect(indicatorBorderRadius).assertEqual("10.00lpx");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SubTabBorderRadius_0100
+     * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
+     * @tc.desc      the default indicator.height parameter is "8.00vp".
+     */
+    it('ArkUI_Tabs_SubTabBorderRadius_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_SubTabBorderRadius_0100 start");
+      let strJson = getInspectorByKey('indicatorTest5');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0100] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("8.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SubTabBorderRadius_0200
+     * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
+     * @tc.desc      set indicator.board.borderRadius to number type
+     */
+    it('ArkUI_Tabs_SubTabBorderRadius_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_SubTabBorderRadius_0200 start");
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0200] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("20.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SubTabBorderRadius_0300
+     * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
+     * @tc.desc      set indicator.board.borderRadius to string type
+     */
+    it('ArkUI_Tabs_SubTabBorderRadius_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_SubTabBorderRadius_0300 start");
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0300] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("20.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SubTabBorderRadius_0400
+     * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
+     * @tc.desc      set indicator.board.borderRadius to Resource type
+     */
+    it('ArkUI_Tabs_SubTabBorderRadius_0400', 0, async function (done) {
+      console.info("ArkUI_Tabs_SubTabBorderRadius_0400 start");
+      let strJson = getInspectorByKey('indicatorTest3');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0400] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("20.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SubTabBorderRadius_0500
+     * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
+     * @tc.desc      set indicator.board.borderRadius to abnormol value -1 then get the default value "8.00vp"
+     */
+    it('ArkUI_Tabs_SubTabBorderRadius_0500', 0, async function (done) {
+      console.info("ArkUI_Tabs_SubTabBorderRadius_0500 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfSubTabBorderRadius": -1
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_SubTabBorderRadius_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_SubTabBorderRadius_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0500] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("8.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SubTabBorderRadius_0600
+     * @tc.name      Tests the indicator.border.borderRadius property of the tabs component
+     * @tc.desc      set indicator.border.borderRadius with different length's unit
+     */
+    it('ArkUI_Tabs_SubTabBorderRadius_0600', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfSubTabBorderRadiusStr": "10px"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_SubTabBorderRadius_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_SubTabBorderRadius_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0600] indicator:" + obj.$attrs.tabBar.board.borderRadius);
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("10.00px");
+
+      try {
+        var eventData = {
+          data: {
+            "selfSubTabBorderRadiusStr": "10fp"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_SubTabBorderRadius_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_SubTabBorderRadius_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("10.00fp");
+
+      try {
+        var eventData = {
+          data: {
+            "selfSubTabBorderRadiusStr": "10lpx"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_SubTabBorderRadius_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_SubTabBorderRadius_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("10.00lpx");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SubTabBorderRadius_0700
+     * @tc.name      Tests the indicator SelectedMode.BOARD property of the tabs component
+     * @tc.desc      set indicator property with SelectedMode.BOARD
+     */
+    it('ArkUI_Tabs_SubTabBorderRadius_0700', 0, async function (done) {
+      console.info("ArkUI_Tabs_SubTabBorderRadius_0700 start");
+      try {
+        var eventData = {
+          data: {
+            "selfSubTabBorderRadius": 20,
+            "selfSelectedMode": SelectedMode.BOARD
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_SubTabBorderRadius_0700] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_SubTabBorderRadius_0700] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0700] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("20.00vp");
+      expect(obj.$attrs.tabBar.selectedMode).assertEqual("SelectedMode.BOARD");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SelectedMode_0100
+     * @tc.name      Tests the indicator.selectedMode property of the tabs component
+     * @tc.desc      the default indicator.selectedMode parameter is "SelectedMode.INDICATOR".
+     */
+    it('ArkUI_Tabs_SelectedMode_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_SelectedMode_0100 start");
+      let strJson = getInspectorByKey('indicatorTest5');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SelectedMode_0100] selectedMode:" + obj.$attrs.tabBar.selectedMode);
+      expect(obj.$attrs.tabBar.selectedMode).assertEqual("SelectedMode.INDICATOR");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SelectedMode_0200
+     * @tc.name      Tests the indicator.selectedMode property of the tabs component
+     * @tc.desc      set indicator.selectedMode to SelectedMode.INDICATOR
+     */
+    it('ArkUI_Tabs_SelectedMode_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_SelectedMode_0200 start");
+      
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SelectedMode_0200] selectedMode:" + obj.$attrs.tabBar.selectedMode);
+      expect(obj.$attrs.tabBar.selectedMode).assertEqual("SelectedMode.INDICATOR");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_SelectedMode_0300
+     * @tc.name      Tests the indicator.selectedMode property of the tabs component
+     * @tc.desc      set indicator.selectedMode to SelectedMode.BOARD
+     */
+    it('ArkUI_Tabs_SelectedMode_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_SelectedMode_0300 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorHeight": 10,
+            "selfSelectedMode": SelectedMode.BOARD
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_SelectedMode_0300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_SelectedMode_0300] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_SelectedMode_0300] selectedMode:" + obj.$attrs.tabBar.selectedMode);
+      expect(obj.$attrs.tabBar.selectedMode).assertEqual("SelectedMode.BOARD");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorSpace_0100
+     * @tc.name      Tests the indicator.marginTop property of the tabs component
+     * @tc.desc      the default indicator.marginTop parameter is "0.00vp".
+     */
+    it('ArkUI_Tabs_IndicatorSpace_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorSpace_0100 start");
+      let strJson = getInspectorByKey('indicatorTest4');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorSpace_0100] indicatorSpace:" + obj.$attrs.tabBar.indicator);
+      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorSpace).assertEqual("8.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorWidth_0200
+     * @tc.name      Tests the indicator.marginTop property of the tabs component
+     * @tc.desc      set indicator.width to number type.
+     */
+    it('ArkUI_Tabs_IndicatorSpace_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorSpace_0200 start");
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorSpace_0200] indicatorSpace:" + obj.$attrs.tabBar.indicator);
+      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorSpace).assertEqual("10.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorSpace_0300
+     * @tc.name      Tests the indicator.marginTop property of the tabs component
+     * @tc.desc      set indicator.width to string type.
+     */
+    it('ArkUI_Tabs_IndicatorSpace_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorSpace_0300 start");
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorSpace_0300] indicatorSpace:" + obj.$attrs.tabBar.indicator);
+      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorSpace).assertEqual("10.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorSpace_0400
+     * @tc.name      Tests the indicator.marginTop property of the tabs component
+     * @tc.desc      set indicator.width to Resource type.
+     */
+    it('ArkUI_Tabs_IndicatorSpace_0400', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorSpace_0400 start");
+      let strJson = getInspectorByKey('indicatorTest3');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorSpace_0400] indicatorSpace:" + obj.$attrs.tabBar.indicator);
+      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorSpace).assertEqual("10.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorSpace_0500
+     * @tc.name      Tests the indicator.marginTop property of the tabs component
+     * @tc.desc      set indicator.marginTop to abnormol value -1 then get the default value "0.00vp"
+     */
+    it('ArkUI_Tabs_IndicatorSpace_0500', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorSpace_0500 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfIndicatorHeight": 10,
+            "selfMarginTop": -1
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorSpace_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorSpace_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest1');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorSpace_0500] indicatorSpace:" + obj.$attrs.tabBar.indicator);
+      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorSpace).assertEqual("8.00vp");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_IndicatorSpace_0600
+     * @tc.name      Tests the indicator.marginTop property of the tabs component
+     * @tc.desc      set indicator.marginTop with different length's unit
+     */
+    it('ArkUI_Tabs_IndicatorSpace_0600', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
+      
+      try {
+        var eventData = {
+          data: {
+            "selfMarginTopStr": "10px"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorSpace_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorSpace_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('indicatorTest2');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorSpace_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorSpace).assertEqual("10.00px");
+
+      try {
+        var eventData = {
+          data: {
+            "selfMarginTopStr": "10fp"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorSpace_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorSpace_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorSpace_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorSpace).assertEqual("10.00fp");
+
+      try {
+        var eventData = {
+          data: {
+            "selfMarginTopStr": "10lpx"
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Tabs_IndicatorSpace_0600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Tabs_IndicatorSpace_0600] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      strJson = getInspectorByKey('indicatorTest2');
+      obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_IndicatorSpace_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorSpace).assertEqual("10.00lpx");
       done();
     });
   })
