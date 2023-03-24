@@ -21,5 +21,7 @@ hctest_suite("ActsUpdaterFuncTest") {
     "//base/update/sys_installer_lite/interfaces/kits",
   ]
 
-  cflags = [ "-Wno-error" ]
+  if (board_toolchain_type != "iccarm") {
+    cflags = [ "-Wno-error" ]
+  }
 }

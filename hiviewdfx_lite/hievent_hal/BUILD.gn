@@ -21,5 +21,7 @@ hctest_suite("ActsHieventLiteTest") {
     "//base/hiviewdfx/hievent_lite/interfaces/native/innerkits",
   ]
 
-  cflags = [ "-Wno-error" ]
+  if (board_toolchain_type != "iccarm") {
+    cflags = [ "-Wno-error" ]
+  }
 }
