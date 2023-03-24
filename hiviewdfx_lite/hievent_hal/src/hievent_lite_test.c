@@ -53,11 +53,12 @@ static BOOL HieventLiteTestSuiteTearDown(void)
  * @param        : module name is hievet_lite
  * @param        : test suit name is HieventLiteTest
  */
-static HieventProc HieventLiteTestOutputFunc(uint8 *data)
+static int HieventLiteTestOutputFunc(uint8 *data)
 {
     HiEvent *e = (HiEvent *)data;
 
     TEST_ASSERT_EQUAL_INT(HIEVENT_TEST_ID, e->common.eventId);
+    return 0;
 }
 
 /**
@@ -101,7 +102,7 @@ LITE_TEST_CASE(HieventLiteTestSuite, HieventLiteFuncTest003, Level1)
 {
     HiEvent *e = HiEventCreate(HIEVENT_FAULT, HIEVENT_TEST_ID, 3);
 
-    HiEventRegisterProc(HieventLiteTestOutputFunc);
+    HiEventRegisterProc((HieventProc)HieventLiteTestOutputFunc);
 
     TEST_ASSERT_NOT_NULL(e);
 
@@ -111,7 +112,7 @@ LITE_TEST_CASE(HieventLiteTestSuite, HieventLiteFuncTest003, Level1)
 
     HiEventReport(e);
     HiEventFlush(TRUE);
-    HiEventUnRegisterProc(HieventLiteTestOutputFunc);
+    HiEventUnRegisterProc((HieventProc)HieventLiteTestOutputFunc);
 };
 
 /**

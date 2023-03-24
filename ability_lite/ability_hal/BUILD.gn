@@ -21,5 +21,7 @@ hctest_suite("ActsAbilityMgrTest") {
     "${aafwk_lite_path}/interfaces/kits/ability_lite",
     "${appexecfwk_lite_path}/interfaces/kits/bundle_lite",
   ]
-  cflags = [ "-Wno-error" ]
+  if (board_toolchain_type != "iccarm") {
+    cflags = [ "-Wno-error" ]
+  }
 }
