@@ -20,7 +20,6 @@ ohos_hap_assist_suite("ActsUiTestScene") {
     ":uitest_scene_ets_resources",
   ]
   ets2abc = true
-  js_build_mode = "debug"
   testonly = true
   certificate_profile = "//test/xts/acts/arkXtest/uitestScene/signature/auto_ohos_default_com.uitestScene.test.p7b"
   hap_name = "ActsUiTestScene"
