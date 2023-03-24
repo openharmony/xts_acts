@@ -16,7 +16,6 @@
 import fileio from '@ohos.fileio';
 import prompt from '@ohos.prompt';
 import router from '@ohos.router';
-// @ts-ignore
 import screenshot from '@ohos.screenshot';
 import image from '@ohos.multimedia.image';
 import Logger from '../model/Logger';
@@ -56,7 +55,7 @@ export struct CustomContainer {
       .onClick(() => {
         router.back({
           url: this.Url,
-          params: { result: 'Pass', title: this.name,
+          params: { result: 'true', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -75,7 +74,7 @@ export struct CustomContainer {
     .onClick(() => {
       router.back({
         url: this.Url,
-        params: { result: 'Fail', title: this.name,
+        params: { result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -123,7 +122,7 @@ export struct CustomContainer {
     };
     let name = this.name;
     let displayName = `${info.prefix}${name}${info.suffix}`;
-    let dirPath = path + '/' + displayName;
+    let dirPath = path + '/screenshot' +'/' + displayName;
     let imagePackerApi = image.createImagePacker();
     let arrayBuffer = await imagePackerApi.packing(data, packOpts);
     let fd = fileio.openSync(dirPath, 0o102, 0o666);

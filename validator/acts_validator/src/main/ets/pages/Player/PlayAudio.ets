@@ -76,4 +76,9 @@ struct playAudio {
       }).height('10%').width('100%')
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/Player/Player_index',
+    })
+  }
 }

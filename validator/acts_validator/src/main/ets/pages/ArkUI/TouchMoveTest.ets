@@ -50,7 +50,7 @@ struct CustomContainer1 {
       .onClick(()=>{
         router.back({
           url:this.Url,
-          params: {result : 'Pass', title : this.name,
+          params: {result : 'true', title : this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -68,7 +68,7 @@ struct CustomContainer1 {
     .onClick(()=>{
       router.back({
         url:this.Url,
-        params: {result : 'Fail',title : this.name,
+        params: {result : 'false',title : this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -218,5 +218,10 @@ struct SetCircle {
         Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/ArkUI/ArkUI_index',
+    })
   }
 }

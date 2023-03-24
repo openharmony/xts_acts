@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import fileio from '@ohos.fileio';
 import {CustomContainer} from '../common/StartExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
@@ -19,14 +20,11 @@ import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
-let SettingsColdPath = path + '/HotStartSetting.log';
-let PhotosColdPath = path + '/HotStartPhotos.log';
-let MmsColdPath = path + '/HotStartMms.log';
 let ContactsColdPath = path + '/HotStartContacts.log';
 @Entry
 @Component
 struct CustomContainerUser {
-  @State name: string = 'HotStart';
+  @State name: string = 'ContactsHotStart';
   @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延低于1000ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
@@ -88,46 +86,7 @@ struct CustomContainerUser {
                 .onClick(() => {
                   this.StartEnable = !this.StartEnable
                   /*
-                            settings
-                   */
-                  let setFd = fileio.openSync(SettingsColdPath, 0o100 | 0o2002, 0o664);
-                  let setBuf = new ArrayBuffer(4096);
-                  fileio.readSync(setFd,setBuf);
-                  let setReport = String.fromCharCode.apply(null,new Uint8Array(setBuf));
-                  let setHead = setReport.indexOf(':');
-                  let setTime = setReport.substring(setHead+1);
-                  this.setNum = parseFloat(setTime);
-                  if( this.setNum < 1000 ) {
-                    this.num++
-                  }
-                  /*
-                            photos
-                   */
-                  let photosFd = fileio.openSync(PhotosColdPath, 0o100 | 0o2002, 0o664);
-                  let photosBuf = new ArrayBuffer(4096);
-                  fileio.readSync(photosFd,photosBuf);
-                  let photosReport = String.fromCharCode.apply(null,new Uint8Array(photosBuf));
-                  let photosHead = photosReport.indexOf(':');
-                  let photosTime = photosReport.substring(photosHead+1);
-                  this.photosNum = parseFloat(photosTime);
-                  if( this.photosNum < 1000 ) {
-                    this.num++
-                  }
-                  /*
-                            mms
-                   */
-                  let MmsFd = fileio.openSync(MmsColdPath, 0o100 | 0o2002, 0o664);
-                  let MmsBuf = new ArrayBuffer(4096);
-                  fileio.readSync(MmsFd,MmsBuf);
-                  let MmsReport = String.fromCharCode.apply(null,new Uint8Array(MmsBuf));
-                  let MmsHead = MmsReport.indexOf(':');
-                  let MmsTime = MmsReport.substring(MmsHead+1);
-                  this.mmsNum = parseFloat(MmsTime);
-                  if( this.mmsNum < 1000 ) {
-                    this.num++
-                  }
-                  /*
-                            mms
+                            Contacts
                    */
                   let ContactsFd = fileio.openSync(ContactsColdPath, 0o100 | 0o2002, 0o664);
                   let ContactsBuf = new ArrayBuffer(4096);
@@ -139,16 +98,14 @@ struct CustomContainerUser {
                   if( this.contactsNum < 1000 ) {
                     this.num++
                   }
-                  if( this.num === 4 ) {
+                  if( this.num === 1 ) {
                     this.Vue = true;
                   }
                 })
             }
           }
           Row(){
-            Text('\n' + '\n' + '\n' + '\n' + `测试结果：` + '\n' + '设置热启动时延' + this.setNum + 'ms'
-            + '\n' + '图库热启动时延' + this.photosNum + 'ms' + '\n'+ '信息热启动时延' + this.mmsNum + 'ms' + '\n'
-            + '联系人热启动时延' + this.contactsNum + 'ms' + '\n' + '通过热启动测试项' + this.num + '个' )
+            Text('\n' + '\n' + '\n' + '\n' + `测试结果：` + '\n' + '\n' + '联系人热启动时延' + this.contactsNum + 'ms')
               .fontColor(Color.White).fontSize('24fp')
           }
         }
@@ -175,5 +132,10 @@ struct CustomContainerUser {
         contactsNum: $contactsNum,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/Experience/Experience_index',
+    })
   }
 }

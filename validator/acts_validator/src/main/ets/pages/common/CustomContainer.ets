@@ -48,7 +48,7 @@ export struct CustomContainer {
       .onClick(()=>{
         router.back({
           url:this.Url,
-          params: {result : 'Pass', title : this.name,
+          params: {result : 'true', title : this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -66,7 +66,7 @@ export struct CustomContainer {
     .onClick(()=>{
       router.back({
         url:this.Url,
-        params: {result : 'Fail',title : this.name,
+        params: {result : 'false',title : this.name,
         }
       })
       this.getScreen(isFullScreen);
