@@ -235,7 +235,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                 }
                 await publicInitFunc(srcKeyAliesGen, HuksOptionsVerify);
                 HuksOptionsVerify.inData = srcData64Kb;
-                publicUpdateSessionFunction(HuksOptionsVerify);
+                await publicUpdateSessionFunction(HuksOptionsVerify);
                 HuksOptionsVerify.inData = signedResult;
                 await publicFinishSessionFunc(HuksOptionsVerify);
                 await publicDeleteKeyFunc(srcKeyAliesGen, HuksOptionsGen);
@@ -289,7 +289,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                 }
                 await publicInitFunc(srcKeyAliesGen, HuksOptionsVerify);
                 HuksOptionsVerify.inData = srcData64Kb;
-                publicUpdateSessionFunction(HuksOptionsVerify);
+                await publicUpdateSessionFunction(HuksOptionsVerify);
                 HuksOptionsVerify.inData = signedResult;
                 await publicFinishSessionFunc(HuksOptionsVerify);
                 await publicDeleteKeyFunc(srcKeyAliesGen, HuksOptionsGen);
@@ -342,7 +342,7 @@ export default function SecurityHuksRSASignExtendJsunit() {
                 }
                 await publicInitFunc(srcKeyAliesGen, HuksOptionsVerify);
                 HuksOptionsVerify.inData = srcData64Kb;
-                publicUpdateSessionFunction(HuksOptionsVerify);
+                await publicUpdateSessionFunction(HuksOptionsVerify);
                 HuksOptionsVerify.inData = signedResult;
                 await publicFinishSessionFunc(HuksOptionsVerify);
                 await publicDeleteKeyFunc(srcKeyAliesGen, HuksOptionsGen);
