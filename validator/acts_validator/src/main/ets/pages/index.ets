@@ -504,7 +504,7 @@ struct IndexPage {
     serializer.setAttributes("tests", cameraTestNum);
     serializer.setAttributes("message", "*");
     serializer.setAttributes("modulename", "ActsCameraTest");
-    for (let i = 0; i < title2.length; i++) {
+    for (let i = 0; i < title3.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title3[i]));
       serializer.setAttributes("status", "*");
@@ -529,7 +529,7 @@ struct IndexPage {
     serializer.setAttributes("tests", playerTestNum);
     serializer.setAttributes("message", "*");
     serializer.setAttributes("modulename", "ActsPlayerTest");
-    for (let i = 0; i < title2.length; i++) {
+    for (let i = 0; i < title4.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title4[i]));
       serializer.setAttributes("status", "*");
@@ -554,7 +554,7 @@ struct IndexPage {
     serializer.setAttributes("tests", experienceTestNum);
     serializer.setAttributes("message", "*");
     serializer.setAttributes("modulename", "ActsExperienceTest");
-    for (let i = 0; i < title2.length; i++) {
+    for (let i = 0; i < title5.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title5[i]));
       serializer.setAttributes("status", "*");
