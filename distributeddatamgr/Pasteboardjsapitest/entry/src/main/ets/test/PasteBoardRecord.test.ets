@@ -59,6 +59,7 @@ export default function pasteBoardRecordTest(){
             })
             let pixelMapRecord = pasteData.getPrimaryPixelMap()
             expect(pixelMapRecord != null).assertTrue();
+            expect(pixelMapRecord.getPixelBytesNumber() > 0).assertEqual();
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_CREATEDATA_0100 end")
             done();
         })
