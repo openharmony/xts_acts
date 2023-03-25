@@ -43,6 +43,12 @@ struct SetCircle {
             })
             .onActionUpdate((event: GestureEvent) => {
               this.X = event.offsetX;
+              this.context.globalAlpha = (this.X)*0.005;
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalAlpha = (this.X)*0.005;
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(200, 200, 50, 50);
             })
             .onActionEnd(() => {
               console.info('Pan end');
@@ -59,9 +65,10 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
+            this.context.globalAlpha = 0.05;
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 50, 50);
-            this.context.globalAlpha = (this.X)*0.005;
+            this.context.globalAlpha = 0.05;
             this.context.fillStyle = 'rgb(0,0,255)';
             this.context.fillRect(200, 200, 50, 50);
           })
