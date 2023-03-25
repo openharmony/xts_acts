@@ -45,6 +45,11 @@ struct SetCircle {
             })
             .onActionUpdate((event: GestureEvent) => {
               this.X = event.offsetX;
+              this.context.shadowBlur = 10;
+              this.context.shadowOffsetY = (this.X)*0.05;
+              this.context.shadowColor = 'rgb(0,0,0)';
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 100, 100);
             })
             .onActionEnd(() => {
               console.info('Pan end');
@@ -61,7 +66,7 @@ struct SetCircle {
           .backgroundColor('#ffffffff')
           .onReady(() =>{
             this.context.shadowBlur = 10;
-            this.context.shadowOffsetY = (this.X)*0.05;
+            this.context.shadowOffsetY = 0;
             this.context.shadowColor = 'rgb(0,0,0)';
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 100, 100);
