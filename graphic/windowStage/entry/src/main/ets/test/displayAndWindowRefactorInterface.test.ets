@@ -35,14 +35,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     var systemWindowTypeDicArr = [];
     var systemWindowTypeDic = {
       'TYPE_SYSTEM_ALERT': 1,
-      'TYPE_INPUT_METHOD': 2,
-      'TYPE_STATUS_BAR': 3,
-      'TYPE_PANEL': 4,
-      'TYPE_KEYGUARD': 5,
-      'TYPE_VOLUME_OVERLAY': 6,
-      'TYPE_NAVIGATION_BAR': 7,
       'TYPE_FLOAT': 8,
-      //      'TYPE_FLOAT_CAMERA': 9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
@@ -2051,7 +2044,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         try {
           let isLayoutFullScreen = false;
          await wnd.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
-            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+            console.info(msgStr + 'Succeeded in setting the window not layout to full-screen mode.');
             try {
               let propData = wnd.getWindowProperties()
               console.info(msgStr + 'wnd.getWindowProperties propData: ' + JSON.stringify(propData));
@@ -2141,7 +2134,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         try {
           wnd.setWindowLayoutFullScreen(isLayoutFullScreen, (err) => {
             if (err.code) {
-              console.error(msgStr + 'err Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+              console.error(msgStr + 'err Failed to set the window not layout to full-screen mode. Cause:' + JSON.stringify(err));
               try {
                 expect().assertFail();
               } catch (error) {
@@ -2150,7 +2143,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
               done();
               return;
             }
-            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+            console.info(msgStr + 'Succeeded in setting the window not layout to full-screen mode.');
             try {
               let propData = wnd.getWindowProperties()
               console.log(msgStr + JSON.stringify(propData));
