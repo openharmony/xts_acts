@@ -12,9 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if(cat "/etc/group" | grep "servicectrl:x:3047:root,shell,system,samgr,hdf_devmgr");then
-	echo "OpenHarmony-SA-2022-1001 testcase pass"
-else
-	echo "OpenHarmony-SA-2022-1001 testcase fail"
-fi
+import "console"
+import "elf"
+rule OpenHarmony_SA_2022_1001
+{
+meta:
+
+date = "2022-10"
+openharmony_sa = "OpenHarmony-SA-2022-1001"
+severity = "high"
+affected_files = "/etc/group" //OpenHarmony-v3.1-Release到OpenHarmony-v3.1.2-Release
+
+
+strings:
+
+$fix = "servicectrl:x:3047:root,shell,system,samgr,hdf_devmgr"  //更新后字符串
+
+
+condition:
+ (elf.machine == elf.EM_ARM) and $fix and console.log("OpenHarmony-SA-2022-1001 testcase pass")
+}
 
