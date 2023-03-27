@@ -26,7 +26,7 @@ import router from '@ohos.router';
 struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraOrientation';
-  @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示给定旋转角度后的预览窗口\n-右侧显示拍照后的图片\n-对于前置摄像头会有镜像效果' + '\n' + '预期结果：拍照图片与预览窗口的画面一致';
+  @State StepTips: string = @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示预览窗口\n-右侧显示指定旋转角度的拍照图片\n-对于前置摄像头会有镜像效果' + '\n' + '预期结果：拍照图片与预览窗口的画面一致';
   private tag: string = 'qlw CameraOrientation'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
@@ -130,12 +130,12 @@ struct cameraOrientation {
               })
             })
             .size({ width: '100%', height: '100%' })
-          Text('Camera Preview').fontSize('20fp').fontColor(Color.White)
+		  Text('预览').fontSize('20fp').fontColor(Color.White)
         }.size({ width: '40%', height: '60%' })
 
         Column() {
           Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
-          Text('Oriented Photo').fontSize('20fp').fontColor(Color.White)
+          Text('带旋转角度的图片').fontSize('20fp').fontColor(Color.White)
         }.size({ width: '40%', height: '60%' })
       }.width('100%').height('50%')
 
@@ -144,7 +144,7 @@ struct cameraOrientation {
         Text(`Orientation: ${this.imageRotation}°`).fontSize('16fp').fontColor(Color.White)
         Text(`顺时针`).fontSize('16fp').fontColor(Color.White)
         Text(`提示：`).fontSize('16fp').fontColor(Color.White)
-        Text(`如果左边窗口旋转后与右边窗口相同，选择pass，否则选择fail`)
+        Text(`如果左边预览窗口顺时针旋转后与右边窗口相同，选择pass，否则选择fail`)
           .fontSize('16fp').fontColor(Color.White)
       }.size({ width: '80%', height: '25%' })
 
