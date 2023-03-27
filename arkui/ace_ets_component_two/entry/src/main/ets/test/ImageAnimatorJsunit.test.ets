@@ -56,15 +56,16 @@ export default function imageAnimatorJsunit(){
         done();
       }
       let indexEvent = {
-        eventId: 115,
+        eventId: 1150,
         priority: events_emitter.EventPriority.LOW
       }
       try {
         events_emitter.on(indexEvent, callback);
-        console.info("imageAnimatorTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       } catch (err) {
         console.info("imageAnimatorTest_0100 on events_emitter err : " + JSON.stringify(err));
       }
+      console.info("imageAnimatorTest_0100 click result is: " + JSON.stringify(sendEventByKey('button_0',10,"")));
+      await Utils.sleep(1000);
       console.info('imageAnimatorTest_0100 END');
     });
 

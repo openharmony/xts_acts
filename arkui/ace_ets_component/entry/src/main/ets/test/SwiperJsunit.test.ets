@@ -321,7 +321,7 @@ export default function swiperJsunit() {
       try {
         let eventData = {
           data: {
-            "indicator": "false"
+            "indicator": false
           }
         }
         let indexEvent = {

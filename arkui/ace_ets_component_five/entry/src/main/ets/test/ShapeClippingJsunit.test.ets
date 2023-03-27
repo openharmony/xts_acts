@@ -68,7 +68,9 @@ export default function shapeClippingJsunit() {
       let strJson = getInspectorByKey('image_mask');
       let obj = JSON.parse(strJson);
       console.info("[testShapeClipping002] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.mask.shape).assertEqual('Rect');
+      console.info("[testShapeClipping002] component mask obj is: " + JSON.stringify(obj.$attrs.mask));
+      let mask = JSON.parse(JSON.stringify(obj.$attrs.mask)); 
+      expect(mask.shape).assertEqual('Rect'); 
       expect(obj.$attrs.clip).assertEqual('false');
       console.info('[testShapeClipping002] END');
       done();
@@ -95,7 +97,9 @@ export default function shapeClippingJsunit() {
       let strJsonNew = getInspectorByKey('image_mask');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testShapeClipping003] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.mask.shape).assertEqual('Circle');
+      console.info("[testShapeClipping003] component mask obj is: " + JSON.stringify(objNew.$attrs.mask));
+      let mask = JSON.parse(JSON.stringify(objNew.$attrs.mask)); 
+      expect(mask.shape).assertEqual('Circle'); 
       console.info('[testShapeClipping003] END');
       done();
     });
