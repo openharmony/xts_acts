@@ -78,7 +78,7 @@ int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &comp
 
 int ExecuteGraphMock(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, float* expect);
 
-int SetDevice(OH_NNCompilation *compilation);
+OH_NN_ReturnCode SetDevice(OH_NNCompilation *compilation);
 int BuildMultiOpGraph(OH_NNModel *model, const OHNNGraphArgsMulti &graphArgs);
 OH_NN_UInt32Array GetUInt32Array(std::vector<uint32_t> indices);
 

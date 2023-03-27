@@ -14,7 +14,7 @@
 group("neural_network_runtime") {
   testonly = true
   deps = [
-    "interface:ActsAiNnrtFunctionTest",
-    "stability:ActsAiNnrtStabilityTest",
+    "interface:ActsAiNnrtFunctionV1_0Test",
+    "stability:ActsAiNnrtStabilityV1_0Test",
   ]
 }

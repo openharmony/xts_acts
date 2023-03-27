@@ -25,7 +25,7 @@ config("nnrt_config") {
   cflags = [ "-Wno-error" ]
 }
 
-ohos_moduletest_suite("ActsAiNnrtFunctionTest") {
+ohos_moduletest_suite("ActsAiNnrtFunctionV1_0Test") {
   module_out_path = "acts/nnrt"
   sources = [
     "../common/mock_idevice.cpp",

@@ -922,10 +922,30 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_GetSupportedOperation_0700, Fun
     uint32_t opCount;
     uint32_t devicesCount;
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount));
-    size_t targetDevice = devicesID[0];
-    OH_NN_ReturnCode ret = OH_NNModel_GetAvailableOperations(model, targetDevice, &realSupported, &opCount);
+
+    uint32_t number = 1;
+    EXPECT_GE(devicesCount, number);
+    const char *name = nullptr;
+    std::string m_deviceName{"Device-CPU_TestVendor_v1_0"};
+    OH_NN_ReturnCode ret = OH_NN_FAILED;
+    bool isHaveDevice = false;
+    uint32_t deviceId = 0;
+    for (uint32_t i = 0; i < devicesCount; i++) {
+        name = nullptr;
+        ret = OH_NNDevice_GetName(devicesID[i], &name);
+        EXPECT_EQ(OH_NN_SUCCESS, ret);
+        std::string sName(name);
+        if (m_deviceName == sName) {
+            isHaveDevice = true;
+            deviceId = i;
+        }  
+    }
+    ASSERT_EQ(isHaveDevice, true);
+    size_t targetDevice = devicesID[deviceId];
+
+    ret = OH_NNModel_GetAvailableOperations(model, targetDevice, &realSupported, &opCount);
     ASSERT_EQ(OH_NN_SUCCESS, ret);
-    for (int i = 0; i < opCount; i++) {
+    for (uint32_t i = 0; i < opCount; i++) {
         EXPECT_EQ(realSupported[i], isSupported[i]);
     }
     Free(model);
@@ -954,7 +974,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_GetSupportedOperation_0800, Fun
 
     OH_NN_ReturnCode ret = OH_NNModel_GetAvailableOperations(model, targetDevice, &realSupported, &opCount);
     ASSERT_EQ(OH_NN_SUCCESS, ret);
-    for (int i = 0; i < opCount; i++) {
+    for (uint32_t i = 0; i < opCount; i++) {
         EXPECT_EQ(realSupported[i], isSupported[i]);
     }
     Free(model);

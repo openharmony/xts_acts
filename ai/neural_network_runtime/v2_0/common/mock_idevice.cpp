@@ -18,7 +18,7 @@
 namespace OHOS {
 namespace HDI {
 namespace Nnrt {
-namespace V1_0 {
+namespace V2_0 {
 
 sptr<INnrtDevice> INnrtDevice::Get(bool isStub)
 {
@@ -104,7 +104,7 @@ int32_t MockIDevice::GetDeviceStatus(DeviceStatus& status)
 
 int32_t MockIDevice::GetVersion(uint32_t &majorVersion, uint32_t &minorVersion)
 {
-    majorVersion = 1;
+    majorVersion = 2;
     minorVersion = 0;
     return HDF_SUCCESS;
 }
@@ -180,15 +180,21 @@ int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
 int32_t MockIDevice::MemoryCopy(float* data, uint32_t length)
 {
     std::lock_guard<std::mutex> lock(m_mtx);
-    auto memManager = NeuralNetworkRuntime::MemoryManager::GetInstance();
-    auto memAddress = memManager->MapMemory(m_bufferFd, length);
-    if (memAddress == nullptr) {
-        LOGE("[NNRtTest] Map fd to address failed.");
+    auto ashptr = m_ashmems[m_bufferFd];
+    if (ashptr == nullptr) {
+        LOGE("[NNRtTest] Read shared memory failed.");
+        return HDF_ERR_MALLOC_FAIL;
+    }
+    bool ret = ashptr->MapReadAndWriteAshmem();
+    if (!ret) {
+        LOGE("[NNRtTest] Map fd to write ashptr failed.");
         return HDF_FAILURE;
     }
-    auto ret = memcpy_s(memAddress, length, data, length);
-    if (ret != EOK) {
-        LOGE("[NNRtTest] MockIDevice memory cop failed.");
+        
+    ret = ashptr->WriteToAshmem(data, length, 0);
+    ashptr->UnmapAshmem();
+    if (!ret) {
+        LOGE("[NNRtTest] Write cache failed.");
         return HDF_FAILURE;
     }
     return HDF_SUCCESS;
@@ -196,14 +202,14 @@ int32_t MockIDevice::MemoryCopy(float* data, uint32_t length)
 
 int32_t MockIDevice::PrepareModel(const Model& model, const ModelConfig& config, sptr<IPreparedModel>& preparedModel)
 {
-    preparedModel = new (std::nothrow) V1_0::MockIPreparedModel();
+    preparedModel = new (std::nothrow) V2_0::MockIPreparedModel();
     return HDF_SUCCESS;
 }
 
 int32_t MockIDevice::PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
     sptr<IPreparedModel>& preparedModel)
 {
-    preparedModel = new (std::nothrow) V1_0::MockIPreparedModel();
+    preparedModel = new (std::nothrow) V2_0::MockIPreparedModel();
     return HDF_SUCCESS;
 }
 
@@ -252,7 +258,15 @@ int32_t MockIPreparedModel::Run(const std::vector<IOTensor>& inputs, const std::
     return HDF_SUCCESS;
 }
 
-} // namespace V1_0
+int32_t MockIPreparedModel::GetInputDimRanges(std::vector<std::vector<uint32_t>>& minInputDims, std::vector<std::vector<uint32_t>>& maxInputDims)
+{
+    minInputDims = {{1, 1, 1, 1}, {1, 1, 1, 1}};
+    maxInputDims = {{1, 100, 100, 10}, {1, 100, 100, 10}};
+
+    return HDF_SUCCESS;
+}
+
+} // namespace V2_0
 } // namespace Nnrt
 } // namespace HDI
 } // namespace OHOS

@@ -128,9 +128,9 @@ int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
     return ret;
 }
 
-int SetDevice(OH_NNCompilation *compilation)
+OH_NN_ReturnCode SetDevice(OH_NNCompilation *compilation)
 {
-    int ret = 0;
+    OH_NN_ReturnCode ret = OH_NN_FAILED;
     const size_t *devicesID{nullptr};
     uint32_t devicesCount{0};
     ret = OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount);
@@ -139,11 +139,31 @@ int SetDevice(OH_NNCompilation *compilation)
         return ret;
     }
     if (devicesCount <= NO_DEVICE_COUNT) {
+        LOGE("[NNRtTest] devicesCount <= 0  devicesCount=%d\n", devicesCount);
         return OH_NN_FAILED;
     }
-    size_t targetDevice = devicesID[0]; // Use the first device in system test.
-    ret = OH_NNCompilation_SetDevice(compilation, targetDevice);
-    return ret;
+
+    const char *name = nullptr;
+    std::string m_deviceName{"Device-CPU_TestVendor_v2_0"};
+    for (uint32_t i = 0; i < devicesCount; i++) {
+        name = nullptr;
+        ret = OH_NNDevice_GetName(devicesID[i], &name);
+        if (ret != OH_NN_SUCCESS) {
+            LOGE("[NNRtTest] OH_NNDevice_GetName failed! ret=%d\n", ret);
+            return ret;
+        }
+
+        std::string sName(name);
+        if (m_deviceName == sName) {
+            ret = OH_NNCompilation_SetDevice(compilation, devicesID[i]);
+            if (ret != OH_NN_SUCCESS) {
+                LOGE("[NNRtTest] OH_NNCompilation_SetDevice failed! ret=%d\n", ret);
+                return ret;
+            }
+            return OH_NN_SUCCESS;
+        }
+    }  
+    return OH_NN_FAILED;
 }
 
 int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &compileParam)
@@ -196,7 +216,7 @@ int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &comp
 int ExecuteGraphMock(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs,
     float* expect)
 {
-    OHOS::sptr<V1_0::MockIDevice> device = V1_0::MockIDevice::GetInstance();
+    OHOS::sptr<V2_0::MockIDevice> device = V2_0::MockIDevice::GetInstance();
     int ret = 0;
     uint32_t inputIndex = 0;
     uint32_t outputIndex = 0;
@@ -239,7 +259,7 @@ int ExecuteGraphMock(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs,
 int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, OH_NN_Memory *OHNNMemory[],
     float* expect)
 {
-    OHOS::sptr<V1_0::MockIDevice> device = V1_0::MockIDevice::GetInstance();
+    OHOS::sptr<V2_0::MockIDevice> device = V2_0::MockIDevice::GetInstance();
     int ret = 0;
     uint32_t inputIndex = 0;
     uint32_t outputIndex = 0;

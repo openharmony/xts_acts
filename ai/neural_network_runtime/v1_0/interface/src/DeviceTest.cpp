@@ -78,7 +78,7 @@ HWTEST_F(DeviceTest, SUB_AI_NNRt_Func_North_Device_DeviceID_0400, Function | Med
     EXPECT_EQ(OH_NN_SUCCESS, ret);
 
     uint32_t expectCount = 1;
-    EXPECT_EQ(expectCount, count);
+    EXPECT_LE(expectCount, count);
 }
 
 /**
@@ -139,15 +139,23 @@ HWTEST_F(DeviceTest, SUB_AI_NNRt_Func_North_Device_DeviceName_0400, Function | M
     const size_t *devicesID{nullptr};
     uint32_t devicesCount{0};
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount));
-    size_t targetDevice = devicesID[0];
+    uint32_t number = 1;
+    EXPECT_GE(devicesCount, number);
 
     const char *name = nullptr;
-    std::string m_deviceName{"Device-CPU_TestVendor"};
-
-    OH_NN_ReturnCode ret = OH_NNDevice_GetName(targetDevice, &name);
-    EXPECT_EQ(OH_NN_SUCCESS, ret);
-    std::string sName(name);
-    EXPECT_EQ(m_deviceName, sName);
+    std::string m_deviceName{"Device-CPU_TestVendor_v1_0"};
+    OH_NN_ReturnCode ret = OH_NN_FAILED;
+    bool isHaveName = false;
+    for (uint32_t i = 0; i < devicesCount; i++) {
+        name = nullptr;
+        ret = OH_NNDevice_GetName(devicesID[i], &name);
+        EXPECT_EQ(OH_NN_SUCCESS, ret);
+        std::string sName(name);
+        if (m_deviceName == sName) {
+            isHaveName = true;
+        }  
+    }
+    EXPECT_EQ(isHaveName, true);
 }
 
 /**
