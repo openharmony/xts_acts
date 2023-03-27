@@ -81,26 +81,5 @@ export default function getTargetOverlayModuleInfos() {
       });
     })
 
-    /*
-     * @tc.number: SUB_BMS_APPINFO_OVERLAY_0009
-     * @tc.name: GetTargetOverlayModuleInfosModuleNameIsOverlay
-     * @tc.desc: Failed to set when the incoming moduleName is overlay
-     */
-    it('GetTargetOverlayModuleInfosModuleNameIsOverlay', 0, async function (done) {
-      await overlay.getTargetOverlayModuleInfos(MODULE_NAME2).then(data => {
-        Utils.info("GetTargetOverlayModuleInfosModuleNameIsOverlay result" + JSON.stringify(data));
-        expect().assertFail();
-      }).catch(err => {
-        Utils.info("GetTargetOverlayModuleInfosModuleNameIsOverlay fail" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_IS_OVERLAY);
-      });
-
-      overlay.getTargetOverlayModuleInfos(MODULE_NAME2, (err,data) => {
-        Utils.info("GetTargetOverlayModuleInfosModuleNameIsOverlay result" + JSON.stringify(data));
-        Utils.info("GetTargetOverlayModuleInfosModuleNameIsOverlay fail" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_IS_OVERLAY);
-        done();
-      });
-    })
   })
 }

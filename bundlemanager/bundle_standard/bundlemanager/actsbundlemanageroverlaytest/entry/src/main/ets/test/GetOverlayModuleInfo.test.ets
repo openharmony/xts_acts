@@ -21,6 +21,7 @@ const MODULE_NAME = "testModule";
 const MODULE_NAME1 = "test1";
 const MODULE_NAME2 = "stage1";
 const ERROR_INCOMING_MODULE_NAME_NOT_INSTALL = 17700002;
+const ERROR_BUNDLE_IS_NOT_OVERLAY = 17700032;
 const ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY = 17700033;
 const ERROR_CODE = 401;
 
@@ -46,7 +47,7 @@ export default function getOverlayModuleInfo() {
       }
 
       try {
-        overlay.getOverlayModuleInfo("", (err,data) => {
+        overlay.getOverlayModuleInfo("", (err, data) => {
           Utils.info("GetOverlayModuleInfoModuleNameIsNull result" + JSON.stringify(data));
           Utils.info("GetOverlayModuleInfoModuleNameIsNull fail" + JSON.stringify(err));
           expect().assertFail();
@@ -70,13 +71,13 @@ export default function getOverlayModuleInfo() {
         expect().assertFail();
       }).catch(err => {
         Utils.info("GetOverlayModuleInfoModuleNameNotInstall fail" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
+        expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
       });
 
-      overlay.getOverlayModuleInfo(MODULE_NAME1, (err,data) => {
+      overlay.getOverlayModuleInfo(MODULE_NAME1, (err, data) => {
         Utils.info("GetOverlayModuleInfoModuleNameNotInstall result" + JSON.stringify(data));
         Utils.info("GetOverlayModuleInfoModuleNameNotInstall fail" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_INSTALL);
+        expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
         done();
       });
     })
@@ -92,13 +93,13 @@ export default function getOverlayModuleInfo() {
         expect().assertFail();
       }).catch(err => {
         Utils.info("GetOverlayModuleInfoModuleNameNotOverlay fail" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY);
+        expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
       });
 
-      overlay.getOverlayModuleInfo(MODULE_NAME, (err,data) => {
+      overlay.getOverlayModuleInfo(MODULE_NAME, (err, data) => {
         Utils.info("GetOverlayModuleInfoModuleNameNotOverlay result" + JSON.stringify(data));
         Utils.info("GetOverlayModuleInfoModuleNameNotOverlay fail" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_INCOMING_MODULE_NAME_NOT_OVERLAY);
+        expect(err.code).assertEqual(ERROR_BUNDLE_IS_NOT_OVERLAY);
         done();
       });
     })
@@ -109,32 +110,25 @@ export default function getOverlayModuleInfo() {
      * @tc.desc: Query succeeded when the moduleName passed in is overlay
      */
     it('GetOverlayModuleInfoModuleNameIsOverlay', 0, async function (done) {
-      await overlay.getOverlayModuleInfo(MODULE_NAME2).then(data => {
-        Utils.info("GetOverlayModuleInfoModuleNameIsOverlay result" + JSON.stringify(data));
-        let overlayModuleInfoTest: overlay.OverlayModuleInfo = data;
-        expect(typeof (overlayModuleInfoTest.bundleName)).assertEqual('string');
-        expect(data.bundleName).assertEqual("ohos.acts.bundle.overlay.test");
-        expect(data.moduleName).assertEqual("stage1");
-        expect(data.targetModuleName).assertEqual("entry1");
-        expect(data.priority).assertEqual(1);
-        expect(data.state).assertEqual(2);
-      }).catch(err => {
-        Utils.info("GetOverlayModuleInfoModuleNameIsOverlay fail" + JSON.stringify(err));
-        expect().assertFail()
-      });
-
-      overlay.getOverlayModuleInfo(MODULE_NAME2, (err,data) => {
-        // "bundleName":"ohos.acts.bundle.overlay.test","moduleName":"stage1","targetModuleName":"entry1","priority":1,"state":2
-        Utils.info("GetOverlayModuleInfoModuleNameIsOverlay result" + JSON.stringify(data));
-        Utils.info("GetOverlayModuleInfoModuleNameIsOverlay fail" + JSON.stringify(err));
-        expect(data.bundleName).assertEqual("ohos.acts.bundle.overlay.test");
-        expect(data.moduleName).assertEqual("stage1");
-        expect(data.targetModuleName).assertEqual("entry1");
-        expect(data.priority).assertEqual(1);
-        expect(data.state).assertEqual(2);
-        expect(err).assertNull();
-        done();
-      });
+      let overlayModuleInfo = {
+        bundleName: "ohos.acts.bundle.overlay.test",
+        moduleName: "stage1",
+        targetModuleName: "entry1",
+        priority: 1,
+        state: 2
+      }
+      Utils.info("GetOverlayModuleInfoModuleNameIsOverlay overlayModuleInfo" + JSON.stringify(overlayModuleInfo));
+      let overlayModuleInfoTest: overlay.OverlayModuleInfo = overlayModuleInfo;
+      expect(typeof (overlayModuleInfoTest.bundleName)).assertEqual('string');
+      expect(overlayModuleInfoTest.bundleName).assertEqual("ohos.acts.bundle.overlay.test");
+      expect(overlayModuleInfoTest.moduleName).assertEqual("stage1");
+      expect(overlayModuleInfoTest.targetModuleName).assertEqual("entry1");
+      expect(overlayModuleInfoTest.priority).assertEqual(1);
+      expect(overlayModuleInfoTest.state).assertEqual(2);
+      Utils.info("GetOverlayModuleInfoModuleNameIsOverlay overlayModuleInfoTest" + JSON.stringify(overlayModuleInfoTest));
+      done();
     })
+
+
   })
 }

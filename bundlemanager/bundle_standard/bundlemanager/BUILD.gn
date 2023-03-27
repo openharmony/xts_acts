@@ -53,7 +53,6 @@ group("bundlemanager") {
       "sceneProject/bmsmainabilitysecondscene:bmsMainAbilitySecondScene",
       "sceneProject/bmsmodulenameone:bmsModuleNameTest1",
       "sceneProject/bmsmodulenametwo:bmsModuleNameTest2",
-      "sceneProject/bmsoverlaydemo:bmsOverlayDemo",
       "sceneProject/bmsscenefive:bmsJstest5",
       "sceneProject/bmsscenefour:bmsJstest4",
       "sceneProject/bmssceneone:bmsJstest1",

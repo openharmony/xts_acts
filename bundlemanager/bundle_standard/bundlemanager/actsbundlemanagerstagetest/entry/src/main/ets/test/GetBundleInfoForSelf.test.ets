@@ -38,6 +38,7 @@ export default function getBundleInfoForSelf() {
     it('getBundleInfoForSelfPro', 0, async function (done) {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).then(data => {
         console.info("getBundleInfoForSelfPro" + JSON.stringify(data));
+        expect(bundle.CompatiblePolicy.BACKWARD_COMPATIBILITY).assertEqual(1);
         expect(data.name).assertEqual(BUNDLE_NAME);
         expect(data.vendor).assertEqual(VENDOR);
         expect(data.versionCode).assertEqual(1000000);
