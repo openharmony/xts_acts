@@ -48,9 +48,9 @@ export default function inputMethodAbility() {
       inputServer.id = inputM.methodId;
       console.info("====>beforeAll inputMethodStageJSUnit start");
       let inputDemoService: subtype ={
-        id: 'com.acts.inputmethodengine.test',
-        label: 'inputStageService',
-        name: '',
+        id: 'inputStageService',
+        label: '',
+        name: 'com.acts.inputmethodengine.test',
         mode: 'lower',
         locale: '',
         language: '',
