@@ -12,109 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureAbility'
 import appManager from "@ohos.application.appManager"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 export default function ActsAmsTestFourthScene() {
     describe('ActsAmsTestFourthScene', function () {
         console.info('----ActsAmsTestFourthScene----');
-        beforeAll(async function (done) {
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.verify.io",
-                        abilityName: "com.example.VerifyIoThirdAbility",
-                        action: "action1",
-                        entities: ["entity1"],
-                        type: "MIMETYPE",
-                        uri: "key={true,true,false}",
-                        options:
-                            {},
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsTestFourthScene VerifyIoThirdAbility start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.simulate.feature",
-                        abilityName: "com.example.SimulateFeatureAbilityFir",
-                        action: "action1",
-                        entities: ["entity1"],
-                        type: "MIMETYPE",
-                        uri: "key={true,true,false}",
-                        options:
-                            {},
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsTestFourthScene SimulateFeatureAbilityFir start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.verify.act",
-                        abilityName: "com.example.VerifyActThirdAbility",
-                        action: "action1",
-                        entities: ["entity1"],
-                        type: "MIMETYPE",
-                        uri: "key={true,true,false}",
-                        options:
-                            {},
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsTestFourthScene VerifyActThirdAbility start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.simulate.entry",
-                        abilityName: "com.example.SimulateEntryAbility",
-                        action: "action1",
-                        entities: ["entity1"],
-                        type: "MIMETYPE",
-                        uri: "key={true,true,false}",
-                        options:
-                            {},
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsTestFourthScene SimulateEntryAbility start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-            sleep(500);
-            done();
-        });
-
-        function timeout(done) {
-            expect().assertFail();
-            console.debug('Acts_Ams_test=========timeout========');
-            done();
-        }
 
         function sleep(delay) {
             var start = new Date().getTime();

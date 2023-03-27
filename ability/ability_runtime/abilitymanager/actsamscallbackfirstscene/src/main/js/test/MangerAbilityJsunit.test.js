@@ -12,47 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureAbility'
 import appManager from "@ohos.application.appManager"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 export default function ActsAmsCallBackFirstScene() {
     describe('ActsAmsCallBackFirstScene', function () {
         console.info('----ActsAmsCallBackFirstScene----');
-        beforeAll(async function (done) {
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.simulate.feature",
-                        abilityName: "com.example.SimulateFeatureAbilityFir",
-                        action: "action1",
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsCallBackFirstScene SimulateFeatureAbilityFir start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-            sleep(500);
-            done();
-        });
-
-        function timeout(done) {
-            expect().assertFail();
-            console.debug('Acts_Ams_test=========timeout========');
-            done();
-        }
-
-        function sleep(delay) {
-            var start = new Date().getTime();
-            while (true) {
-                if (new Date().getTime() - start > delay) {
-                    break;
-                }
-            }
-        }
 
         /*
         * @tc.number    : Acts_Ams_test_0200

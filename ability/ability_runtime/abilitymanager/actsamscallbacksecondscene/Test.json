@@ -10,9 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAmsCallBackSecondSceneTest.hap",
-                "verifyIAbility.hap",
-                "simulateFAbilityFir.hap"
+                "ActsAmsCallBackSecondSceneTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

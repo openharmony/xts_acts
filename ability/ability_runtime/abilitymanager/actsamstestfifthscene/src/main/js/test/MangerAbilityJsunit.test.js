@@ -12,118 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureAbility'
 import appManager from "@ohos.application.appManager"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 
-let abilityNameList = [
-    "com.ohos.launcher.MainAbility",
-    "com.ohos.callui.ServiceAbility",
-    "com.example.SimulateFeatureAbilityFir",
-    "com.example.SimulateFeatureAbilitySed",
-    "com.example.VerifyIoThirdAbility",
-    "com.example.actsamstestfifthscene.MainAbility"
-]
-
-let bundleNameList = [
-    "com.ohos.launcher",
-    "com.ohos.systemui",
-    "com.ohos.callui",
-    "com.ohos.contacts",
-    "com.ohos.mms",
-    "com.ohos.telephonydataability",
-    "com.ohos.contactsdataability",
-    "com.ix.simulate.feature",
-    "com.ix.verify.io",
-    "com.example.actsamstestfifthscene"
-]
 export default function ActsAmsTestFifthScene() {
     describe('ActsAmsTestFifthScene', function () {
         console.info('----ActsAmsTestFifthScene----');
-        beforeAll(async function (done) {
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.simulate.feature",
-                        abilityName: "com.example.SimulateFeatureAbilityFir",
-                        action: "action1",
-                        entities: ["entity1"],
-                        type: "MIMETYPE",
-                        uri: "key={true,true,false}",
-                        options:
-                            {},
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsTestFifthScene SimulateFeatureAbilityFir start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.verify.io",
-                        abilityName: "com.example.VerifyIoThirdAbility",
-                        action: "action1",
-                        entities: ["entity1"],
-                        type: "MIMETYPE",
-                        uri: "key={true,true,false}",
-                        options:
-                            {},
-                        parameters:
-                            {},
-                    },
-                },  (error, data) => {
-                    console.info('ActsAmsTestFifthScene VerifyIoThirdAbility start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.simulate.feature",
-                        abilityName: "com.example.SimulateFeatureAbilitySed",
-                        action: "action1",
-                        entities: ["entity1"],
-                        type: "MIMETYPE",
-                        uri: "key={true,true,false}",
-                        options:
-                            {},
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsTestFifthScene SimulateFeatureAbilitySed start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-            sleep(500);
-            done();
-        });
-
-        function timeout(done) {
-            expect().assertFail();
-            console.debug('Acts_Ams_test=========timeout========');
-            done();
-        }
-
-        function sleep(delay) {
-            let start = new Date().getTime();
-            while (true) {
-                if (new Date().getTime() - start > delay) {
-                    break;
-                }
-            }
-        }
 
         /*
         * @tc.number    : Acts_Ams_test_0100
