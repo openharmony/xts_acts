@@ -86,6 +86,9 @@
  import flex_AlignContent_SpaceAround_TextMarTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextMar.test';
  import flex_AlignContent_SpaceAround_TextOffsetTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextOffset.test';
  import flex_AlignContent_SpaceAround_TextVisibilityTest from './Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextVisibility.test';
+import tabs_IndexTest from './Tabs/tabs_index/Tabs_index.test';
+import tabs_PadMarTest from './Tabs/Tabs_ParmsChange/Tabs_PadMar.test';
+import tabs_WidHeiTest from './Tabs/Tabs_ParmsChange/Tabs_WidHei.test';
 export default function testsuite() {
   flexBase_AutoJsunit()
   flexPadding_AutoJsunit()
@@ -161,4 +164,7 @@ export default function testsuite() {
   flex_AlignContent_SpaceAround_TextMarTest();
   flex_AlignContent_SpaceAround_TextOffsetTest();
   flex_AlignContent_SpaceAround_TextVisibilityTest();
+  tabs_IndexTest();
+  tabs_PadMarTest();
+  tabs_WidHeiTest();
 }
