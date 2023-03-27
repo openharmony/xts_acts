@@ -1669,7 +1669,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedDigitFont_0100 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.selectedFontSize).assertEqual("34.00fp");
-          expect(obj2.selectedFontWeight).assertEqual("FontWeight.800");
+          expect(obj2.selectedFontWeight).assertEqual("800");
           console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0100 END ');
           done();
         } catch (err) {
@@ -1700,7 +1700,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedDigitFont_0200 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.selectedFontSize).assertEqual("20.00px");
-          expect(obj2.selectedFontWeight).assertEqual("FontWeight.200");
+          expect(obj2.selectedFontWeight).assertEqual("200");
           console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0200 END ');
           done();
         } catch (err) {
@@ -1731,7 +1731,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedDigitFont_0300 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.selectedFontSize).assertEqual("48.00%");
-          expect(obj2.selectedFontWeight).assertEqual("FontWeight.900");
+          expect(obj2.selectedFontWeight).assertEqual("900");
           console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0300 END ');
           done();
         } catch (err) {
@@ -1918,7 +1918,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedDigitFont_0900 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.selectedFontSize).assertEqual("40.00lpx");
-          expect(obj2.selectedFontWeight).assertEqual("FontWeight.500");
+          expect(obj2.selectedFontWeight).assertEqual("500");
           console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0900 END ');
           done();
         } catch (err) {
@@ -1982,7 +1982,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedDigitFont_1100 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.selectedFontSize).assertEqual("10.00fp");
-          expect(obj2.selectedFontWeight).assertEqual("FontWeight.600");
+          expect(obj2.selectedFontWeight).assertEqual("600");
           console.info('ArkUX_Stage_Swiper_SelectedDigitFont_1100 END ');
           done();
         } catch (err) {
@@ -2013,7 +2013,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_DigitFont_0100 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.fontSize).assertEqual("34.00fp");
-          expect(obj2.fontWeight).assertEqual("FontWeight.800");
+          expect(obj2.fontWeight).assertEqual("800");
           console.info('ArkUX_Stage_Swiper_DigitFont_0100 END ');
           done();
         } catch (err) {
@@ -2044,7 +2044,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_DigitFont_0200 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.fontSize).assertEqual("20.00px");
-          expect(obj2.fontWeight).assertEqual("FontWeight.200");
+          expect(obj2.fontWeight).assertEqual("200");
           console.info('ArkUX_Stage_Swiper_DigitFont_0200 END ');
           done();
         } catch (err) {
@@ -2075,7 +2075,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_DigitFont_0300 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.fontSize).assertEqual("48.00%");
-          expect(obj2.fontWeight).assertEqual("FontWeight.900");
+          expect(obj2.fontWeight).assertEqual("900");
           console.info('ArkUX_Stage_Swiper_DigitFont_0300 END ');
           done();
         } catch (err) {
@@ -2262,7 +2262,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_DigitFont_0900 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.fontSize).assertEqual("40.00lpx");
-          expect(obj2.fontWeight).assertEqual("FontWeight.500");
+          expect(obj2.fontWeight).assertEqual("500");
           console.info('ArkUX_Stage_Swiper_DigitFont_0900 END ');
           done();
         } catch (err) {
@@ -2326,7 +2326,7 @@ export default function swiperTest() {
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_DigitFont_1100 component obj2 is: " + JSON.stringify(obj2));
           expect(obj2.fontSize).assertEqual("10.00fp");
-          expect(obj2.fontWeight).assertEqual("FontWeight.600");
+          expect(obj2.fontWeight).assertEqual("600");
           console.info('ArkUX_Stage_Swiper_DigitFont_1100 END ');
           done();
         } catch (err) {
