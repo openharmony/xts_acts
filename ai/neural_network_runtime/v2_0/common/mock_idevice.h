@@ -70,6 +70,9 @@ public:
 
     int32_t PrepareModel(const Model& model, const ModelConfig& config, sptr<IPreparedModel>& preparedModel) override;
 
+    int32_t PrepareOfflineModel(const std::vector<SharedBuffer>& offlineModels, const ModelConfig& config,
+        sptr<OHOS::HDI::Nnrt::V2_0::IPreparedModel>& preparedModel) override;
+
     int32_t PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
          sptr<IPreparedModel>& preparedModel) override;
 
@@ -108,7 +111,7 @@ class MockIPreparedModel : public IPreparedModel {
 public:
     int32_t ExportModelCache(std::vector<SharedBuffer>& modelCache) override;
     int32_t Run(const std::vector<IOTensor>& inputs, const std::vector<IOTensor>& outputs,
-    std::vector<std::vector<int32_t>>& outputsDims, std::vector<bool>& isOutputBufferEnough) override;
+    std::vector<std::vector<int32_t>>& outputsDims) override;
     int32_t GetInputDimRanges(std::vector<std::vector<uint32_t>>& minInputDims, std::vector<std::vector<uint32_t>>& maxInputDims) override;
     int32_t GetVersion(uint32_t &majorVersion, uint32_t &minorVersion) override;
     MockIPreparedModel() = default;

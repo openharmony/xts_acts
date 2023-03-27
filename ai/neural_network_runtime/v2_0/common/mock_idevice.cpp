@@ -206,6 +206,13 @@ int32_t MockIDevice::PrepareModel(const Model& model, const ModelConfig& config,
     return HDF_SUCCESS;
 }
 
+int32_t MockIDevice::PrepareOfflineModel(const std::vector<SharedBuffer>& offlineModels, const ModelConfig& config,
+     sptr<OHOS::HDI::Nnrt::V2_0::IPreparedModel>& preparedModel)
+{
+    preparedModel = new (std::nothrow) V2_0::MockIPreparedModel();
+    return V2_0::NNRT_ReturnCode::NNRT_SUCCESS;
+}
+
 int32_t MockIDevice::PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
     sptr<IPreparedModel>& preparedModel)
 {
@@ -251,10 +258,9 @@ int32_t MockIPreparedModel::GetVersion(uint32_t &majorVersion, uint32_t &minorVe
 }
 
 int32_t MockIPreparedModel::Run(const std::vector<IOTensor>& inputs, const std::vector<IOTensor>& outputs,
-    std::vector<std::vector<int32_t>>& outputsDims, std::vector<bool>& isOutputBufferEnough)
+    std::vector<std::vector<int32_t>>& outputsDims)
 {
     outputsDims = {{1, 2, 2, 1}};
-    isOutputBufferEnough = {true};
     return HDF_SUCCESS;
 }
 

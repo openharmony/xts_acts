@@ -805,7 +805,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0200, Function |
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
     ASSERT_NE(nullptr, executor);
     uint32_t inputIndex = 0;
-    for (auto i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
