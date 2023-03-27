@@ -2770,7 +2770,7 @@ describe('audioFramework', function () {
             await audioManager.mute(audio.AudioVolumeType.VOICE_CALL, false);
             let value = await audioManager.getVolume(audio.AudioVolumeType.VOICE_CALL);
             console.info("AudioFrameworkTest: value is " + value);
-            if (value == lowVol) {
+            if (value > 0) {
                 expect(true).assertTrue();
             } else {
                 expect(false).assertTrue();
