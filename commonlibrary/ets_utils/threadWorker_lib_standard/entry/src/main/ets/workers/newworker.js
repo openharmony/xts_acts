@@ -16,11 +16,7 @@
 import worker from '@ohos.worker';
 const parentPort = worker.workerPort;
 
-console.info("worker:: new version")
-
-parentPort.onclose = function() {
-    console.info("worker::worker.js onclose");
-}
+console.info("worker:: new version");
 
 parentPort.onmessage = function(e) {
     let data = e.data;

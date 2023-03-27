@@ -30,7 +30,7 @@ describe('bluetoothBLETest', function() {
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 break;
             case 1:
                 console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
@@ -42,7 +42,7 @@ describe('bluetoothBLETest', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(1000);
                 break;
             default:
                 console.info('[bluetooth_js] enable success');

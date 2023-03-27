@@ -15,7 +15,14 @@
 
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
- 
+
+let BluetoothState = {
+    STATE_OFF: 0,STATE_TURNING_ON: 1,
+    STATE_ON: 2,STATE_TURNING_OFF: 3,
+    STATE_BLE_TURNING_ON: 4, STATE_BLE_ON: 5,
+    STATE_BLE_TURNING_OFF: 6
+};
+
 export default function bluetoothhostTest() {
 describe('bluetoothhostTest', function() {
     function sleep(delay) {
@@ -26,7 +33,7 @@ describe('bluetoothhostTest', function() {
         switch(sta){
             case 0:
                 bluetooth.enableBluetooth();
-                await sleep(5000);
+                await sleep(10000);
                 let sta1 = bluetooth.getState();
                 console.info('[bluetooth_js] Reacquire bt state:'+ JSON.stringify(sta1));
                 break;
@@ -39,7 +46,7 @@ describe('bluetoothhostTest', function() {
                 break;
             case 3:
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 let sta2 = bluetooth.getState();
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta2));
                 break;
@@ -47,8 +54,9 @@ describe('bluetoothhostTest', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function () {
+    beforeAll(async function (done) {
         console.info('beforeAll called')
+        done()
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
@@ -81,7 +89,7 @@ describe('bluetoothhostTest', function() {
         if(state!=bluetooth.BluetoothState.STATE_ON)
         {
             let enable = bluetooth.enableBluetooth();
-            await sleep(5000);
+            await sleep(10000);
             console.info('[bluetooth_js] bluetooth enable001'+JSON.stringify(enable));
             expect(enable).assertTrue();
             let state1 = bluetooth.getState();
@@ -109,12 +117,13 @@ describe('bluetoothhostTest', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0300', 0, async function (done) {
+        let enable = bluetooth.enableBluetooth();
         let state = bluetooth.getState();
         console.info('[bluetooth_js] bt open state1 = '+ JSON.stringify(state));
         expect(state).assertEqual(bluetooth.BluetoothState.STATE_ON);
         if(state==bluetooth.BluetoothState.STATE_ON) {
             let enable1=bluetooth.enableBluetooth();
-            await sleep(3000);
+            await sleep(10000);
             console.info('[bluetooth_js]enable1 :'+ JSON.stringify(enable1));
             expect(enable1).assertFalse();
             let state1 = bluetooth.getState();

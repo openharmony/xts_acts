@@ -22,9 +22,9 @@ hctest_suite("ActsDfxFuncTest") {
     "//base/hiviewdfx/hilog_lite/interfaces/native/kits/hilog_lite",
     "//base/hiviewdfx/hievent_lite/interfaces/native/innerkits",
     "//base/hiviewdfx/hilog_lite/frameworks/mini",
-    "//vendor/hisi/hi3861/hi3861/include",
-    "//vendor/hisi/hi3861/hi3861/components/lwip_sack/include",
   ]
 
-  cflags = [ "-Wno-error" ]
+  if (board_toolchain_type != "iccarm") {
+    cflags = [ "-Wno-error" ]
+  }
 }

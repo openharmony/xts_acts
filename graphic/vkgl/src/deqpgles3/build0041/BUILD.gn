@@ -39,6 +39,8 @@ ohos_static_library("libdeqpgles3func0041") {
 }
 
 ohos_moduletest_suite("ActsDeqpgles3TestSuite0041") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = [
     "../ActsDeqpgles30041TestSuite.cpp",
     "../functional/Deqpgles3draw_arrays_instanced_attribute_divisorTestCase.cpp",

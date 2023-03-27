@@ -116,7 +116,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
       console.info('usb 0030 case setPortRoles error : ' + error);
       expect(error).assertFalse();
     })
-    CheckEmptyUtils.sleep(8000)
+    CheckEmptyUtils.sleep(4000)
     console.info('usb SUB_USB_JS_0030:  PASS');
   })
 
@@ -136,7 +136,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
       console.info('usb 0040 case setPortRoles error : ' + error);
       expect(error).assertFalse();
     })
-    CheckEmptyUtils.sleep(8000)
+    CheckEmptyUtils.sleep(4000)
     console.info('usb SUB_USB_JS_0040:  PASS');
   })
 
@@ -156,7 +156,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
       console.info('usb 0050 case setPortRoles error : ' + error);
       expect(error).assertFalse();
     })
-    CheckEmptyUtils.sleep(8000)
+    CheckEmptyUtils.sleep(4000)
     console.info('usb SUB_USB_JS_0050:  PASS');
   })
 
@@ -176,7 +176,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
       console.info('usb 0060 case setPortRoles error : ' + error);
       expect(error).assertFalse();
     })
-    CheckEmptyUtils.sleep(8000)
+    CheckEmptyUtils.sleep(4000)
     console.info('usb SUB_USB_JS_0060:  PASS');
   })
 
@@ -196,7 +196,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
       console.info('usb 0070 case setPortRoles error : ' + error);
       expect(error).assertFalse();
     })
-    CheckEmptyUtils.sleep(8000)
+    CheckEmptyUtils.sleep(4000)
     console.info('usb SUB_USB_JS_0070:  PASS');
   })
 
@@ -216,7 +216,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
       console.info('usb 0080 case setPortRoles error : ' + error);
       expect(error).assertFalse();
     })
-    CheckEmptyUtils.sleep(8000)
+    CheckEmptyUtils.sleep(4000)
     console.info('usb SUB_USB_JS_0080:  PASS');
   })
 

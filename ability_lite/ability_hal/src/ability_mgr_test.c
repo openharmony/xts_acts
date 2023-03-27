@@ -22,7 +22,7 @@
 
 #include "hctest.h"
 #include "ohos_types.h"
-#include "ability_manager.h"
+#include "slite/ability_manager.h"
 #include "ability_errors.h"
 #include "want.h"
 

@@ -14,6 +14,7 @@
  */
 import {CustomContainer} from '../common/CanvasCustomContainer2';
 import FirstDialog from '../model/FirstDialog';
+import router from '@ohos.router';
 @Entry
 @Component
 struct SetCircle {
@@ -41,6 +42,8 @@ struct SetCircle {
             })
             .onActionUpdate((event: GestureEvent) => {
               this.X = event.offsetX;
+              this.context.lineWidth = (this.X)*0.1;
+              this.context.strokeRect(120, 120, 120, 120);
             })
             .onActionEnd(() => {
               console.info('Pan end');
@@ -49,7 +52,7 @@ struct SetCircle {
 
       }.width('70%').height('30%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Text('边框粗细: ' + (this.X)*0.05 )
+        Text('边框粗细: ' + (this.X)*0.1 )
       }.width('100%').height('20%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
@@ -57,7 +60,7 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.lineWidth = (this.X)*0.05;
+            this.context.lineWidth = 1;
             this.context.strokeRect(120, 120, 120, 120);
           })
       }.width('100%').height('50%')
@@ -76,5 +79,10 @@ struct SetCircle {
         Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/ArkUI/ArkUI_index',
+    })
   }
 }

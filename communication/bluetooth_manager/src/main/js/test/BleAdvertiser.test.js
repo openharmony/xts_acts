@@ -17,7 +17,6 @@
 import bluetooth from '@ohos.bluetoothManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-
 export default function bluetoothBLETest2() {
 describe('bluetoothBLETest2', function() {
     let gattServer = null;
@@ -31,7 +30,7 @@ describe('bluetoothBLETest2', function() {
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 break;
             case 1:
                 console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
@@ -43,7 +42,7 @@ describe('bluetoothBLETest2', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 break;
             default:
                 console.info('[bluetooth_js] enable success');
@@ -51,13 +50,12 @@ describe('bluetoothBLETest2', function() {
     }
     beforeAll(async function (done) {
         console.info('beforeAll called')
-        await tryToEnableBt()
         gattServer = bluetooth.BLE.createGattServer();
         done()
     })
     beforeEach(async function (done) {
         console.info('beforeEach called')
-        await tryToEnableBt()
+        await tryToEnableBt();
         done()
 
     })

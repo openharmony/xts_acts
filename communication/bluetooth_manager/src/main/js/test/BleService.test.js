@@ -16,6 +16,83 @@
 import bluetooth from '@ohos.bluetoothManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
+let BluetoothState = {
+    STATE_OFF: 0,STATE_TURNING_ON: 1,
+    STATE_ON: 2,STATE_TURNING_OFF: 3,
+    STATE_BLE_TURNING_ON: 4, STATE_BLE_ON: 5,
+    STATE_BLE_TURNING_OFF: 6
+};
+
+let SppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
+    secure: true, type: bluetooth.SppType.SPP_RFCOMM};
+
+let MajorMinorClass = {
+    COMPUTER_UNCATEGORIZED : 0x0100,COMPUTER_DESKTOP : 0x0104,
+    COMPUTER_SERVER : 0x0108,COMPUTER_LAPTOP : 0x010C,
+    COMPUTER_HANDHELD_PC_PDA : 0x0110,COMPUTER_PALM_SIZE_PC_PDA : 0x0114,
+    COMPUTER_WEARABLE : 0x0118,COMPUTER_TABLET : 0x011C,
+    PHONE_UNCATEGORIZED : 0x0200,PHONE_CELLULAR : 0x0204,
+    PHONE_CORDLESS : 0x0208,PHONE_SMART : 0x020C,
+    PHONE_MODEM_OR_GATEWAY : 0x0210,PHONE_ISDN : 0x0214,
+    NETWORK_FULLY_AVAILABLE : 0x0300,NETWORK_1_TO_17_UTILIZED : 0x0320,
+    NETWORK_17_TO_33_UTILIZED : 0x0340,NETWORK_33_TO_50_UTILIZED : 0x0360,
+    NETWORK_60_TO_67_UTILIZED : 0x0380,NETWORK_67_TO_83_UTILIZED : 0x03A0,
+    NETWORK_83_TO_99_UTILIZED : 0x03C0,NETWORK_NO_SERVICE : 0x03E0,
+    AUDIO_VIDEO_UNCATEGORIZED : 0x0400,AUDIO_VIDEO_WEARABLE_HEADSET: 0x0404,
+    AUDIO_VIDEO_HANDSFREE : 0x0408,AUDIO_VIDEO_MICROPHONE : 0x0410,
+    AUDIO_VIDEO_LOUDSPEAKER : 0x0414,AUDIO_VIDEO_HEADPHONES : 0x0418,
+    AUDIO_VIDEO_PORTABLE_AUDIO : 0x041C,AUDIO_VIDEO_CAR_AUDIO : 0x0420,
+    AUDIO_VIDEO_SET_TOP_BOX : 0x0424,AUDIO_VIDEO_HIFI_AUDIO : 0x0428,
+    AUDIO_VIDEO_VCR : 0x042C,AUDIO_VIDEO_VIDEO_CAMERA : 0x0430,
+    AUDIO_VIDEO_CAMCORDER : 0x0434,AUDIO_VIDEO_VIDEO_MONITOR : 0x0438,
+    AUDIO_VIDEO_VIDEO_DISPLAY_AND_LOUDSPEAKER : 0x043C,
+    AUDIO_VIDEO_VIDEO_CONFERENCING : 0x0440,AUDIO_VIDEO_VIDEO_GAMING_TOY: 0x0448,
+    PERIPHERAL_NON_KEYBOARD_NON_POINTING : 0x0500,
+    PERIPHERAL_KEYBOARD : 0x0540,PERIPHERAL_POINTING_DEVICE : 0x0580,
+    PERIPHERAL_KEYBOARD_POINTING : 0x05C0,PERIPHERAL_UNCATEGORIZED : 0x0500,
+    PERIPHERAL_JOYSTICK : 0x0504,PERIPHERAL_GAMEPAD : 0x0508,
+    PERIPHERAL_REMOTE_CONTROL : 0x05C0,PERIPHERAL_SENSING_DEVICE : 0x0510,
+    PERIPHERAL_DIGITIZER_TABLET : 0x0514,
+    PERIPHERAL_CARD_READER : 0x0518,PERIPHERAL_DIGITAL_PEN : 0x051C,
+    PERIPHERAL_SCANNER_RFID : 0x0520,PERIPHERAL_GESTURAL_INPUT : 0x0522,
+    IMAGING_UNCATEGORIZED : 0x0600,IMAGING_DISPLAY : 0x0610,
+    IMAGING_CAMERA : 0x0620,IMAGING_SCANNER : 0x0640,
+    IMAGING_PRINTER : 0x0680,WEARABLE_UNCATEGORIZED : 0x0700,
+    WEARABLE_WRIST_WATCH : 0x0704,WEARABLE_PAGER : 0x0708,
+    WEARABLE_JACKET : 0x070C,WEARABLE_HELMET : 0x0710,
+    WEARABLE_GLASSES : 0x0714,TOY_UNCATEGORIZED : 0x0800,
+    TOY_ROBOT : 0x0804,TOY_VEHICLE : 0x0808,
+    TOY_DOLL_ACTION_FIGURE : 0x080C,TOY_CONTROLLER : 0x0810,
+    TOY_GAME : 0x0814,HEALTH_UNCATEGORIZED : 0x0900,
+    HEALTH_BLOOD_PRESSURE : 0x0904,HEALTH_THERMOMETER : 0x0908,
+    HEALTH_WEIGHING : 0x090C,HEALTH_GLUCOSE : 0x0910,
+    HEALTH_PULSE_OXIMETER : 0x0914,HEALTH_PULSE_RATE : 0x0918,
+    HEALTH_DATA_DISPLAY : 0x091C,HEALTH_STEP_COUNTER : 0x0920,
+    HEALTH_BODY_COMPOSITION_ANALYZER : 0x0924,
+    HEALTH_PEAK_FLOW_MOITOR : 0x0928,HEALTH_MEDICATION_MONITOR : 0x092C,
+    HEALTH_KNEE_PROSTHESIS : 0x0930,HEALTH_ANKLE_PROSTHESIS : 0x0934,
+    HEALTH_GENERIC_HEALTH_MANAGER : 0x0938,
+    HEALTH_PERSONAL_MOBILITY_DEVICE : 0x093C,
+    HEALTH_PERSONAL_MOBILITY_DEVICE : 0x093C,
+    HEALTH_PEAK_FLOW_MONITOR : 0x0928
+};
+
+let MajorClass = {
+    MAJOR_MISC : 0x0000,MAJOR_COMPUTER : 0x0100,
+    MAJOR_PHONE : 0x0200,MAJOR_NETWORKING : 0x0300,
+    MAJOR_AUDIO_VIDEO: 0x0400,MAJOR_PERIPHERAL : 0x0500,
+    MAJOR_IMAGING : 0x0600,MAJOR_WEARABLE : 0x0700,
+    MAJOR_TOY : 0x0800,MAJOR_HEALTH : 0x0900,
+    MAJOR_UNCATEGORIZED : 0x1F00
+};
+
+let ProfileId = {
+    PROFILE_A2DP_SOURCE: 1,
+    PROFILE_HANDS_FREE_AUDIO_GATEWAY: 4,
+    PROFILE_HID_HOST: 6,
+    PROFILE_PAN_NETWORK: 7
+};
+
 export default function bluetoothBLETest1() {
 describe('bluetoothBLETest1', function() {
 
@@ -31,7 +108,7 @@ describe('bluetoothBLETest1', function() {
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 break;
             case 1:
                 console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
@@ -43,7 +120,7 @@ describe('bluetoothBLETest1', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 break;
             default:
                 console.info('[bluetooth_js] enable success');
@@ -51,14 +128,13 @@ describe('bluetoothBLETest1', function() {
     }
     beforeAll(async function (done) {
         console.info('beforeAll called')
-        await tryToEnableBt()
         gattServer = bluetooth.BLE.createGattServer();
         gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
         done()
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
-        await tryToEnableBt()
+        await tryToEnableBt();
         done()
     })
     afterEach(function () {

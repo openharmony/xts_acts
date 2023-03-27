@@ -16,6 +16,32 @@
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
+async function applyPermission() {
+    let osAccountManager = osaccount.getAccountManager();
+    console.info("=== getAccountManager finish");
+    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+    console.info("LocalId is :" + localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.bluetooth.bluetoothhost', 0, localId);
+    let atManager = abilityAccessCtrl.createAtManager();
+    if (atManager != null) {
+        let tokenID = appInfo.accessTokenId;
+        console.info('[permission] case accessTokenID is ' + tokenID);
+        let permissionName1 = 'ohos.permission.LOCATION';
+        let permissionName2 = 'ohos.permission.DISCOVER_BLUETOOTH';
+        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+        await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+    } else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+    }
+}
 
 export default function bluetoothhostTest4() {
 describe('bluetoothhostTest4', function() {
@@ -29,7 +55,7 @@ describe('bluetoothhostTest4', function() {
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 break;
             case 1:
                 console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
@@ -41,14 +67,15 @@ describe('bluetoothhostTest4', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 break;
             default:
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function () {
+    beforeAll(async function (done) {
         console.info('beforeAll called')
+        done()
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')

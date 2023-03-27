@@ -2291,6 +2291,6 @@ export default function sliderTest() {
         }
       }, 500)
     })
-
+    
   })
 }

@@ -23,6 +23,8 @@ ohos_js_hap_suite("mediaLibrary_favorite_hap") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsMediaLibraryFavoriteTest"
+  part_name = "media_library"
+  subsystem_name = "multimedia"
 }
 
 ohos_app_scope("medialibrary_app_profile") {

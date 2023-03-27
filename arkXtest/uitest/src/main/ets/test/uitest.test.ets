@@ -166,6 +166,20 @@ export default function UiTest() {
             expect(button2 != null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
+
+        /*
+         * @tc.number: uiTest_10007
+         * @tc.name: testInWindow
+         * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
+         */
+        it('testInWindow', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let btn = await driver.findComponent(ON.inWindow('com.uitestScene.acts').text('next page'))
+            expect(btn != null).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
     })
 
     describe('UiTest_API8', function () {

@@ -39,6 +39,8 @@ ohos_static_library("libkhrgles3func0003") {
 }
 
 ohos_moduletest_suite("ActsKhrgles3TestSuite0003") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = [
     "../ActsKhrgles30003TestSuite.cpp",
     "../shaders/Khrgles3instance_array_basic_type_packedTestCase.cpp",

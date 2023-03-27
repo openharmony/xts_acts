@@ -36,7 +36,20 @@ export default class TestAbility extends Ability {
 
     onWindowStageCreate(windowStage) {
         console.log('TestAbility onWindowStageCreate')
+        globalThis.onWindowStageActive = false;
+        let count = 0;
         windowStage.setUIContent(this.context, 'MainAbility/pages/index', null)
+        windowStage.on('windowStageEvent', (data) => {
+          console.log(`ActsApiTest onWindwoStage is : ${JSON.stringify(data)}`)
+          if (data == 2 ) {
+            console.log(`ActsApiTest onWindwoStage count is : ${count}`)
+            count++;
+            if (count == 2) {
+              console.log(`ActsApiTest onWindwoStage count is : ${count}`)
+              globalThis.onWindowStageActive = true;
+            }
+          }
+        })
     }
 
     onWindowStageDestroy() {

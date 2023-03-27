@@ -15,6 +15,7 @@
 import fileio from '@ohos.fileio';
 import {CustomContainer} from '../common/TimeExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
+import router from '@ohos.router';
 
 let path = globalThis.dir;
 let Xpath = path + '/ResponseTimeKeyboard.log';
@@ -116,5 +117,10 @@ struct CustomContainerUser {
         time: $time
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/Experience/Experience_index',
+    })
   }
 }

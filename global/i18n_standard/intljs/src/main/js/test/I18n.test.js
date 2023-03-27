@@ -2292,5 +2292,40 @@ describe('I18nTest', function () {
         expect(value).assertEqual('\u0032\u0035');
     })
 
+    /**
+     * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_0900
+     * @tc.name getInstance method return 401 error code
+     * @tc.desc test the getInstance error code
+     */
+     it('i18n_normalizer_test_0900', 0, function () {
+        console.log('i18n_normalizer_test_0900 ' + 'start');
+        let str = '\u0032\u2075';
+        try{
+            let normal = I18n.Normalizer.getInstance(0);
+        }catch(error){
+            console.log('i18n_normalizer_test_0900 ' + error.code);
+            console.log('i18n_normalizer_test_0900 ' + error.message);
+            expect(error.code == 401).assertTrue();
+        }
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_I18N_NORMALIZE_JS_1000
+     * @tc.name normalize method return 401 error code
+     * @tc.desc test the normalize error code
+     */
+    it('i18n_normalizer_test_1000', 0, function () {
+        console.log('i18n_normalizer_test_1000 ' + 'start');
+        let str = '\u0032\u2075';
+        let normal = I18n.Normalizer.getInstance(1);
+        try{
+            let value = normal.normalize(1234);
+        }catch(error){
+            console.log('i18n_normalizer_test_1000 ' + error.code);
+            console.log('i18n_normalizer_test_1000 ' + error.message);
+            expect(error.code == 401).assertTrue();
+        }
+    })
+
     console.log('*************end I18NTest*************');
 })}

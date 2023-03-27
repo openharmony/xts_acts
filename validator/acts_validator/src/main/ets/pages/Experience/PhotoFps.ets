@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import fileio from '@ohos.fileio';
 import {CustomContainer} from '../common/ExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
@@ -132,5 +133,10 @@ struct CustomContainerUser {
         Fps: $Fps
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/Experience/Experience_index',
+    })
   }
 }

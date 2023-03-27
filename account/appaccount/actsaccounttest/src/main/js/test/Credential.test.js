@@ -19,28 +19,6 @@ const TIMEOUT = 5000;
 const EACHTIMEOUT = 500;
 export default function ActsAccountCredential() {
     describe('ActsAccountCredential', function () {
-        function sleep(delay) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve()
-                }, delay)
-            }).then(() => {
-                console.info(`sleep #{time} over ...`)
-            })
-        }
-
-        beforeAll(async function (done) {
-            console.debug("====>beforeAll start====");
-            await sleep(TIMEOUT);
-            console.debug("====>beforeAll end====");
-            done();
-        })
-
-        beforeEach(async function (done) {
-            console.debug("====>beforeEach enter====");
-            await sleep(EACHTIMEOUT);
-            done();
-        })
 
         /*
         * @tc.number    : ActsAccountCredential_0100

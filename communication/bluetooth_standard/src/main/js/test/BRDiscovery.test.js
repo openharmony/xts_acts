@@ -14,14 +14,43 @@
  */
 
 import bluetooth from '@ohos.bluetooth';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import osaccount from '@ohos.account.osAccount'
 
 const PERMISSION_USER_SET = 1;
 const PERMISSION_USER_NAME1 = "ohos.permission.LOCATION";
 const PERMISSION_USER_NAME2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
 let tokenID = undefined;
+
+async function applyPermission() {
+    let osAccountManager = osaccount.getAccountManager();
+    console.info("=== getAccountManager finish");
+    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+    console.info("LocalId is :" + localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.bluetooth.bluetoothhost', 0, localId);
+    let atManager = abilityAccessCtrl.createAtManager();
+    if (atManager != null) {
+        let tokenID = appInfo.accessTokenId;
+        console.info('[permission] case accessTokenID is ' + tokenID);
+        let permissionName1 = 'ohos.permission.LOCATION';
+        let permissionName2 = 'ohos.permission.DISCOVER_BLUETOOTH';
+        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+        await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+    } else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+    }
+}
+
 async function grantPerm() {
     console.info("====grant Permission start====");
     let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.bluetooth.bluetoothhost', 0, 100);
@@ -45,7 +74,7 @@ describe('bluetoothhostTest3', function() {
         switch(sta){
             case 0:
                 bluetooth.enableBluetooth();
-                await sleep(5000);
+                await sleep(10000);
                 let sta1 = bluetooth.getState();
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta1));
                 break;
@@ -58,7 +87,7 @@ describe('bluetoothhostTest3', function() {
                 break;
             case 3:
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(10000);
                 let sta2 = bluetooth.getState();
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta2));
                 break;
@@ -69,6 +98,7 @@ describe('bluetoothhostTest3', function() {
 
     beforeAll(async function (done) {
         console.info('beforeAll called')
+        await applyPermission();
         await grantPerm();
         done()
     })

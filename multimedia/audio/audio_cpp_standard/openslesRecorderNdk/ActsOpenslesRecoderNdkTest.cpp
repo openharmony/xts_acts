@@ -261,3 +261,41 @@ HWTEST_F(ActsOpenslesRecoderNdkTest, SUB_MULTIMEDIA_AUDIO_OPENSELES_RECODER_FUNC
     result = CaptureStop(recordItf);
     ASSERT_EQ(SL_RESULT_SUCCESS, result);
 }
+
+/**
+ * @tc.number    : SUB_MULTIMEDIA_AUDIO_OPENSELES_RECODER_INVALID_FUNCTION_0100
+ * @tc.name      : record invalid 001
+ * @tc.desc      : Basic function test
+ */
+HWTEST_F(ActsOpenslesRecoderNdkTest, SUB_MULTIMEDIA_AUDIO_OPENSELES_RECODER_INVALID_FUNCTION_0100, TestSize.Level1)
+{
+    SLresult result1 = (*recordItf)->SetDurationLimit(nullptr, 0);
+    EXPECT_TRUE(result1 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result2 = (*recordItf)->GetPosition(nullptr, 0);
+    EXPECT_TRUE(result2 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result3 = (*recordItf)->RegisterCallback(recordItf, nullptr, wavFile_);
+    EXPECT_TRUE(result3 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result4 = (*recordItf)->SetCallbackEventsMask(nullptr, 0);
+    EXPECT_TRUE(result4 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result5 = (*recordItf)->GetCallbackEventsMask(nullptr, nullptr);
+    EXPECT_TRUE(result5 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result6 = (*recordItf)->SetMarkerPosition(nullptr, 0);
+    EXPECT_TRUE(result6 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result7 = (*recordItf)->ClearMarkerPosition(nullptr);
+    EXPECT_TRUE(result7 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result8 = (*recordItf)->GetMarkerPosition(nullptr, nullptr);
+    EXPECT_TRUE(result8 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result9 = (*recordItf)->SetPositionUpdatePeriod(nullptr, 0);
+    EXPECT_TRUE(result9 == SL_RESULT_FEATURE_UNSUPPORTED);
+
+    SLresult result10 = (*recordItf)->GetPositionUpdatePeriod(nullptr, nullptr);
+    EXPECT_TRUE(result10 == SL_RESULT_FEATURE_UNSUPPORTED);
+}
