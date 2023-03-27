@@ -143,7 +143,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-     
+
     it('inputMethod_test_listInputMethodSubtype_003', 0, async function (done) {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_003 start---------------------");
       let inputM = inputMethod.getCurrentInputMethod()
@@ -200,32 +200,32 @@ export default function inputMethodStageJSUnit() {
         extra:{}
       }
 
-    let inputMethodSetting = inputMethod.getSetting();
-    console.info("====>inputMethod_test_listInputMethodSubtype_004 getSetting result:" + inputMethodSetting);
-    inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data) => {
-      try{
-        console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype:" + JSON.stringify(data));
-        if(data.length >= 1){
-          let inputMethodSubtype = data[0]
-          console.info("====>inputMethod_test_listInputMethodSubtype_004  inputMethodSubtype" + JSON.stringify(inputMethodSubtype));
-          expect(inputMethodSubtype.id != null).assertTrue();
-          expect(inputMethodSubtype.label != null).assertTrue();
-          done();
-        }else{
-          console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype length less 1");
+      let inputMethodSetting = inputMethod.getSetting();
+      console.info("====>inputMethod_test_listInputMethodSubtype_004 getSetting result:" + inputMethodSetting);
+      inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data) => {
+        try{
+          console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype:" + JSON.stringify(data));
+          if(data.length >= 1){
+            let inputMethodSubtype = data[0]
+            console.info("====>inputMethod_test_listInputMethodSubtype_004  inputMethodSubtype" + JSON.stringify(inputMethodSubtype));
+            expect(inputMethodSubtype.id != null).assertTrue();
+            expect(inputMethodSubtype.label != null).assertTrue();
+            done();
+          }else{
+            console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype length less 1");
+            expect().assertFail();
+            done();
+          }
+        }catch(error){
+          console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype catch error" + JSON.stringify(error));
           expect().assertFail();
           done();
         }
-      }catch(error){
-        console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype catch error" + JSON.stringify(error));
+      }).catch(err => {
+        console.info("====>inputMethod_test_listInputMethodSubtype_004  failed" + JSON.stringify(err));
         expect().assertFail();
         done();
-      }
-    }).catch(err => {
-      console.info("====>inputMethod_test_listInputMethodSubtype_004  failed" + JSON.stringify(err));
-      expect().assertFail();
-      done();
-    });
+      });
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_004 end---------------------");
     });
 
@@ -335,8 +335,8 @@ export default function inputMethodStageJSUnit() {
       console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_001 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
       let inputMethodSubProperty : subtype = {
         id: inputMS.id,
-        label: inputMS.label,
-        name: "",
+        label: "",
+        name: inputMS.name,
         mode: "lower",
         locale: "",
         language: "",
@@ -387,8 +387,8 @@ export default function inputMethodStageJSUnit() {
       console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_002 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
       let inputMethodSubProperty : subtype = {
         id: inputMS.id,
-        label: inputMS.label,
-        name: "",
+        label: "",
+        name: inputMS.name,
         mode: "lower",
         locale: "",
         language: "",
@@ -427,8 +427,8 @@ export default function inputMethodStageJSUnit() {
       console.info("inputMethod_test_switchCurrentInputMethodSubtype_001 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
       let inputMethodSubProperty : subtype = {
         id: inputMS.id,
-        label: inputMS.label,
-        name: "",
+        label: "",
+        name: inputMS.name,
         mode: "lower",
         locale: "",
         language: "",
@@ -467,8 +467,8 @@ export default function inputMethodStageJSUnit() {
       console.info("inputMethod_test_switchCurrentInputMethodSubtype_002 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
       let inputMethodSubProperty : subtype = {
         id: inputMS.id,
-        label: inputMS.label,
-        name: "",
+        label: "",
+        name: inputMS.name,
         mode: "lower",
         locale: "",
         language: "",
@@ -493,7 +493,6 @@ export default function inputMethodStageJSUnit() {
         done();
       };
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_002 Test end*************");
-      done();
     });
 
     /*
@@ -608,6 +607,6 @@ export default function inputMethodStageJSUnit() {
         }
       })
     });
-    
+
   });
 };

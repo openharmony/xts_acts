@@ -21,8 +21,10 @@ import testsuite from '../../test/List.test'
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  @State inputValue: string = 'inputMethodEngineinputMethodEngineinputMethodEngineinputMethodEngine' +
-  'inputMethodEngineinputMethodEngineinputMethodEngineinputMethodEngineinputMethodEngine';
+  @State inputValue: string = 'inputMethodEngine1inputMethodEngine2inputMethodEngine3inputMethodEngine' +
+  'inputMethodEngine4inputMethodEngine5inputMethodEngine6inputMethodEngine7inputMethodEngine8inputMethodEn' +
+  'gine9inputMethodEngine10inputMethodEngine11inputMethodEngine12inputMethodEngine13inputMethodEngine14inputMet' +
+  'hodEngine15inputMethodEngine16inputMethodEngine17inputMethodEngine18inputMethodEngine19inputMethodEngine20inputMethodEngine21';
 
   build() {
     Row() {
@@ -32,7 +34,6 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .defaultFocus(true)
         TextArea({ text: this.inputValue })
-          .height(50)
           .onChange((value: string) => {
             this.inputValue = value;
           })

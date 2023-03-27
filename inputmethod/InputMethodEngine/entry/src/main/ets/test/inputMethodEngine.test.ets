@@ -42,9 +42,9 @@ export default function inputMethodEngineJSUnit() {
       inputSever.id = inputM.methodId;
 
       let inputDemoService: subtype = {
-        id: "com.acts.inputmethodengine.test",
-        label: "InputDemoService",
-        name: "",
+        id: "InputDemoService",
+        label: "",
+        name: "com.acts.inputmethodengine.test",
         mode: "lower",
         locale: "",
         language: "",
