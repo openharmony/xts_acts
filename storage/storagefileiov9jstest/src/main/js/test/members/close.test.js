@@ -156,7 +156,7 @@ describe('fileIO_fs_close', function () {
       expect(false).assertTrue();
     } catch (e) {
       console.log('fileIO_test_close_sync_005 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900008 && e.message == 'Bad file descriptor').assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
 
@@ -367,7 +367,7 @@ describe('fileIO_fs_close', function () {
       expect(false).assertTrue();
     } catch (e) {
       console.log('fileIO_test_close_async_007 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900008 && e.message == 'Bad file descriptor').assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
     }
   });
