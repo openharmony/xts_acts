@@ -17,6 +17,8 @@
                 "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
                 "mkdir -pv /storage/media/100/local/files/{Pictures,Videos,Audios,Documents}",
                 "mkdir -p /storage/media/100/local/temp",
+                "param set persist.sys.suspend_manager_enabled 0",
+                "reboot",
                 "param set persist.ace.testmode.enabled 1",
                 "power-shell wakeup",
                 "uinput  -T -d 300 600 -m 300 600 300 100 -u 300 100",
@@ -36,8 +38,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "param set persist.ace.testmode.enabled 1",
-                "param set persist.sys.suspend_manager_enabled 0",
                 "mkdir -pv /storage/media/100/local/files/Pictures/{Static,On,Off,OnAlbum,OffAlbum}",
                 "mkdir -pv /storage/media/100/local/files/Videos//{Static,On,Off}",
                 "mkdir -pv /storage/media/100/local/files/Audios/{Static,On,Off}",
