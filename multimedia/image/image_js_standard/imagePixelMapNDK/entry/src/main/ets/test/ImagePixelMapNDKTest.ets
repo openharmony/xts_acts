@@ -15,6 +15,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+// @ts-ignore
 import ndkTest from 'libImagePixelMapNDKTest.so'
 
 export default function ImagePixelMapNDKTest() {
