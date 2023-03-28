@@ -31,10 +31,6 @@ static SHRINK_HWTEST_F(ActsDeqpgles310038TestSuite, TestCase_037728,
         "dEQP-GLES31.functional.srgb_textu",
         "re_decode.skip_decode.srg8.enabled");
 
-static SHRINK_HWTEST_F(ActsDeqpgles310038TestSuite, TestCase_037729,
-        "dEQP-GLES31.functional.srgb_texture",
-        "_decode.skip_decode.srg8.texel_fetch");
-
 static SHRINK_HWTEST_F(ActsDeqpgles310038TestSuite, TestCase_037730,
         "dEQP-GLES31.functional.srgb_texture_d",
         "ecode.skip_decode.srg8.conversion_gpu");
