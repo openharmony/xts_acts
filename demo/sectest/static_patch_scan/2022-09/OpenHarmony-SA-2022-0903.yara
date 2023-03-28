@@ -22,7 +22,7 @@ rule OpenHarmony_SA_2022_0903
  meta:
    date="2023-03-03"
    openharmony_sa="OpenHarmony-SA-2022-0903"
-   cve="CVE-2023-0035"
+   cve="CVE-2022-38701"
    affected_files="libsoftbus_server.z.so"//in 3.0.x,and "libdsoftbus_bus_center_server.z.so" in 3.0
   
  strings:
