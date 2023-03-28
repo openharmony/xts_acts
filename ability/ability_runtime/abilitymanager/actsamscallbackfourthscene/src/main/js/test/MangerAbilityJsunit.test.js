@@ -12,98 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import featureAbility from '@ohos.ability.featureAbility'
 import appManager from "@ohos.application.appManager"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 export default function ActsAmsCallBackFourthScene() {
     describe('ActsAmsCallBackFourthScene', function () {
         console.info('----ActsAmsCallBackFourthScene----');
-        beforeAll(async function (done) {
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.verify.io",
-                        abilityName: "com.example.VerifyIoThirdAbility",
-                        action: "action1",
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsCallBackFourthScene VerifyIoThirdAbility start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.simulate.feature",
-                        abilityName: "com.example.SimulateFeatureAbilityFir",
-                        action: "action1",
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsCallBackFourthScene SimulateFeatureAbilityFir start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.verify.act",
-                        abilityName: "com.example.VerifyActThirdAbility",
-                        action: "action1",
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsCallBackFourthScene VerifyActThirdAbility start, error.code \
-                    ' + error.code + ', data length [' + data.length + ']');
-                }
-            );
-
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.ix.simulate.entry",
-                        abilityName: "com.example.SimulateEntryAbilityFir",
-                        action: "action1",
-                        parameters:
-                            {},
-                    },
-                }, (error, data) => {
-                    console.info('ActsAmsCallBackFourthScene SimulateEntryAbilityFir start, error.code \
-                    ' + error.code + ', data length [' + data?.length + ']');
-                }
-            );
-            sleep(500);
-            done();
-        });
-
-        function timeout(done) {
-            expect().assertFail();
-            console.debug('Acts_Ams_test=========timeout========');
-            done();
-        }
-
-        function sleep(delay) {
-            let start = new Date().getTime();
-            while (true) {
-                if (new Date().getTime() - start > delay) {
-                    break;
-                }
-            }
-        }
 
         /*
         * @tc.number    : Acts_Ams_test_5000

@@ -10,11 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAmsTestFourthSceneTest.hap",
-                "simulateFAbilityFir.hap",
-                "simulateEAbility.hap",
-                "verifyAAbility.hap",
-                "verifyIAbility.hap"
+                "ActsAmsTestFourthSceneTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
