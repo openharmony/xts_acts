@@ -25,7 +25,7 @@ const TAG = 'ets_apiLack_add';
 struct Second {
   private content: string = "这是第二页"
   @State text: string = router.getParams()['text']
-  @State data: number[] = router.getParams()['data']
+  @State data: any = router.getParams()['data']
   @State secondData : string = ''
 
   build() {
@@ -37,7 +37,7 @@ struct Second {
         .fontSize(30)
         .key("SingleDataText")
         .onClick(()=>{
-          this.secondData = (this.data[1]).toString()
+          this.secondData = (this.data.array[1]).toString()
           try {
             var backData = {
               data: {

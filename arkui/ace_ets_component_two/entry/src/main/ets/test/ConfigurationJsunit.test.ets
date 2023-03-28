@@ -62,7 +62,7 @@ export default function transFormJsunit() {
       } catch (err) {
         console.info("configurationTest_0100 on configurationEvent err : " + JSON.stringify(err));
       }
-      console.info("testAppear01 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
+      console.info("testAppear01 click result is: " + JSON.stringify(sendEventByKey('button_c', 10, "")));
       console.info('[configurationTest01] END');
     });
   })

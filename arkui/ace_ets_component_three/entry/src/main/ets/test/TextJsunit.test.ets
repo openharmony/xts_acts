@@ -296,7 +296,7 @@ export default function textJsunit() {
       let strJsonNew = getInspectorByKey('text');
       let objNew = JSON.parse(strJsonNew);
       console.info("testText_1300 component objNew is: " + JSON.stringify(objNew.$attrs.fontSize));
-      expect(objNew.$attrs.fontSize).assertEqual('nanfp');
+      expect(objNew.$attrs.fontSize).assertEqual('16.00fp');
       console.info('testText_1300 END');
       done();
     });
@@ -322,7 +322,7 @@ export default function textJsunit() {
       let strJsonNew = getInspectorByKey('text');
       let objNew = JSON.parse(strJsonNew);
       console.info("testText_1400 component objNew is: " + JSON.stringify(objNew.$attrs.fontSize));
-      expect(objNew.$attrs.fontSize).assertEqual('-20.00fp');
+      expect(objNew.$attrs.fontSize).assertEqual('16.00fp');
       console.info('testText_1400 END');
       done();
     });

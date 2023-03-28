@@ -97,7 +97,7 @@ struct ImageAnimatorExample {
           console.info('Finish')
         })
       Row() {
-        Button('start').key('button').width(100).padding(5).onClick(() => {
+        Button('start').key('button_0').width(100).padding(5).onClick(() => {
           this.state = AnimationStatus.Running
           try {
             var backData = {
@@ -106,7 +106,7 @@ struct ImageAnimatorExample {
               }
             }
             var backEvent = {
-              eventId: 115,
+              eventId: 1150,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("imageAnimator 115 button start to emit action state")

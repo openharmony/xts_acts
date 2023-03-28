@@ -22,7 +22,7 @@ struct promptExample {
   build(){
     Column(){
       Button('click')
-      .key('button')
+      .key('button_c')
       .backgroundColor('#FF0B8FE2')
       .fontSize(20)
       .margin({top: 20})
