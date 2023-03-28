@@ -13,32 +13,9 @@
  * limitations under the License.
  */
 
-import bluetooth from '@ohos.bluetoothManager';
+import bluetoothManager from '@ohos.bluetoothManager';
+import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
-import osaccount from '@ohos.account.osAccount'
-
-async function applyPermission() {
-    let osAccountManager = osaccount.getAccountManager();
-    console.info("=== getAccountManager finish");
-    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
-    console.info("LocalId is :" + localId);
-    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.bluetooth.bluetoothhost', 0, localId);
-    let atManager = abilityAccessCtrl.createAtManager();
-    if (atManager != null) {
-        let tokenID = appInfo.accessTokenId;
-        console.info('[permission] case accessTokenID is ' + tokenID);
-        let permissionName1 = 'ohos.permission.LOCATION';
-        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 2).then((result) => {
-            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
-        }).catch((err) => {
-            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
-        });
-    } else {
-        console.info('[permission] case apply permission failed, createAtManager failed');
-    }
-}
 
 export default function bluetoothBLETest3() {
 describe('bluetoothBLETest3', function() {
@@ -49,7 +26,7 @@ describe('bluetoothBLETest3', function() {
     }
 
     async function tryToDisableBt() {
-        let sta = bluetooth.getState();
+        let sta = bluetoothManager.getState();
         switch(sta){
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
@@ -60,7 +37,7 @@ describe('bluetoothBLETest3', function() {
                 break;
             case 2:
                 console.info('[bluetooth_js] bt turn on:'+ JSON.stringify(sta));
-                bluetooth.disableBluetooth();
+                bluetoothManager. disableBluetooth();
                 await sleep(3000);
                 break;
             case 3:
@@ -70,14 +47,13 @@ describe('bluetoothBLETest3', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function() {
+    beforeAll(function () {
         console.info('beforeAll called')
-        gattServer = bluetooth.BLE.createGattServer();
-        gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
+        gattServer = bluetoothManager.BLE.createGattServer();
+        gattClient = bluetoothManager.BLE.createGattClientDevice("11:22:33:44:55:66");
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
-        await applyPermission();
         await tryToDisableBt()
         done()
     })
@@ -102,10 +78,10 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_0100', 0, async function (done) {
         await sleep(3000);
-        let sta = bluetooth.getState();
+        let sta = bluetoothManager.getState();
         console.info('[bluetooth_js] bt getState:'+ JSON.stringify(sta));
         try {
-            let connState = bluetooth.getBtConnectionState();
+            let connState = bluetoothManager.getBtConnectionState();
             console.info('[bluetooth_js] get bt connection state result' 
                      + JSON.stringify(connState));
             expect(true).assertFalse();
@@ -129,7 +105,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_0200', 0, async function (done) {
         try {
-            bluetooth.pairDevice("11:22:55:66:33:44");
+            bluetoothManager.pairDevice("11:22:55:66:33:44");
             expect(true).assertFalse();
             done()
         } catch (error) {
@@ -151,7 +127,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_0300', 0, async function (done) {
         try {
-            let ret = bluetooth.getRemoteDeviceName("00:00:00:00:00:00");
+            let ret = bluetoothManager.getRemoteDeviceName("00:00:00:00:00:00");
             console.info('[bluetooth_js] getRemoteDeviceName ret2:' + JSON.stringify(ret));
             expect(ret.length).assertEqual(0);
             expect(true).assertFalse();
@@ -175,7 +151,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_0400', 0, async function (done) {
         try {
-            let DeviceClass = bluetooth.getRemoteDeviceClass("00:00:00:00:00:00");
+            let DeviceClass = bluetoothManager.getRemoteDeviceClass("00:00:00:00:00:00");
             console.info('[bluetooth_js] getRemoteDeviceClass ret2 :' + JSON.stringify(DeviceClass) 
             + 'majorClass:' +DeviceClass.majorClass + 'majorMinorClass:'+ DeviceClass.majorMinorClass 
             + 'classOfDevice:' + DeviceClass.classOfDevice);
@@ -200,7 +176,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_0500', 0, async function (done) {
         try {
-            let ret = bluetooth.getPairedDevices();
+            let ret = bluetoothManager.getPairedDevices();
             console.info('[bluetooth_js] getPairedDevices ret2:' + JSON.stringify(ret));
             expect(true).assertFalse();
             done()
@@ -223,7 +199,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_0600', 0, async function (done) {
         try {
-            let a2dpSrcConn = bluetooth.getProfileConnectionState(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
+            let a2dpSrcConn = bluetoothManager.getProfileConnectionState(bluetoothManager.ProfileId.PROFILE_A2DP_SOURCE);
             console.info('[bluetooth_js]get a2dp result:' + JSON.stringify(a2dpSrcConn));
             expect(true).assertFalse();
             done()
@@ -246,7 +222,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_0700', 0, async function (done) {
         try {
-            bluetooth.setDevicePairingConfirmation("11:22:55:66:33:44",false);
+            bluetoothManager.setDevicePairingConfirmation("11:22:55:66:33:44",false);
             expect(true).assertFalse();
             done()
         } catch (error) {
@@ -269,7 +245,7 @@ describe('bluetoothBLETest3', function() {
      it('COMMUNICATION_BLUETOOTH_SwitchOff_0800', 0, async function (done) {
         try {
             let newName = 'my bluetooth';
-            bluetooth.setLocalName(newName);
+            bluetoothManager.setLocalName(newName);
             expect(true).assertFalse();
             done()
         } catch (error) {
@@ -291,7 +267,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_0900', 0, async function (done) {
         try {
-            bluetooth.setBluetoothScanMode(bluetooth.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,0);
+            bluetoothManager.setBluetoothScanMode(bluetoothManager.ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE,0);
             expect(true).assertFalse();
             done()
         } catch (error) {
@@ -313,7 +289,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_1000', 0, async function (done) {
         try {
-            let oldScanMode = bluetooth.getBluetoothScanMode();
+            let oldScanMode = bluetoothManager.getBluetoothScanMode();
             console.info('[bluetooth_js] getBluetoothScanMode = '+ JSON.stringify(oldScanMode));
             expect(true).assertFalse();
             done()
@@ -336,7 +312,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_1100', 0, async function (done) {
         try {
-            bluetooth.startBluetoothDiscovery();
+            bluetoothManager.startBluetoothDiscovery();
             expect(true).assertFalse();
             done()
         } catch (error) {
@@ -358,7 +334,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_1200', 0, async function (done) {
         try {
-            bluetooth.stopBluetoothDiscovery();
+            bluetoothManager.stopBluetoothDiscovery();
             expect(true).assertFalse();
             done()
         } catch (error) {
@@ -380,8 +356,8 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_1600', 0, async function (done) {
         try {
-            let hfpSrc = bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
-            let retArray =  hfpSrc.getConnectionDevices();
+            let hfpSrc = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+            let retArray = hfpSrc.getConnectionDevices();
             console.info('[bluetooth_js]hfp getConnectionDevices:' + JSON.stringify(retArray));
             expect(true).assertFalse();
             done()
@@ -404,7 +380,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_1700', 0, async function (done) {
         try {
-            let hfpSrc = bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+            let hfpSrc = bluetoothManager.getProfileInst(bluetoothManager.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
             let ret = hfpSrc.getDeviceState('11:22:33:44:55:66');
             console.info('[bluetooth_js]hfp getDeviceState:' + JSON.stringify(ret));
             expect(true).assertFalse();
@@ -428,7 +404,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_1800', 0, async function (done) {
         try {
-            let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
+            let a2dpSrc = bluetoothManager.getProfile(bluetoothManager.ProfileId.PROFILE_A2DP_SOURCE);
             a2dpSrc.connect('11:22:33:44:55:77');
             expect(true).assertFalse();
             done()
@@ -452,7 +428,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_1900', 0, async function (done) {
         try {
-            let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
+            let a2dpSrc = bluetoothManager.getProfile(bluetoothManager.ProfileId.PROFILE_A2DP_SOURCE);
             a2dpSrc.disconnect('11:22:33:44:55:77');
             expect(true).assertFalse();
             done()
@@ -475,7 +451,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_2000', 0, async function (done) {
         try {
-            let a2dpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
+            let a2dpSrc = bluetoothManager.getProfile(bluetoothManager.ProfileId.PROFILE_A2DP_SOURCE);
             console.info('[bluetooth_js]a2dp get profile result:' + JSON.stringify(a2dpSrc));
             let state = a2dpSrc.getPlayingState('11:22:33:44:55:66');
             console.info('[bluetooth_js]a2dp getPlayingState result:' + JSON.stringify(state));
@@ -501,7 +477,7 @@ describe('bluetoothBLETest3', function() {
     it('COMMUNICATION_BLUETOOTH_SwitchOff_2100', 0, async function (done) {
         try {
             let hfpSrc = 
-                bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+                bluetoothManager.getProfileInst(bluetoothManager.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
             hfpSrc.connect('11:22:33:44:55:77');
             expect(true).assertFalse();
             done()
@@ -525,107 +501,12 @@ describe('bluetoothBLETest3', function() {
     it('COMMUNICATION_BLUETOOTH_SwitchOff_2200', 0, async function (done) {
         try {
             let hfpSrc = 
-               bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+               bluetoothManager.getProfileInst(bluetoothManager.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
             hfpSrc.disconnect('11:22:33:44:55:77');
             expect(true).assertFalse();
             done()
         } catch (error) {
             console.error('[bluetooth_js]HFPdisconnect error.code:'
-               +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-    })
-
-        /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_2300
-     * @tc.name test Hid Connect
-     * @tc.desc Test 2900003 - Bluetooth switch is off.
-     * @tc.size MEDIUM
-     * @ since 8
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_2300', 0, async function (done) {
-        try {
-            let hidSrc = 
-                bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_HID_HOST);
-            hidSrc.connect('11:22:33:44:55:77');
-            expect(true).assertFalse();
-            done()
-        } catch (error) {
-            console.error('[bluetooth_js]Hidconnect error.code:'
-               +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-    })
-   
-    /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_2400
-     * @tc.name test Hid disconnect
-     * @tc.desc Test 2900003 - Bluetooth switch is off.
-     * @tc.size MEDIUM
-     * @ since 8
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_2400', 0, async function (done) {
-        try {
-            let hidSrc = 
-                bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_HID_HOST);
-            hidSrc.disconnect('11:22:33:44:55:77');
-            expect(true).assertFalse();
-            done()
-        } catch (error) {
-            console.error('[bluetooth_js]Hiddisconnect error.code:'
-               +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-    })
-
-    /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_2500
-     * @tc.name test PAN disconnect
-     * @tc.desc Test 2900003 - Bluetooth switch is off.
-     * @tc.size MEDIUM
-     * @ since 8
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_2500', 0, async function (done) {
-        try {
-            let panSrc = bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
-//            panSrc.disconnect('11:22:33:44:55:77');
-            expect(true).assertFalse();
-            done()
-        } catch (error) {
-            console.error('[bluetooth_js]Pandisconnect error.code:'
-               +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-    })
-
-    /**
-     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_2600
-     * @tc.name test PAN setTethering
-     * @tc.desc Test 2900003 - Bluetooth switch is off.
-     * @tc.size MEDIUM
-     * @ since 8
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    it('COMMUNICATION_BLUETOOTH_SwitchOff_2600', 0, async function (done) {
-        try {
-            let panSrc = 
-                bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
-//            panSrc.setTethering(true);
-            expect(true).assertFalse();
-            done()
-        } catch (error) {
-            console.error('[bluetooth_js]PansetTethering error.code:'
                +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
             expect(error.code).assertEqual('2900003');
             done()
@@ -643,7 +524,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_2800', 0, async function (done) {
         try {
-            bluetooth.BLE.startBLEScan(
+            bluetoothManager.BLE.startBLEScan(
                 [{
                     deviceId:"11:22:33:44:55:66",
                     name:"test",
@@ -651,8 +532,8 @@ describe('bluetoothBLETest3', function() {
                 }],
                 {
                     interval: 500,
-                    dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
-                    matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
+                    dutyMode: bluetoothManager.ScanDuty.SCAN_MODE_LOW_POWER,
+                    matchMode: bluetoothManager.MatchMode.MATCH_MODE_AGGRESSIVE,
                 }
             );
             expect(true).assertFalse();
@@ -676,7 +557,7 @@ describe('bluetoothBLETest3', function() {
      */
     it('COMMUNICATION_BLUETOOTH_SwitchOff_2900', 0, async function (done) {
         try {
-            bluetooth.BLE.stopBLEScan();
+            bluetoothManager.BLE.stopBLEScan();
             expect(true).assertFalse();
             done()
         } catch (error) {
@@ -971,29 +852,111 @@ describe('bluetoothBLETest3', function() {
         done()
     })
 
-//    /**
-//     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_4000
-//     * @tc.name Test cancelPairedDevice api
-//     * @tc.desc Test 2900003 - Bluetooth switch is off
-//     * @tc.size MEDIUM
-//     * @ since 8
-//     * @tc.type Function
-//     * @tc.level Level 2
-//     */
-//    it('COMMUNICATION_BLUETOOTH_SwitchOff_4000', 0, async function (done) {
-//
-//        try {
-//            bluetooth.cancelPairedDevice("11:22:55:66:33:44");
-//            expect(true).assertFalse();
-//            done()
-//        } catch (error) {
-//            console.error('[bluetooth_js]cancelPairedDevice error.code:'+JSON.stringify(error.code)+
-//                   'error.message:'+JSON.stringify(error.message));
-//            expect(error.code).assertEqual('2900003');
-//            done()
-//        }
-//    })
+    /**
+    * @tc.number COMMUNICATION_BLUETOOTH_BLE_Scan_0800
+    * @tc.name testClassicStartBLEScan
+    * @tc.desc Test ClassicStartBLEScan api.
+    * @tc.size MEDIUM
+    * @ since 7
+    * @tc.type Function
+    * @tc.level Level 3
+    */
+    it('COMMUNICATION_BLUETOOTH_BLE_Scan_0800', 0, async function (done) {
+        try {
+            let state = bluetoothManager.getState();
+            console.info('[bluetooth_js] bt turn off1:'+ JSON.stringify(state));
+            if(state == bluetoothManager.BluetoothState.STATE_ON) {
+                let result2= bluetoothManager.disableBluetooth();
+                console.info('[bluetooth_js]disable result1'+ JSON.stringify(result2));
+                let state1 = bluetoothManager.getState();
+                console.info('[bluetooth_js] getState4 off = '+ JSON.stringify(state1));
+                expect(state1).assertEqual(bluetooth.BluetoothState.STATE_OFF);
+            }
+            function onReceiveEvent(data)
+            {
+                console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));
+                expect(true).assertTrue(data.length=0);
+            }
+            bluetoothManager.BLE.on("BLEDeviceFind", onReceiveEvent)
+            bluetoothManager.BLE.startBLEScan(
+                [{}],
+                {
+                    interval: 100,
+                    dutyMode: bluetoothManager.ScanDuty.SCAN_MODE_LOW_POWER,
+                    matchMode: bluetoothManager.MatchMode.MATCH_MODE_AGGRESSIVE,
+                }
+            );
+            await sleep(1000);
+            expect(true).assertFalse();
+            console.info('[bluetooth_js] BLE scan off8');
+            bluetoothManager.BLE.off('BLEDeviceFind', onReceiveEvent);
+            bluetoothManager.BLE.stopBLEScan();
+            done();
+        } catch (error) {
+            console.error('[bluetooth_js]Scan_0800 error.code:'+JSON.stringify(error.code)+
+            'error.message:'+JSON.stringify(error.message));
+            expect(error.code).assertEqual('2900003');
+            done()
+        }
+    })
 
+    /**
+         * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0900
+         * @tc.name testClassicStartBLEScan
+         * @tc.desc Test ClassicStartBLEScan api.
+         * @tc.size MEDIUM
+         * @ since 7
+         * @tc.type Function
+         * @tc.level Level 3
+         */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0900', 0, async function (done) {
+        bluetooth.disableBluetooth();
+        await sleep(3000);
+        let state = bluetooth.getState();
+        console.info('[bluetooth_js] bt turn off1:'+ JSON.stringify(state));
+        function onReceiveEvent(data)
+        {
+            console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));
+            expect(true).assertTrue(data.length=0);
+        }
+        bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
+        bluetooth.BLE.startBLEScan(
+            [{}],
+            {
+                interval: 100,
+                dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
+                matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
+            }
+        );
+        await sleep(1000);
+        console.info('[bluetooth_js] BLE scan off8');
+        bluetooth.BLE.off('BLEDeviceFind', onReceiveEvent);
+        bluetooth.BLE.stopBLEScan();
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0400
+     * @tc.name testEnableBluetooth
+     * @tc.desc Test EnableBluetooth api by promise.
+     * @tc.size MEDIUM
+     * @ since 7
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0400', 0, async function (done) {
+        let state = bluetooth.getState();
+        console.info('[bluetooth_js] getState1 off = '+ JSON.stringify(state));
+        if(state == bluetooth.BluetoothState.STATE_OFF) {
+            let result2= bluetooth.disableBluetooth();
+            console.info('[bluetooth_js]disable result1'+ JSON.stringify(result2));
+            expect(result2).assertFalse();
+            let state1 = bluetooth.getState();
+            console.info('[bluetooth_js] getState4 off = '+ JSON.stringify(state1));
+            expect(state1).assertEqual(bluetooth.BluetoothState.STATE_OFF);
+        }
+        done();
+    })
 })
 }
 

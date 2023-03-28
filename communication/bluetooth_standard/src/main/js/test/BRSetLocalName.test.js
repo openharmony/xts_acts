@@ -15,7 +15,6 @@
 
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-
 let Btname = {
     NUM_TEST :'012345678901234567890123456789012345678901234567890123'+
     '45678901234567890123456789012345678901234567890123456789012345678901234567',
@@ -71,9 +70,8 @@ describe('bluetoothhostTest1', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(async function (done) {
+    beforeAll(function () {
         console.info('beforeAll called')
-        done()
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')

@@ -22,10 +22,8 @@ let BluetoothState = {
     STATE_BLE_TURNING_ON: 4, STATE_BLE_ON: 5,
     STATE_BLE_TURNING_OFF: 6
 };
-
 let SppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
     secure: true, type: bluetooth.SppType.SPP_RFCOMM};
-
 let MajorMinorClass = {
     COMPUTER_UNCATEGORIZED : 0x0100,COMPUTER_DESKTOP : 0x0104,
     COMPUTER_SERVER : 0x0108,COMPUTER_LAPTOP : 0x010C,
@@ -76,7 +74,6 @@ let MajorMinorClass = {
     HEALTH_PERSONAL_MOBILITY_DEVICE : 0x093C,
     HEALTH_PEAK_FLOW_MONITOR : 0x0928
 };
-
 let MajorClass = {
     MAJOR_MISC : 0x0000,MAJOR_COMPUTER : 0x0100,
     MAJOR_PHONE : 0x0200,MAJOR_NETWORKING : 0x0300,
@@ -92,7 +89,6 @@ let ProfileId = {
     PROFILE_HID_HOST: 6,
     PROFILE_PAN_NETWORK: 7
 };
-
 export default function bluetoothBLETest1() {
 describe('bluetoothBLETest1', function() {
 
@@ -128,13 +124,14 @@ describe('bluetoothBLETest1', function() {
     }
     beforeAll(async function (done) {
         console.info('beforeAll called')
+        await tryToEnableBt()
         gattServer = bluetooth.BLE.createGattServer();
         gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
         done()
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
-        await tryToEnableBt();
+        await tryToEnableBt()
         done()
     })
     afterEach(function () {

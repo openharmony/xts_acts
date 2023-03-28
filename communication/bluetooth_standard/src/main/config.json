@@ -97,14 +97,8 @@
                 }
             },
             {
-                "name": "ohos.permission.DISCOVER_BLUETOOTH'",
-                "reason": "",
-                "usedScene": {
-                    "ability": [
-                        "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-                    ],
-                    "when": "inuse"
-                }
+                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+                "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
             },
             {
                 "name": "ohos.permission.MANAGE_BLUETOOTH",

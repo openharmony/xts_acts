@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
+//import bluetooth from '@ohos.bluetooth';
 import bluetooth from '@ohos.bluetoothManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+
 
 export default function bluetoothBLETest5() {
 describe('bluetoothBLETest5', function() {
@@ -50,12 +52,13 @@ describe('bluetoothBLETest5', function() {
     }
     beforeAll(async function (done) {
         console.info('beforeAll called')
+        await tryToEnableBt()
         gattServer = bluetooth.BLE.createGattServer();
         done()
     })
     beforeEach(async function (done) {
         console.info('beforeEach called')
-        await tryToEnableBt();
+        await tryToEnableBt()
         done()
     })
     afterEach(function () {

@@ -97,6 +97,10 @@
                 }
             },
             {
+                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+                "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+            },
+            {
                 "name": "ohos.permission.MANAGE_BLUETOOTH",
                 "reason": "",
                 "usedScene": {

@@ -15,30 +15,6 @@
 
 import bluetooth from '@ohos.bluetoothManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
-import osaccount from '@ohos.account.osAccount'
-
-async function applyPermission() {
-    let osAccountManager = osaccount.getAccountManager();
-    console.info("=== getAccountManager finish");
-    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
-    console.info("LocalId is :" + localId);
-    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.bluetooth.bluetoothhost', 0, localId);
-    let atManager = abilityAccessCtrl.createAtManager();
-    if (atManager != null) {
-        let tokenID = appInfo.accessTokenId;
-        console.info('[permission] case accessTokenID is ' + tokenID);
-        let permissionName1 = 'ohos.permission.LOCATION';
-        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 2).then((result) => {
-            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
-        }).catch((err) => {
-            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
-        });
-    } else {
-        console.info('[permission] case apply permission failed, createAtManager failed');
-    }
-}
 
 export default function bluetoothBLETest6() {
 describe('bluetoothBLETest6', function() {
@@ -72,13 +48,12 @@ describe('bluetoothBLETest6', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(async function(done) {
+    beforeAll(function () {
         console.info('beforeAll called')
-        await applyPermission();
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
-        await tryToEnableBt();
+        await tryToEnableBt()
         done()
     })
     afterEach(function () {
@@ -318,50 +293,6 @@ describe('bluetoothBLETest6', function() {
             done()
         }
        
-    })
-
-    /**
-     * @tc.number COMMUNICATION_BLUETOOTH_BLE_Scan_0800
-     * @tc.name testClassicStartBLEScan
-     * @tc.desc Test ClassicStartBLEScan api.
-     * @tc.size MEDIUM
-     * @ since 7
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    it('COMMUNICATION_BLUETOOTH_BLE_Scan_0800', 0, async function (done) {
-        try {
-            bluetooth.disableBluetooth();
-            await sleep(3000);
-            let state = bluetooth.getState();
-            console.info('[bluetooth_js] bt turn off1:'+ JSON.stringify(state));
-            function onReceiveEvent(data)
-            {
-                console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));
-                expect(true).assertTrue(data.length=0);
-             }
-            bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
-            bluetooth.BLE.startBLEScan(
-                [{}],
-               {
-                    interval: 100,
-                    dutyMode: bluetooth.ScanDuty.SCAN_MODE_LOW_POWER,
-                    matchMode: bluetooth.MatchMode.MATCH_MODE_AGGRESSIVE,
-                }
-            );
-            await sleep(1000);
-            expect(true).assertFalse();
-            console.info('[bluetooth_js] BLE scan off8');
-            bluetooth.BLE.off('BLEDeviceFind', onReceiveEvent);
-            bluetooth.BLE.stopBLEScan();
-            done();
-        } catch (error) {
-            console.error('[bluetooth_js]Scan_0800 error.code:'+JSON.stringify(error.code)+
-            'error.message:'+JSON.stringify(error.message));
-            expect(error.code).assertEqual('2900003');
-            done()
-        }
-        
     })
 
     /**
@@ -816,7 +747,6 @@ describe('bluetoothBLETest6', function() {
             done()
         }
     })
-
 })
 }
 
