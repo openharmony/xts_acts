@@ -751,14 +751,13 @@ export default function fileIORead() {
     try {
       fileIO.read(-1, new ArrayBuffer(4096), (err) => {
         if(err) {
-          console.log('fileIO_test_read_async_013 error: {message: ' + err.message + ', code: ' + err.code + '}');
-          expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
-          done();
+          expect(false).assertTrue();
         }
       });
     } catch (e) {
       console.log('fileIO_test_read_async_013 has failed for ' + e.message + ', code: ' + e.code);
-      expect(false).assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+      done();
     }
   });
 
