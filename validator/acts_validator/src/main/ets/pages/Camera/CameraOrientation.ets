@@ -26,7 +26,7 @@ import router from '@ohos.router';
 struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraOrientation';
-  @State StepTips: string = @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示预览窗口\n-右侧显示指定旋转角度的拍照图片\n-对于前置摄像头会有镜像效果' + '\n' + '预期结果：拍照图片与预览窗口的画面一致';
+  @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示预览窗口\n-右侧显示指定旋转角度的拍照图片\n-对于前置摄像头会有镜像效果' + '\n' + '预期结果：拍照图片与预览窗口的画面一致';
   private tag: string = 'qlw CameraOrientation'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
