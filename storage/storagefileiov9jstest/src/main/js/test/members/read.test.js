@@ -297,7 +297,7 @@ export default function fileIORead() {
       expect(false).assertTrue();
     } catch (e) {
       console.log('fileIO_test_read_sync_009 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900008 && e.message == 'Bad file descriptor').assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
 
@@ -732,7 +732,7 @@ export default function fileIORead() {
       expect(false).assertTrue();
     } catch (e) {
       console.log('fileIO_test_read_async_012 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900008 && e.message == 'Bad file descriptor').assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
     }
   });
@@ -751,14 +751,13 @@ export default function fileIORead() {
     try {
       fileIO.read(-1, new ArrayBuffer(4096), (err) => {
         if(err) {
-          console.log('fileIO_test_read_async_013 error: {message: ' + err.message + ', code: ' + err.code + '}');
-          expect(err.code == 13900008 && err.message == 'Bad file descriptor').assertTrue();
-          done();
+          expect(false).assertTrue();
         }
       });
     } catch (e) {
       console.log('fileIO_test_read_async_013 has failed for ' + e.message + ', code: ' + e.code);
-      expect(false).assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+      done();
     }
   });
 
