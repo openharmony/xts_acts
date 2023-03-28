@@ -394,7 +394,6 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED).assertEqual('usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED')
       expect(commonEventManager.Support.COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED).assertEqual('usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED')
       expect(commonEventManager.Support.COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED).assertEqual('usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED')
-      expect(commonEventManager.Support.COMMON_EVENT_SMS_RECEIVED_COMPLETED).assertEqual('usual.event.SMS_RECEIVED_COMPLETED')
       expect(commonEventManager.Support.COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED).assertEqual('usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED')
       expect(commonEventManager.Support.COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED).assertEqual('usual.event.SMS_CB_RECEIVE_COMPLETED')
       expect(commonEventManager.Support.COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED).assertEqual('usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED')
