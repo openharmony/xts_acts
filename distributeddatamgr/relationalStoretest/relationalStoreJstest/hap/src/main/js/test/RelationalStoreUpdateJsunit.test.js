@@ -106,7 +106,7 @@ export default function relationalStoreUpdateTest() {
                     expect(6).assertEqual(blobType[2]);
                     console.info(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
                     expect(false).assertEqual(resultSet.goToNextRow())
-                    resultSet = null
+                    resultSet.close()
                 }).catch((err) => {
                     console.info(TAG + "update error");
                     expect(null).assertFail();
@@ -349,7 +349,7 @@ export default function relationalStoreUpdateTest() {
                             + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
-                        resultSet = null
+                        resultSet.close()
                         done();
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0001 end   *************");
                     }
@@ -451,7 +451,7 @@ export default function relationalStoreUpdateTest() {
                     + salary_1 + ", blobType=" + blobType_1);
                 await expect(false).assertEqual(resultSet.goToNextRow())
 
-                resultSet = null
+                resultSet.close()
                 done()
                 console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0002 end   *************");
             }
@@ -540,7 +540,7 @@ export default function relationalStoreUpdateTest() {
                             + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
-                        resultSet = null
+                        resultSet.close()
                         done();
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0003 end   *************");
                     }
@@ -643,7 +643,7 @@ export default function relationalStoreUpdateTest() {
                     + salary_1 + ", blobType=" + blobType_1);
                 await expect(false).assertEqual(resultSet.goToNextRow())
 
-                resultSet = null
+                resultSet.close()
                 done()
                 console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0004 end   *************");
             }
@@ -732,7 +732,7 @@ export default function relationalStoreUpdateTest() {
                             + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
-                        resultSet = null
+                        resultSet.close()
                         done()
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0005 end   *************");
                     }
@@ -804,7 +804,7 @@ export default function relationalStoreUpdateTest() {
                             + salary + ", blobType=" + blobType);
 
                         await expect(false).assertEqual(resultSet.goToNextRow())
-                        resultSet = null
+                        resultSet.close()
                         done()
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0006 end   *************");
                     }
@@ -901,7 +901,7 @@ export default function relationalStoreUpdateTest() {
                             + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
-                        resultSet = null
+                        resultSet.close()
                         done()
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0007 end   *************");
                     }
@@ -973,7 +973,7 @@ export default function relationalStoreUpdateTest() {
                             + salary + ", blobType=" + blobType);
 
                         await expect(false).assertEqual(resultSet.goToNextRow())
-                        resultSet = null
+                        resultSet.close()
                         done()
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0008 end   *************");
                     }
@@ -1069,7 +1069,7 @@ export default function relationalStoreUpdateTest() {
                             + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
-                        resultSet = null
+                        resultSet.close()
                         done()
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0009 end   *************");
                     }
@@ -1141,7 +1141,7 @@ export default function relationalStoreUpdateTest() {
                             + salary + ", blobType=" + blobType);
 
                         await expect(true).assertEqual(resultSet.goToNextRow())
-                        resultSet = null
+                        resultSet.close()
                         done()
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0010 end   *************");
                     }
@@ -1237,7 +1237,7 @@ export default function relationalStoreUpdateTest() {
                             + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
-                        resultSet = null
+                        resultSet.close()
                         done()
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0011 end   *************");
                     }
@@ -1309,7 +1309,7 @@ export default function relationalStoreUpdateTest() {
                             + salary + ", blobType=" + blobType);
 
                         await expect(false).assertEqual(resultSet.goToNextRow())
-                        resultSet = null
+                        resultSet.close()
                         done()
                         console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0012 end   *************");
                     }
