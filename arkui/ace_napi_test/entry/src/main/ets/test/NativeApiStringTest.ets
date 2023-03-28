@@ -15,6 +15,7 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 
+// @ts-ignore
 import napitest from 'libnapitest.so'
 
 

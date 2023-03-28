@@ -14,6 +14,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import hilog from '@ohos.hilog'
+// @ts-ignore
 import hilogndk from "libhilogndk.so"
 
 export default function HilogJsTest() {
