@@ -16,6 +16,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 import resManager from '@ohos.resourceManager'
+// @ts-ignore
 import ndk from 'libresmgrndk.so'
 
 export default function abilityTest() {
