@@ -133,13 +133,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_getInputMethodEngine_001 subscribe data: " + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_getInputMethodEngine_001 subscribe finish====");
+
+        let commonEventPublishData = {
+          code: 1
+        }
+        commoneventmanager.publish("test1", commonEventPublishData, publishCallback);
       })
-
-      var commonEventPublishData = {
-        code: 1
-      }
-      commoneventmanager.publish("test1", commonEventPublishData, publishCallback);
-
     });
 
     it('inputMethodEngine_test_getKeyboardDelegate_001', 0, async function (done) {
@@ -186,13 +185,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_getKeyboardDelegate_001 subscribe data: " + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_getKeyboardDelegate_001 subscribe finish====");
+
+        let commonEventPublishData = {
+          code: 2
+        }
+        commoneventmanager.publish("test1", commonEventPublishData, publishCallback);
       })
-
-      var commonEventPublishData = {
-        code: 2
-      }
-      commoneventmanager.publish("test1", commonEventPublishData, publishCallback);
-
     });
 
     it('inputMethodEngine_test_028', 0, async function (done) {
