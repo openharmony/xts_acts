@@ -26,7 +26,7 @@ import router from '@ohos.router';
 struct cameraFormat {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraPreviewFormat';
-  @State StepTips: string = '测试目的：用于测试相机预览分辨率能力\n预期结果：所有分辨率均可以预览成功，预览画面正常';
+  @State StepTips: string = '测试目的：用于测试相机预览分辨率能力\n测试步骤：点击下一个遍历所有预览分辨率，观察预览窗口\n预期结果：所有分辨率均可以预览成功，预览画面正常';
   private tag: string = 'qlw CameraFormat'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
@@ -145,7 +145,7 @@ struct cameraFormat {
               this.cameraInit()
             })
             .size({ width: '100%', height: '100%' })
-          Text('Camera Preview').fontSize('20fp').fontColor(Color.White)
+          Text('预览').fontSize('20fp').fontColor(Color.White)
         }.size({ width: '80%', height: '70%' })
 
         Column() {
@@ -201,7 +201,7 @@ struct cameraFormat {
               .onSelect((index: number, value) => {
                 Logger.info(this.tag, `onSelect format index: ${index}, value: ${value}`)
               })
-            Button('NEXT')
+            Button('下一个')
               .borderRadius(8)
               .backgroundColor(0x317aff)
               .enabled(this.nextEnabled)
