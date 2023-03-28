@@ -516,10 +516,12 @@ export async function createToRelease(src, avPlayer, done) {
                 console.info(`case CreateToRelease loop is ${i}`);
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
                 avPlayer = null;
+                if(i == 999){
+                    done();
+                }
             }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         }
     }
-    done();
 }
 
 export async function playToCompleted(src, avPlayer, done) {
