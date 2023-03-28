@@ -409,7 +409,7 @@ function setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTime, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('playPauseLoopWithCallBack play state is INITIALIZED')
             // step 1: initialized -> prepared -> play
-                preparePromise(avPlayer);
+                await preparePromise(avPlayer);
                 await sleep(2000);
                 avPlayer.play()
                 break;
@@ -509,18 +509,17 @@ export async function createToRelease(src, avPlayer, done) {
         avPlayer = await idle(src, avPlayer)
         await setSource(avPlayer, src);
         console.info('CreateToRelease setSource');
-        if(avPlayer.state == AV_PLAYER_STATE.INITIALIZED) {
-            avPlayer.surfaceId = surfaceID;
-            await avPlayer.release().then(() => {
-                console.info('CreateToRelease avPlayer from stop to release')
-                console.info(`case CreateToRelease loop is ${i}`);
-                expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
-                avPlayer = null;
-                if(i == 999){
-                    done();
-                }
-            }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-        }
+        await sleep(20)
+        avPlayer.surfaceId = surfaceID;
+        await avPlayer.release().then(() => {
+            expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
+            console.info('CreateToRelease avPlayer from stop to release')
+            console.info(`case CreateToRelease loop is ${i}`);
+            avPlayer = null;
+            if(i == 999){
+                done();
+            }
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
     }
 }
 
@@ -542,7 +541,7 @@ async function playToCompletedLoop(src, avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('playToCompletedLoop play state is INITIALIZED')
             // step 1: initialized -> prepared -> play
-                preparePromise(avPlayer);
+                await preparePromise(avPlayer);
                 await sleep(2000);
                 avPlayer.play()
                 break;
@@ -601,7 +600,7 @@ export async function seekLoop(src, avPlayer, done) {
     if(avPlayer.state == AV_PLAYER_STATE.INITIALIZED) {
         avPlayer.surfaceId = surfaceID;
         console.info('seekLoop case prepare success');
-        preparePromise(avPlayer);
+        await preparePromise(avPlayer);
         await sleep(2000);
     }
     await avPlayer.play().then(() => {
@@ -642,7 +641,7 @@ export async function seekLoopWithoutCallback(src, avPlayer, done) {
     await setSource(avPlayer, src);
     if(avPlayer.state == 'initialized') {
         avPlayer.surfaceId = surfaceID;
-        preparePromise(avPlayer);
+        await preparePromise(avPlayer);
         await sleep(2000);
     }
     await avPlayer.play().then(() => {
@@ -2078,7 +2077,7 @@ export async function avPlayerWithoutCallBack(src, avPlayer, done) {
     console.info('avPlayerWithoutCallBack setSource');
     if(avPlayer.state == AV_PLAYER_STATE.INITIALIZED) {
         avPlayer.surfaceId = surfaceID;
-        preparePromise(avPlayer);
+        await preparePromise(avPlayer);
         await sleep(2000);
     }
     if(avPlayer.state == AV_PLAYER_STATE.PREPARED){
@@ -2110,7 +2109,7 @@ function setAVPlayerPlay(src, avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('setAVPlayerPlay play state is INITIALIZED')
             // step 1: initialized -> prepared -> play
-                preparePromise(avPlayer)
+                await preparePromise(avPlayer)
                 await sleep(3000);
                 avPlayer.play()
                 break;
