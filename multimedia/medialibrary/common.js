@@ -236,13 +236,18 @@ const getPermission = async function (name, context) {
     context.requestPermissionsFromUser(permissions, (data) => {
         console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
     });
-    await sleep(200);
 
     let driver = uitest.Driver.create();
-    await sleep(200);
+    await sleep(500);
 
-    let button = await driver.findComponent(uitest.ON.text("允许"));
-    await button.click();
+    for (let i = 0; i < 10; i++) {
+        await sleep(500);
+        let button = await driver.findComponent(uitest.ON.text("允许"));
+        if (button != undefined) {
+            await button.click();
+            break;
+        }
+    }
 
     let appInfo = await bundle.getApplicationInfo(name, 0, 100);
     let tokenID = appInfo.accessTokenId;

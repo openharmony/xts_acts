@@ -17,6 +17,8 @@
                 "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
                 "mkdir -pv /storage/media/100/local/files/{Pictures,Videos,Audios,Documents}",
                 "mkdir -p /storage/media/100/local/temp",
+                "param set persist.sys.suspend_manager_enabled 0",
+                "reboot",
                 "param set persist.ace.testmode.enabled 1",
                 "power-shell wakeup",
                 "uinput  -T -d 300 600 -m 300 600 300 100 -u 300 100",
@@ -58,6 +60,8 @@
                 "sleep 10"
             ],
             "teardown-command": [
+                "param set persist.sys.suspend_manager_enabled 1",
+                "reboot",
                 "hilog -b X -D 0xD002B70",
                 "power-shell setmode 600"
             ]
