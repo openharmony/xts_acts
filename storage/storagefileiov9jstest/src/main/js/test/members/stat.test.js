@@ -2304,7 +2304,7 @@ describe('fileIO_fs_stat', function () {
       let file2 = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       stat = fileIO.statSync(file2.fd);
       expect(stat.size == FILE_CONTENT.length * 2).assertTrue();
-      fileIO.closeSync(file2.fd);
+      fileIO.closeSync(file2);
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
