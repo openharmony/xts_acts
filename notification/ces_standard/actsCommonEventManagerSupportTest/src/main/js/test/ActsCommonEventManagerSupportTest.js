@@ -418,6 +418,8 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_STK_CARD_STATE_CHANGED).assertEqual('usual.event.STK_CARD_STATE_CHANGED')
       expect(commonEventManager.Support.COMMON_EVENT_STK_ALPHA_IDENTIFIER).assertEqual('usual.event.STK_ALPHA_IDENTIFIER')
       expect(commonEventManager.Support.COMMON_EVENT_RADIO_STATE_CHANGE).assertEqual('usual.event.RADIO_STATE_CHANGE')
+      expect(commonEventManager.Support.COMMON_EVENT_SCREEN_UNLOCKED).assertEqual('usual.event.SCREEN_UNLOCKED')
+      expect(commonEventManager.Support.COMMON_EVENT_SCREEN_LOCKED).assertEqual('usual.event.SCREEN_LOCKED')
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2200 END`)
     })   
     
