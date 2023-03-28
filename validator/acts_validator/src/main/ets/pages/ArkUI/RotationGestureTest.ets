@@ -14,6 +14,7 @@
  */
 import {CustomContainer} from '../common/CustomContainer2';
 import FirstDialog from '../model/FirstDialog';
+import router from '@ohos.router';
 @Entry
 @Component
 struct RotationGuestureTest {
@@ -54,5 +55,10 @@ struct RotationGuestureTest {
         Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/ArkUI/ArkUI_index',
+    })
   }
 }

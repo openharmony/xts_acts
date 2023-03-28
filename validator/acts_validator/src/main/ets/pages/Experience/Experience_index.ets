@@ -28,7 +28,7 @@ let path1 = path + '/Experience';
 let VarColor = [];
 let ColorBackPath = path + '/ExperienceColorBack.txt';
 let txtPath = path1 + '/ExperienceReport.txt';
-let xmlPath =path1 + '/ExperienceTest.xml';
+let xmlPath = path1 + '/ExperienceTest.xml';
 
 @Entry
 @Component
@@ -41,8 +41,15 @@ struct IndexPage {
   private TestCaseList = [
     {title:'DeskFps',uri:'pages/Experience/DeskFps'},
     {title:'PhotoFps',uri:'pages/Experience/PhotoFps'},
-    {title:'ColdStart',uri:'pages/Experience/ColdStartTest'},
-    {title:'HotStart',uri:'pages/Experience/HotStartTest'},
+    {title:'CameraColdStart',uri:'pages/Experience/CameraColdStartTest'},
+    {title:'SettingsColdStart',uri:'pages/Experience/SettingsColdStartTest'},
+    {title:'PhotosColdStart',uri:'pages/Experience/PhotosColdStartTest'},
+    {title:'MmsColdStart',uri:'pages/Experience/MmsColdStartTest'},
+    {title:'ContactsColdStart',uri:'pages/Experience/ContactsColdStartTest'},
+    {title:'SettingsHotStart',uri:'pages/Experience/SettingsHotStartTest'},
+    {title:'PhotosHotStart',uri:'pages/Experience/PhotosHotStartTest'},
+    {title:'MmsHotStart',uri:'pages/Experience/MmsHotStartTest'},
+    {title:'ContactsHotStart',uri:'pages/Experience/ContactsHotStartTest'},
     {title:'ViewPhoto',uri:'pages/Experience/ViewPhotoTest'},
     {title:'KeyboardDisplay',uri:'pages/Experience/KeyboardDisplayTest'},
     {title:'StartTaskManager',uri:'pages/Experience/StartTaskManager'},
@@ -105,7 +112,7 @@ struct IndexPage {
       let number = WriteTitle.length + 11;
       let Index = ColorBack.indexOf(WriteTitle);
 
-      if (this.result === 'Pass'){
+      if (this.result === 'true'){
         this.ColorObject[this.current] = '#ff008000';
         let Log = (titles+';'+'#ff008000'+';');
         let key = ColorBack.substring(Index,Index+number);
@@ -119,7 +126,7 @@ struct IndexPage {
         fileio.writeSync(Fd,Report);
         filewrite(name1,results,titles)
       }
-      else if (this.result === 'Fail'){
+      else if (this.result === 'false'){
         this.ColorObject[this.current] = '#ffff0000';
         let Log = (titles+';'+'#ffff0000'+';');
         let key = ColorBack.substring(Index,Index+number);
@@ -263,20 +270,20 @@ struct IndexPage {
         title[i] = str1[i*2];
         result[i] = str1[i*2+1];
       }
-      let FailIndex = report.indexOf('Fail');
+      let FailIndex = report.indexOf('false');
       let FailNum = 0;
       while (FailIndex != -1) {
         console.log(FailIndex);
         FailNum++;
-        FailIndex = report.indexOf('Fail',FailIndex + 1);
+        FailIndex = report.indexOf('false',FailIndex + 1);
       }
       let failNum = (FailNum).toString();
-      let PassIndex = report.indexOf('Pass');
+      let PassIndex = report.indexOf('true');
       let PassNum = 0;
       while (PassIndex != -1) {
         console.log(PassIndex);
         PassNum++;
-        PassIndex = report.indexOf('Pass',PassIndex + 1);
+        PassIndex = report.indexOf('true',PassIndex + 1);
       }
       let TestNum = FailNum + PassNum;
       let testNum = (TestNum).toString();
@@ -297,9 +304,9 @@ struct IndexPage {
       for (let i = 0; i < title.length; i++) {
         serializer.startElement("testcase");
         serializer.setAttributes("name", String(title[i]));
-        serializer.setAttributes("status", "*");
+        serializer.setAttributes("status", "run");
         serializer.setAttributes("time", "*");
-        serializer.setAttributes("classname", "*");
+        serializer.setAttributes("classname", "Experience");
         serializer.setAttributes("result", String(result[i]));
         serializer.setAttributes("level", "*");
         serializer.setAttributes("message", "*");
@@ -331,7 +338,8 @@ function filewrite(name1,results,titles){
   console.info("RRRRRRRRRRd"+RD);
   let report = String.fromCharCode.apply(null,new Uint8Array(buf));
   let WriteTitle = (titles).toString();
-  let number = WriteTitle.length + 6;
+  let WriteResult = (results).toString();
+  let number = WriteTitle.length + WriteResult.length + 2;
   let Index = report.indexOf(WriteTitle);
   let Log = (titles+";"+results+";").toString();
   if (Index == -1){

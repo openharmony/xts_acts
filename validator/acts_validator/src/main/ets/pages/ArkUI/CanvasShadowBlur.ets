@@ -14,6 +14,7 @@
  */
 import {CustomContainer} from '../common/CanvasCustomContainer2';
 import FirstDialog from '../model/FirstDialog';
+import router from '@ohos.router';
 @Entry
 @Component
 struct SetCircle {
@@ -43,6 +44,10 @@ struct SetCircle {
             })
             .onActionUpdate((event: GestureEvent) => {
               this.X = event.offsetX;
+              this.context.shadowBlur = this.X;
+              this.context.shadowColor = 'rgb(0,0,0)';
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 100, 100);
             })
             .onActionEnd(() => {
               console.info('Pan end');
@@ -58,7 +63,7 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.shadowBlur = this.X;
+            this.context.shadowBlur = 0;
             this.context.shadowColor = 'rgb(0,0,0)';
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 100, 100);
@@ -79,5 +84,10 @@ struct SetCircle {
         Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/ArkUI/ArkUI_index',
+    })
   }
 }

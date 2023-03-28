@@ -14,6 +14,7 @@
  */
 import {CustomContainer} from '../common/CanvasCustomContainer2';
 import FirstDialog from '../model/FirstDialog';
+import router from '@ohos.router';
 @Entry
 @Component
 struct SetCircle {
@@ -41,6 +42,10 @@ struct SetCircle {
             })
             .onActionUpdate((event: GestureEvent) => {
               this.X = event.offsetX;
+              this.context.arc(180, 150, 50, 0, 6.28);
+              this.context.setLineDash([20,30]);
+              this.context.lineDashOffset = (this.X)*0.02;
+              this.context.stroke();
             })
             .onActionEnd(() => {
               console.info('Pan end');
@@ -48,7 +53,7 @@ struct SetCircle {
           )
       }.width('70%').height('25%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Text('虚线偏移量: ' + (this.X)*0.1 )
+        Text('虚线偏移量: ' + (this.X)*0.02 )
       }.width('100%').height('20%')
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
@@ -58,7 +63,7 @@ struct SetCircle {
           .onReady(() =>{
             this.context.arc(180, 150, 50, 0, 6.28);
             this.context.setLineDash([20,30]);
-            this.context.lineDashOffset = (this.X)*0.1;
+            this.context.lineDashOffset = 0.1;
             this.context.stroke();
           })
       }.width('100%').height('55%')
@@ -77,5 +82,10 @@ struct SetCircle {
         Vue: $Vue,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
+  }
+  onBackPress(){
+    router.replaceUrl({
+      url:'pages/ArkUI/ArkUI_index',
+    })
   }
 }
