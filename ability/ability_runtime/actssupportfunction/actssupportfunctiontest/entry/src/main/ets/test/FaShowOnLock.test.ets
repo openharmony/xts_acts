@@ -162,7 +162,8 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility",
         parameters: {
-          number: 1
+          number: 1,
+          flag: true
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -243,7 +244,8 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility",
         parameters: {
-          number: 2
+          number: 2,
+          flag: true
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -324,7 +326,8 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility",
         parameters: {
-          number: 3
+          number: 3,
+          flag: true
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -412,7 +415,8 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 1
+          number: 1,
+          flag: true
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -500,7 +504,8 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 2
+          number: 2,
+          flag: true
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -588,7 +593,8 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 3
+          number: 3,
+          flag: true
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -676,7 +682,8 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 4
+          number: 4,
+          flag: true
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -764,7 +771,8 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 5
+          number: 5,
+          flag: true
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {

@@ -19,11 +19,11 @@ var TAG1 = "Fa:SupportFunction:MainAbility2:";
 var listPush1 = "Fa_SupportFunction_MainAbility2_";
 var lifeList = [];
 export default {
-  onCreate() {
+  async onCreate() {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
 
-    ability_featureAbility.getWant().then((data) => {
+    ability_featureAbility.getWant().then(async (data) => {
       console.log(TAG1 + "getWant data = " + JSON.stringify(data));
 
       if(data.parameters.number == 1) {
@@ -40,6 +40,18 @@ export default {
       }
       if(data.parameters.number == 5) {
         setWakeUpScreenP(ability_featureAbility, {status1: true, status2: true})
+      }
+      await sleep(300);
+      if (data.parameters.flag) {
+        lifeList.push('onActive');
+        let options = {
+          parameters: {
+            lifeList: lifeList
+          }
+        }
+        commonEvent.publish(listPush1 + "onActive", options, (err) => {
+          console.log(TAG1 + listPush1 + "onActive");
+        });
       }
     }).catch((error) => {
       console.log(TAG1 + "getWant error = " + JSON.stringify(error));
@@ -70,6 +82,10 @@ export default {
   onHide() {
     console.log(TAG1 + 'onHide');
   }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function setWakeUpScreenP(featureAbility, wakeUp) {
