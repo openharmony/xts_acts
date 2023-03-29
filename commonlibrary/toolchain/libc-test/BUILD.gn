@@ -49,4 +49,7 @@ ohos_moduletest_suite("ActsToolChainTest") {
 
   external_deps = [ "c_utils:utils" ]
   deps = [ "//third_party/bounds_checking_function:libsec_static" ]
+
+  part_name = "toolchain"
+  subsystem_name = "arkcompiler"
 }
