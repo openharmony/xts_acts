@@ -97,15 +97,15 @@ export default function TextClockJsunit() {
       await CommonFunc.sleep(1000);
       let accumulateTime2 = await driver.findComponent(BY.key('accumulateTime'));
       let text2 = await accumulateTime2.getText();
-      expect(text1 == text2).assertTrue();
+      expect(text1).assertEqual(text2);
 
       let operation1 = await driver.findComponent(BY.key('operation'));
       let textOperation1 = await operation1.getText();
-      expect(textOperation1 == 'stop success').assertTrue();
+      expect(textOperation1).assertEqual('stop success');
 
       let change1 = await driver.findComponent(BY.key('change'));
       let textChange1 = await change1.getText();
-      expect(textChange1 == 'no change success').assertTrue();
+      expect(textChange1).assertEqual('no change success');
 
       // Click start button
       let startButton = await driver.findComponent(BY.text('start TextClock'));
@@ -117,11 +117,11 @@ export default function TextClockJsunit() {
 
       let change2 = await driver.findComponent(BY.key('change'));
       let textChange2 = await change2.getText();
-      expect(textChange2 == 'change success').assertTrue();
+      expect(textChange2).assertEqual('change success');
 
       let operation2 = await driver.findComponent(BY.key('operation'));
       let textOperation2 = await operation2.getText();
-      expect(textOperation2 == 'start success').assertTrue();
+      expect(textOperation2).assertEqual('start success');
       console.info('[TextClock_0300] END');
       done();
     });

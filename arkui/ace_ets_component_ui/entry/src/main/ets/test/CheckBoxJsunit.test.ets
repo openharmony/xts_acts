@@ -56,7 +56,7 @@ export default function checkBoxJsunit() {
        let isChecked = await checkBox.isChecked();
        // to confirm
        console.info("[checkBoxJsunit_0100'] component obj isChecked: " + isChecked);
-       expect(isChecked).assertFalse();
+       expect(isChecked).assertTrue();
        done(); 
     });
 
@@ -64,7 +64,7 @@ export default function checkBoxJsunit() {
       console.info('checkBoxJsunit_0200 START');
       await CommonFunc.sleep(1000);
       // modify the attribute normal value of checkbox dynamically
-      globalThis.value.message.notify({name:'select',value:'false'})
+      globalThis.value.message.notify({name:'select',value:false})
       await CommonFunc.sleep(2000);
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);

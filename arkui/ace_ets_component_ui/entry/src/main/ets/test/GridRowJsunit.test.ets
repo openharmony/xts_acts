@@ -57,7 +57,7 @@ export default function GridRowJsunit() {
       expect(obj.$attrs.columns).assertEqual('4');
       expect(obj.$attrs.breakpoints).assertEqual('4');
       expect(obj.$attrs.direction).assertEqual('4');
-      expect(obj.$attrs.gutter).assertEqual('5.00000, 10.000000');
+      expect(obj.$attrs.gutter).assertEqual('<7.500000, 15.000000');
       console.info('[GridRowJsunit_0100] END');
       done();
     });

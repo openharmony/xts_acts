@@ -30,7 +30,7 @@ export default function imageThreeJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get imageThreeJsunit state pages:" + JSON.stringify(pages));
-        if (!("textTwo" == pages.name)) {
+        if (!("imagethree" == pages.name)) {
           console.info("get imageThreeJsunit state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           console.info("push imageThreeJsunit success " + JSON.stringify(result));
