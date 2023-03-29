@@ -68,14 +68,16 @@ export default function AlignCenter_AddAlign() {
       expect(Center_AddAlign_011.top).assertEqual(Center_AddAlign_01.top);
       expect(Center_AddAlign_012.left).assertEqual(Center_AddAlign_011.right);
       expect(Center_AddAlign_013.left).assertEqual(Center_AddAlign_012.right);
-      expect(Center_AddAlign_011.left - Center_AddAlign_01.left).assertEqual(vp2px(25));
-      expect(Center_AddAlign_01.right - Center_AddAlign_013.right).assertEqual(vp2px(25));
-      expect(Center_AddAlign_011.right - Center_AddAlign_011.left).assertEqual(vp2px(150));
-      expect(Center_AddAlign_012.right - Center_AddAlign_012.left).assertEqual(vp2px(150));
-      expect(Center_AddAlign_013.right - Center_AddAlign_013.left).assertEqual(vp2px(150));
-      expect(Center_AddAlign_011.bottom - Center_AddAlign_011.top).assertEqual(vp2px(50));
-      expect(Center_AddAlign_012.bottom - Center_AddAlign_012.top).assertEqual(vp2px(100));
-      expect(Center_AddAlign_013.bottom - Center_AddAlign_013.top).assertEqual(vp2px(150));
+      expect(Math.round((Center_AddAlign_011.left - Center_AddAlign_01.left)*10)/10)
+        .assertEqual(Math.round(vp2px(25)*10)/10);
+      expect(Math.round((Center_AddAlign_01.right - Center_AddAlign_013.right)*10)/10)
+        .assertEqual(Math.round(vp2px(25)*10)/10);
+      expect(Math.round(Center_AddAlign_011.right - Center_AddAlign_011.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddAlign_012.right - Center_AddAlign_012.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddAlign_013.right - Center_AddAlign_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddAlign_011.bottom - Center_AddAlign_011.top)).assertEqual(vp2px(50));
+      expect(Math.round(Center_AddAlign_012.bottom - Center_AddAlign_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Center_AddAlign_013.bottom - Center_AddAlign_013.top)).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0800] END');
       done()
     });

@@ -15,11 +15,11 @@
 import {MessageManager,Callback} from '../../../common/MessageManager';
 @Entry
 @Component
-struct Row_FlexPad_TextMarPad{
+struct Row_Space{
   @State addSpace: number = 5
   messageManager:MessageManager = new MessageManager()
   onPageShow() {
-    console.info('AlignSpaceEvenly_NoSpace onPageShow');
+    console.info('Row_Space onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }

@@ -16,11 +16,11 @@
 import {MessageManager,Callback} from './../../../common/MessageManager';
 @Entry
 @Component
-struct AlignStart_AddAlign {
+struct Column_Space {
   @State addSpace: number = 10
   messageManager:MessageManager = new MessageManager()
   onPageShow() {
-    console.info('AlignSpaceEvenly_NoSpace onPageShow');
+    console.info('Column_Space onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }

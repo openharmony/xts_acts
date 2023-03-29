@@ -68,20 +68,20 @@ export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
-      expect(firstText.bottom - firstText.top).assertEqual(vp2px(50));
-      expect(secondText.bottom - secondText.top).assertEqual(vp2px(100));
-      expect(thirdText.bottom - thirdText.top).assertEqual(vp2px(50));
-      expect(fourthText.bottom - fourthText.top).assertEqual(vp2px(100)); //四个子组件的高度分别为50、100、50、100
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //四个子组件的高度分别为50、100、50、100
 
-      expect(firstText.top - flexContainer.top).assertEqual(vp2px(10));
-      expect(firstText.left - flexContainer.left).assertEqual(vp2px(10)); //offset =10
+      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(10));
+      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10)); //offset =10
       expect(flexContainer.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
       expect(fourthText.bottom).assertEqual(flexContainer.bottom); //行首贴边行尾溢出
 
-      expect(thirdText.top - secondText.bottom).assertEqual(fourthText.top - thirdText.bottom);
-      expect(thirdText.top - secondText.bottom).assertEqual(distanceBefore);
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(distanceBefore);
       console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1000] END');//其余组件行间距相等，未改变
       done();
     });

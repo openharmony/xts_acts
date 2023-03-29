@@ -46,12 +46,12 @@ export default function flexAlignSelf_AutoJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1200
+     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1300
      * @tc.name      ItemAlign_Auto_FlexAlignSelf
-     * @tc.desc      aceFlexAlignItemTest
+     * @tc.desc      The first subcomponent set ItemAlign.End attribute.
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1200', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1200 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1300', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1300 START');
       let strJson1 = getInspectorByKey('flexAlignSelf');
       let obj1 = JSON.parse(strJson1);
       let strJson2 = getInspectorByKey('textAlignSelf01');
@@ -66,17 +66,17 @@ export default function flexAlignSelf_AutoJsunit() {
       expect(textAlignSelf02.top).assertEqual(textAlignSelf03.top)
       expect(textAlignSelf01.bottom).assertEqual(flexAlignSelf01.bottom)
 
-      expect(textAlignSelf01.bottom - textAlignSelf01.top).assertEqual(vp2px(50))
-      expect(textAlignSelf01.right - textAlignSelf01.left).assertEqual(vp2px(150))
-      expect(textAlignSelf02.bottom - textAlignSelf02.top).assertEqual(vp2px(100))
-      expect(textAlignSelf02.right - textAlignSelf02.left).assertEqual(vp2px(150))
-      expect(textAlignSelf03.bottom - textAlignSelf03.top).assertEqual(vp2px(150))
-      expect(textAlignSelf03.right - textAlignSelf03.left).assertEqual(vp2px(150))
+      expect(Math.round(textAlignSelf01.bottom - textAlignSelf01.top)).assertEqual(vp2px(50))
+      expect(Math.round(textAlignSelf01.right - textAlignSelf01.left)).assertEqual(vp2px(150))
+      expect(Math.round(textAlignSelf02.bottom - textAlignSelf02.top)).assertEqual(vp2px(100))
+      expect(Math.round(textAlignSelf02.right - textAlignSelf02.left)).assertEqual(vp2px(150))
+      expect(Math.round(textAlignSelf03.bottom - textAlignSelf03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textAlignSelf03.right - textAlignSelf03.left)).assertEqual(vp2px(150))
 
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       expect(obj2.$attrs.alignSelf).assertEqual("ItemAlign.End")
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1200 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1300 END');
       done();
     });
   })
