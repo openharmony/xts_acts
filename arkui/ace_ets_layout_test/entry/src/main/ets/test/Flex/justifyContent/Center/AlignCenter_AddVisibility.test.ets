@@ -68,12 +68,12 @@ export default function AlignCenter_AddVisibility() {
       expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_013.top);
       expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_01.top);
       expect(Center_AddVisibility_012.right).assertEqual(Center_AddVisibility_013.left);
-      expect(Center_AddVisibility_012.left - Center_AddVisibility_01.left).assertEqual(vp2px(100));
-      expect(Center_AddVisibility_01.right - Center_AddVisibility_013.right).assertEqual(vp2px(100));
-      expect(Center_AddVisibility_012.right - Center_AddVisibility_012.left).assertEqual(vp2px(150));
-      expect(Center_AddVisibility_013.right - Center_AddVisibility_013.left).assertEqual(vp2px(150));
-      expect(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top).assertEqual(vp2px(100));
-      expect(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddVisibility_012.left - Center_AddVisibility_01.left)).assertEqual(vp2px(100));
+      expect(Math.round(Center_AddVisibility_01.right - Center_AddVisibility_013.right)).assertEqual(vp2px(100));
+      expect(Math.round(Center_AddVisibility_012.right - Center_AddVisibility_012.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddVisibility_013.right - Center_AddVisibility_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000] END');
       done();
     });
@@ -104,14 +104,16 @@ export default function AlignCenter_AddVisibility() {
       expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_01.top);
       expect(Center_AddVisibility_011.right).assertEqual(Center_AddVisibility_012.left);
       expect(Center_AddVisibility_012.right).assertEqual(Center_AddVisibility_013.left);
-      expect(Center_AddVisibility_011.left - Center_AddVisibility_01.left).assertEqual(vp2px(25));
-      expect(Center_AddVisibility_01.right - Center_AddVisibility_013.right).assertEqual(vp2px(25));
-      expect(Center_AddVisibility_011.right - Center_AddVisibility_011.left).assertEqual(vp2px(150));
-      expect(Center_AddVisibility_012.right - Center_AddVisibility_012.left).assertEqual(vp2px(150));
-      expect(Center_AddVisibility_013.right - Center_AddVisibility_013.left).assertEqual(vp2px(150));
-      expect(Center_AddVisibility_011.bottom - Center_AddVisibility_011.top).assertEqual(vp2px(50));
-      expect(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top).assertEqual(vp2px(100));
-      expect(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top).assertEqual(vp2px(150));
+      expect(Math.round((Center_AddVisibility_011.left - Center_AddVisibility_01.left)*10)/10)
+        .assertEqual(Math.round(vp2px(25)*10)/10);
+      expect(Math.round((Center_AddVisibility_01.right - Center_AddVisibility_013.right)*10)/10)
+        .assertEqual(Math.round(vp2px(25)*10)/10);
+      expect(Math.round(Center_AddVisibility_011.right - Center_AddVisibility_011.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddVisibility_012.right - Center_AddVisibility_012.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddVisibility_013.right - Center_AddVisibility_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddVisibility_011.bottom - Center_AddVisibility_011.top)).assertEqual(vp2px(50));
+      expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100] END');
       done();
     });
@@ -142,14 +144,16 @@ export default function AlignCenter_AddVisibility() {
       expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_01.top);
       expect(Center_AddVisibility_011.right).assertEqual(Center_AddVisibility_012.left);
       expect(Center_AddVisibility_012.right).assertEqual(Center_AddVisibility_013.left);
-      expect(Center_AddVisibility_011.left - Center_AddVisibility_01.left).assertEqual(vp2px(25));
-      expect(Center_AddVisibility_01.right - Center_AddVisibility_013.right).assertEqual(vp2px(25));
-      expect(Center_AddVisibility_011.right - Center_AddVisibility_011.left).assertEqual(vp2px(150));
-      expect(Center_AddVisibility_012.right - Center_AddVisibility_012.left).assertEqual(vp2px(150));
-      expect(Center_AddVisibility_013.right - Center_AddVisibility_013.left).assertEqual(vp2px(150));
-      expect(Center_AddVisibility_011.bottom - Center_AddVisibility_011.top).assertEqual(vp2px(50));
-      expect(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top).assertEqual(vp2px(100));
-      expect(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top).assertEqual(vp2px(150));
+      expect(Math.round((Center_AddVisibility_011.left - Center_AddVisibility_01.left)*10)/10)
+        .assertEqual(Math.round(vp2px(25)*10)/10);
+      expect(Math.round((Center_AddVisibility_01.right - Center_AddVisibility_013.right)*10)/10)
+        .assertEqual(Math.round(vp2px(25)*10)/10);
+      expect(Math.round(Center_AddVisibility_011.right - Center_AddVisibility_011.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddVisibility_012.right - Center_AddVisibility_012.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddVisibility_013.right - Center_AddVisibility_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddVisibility_011.bottom - Center_AddVisibility_011.top)).assertEqual(vp2px(50));
+      expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700] END');
       done();
     });

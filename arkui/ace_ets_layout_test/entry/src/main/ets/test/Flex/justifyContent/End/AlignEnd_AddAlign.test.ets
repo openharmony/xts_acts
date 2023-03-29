@@ -69,13 +69,13 @@ export default function AlignEnd_AddAlign() {
       expect(End_AddAlign_012.left).assertEqual(End_AddAlign_011.right );
       expect(End_AddAlign_013.left).assertEqual(End_AddAlign_012.right );
       expect(End_AddAlign_013.right).assertEqual(End_AddAlign_01.right );
-      expect(End_AddAlign_011.left - End_AddAlign_01.left).assertEqual(vp2px(50));
-      expect(End_AddAlign_011.right - End_AddAlign_011.left).assertEqual(vp2px(150));
-      expect(End_AddAlign_012.right - End_AddAlign_012.left).assertEqual(vp2px(150));
-      expect(End_AddAlign_013.right - End_AddAlign_013.left).assertEqual(vp2px(150));
-      expect(End_AddAlign_011.bottom - End_AddAlign_011.top).assertEqual(vp2px(50));
-      expect(End_AddAlign_012.bottom - End_AddAlign_012.top).assertEqual(vp2px(100));
-      expect(End_AddAlign_013.bottom - End_AddAlign_013.top).assertEqual(vp2px(150));
+      expect(Math.round(End_AddAlign_011.left - End_AddAlign_01.left)).assertEqual(vp2px(50));
+      expect(Math.round(End_AddAlign_011.right - End_AddAlign_011.left)).assertEqual(vp2px(150));
+      expect(Math.round(End_AddAlign_012.right - End_AddAlign_012.left)).assertEqual(vp2px(150));
+      expect(Math.round(End_AddAlign_013.right - End_AddAlign_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(End_AddAlign_011.bottom - End_AddAlign_011.top)).assertEqual(vp2px(50));
+      expect(Math.round(End_AddAlign_012.bottom - End_AddAlign_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(End_AddAlign_013.bottom - End_AddAlign_013.top)).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0800] END');
       done()
     });

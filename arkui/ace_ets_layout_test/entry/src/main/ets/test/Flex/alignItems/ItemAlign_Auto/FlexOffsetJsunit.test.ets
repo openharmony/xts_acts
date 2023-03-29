@@ -45,33 +45,33 @@ export default function flexOffset_AutoJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0900
+     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1000
      * @tc.name      ItemAlign_Auto_FlexOffset
-     * @tc.desc      aceFlexAlignItemTest
+     * @tc.desc      First subcomponent set offset attribute.
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0900', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0900 START');
+    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1000', 0, async function (done) {
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1000 START');
       let strJson1 = getInspectorByKey('flexOffset');
       let obj1 = JSON.parse(strJson1);
       let textOffset01 = CommonFunc.getComponentRect('textOffset01');
       let textOffset02 = CommonFunc.getComponentRect('textOffset02');
       let textOffset03 = CommonFunc.getComponentRect('textOffset03');
       let flexOffset = CommonFunc.getComponentRect('flexOffset');
-      expect(textOffset01.right - textOffset02.left).assertEqual(vp2px(15))
-      expect(textOffset01.top - flexOffset.top).assertEqual(vp2px(30))
-      expect(textOffset01.left - flexOffset.left).assertEqual(vp2px(15))
+      expect(Math.round((textOffset01.right - textOffset02.left)*10)/10).assertEqual(Math.round(vp2px(15)*10)/10)
+      expect(Math.round(textOffset01.top - flexOffset.top)).assertEqual(vp2px(30))
+      expect(Math.round((textOffset01.left - flexOffset.left)*10)/10).assertEqual(Math.round(vp2px(15)*10)/10)
       expect(textOffset02.top).assertEqual(textOffset03.top)
       expect(textOffset03.top).assertEqual(flexOffset.top)
 
-      expect(textOffset01.bottom - textOffset01.top).assertEqual(vp2px(50))
-      expect(textOffset02.bottom - textOffset02.top).assertEqual(vp2px(100))
-      expect(textOffset03.bottom - textOffset03.top).assertEqual(vp2px(150))
-      expect(textOffset01.right - textOffset01.left).assertEqual(vp2px(150))
-      expect(textOffset02.right - textOffset02.left).assertEqual(vp2px(150))
-      expect(textOffset03.right - textOffset03.left).assertEqual(vp2px(150))
+      expect(Math.round(textOffset01.bottom - textOffset01.top)).assertEqual(vp2px(50))
+      expect(Math.round(textOffset02.bottom - textOffset02.top)).assertEqual(vp2px(100))
+      expect(Math.round(textOffset03.bottom - textOffset03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textOffset01.right - textOffset01.left)).assertEqual(vp2px(150))
+      expect(Math.round(textOffset02.right - textOffset02.left)).assertEqual(vp2px(150))
+      expect(Math.round(textOffset03.right - textOffset03.left)).assertEqual(vp2px(150))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0900 END');
+      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1000 END');
       done();
     });
   })

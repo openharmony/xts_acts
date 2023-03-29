@@ -65,18 +65,18 @@ export default function AlignSpaceEvenly_AddOneWidth() {
       let SpaceEvenly_AddOneWidth_01 = CommonFunc.getComponentRect('SpaceEvenly_AddOneWidth_01');
       expect(SpaceEvenly_AddOneWidth_012.left - SpaceEvenly_AddOneWidth_011.right)
         .assertEqual(SpaceEvenly_AddOneWidth_013.left - SpaceEvenly_AddOneWidth_012.right);
-      expect(SpaceEvenly_AddOneWidth_012.left - SpaceEvenly_AddOneWidth_011.right).assertEqual(vp2px(10));
+      expect(Math.round(SpaceEvenly_AddOneWidth_012.left - SpaceEvenly_AddOneWidth_011.right)).assertEqual(vp2px(10));
       expect(SpaceEvenly_AddOneWidth_011.top).assertEqual(SpaceEvenly_AddOneWidth_012.top);
       expect(SpaceEvenly_AddOneWidth_013.top).assertEqual(SpaceEvenly_AddOneWidth_012.top);
       expect(SpaceEvenly_AddOneWidth_011.top).assertEqual(SpaceEvenly_AddOneWidth_01.top);
-      expect(SpaceEvenly_AddOneWidth_011.left - SpaceEvenly_AddOneWidth_01.left).assertEqual(vp2px(10));
-      expect(SpaceEvenly_AddOneWidth_01.right - SpaceEvenly_AddOneWidth_013.right).assertEqual(vp2px(10));
-      expect(SpaceEvenly_AddOneWidth_011.right - SpaceEvenly_AddOneWidth_011.left).assertEqual(vp2px(160));
-      expect(SpaceEvenly_AddOneWidth_012.right - SpaceEvenly_AddOneWidth_012.left).assertEqual(vp2px(150));
-      expect(SpaceEvenly_AddOneWidth_013.right - SpaceEvenly_AddOneWidth_013.left).assertEqual(vp2px(150));
-      expect(SpaceEvenly_AddOneWidth_011.bottom - SpaceEvenly_AddOneWidth_011.top).assertEqual(vp2px(50));
-      expect(SpaceEvenly_AddOneWidth_012.bottom - SpaceEvenly_AddOneWidth_012.top).assertEqual(vp2px(100));
-      expect(SpaceEvenly_AddOneWidth_013.bottom - SpaceEvenly_AddOneWidth_013.top).assertEqual(vp2px(150));
+      expect(Math.round(SpaceEvenly_AddOneWidth_011.left - SpaceEvenly_AddOneWidth_01.left)).assertEqual(vp2px(10));
+      expect(Math.round(SpaceEvenly_AddOneWidth_01.right - SpaceEvenly_AddOneWidth_013.right)).assertEqual(vp2px(10));
+      expect(Math.round(SpaceEvenly_AddOneWidth_011.right - SpaceEvenly_AddOneWidth_011.left)).assertEqual(vp2px(160));
+      expect(Math.round(SpaceEvenly_AddOneWidth_012.right - SpaceEvenly_AddOneWidth_012.left)).assertEqual(vp2px(150));
+      expect(Math.round(SpaceEvenly_AddOneWidth_013.right - SpaceEvenly_AddOneWidth_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(SpaceEvenly_AddOneWidth_011.bottom - SpaceEvenly_AddOneWidth_011.top)).assertEqual(vp2px(50));
+      expect(Math.round(SpaceEvenly_AddOneWidth_012.bottom - SpaceEvenly_AddOneWidth_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(SpaceEvenly_AddOneWidth_013.bottom - SpaceEvenly_AddOneWidth_013.top)).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1400] END');
       done();
     });

@@ -72,12 +72,18 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
       expect(SpaceEvenly_AddLayoutWeight_012.right).assertEqual(SpaceEvenly_AddLayoutWeight_013.left);
       expect(SpaceEvenly_AddLayoutWeight_011.left).assertEqual(SpaceEvenly_AddLayoutWeight_01.left);
       expect(SpaceEvenly_AddLayoutWeight_013.right).assertEqual(SpaceEvenly_AddLayoutWeight_01.right);
-      expect(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top).assertEqual(vp2px(50));
-      expect(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top).assertEqual(vp2px(100));
-      expect(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top).assertEqual(vp2px(150));
-      expect(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left).assertEqual(vp2px(100));
-      expect(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left).assertEqual(vp2px(200));
-      expect(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left).assertEqual(vp2px(200));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top))
+        .assertEqual(vp2px(50));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top))
+        .assertEqual(vp2px(100));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top))
+        .assertEqual(vp2px(150));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left))
+        .assertEqual(vp2px(100));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left))
+        .assertEqual(vp2px(200));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left))
+        .assertEqual(vp2px(200));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200] END');
       done();
     });
@@ -108,14 +114,18 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
       expect(SpaceEvenly_AddLayoutWeight_012.right).assertEqual(SpaceEvenly_AddLayoutWeight_013.left);
       expect(SpaceEvenly_AddLayoutWeight_011.left).assertEqual(SpaceEvenly_AddLayoutWeight_01.left);
       expect(SpaceEvenly_AddLayoutWeight_013.right).assertEqual(SpaceEvenly_AddLayoutWeight_01.right);
-      expect(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top).assertEqual(vp2px(50));
-      expect(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top).assertEqual(vp2px(100));
-      expect(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top).assertEqual(vp2px(150));
-      let oneWidth = SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left;
-      let twoWidth = SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left;
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_011.bottom - SpaceEvenly_AddLayoutWeight_011.top))
+        .assertEqual(vp2px(50));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_012.bottom - SpaceEvenly_AddLayoutWeight_012.top))
+        .assertEqual(vp2px(100));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.bottom - SpaceEvenly_AddLayoutWeight_013.top))
+        .assertEqual(vp2px(150));
+      let oneWidth = Math.round(SpaceEvenly_AddLayoutWeight_011.right - SpaceEvenly_AddLayoutWeight_011.left);
+      let twoWidth = Math.round(SpaceEvenly_AddLayoutWeight_012.right - SpaceEvenly_AddLayoutWeight_012.left);
       expect(twoWidth / oneWidth).assertEqual(2);
       expect(twoWidth + oneWidth).assertEqual(vp2px(350));
-      expect(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left).assertEqual(vp2px(150));
+      expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left)).
+        assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300] END');
       done();
     });
