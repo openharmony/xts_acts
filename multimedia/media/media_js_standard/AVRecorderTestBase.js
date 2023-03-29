@@ -18,15 +18,13 @@ import * as mediaTestBase from './MediaTestBase.js';
 
 async function idleCallBack(avRecorder) {
     console.info('case createAVRecorder called');
-    await media.createAVRecorder().then((recorder) => {
+    await media.createAVRecorder((error, recorder) => {
         if (recorder != null) {
             avRecorder = recorder;
             console.info('createAVRecorder success');
         } else {
-            console.info('createAVRecorder fail');
+            console.info(`createAVRecorder fail, error:${error}`);
         }
-    }).catch((error) => {
-        console.info(`createAVRecorder catchCallback, error:${error}`);
     });
     return avRecorder;
 }
@@ -87,7 +85,7 @@ export async function getInputSurfacePromise(avRecorder) {
     let surfaceID = null;
     if (typeof(avRecorder) == 'undefined') {
         return;
-    } 
+    }
     await avRecorder.getInputSurface().then((surfaceId) => {
         console.info('getInputSurface success');
         surfaceID = surfaceId;
@@ -387,7 +385,6 @@ export async function avRecorderWithCallBack(avConfig, avRecorder, recorderTime,
 
 export async function avRecorderWithCallBack2(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -404,7 +401,6 @@ export async function avRecorderWithCallBack2(avConfig, avRecorder, recorderTime
 
 export async function avRecorderWithCallBack3(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -422,7 +418,6 @@ export async function avRecorderWithCallBack3(avConfig, avRecorder, recorderTime
 
 export async function avRecorderWithCallBack4(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -438,7 +433,6 @@ export async function avRecorderWithCallBack4(avConfig, avRecorder, recorderTime
 
 export async function avRecorderWithCallBack5(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -471,7 +465,6 @@ export async function avRecorderWithCallBack6(avConfig, avRecorder, recorderTime
 
 export async function avRecorderWithCallBack7(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -1198,7 +1191,6 @@ export async function setCreate2ReleaseOnCallback(avRecorder, avConfig, loopTime
 }
 
 export async function avRecorderLoopCreate2ReleaseWithCallback(avRecorder, avConfig, loopTimes, done) {
-    
     avRecorder = await idle(avRecorder);
     await preparePromise(avRecorder, avConfig);
     setCreate2ReleaseOnCallback(avRecorder, loopTimes, done)
@@ -1253,7 +1245,6 @@ export async function setPrepare2StopOnCallback(avRecorder, done) {
 }
 
 export async function avRecorderLoopPrepare2StopWithCallback(avConfig, avRecorder, done) {
-    
     avRecorder = await idle(avRecorder);
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
