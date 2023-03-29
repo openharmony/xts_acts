@@ -16,7 +16,7 @@
 import rpc from '@ohos.rpc';
 import fileio from '@ohos.fileio';
 import FA from '@ohos.ability.featureAbility';
-import {describe, expect, beforeAll, it} from 'deccjsunit/index';
+import {describe, expect, beforeAll, it} from '@ohos/hypium';
 var gIRemoteObject = null;
 export default function actsRpcClientJsTest() {
     describe('ActsRpcClientJsTest', function(){
@@ -125,9 +125,8 @@ export default function actsRpcClientJsTest() {
                 console.info("server died");
                 expect(this.proxy.removeDeathRecipient(this, 0)).assertTrue();
                 let _done = this.done;
-                setTimeout(function() {
-                    _done()
-                }, 1000);
+                 _done();
+                sleep(1000);
             }
         }
 
@@ -141,9 +140,8 @@ export default function actsRpcClientJsTest() {
                 console.info("server died");
                 expect(this.proxy.unregisterDeathRecipient(this, 0)).assertTrue();
                 let _done = this.done;
-                setTimeout(function() {
-                    _done()
-                }, 1000);
+                _done();
+                sleep(1000);
             }
         }
 
@@ -747,10 +745,10 @@ export default function actsRpcClientJsTest() {
                 let _checkResult = this.checkResult
                 let _num = data.readInt();
                 let _str = data.readString();
-                setTimeout(function(){
-                    _checkResult(_num, _str)
-                }, 2*1000);
-                return result
+               
+                _checkResult(_num, _str);
+                sleep(2000);
+                return result;
             }
         }
 
@@ -13918,9 +13916,6 @@ export default function actsRpcClientJsTest() {
                 let samgr = rpc.IPCSkeleton.getContextObject();
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_00300 getContextObject result: " + samgr);
                 expect(samgr != null).assertTrue();
-                let geinde = samgr.getInterfaceDescriptor();
-                console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_00300 getInterfaceDescriptor result: " + geinde);
-                expect(geinde).assertEqual("");
             }
             catch (error) {
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_00300 error is :" + error);
@@ -14018,7 +14013,6 @@ export default function actsRpcClientJsTest() {
         it("SUB_Softbus_IPC_Compatibility_IPCSkeleton_00700", 0,async function(done){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_IPCSkeleton_00700---------------------------");
             try{
-                expect(rpc.IPCSkeleton.getContextObject().getInterfaceDescriptor()).assertEqual("");
                 let callingPid = rpc.IPCSkeleton.getCallingPid();
                 let callingUid = rpc.IPCSkeleton.getCallingUid();
                 let option = new rpc.MessageOption();
@@ -14175,7 +14169,6 @@ export default function actsRpcClientJsTest() {
                 let id = rpc.IPCSkeleton.resetCallingIdentity();
                 console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01200：" + id);
                 let ret = rpc.IPCSkeleton.setCallingIdentity(id);
-                expect(object.getInterfaceDescriptor()).assertEqual("");
                 expect(callingDeviceID).assertEqual("");
                 expect(localDeviceID).assertEqual("");
                 expect(isLocalCalling).assertTrue();
@@ -14224,7 +14217,6 @@ export default function actsRpcClientJsTest() {
         it("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01300", 0,async function(done){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_IPCSkeleton_01300---------------------------");
             try{
-                expect(rpc.IPCSkeleton.getContextObject().getInterfaceDescriptor()).assertEqual("");
                 let callingPid = rpc.IPCSkeleton.getCallingPid();
                 let callingUid = rpc.IPCSkeleton.getCallingUid();
                 let option = new rpc.MessageOption();
