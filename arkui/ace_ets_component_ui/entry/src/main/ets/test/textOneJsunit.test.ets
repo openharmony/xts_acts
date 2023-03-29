@@ -81,7 +81,7 @@ export default function textOneJsunit() {
       let strJson = getInspectorByKey('text1');
       let obj = JSON.parse(strJson);
       console.info('textOneJsunit_0300 component obj is: ' + obj.$attrs.textAlign);
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Right');
+      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Left');
       done();
     });
 

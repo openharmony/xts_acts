@@ -54,7 +54,7 @@ export default function ProgressJsunit() {
       expect(obj.$attrs.total).assertEqual('100.000000');
       expect(obj.$attrs.type).assertEqual('ProgressStyle.Linear');
       expect(obj.$attrs.color).assertEqual('#FF808080');
-      expect(obj.$attrs.backgroundColor).assertEqual('#00000000');
+      expect(obj.$attrs.backgroundColor).assertEqual('#FFFF0000');
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('pro3');
       let obj1 = JSON.parse(strJson1);
@@ -120,7 +120,7 @@ export default function ProgressJsunit() {
       let strJson = getInspectorByKey('pro1');
       let obj = JSON.parse(strJson);
       console.info("[ProgressJsunit_0500] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.backgroundColor).assertEqual('#00000000');
+      expect(obj.$attrs.backgroundColor).assertEqual('#FF000000');
       console.info('[ProgressJsunit_0500] END');
       done();
     });

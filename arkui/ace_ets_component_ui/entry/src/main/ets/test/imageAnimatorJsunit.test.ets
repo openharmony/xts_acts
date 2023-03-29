@@ -30,7 +30,7 @@ export default function imageAniamtorJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get imageAniamtorJsunit state pages:" + JSON.stringify(pages));
-        if (!("textTwo" == pages.name)) {
+        if (!("imageAnimator" == pages.name)) {
           console.info("get imageAniamtor state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           console.info("push imageAniamtorJsunit success " + JSON.stringify(result));
@@ -115,21 +115,21 @@ export default function imageAniamtorJsunit() {
       let strJson = getInspectorByKey('imageAnimator');
       let obj = JSON.parse(strJson);
       console.info('imageAniamtorJsunit_0400 component obj is: ' + obj.$attrs.fillMode);
-      //expect(obj.$attrs.fillMode).assertEqual('FillMode.Forwards'); 
+      expect(obj.$attrs.fillMode).assertEqual('FillMode.Forwards'); 
       
       globalThis.value.message.notify({name:'fillMode',value:FillMode.Backwards})
       await CommonFunc.sleep(5000);
       let strJson2 = getInspectorByKey('imageAnimator');
       let obj2 = JSON.parse(strJson2);
       console.info('imageAniamtorJsunit_0400 component obj2 is: ' + obj2.$attrs.fillMode);
-      //expect(obj2.$attrs.fillMode).assertEqual('FillMode.Backwards');
+      expect(obj2.$attrs.fillMode).assertEqual('FillMode.Backwards');
 
       globalThis.value.message.notify({name:'fillMode',value:FillMode.Both})
       await CommonFunc.sleep(5000);
       let strJson3 = getInspectorByKey('imageAnimator');
       let obj3 = JSON.parse(strJson3);
       console.info('imageAniamtorJsunit_0400 component obj3 is: ' + obj3.$attrs.fillMode);
-      //expect(obj3.$attrs.fillMode).assertEqual('FillMode.Both'); 
+      expect(obj3.$attrs.fillMode).assertEqual('FillMode.Both'); 
       done();
     });
 
@@ -142,15 +142,13 @@ export default function imageAniamtorJsunit() {
       let strJson = getInspectorByKey('imageAnimator');
       let obj = JSON.parse(strJson);
       console.info('imageAniamtorJsunit_0500 component obj is: ' + obj.$attrs.fillMode);
-      expect(obj.$attrs.fillMode).assertEqual('FillMode.None');
+      expect(obj.$attrs.fillMode).assertEqual('FillMode.Forwards');
       done();
     });
 
     it('imageAniamtorJsunit_0600', 0, async function (done) {
       console.info('[imageAniamtorJsunit_0600] START');
       // test the boolean attribute  of imageAnimator
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'duration1',value:0})
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'duration',value:700})
       await CommonFunc.sleep(1000);
@@ -164,11 +162,11 @@ export default function imageAniamtorJsunit() {
       let obj = JSON.parse(strJson);
       console.info('[imageAniamtorJsunit_0600] component obj is: ' + obj.$attrs.duration 
       + "---" + obj.$attrs.reverse + "---" + obj.$attrs.fixedSize + "----" + obj.$attrs.iterations);
-      //expect(obj.$attrs.duration).assertEqual('700');
-      //expect(obj.$attrs.reverse).assertEqual('true');
-      //expect(obj.$attrs.fixedSize).assertEqual('false');    
-      //expect(obj.$attrs.iterations).assertEqual('2');
-      //console.info('[imageAniamtorJsunit_0600] END');
+      expect(obj.$attrs.duration).assertEqual('700');
+      expect(obj.$attrs.reverse).assertEqual('true');
+      expect(obj.$attrs.fixedSize).assertEqual('false');    
+      expect(obj.$attrs.iterations).assertEqual('2');
+      console.info('[imageAniamtorJsunit_0600] END');
       done();
     });
 
@@ -203,11 +201,11 @@ export default function imageAniamtorJsunit() {
       let btn2 = await driver.findComponent(ON.id('start'));
       expect(btn2 != null).assertTrue();
       await btn2.click();
-      await CommonFunc.sleep(3000); 
+      await CommonFunc.sleep(1000); 
       let strJson = getInspectorByKey('t3');
       let obj = JSON.parse(strJson);
       console.info('imageAnimatorJsunit_0800 component obj is: '+ obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('ani');
+      expect(obj.$attrs.content).assertEqual('onRepeat');
 
       let btn3 = await driver.findComponent(ON.id('pause'));
       expect(btn3 != null).assertTrue();

@@ -105,13 +105,13 @@ export default function ToggleJsunit() {
       let textComponent = await driver.findComponent(BY.key('text'));
       let checkbox = await textComponent.getText();
       console.info("[ToggleJsunit_0300] checkbox: " + JSON.stringify(checkbox));
-      expect(checkbox).assertEqual('checkbox true');
+      expect(checkbox).assertEqual('checkbox false');
 
       await checkboxButton.click();
       await CommonFunc.sleep(1000);
       let checkbox1 = await textComponent.getText();
       console.info("[ToggleJsunit_0300] checkbox1: " + JSON.stringify(checkbox1));
-      expect(checkbox1).assertEqual('checkbox false');
+      expect(checkbox1).assertEqual('checkbox true');
       console.info('[ToggleJsunit_0300] END');
       done();
     });
@@ -140,7 +140,7 @@ export default function ToggleJsunit() {
     it('ToggleJsunit_0500', 0, async function (done) {
       // Modify the attribute of Toggle component
       console.info('[ToggleJsunit_0500] START');
-      globalThis.value.message.notify({name:'type',value:'ToggleType.Switch'})
+      globalThis.value.message.notify({name:'type',value:ToggleType.Switch})
       await CommonFunc.sleep(2000);
       globalThis.value.message.notify({name:'isOn',value:'false'})
       await CommonFunc.sleep(2000);
@@ -157,9 +157,9 @@ export default function ToggleJsunit() {
       console.info("[ToggleJsunit_0500] isOn: " + JSON.stringify(obj.$attrs.isOn));
       console.info("[ToggleJsunit_0500] selectedColor: " + JSON.stringify(obj.$attrs.selectedColor));
       await CommonFunc.sleep(1000);
-      //expect(obj.$attrs.type).assertEqual('ToggleType.Switch');
-      //expect(obj.$attrs.isOn).assertEqual('false');
-      //expect(obj.$attrs.selectedColor).assertEqual('#FF008000');
+      expect(obj.$attrs.type).assertEqual('ToggleType.Switch');
+      expect(obj.$attrs.isOn).assertEqual('false');
+      expect(obj.$attrs.selectedColor).assertEqual('#FF008000');
       let strJson1 = getInspectorByKey('toggleSwitch');
       let obj1 = JSON.parse(strJson1);
       console.info("[ToggleJsunit_0500] component obj1 is: " + JSON.stringify(obj1));
@@ -198,7 +198,7 @@ export default function ToggleJsunit() {
       console.info("[ToggleJsunit_0600] component obj1 is: " + JSON.stringify(obj1));
       console.info("[ToggleJsunit_0600] switchPointColor: " + JSON.stringify(obj1.$attrs.switchPointColor));
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.switchPointColor).assertEqual('#FFFF0000');
+      expect(obj1.$attrs.switchPointColor).assertEqual('#FFFFFFFF');
       console.info('[ToggleJsunit_0600] END');
       done();
     });

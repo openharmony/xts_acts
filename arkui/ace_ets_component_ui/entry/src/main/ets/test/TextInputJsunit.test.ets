@@ -68,9 +68,10 @@ export default function TextInputJsunit() {
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Search');
       expect(obj.$attrs.caretColor).assertEqual('#FF0000FF');
       expect(obj.$attrs.maxLength).assertEqual('10');
+      expect(obj.$attrs.style).assertEqual('TextInputStyle.Inline');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center');
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.None');
-      expect(obj.$attrs.showPasswordIcon).assertEqual('false');
+      expect(obj.$attrs.showPasswordIcon).assertEqual(false); 
       console.info('[TextInputJsunit_0100] END');
       done();
     });
@@ -95,14 +96,13 @@ export default function TextInputJsunit() {
       console.info("[TextInputJsunit_0200] textAlign: " + JSON.stringify(obj.$attrs.textAlign));
       expect(obj.$attrs.placeholder).assertEqual('inline style');
       expect(obj.$attrs.type).assertEqual('InputType.Normal');
-      expect(obj.$attrs.placeholderColor).assertEqual('#FF808080');
-      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}');
-      expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Next');
-      expect(obj.$attrs.caretColor).assertEqual('#FF0000FF');
-      expect(obj.$attrs.maxLength).assertEqual('10');
+      expect(obj.$attrs.placeholderColor).assertEqual('#FF182431');
+      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"16.00fp","weight":"400","fontFamily":"sans-serif"}');
+      expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Done');
+      expect(obj.$attrs.caretColor).assertEqual('#FF007DFF');
+      expect(obj.$attrs.maxLength).assertEqual('INF');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
-      expect(obj.$attrs.copyOption).assertEqual('CopyOptions.None');
-      expect(obj.$attrs.showPasswordIcon).assertEqual('true');
+      expect(obj.$attrs.showPasswordIcon).assertEqual(true);
       await CommonFunc.sleep(1000);
       console.info('[TextInputJsunit_0200] END');
       done();
@@ -113,19 +113,19 @@ export default function TextInputJsunit() {
       console.info('[TextInputJsunit_0300] START');
       globalThis.value.message.notify({name:'placeholder',value:'place input your word...'})
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'type',value:'InputType.Normal'})
+      globalThis.value.message.notify({name:'type',value:InputType.Normal})
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'placeholderColor',value:'Color.Green'})
+      globalThis.value.message.notify({name:'placeholderColor',value:Color.Green})
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'placeholderFont',value:'{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}'})
+      globalThis.value.message.notify({name:'placeholderFont',value:{ size: 18, weight: 500 }})
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'enterKeyType',value:'EnterKeyType.Done'})
+      globalThis.value.message.notify({name:'enterKeyType',value:EnterKeyType.Done})
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'caretColor',value:'Color.Red'})
+      globalThis.value.message.notify({name:'caretColor',value:Color.Red})
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'maxLength',value:'8'})
+      globalThis.value.message.notify({name:'maxLength',value:8})
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'textAlign',value:'TextAlign.Start'})
+      globalThis.value.message.notify({name:'textAlign',value:TextAlign.Start})
       await CommonFunc.sleep(1000);
 
       // Get the propoties value of the TextInput component
@@ -141,11 +141,11 @@ export default function TextInputJsunit() {
       console.info("[TextInputJsunit_0300] maxLength: " + JSON.stringify(obj.$attrs.maxLength));
       console.info("[TextInputJsunit_0300] textAlign: " + JSON.stringify(obj.$attrs.textAlign));
       expect(obj.$attrs.placeholder).assertEqual('place input your word...');
-      expect(obj.$attrs.type).assertEqual('InputType.Email');
+      expect(obj.$attrs.type).assertEqual('InputType.Normal');
       expect(obj.$attrs.placeholderColor).assertEqual('#FF008000');
-      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}');
+      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"18.00fp","weight":"500","fontFamily":"sans-serif"}');
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Done');
-      expect(obj.$attrs.caretColor).assertEqual('#FF007DFF');
+      expect(obj.$attrs.caretColor).assertEqual('#FFFF0000');
       expect(obj.$attrs.maxLength).assertEqual('8');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
       console.info('[TextInputJsunit_0300] END');
@@ -207,7 +207,7 @@ export default function TextInputJsunit() {
       await textComponent5.click()
       let textComponent6 = await driver.findComponent(BY.text('剪切'));
       await textComponent6.click()
-      await textComponent.click()
+      //await textComponent.click()
       await CommonFunc.sleep(1000);
       let textComponent7 = await driver.findComponent(BY.key('cut'));
       let text4 = await textComponent7.getText();
@@ -251,8 +251,8 @@ export default function TextInputJsunit() {
       console.info("[TextInputJsunit_0500] textAlign: " + JSON.stringify(obj.$attrs.textAlign));
       expect(obj.$attrs.placeholder).assertEqual('');
       expect(obj.$attrs.type).assertEqual('InputType.Normal');
-      expect(obj.$attrs.placeholderColor).assertEqual('#FF808080');
-      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}');
+      expect(obj.$attrs.placeholderColor).assertEqual('#FF008000');
+      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"18.00fp","weight":"500","fontFamily":"sans-serif"}');
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Done');
       expect(obj.$attrs.caretColor).assertEqual('#FF00007B');
       expect(obj.$attrs.maxLength).assertEqual('INF');

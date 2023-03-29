@@ -67,13 +67,13 @@ export default function blankJsunit() {
       console.info('blankJsunitUITest_0200 START');
       await CommonFunc.sleep(1000);
        // 动态修改Blank组件的minwidth
-      globalThis.value.message.notify({name:'minWith',value:'80'})
+      globalThis.value.message.notify({name:'minWith',value:80})
       await CommonFunc.sleep(2000);
       // 获取动态修改后的组件的minwidth
       let strJson = getInspectorByKey('bl2');
       let obj = JSON.parse(strJson);
       console.info("[blankJsunit_0200'] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.min).assertEqual('80.00vp');
+      expect(obj.$attrs.min).assertEqual('80.00px');
       done();
     });
 
