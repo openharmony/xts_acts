@@ -18,15 +18,13 @@ import * as mediaTestBase from './MediaTestBase.js';
 
 async function idleCallBack(avRecorder) {
     console.info('case createAVRecorder called');
-    await media.createAVRecorder().then((recorder) => {
+    await media.createAVRecorder((error, recorder) => {
         if (recorder != null) {
             avRecorder = recorder;
             console.info('createAVRecorder success');
         } else {
-            console.info('createAVRecorder fail');
+            console.info(`createAVRecorder fail, error:${error}`);
         }
-    }).catch((error) => {
-        console.info(`createAVRecorder catchCallback, error:${error}`);
     });
     return avRecorder;
 }

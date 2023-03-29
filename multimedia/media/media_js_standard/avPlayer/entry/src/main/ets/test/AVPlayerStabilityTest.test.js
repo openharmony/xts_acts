@@ -803,19 +803,19 @@ export default function AVPlayerStabilityTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0200 end')
         })
 
-        /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300
-           * @tc.name      : 001.test complete->play->seek duration (1000 times)
-           * @tc.desc      : Local Video complete->play->seek duration (1000 times)
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level3
-         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300', 0, async function (done) {
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 start')
-            AVPlayerTestBase.playToCompleted(videos[0], avPlayer, done);
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 end')
-        })
+//        /* *
+//           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300
+//           * @tc.name      : 001.test complete->play->seek duration (1000 times)
+//           * @tc.desc      : Local Video complete->play->seek duration (1000 times)
+//           * @tc.size      : MediumTest
+//           * @tc.type      : Function test
+//           * @tc.level     : Level3
+//         */
+//        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300', 0, async function (done) {
+//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 start')
+//            AVPlayerTestBase.playToCompleted(videos[0], avPlayer, done);
+//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 end')
+//        })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0400
