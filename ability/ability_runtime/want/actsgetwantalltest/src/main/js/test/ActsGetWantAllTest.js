@@ -16,11 +16,24 @@ import featureAbility from '@ohos.ability.featureAbility'
 import wantConstant from '@ohos.ability.wantConstant'
 
 import { describe, beforeAll, it, expect } from '@ohos/hypium'
+
+const sleep = async delay => {
+    return new Promise((resolve, _) => {
+        setTimeout(async () => {
+            resolve(0);
+        }, delay);
+    });
+};
+
 export default function ActsGetWantTest() {
 describe('ActsGetWantTest', function () {
     beforeAll(async (done) => {
         console.info('ActsGetWantTest begin')
         done();
+    })
+
+    beforeEach(async () => {
+        await sleep(1000);
     })
 
     //  @tc.number: ACTS_GetWant_0100
