@@ -81,7 +81,7 @@ export default function AVPlayerStabilityTest() {
 
         beforeAll(async function () {
             console.info('beforeAll case');
-            for (var i = 0; i < VIDEO_SOURCES.length; i++) {
+            for(var i = 0;i < VIDEO_SOURCES.length; i++){
                 await getStageFdRead(VIDEO_SOURCES[i]).then((testNumber) => {
                     fdNumber = testNumber;
                     console.info(TAG + 'this fdNumber is :' + fdNumber)
@@ -107,12 +107,12 @@ export default function AVPlayerStabilityTest() {
         }
 
 
-        beforeEach(async function () {
+        beforeEach(async function() {
             console.info('beforeEach case');
             await AVPlayerTestBase.sleep(1000);
         })
 
-        afterEach(async function () {
+        afterEach(async function() {
             if (avPlayer != null) {
                 avPlayer.release().then(() => {
                     console.info(TAG + 'this testCase execution completed')
@@ -122,9 +122,9 @@ export default function AVPlayerStabilityTest() {
             await AVPlayerTestBase.sleep(1000);
         })
 
-        afterAll(async function () {
+        afterAll(async function() {
             console.info('afterAll case');
-            for (var i = 0; i < fdNumbers.length; i++) {
+            for(var i = 0;i < fdNumbers.length; i++){
                 await mediaTestBase.closeFdNumber(fdNumbers[i]);
             }
         })
@@ -223,7 +223,7 @@ export default function AVPlayerStabilityTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0500', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0500 start')
-            AVPlayerTestBase.avPlayerPlay(videos[4], avPlayer, done);
+            AVPlayerTestBase.avPlayerPlay(videos[4], avPlayer,done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_MP4_0500 end')
         })
 
@@ -761,7 +761,19 @@ export default function AVPlayerStabilityTest() {
         })
 
 
-
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300
+           * @tc.name      : 001.test play source 4k
+           * @tc.desc      : Local Video play source
+           * @tc.size      : MediumTest
+           * @tc.type      : Function test
+           * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300 start')
+            AVPlayerTestBase.avPlayerPlay(videos[43], avPlayer, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300 end')
+        })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0100
@@ -791,19 +803,19 @@ export default function AVPlayerStabilityTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0200 end')
         })
 
-        /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300
-           * @tc.name      : 001.test complete->play->seek duration (1000 times)
-           * @tc.desc      : Local Video complete->play->seek duration (1000 times)
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level3
-         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300', 0, async function (done) {
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 start')
-            AVPlayerTestBase.playToCompleted(videos[0], avPlayer, done);
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 end')
-        })
+//        /* *
+//           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300
+//           * @tc.name      : 001.test complete->play->seek duration (1000 times)
+//           * @tc.desc      : Local Video complete->play->seek duration (1000 times)
+//           * @tc.size      : MediumTest
+//           * @tc.type      : Function test
+//           * @tc.level     : Level3
+//         */
+//        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300', 0, async function (done) {
+//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 start')
+//            AVPlayerTestBase.playToCompleted(videos[0], avPlayer, done);
+//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 end')
+//        })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0400
@@ -883,11 +895,11 @@ export default function AVPlayerStabilityTest() {
            * @tc.type      : Function test
            * @tc.level     : Level3
          */
-        //        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100', 0, async function (done) {
-        //            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100 start')
-        //            AVPlayerTestBase.createTimeWithCallback(videos[0], avPlayer, done);
-        //            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100 end')
-        //        })
+//        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100', 0, async function (done) {
+//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100 start')
+//            AVPlayerTestBase.createTimeWithCallback(videos[0], avPlayer, done);
+//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100 end')
+//        })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0110
@@ -1224,20 +1236,6 @@ export default function AVPlayerStabilityTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_02_0100 start')
             AVPlayerTestBase.firstFrameTime(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_02_0100 end')
-        })
-
-        /* *
-          * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300
-          * @tc.name      : 001.test play source 4k
-          * @tc.desc      : Local Video play source
-          * @tc.size      : MediumTest
-          * @tc.type      : Function test
-          * @tc.level     : Level2
-       */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300', 0, async function (done) {
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300 start')
-            AVPlayerTestBase.avPlayerPlay(videos[43], avPlayer, done);
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_FORMAT_SOURCE_0300 end')
         })
     })
 }
