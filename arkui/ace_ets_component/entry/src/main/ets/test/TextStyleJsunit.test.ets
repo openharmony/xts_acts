@@ -219,7 +219,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle008] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle008] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('-2147483648.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
       done();
     });
 
