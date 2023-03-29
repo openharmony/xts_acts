@@ -29,7 +29,7 @@ let mKVMgrConfig = {
     context : context
 };
 
-function publicgetKvStore(optionsp){
+function publicGetKvStore(optionsp){
     console.log(`Test getKvStore `)
     return new Promise(function(resolve, reject) {
         kvManager = distributedData.createKVManager(mKVMgrConfig);
@@ -46,7 +46,7 @@ function publicgetKvStore(optionsp){
     })
 }
 
-function publiccloseKvStore() {
+function publicCloseKvStore() {
     console.log(`Test closeKvStore `)
     return new Promise(function (resolve, reject) {
         kvManager.closeKVStore(BUNDLE_NAME, STORE_ID, kvStore, (err, data) => {
@@ -68,7 +68,7 @@ function publiccloseKvStore() {
     })
 }
 
-function publicput(kvStore,key,value){
+function publicPut(kvStore,key,value){
     console.log(`Test put ${JSON.stringify(key,value)}`)
     return new Promise(function(resolve, reject) {
         kvStore.put(key,value, function(err, data){
@@ -83,7 +83,7 @@ function publicput(kvStore,key,value){
     })
 }
 
-function publicget(kvStore,key){
+function publicGet(kvStore,key){
     console.log(`Test get ${JSON.stringify(key)}`)
     return new Promise(function(resolve, reject) {
         kvStore.get(key, function(err, data){
@@ -98,7 +98,7 @@ function publicget(kvStore,key){
     })
 }
 
-function publicbackup(kvStore,file){
+function publicBackup(kvStore,file){
     console.log(`Test backup ${JSON.stringify(file)}`)
     return new Promise(function(resolve, reject) {
         kvStore.backup(file).then((data) => {
@@ -111,7 +111,7 @@ function publicbackup(kvStore,file){
     })
 }
 
-function publicdeleteBackup(kvStore,files) {
+function publicDeleteBackup(kvStore,files) {
     console.log(`Test deleteBackup ${JSON.stringify(files)}`)
     return new Promise(function (resolve, reject) {
         kvStore.deleteBackup(files).then((data) => {
@@ -128,7 +128,7 @@ function publicdeleteBackup(kvStore,files) {
     })
 }
 
-function publicrestoresp(kvStore,file){
+function publicRestoreSp(kvStore,file){
     console.log(`Test restoresp ${JSON.stringify(file)}`)
     return new Promise(function(resolve, reject) {
         kvStore.restore(file).then((data) => {
@@ -141,7 +141,7 @@ function publicrestoresp(kvStore,file){
     })
 }
 
-function publicrestore(kvStore){
+function publicRestore(kvStore){
     console.log(`Test restore `)
     return new Promise(function(resolve, reject) {
         kvStore.restore.then((data) => {
@@ -174,7 +174,7 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     beforeAll( async function () {
         console.info('Test beforeAll: Prerequisites at the test suite level, ' +
         'which are executed before the test suite is executed.');
-        await publicgetKvStore(optionLock);
+        await publicGetKvStore(optionLock);
         console.info("Test kvstore = " + kvStore)
     })
     beforeEach(function () {
@@ -184,12 +184,12 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     afterEach( async function () {
         console.info('afterEach: Test case-level clearance conditions, ' +
         'which are executed after each test case is executed.');
-        await publicdeleteBackup(kvStore,files);
+        await publicDeleteBackup(kvStore,files);
     })
     afterAll( async function () {
         console.info('afterAll: Test suite-level cleanup condition, ' +
         'which is executed after the test suite is executed');
-        await publiccloseKvStore();
+        await publicCloseKvStore();
         kvManager = null;
         console.info("Test kvstore = " + kvStore)
     })
@@ -203,7 +203,9 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     it('SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0100', 0, async function (done) {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0100 before restore");
-            await publicrestore(kvStore).then((data) => {
+            
+            
+            publicRestore(kvStore).then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0100 going restore = " + JSON.stringify(data));
                 expect(true).assertEqual(data == 'code数字');
                 done();
@@ -230,18 +232,18 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200 before getname");
             file  = '123' ;
             files[0] = file ;
-            publicbackup(kvStore,file) ;
+            publicBackup(kvStore,file) ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200 before restore");
             await sleep(1000);
-            publicrestore(kvStore);
+            publicRestore(kvStore);
             console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200 going restore ");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            await publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[0];
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200 delResult[1] = " + delResult[1]);
                 expect(0).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -263,15 +265,15 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             file = 'legal' ;
             files[0] = "legal" ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0100 before backup");
-            publicbackup(kvStore,file) ;
+            publicBackup(kvStore,file) ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0100 going backup");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[0];
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0100 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0100 delResult[1] = " + delResult[1]);
                 expect(0).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0100 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0100 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -293,15 +295,15 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             file  = 'true' ;
             files[0] = file ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0200 before backup");
-            publicbackup(kvStore,file) ;
+            publicBackup(kvStore,file) ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0200 going backup");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[0];
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0200 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0200 delResult[1] = " + delResult[1]);
                 expect(0).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0200 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0200 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -323,15 +325,15 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             file  = '1' ;
             files[0] = file ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0300 before backup");
-            publicbackup(kvStore,file) ;
+            publicBackup(kvStore,file) ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0300 going backup");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[0];
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0300 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0300 delResult[1] = " + delResult[1]);
                 expect(0).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0300 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0300 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -353,15 +355,15 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             file  = '1.0' ;
             files[0] = file ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0400 before backup");
-            publicbackup(kvStore,file) ;
+            publicBackup(kvStore,file) ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0400 going backup");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[0];
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0400 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0400 delResult[1] = " + delResult[1]);
                 expect(0).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0400 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0400 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -382,7 +384,7 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0500 before getname");
             file  = '' ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0500 before backup");
-            await publicbackup(kvStore,file).then((data) => {
+            publicBackup(kvStore,file).then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0500 going backup");
                 expect(true).assertEqual(data == "code数字");
                 done();
@@ -419,19 +421,19 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             files[3] = file3 ;
             files[4] = file4 ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0600 before backup");
-            publicbackup(kvStore,file);
+            publicBackup(kvStore,file);
             await sleep(500);
-            publicbackup(kvStore,file1);
+            publicBackup(kvStore,file1);
             await sleep(500);
-            publicbackup(kvStore,file2);
+            publicBackup(kvStore,file2);
             await sleep(500);
-            publicbackup(kvStore,file3);
+            publicBackup(kvStore,file3);
             await sleep(500);
-            publicbackup(kvStore,file4);
+            publicBackup(kvStore,file4);
             await sleep(500);
-            console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0600 before publicdeleteBackup");
+            console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0600 before publicDeleteBackup");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
 
                 expect("1").assertEqual(delresult[0][0])
                 expect(0).assertEqual(delresult[0][1]);
@@ -448,7 +450,7 @@ describe('kvStoreBackupPromiseJsunittest', function () {
                 expect("5").assertEqual(delresult[4][0])
                 expect(27459591).assertEqual(delresult[4][1])
 
-                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0600 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0600 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -481,18 +483,18 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             files[4] = file4 ;
             files[5] = file5 ;
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700 before backup");
-            publicbackup(kvStore,file);
+            publicBackup(kvStore,file);
             await sleep(500);
-            publicbackup(kvStore,file1);
+            publicBackup(kvStore,file1);
             await sleep(500);
-            publicbackup(kvStore,file2);
+            publicBackup(kvStore,file2);
             await sleep(500);
-            publicbackup(kvStore,file3);
+            publicBackup(kvStore,file3);
             await sleep(500);
-            publicbackup(kvStore,file4);
+            publicBackup(kvStore,file4);
             await sleep(500);
             console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700 before Sixth backup");
-            await publicbackup(kvStore,file5).then((data) => {
+            publicBackup(kvStore,file5).then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700 going backup");
                 expect(true).assertEqual(data == "code数字");
                 done();
@@ -503,8 +505,8 @@ describe('kvStoreBackupPromiseJsunittest', function () {
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700 Sixth backup err");
             })
             await sleep(1000);
-            console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700 before publicdeleteBackup");
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700 before publicDeleteBackup");
+            publicDeleteBackup(kvStore,files).then((data) => {
 
                 expect("1").assertEqual(delresult[0][0])
                 console.log(delresult[0][0]);
@@ -517,7 +519,7 @@ describe('kvStoreBackupPromiseJsunittest', function () {
                 expect("6").assertEqual(delresult[5][0])
                 expect(27459591).assertEqual(delresult[5][1]);
 
-                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -537,18 +539,18 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100 before getname");
             file  = 'legal' ;
             files[0] = file ;
-            publicbackup(kvStore,file);
+            publicBackup(kvStore,file);
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100 before restoresp");
             await sleep(1000);
-            publicrestoresp(kvStore,file);
+            publicRestoreSp(kvStore,file);
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100 going restoresp");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[5];
                 console.info("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100 delResult[1] = " + delResult[1]);
                 expect(0).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -569,18 +571,18 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200 before getname");
             file  = 'true' ;
             files[0] = file ;
-            publicbackup(kvStore,file);
+            publicBackup(kvStore,file);
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200 before restoresp");
             await sleep(1000);
-            publicrestoresp(kvStore,file);
+            publicRestoreSp(kvStore,file);
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200 going restoresp");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[5];
                 console.info("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200 delResult[1] = " + delResult[1]);
                 expect(0).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -601,18 +603,18 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300 before getname");
             file  = '1' ;
             files[0] = file ;
-            publicbackup(kvStore,file);
+            publicBackup(kvStore,file);
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300 before restoresp");
             await sleep(1000);
-            publicrestoresp(kvStore,file);
+            publicRestoreSp(kvStore,file);
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300 going restoresp");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[0];
                 console.info("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300 delResult[1] = " + delResult[1]);
                 expect(0).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -633,18 +635,18 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400 before getname");
             file  = '1.0' ;
             files[0] = file ;
-            publicbackup(kvStore,file);
+            publicBackup(kvStore,file);
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400 before restoresp");
             await sleep(1000);
-            publicrestoresp(kvStore,file);
+            publicRestoreSp(kvStore,file);
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400 going restoresp");
             await sleep(1000);
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[0];
                 console.info("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400 delResult[1] = " + delResult[1]);
                 expect(0).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
         } catch (e) {
@@ -664,10 +666,10 @@ describe('kvStoreBackupPromiseJsunittest', function () {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0500 before getname");
             file  = '' ;
-            publicbackup(kvStore,file) ;
+            publicBackup(kvStore,file) ;
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0500 before restoresp");
             await sleep(1000);
-            await publicrestoresp(kvStore,file).then((data) => {
+            publicRestoreSp(kvStore,file).then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0500 going restoresp = " + JSON.stringify(data));
                 expect(true).assertEqual(false);
                 done();
@@ -694,7 +696,7 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0600 before getname");
             file  = 'legal' ;
             console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0600 before restoresp");
-            await publicrestoresp(kvStore,file).then((data) => {
+            publicRestoreSp(kvStore,file).then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0600 going restoresp = " + JSON.stringify(data));
                 expect(true).assertEqual(false);
                 done();
@@ -723,12 +725,12 @@ describe('kvStoreBackupPromiseJsunittest', function () {
             console.log("SUB_DDM_DKV_KVBACKUP_DELETEBACKUP_PROMISE_0100 before deleteBackup");
             file  = '123' ;
             files[0] = file ;
-            await publicdeleteBackup(kvStore,files).then((data) => {
+            publicDeleteBackup(kvStore,files).then((data) => {
                 let delResult = delresult[0];
                 console.info("SUB_DDM_DKV_KVBACKUP_DELETEBACKUP_PROMISE_0100 delResult = " + delResult);
                 console.info("SUB_DDM_DKV_KVBACKUP_DELETEBACKUP_PROMISE_0100 delResult[1] = " + delResult[1]);
                 expect(27459591).assertEqual(delResult[1]);
-                console.log("SUB_DDM_DKV_KVBACKUP_DELETEBACKUP_PROMISE_0100 publicdeleteBackup" + JSON.stringify(data));
+                console.log("SUB_DDM_DKV_KVBACKUP_DELETEBACKUP_PROMISE_0100 publicDeleteBackup" + JSON.stringify(data));
                 done();
             })
             console.log("SUB_DDM_DKV_KVBACKUP_DELETEBACKUP_PROMISE_0100 going deleteBackup");
@@ -748,7 +750,7 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     it('SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0100', 0, async function (done) {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0100 before putdata");
-            publicput(kvStore,"key1","value1") ;
+            publicPut(kvStore,"key1","value1") ;
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0100 going putdata");
             done();
         } catch (e) {
@@ -767,9 +769,9 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     it('SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200', 0, async function (done) {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 before putdata");
-            await publicput(kvStore,"PutPromise0002","value") ;
+            await publicPut(kvStore,"PutPromise0002","value") ;
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 going putdata");
-            await publicget(kvStore,"PutPromise0002").then((data) => {
+            publicGet(kvStore,"PutPromise0002").then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200 going getdata" + JSON.stringify(data));
                 expect(true).assertEqual(data == "value");
                 done();
@@ -794,9 +796,9 @@ describe('kvStoreBackupPromiseJsunittest', function () {
     it('SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300', 0, async function (done) {
         try {
             console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300 before putdata");
-            await publicput(kvStore,"PutPromise0004","value1") ;
+            await publicPut(kvStore,"PutPromise0004","value1") ;
             console.log("KvStoreBackupestDbBuckupPutPromiseTest004t going putdata");
-            await publicget(kvStore,"PutPromise").then((data) => {
+            publicGet(kvStore,"PutPromise").then((data) => {
                 console.log("SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300 going getdata" + JSON.stringify(data));
                 expect(true).assertEqual(JSON.stringify(data) == '{}');
                 done();
