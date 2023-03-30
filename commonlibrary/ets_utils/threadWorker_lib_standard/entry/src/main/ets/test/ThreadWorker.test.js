@@ -459,20 +459,52 @@ describe('threadWorkerTest', function () {
         done()
     })
 
-        // check worker handle error is ok
+    // check worker handle error is ok
     /**
      * @tc.name: threadWorker_postMessage_test_007
      * @tc.desc: Sends a message to the worker thread when throw error.
      */
      it('threadWorker_postMessage_test_007', 0, async function (done) {
-        try {
-            const ss = new worker.ThreadWorker("entry/ets/workers/newworker_007.js")
-            ss.postMessage()
-        } catch (error) {
-            expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker messageObject must be not null with postMessage")
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_007.js");
+        let isTerminate = false;
+        ss.onexit = function () {
+            isTerminate = true;
         }
-        done()
+        try {
+            ss.postMessage();
+        } catch (error) {
+            ss.terminate();
+            while (!isTerminate) {
+                await promiseCase();
+            }
+            expect(error.name).assertEqual("BusinessError");
+            expect(error.message).assertEqual("Worker messageObject must be not null with postMessage");
+        }
+        done();
+    })
+
+    // check worker handle error is ok
+    /**
+     * @tc.name: threadWorker_postMessage_test_008
+     * @tc.desc: Sends a message to the worker thread when throw error.
+     */
+    it('threadWorker_postMessage_test_008', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_007.js");
+        let isTerminate = false;
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+        try {
+            ss.postMessage("123", "123");
+        } catch (error) {
+            ss.terminate();
+            while (!isTerminate) {
+                await promiseCase();
+            }
+            expect(error.name).assertEqual("BusinessError");
+            expect(error.message).assertEqual("transfer list must be an Array");
+        }
+        done();
     })
 
     // check worker terminate is ok
@@ -2298,7 +2330,7 @@ describe('threadWorkerTest', function () {
             const data = Symbol();
             ss.postMessage(data);
         } catch (error) {
-            console.info("worker:: recv error message: " + error.message)
+            console.info("worker:: recv error message: " + error.message);
             while (!flag) {
                 await promiseCase();
             }
@@ -2308,6 +2340,116 @@ describe('threadWorkerTest', function () {
             }
         }
         expect(flag).assertTrue();
+        done();
+    })
+
+    // Check the postmessage of worker is ok.
+    /**
+     * @tc.name: threadWorker_worker_postmessage_test_001
+     * @tc.desc: Check the postmessage of worker is ok.
+     */
+    it('threadWorker_worker_postmessage_test_001', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_022.js");
+        let res = "";
+        let flag = false;
+        let isTerminate = false;
+        ss.onmessage = function (d) {
+            res = d.data;
+            flag = true;
+        }
+        ss.onexit = function() {
+            isTerminate = true;
+        }
+        ss.postMessage("1");
+        while (!flag) {
+            await promiseCase();
+        }
+        ss.terminate();
+        while (!isTerminate) {
+            await promiseCase();
+        }
+        expect(res).assertEqual("Worker param count must be more than 1 with new");
+        done();
+    })
+
+
+    // Check the postmessage of worker is ok.
+    /**
+     * @tc.name: threadWorker_worker_postmessage_test_002
+     * @tc.desc: Check the postmessage of worker is ok.
+     */
+    it('threadWorker_worker_postmessage_test_002', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_023.js");
+        let res = "";
+        let flag = false;
+        let isTerminate = false;
+        ss.onmessage = function (d) {
+            res = d.data;
+            flag = true;
+        }
+        ss.onexit = function() {
+            isTerminate = true;
+        }
+        ss.postMessage("1");
+        while (!flag) {
+            await promiseCase();
+        }
+        ss.terminate();
+        while (!isTerminate) {
+            await promiseCase();
+        }
+        expect(res).assertEqual("Transfer list must be an Array");
+        done();
+    })
+
+    // Check the postmessage of worker is ok.
+    /**
+     * @tc.name: threadWorker_worker_postmessage_test_003
+     * @tc.desc: Check the postmessage of worker is ok.
+     */
+    it('threadWorker_worker_postmessage_test_003', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_024.js");
+        let res = "";
+        let flag = false;
+        let isTerminate = false;
+        ss.onmessage = function (d) {
+            res = d.data;
+            flag = true;
+        }
+        ss.onexit = function() {
+            isTerminate = true;
+        }
+        ss.postMessage("1")
+        while (!flag) {
+            await promiseCase();
+        }
+        ss.terminate();
+        while (!isTerminate) {
+            await promiseCase();
+        }
+        expect(res).assertEqual("Serializing an uncaught exception failed, failed to serialize message.");
+        done();
+    })
+
+    // Check the close of worker is ok.
+    /**
+     * @tc.name: threadWorker_worker_close_test_001
+     * @tc.desc: Check the close of worker is ok.
+     */
+    it('threadWorker_worker_close_test_001', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_025.js");
+        let res = 0;
+        let isTerminate = false;
+        ss.onexit = function() {
+            res += 1
+            isTerminate = true;
+        }
+        ss.postMessage("1");
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(res == 1).assertTrue();
         done();
     })
 })
