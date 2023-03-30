@@ -54,6 +54,17 @@ export default {
           console.log(TAG1 + "setWakeUpScreen catch error = " + JSON.stringify(error));
         }
       }
+      if (data.parameters.flag) {
+        lifeList.push('onActive');
+        let options = {
+          parameters: {
+            lifeList: lifeList
+          }
+        }
+        commonEvent.publish(listPush1 + "onActive", options, (err) => {
+          console.log(TAG1 + listPush1 + "onActive");
+        });
+      }
     }).catch((error) => {
       console.log(TAG1 + "getWant error = " + JSON.stringify(error));
     })
