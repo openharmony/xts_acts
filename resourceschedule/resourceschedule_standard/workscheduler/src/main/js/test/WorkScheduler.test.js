@@ -49,6 +49,7 @@ describe("WorkSchedulerJsTest", function () {
     beforeAll(function() {
 
         workStart(workInfo,function(data) {
+            let WorkSchedulerExtensionContext = this.context;
             console.info("onWorkStart finish,result: " + data)
         })
         /*

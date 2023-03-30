@@ -299,12 +299,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_getInputMethodAbility_001 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_getInputMethodAbility_001 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 1
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let commonEventPublishData = {
+          code: 1
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_getKeyboardDelegate_001', 0, async function (done) {
@@ -355,12 +355,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_getKeyboardDelegate_001 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 2
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        let commonEventPublishData = {
+          code: 2
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_028', 0, async function (done) {

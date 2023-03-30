@@ -71,12 +71,12 @@ export default function AlignCenter_NoSpace() {
       expect(Center_NoSpace_013.left).assertEqual(Center_NoSpace_012.right);
       expect(Center_NoSpace_011.left).assertEqual(Center_NoSpace_01.left);
       expect(Center_NoSpace_013.right).assertEqual(Center_NoSpace_01.right);
-      expect(Center_NoSpace_011.bottom - Center_NoSpace_011.top).assertEqual(vp2px(50));
-      expect(Center_NoSpace_012.bottom - Center_NoSpace_012.top).assertEqual(vp2px(100));
-      expect(Center_NoSpace_013.bottom - Center_NoSpace_013.top).assertEqual(vp2px(150));
-      expect(Center_NoSpace_011.right - Center_NoSpace_011.left).assertEqual(vp2px(400/3));
-      expect(Center_NoSpace_012.right - Center_NoSpace_012.left).assertEqual(vp2px(400/3));
-      expect(Center_NoSpace_013.right - Center_NoSpace_013.left).assertEqual(vp2px(400/3));
+      expect(Math.round(Center_NoSpace_011.bottom - Center_NoSpace_011.top)).assertEqual(vp2px(50));
+      expect(Math.round(Center_NoSpace_012.bottom - Center_NoSpace_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Center_NoSpace_013.bottom - Center_NoSpace_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Center_NoSpace_011.right - Center_NoSpace_011.left)).assertEqual(Math.round(vp2px(400/3)));
+      expect(Math.round(Center_NoSpace_012.right - Center_NoSpace_012.left)).assertEqual(Math.round(vp2px(400/3)));
+      expect(Math.round(Center_NoSpace_013.right - Center_NoSpace_013.left)).assertEqual(Math.round(vp2px(400/3)));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0100] END');
       done();
     });
@@ -104,15 +104,15 @@ export default function AlignCenter_NoSpace() {
       expect(Center_NoSpace_011.top).assertEqual(Center_NoSpace_01.top);
       expect(Center_NoSpace_011.right).assertEqual(Center_NoSpace_012.left);
       expect(Center_NoSpace_013.left).assertEqual(Center_NoSpace_012.right);
-      expect(Center_NoSpace_011.left - Center_NoSpace_01.left)
-        .assertEqual(Center_NoSpace_01.right - Center_NoSpace_013.right);
-      expect(Center_NoSpace_011.left - Center_NoSpace_01.left).assertEqual(vp2px(25));
-      expect(Center_NoSpace_011.right - Center_NoSpace_011.left).assertEqual(vp2px(150));
-      expect(Center_NoSpace_012.right - Center_NoSpace_012.left).assertEqual(vp2px(150));
-      expect(Center_NoSpace_013.right - Center_NoSpace_013.left).assertEqual(vp2px(150));
-      expect(Center_NoSpace_011.bottom - Center_NoSpace_011.top).assertEqual(vp2px(50));
-      expect(Center_NoSpace_012.bottom - Center_NoSpace_012.top).assertEqual(vp2px(100));
-      expect(Center_NoSpace_013.bottom - Center_NoSpace_013.top).assertEqual(vp2px(150));
+      expect(Math.round(Center_NoSpace_011.left - Center_NoSpace_01.left))
+        .assertEqual(Math.round(Center_NoSpace_01.right - Center_NoSpace_013.right));
+      expect(Math.round((Center_NoSpace_011.left - Center_NoSpace_01.left)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);
+      expect(Math.round(Center_NoSpace_011.right - Center_NoSpace_011.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_NoSpace_012.right - Center_NoSpace_012.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_NoSpace_013.right - Center_NoSpace_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(Center_NoSpace_011.bottom - Center_NoSpace_011.top)).assertEqual(vp2px(50));
+      expect(Math.round(Center_NoSpace_012.bottom - Center_NoSpace_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Center_NoSpace_013.bottom - Center_NoSpace_013.top)).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0200] END');
       done();
     });

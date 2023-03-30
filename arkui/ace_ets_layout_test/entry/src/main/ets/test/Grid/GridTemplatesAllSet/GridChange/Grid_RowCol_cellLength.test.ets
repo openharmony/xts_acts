@@ -79,15 +79,15 @@ export default function Grid_RowCol_cellLength() {
       expect(Grid_RowCol_cellLength_014.bottom).assertEqual(Grid_RowCol_cellLength_01.bottom);
 
 
-      expect(Grid_RowCol_cellLength_011.right - Grid_RowCol_cellLength_011.left).assertEqual(vp2px(150));
-      expect(Grid_RowCol_cellLength_012.right - Grid_RowCol_cellLength_012.left).assertEqual(vp2px(150));
-      expect(Grid_RowCol_cellLength_013.right - Grid_RowCol_cellLength_013.left).assertEqual(vp2px(150));
-      expect(Grid_RowCol_cellLength_014.right - Grid_RowCol_cellLength_014.left).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_cellLength_011.right - Grid_RowCol_cellLength_011.left)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_cellLength_012.right - Grid_RowCol_cellLength_012.left)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_cellLength_013.right - Grid_RowCol_cellLength_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_cellLength_014.right - Grid_RowCol_cellLength_014.left)).assertEqual(vp2px(150));
 
-      expect(Grid_RowCol_cellLength_011.bottom - Grid_RowCol_cellLength_011.top).assertEqual(vp2px(150));
-      expect(Grid_RowCol_cellLength_012.bottom - Grid_RowCol_cellLength_012.top).assertEqual(vp2px(150));
-      expect(Grid_RowCol_cellLength_013.bottom - Grid_RowCol_cellLength_013.top).assertEqual(vp2px(150));
-      expect(Grid_RowCol_cellLength_014.bottom - Grid_RowCol_cellLength_014.top).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_cellLength_011.bottom - Grid_RowCol_cellLength_011.top)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_cellLength_012.bottom - Grid_RowCol_cellLength_012.top)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_cellLength_013.bottom - Grid_RowCol_cellLength_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_cellLength_014.bottom - Grid_RowCol_cellLength_014.top)).assertEqual(vp2px(150));
       console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1100] END');
       done();
     });

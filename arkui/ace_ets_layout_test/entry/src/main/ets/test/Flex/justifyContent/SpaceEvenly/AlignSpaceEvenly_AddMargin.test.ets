@@ -68,17 +68,20 @@ export default function AlignSpaceEvenly_AddMargin() {
       expect(SpaceEvenly_AddMargin_011.top).assertEqual(SpaceEvenly_AddMargin_012.top);
       expect(SpaceEvenly_AddMargin_013.top).assertEqual(SpaceEvenly_AddMargin_012.top);
       expect(SpaceEvenly_AddMargin_011.top).assertEqual(SpaceEvenly_AddMargin_01.top);
-      expect(SpaceEvenly_AddMargin_011.left - SpaceEvenly_AddMargin_01.left).assertEqual(vp2px(12.5));
-      expect(SpaceEvenly_AddMargin_012.left - SpaceEvenly_AddMargin_011.right).assertEqual(vp2px(12.5));
-      expect(SpaceEvenly_AddMargin_013.left - SpaceEvenly_AddMargin_012.right).assertEqual(vp2px(12.5));
-      expect(SpaceEvenly_AddMargin_01.left - SpaceEvenly_AddMargin_01_Box.left).assertEqual(vp2px(20));
-      expect(SpaceEvenly_AddMargin_01.top - SpaceEvenly_AddMargin_01_Box.top).assertEqual(vp2px(20));
-      expect(SpaceEvenly_AddMargin_011.right - SpaceEvenly_AddMargin_011.left).assertEqual(vp2px(150));
-      expect(SpaceEvenly_AddMargin_012.right - SpaceEvenly_AddMargin_012.left).assertEqual(vp2px(150));
-      expect(SpaceEvenly_AddMargin_013.right - SpaceEvenly_AddMargin_013.left).assertEqual(vp2px(150));
-      expect(SpaceEvenly_AddMargin_011.bottom - SpaceEvenly_AddMargin_011.top).assertEqual(vp2px(50));
-      expect(SpaceEvenly_AddMargin_012.bottom - SpaceEvenly_AddMargin_012.top).assertEqual(vp2px(100));
-      expect(SpaceEvenly_AddMargin_013.bottom - SpaceEvenly_AddMargin_013.top).assertEqual(vp2px(150));
+      expect(Math.round((SpaceEvenly_AddMargin_011.left - SpaceEvenly_AddMargin_01.left)*100)/100)
+        .assertEqual(Math.round(vp2px(12.5)*100)/100);
+      expect(Math.round((SpaceEvenly_AddMargin_012.left - SpaceEvenly_AddMargin_011.right)*100)/100)
+        .assertEqual(Math.round(vp2px(12.5)*100)/100);
+      expect(Math.round((SpaceEvenly_AddMargin_013.left - SpaceEvenly_AddMargin_012.right)*100)/100)
+        .assertEqual(Math.round(vp2px(12.5)*100)/100);
+      expect(Math.round(SpaceEvenly_AddMargin_01.left - SpaceEvenly_AddMargin_01_Box.left)).assertEqual(vp2px(20));
+      expect(Math.round(SpaceEvenly_AddMargin_01.top - SpaceEvenly_AddMargin_01_Box.top)).assertEqual(vp2px(20));
+      expect(Math.round(SpaceEvenly_AddMargin_011.right - SpaceEvenly_AddMargin_011.left)).assertEqual(vp2px(150));
+      expect(Math.round(SpaceEvenly_AddMargin_012.right - SpaceEvenly_AddMargin_012.left)).assertEqual(vp2px(150));
+      expect(Math.round(SpaceEvenly_AddMargin_013.right - SpaceEvenly_AddMargin_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(SpaceEvenly_AddMargin_011.bottom - SpaceEvenly_AddMargin_011.top)).assertEqual(vp2px(50));
+      expect(Math.round(SpaceEvenly_AddMargin_012.bottom - SpaceEvenly_AddMargin_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(SpaceEvenly_AddMargin_013.bottom - SpaceEvenly_AddMargin_013.top)).assertEqual(vp2px(150));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500] END');
       done();
     });

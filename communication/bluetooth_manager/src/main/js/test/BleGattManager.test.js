@@ -48,7 +48,7 @@ describe('bluetoothBLETest', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function() {
+    beforeAll(function () {
         console.info('beforeAll called')
         gattServer = bluetooth.BLE.createGattServer();
         gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");

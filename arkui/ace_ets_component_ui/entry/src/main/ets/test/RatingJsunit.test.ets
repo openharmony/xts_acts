@@ -95,7 +95,7 @@ export default function RatingJsunit() {
       let strJson1 = getInspectorByKey('rating1');
       let obj1 = JSON.parse(strJson1);
       console.info("[RatingJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
-      expect(obj1.$attrs.rating).assertEqual('5.000000');
+      expect(obj1.$attrs.rating).assertEqual('2.500000');
       console.info('[RatingJsunit_0300] END');
       done();
     });

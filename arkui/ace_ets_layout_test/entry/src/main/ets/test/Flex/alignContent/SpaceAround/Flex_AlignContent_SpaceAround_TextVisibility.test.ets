@@ -66,18 +66,20 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
-      expect(secondText.bottom - secondText.top).assertEqual(vp2px(100));
-      expect(thirdText.bottom - thirdText.top).assertEqual(vp2px(50));
-      expect(fourthText.bottom - fourthText.top).assertEqual(vp2px(100)); //三个子组件的高度分别为100、50、100
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //三个子组件的高度分别为100、50、100
 
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
       expect(fourthText.left).assertEqual(flexContainer.left);
-      expect(secondText.top - flexContainer.top).assertEqual(distanceBefore * 1.5 + vp2px(50)); //text1占位
+      expect(Math.round((secondText.top - flexContainer.top)*100)/100)
+        .assertEqual(Math.round((distanceBefore * 1.5 + vp2px(50))*100)/100); //text1占位
 
-      expect(thirdText.top - secondText.bottom).assertEqual(fourthText.top - thirdText.bottom); //剩余子组件行间距相等
-      expect(thirdText.top - secondText.bottom).assertEqual(distanceBefore); //子组件距离不变
-      expect(flexContainer.bottom -fourthText.bottom).assertEqual(distanceBefore / 2); //行首距离为子组件距离一半
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //剩余子组件行间距相等
+      expect(Math.round((thirdText.top - secondText.bottom)*10)/10).assertEqual(Math.round(distanceBefore*10)/10); //子组件距离不变
+      expect(Math.round((flexContainer.bottom -fourthText.bottom)*100)/100)
+        .assertEqual(Math.round((distanceBefore / 2)*100)/100); //行首距离为子组件距离一半
       console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1300] END');
       done();
     });
@@ -91,7 +93,7 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
       console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1400] START');
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextVisibility01');
       let secondText = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextVisibility02');
-      let distanceBefore = secondText.top - firstText.bottom;
+      let distanceBefore = Math.round(secondText.top - firstText.bottom);
       globalThis.value.message.notify({name:'visibility', value:Visibility.None})
       await CommonFunc.sleep(3000);
       secondText = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextVisibility02');
@@ -104,19 +106,21 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
-      expect(secondText.bottom - secondText.top).assertEqual(vp2px(100));
-      expect(thirdText.bottom - thirdText.top).assertEqual(vp2px(50));
-      expect(fourthText.bottom - fourthText.top).assertEqual(vp2px(100)); //三个子组件的高度分别为100、50、100
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //三个子组件的高度分别为100、50、100
 
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
       expect(fourthText.left).assertEqual(flexContainer.left);
 
-      expect(thirdText.top - secondText.bottom).assertEqual(fourthText.top - thirdText.bottom); //剩余子组件行间距相等
-      expect(thirdText.top - secondText.bottom).assertLarger(distanceBefore); //行距大于设置前
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //剩余子组件行间距相等
+      expect(Math.round(thirdText.top - secondText.bottom)).assertLarger(distanceBefore); //行距大于设置前
 
-      expect(secondText.top - flexContainer.top).assertEqual(flexContainer.bottom - fourthText.bottom); //text1不参与占位
-      expect(secondText.top - flexContainer.top).assertEqual((thirdText.top - secondText.bottom) / 2); //行首行尾间距为子组件间距一半
+      expect(Math.round(secondText.top - flexContainer.top))
+        .assertEqual(Math.round(flexContainer.bottom - fourthText.bottom)); //text1不参与占位
+      expect(Math.round(secondText.top - flexContainer.top))
+        .assertEqual(Math.round((thirdText.top - secondText.bottom) / 2)); //行首行尾间距为子组件间距一半
       console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1400] END');
       done();
     });

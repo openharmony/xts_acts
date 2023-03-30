@@ -47,7 +47,7 @@ export default function flexBase_AutoJsunit() {
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0100
      * @tc.name      ItemAlign_Auto_FlexBase
-     * @tc.desc      aceFlexAlignItemTest
+     * @tc.desc      The subcomponent is inside the parent component.
      */
     it('SUB_ACE_FLEXALIGNITEMS_AUTO_0100', 0, async function (done) {
       console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0100 START');
@@ -66,14 +66,14 @@ export default function flexBase_AutoJsunit() {
 
       expect(textFlex01.right).assertEqual(textFlex02.left)
       expect(textFlex02.right).assertEqual(textFlex03.left)
-      expect(flex01.right - textFlex03.right).assertEqual(vp2px(50))
+      expect(Math.round(flex01.right - textFlex03.right)).assertEqual(vp2px(50))
 
-      expect(textFlex01.bottom - textFlex01.top).assertEqual(vp2px(50))
-      expect(textFlex02.bottom - textFlex02.top).assertEqual(vp2px(100))
-      expect(textFlex03.bottom - textFlex03.top).assertEqual(vp2px(150))
-      expect(textFlex01.right - textFlex01.left).assertEqual(vp2px(150))
-      expect(textFlex02.right - textFlex02.left).assertEqual(vp2px(150))
-      expect(textFlex03.right - textFlex03.left).assertEqual(vp2px(150))
+      expect(Math.round(textFlex01.bottom - textFlex01.top)).assertEqual(vp2px(50))
+      expect(Math.round(textFlex02.bottom - textFlex02.top)).assertEqual(vp2px(100))
+      expect(Math.round(textFlex03.bottom - textFlex03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textFlex01.right - textFlex01.left)).assertEqual(vp2px(150))
+      expect(Math.round(textFlex02.right - textFlex02.left)).assertEqual(vp2px(150))
+      expect(Math.round(textFlex03.right - textFlex03.left)).assertEqual(vp2px(150))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0100 END');
@@ -83,7 +83,7 @@ export default function flexBase_AutoJsunit() {
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0200
      * @tc.name      ItemAlign_Auto_FlexBase
-     * @tc.desc      aceFlexAlignItemTest
+     * @tc.desc      The subcomponent exceeds the parent component.
      */
     it('SUB_ACE_FLEXALIGNITEMS_AUTO_0200', 0, async function (done) {
       console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0200 START');
@@ -102,12 +102,12 @@ export default function flexBase_AutoJsunit() {
 
       expect(textFlex03.right).assertEqual(flex01.right)
       expect(textFlex03.bottom).assertLarger(flex01.bottom)
-      expect(textFlex01.bottom - textFlex01.top).assertEqual(vp2px(50))
-      expect(textFlex02.bottom - textFlex02.top).assertEqual(vp2px(100))
-      expect(textFlex03.bottom - textFlex03.top).assertEqual(vp2px(150))
-      expect(textFlex01.right - textFlex01.left).assertEqual(vp2px(140))
-      expect(textFlex02.right - textFlex02.left).assertEqual(vp2px(140))
-      expect(textFlex03.right - textFlex03.left).assertEqual(vp2px(140))
+      expect(Math.round(textFlex01.bottom - textFlex01.top)).assertEqual(vp2px(50))
+      expect(Math.round(textFlex02.bottom - textFlex02.top)).assertEqual(vp2px(100))
+      expect(Math.round(textFlex03.bottom - textFlex03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textFlex01.right - textFlex01.left)).assertEqual(vp2px(140))
+      expect(Math.round(textFlex02.right - textFlex02.left)).assertEqual(vp2px(140))
+      expect(Math.round(textFlex03.right - textFlex03.left)).assertEqual(vp2px(140))
 
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')

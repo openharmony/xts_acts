@@ -49,7 +49,7 @@ export default function sliderJsunit() {
       let strJson = getInspectorByKey('sliderConstructor2');
       let obj = JSON.parse(strJson);
       console.info('sliderJsunit_0100 component obj is: ' + obj.$attrs.style);
-      expect(obj.$attrs.style).assertEqual('SliderMode.OUTSET');
+      expect(obj.$attrs.style).assertEqual('SliderStyle.OutSet');
       done();
     });
 
@@ -60,7 +60,7 @@ export default function sliderJsunit() {
       let obj = JSON.parse(strJson);
       console.info('sliderJsunit_0200 component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value 
       + "---" + obj.$attrs.constructor.reverse + "----" + obj.$attrs.constructor.min + "----" + obj.$attrs.constructor.max + "---" + obj.$attrs.constructor.step + "---" + JSON.stringify(obj.$attrs.constructor));
-      expect(obj.$attrs.style).assertEqual('SliderMode.INSET');
+      expect(obj.$attrs.style).assertEqual('SliderStyle.InSet');
       expect(obj.$attrs.constructor.direction).assertEqual('Axis.Vertical');
       expect(obj.$attrs.constructor.value).assertEqual('40.000000');
       expect(obj.$attrs.constructor.reverse).assertEqual('true');
@@ -83,7 +83,7 @@ export default function sliderJsunit() {
       expect(obj.$attrs.showSteps).assertEqual('true');
       expect(obj.$attrs.showTips).assertEqual('true');
       expect(obj.$attrs.trackThickness).assertEqual('10.00px');
-      //expect(obj.$attrs.selectedColor).assertEqual('#FF191970');   
+      expect(obj.$attrs.selectedColor).assertEqual('#FF191970');   
       done();
    });
    
@@ -106,7 +106,7 @@ export default function sliderJsunit() {
       expect(obj.$attrs.blockColor).assertEqual('#FFFFFFFF');
       expect(obj.$attrs.trackColor).assertEqual('#FFEEFFFF');
       expect(obj.$attrs.trackThickness).assertEqual('12.00px');
-      //expect(obj.$attrs.selectedColor).assertEqual('#FFAEFFFF');
+      expect(obj.$attrs.selectedColor).assertEqual('#FFAEFFFF');
       done();   
     });
 
@@ -125,7 +125,7 @@ export default function sliderJsunit() {
       console.info('sliderJsunit_0500 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor + "--" );
       expect(obj.$attrs.blockColor).assertEqual('#FFEE82EE');
       expect(obj.$attrs.trackColor).assertEqual('#FFEE82EE');
-      //expect(obj.$attrs.selectedColor).assertEqual('#FFAEFFFF');
+      expect(obj.$attrs.selectedColor).assertEqual('#FFAEFFFF');
       done(); 
     });
 
@@ -140,14 +140,14 @@ export default function sliderJsunit() {
       await CommonFunc.sleep(200);
       globalThis.value.message.notify({name:'trackThickness',value:'-px'})
       await CommonFunc.sleep(200);
-       // get the slider component attribute
+      // get the slider component attribute
       let strJson = getInspectorByKey('sliderA');
       let obj = JSON.parse(strJson);
       console.info('sliderJsunit_0600 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor + "---" + obj.$attrs.trackThickness);
       expect(obj.$attrs.blockColor).assertEqual('#FFAACCEE');
       expect(obj.$attrs.trackColor).assertEqual('#FFAACCEE');
-      expect(obj.$attrs.trackThickness).assertEqual('0.00vp');
-      //expect(obj.$attrs.selectedColor).assertEqual('#AEFFFF');
+      expect(obj.$attrs.trackThickness).assertEqual('4.00vp');
+      expect(obj.$attrs.selectedColor).assertEqual('#FFAACCEE');
       done(); 
     });
 
@@ -173,14 +173,14 @@ export default function sliderJsunit() {
       let obj = JSON.parse(strJson);
       console.info('sliderJsunit_0700 component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value
       + "---" + obj.$attrs.constructor.reverse + "----" + obj.$attrs.constructor.min + "----" + obj.$attrs.constructor.max + "---" + obj.$attrs.constructor.step);
-      expect(obj.$attrs.style).assertEqual('SliderMode.OUTSET');
+      expect(obj.$attrs.style).assertEqual('SliderStyle.OutSet');
       expect(obj.$attrs.constructor.direction).assertEqual('Axis.Horizontal');
       expect(obj.$attrs.constructor.reverse).assertEqual('false');
       expect(obj.$attrs.constructor.min).assertEqual('20.000000');
       expect(obj.$attrs.constructor.max).assertEqual('80.000000');
       expect(obj.$attrs.constructor.step).assertEqual('0.900000');
-      //expect(obj.$attrs.constructor.value).assertEqual('30.000000');
-      done();   
+      expect(obj.$attrs.constructor.value).assertEqual('30.000000');
+      done();
     });
     
    it('sliderJsunit_0800', 0, async function (done) {
@@ -205,14 +205,14 @@ export default function sliderJsunit() {
       let obj = JSON.parse(strJson);
       console.info('sliderJsunit_0200 component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value 
       + "---" + obj.$attrs.constructor.reverse + "----" + obj.$attrs.constructor.min + "----" + obj.$attrs.constructor.max + "---" + obj.$attrs.constructor.step);
-      expect(obj.$attrs.style).assertEqual('SliderMode.OUTSET');
+      expect(obj.$attrs.style).assertEqual('SliderStyle.OutSet');
       expect(obj.$attrs.constructor.direction).assertEqual('Axis.Horizontal');
       expect(obj.$attrs.constructor.value).assertEqual('40.000000');
       expect(obj.$attrs.constructor.reverse).assertEqual('false');
       expect(obj.$attrs.constructor.min).assertEqual('-20.000000');
       expect(obj.$attrs.constructor.max).assertEqual('1000.000000');
-      expect(obj.$attrs.constructor.step).assertEqual('1020.000000');
-      done();   
+      expect(obj.$attrs.constructor.step).assertEqual('1.000000');
+      done();
     });
     
     it('sliderJsunit_0900', 0, async function (done) {

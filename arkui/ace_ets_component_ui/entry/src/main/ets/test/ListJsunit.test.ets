@@ -93,10 +93,10 @@ export default function ListJsunit() {
       // Verify onScroll function of List component
       let gridTop = CommonFunc.getComponentRect('grid2');
       let top = gridTop.top
-      //let gridLeft = CommonFunc.getComponentRect('grid2');
-      let left = gridTop.left
-      //let gridRight = CommonFunc.getComponentRect('grid2');
-      let right = gridTop.right
+      let gridLeft = CommonFunc.getComponentRect('grid2');
+      let left = gridLeft.left
+      let gridRight = CommonFunc.getComponentRect('grid2');
+      let right = gridRight.right
       let driver = await UiDriver.create()
       await driver.swipe(Math.round(left + 50), Math.round(top + 100), Math.round(right - 50), Math.round(top + 100));
       await CommonFunc.sleep(1000);
@@ -218,7 +218,7 @@ export default function ListJsunit() {
       expect(obj.$attrs.chainAnimation).assertEqual(true);
       expect(obj.$attrs.multiSelectable).assertEqual(true);
       expect(obj.$attrs.alignListItem).assertEqual('ListItemAlign.Start');
-      expect(obj.$attrs.sticky).assertEqual('StickyStyle.Header');
+      expect(obj.$attrs.sticky).assertEqual('StickyStyle.None');
       console.info('[ListJsunit_0300] END');
       done();
     });
@@ -271,7 +271,7 @@ export default function ListJsunit() {
       console.info("[ListJsunit_0400] multiSelectable: " + JSON.stringify(obj.$attrs.multiSelectable));
       console.info("[ListJsunit_0400] alignListItem: " + JSON.stringify(obj.$attrs.alignListItem));
       console.info("[ListJsunit_0400] sticky: " + JSON.stringify(obj.$attrs.sticky));
-      expect(obj.$attrs.space).assertEqual('25.00vp');
+      expect(obj.$attrs.space).assertEqual('-10.00vp');
       expect(obj.$attrs.initialIndex).assertEqual('30');
       expect(obj.$attrs.listDirection).assertEqual('Axis.Horizontal');
       expect(obj.$attrs.divider.strokeWidth).assertEqual('0.00vp');
@@ -286,7 +286,7 @@ export default function ListJsunit() {
       expect(obj.$attrs.chainAnimation).assertEqual(true);
       expect(obj.$attrs.multiSelectable).assertEqual(true);
       expect(obj.$attrs.alignListItem).assertEqual('ListItemAlign.Start');
-      expect(obj.$attrs.sticky).assertEqual('StickyStyle.Header');
+      expect(obj.$attrs.sticky).assertEqual('StickyStyle.None');
       console.info('[ListJsunit_0400] END');
       done();
     });

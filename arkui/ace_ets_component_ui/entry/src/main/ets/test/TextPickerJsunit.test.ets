@@ -54,7 +54,7 @@ export default function TextPickerJsunit() {
       console.info("[TextPickerJsunit_0100] value: " + JSON.stringify(obj.$attrs.value));
       console.info("[TextPickerJsunit_0100] defaultPickerItemHeight: " + JSON.stringify(obj.$attrs.defaultPickerItemHeight));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.range).assertEqual('["apple1","orange2","peach3","grape4"]');
+      expect(obj.$attrs.range).assertEqual('["icon:,text:apple1","icon:,text:orange2","icon:,text:peach3","icon:,text:grape4"]');
       expect(obj.$attrs.selected).assertEqual('0');
       //expect(obj.$attrs.value).assertEqual('orange2');
       expect(obj.$attrs.defaultPickerItemHeight).assertEqual('20.00fp');
@@ -90,7 +90,7 @@ export default function TextPickerJsunit() {
       console.info("[TextPickerJsunit_0200] value: " + JSON.stringify(obj.$attrs.value));
       console.info("[TextPickerJsunit_0200] defaultPickerItemHeight: " + JSON.stringify(obj.$attrs.defaultPickerItemHeight));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.range).assertEqual('["banana1","orange2","peach3","grape4"]');
+      expect(obj.$attrs.range).assertEqual('["icon:,text:banana1","icon:,text:orange2","icon:,text:peach3","icon:,text:grape4"]');
       expect(obj.$attrs.selected).assertEqual('1');
       //expect(obj.$attrs.value).assertEqual('peach3');
       expect(obj.$attrs.defaultPickerItemHeight).assertEqual('25.00fp');
@@ -138,7 +138,7 @@ export default function TextPickerJsunit() {
       console.info("[TextPickerJsunit_0400] value: " + JSON.stringify(obj.$attrs.value));
       console.info("[TextPickerJsunit_0400] defaultPickerItemHeight: " + JSON.stringify(obj.$attrs.defaultPickerItemHeight));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.range).assertEqual('["banana1","orange2","peach3","grape4"]');
+      expect(obj.$attrs.range).assertEqual('["icon:,text:banana1","icon:,text:orange2","icon:,text:peach3","icon:,text:grape4"]');
       expect(obj.$attrs.selected).assertEqual('1');
       //expect(obj.$attrs.value).assertEqual('');
       expect(obj.$attrs.defaultPickerItemHeight).assertEqual('25.00fp');

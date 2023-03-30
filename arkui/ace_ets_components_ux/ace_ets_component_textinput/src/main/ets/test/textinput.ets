@@ -371,12 +371,10 @@ export default function textInputTest() {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_CaretWidth_0100');
           console.info('ArkUX_Stage_TextInput_CaretWidth_0100 START  :' + JSON.stringify(strJson));
           let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_TextInput_CaretWidth_0100 component obj.$attrs.caretWidth is: " +
-          JSON.stringify(obj.$attrs.caretWidth));
           console.info("ArkUX_Stage_TextInput_CaretWidth_0100 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("0.00vp");
+          expect(cursorStyle.width ).assertEqual("0.00vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0100 END ');
         } catch (err) {
           expect().assertFail();
@@ -401,7 +399,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0200 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("7.00vp");
+          expect(cursorStyle.width ).assertEqual("7.00vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0200 END ');
         } catch (err) {
           expect().assertFail();
@@ -426,7 +424,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0300 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("7.00vp");
+          expect(cursorStyle.width ).assertEqual("7.00vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0300 END ');
         } catch (err) {
           expect().assertFail();
@@ -451,7 +449,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0400 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("4.00px");
+          expect(cursorStyle.width ).assertEqual("4.00px");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0400 END ');
         } catch (err) {
           expect().assertFail();
@@ -476,7 +474,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0500 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("1.50vp");
+          expect(cursorStyle.width ).assertEqual("1.50vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0500 END ');
         } catch (err) {
           expect().assertFail();
@@ -501,7 +499,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0600 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("0.00vp");
+          expect(cursorStyle.width ).assertEqual("0.00vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0600 END ');
         } catch (err) {
           expect().assertFail();
@@ -526,7 +524,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0700 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("1.50vp");
+          expect(cursorStyle.width ).assertEqual("1.50vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0700 END ');
         } catch (err) {
           expect().assertFail();
@@ -551,7 +549,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0800 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("1.50vp");
+          expect(cursorStyle.width ).assertEqual("1.50vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0800 END ');
         } catch (err) {
           expect().assertFail();
@@ -576,7 +574,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0900 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("0.00vp");
+          expect(cursorStyle.width ).assertEqual("0.00vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0900 END ');
         } catch (err) {
           expect().assertFail();
@@ -601,7 +599,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_1000 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("2.00fp");
+          expect(cursorStyle.width ).assertEqual("2.00fp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_1000 END ');
         } catch (err) {
           expect().assertFail();
@@ -626,7 +624,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_1100 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("1.50vp");
+          expect(cursorStyle.width ).assertEqual("1.50vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_1100 END ');
         } catch (err) {
           expect().assertFail();
@@ -651,7 +649,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_1200 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.caretWidth).assertEqual("7.00lpx");
+          expect(cursorStyle.width ).assertEqual("7.00lpx");
           console.info('ArkUX_Stage_TextInput_CaretWidth_1200 END ');
         } catch (err) {
           expect().assertFail();
@@ -931,7 +929,7 @@ export default function textInputTest() {
     /*
       *tc.number ArkUX_Stage_TextInput_selectedColor_1200
       *tc.name   Combined test all new attributes of textinput component
-      *tc.desc   Set .selectedBackgroundColor(0x00ff00).caretWidth(7).caretPosition(4)
+      *tc.desc   Set .selectedBackgroundColor(0x00ff00).width (7).caretPosition(4)
       */
     it('ArkUX_Stage_TextInput_selectedColor_1200', 0, async function (done) {
       console.info('ArkUX_Stage_TextInput_selectedColor_1200 START');
@@ -949,7 +947,7 @@ export default function textInputTest() {
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
           expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FF00FF00");
           expect(obj.$attrs.caretPosition).assertEqual("4");
-          expect(cursorStyle.caretWidth).assertEqual("7.00vp");
+          expect(cursorStyle.width ).assertEqual("7.00vp");
           console.info('ArkUX_Stage_TextInput_selectedColor_1200 END ');
         } catch (err) {
           expect().assertFail();
@@ -981,7 +979,7 @@ export default function textInputTest() {
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
           expect(obj.$attrs.selectedBackgroundColor).assertEqual("#33007DFF");
           expect(obj.$attrs.caretPosition).assertEqual("0");
-          expect(cursorStyle.caretWidth).assertEqual("1.50vp");
+          expect(cursorStyle.width ).assertEqual("1.50vp");
           console.info('ArkUX_Stage_TextInput_selectedColor_1300 END ');
         } catch (err) {
           expect().assertFail();

@@ -230,9 +230,9 @@ void PluginRender::DispatchTouchEvent(OH_NativeXComponent* component, void* wind
             OH_NativeXComponent_TouchPointToolType toolType = OH_NativeXComponent_TouchPointToolType::OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN;
             float tiltX = 123.0;
             float tiltY = 321.0;
-            int32_t ret1;
-            int32_t ret2;
-            int32_t ret3;
+            [[maybe_unused]] int32_t ret1;
+            [[maybe_unused]] int32_t ret2;
+            [[maybe_unused]] int32_t ret3;
             ret1 = OH_NativeXComponent_GetTouchPointToolType(component, i, &toolType);
             ret2 = OH_NativeXComponent_GetTouchPointTiltX(component, i, &tiltX);
             ret3 = OH_NativeXComponent_GetTouchPointTiltY(component, i, &tiltY);
@@ -294,7 +294,7 @@ napi_value PluginRender::NapiChangeShape(napi_env env, napi_callback_info info)
     LOGE("NapiChangeShape");
     napi_value exportInstance;
     napi_value thisArg;
-    napi_status status;
+    [[maybe_unused]] napi_status status;
     OH_NativeXComponent *nativeXComponent = nullptr;
 
     int32_t ret;

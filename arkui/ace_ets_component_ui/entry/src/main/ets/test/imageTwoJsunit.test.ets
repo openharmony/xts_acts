@@ -30,7 +30,7 @@ export default function imageTwoJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get imageTwoJsunit state pages:" + JSON.stringify(pages));
-        if (!("textTwo" == pages.name)) {
+        if (!("imageTwo" == pages.name)) {
           console.info("get imageTwoJsunit state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           console.info("push imageTwoJsunit success " + JSON.stringify(result));
@@ -66,18 +66,18 @@ export default function imageTwoJsunit() {
       await CommonFunc.sleep(1000);
       // modify the image rendermode
       globalThis.value.message.notify({name:'renderMode',value:ImageRenderMode.Template})
-      await CommonFunc.sleep(3000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('image1');
       let obj = JSON.parse(strJson);
       console.info('imageTwoJsunit_0200 component obj is: ' + obj.$attrs.renderMode);
-      //expect(obj.$attrs.renderMode).assertEqual('ImageRenderMode.Template');
+      expect(obj.$attrs.renderMode).assertEqual('ImageRenderMode.Template');
     });
 
     it('imageTwoJsunit_0300', 0, async function (done) {
       console.info('imageTwoJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // modify the image rendermode
-      globalThis.value.message.notify({name:'renderMode',value:10})
+      globalThis.value.message.notify({name:'renderMode',value:undefined})
       await CommonFunc.sleep(3000); 
       let strJson = getInspectorByKey('image1');
       let obj = JSON.parse(strJson);
@@ -95,21 +95,21 @@ export default function imageTwoJsunit() {
       let strJson = getInspectorByKey('image1');
       let obj = JSON.parse(strJson);
       console.info('imageTwoJsunit_0300  component obj is: ' + obj.$attrs.interpolation);
-      //expect(obj.$attrs.interpolation).assertEqual('ImageInterpolation.Low');
+      expect(obj.$attrs.interpolation).assertEqual('ImageInterpolation.Low');
 
       globalThis.value.message.notify({name:'interpolation',value:ImageInterpolation.Medium})
       await CommonFunc.sleep(3000);
       let strJson2 = getInspectorByKey('image1');
       let obj2 = JSON.parse(strJson2);
       console.info('imageTwoJsunit_0400  component obj2 is: ' + obj2.$attrs.interpolation);
-      //expect(obj2.$attrs.interpolation).assertEqual('ImageInterpolation.Medium');
+      expect(obj2.$attrs.interpolation).assertEqual('ImageInterpolation.Medium');
      
       globalThis.value.message.notify({name:'interpolation',value:ImageInterpolation.High})
       await CommonFunc.sleep(3000);
       let strJson3 = getInspectorByKey('image1');
       let obj3 = JSON.parse(strJson3);
       console.info('imageTwoJsunit_0400  component obj3 is: ' + obj3.$attrs.interpolation);
-      //expect(obj3.$attrs.interpolation).assertEqual('ImageInterpolation.High');
+      expect(obj3.$attrs.interpolation).assertEqual('ImageInterpolation.High');
       done();
     });
   
@@ -117,7 +117,7 @@ export default function imageTwoJsunit() {
       console.info('imageTwoJsunit_0500 START');
       await CommonFunc.sleep(1000);
       // test the enum of interpolation
-      globalThis.value.message.notify({name:'interpolation',value:10})
+      globalThis.value.message.notify({name:'interpolation',value:undefined})
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('image1');
       let obj = JSON.parse(strJson);
@@ -134,21 +134,21 @@ export default function imageTwoJsunit() {
       let strJson = getInspectorByKey('image1');
       let obj = JSON.parse(strJson);
       console.info('imageOneJsunit_0600 component obj is: ' + obj.$attrs.fillColor);
-      expect(obj.$attrs.fillColor).assertEqual('#FFFF0000');
+      expect(obj.$attrs.fillColor).assertEqual('#FFFFEEAA');
 
       globalThis.value.message.notify({name:'fillColor',value:"rgb(238, 130, 238)"})
       await CommonFunc.sleep(2000);
       let strJson2 = getInspectorByKey('image1');
       let obj2 = JSON.parse(strJson2);
       console.info('imageTwoJsunit_0600  component obj2 is: ' + obj2.$attrs.fillColor);
-      expect(obj2.$attrs.fillColor).assertEqual('#FFFF0000');
+      expect(obj2.$attrs.fillColor).assertEqual('#FFEE82EE');
 
       globalThis.value.message.notify({name:'fillColor',value:Color.Green})
       await CommonFunc.sleep(2000);
       let strJson3 = getInspectorByKey('image1');
       let obj3 = JSON.parse(strJson3);
       console.info('imageTwoJsunit_0600  component obj3 is: ' + obj3.$attrs.fillColor);
-      expect(obj3.$attrs.fillColor).assertEqual('#FFFF0000');
+      expect(obj3.$attrs.fillColor).assertEqual('#FF008000');
       done();
     });
   })
