@@ -403,7 +403,7 @@ napi_value PluginRender::NapiChangeColor(napi_env env, napi_callback_info info)
 napi_value PluginRender::TestGetXComponentId(napi_env env, napi_callback_info info)
 {
     napi_value thisArg;
-    napi_status status;
+    [[maybe_unused]] napi_status status;
     napi_value exportInstance;
     OH_NativeXComponent *nativeXComponent = nullptr;
 
