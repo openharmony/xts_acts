@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import commonEvent from '@ohos.commonEvent'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import missionManager from '@ohos.application.missionManager';
+import wantConstant from '@ohos.app.ability.wantConstant'
 
 const CASE_TIME_OUT=5000;
 var ACTS_AppRecovery = {
@@ -25,10 +26,6 @@ var ACTS_AppRecovery = {
 
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
-    beforeAll(function () {})
-    beforeEach(function () {})
-    afterEach(function () {})
-    afterAll(function () {})
 
     /*
      * @tc.number: Acts_AppRecovery_0100
@@ -58,11 +55,7 @@ export default function abilityTest() {
       function subscribeCallBack(err, data) {
         console.debug("Acts_AppRecovery_0100====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           setTimeout(() => {
             commonEvent.subscribe(subscriber, subscribeCallBackSecond);
             globalThis.abilityContext.startAbility(
@@ -84,11 +77,7 @@ export default function abilityTest() {
         console.debug("Acts_AppRecovery_0100====> second subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_Second") {
           flag=true;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
@@ -139,11 +128,7 @@ export default function abilityTest() {
         console.debug("Acts_AppRecovery_0200====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
           countFirst++;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           if (countFirst < 2) {
             return;
           }
@@ -169,11 +154,7 @@ export default function abilityTest() {
         if(data.event == "ACTS_AppRecovery_Second") {
           countSecond++;
           flag=true;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           if (countSecond == 2) {
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
@@ -223,11 +204,7 @@ export default function abilityTest() {
       function subscribeCallBack(err, data) {
         console.debug("Acts_AppRecovery_0300====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           missionManager.getMissionInfos('', 1024, (err, missionInfos)=>{
             console.debug('Acts_AppRecovery_0300====> missionInfos: ' + JSON.stringify(missionInfos));
             console.debug('Acts_AppRecovery_0300====> missionInfos.length: ' + JSON.stringify(missionInfos.length));
@@ -258,11 +235,7 @@ export default function abilityTest() {
         console.debug("Acts_AppRecovery_0300====> second subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_Second") {
           flag=true;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
@@ -311,11 +284,7 @@ export default function abilityTest() {
         console.debug("Acts_AppRecovery_0400====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
           countFirst++;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           if (countFirst < 2) {
             return;
           }
@@ -351,11 +320,7 @@ export default function abilityTest() {
         if(data.event == "ACTS_AppRecovery_Second") {
           countSecond++;
           flag=true;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           if (countSecond < 2) {
             return;
           }
@@ -404,11 +369,7 @@ export default function abilityTest() {
       function subscribeCallBack(err, data) {
         console.debug("Acts_AppRecovery_0700====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           setTimeout(()=>{
             commonEvent.subscribe(subscriber, subscribeCallBackSecond);
             globalThis.abilityContext.startAbility(
@@ -428,11 +389,7 @@ export default function abilityTest() {
         console.debug("Acts_AppRecovery_0700====> second subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_Second") {
           flag=true;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
@@ -483,11 +440,7 @@ export default function abilityTest() {
         console.debug("Acts_AppRecovery_0800====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
           countFirst++;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           if (countFirst < 2) {
             return;
           }
@@ -513,11 +466,7 @@ export default function abilityTest() {
         if(data.event == "ACTS_AppRecovery_Second") {
           countSecond++;
           flag=true;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           if (countSecond < 2) {
             return;
           }
@@ -568,11 +517,7 @@ export default function abilityTest() {
       function subscribeCallBack(err, data) {
         console.debug("Acts_AppRecovery_0900====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
           let pkillCmd = "pkill -f com.example.apprecoveryrely";
           console.debug("Acts_AppRecovery_0900====> shell command call " + pkillCmd);
@@ -600,11 +545,7 @@ export default function abilityTest() {
         console.debug("Acts_AppRecovery_0900====> second subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_Second") {
           flag=true;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
@@ -655,11 +596,7 @@ export default function abilityTest() {
         console.debug("Acts_AppRecovery_1000====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
           countFirst++;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           if (countFirst < 2) {
             return;
           }
@@ -689,11 +626,7 @@ export default function abilityTest() {
         if(data.event == "ACTS_AppRecovery_Second") {
           countSecond++;
           flag=true;
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           if (countSecond < 2) {
             return;
           }
@@ -744,11 +677,7 @@ export default function abilityTest() {
       function subscribeCallBack(err, data) {
         console.debug("Acts_AppRecovery_1100====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
           let pkillCmd = "pkill -f com.example.apprecoveryrely";
           abilityDelegator.executeShellCommand(pkillCmd, 1, (err, data) => {
@@ -775,7 +704,8 @@ export default function abilityTest() {
         if(data.event == "ACTS_AppRecovery_Second") {
           flag=true;
           let message = data.parameters.message;
-          expect(message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertTrue();
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART] != undefined).assertTrue();
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertTrue();
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
@@ -826,13 +756,7 @@ export default function abilityTest() {
         console.debug("Acts_AppRecovery_1200====> subscribeCallBack data:" + JSON.stringify(data));
         if(data.event == "ACTS_AppRecovery_First") {
           countFirst++;
-          let message = data.parameters.message;
-          let strJson = JSON.stringify(data.parameters.message);
-          if (data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"] == undefined) {
-            expect(true).assertTrue();
-          } else {
-            expect(data.parameters.message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertFalse();
-          }
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertEqual(undefined);
           if (countFirst < 2) {
             return;
           }
@@ -862,8 +786,8 @@ export default function abilityTest() {
         if(data.event == "ACTS_AppRecovery_Second") {
           countSecond++;
           flag=true;
-          let message = data.parameters.message;
-          expect(message["ohos.aafwk.param.AbilityRecoveryRestart"]).assertTrue();
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART] != undefined).assertTrue();
+          expect(data.parameters.message[wantConstant.Params.ABILITY_RECOVERY_RESTART]).assertTrue();
           if (countSecond < 2) {
             return;
           }
