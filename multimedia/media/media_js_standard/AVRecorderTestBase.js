@@ -16,17 +16,24 @@
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from './MediaTestBase.js';
 
-async function idleCallBack(avRecorder) {
-    console.info('case createAVRecorder called');
-    await media.createAVRecorder((error, recorder) => {
+export function resourceName(){
+    let timestamp = Date.now();
+    let filename = `avRecorder_${timestamp}.m4a`;
+    return filename;
+}
+
+export async function idleCallback(avRecorder, avConfig, done) {
+    console.info('case idleCallback called');
+    media.createAVRecorder((error, recorder) => {
         if (recorder != null) {
             avRecorder = recorder;
-            console.info('createAVRecorder success');
+            console.info('createAVRecorder idleCallback success');
+            avRecorder.prepare(avConfig)
+            releaseDone(avRecorder, done)
         } else {
-            console.info(`createAVRecorder fail, error:${error}`);
+            console.info(`createAVRecorder idleCallback fail, error:${error}`);
         }
     });
-    return avRecorder;
 }
 
 export async function idle(avRecorder) {
@@ -85,7 +92,7 @@ export async function getInputSurfacePromise(avRecorder) {
     let surfaceID = null;
     if (typeof(avRecorder) == 'undefined') {
         return;
-    }
+    } 
     await avRecorder.getInputSurface().then((surfaceId) => {
         console.info('getInputSurface success');
         surfaceID = surfaceId;
@@ -1371,6 +1378,10 @@ export async function avRecorderReliabilitTest03(avConfig, avRecorder, recorderT
     await avRecorder.prepare(avConfig)
 }
 
+export async function avRecorderReliabilitTest001(avConfig, avRecorder, recorderTime, done) {
+    idleCallback(avRecorder, avConfig, done)
+}
+
 export async function avRecorderReliabilitTest04(avConfig, avRecorder, recorderTime, done) {
     let result = true;
     avRecorder = await idle(avRecorder);
@@ -2253,25 +2264,28 @@ export async function createTimeTestCallback(avConfig, avRecorder, recorderTime,
     for(var i = 0;i < 10;i++){
         let start = Date.now();
         console.info(`createTimeTestCallback start time is : ${start}`)
-        avRecorder = await idleCallBack(avRecorder);
+        avRecorder = await idle(avRecorder);
         let end = Date.now()
         let execution = parseInt(end - start)
         console.info("createTimeTestCallback execution time  is :" + execution)
         totalTime = totalTime + execution;
         await avRecorder.release().then(() => {
             console.info('createTimeTestCallback avPlayer is release')
+            console.info(`createTimeTestCallback avRecorder.state is : ${avRecorder.state}`)
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
+            if(i == 9){
+                let avg = totalTime/10;
+                console.info("createTimeTest avg time  is :" + avg)
+                done();
+            }
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
     }
-    let avg = totalTime/10;
-    console.info("createTimeTest avg time  is :" + avg)
-    done();
 }
 
 export async function prepareTimeCallback(avConfig, avRecorder, recorderTime, done) {
     let totalTime = 0;
     for(var i = 0;i < 10;i++){
-        avRecorder = await idleCallBack(avRecorder);
+        avRecorder = await idle(avRecorder);
         await sleep(20)
         let start = Date.now();
         console.info(`prepareTimeWithoutCallback start time is : ${start}`)
@@ -2303,7 +2317,7 @@ export async function getInputSurfaceTimeTestCallback(avConfig, avRecorder, reco
     let totalTime = 0;
     let surfaceID = null;
     for(var i = 0;i < 10;i++){
-        avRecorder = await idleCallBack(avRecorder);
+        avRecorder = await idle(avRecorder);
         await sleep(20)
         let end;
         await avRecorder.prepare(avConfig).then(() => {
@@ -2339,7 +2353,7 @@ export async function getInputSurfaceTimeTestCallback(avConfig, avRecorder, reco
 export async function startTimeTestCallback(avConfig, avRecorder, recorderTime, done) {
     let totalTime = 0;
     for(var i = 0;i < 10;i++){
-        avRecorder = await idleCallBack(avRecorder);
+        avRecorder = await idle(avRecorder);
         await sleep(20)
         let end;
         await avRecorder.prepare(avConfig).then(() => {
@@ -2373,7 +2387,7 @@ export async function startTimeTestCallback(avConfig, avRecorder, recorderTime, 
 export async function pauseTimeTestCallback(avConfig, avRecorder, recorderTime, done) {
     let totalTime = 0;
     for(var i = 0;i < 10;i++){
-        avRecorder = await idleCallBack(avRecorder);
+        avRecorder = await idle(avRecorder);
         await sleep(20)
         await avRecorder.prepare(avConfig).then(() => {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
@@ -2413,7 +2427,7 @@ export async function pauseTimeTestCallback(avConfig, avRecorder, recorderTime, 
 export async function resumeTimeTestCallback(avConfig, avRecorder, recorderTime, done) {
     let totalTime = 0;
     for(var i = 0;i < 10;i++){
-        avRecorder = await idleCallBack(avRecorder);
+        avRecorder = await idle(avRecorder);
         await sleep(20)
         await avRecorder.prepare(avConfig).then(() => {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
@@ -2460,7 +2474,7 @@ export async function resumeTimeTestCallback(avConfig, avRecorder, recorderTime,
 export async function stopTimeTestCallback(avConfig, avRecorder, recorderTime, done) {
     let totalTime = 0;
     for(var i = 0;i < 10;i++){
-        avRecorder = await idleCallBack(avRecorder);
+        avRecorder = await idle(avRecorder);
         await sleep(20)
         await avRecorder.prepare(avConfig).then(() => {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
@@ -2500,7 +2514,7 @@ export async function stopTimeTestCallback(avConfig, avRecorder, recorderTime, d
 export async function resetTimeTestCallback(avConfig, avRecorder, recorderTime, done) {
     let totalTime = 0;
     for(var i = 0;i < 10;i++){
-        avRecorder = await idleCallBack(avRecorder);
+        avRecorder = await idle(avRecorder);
         await sleep(20)
         await avRecorder.prepare(avConfig).then(() => {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
@@ -2540,7 +2554,7 @@ export async function resetTimeTestCallback(avConfig, avRecorder, recorderTime, 
 export async function releaseTimeTestCallback(avConfig, avRecorder, recorderTime, done) {
     let totalTime = 0;
     for(var i = 0;i < 10;i++){
-        avRecorder = await idleCallBack(avRecorder);
+        avRecorder = await idle(avRecorder);
         await sleep(20)
         await avRecorder.prepare(avConfig).then(() => {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);

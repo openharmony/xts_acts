@@ -21,109 +21,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function avRecorderTest() {
     describe('avRecorderTest', function () {
         let avRecorder = null;
-
-        const AV_SOURCES = [
-            'audio_1.m4a',
-            'audio_2.m4a',
-            'audio_3.m4a',
-            'audio_4.m4a',
-            'audio_5.m4a',
-            'audio_6.m4a',
-            'audio_7.m4a',
-            'audio_8.m4a',
-            'audio_9.m4a',
-            'audio_10.m4a',
-            'audio_11.m4a',
-            'audio_12.m4a',
-            'audio_13.m4a',
-            'audio_14.m4a',
-            'audio_15.m4a',
-            'audio_16.m4a',
-            'audio_17.m4a',
-            'audio_18.m4a',
-            'audio_19.m4a',
-            'audio_20.m4a',
-            'audio_21.m4a',
-            'audio_22.m4a',
-            'audio_23.m4a',
-            'audio_24.m4a',
-            'audio_25.m4a',
-            'audio_26.m4a',
-            'audio_27.m4a',
-            'audio_28.m4a',
-            'audio_29.m4a',
-            'audio_30.m4a',
-            'audio_31.m4a',
-            'audio_32.m4a',
-            'audio_33.m4a',
-            'audio_34.m4a',
-            'audio_35.m4a',
-            'audio_36.m4a',
-            'audio_37.m4a',
-            'audio_38.m4a',
-            'audio_39.m4a',
-            'audio_40.m4a',
-            'audio_41.m4a',
-            'audio_42.m4a',
-            'audio_43.m4a',
-            'av_audio_n1.m4a',
-            'av_audio_n2.m4a',
-            'av_audio_n3.m4a',
-            'av_audio_n4.m4a',
-            'av_audio_n5.m4a',
-            'av_audio_n6.m4a',
-            'av_audio_n7.m4a',
-            'av_audio_n8.m4a',
-            'av_audio_n9.m4a',
-            'av_audio_n10.m4a',
-            'av_audio_n11.m4a',
-            'av_audio_n12.m4a',
-            'av_audio_n13.m4a',
-            'av_audio_n14.m4a',
-            'av_audio_n15.m4a',
-            'av_audio_n16.m4a',
-            'av_audio_n17.m4a',
-            'av_audio_n18.m4a',
-            'av_audio_n19.m4a',
-            'av_audio_n20.m4a',
-            'av_audio_n21.m4a',
-            'av_audio_n22.m4a',
-            'av_audio_n23.m4a',
-            'av_audio_n24.m4a',
-            'av_audio_n25.m4a',
-            'av_audio_n26.m4a',
-            'av_audio_n27.m4a',
-            'av_audio_n28.m4a',
-            'av_audio_n29.m4a',
-            'av_audio_n30.m4a',
-            'av_audio_n31.m4a',
-            'av_audio_n32.m4a',
-            'av_audio_n33.m4a',
-            'av_audio_n34.m4a',
-            'av_audio_n35.m4a',
-            'av_audio_n36.m4a',
-            'av_audio_n37.m4a',
-            'av_audio_n38.m4a',
-            'av_audio_n39.m4a',
-            'av_audio_n40.m4a',
-            'av_audio_n41.m4a',
-            'av_audio_n42.m4a',
-            'av_audio_n43.m4a',
-            'av_audio_n44.m4a',
-            'av_audio_n45.m4a',
-            'av_audio_n46.m4a',
-            'av_audio_n47.m4a',
-            'av_audio_n48.m4a',
-            'av_audio_n49.m4a',
-            'av_audio_n50.m4a',
-            'av_audio_n51.m4a',
-            'av_audio_n52.m4a',
-            'av_audio_n53.m4a',
-            'av_audio_n54.m4a',
-            'av_audio_n55.m4a',
-            'av_audio_n56.m4a'
-        ]
-
         const RECORDER_TIME = 3000;
         const RECORDER_LONG_TIME = 3600000;
         const LOOP_TIMES = 1000;
@@ -158,8 +55,8 @@ export default function avRecorderTest() {
             let permissionName4 = 'ohos.permission.WRITE_MEDIA';
             let permissionNames = [permissionName1, permissionName2, permissionName3, permissionName4];
             await mediaTestBase.getPermission(permissionNames);
+            await mediaTestBase.msleepAsync(2000);
             await mediaTestBase.driveFn(2)
-            await mediaTestBase.msleepAsync(3000);
             console.info('beforeAll out');
         })
 
@@ -194,7 +91,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0100', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0100 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[0], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderWithCallBack(avConfig, avRecorder, RECORDER_TIME, done);
@@ -211,11 +109,30 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0100', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0100 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[43], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest01(avConfig, avRecorder, RECORDER_TIME, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0100 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0101
+            * @tc.name      : 001.test pause
+            * @tc.desc      : Recorder audio 001.pause
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0101', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0101 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            avRecorderTestBase.avRecorderReliabilitTest001(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0101 end')
         })
 
         /* *
@@ -228,7 +145,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0200', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0200 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[44], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest02(avConfig, avRecorder, RECORDER_TIME, done);
@@ -245,7 +163,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0300', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0300 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[45], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest03(avConfig, avRecorder, RECORDER_TIME, done);
@@ -262,7 +181,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0400', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0400 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[46], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest04(avConfig, avRecorder, RECORDER_TIME, done);
@@ -279,7 +199,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0500', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0500 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[47], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest05(avConfig, avRecorder, RECORDER_TIME, done);
@@ -296,7 +217,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0600', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0600 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[48], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest06(avConfig, avRecorder, RECORDER_TIME, done);
@@ -313,7 +235,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0700', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0700 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[49], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest07(avConfig, avRecorder, RECORDER_TIME, done);
@@ -329,8 +252,8 @@ export default function avRecorderTest() {
             * @tc.level     : Level2
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_0800', 0, async function (done) {
-            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_0800 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[50], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest08(avConfig, avRecorder, RECORDER_TIME, done);
@@ -347,7 +270,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0900', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0900 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[51], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest09(avConfig, avRecorder, RECORDER_TIME, done);
@@ -364,7 +288,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1000', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1000 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[52], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest10(avConfig, avRecorder, RECORDER_TIME, done);
@@ -381,7 +306,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1100', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1100 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[53], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest11(avConfig, avRecorder, RECORDER_TIME, done);
@@ -398,7 +324,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1200', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1200 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[54], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest12(avConfig, avRecorder, RECORDER_TIME, done);
@@ -415,7 +342,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1300', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1300 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[55], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest13(avConfig, avRecorder, RECORDER_TIME, done);
@@ -432,7 +360,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1400', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1400 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[56], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest14(avConfig, avRecorder, RECORDER_TIME, done);
@@ -449,7 +378,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1500', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1500 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[57], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest15(avConfig, avRecorder, RECORDER_TIME, done);
@@ -466,7 +396,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1600', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1600 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[58], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest16(avConfig, avRecorder, RECORDER_TIME, done);
@@ -483,7 +414,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1700', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1700 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[59], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest17(avConfig, avRecorder, RECORDER_TIME, done);
@@ -500,7 +432,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1800', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1800 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[60], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest18(avConfig, avRecorder, RECORDER_TIME, done);
@@ -517,7 +450,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1900', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1900 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[61], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest19(avConfig, avRecorder, RECORDER_TIME, done);
@@ -534,7 +468,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2000', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2000 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[62], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest20(avConfig, avRecorder, RECORDER_TIME, done);
@@ -551,7 +486,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2100', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2100 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[63], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest21(avConfig, avRecorder, RECORDER_TIME, done);
@@ -568,7 +504,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2200', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2200 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[64], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest22(avConfig, avRecorder, RECORDER_TIME, done);
@@ -585,7 +522,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2300', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2300 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[65], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest23(avConfig, avRecorder, RECORDER_TIME, done);
@@ -602,7 +540,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2400', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2400 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[66], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest24(avConfig, avRecorder, RECORDER_TIME, done);
@@ -619,7 +558,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2500', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2500 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[67], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest25(avConfig, avRecorder, RECORDER_TIME, done);
@@ -636,7 +576,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2600', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2600 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[68], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest26(avConfig, avRecorder, RECORDER_TIME, done);
@@ -653,7 +594,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2700', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2700 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[69], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest27(avConfig, avRecorder, RECORDER_TIME, done);
@@ -670,7 +612,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2800', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2800 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[70], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest28(avConfig, avRecorder, RECORDER_TIME, done);
@@ -687,7 +630,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2900', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2900 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[71], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest29(avConfig, avRecorder, RECORDER_TIME, done);
@@ -704,7 +648,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_3000', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_3000 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[72], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest30(avConfig, avRecorder, RECORDER_TIME, done);
@@ -721,7 +666,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3100', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3100 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[73], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest31(avConfig, avRecorder, RECORDER_TIME, done);
@@ -738,7 +684,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3200', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3200 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[74], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest32(avConfig, avRecorder, RECORDER_TIME, done);
@@ -755,7 +702,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3300', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3300 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[75], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest33(avConfig, avRecorder, RECORDER_TIME, done);
@@ -772,7 +720,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3400', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3400 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[76], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest34(avConfig, avRecorder, RECORDER_TIME, done);
@@ -789,7 +738,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3500', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3500 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[77], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest35(avConfig, avRecorder, RECORDER_TIME, done);
@@ -806,7 +756,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3600', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3600 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[78], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest36(avConfig, avRecorder, RECORDER_TIME, done);
@@ -823,7 +774,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3700', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3700 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[79], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest37(avConfig, avRecorder, RECORDER_TIME, done);
@@ -840,7 +792,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3800', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3800 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[80], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.avRecorderReliabilitTest38(avConfig, avRecorder, RECORDER_TIME, done);
@@ -857,7 +810,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0100', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0100 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[81], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.createTimeTestCallback(avConfig, avRecorder, RECORDER_TIME, done);
@@ -874,7 +828,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0200', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0200 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[82], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.prepareTimeCallback(avConfig, avRecorder, RECORDER_TIME, done);
@@ -891,7 +846,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0300', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0300 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[83], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.getInputSurfaceTimeTestCallback(avConfig, avRecorder, RECORDER_TIME, done);
@@ -908,7 +864,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0400', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0400 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[84], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.startTimeTestCallback(avConfig, avRecorder, RECORDER_TIME, done);
@@ -925,7 +882,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0500', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0500 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[85], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.pauseTimeTestCallback(avConfig, avRecorder, RECORDER_TIME, done);
@@ -942,7 +900,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0600', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0600 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[86], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.resumeTimeTestCallback(avConfig, avRecorder, RECORDER_TIME, done);
@@ -959,7 +918,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0700', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0700 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[87], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.stopTimeTestCallback(avConfig, avRecorder, RECORDER_TIME, done);
@@ -976,7 +936,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0800', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0800 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[88], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.resetTimeTestCallback(avConfig, avRecorder, RECORDER_TIME, done);
@@ -993,7 +954,8 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0900', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0900 start')
-            fdObject = await mediaTestBase.getAvRecorderFd(AV_SOURCES[89], "audio");
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             avRecorderTestBase.releaseTimeTestCallback(avConfig, avRecorder, RECORDER_TIME, done);
