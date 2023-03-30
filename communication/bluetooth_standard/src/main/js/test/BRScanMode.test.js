@@ -47,9 +47,8 @@ describe('bluetoothhostTest2', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(async function (done) {
+    beforeAll(function () {
         console.info('beforeAll called')
-        done()
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')

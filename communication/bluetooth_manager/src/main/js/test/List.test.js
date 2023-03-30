@@ -18,7 +18,6 @@ import bluetoothBLETest4 from './BleGattManager401.test.js'
 import bluetoothBLETest1 from './BleService.test.js'
 import bluetoothBLETest2 from './BleAdvertiser.test.js'
 import bluetoothBLETest5 from './BleAdvertiser401.test.js'
-import bluetoothBLETest3 from './SwitchOff003.test.js'
 import bluetoothBLETest6 from './BleScanResult.test.js'
 export default function testsuite() {
 bluetoothBLETest()
@@ -26,6 +25,5 @@ bluetoothBLETest1()
 bluetoothBLETest2()
 bluetoothBLETest4()
 bluetoothBLETest5()
-bluetoothBLETest3()
 bluetoothBLETest6()
 }

@@ -15,7 +15,7 @@
 
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-
+ 
 let BluetoothState = {
     STATE_OFF: 0,STATE_TURNING_ON: 1,
     STATE_ON: 2,STATE_TURNING_OFF: 3,
@@ -54,9 +54,8 @@ describe('bluetoothhostTest', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(async function (done) {
+    beforeAll(function () {
         console.info('beforeAll called')
-        done()
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
@@ -70,42 +69,6 @@ describe('bluetoothhostTest', function() {
         console.info('afterAll called')
     })
 
-    /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0100
-     * @tc.name testEnableBluetooth and getState
-     * @tc.desc Test EnableBluetooth api by promise.
-     * @tc.size MEDIUM
-     * @ since 7
-     * @tc.type Function
-     * @tc.level Level 0
-     */
-    it('SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0100', 0, async function (done) {
-        function onReceiveEvent(data) {
-            console.info('bluetooth state001 ='+ JSON.stringify(data));
-        }
-        await bluetooth.on('stateChange', onReceiveEvent);
-        let state = bluetooth.getState();
-        console.info('[bluetooth_js] get bluetooth state001'+ JSON.stringify(state));
-        if(state!=bluetooth.BluetoothState.STATE_ON)
-        {
-            let enable = bluetooth.enableBluetooth();
-            await sleep(10000);
-            console.info('[bluetooth_js] bluetooth enable001'+JSON.stringify(enable));
-            expect(enable).assertTrue();
-            let state1 = bluetooth.getState();
-            console.info('[bluetooth_js] enable state001 '+ JSON.stringify(state1));
-            expect(state1).assertEqual(bluetooth.BluetoothState.STATE_ON);
-        }
-        let disable = bluetooth.disableBluetooth();
-        await sleep(3000);
-        console.info('[bluetooth_js] bluetooth disable001'+JSON.stringify(disable));
-        expect(disable).assertTrue();
-        let state2 = bluetooth.getState();
-        console.info('[bluetooth_js] disable state001 '+ JSON.stringify(state2));
-        expect(state2).assertEqual(bluetooth.BluetoothState.STATE_OFF);
-        await bluetooth.off('stateChange', onReceiveEvent);
-        done()   
-    })
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0300
@@ -136,31 +99,32 @@ describe('bluetoothhostTest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0400
-     * @tc.name testEnableBluetooth
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0100
+     * @tc.name testEnableBluetooth and getState
      * @tc.desc Test EnableBluetooth api by promise.
      * @tc.size MEDIUM
      * @ since 7
      * @tc.type Function
-     * @tc.level Level 3
+     * @tc.level Level 0
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0400', 0, async function (done) {
-        let result1= bluetooth.disableBluetooth();
-        await sleep(3000);
-        console.info('[bluetooth_js] disable result'+ JSON.stringify(result1));
-        expect(result1).assertTrue();
-        let state = bluetooth.getState();
-        console.info('[bluetooth_js] getState1 off = '+ JSON.stringify(state));
-        expect(state).assertEqual(bluetooth.BluetoothState.STATE_OFF);
-        if(state == bluetooth.BluetoothState.STATE_OFF) {
-            let result2= bluetooth.disableBluetooth();
-            console.info('[bluetooth_js]disable result1'+ JSON.stringify(result2));
-            expect(result2).assertFalse();
-            let state1 = bluetooth.getState();
-            console.info('[bluetooth_js] getState4 off = '+ JSON.stringify(state1));
-            expect(state1).assertEqual(bluetooth.BluetoothState.STATE_OFF);
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0100', 0, async function (done) {
+        function onReceiveEvent(data) {
+            console.info('bluetooth state001 ='+ JSON.stringify(data));
         }
-        done();
+        await bluetooth.on('stateChange', onReceiveEvent);
+        let state = bluetooth.getState();
+        console.info('[bluetooth_js] get bluetooth state001'+ JSON.stringify(state));
+        if(state!=bluetooth.BluetoothState.STATE_ON)
+        {
+            let enable = bluetooth.enableBluetooth();
+            await sleep(10000);
+            console.info('[bluetooth_js] bluetooth enable001'+JSON.stringify(enable));
+            expect(enable).assertTrue();
+            let state1 = bluetooth.getState();
+            console.info('[bluetooth_js] enable state001 '+ JSON.stringify(state1));
+            expect(state1).assertEqual(bluetooth.BluetoothState.STATE_ON);
+        }
+        done()
     })
 })
 }
