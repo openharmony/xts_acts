@@ -44,6 +44,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(false).assertTrue();
     } catch (e) {
       fpr.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_sync_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -93,6 +94,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
       expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       fpr.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdopenstream_sync_002 has failed for ' + e.message + ', code: ' + e.code);
@@ -141,6 +143,8 @@ describe('fileIO_fs_FdOpenStream', async function () {
       fileIO.fdopenStreamSync(file.fd, 'ohos');
       expect(false).assertTrue();
     } catch (e) {
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_sync_004 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
@@ -166,6 +170,8 @@ describe('fileIO_fs_FdOpenStream', async function () {
       fileIO.fdopenStreamSync(file.fd);
       expect(false).assertTrue();
     } catch (e) {
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_sync_005 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
@@ -195,6 +201,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(false).assertTrue();
     } catch (e) {
       fpw.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_sync_006 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -227,6 +234,8 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpr = fileIO.fdopenStreamSync(file2.fd, 'r');
       expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
       fpr.closeSync();
+      fileIO.closeSync(file1);
+      fileIO.closeSync(file2);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdopenstream_sync_007 has failed for ' + e.message + ', code: ' + e.code);
@@ -256,6 +265,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       expect(fpw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
       fpw.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdopenstream_sync_008 has failed for ' + e.message + ', code: ' + e.code);
@@ -289,6 +299,8 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpr = fileIO.fdopenStreamSync(file2.fd, 'r');
       expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
       fpr.closeSync();
+      fileIO.closeSync(file1);
+      fileIO.closeSync(file2);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdopenstream_sync_009 has failed for ' + e.message + ', code: ' + e.code);
@@ -320,6 +332,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(false).assertTrue();
     } catch (e) {
       fpa.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_sync_010 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -348,6 +361,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       expect(fpa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
       fpa.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_fdopenstream_sync_011 has failed for ' + e.message + ', code: ' + e.code);
@@ -379,6 +393,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(false).assertTrue();
     } catch (e) {
       fpr.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_async_000 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -413,6 +428,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
         fpr.write(FILE_CONTENT, (err) => {
           if (err) {
             fpr.closeSync();
+            fileIO.closeSync(file);
             fileIO.unlinkSync(fpath);
             console.log(
               'fileIO_test_fdopenstream_async_001 error: {message: ' + err.message + ', code: ' + err.code + '}'
@@ -497,6 +513,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
       fpr.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -531,6 +548,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
         expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
         expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
         fpr.closeSync();
+        fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
         done();
       });
@@ -560,6 +578,8 @@ describe('fileIO_fs_FdOpenStream', async function () {
       await fileIO.fdopenStream(file.fd, 'ohos');
       expect(false).assertTrue();
     } catch (e) {
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_async_006 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
@@ -586,6 +606,8 @@ describe('fileIO_fs_FdOpenStream', async function () {
       await fileIO.fdopenStream(file.fd);
       expect(false).assertTrue();
     } catch (e) {
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_async_007 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
@@ -616,6 +638,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(false).assertTrue();
     } catch (e) {
       fpw.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_async_008 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -650,6 +673,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
         fpw.read(new ArrayBuffer(4096), (err) => {
           if (err) {
             fpw.closeSync();
+            fileIO.closeSync(file);
             fileIO.unlinkSync(fpath);
             console.log(
               'fileIO_test_fdopenstream_async_009 error: {message: ' + err.message + ', code: ' + err.code + '}'
@@ -692,6 +716,8 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpr = await fileIO.fdopenStream(file2.fd, 'r');
       expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
       fpr.closeSync();
+      fileIO.closeSync(file1);
+      fileIO.closeSync(file2);
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -722,6 +748,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       expect(fpw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
       fpw.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -756,6 +783,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
         expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
         expect(fpw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
         fpw.closeSync();
+        fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
         done();
       });
@@ -790,6 +818,8 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpr = await fileIO.fdopenStream(file2.fd, 'r');
       expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
       fpr.closeSync();
+      fileIO.closeSync(file1);
+      fileIO.closeSync(file2);
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -822,6 +852,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(false).assertTrue();
     } catch (e) {
       fpa.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_fdopenstream_async_014 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900005 && e.message == 'I/O error').assertTrue();
@@ -856,6 +887,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
         fpa.read(new ArrayBuffer(4096), (err) => {
           if (err) {
             fpa.closeSync();
+            fileIO.closeSync(file);
             fileIO.unlinkSync(fpath);
             console.log(
               'fileIO_test_fdopenstream_async_015 error: {message: ' + err.message + ', code: ' + err.code + '}'
@@ -895,6 +927,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       expect(fpa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
       fpa.closeSync();
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -929,6 +962,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
         expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
         expect(fpa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
         fpa.closeSync();
+        fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
         done();
       });
