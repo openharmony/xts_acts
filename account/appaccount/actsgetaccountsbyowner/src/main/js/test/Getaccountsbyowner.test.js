@@ -21,6 +21,25 @@ const LENGTHLIMIT = 1024;
 const SELFBUNDLE = 'com.example.actsgetaccountsbyowner'
 const createAccountOptions = {customData:{age:'12'}}
 export default function GetAccountsByOwner() {
+    beforeAll(async function (done) {
+        console.debug("====>startAbility first start====");
+            await featureAbility.startAbility(
+                {
+                    want:
+                    {
+                        deviceId: "",
+                        bundleName: "com.example.actsscenegetallaccounts",
+                        abilityName: "com.example.actsscenegetallaccounts.MainAbility",
+                        action: "action1",
+                        parameters:
+                        {},
+                    },
+                },
+            );
+        sleep(TIMEOUT);
+        done();
+    });
+
     describe('GetAccountsByOwner', function () {
         async function sleep(delay) {
             let timeoutId = null;
@@ -266,20 +285,6 @@ export default function GetAccountsByOwner() {
             console.debug("====>creat finish====");
             console.debug("====>add account 0900 start====");
             await appAccountManager.createAccount("Account_application_callback");
-            console.debug("====>startAbility 0900 start====");
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.example.actsscenegetallaccounts",
-                        abilityName: "com.example.actsscenegetallaccounts.MainAbility",
-                        action: "action1",
-                        parameters:
-                        {},
-                    },
-                },
-            );
             function getAllCallback(err, data){
                 console.debug("====>getAccountsByOwner 0900 err:" + JSON.stringify(err));
                 console.debug("====>getAccountsByOwner 0900 data:" + JSON.stringify(data));
@@ -310,20 +315,6 @@ export default function GetAccountsByOwner() {
             console.debug("====>creat finish====");
             console.debug("====>add account 1000 start====");
             await appAccountManager.createAccount("Account_application_promise");
-            console.debug("====>startAbility 1000 start====");
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.example.actsscenegetallaccounts",
-                        abilityName: "com.example.actsscenegetallaccounts.MainAbility",
-                        action: "action1",
-                        parameters:
-                        {},
-                    },
-                },
-            );
             sleep(TIMEOUT)
             console.debug("====>getAccountsByOwner 1000 start====");
             try{
@@ -361,20 +352,6 @@ export default function GetAccountsByOwner() {
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat finish====");
             var specifiedBundle = "com.example.actsscenegetallaccounts";
-            console.debug("====>startAbility 1100 start====");
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.example.actsscenegetallaccounts",
-                        abilityName: "com.example.actsscenegetallaccounts.MainAbility",
-                        action: "action1",
-                        parameters:
-                        {},
-                    },
-                },
-            );
             function getAllCallback(err, data){
                 console.debug("====>getAccountsByOwner 1100 err:" + JSON.stringify(err));
                 console.debug("====>getAccountsByOwner 1100 data:" + JSON.stringify(data));
@@ -400,20 +377,6 @@ export default function GetAccountsByOwner() {
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat finish====");
             var specifiedBundle = "com.example.actsscenegetallaccounts";
-            console.debug("====>startAbility 1200 start====");
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.example.actsscenegetallaccounts",
-                        abilityName: "com.example.actsscenegetallaccounts.MainAbility",
-                        action: "action1",
-                        parameters:
-                        {},
-                    },
-                },
-            );
             await sleep(TIMEOUT)
             console.debug("====>getAccountsByOwner 1200 start====");
             try{
