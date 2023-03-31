@@ -26,7 +26,7 @@ import router from '@ohos.router';
 struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraSerialPhoto';
-  @State StepTips: string = '测试目的：用于测试相机连拍\n-左侧显示相机预览窗口\n-右侧显示拍照后的每个图片\n-对于前置摄像头会有镜像效果\n测试步骤：\n1.点击拍照按钮\n预期结果：点击拍照按钮后每个摄像头连拍生成10张图片';
+  @State StepTips: string = '测试目的：用于测试相机连拍\n-左侧显示相机预览窗口\n-右侧显示拍照后的每个图片\n-对于前置摄像头会有镜像效果\n测试步骤：\n1.点击拍照按钮\n预期结果：点击拍照按钮后每个摄像头连拍生成10张图片，图片显示正常';
   private tag: string = 'qlw CameraSerialPhoto'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
@@ -133,12 +133,12 @@ struct cameraOrientation {
               })
             })
             .size({ width: '100%', height: '100%' })
-          Text('Camera Preview').fontSize('20fp').fontColor(Color.White)
+          Text('预览').fontSize('20fp').fontColor(Color.White)
         }.size({ width: '40%', height: '60%' })
 
         Column() {
           Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
-          Text('Oriented Photo').fontSize('20fp').fontColor(Color.White)
+          Text('图片').fontSize('20fp').fontColor(Color.White)
         }.size({ width: '40%', height: '60%' })
       }.width('100%').height('50%')
 

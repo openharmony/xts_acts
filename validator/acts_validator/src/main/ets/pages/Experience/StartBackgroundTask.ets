@@ -86,7 +86,7 @@ struct CustomContainerUser {
                   let head = report.indexOf(":");
                   this.time = report.substring(head+1);
                   let time = parseFloat(this.time)
-                  if( time < 600 ) {
+                  if( 0 < time && time < 600 ) {
                     this.Vue = true;
                   }
                 })

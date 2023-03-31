@@ -26,7 +26,7 @@ import router from '@ohos.router';
 struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraPhotoFormat';
-  @State StepTips: string = '测试目的：用于测试相机拍照分辨率能力\n预期结果：所有分辨率均可以拍照，图片与预览一致';
+  @State StepTips: string = '测试目的：用于测试相机拍照分辨率能力\n测试步骤：\n1. 点击拍照\n2. 点击下一个\n3. 重复步骤1和2直至所有拍照分辨率均遍历完成\n预期结果：所有分辨率均可以拍照，图片与预览一致';
   private tag: string = 'qlw'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
@@ -58,7 +58,7 @@ struct cameraOrientation {
     for (let index = 0; index < this.cameraListLength; index++) {
       this.cameraList.push({ value: `Camera ${index}` })
     }
-    // 测试总次数 = 摄像头0的分辨率 + 摄像头1的分辨率 优先以RK为主
+
     this.testingFrequency = this.resolution.length
     Logger.info(this.tag, `testingFrequency ${this.testingFrequency}`)
   }
@@ -140,12 +140,12 @@ struct cameraOrientation {
               this.cameraInit()
             })
             .size({ width: '100%', height: '100%' })
-          Text('Camera Preview').fontSize('20fp').fontColor(Color.White)
+          Text('预览').fontSize('20fp').fontColor(Color.White)
         }.size({ width: '40%', height: '60%' })
 
         Column() {
           Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
-          Text('Oriented Photo').fontSize('20fp').fontColor(Color.White)
+          Text('图片').fontSize('20fp').fontColor(Color.White)
         }.size({ width: '40%', height: '60%' })
       }.width('100%').height('50%')
 
@@ -191,7 +191,7 @@ struct cameraOrientation {
             })
         }.justifyContent(FlexAlign.SpaceEvenly)
 
-        Text(`提示：对不同分辨率的图片进行拍摄，根据拍摄结果选择pass或选择fail`)
+        Text(`提示：不同拍照分辨率下进行拍摄，图片拍摄成功且与预览画面一致则选择pass，否则选择fail`)
           .fontSize('16fp').fontColor(Color.White).margin({ top: 20 })
       }.size({ width: '80%', height: '20%' })
 
@@ -206,7 +206,7 @@ struct cameraOrientation {
             this.isNextEnabled = false
             CameraService.takePicture()
           })
-        Button('NEXT')
+        Button('下一个')
           .enabled(!this.isNextEnabled)
           .opacity(!this.isNextEnabled ? 1 : 0.4)
           .width('40%')
@@ -222,11 +222,18 @@ struct cameraOrientation {
                 this.isNextEnabled = true
                 return
               }
-              this.cameraDeviceIndex = Number(!this.cameraDeviceIndex)
               this.clickFrequency = 0
-              await this.cameraInit().then(() => {
-                this.isCameraChange  = true
-              })
+              if (this.cameraListLength > 1) {
+                this.cameraDeviceIndex = Number(!this.cameraDeviceIndex)
+                await this.cameraInit().then(() => {
+                  this.isCameraChange = true
+                })
+              } else {
+                this.Vue = true
+                this.isEnabled = false
+                this.isNextEnabled = true
+                return
+              }
             }
             this.isEnabled = true
             this.isNextEnabled = true

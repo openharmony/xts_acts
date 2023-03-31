@@ -48,9 +48,9 @@ struct CustomContainerUser {
               .fontColor(Color.White).fontSize('24fp')
           }
           Row(){
-            Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n' + `2.开启应用回退到桌面，保证此时后台应用存在`+ '\n' + '\n'
-            + `3.双击执行.bat选择热启动测试输入待测应用编号`+ '\n' + '\n' +`4.依次测试完所有应用热启动返回validator界面`
-            + '\n' + '\n' + '5.点击停止键观察测试结果' + '\n' + '\n' + `5.若所有热启动测试均在规定时延内完成则通过测试`
+            Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n' + `2.开启应用回退到桌面，保证此时后台应用存在`
+            + '\n' + '\n' + `3.双击执行.bat选择热启动>设置测试`+ '\n' + '\n' +`4.测试应用手动执行热启动后返回validator界面`
+            + '\n' + '\n' + '5.点击停止键观察测试结果' + '\n' + '\n' + `5.若热启动测试在规定时延内完成则通过测试`
             + '\n' + '\n' + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
           }
@@ -95,7 +95,7 @@ struct CustomContainerUser {
                   let setHead = setReport.indexOf(':');
                   let setTime = setReport.substring(setHead+1);
                   this.setNum = parseFloat(setTime);
-                  if( this.setNum < 1000 ) {
+                  if( 0 < this.setNum && this.setNum < 1000 ) {
                     this.num++
                   }
                   if( this.num === 1 ) {
@@ -105,8 +105,7 @@ struct CustomContainerUser {
             }
           }
           Row(){
-            Text('\n' + '\n' + '\n' + '\n' + `测试结果：` + '\n' + '\n' + '设置热启动时延' + this.setNum + 'ms'
-            + '\n' + '通过热启动测试项' + this.num + '个' )
+            Text('\n' + '\n' + '\n' + '\n' + `测试结果：` + '\n' + '\n' + '设置热启动时延' + this.setNum + 'ms')
               .fontColor(Color.White).fontSize('24fp')
           }
         }

@@ -94,7 +94,7 @@ struct audioOutputRouting {
             }
             Row(){
               Column(){
-                Button(`No`)
+                Button(`不支持`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
@@ -105,7 +105,7 @@ struct audioOutputRouting {
                   })
               }
               Column(){
-                Button(`Yes`)
+                Button(`支持`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
@@ -117,7 +117,7 @@ struct audioOutputRouting {
               }
             }
             Row(){
-              Text('测试目的:\n当设备连接3.5mm有线耳机时，音频路由是否正确切换\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持外设\n2. 按下PLAY按钮\n3. 连接3.5mm有线耳机\n4. 拔出3.5mm有线耳机\n5. 按下STOP按钮\n测试标准：\n如果设备不支持有线耳机输入或者插入和拔出有线耳机后接收到路由通知，路由显示正确，且连接外设后音频通过外设播放，则用例pass').fontColor(Color.White).fontSize('18fp')
+              Text('测试目的:\n当设备连接3.5mm有线耳机时，音频路由是否正确切换\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持3.5mm耳机外设\n2. 按下播放按钮\n3. 连接华为3.5mm有线耳机\n4. 拔出3.5mm有线耳机\n5. 按下停止按钮\n测试标准：\n如果设备不支持有线耳机输入或者插入和拔出有线耳机后接收到路由通知，路由显示正确，且连接外设后音频通过外设播放，则用例pass').fontColor(Color.White).fontSize('18fp')
 
             }
             Row(){
@@ -125,7 +125,7 @@ struct audioOutputRouting {
             }
             Row(){
               Column(){
-                Button(`PLAY`)
+                Button(`播放`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
@@ -141,7 +141,7 @@ struct audioOutputRouting {
                   })
               }
               Column(){
-                Button(`STOP`)
+                Button(`停止`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')

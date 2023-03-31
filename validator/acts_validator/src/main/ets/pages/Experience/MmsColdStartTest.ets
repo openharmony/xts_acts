@@ -48,10 +48,9 @@ struct CustomContainerUser {
               .fontColor(Color.White).fontSize('24fp')
           }
           Row(){
-            Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n' + `2.清空后台应用`+ '\n' + '\n'
-            + `3.双击执行.bat选择冷启动测试输入待测应用编号`+ '\n' + '\n' +`4.依次测试完所有应用冷启动返回validator界面`
-            + '\n' + '\n' + '5.点击停止键观察测试结果' + '\n' + '\n' + `6.若所有冷启动测试均在规定时延内完成则通过测试`
-            + '\n' + '\n' )
+            Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n' + `2.清空后台应用,将底层任务栏中应用拖至桌面`
+            + '\n' + '\n' + `3.双击执行.bat选择冷启动>信息测试,回车执行`+ '\n' + '\n' +`4.测试应用自动执行冷启动后手动返回validator界面`
+            + '\n' + '\n' + '5.点击停止键观察测试结果' + '\n' + '\n' + `6.若冷启动测试在规定时延内完成则通过测试` + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
           }
           Row(){
@@ -92,10 +91,10 @@ struct CustomContainerUser {
                   let MmsBuf = new ArrayBuffer(4096);
                   fileio.readSync(MmsFd,MmsBuf);
                   let MmsReport = String.fromCharCode.apply(null,new Uint8Array(MmsBuf));
-                  let MmsHead = MmsReport.indexOf(':');
-                  let MmsTime = MmsReport.substring(MmsHead+1);
+                  let MmsHead = MmsReport.indexOf('time:');
+                  let MmsTime = MmsReport.substring(MmsHead+5);
                   this.mmsNum = parseFloat(MmsTime);
-                  if( this.mmsNum < 2000 ) {
+                  if( 0 < this.mmsNum && this.mmsNum < 2000 ) {
                     this.num++
                   }
                   if( this.num === 1 ) {
@@ -105,7 +104,7 @@ struct CustomContainerUser {
             }
           }
           Row(){
-            Text('\n' + '\n' + `测试结果：` + '\n' + '\n' + '信息冷启动时延' + this.mmsNum + 'ms' + '\n' + '通过冷启动测试项' + this.num + '个')
+            Text('\n' + '\n' + `测试结果：` + '\n' + '\n' + '信息冷启动时延' + this.mmsNum + 'ms')
               .fontColor(Color.White).fontSize('24fp')
           }
         }
