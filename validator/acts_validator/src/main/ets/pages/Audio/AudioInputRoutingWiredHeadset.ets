@@ -104,7 +104,7 @@ struct audioInputRouting {
             }
             Row(){
               Column(){
-                Button(`No`)
+                Button(`不支持`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
@@ -115,7 +115,7 @@ struct audioInputRouting {
                   })
               }
               Column(){
-                Button(`Yes`)
+                Button(`支持`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
@@ -126,14 +126,14 @@ struct audioInputRouting {
               }
             }
             Row(){
-              Text('测试目的:\n当设备连接3.5mm有线耳机时，是否音频输入路由正确切换\n测试准备\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持3.5mm有线耳机\n2. 按下RECORD按钮\n3. 连接3.5mm有线耳机\n4. 对着耳机mic讲话\n5. 按下STOP按钮\n6. 按下PLAY按钮听录制音频正常播放\n测试标准：\n如果设备不支持3.5mm有线耳机输入或者接收到路由通知、路由显示为3.5mm耳机，通过3.5mm耳机可正常录制和播放，则用例pass').fontColor(Color.White).fontSize('18fp')
+              Text('测试目的:\n当设备连接3.5mm有线耳机时，是否音频输入路由正确切换\n测试准备\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持3.5mm有线耳机\n2. 连接3.5mm有线耳机\n3. 按下录制按钮\n4. 对着耳机mic讲话\n5. 按下停止按钮\n6. 按下播放按钮\n测试标准：\n如果设备不支持3.5mm有线耳机输入或者接收到路由通知、路由显示为3.5mm耳机，通过3.5mm耳机可正常录制和播放，则用例pass').fontColor(Color.White).fontSize('18fp')
             }
             Row(){
               Text(`Audio输入路由：${this.inputDevice}`).fontColor(Color.White).fontSize('18fp')
             }
             Row(){
               Column(){
-                Button(`RECORD`)
+                Button(`录制`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
@@ -147,7 +147,7 @@ struct audioInputRouting {
                   })
               }
               Column(){
-                Button(`STOP`)
+                Button(`停止`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
@@ -162,7 +162,7 @@ struct audioInputRouting {
                   })
               }
               Column(){
-                Button(`PLAY`)
+                Button(`播放`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')

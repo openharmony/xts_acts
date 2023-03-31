@@ -9,6 +9,7 @@ export class mediaPlay {
     private avPlay: media.AVPlayer = undefined
     private surfaceId: number = -1
     public totalDuration: number
+    private handleVideoPlayback: (isVideoPlayback: boolean) => void = false
 
     async getFileFd(name) {
         let filesDir = globalThis.abilityContext.filesDir
@@ -65,8 +66,8 @@ export class mediaPlay {
                     break;
                 case 'initialized':
                     Logger.info(TAG + 'state initialized start ')
-                    if (this.surfaceId) {
-                        AVPlayer.surfaceId = this.surfaceId
+                    if (this.surfaceId != -1) {
+                        AVPlayer.surfaceId = String(this.surfaceId)
                     }
                     await AVPlayer.prepare()
                     Logger.info(TAG, 'state initialized end')
@@ -85,6 +86,9 @@ export class mediaPlay {
                 case 'completed':
                     await AVPlayer.stop()
                     await AVPlayer.release()
+					if (this.handleVideoPlayback) {
+                        this.handleVideoPlayback(true)
+                    }
                 case 'error':
                     Logger.info(TAG, 'state error callback')
                     break;
@@ -93,6 +97,10 @@ export class mediaPlay {
         AVPlayer.on('error', (err) => {
             Logger.info(TAG, `state error callback err:${err},code:${err.code},message:${err.message}}`)
         })
+    }
+	
+    setVideoPlaybackCallback(callback) {
+        this.handleVideoPlayback = callback
     }
 
     async release(){

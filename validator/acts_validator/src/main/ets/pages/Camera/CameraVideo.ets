@@ -45,11 +45,18 @@ struct cameraOrientation {
   @State testingFrequency: number = undefined // 测试总数
   @State testEnabled: boolean = true
   @State nextEnabled: boolean = false
+  @State isVideoPlayback: boolean = false
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
+    mediaPlay.setVideoPlaybackCallback(this.handleVideoPlayback.bind(this))
   }
 
+  handleVideoPlayback = (isVideoPlayback: boolean) => {
+    this.isVideoPlayback = isVideoPlayback
+    Logger.info(this.tag, `VideoPlayBack end, isVideoPlayback: ${this.isVideoPlayback}`)
+  }
+  
   cameraListFn() {
     this.cameraList = []
     this.cameraListLength = CameraService.cameras.length
@@ -150,19 +157,21 @@ struct cameraOrientation {
               this.cameraInit()
             })
             .size({ width: '100%', height: '100%' })
-          Text('Video capture').fontSize('20fp').fontColor(Color.White)
+          Text('视频录制').fontSize('20fp').fontColor(Color.White)
         }.size({ width: '45%', height: '100%' })
 
         Column() {
-          XComponent({
-            id: '',
-            type: 'surface',
-            controller: this.mXComponentController1
-          })
-            .onLoad(() => {
-            })
-            .size({ width: '100%', height: '100%' })
-          Text('Video callback').fontSize('20fp').fontColor(Color.White)
+	  if(!this.isVideoPlayback){
+	      XComponent({
+		id: '',
+		type: 'surface',
+		controller: this.mXComponentController1
+	      })
+		.onLoad(() => {
+		})
+		.size({ width: '100%', height: '100%' })
+	      Text('视频回放').fontSize('20fp').fontColor(Color.White)
+	  }	  
         }.size({ width: '45%', height: '100%' })
 
       }.size({ width: '100%', height: '50%' })
@@ -223,7 +232,7 @@ struct cameraOrientation {
         }.size({ width: '100%', height: '50%' })
 
         Row() {
-          Button('TEST')
+          Button('录制')
             .borderRadius(8)
             .backgroundColor(0x317aff)
             .margin(15)
@@ -245,7 +254,7 @@ struct cameraOrientation {
                 }, 4000)
               })
             })
-          Button('NEXT')
+          Button('下一个')
             .borderRadius(8)
             .backgroundColor(0x317aff)
             .margin(15)

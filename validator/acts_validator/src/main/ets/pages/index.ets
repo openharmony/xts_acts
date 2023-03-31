@@ -429,7 +429,7 @@ struct IndexPage {
     let serializer = new xml.XmlSerializer(bufView);
     serializer.setDeclaration();
     serializer.startElement("testsuites");
-    serializer.setAttributes("name", "ActValidator");
+    serializer.setAttributes("name", "ActsValidator");
     serializer.setAttributes("starttime", starttime);
     serializer.setAttributes("endtime", endtime);
     serializer.setAttributes("errors", "0");
@@ -439,8 +439,8 @@ struct IndexPage {
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("unavailable", "0");
     serializer.setAttributes("productinfo", "{ }");
-    serializer.setAttributes("modules", "*");
-    serializer.setAttributes("runmodules", "*");
+    serializer.setAttributes("modules", "ActsValidator");
+    serializer.setAttributes("runmodules", "ActsValidator");
     /*
      * ArkUI
      */
@@ -453,7 +453,7 @@ struct IndexPage {
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", ArkuiTestNum);
     serializer.setAttributes("message", "*");
-    serializer.setAttributes("modulename", "ActsArkUITest");
+    serializer.setAttributes("modulename", "ActsValidator");
     for (let i = 0; i < title1.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title1[i]));
@@ -478,7 +478,7 @@ struct IndexPage {
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", audioTestNum);
     serializer.setAttributes("message", "*");
-    serializer.setAttributes("modulename", "ActsAudioTest");
+    serializer.setAttributes("modulename", "ActsValidator");
     for (let i = 0; i < title2.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title2[i]));
@@ -503,7 +503,7 @@ struct IndexPage {
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", cameraTestNum);
     serializer.setAttributes("message", "*");
-    serializer.setAttributes("modulename", "ActsCameraTest");
+    serializer.setAttributes("modulename", "ActsValidator");
     for (let i = 0; i < title3.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title3[i]));
@@ -528,7 +528,7 @@ struct IndexPage {
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", playerTestNum);
     serializer.setAttributes("message", "*");
-    serializer.setAttributes("modulename", "ActsPlayerTest");
+    serializer.setAttributes("modulename", "ActsValidator");
     for (let i = 0; i < title4.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title4[i]));
@@ -553,7 +553,7 @@ struct IndexPage {
     serializer.setAttributes("ignored", "0");
     serializer.setAttributes("tests", experienceTestNum);
     serializer.setAttributes("message", "*");
-    serializer.setAttributes("modulename", "ActsExperienceTest");
+    serializer.setAttributes("modulename", "ActsValidator");
     for (let i = 0; i < title5.length; i++) {
       serializer.startElement("testcase");
       serializer.setAttributes("name", String(title5[i]));
