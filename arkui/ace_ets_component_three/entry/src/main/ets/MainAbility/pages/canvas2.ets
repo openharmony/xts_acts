@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,6 +50,7 @@ struct Canvas2Example {
     this.offContext.fillStyle = '#0000ff';
     this.offContext.fillRect(20, 160, 150, 100);
     let image = this.offContext.transferToImageBitmap();
+    this.context.imageSmoothingQuality = "high";
     this.context.transferFromImageBitmap(image);
   }
 
