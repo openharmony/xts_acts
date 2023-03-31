@@ -47,7 +47,7 @@ export default function ActsAccountAppAccess() {
             console.debug("====>afterEach start====");
             var appAccountManager = account.getAccountManager();
             var accounts = await appAccountManager.getAllAccountByOwner(owner)
-            for (i=0;i<accounts.length;i++){
+            for (var i=0;i<accounts.length;i++){
                 var localName = accounts[i].name
                 if(localName == 'zhangsan'){
                     await appAccountManager.removeAccount(localName)
