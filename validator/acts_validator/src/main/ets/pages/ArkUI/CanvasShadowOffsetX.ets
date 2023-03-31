@@ -23,7 +23,7 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'CanvasShadowOffsetX';
-  @State StepTips: string = '操作步骤：拖动滑块向右移动'+'\n'+'预期结果：阴影会随着拖动距离增大而向下偏移，并显示偏移数值';
+  @State StepTips: string = '操作步骤：拖动滑块向右移动'+'\n'+'预期结果：阴影会随着拖动距离增大而向右偏移，并显示偏移数值';
   @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
