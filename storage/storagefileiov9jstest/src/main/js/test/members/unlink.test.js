@@ -87,6 +87,31 @@ describe('fileIO_fs_unlink', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_UNLINK_SYNC_0300
+   * @tc.name fileIO_test_unlink_sync_003
+   * @tc.desc Test unlinkSync() interfaces.
+   * The path refers to a directory, not a file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_unlink_sync_003', 0, async function () {
+    let dpath = await nextFileName('fileIO_test_unlink_sync_003');
+    fileIO.mkdirSync(dpath);
+
+    try {
+      expect(fileIO.accessSync(dpath)).assertTrue();
+      fileIO.unlinkSync(dpath);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_unlink_sync_003 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900019 && e.message == 'Is a directory').assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FileIO_UNLINK_ASYNC_0000
    * @tc.name fileIO_test_unlink_async_000
    * @tc.desc Test unlinkAsync() interfaces. Promise.
@@ -210,6 +235,62 @@ describe('fileIO_fs_unlink', function () {
       console.log('fileIO_test_unlink_async_004 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_UNLINK_ASYNC_0500
+   * @tc.name fileIO_test_unlink_async_005
+   * @tc.desc Test unlink() interfaces. Promise.
+   * The path refers to a directory, not a file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_unlink_async_005', 0, async function (done) {
+    let dpath = await nextFileName('fileIO_test_unlink_async_005');
+    fileIO.mkdirSync(dpath);
+
+    try {
+      expect(fileIO.accessSync(dpath)).assertTrue();
+      await fileIO.unlink(dpath);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_unlink_async_005 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900019 && e.message == 'Is a directory').assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_UNLINK_ASYNC_0600
+   * @tc.name fileIO_test_unlink_async_006
+   * @tc.desc Test unlink() interfaces. Callback.
+   * The path refers to a directory, not a file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_unlink_async_006', 0, async function (done) {
+    let dpath = await nextFileName('fileIO_test_unlink_async_006');
+    fileIO.mkdirSync(dpath);
+
+    try {
+      expect(fileIO.accessSync(dpath)).assertTrue();
+      fileIO.unlink(dpath, (err) => {
+        if (err) {
+          fileIO.rmdirSync(dpath);
+          console.log('fileIO_test_unlink_async_006 error: {message: ' + err.message + ', code: ' + err.code + '}');
+          expect(err.code == 13900019 && err.message == 'Is a directory').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_unlink_async_006 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 });
