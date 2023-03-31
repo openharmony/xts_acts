@@ -52,6 +52,7 @@
                 "rm -rf /data/local/tmp/libc-test/dlns_dlsym_test",
                 "rm -rf /data/local/tmp/libc-test/dlns_special_scene_test",
                 "rm -rf /data/local/tmp/libc-test/dlns_separated_test",
+                "rm -rf /data/local/tmp/libc-test/dlns_dlopen_ext_test",
                 "rm -rf /data/local/tmp/libc-test/dlopen_ext_relro_test",
                 "rm -rf /data/local/tmp/libc-test/trace_stresstest",
                 "rm -rf /data/local/tmp/libc-test/ldso_randomization_test",
