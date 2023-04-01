@@ -69,15 +69,13 @@ struct cameraOrientation {
 
   cameraListFn() {
     this.cameraListLength = CameraService.cameras.length
+    this.testingFrequency = this.cameraListLength * 4
+	Logger.info(this.tag, `cameraListFn testingFrequency: ${this.testingFrequency}`)
     for (let index = 0; index < this.cameraListLength; index++) {
       this.cameraList.push({
         value: `Camera ${index}`
       })
     }
-	Logger.info(this.tag, `cameraListFn testingFrequency: ${this.testingFrequency}`)
-    Logger.info(this.tag, `cameraListFn cameraListLength: ${this.cameraListLength}`)
-    this.testingFrequency = this.cameraListLength * 4
-	Logger.info(this.tag, `cameraListFn testingFrequency: ${this.testingFrequency}`)
   }
 
   handleTakePicture = (assetUri: string) => {
