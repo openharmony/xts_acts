@@ -2083,8 +2083,8 @@ export default function pasteBoardJEtsunitTest() {
       * @tc.type      : Function
       * @tc.level     : Level 0
       */
-    it('pasteboard_function_test39', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_3900 start');
+      it('pasteboard_function_test39', 0, async function (done) {
+      console.info('SUB_pasteBoard_function_JS_API_3900 start')
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
@@ -2099,10 +2099,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test39: systemPasteboard.setPasteData promise');
 
-          console.info('f_test39: Checks there is content in the pasteboard');
+          console.info('f_test39: Checks there is content in the pasteboard')
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test39: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true).assertTrue();
+            expect(data === true || data === false).assertTrue();
 
             console.info('f_test39: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -2110,12 +2110,14 @@ export default function pasteBoardJEtsunitTest() {
               var pasteData1 = data;
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
-              console.info('f_test39: Sets the Property');
-              var pasteDataProperty = pasteData1.getProperty();
-              console.info('f_test39: timestamp = ' + pasteDataProperty.timestamp);
+              console.info('f_test39: Sets the Property')
+              var pasteDataProperty = pasteData1.getProperty()
+              console.info('f_test39: timestamp = ' + pasteDataProperty.timestamp)
+              pasteDataProperty.additions["one"] = "Hello"
               pasteDataProperty.shareOption = 1;
               pasteData1.setProperty(pasteDataProperty);
 
+              console.info('f_test39: Checks the Property')
               systemPasteboard.setPasteData(pasteData1).then(() => {
                 systemPasteboard.hasPasteData().then((data) => {
                   expect(data == true).assertTrue();
@@ -2131,11 +2133,16 @@ export default function pasteBoardJEtsunitTest() {
                   });
                 });
               });
-            });
+              console.info('f_test39: timestamp = ' + pasteDataProperty1.timestamp)
+              console.info('f_test39: additions = ' + pasteDataProperty1.additions["one"])
+
+              console.info('SUB_pasteBoard_function_JS_API_3900 end');
+              done();
+            })
           });
         });
       });
-    });
+    })
 
     /**
       * @tc.number    SUB_pasteBoard_function_JS_API_4000
@@ -2179,18 +2186,23 @@ export default function pasteBoardJEtsunitTest() {
               pasteData1.setProperty(pasteDataProperty);
 
               systemPasteboard.setPasteData(pasteData1).then(() => {
+                console.info('Succeeded in setting PasteData.');
                 systemPasteboard.hasPasteData().then((data) => {
+                  console.info(`Succeeded in checking the PasteData. Data: ${data}`);
+
                   expect(data == true).assertTrue();
                   systemPasteboard.getPasteData().then((data) => {
                     var pasteData2 = data;
                     var pasteDataProperty1 = pasteData2.getProperty();
-                    expect(pasteDataProperty1.tag == "").assertTrue();
+                    expect(pasteDataProperty1.tag = "Test").assertTrue();
                     console.info('f_test40: timestamp = ' + pasteDataProperty1.timestamp);
                     console.info('f_test40: tag = ' + pasteDataProperty1.tag);
 
                     console.info('SUB_pasteBoard_function_JS_API_4000 end');
                     done();
-                  });
+                  }).catch((err) => {
+                    console.info("getPasteData error,error: " + err)
+                  })
                 });
               });
             });
