@@ -35,24 +35,21 @@ export default function pasteBoardSystemPasteBoardTest(){
          * @tc.type      : Function
          * @tc.level     : Level 2
         */
-		
         it('SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0100', 0, async function (done) {
-          console.info(TAG + "SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0100 start")
+          console.info("SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0100 start")
           let pasteData = pasteboard.createData('string', ARRAY_BUFFER);
           let systemPasteBoard = pasteboard.getSystemPasteboard();
           await systemPasteBoard.setData(pasteData)
           await systemPasteBoard.clearData(async (err, data) => {
-            console.info(TAG + "Clear the data in the system pasteBoard finished")
+            console.info("Clear the data in the system pasteBoard finished")
             await systemPasteBoard.hasData().then((data) => {
-                console.info(TAG + `Succeeded in checking the PasteData. Data: ${data}`);
+                console.info(`Succeeded in checking the PasteData. Data: ${data}`);
                 expect(data).assertEqual(false);
+                done();
+                console.info("SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0100 end")
             })
           })
-         done();
-         console.info("SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0100 end")
         })
-
-		
 
         /**
          * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_CLEARDATA_CALLBACK_0200
