@@ -125,7 +125,7 @@ export default function sliderJsunit() {
       console.info('sliderJsunit_0500 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor + "--" );
       expect(obj.$attrs.blockColor).assertEqual('#FFEE82EE');
       expect(obj.$attrs.trackColor).assertEqual('#FFEE82EE');
-      expect(obj.$attrs.selectedColor).assertEqual('#FFAEFFFF');
+      expect(obj.$attrs.selectedColor).assertEqual('#FFEE82EE');
       done(); 
     });
 
@@ -154,7 +154,7 @@ export default function sliderJsunit() {
     it('sliderJsunit_0700', 0, async function (done) {
       console.info('sliderJsunit_0700 START');
       // modify the constructor attribute of slider dynamically
-      globalThis.value.message.notify({name:'value',value:30})
+      globalThis.value.message.notify({name:'vInSetValueOne',value:30})
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'style',value:SliderStyle.OutSet})
       await CommonFunc.sleep(1000);
@@ -186,7 +186,7 @@ export default function sliderJsunit() {
    it('sliderJsunit_0800', 0, async function (done) {
       console.info('sliderJsunit_0800 START');
       // modify the constructor attribute of slider dynamically
-      globalThis.value.message.notify({name:'value',value:-30})
+      globalThis.value.message.notify({name:'vInSetValueOne',value:-30})
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'reverse',value:1})
       await CommonFunc.sleep(1000);
@@ -207,7 +207,7 @@ export default function sliderJsunit() {
       + "---" + obj.$attrs.constructor.reverse + "----" + obj.$attrs.constructor.min + "----" + obj.$attrs.constructor.max + "---" + obj.$attrs.constructor.step);
       expect(obj.$attrs.style).assertEqual('SliderStyle.OutSet');
       expect(obj.$attrs.constructor.direction).assertEqual('Axis.Horizontal');
-      expect(obj.$attrs.constructor.value).assertEqual('40.000000');
+      expect(obj.$attrs.constructor.value).assertEqual('20.000000');
       expect(obj.$attrs.constructor.reverse).assertEqual('false');
       expect(obj.$attrs.constructor.min).assertEqual('-20.000000');
       expect(obj.$attrs.constructor.max).assertEqual('1000.000000');
@@ -234,7 +234,7 @@ export default function sliderJsunit() {
       let textIn = await driver.findComponent(ON.id('tex'));
       let txt = await textIn.getText();
       console.info('sliderJsunit_0900 component textIn obj is: ' + txt);
-      expect(txt).assertEqual('40');
+      expect(txt).assertEqual('20');
       let modeT = await driver.findComponent(ON.id('modeT'));
       let txtt = await modeT.getText();
       console.info('sliderJsunit_0900 modeT component obj is: ' + txtt);

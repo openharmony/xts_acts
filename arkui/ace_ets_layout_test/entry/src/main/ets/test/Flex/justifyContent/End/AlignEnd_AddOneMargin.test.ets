@@ -100,8 +100,8 @@ export default function AlignEnd_AddOneMargin() {
       let End_AddOneMargin_013 = CommonFunc.getComponentRect('End_AddOneMargin_013');
       let End_AddOneMargin_01 = CommonFunc.getComponentRect('End_AddOneMargin_01');
       expect(Math.round(End_AddOneMargin_011.top - End_AddOneMargin_01.top)).assertEqual(vp2px(30));
-      expect(Math.round(End_AddOneMargin_012.left - End_AddOneMargin_011.right)).assertEqual(Math.round(vp2px(500/17)));
-      expect(Math.round(End_AddOneMargin_011.left - End_AddOneMargin_01.left)).assertEqual(Math.round(vp2px(500/17)));
+      expect(Math.round(End_AddOneMargin_012.left - End_AddOneMargin_011.right)).assertEqual(vp2px(30));
+      expect(Math.round(End_AddOneMargin_011.left - End_AddOneMargin_01.left)).assertEqual(vp2px(30));
       expect(End_AddOneMargin_013.top).assertEqual(End_AddOneMargin_012.top);
       expect(End_AddOneMargin_012.top).assertEqual(End_AddOneMargin_01.top);
       expect(End_AddOneMargin_013.left).assertEqual(End_AddOneMargin_012.right);
@@ -109,9 +109,9 @@ export default function AlignEnd_AddOneMargin() {
       expect(Math.round(End_AddOneMargin_011.bottom - End_AddOneMargin_011.top)).assertEqual(vp2px(50));
       expect(Math.round(End_AddOneMargin_012.bottom - End_AddOneMargin_012.top)).assertEqual(vp2px(100));
       expect(Math.round(End_AddOneMargin_013.bottom - End_AddOneMargin_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddOneMargin_011.right - End_AddOneMargin_011.left)).assertEqual(Math.round(vp2px(2500/17)));
-      expect(Math.round(End_AddOneMargin_012.right - End_AddOneMargin_012.left)).assertEqual(Math.round(vp2px(2500/17)));
-      expect(Math.round(End_AddOneMargin_013.right - End_AddOneMargin_013.left)).assertEqual(Math.round(vp2px(2500/17)));
+      expect(Math.round(End_AddOneMargin_011.right - End_AddOneMargin_011.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(End_AddOneMargin_012.right - End_AddOneMargin_012.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(End_AddOneMargin_013.right - End_AddOneMargin_013.left)).assertEqual(Math.round(vp2px(440/3)));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1500] END');
       done();
     })

@@ -26,7 +26,7 @@ struct TextInputPage {
   @State maxLength: number = 10
   @State copyOption: CopyOptions = CopyOptions.None
   @State showPasswordIcon: boolean = false
-  @State style: TextInputStyle = TextInputStyle.Inline
+  @State style: TextInputStyle = TextInputStyle.Default
   @State textAlign: TextAlign = TextAlign.Center
   @State text: string = 'onChange'
   @State onSubmit: string = ''
@@ -163,7 +163,7 @@ struct TextInputPage {
         .style(TextInputStyle.Inline)
       Text('onSubmit:' + this.onSubmit).fontSize(20).margin(10).key('submit')
       Text('onEditChange:' + this.onEditChange).fontSize(20).margin(10).key('editChange')
-      Text('onCopy:' + this.onCopy).fontSize(20).margin(10).id('copy')
+      Text('onCopy:' + this.onCopy).fontSize(20).margin(10).key('copy')
       Text('onCut:' + this.onCut).fontSize(20).margin(10).key('cut')
       Text('onPaste:' + this.onPaste).fontSize(20).margin(10).key('paste')
     }.width('100%')

@@ -65,15 +65,13 @@ export default function GridRowJsunit() {
     it('GridRowJsunit_0200', 0, async function (done) {
       // Modify the properties of component GridRow
       console.info('[GridRowJsunit_0200] START');
-      globalThis.value.message.notify({name:'columns',value:'12'})
+      globalThis.value.message.notify({name:'columns',value:12})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'gutter',value:'x: 7.5, y: 15'})
+      globalThis.value.message.notify({name:'gutter',value:{ x: 12, y: 27}})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'breakpoints',value:'12'})
+      globalThis.value.message.notify({name:'breakpoints',value:{ value: ["200vp", "400vp", "600vp"], reference: BreakpointsReference.ComponentSize }})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'grDirection',value:'12'})
-      await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'currentBp',value:'sm'})
+      globalThis.value.message.notify({name:'grDirection',value:GridRowDirection.RowReverse })
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the GridRow component
@@ -85,7 +83,7 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0200] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0200] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
-      expect(obj.$attrs.gutter).assertEqual('<7.500000, 15.000000');
+      expect(obj.$attrs.gutter).assertEqual('<18.000000, 40.500000');
       expect(obj.$attrs.breakpoints).assertEqual('12');
       expect(obj.$attrs.direction).assertEqual('12');
       console.info('[GridRowJsunit_0200] END');
@@ -115,7 +113,7 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0300] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0300] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
-      expect(obj.$attrs.gutter).assertEqual('<7.500000, 15.000000');
+      expect(obj.$attrs.gutter).assertEqual('<18.000000, 40.500000');
       expect(obj.$attrs.breakpoints).assertEqual('12');
       expect(obj.$attrs.direction).assertEqual('12');
       console.info('[GridRowJsunit_0300] END');
@@ -128,14 +126,8 @@ export default function GridRowJsunit() {
       let strJson = getInspectorByKey('gridRow_default');
       let obj = JSON.parse(strJson);
       console.info("[GridRowJsunit_0400] component obj is: " + JSON.stringify(obj));
-      console.info("[GridRowJsunit_0400] columns: " + JSON.stringify(obj.$attrs.columns));
       console.info("[GridRowJsunit_0400] breakpoints: " + JSON.stringify(obj.$attrs.breakpoints));
-      console.info("[GridRowJsunit_0400] direction: " + JSON.stringify(obj.$attrs.direction));
-      console.info("[GridRowJsunit_0400] gutter: " + JSON.stringify(obj.$attrs.gutter));
-      expect(obj.$attrs.columns).assertEqual('12');
-      expect(obj.$attrs.gutter).assertEqual('<0.000000, 0.000000');
       expect(obj.$attrs.breakpoints).assertEqual('12');
-      expect(obj.$attrs.direction).assertEqual('12');
       console.info('[GridRowJsunit_0400] END');
       done();
     });

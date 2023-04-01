@@ -24,13 +24,13 @@ export default function imageThreeJsunit() {
     beforeEach(async function (done) {
       console.info("imageThreeJsunit beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/imagethree',
+        uri: 'MainAbility/pages/imageThree',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get imageThreeJsunit state pages:" + JSON.stringify(pages));
-        if (!("imagethree" == pages.name)) {
+        if (!("imageThree" == pages.name)) {
           console.info("get imageThreeJsunit state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           console.info("push imageThreeJsunit success " + JSON.stringify(result));
@@ -46,53 +46,50 @@ export default function imageThreeJsunit() {
       console.info('imageThreeJsunit_0100 START');
       await CommonFunc.sleep(1000);
       // test the image complete Event
-      let driver = await UiDriver.create()
-      await CommonFunc.sleep(2000);
-      let textComponent = await driver.findComponent(BY.text('complete'));
-      let text = await textComponent.getText();
-      console.info('imageThreeJsunit_0100 text: ' + text);
-      expect(text).assertEqual('complete');
-      done();
-    });
-    
-    it('imageThreeJsunit_0200', 0, async function (done) {
-      console.info('imageThreeJsunit_0200 START');
       await CommonFunc.sleep(1000);
-      // test the image error event
-      globalThis.value.message.notify({name:'name',value:'1.png'})
-      await CommonFunc.sleep(3000);
-      let driver = await UiDriver.create()
-      let textComponent = await driver.findComponent(BY.key('error'));
-      let text = await textComponent.getText();
-      console.info('imageThreeJsunit_0200 text: ' + text);
-      expect(text).assertEqual('error');
+      let strJson = getInspectorByKey('complete');
+      let obj = JSON.parse(strJson);
+      console.info("[imageThreeJsunit_0100] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('complete');
       done();
     });
+
+    it('imageThreeJsunit_0200', 0, async function (done) {
+      console.info('imageThreeJsunit_0100 START');
+      await CommonFunc.sleep(1000);
+      // test the image finish Event
+      let strJson = getInspectorByKey('Finish');
+      let obj = JSON.parse(strJson);
+      console.info("[imageThreeJsunit_0200] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('init');
+      done();
+    });  
     
     it('imageThreeJsunit_0300', 0, async function (done) {
       console.info('imageThreeJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // test the image click event
       let driver = UiDriver.create();
-      let btn = await driver.findComponent(BY.key('click'));
+      let btn = await driver.findComponent(BY.key('image2'));
       await btn.click();
-      await CommonFunc.sleep(1000);
-      let textComponent = await driver.findComponent(BY.key('click'));
-      let text = await textComponent.getText();
-      console.info('imageThreeJsunit_0300 text: ' + text);
-      expect(text).assertEqual('click');
+      await CommonFunc.sleep(100);
+      let strJson = getInspectorByKey('click');
+      let obj = JSON.parse(strJson);
+      console.info("[imageThreeJsunit_0300] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('click');
       done();
     });
 
     it('imageThreeJsunit_0400', 0, async function (done) {
-      console.info('imageThreeJsunit_0100 START');
+      console.info('imageThreeJsunit_0200 START');
       await CommonFunc.sleep(1000);
-      // test the image finish Event
-      let driver = UiDriver.create();
-      let textComponent = await driver.findComponent(BY.key('Finish'));
-      let text = await textComponent.getText();
-      console.info('imageThreeJsunit_0400 text: ' + text);
-      expect(text).assertEqual('Finish');
+      // test the image error event
+      globalThis.value.message.notify({name:'imageName',value:'1.png'})
+      await CommonFunc.sleep(300);
+      let strJson = getInspectorByKey('error');
+      let obj = JSON.parse(strJson);
+      console.info("[imageThreeJsunit_0400] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('error');
       done();
     });
   })

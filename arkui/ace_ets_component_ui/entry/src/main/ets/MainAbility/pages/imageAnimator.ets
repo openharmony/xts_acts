@@ -56,23 +56,11 @@ struct ImageAnimatorExample {
       if (message.name == 'fixedSize') {
           this.fixedSize = message.value
       }
-      if (message.fillMode == 'fillMode') {
+      if (message.name == 'fillMode') {
           this.fillMode = message.value
       }
-      if (message.duration == 'duration') {
+      if (message.name == 'duration') {
           this.duration = message.value
-      }
-      if (message.widthT == 'widthT') {
-          this.widthT = message.value
-      }
-      if (message.heightT == 'heighT') {
-          this.heightT = message.value
-      }
-      if (message.top == 'top') {
-          this.top = message.value
-      }
-      if (message.left == 'left') {
-          this.left = message.value
       }
     }
     this.messageManager.registerCallback(callback)

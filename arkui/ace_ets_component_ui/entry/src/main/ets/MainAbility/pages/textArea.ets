@@ -106,9 +106,6 @@ struct TextAreaExample {
         .textAlign(this.textAlign)
         .caretColor(this.caretColor)
         .backgroundColor('#FFFFFF')
-        .inputFilter("shang",err => {
-           console.info("te")
-        })
         .copyOption(this.copyOption)
         .onChange((value: string) => {
           this.message1 = value

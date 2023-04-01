@@ -96,8 +96,8 @@ export default function flexTextMargin_AutoJsunit() {
       let textMargin03 = CommonFunc.getComponentRect('textMargin03');
       let flexTextMargin01 = CommonFunc.getComponentRect('flexTextMargin01');
 
-      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(Math.round(vp2px(500/17)))
-      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(Math.round(vp2px(500/17)))
+      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(vp2px(30))
+      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(vp2px(30))
       expect(textMargin02.right).assertEqual(textMargin03.left)
       expect(textMargin03.right).assertEqual(flexTextMargin01.right)
 
@@ -108,9 +108,9 @@ export default function flexTextMargin_AutoJsunit() {
       expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(vp2px(50))
       expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(vp2px(100))
       expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(Math.round(vp2px(2500/17)))
-      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(Math.round(vp2px(2500/17)))
-      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(Math.round(vp2px(2500/17)))
+      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1500 END');

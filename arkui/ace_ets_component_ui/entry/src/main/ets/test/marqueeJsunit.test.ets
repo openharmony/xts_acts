@@ -63,7 +63,7 @@ export default function marqueeJsunit() {
       console.info('marqueeJsunit_0200 START');
       // modify the type attribute normal value of marquee dynamically
       globalThis.value.message.notify({name:'fromStart',value:true})
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(200);
       // check the value of changed parameter
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
@@ -73,7 +73,7 @@ export default function marqueeJsunit() {
 
     it('marqueeJsunit_0300', 0, async function (done) {
       console.info('marqueeJsunit_0300 START');
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(100);
       // modify the values partly attribute illegal value of marguee dynamically
       globalThis.value.message.notify({name:'loop',value:-30})
       await CommonFunc.sleep(1000);
@@ -88,7 +88,7 @@ export default function marqueeJsunit() {
       console.info('marqueeJsunit_0400 START');
       // modify the type attribute normal value of marquee dynamically
       globalThis.value.message.notify({name:'step',value:50})
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(200);
       // check the value of changed parameter
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
@@ -138,7 +138,7 @@ export default function marqueeJsunit() {
       console.info('marqueeJsunit_0700 START');
       // modify the type attribute normal value of marquee dynamically
       globalThis.value.message.notify({name:'loop',value:2})
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(100);
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.loop).assertEqual('2');
@@ -148,13 +148,12 @@ export default function marqueeJsunit() {
     it('marqueeJsunit_0800', 0, async function (done) {
       console.info('marqueeJsunit_0800 START');
       // modify the type attribute normal value of marquee dynamically
-      globalThis.value.message.notify({name:'src',value:'starts rolling'})
-      await CommonFunc.sleep(2000);
+      globalThis.value.message.notify({name:'src',value:'Running Marquee starts rolling'})
+      await CommonFunc.sleep(200);
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.src).assertEqual('Running Marquee starts rolling');
       done();   
     });
-
   })
 }
