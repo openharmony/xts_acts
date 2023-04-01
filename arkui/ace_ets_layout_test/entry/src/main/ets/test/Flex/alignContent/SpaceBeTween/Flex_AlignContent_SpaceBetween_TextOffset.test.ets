@@ -81,7 +81,7 @@ export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
       expect(fourthText.bottom).assertEqual(flexContainer.bottom); //行首贴边行尾溢出
 
       expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(distanceBefore);
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(distanceBefore));
       console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1000] END');//其余组件行间距相等，未改变
       done();
     });
