@@ -30,7 +30,7 @@ export default function marqueeJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get marqueeJsunit state pages:" + JSON.stringify(pages));
-        if (!("marguee" == pages.name)) {
+        if (!("marquee" == pages.name)) {
           console.info("get marqueeJsunit state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           console.info("push marqueeJsunit success " + JSON.stringify(result));
