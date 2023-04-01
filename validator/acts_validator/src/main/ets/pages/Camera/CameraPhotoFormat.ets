@@ -174,6 +174,7 @@ struct cameraOrientation {
               CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj)
               Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
             })
+          .backgroundColor(Color.Black)
           Select(this.cameraList)
             .selected(this.cameraDeviceIndex)
             .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
@@ -189,6 +190,7 @@ struct cameraOrientation {
                 this.cameraListFn()
               })
             })
+            .backgroundColor(Color.Black)
         }.justifyContent(FlexAlign.SpaceEvenly)
 
         Text(`提示：不同拍照分辨率下进行拍摄，图片拍摄成功且与预览画面一致则选择pass，否则选择fail`)

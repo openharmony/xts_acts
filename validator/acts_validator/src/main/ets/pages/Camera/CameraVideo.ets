@@ -202,6 +202,7 @@ struct cameraOrientation {
               CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj)
               Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
             })
+            .backgroundColor(Color.Black)
           Select(this.cameraList)
             .selected(this.cameraDeviceIndex)
             .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
@@ -216,6 +217,7 @@ struct cameraOrientation {
               this.cameraDeviceIndex = index
               this.cameraInit()
             })
+            .backgroundColor(Color.Black)
           Select([{ value: 'YUV' }])
             .selected(0)
             .value('YUV')
@@ -229,6 +231,7 @@ struct cameraOrientation {
             .onSelect((index: number, value) => {
               Logger.info(this.tag, `onSelect format index: ${index}, value: ${value}`)
             })
+            .backgroundColor(Color.Black)
         }.size({ width: '100%', height: '50%' })
 
         Row() {
