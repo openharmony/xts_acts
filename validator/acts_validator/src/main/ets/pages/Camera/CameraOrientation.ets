@@ -74,7 +74,10 @@ struct cameraOrientation {
         value: `Camera ${index}`
       })
     }
+	Logger.info(this.tag, `cameraListFn testingFrequency: ${this.testingFrequency}`)
+    Logger.info(this.tag, `cameraListFn cameraListLength: ${this.cameraListLength}`)
     this.testingFrequency = this.cameraListLength * 4
+	Logger.info(this.tag, `cameraListFn testingFrequency: ${this.testingFrequency}`)
   }
 
   handleTakePicture = (assetUri: string) => {
@@ -87,6 +90,7 @@ struct cameraOrientation {
 	// @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
+	  Logger.info(this.tag, `onPageShow initCamera start`)
       this.cameraListFn()
     })
   }

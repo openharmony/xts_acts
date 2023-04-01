@@ -52,8 +52,8 @@ export struct CustomContainer {
         this.isEnabled = true
         this.Vue = false
         this.clickFrequency++
-		Logger.info(`qlw`, `clickFrequency: ${this.clickFrequency}`)
-		Logger.info(`qlw`, `testingFrequency: ${this.testingFrequency}`)
+        Logger.info(`qlw`, `clickFrequency: ${this.clickFrequency}`)
+        Logger.info(`qlw`, `testingFrequency: ${this.testingFrequency}`)
         if (this.clickFrequency === this.testingFrequency){
           router.back({
             url:this.Url,
