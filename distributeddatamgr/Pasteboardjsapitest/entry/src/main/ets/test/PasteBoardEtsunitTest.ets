@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import pasteboard from '@ohos.pasteboard'
 
 export default function pasteBoardJEtsunitTest() {
@@ -30,7 +30,7 @@ export default function pasteBoardJEtsunitTest() {
       * @tc.level     : Level 0
       */
     it('pasteboard_function_test1', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_0100 start')
+      console.info('SUB_pasteBoard_function_JS_API_0100 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
@@ -45,10 +45,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test1: systemPasteboard.setPasteData promise');
 
-          console.info('f_test1: Checks there is content in the pasteboard')
+          console.info('f_test1: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test1: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             var types = pasteData.getMimeTypes();
             console.info('f_test1: getMimeTypes = ' + types);
@@ -62,15 +62,16 @@ export default function pasteBoardJEtsunitTest() {
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('f_test1: Checks the pasteboard content');
-              var primaryText = pasteData1.getPrimaryText()
+              var primaryText = pasteData1.getPrimaryText();
+              expect(primaryText == textData).assertTrue;
               console.info('f_test1: primaryText = ' + primaryText);
 
               console.info('Checks pasteboard MAX_RECORD_NUM' + pasteboard.MAX_RECORD_NUM);
               expect(pasteboard.MAX_RECORD_NUM == 512).assertTrue();
 
-              console.info('Checks PasteDataProperty.localOnly')
-              var pasteDataProperty = pasteData1.getProperty()
-              console.info('Checks: localOnly = ' + pasteDataProperty.localOnly)
+              console.info('Checks PasteDataProperty.localOnly');
+              var pasteDataProperty = pasteData1.getProperty();
+              console.info('Checks: localOnly = ' + pasteDataProperty.localOnly);
 
 
               console.info('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
@@ -78,11 +79,11 @@ export default function pasteBoardJEtsunitTest() {
 
               console.info('f_test1: SUB_pasteBoard_function_JS_API_0100 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_0200
@@ -93,7 +94,7 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test2', 0, async function (done) {
-      console.info('f_test2: SUB_pasteBoard_function_JS_API_0200 start')
+      console.info('f_test2: SUB_pasteBoard_function_JS_API_0200 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
@@ -108,26 +109,28 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test2: systemPasteboard.setPasteData promise');
 
-          console.info('f_test2: Checks there is content in the pasteboard')
+          console.info('f_test2: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true).assertTrue();
 
             console.info('f_test2: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
               console.info('f_test2: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
               var pasteData1 = data;
+              var PrimaryText = pasteData1.getPrimaryText();
+              expect(PrimaryText ==textData ).assertTrue;
               var recordCount = pasteData1.getRecordCount();
               console.info('f_test2: recordCount=' + recordCount);
               expect(recordCount == 1).assertTrue();
 
               console.info('SUB_pasteBoard_function_JS_API_0200 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_0300
@@ -138,7 +141,7 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test3', 0, async function (done) {
-      console.info('f_test3: SUB_pasteBoard_function_JS_API_0300 start')
+      console.info('f_test3: SUB_pasteBoard_function_JS_API_0300 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
@@ -153,10 +156,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test3: systemPasteboard.setPasteData promise');
 
-          console.info('f_test3: Checks there is content in the pasteboard')
+          console.info('f_test3: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test3: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test3: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -165,20 +168,20 @@ export default function pasteBoardJEtsunitTest() {
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('f_test3: Checks the pasteboard content');
-              var primaryText = pasteData1.getPrimaryText()
+              var primaryText = pasteData1.getPrimaryText();
+              expect(primaryText ==textData ).assertTrue;
               console.info('f_test3: primaryText = ' + primaryText);
 
               console.info('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
-              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true ||
-              pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === false).assertTrue();
+              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true ).assertTrue();
 
               console.info('SUB_pasteBoard_function_JS_API_0300 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
       * @tc.number    SUB_pasteBoard_function_JS_API_0400
@@ -189,16 +192,16 @@ export default function pasteBoardJEtsunitTest() {
       * @tc.level     : Level 0
       */
     it('pasteboard_function_test4', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_0400 start')
+      console.info('SUB_pasteBoard_function_JS_API_0400 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
         console.info('f_test4: systemPasteboard.clear promise');
 
-        var textData = ''
+        var textData = '';
         for (var i = 0; i < 300; i++) {
           textData = textData + "A";
-        }
+        };
         console.info('f_test4: createPlainTextData textData = ' + textData);
         var pasteData = pasteboard.createPlainTextData(textData);
         console.info('f_test4: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
@@ -207,10 +210,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test4: systemPasteboard.setPasteData promise');
 
-          console.info('f_test4: Checks there is content in the pasteboard')
+          console.info('f_test4: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test4: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test4: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -219,21 +222,21 @@ export default function pasteBoardJEtsunitTest() {
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('f_test4: Checks the pasteboard content');
-              var primaryText = pasteData1.getPrimaryText()
+              var primaryText = pasteData1.getPrimaryText();
+              expect(primaryText ==textData ).assertTrue;
               console.info('f_test4: primaryText = ' + primaryText);
 
               console.info('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
-              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true ||
-              pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === false).assertTrue();
+              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true ).assertTrue();
               expect(pasteData1.getPrimaryMimeType() == pasteboard.MIMETYPE_TEXT_PLAIN).assertTrue();
 
               console.info('f_test4: SUB_pasteBoard_function_JS_API_0400 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
       * @tc.number    SUB_pasteBoard_function_JS_API_0500
@@ -244,16 +247,16 @@ export default function pasteBoardJEtsunitTest() {
       * @tc.level     : Level 0
       */
     it('pasteboard_function_test5', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_0500 start')
+      console.info('SUB_pasteBoard_function_JS_API_0500 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
         console.info('f_test5: systemPasteboard.clear promise');
 
-        var textData = ''
+        var textData = '';
         for (var i = 0; i < 301; i++) {
           textData = textData + "A";
-        }
+        };
         console.info('f_test5: createPlainTextData textData = ' + textData);
         var pasteData = pasteboard.createPlainTextData(textData);
         console.info('f_test5: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
@@ -262,10 +265,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test5: systemPasteboard.setPasteData promise');
 
-          console.info('f_test5: Checks there is content in the pasteboard')
+          console.info('f_test5: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test5: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test5: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -274,20 +277,20 @@ export default function pasteBoardJEtsunitTest() {
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('f_test5: Checks the pasteboard content');
-              var primaryText = pasteData1.getPrimaryText()
+              var primaryText = pasteData1.getPrimaryText();
+              expect(primaryText ==textData ).assertTrue;
               console.info('f_test5: primaryText = ' + primaryText);
 
               console.info('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
-              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true ||
-              pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === false).assertTrue();
+              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true ).assertTrue();
 
               console.info('SUB_pasteBoard_function_JS_API_0500 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_0600
@@ -298,13 +301,13 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test6', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_0600 start')
+      console.info('SUB_pasteBoard_function_JS_API_0600 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
         console.info('f_test6: systemPasteboard.clear promise');
 
-        var htmlText = '<html><head></head><body>Hello World!</body></html>'
+        var htmlText = '<html><head></head><body>Hello World!</body></html>';
         console.info('f_test6: createHtmlData htmlText = ' + htmlText);
         var pasteData = pasteboard.createHtmlData(htmlText);
         console.info('f_test6: createHtmlData pasteData = ' + JSON.stringify(pasteData));
@@ -313,10 +316,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test6: systemPasteboard.setPasteData promise');
 
-          console.info('f_test6: Checks there is content in the pasteboard')
+          console.info('f_test6: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test6: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test6: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -325,22 +328,21 @@ export default function pasteBoardJEtsunitTest() {
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('f_test6: Checks the pasteboard content');
-              var primaryHtml = pasteData1.getPrimaryHtml()
+              var primaryHtml = pasteData1.getPrimaryHtml();
               console.info('f_test6: getPrimaryHtml = ' + primaryHtml);
               expect(primaryHtml == htmlText).assertTrue();
 
               console.info('Checks there is a MIMETYPE_TEXT_HTML MIME type of data' + pasteboard.MIMETYPE_TEXT_HTML);
-              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === true ||
-              pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === false).assertTrue();
+              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === true ).assertTrue();
               console.info('f_test6: getPrimaryMimeType = ' + pasteData1.getPrimaryMimeType());
 
               console.info('SUB_pasteBoard_function_JS_API_0600 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_0700
@@ -351,13 +353,13 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test7', 0, async function (done) {
-      console.info('f_test7: SUB_pasteBoard_function_JS_API_0700 start')
+      console.info('f_test7: SUB_pasteBoard_function_JS_API_0700 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
         console.info('f_test7: systemPasteboard.clear promise');
 
-        var htmlText = ''
+        var htmlText = '';
         console.info('f_test7: createHtmlData htmlText = ' + htmlText);
         var pasteData = pasteboard.createHtmlData(htmlText);
         console.info('f_test7: createHtmlData pasteData = ' + JSON.stringify(pasteData));
@@ -366,24 +368,27 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test7: systemPasteboard.setPasteData promise');
 
-          console.info('f_test7: Checks there is content in the pasteboard')
+          console.info('f_test7: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test7: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
               console.info('f_test7: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
               var pasteData1 = data;
+               var primaryHtml = pasteData1.getPrimaryHtml();
+              console.info('f_test7: getPrimaryHtml = ' + primaryHtml);
+              expect(primaryHtml == htmlText).assertTrue();
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('SUB_pasteBoard_function_JS_API_0700 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_0800
@@ -394,13 +399,13 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test8', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_0800 start')
+      console.info('SUB_pasteBoard_function_JS_API_0800 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
         console.info('f_test8: systemPasteboard.clear promise');
 
-        var htmlText = 'Hello 中国!@#$%^&*()_+{}\?.'
+        var htmlText = 'Hello 中国!@#$%^&*()_+{}\?.';
         console.info('f_test8: createHtmlData htmlText = ' + htmlText);
         var pasteData = pasteboard.createHtmlData(htmlText);
         console.info('f_test8: createHtmlData pasteData = ' + JSON.stringify(pasteData));
@@ -409,28 +414,28 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test8: systemPasteboard.setPasteData promise');
 
-          console.info('f_test8: Checks there is content in the pasteboard')
+          console.info('f_test8: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test8: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test8: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
               console.info('f_test8: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
               var pasteData1 = data;
+              expect(pasteData1.getPrimaryHtml() == htmlText).assertTrue();
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('Checks there is a MIMETYPE_TEXT_HTML MIME type of data' + pasteboard.MIMETYPE_TEXT_HTML);
-              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === true ||
-              pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === false).assertTrue();
+              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === true ).assertTrue();
 
               console.info('SUB_pasteBoard_function_JS_API_0800 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_0900
@@ -441,13 +446,13 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test9', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_0900 start')
+      console.info('SUB_pasteBoard_function_JS_API_0900 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
         console.info('f_test9: systemPasteboard.clear promise');
 
-        var uriText = 'https://www.baidu.com/'
+        var uriText = 'https://www.baidu.com/';
         console.info('f_test9: createUriData uriText = ' + uriText);
         var pasteData = pasteboard.createUriData(uriText);
         console.info('f_test9: createUriData pasteData = ' + JSON.stringify(pasteData));
@@ -456,10 +461,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test9: systemPasteboard.setPasteData promise');
 
-          console.info('f_test9: Checks there is content in the pasteboard')
+          console.info('f_test9: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test9: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test9: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -468,21 +473,20 @@ export default function pasteBoardJEtsunitTest() {
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('f_test9: Checks the pasteboard content');
-              var primaryUri = pasteData1.getPrimaryUri()
+              var primaryUri = pasteData1.getPrimaryUri();
               console.info('f_test9: getPrimaryUri = ' + primaryUri);
               expect(primaryUri == uriText).assertTrue();
 
               console.info('Checks there is a MIMETYPE_TEXT_URI MIME type of data' + pasteboard.MIMETYPE_TEXT_URI);
-              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === true ||
-              pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === false).assertTrue();
+              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === true ).assertTrue();
 
               console.info('SUB_pasteBoard_function_JS_API_0900 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_1000
@@ -493,13 +497,13 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test10', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_1000 start')
+      console.info('SUB_pasteBoard_function_JS_API_1000 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
         console.info('f_test10: systemPasteboard.clear promise');
 
-        var uriText = ''
+        var uriText = '';
         console.info('f_test10: createUriData uriText = ' + uriText);
         var pasteData = pasteboard.createUriData(uriText);
         console.info('f_test10: createUriData pasteData = ' + JSON.stringify(pasteData));
@@ -508,24 +512,25 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test10: systemPasteboard.setPasteData promise');
 
-          console.info('f_test10: Checks there is content in the pasteboard')
+          console.info('f_test10: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test10: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test10: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
               console.info('f_test10: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
               var pasteData1 = data;
+              expect(pasteData1.getPrimaryUri() == uriText).assertTrue();
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('SUB_pasteBoard_function_JS_API_1000 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_1100
@@ -536,13 +541,13 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test11', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_1100 start')
+      console.info('SUB_pasteBoard_function_JS_API_1100 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
         console.info('f_test11: systemPasteboard.clear promise');
 
-        var uriText = 'Hello//'
+        var uriText = 'Hello//';
         console.info('f_test11: createUriData uriText = ' + uriText);
         var pasteData = pasteboard.createUriData(uriText);
         console.info('f_test11: createUriData pasteData = ' + JSON.stringify(pasteData));
@@ -551,28 +556,28 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test11: systemPasteboard.setPasteData promise');
 
-          console.info('f_test11: Checks there is content in the pasteboard')
+          console.info('f_test11: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test11: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test11: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
               console.info('f_test11: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
               var pasteData1 = data;
+              expect(pasteData1.getPrimaryUri() == uriText).assertTrue();
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
               console.info('Checks there is a MIMETYPE_TEXT_URI MIME type of data' + pasteboard.MIMETYPE_TEXT_URI);
-              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === true ||
-              pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === false).assertTrue();
+              expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === true).assertTrue();
 
               console.info('SUB_pasteBoard_function_JS_API_1100 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_1200
@@ -583,7 +588,7 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test12', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_1200 start')
+      console.info('SUB_pasteBoard_function_JS_API_1200 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
@@ -592,7 +597,7 @@ export default function pasteBoardJEtsunitTest() {
         var want = {
           bundleName: "com.example.myapplication8",
           abilityName: "com.example.myapplication8.MainAbility"
-        }
+        };
         console.info('f_test12: createWantData want.bundleName = ' + want.bundleName);
         console.info('f_test12: createWantData want.bundleName = ' + want.abilityName);
 
@@ -2079,7 +2084,7 @@ export default function pasteBoardJEtsunitTest() {
       * @tc.level     : Level 0
       */
     it('pasteboard_function_test39', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_3900 start')
+      console.info('SUB_pasteBoard_function_JS_API_3900 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
@@ -2094,10 +2099,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test39: systemPasteboard.setPasteData promise');
 
-          console.info('f_test39: Checks there is content in the pasteboard')
+          console.info('f_test39: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test39: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true).assertTrue();
 
             console.info('f_test39: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -2105,23 +2110,32 @@ export default function pasteBoardJEtsunitTest() {
               var pasteData1 = data;
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
-              console.info('f_test39: Sets the Property')
-              var pasteDataProperty = pasteData1.getProperty()
-              console.info('f_test39: timestamp = ' + pasteDataProperty.timestamp)
-              pasteDataProperty.additions["one"] = "Hello"
+              console.info('f_test39: Sets the Property');
+              var pasteDataProperty = pasteData1.getProperty();
+              console.info('f_test39: timestamp = ' + pasteDataProperty.timestamp);
+              pasteDataProperty.shareOption = 1;
+              pasteData1.setProperty(pasteDataProperty);
 
-              console.info('f_test39: Checks the Property')
-              var pasteDataProperty1 = pasteData1.getProperty()
-              console.info('f_test39: timestamp = ' + pasteDataProperty1.timestamp)
-              console.info('f_test39: additions = ' + pasteDataProperty1.additions["one"])
+              systemPasteboard.setPasteData(pasteData1).then(() => {
+                systemPasteboard.hasPasteData().then((data) => {
+                  expect(data == true).assertTrue();
+                  systemPasteboard.getPasteData().then((data) => {
+                    var pasteData2 = data;
+                    var pasteDataProperty1 = pasteData2.getProperty();
+                    expect(pasteDataProperty1.shareOption == 1).assertTrue();
+                    console.info('f_test39: timestamp = ' + pasteDataProperty1.timestamp);
+                    console.info('f_test39: shareOption = ' + pasteDataProperty1.shareOption);
 
-              console.info('SUB_pasteBoard_function_JS_API_3900 end');
-              done();
-            })
+                    console.info('SUB_pasteBoard_function_JS_API_3900 end');
+                    done();
+                  });
+                });
+              });
+            });
           });
         });
       });
-    })
+    });
 
     /**
       * @tc.number    SUB_pasteBoard_function_JS_API_4000
@@ -2132,7 +2146,7 @@ export default function pasteBoardJEtsunitTest() {
       * @tc.level     : Level 0
       */
     it('pasteboard_function_test40', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_4000 start')
+      console.info('SUB_pasteBoard_function_JS_API_4000 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
@@ -2147,10 +2161,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test40: systemPasteboard.setPasteData promise');
 
-          console.info('f_test40: Checks there is content in the pasteboard')
+          console.info('f_test40: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test40: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true).assertTrue();
 
             console.info('f_test40: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -2158,26 +2172,32 @@ export default function pasteBoardJEtsunitTest() {
               var pasteData1 = data;
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
-              console.info('f_test40: Sets the Property')
-              var pasteDataProperty = pasteData1.getProperty()
-              console.info('f_test40: timestamp = ' + pasteDataProperty.timestamp)
-              pasteDataProperty.additions["one"] = "Hello"
-              pasteDataProperty.tag = "Test"
+              console.info('f_test40: Sets the Property');
+              var pasteDataProperty = pasteData1.getProperty();
+              console.info('f_test40: timestamp = ' + pasteDataProperty.timestamp);
+              pasteDataProperty.tag = "Test";
+              pasteData1.setProperty(pasteDataProperty);
 
-              console.info('f_test40: Checks the Property')
-              var pasteDataProperty1 = pasteData1.getProperty()
-              console.info('f_test40: timestamp = ' + pasteDataProperty1.timestamp)
-              console.info('f_test40: additions = ' + pasteDataProperty1.additions["one"])
-              console.info('f_test40: tag = ' + pasteDataProperty1.tag)
-              console.info('f_test40: getTag = ' + pasteData1.getTag())
+              systemPasteboard.setPasteData(pasteData1).then(() => {
+                systemPasteboard.hasPasteData().then((data) => {
+                  expect(data == true).assertTrue();
+                  systemPasteboard.getPasteData().then((data) => {
+                    var pasteData2 = data;
+                    var pasteDataProperty1 = pasteData2.getProperty();
+                    expect(pasteDataProperty1.tag == "").assertTrue();
+                    console.info('f_test40: timestamp = ' + pasteDataProperty1.timestamp);
+                    console.info('f_test40: tag = ' + pasteDataProperty1.tag);
 
-              console.info('SUB_pasteBoard_function_JS_API_4000 end');
-              done();
-            })
+                    console.info('SUB_pasteBoard_function_JS_API_4000 end');
+                    done();
+                  });
+                });
+              });
+            });
           });
         });
       });
-    })
+    });
 
     /**
     * @tc.number    SUB_pasteBoard_function_JS_API_4100
@@ -2188,7 +2208,7 @@ export default function pasteBoardJEtsunitTest() {
     * @tc.level     : Level 0
     */
     it('pasteboard_function_test41', 0, async function (done) {
-      console.info('SUB_pasteBoard_function_JS_API_4100 start')
+      console.info('SUB_pasteBoard_function_JS_API_4100 start');
 
       var systemPasteboard = pasteboard.getSystemPasteboard();
       systemPasteboard.clear().then(() => {
@@ -2203,10 +2223,10 @@ export default function pasteBoardJEtsunitTest() {
         systemPasteboard.setPasteData(pasteData).then(() => {
           console.info('f_test41: systemPasteboard.setPasteData promise');
 
-          console.info('f_test41: Checks there is content in the pasteboard')
+          console.info('f_test41: Checks there is content in the pasteboard');
           systemPasteboard.hasPasteData().then((data) => {
             console.info('f_test41: systemPasteboard.hasPasteData promise data = ' + data);
-            expect(data === true || data === false).assertTrue();
+            expect(data === true ).assertTrue();
 
             console.info('f_test41: Checks the number of records');
             systemPasteboard.getPasteData().then((data) => {
@@ -2214,21 +2234,22 @@ export default function pasteBoardJEtsunitTest() {
               var pasteData1 = data;
               expect(pasteData1.getRecordCount() == 1).assertTrue();
 
-              console.info('f_test41: Clears the pasteBoard')
-              systemPasteboard.clear()
+              console.info('f_test41: Clears the pasteBoard');
+              systemPasteboard.clear();
 
-              console.info('f_test41: Checks the Property')
-              var pasteDataProperty1 = pasteData1.getProperty()
-              console.info('f_test41: timestamp = ' + pasteDataProperty1.timestamp)
-              console.info('f_test41: tag = ' + pasteDataProperty1.tag)
+              console.info('f_test41: Checks the Property');
+              var pasteDataProperty1 = pasteData1.getProperty();
+              expect(pasteDataProperty1.tag == "").assertTrue();
+              console.info('f_test41: timestamp = ' + pasteDataProperty1.timestamp);
+              console.info('f_test41: tag = ' + pasteDataProperty1.tag);
 
               console.info('SUB_pasteBoard_function_JS_API_4100 end');
               done();
-            })
+            });
           });
         });
       });
-    })
+    });
 
     /**
       * @tc.number    SUB_pasteBoard_function_JS_API_4200
