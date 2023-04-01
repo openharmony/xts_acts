@@ -55,6 +55,7 @@ group("ability_runtime") {
       "non_concurrent:non_concurrent",
       "registerjserror:registerjserror",
       "stage:stage",
+      "stopserviceextension:stopserviceextension",
       "want:want",
       "workercontextcover:workercontextcover",
     ]
