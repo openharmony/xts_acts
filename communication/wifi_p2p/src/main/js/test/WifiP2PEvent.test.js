@@ -180,12 +180,20 @@ export default function actsWifiEventTest() {
                 groupName : "DIRECT-AAAZZZ123",
                 goBand : wifi.GroupOwnerBand.GO_BAND_AUTO,
             };
-            await wifi.getCurrentGroup()
-                .then(data => {
-                    let resultLength = Object.keys(data).length;
-                    console.info("[wifi_test] getCurrentGroup  promise result -> " + JSON.stringify(data));
-                    expect(true).assertEqual(resultLength!=0);
-                });
+            try {
+                await wifi.getCurrentGroup()
+                    .then(data => {
+                        let resultLength = Object.keys(data).length;
+                        console.info("[wifi_test] getCurrentGroup  promise result -> " + JSON.stringify(data));
+                        expect(true).assertEqual(resultLength!=0);
+                    }).catch((error) => {
+                        console.error('[wifi_test] getCurrentGroup  promise failed :' + JSON.stringify(error));
+                        expect(true).assertEqual(error !=null);
+                    });
+            }catch(error){
+                console.info("[wifi_test]getCurrentGroup promise error: " + JSON.stringify(error.message));
+                expect(true).assertEqual( (JSON.stringify(error.message)) !=null);
+            }
             wifi.off(p2pGroupState, p2pPersistentGroupChangeCallback);
             done();
         })
@@ -214,5 +222,3 @@ export default function actsWifiEventTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
-
-

@@ -53,14 +53,6 @@ function resolveIP(ip) {
     return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
 }
 
-let wifiSecurityType = {
-    WIFI_SEC_TYPE_INVALID: 0,
-    WIFI_SEC_TYPE_OPEN: 1,
-    WIFI_SEC_TYPE_WEP: 2,
-    WIFI_SEC_TYPE_PSK: 3,
-    WIFI_SEC_TYPE_SAE: 4,
-}
-
 export default function actsWifiCandidateNetWorkTest() {
     describe('actsWifiCandidateNetWorkTest', function () {
         beforeAll(async function (done) {
@@ -88,7 +80,7 @@ export default function actsWifiCandidateNetWorkTest() {
                 "bssid": "22:9b:e6:48:1f:5c",
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
-                "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK,
+                "securityType": wifi.WifiSecurityType.WIFI_SEC_TYPE_PSK,
             };
             await wifi.addUntrustedConfig(wifiDeviceConfig)
                 .then(ret => {
@@ -104,6 +96,19 @@ export default function actsWifiCandidateNetWorkTest() {
                 }).catch((error) => {
                     console.error('[wifi_test]removeUntrustedConfig promise failed -> ' + JSON.stringify(error));
                 });
+
+            let WIFI_SEC_TYPE_INVALID = wifi.WifiSecurityType.WIFI_SEC_TYPE_INVALID;
+            console.info("[wifi_test]WIFI_SEC_TYPE_INVALID : " + JSON.stringify(WIFI_SEC_TYPE_INVALID));
+            expect(true).assertEqual( WIFI_SEC_TYPE_INVALID == 0);
+            let WIFI_SEC_TYPE_OPEN = wifi.WifiSecurityType.WIFI_SEC_TYPE_OPEN;
+            console.info("[wifi_test]WIFI_SEC_TYPE_OPEN : " + JSON.stringify(WIFI_SEC_TYPE_OPEN));
+            expect(true).assertEqual( WIFI_SEC_TYPE_OPEN == 1);
+            let WIFI_SEC_TYPE_WEP = wifi.WifiSecurityType.WIFI_SEC_TYPE_WEP;
+            console.info("[wifi_test]WIFI_SEC_TYPE_WEP : " + JSON.stringify(WIFI_SEC_TYPE_WEP));
+            expect(true).assertEqual( WIFI_SEC_TYPE_WEP == 2);
+            let WIFI_SEC_TYPE_SAE = wifi.WifiSecurityType.WIFI_SEC_TYPE_SAE;
+            console.info("[wifi_test]WIFI_SEC_TYPE_SAE : " + JSON.stringify(WIFI_SEC_TYPE_SAE));
+            expect(true).assertEqual( WIFI_SEC_TYPE_SAE == 4);
             done();
         })
 
@@ -120,7 +125,7 @@ export default function actsWifiCandidateNetWorkTest() {
                 "bssid": "22:9b:e6:48:1f:5c",
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
-                "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK,
+                "securityType": wifi.WifiSecurityType.WIFI_SEC_TYPE_PSK,
             }
             function addCandidate() {
                 return new Promise((resolve, reject) => {
