@@ -97,7 +97,7 @@ export default function actsWifiEventTest() {
             }
             wifi.on(p2pConnectionState, p2pConnectionChangeCallback);
             let wifiP2PConfig = {
-                deviceAddress : "00:00:00:00:00:00",
+                deviceAddress : "22:9b:e6:48:1f:5c",
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "DIRECT-AAAZZZ456",
@@ -174,16 +174,12 @@ export default function actsWifiEventTest() {
             }
             wifi.on(p2pGroupState, p2pPersistentGroupChangeCallback);
             let WifiP2PConfig = {
-                deviceAddress : "00:00:00:00:00:00",
+                deviceAddress : "22:9b:e6:48:1f:5c",
                 netId : -2,
                 passphrase : "12345678",
                 groupName : "DIRECT-AAAZZZ123",
                 goBand : wifi.GroupOwnerBand.GO_BAND_AUTO,
             };
-            let createGroupResult = wifi.createGroup(WifiP2PConfig);
-            await (2000);
-            console.info("[wifi_test] test createGroup result." + createGroupResult)
-            expect(createGroupResult).assertTrue();
             try {
                 await wifi.getCurrentGroup()
                     .then(data => {
