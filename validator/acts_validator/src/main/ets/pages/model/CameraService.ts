@@ -141,12 +141,14 @@ class CameraService {
                 this.videoConfig.videoSourceType = 0
             }
             Logger.info(this.tag, `cameraDeviceIndex success: ${cameraDeviceIndex}`)
-			previewObj.format = this.cameraOutputCapability.previewProfiles[0].format
-			Logger.info(this.tag, `previewObj format: ${previewObj.format}`)
             await this.releaseCamera()
             await this.getCameraManagerFn()
             await this.getSupportedCamerasFn()
             await this.getSupportedOutputCapabilityFn(cameraDeviceIndex)
+            if (previewObj){
+                previewObj.format = this.cameraOutputCapability.previewProfiles[0].format
+                Logger.info(this.tag, `previewObj format: ${previewObj.format}`)
+            }
             await this.createPreviewOutputFn(previewObj ? previewObj : this.cameraOutputCapability.previewProfiles[0], surfaceId)
             //            await this.createPhotoOutputFn(this.photoProfileObj)
             await this.createPhotoOutputFn(obj ? obj : this.cameraOutputCapability.photoProfiles[photoIndex?photoIndex:0])
