@@ -79,13 +79,15 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
     it('SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300 START`);
 
-        commonEventManager.removeStickyCommonEvent("sticky_event", (error) => {
-            if (error) {
+        commonEventManager.removeStickyCommonEvent("sticky_event", (err) => {
+            if (err) {
                 console.info(`${TAG} remove sticky event AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                 expect(err.code).assertEqual(202);
+                done()
             } else {
                 console.info("${TAG} remove sticky event AsyncCallback success");
                 expect(false).assertTrue()
+                done()
             }
         });
 
@@ -103,9 +105,11 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
         commonEventManager.removeStickyCommonEvent("sticky_event").then(() => {
             console.info("${TAG} remove sticky event AsyncCallback success");
             expect(false).assertTrue()
+            done()
         }).catch ((err) => {
             console.info(`${TAG} remove sticky event AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
+            done()
         });
 
         console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0400 END`);
