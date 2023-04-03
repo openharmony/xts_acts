@@ -70,4 +70,44 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
 
         console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0200 END`);
     });
+
+    /*
+     * @tc.number: SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300
+     * @tc.name: removeStickyCommonEvent
+     * @tc.desc: test function removeStickyCommonEvent
+     */
+    it('SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300 START`);
+
+        commonEventManager.removeStickyCommonEvent("sticky_event", (error) => {
+            if (error) {
+                console.info(`${TAG} remove sticky event AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
+                expect(err.code).assertEqual(202);
+            } else {
+                console.info("${TAG} remove sticky event AsyncCallback success");
+                expect(false).assertTrue()
+            }
+        });
+
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0300 END`);
+    });
+
+    /*
+     * @tc.number: SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0400
+     * @tc.name: removeStickyCommonEvent
+     * @tc.desc: test function removeStickyCommonEvent
+     */
+    it('SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0400', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0400 START`);
+
+        commonEventManager.removeStickyCommonEvent("sticky_event").then(() => {
+            console.info("${TAG} remove sticky event AsyncCallback success");
+            expect(false).assertTrue()
+        }).catch ((err) => {
+            console.info(`${TAG} remove sticky event AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(202);
+        });
+
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SYSTEM_API_TEST_0400 END`);
+    });
 }) } 
