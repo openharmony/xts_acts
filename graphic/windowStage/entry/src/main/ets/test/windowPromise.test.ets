@@ -132,6 +132,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, listenerOnFlag : ' + JSON.stringify(listenerOnFlag));
         if (listenerOnFlag) {
           expect(!!avoidAreaData).assertTrue();
+          tempWnd.off('systemAvoidAreaChange');
+          done();
         }
       })
       expect(!!tempWnd).assertTrue();
@@ -147,15 +149,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-
-      console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
       listenerOnFlag = true;
       await sleep(1000);
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
-      await tempWnd.off('systemAvoidAreaChange');
-      done();
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
     })
 
