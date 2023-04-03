@@ -117,7 +117,7 @@ struct audioOutputRouting {
               }
             }
             Row(){
-              Text('测试目的:\n当设备连接TypeC耳机时，音频路由是否正确切换\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持TypeC外设\n2. 按下播放按钮\n3. 连接华为TypeC耳机\n4. 拔出TypeC耳机\n5. 按下停止按钮\n测试标准：\n如果设备不支持TypeC耳机连接或者插拔TypeC耳机后接收到路由通知、路由显示正确，且连接TypeC后音频通过TypeC耳机播放，则用例pass').fontColor(Color.White).fontSize('18fp')
+              Text('测试目的:\n当设备连接TypeC耳机时，音频路由是否正确切换\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持TypeC外设\n2. 按下播放按钮\n3. 连接TypeC耳机\n4. 拔出TypeC耳机\n5. 按下停止按钮\n测试标准：\n如果设备不支持TypeC耳机连接或者插拔TypeC耳机后接收到路由通知、路由显示正确，且连接TypeC后音频通过TypeC耳机播放，则用例pass').fontColor(Color.White).fontSize('18fp')
 
             }
             Row(){
