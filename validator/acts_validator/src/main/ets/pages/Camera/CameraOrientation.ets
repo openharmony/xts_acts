@@ -61,6 +61,8 @@ struct cameraOrientation {
       this.imageRotation = this.imageRotation + 90
       if (this.imageRotation > 270 && this.clickFrequency > 3) {
         this.imageRotation = 0
+	  }
+	  if (this.cameraListLength > 1){
         this.cameraDeviceIndex = 1
         CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
       }
@@ -69,6 +71,7 @@ struct cameraOrientation {
 
   cameraListFn() {
     this.cameraListLength = CameraService.cameras.length
+	Logger.info(this.tag, `cameraListFn cameraListLength: ${this.cameraListLength}`)
     this.testingFrequency = this.cameraListLength * 4
 	Logger.info(this.tag, `cameraListFn testingFrequency: ${this.testingFrequency}`)
     for (let index = 0; index < this.cameraListLength; index++) {
@@ -84,7 +87,7 @@ struct cameraOrientation {
   }
 
   onPageShow() {
-    Logger.info(this.tag, `takePicture end, assetUri`)
+    Logger.info(this.tag, `cameraOrientation onPageShow`)
 	// @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
@@ -167,7 +170,7 @@ struct cameraOrientation {
         FillColor: $FillColor,
         name: $name,
         Vue: $Vue,
-        testingFrequency: this.testingFrequency,
+        testingFrequency: $this.testingFrequency,
         isEnabled: $isEnabled,
         clickFrequency: $clickFrequency
       }).height('10%').width('100%')
