@@ -4,6 +4,9 @@
             "push": [
                 "ActsHiAppEventCPPTest->/data/local/tmp/ActsHiAppEventCPPTest"
             ],
+            "post-push" : [
+                "chmod -R 777 /data/local/tmp/*"
+            ],
             "type": "PushKit"
         }
     ],
