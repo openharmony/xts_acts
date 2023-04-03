@@ -79,7 +79,7 @@ struct cameraOrientation {
 
   async cameraInit(obj?) {
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj, this.clickFrequency).then(() => {
-      this.resolution = CameraService.previewSizeResolution
+      this.resolution = CameraService.photoResolution
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
       this.cameraListFn()
     })

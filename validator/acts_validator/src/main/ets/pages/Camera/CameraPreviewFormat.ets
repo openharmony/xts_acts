@@ -63,7 +63,7 @@ struct cameraFormat {
   }
 
   async cameraInit(obj?) {
-    CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj).then(() => {
+    CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj).then(() => {
       this.resolution = CameraService.resolution
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
       this.cameraListFn()
@@ -170,7 +170,7 @@ struct cameraFormat {
                     "height": objH
                   }
                 }
-                CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj)
+                CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj)
                 Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
               })
               .backgroundColor(Color.Black)
