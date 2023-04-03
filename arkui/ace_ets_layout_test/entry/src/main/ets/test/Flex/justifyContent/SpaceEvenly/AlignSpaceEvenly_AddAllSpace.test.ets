@@ -77,9 +77,9 @@ export default function AlignSpaceEvenly_AddAllSpace() {
       expect(Math.round(SpaceEvenly_AddAllSpace_011.bottom - SpaceEvenly_AddAllSpace_011.top)).assertEqual(vp2px(50));
       expect(Math.round(SpaceEvenly_AddAllSpace_012.bottom - SpaceEvenly_AddAllSpace_012.top)).assertEqual(vp2px(100));
       expect(Math.round(SpaceEvenly_AddAllSpace_013.bottom - SpaceEvenly_AddAllSpace_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddAllSpace_011.right - SpaceEvenly_AddAllSpace_011.left)).assertEqual(vp2px(440/3));
-      expect(Math.round(SpaceEvenly_AddAllSpace_012.right - SpaceEvenly_AddAllSpace_012.left)).assertEqual(vp2px(440/3));
-      expect(Math.round(SpaceEvenly_AddAllSpace_013.right - SpaceEvenly_AddAllSpace_013.left)).assertEqual(vp2px(440/3));
+      expect(Math.round(SpaceEvenly_AddAllSpace_011.right - SpaceEvenly_AddAllSpace_011.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(SpaceEvenly_AddAllSpace_012.right - SpaceEvenly_AddAllSpace_012.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(SpaceEvenly_AddAllSpace_013.right - SpaceEvenly_AddAllSpace_013.left)).assertEqual(Math.round(vp2px(440/3)));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0600] END');
       done();
     });

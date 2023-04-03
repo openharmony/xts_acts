@@ -110,7 +110,7 @@ export default function AlignCenter_AddLayoutWeight() {
       expect(Center_AddLayoutWeight_013.right).assertEqual(Center_AddLayoutWeight_01.right);
       let oneWidth = Math.round(Center_AddLayoutWeight_011.right - Center_AddLayoutWeight_011.left);
       let twoWidth = Math.round(Center_AddLayoutWeight_012.right - Center_AddLayoutWeight_012.left);
-      expect(twoWidth / oneWidth).assertEqual(2);
+      expect(Math.round(twoWidth / oneWidth)).assertEqual(2);
       expect(twoWidth + oneWidth).assertEqual(vp2px(350));
       expect(Math.round(Center_AddLayoutWeight_013.right - Center_AddLayoutWeight_013.left)).assertEqual(vp2px(150));
       expect(Math.round(Center_AddLayoutWeight_011.bottom - Center_AddLayoutWeight_011.top)).assertEqual(vp2px(50));

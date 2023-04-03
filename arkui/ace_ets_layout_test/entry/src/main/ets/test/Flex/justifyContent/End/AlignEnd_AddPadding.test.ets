@@ -74,9 +74,9 @@ export default function AlignEnd_AddPadding() {
       expect(Math.round(End_AddPadding_011.bottom - End_AddPadding_011.top)).assertEqual(vp2px(50));
       expect(Math.round(End_AddPadding_012.bottom - End_AddPadding_012.top)).assertEqual(vp2px(100));
       expect(Math.round(End_AddPadding_013.bottom - End_AddPadding_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddPadding_011.right - End_AddPadding_011.left)).assertEqual(vp2px(440/3));
-      expect(Math.round(End_AddPadding_012.right - End_AddPadding_012.left)).assertEqual(vp2px(440/3));
-      expect(Math.round(End_AddPadding_013.right - End_AddPadding_013.left)).assertEqual(vp2px(440/3));
+      expect(Math.round(End_AddPadding_011.right - End_AddPadding_011.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(End_AddPadding_012.right - End_AddPadding_012.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(End_AddPadding_013.right - End_AddPadding_013.left)).assertEqual(Math.round(vp2px(440/3)));
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0300] END');
       done();
     });
