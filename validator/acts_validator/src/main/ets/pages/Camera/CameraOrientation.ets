@@ -170,7 +170,7 @@ struct cameraOrientation {
         FillColor: $FillColor,
         name: $name,
         Vue: $Vue,
-        testingFrequency: $this.testingFrequency,
+        testingFrequency: $testingFrequency,
         isEnabled: $isEnabled,
         clickFrequency: $clickFrequency
       }).height('10%').width('100%')
