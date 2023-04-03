@@ -69,9 +69,12 @@ struct Index {
                 })
             }
             Web({src:"www.example.com",controller:this.controller})
-            .onUrlLoadIntercept((event) => {
-                console.log('onUrlLoadIntercept ' + event.data.toString())
-                Utils.emitEvent(event.data.toString(),2)
+            .onLoadIntercept((event) => {
+                console.log('url:' + event.data.getRequestUrl())
+                Utils.emitEvent(event.data.getRequestUrl(),2)
+                console.log('isMainFrame:' + event.data.isMainFrame())
+                console.log('isRedirect:' + event.data.isRedirect())
+                console.log('isRequestGesture:' + event.data.isRequestGesture())
                 return false
             })
 
