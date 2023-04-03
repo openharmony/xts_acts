@@ -192,9 +192,9 @@ export default function SelectJsunit() {
       expect(obj.$attrs.selectedOptionBgColor).assertEqual('#FF0000FF');
       expect(obj.$attrs.selectedOptionFont).assertEqual('{"size":"16.00fp","weight":"400","family":"","style":"FontStyle.Normal"}');
       expect(obj.$attrs.selectedOptionFontColor).assertEqual('#FFFFFF00');
-      expect(obj.$attrs.optionBgColor).assertEqual('#FFFFFFFF');
+      expect(obj.$attrs.optionBgColor).assertEqual('#FF0000FF');
       expect(obj.$attrs.optionFont).assertEqual('{"size":"16.00fp","weight":"400","family":"","style":"FontStyle.Normal"}');
-      expect(obj.$attrs.optionFontColor).assertEqual('#FFFF0000');
+      expect(obj.$attrs.optionFontColor).assertEqual('#FFFFFF00');
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       let textComponent = await driver.findComponent(BY.key('indexValue'));

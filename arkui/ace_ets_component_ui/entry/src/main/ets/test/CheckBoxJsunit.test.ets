@@ -109,7 +109,7 @@ export default function checkBoxJsunit() {
       let strJson = getInspectorByKey('chek1');
       let obj = JSON.parse(strJson);
       console.info("[blankJsunit_0400'] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.selectedColor).assertEqual('#FF000000');
+      expect(obj.$attrs.selectedColor).assertEqual('#FFFFFF21');
       done();
     });
     

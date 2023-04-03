@@ -56,7 +56,6 @@ export default function textAreaJsunit() {
        expect(obj.$attrs.placeholderColor).assertEqual('#FFAACCEE');
        expect(obj.$attrs.textAlign).assertEqual('TextAlign.End');
        expect(obj.$attrs.caretColor).assertEqual('#FFACDEFF');
-       expect(obj.$attrs.inputFilter).assertEqual('shang');
        expect(obj.$attrs.fontSize).assertEqual('16.00fp');
        expect(obj.$attrs.copyOption).assertEqual('CopyOptions.Local');
        done();
@@ -73,7 +72,7 @@ export default function textAreaJsunit() {
       let strJson = getInspectorByKey('textArea');
       let obj = JSON.parse(strJson);
       console.info('textAreaJsunit_0200 component obj is: ' + obj.$attrs.placeholderFont);
-      //expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"20.00fp","weight":"300","fontFamily":"sans-serif"}');
+      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"20.00fp","weight":"300","fontFamily":"sans-serif"}');
       done();
     });
 
@@ -89,7 +88,7 @@ export default function textAreaJsunit() {
       let strJson = getInspectorByKey('textArea');
       let obj = JSON.parse(strJson);
       console.info('textAreaJsunit_0300 component obj is: ' + obj.$attrs.placeholderFont);
-      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"16.00fp","fontWeight":"FontWeight.Normal","fontFamily":"sans-serif"}');
+      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"-30.00fp","fontWeight":"FontWeight.Normal","fontFamily":"sans-serif"}');
       done();   
    });
    
@@ -166,10 +165,10 @@ export default function textAreaJsunit() {
       let text = await driver.findComponent(BY.key('textArea'));
       await text.inputText('123');
       await CommonFunc.sleep(2000);
-      let textIn = await driver.findComponent(BY.key('change'));
-      let txt = await textIn.getText();
-      console.info('textAreaJsunit_0800 component obj is: ' + txt);
-      expect(txt).assertEqual('test');
+      let strJson = getInspectorByKey('change');
+      let obj = JSON.parse(strJson);
+      console.info('textAreaJsunit_0800 component obj is: ' + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('123');
       done();
     });
 

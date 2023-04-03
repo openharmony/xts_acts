@@ -137,6 +137,8 @@ export default function RatingJsunit() {
       // Modify the indicator value of the Rating component
       globalThis.value.message.notify({name:'rating',value:1})
       await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'text',value:'no change'})
+      await CommonFunc.sleep(2000);
 
       let driver = await UiDriver.create()
       let textComponent1 = await driver.findComponent(BY.key('text'));
