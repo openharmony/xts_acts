@@ -25,7 +25,7 @@ ohos_hap_assist_suite("audioRenderInterrupt") {
   certificate_profile = "../signature/openharmony_sx.p7b"
   hap_name = "audioRenderInterrupt"
   subsystem_name = "multimedia"
-  part_name = "multimedia_audio_framework"
+  part_name = "audio_framework"
 }
 
 ohos_js_assets("audioRenderInterrupt_ts_assets") {
