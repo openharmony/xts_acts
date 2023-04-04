@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CanvasCustomContainer1';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct SetCircle {
@@ -22,7 +22,7 @@ struct SetCircle {
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasGlobalCompositeOperation';
-  @State StepTips: string = '操作步骤：点击不同的合成操作的方式'+'\n'+'预期结果：原本默认合成方式会随点击变化';
+  @State StepTips: string = '操作步骤：点击不同的合成操作的方式'+'\n'+'预期结果：原本默认合成方式会随点击变化（红色为先绘制内容，蓝色为后绘制内容）';
   @State Vue: boolean = false;
   @State num1: number = 0;
   @State num2: number = 0;
@@ -45,8 +45,17 @@ struct SetCircle {
           Text('').fontSize(0).border({width:0}).size({width:'0%',height:'2%'})
         }
         Row({space:10}){
-          Text('s-over').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-          .onClick(()=>{
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('s-over').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+          .onChange(()=>{
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 50, 50);
+            this.context.globalCompositeOperation = 'source-over';
+            this.context.fillStyle = 'rgb(0,0,255)';
+            this.context.fillRect(180, 180, 50, 50);
             this.context.clearRect(0, 10, 350, 300);
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 50, 50);
@@ -60,8 +69,17 @@ struct SetCircle {
               this.Vue = true;
             }
           })
-          Text('s-atop').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-            .onClick(()=>{
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('s-atop').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+            .onChange(()=>{
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-over';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
               this.context.clearRect(0, 10, 350, 300);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 50, 50);
@@ -75,8 +93,17 @@ struct SetCircle {
                 this.Vue = true;
               }
             })
-          Text('s-in').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-            .onClick(()=>{
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('s-in').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+            .onChange(()=>{
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-over';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
               this.context.clearRect(0, 10, 350, 300);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 50, 50);
@@ -90,8 +117,17 @@ struct SetCircle {
                 this.Vue = true;
               }
             })
-          Text('s-out').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-            .onClick(()=>{
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('s-out').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+            .onChange(()=>{
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-over';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
               this.context.clearRect(0, 10, 350, 300);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 50, 50);
@@ -107,8 +143,17 @@ struct SetCircle {
             })
         }
         Row({space:10}){
-          Text('d-over').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-          .onClick(()=> {
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('d-over').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+          .onChange(()=> {
+            this.context.clearRect(0, 10, 350, 300);
+            this.context.fillStyle = 'rgb(255,0,0)';
+            this.context.fillRect(150, 150, 50, 50);
+            this.context.globalCompositeOperation = 'source-over';
+            this.context.fillStyle = 'rgb(0,0,255)';
+            this.context.fillRect(180, 180, 50, 50);
             this.context.clearRect(0, 10, 350, 300);
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 50, 50);
@@ -122,8 +167,17 @@ struct SetCircle {
               this.Vue = true;
             }
           })
-          Text('d-atop').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-            .onClick(()=> {
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('d-atop').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+            .onChange(()=> {
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-over';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
               this.context.clearRect(0, 10, 350, 300);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 50, 50);
@@ -137,8 +191,17 @@ struct SetCircle {
                 this.Vue = true;
               }
             })
-          Text('d-in').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-            .onClick(()=> {
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('d-in').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+            .onChange(()=> {
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-over';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
               this.context.clearRect(0, 10, 350, 300);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 50, 50);
@@ -152,8 +215,17 @@ struct SetCircle {
                 this.Vue = true;
               }
             })
-          Text('d-out').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-            .onClick(()=> {
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('d-out').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+            .onChange(()=> {
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-over';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
               this.context.clearRect(0, 10, 350, 300);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 50, 50);
@@ -169,8 +241,17 @@ struct SetCircle {
             })
         }
         Row({space:10}){
-          Text('lighter').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-            .onClick(()=> {
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('lighter').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+            .onChange(()=> {
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-over';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
               this.context.clearRect(0, 10, 350, 300);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 50, 50);
@@ -184,8 +265,17 @@ struct SetCircle {
                 this.Vue = true;
               }
             })
-          Text('copy').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-            .onClick(()=> {
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('copy').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+            .onChange(()=> {
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-over';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
               this.context.clearRect(0, 10, 350, 300);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 50, 50);
@@ -199,8 +289,17 @@ struct SetCircle {
                 this.Vue = true;
               }
             })
-          Text('xor').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
-            .onClick(()=> {
+          Toggle({type:ToggleType.Button, isOn:false}){
+            Text('xor').fontSize(13)
+          }
+          .size({width:'18%',height:'20%'})
+            .onChange(()=> {
+              this.context.clearRect(0, 10, 350, 300);
+              this.context.fillStyle = 'rgb(255,0,0)';
+              this.context.fillRect(150, 150, 50, 50);
+              this.context.globalCompositeOperation = 'source-over';
+              this.context.fillStyle = 'rgb(0,0,255)';
+              this.context.fillRect(180, 180, 50, 50);
               this.context.clearRect(0, 10, 350, 300);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 50, 50);
@@ -223,11 +322,6 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 50, 50);
-            this.context.globalCompositeOperation = 'source-over';
-            this.context.fillStyle = 'rgb(0,0,255)';
-            this.context.fillRect(180, 180, 50, 50);
           })
       }.width('100%').height('70%')
     }.width('100%').height('80%').backgroundColor(Color.White)

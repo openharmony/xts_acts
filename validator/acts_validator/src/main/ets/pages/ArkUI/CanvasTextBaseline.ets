@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CanvasCustomContainer1';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct SetCircle {
@@ -43,6 +43,7 @@ struct SetCircle {
             this.context.moveTo(0, 120);
             this.context.lineTo(400, 120);
             this.context.stroke();
+            this.context.font = '60px sans-serif';
             this.context.textBaseline = 'top';
             this.context.fillText('Top', 160, 120);
             this.num1 = 1;
@@ -120,11 +121,8 @@ struct SetCircle {
             this.context.strokeStyle = '#0000ff';
             this.context.lineWidth = 2;
             this.context.moveTo(0, 120);
-            this.context.lineTo(400, 120);
+            this.context.lineTo(500, 120);
             this.context.stroke();
-            this.context.font = '60px sans-serif';
-            this.context.textBaseline = 'top';
-            this.context.fillText('Top', 160, 120);
           })
       }.width('100%').height('70%')
     }.width('100%').height('80%').backgroundColor(Color.White)

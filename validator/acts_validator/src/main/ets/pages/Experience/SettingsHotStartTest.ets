@@ -25,7 +25,7 @@ let SettingsColdPath = path + '/HotStartSetting.log';
 @Component
 struct CustomContainerUser {
   @State name: string = 'SettingsHotStart';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延低于1000ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延小于1000ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
@@ -48,10 +48,10 @@ struct CustomContainerUser {
               .fontColor(Color.White).fontSize('24fp')
           }
           Row(){
-            Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n' + `2.开启应用回退到桌面，保证此时后台应用存在`
-            + '\n' + '\n' + `3.双击执行.bat选择热启动>设置测试`+ '\n' + '\n' +`4.测试应用手动执行热启动后返回validator界面`
-            + '\n' + '\n' + '5.点击停止键观察测试结果' + '\n' + '\n' + `5.若热启动测试在规定时延内完成则通过测试`
-            + '\n' + '\n' + '\n' + '\n' )
+            Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入系统桌面`+ '\n' + '\n'
+            + `3.开启设置应用回退到桌面，保证此时后台应用存在` + '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择热启动>设置测试`+ '\n' + '\n' +
+            `5.测试应用手动执行热启动返回validator界面` + '\n' + '\n' + '6.点击结束键观察测试结果' + '\n' + '\n'
+            + `7.若所有热启动测试均在规定时延内完成则通过测试` + '\n' + '\n' + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
           }
           Row(){

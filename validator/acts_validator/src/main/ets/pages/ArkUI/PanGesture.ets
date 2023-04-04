@@ -12,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CustomContainer3';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct PanGestureExample {
   @State X: number = 0;
   @State Y: number = 0;
   @State name: string = 'PanGesture';
-  @State StepTips: string = '操作步骤：用至少一根手指拖动图像（最多十根手指）'+'\n'+'预期结果：图片正常拖动，偏移坐标显示正常';
+  @State StepTips: string = '操作步骤：手指拖动图像'+'\n'+'预期结果：图片正常拖动，偏移坐标显示正常';
   @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);

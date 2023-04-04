@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CanvasCustomContainer2';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct SetCircle {
@@ -36,13 +36,19 @@ struct SetCircle {
           .gesture(
           PanGesture({})
             .onActionStart((event: GestureEvent) => {
-              this.context.clearRect(0, 0, 600, 500);
               this.context.fillStyle = 'rgb(255,0,0)';
               this.context.fillRect(150, 150, 100, 100);
               console.info('Pan start');
               this.Vue = true;
             })
             .onActionUpdate((event: GestureEvent) => {
+              if(event.offsetX > 200){
+                event.offsetX = 200;
+              }
+              else if(event.offsetX < 20){
+                event.offsetX = 20;
+              }
+              this.context.clearRect(0, 0, 600, 500);
               this.X = event.offsetX;
               this.context.shadowBlur = this.X;
               this.context.shadowColor = 'rgb(0,0,0)';
