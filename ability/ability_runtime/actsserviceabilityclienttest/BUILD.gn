@@ -16,10 +16,6 @@ import("//test/xts/tools/build/suite.gni")
 group("serviceability") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "actsserviceabilityclienttest:ActsServiceAbilityClientTest",
-      "actsserviceabilityserverrelyhap:ActsServiceAbilityServerRelyHap",
-      "actsserviceabilityserversecondrelyhap:ActsServiceAbilityServerSecondRelyHap",
-    ]
+    deps = [ "actsserviceabilityclienttest:ActsServiceAbilityClientTest" ]
   }
 }

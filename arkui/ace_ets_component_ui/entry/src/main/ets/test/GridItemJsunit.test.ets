@@ -166,14 +166,12 @@ export default function GridItemJsunit() {
     it('GridJsunit_0500', 0, async function (done) {
       // Verify the columnsTemplate of Grid component
       console.info('[GridJsunit_0500] START');
-      let gridItem1 = CommonFunc.getComponentRect('gridItem1');
-      let left1 = gridItem1.left
-      let gridItem2 = CommonFunc.getComponentRect('gridItem1');
-      let right1 = gridItem2.right
+      let gridItem1 = CommonFunc.getComponentRect('0');
+      let right1 = gridItem1.right;
       await CommonFunc.sleep(1000);
-      let gridItem3 = CommonFunc.getComponentRect('3');
-      let right2 = gridItem3.right
-      expect(right2 - left1 - 4 * 6).assertEqual((right1 - left1) * 5);
+      let gridItem3 = CommonFunc.getComponentRect('1');
+      let left3 = gridItem3.left;
+      expect(left3 - right1).assertEqual(vp2px(4));
       console.info('[GridJsunit_0500] END');
       done();
     });
@@ -183,12 +181,10 @@ export default function GridItemJsunit() {
       console.info('[GridJsunit_0600] START');
       await CommonFunc.sleep(1000);
       let gridItem1 = CommonFunc.getComponentRect('0');
-      let top1 = gridItem1.top
-      let gridItem2 = CommonFunc.getComponentRect('gridItem3');
-      let top2 = gridItem2.top
-      let gridItem3 = CommonFunc.getComponentRect('gridItem3');
-      let bottom2 = gridItem3.bottom
-      expect((bottom2 - top2) * 4 + 7.5).assertEqual(bottom2 - top1 - 5 * 3);
+      let bottom1 = gridItem1.bottom;
+      let gridItem3 = CommonFunc.getComponentRect('4');
+      let top3 = gridItem3.top;
+      expect(top3 - bottom1).assertEqual(vp2px(5));
       console.info('[GridJsunit_0600] END');
       done();
     });
@@ -199,10 +195,10 @@ export default function GridItemJsunit() {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       let gridItem1 = CommonFunc.getComponentRect('gridItem1');
-      let right1 = gridItem1.right
+      let right1 = gridItem1.right;
       let gridItem2 = CommonFunc.getComponentRect('0');
-      let left1 = gridItem2.left
-      expect(left1 - right1).assertEqual(6);
+      let left1 = gridItem2.left;
+      expect(left1 - right1).assertEqual(vp2px(4));
       console.info('[GridJsunit_0700] END');
       done();
     });
@@ -216,10 +212,10 @@ export default function GridItemJsunit() {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       let gridItem1 = CommonFunc.getComponentRect('gridItem1');
-      let bottom1 = gridItem1.bottom
+      let bottom1 = gridItem1.bottom;
       let gridItem2 = CommonFunc.getComponentRect('gridItem3');
-      let top1 = gridItem2.top
-      expect(top1 - bottom1).assertEqual(7.5);
+      let top1 = gridItem2.top;
+      expect(top1 - bottom1).assertEqual(vp2px(5));
       console.info('[GridJsunit_0800] END');
       done();
     });
