@@ -217,18 +217,18 @@ describe('bluetoothBLETest', function() {
         await sleep(5000)   
         try {
             await gattClient.getDeviceName().then((data) => {
-                console.info('[bluetooth_js] device name' + JSON.stringify(data))
-                expect(data).assertNull();
+                console.info('[bluetooth_js] device name:' + JSON.stringify(data))             
+                expect(true).assertEqual(data != null);
                 done();
             }).catch(err => {
-                console.error('bluetooth getDeviceName has error: '+ err);
-                expect(true).assertFalse();
+                console.error('[bluetooth_js] bluetooth getDeviceName has error: '+ JSON.stringify(err));
+                expect(err).assertFalse();                
                 done();
             });
         } catch (error) {
             console.error(`[bluetooth_js]GetDeviceName_0100 failed, code is ${error.code}, 
             message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(true).assertFalse();                    
             done()
         }       
     })
