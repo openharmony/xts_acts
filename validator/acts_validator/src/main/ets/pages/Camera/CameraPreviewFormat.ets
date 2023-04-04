@@ -63,7 +63,7 @@ struct cameraFormat {
   }
 
   async cameraInit(obj?) {
-    CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj).then(() => {
+    CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj).then(() => {
       this.resolution = CameraService.resolution
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
       this.cameraListFn()
@@ -170,9 +170,10 @@ struct cameraFormat {
                     "height": objH
                   }
                 }
-                CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj)
+                CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj)
                 Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
               })
+              .backgroundColor(Color.Black)
             Select(this.cameraList)
               .selected(this.cameraDeviceIndex)
               .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
@@ -186,6 +187,7 @@ struct cameraFormat {
                 this.cameraDeviceIndex = index
                 this.cameraInit()
               })
+              .backgroundColor(Color.Black)
           }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
 
           Row() {
@@ -201,6 +203,7 @@ struct cameraFormat {
               .onSelect((index: number, value) => {
                 Logger.info(this.tag, `onSelect format index: ${index}, value: ${value}`)
               })
+              .backgroundColor(Color.Black)
             Button('下一个')
               .borderRadius(8)
               .backgroundColor(0x317aff)
