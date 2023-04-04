@@ -77,7 +77,8 @@ class CameraService {
     }
     private videoOutputStopBol: boolean = true
     resolution: any = null
-    previewSizeResolution: any = null
+    photoResolution: any = null
+	videoResolution: any = null
 
     constructor() {
         try {
@@ -132,7 +133,7 @@ class CameraService {
         }
     }
 
-    async initCamera(surfaceId: number, cameraDeviceIndex: number, obj?, photoIndex?) {
+    async initCamera(surfaceId: number, cameraDeviceIndex: number, obj?, photoIndex?, previewObj?) {
         try {
             if (deviceInfo.deviceType === 'default') {
                 this.videoConfig.videoSourceType = 1
@@ -144,8 +145,11 @@ class CameraService {
             await this.getCameraManagerFn()
             await this.getSupportedCamerasFn()
             await this.getSupportedOutputCapabilityFn(cameraDeviceIndex)
-            //            await this.createPreviewOutputFn(obj ? obj : this.photoProfileObj, surfaceId)
-            await this.createPreviewOutputFn(this.cameraOutputCapability.previewProfiles[0], surfaceId)
+            if (previewObj){
+                previewObj.format = this.cameraOutputCapability.previewProfiles[0].format
+                Logger.info(this.tag, `previewObj format: ${previewObj.format}`)
+            }
+            await this.createPreviewOutputFn(previewObj ? previewObj : this.cameraOutputCapability.previewProfiles[0], surfaceId)
             //            await this.createPhotoOutputFn(this.photoProfileObj)
             await this.createPhotoOutputFn(obj ? obj : this.cameraOutputCapability.photoProfiles[photoIndex?photoIndex:0])
             await this.createCameraInputFn(this.cameras[cameraDeviceIndex])
@@ -441,8 +445,9 @@ class CameraService {
         this.cameraOutputCapability = this.cameraManager.getSupportedOutputCapability(this.cameras[cameraDeviceIndex])
         let previewSize = []
         let photoSize = []
+		let videoSize = []
         this.cameraOutputCapability.previewProfiles.forEach((item, index) => {
-//            Logger.info(this.tag, `cameraOutputCapability previewProfiles index: ${index}, item:` + JSON.stringify(item))
+            Logger.info(this.tag, `cameraOutputCapability previewProfiles index: ${index}, item:` + JSON.stringify(item))
             previewSize.push({
                 value: `${item.size.width}x${item.size.height}`
             })
@@ -453,12 +458,19 @@ class CameraService {
                 value: `${item.size.width}x${item.size.height}`
             })
         })
+        this.cameraOutputCapability.videoProfiles.forEach((item, index) => {
+            Logger.info(this.tag, `cameraOutputCapability videoProfiles index: ${index}, item:` + JSON.stringify(item))
+            videoSize.push({
+                value: `${item.size.width}x${item.size.height}`
+            })
+        })
         Logger.info(this.tag, `cameraOutputCapability previewProfiles:` + JSON.stringify(this.cameraOutputCapability.previewProfiles))
         Logger.info(this.tag, `cameraOutputCapability photoProfiles:` + JSON.stringify(this.cameraOutputCapability.photoProfiles))
         Logger.info(this.tag, `cameraOutputCapability videoProfiles:` + JSON.stringify(this.cameraOutputCapability.videoProfiles))
         Logger.info(this.tag, `cameraOutputCapability previewProfiles previewSize:` + JSON.stringify(previewSize))
         this.resolution = previewSize
-        this.previewSizeResolution = photoSize
+        this.photoResolution = photoSize
+		this.videoResolution = videoSize
         return previewSize
     }
     // 释放会话及其相关参数
