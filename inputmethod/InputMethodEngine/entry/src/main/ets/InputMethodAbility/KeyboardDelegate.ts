@@ -38,6 +38,16 @@ export class KeyboardDelegate {
     public onCreate(): void {
         this.initWindow();
         let that = this;
+        inputMethodAbility.on("inputStop", () => {
+            try{
+                that.mContext.destroy((err) => {
+                    console.info(TAG + '====>inputMethodAbility destroy err:' + JSON.stringify(err));
+                })
+            }catch(err){
+                console.info(TAG + '====>inputMethodAbility destroy catch err:' + JSON.stringify(err));
+                console.info(TAG + '====>inputMethodAbility destroy catch err:' + err);
+            }
+        })
 
         function subscriberCallback(err, data) {
             console.debug(TAG + '====>receive event err:' + JSON.stringify(err));
