@@ -50,7 +50,7 @@ struct CheckboxExample {
           } else {
              this.selectedColor = "#000000"
           }
-        }).key("check1").id('chek1')
+        }).key('chek1')
       Checkbox({name: 'checkbox2',  group: 'checkboxGroup'})
         .select(false)
         .selectedColor(0x39a2db)

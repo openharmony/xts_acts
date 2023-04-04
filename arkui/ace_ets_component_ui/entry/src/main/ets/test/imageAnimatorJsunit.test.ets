@@ -76,19 +76,21 @@ export default function imageAniamtorJsunit() {
       let strJson = getInspectorByKey('imageAnimator');
       let obj = JSON.parse(strJson);
       console.info('[imageAniamtorJsunit_0200] component obj is: ' + obj.$attrs.state);
-      //expect(obj.$attrs.state).assertEqual('AnimationStatus.Running');
+      expect(obj.$attrs.state).assertEqual('AnimationStatus.Running');
+
       globalThis.value.message.notify({name:'state',value:AnimationStatus.Paused})
-      await CommonFunc.sleep(5000);
+      await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('imageAnimator');
       let obj2 = JSON.parse(strJson2);
       console.info('[imageAniamtorJsunit_0200] component obj2 is: ' + obj2.$attrs.state);
-      //expect(obj2.$attrs.state).assertEqual('AnimationStatus.Paused');
+      expect(obj2.$attrs.state).assertEqual('AnimationStatus.Paused');
+
       globalThis.value.message.notify({name:'state',value:AnimationStatus.Stopped})
-      await CommonFunc.sleep(5000);
+      await CommonFunc.sleep(1000);
       let strJson3 = getInspectorByKey('imageAnimator');
       let obj3 = JSON.parse(strJson3);
       console.info('[imageAniamtorJsunit_0200] component obj3 is: ' + obj3.$attrs.state);
-      //expect(obj3.$attrs.state).assertEqual('AnimationStatus.Stopped');
+      expect(obj3.$attrs.state).assertEqual('AnimationStatus.Stopped');
       console.info('[imageAniamtorJsunit_0200] END');
       done();
     });
@@ -178,13 +180,15 @@ export default function imageAniamtorJsunit() {
       expect(btn != null).assertTrue();
       await btn.click();
       await CommonFunc.sleep(1000);
-      let textComponent = await driver.findComponent(BY.key('t1'));
-      let text = await textComponent.getText();
-      expect(text).assertEqual('start');
+      let strJson = getInspectorByKey('t1');
+      let obj = JSON.parse(strJson);
+      console.info("[imageAniamtorJsunit_0700] obj: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('start');
       await CommonFunc.sleep(3000);
-      let textComponent1 = await driver.findComponent(BY.key('t5'));
-      let text1 = await textComponent1.getText();
-      expect(text1).assertEqual('onFinish');
+      let strJson1 = getInspectorByKey('t5');
+      let obj1 = JSON.parse(strJson1);
+      console.info("[imageAniamtorJsunit_0700] obj1: " + JSON.stringify(obj1));
+      expect(obj1.$attrs.content).assertEqual('onFinish');
       console.info('imageAniamtorJsunit_0700 END');
       done();
     });
@@ -201,7 +205,7 @@ export default function imageAniamtorJsunit() {
       let btn2 = await driver.findComponent(ON.id('start'));
       expect(btn2 != null).assertTrue();
       await btn2.click();
-      await CommonFunc.sleep(1000); 
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('t3');
       let obj = JSON.parse(strJson);
       console.info('imageAnimatorJsunit_0800 component obj is: '+ obj.$attrs.content);
