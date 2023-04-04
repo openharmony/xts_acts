@@ -229,6 +229,9 @@ struct IndexPage {
     let StartTime = String.fromCharCode.apply(null, new Uint8Array(buf));
     let Index = StartTime.indexOf(';');
     let starttime = StartTime.substring(0,Index);
+    if(starttime === ''){
+      starttime = '*'
+    }
     let ArkUIReport;
     let AudioReport;
     let CameraReport;
