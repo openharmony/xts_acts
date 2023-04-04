@@ -1204,7 +1204,7 @@ describe('intlTest', function () {
         let numfmt = new Intl.NumberFormat('en-CN', { style: 'percent', maximumFractionDigits: 2,
             minimumIntegerDigits: 7 });
         console.log('formatNumber_test_2300 ' + numfmt.format(123456.789));
-        expect(numfmt.format(123456.789)).assertEqual('0,123,456.79%');
+        expect(numfmt.format(123456.789)).assertEqual('12,345,678.9%');
     })
 
     /* *
