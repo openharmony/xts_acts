@@ -69,6 +69,19 @@ export default function inputMethodAbility() {
       }
     })
 
+    afterAll(async (done) => {
+      try {
+        await inputMethod.switchInputMethod(inputServer);
+        console.info("====>afterAll: inputMethodStageJSUnit switchInputMethod success" + JSON.stringify(inputServer));
+        setTimeout(() => {
+          console.info("====>afterAll: inputMethodStageJSUnit switchInputMethod success");
+          done();
+        }, 2000)
+      } catch (err) {
+        console.info("====>afterAll: inputMethodStageJSUnit fail" + JSON.stringify(err));
+      }
+    })
+
     it('inputMethodEngine_test_001', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED;
       console.info("====>inputMethodEngine_test_001 result:" + keyType);
