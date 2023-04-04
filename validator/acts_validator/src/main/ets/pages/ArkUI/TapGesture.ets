@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CustomContainer4';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct TapGestureExample {
   @State value: string = '';
   @State name: string = 'TapGesture';
-  @State StepTips: string = '操作步骤：用至少一根手指连续双击图像（最多十根手指）'+'\n'+'预期结果：双击图片后文本提示正常弹出';
+  @State StepTips: string = '操作步骤：手指连续双击图像'+'\n'+'预期结果：双击图片后文本提示正常弹出';
   @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);

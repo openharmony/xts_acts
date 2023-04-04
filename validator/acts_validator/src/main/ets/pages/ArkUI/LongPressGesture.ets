@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CustomContainer2';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct LongPressGestureExample {
   @State X: number = 0;
   @State name: string = 'LongPressGesture';
-  @State StepTips: string = '操作步骤：用至少一根手指长按图像（最多十根手指）'+'\n'+'预期结果：长按动作触发计数增加';
+  @State StepTips: string = '操作步骤：手指长按图像'+'\n'+'预期结果：长按动作触发计数增加，显示计数可大于10';
   @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
@@ -36,7 +36,9 @@ struct LongPressGestureExample {
         .onAction((event: GestureEvent) => {
           if (event.repeat) {
             this.X++;
-            this.Vue = true;
+            if(this.X >= 10){
+              this.Vue = true;
+            }
           }
         })
         .onActionEnd(() => {

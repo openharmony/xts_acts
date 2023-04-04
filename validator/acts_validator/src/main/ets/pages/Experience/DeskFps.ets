@@ -26,7 +26,7 @@ let Xpath = path + '/DeskFps.log'
 @Component
 struct CustomContainerUser {
   @State name: string = 'DeskFps';
-  @State StepTips: string = '操作步骤：根据操作提示滑动系统桌面测试帧率'+'\n'+'预期结果：帧率高于54帧测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示滑动系统桌面测试帧率'+'\n'+'预期结果：帧率大于54帧测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State Fps: string = '0';
@@ -44,9 +44,9 @@ struct CustomContainerUser {
               .fontColor(Color.White).fontSize('24fp')
           }
           Row(){
-            Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n'
-            + `2.双击执行.bat选择帧率>桌面`+ '\n' + '\n' +`3.左右滑动系统桌面连续10s以上` + '\n' + '\n'
-            + '4.回到DeskFps测试项点击停止键' + '\n' + '\n' + `5.若测试最高帧率大于54帧则通过测试`
+            Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入系统桌面`+ '\n' + '\n'
+            + `3.工作台运行’点击启动测试.bat‘选择帧率>桌面`+ '\n' + '\n' +`4.左右滑动系统桌面连续10s以上` + '\n' + '\n'
+            + '5.回到DeskFps测试项点击结束键' + '\n' + '\n' + `6.若测试最高帧率大于54帧则通过测试`
             + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
           }
