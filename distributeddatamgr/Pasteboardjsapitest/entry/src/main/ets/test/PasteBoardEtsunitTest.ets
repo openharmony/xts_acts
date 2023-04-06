@@ -2139,10 +2139,7 @@ export default function pasteBoardJEtsunitTest() {
                   });
                 });
               });
-
-              console.info('SUB_pasteBoard_function_JS_API_3900 end');
-              done();
-            })
+            });
           });
         });
       });
