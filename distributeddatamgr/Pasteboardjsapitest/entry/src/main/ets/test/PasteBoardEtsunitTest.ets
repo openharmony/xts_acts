@@ -2195,7 +2195,7 @@ export default function pasteBoardJEtsunitTest() {
                   systemPasteboard.getPasteData().then((data) => {
                     var pasteData2 = data;
                     var pasteDataProperty1 = pasteData2.getProperty();
-                    expect(pasteDataProperty1.tag = "Test").assertTrue();
+                    expect(pasteDataProperty1.tag == "Test").assertTrue();
                     console.info('f_test40: timestamp = ' + pasteDataProperty1.timestamp);
                     console.info('f_test40: tag = ' + pasteDataProperty1.tag);
 
