@@ -145,6 +145,9 @@ export async function startPromise(avRecorder, recorderTime) {
     }).catch((err) => {
         console.info('start failed and catch error is ' + err.message);
     });
+    if (recorderTime != undefined) {
+         await sleep(recorderTime);
+    }
 }
 
 export function pauseCallback(avRecorder) {
