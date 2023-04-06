@@ -20,6 +20,7 @@ import commonEvent from '@ohos.commonEvent';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 
 const TAG = "ContinuousTaskJsTest ";
+let subscribe_;
 
 export default function ContinuousTaskJsTest() {
 describe("ContinuousTaskJsTest", function () {
@@ -59,7 +60,8 @@ describe("ContinuousTaskJsTest", function () {
         commonEvent.createSubscriber(subscribeInfo, (err, subscriber) => {
             if (subscriber !== null && subscriber !== undefined) {
                 console.info(TAG + "Subscribe begin");
-                commonEvent.subscribe(subscriber, (err, data) => {
+                subscribe_ = subscriber;
+                commonEvent.subscribe(subscribe_, (err, data) => {
                     if (data !== null && data !== undefined) {
                         console.info(TAG + "Get comment event: " + JSON.stringify(data));
                         if (data.event === event) {
