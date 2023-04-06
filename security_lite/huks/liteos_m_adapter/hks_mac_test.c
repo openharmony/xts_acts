@@ -33,7 +33,153 @@
 
 #define TEST_TASK_STACK_SIZE      0x2000
 #define WAIT_TO_TEST_DONE         4
+#define CAL_ARRAY_SIZE(arr) ((sizeof(arr)) / (sizeof((arr)[0])))
+//*********************************************
+#define SINGLE_PRINT_LENGTH 50
+//*********************************************
 
+//******************************************************
+static char IntToAscii(uint8_t in_num)
+{
+    if (in_num <= 9) {
+        return (char)('0' + in_num);
+    }
+    return (char)('A' + in_num - 10);
+}
+
+static int32_t BufferToAscii(uint8_t* src, uint32_t src_size, char* dst, uint32_t* dst_size)
+{
+    const uint32_t ascii_len = src_size * 2 + 1;
+    if (*dst_size < ascii_len) {
+        printf("buffer is too samll.");
+        return -1;
+    }
+    for (uint32_t i = 0; i < src_size; i++) {
+        dst[2 * i] = IntToAscii(src[i] >> 4);/* take 4 high-order digits*/
+        dst[2 * i + 1] = IntToAscii(src[i] & 0b00001111); /*take 4 low-order digits*/
+    }
+
+    dst[ascii_len - 1] = '\0';
+    *dst_size = ascii_len;
+    return 0;
+}
+
+static void printBuffer(uint8_t* buffer, uint32_t buffer_size)
+{
+    uint32_t index = 0;
+    uint32_t print_count = buffer_size / SINGLE_PRINT_LENGTH;
+    for (uint32_t i = 0; i < (print_count + 1); i++) {
+        char chars[SINGLE_PRINT_LENGTH * 2 + 1] = { 0 };
+        uint32_t char_size = SINGLE_PRINT_LENGTH * 2 + 1;
+        BufferToAscii(buffer + index, (i == print_count) ? buffer_size % SINGLE_PRINT_LENGTH : SINGLE_PRINT_LENGTH,
+                      chars, &char_size);
+        printf("buff[%2u] size[%2u]: \"%s\"", i, (char_size - 1) / 2, chars);
+        printf("\n");
+        index += SINGLE_PRINT_LENGTH;
+    }
+}
+
+static uint8_t CharToHex(char c)
+{
+    if ((c >= 'A') && (c <= 'F')) {
+        return (c - 'A' + 10);
+    } else if ((c >= 'a') && (c <= 'f')) {
+        return (c - 'a' + 10);
+    } else if ((c >= '0') && (c <= '9')) {
+        return (c - '0');
+    } else {
+        return 16;
+    }
+}
+
+int32_t HexStringToByteForTest(const char *hexStr, uint8_t *byte,
+                               uint32_t byteLen)
+{
+    if (byte == NULL || hexStr == NULL) {
+        return -1;
+    }
+    uint32_t realHexLen = strlen(hexStr);
+    /* even number or not */
+    if (realHexLen % 2 != 0 || byteLen < realHexLen / 2) {
+        return -1;
+    }
+
+    for (uint32_t i = 0; i < realHexLen / 2; i++) {
+        uint8_t high = CharToHex(hexStr[i * 2]);
+        uint8_t low = CharToHex(hexStr[i * 2 + 1]);
+        if (high == 16 || low == 16) {
+            return -1;
+        }
+        /* 4: Set the high nibble */
+        byte[i] = high << 4;
+        /* Set the low nibble */
+        byte[i] |= low;
+    }
+    return 0;
+}
+
+static int32_t ConstructParamSet(struct HksParamSet **out, const struct HksParam *inParam,
+    const uint32_t inParamNum)
+{
+    struct HksParamSet *paramSet = NULL;
+    int32_t ret = HksInitParamSet(&paramSet);
+    if (ret != HKS_SUCCESS) {
+        return HKS_ERROR_MALLOC_FAIL;
+    }
+
+    ret = HksAddParams(paramSet, inParam, inParamNum);
+    if (ret != HKS_SUCCESS) {
+        HksFreeParamSet(&paramSet);
+        return HKS_ERROR_MALLOC_FAIL;
+    }
+
+    ret = HksBuildParamSet(&paramSet);
+    if (ret != HKS_SUCCESS) {
+        HksFreeParamSet(&paramSet);
+        return HKS_ERROR_MALLOC_FAIL;
+    }
+
+    *out = paramSet;
+    return HKS_SUCCESS;
+}
+
+static int32_t BaseTestMacAnswer()
+{
+    char mainKey[] = "8DD3C70014857C93F2B3B131892BB67662CD7B41D5D0D1E28CC60480975050F6";
+    char msgSource[] = "484A813EA48CD370DEF23EA6C488199BDE801FB1DE7E155C3B4ADBD3459DBBBE3030383532444145463338413436424130413833303336323332383637323334394437454530434135394435303646393139323932433133363633413631433435343230343539443933464537373346393934354644363432373746424132434142384642393936444443314430423937363736464242313234324233393330";
+    uint8_t mainKeyByte[32] = { 0 };
+    uint8_t sourceByte[160] = { 0 };
+    uint8_t macByte[32] = { 0 };
+    HexStringToByteForTest(mainKey, mainKeyByte, 32);
+    HexStringToByteForTest(msgSource, sourceByte, 160);
+    struct HksBlob keyBlob = { 32, mainKeyByte };
+    struct HksBlob srcBlob = { 160, sourceByte };
+    struct HksBlob hmacBlob = { 32, macByte };
+    struct HksParamSet *paramSet = NULL;
+    struct HksParam hmacParam[] = {
+        {
+            .tag = HKS_TAG_PURPOSE,
+            .uint32Param = HKS_KEY_PURPOSE_MAC
+        }, {
+            .tag = HKS_TAG_DIGEST,
+            .uint32Param = HKS_DIGEST_SHA256
+        }, {
+            .tag = HKS_TAG_IS_KEY_ALIAS,
+            .boolParam = false
+        }
+    };
+    int32_t ret = ConstructParamSet(&paramSet, hmacParam, CAL_ARRAY_SIZE(hmacParam));
+    if (ret != HKS_SUCCESS) {
+        return ret;
+    }
+    ret = HksMac(&keyBlob, paramSet, &srcBlob, &hmacBlob);
+    printf("print Hmac: \n");
+    printBuffer(macByte, 32);
+    HksFreeParamSet(&paramSet);
+    return ret;
+}
+
+//************************************
 static osPriority_t g_setPriority;
 
 
@@ -219,6 +365,7 @@ static void ExecHksMacTest002(void const *argument)
     LiteTestPrint("HksMacTest002 Begin!\n");
     int32_t ret = BaseTestMac(1);
     TEST_ASSERT_TRUE(ret == 0);
+    ret = BaseTestMacAnswer();
     LiteTestPrint("HksMacTest002 End!\n");
     osThreadExit();
 }
