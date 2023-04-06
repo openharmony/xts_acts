@@ -61,7 +61,7 @@ export default function TextPickerJsunit() {
 
       // Get the content of Initial value
       let driver = await UiDriver.create()
-      let strJson1 = getInspectorByKey('text');
+      let strJson1 = getInspectorByKey('textContent1');
       let obj1 = JSON.parse(strJson1);
       console.info("[TextPickerJsunit_0100] obj1: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('value: 0');
@@ -110,7 +110,7 @@ export default function TextPickerJsunit() {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       await driver.swipe(Math.round(right / 2), Math.round(bottom * 2 / 3), Math.round(right / 2), Math.round(bottom / 3));
-      let strJson = getInspectorByKey('text');
+      let strJson = getInspectorByKey('textContent1');
       let obj = JSON.parse(strJson);
       console.info("[TextPickerJsunit_0300] obj: " + JSON.stringify(obj));
       expect(obj.$attrs.content == 'value: 0').assertFalse();
