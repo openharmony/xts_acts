@@ -19,8 +19,8 @@ import rpc from "@ohos.rpc";
 import { describe, afterEach, it, expect } from '@ohos/hypium'
 export default function ActsStServiceAbilityTest() {
     describe('ActsStServiceAbilityTest', function () {
-        let bundleName = "com.amsst.stserviceabilityserver";
-        let abilityName = "com.amsst.stserviceabilityserver.ServiceAbility";
+        let bundleName = "com.amsst.stserviceabilityclient";
+        let abilityName = "com.amsst.stserviceabilityclient.ServiceAbility1";
 
         let subscriber0100;
         let CommonEventSubscribeInfo0100 = {

@@ -57,7 +57,11 @@ export default function GridRowJsunit() {
       expect(obj.$attrs.columns).assertEqual('4');
       expect(obj.$attrs.breakpoints).assertEqual('4');
       expect(obj.$attrs.direction).assertEqual('4');
-      expect(obj.$attrs.gutter).assertEqual('<7.500000, 15.000000');
+      // fix the vp2px
+      let x = vp2px(5).toFixed(6);
+      let y = vp2px(10).toFixed(6);
+      let str = '<' + x + ', '+y;
+      expect(obj.$attrs.gutter).assertEqual(str);
       console.info('[GridRowJsunit_0100] END');
       done();
     });
@@ -85,9 +89,12 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0200] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0200] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
-      expect(obj.$attrs.gutter).assertEqual('<7.500000, 15.000000');
       expect(obj.$attrs.breakpoints).assertEqual('12');
       expect(obj.$attrs.direction).assertEqual('12');
+      let x = vp2px(5).toFixed(6);
+      let y = vp2px(10).toFixed(6);
+      let str = '<' + x + ', '+y;
+      expect(obj.$attrs.gutter).assertEqual(str);
       console.info('[GridRowJsunit_0200] END');
       done();
     });
@@ -115,9 +122,12 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0300] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0300] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
-      expect(obj.$attrs.gutter).assertEqual('<7.500000, 15.000000');
       expect(obj.$attrs.breakpoints).assertEqual('12');
       expect(obj.$attrs.direction).assertEqual('12');
+      let x = vp2px(5).toFixed(6);
+      let y = vp2px(10).toFixed(6);
+      let str = '<' + x + ', '+y;
+      expect(obj.$attrs.gutter).assertEqual(str);
       console.info('[GridRowJsunit_0300] END');
       done();
     });

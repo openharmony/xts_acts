@@ -47,7 +47,7 @@ export default function ActsAccountAppAccess() {
             console.debug("====>afterEach start====");
             var appAccountManager = account.getAccountManager();
             var accounts = await appAccountManager.getAllAccountByOwner(owner)
-            for (i=0;i<accounts.length;i++){
+            for (var i=0;i<accounts.length;i++){
                 var localName = accounts[i].name
                 if(localName == 'zhangsan'){
                     await appAccountManager.removeAccount(localName)
@@ -70,7 +70,8 @@ export default function ActsAccountAppAccess() {
                 appAccountManager.checkAccountLabels(name, owner, ['level4'], (err, data)=>{
                     console.debug("====>ActsAccountCheckAccountLabels_0100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    console.debug("====>ActsAccountCheckAccountLabels_0100 data:" + JSON.stringify(data));                
+                    console.debug("====>ActsAccountCheckAccountLabels_0100 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(true);
                     appAccountManager.removeAccount(name, (err) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0100 removeAccount_err:" + JSON.stringify(err))
                         expect(err).assertEqual(null);
@@ -98,7 +99,8 @@ export default function ActsAccountAppAccess() {
                 appAccountManager.checkAccountLabels(name, owner, ['20-30'], (err, data)=>{
                     console.debug("====>ActsAccountCheckAccountLabels_0200 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    console.debug("====>ActsAccountCheckAccountLabels_0200 data:" + JSON.stringify(data));                
+                    console.debug("====>ActsAccountCheckAccountLabels_0200 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(false);
                     appAccountManager.removeAccount(name, (err) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0200 removeAccount_err:" + JSON.stringify(err))
                         expect(err).assertEqual(null);
@@ -125,8 +127,8 @@ export default function ActsAccountAppAccess() {
                 appAccountManager.checkAccountLabels('CheckAccountLabels_0300', owner, ['male'], (err, data)=>{
                     console.debug("====>ActsAccountCheckAccountLabels_0300 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    console.debug("====>ActsAccountCheckAccountLabels_0300 data:" + JSON.stringify(data));    
-                    expect(data).assertEqual(false)   
+                    console.debug("====>ActsAccountCheckAccountLabels_0300 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(false);
                     appAccountManager.removeAccount("CheckAccountLabels_0300", (err) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0300 removeAccount_err:" + JSON.stringify(err))
                         expect(err).assertEqual(null);
@@ -152,6 +154,7 @@ export default function ActsAccountAppAccess() {
                 console.debug("====>ActsAccountCheckAccountLabels_0400 add_account_success");
                 appAccountManager.checkAccountLabels(name, owner, ['level4']).then((data) =>{
                     console.debug("====>ActsAccountCheckAccountLabels_0400 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(true);
                     appAccountManager.removeAccount(name).then((data) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0400 delete_account_success");
                         done();
@@ -185,6 +188,7 @@ export default function ActsAccountAppAccess() {
                 console.debug("====>ActsAccountCheckAccountLabels_0500 add_account_success");
                 appAccountManager.checkAccountLabels(name, owner, ['20-30']).then((data) =>{
                     console.debug("====>ActsAccountCheckAccountLabels_0500 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(false);
                     expect(account.Constants.KEY_REQUIRED_LABELS).assertEqual('requiredLabels')
                     expect(account.Constants.KEY_BOOLEAN_RESULT).assertEqual('booleanResult')
                     appAccountManager.removeAccount(name).then((data) =>{
@@ -220,6 +224,7 @@ export default function ActsAccountAppAccess() {
                 console.debug("====>ActsAccountCheckAccountLabels_0600 add_account_success:" + JSON.stringify(data));
                 appAccountManager.checkAccountLabels('CheckAccountLabels_0600', owner, ['male']).then((data) =>{
                     console.debug("====>ActsAccountCheckAccountLabels_0600 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(false);
                     appAccountManager.removeAccount('CheckAccountLabels_0600').then((data) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0600 delete_account_success");
                         done();

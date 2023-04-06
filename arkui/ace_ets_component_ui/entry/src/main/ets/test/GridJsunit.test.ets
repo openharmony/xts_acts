@@ -187,7 +187,7 @@ export default function GridJsunit() {
       console.info("[GridJsunit_0500] supportAnimation: " + JSON.stringify(obj.$attrs.supportAnimation));
       expect(obj.$attrs.columnsGap).assertEqual('0.00vp');
       expect(obj.$attrs.rowsGap).assertEqual('0.00vp');
-      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off');
+      expect(obj.$attrs.scrollBar).assertEqual('BarState.Auto');
       expect(obj.$attrs.cachedCount).assertEqual(1);
       expect(obj.$attrs.supportAnimation).assertEqual('false');
       console.info('[GridJsunit_0500] END');

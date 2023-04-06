@@ -70,7 +70,7 @@ struct NavRouterPage {
                   Flex({ direction: FlexDirection.Row }) {
                     Row() {
                       Image($r('app.media.icon')).width(40).height(40).borderRadius(40).margin({ right: 15 })
-                      Text('Hello').fontSize(30).key('textContent' + (item + 1).toString())
+                      Text('Hello').fontSize(30).key('textContent')
                     }.padding({ left: 15 })
                   }
                 }.backgroundColor('#ccc')
@@ -91,7 +91,7 @@ struct NavRouterPage {
       .hideTitleBar(true)
       .hideToolBar(true)
       .height('80%')
-    Text(this.stateChange).fontSize(20).margin(10).id('123')
+    Text(this.stateChange).fontSize(20).margin(10).key('testT')
     }.height('100%')
   }
 }

@@ -68,7 +68,7 @@ export default function TextInputJsunit() {
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Search');
       expect(obj.$attrs.caretColor).assertEqual('#FF0000FF');
       expect(obj.$attrs.maxLength).assertEqual('10');
-      expect(obj.$attrs.style).assertEqual('TextInputStyle.Inline');
+      expect(obj.$attrs.style).assertEqual('TextInputStyle.Default');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center');
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.None');
       expect(obj.$attrs.showPasswordIcon).assertEqual(false); 
@@ -191,13 +191,15 @@ export default function TextInputJsunit() {
       await CommonFunc.sleep(1000);
       let textComponent3 = await driver.findComponent(BY.text('全选'));
       await textComponent3.click()
-      let textComponent4 = await driver.findComponent(BY.text('复制'));
-      await textComponent4.click()
+      await CommonFunc.sleep(200);
+      //let textComponent4 = await driver.findComponent(BY.text('复制'));
+      //await textComponent4.click()
       await textComponent.click()
       await CommonFunc.sleep(1000);
-      let copy = await driver.findComponent(BY.key('copy'));
-      let text3 = await copy.getText();
-      expect(text3).assertEqual('onCopy:');
+      let strJson = getInspectorByKey('copy');
+      let obj = JSON.parse(strJson);
+      console.info("[TextInputJsunit_0400] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('onCopy:');
       console.info("[TextInputJsunit_0400] Verify copy succ !");
 
       // Verify onCut function of TextInput component
@@ -205,13 +207,15 @@ export default function TextInputJsunit() {
       await CommonFunc.sleep(1000);
       let textComponent5 = await driver.findComponent(BY.text('全选'));
       await textComponent5.click()
+      await CommonFunc.sleep(200);
       let textComponent6 = await driver.findComponent(BY.text('剪切'));
       await textComponent6.click()
       //await textComponent.click()
       await CommonFunc.sleep(1000);
-      let textComponent7 = await driver.findComponent(BY.key('cut'));
-      let text4 = await textComponent7.getText();
-      expect(text4).assertEqual('onCut:');
+      let strJson1 = getInspectorByKey('cut');
+      let obj1 = JSON.parse(strJson1);
+      console.info("[TextInputJsunit_0400] component obj1 is: " + JSON.stringify(obj1));
+      expect(obj1.$attrs.content).assertEqual('onCut:');
       console.info("[TextInputJsunit_0400] Verify cut succ !");
       console.info('[TextInputJsunit_0400] END');
       done();

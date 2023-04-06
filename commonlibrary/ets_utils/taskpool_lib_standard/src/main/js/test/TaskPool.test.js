@@ -925,6 +925,35 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
+    it('TaskPoolTestClass062', 0,  async function (done) {
+        async function func(value1, value2) {
+            "use concurrent"
+            let result = await new Promise((resolve, reject) => {
+                let value = value1 + value2;
+                resolve(value);
+            })
+            return result;
+        }
+        var result = await taskpool.execute(func, 10, 20);
+        expect(result).assertEqual(30);
+        done();
+    })
+  
+    it('TaskPoolTestClass063', 0,  async function (done) {
+        async function func(value1, value2) {
+            "use concurrent"
+            let result = await new Promise((resolve, reject) => {
+                let value = value1 + value2;
+                resolve(value);
+            })
+            return result;
+        }
+        var task = new taskpool.Task(func, 10, 20);
+        var result = await taskpool.execute(task);
+        expect(result).assertEqual(30);
+        done();
+    })
+
     /**
      * @tc.number    : TaskPoolTestClass049
      * @tc.name      : Async Function Cancel task

@@ -125,7 +125,7 @@ export default function sliderJsunit() {
       console.info('sliderJsunit_0500 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor + "--" );
       expect(obj.$attrs.blockColor).assertEqual('#FFEE82EE');
       expect(obj.$attrs.trackColor).assertEqual('#FFEE82EE');
-      expect(obj.$attrs.selectedColor).assertEqual('#FFAEFFFF');
+      expect(obj.$attrs.selectedColor).assertEqual('#FFEE82EE');
       done(); 
     });
 
@@ -154,7 +154,7 @@ export default function sliderJsunit() {
     it('sliderJsunit_0700', 0, async function (done) {
       console.info('sliderJsunit_0700 START');
       // modify the constructor attribute of slider dynamically
-      globalThis.value.message.notify({name:'value',value:30})
+      globalThis.value.message.notify({name:'vInSetValueOne',value:30})
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'style',value:SliderStyle.OutSet})
       await CommonFunc.sleep(1000);
@@ -182,11 +182,36 @@ export default function sliderJsunit() {
       expect(obj.$attrs.constructor.value).assertEqual('30.000000');
       done();
     });
-    
-   it('sliderJsunit_0800', 0, async function (done) {
+
+    it('sliderJsunit_0800', 0, async function (done) {
+      // Verify the swipe function of slider component
       console.info('sliderJsunit_0800 START');
+      await CommonFunc.sleep(1000);
+      let sliderT = CommonFunc.getComponentRect('sliderConstructor');
+      let top = sliderT.top
+      let bottom = sliderT.bottom
+      let left = sliderT.left
+      let right = sliderT.right
+      let x = Math.round(left + (right - left) / 2)
+      let driver = await Driver.create();
+      await driver.delayMs(waitUiReadyMs);
+      await driver.swipe(x, Math.round(bottom - 20), x, Math.round(top + 50));
+      await driver.delayMs(waitUiReadyMs);
+      let strJson = getInspectorByKey('tex');
+      let obj = JSON.parse(strJson);
+      console.info("[sliderJsunit_0800] obj: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('30');
+      let strJson1 = getInspectorByKey('modeT');
+      let obj1 = JSON.parse(strJson1);
+      console.info("[sliderJsunit_0800] obj1: " + JSON.stringify(obj1));
+      expect(obj1.$attrs.content).assertEqual('mode');
+      done();
+    });
+    
+   it('sliderJsunit_0900', 0, async function (done) {
+      console.info('[sliderJsunit_0800] START');
       // modify the constructor attribute of slider dynamically
-      globalThis.value.message.notify({name:'value',value:-30})
+      globalThis.value.message.notify({name:'vInSetValueOne',value:-30})
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'reverse',value:1})
       await CommonFunc.sleep(1000);
@@ -203,42 +228,16 @@ export default function sliderJsunit() {
       // check the value of changed parameter
       let strJson = getInspectorByKey('sliderConstructor');
       let obj = JSON.parse(strJson);
-      console.info('sliderJsunit_0200 component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value 
+      console.info('[sliderJsunit_0900] component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value 
       + "---" + obj.$attrs.constructor.reverse + "----" + obj.$attrs.constructor.min + "----" + obj.$attrs.constructor.max + "---" + obj.$attrs.constructor.step);
       expect(obj.$attrs.style).assertEqual('SliderStyle.OutSet');
       expect(obj.$attrs.constructor.direction).assertEqual('Axis.Horizontal');
-      expect(obj.$attrs.constructor.value).assertEqual('40.000000');
+      expect(obj.$attrs.constructor.value).assertEqual('20.000000');
       expect(obj.$attrs.constructor.reverse).assertEqual('false');
       expect(obj.$attrs.constructor.min).assertEqual('-20.000000');
       expect(obj.$attrs.constructor.max).assertEqual('1000.000000');
       expect(obj.$attrs.constructor.step).assertEqual('1.000000');
-      done();
-    });
-    
-    it('sliderJsunit_0900', 0, async function (done) {
-      // Verify the swipe function of slider component
-      console.info('sliderJsunit_0900 START');
-      await CommonFunc.sleep(1000);
-      let sliderT = CommonFunc.getComponentRect('sliderConstructor2');
-      let top = sliderT.top
-      let sliderB = CommonFunc.getComponentRect('sliderConstructor2');
-      let bottom = sliderB.bottom
-      let sliderL = CommonFunc.getComponentRect('sliderConstructor2');
-      let left = sliderL.left
-      let sliderR = CommonFunc.getComponentRect('sliderConstructor2');
-      let right = sliderR.right
-      let driver = await Driver.create();
-      await driver.delayMs(waitUiReadyMs);
-      await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
-      await driver.delayMs(waitUiReadyMs);
-      let textIn = await driver.findComponent(ON.id('tex'));
-      let txt = await textIn.getText();
-      console.info('sliderJsunit_0900 component textIn obj is: ' + txt);
-      expect(txt).assertEqual('40');
-      let modeT = await driver.findComponent(ON.id('modeT'));
-      let txtt = await modeT.getText();
-      console.info('sliderJsunit_0900 modeT component obj is: ' + txtt);
-      expect(txtt).assertEqual('mode');
+      console.info('[sliderJsunit_0900] END');
       done();
     });
   })

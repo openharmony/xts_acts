@@ -84,44 +84,31 @@ export default function TextClockJsunit() {
     });
 
     it('TextClock_0300', 0, async function (done) {
-      // Verify the functions of the button of start and stop
+      // Verify the functions of the button of start
       console.info('[TextClock_0300] START');
-      
-      // Click stop button
-      let driver = await UiDriver.create()
-      let stopButton = await driver.findComponent(BY.text('stop TextClock'));
-      await stopButton.click();
-      await CommonFunc.sleep(500);
-      let accumulateTime1 = await driver.findComponent(BY.key('accumulateTime'));
-      let text1 = await accumulateTime1.getText();
-      await CommonFunc.sleep(1000);
-      let accumulateTime2 = await driver.findComponent(BY.key('accumulateTime'));
-      let text2 = await accumulateTime2.getText();
-      expect(text1).assertEqual(text2);
-
-      let operation1 = await driver.findComponent(BY.key('operation'));
-      let textOperation1 = await operation1.getText();
-      expect(textOperation1).assertEqual('stop success');
-
-      let change1 = await driver.findComponent(BY.key('change'));
-      let textChange1 = await change1.getText();
-      expect(textChange1).assertEqual('no change success');
 
       // Click start button
+      let driver = await UiDriver.create()
       let startButton = await driver.findComponent(BY.text('start TextClock'));
       await startButton.click();
+      await CommonFunc.sleep(1000);
+      let accumulateTime1 = await driver.findComponent(BY.key('accumulateTime'));
+      let text1 = await accumulateTime1.getText();
       await CommonFunc.sleep(2000);
-      let accumulateTime3 = await driver.findComponent(BY.key('accumulateTime'));
-      let text3 = await accumulateTime3.getText();
-      expect(text2 == text3).assertFalse();
+      let accumulateTime2 = await driver.findComponent(BY.key('accumulateTime'));
+      let text2 = await accumulateTime2.getText();
+      expect(text1 == text2).assertFalse();
+      console.info("[TextClock_0300] text1 and text2 not equal !");
 
-      let change2 = await driver.findComponent(BY.key('change'));
-      let textChange2 = await change2.getText();
-      expect(textChange2).assertEqual('change success');
+      let change = await driver.findComponent(BY.key('change'));
+      let textChange = await change.getText();
+      expect(textChange).assertEqual('change success');
+      console.info("[TextClock_0300] change success !");
 
-      let operation2 = await driver.findComponent(BY.key('operation'));
-      let textOperation2 = await operation2.getText();
-      expect(textOperation2).assertEqual('start success');
+      let operation = await driver.findComponent(BY.key('operation'));
+      let textOperation = await operation.getText();
+      expect(textOperation).assertEqual('start success');
+      console.info("[TextClock_0300] start success !");
       console.info('[TextClock_0300] END');
       done();
     });

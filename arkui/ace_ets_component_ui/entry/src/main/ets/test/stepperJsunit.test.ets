@@ -120,13 +120,19 @@ export default function stepperJsunit() {
 
     it('stepperJsunit_0600', 0, async function (done) {
       console.info('stepperJsunit_0600 START');
+      // reset the component init status
+      globalThis.value.message.notify({name:'nextLabel',value:'下一步'});
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'prevLabel',value:'返回'});
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'status',value:ItemState.Normal});
       // test the stepper onChange onNext onPrevious event
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
       let button = await driver.findComponent(BY.text('Next'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let button2 = await driver.findComponent(BY.text('Next'));
+      let button2 = await driver.findComponent(BY.text('下一步'));
       await button2.click();
       await CommonFunc.sleep(1000);
       let textThree = await driver.findComponent(BY.text('Page Three'));
@@ -148,19 +154,20 @@ export default function stepperJsunit() {
       // test the stepper onFinish event
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
-      let button = await driver.findComponent(BY.text('Next'));
-      await button.click();
       await CommonFunc.sleep(2000);
       let button2 = await driver.findComponent(BY.text('下一步'));
       await button2.click();
       await CommonFunc.sleep(2000);
-      let button3 = await driver.findComponent(BY.text('开始'));
+      let button3 = await driver.findComponent(BY.text('下一步'));
       await button3.click();
       await CommonFunc.sleep(2000);
-      let textTwo = await driver.findComponent(BY.text('Page One'));
+      let button4 = await driver.findComponent(BY.text('开始'));
+      await button4.click();
+      await CommonFunc.sleep(2000);
+      let textTwo = await driver.findComponent(BY.text('Page Four'));
       let txtT = await textTwo.getText();
       console.info('stepperJsunit_0700 component obj is: ' + txtT);
-      expect(txtT).assertEqual('Page One');
+      expect(txtT).assertEqual('Page Four');
       done();
     });
     
@@ -169,11 +176,8 @@ export default function stepperJsunit() {
       // test the stepper onSkip event
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
-      let button = await driver.findComponent(BY.key('btStp'));
+      let button = await driver.findComponent(BY.text('返回'));
       await button.click();
-      await CommonFunc.sleep(2000);
-      let button2 = await driver.findComponent(BY.text('跳过'));
-      await button2.click();
       await CommonFunc.sleep(2000);
       let textTwo = await driver.findComponent(BY.text('Page Three'));
       let txtT = await textTwo.getText();

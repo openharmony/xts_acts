@@ -37,6 +37,7 @@ describe('fileIO_fs_close', function () {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       fileIO.closeSync(file.fd);
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_close_sync_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -82,8 +83,9 @@ describe('fileIO_fs_close', function () {
 
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      fileIO.closeSync(file.fd);
-      fileIO.closeSync(file.fd);
+      let fd = file.fd;
+      fileIO.closeSync(file);
+      fileIO.closeSync(fd);
       expect(false).assertTrue();
     } catch (e) {
       fileIO.unlinkSync(fpath);
@@ -181,6 +183,7 @@ describe('fileIO_fs_close', function () {
           console.log('fileIO_test_close_async_000 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
+        fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
         done();
       });
@@ -207,7 +210,7 @@ describe('fileIO_fs_close', function () {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       fileIO.close(file, (err) => {
-        if(err) {
+        if (err) {
           console.log('fileIO_test_close_async_001 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
@@ -237,6 +240,7 @@ describe('fileIO_fs_close', function () {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       await fileIO.close(file.fd);
+      await fileIO.close(file);
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {
@@ -286,8 +290,9 @@ describe('fileIO_fs_close', function () {
 
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      await fileIO.close(file.fd);
-      await fileIO.close(file.fd);
+      let fd = file.fd;
+      await fileIO.close(file);
+      await fileIO.close(fd);
       expect(false).assertTrue();
     } catch (e) {
       fileIO.unlinkSync(fpath);
@@ -337,12 +342,13 @@ describe('fileIO_fs_close', function () {
   it('fileIO_test_close_async_006', 0, async function (done) {
     let fpath = await nextFileName('fileIO_test_close_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
 
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       await fileIO.close(file.fd, 2);
       expect(false).assertTrue();
     } catch (e) {
+      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_close_async_006 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();

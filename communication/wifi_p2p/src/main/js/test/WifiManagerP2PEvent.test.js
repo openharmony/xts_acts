@@ -14,7 +14,6 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-
 import wifiMg from '@ohos.wifiManager'
 import osaccount from '@ohos.account.osAccount'
 import bundle from '@ohos.bundle'
@@ -101,7 +100,7 @@ export default function actsWifiManagerEventTest() {
                 CONNECTED : 1,
             };
             let wifiP2PConfig = {
-                deviceAddress : "00:00:00:00:00:00",
+                deviceAddress : "22:9b:e6:48:1f:5c",
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "DIRECT-AAAZZZ456",
@@ -110,6 +109,7 @@ export default function actsWifiManagerEventTest() {
             let connectResult = wifiMg.p2pConnect(wifiP2PConfig);
             let p2pCancelResult = wifiMg.p2pCancelConnect();
             await sleep(2000);
+            console.info("[wifi_test]test p2pCancelConnect successful." );
             await wifiMg.getP2pLinkedInfo()
                 .then(data => {
                     let resultLength = Object.keys(data).length;
@@ -174,14 +174,12 @@ export default function actsWifiManagerEventTest() {
             }
             wifiMg.on(p2pGroupState, p2pPersistentGroupChangeCallback);
             let WifiP2PConfig = {
-                deviceAddress : "00:00:00:00:00:00",
+                deviceAddress : "22:9b:e6:48:1f:5c",
                 netId : -2,
                 passphrase : "12345678",
                 groupName : "DIRECT-AAAZZZ123",
                 goBand : wifiMg.GroupOwnerBand.GO_BAND_AUTO,
             };
-            let createP2pGroupResult = wifiMg.createP2pGroup(WifiP2PConfig);
-            await (2000);
             try {
                 await wifiMg.getCurrentP2pGroup()
                     .then(data => {

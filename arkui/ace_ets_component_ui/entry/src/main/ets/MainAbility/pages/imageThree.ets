@@ -24,9 +24,11 @@ struct ImageExample3 {
   private on2off: Resource = $rawfile('bm.jpg')
   private off2on: Resource = $rawfile('test3.png')
   @State src: Resource = this.on
-  @State m1:string = "xx"
-  @State m2:string = "x"
-  @State name:string = "tt3.png"
+  @State m1:string = "init"
+  @State m2:string = "init"
+  @State m3:string = "init"
+  @State m4:string = "init"
+  @State imageName:string = "img1.png"
 
   messageManager:MessageManager = new MessageManager()
 
@@ -37,8 +39,8 @@ struct ImageExample3 {
     }
     let callback:Callback = (message:any) => {
       console.error('message = ' + message.name + "--" + message.value)
-      if (message.name == 'name') {
-          this.name = message.value
+      if (message.name == 'imageName') {
+          this.imageName = message.value
       }
     }
     this.messageManager.registerCallback(callback)
@@ -49,9 +51,9 @@ struct ImageExample3 {
     Column() {
       Row({ space: 20 }) {
         Column() {
-          Image($rawfile(this.name))
+          Image($rawfile(this.imageName))
             .alt($rawfile('img2.png'))
-            .key('image2')
+            .key('image1')
             .sourceSize({
               width: 900,
               height: 900
@@ -66,37 +68,40 @@ struct ImageExample3 {
             })
             .onError(() => {
               console.log('load image fail')
-              this.m1 = "error"
+              this.m2 = "error"
             })
             .overlay('\nwidth: ' + String(this.widthValue) + ' height: ' + String(this.heightValue), {
               align: Alignment.Bottom,
               offset: { x: 0, y: 20 }
             })       
 
-          Text(this.m1).margin({top:40}).key('text1')
-          Text(this.m2).margin({top:40}).key('text2')
-        }
+        Text(this.m1).margin({top:40}).key('complete')
+        Text(this.m2).margin({top:40}).key('error')
+        Text(this.m3).margin({top:40}).key('click')
+        Text(this.m4).margin({top:40}).key('Finish')
+        
         // 为图片添加点击事件，点击完成后加载特定图片。
         Image(this.src)
           .width(120).height(120)
           .onClick(() => {
             if (this.src == this.on || this.src == this.off2on) {
               this.src = this.on2off
-              this.m1 = "click"
+              this.m3 = "click"
             } else {
               this.src = this.off2on
-              this.m1 = "click"
+              this.m3 = "click"
             }
-          }).key('igc')
+          }).key('image2')
           .onFinish(() => {
             if (this.src == this.off2on) {
               this.src = this.on
-              this.m2 = "Finish"
+              this.m4 = "Finish"
             } else {
               this.src = this.off
-              this.m2 = "Finish"
+              this.m4 = "Finish"
             }
           })
+        }
       }
     }.width('100%')
   }

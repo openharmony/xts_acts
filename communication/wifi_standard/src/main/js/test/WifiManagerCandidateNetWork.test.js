@@ -53,15 +53,6 @@ function resolveIP(ip) {
     return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
 }
 
-let wifiSecurityType = {
-    WIFI_SEC_TYPE_INVALID: 0,
-    WIFI_SEC_TYPE_EAP: 5,
-    WIFI_SEC_TYPE_EAP_SUITE_B: 6,
-    WIFI_SEC_TYPE_OWE:7 ,
-    WIFI_SEC_TYPE_WAPI_CERT:8 ,
-    WIFI_SEC_TYPE_WAPI_PSK:9 ,
-}
-
 export default function actsWifiManagerCandidateNetWorkTest() {
     describe('actsWifiManagerCandidateNetWorkTest', function () {
         beforeAll(async function (done) {
@@ -117,6 +108,25 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                     expect(true).assertEqual( (JSON.stringify(error)) !=null);
                 });
             console.info("[wifi_test]wifi get WEP CandidateConfigs result : " + JSON.stringify(getconfig));
+
+            let WIFI_SEC_TYPE_INVALID = wifiMg.WifiSecurityType.WIFI_SEC_TYPE_INVALID;
+            console.info("[wifi_test]WIFI_SEC_TYPE_INVALID : " + JSON.stringify(WIFI_SEC_TYPE_INVALID));
+            expect(true).assertEqual( WIFI_SEC_TYPE_INVALID == 0);
+            let WIFI_SEC_TYPE_EAP = wifiMg.WifiSecurityType.WIFI_SEC_TYPE_EAP;
+            console.info("[wifi_test]WIFI_SEC_TYPE_EAP : " + JSON.stringify(WIFI_SEC_TYPE_EAP));
+            expect(true).assertEqual( WIFI_SEC_TYPE_EAP == 5);
+            let WIFI_SEC_TYPE_EAP_SUITE_B = wifiMg.WifiSecurityType.WIFI_SEC_TYPE_EAP_SUITE_B;
+            console.info("[wifi_test]WIFI_SEC_TYPE_EAP_SUITE_B : " + JSON.stringify(WIFI_SEC_TYPE_EAP_SUITE_B));
+            expect(true).assertEqual( WIFI_SEC_TYPE_EAP_SUITE_B == 6);
+            let WIFI_SEC_TYPE_OWE = wifiMg.WifiSecurityType.WIFI_SEC_TYPE_OWE;
+            console.info("[wifi_test]WIFI_SEC_TYPE_OWE : " + JSON.stringify(WIFI_SEC_TYPE_OWE));
+            expect(true).assertEqual( WIFI_SEC_TYPE_OWE == 7);
+            let WIFI_SEC_TYPE_WAPI_CERT = wifiMg.WifiSecurityType.WIFI_SEC_TYPE_WAPI_CERT;
+            console.info("[wifi_test]WIFI_SEC_TYPE_WAPI_CERT : " + JSON.stringify(WIFI_SEC_TYPE_WAPI_CERT));
+            expect(true).assertEqual( WIFI_SEC_TYPE_WAPI_CERT == 8);
+            let WIFI_SEC_TYPE_WAPI_PSK = wifiMg.WifiSecurityType.WIFI_SEC_TYPE_WAPI_PSK;
+            console.info("[wifi_test]WIFI_SEC_TYPE_WAPI_CERT : " + JSON.stringify(WIFI_SEC_TYPE_WAPI_PSK));
+            expect(true).assertEqual( WIFI_SEC_TYPE_WAPI_PSK == 9);
             done();
         })
 
