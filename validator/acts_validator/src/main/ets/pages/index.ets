@@ -20,7 +20,7 @@ import fileIO from '@ohos.fileio';
 import util from '@ohos.util';
 import DateTimeUtil from './model/DateTimeUtil';
 import data_preferences from '@ohos.data.preferences';
-import FlushData from '../pages/model/FlushData'
+import FlushData from '../pages/model/FlushData';
 
 const TAG = 'ParseXML';
 let path=globalThis.dir;
@@ -34,6 +34,8 @@ let ArkUIColorBackPath = path + '/ArkUIColorBack.txt';
 let AudioColorBackPath = path + '/AudioColorBack.txt';
 let CameraColorBackPath = path + '/CameraColorBack.txt';
 let PlayerColorBackPath = path + '/PlayerColorBack.txt';
+let PlayerAudioColorBackPath = path4 + '/PlayerAudioColorBack.txt';
+let PlayerVideoColorBackPath = path4 + '/PlayerVideoColorBack.txt';
 let ExperienceColorBackPath = path + '/ExperienceColorBack.txt';
 fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
 fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
@@ -48,6 +50,8 @@ let path11 = path1 + '/ArkUIReport.txt';
 let path22 = path2 + '/AudioReport.txt';
 let path33 = path3 + '/CameraReport.txt';
 let path44 = path4 + '/PlayerReport.txt';
+let PlayerAudioTxtPath = path4 + '/PlayerAudioReport.txt';
+let PlayerVideoTxtPath = path4 + '/PlayerVideoReport.txt';
 let path55 = path5 + '/ExperienceReport.txt';
 
 @Entry
@@ -97,6 +101,10 @@ struct IndexPage {
     fileio.openSync(path22, 0o100 | 0o2002, 0o664);
     fileio.openSync(path33, 0o100 | 0o2002, 0o664);
     fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerAudioColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerVideoColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerAudioTxtPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerVideoTxtPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(path55, 0o100 | 0o2002, 0o664);
   }
   build(){
@@ -194,11 +202,15 @@ struct IndexPage {
     fileio.unlinkSync(path22);
     fileio.unlinkSync(path33);
     fileio.unlinkSync(path44);
+    fileio.unlinkSync(PlayerAudioTxtPath);
+    fileio.unlinkSync(PlayerVideoTxtPath);
     fileio.unlinkSync(path55);
     fileio.unlinkSync(ArkUIColorBackPath);
     fileio.unlinkSync(AudioColorBackPath);
     fileio.unlinkSync(CameraColorBackPath);
     fileio.unlinkSync(PlayerColorBackPath);
+    fileio.unlinkSync(PlayerAudioColorBackPath);
+    fileio.unlinkSync(PlayerVideoColorBackPath);
     fileio.unlinkSync(ExperienceColorBackPath);
     fileio.rmdirSync(picturePath);
     fileio.mkdirSync(picturePath);
@@ -208,17 +220,23 @@ struct IndexPage {
     fileio.openSync(path22, 0o100 | 0o2002, 0o664);
     fileio.openSync(path33, 0o100 | 0o2002, 0o664);
     fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerAudioTxtPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerVideoTxtPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(path55, 0o100 | 0o2002, 0o664);
     fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(PlayerColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerAudioColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerVideoColorBackPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(ExperienceColorBackPath, 0o100 | 0o2002, 0o664);
     FlushData.ResetArkUI();
     FlushData.ResetAudio();
     FlushData.ResetCamera();
     FlushData.ResetPlayer();
     FlushData.ResetExperience();
+    FlushData.ResetPlayerAudio();
+    FlushData.ResetPlayerVideo();
   }
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
