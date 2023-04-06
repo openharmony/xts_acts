@@ -60,7 +60,7 @@ struct TextPickerPage {
           this.getValue = value
           this.getIndex = index
         })
-      Text(this.getValue + ': ' + this.getIndex.toString()).fontSize(20).key('text')
+      Text(this.getValue + ': ' + this.getIndex.toString()).fontSize(20).key('textContent1')
     }
   }
 }
