@@ -43,14 +43,6 @@ struct audioNew {
   @State TestCaseList: Array<mediaLibrary.FileAsset> = [];
   @State ColorObject: string[] = VarColor;
 
-  async aboutToAppear() {
-    this.getAudioData();
-  }
-
-  async getAudioData() {
-    this.TestCaseList = await this.MediaLib.getFileAssetsAlbum('Audios/ValidatorData/');
-  }
-
   async onPageShow() {
     let Test = null;
     let context = null;
@@ -66,6 +58,7 @@ struct audioNew {
       Test = data;
       console.info("Succeeded in getting value of 'PlayerAudio'. Data: " + data);
     });
+    this.TestCaseList = await this.MediaLib.getFileAssetsAlbum('Audios/ValidatorData/');
 
     if (Test != 1) {
       let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
