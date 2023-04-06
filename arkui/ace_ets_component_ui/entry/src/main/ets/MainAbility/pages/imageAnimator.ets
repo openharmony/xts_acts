@@ -44,7 +44,7 @@ struct ImageAnimatorExample {
     }
     let callback:Callback = (message:any) => {
       console.error('message = ' + message.name + "--" + message.value)
-      if (message.name == 'type') {
+      if (message.name == 'state') {
           this.state = message.value
       }
       if (message.name == 'reverse') {
@@ -99,7 +99,7 @@ struct ImageAnimatorExample {
         .margin({ top: 100 })
         .key('imageAnimator')
         .onStart(() => {
-          console.info('Start')
+          console.info('Start123456')
           this.message1 = 'start'
         })
         .onPause(() => {
