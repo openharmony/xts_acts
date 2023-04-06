@@ -26,7 +26,7 @@ struct playVideo {
   @State StepTips: string = '测试目的：用于测试视频播放暂停seek\n预期结果：视频播放暂停seek功能正常';
   private tag: string = 'qlw';
   @State Vue: boolean = false;
-  @State videoSrc: Resource = $rawfile('H264_AAC.mkv');
+  @State videoSrc: string = router.getParams()['audioUrl'];
   @State isAutoPlay: boolean = true;
   @State showControls: boolean = true;
   controller: VideoController = new VideoController();

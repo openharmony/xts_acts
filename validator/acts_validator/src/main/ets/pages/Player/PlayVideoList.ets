@@ -43,14 +43,6 @@ struct videoNew {
   @State TestCaseList: Array<mediaLibrary.FileAsset> = [];
   @State ColorObject: string[] = VarColor;
 
-  async aboutToAppear() {
-    this.getVideoData();
-  }
-
-  async getVideoData() {
-    this.TestCaseList = await this.MediaLib.getFileAssetsAlbum('Videos/ValidatorData/');
-  }
-
   async onPageShow() {
     let Test = null;
     let context = null;
@@ -66,6 +58,7 @@ struct videoNew {
       Test = data;
       console.info("Succeeded in getting value of 'PlayerVideo'. Data: " + data);
     });
+    this.TestCaseList = await this.MediaLib.getFileAssetsAlbum('Videos/ValidatorData/');
 
     if (Test != 1) {
       let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
@@ -116,7 +109,7 @@ struct videoNew {
         fileio.closeSync(FD);
         let Fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
         fileio.writeSync(Fd, Report);
-        filewrite(name1, results, titles)
+        filewrite(name1, results, titles);
       }
       else if (this.result === 'false') {
         this.ColorObject[this.current] = '#ffff0000';
