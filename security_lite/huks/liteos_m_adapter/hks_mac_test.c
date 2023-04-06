@@ -47,14 +47,14 @@ static char IntToAscii(uint8_t in_num)
     return (char)('A' + in_num - 10);
 }
 
-static int32_t BufferToAscii(uint8_t* src, uint32_t src_size, char* dst, uint32_t* dst_size) {
+static int32_t BufferToAscii(uint8_t* src, uint32_t src_size, char* dst, uint32_t* dst_size)
+{
     const uint32_t ascii_len = src_size * 2 + 1;
     if (*dst_size < ascii_len) {
         printf("buffer is too samll.");
         return -1;
     }
-    for (uint32_t i = 0; i < src_size; i++)
-    {
+    for (uint32_t i = 0; i < src_size; i++) {
         dst[2 * i] = IntToAscii(src[i] >> 4);/* take 4 high-order digits*/
         dst[2 * i + 1] = IntToAscii(src[i] & 0b00001111); /*take 4 low-order digits*/
     }
@@ -71,7 +71,8 @@ static void printBuffer(uint8_t* buffer, uint32_t buffer_size)
     for (uint32_t i = 0; i < (print_count + 1); i++) {
         char chars[SINGLE_PRINT_LENGTH * 2 + 1] = { 0 };
         uint32_t char_size = SINGLE_PRINT_LENGTH * 2 + 1;
-        BufferToAscii(buffer + index, (i == print_count) ? buffer_size % SINGLE_PRINT_LENGTH : SINGLE_PRINT_LENGTH, chars, &char_size);
+        BufferToAscii(buffer + index, (i == print_count) ? buffer_size % SINGLE_PRINT_LENGTH : SINGLE_PRINT_LENGTH,
+                      chars, &char_size);
         printf("buff[%2u] size[%2u]: \"%s\"", i, (char_size - 1) / 2, chars);
         printf("\n");
         index += SINGLE_PRINT_LENGTH;
@@ -82,39 +83,39 @@ static uint8_t CharToHex(char c)
 {
     if ((c >= 'A') && (c <= 'F')) {
         return (c - 'A' + 10);
-    }
-    else if ((c >= 'a') && (c <= 'f')) {
+    } else if ((c >= 'a') && (c <= 'f')) {
         return (c - 'a' + 10);
-    }
-    else if ((c >= '0') && (c <= '9')) {
+    } else if ((c >= '0') && (c <= '9')) {
         return (c - '0');
-    }
-    else {
+    } else {
         return 16;
     }
 }
 
 int32_t HexStringToByteForTest(const char *hexStr, uint8_t *byte,
-                               uint32_t byteLen) {
-  if (byte == NULL || hexStr == NULL) {
-    return -1;
-  }
-  uint32_t realHexLen = strlen(hexStr);
-  /* even number or not */
-  if (realHexLen % 2 != 0 || byteLen < realHexLen / 2) {
-    return -1;
-  }
-
-  for (uint32_t i = 0; i < realHexLen / 2; i++) {
-    uint8_t high = CharToHex(hexStr[i * 2]);
-    uint8_t low = CharToHex(hexStr[i * 2 + 1]);
-    if (high == 16 || low == 16) {
-      return -1;
+                               uint32_t byteLen)
+{
+    if (byte == NULL || hexStr == NULL) {
+        return -1;
     }
-    byte[i] = high << 4; /* 4: Set the high nibble */
-    byte[i] |= low;      /* Set the low nibble */
-  }
-  return 0;
+    uint32_t realHexLen = strlen(hexStr);
+    /* even number or not */
+    if (realHexLen % 2 != 0 || byteLen < realHexLen / 2) {
+        return -1;
+    }
+
+    for (uint32_t i = 0; i < realHexLen / 2; i++) {
+        uint8_t high = CharToHex(hexStr[i * 2]);
+        uint8_t low = CharToHex(hexStr[i * 2 + 1]);
+        if (high == 16 || low == 16) {
+            return -1;
+        }
+        /* 4: Set the high nibble */
+        byte[i] = high << 4;
+        /* Set the low nibble */
+        byte[i] |= low;
+    }
+    return 0;
 }
 
 static int32_t ConstructParamSet(struct HksParamSet **out, const struct HksParam *inParam,
