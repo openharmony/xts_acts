@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import featureAbility from '@ohos.ability.featureAbility';
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
@@ -66,6 +67,31 @@ describe('fileIO_fs_symlink', function () {
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_symlink_sync_001 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_SYMLINK_SYNC_0200
+   * @tc.name fileIO_test_symlink_sync_002
+   * @tc.desc Test symlinkSync() interfaces.
+   * Can't create a symbolic links in distributed directories.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_symlink_sync_002', 0, async function () {
+    let dstDir = await featureAbility.getContext().getOrCreateDistributedDir();
+    let fpath = await nextFileName('fileIO_test_symlink_sync_002');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.symlinkSync(fpath, dstDir + '/link_000');
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.unlinkSync(fpath);
+      console.log('fileIO_test_symlink_sync_002 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900001 && e.message == 'Operation not permitted').assertTrue();
     }
   });
 
@@ -178,6 +204,62 @@ describe('fileIO_fs_symlink', function () {
       console.log('fileIO_test_symlink_async_003 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_SYMLINK_ASYNC_0400
+   * @tc.name fileIO_test_symlink_async_004
+   * @tc.desc Test symlink() interfaces.
+   * Can't create a symbolic links in distributed directories.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_symlink_async_004', 0, async function (done) {
+    let dstDir = await featureAbility.getContext().getOrCreateDistributedDir();
+    let fpath = await nextFileName('fileIO_test_symlink_async_004');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      await fileIO.symlink(fpath, dstDir + '/link_001');
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.unlinkSync(fpath);
+      console.log('fileIO_test_symlink_async_004 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900001 && e.message == 'Operation not permitted').assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_SYMLINK_ASYNC_0500
+   * @tc.name fileIO_test_symlink_async_005
+   * @tc.desc Test symlink() interfaces.
+   * Can't create a symbolic links in distributed directories.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_symlink_async_005', 0, async function (done) {
+    let dstDir = await featureAbility.getContext().getOrCreateDistributedDir();
+    let fpath = await nextFileName('fileIO_test_symlink_async_005');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.symlink(fpath, dstDir + '/link_002', (err) => {
+        if (err) {
+          fileIO.unlinkSync(fpath);
+          console.log('fileIO_test_symlink_async_005 error: {message: ' + err.message + ', code: ' + err.code + '}');
+          expect(err.code == 13900001 && err.message == 'Operation not permitted').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_symlink_async_005 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 });

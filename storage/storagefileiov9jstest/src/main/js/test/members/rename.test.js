@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import featureAbility from '@ohos.ability.featureAbility';
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect, randomString
 } from '../Common';
@@ -176,18 +177,64 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_sync_006', 0, async function (done) {
+  it('fileIO_test_rename_sync_006', 0, async function () {
     let fpath = await nextFileName('fileIO_test_rename_sync_006');
     let fpathTarget = fpath + randomString(250);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileIO.rename(fpath, fpathTarget);
+      fileIO.renameSync(fpath, fpathTarget);
       expect(false).assertTrue();
     } catch (e) {
+      fileIO.unlinkSync(fpath);
       console.log('fileIO_test_rename_sync_006 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900030 && e.message == 'File name too long').assertTrue();
-      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_RENAME_SYNC_0700
+   * @tc.name fileIO_test_rename_sync_007
+   * @tc.desc Test rename() interfaces.
+   * Don't have permission to operate on the root directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_rename_sync_007', 0, async function () {
+
+    try {
+      fileIO.renameSync('/data', '/data_new');
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_test_rename_sync_007 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900012 && e.message == 'Permission denied').assertTrue();
+    }
+  });
+  
+  /**
+   * @tc.number SUB_DF_FILEIO_RENAME_SYNC_0800
+   * @tc.name fileIO_test_rename_sync_008
+   * @tc.desc Test rename() interfaces.
+   * Can't modify file names across devices.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_rename_sync_008', 0, async function () {
+    let dstDir = await featureAbility.getContext().getOrCreateDistributedDir();
+    let fpath = await nextFileName('fileIO_test_rename_sync_008');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.renameSync(fpath, dstDir + '/data_new');
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.unlinkSync(fpath);
+      console.log('fileIO_test_rename_sync_008 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900016 && e.message == 'Cross-device link').assertTrue();
     }
   });
 
@@ -453,6 +500,7 @@ describe('fileIO_fs_rename', function () {
       await fileIO.rename(fpath, fpathTarget);
       expect(false).assertTrue();
     } catch (e) {
+      fileIO.unlinkSync(fpath);
       console.log('fileIO_test_rename_async_009 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900030 && e.message == 'File name too long').assertTrue();
       done();
@@ -485,6 +533,84 @@ describe('fileIO_fs_rename', function () {
       });
     } catch (e) {
       console.log('fileIO_test_rename_async_010 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_RENAME_ASYNC_1100
+   * @tc.name fileIO_test_rename_async_011
+   * @tc.desc Test rename() interfaces. Promise.
+   * Don't have permission to operate on the root directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_rename_async_011', 0, async function (done) {
+
+    try {
+      await fileIO.rename('/data', '/data_new');
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_test_rename_async_011 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900012 && e.message == 'Permission denied').assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_RENAME_ASYNC_1200
+   * @tc.name fileIO_test_rename_async_012
+   * @tc.desc Test rename() interfaces.
+   * Can't modify file names across devices.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_rename_async_012', 0, async function (done) {
+    let dstDir = await featureAbility.getContext().getOrCreateDistributedDir();
+    let fpath = await nextFileName('fileIO_test_rename_async_012');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      await fileIO.rename(fpath, dstDir + '/data_new');
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.unlinkSync(fpath);
+      console.log('fileIO_test_rename_async_012 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900016 && e.message == 'Cross-device link').assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_RENAME_ASYNC_1300
+   * @tc.name fileIO_test_rename_async_013
+   * @tc.desc Test rename() interfaces.
+   * Can't modify file names across devices.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_rename_async_013', 0, async function (done) {
+    let dstDir = await featureAbility.getContext().getOrCreateDistributedDir();
+    let fpath = await nextFileName('fileIO_test_rename_async_013');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.rename(fpath, dstDir + '/data_new', (err) => {
+        if (err) {
+          fileIO.unlinkSync(fpath);
+          console.log('fileIO_test_symlink_async_005 error: {message: ' + err.message + ', code: ' + err.code + '}');
+          expect(err.code == 13900016 && err.message == 'Cross-device link').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_rename_async_013 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });

@@ -363,7 +363,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_013', 0, async function (done) {
+  it('fileIO_test_open_sync_013', 0, async function () {
 
     try {
       fileIO.openSync(-1, fileIO.OpenMode.READ_WRITE);
@@ -371,7 +371,30 @@ export default function fileIOOpen() {
     } catch (e) {
       console.log('fileIO_test_open_sync_013 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
-      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_SYNC_1400
+   * @tc.name fileIO_test_open_sync_014
+   * @tc.desc Test openSync() interfaces. mode=0o200000.
+   * The path refers to a directory, not a file.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_open_sync_014', 0, async function () {
+    let dpath = await nextFileName('fileIO_test_open_sync_012');
+    fileIO.mkdirSync(dpath);
+
+    try {
+      fileIO.openSync(dpath, fileIO.OpenMode.READ_WRITE);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_open_sync_014 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900019 && e.message == 'Is a directory').assertTrue();
     }
   });
 
@@ -1215,6 +1238,60 @@ export default function fileIOOpen() {
       });
     } catch (e) {
       console.log('fileIO_test_open_async_028 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_2900
+   * @tc.name fileIO_test_open_async_029
+   * @tc.desc Test open() interfaces. Promise.
+   * The path refers to a file, not a directory.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_open_async_029', 0, async function (done) {
+    let dpath = await nextFileName('fileIO_test_open_async_029');
+    fileIO.mkdirSync(dpath);
+
+    try {
+      await fileIO.open(dpath, fileIO.OpenMode.READ_WRITE);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_open_async_029 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900019 && e.message == 'Is a directory').assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_3000
+   * @tc.name fileIO_test_open_async_030
+   * @tc.desc Test open() interfaces. Callback.
+   * The path refers to a file, not a directory.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_open_async_030', 0, async function (done) {
+    let dpath = await nextFileName('fileIO_test_open_async_030');
+    fileIO.mkdirSync(dpath);
+
+    try {
+      fileIO.open(dpath, fileIO.OpenMode.READ_WRITE, (err, file) => {
+        if (err) {
+          fileIO.rmdirSync(dpath);
+          console.log('fileIO_test_open_async_030 error: {message: ' + err.message + ', code: ' + err.code + '}');
+          expect(err.code == 13900019 && err.message == 'Is a directory').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_open_async_030 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
