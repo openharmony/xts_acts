@@ -37,9 +37,9 @@ export default class MediaUtils {
         Logger.info(this.tag, `displayName = ${displayName},mediaType = ${mediaType}`)
         let publicPath = await this.mediaTest.getPublicDirectory(info.directory)
         Logger.info(this.tag, `publicPath = ${publicPath}`)
-        try{
+        try {
             return await this.mediaTest.createAsset(mediaType, displayName, publicPath)
-        }catch(err){
+        } catch (err) {
             Logger.info(this.tag, `createAsset err ` + JSON.stringify(err))
         }
 
@@ -77,9 +77,26 @@ export default class MediaUtils {
         }
     }
 
+    async getFileAssetsAlbum(path){
+        let fileKeyObj = mediaLibrary.FileKey
+        // ALBUM_NAME
+        let fetchOp = {
+            selections: `${fileKeyObj.RELATIVE_PATH}=?`,
+            selectionArgs: [`${path}`],
+        }
+        const fetchFileResult = await this.mediaTest.getFileAssets(fetchOp)
+        Logger.info(this.tag, `getFileAssetsAlbum,fetchFileResult.count = ${fetchFileResult.getCount()}`)
+        let fileAssets:Array<mediaLibrary.FileAsset> = []
+        if (fetchFileResult.getCount() > 0) {
+            fileAssets = await fetchFileResult.getAllObject()
+        }
+        return fileAssets
+    }
+
     async getFileAssetsFromType(mediaType: number) {
         Logger.info(this.tag, `getFileAssetsFromType,mediaType = ${mediaType}`)
         let fileKeyObj = mediaLibrary.FileKey
+        // ALBUM_NAME
         let fetchOp = {
             selections: `${fileKeyObj.MEDIA_TYPE}=?`,
             selectionArgs: [`${mediaType}`],
@@ -97,10 +114,10 @@ export default class MediaUtils {
         Logger.info(this.tag, 'getAlbums begin')
         let albums = []
         const [ files, images, videos, audios ] = await Promise.all([
-            this.getFileAssetsFromType(mediaLibrary.MediaType.FILE),
-            this.getFileAssetsFromType(mediaLibrary.MediaType.IMAGE),
-            this.getFileAssetsFromType(mediaLibrary.MediaType.VIDEO),
-            this.getFileAssetsFromType(mediaLibrary.MediaType.AUDIO)
+        this.getFileAssetsFromType(mediaLibrary.MediaType.FILE),
+        this.getFileAssetsFromType(mediaLibrary.MediaType.IMAGE),
+        this.getFileAssetsFromType(mediaLibrary.MediaType.VIDEO),
+        this.getFileAssetsFromType(mediaLibrary.MediaType.AUDIO)
         ])
         albums.push({
             albumName: 'Documents', count: files.length, mediaType: mediaLibrary.MediaType.FILE
@@ -120,6 +137,7 @@ export default class MediaUtils {
     deleteFile(media: any) {
         let uri = media.uri
         Logger.info(this.tag, `deleteFile,uri = ${uri}`)
+        // @ts-ignore
         return this.mediaTest.deleteAsset(uri)
     }
 

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import { CustomContainer } from '../common/AudioContainer';
 import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
@@ -21,14 +21,14 @@ import router from '@ohos.router';
 @Component
 struct playAudio {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'PlayAudio';
+  @State name: string = router.getParams()['audioTitle']
   @State StepTips: string = '测试目的：用于测试音频播放暂停seek\n预期结果：音频播放暂停seek功能正常';
-  private tag: string = 'qlw'
-  @State Vue: boolean = false
-  @State videoSrc: Resource = $rawfile('StarWars10s-1C-44100-2SW.wav')
-  @State isAutoPlay: boolean = true
-  @State showControls: boolean = true
-  controller: VideoController = new VideoController()
+  private tag: string = 'qlw';
+  @State Vue: boolean = false;
+  @State audioSrc: string = router.getParams()['audioUrl'];
+  @State isAutoPlay: boolean = true;
+  @State showControls: boolean = true;
+  controller: VideoController = new VideoController();
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
@@ -42,7 +42,7 @@ struct playAudio {
         }.backgroundColor(Color.Black)
         .onClick(() => {
           router.back({
-            url: 'pages/Player/Player_index',
+            url: 'pages/Player/PlayAudioList',
             params: { result: 'None', }
           })
         })
@@ -53,32 +53,33 @@ struct playAudio {
 
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Video({
-          src: this.videoSrc,
+          src: this.audioSrc,
           controller: this.controller
         })
           .width('100%')
           .height('60%')
           .autoPlay(this.isAutoPlay)
           .controls(this.showControls)
-		  .onFinish(() => {
-			this.Vue = true
-		  })
+          .onFinish(() => {
+            this.Vue = true;
+          })
       }.width('100%').height('80%').onClick(() => {
-        this.showControls = !this.showControls
+        this.showControls = !this.showControls;
       })
 
       CustomContainer({
         title: this.name,
-        Url: 'pages/Player/Player_index',
+        Url: 'pages/Player/PlayAudioList',
         StepTips: this.StepTips,
         name: $name,
         Vue: $Vue
       }).height('10%').width('100%')
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/Player/Player_index',
+      url: 'pages/Player/PlayAudioList',
     })
   }
 }
