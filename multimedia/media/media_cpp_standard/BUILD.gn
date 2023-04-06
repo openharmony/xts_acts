@@ -36,6 +36,7 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "//foundation//window/window_manager/interfaces/innerkits/wm",
     "//graphic/graphic_2d/interfaces/kits/surface",
     "//graphic/graphic_2d/interfaces/inner_api/surface",
+    "//base/startup/init/interfaces/kits/syscap/include",
     "$MEDIA_ROOT_DIR/interfaces/inner_api/native",
     "$MEDIA_ROOT_DIR/interfaces/kits/c",
     "$MEDIA_ROOT_DIR/frameworks/native/capi/common",
@@ -73,6 +74,7 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "//foundation/graphic/graphic_2d/frameworks/surface:surface",
     "//foundation/graphic/graphic_2d/rosen/modules/render_service_client:librender_service_client",
     "//foundation/window/window_manager/wm:libwm",
+    "//base/startup/init/interfaces/kits/syscap:deviceinfo_ndk",
   ]
   external_deps = [
     "c_utils:utils",

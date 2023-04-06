@@ -1780,7 +1780,7 @@ export async function avRecorderReliabilitTest24(avConfig, avRecorder, recorderT
     let result = true;
     avRecorder = await idle(avRecorder);
     await preparePromise(avRecorder, avConfig)
-    await startPromise(avRecorder)
+    await startPromise(avRecorder, recorderTime)
     await pausePromise(avRecorder)
     await avRecorder.stop().then(() => {
         console.info('avRecorderReliabilitTest24 stop avRecorder success');
@@ -1796,7 +1796,7 @@ export async function avRecorderReliabilitTest25(avConfig, avRecorder, recorderT
     let result = true;
     avRecorder = await idle(avRecorder);
     await preparePromise(avRecorder, avConfig)
-    await startPromise(avRecorder)
+    await startPromise(avRecorder, recorderTime)
     await pausePromise(avRecorder)
     await resumePromise(avRecorder)
     await avRecorder.stop().then(() => {
