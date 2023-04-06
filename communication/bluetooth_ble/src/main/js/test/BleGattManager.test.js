@@ -200,7 +200,7 @@ describe('bluetoothBLETest', function() {
         expect(ret).assertTrue();
         await gattClient.getDeviceName().then((data) => {
             console.info('[bluetooth_js] device name' + JSON.stringify(data))
-            expect(data).assertNull();
+            expect(true).assertEqual(data != null);
             done();
         }).catch(err => {
             console.error('bluetooth getDeviceName has error: '+ err);
@@ -229,7 +229,7 @@ describe('bluetoothBLETest', function() {
         expect(ret).assertTrue();
         gattClient.getDeviceName((err, data)=> {
             console.info('[bluetooth_js]getname value:'+JSON.stringify(data));
-            expect(data).assertNull();
+            expect(true).assertEqual(data != null);
             let disconnect = gattClient.disconnect();
             console.info('[bluetooth_js] gatt getname1 disconnect:' + disconnect);
             expect(disconnect).assertEqual(false);
