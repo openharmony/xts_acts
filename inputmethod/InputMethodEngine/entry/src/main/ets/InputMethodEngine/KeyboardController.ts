@@ -21,6 +21,7 @@ import commoneventmanager from '@ohos.commonEventManager';
 
 let inputMethodEngine = inputmethodengine.getInputMethodEngine();
 let inputKeyboardDelegate = inputmethodengine.createKeyboardDelegate();
+let inputMethodAbility = inputmethodengine.getInputMethodAbility();
 const TAG = "keyboardController";
 
 export class KeyboardController {
@@ -38,6 +39,15 @@ export class KeyboardController {
     public onCreate(): void {
         this.initWindow();
         let that = this;
+        inputMethodAbility.on("inputStop", () => {
+            try{
+                that.mContext.destroy((err) => {
+                    console.info(TAG + '====>inputMethodEngine destroy err:' + JSON.stringify(err));
+                })
+            }catch(err){
+                console.info(TAG + '====>inputMethodEngine destroy catch err:' + JSON.stringify(err));
+            }
+        })
 
         function subscriberCallback(err, data) {
             console.debug(TAG + '====>receive event err: ' + JSON.stringify(err));
