@@ -347,7 +347,7 @@ export default function swiperJsunit() {
       try {
         let eventData = {
           data: {
-            "duration": "500"
+            "duration": 500
           }
         }
         let indexEvent = {
@@ -451,7 +451,7 @@ export default function swiperJsunit() {
       try {
         let eventData = {
           data: {
-            "duration": "0"
+            "duration": 0
           }
         }
         let indexEvent = {
