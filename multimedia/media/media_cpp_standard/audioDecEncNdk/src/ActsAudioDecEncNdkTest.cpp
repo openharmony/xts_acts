@@ -21,6 +21,7 @@
 #include "native_avcodec_base.h"
 #include "native_avformat.h"
 #include "ADecEncNdkSample.h"
+#include "syscap_ndk.h"
 
 using namespace std;
 using namespace testing::ext;
@@ -91,6 +92,13 @@ bool SetFormat(struct OH_AVFormat *format, map<string, int> mediaDescription)
     }
     return true;
 }
+
+bool CanUseAudioCodec()
+{
+    return canIUse("SystemCapability.Multimedia.Media.CodecBase") &&
+        canIUse("SystemCapability.Multimedia.Media.AudioDecoder") &&
+        canIUse("SystemCapability.Multimedia.Media.AudioEncoder");
+}
 }
 
 /**
@@ -100,6 +108,10 @@ bool SetFormat(struct OH_AVFormat *format, map<string, int> mediaDescription)
  */
 HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0100, TestSize.Level1)
 {
+    if (!CanUseAudioCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0100 ignore" <<endl;
+        return;
+    }
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
     map<string, int> AudioParam = {
@@ -154,6 +166,10 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_010
  */
 HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0200, TestSize.Level1)
 {
+    if (!CanUseAudioCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0200 ignore" <<endl;
+        return;
+    }
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
     struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
@@ -196,6 +212,10 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_020
  */
 HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0300, TestSize.Level1)
 {
+    if (!CanUseAudioCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0300 ignore" <<endl;
+        return;
+    }
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
     struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
@@ -236,6 +256,10 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_030
  */
 HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0400, TestSize.Level1)
 {
+    if (!CanUseAudioCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0400 ignore" <<endl;
+        return;
+    }
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
     struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
@@ -286,6 +310,10 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_040
  */
 HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0500, TestSize.Level1)
 {
+    if (!CanUseAudioCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0500 ignore" <<endl;
+        return;
+    }
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
     struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
@@ -339,6 +367,10 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_050
  */
 HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0600, TestSize.Level1)
 {
+    if (!CanUseAudioCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0600 ignore" <<endl;
+        return;
+    }
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
     struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
@@ -391,6 +423,10 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_060
  */
 HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0700, TestSize.Level1)
 {
+    if (!CanUseAudioCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_0700 ignore" <<endl;
+        return;
+    }
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
     struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
