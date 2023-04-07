@@ -21,16 +21,16 @@ const TIMEOUT = 2000;
 export default function ActsAccountChangeOnOff() {
     describe('ActsAccountChangeOnOff', async function () {
 
-        function sleep(delay) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve()
-                }, delay)
-            }).then(() => {
-                console.info(`sleep #{time} over ...`)
-            })
+        async function sleep(delay) {
+            let timeoutId = null;
+            var promise = new Promise((resolve, reject) => {
+                timeoutId = setTimeout(() => resolve("done!"), delay);
+            });
+            await promise
+            clearTimeout(timeoutId)
         }
-        beforeAll(async function (done) { 
+
+        beforeAll(async function (done) {
             done();
         });
 
