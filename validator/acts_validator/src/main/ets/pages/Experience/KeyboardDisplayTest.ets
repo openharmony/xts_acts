@@ -18,7 +18,8 @@ import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
 
 let path = globalThis.dir;
-let Xpath = path + '/CompleteTimeKeyboard.log';
+let path1 = path + '/ExperienceData';
+let Xpath = path1 + '/CompleteTimeKeyboard.log';
 
 @Entry
 @Component

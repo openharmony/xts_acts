@@ -18,7 +18,8 @@ import {CustomContainer} from '../common/TimeExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 
 let path = globalThis.dir;
-let Xpath = path + '/ResponseTimePhotos.log';
+let path1 = path + '/ExperienceData';
+let Xpath = path1 + '/ResponseTimePhotos.log';
 
 @Entry
 @Component

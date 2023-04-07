@@ -20,7 +20,8 @@ import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
-let PhotosColdPath = path + '/ColdStartPhotos.log';
+let path1 = path + '/ExperienceData';
+let PhotosColdPath = path1 + '/ColdStartPhotos.log';
 @Entry
 @Component
 struct CustomContainerUser {

@@ -30,6 +30,7 @@ let path3 = path + '/Camera';
 let path4 = path + '/Player';
 let path5 = path + '/Experience';
 let picturePath = path + '/screenshot';
+let ExperienceDataPath = path + '/ExperienceData';
 let ArkUIColorBackPath = path + '/ArkUIColorBack.txt';
 let AudioColorBackPath = path + '/AudioColorBack.txt';
 let CameraColorBackPath = path + '/CameraColorBack.txt';
@@ -214,6 +215,8 @@ struct IndexPage {
     fileio.unlinkSync(ExperienceColorBackPath);
     fileio.rmdirSync(picturePath);
     fileio.mkdirSync(picturePath);
+    fileio.rmdirSync(ExperienceDataPath);
+    fileio.mkdirSync(ExperienceDataPath);
     fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
     fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(path11, 0o100 | 0o2002, 0o664);

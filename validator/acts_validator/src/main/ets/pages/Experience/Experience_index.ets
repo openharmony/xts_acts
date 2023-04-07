@@ -24,6 +24,7 @@ import data_preferences from '@ohos.data.preferences';
 const TAG = 'ParseXML';
 let path = globalThis.dir;
 let path1 = path + '/Experience';
+let ExperienceDataPath = path + '/ExperienceData';
 
 let VarColor = [];
 let ColorBackPath = path + '/ExperienceColorBack.txt';
@@ -150,7 +151,7 @@ struct IndexPage {
       Row() {
         Button() {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp')
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back();
         })
@@ -243,6 +244,8 @@ struct IndexPage {
   ClearText(){
     fileio.rmdirSync(path1);
     fileio.mkdirSync(path1);
+    fileio.rmdirSync(ExperienceDataPath);
+    fileio.mkdirSync(ExperienceDataPath);
     let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
     for(let i = 0; i < this.TestCaseList.length; i++) {
       let log = (this.TestCaseList[i].title+';'+'#ff808080'+';').toString();

@@ -18,7 +18,8 @@ import {CustomContainer} from '../common/ExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 
 let path = globalThis.dir;
-let Xpath = path + '/PhotoFps.log';
+let path1 = path + '/ExperienceData';
+let Xpath = path1 + '/PhotoFps.log';
 
 @Entry
 @Component

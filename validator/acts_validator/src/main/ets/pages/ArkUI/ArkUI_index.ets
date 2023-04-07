@@ -154,7 +154,7 @@ struct IndexPage {
       Row() {
         Button() {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp')
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back();
         })

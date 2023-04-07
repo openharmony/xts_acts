@@ -20,7 +20,8 @@ import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
-let MmsColdPath = path + '/HotStartMms.log';
+let path1 = path + '/ExperienceData';
+let MmsColdPath = path1 + '/HotStartMms.log';
 @Entry
 @Component
 struct CustomContainerUser {
