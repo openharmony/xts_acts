@@ -471,5 +471,31 @@ export default function swiperJsunit() {
       console.info('swiperTest_1900 END');
       done();
     });
+
+    it('swiperTest_2000', 0, async function (done) {
+      console.info('swiperTest_2000 START');
+      try {
+        let eventData = {
+          data: {
+            "duration": "abc"
+          }
+        }
+        let indexEvent = {
+          eventId: 210,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("swiperTest_2000 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("swiperTest_2000 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('swiper');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("swiperTest_2000 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.duration).assertEqual('400.000000');
+      console.info('swiperTest_2000 END');
+      done();
+    });
   })
 }
