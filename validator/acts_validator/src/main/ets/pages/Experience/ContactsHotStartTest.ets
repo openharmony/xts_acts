@@ -20,7 +20,8 @@ import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
-let ContactsColdPath = path + '/HotStartContacts.log';
+let path1 = path + '/ExperienceData';
+let ContactsColdPath = path1 + '/HotStartContacts.log';
 @Entry
 @Component
 struct CustomContainerUser {

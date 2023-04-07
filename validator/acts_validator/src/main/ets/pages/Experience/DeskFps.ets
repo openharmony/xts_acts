@@ -21,7 +21,8 @@ import router from '@ohos.router';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
-let Xpath = path + '/DeskFps.log'
+let path1 = path + '/ExperienceData';
+let Xpath = path1 + '/DeskFps.log'
 @Entry
 @Component
 struct CustomContainerUser {
