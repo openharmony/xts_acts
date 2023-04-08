@@ -12,12 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import imeAbilityTest from './imeAbilityTest.test'
-import inputMethodStageJSUnit from './inputMethodStageJSUnit';
-import inputMethodNormalStageJSUnit from './inputMethodNormalStageJSUnit';
+import inputMethodAuthorityJSUnit from './inputmethodauthority.test';
 
 export default function testsuite() {
-  imeAbilityTest(globalThis.abilityContext);
-  inputMethodStageJSUnit();
-  inputMethodNormalStageJSUnit();
+  inputMethodAuthorityJSUnit();
 }
