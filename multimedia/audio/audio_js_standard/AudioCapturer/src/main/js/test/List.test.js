@@ -14,9 +14,11 @@
  */
 
  import audioCapturer from './AudioCapturer.test.js'
+ import AudioCapturerInterruptUnitTest from './AudioCapturerInterrupt.test.js'
  
  export default function testsuite() {
     audioCapturer()
+    AudioCapturerInterruptUnitTest()
  }
 
 
