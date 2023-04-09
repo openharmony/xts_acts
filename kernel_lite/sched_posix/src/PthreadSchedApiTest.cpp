@@ -204,8 +204,9 @@ HWTEST_F(PthreadSchedApiTest, testAttrSetSchedPolicyError, Function | MediumTest
 
     // SCHED_FIFO is 1, and SCHED_RR is 2
     const int testLoop = 7;
-    int invalidPolicy[testLoop] = {SCHED_OTHER, SCHED_BATCH, SCHED_IDLE, SCHED_DEADLINE, SCHED_RESET_ON_FORK};
-    invalidPolicy[5] = -GetRandom(10000);
+    int invalidPolicy[testLoop] = {SCHED_OTHER, SCHED_BATCH, SCHED_IDLE, SCHED_RESET_ON_FORK};
+    invalidPolicy[4] = GetRandom(10000);
+    invalidPolicy[5] = -GetRandom(10000) + 6;
     invalidPolicy[6] = GetRandom(10000) + 6;
     for (int i = 0; i < testLoop; i++) {
         rt = pthread_attr_setschedpolicy(&attr, invalidPolicy[i]);
