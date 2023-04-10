@@ -15,8 +15,9 @@
 
 import { describe, expect, it, afterEach } from '@ohos/hypium';
 import mdns from '@ohos.net.mdns';
+import featureAbility from '@ohos.ability.featureAbility';
 
-let bundleName = "com.example.mdns";
+let bundleName = featureAbility.getContext();
 let delayTime = 3000;
 
 let startSearching_status;
@@ -87,12 +88,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_addLocalService_Async_0100
+         * @tc.number SUB_Telephony_NetManager_addLocalService_Async_0100
          * @tc.name Test addLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_addLocalService_Async_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_addLocalService_Async_0100';
+        it('SUB_Telephony_NetManager_addLocalService_Async_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_addLocalService_Async_0100';
             mdns.addLocalService(bundleName, localServiceInfo, (err, data) => {
                 if (err) {
                     console.log(`${caseName} addLocalService fail ${JSON.stringify(err)}`);
@@ -117,12 +118,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_addLocalService_Async_0400
+         * @tc.number SUB_Telephony_NetManager_addLocalService_Async_0400
          * @tc.name Test addLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_addLocalService_Async_0400', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_addLocalService_Async_0400';
+        it('SUB_Telephony_NetManager_addLocalService_Async_0400', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_addLocalService_Async_0400';
             mdns.addLocalService(bundleName, localServiceInfo, (err, data) => {
                 if (err) {
                     console.log(`${caseName} addLocalService fail ${JSON.stringify(err)}`);
@@ -157,12 +158,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_addLocalService_Async_0500
+         * @tc.number SUB_Telephony_NetManager_addLocalService_Async_0500
          * @tc.name Test addLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_addLocalService_Async_0500', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_addLocalService_Async_0500';
+        it('SUB_Telephony_NetManager_addLocalService_Async_0500', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_addLocalService_Async_0500';
             let localServiceInfo = {}
             mdns.addLocalService(bundleName, localServiceInfo, (err, data) => {
                 if (err) {
@@ -178,12 +179,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_addLocalService_Async_0600
+         * @tc.number SUB_Telephony_NetManager_addLocalService_Async_0600
          * @tc.name Test addLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_addLocalService_Async_0600', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_addLocalService_Async_0600';
+        it('SUB_Telephony_NetManager_addLocalService_Async_0600', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_addLocalService_Async_0600';
             try {
                 mdns.addLocalService(null, localServiceInfo, (err, data) => {
                     if (err) {
@@ -205,12 +206,12 @@ export default function NetworkManagerMdnsTest() {
 
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_addLocalService_Promise_0100
+         * @tc.number SUB_Telephony_NetManager_addLocalService_Promise_0100
          * @tc.name Test addLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_addLocalService_Promise_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_addLocalService_Promise_0100';
+        it('SUB_Telephony_NetManager_addLocalService_Promise_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_addLocalService_Promise_0100';
             mdns.addLocalService(bundleName, localServiceInfo).then((data) => {
                 console.log(`${caseName} addLocalService success `);
                 myExpect(data);
@@ -231,12 +232,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_addLocalService_Promise_0400
+         * @tc.number SUB_Telephony_NetManager_addLocalService_Promise_0400
          * @tc.name Test addLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_addLocalService_Promise_0400', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_addLocalService_Promise_0400';
+        it('SUB_Telephony_NetManager_addLocalService_Promise_0400', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_addLocalService_Promise_0400';
             mdns.addLocalService(bundleName, localServiceInfo).then((data) => {
                 console.log(`${caseName} addLocalService success `);
                 myExpect(data);
@@ -265,12 +266,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_addLocalService_Promise_0500
+         * @tc.number SUB_Telephony_NetManager_addLocalService_Promise_0500
          * @tc.name Test addLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_addLocalService_Promise_0500', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_addLocalService_Promise_0500';
+        it('SUB_Telephony_NetManager_addLocalService_Promise_0500', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_addLocalService_Promise_0500';
             let localServiceInfo = {}
             mdns.addLocalService(bundleName, localServiceInfo).then((data) => {
                 console.log(`${caseName} addLocalService success `);
@@ -283,12 +284,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_addLocalService_Promise_0600
+         * @tc.number SUB_Telephony_NetManager_addLocalService_Promise_0600
          * @tc.name Test addLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_addLocalService_Promise_0600', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_addLocalService_Promise_0600';
+        it('SUB_Telephony_NetManager_addLocalService_Promise_0600', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_addLocalService_Promise_0600';
             try {
                 mdns.addLocalService(null, localServiceInfo).then((data) => {
                     console.log(`${caseName} addLocalService success `);
@@ -307,12 +308,12 @@ export default function NetworkManagerMdnsTest() {
 
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_removeLocalService_Async_0100
+         * @tc.number SUB_Telephony_NetManager_removeLocalService_Async_0100
          * @tc.name Test removeLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_removeLocalService_Async_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_removeLocalService_Async_0100';
+        it('SUB_Telephony_NetManager_removeLocalService_Async_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_removeLocalService_Async_0100';
             mdns.addLocalService(bundleName, localServiceInfo, (err, data) => {
                 if (err) {
                     console.log(`${caseName} addLocalService fail ${JSON.stringify(err)}`);
@@ -338,12 +339,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_removeLocalService_Async_0400
+         * @tc.number SUB_Telephony_NetManager_removeLocalService_Async_0400
          * @tc.name Test removeLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_removeLocalService_Async_0400', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_removeLocalService_Async_0400';
+        it('SUB_Telephony_NetManager_removeLocalService_Async_0400', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_removeLocalService_Async_0400';
             mdns.addLocalService(bundleName, localServiceInfo, (err, data) => {
                 if (err) {
                     console.log(`${caseName} addLocalService fail ${JSON.stringify(err)}`);
@@ -379,12 +380,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_removeLocalService_Async_0500
+         * @tc.number SUB_Telephony_NetManager_removeLocalService_Async_0500
          * @tc.name Test removeLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_removeLocalService_Async_0500', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_removeLocalService_Async_0500';
+        it('SUB_Telephony_NetManager_removeLocalService_Async_0500', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_removeLocalService_Async_0500';
             let localServiceInfo = {}
             mdns.removeLocalService(bundleName, localServiceInfo, (err, data) => {
                 if (err) {
@@ -400,12 +401,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_removeLocalService_Async_0600
+         * @tc.number SUB_Telephony_NetManager_removeLocalService_Async_0600
          * @tc.name Test removeLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_removeLocalService_Async_0600', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_removeLocalService_Async_0600';
+        it('SUB_Telephony_NetManager_removeLocalService_Async_0600', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_removeLocalService_Async_0600';
             try {
                 mdns.removeLocalService(null, localServiceInfo, (err, data) => {
                     if (err) {
@@ -426,12 +427,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_removeLocalService_Promise_0100
+         * @tc.number SUB_Telephony_NetManager_removeLocalService_Promise_0100
          * @tc.name Test removeLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_removeLocalService_Promise_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_removeLocalService_Promise_0100';
+        it('SUB_Telephony_NetManager_removeLocalService_Promise_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_removeLocalService_Promise_0100';
             mdns.addLocalService(bundleName, localServiceInfo).then((data) => {
                 console.log(`${caseName} addLocalService success `);
                 myExpect(data);
@@ -452,12 +453,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_removeLocalService_Promise_0400
+         * @tc.number SUB_Telephony_NetManager_removeLocalService_Promise_0400
          * @tc.name Test removeLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_removeLocalService_Promise_0400', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_removeLocalService_Promise_0400';
+        it('SUB_Telephony_NetManager_removeLocalService_Promise_0400', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_removeLocalService_Promise_0400';
             mdns.addLocalService(bundleName, localServiceInfo).then((data) => {
                 console.log(`${caseName} addLocalService success `);
                 myExpect(data);
@@ -487,12 +488,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_removeLocalService_Promise_0500
+         * @tc.number SUB_Telephony_NetManager_removeLocalService_Promise_0500
          * @tc.name Test removeLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_removeLocalService_Promise_0500', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_removeLocalService_Promise_0500';
+        it('SUB_Telephony_NetManager_removeLocalService_Promise_0500', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_removeLocalService_Promise_0500';
             let localServiceInfo = {}
             mdns.removeLocalService(bundleName, localServiceInfo).then((data) => {
                 console.log(`${caseName} removeLocalService success`);
@@ -506,12 +507,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_removeLocalService_Promise_0600
+         * @tc.number SUB_Telephony_NetManager_removeLocalService_Promise_0600
          * @tc.name Test removeLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_removeLocalService_Promise_0600', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_removeLocalService_Promise_0600';
+        it('SUB_Telephony_NetManager_removeLocalService_Promise_0600', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_removeLocalService_Promise_0600';
             try {
                 mdns.removeLocalService(null, localServiceInfo).then((data) => {
                     console.log(`${caseName} removeLocalService success`);
@@ -531,12 +532,12 @@ export default function NetworkManagerMdnsTest() {
 
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_createDiscoveryService_0100
+         * @tc.number SUB_Telephony_NetManager_createDiscoveryService_0100
          * @tc.name Test createDiscoveryService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_createDiscoveryService_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_createDiscoveryService_0100';
+        it('SUB_Telephony_NetManager_createDiscoveryService_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_createDiscoveryService_0100';
             let discoveryService = mdns.createDiscoveryService(bundleName, "_print._tcp");
             if (discoveryService != undefined) {
                 console.log(`${caseName} createDiscoveryService success`);
@@ -550,12 +551,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_createDiscoveryService_0400
+         * @tc.number SUB_Telephony_NetManager_createDiscoveryService_0400
          * @tc.name Test createDiscoveryService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_createDiscoveryService_0400', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_createDiscoveryService_0400';
+        it('SUB_Telephony_NetManager_createDiscoveryService_0400', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_createDiscoveryService_0400';
             let discoveryService = mdns.createDiscoveryService(bundleName, null);
             if (discoveryService != undefined) {
                 console.log(`${caseName} createDiscoveryService success`);
@@ -569,12 +570,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_createDiscoveryService_0500
+         * @tc.number SUB_Telephony_NetManager_createDiscoveryService_0500
          * @tc.name Test createDiscoveryService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_createDiscoveryService_0500', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_createDiscoveryService_0500';
+        it('SUB_Telephony_NetManager_createDiscoveryService_0500', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_createDiscoveryService_0500';
             let discoveryService = mdns.createDiscoveryService(null, "_print._tcp");
             if (discoveryService != undefined) {
                 console.log(`${caseName} createDiscoveryService success`);
@@ -589,12 +590,12 @@ export default function NetworkManagerMdnsTest() {
 
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_resolveLocalService_Async_0100
+         * @tc.number SUB_Telephony_NetManager_resolveLocalService_Async_0100
          * @tc.name Test resolveLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_resolveLocalService_Async_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_resolveLocalService_Async_0100';
+        it('SUB_Telephony_NetManager_resolveLocalService_Async_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_resolveLocalService_Async_0100';
             mdns.addLocalService(bundleName, localServiceInfo, (err, data) => {
                 if (err) {
                     console.log(`${caseName} addLocalService fail ${JSON.stringify(err)}`);
@@ -638,12 +639,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_resolveLocalService_Async_0400
+         * @tc.number SUB_Telephony_NetManager_resolveLocalService_Async_0400
          * @tc.name Test resolveLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_resolveLocalService_Async_0400', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_resolveLocalService_Async_0400';
+        it('SUB_Telephony_NetManager_resolveLocalService_Async_0400', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_resolveLocalService_Async_0400';
             let localServiceInfo = {};
             mdns.resolveLocalService(bundleName, localServiceInfo, (err, data) => {
                 if (err) {
@@ -659,12 +660,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_resolveLocalService_Async_0500
+         * @tc.number SUB_Telephony_NetManager_resolveLocalService_Async_0500
          * @tc.name Test resolveLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_resolveLocalService_Async_0500', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_resolveLocalService_Async_0500';
+        it('SUB_Telephony_NetManager_resolveLocalService_Async_0500', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_resolveLocalService_Async_0500';
             try {
                 mdns.resolveLocalService(null, localServiceInfo, (err, data) => {
                     if (err) {
@@ -685,12 +686,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_resolveLocalService_Promise_0100
+         * @tc.number SUB_Telephony_NetManager_resolveLocalService_Promise_0100
          * @tc.name Test resolveLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_resolveLocalService_Promise_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_resolveLocalService_Promise_0100';
+        it('SUB_Telephony_NetManager_resolveLocalService_Promise_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_resolveLocalService_Promise_0100';
             mdns.addLocalService(bundleName, localServiceInfo).then((data) => {
                 console.log(`${caseName} addLocalService success `);
                 myExpect(data);
@@ -726,12 +727,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_resolveLocalService_Promise_0400
+         * @tc.number SUB_Telephony_NetManager_resolveLocalService_Promise_0400
          * @tc.name Test resolveLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_resolveLocalService_Promise_0400', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_resolveLocalService_Promise_0400';
+        it('SUB_Telephony_NetManager_resolveLocalService_Promise_0400', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_resolveLocalService_Promise_0400';
             let localServiceInfo = {};
             mdns.resolveLocalService(bundleName, localServiceInfo).then((data) => {
                 console.log(`${caseName} resolveLocalService success `);
@@ -745,12 +746,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_resolveLocalService_Promise_0500
+         * @tc.number SUB_Telephony_NetManager_resolveLocalService_Promise_0500
          * @tc.name Test resolveLocalService() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_resolveLocalService_Promise_0500', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_resolveLocalService_Promise_0500';
+        it('SUB_Telephony_NetManager_resolveLocalService_Promise_0500', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_resolveLocalService_Promise_0500';
             try {
                 mdns.resolveLocalService(null, localServiceInfo).then((data) => {
                     console.log(`${caseName} resolveLocalService success `);
@@ -770,12 +771,12 @@ export default function NetworkManagerMdnsTest() {
 
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_startSearchingMDNS_0100
+         * @tc.number SUB_Telephony_NetManager_startSearchingMDNS_0100
          * @tc.name Test startSearchingMDNS() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_startSearchingMDNS_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_startSearchingMDNS_0100';
+        it('SUB_Telephony_NetManager_startSearchingMDNS_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_startSearchingMDNS_0100';
             startSearching_status = false;
             let discoveryService = mdns.createDiscoveryService(bundleName, "_print._tcp");
             discoveryService.on("discoveryStart", startSearching);
@@ -812,12 +813,12 @@ export default function NetworkManagerMdnsTest() {
 
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_stopSearchingMDNS_0100
+         * @tc.number SUB_Telephony_NetManager_stopSearchingMDNS_0100
          * @tc.name Test stopSearchingMDNS() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_stopSearchingMDNS_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_stopSearchingMDNS_0100';
+        it('SUB_Telephony_NetManager_stopSearchingMDNS_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_stopSearchingMDNS_0100';
             stopSearching_status = false;
             let discoveryService = mdns.createDiscoveryService(bundleName, "_print._tcp");
             discoveryService.on("discoveryStop", stopSearching);
@@ -853,12 +854,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_on_discoveryStart_0100
+         * @tc.number SUB_Telephony_NetManager_on_discoveryStart_0100
          * @tc.name Test on() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_on_discoveryStart_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_on_discoveryStart_0100';
+        it('SUB_Telephony_NetManager_on_discoveryStart_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_on_discoveryStart_0100';
             startSearching_status = false;
             let discoveryService = mdns.createDiscoveryService(bundleName, "_print._tcp");
             discoveryService.on("discoveryStart", startSearching);
@@ -894,12 +895,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_on_discoveryStop_0100
+         * @tc.number SUB_Telephony_NetManager_on_discoveryStop_0100
          * @tc.name Test on() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_on_discoveryStop_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_on_discoveryStop_0100';
+        it('SUB_Telephony_NetManager_on_discoveryStop_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_on_discoveryStop_0100';
             stopSearching_status = false;
             let discoveryService = mdns.createDiscoveryService(bundleName, "_print._tcp");
             discoveryService.on("discoveryStop", stopSearching);
@@ -935,12 +936,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_on_serviceFound_0100
+         * @tc.number SUB_Telephony_NetManager_on_serviceFound_0100
          * @tc.name Test on() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_on_serviceFound_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_on_serviceFound_0100';
+        it('SUB_Telephony_NetManager_on_serviceFound_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_on_serviceFound_0100';
             found_status = false;
             let discoveryService = mdns.createDiscoveryService(bundleName, "_print._tcp");
             discoveryService.on("serviceFound", found);
@@ -976,12 +977,12 @@ export default function NetworkManagerMdnsTest() {
         });
 
         /**
-         * @tc.number SUB_Telephony_NetworkManager_on_serviceLost_0100
+         * @tc.number SUB_Telephony_NetManager_on_serviceLost_0100
          * @tc.name Test on() interface
          * @tc.desc Function test
          */
-        it('SUB_Telephony_NetworkManager_on_serviceLost_0100', 0, async function (done) {
-            let caseName = 'SUB_Telephony_NetworkManager_on_serviceLost_0100';
+        it('SUB_Telephony_NetManager_on_serviceLost_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_on_serviceLost_0100';
             lost_status = false;
             let discoveryService = mdns.createDiscoveryService(bundleName, "_print._tcp");
             discoveryService.on("serviceLost", lost);
