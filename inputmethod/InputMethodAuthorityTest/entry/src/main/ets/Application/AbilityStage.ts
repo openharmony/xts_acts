@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import imeAbilityTest from './imeAbilityTest.test'
-import inputMethodStageJSUnit from './inputMethodStageJSUnit';
-import inputMethodNormalStageJSUnit from './inputMethodNormalStageJSUnit';
+import AbilityStage from "@ohos.app.ability.AbilityStage";
 
-export default function testsuite() {
-  imeAbilityTest(globalThis.abilityContext);
-  inputMethodStageJSUnit();
-  inputMethodNormalStageJSUnit();
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("MyAbilityStage onCreate");
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
+    }
 }
