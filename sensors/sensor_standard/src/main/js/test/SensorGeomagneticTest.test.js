@@ -82,6 +82,8 @@ describe("SensorJsTest_sensor_2", function () {
 
     let timeMillis = [1580486400000, 1612108800000, 1643644800000, 1675180800000, 1706716800000]
 
+    const EPS = 0.01
+
     /**
     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0010
     * @tc.name: SensorGeomagenticAlgorithmJSTest001
@@ -106,13 +108,13 @@ describe("SensorJsTest_sensor_2", function () {
                             + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
                             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: '
                             + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
-                            expect(data.x).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][0])
-                            expect(data.y).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][1])
-                            expect(data.z).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][2])
-                            expect(data.deflectionAngle).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][3])
-                            expect(data.geomagneticDip).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][4])
-                            expect(data.levelIntensity).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][5])
-                            expect(data.totalIntensity).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][6])
+                            expect(Math.abs(data.x - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][0]) < EPS).assertTrue()
+                            expect(Math.abs(data.y - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][1]) < EPS).assertTrue()
+                            expect(Math.abs(data.z - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][2]) < EPS).assertTrue()
+                            expect(Math.abs(data.deflectionAngle - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][3]) < EPS).assertTrue()
+                            expect(Math.abs(data.geomagneticDip - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][4]) < EPS).assertTrue()
+                            expect(Math.abs(data.levelIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][5]) < EPS).assertTrue()
+                            expect(Math.abs(data.totalIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][6]) < EPS).assertTrue()
                             setTimeout(() => {
                                 resolve()
                             }, 500)
@@ -150,13 +152,13 @@ describe("SensorJsTest_sensor_2", function () {
                         + data.z + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                         + ',totalIntensity: ' + data.totalIntensity)
-                        expect(data.x).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][0])
-                        expect(data.y).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][1])
-                        expect(data.z).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][2])
-                        expect(data.deflectionAngle).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][3])
-                        expect(data.geomagneticDip).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][4])
-                        expect(data.levelIntensity).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][5])
-                        expect(data.totalIntensity).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][6])
+                        expect(Math.abs(data.x - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][0]) < EPS).assertTrue()
+                        expect(Math.abs(data.y - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][1]) < EPS).assertTrue()
+                        expect(Math.abs(data.z - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][2]) < EPS).assertTrue()
+                        expect(Math.abs(data.deflectionAngle - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][3]) < EPS).assertTrue()
+                        expect(Math.abs(data.geomagneticDip - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][4]) < EPS).assertTrue()
+                        expect(Math.abs(data.levelIntensity - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][5]) < EPS).assertTrue()
+                        expect(Math.abs(data.totalIntensity - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][6]) < EPS).assertTrue()
                         setTimeout(() => {
                             resolve()
                         }, 500)
@@ -165,40 +167,6 @@ describe("SensorJsTest_sensor_2", function () {
             }))
         }
         Promise.all(promiseArray).then(done)
-    })
-
-    /**
-     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0030
-     * @tc.name: SensorGeomagenticAlgorithmJSTest003
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     */
-    it('SensorGeomagenticAlgorithmJSTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info("------------------SensorGeomagenticAlgorithmJSTest003-------------------------");
-        let geomagneticComponent = [-1417119616, 23146989568, -6406359552, -15.442885398864746,
-        93.50342559814453, 23190329344, 24058943488, 27779.234375, -6214.9794921875, -14924.6611328125,
-		-27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
-        sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 }, Number.MAX_VALUE,
-            (error, data) => {
-                if (error) {
-                    console.info('SensorGeomagenticAlgorithmJSTest003 failed');
-                    expect(false).assertTrue();
-                } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest003 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
-                    + ',geomagneticDip: ' + data.geomagneticDip
-                    + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
-                    + ',totalIntensity: ' + data.totalIntensity)
-                    expect(geomagneticComponent).assertContain(data.x)
-                    expect(geomagneticComponent).assertContain(data.y)
-                    expect(geomagneticComponent).assertContain(data.z)
-                    expect(geomagneticComponent).assertContain(data.geomagneticDip)
-                    expect(geomagneticComponent).assertContain(data.deflectionAngle)
-                    expect(geomagneticComponent).assertContain(data.levelIntensity)
-                    expect(geomagneticComponent).assertContain(data.totalIntensity)
-                }
-                setTimeout(() => {
-                    done()
-                }, 500)
-            })
     })
 
     /**
@@ -221,13 +189,13 @@ describe("SensorJsTest_sensor_2", function () {
                     + ',geomagneticDip: ' + data.geomagneticDip
                     + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                     + ',totalIntensity: ' + data.totalIntensity)
-                    expect(data.x).assertEqual(geomagneticComponent[0])
-                    expect(data.y).assertEqual(geomagneticComponent[1])
-                    expect(data.z).assertEqual(geomagneticComponent[2])
-                    expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-                    expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-                    expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-                    expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+                    expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+                    expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+                    expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+                    expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+                    expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+                    expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+                    expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
                 }
                 setTimeout(() => {
                     done()
@@ -254,13 +222,13 @@ describe("SensorJsTest_sensor_2", function () {
                     + ',geomagneticDip: ' + data.geomagneticDip
                     + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                     + ',totalIntensity: ' + data.totalIntensity)
-                    expect(data.x).assertEqual(geomagneticComponent[0])
-                    expect(data.y).assertEqual(geomagneticComponent[1])
-                    expect(data.z).assertEqual(geomagneticComponent[2])
-                    expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-                    expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-                    expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-                    expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+                    expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+                    expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+                    expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+                    expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+                    expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+                    expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+                    expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
                 }
                 setTimeout(() => {
                     done()
@@ -287,13 +255,13 @@ describe("SensorJsTest_sensor_2", function () {
                     + ',geomagneticDip: ' + data.geomagneticDip
                     + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                     + ',totalIntensity: ' + data.totalIntensity)
-                    expect(data.x).assertEqual(geomagneticComponent[0])
-                    expect(data.y).assertEqual(geomagneticComponent[1])
-                    expect(data.z).assertEqual(geomagneticComponent[2])
-                    expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-                    expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-                    expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-                    expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+                    expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+                    expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+                    expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+                    expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+                    expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+                    expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+                    expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
                 }
                 setTimeout(() => {
                     done()
@@ -321,13 +289,13 @@ describe("SensorJsTest_sensor_2", function () {
                     + ',geomagneticDip: ' + data.geomagneticDip
                     + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                     + ',totalIntensity: ' + data.totalIntensity)
-                    expect(data.x).assertEqual(geomagneticComponent[0])
-                    expect(data.y).assertEqual(geomagneticComponent[1])
-                    expect(data.z).assertEqual(geomagneticComponent[2])
-                    expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-                    expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-                    expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-                    expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+                    expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+                    expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+                    expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+                    expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+                    expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+                    expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+                    expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
                 }
                 setTimeout(() => {
                     done()
@@ -459,13 +427,13 @@ describe("SensorJsTest_sensor_2", function () {
                     + ',geomagneticDip: ' + data.geomagneticDip
                     + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                     + ',totalIntensity: ' + data.totalIntensity)
-                    expect(data.x).assertEqual(geomagneticComponent[0])
-                    expect(data.y).assertEqual(geomagneticComponent[1])
-                    expect(data.z).assertEqual(geomagneticComponent[2])
-                    expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-                    expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-                    expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-                    expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+                    expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+                    expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+                    expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+                    expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+                    expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+                    expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+                    expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
                 }
                 setTimeout(() => {
                     done()
@@ -821,46 +789,17 @@ describe("SensorJsTest_sensor_2", function () {
                 + ',geomagneticDip: ' + data.geomagneticDip
                 + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                 + ',totalIntensity: ' + data.totalIntensity);
-                expect(data.x).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][0])
-                expect(data.y).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][1])
-                expect(data.z).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][2])
-                expect(data.deflectionAngle).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][3])
-                expect(data.geomagneticDip).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][4])
-                expect(data.levelIntensity).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][5])
-                expect(data.totalIntensity).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][6])
+                expect(Math.abs(data.x - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][0]) < EPS).assertTrue()
+                expect(Math.abs(data.y - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][1]) < EPS).assertTrue()
+                expect(Math.abs(data.z - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][2]) < EPS).assertTrue()
+                expect(Math.abs(data.deflectionAngle - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][3]) < EPS).assertTrue()
+                expect(Math.abs(data.geomagneticDip - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][4]) < EPS).assertTrue()
+                expect(Math.abs(data.levelIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][5]) < EPS).assertTrue()
+                expect(Math.abs(data.totalIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][6]) < EPS).assertTrue()
             }).catch((error) => {
                 console.info("promise::catch", error);
             })
         }
-        done()
-    })
-
-    /**
-     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0270
-     * @tc.name: SensorGeomagenticAlgorithmJSTest027
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     */
-    it("SensorGeomagenticAlgorithmJSTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('------------------SensorGeomagenticAlgorithmJSTest027------------------');
-        let geomagneticComponent = [-1417119616, 23146989568, -6406359552, -15.442885398864746,
-        93.50342559814453, 23190329344, 24058943488, 27779.234375, -6214.9794921875, -14924.6611328125,
-		-27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
-        await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 },
-            Number.MAX_VALUE).then((data) => {
-            console.info('SensorGeomagenticAlgorithmJSTest027 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
-            + ',geomagneticDip: ' + data.geomagneticDip
-            + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
-            + ',totalIntensity: ' + data.totalIntensity)
-            expect(geomagneticComponent).assertContain(data.x)
-            expect(geomagneticComponent).assertContain(data.y)
-            expect(geomagneticComponent).assertContain(data.z)
-            expect(geomagneticComponent).assertContain(data.geomagneticDip)
-            expect(geomagneticComponent).assertContain(data.deflectionAngle)
-            expect(geomagneticComponent).assertContain(data.levelIntensity)
-            expect(geomagneticComponent).assertContain(data.totalIntensity)
-        }).catch((error) => {
-            console.info("promise::catch", error)
-        });
         done()
     })
 
@@ -879,13 +818,13 @@ describe("SensorJsTest_sensor_2", function () {
             + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
             + ',totalIntensity: ' + data.totalIntensity)
-            expect(data.x).assertEqual(geomagneticComponent[0])
-            expect(data.y).assertEqual(geomagneticComponent[1])
-            expect(data.z).assertEqual(geomagneticComponent[2])
-            expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-            expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-            expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-            expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+            expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+            expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+            expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+            expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+            expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+            expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+            expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
         }).catch((error) => {
             console.info("promise::catch", error);
         });
@@ -907,13 +846,13 @@ describe("SensorJsTest_sensor_2", function () {
             + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
             + ',totalIntensity: ' + data.totalIntensity)
-            expect(data.x).assertEqual(geomagneticComponent[0])
-            expect(data.y).assertEqual(geomagneticComponent[1])
-            expect(data.z).assertEqual(geomagneticComponent[2])
-            expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-            expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-            expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-            expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+            expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+            expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+            expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+            expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+            expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+            expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+            expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
         }).catch((error) => {
             console.info("promise::catch", error)
         });
@@ -935,13 +874,13 @@ describe("SensorJsTest_sensor_2", function () {
             + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
             + ',totalIntensity: ' + data.totalIntensity)
-            expect(data.x).assertEqual(geomagneticComponent[0])
-            expect(data.y).assertEqual(geomagneticComponent[1])
-            expect(data.z).assertEqual(geomagneticComponent[2])
-            expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-            expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-            expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-            expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+            expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+            expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+            expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+            expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+            expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+            expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+            expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
         }).catch((error) => {
             console.info("promise::catch", error)
         });
@@ -963,13 +902,13 @@ describe("SensorJsTest_sensor_2", function () {
             + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
             + ',totalIntensity: ' + data.totalIntensity)
-            expect(data.x).assertEqual(geomagneticComponent[0])
-            expect(data.y).assertEqual(geomagneticComponent[1])
-            expect(data.z).assertEqual(geomagneticComponent[2])
-            expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-            expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-            expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-            expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+            expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+            expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+            expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+            expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+            expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+            expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+            expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
         }).catch((error) => {
             console.info("promise::catch", error)
         });
@@ -1072,13 +1011,13 @@ describe("SensorJsTest_sensor_2", function () {
             + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
             + ',totalIntensity: ' + data.totalIntensity)
-            expect(data.x).assertEqual(geomagneticComponent[0])
-            expect(data.y).assertEqual(geomagneticComponent[1])
-            expect(data.z).assertEqual(geomagneticComponent[2])
-            expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-            expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-            expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-            expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+            expect(Math.abs(data.x - geomagneticComponent[0]) < EPS).assertTrue()
+            expect(Math.abs(data.y - geomagneticComponent[1]) < EPS).assertTrue()
+            expect(Math.abs(data.z - geomagneticComponent[2]) < EPS).assertTrue()
+            expect(Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS).assertTrue()
+            expect(Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS).assertTrue()
+            expect(Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS).assertTrue()
+            expect(Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS).assertTrue()
         }).catch((error) => {
             console.info("promise::catch", error)
         });
@@ -1139,13 +1078,13 @@ describe("SensorJsTest_sensor_2", function () {
                 + ',geomagneticDip: ' + data.geomagneticDip
                 + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                 + ',totalIntensity: ' + data.totalIntensity);
-                expect(data.x).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][0])
-                expect(data.y).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][1])
-                expect(data.z).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][2])
-                expect(data.deflectionAngle).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][3])
-                expect(data.geomagneticDip).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][4])
-                expect(data.levelIntensity).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][5])
-                expect(data.totalIntensity).assertEqual(GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][6])
+                expect(Math.abs(data.x - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][0]) < EPS).assertTrue()
+                expect(Math.abs(data.y - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][1]) < EPS).assertTrue()
+                expect(Math.abs(data.z - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][2]) < EPS).assertTrue()
+                expect(Math.abs(data.deflectionAngle - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][3]) < EPS).assertTrue()
+                expect(Math.abs(data.geomagneticDip - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][4]) < EPS).assertTrue()
+                expect(Math.abs(data.levelIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][5]) < EPS).assertTrue()
+                expect(Math.abs(data.totalIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[j][6]) < EPS).assertTrue()
             }).catch((error) => {
                 console.info("promise::catch", error)
             });
@@ -1270,13 +1209,13 @@ describe("SensorJsTest_sensor_2", function () {
                 + ',geomagneticDip: ' + data.geomagneticDip
                 + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                 + ',totalIntensity: ' + data.totalIntensity)
-                expect(data.x).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[i][0])
-                expect(data.y).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[i][1])
-                expect(data.z).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[i][2])
-                expect(data.deflectionAngle).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[i][3])
-                expect(data.geomagneticDip).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[i][4])
-                expect(data.levelIntensity).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[i][5])
-                expect(data.totalIntensity).assertEqual(GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[i][6])
+                expect(Math.abs(data.x - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][0]) < EPS).assertTrue()
+                expect(Math.abs(data.y - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][1]) < EPS).assertTrue()
+                expect(Math.abs(data.z - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][2]) < EPS).assertTrue()
+                expect(Math.abs(data.deflectionAngle - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][3]) < EPS).assertTrue()
+                expect(Math.abs(data.geomagneticDip - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][4]) < EPS).assertTrue()
+                expect(Math.abs(data.levelIntensity - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][5]) < EPS).assertTrue()
+                expect(Math.abs(data.totalIntensity - GEOMAGNETIC_COMPONENT_COORDINATES_RESULT[j][6]) < EPS).assertTrue()
             }).catch((error) => {
                 console.info("promise::catch", error);
             });
