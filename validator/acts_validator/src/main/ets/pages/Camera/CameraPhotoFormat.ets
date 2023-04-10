@@ -58,7 +58,7 @@ struct cameraOrientation {
     for (let index = 0; index < this.cameraListLength; index++) {
       this.cameraList.push({ value: `Camera ${index}` })
     }
-    // 测试总次数 = 摄像头0的分辨率 + 摄像头1的分辨率 优先以RK为主
+
     this.testingFrequency = this.resolution.length
     Logger.info(this.tag, `testingFrequency ${this.testingFrequency}`)
   }
@@ -79,7 +79,7 @@ struct cameraOrientation {
 
   async cameraInit(obj?) {
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj, this.clickFrequency).then(() => {
-      this.resolution = CameraService.previewSizeResolution
+      this.resolution = CameraService.photoResolution
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
       this.cameraListFn()
     })
@@ -145,7 +145,7 @@ struct cameraOrientation {
 
         Column() {
           Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
-           Text('图片').fontSize('20fp').fontColor(Color.White)
+          Text('图片').fontSize('20fp').fontColor(Color.White)
         }.size({ width: '40%', height: '60%' })
       }.width('100%').height('50%')
 
@@ -174,6 +174,7 @@ struct cameraOrientation {
               CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj)
               Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
             })
+          .backgroundColor(Color.Black)
           Select(this.cameraList)
             .selected(this.cameraDeviceIndex)
             .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
@@ -189,6 +190,7 @@ struct cameraOrientation {
                 this.cameraListFn()
               })
             })
+            .backgroundColor(Color.Black)
         }.justifyContent(FlexAlign.SpaceEvenly)
 
         Text(`提示：不同拍照分辨率下进行拍摄，图片拍摄成功且与预览画面一致则选择pass，否则选择fail`)
