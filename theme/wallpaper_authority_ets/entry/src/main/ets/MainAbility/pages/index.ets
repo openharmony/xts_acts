@@ -1,4 +1,5 @@
-/*
+// @ts-nocheck
+/**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,10 +14,25 @@
  * limitations under the License.
  */
 
-import wallpaperJSUnit from './wallpaperTest';
-import wallpaperNoPermissionTest from './wallpapernopermissionTest';
+@Entry
+@Component
+struct MyComponent {
+  aboutToAppear() {
+  }
 
-export default function testsuite() {
-  wallpaperJSUnit();
-  wallpaperNoPermissionTest();
+
+  build() {
+    Flex({
+      direction: FlexDirection.Column,
+      alignItems: ItemAlign.Center,
+      justifyContent: FlexAlign.Center
+    }) {
+      Text('WALLPAPERNORMAL ETS TEST')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height('100%')
+  }
 }
+
