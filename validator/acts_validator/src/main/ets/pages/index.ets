@@ -88,6 +88,7 @@ struct IndexPage {
       fileio.mkdirSync(path4);
       fileio.mkdirSync(path5);
       fileio.mkdirSync(picturePath);
+      fileio.mkdirSync(ExperienceDataPath);
 
       let promise = preferences.put('index', 1);
       promise.then(() => {
