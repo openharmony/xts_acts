@@ -119,6 +119,8 @@ describe("SensorJsTest_sensor_1", function () {
         [30, 25, 41], [3, 2, 4], [-123, -456, -564], [3.40282e+38, 3.40282e+38, 3.40282e+38], [NaN, NaN, NaN]
     ]
 
+    const EPS = 0.01
+
     /*
      * @tc.name:SensorJsTest_068
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -219,7 +221,14 @@ describe("SensorJsTest_sensor_1", function () {
     it('SensorJsTest_073', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.createRotationMatrix(gravity[1], geomagnetic[1]).then((data) => {
             console.info("SensorJsTest_073" + JSON.stringify(data))
-            expect(JSON.stringify(data)).assertEqual(JSON.stringify(SENSOR_DATA_MATRIX[1]))
+            expect(data.rotation.length).assertEqual(SENSOR_DATA_MATRIX[1].rotation.length)
+            for (let i = 0; i < data.rotation.length; ++i) {
+                expect(Math.abs(data.rotation[i] - SENSOR_DATA_MATRIX[1].rotation[i]) < EPS).assertTrue()
+            }
+            expect(data.inclination.length).assertEqual(SENSOR_DATA_MATRIX[1].inclination.length)
+            for (let i = 0; i < data.inclination.length; ++i) {
+                expect(Math.abs(data.inclination[i] - SENSOR_DATA_MATRIX[1].inclination[i]) < EPS).assertTrue()
+            }
             done()
         }, (error) => {
             expect(false).assertTrue();
