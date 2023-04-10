@@ -1013,5 +1013,20 @@ export default function NetworkManagerMdnsTest() {
                 }
             });
         });
+
+        /**
+         * @tc.number SUB_Telephony_NetManager_MdnsError_0100
+         * @tc.name Test MdnsError enum
+         * @tc.desc Function test
+         */
+        it('SUB_Telephony_NetManager_MdnsError_0100', 0, async function (done) {
+            let caseName = 'SUB_Telephony_NetManager_MdnsError_0100';
+            expect(mdns.MdnsError.INTERNAL_ERROR == 0 ).assertTrue();
+            expect(mdns.MdnsError.ALREADY_ACTIVE == 1 ).assertTrue();
+            expect(mdns.MdnsError.MAX_LIMIT == 2 ).assertTrue();
+            console.info(caseName + "test finish!");
+            done();                
+        });
+        
     });
 }
