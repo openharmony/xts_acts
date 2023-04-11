@@ -26,6 +26,7 @@ import fileIOListfile from './members/listFile.test.js'
 import fileIOLstat from './members/lstat.test.js'
 import fileIOMkdir from './members/mkdir.test.js'
 import fileIOMkdtemp from './members/mkdtemp.test.js'
+import fileIOMoveDir from './members/moveDir.test.js'
 import fileIOMoveFile from './members/moveFile.test.js'
 import fileIOOpen from './members/open.test.js'
 import fileIORead from './members/read.test.js'
@@ -56,6 +57,7 @@ export default function testsuite() {
     fileIOLstat()
     fileIOMkdir()
     fileIOMkdtemp()
+    fileIOMoveDir()
     fileIOMoveFile()
     fileIOOpen()
     fileIORead()
