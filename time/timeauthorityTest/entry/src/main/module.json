@@ -39,6 +39,16 @@
           }
         ]
       }
+    ],
+    "requestPermissions": [
+      {
+        "name":"ohos.permission.SET_TIME",
+        "reason":"need use ohos.permission.SET_TIME."
+      },
+      {
+        "name":"ohos.permission.SET_TIME_ZONE",
+        "reason":"need use ohos.permission.SET_TIME_ZONE."
+      }
     ]
   }
 }

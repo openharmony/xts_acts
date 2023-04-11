@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import systemTimeJsunit from './systemTimeTest';
-import systemTimeNoPermissionTest from './timeNoPermission.test'
+import systemTimeAuthorityJsunit from './timeAuthority.test';
+import systemTimeCommonEventTest from './systemTimeCommonEvent.test';
 
 export default function testsuite() {
-  systemTimeJsunit();
-  systemTimeNoPermissionTest();
+  systemTimeAuthorityJsunit();
+  systemTimeCommonEventTest();
 }

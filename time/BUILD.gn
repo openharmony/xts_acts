@@ -17,5 +17,6 @@ group("time") {
   deps = [
     "dateTimeTest:ActsDateTimeAPITest",
     "timeTest:ActsTimeAPITest",
+    "timeauthorityTest:ActsTimeAuthorityAPITest",
   ]
 }
