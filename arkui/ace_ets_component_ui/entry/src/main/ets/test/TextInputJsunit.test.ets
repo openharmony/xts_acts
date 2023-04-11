@@ -70,7 +70,7 @@ export default function TextInputJsunit() {
       expect(obj.$attrs.maxLength).assertEqual('10');
       expect(obj.$attrs.style).assertEqual('TextInputStyle.Default');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center');
-      expect(obj.$attrs.copyOption).assertEqual('CopyOptions.None');
+      expect(obj.$attrs.copyOption).assertEqual('CopyOptions.InApp');
       expect(obj.$attrs.showPasswordIcon).assertEqual(false); 
       console.info('[TextInputJsunit_0100] END');
       done();
@@ -192,14 +192,14 @@ export default function TextInputJsunit() {
       let textComponent3 = await driver.findComponent(BY.text('全选'));
       await textComponent3.click()
       await CommonFunc.sleep(200);
-      //let textComponent4 = await driver.findComponent(BY.text('复制'));
-      //await textComponent4.click()
+      let textComponent4 = await driver.findComponent(BY.text('复制'));
+      await textComponent4.click()
       await textComponent.click()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('copy');
       let obj = JSON.parse(strJson);
       console.info("[TextInputJsunit_0400] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('onCopy:');
+      expect(obj.$attrs.content).assertEqual('onCopy:hello');
       console.info("[TextInputJsunit_0400] Verify copy succ !");
 
       // Verify onCut function of TextInput component
@@ -210,13 +210,25 @@ export default function TextInputJsunit() {
       await CommonFunc.sleep(200);
       let textComponent6 = await driver.findComponent(BY.text('剪切'));
       await textComponent6.click()
-      //await textComponent.click()
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('cut');
       let obj1 = JSON.parse(strJson1);
       console.info("[TextInputJsunit_0400] component obj1 is: " + JSON.stringify(obj1));
-      expect(obj1.$attrs.content).assertEqual('onCut:');
+      expect(obj1.$attrs.content).assertEqual('onCut:hello');
       console.info("[TextInputJsunit_0400] Verify cut succ !");
+
+      // Verify onPaste function of TextInput component
+      await textComponent.click()
+      await textComponent.longClick()
+      await CommonFunc.sleep(1000);
+      let textComponent7 = await driver.findComponent(BY.text('粘贴'));
+      await textComponent7.click()
+      await CommonFunc.sleep(1000);
+      let strJson2 = getInspectorByKey('paste');
+      let obj2 = JSON.parse(strJson2);
+      console.info("[TextInputJsunit_0400] component obj2 is: " + JSON.stringify(obj2));
+      expect(obj2.$attrs.content).assertEqual('onPaste:hello');
+      console.info("[TextInputJsunit_0400] Verify paste succ !");
       console.info('[TextInputJsunit_0400] END');
       done();
     });
