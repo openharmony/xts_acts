@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
@@ -31,13 +32,7 @@ ohos_js_hap_suite("ActsAceXComponentEtsTest") {
 }
 
 ohos_prebuilt_shared_library("libcppsharedso") {
-  if (target_cpu == "arm") {
-    source = "//prebuilts/clang/ohos/linux-x86_64/libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so"
-  } else if (target_cpu == "arm64") {
-    source = "//prebuilts/clang/ohos/linux-x86_64/libcxx-ndk/lib/aarch64-linux-ohos/c++/libc++_shared.so"
-  } else {
-    source = " "
-  }
+  source = rebase_path(libcxx_ndk_shared_file)
 }
 
 ohos_js_assets("ace_ets_xcomponent_assets") {
