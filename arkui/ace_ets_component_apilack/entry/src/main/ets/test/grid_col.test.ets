@@ -61,5 +61,31 @@ export default function grid_colSpanJsunit() {
       console.info("[testgrid_colSpan0001] width value :" + obj.$attrs.width);
       done();
     });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0002
+     * @tc.name         testgrid_col_refactor_name002
+     * @tc.desc         acegrid_gridColRefactorName0002
+     */
+    it('testgrid_col_refactor_name002', 0, async function (done) {
+      console.info('testgrid_col_refactor_name002 START');
+      await Utils.sleep(2000);
+      let options = {
+        uri: 'pages/grid_col_muli',
+      }
+      try {
+            await router.push(options);
+            await Utils.sleep(2000);
+            let strJson = getInspectorByKey('2');
+            let obj = JSON.parse(strJson);
+            expect(obj.$type).assertEqual('GridCol');
+            console.info("[testgrid_col_refactor_name002] component height strJson:" + JSON.stringify(obj.$attrs));
+            expect(obj.$attrs.gridColOffset).assertEqual("3");
+      } catch (err) {
+          console.error("push grid_col page error: " + err);
+      }
+      done();
+    });
+
   })
 }

@@ -106,6 +106,7 @@
           "pages/page_transition",
           "pages/panel",
           "pages/path",
+          "pages/grid_col_muli",
           "pages/pluginComponent",
           "pages/polygon",
           "pages/polyLine",
