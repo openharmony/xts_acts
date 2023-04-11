@@ -587,15 +587,16 @@ describe('webgl1Test_webgl3', function() {
 		//initContext();
 		console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 
-		//设置线宽：
-		gl.lineWidth(5);
-		// 获取线宽：
-		const lineWidthValue = gl.getParameter(gl.LINE_WIDTH);
-		console.info("lineWidthValue: " + lineWidthValue);
 		// 获取可用宽度的范围。返回一个Float32Array.
 		const lineWidthArray = gl.getParameter(gl.ALIASED_LINE_WIDTH_RANGE);
 		console.info("lineWidthArray: " + lineWidthArray);
-		expect(lineWidthValue).assertEqual(5);
+		//设置线宽：
+		const width = Math.max(...lineWidthArray);
+		gl.lineWidth(width);
+		// 获取线宽：
+		const lineWidthValue = gl.getParameter(gl.LINE_WIDTH);
+		console.info("width: " + width + "lineWidthValue: " + lineWidthValue);
+		expect(lineWidthValue).assertEqual(width);
 		done();
 	});
 
