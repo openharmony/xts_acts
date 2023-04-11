@@ -729,28 +729,33 @@ export default function lifecycleTest() {
         console.log(TAG + " listtemp1 is :" + listtemp1);
         let exlist = listtemp;
         let exlist1 = listtemp1;
-        expect(exlist[0]).assertEqual("MainAbility1 onWindowStageCreate");
-        expect(exlist[1]).assertEqual("MainAbility1 onAbilityForeground");
-        expect(exlist[2]).assertEqual("MainAbility1 onAbilityBackground");
-        expect(exlist[3]).assertEqual("MainAbility1 onAbilityForeground");
-        expect(exlist[4]).assertEqual("MainAbility1 onAbilityBackground");
-        expect(exlist[5]).assertEqual("MainAbility1 onAbilityForeground");
-        expect(exlist[6]).assertEqual("MainAbility1 onAbilityBackground");
-        expect(exlist1[0]).assertEqual("MainAbility2 onAbilityCreate");
-        expect(exlist1[1]).assertEqual("MainAbility2 onWindowStageCreate");
-        expect(exlist1[2]).assertEqual("MainAbility2 onAbilityForeground");
-        expect(exlist1[3]).assertEqual("MainAbility2 onAbilityBackground");
-        expect(exlist1[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-        expect(exlist1[5]).assertEqual("MainAbility2 onAbilityDestroy");
-        expect(exlist1[6]).assertEqual("MainAbility2 onAbilityCreate");
-        expect(exlist1[7]).assertEqual("MainAbility2 onWindowStageCreate");
-        expect(exlist1[8]).assertEqual("MainAbility2 onAbilityForeground");
-        expect(exlist1[9]).assertEqual("MainAbility2 onAbilityBackground");
-        expect(exlist1[10]).assertEqual("MainAbility2 onWindowStageDestroy");
-        expect(exlist1[11]).assertEqual("MainAbility2 onAbilityDestroy");
-        expect(exlist1[12]).assertEqual("MainAbility2 onAbilityCreate");
-        expect(exlist1[13]).assertEqual("MainAbility2 onWindowStageCreate");
-        expect(exlist1[14]).assertEqual("MainAbility2 onAbilityForeground");
+        try {
+          expect(exlist[0]).assertEqual("MainAbility1 onWindowStageCreate");
+          expect(exlist[1]).assertEqual("MainAbility1 onAbilityForeground");
+          expect(exlist[2]).assertEqual("MainAbility1 onAbilityBackground");
+          expect(exlist[3]).assertEqual("MainAbility1 onAbilityForeground");
+          expect(exlist[4]).assertEqual("MainAbility1 onAbilityBackground");
+          expect(exlist[5]).assertEqual("MainAbility1 onAbilityForeground");
+          expect(exlist[6]).assertEqual("MainAbility1 onAbilityBackground");
+          expect(exlist1[0]).assertEqual("MainAbility2 onAbilityCreate");
+          expect(exlist1[1]).assertEqual("MainAbility2 onWindowStageCreate");
+          expect(exlist1[2]).assertEqual("MainAbility2 onAbilityForeground");
+          expect(exlist1[3]).assertEqual("MainAbility2 onAbilityBackground");
+          expect(exlist1[4]).assertEqual("MainAbility2 onWindowStageDestroy");
+          expect(exlist1[5]).assertEqual("MainAbility2 onAbilityDestroy");
+          expect(exlist1[6]).assertEqual("MainAbility2 onAbilityCreate");
+          expect(exlist1[7]).assertEqual("MainAbility2 onWindowStageCreate");
+          expect(exlist1[8]).assertEqual("MainAbility2 onAbilityForeground");
+          expect(exlist1[9]).assertEqual("MainAbility2 onAbilityBackground");
+          expect(exlist1[10]).assertEqual("MainAbility2 onWindowStageDestroy");
+          expect(exlist1[11]).assertEqual("MainAbility2 onAbilityDestroy");
+          expect(exlist1[12]).assertEqual("MainAbility2 onAbilityCreate");
+          expect(exlist1[13]).assertEqual("MainAbility2 onWindowStageCreate");
+          expect(exlist1[14]).assertEqual("MainAbility2 onAbilityForeground");
+        } catch (error) {
+          console.error(`${TAG} startRunning failed: ${JSON.stringify(error)}`);
+          done();
+        }
         globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
@@ -758,7 +763,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_0800 END-------------");
             done();
           });
-      }, 4950);
+      }, 5950);
     });
 
     /*

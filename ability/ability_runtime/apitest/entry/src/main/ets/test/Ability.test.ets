@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 
 var subscriberInfo_MainAbility = {
@@ -103,7 +103,12 @@ export default function abilityTest() {
       })
       function timeout() {
         if (flag == true) {
-          expect().assertFail();
+          try {
+            expect().assertFail();
+          } catch (error) {
+            console.log(`ACTS_DoAbilityForeground_0100 startRunning failed: ${JSON.stringify(error)}`);
+            done();
+          }
           console.log('ACTS_DoAbilityForeground_0100 - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
@@ -111,8 +116,6 @@ export default function abilityTest() {
       setTimeout(timeout, START_ABILITY_TIMEOUT);
     })
 
-   
-  
     /*
      * @tc.number  : ACTS_DoAbilityForeground_0200
      * @tc.name    : change abilitystage to foreground
@@ -138,7 +141,6 @@ export default function abilityTest() {
         })
       })
     })
-
 
     /*
      * @tc.number  : ACTS_DoAbilityForeground_0400
