@@ -24,7 +24,7 @@ struct TextInputPage {
   @State enterKeyType: EnterKeyType = EnterKeyType.Search
   @State caretColor: Color = Color.Blue
   @State maxLength: number = 10
-  @State copyOption: CopyOptions = CopyOptions.None
+  @State copyOption: CopyOptions = CopyOptions.InApp
   @State showPasswordIcon: boolean = false
   @State style: TextInputStyle = TextInputStyle.Default
   @State textAlign: TextAlign = TextAlign.Center
