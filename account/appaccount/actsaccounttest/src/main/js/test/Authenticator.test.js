@@ -24,7 +24,7 @@ export default function ActsAccountAuthenticator() {
     describe('ActsAccountAuthenticator', function () {
         beforeAll(async function (done) {  
             console.debug("====>accountauthenticatorbeforeAll start====");		
-            await featureAbility.startAbility(
+            await featureAbility.startAbilityForResult(
                 {
                     want:
                     {
@@ -44,8 +44,8 @@ export default function ActsAccountAuthenticator() {
         });
         beforeEach(async function (done) {            
             console.debug("====>afterEach start====");
-            var appAccountManager = account.getAccountManager();
-            var accounts = await appAccountManager.getAllAccountByOwner(owner)
+            var appAccountManager = account.createAppAccountManager();
+            var accounts = await appAccountManager.getAccountsByOwner(owner)
             for (var i=0;i<accounts.length;i++){
                 var localName = accounts[i].name
                 if(localName == 'zhangsan'){
@@ -76,7 +76,7 @@ export default function ActsAccountAuthenticator() {
                         expect(err).assertEqual(null);
                         console.debug("====>ActsAccountCheckAccountLabels_0100 end====");
                         done();
-                    })                
+                    })
                 });
             });
         });
@@ -134,11 +134,9 @@ export default function ActsAccountAuthenticator() {
                         console.debug("====>ActsAccountCheckAccountLabels_0300 end====");
                         done();                     
                     })
-                    
                 });
             });
-                
-        }); 
+        });
 
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0400
@@ -665,7 +663,6 @@ export default function ActsAccountAuthenticator() {
             });        
         });
 
-
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0100
         * @tc.name      : Verify Credential callback form
@@ -692,14 +689,13 @@ export default function ActsAccountAuthenticator() {
                     appAccountManager.deleteAccount(name)
                     console.debug('====>ActsAccountSelectAccountByOptions_0300 deleteAccount_success')
                     done();
-                }                               
+                }
                 catch{
                     console.debug('====>ActsAccountSelectAccountByOptions_0300 deleteAccount_err')
                     expect().assertFail()
                     done();
-                }    
-            });        
-        }); 
-        
+                }
+            });
+        });
     })
 }
