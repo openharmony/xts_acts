@@ -33,8 +33,8 @@ hcpptest_suite("ActsAbilityMgrTest") {
   if (enable_ohos_appexecfwk_feature_ability == true) {
     deps += [
       "//foundation/graphic/surface",
-      "//foundation/graphic/ui:lite_ui",
-      "//foundation/graphic/utils:lite_graphic_utils",
+      "//foundation/graphic/ui:ui_lite",
+      "//foundation/graphic/utils:graphic_utils_lite",
     ]
   }
 
