@@ -62,6 +62,7 @@ import xcomponentGetXComponentContextJsunit from './xcomponent.test.ets';
 import routerJsunit from './router.test.ets';
 
 export default function testsuite() {
+  grid_colSpanJsunit();
   lazyForEachOnDataAddJsunit()
   alphabetIndexerOnSelectJsunit()
   checkBoxGroupSelectAllJsunit()
