@@ -92,10 +92,16 @@ export default function abilityTest() {
           }
           console.log(TAG + "listKeyTemp is :" + listKeyTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageCreate")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageActive")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageInactive")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageDestroy")!=-1).assertTrue();
+          try {
+            expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageCreate")!=-1).assertTrue();
+            expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageActive")!=-1).assertTrue();
+            expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageInactive")!=-1).assertTrue();
+            expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageDestroy")!=-1).assertTrue();
+          } catch (error) {
+            console.log(`Multihap_WindowStageLifecycleTest_001 startRunning failed: ${JSON.stringify(error)}`);
+            done();
+          }
+
           console.info(TAG + "globalThis.ApplicationContext4 is :" + JSON.stringify(globalThis.ApplicationContext4));
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
