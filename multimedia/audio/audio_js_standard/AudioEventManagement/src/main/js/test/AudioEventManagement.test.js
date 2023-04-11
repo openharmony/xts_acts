@@ -93,14 +93,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_OUTPUT_0100
      *@tc.name      : getDevices - Output device - Promise - ENAME
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_OUTPUT_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG)
         PROMISE.then(function (value) {
 
@@ -120,14 +120,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_OUTPUT_ENUM_0100
-     *@tc.name      : getDevices - Output device - Promise - ENAME -
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_OUTPUT_ENUM_0100
+     *@tc.name      : getDevices - Output device - Promise - ENUM
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_OUTPUT_ENUM_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_OUTPUT_ENUM_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(1)
         PROMISE.then(function (value) {
             console.info(`${TagFrmwk}: Promise: getDevices OUTPUT_DEVICES_FLAG`);
@@ -146,14 +146,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_INPUT_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_INPUT_0100
      *@tc.name      : getDevices - Input device - Promise - ENAME
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_INPUT_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_INPUT_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG);
         PROMISE.then(function (value) {
             console.info(`${TagFrmwk}: Promise: getDevices INPUT_DEVICES_FLAG`);
@@ -172,14 +172,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_INTPUT_ENUM_0100
-     *@tc.name      : getDevices - Input device - Promise - ENAME
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_INTPUT_ENUM_0100
+     *@tc.name      : getDevices - Input device - Promise - ENUM
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_INTPUT_ENUM_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_INTPUT_ENUM_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(2);
         PROMISE.then(function (value) {
             console.info(`${TagFrmwk}: Promise: getDevices INPUT_DEVICES_FLAG`);
@@ -199,14 +199,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_ALL_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_ALL_0100
      *@tc.name      : getDevices - ALL device - Promise - ENAME
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_ALL_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_ALL_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG);
         PROMISE.then(function (value) {
             console.info(`${TagFrmwk}: Promise: getDevices ALL_DEVICES_FLAG`);
@@ -226,14 +226,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_ALL_ENUM_0100
-     *@tc.name      : getDevices - ALL device - Promise - ENAME
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_ALL_ENUM_0100
+     *@tc.name      : getDevices - ALL device - Promise - ENUM
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_ALL_ENUM_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_PR_GETDEVICES_ALL_ENUM_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(3);
         PROMISE.then(function (value) {
             console.info(`${TagFrmwk}: Promise: getDevices ALL_DEVICES_FLAG`);
@@ -253,14 +253,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_0100
      *@tc.name      : getDevices - Output device - Callback - ENAME
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_0100', 0, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_0100', 0, function (done) {
         audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices OUTPUT_DEVICES_FLAG`);
             if (err) {
@@ -284,14 +284,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_ENUM_0100
-     *@tc.name      : getDevices - Output device - Callback - ENAME
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_ENUM_0100
+     *@tc.name      : getDevices - Output device - Callback - ENUM
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_ENUM_0100', 2, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_ENUM_0100', 2, function (done) {
         audioManager.getDevices(1, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices OUTPUT_DEVICES_FLAG`);
             if (err) {
@@ -315,14 +315,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_INPUT_0100
      *@tc.name      : getDevices - Input device - Callback - ENAME
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_0100', 0, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_INPUT_0100', 0, function (done) {
         audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices INPUT_DEVICES_FLAG`);
             if (err) {
@@ -347,14 +347,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_ENUM_0100
-     *@tc.name      : getDevices - Input device - Callback - ENAME
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_INPUT_ENUM_0100
+     *@tc.name      : getDevices - Input device - Callback - ENUM
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_ENUM_0100', 0, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_INPUT_ENUM_0100', 0, function (done) {
         audioManager.getDevices(2, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices INPUT_DEVICES_FLAG`);
             if (err) {
@@ -379,14 +379,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_ALL_0100
      *@tc.name      : getDevices - ALL device - Callback - ENAME
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_0100', 0, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_ALL_0100', 0, function (done) {
         audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices ALL_DEVICES_FLAG`);
             if (err) {
@@ -410,14 +410,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_ENUM_0100
-     *@tc.name      : getDevices - ALL device - Callback - ENAME
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_ALL_ENUM_0100
+     *@tc.name      : getDevices - ALL device - Callback - ENUM
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_ENUM_0100', 2, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_CB_GETDEVICES_ALL_ENUM_0100', 2, function (done) {
         audioManager.getDevices(3, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices ALL_DEVICES_FLAG`);
             if (err) {
@@ -441,14 +441,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_0100
      *@tc.name      : setDeviceActive - SPEAKER - deactivate - Promise
      *@tc.desc      : Deactivate speaker - Promise
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_0100', 2, async function (done) {
         await audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, false).then(function () {
             // Setting device active ENUM 2 = SPEAKER
             console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER: Deactivate`);
@@ -470,14 +470,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_ENUM_0100
-     *@tc.name      : setDeviceActive - SPEAKER - deactivate - Promise
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_ENUM_0100
+     *@tc.name      : setDeviceActive - SPEAKER - deactivate - Promise - ENUM
      *@tc.desc      : Deactivate speaker - Promise
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_ENUM_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_ENUM_0100', 2, async function (done) {
         await audioManager.setDeviceActive(2, true).then(function () {
             console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER: Active`);
         });
@@ -502,14 +502,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_0100
      *@tc.name      : setDeviceActive - SPEAKER - Activate - Promise
      *@tc.desc      : Activate speaker - Promise
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_0100', 2, async function (done) {
         await audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true).then(function () {
             console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER: Activate`);
             audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then(function (value) {
@@ -530,14 +530,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_ENUM_0100
-     *@tc.name      : setDeviceActive - SPEAKER - Activate - Promise
-     *@tc.desc      : Activate speaker - Promise
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_ENUM_0100
+     *@tc.name      : setDeviceActive - SPEAKER - Activate - Promise - ENUM
+     *@tc.desc      : Activate speaker - Promise 
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_ENUM_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_ENUM_0100', 2, async function (done) {
         await audioManager.setDeviceActive(2, true).then(function () {
             console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER: Activate`);
             audioManager.isDeviceActive(2).then(function (value) {
@@ -558,14 +558,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_0100
      *@tc.name      : setDeviceActive - SPEAKER - deactivate - Callback
      *@tc.desc      : Deactivate speaker - Callback
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_0100', 2, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_0100', 2, function (done) {
         audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, false, (err) => {
             if (err) {
                 console.error(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
@@ -594,14 +594,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_ENUM_0100
-     *@tc.name      : setDeviceActive - SPEAKER - deactivate - Callback
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_ENUM_0100
+     *@tc.name      : setDeviceActive - SPEAKER - deactivate - Callback - ENUM
      *@tc.desc      : Deactivate speaker - Callback
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_ENUM_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_ENUM_0100', 2, async function (done) {
         await audioManager.setDeviceActive(2, true).then(function () {
             console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER : Active`);
         });
@@ -634,14 +634,14 @@ describe('audioEventManagement', function () {
 
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_0100
      *@tc.name      : setDeviceActive - SPEAKER - activate - Callback
      *@tc.desc      : Activate speaker - Callback
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_0100', 2, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_0100', 2, function (done) {
         audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true, (err) => {
             if (err) {
                 console.error(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Active: Error: ${err.message}`);
@@ -670,14 +670,14 @@ describe('audioEventManagement', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_ENUM_0100
-     *@tc.name      : setDeviceActive - SPEAKER - activate - Callback
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_ENUM_0100
+     *@tc.name      : setDeviceActive - SPEAKER - activate - Callback - ENUM
      *@tc.desc      : Activate speaker - Callback
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_ENUM_0100  ', 2, function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_ENUM_0100  ', 2, function (done) {
         audioManager.setDeviceActive(2, true, (err) => {
             if (err) {
                 console.error(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Active: Error: ${err.message}`);

@@ -937,14 +937,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0100
      *@tc.name      : AudioCapturerChange - GET_STATE_PREPARED
      *@tc.desc      : AudioCapturerChange - GET_STATE_PREPARED
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0100', 2, async function (done) {
         let audioCap;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
