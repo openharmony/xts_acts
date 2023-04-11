@@ -74,6 +74,9 @@
         "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextSize",
         "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextMar",
         "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextOffset",
-        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextVisibility"
+        "MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextVisibility",
+        "MainAbility/pages/Tabs/tabs_index/Tabs_index",
+        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_PadMar",
+        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_WidHei"
     ]
 }
