@@ -105,12 +105,12 @@ export default function FaShowOnLockTest() {
       let status1 = undefined;
       let status2 = undefined;
       let lifeList = [];
-      let listCheck = ["onCreate", "onActive"];
-      let onActive = "Fa_SupportFunction_MainAbility_onActive";
+      let listCheck = ["onCreate", "wakeUpScreen"];
+      let wakeUpScreen = "Fa_SupportFunction_MainAbility_wakeUpScreen";
 
       var subscriber;
       var subscribeInfo = {
-        events: [onActive]
+        events: [wakeUpScreen]
       }
       await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -119,7 +119,7 @@ export default function FaShowOnLockTest() {
         commonEvent.subscribe(subscriber, async (err, data) => {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
-          if (data.event == onActive) {
+          if (data.event == wakeUpScreen) {
             lifeList = data.parameters.lifeList;
             setTimeout(async () => {
               await power.isScreenOn().then((data) => {
@@ -162,8 +162,7 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility",
         parameters: {
-          number: 1,
-          flag: true
+          number: 1
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -187,12 +186,12 @@ export default function FaShowOnLockTest() {
       let status1 = undefined;
       let status2 = undefined;
       let lifeList = [];
-      let listCheck = ["onCreate", "onActive"];
-      let onActive = "Fa_SupportFunction_MainAbility_onActive";
+      let listCheck = ["onCreate", "wakeUpScreen"];
+      let wakeUpScreen = "Fa_SupportFunction_MainAbility_wakeUpScreen";
 
       var subscriber;
       var subscribeInfo = {
-        events: [onActive]
+        events: [wakeUpScreen]
       }
       await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -201,7 +200,7 @@ export default function FaShowOnLockTest() {
         commonEvent.subscribe(subscriber, async (err, data) => {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
-          if (data.event == onActive) {
+          if (data.event == wakeUpScreen) {
             lifeList = data.parameters.lifeList;
             setTimeout(async () => {
               await power.isScreenOn().then((data) => {
@@ -244,8 +243,7 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility",
         parameters: {
-          number: 2,
-          flag: true
+          number: 2
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -269,12 +267,12 @@ export default function FaShowOnLockTest() {
       let status1 = undefined;
       let status2 = undefined;
       let lifeList = [];
-      let listCheck = ["onCreate", "onActive"];
-      let onActive = "Fa_SupportFunction_MainAbility_onActive";
+      let listCheck = ["onCreate", "wakeUpScreen"];
+      let wakeUpScreen = "Fa_SupportFunction_MainAbility_wakeUpScreen";
 
       var subscriber;
       var subscribeInfo = {
-        events: [onActive]
+        events: [wakeUpScreen]
       }
       await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -283,7 +281,7 @@ export default function FaShowOnLockTest() {
         commonEvent.subscribe(subscriber, async (err, data) => {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
-          if (data.event == onActive) {
+          if (data.event == wakeUpScreen) {
             lifeList = data.parameters.lifeList;
             setTimeout(async () => {
               await power.isScreenOn().then((data) => {
@@ -326,8 +324,7 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility",
         parameters: {
-          number: 3,
-          flag: true
+          number: 3
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -352,13 +349,13 @@ export default function FaShowOnLockTest() {
       let status2 = undefined;
       let status3 = undefined;
       let lifeList = [];
-      let listCheck = ["onCreate", "onActive"];
-      let onActive = "Fa_SupportFunction_MainAbility2_onActive";
+      let listCheck = ["onCreate", "wakeUpScreen"];
+      let wakeUpScreen = "Fa_SupportFunction_MainAbility2_wakeUpScreen";
       let wakeUpErr = "Fa_SupportFunction_MainAbility2_wakeUpErr";
 
       var subscriber;
       var subscribeInfo = {
-        events: [onActive, wakeUpErr]
+        events: [wakeUpScreen, wakeUpErr]
       }
       await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -371,7 +368,7 @@ export default function FaShowOnLockTest() {
             status3 = true;
           }
 
-          if (data.event == onActive) {
+          if (data.event == wakeUpScreen) {
             lifeList = data.parameters.lifeList;
             setTimeout(async () => {
               await power.isScreenOn().then((data) => {
@@ -415,8 +412,7 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 1,
-          flag: true
+          number: 1
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -441,13 +437,13 @@ export default function FaShowOnLockTest() {
       let status2 = undefined;
       let status3 = undefined;
       let lifeList = [];
-      let listCheck = ["onCreate", "onActive"];
-      let onActive = "Fa_SupportFunction_MainAbility2_onActive";
+      let listCheck = ["onCreate", "wakeUpScreen"];
+      let wakeUpScreen = "Fa_SupportFunction_MainAbility2_wakeUpScreen";
       let wakeUpErr = "Fa_SupportFunction_MainAbility2_wakeUpErr";
 
       var subscriber;
       var subscribeInfo = {
-        events: [onActive, wakeUpErr]
+        events: [wakeUpScreen, wakeUpErr]
       }
       await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -460,7 +456,7 @@ export default function FaShowOnLockTest() {
             status3 = true;
           }
 
-          if (data.event == onActive) {
+          if (data.event == wakeUpScreen) {
             lifeList = data.parameters.lifeList;
             setTimeout(async () => {
               await power.isScreenOn().then((data) => {
@@ -504,8 +500,7 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 2,
-          flag: true
+          number: 2
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -530,13 +525,13 @@ export default function FaShowOnLockTest() {
       let status2 = undefined;
       let status3 = undefined;
       let lifeList = [];
-      let listCheck = ["onCreate", "onActive"];
-      let onActive = "Fa_SupportFunction_MainAbility2_onActive";
+      let listCheck = ["onCreate", "wakeUpScreen"];
+      let wakeUpScreen = "Fa_SupportFunction_MainAbility2_wakeUpScreen";
       let wakeUpErr = "Fa_SupportFunction_MainAbility2_wakeUpErr";
 
       var subscriber;
       var subscribeInfo = {
-        events: [onActive, wakeUpErr]
+        events: [wakeUpScreen, wakeUpErr]
       }
       await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -549,7 +544,7 @@ export default function FaShowOnLockTest() {
             status3 = true;
           }
 
-          if (data.event == onActive) {
+          if (data.event == wakeUpScreen) {
             lifeList = data.parameters.lifeList;
             setTimeout(async () => {
               await power.isScreenOn().then((data) => {
@@ -593,8 +588,7 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 3,
-          flag: true
+          number: 3
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -619,13 +613,13 @@ export default function FaShowOnLockTest() {
       let status2 = undefined;
       let status3 = undefined;
       let lifeList = [];
-      let listCheck = ["onCreate", "onActive"];
-      let onActive = "Fa_SupportFunction_MainAbility2_onActive";
+      let listCheck = ["onCreate", "wakeUpScreen"];
+      let wakeUpScreen = "Fa_SupportFunction_MainAbility2_wakeUpScreen";
       let wakeUpErr = "Fa_SupportFunction_MainAbility2_wakeUpErr";
 
       var subscriber;
       var subscribeInfo = {
-        events: [onActive, wakeUpErr]
+        events: [wakeUpScreen, wakeUpErr]
       }
       await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -638,7 +632,7 @@ export default function FaShowOnLockTest() {
             status3 = true;
           }
 
-          if (data.event == onActive) {
+          if (data.event == wakeUpScreen) {
             lifeList = data.parameters.lifeList;
             setTimeout(async () => {
               await power.isScreenOn().then((data) => {
@@ -682,8 +676,7 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 4,
-          flag: true
+          number: 4
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
@@ -708,13 +701,13 @@ export default function FaShowOnLockTest() {
       let status2 = undefined;
       let status3 = undefined;
       let lifeList = [];
-      let listCheck = ["onCreate", "onActive"];
-      let onActive = "Fa_SupportFunction_MainAbility2_onActive";
+      let listCheck = ["onCreate", "wakeUpScreen"];
+      let wakeUpScreen = "Fa_SupportFunction_MainAbility2_wakeUpScreen";
       let wakeUpErr = "Fa_SupportFunction_MainAbility2_wakeUpErr";
 
       var subscriber;
       var subscribeInfo = {
-        events: [onActive, wakeUpErr]
+        events: [wakeUpScreen, wakeUpErr]
       }
       await commonEvent.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -727,7 +720,7 @@ export default function FaShowOnLockTest() {
             status3 = true;
           }
 
-          if (data.event == onActive) {
+          if (data.event == wakeUpScreen) {
             lifeList = data.parameters.lifeList;
             setTimeout(async () => {
               await power.isScreenOn().then((data) => {
@@ -771,8 +764,7 @@ export default function FaShowOnLockTest() {
         bundleName: "ohos.acts.aafwk.test.fasupportfunction",
         abilityName: "ohos.acts.aafwk.test.fasupportfunction.MainAbility2",
         parameters: {
-          number: 5,
-          flag: true
+          number: 5
         }
       }
       await globalThis.abilityTestContext.startAbility(wantNum).then((data) => {
