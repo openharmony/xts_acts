@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import usb from '@ohos.usb';
+import usbManager from '@ohos.usbManager';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import EventConstants from './EventConstants.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
@@ -28,20 +28,20 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
   beforeAll(function () {
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTestEx Begin*************');
-    var Version = usb.getVersion()
+    var Version = usbManager.getVersion()
     console.info('usb unit begin test getversion :' + Version)
 
     // version > 17  host currentMode = 2 device currentMode = 1
-    var usbPortList = usb.getPorts()
+    var usbPortList = usbManager.getPorts()
     if (usbPortList == undefined) {
       portCurrentMode = 1;
       return
     }
-    gDeviceList = usb.getDevices();
+    gDeviceList = usbManager.getDevices();
     if (usbPortList.length > 0) {
       if (gDeviceList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
-          usb.setPortRoles(usbPortList[0].id, usb.SOURCE, usb.HOST).then(data => {
+          usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
             portCurrentMode = 2
             console.info('usb case setPortRoles  return: ' + data);
           }).catch(error => {
@@ -56,7 +56,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     console.info('usb unit connectDevice  gPipe ret : ' + JSON.stringify(gPipe));
   })
   beforeEach(function () {
@@ -66,7 +66,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     console.info('afterEach: *************Usb Unit Test Ex Case*************');
   })
   afterAll(function () {
-    var isPipClose = usb.closePipe(gPipe)
+    var isPipClose = usbManager.closePipe(gPipe)
     console.info('usb unit close gPipe ret : ' + isPipClose);
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTestEx End*************');
   })
@@ -78,10 +78,10 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       if (endpoint.type == EventConstants.USB_ENDPOINT_XFER_BULK) {
 
         bfind = true
-        if (endpoint.direction == usb.USB_REQUEST_DIR_TO_DEVICE) {
+        if (endpoint.direction == usbManager.USB_REQUEST_DIR_TO_DEVICE) {
           testParam.outEndpoint = endpoint;
           testParam.maxOutSize = endpoint.maxPacketSize;
-        } else if (endpoint.direction == usb.USB_REQUEST_DIR_FROM_DEVICE) {
+        } else if (endpoint.direction == usbManager.USB_REQUEST_DIR_FROM_DEVICE) {
           testParam.inEndpoint = endpoint
           testParam.maxInSize = endpoint.maxPacketSize;
         }
@@ -162,14 +162,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     testParam.sendData = 'send time 13213213 wzy 03';
     var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
     var TmpTestParam = testParam
     TmpTestParam.outEndpoint.address = 123
-    usb.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
+    usbManager.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
       console.info('usb case SUB_USB_JS_0650 ret: ' + data);
       expect(data).assertEqual(-1);
       console.info('usb case SUB_USB_JS_0650 :  PASS');
@@ -199,14 +199,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     testParam.sendData = 'send time 13213213 wzy  04';
     var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
     var TmpTestParam = testParam
     TmpTestParam.outEndpoint.number = 123
-    usb.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
+    usbManager.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
       console.info('usb case SUB_USB_JS_0660 ret: ' + data);
       expect(data).assertEqual(-1);
       console.info('usb case SUB_USB_JS_0660 :  PASS');
@@ -236,14 +236,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     testParam.sendData = 'send time 13213213 wzy 05';
     var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
     var TmpTestParam = testParam
     TmpTestParam.outEndpoint.type = 123
-    usb.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
+    usbManager.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
       console.info('usb case SUB_USB_JS_0670 ret: ' + data);
       expect(data).assertEqual(-1);
       console.info('usb case SUB_USB_JS_0670 :  PASS');
@@ -273,11 +273,11 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     try {
-      usb.bulkTransfer(testParam.pip).then(data => {
+      usbManager.bulkTransfer(testParam.pip).then(data => {
         console.info('usb case SUB_USB_JS_1100 ret: ' + data);
         expect(false).assertTrue();
         console.info('usb case SUB_USB_JS_1100 :  FAILED');
@@ -311,11 +311,11 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     try {
-      usb.bulkTransfer(testParam.pip, testParam.outEndpoint).then(data => {
+      usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint).then(data => {
         console.info('usb case SUB_USB_JS_1480 ret: ' + data);
         expect(false).assertTrue();
         console.info('usb case SUB_USB_JS_1480 :  FAILED');
@@ -350,7 +350,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     try {
-      usb.bulkTransfer().then(data => {
+      usbManager.bulkTransfer().then(data => {
         console.info('usb case SUB_USB_JS_1310 ret: ' + data);
         expect(false).assertTrue();
         console.info('usb case SUB_USB_JS_1310 :  FAILED');
@@ -385,7 +385,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     console.info('usb case readData begin');
@@ -393,7 +393,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     tmpTestParam.pip = "invalid";
     var tmpUint8Array = new Uint8Array(testParam.maxInSize);
     try {
-      usb.bulkTransfer(tmpTestParam.pip, tmpTestParam.inEndpoint, tmpUint8Array, 5000).then(data => {
+      usbManager.bulkTransfer(tmpTestParam.pip, tmpTestParam.inEndpoint, tmpUint8Array, 5000).then(data => {
         console.info('usb case SUB_USB_JS_1420 ret: ' + data);
         expect(false).assertTrue();
         console.info('usb case SUB_USB_JS_1420 :  FAILED');
@@ -428,7 +428,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     console.info('usb case readData begin');
@@ -436,7 +436,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     tmpTestParam.inEndpoint = "invalid";
     var tmpUint8Array = new Uint8Array(testParam.maxInSize);
     try {
-      usb.bulkTransfer(tmpTestParam.pip, tmpTestParam.inEndpoint, tmpUint8Array, 5000).then(data => {
+      usbManager.bulkTransfer(tmpTestParam.pip, tmpTestParam.inEndpoint, tmpUint8Array, 5000).then(data => {
         console.info('usb case SUB_USB_JS_1490 ret: ' + data);
         expect(false).assertTrue();
         console.info('usb case SUB_USB_JS_1490 :  FAILED');
@@ -471,13 +471,13 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     console.info('usb case readData begin');
     var tmpUint8Array = "invalid";
     try {
-      usb.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, 5000).then(data => {
+      usbManager.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, 5000).then(data => {
         console.info('usb case SUB_USB_JS_1500 ret: ' + data);
         expect(false).assertTrue();
         console.info('usb case SUB_USB_JS_1500 :  FAILED');
@@ -512,14 +512,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     console.info('usb case readData begin');
     var tmpTimeOut = "invalid";
     var tmpUint8Array = new Uint8Array(testParam.maxInSize);
     try {
-      usb.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, tmpTimeOut).then(data => {
+      usbManager.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, tmpTimeOut).then(data => {
         console.info('usb case SUB_USB_JS_1530 ret: ' + data);
         expect(false).assertTrue();
         console.info('usb case SUB_USB_JS_1530 :  FAILED');
@@ -566,7 +566,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k];
         TmpInterface.id = 123;
-        var isClaim = usb.claimInterface(gPipe, TmpInterface, true);
+        var isClaim = usbManager.claimInterface(gPipe, TmpInterface, true);
         console.info('usb case claimInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -606,7 +606,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k]
         TmpInterface.protocol = 120
-        var isClaim = usb.claimInterface(gPipe, TmpInterface, true)
+        var isClaim = usbManager.claimInterface(gPipe, TmpInterface, true)
         console.info('usb case claimInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -646,7 +646,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k]
         TmpInterface.clazz = 784
-        var isClaim = usb.claimInterface(gPipe, TmpInterface, true)
+        var isClaim = usbManager.claimInterface(gPipe, TmpInterface, true)
         console.info('usb case claimInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -686,7 +686,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k]
         TmpInterface.name = '123sdf'
-        var isClaim = usb.claimInterface(gPipe, TmpInterface, true)
+        var isClaim = usbManager.claimInterface(gPipe, TmpInterface, true)
         console.info('usb case claimInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -726,7 +726,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k]
         TmpInterface.subClass = 1210
-        var isClaim = usb.claimInterface(gPipe, TmpInterface, true)
+        var isClaim = usbManager.claimInterface(gPipe, TmpInterface, true)
         console.info('usb case claimInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -758,7 +758,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
     try {
-      var maskCode = usb.claimInterface("invalid");
+      var maskCode = usbManager.claimInterface("invalid");
       console.info('usb 1110 case claimInterface return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -791,7 +791,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
     try {
-      var maskCode = usb.claimInterface();
+      var maskCode = usbManager.claimInterface();
       console.info('usb 1320 case claimInterface return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -828,7 +828,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         }
         for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
           var TmpInterface = gDeviceList[0].configs[j].interfaces[k];
-          var maskCode = usb.claimInterface(testParamPip, TmpInterface, true);
+          var maskCode = usbManager.claimInterface(testParamPip, TmpInterface, true);
           console.info('usb 1430 case claimInterface return: ' + maskCode);
           expect(false).assertTrue();
         }
@@ -860,7 +860,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
     var TmpInterface = "invalid";
     try {
-      var maskCode = usb.claimInterface(gPipe, TmpInterface);
+      var maskCode = usbManager.claimInterface(gPipe, TmpInterface);
       console.info('usb 1510 case claimInterface return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -895,7 +895,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         }
         for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
           var TmpInterface = gDeviceList[0].configs[j].interfaces[k];
-          var maskCode = usb.claimInterface(gPipe, TmpInterface, "invalid");
+          var maskCode = usbManager.claimInterface(gPipe, TmpInterface, "invalid");
           console.info('usb 1520 case claimInterface return: ' + maskCode);
           expect(false).assertTrue();
         }
@@ -930,7 +930,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue();
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
         console.info('usb SUB_USB_JS_0280 case current device.configs.interfaces.length = 0');
@@ -938,7 +938,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
         tmpInterface.id = 134
-        var isClaim = usb.releaseInterface(gPipe, tmpInterface)
+        var isClaim = usbManager.releaseInterface(gPipe, tmpInterface)
         console.info('usb case releaseInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -970,7 +970,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue();
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
         console.info('usb SUB_USB_JS_0290 case current device.configs.interfaces.length = 0');
@@ -978,7 +978,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
         tmpInterface.name = '134wer'
-        var isClaim = usb.releaseInterface(gPipe, tmpInterface)
+        var isClaim = usbManager.releaseInterface(gPipe, tmpInterface)
         console.info('usb case releaseInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -1010,7 +1010,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue();
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
         console.info('usb SUB_USB_JS_0300 case current device.configs.interfaces.length = 0');
@@ -1018,7 +1018,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
         tmpInterface.clazz = 78
-        var isClaim = usb.releaseInterface(gPipe, tmpInterface)
+        var isClaim = usbManager.releaseInterface(gPipe, tmpInterface)
         console.info('usb case releaseInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -1050,7 +1050,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue();
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
         console.info('usb SUB_USB_JS_0310 case current device.configs.interfaces.length = 0');
@@ -1058,7 +1058,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
         tmpInterface.protocol = 124
-        var isClaim = usb.releaseInterface(gPipe, tmpInterface)
+        var isClaim = usbManager.releaseInterface(gPipe, tmpInterface)
         console.info('usb case releaseInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -1090,7 +1090,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue();
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
         console.info('usb SUB_USB_JS_0320 case current device.configs.interfaces.length = 0');
@@ -1098,7 +1098,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
         tmpInterface.subClass = 784
-        var isClaim = usb.releaseInterface(gPipe, tmpInterface)
+        var isClaim = usbManager.releaseInterface(gPipe, tmpInterface)
         console.info('usb case releaseInterface function return: ' + isClaim);
         expect(isClaim).assertLess(0);
       }
@@ -1129,9 +1129,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue();
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     try {
-      var maskCode = usb.releaseInterface("invalid");
+      var maskCode = usbManager.releaseInterface("invalid");
       console.info('usb 1150 case releaseInterface return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -1164,7 +1164,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
     try {
-      var maskCode = usb.releaseInterface();
+      var maskCode = usbManager.releaseInterface();
       console.info('usb 1330 case releaseInterface return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -1196,7 +1196,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         }
         for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
           var TmpInterface = gDeviceList[0].configs[j].interfaces[k];
-          var maskCode = usb.releaseInterface(testParamPip, TmpInterface);
+          var maskCode = usbManager.releaseInterface(testParamPip, TmpInterface);
           console.info('usb 1450 case releaseInterface return: ' + maskCode);
           expect(false).assertTrue();
         }
@@ -1223,7 +1223,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     
     var TmpInterface = "invalid";
     try {
-      var maskCode = usb.releaseInterface(gPipe, TmpInterface);
+      var maskCode = usbManager.releaseInterface(gPipe, TmpInterface);
       console.info('usb 1580 case releaseInterface return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -1250,13 +1250,13 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue()
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
-      var isClaimed = usb.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true);
+      var isClaimed = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true);
 
       var tmpInterface = gDeviceList[0].configs[j].interfaces[0]
       tmpInterface.protocol = 482
-      var ret = usb.setInterface(gPipe, tmpInterface)
+      var ret = usbManager.setInterface(gPipe, tmpInterface)
       console.info('usb case setInterface return : ' + ret)
       expect(ret).assertLess(0);
     }
@@ -1281,13 +1281,13 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue()
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
-      var isClaim = usb.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
+      var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
 
       var tmpInterface = gDeviceList[0].configs[j].interfaces[0]
       tmpInterface.clazz = 482
-      var ret = usb.setInterface(gPipe, tmpInterface)
+      var ret = usbManager.setInterface(gPipe, tmpInterface)
       console.info('usb case setInterface return : ' + ret)
       expect(ret).assertLess(0);
     }
@@ -1312,13 +1312,13 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue()
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
-      var isClaim = usb.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
+      var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
 
       var tmpInterface = gDeviceList[0].configs[j].interfaces[0]
       tmpInterface.subClass = 482
-      var ret = usb.setInterface(gPipe, tmpInterface)
+      var ret = usbManager.setInterface(gPipe, tmpInterface)
       console.info('usb case setInterface return : ' + ret)
       expect(ret).assertLess(0);
 
@@ -1344,13 +1344,13 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue()
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
-      var isClaim = usb.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
+      var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
 
       var tmpInterface = gDeviceList[0].configs[j].interfaces[0]
       tmpInterface.name = 'wer32'
-      var ret = usb.setInterface(gPipe, tmpInterface)
+      var ret = usbManager.setInterface(gPipe, tmpInterface)
       console.info('usb case setInterface return : ' + ret)
       expect(ret).assertLess(0);
     }
@@ -1377,7 +1377,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
     try {
-      var maskCode = usb.setInterface("invalid");
+      var maskCode = usbManager.setInterface("invalid");
       console.info('usb 1130 case setInterface return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -1405,7 +1405,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
     try {
-      var maskCode = usb.setInterface();
+      var maskCode = usbManager.setInterface();
       console.info('usb 1340 case setInterface return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -1442,7 +1442,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
         }
         for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
           var TmpInterface = gDeviceList[0].configs[j].interfaces[k];
-          var maskCode = usb.setInterface(testParamPip, TmpInterface);
+          var maskCode = usbManager.setInterface(testParamPip, TmpInterface);
           console.info('usb 1460 case setInterface return: ' + maskCode);
           expect(false).assertTrue();
         }
@@ -1474,7 +1474,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     
     var TmpInterface = "invalid";
     try {
-      var maskCode = usb.setInterface(gPipe, TmpInterface);
+      var maskCode = usbManager.setInterface(gPipe, TmpInterface);
       console.info('usb 1550 case setInterface return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -1501,11 +1501,11 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertTrue();
       return
     }
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       var config = gDeviceList[0].configs[j]
       config.name = 'asdfsd'
-      var ret = usb.setConfiguration(gPipe, config)
+      var ret = usbManager.setConfiguration(gPipe, config)
       console.info('usb case setConfiguration return : ' + ret);
       expect(ret).assertEqual(0);
     }
@@ -1535,7 +1535,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       var config = gDeviceList[0].configs[j]
       config.name = 'asdfsd'
       config.id = 154
-      var ret = usb.setConfiguration(gPipe, config)
+      var ret = usbManager.setConfiguration(gPipe, config)
       console.info('usb case setConfiguration return : ' + ret);
       expect(ret).assertLess(0);
     }
@@ -1564,7 +1564,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       var config = gDeviceList[0].configs[j]
       config.attributes = 154
-      var ret = usb.setConfiguration(gPipe, config)
+      var ret = usbManager.setConfiguration(gPipe, config)
       console.info('usb case setConfiguration return : ' + ret);
       expect(ret).assertLess(0);
     }
@@ -1594,7 +1594,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       var config = gDeviceList[0].configs[j]
       config.name = 'asdfsd'
       config.interfaces[0].endpoints[0].interval = 0
-      var ret = usb.setConfiguration(gPipe, config)
+      var ret = usbManager.setConfiguration(gPipe, config)
       console.info('usb case setConfiguration return : ' + ret);
       expect(ret).assertLess(0);
     }
@@ -1620,7 +1620,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
     try {
-      var maskCode = usb.setConfiguration("invalid");
+      var maskCode = usbManager.setConfiguration("invalid");
       console.info('usb 1120 case setConfiguration return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -1648,7 +1648,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       return
     }
     try {
-      var maskCode = usb.setConfiguration();
+      var maskCode = usbManager.setConfiguration();
       console.info('usb 1350 case setConfiguration return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -1681,7 +1681,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     try {
       for (var j = 0; j < gDeviceList[0].configs.length; j++) {
         var TmpConfig = gDeviceList[0].configs[j];
-        var maskCode = usb.setConfiguration(testParamPip, TmpConfig);
+        var maskCode = usbManager.setConfiguration(testParamPip, TmpConfig);
         console.info('usb 1470 case setConfiguration return: ' + maskCode);
         expect(false).assertTrue();
       }
@@ -1713,7 +1713,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     var TmpConfig = "invalid";
 
     try {
-      var maskCode = usb.setConfiguration(gPipe, TmpConfig);
+      var maskCode = usbManager.setConfiguration(gPipe, TmpConfig);
       console.info('usb 1540 case setConfiguration return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {

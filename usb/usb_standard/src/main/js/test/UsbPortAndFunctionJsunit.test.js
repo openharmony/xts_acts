@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import usb from '@ohos.usb';
+import usbManager from '@ohos.usbManager';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
@@ -23,13 +23,13 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
 
   beforeAll(function () {
     console.log('*************Usb Unit UsbPortAndFunctionsJsFunctionsTest Begin*************');
-    var Version = usb.getVersion()
+    var Version = usbManager.getVersion()
     console.info('begin test getversion :' + Version)
     // version > 17  host currentMode = 2 device currentMode = 1
-    var usbPortList = usb.getPorts()
+    var usbPortList = usbManager.getPorts()
     if (usbPortList.length > 0) {
       if (usbPortList[0].status.currentMode == 2) {
-        usb.setPortRoles(usbPortList[0].id, usb.SINK, usb.DEVICE).then(data => {
+        usb.setPortRoles(usbPortList[0].id, usbManager.SINK, usbManager.DEVICE).then(data => {
           console.info('usb case setPortRoles return: ' + data);
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
@@ -52,7 +52,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   function callSetCurFunction(caseName, iValue) {
     console.info('usb case param case name:' + caseName);
     console.info('usb case param iValue:' + iValue);
-    usb.setCurrentFunctions(iValue).then(data => {
+    usbManager.setCurrentFunctions(iValue).then(data => {
       console.info('usb case SetCurFunction ret:' + data);
       expect(data).assertTrue();
       console.info('usb case ' + caseName + ': PASS');
@@ -71,11 +71,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_0350', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0350 set ACM begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0350 ACM 1', usb.ACM);
+    callSetCurFunction('SUB_USB_JS_0350 ACM 1', usbManager.ACM);
   })
 
   /**
@@ -86,11 +86,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_0360', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0360 set ECM begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0360 ECM 2', usb.ECM);
+    callSetCurFunction('SUB_USB_JS_0360 ECM 2', usbManager.ECM);
   })
 
   /**
@@ -101,11 +101,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_0370', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0370 set ACM ECM begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0370 ACM ECM 3', (usb.ACM | usb.ECM));
+    callSetCurFunction('SUB_USB_JS_0370 ACM ECM 3', (usbManager.ACM | usbManager.ECM));
   })
 
   /**
@@ -116,11 +116,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_0380', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0380 set HDC begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0380 HDC 4', usb.HDC);
+    callSetCurFunction('SUB_USB_JS_0380 HDC 4', usbManager.HDC);
   })
 
   /**
@@ -131,11 +131,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_0390', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0390 set ACM HDC begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0390 ACM HDC 5', (usb.HDC | usb.ACM));
+    callSetCurFunction('SUB_USB_JS_0390 ACM HDC 5', (usbManager.HDC | usbManager.ACM));
   })
 
   /**
@@ -146,11 +146,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_0400', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_0400 set ECM HDC begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_0400 ECM HDC 6', (usb.HDC | usb.ECM));
+    callSetCurFunction('SUB_USB_JS_0400 ECM HDC 6', (usbManager.HDC | usbManager.ECM));
   })
 
   /**
@@ -161,11 +161,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_1620', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_1620 set MTP begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_1620 MTP 8', (usb.MTP));
+    callSetCurFunction('SUB_USB_JS_1620 MTP 8', (usbManager.MTP));
   })
 
   /**
@@ -176,11 +176,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_1630', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_1630 set MTP HDC begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_1630 MTP HDC 12', (usb.MTP | usb.HDC));
+    callSetCurFunction('SUB_USB_JS_1630 MTP HDC 12', (usbManager.MTP | usbManager.HDC));
   })
 
   /**
@@ -191,11 +191,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_1640', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_1640 set PTP begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_1640 PTP 16', (usb.PTP));
+    callSetCurFunction('SUB_USB_JS_1640 PTP 16', (usbManager.PTP));
   })
 
   /**
@@ -206,11 +206,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_1650', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_1650 set PTP HDC begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_1650 PTP HDC 20', (usb.PTP | usb.HDC));
+    callSetCurFunction('SUB_USB_JS_1650 PTP HDC 20', (usbManager.PTP | usbManager.HDC));
   })
 
   /**
@@ -221,11 +221,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_1660', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_1660 set RNDIS begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_1660 RNDIS 32', (usb.RNDIS));
+    callSetCurFunction('SUB_USB_JS_1660 RNDIS 32', (usbManager.RNDIS));
   })
 
   /**
@@ -236,11 +236,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_1670', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_1670 set RNDIS HDC begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_1670 RNDIS HDC 36', (usb.RNDIS | usb.HDC));
+    callSetCurFunction('SUB_USB_JS_1670 RNDIS HDC 36', (usbManager.RNDIS | usbManager.HDC));
   })
 
   /**
@@ -251,11 +251,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_1680', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_1680 set STORAGE begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_1680 STORAGE 512', (usb.STORAGE));
+    callSetCurFunction('SUB_USB_JS_1680 STORAGE 512', (usbManager.STORAGE));
   })
 
   /**
@@ -266,11 +266,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_1690', 0, function () {
     CheckEmptyUtils.sleep(3000);
     console.info('usb SUB_USB_JS_1690 set STORAGE HDC begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
-    var funcString = usb.usbFunctionsToString(maskCode);
+    var funcString = usbManager.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('SUB_USB_JS_1690 STORAGE HDC 516', (usb.STORAGE | usb.HDC));
+    callSetCurFunction('SUB_USB_JS_1690 STORAGE HDC 516', (usbManager.STORAGE | usbManager.HDC));
   })
 
     /**
@@ -280,7 +280,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0010', 0, function () {
     console.info('usb SUB_USB_JS_0010 device 2 2 begin');
-    var usbPortList = usb.getPorts()
+    var usbPortList = usbManager.getPorts()
     if (usbPortList.length == 0) {
       console.info('usb SUB_USB_JS_0010 device 2 2 usbPortList is null');
       expect(false).assertTrue();
@@ -289,7 +289,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
 
     for (var i = 0; i < usbPortList.length; i++) {
       console.info('usb 0010 case set data role 2, data role 2');
-      usb.setPortRoles(usbPortList[i].id, usb.SINK, usb.DEVICE).then(data => {
+      usbManager.setPortRoles(usbPortList[i].id, usbManager.SINK, usbManager.DEVICE).then(data => {
         console.info('usb 0010 case setPortRoles return: ' + data);
         expect(data).assertTrue();
       }).catch(error => {
@@ -309,7 +309,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0020', 0, function () {
     console.info('usb SUB_USB_JS_0020 host 1 1 begin');
-    var usbPortList = usb.getPorts()
+    var usbPortList = usbManager.getPorts()
     if (usbPortList.length == 0) {
       console.info('usb SUB_USB_JS_0020 host 1 1 usbPortList is null');
       expect(false).assertTrue();
@@ -318,7 +318,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
 
     for (var i = 0; i < usbPortList.length; i++) {
       console.info('usb 0020 case set data role 1, data role 1');
-      usb.setPortRoles(usbPortList[i].id, usb.SOURCE, usb.HOST).then(data => {
+      usbManager.setPortRoles(usbPortList[i].id, usbManager.SOURCE, usbManager.HOST).then(data => {
         console.info('usb 0020 case setPortRoles return: ' + data);
         expect(data).assertTrue();
       }).catch(error => {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import usb from '@ohos.usb';
+import usbManager from '@ohos.usbManager';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
@@ -23,7 +23,7 @@ describe('UsbPortJsFunctionsTest', function () {
 
   beforeAll(function () {
     console.log('*************Usb Unit UsbPortJsFunctionsTest Begin*************');
-    var Version = usb.getVersion()
+    var Version = usbManager.getVersion()
     console.info('begin test getversion :' + Version)
   })
   beforeEach(function () {
@@ -43,7 +43,7 @@ describe('UsbPortJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0410', 0, function () {
     console.info('usb SUB_USB_JS_0410 begin');
-    var usbPortList = usb.getPorts()
+    var usbPortList = usbManager.getPorts()
     if (usbPortList.length == 0) {
       console.info('usb SUB_USB_JS_0410 usbPortList is null');
       expect(false).assertTrue();
@@ -60,7 +60,7 @@ describe('UsbPortJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0220', 0, function () {
     console.info('usb SUB_USB_JS_0220 begin');
-    var usbPortList = usb.getPorts()
+    var usbPortList = usbManager.getPorts()
     if (usbPortList.length == 0) {
       console.info('usb SUB_USB_JS_0220 usbPortList is null');
       expect(false).assertTrue();
@@ -69,7 +69,7 @@ describe('UsbPortJsFunctionsTest', function () {
 
     expect(usbPortList.length > 0).assertTrue();
     for (var i = 0; i < usbPortList.length; i++) {
-      var maskCode = usb.getSupportedModes(usbPortList[i].id)
+      var maskCode = usbManager.getSupportedModes(usbPortList[i].id)
       expect(maskCode).assertEqual(usbPortList[i].supportedModes);
     }
 

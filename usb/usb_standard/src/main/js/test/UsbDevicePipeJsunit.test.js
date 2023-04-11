@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import usb from '@ohos.usb';
+import usbManager from '@ohos.usbManager';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import EventConstants from './EventConstants.js';
 import parameter from '@ohos.systemparameter';
@@ -29,19 +29,19 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
 
   beforeAll(function () {
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTest Begin*************');
-    var Version = usb.getVersion()
+    var Version = usbManager.getVersion()
     console.info('usb unit begin test getversion :' + Version)
     // version > 17  host currentMode = 2 device currentMode = 1
-    var usbPortList = usb.getPorts()
+    var usbPortList = usbManager.getPorts()
     if (usbPortList == undefined) {
       portCurrentMode = 1;
       return
     }
-    gDeviceList = usb.getDevices();
+    gDeviceList = usbManager.getDevices();
     if (usbPortList.length > 0) {
       if (gDeviceList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
-          usb.setPortRoles(usbPortList[0].id, usb.SOURCE, usb.HOST).then(data => {
+          usbManager.setPortRoles(usbPortList[0].id, usb.SOURCE, usb.HOST).then(data => {
             portCurrentMode = 2
             console.info('usb case setPortRoles return: ' + data);
           }).catch(error => {
@@ -55,11 +55,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       }
     }
 
-    gDeviceList = usb.getDevices();
+    gDeviceList = usbManager.getDevices();
     gDeviceList[0].name;
     gDeviceList[0].version;
     gDeviceList[0].configs;
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     console.info('usb unit connectDevice gPipe ret : ' + JSON.stringify(gPipe));
   })
 
@@ -71,7 +71,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   afterAll(function () {
-    var isPipClose = usb.closePipe(gPipe)
+    var isPipClose = usbManager.closePipe(gPipe)
     console.info('usb unit close gPipe ret : ' + isPipClose);
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTest End*************');
   })
@@ -85,10 +85,10 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       endpoint.interfaceid = 1;
       if (endpoint.type == EventConstants.USB_ENDPOINT_XFER_BULK) {
         bfind = true
-        if (endpoint.direction == usb.USB_REQUEST_DIR_TO_DEVICE) {
+        if (endpoint.direction == usbManager.USB_REQUEST_DIR_TO_DEVICE) {
           testParam.maxOutSize = endpoint.maxPacketSize;
           testParam.outEndpoint = endpoint;
-        } else if (endpoint.direction == usb.USB_REQUEST_DIR_FROM_DEVICE) {
+        } else if (endpoint.direction == usbManager.USB_REQUEST_DIR_FROM_DEVICE) {
           testParam.maxInSize = endpoint.maxPacketSize;
           testParam.inEndpoint = endpoint
         }
@@ -169,12 +169,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     console.info('usb case readData begin');
     var tmpUint8Array = new Uint8Array(testParam.maxInSize);
-    usb.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, 5000).then(data => {
+    usbManager.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, 5000).then(data => {
       console.info('usb case readData tmpUint8Array buffer : ' + CheckEmptyUtils.ab2str(tmpUint8Array));
       console.info('usb case readData ret: ' + data);
       expect(data >= 0).assertTrue();
@@ -204,7 +204,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
 
-    testParam.isClaimed = usb.claimInterface(testParam.pip, testParam.interface, true);
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
     testParam.sendData = 'send default';
@@ -216,7 +216,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
-    usb.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, 5000).then(data => {
+    usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, 5000).then(data => {
       console.info('usb case SUB_USB_JS_0640 ret: ' + data);
       console.info('usb case SUB_USB_JS_0640 send data: ' + testParam.sendData);
       expect(data > 0).assertTrue();
@@ -262,14 +262,14 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
 		    interfaces.id = 1;
 		    interfaces.name = '';
 		    interfaces.alternateSetting = 0;
-        var isClaim = usb.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[k], true)
+        var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[k], true)
         console.info('usb case claimInterface function return: ' + isClaim);
         expect(isClaim).assertEqual(0);
         if (isClaim == 0) {
-          isClaim = usb.releaseInterface(gPipe, gDeviceList[0].configs[j].interfaces[k])
+          isClaim = usbManager.releaseInterface(gPipe, gDeviceList[0].configs[j].interfaces[k])
           console.info('usb case releaseInterface function return: ' + isClaim);
           expect(isClaim).assertEqual(0);
-          gPipe = usb.connectDevice(gDeviceList[0])
+          gPipe = usbManager.connectDevice(gDeviceList[0])
         }
       }
     }
@@ -313,7 +313,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
 
-    gPipe = usb.connectDevice(gDeviceList[0])
+    gPipe = usbManager.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       var configs = gDeviceList[0].configs[j];
       configs.id = 1;
@@ -321,7 +321,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       configs.maxPower = 1;
       configs.isRemoteWakeup = true;
       configs.isSelfPowered = true;
-      var ret = usb.setConfiguration(gPipe, gDeviceList[0].configs[j])
+      var ret = usbManager.setConfiguration(gPipe, gDeviceList[0].configs[j])
       console.info('usb case setConfiguration return : ' + ret);
       expect(ret).assertEqual(0);
     }
@@ -350,7 +350,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       var config = JSON.parse(JSON.stringify(gDeviceList[0].configs[j]));
       config.id = 255
-      var ret = usb.setConfiguration(gPipe, config)
+      var ret = usbManager.setConfiguration(gPipe, config)
       console.info('usb case setConfiguration return : ' + ret);
       expect(ret).assertLess(0);
     }
@@ -377,10 +377,10 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
-      var isClaim = usb.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
+      var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
       expect(isClaim).assertEqual(0)
       if (isClaim == 0) {
-        var ret = usb.setInterface(gPipe, gDeviceList[0].configs[j].interfaces[0])
+        var ret = usbManager.setInterface(gPipe, gDeviceList[0].configs[j].interfaces[0])
         console.info('usb case setInterface return : ' + ret);
         expect(ret).assertEqual(0);
       }
@@ -408,12 +408,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
-      var isClaim = usb.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
+      var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true)
       expect(isClaim).assertEqual(0)
       if (isClaim == 0) {
         var tmpInterface = JSON.parse(JSON.stringify(gDeviceList[0].configs[j].interfaces[0]));
         tmpInterface.id = 234
-        var ret = usb.setInterface(gPipe, tmpInterface)
+        var ret = usbManager.setInterface(gPipe, tmpInterface)
         console.info('usb case setInterface return : ' + ret)
         expect(ret).assertLess(0)
       }
@@ -423,7 +423,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   function callControlTransfer(pip, controlParam, timeout, caseName) {
-    usb.controlTransfer(pip, controlParam, timeout).then(data => {
+    usbManager.controlTransfer(pip, controlParam, timeout).then(data => {
       console.info('usb controlTransfer ret data : ' + data + ' ' + caseName);
       console.info('usb controlTransfer controlParam.data buffer : ' + controlParam.data + ' ' + caseName);
       expect(data >= 0).assertTrue();
@@ -455,8 +455,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(6, usb.USB_REQUEST_TARGET_DEVICE, (usb.USB_REQUEST_DIR_FROM_DEVICE)
-        | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0)
+    var controlParam = getTransferParam(6, usbManager.USB_REQUEST_TARGET_DEVICE,
+      (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0540 GetDescriptor')
   })
 
@@ -479,8 +480,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(0, usb.USB_REQUEST_TARGET_DEVICE, (usb.USB_REQUEST_DIR_FROM_DEVICE)
-        | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0)
+    var controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
+      (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0550 GetStatus')
   })
 
@@ -503,8 +505,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(8, usb.USB_REQUEST_TARGET_DEVICE, (usb.USB_REQUEST_DIR_FROM_DEVICE)
-        | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0)
+    var controlParam = getTransferParam(8, usbManager.USB_REQUEST_TARGET_DEVICE,
+      (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0560 GetConfiguration')
   })
 
@@ -527,8 +530,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(10, usb.USB_REQUEST_TARGET_INTERFACE, (usb.USB_REQUEST_DIR_FROM_DEVICE)
-        | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_INTERFACE & 0x1f), 0, 1)
+    var controlParam = getTransferParam(10, usbManager.USB_REQUEST_TARGET_INTERFACE,
+      (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+      | (usbManager.USB_REQUEST_TARGET_INTERFACE & 0x1f), 0, 1);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0570 GetInterface')
   })
 
@@ -551,8 +555,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(1, usb.USB_REQUEST_TARGET_DEVICE, (usb.USB_REQUEST_DIR_TO_DEVICE)
-        | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0)
+    var controlParam = getTransferParam(1, usbManager.USB_REQUEST_TARGET_DEVICE,
+      (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0580 ClearFeature')
   })
 
@@ -575,8 +580,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_INTERFACE, (usb.USB_REQUEST_DIR_FROM_DEVICE)
-        | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_INTERFACE & 0x1f), (2 << 8), 0)
+    var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_INTERFACE,
+      (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+      | (usbManager.USB_REQUEST_TARGET_INTERFACE & 0x1f), (2 << 8), 0);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0590 ClearFeature')
   })
 
@@ -599,8 +605,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_ENDPOINT, (usb.USB_REQUEST_DIR_TO_DEVICE)
-        | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_ENDPOINT & 0x1f), (2 << 8), 0)
+    var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_ENDPOINT,
+      (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
+      | (usbManager.USB_REQUEST_TARGET_ENDPOINT & 0x1f), (2 << 8), 0);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0600 ClearFeature')
   })
 
@@ -623,8 +630,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_OTHER, (usb.USB_REQUEST_DIR_TO_DEVICE)
-        | (usb.USB_REQUEST_TYPE_VENDOR << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), (2 << 8), 0)
+    var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
+      (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_VENDOR << 5)
+      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), (2 << 8), 0);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0610 ClearFeature')
   })
 
@@ -647,13 +655,14 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_OTHER, (usb.USB_REQUEST_DIR_TO_DEVICE)
-        | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0)
+    var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
+      (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
+      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0620 ClearFeature')
   })
 
   function callControlTransferEx(pip, controlParam, timeout, caseName) {
-    usb.controlTransfer(pip, controlParam, timeout).then(data => {
+    usbManager.controlTransfer(pip, controlParam, timeout).then(data => {
       console.info('usb controlTransfer ret data : ' + data + ' ' + caseName);
       expect(false).assertTrue();
       console.info('usb' + caseName + ':  FAILED');
@@ -683,7 +692,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
     try {
-      usb.controlTransfer("invalid").then(data => {
+      usbManager.controlTransfer("invalid").then(data => {
         console.info('usb 1140 case controlTransfer ret data : ' + data);
         expect(false).assertTrue();
       }).catch(error => {
@@ -715,7 +724,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
     try {
-      usb.controlTransfer().then(data => {
+      usbManager.controlTransfer().then(data => {
         console.info('usb 1300 case controlTransfer ret data : ' + data);
         expect(false).assertTrue();
       }).catch(error => {
@@ -748,8 +757,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
     var testParamPip = "invalid";
     var timeout = 5000;
-    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_OTHER, (usb.USB_REQUEST_DIR_TO_DEVICE)
-        | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
+    var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
+      (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
+      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
     try {
       callControlTransferEx(testParamPip, controlParam, timeout, 'SUB_USB_JS_1440 ClearFeature');
     } catch (err) {
@@ -806,8 +816,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       return
     }
     var timeout = "invalid";
-    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_OTHER, (usb.USB_REQUEST_DIR_TO_DEVICE)
-        | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
+    var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
+      (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
+      | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
     try {
       callControlTransferEx(testParam.pip, controlParam, timeout, 'SUB_USB_JS_1570 ClearFeature');
     } catch (err) {
