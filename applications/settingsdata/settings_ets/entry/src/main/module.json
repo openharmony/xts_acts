@@ -31,10 +31,6 @@
                 ]
             }]
         }],
-        "metadata":[{
-            "name":"ArkTSPartialUpdate",
-            "value":"true"
-        }],
         "requestPermissions": [
             {
                 "name": "ohos.permission.MANAGE_SECURE_SETTINGS",

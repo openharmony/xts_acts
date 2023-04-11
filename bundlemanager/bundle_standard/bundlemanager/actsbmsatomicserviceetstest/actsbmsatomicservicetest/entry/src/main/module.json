@@ -28,12 +28,6 @@
         "installationFree": true,
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
-        "metadata": [
-            {
-              "name": "ArkTSPartialUpdate",
-              "value": "false"
-            }
-          ],
         "abilities": [
             {
                 "name": "ohos.acts.atomic.service.test.MainAbility",
