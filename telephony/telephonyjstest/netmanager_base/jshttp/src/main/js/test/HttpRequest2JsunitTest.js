@@ -56,25 +56,48 @@ export default function HttpRequest2JsunitTest() {
         it("SUB_Telephony_NetStack_HttpRequest2_Async_0100", 0, async function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttpRequest2_Async_0100";
             let Address_Img = "https://img1.baidu.com/it/u=3010094603,1247181326&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500";
-            let httpRequest = http.createHttp();
+            let HttpRequest = http.createHttp();
             try {
-                httpRequest.on("dataReceive", dataReceive_on_callback);
-                httpRequest.on("dataProgress", dataProgress_on_callback);
-                httpRequest.on("dataEnd", dataEnd_on_callback);
-                httpRequest.request2(Address_Img, httpRequestOptions, (err,data) => {
-                    console.info(CaseName + " responseCode data : " + data);
+                HttpRequest.on("dataReceive", dataReceive_on_callback);
+                HttpRequest.request2(Address_Img, httpRequestOptions).then(function () {
                     console.log(CaseName + "NETSTACK request2 OK!");
-                    httpRequest.off("dataReceive");
+                    HttpRequest.off("dataReceive");
                     console.log("NETSTACK off dataReceive success!");
-                    httpRequest.off("dataProgress");
-                    console.log("NETSTACK off dataProgress success!");
-                    httpRequest.off("dataEnd");
-                    console.log("NETSTACK off dataEnd success!");
-                    httpRequest.destroy();
-                    done();
-                })
+                }).catch(function (err) {
+                    console.log("NETSTACK request2 ERROR : error = " + JSON.stringify(err));
+                });
             } catch (error) {
-                console.log("NETSTACK request2 catch : error = " + JSON.stringify(error));
+                console.log("NETSTACK request2 ERROR : error = " + JSON.stringify(error));
+            }
+            try {
+                HttpRequest.on("dataProgress", dataProgress_on_callback);
+                HttpRequest.request2(Address_Img, httpRequestOptions).then(function () {
+                    console.log(CaseName + "NETSTACK request2 OK!");
+                    HttpRequest.off("dataProgress");
+                    console.log("NETSTACK off dataProgress success!");
+                }).catch(function (err) {
+                    console.log("NETSTACK request2 ERROR : error = " + JSON.stringify(err));
+                });
+            } catch (error) {
+                console.log("NETSTACK request2 ERROR : error = " + JSON.stringify(error));
+            }
+
+            try {
+                HttpRequest.on("dataEnd", dataEnd_on_callback);
+                HttpRequest.request2(Address_Img, httpRequestOptions).then(function () {
+                    console.log(CaseName + "NETSTACK request2 OK!");
+                    HttpRequest.off("dataEnd");
+                    done();
+                    console.log("NETSTACK off dataEnd success!");
+                }).catch(function (err) {
+                    console.log("NETSTACK request2 ERROR : error = " + JSON.stringify(err));
+                    expect(err).assertFalse();
+                    done();
+                });
+            } catch (error) {
+                console.log("NETSTACK request2 ERROR : error = " + JSON.stringify(error));
+                expect(error).assertFalse();
+                done();
             }
         });
 
@@ -87,14 +110,13 @@ export default function HttpRequest2JsunitTest() {
         it("SUB_Telephony_NetStack_HttpRequest2_Async_0200", 0, async function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttpRequest2_Async_0200"
             var httpRequest = http.createHttp();
-            httpRequest.request2(Address_Baidu, (err,data) => {
+            httpRequest.request2(Address_Baidu, err => {
                 if (err) {
                     console.log(CaseName + " request2 ERROR" + JSON.stringify(err));
                     expect().assertFail();
                     done();
                 }
-                httpRequest.destroy();
-                console.log(CaseName + " request2 Finish responseCode " + data);
+                console.log(CaseName + " request2 Finish");
                 done();
             });
         });
@@ -107,9 +129,8 @@ export default function HttpRequest2JsunitTest() {
         it("SUB_Telephony_NetStack_HttpRequest2_Promise_0100", 0, async function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttpRequest2_Promise_0100";
             var httpRequest = http.createHttp();
-            httpRequest.request2(Address_Baidu, httpRequestOptions).then(function (data) {
-                console.log(CaseName + " request2 Finish responseCode " + data);
-                httpRequest.destroy();
+            httpRequest.request2(Address_Baidu, httpRequestOptions).then(function () {
+                console.log(CaseName + " request2 Finish ");
                 done();
             }).catch(function (err) {
                 console.log(CaseName + " error = " + JSON.stringify(err));
@@ -126,9 +147,8 @@ export default function HttpRequest2JsunitTest() {
         it("SUB_Telephony_NetStack_HttpRequest2_Promise_0200", 0, async function (done) {
             let CaseName = "SUB_Telephony_NetStack_HttpRequest2_Promise_0200";
             var httpRequest = http.createHttp();
-            httpRequest.request2(Address_Baidu).then(function (data) {
-                console.log(CaseName + " request2 Finish responseCode " + data);
-                httpRequest.destroy();
+            httpRequest.request2(Address_Baidu).then(function () {
+                console.log(CaseName + " request2 Finish ");
                 done();
             }).catch(function (err) {
                 console.log(CaseName + " : error = " + JSON.stringify(err));
@@ -152,7 +172,6 @@ export default function HttpRequest2JsunitTest() {
                     setTimeout(() => {
                         expect(dataReceive_status).assertEqual(true);
                         console.log(CaseName + " on dataReceive Finish ");
-                        httpRequest.destroy();
                         done();
                     }, delayTime);
                 }).catch(function (err) {
@@ -184,7 +203,6 @@ export default function HttpRequest2JsunitTest() {
                         expect(dataReceive_status).assertEqual(false);
                     }, delayTime);
                     console.log(CaseName + " off dataReceive Finish ");
-                    httpRequest.destroy();
                     done();
                 }).catch(function (err) {
                     console.log(CaseName + " : error = " + JSON.stringify(err));
@@ -214,7 +232,6 @@ export default function HttpRequest2JsunitTest() {
                         httpRequest.off("dataReceive");
                     }, delayTime);
                     console.log(CaseName + " off dataReceive Finish ");
-                    httpRequest.destroy();
                     done();
                 }).catch(function (err) {
                     console.log(CaseName + " : error = " + JSON.stringify(err));
@@ -243,7 +260,6 @@ export default function HttpRequest2JsunitTest() {
                         expect(dataProgress_status).assertEqual(true);
                     }, delayTime);
                     console.log(CaseName + " on dataProgress Finish ");
-                    httpRequest.destroy();
                     done();
                 }).catch(function (err) {
                     console.log(CaseName + " : error = " + JSON.stringify(err));
@@ -273,7 +289,6 @@ export default function HttpRequest2JsunitTest() {
                         expect(dataProgress_status).assertEqual(false);
                     }, delayTime);
                     console.log(CaseName + " off dataProgress Finish ");
-                    httpRequest.destroy();
                     done();
                 }).catch(function (err) {
                     console.log(CaseName + " : error = " + JSON.stringify(err));
@@ -303,7 +318,6 @@ export default function HttpRequest2JsunitTest() {
                         httpRequest.off("dataProgress");
                     }, delayTime);
                     console.log(CaseName + " off dataProgress Finish ");
-                    httpRequest.destroy();
                     done();
                 }).catch(function (err) {
                     console.log(CaseName + " : error = " + JSON.stringify(err));
@@ -333,7 +347,6 @@ export default function HttpRequest2JsunitTest() {
                         expect(dataEnd_status).assertEqual(true);
                     }, delayTime);
                     console.log(CaseName + " on dataEnd Finish ");
-                    httpRequest.destroy();
                     done();
                 }).catch(function (err) {
                     console.log(CaseName + " : error = " + JSON.stringify(err));
@@ -364,7 +377,6 @@ export default function HttpRequest2JsunitTest() {
                         expect(dataEnd_status).assertEqual(false);
                     }, delayTime);
                     console.log(CaseName + " off dataEnd Finish ");
-                    httpRequest.destroy();
                     done();
                 }).catch(function (err) {
                     console.log(CaseName + " : error = " + JSON.stringify(err));
@@ -394,7 +406,6 @@ export default function HttpRequest2JsunitTest() {
                         httpRequest.off("dataEnd");
                     }, delayTime);
                     console.log(CaseName + " off dataEnd Finish ");
-                    httpRequest.destroy();
                     done();
                 }).catch(function (err) {
                     console.log(CaseName + " : error = " + JSON.stringify(err));
