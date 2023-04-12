@@ -16,6 +16,7 @@ group("theme") {
   testonly = true
   deps = [
     "screenlock_ets:ActsScreenLockETSApiTest",
+    "wallpaper_authority_ets:ActsWallpapernAuthorityETSApiTest",
     "wallpaper_ets:ActsWallpaperETSApiTest",
   ]
 }

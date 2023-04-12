@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.acts.theme.wallpapertest",
+    "bundleName": "com.acts.theme.wallpaperauthoritytest",
     "vendor": "open",
     "version": {
       "code": 1000000,
@@ -14,9 +14,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.acts.theme.wallpapertest",
+    "package": "com.acts.theme.wallpaperauthoritytest",
     "name": ".MyApplication",
-    "mainAbility": "com.acts.theme.wallpapertest.MainAbility",
+    "mainAbility": "com.acts.theme.wallpaperauthoritytest.MainAbility",
 
     "deviceType": [
       "tablet",
@@ -64,6 +64,28 @@
         "label": "$string:TestAbility_label",
         "type": "page",
         "launchType": "standard"
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.SET_WALLPAPER",
+        "reason": "need use ohos.permission.SET_WALLPAPER",
+        "usedScene": {
+          "ability": [
+            "com.acts.theme.wallpapertest.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.GET_WALLPAPER",
+        "reason": "need use ohos.permission.GET_WALLPAPER",
+        "usedScene": {
+          "ability": [
+            "com.acts.theme.wallpapertest.MainAbility"
+          ],
+          "when": "inuse"
+        }
       }
     ],
     "js": [
