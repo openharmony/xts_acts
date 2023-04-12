@@ -339,12 +339,12 @@ struct IndexPage {
       FailIndex = report.indexOf('false',FailIndex + 1);
     }
     let failNum = (FailNum).toString();
-    let PassIndex = report.indexOf('true');
+    let PassIndex = report.indexOf('true ');
     let PassNum = 0;
     while(PassIndex != -1) {
       console.log(PassIndex);
       PassNum++;
-      PassIndex = report.indexOf('true',PassIndex + 1);
+      PassIndex = report.indexOf('true ',PassIndex + 1);
     }
     let TestNum = FailNum + PassNum;
     let testNum = (TestNum).toString();
@@ -359,12 +359,12 @@ struct IndexPage {
       ArkUIFailIndex = ArkUIReport.indexOf('false',ArkUIFailIndex + 1);
     }
     let ArkuiFailNum = (ArkUIFailNum).toString();
-    let ArkUIPassIndex = ArkUIReport.indexOf('true');
+    let ArkUIPassIndex = ArkUIReport.indexOf('true ');
     let ArkUIPassNum = 0;
     while (ArkUIPassIndex != -1) {
       console.log(ArkUIPassIndex);
       ArkUIPassNum++;
-      ArkUIPassIndex = ArkUIReport.indexOf('true',ArkUIPassIndex + 1);
+      ArkUIPassIndex = ArkUIReport.indexOf('true ',ArkUIPassIndex + 1);
     }
     let ArkUITestNum = ArkUIFailNum + ArkUIPassNum;
     let ArkuiTestNum = (ArkUITestNum).toString();
@@ -379,12 +379,12 @@ struct IndexPage {
       AudioFailIndex = AudioReport.indexOf('false',AudioFailIndex + 1);
     }
     let audioFailNum = (AudioFailNum).toString();
-    let AudioPassIndex = AudioReport.indexOf('true');
+    let AudioPassIndex = AudioReport.indexOf('true ');
     let AudioPassNum = 0;
     while (AudioPassIndex != -1) {
       console.log(AudioPassIndex);
       AudioPassNum++;
-      AudioPassIndex = AudioReport.indexOf('true',AudioPassIndex + 1);
+      AudioPassIndex = AudioReport.indexOf('true ',AudioPassIndex + 1);
     }
     let AudioTestNum = AudioFailNum + AudioPassNum;
     let audioTestNum = (AudioTestNum).toString();
@@ -399,12 +399,12 @@ struct IndexPage {
       CameraFailIndex = CameraReport.indexOf('false',CameraFailIndex + 1);
     }
     let cameraFailNum = (CameraFailNum).toString();
-    let CameraPassIndex = CameraReport.indexOf('true');
+    let CameraPassIndex = CameraReport.indexOf('true ');
     let CameraPassNum = 0;
     while (CameraPassIndex != -1) {
       console.log(CameraPassIndex);
       CameraPassNum++;
-      CameraPassIndex = CameraReport.indexOf('true',CameraPassIndex + 1);
+      CameraPassIndex = CameraReport.indexOf('true ',CameraPassIndex + 1);
     }
     let CameraTestNum = CameraFailNum + CameraPassNum;
     let cameraTestNum = (CameraTestNum).toString();
@@ -419,12 +419,12 @@ struct IndexPage {
       PlayerFailIndex = PlayerReport.indexOf('false',PlayerFailIndex + 1);
     }
     let playerFailNum = (PlayerFailNum).toString();
-    let PlayerPassIndex = PlayerReport.indexOf('true');
+    let PlayerPassIndex = PlayerReport.indexOf('true ');
     let PlayerPassNum = 0;
     while (PlayerPassIndex != -1) {
       console.log(PlayerPassIndex);
       PlayerPassNum++;
-      PlayerPassIndex = PlayerReport.indexOf('true',PlayerPassIndex + 1);
+      PlayerPassIndex = PlayerReport.indexOf('true ',PlayerPassIndex + 1);
     }
     let PlayerTestNum = PlayerFailNum + PlayerPassNum;
     let playerTestNum = (PlayerTestNum).toString();
@@ -439,12 +439,12 @@ struct IndexPage {
       ExperienceFailIndex = ExperienceReport.indexOf('false',ExperienceFailIndex + 1);
     }
     let experienceFailNum = (ExperienceFailNum).toString();
-    let ExperiencePassIndex = ExperienceReport.indexOf('true');
+    let ExperiencePassIndex = ExperienceReport.indexOf('true ');
     let ExperiencePassNum = 0;
     while (ExperiencePassIndex != -1) {
       console.log(ExperiencePassIndex);
       ExperiencePassNum++;
-      ExperiencePassIndex = ExperienceReport.indexOf('true',ExperiencePassIndex + 1);
+      ExperiencePassIndex = ExperienceReport.indexOf('true ',ExperiencePassIndex + 1);
     }
     let ExperienceTestNum = ExperienceFailNum + ExperiencePassNum;
     let experienceTestNum = (ExperienceTestNum).toString();

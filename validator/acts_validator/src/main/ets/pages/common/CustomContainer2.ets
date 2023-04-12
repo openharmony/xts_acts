@@ -48,7 +48,7 @@ export struct CustomContainer {
       .onClick(()=>{
         router.back({
           url:this.Url,
-          params: {result : 'true', title : this.name,
+          params: {result : 'true ', title : this.name,
           }
         })
         this.getScreen(isFullScreen);
