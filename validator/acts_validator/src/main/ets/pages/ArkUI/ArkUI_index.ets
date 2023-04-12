@@ -116,7 +116,7 @@ struct IndexPage {
       let number = WriteTitle.length + 11;
       let Index = ColorBack.indexOf(WriteTitle);
 
-      if (this.result === 'true'){
+      if (this.result === 'true '){
         this.ColorObject[this.current] = '#ff008000';
         let Log = (titles+';'+'#ff008000'+';');
         let key = ColorBack.substring(Index,Index+number);
@@ -282,12 +282,12 @@ struct IndexPage {
         FailIndex = report.indexOf('false',FailIndex + 1);
       }
       let failNum = (FailNum).toString();
-      let PassIndex = report.indexOf('true');
+      let PassIndex = report.indexOf('true ');
       let PassNum = 0;
       while (PassIndex != -1) {
         console.log(PassIndex);
         PassNum++;
-        PassIndex = report.indexOf('true',PassIndex + 1);
+        PassIndex = report.indexOf('true ',PassIndex + 1);
       }
       let TestNum = FailNum + PassNum;
       let testNum = (TestNum).toString();
