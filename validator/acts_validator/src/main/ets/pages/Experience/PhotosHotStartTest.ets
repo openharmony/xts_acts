@@ -26,7 +26,7 @@ let PhotosColdPath = path1 + '/HotStartPhotos.log';
 @Component
 struct CustomContainerUser {
   @State name: string = 'PhotosHotStart';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延小于1000ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延小于600ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
@@ -96,7 +96,7 @@ struct CustomContainerUser {
                   let photosHead = photosReport.indexOf(':');
                   let photosTime = photosReport.substring(photosHead+1);
                   this.photosNum = parseFloat(photosTime);
-                  if( 0 < this.photosNum && this.photosNum < 1000 ) {
+                  if( 0 < this.photosNum && this.photosNum < 600 ) {
                     this.num++
                   }
                   if( this.num === 1 ) {
