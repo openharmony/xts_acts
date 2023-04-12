@@ -100,7 +100,8 @@ export default function Http2Test() {
                     header: "content-type': 'application/json",
                     readTimeout: 6000,
                     connectTimeout: 6000,
-                    priority: 100
+                    priority: 100,
+                    caPath: ''
                 }
                 var httpRequest = net_Http.createHttp();
                 httpRequest.request("https://www.zhihu.com", httpRequestOptions, (err, data) => {
