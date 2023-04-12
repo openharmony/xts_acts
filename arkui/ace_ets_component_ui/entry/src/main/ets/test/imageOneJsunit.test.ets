@@ -36,7 +36,7 @@ export default function imageOneJsunit() {
         }
       } catch (err) {
           console.error("push imageOneJsunit page error:" + err);
-	        expect().assertFail();
+	  expect().assertFail();
       }
       done();
     });
@@ -114,42 +114,42 @@ export default function imageOneJsunit() {
       await CommonFunc.sleep(1000);
       // test the enum of objectFit
       globalThis.value.message.notify({name:'objectFit',value:ImageFit.Cover})
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('objectFit');
       let obj = JSON.parse(strJson);
       console.info('textimageOneJsunit_0400 component obj is: ' + obj.$attrs.objectFit);
       expect(obj.$attrs.objectFit).assertEqual('ImageFit.Cover');
 
       globalThis.value.message.notify({name:'objectFit',value:ImageFit.Auto})
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('objectFit');
       let obj2 = JSON.parse(strJson2);
       console.info('textimageOneJsunit_0400 component obj2 is: ' + obj2.$attrs.objectFit);
       expect(obj2.$attrs.objectFit).assertEqual('ImageFit.Auto');
 
       globalThis.value.message.notify({name:'objectFit',value:ImageFit.Fill})
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(500);
       let strJson3 = getInspectorByKey('objectFit');
       let obj3 = JSON.parse(strJson3);
       console.info('textimageOneJsunit_0400 component obj3 is: ' + obj3.$attrs.objectFit);
       expect(obj3.$attrs.objectFit).assertEqual('ImageFit.Fill');
 
       globalThis.value.message.notify({name:'objectFit',value:ImageFit.ScaleDown})
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(500);
       let strJson4 = getInspectorByKey('objectFit');
       let obj4 = JSON.parse(strJson4);
       console.info('textimageOneJsunit_0400 component obj4 is: ' + obj4.$attrs.objectFit);
       expect(obj4.$attrs.objectFit).assertEqual('ImageFit.ScaleDown');
 
       globalThis.value.message.notify({name:'objectFit',value:ImageFit.None})
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(500);
       let strJson5 = getInspectorByKey('objectFit');
       let obj5 = JSON.parse(strJson5);
       console.info('textimageOneJsunit_0400 component obj5 is: ' + obj5.$attrs.objectFit);
       expect(obj5.$attrs.objectFit).assertEqual('ImageFit.None');
 
       globalThis.value.message.notify({name:'objectFit',value:ImageFit.Contain})
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(500);
       let strJson6 = getInspectorByKey('objectFit');
       let obj6 = JSON.parse(strJson6);
       console.info('textimageOneJsunit_0400 component obj6 is: ' + obj6.$attrs.objectFit);

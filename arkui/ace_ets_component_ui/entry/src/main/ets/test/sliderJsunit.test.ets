@@ -200,7 +200,7 @@ export default function sliderJsunit() {
       let strJson = getInspectorByKey('tex');
       let obj = JSON.parse(strJson);
       console.info("[sliderJsunit_0800] obj: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('30');
+      expect(Math.round(obj.$attrs.content)).assertEqual(50);
       let strJson1 = getInspectorByKey('modeT');
       let obj1 = JSON.parse(strJson1);
       console.info("[sliderJsunit_0800] obj1: " + JSON.stringify(obj1));

@@ -37,14 +37,14 @@ export default function textAreaJsunit() {
         }
       } catch (err) {
           console.error("push textAreaJsunit page error:" + err);
-	        expect().assertFail();
+	  expect().assertFail();
       }
       done();
     });
 
     it('textAreaJsunit_0100', 0, async function (done) {
        console.info('textAreaJsunit_0100');
-       await CommonFunc.sleep(30000);
+       await CommonFunc.sleep(1000);
        // get the textArea component and test attribute
        let strJson = getInspectorByKey('textArea');
        let obj = JSON.parse(strJson);
