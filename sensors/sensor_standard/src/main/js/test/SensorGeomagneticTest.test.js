@@ -170,6 +170,47 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0030
+     * @tc.name: SensorGeomagenticAlgorithmJSTest003
+     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     */
+    it('SensorGeomagenticAlgorithmJSTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest003-------------------------");
+        let geomagneticComponent = [-1417119616, 23146989568, -6406359552, -15.442885398864746,
+        93.50342559814453, 23190329344, 24058943488, -1417119360, 23146989568, -6406359552, -15.442885398864746,
+        93.50342559814453, 23190329344, 24058943488]
+        sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 }, 9223372036854775807,
+            (error, data) => {
+                if (error) {
+                    console.info('SensorGeomagenticAlgorithmJSTest003 failed');
+                    expect(false).assertTrue();
+                } else {
+                    console.info('SensorGeomagenticAlgorithmJSTest003 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
+                    + ',geomagneticDip: ' + data.geomagneticDip
+                    + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
+                    + ',totalIntensity: ' + data.totalIntensity)
+					expect((Math.abs(data.x - geomagneticComponent[0]) < EPS) 
+					|| (Math.abs(data.x - geomagneticComponent[7]) < EPS)).assertTrue();
+					expect((Math.abs(data.y - geomagneticComponent[1]) < EPS) 
+					|| (Math.abs(data.y - geomagneticComponent[8]) < EPS)).assertTrue();	
+					expect((Math.abs(data.z - geomagneticComponent[2]) < EPS) 
+					|| (Math.abs(data.z - geomagneticComponent[9]) < EPS)).assertTrue();	
+					expect((Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS) 
+					|| (Math.abs(data.geomagneticDip - geomagneticComponent[10]) < EPS)).assertTrue();	
+					expect((Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS) 
+					|| (Math.abs(data.deflectionAngle - geomagneticComponent[11]) < EPS)).assertTrue();	
+					expect((Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS) 
+					|| (Math.abs(data.levelIntensity - geomagneticComponent[12]) < EPS)).assertTrue();	
+					expect((Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS) 
+					|| (Math.abs(data.totalIntensity - geomagneticComponent[13]) < EPS)).assertTrue();	
+                }
+                setTimeout(() => {
+                    done()
+                }, 500)
+            })
+    })
+	
+    /**
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0040
      * @tc.name: SensorGeomagenticAlgorithmJSTest004
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
@@ -803,6 +844,42 @@ describe("SensorJsTest_sensor_2", function () {
         done()
     })
 
+    /**
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0270
+     * @tc.name: SensorGeomagenticAlgorithmJSTest027
+     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     */
+    it("SensorGeomagenticAlgorithmJSTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest027------------------');
+        let geomagneticComponent = [-1417119616, 23146989568, -6406359552, -15.442885398864746,
+        93.50342559814453, 23190329344, 24058943488, -1417119360, 23146989568, -6406359552, -15.442885398864746,
+        93.50342559814453, 23190329344, 24058943488]
+        await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 },
+            9223372036854775807).then((data) => {
+            console.info('SensorGeomagenticAlgorithmJSTest027 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
+            + ',geomagneticDip: ' + data.geomagneticDip
+            + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
+            + ',totalIntensity: ' + data.totalIntensity)
+			expect((Math.abs(data.x - geomagneticComponent[0]) < EPS) 
+			|| (Math.abs(data.x - geomagneticComponent[7]) < EPS)).assertTrue();
+			expect((Math.abs(data.y - geomagneticComponent[1]) < EPS) 
+			|| (Math.abs(data.y - geomagneticComponent[8]) < EPS)).assertTrue();	
+			expect((Math.abs(data.z - geomagneticComponent[2]) < EPS) 
+			|| (Math.abs(data.z - geomagneticComponent[9]) < EPS)).assertTrue();	
+			expect((Math.abs(data.geomagneticDip - geomagneticComponent[3]) < EPS) 
+			|| (Math.abs(data.geomagneticDip - geomagneticComponent[10]) < EPS)).assertTrue();	
+			expect((Math.abs(data.deflectionAngle - geomagneticComponent[4]) < EPS) 
+			|| (Math.abs(data.deflectionAngle - geomagneticComponent[11]) < EPS)).assertTrue();	
+			expect((Math.abs(data.levelIntensity - geomagneticComponent[5]) < EPS) 
+			|| (Math.abs(data.levelIntensity - geomagneticComponent[12]) < EPS)).assertTrue();	
+			expect((Math.abs(data.totalIntensity - geomagneticComponent[6]) < EPS) 
+			|| (Math.abs(data.totalIntensity - geomagneticComponent[13]) < EPS)).assertTrue();	
+        }).catch((error) => {
+            console.info("promise::catch", error)
+        });
+        done()
+    })
+	
     /**
      * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0280
      * @tc.name: SensorGeomagenticAlgorithmJSTest028

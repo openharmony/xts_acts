@@ -50,6 +50,8 @@ describe("SensorJsTest_sensor_29", function () {
         console.info('afterEach caled')
     })
 
+	let GyroscopeId = 2
+	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0010
      * @tc.name: subscribeGyroscope_SensorJsTest001
@@ -58,7 +60,7 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest001---------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeGyroscope ,(error, data) => {		
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {		
 				sensor.subscribeGyroscope({
 					interval: 'game',
 					success: function (data) {
@@ -91,7 +93,7 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest002---------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeGyroscope ,(error, data) => {				
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {				
 				sensor.subscribeGyroscope({
 					interval: 'ui',
 					success: function (data) {
@@ -124,7 +126,7 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest003---------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeGyroscope ,(error, data) => {			
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {			
 				sensor.subscribeGyroscope({
 					interval: 'normal',
 					success: function (data) {
@@ -157,7 +159,7 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest004---------------');
 		try{
-		    sensor.getSingleSensor(sensor.subscribeGyroscope ,(error, data) => {				
+		    sensor.getSingleSensor(GyroscopeId ,(error, data) => {				
 				sensor.subscribeGyroscope({
 					interval: 'normal',
 					success: function (data) {
@@ -204,7 +206,7 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest005---------------');
 		try{
-		    sensor.getSingleSensor(sensor.subscribeGyroscope ,(error, data) => {				
+		    sensor.getSingleSensor(GyroscopeId ,(error, data) => {				
 			sensor.subscribeGyroscope({
 				interval: 'xxx',
 				success: function (data) {
@@ -234,7 +236,7 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest006---------------');
 		try{
-		    sensor.getSingleSensor(sensor.subscribeGyroscope ,(error, data) => {		
+		    sensor.getSingleSensor(GyroscopeId ,(error, data) => {		
 				sensor.subscribeGyroscope({
 					interval: 'normal',
 					success: function (data) {
@@ -260,7 +262,7 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest007---------------');
 		try{
-		    sensor.getSingleSensor(sensor.subscribeGyroscope ,(error, data) => {	       
+		    sensor.getSingleSensor(GyroscopeId ,(error, data) => {	       
 			   sensor.subscribeGyroscope({
 					interval: 'normal',
 					success: function (data) {
