@@ -13,7 +13,7 @@
         "deliveryWithInstall": true,
         "installationFree": false,
         "uiSyntax": "ets",
-        // "pages": "$profile:main_pages",
+        "pages": "$profile:main_pages",
         "abilities": [
             {
                 "name": "com.example.myapplication.MainAbility",
