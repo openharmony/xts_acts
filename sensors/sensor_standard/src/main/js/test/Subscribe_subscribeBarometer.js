@@ -50,6 +50,7 @@ describe("SensorJsTest_sensor_26", function () {
         console.info('afterEach caled')
     })
 	
+	let BarometerId = 8
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0010
      * @tc.name:subscribeBarometer_SensorJsTest001
@@ -58,7 +59,7 @@ describe("SensorJsTest_sensor_26", function () {
     it("subscribeBarometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest001---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeBarometer ,(error, data) => {			
+		   sensor.getSingleSensor(BarometerId ,(error, data) => {			
 				sensor.subscribeBarometer({
 					success: function (data) {
 						console.info("subscribeBarometer_SensorJsTest001 success" + JSON.stringify(data));
@@ -88,7 +89,7 @@ describe("SensorJsTest_sensor_26", function () {
     it("subscribeBarometer_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest002---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeBarometer ,(error, data) => {	        
+		   sensor.getSingleSensor(BarometerId ,(error, data) => {	        
 				sensor.subscribeBarometer({
 					success: function (data) {
 						console.info("subscribeBarometer_SensorJsTest002 success:" + JSON.stringify(data));
@@ -128,7 +129,7 @@ describe("SensorJsTest_sensor_26", function () {
     it("subscribeBarometer_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest003---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeBarometer ,(error, data) => {	       
+		   sensor.getSingleSensor(BarometerId,(error, data) => {	       
 			   sensor.subscribeBarometer({
 					success: function (data) {
 						console.info("subscribeBarometer_SensorJsTest003 success:" + JSON.stringify(data));

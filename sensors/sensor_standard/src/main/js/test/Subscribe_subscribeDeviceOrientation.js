@@ -49,6 +49,8 @@ describe("SensorJsTest_sensor_27", function () {
          */
         console.info('afterEach caled')
     })
+	
+	let DeviceOrientationId = 256
 
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0010
@@ -58,7 +60,7 @@ describe("SensorJsTest_sensor_27", function () {
     it("subscribeDeviceOrientation_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest001---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {			
+		   sensor.getSingleSensor(DeviceOrientationId ,(error, data) => {			
 				sensor.subscribeDeviceOrientation({
 					interval: 'game',
 					success: function (data) {
@@ -93,7 +95,7 @@ describe("SensorJsTest_sensor_27", function () {
     it("subscribeDeviceOrientation_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest002---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {			
+		   sensor.getSingleSensor(DeviceOrientationId ,(error, data) => {			
 				sensor.subscribeDeviceOrientation({
 					interval: 'ui',
 					success: function (data) {
@@ -129,7 +131,7 @@ describe("SensorJsTest_sensor_27", function () {
     it("subscribeDeviceOrientation_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest003---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {			
+		   sensor.getSingleSensor(DeviceOrientationId ,(error, data) => {			
 				sensor.subscribeDeviceOrientation({
 					interval: 'normal',
 					success: function (data) {
@@ -164,7 +166,7 @@ describe("SensorJsTest_sensor_27", function () {
     it("subscribeDeviceOrientation_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest004---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {					
+		   sensor.getSingleSensor(DeviceOrientationId ,(error, data) => {					
 				sensor.subscribeDeviceOrientation({
 					interval: 'normal',
 					success: function (data) {
@@ -213,7 +215,7 @@ describe("SensorJsTest_sensor_27", function () {
     it("subscribeDeviceOrientation_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest005---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {			
+		   sensor.getSingleSensor(DeviceOrientationId ,(error, data) => {			
 				sensor.subscribeDeviceOrientation({
 					interval: 'xxx',
 					success: function (data) {
@@ -244,7 +246,7 @@ describe("SensorJsTest_sensor_27", function () {
     it("subscribeDeviceOrientation_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest006---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeDeviceOrientation ,(error, data) => {				
+		   sensor.getSingleSensor(DeviceOrientationId ,(error, data) => {				
 				sensor.subscribeDeviceOrientation({
 					interval: 'normal',
 					success: function (data) {

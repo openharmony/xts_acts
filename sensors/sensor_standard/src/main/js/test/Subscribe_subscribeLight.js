@@ -50,6 +50,7 @@ describe("SensorJsTest_sensor_31", function () {
         console.info('afterEach caled')
     })
 
+	let LightId = 5
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeLight_JSTest_0010
      * @tc.name: subscribeLight_SensorJsTest001
@@ -58,7 +59,7 @@ describe("SensorJsTest_sensor_31", function () {
     it("subscribeLight_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest001---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeLight ,(error, data) => {				
+		   sensor.getSingleSensor(LightId ,(error, data) => {				
 				sensor.subscribeLight({
 					interval: 'game',
 					success: function (data) {
@@ -89,7 +90,7 @@ describe("SensorJsTest_sensor_31", function () {
     it("subscribeLight_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest002---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeLight ,(error, data) => {				
+		   sensor.getSingleSensor(LightId ,(error, data) => {				
 				sensor.subscribeLight({
 					interval: 'ui',
 					success: function (data) {
@@ -120,7 +121,7 @@ describe("SensorJsTest_sensor_31", function () {
     it("subscribeLight_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest003---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeLight ,(error, data) => {				
+		   sensor.getSingleSensor(LightId ,(error, data) => {				
 				sensor.subscribeLight({
 					success: function (data) {
 						console.info("subscribeLight_SensorJsTest003 success" + JSON.stringify(data));
@@ -150,7 +151,7 @@ describe("SensorJsTest_sensor_31", function () {
     it("subscribeLight_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest004---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeLight ,(error, data) => {	        
+		   sensor.getSingleSensor(LightId ,(error, data) => {	        
 				sensor.subscribeLight({
 					interval: 'normal',
 					success: function (data) {
@@ -193,7 +194,7 @@ describe("SensorJsTest_sensor_31", function () {
     it("subscribeLight_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest005---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeLight ,(error, data) => {	      		
+		   sensor.getSingleSensor(LightId ,(error, data) => {	      		
 				sensor.subscribeLight({
 					interval: 'xxx',
 					success: function (data) {
@@ -222,7 +223,7 @@ describe("SensorJsTest_sensor_31", function () {
     it("subscribeLight_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest006---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeLight ,(error, data) => {	    		
+		   sensor.getSingleSensor(LightId ,(error, data) => {	    		
 				sensor.subscribeLight({
 					interval: 'normal',
 					success: function (data) {
@@ -246,7 +247,7 @@ describe("SensorJsTest_sensor_31", function () {
     it("subscribeLight_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest007---------------------------');
 		try{
-		   sensor.getSingleSensor(sensor.subscribeLight ,(error, data) => {	          
+		   sensor.getSingleSensor(LightId ,(error, data) => {	          
 				sensor.subscribeLight({
 					interval: 'normal',
 					success: function (data) {
