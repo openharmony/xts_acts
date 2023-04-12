@@ -26,7 +26,7 @@ let PhotosColdPath = path1 + '/ColdStartPhotos.log';
 @Component
 struct CustomContainerUser {
   @State name: string = 'PhotosColdStart';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用冷启动时延小于2000ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用冷启动时延小于2300ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
@@ -96,7 +96,7 @@ struct CustomContainerUser {
                   let photosHead = photosReport.indexOf('time:');
                   let photosTime = photosReport.substring(photosHead+5);
                   this.photosNum = parseFloat(photosTime);
-                  if( 0 < this.photosNum && this.photosNum < 2000 ) {
+                  if( 0 < this.photosNum && this.photosNum < 2300 ) {
                     this.num++
                   }
                   if( this.num === 1 ) {

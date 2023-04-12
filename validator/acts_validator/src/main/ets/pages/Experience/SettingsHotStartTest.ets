@@ -26,7 +26,7 @@ let SettingsColdPath = path1 + '/HotStartSetting.log';
 @Component
 struct CustomContainerUser {
   @State name: string = 'SettingsHotStart';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延小于1000ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延小于600ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
@@ -96,7 +96,7 @@ struct CustomContainerUser {
                   let setHead = setReport.indexOf(':');
                   let setTime = setReport.substring(setHead+1);
                   this.setNum = parseFloat(setTime);
-                  if( 0 < this.setNum && this.setNum < 1000 ) {
+                  if( 0 < this.setNum && this.setNum < 600 ) {
                     this.num++
                   }
                   if( this.num === 1 ) {

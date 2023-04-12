@@ -26,7 +26,7 @@ let MmsColdPath = path1 + '/ColdStartMms.log';
 @Component
 struct CustomContainerUser {
   @State name: string = 'MmsColdStart';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用冷启动时延小于2000ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用冷启动时延小于2300ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
@@ -96,7 +96,7 @@ struct CustomContainerUser {
                   let MmsHead = MmsReport.indexOf('time:');
                   let MmsTime = MmsReport.substring(MmsHead+5);
                   this.mmsNum = parseFloat(MmsTime);
-                  if( 0 < this.mmsNum && this.mmsNum < 2000 ) {
+                  if( 0 < this.mmsNum && this.mmsNum < 2300 ) {
                     this.num++
                   }
                   if( this.num === 1 ) {

@@ -26,7 +26,7 @@ let ContactsColdPath = path1 + '/HotStartContacts.log';
 @Component
 struct CustomContainerUser {
   @State name: string = 'ContactsHotStart';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延小于1000ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延小于600ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
@@ -96,7 +96,7 @@ struct CustomContainerUser {
                   let ContactsHead = ContactsReport.indexOf(':');
                   let ContactsTime = ContactsReport.substring(ContactsHead+1);
                   this.contactsNum = parseFloat(ContactsTime);
-                  if( 0 < this.contactsNum && this.contactsNum < 1000 ) {
+                  if( 0 < this.contactsNum && this.contactsNum < 600 ) {
                     this.num++
                   }
                   if( this.num === 1 ) {

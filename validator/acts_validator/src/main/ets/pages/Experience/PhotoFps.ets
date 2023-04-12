@@ -25,7 +25,7 @@ let Xpath = path1 + '/PhotoFps.log';
 @Component
 struct CustomContainerUser {
   @State name: string = 'PhotoFps';
-  @State StepTips: string = '操作步骤：根据操作提示滑动图库测试帧率'+'\n'+'预期结果：帧率大于或等于54帧测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示滑动图库测试帧率'+'\n'+'预期结果：帧率大于或等于55帧测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State Fps: string = '0';
@@ -46,7 +46,7 @@ struct CustomContainerUser {
             Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.在图库中预置500张图片`+ '\n' + '\n'
             + `3.点击开始键进入图库`+ '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择帧率>图库`+ '\n' + '\n' +
             `5.滑动图库缩略图界面连续10s以上` + '\n' + '\n' + '6.回到PhotoFps测试项点击结束键' + '\n' + '\n' +
-            `7.若测试最高帧率大于或等于54帧则通过测试` + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' )
+            `7.若测试最高帧率大于或等于55帧则通过测试` + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
           }
           Row(){
@@ -105,7 +105,7 @@ struct CustomContainerUser {
                   }
                   let maxFps = Math.max(...Fps);
                   this.Fps = maxFps.toString();
-                  if(maxFps >= 54) {
+                  if(maxFps >= 55) {
                     this.Vue = true;
                   }
                 })
