@@ -30,6 +30,15 @@ export default {
         try {
           ability_featureAbility.getContext().setWakeUpScreen(true).then((data) => {
             console.log(TAG1 + "setWakeUpScreen data = " + JSON.stringify(data));
+            lifeList.push('wakeUpScreen');
+            let options = {
+              parameters: {
+                lifeList: lifeList
+              }
+            }
+            commonEvent.publish(listPush1 + "wakeUpScreen", options, (err) => {
+              console.log(TAG1 + listPush1 + "wakeUpScreen");
+            });
           }).catch((error) => {
             console.log(TAG1 + "setWakeUpScreen error = " + JSON.stringify(error));
           })
@@ -41,29 +50,36 @@ export default {
         ability_featureAbility.getContext().setWakeUpScreen(true, (error, data) => {
           console.log(TAG1 + "setWakeUpScreen data = " + JSON.stringify(data));
           console.log(TAG1 + "setWakeUpScreen error = " + JSON.stringify(error));
+          lifeList.push('wakeUpScreen');
+          let options = {
+            parameters: {
+              lifeList: lifeList
+            }
+          }
+          commonEvent.publish(listPush1 + "wakeUpScreen", options, (err) => {
+            console.log(TAG1 + listPush1 + "wakeUpScreen");
+          });
         })
       }
       if(data.parameters.number == 3) {
         try {
           ability_featureAbility.getContext().setWakeUpScreen(false).then((data) => {
             console.log(TAG1 + "setWakeUpScreen data = " + JSON.stringify(data));
+            lifeList.push('wakeUpScreen');
+            let options = {
+              parameters: {
+                lifeList: lifeList
+              }
+            }
+            commonEvent.publish(listPush1 + "wakeUpScreen", options, (err) => {
+              console.log(TAG1 + listPush1 + "wakeUpScreen");
+            });
           }).catch((error) => {
             console.log(TAG1 + "setWakeUpScreen error = " + JSON.stringify(error));
           })
         } catch(error) {
           console.log(TAG1 + "setWakeUpScreen catch error = " + JSON.stringify(error));
         }
-      }
-      if (data.parameters.flag) {
-        lifeList.push('onActive');
-        let options = {
-          parameters: {
-            lifeList: lifeList
-          }
-        }
-        commonEvent.publish(listPush1 + "onActive", options, (err) => {
-          console.log(TAG1 + listPush1 + "onActive");
-        });
       }
     }).catch((error) => {
       console.log(TAG1 + "getWant error = " + JSON.stringify(error));

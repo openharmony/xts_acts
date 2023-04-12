@@ -42,17 +42,15 @@ export default {
         setWakeUpScreenP(ability_featureAbility, {status1: true, status2: true})
       }
       await sleep(300);
-      if (data.parameters.flag) {
-        lifeList.push('onActive');
-        let options = {
-          parameters: {
-            lifeList: lifeList
-          }
+      lifeList.push('wakeUpScreen');
+      let options = {
+        parameters: {
+          lifeList: lifeList
         }
-        commonEvent.publish(listPush1 + "onActive", options, (err) => {
-          console.log(TAG1 + listPush1 + "onActive");
-        });
       }
+      commonEvent.publish(listPush1 + "wakeUpScreen", options, (err) => {
+        console.log(TAG1 + listPush1 + "wakeUpScreen");
+      });
     }).catch((error) => {
       console.log(TAG1 + "getWant error = " + JSON.stringify(error));
     })
