@@ -75,6 +75,8 @@ export default function HttpRequest2JsunitTest() {
                 })
             } catch (error) {
                 console.log("NETSTACK request2 catch : error = " + JSON.stringify(error));
+                expect(error).assertFalse();
+                done();
             }
         });
 
