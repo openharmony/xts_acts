@@ -136,4 +136,52 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
+  static ResetPlayerAudio = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('PlayerAudio', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'PlayerAudio'. Data: " + data);
+    });
+    promise = preferences.put('PlayerAudio', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'PlayerAudio'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
+  static ResetPlayerVideo = async ()=>{
+    let Test = null;
+    let context =null;
+    context = globalThis.getContext();
+    let preferences;
+
+    let promise = data_preferences.getPreferences(context,'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('PlayerVideo', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'PlayerVideo'. Data: " + data);
+    });
+    promise = preferences.put('PlayerVideo', 0);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'PlayerVideo'.");
+    });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+  }
 }

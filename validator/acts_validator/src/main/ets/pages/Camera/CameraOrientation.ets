@@ -88,7 +88,7 @@ struct cameraOrientation {
 
   onPageShow() {
     Logger.info(this.tag, `cameraOrientation onPageShow`)
-	// @ts-ignore
+    // @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
 	  Logger.info(this.tag, `onPageShow initCamera start`)
@@ -106,7 +106,7 @@ struct cameraOrientation {
       Row() {
         Button() {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({ left: '20vp' })
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
             url: 'pages/Camera/Camera_index',

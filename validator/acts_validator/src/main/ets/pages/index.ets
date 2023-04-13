@@ -20,7 +20,7 @@ import fileIO from '@ohos.fileio';
 import util from '@ohos.util';
 import DateTimeUtil from './model/DateTimeUtil';
 import data_preferences from '@ohos.data.preferences';
-import FlushData from '../pages/model/FlushData'
+import FlushData from '../pages/model/FlushData';
 
 const TAG = 'ParseXML';
 let path=globalThis.dir;
@@ -30,10 +30,13 @@ let path3 = path + '/Camera';
 let path4 = path + '/Player';
 let path5 = path + '/Experience';
 let picturePath = path + '/screenshot';
+let ExperienceDataPath = path + '/ExperienceData';
 let ArkUIColorBackPath = path + '/ArkUIColorBack.txt';
 let AudioColorBackPath = path + '/AudioColorBack.txt';
 let CameraColorBackPath = path + '/CameraColorBack.txt';
 let PlayerColorBackPath = path + '/PlayerColorBack.txt';
+let PlayerAudioColorBackPath = path4 + '/PlayerAudioColorBack.txt';
+let PlayerVideoColorBackPath = path4 + '/PlayerVideoColorBack.txt';
 let ExperienceColorBackPath = path + '/ExperienceColorBack.txt';
 fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
 fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
@@ -48,6 +51,8 @@ let path11 = path1 + '/ArkUIReport.txt';
 let path22 = path2 + '/AudioReport.txt';
 let path33 = path3 + '/CameraReport.txt';
 let path44 = path4 + '/PlayerReport.txt';
+let PlayerAudioTxtPath = path4 + '/PlayerAudioReport.txt';
+let PlayerVideoTxtPath = path4 + '/PlayerVideoReport.txt';
 let path55 = path5 + '/ExperienceReport.txt';
 
 @Entry
@@ -83,6 +88,7 @@ struct IndexPage {
       fileio.mkdirSync(path4);
       fileio.mkdirSync(path5);
       fileio.mkdirSync(picturePath);
+      fileio.mkdirSync(ExperienceDataPath);
 
       let promise = preferences.put('index', 1);
       promise.then(() => {
@@ -97,6 +103,10 @@ struct IndexPage {
     fileio.openSync(path22, 0o100 | 0o2002, 0o664);
     fileio.openSync(path33, 0o100 | 0o2002, 0o664);
     fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerAudioColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerVideoColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerAudioTxtPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerVideoTxtPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(path55, 0o100 | 0o2002, 0o664);
   }
   build(){
@@ -194,31 +204,43 @@ struct IndexPage {
     fileio.unlinkSync(path22);
     fileio.unlinkSync(path33);
     fileio.unlinkSync(path44);
+    fileio.unlinkSync(PlayerAudioTxtPath);
+    fileio.unlinkSync(PlayerVideoTxtPath);
     fileio.unlinkSync(path55);
     fileio.unlinkSync(ArkUIColorBackPath);
     fileio.unlinkSync(AudioColorBackPath);
     fileio.unlinkSync(CameraColorBackPath);
     fileio.unlinkSync(PlayerColorBackPath);
+    fileio.unlinkSync(PlayerAudioColorBackPath);
+    fileio.unlinkSync(PlayerVideoColorBackPath);
     fileio.unlinkSync(ExperienceColorBackPath);
     fileio.rmdirSync(picturePath);
     fileio.mkdirSync(picturePath);
+    fileio.rmdirSync(ExperienceDataPath);
+    fileio.mkdirSync(ExperienceDataPath);
     fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
     fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(path11, 0o100 | 0o2002, 0o664);
     fileio.openSync(path22, 0o100 | 0o2002, 0o664);
     fileio.openSync(path33, 0o100 | 0o2002, 0o664);
     fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerAudioTxtPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerVideoTxtPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(path55, 0o100 | 0o2002, 0o664);
     fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(PlayerColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerAudioColorBackPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(PlayerVideoColorBackPath, 0o100 | 0o2002, 0o664);
     fileio.openSync(ExperienceColorBackPath, 0o100 | 0o2002, 0o664);
     FlushData.ResetArkUI();
     FlushData.ResetAudio();
     FlushData.ResetCamera();
     FlushData.ResetPlayer();
     FlushData.ResetExperience();
+    FlushData.ResetPlayerAudio();
+    FlushData.ResetPlayerVideo();
   }
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
@@ -229,6 +251,9 @@ struct IndexPage {
     let StartTime = String.fromCharCode.apply(null, new Uint8Array(buf));
     let Index = StartTime.indexOf(';');
     let starttime = StartTime.substring(0,Index);
+    if(starttime === ''){
+      starttime = '*'
+    }
     let ArkUIReport;
     let AudioReport;
     let CameraReport;
@@ -314,12 +339,12 @@ struct IndexPage {
       FailIndex = report.indexOf('false',FailIndex + 1);
     }
     let failNum = (FailNum).toString();
-    let PassIndex = report.indexOf('true');
+    let PassIndex = report.indexOf('true ');
     let PassNum = 0;
     while(PassIndex != -1) {
       console.log(PassIndex);
       PassNum++;
-      PassIndex = report.indexOf('true',PassIndex + 1);
+      PassIndex = report.indexOf('true ',PassIndex + 1);
     }
     let TestNum = FailNum + PassNum;
     let testNum = (TestNum).toString();
@@ -334,12 +359,12 @@ struct IndexPage {
       ArkUIFailIndex = ArkUIReport.indexOf('false',ArkUIFailIndex + 1);
     }
     let ArkuiFailNum = (ArkUIFailNum).toString();
-    let ArkUIPassIndex = ArkUIReport.indexOf('true');
+    let ArkUIPassIndex = ArkUIReport.indexOf('true ');
     let ArkUIPassNum = 0;
     while (ArkUIPassIndex != -1) {
       console.log(ArkUIPassIndex);
       ArkUIPassNum++;
-      ArkUIPassIndex = ArkUIReport.indexOf('true',ArkUIPassIndex + 1);
+      ArkUIPassIndex = ArkUIReport.indexOf('true ',ArkUIPassIndex + 1);
     }
     let ArkUITestNum = ArkUIFailNum + ArkUIPassNum;
     let ArkuiTestNum = (ArkUITestNum).toString();
@@ -354,12 +379,12 @@ struct IndexPage {
       AudioFailIndex = AudioReport.indexOf('false',AudioFailIndex + 1);
     }
     let audioFailNum = (AudioFailNum).toString();
-    let AudioPassIndex = AudioReport.indexOf('true');
+    let AudioPassIndex = AudioReport.indexOf('true ');
     let AudioPassNum = 0;
     while (AudioPassIndex != -1) {
       console.log(AudioPassIndex);
       AudioPassNum++;
-      AudioPassIndex = AudioReport.indexOf('true',AudioPassIndex + 1);
+      AudioPassIndex = AudioReport.indexOf('true ',AudioPassIndex + 1);
     }
     let AudioTestNum = AudioFailNum + AudioPassNum;
     let audioTestNum = (AudioTestNum).toString();
@@ -374,12 +399,12 @@ struct IndexPage {
       CameraFailIndex = CameraReport.indexOf('false',CameraFailIndex + 1);
     }
     let cameraFailNum = (CameraFailNum).toString();
-    let CameraPassIndex = CameraReport.indexOf('true');
+    let CameraPassIndex = CameraReport.indexOf('true ');
     let CameraPassNum = 0;
     while (CameraPassIndex != -1) {
       console.log(CameraPassIndex);
       CameraPassNum++;
-      CameraPassIndex = CameraReport.indexOf('true',CameraPassIndex + 1);
+      CameraPassIndex = CameraReport.indexOf('true ',CameraPassIndex + 1);
     }
     let CameraTestNum = CameraFailNum + CameraPassNum;
     let cameraTestNum = (CameraTestNum).toString();
@@ -394,12 +419,12 @@ struct IndexPage {
       PlayerFailIndex = PlayerReport.indexOf('false',PlayerFailIndex + 1);
     }
     let playerFailNum = (PlayerFailNum).toString();
-    let PlayerPassIndex = PlayerReport.indexOf('true');
+    let PlayerPassIndex = PlayerReport.indexOf('true ');
     let PlayerPassNum = 0;
     while (PlayerPassIndex != -1) {
       console.log(PlayerPassIndex);
       PlayerPassNum++;
-      PlayerPassIndex = PlayerReport.indexOf('true',PlayerPassIndex + 1);
+      PlayerPassIndex = PlayerReport.indexOf('true ',PlayerPassIndex + 1);
     }
     let PlayerTestNum = PlayerFailNum + PlayerPassNum;
     let playerTestNum = (PlayerTestNum).toString();
@@ -414,12 +439,12 @@ struct IndexPage {
       ExperienceFailIndex = ExperienceReport.indexOf('false',ExperienceFailIndex + 1);
     }
     let experienceFailNum = (ExperienceFailNum).toString();
-    let ExperiencePassIndex = ExperienceReport.indexOf('true');
+    let ExperiencePassIndex = ExperienceReport.indexOf('true ');
     let ExperiencePassNum = 0;
     while (ExperiencePassIndex != -1) {
       console.log(ExperiencePassIndex);
       ExperiencePassNum++;
-      ExperiencePassIndex = ExperienceReport.indexOf('true',ExperiencePassIndex + 1);
+      ExperiencePassIndex = ExperienceReport.indexOf('true ',ExperiencePassIndex + 1);
     }
     let ExperienceTestNum = ExperienceFailNum + ExperiencePassNum;
     let experienceTestNum = (ExperienceTestNum).toString();

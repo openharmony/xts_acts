@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CanvasCustomContainer1';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct SetCircle {
@@ -39,11 +39,12 @@ struct SetCircle {
           .onClick(()=>{
             this.context.clearRect(0, 10, 500, 500);
             this.context.lineWidth = 2;
-            this.context.moveTo(180, 10);
-            this.context.lineTo(180, 310);
+            this.context.moveTo(250, 10);
+            this.context.lineTo(250, 310);
             this.context.stroke();
             this.context.textAlign = 'start';
-            this.context.fillText('textAlign=start', 180, 160);
+            this.context.font = '40px sans-serif'
+            this.context.fillText('textAlign=start', 250, 160);
             this.num1 = 1;
             if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
               this.Vue = true;
@@ -53,11 +54,11 @@ struct SetCircle {
           .onClick(()=>{
             this.context.clearRect(0, 10, 500, 500);
             this.context.lineWidth = 2;
-            this.context.moveTo(180, 10);
-            this.context.lineTo(180, 310);
+            this.context.moveTo(250, 10);
+            this.context.lineTo(250, 310);
             this.context.stroke();
             this.context.textAlign = 'end';
-            this.context.fillText('textAlign=end', 180, 160);
+            this.context.fillText('textAlign=end', 250, 160);
             this.num2 = 1;
             if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
               this.Vue = true;
@@ -67,11 +68,11 @@ struct SetCircle {
           .onClick(()=>{
             this.context.clearRect(0, 10, 500, 500);
             this.context.lineWidth = 2;
-            this.context.moveTo(180, 10);
-            this.context.lineTo(180, 310);
+            this.context.moveTo(250, 10);
+            this.context.lineTo(250, 310);
             this.context.stroke();
             this.context.textAlign = 'left';
-            this.context.fillText('textAlign=left', 180, 160);
+            this.context.fillText('textAlign=left', 250, 160);
             this.num3 = 1;
             if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
               this.Vue = true;
@@ -81,11 +82,11 @@ struct SetCircle {
           .onClick(()=>{
             this.context.clearRect(0, 10, 500, 500);
             this.context.lineWidth = 2;
-            this.context.moveTo(180, 10);
-            this.context.lineTo(180, 310);
+            this.context.moveTo(250, 10);
+            this.context.lineTo(250, 310);
             this.context.stroke();
             this.context.textAlign = 'center';
-            this.context.fillText('textAlign=center', 180, 160);
+            this.context.fillText('textAlign=center', 250, 160);
             this.num4 = 1;
             if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
               this.Vue = true;
@@ -95,11 +96,11 @@ struct SetCircle {
           .onClick(()=> {
             this.context.clearRect(0, 10, 500, 500);
             this.context.lineWidth = 2;
-            this.context.moveTo(180, 10);
-            this.context.lineTo(180, 310);
+            this.context.moveTo(250, 10);
+            this.context.lineTo(250, 310);
             this.context.stroke();
             this.context.textAlign = 'right';
-            this.context.fillText('textAlign=right', 180, 160);
+            this.context.fillText('textAlign=right', 250, 160);
             this.num5 = 1;
             if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
               this.Vue = true;
@@ -113,12 +114,9 @@ struct SetCircle {
           .backgroundColor('#ffffffff')
           .onReady(() =>{
             this.context.lineWidth = 2;
-            this.context.moveTo(180, 10);
-            this.context.lineTo(180, 310);
+            this.context.moveTo(250, 10);
+            this.context.lineTo(250, 310);
             this.context.stroke();
-            this.context.font = '60px sans-serif';
-            this.context.textAlign = 'start';
-            this.context.fillText('textAlign=start', 180, 160);
           })
       }.width('100%').height('70%')
     }.width('100%').height('80%').backgroundColor(Color.White)

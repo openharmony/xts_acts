@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 
 import { CustomContainer } from '../common/AudioContainer';
 import FirstDialog from '../model/FirstDialog';
@@ -22,14 +22,14 @@ import router from '@ohos.router';
 @Component
 struct playVideo {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'PlayVideo';
+  @State name: string = router.getParams()['audioTitle'];
   @State StepTips: string = '测试目的：用于测试视频播放暂停seek\n预期结果：视频播放暂停seek功能正常';
-  private tag: string = 'qlw'
-  @State Vue: boolean = false
-  @State videoSrc: Resource = $rawfile('H264_AAC.mkv')
-  @State isAutoPlay: boolean = true
-  @State showControls: boolean = true
-  controller: VideoController = new VideoController()
+  private tag: string = 'qlw';
+  @State Vue: boolean = false;
+  @State videoSrc: string = router.getParams()['audioUrl'];
+  @State isAutoPlay: boolean = true;
+  @State showControls: boolean = true;
+  controller: VideoController = new VideoController();
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
@@ -40,10 +40,10 @@ struct playVideo {
       Row() {
         Button() {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({ left: '20vp' })
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
-            url: 'pages/Player/Player_index',
+            url: 'pages/Player/PlayVideoList',
             params: { result: 'None', }
           })
         })
@@ -61,25 +61,26 @@ struct playVideo {
           .height('60%')
           .autoPlay(this.isAutoPlay)
           .controls(this.showControls)
-		  .onFinish(() => {
-			this.Vue = true
-		  })
+          .onFinish(() => {
+            this.Vue = true;
+          })
       }.width('100%').height('80%').onClick(() => {
         this.showControls = !this.showControls
       })
 
       CustomContainer({
         title: this.name,
-        Url: 'pages/Player/Player_index',
+        Url: 'pages/Player/PlayVideoList',
         StepTips: this.StepTips,
         name: $name,
         Vue: $Vue
       }).height('10%').width('100%')
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/Player/Player_index',
+      url: 'pages/Player/PlayVideoList',
     })
   }
 }
