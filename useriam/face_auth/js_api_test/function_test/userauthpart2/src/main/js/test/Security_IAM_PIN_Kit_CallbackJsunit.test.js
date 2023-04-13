@@ -50,23 +50,23 @@ export default function userauthTest() {
         */
         it('Security_IAM_PIN_Kit_Func_0102', 0, async function (done) {
             console.info('testFace Security_IAM_PIN_Kit_Func_0102 start');
-            // let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT]
-            let authType = userAuthNorth.UserAuthType.FACE;
+            let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT];
             let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3, userAuthNorth.AuthTrustLevel.ATL4];
             let availabeStatus;
-
-            for (let idx1 = 0; idx1 < level.length; idx1++) {
-                try {
-                    console.info('Security_IAM_PIN_Kit_Func_0102 authtype:' + authType+ 'trustlevel:' + level[idx1])
-                    availabeStatus = UserAuthKit.getAvailableStatus(authType, level[idx1]);
-                    console.info(`Security_IAM_PIN_Kit_Func_0102 ${availabeStatus}`)
-                    expect(availabeStatus).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
-                } catch (e) {
-                    console.info(`Security_IAM_PIN_Kit_Func_0102 e ${JSON.stringify(e)}`)
-                    console.log("Security_IAM_PIN_Kit_Func_0102 throw fail " + 'authType:' + authType + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
-                    expect(e.code).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
+            for (let idx0 = 0; idx0 < authType.length; idx0++) {
+                for (let idx1 = 0; idx1 < level.length; idx1++) {
+                    try {
+                        console.info('Security_IAM_PIN_Kit_Func_0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
+                        availabeStatus = UserAuthKit.getAvailableStatus(authType[idx0], level[idx1]);
+                        console.info(`Security_IAM_PIN_Kit_Func_0102 ${availabeStatus}`)
+                        expect(availabeStatus).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
+                    } catch (e) {
+                        console.info(`Security_IAM_PIN_Kit_Func_0102 e ${JSON.stringify(e)}`)
+                        console.log("Security_IAM_PIN_Kit_Func_0102 throw fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
+                        expect(e.code).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
+                    }
+                    done();
                 }
-                done();
             }
         })
 
@@ -200,6 +200,10 @@ export default function userauthTest() {
             await authPromise(challenge, 2, 20000,10)
             await authPromise(challenge, 2, 30000,10)
             await authPromise(challenge, 2, 40000,10)
+            await authPromise(challenge, 4, 10000,10)
+            await authPromise(challenge, 4, 20000,10)
+            await authPromise(challenge, 4, 30000,10)
+            await authPromise(challenge, 4, 40000,10)
             done()
         })
 
