@@ -12,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CustomContainer3';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct SwipeGestureTest {
   @State X : number = 0;
   @State Y : number = 0;
   @State name: string = 'SwipeGesture';
-  @State StepTips: string = '操作步骤：用至少一根手指滑动图像（最多十根手指）'+'\n'+'预期结果：图片正常滑动，手势滑动角度及速度显示正常';
+  @State StepTips: string = '操作步骤：手指上下滑动图像'+'\n'+'预期结果：图片正常滑动，手势滑动角度及速度显示正常';
   @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);

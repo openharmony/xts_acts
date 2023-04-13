@@ -1,4 +1,4 @@
-import AbilityStage from "@ohos.app.ability.AbilityStage"
+import AbilityStage from "@ohos.application.AbilityStage"
 import Logger from '../pages/model/Logger'
 
 export default class MyAbilityStage extends AbilityStage {
