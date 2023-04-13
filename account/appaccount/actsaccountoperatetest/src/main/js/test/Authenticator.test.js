@@ -45,8 +45,8 @@ export default function ActsAccountAppAccess() {
         });
         beforeEach(async (done)=>{
             console.debug("====>afterEach start====");
-            var appAccountManager = account.getAccountManager();
-            var accounts = await appAccountManager.getAllAccountByOwner(owner)
+            var appAccountManager = account.createAppAccountManager();
+            var accounts = await appAccountManager.getAccountsByOwner(owner)
             for (var i=0;i<accounts.length;i++){
                 var localName = accounts[i].name
                 if(localName == 'zhangsan'){
@@ -733,8 +733,8 @@ export default function ActsAccountAppAccess() {
                 onRequestRedirected:null,
                 onRequestContinued: function(){ 
                     console.debug("====>ActsAccountCreateAccountImplicitly_0100 onRequestContinued")
-                    }  
-            });            
+                    }
+            });
         });
 
         /*
@@ -759,8 +759,8 @@ export default function ActsAccountAppAccess() {
                 onRequestRedirected:null,
                 onRequestContinued: function(){ 
                     console.debug("====>ActsAccountCreateAccountImplicitly_0200 onRequestContinued")
-                    }  
-            });            
+                    }
+            });
         });
     })
 }

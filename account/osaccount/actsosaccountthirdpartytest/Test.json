@@ -5,7 +5,8 @@
         "test-timeout": "300000",
         "bundle-name": "com.example.actsosaccountthirdpartytest",
         "package-name": "com.example.actsosaccountthirdpartytest",
-        "shell-timeout": "60000"
+        "shell-timeout": "60000",
+        "testcase-timeout": "100000"
     },
     "kits": [
         {
