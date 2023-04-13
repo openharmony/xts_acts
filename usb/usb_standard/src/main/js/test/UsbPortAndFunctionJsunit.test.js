@@ -29,7 +29,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
     var usbPortList = usbManager.getPorts()
     if (usbPortList.length > 0) {
       if (usbPortList[0].status.currentMode == 2) {
-        usb.setPortRoles(usbPortList[0].id, usbManager.SINK, usbManager.DEVICE).then(data => {
+        usbManager.setPortRoles(usbPortList[0].id, usbManager.SINK, usbManager.DEVICE).then(data => {
           console.info('usb case setPortRoles return: ' + data);
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
