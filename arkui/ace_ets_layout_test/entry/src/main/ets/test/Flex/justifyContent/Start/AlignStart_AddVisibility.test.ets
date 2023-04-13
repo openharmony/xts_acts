@@ -50,28 +50,33 @@ export default function AlignStart_AddVisibility() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000] START');
-      globalThis.value.message.notify({name:'OneVisibility', value:Visibility.None});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('Start_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('Start_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
-      let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
-      let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
-      let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
-      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_013.top);
-      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_01.top);
-      expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_01.left);
-      expect(Start_AddVisibility_012.right).assertEqual(Start_AddVisibility_013.left);
-      expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_01.right - Start_AddVisibility_013.right)).assertEqual(vp2px(200));
+      try{
+        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.None});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('Start_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('Start_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2);
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
+        let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
+        let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
+        let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
+        expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_013.top);
+        expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_01.top);
+        expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_01.left);
+        expect(Start_AddVisibility_012.right).assertEqual(Start_AddVisibility_013.left);
+        expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(vp2px(100));
+        expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_01.right - Start_AddVisibility_013.right)).assertEqual(vp2px(200));
+      } catch (err) {
+        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000] failed');
+        expect().assertFail();
+      }
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000] END');
       done();
     });
@@ -83,33 +88,38 @@ export default function AlignStart_AddVisibility() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100] START');
-      globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Hidden});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('Start_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('Start_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
-      let Start_AddVisibility_011 = CommonFunc.getComponentRect('Start_AddVisibility_011');
-      let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
-      let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
-      let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
-      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_011.top);
-      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_013.top);
-      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_01.top);
-      expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_011.right);
-      expect(Start_AddVisibility_013.left).assertEqual(Start_AddVisibility_012.right);
-      expect(Start_AddVisibility_01.left).assertEqual(Start_AddVisibility_011.left);
-      expect(Math.round(Start_AddVisibility_011.right - Start_AddVisibility_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_011.bottom - Start_AddVisibility_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(vp2px(150));
+      try{
+        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Hidden});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('Start_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('Start_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2);
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
+        let Start_AddVisibility_011 = CommonFunc.getComponentRect('Start_AddVisibility_011');
+        let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
+        let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
+        let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
+        expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_011.top);
+        expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_013.top);
+        expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_01.top);
+        expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_011.right);
+        expect(Start_AddVisibility_013.left).assertEqual(Start_AddVisibility_012.right);
+        expect(Start_AddVisibility_01.left).assertEqual(Start_AddVisibility_011.left);
+        expect(Math.round(Start_AddVisibility_011.right - Start_AddVisibility_011.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_011.bottom - Start_AddVisibility_011.top)).assertEqual(vp2px(50));
+        expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(vp2px(100));
+        expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100] failed');
+        expect().assertFail();
+      }
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100] END');
       done();
     });
@@ -121,33 +131,38 @@ export default function AlignStart_AddVisibility() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700] START');
-      globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Visible});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('Start_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('Start_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
-      let Start_AddVisibility_011 = CommonFunc.getComponentRect('Start_AddVisibility_011');
-      let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
-      let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
-      let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
-      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_011.top);
-      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_013.top);
-      expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_01.top);
-      expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_011.right);
-      expect(Start_AddVisibility_013.left).assertEqual(Start_AddVisibility_012.right);
-      expect(Start_AddVisibility_01.left).assertEqual(Start_AddVisibility_011.left);
-      expect(Math.round(Start_AddVisibility_011.right - Start_AddVisibility_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_011.bottom - Start_AddVisibility_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(vp2px(150));
+      try{
+        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Visible});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('Start_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('Start_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2);
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
+        let Start_AddVisibility_011 = CommonFunc.getComponentRect('Start_AddVisibility_011');
+        let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
+        let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
+        let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
+        expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_011.top);
+        expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_013.top);
+        expect(Start_AddVisibility_012.top).assertEqual(Start_AddVisibility_01.top);
+        expect(Start_AddVisibility_012.left).assertEqual(Start_AddVisibility_011.right);
+        expect(Start_AddVisibility_013.left).assertEqual(Start_AddVisibility_012.right);
+        expect(Start_AddVisibility_01.left).assertEqual(Start_AddVisibility_011.left);
+        expect(Math.round(Start_AddVisibility_011.right - Start_AddVisibility_011.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_012.right - Start_AddVisibility_012.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_013.right - Start_AddVisibility_013.left)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_011.bottom - Start_AddVisibility_011.top)).assertEqual(vp2px(50));
+        expect(Math.round(Start_AddVisibility_012.bottom - Start_AddVisibility_012.top)).assertEqual(vp2px(100));
+        expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
+        expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700] failed');
+        expect().assertFail();
+      }
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700] END');
       done();
     });

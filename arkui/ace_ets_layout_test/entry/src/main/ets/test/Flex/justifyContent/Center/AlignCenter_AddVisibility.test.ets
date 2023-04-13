@@ -52,28 +52,33 @@ export default function AlignCenter_AddVisibility() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000] START');
-      globalThis.value.message.notify({name:'OneVisibility',value:Visibility.None});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('Center_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('Center_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2)
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
-      let Center_AddVisibility_012 = CommonFunc.getComponentRect('Center_AddVisibility_012');
-      let Center_AddVisibility_013 = CommonFunc.getComponentRect('Center_AddVisibility_013');
-      let Center_AddVisibility_01 = CommonFunc.getComponentRect('Center_AddVisibility_01');
-      expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_013.top);
-      expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_01.top);
-      expect(Center_AddVisibility_012.right).assertEqual(Center_AddVisibility_013.left);
-      expect(Math.round(Center_AddVisibility_012.left - Center_AddVisibility_01.left)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddVisibility_01.right - Center_AddVisibility_013.right)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddVisibility_012.right - Center_AddVisibility_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddVisibility_013.right - Center_AddVisibility_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
+      try {
+        globalThis.value.message.notify({name:'OneVisibility',value:Visibility.None});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('Center_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('Center_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2)
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
+        let Center_AddVisibility_012 = CommonFunc.getComponentRect('Center_AddVisibility_012');
+        let Center_AddVisibility_013 = CommonFunc.getComponentRect('Center_AddVisibility_013');
+        let Center_AddVisibility_01 = CommonFunc.getComponentRect('Center_AddVisibility_01');
+        expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_013.top);
+        expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_01.top);
+        expect(Center_AddVisibility_012.right).assertEqual(Center_AddVisibility_013.left);
+        expect(Math.round(Center_AddVisibility_012.left - Center_AddVisibility_01.left)).assertEqual(vp2px(100));
+        expect(Math.round(Center_AddVisibility_01.right - Center_AddVisibility_013.right)).assertEqual(vp2px(100));
+        expect(Math.round(Center_AddVisibility_012.right - Center_AddVisibility_012.left)).assertEqual(vp2px(150));
+        expect(Math.round(Center_AddVisibility_013.right - Center_AddVisibility_013.left)).assertEqual(vp2px(150));
+        expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
+        expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000] failed');
+        expect().assertFail();
+      }
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000] END');
       done();
     });
@@ -85,35 +90,40 @@ export default function AlignCenter_AddVisibility() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100] START');
-      globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Hidden});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('Center_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('Center_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2)
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
-      let Center_AddVisibility_011 = CommonFunc.getComponentRect('Center_AddVisibility_011');
-      let Center_AddVisibility_012 = CommonFunc.getComponentRect('Center_AddVisibility_012');
-      let Center_AddVisibility_013 = CommonFunc.getComponentRect('Center_AddVisibility_013');
-      let Center_AddVisibility_01 = CommonFunc.getComponentRect('Center_AddVisibility_01');
-      expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_013.top);
-      expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_011.top);
-      expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_01.top);
-      expect(Center_AddVisibility_011.right).assertEqual(Center_AddVisibility_012.left);
-      expect(Center_AddVisibility_012.right).assertEqual(Center_AddVisibility_013.left);
-      expect(Math.round((Center_AddVisibility_011.left - Center_AddVisibility_01.left)*10)/10)
-        .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round((Center_AddVisibility_01.right - Center_AddVisibility_013.right)*10)/10)
-        .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round(Center_AddVisibility_011.right - Center_AddVisibility_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddVisibility_012.right - Center_AddVisibility_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddVisibility_013.right - Center_AddVisibility_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddVisibility_011.bottom - Center_AddVisibility_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
+      try{
+        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Hidden});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('Center_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('Center_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2)
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
+        let Center_AddVisibility_011 = CommonFunc.getComponentRect('Center_AddVisibility_011');
+        let Center_AddVisibility_012 = CommonFunc.getComponentRect('Center_AddVisibility_012');
+        let Center_AddVisibility_013 = CommonFunc.getComponentRect('Center_AddVisibility_013');
+        let Center_AddVisibility_01 = CommonFunc.getComponentRect('Center_AddVisibility_01');
+        expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_013.top);
+        expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_011.top);
+        expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_01.top);
+        expect(Center_AddVisibility_011.right).assertEqual(Center_AddVisibility_012.left);
+        expect(Center_AddVisibility_012.right).assertEqual(Center_AddVisibility_013.left);
+        expect(Math.round((Center_AddVisibility_011.left - Center_AddVisibility_01.left)*10)/10)
+          .assertEqual(Math.round(vp2px(25)*10)/10);
+        expect(Math.round((Center_AddVisibility_01.right - Center_AddVisibility_013.right)*10)/10)
+          .assertEqual(Math.round(vp2px(25)*10)/10);
+        expect(Math.round(Center_AddVisibility_011.right - Center_AddVisibility_011.left)).assertEqual(vp2px(150));
+        expect(Math.round(Center_AddVisibility_012.right - Center_AddVisibility_012.left)).assertEqual(vp2px(150));
+        expect(Math.round(Center_AddVisibility_013.right - Center_AddVisibility_013.left)).assertEqual(vp2px(150));
+        expect(Math.round(Center_AddVisibility_011.bottom - Center_AddVisibility_011.top)).assertEqual(vp2px(50));
+        expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
+        expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100] failed');
+        expect().assertFail();
+      }
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100] END');
       done();
     });
@@ -125,35 +135,40 @@ export default function AlignCenter_AddVisibility() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700] START');
-      globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Visible});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('Center_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('Center_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2)
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
-      let Center_AddVisibility_011 = CommonFunc.getComponentRect('Center_AddVisibility_011');
-      let Center_AddVisibility_012 = CommonFunc.getComponentRect('Center_AddVisibility_012');
-      let Center_AddVisibility_013 = CommonFunc.getComponentRect('Center_AddVisibility_013');
-      let Center_AddVisibility_01 = CommonFunc.getComponentRect('Center_AddVisibility_01');
-      expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_013.top);
-      expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_011.top);
-      expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_01.top);
-      expect(Center_AddVisibility_011.right).assertEqual(Center_AddVisibility_012.left);
-      expect(Center_AddVisibility_012.right).assertEqual(Center_AddVisibility_013.left);
-      expect(Math.round((Center_AddVisibility_011.left - Center_AddVisibility_01.left)*10)/10)
-        .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round((Center_AddVisibility_01.right - Center_AddVisibility_013.right)*10)/10)
-        .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round(Center_AddVisibility_011.right - Center_AddVisibility_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddVisibility_012.right - Center_AddVisibility_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddVisibility_013.right - Center_AddVisibility_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddVisibility_011.bottom - Center_AddVisibility_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
+      try{
+        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Visible});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('Center_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('Center_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2)
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
+        let Center_AddVisibility_011 = CommonFunc.getComponentRect('Center_AddVisibility_011');
+        let Center_AddVisibility_012 = CommonFunc.getComponentRect('Center_AddVisibility_012');
+        let Center_AddVisibility_013 = CommonFunc.getComponentRect('Center_AddVisibility_013');
+        let Center_AddVisibility_01 = CommonFunc.getComponentRect('Center_AddVisibility_01');
+        expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_013.top);
+        expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_011.top);
+        expect(Center_AddVisibility_012.top).assertEqual(Center_AddVisibility_01.top);
+        expect(Center_AddVisibility_011.right).assertEqual(Center_AddVisibility_012.left);
+        expect(Center_AddVisibility_012.right).assertEqual(Center_AddVisibility_013.left);
+        expect(Math.round((Center_AddVisibility_011.left - Center_AddVisibility_01.left)*10)/10)
+          .assertEqual(Math.round(vp2px(25)*10)/10);
+        expect(Math.round((Center_AddVisibility_01.right - Center_AddVisibility_013.right)*10)/10)
+          .assertEqual(Math.round(vp2px(25)*10)/10);
+        expect(Math.round(Center_AddVisibility_011.right - Center_AddVisibility_011.left)).assertEqual(vp2px(150));
+        expect(Math.round(Center_AddVisibility_012.right - Center_AddVisibility_012.left)).assertEqual(vp2px(150));
+        expect(Math.round(Center_AddVisibility_013.right - Center_AddVisibility_013.left)).assertEqual(vp2px(150));
+        expect(Math.round(Center_AddVisibility_011.bottom - Center_AddVisibility_011.top)).assertEqual(vp2px(50));
+        expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
+        expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700] failed');
+        expect().assertFail();
+      }
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700] END');
       done();
     });

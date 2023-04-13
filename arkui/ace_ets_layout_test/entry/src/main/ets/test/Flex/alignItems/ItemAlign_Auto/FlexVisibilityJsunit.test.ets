@@ -52,33 +52,35 @@ export default function flexVisibility_AutoJsunit() {
      */
     it('SUB_ACE_FLEXALIGNITEMS_AUTO_1100', 0, async function (done) {
       console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1100 START');
-      globalThis.value.message.notify({name:'visibility', value:Visibility.None})
-      await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexVisible');
-      let obj1 = JSON.parse(strJson1);
-      setTimeout(() =>{
+      try{
+        globalThis.value.message.notify({name:'visibility', value:Visibility.None})
+        await CommonFunc.sleep(2000);
+        let strJson1 = getInspectorByKey('flexVisible');
+        let obj1 = JSON.parse(strJson1);
         let strJson2 = getInspectorByKey('textVisible01');
         let obj2 = JSON.parse(strJson2);
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
-      })
-      let textVisible01 = CommonFunc.getComponentRect('textVisible01')
-      let textVisible02 = CommonFunc.getComponentRect('textVisible02')
-      let textVisible03 = CommonFunc.getComponentRect('textVisible03')
-      let flexVisible = CommonFunc.getComponentRect('flexVisible')
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
+        let textVisible01 = CommonFunc.getComponentRect('textVisible01')
+        let textVisible02 = CommonFunc.getComponentRect('textVisible02')
+        let textVisible03 = CommonFunc.getComponentRect('textVisible03')
+        let flexVisible = CommonFunc.getComponentRect('flexVisible')
 
-      expect(textVisible01.left).assertEqual(textVisible01.right)
-      expect(textVisible01.right).assertEqual(flexVisible.left)
-      expect(textVisible02.top).assertEqual(textVisible03.top)
-      expect(textVisible03.top).assertEqual(flexVisible.top)
-      
-      expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(vp2px(150))
-      expect(obj1.$attrs.visibility).assertEqual("Visibility.Visible");
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
+        expect(textVisible01.left).assertEqual(textVisible01.right)
+        expect(textVisible01.right).assertEqual(flexVisible.left)
+        expect(textVisible02.top).assertEqual(textVisible03.top)
+        expect(textVisible03.top).assertEqual(flexVisible.top)
 
+        expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(vp2px(100))
+        expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(vp2px(150))
+        expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(vp2px(150))
+        expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(vp2px(150))
+        expect(obj1.$attrs.visibility).assertEqual("Visibility.Visible");
+        expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+        expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
+      } catch (err) {
+        console.error('[SUB_ACE_FLEXALIGNITEMS_AUTO_1100] failed');
+        expect().assertFail();
+      }
       console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1100 END');
       done();
     });
@@ -90,32 +92,37 @@ export default function flexVisibility_AutoJsunit() {
      */
     it('SUB_ACE_FLEXALIGNITEMS_AUTO_1200', 0, async function (done) {
       console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1200 START');
-      globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden});
-      await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexVisible');
-      let obj1 = JSON.parse(strJson1);
-      setTimeout(() =>{
+      try{
+        globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden});
+        await CommonFunc.sleep(2000);
+        let strJson1 = getInspectorByKey('flexVisible');
+        let obj1 = JSON.parse(strJson1);
+
         let strJson2 = getInspectorByKey('textVisible01');
         let obj2 = JSON.parse(strJson2);
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
-      })
-      let textVisible01 = CommonFunc.getComponentRect('textVisible01');
-      let textVisible02 = CommonFunc.getComponentRect('textVisible02');
-      let textVisible03 = CommonFunc.getComponentRect('textVisible03');
-      let flexVisible = CommonFunc.getComponentRect('flexVisible');
-      expect(textVisible01.left).assertEqual(flexVisible.left)
-      expect(textVisible01.right).assertEqual(textVisible02.left)
-      expect(textVisible02.top).assertEqual(textVisible03.top)
-      expect(textVisible03.top).assertEqual(flexVisible.top)
-      
-      expect(Math.round(textVisible01.bottom - textVisible01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textVisible01.right - textVisible01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(vp2px(150))
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
+
+        let textVisible01 = CommonFunc.getComponentRect('textVisible01');
+        let textVisible02 = CommonFunc.getComponentRect('textVisible02');
+        let textVisible03 = CommonFunc.getComponentRect('textVisible03');
+        let flexVisible = CommonFunc.getComponentRect('flexVisible');
+        expect(textVisible01.left).assertEqual(flexVisible.left)
+        expect(textVisible01.right).assertEqual(textVisible02.left)
+        expect(textVisible02.top).assertEqual(textVisible03.top)
+        expect(textVisible03.top).assertEqual(flexVisible.top)
+
+        expect(Math.round(textVisible01.bottom - textVisible01.top)).assertEqual(vp2px(50))
+        expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(vp2px(100))
+        expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(vp2px(150))
+        expect(Math.round(textVisible01.right - textVisible01.left)).assertEqual(vp2px(150))
+        expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(vp2px(150))
+        expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(vp2px(150))
+        expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+        expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
+      } catch (err) {
+        console.error('[SUB_ACE_FLEXALIGNITEMS_AUTO_1200] failed');
+        expect().assertFail();
+      }
       console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1200 END');
       done();
     });
