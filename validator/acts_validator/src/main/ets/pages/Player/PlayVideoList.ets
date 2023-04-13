@@ -97,7 +97,7 @@ struct videoNew {
       let number = WriteTitle.length + 11;
       let Index = ColorBack.indexOf(WriteTitle);
 
-      if (this.result === 'true') {
+      if (this.result === 'true ') {
         this.ColorObject[this.current] = '#ff008000';
         let Log = (titles + ';' + '#ff008000' + ';');
         let key = ColorBack.substring(Index, Index + number);
@@ -237,7 +237,7 @@ struct videoNew {
         .onClick(() => {
           router.back({
             url: this.Url,
-            params: { result: 'true', title: this.name,
+            params: { result: 'true ', title: this.name,
             }
           })
           prompt.showToast({

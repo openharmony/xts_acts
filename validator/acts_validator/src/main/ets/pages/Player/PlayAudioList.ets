@@ -97,7 +97,7 @@ struct audioNew {
       let number = WriteTitle.length + 11;
       let Index = ColorBack.indexOf(WriteTitle);
 
-      if (this.result === 'true') {
+      if (this.result === 'true ') {
         this.ColorObject[this.current] = '#ff008000';
         let Log = (titles + ';' + '#ff008000' + ';');
         let key = ColorBack.substring(Index, Index + number);
@@ -236,7 +236,7 @@ struct audioNew {
         .onClick(() => {
           router.back({
             url: 'pages/Player/Player_index',
-            params: { result: 'true', title: this.name,
+            params: { result: 'true ', title: this.name,
             }
           })
           prompt.showToast({
