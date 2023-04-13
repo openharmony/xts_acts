@@ -666,6 +666,96 @@ static napi_value createAndGetStringUtf8(napi_env env, napi_callback_info info)
     return output;
 }
 
+static napi_value CreateAndGetStringUtf16(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+
+    NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments.");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
+
+    NAPI_ASSERT(env, valuetype == napi_string, "Expect a string.");
+
+    char16_t buffer[128]; // 128: char16_t type of element size
+    size_t buffer_size = 128; // 128: char16_t type of element size
+    size_t copied  = 0;
+
+    NAPI_CALL(env, napi_get_value_string_utf16(env, args[0], buffer, buffer_size, &copied));
+
+    napi_value result;
+    NAPI_CALL(env, napi_create_string_utf16(env, buffer, copied, &result));
+
+    return result;
+}
+
+static napi_value StringUtf16OfCase(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+
+    NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments.");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
+
+    NAPI_ASSERT(env, valuetype == napi_string, "Expects a string.");
+
+    char16_t buffer[5]; // 5: char16_t type of element size
+    size_t buffer_size = 5; // 5: char16_t type of element size
+    size_t copied  = 0;
+
+    NAPI_CALL(env,
+        napi_get_value_string_utf16(env, args[0], buffer, buffer_size, &copied));
+
+    napi_value result;
+    NAPI_CALL(env, napi_create_string_utf16(env, buffer, copied, &result));
+
+    return result;
+}
+
+static const napi_type_tag typeTags[5] = {
+    {0xdaf987b3cc62481a, 0xb745b0497f299531},
+    {0xbb7936c374084d9b, 0xa9548d0762eeedb9},
+    {0xa5ed9ce2e4c00c38, 0xa9548d0762eeedb1},
+    {0, 0},
+    {0xa5ed9ce2e4c00c38, 0xdaf987b3cc62481a},
+};
+
+static napi_value TypeTaggedInstance(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    uint32_t typeIndex = 0;
+    napi_value instance = nullptr; 
+    napi_value whichType = nullptr;
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &whichType, NULL, NULL));
+    NAPI_CALL(env, napi_get_value_uint32(env, whichType, &typeIndex));
+    NAPI_ASSERT(env, typeIndex <= 5, "typeIndex out of range");
+    NAPI_CALL(env, napi_create_object(env, &instance));
+
+    NAPI_CALL(env, napi_type_tag_object(env, instance, &typeTags[typeIndex]));
+    return instance;
+}
+
+static napi_value CheckTypeTag(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    bool result;
+    napi_value argv[2];
+    napi_value jsResult = nullptr;
+    uint32_t typeIndex;
+
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, argv, NULL, NULL));
+
+    NAPI_CALL(env, napi_get_value_uint32(env, argv[0], &typeIndex));
+
+    NAPI_ASSERT(env, typeIndex <= 5, "typeIndex out of range");
+
+    NAPI_CALL(env, napi_check_object_type_tag(env, argv[1], &typeTags[typeIndex], &result));
+    NAPI_CALL(env, napi_get_boolean(env, result, &jsResult));
+
+    return jsResult;
+}
+
 static napi_value getPrototype(napi_env env, napi_callback_info info)
 {
     napi_value testWrapClass = nullptr;
@@ -2192,6 +2282,10 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("napiCreateBigintInt64", napiCreateBigintInt64),
         DECLARE_NAPI_FUNCTION("napiCreateBigintWords", napiCreateBigintWords),
         DECLARE_NAPI_FUNCTION("napiGetCbInfo", napiGetCbInfo),
+        DECLARE_NAPI_FUNCTION("checkTypeTag", CheckTypeTag),
+        DECLARE_NAPI_FUNCTION("typeTaggedInstance", TypeTaggedInstance),
+        DECLARE_NAPI_FUNCTION("stringUtf16OfCase", StringUtf16OfCase),
+        DECLARE_NAPI_FUNCTION("createAndGetStringUtf16", CreateAndGetStringUtf16),
         { "napiCancelAsyncWork", nullptr, napiCancelAsyncWork, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testAsyncWork", nullptr, testAsyncWork, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testPromise", nullptr, testPromise, nullptr, nullptr, nullptr, napi_default, nullptr },
