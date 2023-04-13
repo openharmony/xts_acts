@@ -15,8 +15,8 @@
 import rpc from "@ohos.rpc";
 import particleAbility from '@ohos.ability.particleAbility'
 import commonEvent from '@ohos.commonEvent'
-var server_bundleName = "com.amsst.stserviceabilityserver";
-var server_abilityName = "com.amsst.stserviceabilityserver.ServiceAbility";
+var server_bundleName = "com.amsst.stserviceabilityclient";
+var server_abilityName = "com.amsst.stserviceabilityclient.ServiceAbility1";
 var mConnIdJs;
 class StubTest extends rpc.RemoteObject {
     constructor(des) {
