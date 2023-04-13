@@ -460,7 +460,8 @@ describe("HashMapTest", function () {
     hashMap.set(5, "E");
     let res = hashMap.keys();
     for (let i = 0; i < hashMap.length; i++) {
-      console.log(res.next());
+      let result = hashMap.hasKey(res.next().value);
+      expect(result).assertEqual(true);
     }
   });
         
