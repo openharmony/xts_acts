@@ -51,32 +51,41 @@ export default function flex_Wrap_VisibilityTest() {
      */
     it('testWrapWrapTextVisibilityNoneOverflow', 0, async function (done) {
       console.info('[testWrapWrapTextVisibilityNoneOverflow] START');
-      globalThis.value.message.notify({name:'firstTextWidth', value:250});
-      globalThis.value.message.notify({name:'secondTextWidth', value:350});
-      globalThis.value.message.notify({name:'thirdTextWidth', value:350});
-      globalThis.value.message.notify({name:'visibility', value:Visibility.None})
-      await CommonFunc.sleep(3000);
-      let secondText = CommonFunc.getComponentRect('Wrap_Text_Visibility2');
-      let thirdText = CommonFunc.getComponentRect('Wrap_Text_Visibility3');
-      let flexContainer = CommonFunc.getComponentRect('Flex_Wrap_Visibility_Container01');
-      let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Visibility_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+      try{
+        globalThis.value.message.notify({name:'firstTextWidth', value:250});
+        globalThis.value.message.notify({name:'secondTextWidth', value:350});
+        globalThis.value.message.notify({name:'thirdTextWidth', value:350});
+        globalThis.value.message.notify({name:'visibility', value:Visibility.None})
+        await CommonFunc.sleep(3000);
+        let secondText = CommonFunc.getComponentRect('Wrap_Text_Visibility2');
+        let thirdText = CommonFunc.getComponentRect('Wrap_Text_Visibility3');
+        let flexContainer = CommonFunc.getComponentRect('Flex_Wrap_Visibility_Container01');
+        let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Visibility_Container01');
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
+        expect(flexContainerObj.$type).assertEqual('Flex');
+        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(secondText.top).assertEqual(flexContainer.top);
-      expect(secondText.left).assertEqual(flexContainer.left);
+        let firstTextStrJson = getInspectorByKey('Wrap_Text_Visibility1');
+        let firstTextObj = JSON.parse(firstTextStrJson);
+        expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+        expect(secondText.top).assertEqual(flexContainer.top);
+        expect(secondText.left).assertEqual(flexContainer.left);
 
-      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(350));
-      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(secondText.right - secondText.left));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
 
-      expect(thirdText.top).assertEqual(secondText.bottom);
-      expect(thirdText.left).assertEqual(secondText.left);
+        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(350));
+        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(secondText.right - secondText.left));
 
-      expect(Math.round(thirdText.bottom - flexContainer.bottom)).assertEqual(vp2px(150));
+        expect(thirdText.top).assertEqual(secondText.bottom);
+        expect(thirdText.left).assertEqual(secondText.left);
+
+        expect(Math.round(thirdText.bottom - flexContainer.bottom)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[testWrapWrapTextVisibilityNoneOverflow] failed');
+        expect().assertFail();
+      }
       console.info('[testWrapWrapTextVisibilityNoneOverflow] END');
       done();
     });
@@ -88,31 +97,40 @@ export default function flex_Wrap_VisibilityTest() {
      */
     it('testWrapWrapTextVisibilityNoneMeet', 0, async function (done) {
       console.info('[testWrapWrapTextVisibilityNoneMeet] START');
-      globalThis.value.message.notify({name:'firstTextWidth', value:250});
-      globalThis.value.message.notify({name:'secondTextWidth', value:150});
-      globalThis.value.message.notify({name:'thirdTextWidth', value:150});
-      globalThis.value.message.notify({name:'visibility', value:Visibility.None})
-      await CommonFunc.sleep(3000);
-      let secondText = CommonFunc.getComponentRect('Wrap_Text_Visibility2');
-      let thirdText = CommonFunc.getComponentRect('Wrap_Text_Visibility3');
-      let flexContainer = CommonFunc.getComponentRect('Flex_Wrap_Visibility_Container01');
-      let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Visibility_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+      try{
+        globalThis.value.message.notify({name:'firstTextWidth', value:250});
+        globalThis.value.message.notify({name:'secondTextWidth', value:150});
+        globalThis.value.message.notify({name:'thirdTextWidth', value:150});
+        globalThis.value.message.notify({name:'visibility', value:Visibility.None})
+        await CommonFunc.sleep(3000);
+        let secondText = CommonFunc.getComponentRect('Wrap_Text_Visibility2');
+        let thirdText = CommonFunc.getComponentRect('Wrap_Text_Visibility3');
+        let flexContainer = CommonFunc.getComponentRect('Flex_Wrap_Visibility_Container01');
+        let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Visibility_Container01');
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
+        expect(flexContainerObj.$type).assertEqual('Flex');
+        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(secondText.right).assertEqual(thirdText.left);
-      expect(secondText.top).assertEqual(thirdText.top);
-      expect(flexContainer.top).assertEqual(thirdText.top);
+        let firstTextStrJson = getInspectorByKey('Wrap_Text_Visibility1');
+        let firstTextObj = JSON.parse(firstTextStrJson);
+        expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+        expect(secondText.right).assertEqual(thirdText.left);
+        expect(secondText.top).assertEqual(thirdText.top);
+        expect(flexContainer.top).assertEqual(thirdText.top);
 
-      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(secondText.right - secondText.left));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
 
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(200));
-      expect(flexContainer.left).assertEqual(secondText.left);
+        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(150));
+        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(secondText.right - secondText.left));
+
+        expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(200));
+        expect(flexContainer.left).assertEqual(secondText.left);
+      } catch (err) {
+        console.error('[testWrapWrapTextVisibilityNoneMeet] failed');
+        expect().assertFail();
+      }
       console.info('[testWrapWrapTextVisibilityNoneMeet] END');
       done();
     });
@@ -124,31 +142,40 @@ export default function flex_Wrap_VisibilityTest() {
      */
     it('testWrapWrapTextVisibilityHidden', 0, async function (done) {
       console.info('[testWrapWrapTextVisibilityHidden] START');
-      globalThis.value.message.notify({name:'firstTextWidth', value:150});
-      globalThis.value.message.notify({name:'secondTextWidth', value:150});
-      globalThis.value.message.notify({name:'thirdTextWidth', value:150});
-      globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden})
-      await CommonFunc.sleep(3000);
-      let secondText = CommonFunc.getComponentRect('Wrap_Text_Visibility2');
-      let thirdText = CommonFunc.getComponentRect('Wrap_Text_Visibility3');
-      let flexContainer = CommonFunc.getComponentRect('Flex_Wrap_Visibility_Container01');
-      let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Visibility_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+      try{
+        globalThis.value.message.notify({name:'firstTextWidth', value:150});
+        globalThis.value.message.notify({name:'secondTextWidth', value:150});
+        globalThis.value.message.notify({name:'thirdTextWidth', value:150});
+        globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden})
+        await CommonFunc.sleep(3000);
+        let secondText = CommonFunc.getComponentRect('Wrap_Text_Visibility2');
+        let thirdText = CommonFunc.getComponentRect('Wrap_Text_Visibility3');
+        let flexContainer = CommonFunc.getComponentRect('Flex_Wrap_Visibility_Container01');
+        let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Visibility_Container01');
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
+        expect(flexContainerObj.$type).assertEqual('Flex');
+        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
-      expect(secondText.right).assertEqual(thirdText.left)
-      expect(secondText.top).assertEqual(thirdText.top);
-      expect(flexContainer.top).assertEqual(thirdText.top);
+        let firstTextStrJson = getInspectorByKey('Wrap_Text_Visibility1');
+        let firstTextObj = JSON.parse(firstTextStrJson);
+        expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.Hidden");
 
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+        expect(secondText.right).assertEqual(thirdText.left)
+        expect(secondText.top).assertEqual(thirdText.top);
+        expect(flexContainer.top).assertEqual(thirdText.top);
 
-      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(secondText.right - secondText.left));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
 
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.left - flexContainer.left)).assertEqual(vp2px(150));
+        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(150));
+        expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(secondText.right - secondText.left));
+
+        expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(50));
+        expect(Math.round(secondText.left - flexContainer.left)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[testWrapWrapTextVisibilityHidden] failed');
+        expect().assertFail();
+      }
       console.info('[testWrapWrapTextVisibilityHidden] END');
       done();
     });

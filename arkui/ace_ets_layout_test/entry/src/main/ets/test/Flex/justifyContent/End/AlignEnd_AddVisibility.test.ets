@@ -52,28 +52,33 @@ export default function AlignEnd_AddVisibility() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1000', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1000] START');
-      globalThis.value.message.notify({name:'OneVisibility',value:Visibility.None});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('End_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('End_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
-      let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
-      let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
-      let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
-      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_013.top);
-      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_01.top);
-      expect(End_AddVisibility_012.right).assertEqual(End_AddVisibility_013.left);
-      expect(End_AddVisibility_013.right).assertEqual(End_AddVisibility_01.right);
-      expect(Math.round(End_AddVisibility_012.left - End_AddVisibility_01.left)).assertEqual(vp2px(200));
-      expect(Math.round(End_AddVisibility_012.right - End_AddVisibility_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddVisibility_013.right - End_AddVisibility_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddVisibility_012.bottom - End_AddVisibility_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(End_AddVisibility_013.bottom - End_AddVisibility_013.top)).assertEqual(vp2px(150));
+      try{
+        globalThis.value.message.notify({name:'OneVisibility',value:Visibility.None});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('End_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('End_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2);
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
+        let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
+        let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
+        let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
+        expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_013.top);
+        expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_01.top);
+        expect(End_AddVisibility_012.right).assertEqual(End_AddVisibility_013.left);
+        expect(End_AddVisibility_013.right).assertEqual(End_AddVisibility_01.right);
+        expect(Math.round(End_AddVisibility_012.left - End_AddVisibility_01.left)).assertEqual(vp2px(200));
+        expect(Math.round(End_AddVisibility_012.right - End_AddVisibility_012.left)).assertEqual(vp2px(150));
+        expect(Math.round(End_AddVisibility_013.right - End_AddVisibility_013.left)).assertEqual(vp2px(150));
+        expect(Math.round(End_AddVisibility_012.bottom - End_AddVisibility_012.top)).assertEqual(vp2px(100));
+        expect(Math.round(End_AddVisibility_013.bottom - End_AddVisibility_013.top)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1000] failed');
+        expect().assertFail();
+      }
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1000] END');
       done();
     });
@@ -85,33 +90,38 @@ export default function AlignEnd_AddVisibility() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1100', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1100] START');
-      globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Hidden})
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('End_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('End_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
-      let End_AddVisibility_011 = CommonFunc.getComponentRect('End_AddVisibility_011');
-      let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
-      let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
-      let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
-      expect(End_AddVisibility_011.top).assertEqual(End_AddVisibility_012.top);
-      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_013.top);
-      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_01.top);
-      expect(End_AddVisibility_011.right).assertEqual(End_AddVisibility_012.left);
-      expect(End_AddVisibility_013.right).assertEqual(End_AddVisibility_01.right);
-      expect(End_AddVisibility_013.left).assertEqual(End_AddVisibility_012.right);
-      expect(Math.round(End_AddVisibility_011.left - End_AddVisibility_01.left)).assertEqual(vp2px(50));
-      expect(Math.round(End_AddVisibility_011.right - End_AddVisibility_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddVisibility_012.right - End_AddVisibility_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddVisibility_013.right - End_AddVisibility_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddVisibility_011.bottom - End_AddVisibility_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(End_AddVisibility_012.bottom - End_AddVisibility_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(End_AddVisibility_013.bottom - End_AddVisibility_013.top)).assertEqual(vp2px(150));
+      try{
+        globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Hidden})
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('End_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('End_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2);
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
+        let End_AddVisibility_011 = CommonFunc.getComponentRect('End_AddVisibility_011');
+        let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
+        let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
+        let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
+        expect(End_AddVisibility_011.top).assertEqual(End_AddVisibility_012.top);
+        expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_013.top);
+        expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_01.top);
+        expect(End_AddVisibility_011.right).assertEqual(End_AddVisibility_012.left);
+        expect(End_AddVisibility_013.right).assertEqual(End_AddVisibility_01.right);
+        expect(End_AddVisibility_013.left).assertEqual(End_AddVisibility_012.right);
+        expect(Math.round(End_AddVisibility_011.left - End_AddVisibility_01.left)).assertEqual(vp2px(50));
+        expect(Math.round(End_AddVisibility_011.right - End_AddVisibility_011.left)).assertEqual(vp2px(150));
+        expect(Math.round(End_AddVisibility_012.right - End_AddVisibility_012.left)).assertEqual(vp2px(150));
+        expect(Math.round(End_AddVisibility_013.right - End_AddVisibility_013.left)).assertEqual(vp2px(150));
+        expect(Math.round(End_AddVisibility_011.bottom - End_AddVisibility_011.top)).assertEqual(vp2px(50));
+        expect(Math.round(End_AddVisibility_012.bottom - End_AddVisibility_012.top)).assertEqual(vp2px(100));
+        expect(Math.round(End_AddVisibility_013.bottom - End_AddVisibility_013.top)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1100] failed');
+        expect().assertFail();
+      }
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1100] END');
       done();
     });
@@ -123,33 +133,38 @@ export default function AlignEnd_AddVisibility() {
      */
     it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1700', 0, async function (done) {
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1700] START');
-      globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Visible})
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('End_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('End_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
-      let End_AddVisibility_011 = CommonFunc.getComponentRect('End_AddVisibility_011');
-      let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
-      let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
-      let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
-      expect(End_AddVisibility_011.top).assertEqual(End_AddVisibility_012.top);
-      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_013.top);
-      expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_01.top);
-      expect(End_AddVisibility_011.right).assertEqual(End_AddVisibility_012.left);
-      expect(End_AddVisibility_013.right).assertEqual(End_AddVisibility_01.right);
-      expect(End_AddVisibility_013.left).assertEqual(End_AddVisibility_012.right);
-      expect(Math.round(End_AddVisibility_011.left - End_AddVisibility_01.left)).assertEqual(vp2px(50));
-      expect(Math.round(End_AddVisibility_011.right - End_AddVisibility_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddVisibility_012.right - End_AddVisibility_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddVisibility_013.right - End_AddVisibility_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(End_AddVisibility_011.bottom - End_AddVisibility_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(End_AddVisibility_012.bottom - End_AddVisibility_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(End_AddVisibility_013.bottom - End_AddVisibility_013.top)).assertEqual(vp2px(150));
+      try{
+        globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Visible})
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('End_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('End_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2);
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.End');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
+        let End_AddVisibility_011 = CommonFunc.getComponentRect('End_AddVisibility_011');
+        let End_AddVisibility_012 = CommonFunc.getComponentRect('End_AddVisibility_012');
+        let End_AddVisibility_013 = CommonFunc.getComponentRect('End_AddVisibility_013');
+        let End_AddVisibility_01 = CommonFunc.getComponentRect('End_AddVisibility_01');
+        expect(End_AddVisibility_011.top).assertEqual(End_AddVisibility_012.top);
+        expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_013.top);
+        expect(End_AddVisibility_012.top).assertEqual(End_AddVisibility_01.top);
+        expect(End_AddVisibility_011.right).assertEqual(End_AddVisibility_012.left);
+        expect(End_AddVisibility_013.right).assertEqual(End_AddVisibility_01.right);
+        expect(End_AddVisibility_013.left).assertEqual(End_AddVisibility_012.right);
+        expect(Math.round(End_AddVisibility_011.left - End_AddVisibility_01.left)).assertEqual(vp2px(50));
+        expect(Math.round(End_AddVisibility_011.right - End_AddVisibility_011.left)).assertEqual(vp2px(150));
+        expect(Math.round(End_AddVisibility_012.right - End_AddVisibility_012.left)).assertEqual(vp2px(150));
+        expect(Math.round(End_AddVisibility_013.right - End_AddVisibility_013.left)).assertEqual(vp2px(150));
+        expect(Math.round(End_AddVisibility_011.bottom - End_AddVisibility_011.top)).assertEqual(vp2px(50));
+        expect(Math.round(End_AddVisibility_012.bottom - End_AddVisibility_012.top)).assertEqual(vp2px(100));
+        expect(Math.round(End_AddVisibility_013.bottom - End_AddVisibility_013.top)).assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1700] failed');
+        expect().assertFail();
+      }
       console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_1700] END');
       done();
     });
