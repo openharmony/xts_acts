@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../../common/MessageManager';
 @Entry
 @Component
 struct FlexHeightModify_Auto {
-  @State testHeight: number = 50
-  messageManager:MessageManager = new MessageManager()
-  private content: string = "FlexHeightModify_Auto Page"
+  @State testHeight: number = 50;
+  messageManager:MessageManager = new MessageManager();
+  private content: string = "FlexHeightModify_Auto Page";
   onPageShow() {
     console.info('FlexHeightModify_Auto onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;
       }
@@ -40,15 +40,15 @@ struct FlexHeightModify_Auto {
   build() { 
     Column() {
       Column() {
-        Text('FlexHeightModify').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Text('FlexHeightModify').fontSize(9).fontColor(0xCCCCCC).width('90%');
         Flex({
           direction: FlexDirection.Row,
           alignItems: ItemAlign.Auto,
           wrap: FlexWrap.NoWrap,
         }) {
-          Text('1').width(150).height(this.testHeight).backgroundColor(0xF5DEB3).key('textHeightModify01')
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textHeightModify02')
-          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textHeightModify03')
+          Text('1').width(150).height(this.testHeight).backgroundColor(0xF5DEB3).key('textHeightModify01');
+          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textHeightModify02');
+          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textHeightModify03');
         } 
         .key('flexHeightModify')
         .height(150)

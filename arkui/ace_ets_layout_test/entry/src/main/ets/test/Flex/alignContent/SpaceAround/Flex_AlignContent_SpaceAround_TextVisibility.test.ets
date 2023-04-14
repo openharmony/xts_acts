@@ -19,7 +19,7 @@ import CommonFunc from '../../../../MainAbility/common/Common';
 export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
   describe('Flex_AlignContent_SpaceAround_TextVisibilityTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceAround_TextVisibility beforeEach start");
+      console.info("Flex_AlignContent_SpaceAround_TextVisibilityTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextVisibility',
       }
@@ -36,6 +36,7 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceAround_TextVisibility page error:" + err);
       }
+      console.info("Flex_AlignContent_SpaceAround_TextVisibilityTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -129,7 +130,7 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
         expect(fourthText.left).assertEqual(flexContainer.left);
 
         expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
-        expect(Math.round(thirdText.top - secondText.bottom)).assertLarger(distanceBefore); //行距大于设置前
+        expect(Math.round(thirdText.top - secondText.bottom)).assertLarger(distanceBefore);
 
         expect(Math.round(secondText.top - flexContainer.top))
           .assertEqual(Math.round(flexContainer.bottom - fourthText.bottom));

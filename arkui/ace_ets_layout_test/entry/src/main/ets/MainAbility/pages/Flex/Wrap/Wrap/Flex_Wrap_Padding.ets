@@ -37,8 +37,8 @@ struct Flex_Wrap_FlexPad_TextMarPad{
     this.messageManager.registerCallback(callback);
   }
   build(){
-    Column({space:30}){
-      Flex({wrap:FlexWrap.Wrap, direction: FlexDirection.Row}){
+    Column({ space:30 }){
+      Flex({ wrap:FlexWrap.Wrap, direction: FlexDirection.Row }){
         Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('Wrap_flex_pad1');
         Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('Wrap_flex_pad2');
         Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('Wrap_flex_pad3');

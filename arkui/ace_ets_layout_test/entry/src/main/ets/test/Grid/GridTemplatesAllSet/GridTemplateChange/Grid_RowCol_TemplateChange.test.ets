@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function Grid_RowCol_TemplateChange() {
   describe('Grid_RowCol_TemplateChangeTest', function () {
     beforeEach(async function (done) {
-      console.info("Grid_RowCol_TemplateChange beforeEach start");
+      console.info("Grid_RowCol_TemplateChangeTest beforeEach start");
       let options = {
         url: "MainAbility/pages/Grid/GridTemplatesAllSet/GridTemplateChange/Grid_RowCol_TemplateChange",
       }
@@ -38,6 +37,7 @@ export default function Grid_RowCol_TemplateChange() {
         console.error("push Grid_RowCol_TemplateChange page error " + JSON.stringify(err));
         expect().assertFail();
       }
+      console.info("Grid_RowCol_TemplateChangeTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,11 +46,11 @@ export default function Grid_RowCol_TemplateChange() {
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0100
-     * @tc.name      Grid_RowCol_TemplateChange
+     * @tc.name      testGridRowColTemplateChange01
      * @tc.desc      Grid is divided into 4 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0100', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0100] START');
+    it('testGridRowColTemplateChange01', 0, async function (done) {
+      console.info('[testGridRowColTemplateChange01] START');
       await CommonFunc.sleep(1000);
       let gridContainerStrJson = getInspectorByKey('GridTemplateChange_Grid_01');
       let gridContainerObj = JSON.parse(gridContainerStrJson);
@@ -88,16 +88,16 @@ export default function Grid_RowCol_TemplateChange() {
       expect(Math.round(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top)).assertEqual(vp2px(150));
       expect(Math.round(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top)).assertEqual(vp2px(150));
       expect(Math.round(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0100] END');
+      console.info('[testGridRowColTemplateChange01] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0200
-     * @tc.name      Grid_RowCol_TemplateChange
+     * @tc.name      testGridRowColTemplateChange02
      * @tc.desc      Grid is divided into 9 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0200', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0200] START');
+    it('testGridRowColTemplateChange02', 0, async function (done) {
+      console.info('[testGridRowColTemplateChange02] START');
       globalThis.value.message.notify({name:'testColumnsTemplate', value:"1fr 1fr 1fr"});
       globalThis.value.message.notify({name:'testRowsTemplate', value:"1fr 1fr 1fr"});
       await CommonFunc.sleep(3000);
@@ -134,7 +134,7 @@ export default function Grid_RowCol_TemplateChange() {
       expect(Math.round(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top)).assertEqual(vp2px(100));
       expect(Math.round(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top)).assertEqual(vp2px(100));
       expect(Math.round(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top)).assertEqual(vp2px(100));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0200] END');
+      console.info('[testGridRowColTemplateChange02] END');
       done();
     });
 

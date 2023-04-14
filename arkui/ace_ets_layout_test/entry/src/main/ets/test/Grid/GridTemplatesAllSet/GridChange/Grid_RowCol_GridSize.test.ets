@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function Grid_RowCol_GridSize() {
   describe('Grid_RowCol_GridSizeTest', function () {
     beforeEach(async function (done) {
@@ -38,6 +37,7 @@ export default function Grid_RowCol_GridSize() {
         console.error("push Grid_RowCol_GridSize page error " + JSON.stringify(err));
         expect().assertFail();
       }
+      console.info("Grid_RowCol_GridSize beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,11 +46,11 @@ export default function Grid_RowCol_GridSize() {
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0100
-     * @tc.name      Grid_RowCol_GridSize
+     * @tc.name      testGridRowColGridSize01
      * @tc.desc      The Width 200 height 200,Grid is divided into 4 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0100', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0100] START');
+    it('testGridRowColGridSize01', 0, async function (done) {
+      console.info('[testGridRowColGridSize01] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_GridSize_01');
       let gridContainerObj = JSON.parse(gridContainerStrJson);
@@ -88,16 +88,16 @@ export default function Grid_RowCol_GridSize() {
       expect(Math.round(Grid_RowCol_GridSize_012.bottom - Grid_RowCol_GridSize_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Grid_RowCol_GridSize_013.bottom - Grid_RowCol_GridSize_013.top)).assertEqual(vp2px(100));
       expect(Math.round(Grid_RowCol_GridSize_014.bottom - Grid_RowCol_GridSize_014.top)).assertEqual(vp2px(100));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0100] END');
+      console.info('[testGridRowColGridSize01] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0200
-     * @tc.name      Grid_RowCol_GridSize
+     * @tc.name      testGridRowColGridSize02
      * @tc.desc      The Width 200 height 300,Grid is divided into 4 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0200', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0200] START');
+    it('testGridRowColGridSize02', 0, async function (done) {
+      console.info('[testGridRowColGridSize02] START');
       globalThis.value.message.notify({name:'changeHeight', value:300});
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_GridSize_01');
@@ -136,7 +136,7 @@ export default function Grid_RowCol_GridSize() {
       expect(Math.round(Grid_RowCol_GridSize_012.bottom - Grid_RowCol_GridSize_012.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_GridSize_013.bottom - Grid_RowCol_GridSize_013.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_GridSize_014.bottom - Grid_RowCol_GridSize_014.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0200] END');
+      console.info('[testGridRowColGridSize02] END');
       done();
     });
 

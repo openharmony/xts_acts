@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignSpaceEvenly_AddAlign() {
   describe('AlignSpaceEvenly_AddAlign', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignSpaceEvenly_AddAlign() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0800
-     * @tc.name      Align_SpaceEvenly_Row_AddAlign
+     * @tc.name      testFlexAlignSpaceEvenlyAlignBottomEnd
      * @tc.desc      Setting generic properties does not take effect, and owned properties take precedence
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0800', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0800] START');
+    it('testFlexAlignSpaceEvenlyAlignBottomEnd', 0, async function (done) {
+      console.info('[testFlexAlignSpaceEvenlyAlignBottomEnd] START');
       globalThis.value.message.notify({name:'DadAlign', value:Alignment.BottomEnd})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddAlign_01');
@@ -80,7 +79,7 @@ export default function AlignSpaceEvenly_AddAlign() {
       expect(Math.round(SpaceEvenly_AddAlign_011.bottom - SpaceEvenly_AddAlign_011.top)).assertEqual(vp2px(50));
       expect(Math.round(SpaceEvenly_AddAlign_012.bottom - SpaceEvenly_AddAlign_012.top)).assertEqual(vp2px(100));
       expect(Math.round(SpaceEvenly_AddAlign_013.bottom - SpaceEvenly_AddAlign_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0800] END');
+      console.info('[testFlexAlignSpaceEvenlyAlignBottomEnd] END');
       done()
     });
   })

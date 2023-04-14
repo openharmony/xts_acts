@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
 export default function Column_Space() {
   describe('column_SpaceTest', function () {
     beforeEach(async function (done) {
-      console.info("Column_Space beforeEach start");
+      console.info("column_SpaceTest beforeEach start");
       let options = {
         url: "MainAbility/pages/Column/spaceChanged/Column_Space",
       }
@@ -38,6 +37,7 @@ export default function Column_Space() {
         console.error("push Column_Space page error " + JSON.stringify(err));
         expect().assertFail();
       }
+      console.info("column_SpaceTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,11 +46,11 @@ export default function Column_Space() {
     });
     /**
      * @tc.number    SUB_ACE_COLUMN_SPACE_TEST_0100
-     * @tc.name      Column_Space
-     * @tc.desc      The value of space changes, and the layout size of the parent and child components is fixed
+     * @tc.name      testColumnSpaceToThirty
+     * @tc.desc      The value of space set to 30, and the layout size of the parent and child components is fixed
      */
-    it('SUB_ACE_COLUMN_SPACE_TEST_0100', 0, async function (done) {
-      console.info('[SUB_ACE_COLUMN_SPACE_TEST_0100] START');
+    it('testColumnSpaceToThirty', 0, async function (done) {
+      console.info('[testColumnSpaceToThirty] START');
       globalThis.value.message.notify({name:'addSpace', value:30});
       await CommonFunc.sleep(3000);
       let Column_Space_011 = CommonFunc.getComponentRect('Column_Space_011');
@@ -74,16 +74,16 @@ export default function Column_Space() {
       expect(Math.round(Column_Space_011.right - Column_Space_011.left)).assertEqual(vp2px(300));
       expect(Math.round(Column_Space_012.right - Column_Space_012.left)).assertEqual(vp2px(300));
       expect(Math.round(Column_Space_013.right - Column_Space_013.left)).assertEqual(vp2px(300));
-      console.info('[SUB_ACE_COLUMN_SPACE_TEST_0100] END');
+      console.info('[testColumnSpaceToThirty] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_COLUMN_SPACE_TEST_0200
-     * @tc.name      Column_Space
-     * @tc.desc      The value of space changes, and the layout size of the parent and child components is fixed
+     * @tc.name      testColumnSpaceToFifty
+     * @tc.desc      The value of space set to 50, and the layout size of the parent and child components is fixed
      */
-    it('SUB_ACE_COLUMN_SPACE_TEST_0200', 0, async function (done) {
-      console.info('[SUB_ACE_COLUMN_SPACE_TEST_0200] START');
+    it('testColumnSpaceToFifty', 0, async function (done) {
+      console.info('[testColumnSpaceToFifty] START');
       globalThis.value.message.notify({name:'addSpace', value:50});
       await CommonFunc.sleep(3000);
       let Column_Space_011 = CommonFunc.getComponentRect('Column_Space_011');
@@ -107,16 +107,16 @@ export default function Column_Space() {
       expect(Math.round(Column_Space_011.right - Column_Space_011.left)).assertEqual(vp2px(300));
       expect(Math.round(Column_Space_012.right - Column_Space_012.left)).assertEqual(vp2px(300));
       expect(Math.round(Column_Space_013.right - Column_Space_013.left)).assertEqual(vp2px(300));
-      console.info('[SUB_ACE_COLUMN_SPACE_TEST_0200] END');
+      console.info('[testColumnSpaceToFifty] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_COLUMN_SPACE_TEST_0300
-     * @tc.name      Column_Space
-     * @tc.desc      The value of space changes, and the layout size of the parent and child components is fixed
+     * @tc.name      testColumnSpaceToSeventy
+     * @tc.desc      The value of space set to 70, and the layout size of the parent and child components is fixed
      */
-    it('SUB_ACE_COLUMN_SPACE_TEST_0300', 0, async function (done) {
-      console.info('[SUB_ACE_COLUMN_SPACE_TEST_0300] START');
+    it('testColumnSpaceToSeventy', 0, async function (done) {
+      console.info('[testColumnSpaceToSeventy] START');
       globalThis.value.message.notify({name:'addSpace', value:70});
       await CommonFunc.sleep(3000);
       let Column_Space_011 = CommonFunc.getComponentRect('Column_Space_011');
@@ -140,7 +140,7 @@ export default function Column_Space() {
       expect(Math.round(Column_Space_011.right - Column_Space_011.left)).assertEqual(vp2px(300));
       expect(Math.round(Column_Space_012.right - Column_Space_012.left)).assertEqual(vp2px(300));
       expect(Math.round(Column_Space_013.right - Column_Space_013.left)).assertEqual(vp2px(300));
-      console.info('[SUB_ACE_COLUMN_SPACE_TEST_0300] END');
+      console.info('[testColumnSpaceToSeventy] END');
       done();
     });
   })

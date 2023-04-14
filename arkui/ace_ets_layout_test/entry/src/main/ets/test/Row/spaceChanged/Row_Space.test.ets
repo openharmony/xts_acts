@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
 export default function Row_Space() {
   describe('row_SpaceTest', function () {
     beforeEach(async function (done) {
-      console.info("Row_Space beforeEach start");
+      console.info("row_SpaceTest beforeEach start");
       let options = {
         url: "MainAbility/pages/Row/spaceChanged/Row_Space",
       }
@@ -38,6 +37,7 @@ export default function Row_Space() {
         console.error("push Row_Space page error " + JSON.stringify(err));
         expect().assertFail();
       }
+      console.info("row_SpaceTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,11 +46,12 @@ export default function Row_Space() {
     });
     /**
      * @tc.number    SUB_ACE_ROW_SPACE_TEST_0100
-     * @tc.name      Row_Space
-     * @tc.desc      The value of space changes, and the layout size of the parent and child components is fixed
+     * @tc.name      testRowSpaceUnfill
+     * @tc.desc      The space of parent component set to 10,The child component is not fully filled with
+     *               the parent component
      */
-    it('SUB_ACE_ROW_SPACE_0100', 0, async function (done) {
-      console.info('[SUB_ACE_ROW_SPACE_TEST_0100] START');
+    it('testRowSpaceUnfill', 0, async function (done) {
+      console.info('[testRowSpaceUnfill] START');
       globalThis.value.message.notify({name:'addSpace', value:10});
       await CommonFunc.sleep(3000);
       let Row_Space_011 = CommonFunc.getComponentRect('Row_Space_011');
@@ -74,16 +75,17 @@ export default function Row_Space() {
       expect(Math.round(Row_Space_011.right - Row_Space_011.left)).assertEqual(vp2px(100));
       expect(Math.round(Row_Space_012.right - Row_Space_012.left)).assertEqual(vp2px(100));
       expect(Math.round(Row_Space_013.right - Row_Space_013.left)).assertEqual(vp2px(100));
-      console.info('[SUB_ACE_ROW_SPACE_TEST_0100] END');
+      console.info('[testRowSpaceUnfill] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_ROW_SPACE_TEST_0200
-     * @tc.name      Row_Space
-     * @tc.desc      The value of space changes, and the layout size of the parent and child components is fixed
+     * @tc.name      testRowSpaceFill
+     * @tc.desc      The space of parent component set to 25,The child component is filled with
+     *               the parent component
      */
-    it('SUB_ACE_ROW_SPACE_TEST_0200', 0, async function (done) {
-      console.info('[SUB_ACE_ROW_SPACE_TEST_0200] START');
+    it('testRowSpaceFill', 0, async function (done) {
+      console.info('[testRowSpaceFill] START');
       globalThis.value.message.notify({name:'addSpace', value:25});
       await CommonFunc.sleep(3000);
       let Row_Space_011 = CommonFunc.getComponentRect('Row_Space_011');
@@ -107,16 +109,17 @@ export default function Row_Space() {
       expect(Math.round(Row_Space_011.right - Row_Space_011.left)).assertEqual(vp2px(100));
       expect(Math.round(Row_Space_012.right - Row_Space_012.left)).assertEqual(vp2px(100));
       expect(Math.round(Row_Space_013.right - Row_Space_013.left)).assertEqual(vp2px(100));
-      console.info('[SUB_ACE_ROW_SPACE_TEST_0200] END');
+      console.info('[testRowSpaceFill] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_ROW_SPACE_TEST_0300
-     * @tc.name      Row_Space
-     * @tc.desc      The value of space changes, and the layout size of the parent and child components is fixed
+     * @tc.name      testRowSpaceOverflow
+     * @tc.desc      The space of parent component set to 30,The child component is overflow with
+     *               the parent component
      */
-    it('SUB_ACE_ROW_SPACE_TEST_0300', 0, async function (done) {
-      console.info('[SUB_ACE_ROW_SPACE_TEST_0300] START');
+    it('testRowSpaceOverflow', 0, async function (done) {
+      console.info('[testRowSpaceOverflow] START');
       globalThis.value.message.notify({name:'addSpace', value:30});
       await CommonFunc.sleep(3000);
       let Row_Space_011 = CommonFunc.getComponentRect('Row_Space_011');
@@ -140,7 +143,7 @@ export default function Row_Space() {
       expect(Math.round(Row_Space_011.right - Row_Space_011.left)).assertEqual(vp2px(100));
       expect(Math.round(Row_Space_012.right - Row_Space_012.left)).assertEqual(vp2px(100));
       expect(Math.round(Row_Space_013.right - Row_Space_013.left)).assertEqual(vp2px(100));
-      console.info('[SUB_ACE_ROW_SPACE_TEST_0300] END');
+      console.info('[testRowSpaceOverflow] END');
       done();
     });
   })

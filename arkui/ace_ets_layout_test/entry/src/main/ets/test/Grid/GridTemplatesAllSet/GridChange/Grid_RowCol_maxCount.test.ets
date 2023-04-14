@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function Grid_RowCol_maxCount() {
   describe('Grid_RowCol_maxCountTest', function () {
     beforeEach(async function (done) {
-      console.info("Grid_RowCol_maxCount beforeEach start");
+      console.info("Grid_RowCol_maxCountTest beforeEach start");
       let options = {
         url: "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_maxCount",
       }
@@ -38,6 +37,7 @@ export default function Grid_RowCol_maxCount() {
         console.error("push Grid_RowCol_maxCount page error " + JSON.stringify(err));
         expect().assertFail();
       }
+      console.info("Grid_RowCol_maxCountTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,11 +46,11 @@ export default function Grid_RowCol_maxCount() {
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1000
-     * @tc.name      Grid_RowCol_maxCount
+     * @tc.name      testGridRowColGridMaxCount
      * @tc.desc      The Grid layout maxCount property does not take effect
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1000', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1000] START');
+    it('testGridRowColGridMaxCount', 0, async function (done) {
+      console.info('[testGridRowColGridMaxCount] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_maxCount_01');
       let gridContainerObj = JSON.parse(gridContainerStrJson);
@@ -88,7 +88,7 @@ export default function Grid_RowCol_maxCount() {
       expect(Math.round(Grid_RowCol_maxCount_012.bottom - Grid_RowCol_maxCount_012.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_maxCount_013.bottom - Grid_RowCol_maxCount_013.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_maxCount_014.bottom - Grid_RowCol_maxCount_014.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1000] END');
+      console.info('[testGridRowColGridMaxCount] END');
       done();
     });
   })

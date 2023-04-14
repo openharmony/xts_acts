@@ -15,7 +15,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignEnd_AddAllSpace() {
   describe('AlignEnd_AddAllSpace', function () {
     beforeEach(async function (done) {
@@ -46,12 +45,11 @@ export default function AlignEnd_AddAllSpace() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0600
-     * @tc.name      Align_End_Row_AddAllSpace
-     * @tc.desc      After setting margin, after subtracting the padding from the layout space of the parent component,
-     * the interface display of the spindle layout that does not meet the sub-component
+     * @tc.name      testFlexAlignEndFlexSpaceOverflow
+     * @tc.desc      the space of parent component set to 30
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0600', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0600] START');
+    it('testFlexAlignEndFlexSpaceOverflow', 0, async function (done) {
+      console.info('[testFlexAlignEndFlexSpaceOverflow] START');
       globalThis.value.message.notify({name:'DadAllSpace', value:30})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddAllSpace_01');
@@ -79,17 +77,16 @@ export default function AlignEnd_AddAllSpace() {
       expect(Math.round(End_AddAllSpace_011.right - End_AddAllSpace_011.left)).assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(End_AddAllSpace_012.right - End_AddAllSpace_012.left)).assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(End_AddAllSpace_013.right - End_AddAllSpace_013.left)).assertEqual(Math.round(vp2px(440/3)));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0600] END');
+      console.info('[testFlexAlignEndFlexSpaceOverflow] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0700
-     * @tc.name      Align_End_Row_AddAllSpace
-     * @tc.desc      After setting margin, the interface that satisfies the spindle layout of the child component is
-     * displayed after subtracting the padding from the layout space of the parent component
+     * @tc.name      testFlexAlignEndFlexSpaceMeet
+     * @tc.desc      the space of parent component set to 20
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0700', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0700] START');
+    it('testFlexAlignEndFlexSpaceMeet', 0, async function (done) {
+      console.info('[testFlexAlignEndFlexSpaceMeet] START');
       globalThis.value.message.notify({name:'DadAllSpace', value:20})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddAllSpace_01');
@@ -117,7 +114,7 @@ export default function AlignEnd_AddAllSpace() {
       expect(Math.round(End_AddAllSpace_011.bottom - End_AddAllSpace_011.top)).assertEqual(vp2px(50));
       expect(Math.round(End_AddAllSpace_012.bottom - End_AddAllSpace_012.top)).assertEqual(vp2px(100));
       expect(Math.round(End_AddAllSpace_013.bottom - End_AddAllSpace_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0700] END');
+      console.info('[testFlexAlignEndFlexSpaceMeet] END');
       done();
     });
   })

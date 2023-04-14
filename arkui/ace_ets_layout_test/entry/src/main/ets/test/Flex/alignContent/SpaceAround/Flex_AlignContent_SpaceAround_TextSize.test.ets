@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceAround_TextSizeTest() {
   describe('Flex_AlignContent_SpaceAround_TextSizeTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceAround_TextSize beforeEach start");
+      console.info("Flex_AlignContent_SpaceAround_TextSizeTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextSize',
       }
@@ -37,6 +36,7 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceAround_TextSize page error:" + err);
       }
+      console.info("Flex_AlignContent_SpaceAround_TextSizeTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -45,12 +45,12 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1100
-     * @tc.name      alignContent_SpaceAround_TextSize
+     * @tc.name      testFlexAlignContentSpaceAroundTextSizeMeet
      * @tc.desc      The size of the parent component in the cross direction meets the layout
      *               of the child components when the height and width of parent component changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1100] START');
+    it('testFlexAlignContentSpaceAroundTextSizeMeet', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundTextSizeMeet] START');
       globalThis.value.message.notify({name:'height', value:70})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextSize01');
@@ -67,7 +67,7 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(70));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //四个子组件的高度分别为70、100、50、100
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
@@ -75,23 +75,23 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       expect(fourthText.left).assertEqual(flexContainer.left);
 
       expect(Math.round(secondText.top - firstText.bottom)).assertEqual(Math.round(thirdText.top - secondText.bottom));
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //行间距相等
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
 
       expect(Math.round(firstText.top - flexContainer.top))
         .assertEqual(Math.round(flexContainer.bottom - fourthText.bottom));
       expect(Math.round(firstText.top - flexContainer.top))
         .assertEqual(Math.round((secondText.top - firstText.bottom) / 2));
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1100] END');
+      console.info('[testFlexAlignContentSpaceAroundTextSizeMeet] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1200
-     * @tc.name      alignContent_SpaceAround_TextSize
+     * @tc.name      testFlexAlignContentSpaceAroundTextSizeOverflow
      * @tc.desc      The size of the parent component in the cross direction is not enough for the layout
      *               of the child components when the height and width of parent component changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1200', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1200] START');
+    it('testFlexAlignContentSpaceAroundTextSizeOverflow', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundTextSizeOverflow] START');
       globalThis.value.message.notify({name:'height', value:200})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextSize01');
@@ -108,20 +108,20 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(200));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //四个子组件的高度分别为200、100、50、100
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
       expect(firstText.bottom).assertEqual(secondText.top);
       expect(secondText.bottom).assertEqual(thirdText.top);
-      expect(thirdText.bottom).assertEqual(fourthText.top); //无行间距
+      expect(thirdText.bottom).assertEqual(fourthText.top);
 
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
-      expect(fourthText.left).assertEqual(flexContainer.left); //子组件靠左
+      expect(fourthText.left).assertEqual(flexContainer.left);
 
       expect(firstText.top).assertEqual(flexContainer.top);
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(50)); //行首贴边行尾溢出
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_1200] END');
+      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(50));
+      console.info('[testFlexAlignContentSpaceAroundTextSizeOverflow] END');
       done();
     });
   })

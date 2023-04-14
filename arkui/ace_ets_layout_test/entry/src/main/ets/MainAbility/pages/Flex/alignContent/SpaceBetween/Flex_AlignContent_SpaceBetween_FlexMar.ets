@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../../common/MessageManager';
 @Entry
 @Component
-struct FlexAlignContent_SpaceBetween_04{
-  @State testMargin: number = 0
-  messageManager:MessageManager = new MessageManager()
+struct FlexAlign_SpaceBetween_FlexMar{
+  @State testMargin: number = 0;
+  messageManager:MessageManager = new MessageManager();
 
   onPageShow() {
-    console.info('FlexAlignContent_SpaceBetween_01 onPageShow');
+    console.info('FlexAlign_SpaceBetween_FlexMar onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'margin') {
         this.testMargin = message.value;
       }
@@ -35,10 +35,10 @@ struct FlexAlignContent_SpaceBetween_04{
   build(){
     Column({space:30}){
       Flex({wrap:FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween}){
-        Text('1').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceBetween_FlexMar01')
-        Text('2').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceBetween_FlexMar02')
-        Text('3').width(150).height(150).backgroundColor(0xD2B48C).key('AlignContent_SpaceBetween_FlexMar03')
-        Text('4').width(150).height(200).backgroundColor(0xF5DEB3).key('AlignContent_SpaceBetween_FlexMar04')
+        Text('1').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceBetween_FlexMar01');
+        Text('2').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceBetween_FlexMar02');
+        Text('3').width(150).height(150).backgroundColor(0xD2B48C).key('AlignContent_SpaceBetween_FlexMar03');
+        Text('4').width(150).height(200).backgroundColor(0xF5DEB3).key('AlignContent_SpaceBetween_FlexMar04');
       }
       .width(200)
       .height(540)

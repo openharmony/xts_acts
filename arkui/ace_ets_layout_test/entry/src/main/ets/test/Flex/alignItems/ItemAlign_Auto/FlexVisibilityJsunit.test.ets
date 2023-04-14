@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexVisibility_AutoJsunit() {
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function flexVisibility_AutoJsunit() {
 
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1100
-     * @tc.name      ItemAlign_Auto_FlexVisibility
+     * @tc.name      testFlexItemAlignAutoFlexVisibilityNone
      * @tc.desc      The first subcomponent set Visibility.None attribute.
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1100', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1100 START');
+    it('testFlexItemAlignAutoFlexVisibilityNone', 0, async function (done) {
+      console.info('new testFlexItemAlignAutoFlexVisibilityNone START');
       try{
         globalThis.value.message.notify({name:'visibility', value:Visibility.None})
         await CommonFunc.sleep(2000);
@@ -78,20 +77,20 @@ export default function flexVisibility_AutoJsunit() {
         expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
         expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       } catch (err) {
-        console.error('[SUB_ACE_FLEXALIGNITEMS_AUTO_1100] failed');
+        console.error('[testFlexItemAlignAutoFlexVisibilityNone] failed');
         expect().assertFail();
       }
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1100 END');
+      console.info('new testFlexItemAlignAutoFlexVisibilityNone END');
       done();
     });
 
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1200
-     * @tc.name      ItemAlign_Auto_FlexVisibility
+     * @tc.name      testFlexItemAlignAutoFlexVisibilityHidden
      * @tc.desc      The first subcomponent set Visibility.Hidden attribute.
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1200', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1200 START');
+    it('testFlexItemAlignAutoFlexVisibilityHidden', 0, async function (done) {
+      console.info('new testFlexItemAlignAutoFlexVisibilityHidden START');
       try{
         globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden});
         await CommonFunc.sleep(2000);
@@ -120,10 +119,10 @@ export default function flexVisibility_AutoJsunit() {
         expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
         expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       } catch (err) {
-        console.error('[SUB_ACE_FLEXALIGNITEMS_AUTO_1200] failed');
+        console.error('[testFlexItemAlignAutoFlexVisibilityHidden] failed');
         expect().assertFail();
       }
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1200 END');
+      console.info('new testFlexItemAlignAutoFlexVisibilityHidden END');
       done();
     });
   })

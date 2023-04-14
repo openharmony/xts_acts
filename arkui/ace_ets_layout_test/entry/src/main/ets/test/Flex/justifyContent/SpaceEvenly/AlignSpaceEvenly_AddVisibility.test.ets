@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignSpaceEvenly_AddVisibility() {
   describe('AlignSpaceEvenly_AddVisibility', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignSpaceEvenly_AddVisibility() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1000
-     * @tc.name      Align_SpaceEvenly_Row_AddVisibility
+     * @tc.name      textFlexAlignSpaceEvenlyTextVisibilityNone
      * @tc.desc      The subcomponent sets the visibility. None, the child components are hidden in the interface display
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1000', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1000] START');
+    it('textFlexAlignSpaceEvenlyTextVisibilityNone', 0, async function (done) {
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityNone] START');
       try{
         globalThis.value.message.notify({name:'OneVisibility', value:Visibility.None});
         await CommonFunc.sleep(3000);
@@ -83,20 +82,20 @@ export default function AlignSpaceEvenly_AddVisibility() {
         expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
           .assertEqual(vp2px(150));
       } catch (err) {
-        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1000] failed');
+        console.error('[textFlexAlignSpaceEvenlyTextVisibilityNone] failed');
         expect().assertFail();
       }
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1000] END');
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityNone] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1100
-     * @tc.name      Align_SpaceEvenly_Row_AddVisibility
+     * @tc.name      textFlexAlignSpaceEvenlyTextVisibilityHidden
      * @tc.desc      When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
      * position
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1100] START');
+    it('textFlexAlignSpaceEvenlyTextVisibilityHidden', 0, async function (done) {
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityHidden] START');
       try{
         globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Hidden});
         await CommonFunc.sleep(3000);
@@ -136,20 +135,20 @@ export default function AlignSpaceEvenly_AddVisibility() {
         expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
           .assertEqual(vp2px(150));
       } catch (err) {
-        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1100] failed');
+        console.error('[textFlexAlignSpaceEvenlyTextVisibilityHidden] failed');
         expect().assertFail();
       }
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1100] END');
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityHidden] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1700
-     * @tc.name      Align_SpaceEvenly_Row_AddVisibility
+     * @tc.name      textFlexAlignSpaceEvenlyTextVisibilityVisible
      * @tc.desc      The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
      * interface display
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1700', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1700] START');
+    it('textFlexAlignSpaceEvenlyTextVisibilityVisible', 0, async function (done) {
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityVisible] START');
       try{
         globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Visible});
         await CommonFunc.sleep(3000);
@@ -189,10 +188,10 @@ export default function AlignSpaceEvenly_AddVisibility() {
         expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
           .assertEqual(vp2px(150));
       } catch (err) {
-        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1700] failed');
+        console.error('[textFlexAlignSpaceEvenlyTextVisibilityVisible] failed');
         expect().assertFail();
       }
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1700] END');
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityVisible] END');
       done();
     });
   })

@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../../common/MessageManager';
 @Entry
 @Component
 struct FlexTextMargin_Auto {
-  @State testMargin: number = 0
-  messageManager:MessageManager = new MessageManager()
-  private content: string = "FlexTextMargin_Auto Page"
+  @State testMargin: number = 0;
+  messageManager:MessageManager = new MessageManager();
+  private content: string = "FlexTextMargin_Auto Page";
   onPageShow() {
     console.info('FlexBase_Center onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'margin') {
         this.testMargin = message.value;
       }
@@ -40,15 +40,15 @@ struct FlexTextMargin_Auto {
   build() { 
     Column() {
       Column() {
-        Text('FlexTextMargin_1').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Text('FlexTextMargin_1').fontSize(9).fontColor(0xCCCCCC).width('90%');
         Flex({
           direction: FlexDirection.Row,
           alignItems: ItemAlign.Auto,
           wrap: FlexWrap.NoWrap,
         }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).margin(this.testMargin).key('textMargin01')
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textMargin02')
-          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textMargin03')
+          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).margin(this.testMargin).key('textMargin01');
+          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textMargin02');
+          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textMargin03');
         } 
         .key('flexTextMargin01')
         .height(150)
