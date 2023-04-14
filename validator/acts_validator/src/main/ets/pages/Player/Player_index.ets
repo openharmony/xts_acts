@@ -29,6 +29,8 @@ let path1 = path + '/Player';
 let VarColor = [];
 let ColorBackPath = path + '/PlayerColorBack.txt';
 let txtPath = path1 + '/PlayerReport.txt';
+let AudioTxtPath = path1 + '/PlayerAudioReport.txt';
+let VideoTxtPath = path1 + '/PlayerVideoReport.txt';
 let xmlPath = path1 + '/PlayerTest.xml';
 
 @Entry
@@ -245,6 +247,8 @@ struct IndexPage {
   ClearText() {
     fileio.rmdirSync(path1);
     fileio.mkdirSync(path1);
+    fileio.openSync(AudioTxtPath, 0o100 | 0o2002, 0o664);
+    fileio.openSync(VideoTxtPath, 0o100 | 0o2002, 0o664);
     let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
     for (let i = 0; i < this.TestCaseList.length; i++) {
       let log = (this.TestCaseList[i].title + ';' + '#ff808080' + ';').toString();
