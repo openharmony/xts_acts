@@ -12,12 +12,6 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
-    "metadata": [
-        {
-          "name": "ArkTSPartialUpdate",
-          "value": "false"
-        }
-      ],
     "abilities": [
       {
         "name": "MainAbility",
