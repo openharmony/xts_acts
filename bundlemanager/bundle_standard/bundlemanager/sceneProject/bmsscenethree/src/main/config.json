@@ -14,7 +14,7 @@
   },
   "deviceConfig": {
     "default": {
-      "debug": true
+      "debug": false
     }
   },
   "module": {
