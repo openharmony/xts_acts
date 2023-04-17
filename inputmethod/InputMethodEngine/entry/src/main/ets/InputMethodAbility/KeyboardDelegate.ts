@@ -168,6 +168,10 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>inputMethodAbility_test_073 event:' + data.event);
                     that.inputMethodAbility_test_073();
                     break;
+                case 74:
+                    console.debug(TAG + '====>inputMethodAbility_test_074 event:' + data.event);
+                    that.inputMethodAbility_test_074();
+                    break;
                 case 101:
                     console.debug(TAG + '====>inputMethodAbility_test_0101 event:' + data.event);
                     that.inputMethodAbility_test_101();
@@ -968,7 +972,7 @@ export class KeyboardDelegate {
         });
 
         let t = setTimeout(() => {
-            if(count === 3){
+            if(count === 2){
                 commonEventPublishData = {
                     data: "SUCCESS"
                 };
@@ -1065,6 +1069,25 @@ export class KeyboardDelegate {
             commoneventmanager.publish("inputMethodAbility_test_073", commonEventPublishData, this.publishCallback);
             clearTimeout(t);
         },500);
+    }
+
+    private inputMethodAbility_test_074(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodAbility_test_074 success');
+        inputMethodAbility.on('setCallingWindow', (wid) => {
+            console.info(TAG + "====>inputKeyboardDelegate.on('setCallingWindow')" + wid);
+            inputMethodAbility.off('setCallingWindow', () => {
+                console.log('inputMethodAbility off setCallingWindow' );
+            });
+            if (typeof(wid) === "number"){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodAbility_test_074", commonEventPublishData, this.publishCallback);
+        });
     }
 
     private inputMethodAbility_test_101(): void {
