@@ -339,13 +339,18 @@ export default function ActsAccountCreateAccount() {
             console.debug("====>ActsAccountCreateAccount_1500 start====");
             var appAccountManager = account.createAppAccountManager();
             var specialStr = " ";
-            try{
+            try {
                 appAccountManager.createAccount(specialStr, createAccountOptions, (err)=>{
-                    expect(err.code == 12300002).assertEqual(true);
+                    console.error("====>createAccount ActsAccountCreateAccount_1500 err:" + JSON.stringify(err));
+                    expect(err).assertEqual(null);
                     console.debug("====>ActsAccountCreateAccount_1500 end====");
-                    done();
+                    appAccountManager.removeAccount(" ", (err)=>{
+                        console.error("====>removeAccount ActsAccountCreateAccount_1500 err:" + JSON.stringify(err));
+                        expect(err).assertEqual(null);
+                        done();
+                    });
                 });
-            }catch(err){
+            } catch (err) {
                 expect().assertFail();
                 done();
             }
@@ -360,14 +365,13 @@ export default function ActsAccountCreateAccount() {
             console.debug("====>ActsAccountCreateAccount_1600 start====");
             var appAccountManager = account.createAppAccountManager();
             var specialStr = " ";
-            try{
+            try {
                 await appAccountManager.createAccount(specialStr, createAccountOptions);
-                expect().assertFail();                
+                await appAccountManager.removeAccount(specialStr);    
                 done();
-            }
-            catch(err){
-                console.debug("====>add Account ActsAccountCreateAccount_1600 err:" + JSON.stringify(err));
-                expect(err.code == 12300002).assertEqual(true);
+            } catch (err) {
+                console.debug("====>createAccount ActsAccountCreateAccount_1600 err:" + JSON.stringify(err));
+                expect().assertFail();
                 console.debug("====>ActsAccountCreateAccount_1600 end====");
                 done();
             }
