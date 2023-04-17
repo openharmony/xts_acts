@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import usb from '@ohos.usb';
+import usbManager from '@ohos.usbManager';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
@@ -24,7 +24,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
   var gPort;
   beforeAll(function () {
     console.log('*************Usb Unit UsbPortJsFunctionsTestEx Begin*************');
-    var Version = usb.getVersion()
+    var Version = usbManager.getVersion()
     console.info('begin test getversion :' + Version)
   })
   beforeEach(function () {
@@ -46,7 +46,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
    */
   it('SUB_USB_JS_0230', 0, function () {
     console.info('usb SUB_USB_JS_0230 begin');
-    var usbPortList = usb.getPorts()
+    var usbPortList = usbManager.getPorts()
     if (usbPortList.length == 0) {
       console.info('usb SUB_USB_JS_0230 usbPortList is null');
       expect(false).assertTrue();
@@ -56,8 +56,8 @@ describe('UsbPortJsFunctionsTestEx', function () {
     expect(usbPortList.length > 0).assertTrue();
     gPort = usbPortList[0]
     var portID = usbPortList[0].id + 10
-    var maskCode = usb.getSupportedModes(portID)
-    expect(maskCode).assertEqual(usb.NONE);
+    var maskCode = usbManager.getSupportedModes(portID)
+    expect(maskCode).assertEqual(usbManager.NONE);
 
     console.info('usb SUB_USB_JS_0230 :  PASS');
   })
@@ -71,7 +71,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1210', 0, function () {
     console.info('usb SUB_USB_JS_1210 begin');
     try {
-      var maskCode = usb.getSupportedModes("invalid");
+      var maskCode = usbManager.getSupportedModes("invalid");
       console.info('usb 1210 case getSupportedModes return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -90,7 +90,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1380', 0, function () {
     console.info('usb SUB_USB_JS_1380 begin');
     try {
-      var maskCode = usb.getSupportedModes();
+      var maskCode = usbManager.getSupportedModes();
       console.info('usb 1380 case getSupportedModes return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -107,9 +107,9 @@ describe('UsbPortJsFunctionsTestEx', function () {
    */
   it('SUB_USB_JS_0030', 0, function () {
     var portId = gPort.id;
-    var powerRole = usb.SINK;
-    var dataRole = usb.NONE - 1;
-    usb.setPortRoles(portId, powerRole, dataRole).then(data => {
+    var powerRole = usbManager.SINK;
+    var dataRole = usbManager.NONE - 1;
+    usbManager.setPortRoles(portId, powerRole, dataRole).then(data => {
       console.info('usb 0030 case setPortRoles return: ' + data);
       expect(data).assertFalse();
     }).catch(error => {
@@ -127,9 +127,9 @@ describe('UsbPortJsFunctionsTestEx', function () {
    */
   it('SUB_USB_JS_0040', 0, function () {
     var portId = gPort.id;
-    var powerRole = usb.NONE - 1;
-    var dataRole = usb.DEVICE;
-    usb.setPortRoles(portId, powerRole, dataRole).then(data => {
+    var powerRole = usbManager.NONE - 1;
+    var dataRole = usbManager.DEVICE;
+    usbManager.setPortRoles(portId, powerRole, dataRole).then(data => {
       console.info('usb 0040 case setPortRoles return: ' + data);
       expect(data).assertFalse();
     }).catch(error => {
@@ -147,9 +147,9 @@ describe('UsbPortJsFunctionsTestEx', function () {
    */
   it('SUB_USB_JS_0050', 0, function () {
     var portId = gPort.id - 3;
-    var powerRole = usb.SINK;
-    var dataRole = usb.NONE - 1;
-    usb.setPortRoles(portId, powerRole, dataRole).then(data => {
+    var powerRole = usbManager.SINK;
+    var dataRole = usbManager.NONE - 1;
+    usbManager.setPortRoles(portId, powerRole, dataRole).then(data => {
       console.info('usb 0050 case setPortRoles return: ' + data);
       expect(data).assertFalse();
     }).catch(error => {
@@ -167,9 +167,9 @@ describe('UsbPortJsFunctionsTestEx', function () {
    */
   it('SUB_USB_JS_0060', 0, function () {
     var portId = gPort.id;
-    var powerRole = usb.NONE - 1;
-    var dataRole = usb.NONE - 1;
-    usb.setPortRoles(portId, powerRole, dataRole).then(data => {
+    var powerRole = usbManager.NONE - 1;
+    var dataRole = usbManager.NONE - 1;
+    usbManager.setPortRoles(portId, powerRole, dataRole).then(data => {
       console.info('usb 0060 case setPortRoles return: ' + data);
       expect(data).assertFalse();
     }).catch(error => {
@@ -187,9 +187,9 @@ describe('UsbPortJsFunctionsTestEx', function () {
    */
   it('SUB_USB_JS_0070', 0, function () {
     var portId = gPort.id - 1;
-    var dataRole = usb.NONE - 1;
-    var powerRole = usb.NONE - 1;
-    usb.setPortRoles(portId, powerRole, dataRole).then(data => {
+    var dataRole = usbManager.NONE - 1;
+    var powerRole = usbManager.NONE - 1;
+    usbManager.setPortRoles(portId, powerRole, dataRole).then(data => {
       console.info('usb 0070 case setPortRoles return: ' + data);
       expect(data).assertFalse();
     }).catch(error => {
@@ -209,7 +209,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
     var portId = gPort.id - 1;
     var powerRole = 1;
     var dataRole = 1;
-    usb.setPortRoles(portId, powerRole, dataRole).then(data => {
+    usbManager.setPortRoles(portId, powerRole, dataRole).then(data => {
       console.info('usb 0080 case setPortRoles return: ' + data);
       expect(data).assertFalse();
     }).catch(error => {
@@ -228,10 +228,10 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1410', 0, function () {
     console.info('usb SUB_USB_JS_1410 begin');
     var portId = "invalid";
-    var powerRole = usb.SINK;
-    var dataRole = usb.DEVICE;
+    var powerRole = usbManager.SINK;
+    var dataRole = usbManager.DEVICE;
     try {
-      var maskCode = usb.setPortRoles(portId, powerRole, dataRole);
+      var maskCode = usbManager.setPortRoles(portId, powerRole, dataRole);
       console.info('usb 1410 case setPortRoles return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -249,7 +249,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1190', 0, function () {
     console.info('usb SUB_USB_JS_1190 begin');
     try {
-      var maskCode = usb.setPortRoles("invalid");
+      var maskCode = usbManager.setPortRoles("invalid");
       console.info('usb 1190 case setPortRoles return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -267,7 +267,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1390', 0, function () {
     console.info('usb SUB_USB_JS_1390 begin');
     try {
-      var maskCode = usb.setPortRoles();
+      var maskCode = usbManager.setPortRoles();
       console.info('usb 1390 case setPortRoles return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -286,9 +286,9 @@ describe('UsbPortJsFunctionsTestEx', function () {
     console.info('usb SUB_USB_JS_1590 begin');
     var portId = gPort.id;
     var powerRole = "invalid";
-    var dataRole = usb.DEVICE;
+    var dataRole = usbManager.DEVICE;
     try {
-      var maskCode = usb.setPortRoles(portId, powerRole, dataRole);
+      var maskCode = usbManager.setPortRoles(portId, powerRole, dataRole);
       console.info('usb 1590 case setPortRoles return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -306,10 +306,10 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1600', 0, function () {
     console.info('usb SUB_USB_JS_1600 begin');
     var portId = gPort.id;
-    var powerRole = usb.SINK;
+    var powerRole = usbManager.SINK;
     var dataRole = "invalid";
     try {
-      var maskCode = usb.setPortRoles(portId, powerRole, dataRole);
+      var maskCode = usbManager.setPortRoles(portId, powerRole, dataRole);
       console.info('usb 1600 case setPortRoles return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -327,9 +327,9 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1610', 0, function () {
     console.info('usb SUB_USB_JS_1610 begin');
     var portId = gPort.id;
-    var powerRole = usb.SINK;
+    var powerRole = usbManager.SINK;
     try {
-      var maskCode = usb.setPortRoles(portId, powerRole);
+      var maskCode = usbManager.setPortRoles(portId, powerRole);
       console.info('usb 1610 case setPortRoles return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -347,7 +347,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1200', 0, function () {
     console.info('usb SUB_USB_JS_1200 begin');
     try {
-      var maskCode = usb.getPorts("invalid");
+      var maskCode = usbManager.getPorts("invalid");
       console.info('usb 1200 case getPorts return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -365,7 +365,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1180', 0, function () {
     console.info('usb SUB_USB_JS_1180 begin');
     try {
-      var maskCode = usb.setCurrentFunctions("invalid");
+      var maskCode = usbManager.setCurrentFunctions("invalid");
       console.info('usb 1180 case setCurrentFunctions return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
@@ -383,7 +383,7 @@ describe('UsbPortJsFunctionsTestEx', function () {
   it('SUB_USB_JS_1400', 0, function () {
     console.info('usb SUB_USB_JS_1400 begin');
     try {
-      var maskCode = usb.setCurrentFunctions();
+      var maskCode = usbManager.setCurrentFunctions();
       console.info('usb 1400 case setCurrentFunctions return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {

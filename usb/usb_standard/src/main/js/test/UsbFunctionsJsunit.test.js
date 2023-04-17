@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import usb from '@ohos.usb';
+import usbManager from '@ohos.usbManager';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
@@ -23,13 +23,13 @@ describe('UsbFunctionsJsFunctionsTest', function () {
 
   beforeAll(function () {
     console.log('*************Usb Unit UsbFunctionsJsFunctionsTest Begin*************');
-    var Version = usb.getVersion()
+    var Version = usbManager.getVersion()
     console.info('begin test getversion :' + Version)
     // version > 17  host currentMode = 2 device currentMode = 1
-    var usbPortList = usb.getPorts()
+    var usbPortList = usbManager.getPorts()
     if (usbPortList.length > 0) {
       if (usbPortList[0].status.currentMode == 2) {
-        usb.setPortRoles(usbPortList[0].id, usb.SINK, usb.DEVICE).then(data => {
+        usbManager.setPortRoles(usbPortList[0].id, usbManager.SINK, usbManager.DEVICE).then(data => {
           console.info('usb case setPortRoles return: ' + data);
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
@@ -57,12 +57,12 @@ describe('UsbFunctionsJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0330', 0, function () {
     console.info('usb SUB_USB_JS_0330 begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
 
-    var strMaskCode = usb.usbFunctionsToString(maskCode)
+    var strMaskCode = usbManager.usbFunctionsToString(maskCode)
     console.info('usb case usbFunctionsToString return str: ' + strMaskCode);
-    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    var nMaskCode = usbManager.usbFunctionsFromString(strMaskCode)
     console.info('usb case strMaskCode usbFunctionsFromString return int: ' + nMaskCode);
     expect(nMaskCode).assertEqual(maskCode);
     console.info('usb SUB_USB_JS_0330 :  PASS');
@@ -75,24 +75,24 @@ describe('UsbFunctionsJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0340', 0, function () {
     console.info('usb SUB_USB_JS_0340 begin');
-    var maskCode = usb.getCurrentFunctions();
+    var maskCode = usbManager.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
 
-    var strMaskCode = usb.usbFunctionsToString(maskCode)
+    var strMaskCode = usbManager.usbFunctionsToString(maskCode)
     console.info('usb case usbFunctionsToString return str: ' + strMaskCode);
-    var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
+    var nMaskCode = usbManager.usbFunctionsFromString(strMaskCode)
     console.info('usb case strMaskCode usbFunctionsFromString return int: ' + nMaskCode);
 
     var errmaskCode = 0
-    var strMaskCode = usb.usbFunctionsToString(errmaskCode)
+    var strMaskCode = usbManager.usbFunctionsToString(errmaskCode)
 
     console.info('usb case ' + errmaskCode + ' usbFunctionsToString return str: ' + strMaskCode);
 
     var errStrMaskCode = 'none'
-    var nMaskCode = usb.usbFunctionsFromString(errStrMaskCode)
+    var nMaskCode = usbManager.usbFunctionsFromString(errStrMaskCode)
     console.info('usb case errStrMaskCode ' + errStrMaskCode +
       ' usbFunctionsFromString return int: ' + nMaskCode);
-    expect(nMaskCode).assertEqual(usb.NONE);
+    expect(nMaskCode).assertEqual(usbManager.NONE);
     console.info('usb SUB_USB_JS_0340 :  PASS');
   })
 
@@ -105,7 +105,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   it('SUB_USB_JS_1000', 0, function () {
     console.info('usb SUB_USB_JS_1000 begin');
     try {
-      var maskCode = usb.getCurrentFunctions("invalid");
+      var maskCode = usbManager.getCurrentFunctions("invalid");
       console.info('usb 1000 case getCurrentFunctions return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
