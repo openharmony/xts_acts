@@ -34,6 +34,7 @@ describe('audioEventManagement', function () {
             console.info(`${TagFrmwk}: getAudioManger : FAIL`);
         }
     }
+	function displayDeviceProp(value, index, array) {
         let devRoleName;
         let devTypeName;
         if (value.deviceRole == 1) {
