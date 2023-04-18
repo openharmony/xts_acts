@@ -1817,6 +1817,68 @@ export default function inputMethodAbility() {
       commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    it('inputMethodAbility_test_074', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>inputMethodAbility_test_074 unSubscriberCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_074 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>inputMethodAbility_test_074 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>inputMethodAbility_test_074 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>inputMethodAbility_test_074 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>inputMethodAbility_test_074 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500);
+      }
+
+      function publishCallback(err){
+        console.info("====>inputMethodAbility_test_074 publishCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_074 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          let count = 0;
+          let t = setInterval(() => {
+            count += 1;
+            runCmd(getFocusCmd);
+            if (count === 2){
+              clearInterval(t);
+            }
+          }, 500);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["inputMethodAbility_test_074"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>inputMethodAbility_test_074 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>inputMethodAbility_test_074 subscriber finish");
+      })
+
+      var commonEventPublishData = {
+        code: 74
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
     it('inputMethodAbility_test_101', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_101 unSubscriberCallback start");
