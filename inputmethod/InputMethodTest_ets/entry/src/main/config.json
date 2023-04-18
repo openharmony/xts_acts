@@ -19,8 +19,7 @@
     "mainAbility": "com.acts.inputmethodtest.MainAbility",
     "deviceType": [
       "tablet",
-      "default",
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -78,8 +77,7 @@
           "type": "pageAbility"
         },
         "pages": [
-          "pages/index",
-          "pages/input"
+          "pages/index"
         ],
         "name": ".MainAbility",
         "window": {
