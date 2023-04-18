@@ -19,7 +19,6 @@ hcpptest_suite("ActsDeviceAttestStartTest") {
 
   include_dirs = [
     "src",
-    "//test/xts/tools/hctest/include",
     "//test/xts/device_attest_lite/interfaces/kit/js/include",
     "//test/xts/device_attest_lite/interfaces/innerkits",
     "//test/xts/device_attest_lite/framework/small",
@@ -27,7 +26,6 @@ hcpptest_suite("ActsDeviceAttestStartTest") {
   deps = [ "//test/xts/device_attest_lite/framework:devattest_client" ]
 
   cflags = [ "-Wno-error" ]
-  defines = [ "OHOS_APPEXECFWK_BMS_BUNDLEMANAGER" ]
   ldflags = [
     "-lstdc++",
     "-lm",
