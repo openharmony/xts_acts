@@ -18,10 +18,12 @@ import commonEvent from '@ohos.commonEvent';
 var TAG1 = "Fa:SupportFunction:MainAbility:";
 var listPush1 = "Fa_SupportFunction_MainAbility_";
 var lifeList = [];
+var lifeListActive = [];
 export default {
   onCreate() {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
+    lifeListActive.push('onCreate');
 
     ability_featureAbility.getWant().then((data) => {
       console.log(TAG1 + "getWant data = " + JSON.stringify(data));
@@ -31,6 +33,7 @@ export default {
           ability_featureAbility.getContext().setWakeUpScreen(true).then((data) => {
             console.log(TAG1 + "setWakeUpScreen data = " + JSON.stringify(data));
             lifeList.push('wakeUpScreen');
+            lifeListActive.push('wakeUpScreen');
             let options = {
               parameters: {
                 lifeList: lifeList
@@ -51,6 +54,7 @@ export default {
           console.log(TAG1 + "setWakeUpScreen data = " + JSON.stringify(data));
           console.log(TAG1 + "setWakeUpScreen error = " + JSON.stringify(error));
           lifeList.push('wakeUpScreen');
+          lifeListActive.push('wakeUpScreen');
           let options = {
             parameters: {
               lifeList: lifeList
@@ -66,6 +70,7 @@ export default {
           ability_featureAbility.getContext().setWakeUpScreen(false).then((data) => {
             console.log(TAG1 + "setWakeUpScreen data = " + JSON.stringify(data));
             lifeList.push('wakeUpScreen');
+            lifeListActive.push('wakeUpScreen');
             let options = {
               parameters: {
                 lifeList: lifeList
@@ -90,11 +95,11 @@ export default {
   },
   onActive() {
     console.log(TAG1 + 'onActive');
-    lifeList.push('onActive');
+    lifeListActive.push('onActive');
 
     let options = {
       parameters: {
-        lifeList: lifeList
+        lifeList: lifeListActive
       }
     }
     commonEvent.publish(listPush1 + "onActive", options, (err) => {

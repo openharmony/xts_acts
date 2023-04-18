@@ -18,10 +18,12 @@ import commonEvent from '@ohos.commonEvent';
 var TAG1 = "Fa:SupportFunction:MainAbility2:";
 var listPush1 = "Fa_SupportFunction_MainAbility2_";
 var lifeList = [];
+var lifeListActive = [];
 export default {
   async onCreate() {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
+    lifeListActive.push('onCreate');
 
     ability_featureAbility.getWant().then(async (data) => {
       console.log(TAG1 + "getWant data = " + JSON.stringify(data));
@@ -43,6 +45,7 @@ export default {
       }
       await sleep(300);
       lifeList.push('wakeUpScreen');
+      lifeListActive.push('wakeUpScreen');
       let options = {
         parameters: {
           lifeList: lifeList
@@ -60,11 +63,11 @@ export default {
   },
   onActive() {
     console.log(TAG1 + 'onActive');
-    lifeList.push('onActive');
+    lifeListActive.push('onActive');
 
     let options = {
       parameters: {
-        lifeList: lifeList
+        lifeList: lifeListActive
       }
     }
     commonEvent.publish(listPush1 + "onActive", options, (err) => {
