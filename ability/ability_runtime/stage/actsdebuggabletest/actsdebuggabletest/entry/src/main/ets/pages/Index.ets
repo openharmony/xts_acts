@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-
 @Entry
 @Component
 struct Index {
