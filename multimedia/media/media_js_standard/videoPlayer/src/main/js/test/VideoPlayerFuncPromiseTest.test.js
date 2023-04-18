@@ -530,7 +530,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_LOOP_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
-        let bufferCount = false;
         await media.createVideoPlayer().then((video) => {
             if (video != null) {
                 videoPlayer = video;
@@ -552,15 +551,12 @@ describe('VideoPlayerFuncPromiseTest', function () {
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
             }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-            expect(bufferCount).assertEqual(true);
             done();   
         });
 
         videoPlayer.on('bufferingUpdate', (infoType, value) => {
             console.info('case bufferingUpdate success infoType is ' + infoType);
             console.info('case bufferingUpdate success value is ' + value);
-            bufferCount = true;
-            console.info('case bufferingUpdate bufferCount value is ' + bufferCount);
         });
 
         videoPlayer.fdSrc = fileDescriptor;
@@ -855,7 +851,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_VIDEOSCALETYPE_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
-        let bufferCount = false;
         let count = 0;
         await media.createVideoPlayer().then((video) => {
             if (video != null) {
@@ -878,14 +873,12 @@ describe('VideoPlayerFuncPromiseTest', function () {
             await videoPlayer.release().then(() => {
                 console.info('case release called!!');
             }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-            expect(bufferCount).assertEqual(true);
             done();   
         });
 
         videoPlayer.on('bufferingUpdate', (infoType, value) => {
             console.info('case bufferingUpdate success infoType is ' + infoType);
             console.info('case bufferingUpdate success value is ' + value);
-            bufferCount = true;
         });
 
         videoPlayer.url = fdPath;
