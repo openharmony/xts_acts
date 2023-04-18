@@ -16,7 +16,7 @@
 import { describe, it, expect } from '@ohos/hypium'
 import formHost from '@ohos.app.form.formHost'
 
-let ERROR_CODE = 16500101;
+let ERROR_CODE = 202;
 export default function formHostTest() {
   describe('formHostTest', function () {
 
