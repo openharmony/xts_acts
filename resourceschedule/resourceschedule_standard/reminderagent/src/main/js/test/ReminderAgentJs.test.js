@@ -2800,10 +2800,10 @@ export default function ReminderAgentTest() {
             let firstId = 0;
             let secondId = 0;
             let diffId = 0;
-            let remiderId;
+            let reminderId;
             await reminderAgent.cancelAllReminders();
             for (let i = 0; i < maxLimitNumsOfApp; i++) {
-                remiderId = await reminderAgent.publishReminder(timer);
+                reminderId = await reminderAgent.publishReminder(timer);
                 if (i === 0) {
                     firstId = reminderId
                 }
