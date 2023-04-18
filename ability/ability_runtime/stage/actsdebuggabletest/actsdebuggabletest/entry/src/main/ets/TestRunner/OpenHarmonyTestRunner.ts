@@ -64,7 +64,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
       abilityName: testAbilityName,
       onAbilityCreate: onAbilityCreateCallback,
     };
-    abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
+    abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
     let cmd = 'aa start -d 0 -a TestAbility' + ' -b ' + abilityDelegatorArguments.bundleName;
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
     let debug = abilityDelegatorArguments.parameters['-D'];
@@ -75,7 +75,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', 'cmd : %{public}s', cmd);
     abilityDelegator.executeShellCommand(cmd,
-      (err: any, d: any) => {
+      (err, d) => {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', 'executeShellCommand : err : %{public}s', JSON.stringify(err) ?? '');
         hilog.info(0x0000, 'testTag', 'executeShellCommand : data : %{public}s', d.stdResult ?? '');
