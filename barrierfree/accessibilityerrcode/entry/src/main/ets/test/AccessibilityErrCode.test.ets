@@ -568,7 +568,6 @@ export default function abilityTest() {
 
       object = new MainAbility();
       object.onConnect();
-      setTimeout("", 3000);
     }
 
     /*
