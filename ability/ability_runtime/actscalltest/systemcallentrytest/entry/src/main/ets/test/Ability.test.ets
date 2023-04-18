@@ -927,12 +927,6 @@ export default function abilityTest() {
     it('ACTS_CommonComponent_Call_5700', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_5700 begin');
 
-      function releaseCallback(data) {
-        console.log('ACTS_CommonComponent_Call_5700 releaseCallBack:' + data);
-        expect(data).assertEqual("died");
-        done();
-      }
-
       let bundleNameCallee = "com.example.systemappcalleea";
       let abilityNameCallee = "com.example.systemappcalleea.MainAbility";
       let want = {
@@ -945,12 +939,11 @@ export default function abilityTest() {
         expect().assertFail();
         done();
       }
-      let flag = false;
+      let releaseCallback = "NotFunction";
       try {
-        caller.off('release');
+        caller.off('release', releaseCallback);
       } catch (e) {
         console.log('ACTS_CommonComponent_Call_5700 Caller onRelease fail ' + e);
-        flag = true;
         done();
       }
     })
@@ -1015,6 +1008,36 @@ export default function abilityTest() {
         caller.off('Not release');
       } catch (e) {
         console.log('ACTS_CommonComponent_Call_5900 Caller onRelease fail ' + e);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: ACTS_CommonComponent_Call_6000
+     * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
+     * @tc.desc: Verify that the caller can unregister the server's death listener.
+     */
+    it('ACTS_CommonComponent_Call_6000', 0, async function (done) {
+      console.log('ACTS_CommonComponent_Call_6000 begin');
+
+      let bundleNameCallee = "com.example.systemappcalleea";
+      let abilityNameCallee = "com.example.systemappcalleea.MainAbility";
+      let want = {
+        bundleName: bundleNameCallee,
+        abilityName: abilityNameCallee,
+      }
+      let caller = await globalThis.globalThis.abilityContext.startAbilityByCall(want);
+      if (typeof caller !== "object" || caller == null) {
+        console.log('ACTS_CommonComponent_Call_6000 startAbilityByCall fail');
+        expect().assertFail();
+        done();
+      }
+      try {
+        caller.off('release');
+        done();
+      } catch (e) {
+        console.log('ACTS_CommonComponent_Call_6000 Caller onRelease fail ' + e);
+        expect().assertFail();
         done();
       }
     })
