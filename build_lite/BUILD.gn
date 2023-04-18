@@ -47,6 +47,7 @@ lite_component("acts_component") {
         "//test/xts/acts/distributed_schedule_lite/system_ability_manager_hal:ActsSamgrTest",
         "//test/xts/acts/update_lite/dupdate_hal:ActsUpdaterFuncTest",
         "//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
+        "//test/xts/acts/xts_lite/device_attest_lite/device_attestStart_hal:ActsDeviceAttestTest",
       ]
     } else if (ohos_kernel_type == "uniproton") {
       all_features += [
