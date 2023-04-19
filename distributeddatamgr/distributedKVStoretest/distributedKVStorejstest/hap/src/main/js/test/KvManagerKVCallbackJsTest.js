@@ -79,6 +79,7 @@ describe('kvManagerCallbackTest', function () {
         console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0100');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, function (err, store) {
+                expect((err == undefined) && (store != null)).assertTrue();
                 console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0100 getKVStore success');
                 kvStore = store;
                 done();
@@ -104,6 +105,7 @@ describe('kvManagerCallbackTest', function () {
                     console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0200 getKVStore success');
                     expect(null).assertFail();
                 } else {
+                    expect((err != undefined)).assertTrue();
                     console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0200 getKVStore fail');
                 }
                 done();
