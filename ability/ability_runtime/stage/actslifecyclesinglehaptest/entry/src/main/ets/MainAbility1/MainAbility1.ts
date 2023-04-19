@@ -53,9 +53,6 @@ export default class MainAbility1 extends Ability {
                 console.log("[Demo] AbilityLifecycleCallback1 onWindowStageDestroy ability:"
                 + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback1 onWindowStageDestroy abilityname:"
-                + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onWindowStageDestroy");
                 listKey1.push(abilityname + " onWindowStageDestroy");
                 console.log("[Demo] 3listKey1:" + JSON.stringify(listKey1));
             },

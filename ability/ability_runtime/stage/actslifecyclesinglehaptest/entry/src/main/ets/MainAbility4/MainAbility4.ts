@@ -104,10 +104,10 @@ export default class MainAbility4 extends Ability {
         globalThis.applicationContext4 = this.context.getApplicationContext();
         let lifecycleid = globalThis.applicationContext4.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback4 number: " + JSON.stringify(lifecycleid));
+        globalThis.callbackid4 = lifecycleid;
         setTimeout(function () {
             console.log("[Demo] registerAbilityLifecycleCallback4 listKey : " + JSON.stringify(listKey4));
             globalThis.list4 = listKey4;
-            globalThis.callbackid4 = lifecycleid;
         }, 1500);
     }
 
