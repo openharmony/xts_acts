@@ -23,8 +23,8 @@ ohos_js_hap_suite("avplayer_js_hap") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAVPlayerTest"
-  subsystem_name = "ability"
-  part_name = "ability_runtime"
+  subsystem_name = "multimedia"
+  part_name = "multimedia_player_framework"
 }
 
 ohos_app_scope("ActsAVPlayerTest_app_profile") {
