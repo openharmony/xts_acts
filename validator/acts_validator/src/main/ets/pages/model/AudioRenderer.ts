@@ -57,7 +57,7 @@ class AudioRenderer {
             Logger.info(this.tag, `audioRenderer bufferSize:` + JSON.stringify(bufferSize))
 //            let stat = await fs.stat(this.fd);
 //            let len = stat.size % bufferSize == 0 ? Math.floor(stat.size / bufferSize) : Math.floor(stat.size / bufferSize + 1);
-            len = this.length % bufferSize == 0 ? Math.floor(this.length / bufferSize) : Math.floor(this.length / bufferSize + 1);
+            let len = this.length % bufferSize == 0 ? Math.floor(this.length / bufferSize) : Math.floor(this.length / bufferSize + 1);
             let buf = new ArrayBuffer(bufferSize);
             while (true) {
                 for (let i = 0;i < len; i++) {
