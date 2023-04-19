@@ -82,8 +82,13 @@ describe('kvManagerCallbackTest', function () {
         console.info('testKVManagerGetKVStore101');
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, function (err, store) {
+                expect((err == undefined) && (store != null)).assertTrue();
                 console.info('testKVManagerGetKVStore101 getKVStore success');
                 kvStore = store;
+                kvStore.getSecurityLevel().then((data) => {
+                    console.info('testKVManagerGetKVStore101 securityLevel = ' + data);
+                    expect((data == factory.SecurityLevel.S2)).assertTrue();
+                });
                 done();
             });
         } catch (e) {
@@ -106,6 +111,7 @@ describe('kvManagerCallbackTest', function () {
                     console.info('testKVManagerGetKVStore102 getKVStore success');
                     expect(null).assertFail();
                 } else {
+                    expect((err != undefined)).assertTrue();
                     console.info('testKVManagerGetKVStore102 getKVStore fail');
                 }
                 done();
