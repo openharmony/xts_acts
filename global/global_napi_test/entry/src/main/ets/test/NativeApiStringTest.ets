@@ -21,30 +21,62 @@ import ndk from 'libresmgrndk.so'
 
 export default function abilityTest() {
     describe('ActsAbilityTest', function () {
-        it('assertContain',0, function () {
-            console.info("it begin")
-            let a = 'abc'
-            let b = 'b'
-            expect(a).assertContain(b)
-            expect(a).assertEqual(a)
-        })
-
         /* *
         * @tc.number  SUB_GLOBAL_RESMGR_NDK_0100
         * @tc.name    test ResourceManager NDK interface
         * @tc.desc    test ResourceManager NDK interface
         */
         it('getResourceManager_ndktest_0100', 0, async function (done) {
+            console.log("getResourceManager_ndktest_0100 1");
             resManager.getResourceManager().then(mgr => {
+                console.log("getResourceManager_ndktest_0100 2");
                 expect(mgr !== null).assertTrue();
-                ndk.testRawFile("test",mgr,(error,value) => {
-                    if(error != null){
-                        console.log("getResourceManager_ndktest_0100" + error);
-                    } else{
-                        console.log("getResourceManager_ndktest_0100" + value.length);
-                        expect(value.length > 0).assertTrue();
-                    }
-                });
+                console.log("getResourceManager_ndktest_0100 22");
+                let value = ndk.GetFileList(mgr,"test");
+                console.log("getResourceManager_ndktest_0100 3");
+                console.log("getResourceManager_ndktest_0100" + value);
+                console.log("getResourceManager_ndktest_0100" + value.length);
+                expect(value.length > 0).assertTrue();
+            })
+            done();
+        })
+
+        /* *
+        * @tc.number  SUB_GLOBAL_RESMGR_NDK_0200
+        * @tc.name    test ResourceManager NDK interface
+        * @tc.desc    test ResourceManager NDK interface
+        */
+        it('getResourceManager_ndktest_0200', 0, async function (done) {
+            console.log("getResourceManager_ndktest_0200 1");
+            resManager.getResourceManager().then(mgr => {
+                console.log("getResourceManager_ndktest_0200 2");
+                expect(mgr !== null).assertTrue();
+                console.log("getResourceManager_ndktest_0200 22");
+                let value = ndk.GetRawFileContent(mgr,"test/aa.xml");
+                console.log("getResourceManager_ndktest_0200 3");
+                console.log("getResourceManager_ndktest_0200" + value);
+                expect(value !== null).assertTrue();
+            })
+            done();
+        })
+
+        /* *
+        * @tc.number  SUB_GLOBAL_RESMGR_NDK_0300
+        * @tc.name    test ResourceManager NDK interface
+        * @tc.desc    test ResourceManager NDK interface
+        */
+        it('getResourceManager_ndktest_0300', 0, async function (done) {
+            console.log("getResourceManager_ndktest_0300 1");
+            resManager.getResourceManager().then(mgr => {
+                console.log("getResourceManager_ndktest_0300 2");
+                expect(mgr !== null).assertTrue();
+                console.log("getResourceManager_ndktest_0300 22");
+                let value = ndk.GetRawFileDescriptor(mgr,"test/aa.xml");
+                console.log("getResourceManager_ndktest_0300 3");
+                console.log("getResourceManager_ndktest_0300" + value.fd);
+                console.log("getResourceManager_ndktest_0300" + value.offset);
+                console.log("getResourceManager_ndktest_0300" + value.length);
+                expect(value !== null).assertTrue();
             })
             done();
         })
