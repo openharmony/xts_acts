@@ -255,15 +255,23 @@ export default function audioCapturerInterrupt() {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_001', 0, async function (done) {
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_001
+         *@tc.name      : AudioCapturer MIC INTERRUPT MIC
+         *@tc.desc      : AudioCapturer MIC INTERRUPT MIC 
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_001', 0, async function (done) {
             try {
                 let flag1 = false;
                 let flag2 = false;
-                console.info('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_001 come in  ')
+                console.info('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_001 come in  ')
                 console.info('capturerInfo[MIC] is ' + capturerInfo['MIC'] + 'streamInfo[16000]' + streamInfo['16000'])
                 let capture1 = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
 
-                console.info('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_001 capture1 is ' + capture1)
+                console.info('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_001 capture1 is ' + capture1)
                 await capturerStart(capture1, done)
                 capture1.on("audioInterrupt", async (eventAction) => {
                     flag1 = true;
@@ -271,7 +279,7 @@ export default function audioCapturerInterrupt() {
                 })
 
                 let capture2 = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
-                console.info('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_001 capture2 is ' + capture2)
+                console.info('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_001 capture2 is ' + capture2)
 
                 await capturerStartFail(capture2, done, capture1)
                 capture2.on("audioInterrupt", async (eventAction) => {
@@ -285,11 +293,19 @@ export default function audioCapturerInterrupt() {
                 done()
             }
             catch (err) {
-                console.info('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_001 err is ' + err.message)
+                console.info('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_001 err is ' + err.message)
             }
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_002', 0, async function (done) {
+        /**
+            *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_002
+            *@tc.name      : AudioCapturer VOICE_RECOGNITION INTERRUPT MIC
+            *@tc.desc      : AudioCapturer VOICE_RECOGNITION INTERRUPT MIC 
+            *@tc.size      : MEDIUM
+            *@tc.type      : Function
+            *@tc.level     : Level 0
+           */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_002', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture1 = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -312,7 +328,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_003', 0, async function (done) {
+        /**
+          *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_003
+          *@tc.name      : AudioCapturer VOICE_COMMUNICATION INTERRUPT MIC
+          *@tc.desc      : AudioCapturer VOICE_COMMUNICATION INTERRUPT MIC 
+          *@tc.size      : MEDIUM
+          *@tc.type      : Function
+          *@tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_003', 0, async function (done) {
 
             let capture1 = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
             await capturerStart(capture1, done)
@@ -329,7 +353,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_004', 0, async function (done) {
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_004
+        *@tc.name      : AudioCapturer MUSIC INTERRUPT MIC
+        *@tc.desc      : AudioCapturer MUSIC INTERRUPT MIC 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_004', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -354,7 +386,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_005', 0, async function (done) {
+        /**
+             *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_005
+             *@tc.name      : AudioCapturer VOICE_CALL INTERRUPT MIC
+             *@tc.desc      : AudioCapturer VOICE_CALL INTERRUPT MIC 
+             *@tc.size      : MEDIUM
+             *@tc.type      : Function
+             *@tc.level     : Level 0
+            */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_005', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -379,7 +419,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_006', 0, async function (done) {
+        /**
+             *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_006
+             *@tc.name      : AudioCapturer RING INTERRUPT MIC
+             *@tc.desc      : AudioCapturer RING INTERRUPT MIC 
+             *@tc.size      : MEDIUM
+             *@tc.type      : Function
+             *@tc.level     : Level 0
+            */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_006', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -404,7 +452,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_007', 0, async function (done) {
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_007
+        *@tc.name      : AudioCapturer VOICE_ASSISTANT INTERRUPT MIC
+        *@tc.desc      : AudioCapturer VOICE_ASSISTANT INTERRUPT MIC 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_007', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -429,10 +485,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-
-
-
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_009', 0, async function (done) {
+        /**
+             *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_009
+             *@tc.name      : AudioCapturer ALARM INTERRUPT MIC
+             *@tc.desc      : AudioCapturer ALARM INTERRUPT MIC 
+             *@tc.size      : MEDIUM
+             *@tc.type      : Function
+             *@tc.level     : Level 0
+            */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_009', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -457,8 +518,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_010', 0, async function (done) {
+        /**
+             *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_010
+             *@tc.name      : AudioCapturer ACCESSIBILITY INTERRUPT MIC
+             *@tc.desc      : AudioCapturer ACCESSIBILITY INTERRUPT MIC 
+             *@tc.size      : MEDIUM
+             *@tc.type      : Function
+             *@tc.level     : Level 0
+            */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_010', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -483,7 +551,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_0011', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0011
+     *@tc.name      : AudioCapturer SPEECH INTERRUPT MIC
+     *@tc.desc      : AudioCapturer SPEECH INTERRUPT MIC 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0011', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -508,7 +584,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_0012', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0012
+     *@tc.name      : AudioCapturer MOVIE INTERRUPT MIC
+     *@tc.desc      : AudioCapturer MOVIE INTERRUPT MIC 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0012', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -533,7 +617,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_0013', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0013
+     *@tc.name      : AudioCapturer UNKNOW INTERRUPT MIC
+     *@tc.desc      : AudioCapturer UNKNOW INTERRUPT MIC 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0013', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -558,7 +650,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_0014', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0014
+     *@tc.name      : AudioCapturer MIC INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer MIC INTERRUPT VOICE_RECOGNITION 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0014', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture1 = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -581,7 +681,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_015', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_015
+     *@tc.name      : AudioCapturer VOICE_RECOGNITION INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer VOICE_RECOGNITION INTERRUPT VOICE_RECOGNITION 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_015', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture1 = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -604,7 +712,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_016', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_016
+     *@tc.name      : AudioCapturer VOICE_COMMUNICATION INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer VOICE_COMMUNICATION INTERRUPT VOICE_RECOGNITION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_016', 0, async function (done) {
             let capture1 = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
             await capturerStart(capture1, done)
             capture1.on("audioInterrupt", async (eventAction) => {
@@ -620,7 +736,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_017', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_017
+     *@tc.name      : AudioCapturer MUSIC INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer MUSIC INTERRUPT VOICE_RECOGNITION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_017', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -645,7 +769,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_018', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_018
+     *@tc.name      : AudioCapturer VOICE_CALL INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer VOICE_CALL INTERRUPT VOICE_RECOGNITION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_018', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -670,7 +802,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_019', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_019
+     *@tc.name      : AudioCapturer RING INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer RING INTERRUPT VOICE_RECOGNITION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_019', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -695,7 +835,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_020', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_020
+     *@tc.name      : AudioCapturer VOICE_ASSISTANT INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer VOICE_ASSISTANT INTERRUPT VOICE_RECOGNITION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_020', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -720,9 +868,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-
-
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_022', 0, async function (done) {
+        /**
+             *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_022
+             *@tc.name      : AudioCapturer ALARM INTERRUPT VOICE_RECOGNITION
+             *@tc.desc      : AudioCapturer ALARM INTERRUPT VOICE_RECOGNITION
+             *@tc.size      : MEDIUM
+             *@tc.type      : Function
+             *@tc.level     : Level 0
+            */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_022', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -747,7 +901,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_023', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_023
+     *@tc.name      : AudioCapturer MIC INTERRUPT MIC
+     *@tc.desc      : AudioCapturer MIC INTERRUPT MIC 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_023', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -772,7 +934,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_024', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_024
+     *@tc.name      : AudioCapturer SPEECH INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer SPEECH INTERRUPT VOICE_RECOGNITION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_024', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -797,7 +967,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_025', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_025
+     *@tc.name      : AudioCapturer MOVIE INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer MOVIE INTERRUPT VOICE_RECOGNITION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_025', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -822,7 +1000,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_026', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_026
+     *@tc.name      : AudioCapturer UNKNOW INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer UNKNOW INTERRUPT VOICE_RECOGNITION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_026', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -847,8 +1033,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_027', 0, async function (done) {
+        /**
+             *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_027
+             *@tc.name      : AudioCapturer MIC INTERRUPT VOICE_COMMUNICATION
+             *@tc.desc      : AudioCapturer MIC INTERRUPT VOICE_COMMUNICATION 
+             *@tc.size      : MEDIUM
+             *@tc.type      : Function
+             *@tc.level     : Level 0
+            */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_027', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture1 = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -871,7 +1064,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_028', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_028
+     *@tc.name      : AudioCapturer VOICE_RECOGNITION INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer VOICE_RECOGNITION INTERRUPT VOICE_RECOGNITION 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_028', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture1 = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -894,8 +1095,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_029', 0, async function (done) {
+        /**
+             *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_029
+             *@tc.name      : AudioCapturer VOICE_COMMUNICATION INTERRUPT VOICE_COMMUNICATION
+             *@tc.desc      : AudioCapturer VOICE_COMMUNICATION INTERRUPT VOICE_COMMUNICATION 
+             *@tc.size      : MEDIUM
+             *@tc.type      : Function
+             *@tc.level     : Level 0
+            */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_029', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture1 = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -918,7 +1126,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_030', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_030
+     *@tc.name      : AudioCapturer MUSIC INTERRUPT VOICE_COMMUNICATION
+     *@tc.desc      : AudioCapturer MUSIC INTERRUPT VOICE_COMMUNICATION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_030', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -943,7 +1159,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_031', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_031
+     *@tc.name      : AudioCapturer VOICE_CALL INTERRUPT VOICE_COMMUNICATION
+     *@tc.desc      : AudioCapturer VOICE_CALL INTERRUPT VOICE_COMMUNICATION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_031', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -968,7 +1192,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_032', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_032
+     *@tc.name      : AudioCapturer RING INTERRUPT VOICE_COMMUNICATION
+     *@tc.desc      : AudioCapturer RING INTERRUPT VOICE_COMMUNICATION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_032', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -993,7 +1225,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_033', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_033
+     *@tc.name      : AudioCapturer VOICE_ASSISTANT INTERRUPT VOICE_COMMUNICATION
+     *@tc.desc      : AudioCapturer VOICE_ASSISTANT INTERRUPT VOICE_COMMUNICATION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_033', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -1018,9 +1258,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-
-
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_035', 0, async function (done) {
+        /**
+             *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_035
+             *@tc.name      : AudioCapturer ALARM INTERRUPT VOICE_COMMUNICATION
+             *@tc.desc      : AudioCapturer ALARM INTERRUPT VOICE_COMMUNICATION 
+             *@tc.size      : MEDIUM
+             *@tc.type      : Function
+             *@tc.level     : Level 0
+            */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_035', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -1045,7 +1291,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_036', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_036
+     *@tc.name      : AudioCapturer ACCESSIBILITY INTERRUPT VOICE_COMMUNICATION
+     *@tc.desc      : AudioCapturer ACCESSIBILITY INTERRUPT VOICE_COMMUNICATION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_036', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -1070,7 +1324,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_0037', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0037
+     *@tc.name      : AudioCapturer SPEECH INTERRUPT VOICE_COMMUNICATION
+     *@tc.desc      : AudioCapturer SPEECH INTERRUPT VOICE_COMMUNICATION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0037', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -1095,7 +1357,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_038', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_038
+     *@tc.name      : AudioCapturer MOVIE INTERRUPT VOICE_COMMUNICATION
+     *@tc.desc      : AudioCapturer MOVIE INTERRUPT VOICE_COMMUNICATION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_038', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -1120,7 +1390,15 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_039', 0, async function (done) {
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_039
+     *@tc.name      : AudioCapturer UNKNOW INTERRUPT VOICE_COMMUNICATION
+     *@tc.desc      : AudioCapturer UNKNOW INTERRUPT VOICE_COMMUNICATION
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+    */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_039', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
@@ -1145,7 +1423,7 @@ export default function audioCapturerInterrupt() {
             done()
         })
 
-        // it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_008', 0, async function (done) {
+        // it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_008', 0, async function (done) {
         //     let flag1 = false;
         //     let flag2 = false;
         //     let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -1172,7 +1450,7 @@ export default function audioCapturerInterrupt() {
         //     done()
         // })
 
-        // it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_021', 0, async function (done) {
+        // it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_021', 0, async function (done) {
         //     let flag1 = false;
         //     let flag2 = false;
         //     let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
@@ -1197,7 +1475,7 @@ export default function audioCapturerInterrupt() {
         //     done()
         // })
 
-        // it('SUB_AUDIO_CAPTURER_INTERRUPT_TEST_034', 0, async function (done) {
+        // it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_034', 0, async function (done) {
         //     let flag1 = false;
         //     let flag2 = false;
         //     let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
