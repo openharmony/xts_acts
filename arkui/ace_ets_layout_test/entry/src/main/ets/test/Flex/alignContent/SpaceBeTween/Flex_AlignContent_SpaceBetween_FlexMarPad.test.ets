@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
   describe('Flex_AlignContent_SpaceBetween_FlexMarPadTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceBetween_FlexMarPad beforeEach start");
+      console.info("flex_AlignContent_SpaceBetween_FlexMarPadTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexMarPad',
       }
@@ -37,6 +36,7 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceBetween_FlexMarPad page error:" + err);
       }
+      console.info("flex_AlignContent_SpaceBetween_FlexMarPadTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -45,12 +45,12 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0200
-     * @tc.name      alignContent_SpaceAround_FlexMarPad
+     * @tc.name      testFlexAlignContentSpaceAroundFlexMarPadMeet
      * @tc.desc      The size of the parent component in the cross direction is not enough for the layout
      *               of the child components when the padding and margin of parent component was changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0200', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0200] START');
+    it('testFlexAlignContentSpaceAroundFlexMarPadMeet', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundFlexMarPadMeet] START');
       globalThis.value.message.notify({name:'padding', value:50});
       globalThis.value.message.notify({name:'margin', value:20});
 
@@ -70,30 +70,30 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200)); //四个子组件的高度分别为50、100、150、200
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200));
 
       expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(vp2px(20)); //margin =20
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(50));
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(50)); //padding =50
+      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(50));
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
 
       expect(firstText.bottom).assertEqual(secondText.top);
       expect(secondText.bottom).assertEqual(thirdText.top);
-      expect(thirdText.bottom).assertEqual(fourthText.top); //无行间距
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(10)); //行首贴边行尾溢出
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0200] END');
+      expect(thirdText.bottom).assertEqual(fourthText.top);
+      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(10));
+      console.info('[testFlexAlignContentSpaceAroundFlexMarPadMeet] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0300
-     * @tc.name      alignContent_SpaceAround_FlexMarPad
+     * @tc.name      testFlexAlignContentSpaceAroundFlexMarPadOverflow
      * @tc.desc      The size of the parent component in the cross direction meets the layout
      *               of the child components when the padding and margin of parent component was changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0300', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0300] START');
+    it('testFlexAlignContentSpaceAroundFlexMarPadOverflow', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundFlexMarPadOverflow] START');
       globalThis.value.message.notify({name:'margin', value:30})
       globalThis.value.message.notify({name:'padding', value:10})
       await CommonFunc.sleep(3000);
@@ -112,7 +112,7 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200)); //四个子组件的高度分别为50、100、150、200
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200));
 
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(10));
       expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10)); //padding =10
@@ -123,8 +123,8 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
       expect(Math.round(flexContainer.bottom - fourthText.bottom)).assertEqual(vp2px(10));
 
       expect(Math.round(secondText.top - firstText.bottom)).assertEqual(Math.round(thirdText.top - secondText.bottom));
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //行间距相等
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0300] END');
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
+      console.info('[testFlexAlignContentSpaceAroundFlexMarPadOverflow] END');
       done();
     });
   })

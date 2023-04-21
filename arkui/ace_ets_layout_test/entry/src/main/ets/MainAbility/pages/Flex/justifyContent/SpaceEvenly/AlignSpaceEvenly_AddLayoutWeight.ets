@@ -13,21 +13,21 @@
  * limitations under the License.
  */
 
-import {MessageManager,Callback} from './../../../../common/MessageManager';
+import { MessageManager, Callback } from './../../../../common/MessageManager';
 @Entry
 @Component
 struct AlignSpaceEvenly_AddLayoutWeight {
   @State OneLayoutWeight1: number = 1;
   @State OneLayoutWeight2: number = 1;
   @State OneLayoutWeight3: number = 1;
-  messageManager:MessageManager = new MessageManager()
+  messageManager:MessageManager = new MessageManager();
   onPageShow() {
-    console.info('AlignSpaceEvenly_NoSpace onPageShow');
+    console.info('AlignSpaceEvenly_AddLayoutWeight onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'OneLayoutWeight1') {
         this.OneLayoutWeight1 = message.value;
       }
@@ -40,7 +40,7 @@ struct AlignSpaceEvenly_AddLayoutWeight {
     }
     this.messageManager.registerCallback(callback);
   }
-  @State justifyContent: FlexAlign = FlexAlign.SpaceEvenly
+  @State justifyContent: FlexAlign = FlexAlign.SpaceEvenly;
   build() {
       Column() {
         Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
@@ -49,19 +49,19 @@ struct AlignSpaceEvenly_AddLayoutWeight {
             .height(50)
             .backgroundColor(0xF5DEB3)
             .key("SpaceEvenly_AddLayoutWeight_011")
-            .layoutWeight(this.OneLayoutWeight1)
+            .layoutWeight(this.OneLayoutWeight1);
           Text('2')
             .width(150)
             .height(100)
             .backgroundColor(0xD2B48C)
             .key("SpaceEvenly_AddLayoutWeight_012")
-            .layoutWeight(this.OneLayoutWeight2)
+            .layoutWeight(this.OneLayoutWeight2);
           Text('3')
             .width(150)
             .height(150)
             .backgroundColor(0xF5DEB3)
             .key("SpaceEvenly_AddLayoutWeight_013")
-            .layoutWeight(this.OneLayoutWeight3)
+            .layoutWeight(this.OneLayoutWeight3);
         }
         .key("SpaceEvenly_AddLayoutWeight_01")
         .width(500)

@@ -12,21 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../../common/MessageManager';
 @Entry
 @Component
-struct FlexAlignContent_SpaceAround_01{
-  @State testWidth: number = 400
-  @State testHeight: number = 100
-  messageManager:MessageManager = new MessageManager()
+struct FlexAlign_SpaceAround_FlexSize{
+  @State testWidth: number = 400;
+  @State testHeight: number = 100;
+  messageManager:MessageManager = new MessageManager();
 
   onPageShow() {
-    console.info('FlexAlignContent_SpaceAround_01 onPageShow');
+    console.info('FlexAlign_SpaceAround_FlexSize onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'width') {
         this.testWidth = message.value;
       }
@@ -37,12 +37,12 @@ struct FlexAlignContent_SpaceAround_01{
     this.messageManager.registerCallback(callback);
   }
   build(){
-    Column({space:30}){
-      Flex({wrap:FlexWrap.Wrap, alignContent:FlexAlign.SpaceAround}){
-        Text('1').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceAround_FlexSize01')
-        Text('2').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceAround_FlexSize02')
-        Text('3').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceAround_FlexSize03')
-        Text('4').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceAround_FlexSize04')
+    Column({ space:30 }){
+      Flex({ wrap:FlexWrap.Wrap, alignContent:FlexAlign.SpaceAround }){
+        Text('1').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceAround_FlexSize01');
+        Text('2').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceAround_FlexSize02');
+        Text('3').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceAround_FlexSize03');
+        Text('4').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceAround_FlexSize04');
       }
       .width(this.testWidth)
       .height(this.testHeight)

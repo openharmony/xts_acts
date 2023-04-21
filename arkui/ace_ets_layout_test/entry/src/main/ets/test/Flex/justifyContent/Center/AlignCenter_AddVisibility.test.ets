@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignCenter_AddVisibility() {
   describe('AlignCenter_AddVisibility', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignCenter_AddVisibility() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000
-     * @tc.name      Align_Center_Row_AddVisibility
+     * @tc.name      testFlexAlignCenterVisibilityNone
      * @tc.desc      The subcomponent sets the visibility. None, the child components are hidden in the interface display
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000] START');
+    it('testFlexAlignCenterVisibilityNone', 0, async function (done) {
+      console.info('[testFlexAlignCenterVisibilityNone] START');
       try {
         globalThis.value.message.notify({name:'OneVisibility',value:Visibility.None});
         await CommonFunc.sleep(3000);
@@ -76,20 +75,20 @@ export default function AlignCenter_AddVisibility() {
         expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
         expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
       } catch (err) {
-        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000] failed');
+        console.error('[testFlexAlignCenterVisibilityNone] failed');
         expect().assertFail();
       }
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1000] END');
+      console.info('[testFlexAlignCenterVisibilityNone] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100
-     * @tc.name      Align_Center_Row_AddVisibility
+     * @tc.name      testFlexAlignCenterVisibilityHidden
      * @tc.desc      When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
      * position
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100] START');
+    it('testFlexAlignCenterVisibilityHidden', 0, async function (done) {
+      console.info('[testFlexAlignCenterVisibilityHidden] START');
       try{
         globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Hidden});
         await CommonFunc.sleep(3000);
@@ -121,20 +120,20 @@ export default function AlignCenter_AddVisibility() {
         expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
         expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
       } catch (err) {
-        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100] failed');
+        console.error('[testFlexAlignCenterVisibilityHidden] failed');
         expect().assertFail();
       }
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1100] END');
+      console.info('[testFlexAlignCenterVisibilityHidden] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700
-     * @tc.name      Align_Center_Row_AddVisibility
+     * @tc.name      testFlexAlignCenterVisibilityVisible
      * @tc.desc      The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
      * interface display
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700] START');
+    it('testFlexAlignCenterVisibilityVisible', 0, async function (done) {
+      console.info('[testFlexAlignCenterVisibilityVisible] START');
       try{
         globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Visible});
         await CommonFunc.sleep(3000);
@@ -166,10 +165,10 @@ export default function AlignCenter_AddVisibility() {
         expect(Math.round(Center_AddVisibility_012.bottom - Center_AddVisibility_012.top)).assertEqual(vp2px(100));
         expect(Math.round(Center_AddVisibility_013.bottom - Center_AddVisibility_013.top)).assertEqual(vp2px(150));
       } catch (err) {
-        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700] failed');
+        console.error('[testFlexAlignCenterVisibilityVisible] failed');
         expect().assertFail();
       }
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_1700] END');
+      console.info('[testFlexAlignCenterVisibilityVisible] END');
       done();
     });
   })

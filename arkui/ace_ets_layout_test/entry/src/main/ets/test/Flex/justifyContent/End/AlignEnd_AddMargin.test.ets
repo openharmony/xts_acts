@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignEnd_AddMargin() {
   describe('AlignEnd_AddMargin', function () {
     beforeEach(async function (done) {
@@ -47,12 +46,12 @@ export default function AlignEnd_AddMargin() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0500
-     * @tc.name      Align_End_Row_AddMargin
+     * @tc.name      testFlexAlignEndFlexMargin
      * @tc.desc      The interface display where the child component is offset by the margin setting of the parent
      * component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0500', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0500] START');
+    it('testFlexAlignEndFlexMargin', 0, async function (done) {
+      console.info('[testFlexAlignEndFlexMargin] START');
       globalThis.value.message.notify({name:'DadMargin', value:20})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddMargin_01');
@@ -79,7 +78,7 @@ export default function AlignEnd_AddMargin() {
       expect(Math.round(End_AddMargin_011.right - End_AddMargin_011.left)).assertEqual(vp2px(150));
       expect(Math.round(End_AddMargin_012.right - End_AddMargin_012.left)).assertEqual(vp2px(150));
       expect(Math.round(End_AddMargin_013.right - End_AddMargin_013.left)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0500] END');
+      console.info('[testFlexAlignEndFlexMargin] END');
       done();
     });
   })

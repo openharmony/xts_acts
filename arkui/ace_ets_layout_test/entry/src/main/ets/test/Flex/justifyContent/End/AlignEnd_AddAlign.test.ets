@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignEnd_AddAlign() {
   describe('AlignEnd_AddAlign', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignEnd_AddAlign() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0800
-     * @tc.name      Align_End_Row_AddAlign
+     * @tc.name      testFlexAlignEndAlignBottomEnd
      * @tc.desc      Setting generic properties does not take effect, and owned properties take precedence
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0800', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0800] START');
+    it('testFlexAlignEndAlignBottomEnd', 0, async function (done) {
+      console.info('[testFlexAlignEndAlignBottomEnd] START');
       globalThis.value.message.notify({name:'DadAlign', value:Alignment.BottomEnd})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddAlign_01');
@@ -76,7 +75,7 @@ export default function AlignEnd_AddAlign() {
       expect(Math.round(End_AddAlign_011.bottom - End_AddAlign_011.top)).assertEqual(vp2px(50));
       expect(Math.round(End_AddAlign_012.bottom - End_AddAlign_012.top)).assertEqual(vp2px(100));
       expect(Math.round(End_AddAlign_013.bottom - End_AddAlign_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0800] END');
+      console.info('[testFlexAlignEndAlignBottomEnd] END');
       done()
     });
   })

@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignEnd_AddOffset() {
   describe('AlignEnd_AddOffset', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignEnd_AddOffset() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0900
-     * @tc.name      Align_End_Row_AddOffset
+     * @tc.name      testFlexAlignEndTextOffset
      * @tc.desc      The interface display of the component that sets the offset position when drawing
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0900', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0900] START');
+    it('testFlexAlignEndTextOffset', 0, async function (done) {
+      console.info('[testFlexAlignEndTextOffset] START');
       globalThis.value.message.notify({name:'OneOffset', value:{ x: 10, y: 15 }})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddAlign_01');
@@ -76,7 +75,7 @@ export default function AlignEnd_AddOffset() {
       expect(Math.round(End_AddOffset_011.bottom - End_AddOffset_011.top)).assertEqual(vp2px(50));
       expect(Math.round(End_AddOffset_012.bottom - End_AddOffset_012.top)).assertEqual(vp2px(100));
       expect(Math.round(End_AddOffset_013.bottom - End_AddOffset_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0900] END');
+      console.info('[testFlexAlignEndTextOffset] END');
       done();
     });
   })

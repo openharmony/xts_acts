@@ -48,7 +48,7 @@ struct Tabs_Index {
 
   build() {
     Column() {
-      Tabs({index: this.currentIndex, controller: this.controller}) {
+      Tabs({ index: this.currentIndex, controller: this.controller }) {
         TabContent() {
           Column().width('100%').height('100%').backgroundColor('#00CB87').key("Tabs_Index_001");
         }.tabBar(this.TabBuilder(0, 'Green')).key("Tabs_Index_011")

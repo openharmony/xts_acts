@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceBetween_TextMarTest() {
   describe('Flex_AlignContent_SpaceBetween_TextMarTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceBetween_TextMar beforeEach start");
+      console.info("Flex_AlignContent_SpaceBetween_TextMarTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_TextMar',
       }
@@ -37,6 +36,7 @@ export default function flex_AlignContent_SpaceBetween_TextMarTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceBetween_TextMar page error:" + err);
       }
+      console.info("Flex_AlignContent_SpaceBetween_TextMarTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -45,12 +45,12 @@ export default function flex_AlignContent_SpaceBetween_TextMarTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0800
-     * @tc.name      alignContent_SpaceAround_TextMargin
+     * @tc.name      testFlexAlignContentSpaceAroundTextMarginOverflow
      * @tc.desc      The size of the parent component in the cross direction is not enough for the layout
      *               of the child components when the padding and margin of parent component was changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0800', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0800] START');
+    it('testFlexAlignContentSpaceAroundTextMarginOverflow', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundTextMarginOverflow] START');
       globalThis.value.message.notify({name:'margin', value:65})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextMar01');
@@ -67,7 +67,7 @@ export default function flex_AlignContent_SpaceBetween_TextMarTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //四个子组件的高度分别为50、100、50、100
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
       expect(Math.round((firstText.top - flexContainer.top)*10)/10).assertEqual(Math.round(vp2px(65)*10)/10); //margin =65
       expect(Math.round((firstText.left - flexContainer.left)*10)/10).assertEqual(Math.round(vp2px(65)*10)/10); //margin =65
@@ -77,19 +77,19 @@ export default function flex_AlignContent_SpaceBetween_TextMarTest() {
 
       expect(Math.round((secondText.top - firstText.bottom)*10)/10).assertEqual(Math.round(vp2px(65)*10)/10);
       expect(secondText.bottom).assertEqual(thirdText.top);
-      expect(thirdText.bottom).assertEqual(fourthText.top); //无行间距
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(30)); //行首贴边行尾溢出
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0800] END');
+      expect(thirdText.bottom).assertEqual(fourthText.top);
+      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(30));
+      console.info('[testFlexAlignContentSpaceAroundTextMarginOverflow] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0900
-     * @tc.name      alignContent_SpaceAround_TextMargin
+     * @tc.name      testFlexAlignContentSpaceAroundTextMarginOverMeet
      * @tc.desc      The size of the parent component in the cross direction meets the layout
      *               of the child components when the padding of parent component was changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0900', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0900] START');
+    it('testFlexAlignContentSpaceAroundTextMarginOverMeet', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundTextMarginOverMeet] START');
       globalThis.value.message.notify({name:'margin', value:10})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextMar01');
@@ -106,18 +106,19 @@ export default function flex_AlignContent_SpaceBetween_TextMarTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //四个子组件的高度分别为50、100、50、100
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
       expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10)); //margin =10
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
       expect(fourthText.left).assertEqual(flexContainer.left);
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(10));
-      expect(flexContainer.bottom).assertEqual(fourthText.bottom); //行首偏移行尾未溢出
+      expect(flexContainer.bottom).assertEqual(fourthText.bottom);
 
-      expect(Math.round(secondText.top - firstText.bottom - vp2px(10))).assertEqual(Math.round(thirdText.top - secondText.bottom));
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //行间距相等
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0900] END');
+      expect(Math.round(secondText.top - firstText.bottom - vp2px(10)))
+        .assertEqual(Math.round(thirdText.top - secondText.bottom));
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
+      console.info('[testFlexAlignContentSpaceAroundTextMarginOverMeet] END');
       done();
     });
   })

@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 
-import {MessageManager,Callback} from './../../../common/MessageManager';
+import { MessageManager, Callback } from './../../../common/MessageManager';
 @Entry
 @Component
 struct Column_Space {
-  @State addSpace: number = 10
-  messageManager:MessageManager = new MessageManager()
+  @State addSpace: number = 10;
+  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('Column_Space onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'addSpace') {
         this.addSpace = message.value;
       }
@@ -34,9 +34,9 @@ struct Column_Space {
   }
   build() {
     Column({space:this.addSpace}) {
-      Column(){Text('1')}.width(300).height(50).backgroundColor(0xF5DEB3).key('Column_Space_011')
-      Column(){Text('2')}.width(300).height(100).backgroundColor(0xD2B48C).key('Column_Space_012')
-      Column(){Text('3')}.width(300).height(150).backgroundColor(0xF5DEB3).key('Column_Space_013')
+      Column(){Text('1')}.width(300).height(50).backgroundColor(0xF5DEB3).key('Column_Space_011');
+      Column(){Text('2')}.width(300).height(100).backgroundColor(0xD2B48C).key('Column_Space_012');
+      Column(){Text('3')}.width(300).height(150).backgroundColor(0xF5DEB3).key('Column_Space_013');
     }.key('Column_Space_01').width(350).height(400).backgroundColor(0xAFEEEE)
   }
 }

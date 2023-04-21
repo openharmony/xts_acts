@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../../common/MessageManager';
 @Entry
 @Component
-struct FlexAlignContent_SpaceAround_02{
-  @State testPadding: number = 0
-  messageManager:MessageManager = new MessageManager()
+struct FlexAlign_SpaceAround_FlexPad{
+  @State testPadding: number = 0;
+  messageManager:MessageManager = new MessageManager();
 
   onPageShow() {
-    console.info('FlexAlignContent_SpaceAround_02 onPageShow');
+    console.info('FlexAlign_SpaceAround_FlexPad onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'padding') {
         this.testPadding = message.value;
       }
@@ -33,12 +33,12 @@ struct FlexAlignContent_SpaceAround_02{
     this.messageManager.registerCallback(callback);
   }
   build(){
-    Column({space:30}){
-      Flex({wrap:FlexWrap.Wrap, alignContent:FlexAlign.SpaceAround}){
-        Text('1').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceAround_FlexPad01')
-        Text('2').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceAround_FlexPad02')
-        Text('3').width(150).height(150).backgroundColor(0xD2B48C).key('AlignContent_SpaceAround_FlexPad03')
-        Text('4').width(150).height(200).backgroundColor(0xF5DEB3).key('AlignContent_SpaceAround_FlexPad04')
+    Column({ space:30 }){
+      Flex({ wrap:FlexWrap.Wrap, alignContent:FlexAlign.SpaceAround }){
+        Text('1').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceAround_FlexPad01');
+        Text('2').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceAround_FlexPad02');
+        Text('3').width(150).height(150).backgroundColor(0xD2B48C).key('AlignContent_SpaceAround_FlexPad03');
+        Text('4').width(150).height(200).backgroundColor(0xF5DEB3).key('AlignContent_SpaceAround_FlexPad04');
       }
       .width(200)
       .height(540)

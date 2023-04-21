@@ -13,26 +13,26 @@
  * limitations under the License.
  */
 
-import {MessageManager,Callback} from './../../../../common/MessageManager';
+import { MessageManager, Callback } from './../../../../common/MessageManager';
 @Entry
 @Component
 struct AlignSpaceEvenly_AddOneMargin {
-  @State OneMargin: number = 10
-  messageManager:MessageManager = new MessageManager()
+  @State OneMargin: number = 10;
+  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('AlignSpaceEvenly_AddOneMargin onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'OneMargin') {
         this.OneMargin = message.value;
       }
     }
     this.messageManager.registerCallback(callback);
   }
-  @State justifyContent: FlexAlign = FlexAlign.SpaceEvenly
+  @State justifyContent: FlexAlign = FlexAlign.SpaceEvenly;
   build() {
     Column() {
       Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
@@ -41,9 +41,9 @@ struct AlignSpaceEvenly_AddOneMargin {
           .height(50)
           .backgroundColor(0xF5DEB3)
           .key("SpaceEvenly_AddOneMargin_011")
-          .margin(this.OneMargin)
-        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("SpaceEvenly_AddOneMargin_012")
-        Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("SpaceEvenly_AddOneMargin_013")
+          .margin(this.OneMargin);
+        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("SpaceEvenly_AddOneMargin_012");
+        Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("SpaceEvenly_AddOneMargin_013");
       }
       .key("SpaceEvenly_AddOneMargin_01")
       .width(500)

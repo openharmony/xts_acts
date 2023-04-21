@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignSpaceEvenly_AddPadding() {
   describe('AlignSpaceEvenly_AddPadding', function () {
     beforeEach(async function (done) {
@@ -47,12 +46,12 @@ export default function AlignSpaceEvenly_AddPadding() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0300
-     * @tc.name      Align_SpaceEvenly_Row_AddPadding
+     * @tc.name      testAlignSpaceEvenlyFlexPadMeet
      * @tc.desc      After subtracting the padding from the parent component layout space, the interface
      * display that does not meet the spindle layout of the child component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0300', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0300] START');
+    it('testAlignSpaceEvenlyFlexPadMeet', 0, async function (done) {
+      console.info('[testAlignSpaceEvenlyFlexPadMeet] START');
       globalThis.value.message.notify({name:'DadPadding', value:30});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddPadding_01');
@@ -81,17 +80,17 @@ export default function AlignSpaceEvenly_AddPadding() {
       expect(Math.round(SpaceEvenly_AddPadding_011.left - SpaceEvenly_AddPadding_01.left))
         .assertEqual(vp2px(30));
       expect(Math.round(SpaceEvenly_AddPadding_01.right - SpaceEvenly_AddPadding_013.right)).assertEqual(vp2px(30));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0300] END');
+      console.info('[testAlignSpaceEvenlyFlexPadMeet] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0400
-     * @tc.name      Align_SpaceAround_Row_AddPadding
+     * @tc.name      testAlignSpaceEvenlyFlexPadOverflow
      * @tc.desc      After subtracting the padding from the parent component layout space, the interface that
      * satisfies the spindle layout of the child component is displayed
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0400', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0400] START');
+    it('testAlignSpaceEvenlyFlexPadOverflow', 0, async function (done) {
+      console.info('[testAlignSpaceEvenlyFlexPadOverflow] START');
       globalThis.value.message.notify({name:'DadPadding', value:20})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddPadding_01');
@@ -120,7 +119,7 @@ export default function AlignSpaceEvenly_AddPadding() {
         .assertEqual(Math.round(vp2px(22.5)*100)/100);
       expect(Math.round((SpaceEvenly_AddPadding_01.right - SpaceEvenly_AddPadding_013.right)*100)/100)
         .assertEqual(Math.round(vp2px(22.5)*100)/100);
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0400] END');
+      console.info('[testAlignSpaceEvenlyFlexPadOverflow] END');
       done();
     });
   })

@@ -41,9 +41,8 @@ struct Flex_Wrap_DisplayPriority{
     this.messageManager.registerCallback(callback);
   }
   build(){
-    Column({space:30}){
-      // 子组件设置DisplayPriority
-      Flex({wrap:FlexWrap.Wrap}){
+    Column({ space:30 }){
+      Flex({ wrap:FlexWrap.Wrap }){
         Text('1').width(150).height(100).backgroundColor(0xF5DEB3)
           .displayPriority(this.firstTextPriority).key('Wrap_DisplayPriority01');
         Text('2').width(150).height(150).backgroundColor(0xD2B48C)

@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexBase_AutoJsunit() {
   describe('flexItemAlignAutoTest', function () {
     beforeEach(async function (done) {
@@ -46,11 +45,12 @@ export default function flexBase_AutoJsunit() {
 
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0100
-     * @tc.name      ItemAlign_Auto_FlexBase
-     * @tc.desc      The subcomponent is inside the parent component.
+     * @tc.name      testFlexItemAlignAutoFlexWidHeiMeet
+     * @tc.desc      The subcomponent is inside the parent component when the width of parent component set to 500,
+     *               the height of parent component set to 200.
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0100', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0100 START');
+    it('testFlexItemAlignAutoFlexWidHeiMeet', 0, async function (done) {
+      console.info('new testFlexItemAlignAutoFlexWidHeiMeet START');
       globalThis.value.message.notify({name:'height', value:200});
       globalThis.value.message.notify({name:'width', value:500});
       await CommonFunc.sleep(2000);
@@ -60,33 +60,34 @@ export default function flexBase_AutoJsunit() {
       let textFlex02 = CommonFunc.getComponentRect('textFlex02');
       let textFlex03 = CommonFunc.getComponentRect('textFlex03');
       let flex01 = CommonFunc.getComponentRect('flex01');
-      expect(flex01.top).assertEqual(textFlex01.top)
-      expect(textFlex01.top).assertEqual(textFlex02.top)
-      expect(textFlex02.top).assertEqual(textFlex03.top)
+      expect(flex01.top).assertEqual(textFlex01.top);
+      expect(textFlex01.top).assertEqual(textFlex02.top);
+      expect(textFlex02.top).assertEqual(textFlex03.top);
 
-      expect(textFlex01.right).assertEqual(textFlex02.left)
-      expect(textFlex02.right).assertEqual(textFlex03.left)
-      expect(Math.round(flex01.right - textFlex03.right)).assertEqual(vp2px(50))
+      expect(textFlex01.right).assertEqual(textFlex02.left);
+      expect(textFlex02.right).assertEqual(textFlex03.left);
+      expect(Math.round(flex01.right - textFlex03.right)).assertEqual(vp2px(50));
 
-      expect(Math.round(textFlex01.bottom - textFlex01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textFlex02.bottom - textFlex02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textFlex03.bottom - textFlex03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlex01.right - textFlex01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlex02.right - textFlex02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlex03.right - textFlex03.left)).assertEqual(vp2px(150))
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0100 END');
+      expect(Math.round(textFlex01.bottom - textFlex01.top)).assertEqual(vp2px(50));
+      expect(Math.round(textFlex02.bottom - textFlex02.top)).assertEqual(vp2px(100));
+      expect(Math.round(textFlex03.bottom - textFlex03.top)).assertEqual(vp2px(150));
+      expect(Math.round(textFlex01.right - textFlex01.left)).assertEqual(vp2px(150));
+      expect(Math.round(textFlex02.right - textFlex02.left)).assertEqual(vp2px(150));
+      expect(Math.round(textFlex03.right - textFlex03.left)).assertEqual(vp2px(150));
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      console.info('new testFlexItemAlignAutoFlexWidHeiMeet END');
       done();
     });
 
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0200
-     * @tc.name      ItemAlign_Auto_FlexBase
-     * @tc.desc      The subcomponent exceeds the parent component.
+     * @tc.name      testFlexItemAlignAutoFlexWidHeiOverflow
+     * @tc.desc      The subcomponent exceeds the parent component when the width of parent component set to 420,
+     *               the height of parent component set to 140.
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0200', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0200 START');
+    it('testFlexItemAlignAutoFlexWidHeiOverflow', 0, async function (done) {
+      console.info('new testFlexItemAlignAutoFlexWidHeiOverflow START');
       globalThis.value.message.notify({name:'height', value:140});
       globalThis.value.message.notify({name:'width', value:420});
       await CommonFunc.sleep(2000);
@@ -96,22 +97,22 @@ export default function flexBase_AutoJsunit() {
       let textFlex02 = CommonFunc.getComponentRect('textFlex02');
       let textFlex03 = CommonFunc.getComponentRect('textFlex03');
       let flex01 = CommonFunc.getComponentRect('flex01');
-      expect(flex01.top).assertEqual(textFlex01.top)
-      expect(textFlex01.top).assertEqual(textFlex02.top)
-      expect(textFlex02.top).assertEqual(textFlex03.top)
+      expect(flex01.top).assertEqual(textFlex01.top);
+      expect(textFlex01.top).assertEqual(textFlex02.top);
+      expect(textFlex02.top).assertEqual(textFlex03.top);
 
-      expect(textFlex03.right).assertEqual(flex01.right)
-      expect(textFlex03.bottom).assertLarger(flex01.bottom)
-      expect(Math.round(textFlex01.bottom - textFlex01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textFlex02.bottom - textFlex02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textFlex03.bottom - textFlex03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlex01.right - textFlex01.left)).assertEqual(vp2px(140))
-      expect(Math.round(textFlex02.right - textFlex02.left)).assertEqual(vp2px(140))
-      expect(Math.round(textFlex03.right - textFlex03.left)).assertEqual(vp2px(140))
+      expect(textFlex03.right).assertEqual(flex01.right);
+      expect(textFlex03.bottom).assertLarger(flex01.bottom);
+      expect(Math.round(textFlex01.bottom - textFlex01.top)).assertEqual(vp2px(50));
+      expect(Math.round(textFlex02.bottom - textFlex02.top)).assertEqual(vp2px(100));
+      expect(Math.round(textFlex03.bottom - textFlex03.top)).assertEqual(vp2px(150));
+      expect(Math.round(textFlex01.right - textFlex01.left)).assertEqual(vp2px(140));
+      expect(Math.round(textFlex02.right - textFlex02.left)).assertEqual(vp2px(140));
+      expect(Math.round(textFlex03.right - textFlex03.left)).assertEqual(vp2px(140));
 
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0200 END');
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      console.info('new testFlexItemAlignAutoFlexWidHeiOverflow END');
       done();
     });
   })
