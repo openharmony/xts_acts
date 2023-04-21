@@ -15,7 +15,11 @@
         },
         {
             "type": "ShellKit",
-            "cleanup-apps": true
+            "run-command": [
+                "power-shell wakeup",
+                "uinput -T -m 594 2117 594 864 400",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

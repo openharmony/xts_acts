@@ -56,7 +56,7 @@ async function grantPerm() {
 }
 
 export default function objectStoreTestV9() {
-describe('objectStoreTest', function () {
+describe('objectStoreTestV9', function () {
     beforeAll(async function (done) {
         await grantPerm();
         done();
