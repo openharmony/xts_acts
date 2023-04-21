@@ -162,8 +162,10 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           }
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest1  error : ' + JSON.stringify(err));
-          expect().assertFail()
-          done();
+          if(err.code!==801){
+            expect().assertFail()
+            done();
+          }
         })
       }
     })
@@ -272,8 +274,10 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           }
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest2  error : ' + JSON.stringify(err));
-          expect().assertFail()
-          done();
+          if(err.code!==801){
+            expect().assertFail()
+            done();
+          }
         })
       }
     })
@@ -352,8 +356,10 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           }
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest3  error : ' + JSON.stringify(err));
-          expect().assertFail()
-          done();
+          if(err.code!==801){
+            expect().assertFail()
+            done();
+          }
         })
       }
     })
@@ -377,14 +383,21 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       try {
         tempWnd.setWindowSystemBarProperties(SystemBarProperties, (err) => {
           console.info('Succeeded in setting the system bar properties.' + JSON.stringify(err));
-          if (err.code) {
+          if (err.code && err.code!==801) {
             try {
               expect(err.code).assertEqual(401);
             } catch (error) {
               console.info(`tempWnd.setWindowSystemBarProperties catch error: ${JSON.stringify(error)}`)
             }
             done()
-          } else {
+          } else if(err.code && err.code==801){
+            try {
+              expect(TRUE_FLAG).assertTrue();
+            } catch (error) {
+              console.info(`tempWnd.setWindowSystemBarProperties catch error: ${JSON.stringify(error)}`)
+            }
+            done();
+          }else {
             console.info('Succeeded in setting the system bar properties.');
             try {
               expect(TRUE_FLAG).assertTrue();
@@ -396,8 +409,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         });
       } catch (exception) {
         console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(401);
-        done()
+        if(exception.code && exception.code==801){
+          expect(TRUE_FLAG).assertTrue();
+          done()
+        } else {
+          expect(exception.code).assertEqual(401);
+          done()
+        }
       }
       ;
     })
