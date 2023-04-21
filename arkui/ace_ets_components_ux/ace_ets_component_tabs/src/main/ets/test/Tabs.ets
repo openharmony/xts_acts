@@ -515,11 +515,17 @@ export default function tabs() {
       console.info("ArkUI_Tabs_LabelStyle_0100 start");
       let strJson = getInspectorByKey('indicatorTest5');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_LabelStyle_0100] labelStyle:" + obj.$attrs.tabBar.labelStyle);
+      console.info("[ArkUI_Tabs_LabelStyle_0100] labelStyle:" +  JSON.stringify(obj.$attrs.tabBar.labelStyle));
 
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Ellipsis');
       expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('1');
+      expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('0.00vp');
+      expect(obj.$attrs.tabBar.labelStyle.maxFontSize).assertEqual('0.00vp');
       expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MAX_LINES_FIRST');
+      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('16.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.font.weight).assertEqual('FontWeight.Normal');
+      expect(obj.$attrs.tabBar.labelStyle.font.family).assertEqual('HarmonyOS Sans');
+      expect(obj.$attrs.tabBar.labelStyle.font.style).assertEqual('FontStyle.Normal');
       done();
     });
 
@@ -532,8 +538,7 @@ export default function tabs() {
       console.info("ArkUI_Tabs_LabelStyle_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_LabelStyle_0200] labelStyle:" + obj.$attrs.tabBar.labelStyle);
-      console.info("[ArkUI_Tabs_LabelStyle_0200] labelStyle:" + obj.$attrs.tabBar.labelStyle.font);
+      console.info("[ArkUI_Tabs_LabelStyle_0200] labelStyle:" +  JSON.stringify(obj.$attrs.tabBar.labelStyle));
 
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Ellipsis');
       expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('1');
@@ -553,7 +558,7 @@ export default function tabs() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest2');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_LabelStyle_0300] labelStyle:" + obj.$attrs.tabBar.labelStyle);
+      console.info("[ArkUI_Tabs_LabelStyle_0300] labelStyle:" + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Clip');
       expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('1');
       expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('5.00fp');
@@ -573,7 +578,7 @@ export default function tabs() {
 
       let strJson = getInspectorByKey('indicatorTest3');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_LabelStyle_0400] labelStyle:" + obj.$attrs.tabBar.labelStyle);
+      console.info("[ArkUI_Tabs_LabelStyle_0400] labelStyle:" + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.None');
       expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('2');
       expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('5.00fp');
@@ -588,18 +593,41 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when line feed
      * @tc.desc      set labelStyle to line feed
      */
-    it('ArkUI_Tabs_LabelStyle_0400', 0, async function (done) {
-      console.info("ArkUI_Tabs_LabelStyle_0400 start");
+    it('ArkUI_Tabs_LabelStyle_0500', 0, async function (done) {
+      console.info("ArkUI_Tabs_LabelStyle_0500 start");
 
       let strJson = getInspectorByKey('indicatorTest4');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_LabelStyle_0400] labelStyle:" + obj.$attrs.tabBar.labelStyle);
+      console.info("[ArkUI_Tabs_LabelStyle_0500] labelStyle:" + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.None');
       expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('10');
       expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('5.00fp');
       expect(obj.$attrs.tabBar.labelStyle.maxFontSize).assertEqual('20.00fp');
       expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MAX_LINES_FIRST');
       expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('15.00fp');
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Tabs_LabelStyle_0600
+     * @tc.name      Tests the labelStyle when null
+     * @tc.desc      set labelStyle to when null
+     */
+    it('ArkUI_Tabs_LabelStyle_0600', 0, async function (done) {
+      console.info("ArkUI_Tabs_LabelStyle_0600 start");
+
+      let strJson = getInspectorByKey('indicatorTest6');
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Tabs_LabelStyle_0600] labelStyle:" + JSON.stringify(obj.$attrs.tabBar.labelStyle));
+      expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Ellipsis');
+      expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('1');
+      expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('0.00vp');
+      expect(obj.$attrs.tabBar.labelStyle.maxFontSize).assertEqual('0.00vp');
+      expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MAX_LINES_FIRST');
+      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('16.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.font.weight).assertEqual('FontWeight.Normal');
+      expect(obj.$attrs.tabBar.labelStyle.font.family).assertEqual('HarmonyOS Sans');
+      expect(obj.$attrs.tabBar.labelStyle.font.style).assertEqual('FontStyle.Normal');
       done();
     });
 
