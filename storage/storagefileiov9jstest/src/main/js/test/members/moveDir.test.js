@@ -917,5 +917,57 @@ export default function fileIOMoveDir() {
       expect(false).assertTrue();
     }
   });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_2400
+   * @tc.name fileIO_test_moveDir_async_024
+   * @tc.desc Test moveFile() interface. Promise.
+   * Undefined option arguments, use default mode = DIRMODE_DIRECTORY_THROW_ERR.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_async_024', 3, async function (done) {
+    let dpath = await readyFiles('fileIO_test_moveDir_async_024');
+
+    try {
+      await fileIO.moveDir(dpath.srcDir, dpath.destDir, undefined);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.rmdirSync(dpath.baseDir);
+      console.log('fileIO_test_moveDir_async_024 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900032 && e.message == 'Directory not empty').assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_2500
+   * @tc.name fileIO_test_moveDir_async_025
+   * @tc.desc Test moveFile() interface. Callback.
+   * Undefined option arguments, use default mode = DIRMODE_DIRECTORY_THROW_ERR.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_async_025', 3, async function (done) {
+    let dpath = await readyFiles('fileIO_test_moveDir_async_025');
+
+    try {
+      fileIO.moveDir(dpath.srcDir, dpath.destDir, undefined, (err) => {
+        if (err) {
+          fileIO.rmdirSync(dpath.baseDir);
+          console.log('fileIO_test_moveDir_async_025 error: {message: ' + err.message + ', code: ' + err.code + '}');
+          expect(err.code == 13900032 && err.message == 'Directory not empty').assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_moveDir_async_025 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
 });
 }

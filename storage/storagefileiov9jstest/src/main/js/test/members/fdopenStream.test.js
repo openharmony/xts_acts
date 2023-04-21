@@ -92,7 +92,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpr = fileIO.fdopenStreamSync(file.fd, 'r+');
       expect(fpr !== null).assertTrue();
       expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(fpr.writeSync(FILE_CONTENT, { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       fpr.closeSync();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
@@ -263,7 +263,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpw = fileIO.fdopenStreamSync(file.fd, 'w+');
       expect(fpw !== null).assertTrue();
       expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(fpw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(fpw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       fpw.closeSync();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
@@ -359,7 +359,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpa = fileIO.fdopenStreamSync(file.fd, 'a+');
       expect(fpa !== null).assertTrue();
       expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(fpa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      expect(fpa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
       fpa.closeSync();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
@@ -511,7 +511,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpr = await fileIO.fdopenStream(file.fd, 'r+');
       expect(fpr !== null).assertTrue();
       expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(fpr.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       fpr.closeSync();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
@@ -546,7 +546,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
         }
         expect(fpr !== null).assertTrue();
         expect(fpr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+        expect(fpr.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
         fpr.closeSync();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -714,7 +714,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
 
       let file2 = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       let fpr = await fileIO.fdopenStream(file2.fd, 'r');
-      expect(fpr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(fpr.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       fpr.closeSync();
       fileIO.closeSync(file1);
       fileIO.closeSync(file2);
@@ -746,7 +746,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpw = await fileIO.fdopenStream(file.fd, 'w+');
       expect(fpw !== null).assertTrue();
       expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(fpw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(fpw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       fpw.closeSync();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
@@ -781,7 +781,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
         }
         expect(fpw !== null).assertTrue();
         expect(fpw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        expect(fpw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+        expect(fpw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
         fpw.closeSync();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -925,7 +925,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
       let fpa = await fileIO.fdopenStream(file.fd, 'a+');
       expect(fpa !== null).assertTrue();
       expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(fpa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      expect(fpa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
       fpa.closeSync();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
@@ -960,7 +960,7 @@ describe('fileIO_fs_FdOpenStream', async function () {
         }
         expect(fpa !== null).assertTrue();
         expect(fpa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        expect(fpa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+        expect(fpa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
         fpa.closeSync();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);

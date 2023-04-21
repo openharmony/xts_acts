@@ -24,7 +24,7 @@ export default function fileIORead() {
    * @tc.number SUB_DF_FILEIO_READ_SYNC_0000
    * @tc.name fileIO_test_read_sync_000
    * @tc.desc Test readSync() interfaces.
-   * Open the file in read-only mode, verifying the normal read function.
+   * Open the file in read-only mode, default read from current offset.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -37,8 +37,10 @@ export default function fileIORead() {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
       expect(isIntNum(file.fd)).assertTrue();
-      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
-      expect(readLen == FILE_CONTENT.length).assertTrue();
+      let readLen1 = fileIO.readSync(file.fd, new ArrayBuffer(16));
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = fileIO.readSync(file.fd, new ArrayBuffer(8));
+      expect(readLen2 == 0).assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
@@ -80,7 +82,7 @@ export default function fileIORead() {
    * @tc.number SUB_DF_FILEIO_READ_SYNC_0200
    * @tc.name fileIO_test_read_sync_002
    * @tc.desc Test readSync() interfaces.
-   * Open the file in read-only mode, reading the file with length < 0(Read normal).
+   * Open the file in read-only mode, reading the file with length = -1((0 < length < buffer.size)).
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 3
@@ -89,19 +91,20 @@ export default function fileIORead() {
   it('fileIO_test_read_sync_002', 0, async function () {
     let fpath = await nextFileName('fileIO_test_read_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+    const invalidLength = -1;
 
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
       expect(isIntNum(file.fd)).assertTrue();
-      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), {
-        length: -1,
+      fileIO.readSync(file.fd, new ArrayBuffer(4096), {
+        length: invalidLength,
       });
-      expect(readLen == FILE_CONTENT.length).assertTrue();
+      expect(false).assertTrue();
+    } catch (e) {
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
-    } catch (e) {
       console.log('fileIO_test_read_sync_002 has failed for ' + e.message + ', code: ' + e.code);
-      expect(false).assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
 
@@ -206,11 +209,12 @@ export default function fileIORead() {
     let fpath = await nextFileName('fileIO_test_read_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+    const invalidOffset = -1;
 
     try {
       expect(isIntNum(file.fd)).assertTrue();
       fileIO.readSync(file.fd, new ArrayBuffer(4096), {
-        offset: -1,
+        offset: invalidOffset,
       });
       expect(false).assertTrue();
     } catch (e) {
@@ -333,10 +337,74 @@ export default function fileIORead() {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_1100
+   * @tc.name fileIO_test_read_sync_011
+   * @tc.desc Test readSync() interfaces.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_read_sync_011', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_read_sync_011');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+      expect(isIntNum(file.fd)).assertTrue();
+      let readLen1 = fileIO.readSync(file.fd, new ArrayBuffer(16), undefined);
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = fileIO.readSync(file.fd, new ArrayBuffer(8), undefined);
+      expect(readLen2 == 0).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_read_sync_011 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_1200
+   * @tc.name fileIO_test_read_sync_012
+   * @tc.desc Test readSync() interfaces.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_read_sync_012', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_read_sync_012');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+      expect(isIntNum(file.fd)).assertTrue();
+      let readLen1 = fileIO.readSync(file.fd, new ArrayBuffer(16), {
+        offset: undefined,
+        length: undefined,
+      });
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = fileIO.readSync(file.fd, new ArrayBuffer(8), {
+        offset: undefined,
+        length: undefined,
+      });
+      expect(readLen2 == 0).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_read_sync_012 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0000
    * @tc.name fileIO_test_read_async_000
    * @tc.desc Test read() interfaces. Promise.
-   * Open the file in read-only mode, verifying the normal read function.
+   * Open the file in read-only mode, default read from current offset.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -349,8 +417,10 @@ export default function fileIORead() {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
       expect(isIntNum(file.fd)).assertTrue();
-      let readLen = await fileIO.read(file.fd, new ArrayBuffer(4096));
-      expect(readLen == FILE_CONTENT.length).assertTrue();
+      let readLen1 = await fileIO.read(file.fd, new ArrayBuffer(16));
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = await fileIO.read(file.fd, new ArrayBuffer(8));
+      expect(readLen2 == 0).assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       done();
@@ -364,7 +434,7 @@ export default function fileIORead() {
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0100
    * @tc.name fileIO_test_read_async_001
    * @tc.desc Test read() interfaces. Callback.
-   * Open the file in read-only mode, verifying the normal read function.
+   * Open the file in read-only mode, default read from current offset.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 3
@@ -377,15 +447,22 @@ export default function fileIORead() {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
       expect(isIntNum(file.fd)).assertTrue();
-      fileIO.read(file.fd, new ArrayBuffer(4096), (err, readlen) => {
-        if(err) {
-          console.log('fileIO_test_read_async_001 err package: ' + JSON.stringify(err));
+      fileIO.read(file.fd, new ArrayBuffer(16), (err, readlen1) => {
+        if (err) {
+          console.log('fileIO_test_read_async_001 err package1: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(readlen == FILE_CONTENT.length).assertTrue();
-        fileIO.closeSync(file);
-        fileIO.unlinkSync(fpath);
-        done();
+        expect(readlen1 == FILE_CONTENT.length).assertTrue();
+        fileIO.read(file.fd, new ArrayBuffer(8), (err, readLen2) => {
+          if (err) {
+            console.log('fileIO_test_read_async_001 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(readLen2 == 0).assertTrue();
+          fileIO.closeSync(file);
+          fileIO.unlinkSync(fpath);
+          done();
+        });
       });
     } catch (e) {
       console.log('fileIO_test_read_async_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -891,28 +968,30 @@ export default function fileIORead() {
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_1800
    * @tc.name fileIO_test_read_async_018
    * @tc.desc Test read() interfaces.
-   * Open the file in read-only mode, reading the file with length = -1(Read normal).
+   * Open the file in read-only mode, reading the file with length = -1(0 < length < buffer.size).
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_read_async_018', 0, async function () {
+  it('fileIO_test_read_async_018', 0, async function (done) {
     let fpath = await nextFileName('fileIO_test_read_async_018');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+    const invalidLength = -1;
 
     try {
       expect(isIntNum(file.fd)).assertTrue();
-      let readLen = await fileIO.read(file.fd, new ArrayBuffer(4096), {
-        length: -1,
+      await fileIO.read(file.fd, new ArrayBuffer(4096), {
+        length: invalidLength,
       });
-      expect(readLen == FILE_CONTENT.length).assertTrue();
+      expect(false).assertTrue();
+    } catch (e) {
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
-    } catch (e) {
       console.log('fileIO_test_read_async_018 has failed for ' + e.message + ', code: ' + e.code);
-      expect(false).assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+      done();
     }
   });
 
@@ -944,6 +1023,158 @@ export default function fileIORead() {
       done();
     } catch (e) {
       console.log('fileIO_test_read_async_019 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_2000
+   * @tc.name fileIO_test_read_async_020
+   * @tc.desc Test read() interfaces. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_read_async_020', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_read_async_020');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+      expect(isIntNum(file.fd)).assertTrue();
+      let readLen1 = await fileIO.read(file.fd, new ArrayBuffer(16), undefined);
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = await fileIO.read(file.fd, new ArrayBuffer(8), undefined);
+      expect(readLen2 == 0).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_read_async_020 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_2100
+   * @tc.name fileIO_test_read_async_021
+   * @tc.desc Test read() interfaces. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_read_async_021', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_read_async_021');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+      expect(isIntNum(file.fd)).assertTrue();
+      fileIO.read(file.fd, new ArrayBuffer(16), undefined, (err, readlen1) => {
+        if(err) {
+          console.log('fileIO_test_read_async_021 err package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(readlen1 == FILE_CONTENT.length).assertTrue();
+        fileIO.read(file.fd, new ArrayBuffer(8), undefined, (err, readLen2) => {
+          if (err) {
+            console.log('fileIO_test_read_async_021 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(readLen2 == 0).assertTrue();
+          fileIO.closeSync(file);
+          fileIO.unlinkSync(fpath);
+          done();
+        });
+      });
+    } catch (e) {
+      console.log('fileIO_test_read_async_021 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_2200
+   * @tc.name fileIO_test_read_async_022
+   * @tc.desc Test read() interfaces. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_read_async_022', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_read_async_022');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+      expect(isIntNum(file.fd)).assertTrue();
+      let readLen1 = await fileIO.read(file.fd, new ArrayBuffer(4096), {
+        offset: undefined,
+        length: undefined,
+      });
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = await fileIO.read(file.fd, new ArrayBuffer(8), {
+        offset: undefined,
+        length: undefined,
+      });
+      expect(readLen2 == 0).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_read_async_022 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_2300
+   * @tc.name fileIO_test_read_async_023
+   * @tc.desc Test read() interfaces. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_read_async_023', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_read_async_023');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+      expect(isIntNum(file.fd)).assertTrue();
+      fileIO.read(file.fd, new ArrayBuffer(16), {
+        offset: undefined,
+        length: undefined,
+      }, (err, readLen1) => {
+        if(err) {
+          console.log('fileIO_test_read_async_011 err package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(readLen1 == FILE_CONTENT.length).assertTrue();
+        fileIO.read(file.fd, new ArrayBuffer(8), {
+          offset: undefined,
+          length: undefined,
+        }, (err, readLen2) => {
+          if (err) {
+            console.log('fileIO_test_read_async_001 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(readLen2 == 0).assertTrue();
+          fileIO.closeSync(file);
+          fileIO.unlinkSync(fpath);
+          done();
+        });
+      });
+    } catch (e) {
+      console.log('fileIO_test_read_async_023 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });

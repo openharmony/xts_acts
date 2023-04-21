@@ -88,7 +88,7 @@ describe('fileIO_fs_createStream', function () {
       let sr = fileIO.createStreamSync(fpath, 'r+');
       expect(sr !== null).assertTrue();
       expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      expect(sr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(sr.writeSync(FILE_CONTENT, { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       sr.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
@@ -266,7 +266,7 @@ describe('fileIO_fs_createStream', function () {
       let sw = fileIO.createStreamSync(fpath, 'w+');
       expect(sw !== null).assertTrue();
       expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(sw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       sw.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
@@ -292,7 +292,7 @@ describe('fileIO_fs_createStream', function () {
       let sw = fileIO.createStreamSync(fpath, 'w+');
       expect(sw !== null).assertTrue();
       expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(sw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       sw.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
@@ -402,7 +402,7 @@ describe('fileIO_fs_createStream', function () {
       let sa = fileIO.createStreamSync(fpath, 'a+');
       expect(sa !== null).assertTrue();
       expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      expect(sa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
       sa.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
@@ -428,7 +428,7 @@ describe('fileIO_fs_createStream', function () {
       let sa = fileIO.createStreamSync(fpath, 'a+');
       expect(sa !== null).assertTrue();
       expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(sa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       sa.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
@@ -576,7 +576,7 @@ describe('fileIO_fs_createStream', function () {
       let sr = await fileIO.createStream(fpath, 'r+');
       expect(sr !== null).assertTrue();
       expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-      expect(sr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+      expect(sr.writeSync(FILE_CONTENT, { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       sr.closeSync();
       fileIO.unlinkSync(fpath);
       done();
@@ -608,7 +608,7 @@ describe('fileIO_fs_createStream', function () {
         }
         expect(sr !== null).assertTrue();
         expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
-        expect(sr.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+        expect(sr.writeSync(FILE_CONTENT, { offset: 0 }) == FILE_CONTENT.length).assertTrue();
         sr.closeSync();
         fileIO.unlinkSync(fpath);
         done();
@@ -832,7 +832,7 @@ describe('fileIO_fs_createStream', function () {
       let sw = await fileIO.createStream(fpath, 'w+');
       expect(sw !== null).assertTrue();
       expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(sw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       sw.closeSync();
       fileIO.unlinkSync(fpath);
       done();
@@ -859,7 +859,7 @@ describe('fileIO_fs_createStream', function () {
       let sw = await fileIO.createStream(fpath, 'w+');
       expect(sw !== null).assertTrue();
       expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(sw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       sw.closeSync();
       fileIO.unlinkSync(fpath);
       done();
@@ -891,7 +891,7 @@ describe('fileIO_fs_createStream', function () {
         }
         expect(sw !== null).assertTrue();
         expect(sw.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        expect(sw.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+        expect(sw.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
         sw.closeSync();
         fileIO.unlinkSync(fpath);
         done();
@@ -923,7 +923,7 @@ describe('fileIO_fs_createStream', function () {
       sa.closeSync();
 
       let sr = fileIO.createStreamSync(fpath, 'r');
-      expect(sr.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      expect(sr.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
       sr.closeSync();
       fileIO.unlinkSync(fpath);
       done();
@@ -1020,7 +1020,7 @@ describe('fileIO_fs_createStream', function () {
       let sa = await fileIO.createStream(fpath, 'a+');
       expect(sa !== null).assertTrue();
       expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+      expect(sa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
       sa.closeSync();
       fileIO.unlinkSync(fpath);
       done();
@@ -1047,7 +1047,7 @@ describe('fileIO_fs_createStream', function () {
       let sa = await fileIO.createStream(fpath, 'a+');
       expect(sa !== null).assertTrue();
       expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length).assertTrue();
+      expect(sa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length).assertTrue();
       sa.closeSync();
       fileIO.unlinkSync(fpath);
       done();
@@ -1079,7 +1079,7 @@ describe('fileIO_fs_createStream', function () {
         }
         expect(sa !== null).assertTrue();
         expect(sa.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-        expect(sa.readSync(new ArrayBuffer(4096)) == FILE_CONTENT.length * 2).assertTrue();
+        expect(sa.readSync(new ArrayBuffer(4096), { offset: 0 }) == FILE_CONTENT.length * 2).assertTrue();
         sa.closeSync();
         fileIO.unlinkSync(fpath);
         done();
