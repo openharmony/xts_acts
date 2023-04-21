@@ -1,12 +1,12 @@
 {
     "app": {
         "apiVersion": {
-            "compatible": 6,
+            "compatible": 9,
             "releaseType": "Beta1",
-            "target": 7
+            "target": 9
         },
         "vendor": "acts",
-        "bundleName": "ohos.acts.multimedia.image.GetImageProperty",
+        "bundleName": "ohos.acts.multimedia.image",
         "version": {
             "code": 1000000,
             "name": "1.0.0"
@@ -57,11 +57,7 @@
             }
         ],
         "deviceType": [
-      "tablet",
-            "phone",
-            "tablet",
-            "tv",
-            "wearable"
+            "default"
         ],
         "mainAbility": ".MainAbility",
         "distro": {
@@ -100,7 +96,7 @@
                 "reason": "use ohos.permission.WRITE_MEDIA"
             }
         ],
-        "package": "ohos.acts.multimedia.image.GetImageProperty",
+        "package": "ohos.acts.multimedia.image",
         "name": ".entry",
         "js": [
             {
