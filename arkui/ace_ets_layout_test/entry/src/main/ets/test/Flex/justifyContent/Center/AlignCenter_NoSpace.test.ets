@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
+
 export default function AlignCenter_NoSpace() {
   describe('AlignCenter_NoSpace', function () {
     beforeEach(async function (done) {
@@ -47,12 +47,12 @@ export default function AlignCenter_NoSpace() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0100
-     * @tc.name      Align_Center_Row_ChangeWidth
+     * @tc.name      testFlexAlignCenterFlexWidthOverflow
      * @tc.desc      The parent component layout space does not meet the interface display of the spindle layout of
      * the child component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0100] START');
+    it('testFlexAlignCenterFlexWidthOverflow', 0, async function (done) {
+      console.info('[testFlexAlignCenterFlexWidthOverflow] START');
       globalThis.value.message.notify({name:'DadWidth', value:400});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_NoSpace_01');
@@ -77,17 +77,17 @@ export default function AlignCenter_NoSpace() {
       expect(Math.round(Center_NoSpace_011.right - Center_NoSpace_011.left)).assertEqual(Math.round(vp2px(400/3)));
       expect(Math.round(Center_NoSpace_012.right - Center_NoSpace_012.left)).assertEqual(Math.round(vp2px(400/3)));
       expect(Math.round(Center_NoSpace_013.right - Center_NoSpace_013.left)).assertEqual(Math.round(vp2px(400/3)));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0100] END');
+      console.info('[testFlexAlignCenterFlexWidthOverflow] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0200
-     * @tc.name      Align_Center_Row_ChangeWidth
+     * @tc.name      testFlexAlignCenterFlexWidthMeet
      * @tc.desc      The interface display where the parent component layout space satisfies the spindle layout of
      * the child component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0200', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0200] START');
+    it('testFlexAlignCenterFlexWidthMeet', 0, async function (done) {
+      console.info('[testFlexAlignCenterFlexWidthMeet] START');
       globalThis.value.message.notify({name:'DadWidth', value:500});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_NoSpace_01');
@@ -106,14 +106,15 @@ export default function AlignCenter_NoSpace() {
       expect(Center_NoSpace_013.left).assertEqual(Center_NoSpace_012.right);
       expect(Math.round(Center_NoSpace_011.left - Center_NoSpace_01.left))
         .assertEqual(Math.round(Center_NoSpace_01.right - Center_NoSpace_013.right));
-      expect(Math.round((Center_NoSpace_011.left - Center_NoSpace_01.left)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);
+      expect(Math.round((Center_NoSpace_011.left - Center_NoSpace_01.left)*10)/10)
+        .assertEqual(Math.round(vp2px(25)*10)/10);
       expect(Math.round(Center_NoSpace_011.right - Center_NoSpace_011.left)).assertEqual(vp2px(150));
       expect(Math.round(Center_NoSpace_012.right - Center_NoSpace_012.left)).assertEqual(vp2px(150));
       expect(Math.round(Center_NoSpace_013.right - Center_NoSpace_013.left)).assertEqual(vp2px(150));
       expect(Math.round(Center_NoSpace_011.bottom - Center_NoSpace_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Center_NoSpace_012.bottom - Center_NoSpace_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Center_NoSpace_013.bottom - Center_NoSpace_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0200] END');
+      console.info('[testFlexAlignCenterFlexWidthMeet] END');
       done();
     });
   })

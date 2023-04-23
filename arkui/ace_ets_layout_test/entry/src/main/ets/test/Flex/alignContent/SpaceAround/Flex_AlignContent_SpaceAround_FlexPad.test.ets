@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceAround_FlexPadTest() {
   describe('Flex_AlignContent_SpaceAround_FlexPadTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceAround_FlexPad beforeEach start");
+      console.info("Flex_AlignContent_SpaceAround_FlexPadTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexPad',
       }
@@ -37,6 +36,7 @@ export default function flex_AlignContent_SpaceAround_FlexPadTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceAround_FlexPad page error:" + err);
       }
+      console.info("Flex_AlignContent_SpaceAround_FlexPadTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -45,12 +45,12 @@ export default function flex_AlignContent_SpaceAround_FlexPadTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0400
-     * @tc.name      alignContent_SpaceAround_FlexPad
+     * @tc.name      testFlexAlignContentSpaceAroundFlexPadOverflow
      * @tc.desc      The size of the parent component in the cross direction is not enough for the layout
-     *               of the child components when the padding and margin of parent component was changed
+     *               of the child components when the padding of parent component set to 50
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0400', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0400] START');
+    it('testFlexAlignContentSpaceAroundFlexPadOverflow', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundFlexPadOverflow] START');
       globalThis.value.message.notify({name:'padding', value:50})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceAround_FlexPad01');
@@ -66,7 +66,7 @@ export default function flex_AlignContent_SpaceAround_FlexPadTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200)); //四个子组件的高度分别为50、100、150、200
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200));
 
       expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(50)); //padding =50
       expect(firstText.left).assertEqual(secondText.left);
@@ -75,19 +75,19 @@ export default function flex_AlignContent_SpaceAround_FlexPadTest() {
 
       expect(firstText.bottom).assertEqual(secondText.top);
       expect(secondText.bottom).assertEqual(thirdText.top);
-      expect(thirdText.bottom).assertEqual(fourthText.top); //无行间距
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(10)); //行首贴边行尾溢出
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0400] END');
+      expect(thirdText.bottom).assertEqual(fourthText.top);
+      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(10));
+      console.info('[testFlexAlignContentSpaceAroundFlexPadOverflow] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0500
-     * @tc.name      alignContent_SpaceAround_FlexPad
+     * @tc.name      testFlexAlignContentSpaceAroundFlexPadMeet
      * @tc.desc      The size of the parent component in the cross direction meets the layout
-     *               of the child components when the padding of parent component was changed
+     *               of the child components when the padding of parent component set to 10
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0500', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0500] START');
+    it('testFlexAlignContentSpaceAroundFlexPadMeet', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundFlexPadMeet] START');
       globalThis.value.message.notify({name:'padding', value:10})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceAround_FlexPad01');
@@ -104,19 +104,20 @@ export default function flex_AlignContent_SpaceAround_FlexPadTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200)); //四个子组件的高度分别为50、100、150、200
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200));
 
       expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10)); //padding =10
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
-      expect(Math.round(flexContainer.bottom - fourthText.bottom)).assertEqual(Math.round(firstText.top - flexContainer.top)); //行首行尾间距相等
+      expect(Math.round(flexContainer.bottom - fourthText.bottom))
+        .assertEqual(Math.round(firstText.top - flexContainer.top));
 
       expect(Math.round(secondText.top - firstText.bottom)).assertEqual(Math.round(thirdText.top - secondText.bottom));
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //行间距相等
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
       expect(Math.round((thirdText.top - secondText.bottom) / 2))
         .assertEqual(Math.round(firstText.top - flexContainer.top - vp2px(10)));
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0500] END');
+      console.info('[testFlexAlignContentSpaceAroundFlexPadMeet] END');
       done();
     });
   })

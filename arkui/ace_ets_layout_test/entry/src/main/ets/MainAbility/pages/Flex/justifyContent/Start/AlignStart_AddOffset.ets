@@ -13,34 +13,34 @@
  * limitations under the License.
  */
 
-import {MessageManager,Callback} from './../../../../common/MessageManager';
+import { MessageManager, Callback } from './../../../../common/MessageManager';
 @Entry
 @Component
 struct AlignStart_AddOffset {
-  @State OneOffset: object = { x: 0, y: 0 }
-  messageManager:MessageManager = new MessageManager()
+  @State OneOffset: object = { x: 0, y: 0 };
+  messageManager:MessageManager = new MessageManager();
   onPageShow() {
-    console.info('AlignSpaceEvenly_AddOffset onPageShow');
+    console.info('AlignStart_AddOffset onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'OneOffset') {
         this.OneOffset = message.value;
       }
     }
     this.messageManager.registerCallback(callback);
   }
-  @State justifyContent: FlexAlign = FlexAlign.Start
+  @State justifyContent: FlexAlign = FlexAlign.Start;
   build() {
     Column() {
-        Text('justifyContent:FlexAlign.Start').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Text('justifyContent:FlexAlign.Start').fontSize(9).fontColor(0xCCCCCC).width('90%');
         Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
           Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key("Start_AddOffset_011")
-            .offset(this.OneOffset)
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("Start_AddOffset_012")
-          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("Start_AddOffset_013")
+            .offset(this.OneOffset);
+          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("Start_AddOffset_012");
+          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("Start_AddOffset_013");
         }
         .key("Start_AddOffset_01")
         .width(500)

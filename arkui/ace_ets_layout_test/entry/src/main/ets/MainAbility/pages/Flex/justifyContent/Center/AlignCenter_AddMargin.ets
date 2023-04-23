@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 
-import {MessageManager,Callback} from './../../../../common/MessageManager';
+import { MessageManager, Callback } from './../../../../common/MessageManager';
 @Entry
 @Component
 struct AlignCenter_AddMargin {
-  @State DadMargin: number = 10
-  messageManager:MessageManager = new MessageManager()
+  @State DadMargin: number = 10;
+  messageManager:MessageManager = new MessageManager();
   onPageShow() {
-    console.info('AlignSpaceEvenly_AddMargin onPageShow');
+    console.info('AlignCenter_AddMargin onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'DadMargin') {
         this.DadMargin = message.value;
       }
@@ -36,9 +36,9 @@ struct AlignCenter_AddMargin {
   build() {
       Column() {
         Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key("Center_AddMargin_011")
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("Center_AddMargin_012")
-          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("Center_AddMargin_013")
+          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key("Center_AddMargin_011");
+          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("Center_AddMargin_012");
+          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("Center_AddMargin_013");
         }
         .key("Center_AddMargin_01")
         .width(500)

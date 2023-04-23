@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignSpaceEvenly_NoSpace() {
   describe('AlignSpaceEvenly_NoSpace', function () {
     beforeEach(async function (done) {
@@ -47,12 +46,12 @@ export default function AlignSpaceEvenly_NoSpace() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0100
-     * @tc.name      Align_SpaceEvenly_Row_ChangeWidth
+     * @tc.name      testFlexAlignSpaceEvenlyFlexWidthOverflow
      * @tc.desc      The parent component layout space does not meet the interface display of the spindle layout of
      * the child component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0100] START');
+    it('testFlexAlignSpaceEvenlyFlexWidthOverflow', 0, async function (done) {
+      console.info('[testFlexAlignSpaceEvenlyFlexWidthOverflow] START');
       globalThis.value.message.notify({name:'DadWidth', value:400});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_NoSpace_01');
@@ -85,12 +84,12 @@ export default function AlignSpaceEvenly_NoSpace() {
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0200
-     * @tc.name      Align_SpaceEvenly_Row_ChangeWidth
+     * @tc.name      testFlexAlignSpaceEvenlyFlexWidthMeet
      * @tc.desc      The interface display where the parent component layout space satisfies the spindle layout of
      * the child component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0200', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0200] START');
+    it('testFlexAlignSpaceEvenlyFlexWidthMeet', 0, async function (done) {
+      console.info('[testFlexAlignSpaceEvenlyFlexWidthMeet] START');
       let strJson = getInspectorByKey('SpaceEvenly_NoSpace_01');
       globalThis.value.message.notify({name:'DadWidth', value:500});
       await CommonFunc.sleep(3000);
@@ -119,7 +118,7 @@ export default function AlignSpaceEvenly_NoSpace() {
       expect(Math.round(SpaceEvenly_NoSpace_011.bottom - SpaceEvenly_NoSpace_011.top)).assertEqual(vp2px(50));
       expect(Math.round(SpaceEvenly_NoSpace_012.bottom - SpaceEvenly_NoSpace_012.top)).assertEqual(vp2px(100));
       expect(Math.round(SpaceEvenly_NoSpace_013.bottom - SpaceEvenly_NoSpace_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0200] END');
+      console.info('[testFlexAlignSpaceEvenlyFlexWidthMeet] END');
       done();
     });
   });

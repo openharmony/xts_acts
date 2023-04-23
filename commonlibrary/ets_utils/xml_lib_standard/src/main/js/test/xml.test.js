@@ -1053,39 +1053,14 @@ describe('XmlSerializerXmlPullParserTest', function () {
             bufView[i] = strXml.charCodeAt(i);
         }
         var that = new xml.XmlPullParser(arrayBuffer, 'UTF-8');
-        var arr = {};
-        var i = 0;
-        function func3(key, info){
-            arr[i] = 'key:' + JSON.stringify(key) + info.getDepth() + info.getColumnNumber() + info.getLineNumber() +
-            info.getAttributeCount() + info.getName() + info.getNamespace() + info.getPrefix() + info.getText() +
-            info.isEmptyElementTag()+ info.isWhitespace();
-            i++;
+        var str = '';
+        function func2(name, value){
+            str += name+':'+value;
             return true;
         }
-        var options = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func3}
+        var options = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func2}
         that.parse(options);
-        var str = '';
-        for(var j = 0; j < i; ++j) {
-            str = str + arr[j];
-        }
-        var str1 = 'key:00110falsetruekey:702220 note [\n<!ENTITY foo "baa">]falsefalsekey:216022notefalsefalsekey:' +
-        '1016420    falsetruekey:51470\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870    ' +
-        'falsetruekey:612870Hello, World!falsetruekey:1013270    falsetruekey:224170companyfalsetruekey:424670John ' +
-        'falsefalsekey:925170amp;amp;falsetruekey:425670 Hansfalsefalsekey:326670companyfalsetruekey:1017070    ' +
-        'falsetruekey:227770titlefalsetruekey:428270Happyfalsefalsekey:329070titlefalsetruekey:1019470    ' +
-        'falsetruekey:2210170titlefalsetruekey:4210670Happyfalsefalsekey:3211470titlefalsetruekey:10111870    ' +
-        'falsetruekey:2212470lensfalsetruekey:4212870Workfalsefalsekey:3213570lensfalsetruekey:10113970    ' +
-        'falsetruekey:2214570lensfalsetruekey:4214970Playfalsefalsekey:3215670lensfalsetruekey:10116070    ' +
-        'falsetruekey:8117270go therefalsetruekey:10117670    falsetruekey:2217970afalsetruekey:' +
-        '2318370btruetruekey:3318370bfalsetruekey:3218770afalsetruekey:10119170    falsetruekey:2223870table' +
-        'http://www.w3.org/TR/html4/hfalsefalsekey:10224670        ' +
-        'falsetruekey:2325270trhttp://www.w3.org/TR/html4/hfalsetruekey:10326470            ' +
-        'falsetruekey:2427070tdhttp://www.w3.org/TR/html4/hfalsetruekey:4427670Applesfalsefalsekey:3428370td' +
-        'http://www.w3.org/TR/html4/hfalsetruekey:10329570            ' +
-        'falsetruekey:2430170tdhttp://www.w3.org/TR/html4/hfalsetruekey:4430870Bananasfalsefalsekey:3431570td' +
-        'http://www.w3.org/TR/html4/hfalsetruekey:10332370        falsetruekey:3333070tr' +
-        'http://www.w3.org/TR/html4/hfalsetruekey:10233470    falsetruekey:3234470table' +
-        'http://www.w3.org/TR/html4/hfalsetruekey:3135170notefalsetruekey:10351130falsetrue';
+        var str1= 'importance:highlogged:truexmlns:h:http://www.w3.org/TR/html4/';
         expect(str).assertEqual(str1);
     })
 
@@ -1120,38 +1095,20 @@ describe('XmlSerializerXmlPullParserTest', function () {
         for (var i = 0; i < strLen; ++i) {
             bufView[i] = strXml.charCodeAt(i);
         }
-        var that = new xml.XmlPullParser(arrayBuffer);
-        var arr = {};
-        var i = 0;
-        function func3(key, info){
-            arr[i] = 'key:' + JSON.stringify(key) + info.getDepth() + info.getColumnNumber() + info.getLineNumber() +
-            info.getAttributeCount() + info.getName() + info.getNamespace() + info.getPrefix() + info.getText() +
-            info.isEmptyElementTag()+ info.isWhitespace();
-            i++;
+        var that = new xml.XmlPullParser(arrayBuffer, 'UTF-8');
+        var str1 = '';
+        function func1(name, value){
+            str1 += name + value + ' ';
             return true;
         }
-        var options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func3}
+        var options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func1}
         that.parse(options);
-        var str = '';
-        for(var j = 0; j < i; ++j) {
-            str = str + arr[j];
-        }
-        var str1 = 'key:00110falsetruekey:702220 note [\n<!ENTITY foo "baa">]falsefalsekey:216022notefalsefalsekey:' +
-        '1016420    falsetruekey:51470\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870    ' +
-        'falsetruekey:612870Hello, World!falsetruekey:1013270    falsetruekey:224170companyfalsetruekey:424670' +
-        'John falsefalsekey:925170amp;amp;falsetruekey:425670 Hansfalsefalsekey:326670companyfalsetruekey:1017070' +
-        '    falsetruekey:227770titlefalsetruekey:428270Happyfalsefalsekey:329070titlefalsetruekey:1019470    ' +
-        'falsetruekey:2210170titlefalsetruekey:4210670Happyfalsefalsekey:3211470titlefalsetruekey:10111870    ' +
-        'falsetruekey:2212470lensfalsetruekey:4212870Workfalsefalsekey:3213570lensfalsetruekey:10113970    ' +
-        'falsetruekey:2214570lensfalsetruekey:4214970Playfalsefalsekey:3215670lensfalsetruekey:10116070    ' +
-        'falsetruekey:8117270go therefalsetruekey:10117670    falsetruekey:2217970afalsetruekey:' +
-        '2318370btruetruekey:3318370bfalsetruekey:3218770afalsetruekey:10119170    falsetruekey:' +
-        '2223871h:tablefalsefalsekey:10224670        falsetruekey:2325270h:trfalsetruekey:10326470            ' +
-        'falsetruekey:2427070h:tdfalsetruekey:4427670Applesfalsefalsekey:3428370h:tdfalsetruekey:' +
-        '10329570            falsetruekey:2430170h:tdfalsetruekey:4430870Bananasfalsefalsekey:3431570h:' +
-        'tdfalsetruekey:10332370        falsetruekey:3333070h:trfalsetruekey:10233470    falsetruekey:3234470h:' +
-        'tablefalsetruekey:3135170notefalsetruekey:10351130falsetrue'
-        expect(str).assertEqual(str1);
+        var str3 = '  note [<!ENTITY foo "baa">] note      funcrion matchwo(a,6){return 1;}      Hello, World!      ' +
+                   'company John  amp;amp;  Hans company      title Happy title      title Happy title      ' +
+                   'lens Work lens      lens Play lens      go there      a b b a      h:table          ' +
+                   'h:tr              h:td Apples h:td              h:td Bananas h:td          h:tr      ' +
+                   'h:table note  ';
+        expect(str1).assertEqual(str3)
     })
 
     /**
@@ -1159,65 +1116,31 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Starts parsing the XML file.
      */
     it('testParse003', 0, function () {
-        var strXml =
-            '<?xml version="1.0" encoding="utf-8"?>' +
-            '<!DOCTYPE note [\n<!ENTITY foo "baa">]>' +
-            '<note importance="high" logged="true">' +
-            '    <![CDATA[\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\n]]>' +
-            '    <!--Hello, World!-->' +
-            '    <company>John &amp; Hans</company>' +
-            '    <title>Happy</title>' +
-            '    <title>Happy</title>' +
-            '    <lens>Work</lens>' +
-            '    <lens>Play</lens>' +
-            '    <?go there?>' +
-            '    <a><b/></a>' +
-            '    <h:table xmlns:h="http://www.w3.org/TR/html4/">' +
-            '        <h:tr>' +
-            '            <h:td>Apples</h:td>' +
-            '            <h:td>Bananas</h:td>' +
-            '        </h:tr>' +
-            '    </h:table>' +
-            '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length);
-        var bufView = new Uint8Array(arrayBuffer);
-        var strLen = strXml.length;
-        for (var i = 0; i < strLen; ++i) {
-            bufView[i] = strXml.charCodeAt(i);
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
         }
-        var that = new xml.XmlPullParser(arrayBuffer, 'UTF-8');
-        var arr = {};
-        var i = 0;
-        function func3(key, info){
-            arr[i] = 'key:' + JSON.stringify(key) + info.getDepth() + info.getColumnNumber() + info.getLineNumber() +
-            info.getAttributeCount() + info.getName() + info.getNamespace() + info.getPrefix() + info.getText() +
-            info.isEmptyElementTag()+ info.isWhitespace();
-            i++;
-            return true;
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:' + key + ' value:'+ value.getColumnNumber() + '  ';
+          return true;
         }
-        var options = {supportDoctype:false, ignoreNameSpace:true, tokenValueCallbackFunction:func3}
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
         that.parse(options);
-        var str = '';
-        for(var j = 0; j < i; ++j) {
-            str = str + arr[j];
-        }
-        var str1 = 'key:00110falsetruekey:216022notefalsefalsekey:1016420    falsetruekey:51470\r\nfuncrion ' +
-        'matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\nfalsetruekey:101870    falsetruekey:612870Hello, World!falsetruekey' +
-        ':1013270    falsetruekey:224170companyfalsetruekey:424670John falsefalsekey:925170amp;amp;falsetruekey' +
-        ':425670 Hansfalsefalsekey:326670companyfalsetruekey:1017070    falsetruekey:227770titlefalsetruekey:428' +
-        '270Happyfalsefalsekey:329070titlefalsetruekey:1019470    falsetruekey:2210170titlefalsetruekey:4210670' +
-        'Happyfalsefalsekey:3211470titlefalsetruekey:10111870    falsetruekey:2212470lensfalsetruekey:4212870' +
-        'Workfalsefalsekey:3213570lensfalsetruekey:10113970    falsetruekey:2214570lensfalsetruekey:4214970' +
-        'Playfalsefalsekey:3215670lensfalsetruekey:10116070    falsetruekey:8117270go therefalsetruekey' +
-        ':10117670    falsetruekey:2217970afalsetruekey:2318370btruetruekey:3318370bfalsetruekey' +
-        ':3218770afalsetruekey:10119170    falsetruekey:2223871h:tablefalsefalsekey:10224670        ' +
-        'falsetruekey:2325270h:trfalsetruekey:10326470            falsetruekey:' +
-        '2427070h:tdfalsetruekey:4427670Applesfalsefalsekey:3428370h:tdfalsetruekey:10329570            ' +
-        'falsetruekey:2430170h:tdfalsetruekey:4430870Bananasfalsefalsekey:3431570h:tdfalsetruekey:10332370       ' +
-        ' falsetruekey:3333070h:trfalsetruekey:10233470    falsetruekey:3234470h:tablefalsetruekey:' +
-        '3135170notefalsetruekey:10351130falsetrue'
-        expect(str).assertEqual(str1);
-
+        let result = 'key:0 value:1  key:2 value:77  key:10 value:81  key:2 value:88  key:4 value:93  ' +
+        'key:3 value:101  key:10 value:105  key:2 value:111  key:4 value:115  key:3 value:122  key:10 value:126  ' +
+        'key:2 value:132  key:4 value:136  key:3 value:143  key:3 value:150  key:1 value:299  ';
+        expect(str).assertEqual(result);
     })
 
     /**
@@ -1225,42 +1148,31 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Starts parsing the XML file.
      */
     it('testParse004', 0, function () {
-        var strXml =
-            '<?xml version="1.0" encoding="utf-8"?>' +
-            '<!DOCTYPE note [\n<!ENTITY foo "baa">]>' +
-            '<note importance="high" logged="true">' +
-            '    <![CDATA[\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\n]]>' +
-            '    <!--Hello, World!-->' +
-            '    <company>John &amp; Hans</company>' +
-            '    <title>Happy</title>' +
-            '    <title>Happy</title>' +
-            '    <lens>Work</lens>' +
-            '    <lens>Play</lens>' +
-            '    <?go there?>' +
-            '    <a><b/></a>' +
-            '    <h:table xmlns:h="http://www.w3.org/TR/html4/">' +
-            '        <h:tr>' +
-            '            <h:td>Apples</h:td>' +
-            '            <h:td>Bananas</h:td>' +
-            '        </h:tr>' +
-            '    </h:table>' +
-            '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length);
-        var bufView = new Uint8Array(arrayBuffer);
-        var strLen = strXml.length;
-        for (var i = 0; i < strLen; ++i) {
-            bufView[i] = strXml.charCodeAt(i);
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
         }
-        var that = new xml.XmlPullParser(arrayBuffer, 'UTF-8');
-        var str = '';
-        function func2(name, value){
-            str += name+':'+value;
-            return true;
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:' + key + ' value:'+ value.getDepth() + '  ';
+          return true;
         }
-        var options = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func2}
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
         that.parse(options);
-        var str1= 'importance:highlogged:truexmlns:h:http://www.w3.org/TR/html4/';
-        expect(str).assertEqual(str1);
+        let result = 'key:0 value:0  key:2 value:1  key:10 value:1  key:2 value:2  key:4 value:2  key:3 value:2  ' +
+        'key:10 value:1  key:2 value:2  key:4 value:2  key:3 value:2  key:10 value:1  key:2 value:2  ' +
+        'key:4 value:2  key:3 value:2  key:3 value:1  key:1 value:0  ';
+        expect(str).assertEqual(result);
     })
 
     /**
@@ -1268,42 +1180,257 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Starts parsing the XML file.
      */
     it('testParse005', 0, function () {
-        var strXml =
-            '<?xml version="1.0" encoding="utf-8"?>' +
-            '<!DOCTYPE note [\n<!ENTITY foo "baa">]>' +
-            '<note importance="high" logged="true">' +
-            '    <![CDATA[\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\n]]>' +
-            '    <!--Hello, World!-->' +
-            '    <company>John &amp; Hans</company>' +
-            '    <title>Happy</title>' +
-            '    <title>Happy</title>' +
-            '    <lens>Work</lens>' +
-            '    <lens>Play</lens>' +
-            '    <?go there?>' +
-            '    <a><b/></a>' +
-            '    <h:table xmlns:h="http://www.w3.org/TR/html4/">' +
-            '        <h:tr>' +
-            '            <h:td>Apples</h:td>' +
-            '            <h:td>Bananas</h:td>' +
-            '        </h:tr>' +
-            '    </h:table>' +
-            '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length);
-        var bufView = new Uint8Array(arrayBuffer);
-        var strLen = strXml.length;
-        for (var i = 0; i < strLen; ++i) {
-            bufView[i] = strXml.charCodeAt(i);
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
         }
-        var that = new xml.XmlPullParser(arrayBuffer, 'UTF-8');
-        var str1 = '';
-        function func1(name, value){
-            str1 += name+':'+value;
-            return true;
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:'+ key + ' value:' + value.getLineNumber() + '  ';
+          return true;
         }
-        var options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func1}
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
         that.parse(options);
-        var str3 = 'note:company:title:title:lens:lens:a:b:h:table:h:tr:h:td:h:td:'
-        expect(str1).assertEqual(str3)
+        let result = 'key:0 value:1  key:2 value:1  key:10 value:1  key:2 value:1  key:4 value:1  key:3 value:1  ' +
+        'key:10 value:1  key:2 value:1  key:4 value:1  key:3 value:1  key:10 value:1  key:2 value:1  ' +
+        'key:4 value:1  key:3 value:1  key:3 value:1  key:1 value:1  ';
+        expect(str).assertEqual(result);
+    })
+
+    /**
+     * @tc.name: testParse006
+     * @tc.desc: Starts parsing the XML file.
+     */
+    it('testParse006', 0, function () {
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
+        }
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:' + key + ' value:' + value.getName() + '  ';
+          return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        that.parse(options);
+        let result = 'key:0 value:  key:2 value:note  key:10 value:  key:2 value:title  key:4 value:  ' +
+        'key:3 value:title  key:10 value:  key:2 value:todo  key:4 value:  key:3 value:todo  key:10 value:  ' +
+        'key:2 value:todo  key:4 value:  key:3 value:todo  key:3 value:note  key:1 value:  ';
+        expect(str).assertEqual(result);
+    })
+
+    /**
+     * @tc.name: testParse007
+     * @tc.desc: Starts parsing the XML file.
+     */
+    it('testParse007', 0, function () {
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
+        }
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:' + key + ' value:'+ value.getNamespace() + '  ';
+          return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        that.parse(options);
+        let result = 'key:0 value:  key:2 value:  key:10 value:  key:2 value:  key:4 value:  key:3 value:  ' +
+        'key:10 value:  key:2 value:  key:4 value:  key:3 value:  key:10 value:  key:2 value:  key:4 value:  ' +
+        'key:3 value:  key:3 value:  key:1 value:  ';
+        expect(str).assertEqual(result);
+    })
+
+    /**
+     * @tc.name: testParse008
+     * @tc.desc: Starts parsing the XML file.
+     */
+    it('testParse008', 0, function () {
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
+        }
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:'+key+' value:'+ value.getPrefix() + '  ';
+          return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        that.parse(options);
+        let result = 'key:0 value:  key:2 value:  key:10 value:  key:2 value:  key:4 value:  key:3 value:  ' +
+        'key:10 value:  key:2 value:  key:4 value:  key:3 value:  key:10 value:  key:2 value:  key:4 value:  ' +
+        'key:3 value:  key:3 value:  key:1 value:  ';
+        expect(str).assertEqual(result);
+    })
+
+    /**
+     * @tc.name: testParse009
+     * @tc.desc: Starts parsing the XML file.
+     */
+    it('testParse009', 0, function () {
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
+        }
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:' + key +' value:' + value.getText() + '  ';
+          return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        that.parse(options);
+        let result = 'key:0 value:  key:2 value:  key:10 value:      key:2 value:  key:4 value:Happy  ' +
+        'key:3 value:  key:10 value:      key:2 value:  key:4 value:Work  key:3 value:  key:10 value:      ' +
+        'key:2 value:  key:4 value:Play  key:3 value:  key:3 value:  key:1 value:  ';
+        expect(str).assertEqual(result);
+    })
+
+    /**
+     * @tc.name: testParse010
+     * @tc.desc: Starts parsing the XML file.
+     */
+    it('testParse010', 0, function () {
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
+        }
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:' + key +' value:' + value.isEmptyElementTag() + '  ';
+          return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        that.parse(options);
+        let result = 'key:0 value:false  key:2 value:false  key:10 value:false  key:2 value:false  ' +
+        'key:4 value:false  key:3 value:false  key:10 value:false  key:2 value:false  key:4 value:false  ' +
+        'key:3 value:false  key:10 value:false  key:2 value:false  key:4 value:false  key:3 value:false  ' +
+        'key:3 value:false  key:1 value:false  ';
+        expect(str).assertEqual(result);
+    })
+
+    /**
+     * @tc.name: testParse011
+     * @tc.desc: Starts parsing the XML file.
+     */
+    it('testParse011', 0, function () {
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
+        }
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:' + key +' value:' + value.isWhitespace() + '  ';
+          return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        that.parse(options);
+        let result = 'key:0 value:true  key:2 value:false  key:10 value:true  key:2 value:true  ' +
+        'key:4 value:false  key:3 value:true  key:10 value:true  key:2 value:true  key:4 value:false  ' +
+        'key:3 value:true  key:10 value:true  key:2 value:true  key:4 value:false  key:3 value:true  ' +
+        'key:3 value:true  key:1 value:true  ';
+        expect(str).assertEqual(result);
+    })
+
+     /**
+     * @tc.name: testParse012
+     * @tc.desc: Starts parsing the XML file.
+     */
+    it('testParse012', 0, function () {
+        let strXml =
+        '<?xml version="1.0" encoding="utf-8"?>' +
+        '<note importance="high" logged="true">' +
+        '    <title>Happy</title>' +
+        '    <todo>Work</todo>' +
+        '    <todo>Play</todo>' +
+        '</note>';
+        let arrayBuffer = new ArrayBuffer(strXml.length);
+        let bufView = new Uint8Array(arrayBuffer);
+        let strLen = strXml.length;
+        for (let tmp = 0; tmp < strLen; ++tmp) {
+          bufView[tmp] = strXml.charCodeAt(tmp);
+        }
+        let that = new xml.XmlPullParser(arrayBuffer);
+        let str = "";
+        function func(key, value){
+          str += 'key:' + key +' value:' + value.getAttributeCount() + '  ';
+          return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
+        that.parse(options);
+        let result = 'key:0 value:0  key:2 value:2  key:10 value:0  key:2 value:0  key:4 value:0  ' +
+        'key:3 value:0  key:10 value:0  key:2 value:0  key:4 value:0  key:3 value:0  key:10 value:0  ' +
+        'key:2 value:0  key:4 value:0  key:3 value:0  key:3 value:0  key:1 value:0  ';
+        expect(str).assertEqual(result);
     })
 
     /**

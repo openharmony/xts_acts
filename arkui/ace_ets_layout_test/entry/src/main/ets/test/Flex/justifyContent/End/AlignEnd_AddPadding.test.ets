@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignEnd_AddPadding() {
   describe('AlignEnd_AddPadding', function () {
     beforeEach(async function (done) {
@@ -47,12 +46,12 @@ export default function AlignEnd_AddPadding() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0300
-     * @tc.name      Align_End_Row_AddPadding
+     * @tc.name      testFlexAlignEndFlexPadOverflow
      * @tc.desc      After subtracting the padding from the parent component layout space, the interface
      * display that does not meet the spindle layout of the child component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0300', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0300] START');
+    it('testFlexAlignEndFlexPadOverflow', 0, async function (done) {
+      console.info('[testFlexAlignEndFlexPadOverflow] START');
       globalThis.value.message.notify({name:'DadPadding', value:30})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddPadding_01');
@@ -77,17 +76,17 @@ export default function AlignEnd_AddPadding() {
       expect(Math.round(End_AddPadding_011.right - End_AddPadding_011.left)).assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(End_AddPadding_012.right - End_AddPadding_012.left)).assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(End_AddPadding_013.right - End_AddPadding_013.left)).assertEqual(Math.round(vp2px(440/3)));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0300] END');
+      console.info('[testFlexAlignEndFlexPadOverflow] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0400
-     * @tc.name      Align_End_Row_AddPadding
+     * @tc.name      testFlexAlignEndFlexPadMeet
      * @tc.desc      After subtracting the padding from the parent component layout space, the interface that
      * satisfies the spindle layout of the child component is displayed
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0400', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0400] START');
+    it('testFlexAlignEndFlexPadMeet', 0, async function (done) {
+      console.info('[testFlexAlignEndFlexPadMeet] START');
       globalThis.value.message.notify({name:'DadPadding', value:20})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('End_AddPadding_01');
@@ -112,7 +111,7 @@ export default function AlignEnd_AddPadding() {
       expect(Math.round(End_AddPadding_011.bottom - End_AddPadding_011.top)).assertEqual(vp2px(50));
       expect(Math.round(End_AddPadding_012.bottom - End_AddPadding_012.top)).assertEqual(vp2px(100));
       expect(Math.round(End_AddPadding_013.bottom - End_AddPadding_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_END_TEST_0400] END');
+      console.info('[testFlexAlignEndFlexPadMeet] END');
       done();
     });
   })

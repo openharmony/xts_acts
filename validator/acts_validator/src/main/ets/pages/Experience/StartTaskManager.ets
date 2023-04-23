@@ -20,13 +20,14 @@ import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
 let path = globalThis.dir;
-let Xpath = path + '/CompleteTimeLauncher.log';
+let path1 = path + '/ExperienceData';
+let Xpath = path1 + '/CompleteTimeLauncher.log';
 
 @Entry
 @Component
 struct CustomContainerUser {
   @State name: string = 'StartTaskManager';
-  @State StepTips: string = '操作步骤：根据操作提示打开任务管理器'+'\n'+'预期结果：打开任务管理器时延低于1000ms测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示打开任务管理器'+'\n'+'预期结果：打开任务管理器时延小于1000ms测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State time: string = '0';
@@ -44,9 +45,10 @@ struct CustomContainerUser {
               .fontColor(Color.White).fontSize('24fp')
           }
           Row(){
-            Text(`测试步骤:`+ '\n' + '\n' +`1.点击开始键进入桌面` + '\n' + '\n' + `2.双击执行.bat选择完成时延>启动任务管理器`+
-            '\n' + '\n' +`3.点击右下角方框开启任务管理器` + '\n' + '\n' + '4.待脚本执行结束回到Validator点击停止键'
-            + '\n' + '\n' + `5.若启动任务管理器时延小于或等于1000ms则通过测试` + '\n' + '\n' + '\n' + '\n' )
+            Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入桌面` + '\n' + '\n'
+            + `3.工作台运行’点击启动测试.bat‘选择完成时延>启动任务管理器`+ '\n' + '\n' +`4.点击右下角方框开启任务管理器` + '\n' + '\n'
+            + '5.待脚本执行结束回到Validator点击结束键' + '\n' + '\n' + `6.若启动任务管理器时延小于或等于1000ms则通过测试`
+            + '\n' + '\n' + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
           }
           Row(){

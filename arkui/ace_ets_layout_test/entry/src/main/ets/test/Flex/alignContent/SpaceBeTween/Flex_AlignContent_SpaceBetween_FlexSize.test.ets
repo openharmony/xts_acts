@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
   describe('Flex_AlignContent_SpaceBetween_FlexSizeTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceBetween_FlexSize beforeEach start");
+      console.info("Flex_AlignContent_SpaceBetween_FlexSizeTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexSize',
       }
@@ -37,6 +36,7 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceBetween_FlexSize page error:" + err);
       }
+      console.info("Flex_AlignContent_SpaceBetween_FlexSizeTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -45,12 +45,12 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0600
-     * @tc.name      alignContent_SpaceAround_FlexSize
+     * @tc.name      testFlexAlignContentSpaceAroundFlexSizeMeet
      * @tc.desc      The size of the parent component in the cross direction meets the layout
      *               of the child components when the height and width of parent component changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0600', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0600] START');
+    it('testFlexAlignContentSpaceAroundFlexSizeMeet', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundFlexSizeMeet] START');
       globalThis.value.message.notify({name:'width', value:200})
       globalThis.value.message.notify({name:'height', value:400})
       await CommonFunc.sleep(3000);
@@ -68,28 +68,28 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //四个子组件的高度分别为50、100、50、100
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
       expect(fourthText.left).assertEqual(flexContainer.left);
       expect(firstText.top).assertEqual(flexContainer.top);
-      expect(fourthText.bottom).assertEqual(flexContainer.bottom); //行首行尾贴边
+      expect(fourthText.bottom).assertEqual(flexContainer.bottom);
 
       expect(Math.round(secondText.top - firstText.bottom)).assertEqual(Math.round(thirdText.top - secondText.bottom));
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //行间距相等
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0600] END');
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
+      console.info('[testFlexAlignContentSpaceAroundFlexSizeMeet] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0700
-     * @tc.name      alignContent_SpaceAround_FlexSize
+     * @tc.name      testFlexAlignContentSpaceAroundFlexSizeOverflow
      * @tc.desc      The size of the parent component in the cross direction is not enough for the layout
      *               of the child components when the height and width of parent component changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0700', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0700] START');
+    it('testFlexAlignContentSpaceAroundFlexSizeOverflow', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundFlexSizeOverflow] START');
       globalThis.value.message.notify({name:'width', value:200})
       globalThis.value.message.notify({name:'height', value:250})
       await CommonFunc.sleep(3000);
@@ -107,20 +107,20 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //四个子组件的高度分别为50、100、50、100
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
       expect(firstText.top).assertEqual(flexContainer.top);
       expect(firstText.bottom).assertEqual(secondText.top);
       expect(secondText.bottom).assertEqual(thirdText.top);
-      expect(thirdText.bottom).assertEqual(fourthText.top); //无行间距
+      expect(thirdText.bottom).assertEqual(fourthText.top);
 
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
       expect(fourthText.left).assertEqual(flexContainer.left);
 
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(50)); //行首贴边行尾溢出
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0700] END');
+      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(50));
+      console.info('[testFlexAlignContentSpaceAroundFlexSizeOverflow] END');
       done();
     });
   })

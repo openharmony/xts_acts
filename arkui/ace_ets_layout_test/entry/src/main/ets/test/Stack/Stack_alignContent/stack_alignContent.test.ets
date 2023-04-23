@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function Stack_AlignContent() {
   describe('Stack_AlignContent_Test', function () {
     beforeEach(async function (done) {

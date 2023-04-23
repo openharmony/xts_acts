@@ -47,8 +47,8 @@ struct Flex_Wrap_Visibility{
 
   }
   build(){
-    Column({space:30}){
-      Flex({wrap:FlexWrap.Wrap}){
+    Column({ space:30 }){
+      Flex({ wrap:FlexWrap.Wrap }){
         Text('1').width(this.firstTextWidth).height(100).backgroundColor(0xF5DEB3)
           .visibility(this.testVisibility).key('Wrap_Text_Visibility1');
         Text('2').width(this.secondTextWidth).height(150).backgroundColor(0xD2B48C).key('Wrap_Text_Visibility2');

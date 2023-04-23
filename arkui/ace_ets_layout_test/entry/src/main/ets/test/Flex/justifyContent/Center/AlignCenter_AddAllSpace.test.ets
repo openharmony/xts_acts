@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignCenter_AddAllSpace() {
   describe('AlignCenter_AddAllSpace', function () {
     beforeEach(async function (done) {
@@ -47,12 +46,11 @@ export default function AlignCenter_AddAllSpace() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0600
-     * @tc.name      Align_Center_Row_AddAllSpace
-     * @tc.desc      After setting margin, after subtracting the padding from the layout space of the parent component,
-     * the interface display of the spindle layout that does not meet the sub-component
+     * @tc.name      testFlexAlignCenterFlexSpaceOverflow
+     * @tc.desc      the space of parent component set to 30
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0600', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0600] START');
+    it('testFlexAlignCenterFlexSpaceOverflow', 0, async function (done) {
+      console.info('[testFlexAlignCenterFlexSpaceOverflow] START');
       globalThis.value.message.notify({name:'DadAllSpace', value:30})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddAllSpace_01');
@@ -77,20 +75,22 @@ export default function AlignCenter_AddAllSpace() {
       expect(Math.round(Center_AddAllSpace_011.bottom - Center_AddAllSpace_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Center_AddAllSpace_012.bottom - Center_AddAllSpace_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Center_AddAllSpace_013.bottom - Center_AddAllSpace_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddAllSpace_011.right - Center_AddAllSpace_011.left)).assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(Center_AddAllSpace_012.right - Center_AddAllSpace_012.left)).assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(Center_AddAllSpace_013.right - Center_AddAllSpace_013.left)).assertEqual(Math.round(vp2px(440/3)));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0600] END');
+      expect(Math.round(Center_AddAllSpace_011.right - Center_AddAllSpace_011.left))
+        .assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(Center_AddAllSpace_012.right - Center_AddAllSpace_012.left))
+        .assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(Center_AddAllSpace_013.right - Center_AddAllSpace_013.left))
+        .assertEqual(Math.round(vp2px(440/3)));
+      console.info('[testFlexAlignCenterFlexSpaceOverflow] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0700
-     * @tc.name      Align_Center_Row_AddAllSpace
-     * @tc.desc      After setting margin, the interface that satisfies the spindle layout of the child component is
-     * displayed after subtracting the padding from the layout space of the parent component
+     * @tc.name      testFlexAlignCenterFlexSpaceMeet
+     * @tc.desc      the space of parent component set to 20
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0700', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0700] START');
+    it('testFlexAlignCenterFlexSpaceMeet', 0, async function (done) {
+      console.info('[testFlexAlignCenterFlexSpaceMeet] START');
       globalThis.value.message.notify({name:'DadAllSpace', value:20});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddAllSpace_01');
@@ -120,7 +120,7 @@ export default function AlignCenter_AddAllSpace() {
       expect(Math.round(Center_AddAllSpace_011.right - Center_AddAllSpace_011.left)).assertEqual(vp2px(150));
       expect(Math.round(Center_AddAllSpace_012.right - Center_AddAllSpace_012.left)).assertEqual(vp2px(150));
       expect(Math.round(Center_AddAllSpace_013.right - Center_AddAllSpace_013.left)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0700] END');
+      console.info('[testFlexAlignCenterFlexSpaceMeet] END');
       done();
     });
   })

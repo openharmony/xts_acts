@@ -4562,60 +4562,80 @@ describe('Base64HelperTest', function () {
 
 describe('DecodeEncodeTest', function () {
     /**
-     * @tc.name: testencoding_textdecoder_001
+     * @tc.name: testTextDecoderCreate001
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_001', 0, function () {
-        var that = util.TextDecoder.create('utf-8', { ignoreBOM : true })
+    it('testTextDecoderCreate001', 0, function () {
+        var  that = util.TextDecoder.create('utf-8', { ignoreBOM : true })
         var retStr = that.encoding
         expect(retStr).assertEqual('utf-8')
     })
 
     /**
-     * @tc.name: testencoding_textdecoder_002
+     * @tc.name: testTextDecoderCreate002
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_002', 0, function () {
+    it('testTextDecoderCreate002', 0, function () {
         var that = util.TextDecoder.create('utf-16le')
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16le')
     })
 
     /**
-     * @tc.name: testencoding_textdecoder_003
+     * @tc.name: testTextDecoderCreate003
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_003', 0, function () {
+    it('testTextDecoderCreate003', 0, function () {
         var that = util.TextDecoder.create('utf-16be')
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
 
     /**
-     * @tc.name: testencoding_textdecoder_004
+     * @tc.name: testTextDecoderCreate004
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_004', 0, function () {
+    it('testTextDecoderCreate004', 0, function () {
         var that = util.TextDecoder.create('utf-16be', { ignoreBOM : true })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
 
     /**
-     * @tc.name: testencoding_textdecoder_005
+     * @tc.name: testTextDecoderCreate005
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_005', 0, function () {
+    it('testTextDecoderCreate005', 0, function () {
         var that = util.TextDecoder.create('utf-16be', { ignoreBOM : false })
         var encodingStr = that.encoding
         expect(encodingStr).assertEqual('utf-16be')
     })
 
     /**
-     * @tc.name: testencoding_textdecoder_ThrowError_001
+     * @tc.name: testTextDecoderCreate006
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_ThrowError_001', 0, function () {
+    it('testTextDecoderCreate006', 0, function () {
+        var that = util.TextDecoder.create()
+        var encodingStr = that.encoding
+        expect(encodingStr).assertEqual('utf-8')
+    })
+
+    /**
+     * @tc.name: testTextDecoderCreate007
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreate007', 0, function () {
+        var that = util.TextDecoder.create({ ignoreBOM : false })
+        var encodingStr = that.encoding
+        expect(encodingStr).assertEqual('utf-8')
+    })
+
+    /**
+     * @tc.name: testTextDecoderCreateThrowError001
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreateThrowError001', 0, function () {
         try {
             var that = util.TextDecoder.create(123, { ignoreBOM : false })
             var encodingStr = that.encoding
@@ -4626,10 +4646,10 @@ describe('DecodeEncodeTest', function () {
     })
 
     /**
-     * @tc.name: testencoding_textdecoder_ThrowError_002
+     * @tc.name: testTextDecoderCreateThrowError002
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_ThrowError_002', 0, function () {
+    it('testTextDecoderCreateThrowError002', 0, function () {
         try {
             var that = util.TextDecoder.create('utf-16be', 'ignoreBOM')
             var encodingStr = that.encoding
@@ -4640,10 +4660,10 @@ describe('DecodeEncodeTest', function () {
     })
 
     /**
-     * @tc.name: testencoding_textdecoder_ThrowError_003
+     * @tc.name: testTextDecoderCreateThrowError003
      * @tc.desc: The source encoding's name, lowercased.
      */
-    it('testencoding_textdecoder_ThrowError_003', 0, function () {
+    it('testTextDecoderCreateThrowError003', 0, function () {
         try {
             var that = util.TextDecoder.create('utf-16be', 123)
             var encodingStr = that.encoding

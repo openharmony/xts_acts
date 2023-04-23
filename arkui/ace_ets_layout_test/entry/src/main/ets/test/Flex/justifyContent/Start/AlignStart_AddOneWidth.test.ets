@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignStart_AddOneWidth() {
   describe('AlignStart_AddOneWidth', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignStart_AddOneWidth() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1300
-     * @tc.name      Align_Start_Row_ChangeOneWidth
-     * @tc.desc      The interface is displayed when you change the spindle length (width) of the first subassembly
+     * @tc.name      testFlexAlignStartTextWidth
+     * @tc.desc      The interface is displayed when you change the width of the first subcomponent
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1300', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1300] START');
+    it('testFlexAlignStartTextWidth', 0, async function (done) {
+      console.info('[testFlexAlignStartTextWidth] START');
       globalThis.value.message.notify({name:'OneWidth', value:160});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddOneWidth_01');
@@ -76,7 +75,7 @@ export default function AlignStart_AddOneWidth() {
       expect(Math.round(Start_AddOneWidth_012.bottom - Start_AddOneWidth_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Start_AddOneWidth_013.bottom - Start_AddOneWidth_013.top)).assertEqual(vp2px(150));
       expect(Math.round(Start_AddOneWidth_01.right - Start_AddOneWidth_013.right)).assertEqual(vp2px(40));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1300] END');
+      console.info('[testFlexAlignStartTextWidth] END');
       done();
     });
   })

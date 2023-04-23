@@ -101,17 +101,18 @@ export default function TimePickerJsunit() {
       let switchButton = await driver.findComponent(BY.key('button'));
       await switchButton.click();
       await CommonFunc.sleep(1000);
-      let modeComponent = await driver.findComponent(BY.key('mode'));
-      let mode = await modeComponent.getText();
-      console.info("[TimePickerJsunit_0200] mode: " + JSON.stringify(mode));
-      expect(mode).assertEqual('24hour:true');
+      let strJson = getInspectorByKey('mode');
+      let obj = JSON.parse(strJson);
+      console.info("[TimePickerJsunit_0200] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('24hour:true');
 
       // Verify switch 12-hour
       await switchButton.click();
       await CommonFunc.sleep(1000);
-      let mode1 = await modeComponent.getText();
-      console.info("[TimePickerJsunit_0200] mode1: " + JSON.stringify(mode1));
-      expect(mode1).assertEqual('24hour:false');
+      let strJson1 = getInspectorByKey('mode');
+      let obj1 = JSON.parse(strJson1);
+      console.info("[TimePickerJsunit_0200] component obj1 is: " + JSON.stringify(obj1));
+      expect(obj1.$attrs.content).assertEqual('24hour:false');
       console.info('[TimePickerJsunit_0200] END');
       done();
     });
@@ -123,21 +124,20 @@ export default function TimePickerJsunit() {
       let switchButton = await driver.findComponent(BY.key('button'));
       await switchButton.click();
       await CommonFunc.sleep(1000);
-      let timePickerTop = CommonFunc.getComponentRect('timePicker');
-      let top = timePickerTop.top
-      let timePickerBottom = CommonFunc.getComponentRect('timePicker');
-      let bottom = timePickerBottom.bottom
-      let timePickerRight = CommonFunc.getComponentRect('timePicker');
-      let right = timePickerRight.right
+      let timePicker = CommonFunc.getComponentRect('timePicker');
+      let top = timePicker.top
+      let bottom = timePicker.bottom
+      let right = timePicker.right
       let middle = (top + bottom) / 2
 
       // Verify hour
       let hour = await driver.findComponent(BY.key('hour'));
       let hour1 = await hour.getText();
       console.info("[TimePickerJsunit_0300] hour1: " + JSON.stringify(hour1));
-      await driver.swipe(Math.round(right * 0.23), Math.round(middle + 100), Math.round(right * 0.23), Math.round(middle - 100));
+      await driver.swipe(Math.round(right * 0.24), Math.round(middle + 100), Math.round(right * 0.24), Math.round(middle - 100));
       await CommonFunc.sleep(1000);
-      let hour2 = await hour.getText();
+      let hourComponent = await driver.findComponent(BY.key('hour'));
+      let hour2 = await hourComponent.getText();
       console.info("[TimePickerJsunit_0300] hour2: " + JSON.stringify(hour2));
       expect(hour1 == hour2).assertFalse();
 

@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../../common/MessageManager';
 @Entry
 @Component
-struct FlexAlignContent_SpaceBetween_07{
-  @State testVisibility: number = Visibility.Visible
-  messageManager:MessageManager = new MessageManager()
+struct FlexAlign_SpaceBetween_TextVisibility{
+  @State testVisibility: number = Visibility.Visible;
+  messageManager:MessageManager = new MessageManager();
 
   onPageShow() {
-    console.info('FlexAlignContent_SpaceBetween_01 onPageShow');
+    console.info('FlexAlign_SpaceBetween_TextVisibility onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'visibility') {
         this.testVisibility = message.value;
       }
@@ -33,17 +33,17 @@ struct FlexAlignContent_SpaceBetween_07{
     this.messageManager.registerCallback(callback);
   }
   build(){
-    Column({space:30}){
-      Flex({wrap:FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween}){
+    Column({ space:30 }){
+      Flex({ wrap:FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }){
         Text('1')
           .width(150)
           .height(50)
           .backgroundColor(0xD2B48C)
           .key('AlignContent_SpaceBetween_TextVisibility01')
-          .visibility(this.testVisibility)
-        Text('2').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceBetween_TextVisibility02')
-        Text('3').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceBetween_TextVisibility03')
-        Text('4').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceBetween_TextVisibility04')
+          .visibility(this.testVisibility);
+        Text('2').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceBetween_TextVisibility02');
+        Text('3').width(150).height(50).backgroundColor(0xD2B48C).key('AlignContent_SpaceBetween_TextVisibility03');
+        Text('4').width(150).height(100).backgroundColor(0xF5DEB3).key('AlignContent_SpaceBetween_TextVisibility04');
       }
       .width(200)
       .height(400)

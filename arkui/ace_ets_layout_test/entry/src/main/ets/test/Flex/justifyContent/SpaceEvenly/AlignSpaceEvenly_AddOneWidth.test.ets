@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignSpaceEvenly_AddOneWidth() {
   describe('AlignSpaceEvenly_AddOneWidth', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignSpaceEvenly_AddOneWidth() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1400
-     * @tc.name      Align_SpaceEvenly_Row_ChangeOneWidth
+     * @tc.name      testFlexAlignSpaceEvenlyTextWidth
      * @tc.desc      The interface is displayed when you change the spindle length (width) of the first subassembly
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1400', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1400] START');
+    it('testFlexAlignSpaceEvenlyTextWidth', 0, async function (done) {
+      console.info('[testFlexAlignSpaceEvenlyTextWidth] START');
       globalThis.value.message.notify({name:'OneWidth', value:160});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddOneWidth_01');
@@ -77,7 +76,7 @@ export default function AlignSpaceEvenly_AddOneWidth() {
       expect(Math.round(SpaceEvenly_AddOneWidth_011.bottom - SpaceEvenly_AddOneWidth_011.top)).assertEqual(vp2px(50));
       expect(Math.round(SpaceEvenly_AddOneWidth_012.bottom - SpaceEvenly_AddOneWidth_012.top)).assertEqual(vp2px(100));
       expect(Math.round(SpaceEvenly_AddOneWidth_013.bottom - SpaceEvenly_AddOneWidth_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1400] END');
+      console.info('[testFlexAlignSpaceEvenlyTextWidth] END');
       done();
     });
   })

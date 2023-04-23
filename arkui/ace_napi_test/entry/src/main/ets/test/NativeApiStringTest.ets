@@ -1339,5 +1339,89 @@ export default function nativeApiStringJsunit() {
       expect(value).assertEqual(0);
       done();
     });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0093
+    * @tc.name      aceNapiTest093
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest093', 0, async function (done) {
+      console.info('aceNapiTest093 START');
+      let value = napitest.createAndGetStringUtf16('he');
+      console.info('aceNapiTest093 testString result is: ' + value + "--" + JSON.stringify(value));
+      let value1 = napitest.stringUtf16OfCase('abc2r42');
+      console.info('aceNapiTest093 testString result is: ' + value1 + "--" + JSON.stringify(value1));
+      expect(value).assertEqual('he');
+      expect(value1).assertEqual('abc2');
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0094
+    * @tc.name      aceNapiTest094
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest094', 0, async function (done) {
+      console.info('aceNapiTest094 START');
+      let valueeEmpty = napitest.createAndGetStringUtf16(' ');
+      console.info('aceNapiTest094 testString result is: ' + valueeEmpty + "--" + JSON.stringify(valueeEmpty));
+      expect(valueeEmpty).assertEqual(' ');
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0095
+    * @tc.name      aceNapiTest095
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest095', 0, async function (done) {
+      console.info('aceNapiTest095 START');
+      let obj1 = napitest.typeTaggedInstance(0);
+      let obj2 = napitest.typeTaggedInstance(1);
+      let obj3 = napitest.typeTaggedInstance(2);
+      let obj4 = napitest.typeTaggedInstance(3);
+      let isTag = napitest.checkTypeTag(0, obj1);
+      let isTag1 = napitest.checkTypeTag(1, obj2);
+      let isTag2 = napitest.checkTypeTag(2, obj3);
+      let isTag3 = napitest.checkTypeTag(3, obj4);
+      console.info('aceNapiTest095 testTypeTag result is: ' + isTag + "--" + JSON.stringify(isTag));
+      expect(isTag).assertTrue();
+      console.info('aceNapiTest095 testTypeTag result is: ' + isTag1 + "--" + JSON.stringify(isTag1));
+      expect(isTag1).assertTrue();
+      console.info('aceNapiTest095 testTypeTag result is: ' + isTag2 + "--" + JSON.stringify(isTag2));
+      expect(isTag2).assertTrue();
+      console.info('aceNapiTest095 testTypeTag result is: ' + isTag3 + "--" + JSON.stringify(isTag3));
+      expect(isTag3).assertTrue();
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0096
+    * @tc.name      aceNapiTest096
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest096', 0, async function (done) {
+      console.info('aceNapiTest096 START');
+      let obj1 = napitest.typeTaggedInstance(0);
+      let obj2 = napitest.typeTaggedInstance(1);
+      let obj3 = napitest.typeTaggedInstance(2);
+      let obj4 = napitest.typeTaggedInstance(3);
+      let isTag = napitest.checkTypeTag(1, obj1);
+      let isTag1 = napitest.checkTypeTag(0, obj2);
+      let isTag2 = napitest.checkTypeTag(1, obj4);
+      let isTag3 = napitest.checkTypeTag(3, obj3);
+      let isTag4 = napitest.checkTypeTag(4, obj3);
+      console.info('aceNapiTest096 testTypeTag result is: ' + isTag + "--" + JSON.stringify(isTag));
+      expect(isTag).assertFalse();
+      console.info('aceNapiTest096 testTypeTag result is: ' + isTag1 + "--" + JSON.stringify(isTag1));
+      expect(isTag1).assertFalse();
+      console.info('aceNapiTest096 testTypeTag result is: ' + isTag2 + "--" + JSON.stringify(isTag2));
+      expect(isTag2).assertFalse();
+      console.info('aceNapiTest096 testTypeTag result is: ' + isTag3 + "--" + JSON.stringify(isTag3));
+      expect(isTag3).assertFalse();
+      console.info('aceNapiTest096 testTypeTag result is: ' + isTag4 + "--" + JSON.stringify(isTag4));
+      expect(isTag4).assertFalse();
+      done();
+    });
   })
 }

@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignSpaceEvenly_AddVisibility() {
   describe('AlignSpaceEvenly_AddVisibility', function () {
     beforeEach(async function (done) {
@@ -47,137 +46,152 @@ export default function AlignSpaceEvenly_AddVisibility() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1000
-     * @tc.name      Align_SpaceEvenly_Row_AddVisibility
+     * @tc.name      textFlexAlignSpaceEvenlyTextVisibilityNone
      * @tc.desc      The subcomponent sets the visibility. None, the child components are hidden in the interface display
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1000', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1000] START');
-      globalThis.value.message.notify({name:'OneVisibility', value:Visibility.None});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('SpaceEvenly_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
-      let SpaceEvenly_AddVisibility_012 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
-      let SpaceEvenly_AddVisibility_013 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
-      let SpaceEvenly_AddVisibility_01 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
-      expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_013.top);
-      expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_01.top);
-      expect(Math.round(SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_01.left))
-        .assertEqual(Math.round(vp2px(200/3)));
-      expect(Math.round(SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right))
-        .assertEqual(Math.round(vp2px(200/3)));
-      expect(Math.round(SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right))
-        .assertEqual(Math.round(vp2px(200/3)));
-      expect(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left ))
-        .assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left))
-        .assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top))
-        .assertEqual(vp2px(100));
-      expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
-        .assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1000] END');
+    it('textFlexAlignSpaceEvenlyTextVisibilityNone', 0, async function (done) {
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityNone] START');
+      try{
+        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.None});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('SpaceEvenly_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2);
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
+        let SpaceEvenly_AddVisibility_012 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
+        let SpaceEvenly_AddVisibility_013 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
+        let SpaceEvenly_AddVisibility_01 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
+        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_013.top);
+        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_01.top);
+        expect(Math.round(SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_01.left))
+          .assertEqual(Math.round(vp2px(200/3)));
+        expect(Math.round(SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right))
+          .assertEqual(Math.round(vp2px(200/3)));
+        expect(Math.round(SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right))
+          .assertEqual(Math.round(vp2px(200/3)));
+        expect(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left ))
+          .assertEqual(vp2px(150));
+        expect(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left))
+          .assertEqual(vp2px(150));
+        expect(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top))
+          .assertEqual(vp2px(100));
+        expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
+          .assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[textFlexAlignSpaceEvenlyTextVisibilityNone] failed');
+        expect().assertFail();
+      }
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityNone] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1100
-     * @tc.name      Align_SpaceEvenly_Row_AddVisibility
+     * @tc.name      textFlexAlignSpaceEvenlyTextVisibilityHidden
      * @tc.desc      When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
      * position
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1100] START');
-      globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Hidden});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('SpaceEvenly_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
-      let SpaceEvenly_AddVisibility_011 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_011');
-      let SpaceEvenly_AddVisibility_012 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
-      let SpaceEvenly_AddVisibility_013 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
-      let SpaceEvenly_AddVisibility_01 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
-      expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_013.top);
-      expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_01.top);
-      expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_011.top);
-      expect(Math.round((SpaceEvenly_AddVisibility_011.left - SpaceEvenly_AddVisibility_01.left)*100)/100)
-        .assertEqual(Math.round(vp2px(12.5)*100)/100);
-      expect(Math.round((SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right)*100)/100)
-        .assertEqual(Math.round(vp2px(12.5)*100)/100);
-      expect(Math.round((SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_011.right)*100)/100)
-        .assertEqual(Math.round(vp2px(12.5)*100)/100);
-      expect(Math.round((SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right)*100)/100)
-        .assertEqual(Math.round(vp2px(12.5)*100)/100);
-      expect(Math.round(SpaceEvenly_AddVisibility_011.right - SpaceEvenly_AddVisibility_011.left))
-        .assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left))
-        .assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left))
-        .assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddVisibility_011.bottom - SpaceEvenly_AddVisibility_011.top))
-        .assertEqual(vp2px(50));
-      expect(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top))
-        .assertEqual(vp2px(100));
-      expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
-        .assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1100] END');
+    it('textFlexAlignSpaceEvenlyTextVisibilityHidden', 0, async function (done) {
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityHidden] START');
+      try{
+        globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Hidden});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('SpaceEvenly_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2);
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
+        let SpaceEvenly_AddVisibility_011 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_011');
+        let SpaceEvenly_AddVisibility_012 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
+        let SpaceEvenly_AddVisibility_013 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
+        let SpaceEvenly_AddVisibility_01 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
+        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_013.top);
+        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_01.top);
+        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_011.top);
+        expect(Math.round((SpaceEvenly_AddVisibility_011.left - SpaceEvenly_AddVisibility_01.left)*100)/100)
+          .assertEqual(Math.round(vp2px(12.5)*100)/100);
+        expect(Math.round((SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right)*100)/100)
+          .assertEqual(Math.round(vp2px(12.5)*100)/100);
+        expect(Math.round((SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_011.right)*100)/100)
+          .assertEqual(Math.round(vp2px(12.5)*100)/100);
+        expect(Math.round((SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right)*100)/100)
+          .assertEqual(Math.round(vp2px(12.5)*100)/100);
+        expect(Math.round(SpaceEvenly_AddVisibility_011.right - SpaceEvenly_AddVisibility_011.left))
+          .assertEqual(vp2px(150));
+        expect(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left))
+          .assertEqual(vp2px(150));
+        expect(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left))
+          .assertEqual(vp2px(150));
+        expect(Math.round(SpaceEvenly_AddVisibility_011.bottom - SpaceEvenly_AddVisibility_011.top))
+          .assertEqual(vp2px(50));
+        expect(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top))
+          .assertEqual(vp2px(100));
+        expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
+          .assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[textFlexAlignSpaceEvenlyTextVisibilityHidden] failed');
+        expect().assertFail();
+      }
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityHidden] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1700
-     * @tc.name      Align_SpaceEvenly_Row_AddVisibility
+     * @tc.name      textFlexAlignSpaceEvenlyTextVisibilityVisible
      * @tc.desc      The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
      * interface display
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1700', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1700] START');
-      globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Visible});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
-      let obj = JSON.parse(strJson);
-      let strJson2 = getInspectorByKey('SpaceEvenly_AddVisibility_011');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
-      expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
-      let SpaceEvenly_AddVisibility_011 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_011');
-      let SpaceEvenly_AddVisibility_012 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
-      let SpaceEvenly_AddVisibility_013 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
-      let SpaceEvenly_AddVisibility_01 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
-      expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_013.top);
-      expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_01.top);
-      expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_011.top);
-      expect(Math.round((SpaceEvenly_AddVisibility_011.left - SpaceEvenly_AddVisibility_01.left)*100)/100)
-        .assertEqual(Math.round(vp2px(12.5)*100)/100);
-      expect(Math.round((SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right)*100)/100)
-        .assertEqual(Math.round(vp2px(12.5)*100)/100);
-      expect(Math.round((SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_011.right)*100)/100)
-        .assertEqual(Math.round(vp2px(12.5)*100)/100);
-      expect(Math.round((SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right)*100)/100)
-        .assertEqual(Math.round(vp2px(12.5)*100)/100);
-      expect(Math.round(SpaceEvenly_AddVisibility_011.right - SpaceEvenly_AddVisibility_011.left))
-        .assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left))
-        .assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left))
-        .assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddVisibility_011.bottom - SpaceEvenly_AddVisibility_011.top))
-        .assertEqual(vp2px(50));
-      expect(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top))
-        .assertEqual(vp2px(100));
-      expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
-        .assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1700] END');
+    it('textFlexAlignSpaceEvenlyTextVisibilityVisible', 0, async function (done) {
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityVisible] START');
+      try{
+        globalThis.value.message.notify({name:'OneVisibility',value:Visibility.Visible});
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
+        let obj = JSON.parse(strJson);
+        let strJson2 = getInspectorByKey('SpaceEvenly_AddVisibility_011');
+        let obj2 = JSON.parse(strJson2);
+        expect(obj.$type).assertEqual('Flex');
+        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+        expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
+        let SpaceEvenly_AddVisibility_011 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_011');
+        let SpaceEvenly_AddVisibility_012 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
+        let SpaceEvenly_AddVisibility_013 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
+        let SpaceEvenly_AddVisibility_01 = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
+        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_013.top);
+        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_01.top);
+        expect(SpaceEvenly_AddVisibility_012.top).assertEqual(SpaceEvenly_AddVisibility_011.top);
+        expect(Math.round((SpaceEvenly_AddVisibility_011.left - SpaceEvenly_AddVisibility_01.left)*100)/100)
+          .assertEqual(Math.round(vp2px(12.5)*100)/100);
+        expect(Math.round((SpaceEvenly_AddVisibility_01.right - SpaceEvenly_AddVisibility_013.right)*100)/100)
+          .assertEqual(Math.round(vp2px(12.5)*100)/100);
+        expect(Math.round((SpaceEvenly_AddVisibility_012.left - SpaceEvenly_AddVisibility_011.right)*100)/100)
+          .assertEqual(Math.round(vp2px(12.5)*100)/100);
+        expect(Math.round((SpaceEvenly_AddVisibility_013.left - SpaceEvenly_AddVisibility_012.right)*100)/100)
+          .assertEqual(Math.round(vp2px(12.5)*100)/100);
+        expect(Math.round(SpaceEvenly_AddVisibility_011.right - SpaceEvenly_AddVisibility_011.left))
+          .assertEqual(vp2px(150));
+        expect(Math.round(SpaceEvenly_AddVisibility_012.right - SpaceEvenly_AddVisibility_012.left))
+          .assertEqual(vp2px(150));
+        expect(Math.round(SpaceEvenly_AddVisibility_013.right - SpaceEvenly_AddVisibility_013.left))
+          .assertEqual(vp2px(150));
+        expect(Math.round(SpaceEvenly_AddVisibility_011.bottom - SpaceEvenly_AddVisibility_011.top))
+          .assertEqual(vp2px(50));
+        expect(Math.round(SpaceEvenly_AddVisibility_012.bottom - SpaceEvenly_AddVisibility_012.top))
+          .assertEqual(vp2px(100));
+        expect(Math.round(SpaceEvenly_AddVisibility_013.bottom - SpaceEvenly_AddVisibility_013.top))
+          .assertEqual(vp2px(150));
+      } catch (err) {
+        console.error('[textFlexAlignSpaceEvenlyTextVisibilityVisible] failed');
+        expect().assertFail();
+      }
+      console.info('[textFlexAlignSpaceEvenlyTextVisibilityVisible] END');
       done();
     });
   })

@@ -1593,6 +1593,292 @@ export default function inputMethodAbility() {
       commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    it('inputMethodAbility_test_070', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>inputMethodAbility_test_070 unSubscriberCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_070 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>inputMethodAbility_test_070 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>inputMethodAbility_test_070 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>inputMethodAbility_test_070 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>inputMethodAbility_test_070 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>inputMethodAbility_test_070 publishCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_070 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["inputMethodAbility_test_070"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>inputMethodAbility_test_070 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>inputMethodAbility_test_070 subscriber finish")
+      })
+
+      var commonEventPublishData = {
+        code: 70
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('inputMethodAbility_test_071', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>inputMethodAbility_test_071 unSubscriberCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_071 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>inputMethodAbility_test_071 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>inputMethodAbility_test_071 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>inputMethodAbility_test_071 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>inputMethodAbility_test_071 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>inputMethodAbility_test_071 publishCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_071 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["inputMethodAbility_test_071"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>inputMethodAbility_test_071 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>inputMethodAbility_test_071 subscriber finish")
+      })
+
+      var commonEventPublishData = {
+        code: 71
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('inputMethodAbility_test_072', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>inputMethodAbility_test_072 unSubscriberCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_072 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>inputMethodAbility_test_072 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>inputMethodAbility_test_072 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>inputMethodAbility_test_072 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>inputMethodAbility_test_072 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>inputMethodAbility_test_072 publishCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_072 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["inputMethodAbility_test_072"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>inputMethodAbility_test_072 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>inputMethodAbility_test_072 subscriber finish")
+      })
+
+      var commonEventPublishData = {
+        code: 72
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('inputMethodAbility_test_073', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>inputMethodAbility_test_073 unSubscriberCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_073 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>inputMethodAbility_test_073 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>inputMethodAbility_test_073 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>inputMethodAbility_test_073 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>inputMethodAbility_test_073 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>inputMethodAbility_test_073 publishCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_073 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+          let t = setTimeout(() => {
+            runCmd("uinput -K -d 2000 -u 2000");
+            clearTimeout(t);
+          },200);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["inputMethodAbility_test_073"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>inputMethodAbility_test_073 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>inputMethodAbility_test_073 subscriber finish")
+      })
+
+      var commonEventPublishData = {
+        code: 73
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('inputMethodAbility_test_074', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>inputMethodAbility_test_074 unSubscriberCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_074 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>inputMethodAbility_test_074 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>inputMethodAbility_test_074 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>inputMethodAbility_test_074 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>inputMethodAbility_test_074 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500);
+      }
+
+      function publishCallback(err){
+        console.info("====>inputMethodAbility_test_074 publishCallback start");
+        if (err){
+          console.info("====>inputMethodAbility_test_074 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          let count = 0;
+          let t = setInterval(() => {
+            count += 1;
+            runCmd(getFocusCmd);
+            if (count === 2){
+              clearInterval(t);
+            }
+          }, 500);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["inputMethodAbility_test_074"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>inputMethodAbility_test_074 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>inputMethodAbility_test_074 subscriber finish");
+      })
+
+      var commonEventPublishData = {
+        code: 74
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
     it('inputMethodAbility_test_101', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>inputMethodAbility_test_101 unSubscriberCallback start");

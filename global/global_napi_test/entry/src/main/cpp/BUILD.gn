@@ -30,7 +30,7 @@ config("public_config") {
 }
 
 ohos_shared_library("resmgrndk") {
-  sources = [ "./napi/test_string.cpp" ]
+  sources = [ "./napi/global_napi_test.cpp" ]
   if (target_cpu == "arm") {
     libs = [ "${clang_base_path}/../libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so" ]
   } else if (target_cpu == "arm64") {
@@ -38,7 +38,10 @@ ohos_shared_library("resmgrndk") {
   } else {
     libs = []
   }
-  include_dirs = [ "//test/xts/acts/arkui/ace_napi_test/entry/src/main/cpp" ]
+  include_dirs = [
+    "//base/global/resource_management/interfaces/native/resource/include",
+    "//test/xts/acts/arkui/ace_napi_test/entry/src/main/cpp",
+  ]
   configs = [ ":config" ]
 
   deps = [
@@ -46,6 +49,8 @@ ohos_shared_library("resmgrndk") {
     "//base/global/resource_management/interfaces/native/resource:librawfile_ndk",
     "//foundation/arkui/napi:ace_napi",
   ]
+
+  external_deps = [ "hiviewdfx_hilog_native:libhilog" ]
 
   output_extension = "so"
 }

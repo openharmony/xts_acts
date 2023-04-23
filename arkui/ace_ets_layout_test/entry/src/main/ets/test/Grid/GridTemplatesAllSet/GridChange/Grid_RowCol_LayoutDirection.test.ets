@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function Grid_RowCol_LayoutDirection() {
   describe('Grid_RowCol_LayoutDirectionTest', function () {
     beforeEach(async function (done) {
-      console.info("Grid_RowCol_LayoutDirection beforeEach start");
+      console.info("Grid_RowCol_LayoutDirectionTest beforeEach start");
       let options = {
         url: "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_LayoutDirection",
       }
@@ -38,6 +37,7 @@ export default function Grid_RowCol_LayoutDirection() {
         console.error("push Grid_RowCol_LayoutDirection page error " + JSON.stringify(err));
         expect().assertFail();
       }
+      console.info("Grid_RowCol_LayoutDirectionTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,11 +46,11 @@ export default function Grid_RowCol_LayoutDirection() {
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0900
-     * @tc.name      Grid_RowCol_LayoutDirection
+     * @tc.name      testGridRowColGridLayoutDirection
      * @tc.desc      The Grid layout layoutDirection property does not take effect
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0900', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0900] START');
+    it('testGridRowColGridLayoutDirection', 0, async function (done) {
+      console.info('[testGridRowColGridLayoutDirection] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_LayoutDirection_01');
       let gridContainerObj = JSON.parse(gridContainerStrJson);
@@ -93,7 +93,7 @@ export default function Grid_RowCol_LayoutDirection() {
         .assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_LayoutDirection_014.bottom - Grid_RowCol_LayoutDirection_014.top))
         .assertEqual(vp2px(150));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0900] END');
+      console.info('[testGridRowColGridLayoutDirection] END');
       done();
     });
   })

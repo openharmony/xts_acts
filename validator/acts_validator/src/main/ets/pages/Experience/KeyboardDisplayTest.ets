@@ -18,13 +18,14 @@ import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
 
 let path = globalThis.dir;
-let Xpath = path + '/CompleteTimeKeyboard.log';
+let path1 = path + '/ExperienceData';
+let Xpath = path1 + '/CompleteTimeKeyboard.log';
 
 @Entry
 @Component
 struct CustomContainerUser {
   @State name: string = 'KeyboardDisplay';
-  @State StepTips: string = '操作步骤：根据操作提示点击输入框等待键盘加载'+'\n'+'预期结果：输入键盘弹出时延低于1000ms测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示点击输入框等待键盘加载'+'\n'+'预期结果：输入键盘弹出时延小于1000ms测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State time: string = '0';
@@ -42,10 +43,10 @@ struct CustomContainerUser {
               .fontColor(Color.White).fontSize('24fp')
           }
           Row(){
-            Text(`测试步骤:`+ '\n' + '\n' + `1.点击开始键进入信息` + '\n' + '\n' +'2.新建一条信息显示输入框'+ '\n' + '\n'
-            + `3.双击执行.bat选择完成时延>键盘按键弹出`+ '\n' + '\n' +`4.点击输入框等待键盘弹出` + '\n' + '\n'
-            + '5.待脚本执行结束回到Validator点击停止键' + '\n' + '\n' + `6.若弹出键盘时延小于或等于1000ms则通过测试`
-            + '\n' + '\n' + '\n' + '\n' )
+            Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入信息` + '\n' + '\n' +
+            '3.新建一条信息显示输入框'+ '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择完成时延>键盘按键弹出`+ '\n' + '\n' +
+            `5.点击输入框等待键盘弹出` + '\n' + '\n' + '6.待脚本执行结束回到Validator点击结束键' + '\n' + '\n'
+            + `7.若弹出键盘时延小于或等于1000ms则通过测试` + '\n' + '\n' + '\n' + '\n' )
               .fontColor(Color.White).fontSize('20fp')
           }
           Row(){

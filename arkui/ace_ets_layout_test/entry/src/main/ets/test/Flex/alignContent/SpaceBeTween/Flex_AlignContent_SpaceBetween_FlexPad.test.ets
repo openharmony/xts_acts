@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
   describe('Flex_AlignContent_SpaceBetween_FlexPadTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceBetween_FlexPad beforeEach start");
+      console.info("Flex_AlignContent_SpaceBetween_FlexPadTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexPad',
       }
@@ -37,6 +36,7 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceBetween_FlexPad page error:" + err);
       }
+      console.info("Flex_AlignContent_SpaceBetween_FlexPadTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -45,12 +45,12 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0400
-     * @tc.name      alignContent_SpaceAround_FlexPadding
+     * @tc.name      testAlignContentSpaceAroundFlexPadOverflow
      * @tc.desc      The size of the parent component in the cross direction is not enough for the layout
      *               of the child components when the padding and margin of parent component was changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0400', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0400] START');
+    it('testAlignContentSpaceAroundFlexPadOverflow', 0, async function (done) {
+      console.info('[testAlignContentSpaceAroundFlexPadOverflow] START');
       globalThis.value.message.notify({name:'padding', value:50})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexPad01');
@@ -67,7 +67,7 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200)); //四个子组件的高度分别为50、100、150、200
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200));
 
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(50)); //padding =50
       expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(50)); //padding =50
@@ -77,19 +77,19 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
 
       expect(firstText.bottom).assertEqual(secondText.top);
       expect(secondText.bottom).assertEqual(thirdText.top);
-      expect(thirdText.bottom).assertEqual(fourthText.top); //无行间距
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(10)); //行首贴边行尾溢出
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0400] END');
+      expect(thirdText.bottom).assertEqual(fourthText.top);
+      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(10));
+      console.info('[testAlignContentSpaceAroundFlexPadOverflow] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0500
-     * @tc.name      alignContent_SpaceAround_FlexPadding
+     * @tc.name      testAlignContentSpaceAroundFlexPadMeet
      * @tc.desc      The size of the parent component in the cross direction meets the layout
      *               of the child components when the padding of parent component was changed
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0500', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0500] START');
+    it('testAlignContentSpaceAroundFlexPadMeet', 0, async function (done) {
+      console.info('[testAlignContentSpaceAroundFlexPadMeet] START');
       globalThis.value.message.notify({name:'padding', value:10})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexPad01');
@@ -105,18 +105,18 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(fourthText.bottom - fourthText.top).assertEqual(vp2px(200)); //四个子组件的高度分别为50、100、150、200
+      expect(fourthText.bottom - fourthText.top).assertEqual(vp2px(200));
 
       expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10)); //padding =10
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(10));
-      expect(Math.round(flexContainer.bottom - fourthText.bottom)).assertEqual(vp2px(10)); //行首偏移行尾未溢出
+      expect(Math.round(flexContainer.bottom - fourthText.bottom)).assertEqual(vp2px(10));
 
       expect(Math.round(secondText.top - firstText.bottom)).assertEqual(Math.round(thirdText.top - secondText.bottom));
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //行间距相等
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0500] END');
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
+      console.info('[testAlignContentSpaceAroundFlexPadMeet] END');
       done();
     });
   })

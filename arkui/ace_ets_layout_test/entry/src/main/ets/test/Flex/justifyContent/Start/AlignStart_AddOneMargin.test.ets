@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignStart_AddOneMargin() {
   describe('AlignStart_AddOneMargin', function () {
     beforeEach(async function (done) {
@@ -47,13 +46,12 @@ export default function AlignStart_AddOneMargin() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1400
-     * @tc.name      Align_Start_Row_AddOneMargin
+     * @tc.name      testFlexAlignStartTextMarginMeet
      * @tc.desc      After setting margin for the first subcomponent, the layout of the parent component's spindle
      * meets the interface display of the subcomponent's layout
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1400', 0, async function (done) {
-      //await CommonFunc.sleep(2000);
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1400] START');
+    it('testFlexAlignStartTextMarginMeet', 0, async function (done) {
+      console.info('[testFlexAlignStartTextMarginMeet] START');
       globalThis.value.message.notify({name:'OneMargin', value:20});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddOneMargin_01');
@@ -77,17 +75,17 @@ export default function AlignStart_AddOneMargin() {
       expect(Math.round(Start_AddOneMargin_011.bottom - Start_AddOneMargin_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Start_AddOneMargin_012.bottom - Start_AddOneMargin_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Start_AddOneMargin_013.bottom - Start_AddOneMargin_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1400] END');
+      console.info('[testFlexAlignStartTextMarginMeet] END');
       done();
     })
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1500
-     * @tc.name      Align_Start_Row_AddOneMargin
+     * @tc.name      testFlexAlignStartTextMarginOverflow
      * @tc.desc      After setting margin for the first subcomponent, the layout of the parent component's spindle does
      * not meet the interface display of the subcomponent's layout
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1500', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1500] START');
+    it('testFlexAlignStartTextMarginOverflow', 0, async function (done) {
+      console.info('[testFlexAlignStartTextMarginOverflow] START');
       globalThis.value.message.notify({name:'OneMargin', value:30});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddOneMargin_01');
@@ -117,7 +115,7 @@ export default function AlignStart_AddOneMargin() {
       expect(Math.round(Start_AddOneMargin_011.bottom - Start_AddOneMargin_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Start_AddOneMargin_012.bottom - Start_AddOneMargin_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Start_AddOneMargin_013.bottom - Start_AddOneMargin_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1500] END');
+      console.info('[testFlexAlignStartTextMarginOverflow] END');
       done();
     })
   })

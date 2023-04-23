@@ -57,8 +57,8 @@ struct Flex_NoWrap_FlexPad_TextMarPad{
     this.messageManager.registerCallback(callback);
   }
   build(){
-    Column({space:30}){
-      Flex({wrap:FlexWrap.NoWrap}){
+    Column({ space:30 }){
+      Flex({ wrap:FlexWrap.NoWrap }){
         Text('1').width(150).height(100).backgroundColor(0xF5DEB3).margin(this.firstTextMargin)
           .padding(this.firstTextPadding).key('NoWrap_FlexPad_TextMarPad1');
         Text('2').width(150).height(150).backgroundColor(0xD2B48C).margin(this.secondTextMargin)

@@ -39,6 +39,9 @@ export class KeyboardDelegate {
         this.initWindow();
         let that = this;
         inputMethodAbility.on("inputStop", () => {
+            inputMethodAbility.off("inputStop", () => {
+                console.log('====>inputMethodEngine delete inputStop notification.');
+            });
             try{
                 that.mContext.destroy((err) => {
                     console.info(TAG + '====>inputMethodAbility destroy err:' + JSON.stringify(err));
@@ -148,6 +151,26 @@ export class KeyboardDelegate {
                 case 50:
                     console.debug(TAG + '====>inputMethodAbility_test_050 event:' + data.event);
                     that.inputMethodAbility_test_050();
+                    break;
+                case 70:
+                    console.debug(TAG + '====>inputMethodAbility_test_070 event:' + data.event);
+                    that.inputMethodAbility_test_070();
+                    break;
+                case 71:
+                    console.debug(TAG + '====>inputMethodAbility_test_071 event:' + data.event);
+                    that.inputMethodAbility_test_071();
+                    break;
+                case 72:
+                    console.debug(TAG + '====>inputMethodAbility_test_072 event:' + data.event);
+                    that.inputMethodAbility_test_072();
+                    break;
+                case 73:
+                    console.debug(TAG + '====>inputMethodAbility_test_073 event:' + data.event);
+                    that.inputMethodAbility_test_073();
+                    break;
+                case 74:
+                    console.debug(TAG + '====>inputMethodAbility_test_074 event:' + data.event);
+                    that.inputMethodAbility_test_074();
                     break;
                 case 101:
                     console.debug(TAG + '====>inputMethodAbility_test_0101 event:' + data.event);
@@ -762,7 +785,7 @@ export class KeyboardDelegate {
         console.debug(TAG + '====>receive inputMethodAbility_test_045 data');
         inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
             inputMethodAbility.off('inputStart');
-            setTimeout(()=>{
+            let t = setTimeout(()=>{
                 let commonEventPublishData;
                 if (InputClient == null) {
                     commonEventPublishData = {
@@ -785,6 +808,7 @@ export class KeyboardDelegate {
                         commoneventmanager.publish("inputMethodAbility_test_045", commonEventPublishData, this.publishCallback);
                     });
                 }
+                clearTimeout(t);
             },1000);
 
         });
@@ -922,6 +946,147 @@ export class KeyboardDelegate {
                 }
                 commoneventmanager.publish("inputMethodAbility_test_050", commonEventPublishData, this.publishCallback);
             }
+        });
+    }
+
+    private inputMethodAbility_test_070(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodAbility_test_070 success');
+        let count = 0;
+        inputMethodAbility.on('inputStart', (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            console.info(TAG + '====>inputMethodAbility.on("inputStart") count: ' + count);
+            count += 1;
+        });
+        inputMethodAbility.on('keyboardShow', () => {
+            inputMethodAbility.off('keyboardShow');
+            console.info(TAG + '====>inputMethodAbility.on("keyboardShow") count: ' + count);
+            count += 1;
+        });
+        inputMethodAbility.on('setSubtype', () => {
+            inputMethodAbility.off('setSubtype');
+            console.info(TAG + '====>inputMethodAbility.on("setSubtype") count: ' + count);
+            count += 1;
+        });
+
+        let t = setTimeout(() => {
+            if(count === 2){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodAbility_test_070", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },500);
+    }
+
+    private inputMethodAbility_test_071(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodAbility_test_071 success');
+        let count = 0;
+        inputMethodAbility.on('keyboardHide', () => {
+            count += 1;
+            inputMethodAbility.off("keyboardHide");
+            console.info(TAG + '====>inputMethodAbility.off("keyboardHide") count: ' + count);
+        });
+        inputMethodAbility.on('inputStart', (KeyboardDelegate, InputClient) => {
+            console.info(TAG + '====>inputMethodAbility_test_071 inputMethodAbility.on("inputStart")');
+            let t = setInterval(async () => {
+                await KeyboardDelegate.hideKeyboard();
+                console.info(TAG + '====>KeyboardDelegate.hideKeyboard count: ' +  count);
+                if(count === 1){
+                    clearInterval(t);
+                }
+            },100);
+        });
+        let t = setTimeout(() => {
+            if(count === 1){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodAbility_test_071", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },500);
+    }
+
+    private inputMethodAbility_test_072(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodAbility_test_072 success');
+        let count = 0;
+        inputMethodAbility.on('keyboardShow', () => {
+            count += 1;
+            inputMethodAbility.off("keyboardShow");
+            console.info(TAG + '====>inputMethodAbility.off("keyboardShow") count: ' + count);
+        });
+        let t = setTimeout(() => {
+            if(count === 1){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodAbility_test_072", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },300);
+    }
+
+    private inputMethodAbility_test_073(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodAbility_test_073 success');
+        let count = 0;
+        inputKeyboardDelegate.on('keyDown', (keyEvent) => {
+            inputKeyboardDelegate.off('keyDown');
+            console.info(TAG + "====>inputKeyboardDelegate.on('keyDown') count: " + count);
+            if (keyEvent.keyCode === 2000){
+                count += 1;
+            }
+            return true;
+        });
+
+        inputKeyboardDelegate.on('keyUp', (keyEvent) => {
+            inputKeyboardDelegate.off('keyUp');
+            console.info(TAG + "====>inputKeyboardDelegate.on('keyUp') count: " + count);
+            if (keyEvent.keyCode === 2000){
+                count += 1;
+            }
+            console.info(TAG + "====>inputKeyboardDelegate.on('keyUp') count: " + count);
+            return true;
+        });
+        let t = setTimeout(() => {
+            if(count === 2){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodAbility_test_073", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },500);
+    }
+
+    private inputMethodAbility_test_074(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodAbility_test_074 success');
+        inputMethodAbility.on('setCallingWindow', (wid) => {
+            console.info(TAG + "====>inputKeyboardDelegate.on('setCallingWindow')" + wid);
+            inputMethodAbility.off('setCallingWindow', () => {
+                console.log('inputMethodAbility off setCallingWindow' );
+            });
+            if (typeof(wid) === "number"){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodAbility_test_074", commonEventPublishData, this.publishCallback);
         });
     }
 

@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function Grid_RowCol_Gap() {
   describe('Grid_RowCol_GapTest', function () {
     beforeEach(async function (done) {
-      console.info("Grid_RowCol_Gap beforeEach start");
+      console.info("Grid_RowCol_GapTest beforeEach start");
       let options = {
         url: "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_Gap",
       }
@@ -38,6 +37,7 @@ export default function Grid_RowCol_Gap() {
         console.error("push Grid_RowCol_Gap page error " + JSON.stringify(err));
         expect().assertFail();
       }
+      console.info("Grid_RowCol_GapTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,11 +46,11 @@ export default function Grid_RowCol_Gap() {
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0600
-     * @tc.name      Grid_RowCol_Gap
+     * @tc.name      testGridColGap
      * @tc.desc      Add columnGap,Grid is divided into 4 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0600', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0600] START');
+    it('testGridColGap', 0, async function (done) {
+      console.info('[testGridColGap] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_Gap_01');
       let gridContainerObj = JSON.parse(gridContainerStrJson);
@@ -96,16 +96,16 @@ export default function Grid_RowCol_Gap() {
       expect(Math.round(Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_012.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_013.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0600] END');
+      console.info('[testGridColGap] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0700
-     * @tc.name      Grid_RowCol_Gap
+     * @tc.name      testGridRowGap
      * @tc.desc      Add rowGap,Grid is divided into 4 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0700', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0700] START');
+    it('testGridRowGap', 0, async function (done) {
+      console.info('[testGridRowGap] START');
       globalThis.value.message.notify({name:'addColumnGap', value:0});
       globalThis.value.message.notify({name:'addRowGap', value:5});
       await CommonFunc.sleep(3000);
@@ -153,16 +153,16 @@ export default function Grid_RowCol_Gap() {
         .assertEqual(Math.round(vp2px(147.5)*100)/100);
       expect(Math.round((Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top)*100)/100)
         .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0700] END');
+      console.info('[testGridRowGap] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0800
-     * @tc.name      Grid_RowCol_Gap
+     * @tc.name      testGridRowColGap
      * @tc.desc      Add columnGap and rowGap,Grid is divided into 4 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0800', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0800] START');
+    it('testGridRowColGap', 0, async function (done) {
+      console.info('[testGridRowColGap] START');
       globalThis.value.message.notify({name:'addColumnGap', value:5});
       globalThis.value.message.notify({name:'addRowGap', value:5});
       await CommonFunc.sleep(3000);
@@ -216,7 +216,7 @@ export default function Grid_RowCol_Gap() {
         .assertEqual(Math.round(vp2px(147.5)*100)/100);
       expect(Math.round((Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top)*100)/100)
         .assertEqual(Math.round(vp2px(147.5)*100)/100);
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0800] END');
+      console.info('[testGridRowColGap] END');
       done();
     });
   })

@@ -29,7 +29,7 @@ struct Tabs_WidHei {
       name:'messageManager',message:this.messageManager
     };
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'width') {
         this.testWidth = message.value;
       }

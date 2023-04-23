@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
   describe('Flex_AlignContent_SpaceBetween_TextVisibilityTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceBetween_TextVisibility beforeEach start");
+      console.info("Flex_AlignContent_SpaceBetween_TextVisibilityTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_TextVisibility',
       }
@@ -37,6 +36,7 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceBetween_TextVisibility page error:" + err);
       }
+      console.info("Flex_AlignContent_SpaceBetween_TextVisibilityTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,78 +46,96 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1300
-     * @tc.name      alignContent_SpaceAround_TextVisibility
+     * @tc.name      testFlexAlignContentSpaceAroundTextVisibilityHidden
      * @tc.desc      The size of the parent component in the cross direction meets the layout
-     *               of the child components when the visibility of parent component was changed
+     *               of the child components when the visibility of first subcomponent set to "Hidden"
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1300', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1300] START');
-      let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility01');
-      let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
-      let distanceBefore = secondText.top - firstText.bottom;
-      globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden});
-      await CommonFunc.sleep(3000);
-      secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
-      let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility03');
-      let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility04');
-      let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_TextVisibility_Container01');
-      let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_TextVisibility_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-      expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
+    it('testFlexAlignContentSpaceAroundTextVisibilityHidden', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundTextVisibilityHidden] START');
+      try {
+        let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility01');
+        let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
+        let distanceBefore = secondText.top - firstText.bottom;
+        globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden});
+        await CommonFunc.sleep(3000);
+        secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
+        let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility03');
+        let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility04');
+        let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_TextVisibility_Container01');
+        let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_TextVisibility_Container01');
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
+        expect(flexContainerObj.$type).assertEqual('Flex');
+        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+        expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //三个子组件的高度分别为100、50、100
+        let firstTextStrJson = getInspectorByKey('AlignContent_SpaceBetween_TextVisibility01');
+        let firstTextObj = JSON.parse(firstTextStrJson);
+        expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.Hidden");
 
-      expect(secondText.left).assertEqual(thirdText.left);
-      expect(thirdText.left).assertEqual(fourthText.left);
-      expect(fourthText.left).assertEqual(flexContainer.left);
-      expect(Math.round(secondText.top - flexContainer.top)).assertEqual(Math.round(distanceBefore + vp2px(50))); //text1占位
-      expect(fourthText.bottom).assertEqual(flexContainer.bottom); //行首行尾贴边
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
+        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //剩余子组件行间距相等
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(distanceBefore));
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1300] END');
+        expect(secondText.left).assertEqual(thirdText.left);
+        expect(thirdText.left).assertEqual(fourthText.left);
+        expect(fourthText.left).assertEqual(flexContainer.left);
+        expect(Math.round(secondText.top - flexContainer.top)).assertEqual(Math.round(distanceBefore + vp2px(50)));
+        expect(fourthText.bottom).assertEqual(flexContainer.bottom);
+
+        expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
+        expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(distanceBefore));
+      } catch (err) {
+        console.error('[testFlexAlignContentSpaceAroundTextVisibilityHidden] failed');
+        expect().assertFail();
+      }
+      console.info('[testFlexAlignContentSpaceAroundTextVisibilityHidden] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1400
-     * @tc.name      alignContent_SpaceAround_TextVisibility
+     * @tc.name      testFlexAlignContentSpaceAroundTextVisibilityNone
      * @tc.desc      The size of the parent component in the cross direction meets the layout
-     *               of the child components when the visibility of parent component was changed
+     *               of the child components when the visibility of first subcomponent set to "None"
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1400', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1400] START');
-      let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility01');
-      let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
-      let distanceBefore = secondText.top - firstText.bottom;
-      globalThis.value.message.notify({name:'visibility', value:Visibility.None})
-      await CommonFunc.sleep(3000);
-      secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
-      let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility03');
-      let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility04');
-      let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_TextVisibility_Container01');
-      let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_TextVisibility_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-      expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
+    it('testFlexAlignContentSpaceAroundTextVisibilityNone', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundTextVisibilityNone] START');
+      try{
+        let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility01');
+        let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
+        let distanceBefore = secondText.top - firstText.bottom;
+        globalThis.value.message.notify({name:'visibility', value:Visibility.None})
+        await CommonFunc.sleep(3000);
+        secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
+        let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility03');
+        let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility04');
+        let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_TextVisibility_Container01');
+        let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_TextVisibility_Container01');
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
+        expect(flexContainerObj.$type).assertEqual('Flex');
+        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+        expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //三个子组件的高度分别为100、50、100
+        let firstTextStrJson = getInspectorByKey('AlignContent_SpaceBetween_TextVisibility01');
+        let firstTextObj = JSON.parse(firstTextStrJson);
+        expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
-      expect(secondText.left).assertEqual(thirdText.left);
-      expect(thirdText.left).assertEqual(fourthText.left);
-      expect(fourthText.left).assertEqual(flexContainer.left);
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
+        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
-      expect(secondText.top).assertEqual(flexContainer.top); //text1不参与占位
-      expect(fourthText.bottom).assertEqual(flexContainer.bottom); //行首行尾贴边
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //剩余子组件行间距相等
-      expect(Math.round(thirdText.top - secondText.bottom)).assertLarger(Math.round(distanceBefore)); //行距大于设置前
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1400] END');
+        expect(secondText.left).assertEqual(thirdText.left);
+        expect(thirdText.left).assertEqual(fourthText.left);
+        expect(fourthText.left).assertEqual(flexContainer.left);
+
+        expect(secondText.top).assertEqual(flexContainer.top);
+        expect(fourthText.bottom).assertEqual(flexContainer.bottom);
+        expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
+        expect(Math.round(thirdText.top - secondText.bottom)).assertLarger(Math.round(distanceBefore));
+      } catch (err) {
+        console.error('[testFlexAlignContentSpaceAroundTextVisibilityNone] failed');
+        expect().assertFail();
+      }
+      console.info('[testFlexAlignContentSpaceAroundTextVisibilityNone] END');
       done();
     });
   })

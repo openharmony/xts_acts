@@ -77,50 +77,53 @@ describe('userAuthTestExecute', function () {
         console.log("JSAPI_Function_Nopermission_1800 end");
     })
 
-          /*
-            * @tc.number    : Security_IAM_Nopermission_API8_Func_0101
-            * @tc.name      : Kit interface get version
-            * @tc.size      : MediumTest
-            * @tc.type      : Function
-            * @tc.level     : Level 0
+        /*
+        * @tc.number    : Security_IAM_Nopermission_API8_Func_0101
+        * @tc.name      : Kit interface get version
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
         */
-          it('Security_IAM_Nopermission_API8_Func_0101', 0, async function (done) {
-            try {
-                let getversionresult = null;
-                getversionresult = UserAuthKit.getVersion();
-                console.info('Security_IAM_Nopermission_API8_Func_0101 getversionresult = ' + getversionresult);
-                //mini version 0
-                expect(getversionresult).assertEqual(0);
-                done();
-            } catch (e) {
-                console.log("testFace Security_IAM_Nopermission_API8_Func_0101 fail " + e.code);
-                expect(null).assertFail();
-                done();
-            }
-        })
+        it('Security_IAM_Nopermission_API8_Func_0101', 0, async function (done) {
+        try {
+            let getversionresult = null;
+            getversionresult = UserAuthKit.getVersion();
+            console.info('Security_IAM_Nopermission_API8_Func_0101 getversionresult = ' + getversionresult);
+            //mini version 0
+            expect(getversionresult).assertEqual(0);
+            done();
+        } catch (e) {
+            console.log("testFace Security_IAM_Nopermission_API8_Func_0101 fail " + e.code);
+            expect(null).assertFail();
+            done();
+        }
+    })
 
-             /*
-            * @tc.number    : Security_IAM_Nopermission_API8_Func_0112
-            * @tc.name      : Kit interface get AvailabeStatus
-            * @tc.size      : MediumTest
-            * @tc.type      : Function
-            * @tc.level     : Level 0
+            /*
+        * @tc.number    : Security_IAM_Nopermission_API8_Func_0112
+        * @tc.name      : Kit interface get AvailabeStatus
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
         */
-             it('Security_IAM_Nopermission_API8_Func_0112', 0, async function (done) {
-                console.info('testFace Security_IAM_Nopermission_API8_Func_0112 start');
-                try {
-                    let AvailabeStatus = null
-                    AvailabeStatus = UserAuthKit.getAvailableStatus(2, 10000);
-                    console.info('testFace Security_IAM_Nopermission_API8_Func_0112,2,10000 result = ' + JSON.stringify(AvailabeStatus));
-                    //201
-                    expect(201).assertEqual(AvailabeStatus);
-                    done()
-                } catch (e) {
-                    console.log("Security_IAM_Nopermission_API8_Func_0112 fail " + e.code);
-                    expect(201).assertEqual(e.code);
-                    done()
-                }
-            })
+        it('Security_IAM_Nopermission_API8_Func_0112', 0, async function (done) {
+        console.info('testFace Security_IAM_Nopermission_API8_Func_0112 start');
+        let authType = [2, 4]
+        for (let idx0 = 0; idx0 < authType.length; idx0++){
+            try {
+                let AvailabeStatus = null
+                AvailabeStatus = UserAuthKit.getAvailableStatus(authType[idx0], 10000);
+                console.info('testFace Security_IAM_Nopermission_API8_Func_0112,2,10000 result = ' + JSON.stringify(AvailabeStatus));
+                //201
+                expect(201).assertEqual(AvailabeStatus);
+                done()
+            } catch (e) {
+                console.log("Security_IAM_Nopermission_API8_Func_0112 fail " + e.code);
+                expect(201).assertEqual(e.code);
+                done()
+            }
+        }
+    })
 
             /*
         * @tc.number    : Security_IAM_Nopermission_API8_Func_0103
@@ -141,49 +144,53 @@ describe('userAuthTestExecute', function () {
                 authacquire : null,
                 authextr : null
             }
-
-            console.log("Security_IAM_Nopermission_API8_Func_0103 2,10000");
-            contextID1 = UserAuthKit.auth(challenge, userAuth.UserAuthType.FACE,userAuth.AuthTrustLevel.ATL1, {
-                onResult: function(result,extraInfo){
-                    console.log("Security_IAM_Nopermission_API8_Func_0103 auth result = " + result);
-                    onresult.authresult = result;
-                    //201
-                    expect(201).assertEqual(result);
-                    console.info('Security_IAM_Nopermission_API8_Func_0103 contextID1 = ' + contextID1);
-                    let cancelResult = UserAuthKit.cancelAuth(contextID1);
-                    console.info('Security_IAM_Nopermission_API8_Func_0103 cancelResult = ' + cancelResult);
-                    done();
-                },
-                onAcquireInfo: function (modulea,acquire,extr){
-                    console.info('faceTest publicauth auth onAcquireInfo in');
-                    onacquireinfo.authmodule = modulea;
-                    onacquireinfo.authacquire = acquire;
-                    onacquireinfo.authextr = extr;
-                    console.log("testFace faceDemo auth module = " + JSON.stringify(modulea));
-                    console.info('testFace publicauth auth onAcquireInfo = ' + JSON.stringify(onacquireinfo));
-                }
-            });
-            done();
+            let authType = [userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT]
+            for (let idx0 = 0; idx0 < authType.length; idx0++) {
+                console.log("Security_IAM_Nopermission_API8_Func_0103 authtype:" + authType[idx0] + "trustlevel:10000");
+                contextID1 = UserAuthKit.auth(challenge, authType[idx0], userAuth.AuthTrustLevel.ATL1, {
+                    onResult: function(result,extraInfo){
+                        console.log("Security_IAM_Nopermission_API8_Func_0103 auth result = " + result);
+                        onresult.authresult = result;
+                        //201
+                        expect(201).assertEqual(result);
+                        console.info('Security_IAM_Nopermission_API8_Func_0103 contextID1 = ' + contextID1);
+                        let cancelResult = UserAuthKit.cancelAuth(contextID1);
+                        console.info('Security_IAM_Nopermission_API8_Func_0103 cancelResult = ' + cancelResult);
+                        done();
+                    },
+                    onAcquireInfo: function (modulea,acquire,extr){
+                        console.info('faceTest publicauth auth onAcquireInfo in');
+                        onacquireinfo.authmodule = modulea;
+                        onacquireinfo.authacquire = acquire;
+                        onacquireinfo.authextr = extr;
+                        console.log("testFace faceDemo auth module = " + JSON.stringify(modulea));
+                        console.info('testFace publicauth auth onAcquireInfo = ' + JSON.stringify(onacquireinfo));
+                    }
+                });
+                done();
+            }
         })
 
         /*
-            * @tc.number    : Security_IAM_Nopermisson_Func_0104
+            * @tc.number    : Security_IAM_Nopermission_API9_Func_0104
             * @tc.name      : getAvailabeStatus invalid parameters
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-        it('Security_IAM_Nopermisson_API9_Func_0104', 0, async function (done) {
-            console.info('testFace Security_IAM_Nopermisson_API9_Func_0104 start');
-            
-            try {
-                userAuth.getAvailableStatus(userAuth.UserAuthType.FACE,  userAuth.AuthTrustLevel.ATL1);
-                console.log("Security_IAM_Nopermisson_API9_Func_0104  success " );
-                done()
-            } catch (e) {
-                console.log("Security_IAM_Nopermisson_API9_Func_0104  fail " + e.code);
-                expect(e.code).assertEqual(201);
-                done()
+        it('Security_IAM_Nopermission_API9_Func_0104', 0, async function (done) {
+            console.info('testFace Security_IAM_Nopermission_API9_Func_0104 start');
+            let authType = [userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT];
+            for (let idx0 = 0; idx0 < authType.length; idx0++) {
+                try {
+                    userAuth.getAvailableStatus(authType[idx0], userAuth.AuthTrustLevel.ATL1);
+                    console.log("Security_IAM_Nopermission_API9_Func_0104  success " );
+                    done()
+                } catch (e) {
+                    console.log("Security_IAM_Nopermission_API9_Func_0104  fail " + e.code);
+                    expect(e.code).assertEqual(201);
+                    done()
+                }
             }
         })
 
@@ -197,17 +204,18 @@ describe('userAuthTestExecute', function () {
          */
         it('Security_IAM_Nopermission_API9_Func_0110', 0, async function (done) {
             let challenge = new Uint8Array([253, 19, 58, 160, 67, 200, 247, 37])
-            let authType = userAuth.UserAuthType.FACE;
+            let authType = [userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT];
             let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
-
-            try {
-                var authInstance = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
-                console.log("Security_IAM_Nopermission_API9_Func_0110 FACE ATL1 success");
-                done();
-            } catch (e) {
-                console.log("Security_IAM_Nopermission_API9_Func_0110 FACE ATL1 fail" + e.code);
-                expect(e.code).assertEqual(201);
-                done();
+            for (let idx0 = 0; idx0 <authType.length; idx0++) {
+                try {
+                    var authInstance = userAuth.getAuthInstance(challenge, authType[idx0], authTrustLevel);
+                    console.log("Security_IAM_Nopermission_API9_Func_0110 FACE ATL1 success");
+                    done();
+                } catch (e) {
+                    console.log("Security_IAM_Nopermission_API9_Func_0110 FACE ATL1 fail" + e.code);
+                    expect(e.code).assertEqual(201);
+                    done();
+                }
             }
         })
 
@@ -220,44 +228,46 @@ describe('userAuthTestExecute', function () {
         */
          it('Security_IAM_Nopermission_API9_Func_0103', 0, async function (done) {
             let challenge = new Uint8Array([253, 19, 58, 160, 67, 200, 247, 37])
-            let authType = userAuth.UserAuthType.FACE;
+            let authType = [userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT];
             let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
 
-            try {
-                var authInstance = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
-                // register result and tip
-                authInstance.on("result", {
-                    callback: (result) => {
-                        console.log("authV9 result " + result.result);
-                        console.log("authV9 token " + result.token);
-                        console.log("authV9 remainAttempts " + result.remainAttempts);
-                        console.log("authV9 lockoutDuration " + result.lockoutDuration);
-                        expect(result.result).assertEqual(userAuth.UserAuthResultCode.NOT_ENROLLED);
-                    }
-                });
+            for (let idx0 = 0; idx0 <authType.length; idx0++) {
+                try {
+                    var authInstance = userAuth.getAuthInstance(challenge, authType[idx0], authTrustLevel);
+                    // register result and tip
+                    authInstance.on("result", {
+                        callback: (result) => {
+                            console.log("authV9 result " + result.result);
+                            console.log("authV9 token " + result.token);
+                            console.log("authV9 remainAttempts " + result.remainAttempts);
+                            console.log("authV9 lockoutDuration " + result.lockoutDuration);
+                            expect(result.result).assertEqual(userAuth.UserAuthResultCode.NOT_ENROLLED);
+                        }
+                    });
 
-                authInstance.on("tip", {
-                    callback: (result) => {
-                        console.log("authV9 module " + result.module);
-                        console.log("authV9 tip " + result.tip);
-                    }
-                });
+                    authInstance.on("tip", {
+                        callback: (result) => {
+                            console.log("authV9 module " + result.module);
+                            console.log("authV9 tip " + result.tip);
+                        }
+                    });
 
-                //start auth
-                authInstance.start();
-            } catch (e) {
-                console.log("Security_IAM_Nopermission_API9_Func_0103 fail " + e.code);
-                expect(e.code).assertEqual(201);
-            }
+                    //start auth
+                    authInstance.start();
+                } catch (e) {
+                    console.log("Security_IAM_Nopermission_API9_Func_0103 fail " + e.code);
+                    expect(e.code).assertEqual(201);
+                }
 
-            // unregister result and tip
-            try {
-                authInstance.off("result");
-                authInstance.off("tip");
-                done();
-            } catch (e) {
-                console.log("Security_IAM_Nopermission_API9_Func_0103 fail " + e.code);
-                done();
+                // unregister result and tip
+                try {
+                    authInstance.off("result");
+                    authInstance.off("tip");
+                    done();
+                } catch (e) {
+                    console.log("Security_IAM_Nopermission_API9_Func_0103 fail " + e.code);
+                    done();
+                }
             }
         })
 })

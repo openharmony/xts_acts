@@ -14,10 +14,22 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import inputMethod from '@ohos.inputMethod';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
+import display from '@ohos.display';
 
 export default function inputMethodNormalJSUnit() {
   describe('inputMethodNormalJSUnit', function () {
     console.info("====>************* inputMethodNormalJSUnit settings Test start*************");
+
+    beforeAll(async (done)=>{
+      let display_info;
+      let getFocusCmd = '';
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      display_info = display.getDefaultDisplaySync();
+      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${display_info.height*0.5}`;
+      console.debug('====>runCmd info:' + getFocusCmd);
+      await abilityDelegator.executeShellCommand(getFocusCmd);
+    })
 
     /*
      * @tc.number  inputmethodNomal_test_switchInputMethod_001

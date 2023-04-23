@@ -17,7 +17,7 @@ import { describe, it, expect } from '@ohos/hypium'
 import formProvider from '@ohos.app.form.formProvider'
 import formBindingData from '@ohos.app.form.formBindingData'
 
-let ERROR_CODE = 16500101;
+let ERROR_CODE = 202;
 export default function formProviderTest() {
   describe('formProviderTest', function () {
 

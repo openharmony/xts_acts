@@ -72,21 +72,21 @@ export default function imageAniamtorJsunit() {
       // test the enum of state of animator
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'state',value:AnimationStatus.Running})
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(800);
       let strJson = getInspectorByKey('imageAnimator');
       let obj = JSON.parse(strJson);
       console.info('[imageAniamtorJsunit_0200] component obj is: ' + obj.$attrs.state);
       expect(obj.$attrs.state).assertEqual('AnimationStatus.Running');
 
       globalThis.value.message.notify({name:'state',value:AnimationStatus.Paused})
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(800);
       let strJson2 = getInspectorByKey('imageAnimator');
       let obj2 = JSON.parse(strJson2);
       console.info('[imageAniamtorJsunit_0200] component obj2 is: ' + obj2.$attrs.state);
       expect(obj2.$attrs.state).assertEqual('AnimationStatus.Paused');
 
       globalThis.value.message.notify({name:'state',value:AnimationStatus.Stopped})
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(800);
       let strJson3 = getInspectorByKey('imageAnimator');
       let obj3 = JSON.parse(strJson3);
       console.info('[imageAniamtorJsunit_0200] component obj3 is: ' + obj3.$attrs.state);

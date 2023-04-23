@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceAround_FlexMarTest() {
   describe('Flex_AlignContent_SpaceAround_FlexMarTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceAround_FlexMar beforeEach start");
+      console.info("Flex_AlignContent_SpaceAround_FlexMarTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_FlexMar',
       }
@@ -37,6 +36,7 @@ export default function flex_AlignContent_SpaceAround_FlexMarTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceAround_FlexMar page error:" + err);
       }
+      console.info("Flex_AlignContent_SpaceAround_FlexMarTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -45,12 +45,12 @@ export default function flex_AlignContent_SpaceAround_FlexMarTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0100
-     * @tc.name      alignContent_SpaceAround_FlexMargin
+     * @tc.name      testFlexAlignContentSpaceAroundFlexMargin
      * @tc.desc      The size of the parent component in the cross direction meets the layout
-     *               of the child components when the height and width of parent component changed
+     *               of the child components when the margin of parent component set to 10
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0100] START');
+    it('testFlexAlignContentSpaceAroundFlexMargin', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundFlexMargin] START');
       globalThis.value.message.notify({name:'margin', value:10})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceAround_FlexMar01');
@@ -68,7 +68,7 @@ export default function flex_AlignContent_SpaceAround_FlexMarTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //四个子组件的高度分别为50、100、50、100
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
       expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(vp2px(10)); //margin =10
       expect(firstText.left).assertEqual(secondText.left);
@@ -77,11 +77,13 @@ export default function flex_AlignContent_SpaceAround_FlexMarTest() {
       expect(fourthText.left).assertEqual(flexContainer.left);
 
       expect(Math.round(secondText.top - firstText.bottom)).assertEqual(Math.round(thirdText.top - secondText.bottom));
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //行间距相等
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
 
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(flexContainer.bottom - fourthText.bottom));
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round((secondText.top - firstText.bottom) / 2)); //上下间距是组件间距的一半
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEAROUND_0100] END');
+      expect(Math.round(firstText.top - flexContainer.top))
+        .assertEqual(Math.round(flexContainer.bottom - fourthText.bottom));
+      expect(Math.round(firstText.top - flexContainer.top))
+        .assertEqual(Math.round((secondText.top - firstText.bottom) / 2));
+      console.info('[testFlexAlignContentSpaceAroundFlexMargin] END');
       done();
     });
   })

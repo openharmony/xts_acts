@@ -12,22 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../../common/MessageManager';
 
 @Entry
 @Component
 struct Grid_RowCol_Gap{
   @State addColumnGap: number = 5;
   @State addRowGap: number = 0;
-  messageManager:MessageManager = new MessageManager()
-  private content: string = "Grid_RowCol_Gap Page"
+  messageManager:MessageManager = new MessageManager();
+  private content: string = "Grid_RowCol_Gap Page";
   onPageShow() {
     console.info('Grid_RowCol_Gap page show called');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'addColumnGap') {
         this.addColumnGap = message.value;
       }
@@ -46,16 +46,16 @@ struct Grid_RowCol_Gap{
     Column() {
       Grid() {
         GridItem() {
-          Text('1').fontSize(16).backgroundColor(0xF9CF93).width('100%').height('100%')
+          Text('1').fontSize(16).backgroundColor(0xF9CF93).width('100%').height('100%');
         }.key('Grid_RowCol_Gap_011')
         GridItem() {
-          Text('2').fontSize(16).backgroundColor(0xF5DEB3).width('100%').height('100%')
+          Text('2').fontSize(16).backgroundColor(0xF5DEB3).width('100%').height('100%');
         }.key('Grid_RowCol_Gap_012')
         GridItem() {
-          Text('3').fontSize(16).backgroundColor(0xD2B48C).width('100%').height('100%')
+          Text('3').fontSize(16).backgroundColor(0xD2B48C).width('100%').height('100%');
         }.key('Grid_RowCol_Gap_013')
         GridItem() {
-          Text('4').fontSize(16).backgroundColor(0xffa500).width('100%').height('100%')
+          Text('4').fontSize(16).backgroundColor(0xffa500).width('100%').height('100%');
         }.key('Grid_RowCol_Gap_014')
       }
       .columnsTemplate("1fr 1fr")

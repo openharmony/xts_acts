@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 export default function Stack_Position_Change() {
   describe('Stack_Position_ChangeTest', function () {
     beforeEach(async function (done) {

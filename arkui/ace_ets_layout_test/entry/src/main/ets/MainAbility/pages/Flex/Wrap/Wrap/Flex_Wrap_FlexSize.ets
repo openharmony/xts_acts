@@ -37,8 +37,8 @@ struct Flex_Wrap_FlexSize{
     this.messageManager.registerCallback(callback);
   }
   build(){
-    Column({space:10}){
-      Flex({wrap:FlexWrap.Wrap, direction: FlexDirection.Row}){
+    Column({ space:10 }){
+      Flex({ wrap:FlexWrap.Wrap, direction: FlexDirection.Row }){
         Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('Wrap_flexSize_Text1');
         Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('Wrap_flexSize_Text2');
         Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('Wrap_flexSize_Text3');

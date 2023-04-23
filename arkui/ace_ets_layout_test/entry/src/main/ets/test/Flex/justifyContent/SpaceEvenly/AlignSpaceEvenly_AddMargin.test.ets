@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignSpaceEvenly_AddMargin() {
   describe('AlignSpaceEvenly_AddMargin', function () {
     beforeEach(async function (done) {
@@ -47,12 +46,12 @@ export default function AlignSpaceEvenly_AddMargin() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500
-     * @tc.name      Align_SpaceEvenly_Row_AddMargin
+     * @tc.name      testFlexAlignSpaceEvenlyFlexMargin
      * @tc.desc      The interface display where the child component is offset by the margin setting of the parent
      * component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500] START');
+    it('testFlexAlignSpaceEvenlyFlexMargin', 0, async function (done) {
+      console.info('[testFlexAlignSpaceEvenlyFlexMargin] START');
       globalThis.value.message.notify({name:'DadMargin',value:20});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddMargin_01');
@@ -82,7 +81,7 @@ export default function AlignSpaceEvenly_AddMargin() {
       expect(Math.round(SpaceEvenly_AddMargin_011.bottom - SpaceEvenly_AddMargin_011.top)).assertEqual(vp2px(50));
       expect(Math.round(SpaceEvenly_AddMargin_012.bottom - SpaceEvenly_AddMargin_012.top)).assertEqual(vp2px(100));
       expect(Math.round(SpaceEvenly_AddMargin_013.bottom - SpaceEvenly_AddMargin_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500] END');
+      console.info('[testFlexAlignSpaceEvenlyFlexMargin] END');
       done();
     });
   })

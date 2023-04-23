@@ -13,33 +13,33 @@
  * limitations under the License.
  */
 
-import {MessageManager,Callback} from './../../../../common/MessageManager'
+import { MessageManager, Callback } from './../../../../common/MessageManager'
 @Entry
 @Component
 struct AlignCenter_AddAlign {
-  @State DadAddAlign: number = Alignment.TopStart
-  messageManager:MessageManager = new MessageManager()
+  @State DadAddAlign: number = Alignment.TopStart;
+  messageManager:MessageManager = new MessageManager();
   onPageShow() {
-    console.info('AlignSpaceEvenly_NoSpace onPageShow')
+    console.info('AlignCenter_AddAlign onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'DadAddAlign') {
         this.DadAddAlign = message.value;
       }
     }
     this.messageManager.registerCallback(callback);
   }
-  @State justifyContent: FlexAlign = FlexAlign.Center
+  @State justifyContent: FlexAlign = FlexAlign.Center;
   build() {
     Column() {
-        Text('justifyContent:FlexAlign.Center').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Text('justifyContent:FlexAlign.Center').fontSize(9).fontColor(0xCCCCCC).width('90%');
         Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key("Center_AddAlign_011")
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("Center_AddAlign_012")
-          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("Center_AddAlign_013")
+          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key("Center_AddAlign_011");
+          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("Center_AddAlign_012");
+          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("Center_AddAlign_013");
         }
         .key("Center_AddAlign_01")
         .width(500)
