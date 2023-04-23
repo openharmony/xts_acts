@@ -221,7 +221,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testIsStarted0001 end *************');
     })
@@ -241,7 +241,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testIsStarted0002 end *************');
     })
@@ -264,7 +264,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + "************* testIsStarted0003 end *************");
     })
@@ -285,7 +285,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testIsStarted0004 end *************');
     })
@@ -306,7 +306,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testIsEnded0001 end *************');
     })
@@ -326,7 +326,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testIsEnded0002 end *************');
     })
@@ -346,7 +346,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testIsEnded0003 end *************');
     })
@@ -367,7 +367,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testIsEnded0004 end *************');
     })
@@ -386,7 +386,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testRowCount0001 end *************');
     })
@@ -406,7 +406,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testRowCount0002 end *************');
     })
@@ -426,7 +426,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testRowCount0003 end *************');
     })
@@ -447,7 +447,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testRowCount0003 end *************');
     })
@@ -545,7 +545,7 @@ describe('relationalStoreResultSetTest', function () {
             const data1 = resultSet.getString(resultSet.getColumnIndex('data1'))
             expect('hello').assertEqual(data1);
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testGetString0001 end *************');
     })
@@ -564,7 +564,7 @@ describe('relationalStoreResultSetTest', function () {
             const data2 = resultSet.getString(resultSet.getColumnIndex('data2'))
             expect('10').assertEqual(data2);
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testGetString0002 end *************');
     })
@@ -584,7 +584,7 @@ describe('relationalStoreResultSetTest', function () {
             const data3 = resultSet.getString(resultSet.getColumnIndex('data3'))
             expect('2.5').assertEqual(data3);
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testGetString0003 end *************');
     })
@@ -609,7 +609,7 @@ describe('relationalStoreResultSetTest', function () {
             expect('3').assertEqual(data2);
             expect('1.8').assertEqual(data3);
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testGetString0004 end *************');
     })
@@ -644,7 +644,7 @@ describe('relationalStoreResultSetTest', function () {
         let resultSet = await rdbStore.query(predicates)
         expect(false).assertEqual(resultSet.isClosed)
 
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testIsClosed0002 end *************');
     })
@@ -661,7 +661,7 @@ describe('relationalStoreResultSetTest', function () {
         let resultSet = await rdbStore.query(predicates)
         expect(false).assertEqual(resultSet.isClosed)
 
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testIsClosed0003 end *************');
     })
@@ -677,7 +677,7 @@ describe('relationalStoreResultSetTest', function () {
             let predicates = await new data_Rdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
             expect(5).assertEqual(resultSet.columnCount);
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testColumnCount0001 end *************');
         }
@@ -695,7 +695,7 @@ describe('relationalStoreResultSetTest', function () {
             predicates.equalTo('name', 'wangwu');
             let resultSet = await rdbStore.query(predicates)
             expect(0).assertEqual(resultSet.columnCount);
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testColumnCount0002 end *************');
         }
@@ -716,7 +716,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(0).assertEqual(resultSet.rowIndex)
             }
 
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testRowIndex0001 end *************');
         }
@@ -737,7 +737,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(2).assertEqual(resultSet.rowIndex)
             }
 
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testRowIndex0002 end *************');
         }
@@ -780,7 +780,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testGoToFirstRow0002 end *************');
     })
@@ -802,7 +802,7 @@ describe('relationalStoreResultSetTest', function () {
         } catch (e) {
             expect(null).assertFail();
         }
-        resultSet = null
+        resultSet.close()
         done();
         console.info(TAG + '************* testGoToFirstRow0003 end *************');
     })
@@ -820,7 +820,7 @@ describe('relationalStoreResultSetTest', function () {
             {
                 expect(true).assertEqual(resultSet.goToLastRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToLastRow0001 end *************');
         }
@@ -840,7 +840,7 @@ describe('relationalStoreResultSetTest', function () {
             {
                 expect(false).assertEqual(resultSet.goToLastRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToLastRow0002 end *************');
         }
@@ -861,7 +861,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToPreviousRow())
                 expect(true).assertEqual(resultSet.goToLastRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToLastRow0003 end *************');
         }
@@ -880,7 +880,7 @@ describe('relationalStoreResultSetTest', function () {
             {
                 expect(true).assertEqual(resultSet.goToNextRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToNextRow0001 end *************');
         }
@@ -900,7 +900,7 @@ describe('relationalStoreResultSetTest', function () {
             {
                 expect(false).assertEqual(resultSet.goToNextRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToNextRow0002 end *************');
         }
@@ -922,7 +922,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToPreviousRow())
                 expect(true).assertEqual(resultSet.goToNextRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToNextRow0003 end *************');
         }
@@ -942,7 +942,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToLastRow())
                 expect(false).assertEqual(resultSet.goToNextRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToNextRow0004 end *************');
         }
@@ -961,7 +961,7 @@ describe('relationalStoreResultSetTest', function () {
             {
                 expect(false).assertEqual(resultSet.goToPreviousRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToPreviousRow0001 end *************');
         }
@@ -981,7 +981,7 @@ describe('relationalStoreResultSetTest', function () {
             {
                 expect(false).assertEqual(resultSet.goToPreviousRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToPreviousRow0002 end *************');
         }
@@ -1002,7 +1002,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 expect(true).assertEqual(resultSet.goToPreviousRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToPreviousRow0003 end *************');
         }
@@ -1022,7 +1022,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToLastRow())
                 expect(true).assertEqual(resultSet.goToPreviousRow())
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToPreviousRow0004 end *************');
         }
@@ -1043,7 +1043,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goTo(1)
                 expect(1).assertEqual(resultSet.rowIndex)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoTo0001 end *************');
         }
@@ -1064,7 +1064,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goTo(1)
                 expect(-1).assertEqual(resultSet.rowIndex)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoTo0002 end *************');
         }
@@ -1086,7 +1086,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goTo(1)
                 expect(2).assertEqual(resultSet.rowIndex)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoTo0003 end *************');
         }
@@ -1107,7 +1107,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goTo(5)
                 expect(3).assertEqual(resultSet.rowIndex)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoTo0004 end *************');
         }
@@ -1128,7 +1128,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goToRow(1)
                 expect(1).assertEqual(resultSet.rowIndex)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToRow0001 end *************');
         }
@@ -1149,7 +1149,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goToRow(1)
                 expect(-1).assertEqual(resultSet.rowIndex)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToRow0002 end *************');
         }
@@ -1172,7 +1172,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goToRow(1)
                 expect(1).assertEqual(resultSet.rowIndex)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToRow0003 end *************');
         }
@@ -1193,7 +1193,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goToRow(5)
                 expect(3).assertEqual(resultSet.rowIndex)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGoToRow0004 end *************');
         }
@@ -1213,7 +1213,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToFirstRow())
                 expect(true).assertEqual(resultSet.isAtFirstRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtFirstRow0001 end *************');
         }
@@ -1233,7 +1233,7 @@ describe('relationalStoreResultSetTest', function () {
             {
                 expect(false).assertEqual(resultSet.isAtFirstRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtFirstRow0002 end *************');
         }
@@ -1254,7 +1254,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 expect(false).assertEqual(resultSet.isAtFirstRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtFirstRow0003 end *************');
         }
@@ -1274,7 +1274,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToLastRow())
                 expect(false).assertEqual(resultSet.isAtFirstRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtFirstRow0004 end *************');
         }
@@ -1295,7 +1295,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goTo(0)
                 expect(true).assertEqual(resultSet.isAtFirstRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtFirstRow0005 end *************');
         }
@@ -1316,7 +1316,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.isAtFirstRow)
                 expect(true).assertEqual(resultSet.isAtFirstRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtFirstRow0006 end *************');
         }
@@ -1336,7 +1336,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToFirstRow())
                 expect(false).assertEqual(resultSet.isAtLastRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtLastRow0001 end *************');
         }
@@ -1356,7 +1356,7 @@ describe('relationalStoreResultSetTest', function () {
             {
                 expect(false).assertEqual(resultSet.isAtLastRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtLastRow0002 end *************');
         }
@@ -1377,7 +1377,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 expect(false).assertEqual(resultSet.isAtLastRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtLastRow0003 end *************');
         }
@@ -1397,7 +1397,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToLastRow())
                 expect(true).assertEqual(resultSet.isAtLastRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtLastRow0004 end *************');
         }
@@ -1418,7 +1418,7 @@ describe('relationalStoreResultSetTest', function () {
                 expect(true).assertEqual(resultSet.isAtLastRow)
                 expect(true).assertEqual(resultSet.isAtLastRow)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsAtLastRow0005 end *************');
         }
@@ -1439,7 +1439,7 @@ describe('relationalStoreResultSetTest', function () {
                 const data3 = resultSet.getDouble(resultSet.getColumnIndex('data3'))
                 expect(1.0).assertEqual(data3)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetDouble0001 end *************');
         }
@@ -1460,7 +1460,7 @@ describe('relationalStoreResultSetTest', function () {
                 const data3 = resultSet.getDouble(resultSet.getColumnIndex('data3'))
                 expect(2.5).assertEqual(data3)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetDouble0002 end *************');
         }
@@ -1481,7 +1481,7 @@ describe('relationalStoreResultSetTest', function () {
                 const data3 = resultSet.getDouble(resultSet.getColumnIndex('data3'))
                 expect(1.8).assertEqual(data3)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetDouble0003 end *************');
         }
@@ -1502,7 +1502,7 @@ describe('relationalStoreResultSetTest', function () {
                 const data2 = resultSet.getDouble(resultSet.getColumnIndex('data2'))
                 expect(10).assertEqual(data2)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetDouble0004 end *************');
         }
@@ -1525,7 +1525,7 @@ describe('relationalStoreResultSetTest', function () {
                 const isColumnNull1 = resultSet.isColumnNull(resultSet.getColumnIndex('data1'))
                 expect(false).assertEqual(isColumnNull1)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsColumnNull0001 end *************');
         }
@@ -1548,7 +1548,7 @@ describe('relationalStoreResultSetTest', function () {
                 const isColumnNull4 = resultSet.isColumnNull(resultSet.getColumnIndex('data4'))
                 expect(true).assertEqual(isColumnNull4)
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsColumnNull0002 end *************');
         }
@@ -1570,7 +1570,7 @@ describe('relationalStoreResultSetTest', function () {
             }catch(e){
                 expect(e.code).assertEqual("14800013")
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsColumnNull0003 end *************');
         }
@@ -1589,7 +1589,7 @@ describe('relationalStoreResultSetTest', function () {
                 resultSet.goToRow(2)
                 expect(false).assertEqual(resultSet.isColumnNull(1))
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testIsColumnNull0004 end *************');
         }
@@ -1608,7 +1608,7 @@ describe('relationalStoreResultSetTest', function () {
             expect(true).assertEqual(resultSet.goToFirstRow())
             expect(1).assertEqual(resultSet.getColumnIndex('data1'))
 
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetColumnIndex0001 end *************');
         }
@@ -1627,7 +1627,7 @@ describe('relationalStoreResultSetTest', function () {
             let resultSet = await rdbStore.query(predicates)
             expect(-1).assertEqual(resultSet.getColumnIndex('data1'))
 
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetColumnIndex0002 end *************');
         }
@@ -1645,7 +1645,7 @@ describe('relationalStoreResultSetTest', function () {
             let resultSet = await rdbStore.query(predicates)
             expect(-1).assertEqual(resultSet.getColumnIndex('dataX'))
 
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetColumnIndex0003 end *************');
         }
@@ -1668,7 +1668,7 @@ describe('relationalStoreResultSetTest', function () {
             errInfo = err
         }
         expect(errInfo.code).assertEqual("401")
-        resultSet = null;
+        resultSet.close();
         done();
         console.info(TAG + '************* testGetColumnIndex0004 end *************');
         
@@ -1688,7 +1688,7 @@ describe('relationalStoreResultSetTest', function () {
             expect('data1').assertEqual(resultSet.getColumnName(1))
             expect('data4').assertEqual(resultSet.getColumnName(4))
 
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetColumnName0001 end *************');
         }
@@ -1709,7 +1709,7 @@ describe('relationalStoreResultSetTest', function () {
             expect('').assertEqual(resultSet.getColumnName(1))
             expect('').assertEqual(resultSet.getColumnName(4))
 
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetColumnName0002 end *************');
         }
@@ -1728,7 +1728,7 @@ describe('relationalStoreResultSetTest', function () {
 
             expect('').assertEqual(resultSet.getColumnName(10))
 
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetColumnName0003 end *************');
         }
@@ -1748,7 +1748,7 @@ describe('relationalStoreResultSetTest', function () {
 
             expect('').assertEqual(resultSet.getColumnName(10))
 
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testGetColumnName0004 end *************');
         }
@@ -1809,7 +1809,7 @@ describe('relationalStoreResultSetTest', function () {
             }else{
                 expect(0).assertEqual(0);
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + '************* testcolumnNames0001 end *************');
         }
