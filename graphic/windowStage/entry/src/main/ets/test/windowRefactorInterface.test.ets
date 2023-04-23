@@ -162,10 +162,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           }
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest1  error : ' + JSON.stringify(err));
-          if(err.code!==801){
+          if(err.code==801){
+            expect(TRUE_FLAG).assertTrue();
+          } else {
             expect().assertFail()
-            done();
           }
+          done();
         })
       }
     })
@@ -274,10 +276,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           }
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest2  error : ' + JSON.stringify(err));
-          if(err.code!==801){
+          if(err.code==801){
+            expect(TRUE_FLAG).assertTrue();
+          } else {
             expect().assertFail()
-            done();
           }
+          done();
         })
       }
     })
@@ -356,10 +360,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           }
         }).catch(err => {
           console.info('setWindowSystemBarPropertiesTest3  error : ' + JSON.stringify(err));
-          if(err.code!==801){
+          if(err.code==801){
+            expect(TRUE_FLAG).assertTrue();
+          } else {
             expect().assertFail()
-            done();
           }
+          done();
         })
       }
     })

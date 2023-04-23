@@ -730,13 +730,14 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       function setSystemBarPropertiesFun(tempWnd, systemBarProperties) {
         return new Promise((resolve, reject) => {
-          tempWnd.setSystemBarProperties(systemBarProperties, (err) => {
+          tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
             if (err && err.code) {
-              reject(err)
+              reject(null)
             } else {
               console.log(msgStr + 'tempWnd.setSystemBarProperties ' + JSON.stringify(systemBarProperties) + ' success');
               resolve(true)
             }
+
           })
         })
       }
@@ -761,10 +762,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         };
         await setSystemBarPropertiesFun(tempWnd, systemBarProperties).catch((err) => {
           console.info(msgStr + 'setSystemBarProperties error : ' + JSON.stringify(err));
-          if(err.code!==801){
-            expect().assertFail();
-            done();
-          }
+          expect().assertFail();
+          done();
         });
       }
       done();
@@ -908,7 +907,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
           console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
-          if (err.code && err.code!==801) {
+          if (err && err.code) {
             try {
               expect(TRUE_FLAG).assertFail();
             } catch (error) {
@@ -1004,7 +1003,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         tempWnd.setSystemBarProperties(systemBarProperties, (err, data) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties err' + JSON.stringify(err));
           console.log(msgStr + 'tempWnd.setSystemBarProperties data' + JSON.stringify(data));
-          if (err.code && err.code!==801) {
+          if (err && err.code) {
             try {
               expect(TRUE_FLAG).assertFail();
             } catch (error) {

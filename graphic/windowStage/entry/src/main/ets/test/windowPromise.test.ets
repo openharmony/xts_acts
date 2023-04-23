@@ -774,10 +774,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
         }, (err) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
-          if(err.code!==801){
-            expect(TRUE_FLAG).assertFail();
-            done();
-          }
+          expect(TRUE_FLAG).assertFail();
         })
       }
     })
@@ -875,10 +872,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
         }, (err) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
-          if(err.code!==801){
-            expect(TRUE_FLAG).assertFail();
-            done();
-          }
+          expect(TRUE_FLAG).assertFail();
         })
       }
     })
@@ -953,10 +947,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
         }, (err) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
-          if(err.code!==801){
-            expect(TRUE_FLAG).assertFail();
-            done();
-          }
+          expect(TRUE_FLAG).assertFail();
+          done();
         })
       }
     })
