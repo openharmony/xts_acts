@@ -40,6 +40,9 @@ export class KeyboardController {
         this.initWindow();
         let that = this;
         inputMethodAbility.on("inputStop", () => {
+            inputMethodAbility.off("inputStop", () => {
+                console.log('====>inputMethodEngine delete inputStop notification.');
+            });
             try{
                 that.mContext.destroy((err) => {
                     console.info(TAG + '====>inputMethodEngine destroy err:' + JSON.stringify(err));
@@ -132,6 +135,30 @@ export class KeyboardController {
                 case 50:
                     console.debug(TAG + '====>inputMethodEngine_test_050 event:' + data.event);
                     that.inputMethodEngine_test_050();
+                    break;
+                case 71:
+                    console.debug(TAG + '====>inputMethodEngine_test_071 event:' + data.event);
+                    that.inputMethodEngine_test_071();
+                    break;
+                case 72:
+                    console.debug(TAG + '====>inputMethodEngine_test_072 event:' + data.event);
+                    that.inputMethodEngine_test_072();
+                    break;
+                case 73:
+                    console.debug(TAG + '====>inputMethodEngine_test_073 event:' + data.event);
+                    that.inputMethodEngine_test_073();
+                    break;
+                case 74:
+                    console.debug(TAG + '====>inputMethodEngine_test_074 event:' + data.event);
+                    that.inputMethodEngine_test_074();
+                    break;
+                case 76:
+                    console.debug(TAG + '====>inputMethodEngine_test_076 event:' + data.event);
+                    that.inputMethodEngine_test_076();
+                    break;
+                case 77:
+                    console.debug(TAG + '====>inputMethodEngine_test_077 event:' + data.event);
+                    that.inputMethodEngine_test_077();
                     break;
             }
         }
@@ -774,7 +801,186 @@ export class KeyboardController {
         });
     }
 
+    private inputMethodEngine_test_071(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodEngine_test_071 success');
+        let count = 0;
+        inputMethodEngine.on('keyboardHide', () => {
+            count += 1;
+            inputMethodEngine.off("keyboardHide");
+            console.info(TAG + '====>inputMethodEngine.off("keyboardHide") count: ' + count);
+        });
+        inputMethodEngine.on('inputStart', (KeyboardDelegate, InputClient) => {
+            inputMethodEngine.off('inputStart');
+            console.info(TAG + '====>inputMethodEngine_test_071 inputMethodEngine.on("inputStart")');
+            let t = setInterval(async () => {
+                await KeyboardDelegate.hideKeyboard();
+                console.info(TAG + '====>KeyboardDelegate.hideKeyboard count: ' +  count);
+                if(count === 1){
+                    clearInterval(t);
+                }
+            },100);
+        });
 
+        let t = setTimeout(() => {
+            if(count === 1){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodEngine_test_071", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },500);
+    }
 
+    private inputMethodEngine_test_072(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodEngine_test_072 success');
+        let count = 0;
+        inputMethodEngine.on('keyboardShow', () => {
+            count += 1;
+            inputMethodEngine.off("keyboardShow");
+            console.info(TAG + '====>inputMethodEngine.off("keyboardShow") count: ' + count);
+        });
+
+        let t = setTimeout(() => {
+            if(count === 1){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodEngine_test_072", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },500);
+    }
+
+    private inputMethodEngine_test_073(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodEngine_test_073 success');
+        let count = 0;
+        inputKeyboardDelegate.on('keyDown', (keyEvent) => {
+            inputKeyboardDelegate.off('keyDown');
+            console.info(TAG + "====>inputKeyboardDelegate.on('keyDown') count: " + count);
+            if (keyEvent.keyCode === 2000){
+                count += 1;
+            }
+            return true;
+        });
+        inputKeyboardDelegate.on('keyUp', (keyEvent) => {
+            inputKeyboardDelegate.off('keyUp');
+            console.info(TAG + "====>inputKeyboardDelegate.on('keyUp') count: " + count);
+            if (keyEvent.keyCode === 2000){
+                count += 1;
+            }
+            return true;
+        });
+        let t = setTimeout(() => {
+            commonEventPublishData = {
+                data: "SUCCESS"
+            };
+            commoneventmanager.publish("inputMethodEngine_test_073", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },300);
+    }
+
+    private inputMethodEngine_test_074(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodEngine_test_074 success');
+        let count = 0;
+        inputKeyboardDelegate.on('cursorContextChange', (x, y, h) => {
+            console.info(TAG + "====>inputKeyboardDelegate.on('cursorContextChange') count: " + count);
+            if (count === 1){
+                inputKeyboardDelegate.off('cursorContextChange');
+            }
+            count += 1;
+            console.info(TAG + '====>inputMethodEngine_test_074 x,y,z: ' + x + "---" + y + "---" + h);
+        });
+        inputMethodEngine.on('inputStart', (KeyboardDelegate, InputClient) => {
+            inputMethodEngine.off('inputStart');
+            console.info(TAG + '====>inputMethodEngine_test_074 inputMethodEngine.on("inputStart")');
+            let t = setInterval(async () => {
+                await InputClient.insertText("ttt");
+                console.info(TAG + '====>KeyboardDelegate.insertText count: ' +  count);
+                if(count === 2){
+                    clearInterval(t);
+                }
+            },100);
+        });
+
+        let t = setTimeout(() => {
+            console.info(TAG + '====>inputMethodEngine_test_074 setTimeout: ' +  count);
+            if(count === 2){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodEngine_test_074", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },1000);
+    }
+
+    private inputMethodEngine_test_076(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodEngine_test_076 success');
+        inputKeyboardDelegate.on('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {
+            console.info(TAG + "====>inputKeyboardDelegate.on('selectionChange')");
+            inputKeyboardDelegate.off('selectionChange');
+            commonEventPublishData = {
+                data: "SUCCESS"
+            };
+            console.info(TAG + '====>inputMethodEngine_test_076 oldBegin,oldEnd,newBegin,newEnd: ' + oldBegin + "---" + oldEnd + "---" + newBegin + "---" + newEnd);
+        });
+        let t = setTimeout(() => {
+            commoneventmanager.publish("inputMethodEngine_test_076", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },2000);
+    }
+
+    private inputMethodEngine_test_077(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive inputMethodEngine_test_077 success');
+        let count = 0;
+        inputKeyboardDelegate.on('textChange', (text) => {
+            console.info(TAG + "====>inputKeyboardDelegate.on('textChange') count:" + count);
+            if (count === 1){
+                inputKeyboardDelegate.off('textChange');
+            }
+            count += 1;
+            console.info(TAG + '====>inputMethodEngine_test_077 text: ' + text);
+        });
+        inputMethodEngine.on('inputStart', (KeyboardDelegate, InputClient) => {
+            inputMethodEngine.off('inputStart');
+            console.info(TAG + '====>inputMethodEngine_test_077 inputMethodEngine.on("inputStart")');
+            let t = setInterval(async () => {
+                await InputClient.insertText("tttt");
+                console.info(TAG + '====>KeyboardDelegate.insertText count: ' +  count);
+                if(count === 2){
+                    clearInterval(t);
+                }
+            },100);
+        });
+        let t = setTimeout(() => {
+            console.info(TAG + '====>inputMethodEngine_test_077 setTimeout: ' +  count);
+            if(count === 2){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+            }
+            commoneventmanager.publish("inputMethodEngine_test_077", commonEventPublishData, this.publishCallback);
+            clearTimeout(t);
+        },500);
+    }
 
 }
