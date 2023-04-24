@@ -17,7 +17,6 @@ ohos_js_hap_suite("ActsAceEtsComponentFiveTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-
     ":ace_ets_component_resources",
     ":ace_ets_component_test_assets",
   ]
