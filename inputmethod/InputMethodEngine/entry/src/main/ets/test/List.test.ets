@@ -15,7 +15,6 @@
 import inputMethodEngine from './inputMethodEngine.test'
 import inputMethodAbility from './inputMethodAbility.test'
 
-
 export default function testsuite() {
   inputMethodEngine();
   inputMethodAbility();
