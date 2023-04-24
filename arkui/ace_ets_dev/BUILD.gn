@@ -18,7 +18,7 @@ ohos_js_hap_suite("ActsAceDevTest") {
   js_build_mode = "debug"
   deps = [
     ":ace_ets_dev_assets",
-    ":ace_ets_dev_resources"
+    ":ace_ets_dev_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
