@@ -54,7 +54,7 @@ export default function testsuite() {
   circleJsunit();
   gridJsunit();
   tapGesture();
-  panGestureJsunit();
+   panGestureJsunit();
   canvasJsunit();
   canvas2Jsunit();
   longPressGestureJsUnit();

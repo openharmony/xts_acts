@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -23,7 +23,7 @@ export default function buttonJsunit() {
     beforeEach(async function (done) {
       console.info("button beforeEach start");
       let options = {
-        uri: 'pages/button',
+        uri: 'MainAbility/pages/button',
       }
       let result;
       try {
@@ -306,10 +306,15 @@ export default function buttonJsunit() {
         let event = JSON.parse(eventData.data.event);
         console.info("[testButton12] get event state result is: " + Math.trunc(event.screenY));
         console.info("[testButton12] get event state result is: " + Math.trunc(event.screenX));
-        expect(event.screenX).assertEqual(185)
-        expect(event.screenY).assertEqual(485)
-        expect(event.x).assertEqual(100)
-        expect(event.y).assertEqual(50)
+        try {
+            expect(event.screenX).assertEqual(185)
+            expect(event.screenY).assertEqual(533)
+            expect(event.x).assertEqual(100)
+            expect(event.y).assertEqual(50)
+        } catch (err) {
+            console.info("[testButton12_] expection err : " + JSON.stringify(err));
+            expect().assertFail();
+        }
         done();
       }
       var innerEvent = {

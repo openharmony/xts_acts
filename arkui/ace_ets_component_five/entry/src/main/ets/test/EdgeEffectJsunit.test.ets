@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -22,7 +22,7 @@ export default function edgeEffectJsunit(){
   describe('edgeEffectTest', function (){
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/edgeEffect',
+        uri: 'MainAbility/pages/edgeEffect',
       }
       try {
         router.clear();

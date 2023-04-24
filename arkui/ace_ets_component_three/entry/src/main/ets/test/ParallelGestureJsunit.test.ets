@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -23,7 +23,7 @@ export default function parallelGestureJsunit() {
   describe('parallelGestureTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/parallelGesture',
+        uri: 'MainAbility/pages/parallelGesture',
       }
       try {
         router.clear();

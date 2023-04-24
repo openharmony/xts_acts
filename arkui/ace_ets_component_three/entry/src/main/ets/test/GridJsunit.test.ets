@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -23,7 +23,7 @@ export default function gridJsunit() {
     beforeEach(async function (done) {
       console.info('beforeEach ===================grid test beforeEach called===================');
       let options = {
-        uri: 'pages/gridPage',
+        uri: 'MainAbility/pages/gridPage',
       }
       try {
         router.clear();
