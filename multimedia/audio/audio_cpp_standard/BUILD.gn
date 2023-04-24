@@ -62,6 +62,6 @@ ohos_moduletest_suite("ActsOpenslesNdkTest") {
     "hiviewdfx_hilog_native:libhilog",
   ]
 
-  part_name = "multimedia_audio_framework"
+  part_name = "audio_framework"
   subsystem_name = "multimedia"
 }
