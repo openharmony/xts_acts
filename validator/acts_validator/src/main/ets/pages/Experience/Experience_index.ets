@@ -24,6 +24,7 @@ import data_preferences from '@ohos.data.preferences';
 const TAG = 'ParseXML';
 let path = globalThis.dir;
 let path1 = path + '/Experience';
+let ExperienceDataPath = path + '/ExperienceData';
 
 let VarColor = [];
 let ColorBackPath = path + '/ExperienceColorBack.txt';
@@ -112,7 +113,7 @@ struct IndexPage {
       let number = WriteTitle.length + 11;
       let Index = ColorBack.indexOf(WriteTitle);
 
-      if (this.result === 'true'){
+      if (this.result === 'true '){
         this.ColorObject[this.current] = '#ff008000';
         let Log = (titles+';'+'#ff008000'+';');
         let key = ColorBack.substring(Index,Index+number);
@@ -150,7 +151,7 @@ struct IndexPage {
       Row() {
         Button() {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp')
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back();
         })
@@ -243,6 +244,8 @@ struct IndexPage {
   ClearText(){
     fileio.rmdirSync(path1);
     fileio.mkdirSync(path1);
+    fileio.rmdirSync(ExperienceDataPath);
+    fileio.mkdirSync(ExperienceDataPath);
     let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
     for(let i = 0; i < this.TestCaseList.length; i++) {
       let log = (this.TestCaseList[i].title+';'+'#ff808080'+';').toString();
@@ -252,7 +255,6 @@ struct IndexPage {
   ReadTextParseXml(){
     let ReportPath = path1 + '/ExperienceReport.txt';
     let dir = fileio.opendirSync(path1);
-    console.info("ssssss"+dir);
     while (dir) {
       let OP = fileio.openSync(ReportPath, 0o100 | 0o2002, 0o664);
       let buf = new ArrayBuffer(40960);
@@ -278,12 +280,12 @@ struct IndexPage {
         FailIndex = report.indexOf('false',FailIndex + 1);
       }
       let failNum = (FailNum).toString();
-      let PassIndex = report.indexOf('true');
+      let PassIndex = report.indexOf('true ');
       let PassNum = 0;
       while (PassIndex != -1) {
         console.log(PassIndex);
         PassNum++;
-        PassIndex = report.indexOf('true',PassIndex + 1);
+        PassIndex = report.indexOf('true ',PassIndex + 1);
       }
       let TestNum = FailNum + PassNum;
       let testNum = (TestNum).toString();

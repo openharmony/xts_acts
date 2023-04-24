@@ -2799,26 +2799,21 @@ export default function ReminderAgentTest() {
             let maxLimitNumsOfApp = 30;
             let firstId = 0;
             let secondId = 0;
-            let diffId = 0
-            reminderAgent.cancelAllReminders().then(() =>{
-              for (let i = 0; i < maxLimitNumsOfApp; i++) {
-                (function (i) {
-                    setTimeout(function () {
-                        reminderAgent.publishReminder(timer).then((reminderId) => {
-                            if (i === 0) {
-                                firstId = reminderId
-                            }
-                            if (i === 29) {
-                                secondId = reminderId
-                                diffId = secondId - firstId
-                                expect(29).assertEqual(diffId);
-                                done();
-                            }
-                        });
-                    }, 500);
-                })(i);
-            }
-            })
+            let diffId = 0;
+            let reminderId;
+            await reminderAgent.cancelAllReminders();
+            for (let i = 0; i < maxLimitNumsOfApp; i++) {
+                reminderId = await reminderAgent.publishReminder(timer);
+                if (i === 0) {
+                    firstId = reminderId
+                }
+                if (i === 29) {
+                    secondId = reminderId
+                    diffId = secondId - firstId
+                    expect(29).assertEqual(diffId);
+                    done();
+                };
+            }            
         })
 
         /**

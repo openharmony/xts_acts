@@ -1087,18 +1087,21 @@ export default function ActsAccountCustomData() {
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat finish====");
             appAccountManager.createAccount(" ", (err)=>{
-                console.debug("====>add account ActsAccountCustomData_2900 err:" + JSON.stringify(err));
-                expect(err.code != 0).assertEqual(true);
+                console.debug("====>createAccount ActsAccountCustomData_2900 err:" + JSON.stringify(err));
+                expect(err).assertEqual(null);
                 appAccountManager.setCustomData(" ", "key29", "value29", (err)=>{
                     console.debug("====>setCustomData ActsAccountCustomData_2900 err:" + JSON.stringify(err));
-                    expect(err.code != 0).assertEqual(true);
+                    expect(err).assertEqual(null);
                     appAccountManager.getCustomData(" ", "key29", (err, data)=>{
                         console.debug("====>getCustomData 2900 err:" + JSON.stringify(err));
                         console.debug("====>getCustomData 2900 data:" + JSON.stringify(data));
-                        expect(err.code != 0).assertEqual(true);
-                        expect(data).assertEqual(null);
-                        console.debug("====>ActsAccountCustomData_2900 end====");
-                        done();
+                        expect(err).assertEqual(null);
+                        expect(data).assertEqual("value29");
+                        appAccountManager.removeAccount(" ", (err)=>{
+                            console.error("====>removeAccount ActsAccountCustomData_2900 err:" + JSON.stringify(err));
+                            expect(err).assertEqual(null);
+                            done();
+                        });
                     });
                 });
             });
@@ -1113,28 +1116,18 @@ export default function ActsAccountCustomData() {
             console.debug("====>ActsAccountCustomData_3000 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat finish====");
-            try{
+            try {
                 await appAccountManager.createAccount(" ");
-            }
-            catch(err){
-                console.debug("====>add account ActsAccountCustomData_3000 err:" + JSON.stringify(err));
-                expect(err.code != 0).assertEqual(true);
-                try{
-                    await appAccountManager.setCustomData(" ", "key30", "value30");
-                }
-                catch(err){
-                    console.error("====>setCustomData ActsAccountCustomData_3000 err:" + JSON.stringify(err));
-                    expect(err.code != 0).assertEqual(true);
-                    try{
-                        await appAccountManager.getCustomData(" ", "key30");
-                    }
-                    catch(err){
-                        console.error("====>getCustomData ActsAccountCustomData_3000 err:" + JSON.stringify(err));
-                        expect(err.code != 0).assertEqual(true);
-                        console.debug("====>ActsAccountCustomData_3000 end====");
-                        done();
-                    }
-                }
+                await appAccountManager.setCustomData(" ", "key30", "value30");
+                var data = await appAccountManager.getCustomData(" ", "key30");
+                console.error("====>getCustomData ActsAccountCustomData_3000 data:" + JSON.stringify(data));
+                expect(data).assertEqual("value30");
+                await appAccountManager.removeAccount(" ");
+                done();
+            } catch (err) {
+                console.error("====>ActsAccountCustomData_3000 fail err:" + JSON.stringify(err));
+                expect().assertFail();
+                done();
             }
         })
 

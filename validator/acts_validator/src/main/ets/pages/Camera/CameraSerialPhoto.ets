@@ -104,7 +104,7 @@ struct cameraOrientation {
       Row() {
         Button() {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({ left: '20vp' })
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
             url: 'pages/Camera/Camera_index',
@@ -158,6 +158,7 @@ struct cameraOrientation {
               this.cameraListFn()
             })
           })
+          .backgroundColor(Color.Black)
         Text(`提示：`).fontSize('16fp').fontColor(Color.White)
         Text(`期望拍摄${this.cameraListLength*10}张照片，实际拍摄${this.clickSerialPhotoVal}张，如果一致请选择pass，否则选择fail`)
           .fontSize('16fp').fontColor(Color.White)

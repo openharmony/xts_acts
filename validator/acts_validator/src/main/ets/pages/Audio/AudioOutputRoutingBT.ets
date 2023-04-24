@@ -76,7 +76,7 @@ struct audioOutputRouting {
       Row() {
         Button(){
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({left:'20vp'})
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(()=>{
           router.back({
             url:'pages/Audio/Audio_index',
@@ -117,7 +117,7 @@ struct audioOutputRouting {
               }
             }
             Row(){
-              Text('测试目的:\n当设备连接蓝牙耳机时，音频路由是否正确切换\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持蓝牙外设\n2. 按下播放按钮\n3. 连接华为蓝牙耳机\n4. 拔出蓝牙耳机\n5. 按下停止按钮\n测试标准：\n如果设备不支持蓝牙耳机连接或者插拔蓝牙耳机后接收到路由通知、路由显示正确，且连接蓝牙后音频通过蓝牙耳机播放，则用例pass').fontColor(Color.White).fontSize('18fp')
+              Text('测试目的:\n当设备连接蓝牙耳机时，音频路由是否正确切换\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持蓝牙外设\n2. 按下播放按钮\n3. 连接蓝牙耳机\n4. 拔出蓝牙耳机\n5. 按下停止按钮\n测试标准：\n如果设备不支持蓝牙耳机连接或者插拔蓝牙耳机后接收到路由通知、路由显示正确，且连接蓝牙后音频通过蓝牙耳机播放，则用例pass').fontColor(Color.White).fontSize('18fp')
 
             }
             Row(){

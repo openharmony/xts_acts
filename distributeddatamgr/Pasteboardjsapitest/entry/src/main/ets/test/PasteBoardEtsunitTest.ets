@@ -2113,7 +2113,10 @@ export default function pasteBoardJEtsunitTest() {
               console.info('f_test39: Sets the Property')
               var pasteDataProperty = pasteData1.getProperty()
               console.info('f_test39: timestamp = ' + pasteDataProperty.timestamp)
-              pasteDataProperty.additions["one"] = "Hello"
+              let object = {
+                bundleName: "pasteBoardJEtsunitTest"
+              };
+              pasteDataProperty.additions["one"] = object;
               pasteDataProperty.shareOption = 1;
               pasteData1.setProperty(pasteDataProperty);
 
@@ -2127,18 +2130,16 @@ export default function pasteBoardJEtsunitTest() {
                     expect(pasteDataProperty1.shareOption == 1).assertTrue();
                     console.info('f_test39: timestamp = ' + pasteDataProperty1.timestamp);
                     console.info('f_test39: shareOption = ' + pasteDataProperty1.shareOption);
+                    let tag1 = pasteData1.getTag();
+                    console.info('f_test39: gettag = ' + tag1);
+                    console.info('f_test39: additions = ' + pasteDataProperty1.additions["one"])
 
                     console.info('SUB_pasteBoard_function_JS_API_3900 end');
                     done();
                   });
                 });
               });
-              console.info('f_test39: timestamp = ' + pasteDataProperty1.timestamp)
-              console.info('f_test39: additions = ' + pasteDataProperty1.additions["one"])
-
-              console.info('SUB_pasteBoard_function_JS_API_3900 end');
-              done();
-            })
+            });
           });
         });
       });
@@ -2194,7 +2195,7 @@ export default function pasteBoardJEtsunitTest() {
                   systemPasteboard.getPasteData().then((data) => {
                     var pasteData2 = data;
                     var pasteDataProperty1 = pasteData2.getProperty();
-                    expect(pasteDataProperty1.tag = "Test").assertTrue();
+                    expect(pasteDataProperty1.tag == "Test").assertTrue();
                     console.info('f_test40: timestamp = ' + pasteDataProperty1.timestamp);
                     console.info('f_test40: tag = ' + pasteDataProperty1.tag);
 

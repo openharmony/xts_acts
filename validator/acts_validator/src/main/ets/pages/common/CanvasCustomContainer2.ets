@@ -52,7 +52,7 @@ export struct CustomContainer {
       .onClick(()=>{
         router.back({
           url:this.Url,
-          params: {result : 'true', title : this.name,
+          params: {result : 'true ', title : this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -84,7 +84,7 @@ export struct CustomContainer {
       Row() {
         Button(){
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({left:'20vp'})
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(()=>{
           router.back({
             url:this.Url,

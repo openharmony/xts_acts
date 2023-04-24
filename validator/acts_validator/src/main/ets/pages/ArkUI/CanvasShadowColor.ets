@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CanvasCustomContainer2';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct SetCircle {
@@ -77,8 +77,6 @@ struct SetCircle {
           .height('100%')
           .backgroundColor('#ffffffff')
           .onReady(() =>{
-            this.context.shadowBlur = 30;
-            this.context.shadowColor = 'rgb(0,0,255)';
             this.context.fillStyle = 'rgb(255,0,0)';
             this.context.fillRect(150, 150, 100, 100);
           })

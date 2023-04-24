@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
 import {CustomContainer} from '../common/CustomContainer2';
 import FirstDialog from '../model/FirstDialog';
-import router from '@ohos.router';
 @Entry
 @Component
 struct RotationGuestureTest {
   @State X: number = 0;
   @State name: string = 'RotationGesture';
-  @State StepTips: string = '操作步骤：用至少两根手指旋转图像（最多五根手指）'+'\n'+'预期结果：图片能够正常旋转';
+  @State StepTips: string = '操作步骤：两根手指旋转图像'+'\n'+'预期结果：图片能够正常旋转且文本旋转角度显示正常';
   @State Vue: boolean = false;
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);

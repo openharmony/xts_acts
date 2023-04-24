@@ -61,6 +61,8 @@ struct cameraOrientation {
       this.imageRotation = this.imageRotation + 90
       if (this.imageRotation > 270 && this.clickFrequency > 3) {
         this.imageRotation = 0
+	  }
+	  if (this.cameraListLength > 1){
         this.cameraDeviceIndex = 1
         CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
       }
@@ -69,12 +71,14 @@ struct cameraOrientation {
 
   cameraListFn() {
     this.cameraListLength = CameraService.cameras.length
+	Logger.info(this.tag, `cameraListFn cameraListLength: ${this.cameraListLength}`)
+    this.testingFrequency = this.cameraListLength * 4
+	Logger.info(this.tag, `cameraListFn testingFrequency: ${this.testingFrequency}`)
     for (let index = 0; index < this.cameraListLength; index++) {
       this.cameraList.push({
         value: `Camera ${index}`
       })
     }
-    this.testingFrequency = this.cameraListLength * 4
   }
 
   handleTakePicture = (assetUri: string) => {
@@ -83,10 +87,11 @@ struct cameraOrientation {
   }
 
   onPageShow() {
-    Logger.info(this.tag, `takePicture end, assetUri`)
-	// @ts-ignore
+    Logger.info(this.tag, `cameraOrientation onPageShow`)
+    // @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
+	  Logger.info(this.tag, `onPageShow initCamera start`)
       this.cameraListFn()
     })
   }
@@ -101,7 +106,7 @@ struct cameraOrientation {
       Row() {
         Button() {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({ left: '20vp' })
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
             url: 'pages/Camera/Camera_index',
@@ -165,7 +170,7 @@ struct cameraOrientation {
         FillColor: $FillColor,
         name: $name,
         Vue: $Vue,
-        testingFrequency: this.testingFrequency,
+        testingFrequency: $testingFrequency,
         isEnabled: $isEnabled,
         clickFrequency: $clickFrequency
       }).height('10%').width('100%')

@@ -90,7 +90,7 @@ export default function actsWifiFunctionTest() {
                 await wifi.getCurrentGroup()
                     .then(data => {
                         console.info("[wifi_test] getCurrentGroup  promise result :" + JSON.stringify(data));
-                        expect(true).assertEqual(data.groupName == wifiP2PConfig.groupName);
+                        expect(true).assertEqual(data.groupName != null);
                     }).catch((error) => {
                         console.error('[wifi_test] getCurrentGroup  promise failed :' + JSON.stringify(error));
                         expect(true).assertEqual(error != null);

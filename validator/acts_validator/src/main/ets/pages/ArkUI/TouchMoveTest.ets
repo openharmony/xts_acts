@@ -50,7 +50,7 @@ struct CustomContainer1 {
       .onClick(()=>{
         router.back({
           url:this.Url,
-          params: {result : 'true', title : this.name,
+          params: {result : 'true ', title : this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -82,7 +82,7 @@ struct CustomContainer1 {
       Row() {
         Button(){
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({left:'20vp'})
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(()=>{
           router.back({
             url:this.Url,
@@ -126,7 +126,7 @@ struct CustomContainer1 {
     };
     let name = this.name;
     let displayName = `${info.prefix}${name}${info.suffix}`;
-    let dirPath = path + '/' + displayName;
+    let dirPath = path + '/screenshot' + '/' + displayName;
     let imagePackerApi = image.createImagePacker();
     let arrayBuffer = await imagePackerApi.packing(data, packOpts);
     let fd = fileio.openSync(dirPath,0o102,0o666);

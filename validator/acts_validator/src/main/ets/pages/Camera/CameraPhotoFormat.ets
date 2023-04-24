@@ -79,7 +79,7 @@ struct cameraOrientation {
 
   async cameraInit(obj?) {
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj, this.clickFrequency).then(() => {
-      this.resolution = CameraService.previewSizeResolution
+      this.resolution = CameraService.photoResolution
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
       this.cameraListFn()
     })
@@ -113,7 +113,7 @@ struct cameraOrientation {
       Row() {
         Button() {
           Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({ left: '20vp' })
-        }.backgroundColor(Color.Black)
+        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
             url: 'pages/Camera/Camera_index',
@@ -174,6 +174,7 @@ struct cameraOrientation {
               CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj)
               Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
             })
+          .backgroundColor(Color.Black)
           Select(this.cameraList)
             .selected(this.cameraDeviceIndex)
             .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
@@ -189,6 +190,7 @@ struct cameraOrientation {
                 this.cameraListFn()
               })
             })
+            .backgroundColor(Color.Black)
         }.justifyContent(FlexAlign.SpaceEvenly)
 
         Text(`提示：不同拍照分辨率下进行拍摄，图片拍摄成功且与预览画面一致则选择pass，否则选择fail`)

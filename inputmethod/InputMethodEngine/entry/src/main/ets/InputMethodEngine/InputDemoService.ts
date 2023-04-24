@@ -25,6 +25,5 @@ export default class InputDemoService extends InputMethodExtensionAbility {
 
   onDestroy() {
     console.log("onDestroy inputMethodEngine**");
-    this.context.destroy();
   }
 }

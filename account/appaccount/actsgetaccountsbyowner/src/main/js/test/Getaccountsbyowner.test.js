@@ -21,26 +21,26 @@ const LENGTHLIMIT = 1024;
 const SELFBUNDLE = 'com.example.actsgetaccountsbyowner'
 const createAccountOptions = {customData:{age:'12'}}
 export default function GetAccountsByOwner() {
-    beforeAll(async function (done) {
-        console.debug("====>startAbility first start====");
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.example.actsscenegetallaccounts",
-                        abilityName: "com.example.actsscenegetallaccounts.MainAbility",
-                        action: "action1",
-                        parameters:
-                        {},
-                    },
-                },
-            );
-        sleep(TIMEOUT);
-        done();
-    });
-
     describe('GetAccountsByOwner', function () {
+        beforeAll(async function (done) {
+            console.debug("====>startAbility start====");
+                await featureAbility.startAbility(
+                    {
+                        want:
+                        {
+                            deviceId: "",
+                            bundleName: "com.example.actsscenegetallaccounts",
+                            abilityName: "com.example.actsscenegetallaccounts.MainAbility",
+                            action: "action1",
+                            parameters:
+                            {},
+                        },
+                    },
+                );
+            await sleep(TIMEOUT);
+            done();
+        });
+
         async function sleep(delay) {
             let timeoutId = null;
             var promise = new Promise((resolve, reject) => {
@@ -315,7 +315,7 @@ export default function GetAccountsByOwner() {
             console.debug("====>creat finish====");
             console.debug("====>add account 1000 start====");
             await appAccountManager.createAccount("Account_application_promise");
-            sleep(TIMEOUT)
+            await sleep(TIMEOUT)
             console.debug("====>getAccountsByOwner 1000 start====");
             try{
                 var data = await appAccountManager.getAccountsByOwner(SELFBUNDLE);
@@ -361,7 +361,7 @@ export default function GetAccountsByOwner() {
                 console.debug("====>GetAccountsByOwner_1100 end====");
                 done();
             }
-            sleep(TIMEOUT)
+            await sleep(TIMEOUT)
             console.debug("====>getAccountsByOwner 1100 start====");
             appAccountManager.getAccountsByOwner(specifiedBundle, getAllCallback);
         });

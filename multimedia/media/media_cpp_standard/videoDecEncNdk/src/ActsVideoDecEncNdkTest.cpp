@@ -20,6 +20,7 @@
 #include "native_avcodec_base.h"
 #include "native_avformat.h"
 #include "VDecEncNdkSample.h"
+#include "syscap_ndk.h"
 
 using namespace std;
 using namespace testing::ext;
@@ -92,6 +93,13 @@ struct OH_AVFormat* createFormat()
     OH_AVFormat_SetStringValue(DefaultFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     return DefaultFormat;
 }
+
+bool CanUseVideoCodec()
+{
+    return canIUse("SystemCapability.Multimedia.Media.CodecBase") &&
+        canIUse("SystemCapability.Multimedia.Media.VideoDecoder") &&
+        canIUse("SystemCapability.Multimedia.Media.VideoEncoder");
+}
 }
 
 /**
@@ -101,6 +109,10 @@ struct OH_AVFormat* createFormat()
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0100, TestSize.Level1)
 {
+    if (!CanUseVideoCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0100 ignore" <<endl;
+        return;
+    }
     VDecEncNdkSample *vDecEncSample = new VDecEncNdkSample();
     struct OH_AVCodec* videoDec = vDecEncSample->CreateVideoDecoderByMime(MIME_TYPE_AVC);
     ASSERT_NE(nullptr, videoDec);
@@ -157,6 +169,10 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_010
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0200, TestSize.Level1)
 {
+    if (!CanUseVideoCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0200 ignore" <<endl;
+        return;
+    }
     VDecEncNdkSample *vDecEncSample = new VDecEncNdkSample();
 
     struct OH_AVCodec* videoDec = vDecEncSample->CreateVideoDecoderByMime(MIME_TYPE_AVC);
@@ -198,6 +214,10 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_020
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0300, TestSize.Level1)
 {
+    if (!CanUseVideoCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0300 ignore" <<endl;
+        return;
+    }
     VDecEncNdkSample *vDecEncSample = new VDecEncNdkSample();
 
     struct OH_AVCodec* videoDec = vDecEncSample->CreateVideoDecoderByMime(MIME_TYPE_AVC);
@@ -236,6 +256,10 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_030
 */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0400, TestSize.Level1)
 {
+    if (!CanUseVideoCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0400 ignore" <<endl;
+        return;
+    }
     VDecEncNdkSample *vDecEncSample = new VDecEncNdkSample();
 
     struct OH_AVCodec* videoDec = vDecEncSample->CreateVideoDecoderByMime(MIME_TYPE_AVC);
@@ -288,6 +312,10 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_040
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0500, TestSize.Level1)
 {
+    if (!CanUseVideoCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0500 ignore" <<endl;
+        return;
+    }
     VDecEncNdkSample *vDecEncSample = new VDecEncNdkSample();
 
     struct OH_AVCodec* videoDec = vDecEncSample->CreateVideoDecoderByMime(MIME_TYPE_AVC);
@@ -341,6 +369,10 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_050
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0600, TestSize.Level1)
 {
+    if (!CanUseVideoCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0600 ignore" <<endl;
+        return;
+    }
     VDecEncNdkSample *vDecEncSample = new VDecEncNdkSample();
 
     struct OH_AVCodec* videoDec = vDecEncSample->CreateVideoDecoderByMime(MIME_TYPE_AVC);
@@ -392,6 +424,10 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_060
  */
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0700, TestSize.Level1)
 {
+    if (!CanUseVideoCodec()) {
+        cout << "codec not support, ignore SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0700 ignore" <<endl;
+        return;
+    }
     VDecEncNdkSample *vDecEncSample = new VDecEncNdkSample();
 
     struct OH_AVCodec* videoDec = vDecEncSample->CreateVideoDecoderByMime(MIME_TYPE_AVC);

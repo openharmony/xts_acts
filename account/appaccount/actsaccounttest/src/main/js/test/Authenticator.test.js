@@ -24,7 +24,7 @@ export default function ActsAccountAuthenticator() {
     describe('ActsAccountAuthenticator', function () {
         beforeAll(async function (done) {  
             console.debug("====>accountauthenticatorbeforeAll start====");		
-            await featureAbility.startAbility(
+            await featureAbility.startAbilityForResult(
                 {
                     want:
                     {
@@ -44,8 +44,8 @@ export default function ActsAccountAuthenticator() {
         });
         beforeEach(async function (done) {            
             console.debug("====>afterEach start====");
-            var appAccountManager = account.getAccountManager();
-            var accounts = await appAccountManager.getAllAccountByOwner(owner)
+            var appAccountManager = account.createAppAccountManager();
+            var accounts = await appAccountManager.getAccountsByOwner(owner)
             for (var i=0;i<accounts.length;i++){
                 var localName = accounts[i].name
                 if(localName == 'zhangsan'){
@@ -69,13 +69,14 @@ export default function ActsAccountAuthenticator() {
                 appAccountManager.checkAccountLabels(name, owner, ['level4'], (err, data)=>{
                     console.debug("====>ActsAccountCheckAccountLabels_0100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    console.debug("====>ActsAccountCheckAccountLabels_0100 data:" + JSON.stringify(data));                
+                    console.debug("====>ActsAccountCheckAccountLabels_0100 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(true);
                     appAccountManager.deleteAccount(name, (err) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0100 deleteAccount_err:" + JSON.stringify(err))
                         expect(err).assertEqual(null);
                         console.debug("====>ActsAccountCheckAccountLabels_0100 end====");
                         done();
-                    })                
+                    })
                 });
             });
         });
@@ -97,7 +98,8 @@ export default function ActsAccountAuthenticator() {
                 appAccountManager.checkAccountLabels(name, owner, ['20-30'], (err, data)=>{
                     console.debug("====>ActsAccountCheckAccountLabels_0200 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    console.debug("====>ActsAccountCheckAccountLabels_0200 data:" + JSON.stringify(data));                
+                    console.debug("====>ActsAccountCheckAccountLabels_0200 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(false);
                     appAccountManager.deleteAccount(name, (err) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0200 deleteAccount_err:" + JSON.stringify(err))
                         expect(err).assertEqual(null);
@@ -124,19 +126,17 @@ export default function ActsAccountAuthenticator() {
                 appAccountManager.checkAccountLabels('CheckAccountLabels_0300', owner, ['male'], (err, data)=>{
                     console.debug("====>ActsAccountCheckAccountLabels_0300 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    console.debug("====>ActsAccountCheckAccountLabels_0300 data:" + JSON.stringify(data));    
-                    expect(data).assertEqual(false)   
+                    console.debug("====>ActsAccountCheckAccountLabels_0300 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(false);
                     appAccountManager.deleteAccount("CheckAccountLabels_0300", (err) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0300 deleteAccount_err:" + JSON.stringify(err))
                         expect(err).assertEqual(null);
                         console.debug("====>ActsAccountCheckAccountLabels_0300 end====");
                         done();                     
                     })
-                    
                 });
             });
-                
-        }); 
+        });
 
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0400
@@ -151,6 +151,7 @@ export default function ActsAccountAuthenticator() {
                 console.debug("====>ActsAccountCheckAccountLabels_0400 add_account_success");
                 appAccountManager.checkAccountLabels(name, owner, ['level4']).then((data) =>{
                     console.debug("====>ActsAccountCheckAccountLabels_0400 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(true);
                     appAccountManager.deleteAccount(name).then((data) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0400 delete_account_success");
                     }).catch((err) =>{
@@ -164,7 +165,7 @@ export default function ActsAccountAuthenticator() {
                 })
             }).catch((err) => {
                 console.debug("====>ActsAccountCheckAccountLabels_0400 add_account_err:" + JSON.stringify(err))
-                expect(err.code!=0).assertTrue();
+                expect().assertFail();
                 done();
             })
         });
@@ -182,6 +183,7 @@ export default function ActsAccountAuthenticator() {
                 console.debug("====>ActsAccountCheckAccountLabels_0500 add_account_success");
                 appAccountManager.checkAccountLabels(name, owner, ['20-30']).then((data) =>{
                     console.debug("====>ActsAccountCheckAccountLabels_0500 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(false);
                     expect(account.Constants.KEY_REQUIRED_LABELS).assertEqual('requiredLabels')
                     expect(account.Constants.KEY_BOOLEAN_RESULT).assertEqual('booleanResult')
                     appAccountManager.deleteAccount(name).then((data) =>{
@@ -215,6 +217,7 @@ export default function ActsAccountAuthenticator() {
                 console.debug("====>ActsAccountCheckAccountLabels_0600 add_account_success:" + JSON.stringify(data));
                 appAccountManager.checkAccountLabels('CheckAccountLabels_0600', owner, ['male']).then((data) =>{
                     console.debug("====>ActsAccountCheckAccountLabels_0600 data:" + JSON.stringify(data));
+                    expect(data).assertEqual(false);
                     appAccountManager.deleteAccount('CheckAccountLabels_0600').then((data) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0600 delete_account_success");
                     }).catch((err) =>{
@@ -660,7 +663,6 @@ export default function ActsAccountAuthenticator() {
             });        
         });
 
-
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0100
         * @tc.name      : Verify Credential callback form
@@ -687,14 +689,13 @@ export default function ActsAccountAuthenticator() {
                     appAccountManager.deleteAccount(name)
                     console.debug('====>ActsAccountSelectAccountByOptions_0300 deleteAccount_success')
                     done();
-                }                               
+                }
                 catch{
                     console.debug('====>ActsAccountSelectAccountByOptions_0300 deleteAccount_err')
                     expect().assertFail()
                     done();
-                }    
-            });        
-        }); 
-        
+                }
+            });
+        });
     })
 }

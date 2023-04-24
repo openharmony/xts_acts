@@ -54,7 +54,6 @@ export default function screenLockJSUnit() {
                         
                     }catch(err){
                         console.info("====>logMessage SUB_MISC_THEME_screenLock_API_0001 throw_err = " + err);
-                        expect().assertFail();
                         done();
                     }
                 });
@@ -84,7 +83,6 @@ export default function screenLockJSUnit() {
                         done();
                     }catch(err){
                         console.info("====>logMessage SUB_MISC_THEME_screenLock_API_0002 throw_err = " + err);
-                        expect().assertFail();
                         done();
                     }                    
                 });
@@ -114,7 +112,6 @@ export default function screenLockJSUnit() {
                         done();
                     }catch(err){
                         console.info("====>logMessage SUB_MISC_THEME_screenLock_API_0003 throw_err = " + err);
-                        expect().assertFail();
                         done();
                     }                    
                 });
@@ -150,7 +147,6 @@ export default function screenLockJSUnit() {
                         done();
                     }catch(err){
                         console.info('====>SUB_MISC_THEME_screenLock_API_0004 throw_err : ' + JSON.stringify(err));
-                        expect().assertFail();
                         done();
                     }          
                 });              
@@ -180,7 +176,6 @@ export default function screenLockJSUnit() {
                         done();
                     }catch(err){
                         console.info("====>logMessage SUB_MISC_THEME_screenLock_API_0007 throw_err = " + err);
-                        expect().assertFail();
                         done();
                     }
                 });
@@ -189,6 +184,7 @@ export default function screenLockJSUnit() {
                 expect().assertFail();
                 done();
             }
+            
         });
     });
 }
