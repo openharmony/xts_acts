@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -23,7 +23,7 @@ export default function systemRouterJsunit() {
     it('systemRouterTest001', 0, async function (done) {
       console.info('[systemRouterTest001] START');
       let options = {
-        uri: 'pages/systemRouterA',
+        uri: 'MainAbility/pages/systemRouterA',
       }
       try {
         let result = await router.push(options);
@@ -31,7 +31,7 @@ export default function systemRouterJsunit() {
         console.info("[systemRouterTest001] push page success " + JSON.stringify(result));
         let pages = router.getState();
         expect(pages.name).assertEqual('systemRouterA');
-        expect(pages.path).assertEqual('pages/');
+        expect(pages.path).assertEqual('MainAbility/pages/');
       } catch (err) {
         console.error("[systemRouterTest001] push page error: " + err);
       }
@@ -42,7 +42,7 @@ export default function systemRouterJsunit() {
     it('systemRouterTest002', 0, async function (done) {
       console.info('[systemRouterTest002] START');
       let options = {
-        uri: 'pages/systemRouterA'
+        uri: 'MainAbility/pages/systemRouterA'
       }
       try {
         let result = await router.push(options);
@@ -56,7 +56,6 @@ export default function systemRouterJsunit() {
       let callback = (paramsEvent) => {
         console.info("[systemRouterTest002] get state result is: " + JSON.stringify(paramsEvent));
         expect(paramsEvent.data.params).assertEqual('B Page');
-        done();
       }
       let paramsEvent = {
         eventId: 211,
@@ -72,6 +71,7 @@ export default function systemRouterJsunit() {
       await Utils.sleep(1000);
       router.back();
       await Utils.sleep(1000);
+      done();
     });
 
     it('systemRouterTest003', 0, async function (done) {
@@ -91,7 +91,7 @@ export default function systemRouterJsunit() {
       router.clear();
       await Utils.sleep(1000);
       let options = {
-        uri: 'pages/systemRouterA'
+        uri: 'MainAbility/pages/systemRouterA'
       }
       try {
         let result = await router.push(options);
@@ -101,7 +101,7 @@ export default function systemRouterJsunit() {
       }
       await Utils.sleep(1000);
       let optionsB = {
-        uri: 'pages/systemRouterB'
+        uri: 'MainAbility/pages/systemRouterB'
       }
       try {
         let result = await router.replace(optionsB);
@@ -119,7 +119,7 @@ export default function systemRouterJsunit() {
     it('systemRouterTest005', 0, async function(done) {
       console.info('[systemRouterTest005] START');
       let options = {
-        uri: 'pages/systemRouterA'
+        uri: 'MainAbility/pages/systemRouterB'
       }
       try {
         let result = await router.push(options);
@@ -133,7 +133,7 @@ export default function systemRouterJsunit() {
       let callback = (paramsEvent) => {
         console.info("[systemRouterTest005] get state result is: " + JSON.stringify(paramsEvent));
         expect(paramsEvent.data.params).assertEqual('B Page');
-        done();
+      
       }
       let paramsEvent = {
         eventId: 211,
@@ -146,6 +146,8 @@ export default function systemRouterJsunit() {
       }
       console.info("[systemRouterTest005] click replace button result is: "
         + JSON.stringify(sendEventByKey('ReplaceButtonA', 10, "")));
+      await Utils.sleep(1500);
+      done();  
     });
   });
 }

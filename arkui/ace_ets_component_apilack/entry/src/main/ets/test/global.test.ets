@@ -16,7 +16,7 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function globalJsunit() {
@@ -24,7 +24,7 @@ export default function globalJsunit() {
     beforeEach(async function (done) {
       console.info("global beforeEach start");
       let options = {
-        uri: 'pages/global',
+        uri: 'MainAbility/pages/global',
       }
       try {
         router.clear();

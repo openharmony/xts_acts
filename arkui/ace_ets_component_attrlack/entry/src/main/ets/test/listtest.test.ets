@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
@@ -23,7 +23,7 @@ export default function listtestIdleJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/listtest',
+        uri: 'MainAbility/pages/listtest',
       }
       try {
         router.clear();
@@ -58,7 +58,7 @@ export default function listtestIdleJsunit() {
       console.info("[testlisttestIdle0001] component controlButton strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('List');
-      expect(obj.$attrs.editMode).assertEqual("true");
+      expect(obj.$attrs.editMode).assertEqual(true);
       console.info("[testlisttestIdle0001] editMode value :" + obj.$attrs.editMode);
       done();
     });

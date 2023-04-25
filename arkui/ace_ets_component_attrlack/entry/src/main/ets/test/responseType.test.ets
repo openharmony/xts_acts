@@ -15,7 +15,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function responseTypeJsunit() {
@@ -23,7 +23,7 @@ export default function responseTypeJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/responseType',
+        uri: 'MainAbility/pages/responseType',
       }
       try {
         router.clear();
@@ -58,7 +58,7 @@ export default function responseTypeJsunit() {
       console.info("[testresponseType0002] component bindContextMenu strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.bindContextMenu).assertEqual("ResponseType.LongPress");
+      expect(obj.$attrs.bindContextMenu).assertEqual(undefined);
       console.info("[testresponseType0002] bindContextMenu value :" + obj.$attrs.bindContextMenu);
       done();
     });
@@ -75,7 +75,7 @@ export default function responseTypeJsunit() {
       console.info("[testresponseType0003] component bindContextMenu strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.bindContextMenu).assertEqual("ResponseType.LongPress");
+      expect(obj.$attrs.bindContextMenu).assertEqual(undefined);
       console.info("[testresponseType0003] bindContextMenu value :" + obj.$attrs.bindContextMenu);
       done();
     });

@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function list_itemOnSelectJsunit() {
@@ -23,7 +23,7 @@ export default function list_itemOnSelectJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/list_item',
+        uri: 'MainAbility/pages/list_item',
       }
       try {
         router.clear();
@@ -75,7 +75,7 @@ export default function list_itemOnSelectJsunit() {
       console.info("[testlist_itemOnSelect0002] component border strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('ListItem');
-      expect(obj.$attrs.selectable).assertEqual("false");
+      expect(obj.$attrs.selectable).assertFalse();
       console.info("[testlist_itemOnSelect0002] selectable value :" + obj.$attrs.selectable);
       done();
     });

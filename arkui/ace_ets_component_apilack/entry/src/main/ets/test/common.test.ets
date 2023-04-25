@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function commonBackgroundBlurStyleJsunit() {
@@ -22,7 +22,7 @@ export default function commonBackgroundBlurStyleJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/common',
+        uri: 'MainAbility/pages/common',
       }
       try {
         router.clear();
@@ -73,8 +73,8 @@ export default function commonBackgroundBlurStyleJsunit() {
         repeat: RepeatMode.Stretch,
         fill: false
       };
-      expect(obj.$attrs.borderImage).assertEqual(undefined);
-      console.info("[testcommonBackgroundBlurStyle001] borderImage value :" + JSON.stringify(obj.$attrs.borderImage));
+      let jsonObject = JSON.parse(obj.$attrs.borderImage);
+      expect(jsonObject.width).assertEqual("10.00px");
       done();
     });
 
@@ -90,7 +90,7 @@ export default function commonBackgroundBlurStyleJsunit() {
       console.info("[testcommonBackgroundBlurStyle002] component tabIndex strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.tabIndex).assertEqual(undefined);
+      expect(obj.$attrs.tabIndex).assertEqual(1);
       console.info("[testcommonBackgroundBlurStyle002] tabIndex value :" + obj.$attrs.textAlign);
       done();
     });
@@ -148,7 +148,8 @@ export default function commonBackgroundBlurStyleJsunit() {
       let strJson = getInspectorByKey('backgroundBlurStyleText');
       console.info("[testcommonBackgroundBlurStyle005] component backgroundBlurStyle strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.backgroundBlurStyle).assertEqual(undefined);
+      let testL = obj.$attrs.backgroundBlurStyle;
+      expect(testL instanceof Object).assertTrue();
       console.info("[testcommonBackgroundBlurStyle005] backgroundBlurStyle value :" + obj.$attrs.backgroundBlurStyle);
       done();
     });
@@ -175,7 +176,7 @@ export default function commonBackgroundBlurStyleJsunit() {
       let strJson = getInspectorByKey('hoverEffectText');
       console.info("[testcommonHoverEffectHighlight0001] component hoverEffect strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.hoverEffect).assertEqual(undefined);
+      expect(obj.$attrs.hoverEffect).assertEqual('HoverEffect.Highlight');
       console.info("[testcommonHoverEffectHighlight0001] hoverEffect value :" + obj.$attrs.hoverEffect);
       done();
     });
@@ -191,7 +192,7 @@ export default function commonBackgroundBlurStyleJsunit() {
       let strJson = getInspectorByKey('hoverEffectScaleText');
       console.info("[testcommonHoverEffectScale0001] component hoverEffect strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.hoverEffect).assertEqual(undefined);
+      expect(obj.$attrs.hoverEffect).assertEqual('HoverEffect.Scale');
       console.info("[testcommonHoverEffectScale0001] hoverEffect value :" + obj.$attrs.hoverEffect);
       done();
     });

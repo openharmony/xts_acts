@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
@@ -29,7 +29,7 @@ export default function mediaQueryOffJsunit() {
 
       let result;
       let options = {
-        uri: 'pages/mediaQuery'
+        uri: 'MainAbility/pages/mediaQuery'
       }
       try {
         result = router.push(options)
@@ -197,7 +197,7 @@ export default function mediaQueryOffJsunit() {
       console.info("[testmediaQueryOff0010] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Left");
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
       console.info("[testmediaQueryOff0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });

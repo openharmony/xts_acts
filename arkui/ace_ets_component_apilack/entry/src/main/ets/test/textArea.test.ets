@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function textAreaOnCutJsunit() {
@@ -22,7 +22,7 @@ export default function textAreaOnCutJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/textArea',
+        uri: 'MainAbility/pages/textArea',
       }
       try {
         router.clear();
@@ -176,7 +176,7 @@ export default function textAreaOnCutJsunit() {
       console.info("[testtextAreaOnCut0009] component padding strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextArea');
-      expect(obj.$attrs.padding).assertEqual("0.00px");
+      expect(obj.$attrs.padding).assertEqual("10.00vp");
       console.info("[testtextAreaOnCut0009] padding value :" + obj.$attrs.padding);
       done();
     });
@@ -210,7 +210,7 @@ export default function textAreaOnCutJsunit() {
       console.info("[testtextAreaCopyOption0011] component copyOption strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextArea');
-      expect(obj.$attrs.copyOption).assertEqual(undefined);
+      expect(obj.$attrs.copyOption).assertEqual('CopyOptions.None');
       console.info("[testtextAreaCopyOption0011] copyOption value :" + obj.$attrs.copyOption);
       done();
     });

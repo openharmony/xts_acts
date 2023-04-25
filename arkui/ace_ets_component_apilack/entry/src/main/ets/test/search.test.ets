@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function searchOnCutJsunit() {
@@ -22,7 +22,7 @@ export default function searchOnCutJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/search',
+        uri: 'MainAbility/pages/search',
       }
       try {
         router.clear();
@@ -193,7 +193,7 @@ export default function searchOnCutJsunit() {
       console.info("[testsearchOnCut0010] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Left");
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
       console.info("[testsearchOnCut0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });

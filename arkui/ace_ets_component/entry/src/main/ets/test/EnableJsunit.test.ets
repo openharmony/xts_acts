@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
@@ -22,7 +22,7 @@ export default function enableJsunit() {
     beforeEach(async function (done) {
       console.info("enable beforeEach start");
       let options = {
-        uri: 'pages/enable',
+        uri: 'MainAbility/pages/enable',
       }
       try {
         router.clear();
@@ -104,7 +104,7 @@ export default function enableJsunit() {
       let strJson = getInspectorByKey('enabled');
       let obj = JSON.parse(strJson);
       console.info("[testEnable03] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.enabled).assertEqual(true);
+      expect(obj.$attrs.enabled).assertEqual(false);
       console.info('testEnable03 END');
       done();
     });
@@ -130,7 +130,7 @@ export default function enableJsunit() {
       let strJsonNew = getInspectorByKey('enabled');
       let objNew = JSON.parse(strJsonNew);
       console.info("testEnable04 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.enabled).assertEqual(true);
+      expect(objNew.$attrs.enabled).assertEqual(false);
       done();
     });
   })

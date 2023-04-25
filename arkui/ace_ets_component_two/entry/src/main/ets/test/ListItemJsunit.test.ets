@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -23,7 +23,7 @@ export default function listItemJsunit() {
     beforeEach(async function (done) {
       console.info("listItem beforeEach start");
       let options = {
-        uri: 'pages/listItem',
+        uri: 'MainAbility/pages/listItem',
       }
       try {
         router.clear();
@@ -89,7 +89,7 @@ export default function listItemJsunit() {
       let strJson = getInspectorByKey('List');
       let obj = JSON.parse(strJson);
       console.info("[testListItem03] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.editMode).assertEqual('true');
+      expect(obj.$attrs.editMode).assertTrue();
       console.info('testListItem03 END');
       done();
     });
@@ -115,7 +115,7 @@ export default function listItemJsunit() {
       let strJson = getInspectorByKey('List');
       let obj = JSON.parse(strJson);
       console.info("[testListItem04] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.editMode).assertEqual('false');
+      expect(obj.$attrs.editMode).assertFalse();
       console.info('testListItem04 END');
       done();
     });

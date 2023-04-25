@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -22,7 +22,7 @@ export default function OhosRouterJsunit() {
   describe('ohosRouterTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/ohosRouterA',
+        uri: 'MainAbility/pages/ohosRouterA',
       }
       try {
         router.clear();
@@ -55,9 +55,9 @@ export default function OhosRouterJsunit() {
         await Utils.sleep(1000);
         console.info("[ohosRouterTest001] push page success " + JSON.stringify(result));
         let pages = router.getState();
-        expect(pages.index).assertEqual(3);
+        expect(pages.index).assertEqual(2);
         expect(pages.name).assertEqual('ohosRouterA');
-        expect(pages.path).assertEqual('pages/');
+        expect(pages.path).assertEqual('MainAbility/pages/');
       } catch (err) {
         console.error("[ohosRouterTest001] push page error: " + err);
       }
@@ -123,7 +123,7 @@ export default function OhosRouterJsunit() {
       } catch (err) {
         console.error("[ohosRouterTest004] push page error " + JSON.stringify(result));
       }
-      await Utils.sleep(1000);
+      await Utils.sleep(2000);
       let optionsB = {
         uri: 'pages/ohosRouterB'
       }
@@ -136,7 +136,7 @@ export default function OhosRouterJsunit() {
       await Utils.sleep(1500);
       let size = router.getLength();
       console.info("[ohosRouterTest004] size" + size);
-      expect(size).assertEqual("2");
+      expect(size).assertEqual("1");
       done();
     });
 

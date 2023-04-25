@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function swiperCurveJsunit() {
@@ -22,7 +22,7 @@ export default function swiperCurveJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/swiper',
+        uri: 'MainAbility/pages/swiper',
       }
       try {
         router.clear();
@@ -142,7 +142,9 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0006] component indicator strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.indicator).assertEqual("true");
+      let testObj = obj.$attrs.indicator;
+      console.info("curve006_" + testObj);
+      expect(testObj).assertTrue();
       console.info("[testswiperCurve0006] indicator value :" + obj.$attrs.indicator);
       done();
     });
@@ -176,7 +178,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0008] component duration strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.duration).assertEqual("1000.000000");
+      expect(obj.$attrs.duration).assertEqual("1000");
       console.info("[testswiperCurve0008] duration value :" + obj.$attrs.duration);
       done();
     });

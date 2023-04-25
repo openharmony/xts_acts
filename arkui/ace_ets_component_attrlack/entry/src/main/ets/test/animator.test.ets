@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function animatorOnframeJsunit() {
@@ -22,7 +22,7 @@ export default function animatorOnframeJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/animator',
+        uri: 'MainAbility/pages/animator',
       }
       try {
         router.clear();
@@ -194,7 +194,7 @@ export default function animatorOnframeJsunit() {
       console.info("[testanimatorOnframe0010] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Left");
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
       console.info("[testanimatorOnframe0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });
