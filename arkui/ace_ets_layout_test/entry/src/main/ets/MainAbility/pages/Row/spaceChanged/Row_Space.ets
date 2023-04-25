@@ -12,19 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../common/MessageManager';
 @Entry
 @Component
 struct Row_Space{
-  @State addSpace: number = 5
-  messageManager:MessageManager = new MessageManager()
+  @State addSpace: number = 5;
+  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('Row_Space onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'addSpace') {
         this.addSpace = message.value;
       }
@@ -33,9 +33,9 @@ struct Row_Space{
   }
   build(){
     Row({space:this.addSpace}){
-      Text('1').width(100).height(50).backgroundColor(0xF5DEB3).key('Row_Space_011')
-      Text('2').width(100).height(100).backgroundColor(0xD2B48C).key('Row_Space_012')
-      Text('3').width(100).height(150).backgroundColor(0xF5DEB3).key('Row_Space_013')
+      Text('1').width(100).height(50).backgroundColor(0xF5DEB3).key('Row_Space_011');
+      Text('2').width(100).height(100).backgroundColor(0xD2B48C).key('Row_Space_012');
+      Text('3').width(100).height(150).backgroundColor(0xF5DEB3).key('Row_Space_013');
     }
     .width(350)
     .height(200)

@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common";
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignStart_AddLayoutWeight() {
   describe('AlignStart_AddLayoutWeight', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignStart_AddLayoutWeight() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1200
-     * @tc.name      Align_Start_Row_AddLayoutWeight
+     * @tc.name      testFlexAlignStartTextLayoutWeight01
      * @tc.desc      The interface displays all subcomponents that set different layoutWeight properties
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1200', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1200] START');
+    it('testFlexAlignStartTextLayoutWeight01', 0, async function (done) {
+      console.info('[testFlexAlignStartTextLayoutWeight01] START');
       globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
       globalThis.value.message.notify({name:'OneLayoutWeight2', value:2});
       globalThis.value.message.notify({name:'OneLayoutWeight3', value:2});
@@ -78,16 +77,16 @@ export default function AlignStart_AddLayoutWeight() {
       expect(Math.round(Start_AddLayoutWeight_011.bottom - Start_AddLayoutWeight_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Start_AddLayoutWeight_012.bottom - Start_AddLayoutWeight_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Start_AddLayoutWeight_013.bottom - Start_AddLayoutWeight_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1200] END');
+      console.info('[testFlexAlignStartTextLayoutWeight01] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1600
-     * @tc.name      Align_Start_Row_AddLayoutWeight
+     * @tc.name      testFlexAlignStartTextLayoutWeight02
      * @tc.desc      Some subcomponents are displayed with different layoutWeight properties
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1600', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1600] START');
+    it('testFlexAlignStartTextLayoutWeight02', 0, async function (done) {
+      console.info('[testFlexAlignStartTextLayoutWeight02] START');
       globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
       globalThis.value.message.notify({name:'OneLayoutWeight2', value:2});
       globalThis.value.message.notify({name:'OneLayoutWeight3', value:0});
@@ -116,7 +115,7 @@ export default function AlignStart_AddLayoutWeight() {
       expect(Math.round(Start_AddLayoutWeight_011.bottom - Start_AddLayoutWeight_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Start_AddLayoutWeight_012.bottom - Start_AddLayoutWeight_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Start_AddLayoutWeight_013.bottom - Start_AddLayoutWeight_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1600] END');
+      console.info('[testFlexAlignStartTextLayoutWeight02] END');
       done();
     });
   })

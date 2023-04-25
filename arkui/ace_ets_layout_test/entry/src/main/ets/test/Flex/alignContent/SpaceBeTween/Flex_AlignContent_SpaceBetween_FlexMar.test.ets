@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceBetween_FlexMarTest() {
   describe('Flex_AlignContent_SpaceBetween_FlexMarTest', function () {
     beforeEach(async function (done) {
@@ -45,12 +44,11 @@ export default function flex_AlignContent_SpaceBetween_FlexMarTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0100
-     * @tc.name      alignContent_SpaceAround_FlexMargin
-     * @tc.desc      The size of the parent component in the cross direction meets the layout
-     *               of the child components when the height and width of parent component changed
+     * @tc.name      testFlexAlignContentSpaceAroundFlexMargin
+     * @tc.desc      the margin of parent component set to 10
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0100] START');
+    it('testFlexAlignContentSpaceAroundFlexMargin', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundFlexMargin] START');
       globalThis.value.message.notify({name:'margin', value:10})
       await CommonFunc.sleep(3000);
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMar01');
@@ -68,7 +66,7 @@ export default function flex_AlignContent_SpaceBetween_FlexMarTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200)); //四个子组件的高度分别为50、100、150、200
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200));
       expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(vp2px(10)); //margin =10
 
       expect(firstText.left).assertEqual(flexContainer.left);
@@ -77,11 +75,11 @@ export default function flex_AlignContent_SpaceBetween_FlexMarTest() {
       expect(thirdText.left).assertEqual(fourthText.left);
       expect(fourthText.left).assertEqual(flexContainer.left);
       expect(firstText.top).assertEqual(flexContainer.top);
-      expect(fourthText.bottom).assertEqual(flexContainer.bottom); //行首行尾贴边
+      expect(fourthText.bottom).assertEqual(flexContainer.bottom);
 
       expect(Math.round(secondText.top - firstText.bottom)).assertEqual(Math.round(thirdText.top - secondText.bottom));
-      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom)); //行间距相等
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0100] END');
+      expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
+      console.info('[testFlexAlignContentSpaceAroundFlexMargin] END');
       done();
     });
   })

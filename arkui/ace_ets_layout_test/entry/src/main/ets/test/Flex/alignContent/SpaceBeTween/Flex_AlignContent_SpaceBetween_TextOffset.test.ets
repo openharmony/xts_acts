@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
   describe('Flex_AlignContent_SpaceBetween_TextOffsetTest', function () {
     beforeEach(async function (done) {
-      console.info("Flex_AlignContent_SpaceBetween_TextOffset beforeEach start");
+      console.info("Flex_AlignContent_SpaceBetween_TextOffsetTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_TextOffset',
       }
@@ -35,6 +34,7 @@ export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
           console.info("push Flex_AlignContent_SpaceBetween_TextOffset page result:" + JSON.stringify(result));
         }
       } catch (err) {
+        console.info("Flex_AlignContent_SpaceBetween_TextOffsetTest beforeEach end");
         console.error("push Flex_AlignContent_SpaceBetween_TextOffset page error:" + err);
       }
       done();
@@ -45,12 +45,11 @@ export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
     });
     /**
      * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1000
-     * @tc.name      alignContent_SpaceAround_TextOffset
-     * @tc.desc      The size of the parent component in the cross direction is not enough for the layout
-     *               of the child components when the padding and margin of parent component was changed
+     * @tc.name      testFlexAlignContentSpaceAroundTextOffset
+     * @tc.desc      the offset of first subcomponent set to {x:10, y:10}
      */
-    it('SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1000', 0, async function (done) {
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1000] START');
+    it('testFlexAlignContentSpaceAroundTextOffset', 0, async function (done) {
+      console.info('[testFlexAlignContentSpaceAroundTextOffset] START');
       let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset01');
       let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset02');
       let distanceBefore = secondText.top - firstText.bottom;
@@ -71,18 +70,18 @@ export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100)); //四个子组件的高度分别为50、100、50、100
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
 
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(10));
       expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10)); //offset =10
       expect(flexContainer.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
-      expect(fourthText.bottom).assertEqual(flexContainer.bottom); //行首贴边行尾溢出
+      expect(fourthText.bottom).assertEqual(flexContainer.bottom);
 
       expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(fourthText.top - thirdText.bottom));
       expect(Math.round(thirdText.top - secondText.bottom)).assertEqual(Math.round(distanceBefore));
-      console.info('[SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1000] END');//其余组件行间距相等，未改变
+      console.info('[testFlexAlignContentSpaceAroundTextOffset] END');
       done();
     });
   })

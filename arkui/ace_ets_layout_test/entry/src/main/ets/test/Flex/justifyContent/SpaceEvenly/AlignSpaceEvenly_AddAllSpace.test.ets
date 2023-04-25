@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignSpaceEvenly_AddAllSpace() {
   describe('AlignSpaceEvenly_AddAllSpace', function () {
     beforeEach(async function (done) {
@@ -47,12 +46,11 @@ export default function AlignSpaceEvenly_AddAllSpace() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0600
-     * @tc.name      Align_SpaceEvenly_Row_AddAllSpace
-     * @tc.desc      After setting margin, after subtracting the padding from the layout space of the parent component,
-     * the interface display of the spindle layout that does not meet the sub-component
+     * @tc.name      testFlexAlignSpaceEvenlyFlexSpaceOverflow
+     * @tc.desc      the space of parent component set to 30
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0600', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0600] START');
+    it('testFlexAlignSpaceEvenlyFlexSpaceOverflow', 0, async function (done) {
+      console.info('[testFlexAlignSpaceEvenlyFlexSpaceOverflow] START');
       globalThis.value.message.notify({name:'DadAllSpace', value:30})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddAllSpace_01');
@@ -77,20 +75,22 @@ export default function AlignSpaceEvenly_AddAllSpace() {
       expect(Math.round(SpaceEvenly_AddAllSpace_011.bottom - SpaceEvenly_AddAllSpace_011.top)).assertEqual(vp2px(50));
       expect(Math.round(SpaceEvenly_AddAllSpace_012.bottom - SpaceEvenly_AddAllSpace_012.top)).assertEqual(vp2px(100));
       expect(Math.round(SpaceEvenly_AddAllSpace_013.bottom - SpaceEvenly_AddAllSpace_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddAllSpace_011.right - SpaceEvenly_AddAllSpace_011.left)).assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(SpaceEvenly_AddAllSpace_012.right - SpaceEvenly_AddAllSpace_012.left)).assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(SpaceEvenly_AddAllSpace_013.right - SpaceEvenly_AddAllSpace_013.left)).assertEqual(Math.round(vp2px(440/3)));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0600] END');
+      expect(Math.round(SpaceEvenly_AddAllSpace_011.right - SpaceEvenly_AddAllSpace_011.left))
+        .assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(SpaceEvenly_AddAllSpace_012.right - SpaceEvenly_AddAllSpace_012.left))
+        .assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(SpaceEvenly_AddAllSpace_013.right - SpaceEvenly_AddAllSpace_013.left))
+        .assertEqual(Math.round(vp2px(440/3)));
+      console.info('[testFlexAlignSpaceEvenlyFlexSpaceOverflow] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0700
-     * @tc.name      Align_SpaceEvenly_Row_AddAllSpace
-     * @tc.desc      After setting margin, the interface that satisfies the spindle layout of the child component is
-     * displayed after subtracting the padding from the layout space of the parent component
+     * @tc.name      testFlexAlignSpaceEvenlyFlexSpaceMeet
+     * @tc.desc      the space of parent component set to 20
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0700', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0700] START');
+    it('testFlexAlignSpaceEvenlyFlexSpaceMeet', 0, async function (done) {
+      console.info('[testFlexAlignSpaceEvenlyFlexSpaceMeet] START');
       globalThis.value.message.notify({name:'DadAllSpace', value:20})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddAllSpace_01');
@@ -122,7 +122,7 @@ export default function AlignSpaceEvenly_AddAllSpace() {
         .assertEqual(Math.round(SpaceEvenly_AddAllSpace_013.left - SpaceEvenly_AddAllSpace_012.right));
       expect(Math.round((SpaceEvenly_AddAllSpace_012.left - SpaceEvenly_AddAllSpace_011.right)*100)/100)
         .assertEqual(Math.round(vp2px(2.5)*100)/100);
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0700] END');
+      console.info('[testFlexAlignSpaceEvenlyFlexSpaceMeet] END');
       done();
     });
   })

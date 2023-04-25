@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignCenter_AddOffset() {
   describe('AlignCenter_AddOffset', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignCenter_AddOffset() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0900
-     * @tc.name      Align_Center_Row_AddOffset
-     * @tc.desc      The interface display of the component that sets the offset position when drawing
+     * @tc.name      testFlexAlignCenterTextOffset
+     * @tc.desc      the offset of fist subcomponent set to "{ x: 10, y: 15 }"
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0900', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0900] START');
+    it('testFlexAlignCenterTextOffset', 0, async function (done) {
+      console.info('[testFlexAlignCenterTextOffset] START');
       globalThis.value.message.notify({name:'OneOffset', value:{ x: 10, y: 15 }});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddAlign_01');
@@ -78,7 +77,7 @@ export default function AlignCenter_AddOffset() {
       expect(Math.round(Center_AddOffset_011.bottom - Center_AddOffset_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Center_AddOffset_012.bottom - Center_AddOffset_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Center_AddOffset_013.bottom - Center_AddOffset_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0900] END');
+      console.info('[testFlexAlignCenterTextOffset] END');
       done();
     });
   })

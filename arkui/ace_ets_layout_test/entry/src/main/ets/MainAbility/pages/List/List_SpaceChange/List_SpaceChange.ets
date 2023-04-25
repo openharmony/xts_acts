@@ -25,7 +25,7 @@ struct List_SpaceChange{
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'Space') {
         this.testSpace = message.value;
       }
@@ -33,8 +33,8 @@ struct List_SpaceChange{
     this.messageManager.registerCallback(callback);
   }
   build(){
-    Column({space:30}){
-      List({space:this.testSpace}){
+    Column({ space:30 }){
+      List({ space:this.testSpace }){
         ListItem() {
           Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }

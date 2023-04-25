@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../../common/MessageManager';
 @Entry
 @Component
 struct FlexVisibility_Auto {
-  @State testVisibility: number = Visibility.Visible
-  messageManager:MessageManager = new MessageManager()
-  private content: string = "FlexVisibility_Auto Page"
+  @State testVisibility: number = Visibility.Visible;
+  messageManager:MessageManager = new MessageManager();
+  private content: string = "FlexVisibility_Auto Page";
   onPageShow() {
     console.info('FlexVisibility_Auto onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'visibility') {
         this.testVisibility = message.value;
       }
@@ -39,15 +39,15 @@ struct FlexVisibility_Auto {
   build() { 
     Column() {
       Column() {
-        Text('FlexTest10').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Text('FlexTest10').fontSize(9).fontColor(0xCCCCCC).width('90%');
         Flex({
           direction: FlexDirection.Row,
           alignItems: ItemAlign.Auto,
           wrap: FlexWrap.NoWrap,
         }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).visibility(this.testVisibility).key('textVisible01')
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textVisible02')
-          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textVisible03')
+          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).visibility(this.testVisibility).key('textVisible01');
+          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textVisible02');
+          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textVisible03');
         } 
         .key('flexVisible')
         .height(150)

@@ -26,7 +26,7 @@ struct Flex_NoWrap_FlexMar_TextMarPad{
   messageManager:MessageManager = new MessageManager();
 
   onPageShow() {
-    console.info('FlexAlignContent_SpaceAround_01 onPageShow');
+    console.info('Flex_NoWrap_FlexMar_TextMarPad onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }

@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function Grid_RowCol_PadMar() {
   describe('Grid_RowCol_PadMarTest', function () {
     beforeEach(async function (done) {
-      console.info("Grid_RowCol_PadMar beforeEach start");
+      console.info("Grid_RowCol_PadMarTest beforeEach start");
       let options = {
         url: "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_PadMar",
       }
@@ -38,6 +37,7 @@ export default function Grid_RowCol_PadMar() {
         console.error("push Grid_RowCol_PadMar page error " + JSON.stringify(err));
         expect().assertFail();
       }
+      console.info("Grid_RowCol_PadMarTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,11 +46,11 @@ export default function Grid_RowCol_PadMar() {
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0300
-     * @tc.name      Grid_RowCol_PadMar
+     * @tc.name      testGridRowColGridPad
      * @tc.desc      Add padding,Grid is divided into 4 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0300', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0300] START');
+    it('testGridRowColGridPad', 0, async function (done) {
+      console.info('[testGridRowColGridPad] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_PadMar_01');
       let gridContainerObj = JSON.parse(gridContainerStrJson);
@@ -88,16 +88,16 @@ export default function Grid_RowCol_PadMar() {
       expect(Math.round(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top)).assertEqual(vp2px(140));
       expect(Math.round(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top)).assertEqual(vp2px(140));
       expect(Math.round(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top)).assertEqual(vp2px(140));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0300] END');
+      console.info('[testGridRowColGridPad] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0400
-     * @tc.name      Grid_RowCol_PadMar
+     * @tc.name      testGridRowColGridMargin
      * @tc.desc     Add margin,Grid is divided into 4 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0400', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0400] START');
+    it('testGridRowColGridMargin', 0, async function (done) {
+      console.info('[testGridRowColGridMargin] START');
       globalThis.value.message.notify({name:'addPadding', value:0});
       globalThis.value.message.notify({name:'addMargin', value:10});
       await CommonFunc.sleep(3000);
@@ -142,16 +142,16 @@ export default function Grid_RowCol_PadMar() {
       expect(Math.round(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0400] END');
+      console.info('[testGridRowColGridMargin] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0500
-     * @tc.name      Grid_RowCol_PadMar
+     * @tc.name      testGridRowColGridPadMar
      * @tc.desc      Add padding and margin,Grid is divided into 4 equal parts, 4 components
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0500', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0500] START');
+    it('testGridRowColGridPadMar', 0, async function (done) {
+      console.info('[testGridRowColGridPadMar] START');
       globalThis.value.message.notify({name:'addPadding', value:10});
       globalThis.value.message.notify({name:'addMargin', value:10});
       await CommonFunc.sleep(3000);
@@ -197,7 +197,7 @@ export default function Grid_RowCol_PadMar() {
       expect(Math.round(Grid_RowCol_PadMar_012.bottom - Grid_RowCol_PadMar_012.top)).assertEqual(vp2px(140));
       expect(Math.round(Grid_RowCol_PadMar_013.bottom - Grid_RowCol_PadMar_013.top)).assertEqual(vp2px(140));
       expect(Math.round(Grid_RowCol_PadMar_014.bottom - Grid_RowCol_PadMar_014.top)).assertEqual(vp2px(140));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0500] END');
+      console.info('[testGridRowColGridPadMar] END');
       done();
     });
 

@@ -16,11 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function Grid_RowCol_cellLength() {
   describe('Grid_RowCol_cellLengthTest', function () {
     beforeEach(async function (done) {
-      console.info("Grid_RowCol_cellLength beforeEach start");
+      console.info("Grid_RowCol_cellLengthTest beforeEach start");
       let options = {
         url: "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_cellLength",
       }
@@ -38,6 +37,7 @@ export default function Grid_RowCol_cellLength() {
         console.error("push Grid_RowCol_cellLength page error " + JSON.stringify(err));
         expect().assertFail();
       }
+      console.info("Grid_RowCol_cellLengthTest beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -46,11 +46,11 @@ export default function Grid_RowCol_cellLength() {
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1100
-     * @tc.name      Grid_RowCol_cellLength
+     * @tc.name      testGridRowColGridCellLength
      * @tc.desc      The Grid layout cellLength property does not take effect
      */
-    it('SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1100', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1100] START');
+    it('testGridRowColGridCellLength', 0, async function (done) {
+      console.info('[testGridRowColGridCellLength] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_cellLength_01');
       let gridContainerObj = JSON.parse(gridContainerStrJson);
@@ -88,7 +88,7 @@ export default function Grid_RowCol_cellLength() {
       expect(Math.round(Grid_RowCol_cellLength_012.bottom - Grid_RowCol_cellLength_012.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_cellLength_013.bottom - Grid_RowCol_cellLength_013.top)).assertEqual(vp2px(150));
       expect(Math.round(Grid_RowCol_cellLength_014.bottom - Grid_RowCol_cellLength_014.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1100] END');
+      console.info('[testGridRowColGridCellLength] END');
       done();
     });
   })

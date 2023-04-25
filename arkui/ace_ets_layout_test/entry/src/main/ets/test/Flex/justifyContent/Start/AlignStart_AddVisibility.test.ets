@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignStart_AddVisibility() {
   describe('AlignStart_AddVisibility', function () {
     beforeEach(async function (done) {
@@ -45,11 +44,11 @@ export default function AlignStart_AddVisibility() {
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000
-     * @tc.name      Align_Start_Row_AddVisibility
+     * @tc.name      testFlexAlignStartTextVisibilityNone
      * @tc.desc      The subcomponent sets the visibility. None, the child components are hidden in the interface display
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000] START');
+    it('testFlexAlignStartTextVisibilityNone', 0, async function (done) {
+      console.info('[testFlexAlignStartTextVisibilityNone] START');
       try{
         globalThis.value.message.notify({name:'OneVisibility', value:Visibility.None});
         await CommonFunc.sleep(3000);
@@ -74,20 +73,20 @@ export default function AlignStart_AddVisibility() {
         expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
         expect(Math.round(Start_AddVisibility_01.right - Start_AddVisibility_013.right)).assertEqual(vp2px(200));
       } catch (err) {
-        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000] failed');
+        console.error('[testFlexAlignStartTextVisibilityNone] failed');
         expect().assertFail();
       }
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000] END');
+      console.info('[testFlexAlignStartTextVisibilityNone] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100
-     * @tc.name      Align_Start_Row_AddVisibility
+     * @tc.name      testFlexAlignStartTextVisibilityHidden
      * @tc.desc      When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
      * position
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100] START');
+    it('testFlexAlignStartTextVisibilityHidden', 0, async function (done) {
+      console.info('[testFlexAlignStartTextVisibilityHidden] START');
       try{
         globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Hidden});
         await CommonFunc.sleep(3000);
@@ -117,20 +116,20 @@ export default function AlignStart_AddVisibility() {
         expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
         expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(vp2px(150));
       } catch (err) {
-        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100] failed');
+        console.error('[testFlexAlignStartTextVisibilityHidden] failed');
         expect().assertFail();
       }
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100] END');
+      console.info('[testFlexAlignStartTextVisibilityHidden] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700
-     * @tc.name      Align_Start_Row_AddVisibility
+     * @tc.name      testFlexAlignStartTextVisibilityVisible
      * @tc.desc      The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
      * interface display
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700] START');
+    it('testFlexAlignStartTextVisibilityVisible', 0, async function (done) {
+      console.info('[testFlexAlignStartTextVisibilityVisible] START');
       try{
         globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Visible});
         await CommonFunc.sleep(3000);
@@ -160,10 +159,10 @@ export default function AlignStart_AddVisibility() {
         expect(Math.round(Start_AddVisibility_013.bottom - Start_AddVisibility_013.top)).assertEqual(vp2px(150));
         expect(Math.round(Start_AddVisibility_012.left - Start_AddVisibility_01.left)).assertEqual(vp2px(150));
       } catch (err) {
-        console.error('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700] failed');
+        console.error('[testFlexAlignStartTextVisibilityVisible] failed');
         expect().assertFail();
       }
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700] END');
+      console.info('[testFlexAlignStartTextVisibilityVisible] END');
       done();
     });
   })

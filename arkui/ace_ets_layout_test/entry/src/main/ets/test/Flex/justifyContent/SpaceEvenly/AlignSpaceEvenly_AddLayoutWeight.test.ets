@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignSpaceEvenly_AddLayoutWeight() {
   describe('AlignSpaceEvenly_AddLayoutWeight', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200
-     * @tc.name      Align_SpaceEvenly_Row_AddLayoutWeight
+     * @tc.name      testFlexAlignSpaceEvenlyLayoutWeight01
      * @tc.desc      The interface displays all subcomponents that set different layoutWeight properties
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200] START');
+    it('testFlexAlignSpaceEvenlyLayoutWeight01', 0, async function (done) {
+      console.info('[testFlexAlignSpaceEvenlyLayoutWeight01] START');
       globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
       globalThis.value.message.notify({name:'OneLayoutWeight2', value:2});
       globalThis.value.message.notify({name:'OneLayoutWeight3', value:2});
@@ -84,16 +83,16 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
         .assertEqual(vp2px(200));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left))
         .assertEqual(vp2px(200));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1200] END');
+      console.info('[testFlexAlignSpaceEvenlyLayoutWeight01] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300
-     * @tc.name      Align_SpaceEvenly_Row_AddLayoutWeight
+     * @tc.name      testFlexAlignSpaceEvenlyLayoutWeight02
      * @tc.desc      Some subcomponents are displayed with different layoutWeight properties
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300] START');
+    it('testFlexAlignSpaceEvenlyLayoutWeight02', 0, async function (done) {
+      console.info('[testFlexAlignSpaceEvenlyLayoutWeight02] START');
       globalThis.value.message.notify({name:'OneLayoutWeight1', value:1});
       globalThis.value.message.notify({name:'OneLayoutWeight2', value:2});
       globalThis.value.message.notify({name:'OneLayoutWeight3', value:0});
@@ -126,7 +125,7 @@ export default function AlignSpaceEvenly_AddLayoutWeight() {
       expect(twoWidth + oneWidth).assertEqual(vp2px(350));
       expect(Math.round(SpaceEvenly_AddLayoutWeight_013.right - SpaceEvenly_AddLayoutWeight_013.left)).
         assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_1300] END');
+      console.info('[testFlexAlignSpaceEvenlyLayoutWeight02] END');
       done();
     });
   })

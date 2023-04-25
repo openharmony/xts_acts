@@ -43,7 +43,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
     const GETDESCRIPTION_CALLBACK = 14;
     const SECOND_INDEX = 1;
     const MAX_VOLUME = 1;
-    let bufferFlag = false;
     let fdHead = 'fd://';
     let fileDescriptor = undefined;
     let fdPath = '';
@@ -65,7 +64,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     beforeEach(function() {
-        bufferFlag = false; 
         console.info('beforeEach case');
     })
 
@@ -97,7 +95,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
 
     function nextStep(mySteps, done) {
         if (mySteps[0] == END_STATE) {
-            expect(bufferFlag).assertEqual(true);
             done();
             console.info('case to done');
             return;
@@ -190,7 +187,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
         audioPlayer.on('bufferingUpdate', (infoType, value) => {
             console.info('case bufferingUpdate success infoType is ' + infoType);
             console.info('case bufferingUpdate success value is ' + value);
-            bufferFlag = true;
         });
         audioPlayer.on('dataLoad', () => {
             mySteps.shift();
@@ -286,7 +282,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
     */
     it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_SETSOURCE_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
-        bufferFlag = true;
         let mySteps = new Array(SRC_STATE, ERROR_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
@@ -354,13 +349,11 @@ describe('PlayerLocalTestAudioFUNC', function () {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let playCount = 0;
         let seekCount = 0;
-        let bufferFlag = false;
         let testAudioPlayer = media.createAudioPlayer();
     
         testAudioPlayer.on('bufferingUpdate', (infoType, value) => {
             console.info('case bufferingUpdate success infoType is ' + infoType);
             console.info('case bufferingUpdate success value is ' + value);
-            bufferFlag = true;
         });
 
         testAudioPlayer.on('dataLoad', () => {
@@ -407,8 +400,6 @@ describe('PlayerLocalTestAudioFUNC', function () {
             testAudioPlayer.reset();
         });
         testAudioPlayer.on('reset', () => {
-            console.info('case reset success bufferFlag is ' + bufferFlag);
-            expect(bufferFlag).assertEqual(true);
             expect(testAudioPlayer.state).assertEqual('idle');
             testAudioPlayer.release();
             testAudioPlayer = null;

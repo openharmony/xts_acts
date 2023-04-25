@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignStart_NoSpace() {
   describe('AlignStart_NoSpace', function () {
     beforeEach(async function (done) {
@@ -47,12 +46,12 @@ export default function AlignStart_NoSpace() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0100
-     * @tc.name      Align_Start_Row_ChangeWidth
+     * @tc.name      testFlexAlignStartFlexWidthOverflow
      * @tc.desc      The parent component layout space does not meet the interface display of the spindle layout of
      * the child component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0100', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0100] START');
+    it('testFlexAlignStartFlexWidthOverflow', 0, async function (done) {
+      console.info('[testFlexAlignStartFlexWidthOverflow] START');
       globalThis.value.message.notify({name:'DadWidth', value:400});
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_NoSpace_01');
@@ -77,17 +76,17 @@ export default function AlignStart_NoSpace() {
       expect(Math.round(Start_NoSpace_011.bottom - Start_NoSpace_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Start_NoSpace_012.bottom - Start_NoSpace_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Start_NoSpace_013.bottom - Start_NoSpace_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0100] END');
+      console.info('[testFlexAlignStartFlexWidthOverflow] END');
       done();
     });
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0200
-     * @tc.name      Align_Start_Row_ChangeWidth
+     * @tc.name      testFlexAlignStartFlexWidthMeet
      * @tc.desc      The interface display where the parent component layout space satisfies the spindle layout of
      * the child component
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0200', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0200] START');
+    it('testFlexAlignStartFlexWidthMeet', 0, async function (done) {
+      console.info('[testFlexAlignStartFlexWidthMeet] START');
       let strJson = getInspectorByKey('Start_NoSpace_01');
       globalThis.value.message.notify({name:'DadWidth', value:500})
       await CommonFunc.sleep(3000);
@@ -112,7 +111,7 @@ export default function AlignStart_NoSpace() {
       expect(Math.round(Start_NoSpace_011.bottom - Start_NoSpace_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Start_NoSpace_012.bottom - Start_NoSpace_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Start_NoSpace_013.bottom - Start_NoSpace_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0200] END');
+      console.info('[testFlexAlignStartFlexWidthMeet] END');
       done();
     });
   })

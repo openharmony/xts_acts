@@ -16,7 +16,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "./../../../../MainAbility/common/Common"
-import {MessageManager,Callback} from './../../../../MainAbility/common/MessageManager';
 export default function AlignCenter_AddAlign() {
   describe('AlignCenter_AddAlign', function () {
     beforeEach(async function (done) {
@@ -47,11 +46,11 @@ export default function AlignCenter_AddAlign() {
 
     /**
      * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0800
-     * @tc.name      Align_Center_Row_AddAlign
+     * @tc.name      testFlexAlignCenterAlignBottomEnd
      * @tc.desc      Setting generic properties does not take effect, and owned properties take precedence
      */
-    it('SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0800', 0, async function (done) {
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0800] START');
+    it('testFlexAlignCenterAlignBottomEnd', 0, async function (done) {
+      console.info('[testFlexAlignCenterAlignBottomEnd] START');
       globalThis.value.message.notify({name:'DadAlign', value:Alignment.BottomEnd})
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddAlign_01');
@@ -59,10 +58,10 @@ export default function AlignCenter_AddAlign() {
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
-      let Center_AddAlign_011 = CommonFunc.getComponentRect('Center_AddAlign_011')
-      let Center_AddAlign_012 = CommonFunc.getComponentRect('Center_AddAlign_012')
-      let Center_AddAlign_013 = CommonFunc.getComponentRect('Center_AddAlign_013')
-      let Center_AddAlign_01 = CommonFunc.getComponentRect('Center_AddAlign_01')
+      let Center_AddAlign_011 = CommonFunc.getComponentRect('Center_AddAlign_011');
+      let Center_AddAlign_012 = CommonFunc.getComponentRect('Center_AddAlign_012');
+      let Center_AddAlign_013 = CommonFunc.getComponentRect('Center_AddAlign_013');
+      let Center_AddAlign_01 = CommonFunc.getComponentRect('Center_AddAlign_01');
       expect(Center_AddAlign_011.top).assertEqual(Center_AddAlign_012.top);
       expect(Center_AddAlign_012.top).assertEqual(Center_AddAlign_013.top);
       expect(Center_AddAlign_011.top).assertEqual(Center_AddAlign_01.top);
@@ -78,7 +77,7 @@ export default function AlignCenter_AddAlign() {
       expect(Math.round(Center_AddAlign_011.bottom - Center_AddAlign_011.top)).assertEqual(vp2px(50));
       expect(Math.round(Center_AddAlign_012.bottom - Center_AddAlign_012.top)).assertEqual(vp2px(100));
       expect(Math.round(Center_AddAlign_013.bottom - Center_AddAlign_013.top)).assertEqual(vp2px(150));
-      console.info('[SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0800] END');
+      console.info('[testFlexAlignCenterAlignBottomEnd] END');
       done()
     });
   })

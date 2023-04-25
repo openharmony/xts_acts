@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexTextMargin_AutoJsunit() {
 
   describe('flexItemAlignAutoTest', function () {
@@ -47,11 +46,11 @@ export default function flexTextMargin_AutoJsunit() {
 
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1400
-     * @tc.name      ItemAlign_Auto_TextMargin
+     * @tc.name      testFlexItemAlignAutoTextMarginMeet
      * @tc.desc      Subcomponents set margin within the scope of the parent component.
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1400', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1400 START');
+    it('testFlexItemAlignAutoTextMarginMeet', 0, async function (done) {
+      console.info('new testFlexItemAlignAutoTextMarginMeet START');
       globalThis.value.message.notify({name:'margin', value:10});
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
@@ -60,33 +59,33 @@ export default function flexTextMargin_AutoJsunit() {
       let textMargin02 = CommonFunc.getComponentRect('textMargin02');
       let textMargin03 = CommonFunc.getComponentRect('textMargin03');
       let flexTextMargin01 = CommonFunc.getComponentRect('flexTextMargin01');
-      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(vp2px(10))
-      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(vp2px(10))
-      expect(textMargin02.right).assertEqual(textMargin03.left)
+      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(vp2px(10));
+      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(vp2px(10));
+      expect(textMargin02.right).assertEqual(textMargin03.left);
 
-      expect(Math.round(textMargin01.top - flexTextMargin01.top)).assertEqual(vp2px(10))
-      expect(textMargin02.top).assertEqual(textMargin03.top)
-      expect(textMargin03.top).assertEqual(flexTextMargin01.top)
+      expect(Math.round(textMargin01.top - flexTextMargin01.top)).assertEqual(vp2px(10));
+      expect(textMargin02.top).assertEqual(textMargin03.top);
+      expect(textMargin03.top).assertEqual(flexTextMargin01.top);
 
-      expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(vp2px(150))
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1400 END');
+      expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(vp2px(50));
+      expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(vp2px(100));
+      expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(vp2px(150));
+      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(vp2px(150));
+      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(vp2px(150));
+      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(vp2px(150));
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      console.info('new testFlexItemAlignAutoTextMarginMeet END');
       done();
     });
 
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1500
-     * @tc.name      ItemAlign_Auto_TextMargin
+     * @tc.name      testFlexItemAlignAutoTextMarginOverflow
      * @tc.desc      Subcomponents set margin outside the scope of the parent component
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_1500', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1500 START');
+    it('testFlexItemAlignAutoTextMarginOverflow', 0, async function (done) {
+      console.info('new testFlexItemAlignAutoTextMarginOverflow START');
       globalThis.value.message.notify({name:'margin', value:30});
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
@@ -96,24 +95,24 @@ export default function flexTextMargin_AutoJsunit() {
       let textMargin03 = CommonFunc.getComponentRect('textMargin03');
       let flexTextMargin01 = CommonFunc.getComponentRect('flexTextMargin01');
 
-      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(vp2px(30))
-      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(vp2px(30))
-      expect(textMargin02.right).assertEqual(textMargin03.left)
-      expect(textMargin03.right).assertEqual(flexTextMargin01.right)
+      expect(Math.round(textMargin01.left - flexTextMargin01.left)).assertEqual(vp2px(30));
+      expect(Math.round(textMargin02.left - textMargin01.right)).assertEqual(vp2px(30));
+      expect(textMargin02.right).assertEqual(textMargin03.left);
+      expect(textMargin03.right).assertEqual(flexTextMargin01.right);
 
-      expect(Math.round(textMargin01.top - flexTextMargin01.top)).assertEqual(vp2px(30))
-      expect(textMargin02.top).assertEqual(textMargin03.top)
-      expect(textMargin03.top).assertEqual(flexTextMargin01.top)
+      expect(Math.round(textMargin01.top - flexTextMargin01.top)).assertEqual(vp2px(30));
+      expect(textMargin02.top).assertEqual(textMargin03.top);
+      expect(textMargin03.top).assertEqual(flexTextMargin01.top);
 
-      expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(Math.round(vp2px(440/3)))
-      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(Math.round(vp2px(440/3)))
-      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(Math.round(vp2px(440/3)))
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_1500 END');
+      expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(vp2px(50));
+      expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(vp2px(100));
+      expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(vp2px(150));
+      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      console.info('new testFlexItemAlignAutoTextMarginOverflow END');
       done();
     });
   })

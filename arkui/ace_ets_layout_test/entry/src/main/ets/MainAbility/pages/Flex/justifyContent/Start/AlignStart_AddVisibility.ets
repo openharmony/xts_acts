@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 
-import {MessageManager,Callback} from './../../../../common/MessageManager';
+import { MessageManager, Callback } from './../../../../common/MessageManager';
 @Entry
 @Component
 struct AlignStart_AddVisibility {
   @State OneVisibility: number = Visibility.Visible;
-  messageManager: MessageManager = new MessageManager()
+  messageManager: MessageManager = new MessageManager();
   onPageShow() {
-    console.info('AlignSpaceEvenly_AddVisibility onPageShow');
+    console.info('AlignStart_AddVisibility onPageShow');
     globalThis.value = {
       name: 'messageManager', message: this.messageManager
     }
     let callback: Callback = (message: any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'OneVisibility') {
         this.OneVisibility = message.value;
       }
@@ -33,20 +33,20 @@ struct AlignStart_AddVisibility {
     this.messageManager.registerCallback(callback);
   }
 
-  @State justifyContent: FlexAlign = FlexAlign.Start
+  @State justifyContent: FlexAlign = FlexAlign.Start;
 
   build() {
     Column() {
-      Text('justifyContent:FlexAlign.Start').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Text('justifyContent:FlexAlign.Start').fontSize(9).fontColor(0xCCCCCC).width('90%');
       Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
         Text('1')
           .width(150)
           .height(50)
           .backgroundColor(0xF5DEB3)
           .key("Start_AddVisibility_011")
-          .visibility(this.OneVisibility)
-        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("Start_AddVisibility_012")
-        Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("Start_AddVisibility_013")
+          .visibility(this.OneVisibility);
+        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("Start_AddVisibility_012");
+        Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("Start_AddVisibility_013");
       }
       .key("Start_AddVisibility_01")
       .width(500)

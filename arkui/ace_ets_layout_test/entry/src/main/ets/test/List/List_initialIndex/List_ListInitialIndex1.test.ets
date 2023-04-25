@@ -18,7 +18,6 @@ import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
   WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 export default function list_ListInitialIndex1Test() {
   describe('List_ListInitialIndex1Test', function () {
     beforeEach(async function (done) {

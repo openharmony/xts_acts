@@ -12,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../../common/MessageManager';
+import { MessageManager, Callback } from '../../../../common/MessageManager';
 @Entry
 @Component
 struct FlexPadding_Auto {
-  @State testPadding: number = 0
-  messageManager:MessageManager = new MessageManager()
-  private content: string = "FlexPadding_Auto Page"
+  @State testPadding: number = 0;
+  messageManager:MessageManager = new MessageManager();
+  private content: string = "FlexPadding_Auto Page";
   onPageShow() {
-    console.info('FlexBase_Center onPageShow');
+    console.info('FlexPadding_Auto onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
     let callback:Callback = (message:any) => {
-      console.error('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'padding') {
         this.testPadding = message.value;
       }
@@ -40,15 +40,15 @@ struct FlexPadding_Auto {
   build() { 
     Column() {
       Column() {
-        Text('FlexPadding_1').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Text('FlexPadding_1').fontSize(9).fontColor(0xCCCCCC).width('90%');
         Flex({
           direction: FlexDirection.Row,
           alignItems: ItemAlign.Auto,
           wrap: FlexWrap.NoWrap,
         }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('textFlexPadding01')
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textFlexPadding02')
-          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textFlexPadding03')
+          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('textFlexPadding01');
+          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textFlexPadding02');
+          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textFlexPadding03');
         } 
         .key('flexPadding01')
         .height(200)

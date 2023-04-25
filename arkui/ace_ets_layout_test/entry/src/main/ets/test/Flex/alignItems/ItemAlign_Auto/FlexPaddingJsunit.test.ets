@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
 export default function flexPadding_AutoJsunit() {
 
   describe('flexItemAlignAutoTest', function () {
@@ -47,47 +46,47 @@ export default function flexPadding_AutoJsunit() {
 
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0300
-     * @tc.name      ItemAlign_Auto_testFlexPadding
+     * @tc.name      testFlexItemAlignAutoFlexPadMeet
      * @tc.desc      Parent component set paddding,subcomponent does not exceed the parent component.
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0300', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0300 START');
+    it('testFlexItemAlignAutoFlexPadMeet', 0, async function (done) {
+      console.info('new testFlexItemAlignAutoFlexPadMeet START');
       globalThis.value.message.notify({name:'padding', value:10})
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexPadding01');
       let obj1 = JSON.parse(strJson1);
-      let textFlexPadding01 = CommonFunc.getComponentRect('textFlexPadding01')
-      let textFlexPadding02 = CommonFunc.getComponentRect('textFlexPadding02')
-      let textFlexPadding03 = CommonFunc.getComponentRect('textFlexPadding03')
-      let flexPadding01 = CommonFunc.getComponentRect('flexPadding01')
-      expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(vp2px(10))
-      expect(textFlexPadding01.right).assertEqual(textFlexPadding02.left)
-      expect(textFlexPadding02.right).assertEqual(textFlexPadding03.left)
+      let textFlexPadding01 = CommonFunc.getComponentRect('textFlexPadding01');
+      let textFlexPadding02 = CommonFunc.getComponentRect('textFlexPadding02');
+      let textFlexPadding03 = CommonFunc.getComponentRect('textFlexPadding03');
+      let flexPadding01 = CommonFunc.getComponentRect('flexPadding01');
+      expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(vp2px(10));
+      expect(textFlexPadding01.right).assertEqual(textFlexPadding02.left);
+      expect(textFlexPadding02.right).assertEqual(textFlexPadding03.left);
 
-      expect(textFlexPadding01.top).assertEqual(textFlexPadding02.top)
-      expect(textFlexPadding02.top).assertEqual(textFlexPadding03.top)
-      expect(Math.round(textFlexPadding01.top - flexPadding01.top)).assertEqual(vp2px(10))
+      expect(textFlexPadding01.top).assertEqual(textFlexPadding02.top);
+      expect(textFlexPadding02.top).assertEqual(textFlexPadding03.top);
+      expect(Math.round(textFlexPadding01.top - flexPadding01.top)).assertEqual(vp2px(10));
 
-      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(50));
+      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(100));
+      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(150));
 
-      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(vp2px(150))
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0300 END');
+      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(vp2px(150));
+      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(vp2px(150));
+      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(vp2px(150));
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      console.info('new testFlexItemAlignAutoFlexPadMeet END');
       done();
     });
 
     /**
      * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0400
-     * @tc.name      ItemAlign_Auto_FlexPadding
+     * @tc.name      testFlexItemAlignAutoFlexPadOverflow
      * @tc.desc      Parent component set paddding,subcomponent exceedS the parent component.
      */
-    it('SUB_ACE_FLEXALIGNITEMS_AUTO_0400', 0, async function (done) {
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0400 START');
+    it('testFlexItemAlignAutoFlexPadOverflow', 0, async function (done) {
+      console.info('new testFlexItemAlignAutoFlexPadOverflow START');
       globalThis.value.message.notify({name:'padding', value:30});
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexPadding01');
@@ -96,23 +95,23 @@ export default function flexPadding_AutoJsunit() {
       let textFlexPadding02 = CommonFunc.getComponentRect('textFlexPadding02');
       let textFlexPadding03 = CommonFunc.getComponentRect('textFlexPadding03');
       let flexPadding01 = CommonFunc.getComponentRect('flexPadding01');
-      expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(vp2px(30))
-      expect(textFlexPadding01.right).assertEqual(textFlexPadding02.left)
-      expect(textFlexPadding02.right).assertEqual(textFlexPadding03.left)
+      expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(vp2px(30));
+      expect(textFlexPadding01.right).assertEqual(textFlexPadding02.left);
+      expect(textFlexPadding02.right).assertEqual(textFlexPadding03.left);
 
-      expect(textFlexPadding01.top).assertEqual(textFlexPadding02.top)
-      expect(textFlexPadding02.top).assertEqual(textFlexPadding03.top)
-      expect(Math.round(textFlexPadding01.top - flexPadding01.top)).assertEqual(vp2px(30))
+      expect(textFlexPadding01.top).assertEqual(textFlexPadding02.top);
+      expect(textFlexPadding02.top).assertEqual(textFlexPadding03.top);
+      expect(Math.round(textFlexPadding01.top - flexPadding01.top)).assertEqual(vp2px(30));
 
-      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(Math.round(vp2px(440/3)))
-      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(Math.round(vp2px(440/3)))
-      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(Math.round(vp2px(440/3)))
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
-      console.info('new SUB_ACE_FLEXALIGNITEMS_AUTO_0400 END');
+      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(50));
+      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(100));
+      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(150));
+      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(Math.round(vp2px(440/3)));
+      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      console.info('new testFlexItemAlignAutoFlexPadOverflow END');
       done();
     });
   })
