@@ -240,6 +240,12 @@ struct TabsExample {
                     Column().width('100%').height('100%').backgroundColor(Color.Yellow)
                 }.tabBar(SubTabBarStyle.of('pink'))
                 .key('indicatorTest5')
+
+                TabContent() {
+                    Column().width('100%').height('100%').backgroundColor(Color.Yellow)
+                }.tabBar(SubTabBarStyle.of('pink')
+                    .labelStyle({ overflow: null, maxLines: null, minFontSize: null, maxFontSize: null, heightAdaptivePolicy: null, font: { size: null, weight: null, family: null, style: null } }))
+                .key('indicatorTest6')
             }
             .vertical(true).scrollable(true).barMode(BarMode.Fixed)
             .barWidth(70).barHeight('100%').animationDuration(400)
