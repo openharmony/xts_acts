@@ -119,33 +119,21 @@ HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0200, Function | MediumTest 
  * @tc.name      : HiLog::Warn parameter legal test (Cortex-A, C)
  * @tc.desc      : [C- SOFTWARE -0200]
  */
+HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0300, Function | MediumTest | Level1)
+{
+    int32_t ret = DEVATTEST_SUCCESS;
+    ret = StartDevAttestTask();
+    printf("[CLIENT MAIN] StartDevAttestTask ret:%d.\n", ret);
+    EXPECT_EQ(ret, DEVATTEST_SUCCESS);
+    AttestResultInfo attestResultInfo = { 0 };
+    attestResultInfo.ticket = NULL;
+    printf("[CLIENT MAIN] query.\n");
+    ret = GetAttestStatus(&attestResultInfo);
+    printf("[CLIENT MAIN] wrong. ret:%d\n", ret);
 #ifdef __LINUX__
-HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0300, Function | MediumTest | Level1)
-{
-    int32_t ret = DEVATTEST_SUCCESS;
-    ret = StartDevAttestTask();
-    printf("[CLIENT MAIN] StartDevAttestTask ret:%d.\n", ret);
     EXPECT_EQ(ret, DEVATTEST_SUCCESS);
-    AttestResultInfo attestResultInfo = { 0 };
-    attestResultInfo.ticket = NULL;
-    printf("[CLIENT MAIN] query.\n");
-    ret = GetAttestStatus(&attestResultInfo);
-    printf("[CLIENT MAIN] wrong. ret:%d\n", ret);
-    EXPECT_EQ(ret, DEVATTEST_SUCCESS);
-}
 #else
-HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0300, Function | MediumTest | Level1)
-{
-    int32_t ret = DEVATTEST_SUCCESS;
-    ret = StartDevAttestTask();
-    printf("[CLIENT MAIN] StartDevAttestTask ret:%d.\n", ret);
-    EXPECT_EQ(ret, DEVATTEST_SUCCESS);
-    AttestResultInfo attestResultInfo = { 0 };
-    attestResultInfo.ticket = NULL;
-    printf("[CLIENT MAIN] query.\n");
-    ret = GetAttestStatus(&attestResultInfo);
-    printf("[CLIENT MAIN] wrong. ret:%d\n", ret);
     EXPECT_FALSE(ret == DEVATTEST_SUCCESS);
-}
 #endif
+}
 
