@@ -1,10 +1,10 @@
 {
-    "description": "Configuration for  dev Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "bundle-name": "com.open.harmony.acedevtest",
-        "package-name": "com.open.harmony.acedevtest",
+	"module-name": "phone",
         "shell-timeout": "600000"
     },
     "kits": [

@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -23,7 +23,7 @@ export default function tabsJsunit() {
     beforeEach(async function (done) {
       console.info("tabs beforeEach start");
       let options = {
-        uri: 'pages/tabs',
+        uri: 'MainAbility/pages/tabs',
       }
       try {
         router.clear();

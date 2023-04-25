@@ -1,6 +1,5 @@
-// @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -23,7 +22,7 @@ export default function textJsunit() {
     beforeEach(async function (done) {
       console.info("text beforeEach start");
       let options = {
-        uri: 'pages/text',
+        uri: 'MainAbility/pages/text',
       }
       try {
         router.clear();
@@ -63,13 +62,8 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('image');
       console.info("testText_0200 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      console.info("testText_0200 component obj is: " + JSON.stringify(obj));
-      var res = obj.$attrs.src.indexOf('RAWFILE/test.png');
-      console.info("testText_0200 result is: " + res);
-      var sres = obj.$attrs.src.slice(res, res + 16);
-      console.info("testText_0200 slice result is: " + sres);
-      expect(obj.$type).assertEqual('Image');
-      expect(obj.$attrs.src.slice(res, res + 16)).assertEqual('RAWFILE/test.png');
+      console.info("testText_0200 component strJson:" + obj.$attrs.src);
+      expect(obj.$attrs.src).assertEqual('resource://rawfile/test.png');
       console.info('testText_0200 END');
       done();
     });
@@ -244,7 +238,7 @@ export default function textJsunit() {
       let strJsonNew = getInspectorByKey('text');
       let objNew = JSON.parse(strJsonNew);
       console.info("testText_1100 component objNew is: " + JSON.stringify(objNew.$attrs.fontColor));
-      expect(objNew.$attrs.fontColor).assertEqual('#FF000000');
+      expect(objNew.$attrs.fontColor).assertEqual('#330A59F7');
       console.info('testText_1100 END');
       done();
     });

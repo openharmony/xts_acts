@@ -1,6 +1,5 @@
-// @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,10 +13,12 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter'
+import {MessageManager,Callback} from '../utils/MessageManager';
 
 @Entry
 @Component
 struct AnimationExample {
+  @State show:string = "btShow"
   @State btn1: boolean = false
   @State duration: number = 100
   @State curve: string = 'Ease'
@@ -25,99 +26,38 @@ struct AnimationExample {
   @State tempo: number= 1000
   @State playmode: PlayMode = PlayMode.Normal
 
+  messageManager:MessageManager = new MessageManager()
   onPageShow() {
-    console.info('animate page show called');
-    var stateChangeEvent = {
-      eventId: 50,
-      priority: events_emitter.EventPriority.LOW
+    globalThis.value = {
+      name:'messageManager',message:this.messageManager
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
-
-    var stateChangeEventa = {
-      eventId: 1011,
-      priority: events_emitter.EventPriority.LOW
+    let callback:Callback = (message:any) => {
+      console.error('message = ' + message.name + "--" + message.value)
+      if (message.name == 'duration') {
+        this.duration = message.value
+      }
+      if (message.name == 'curve') {
+        this.curve = message.value
+      }
+      if (message.name == 'iteration') {
+        this.iteration = message.value
+      }
+      if (message.name == 'tempo') {
+        this.tempo = message.value
+      }
+      if (message.name == 'playmode') {
+        this.playmode = message.value
+      }
     }
-    events_emitter.on(stateChangeEventa, this.stateChangCallBack)
-
-    var stateChangeEventb = {
-      eventId: 1012,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEventb, this.stateChangCallBack)
-
-    var stateChangeEventc = {
-      eventId: 1013,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEventc, this.stateChangCallBack)
-
-    var stateChangeEventd = {
-      eventId: 1014,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEventd, this.stateChangCallBack)
-
-    var stateChangeEvente = {
-      eventId: 1015,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEvente, this.stateChangCallBack)
-
-    var stateChangeEventf = {
-      eventId: 1016,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEventf, this.stateChangCallBack)
-
-    var stateChangeEventg = {
-      eventId: 1017,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEventg, this.stateChangCallBack)
-
-    var stateChangeEventh = {
-      eventId: 1018,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEventh, this.stateChangCallBack)
-
-    var stateChangeEventi = {
-      eventId: 1019,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEventi, this.stateChangCallBack)
-
-    var stateChangeEventj = {
-      eventId: 1020,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEventj, this.stateChangCallBack)
+    this.messageManager.registerCallback(callback)
   }
 
-  private stateChangCallBack = (eventData) => {
-    if (eventData != null) {
-      console.info("animate page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.duration != null) {
-        this.duration = parseInt(eventData.data.duration);
-      }
-      if (eventData.data.curve != null) {
-        this.curve = eventData.data.curve;
-      }
-      if (eventData.data.tempo != null) {
-        this.tempo = parseInt(eventData.data.tempo);
-      }
-      if (eventData.data.iteration != null) {
-        this.iteration = parseInt(eventData.data.iteration);
-      }
-      if (eventData.data.playmode != null) {
-        this.playmode = eventData.data.playmode;
-      }
-    }
-  }
+
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, }) {
+    Column(){
       Button(this.show)
+        .backgroundColor(0x317aff)
         .width(80)
         .height(30)
         .backgroundColor(0x317aff)
@@ -132,6 +72,64 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 51,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button1 start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("button1 emit action state err: " + JSON.stringify(err.message))
+          }
+          console.info("button1 animateTo START")
+          console.info("button1 duration value is : " + this.duration)
+          animateTo({ duration: this.duration }, () => {
+            console.info("button1 duration test animateTo START")
+          })
+        })
+      Button(this.show)
+        .backgroundColor(0x317aff)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 20 })
+        .key('button11')
+        .onClick(() => {
+          try {
+            var backData = {
+              data: {
+                "duration": this.duration,
+              }
+            }
+            var backEvent = {
+              eventId: 151,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button1 start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("button1 emit action state err: " + JSON.stringify(err.message))
+          }
+          console.info("button1 animateTo START")
+          console.info("button1 duration value is : " + this.duration)
+          animateTo({ duration: this.duration }, () => {
+            console.info("button1 duration test animateTo START")
+          })
+        })
+      Button(this.show)
+        .backgroundColor(0x317aff)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 20 })
+        .key('button12')
+        .onClick(() => {
+          try {
+            var backData = {
+              data: {
+                "curve": this.curve,
+              }
+            }
+              var backEvent = {
+              eventId: 152,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button1 start to emit action state")
@@ -206,6 +204,34 @@ struct AnimationExample {
         .height(30)
         .backgroundColor(0x317aff)
         .margin({ bottom: 20 })
+        .key('button13')
+        .onClick(() => {
+          try {
+            var backDataTwo = {
+              data: {
+                "iterations": this.iteration,
+              }
+            }
+            var backEventTwo = {
+              eventId: 153,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button3 start to emit action state")
+            events_emitter.emit(backEventTwo, backDataTwo)
+          } catch (err) {
+            console.info("button3 emit action state err: " + JSON.stringify(err.message))
+          }
+          console.info("button3 animateTo START")
+          console.info("button3 iteration value is : " + this.iteration)
+          animateTo({ iterations: this.iteration }, () => {
+            console.info("button3 iterations test animateTo START")
+          })
+        })
+      Button(this.show)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 20 })
         .key('button4')
         .onClick(() => {
           try {
@@ -216,6 +242,34 @@ struct AnimationExample {
             }
             var backEventThree = {
               eventId: 54,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button4 start to emit action state")
+            events_emitter.emit(backEventThree, backDataThree)
+          } catch (err) {
+            console.info("button4 emit action state err: " + JSON.stringify(err.message))
+          }
+          console.info("button4 animateTo START")
+          console.info("button4 tempo value is : " + this.duration)
+          animateTo({ tempo: this.tempo }, () => {
+            console.info("button4 tempo test animateTo START")
+          })
+        })
+      Button(this.show)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 20 })
+        .key('button14')
+        .onClick(() => {
+          try {
+            var backDataThree = {
+              data: {
+                "tempo": this.tempo
+              }
+            }
+            var backEventThree = {
+              eventId: 154,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button4 start to emit action state")
@@ -253,7 +307,35 @@ struct AnimationExample {
           }
           console.info("button5 animateTo START")
           console.info("button5 playmode value is : " + this.playmode)
-          animateTo({ PlayMode: this.playmode }, () => {
+          animateTo({playMode:PlayMode.Normal}, () => {
+            console.info("button5 playMode test animateTo START")
+          })
+        })
+      Button(this.show)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 20 })
+        .key('button15')
+        .onClick(() => {
+          try {
+            var backDataFour = {
+              data: {
+                "playmode": this.playmode,
+              }
+            }
+            var backEventFour = {
+              eventId: 155,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button5 start to emit action state")
+            events_emitter.emit(backEventFour, backDataFour)
+          } catch (err) {
+            console.info("button5 emit action state err: " + JSON.stringify(err.message))
+          }
+          console.info("button5 animateTo START")
+          console.info("button5 playmode value is : " + this.playmode)
+          animateTo({playMode:PlayMode.Normal}, () => {
             console.info("button5 playMode test animateTo START")
           })
         })
@@ -323,7 +405,7 @@ struct AnimationExample {
           try {
             var backData = {
               data: {
-                "duration": this.duration,
+                "curve": this.curve,
               }
             }
             var backEvent = {
@@ -351,7 +433,7 @@ struct AnimationExample {
           try {
             var backData = {
               data: {
-                "duration": this.duration,
+                "curve": this.curve,
               }
             }
             var backEvent = {
@@ -379,7 +461,7 @@ struct AnimationExample {
           try {
             var backData = {
               data: {
-                "duration": this.duration,
+                "iteration": this.iteration,
               }
             }
             var backEvent = {
@@ -402,12 +484,12 @@ struct AnimationExample {
         .height(30)
         .backgroundColor(0x317aff)
         .margin({ bottom: 20 })
-        .key('button11')
+        .key('button111')
         .onClick(() => {
           try {
             var backData = {
               data: {
-                "duration": this.duration,
+                "iteration": this.iteration,
               }
             }
             var backEvent = {
@@ -430,12 +512,12 @@ struct AnimationExample {
         .height(30)
         .backgroundColor(0x317aff)
         .margin({ bottom: 20 })
-        .key('button12')
+        .key('button121')
         .onClick(() => {
           try {
             var backData = {
               data: {
-                "duration": this.duration,
+                "tempo": this.tempo,
               }
             }
             var backEvent = {
@@ -458,12 +540,12 @@ struct AnimationExample {
         .height(30)
         .backgroundColor(0x317aff)
         .margin({ bottom: 20 })
-        .key('button13')
+        .key('button131')
         .onClick(() => {
           try {
             var backData = {
               data: {
-                "duration": this.duration,
+                "tempo": this.tempo,
               }
             }
             var backEvent = {
@@ -486,12 +568,12 @@ struct AnimationExample {
         .height(30)
         .backgroundColor(0x317aff)
         .margin({ bottom: 20 })
-        .key('button14')
+        .key('button141')
         .onClick(() => {
           try {
             var backData = {
               data: {
-                "duration": this.duration,
+                "playmode": this.playmode,
               }
             }
             var backEvent = {
@@ -514,12 +596,12 @@ struct AnimationExample {
         .height(30)
         .backgroundColor(0x317aff)
         .margin({ bottom: 20 })
-        .key('button15')
+        .key('button151')
         .onClick(() => {
           try {
             var backData = {
               data: {
-                "duration": this.duration,
+                "playmode": this.playmode,
               }
             }
             var backEvent = {
@@ -537,6 +619,6 @@ struct AnimationExample {
             console.info("button15 duration test animateTo START")
           })
         })
-    }.height(400).width("100%").padding({ top: 100 })
+    }.height("%100").width("100%")
   }
 }

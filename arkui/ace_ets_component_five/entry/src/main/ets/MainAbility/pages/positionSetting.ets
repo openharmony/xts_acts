@@ -1,6 +1,6 @@
-// @ts-nocheck
+
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,20 +18,20 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct PositionSetting {
-  @State align: Alignment = Alignment.TopStart;
-  @State direction: Direction = Direction.Rtl;
-  @State position1: {x: string, y: string} = {x: 25, y: 15};
+  @State alignT: Alignment = Alignment.TopStart;
+  @State directionT: Direction = Direction.Rtl;
+  @State position1: {x: number, y: number} = {x: 25, y: 15};
   @State position2: {x: string, y: string} = {x: '50%', y: '70%'};
-  @State anchor: {x: string, y: string} = {x: 25, y: 25};
-  @State offset: {x: string, y: string} = {x: 10, y: 15};
-  @State opacityValue: string = 1;
+  @State anchor: {x: number, y: number} = {x: 25, y: 25};
+  @State offsetT: {x: number, y: number} = {x: 10, y: 15};
+  @State opacityValue: number = 1;
 
   build() {
     Column() {
       Column({space: 10}) {
-        Text('opacity(1)').fontSize(20).fontColor(Color.Black).width('90%').opacity(`${this.opacityValue}`).key("opacity")
+        Text('opacity(1)').fontSize(20).fontColor(Color.Black).width('90%').opacity(this.opacityValue).key("opacity")
         Text('top start')
-          .align(this.align)
+          .align(this.alignT)
           .height(50)
           .width('90%')
           .fontSize(20)
@@ -46,7 +46,7 @@ struct PositionSetting {
           Text('4').height(50).width('25%').fontSize(20).backgroundColor(0xD2B48C)
         }
         .width('90%')
-        .direction(this.direction)
+        .direction(this.directionT)
         .key('rowDirection')
 
         Text('position').fontSize(20).fontColor(Color.Black).width('90%')
@@ -92,10 +92,10 @@ struct PositionSetting {
         Text('offset').fontSize(20).fontColor(Color.Black).width('90%')
         Row() {
           Text('1').size({ width: '15%', height: '100' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(20)
-          Text(`2\noffset(${this.offset.x}, ${this.offset.y})`)
+          Text(`2\noffset(${this.offsetT.x}, ${this.offsetT.y})`)
             .size({ width: 170, height: '50' }).backgroundColor(0xbbb2cb).border({ width: 1 })
             .fontSize(20).align(Alignment.Start)
-            .offset({ x: this.offset.x, y: this.offset.y })
+            .offset({ x: this.offsetT.x, y: this.offsetT.y })
             .key('offset')
           Text('3').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(20)
           Text('4\noffset(-10%, 20%)')
@@ -141,16 +141,16 @@ struct PositionSetting {
     console.info("position page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData) {
       if (eventData.data.textAlign) {
-        this.align = Alignment.BottomEnd;
+        this.alignT = Alignment.BottomEnd;
       } else if (eventData.data.direction) {
-        this.direction = eventData.data.direction;
+        this.directionT = eventData.data.direction;
       } else if (eventData.data.position1) {
         this.position1 = JSON.parse(eventData.data.position1);
         this.position2 = JSON.parse(eventData.data.position2);
       } else if (eventData.data.markAnchor) {
         this.anchor = JSON.parse(eventData.data.markAnchor);
       } else if (eventData.data.offset) {
-        this.offset = JSON.parse(eventData.data.offset);
+        this.offsetT = JSON.parse(eventData.data.offset);
       } else if (eventData.data.opacityValue) {
         this.opacityValue = eventData.data.opacityValue;
       }
