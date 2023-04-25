@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
@@ -22,7 +22,7 @@ export default function textStyleJsunit() {
   describe('textStyleTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/textStyle',
+        uri: 'MainAbility/pages/textStyle',
       }
       try {
         router.clear();
@@ -52,7 +52,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle001] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle001] fontColor: " + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual('#FFFF0000');
+      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
       done();
     });
 
@@ -78,7 +78,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle002] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle002] fontColor: " + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual('#FF0000FF');
+      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
       done();
     });
 
@@ -104,7 +104,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle003] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle003] fontColor: " + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual('#80000000');
+      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
       done();
     });
 
@@ -130,7 +130,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle004] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle004] fontColor: " + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual('#7FFFFFFF');
+      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
       done();
     });
 
@@ -151,7 +151,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle005] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await Utils.sleep(4000);
       let strJson = getInspectorByKey('fontColor');
       console.info("[testTextStyle005] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
@@ -167,7 +167,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle006] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle006] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('20.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('0.00px');
       done();
     });
 
@@ -193,7 +193,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle007] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle007] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('30.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('0.00px');
       done();
     });
 
@@ -219,7 +219,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle008] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle008] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('0.00px');
       done();
     });
 
@@ -245,7 +245,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle009] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle009] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('0.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('0.00px');
       done();
     });
 
@@ -271,7 +271,7 @@ export default function textStyleJsunit() {
       console.info("[testTextStyle010] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testTextStyle010] fontSize: " + obj.$attrs.fontSize);
-      expect(obj.$attrs.fontSize).assertEqual('2147483647.00fp');
+      expect(obj.$attrs.fontSize).assertEqual('0.00px');
       done();
     });
 

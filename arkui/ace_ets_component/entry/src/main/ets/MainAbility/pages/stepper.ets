@@ -1,6 +1,6 @@
-// @ts-nocheck
+
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -118,14 +118,22 @@ struct StepperExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
+
+    var stateChangeEventThree = {
+      eventId: 940,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
   }
+ 
 
   private stateChangCallBack = (eventData) => {
     console.info("stepper page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData != null) {
       console.info("stepper page state change called:" + JSON.stringify(eventData));
       if (eventData.data.currentIndex != null) {
-        this.currentIndex = parseInt(eventData.data.currentIndex);
+        this.currentIndex = eventData.data.currentIndex;
+        console.info("stepper page.." + this.currentIndex);
       }
       if (eventData.data.disabled != null) {
         this.disabled = eventData.data.disabled;

@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function progressStyleJsunit() {
@@ -22,7 +22,7 @@ export default function progressStyleJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/progress',
+        uri: 'MainAbility/pages/progress',
       }
       try {
         router.clear();
@@ -108,8 +108,9 @@ export default function progressStyleJsunit() {
       console.info("[testprogressStyle0004] component style strokeWidth strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      expect(obj.$attrs.style.strokeWidth).assertEqual("20.00vp");
-      console.info("[testprogressStyle0004] style strokeWidth value :" + obj.$attrs.style.strokeWidth);
+      console.info("[testprogressStyle0004] component style strokeWidth strJson:" + obj.$attrs.style);
+      let jsonObject = JSON.parse(obj.$attrs.style);
+      expect(jsonObject.strokeWidth).assertEqual("20.00vp");
       done();
     });
 
@@ -125,8 +126,8 @@ export default function progressStyleJsunit() {
       console.info("[testprogressStyle0005] component style scaleCount strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      expect(obj.$attrs.style.scaleCount).assertEqual("30");
-      console.info("[testprogressStyle0005] style scaleCount value :" + obj.$attrs.style.scaleCount);
+      let jsonObject = JSON.parse(obj.$attrs.style);
+      expect(jsonObject.scaleCount).assertEqual("30");
       done();
     });
 
@@ -142,8 +143,8 @@ export default function progressStyleJsunit() {
       console.info("[testprogressStyle0006] component style scaleWidth strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      expect(obj.$attrs.style.scaleWidth).assertEqual("20.00vp");
-      console.info("[testprogressStyle0006] style scaleWidth value :" + obj.$attrs.style.scaleWidth);
+      let jsonObject = JSON.parse(obj.$attrs.style);
+      expect(jsonObject.scaleWidth).assertEqual("20.00vp");
       done();
     });
   })

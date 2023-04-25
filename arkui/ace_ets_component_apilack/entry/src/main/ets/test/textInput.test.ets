@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function textInputOnEditChangeJsunit() {
@@ -22,7 +22,7 @@ export default function textInputOnEditChangeJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/textInput',
+        uri: 'MainAbility/pages/textInput',
       }
       try {
         router.clear();
@@ -176,7 +176,7 @@ export default function textInputOnEditChangeJsunit() {
       console.info("[testtextInputOnEditChange0009] component padding strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.padding).assertEqual("0.00px");
+      expect(obj.$attrs.padding).assertEqual("10.00vp");
       console.info("[testtextInputOnEditChange0009] padding value :" + obj.$attrs.padding);
       done();
     });
@@ -193,7 +193,7 @@ export default function textInputOnEditChangeJsunit() {
       console.info("[testtextInputOnEditChange0010] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.textAlign).assertEqual(undefined);
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
       console.info("[testtextInputOnEditChange0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });
@@ -205,7 +205,7 @@ export default function textInputOnEditChangeJsunit() {
       console.info("[testtextInputCopyOption0001] component copyOption strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.copyOption).assertEqual(undefined);
+      expect(obj.$attrs.copyOption).assertEqual("CopyOptions.None");
       console.info("[testtextInputCopyOption0001] copyOption value :" + obj.$attrs.copyOption);
       done();
     });
@@ -217,7 +217,7 @@ export default function textInputOnEditChangeJsunit() {
       console.info("[testtextInputShowPasswordIcon0001] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.showPasswordIcon).assertEqual(undefined);
+      expect(obj.$attrs.showPasswordIcon).assertTrue();
       console.info("[testtextInputShowPasswordIcon0001] showPasswordIcon value :" + obj.$attrs.showPasswordIcon);
       done();
     });

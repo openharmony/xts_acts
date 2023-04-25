@@ -15,7 +15,7 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function inspectorJsunit() {
@@ -23,7 +23,7 @@ export default function inspectorJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/inspector',
+        uri: 'MainAbility/pages/inspector',
       }
       try {
         router.clear();
@@ -134,11 +134,13 @@ export default function inspectorJsunit() {
         }catch(err){
           console.info("inspector_102 on events_emitter err : " + JSON.stringify(err));
         }
-        done();
+        
       }
       try{
         console.info("inspector_102 click result is: " + JSON.stringify(sendEventByKey('inspectorApiTwo', 10, "")));
         events_emitter.on(innerEvent2, callback2);
+        await Utils.sleep(2000);
+        done();
       }catch(err){
         console.info("inspector_102 on events_emitter err : " + JSON.stringify(err));
       }

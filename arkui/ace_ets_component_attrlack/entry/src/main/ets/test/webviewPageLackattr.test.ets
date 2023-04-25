@@ -15,7 +15,7 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function webViewPageattrLackJsunit() {
@@ -23,7 +23,7 @@ export default function webViewPageattrLackJsunit() {
     beforeAll(async function (done) {
       console.info("webviewpageLackattr beforeEach start");
       let options = {
-        uri: 'pages/webviewpageLackattr',
+        uri: 'MainAbility/pages/webviewpageLackattr',
       }
       try {
         router.clear();

@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
@@ -22,7 +22,7 @@ export default function gridSettingsJsunit() {
   describe('gridSettingsTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/gridSettings',
+        uri: 'MainAbility/pages/gridSettings',
       }
       try {
         router.clear();
@@ -117,7 +117,7 @@ export default function gridSettingsJsunit() {
       console.info("[testGridSettings003] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testGridSettings003] gridRow useSizeType: " + JSON.stringify(obj.$attrs.useSizeType));
-      expect(obj.$attrs.useSizeType.sm.span).assertEqual(-2147483648);
+      expect(obj.$attrs.useSizeType.sm.span).assertEqual(1);
       expect(obj.$attrs.useSizeType.sm.offset).assertEqual(-2147483648);
       done();
     });
@@ -352,7 +352,7 @@ export default function gridSettingsJsunit() {
       console.info("[testGridSettings013] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testGridSettings013] gridSpan: " + JSON.stringify(obj.$attrs.gridSpan));
-      expect(obj.$attrs.gridSpan).assertEqual(-2147483648);
+      expect(obj.$attrs.gridSpan).assertEqual(2);
       done();
     });
 

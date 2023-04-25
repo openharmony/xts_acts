@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function ellipseNeJsunit() {
@@ -22,7 +22,7 @@ export default function ellipseNeJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/ellipse',
+        uri: 'MainAbility/pages/ellipse',
       }
       try {
         router.clear();
@@ -56,7 +56,7 @@ export default function ellipseNeJsunit() {
       let strJson = getInspectorByKey('ellipse');
       console.info("[testellipseNe0001] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Ellipse');
       expect(obj.$attrs.width).assertEqual("300.00px");
       console.info("[testellipseNe0001] width value :" + obj.$attrs.width);
       done();
@@ -73,7 +73,7 @@ export default function ellipseNeJsunit() {
       let strJson = getInspectorByKey('ellipse');
       console.info("[testellipseNe0002] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Ellipse');
       expect(obj.$attrs.height).assertEqual("300.00px");
       console.info("[testellipseNe0002] height value :" + obj.$attrs.height);
       done();

@@ -15,7 +15,7 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function alphabetIndexerOnSelectJsunit() {
@@ -23,7 +23,7 @@ export default function alphabetIndexerOnSelectJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/alphabetIndexer',
+        uri: 'MainAbility/pages/alphabetIndexer',
       }
       try {
         router.clear();
@@ -160,7 +160,7 @@ export default function alphabetIndexerOnSelectJsunit() {
       console.info("[testalphabetIndexerPopupBackground0007] component lineHeight strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.popupBackground).assertEqual("#E500DDDD");
+      expect(obj.$attrs.popupBackground).assertEqual("#FF00DDDD");
       console.info("[testalphabetIndexerPopupBackground0007] popupBackground value :" + obj.$attrs.popupBackground);
       done();
     });
@@ -177,7 +177,7 @@ export default function alphabetIndexerOnSelectJsunit() {
       console.info("[testalphabetIndexerUsingPopup0009] component padding strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.usingPopup).assertEqual(true);
+      expect(obj.$attrs.usingPopup).assertEqual('true');
       console.info("[testalphabetIndexerUsingPopup0009] usingPopup value :" + obj.$attrs.usingPopup);
       done();
     });
@@ -194,7 +194,7 @@ export default function alphabetIndexerOnSelectJsunit() {
       console.info("[testalphabetIndexerItemSize0010] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.itemSize).assertEqual("28.000000");
+      expect(obj.$attrs.itemSize).assertEqual("28.00vp");
       console.info("[testalphabetIndexerItemSize0010] itemSize value :" + obj.$attrs.itemSize);
       done();
     });
@@ -211,7 +211,7 @@ export default function alphabetIndexerOnSelectJsunit() {
       console.info("[testalphabetIndexerAlignStyle0011] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.alignStyle).assertEqual("AlignStyle.Left");
+      expect(obj.$attrs.alignStyle).assertEqual("IndexerAlign.Left");
       console.info("[testalphabetIndexerItemSize0010] alignStyle value :" + obj.$attrs.alignStyle);
       done();
     });

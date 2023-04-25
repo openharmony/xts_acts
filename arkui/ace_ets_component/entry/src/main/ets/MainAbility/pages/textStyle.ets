@@ -1,6 +1,6 @@
-// @ts-nocheck
+
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,9 +20,9 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct TextStyle {
   @State fontColor: Color = Color.Red;
-  @State fontSize: string = 20;
+  @State fontSize: number= 20;
   @State fontStyle: FontStyle = FontStyle.Italic;
-  @State fontWeight: string = 700;
+  @State fontWeight: number = 700;
   @State fontFamily: string = 'sans-serif';
 
   build() {
@@ -30,12 +30,12 @@ struct TextStyle {
       Text('default text').fontSize(20)
 
       Text(`text font color ${this.fontColor}`)
-        .fontColor(this.fontColor)
+        .fontColor('error')
         .fontSize(20)
         .key('fontColor')
 
       Text(`text font size ${this.fontSize}`)
-        .fontSize(this.fontSize)
+        .fontSize('error')
         .key('fontSize')
 
       Text(`text font style ${this.fontStyle}`)

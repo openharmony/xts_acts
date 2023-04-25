@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
@@ -22,7 +22,7 @@ export default function imageEffectsJsunit() {
   describe('imageEffectsTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/imageEffects',
+        uri: 'MainAbility/pages/imageEffects',
       }
       try {
         router.clear();
@@ -140,7 +140,7 @@ export default function imageEffectsJsunit() {
       try {
         var eventData = {
           data: {
-            "blurValue": 'error'
+            "blurValue": '0'
           }
         }
         var innerEvent = {
@@ -889,10 +889,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('shadowDefaultShadow');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects036] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.shadow.radius).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.color).assertEqual("#32000000");
-      expect(objNew.$attrs.shadow.offsetX).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.offsetY).assertEqual("0.000000");
+      expect(objNew.$attrs.shadow).assertEqual("ShadowStyle.OuterDefaultXS");
       done();
     });
 
@@ -919,10 +916,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('shadowDefaultShadow');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects037] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.shadow.radius).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.color).assertEqual("#0B000000");
-      expect(objNew.$attrs.shadow.offsetX).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.offsetY).assertEqual("0.000000");
+      expect(objNew.$attrs.shadow).assertEqual("ShadowStyle.OuterDefaultSM");
       done();
     });
 
@@ -949,10 +943,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('shadowDefaultShadow');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects038] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.shadow.radius).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.color).assertEqual("#28000000");
-      expect(objNew.$attrs.shadow.offsetX).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.offsetY).assertEqual("60.000000");
+      expect(objNew.$attrs.shadow).assertEqual("ShadowStyle.OuterDefaultMD");
       done();
     });
 
@@ -979,10 +970,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('shadowDefaultShadow');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects039] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.shadow.radius).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.color).assertEqual("#26000000");
-      expect(objNew.$attrs.shadow.offsetX).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.offsetY).assertEqual("10.000000");
+      expect(objNew.$attrs.shadow).assertEqual("ShadowStyle.OuterDefaultLG");
       done();
     });
 
@@ -1009,10 +997,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('shadowDefaultShadow');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects040] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.shadow.radius).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.color).assertEqual("#15000000");
-      expect(objNew.$attrs.shadow.offsetX).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.offsetY).assertEqual("50.000000");
+      expect(objNew.$attrs.shadow).assertEqual("ShadowStyle.OuterFloatingSM");
       done();
     });
 
@@ -1039,10 +1024,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('shadowDefaultShadow');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects041] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.shadow.radius).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.color).assertEqual("#31000000");
-      expect(objNew.$attrs.shadow.offsetX).assertEqual("0.000000");
-      expect(objNew.$attrs.shadow.offsetY).assertEqual("30.000000");
+      expect(objNew.$attrs.shadow).assertEqual("ShadowStyle.OuterFloatingMD");
       done();
     });
   })

@@ -1,10 +1,10 @@
 {
-    "description": "Configuration for aceEtsAttrLack Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "bundle-name": "com.open.harmony.aceEtsAttrLack",
-        "package-name": "com.open.harmony.aceEtsAttrLack",
+	"module-name": "phone",
         "shell-timeout": "600000",
         "testcase-timeout":"10000"
     },

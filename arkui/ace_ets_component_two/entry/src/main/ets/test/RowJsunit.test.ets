@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 
@@ -22,7 +22,7 @@ export default function rowJsunit() {
   describe('rowTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/row',
+        uri: 'MainAbility/pages/row',
       }
       try {
         router.clear();
@@ -62,7 +62,7 @@ export default function rowJsunit() {
       let strJson = getInspectorByKey('Row');
       let obj = JSON.parse(strJson);
       console.info("testRow_200 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.direction).assertEqual("Direction.Ltr");
+      expect(obj.$attrs.direction).assertEqual("Direction.Auto");
       console.info('testRow_200 END');
       done();
     });

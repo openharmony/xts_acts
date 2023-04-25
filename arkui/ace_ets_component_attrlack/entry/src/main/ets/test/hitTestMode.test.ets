@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function hitTestModeJsunit() {
@@ -22,7 +22,7 @@ export default function hitTestModeJsunit() {
     beforeEach(async function (done) {
       console.info("hitTestMode beforeEach start");
       let options = {
-        uri: 'pages/hitTestMode',
+        uri: 'MainAbility/pages/hitTestMode',
       }
       try {
         router.clear();
