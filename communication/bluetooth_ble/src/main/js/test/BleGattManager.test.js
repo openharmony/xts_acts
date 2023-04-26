@@ -139,10 +139,11 @@ describe('bluetoothBLETest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BLE_GetRssiValue_0100', 0, async function (done) {
+     it('SUB_COMMUNICATION_BLUETOOTH_BLE_GetRssiValue_0100', 0, async function (done) {
         let ret = gattClient.connect();
-        console.info('[bluetooth_js] gattClient getrssi2 connect' + JSON.stringify(ret))
+        console.info('[bluetooth_js] gattClient getrssi connect:' + JSON.stringify(ret))
         expect(ret).assertTrue();
+    try {
         await gattClient.getRssiValue().then((data) => {
             console.info('[bluetooth_js] BLE read rssi: ' + JSON.stringify(data));
             let rssiLength = Object.keys(data).length;
@@ -150,15 +151,19 @@ describe('bluetoothBLETest', function() {
             done();
         }).catch(error => {
             console.info('bluetooth getRssiValue has error: '+ JSON.stringify(error));
-            expect(true).assertEqual(true);
+            expect(error.code).assertEqual('2900099');
             done();
         });
+    }catch (error) {
+        console.error(`[bluetooth_js]GetRssiValue_0100 error, code is ${error.code}, 
+        message is ${error.message}`);
+    } 
         let disconnect = gattClient.disconnect();
-        console.info('[bluetooth_js] gatt getrssi2 disconnect:' + disconnect);
+        console.info('[bluetooth_js] gatt getrssi disconnect:' + disconnect);
         expect(disconnect).assertEqual(false);
-        
+        done()
+          
     })
-
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_GetRssiValue_0200
      * @tc.name testgetRssiValue

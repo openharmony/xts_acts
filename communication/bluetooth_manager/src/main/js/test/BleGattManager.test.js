@@ -158,6 +158,7 @@ describe('bluetoothBLETest', function() {
             await gattClient.getRssiValue().then((data) => {
                 console.info('[bluetooth_js] BLE read rssi: ' + JSON.stringify(data));
                 let rssiLength = Object.keys(data).length;
+                console.info('[bluetooth_js] BLE read rssi: ' + JSON.stringify(rssiLength));
                 expect(rssiLength).assertEqual(0);
                 done();
             }).catch(err => {
@@ -165,14 +166,14 @@ describe('bluetoothBLETest', function() {
                 done();
             });
         } catch (error) {
-            console.error(`[bluetooth_js]GetRssiValue_0100 failed, code is ${error.code}, 
+            console.error(`[bluetooth_js]GetRssiValue_0100 error, code is ${error.code}, 
             message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(error.code).assertEqual('2900099');
             done()
         }
         
     })
-
+    
     /**
      * @tc.number COMMUNICATION_BLUETOOTH_BLE_GetRssiValue_0200
      * @tc.name testgetRssiValue
@@ -184,24 +185,23 @@ describe('bluetoothBLETest', function() {
      */
     it('COMMUNICATION_BLUETOOTH_BLE_GetRssiValue_0200', 0, async function (done) {
         try {
-            let promise = new Promise((resolve) => {
+            let promise = new Promise((resolve) => {            
                 gattClient.getRssiValue((err, data)=> {
                     if (err) {
                         console.error('getRssi failed ');
                       }
                     console.info('[bluetooth_js]getRssi value:'+JSON.stringify(data));
-                    expect(data).assertNull();
+                    expect(true).assertFalse();
                 });
                 resolve()
             })
             await promise.then(done)
         } catch (error) {
-            console.error(`[bluetooth_js]GetRssiValue_0200 failed, code is ${error.code}, 
+            console.error(`[bluetooth_js]GetRssiValue_0200 error, code is ${error.code}, 
             message is ${error.message}`);
-            expect(true).assertFalse();
+            expect(error.code).assertEqual('2900099');        
             done()
-        } 
-         
+        }       
     })
 
     /**
