@@ -15,7 +15,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter'
-
+import {MessageManager,Callback} from '../utils/MessageManager';
 @Entry
 @Component
 struct StepperExample {
@@ -23,6 +23,8 @@ struct StepperExample {
   @State firstState: ItemState = ItemState.Normal
   @State secondState: ItemState = ItemState.Normal
   @State disabled: ItemState = ItemState.Normal
+
+  messageManager:MessageManager = new MessageManager()
 
   build() {
     Stepper({
@@ -100,6 +102,18 @@ struct StepperExample {
   }
 
   onPageShow() {
+
+     globalThis.value = {
+      name:'messageManager',message:this.messageManager
+    }
+    let callback:Callback = (message:any) => {
+      console.error('message = ' + message.name + "--" + message.value)
+      if (message.name == 'index') {
+          this.currentIndex = message.value
+      } 
+    }
+    this.messageManager.registerCallback(callback)
+
     console.info('stepper page show called');
     var stateChangeEvent = {
       eventId: 202,
@@ -119,11 +133,11 @@ struct StepperExample {
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
 
-    var stateChangeEventThree = {
+    var stateChangeEventFour = {
       eventId: 940,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
+    events_emitter.on(stateChangeEventFour, this.stateChangCallBack);
   }
  
 
