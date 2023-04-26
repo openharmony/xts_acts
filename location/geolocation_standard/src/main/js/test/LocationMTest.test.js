@@ -612,7 +612,6 @@ export default function geolocationTest_geo7() {
                 console.info('[lbs_js] sendcommand promise err:' + JSON.stringify(error));
                 console.info('[lbs_js] not support now');
                 expect(error.code).assertEqual(801);
-                //expect(true).assertEqual(JSON.stringify(error) != null);
                 done();
             })
         } catch (error) {
@@ -1180,11 +1179,11 @@ export default function geolocationTest_geo7() {
         try {
             let last =geolocationm.getLastLocation();
             console.info('[lbs_js] getLastLocation latitude: ' + last.latitude +
-            ' longitude: ' + result.longitude +' altitude: ' + result.altitude
-            +' accuracy: ' + result.accuracy+' speed: ' + result.speed +
-            'timeStamp: ' + result.timeStamp+'direction:' + result.direction+' timeSinceBoot: '
-            + result.timeSinceBoot +'additions: ' + result.additions+' additionSize' + result.additionSize
-            + 'isFromMock' +result.isFromMock);
+            ' longitude: ' + last.longitude +' altitude: ' + last.altitude
+            +' accuracy: ' + last.accuracy+' speed: ' + last.speed +
+            'timeStamp: ' + last.timeStamp+'direction:' + last.direction+' timeSinceBoot: '
+            + last.timeSinceBoot +'additions: ' + last.additions+' additionSize' + last.additionSize
+            + 'isFromMock' +last.isFromMock);
 
             expect(true).assertEqual(JSON.stringify(last) != null);
         } catch (error) {
