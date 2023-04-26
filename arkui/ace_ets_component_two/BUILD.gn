@@ -19,7 +19,6 @@ ohos_js_hap_suite("ActsAceEtsComponentTwoTest") {
   deps = [
     ":ace_ets_component_assets",
     ":ace_ets_component_resources",
-    
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
