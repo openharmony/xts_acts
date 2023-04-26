@@ -315,7 +315,6 @@ export default function avRecorderTest() {
             console.info('case fdPath is: ' + fdPath);
             let newAvConfig = {
                 audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-                //videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
                 profile: avProfile,
                 url: 'fd://',
                 rotation: 0,
@@ -344,7 +343,6 @@ export default function avRecorderTest() {
             console.info('case fdPath is: ' + fdPath);
             let newAvConfig = {
                 audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-                //videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
                 profile: avProfile,
                 url: 'fd://',
                 rotation: 0,
@@ -373,7 +371,6 @@ export default function avRecorderTest() {
             console.info('case fdPath is: ' + fdPath);
             let newAvConfig = {
                 audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-                //videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
                 profile: avProfile,
                 url: 'fd://',
                 rotation: 0,
@@ -402,7 +399,6 @@ export default function avRecorderTest() {
             console.info('case fdPath is: ' + fdPath);
             let newAvConfig = {
                 audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-                //videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
                 profile: avProfile,
                 url: 'fd://',
                 rotation: 0,
@@ -431,7 +427,6 @@ export default function avRecorderTest() {
             console.info('case fdPath is: ' + fdPath);
             let newAvConfig = {
                 audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-                //videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
                 profile: avProfile,
                 url: 'fd://',
                 rotation: 0,
@@ -459,7 +454,6 @@ export default function avRecorderTest() {
             console.info('case fdPath is: ' + fdPath);
             let newAvConfig = {
                 audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-                //videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
                 profile: avProfile,
                 url: 'fd://',
                 rotation: 0,
@@ -811,25 +805,25 @@ export default function avRecorderTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0300 end')
         })
 
-        //    /* *
-        //        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0400
-        //        * @tc.name      : 04.pause->resume
-        //        * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
-        //        * @tc.size      : MediumTest
-        //        * @tc.type      : Function test
-        //        * @tc.level     : Level4
-        //    */
-        //    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0400', 0, async function (done) {
-        //        console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0400 start')
-        //        let fileName = avRecorderTestBase.resourceName()
-        //        fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
-        //        fdPath = "fd://" + fdObject.fdNumber;
-        //        console.info('case fdPath is: ' + fdPath);
-        //        avConfig.url = fdPath;
-        //        console.info('avConfig.url ' + avConfig.url);
-        //        avRecorderTestBase.avRecorderLoopPause2ResumeWithPromise(avConfig, avRecorder, LOOP_TIMES, done);
-        //        console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0400 end')
-        //    })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0400
+           * @tc.name      : 04.pause->resume
+           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.size      : MediumTest
+           * @tc.type      : Function test
+           * @tc.level     : Level4
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0400', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0400 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            console.info('case fdPath is: ' + fdPath);
+            avConfig.url = fdPath;
+            console.info('avConfig.url ' + avConfig.url);
+            avRecorderTestBase.avRecorderLoopPause2ResumeWithPromise(avConfig, avRecorder, LOOP_TIMES, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0400 end')
+        })
 
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0500
