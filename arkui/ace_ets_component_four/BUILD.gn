@@ -16,7 +16,6 @@ import("//test/xts/tools/build/suite.gni")
 ohos_js_hap_suite("ActsAceEtsComponentFourTest") {
   hap_profile = "entry/src/main/module.json"
   deps = [
-  
     ":ace_ets_component_resources",
     ":ace_ets_component_test_assets",
   ]
