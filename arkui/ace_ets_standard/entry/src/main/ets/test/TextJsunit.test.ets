@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 
 export default function textJsunit() {
@@ -32,7 +32,7 @@ export default function textJsunit() {
   describe('textTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/Text',
+        uri: 'MainAbility/pages/Text',
       }
       try {
         router.clear();
@@ -93,7 +93,7 @@ export default function textJsunit() {
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bold")
       expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Italic")
       expect(obj.$attrs.fontFamily).assertEqual("sans-serif")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center")
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.End")
       expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Ellipsis")
       expect(obj.$attrs.lineHeight).assertEqual("15.00fp")
       expect(obj.$attrs.baselineOffset).assertEqual("0")
@@ -125,7 +125,7 @@ export default function textJsunit() {
       expect(obj.$attrs.enabled).assertEqual(true)
       expect(obj.$attrs.visibility).assertEqual("Visibility.Hidden")
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Normal")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Left")
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Start")
       expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Clip")
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.LineThrough", color: "#FFFF0000"
@@ -150,7 +150,7 @@ export default function textJsunit() {
       expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Solid")
       expect(obj.$attrs.visibility).assertEqual("Visibility.None")
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bolder")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Right")
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center")
       expect(obj.$attrs.textCase).assertEqual("TextCase.UpperCase")
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.None", color: "#FFFF0000"

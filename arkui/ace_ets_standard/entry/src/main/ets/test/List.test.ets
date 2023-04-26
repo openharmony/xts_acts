@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -33,6 +33,7 @@ import flexJsunit from './FlexJsunit.test.ets';
 import counterJsunit from './CounterJsunit.test.ets';
 import columnSplitJsunit from './ColumnSplitJsunit.test.ets';
 import columnJsunit from './ColumnJsunit.test.ets';
+
 export default function testsuite() {
   buttonJsunit()
   blankJsunit()
@@ -54,5 +55,4 @@ export default function testsuite() {
   counterJsunit()
   flexJsunit()
   gridContainerJsunit()
-
 }

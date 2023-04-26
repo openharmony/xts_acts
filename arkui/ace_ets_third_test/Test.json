@@ -3,8 +3,8 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-	    "bundle-name": "com.example.actsaceetstest",
-        "package-name": "com.example.actsaceetstest",
+	"bundle-name": "com.example.actsaceetstest",
+        "module-name": "phone",
         "shell-timeout": "600000"
     },
     "kits": [

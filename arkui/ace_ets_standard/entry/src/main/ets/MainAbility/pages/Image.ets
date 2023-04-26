@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -43,7 +43,7 @@ struct image_textcase {
           .renderMode(ImageRenderMode.Original)
           .autoResize(false)
           .syncLoad(false)
-          .sourceSize({ width: 200, height: 100 })
+          .sourceSize({ width: px2vp(200), height: px2vp(100) })
           .alt("/resources/rawfile/person.png")
           .key('image1')
         Image("/resources/rawfile/hand.png")
