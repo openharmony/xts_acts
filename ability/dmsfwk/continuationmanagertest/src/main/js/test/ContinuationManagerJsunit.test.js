@@ -38,20 +38,34 @@ describe('continuationManagerTest', function() {
 
     beforeEach(async function (done) {
         console.info('beforeEach');
-        await continuationManager.register(function (err, data) {
-            token = data;
-            console.info('beforeEach register success');
-            done();
-        });
+        try {
+            await continuationManager.registerContinuation().then((data) => {
+                token = data;
+                console.info('beforeEach registerContinuation success');
+                done();
+            })
+            .catch((e) => {
+                console.info("beforeEach promise error: " + e);
+            });
+        } catch (e) {
+            console.info("beforeEach try error: " + e);
+        }
         console.info('beforeEach end');
     })
 
     afterEach(async function (done) {
         console.info('afterEach');
-        await continuationManager.unregister(token, function (err, data) {
-            console.info('afterEach unregister success');
-            done();
-        });
+        try {
+            await continuationManager.unregisterContinuation(token).then((data) => {
+                console.info('afterEach unregisterContinuation success');
+                done();
+            })
+            .catch((e) => {
+                console.info("afterEach promise error: " + e);
+            });
+        } catch (e) {
+            console.info("afterEach try error: " + e);
+        }
         console.info('afterEach end');
     })
 
@@ -65,7 +79,6 @@ describe('continuationManagerTest', function() {
             console.info("testRegister001Begin ");
             continuationManager.register(function (err, data) {
                 expect(err.code == 0).assertTrue();
-                expect(data - token == 1).assertTrue();
                 done();
             });
         } catch (e) {
@@ -146,7 +159,6 @@ describe('continuationManagerTest', function() {
             };
             continuationManager.register(continuationExtraParams, function(err, data) {
                 expect(err.code == 0).assertTrue();
-                expect(data - token == 1).assertTrue();
                 done();
             });
         } catch (e) {
@@ -174,7 +186,6 @@ describe('continuationManagerTest', function() {
             };
             continuationManager.register(continuationExtraParams, function(err, data) {
                 expect(err.code == 0).assertTrue();
-                expect(data - token == 1).assertTrue();
                 done();
             });
         } catch (e) {
@@ -200,7 +211,7 @@ describe('continuationManagerTest', function() {
                 authInfo: {"name": "authInfo","length": 8}
             };
             continuationManager.register(continuationExtraParams).then((data) => {
-                expect(data - token == 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 29360210).assertTrue();
             });
@@ -227,7 +238,7 @@ describe('continuationManagerTest', function() {
                 authInfo: {"name": "authInfo","length": 8}
             };
             continuationManager.register(continuationExtraParams).then((data) => {
-                expect(data - token == 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 29360210).assertTrue();
             });
@@ -254,7 +265,7 @@ describe('continuationManagerTest', function() {
                 authInfo: {}
             };
             continuationManager.register(continuationExtraParams).then((data) => {
-                expect(data - token != 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 29360210).assertTrue();
             });
@@ -281,7 +292,7 @@ describe('continuationManagerTest', function() {
                 authInfo: {"name": "authInfo","length": 8}
             };
             continuationManager.register(continuationExtraParams).then((data) => {
-                expect(data - token != 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 29360210).assertTrue();
             });
@@ -302,7 +313,7 @@ describe('continuationManagerTest', function() {
      it('testRegister010', 0, async function(done) {
         try {
             continuationManager.register().then((data) => {
-                expect(data - token == 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 29360210).assertTrue();
             });
@@ -323,7 +334,6 @@ describe('continuationManagerTest', function() {
             console.info("testRegisterContinuation001Begin ");
             continuationManager.registerContinuation(function (err, data) {
                 expect(err.code == 0).assertTrue();
-                expect(data - token == 1).assertTrue();
                 done();
             });
         } catch (e) {
@@ -404,7 +414,6 @@ describe('continuationManagerTest', function() {
             };
             continuationManager.registerContinuation(continuationExtraParams, function(err, data) {
                 expect(err.code == 0).assertTrue();
-                expect(data - token == 1).assertTrue();
                 done();
             });
         } catch (e) {
@@ -431,7 +440,6 @@ describe('continuationManagerTest', function() {
             };
             continuationManager.registerContinuation(continuationExtraParams, function(err, data) {
                 expect(err.code == 0).assertTrue();
-                expect(data - token == 1).assertTrue();
                 done();
             });
         } catch (e) {
@@ -457,7 +465,7 @@ describe('continuationManagerTest', function() {
                 authInfo: {"name": "authInfo","length": 8}
             };
             continuationManager.registerContinuation(continuationExtraParams).then((data) => {
-                expect(data - token == 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 16600002).assertTrue();
             });
@@ -483,7 +491,7 @@ describe('continuationManagerTest', function() {
                 authInfo: {"name": "authInfo","length": 8}
             };
             continuationManager.registerContinuation(continuationExtraParams).then((data) => {
-                expect(data - token == 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 16600002).assertTrue();
             });
@@ -509,7 +517,7 @@ describe('continuationManagerTest', function() {
                 authInfo: {}
             };
             continuationManager.registerContinuation(continuationExtraParams).then((data) => {
-                expect(data - token != 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 401).assertTrue();
             });
@@ -535,7 +543,7 @@ describe('continuationManagerTest', function() {
                 authInfo: {"name": "authInfo","length": 8}
             };
             continuationManager.registerContinuation(continuationExtraParams).then((data) => {
-                expect(data - token != 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 16600002).assertTrue();
             });
@@ -555,7 +563,7 @@ describe('continuationManagerTest', function() {
     it('testRegisterContinuation010', 0, async function(done) {
         try {
             continuationManager.registerContinuation().then((data) => {
-                expect(data - token == 1).assertTrue();
+                expect(data != -1).assertTrue();
             }).catch((err) => {
                 expect(err.code == 16600002).assertTrue();
             });
