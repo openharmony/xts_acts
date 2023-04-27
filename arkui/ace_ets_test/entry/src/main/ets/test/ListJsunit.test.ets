@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 
 export default function listJsunit() {
@@ -32,7 +32,7 @@ export default function listJsunit() {
   describe('listTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/List',
+        uri: 'MainAbility/pages/List',
       }
       try {
         router.clear();
@@ -74,10 +74,10 @@ export default function listJsunit() {
       console.log('List‘s listDirection is ' + JSON.stringify(obj.$attrs.listDirection))
       console.log('List‘s divider is ' + JSON.stringify(obj.$attrs.divider))
       console.log('List‘s edgeEffect is ' + JSON.stringify(obj.$attrs.edgeEffect))
-      expect(obj.$attrs.initialIndex).assertEqual(0.000000.toFixed(6))
+      expect(obj.$attrs.initialIndex).assertEqual('0')
       expect(obj.$attrs.listDirection).assertEqual('Axis.Vertical')
       expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.None')
-      expect(obj.$attrs.editMode).assertEqual("false")
+      expect(obj.$attrs.editMode).assertEqual(false)
       console.info('++++++++++++++++ List TestCase 1 End ++++++++++++++++');
       done();
     });

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 
 export default function toggleJsunit() {
@@ -36,7 +36,7 @@ export default function toggleJsunit() {
     beforeEach(async function (done) {
       console.info('[toggleTest] before each called')
       let options = {
-        uri: 'pages/Toggle',
+        uri: 'MainAbility/pages/Toggle',
       }
       try {
         let pages = router.getState()
@@ -140,7 +140,7 @@ export default function toggleJsunit() {
       console.info('testToggle050 START');
       let strJson = getInspectorByKey('toggle5');
       let obj = JSON.parse(strJson);
-      console.info("[toggle5] get inspector value is: " + JSON.stringify(obj));
+      console.info("[toggle5] get inspector value is: " + JSON.stringify(obj.$attrs));
       expect(obj.$type).assertEqual('Toggle')
       expect(obj.$attrs.type).assertEqual('ToggleType.Button')
       expect(obj.$attrs.isOn).assertEqual('false')

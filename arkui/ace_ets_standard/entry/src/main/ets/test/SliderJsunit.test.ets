@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 
 export default function sliderJsunit() {
@@ -32,7 +32,7 @@ export default function sliderJsunit() {
   describe('SliderTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/Slider',
+        uri: 'MainAbility/pages/Slider',
       }
       try {
         router.clear();
@@ -71,7 +71,7 @@ export default function sliderJsunit() {
       expect(obj.$attrs.constructor.min).assertEqual(0.000000.toFixed(6))
       expect(obj.$attrs.constructor.max).assertEqual(100.000000.toFixed(6))
       expect(obj.$attrs.constructor.step).assertEqual(1.000000.toFixed(6))
-      expect(obj.$attrs.constructor.style).assertEqual("SliderStyle.OutSet")
+      expect(obj.$attrs.style).assertEqual("SliderStyle.OutSet")
       console.info('testGetSliderAttr1 END');
       done();
     });
@@ -88,7 +88,7 @@ export default function sliderJsunit() {
       console.info("component obj is  Slider: " + JSON.stringify(obj));
       expect(obj.$attrs.showTips).assertEqual("true")
       expect(obj.$attrs.showSteps).assertEqual("true")
-      expect(obj.$attrs.constructor.style).assertEqual("SliderStyle.InSet")
+      expect(obj.$attrs.style).assertEqual("SliderStyle.InSet")
       console.info('testGetSliderAttr2 END');
       done();
     });
