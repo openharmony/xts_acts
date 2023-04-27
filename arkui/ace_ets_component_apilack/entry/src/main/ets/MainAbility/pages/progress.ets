@@ -45,7 +45,7 @@ struct ProgressStyle {
         .textOverflow({ overflow: TextOverflow.None })
         .key("styleText")
       Row({ space: 40 }) {
-        Progress({ value: 20, total: 150, type: ProgressType.Ring })
+        Progress({ value: 20, total: 150, type: ProgressType.ScaleRing })
           .color(Color.Green).value(50).width(100)
           .style({ strokeWidth: 20, scaleCount: 30, scaleWidth: 20 })
         .key("Progress")
