@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function pathNewTest() {
@@ -22,7 +22,7 @@ export default function pathNewTest() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/path',
+        uri: 'MainAbility/pages/path',
       }
       try {
         router.clear();
@@ -56,7 +56,7 @@ export default function pathNewTest() {
       let strJson = getInspectorByKey('Path');
       console.info("[testpathNe0001] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Path');
       expect(obj.$attrs.width).assertEqual("100.00px");
       console.info("[testpathNe0001] width value :" + obj.$attrs.width);
       done();
@@ -73,7 +73,7 @@ export default function pathNewTest() {
       let strJson = getInspectorByKey('Path');
       console.info("[testpathNe0002] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Path');
       expect(obj.$attrs.height).assertEqual("100.00px");
       console.info("[testpathNe0002] height value :" + obj.$attrs.height);
       done();
@@ -90,7 +90,7 @@ export default function pathNewTest() {
       let strJson = getInspectorByKey('Path');
       console.info("[testpathNe0003] component fontSize strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Path');
       expect(obj.$attrs.commands).assertEqual("M150 0 L300 300 L0 300 Z");
       console.info("[testpathNe0003] commands value :" + obj.$attrs.commands);
       done();

@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function circleNewJsunit() {
@@ -22,7 +22,7 @@ export default function circleNewJsunit() {
     beforeAll(async function (done) {
       console.info("circle beforeEach start");
       let options = {
-        uri: 'pages/circle',
+        uri: 'MainAbility/pages/circle',
       }
       try {
         router.clear();
@@ -56,7 +56,7 @@ export default function circleNewJsunit() {
       let strJson = getInspectorByKey('circle');
       console.info("[testcircleNew001] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Circle');
       expect(obj.$attrs.width).assertEqual("100.00px");
       console.info("[testcircleNew001] width value :" + obj.$attrs.width);
       done();
@@ -73,7 +73,7 @@ export default function circleNewJsunit() {
       let strJson = getInspectorByKey('circle');
       console.info("[testcircleNew002] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Circle');
       expect(obj.$attrs.height).assertEqual("100.00px");
       console.info("[testcircleNew002] width value :" + obj.$attrs.width);
       done();

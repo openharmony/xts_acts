@@ -32,23 +32,25 @@ struct HoverEffect {
 
   build(){
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
-      Text("hoverEffect-Scale")
+      Text("ScaleText")
         .width(100)
         .height(70)
-        .fontSize(20)
+        .fontSize('30px')
         .opacity(1)
         .align(Alignment.TopStart)
         .fontColor(0xCCCCCC)
         .lineHeight(25)
         .border({ width: 1 })
         .padding(10)
+        .hoverEffect(HoverEffect.Scale)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("ScaleText")
-        .hoverEffect(HoverEffect.Scale)
-        .visibility(Visibility.None)
+        .minFontSize('50px')
+        .onClick(() => {
+          })
 
-      Text("hoverEffect-Highlight")
+      Text("HighlightText")
         .width(100)
         .height(70)
         .fontSize(20)
@@ -60,9 +62,9 @@ struct HoverEffect {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("HighlightText")
         .hoverEffect(HoverEffect.Highlight)
-        .visibility(Visibility.None)
+        .key("HighlightText")
+        .copyOption(0)
 
     }.width("100%").height("100%")
   }

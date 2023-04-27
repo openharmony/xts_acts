@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function sideBarShowSideBarJsunit() {
@@ -22,7 +22,7 @@ export default function sideBarShowSideBarJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/sideBar',
+        uri: 'MainAbility/pages/sideBar',
       }
       try {
         router.clear();
@@ -74,7 +74,7 @@ export default function sideBarShowSideBarJsunit() {
       console.info("[testsideBarShowSideBar0002] component autoHide strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('SideBarContainer');
-      expect(obj.$attrs.autoHide).assertEqual(undefined);
+      expect(obj.$attrs.autoHide).assertEqual('false');
       console.info("[testsideBarShowSideBar0002] autoHide value :" + obj.$attrs.autoHide);
       done();
     });

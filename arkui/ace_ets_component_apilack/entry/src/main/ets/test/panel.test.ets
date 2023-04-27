@@ -15,7 +15,7 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function panelBackgroundMaskJsunit() {
@@ -23,7 +23,7 @@ export default function panelBackgroundMaskJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/panel',
+        uri: 'MainAbility/pages/panel',
       }
       try {
         router.clear();
@@ -60,7 +60,7 @@ export default function panelBackgroundMaskJsunit() {
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
       console.log('Panel‘s backgroundMask is ' + JSON.stringify(obj.$attrs.backgroundMask))
-      expect(obj.$attrs.backgroundMask).assertEqual('#FFFF0000');
+      expect(obj.$attrs.backgroundMask).assertEqual('#FF00FF00');
       done();
     });
 

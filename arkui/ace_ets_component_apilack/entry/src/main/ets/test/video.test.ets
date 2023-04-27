@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function videoOnFullscreenChangeJsunit() {
@@ -23,7 +23,7 @@ export default function videoOnFullscreenChangeJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/video',
+        uri: 'MainAbility/pages/video',
       }
       try {
         router.clear();
@@ -177,7 +177,7 @@ export default function videoOnFullscreenChangeJsunit() {
       console.info("[testvideoOnFullscreenChange0009] component padding strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Video');
-      expect(obj.$attrs.padding).assertEqual("0.00px");
+      expect(obj.$attrs.padding).assertEqual("0.00vp");
       console.info("[testvideoOnFullscreenChange0009] padding value :" + obj.$attrs.padding);
       done();
     });

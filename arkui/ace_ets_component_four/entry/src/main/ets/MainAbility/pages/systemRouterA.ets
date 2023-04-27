@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -31,7 +31,7 @@ struct SystemRouterA {
         .margin({top: 20})
         .onClick(() => {
           router.push({
-            uri: 'pages/systemRouterB',
+            uri: 'MainAbility/pages/systemRouterB',
             params: {
               data: 'B Page'
             }
@@ -44,7 +44,7 @@ struct SystemRouterA {
         .margin({top: 20})
         .onClick(() => {
           router.replace({
-            uri: 'pages/systemRouterB',
+            uri: 'MainAbility/pages/systemRouterB',
             params: {
               data: 'B Page'
             }

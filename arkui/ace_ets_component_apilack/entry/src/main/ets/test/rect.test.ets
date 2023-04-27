@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function rectNeJsunit() {
@@ -22,7 +22,7 @@ export default function rectNeJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/rect',
+        uri: 'MainAbility/pages/rect',
       }
       try {
         router.clear();
@@ -56,7 +56,7 @@ export default function rectNeJsunit() {
       let strJson = getInspectorByKey('Rect');
       console.info("[testrectNe0001] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Rect');
       expect(obj.$attrs.width).assertEqual("90.00%");
       console.info("[testrectNe0001] width value :" + obj.$attrs.width);
       done();
@@ -73,7 +73,7 @@ export default function rectNeJsunit() {
       let strJson = getInspectorByKey('Rect');
       console.info("[testrectNe0002] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Rect');
       expect(obj.$attrs.height).assertEqual("50.00px");
       console.info("[testrectNe0002] height value :" + obj.$attrs.height);
       done();

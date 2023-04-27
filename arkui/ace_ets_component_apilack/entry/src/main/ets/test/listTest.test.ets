@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function listNewJsunit() {
@@ -23,7 +23,7 @@ export default function listNewJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/list',
+        uri: 'MainAbility/pages/list',
       }
       try {
         router.clear();
@@ -92,7 +92,7 @@ export default function listNewJsunit() {
       console.info("[testListNe0003] component editMode strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('List');
-      expect(obj.$attrs.editMode).assertEqual("true");
+      expect(obj.$attrs.editMode).assertTrue();
       console.info("[testListNe0003] editMode value :" + obj.$attrs.editMode);
       done();
     });
@@ -109,7 +109,7 @@ export default function listNewJsunit() {
       console.info("[testListNe0004] component alignListItem strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('List');
-      expect(obj.$attrs.alignListItem).assertEqual(undefined);
+      expect(obj.$attrs.alignListItem).assertEqual("ListItemAlign.Start");
       console.info("[testListNe0004] alignListItem value :" + obj.$attrs.alignListItem);
       done();
     });
@@ -119,14 +119,14 @@ export default function listNewJsunit() {
      * @tc.name         testListNe0006
      * @tc.desic         acelistNeEtsTest0006
      */
-    it('testListNe0006', 0, async function (done) {
+    it('testListNe0005', 0, async function (done) {
       console.info('listNe testListNe0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('list1');
       console.info("[testListNe0006] component lanes strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('List');
-      expect(obj.$attrs.lanes).assertEqual(undefined);
+      expect(obj.$attrs.lanes).assertEqual('0');
       console.info("[testListNe0006] lanes value :" + obj.$attrs.lanes);
       done();
     });
@@ -143,7 +143,7 @@ export default function listNewJsunit() {
       console.info("[testListNe0006] component lanes strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('List');
-      expect(obj.$attrs.lanes).assertEqual(undefined);
+      expect(obj.$attrs.lanes).assertEqual('0');
       console.info("[testListNe0006] lanes value :" + obj.$attrs.lanes);
       done();
     });
