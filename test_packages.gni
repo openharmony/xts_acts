@@ -36,7 +36,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/distributeddatamgr:distributeddatamgr",
   "${ACTS_ROOT}/graphic:graphic",
   "${ACTS_ROOT}/arkui:arkui",
-  "${ACTS_ROOT}/storage:storage", 
+  "${ACTS_ROOT}/storage:storage",
   "${ACTS_ROOT}/commonlibrary:commonlibrary",
   "${ACTS_ROOT}/usb:usb",
   "${ACTS_ROOT}/multimodalinput:multimodalinput",
