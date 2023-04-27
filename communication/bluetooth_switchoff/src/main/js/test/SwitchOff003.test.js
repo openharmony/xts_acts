@@ -17,6 +17,39 @@ import bluetoothManager from '@ohos.bluetoothManager';
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
+import osaccount from '@ohos.account.osAccount'
+import bundle from '@ohos.bundle'
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+
+async function applyPermission() {
+    let osAccountManager = osaccount.getAccountManager();
+    console.info("=== getAccountManager finish");
+    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+    console.info("LocalId is :" + localId);0
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.bluetooth.bluetoothhost', 0, localId);
+    let atManager = abilityAccessCtrl.createAtManager();
+    if (atManager != null) {
+        let tokenID = appInfo.accessTokenId;
+        console.info('[permission] case accessTokenID is ' + tokenID);
+        let permissionName = 'ohos.permission.LOCATION';
+        let permissionName1 = 'ohos.permission.APPROXIMATELY_LOCATION';
+        await atManager.grantUserGrantedPermission(tokenID, permissionName, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permis' +
+            'sion] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success1 :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permis' +
+            'sion] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+    } else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+    }
+}
+
 export default function bluetoothBLETest3() {
 describe('bluetoothBLETest3', function() {
     let gattServer = null;
@@ -47,10 +80,12 @@ describe('bluetoothBLETest3', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function () {
+    beforeAll(async function (done) {
         console.info('beforeAll called')
         gattServer = bluetoothManager.BLE.createGattServer();
         gattClient = bluetoothManager.BLE.createGattClientDevice("11:22:33:44:55:66");
+        await applyPermission();
+        done();
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')

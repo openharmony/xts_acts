@@ -15,13 +15,6 @@
 
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
- 
-let BluetoothState = {
-    STATE_OFF: 0,STATE_TURNING_ON: 1,
-    STATE_ON: 2,STATE_TURNING_OFF: 3,
-    STATE_BLE_TURNING_ON: 4, STATE_BLE_ON: 5,
-    STATE_BLE_TURNING_OFF: 6
-};
 
 export default function bluetoothhostTest() {
 describe('bluetoothhostTest', function() {
@@ -124,6 +117,39 @@ describe('bluetoothhostTest', function() {
             console.info('[bluetooth_js] enable state001 '+ JSON.stringify(state1));
             expect(state1).assertEqual(bluetooth.BluetoothState.STATE_ON);
         }
+        done()
+    })
+
+    /**
+     * @tc.number COMMUNICATION_BLUETOOTH_SwitchOff_0444
+     * @tc.name testEnableBluetooth and getState
+     * @tc.desc Test EnableBluetooth api by promise.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     */
+    it('COMMUNICATION_BLUETOOTH_SwitchOff_0444', 0, async function (done) {
+        let STATE_ON = bluetooth.BluetoothState.STATE_ON;
+        console.info("[bluetooth_js]STATE_ON : " + JSON.stringify(STATE_ON));
+        expect(true).assertTrue(STATE_ON == 2);
+        let STATE_OFF = bluetooth.BluetoothState.STATE_OFF;
+        console.info("[bluetooth_js]STATE_OFF : " + JSON.stringify(STATE_OFF));
+        expect(true).assertTrue(STATE_OFF == 0);
+        let STATE_TURNING_ON = bluetooth.BluetoothState.STATE_TURNING_ON;
+        console.info("[bluetooth_js]STATE_TURNING_ON : " + JSON.stringify(STATE_TURNING_ON));
+        expect(true).assertTrue(STATE_TURNING_ON == 1);
+        let STATE_TURNING_OFF = bluetooth.BluetoothState.STATE_TURNING_OFF;
+        console.info("[bluetooth_js]STATE_TURNING_OFF : " + JSON.stringify(STATE_TURNING_OFF));
+        expect(true).assertTrue(STATE_TURNING_OFF == 3);
+        let STATE_BLE_TURNING_ON = bluetooth.BluetoothState.STATE_BLE_TURNING_ON;
+        console.info("[bluetooth_js]STATE_BLE_TURNING_ON : " + JSON.stringify(STATE_BLE_TURNING_ON));
+        expect(true).assertTrue(STATE_BLE_TURNING_ON == 4);
+        let STATE_BLE_ON = bluetooth.BluetoothState.STATE_BLE_ON;
+        console.info("[bluetooth_js]STATE_BLE_ON : " + JSON.stringify(STATE_BLE_ON));
+        expect(true).assertTrue(STATE_BLE_ON == 5);
+        let STATE_BLE_TURNING_OFF = bluetooth.BluetoothState.STATE_BLE_TURNING_OFF;
+        console.info("[bluetooth_js]STATE_BLE_TURNING_OFF : " + JSON.stringify(STATE_BLE_TURNING_OFF));
+        expect(true).assertTrue(STATE_BLE_TURNING_OFF == 6);
         done()
     })
 })
