@@ -13,26 +13,24 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ActsUiTestScene") {
+ohos_js_hap_suite("ActsUiTest") {
   hap_profile = "./src/main/config.json"
   deps = [
-    ":uitest_scene_ets_assets",
-    ":uitest_scene_ets_resources",
+    ":uitest_ets_assets",
+    ":uitest_ets_resources",
   ]
   ets2abc = true
-  js_build_mode = "debug"
-  testonly = true
-  certificate_profile = "//test/xts/acts/arkXtest/uitestScene/signature/auto_ohos_default_com.uitestScene.test.p7b"
-  hap_name = "ActsUiTestScene"
-  part_name = "arkXtest"
-  subsystem_name = "arkXtest"
+  certificate_profile = "//test/xts/acts/testfwk/uitest/signature/auto_ohos_default_com.uitest.test.p7b"
+  hap_name = "ActsUiTest"
+  part_name = "arkxtest"
+  subsystem_name = "testfwk"
 }
 
-ohos_js_assets("uitest_scene_ets_assets") {
+ohos_js_assets("uitest_ets_assets") {
   source_dir = "./src/main/ets/MainAbility"
 }
 
-ohos_resources("uitest_scene_ets_resources") {
+ohos_resources("uitest_ets_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }

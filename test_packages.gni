@@ -15,7 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 _all_test_packages = [
   "${ACTS_ROOT}/ai:ai",
-  "${ACTS_ROOT}/arkXtest:arkXtest",
+  "${ACTS_ROOT}/arkXtest:arkxtest",
   "${ACTS_ROOT}/global:global",
   "${ACTS_ROOT}/security:security",
   "${ACTS_ROOT}/useriam:useriam",
@@ -36,7 +36,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/distributeddatamgr:distributeddatamgr",
   "${ACTS_ROOT}/graphic:graphic",
   "${ACTS_ROOT}/arkui:arkui",
-  "${ACTS_ROOT}/storage:storage",
+  "${ACTS_ROOT}/storage:storage", 
   "${ACTS_ROOT}/commonlibrary:commonlibrary",
   "${ACTS_ROOT}/usb:usb",
   "${ACTS_ROOT}/multimodalinput:multimodalinput",
