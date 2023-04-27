@@ -30,18 +30,22 @@ describe('FieldNodeTest', function() {
             let child1 = new ddm.FieldNode("child1");
             let child2 = new ddm.FieldNode("child2");
             let child3 = new ddm.FieldNode("child3");
-            node.appendChild(child1);
-            node.appendChild(child2);
-            node.appendChild(child3);
+            let res1 = node.appendChild(child1);
+            let res2 = node.appendChild(child2);
+            let res3 = node.appendChild(child3);
+            expect(res1).assertTrue();
+            expect(res2).assertTrue();
+            expect(res3).assertTrue();
             child1 = null;
             child2 = null;
             child3 = null;
             node = null;
+            done();
         } catch (e) {
-            console.info("SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0100 " + e);
+            console.info("SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0100 e=" + e);
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -54,14 +58,16 @@ describe('FieldNodeTest', function() {
         try {
             let node = new ddm.FieldNode("root");
             let child = new ddm.FieldNode("child");
-            node.appendChild(child);
+            let res1 = node.appendChild(child);
+            expect(res1).assertTrue();
             child = null;
             node = null;
+            done();
         } catch (e) {
-            console.info("SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0200 " + e);
+            console.info("SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0200 e=" + e);
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -76,10 +82,11 @@ describe('FieldNodeTest', function() {
             let child = new ddm.FieldNode();
             node.appendChild(child);
             expect(null).assertFail();
+            done();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_APPENDCHILD_0300 is ok :" + e);
+            done();
         }
-        done();
     })
 
     /**
@@ -92,11 +99,13 @@ describe('FieldNodeTest', function() {
         try {
             let node = new ddm.FieldNode("root");
             let child = new ddm.FieldNode("child");
-            node.appendChild(child);
+            let res1 = node.appendChild(child);
+            expect(res1).assertTrue();
+            done();
         } catch (e) {
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -109,11 +118,13 @@ describe('FieldNodeTest', function() {
         try {
             let node = new ddm.FieldNode("root");
             let child = new ddm.FieldNode("child");
-            node.appendChild(child);
+            let res1 = node.appendChild(child);
+            expect(res1).assertTrue();
+            done();
         } catch (e) {
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -128,10 +139,11 @@ describe('FieldNodeTest', function() {
             let child = new ddm.FieldNode();
             node.appendChild(child);
             expect(null).assertFail();
+            done();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TOJSON_0300 is ok : " + e);
+            done();
         }
-        done();
     })
 
     /**
@@ -145,29 +157,33 @@ describe('FieldNodeTest', function() {
             let node = new ddm.FieldNode('first');
             node.default = 'first name';
             console.info('defaultValue = ' + node.default);
-            expect(node.default === 'first name').assertTrue()
+            expect(node.default === 'first name').assertTrue();
+            done();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_DEFAULT_0100 fail on exception: " + e);
+            expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
-     * @tc.name SUB_DDM_DKV_FIELDNODE_DEFAULT_0100
+     * @tc.name SUB_DDM_DKV_FIELDNODE_NULLABLE_0100
      * @tc.desc  Test Js Api FieldNode.nullable testcase 001
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_DKV_FIELDNODE_NULLABLE_0100
      */
-     it('SUB_DDM_DKV_FIELDNODE_DEFAULT_0100', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_NULLABLE_0100', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.nullable = false;
             console.info('nullable = ' + node.nullable);
-            expect(node.nullable === false).assertTrue()
+            expect(node.nullable === false).assertTrue();
+            done();
         } catch (e) {
-            console.info("SUB_DDM_DKV_FIELDNODE_DEFAULT_0100 fail on exception: " + e);
+            console.info("SUB_DDM_DKV_FIELDNODE_NULLABLE_0100 fail on exception: " + e);
+            expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -182,11 +198,12 @@ describe('FieldNodeTest', function() {
             node.type = ddm.ValueType.STRING;
             console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0100 type = ' + node.type);
             expect(node.type === ddm.ValueType.STRING).assertTrue();
+            done();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0100 fail on exception: " + e);
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -201,11 +218,12 @@ describe('FieldNodeTest', function() {
             node.type = ddm.ValueType.INTEGER;
             console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0200 type = ' + node.type);
             expect(node.type === ddm.ValueType.INTEGER).assertTrue();
+            done();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0200 fail on exception: " + e);
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -220,11 +238,12 @@ describe('FieldNodeTest', function() {
             node.type = ddm.ValueType.FLOAT;
             console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0300 type = ' + node.type);
             expect(node.type === ddm.ValueType.FLOAT).assertTrue();
+            done();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0300 fail on exception: " + e);
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -239,11 +258,12 @@ describe('FieldNodeTest', function() {
             node.type = ddm.ValueType.BYTE_ARRAY;
             console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0400 type = ' + node.type);
             expect(node.type === ddm.ValueType.BYTE_ARRAY).assertTrue();
+            done();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0400 fail on exception: " + e);
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -258,11 +278,12 @@ describe('FieldNodeTest', function() {
             node.type = ddm.ValueType.BOOLEAN;
             console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0500 type = ' + node.type);
             expect(node.type === ddm.ValueType.BOOLEAN).assertTrue();
+            done();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0500 fail on exception: " + e);
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 
     /**
@@ -277,11 +298,12 @@ describe('FieldNodeTest', function() {
             node.type = ddm.ValueType.DOUBLE;
             console.info('SUB_DDM_DKV_FIELDNODE_TYPE_0600 type = ' + node.type);
             expect(node.type === ddm.ValueType.DOUBLE).assertTrue();
+            done();
         } catch (e) {
             console.info("SUB_DDM_DKV_FIELDNODE_TYPE_0600 fail on exception: " + e);
             expect(null).assertFail();
+            done();
         }
-        done();
     })
 })
 }
