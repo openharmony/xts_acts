@@ -23,6 +23,21 @@
  import flexTextMargin_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexTextMarginJsunit.test.ets';
  import Row_Space from './Row/spaceChanged/Row_Space.test.ets';
  import Column_Space from './Column/spaceChanged/Column_Space.test.ets';
+ import Column_Space_String from './Column/spaceChanged/Column_Space_String.test.ets';
+ import Column_Space_Default from './Column/spaceChanged/Column_Space_Default.test.ets';
+ import layoutWeight_Part from './Column/layoutWeight/layoutWeight_Part.test';
+ import layoutWeight_All from './Column/layoutWeight/layoutWeight_All.test';
+ import layoutWeight_Default from './Column/layoutWeight/layoutWeight_Default.test.ets';
+ import layoutWeight_flexGrow from './Column/layoutWeight/layoutWeight_flexGrow.test.ets';
+ import layoutWeight_flexShrink from './Column/layoutWeight/layoutWeight_flexShrink.test.ets';
+ import flexGrow_Part from './Column/flexGrow/flexGrow_Part.test.ets';
+ import flexGrow_Default from './Column/flexGrow/flexGrow_Default.test.ets';
+ import flexShrink_Part from './Column/flexShrink/flexShrink_Part.test.ets';
+ import flexBasis_Type from './Column/flexBasis/flexBasis_Type.test.ets';
+ import flexBasis_Default from './Column/flexBasis/flexBasis_Default.test.ets';
+ import columnNesting_Space from './Column/columnNesting/columnNesting_Space.test.ets';
+ import columnNesting_alignItems from './Column/columnNesting/columnNesting_alignItems.test.ets';
+ import columnNesting_justifyContent from './Column/columnNesting/columnNesting_justifyContent.test.ets';
  import Grid_RowCol_TemplateChange from './Grid/GridTemplatesAllSet/GridTemplateChange/Grid_RowCol_TemplateChange.test.ets';
  import Grid_RowCol_GridSize from './Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_GridSize.test.ets';
  import Grid_RowCol_PadMar from './Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_PadMar.test.ets';
@@ -101,6 +116,21 @@ export default function testsuite() {
   flexTextMargin_AutoJsunit()
   Row_Space()
   Column_Space()
+  Column_Space_String()
+  Column_Space_Default()
+  layoutWeight_Part()
+  layoutWeight_All()
+  layoutWeight_Default()
+  layoutWeight_flexGrow()
+  layoutWeight_flexShrink()
+  flexGrow_Part()
+  flexGrow_Default()
+  flexShrink_Part()
+  flexBasis_Type()
+  flexBasis_Default()
+  columnNesting_Space()
+  columnNesting_alignItems()
+  columnNesting_justifyContent()
   Grid_RowCol_TemplateChange()
   Grid_RowCol_GridSize()
   Grid_RowCol_PadMar()
