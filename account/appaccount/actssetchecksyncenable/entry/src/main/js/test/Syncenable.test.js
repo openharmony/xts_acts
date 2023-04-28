@@ -30,16 +30,18 @@ describe('ActsSetCheckSyncEnable', function () {
         var atManager = abilityAccessCtrl.createAtManager();
         var result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
         console.debug("tokenId" + tokenID + " result:" + result);
-        sleep(TIMEOUT);
+        await sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
     })
 
-    function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {
-            continue;
-        }
+    async function sleep(delay) {
+        let timeoutId = null;
+        var promise = new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => resolve("done!"), delay);
+        });
+        await promise
+        clearTimeout(timeoutId)
     }
 
     /*

@@ -29,23 +29,25 @@ const OWNERLENGTHLIMIT = 1024;
 const OWNERSELF = "com.example.actsaccounttest";
 
 describe('ActsAccountOAuthToken', function () {
-    function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {
-            continue;
-        }
+    async function sleep(delay) {
+        let timeoutId = null;
+        var promise = new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => resolve("done!"), delay);
+        });
+        await promise
+        clearTimeout(timeoutId)
     }
 
     beforeAll(async function (done) {
         console.debug("====>beforeAll start====");
-        sleep(TIMEOUT);
+        await sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
     });
 
     beforeEach(async function (done) {
         console.debug("====>beforeAll enter====");
-        sleep(EACHTIMEOUT);
+        await sleep(EACHTIMEOUT);
         done();
     });
 

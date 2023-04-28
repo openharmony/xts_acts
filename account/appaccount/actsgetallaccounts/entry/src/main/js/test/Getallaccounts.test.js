@@ -20,6 +20,15 @@ const TIMEOUT = 2000;
 const LENGTHLIMIT = 1024;
 describe('ActsGetAllAccounts', function () {
 
+    async function sleep(delay) {
+        let timeoutId = null;
+        var promise = new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => resolve("done!"), delay);
+        });
+        await promise
+        clearTimeout(timeoutId)
+    }
+
     /*
      * @tc.number    : ActsGetAllAccounts_0100
      * @tc.name      : getAllAccounts callback
@@ -285,10 +294,9 @@ describe('ActsGetAllAccounts', function () {
                 done();
             });
         }
-        setTimeout(async function(){
-            console.debug("====>getAllAccounts 0900 start====");
-            appAccountManager.getAllAccounts(selfBundle, getAllCallback); 
-        }, TIMEOUT); 
+        await sleep(TIMEOUT)
+        console.debug("====>getAllAccounts 0900 start====");
+        appAccountManager.getAllAccounts(selfBundle, getAllCallback);
     });
 
     /*
@@ -318,31 +326,30 @@ describe('ActsGetAllAccounts', function () {
                 },
             },
         );
-        setTimeout(async function(){
-            console.debug("====>getAllAccounts 1000 start====");
-            try{
-                var data = await appAccountManager.getAllAccounts(selfBundle);
-            }
-            catch(err){
-                console.error("====>getAllAccounts 1000 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.debug("====>getAllAccounts 1000 data:" + JSON.stringify(data));
-            try{
-                expect(data[0].name).assertEqual("Account_application_promise");
-                expect(data[0].owner).assertEqual("com.example.actsgetallaaccounts");
-            }
-            catch(err){
-                console.error("====>check data 1000 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.debug("====>delete account 1000 start====");
-            await appAccountManager.deleteAccount("Account_application_promise");
-            console.debug("====>ActsGetAllAccounts_1000 end====");
+        await sleep(TIMEOUT)
+        console.debug("====>getAllAccounts 1000 start====");
+        try{
+            var data = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts 1000 fail err:" + JSON.stringify(err));
+            expect().assertFail();
             done();
-        }, TIMEOUT); 
+        }
+        console.debug("====>getAllAccounts 1000 data:" + JSON.stringify(data));
+        try{
+            expect(data[0].name).assertEqual("Account_application_promise");
+            expect(data[0].owner).assertEqual("com.example.actsgetallaaccounts");
+        }
+        catch(err){
+            console.error("====>check data 1000 fail err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>delete account 1000 start====");
+        await appAccountManager.deleteAccount("Account_application_promise");
+        console.debug("====>ActsGetAllAccounts_1000 end====");
+        done(); 
     });
 
     /*
@@ -379,10 +386,9 @@ describe('ActsGetAllAccounts', function () {
             console.debug("====>ActsGetAllAccounts_1100 end====");
             done();
         }
-        setTimeout(async function(){
-            console.debug("====>getAllAccounts 1100 start====");
-            appAccountManager.getAllAccounts(specifiedBundle, getAllCallback); 
-        }, TIMEOUT); 
+        await sleep(TIMEOUT)
+        console.debug("====>getAllAccounts 1100 start====");
+        appAccountManager.getAllAccounts(specifiedBundle, getAllCallback); 
     });
 
     /*
@@ -410,22 +416,21 @@ describe('ActsGetAllAccounts', function () {
                 },
             },
         );
-        setTimeout(async function(){
-            console.debug("====>getAllAccounts 1200 start====");
-            try{
-                var data = await appAccountManager.getAllAccounts(specifiedBundle);
-            }
-            catch(err){
-                console.error("====>getAllAccounts 1200 fail err:" + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            }
-            console.debug("====>getAllAccounts 1200 data:" + JSON.stringify(data));
-            expect(data[0].name).assertEqual("account_name_scene_single");
-            expect(data[0].owner).assertEqual("com.example.actsscenegetallaccounts");
-            console.debug("====>ActsGetAllAccounts_1200 end====");
+        await sleep(TIMEOUT)
+        console.debug("====>getAllAccounts 1200 start====");
+        try{
+            var data = await appAccountManager.getAllAccounts(specifiedBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts 1200 fail err:" + JSON.stringify(err));
+            expect().assertFail();
             done();
-        }, TIMEOUT);
+        }
+        console.debug("====>getAllAccounts 1200 data:" + JSON.stringify(data));
+        expect(data[0].name).assertEqual("account_name_scene_single");
+        expect(data[0].owner).assertEqual("com.example.actsscenegetallaccounts");
+        console.debug("====>ActsGetAllAccounts_1200 end====");
+        done();
     });
 
     /*

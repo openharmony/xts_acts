@@ -18,14 +18,13 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 const TIMEOUT = 5000;
 const EACHTIMEOUT = 500;
 describe('ActsAccountCredential', function () {
-    function sleep(delay) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve()
-            }, delay)
-        }).then(() => {
-            console.info(`sleep #{time} over ...`)
-        })
+    async function sleep(delay) {
+        let timeoutId = null;
+        var promise = new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => resolve("done!"), delay);
+        });
+        await promise
+        clearTimeout(timeoutId)
     }
 
     beforeAll(async function (done) {
