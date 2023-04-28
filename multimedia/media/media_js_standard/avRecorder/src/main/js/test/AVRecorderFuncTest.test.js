@@ -122,7 +122,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0300
             * @tc.name      : 003.test recording 3 seconds to stop
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video recording 3 seconds to stop
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
@@ -142,7 +142,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0400
             * @tc.name      : 004.pause->resume->pause
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video pause->resume->pause
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
@@ -162,7 +162,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0500
             * @tc.name      : 005.pause->stop->reset
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video pause->stop->reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
@@ -182,7 +182,7 @@ export default function avRecorderTest() {
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0600
            * @tc.name      : 006.pause->resume->stop->reset
-           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.desc      : Local Video pause->resume->stop->reset
            * @tc.size      : MediumTest
            * @tc.type      : Function test
            * @tc.level     : Level2
@@ -202,7 +202,7 @@ export default function avRecorderTest() {
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0700
            * @tc.name      : 007.stop->reset->pause->resume->stop->reset
-           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.desc      : Local Video stop->reset->pause->resume->stop->reset
            * @tc.size      : MediumTest
            * @tc.type      : Function test
            * @tc.level     : Level2
@@ -222,7 +222,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0800
             * @tc.name      : 008.stop->reset->pause->stop->reset
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video stop->reset->pause->stop->reset
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
@@ -242,7 +242,7 @@ export default function avRecorderTest() {
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0900
            * @tc.name      : 009.start->pause->start(error)
-           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.desc      : Local Video start->pause->start(error)
            * @tc.size      : MediumTest
            * @tc.type      : Function test
            * @tc.level     : Level2
@@ -262,7 +262,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_1000
             * @tc.name      : 010.start->stop->pause(error)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video start->stop->pause(error)
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
@@ -282,7 +282,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_1100
             * @tc.name      : 011. API8 audioEncoderMime
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video audioEncoderMime
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
@@ -302,7 +302,7 @@ export default function avRecorderTest() {
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0100
            * @tc.name      : 音频录制，location对应的latitude和longitude为-30和60
-           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.desc      : Local Video recorder with designated latitude and longitude
            * @tc.size      : MediumTest
            * @tc.type      : Function test
            * @tc.level     : Level2
@@ -330,7 +330,7 @@ export default function avRecorderTest() {
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0200
            * @tc.name      : 音频录制，location对应的latitude和longitude为90和180
-           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.desc      : Local Video recorder with designated latitude and longitude
            * @tc.size      : MediumTest
            * @tc.type      : Function test
            * @tc.level     : Level2
@@ -358,7 +358,7 @@ export default function avRecorderTest() {
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0300
            * @tc.name      : 音频录制，location对应的latitude和longitude为60和-90
-           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.desc      : Local Video recorder with designated latitude and longitude
            * @tc.size      : MediumTest
            * @tc.type      : Function test
            * @tc.level     : Level2
@@ -386,7 +386,7 @@ export default function avRecorderTest() {
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0400
            * @tc.name      : 音频录制，location对应的latitude和longitude为0和0
-           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.desc      : Local Video recorder with designated latitude and longitude
            * @tc.size      : MediumTest
            * @tc.type      : Function test
            * @tc.level     : Level2
@@ -414,7 +414,7 @@ export default function avRecorderTest() {
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0500
            * @tc.name      : 音频录制，location对应的latitude和longitude为0和180
-           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.desc      : Local Video recorder with designated latitude and longitude
            * @tc.size      : MediumTest
            * @tc.type      : Function test
            * @tc.level     : Level2
@@ -441,7 +441,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0600
             * @tc.name      : 音频录制，location对应的latitude和longitude为-90和-180
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video recorder with designated latitude and longitude
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level2
@@ -468,7 +468,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_01_0100
             * @tc.name      : 01.AVRecorder.prepare(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.prepare(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -488,7 +488,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_01_0200
             * @tc.name      : 02.AVRecorder.start(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.start(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -508,7 +508,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_01_0300
             * @tc.name      : 03.AVRecorder.pause(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.pause(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -528,7 +528,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_01_0400
             * @tc.name      : 04.AVRecorder.resume(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.resume(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -548,7 +548,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_01_0500
             * @tc.name      : 05.AVRecorder.stop(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.stop(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -568,7 +568,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_01_0600
             * @tc.name      : 06.AVRecorder.reset(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.reset(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -588,7 +588,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_01_0700
             * @tc.name      : 07.AVRecorder.release(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.release(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -608,7 +608,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0100
             * @tc.name      : 01.AVRecorder.prepare(callback)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.prepare(callback) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -625,30 +625,30 @@ export default function avRecorderTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0100 end')
         })
 
-        //        /* *
-        //            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0200
-        //            * @tc.name      : 02.AVRecorder.start(callbcak)
-        //            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
-        //            * @tc.size      : MediumTest
-        //            * @tc.type      : Function test
-        //            * @tc.level     : Level4
-        //        */
-        //        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0200', 0, async function (done) {
-        //            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0200 start')
-        //            let fileName = avRecorderTestBase.resourceName()
-        //            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
-        //            fdPath = "fd://" + fdObject.fdNumber;
-        //            console.info('case fdPath is: ' + fdPath);
-        //            avConfig.url = fdPath;
-        //            console.info('avConfig.url ' + avConfig.url);
-        //            avRecorderTestBase.avRecorderWithStartCallback(avConfig, avRecorder, LOOP_TIMES, done);
-        //            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0200 end')
-        //        })
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0200
+            * @tc.name      : 02.AVRecorder.start(callbcak)
+            * @tc.desc      : Local Video AVRecorder.start(callbcak) 1000 times
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level4
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0200', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0200 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            console.info('case fdPath is: ' + fdPath);
+            avConfig.url = fdPath;
+            console.info('avConfig.url ' + avConfig.url);
+            avRecorderTestBase.avRecorderWithStartCallback(avConfig, avRecorder, LOOP_TIMES, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0200 end')
+        })
 
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0300
             * @tc.name      : 03.AVRecorder.pause(callbcak)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.pause(callbcak) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -668,7 +668,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0400
             * @tc.name      : 04.AVRecorder.resume(callbcak)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.resume(callbcak) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -688,7 +688,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0500
             * @tc.name      : 05.AVRecorder.stop(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.stop(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -708,7 +708,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0600
             * @tc.name      : 06.AVRecorder.reset(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.reset(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -728,7 +728,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0700
             * @tc.name      : 07.AVRecorder.release(promise)
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video AVRecorder.release(promise) 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -745,50 +745,50 @@ export default function avRecorderTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0700 end')
         })
 
-        //    /* *
-        //        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0100
-        //        * @tc.name      : 01.prepare->start>reset
-        //        * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
-        //        * @tc.size      : MediumTest
-        //        * @tc.type      : Function test
-        //        * @tc.level     : Level4
-        //    */
-        //    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0100', 0, async function (done) {
-        //        console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0100 start')
-        //        let fileName = avRecorderTestBase.resourceName()
-        //        fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
-        //        fdPath = "fd://" + fdObject.fdNumber;
-        //        console.info('case fdPath is: ' + fdPath);
-        //        avConfig.url = fdPath;
-        //        console.info('avConfig.url ' + avConfig.url);
-        //        avRecorderTestBase.avRecorderLoopPrepare2ResetWithPromise(avConfig, avRecorder, LOOP_TIMES, done);
-        //        console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0100 end')
-        //    })
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0100
+            * @tc.name      : 01.prepare->start>reset
+            * @tc.desc      : Local Video prepare->start>reset 1000 times
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level4
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0100 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            console.info('case fdPath is: ' + fdPath);
+            avConfig.url = fdPath;
+            console.info('avConfig.url ' + avConfig.url);
+            avRecorderTestBase.avRecorderLoopPrepare2ResetWithPromise(avConfig, avRecorder, LOOP_TIMES, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0100 end')
+        })
 
-        //    /* *
-        //        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0200
-        //        * @tc.name      : 02.create->prepare->start->reset->release
-        //        * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
-        //        * @tc.size      : MediumTest
-        //        * @tc.type      : Function test
-        //        * @tc.level     : Level4
-        //    */
-        //    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0200', 0, async function (done) {
-        //        console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0200 start')
-        //        let fileName = avRecorderTestBase.resourceName()
-        //        fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
-        //        fdPath = "fd://" + fdObject.fdNumber;
-        //        console.info('case fdPath is: ' + fdPath);
-        //        avConfig.url = fdPath;
-        //        console.info('avConfig.url ' + avConfig.url);
-        //        avRecorderTestBase.avRecorderLoopCreate2ReleaseWithPromise(avConfig, avRecorder, LOOP_TIMES, done);
-        //        console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0200 end')
-        //    })
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0200
+            * @tc.name      : 02.create->prepare->start->reset->release
+            * @tc.desc      : Local Video create->prepare->start->reset->release 1000 times
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level4
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0200', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0200 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            console.info('case fdPath is: ' + fdPath);
+            avConfig.url = fdPath;
+            console.info('avConfig.url ' + avConfig.url);
+            avRecorderTestBase.avRecorderLoopCreate2ReleaseWithPromise(avConfig, avRecorder, LOOP_TIMES, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0200 end')
+        })
 
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0300
             * @tc.name      : 03.prepare->start->stop
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video prepare->start->stop 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -808,7 +808,7 @@ export default function avRecorderTest() {
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0400
            * @tc.name      : 04.pause->resume
-           * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+           * @tc.desc      : Local Video pause->resume 1000 times
            * @tc.size      : MediumTest
            * @tc.type      : Function test
            * @tc.level     : Level4
@@ -828,7 +828,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0500
             * @tc.name      : 05.create->release
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video create->release 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -845,50 +845,30 @@ export default function avRecorderTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_PROMISE_02_0500 end')
         })
 
-        // /* *
-        //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0100
-        //     * @tc.name      : 01.prepare->start>reset
-        //     * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
-        //     * @tc.size      : MediumTest
-        //     * @tc.type      : Function test
-        //     * @tc.level     : Level4
-        // */
-        // it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0100', 0, async function (done) {
-        //     console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0100 start')
-        //     let fileName = avRecorderTestBase.resourceName()
-        //     fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
-        //     fdPath = "fd://" + fdObject.fdNumber;
-        //     console.info('case fdPath is: ' + fdPath);
-        //     avConfig.url = fdPath;
-        //     console.info('avConfig.url ' + avConfig.url);
-        //     avRecorderTestBase.avRecorderLoopPrepare2ResetWithCallback(avConfig, avRecorder, LOOP_TIMES, done);
-        //     console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0100 end')
-        // })
-
-        //        /* *
-        //            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0200
-        //            * @tc.name      : 02.create->prepare->start->reset->release
-        //            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
-        //            * @tc.size      : MediumTest
-        //            * @tc.type      : Function test
-        //            * @tc.level     : Level4
-        //        */
-        //        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0200', 0, async function (done) {
-        //            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0200 start')
-        //            let fileName = avRecorderTestBase.resourceName()
-        //            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
-        //            fdPath = "fd://" + fdObject.fdNumber;
-        //            console.info('case fdPath is: ' + fdPath);
-        //            avConfig.url = fdPath;
-        //            console.info('avConfig.url ' + avConfig.url);
-        //            avRecorderTestBase.avRecorderLoopCreate2ReleaseWithCallback(avConfig, avRecorder, LOOP_TIMES, done);
-        //            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0200 end')
-        //        })
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0100
+            * @tc.name      : 01.prepare->start>reset
+            * @tc.desc      : Local Video prepare->start>reset 1000 times
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level4
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0100 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            console.info('case fdPath is: ' + fdPath);
+            avConfig.url = fdPath;
+            console.info('avConfig.url ' + avConfig.url);
+            avRecorderTestBase.avRecorderLoopPrepare2ResetWithCallback(avConfig, avRecorder, LOOP_TIMES, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0100 end')
+        })
 
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0300
             * @tc.name      : 03.prepare->start->stop
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video prepare->start->stop 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -904,31 +884,31 @@ export default function avRecorderTest() {
             avRecorderTestBase.avRecorderLoopPrepare2StopWithCallback(avConfig, avRecorder, LOOP_TIMES, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0300 end')
         })
-        //
-        //        /* *
-        //            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0400
-        //            * @tc.name      : 04.pause->resume
-        //            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
-        //            * @tc.size      : MediumTest
-        //            * @tc.type      : Function test
-        //            * @tc.level     : Level4
-        //        */
-        //        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0400', 0, async function (done) {
-        //            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0400 start')
-        //            let fileName = avRecorderTestBase.resourceName()
-        //            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
-        //            fdPath = "fd://" + fdObject.fdNumber;
-        //            console.info('case fdPath is: ' + fdPath);
-        //            avConfig.url = fdPath;
-        //            console.info('avConfig.url ' + avConfig.url);
-        //            avRecorderTestBase.avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorder, LOOP_TIMES, done);
-        //            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0400 end')
-        //        })
 
         /* *
-            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0500
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_01_0400
+            * @tc.name      : 04.pause->resume
+            * @tc.desc      : Local Video pause->resume 1000 times
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level4
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0400', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0400 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            console.info('case fdPath is: ' + fdPath);
+            avConfig.url = fdPath;
+            console.info('avConfig.url ' + avConfig.url);
+            avRecorderTestBase.avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorder, LOOP_TIMES, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0400 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_STABILITY_CALLBACK_02_0500
             * @tc.name      : 05.create->release
-            * @tc.desc      : Local Video play to pause 1000 times (waiting for callback)
+            * @tc.desc      : Local Video create->release 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level4
@@ -948,7 +928,7 @@ export default function avRecorderTest() {
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0100
             * @tc.name      : 001.test pause->prepare
-            * @tc.desc      : Recorder pause->prepare
+            * @tc.desc      : Recorder pause->prepare 1000 times
             * @tc.size      : MediumTest
             * @tc.type      : Reliabilit test
             * @tc.level     : Level2
