@@ -294,7 +294,7 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_DISCHARGING).assertEqual('usual.event.DISCHARGING')
       expect(commonEventManager.Support.COMMON_EVENT_CHARGING).assertEqual('usual.event.CHARGING')
       expect(commonEventManager.Support.COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED).assertEqual('usual.event.DEVICE_IDLE_MODE_CHANGED')
-      expect(commonEventManager.Support.COMMON_EVENT_DEVICE_IDLE_EXEMPTION_SYSTEM_UPDATE).assertEqual('usual.event.DEVICE_IDLE_EXEMPTION_SYSTEM_UPDATE')
+      expect(commonEventManager.Support.COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED).assertEqual('usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED')
       expect(commonEventManager.Support.COMMON_EVENT_POWER_SAVE_MODE_CHANGED).assertEqual('usual.event.POWER_SAVE_MODE_CHANGED')
       expect(commonEventManager.Support.COMMON_EVENT_USER_ADDED).assertEqual('usual.event.USER_ADDED')
       expect(commonEventManager.Support.COMMON_EVENT_USER_REMOVED).assertEqual('usual.event.USER_REMOVED')
