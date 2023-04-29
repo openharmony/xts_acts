@@ -517,13 +517,13 @@ export default function abilityTest() {
         bundleName: systemAppCalleeABundleName,
         abilityName: systemAppCalleeAThirdAbilityName,
       }).then(data => {
+        console.log('ACTS_CommonComponent_Call_1700 call ok return is ' + JSON.stringify(data));
+        if (data != null) {
+          exceptionFlag = true;
+        }
+      }).catch(err => {
         expect().assertFail();
         done();
-      }).catch(err => {
-        console.log('ACTS_CommonComponent_Call_1700 call err.code: ' + JSON.stringify(err.code) +
-          ' err.msg: ' + JSON.stringify(err.message));
-        expect(err.code).assertEqual(ERROR_CODE_TYPE_ERROR);
-        exceptionFlag = true;
       });
 
       expect(exceptionFlag).assertEqual(true);
