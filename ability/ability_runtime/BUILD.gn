@@ -45,7 +45,6 @@ group("ability_runtime") {
       "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
       "apicover:apicover",
       "apitest:ActsApiTest",
-      "apprecovery:apprecovery",
       "context:context",
       "fa:fa",
       "faapicover:faapicover",

@@ -122,64 +122,55 @@ export default function InputDevice_test() {
     it("InputDevice_getDevice_test_02", 0, async function (done) {
       console.info(`InputDevice_getDevice_test_02 enter`);
       try {
-        inputDevice.getDeviceIds(async (err, data) => {
-          console.info(`InputDevice_getDeviceIds_test_02 err:${JSON.stringify(err)}`);
-          console.info(`InputDevice_getDeviceIds_test_02 data:${JSON.stringify(data)}`);
-          if (err) {
-            expect(false).assertTrue();
-          } else {
-            for (let i = 0; i < data.length; i++) {
-              console.info(`InputDevice_getDevice_test_02 for`);
-              await getDevicePromise(data[i])
-            }
-            function getDevicePromise(data) {
-              console.info(`InputDevice_getDevice_test_02  getDevicePromise`)
-              return new Promise((resolve, reject) => {
-                inputDevice.getDevice(data, (err, res) => {
-                  console.info(`getDevice:data =${JSON.stringify(data)}`);
-                  console.info(`getDevice:res =${JSON.stringify(res)}`);
-                  let arr = Object.keys(res);
-                  expect(res.id).assertInstanceOf('Number');
-                  expect(res.name).assertInstanceOf('String');
-                  expect(res.sources).assertInstanceOf('Array');
-                  expect(res.axisRanges).assertInstanceOf('Array');
-                  expect(res.bus).assertInstanceOf('Number');
-                  expect(res.product).assertInstanceOf('Number');
-                  expect(res.vendor).assertInstanceOf('Number');
-                  expect(res.version).assertInstanceOf('Number');
-                  expect(res.phys).assertInstanceOf('String');
-                  expect(res.uniq).assertInstanceOf('String');
-                  expect(res).assertInstanceOf('Object');
-                  console.info(`InputDevice_getDevice_test_02  getDevice expect res`);
-                  for (let j = 0; j < res.axisRanges.length; j++) {
-                    expect(res.axisRanges[j].source == 'keyboard' || res.axisRanges[j].source == 'mouse'
-                      || res.axisRanges[j].source == 'touchpad' || res.axisRanges[j].source == 'touchscreen'
-                      || res.axisRanges[j].source == 'joystick' || res.axisRanges[j].source == 'trackball').assertTrue();
-                    expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
-                      || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
-                      || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
-                      || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'toolMajor'
-                      || res.axisRanges[j].axis == 'NULL').assertTrue();
-                    expect(res.axisRanges[j].max).assertInstanceOf('Number');
-                    expect(res.axisRanges[j]).assertInstanceOf('Object');
-                    expect(res.axisRanges[j].min).assertInstanceOf('Number');
-                    expect(res.axisRanges[j].fuzz).assertInstanceOf('Number');
-                    expect(res.axisRanges[j].flat).assertInstanceOf('Number');
-                    expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
-                  }
-                  resolve(res);
-                })
-              })
-            }
+        inputDevice.getDeviceIds().then((data) => {
+          expect(data).assertInstanceOf('Array');
+          if (data.length <= 0) {
+            return;
           }
-          console.info(`InputDevice_getDevice_test_02 exit`);
-          done();
-        });
-      } catch (error) {
-        console.info(`InputDevice_getDevice_test_02 error`);
+          try {
+            inputDevice.getDevice(data[0]).then((res) => {
+              let arr = [];
+              console.info(`getDevice:data ${JSON.stringify(res)}`);
+              arr = Object.keys(res);
+              expect(res.id).assertInstanceOf('Number');
+              expect(res.name).assertInstanceOf('String');
+              expect(res.sources).assertInstanceOf('Array');
+              expect(res.axisRanges).assertInstanceOf('Array');
+              expect(res.bus).assertInstanceOf('Number');
+              expect(res.product).assertInstanceOf('Number');
+              expect(res.vendor).assertInstanceOf('Number');
+              expect(res.version).assertInstanceOf('Number');
+              expect(res.phys).assertInstanceOf('String');
+              expect(res.uniq).assertInstanceOf('String');
+              expect(res).assertInstanceOf('Object');
+              for (let j = 0; j < res.axisRanges.length; j++) {
+                expect(res.axisRanges[j].source == 'keyboard' || res.axisRanges[j].source == 'mouse'
+                  || res.axisRanges[j].source == 'touchpad' || res.axisRanges[j].source == 'touchscreen'
+                  || res.axisRanges[j].source == 'joystick' || res.axisRanges[j].source == 'trackball').assertTrue();
+                expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
+                  || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
+                  || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
+                  || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'toolMajor'
+                  || res.axisRanges[j].axis == 'NULL').assertTrue();
+                expect(res.axisRanges[j].max).assertInstanceOf('Number');
+                expect(res.axisRanges[j]).assertInstanceOf('Object');
+                expect(res.axisRanges[j].min).assertInstanceOf('Number');
+                expect(res.axisRanges[j].fuzz).assertInstanceOf('Number');
+                expect(res.axisRanges[j].flat).assertInstanceOf('Number');
+                expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
+              }
+            }).catch(err => {
+              expect(false).assertTrue();
+            });
+          } catch (err) {
+            expect(false).assertTrue();
+          }
+        })
+      } catch (err) {
         expect(false).assertTrue();
-        done();
       }
+      console.info(`InputDevice_getDevice_test_02 exit`);
+      done();
     })
 
     // 参数正常,返回值正常

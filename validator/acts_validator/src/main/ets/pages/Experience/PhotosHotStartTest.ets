@@ -35,6 +35,7 @@ struct CustomContainerUser {
   @State mmsNum: number = 0;
   @State cameraNum: number = 0;
   @State contactsNum: number = 0;
+  scroller: Scroller = new Scroller();
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
     this.Vue = false;
@@ -43,74 +44,75 @@ struct CustomContainerUser {
   @Builder specificNoParam() {
     Column() {
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Column(){
-          Row(){
-            Text(`根据以下操作步骤完成测试`+ '\n' + '\n' )
-              .fontColor(Color.White).fontSize('24fp')
-          }
-          Row(){
-            Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入系统桌面`+ '\n' + '\n'
-            + `3.开启图库应用回退到桌面，保证此时后台应用存在` + '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择热启动>图库测试`+ '\n' + '\n' +
-            `5.测试应用手动执行热启动返回validator界面` + '\n' + '\n' + '6.点击结束键观察测试结果' + '\n' + '\n'
-            + `7.若所有热启动测试均在规定时延内完成则通过测试` + '\n' + '\n' + '\n' + '\n' )
-              .fontColor(Color.White).fontSize('20fp')
-          }
-          Row(){
-            Column(){
-              Button(`开始`)
-                .borderRadius(8)
-                .backgroundColor(0x317aff)
-                .width('30%')
-                .enabled(this.StartEnable)
-                .opacity(this.StartEnable? 1 : 0.4)
-                .onClick(async () => {
-                  this.num = 0;
-                  this.StartEnable = !this.StartEnable;
-                  let str = {
-                    bundleName:"com.ohos.launcher",
-                    abilityName: "com.ohos.launcher.MainAbility",
-                  }
-                  abilityContext.startAbility(str).then((data) => {
+        Scroll(this.scroller) {
+          Column(){
+            Row(){
+              Text(`根据以下操作步骤完成测试`+ '\n' + '\n' )
+                .fontColor(Color.White).fontSize('24fp')
+            }
+            Row(){
+              Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入系统桌面`+ '\n' + '\n'
+              + `3.开启图库应用回退到桌面，保证此时后台应用存在` + '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择热启动>图库测试`+ '\n' + '\n' +
+              `5.测试应用手动执行热启动返回validator界面` + '\n' + '\n' + '6.点击结束键观察测试结果' + '\n' + '\n'
+              + `7.若所有热启动测试均在规定时延内完成则通过测试` + '\n' + '\n' + '\n' + '\n' )
+                .fontColor(Color.White).fontSize('20fp')
+            }
+            Row(){
+              Column(){
+                Button(`开始`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('30%')
+                  .enabled(this.StartEnable)
+                  .opacity(this.StartEnable? 1 : 0.4)
+                  .onClick(async () => {
+                    this.num = 0;
+                    this.StartEnable = !this.StartEnable;
+                    let str = {
+                      bundleName:"com.ohos.launcher",
+                      abilityName: "com.ohos.launcher.MainAbility",
+                    }
+                    abilityContext.startAbility(str).then((data) => {
 
-                  }).catch((error) => {
+                    }).catch((error) => {
 
+                    })
                   })
-                })
+              }
+              Column(){
+                Button(`结束`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('30%')
+                  .enabled(!this.StartEnable)
+                  .opacity(!this.StartEnable? 1 : 0.4)
+                  .onClick(() => {
+                    this.StartEnable = !this.StartEnable
+                    /*
+                              photos
+                     */
+                    let photosFd = fileio.openSync(PhotosColdPath, 0o100 | 0o2002, 0o664);
+                    let photosBuf = new ArrayBuffer(4096);
+                    fileio.readSync(photosFd,photosBuf);
+                    let photosReport = String.fromCharCode.apply(null,new Uint8Array(photosBuf));
+                    let photosHead = photosReport.indexOf(':');
+                    let photosTime = photosReport.substring(photosHead+1);
+                    this.photosNum = parseFloat(photosTime);
+                    if( 0 < this.photosNum && this.photosNum < 600 ) {
+                      this.num++
+                    }
+                    if( this.num === 1 ) {
+                      this.Vue = true;
+                    }
+                  })
+              }
             }
-            Column(){
-              Button(`结束`)
-                .borderRadius(8)
-                .backgroundColor(0x317aff)
-                .width('30%')
-                .enabled(!this.StartEnable)
-                .opacity(!this.StartEnable? 1 : 0.4)
-                .onClick(() => {
-                  this.StartEnable = !this.StartEnable
-                  /*
-                            photos
-                   */
-                  let photosFd = fileio.openSync(PhotosColdPath, 0o100 | 0o2002, 0o664);
-                  let photosBuf = new ArrayBuffer(4096);
-                  fileio.readSync(photosFd,photosBuf);
-                  let photosReport = String.fromCharCode.apply(null,new Uint8Array(photosBuf));
-                  let photosHead = photosReport.indexOf(':');
-                  let photosTime = photosReport.substring(photosHead+1);
-                  this.photosNum = parseFloat(photosTime);
-                  if( 0 < this.photosNum && this.photosNum < 600 ) {
-                    this.num++
-                  }
-                  if( this.num === 1 ) {
-                    this.Vue = true;
-                  }
-                })
+            Row(){
+              Text('\n' + '\n' + '\n' + '\n' + `测试结果：` + '\n' + '\n' + '图库热启动时延' + this.photosNum + 'ms')
+                .fontColor(Color.White).fontSize('24fp')
             }
-          }
-          Row(){
-            Text('\n' + '\n' + '\n' + '\n' + `测试结果：` + '\n' + '\n' + '图库热启动时延' + this.photosNum + 'ms')
-              .fontColor(Color.White).fontSize('24fp')
           }
         }
-
       }
     }.width('100%').height('80%').backgroundColor(Color.Black)
     .justifyContent(FlexAlign.SpaceEvenly)
