@@ -823,37 +823,37 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number: Acts_CrossUserCall_3100
+     * @tc.number: Acts_CrossUserCall_2900
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: The Caller.release interface of UIAbility under the same account executes normally.
      */
-    it('Acts_CrossUserCall_3100',0, async function (done) {
+    it('Acts_CrossUserCall_2900',0, async function (done) {
       var subscriber;
       var eventCount = 0;
-      console.info('====>Acts_CrossUserCall_3100 start');
+      console.info('====>Acts_CrossUserCall_2900 start');
       commonEvent.createSubscriber(ACTS_CrossCallFunction).then(async (data) => {
-        console.info('====>Acts_CrossUserCall_3100 Create Subscribe');
+        console.info('====>Acts_CrossUserCall_2900 Create Subscribe');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
         globalThis.abilityContext.startAbility({
           bundleName: 'com.acts.actscallability',
           abilityName: 'EntryAbility',
           parameters: {
-            action: 'Acts_CrossUserCall_3100',
+            action: 'Acts_CrossUserCall_2900',
             accountId: -1
           }
         },(err) => {
-          console.info('====>Acts_CrossUserCall_3100 startAbility err:' + JSON.stringify(err));
+          console.info('====>Acts_CrossUserCall_2900 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
       })
 
       function subscribeCallBack(err, data) {
-        console.info('====>Acts_CrossUserCall_3100 subscribeCallBack data:' + JSON.stringify(data));
+        console.info('====>Acts_CrossUserCall_2900 subscribeCallBack data:' + JSON.stringify(data));
         if (data.event === 'ACTS_CROSS_CALL_EVENT') {
           eventCount++;
-          expect(data.parameters.message.num).assertEqual(3100);
-          expect(data.parameters.message.str).assertEqual('Acts_CrossUserCall_3100 processed');
+          expect(data.parameters.message.num).assertEqual(2900);
+          expect(data.parameters.message.str).assertEqual('Acts_CrossUserCall_2900 processed');
           expect(data.parameters.message.result).assertTrue();
         }
         if (data.event === 'ACTS_CROSS_RELEASE_EVENT') {
@@ -866,7 +866,7 @@ export default function abilityTest() {
       }
 
       function unSubscribeCallback() {
-        console.info('====>Acts_CrossUserCall_3100 unSubscribeCallback');
+        console.info('====>Acts_CrossUserCall_2900 unSubscribeCallback');
         done();
       }
 
@@ -879,37 +879,37 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number: Acts_CrossUserCall_3200
+     * @tc.number: Acts_CrossUserCall_3000
      * @tc.name: Support for cross-UserID background call calls
      * @tc.desc: The Caller.release interface of ServiceExtension under the same account executes normally.
      */
-    it('Acts_CrossUserCall_3200',0, async function (done) {
+    it('Acts_CrossUserCall_3000',0, async function (done) {
       var subscriber;
       var eventCount = 0;
-      console.info('====>Acts_CrossUserCall_3200 start');
+      console.info('====>Acts_CrossUserCall_3000 start');
       commonEvent.createSubscriber(ACTS_CrossCallFunction).then(async (data) => {
-        console.info('====>Acts_CrossUserCall_3200 Create Subscribe');
+        console.info('====>Acts_CrossUserCall_3000 Create Subscribe');
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
         globalThis.abilityContext.startAbility({
           bundleName: 'com.acts.actscallability',
           abilityName: 'ServiceAbility',
           parameters: {
-            action: 'Acts_CrossUserCall_3200',
+            action: 'Acts_CrossUserCall_3000',
             accountId: -1
           }
         },(err) => {
-          console.info('====>Acts_CrossUserCall_3200 startAbility err:' + JSON.stringify(err));
+          console.info('====>Acts_CrossUserCall_3000 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
       })
 
       function subscribeCallBack(err, data) {
-        console.info('====>Acts_CrossUserCall_3200 subscribeCallBack data:' + JSON.stringify(data));
+        console.info('====>Acts_CrossUserCall_3000 subscribeCallBack data:' + JSON.stringify(data));
         if (data.event === 'ACTS_CROSS_CALL_EVENT') {
           eventCount++;
-          expect(data.parameters.message.num).assertEqual(3200);
-          expect(data.parameters.message.str).assertEqual('Acts_CrossUserCall_3200 processed');
+          expect(data.parameters.message.num).assertEqual(3000);
+          expect(data.parameters.message.str).assertEqual('Acts_CrossUserCall_3000 processed');
           expect(data.parameters.message.result).assertTrue();
         }
         if (data.event === 'ACTS_CROSS_RELEASE_EVENT') {
@@ -922,7 +922,7 @@ export default function abilityTest() {
       }
 
       function unSubscribeCallback() {
-        console.info('====>Acts_CrossUserCall_3200 unSubscribeCallback');
+        console.info('====>Acts_CrossUserCall_3000 unSubscribeCallback');
         done();
       }
 

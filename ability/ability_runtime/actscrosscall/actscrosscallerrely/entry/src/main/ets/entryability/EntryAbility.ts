@@ -97,7 +97,7 @@ export default class EntryAbility extends Ability {
       })
     }
 
-    if (actionStr === 'Acts_CrossUserCall_3100') {
+    if (actionStr === 'Acts_CrossUserCall_2900') {
       var caller;
       function releaseCallback(data) {
         console.info('====>' + actionStr + ' releaseCallBack:' + data);
@@ -112,7 +112,7 @@ export default class EntryAbility extends Ability {
       }, accountId).then((data) => {
         caller = data;
         caller.onRelease(releaseCallback);
-        let param = new MyParcelAble(3100, 'Acts_CrossUserCall_3100', false);
+        let param = new MyParcelAble(2900, 'Acts_CrossUserCall_2900', false);
         caller.callWithResult('call', param).then((data) => {
           var result = new MyParcelAble(0, '', false);
           data.readParcelable(result);

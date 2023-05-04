@@ -207,7 +207,7 @@ export default class ServiceAbility extends ServiceExtensionAbility {
       })
     }
 
-    if (actionStr == 'Acts_CrossUserCall_3200') {
+    if (actionStr == 'Acts_CrossUserCall_3000') {
       var caller;
       function releaseCallback(data) {
         console.info('====>' + actionStr + ' releaseCallBack:' + data);
@@ -222,7 +222,7 @@ export default class ServiceAbility extends ServiceExtensionAbility {
       }, accountId).then((data) => {
         caller = data;
         caller.onRelease(releaseCallback);
-        let param = new MyParcelAble(3200, 'Acts_CrossUserCall_3200', false);
+        let param = new MyParcelAble(3000, 'Acts_CrossUserCall_3000', false);
         caller.callWithResult('call', param).then((data) => {
           var result = new MyParcelAble(0, '', false);
           data.readParcelable(result);
