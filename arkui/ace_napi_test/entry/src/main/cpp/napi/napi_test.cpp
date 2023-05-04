@@ -26,6 +26,7 @@
 
 static napi_ref test_reference = NULL;
 const int TAG_NUMBER = 666;
+const int NUMBER_FIVE = 5;
 
 static void add_returned_status(napi_env env,
                                 const char* key,
@@ -625,11 +626,11 @@ static napi_value createAndGetStringLatin1(napi_env env, napi_callback_info info
             "Wrong type of argment. Expects a string.");
 
     char buffer[128];
-    size_t buffer_size = 128;
+    size_t bufferSize = 128;
     size_t copied = 0;
 
     NAPI_CALL(env,
-        napi_get_value_string_latin1(env, args[0], buffer, buffer_size, &copied));
+        napi_get_value_string_latin1(env, args[0], buffer, bufferSize, &copied));
     NAPI_ASSERT(env, copied == 3, "napi_get_value_string_latin1 fail");
 
     napi_value output;
@@ -653,11 +654,11 @@ static napi_value createAndGetStringUtf8(napi_env env, napi_callback_info info)
             "Wrong type of argment. Expects a string.");
 
     char buffer[128];
-    size_t buffer_size = 128;
+    size_t bufferSize = 128;
     size_t copied = 0;
 
     NAPI_CALL(env,
-        napi_get_value_string_utf8(env, args[0], buffer, buffer_size, &copied));
+        napi_get_value_string_utf8(env, args[0], buffer, bufferSize, &copied));
     NAPI_ASSERT(env, copied == 2, "napi_get_value_string_utf8 fail");
 
     napi_value output;
@@ -666,7 +667,8 @@ static napi_value createAndGetStringUtf8(napi_env env, napi_callback_info info)
     return output;
 }
 
-static napi_value CreateAndGetStringUtf16(napi_env env, napi_callback_info info) {
+static napi_value CreateAndGetStringUtf16(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
@@ -679,10 +681,10 @@ static napi_value CreateAndGetStringUtf16(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, valuetype == napi_string, "Expect a string.");
 
     char16_t buffer[128]; // 128: char16_t type of element size
-    size_t buffer_size = 128; // 128: char16_t type of element size
+    size_t bufferSize = 128; // 128: char16_t type of element size
     size_t copied  = 0;
 
-    NAPI_CALL(env, napi_get_value_string_utf16(env, args[0], buffer, buffer_size, &copied));
+    NAPI_CALL(env, napi_get_value_string_utf16(env, args[0], buffer, bufferSize, &copied));
 
     napi_value result;
     NAPI_CALL(env, napi_create_string_utf16(env, buffer, copied, &result));
@@ -690,7 +692,8 @@ static napi_value CreateAndGetStringUtf16(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value StringUtf16OfCase(napi_env env, napi_callback_info info) {
+static napi_value StringUtf16OfCase(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1];
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
@@ -703,11 +706,11 @@ static napi_value StringUtf16OfCase(napi_env env, napi_callback_info info) {
     NAPI_ASSERT(env, valuetype == napi_string, "Expects a string.");
 
     char16_t buffer[5]; // 5: char16_t type of element size
-    size_t buffer_size = 5; // 5: char16_t type of element size
+    size_t bufferSize = 5; // 5: char16_t type of element size
     size_t copied  = 0;
 
     NAPI_CALL(env,
-        napi_get_value_string_utf16(env, args[0], buffer, buffer_size, &copied));
+        napi_get_value_string_utf16(env, args[0], buffer, bufferSize, &copied));
 
     napi_value result;
     NAPI_CALL(env, napi_create_string_utf16(env, buffer, copied, &result));
@@ -715,7 +718,7 @@ static napi_value StringUtf16OfCase(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static const napi_type_tag typeTags[5] = {
+static const napi_type_tag typeTags[NUMBER_FIVE] = {
     {0xdaf987b3cc62481a, 0xb745b0497f299531},
     {0xbb7936c374084d9b, 0xa9548d0762eeedb9},
     {0xa5ed9ce2e4c00c38, 0xa9548d0762eeedb1},
@@ -723,21 +726,23 @@ static const napi_type_tag typeTags[5] = {
     {0xa5ed9ce2e4c00c38, 0xdaf987b3cc62481a},
 };
 
-static napi_value TypeTaggedInstance(napi_env env, napi_callback_info info) {
+static napi_value TypeTaggedInstance(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     uint32_t typeIndex = 0;
-    napi_value instance = nullptr; 
+    napi_value instance = nullptr;
     napi_value whichType = nullptr;
     NAPI_CALL(env, napi_get_cb_info(env, info, &argc, &whichType, NULL, NULL));
     NAPI_CALL(env, napi_get_value_uint32(env, whichType, &typeIndex));
-    NAPI_ASSERT(env, typeIndex <= 5, "typeIndex out of range");
+    NAPI_ASSERT(env, typeIndex <= NUMBER_FIVE, "typeIndex out of range");
     NAPI_CALL(env, napi_create_object(env, &instance));
 
     NAPI_CALL(env, napi_type_tag_object(env, instance, &typeTags[typeIndex]));
     return instance;
 }
 
-static napi_value CheckTypeTag(napi_env env, napi_callback_info info) {
+static napi_value CheckTypeTag(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     bool result;
     napi_value argv[2];
@@ -748,7 +753,7 @@ static napi_value CheckTypeTag(napi_env env, napi_callback_info info) {
 
     NAPI_CALL(env, napi_get_value_uint32(env, argv[0], &typeIndex));
 
-    NAPI_ASSERT(env, typeIndex <= 5, "typeIndex out of range");
+    NAPI_ASSERT(env, typeIndex <= NUMBER_FIVE, "typeIndex out of range");
 
     NAPI_CALL(env, napi_check_object_type_tag(env, argv[1], &typeTags[typeIndex], &result));
     NAPI_CALL(env, napi_get_boolean(env, result, &jsResult));
@@ -1731,11 +1736,11 @@ static napi_value TestLatin1(napi_env env, napi_callback_info info)
             "Wrong type of argment. Expects a string.");
 
     char buffer[128];
-    size_t buffer_size = 128;
+    size_t bufferSize = 128;
     size_t copied;
 
     NAPI_CALL(env,
-            napi_get_value_string_latin1(env, args[0], buffer, buffer_size, &copied));
+            napi_get_value_string_latin1(env, args[0], buffer, bufferSize, &copied));
 
     napi_value output;
     NAPI_CALL(env, napi_create_string_latin1(env, buffer, copied, &output));
