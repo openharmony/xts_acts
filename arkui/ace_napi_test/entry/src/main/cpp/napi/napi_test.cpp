@@ -286,10 +286,10 @@ static napi_value getAndClearLastException(napi_env env, napi_callback_info info
 
 static napi_value isExceptionPending(napi_env env, napi_callback_info info)
 {
-    bool exceptionWasPending = false;
+    bool exceptionWasPending = true;
     napi_is_exception_pending(env, &exceptionWasPending);
 
-    NAPI_ASSERT(env, exceptionWasPending, "error succes");
+    NAPI_ASSERT(env, !exceptionWasPending, "isExceptionPending failed");
     
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
