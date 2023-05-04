@@ -294,7 +294,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_SetOutput_0100, Function 
     uint32_t inputIndex = 0;
     uint32_t outputIndex = 0;
 
-    for (int i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
@@ -334,7 +334,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_SetOutput_0200, Function 
     uint32_t inputIndex = 0;
     uint32_t outputIndex = 10000;
 
-    for (int i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
@@ -374,7 +374,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_SetOutput_0300, Function 
     uint32_t inputIndex = 0;
     uint32_t outputIndex = 0;
 
-    for (int i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
@@ -414,7 +414,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_SetOutput_0400, Function 
     uint32_t inputIndex = 0;
     uint32_t outputIndex = 0;
 
-    for (int i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
@@ -453,7 +453,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_SetOutput_0500, Function 
     uint32_t inputIndex = 0;
     uint32_t outputIndex = 0;
 
-    for (int i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
@@ -503,7 +503,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_Run_0200, Function | Medi
     ASSERT_NE(nullptr, executor);
     uint32_t outputIndex = 0;
 
-    for (int i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         if (std::find(graphArgs.outputIndices.begin(), graphArgs.outputIndices.end(), i) !=
             graphArgs.outputIndices.end()) {
@@ -535,7 +535,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_Run_0300, Function | Medi
     ASSERT_NE(nullptr, executor);
     uint32_t inputIndex = 0;
 
-    for (int i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
@@ -835,7 +835,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_GetOutputDimensions_0600,
     ASSERT_NE(nullptr, executor);
     uint32_t inputIndex = 0;
     uint32_t outputIndex = 0;
-    for (int i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),

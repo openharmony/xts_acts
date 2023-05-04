@@ -16,16 +16,14 @@ import("//test/xts/tools/build/suite.gni")
 config("nnrt_config") {
   include_dirs = [
     "../common",
-    "//foundation/ai/neural_network_runtime",
-    "//foundation/ai/neural_network_runtime/third_party/include",
-    "//third_party/googletest/googletest/include",
-    "//third_party/googletest/googlemock/include",
+    "../../../../../../../foundation/ai/neural_network_runtime",
     "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
   ]
   cflags = [ "-Wno-error" ]
+  cflags_cc = [ "-fexceptions" ]
 }
 
-ohos_moduletest_suite("ActsAiNnrtStabilityTest") {
+ohos_moduletest_suite("ActsAiNnrtStabilityV2_0Test") {
   module_out_path = "acts/nnrt"
   sources = [
     "../common/mock_idevice.cpp",
@@ -36,20 +34,20 @@ ohos_moduletest_suite("ActsAiNnrtStabilityTest") {
   configs = [ ":nnrt_config" ]
 
   deps = [
-    "//foundation/ai/neural_network_runtime/frameworks:libneural_network_runtime",
     "//third_party/googletest:gmock",
     "//third_party/googletest:gtest",
   ]
 
   external_deps = [
     "c_utils:utils",
-    "drivers_interface_nnrt:libnnrt_proxy_1.0",
+    "drivers_interface_nnrt:libnnrt_proxy_2.0",
     "hdf_core:libhdf_utils",
     "hdf_core:libhdi",
     "hilog_native:libhilog",
     "hitrace_native:libhitracechain",
     "ipc:ipc_single",
     "mindspore:mindir",
+    "neural_network_runtime:nnrt_target",
   ]
 
   subsystem_name = "ai"

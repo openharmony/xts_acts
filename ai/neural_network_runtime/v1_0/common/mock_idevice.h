@@ -19,6 +19,7 @@
 #include <hdi_support.h>
 #include <string_ex.h>
 #include <hdf_base.h>
+#include <unordered_map>
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -28,9 +29,11 @@
 #include "securec.h"
 #include "refbase.h"
 #include "common/log.h"
-#include "frameworks/native/hdi_interfaces.h"
-#include "frameworks/native/memory_manager.h"
 #include "ashmem.h"
+
+#include <v1_0/nnrt_types.h>
+#include <v1_0/innrt_device.h>
+#include <v1_0/iprepared_model.h>
 
 namespace OHOS {
 namespace HDI {

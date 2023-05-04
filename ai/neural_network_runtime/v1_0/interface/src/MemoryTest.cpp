@@ -766,7 +766,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0100, Function |
     ASSERT_NE(nullptr, executor);
     uint32_t inputIndex = 0;
     uint32_t outputIndex = 0;
-    for (auto i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
@@ -805,7 +805,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0200, Function |
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
     ASSERT_NE(nullptr, executor);
     uint32_t inputIndex = 0;
-    for (auto i = 0; i < graphArgs.operands.size(); i++) {
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         auto quantParam = operandTem.quantParam;
         OH_NN_Tensor operand = {operandTem.dataType, (uint32_t)operandTem.shape.size(), operandTem.shape.data(),
@@ -839,11 +839,11 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0300, Function |
     size_t ioSize = graphArgs.inputIndices.size() + graphArgs.outputIndices.size();
     OH_NN_Memory *OHNNMemory[ioSize];
     ASSERT_EQ(OH_NN_SUCCESS, ExecutorWithMemory(executor, graphArgs, OHNNMemory, addModel.expectValue));
-    for (auto i = 0; i < graphArgs.inputIndices.size(); i++) {
+    for (size_t i = 0; i < graphArgs.inputIndices.size(); i++) {
         OH_NNExecutor_DestroyInputMemory(executor, i, &OHNNMemory[i]);
         ASSERT_EQ(OHNNMemory[i], nullptr);
     }
-    for (auto j = 0; j < graphArgs.outputIndices.size(); j++) {
+    for (size_t j = 0; j < graphArgs.outputIndices.size(); j++) {
         auto outputIndex = graphArgs.inputIndices.size() + j;
         // check memory output
         EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(OHNNMemory[outputIndex]->data)),
@@ -883,11 +883,11 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0400, Function |
 
     ASSERT_EQ(OH_NN_SUCCESS, ExecutorWithMemory(executor, graphArgs, OHNNMemory, avgModel.expectValue));
     
-    for (auto i = 0; i < graphArgs.inputIndices.size(); i++) {
+    for (size_t i = 0; i < graphArgs.inputIndices.size(); i++) {
         OH_NNExecutor_DestroyInputMemory(executor, i, &OHNNMemory[i]);
         ASSERT_EQ(OHNNMemory[i], nullptr);
     }
-    for (auto j = 0; j < graphArgs.outputIndices.size(); j++) {
+    for (size_t j = 0; j < graphArgs.outputIndices.size(); j++) {
         auto outputIndex = graphArgs.inputIndices.size() + j;
         // check memory output
         EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(OHNNMemory[outputIndex]->data)),

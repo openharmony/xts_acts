@@ -11,13 +11,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ai") {
+group("neural_network_runtime") {
   testonly = true
   deps = [
-    "neural_network_runtime/v1_0:neural_network_runtime",
-    "neural_network_runtime/v2_0:neural_network_runtime",
+    "interface:ActsAiNnrtFunctionV2_0Test",
+    "stability:ActsAiNnrtStabilityV2_0Test",
   ]
-  if (is_standard_system) {
-    deps += [ "mindspore:ActsMindSporeTest" ]
-  }
 }
