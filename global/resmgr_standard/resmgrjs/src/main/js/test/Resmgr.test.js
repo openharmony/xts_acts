@@ -1772,6 +1772,25 @@ describe('resMgrTest', function () {
     })
 
     /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0120
+     * @tc.name getDrawableDescriptor with undefined density
+     * @tc.desc test the getDrawableDescriptor method
+     */
+     it('getDrawableDescriptor_test_0120', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptor(0x01000017, undefined);
+                console.log('getDrawableDescriptor_test_0120 ' + JSON.stringify(value));
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_0120 ' + error.code);
+                console.log('getDrawableDescriptor_test_0120 ' + error.message);
+            }
+            done();
+        })
+    })
+
+    /**
      * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_0200
      * @tc.name getDrawableDescriptor with normal pic and density
      * @tc.desc test the getDrawableDescriptor method
@@ -1961,6 +1980,25 @@ describe('resMgrTest', function () {
             }catch(error){
                 console.log('getDrawableDescriptor_test_1100 ' + error.code);
                 console.log('getDrawableDescriptor_test_1100 ' + error.message);
+            }
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_1120
+     * @tc.name getDrawableDescriptorByName with undefined density
+     * @tc.desc test the getDrawableDescriptorByName method
+     */
+     it('getDrawableDescriptor_test_1120', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                let value = mgr.getDrawableDescriptorByName('icon', undefined);
+                console.log('getDrawableDescriptor_test_1120 ' + JSON.stringify(value));
+                expect(value != null).assertTrue();
+            }catch(error){
+                console.log('getDrawableDescriptor_test_1120 ' + error.code);
+                console.log('getDrawableDescriptor_test_1120 ' + error.message);
             }
         })
         done();
