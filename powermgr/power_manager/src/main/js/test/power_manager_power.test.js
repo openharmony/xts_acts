@@ -141,5 +141,50 @@ describe('PowerManagerPowerTest', function () {
         console.info('MODE_EXTREME_POWER_SAVE = ' + devicePowerMode);
         expect(devicePowerMode === 603).assertTrue();
       })
+
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0091
+     * @tc.name power_Suspend_Device_JSTest091
+     * @tc.desc Device suspend interface verification
+     */
+    it('power_Suspend_Device_JSTest091', 0, async function (done) {
+        power.wakeupDevice("power_Suspend_Device_JSTest091");
+        power.suspend(undefined);
+        let isScreenOn =  await power.isScreenOn();
+        console.info('power_Suspend_Device_JSTest091 ' + isScreenOn);
+        expect(isScreenOn).assertFalse();
+        console.info('suspend success done');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0092
+     * @tc.name power_Suspend_Device_JSTest092
+     * @tc.desc Device suspend interface verification
+     */
+    it('power_Suspend_Device_JSTest092', 0, async function (done) {
+        power.wakeupDevice("power_Suspend_Device_JSTest092");
+        power.suspend();
+        let isScreenOn =  await power.isScreenOn();
+        console.info('power_Suspend_Device_JSTest092 ' + isScreenOn);
+        expect(isScreenOn).assertFalse();
+        console.info('suspend success done');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0093
+     * @tc.name power_Suspend_Device_JSTest093
+     * @tc.desc Device suspend interface verification
+     */
+    it('power_Suspend_Device_JSTest093', 0, async function (done) {
+        power.wakeupDevice("power_Suspend_Device_JSTest093");
+        power.suspend(false);
+        let isScreenOn =  await power.isScreenOn();
+        console.info('power_Suspend_Device_JSTest093 ' + isScreenOn);
+        expect(isScreenOn).assertFalse();
+        console.info('suspend success done');
+        done();
+    })
 })
 }

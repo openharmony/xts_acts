@@ -16,9 +16,11 @@ import powerManagerPowerTest from './power_manager_power.test.js'
 import powerManagerRebootShutTest from './power_manager_rebootshut.test.js'
 import powerManagerRunningLockTest from './power_manager_running_lock.test.js'
 import powerPerformanceTest from './power_performance.test.js'
+import powerManagerSuspendTest from './power_manager_forcesuspend.test.js'
 export default function testsuite() {
     powerManagerPowerTest()
     //powerManagerRebootShutTest()
     powerManagerRunningLockTest()
     //powerPerformanceTest()
+    //powerManagerSuspendTest()
 }
