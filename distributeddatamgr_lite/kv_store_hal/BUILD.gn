@@ -23,10 +23,12 @@ hctest_suite("ActsKvStoreTest") {
 
   include_dirs = [
     "src",
-    "//commonlibrary/utils_lite/include",
-    "//base/iothardware/peripheral/interfaces/inner_api",
   ]
   cflags = [ "-Wno-error" ]
   defines =
       [ "DATA_PATH=\"${config_ohos_xts_acts_utils_lite_kv_store_data_path}\"" ]
+  external_deps = [
+    "utils_lite:utils",
+    "iothardware_peripheral:iothardware",
+  ]
 }
