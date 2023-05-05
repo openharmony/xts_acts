@@ -36,6 +36,7 @@ export async function idleCallback(avRecorder, avConfig, done) {
     });
 }
 
+// create avRecorder(promise)
 export async function idle(avRecorder) {
     console.info('case createAVRecorder called');
     await media.createAVRecorder().then((recorder) => {
@@ -258,7 +259,7 @@ export async function releaseCallback(avRecorder) {
     if (typeof(avRecorder) == 'undefined') {
         return;
     }
-    await avRecorder.release((err) => {
+    avRecorder.release((err) => {
         console.info('case release called');
         if (err == null) {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
@@ -389,6 +390,7 @@ export async function setPrepareOnCallback(avConfig, avRecorder, recorderTime, d
 }
 
 export async function avRecorderWithCallBack(avConfig, avRecorder, recorderTime, done) {
+    // Create an instance
     avRecorder = await idle(avRecorder)
     setOnCallback(avConfig, avRecorder, recorderTime, done);
     await avRecorder.prepare(avConfig)
@@ -925,7 +927,7 @@ export async function avRecorderLoopCreate2ReleaseWithCallback(avConfig, avRecor
         console.info(`avRecorderLoopCreate2ReleaseWithCallback test loop start5 `)
         console.info(`avRecorderLoopCreate2ReleaseWithCallback loop time is :${loopTimes}`)
         loopTimes--;
-        await avRecorder.release((err) => {
+        avRecorder.release((err) => {
             if (err == null) {
                 console.info('release AVRecorder success');
                 if(loopTimes == 0){
@@ -2224,7 +2226,7 @@ export async function releaseTimeTestCallback(avConfig, avRecorder, recorderTime
         let end;
         let start = Date.now();
         console.info(`releaseTimeTestCallback start time is : ${start}`)
-        await avRecorder.release((err) => {
+        avRecorder.release((err) => {
             if (err == null) {
                 console.info(`releaseTimeTestCallback current state is : ${avRecorder.state}`)
                 console.info('release releaseTimeTestCallback success');
