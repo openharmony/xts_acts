@@ -1,5 +1,8 @@
 {
     "src": [
-        "MainAbility/pages/webViewController"
+        "MainAbility/pages/webViewController",
+        "MainAbility/pages/onWindowNew",
+        "MainAbility/pages/onErrorReceive02",
+        "MainAbility/pages/onErrorReceive03"
     ]
 }
