@@ -112,9 +112,36 @@ describe('fileio_copyfile', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_SYNC_0400
+   * @tc.name fileio_copy_file_sync_004
+   * @tc.desc Test copyFileSync() interfaces, No parameters.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_copy_file_sync_004', 3, async function () {
+    let fpath = await nextFileName('fileio_copy_file_sync_004');
+    let fpathTarget = fpath + 'tgt';
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileio.copyFileSync(fpath, fpathTarget, undefined);
+      let stat1 = fileio.statSync(fpath);
+      let stat2 = fileio.statSync(fpathTarget);
+      expect(stat1.size == stat2.size).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.unlinkSync(fpathTarget);
+    } catch (e) {
+      console.log('fileio_copy_file_sync_004 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0000
    * @tc.name fileio_copy_file_async_000
-   * @tc.desc Test copyFileAsync() interfaces, return in promise mode. Test file copied successfully.
+   * @tc.desc Test copyFile() interfaces, return in promise mode. Test file copied successfully.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -140,7 +167,7 @@ describe('fileio_copyfile', function () {
   /**
    * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0100
    * @tc.name fileio_copy_file_async_001
-   * @tc.desc Test copyFileAsync() interfaces, return in callback mode. Test file copied successfully.
+   * @tc.desc Test copyFile() interfaces, return in callback mode. Test file copied successfully.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -167,7 +194,7 @@ describe('fileio_copyfile', function () {
   /**
    * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0200
    * @tc.name fileio_copy_file_async_002
-   * @tc.desc Test copyFileAsync() interfaces, return in promise mode. Test file copied successfully.
+   * @tc.desc Test copyFile() interfaces, return in promise mode. Test file copied successfully.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -194,7 +221,7 @@ describe('fileio_copyfile', function () {
   /**
    * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0300
    * @tc.name fileio_copy_file_async_003
-   * @tc.desc Test copyFileAsync() interfaces, Invalid path.
+   * @tc.desc Test copyFile() interfaces, Invalid path.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -215,7 +242,7 @@ describe('fileio_copyfile', function () {
   /**
    * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0400
    * @tc.name fileio_copy_file_async_004
-   * @tc.desc Test copyFileAsync() interfaces. Invalid argument.
+   * @tc.desc Test copyFile() interfaces. Invalid argument fd < 0.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -227,7 +254,7 @@ describe('fileio_copyfile', function () {
       await fileio.copyFile(-1, fpath);
     } catch (e) {
       console.info('fileio_copy_file_async_004 has failed for ' + e);
-      expect(e.message == 'Invalid argument' || e.message == 'No such file or directory').assertTrue();
+      expect(e.message == 'The first/second argument requires filepath/fd').assertTrue();
       done();
     }
   });
@@ -235,7 +262,7 @@ describe('fileio_copyfile', function () {
   /**
    * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0500
    * @tc.name fileio_copy_file_async_005
-   * @tc.desc Test copyFileAsync() interfaces, Invalid mode.
+   * @tc.desc Test copyFile() interfaces, Invalid mode.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -260,7 +287,7 @@ describe('fileio_copyfile', function () {
   /**
    * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0600
    * @tc.name fileio_copy_file_async_006
-   * @tc.desc Test copyFileAsync() interfaces, No parameters.
+   * @tc.desc Test copyFile() interfaces, No parameters.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -273,6 +300,69 @@ describe('fileio_copyfile', function () {
       console.info('fileio_copy_file_async_006 has failed for ' + e);
       expect(e.message == 'Number of arguments unmatched').assertTrue();
       done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0700
+   * @tc.name fileio_copy_file_async_007
+   * @tc.desc Test copyFile() interfaces. Promise.
+   * Undefined option arguments, use default mode = 0.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_copy_file_async_007', 3, async function (done) {
+    let fpath = await nextFileName('fileio_copy_file_async_007');
+    let fpathTarget = fpath + 'tgt';
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      await fileio.copyFile(fpath, fpathTarget, undefined);
+      let stat1 = fileio.statSync(fpath);
+      let stat2 = fileio.statSync(fpathTarget);
+      expect(stat1.size == stat2.size).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.unlinkSync(fpathTarget);
+      done();
+    } catch (e) {
+      console.log('fileio_copy_file_async_007 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0800
+   * @tc.name fileio_copy_file_async_008
+   * @tc.desc Test copyFile() interfaces. Callback.
+   * Undefined option arguments, use default mode = 0.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_copy_file_async_008', 3, async function (done) {
+    let fpath = await nextFileName('fileio_copy_file_async_008');
+    let fpathTarget = fpath + 'tgt';
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileio.copyFile(fpath, fpathTarget, undefined, (err) => {
+        if (err) {
+          console.log('fileio_copy_file_async_008 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        let stat1 = fileio.statSync(fpath);
+        let stat2 = fileio.statSync(fpathTarget);
+        expect(stat1.size == stat2.size).assertTrue();
+        fileio.unlinkSync(fpath);
+        fileio.unlinkSync(fpathTarget);
+        done();
+      });
+    } catch (e) {
+      console.log('fileio_copy_file_async_008 has failed for ' + e);
+      expect(false).assertTrue();
     }
   });
 });

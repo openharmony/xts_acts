@@ -242,7 +242,7 @@ describe('fileio_stream_1', function () {
       });
     } catch (err) {
       console.info('fileio_test_stream_read_sync_005 has failed for ' + err);
-      expect(err.message == "Invalid option.length, buffer limit exceeded").assertTrue();
+      expect(err.message == "Invalid option.length").assertTrue();
       ss.closeSync();
       fileio.unlinkSync(fpath);
     }

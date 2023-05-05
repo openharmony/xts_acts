@@ -1146,10 +1146,11 @@ export default function fileIOTest() {
     it('fileio_test_close_sync_001', 0, async function () {
       try {
         fileio.closeSync(-1);
+        expect(false).assertTrue();
       } 
       catch (err) {
         console.info('fileio_test_close_sync_001 has failed for ' + err);
-        expect(err.message == "Bad file descriptor").assertTrue();
+        expect(err.message == "Invalid fd").assertTrue();
       }
     });
   
@@ -1548,10 +1549,11 @@ export default function fileIOTest() {
     it('fileio_test_write_sync_008', 0, async function () {
       try {
         fileio.writeSync(-1, FILE_CONTENT);
+        expect(false).assertTrue();
       } 
       catch (err) {
         console.info('fileio_test_write_sync_008 has failed for ' + err);
-        expect(err.message == "Bad file descriptor").assertTrue();
+        expect(err.message == "Invalid fd").assertTrue();
       }
     });
   
@@ -1691,7 +1693,7 @@ export default function fileIOTest() {
         fileio.closeSync(fd);
         fileio.unlinkSync(fpath);
         console.info('fileio_test_read_sync_004 has failed for ' + err);
-        expect(err.message == "Invalid option.length, buffer limit exceeded").assertTrue();
+        expect(err.message == "Invalid option.length").assertTrue();
       }
     });
   
@@ -1706,7 +1708,7 @@ export default function fileIOTest() {
       } 
       catch (err) {
         console.info('fileio_test_read_sync_005 has failed for ' + err);
-        expect(err.message == "Bad file descriptor").assertTrue();
+        expect(err.message == "Invalid fd").assertTrue();
       }
     });
   
@@ -2201,7 +2203,7 @@ export default function fileIOTest() {
     /**
      * @tc.number SUB_STORAGE_FileIO_copyFileSync_0200
      * @tc.name fileio_test_copy_file_sync_002
-     * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is invalid.
+     * @tc.desc Function of API, copyFileSync. fpath is vaild, fpathTarget is invalid.
      */
     it('fileio_test_copy_file_sync_002', 0, async function () {
       let fpath = await nextFileName('fileio_test_copy_file_sync_002');
@@ -2210,7 +2212,7 @@ export default function fileIOTest() {
       } 
       catch (err) {
         console.info('fileio_test_copy_file_sync_002 has failed for ' + err);
-        expect(err.message == "No such file or directory").assertTrue();
+        expect(err.message == "The first/second argument requires filepath/fd").assertTrue();
       }
     });
   
@@ -2298,7 +2300,7 @@ export default function fileIOTest() {
         fileio.copyFileSync(-1, -1);
       } catch (err) {
         console.info('fileio_test_copy_file_sync_007 has failed for ' + err);
-        expect(err.message == "Invalid argument" || err.message == "Bad file descriptor").assertTrue();
+        expect(err.message == "The first/second argument requires filepath/fd").assertTrue();
       }
     });
   
@@ -3117,7 +3119,7 @@ export default function fileIOTest() {
         fileio.ftruncateSync(-1);
       }catch (err) {
         console.info('fileio_test_ftruncate_sync_003 has failed for ' + err);
-        expect(err.message == "Bad file descriptor").assertTrue();
+        expect(err.message == "Invalid fd").assertTrue();
       }
     });
   
@@ -3182,10 +3184,11 @@ export default function fileIOTest() {
     it('fileio_test_fsync_sync_002', 0, async function () {
       try {
         fileio.fsyncSync(-1);
+        expect(false).assertTrue();
       } 
       catch (err) {
         console.info('fileio_test_fsync_sync_002 has failed for ' + err);
-        expect(err.message == "Bad file descriptor").assertTrue();
+        expect(err.message == "Invalid fd").assertTrue();
       }
     });
   
@@ -3518,10 +3521,11 @@ export default function fileIOTest() {
      */
     it('fileio_test_fstat_sync_001', 0, async function () {
       try {
-        expect(fileio.fstatSync(-1) !== null).assertTrue();
+        fileio.fstatSync(-1);
+        expect(false).assertTrue();
       }catch (err) {
         console.info('fileio_test_fstat_sync_001 has failed for ' + err);
-        expect(err.message == "Bad file descriptor").assertTrue();
+        expect(err.message == "Invalid fd").assertTrue();
       }
     });
   
