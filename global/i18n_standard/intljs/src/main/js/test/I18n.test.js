@@ -170,6 +170,17 @@ describe('I18nTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_3820
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and undefined param
+    * @tc.desc    check the display country
+    */
+    it('i18n_test_3820', 0, function () {
+        let value = I18n.getDisplayCountry('zh-Hans-CN', 'en-US', undefined);
+        console.log('i18n_test_3820 ' + value);
+        expect(value).assertEqual('China');
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_3900
     * @tc.name    getDisplayCountry with zh and en-US and true param
     * @tc.desc    check the display country
@@ -232,6 +243,17 @@ describe('I18nTest', function () {
     it('i18n_test_4400', 0, function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
         console.log('i18n_test_4400 ' + value);
+        expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4420
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and undefined param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_4420', 0, function () {
+        let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', undefined);
+        console.log('i18n_test_4420 ' + value);
         expect(value).assertEqual('Simplified Chinese');
     })
 
@@ -313,6 +335,21 @@ describe('I18nTest', function () {
         console.log('i18n_test_5100 ' + ran);
         let valid = phonenumber.isValidNumber('1351057467' + ran);
         console.log('i18n_test_5100 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number  SUB_GLOBAL_I18N_JS_5120
+    * @tc.name    test isValidNumber interface with 13510574676 and undefined param
+    * @tc.desc    get the isValidNumber value
+    */
+     it('i18n_test_5120', 0, function () {
+        console.log('i18n_test_5120 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN', undefined);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5120 ' + ran);
+        let valid = phonenumber.isValidNumber('1351057467' + ran);
+        console.log('i18n_test_5120 ' + valid);
         expect(valid).assertEqual(true);
     })
 
@@ -1310,6 +1347,22 @@ describe('I18nTest', function () {
                                         'long');
         console.log('i18n_test_9100 ' + value);
         expect(value).assertEqual('236.588 liters');
+    })
+
+    /**
+    * @tc.number  SUB_GLOBAL_I18N_JS_9200
+    * @tc.name    test unitConvert interface from cup to liter unit with undefined style
+    * @tc.desc    get the unitConvert value
+    */
+     it('i18n_test_9120', 0, function () {
+        console.log('i18n_test_9120 ' + 'start');
+        let value = I18n.I18NUtil.unitConvert({unit: 'cup', measureSystem: 'US'}, 
+                                        {unit: 'liter', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'en-US', 
+                                        undefined);
+        console.log('i18n_test_9120 ' + value);
+        expect(value).assertEqual('236.588 L');
     })
 
     /**

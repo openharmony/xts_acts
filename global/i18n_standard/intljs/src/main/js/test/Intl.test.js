@@ -70,6 +70,31 @@ describe('intlTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_INTL_JS_LOCALE_0120
+    * @tc.name    test the language in en-Latn-GB locale
+    * @tc.desc    check the language
+    */
+    it('locale_test_0120', 0, function () {
+        let locale = new Intl.Locale('en-Latn-GB', undefined);
+        console.log('locale_test_0120 ' + locale.language);
+        console.log('locale_test_0120 ' + locale.numeric);
+        expect(locale.language).assertEqual('en');
+        expect(locale.numeric).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_INTL_JS_LOCALE_0140
+    * @tc.name    test the language in locale
+    * @tc.desc    check the language
+    */
+    it('locale_test_0140', 0, function () {
+        let locale = new Intl.Locale();
+        console.log('locale_test_0140 ' + locale.language);
+        console.log('locale_test_0140 ' + locale.numeric);
+        expect(locale.numeric).assertFalse();
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_INTL_JS_LOCALE_0200
     * @tc.name    test the language in ja-Jpan-JP-u-ca-japanese-hc-h12-co-emoji locale
     * @tc.desc    check the language
@@ -509,6 +534,18 @@ describe('intlTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_INTL_JS_DATETIME_0220
+    * @tc.name    format the date with zh locale and undefined options
+    * @tc.desc    check the date
+    */
+    it('dateTimeFormat_test_0220', 0, function () {
+        let date = new Date(2021, 11, 17, 3, 24, 0);
+        let datefmt = new Intl.DateTimeFormat('zh', undefined);
+        console.log('dateTimeFormat_test_0220 ' + datefmt.format(date));
+        expect(datefmt.format(date)).assertContain('2021');
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_INTL_JS_DATETIME_0300
     * @tc.name    format the date with en locale
     * @tc.desc    check the date
@@ -864,6 +901,17 @@ describe('intlTest', function () {
     it('formatNumber_test_0120', 0, function () {
         let numfmt = new Intl.NumberFormat();
         expect(numfmt !== null).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_INTL_JS_NUMBER_0140
+    * @tc.name    format the number in zh and undefined options
+    * @tc.desc    check the number in zh
+    */
+    it('formatNumber_test_0140', 0, function () {
+        let numfmt = new Intl.NumberFormat('zh', undefined);
+        console.log('formatNumber_test_0140 ' + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789');
     })
 
     /* *
@@ -1262,6 +1310,18 @@ describe('intlTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_INTL_JS_PLURAL_2720
+    * @tc.name    get PluralRules with zh locale and undefined options
+    * @tc.desc    check the select result
+    */
+    it('pluralrules_test_2720', 0, function () {
+        let pl = new Intl.PluralRules('zh', undefined);
+        let value = pl.select(0);
+        console.log('pluralrules_test_2720 ' + value);
+        expect(value).assertEqual('other');
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_INTL_JS_PLURAL_2800
     * @tc.name    get PluralRules with zh locale and ordinal type
     * @tc.desc    check the select result
@@ -1394,6 +1454,18 @@ describe('intlTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_INTL_JS_COLLATOR_3620
+    * @tc.name    compare two different strings with zh locale and undefined options
+    * @tc.desc    check the compare result
+    */
+    it('collator_test_3620', 0, function () {
+        let coll = new Intl.Collator('zh', undefined);
+        let value = coll.compare('a', 'b');
+        console.log('collator_test_3620 ' + value);
+        expect(value).assertEqual(-1);
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_INTL_JS_COLLATOR_3700
     * @tc.name    compare two different strings with zh locale and eor collation
     * @tc.desc    check the compare result
@@ -1507,6 +1579,19 @@ describe('intlTest', function () {
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = relativetimefmt.format(100,'second');
         console.log('i18n_test_relativetimeformat_0200 ' + value);
+        expect(value).assertEqual('in 100 seconds');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0220
+    * @tc.name    format the relativetime with 100 second in en and undefined options
+    * @tc.desc    check the relativetime
+    */
+    it('i18n_test_relativetimeformat_0220', 0, function () {
+        console.log('i18n_test_relativetimeformat_0220 ' + 'start');
+        let relativetimefmt = new Intl.RelativeTimeFormat('en', undefined);
+        let value = relativetimefmt.format(100,'second');
+        console.log('i18n_test_relativetimeformat_0220 ' + value);
         expect(value).assertEqual('in 100 seconds');
     })
 

@@ -582,7 +582,7 @@ describe('LangTest', function () {
     * @tc.desc get the getUsingLocalDigit value
     */
     it('localdigit_test_0100', 0, function () {
-        let value = I18n.getUsingLocalDigit();
+        let value = I18n.System.getUsingLocalDigit();
         console.log('localdigit_test_0100 ' + value);
         expect(value).assertFalse();
     })

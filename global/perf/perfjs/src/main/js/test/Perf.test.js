@@ -98,6 +98,108 @@ describe('PerfTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_0120
+    * @tc.name    test the performance of getSystemLanguage
+    * @tc.desc    check the performance of getSystemLanguage
+    */
+    it('perf_test_0120', 0, function () {
+        console.log('perf_test_0120 ' + 'start');
+        let lang = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            lang = I18n.System.getSystemLanguage();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_0120--' 
+                    + ' lang: ' + lang 
+                    + ' exeTime: ' + exeTime 
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_0140
+    * @tc.name    test the performance of getSystemLanguages
+    * @tc.desc    check the performance of getSystemLanguages
+    */
+    it('perf_test_0140', 0, function () {
+        console.log('perf_test_0140 ' + 'start');
+        let lang = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            lang = I18n.System.getSystemLanguages();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_0140--' 
+                    + ' lang: ' + lang 
+                    + ' exeTime: ' + exeTime 
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_0160
+    * @tc.name    test the performance of getSystemCountries
+    * @tc.desc    check the performance of getSystemCountries
+    */
+    it('perf_test_0160', 0, function () {
+        console.log('perf_test_0160 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.System.getSystemCountries('zh');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_0160--' + ' value: ' + value);
+        console.log('perf_test_0160--' + ' exeTime: ' + exeTime + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_0180
+    * @tc.name    test the performance of isSuggested
+    * @tc.desc    check the performance of isSuggested
+    */
+    it('perf_test_0180', 0, function () {
+        console.log('perf_test_0180 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.System.isSuggested('zh');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_0180--' 
+                    + ' value: ' + value 
+                    + ' exeTime: ' + exeTime 
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_PERF_JS_0200
     * @tc.name    test the performance of getSystemRegion
     * @tc.desc    check the performance of getSystemRegion
@@ -112,6 +214,32 @@ describe('PerfTest', function () {
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
         console.log('perf_test_0200--' 
+                    + ' region: ' + region 
+                    + ' exeTime: ' + exeTime 
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_0220
+    * @tc.name    test the performance of getSystemRegion
+    * @tc.desc    check the performance of getSystemRegion
+    */
+    it('perf_test_0220', 0, function () {
+        console.log('perf_test_0220 ' + 'start');
+        let region = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            region = I18n.System.getSystemRegion();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_0220--' 
                     + ' region: ' + region 
                     + ' exeTime: ' + exeTime 
                     + ' avgTime: ' + avgTime);
@@ -150,6 +278,32 @@ describe('PerfTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_0320
+    * @tc.name    test the performance of getSystemLocale
+    * @tc.desc    check the performance of getSystemLocale
+    */
+    it('perf_test_0320', 0, function () {
+        console.log('perf_test_0320 ' + 'start');
+        let locale = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            locale = I18n.System.getSystemLocale();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_0320--' 
+                    + ' locale: ' + locale 
+                    + ' exeTime: ' + exeTime 
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_PERF_JS_1000
     * @tc.name    test the performance of getDisplayCountry
     * @tc.desc    check the performance of getDisplayCountry
@@ -176,6 +330,32 @@ describe('PerfTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_1020
+    * @tc.name    test the performance of getDisplayCountry
+    * @tc.desc    check the performance of getDisplayCountry
+    */
+    it('perf_test_1020', 0, function () {
+        console.log('perf_test_1020 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', true);
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1020--' 
+                    + ' value: ' + value 
+                    + ' exeTime: ' + exeTime 
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_PERF_JS_1100
     * @tc.name    test the performance of getDisplayLanguage
     * @tc.desc    check the performance of getDisplayLanguage
@@ -190,6 +370,32 @@ describe('PerfTest', function () {
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
         console.log('perf_test_1100--' 
+                    + ' value: ' + value 
+                    + ' exeTime: ' + exeTime 
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_1120
+    * @tc.name    test the performance of getDisplayLanguage
+    * @tc.desc    check the performance of getDisplayLanguage
+    */
+    it('perf_test_1120', 0, function () {
+        console.log('perf_test_1120 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1120--' 
                     + ' value: ' + value 
                     + ' exeTime: ' + exeTime 
                     + ' avgTime: ' + avgTime);
@@ -277,6 +483,36 @@ describe('PerfTest', function () {
                     + ' value: ' + value
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_1450
+    * @tc.name   test the performance of getLocationName
+    * @tc.desc   check the performance of getLocationName
+    */
+    it('perf_test_1450', 0, function () {
+        console.log('perf_test_1450 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('perf_test_1450 ' + ran);
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = phonenumber.getLocationName('1351057467' + ran, 'zh-CN');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_1450--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        expect(value == '中国' || value == '广东省深圳市').assertTrue();
         if(avgTime < 10){
             expect(true).assertTrue();
         }
@@ -643,6 +879,32 @@ describe('PerfTest', function () {
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
         console.log('perf_test_2800--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_2850
+    * @tc.name    test the performance of getDateOrder
+    * @tc.desc    check the performance of getDateOrder
+    */
+    it('perf_test_2850', 0, function () {
+        console.log('perf_test_2850 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.I18NUtil.getDateOrder('zh');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_2850--'
                     + ' value: ' + value
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
@@ -1320,6 +1582,32 @@ describe('PerfTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_5320
+    * @tc.name    test the performance of is24HourClock
+    * @tc.desc    check the performance of is24HourClock
+    */
+    it('perf_test_5320', 0, function () {
+        console.log('perf_test_5320 ' + 'start');
+        let value = false;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.System.is24HourClock();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_5320--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_PERF_JS_5500
     * @tc.name    test the performance of getPreferredLanguageList
     * @tc.desc    check the performance of getPreferredLanguageList
@@ -1346,6 +1634,32 @@ describe('PerfTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_5520
+    * @tc.name    test the performance of getPreferredLanguageList
+    * @tc.desc    check the performance of getPreferredLanguageList
+    */
+    it('perf_test_5520', 0, function () {
+        console.log('perf_test_5520 ' + 'start');
+        let value = new Array();
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.System.getPreferredLanguageList();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_5520--'
+                    + ' value.length: ' + value.length
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_PERF_JS_5600
     * @tc.name    test the performance of getFirstPreferredLanguage
     * @tc.desc    check the performance of getFirstPreferredLanguage
@@ -1360,6 +1674,58 @@ describe('PerfTest', function () {
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
         console.log('perf_test_5600--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 20){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_5620
+    * @tc.name    test the performance of getFirstPreferredLanguage
+    * @tc.desc    check the performance of getFirstPreferredLanguage
+    */
+    it('perf_test_5620', 0, function () {
+        console.log('perf_test_5620 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.System.getFirstPreferredLanguage();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_5620--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 20){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_5640
+    * @tc.name    test the performance of getAppPreferredLanguage
+    * @tc.desc    check the performance of getAppPreferredLanguage
+    */
+    it('perf_test_5640', 0, function () {
+        console.log('perf_test_5640 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.System.getAppPreferredLanguage();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_5640--'
                     + ' value: ' + value
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
@@ -2092,32 +2458,6 @@ describe('PerfTest', function () {
     })
 
     /* *
-    * @tc.number  SUB_GLOBAL_PERF_JS_8600
-    * @tc.name    test the performance of getDateOrder
-    * @tc.desc    check the performance of getDateOrder
-    */
-    it('perf_test_8600', 0, function () {
-        console.log('perf_test_8600 ' + 'start');
-        let value = 'test';
-        let startTime = new Date().getTime();
-        for(let i = 0; i < EXETIME; i++){
-            value = I18n.I18NUtil.getDateOrder('zh');
-        }
-        let exeTime = new Date().getTime() - startTime;
-        let avgTime = exeTime/EXETIME;
-        console.log('perf_test_8600--'
-                    + ' value: ' + value
-                    + ' exeTime: ' + exeTime
-                    + ' avgTime: ' + avgTime);
-        if(avgTime < 10){
-            expect(true).assertTrue();
-        }
-        else{
-            expect(false).assertTrue();
-        }
-    })
-
-    /* *
     * @tc.number  SUB_GLOBAL_PERF_JS_8700
     * @tc.name    test the performance of getAvailableIDs
     * @tc.desc    check the performance of getAvailableIDs
@@ -2197,36 +2537,6 @@ describe('PerfTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_PERF_JS_9000
-    * @tc.name   test the performance of getLocationName
-    * @tc.desc   check the performance of getLocationName
-    */
-    it('perf_test_9000', 0, function () {
-        console.log('perf_test_9000 ' + 'start');
-        let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let ran = Math.ceil(Math.random(1) * 9);
-        console.log('perf_test_9000 ' + ran);
-        let value = 'test';
-        let startTime = new Date().getTime();
-        for(let i = 0; i < EXETIME; i++){
-            value = phonenumber.getLocationName('1351057467' + ran, 'zh-CN');
-        }
-        let exeTime = new Date().getTime() - startTime;
-        let avgTime = exeTime/EXETIME;
-        console.log('perf_test_9000--'
-                    + ' value: ' + value
-                    + ' exeTime: ' + exeTime
-                    + ' avgTime: ' + avgTime);
-        expect(value == '中国' || value == '广东省深圳市').assertTrue();
-        if(avgTime < 10){
-            expect(true).assertTrue();
-        }
-        else{
-            expect(false).assertTrue();
-        }
-    })
-
-    /* *
     * @tc.number SUB_GLOBAL_PERF_JS_9100
     * @tc.name   test the performance of getUsingLocalDigit
     * @tc.desc   check the performance of getUsingLocalDigit
@@ -2236,7 +2546,7 @@ describe('PerfTest', function () {
         let value = true;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.getUsingLocalDigit();
+            value = I18n.System.getUsingLocalDigit();
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
