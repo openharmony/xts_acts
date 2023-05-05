@@ -28,7 +28,7 @@ hcpptest_suite("ActsKvStoreTest") {
     "-lpthread",
   ]
   external_deps = [
-    "utils_lite:utils",
     "distributeddatamgr_kv_store:kv_store",
+    "utils_lite:utils",
   ]
 }

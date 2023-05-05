@@ -17,12 +17,10 @@ hctest_suite("ActsDbmKvStoreTest") {
   suite_name = "acts"
   sources = [ "src/dbm_kv_store_func_test.c" ]
 
-  include_dirs = [
-    "src",
-  ]
+  include_dirs = [ "src" ]
   cflags = [ "-Wno-error" ]
   external_deps = [
-    "iothardware_peripheral:iothardware",
     "distributeddatamgr_kv_store:dbm_kv_store",
+    "iothardware_peripheral:iothardware",
   ]
 }
