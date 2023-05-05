@@ -33,15 +33,17 @@ describe('ActsGetAllAccessibleMultiple', function () {
                 },
             },
         );
-        sleep(TIMEOUT);
+        await sleep(TIMEOUT);
         done();
     });
 
-    function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {
-            continue;
-        }
+    async function sleep(delay) {
+        let timeoutId = null;
+        var promise = new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => resolve("done!"), delay);
+        });
+        await promise
+        clearTimeout(timeoutId)
     }
 
     /*

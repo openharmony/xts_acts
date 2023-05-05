@@ -18,15 +18,15 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 const TIMEOUT = 5000;
 const ERR_APPACCOUNT_SERVICE_PERMISSION_DENIED = 4521993;
 describe('ActsAccountNoPermission', function () {
-    function sleep(delay) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve()
-            }, delay)
-        }).then(() => {
-            console.info(`sleep #{time} over ...`)
-        })
+    async function sleep(delay) {
+        let timeoutId = null;
+        var promise = new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => resolve("done!"), delay);
+        });
+        await promise
+        clearTimeout(timeoutId)
     }
+
     beforeAll(async function (done) {
         console.debug("====>beforeAll start====");
         await sleep(TIMEOUT);
