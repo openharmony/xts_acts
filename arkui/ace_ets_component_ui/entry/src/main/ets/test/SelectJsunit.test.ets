@@ -132,16 +132,16 @@ export default function SelectJsunit() {
       let textComponent1 = await driver.findComponent(BY.key('select'));
       await textComponent1.click()
       await CommonFunc.sleep(1000);
-      let textMenuComponent = await driver.findComponent(BY.text('bbb'));
-      let textMenu = await textMenuComponent.getText();
-      expect(textMenu).assertEqual('bbb');
 
       // Verify the onSelect function of the select component
+      let textMenuComponent = await driver.findComponent(BY.text('bbb'));
       await textMenuComponent.click()
       await CommonFunc.sleep(1000);
-      let textComponent2 = await driver.findComponent(BY.key('indexValue'));
-      let text = await textComponent2.getText();
-      expect(text).assertEqual('indexValue:1');
+      let strJson1 = getInspectorByKey('indexValue');
+      let obj1 = JSON.parse(strJson1);
+      console.info("[SelectJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
+      expect(obj1.$attrs.content).assertEqual('indexValue:1');
+
       let strJson = getInspectorByKey('select');
       let obj = JSON.parse(strJson);
       console.info("[SelectJsunit_0300] component obj is: " + JSON.stringify(obj));
@@ -196,10 +196,10 @@ export default function SelectJsunit() {
       expect(obj.$attrs.optionFont).assertEqual('{"size":"16.00fp","weight":"400","family":"","style":"FontStyle.Normal"}');
       expect(obj.$attrs.optionFontColor).assertEqual('#FFFFFF00');
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()
-      let textComponent = await driver.findComponent(BY.key('indexValue'));
-      let text = await textComponent.getText();
-      expect(text).assertEqual('indexValue:1');
+      let strJson1 = getInspectorByKey('indexValue');
+      let obj1 = JSON.parse(strJson1);
+      console.info("[SelectJsunit_0400] component obj1 is: " + JSON.stringify(obj1));
+      expect(obj1.$attrs.content).assertEqual('indexValue:1');
       console.info('[SelectJsunit_0400] END');
       done();
     });

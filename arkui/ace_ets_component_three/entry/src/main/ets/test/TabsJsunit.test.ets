@@ -300,6 +300,7 @@ export default function tabsJsunit() {
       console.info("testTabs_1400 click result is: " + JSON.stringify(sendEventByKey('tabContent1', 10, "")));
       await Utils.sleep(1000);
       console.info('testTabs_1400 END');
+      done();
     });
   })
 }

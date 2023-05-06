@@ -158,10 +158,15 @@ export default function textAreaJsunit() {
   
    it('textAreaJsunit_0800', 0, async function (done) {
       console.info('textAreaJsunit_0800 START');
-      globalThis.value.message.notify({name:'placeholder',value:''})
-      await CommonFunc.sleep(2000);
-      // test the change event
+      // globalThis.value.message.notify({name:'placeholder',value:''})
       let driver = UiDriver.create();
+      let allSelect = await driver.findComponent(BY.text('全选'));
+      await allSelect.click();
+      await CommonFunc.sleep(1000);
+      let cutComponent = await driver.findComponent(BY.text('剪切'));
+      await cutComponent.click();
+      await CommonFunc.sleep(1000);
+      // test the change event
       let text = await driver.findComponent(BY.key('textArea'));
       await text.inputText('123');
       await CommonFunc.sleep(2000);

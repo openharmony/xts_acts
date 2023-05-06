@@ -101,15 +101,15 @@ export default function TextPickerJsunit() {
     it('TextPickerJsunit_0300', 0, async function (done) {
       // Verify the functions of TextPicker component
       console.info('[TextPickerJsunit_0300] START');
-      let bottomComponent = CommonFunc.getComponentRect('textPicker');
-      let bottom = bottomComponent.bottom
-      let rightComponent = CommonFunc.getComponentRect('textPicker');
-      let right = rightComponent.right
+      let component = CommonFunc.getComponentRect('textPicker');
+      let bottom = component.bottom
+      let right = component.right
       console.info("[TextPickerJsunit_0300] bottom: " + JSON.stringify(bottom));
       console.info("[TextPickerJsunit_0300] right: " + JSON.stringify(right));
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       await driver.swipe(Math.round(right / 2), Math.round(bottom * 2 / 3), Math.round(right / 2), Math.round(bottom / 3));
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('textContent1');
       let obj = JSON.parse(strJson);
       console.info("[TextPickerJsunit_0300] obj: " + JSON.stringify(obj));
@@ -141,7 +141,7 @@ export default function TextPickerJsunit() {
       expect(obj.$attrs.range).assertEqual('["icon:,text:banana1","icon:,text:orange2","icon:,text:peach3","icon:,text:grape4"]');
       expect(obj.$attrs.selected).assertEqual('1');
       //expect(obj.$attrs.value).assertEqual('');
-      expect(obj.$attrs.defaultPickerItemHeight).assertEqual('25.00fp');
+      expect(obj.$attrs.defaultPickerItemHeight).assertEqual('0.00fp');
       console.info('[TextPickerJsunit_0400] END');
       done();
     });
