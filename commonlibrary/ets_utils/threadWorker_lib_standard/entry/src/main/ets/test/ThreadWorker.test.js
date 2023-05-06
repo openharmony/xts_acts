@@ -2427,7 +2427,7 @@ describe('threadWorkerTest', function () {
         while (!isTerminate) {
             await promiseCase();
         }
-        expect(res).assertEqual("Serializing an uncaught exception failed, failed to serialize message.");
+        expect(res).assertEqual("An exception occurred during serialization, failed to serialize message.");
         done();
     })
 
