@@ -446,7 +446,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_0500 END-------------");
             done();
           })
-      }, 4500);
+      }, 5000);
     });
 
     /*
@@ -684,7 +684,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 1500);
       setTimeout(function () {
         var str1 = {
           "bundleName": "com.example.lifecycle_xts",
