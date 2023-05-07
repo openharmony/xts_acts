@@ -58,7 +58,7 @@ export default function albumTestCallbackTest(abilityContext) {
 
         const props = {
             albumName: "Static",
-            albumUri: "datashare:///media/album/",
+            albumUri: "file://media/album/",
             count: 5,
         };
         const checkProps = async function (done, testNum, album, relativePaths) {

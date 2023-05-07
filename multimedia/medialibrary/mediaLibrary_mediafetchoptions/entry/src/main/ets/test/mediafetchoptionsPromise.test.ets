@@ -53,7 +53,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 let firstObject = await fetchFileResult.getFirstObject();
                 const id = firstObject.id;
                 const uri = firstObject.uri;
-                const serachUri = `datashare:///media/${type}/${id}`;
+                const serachUri = `file://media/${type}/${id}`;
                 console.info(`${testNum} :uri ${uri};serachUri${serachUri})`);
 
                 let serchfetchOp = {
