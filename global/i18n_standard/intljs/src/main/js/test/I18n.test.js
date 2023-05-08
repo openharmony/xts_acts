@@ -69,6 +69,17 @@ describe('I18nTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_0120
+    * @tc.name    getSystemLanguage
+    * @tc.desc    check the getSystemLanguage
+    */
+    it('i18n_test_0120', 0, function () {
+        let lang = I18n.System.getSystemLanguage();
+        console.log('i18n_test_0120 ' + lang);
+        expect(lang).assertInstanceOf('String');
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_0200
     * @tc.name    getSystemRegion
     * @tc.desc    check the getSystemRegion
@@ -76,6 +87,17 @@ describe('I18nTest', function () {
     it('i18n_test_0200', 0, function () {
         let region = I18n.getSystemRegion();
         console.log('i18n_test_0200 ' + region);
+        expect(region).assertInstanceOf('String');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_0220
+    * @tc.name    getSystemRegion
+    * @tc.desc    check the getSystemRegion
+    */
+    it('i18n_test_0220', 0, function () {
+        let region = I18n.System.getSystemRegion();
+        console.log('i18n_test_0220 ' + region);
         expect(region).assertInstanceOf('String');
     })
 
@@ -88,6 +110,28 @@ describe('I18nTest', function () {
         let locale = I18n.getSystemLocale();
         console.log('i18n_test_0300 ' + locale);
         expect(locale).assertInstanceOf('String');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_0320
+    * @tc.name    getSystemLocale
+    * @tc.desc    check the getSystemLocale
+    */
+    it('i18n_test_0320', 0, function () {
+        let locale = I18n.System.getSystemLocale();
+        console.log('i18n_test_0320 ' + locale);
+        expect(locale).assertInstanceOf('String');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_0340
+    * @tc.name    is24HourClock
+    * @tc.desc    check the is24HourClock
+    */
+    it('i18n_test_0340', 0, function () {
+        let value = I18n.System.is24HourClock();
+        console.log('i18n_test_0340 ' + value);
+        expect(value).assertFalse();
     })
 
     /* *
@@ -112,6 +156,44 @@ describe('I18nTest', function () {
         let len = value.length;
         console.log('i18n_test_2120 ' + len);
         expect(len).assertLarger(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2140
+    * @tc.name getSystemCountries with en param
+    * @tc.desc check the getSystemCountries
+    */
+    it('i18n_test_2140', 0, function () {
+        try{
+            let value = I18n.System.getSystemCountries();
+            let len = value.length;
+            console.log('i18n_test_2140 ' + len);
+            expect(len).assertLarger(0);
+        }catch(e){
+            console.log('i18n_test_2140 ' + e.code);
+            console.log('i18n_test_2140 ' + e.message);
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Check param failed');
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2160
+    * @tc.name getSystemCountries with en param
+    * @tc.desc check the getSystemCountries
+    */
+    it('i18n_test_2160', 0, function () {
+        try{
+            let value = I18n.System.getSystemCountries(12345);
+            let len = value.length;
+            console.log('i18n_test_2160 ' + len);
+            expect(len).assertLarger(0);
+        }catch(e){
+            console.log('i18n_test_2160 ' + e.code);
+            console.log('i18n_test_2160 ' + e.message);
+            expect(e.code).assertEqual('890001');
+            expect(e.message).assertEqual('Param value not valid');
+        }
     })
 
     /* *
@@ -156,6 +238,86 @@ describe('I18nTest', function () {
         let value = I18n.isSuggested('en' , 'US');
         console.log('i18n_test_2340 ' + value);
         expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2350
+    * @tc.name isSuggested with zh param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2350', 0, function () {
+        let value = I18n.System.isSuggested('zh');
+        console.log('i18n_test_2350 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2360
+    * @tc.name isSuggested with en param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2360', 0, function () {
+        let value = I18n.System.isSuggested('en');
+        console.log('i18n_test_2360 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2370
+    * @tc.name isSuggested with zh-CN param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2370', 0, function () {
+        let value = I18n.System.isSuggested('zh', 'CN');
+        console.log('i18n_test_2370 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2380
+    * @tc.name isSuggested with en-US param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2380', 0, function () {
+        let value = I18n.System.isSuggested('en' , 'US');
+        console.log('i18n_test_2380 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2390
+    * @tc.name isSuggested with en-US param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2390', 0, function () {
+        try{
+            let value = I18n.System.isSuggested();
+            console.log('i18n_test_2390 ' + value);
+            expect(value).assertTrue();
+        }catch(e){
+            console.log('i18n_test_2390 ' + e.code);
+            console.log('i18n_test_2390 ' + e.message);
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Check param failed');
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2391
+    * @tc.name isSuggested with en-US param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2391', 0, function () {
+        try{
+            let value = I18n.System.isSuggested(12345);
+            console.log('i18n_test_2391 ' + value);
+            expect(value).assertTrue();
+        }catch(e){
+            console.log('i18n_test_2391 ' + e.code);
+            console.log('i18n_test_2391 ' + e.message);
+            expect(e.code).assertEqual('890001');
+            expect(e.message).assertEqual('Param value not valid');
+        }
     })
 
     /* *
@@ -233,6 +395,133 @@ describe('I18nTest', function () {
         let value = I18n.getDisplayCountry('zh-Hans-CN', 'en-US');
         console.log('i18n_test_4300 ' + value);
         expect(value).assertEqual('China');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4310
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and true param
+    * @tc.desc    check the display country
+    */
+    it('i18n_test_4310', 0, function () {
+        let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', true);
+        console.log('i18n_test_4310 ' + value);
+        expect(value).assertEqual('China');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4320
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and undefined param
+    * @tc.desc    check the display country
+    */
+    it('i18n_test_4320', 0, function () {
+        let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', undefined);
+        console.log('i18n_test_4320 ' + value);
+        expect(value).assertEqual('China');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4330
+    * @tc.name    getDisplayCountry with zh and en-US and true param
+    * @tc.desc    check the display country
+    */
+    it('i18n_test_4330', 0, function () {
+        try{
+            let value = I18n.System.getDisplayCountry('zh', 'en-US', true);
+            console.log('i18n_test_4330 ' + value);
+            expect(value).assertEqual('');
+        }catch(e){
+            console.log('i18n_test_4330 ' + e.code);
+            console.log('i18n_test_4330 ' + e.message);
+            expect(e.code).assertEqual('890001');
+            expect(e.message).assertEqual('Param value not valid');
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4340
+    * @tc.name    getDisplayCountry with zh-CN and en-US and true param
+    * @tc.desc    check the display country
+    */
+    it('i18n_test_4340', 0, function () {
+        let value = I18n.System.getDisplayCountry('zh-CN', 'en-US', true);
+        console.log('i18n_test_4340 ' + value);
+        expect(value).assertEqual('China');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4350
+    * @tc.name    getDisplayCountry with zh-Hans and en-US and true param
+    * @tc.desc    check the display country
+    */
+    it('i18n_test_4350', 0, function () {
+        try{
+            let value = I18n.System.getDisplayCountry('zh-Hans', 'en-US', true);
+            console.log('i18n_test_4350 ' + value);
+            expect(value).assertEqual('');
+        }catch(e){
+            console.log('i18n_test_4350 ' + e.code);
+            console.log('i18n_test_4350 ' + e.message);
+            expect(e.code).assertEqual('890001');
+            expect(e.message).assertEqual('Param value not valid');
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4360
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and false param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_4360', 0, function () {
+        let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', false);
+        console.log('i18n_test_4360 ' + value);
+        expect(value).assertEqual('China');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4370
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_4370', 0, function () {
+        let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US');
+        console.log('i18n_test_4370 ' + value);
+        expect(value).assertEqual('China');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4380
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_4380', 0, function () {
+        try{
+            let value = I18n.System.getDisplayCountry('zh-Hans-CN');
+            console.log('i18n_test_4380 ' + value);
+            expect(value).assertEqual('China');
+        }catch(e){
+            console.log('i18n_test_4380 ' + e.code);
+            console.log('i18n_test_4380 ' + e.message);
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Check param failed');
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4390
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_4390', 0, function () {
+        try{
+            let value = I18n.System.getDisplayCountry('zh-Hans-CN', 12345);
+            console.log('i18n_test_4390 ' + value);
+            expect(value).assertEqual('China');
+        }catch(e){
+            console.log('i18n_test_4390 ' + e.code);
+            console.log('i18n_test_4390 ' + e.message);
+            expect(e.code).assertEqual('890001');
+            expect(e.message).assertEqual('Param value not valid');
+        }
     })
 
     /* *
@@ -321,6 +610,130 @@ describe('I18nTest', function () {
         let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US');
         console.log('i18n_test_5000 ' + value);
         expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5010
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and true param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5010', 0, function () {
+        let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
+        console.log('i18n_test_5010 ' + value);
+        expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5020
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and undefined param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5020', 0, function () {
+        let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', undefined);
+        console.log('i18n_test_5020 ' + value);
+        expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5030
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-GB and true param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5030', 0, function () {
+        let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-GB', true);
+        console.log('i18n_test_5030 ' + value);
+        expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5040
+    * @tc.name    getDisplayLanguage with zh and en-US and true param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5040', 0, function () {
+        let value = I18n.System.getDisplayLanguage('zh', 'en-US', true);
+        console.log('i18n_test_5040 ' + value);
+        expect(value).assertEqual('Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5050
+    * @tc.name    getDisplayLanguage with zh-CN and en-US and true param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5050', 0, function () {
+        let value = I18n.System.getDisplayLanguage('zh-CN', 'en-US', true);
+        console.log('i18n_test_5050 ' + value);
+        expect(value).assertEqual('Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5060
+    * @tc.name    getDisplayLanguage with zh-Hans and en-US and true param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5060', 0, function () {
+        let value = I18n.System.getDisplayLanguage('zh-Hans', 'en-US', true);
+        console.log('i18n_test_5060 ' + value);
+        expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5070
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and false param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5070', 0, function () {
+        let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', false);
+        console.log('i18n_test_5070 ' + value);
+        expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5080
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5080', 0, function () {
+        let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US');
+        console.log('i18n_test_5080 ' + value);
+        expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
+        * @tc.number  SUB_GLOBAL_I18N_JS_5090
+        * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US param
+        * @tc.desc    check the language
+        */
+    it('i18n_test_5090', 0, function () {
+        try{
+            let value = I18n.System.getDisplayLanguage('zh-Hans-CN');
+            console.log('i18n_test_5090 ' + value);
+            expect(value).assertEqual('Simplified Chinese');
+        }catch(e){
+            console.log('i18n_test_5090 ' + e.code);
+            console.log('i18n_test_5090 ' + e.message);
+            expect(e.code).assertEqual('401');
+            expect(e.message).assertEqual('Check param failed');
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5091
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5091', 0, function () {
+        try{
+            let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 12345);
+            console.log('i18n_test_5091 ' + value);
+            expect(value).assertEqual('Simplified Chinese');
+        }catch(e){
+            console.log('i18n_test_5091 ' + e.code);
+            console.log('i18n_test_5091 ' + e.message);
+            expect(e.code).assertEqual('890001');
+            expect(e.message).assertEqual('Param value not valid');
+        }
     })
 
     /**
@@ -1557,6 +1970,244 @@ describe('I18nTest', function () {
         expect(value).assertEqual('1,000米');
     })
 
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9920
+     * @tc.name    test unitConvert interface from cup to liter unit with long style
+     * @tc.desc    get the unitConvert value
+     */
+     it('i18n_test_9920', 0, function () {
+        console.log('i18n_test_9920 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
+                                {unit: 'liter', measureSystem: 'SI'},
+                                1000,
+                                'en-US',
+                                'long');
+        console.log('i18n_test_9920 ' + value);
+        expect(value).assertEqual('236.588 liters');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9930
+     * @tc.name    test unitConvert interface from cup to liter unit with undefined style
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9930', 0, function () {
+        console.log('i18n_test_9930 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
+                                {unit: 'liter', measureSystem: 'SI'},
+                                1000,
+                                'en-US',
+                                undefined);
+        console.log('i18n_test_9930 ' + value);
+        expect(value).assertEqual('236.588 L');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9940
+     * @tc.name    test unitConvert interface from cup to liter unit with medium style
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9940', 0, function () {
+        console.log('i18n_test_9940 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
+                                {unit: 'liter', measureSystem: 'SI'},
+                                1000,
+                                'en-US',
+                                'medium');
+        console.log('i18n_test_9940 ' + value);
+        expect(value).assertEqual('236.588 L');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9950
+     * @tc.name    test unitConvert interface from cup to liter unit with narrow style
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9950', 0, function () {
+        console.log('i18n_test_9950 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
+                                {unit: 'liter', measureSystem: 'SI'},
+                                1000,
+                                'en-US',
+                                'narrow');
+        console.log('i18n_test_9950 ' + value);
+        expect(value).assertEqual('236.588L');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9960
+     * @tc.name    test unitConvert interface from cup to liter unit with short style
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9960', 0, function () {
+        console.log('i18n_test_9960 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
+                                {unit: 'liter', measureSystem: 'SI'},
+                                1000,
+                                'en-US',
+                                'short');
+        console.log('i18n_test_9960 ' + value);
+        expect(value).assertEqual('236.588 L');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9970
+     * @tc.name    test unitConvert interface from meter to mile unit
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9970', 0, function () {
+        console.log('i18n_test_9970 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'meter', measureSystem: 'SI'},
+                                {unit: 'mile', measureSystem: 'SI'},
+                                1000,
+                                'zh-CN',
+                                'long');
+        console.log('i18n_test_9970 ' + value);
+        expect(value).assertEqual('0.621英里');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9980
+     * @tc.name    test unitConvert interface from hour to second unit
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9980', 0, function () {
+        console.log('i18n_test_9980 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'hour', measureSystem: 'SI'},
+                                {unit: 'second', measureSystem: 'SI'},
+                                10,
+                                'zh-CN',
+                                'medium');
+        console.log('i18n_test_9980 ' + value);
+        expect(value).assertEqual('36,000秒');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9990
+     * @tc.name    test unitConvert interface from celsius to fahrenheit unit
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9990', 0, function () {
+        console.log('i18n_test_9990 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'celsius', measureSystem: 'SI'},
+                                {unit: 'fahrenheit', measureSystem: 'SI'},
+                                1000,
+                                'zh-CN',
+                                'short');
+        console.log('i18n_test_9990 ' + value);
+        expect(value).assertEqual('1,832°F');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9991
+     * @tc.name    test unitConvert interface from acre to hectare unit
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9991', 0, function () {
+        console.log('i18n_test_9991 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'acre', measureSystem: 'SI'},
+                                {unit: 'hectare', measureSystem: 'SI'},
+                                1000,
+                                'zh-CN',
+                                'long');
+        console.log('i18n_test_9991 ' + value);
+        expect(value).assertEqual('404.686公顷');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9992
+     * @tc.name    test unitConvert interface from acre to square-meter unit
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9992', 0, function () {
+        console.log('i18n_test_9992 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'acre', measureSystem: 'SI'},
+                                {unit: 'square-meter', measureSystem: 'SI'},
+                                1000,
+                                'zh-CN',
+                                'long');
+        console.log('i18n_test_9992 ' + value);
+        expect(value).assertEqual('4,046,856.422平方米');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9993
+     * @tc.name    test unitConvert interface from kilometer-per-hour to knot unit
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9993', 0, function () {
+        console.log('i18n_test_9993 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'},
+                                {unit: 'knot', measureSystem: 'SI'},
+                                1000,
+                                'zh-CN',
+                                'long');
+        console.log('i18n_test_9993 ' + value);
+        expect(value).assertEqual('539.957节');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9994
+     * @tc.name    test unitConvert interface from kilometer-per-hour to meter-per-second unit
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9994', 0, function () {
+        console.log('i18n_test_9994 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'},
+                                {unit: 'meter-per-second', measureSystem: 'SI'},
+                                1000,
+                                'zh-CN',
+                                'long');
+        console.log('i18n_test_9994 ' + value);
+        expect(value).assertEqual('每秒277.778米');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9995
+     * @tc.name    test unitConvert interface from meter to kilometer unit
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9995', 0, function () {
+        console.log('i18n_test_9995 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'meter', measureSystem: 'SI'},
+                                {unit: 'kilometer', measureSystem: 'SI'},
+                                1000,
+                                'zh-CN',
+                                'long');
+        console.log('i18n_test_9995 ' + value);
+        expect(value).assertEqual('1公里');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9996
+     * @tc.name    test unitConvert interface from meter to meter-per-second unit
+     * @tc.desc    get the unitConvert value
+     */
+    it('i18n_test_9996', 0, function () {
+        console.log('i18n_test_9996 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'meter', measureSystem: 'SI'},
+                                {unit: 'meter-per-second', measureSystem: 'SI'},
+                                1000,
+                                'zh-CN',
+                                'long');
+        console.log('i18n_test_9996 ' + value);
+        expect(value).assertEqual('1,000米');
+    })
+
     /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_BREAKITERATOR_0100
     * @tc.name    test current interface
@@ -2230,6 +2881,487 @@ describe('I18nTest', function () {
         console.log('i18n_test_character_0990 ' + 'start');
         let value = I18n.Unicode.getType('   ');
         console.log('i18n_test_character_0990 ' + value);
+        expect(value).assertEqual('U_SPACE_SEPARATOR');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1100
+    * @tc.name    test isDigit interface
+    * @tc.desc    check the isDigit interface
+    */
+    it('i18n_test_character_1100', 0, function () {
+        console.log('i18n_test_character_1100 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isDigit('abc');
+        console.log('i18n_test_character_1100 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1120
+    * @tc.name    test isDigit interface with 123 param
+    * @tc.desc    check the isDigit interface
+    */
+    it('i18n_test_character_1120', 0, function () {
+        console.log('i18n_test_character_1120 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isDigit('123');
+        console.log('i18n_test_character_1120 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1140
+    * @tc.name    test isDigit interface with 123abc param
+    * @tc.desc    check the isDigit interface
+    */
+    it('i18n_test_character_1140', 0, function () {
+        console.log('i18n_test_character_1140 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isDigit('123abc');
+        console.log('i18n_test_character_1140 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1150
+    * @tc.name    test isDigit interface with abc123 param
+    * @tc.desc    check the isDigit interface
+    */
+    it('i18n_test_character_1150', 0, function () {
+        console.log('i18n_test_character_1150 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isDigit('abc123');
+        console.log('i18n_test_character_1150 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1160
+    * @tc.name    test isDigit interface with null param
+    * @tc.desc    check the isDigit interface
+    */
+    it('i18n_test_character_1160', 0, function () {
+        console.log('i18n_test_character_1160 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isDigit('');
+        console.log('i18n_test_character_1160 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1200
+    * @tc.name    test isSpaceChar interface with abc param
+    * @tc.desc    check the isSpaceChar interface
+    */
+    it('i18n_test_character_1200', 0, function () {
+        console.log('i18n_test_character_1200 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isSpaceChar('abc');
+        console.log('i18n_test_character_1200 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1220
+    * @tc.name    test isSpaceChar interface with one space param
+    * @tc.desc    check the isSpaceChar interface
+    */
+    it('i18n_test_character_1220', 0, function () {
+        console.log('i18n_test_character_1220 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isSpaceChar(' ');
+        console.log('i18n_test_character_1220 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1240
+    * @tc.name    test isSpaceChar interface with multi space param
+    * @tc.desc    check the isSpaceChar interface
+    */
+    it('i18n_test_character_1240', 0, function () {
+        console.log('i18n_test_character_1240 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isSpaceChar('   ');
+        console.log('i18n_test_character_1240--' + value + '--');
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1300
+    * @tc.name    test isWhitespace interface with abc param
+    * @tc.desc    check the isWhitespace interface
+    */
+    it('i18n_test_character_1300', 0, function () {
+        console.log('i18n_test_character_1300 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isWhitespace('abc');
+        console.log('i18n_test_character_1300 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1320
+    * @tc.name    test isWhitespace interface with \u0009 param
+    * @tc.desc    check the isWhitespace interface
+    */
+    it('i18n_test_character_1320', 0, function () {
+        console.log('i18n_test_character_1320 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isWhitespace('\u0009');
+        console.log('i18n_test_character_1320--' + value + '--');
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1400
+    * @tc.name    test isRTL interface with abc param
+    * @tc.desc    check the isRTL interface
+    */
+    it('i18n_test_character_1400', 0, function () {
+        console.log('i18n_test_character_1400 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isRTL('abc');
+        console.log('i18n_test_character_1400 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1420
+    * @tc.name    test isRTL interface with ١٢٣٤٥٦٧ param
+    * @tc.desc    check the isRTL interface
+    */
+    it('i18n_test_character_1420', 0, function () {
+        console.log('i18n_test_character_1420 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isRTL('١٢٣٤٥٦٧');
+        console.log('i18n_test_character_1420 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1440
+    * @tc.name    test isRTL interface with 我是小明 param
+    * @tc.desc    check the isRTL interface
+    */
+    it('i18n_test_character_1440', 0, function () {
+        console.log('i18n_test_character_1440 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isRTL('我是小明');
+        console.log('i18n_test_character_1440 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1460
+    * @tc.name    test isRTL interface with نحن param
+    * @tc.desc    check the isRTL interface
+    */
+    it('i18n_test_character_1460', 0, function () {
+        console.log('i18n_test_character_1460 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isRTL('نحن');
+        console.log('i18n_test_character_1460 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1500
+    * @tc.name    test isIdeograph interface with abc param
+    * @tc.desc    check the isIdeograph interface
+    */
+    it('i18n_test_character_1500', 0, function () {
+        console.log('i18n_test_character_1500 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isIdeograph('abc');
+        console.log('i18n_test_character_1500 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1520
+    * @tc.name    test isIdeograph interface with '我' param
+    * @tc.desc    check the isIdeograph interface
+    */
+    it('i18n_test_character_1520', 0, function () {
+        console.log('i18n_test_character_1520 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isIdeograph('我');
+        console.log('i18n_test_character_1520 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1540
+    * @tc.name    test isIdeograph interface with '우리' param
+    * @tc.desc    check the isIdeograph interface
+    */
+    it('i18n_test_character_1540', 0, function () {
+        console.log('i18n_test_character_1540 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isIdeograph('우리');
+        console.log('i18n_test_character_1540 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1560
+    * @tc.name    test isIdeograph interface with '私た' param
+    * @tc.desc    check the isIdeograph interface
+    */
+    it('i18n_test_character_1560', 0, function () {
+        console.log('i18n_test_character_1560 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isIdeograph('私たち');
+        console.log('i18n_test_character_1560 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1600
+    * @tc.name    test isLetter interface with abc param
+    * @tc.desc    check the isLetter interface
+    */
+    it('i18n_test_character_1600', 0, function () {
+        console.log('i18n_test_character_1600 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isLetter('abc');
+        console.log('i18n_test_character_1600 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1620
+    * @tc.name    test isLetter interface with 123 param
+    * @tc.desc    check the isLetter interface
+    */
+    it('i18n_test_character_1620', 0, function () {
+        console.log('i18n_test_character_1620 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isLetter('123');
+        console.log('i18n_test_character_1620 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1640
+    * @tc.name    test isLetter interface with abc123 param
+    * @tc.desc    check the isLetter interface
+    */
+    it('i18n_test_character_1640', 0, function () {
+        console.log('i18n_test_character_1640 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isLetter('abc123');
+        console.log('i18n_test_character_1640 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1660
+    * @tc.name    test isLetter interface with 123abc param
+    * @tc.desc    check the isLetter interface
+    */
+    it('i18n_test_character_1660', 0, function () {
+        console.log('i18n_test_character_1660 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isLetter('123abc');
+        console.log('i18n_test_character_1660 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1700
+    * @tc.name    test isLowerCase interface with abc param
+    * @tc.desc    check the isLowerCase interface
+    */
+    it('i18n_test_character_1700', 0, function () {
+        console.log('i18n_test_character_1700 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isLowerCase('abc');
+        console.log('i18n_test_character_1700 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1720
+    * @tc.name    ftest isLowerCase interface with ABC param
+    * @tc.desc    check the isLowerCase interface
+    */
+    it('i18n_test_character_1720', 0, function () {
+        console.log('i18n_test_character_1720 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isLowerCase('ABC');
+        console.log('i18n_test_character_1720 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1740
+    * @tc.name    test isLowerCase interface with abcDEF param
+    * @tc.desc    check the isLowerCase interface
+    */
+    it('i18n_test_character_1740', 0, function () {
+        console.log('i18n_test_character_1740 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isLowerCase('abcDEF');
+        console.log('i18n_test_character_1740 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1760
+    * @tc.name    test isLowerCase interface with ABCdef param
+    * @tc.desc    check the isLowerCase interface
+    */
+    it('i18n_test_character_1760', 0, function () {
+        console.log('i18n_test_character_1760 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isLowerCase('ABCdef');
+        console.log('i18n_test_character_1760 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1800
+    * @tc.name    test isUpperCase interface with ABC param
+    * @tc.desc    check the isUpperCase interface
+    */
+    it('i18n_test_character_1800', 0, function () {
+        console.log('i18n_test_character_1800 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isUpperCase('ABC');
+        console.log('i18n_test_character_1800 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1820
+    * @tc.name    test isUpperCase interface with abc param
+    * @tc.desc    check the isUpperCase interface
+    */
+    it('i18n_test_character_1820', 0, function () {
+        console.log('i18n_test_character_1820 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isUpperCase('abc');
+        console.log('i18n_test_character_1820 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1840
+    * @tc.name    test isUpperCase interface with ABCdef param
+    * @tc.desc    check the isUpperCase interface
+    */
+    it('i18n_test_character_1840', 0, function () {
+        console.log('i18n_test_character_1840 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isUpperCase('ABCdef');
+        console.log('i18n_test_character_1840 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1860
+    * @tc.name    test isUpperCase interface with abcDEF param
+    * @tc.desc    check the isUpperCase interface
+    */
+    it('i18n_test_character_1860', 0, function () {
+        console.log('i18n_test_character_1860 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.isUpperCase('abcDEF');
+        console.log('i18n_test_character_1860 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1900
+    * @tc.name    test getType interface with a param
+    * @tc.desc    check the getType interface
+    */
+    it('i18n_test_character_1900', 0, function () {
+        console.log('i18n_test_character_1900 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.getType('a');
+        console.log('i18n_test_character_1900 ' + value);
+        expect(value).assertEqual('U_LOWERCASE_LETTER');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1920
+    * @tc.name    ftest getType interface with ABC param
+    * @tc.desc    check the getType interface
+    */
+    it('i18n_test_character_1920', 0, function () {
+        console.log('i18n_test_character_1920 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.getType('ABC');
+        console.log('i18n_test_character_1920 ' + value);
+        expect(value).assertEqual('U_UPPERCASE_LETTER');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1940
+    * @tc.name    test getType interface with ABCdef param
+    * @tc.desc    check the getType interface
+    */
+    it('i18n_test_character_1940', 0, function () {
+        console.log('i18n_test_character_1940 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.getType('ABCdef');
+        console.log('i18n_test_character_1940 ' + value);
+        expect(value).assertEqual('U_UPPERCASE_LETTER');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1960
+    * @tc.name    test getType interface with 123 param
+    * @tc.desc    check the getType interface
+    */
+    it('i18n_test_character_1960', 0, function () {
+        console.log('i18n_test_character_1960 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.getType('123');
+        console.log('i18n_test_character_1960 ' + value);
+        expect(value).assertEqual('U_DECIMAL_DIGIT_NUMBER');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1970
+    * @tc.name    test getType interface with 123abc param
+    * @tc.desc    check the getType interface
+    */
+    it('i18n_test_character_1970', 0, function () {
+        console.log('i18n_test_character_1970 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.getType('123abc');
+        console.log('i18n_test_character_1970 ' + value);
+        expect(value).assertEqual('U_DECIMAL_DIGIT_NUMBER');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1980
+    * @tc.name    test getType interface with ١٢٣٤٥٦٧ param
+    * @tc.desc    check the getType interface
+    */
+    it('i18n_test_character_1980', 0, function () {
+        console.log('i18n_test_character_1980 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.getType('١٢٣٤٥٦٧');
+        console.log('i18n_test_character_1980 ' + value);
+        expect(value).assertEqual('U_DECIMAL_DIGIT_NUMBER');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CHARACTER_1990
+    * @tc.name    test getType interface with multi space param
+    * @tc.desc    check the getType interface
+    */
+    it('i18n_test_character_1990', 0, function () {
+        console.log('i18n_test_character_1990 ' + 'start');
+        let character = new I18n.Character();
+        let value = character.getType('   ');
+        console.log('i18n_test_character_1990 ' + value);
         expect(value).assertEqual('U_SPACE_SEPARATOR');
     })
 

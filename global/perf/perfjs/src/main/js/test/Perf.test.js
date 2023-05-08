@@ -1763,6 +1763,31 @@ describe('PerfTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_5920
+    * @tc.name    test the performance of Locale
+    * @tc.desc    check the performance of Locale
+    */
+    it('perf_test_5920', 0, function () {
+        console.log('perf_test_5920 ' + 'start');
+        let locale = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            locale = new Intl.Locale();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_5920--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_PERF_JS_6000
     * @tc.name    test the performance of toString
     * @tc.desc    check the performance of toString
@@ -1860,6 +1885,31 @@ describe('PerfTest', function () {
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
         console.log('perf_test_6300--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_6320
+    * @tc.name    test the performance of DateTimeFormat
+    * @tc.desc    check the performance of DateTimeFormat
+    */
+    it('perf_test_6320', 0, function () {
+        console.log('perf_test_6320 ' + 'start');
+        let datefmt = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            datefmt = new Intl.DateTimeFormat();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_6320--'
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
         if(avgTime < 10){
@@ -1980,6 +2030,31 @@ describe('PerfTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_6720
+    * @tc.name    test the performance of NumberFormat
+    * @tc.desc    check the performance of NumberFormat
+    */
+    it('perf_test_6720', 0, function () {
+        console.log('perf_test_6720 ' + 'start');
+        let numfmt = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            numfmt = new Intl.NumberFormat();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_6720--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_PERF_JS_6800
     * @tc.name    test the performance of NumberFormat.format
     * @tc.desc    check the performance of NumberFormat.format
@@ -2063,6 +2138,31 @@ describe('PerfTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_7020
+    * @tc.name    test the performance of PluralRules
+    * @tc.desc    check the performance of PluralRules
+    */
+    it('perf_test_7020', 0, function () {
+        console.log('perf_test_7020 ' + 'start');
+        let pl = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            pl = new Intl.PluralRules();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_7020--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_PERF_JS_7100
     * @tc.name    test the performance of PluralRules.select
     * @tc.desc    check the performance of PluralRules.select
@@ -2104,6 +2204,31 @@ describe('PerfTest', function () {
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
         console.log('perf_test_7200--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_7220
+    * @tc.name    test the performance of Collator
+    * @tc.desc    check the performance of Collator
+    */
+    it('perf_test_7220', 0, function () {
+        console.log('perf_test_7220 ' + 'start');
+        let coll = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            coll = new Intl.Collator();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_7220--'
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
         if(avgTime < 10){
@@ -2208,6 +2333,31 @@ describe('PerfTest', function () {
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
         console.log('perf_test_7600--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_PERF_JS_7620
+    * @tc.name    test the performance of RelativeTimeFormat
+    * @tc.desc    check the performance of RelativeTimeFormat
+    */
+    it('perf_test_7620', 0, function () {
+        console.log('perf_test_7620 ' + 'start');
+        let relativetimefmt = null;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            relativetimefmt = new Intl.RelativeTimeFormat();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_7620--'
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
         if(avgTime < 10){
@@ -2655,6 +2805,58 @@ describe('PerfTest', function () {
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
         console.log('perf_test_9500--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_9600
+    * @tc.name   test the performance of Normalizer.getInstance
+    * @tc.desc   check the performance of Normalizer.getInstance
+    */
+    it('perf_test_9600', 0, function () {
+        console.log('perf_test_9600 ' + 'start');
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFC);
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_9600--'
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_9700
+    * @tc.name   test the performance of Normalizer.normalize
+    * @tc.desc   check the performance of Normalizer.normalize
+    */
+    it('perf_test_9700', 0, function () {
+        console.log('perf_test_9700 ' + 'start');
+        let str = '\u1e9b\u0323';
+        let value = 'test';
+        let normal = I18n.Normalizer.getInstance(I18n.NormalizerMode.NFC);
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = normal.normalize(str);
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_9700--'
                     + ' value: ' + value
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
