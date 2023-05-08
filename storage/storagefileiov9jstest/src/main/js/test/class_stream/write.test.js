@@ -37,8 +37,12 @@ describe('fileIO_fs_stream_write', function () {
     try {
       let sr = fileIO.createStreamSync(fpath, 'r+');
       expect(sr !== null).assertTrue();
-      let bytesWritten = sr.writeSync(new ArrayBuffer(4096));
-      expect(bytesWritten == 4096).assertTrue();
+      let bytesWritten1 = sr.writeSync(FILE_CONTENT);
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = sr.writeSync(new ArrayBuffer(FILE_CONTENT.length));
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = sr.readSync(new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
       sr.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
@@ -356,6 +360,64 @@ describe('fileIO_fs_stream_write', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITE_SYNC_1200
+   * @tc.name fileIO_test_stream_write_sync_012
+   * @tc.desc Test the writeSync() interface of class Stream.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_write_sync_012', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_stream_write_sync_012');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      let bytesWritten = sr.writeSync(new ArrayBuffer(4096), undefined);
+      expect(bytesWritten == 4096).assertTrue();
+      sr.closeSync();
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_stream_write_sync_012 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITE_SYNC_1300
+   * @tc.name fileIO_test_stream_write_sync_013
+   * @tc.desc Test the writeSync() interface of class Stream.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_write_sync_013', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_stream_write_sync_013');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      let bytesWritten = sr.writeSync(new ArrayBuffer(4096), {
+        offset: undefined,
+        length: undefined,
+        encoding: undefined
+      });
+      expect(bytesWritten == 4096).assertTrue();
+      sr.closeSync();
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_stream_write_sync_013 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_STREAM_WRITE_ASYNC_0000
    * @tc.name fileIO_test_stream_write_async_000
    * @tc.desc Test the write() interface of class Stream. Promise.
@@ -372,8 +434,12 @@ describe('fileIO_fs_stream_write', function () {
     try {
       let sr = fileIO.createStreamSync(fpath, 'r+');
       expect(sr !== null).assertTrue();
-      let bytesWritten = await sr.write(new ArrayBuffer(4096));
-      expect(bytesWritten == 4096).assertTrue();
+      let bytesWritten1 = await sr.write(FILE_CONTENT);
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = await sr.write(new ArrayBuffer(FILE_CONTENT.length));
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = sr.readSync(new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
       sr.closeSync();
       fileIO.unlinkSync(fpath);
       done();
@@ -400,15 +466,24 @@ describe('fileIO_fs_stream_write', function () {
     try {
       let sr = fileIO.createStreamSync(fpath, 'r+');
       expect(sr !== null).assertTrue();
-      sr.write(new ArrayBuffer(4096), (err, bytesWritten) => {
+      sr.write(FILE_CONTENT, (err, bytesWritten1) => {
         if (err) {
-          console.log('fileIO_test_stream_write_async_001 err package: ' + JSON.stringify(err));
+          console.log('fileIO_test_stream_write_async_001 err package1: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(bytesWritten == 4096).assertTrue();
-        sr.closeSync();
-        fileIO.unlinkSync(fpath);
-        done();
+        expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+        sr.write(new ArrayBuffer(FILE_CONTENT.length), (err, bytesWritten2) => {
+          if (err) {
+            console.log('fileIO_test_stream_write_async_001 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+          let readLen = sr.readSync(new ArrayBuffer(4096), { offset: 0 });
+          expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+          sr.closeSync();
+          fileIO.unlinkSync(fpath);
+          done();
+        });
       });
     } catch (e) {
       console.log('fileIO_test_stream_write_async_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -988,6 +1063,170 @@ describe('fileIO_fs_stream_write', function () {
       console.log('fileIO_test_stream_write_async_019 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITE_ASYNC_2000
+   * @tc.name fileIO_test_stream_write_async_020
+   * @tc.desc Test the write() interface of class Stream. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_write_async_020', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_stream_write_async_020');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      let bytesWritten1 = await sr.write(FILE_CONTENT, undefined);
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = await sr.write(new ArrayBuffer(FILE_CONTENT.length), undefined);
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = sr.readSync(new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+      sr.closeSync();
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_stream_write_async_020 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITE_ASYNC_2100
+   * @tc.name fileIO_test_stream_write_async_021
+   * @tc.desc Test the write() interface of class Stream. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_write_async_021', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_stream_write_async_021');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      sr.write(FILE_CONTENT, undefined, (err, bytesWritten1) => {
+        if (err) {
+          console.log('fileIO_test_stream_write_async_021 err package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+        sr.write(new ArrayBuffer(FILE_CONTENT.length), undefined, (err, bytesWritten2) => {
+          if (err) {
+            console.log('fileIO_test_stream_write_async_021 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+          let readLen = sr.readSync(new ArrayBuffer(4096), { offset: 0 });
+          expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+          sr.closeSync();
+          fileIO.unlinkSync(fpath);
+          done();
+        });
+      });
+    } catch (e) {
+      console.log('fileIO_test_stream_write_async_021 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITE_ASYNC_2200
+   * @tc.name fileIO_test_stream_write_async_022
+   * @tc.desc Test the write() interface of class Stream. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_write_async_022', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_stream_write_async_022');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      let bytesWritten1 = await sr.write(FILE_CONTENT, {
+        offset: undefined,
+        length: undefined,
+        encoding: undefined
+      });
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = await sr.write(new ArrayBuffer(FILE_CONTENT.length), {
+        offset: undefined,
+        length: undefined,
+        encoding: undefined
+      });
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = sr.readSync(new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+      sr.closeSync();
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_stream_write_async_022 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITE_ASYNC_2300
+   * @tc.name fileIO_test_stream_write_async_023
+   * @tc.desc Test the write() interface of class Stream. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_write_async_023', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_stream_write_async_023');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      sr.write(FILE_CONTENT, {
+        offset: undefined,
+        length: undefined,
+        encoding: undefined
+      }, (err, bytesWritten1) => {
+        if (err) {
+          console.log('fileIO_test_stream_write_async_023 err package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+        sr.write(new ArrayBuffer(FILE_CONTENT.length), {
+          offset: undefined,
+          length: undefined,
+          encoding: undefined
+        }, (err, bytesWritten2) => {
+          if (err) {
+            console.log('fileIO_test_stream_write_async_023 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+          let readLen = sr.readSync(new ArrayBuffer(4096), { offset: 0 });
+          expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+          sr.closeSync();
+          fileIO.unlinkSync(fpath);
+          done();
+        });
+      });
+    } catch (e) {
+      console.log('fileIO_test_stream_write_async_023 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 })

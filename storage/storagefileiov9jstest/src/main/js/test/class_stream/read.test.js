@@ -37,8 +37,10 @@ describe('fileIO_fs_stream_read', function () {
     try {
       let sr = fileIO.createStreamSync(fpath, 'r+');
       expect(sr !== null).assertTrue();
-      let readLen = sr.readSync(new ArrayBuffer(4096));
-      expect(readLen == FILE_CONTENT.length).assertTrue();
+      let readLen1 = sr.readSync(new ArrayBuffer(16));
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = sr.readSync(new ArrayBuffer(8));
+      expect(readLen2 == 0).assertTrue();
       sr.closeSync();
       fileIO.unlinkSync(fpath);
     } catch (e) {
@@ -215,6 +217,70 @@ describe('fileIO_fs_stream_read', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_STREAM_READ_SYNC_0700
+   * @tc.name fileIO_test_stream_read_sync_007
+   * @tc.desc Test the readSync() interface of class Stream.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_read_sync_007', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_stream_read_sync_007');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      let readLen1 = sr.readSync(new ArrayBuffer(16), undefined);
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = sr.readSync(new ArrayBuffer(8), undefined);
+      expect(readLen2 == 0).assertTrue();
+      sr.closeSync();
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_stream_read_sync_007 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_READ_SYNC_0800
+   * @tc.name fileIO_test_stream_read_sync_008
+   * @tc.desc Test the readSync() interface of class Stream.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_read_sync_008', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_stream_read_sync_008');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      let readLen1 = sr.readSync(new ArrayBuffer(16), {
+        offset: undefined,
+        length: undefined
+      });
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = sr.readSync(new ArrayBuffer(8), {
+        offset: undefined,
+        length: undefined
+      });
+      expect(readLen2 == 0).assertTrue();
+      sr.closeSync();
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_stream_read_sync_008 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_STREAM_READ_ASYNC_0000
    * @tc.name fileIO_test_stream_read_async_000
    * @tc.desc Test read() interface, Promise.
@@ -231,8 +297,10 @@ describe('fileIO_fs_stream_read', function () {
     try {
       let sr = fileIO.createStreamSync(fpath, 'r+');
       expect(sr !== null).assertTrue();
-      let readLen = await sr.read(new ArrayBuffer(4096));
-      expect(readLen == FILE_CONTENT.length).assertTrue();
+      let readLen1 = await sr.read(new ArrayBuffer(16));
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = await sr.read(new ArrayBuffer(8));
+      expect(readLen2 == 0).assertTrue();
       sr.closeSync();
       fileIO.unlinkSync(fpath);
       done();
@@ -259,15 +327,22 @@ describe('fileIO_fs_stream_read', function () {
     try {
       let sr = fileIO.createStreamSync(fpath, 'r+');
       expect(sr !== null).assertTrue();
-      sr.read(new ArrayBuffer(4096), (err, readLen) => {
+      sr.read(new ArrayBuffer(16), (err, readLen1) => {
         if (err) {
-          console.log('fileIO_test_stream_read_async_001 error package: ' + JSON.stringify(err));
+          console.log('fileIO_test_stream_read_async_001 error package1: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        expect(readLen == FILE_CONTENT.length).assertTrue();
-        sr.closeSync();
-        fileIO.unlinkSync(fpath);
-        done();
+        expect(readLen1 == FILE_CONTENT.length).assertTrue();
+        sr.read(new ArrayBuffer(8), (err, readLen2) => {
+          if (err) {
+            console.log('fileIO_test_stream_read_async_001 error package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(readLen2 == 0).assertTrue();
+          sr.closeSync();
+          fileIO.unlinkSync(fpath);
+          done();
+        });
       });
     } catch (e) {
       console.log('fileIO_test_stream_read_async_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -676,6 +751,158 @@ describe('fileIO_fs_stream_read', function () {
       console.log('fileIO_test_stream_read_async_014 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_READ_ASYNC_1500
+   * @tc.name fileIO_test_stream_read_async_015
+   * @tc.desc Test the read() interface of class Stream. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_read_async_015', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_stream_read_async_015');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      let readLen1 = await sr.read(new ArrayBuffer(16), undefined);
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = await sr.read(new ArrayBuffer(8), undefined);
+      expect(readLen2 == 0).assertTrue();
+      sr.closeSync();
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_stream_read_async_015 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_READ_ASYNC_1600
+   * @tc.name fileIO_test_stream_read_async_016
+   * @tc.desc Test the read() interface of class Stream. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_read_async_016', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_stream_read_async_016');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      sr.read(new ArrayBuffer(16), undefined, (err, readLen1) => {
+        if (err) {
+          console.log('fileIO_test_stream_read_async_016 error package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(readLen1 == FILE_CONTENT.length).assertTrue();
+        sr.read(new ArrayBuffer(8), undefined, (err, readLen2) => {
+          if (err) {
+            console.log('fileIO_test_stream_read_async_016 error package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(readLen2 == 0).assertTrue();
+          sr.closeSync();
+          fileIO.unlinkSync(fpath);
+          done();
+        });
+      });
+    } catch (e) {
+      console.log('fileIO_test_stream_read_async_016 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_READ_ASYNC_1700
+   * @tc.name fileIO_test_stream_read_async_017
+   * @tc.desc Test the read() interface of class Stream. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_read_async_017', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_stream_read_async_017');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      let readLen1 = await sr.read(new ArrayBuffer(16), {
+        offset: undefined,
+        length: undefined
+      });
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = await sr.read(new ArrayBuffer(8), {
+        offset: undefined,
+        length: undefined
+      });
+      expect(readLen2 == 0).assertTrue();
+      sr.closeSync();
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_stream_read_async_017 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_READ_ASYNC_1800
+   * @tc.name fileIO_test_stream_read_async_018
+   * @tc.desc Test the read() interface of class Stream. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_stream_read_async_018', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_stream_read_async_018');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let sr = fileIO.createStreamSync(fpath, 'r+');
+      expect(sr !== null).assertTrue();
+      sr.read(new ArrayBuffer(4096), {
+        offset: undefined,
+        length: undefined
+      }, (err, readLen1) => {
+        if (err) {
+          console.log('fileIO_test_stream_read_async_018 error package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(readLen1 == FILE_CONTENT.length).assertTrue();
+        sr.read(new ArrayBuffer(8), {
+          offset: undefined,
+          length: undefined
+        }, (err, readLen2) => {
+          if (err) {
+            console.log('fileIO_test_stream_read_async_018 error package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(readLen2 == 0).assertTrue();
+          sr.closeSync();
+          fileIO.unlinkSync(fpath);
+          done();
+        });
+      });
+    } catch (e) {
+      console.log('fileIO_test_stream_read_async_018 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 });

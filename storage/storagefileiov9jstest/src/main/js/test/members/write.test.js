@@ -24,7 +24,7 @@ export default function fileIOWrite() {
    * @tc.number SUB_DF_FILEIO_WRITE_SYNC_0000
    * @tc.name fileIO_test_write_sync_000
    * @tc.desc Test writeSync() interfaces.
-   * Open the file in write-only mode, verifying the normal write function.
+   * Open the file in write-only mode, default write from current offset.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -35,10 +35,14 @@ export default function fileIOWrite() {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       expect(isIntNum(file.fd)).assertTrue();
-      let bytesWritten = fileIO.writeSync(file.fd, FILE_CONTENT);
-      expect(bytesWritten == FILE_CONTENT.length).assertTrue();
+      let bytesWritten1 = fileIO.writeSync(file.fd, FILE_CONTENT);
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = fileIO.writeSync(file.fd, new ArrayBuffer(FILE_CONTENT.length));
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
@@ -326,10 +330,79 @@ export default function fileIOWrite() {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_1100
+   * @tc.name fileIO_test_write_sync_011
+   * @tc.desc Test writeSync() interfaces.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_write_sync_011', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_write_sync_011');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      expect(isIntNum(file.fd)).assertTrue();
+      let bytesWritten1 = fileIO.writeSync(file.fd, FILE_CONTENT, undefined);
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = fileIO.writeSync(file.fd, new ArrayBuffer(FILE_CONTENT.length), undefined);
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_write_sync_011 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_WRITE_SYNC_1200
+   * @tc.name fileIO_test_write_sync_012
+   * @tc.desc Test writeSync() interfaces.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_write_sync_012', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_write_sync_012');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      expect(isIntNum(file.fd)).assertTrue();
+      let bytesWritten1 = fileIO.writeSync(file.fd, FILE_CONTENT, {
+        offset: undefined,
+        length: undefined,
+        encoding: undefined,
+      });
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = fileIO.writeSync(file.fd, new ArrayBuffer(FILE_CONTENT.length), {
+        offset: undefined,
+        length: undefined,
+        encoding: undefined,
+      });
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_write_sync_012 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0000
    * @tc.name fileIO_test_write_async_000
    * @tc.desc Test write() interfaces. Promise.
-   * Open the file in write-only mode, verifying the normal write function.
+   * Open the file in write-only mode, default write from current offset.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -340,10 +413,14 @@ export default function fileIOWrite() {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       expect(isIntNum(file.fd)).assertTrue();
-      let bytesWritten = await fileIO.write(file.fd, FILE_CONTENT);
-      expect(bytesWritten == FILE_CONTENT.length).assertTrue();
+      let bytesWritten1 = await fileIO.write(file.fd, FILE_CONTENT);
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = await fileIO.write(file.fd, new ArrayBuffer(FILE_CONTENT.length));
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
       done();
@@ -357,7 +434,7 @@ export default function fileIOWrite() {
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0100
    * @tc.name fileIO_test_write_async_001
    * @tc.desc Test write() interfaces. Callback.
-   * Open the file in write-only mode, verifying the normal write function.
+   * Open the file in write-only mode, default write from current offset.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 3
@@ -368,13 +445,27 @@ export default function fileIOWrite() {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       expect(isIntNum(file.fd)).assertTrue();
-      let bytesWritten = await fileIO.write(file.fd, FILE_CONTENT);
-      expect(bytesWritten == FILE_CONTENT.length).assertTrue();
-      fileIO.closeSync(file);
-      fileIO.unlinkSync(fpath);
-      done();
+      fileIO.write(file.fd, FILE_CONTENT, (err, bytesWritten1) => {
+        if (err) {
+          console.log('fileIO_test_write_async_001 err package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+        fileIO.write(file.fd, new ArrayBuffer(FILE_CONTENT.length), (err, bytesWritten2) => {
+          if (err) {
+            console.log('fileIO_test_write_async_001 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+          let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+          expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+          fileIO.closeSync(file);
+          fileIO.unlinkSync(fpath);
+          done();
+        });
+      });
     } catch (e) {
       console.log('fileIO_test_write_async_001 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
@@ -974,6 +1065,170 @@ export default function fileIOWrite() {
       console.log('fileIO_test_write_async_020 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_2100
+   * @tc.name fileIO_test_write_async_021
+   * @tc.desc Test write() interfaces. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_write_async_021', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_write_async_021');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      expect(isIntNum(file.fd)).assertTrue();
+      let bytesWritten1 = await fileIO.write(file.fd, FILE_CONTENT, undefined);
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = await fileIO.write(file.fd, new ArrayBuffer(FILE_CONTENT.length), undefined);
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_write_async_021 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_2200
+   * @tc.name fileIO_test_write_async_022
+   * @tc.desc Test write() interfaces. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_write_async_022', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_write_async_022');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      expect(isIntNum(file.fd)).assertTrue();
+      fileIO.write(file.fd, FILE_CONTENT, undefined, (err, bytesWritten1) => {
+        if (err) {
+          console.log('fileIO_test_write_async_022 err package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+        fileIO.write(file.fd, new ArrayBuffer(FILE_CONTENT.length), undefined, (err, bytesWritten2) => {
+          if (err) {
+            console.log('fileIO_test_write_async_022 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+          let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+          expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+          fileIO.closeSync(file);
+          fileIO.unlinkSync(fpath);
+          done();
+        });
+      });
+    } catch (e) {
+      console.log('fileIO_test_write_async_022 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_2300
+   * @tc.name fileIO_test_write_async_023
+   * @tc.desc Test write() interfaces. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_write_async_023', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_write_async_023');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      expect(isIntNum(file.fd)).assertTrue();
+      let bytesWritten1 = await fileIO.write(file.fd, FILE_CONTENT, {
+        length: undefined,
+        offset: undefined,
+        encoding: undefined,
+      });
+      expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+      let bytesWritten2 = await fileIO.write(file.fd, new ArrayBuffer(FILE_CONTENT.length), {
+        length: undefined,
+        offset: undefined,
+        encoding: undefined,
+      });
+      expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+      expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_write_async_023 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_2400
+   * @tc.name fileIO_test_write_async_024
+   * @tc.desc Test write() interfaces. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_write_async_024', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_write_async_024');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      expect(isIntNum(file.fd)).assertTrue();
+      fileIO.write(file.fd, FILE_CONTENT, {
+        length: undefined,
+        offset: undefined,
+        encoding: undefined,
+      }, (err, bytesWritten1) => {
+        if (err) {
+          console.log('fileIO_test_write_async_011 err package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(bytesWritten1 == FILE_CONTENT.length).assertTrue();
+        fileIO.write(file.fd, new ArrayBuffer(FILE_CONTENT.length), {
+          length: undefined,
+          offset: undefined,
+          encoding: undefined,
+        }, (err, bytesWritten2) => {
+          if (err) {
+            console.log('fileIO_test_write_async_005 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(bytesWritten2 == FILE_CONTENT.length).assertTrue();
+          let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+          expect(readLen == FILE_CONTENT.length * 2).assertTrue();
+          fileIO.closeSync(file);
+          fileIO.unlinkSync(fpath);
+          done();
+        });
+      });
+    } catch (e) {
+      console.log('fileIO_test_write_async_024 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 })

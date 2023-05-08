@@ -261,6 +261,34 @@ describe('fileIO_fs_copyfile', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_SYNC_0900
+   * @tc.name fileIO_copy_file_sync_009
+   * @tc.desc Test copyFileSync() interfaces.
+   * Use default mode = 0.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_copy_file_sync_009', 3, async function () {
+    let fpath = await nextFileName('fileIO_copy_file_sync_009');
+    let fpathTarget = fpath + 'tgt';
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.copyFileSync(fpath, fpathTarget, undefined);
+      let stat1 = fileIO.statSync(fpath);
+      let stat2 = fileIO.statSync(fpathTarget);
+      expect(stat1.size == stat2.size).assertTrue();
+      fileIO.unlinkSync(fpath);
+      fileIO.unlinkSync(fpathTarget);
+    } catch (e) {
+      console.log('fileIO_copy_file_sync_009 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_0000
    * @tc.name fileIO_copy_file_async_000
    * @tc.desc Test copyFile() interfaces. Promise.
@@ -787,6 +815,69 @@ describe('fileIO_fs_copyfile', function () {
       });
     } catch (e) {
       console.log('fileIO_copy_file_async_017 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_1800
+   * @tc.name fileIO_copy_file_async_018
+   * @tc.desc Test copyFile() interfaces. Promise
+   * Use default mode = 0.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_copy_file_async_018', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_copy_file_async_018');
+    let fpathTarget = fpath + 'tgt';
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      await fileIO.copyFile(fpath, fpathTarget, undefined);
+      let stat1 = fileIO.statSync(fpath);
+      let stat2 = fileIO.statSync(fpathTarget);
+      expect(stat1.size == stat2.size).assertTrue();
+      fileIO.unlinkSync(fpath);
+      fileIO.unlinkSync(fpathTarget);
+      done();
+    } catch (e) {
+      console.log('fileIO_copy_file_async_018 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_COPY_FILE_ASYNC_1900
+   * @tc.name fileIO_copy_file_async_019
+   * @tc.desc Test copyFile() interfaces. Callback
+   * Use default mode = 0.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_copy_file_async_019', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_copy_file_async_019');
+    let fpathTarget = fpath + 'tgt';
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.copyFile(fpath, fpathTarget, undefined, (err) => {
+        if (err) {
+          console.log('fileIO_copy_file_async_019 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        let stat1 = fileIO.statSync(fpath);
+        let stat2 = fileIO.statSync(fpathTarget);
+        expect(stat1.size == stat2.size).assertTrue();
+        fileIO.unlinkSync(fpath);
+        fileIO.unlinkSync(fpathTarget);
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_copy_file_async_019 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
