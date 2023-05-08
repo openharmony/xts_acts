@@ -71,11 +71,10 @@ export default function SelectJsunit() {
       expect(obj.$attrs.optionFont).assertEqual('{"size":"16.00fp","weight":"400","family":"","style":"FontStyle.Normal"}');
       expect(obj.$attrs.optionFontColor).assertEqual('#FFFF0000');
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()
-      let textComponent = await driver.findComponent(BY.key('indexValue'));
-      let text = await textComponent.getText();
-      console.info("[SelectJsunit_0100] indexValue: " + JSON.stringify(text));
-      expect(text).assertEqual('indexValue:0');
+      let strJson1 = getInspectorByKey('indexValue');
+      let obj1 = JSON.parse(strJson1);
+      console.info("[SelectJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
+      expect(obj1.$attrs.content).assertEqual('indexValue:0');
       console.info('[SelectJsunit_0100] END');
       done();
     });
