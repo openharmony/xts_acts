@@ -343,6 +343,17 @@ describe('I18nTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_3840
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and null param
+    * @tc.desc    check the display country
+    */
+    it('i18n_test_3840', 0, function () {
+        let value = I18n.getDisplayCountry('zh-Hans-CN', 'en-US', null);
+        console.log('i18n_test_3840 ' + value);
+        expect(value).assertEqual('China');
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_3900
     * @tc.name    getDisplayCountry with zh and en-US and true param
     * @tc.desc    check the display country
@@ -416,6 +427,17 @@ describe('I18nTest', function () {
     it('i18n_test_4320', 0, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', undefined);
         console.log('i18n_test_4320 ' + value);
+        expect(value).assertEqual('China');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4321
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and null param
+    * @tc.desc    check the display country
+    */
+    it('i18n_test_4321', 0, function () {
+        let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', null);
+        console.log('i18n_test_4321 ' + value);
         expect(value).assertEqual('China');
     })
 
@@ -547,6 +569,17 @@ describe('I18nTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_4440
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and null param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_4440', 0, function () {
+        let value = I18n.getDisplayLanguage('zh-Hans-CN', 'en-US', null);
+        console.log('i18n_test_4440 ' + value);
+        expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_4500
     * @tc.name    getDisplayLanguage with zh-Hans-CN and en-GB and true param
     * @tc.desc    check the language
@@ -631,6 +664,17 @@ describe('I18nTest', function () {
     it('i18n_test_5020', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', undefined);
         console.log('i18n_test_5020 ' + value);
+        expect(value).assertEqual('Simplified Chinese');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_5021
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and null param
+    * @tc.desc    check the language
+    */
+    it('i18n_test_5021', 0, function () {
+        let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', null);
+        console.log('i18n_test_5021 ' + value);
         expect(value).assertEqual('Simplified Chinese');
     })
 
@@ -767,30 +811,45 @@ describe('I18nTest', function () {
     })
 
     /**
-    * @tc.number  SUB_GLOBAL_I18N_JS_5120
-    * @tc.name    test isValidNumber interface with 0755-6100088X param
-    * @tc.desc    get the isValidNumber value
-    */
-     it('i18n_test_5120', 0, function () {
-        console.log('i18n_test_5120 ' + 'start');
-        let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let ran = Math.ceil(Math.random(1) * 9);
-        console.log('i18n_test_5120 ' + ran);
-        let valid = phonenumber.isValidNumber('0755-6100088' + ran);
-        console.log('i18n_test_5120 ' + valid);
-        expect(valid).assertEqual(true);
-    })
-
-    /**
     * @tc.number  SUB_GLOBAL_I18N_JS_5140
-    * @tc.name    test isValidNumber interface with 110 param
+    * @tc.name    test isValidNumber interface with 13510574676 and null param
     * @tc.desc    get the isValidNumber value
     */
      it('i18n_test_5140', 0, function () {
         console.log('i18n_test_5140 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN', null);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5140 ' + ran);
+        let valid = phonenumber.isValidNumber('1351057467' + ran);
+        console.log('i18n_test_5140 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number  SUB_GLOBAL_I18N_JS_5160
+    * @tc.name    test isValidNumber interface with 0755-6100088X param
+    * @tc.desc    get the isValidNumber value
+    */
+     it('i18n_test_5160', 0, function () {
+        console.log('i18n_test_5160 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5160 ' + ran);
+        let valid = phonenumber.isValidNumber('0755-6100088' + ran);
+        console.log('i18n_test_5160 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number  SUB_GLOBAL_I18N_JS_5180
+    * @tc.name    test isValidNumber interface with 110 param
+    * @tc.desc    get the isValidNumber value
+    */
+     it('i18n_test_5180', 0, function () {
+        console.log('i18n_test_5180 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
         let valid = phonenumber.isValidNumber('110');
-        console.log('i18n_test_5140 ' + valid);
+        console.log('i18n_test_5180 ' + valid);
         expect(valid).assertEqual(false);
     })
 
@@ -1763,7 +1822,7 @@ describe('I18nTest', function () {
     })
 
     /**
-    * @tc.number  SUB_GLOBAL_I18N_JS_9200
+    * @tc.number  SUB_GLOBAL_I18N_JS_9120
     * @tc.name    test unitConvert interface from cup to liter unit with undefined style
     * @tc.desc    get the unitConvert value
     */
@@ -1775,6 +1834,22 @@ describe('I18nTest', function () {
                                         'en-US', 
                                         undefined);
         console.log('i18n_test_9120 ' + value);
+        expect(value).assertEqual('236.588 L');
+    })
+
+    /**
+    * @tc.number  SUB_GLOBAL_I18N_JS_9140
+    * @tc.name    test unitConvert interface from cup to liter unit with null style
+    * @tc.desc    get the unitConvert value
+    */
+     it('i18n_test_9140', 0, function () {
+        console.log('i18n_test_9140 ' + 'start');
+        let value = I18n.I18NUtil.unitConvert({unit: 'cup', measureSystem: 'US'}, 
+                                        {unit: 'liter', measureSystem: 'SI'}, 
+                                        1000, 
+                                        'en-US', 
+                                        null);
+        console.log('i18n_test_9140 ' + value);
         expect(value).assertEqual('236.588 L');
     })
 
@@ -2001,6 +2076,23 @@ describe('I18nTest', function () {
                                 'en-US',
                                 undefined);
         console.log('i18n_test_9930 ' + value);
+        expect(value).assertEqual('236.588 L');
+    })
+
+    /**
+     * @tc.number  SUB_GLOBAL_I18N_JS_9931
+     * @tc.name    test unitConvert interface from cup to liter unit with null style
+     * @tc.desc    get the unitConvert value
+     */
+     it('i18n_test_9931', 0, function () {
+        console.log('i18n_test_9931 ' + 'start');
+        let util = new I18n.Util();
+        let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
+                                {unit: 'liter', measureSystem: 'SI'},
+                                1000,
+                                'en-US',
+                                null);
+        console.log('i18n_test_9931 ' + value);
         expect(value).assertEqual('236.588 L');
     })
 
