@@ -341,9 +341,9 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_012
      * @tc.desc subscribe test
      */
-    it('testRdbStoreDistributed0012', 0, async function (done) {
+     it('testRdbStoreDistributed0012', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0012 start *************");
-        rdbStore.on("dataChange", (device) => {
+        rdbStore.on("dataChange", dataRdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (device) => {
             console.info(TAG + device + " dataChange");
         });
         console.info(TAG + "on dataChange success");
@@ -359,7 +359,7 @@ describe('rdbStoreDistributedTest', function () {
      */
     it('testRdbStoreDistributed0013', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0013 start *************");
-        rdbStore.off("dataChange", (device) => {
+        rdbStore.off("dataChange", dataRdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (device) => {
             console.info(TAG + device + " dataChange");
         });
         console.info(TAG + "off dataChange success");
