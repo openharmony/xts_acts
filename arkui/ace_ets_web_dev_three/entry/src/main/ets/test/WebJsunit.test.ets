@@ -406,9 +406,30 @@ export default function webJsunit() {
      *tc.desic Save current page
      */
     it('GetStoredGeolocation',0,async function(done){
-      emitKey="emitGetStoredGeolocation";
+      emitKey="emitSetHttpDnsSuccess";
       Utils.registerEvent("GetStoredGeolocation","file:///",120,done);
       sendEventByKey('webcomponent',10,'');
     })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_037                                                                                                                                                           
+     *tc.name SetHttpDnsSuccess                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('SetHttpDnsSuccess',0,async function(done){
+      emitKey="emitGetAccessibleGeolocation";
+      Utils.registerEvent("SetHttpDnsSuccess",1,446,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_038                                                                                                                                                           
+     *tc.name GetAccessibleGeolocation                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('GetAccessibleGeolocation',0,async function(done){
+      emitKey="emitGetAccessibleGeolocation";
+      Utils.registerEvent("GetAccessibleGeolocation",true,451,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+
   })
 }
