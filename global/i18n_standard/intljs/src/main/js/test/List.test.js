@@ -15,8 +15,10 @@
 import I18nTest from './I18n.test.js'
 import intlTest from './Intl.test.js'
 import LangTest from './Lang.test.js'
+import SystemInI18nTest from './SystemInI18n.test.js'
 export default function testsuite() {
 I18nTest()
 intlTest()
 LangTest()
+SystemInI18nTest()
 }
