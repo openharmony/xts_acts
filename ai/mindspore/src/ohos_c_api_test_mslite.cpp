@@ -60,6 +60,32 @@ void AddContextDeviceCPU(OH_AI_ContextHandle context) {
     OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
 }
 
+// add nnrt device info
+void AddContextDeviceNNRT(OH_AI_ContextHandle context) {
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    ASSERT_NE(nnrt_device_info, nullptr);
+
+    size_t num = 0;
+    auto desc = OH_AI_NNRTGetAllDeviceDescs(&num);
+    if (desc == nullptr) {
+        return;
+    }
+
+    printf("found %u nnrt devices.\n", num);
+    for (size_t i = 0; i < num; i++) {
+        printf("nnrt device %u: {device_id: %u, type:%d, name:%s}\n", i, desc[i].device_id, desc[i].device_type, desc[i].device_name);
+    }
+
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, desc[0].device_id);
+    OH_AI_NNRTDestroyAllDeviceDescs(&desc);
+
+    OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(nnrt_device_info);
+    printf("==========device_type:%d\n", device_type);
+    ASSERT_EQ(device_type, OH_AI_DEVICETYPE_NNRT);
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+}
+
+
 // fill data to inputs tensor
 void FillInputsData(OH_AI_TensorHandleArray inputs, string model_name, bool is_transpose) {
     for (size_t i = 0; i < inputs.handle_num; ++i) {
@@ -95,7 +121,7 @@ void FillInputsData(OH_AI_TensorHandleArray inputs, string model_name, bool is_t
 }
 
 // compare result after predict
-void CompareResult(OH_AI_TensorHandleArray outputs, string model_name) {
+void CompareResult(OH_AI_TensorHandleArray outputs, string model_name, float atol = 0.01, float rtol = 0.01) {
     printf("==========GetOutput==========\n");
     for (size_t i = 0; i < outputs.handle_num; ++i) {
         OH_AI_TensorHandle tensor = outputs.handle_list[i];
@@ -109,7 +135,7 @@ void CompareResult(OH_AI_TensorHandleArray outputs, string model_name) {
         printf("\n");
         printf("==========compFp32WithTData==========\n");
         string output_file = "/data/test/" + model_name + std::to_string(i) + ".output";
-        bool result = compFp32WithTData(output_data, output_file, 0.01, 0.01, false);
+        bool result = compFp32WithTData(output_data, output_file, atol, rtol, false);
         EXPECT_EQ(result, true);
     }
 }
@@ -1529,5 +1555,115 @@ HWTEST(MSLiteTest, OHOS_Compatible_0001, Function | MediumTest | Level1) {
     ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     CompareResult(outputs, "ml_face_isface");
+    OH_AI_ModelDestroy(&model);
+}
+
+// delegate异构
+HWTEST(MSLiteTest, OHOS_NNRT_0001, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRT(context);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_face_isface");
+    OH_AI_ModelDestroy(&model);
+}
+
+// delegate异构：多输入单输出
+HWTEST(MSLiteTest, OHOS_NNRT_0002, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRT(context);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_headpose_pb2tflite.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_headpose_pb2tflite", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_headpose_pb2tflite", 0.02, 0.02);
+    OH_AI_ModelDestroy(&model);
+}
+
+//  delegate异构：输入为uint8模型
+HWTEST(MSLiteTest, OHOS_NNRT_0003, Function | MediumTest | Level1) {
+    printf("==========ReadFile==========\n");
+    size_t size1;
+    size_t *ptr_size1 = &size1;
+    const char *imagePath = "/data/test/aiy_vision_classifier_plants_V1_3.input";
+    char *imageBuf = ReadFile(imagePath, ptr_size1);
+    ASSERT_NE(imageBuf, nullptr);
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRT(context);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/aiy_vision_classifier_plants_V1_3.ms", OH_AI_MODELTYPE_MINDIR,
+                                   context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    for (size_t i = 0; i < inputs.handle_num; ++i) {
+        OH_AI_TensorHandle tensor = inputs.handle_list[i];
+        int64_t element_num = OH_AI_TensorGetElementNum(tensor);
+        printf("Tensor name: %s, elements num: %" PRId64 ".\n", OH_AI_TensorGetName(tensor), element_num);
+        void *input_data = OH_AI_TensorGetMutableData(inputs.handle_list[i]);
+        ASSERT_NE(input_data, nullptr);
+        memcpy_s(input_data, size1, imageBuf, size1);
+    }
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetOutput==========\n");
+    for (size_t i = 0; i < outputs.handle_num; ++i) {
+        OH_AI_TensorHandle tensor = outputs.handle_list[i];
+        int64_t element_num = OH_AI_TensorGetElementNum(tensor);
+        printf("Tensor name: %s, elements num: %" PRId64 ".\n", OH_AI_TensorGetName(tensor), element_num);
+        uint8_t *output_data = reinterpret_cast<uint8_t *>(OH_AI_TensorGetMutableData(tensor));
+        printf("output data is:");
+        for (int j = 0; j < element_num && j <= 20; ++j) {
+            printf("%d ", output_data[j]);
+        }
+        printf("\n");
+        printf("==========compFp32WithTData==========\n");
+        string expectedDataFile = "/data/test/aiy_vision_classifier_plants_V1_3" + std::to_string(i) + ".output";
+        bool result = compUint8WithTData(output_data, expectedDataFile, 0.01, 0.01, false);
+        EXPECT_EQ(result, true);
+    }
+    delete[] imageBuf;
     OH_AI_ModelDestroy(&model);
 }
