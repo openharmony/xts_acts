@@ -352,7 +352,6 @@ describe('relationalStoreDistributedTest', function () {
         try{
             rdbStore.on("dataChange", data_Rdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
             console.info(TAG + "on dataChange success ");
-            expect(rdbStore).assertEqual(rdbStore);
         }catch(err){
             console.info(TAG + "on dataChange " + err);
             expect(err !== null).assertFalse();
@@ -371,7 +370,6 @@ describe('relationalStoreDistributedTest', function () {
         try{
             let off = rdbStore.on("dataChange", data_Rdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
             console.info(TAG + "off dataChange success " + off);
-            expect(rdbStore).assertEqual(rdbStore);
         }catch(err){
             console.info(TAG + "off dataChange " + err);
             expect(err !== null).assertFalse();
