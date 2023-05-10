@@ -17,8 +17,8 @@ import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
 
-export default function AsymmetricCryptographyJsuni1() {
-    describe("AsymmetricCryptographyJsunit1", function () {
+export default function AsymmetricCryptographyJsSecondunit() {
+    describe("AsymmetricCryptographyJsSecondunit", function () {
       console.info("##########start AsymmetricCryptographyJsunit##########");
       beforeAll(function () {});
       afterEach(function () {});
