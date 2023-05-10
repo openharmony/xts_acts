@@ -178,13 +178,13 @@ describe('relationalStoreEncryptTest', function () {
             rdbStore = null
             try {
                 rdbStore = await CreatRdbStore(context, STORE_CONFIG_WRONG)
+                expect(rdbStore !== null).assertFalse()
             } catch (err) {
                 console.info(TAG + `catch err: err.code= ${err.code}, message = ${err.message}`)
-                expect(err.code === 14800000).assertTrue
+                expect(err.code).assertEqual(14800000);
+                done()
+                console.info(TAG + "************* RdbEncryptTest_0040 end *************")
             }
-            
-            done()
-            console.info(TAG + "************* RdbEncryptTest_0040 end *************")
         })
         console.info(TAG + "*************Unit Test End*************")
     }
