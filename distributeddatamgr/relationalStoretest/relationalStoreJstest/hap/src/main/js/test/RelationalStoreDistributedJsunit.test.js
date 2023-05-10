@@ -66,6 +66,7 @@ try {
 
 function storeObserver(devices) {
     console.info(TAG + devices + " dataChange");
+    expect(devices).assertEqual(null)
 }
 
 export default function relationalStoreDistributedTest() {
@@ -368,8 +369,8 @@ describe('relationalStoreDistributedTest', function () {
     it('testRdbStoreDistributed0013', 0, function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0013 start *************");
         try{
-            let off = rdbStore.on("dataChange", data_Rdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
-            console.info(TAG + "off dataChange success " + off);
+            rdbStore.off("dataChange", data_Rdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+            console.info(TAG + "off dataChange success ");
         }catch(err){
             console.info(TAG + "off dataChange " + err);
             expect(err !== null).assertFalse();
