@@ -15,12 +15,14 @@
 
 import SymmetricCryptographyJsunit from "./SymmetricCryptography.test";
 import AsymmetricCryptographyJsunit from "./AsymmetricCryptography.test";
+import AsymmetricCryptographyJsSecondunit from "./AsymmetricCryptographySecond.test";
 import DigestAlgorithmJsunit from "./DigestAlgorithm.test";
 import SecurityRandomJsunit from "./SecurityRandom.test";
 
 export default function testsuite() {
   SymmetricCryptographyJsunit();
   AsymmetricCryptographyJsunit();
+  AsymmetricCryptographyJsSecondunit();
   DigestAlgorithmJsunit();
   SecurityRandomJsunit();
 }
