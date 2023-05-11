@@ -824,6 +824,15 @@ export function SecurityHuksAccessControlJsunit() {
       expect(12000014).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INSUFFICIENT_MEMORY);
       expect(12000015).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_CALL_SERVICE_FAILED);
 
+      expect(2).assertEqual(huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS);
+      expect(3).assertEqual(huks.HuksKeyStorageType.HUKS_STORAGE_KEY_EXPORT_ALLOWED);
+      expect(0).assertEqual(huks.HuksRsaPssSaltLenType.HUKS_RSA_PSS_SALT_LEN_DIGEST);
+      expect(1).assertEqual(huks.HuksRsaPssSaltLenType.HUKS_RSA_PSS_SALT_LEN_MAX);
+
+      expect(536870941).assertEqual(huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG);
+      expect(536870942).assertEqual(huks.HuksTag.HUKS_TAG_RSA_PSS_SALT_LEN_TYPE);
+      expect(536871223).assertEqual(huks.HuksTag.HUKS_TAG_KEY_AUTH_PURPOSE);
+
       done();
     });
   });
