@@ -15,16 +15,16 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 export default function lifecycleTest(abilityContext) {
-  describe('LifeCycleTest', function () {
+  describe('LifeCycleOneTest', function () {
 
     beforeEach(async function (done) {
-      console.info('LifeCycleTest before each called');
+      console.info('LifeCycleOneTest before each called');
       await sleep(1000);
       done()
     });
 
     afterEach(async function (done) {
-      console.info('LifeCycleTest after each called');
+      console.info('LifeCycleOneTest after each called');
       if ("Singlehap_LifeCycleTest_0200" === TAG || "Singlehap_LifeCycleTest_0300" === TAG
       || "Singlehap_LifeCycleTest_0500" === TAG || "Singlehap_LifeCycleTest_0600" === TAG
       || "Singlehap_LifeCycleTest_0800" === TAG || "Singlehap_LifeCycleTest_0900" === TAG) {
@@ -35,12 +35,12 @@ export default function lifecycleTest(abilityContext) {
             "bundleName": "com.example.lifecycle_xts"
           }
         }
-        console.log("LifeCycleTest terminateSelfwithresult para: " + JSON.stringify(para));
+        console.log("LifeCycleOneTest terminateSelfwithresult para: " + JSON.stringify(para));
         await globalThis.ability1context.terminateSelfWithResult(para)
           .then((data) => {
-            console.log("LifeCycleTest terminateSelfwithresult successful data: " + JSON.stringify(data));
+            console.log("LifeCycleOneTest terminateSelfwithresult successful data: " + JSON.stringify(data));
           }).catch((error) => {
-            console.log("LifeCycleTest terminateSelfwithresult error: " + JSON.stringify(error));
+            console.log("LifeCycleOneTest terminateSelfwithresult error: " + JSON.stringify(error));
           });
       } else if ("Singlehap_LifeCycleTest_2000" === TAG) {
         var para1 = {
@@ -50,12 +50,12 @@ export default function lifecycleTest(abilityContext) {
             "bundleName": "com.example.lifecycle_xts"
           }
         }
-        console.log("LifeCycleTest terminateSelfwithresult para: " + JSON.stringify(para1));
+        console.log("LifeCycleOneTest terminateSelfwithresult para: " + JSON.stringify(para1));
         await globalThis.ability12.terminateSelfWithResult(para1)
           .then((data) => {
-            console.log("LifeCycleTest terminateSelfwithresult successful data: " + JSON.stringify(data));
+            console.log("LifeCycleOneTest terminateSelfwithresult successful data: " + JSON.stringify(data));
           }).catch((error) => {
-            console.log("LifeCycleTest terminateSelfwithresult error: " + JSON.stringify(error));
+            console.log("LifeCycleOneTest terminateSelfwithresult error: " + JSON.stringify(error));
           });
       }
       done();
