@@ -10,8 +10,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//build/ohos_var.gni")
-import("//test/xts/tools/build/suite.gni")
+
+base_root = "../../../../"
+import("$base_root/build/ohos_var.gni")
+import("$base_root/test/xts/tools/build/suite.gni")
 
 group("useriam") {
   testonly = true
