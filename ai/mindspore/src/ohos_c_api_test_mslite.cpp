@@ -71,9 +71,10 @@ void AddContextDeviceNNRT(OH_AI_ContextHandle context) {
         return;
     }
 
-    printf("found %u nnrt devices.\n", num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
     for (size_t i = 0; i < num; i++) {
-        printf("nnrt device %u: {device_id: %u, type:%d, name:%s}\n", i, desc[i].device_id, desc[i].device_type, desc[i].device_name);
+	std::cout << "nnrt device " << i << ": {device_id: " << desc[i].device_id
+	    << ", type:" << desc[i].device_type << ", name:" << desc[i].device_name << std::endl; 
     }
 
     OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, desc[0].device_id);
