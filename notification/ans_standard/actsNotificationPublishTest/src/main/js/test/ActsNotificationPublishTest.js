@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 Huawei Device Co., Ltd.
+* Copyright (c) 2022-2023 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -504,6 +504,51 @@ export default function ActsNotificationPublishTest() {
     })
 
     /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_01300
+     * @tc.name      : function publish(request: NotificationRequest, label: string): Promise<void>
+     * @tc.desc      : Publishes a notification
+     */
+    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_01300', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_01300 START`)
+
+      let label = "label"
+
+      let notificationRequest = {
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          id: 1,
+          normal: {
+            title: 'testTitle',
+            text: 'testText',
+            additionalText: 'testAdditionalText'
+          },
+        },
+        slotType: notification.SlotType.SOCIAL_COMMUNICATION,
+        isOngoing: true,
+        isUnremovable: true,
+        deliveryTime: 0,
+        tapDismissed: true,
+        autoDeletedTime: 500,
+        wantAgent: wantAgentData,
+        extraInfo: {
+          'testKey': 'testValue'
+        },
+      }
+
+      notification.publish(notificationRequest, label).then(data => {
+        console.log(`${TAG} notification publish AsyncCallback success: ${data}`)
+        expect(true).assertTrue()
+        done()
+      }).catch(err => {
+        console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_01300 END`)
+    })
+
+    /*
      * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_0100
      * @tc.name      : function cancel(id: number, label: string, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels a notification with the specified label and ID
@@ -570,6 +615,92 @@ export default function ActsNotificationPublishTest() {
     })
 
     /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_0400
+     * @tc.name      : function cancel(id: number, label?: string, str: string): Promise<void>;
+     * @tc.desc      : Cancels a notification with the specified label and ID
+     */
+    it('SUB_NOTIFICATION_ANS_CANCEL_TEST_0400', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0400 START`)
+      let id = 1
+      let label = "label"
+      let str = "str"
+      await notification.cancel(id, label, str).then(() => {
+        console.info(`${TAG} cancel Promise success`)
+        expect(false).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} cancel Promise err: ${err.code}`)
+        expect(true).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0400 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_0500
+     * @tc.name      : function cancel(id: number, label: number): Promise<void>;
+     * @tc.desc      : Cancels a notification with the specified label and ID
+     */
+    it('SUB_NOTIFICATION_ANS_CANCEL_TEST_0500', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0500 START`)
+      let id = 1
+      let label = 2
+      await notification.cancel(id, label).then(() => {
+        console.info(`${TAG} cancel Promise success`)
+        expect(false).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} cancel Promise err: ${err.code}`)
+        expect(true).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0500 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_0600
+     * @tc.name      : function cancel(id: number, label: number, callback: AsyncCallback<void>): void
+     * @tc.desc      : Cancels a notification with the specified label and ID
+     */
+    it('SUB_NOTIFICATION_ANS_CANCEL_TEST_0600', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0600 START`)
+      let id = 1
+      let label = 2
+      await notification.cancel(id, label, (err) => {
+        if (err.code) {
+          console.info(`${TAG} cancel AsyncCallback err: ${err.code}`)
+          expect(true).assertTrue()
+          done()
+        } else {
+          console.info(`${TAG} cancel AsyncCallback success`)
+          expect(false).assertTrue()
+          done()
+        }
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0600 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_0700
+     * @tc.name      : function cancel(id: number, undefined): Promise<void>;
+     * @tc.desc      : Cancels a notification with the ID
+     */
+    it('SUB_NOTIFICATION_ANS_CANCEL_TEST_0700', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0700 START`)
+      let id = 1
+      await notification.cancel(id, undefined).then(() => {
+        console.info(`${TAG} cancel Promise success`)
+        expect(false).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} cancel Promise err: ${err.code}`)
+        expect(true).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0700 END`)
+    })
+
+    /*
      * @tc.number    : SUB_NOTIFICATION_ANS_CANCELAll_TEST_0100
      * @tc.name      : function cancelAll(callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels all notifications of the current application
@@ -607,6 +738,25 @@ export default function ActsNotificationPublishTest() {
         done()
       })
       console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCELAll_TEST_0200 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_CANCELAll_TEST_0300
+     * @tc.name      : function cancelAll(undefined): Promise<void>
+     * @tc.desc      : Cancels all notifications of the current application
+     */
+    it('SUB_NOTIFICATION_ANS_CANCELAll_TEST_0300', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCELAll_TEST_0300 START`)
+      await notification.cancelAll(undefined).then(() => {
+        console.info(`${TAG} cancelAll Promise success`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} cancelAll Promise err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCELAll_TEST_0300 END`)
     })
 
     /*
@@ -652,6 +802,45 @@ export default function ActsNotificationPublishTest() {
     })
 
     /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0300
+     * @tc.name      : function cancelGroup(number): Promise<void>
+     * @tc.desc      : Cancel the notification of a specified group for this application
+     */
+    it('SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0300', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0300 START`)
+      await notification.cancelGroup(2).then(() => {
+        console.info(`${TAG} cancelGroup Promise success`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} cancelGroup Promise err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0300 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0400
+     * @tc.name      : function cancelGroup(groupName: string, undefined): Promise<void>
+     * @tc.desc      : Cancel the notification of a specified group for this application
+     */
+    it('SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0400', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0400 START`)
+      let groupName = "groupName"
+      await notification.cancelGroup(groupName, undefined).then(() => {
+        console.info(`${TAG} cancelGroup Promise success`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} cancelGroup Promise err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0400 END`)
+    })
+
+    /*
      * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0100
      * @tc.name      : function requestEnableNotification(callback: AsyncCallback<void>): void
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
@@ -689,6 +878,25 @@ export default function ActsNotificationPublishTest() {
         done()
       })
       console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0200 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300
+     * @tc.name      : function requestEnableNotification(undefined): Promise<void>
+     * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
+     */
+    it('SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300 START`)
+      await notification.requestEnableNotification(undefined).then(() => {
+        console.info(`${TAG} requestEnableNotification Promise success`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} requestEnableNotification Promise err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300 END`)
     })
 
     /*
@@ -771,6 +979,43 @@ export default function ActsNotificationPublishTest() {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0400 END`)
     })
 
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_COUNT_TEST_0500
+     * @tc.name      : function getActiveNotificationCount(undefined): Promise<number>
+     * @tc.desc      : Obtains the number of all active notifications
+     */
+    it('SUB_NOTIFICATION_ANS_COUNT_TEST_0500', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0500 START`)
+      await notification.getActiveNotificationCount(undefined).then((data) => {
+        console.info(`${TAG} getActiveNotificationCount Promise success :${JSON.stringify(data)}`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} getActiveNotificationCount Promise err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0500 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_COUNT_TEST_0600
+     * @tc.name      : function getActiveNotifications(undefined): Promise<Array<NotificationRequest>>
+     * @tc.desc      : Obtains an array of active notifications
+     */
+    it('SUB_NOTIFICATION_ANS_COUNT_TEST_0600', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0600 START`)
+      await notification.getActiveNotifications(undefined).then((data) => {
+        console.info(`${TAG} getActiveNotifications Promise success :${JSON.stringify(data)}`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} getActiveNotifications Promise err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0600 END`)
+    })
 
     /*
      * @tc.number    : SUB_NOTIFICATION_ANS_SUPPORT_TEST_0100
@@ -814,7 +1059,46 @@ export default function ActsNotificationPublishTest() {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_SUPPORT_TEST_0200 END`)
     })
 
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_SUPPORT_TEST_0300
+     * @tc.name      : function isSupportTemplate(templateName: number): Promise<boolean>
+     * @tc.desc      : Obtains whether the template is supported by the system
+     */
+    it('SUB_NOTIFICATION_ANS_SUPPORT_TEST_0300', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_SUPPORT_TEST_0300 START`)
+      let templateName = 2
+      await notification.isSupportTemplate(templateName).then((data) => {
+        console.info(`${TAG} isSupportTemplate Promise success :${JSON.stringify(data)}`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} isSupportTemplate Promise err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_SUPPORT_TEST_0300 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_SUPPORT_TEST_0400
+     * @tc.name      : function isSupportTemplate(templateName: string, undefined): Promise<boolean>
+     * @tc.desc      : Obtains whether the template is supported by the system
+     */
+    it('SUB_NOTIFICATION_ANS_SUPPORT_TEST_0400', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_SUPPORT_TEST_0400 START`)
+      let templateName = 'test_templateName'
+      await notification.isSupportTemplate(templateName, undefined).then((data) => {
+        console.info(`${TAG} isSupportTemplate Promise success :${JSON.stringify(data)}`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} isSupportTemplate Promise err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_SUPPORT_TEST_0400 END`)
+    })
+
     console.info(TAG + 'SUB_NOTIFICATION_ANS_Publish_TEST END')
-  })   
-    
+  })
 }

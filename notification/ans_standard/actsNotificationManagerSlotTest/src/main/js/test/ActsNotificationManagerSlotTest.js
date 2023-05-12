@@ -1513,6 +1513,101 @@ export default function ActsNotificationManagerSlotTest() {
     })
 
     /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_4900
+     * @tc.name      : addSlot(type: SlotType, undefined): Promise<void>
+     * @tc.desc      : NotificationSlot for other purposes
+     */
+    it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_4900', 0, async function (done) {
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_4900 START')
+      await notificationManager.addSlot(notificationManager.SlotType.OTHER_TYPES, undefined).then(() => {
+        console.info(`${TAG} addSlot_49 Promise success`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} addSlot_49 Promise errCode: ${err.code}, errMes: ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_4900 END')
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5000
+     * @tc.name      : getSlot(SlotType: SlotType, undefined): Promise<NotificationSlot>
+     * @tc.desc      : Get the UNKNOWN_TYPE type slot without add
+     */
+    it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5000', 0, async function (done) {
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5000 START')
+      await notificationManager.getSlot(notificationManager.SlotType.UNKNOWN_TYPE, undefined).then((NotificationSlot) => {
+        console.info(`${TAG} getSlot_50 Promise success: ${NotificationSlot}`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} getSlot_50 Promise errCode: ${err.code}, errMes: ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5000 END')
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5100
+     * @tc.name      : getSlots(undefined): Promise<Array<NotificationSlot>>
+     * @tc.desc      : Get all NotificationSlot without add
+     */
+    it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5100', 0, async function (done) {
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5100 START')
+      await notificationManager.getSlots(undefined).then((NotificationSlot) => {
+        console.info(`${TAG} getSlots_51 Promise success: ${NotificationSlot}`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} getSlots_51 Promise err: ${err}, errMes: ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5100 END')
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5200
+     * @tc.name      : removeSlot(SlotType: SlotType, undefined): Promise<void>
+     * @tc.desc      : Remove the UNKNOWN_TYPE type slot without add
+     */
+    it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5200', 0, async function (done) {
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5200 START')
+      await notificationManager.removeSlot(notificationManager.SlotType.UNKNOWN_TYPE, undefined).then(() => {
+        console.info(`${TAG} removeSlot_52 success`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} removeSlot_52 errCode: ${err.code}, errMes: ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5200 END')
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5300
+     * @tc.name      : removeAllSlots(undefined): Promise<void>
+     * @tc.desc      : Removes all NotificationSlot
+     */
+    it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5300', 0, async function (done) {
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5300 START')
+      await notificationManager.removeAllSlots(undefined).then(() => {
+        console.info(`${TAG} removeAllSlots_53 Promise success`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} removeAllSlots_53 Promise err: ${err}, errMes: ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_5300 END')
+    })
+
+    /*
      * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_SLOT_ENUM_TEST_0100
      * @tc.name      : Describes NotificationSlot types
      * @tc.desc      : SlotType
