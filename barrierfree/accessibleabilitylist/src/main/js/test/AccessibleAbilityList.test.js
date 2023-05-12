@@ -22,7 +22,7 @@ describe('AccessibleAbilityList', function () {
 
     beforeAll(async function (done) {
         console.info(`AccessibleAbilityList: beforeAll starts`);
-        setTimeout(done, 30000);
+        done();
     })
 
     beforeEach(async function (done) {
@@ -32,7 +32,7 @@ describe('AccessibleAbilityList', function () {
 
     afterEach(async function (done) {
         console.info(`AccessibleAbilityList: afterEach starts`);
-        setTimeout(done, 1000);
+        done();
     })
 
     /******************************************************************************** */
