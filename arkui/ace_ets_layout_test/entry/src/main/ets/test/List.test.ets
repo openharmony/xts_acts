@@ -21,6 +21,75 @@
  import flexVisibility_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexVisibilityJsunit.test.ets';
  import flexAlignSelf_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexAlignSelfJsunit.test.ets';
  import flexTextMargin_AutoJsunit from './Flex/alignItems/ItemAlign_Auto/FlexTextMarginJsunit.test.ets';
+import flexBase_StartJsunit from './Flex/alignItems/ItemAlign_Start/FlexBaseJsunit.test.ets';
+import flexPadding_StartJsunit from './Flex/alignItems/ItemAlign_Start/FlexPaddingJsunit.test.ets';
+import flexMargin_StartJsunit from './Flex/alignItems/ItemAlign_Start/FlexMarginJsunit.test.ets';
+import flexExceed_StartJsunit from './Flex/alignItems/ItemAlign_Start/FlexExceedJsunit.test.ets';
+import flexHeightModify_StartJsunit from './Flex/alignItems/ItemAlign_Start/FlexHeightModifyJsunit.test.ets';
+import flexOffset_StartJsunit from './Flex/alignItems/ItemAlign_Start/FlexOffsetJsunit.test.ets';
+import flexVisibility_StartJsunit from './Flex/alignItems/ItemAlign_Start/FlexVisibilityJsunit.test.ets';
+import flexAlignSelf_StartJsunit from './Flex/alignItems/ItemAlign_Start/FlexAlignSelfJsunit.test.ets';
+import flexTextMargin_StartJsunit from './Flex/alignItems/ItemAlign_Start/FlexTextMarginJsunit.test.ets';
+import flexBase_CenterJsunit from './Flex/alignItems/ItemAlign_Center/FlexBaseJsunit.test.ets';
+import flexPadding_CenterJsunit from './Flex/alignItems/ItemAlign_Center/FlexPaddingJsunit.test.ets';
+import flexMargin_CenterJsunit from './Flex/alignItems/ItemAlign_Center/FlexMarginJsunit.test.ets';
+import flexExceed_CenterJsunit from './Flex/alignItems/ItemAlign_Center/FlexExceedJsunit.test.ets';
+import flexHeightModify_CenterJsunit from './Flex/alignItems/ItemAlign_Center/FlexHeightModifyJsunit.test.ets';
+import flexOffset_CenterJsunit from './Flex/alignItems/ItemAlign_Center/FlexOffsetJsunit.test.ets';
+import flexVisibility_CenterJsunit from './Flex/alignItems/ItemAlign_Center/FlexVisibilityJsunit.test.ets';
+import flexAlignSelf_CenterJsunit from './Flex/alignItems/ItemAlign_Center/FlexAlignSelfJsunit.test.ets';
+import flexTextMargin_CenterJsunit from './Flex/alignItems/ItemAlign_Center/FlexTextMarginJsunit.test.ets';
+import flexBase_EndJsunit from './Flex/alignItems/ItemAlign_End/FlexBaseJsunit.test.ets';
+import flexPadding_EndJsunit from './Flex/alignItems/ItemAlign_End/FlexPaddingJsunit.test.ets';
+import flexMargin_EndJsunit from './Flex/alignItems/ItemAlign_End/FlexMarginJsunit.test.ets';
+import flexExceed_EndJsunit from './Flex/alignItems/ItemAlign_End/FlexExceedJsunit.test.ets';
+import flexHeightModify_EndJsunit from './Flex/alignItems/ItemAlign_End/FlexHeightModifyJsunit.test.ets';
+import flexOffset_EndJsunit from './Flex/alignItems/ItemAlign_End/FlexOffsetJsunit.test.ets';
+import flexVisibility_EndJsunit from './Flex/alignItems/ItemAlign_End/FlexVisibilityJsunit.test.ets';
+import flexAlignSelf_EndJsunit from './Flex/alignItems/ItemAlign_End/FlexAlignSelfJsunit.test.ets';
+import flexTextMargin_EndJsunit from './Flex/alignItems/ItemAlign_End/FlexTextMarginJsunit.test.ets';
+import flexBase_StretchJsunit from './Flex/alignItems/ItemAlign_Stretch/FlexBaseJsunit.test.ets';
+import flexPadding_StretchJsunit from './Flex/alignItems/ItemAlign_Stretch/FlexPaddingJsunit.test.ets';
+import flexMargin_StretchJsunit from './Flex/alignItems/ItemAlign_Stretch/FlexMarginJsunit.test.ets';
+import flexExceed_StretchJsunit from './Flex/alignItems/ItemAlign_Stretch/FlexExceedJsunit.test.ets';
+import flexHeightModify_StretchJsunit from './Flex/alignItems/ItemAlign_Stretch/FlexHeightModifyJsunit.test.ets';
+import flexOffset_StretchJsunit from './Flex/alignItems/ItemAlign_Stretch/FlexOffsetJsunit.test.ets';
+import flexVisibility_StretchJsunit from './Flex/alignItems/ItemAlign_Stretch/FlexVisibilityJsunit.test.ets';
+import flexAlignSelf_StretchJsunit from './Flex/alignItems/ItemAlign_Stretch/FlexAlignSelfJsunit.test.ets';
+import flexTextMargin_StretchJsunit from './Flex/alignItems/ItemAlign_Stretch/FlexTextMarginJsunit.test.ets';
+import flexBase_BaselineJsunit from './Flex/alignItems/ItemAlign_Baseline/FlexBaseJsunit.test.ets';
+import flexPadding_BaselineJsunit from './Flex/alignItems/ItemAlign_Baseline/FlexPaddingJsunit.test.ets';
+import flexMargin_BaselineJsunit from './Flex/alignItems/ItemAlign_Baseline/FlexMarginJsunit.test.ets';
+import flexExceed_BaselineJsunit from './Flex/alignItems/ItemAlign_Baseline/FlexExceedJsunit.test.ets';
+import flexHeightModify_BaselineJsunit from './Flex/alignItems/ItemAlign_Baseline/FlexHeightModifyJsunit.test.ets';
+import flexOffset_BaselineJsunit from './Flex/alignItems/ItemAlign_Baseline/FlexOffsetJsunit.test.ets';
+import flexVisibility_BaselineJsunit from './Flex/alignItems/ItemAlign_Baseline/FlexVisibilityJsunit.test.ets';
+import flexAlignSelf_BaselineJsunit from './Flex/alignItems/ItemAlign_Baseline/FlexAlignSelfJsunit.test.ets';
+import flexTextMargin_BaselineJsunit from './Flex/alignItems/ItemAlign_Baseline/FlexTextMarginJsunit.test.ets';
+import stackAlignChange from './Stack/Stack_change/stackAlignChange.test.ets';
+import stackSizeChange from './Stack/Stack_change/stackSizeChange.test.ets';
+import stackNoneSettingWidthHeight from './Stack/Stack_change/stackNoneSettingWidthHeight.test.ets';
+import stackPaddingChange from './Stack/Stack_change/stackPaddingChange.test.ets';
+import stackMarginChange from './Stack/Stack_change/stackMarginChange.test.ets';
+import swiperIndex from './Swiper/Swiper_ParmsChange/swiperIndex.test.ets';
+import swiperVertical from './Swiper/Swiper_ParmsChange/swiperVertical.test.ets';
+import swiperLoopTrue from './Swiper/Swiper_ParmsChange/swiperLoopTrue.test.ets';
+import swiperLoopFalse from './Swiper/Swiper_ParmsChange/swiperLoopFalse.test.ets';
+import swiperAutoPlay_1 from './Swiper/Swiper_ParmsChange/swiperAutoPlay_1.test.ets';
+import swiperAutoPlay_2 from './Swiper/Swiper_ParmsChange/swiperAutoPlay_2.test.ets';
+import swiperAutoPlay_3 from './Swiper/Swiper_ParmsChange/swiperAutoPlay_3.test.ets';
+import swiperAutoPlay_4 from './Swiper/Swiper_ParmsChange/swiperAutoPlay_4.test.ets';
+import swiperItemSpace from './Swiper/Swiper_ParmsChange/swiperItemSpace.test.ets';
+import swiperPadding from './Swiper/Swiper_ParmsChange/swiperPadding.test.ets';
+import swiperMargin from './Swiper/Swiper_ParmsChange/swiperMargin.test.ets';
+import swiperMarPad from './Swiper/Swiper_ParmsChange/swiperMarPad.test.ets';
+import swiperDisableSwipeTrue from './Swiper/Swiper_ParmsChange/swiperDisableSwipeTrue.test.ets';
+import swiperDisableSwipeFalse from './Swiper/Swiper_ParmsChange/swiperDisableSwipeFalse.test.ets';
+import swiperItemSize from './Swiper/Swiper_ItemChange/swiperItemSize.test.ets';
+import swiperItemPadding from './Swiper/Swiper_ItemChange/swiperItemPadding.test.ets';
+import swiperItemMargin from './Swiper/Swiper_ItemChange/swiperItemMargin.test.ets';
+import swiperItemPadMar from './Swiper/Swiper_ItemChange/swiperItemPadMar.test.ets';
+import swiperItemVisibility from './Swiper/Swiper_ItemChange/swiperItemVisibility.test.ets';
  import Row_Space from './Row/spaceChanged/Row_Space.test.ets';
  import Column_Space from './Column/spaceChanged/Column_Space.test.ets';
  import Column_Space_String from './Column/spaceChanged/Column_Space_String.test.ets';
@@ -114,6 +183,75 @@ export default function testsuite() {
   flexVisibility_AutoJsunit()
   flexAlignSelf_AutoJsunit()
   flexTextMargin_AutoJsunit()
+flexBase_StartJsunit()
+flexPadding_StartJsunit()
+flexMargin_StartJsunit()
+flexExceed_StartJsunit()
+flexHeightModify_StartJsunit()
+flexOffset_StartJsunit()
+flexVisibility_StartJsunit()
+flexAlignSelf_StartJsunit()
+flexTextMargin_StartJsunit()
+flexBase_CenterJsunit()
+flexPadding_CenterJsunit()
+flexMargin_CenterJsunit()
+flexExceed_CenterJsunit()
+flexHeightModify_CenterJsunit()
+flexOffset_CenterJsunit()
+flexVisibility_CenterJsunit()
+flexAlignSelf_CenterJsunit()
+flexTextMargin_CenterJsunit()
+flexBase_EndJsunit()
+flexPadding_EndJsunit()
+flexMargin_EndJsunit()
+flexExceed_EndJsunit()
+flexHeightModify_EndJsunit()
+flexOffset_EndJsunit()
+flexVisibility_EndJsunit()
+flexAlignSelf_EndJsunit()
+flexTextMargin_EndJsunit()
+flexBase_StretchJsunit()
+flexPadding_StretchJsunit()
+flexMargin_StretchJsunit()
+flexExceed_StretchJsunit()
+flexHeightModify_StretchJsunit()
+flexOffset_StretchJsunit()
+flexVisibility_StretchJsunit()
+flexAlignSelf_StretchJsunit()
+flexTextMargin_StretchJsunit()
+flexBase_BaselineJsunit()
+flexPadding_BaselineJsunit()
+flexMargin_BaselineJsunit()
+flexExceed_BaselineJsunit()
+flexHeightModify_BaselineJsunit()
+flexOffset_BaselineJsunit()
+flexVisibility_BaselineJsunit()
+flexAlignSelf_BaselineJsunit()
+flexTextMargin_BaselineJsunit()
+stackAlignChange()
+stackSizeChange()
+stackNoneSettingWidthHeight()
+stackPaddingChange()
+stackMarginChange()
+swiperIndex()
+swiperVertical()
+swiperLoopTrue()
+swiperLoopFalse()
+swiperAutoPlay_1()
+swiperAutoPlay_2()
+swiperAutoPlay_3()
+swiperAutoPlay_4()
+swiperItemSpace()
+swiperPadding()
+swiperMargin()
+swiperMarPad()
+swiperDisableSwipeTrue()
+swiperDisableSwipeFalse()
+swiperItemSize()
+swiperItemPadding()
+swiperItemMargin()
+swiperItemPadMar()
+swiperItemVisibility()
   Row_Space()
   Column_Space()
   Column_Space_String()
