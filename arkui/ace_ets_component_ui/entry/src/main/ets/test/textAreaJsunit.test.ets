@@ -158,13 +158,9 @@ export default function textAreaJsunit() {
   
    it('textAreaJsunit_0800', 0, async function (done) {
       console.info('textAreaJsunit_0800 START');
-      // globalThis.value.message.notify({name:'placeholder',value:''})
-      let driver = UiDriver.create();
-      let allSelect = await driver.findComponent(BY.text('全选'));
-      await allSelect.click();
+      globalThis.value.message.notify({name:'text',value:''})
       await CommonFunc.sleep(1000);
-      let cutComponent = await driver.findComponent(BY.text('剪切'));
-      await cutComponent.click();
+      let driver = UiDriver.create();
       await CommonFunc.sleep(1000);
       // test the change event
       let text = await driver.findComponent(BY.key('textArea'));
@@ -210,7 +206,7 @@ export default function textAreaJsunit() {
     });
 
     it('textAreaJsunit_1000', 0, async function (done) {
-      console.info('marqueeJsunit_0900 START');
+      console.info('textAreaJsunit_1000 START');
       await CommonFunc.sleep(1000);
       // test the cut event
       let driver = UiDriver.create();
