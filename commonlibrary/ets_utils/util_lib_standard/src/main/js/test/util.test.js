@@ -968,6 +968,19 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testencoding_textencoder_005
+     * @tc.desc: The TextEncoder construction parameter is undefined or null.
+     */
+    it('testencoding_textencoder_005', 0, function () {
+        let encode1 = new util.TextEncoder(undefined)
+        let str1 = encode1.encoding
+        expect(str1).assertEqual('utf-8')
+        let encode2 = new util.TextEncoder(null)
+        let str2 = encode2.encoding
+        expect(str2).assertEqual('utf-8')
+    })
+
+    /**
      * @tc.name: testEncode001
      * @tc.desc: Returns the result of encoder.
      */
@@ -1177,6 +1190,18 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testEncode016
+     * @tc.desc: The encode parameter is undefined or null.
+     */
+    it('testEncode016', 0, function () {
+        let that = new util.TextEncoder()
+        let result1 = that.encode(undefined)
+        expect(result1).assertEqual(undefined)
+        let result2 = that.encode(null)
+        expect(result2).assertEqual(undefined)
+    })
+
+    /**
      * @tc.name: testEncodeInto001
      * @tc.desc: encode string, write the result to dest array.
      */
@@ -1286,6 +1311,18 @@ describe('TextEncoderTest', function () {
         result = that.encodeInto('\uD800A\uDF06A楼HiA', dest)
         expect(result.read).assertEqual(0)
         expect(result.written).assertEqual(0)
+    })
+
+    /**
+     * @tc.name: testEncodeInto001
+     * @tc.desc: The encodeInto parameter is undefined or null
+     */
+    it('testEncodeInto009', 0, function () {
+        let that = new util.TextEncoder()
+        let result1 = that.encodeInto(undefined)
+        expect(result1).assertEqual(undefined)
+        let result2 = that.encodeInto(null)
+        expect(result2).assertEqual(undefined)
     })
 })
 
