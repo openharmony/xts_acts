@@ -29,7 +29,7 @@ describe('AccessibleSendEvent', function () {
 
     afterEach(async function (done) {
         console.info(`AccessibleSendEvent: afterEach starts`);
-        setTimeout(done, 1000);
+        done();
     })
     
     /******************************************************************************** */

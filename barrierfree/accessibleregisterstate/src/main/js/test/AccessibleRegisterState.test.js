@@ -29,7 +29,7 @@ describe('AccessibleRegisterState', function () {
 
     afterEach(async function (done) {
         console.info(`AccessibleRegisterState: afterEach starts`);
-        setTimeout(done, 1000);
+        done();
     })
 
     /******************************************************************************** */
