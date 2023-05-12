@@ -773,11 +773,11 @@ ohos_resources("ace_demo_ets_resources") {
 
 FA_JS 模式适配指导请参考
 
-​                  [标准系统FA-JS模式XTS适配](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E4%B8%89.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA-JS%E6%A8%A1%E5%BC%8FXTS-%E6%97%A7%E6%A1%86%E6%9E%B6-%E6%96%B0%E6%A1%86%E6%9E%B6%E9%80%82%E9%85%8D)
+​                  [JS工程目录结构（FA模型）](https://gitee.com/openharmony/xts_acts/wikis/XTS_%E7%99%BE%E7%A7%91%E6%8C%87%E5%AF%BC/JS%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%EF%BC%88FA%E6%A8%A1%E5%9E%8B%EF%BC%89)
 
 FA_TS 模式适配指导请参考 
 
-​                  [标准系统FA-TS模式XTS适配](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E5%9B%9B.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA-TS%E6%A8%A1%E5%BC%8FXTS-%E6%97%A7%E6%A1%86%E6%9E%B6-%E6%96%B0%E6%A1%86%E6%9E%B6%E9%80%82%E9%85%8D)
+​                  [eTS工程目录结构（FA模型）](https://gitee.com/openharmony/xts_acts/wikis/XTS_%E7%99%BE%E7%A7%91%E6%8C%87%E5%AF%BC/eTS%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%EF%BC%88FA%E6%A8%A1%E5%9E%8B%EF%BC%89)
 
 **以Stage 模式为例：**
 
@@ -876,7 +876,7 @@ FA_TS 模式适配指导请参考
    import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
    import { Hypium } from '@ohos/hypium'
    import testsuite from '../test/List.test'
-
+   
    export default class TestAbility extends Ability {
        onCreate(want, launchParam) {
            console.log('TestAbility onCreate')
@@ -928,7 +928,7 @@ ohos_resources("edm_resources") {
 
 Stage 模式适配指导请参考 
 
-​                          [标准系统Stage模式XTS适配](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E5%85%AD.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FStage%E6%A8%A1%E5%BC%8FXTS-%E6%97%A7%E6%A1%86%E6%9E%B6-%E6%96%B0%E6%A1%86%E6%9E%B6%E9%80%82%E9%85%8D)
+​                          [eTS工程目录结构（Stage模型）](https://gitee.com/openharmony/xts_acts/wikis/XTS_%E7%99%BE%E7%A7%91%E6%8C%87%E5%AF%BC/eTS%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%EF%BC%88Stage%E6%A8%A1%E5%9E%8B%EF%BC%89)
 
 ### JS语言用例编译打包指导（适用于标准系统）<a name="section445519106559"></a>
 
@@ -997,7 +997,7 @@ Windows工作台下安装python3.7及以上版本，确保工作台和测试设�
     testChecked: testcase
     ```
 
-    ​
+    
 
 3.  查看测试报告。
     进入acts\reports\，获取当前的执行记录，打开“summary_report.html”可以获取到测试报告。
