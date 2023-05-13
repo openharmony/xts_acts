@@ -16,10 +16,12 @@ import windowPromiseTest from './windowPromise.test'
 import windowCallbackTest from './windowCallback.test'
 import windowRefactorInterfaceTest from './windowRefactorInterface.test'
 import displayAndWindowRefactorInterfaceTest from './displayAndWindowRefactorInterface.test'
+import parameterVerificationIsOptional from './parameterVerificationIsOptional.test'
 
 export default function testsuite() {
   windowCallbackTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowPromiseTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowRefactorInterfaceTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   displayAndWindowRefactorInterfaceTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
+  parameterVerificationIsOptional(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
 }
