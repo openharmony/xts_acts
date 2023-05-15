@@ -26,16 +26,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG = true;
 
-
-    beforeAll(function () {
-    })
-    beforeEach(function () {
-    })
-    afterEach(async function (done) {
-    })
-    afterAll(function () {
-    })
-
     function unexpectedError(error, caseName, apiName, done) {
       let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
       console.log(msgStr + JSON.stringify(error));
