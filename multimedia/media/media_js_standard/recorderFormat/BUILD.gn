@@ -22,7 +22,7 @@ ohos_js_hap_suite("recorder_format_js_hap") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsRecorderFormatJsTest"
   subsystem_name = "multimedia"
-  part_name = "multimedia_player_framework"
+  part_name = "player_framework"
 }
 ohos_js_assets("recorder_format_js_assets") {
   js2abc = true
