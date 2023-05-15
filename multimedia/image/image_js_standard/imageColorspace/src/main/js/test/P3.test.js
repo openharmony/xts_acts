@@ -72,37 +72,7 @@ export default function ImageP3() {
                 },
             };
         }
-
-        async function setColorCallBack(done, testNum, imageSource, colorSpaceName) {
-            let logger = Logger(testNum);
-            logger.log("ImageSource " + (imageSource != undefined));
-            if (imageSource != undefined) {
-                let pixelMap = await imageSource.createPixelMap();
-                logger.log("PixelMap " + pixelMap);
-                var csm = colorSpaceManager.create(colorSpaceName);
-                logger.log("colorSpaceManager.ColorSpace: " + colorSpaceName);
-                pixelMap.setColorSpace(csm, async (err) => {
-                    if (err != undefined) {
-                        expect(false).assertTrue();
-                        logger.log("setColorSpace failed " + err);
-                        done();
-                        return;
-                    }
-                    var csm1 = await pixelMap.getColorSpace();
-                    logger.log("getColorSpace " + csm1);
-                    var csmn = csm1.getColorSpaceName();
-                    logger.log("getColorSpaceName " + csmn);
-                    expect(csmn == colorSpaceName).assertTrue();
-                    done();
-                });
-            } else {
-                logger.log("createimageSource fail");
-                expect(false).assertTrue();
-                done();
-            }
-        }
-
-        async function setColorPromise(done, testNum, imageSource, colorSpaceName) {
+        async function setColor(done, testNum, imageSource, colorSpaceName) {
             let logger = Logger(testNum);
             try {
                 logger.log("ImageSource " + (imageSource != undefined));
@@ -111,8 +81,8 @@ export default function ImageP3() {
                     logger.log("PixelMap " + pixelMap);
                     var csm = colorSpaceManager.create(colorSpaceName);
                     logger.log("colorSpaceManager.ColorSpace: " + colorSpaceName);
-                    await pixelMap.setColorSpace(csm);
-                    var csm1 = await pixelMap.getColorSpace();
+                    pixelMap.setColorSpace(csm);
+                    var csm1 = pixelMap.getColorSpace();
                     logger.log("getColorSpace " + csm1);
                     var csmn = csm1.getColorSpaceName();
                     logger.log("getColorSpaceName " + csmn);
@@ -131,8 +101,8 @@ export default function ImageP3() {
         }
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GETCOLORSPACE_PROMISE_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_GETCOLORSPACE_PROMISE_0100
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETCOLORSPACE_0100
+         * @tc.name      : SUB_GRAPHIC_IMAGE_GETCOLORSPACE_0100
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.getColorSpace and getColorSpaceName
@@ -140,13 +110,13 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_GETCOLORSPACE_PROMISE_0100", 0, async function (done) {
-            let logger = Logger("SUB_GRAPHIC_IMAGE_GETCOLORSPACE_PROMISE_0100");
+        it("SUB_GRAPHIC_IMAGE_GETCOLORSPACE_0100", 0, async function (done) {
+            let logger = Logger("SUB_GRAPHIC_IMAGE_GETCOLORSPACE_0100");
             try {
                 let imageSource = GenPicSource(testImg);
                 if (imageSource != undefined) {
                     let pixelMap = await imageSource.createPixelMap();
-                    var csm = await pixelMap.getColorSpace();
+                    var csm = pixelMap.getColorSpace();
                     logger.log("getColorSpace csm " + csm);
                     var csmn = csm.getColorSpaceName();
                     logger.log("getColorSpaceName " + csmn);
@@ -165,38 +135,8 @@ export default function ImageP3() {
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_GETCOLORSPACE_CALLBACK_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_GETCOLORSPACE_CALLBACK_0100
-         * @tc.desc      : 1.create imagesource
-         *                 2.createPixelMap
-         *                 3.getColorSpace and getColorSpaceName
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_GETCOLORSPACE_CALLBACK_0100", 0, async function (done) {
-            let logger = Logger("SUB_GRAPHIC_IMAGE_GETCOLORSPACE_CALLBACK_0100");
-            let imageSource = GenPicSource(testImg);
-            if (imageSource != undefined) {
-                let pixelMap = await imageSource.createPixelMap();
-                pixelMap.getColorSpace((err, csm) => {
-                    if (err != undefined) {
-                        logger.log("getColorSpace failed " + err);
-                        expect(false).assertTrue();
-                        return;
-                    }
-                    logger.log("getColorSpace csm " + csm);
-                    let csmn = csm.getColorSpaceName();
-                    logger.log("getColorSpaceName " + csmn);
-                    expect(csmn == COLORSPACENAME).assertTrue();
-                    done();
-                });
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0100
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0100
+         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0100
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.setColorSpace
@@ -205,19 +145,19 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0100", 0, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0100", 0, function (done) {
             let imageSource = image.createImageSource(testP3.buffer);
-            setColorPromise(
+            setColor(
                 done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0100",
+                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0100",
                 imageSource,
                 colorSpaceManager.ColorSpace.SRGB
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0200
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0200
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0200
+         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0200
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.setColorSpace
@@ -226,19 +166,19 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0200", 1, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0200", 1, function (done) {
             let imageSource = image.createImageSource(testImg.buffer);
-            setColorPromise(
+            setColor(
                 done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0200",
+                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0200",
                 imageSource,
                 colorSpaceManager.ColorSpace.DISPLAY_P3
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0300
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0300
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0300
+         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0300
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.setColorSpace
@@ -247,20 +187,20 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0300", 1, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0300", 1, async function (done) {
             await getFd("colorspace.jpg");
             let imageSource = image.createImageSource(fdNumber);
-            setColorPromise(
+            setColor(
                 done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0300",
+                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0300",
                 imageSource,
                 colorSpaceManager.ColorSpace.DISPLAY_P3
             );
         });
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0400
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0400
+         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0400
+         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0400
          * @tc.desc      : 1.create imagesource
          *                 2.createPixelMap
          *                 3.setColorSpace
@@ -269,100 +209,14 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0400", 1, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0400", 1, async function (done) {
             await getFd("DisplayP3.png");
             let imageSource = image.createImageSource(fdNumber);
-            setColorPromise(
+            setColor(
                 done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0400",
+                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_0400",
                 imageSource,
                 colorSpaceManager.ColorSpace.SRGB
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0100
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0100
-         * @tc.desc      : 1.create imagesource
-         *                 2.createPixelMap
-         *                 3.setColorSpace
-         *                 4.getColorSpace and getColorSpaceName
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0100", 0, async function (done) {
-            let imageSource = image.createImageSource(testImg.buffer);
-            setColorCallBack(
-                done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0100",
-                imageSource,
-                colorSpaceManager.ColorSpace.DISPLAY_P3
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0200
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0200
-         * @tc.desc      : 1.create imagesource
-         *                 2.createPixelMap
-         *                 3.setColorSpace
-         *                 4.getColorSpace and getColorSpaceName
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 1
-         */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0200", 1, async function (done) {
-            let imageSource = image.createImageSource(testP3.buffer);
-            setColorCallBack(
-                done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0200",
-                imageSource,
-                colorSpaceManager.ColorSpace.SRGB
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0300
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0300
-         * @tc.desc      : 1.create imagesource
-         *                 2.createPixelMap
-         *                 3.setColorSpace
-         *                 4.getColorSpace and getColorSpaceName
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 1
-         */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0300", 1, async function (done) {
-            await getFd("DisplayP3.png");
-            let imageSource = image.createImageSource(fdNumber);
-            setColorCallBack(
-                done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0300",
-                imageSource,
-                colorSpaceManager.ColorSpace.SRGB
-            );
-        });
-
-        /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0400
-         * @tc.name      : SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0400
-         * @tc.desc      : 1.create imagesource
-         *                 2.createPixelMap
-         *                 3.setColorSpace
-         *                 4.getColorSpace and getColorSpaceName
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 1
-         */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0400", 1, async function (done) {
-            await getFd("colorspace.jpg");
-            let imageSource = image.createImageSource(fdNumber);
-            setColorCallBack(
-                done,
-                "SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0400",
-                imageSource,
-                colorSpaceManager.ColorSpace.DISPLAY_P3
             );
         });
     });
