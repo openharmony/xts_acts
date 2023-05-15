@@ -19,15 +19,16 @@ hcpptest_suite("ActsKvStoreTest") {
 
   include_dirs = [
     "src",
-    "//foundation/distributeddatamgr/kv_store/interfaces/inner_api/kv_store/include",
     "//third_party/bounds_checking_function/include",
-    "//commonlibrary/utils_lite/include",
   ]
-  deps = [ "//foundation/distributeddatamgr/kv_store/interfaces/inner_api/kv_store:kv_store" ]
   cflags = [ "-Wno-error" ]
   ldflags = [
     "-lstdc++",
     "-lm",
     "-lpthread",
+  ]
+  external_deps = [
+    "distributeddatamgr_kv_store:kv_store",
+    "utils_lite:utils",
   ]
 }
