@@ -18,7 +18,7 @@ import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
 export default function flexExceed_EndJsunit() {
-  describe('flexItemAlignEndTest', function () {
+  describe('flexItemAlignEndTest2', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexExceed',

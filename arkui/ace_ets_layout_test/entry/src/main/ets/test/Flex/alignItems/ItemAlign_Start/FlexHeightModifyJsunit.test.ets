@@ -18,7 +18,7 @@ import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
 export default function flexHeightModify_StartJsunit() {
-  describe('flexItemAlignStartTest', function () {
+  describe('flexItemAlignStartTest6', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/FlexHeightModify',

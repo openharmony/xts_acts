@@ -18,7 +18,7 @@ import Utils from './Utils.ets';
 import router from '@system.router';
 let emitKey = "emitStoreWebArchiveCallback";  
 export default function storeWebArchive() {
-  describe('ActsAceWebControllerTest', function () {
+  describe('ActsAceWebControllerTest1', function () {
     beforeAll(async function (done) {
       let options = {
         uri: "MainAbility/pages/storeWebArchive"

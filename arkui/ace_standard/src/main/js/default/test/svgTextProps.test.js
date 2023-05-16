@@ -17,7 +17,7 @@ import router from '@system.router';
 import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
 
 
-describe('toolbarPropsJsTest', function () {
+describe('toolbarPropsJsTest6', function () {
 
     var name = 'svgText', nameA = 'Toolbar', labelName = 'text';
 
