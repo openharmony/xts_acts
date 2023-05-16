@@ -18,7 +18,7 @@ import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 
 export default function flexMargin_BaselineJsunit() {
-  describe('flexItemAlignBaselineTest', function () {
+  describe('flexItemAlignBaselineTest5', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/FlexMargin',

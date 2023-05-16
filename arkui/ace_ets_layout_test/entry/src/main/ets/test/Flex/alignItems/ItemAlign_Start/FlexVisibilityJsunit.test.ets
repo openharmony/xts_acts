@@ -18,7 +18,7 @@ import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
 export default function flexVisibility_StartJsunit() {
-  describe('flexItemAlignStartTest', function () {
+  describe('flexItemAlignStartTest8', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/FlexVisibility',

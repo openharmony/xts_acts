@@ -18,7 +18,7 @@ import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
 export default function flexTextMargin_CenterJsunit() {
-  describe('flexItemAlignCenterTest', function () {
+  describe('flexItemAlignCenterTest4', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexTextMargin',

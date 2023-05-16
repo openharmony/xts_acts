@@ -18,7 +18,7 @@ import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
 export default function flexExceed_BaselineJsunit() {
-  describe('flexItemAlignBaselineTest', function () {
+  describe('flexItemAlignBaselineTest2', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/FlexExceed',
