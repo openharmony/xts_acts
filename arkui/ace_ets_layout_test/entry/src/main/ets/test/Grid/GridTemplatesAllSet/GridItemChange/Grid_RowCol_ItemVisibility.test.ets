@@ -18,7 +18,7 @@ import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
 export default function grid_RowCol_ItemVisibilityTest() {
   describe('Grid_RowCol_ItemVisibilityTest', function () {
-    beforeEach(async function (done) {
+    beforeAll(async function (done) {
       console.info("Grid_RowCol_ItemVisibilityTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemVisibility',
