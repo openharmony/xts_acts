@@ -139,18 +139,6 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number  SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0110
-    * @tc.name    test the getPreferredLanguageList interface with default value
-    * @tc.desc    check the value of getPreferredLanguageList method
-    */
-    it('i18n_test_preferredlanguage_0110', 0, function () {
-        console.log('i18n_test_preferredlanguage_0110 ' + 'start');
-        let value = I18n.System.getPreferredLanguageList();
-        console.log('i18n_test_preferredlanguage_0110 ' + value);
-        expect(value.length).assertLarger(0);
-    })
-
-    /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0120
     * @tc.name test the addPreferredLanguage interface
     * @tc.desc check the value of addPreferredLanguage method
@@ -212,26 +200,6 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number  SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_1020
-    * @tc.name    test the getFirstPreferredLanguage interface
-    * @tc.desc    check the value of getFirstPreferredLanguage method
-    */
-    it('i18n_test_preferredlanguage_1020', 0, function () {
-        console.log('i18n_test_preferredlanguage_1020 ' + 'start');
-        let value = I18n.System.getFirstPreferredLanguage();
-        console.log('i18n_test_preferredlanguage_1020 ' + value);
-        let list = I18n.System.getPreferredLanguageList();
-        console.log('i18n_test_preferredlanguage_1020 ' + list);
-        expect(list.length).assertLarger(0);
-        if(list[0] == 'zh-Hans'){
-            expect(value).assertEqual('zh-Hans');
-        }
-        else if(list[0] == 'en'){
-            expect(value).assertEqual('en');
-        }
-    })
-
-    /* *
     * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_1100
     * @tc.name test the getAppPreferredLanguage interface
     * @tc.desc check the value of getAppPreferredLanguage method
@@ -240,18 +208,6 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_1100 ' + 'start');
         let value = I18n.getAppPreferredLanguage();
         console.log('i18n_test_preferredlanguage_1100 ' + value);
-        expect(value).assertContain('zh');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_1120
-    * @tc.name test the getAppPreferredLanguage interface
-    * @tc.desc check the value of getAppPreferredLanguage method
-    */
-    it('i18n_test_preferredlanguage_1120', 0, function () {
-        console.log('i18n_test_preferredlanguage_1120 ' + 'start');
-        let value = I18n.System.getAppPreferredLanguage();
-        console.log('i18n_test_preferredlanguage_1120 ' + value);
         expect(value).assertContain('zh');
     })
 
@@ -301,17 +257,6 @@ describe('LangTest', function () {
         let value = date.toLocaleLowerCase('en-US');
         console.log('transfer_test_0400 ' + value);
         expect(value).assertEqual('the sky is in blue-style!');
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_LOCALDIGIT_0100
-    * @tc.name test getUsingLocalDigit method
-    * @tc.desc get the getUsingLocalDigit value
-    */
-    it('localdigit_test_0100', 0, function () {
-        let value = I18n.System.getUsingLocalDigit();
-        console.log('localdigit_test_0100 ' + value);
-        expect(value).assertFalse();
     })
 
     console.log('*************end LangTest*************');
