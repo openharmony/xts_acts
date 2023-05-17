@@ -12,33 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-
 @Entry
 @Component
-struct Second {
-  private content: string = "Second Page"
+struct PageOne {
+  private content: string = "Page one"
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Text(`${this.content}`)
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-      Button() {
-        Text('secondPage_BackToIndex')
-          .fontSize(20)
+    Row(){
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Text(`${this.content}`)
+          .fontSize(50)
           .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({
-        top: 20
-      })
-      .backgroundColor('#0D9FFB')
-      .onClick(() => {
-        router.back()
-      })
-    }
-    .width('100%')
+        Button() {
+          Text('点击pageOne')
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .margin({
+          top: 20
+        })
+        .backgroundColor('#0D9FFB')
+        .onClick(() => {
+          console.log("click the button")
+        })
+      }
+      .width('100%')
+      .height('100%')
+    }.width('100%')
     .height('100%')
-    .backgroundColor('#ccc')
+    .backgroundColor("#69b594")
+
   }
 }
