@@ -18,7 +18,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 let emitKey = "emitUserAgent";
 export default function webJsunit() {
-  describe('ActsAceWebDevTest', function () {
+  describe('ActsAceWebDevTest1', function () {
     beforeEach(async function (done) {
       await Utils.sleep(2000);
       console.info("web beforeEach start");
