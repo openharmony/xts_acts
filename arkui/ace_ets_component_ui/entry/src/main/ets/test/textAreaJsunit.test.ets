@@ -158,10 +158,11 @@ export default function textAreaJsunit() {
   
    it('textAreaJsunit_0800', 0, async function (done) {
       console.info('textAreaJsunit_0800 START');
-      globalThis.value.message.notify({name:'placeholder',value:''})
-      await CommonFunc.sleep(2000);
-      // test the change event
+      globalThis.value.message.notify({name:'text',value:''})
+      await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
+      await CommonFunc.sleep(1000);
+      // test the change event
       let text = await driver.findComponent(BY.key('textArea'));
       await text.inputText('123');
       await CommonFunc.sleep(2000);
@@ -205,7 +206,7 @@ export default function textAreaJsunit() {
     });
 
     it('textAreaJsunit_1000', 0, async function (done) {
-      console.info('marqueeJsunit_0900 START');
+      console.info('textAreaJsunit_1000 START');
       await CommonFunc.sleep(1000);
       // test the cut event
       let driver = UiDriver.create();

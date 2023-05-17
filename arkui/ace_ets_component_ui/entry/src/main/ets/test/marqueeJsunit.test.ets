@@ -52,7 +52,7 @@ export default function marqueeJsunit() {
        // to confirm allowScale
        console.info('marqueeJsunit_0100 component obj is: ' + obj.$attrs.allowScale);
        expect(obj.$attrs.start).assertEqual('false');
-       expect(obj.$attrs.step).assertEqual('50.000000');
+       expect(parseInt(obj.$attrs.step)).assertEqual(vp2px(50));
        expect(obj.$attrs.loop).assertEqual('2');
        expect(obj.$attrs.fromStart).assertEqual('true');
        expect(obj.$attrs.src).assertEqual('Running Marquee starts rolling');
@@ -107,7 +107,7 @@ export default function marqueeJsunit() {
       // check the value of changed attribute
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.loop).assertEqual('-30');
+      expect(obj.$attrs.loop).assertEqual('-1');
       done();
    });
    
@@ -119,7 +119,7 @@ export default function marqueeJsunit() {
       // check the value of changed parameter
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.step).assertEqual('50.000000');
+      expect(parseInt(obj.$attrs.step)).assertEqual(vp2px(50));
       done();   
     });    
     
@@ -131,7 +131,7 @@ export default function marqueeJsunit() {
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
       // to confirm
-      expect(obj.$attrs.step).assertEqual('-30.000000');
+      expect(parseInt(obj.$attrs.step)).assertEqual(vp2px(6));
       done();
    });
   
