@@ -90,7 +90,25 @@ import swiperItemPadding from './Swiper/Swiper_ItemChange/swiperItemPadding.test
 import swiperItemMargin from './Swiper/Swiper_ItemChange/swiperItemMargin.test.ets';
 import swiperItemPadMar from './Swiper/Swiper_ItemChange/swiperItemPadMar.test.ets';
 import swiperItemVisibility from './Swiper/Swiper_ItemChange/swiperItemVisibility.test.ets';
- import Row_Space from './Row/spaceChanged/Row_Space.test.ets';
+
+import Row_Space from './Row/spaceChanged/Row_Space.test.ets';
+import Row_Space_String from './Row/spaceChanged/Row_Space_String.test.ets';
+import Row_Space_Default from './Row/spaceChanged/Row_Space_Default.test.ets';
+import Row_layoutWeight_All from './Row/layoutWeight/Row_layoutWeight_All.test.ets';
+import Row_layoutWeight_Default from './Row/layoutWeight/Row_layoutWeight_Default.test.ets';
+import Row_layoutWeight_flexGrow from './Row/layoutWeight/Row_layoutWeight_flexGrow.test.ets';
+import Row_layoutWeight_flexShrink from './Row/layoutWeight/Row_layoutWeight_flexShrink.test.ets';
+import Row_layoutWeight_Part from './Row/layoutWeight/Row_layoutWeight_Part.test.ets';
+import Row_flexGrow_Default from './Row/flexGrow/Row_flexGrow_Default.test.ets';
+import Row_flexGrow_Part from './Row/flexGrow/Row_flexGrow_Part.test.ets';
+import Row_flexShrink_Default from './Row/flexShrink/Row_flexShrink_Default.test.ets';
+import Row_flexShrink_Part from './Row/flexShrink/Row_flexShrink_Part.test.ets';
+import Row_flexBasis_Default from './Row/flexBasis/Row_flexBasis_Default.test.ets';
+import Row_flexBasis_Type from './Row/flexBasis/Row_flexBasis_Type.test.ets';
+import rowNesting_Space from './Row/RowNesting/rowNesting_Space.test.ets';
+import rowNesting_alignItems from './Row/RowNesting/rowNesting_alignItems.test.ets';
+import rowNesting_justifyContent from './Row/RowNesting/rowNesting_justifyContent.test.ets';
+
  import Column_Space from './Column/spaceChanged/Column_Space.test.ets';
  import Column_Space_String from './Column/spaceChanged/Column_Space_String.test.ets';
  import Column_Space_Default from './Column/spaceChanged/Column_Space_Default.test.ets';
@@ -252,7 +270,26 @@ swiperItemPadding()
 swiperItemMargin()
 swiperItemPadMar()
 swiperItemVisibility()
-  Row_Space()
+
+
+ Row_Space()
+ Row_Space_String()
+ Row_Space_Default()
+ Row_layoutWeight_All()
+ Row_layoutWeight_Default()
+ Row_layoutWeight_flexGrow()
+ Row_layoutWeight_flexShrink()
+ Row_layoutWeight_Part()
+ Row_flexGrow_Default()
+ Row_flexGrow_Part()
+ Row_flexShrink_Default()
+ Row_flexShrink_Part()
+ Row_flexBasis_Default()
+ Row_flexBasis_Type()
+ rowNesting_Space()
+ rowNesting_alignItems()
+ rowNesting_justifyContent()
+
   Column_Space()
   Column_Space_String()
   Column_Space_Default()
