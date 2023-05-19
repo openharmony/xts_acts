@@ -25,7 +25,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
                 "chmod 777 -R /data/local/tmp",
                 "chmod 777 -R /data/media",
                 "chmod 777 /data/media/*"

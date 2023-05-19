@@ -19,7 +19,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiovoip/haps/entry/files",
                 "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiovoip/haps/entry",
                 "power-shell wakeup",

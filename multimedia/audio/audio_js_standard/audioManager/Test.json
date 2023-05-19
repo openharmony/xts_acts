@@ -19,7 +19,6 @@
 		{
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
                 "power-shell wakeup",
                 "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
                 "power-shell setmode 602"
