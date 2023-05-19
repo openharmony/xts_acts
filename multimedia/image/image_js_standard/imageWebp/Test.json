@@ -33,8 +33,7 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files/test_large.webp",
-                "hilog -Q pidoff"
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/haps/entry/files/test_large.webp"
             ]
         }
     ]

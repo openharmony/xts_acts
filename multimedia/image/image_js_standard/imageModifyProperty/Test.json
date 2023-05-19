@@ -35,7 +35,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/haps/entry/files/test_exif.jpg"
             ],
             "teardown-command": [

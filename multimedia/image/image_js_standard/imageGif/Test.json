@@ -33,7 +33,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files/*"
             ],
             "teardown-command": [

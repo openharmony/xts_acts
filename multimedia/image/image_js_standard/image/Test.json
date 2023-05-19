@@ -38,9 +38,7 @@
         },
         {
             "type": "ShellKit",
-            "run-command": [
-                "hilog -Q pidoff"
-            ]
+            "run-command": []
         }
     ]
 }
