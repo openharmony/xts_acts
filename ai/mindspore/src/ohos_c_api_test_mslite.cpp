@@ -63,21 +63,21 @@ void AddContextDeviceCPU(OH_AI_ContextHandle context) {
 // add nnrt device info
 void AddContextDeviceNNRT(OH_AI_ContextHandle context) {
     size_t num = 0;
-    auto desc = OH_AI_NNRTGetAllDeviceDescs(&num);
+    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
     if (desc == nullptr) {
         return;
     }
 
     std::cout << "found " << num << " nnrt devices" << std::endl;
-    auto id = OH_AI_NNRTDeviceDescGetId(desc);
-    auto name = OH_AI_NNRTDeviceDescGetName(desc);
-    auto type = OH_AI_NNRTDeviceDescGetType(desc);
+    auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+    auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
     std::cout << "NNRT device: id = " << id << ", name: " << name << ", type:" << type << std::endl;
 
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
     ASSERT_NE(nnrt_device_info, nullptr);
     OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id);
-    OH_AI_NNRTDestroyAllDeviceDescs(&desc);
+    OH_AI_DestroyAllNNRTDeviceDescs(&desc);
 
     OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(nnrt_device_info);
     printf("==========device_type:%d\n", device_type);
@@ -94,18 +94,18 @@ void AddContextDeviceNNRT(OH_AI_ContextHandle context) {
 // add nnrt device info by type
 void AddContextDeviceNNRTByType(OH_AI_ContextHandle context) {
     size_t num = 0;
-    auto desc = OH_AI_NNRTGetAllDeviceDescs(&num);
+    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
     if (desc == nullptr) {
         return;
     }
     std::cout << "found " << num << " nnrt devices" << std::endl;
-    auto id = OH_AI_NNRTDeviceDescGetId(desc);
-    auto name = OH_AI_NNRTDeviceDescGetName(desc);
-    auto type = OH_AI_NNRTDeviceDescGetType(desc);
+    auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+    auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
     std::cout << "NNRT device: id = " << id << ", name: " << name << ", type:" << type << std::endl;
 
     auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByType(type);
-    OH_AI_NNRTDestroyAllDeviceDescs(&desc);
+    OH_AI_DestroyAllNNRTDeviceDescs(&desc);
     ASSERT_NE(nnrt_device_info, nullptr);
 
     OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(nnrt_device_info);
@@ -119,18 +119,18 @@ void AddContextDeviceNNRTByType(OH_AI_ContextHandle context) {
 // add nnrt device info by name
 void AddContextDeviceNNRTByName(OH_AI_ContextHandle context) {
     size_t num = 0;
-    auto desc = OH_AI_NNRTGetAllDeviceDescs(&num);
+    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
     if (desc == nullptr) {
         return;
     }
     std::cout << "found " << num << " nnrt devices" << std::endl;
-    auto id = OH_AI_NNRTDeviceDescGetId(desc);
-    auto name = OH_AI_NNRTDeviceDescGetName(desc);
-    auto type = OH_AI_NNRTDeviceDescGetType(desc);
+    auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+    auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
     std::cout << "NNRT device: id = " << id << ", name: " << name << ", type:" << type << std::endl;
 
     auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByName(name);
-    OH_AI_NNRTDestroyAllDeviceDescs(&desc);
+    OH_AI_DestroyAllNNRTDeviceDescs(&desc);
     ASSERT_NE(nnrt_device_info, nullptr);
 
     OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(nnrt_device_info);
