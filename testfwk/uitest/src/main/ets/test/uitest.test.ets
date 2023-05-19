@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix } from '@ohos.UiTest'
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -179,6 +179,52 @@ export default function UiTest() {
             let btn = await driver.findComponent(ON.inWindow('com.uitestScene.acts').text('next page'))
             expect(btn != null).assertTrue()
             await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+        * @tc.number: uiTest_10008
+        * @tc.name: testMonitor1
+        * @tc.desc: monitor toast appearance.
+        */
+
+        it('testMonitor1', 0, async function () {
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+        let driver = Driver.create()
+        await driver.delayMs(waitUiReadyMs)
+        let observer = await driver.createUIEventObserver()
+        let callback = (UiElementInfo) => {
+            expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
+            expect(UiElementInfo.text == 'toastShow').assertTrue()
+            expect(UiElementInfo.type == 'Toast').assertTrue()
+        }
+        observer.once('toastShow', callback)
+        let btn = await driver.findComponent(ON.text('toast'))
+        await btn.click()
+        await driver.delayMs(waitUiReadyMs)
+        await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+        * @tc.number: uiTest_10009
+        * @tc.name: testMonitor2
+        * @tc.desc: monitor dialog appearance.
+        */
+
+        it('testMonitor2', 0, async function () {
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+        let driver = Driver.create()
+        await driver.delayMs(waitUiReadyMs)
+        let observer = await driver.createUIEventObserver()
+        let callback = (UiElementInfo) => {
+            expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
+            expect(UiElementInfo.text == 'dialogShow').assertTrue()
+            expect(UiElementInfo.type == 'AlertDialog').assertTrue()
+        }
+        observer.once('dialogShow', callback)
+        let btn = await driver.findComponent(ON.text('dialog'))
+        await btn.click()
+        await driver.delayMs(waitUiReadyMs)
+        await stopApplication('com.uitestScene.acts')
         })
     })
 
@@ -347,9 +393,9 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
-            let scrollBar = await driver.findComponent(BY.type('Scroll').scrollable(false))
+            let scrollBar = await driver.findComponent(BY.type('Scroll'))
             let scrollable = await scrollBar.isScrollable()
-            expect(scrollable == false).assertTrue()
+            expect(scrollable == true).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -812,9 +858,9 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let scrollBar = await driver.findComponent(ON.type('Scroll').scrollable(false))
+            let scrollBar = await driver.findComponent(ON.type('Scroll'))
             let scrollable = await scrollBar.isScrollable()
-            expect(scrollable == false).assertTrue()
+            expect(scrollable == true).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -1641,13 +1687,13 @@ export default function UiTest() {
             let button = await driver.findComponent(ON.text('jump'))
             await button.longClick()
             await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('orange'))
-            let text2 = await driver.findComponent(ON.text('one'))
+            let text1 = await driver.findComponent(ON.text('one'))
+            let text2 = await driver.findComponent(ON.text('two'))
             let point1 = await text1.getBoundsCenter()
             let point2 = await text2.getBoundsCenter()
             await driver.drag(point1.x, point1.y, point2.x, point2.y)
             await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('four'))
+            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
             expect(text == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
@@ -1664,11 +1710,11 @@ export default function UiTest() {
             let button = await driver.findComponent(ON.text('jump'))
             await button.longClick()
             await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('orange'))
-            let text2 = await driver.findComponent(ON.text('one'))
+            let text1 = await driver.findComponent(ON.text('one'))
+            let text2 = await driver.findComponent(ON.text('two'))
             await text1.dragTo(text2)
             await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('four'))
+            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
             expect(text == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
