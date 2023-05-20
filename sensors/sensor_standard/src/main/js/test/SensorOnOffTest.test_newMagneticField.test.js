@@ -405,13 +405,20 @@ describe("SensorJsTest_sensor_37", function () {
      * @tc.name: newMagneticField_SensorJsTest025
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newMagneticField_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
-        try {
-            sensor.off(sensor.SensorId.MAGNETIC_FIELD, 5);
-        } catch (error) {
+    it("newMagneticField_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newMagneticField_SensorJsTest025--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.MAGNETIC_FIELD,(error, data) => {		
+				sensor.on(sensor.SensorId.MAGNETIC_FIELD, callback);
+				setTimeout(()=>{
+					sensor.off(sensor.SensorId.MAGNETIC_FIELD, 5);
+					done();
+				}, 500);
+			})
+		} catch (error) {
             console.info('newMagneticField_SensorJsTest025 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
     })

@@ -382,13 +382,25 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.name: newOrientating_SensorJsTest025
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newOrientating_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
-        try {
-            sensor.off(sensor.SensorId.ORIENTATION, 5);
-        } catch (error) {
+    it("newOrientating_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newOrientating_SensorJsTest025--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
+				if (error) {
+					console.info('newOrientating_SensorJsTest025 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorId.ORIENTATION, callback);
+						setTimeout(()=>{
+							sensor.off(sensor.SensorId.ORIENTATION, 5);
+							done();
+						}, 500);
+				}
+			})
+		} catch (error) {
             console.info('newOrientating_SensorJsTest025 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
     })

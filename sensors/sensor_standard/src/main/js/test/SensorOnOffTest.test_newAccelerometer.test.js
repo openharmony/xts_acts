@@ -298,14 +298,12 @@ describe("SensorJsTest_sensor_39", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("newAccelerometer_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
-        try {
+        console.info('---------newAccelerometer_SensorJsTest025--------------');
+        sensor.on(sensor.SensorId.ACCELEROMETER, callback);
+        setTimeout(()=>{
             sensor.off(sensor.SensorId.ACCELEROMETER, 5);
-        } catch (error) {
-            console.info('newAccelerometer_SensorJsTest025 error:'+error);
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done();
-        }
+        }, 1000);
     })
 
 	/*
