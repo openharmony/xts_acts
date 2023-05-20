@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -475,6 +475,84 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
             let assetsCount = 5;
             let currentFetchOp = albumFetchOps(testNum, "Videos/", "Static", VIDEO_TYPE);
             await checkAlbumAssetsNoOps(done, testNum, currentFetchOp, assetsCount);
+        });
+
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_004_04
+         * @tc.name      : getFileAssets
+         * @tc.desc      : getFileAssets by undefined option
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_004_04", 0, async function (done) {
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_004_04";
+            let fetchOp = albumFetchOps(testNum, "Videos/", "Static", VIDEO_TYPE);
+            try {
+                const albumList = await media.getAlbums(fetchOp);
+                // check album length
+                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
+                if (!albumCountPass) return;
+
+                const album = albumList[0];
+
+                let fetchFileResult;
+                let fetchAllResult;
+                try {
+                    fetchFileResult = await album.getFileAssets(undefined);
+                    fetchAllResult = await album.getFileAssets(allFetchOp());
+                    expect(fetchFileResult.getCount()).assertEqual(fetchAllResult.getCount());
+                } catch (error) {
+                    console.info(`${testNum} getFileAssets fail, error: ${error}`);
+                    expect(false).assertTrue();
+                }
+                fetchFileResult.close();
+                fetchAllResult.close();
+                done();
+            } catch (error) {
+                console.info(`${testNum}, error: ${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_004_05
+         * @tc.name      : getFileAssets
+         * @tc.desc      : getFileAssets by null option
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_004_05", 0, async function (done) {
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_004_05";
+            let fetchOp = albumFetchOps(testNum, "Videos/", "Static", VIDEO_TYPE);
+            try {
+                const albumList = await media.getAlbums(fetchOp);
+                // check album length
+                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
+                if (!albumCountPass) return;
+
+                const album = albumList[0];
+
+                let fetchFileResult;
+                let fetchAllResult;
+                try {
+                    fetchFileResult = await album.getFileAssets(null);
+                    fetchAllResult = await album.getFileAssets(allFetchOp());
+                    expect(fetchFileResult.getCount()).assertEqual(fetchAllResult.getCount());
+                } catch (error) {
+                    console.info(`${testNum} getFileAssets fail, error: ${error}`);
+                    expect(false).assertTrue();
+                }
+                fetchFileResult.close();
+                fetchAllResult.close();
+                done();
+            } catch (error) {
+                console.info(`${testNum}, error: ${error}`);
+                expect(false).assertTrue();
+                done();
+            }
         });
     });
 }
