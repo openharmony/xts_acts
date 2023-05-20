@@ -400,7 +400,7 @@ export default function stageContextPropertiesTest(abilityContext) {
             console.log(TAG + " --- start");
             let result = await abilityContext.resourceManager.getString(16777219);
             console.log(TAG + " : result = " + JSON.stringify(result));
-            expect(result).assertEqual("feature_MainAbility");
+            expect(result).assertEqual("entry_MainAbility");
             done();
         });
 
@@ -415,7 +415,7 @@ export default function stageContextPropertiesTest(abilityContext) {
             console.log(TAG + " --- start");
             let result = await globalThis.abilityStageContext.resourceManager.getString(16777219);
             console.log(TAG + " : result = " + JSON.stringify(result));
-            expect(result).assertEqual("feature_MainAbility");
+            expect(result).assertEqual("entry_MainAbility");
             done();
         });
 
@@ -431,7 +431,7 @@ export default function stageContextPropertiesTest(abilityContext) {
             let result = await globalThis.abilityStageContext.getApplicationContext()
                 .resourceManager.getString(16777219);
             console.log(TAG + " : result = " + JSON.stringify(result));
-            expect(result).assertEqual("feature_MainAbility");
+            expect(result).assertEqual("entry_MainAbility");
             done();
         });
 
@@ -450,7 +450,7 @@ export default function stageContextPropertiesTest(abilityContext) {
                     + "err: " + JSON.stringify(err));
                 let result = await globalThis.abilityContextA.resourceManager.getString(16777219);
                 console.log(TAG + " : result = " + JSON.stringify(result));
-                expect(result).assertEqual("feature_MainAbility");
+                expect(result).assertEqual("entry_MainAbility");
                 checkContextDirEqualB(abilityContext, globalThis.abilityContextA)
                 commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
             }
