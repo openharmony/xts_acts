@@ -696,7 +696,7 @@ describe("SensorJsTest_sensor_57", function () {
      * @tc.name: newPedometerDetection_SensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newPedometerDetection_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+     it("newPedometerDetection_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest015---------------------------');
         let atManager = abilityAccessCtrl.createAtManager();
         await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
@@ -712,7 +712,7 @@ describe("SensorJsTest_sensor_57", function () {
                     try {
                         sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback);
                         setTimeout(() => {
-                            sensor.off(sensor.SensorId.PEDOMETER_DETECTION, -5);
+                            sensor.off(sensor.SensorId.PEDOMETER_DETECTION, 5);
                             done();
                         }, 4000);
                     } catch (error) {
