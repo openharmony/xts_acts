@@ -261,12 +261,12 @@ export default function requestUploadJSUnit() {
         request.upload(uploadConfig, (err, uploadTask) => {
           console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 progress uploadTask =" + JSON.stringify(uploadTask));
           expect(uploadTask != undefined).assertEqual(true);
-          uploadTask.on('progress', function (data1, data2) {
+          uploadTask.on('progress', (data1, data2) => {
             console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 on data1 =" + data1);
             console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 on data2 =" + data2);
           });
 
-          uploadTask.off('progress', function (data1, data2) {
+          uploadTask.off('progress', (data1, data2) => {
             console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 off data1 =" + data1);
             console.info("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 off data2 =" + data2);
           });
