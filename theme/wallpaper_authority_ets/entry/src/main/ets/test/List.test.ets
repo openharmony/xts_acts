@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import wallpaperAuthorityJSUnit from './wallpaperauthorityTest';
+import wallpaperAuthorityJSUnit from './wallpaperauthorityTest.test';
 
 export default function testsuite() {
   wallpaperAuthorityJSUnit();

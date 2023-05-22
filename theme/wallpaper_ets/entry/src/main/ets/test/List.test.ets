@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import wallpaperJSUnit from './wallpaperTest';
-import wallpaperNoPermissionTest from './wallpapernopermissionTest';
+import wallpaperJSUnit from './wallpaperTest.test';
+import wallpaperNoPermissionTest from './wallpapernopermissionTest.test';
 
 export default function testsuite() {
   wallpaperJSUnit();

@@ -108,14 +108,6 @@ export class KeyboardController {
                     console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_resizePromise_0100 event:' + data.event);
                     that.Sub_Misc_inputMethod_Panel_resizePromise_0100();
                     break;
-                case 90:
-                    console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 event:' + data.event);
-                    that.Sub_Misc_inputMethod_Panel_resizeCallback_0090();
-                    break;
-                case 100:
-                    console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_resizePromise_0100 event:' + data.event);
-                    that.Sub_Misc_inputMethod_Panel_resizePromise_0100();
-                    break;
                 case 110:
                     console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 event:' + data.event);
                     that.Sub_Misc_inputMethod_Panel_moveToCallback_0110();
@@ -306,7 +298,7 @@ export class KeyboardController {
                     console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 Succeed in destroying panel.' + JSON.stringify(panel));
                 }
                 commoneventmanager.publish("Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030", commonEventPublishData, this.publishCallback);
-            })
+            });
         }catch(error){
             commonEventPublishData = {
                 data: "FAILED"
@@ -614,7 +606,7 @@ export class KeyboardController {
                         console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 Succeed in showing the panel: ' + JSON.stringify(data));
                     }
                     commoneventmanager.publish("Sub_Misc_inputMethod_Panel_showCallback_0130", commonEventPublishData, this.publishCallback);
-                })
+                });
             }else{
                 commonEventPublishData = {
                     data: "FAILED"

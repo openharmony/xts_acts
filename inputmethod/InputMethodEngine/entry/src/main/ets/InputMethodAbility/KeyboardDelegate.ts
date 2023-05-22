@@ -543,7 +543,7 @@ export class KeyboardDelegate {
                 };
                 commoneventmanager.publish("inputMethodAbility_test_035", commonEventPublishData, this.publishCallback);
             } else {
-                let value = InputClient.insertText('test');
+                let value = await InputClient.insertText('test');
                 console.debug(TAG + '====>inputMethodAbility_test_035 insertText value:' + JSON.stringify(value));
                 if (value) {
                     commonEventPublishData = {
@@ -605,7 +605,7 @@ export class KeyboardDelegate {
                 };
                 commoneventmanager.publish("inputMethodAbility_test_037", commonEventPublishData, this.publishCallback);
             } else {
-                let value = InputClient.getForward(1);
+                let value = await InputClient.getForward(1);
                 console.debug(TAG + '====>inputMethodAbility_test_037 getForward value' + JSON.stringify(value));
                 if (value) {
                     commonEventPublishData = {
@@ -667,7 +667,7 @@ export class KeyboardDelegate {
                 };
                 commoneventmanager.publish("inputMethodAbility_test_039", commonEventPublishData, this.publishCallback);
             } else {
-                let value = InputClient.getEditorAttribute();
+                let value = await InputClient.getEditorAttribute();
                 console.debug(TAG + '====>inputMethodAbility_test_039 getEditorAttribute value:' + JSON.stringify(value));
                 if (value) {
                     commonEventPublishData = {
@@ -787,7 +787,7 @@ export class KeyboardDelegate {
                 };
                 commoneventmanager.publish("inputMethodAbility_test_043", commonEventPublishData, this.publishCallback);
             } else {
-                let value = InputClient.getBackward(1);
+                let value = await InputClient.getBackward(1);
                 console.debug(TAG + '====>inputMethodAbility_test_043 getBackward value:' + JSON.stringify(value));
                 commonEventPublishData = {
                     data: "SUCCESS"
