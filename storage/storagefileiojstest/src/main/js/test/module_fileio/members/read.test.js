@@ -48,7 +48,7 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_SYNC_0010
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0100
    * @tc.name fileio_test_read_sync_001
    * @tc.desc Test readSync() interfaces.
    * @tc.size MEDIUM
@@ -78,7 +78,7 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_SYNC_0020
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0200
    * @tc.name fileio_test_read_sync_002
    * @tc.desc Test readSync() interfaces.
    * @tc.size MEDIUM
@@ -106,7 +106,7 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_SYNC_0030
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0300
    * @tc.name fileio_test_read_sync_003
    * @tc.desc Test readSync() interfaces.
    * @tc.size MEDIUM
@@ -134,7 +134,7 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_SYNC_0040
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0400
    * @tc.name fileio_test_read_sync_004
    * @tc.desc Test readSync() interfaces.
    * @tc.size MEDIUM
@@ -162,7 +162,7 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_SYNC_0050
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0500
    * @tc.name fileio_test_read_sync_005
    * @tc.desc Test readSync() interfaces.
    * @tc.size MEDIUM
@@ -190,7 +190,7 @@ describe('fileio_read', function () {
   });
   
   /**
-   * @tc.number SUB_DF_FILEIO_READ_SYNC_0060
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0600
    * @tc.name fileio_test_read_sync_006
    * @tc.desc Test readSync() interfaces.
    * @tc.size MEDIUM
@@ -211,7 +211,7 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_SYNC_0070
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0700
    * @tc.name fileio_test_read_sync_007
    * @tc.desc Test readSync() interfaces.
    * @tc.size MEDIUM
@@ -239,7 +239,7 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_SYNC_0080
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0800
    * @tc.name fileio_test_read_sync_008
    * @tc.desc Test readSync() interfaces.
    * @tc.size MEDIUM
@@ -268,9 +268,75 @@ describe('fileio_read', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_0900
+   * @tc.name fileio_test_read_sync_009
+   * @tc.desc Test readSync() interfaces.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_test_read_sync_009', 3, async function () {
+    let fpath = await nextFileName('fileio_test_read_sync_009');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let fd = fileio.openSync(fpath, 0o2);
+      expect(isIntNum(fd)).assertTrue();
+      let readLen1 = fileio.readSync(fd, new ArrayBuffer(16), undefined);
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = fileio.readSync(fd, new ArrayBuffer(8), undefined);
+      expect(readLen2 == 0).assertTrue();
+      fileio.closeSync(fd);
+      fileio.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileio_test_read_sync_009 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_SYNC_1000
+   * @tc.name fileio_test_read_sync_010
+   * @tc.desc Test readSync() interfaces.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_test_read_sync_010', 3, async function () {
+    let fpath = await nextFileName('fileio_test_read_sync_010');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let fd = fileio.openSync(fpath, 0o2);
+      expect(isIntNum(fd)).assertTrue();
+      let readLen1 = fileio.readSync(fd, new ArrayBuffer(16), {
+        offset: undefined,
+        position: undefined,
+        length: undefined,
+      });
+      expect(readLen1 == FILE_CONTENT.length).assertTrue();
+      let readLen2 = fileio.readSync(fd, new ArrayBuffer(8), {
+        offset: undefined,
+        position: undefined,
+        length: undefined,
+      });
+      expect(readLen2 == 0).assertTrue();
+      fileio.closeSync(fd);
+      fileio.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileio_test_read_sync_010 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0000
    * @tc.name fileio_test_read_async_000
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -295,9 +361,9 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0010
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0100
    * @tc.name fileio_test_read_async_001
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces. Callback.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -323,9 +389,9 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0020
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0200
    * @tc.name fileio_test_read_async_002
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -350,9 +416,9 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0030
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0300
    * @tc.name fileio_test_read_async_003
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -379,9 +445,9 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0040
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0400
    * @tc.name fileio_test_read_async_004
-   * @tc.desc Test readAsync() interface.
+   * @tc.desc Test read() interface. Promise.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -409,9 +475,9 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0050
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0500
    * @tc.name fileio_test_read_async_005
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -438,9 +504,9 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0060
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0600
    * @tc.name fileio_test_read_async_006
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -467,9 +533,9 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0070
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0700
    * @tc.name fileio_test_read_async_007
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -499,9 +565,9 @@ describe('fileio_read', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0080
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0800
    * @tc.name fileio_test_read_async_008
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -518,9 +584,169 @@ describe('fileio_read', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_0900
+   * @tc.name fileio_test_read_async_009
+   * @tc.desc Test read() interfaces. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_test_read_async_009', 3, async function (done) {
+    let fpath = await nextFileName('fileio_test_read_async_009');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let fd = fileio.openSync(fpath, 0o2);
+      expect(isIntNum(fd)).assertTrue();
+      let readRes1 = await fileio.read(fd, new ArrayBuffer(16), undefined);
+      expect(readRes1.bytesRead == FILE_CONTENT.length).assertTrue();
+      expect(readRes1.offset == 0).assertTrue();
+      let readRes2 = await fileio.read(fd, new ArrayBuffer(8), undefined);
+      expect(readRes2.bytesRead == 0).assertTrue();
+      expect(readRes2.offset == 0).assertTrue();
+      fileio.closeSync(fd);
+      fileio.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileio_test_read_async_009 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_1000
+   * @tc.name fileio_test_read_async_010
+   * @tc.desc Test read() interfaces. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_test_read_async_010', 3, async function (done) {
+    let fpath = await nextFileName('fileio_test_read_async_010');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let fd = fileio.openSync(fpath, 0o2);
+      expect(isIntNum(fd)).assertTrue();
+      fileio.read(fd, new ArrayBuffer(16), undefined, (err, readRes1) => {
+        if(err) {
+          console.log('fileio_test_read_async_010 err package1: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(readRes1.bytesRead == FILE_CONTENT.length).assertTrue();
+        expect(readRes1.offset == 0).assertTrue();
+        fileio.read(fd, new ArrayBuffer(8), undefined, (err, readRes2) => {
+          if(err) {
+            console.log('fileio_test_read_async_010 err package2: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(readRes2.bytesRead == 0).assertTrue();
+          expect(readRes2.offset == 0).assertTrue();
+          fileio.closeSync(fd);
+          fileio.unlinkSync(fpath);
+          done();
+        });
+      });
+    } catch (e) {
+      console.log('fileio_test_read_async_010 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_1100
+   * @tc.name fileio_test_read_async_011
+   * @tc.desc Test read() interfaces. Promise.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_test_read_async_011', 3, async function (done) {
+    let fpath = await nextFileName('fileio_test_read_async_011');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let fd = fileio.openSync(fpath, 0o2);
+      expect(isIntNum(fd)).assertTrue();
+      let readRes1 = await fileio.read(fd, new ArrayBuffer(4096), {
+        offset: undefined,
+        length: undefined,
+      });
+      expect(readRes1.bytesRead == FILE_CONTENT.length).assertTrue();
+      expect(readRes1.offset == 0).assertTrue();
+      let readRes2 = await fileio.read(fd, new ArrayBuffer(4096), {
+        offset: undefined,
+        length: undefined,
+      });
+      expect(readRes2.bytesRead == 0).assertTrue();
+      expect(readRes2.offset == 0).assertTrue();
+      fileio.closeSync(fd);
+      fileio.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileio_test_read_async_011 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_ASYNC_1200
+   * @tc.name fileio_test_read_async_012
+   * @tc.desc Test read() interfaces. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_test_read_async_012', 3, async function (done) {
+    let fpath = await nextFileName('fileio_test_read_async_012');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let fd = fileio.openSync(fpath, 0o2);
+      expect(isIntNum(fd)).assertTrue();
+      fileio.read(fd, new ArrayBuffer(16), {
+        offset: undefined,
+        length: undefined,
+        }, (err, readRes1) => {
+          if(err) {
+            console.log('fileio_test_read_async_012 err package1: ' + JSON.stringify(err));
+            expect(false).assertTrue();
+          }
+          expect(readRes1.bytesRead == FILE_CONTENT.length).assertTrue();
+          expect(readRes1.offset == 0).assertTrue();
+          fileio.read(fd, new ArrayBuffer(8), {
+            offset: undefined,
+            length: undefined,
+            }, (err, readRes2) => {
+            if (err) {
+              console.log('fileio_test_read_async_012 err package2: ' + JSON.stringify(err));
+              expect(false).assertTrue();
+            }
+            expect(readRes2.bytesRead == 0).assertTrue();
+            expect(readRes2.offset == 0).assertTrue();
+            fileio.closeSync(fd);
+            fileio.unlinkSync(fpath);
+            done();
+        });
+      });
+    } catch (e) {
+      console.log('fileio_test_read_async_012 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_READOUT_OFFSET_0000
    * @tc.name fileio_test_read_async_readout_offset_000
-   * @tc.desc Test readAsync() ReadOut.offset interfaces.
+   * @tc.desc Test read() ReadOut.offset interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0

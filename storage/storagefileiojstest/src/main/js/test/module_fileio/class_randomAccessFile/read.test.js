@@ -290,7 +290,7 @@ describe('fileio_randomAccessFile_read', function () {
     /**
      * @tc.number SUB_STORAGE_FILEIO_RANDOMACCESSFILE_READ_SYNC_1000
      * @tc.name fileio_randomaccessfile_read_sync_010
-     * @tc.desc Test readSync() interface. When the length is negative,equivalent to omitting the parameter.
+     * @tc.desc Test readSync() interface. The "length" of option must > 0.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -298,20 +298,21 @@ describe('fileio_randomAccessFile_read', function () {
      */
     it('fileio_randomaccessfile_read_sync_010', 0, async function () {
         let fpath = await nextFileName('fileio_randomaccessfile_read_sync_010');
+        let randomaccessfile;
 
         try {
-            let randomaccessfile = fileio.createRandomAccessFileSync(fpath, 0, 0o102);
+            randomaccessfile = fileio.createRandomAccessFileSync(fpath, 0, 0o102);
             let length = 4096;
             let num = randomaccessfile.writeSync(new ArrayBuffer(length));
             expect(num == length).assertTrue();
             randomaccessfile.setFilePointerSync(0);
-            let number = randomaccessfile.readSync(new ArrayBuffer(16), { offset: 13, length: -1 });
-            expect(number == 3).assertTrue();
+            randomaccessfile.readSync(new ArrayBuffer(16), { offset: 13, length: -1 });
+            expect(false).assertTrue();
+        } catch (err) {
             randomaccessfile.closeSync();
             fileio.unlinkSync(fpath);
-        } catch (err) {
             console.info('fileio_randomaccessfile_read_sync_010 has failed for ' + err);
-            expect(null).assertFail();
+            expect(err.message == "Invalid buffer/options").assertTrue();
         }
     });
 
@@ -674,7 +675,7 @@ describe('fileio_randomAccessFile_read', function () {
     /**
      * @tc.number SUB_STORAGE_FILEIO_RANDOMACCESSFILE_READ_ASYNC_1000
      * @tc.name fileio_randomaccessfile_read_async_010
-     * @tc.desc Test read() interface. When the length is negative,equivalent to omitting the parameter.
+     * @tc.desc Test read() interface. The "length" of option must > 0.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -682,21 +683,22 @@ describe('fileio_randomAccessFile_read', function () {
      */
     it('fileio_randomaccessfile_read_async_010', 0, async function (done) {
         let fpath = await nextFileName('fileio_randomaccessfile_read_async_010');
+        let randomaccessfile;
 
         try {
-            let randomaccessfile = await fileio.createRandomAccessFile(fpath, 0, 0o102);
+            randomaccessfile = await fileio.createRandomAccessFile(fpath, 0, 0o102);
             let length = 4096;
             let num = randomaccessfile.writeSync(new ArrayBuffer(length));
             expect(num == length).assertTrue();
             randomaccessfile.setFilePointerSync(0);
-            let readOut = await randomaccessfile.read(new ArrayBuffer(16), { offset: 13, length: -1 });
-            expect(readOut.bytesRead == 3).assertTrue();
+            await randomaccessfile.read(new ArrayBuffer(16), { offset: 13, length: -1 });
+            expect(false).assertTrue();
+        } catch (err) {
             randomaccessfile.closeSync();
             fileio.unlinkSync(fpath);
-            done();
-        } catch (err) {
             console.info('fileio_randomaccessfile_read_async_010 has failed for ' + err);
-            expect(null).assertFail();
+            expect(err.message == "Invalid buffer/options").assertTrue();
+            done();
         }
     });
 

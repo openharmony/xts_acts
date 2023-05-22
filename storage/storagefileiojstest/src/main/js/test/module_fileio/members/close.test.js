@@ -74,9 +74,10 @@ describe('fileio_close', function () {
   it('fileio_test_close_sync_002', 0, function () {
     try {
       fileio.closeSync(-1);
+      expect(false).assertTrue();
     } catch (e) {
       console.info('fileio_test_close_sync_002 has failed for ' + e);
-      expect(e.message == 'Bad file descriptor').assertTrue();
+      expect(e.message == 'Invalid fd').assertTrue();
     }
   })
 
@@ -167,9 +168,10 @@ describe('fileio_close', function () {
    it('fileio_test_close_async_003', 0, async function (done) {
      try {
        await fileio.close(-1);
+       expect(false).assertTrue();
      } catch (e) {
        console.info('fileio_test_close_async_003 has failed for ' + e);
-       expect(e.message == "Bad file descriptor").assertTrue();
+       expect(e.message == "Invalid fd").assertTrue();
        done();
      }
    })
