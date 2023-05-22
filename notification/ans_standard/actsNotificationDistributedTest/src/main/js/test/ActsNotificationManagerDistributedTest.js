@@ -66,6 +66,25 @@ export default function ActsNotificationManagerDistributedTest() {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0200 END`)
     })
 
+    /*
+    * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0300
+    * @tc.name      : function isDistributedEnabled(undefined): Promise<boolean>
+    * @tc.desc      : Obtains whether the device supports distributed notification
+    */
+    it('SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0300', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0300 START`)
+      notificationManager.isDistributedEnabled(undefined).then((data) => {
+        console.info(`${TAG} isDistributedEnabled Promise success: ${data}`)
+        expect(data).assertFalse()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} isDistributedEnabled Promise err: ${err.code}, errMes: ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0300 END`)
+    })
+
     console.info(TAG + 'SUB_NOTIFICATION_IS_DISTRIBUTED_ENABLED_TEST END')
   })
 
