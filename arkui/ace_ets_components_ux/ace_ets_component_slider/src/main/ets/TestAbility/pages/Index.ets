@@ -880,6 +880,17 @@ struct SliderTest {
               .stepSize(40)
           }
           ListItem() {
+             Slider({
+              value: this.inSetValueOne,
+              min: 0,
+              max: 100,
+              style: SliderStyle.InSet
+            })
+              .key('ArkUX_Stage_Slider_stepColor_marker_color_marker_color_aalpha')
+              .backgroundColor($r("sys.color.ohos_id_color_foreground"))
+              .opacity($r("sys.float.ohos_id_alpha_normal_bg"))
+          }
+          ListItem() {
             Slider({
               value: this.inSetValueOne,
               min: 0,
