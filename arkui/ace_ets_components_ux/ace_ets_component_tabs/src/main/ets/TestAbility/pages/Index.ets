@@ -59,6 +59,13 @@ struct TabsExample {
     @State selfSubTabBorderRadiusStr: string = "20vp"
     @State selfMarginTopStr: string = "10vp"
 
+    @State defaultDividerColor: Resource = $r("sys.color.ohos_id_color_list_separator")
+    @State defaultIndicatorColor: Resource = $r("sys.color.ohos_id_color_subtab_line_on")
+    @State defaultIndicatorMarginTop: Resource = $r("sys.float.ohos_id_subtab_line_gap")
+    @State defaultIndicatorHeight: Resource = $r("sys.float.ohos_id_subtab_line_height")
+    @State defaultSubTabBorderRadius: Resource = $r("sys.float.ohos_id_corner_radius_clicked")
+    @State defaultSubTabTextSize: Resource = $r("sys.float.ohos_id_text_size_body1")
+
     @State selfSelectedMode: SelectedMode = SelectedMode.INDICATOR
 
     private stateChangCallBack = (eventData) => {
@@ -358,6 +365,43 @@ struct TabsExample {
             .height('200vp')
             .width('90%')
             .key('tabsTest5')
+
+            Tabs({ barPosition: BarPosition.Start, controller: this.controller2 }) {
+                TabContent() {
+                    Column().width('100%').height('100%').backgroundColor(Color.Pink)
+                }
+                .key('defaultSubTab')
+                .tabBar(SubTabBarStyle.of('pink')
+                .indicator({
+                    marginTop:this.defaultIndicatorMarginTop,
+                    color: this.defaultIndicatorColor,
+                    height: this.defaultIndicatorHeight
+                })
+                .board({
+                    borderRadius:this.defaultSubTabBorderRadius
+                })
+                .labelStyle({
+                    font: { size: this.defaultSubTabTextSize }
+                })
+                )
+                TabContent() {
+                    Column().width('100%').height('100%').backgroundColor(Color.Yellow)
+                }.tabBar('yellow')
+                TabContent() {
+                    Column().width('100%').height('100%').backgroundColor(Color.Blue)
+                }.tabBar('blue')
+            }
+            .vertical(true).scrollable(true).barMode(BarMode.Fixed)
+            .barWidth(70).barHeight('100%').animationDuration(400)
+            .onChange((index: number) => {
+                console.info(index.toString())
+            })
+            .divider({ strokeWidth: '1vp',
+                color: this.defaultDividerColor
+            })
+            .height('200vp')
+            .width('90%')
+            .key('defaultTabs')
             
         }
     }
