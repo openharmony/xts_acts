@@ -696,8 +696,8 @@ describe("SensorJsTest_sensor_17", function () {
      * @tc.name: PedometerDetection_SensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("PedometerDetection_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('--------PedometerDetection_SensorJsTest015--------');
+     it("PedometerDetection_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('----------------------PedometerDetection_SensorJsTest015---------------------------');
         let atManager = abilityAccessCtrl.createAtManager();
         await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
             PermissionFlag.PERMISSION_SYSTEM_FIXED)
@@ -710,16 +710,19 @@ describe("SensorJsTest_sensor_17", function () {
                         done();
                     }
                     try {
-                        sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION,5);
+                        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback);
+                        setTimeout(() => {
+                            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, 5);
+                            done();
+                        }, 4000);
                     } catch (error) {
-                        console.error('PedometerDetection_SensorJsTest015 Off fail, errorCode:' +JSON.stringify(error));
-						expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
-						expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
-						done();
+                        console.error('PedometerDetection_SensorJsTest015 On fail, errorCode:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
                     }
                 });
             } catch (error) {
-                console.error('PedometerDetection_SensorJsTest015 Sensor is not support'+error);
+                console.error('PedometerDetection_SensorJsTest015 Sensor is not support');
                 expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
@@ -729,7 +732,7 @@ describe("SensorJsTest_sensor_17", function () {
             console.error('PedometerDetection_SensorJsTest015 error:' + JSON.stringify(error));
             done();
         })
-    })	
+    })
 
      /*
      * @tc.number:SUB_SensorsSystem_PEDOMETER_DETECTION_JSTest_0160

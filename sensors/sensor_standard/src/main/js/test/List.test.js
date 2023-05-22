@@ -41,6 +41,8 @@ import SensorJsTest_sensor_27 from './Subscribe_subscribeDeviceOrientation.test.
 import SensorJsTest_sensor_53 from './SensorOnOffTest.test_newBarometer.test.js'
 import SensorJsTest_sensor_8 from './SensorOnOffTest.test_oldBarometer.test.js'
 import SensorJsTest_sensor_26 from './Subscribe_subscribeBarometer.test.js'
+import SensorJsTest_sensor_57 from './SensorOnOffTest.test_newPedometer_Detection.test.js'
+import SensorJsTest_sensor_17 from './SensorOnOffTest.test_oldPedometer_Detection.test.js'
 
 export default function testsuite() {
 		SystemParameterTest()
@@ -72,4 +74,6 @@ export default function testsuite() {
 		SensorJsTest_sensor_53()
 		SensorJsTest_sensor_8()
 		SensorJsTest_sensor_26()
+		SensorJsTest_sensor_57()
+		SensorJsTest_sensor_17()
 }                    
