@@ -315,6 +315,8 @@ export default function progressTest() {
       console.info('ArkUX_Stage_Progress_updateColor_1000 START');
       setTimeout(async()=>{
         try{
+          let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
+          let obj_default = JSON.parse(strJson_default);
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1000 START  :'+ JSON.stringify(strJson));
           let obj = JSON.parse(strJson);
@@ -323,7 +325,7 @@ export default function progressTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Progress_updateColor_1000 component obj.$attrs.updateColor is: " +
           JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#99182431");
+          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1000 END ');
         } catch(err) {
           expect().assertFail();
@@ -346,6 +348,8 @@ export default function progressTest() {
       console.info('ArkUX_Stage_Progress_updateColor_1100 START');
       setTimeout(async()=>{
         try{
+          let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
+          let obj_default = JSON.parse(strJson_default);
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1100 START  :'+ JSON.stringify(strJson));
           let obj = JSON.parse(strJson);
@@ -354,7 +358,7 @@ export default function progressTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Progress_updateColor_1100 component obj.$attrs.updateColor is: " +
           JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#99182431");
+          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1100 END ');
         } catch(err) {
           expect().assertFail();
@@ -377,6 +381,8 @@ export default function progressTest() {
       console.info('ArkUX_Stage_Progress_updateColor_1200 START');
       setTimeout(async()=>{
         try{
+          let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
+          let obj_default = JSON.parse(strJson_default);
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1200 START  :'+ JSON.stringify(strJson));
           let obj = JSON.parse(strJson);
@@ -385,7 +391,7 @@ export default function progressTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Progress_updateColor_1200 component obj.$attrs.updateColor is: " +
           JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#99182431");
+          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1200 END ');
         } catch(err) {
           expect().assertFail();
@@ -408,6 +414,8 @@ export default function progressTest() {
       console.info('ArkUX_Stage_Progress_updateColor_1300 START');
       setTimeout(async()=>{
         try{
+          let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
+          let obj_default = JSON.parse(strJson_default);
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1300 START  :'+ JSON.stringify(strJson));
           let obj = JSON.parse(strJson);
@@ -416,7 +424,7 @@ export default function progressTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Progress_updateColor_1300 component obj.$attrs.updateColor is: " +
           JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#99182431");
+          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1300 END ');
         } catch(err) {
           expect().assertFail();
@@ -472,6 +480,8 @@ export default function progressTest() {
       console.info('ArkUX_Stage_Progress_updateColor_1500 START');
       setTimeout(async()=>{
         try{
+          let strJson_default = getInspectorByKey('ArkUX_Stage_Progress_updateColor_default');
+          let obj_default = JSON.parse(strJson_default);
           let strJson = getInspectorByKey('ArkUX_Stage_Progress_updateColor');
           console.info('ArkUX_Stage_Progress_updateColor_1500 START  :'+ JSON.stringify(strJson));
           let obj = JSON.parse(strJson);
@@ -480,7 +490,7 @@ export default function progressTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Progress_updateColor_1500 component obj.$attrs.updateColor is: " +
           JSON.stringify(obj.$attrs.updateColor));
-          expect(obj.$attrs.updateColor).assertEqual("#99182431");
+          expect(obj.$attrs.updateColor).assertEqual(obj_default.$attrs.updateColor);
           console.info('ArkUX_Stage_Progress_updateColor_1500 END ');
         } catch(err) {
           expect().assertFail();
@@ -525,360 +535,6 @@ export default function progressTest() {
         let result = sendEventByKey('ArkUX_Stage_Progress_updateColor_Button_1600',10,'')
         expect(result).assertEqual(true);
       },1000)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_0100
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to 0x00ff00
-     */
-    it('ArkUX_Stage_Progress_borderColor_0100', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_0100 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_0100');
-          console.info('ArkUX_Stage_Progress_borderColor_0100 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_0100 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_0100 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_0100 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#FF00FF00");
-          console.info('ArkUX_Stage_Progress_borderColor_0100 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_0100 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },1000)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_0200
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to '#fffd0000'
-     */
-    it('ArkUX_Stage_Progress_borderColor_0200', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_0200 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_0200');
-          console.info('ArkUX_Stage_Progress_borderColor_0200 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_0200 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_0200 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_0200 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#FFFD0000");
-          console.info('ArkUX_Stage_Progress_borderColor_0200 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_0200 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_0300
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to 'rgb(138,43,226)'
-     */
-    it('ArkUX_Stage_Progress_borderColor_0300', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_0300 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_0300');
-          console.info('ArkUX_Stage_Progress_borderColor_0300 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_0300 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_0300 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_0300 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#FF8A2BE2");
-          console.info('ArkUX_Stage_Progress_borderColor_0300 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_0300 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_0400
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to Color.Pink
-     */
-    it('ArkUX_Stage_Progress_borderColor_0400', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_0400 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_0400');
-          console.info('ArkUX_Stage_Progress_borderColor_0400 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_0400 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_0400 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_0400 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#FFFFC0CB");
-          console.info('ArkUX_Stage_Progress_borderColor_0400 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_0400 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_0500
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to $r("app.color.Progress_Color")
-     */
-    it('ArkUX_Stage_Progress_borderColor_0500', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_0500 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_0500');
-          console.info('ArkUX_Stage_Progress_borderColor_0500 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_0500 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_0500 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_0500 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#FFFD0000");
-          console.info('ArkUX_Stage_Progress_borderColor_0500 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_0500 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_0600
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to an outlier ""
-     */
-    it('ArkUX_Stage_Progress_borderColor_0600', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_0600 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_0600');
-          console.info('ArkUX_Stage_Progress_borderColor_0600 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_0600 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_0600 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_0600 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#33007DFF");
-          console.info('ArkUX_Stage_Progress_borderColor_0600 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_0600 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_0700
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to an outlier null
-     */
-    it('ArkUX_Stage_Progress_borderColor_0700', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_0700 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_0700');
-          console.info('ArkUX_Stage_Progress_borderColor_0700 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_0700 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_0700 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_0700 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#33007DFF");
-          console.info('ArkUX_Stage_Progress_borderColor_0700 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_0700 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_0800
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to an outlier undefined
-     */
-    it('ArkUX_Stage_Progress_borderColor_0800', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_0800 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_0800');
-          console.info('ArkUX_Stage_Progress_borderColor_0800 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_0800 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_0800 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_0800 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#33007DFF");
-          console.info('ArkUX_Stage_Progress_borderColor_0800 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_0800 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_0900
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to Color.Pink
-     *          and again set the borderColor property parameter to "#FFFD0000".
-     */
-    it('ArkUX_Stage_Progress_borderColor_0900', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_0900 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_0900');
-          console.info('ArkUX_Stage_Progress_borderColor_0900 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_0900 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_0900 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_0900 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#FFFD0000");
-          console.info('ArkUX_Stage_Progress_borderColor_0900 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_0900 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_1000
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to Color.Pink
-     *          and again set the borderColor property parameter to the outlier 'bgr(138,43,226)'.
-     */
-    it('ArkUX_Stage_Progress_borderColor_1000', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_1000 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_1000');
-          console.info('ArkUX_Stage_Progress_borderColor_1000 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_1000 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_1000 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_1000 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#33007DFF");
-          console.info('ArkUX_Stage_Progress_borderColor_1000 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_1000 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_1100
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set borderColor property parameter to outlier 'bgr(138,43,226)'
-     */
-    it('ArkUX_Stage_Progress_borderColor_1100', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_1100 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_1100');
-          console.info('ArkUX_Stage_Progress_borderColor_1100 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_1100 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_1100 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_1100 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#33007DFF");
-          console.info('ArkUX_Stage_Progress_borderColor_1100 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_1100 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_1200
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   Set the borderColor property parameter to 0x00ff00
-     *          and the universal property backgroundColor property value to Color.Pink
-     */
-    it('ArkUX_Stage_Progress_borderColor_1200', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_1200 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_1200');
-          console.info('ArkUX_Stage_Progress_borderColor_1200 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_1200 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_1200 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_1200 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#FF00FF00");
-          console.info('ArkUX_Stage_Progress_borderColor_1200 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_1200 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    /*
-     *tc.number ArkUX_Stage_Progress_borderColor_1300
-     *tc.name   Tests the borderColor property of the Progress component
-     *tc.desc   The new attribute borderColor is not set
-     */
-    it('ArkUX_Stage_Progress_borderColor_1300', 0, async function (done) {
-      console.info('ArkUX_Stage_Progress_borderColor_1300 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Stage_Progress_borderColor_1300');
-          console.info('ArkUX_Stage_Progress_borderColor_1300 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Stage_Progress_borderColor_1300 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_Progress_borderColor_1300 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_Progress_borderColor_1300 component obj.$attrs.capsuleBorderColor is: " +
-          JSON.stringify(obj.$attrs.capsuleBorderColor));
-          expect(obj.$attrs.capsuleBorderColor).assertEqual("#33007DFF");
-          console.info('ArkUX_Stage_Progress_borderColor_1300 END ');
-        } catch(err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Progress_borderColor_1300 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
     });
   })
 }
