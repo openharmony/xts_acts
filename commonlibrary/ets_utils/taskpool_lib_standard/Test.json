@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "800000",
-        "shell-timeout": "800000",
         "bundle-name": "com.example.taskpool",
-        "package-name": "com.example.taskpool"
+        "module-name": "entry",
+        "shell-timeout": "800000"
     },
     "kits": [
         {
@@ -15,5 +15,5 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-    ]
+    ] 
 }
