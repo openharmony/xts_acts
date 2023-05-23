@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonEvent'
+import commonEventManager from '@ohos.commonEventManager'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function ActsSubscriberTestOrder() {
@@ -537,6 +538,66 @@ export default function ActsSubscriberTestOrder() {
             })
         })
         console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0400 END`)
+    })
+
+    /*
+     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0600
+     * @tc.name: createSubscriber(subscribeInfo: CommonEventSubscribeInfo, undefined): Promise<CommonEventSubscriber>
+     * @tc.desc: createSubscriber
+     */
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0600', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0600 START`)
+  
+        let subscriber
+  
+        let subscribeInfo = {
+          events: ["event06"]
+        }
+  
+        await commonEvent.createSubscriber(subscribeInfo, undefined).then((commonEventSubscriber) => {
+          console.info(`SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0600 success ${commonEventSubscriber}`)
+          subscriber = commonEventSubscriber
+          expect(true).assertTrue()
+          done()
+        }).catch((err) => {
+          console.info(
+            `SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0600 err, error code: ${err.code}, message: ${err.message}`)
+          expect(false).assertTrue()
+          done()
+        })
+  
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0600 END`)
+  
+    })
+
+    /*
+     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0700
+     * @tc.name: createSubscriber(subscribeInfo: CommonEventSubscribeInfo, undefined): Promise<CommonEventSubscriber>
+     * @tc.desc: createSubscriber
+     */
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0700', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0700 START`)
+  
+        let subscriber
+  
+        let subscribeInfo = {
+          events: ["event07"]
+        }
+  
+        await commonEventManager.createSubscriber(subscribeInfo, undefined).then((commonEventSubscriber) => {
+          console.info(`SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0700 success ${commonEventSubscriber}`)
+          subscriber = commonEventSubscriber
+          expect(true).assertTrue()
+          done()
+        }).catch((err) => {
+          console.info(
+            `SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0700 err, error code: ${err.code}, message: ${err.message}`)
+          expect(false).assertTrue()
+          done()
+        })
+  
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0700 END`)
+  
     })
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST END`)
 })
