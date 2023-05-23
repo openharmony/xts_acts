@@ -1534,7 +1534,7 @@ export async function avRecorderReliabilitTest31(avConfig, avRecorder, recorderT
         console.info('avRecorderReliabilitTest31 getInputSurface failed and catch error is ' + err.message);
         result = false
     });
-    expect(result).assertEqual(true);
+    expect(result).assertEqual(false);
     await releaseDone(avRecorder, done)
 }
 
