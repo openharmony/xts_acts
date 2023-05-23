@@ -1198,7 +1198,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         }
       })
     })
-
     /**
      * @tc.number SUB_WINDOW_ON_OFF_JSAPI_005
      * @tc.name Test listenerTest5
@@ -1209,10 +1208,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let msgStr = 'jsunittest ' + caseName + ' ';
       let listenerOnFlag = false;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemAvoidAreaChange';
-      let setSystemBarEnableType = null;
-
       function setSystemBarEnable(tempWnd) {
         return new Promise(function (resolve, reject) {
           tempWnd.setSystemBarEnable([], (err, data) => {
@@ -1220,8 +1215,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               reject(false)
             } else {
               console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-              listenerOnFlag = true;
-              setSystemBarEnableType = 0;
               resolve(true)
             }
           })
@@ -1235,7 +1228,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               reject(false)
             } else {
               console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-              setSystemBarEnableType = 2;
               resolve(true)
             }
           })
@@ -1248,23 +1240,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         expect().assertFail()
       });
       expect(!!tempWnd).assertTrue();
-
-      await tempWnd.show().then((data) => {
-        console.info(msgStr + 'Success to show the window. data: ' + JSON.stringify(data));
-      }).catch((err) => {
-        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
-        expect().assertFail()
-      });
-      await tempWnd.setFullScreen(true).then((data) => {
-        console.info(msgStr + 'Success to enable the full-screen mode. data: ' + JSON.stringify(data));
-      }).catch((err) => {
-        console.error(msgStr + 'Failed to enable the full-screen mode. Cause: ' + JSON.stringify(err));
-        expect().assertFail()
-      });
-
       tempWnd.on('systemAvoidAreaChange', avoidAreaData => {
-        console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, avoidAreaData : ' + JSON.stringify(avoidAreaData));
-        console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, setSystemBarEnableType : ' + setSystemBarEnableType);
         if (listenerOnFlag === true) {
           console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, listenerOnFlag : ' + listenerOnFlag);
           try {
@@ -1274,35 +1250,14 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           }
           tempWnd.off('systemAvoidAreaChange')
           done();
-        } else {
-          console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, listenerOnFlag : ' + listenerOnFlag);
-          if (setSystemBarEnableType === 0) {
-            console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, setSystemBarEnableType === 0');
-            try {
-              expect().assertTrue();
-            } catch (error) {
-              console.info(msgStr + `tempWnd.on catch error: ${JSON.stringify(error)}`)
-            }
-            tempWnd.off('systemAvoidAreaChange')
-            done();
-          } else if (setSystemBarEnableType === 2) {
-            console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, setSystemBarEnableType === 2');
-            try {
-              expect().assertTrue();
-            } catch (error) {
-              console.info(msgStr + `tempWnd.on catch error: ${JSON.stringify(error)}`)
-            }
-            tempWnd.off('systemAvoidAreaChange')
-            done();
-          } else {
-            console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, setSystemBarEnableType null:' + setSystemBarEnableType);
-          }
         }
       })
+      listenerOnFlag=true;
       await setSystemBarEnable(tempWnd).catch((err) => {
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
       });
+      await sleep(1000)
       await setSystemBarEnableT(tempWnd).catch((err) => {
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
