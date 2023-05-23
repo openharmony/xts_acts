@@ -29,6 +29,7 @@ struct SliderExample {
   @State inSetValueTwo: number = 40
   @State vOutSetValueOne: number = 40
   @State vInSetValueOne: number = 40
+  @State vInSetValueOne1: number = 40
   @State vOutSetValueTwo: number = 40
   @State vInSetValueTwo: number = 40
   @State blockColor: string = "#191970"
@@ -205,7 +206,7 @@ struct SliderExample {
           Text(this.modeT).fontSize(9).fontColor(0xCCCCCC).width('50%').margin(15).key('modeT')
           Row() {
             Slider({
-              value: this.vInSetValueOne,
+              value: this.vInSetValueOne1,
               style: this.style,
               direction: this.directionT,
               reverse: this.reverse,// 竖向的Slider默认是上端是min值，下端是max值，因此想要从下往上滑动，需要设置reverse为true
@@ -214,7 +215,7 @@ struct SliderExample {
               step:this.step
             }).showTips(true)
               .onChange((value: number, mode: SliderChangeMode) => {
-                this.vInSetValueOne = value
+                this.vInSetValueOne1 = value
                 console.info('value:' + value + 'm`ode:' + mode.toString())
               }).key('sliderConstructor')
 
