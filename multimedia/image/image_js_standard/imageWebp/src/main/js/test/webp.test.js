@@ -20,6 +20,7 @@ import featureAbility from "@ohos.ability.featureAbility";
 
 export default function imageWebp() {
     describe("imageWebp", function () {
+        let globalpixelmap;
         let filePath;
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
@@ -38,6 +39,14 @@ export default function imageWebp() {
         });
 
         afterEach(async function () {
+            if (globalpixelmap != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalpixelmap.release();
+                } catch (error) {
+                    console.info("globalpixelmap release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -80,6 +89,7 @@ export default function imageWebp() {
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         pixelmap
                             .getImageInfo()
                             .then((imageInfo) => {
@@ -131,6 +141,7 @@ export default function imageWebp() {
                 imageSourceApi
                     .createPixelMap(arg)
                     .then((pixelmap) => {
+                        globalpixelmap = pixelmap;
                         pixelmap
                             .getImageInfo()
                             .then((imageInfo) => {
@@ -206,6 +217,7 @@ export default function imageWebp() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalpixelmap = pixelmap;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info(`${testNum} create image packer failed`);
@@ -290,6 +302,7 @@ export default function imageWebp() {
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             console.info(`${testNum} create image packer failed`);
@@ -370,6 +383,7 @@ export default function imageWebp() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalpixelmap = pixelmap;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info(`${testNum} create image packer failed`);
@@ -448,6 +462,7 @@ export default function imageWebp() {
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             console.info(`${testNum} create image packer failed`);
@@ -502,6 +517,7 @@ export default function imageWebp() {
 
                     imageSourceApi.createPixelMap(decodingOptions).then((pixelmap) => {
                         if (pixelmap != undefined) {
+                            globalpixelmap = pixelmap;
                             expect(true).assertTrue();
                             console.info("SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0100 success ");
                             done();
@@ -550,6 +566,7 @@ export default function imageWebp() {
 
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (pixelmap != undefined) {
+                            globalpixelmap = pixelmap;
                             expect(true).assertTrue();
                             console.info("SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0100 success ");
                             done();
@@ -589,6 +606,7 @@ export default function imageWebp() {
                     imageSourceApi
                         .createPixelMap()
                         .then((pixelmap) => {
+                            globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
                             console.info("SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0200 success ");
                             done();
@@ -625,6 +643,7 @@ export default function imageWebp() {
                     done();
                 } else {
                     imageSourceApi.createPixelMap((err, pixelmap) => {
+                        globalpixelmap = pixelmap;
                         expect(pixelmap != undefined).assertTrue();
                         console.info("SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0200 success ");
                         done();
