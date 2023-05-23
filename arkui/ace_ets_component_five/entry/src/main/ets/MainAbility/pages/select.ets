@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,7 @@ import events_emitter from '@ohos.events.emitter'
 @Entry
 @Component
 struct SliderExample {
-  @State value:string=10
+  @State value:string= '10'
   @State font:object={size: 30, weight:400, family: 'serif', style: FontStyle.Normal }
   @State fontColor: Color= 0xCCCCCC
 
@@ -60,7 +59,7 @@ struct SliderExample {
         .selectedOptionFont({size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
         .optionFont({size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
         .key('select')
-        .onSelected((index:number)=>{
+        .onSelect((index:number)=>{
           console.info("Select:" + index)
         })
     }

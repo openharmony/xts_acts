@@ -143,9 +143,7 @@ export default function swiperCurveJsunit() {
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
       let testObj = obj.$attrs.indicator;
-      console.info("curve006_" + testObj);
-      expect(testObj).assertTrue();
-      console.info("[testswiperCurve0006] indicator value :" + obj.$attrs.indicator);
+      expect(testObj).assertEqual('true');
       done();
     });
 
