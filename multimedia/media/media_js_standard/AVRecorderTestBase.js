@@ -943,68 +943,28 @@ export async function avRecorderLoopCreate2ReleaseWithCallback(avConfig, avRecor
     }
 }
 
-export async function avRecorderLoopPrepare2StopWithCallback(avConfig, avRecorder, loopTimes, done) {
+export async function avRecorderLoopPrepare2StopWithCallback(avConfig, avRecorder, done, eventEmitter, mySteps) {
     avRecorder = await idle(avRecorder);
     sleep(200)
-    await preparePromise(avRecorder, avConfig);
-    sleep(200)
-    while (loopTimes > 0) {
-        startCallback(avRecorder, 200);
-        stopCallback(avRecorder);
-        sleep(200)
-        loopTimes--;
-        console.info(`avRecorderLoopPrepare2StopWithCallback loop time is :${loopTimes}`)
-        if(loopTimes == 0){
-            await avRecorder.release().then(() => {
-                console.info(`avRecorderLoopPrepare2StopWithCallback release success`)
-            }).catch((err) => {
-                console.info('release avRecorderLoopPrepare2StopWithCallback failed and catch error is ' + err.message);
-            });
-            done();
-        } else {
-            await preparePromise(avRecorder, avConfig);
-            sleep(200);
-        }
-    }
+    eventEmitter.emit(mySteps[0], avRecorder, avConfig, 3000, mySteps, done);
 }
 
-export async function avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorder, loopTimes, done) {
+export async function avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorder, done, eventEmitter, mySteps) {
     avRecorder = await idle(avRecorder);
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     sleep(2000)
     await startPromise(avRecorder);
-    while (loopTimes > 0) {
-        pauseCallback(avRecorder);
-        resumeCallback(avRecorder);
-        await sleep(50)
-        console.info(`avRecorderLoopPause2ResumeWithCallback loop time is :${loopTimes}`)
-        loopTimes--;
-        if(loopTimes == 0){
-            await sleep(2000)
-            await avRecorder.release().then(() => {
-                console.info(`avRecorderLoopPause2ResumeWithCallback release success`)
-                done();
-            }).catch((err) => {
-                console.info('release avRecorderLoopPause2ResumeWithCallback failed and catch error is ' + err.message);
-            });
-        }
-    }
-    //    await releaseDone(avRecorder, done)
+    eventEmitter.emit(mySteps[0], avRecorder, avConfig, 3000, mySteps, done);
 }
 
-export async function avRecorderLoopCreate2Release2WithCallback(avConfig, avRecorder, loopTimes, done) {
-    while (loopTimes > 0) {
-        avRecorder = await idle(avRecorder);
-        console.info('case avConfig.url is ' + avConfig.url);
-        releaseCallback(avRecorder);
-        console.info(`avRecorderLoopCreate2Release2WithCallback loop time is :${loopTimes}`)
-        loopTimes--;
-        if(loopTimes == 0){
-            sleep(2000)
-            done();
-        }
-    }
+export async function avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorder, done, eventEmitter, mySteps) {
+    avRecorder = await idle(avRecorder);
+    console.info('case avConfig.url is ' + avConfig.url);
+    await preparePromise(avRecorder, avConfig);
+    sleep(2000)
+    await startPromise(avRecorder);
+    eventEmitter.emit(mySteps[0], avRecorder, avConfig, 3000, mySteps, done);
 }
 
 export async function avRecorderReliabilitTest01(avConfig, avRecorder, recorderTime, done) {
@@ -1567,7 +1527,7 @@ export async function avRecorderReliabilitTest31(avConfig, avRecorder, recorderT
     let surfaceID = null;
     let result = true;
     avRecorder = await idle(avRecorder);
-    avRecorder.getInputSurface().then((surfaceId) => {
+    await avRecorder.getInputSurface().then((surfaceId) => {
         console.info('avRecorderReliabilitTest31 getInputSurface success');
         surfaceID = surfaceId;
     }).catch((err) => {
@@ -1853,6 +1813,18 @@ export async function avRecorderReliabilitTest37(avConfig, avRecorder, recorderT
     await preparePromise(avRecorder, avConfig)
 }
 
+async function  getInputSurfaceCatachError(avRecorder, result, surfaceID){
+    await avRecorder.getInputSurface().then((surfaceId) => {
+        console.info('getInputSurfaceTest38 getInputSurface success');
+        surfaceID = surfaceId;
+    }).catch((err) => {
+        console.info('getInputSurfaceTest38 getInputSurface failed and catch error is ' + err.message);
+        result = false
+        console.info('getInputSurfaceTest38 getInputSurface result is ' + result);
+        expect(result).assertEqual(false);
+    });
+}
+
 export async function getInputSurfaceTest38(avConfig, avRecorder, recorderTime, done) {
     let result1 = true;
     let result2 = true;
@@ -1865,33 +1837,9 @@ export async function getInputSurfaceTest38(avConfig, avRecorder, recorderTime, 
             case AV_RECORDER_STATE.PREPARED:
                 console.info(`case getInputSurfaceTest38 state is PREPARED`);
                 expect(avRecorder.state).assertEqual('prepared');
-
-                avRecorder.getInputSurface().then((surfaceId) => {
-                    console.info('getInputSurfaceTest38 getInputSurface success');
-                    surfaceID = surfaceId;
-                }).catch((err) => {
-                    console.info('getInputSurfaceTest38 getInputSurface failed and catch error is ' + err.message);
-                    result1 = false
-                });
-                expect(result1).assertEqual(true);
-
-                avRecorder.getInputSurface().then((surfaceId) => {
-                    console.info('getInputSurfaceTest38 getInputSurface success');
-                    surfaceID = surfaceId;
-                }).catch((err) => {
-                    console.info('getInputSurfaceTest38 getInputSurface failed and catch error is ' + err.message);
-                    result2 = false
-                });
-                expect(result2).assertEqual(true);
-
-                avRecorder.getInputSurface().then((surfaceId) => {
-                    console.info('getInputSurfaceTest38 getInputSurface success');
-                    surfaceID = surfaceId;
-                }).catch((err) => {
-                    console.info('getInputSurfaceTest38 getInputSurface failed and catch error is ' + err.message);
-                    result3 = false
-                });
-                expect(result3).assertEqual(true);
+                getInputSurfaceCatachError(avRecorder, result1, surfaceID)
+                getInputSurfaceCatachError(avRecorder, result2, surfaceID)
+                getInputSurfaceCatachError(avRecorder, result3, surfaceID)
                 releasePromise(avRecorder)
                 break;
             case AV_RECORDER_STATE.RELEASED:
@@ -2229,7 +2177,7 @@ export async function releaseTimeTestCallback(avConfig, avRecorder, recorderTime
         let end;
         let start = Date.now();
         console.info(`releaseTimeTestCallback start time is : ${start}`)
-        avRecorder.release((err) => {
+        await avRecorder.release((err) => {
             if (err == null) {
                 console.info(`releaseTimeTestCallback current state is : ${avRecorder.state}`)
                 console.info('release releaseTimeTestCallback success');
@@ -2238,15 +2186,15 @@ export async function releaseTimeTestCallback(avConfig, avRecorder, recorderTime
                 let execution = parseInt(end - start)
                 console.info("releaseTimeTestCallback execution time  is :" + execution)
                 totalTime = totalTime + execution;
+                if(i == 9){
+                    let avg = totalTime/10;
+                    console.info("releaseTimeTestCallback avg time  is :" + avg)
+                    done();
+                }
             } else {
                 console.info('resume releaseTimeTestCallback failed and error is ' + err.message);
             }
         });
-        if(i == 9){
-            let avg = totalTime/10;
-            console.info("releaseTimeTestCallback avg time  is :" + avg)
-            done();
-        }
     }
 }
 
