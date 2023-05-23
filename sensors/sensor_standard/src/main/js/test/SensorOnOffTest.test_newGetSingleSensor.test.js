@@ -23,7 +23,7 @@ describe("SensorJsTest_sensor_36", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -31,7 +31,7 @@ describe("SensorJsTest_sensor_36", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -39,7 +39,7 @@ describe("SensorJsTest_sensor_36", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -47,7 +47,7 @@ describe("SensorJsTest_sensor_36", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 
     let invild;
@@ -90,10 +90,10 @@ describe("SensorJsTest_sensor_36", function () {
     })
 
     /**
-     * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0020
-     * @tc.name: GetSingleSensor_JSTest_002
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     */
+    * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0020
+    * @tc.name: GetSingleSensor_JSTest_002
+    * @tc.desc: Verification results of the incorrect parameters of the test interface.
+    */
      it('GetSingleSensor_JSTest_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------GetSingleSensor_JSTest_002-------------------------");
         try {
@@ -107,10 +107,10 @@ describe("SensorJsTest_sensor_36", function () {
     })
 
     /**
-     * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0030
-     * @tc.name: GetSingleSensor_JSTest_003
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     */
+    * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0030
+    * @tc.name: GetSingleSensor_JSTest_003
+    * @tc.desc: Verification results of the incorrect parameters of the test interface.
+    */
      it('GetSingleSensor_JSTest_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------GetSingleSensor_JSTest_003-------------------------");
         try {
@@ -143,11 +143,11 @@ describe("SensorJsTest_sensor_36", function () {
         }
     })
 
-     /**
-     * @tc.number: SUB_SensorsSystem_GetSingleSensor_JSTest_0040
-     * @tc.name: GetSingleSensor_JSTest_004
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     */
+    /**
+    * @tc.number: SUB_SensorsSystem_GetSingleSensor_JSTest_0040
+    * @tc.name: GetSingleSensor_JSTest_004
+    * @tc.desc: Verification results of the incorrect parameters of the test interface.
+    */
       it('GetSingleSensor_JSTest_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------GetSingleSensor_JSTest_004-------------------------");
         try {
@@ -180,11 +180,11 @@ describe("SensorJsTest_sensor_36", function () {
         }
     })
 
-     /**
-     * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0050
-     * @tc.name: GetSingleSensor_JSTest_005
-	 * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     */
+    /**
+    * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0050
+    * @tc.name: GetSingleSensor_JSTest_005
+	* @tc.desc: Verification results of the incorrect parameters of the test interface.
+    */
       it('GetSingleSensor_JSTest_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------GetSingleSensor_JSTest_005-------------------------");
         try {
@@ -207,11 +207,11 @@ describe("SensorJsTest_sensor_36", function () {
         }
     })
 
-     /**
-     * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0060
-     * @tc.name: GetSingleSensor_JSTest_006
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     */
+    /**
+    * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0060
+    * @tc.name: GetSingleSensor_JSTest_006
+    * @tc.desc: Verification results of the incorrect parameters of the test interface.
+    */
      it('GetSingleSensor_JSTest_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------GetSingleSensor_JSTest_006-------------------------");
         try {
@@ -225,10 +225,10 @@ describe("SensorJsTest_sensor_36", function () {
     })
 
     /**
-     * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0070
-     * @tc.name: GetSingleSensor_JSTest_007
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     */
+    * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0070
+    * @tc.name: GetSingleSensor_JSTest_007
+    * @tc.desc: Verification results of the incorrect parameters of the test interface.
+    */
      it('GetSingleSensor_JSTest_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------GetSingleSensor_JSTest_007-------------------------");
         try {
@@ -260,11 +260,11 @@ describe("SensorJsTest_sensor_36", function () {
         }
     })
 
-		/**
-		 * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0080
-		 * @tc.name: GetSingleSensor_JSTest_008
-		 * @tc.desc: Verification results of the incorrect parameters of the test interface.
-		 */
+	/**
+	* @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0080
+	* @tc.name: GetSingleSensor_JSTest_008
+	* @tc.desc: Verification results of the incorrect parameters of the test interface.
+	*/
 	it("GetSingleSensor_JSTest_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info("------------------------GetSingleSensor_JSTest_008------------------");
 		try {
@@ -284,11 +284,11 @@ describe("SensorJsTest_sensor_36", function () {
 		}
 	})
 
-		/**
-		 * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0090
-		 * @tc.name: GetSingleSensor_JSTest_009
-		 * @tc.desc: Verification results of the incorrect parameters of the test interface.
-		 */
+	/**
+	* @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0090
+	* @tc.name: GetSingleSensor_JSTest_009
+	* @tc.desc: Verification results of the incorrect parameters of the test interface.
+	*/
 	it("GetSingleSensor_JSTest_009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info("-------------------GetSingleSensor_JSTest_009----------------------");
 		sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data) => {
@@ -310,11 +310,11 @@ describe("SensorJsTest_sensor_36", function () {
 		});
 	})
 
-		/**
-		 * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0100
-		 * @tc.name: GetSingleSensor_JSTest_010
-		 * @tc.desc: Verification results of the incorrect parameters of the test interface.
-		 */
+	/**
+	* @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0100
+	* @tc.name: GetSingleSensor_JSTest_010
+	* @tc.desc: Verification results of the incorrect parameters of the test interface.
+	*/
 	it("GetSingleSensor_JSTest_010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info("----------------GetSingleSensor_JSTest_010-----------------------");
 		try {
@@ -332,11 +332,11 @@ describe("SensorJsTest_sensor_36", function () {
 		}
 	})
 
-		/**
-		 * @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0110
-		 * @tc.name: GetSingleSensor_JSTest_011
-		 * @tc.desc: Verification results of the incorrect parameters of the test interface.
-		 */
+	/**
+	* @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0110
+	* @tc.name: GetSingleSensor_JSTest_011
+	* @tc.desc: Verification results of the incorrect parameters of the test interface.
+	*/
 	 it("GetSingleSensor_JSTest_011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info("-------------------GetSingleSensor_JSTest_011----------------------");
 		try {
@@ -348,4 +348,55 @@ describe("SensorJsTest_sensor_36", function () {
 			done();
 		}
 	})
+	
+	/**
+	* @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0120
+	* @tc.name: GetSingleSensor_JSTest_012
+	* @tc.desc: Verification results of the incorrect parameters of the test interface.
+	*/
+    it("GetSingleSensor_JSTest_012", 0, async function (done) {
+        sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER, undefined).then((data) => {
+            console.info("GetSingleSensor_JSTest_012 " + JSON.stringify(data));
+            expect(true).assertTrue();
+            done();
+        }, (error) => {
+            console.info('GetSingleSensor_JSTest_012 failed');
+            expect(false).assertTrue();
+            done();
+        });
+    })
+
+	/**
+	* @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0130
+	* @tc.name: GetSingleSensor_JSTest_013
+	* @tc.desc: Verification results of the incorrect parameters of the test interface.
+	*/
+    it("GetSingleSensor_JSTest_013", 0, async function (done) {
+        sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER, null).then((data) => {
+            console.info("GetSingleSensor_JSTest_013 " + JSON.stringify(data));
+            expect(true).assertTrue();
+            done();
+        }, (error) => {
+            console.info('GetSingleSensor_JSTest_013 failed');
+            expect(false).assertTrue();
+            done();
+        });
+    })
+
+	/**
+	* @tc.number:SUB_SensorsSystem_GetSingleSensor_JSTest_0140
+	* @tc.name: GetSingleSensor_JSTest_014
+	* @tc.desc: Verification results of the incorrect parameters of the test interface.
+	*/
+    it("GetSingleSensor_JSTest_014", 0, async function (done) {
+        sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER, "abc").then((data) => {
+            console.info("GetSingleSensor_JSTest_014 " + JSON.stringify(data));
+            expect(true).assertTrue();
+            done();
+        }, (error) => {
+            console.info('GetSingleSensor_JSTest_014 failed');
+            expect(false).assertTrue();
+            done();
+        });
+    })	
 })}

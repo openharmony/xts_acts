@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 export default function SensorJsTest_sensor_3() {
 describe("SensorJsTest_sensor_3", function () {
     function callback(data) {
-        console.info("callback" + JSON.stringify(data));
+        console.info("old callback" + JSON.stringify(data));
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -26,7 +26,7 @@ describe("SensorJsTest_sensor_3", function () {
     }
 
     function callback2(data) {
-        console.info("callback2" + JSON.stringify(data));
+        console.info("old callback2" + JSON.stringify(data));
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -38,7 +38,7 @@ describe("SensorJsTest_sensor_3", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -46,7 +46,7 @@ describe("SensorJsTest_sensor_3", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -54,7 +54,7 @@ describe("SensorJsTest_sensor_3", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -62,11 +62,14 @@ describe("SensorJsTest_sensor_3", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
-
+	
+    const PARAMETER_ERROR_CODE = 401
+    const SERVICE_EXCEPTION_CODE = 14500101
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+    const SERVICE_EXCEPTION_MSG = 'Service exception.'
     let errMessages = ['string is not defined','The parameter invalid'];
-
     let errMessage;
 
      /*
@@ -295,7 +298,6 @@ describe("SensorJsTest_sensor_3", function () {
 			} catch (error) {
             console.info("Accelerometer_SensorJsTest012 error:" + error);
 			}
-            console
             console.info('----------------------Accelerometer_SensorJsTest012 off end---------------------------');
         }, 500);
         setTimeout(() => {
@@ -322,4 +324,141 @@ describe("SensorJsTest_sensor_3", function () {
             done();
         }, 1000);
     })
+	
+	 /*
+     * @tc.number: SUB_SensorsSystem_ACCELEROMETER_JSTest_0140
+     * @tc.name: Accelerometer_SensorJsTest014
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("Accelerometer_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback, { 'interval': undefined });
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback2, { 'interval': undefined });
+        setTimeout(() => {
+            console.info('----------------------Accelerometer_SensorJsTest014 off in--------------');
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback2);
+			} catch (error) {
+            console.info("Accelerometer_SensorJsTest014 error:" + error);
+			expect(false).assertTrue();
+			}
+            console.info('----------------------Accelerometer_SensorJsTest014 off end--------------');
+			done()
+        }, 1000);
+    })
+	
+	 /*
+     * @tc.number: SUB_SensorsSystem_ACCELEROMETER_JSTest_0150
+     * @tc.name: Accelerometer_SensorJsTest015
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("Accelerometer_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------Accelerometer_SensorJsTest015--------------');
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback, undefined);
+        try{
+		sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback, { 'interval': undefined });
+		} catch(error){
+			 console.info('Accelerometer_SensorJsTest015 Repeat subscription'+error);
+		}
+        setTimeout(() => {
+            console.info('----------------------Accelerometer_SensorJsTest015 off in--------------');
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER);
+			} catch (error) {
+            console.info("Accelerometer_SensorJsTest015 error:" + error);
+			expect(false).assertTrue();
+			}
+			done();
+        }, 1000);
+    })	
+
+	 /*
+     * @tc.number: SUB_SensorsSystem_ACCELEROMETER_JSTest_0160
+     * @tc.name: Accelerometer_SensorJsTest016
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("Accelerometer_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------Accelerometer_SensorJsTest016--------------');
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback, null);
+        try{
+		sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback, { 'interval': null });
+		} catch(error){
+			 console.info('Accelerometer_SensorJsTest016 Repeat subscription'+error);
+		}
+        setTimeout(() => {
+            console.info('----------------------Accelerometer_SensorJsTest016 off in--------------');
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER);
+			} catch (error) {
+            console.info("Accelerometer_SensorJsTest016 error:" + error);
+			expect(false).assertTrue();
+			}
+			done();
+        }, 1000);
+    })		
+	
+	 /*
+     * @tc.number: SUB_SensorsSystem_ACCELEROMETER_JSTest_0170
+     * @tc.name: Accelerometer_SensorJsTest017
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("Accelerometer_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------Accelerometer_SensorJsTest017--------------');
+		sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback, { 'interval': null });
+        setTimeout(() => {
+            console.info('----------------------Accelerometer_SensorJsTest017 off in--------------');
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER);
+			} catch (error) {
+            console.info("Accelerometer_SensorJsTest017 error:" + error);
+			expect(false).assertTrue();
+			}
+			done();			
+        }, 500);
+    })	
+
+	/*
+     * @tc.number:SUB_SensorsSystem_ACCELEROMETER_JSTest_0180
+     * @tc.name: Accelerometer_SensorJsTest018
+     * @tc.desc: Functional Use Cases
+     */
+    it("Accelerometer_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------Accelerometer_SensorJsTest018--------------');
+        try {
+		sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, null);
+        setTimeout(() => {
+			done();			
+        }, 1000);		
+		} catch(error){
+			console.info('Accelerometer_SensorJsTest018 error:'+error);
+			expect(false).assertTrue();
+			done();
+		}
+    })
+	
+	/*
+     * @tc.number:SUB_SensorsSystem_ACCELEROMETER_JSTest_0190
+     * @tc.name: Accelerometer_SensorJsTest019
+     * @tc.desc: Functional Use Cases
+     */
+    it("Accelerometer_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------Accelerometer_SensorJsTest019--------------');
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback, { 'interval': 100000000 });
+        try{
+		sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback, { 'interval': 100000000 });
+		} catch(error){
+			 console.info("Accelerometer_SensorJsTest019 catch error:" + error);
+		}
+        setTimeout(() => {
+            console.info('----------------------Accelerometer_SensorJsTest019 off in--------------');
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER);
+			} catch (error) {
+            console.info("Accelerometer_SensorJsTest019 error:" + error);
+			expect(false).assertTrue();
+			}
+            console.info('----------------------Accelerometer_SensorJsTest019 off end--------------');
+			done()
+        }, 1000);
+    })	
 })}

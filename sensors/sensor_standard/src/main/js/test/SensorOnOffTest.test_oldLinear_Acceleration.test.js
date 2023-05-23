@@ -38,7 +38,7 @@ describe("SensorJsTest_sensor_13", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -46,7 +46,7 @@ describe("SensorJsTest_sensor_13", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -54,7 +54,7 @@ describe("SensorJsTest_sensor_13", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -62,7 +62,7 @@ describe("SensorJsTest_sensor_13", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 
     let errMessages = ['string is not defined','The parameter invalid'];
