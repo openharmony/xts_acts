@@ -406,19 +406,12 @@ describe("SensorJsTest_sensor_42", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("newGravity_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newGravity_SensorJsTest025--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.GRAVITY,(error, data) => {
-				sensor.on(sensor.SensorId.GRAVITY, callback);
-				setTimeout(()=>{
-					sensor.off(sensor.SensorId.GRAVITY, 5);
-					done();
-				}, 500);
-			})
-		} catch (error) {
+        try {
+            sensor.off(sensor.SensorId.GRAVITY, 5);
+        } catch (error) {
             console.info('newGravity_SensorJsTest025 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done();
         }
     })

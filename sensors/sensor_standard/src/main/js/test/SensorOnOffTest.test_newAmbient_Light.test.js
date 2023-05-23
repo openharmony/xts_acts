@@ -371,24 +371,12 @@ describe("SensorJsTest_sensor_41", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("newAmbient_Light_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newAmbient_Light_SensorJsTest025--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.AMBIENT_LIGHT,(error, data) => {
-				if (error) {
-					console.info('newAmbient_Light_SensorJsTest025 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback);
-						setTimeout(()=>{
-							sensor.off(sensor.SensorId.AMBIENT_LIGHT, 5);
-							done();
-						}, 500);
-				}
-			})
-		} catch (error) {
+        try {
+            sensor.off(sensor.SensorId.AMBIENT_LIGHT, 5);
+        } catch (error) {
             console.info('newAmbient_Light_SensorJsTest025 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done();
         }
     })
