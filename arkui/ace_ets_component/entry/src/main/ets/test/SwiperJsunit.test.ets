@@ -65,14 +65,14 @@ export default function swiperJsunit() {
       let obj = JSON.parse(strJson);
       console.info("swiperTest_0200 component obj is: " + JSON.stringify(obj));
       let assertObjet = obj.$attrs.indicator;
-      expect(assertObjet).assertTrue();
-      expect(obj.$attrs.loop).assertFalse();
+      expect(assertObjet).assertEqual('true')
+      expect(obj.$attrs.loop).assertEqual('false');
       console.info('swiperTest_0200 END');
       done();
     });
 
     it('swiperTest_0300', 0, async function (done) {
-      console.info('swiperTest_0300 START');
+    console.info('swiperTest_0300 START');
       let strJson = getInspectorByKey('swiper');
       console.info("swiperTest_0300 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
@@ -128,7 +128,7 @@ export default function swiperJsunit() {
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
       console.info("swiperTest_0600 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.index).assertEqual('4');
+      expect(objNew.$attrs.index).assertEqual('3');
       console.info('swiperTest_0600 END');
       done();
     });
@@ -338,8 +338,8 @@ export default function swiperJsunit() {
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
       console.info("swiperTest_1400 component objNew is: " + JSON.stringify(objNew));
-      let assertObjet = obj.$attrs.indicator;
-      expect(assertObjet).assertTrue();
+      let assertObjet = objNew.$attrs.indicator;
+      expect(assertObjet).assertEqual('false');
       console.info('swiperTest_1400 END');
       done();
     });

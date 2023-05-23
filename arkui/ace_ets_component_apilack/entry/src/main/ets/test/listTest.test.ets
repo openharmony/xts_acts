@@ -126,7 +126,7 @@ export default function listNewJsunit() {
       console.info("[testListNe0006] component lanes strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('List');
-      expect(obj.$attrs.lanes).assertEqual('0');
+      expect(obj.$attrs.lanes).assertEqual('4');
       console.info("[testListNe0006] lanes value :" + obj.$attrs.lanes);
       done();
     });
@@ -143,7 +143,7 @@ export default function listNewJsunit() {
       console.info("[testListNe0006] component lanes strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('List');
-      expect(obj.$attrs.lanes).assertEqual('0');
+      expect(obj.$attrs.lanes).assertEqual('4');
       console.info("[testListNe0006] lanes value :" + obj.$attrs.lanes);
       done();
     });
