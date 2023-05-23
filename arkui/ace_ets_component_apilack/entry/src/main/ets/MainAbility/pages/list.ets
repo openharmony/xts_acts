@@ -97,7 +97,7 @@ struct ListLanes {
           .editMode(true)
           .alignListItem(ListItemAlign.Start)
           .border({ width: 3, color: Color.Red })
-          .lanes({ minLength: 40, maxLength: 60 })
+          .lanes(4)
           .onScrollFrameBegin((offset: number, state: ScrollState) => {
             if ((this.listPosition == 0 && offset >= 0) || (this.listPosition == 2 && offset <= 0)) {
               this.scroller.scrollBy(0, -offset)

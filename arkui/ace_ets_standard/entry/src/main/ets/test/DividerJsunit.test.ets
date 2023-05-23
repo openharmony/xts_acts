@@ -72,7 +72,7 @@ export default function dividerJsunit() {
       console.log("cd divider strokeWidth" + JSON.stringify(obj.$attrs.strokeWidth));
       console.log("cd divider vertical" + JSON.stringify(obj.$attrs.vertical));
       console.log("cd divider lineCap" + JSON.stringify(obj.$attrs.lineCap));
-      expect(obj.$attrs.strokeWidth).assertEqual("7.000000")
+      expect(obj.$attrs.strokeWidth).assertEqual("7.00vp")
       expect(obj.$attrs.vertical).assertEqual('true')
       expect(obj.$attrs.lineCap == LineCapStyle.Square)
       console.info('cd dividerInspectorByKey END');

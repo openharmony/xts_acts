@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -60,7 +59,7 @@ struct SwiperExample {
   @State onActionCalledTwo: boolean = false;
   @State onActionCalledThree: boolean = false;
 
-  private aboutToAppear(): void {
+ aboutToAppear(): void {
     let list = []
     for (var i = 1; i <= 10; i++) {
       list.push(i.toString());

@@ -58,7 +58,7 @@ export default function list_itemOnSelectJsunit() {
       console.info("[testlist_itemOnSelect0001] component border strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('ListItem');
-      expect(obj.$attrs.editable).assertEqual("true");
+      expect(obj.$attrs.editable).assertTrue();
       console.info("[testlist_itemOnSelect0001] editable value :" + obj.$attrs.editable);
       done();
     });

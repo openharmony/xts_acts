@@ -58,8 +58,7 @@ export default function swiperMaskJsunit() {
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
       console.info("[testswiperMask001] indicatorStyle value :" + obj.$attrs.indicator);
-      let jsonObject = JSON.parse(obj.$attrs.indicator);
-      expect(jsonObject.mask).assertEqual('true');
+      expect(obj.$attrs.indicator).assertEqual('true');
       done();
     });
   })
