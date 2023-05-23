@@ -19,6 +19,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import featureAbility from "@ohos.ability.featureAbility";
 export default function imageRaw() {
     describe("imageRaw", function () {
+        let globalpixelmap;
         const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
         let filePath;
         let fdNumber;
@@ -53,6 +54,14 @@ export default function imageRaw() {
         });
 
         afterEach(async function () {
+            if (globalpixelmap != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalpixelmap.release();
+                } catch (error) {
+                    console.info("globalpixelmap release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -130,6 +139,7 @@ export default function imageRaw() {
                         .createPixelMap(decodeOpts)
                         .then((pixelmap) => {
                             if (pixelmap != undefined) {
+                                globalpixelmap = pixelmap;
                                 console.info(`${testNum} createPixelMap create pixelmap success`);
                                 packFunc(done, testNum, pixelmap, packOpts);
                             } else {
@@ -165,6 +175,7 @@ export default function imageRaw() {
                     console.info(`${testNum} createPixelMapPromise create imagesource success`);
                     imageSourceApi.createPixelMap(decodeOpts, (err, pixelmap) => {
                         if (pixelmap != undefined) {
+                            globalpixelmap = pixelmap;
                             console.info(`${testNum} createPixelMap create pixelmap success`);
                             packFunc(done, testNum, pixelmap, packOpts);
                         } else {

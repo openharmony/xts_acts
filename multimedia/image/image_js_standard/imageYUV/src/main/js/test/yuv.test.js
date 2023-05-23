@@ -18,6 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 export default function imageYuv() {
     describe("imageYuv", function () {
+        let globalpixelmap;
         const { NV21, NV12 } = image.PixelMapFormat;
         const WRONG_FORMAT = 10;
 
@@ -31,6 +32,14 @@ export default function imageYuv() {
         });
 
         afterEach(async function () {
+            if (globalpixelmap != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalpixelmap.release();
+                } catch (error) {
+                    console.info("globalpixelmap release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -75,6 +84,7 @@ export default function imageYuv() {
                                 expect(false).assertTrue();
                                 done();
                             } else {
+                                globalpixelmap = pixelmap;
                                 pixelmap.getImageInfo((err, imageInfo) => {
                                     if (err != undefined) {
                                         expect(false).assertTrue();
@@ -146,6 +156,7 @@ export default function imageYuv() {
                             done();
                             return;
                         }
+                        globalpixelmap = pixelmap;
                         pixelmap.getImageInfo((err, imageInfo) => {
                             if (err != undefined) {
                                 console.info(`${testNum} getImageInfo fail`);

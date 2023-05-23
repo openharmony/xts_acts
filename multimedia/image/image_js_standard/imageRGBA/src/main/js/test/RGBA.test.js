@@ -17,6 +17,7 @@ import image from "@ohos.multimedia.image";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 
 describe("Image", function () {
+    let globalpixelmap;
     const { RGBA_F16, BGRA_8888, ALPHA_8, RGB_565, ARGB_8888, UNKNOWN, RGB_888 } = image.PixelMapFormat;
 
     beforeAll(function () {
@@ -27,7 +28,15 @@ describe("Image", function () {
         console.info("beforeEach case");
     });
 
-    afterEach(function () {
+    afterEach(async function () {
+        if (globalpixelmap != undefined) {
+            console.info("globalpixelmap release start");
+            try {
+                await globalpixelmap.release();
+            } catch (error) {
+                console.info("globalpixelmap release fail");
+            }
+        }
         console.info("afterEach case");
     });
 
@@ -53,6 +62,7 @@ describe("Image", function () {
         image
             .createPixelMap(Color, opts)
             .then((pixelmap) => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
                 done();
@@ -86,6 +96,7 @@ describe("Image", function () {
                 done();
                 return;
             }
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             expect(pixelmap.isEditable == opts.editable).assertTrue();
             done();
@@ -110,6 +121,7 @@ describe("Image", function () {
         image
             .createPixelMap(Color, opts)
             .then((pixelmap) => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
                 done();
@@ -143,6 +155,7 @@ describe("Image", function () {
                 done();
                 return;
             }
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             expect(pixelmap.isEditable == opts.editable).assertTrue();
             done();
@@ -167,6 +180,7 @@ describe("Image", function () {
         image
             .createPixelMap(Color, opts)
             .then((pixelmap) => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
                 done();
@@ -196,6 +210,7 @@ describe("Image", function () {
         image
             .createPixelMap(Color, opts)
             .then((pixelmap) => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
                 done();
@@ -225,6 +240,7 @@ describe("Image", function () {
         image
             .createPixelMap(Color, opts)
             .then((pixelmap) => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
                 done();
@@ -258,6 +274,7 @@ describe("Image", function () {
                 done();
                 return;
             }
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             expect(pixelmap.isEditable == opts.editable).assertTrue();
             done();
@@ -286,6 +303,7 @@ describe("Image", function () {
                 done();
                 return;
             }
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             expect(pixelmap.isEditable == opts.editable).assertTrue();
             done();
@@ -314,6 +332,7 @@ describe("Image", function () {
                 done();
                 return;
             }
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             expect(pixelmap.isEditable == opts.editable).assertTrue();
             done();
@@ -448,6 +467,7 @@ describe("Image", function () {
         image
             .createPixelMap(Color, opts)
             .then((pixelmap) => {
+                globalpixelmap = pixelmap;
                 console.log("SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0800 pixelFormat: BGRA_8888  ");
                 expect(pixelmap != undefined).assertTrue();
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
@@ -478,6 +498,7 @@ describe("Image", function () {
         image
             .createPixelMap(Color, opts)
             .then((pixelmap) => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
                 done();
@@ -511,6 +532,7 @@ describe("Image", function () {
                 done();
                 return;
             }
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             expect(pixelmap.isEditable == opts.editable).assertTrue();
             done();
@@ -538,6 +560,7 @@ describe("Image", function () {
                 done();
                 return;
             }
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             expect(pixelmap.isEditable == opts.editable).assertTrue();
             done();

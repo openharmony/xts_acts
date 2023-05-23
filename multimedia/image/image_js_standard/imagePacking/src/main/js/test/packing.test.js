@@ -20,6 +20,7 @@ import fileio from "@ohos.fileio";
 
 export default function imagePacking() {
     describe("imagePacking", function () {
+        let globalpixelmap;
         let filePath;
         let fdNumber;
         async function getFd(fileName) {
@@ -52,7 +53,15 @@ export default function imagePacking() {
             console.info("beforeEach case");
         });
 
-        afterEach(function () {
+        afterEach(async function () {
+            if (globalpixelmap != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalpixelmap.release();
+                } catch (error) {
+                    console.info("globalpixelmap release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -76,6 +85,7 @@ export default function imagePacking() {
                         console.info(`${testNum} create pixelmap fail`);
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             expect(false).assertTrue();
@@ -125,6 +135,7 @@ export default function imagePacking() {
                         console.info(`${testNum} create pixelmap fail`);
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             expect(false).assertTrue();
@@ -171,6 +182,7 @@ export default function imagePacking() {
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             expect(false).assertTrue();
@@ -204,6 +216,7 @@ export default function imagePacking() {
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             expect(false).assertTrue();
