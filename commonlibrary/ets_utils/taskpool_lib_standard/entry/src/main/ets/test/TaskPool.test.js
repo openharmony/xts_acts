@@ -357,7 +357,7 @@ describe('ActsAbilityTest', function () {
         while (!isTerminate) {
             await promiseCase()
         }
-        expect(result).assertEqual(30); 
+        expect(result).assertEqual(30);
         done();
     })
 
@@ -522,7 +522,7 @@ describe('ActsAbilityTest', function () {
             result1 = ret1;
             isTerminate1 = true;
         })
-        
+
         var task2 = new taskpool.Task(Sum, 30, 40);
         taskpool.execute(task2).then((ret2) => {
             result2 = ret2;
@@ -789,7 +789,7 @@ describe('ActsAbilityTest', function () {
         var isTerminate = false;
         taskpool.execute(Sum, 10, 20, 30).then((ret) => {
             result = ret;
-            isTerminate = true;    
+            isTerminate = true;
         })
         while (!isTerminate) {
             await promiseCase()
@@ -810,11 +810,11 @@ describe('ActsAbilityTest', function () {
 
         taskpool.execute(Sum, 10, 20).then((ret1) => {
             result1 = ret1;
-            isTerminate1 = true;  
+            isTerminate1 = true;
         })
         taskpool.execute(Sum, 30, 40).then((ret2) => {
             result2 = ret2;
-            isTerminate2 = true;  
+            isTerminate2 = true;
         })
         while (!isTerminate1 || !isTerminate2) {
             await promiseCase()
@@ -836,11 +836,11 @@ describe('ActsAbilityTest', function () {
 
         taskpool.execute(Sum, 10, 20).then((ret1) => {
             result1 = ret1;
-            isTerminate1 = true;  
+            isTerminate1 = true;
         })
         taskpool.execute(Sum, 10, 20).then((ret2) => {
             result2 = ret2;
-            isTerminate2 = true;  
+            isTerminate2 = true;
         })
         while (!isTerminate1 || !isTerminate2) {
             await promiseCase()
@@ -871,19 +871,19 @@ describe('ActsAbilityTest', function () {
 
         taskpool.execute(Sum, 10, 20).then((ret1) => {
             result1 = ret1;
-            isTerminate1 = true;  
+            isTerminate1 = true;
         })
         taskpool.execute(Multi, 10, 20).then((ret2) => {
             result2 = ret2;
-            isTerminate2 = true; 
+            isTerminate2 = true;
         })
         taskpool.execute(Sum, 10, 30).then((ret3) => {
             result3 = ret3;
-            isTerminate3 = true;  
+            isTerminate3 = true;
         })
         taskpool.execute(Multi, 20, 20).then((ret4) => {
             result4 = ret4;
-            isTerminate4 = true;  
+            isTerminate4 = true;
         })
         while (!isTerminate1 || !isTerminate2 || !isTerminate3 || !isTerminate4) {
             await promiseCase()
@@ -908,20 +908,57 @@ describe('ActsAbilityTest', function () {
         done();
     })
 
+    /**
+     * @tc.number    : TaskPoolTestClass061
+     * @tc.name      : Async Function about priority task
+     * @tc.desc      : Execute priority tasks
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('TaskPoolTestClass061', 0,  async function (done) {
-        function Sum(value1, value2) {
-          "use concurrent"
-          return value1 + value2;
+        function testTime() {
+            "use concurrent";
+            return Date.now();
         }
-        var task1 = new taskpool.Task(Sum, 10, 20);
-        var task2 = new taskpool.Task(Sum, 30, 40);
-        var task3 = new taskpool.Task(Sum, 50, 60);
-        var result1 = await taskpool.execute(task1,taskpool.Priority.LOW);
-        var result2 = await taskpool.execute(task2,taskpool.Priority.HIGH);
-        var result3 = await taskpool.execute(task3,taskpool.Priority.MEDIUM);
-        expect(result1).assertEqual(30);
-        expect(result2).assertEqual(70);
-        expect(result3).assertEqual(110);
+
+        let task = new taskpool.Task(testTime);
+
+        let isEnd = false;
+        let begin = Date.now();
+        let highTime = 0;
+        let mediumTime = 0;
+        let lowTime = 0;
+        let lowCount = 0;
+        let allCount = 100;
+        for (let i = 0; i < allCount; i++) {
+            taskpool.execute(task, taskpool.Priority.LOW).then((res) => {
+                lowCount++;
+                lowTime += (res - begin);
+                if (lowCount == allCount) {
+                    isEnd = true;
+                }
+            }).catch((e) => {
+                console.error("all low find error: " + e)
+            })
+
+            taskpool.execute(task, taskpool.Priority.MEDIUM).then((res) => {
+                mediumTime += (res - begin);
+            }).catch((e) => {
+                console.error("all medium find error: " + e)
+            })
+
+            taskpool.execute(task, taskpool.Priority.HIGH).then((res) => {
+                highTime += (res - begin);
+            }).catch((e) => {
+                console.error("all high find error: " + e)
+            })
+        }
+
+        while (!isEnd) {
+            await promiseCase()
+        }
+        expect(lowTime > mediumTime && mediumTime > highTime);
         done();
     })
 
@@ -938,7 +975,7 @@ describe('ActsAbilityTest', function () {
         expect(result).assertEqual(30);
         done();
     })
-  
+
     it('TaskPoolTestClass063', 0,  async function (done) {
         async function func(value1, value2) {
             "use concurrent"
