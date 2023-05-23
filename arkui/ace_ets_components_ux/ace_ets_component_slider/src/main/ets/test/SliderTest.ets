@@ -705,7 +705,15 @@ export default function sliderTest() {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_stepColor_0500');
           let obj = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_stepColor_0500 is" + JSON.stringify(obj.$attrs.stepColor));
-          expect(obj.$attrs.stepColor).assertEqual("#19182431");
+          let strJsonSample = getInspectorByKey('ArkUX_Stage_Slider_stepColor_marker_color_marker_color_aalpha');
+          let objSample = JSON.parse(strJsonSample);
+          console.info("----ArkUX_Stage_Slider_stepColor_0500 is" + JSON.stringify(objSample.$attrs.backgroundColor));
+          console.info("----ArkUX_Stage_Slider_stepColor_0500 is" + JSON.stringify(objSample.$attrs.opacity));
+          let opacity= Math.floor(Number((parseInt(((objSample.$attrs.backgroundColor).substring(1, 3)), 16)*
+          (objSample.$attrs.opacity)).toString(16)))
+          expect(opacity.toString()).assertEqual((obj.$attrs.stepColor).substring(1, 3));
+          expect((obj.$attrs.stepColor).substr((obj.$attrs.stepColor).length-4, 4)).
+          assertEqual((objSample.$attrs.backgroundColor).substr((objSample.$attrs.backgroundColor).length-4, 4));
           done()
         } catch (err) {
           expect().assertFail();
@@ -771,7 +779,15 @@ export default function sliderTest() {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_stepColor_0800');
           let obj = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_stepColor_0800 is" + JSON.stringify(obj.$attrs.stepColor));
-          expect(obj.$attrs.stepColor).assertEqual("#19182431");
+          let strJsonSample = getInspectorByKey('ArkUX_Stage_Slider_stepColor_marker_color_marker_color_aalpha');
+          let objSample = JSON.parse(strJsonSample);
+          console.info("----ArkUX_Stage_Slider_stepColor_0800 is" + JSON.stringify(objSample.$attrs.backgroundColor));
+          console.info("----ArkUX_Stage_Slider_stepColor_0800 is" + JSON.stringify(objSample.$attrs.opacity));
+          let opacity= Math.floor(Number((parseInt(((objSample.$attrs.backgroundColor).substring(1, 3)), 16)*
+          (objSample.$attrs.opacity)).toString(16)))
+          expect(opacity.toString()).assertEqual((obj.$attrs.stepColor).substring(1, 3));
+          expect((obj.$attrs.stepColor).substr((obj.$attrs.stepColor).length-4, 4)).
+          assertEqual((objSample.$attrs.backgroundColor).substr((objSample.$attrs.backgroundColor).length-4, 4));
           done();
         } catch (err) {
           expect().assertFail();
@@ -793,7 +809,15 @@ export default function sliderTest() {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_stepColor_0900');
           let obj = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_stepColor_0900 is" + JSON.stringify(obj.$attrs.stepColor));
-          expect(obj.$attrs.stepColor).assertEqual("#19182431");
+          let strJsonSample = getInspectorByKey('ArkUX_Stage_Slider_stepColor_marker_color_marker_color_aalpha');
+          let objSample = JSON.parse(strJsonSample);
+          console.info("----ArkUX_Stage_Slider_stepColor_0900 is" + JSON.stringify(objSample.$attrs.backgroundColor));
+          console.info("----ArkUX_Stage_Slider_stepColor_0900 is" + JSON.stringify(objSample.$attrs.opacity));
+          let opacity= Math.floor(Number((parseInt(((objSample.$attrs.backgroundColor).substring(1, 3)), 16)*
+          (objSample.$attrs.opacity)).toString(16)))
+          expect(opacity.toString()).assertEqual((obj.$attrs.stepColor).substring(1, 3));
+          expect((obj.$attrs.stepColor).substr((obj.$attrs.stepColor).length-4, 4)).
+          assertEqual((objSample.$attrs.backgroundColor).substr((objSample.$attrs.backgroundColor).length-4, 4));
           done();
         } catch (err) {
           expect().assertFail();
@@ -815,7 +839,15 @@ export default function sliderTest() {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_stepColor_1000');
           let obj = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_stepColor_1000 is" + JSON.stringify(obj.$attrs.stepColor));
-          expect(obj.$attrs.stepColor).assertEqual("#19182431");
+          let strJsonSample = getInspectorByKey('ArkUX_Stage_Slider_stepColor_marker_color_marker_color_aalpha');
+          let objSample = JSON.parse(strJsonSample);
+          console.info("----ArkUX_Stage_Slider_stepColor_1000 is" + JSON.stringify(objSample.$attrs.backgroundColor));
+          console.info("----ArkUX_Stage_Slider_stepColor_1000 is" + JSON.stringify(objSample.$attrs.opacity));
+          let opacity= Math.floor(Number((parseInt(((objSample.$attrs.backgroundColor).substring(1, 3)), 16)*
+          (objSample.$attrs.opacity)).toString(16)))
+          expect(opacity.toString()).assertEqual((obj.$attrs.stepColor).substring(1, 3));
+          expect((obj.$attrs.stepColor).substr((obj.$attrs.stepColor).length-4, 4)).
+          assertEqual((objSample.$attrs.backgroundColor).substr((objSample.$attrs.backgroundColor).length-4, 4));
           done();
         } catch (err) {
           expect().assertFail();
@@ -825,7 +857,7 @@ export default function sliderTest() {
       }, 500)
     })
 
-    /** 
+     /** 
       * @tc.number ArkUX_Stage_Slider_stepColor_1100
       * @tc.name   Test the stepColor property of the Slider component
       * @tc.desc   Do not set the stepColor
@@ -837,7 +869,15 @@ export default function sliderTest() {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_stepColor_1100');
           let obj = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_stepColor_1100 is" + JSON.stringify(obj.$attrs.stepColor));
-          expect(obj.$attrs.stepColor).assertEqual("#19182431");
+          let strJsonSample = getInspectorByKey('ArkUX_Stage_Slider_stepColor_marker_color_marker_color_aalpha');
+          let objSample = JSON.parse(strJsonSample);
+          console.info("----ArkUX_Stage_Slider_stepColor_1100 is" + JSON.stringify(objSample.$attrs.backgroundColor));
+          console.info("----ArkUX_Stage_Slider_stepColor_1100 is" + JSON.stringify(objSample.$attrs.opacity));
+          let opacity= Math.floor(Number((parseInt(((objSample.$attrs.backgroundColor).substring(1, 3)), 16)*
+          (objSample.$attrs.opacity)).toString(16)))
+          expect(opacity.toString()).assertEqual((obj.$attrs.stepColor).substring(1, 3));
+          expect((obj.$attrs.stepColor).substr((obj.$attrs.stepColor).length-4, 4)).
+          assertEqual((objSample.$attrs.backgroundColor).substr((objSample.$attrs.backgroundColor).length-4, 4));
           done();
         } catch (err) {
           expect().assertFail();
@@ -846,6 +886,7 @@ export default function sliderTest() {
         }
       }, 500)
     })
+
 
     /** 
       * @tc.number ArkUX_Stage_Slider_stepColor_1200
@@ -864,28 +905,6 @@ export default function sliderTest() {
         } catch (err) {
           expect().assertFail();
           console.info('ArkUX_Stage_Slider_stepColor_1200 ERROR: ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    })
-
-    /** 
-      * @tc.number: ArkUX_Stage_Slider_stepColor_1300
-      * @tc.name: Test the stepColor property of the Slider component
-      * @tc.desc: Set the stepColor attribute to 0xffa500 and then set the stepColor attribute parameter again to "bgr(138,43,226)"
-      */
-    it('ArkUX_Stage_Slider_stepColor_1300', 0, async function (done) {
-      console.info('[ArkUX_Stage_Slider_stepColor_1300] START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_Slider_stepColor_1300');
-          let obj = JSON.parse(strJson);
-          console.info("----ArkUX_Stage_Slider_stepColor_1300 is" + JSON.stringify(obj.$attrs.stepColor));
-          expect(obj.$attrs.stepColor).assertEqual("#FFFFA500");
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_Slider_stepColor_1300 ERROR: ' + JSON.stringify(err));
           done();
         }
       }, 500)

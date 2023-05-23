@@ -97,6 +97,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup6'})
               .key("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0600")
+              .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
               .selectedColor(0xed6f21)
               .mark({strokeColor:""})
               .onChange((value: boolean) => {
@@ -106,6 +107,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup7'})
               .key("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0700")
+              .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
               .selectedColor(0xed6f21)
               .mark({strokeColor:null})
               .onChange((value: boolean) => {
@@ -115,6 +117,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup8'})
               .key("ArkUX_Stage_CheckboxGroup_CheckMarkColor_0800")
+              .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
               .selectedColor(0xed6f21)
               .mark({strokeColor:undefined})
               .onChange((value: boolean) => {
@@ -134,6 +137,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup10'})
               .key("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1000")
+              .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
               .selectedColor(0xed6f21)
               .mark({strokeColor:Color.Pink})
               .mark({strokeColor:'bgr(138,43,226)'})
@@ -144,6 +148,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup11'})
               .key("ArkUX_Stage_CheckboxGroup_CheckMarkColor_1100")
+              .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
               .selectedColor(0xed6f21)
               .mark({strokeColor:'bgr(138,43,226)'})
               .onChange((value: boolean) => {
@@ -468,6 +473,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup43'})
               .key("ArkUX_Stage_CheckboxGroup_unselectedColor_0600")
+              .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
               .selectedColor(0xed6f21)
               .unselectedColor("")
               .onChange((value: boolean) => {
@@ -477,6 +483,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup44'})
               .key("ArkUX_Stage_CheckboxGroup_unselectedColor_0700")
+              .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
               .selectedColor(0xed6f21)
               .unselectedColor(null)
               .onChange((value: boolean) => {
@@ -486,6 +493,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup45'})
               .key("ArkUX_Stage_CheckboxGroup_unselectedColor_0800")
+              .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
               .selectedColor(0xed6f21)
               .unselectedColor(undefined)
               .onChange((value: boolean) => {
@@ -505,6 +513,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup47'})
               .key("ArkUX_Stage_CheckboxGroup_unselectedColor_1000")
+              .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
               .selectedColor(0xed6f21)
               .unselectedColor(Color.Pink)
               .unselectedColor(undefined)
@@ -515,6 +524,7 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroup48'})
               .key("ArkUX_Stage_CheckboxGroup_unselectedColor_1100")
+              .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
               .selectedColor(0xed6f21)
               .unselectedColor('bgr(138,43,226)')
               .onChange((value: boolean) => {
@@ -543,7 +553,9 @@ struct checkBoxTest {
           ListItem(){
             CheckboxGroup({group: 'checkboxGroupNO'})
               .key("checkboxGroupNO")
+              .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
               .selectedColor(0xed6f21)
+              .borderColor($r("sys.color.ohos_id_color_foreground_contrary"))
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
@@ -551,6 +563,8 @@ struct checkBoxTest {
           ListItem(){
             Checkbox({name: 'checkbox3',  group: 'checkboxGroupNO'})
               .key("checkboxNO")
+              .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
+              .borderColor($r("sys.color.ohos_id_color_foreground_contrary"))
               .select(true)
               .selectedColor(0xed6f21)
               .onChange((value: boolean) => {
